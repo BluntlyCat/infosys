@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<HSA.InfoSys.Gui.Models.LogOnModel>" %>
-abc
+test
 <asp:Content ID="loginTitle" ContentPlaceHolderID="TitleContent" runat="server">
     Login
 </asp:Content>
