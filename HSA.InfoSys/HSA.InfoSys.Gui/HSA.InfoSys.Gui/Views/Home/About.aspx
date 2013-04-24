@@ -9,4 +9,14 @@
     <p>
         <%= ViewData["message"] %>
     </p>
+
+    <h4>Done!</h4>
+    <ul>
+        <li>reCaptcha eingebaut</li>
+        <li>cookiesEnabled check eingebaut</li>
+        <li>Register Funktion eingebaut</li>
+        <li>User Einstellungen eingebaut</li>
+        <li>Password ändern Option eingebaut</li>
+        <li>navbar rechts -> optisch geändert (Login-/Register-Button u. Logoutbutton)</li>
+    </ul>
 </asp:Content>
