@@ -1,0 +1,83 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    </title>
+
+    <!-- Favicon -->
+    <link href="../../Content/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <!-- load jquery -->
+    <script src="../../Scripts/jquery-1.7.1.js"></script>
+
+    <!-- load bootstrap -->
+    <link href="../../Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../../Bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- own styles -->
+    <link href="../../Content/custom.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header>
+        <div class="container">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <a class="brand" href="/Home/Index">InfoSys</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav nav-font">
+                            <li id="home"><a href="/Home/Index">Home</a></li>
+                            <li id="about"><a href="/Home/About">About</a></li>
+                            <li id="contact"><a href="/Home/Contact">Contact</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Rafael</a></li>
+                                    <li><a href="#">Max</a></li>
+                                    <li class="divider"></li>
+                                    <li class="nav-header">Nav header</li>
+                                    <li><a href="#">Michi</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <% Html.RenderPartial("LogOnUserControl"); %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="content-wrapper main-content clear-fix">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </section>
+    </div>
+
+    <footer class="container">
+        <hr>
+        <p>&copy; IN6 InfoSys SS13</p>
+    </footer>
+
+</body>
+
+<script>
+    $(document).ready(function () {
+
+        // set nav to active
+        setNavActive();
+
+    });
+
+    function setNavActive() {
+        $('#<%= ViewData["navid"] %>').addClass('active');
+    }
+
+</script>
+
+</html>  
