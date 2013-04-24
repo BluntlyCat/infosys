@@ -7,18 +7,20 @@
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="container">
-        <% if (!Html.ViewData.ModelState.IsValid) { %>
-            <div class="alert alert-error">
-                <button type="button" class="close" data-dismiss="alert">
-                    &times;</button>
-                <h4>Warning!</h4>
-                <%= Html.ValidationSummary(true, ""+ViewData["invalidLoginMsg"])%>
-                <%= Html.ValidationMessageFor(m => m.UserName) %>
-                <%= Html.ValidationMessageFor(m => m.Password) %>
-                <%= Html.ValidationMessageFor(m => m.RememberMe)%>
-            </div>
-        <% } %>
-        
+        <div id="messageBoxes">
+            <% if (!Html.ViewData.ModelState.IsValid) { %>
+                <div class="alert alert-error">
+                    <button type="button" class="close" data-dismiss="alert">
+                        &times;</button>
+                    <h4>Warning!</h4>
+                    <%= Html.ValidationSummary(true, ""+ViewData["invalidLoginMsg"])%>
+                    <%= Html.ValidationMessageFor(m => m.UserName) %>
+                    <%= Html.ValidationMessageFor(m => m.Password) %>
+                    <%= Html.ValidationMessageFor(m => m.RememberMe)%>
+                </div>
+            <% } %>
+        </div>
+
         <div class="contentbox cb-large left-nomargin">
             <div class="contentbox-header">
                 <i class="icon-align-justify"></i>
@@ -91,6 +93,17 @@
             // Error Input
             if ('<%= Html.ViewData.ModelState.IsValidField("Password") %>' === 'False') {
                 $("#PasswordGroup").addClass("control-group error");
+            }
+
+            // check if cookies enabled
+            if (navigator.cookieEnabled === false) {
+                // create error box
+                 $('#messageBoxes').append(
+                    '<div class="alert alert-error">'
+                    + '<button type="button" class="close" data-dismiss="alert">&times;</button><h4>Warning!</h4>'
+                    + 'Die Cookies sind in Ihrem Browser nicht aktiviert. Für den Login werden Cookies benötigt.'
+                    + '</div>'
+                );
             }
 
         });
