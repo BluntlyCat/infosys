@@ -2,7 +2,7 @@
 <%
     if (Request.IsAuthenticated) {
 %>
-        <ul class="nav nav-font" style="margin-right: 0px; margin-left: 309px;">
+        <ul class="nav nav-font" style="margin-right: 0px; margin-left: 208px;">
             <li class="dropdown">
                 <a href="" class="dropdown-toggle" data-toggle="dropdown" style="padding: 7px 3px 6px;">
                     <span class="label label-info" style="padding: 6px 8px;">
