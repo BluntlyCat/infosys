@@ -15,7 +15,7 @@ using Microsoft.Practices.ServiceLocation;
 
 
     /// <summary>
-    /// Gets Connection to Solr Server
+    /// Gets Connection to the Solr Server
     /// </summary>
     class Solr
     {
