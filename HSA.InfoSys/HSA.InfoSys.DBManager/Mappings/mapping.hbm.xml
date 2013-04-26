@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                    assembly="HSA.InfoSys.DBManager"
+                    namespace="HSA.InfoSys.DBManager.Data">
+  
+  <class name= "Issue" table ="Issue">
+    <id name ="issueId" type ="int">
+      <column name="issueId" />
+      <generator class="guid" />
+    </id>
+    <property name="issueGUID" type ="string" column="issueGUID" length ="36" not-null="true" unique="true" />
+    <property name="text" type="string" column="text" length ="250" not-null="true" unique="true" />   
+    <property name="titel" type="string" column="titel" length ="40" not-null="true" unique="true"/>  
+    <property name="threatLevel" type="int" column="threatlevel" length ="11" not-null="true" unique="true"/>    
+    <property name="date" type="date" column="date" not-null="true" unique="true"/>
+    <one-to-one name="component" class="Component"
+			constrained="true"></one-to-one>
+    <one-to-one name="source" class="Source"
+			constrained="true"></one-to-one>
+  </class>
+
+  <class name= "Component" table ="Component">
+    <id name ="componentId" type ="int">
+      <column name="componentId" />
+      <generator class="guid" />
+    </id>
+    <property name="userGUID" type ="string" column="userGUID" length ="36" not-null="true" unique="true" />
+    <property name="name" type="string" column="name" length ="40" not-null="true" unique="true" />
+    
+    <property name="category" type="string" column="category" length ="8" not-null="true" unique="true"/>
+  </class>
+  
+  <class name= "Source" table ="Source">
+    <id name ="sourceId" type ="int">
+      <column name="sourceId" />
+      <generator class="guid" />
+    </id>
+    <property name="sourceGUID" type ="string" column="sourceGUID" length ="36" not-null="true" unique="true" />
+    <property name="URL" type="string" column="URL" length ="250" not-null="true" unique="true"/>
+  </class> 
+</hibernate-mapping>
