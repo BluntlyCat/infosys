@@ -27,7 +27,6 @@ namespace HSA.InfoSys.Gui
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-
             RegisterRoutes(RouteTable.Routes);
         }
     }
