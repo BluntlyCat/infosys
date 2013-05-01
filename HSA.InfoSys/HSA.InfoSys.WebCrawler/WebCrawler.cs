@@ -28,6 +28,9 @@
 
             DBManager dbm = new DBManager();
 
+            
+            
+
             while(running)
             {
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
