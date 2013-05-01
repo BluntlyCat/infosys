@@ -5,7 +5,6 @@
     using System.Net;
     using System.Threading;
     using HSA.InfoSys.Logging;
-    using HSA.InfoSys.DBManager;
     using log4net;
 
     /// <summary>
@@ -26,7 +25,7 @@
             log.Debug("Starting server...");
             log.Info("Press q for quit.");
 
-            DBManager dbm = new DBManager();
+            //DBManager dbm = new DBManager();
 
             
             

@@ -5,7 +5,6 @@ using System;
 using System.Net;
 using System.Threading;
 using HSA.InfoSys.Logging;
-using HSA.InfoSys.DBManager;
 using log4net;
 using SolrNet;
 using SolrNet.Attributes;
