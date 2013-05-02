@@ -12,12 +12,7 @@
     {
         private static readonly ILog log = Logging.GetLogger("Component");
 
-        protected Component()
-        {
-            log.Error("NHIBERNATE calls this...");
-        }
-
-        public virtual Guid userGUID  { get; set; }
+        public virtual Guid componentGUID { get; set; }
 
         public virtual string name { get; set; }
 
@@ -25,6 +20,6 @@
 
         public virtual int componentId { get; set; }
 
-       
+
     }
 }

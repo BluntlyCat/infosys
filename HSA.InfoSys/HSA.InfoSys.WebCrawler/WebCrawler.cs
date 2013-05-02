@@ -11,6 +11,8 @@
     using log4net;
     using System.IO;
     using System.ServiceModel;
+    using System.ServiceModel.Channels;
+    using NHibernate;
 
     /// <summary>
     /// The WebCrawler searches the internet
@@ -58,7 +60,9 @@
 
             host.Open();
 
-            DBManager dbm = new DBManager();
+            IDBManager dbm = new DBManager();
+            //dbm.addNewComponent(System.Guid.NewGuid(), 12, "test1", "test1");
+           
             running = true;
 
             while (running)

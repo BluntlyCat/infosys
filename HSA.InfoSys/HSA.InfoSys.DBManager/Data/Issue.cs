@@ -7,7 +7,7 @@
 
     public class Issue
     {
- 
+
         public virtual Guid issueGUID { get; set; }
 
         public virtual int issueId { get; set; }
