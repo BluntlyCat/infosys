@@ -13,7 +13,7 @@
     /// svcutil http://localhost:8085/GetMetaInformation /out:Proxy.cs
     /// </summary>
     [ServiceContract]
-    public interface IWebCrawler
+    public interface ICrawlControler
     {
         [OperationContract]
         string StartSearch();

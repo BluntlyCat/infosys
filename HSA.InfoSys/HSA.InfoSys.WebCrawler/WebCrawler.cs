@@ -8,7 +8,6 @@
     using HSA.InfoSys.DBManager;
     using System.Linq;
     using System.Text;
-    using Newtonsoft.Json;
     using log4net;
     using System.IO;
     using System.ServiceModel;
@@ -17,13 +16,11 @@
     /// The WebCrawler searches the internet
     /// for security issues of several hardware
     /// </summary>
-    public class WebCrawler : IWebCrawler
+    public class WebCrawler
     {
         private static readonly ILog log = Logging.GetLogger("WebCrawler");
 
         private WebClient client = new WebClient();
-        private Stream stream;
-        private StreamReader reader;
 
         static void Main(string[] args)
         {
@@ -33,7 +30,7 @@
 
         private void RunServer()
         {
-            using (ServiceHost host = new ServiceHost(typeof(WebCrawler)))
+            using (ServiceHost host = new ServiceHost(typeof(CrawlControler)))
             {
                 bool running = true;
 
@@ -44,13 +41,8 @@
 
                 DBManager dbm = new DBManager();
 
-                //stream = client.OpenRead("http://localhost:8085");
-                //reader = new StreamReader(stream);
-
                 while (running)
                 {
-                    //Newtonsoft.Json.Linq.JObject o = Newtonsoft.Json.Linq.JObject.Parse(reader.ReadLine());
-
                     if (Console.KeyAvailable)
                     {
                         ConsoleKeyInfo keyInfo = Console.ReadKey(true);
