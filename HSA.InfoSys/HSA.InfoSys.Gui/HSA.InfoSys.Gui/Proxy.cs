@@ -17,6 +17,9 @@ public interface ICrawlControler
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrawlControler/StartSearch", ReplyAction="http://tempuri.org/ICrawlControler/StartSearchResponse")]
     string StartSearch();
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrawlControler/ShutDownWebCrawler", ReplyAction="http://tempuri.org/ICrawlControler/ShutDownWebCrawlerResponse")]
+    bool ShutDownWebCrawler();
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -56,5 +59,10 @@ public partial class CrawlControlerClient : System.ServiceModel.ClientBase<ICraw
     public string StartSearch()
     {
         return base.Channel.StartSearch();
+    }
+    
+    public bool ShutDownWebCrawler()
+    {
+        return base.Channel.ShutDownWebCrawler();
     }
 }
