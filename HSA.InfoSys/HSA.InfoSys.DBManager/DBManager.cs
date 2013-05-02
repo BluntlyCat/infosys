@@ -21,6 +21,9 @@
         private ISessionFactory sessionFactory;
         private ISession session;
 
+        /// <summary>
+        /// function to get the Session
+        /// </summary>
         public ISession Session
         {
             get
@@ -61,6 +64,10 @@
             }
         }
 
+        /// <summary>
+        /// inserts a new databaseitem
+        /// </summary>
+        /// <param name="obj">Issue/Componenent/Source-Object</param>
         private void insert(Object obj)
         {
             try
@@ -95,7 +102,7 @@
 
 
         /// <summary>
-        /// 
+        /// creates a new Component-Object and calls insert
         /// </summary>
         /// <param name="new_componentGUID"></param>
         /// <param name="new_componentId"></param>
@@ -108,7 +115,7 @@
         }
 
         /// <summary>
-        /// 
+        /// creates a new Source-Object and calls insert
         /// </summary>
         /// <param name="new_sourceGUID"></param>
         /// <param name="new_sourceId"></param>
@@ -117,13 +124,6 @@
         {
             Source source = new Source { sourceGUID = new_sourceGUID, sourceId = new_sourceId, URL = new_URL };
             this.insert(source);
-        }
-
-     
-
-        public void query()
-        {
-            throw new NotImplementedException();
         }
     }
 }
