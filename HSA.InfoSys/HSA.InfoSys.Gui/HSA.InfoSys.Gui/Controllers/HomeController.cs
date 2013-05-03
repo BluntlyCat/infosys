@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HSA.InfoSys.DBManager;
+using HSA.InfoSys.DBManager.Data;
 
 namespace HSA.InfoSys.Gui.Controllers
 {
@@ -47,6 +49,15 @@ namespace HSA.InfoSys.Gui.Controllers
         [HttpPost]
         public ActionResult SearchResult()
         {
+            /*
+            IDBManager dbm = new DBManager.DBManager();
+
+            Component comp = new Component { componentGUID = System.Guid.NewGuid(), name = "abc", category = "hardware", componentId = 12 };
+
+            dbm.addNewObject(comp);
+             */
+
+
             ViewData["navid"] = "home";
 
             // get POST data from form
