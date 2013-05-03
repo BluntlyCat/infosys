@@ -13,6 +13,10 @@
     using System.ServiceModel;
     using System.ServiceModel.Channels;
     using NHibernate;
+    using HSA.InfoSys.DBManager.Data;
+  
+   
+    
 
     /// <summary>
     /// The WebCrawler searches the internet
@@ -60,8 +64,16 @@
 
             host.Open();
 
+            
+           // dbm.addNewComponent(System.Guid.NewGuid(), 122, "test1", "test1");
+
+
+            var comp = new Component { componentGUID = System.Guid.NewGuid(), componentId = 884, category = "test1", name = "test12" };
+            var source = new Source { sourceGUID = System.Guid.NewGuid(), sourceId = 123, URL = "www.google.de" };
+            
             IDBManager dbm = new DBManager();
-            //dbm.addNewComponent(System.Guid.NewGuid(), 12, "test1", "test1");
+            dbm.addNewObject(comp);
+            
            
             running = true;
 
