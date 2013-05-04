@@ -18,7 +18,7 @@
 
         public virtual string category { get; set; }
 
-        public virtual int componentId { get; set; }
+      //  public virtual int componentId { get; set; }
 
 
     }

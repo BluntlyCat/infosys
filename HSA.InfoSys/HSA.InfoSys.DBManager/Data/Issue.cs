@@ -10,13 +10,13 @@
 
         public virtual Guid issueGUID { get; set; }
 
-        public virtual int issueId { get; set; }
-
         public virtual string text { get; set; }
 
         public virtual string titel { get; set; }
 
         public virtual int threatLevel { get; set; }
+
+        //public virtual int issueId { get; set; }
 
         public virtual DateTime date { get; set; }
 

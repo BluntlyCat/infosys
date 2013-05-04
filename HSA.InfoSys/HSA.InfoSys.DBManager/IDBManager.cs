@@ -11,6 +11,14 @@ namespace HSA.InfoSys.DBManager
     {
         void addNewObject(Object obj);
         void updateObject(Object obj);
+        Component getComponent(Guid componentGUID);
+        Issue getIssue(Guid issueGUID);
+        Source getSource(Guid sourceGUID);
+        Component createComponent(string name, string category);
+        Source createSource(string URL);
+      
+
+
         
     }
 }

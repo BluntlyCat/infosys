@@ -71,14 +71,16 @@
             host.Open();
 
             
-           // dbm.addNewComponent(System.Guid.NewGuid(), 122, "test1", "test1");
 
-
-            var comp = new Component { componentGUID = System.Guid.NewGuid(), componentId = 884, category = "test1", name = "test12" };
-            var source = new Source { sourceGUID = System.Guid.NewGuid(), sourceId = 123, URL = "www.google.de" };
+           
             
             IDBManager dbm = new DBManager();
-            dbm.addNewObject(comp);
+            //Beispiel
+            string s = "29e16064-c283-4e63-9f69-a1b400b2ab54";
+
+            var comp = dbm.getComponent(new Guid(s));
+            //var comp = dbm.createComponent("Windows8", "TestWin");
+            Console.WriteLine(comp.name.ToString());
             
            
             running = true;

@@ -21,7 +21,6 @@ namespace HSA.InfoSys.DBManager
                     configuration.Configure();
                     configuration.AddAssembly(typeof(DBManager).Assembly);
                     _sessionFactory = configuration.BuildSessionFactory();
-
                 }
                 return _sessionFactory;
 
@@ -31,8 +30,7 @@ namespace HSA.InfoSys.DBManager
 
         public static ISession OpenSession()
         {
-            return SessionFactory.OpenSession();
-
+            return SessionFactory.OpenSession();   
         }
     }
 }

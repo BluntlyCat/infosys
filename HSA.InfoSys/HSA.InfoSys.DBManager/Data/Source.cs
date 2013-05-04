@@ -10,7 +10,7 @@ namespace HSA.InfoSys.DBManager.Data
     public class Source
     {
         public virtual Guid sourceGUID { get; set; }
-        public virtual int sourceId { get; set; }
+        //public virtual int sourceId { get; set; }
         public virtual string URL { get; set; }
     }
 }
