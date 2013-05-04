@@ -42,6 +42,7 @@
         public WebCrawler()
         {
             host = new ServiceHost(typeof(WebCrawler));
+
         }
 
         /// <summary>
@@ -50,6 +51,11 @@
         /// <param name="args">The args.</param>
         static void Main(string[] args)
         {
+
+            SolrClient c = new SolrClient(8983, "141.82.59.139");
+            c.connect();
+            Console.ReadLine();
+
             WebCrawler crawler = new WebCrawler();
             crawler.RunServer();
         }
