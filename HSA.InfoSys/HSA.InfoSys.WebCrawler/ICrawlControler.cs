@@ -16,6 +16,6 @@
         string StartSearch();
 
         [OperationContract]
-        bool ShutDownWebCrawler();
+        bool ShutdownServices();
     }
 }

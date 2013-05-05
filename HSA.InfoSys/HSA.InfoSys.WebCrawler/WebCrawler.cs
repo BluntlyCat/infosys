@@ -22,7 +22,7 @@
     /// The WebCrawler searches the internet
     /// for security issues of several hardware
     /// </summary>
-    public class WebCrawler : ICrawlControler
+    public class WebCrawler
     {
         private static readonly ILog log = Logging.GetLogger("WebCrawler");
 
@@ -41,8 +41,7 @@
         /// </summary>
         public WebCrawler()
         {
-            host = new ServiceHost(typeof(WebCrawler));
-
+            host = new ServiceHost(typeof(CrawlControler));
         }
 
         /// <summary>
@@ -51,10 +50,9 @@
         /// <param name="args">The args.</param>
         static void Main(string[] args)
         {
-
-            SolrClient c = new SolrClient(8983, "141.82.59.139");
-            c.connect();
-            Console.ReadLine();
+            //SolrClient c = new SolrClient(8983, "141.82.59.139");
+            //c.connect();
+            //Console.ReadLine();
 
             WebCrawler crawler = new WebCrawler();
             crawler.RunServer();
@@ -69,10 +67,6 @@
             log.Info("Press q for quit.");
 
             host.Open();
-
-            
-
-           
             
             IDBManager dbm = new DBManager();
             //Beispiel
@@ -81,7 +75,6 @@
             var comp = dbm.getComponent(new Guid(s));
             //var comp = dbm.createComponent("Windows8", "TestWin");
             Console.WriteLine(comp.name.ToString());
-            
            
             running = true;
 
@@ -95,7 +88,7 @@
                     if (keyInfo.Key == ConsoleKey.Q)
                     {
                         log.Info("User exited the application.");
-                        Shutdown();
+                        ShutdownCrawler();
                     }
                     else
                     {
@@ -108,29 +101,9 @@
         }
 
         /// <summary>
-        /// Starts a new search.
-        /// </summary>
-        /// <returns></returns>
-        public string StartSearch()
-        {
-            log.Info("Search started from GUI");
-            return "Hello";
-        }
-
-        /// <summary>
-        /// Shuts down web crawler.
-        /// </summary>
-        /// <returns>true on success.</returns>
-        public bool ShutDownWebCrawler()
-        {
-            Shutdown();
-            return true;
-        }
-
-        /// <summary>
         /// Shutdown this instance.
         /// </summary>
-        private void Shutdown()
+        private void ShutdownCrawler()
         {
             if (host != null)
             {
