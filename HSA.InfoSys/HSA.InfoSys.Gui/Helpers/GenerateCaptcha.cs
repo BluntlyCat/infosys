@@ -1,11 +1,11 @@
-﻿using System.IO;
-using Recaptcha;
-using System.Web.UI;
-using System.Web.Mvc;
-using System.Configuration;
-
-namespace MvcReCaptcha.Helpers
+﻿namespace MvcReCaptcha.Helpers
 {
+    using System.IO;
+    using Recaptcha;
+    using System.Web.UI;
+    using System.Web.Mvc;
+    using System.Configuration;
+
     /// <summary>
     /// 
     /// </summary>
@@ -19,12 +19,13 @@ namespace MvcReCaptcha.Helpers
         public static string GenerateCaptcha(this HtmlHelper helper)
         {
             var captchaControl = new RecaptchaControl
-                                     {
-                                         ID = "recaptcha",
-                                         Theme = "clean", //http://wiki.recaptcha.net/index.php/Theme
-                                         PublicKey = ConfigurationManager.AppSettings["ReCaptchaPublicKey"],
-                                         PrivateKey = ConfigurationManager.AppSettings["ReCaptchaPrivateKey"]
-                                     };
+                {
+                    ID = "recaptcha",
+                    Theme = "clean", //http://wiki.recaptcha.net/index.php/Theme
+                    PublicKey = ConfigurationManager.AppSettings["ReCaptchaPublicKey"],
+                    PrivateKey = ConfigurationManager.AppSettings["ReCaptchaPrivateKey"]
+                };
+
             var htmlWriter = new HtmlTextWriter(new StringWriter());
             captchaControl.RenderControl(htmlWriter);
             return htmlWriter.InnerWriter.ToString();
