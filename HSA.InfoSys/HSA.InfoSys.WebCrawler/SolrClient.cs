@@ -24,10 +24,7 @@ namespace HSA.InfoSys.WebCrawler
         {
             this.port = port;
             this.ipAddress = ipAddress;
-
             solrSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-           
-
         }
 
         public void connect() {
@@ -42,8 +39,13 @@ namespace HSA.InfoSys.WebCrawler
             catch (SocketException e)
             {
                 Log.Error("Unable to Connect\n" +e.Message);
-
             }
+        }
+
+
+        public void closeConnection()
+        {
+            running = false;
         }
 
 
