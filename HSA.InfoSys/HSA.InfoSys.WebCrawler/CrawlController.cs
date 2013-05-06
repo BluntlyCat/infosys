@@ -31,6 +31,7 @@
         /// <summary>
         /// Tests this instance.
         /// </summary>
+#warning //only for testing remove me when finished
         public void Test()
         {
             // Beispiel

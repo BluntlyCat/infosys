@@ -53,6 +53,7 @@
             controller.StartServices();
             controller.OpenWCFHost();
 
+            //todo: Only for testing, remove me when finished.
             controller.Test();
            
             running = true;
