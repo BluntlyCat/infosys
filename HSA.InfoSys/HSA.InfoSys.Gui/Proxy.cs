@@ -11,58 +11,66 @@
 
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-[System.ServiceModel.ServiceContractAttribute(ConfigurationName="ICrawlControler")]
-public interface ICrawlControler
+[System.ServiceModel.ServiceContractAttribute(ConfigurationName="ICrawlController")]
+public interface ICrawlController
 {
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrawlControler/StartSearch", ReplyAction="http://tempuri.org/ICrawlControler/StartSearchResponse")]
-    string StartSearch();
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrawlController/StartSearch", ReplyAction="http://tempuri.org/ICrawlController/StartSearchResponse")]
+    void StartSearch();
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrawlControler/ShutdownServices", ReplyAction="http://tempuri.org/ICrawlControler/ShutdownServicesResponse")]
-    bool ShutdownServices();
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrawlController/StartServices", ReplyAction="http://tempuri.org/ICrawlController/StartServicesResponse")]
+    void StartServices();
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrawlController/StopServices", ReplyAction="http://tempuri.org/ICrawlController/StopServicesResponse")]
+    void StopServices();
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-public interface ICrawlControlerChannel : ICrawlControler, System.ServiceModel.IClientChannel
+public interface ICrawlControllerChannel : ICrawlController, System.ServiceModel.IClientChannel
 {
 }
 
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-public partial class CrawlControlerClient : System.ServiceModel.ClientBase<ICrawlControler>, ICrawlControler
+public partial class CrawlControllerClient : System.ServiceModel.ClientBase<ICrawlController>, ICrawlController
 {
     
-    public CrawlControlerClient()
+    public CrawlControllerClient()
     {
     }
     
-    public CrawlControlerClient(string endpointConfigurationName) : 
+    public CrawlControllerClient(string endpointConfigurationName) : 
             base(endpointConfigurationName)
     {
     }
     
-    public CrawlControlerClient(string endpointConfigurationName, string remoteAddress) : 
+    public CrawlControllerClient(string endpointConfigurationName, string remoteAddress) : 
             base(endpointConfigurationName, remoteAddress)
     {
     }
     
-    public CrawlControlerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+    public CrawlControllerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
             base(endpointConfigurationName, remoteAddress)
     {
     }
     
-    public CrawlControlerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+    public CrawlControllerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
             base(binding, remoteAddress)
     {
     }
     
-    public string StartSearch()
+    public void StartSearch()
     {
-        return base.Channel.StartSearch();
+        base.Channel.StartSearch();
     }
     
-    public bool ShutdownServices()
+    public void StartServices()
     {
-        return base.Channel.ShutdownServices();
+        base.Channel.StartServices();
+    }
+    
+    public void StopServices()
+    {
+        base.Channel.StopServices();
     }
 }
