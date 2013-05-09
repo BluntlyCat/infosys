@@ -37,7 +37,7 @@ namespace NHibernate.Connection
             IDbConnection conn = Driver.CreateConnection();
             try
             {
-                log.DebugFormat("Connect with ", ConnectionString);
+                log.DebugFormat("Connect with ", ConnectionString.ToString());
                 conn.ConnectionString = ConnectionString;
                 log.DebugFormat("ConnectionString is set ", conn.ConnectionString);
                 conn.Open();
