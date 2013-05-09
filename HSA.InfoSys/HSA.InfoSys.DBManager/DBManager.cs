@@ -91,18 +91,21 @@
         {
             Component component;
             using (ISession session = DBSession.OpenSession())
+            {
+                log.DebugFormat("Try to get component by guid {0}", componentGUID);
                 component = session.QueryOver<Component>()
                     .Where(x => x.componentGUID == componentGUID)
                     .SingleOrDefault();
-            /*
-            using (ITransaction transaction = session.BeginTransaction())
-            {
-                component = session.Get<Component>(componentGUID);
-            }
-            */
-            log.InfoFormat("Got component {0} with GUID {1}", component, componentGUID);
+                /*
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    component = session.Get<Component>(componentGUID);
+                }
+                */
+                log.InfoFormat("Got component {0} with GUID {1}", component, componentGUID);
 
-            return component;  
+                return component;
+            }
         }
 
         /// <summary>
