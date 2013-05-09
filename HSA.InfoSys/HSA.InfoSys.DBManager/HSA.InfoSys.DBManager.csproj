@@ -19,11 +19,13 @@
     </SccAuxPath>
     <SccProvider>
     </SccProvider>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>True</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>False</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -31,28 +33,28 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>True</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="mysql.data">
-      <HintPath>..\3rdparty\MySQLConnector\v2\mysql.data.dll</HintPath>
-    </Reference>
-    <Reference Include="mysql.data.entity">
-      <HintPath>..\3rdparty\MySQLConnector\v2\mysql.data.entity.dll</HintPath>
-    </Reference>
-    <Reference Include="mysql.web">
-      <HintPath>..\3rdparty\MySQLConnector\v2\mysql.web.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="MySql.Data">
+      <HintPath>..\3rdparty\MySQLConnector\v2\mysql.data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity">
+      <HintPath>..\3rdparty\MySQLConnector\v2\mysql.data.entity.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web">
+      <HintPath>..\3rdparty\MySQLConnector\v2\mysql.web.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Component.cs" />
@@ -73,7 +75,7 @@
       <Name>NHibernate</Name>
     </ProjectReference>
     <ProjectReference Include="..\HSA.InfoSys.Logging\HSA.InfoSys.Logging.csproj">
-      <Project>{3a43f6b7-10b3-4615-987f-0d9ee0024fd0}</Project>
+      <Project>{3A43F6B7-10B3-4615-987F-0D9EE0024FD0}</Project>
       <Name>HSA.InfoSys.Logging</Name>
     </ProjectReference>
   </ItemGroup>
