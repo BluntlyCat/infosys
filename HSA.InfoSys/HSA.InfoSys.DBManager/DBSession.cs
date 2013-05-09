@@ -35,8 +35,9 @@
                     log.Debug("### Add Assembly...");
                     configuration.AddAssembly(typeof(DBManager).Assembly);
 
-                    log.Debug("### Set session factory...");
+                    log.Debug("### Build session factory...");
                     _sessionFactory = configuration.BuildSessionFactory();
+                    log.Debug("### Sessionfactory built...");
                 }
 
                 log.Debug("### Return sessionfactory...");
