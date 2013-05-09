@@ -39,6 +39,7 @@
                     _sessionFactory = configuration.BuildSessionFactory();
                 }
 
+                log.Debug("### Return sessionfactory...");
                 return _sessionFactory;
             }
         }
