@@ -10,19 +10,28 @@ using log4net;
 
 namespace HSA.InfoSys.WebCrawler
 {
+
+    //enum  represents possible types in which a solr - query - respond can be represent by
+    public enum MimeType { 
+          xml, json, python, ruby, php, csv
+    }
+
+    //SolrClient deals as an API
+
     class SolrClient
     {
         
         string collection = "collection1";
-
         private static readonly ILog Log = Logging.Logging.GetLogger("SolrClient");
-
         private Socket solrSocket;
         private string ipAddress;
         private int port;
         private bool running;
-        private List<string> messegesSend = new List<string>();
-        private List<string> messagesReceived = new List<string>();
+        private int queryTicket = 0;
+
+        private Dictionary<int, string> messagesSend = new Dictionary<int, string>();
+        private Dictionary<int, string> messagesReceived = new Dictionary<int, string>();
+        
        
 
 
@@ -39,30 +48,25 @@ namespace HSA.InfoSys.WebCrawler
 
         public void commitToSolr( )
         {
-            string request = "";
-            sendMessageToServer(request);
+           
+            
         }
 
 
         // Method to send a query to solr
-        public string solrQuery (string queryString,
+        public int solrQuery (string queryString,
           //  string fq, string sort, int start, int rows, string fl, string df, string[] rawQueryParameters, 
-            string wt)
+            MimeType mimeType)
         {
-            
-            string query = "/solr/"+collection+"/select?q="+queryString+"&wt="+wt;
-            sendMessageToServer(query);
+            string query = "/solr/"+collection+"/select?q="+queryString+"&wt="+mimeType;
+            messagesSend.Add(queryTicket, query);
             Log.Info("Received a request for a solr query: "+ query);
-       //     string response = messages.First();
-         //   messages.Remove(response);
-            return "";
+            return queryTicket++;
         }
 
 
-        private  void sendMessageToServer(string message)
-        {
-            messegesSend.Add(message);
-        }
+
+     
 
         //Method is establishing server connection
         public void connect() {
@@ -89,15 +93,6 @@ namespace HSA.InfoSys.WebCrawler
             running = false;
         }
 
-
-
-        // Method to tranform string into byte array
-        private byte[] stringToByteArray(string message)
-        {
-            ASCIIEncoding enc = new ASCIIEncoding();
-            return enc.GetBytes(message);
-        }
-
         //Method runs in its own thread
 
         private void threadRoutine()
@@ -105,27 +100,27 @@ namespace HSA.InfoSys.WebCrawler
 
             // Main Loop which is checking, 
             do{
-                if (messegesSend.Count == 0)
+                if (messagesSend.Count == 0)
                 {
                     continue;
                 }
                 else
                 {
-                    messagesReceived.Add(socketSendReceive(messegesSend.First()));
-                    messegesSend.Remove(messegesSend.First());
+                    messagesReceived.Add(messagesSend.First().Key, socketSendReceive(messagesSend.First().Value));
+                   // int key = messagesSend.First().Key;
+                    messagesSend.Remove(messagesSend.First().Key);
+
+                   // Log.Error("! KEY --> "+ key);
+
                 }
             } while (running && solrSocket.Connected);
-
-
             //Closing Connection
             Log.Info("Connection shutdown");
             if (solrSocket.Connected)
             {
                 solrSocket.Close();
                 Log.Info("Socket to: "+ipAddress+" closed!");
-            }
-
-           
+            }  
         }
 
         //Method sends a request to the solr server and waits for response
@@ -134,40 +129,29 @@ namespace HSA.InfoSys.WebCrawler
 
             string content = "";
             byte[] bytesReceived = new byte[256];
+            byte[] bytesSend;
             int bytes = 0; 
+
             // Request send to the Server
+            request = "GET "+ request +" HTTP/1.1\r\n" +
+                "Host: "+ipAddress+"\r\n" +
+                 "Content-Length: 0\r\n" +
+                 "\r\n"; ;
 
+            //Mince request into an byte Array
+            bytesSend = new ASCIIEncoding().GetBytes(request);
 
-            //Der request braucht anscheind eine gewisse form, siehe unten
-            solrSocket.Send(stringToByteArray("GET / HTTP/1.1\r\nHost: " + ipAddress +
-            "\r\nConnection: Close\r\n\r\n"));
-
-
-            //Eigendlicher Requeust, nur nimmt ihn der sever nicht so ganz an
-
-          //  solrSocket.Send(stringToByteArray(request), request.Length, 0);
-
-
-
-
+            //Send request to Solr
+            solrSocket.Send(bytesSend);
             Log.Info("Message was send: " + request);
-
             //Receive solr server request
             do
             {
-              
                 bytes = solrSocket.Receive(bytesReceived, bytesReceived.Length, 0);
-               
                 content += Encoding.ASCII.GetString(bytesReceived, 0, bytes);
-               
-
             } while (bytes > 0);
-
-
             Log.Info("Message from " + ipAddress + ": " + content);
-
             return content;
-
         }
     }
 }
