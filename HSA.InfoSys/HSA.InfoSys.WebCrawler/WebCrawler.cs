@@ -50,7 +50,7 @@
             controller.OpenWCFHost();
 
             //todo: Only for testing, remove me when finished.
-            controller.Test();
+            //controller.Test();
            
             running = true;
 

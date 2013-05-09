@@ -73,7 +73,7 @@
         public void StartServices()
         {
             host = new ServiceHost(typeof(CrawlController));
-            dbManager = DBManager.GetDBManager();
+            //dbManager = DBManager.GetDBManager();
         }
 
         /// <summary>
