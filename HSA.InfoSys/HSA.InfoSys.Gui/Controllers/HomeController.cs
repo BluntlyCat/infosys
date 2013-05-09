@@ -1,18 +1,21 @@
 ﻿namespace HSA.InfoSys.Gui.Controllers
 {
     using System.Web.Mvc;
+    using log4net;
 
     [HandleError]
     public class HomeController : Controller
     {
         private CrawlControllerClient client = new CrawlControllerClient();
-        //private static readonly ILog log = Logging.Logging.GetLogger("Gui");
+        private static readonly ILog log = Logging.Logging.GetLogger("Gui");
 
         [Authorize]
         public ActionResult Index()
         {
             ViewData["navid"] = "home";
             ViewData["label1"] = "System Setup";
+
+            client.StartSearch();
 
             // Test
             //MySqlConnection connection = new MySqlConnection("server=infosys.informatik.hs-augsburg.de;uid=root;pwd=goqu!ae0Ah;database=infosys");
