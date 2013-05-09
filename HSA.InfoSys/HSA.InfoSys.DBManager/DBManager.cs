@@ -49,7 +49,7 @@
         /// and saves it in database
         /// </summary>
         /// <param name="obj">Object</param>
-        public void AddNewObject(object obj, Guid guid)
+        public void AddNewObject(object obj)
         {
             using (ISession session = DBSession.OpenSession())
                 session.Update(obj);
