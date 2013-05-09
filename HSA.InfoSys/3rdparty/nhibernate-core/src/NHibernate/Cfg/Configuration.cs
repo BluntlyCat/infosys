@@ -1248,10 +1248,18 @@ namespace NHibernate.Cfg
 
 			ConfigureProxyFactoryFactory();
             log.Debug("### Proxy configured...");
+
 			SecondPassCompile();
+            log.Debug("### SecondPassCompile...");
+
 			Validate();
+            log.Debug("### Validated...");
+
 			Environment.VerifyProperties(properties);
+            log.Debug("### Environment...");
+
 			Settings settings = BuildSettings();
+            log.Debug("### Settings...");
 
 			// Ok, don't need schemas anymore, so free them
 			Schemas = null;
