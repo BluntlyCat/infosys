@@ -1247,6 +1247,7 @@ namespace NHibernate.Cfg
 		{
 
 			ConfigureProxyFactoryFactory();
+            log.Debug("### Proxy configured...");
 			SecondPassCompile();
 			Validate();
 			Environment.VerifyProperties(properties);
