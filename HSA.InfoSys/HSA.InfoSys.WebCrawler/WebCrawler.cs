@@ -32,10 +32,6 @@
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
-            ////SolrClient c = new SolrClient(8983, "141.82.59.139");
-            ////c.connect();
-            ////Console.ReadLine();
-
             WebCrawler crawler = new WebCrawler();
             crawler.RunServer();
         }

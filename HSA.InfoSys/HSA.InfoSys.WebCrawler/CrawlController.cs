@@ -16,7 +16,7 @@
         /// <summary>
         /// The logger.
         /// </summary>
-        private static ILog log = Logging.GetLogger("CrawlControler");
+        private static ILog log = Logging.GetLogger("CrawlController");
 
         /// <summary>
         /// The service host for communication between server and gui.
@@ -46,6 +46,7 @@
         /// </summary>
         public void OpenWCFHost()
         {
+            log.Info("WCF service host opened...");
             host.Open();
         }
 
@@ -54,6 +55,7 @@
         /// </summary>
         public void CloseWCFHost()
         {
+            log.Info("WCF service host closed...");
             host.Close();
         }
 
