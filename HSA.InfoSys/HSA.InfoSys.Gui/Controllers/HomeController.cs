@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using HSA.InfoSys.DBManager;
-using HSA.InfoSys.DBManager.Data;
-
-namespace HSA.InfoSys.Gui.Controllers
+﻿namespace HSA.InfoSys.Gui.Controllers
 {
+    using System.Web.Mvc;
+
     [HandleError]
     public class HomeController : Controller
     {
+        private CrawlControllerClient client = new CrawlControllerClient();
         //private static readonly ILog log = Logging.Logging.GetLogger("Gui");
 
         [Authorize]
@@ -31,6 +26,8 @@ namespace HSA.InfoSys.Gui.Controllers
         {
             ViewData["navid"] = "about";
             ViewData["message"] = "About Action";
+
+            client.StartSearch();
 
             return View();
         }

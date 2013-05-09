@@ -21,7 +21,6 @@ namespace HSA.InfoSys.Gui
                 "{controller}/{action}/{id}", // URL mit Parametern
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameterstandardwerte
             );
-
         }
 
         protected void Application_Start()
