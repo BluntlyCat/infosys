@@ -2,12 +2,16 @@
 {
     using NHibernate;
     using NHibernate.Cfg;
+    using log4net;
+    using HSA.InfoSys.Logging;
 
     /// <summary>
     /// Gets the db session by using the abstract factory pattern.
     /// </summary>
     public class DBSession
     {
+        private static readonly ILog log = Logging.GetLogger("DBSession");
+
         private static ISessionFactory _sessionFactory;
 
         /// <summary>
@@ -22,9 +26,16 @@
             {
                 if (_sessionFactory == null)
                 {
+                    log.Debug("### Create Configure...");
                     var configuration = new Configuration();
+
+                    log.Debug("### Configure...");
                     configuration.Configure();
+
+                    log.Debug("### Add Assembly...");
                     configuration.AddAssembly(typeof(DBManager).Assembly);
+
+                    log.Debug("### Set session factory...");
                     _sessionFactory = configuration.BuildSessionFactory();
                 }
 
@@ -38,6 +49,7 @@
         /// <returns></returns>
         public static ISession OpenSession()
         {
+            log.Debug("Open new session");
             return SessionFactory.OpenSession();   
         }
     }
