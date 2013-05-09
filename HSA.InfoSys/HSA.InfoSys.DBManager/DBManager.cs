@@ -38,6 +38,7 @@
         {
             if (dbManager == null)
             {
+                log.Debug("DBManager does not exist, create one...");
                 dbManager = new DBManager();
             }
             
