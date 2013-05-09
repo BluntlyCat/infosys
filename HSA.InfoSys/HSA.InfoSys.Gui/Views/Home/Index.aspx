@@ -1,14 +1,14 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
-<script type="text/C#" runat="server">
+<script runat="server">
     private CrawlControllerClient client = new CrawlControllerClient();
     
-    public void Page_Load(object sender, EventArgs e)
+    void Page_Load(object sender, EventArgs e)
     {
 
     }
-    
-    public void StartSearchButton_Click(object sender, EventArgs e)
+
+    void StartSearchButton_Click(object sender, EventArgs e)
     {
         client.StartSearch();
     }   
