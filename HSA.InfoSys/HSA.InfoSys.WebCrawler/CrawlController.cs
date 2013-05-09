@@ -37,7 +37,7 @@
             // Beispiel
             string s = "29e16064-c283-4e63-9f69-a1b400b2ab54";
 
-            //var newComp = dbManager.CreateComponent("Windows8", "TestWin");
+            var newComp = dbManager.CreateComponent("Windows8", "TestWin");
             //var existingComp = dbManager.GetComponent(new Guid(s));
         }
 
