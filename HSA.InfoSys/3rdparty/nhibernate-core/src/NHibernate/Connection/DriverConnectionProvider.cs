@@ -48,7 +48,7 @@ namespace NHibernate.Connection
                 conn.Dispose();
                 throw;
             }
-            
+
             return conn;
         }
     }
