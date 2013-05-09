@@ -12,11 +12,6 @@ namespace HSA.InfoSys.WebCrawler
 {
     class SolrClient
     {
-       private enum solrRequestHandler { 
-        
-               select     
-        }
-
         
         string collection = "collection1";
 
@@ -26,8 +21,9 @@ namespace HSA.InfoSys.WebCrawler
         private string ipAddress;
         private int port;
         private bool running;
-        private List<byte[]> messages = new List<byte[]>();
-        private List<string> responses = new List<string>();
+        private List<string> messegesSend = new List<string>();
+        private List<string> messagesReceived = new List<string>();
+       
 
 
         //Constructor
@@ -44,41 +40,41 @@ namespace HSA.InfoSys.WebCrawler
         public void commitToSolr( )
         {
             string request = "";
-            sendMessageToServer(stringToByteArray(request));
+            sendMessageToServer(request);
         }
 
 
-
-        public string solrQuerry (string queryString,
+        // Method to send a query to solr
+        public string solrQuery (string queryString,
           //  string fq, string sort, int start, int rows, string fl, string df, string[] rawQueryParameters, 
             string wt)
         {
             
-            string query = "/solr/"+collection+"/"+solrRequestHandler.select+"?q="+queryString+"&wt="+wt;
-            sendMessageToServer(stringToByteArray(query));
-            Log.Info("Query was send to " + ipAddress + " " + query);
-            Console.WriteLine(query);
-
-            string response = "";
-
-
-
-            return response;
+            string query = "/solr/"+collection+"/select?q="+queryString+"&wt="+wt;
+            sendMessageToServer(query);
+            Log.Info("Received a request for a solr query: "+ query);
+       //     string response = messages.First();
+         //   messages.Remove(response);
+            return "";
         }
 
 
-        private  void sendMessageToServer(byte[] message)
+        private  void sendMessageToServer(string message)
         {
-            messages.Add(message);
+            messegesSend.Add(message);
         }
 
+        //Method is establishing server connection
         public void connect() {
             try
             {
                 IPAddress ipa = IPAddress.Parse(ipAddress);
                 IPEndPoint ipe = new IPEndPoint(ipa, port);
                 solrSocket.Connect(ipe);
-                Log.Info("Connection Established: "+ ipa);
+                if (solrSocket.Connected)
+                {
+                    Log.Info("Connection Established: " + ipa);
+                }
                 new Thread(new ThreadStart(threadRoutine)).Start(); running = true;
             }
             catch (SocketException e)
@@ -87,7 +83,7 @@ namespace HSA.InfoSys.WebCrawler
             }
         }
 
-
+        // public method to shut down connection
         public void closeConnection()
         {
             running = false;
@@ -102,38 +98,76 @@ namespace HSA.InfoSys.WebCrawler
             return enc.GetBytes(message);
         }
 
-        public void threadRoutine()
-        {
-            while (running && solrSocket.Connected)
-            {
+        //Method runs in its own thread
 
-                if (messages.Capacity == 0)
+        private void threadRoutine()
+        {
+
+            // Main Loop which is checking, 
+            do{
+                if (messegesSend.Count == 0)
                 {
                     continue;
                 }
                 else
                 {
-                    byte[] message = messages[0];
-                    solrSocket.Send(message);
-                    messages.Remove(message);
-
-
-
-
-
+                    messagesReceived.Add(socketSendReceive(messegesSend.First()));
+                    messegesSend.Remove(messegesSend.First());
                 }
- 
+            } while (running && solrSocket.Connected);
 
-               
-                //Warte auf anfrage vom CrawlerCore: Commit, Update, Select. etc.
-                // sende an Server, Warte auf Responde, Schicken von Response an CrawlerCore
-            }
+
+            //Closing Connection
             Log.Info("Connection shutdown");
             if (solrSocket.Connected)
             {
                 solrSocket.Close();
                 Log.Info("Socket to: "+ipAddress+" closed!");
             }
+
+           
+        }
+
+        //Method sends a request to the solr server and waits for response
+
+        private string socketSendReceive(string request) {
+
+            string content = "";
+            byte[] bytesReceived = new byte[256];
+            int bytes = 0; 
+            // Request send to the Server
+
+
+            //Der request braucht anscheind eine gewisse form, siehe unten
+            solrSocket.Send(stringToByteArray("GET / HTTP/1.1\r\nHost: " + ipAddress +
+            "\r\nConnection: Close\r\n\r\n"));
+
+
+            //Eigendlicher Requeust, nur nimmt ihn der sever nicht so ganz an
+
+          //  solrSocket.Send(stringToByteArray(request), request.Length, 0);
+
+
+
+
+            Log.Info("Message was send: " + request);
+
+            //Receive solr server request
+            do
+            {
+              
+                bytes = solrSocket.Receive(bytesReceived, bytesReceived.Length, 0);
+               
+                content += Encoding.ASCII.GetString(bytesReceived, 0, bytes);
+               
+
+            } while (bytes > 0);
+
+
+            Log.Info("Message from " + ipAddress + ": " + content);
+
+            return content;
+
         }
     }
 }
