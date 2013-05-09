@@ -6,7 +6,6 @@
     [HandleError]
     public class HomeController : Controller
     {
-        private CrawlControllerClient client = new CrawlControllerClient();
         private static readonly ILog log = Logging.Logging.GetLogger("Gui");
 
         [Authorize]
@@ -14,8 +13,6 @@
         {
             ViewData["navid"] = "home";
             ViewData["label1"] = "System Setup";
-
-            client.StartSearch();
 
             // Test
             //MySqlConnection connection = new MySqlConnection("server=infosys.informatik.hs-augsburg.de;uid=root;pwd=goqu!ae0Ah;database=infosys");
@@ -29,8 +26,6 @@
         {
             ViewData["navid"] = "about";
             ViewData["message"] = "About Action";
-
-            client.StartSearch();
 
             return View();
         }
