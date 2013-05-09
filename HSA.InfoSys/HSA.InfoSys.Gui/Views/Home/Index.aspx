@@ -1,11 +1,23 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
+<script type="text/C#" runat="server">
+    private CrawlControllerClient client = new CrawlControllerClient();
+    
+    public void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    
+    public void StartSearchButton_Click(object sender, EventArgs e)
+    {
+        client.StartSearch();
+    }   
+</script>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Informationssystem für sicherheitskritische Komponenten
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
     <form action="/Home/SearchResult" method="post">
         <div class="container">
             <div class="contentbox cb-large left-nomargin">
@@ -43,7 +55,16 @@
         </div> 
     </form>
 
-    <script>
+    <form runat="server" action="/">
+        <div>
+            <asp:Button id="StartSearchButton" 
+                Text="Start search"
+                OnClick="StartSearchButton_Click"
+                runat="server" />
+        </div>
+    </form>
+
+    <script type="text/javascript">
         $(document).ready(function () {
 
             // addButton click event
