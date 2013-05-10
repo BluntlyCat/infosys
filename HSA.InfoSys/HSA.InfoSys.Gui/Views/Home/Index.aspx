@@ -1,17 +1,17 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
 <script runat="server">
-    private CrawlControllerClient client = new CrawlControllerClient();
-    
-    void Page_Load(object sender, EventArgs e)
-    {
+CrawlControllerClient client = new CrawlControllerClient();
 
-    }
+        void Page_Load(object sender, EventArgs e)
+        {
 
-    void StartSearchButton_Click(object sender, EventArgs e)
-    {
-        client.StartSearch();
-    }   
+        }
+
+        void StartSearchButton_Click(object sender, EventArgs e)
+        {
+            client.StartSearch();
+        }
 </script>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Informationssystem für sicherheitskritische Komponenten
@@ -55,9 +55,9 @@
         </div> 
     </form>
 
-    <form runat="server" action="/">
+    <form id="search" runat="server" method="post">
         <div>
-            <asp:Button id="StartSearchButton" 
+            <asp:Button id="StartSearchButton"
                 Text="Start search"
                 OnClick="StartSearchButton_Click"
                 runat="server" />
