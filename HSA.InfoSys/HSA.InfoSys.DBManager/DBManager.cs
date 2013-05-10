@@ -53,15 +53,12 @@
         public void AddNewObject(object obj)
         {
             using (ISession session = DBSession.OpenSession())
-                session.Update(obj);
-            /*
             using (ITransaction transaction = session.BeginTransaction())
             {
                 session.Save(obj);
                 transaction.Commit();
                 log.Info("Instance saved successfully in database");
             }
-            */
         }
 
         /// <summary>
@@ -71,15 +68,12 @@
         public void UpdateObject(object obj)
         {
             using (ISession session = DBSession.OpenSession())
-                session.Update(obj);
-            /*
             using (ITransaction transaction = session.BeginTransaction())
             {
                 session.Update(obj);
                 transaction.Commit();
                 log.Info("Instance updated successfully in database");
             }
-            */
         }
 
         /// <summary>
@@ -91,21 +85,14 @@
         {
             Component component;
             using (ISession session = DBSession.OpenSession())
+            using (ITransaction transaction = session.BeginTransaction())
             {
-                log.DebugFormat("Try to get component by guid {0}", componentGUID);
-                component = session.QueryOver<Component>()
-                    .Where(x => x.componentGUID == componentGUID)
-                    .SingleOrDefault();
-                /*
-                using (ITransaction transaction = session.BeginTransaction())
-                {
-                    component = session.Get<Component>(componentGUID);
-                }
-                */
-                log.InfoFormat("Got component {0} with GUID {1}", component, componentGUID);
-
-                return component;
+                component = session.Get<Component>(componentGUID);
             }
+
+            log.InfoFormat("Got component {0} with GUID {1}", component, componentGUID);
+
+            return component;
         }
 
         /// <summary>
@@ -117,15 +104,11 @@
         {
             Issue issue;
             using (ISession session = DBSession.OpenSession())
-                issue = session.QueryOver<Issue>()
-                    .Where(x => x.issueGUID == issueGUID)
-                    .SingleOrDefault();
-            /*
             using (ITransaction transaction = session.BeginTransaction())
             {
                 issue = session.Get<Issue>(issueGUID);
             }
-            */
+
             log.InfoFormat("Got issue {0} with GUID {1}", issue, issueGUID);
 
             return issue;
@@ -140,15 +123,12 @@
         {
             Source source;
             using (ISession session = DBSession.OpenSession())
-                source = session.QueryOver<Source>()
-                    .Where(x => x.sourceGUID == sourceGUID)
-                    .SingleOrDefault();
-            /*
+
             using (ITransaction transaction = session.BeginTransaction())
             {
                 source = session.Get<Source>(sourceGUID);
             }
-            */
+
             log.InfoFormat("Got source {0} with GUID {1}", source, sourceGUID);
 
             return source;  
