@@ -112,6 +112,8 @@ namespace HSA.InfoSys.WebCrawler
 
                    // Log.Error("! KEY --> "+ key);
 
+                    Thread.Sleep(100);
+
                 }
             } while (running && solrSocket.Connected);
             //Closing Connection
