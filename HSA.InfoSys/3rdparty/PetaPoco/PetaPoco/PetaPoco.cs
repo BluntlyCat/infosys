@@ -2012,6 +2012,8 @@ namespace PetaPoco
 
                                         Log.Debug("CallVirt");
                                         il.Emit(OpCodes.Callvirt, pc.PropertyInfo.GetSetMethod(true));		// poco
+
+                                        Log.Debug("SetHandled TRUE");
                                         Handled = true;
                                     }
                                 }
