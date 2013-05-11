@@ -2054,6 +2054,8 @@ namespace PetaPoco
 
                     // Cache it, return it
                     var del = m.CreateDelegate(Expression.GetFuncType(typeof(IDataReader), type));
+
+                    Log.DebugFormat("Key: {0}, del: {1}", key, del);
                     PocoFactories.Add(key, del);
                     return del;
                 }
