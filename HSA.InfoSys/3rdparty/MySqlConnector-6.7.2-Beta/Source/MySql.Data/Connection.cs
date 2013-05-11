@@ -523,7 +523,7 @@ namespace MySql.Data.MySqlClient
 #if !CF
       perfMonitor = new PerformanceMonitor(this);
 #endif
-
+        /*
       // if we are opening up inside a current transaction, then autoenlist
       // TODO: control this with a connection string option
 #if !MONO && !CF && !RT
@@ -531,6 +531,7 @@ namespace MySql.Data.MySqlClient
       if (Transaction.Current != null && Settings.AutoEnlist)
         EnlistTransaction(Transaction.Current);
 #endif
+        */
 
       hasBeenOpen = true;
       SetState(ConnectionState.Open, true);
