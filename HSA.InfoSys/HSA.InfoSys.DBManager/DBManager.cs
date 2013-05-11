@@ -5,6 +5,7 @@
     using HSA.InfoSys.DBManager.Data;
     using HSA.InfoSys.Logging;
     using log4net;
+    using NHibernate;
 
     /// <summary>
     /// The DBManager handles database requests.
@@ -51,8 +52,13 @@
         /// <param name="obj">Object</param>
         public void AddNewObject(object entity)
         {
-            DBSession.Database.Insert(entity);
-            log.Info("Instance saved successfully in database");
+            using (ISession session = DBSession.OpenSession())
+            using (ITransaction transaction = session.BeginTransaction())
+            {
+                session.Save(entity);
+                transaction.Commit();
+                log.Info("Instance saved successfully in database");
+            }
         }
 
         /// <summary>
@@ -61,23 +67,25 @@
         /// <param name="obj">Object</param>
         public void UpdateObject(object entity)
         {
-            DBSession.Database.Update(entity);
-            log.Info("Instance updated successfully in database");
+            using (ISession session = DBSession.OpenSession())
+            using (ITransaction transaction = session.BeginTransaction())
+            {
+                session.Update(entity);
+                transaction.Commit();
+                log.Info("Instance updated successfully in database");
+            }
         }
 
-        /// <summary>
-        /// Gets an entity from database.
-        /// </summary>
-        /// <typeparam name="T">The type of what you want.</typeparam>
-        /// <param name="entityGuid">The entity GUID as primary key.</param>
-        /// <returns>The entity you asked for.</returns>
-        public T GetEntity<T>(Guid entityGuid)
+        public T GetEntity<T>(Guid entityGUID)
         {
-            string[] entityNames = typeof(T).ToString().Split('.');
-            string entityName = entityNames[entityNames.Length - 1];
-            string query = string.Format("SELECT * FROM {0} WHERE {1}GUID=@0", entityName, entityName.ToLower());
+            T entity;
+            using (ISession session = DBSession.OpenSession())
+            using (ITransaction transaction = session.BeginTransaction())
+            {
+                entity = session.Get<T>(entityGUID);
+            }
 
-            var entity = DBSession.Database.SingleOrDefault<T>(query, entityGuid);
+            log.InfoFormat("Got component {0} with GUID {1}", entity, entityGUID);
 
             return entity;
         }
@@ -89,7 +97,13 @@
         /// <returns>Component-Object</returns>
         public Component GetComponent(Guid componentGUID)
         {
-            var component = DBSession.Database.SingleOrDefault<Component>("SELECT * FROM Component WHERE componentGUID=@0", componentGUID);
+            Component component;
+            using (ISession session = DBSession.OpenSession())
+            using (ITransaction transaction = session.BeginTransaction())
+            {
+                component = session.Get<Component>(componentGUID);
+            }
+
             log.InfoFormat("Got component {0} with GUID {1}", component, componentGUID);
 
             return component;
@@ -102,7 +116,13 @@
         /// <returns>Issue-Object</returns>
         public Issue GetIssue(Guid issueGUID)
         {
-            var issue = DBSession.Database.SingleOrDefault<Issue>("SELECT * FROM Issue WHERE issueGUID=@0", issueGUID);
+            Issue issue;
+            using (ISession session = DBSession.OpenSession())
+            using (ITransaction transaction = session.BeginTransaction())
+            {
+                issue = session.Get<Issue>(issueGUID);
+            }
+
             log.InfoFormat("Got issue {0} with GUID {1}", issue, issueGUID);
 
             return issue;
@@ -115,7 +135,14 @@
         /// <returns>Source-Object</returns>
         public Source GetSource(Guid sourceGUID)
         {
-            var source = DBSession.Database.SingleOrDefault<Source>("SELECT * FROM Source WHERE sourceGUID=@0", sourceGUID);
+            Source source;
+            using (ISession session = DBSession.OpenSession())
+
+            using (ITransaction transaction = session.BeginTransaction())
+            {
+                source = session.Get<Source>(sourceGUID);
+            }
+
             log.InfoFormat("Got source {0} with GUID {1}", source, sourceGUID);
 
             return source;  

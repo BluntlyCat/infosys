@@ -775,6 +775,7 @@ namespace PetaPoco
                     var factory = pd.GetFactory(cmd.CommandText, _sharedConnection.ConnectionString, ForceDateTimesToUtc, 0, r.FieldCount, r) as Func<IDataReader, T>;
                     using (r)
                     {
+                        
                         while (true)
                         {
                             T poco;

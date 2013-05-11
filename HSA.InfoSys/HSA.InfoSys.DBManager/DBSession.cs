@@ -1,11 +1,9 @@
 ﻿namespace HSA.InfoSys.DBManager
 {
+    using NHibernate;
+    using NHibernate.Cfg;
     using log4net;
     using HSA.InfoSys.Logging;
-    using PetaPoco;
-    using System.Data;
-    using System.Data.Common;
-    using System.Collections.Generic;
     using System;
 
     /// <summary>
@@ -15,7 +13,7 @@
     {
         private static readonly ILog log = Logging.GetLogger("DBSession");
 
-        private static Database _dataBase;
+        private static ISessionFactory _sessionFactory;
 
         /// <summary>
         /// Gets the session factory.
@@ -23,23 +21,39 @@
         /// <value>
         /// The session factory.
         /// </value>
-        public static Database Database
+        private static ISessionFactory SessionFactory
         {
             get
             {
-                if (_dataBase == null)
+                if (_sessionFactory == null)
                 {
-                    Database = new Database("mysql");
+                    log.Debug("### Create Configure...");
+                    var configuration = new Configuration();
+
+                    log.Debug("### Configure...");
+                    configuration.Configure();
+
+                    log.Debug("### Add Assembly...");
+                    configuration.AddAssembly(typeof(DBManager).Assembly);
+
+                    log.Debug("### Build session factory...");
+                    _sessionFactory = configuration.BuildSessionFactory();
+                    log.Debug("### Sessionfactory built...");
                 }
 
                 log.Debug("### Return sessionfactory...");
-                return _dataBase;
+                return _sessionFactory;
             }
+        }
 
-            private set
-            {
-                _dataBase = value;
-            }
+        /// <summary>
+        /// Opens the session.
+        /// </summary>
+        /// <returns></returns>
+        public static ISession OpenSession()
+        {
+            log.Debug("Open new session");
+            return SessionFactory.OpenSession();   
         }
     }
 }
