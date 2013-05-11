@@ -464,12 +464,11 @@ namespace MySql.Data.MySqlClient
     [DisplayName("_platform")]
     public string Platform
     {
-
-//#if CLR4
-      //get { return Environment.Is64BitOperatingSystem ? "x64" : "x32"; }
-//#else
+#if CLR4
+      get { return Environment.Is64BitOperatingSystem ? "x64" : "x32"; }
+#else
       get { return Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE") == "AMD64" ? "x64" : "x32"; }
-//#endif
+#endif
     }
 
     [DisplayName("program_name")]
