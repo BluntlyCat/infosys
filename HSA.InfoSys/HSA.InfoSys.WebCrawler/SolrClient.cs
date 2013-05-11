@@ -1,28 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net;
-using System.Net.Sockets;
-using System.Threading;
-using HSA.InfoSys.Logging;
-using log4net;
-
-namespace HSA.InfoSys.WebCrawler
+﻿namespace HSA.InfoSys.WebCrawler
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Sockets;
+    using System.Text;
+    using System.Threading;
+    using HSA.InfoSys.Logging;
+    using log4net;
+    using System;
 
     //enum  represents possible types in which a solr - query - respond can be represent by
     public enum MimeType { 
-          xml, json, python, ruby, php, csv
+        xml, 
+        json,
+        python,
+        ruby,
+        php,
+        csv
     }
 
     //SolrClient deals as an API
 
-    class SolrClient
+    public class SolrClient
     {
-        
         string collection = "collection1";
-        private static readonly ILog Log = Logging.Logging.GetLogger("SolrClient");
+        private static readonly ILog Log = Logging.GetLogger("SolrClient");
         private Socket solrSocket;
         private string ipAddress;
         private int port;
@@ -65,6 +68,15 @@ namespace HSA.InfoSys.WebCrawler
         }
 
 
+        public string getRespondByKey(int key)
+        {
+            string respondse = "";
+            if(messagesReceived.ContainsKey(key)){
+                respondse = messagesReceived[key];
+            }
+            return respondse;
+        }
+
 
      
 
@@ -77,7 +89,7 @@ namespace HSA.InfoSys.WebCrawler
                 solrSocket.Connect(ipe);
                 if (solrSocket.Connected)
                 {
-                    Log.Info("Connection Established: " + ipa);
+                    Log.Info("Connection Established: " + ipAddress);
                 }
                 new Thread(new ThreadStart(threadRoutine)).Start(); running = true;
             }
@@ -98,23 +110,24 @@ namespace HSA.InfoSys.WebCrawler
         private void threadRoutine()
         {
 
-            // Main Loop which is checking, 
+            // Main Loop which is checking, whether there is an message for the server or not
             do{
                 if (messagesSend.Count == 0)
                 {
+                    Thread.Sleep(100);
                     continue;
                 }
                 else
                 {
-                    messagesReceived.Add(messagesSend.First().Key, socketSendReceive(messagesSend.First().Value));
-                   // int key = messagesSend.First().Key;
-                    messagesSend.Remove(messagesSend.First().Key);
+                    int key = messagesSend.First().Key;
+                    string request = messagesSend[key];
 
-                   // Log.Error("! KEY --> "+ key);
-
-                    Thread.Sleep(100);
-
+                    //waiting for the server's responde
+                    messagesReceived.Add(key, socketSendReceive(request));
+                    messagesSend.Remove(key);
+                   
                 }
+
             } while (running && solrSocket.Connected);
             //Closing Connection
             Log.Info("Connection shutdown");
