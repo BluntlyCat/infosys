@@ -74,8 +74,8 @@
         public T GetEntity<T>(Guid entityGuid)
         {
             string[] entityNames = typeof(T).ToString().Split('.');
-            string entityName = entityNames[entityNames.Length - 1].ToLower();
-            string query = string.Format("SELECT * FROM Component WHERE {0}GUID=@0", entityName);
+            string entityName = entityNames[entityNames.Length - 1];
+            string query = string.Format("SELECT * FROM {0} WHERE {1}GUID=@0", entityName, entityName.ToLower());
 
             var entity = DBSession.Database.SingleOrDefault<T>(query, entityGuid);
 
