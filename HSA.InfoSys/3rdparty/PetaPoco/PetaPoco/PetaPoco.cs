@@ -2006,9 +2006,11 @@ namespace PetaPoco
                                         // Convert to Nullable
                                         if (Nullable.GetUnderlyingType(dstType) != null)
                                         {
+                                            Log.Debug("ConvertToNullable");
                                             il.Emit(OpCodes.Newobj, dstType.GetConstructor(new Type[] { Nullable.GetUnderlyingType(dstType) }));
                                         }
 
+                                        Log.Debug("CallVirt");
                                         il.Emit(OpCodes.Callvirt, pc.PropertyInfo.GetSetMethod(true));		// poco
                                         Handled = true;
                                     }
