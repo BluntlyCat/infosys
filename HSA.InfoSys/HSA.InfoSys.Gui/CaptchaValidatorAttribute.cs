@@ -1,14 +1,26 @@
-﻿using System.Web.Mvc;
-using System.Configuration;
-
+﻿// ------------------------------------------------------------------------
+// <copyright file="CaptchaValidatorAttribute.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
 namespace MvcReCaptcha
 {
+    using System.Configuration;
+    using System.Web.Mvc;
+
     /// <summary>
     /// 
     /// </summary>
     public class CaptchaValidatorAttribute : ActionFilterAttribute
     {
+        /// <summary>
+        /// The challenge field key
+        /// </summary>
         private const string ChallengeFieldKey = "recaptcha_challenge_field";
+
+        /// <summary>
+        /// The response field key
+        /// </summary>
         private const string ResponseFieldKey = "recaptcha_response_field";
 
         /// <summary>
@@ -35,7 +47,7 @@ namespace MvcReCaptcha
             base.OnActionExecuting(filterContext);
             
             // Add string to Trace for testing
-            //filterContext.HttpContext.Trace.Write("Log: OnActionExecuting", String.Format("Calling {0}", filterContext.ActionDescriptor.ActionName));
+            // filterContext.HttpContext.Trace.Write("Log: OnActionExecuting", String.Format("Calling {0}", filterContext.ActionDescriptor.ActionName));
         }
     }
 }

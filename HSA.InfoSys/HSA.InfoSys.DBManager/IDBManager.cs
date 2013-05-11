@@ -1,4 +1,9 @@
-﻿namespace HSA.InfoSys.DBManager
+﻿// ------------------------------------------------------------------------
+// <copyright file="IDBManager.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
+namespace HSA.InfoSys.DBManager
 {
     using System;
     using HSA.InfoSys.DBManager.Data;

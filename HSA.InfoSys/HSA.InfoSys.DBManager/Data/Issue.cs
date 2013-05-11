@@ -1,4 +1,9 @@
-﻿namespace HSA.InfoSys.DBManager.Data
+﻿// ------------------------------------------------------------------------
+// <copyright file="Issue.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
+namespace HSA.InfoSys.DBManager.Data
 {
     using System;
     using System.Collections.Generic;
@@ -76,13 +81,13 @@
         {
             return string.Format(
                 "{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}",
-                IssueGUID,
-                Text,
-                Title,
-                ThreatLevel,
-                Date,
-                Component,
-                Source);
+                this.IssueGUID,
+                this.Text,
+                this.Title,
+                this.ThreatLevel,
+                this.Date,
+                this.Component,
+                this.Source);
         }
     }
 }

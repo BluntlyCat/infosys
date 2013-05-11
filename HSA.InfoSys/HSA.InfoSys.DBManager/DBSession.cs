@@ -1,4 +1,9 @@
-﻿namespace HSA.InfoSys.DBManager
+﻿// ------------------------------------------------------------------------
+// <copyright file="DBSession.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
+namespace HSA.InfoSys.DBManager
 {
     using HSA.InfoSys.Logging;
     using log4net;

@@ -1,4 +1,9 @@
-﻿namespace HSA.InfoSys.Logging
+﻿// ------------------------------------------------------------------------
+// <copyright file="Logging.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
+namespace HSA.InfoSys.Logging
 {
     using System.Collections;
     using System.Collections.Generic;

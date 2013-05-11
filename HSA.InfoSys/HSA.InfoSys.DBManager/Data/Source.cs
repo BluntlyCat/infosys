@@ -1,4 +1,9 @@
-﻿namespace HSA.InfoSys.DBManager.Data
+﻿// ------------------------------------------------------------------------
+// <copyright file="Source.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
+namespace HSA.InfoSys.DBManager.Data
 {
     using System;
 
@@ -31,7 +36,7 @@
         /// </returns>
         public override string ToString()
         {
-            return string.Format("{0}, {1}", SourceGUID, URL);
+            return string.Format("{0}, {1}", this.SourceGUID, this.URL);
         }
     }
 }

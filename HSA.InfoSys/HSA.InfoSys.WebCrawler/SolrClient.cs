@@ -1,4 +1,9 @@
-﻿namespace HSA.InfoSys.WebCrawler
+﻿// ------------------------------------------------------------------------
+// <copyright file="SolrClient.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
+namespace HSA.InfoSys.WebCrawler
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -14,13 +19,39 @@
     /// </summary>
     public class SolrClient
     {
+        /// <summary>
+        /// The collection where everything is stored in Solr.
+        /// </summary>
         private const string Collection = "collection1";
 
+        /// <summary>
+        /// The logger for SolrClient.
+        /// </summary>
         private static readonly ILog Log = Logging.GetLogger("SolrClient");
+
+        /// <summary>
+        /// The solr socket.
+        /// </summary>
         private Socket solrSocket;
+
+        /// <summary>
+        /// The ip address to the Solr server.
+        /// </summary>
         private string ipAddress;
+
+        /// <summary>
+        /// The port on which Solr is listening.
+        /// </summary>
         private int port;
+
+        /// <summary>
+        /// Indicates if the thread is running.
+        /// </summary>
         private bool running;
+
+        /// <summary>
+        /// The query ticket.
+        /// </summary>
         private int queryTicket = 0;
 
         /// <summary>
@@ -42,7 +73,7 @@
         {
             this.port = port;
             this.ipAddress = ipAddress;
-            solrSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            this.solrSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
 
         /// <summary>
@@ -57,33 +88,34 @@
         /// </summary>
         /// <param name="queryString">The query string is the actual search term.</param>
         /// <param name="mimeType">Type of the MIME.</param>
-        /// <returns></returns>
-        public int SolrQuery(string queryString,
-          //  string fq, string sort, int start, int rows, string fl, string df, string[] rawQueryParameters, 
+        /// <returns>The result of the query to Solr.</returns>
+        public int SolrQuery(
+            string queryString,
+          //// string fq, string sort, int start, int rows, string fl, string df, string[] rawQueryParameters, 
             SolrOutputMimeType mimeType)
         {
             string query = "/solr/" + Collection + "/select?q=" + queryString + "&wt=" + mimeType;
 
-            messagesSend.Add(queryTicket, query);
+            this.messagesSend.Add(this.queryTicket, query);
             
             Log.Info("Received a request for a solr query: " + query);
 
-            return queryTicket++;
+            return this.queryTicket++;
         }
 
         /// <summary>
         /// Gets the respond by key.
         /// </summary>
         /// <param name="key">The key you want the response for.</param>
-        /// <returns></returns>
+        /// <returns>The respond.</returns>
         public string GetRespondByKey(int key)
         {
             string respondse = string.Empty;
 
-            if (messagesReceived.ContainsKey(key))
+            if (this.messagesReceived.ContainsKey(key))
             {
-                respondse = messagesReceived[key];
-                messagesReceived.Remove(key);
+                respondse = this.messagesReceived[key];
+                this.messagesReceived.Remove(key);
             }
 
             return respondse;
@@ -96,19 +128,20 @@
         {
             try
             {
-                IPAddress ipa = IPAddress.Parse(ipAddress);
-                IPEndPoint ipe = new IPEndPoint(ipa, port);
-                solrSocket.Connect(ipe);
+                IPAddress ipa = IPAddress.Parse(this.ipAddress);
+                IPEndPoint ipe = new IPEndPoint(ipa, this.port);
 
-                if (solrSocket.Connected)
+                this.solrSocket.Connect(ipe);
+
+                if (this.solrSocket.Connected)
                 {
-                    Log.Info("Connection Established: " + ipAddress);
+                    Log.Info("Connection Established: " + this.ipAddress);
                 }
 
                 // Starting a Thread which runs the threadRoutine
-                new Thread(new ThreadStart(ThreadRoutine)).Start();
-                
-                running = true;
+                new Thread(new ThreadStart(this.ThreadRoutine)).Start();
+
+                this.running = true;
             }
             catch (SocketException e)
             {
@@ -121,7 +154,7 @@
         /// </summary>
         public void CloseConnection()
         {
-            running = false;
+            this.running = false;
         }
 
         /// <summary>
@@ -132,29 +165,29 @@
             // Main Loop which is checking, whether there is an message for the server or not
             do
             {
-                if (messagesSend.Count == 0)
+                if (this.messagesSend.Count == 0)
                 {
                     Thread.Sleep(100);
                     continue;
                 }
                 else
                 {
-                    int key = messagesSend.First().Key;
-                    string request = messagesSend[key];
+                    int key = this.messagesSend.First().Key;
+                    string request = this.messagesSend[key];
 
                     // waiting for the server's responde
-                    messagesReceived.Add(key, SocketSendReceive(request));
-                    messagesSend.Remove(key);
+                    this.messagesReceived.Add(key, this.SocketSendReceive(request));
+                    this.messagesSend.Remove(key);
                 }
-            } 
-            while (running && solrSocket.Connected);
+            }
+            while (this.running && this.solrSocket.Connected);
 
             // Closing Connection
             Log.Info("Connection shutdown");
-            if (solrSocket.Connected)
+            if (this.solrSocket.Connected)
             {
-                solrSocket.Close();
-                Log.Info("Socket to: " + ipAddress + " closed!");
+                this.solrSocket.Close();
+                Log.Info("Socket to: " + this.ipAddress + " closed!");
             }  
         }
 
@@ -172,7 +205,7 @@
 
             // Request send to the Server
             request = "GET " + request + " HTTP/1.1\r\n" +
-                "Host: " + ipAddress + "\r\n" +
+                "Host: " + this.ipAddress + "\r\n" +
                  "Content-Length: 0\r\n" +
                  "\r\n";
 
@@ -180,18 +213,18 @@
             bytesSend = new ASCIIEncoding().GetBytes(request);
 
             // Send request to Solr
-            solrSocket.Send(bytesSend);
+            this.solrSocket.Send(bytesSend);
             Log.Info("Message was send: " + request);
 
             // Receive solr server request
             do
             {
-                bytes = solrSocket.Receive(bytesReceived, bytesReceived.Length, 0);
+                bytes = this.solrSocket.Receive(bytesReceived, bytesReceived.Length, 0);
                 content += Encoding.ASCII.GetString(bytesReceived, 0, bytes);
             }
             while (bytes > 0);
 
-            Log.Info("Message from " + ipAddress + ": " + content);
+            Log.Info("Message from " + this.ipAddress + ": " + content);
 
             return content;
         }

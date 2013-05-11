@@ -1,24 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Security.Principal;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
-using System.Web.Security;
-using HSA.InfoSys.Gui.Models;
-
-namespace HSA.InfoSys.Gui.Controllers
+﻿namespace HSA.InfoSys.Gui.Controllers
 {
+    using System;
+    using System.Web.Mvc;
+    using System.Web.Routing;
+    using System.Web.Security;
+    using HSA.InfoSys.Gui.Models;
 
+    /// <summary>
+    /// The controller for authentication.
+    /// </summary>
     [HandleError]
     public class AccountController : Controller
     {
 
+        /// <summary>
+        /// Gets or sets the forms service.
+        /// </summary>
+        /// <value>
+        /// The forms service.
+        /// </value>
         public IFormsAuthenticationService FormsService { get; set; }
+
+        /// <summary>
+        /// Gets or sets the membership service.
+        /// </summary>
+        /// <value>
+        /// The membership service.
+        /// </value>
         public IMembershipService MembershipService { get; set; }
 
+        /// <summary>
+        /// Initialisiert Daten, die beim Aufrufen des Konstruktors möglicherweise nicht verfügbar sind.
+        /// </summary>
+        /// <param name="requestContext">Der HTTP-Kontext und die Routendaten.</param>
         protected override void Initialize(RequestContext requestContext)
         {
             if (FormsService == null) { FormsService = new FormsAuthenticationService(); }

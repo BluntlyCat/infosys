@@ -1,4 +1,9 @@
-﻿namespace HSA.InfoSys.WebCrawler
+﻿// ------------------------------------------------------------------------
+// <copyright file="CrawlController.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
+namespace HSA.InfoSys.WebCrawler
 {
     using System;
     using System.ServiceModel;
@@ -32,15 +37,15 @@
         /// <summary>
         /// Tests this instance.
         /// </summary>
-#warning //only for testing remove me when finished
+#warning Only for testing, remove me when finished.
         public void Test()
         {
             // Beispiel
             string s = "054778a5-b151-465a-9c48-9b4e7e09a8a3";
 
-            var newComp = dbManager.CreateComponent("Windows8", "TestWin");
-            dbManager.AddNewObject(newComp);
-            var existingComp = dbManager.GetEntity<Component>(new Guid(s));
+            var newComp = this.dbManager.CreateComponent("Windows8", "TestWin");
+            this.dbManager.AddNewObject(newComp);
+            var existingComp = this.dbManager.GetEntity<Component>(new Guid(s));
         }
 
         /// <summary>
@@ -49,7 +54,7 @@
         public void OpenWCFHost()
         {
             log.Info("WCF service host opened...");
-            host.Open();
+            this.host.Open();
         }
 
         /// <summary>
@@ -58,7 +63,7 @@
         public void CloseWCFHost()
         {
             log.Info("WCF service host closed...");
-            host.Close();
+            this.host.Close();
         }
 
         /// <summary>
@@ -74,8 +79,8 @@
         /// </summary>
         public void StartServices()
         {
-            host = new ServiceHost(typeof(CrawlController));
-            dbManager = DBManager.GetDBManager();
+            this.host = new ServiceHost(typeof(CrawlController));
+            this.dbManager = DBManager.GetDBManager();
         }
 
         /// <summary>

@@ -1,11 +1,16 @@
-﻿namespace HSA.InfoSys.WebCrawler
+﻿// ------------------------------------------------------------------------
+// <copyright file="WebCrawler.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
+namespace HSA.InfoSys.WebCrawler
 {
     using System;
+    using System.Data;
+    using System.Data.Common;
     using System.Threading;
     using HSA.InfoSys.Logging;
     using log4net;
-    using System.Data;
-    using System.Data.Common;
 
     /// <summary>
     /// The WebCrawler searches the internet
@@ -48,14 +53,14 @@
             Log.Debug("Starting server...");
             Log.Info("Press q for quit.");
 
-            controller = new CrawlController();
+            this.controller = new CrawlController();
 
-            controller.StartServices();
-            controller.OpenWCFHost();
+            this.controller.StartServices();
+            this.controller.OpenWCFHost();
 
-            //todo: Only for testing, remove me when finished.
-            controller.Test();
-           
+#warning Only for testing, remove me when finished.
+            this.controller.Test();
+
             running = true;
 
             while (running)
@@ -68,7 +73,7 @@
                     if (keyInfo.Key == ConsoleKey.Q)
                     {
                         Log.Info("User exited the application.");
-                        ShutdownCrawler();
+                        this.ShutdownCrawler();
                     }
                     else
                     {
@@ -85,10 +90,10 @@
         /// </summary>
         private void ShutdownCrawler()
         {
-            if (controller != null)
+            if (this.controller != null)
             {
-                controller.CloseWCFHost();
-                controller.StopServices();
+                this.controller.CloseWCFHost();
+                this.controller.StopServices();
 
                 running = false;
             }
