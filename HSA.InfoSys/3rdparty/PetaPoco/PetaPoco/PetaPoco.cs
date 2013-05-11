@@ -9,22 +9,22 @@
  */
 
 // Define PETAPOCO_NO_DYNAMIC in your project settings on .NET 3.5
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Configuration;
-using System.Data.Common;
-using System.Data;
-using System.Text.RegularExpressions;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Linq.Expressions;
-
-
 namespace PetaPoco
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Configuration;
+    using System.Data.Common;
+    using System.Data;
+    using System.Text.RegularExpressions;
+    using System.Reflection;
+    using System.Reflection.Emit;
+    using System.Linq.Expressions;
+    using log4net;
+    using HSA.InfoSys.Logging;
+
     // Poco's marked [Explicit] require all column properties to be marked
     [AttributeUsage(AttributeTargets.Class)]
     public class ExplicitColumnsAttribute : Attribute
@@ -86,7 +86,7 @@ namespace PetaPoco
     }
 
     // Results from paged request
-    public class Page<T> 
+    public class Page<T>
     {
         public long CurrentPage { get; set; }
         public long TotalPages { get; set; }
@@ -163,7 +163,7 @@ namespace PetaPoco
 
             // Work out connection string and provider name
             var providerName = "System.Data.SqlClient";
-            
+
             if (ConfigurationManager.ConnectionStrings[connectionStringName] != null)
             {
                 if (!string.IsNullOrEmpty(ConfigurationManager.ConnectionStrings[connectionStringName].ProviderName))
@@ -370,8 +370,8 @@ namespace PetaPoco
                 }
 
                 // Expand collections to parameter lists
-                if ((arg_val as System.Collections.IEnumerable) != null && 
-                    (arg_val as string) == null && 
+                if ((arg_val as System.Collections.IEnumerable) != null &&
+                    (arg_val as string) == null &&
                     (arg_val as byte[]) == null)
                 {
                     var sb = new StringBuilder();
@@ -395,10 +395,10 @@ namespace PetaPoco
         void AddParam(IDbCommand cmd, object item, string ParameterPrefix)
         {
             // Convert value to from poco type to db type
-            if (Database.Mapper != null && item!=null)
+            if (Database.Mapper != null && item != null)
             {
                 var fn = Database.Mapper.GetToDbConverter(item.GetType());
-                if (fn!=null)
+                if (fn != null)
                     item = fn(item);
             }
 
@@ -527,7 +527,7 @@ namespace PetaPoco
                 {
                     using (var cmd = CreateCommand(_sharedConnection, sql, args))
                     {
-                        var retv=cmd.ExecuteNonQuery();
+                        var retv = cmd.ExecuteNonQuery();
                         OnExecutedCommand(cmd);
                         return retv;
                     }
@@ -606,12 +606,12 @@ namespace PetaPoco
         public bool ForceDateTimesToUtc { get; set; }
 
         // Return a typed list of pocos
-        public List<T> Fetch<T>(string sql, params object[] args) 
+        public List<T> Fetch<T>(string sql, params object[] args)
         {
             return Query<T>(sql, args).ToList();
         }
 
-        public List<T> Fetch<T>(Sql sql) 
+        public List<T> Fetch<T>(Sql sql)
         {
             return Fetch<T>(sql.SQL, sql.Arguments);
         }
@@ -656,7 +656,7 @@ namespace PetaPoco
             return true;
         }
 
-        public void BuildPageQueries<T>(long skip, long take, string sql, ref object[] args, out string sqlCount, out string sqlPage) 
+        public void BuildPageQueries<T>(long skip, long take, string sql, ref object[] args, out string sqlCount, out string sqlPage)
         {
             // Add auto select clause
             if (EnableAutoSelect)
@@ -678,8 +678,8 @@ namespace PetaPoco
                     sqlSelectRemoved = "peta_inner.* FROM (SELECT " + sqlSelectRemoved + ") peta_inner";
                 }
                 sqlPage = string.Format("SELECT * FROM (SELECT ROW_NUMBER() OVER ({0}) peta_rn, {1}) peta_paged WHERE peta_rn>@{2} AND peta_rn<=@{3}",
-                                        sqlOrderBy==null ? "ORDER BY (SELECT NULL)" : sqlOrderBy, sqlSelectRemoved, args.Length, args.Length + 1);
-                args = args.Concat(new object[] { skip, skip+take }).ToArray();
+                                        sqlOrderBy == null ? "ORDER BY (SELECT NULL)" : sqlOrderBy, sqlSelectRemoved, args.Length, args.Length + 1);
+                args = args.Concat(new object[] { skip, skip + take }).ToArray();
             }
             else if (_dbType == DBType.SqlServerCE)
             {
@@ -695,10 +695,10 @@ namespace PetaPoco
         }
 
         // Fetch a page	
-        public Page<T> Page<T>(long page, long itemsPerPage, string sql, params object[] args) 
+        public Page<T> Page<T>(long page, long itemsPerPage, string sql, params object[] args)
         {
             string sqlCount, sqlPage;
-            BuildPageQueries<T>((page-1)*itemsPerPage, itemsPerPage, sql, ref args, out sqlCount, out sqlPage);
+            BuildPageQueries<T>((page - 1) * itemsPerPage, itemsPerPage, sql, ref args, out sqlCount, out sqlPage);
 
             // Save the one-time command time out and use it for both queries
             int saveTimeout = OneTimeCommandTimeout;
@@ -721,7 +721,7 @@ namespace PetaPoco
             return result;
         }
 
-        public Page<T> Page<T>(long page, long itemsPerPage, Sql sql) 
+        public Page<T> Page<T>(long page, long itemsPerPage, Sql sql)
         {
             return Page<T>(page, itemsPerPage, sql.SQL, sql.Arguments);
         }
@@ -750,7 +750,7 @@ namespace PetaPoco
         }
 
         // Return an enumerable collection of pocos
-        public IEnumerable<T> Query<T>(string sql, params object[] args) 
+        public IEnumerable<T> Query<T>(string sql, params object[] args)
         {
             if (EnableAutoSelect)
                 sql = AddSelectClause<T>(sql);
@@ -808,8 +808,8 @@ namespace PetaPoco
 
         // Multi Query
         public IEnumerable<TRet> Query<T1, T2, TRet>(Func<T1, T2, TRet> cb, string sql, params object[] args) { return Query<TRet>(new Type[] { typeof(T1), typeof(T2) }, cb, sql, args); }
-        public IEnumerable<TRet> Query<T1, T2, T3, TRet>(Func<T1, T2, T3, TRet> cb, string sql, params object[] args) { return Query<TRet>(new Type[] { typeof(T1), typeof(T2), typeof(T3)}, cb, sql, args); }
-        public IEnumerable<TRet> Query<T1, T2, T3, T4, TRet>(Func<T1, T2, T3, T4, TRet> cb, string sql, params object[] args) { return Query<TRet>(new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4)}, cb, sql, args); }
+        public IEnumerable<TRet> Query<T1, T2, T3, TRet>(Func<T1, T2, T3, TRet> cb, string sql, params object[] args) { return Query<TRet>(new Type[] { typeof(T1), typeof(T2), typeof(T3) }, cb, sql, args); }
+        public IEnumerable<TRet> Query<T1, T2, T3, T4, TRet>(Func<T1, T2, T3, T4, TRet> cb, string sql, params object[] args) { return Query<TRet>(new Type[] { typeof(T1), typeof(T2), typeof(T3), typeof(T4) }, cb, sql, args); }
 
         // Multi Fetch (SQL builder)
         public List<TRet> Fetch<T1, T2, TRet>(Func<T1, T2, TRet> cb, Sql sql) { return Query<T1, T2, TRet>(cb, sql.SQL, sql.Arguments).ToList(); }
@@ -963,7 +963,7 @@ namespace PetaPoco
             // Call each delegate
             var dels = new List<Delegate>();
             int pos = 0;
-            for (int i=0; i<types.Length; i++)
+            for (int i = 0; i < types.Length; i++)
             {
                 // Add to list of delegates to call
                 var del = FindSplitPoint(types[i], i + 1 < types.Length ? types[i + 1] : null, sql, r, ref pos);
@@ -1067,7 +1067,7 @@ namespace PetaPoco
                     var factory = GetMultiPocoFactory<TRet>(types, sql, r);
                     if (cb == null)
                         cb = GetAutoMapper(types.ToArray());
-                    bool bNeedTerminator=false;
+                    bool bNeedTerminator = false;
                     using (r)
                     {
                         while (true)
@@ -1107,54 +1107,54 @@ namespace PetaPoco
             }
         }
 
-            
-        public IEnumerable<T> Query<T>(Sql sql) 
+
+        public IEnumerable<T> Query<T>(Sql sql)
         {
             return Query<T>(sql.SQL, sql.Arguments);
         }
 
-        public bool Exists<T>(object primaryKey) 
+        public bool Exists<T>(object primaryKey)
         {
             return FirstOrDefault<T>(string.Format("WHERE {0}=@0", EscapeSqlIdentifier(PocoData.ForType(typeof(T)).TableInfo.PrimaryKey)), primaryKey) != null;
         }
-        public T Single<T>(object primaryKey) 
+        public T Single<T>(object primaryKey)
         {
             return Single<T>(string.Format("WHERE {0}=@0", EscapeSqlIdentifier(PocoData.ForType(typeof(T)).TableInfo.PrimaryKey)), primaryKey);
         }
-        public T SingleOrDefault<T>(object primaryKey) 
+        public T SingleOrDefault<T>(object primaryKey)
         {
             return SingleOrDefault<T>(string.Format("WHERE {0}=@0", EscapeSqlIdentifier(PocoData.ForType(typeof(T)).TableInfo.PrimaryKey)), primaryKey);
         }
-        public T Single<T>(string sql, params object[] args) 
+        public T Single<T>(string sql, params object[] args)
         {
             return Query<T>(sql, args).Single();
         }
-        public T SingleOrDefault<T>(string sql, params object[] args) 
+        public T SingleOrDefault<T>(string sql, params object[] args)
         {
             return Query<T>(sql, args).SingleOrDefault();
         }
-        public T First<T>(string sql, params object[] args) 
+        public T First<T>(string sql, params object[] args)
         {
             return Query<T>(sql, args).First();
         }
-        public T FirstOrDefault<T>(string sql, params object[] args) 
+        public T FirstOrDefault<T>(string sql, params object[] args)
         {
             return Query<T>(sql, args).FirstOrDefault();
         }
 
-        public T Single<T>(Sql sql) 
+        public T Single<T>(Sql sql)
         {
             return Query<T>(sql).Single();
         }
-        public T SingleOrDefault<T>(Sql sql) 
+        public T SingleOrDefault<T>(Sql sql)
         {
             return Query<T>(sql).SingleOrDefault();
         }
-        public T First<T>(Sql sql) 
+        public T First<T>(Sql sql)
         {
             return Query<T>(sql).First();
         }
-        public T FirstOrDefault<T>(Sql sql) 
+        public T FirstOrDefault<T>(Sql sql)
         {
             return Query<T>(sql).FirstOrDefault();
         }
@@ -1210,7 +1210,7 @@ namespace PetaPoco
                                 continue;
 
                             // Don't insert the primary key (except under oracle where we need bring in the next sequence value)
-                            if (autoIncrement && primaryKeyName != null && string.Compare(i.Key, primaryKeyName, true)==0)
+                            if (autoIncrement && primaryKeyName != null && string.Compare(i.Key, primaryKeyName, true) == 0)
                             {
                                 if (_dbType == DBType.Oracle && !string.IsNullOrEmpty(pd.TableInfo.SequenceName))
                                 {
@@ -1366,7 +1366,7 @@ namespace PetaPoco
                     {
                         var sb = new StringBuilder();
                         var index = 0;
-                        var pd = PocoData.ForObject(poco,primaryKeyName);
+                        var pd = PocoData.ForObject(poco, primaryKeyName);
                         if (columns == null)
                         {
                             foreach (var i in pd.Columns)
@@ -1423,7 +1423,7 @@ namespace PetaPoco
                         DoPreExecute(cmd);
 
                         // Do it
-                        var retv=cmd.ExecuteNonQuery();
+                        var retv = cmd.ExecuteNonQuery();
                         OnExecutedCommand(cmd);
                         return retv;
                     }
@@ -1492,7 +1492,7 @@ namespace PetaPoco
             // If primary key value not specified, pick it up from the object
             if (primaryKeyValue == null)
             {
-                var pd = PocoData.ForObject(poco,primaryKeyName);
+                var pd = PocoData.ForObject(poco, primaryKeyName);
                 PocoColumn pc;
                 if (pd.Columns.TryGetValue(primaryKeyName, out pc))
                 {
@@ -1619,11 +1619,11 @@ namespace PetaPoco
                 cmd.CommandTimeout = OneTimeCommandTimeout;
                 OneTimeCommandTimeout = 0;
             }
-            else if (CommandTimeout!=0)
+            else if (CommandTimeout != 0)
             {
                 cmd.CommandTimeout = CommandTimeout;
             }
-            
+
             // Call hook
             OnExecutingCommand(cmd);
 
@@ -1680,10 +1680,10 @@ namespace PetaPoco
         }
         public class ExpandoColumn : PocoColumn
         {
-            public override void SetValue(object target, object val) { (target as IDictionary<string, object>)[ColumnName]=val; }
-            public override object GetValue(object target) 
-            { 
-                object val=null;
+            public override void SetValue(object target, object val) { (target as IDictionary<string, object>)[ColumnName] = val; }
+            public override object GetValue(object target)
+            {
+                object val = null;
                 (target as IDictionary<string, object>).TryGetValue(ColumnName, out val);
                 return val;
             }
@@ -1691,6 +1691,8 @@ namespace PetaPoco
         }
         public class PocoData
         {
+            private static readonly ILog Log = Logging.GetLogger("PetaPoco");
+
             public static PocoData ForObject(object o, string primaryKeyName)
             {
                 var t = o.GetType();
@@ -1705,7 +1707,7 @@ namespace PetaPoco
                     pd.TableInfo.AutoIncrement = true;
                     foreach (var col in (o as IDictionary<string, object>).Keys)
                     {
-                        if (col!=primaryKeyName)
+                        if (col != primaryKeyName)
                             pd.Columns.Add(col, new ExpandoColumn() { ColumnName = col });
                     }
                     return pd;
@@ -1734,7 +1736,7 @@ namespace PetaPoco
                     RWLock.ExitReadLock();
                 }
 
-                
+
                 // Cache it
                 RWLock.EnterWriteLock();
                 try
@@ -1763,7 +1765,7 @@ namespace PetaPoco
             public PocoData(Type t)
             {
                 type = t;
-                TableInfo=new TableInfo();
+                TableInfo = new TableInfo();
 
                 // Get the table name
                 var a = t.GetCustomAttributes(typeof(TableNameAttribute), true);
@@ -1925,7 +1927,7 @@ namespace PetaPoco
                         {
                             // Do we need to install a converter?
                             var srcType = r.GetFieldType(0);
-                            Console.WriteLine("### Converter1 ###");
+                            Log.Debug("### Converter1 ###");
                             var converter = GetConverter(ForceDateTimesToUtc, null, srcType, type);
 
                             // "if (!rdr.IsDBNull(i))"
@@ -1981,15 +1983,16 @@ namespace PetaPoco
                                 il.Emit(OpCodes.Dup);											// poco,poco
 
                                 // Do we need to install a converter?
-                                Console.WriteLine("### Converter2 ###");
+                                Log.Debug("### Converter2 ###");
                                 var converter = GetConverter(ForceDateTimesToUtc, pc, srcType, dstType);
-                                Console.WriteLine("### Converter2 Ende ###");
+                                Log.Debug("### Converter2 Ende ###");
 
                                 // Fast
                                 bool Handled = false;
                                 if (converter == null)
                                 {
-                                    Console.WriteLine("### Converter2 Not Null###");
+                                    Log.Debug("### Converter2 Not Null###");
+                                    Log.DebugFormat("PC: {0}, src: {1}, dst: {2}", pc, srcType, dstType);
                                     var valuegetter = typeof(IDataRecord).GetMethod("Get" + srcType.Name, new Type[] { typeof(int) });
                                     if (valuegetter != null
                                             && valuegetter.ReturnType == srcType
@@ -2013,7 +2016,7 @@ namespace PetaPoco
                                 // Not so fast
                                 if (!Handled)
                                 {
-                                    Console.WriteLine("### Converter2  Handled###");
+                                    Log.Debug("### Converter2  Handled###");
                                     // Setup stack for call to converter
                                     AddConverterToStack(il, converter);
 
@@ -2079,7 +2082,7 @@ namespace PetaPoco
                 {
                     if (pc != null)
                     {
-                        Console.WriteLine("### Converter3 ###");
+                        Log.Debug("### Converter3 ###");
                         converter = Database.Mapper.GetFromDbConverter(pc.PropertyInfo, srcType);
                     }
                     else
@@ -2332,5 +2335,4 @@ namespace PetaPoco
             }
         }
     }
-
 }
