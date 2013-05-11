@@ -1998,6 +1998,7 @@ namespace PetaPoco
                                             && valuegetter.ReturnType == srcType
                                             && (valuegetter.ReturnType == dstType || valuegetter.ReturnType == Nullable.GetUnderlyingType(dstType)))
                                     {
+                                        Log.Debug("Valgetter not null");
                                         il.Emit(OpCodes.Ldarg_0);										// *,rdr
                                         il.Emit(OpCodes.Ldc_I4, i);										// *,rdr,i
                                         il.Emit(OpCodes.Callvirt, valuegetter);							// *,value
