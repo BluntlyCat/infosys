@@ -733,7 +733,7 @@ namespace log4net.Config
 #if !NET_4_0
 					settings.ProhibitDtd = false;
 #else
-					settings.DtdProcessing = DtdProcessing.Parse;
+					//settings.DtdProcessing = DtdProcessing.Parse;
 #endif
 
 					// Create a reader over the input stream

@@ -465,7 +465,7 @@ namespace log4net.Appender
 #if !NET_4_0
                     mailMessage.ReplyTo = new MailAddress(m_replyTo);
 #else
-                    mailMessage.ReplyToList.Add(new MailAddress(m_replyTo));
+                    //mailMessage.ReplyToList.Add(new MailAddress(m_replyTo));
 #endif
                 }
                 mailMessage.Subject = m_subject;

@@ -1541,12 +1541,14 @@ namespace PetaPoco
             {
                 pk = pc.GetValue(poco);
             }
+                /*
 #if !PETAPOCO_NO_DYNAMIC
             else if (poco.GetType() == typeof(System.Dynamic.ExpandoObject))
             {
                 return true;
             }
 #endif
+                 */
             else
             {
                 var pi = poco.GetType().GetProperty(primaryKeyName);
@@ -1694,7 +1696,9 @@ namespace PetaPoco
             public static PocoData ForObject(object o, string primaryKeyName)
             {
                 var t = o.GetType();
+                /*
 #if !PETAPOCO_NO_DYNAMIC
+                
                 if (t == typeof(System.Dynamic.ExpandoObject))
                 {
                     var pd = new PocoData();
@@ -1712,15 +1716,18 @@ namespace PetaPoco
                 }
                 else
 #endif
+                 */
                     return ForType(t);
             }
             static System.Threading.ReaderWriterLockSlim RWLock = new System.Threading.ReaderWriterLockSlim();
             public static PocoData ForType(Type t)
             {
+                /*
 #if !PETAPOCO_NO_DYNAMIC
                 if (t == typeof(System.Dynamic.ExpandoObject))
                     throw new InvalidOperationException("Can't use dynamic types with this method");
 #endif
+                 */
                 // Check cache
                 RWLock.EnterReadLock();
                 PocoData pd;
@@ -1862,7 +1869,7 @@ namespace PetaPoco
                     // Create the method
                     var m = new DynamicMethod("petapoco_factory_" + PocoFactories.Count.ToString(), type, new Type[] { typeof(IDataReader) }, true);
                     var il = m.GetILGenerator();
-
+/*
 #if !PETAPOCO_NO_DYNAMIC
                     if (type == typeof(object))
                     {
@@ -1921,6 +1928,7 @@ namespace PetaPoco
                     }
                     else
 #endif
+ */
                         if (type.IsValueType || type == typeof(string) || type == typeof(byte[]))
                         {
                             // Do we need to install a converter?

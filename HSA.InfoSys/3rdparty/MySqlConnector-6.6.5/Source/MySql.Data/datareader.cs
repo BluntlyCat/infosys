@@ -834,12 +834,15 @@ namespace MySql.Data.MySqlClient
       }
       else if (val.Value is string)
       {
-          Guid guid;
-
-          Guid.TryParse(val.Value.ToString(), out guid);
-
-          if(!guid.Equals(Guid.Empty))
-            return guid;
+          try
+          {
+              Guid guid = new Guid(val.Value.ToString());
+              return guid;
+          }
+          catch
+          {
+              //
+          }
       }
 
       return val.Value;
