@@ -65,6 +65,17 @@
             log.Info("Instance updated successfully in database");
         }
 
+        public T GetEntity<T>(Guid entityGuid)
+        {
+            string[] entityNames = typeof(T).ToString().Split('.');
+            string entityName = entityNames[entityNames.Length - 1].ToLower();
+            string query = string.Format("SELECT * FROM Component WHERE {0}GUID=@0", entityName);
+
+            var entity = DBSession.Database.SingleOrDefault<T>(query, entityGuid);
+
+            return entity;
+        }
+
         /// <summary>
         /// returns a Component-Object 
         /// </summary>

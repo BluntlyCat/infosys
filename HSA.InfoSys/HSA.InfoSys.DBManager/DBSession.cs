@@ -41,25 +41,5 @@
                 _dataBase = value;
             }
         }
-
-        public static IEnumerable<T> Query<T>(string query)
-        {
-            return Database.Query<T>(query);
-        }
-
-        public static void Add(object entity)
-        {
-            
-        }
-
-        public static void Update(object entity)
-        {
-            Database.Update("Component", "componentGUID", entity);
-        }
-
-        public static T SingleOrDefault<T>(string query, params object[] args)
-        {
-            return Database.SingleOrDefault<T>(query, args);
-        }
     }
 }

@@ -24,6 +24,8 @@
         /// <returns>The component.</returns>
         Component GetComponent(Guid componentGUID);
 
+        T GetEntity<T>(Guid entityGuid);
+
         /// <summary>
         /// Gets the issue by id.
         /// </summary>

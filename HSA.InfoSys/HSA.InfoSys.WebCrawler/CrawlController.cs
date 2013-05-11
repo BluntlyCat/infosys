@@ -5,6 +5,7 @@
     using HSA.InfoSys.DBManager;
     using HSA.InfoSys.Logging;
     using log4net;
+    using HSA.InfoSys.DBManager.Data;
 
     /// <summary>
     /// This class is the controller for the crawler
@@ -39,7 +40,7 @@
 
             var newComp = dbManager.CreateComponent("Windows8", "TestWin");
             dbManager.AddNewObject(newComp);
-            var existingComp = dbManager.GetComponent(new Guid(s));
+            var existingComp = dbManager.GetEntity<Component>(new Guid(s));
         }
 
         /// <summary>
