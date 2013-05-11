@@ -1983,6 +1983,7 @@ namespace PetaPoco
                                 // Do we need to install a converter?
                                 Console.WriteLine("### Converter2 ###");
                                 var converter = GetConverter(ForceDateTimesToUtc, pc, srcType, dstType);
+                                Console.WriteLine("### Converter2 Ende ###");
 
                                 // Fast
                                 bool Handled = false;
