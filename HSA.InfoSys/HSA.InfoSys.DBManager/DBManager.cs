@@ -65,6 +65,12 @@
             log.Info("Instance updated successfully in database");
         }
 
+        /// <summary>
+        /// Gets an entity from database.
+        /// </summary>
+        /// <typeparam name="T">The type of what you want.</typeparam>
+        /// <param name="entityGuid">The entity GUID as primary key.</param>
+        /// <returns>The entity you asked for.</returns>
         public T GetEntity<T>(Guid entityGuid)
         {
             string[] entityNames = typeof(T).ToString().Split('.');
