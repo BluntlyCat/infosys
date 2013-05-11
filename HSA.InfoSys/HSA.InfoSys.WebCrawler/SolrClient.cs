@@ -12,11 +12,14 @@
 
    
 
-    //SolrClient deals as an API
 
+    /// <summary>
+    ///  SolrClient deals as an API
+    /// </summary>
     public class SolrClient
     {
-        string collection = "collection1";
+        private  const string collection = "collection1";
+
         private static readonly ILog Log = Logging.GetLogger("SolrClient");
         private Socket solrSocket;
         private string ipAddress;
@@ -24,14 +27,21 @@
         private bool running;
         private int queryTicket = 0;
 
+        /// <summary>
+        /// The messages send are contained in this dictionarry
+        /// </summary>
         private Dictionary<int, string> messagesSend = new Dictionary<int, string>();
+        /// <summary>
+        /// The messages received are contained in thes dictionarry
+        /// </summary>
         private Dictionary<int, string> messagesReceived = new Dictionary<int, string>();
-        
-       
 
 
-        //Constructor
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SolrClient"/> class.
+        /// </summary>
+        /// <param name="port">The port .</param>
+        /// <param name="ipAddress">The ip address.</param>
         public SolrClient(int port, string ipAddress)
         {
             this.port = port;
@@ -39,8 +49,11 @@
             solrSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
 
-        //public method which will be used to make a commit to Solr
 
+
+        /// <summary>
+        /// Commits to solr.
+        /// </summary>
         public void commitToSolr( )
         {
            
@@ -48,7 +61,13 @@
         }
 
 
-        // Method to send a query to solr
+
+        /// <summary>
+        /// Solrs the query.
+        /// </summary>
+        /// <param name="queryString">The query string is the actual search term.</param>
+        /// <param name="mimeType">Type of the MIME.</param>
+        /// <returns></returns>
         public int solrQuery (string queryString,
           //  string fq, string sort, int start, int rows, string fl, string df, string[] rawQueryParameters, 
             SolrOutputMimeType mimeType)
@@ -59,20 +78,26 @@
             return queryTicket++;
         }
 
-        //Method for getting the Response
+
+        /// <summary>
+        /// Gets the respond by key.
+        /// </summary>
+        /// <param name="key">The key you want the response for.</param>
+        /// <returns></returns>
         public string getRespondByKey(int key)
         {
             string respondse = "";
             if(messagesReceived.ContainsKey(key)){
                 respondse = messagesReceived[key];
+                messagesReceived.Remove(key);
             }
             return respondse;
         }
 
 
-     
-
-        //Method is establishing server connection
+        /// <summary>
+        /// Connects this instance.
+        /// </summary>
         public void connect() {
             try
             {
@@ -83,6 +108,8 @@
                 {
                     Log.Info("Connection Established: " + ipAddress);
                 }
+
+                //Starting a Thread which runs the threadRoutine
                 new Thread(new ThreadStart(threadRoutine)).Start(); running = true;
             }
             catch (SocketException e)
@@ -91,14 +118,20 @@
             }
         }
 
-        // public method to shut down connection
+
+        /// <summary>
+        /// Closes the connection.
+        /// </summary>
         public void closeConnection()
         {
             running = false;
         }
 
-        //Method runs in its own thread
 
+
+        /// <summary>
+        /// Threads the routine.
+        /// </summary>
         private void threadRoutine()
         {
 
@@ -130,8 +163,13 @@
             }  
         }
 
-        //Method sends a request to the solr server and waits for response
 
+
+        /// <summary>
+        /// Sockets the send receive.
+        /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns></returns>
         private string socketSendReceive(string request) {
 
             string content = "";
