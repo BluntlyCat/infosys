@@ -2,6 +2,9 @@
 {
     using System;
 
+    /// <summary>
+    /// This class represents the source of an issue.
+    /// </summary>
     public class Source
     {
         /// <summary>
@@ -10,7 +13,7 @@
         /// <value>
         /// The source GUID.
         /// </value>
-        public virtual Guid sourceGUID { get; set; }
+        public virtual Guid SourceGUID { get; set; }
 
         /// <summary>
         /// Gets or sets the source URL.
@@ -28,7 +31,7 @@
         /// </returns>
         public override string ToString()
         {
-            return string.Format("{0}, {1}", sourceGUID, URL);
+            return string.Format("{0}, {1}", SourceGUID, URL);
         }
     }
 }

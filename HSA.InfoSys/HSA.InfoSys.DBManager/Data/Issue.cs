@@ -5,16 +5,18 @@
     using System.Linq;
     using System.Text;
 
+    /// <summary>
+    /// The description of a security issue for a component.
+    /// </summary>
     public class Issue
     {
-
         /// <summary>
         /// Gets or sets the issue GUID.
         /// </summary>
         /// <value>
         /// The issue GUID.
         /// </value>
-        public virtual Guid issueGUID { get; set; }
+        public virtual Guid IssueGUID { get; set; }
 
         /// <summary>
         /// Gets or sets the text.
@@ -22,15 +24,15 @@
         /// <value>
         /// The text.
         /// </value>
-        public virtual string text { get; set; }
+        public virtual string Text { get; set; }
 
         /// <summary>
-        /// Gets or sets the titel.
+        /// Gets or sets the title.
         /// </summary>
         /// <value>
-        /// The titel.
+        /// The title.
         /// </value>
-        public virtual string titel { get; set; }
+        public virtual string Title { get; set; }
 
         /// <summary>
         /// Gets or sets the threat level.
@@ -38,7 +40,7 @@
         /// <value>
         /// The threat level.
         /// </value>
-        public virtual int threatLevel { get; set; }
+        public virtual int ThreatLevel { get; set; }
 
         /// <summary>
         /// Gets or sets the date.
@@ -46,7 +48,7 @@
         /// <value>
         /// The date.
         /// </value>
-        public virtual DateTime date { get; set; }
+        public virtual DateTime Date { get; set; }
 
         /// <summary>
         /// Gets or sets the component.
@@ -54,7 +56,7 @@
         /// <value>
         /// The component.
         /// </value>
-        public virtual Component component { get; set; }
+        public virtual Component Component { get; set; }
 
         /// <summary>
         /// Gets or sets the source.
@@ -62,7 +64,7 @@
         /// <value>
         /// The source.
         /// </value>
-        public virtual Source source { get; set; }
+        public virtual Source Source { get; set; }
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
@@ -72,8 +74,15 @@
         /// </returns>
         public override string ToString()
         {
-            return string.Format("{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}",
-                issueGUID, text, titel, threatLevel, date, component, source);
+            return string.Format(
+                "{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}",
+                IssueGUID,
+                Text,
+                Title,
+                ThreatLevel,
+                Date,
+                Component,
+                Source);
         }
     }
 }

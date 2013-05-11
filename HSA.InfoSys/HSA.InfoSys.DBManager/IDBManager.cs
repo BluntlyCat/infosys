@@ -3,56 +3,78 @@
     using System;
     using HSA.InfoSys.DBManager.Data;
 
+    /// <summary>
+    /// The interface for accessing the data base.
+    /// </summary>
     public interface IDBManager
     {
         /// <summary>
-        /// Adds the new object.
+        /// Adds a new Object (Component, Issue, Source)
+        /// and saves it in database.
         /// </summary>
-        /// <param name="obj">The obj.</param>
-        void AddNewObject(object obj);
+        /// <param name="entity">The entity to add in database.</param>
+        void AddNewObject(object entity);
 
         /// <summary>
-        /// Updates the object.
+        /// Saves changings of a object in database.
         /// </summary>
-        /// <param name="obj">The obj.</param>
-        void UpdateObject(object obj);
+        /// <param name="entity">The entity that should be updated.</param>
+        void UpdateObject(object entity);
 
         /// <summary>
-        /// Gets the component by id.
+        /// Returns a component object.
         /// </summary>
-        /// <param name="componentGUID">The component GUID.</param>
-        /// <returns>The component.</returns>
-        Component GetComponent(Guid componentGUID);
-
+        /// <typeparam name="T">Can be any entity found in DBManager.Data.</typeparam>
+        /// <param name="entityGuid">The entity GUID.</param>
+        /// <returns>
+        /// The component object by its GUID.
+        /// </returns>
         T GetEntity<T>(Guid entityGuid);
 
         /// <summary>
-        /// Gets the issue by id.
+        /// Returns a component object.
         /// </summary>
-        /// <param name="issueGUID">The issue GUID.</param>
-        /// <returns>The issue.</returns>
+        /// <param name="componentGUID">Id of the Object</param>
+        /// <returns>
+        /// The component object by its GUID.
+        /// </returns>
+        Component GetComponent(Guid componentGUID);
+
+        /// <summary>
+        /// Return a issue object from database
+        /// </summary>
+        /// <param name="issueGUID">Id of the object</param>
+        /// <returns>
+        /// The issue object by its GUID.
+        /// </returns>
         Issue GetIssue(Guid issueGUID);
 
         /// <summary>
-        /// Gets the source by id.
+        /// Returns a source object from database
         /// </summary>
-        /// <param name="sourceGUID">The source GUID.</param>
-        /// <returns>The source.</returns>
+        /// <param name="sourceGUID">Id of the object.</param>
+        /// <returns>
+        /// The source object by its GUID.
+        /// </returns>
         Source GetSource(Guid sourceGUID);
 
         /// <summary>
-        /// Creates the component.
+        /// Creates a component object.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="category">The category.</param>
-        /// <returns>The component.</returns>
+        /// <returns>
+        /// The created component object.
+        /// </returns>
         Component CreateComponent(string name, string category);
 
         /// <summary>
-        /// Creates the source.
+        /// Creates an source object.
         /// </summary>
-        /// <param name="URL">The URL.</param>
-        /// <returns>The source.</returns>
-        Source CreateSource(string URL);
+        /// <param name="sourceURL">The URL where the source points to.</param>
+        /// <returns>
+        /// The created source object.
+        /// </returns>
+        Source CreateSource(string sourceURL);
     }
 }

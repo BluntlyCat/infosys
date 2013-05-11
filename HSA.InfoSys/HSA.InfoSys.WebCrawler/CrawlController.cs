@@ -3,9 +3,9 @@
     using System;
     using System.ServiceModel;
     using HSA.InfoSys.DBManager;
+    using HSA.InfoSys.DBManager.Data;
     using HSA.InfoSys.Logging;
     using log4net;
-    using HSA.InfoSys.DBManager.Data;
 
     /// <summary>
     /// This class is the controller for the crawler

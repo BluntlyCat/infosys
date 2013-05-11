@@ -11,10 +11,19 @@
     /// </summary>
     public class Logging
     {
+        /// <summary>
+        /// The configuration for this logging instance.
+        /// </summary>
         private static ICollection config;
 
+        /// <summary>
+        /// The base logger.
+        /// </summary>
         private static string baseLogger = "Logging";
 
+        /// <summary>
+        /// The logger dictionary.
+        /// </summary>
         private static Dictionary<string, ILog> logger = new Dictionary<string, ILog>();
 
         /// <summary>

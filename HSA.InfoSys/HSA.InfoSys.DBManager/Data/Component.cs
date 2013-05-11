@@ -2,6 +2,10 @@
 {
     using System;
 
+    /// <summary>
+    /// A component represents a system as a whole
+    /// for example a web server or a database server.
+    /// </summary>
     public class Component
     {
         /// <summary>
@@ -10,7 +14,7 @@
         /// <value>
         /// The component GUID.
         /// </value>
-        public virtual Guid componentGUID { get; set; }
+        public virtual Guid ComponentGUID { get; set; }
 
         /// <summary>
         /// Gets or sets the name.
@@ -18,7 +22,7 @@
         /// <value>
         /// The name.
         /// </value>
-        public virtual string name { get; set; }
+        public virtual string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the category.
@@ -26,7 +30,7 @@
         /// <value>
         /// The category.
         /// </value>
-        public virtual string category { get; set; }
+        public virtual string Category { get; set; }
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
@@ -36,7 +40,7 @@
         /// </returns>
         public override string ToString()
         {
-            return string.Format("{0}, {1}, {2}", componentGUID, name, category);
+            return string.Format("{0}, {1}, {2}", ComponentGUID, Name, Category);
         }
     }
 }

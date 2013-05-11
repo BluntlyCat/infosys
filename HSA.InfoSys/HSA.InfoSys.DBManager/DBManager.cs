@@ -10,10 +10,12 @@
     /// <summary>
     /// The DBManager handles database requests.
     /// </summary>
-
     public class DBManager : IDBManager
     {
-        private static readonly ILog log = Logging.GetLogger("DBManager");
+        /// <summary>
+        /// The logger for db manager.
+        /// </summary>
+        private static readonly ILog Log = Logging.GetLogger("DBManager");
 
         /// <summary>
         /// The database manager.
@@ -21,24 +23,24 @@
         private static IDBManager dbManager;
 
         /// <summary>
-        /// Constructor. creates a configuration Object and add the DBManger as
-        /// Assembly
-        /// has also the DB-Schema of Nhibernate
+        /// Prevents a default instance of the <see cref="DBManager"/> class from being created.
         /// </summary>
         private DBManager()
         {
         }
 
         /// <summary>
-        /// Gets the DB manager and asures that the configuration
-        /// will be executed only once and that there is only one dbmanager.
+        /// Gets the DB manager and ensures that the configuration
+        /// will be executed only once and that there is only one db manager.
         /// </summary>
-        /// <returns>The Database Manager</returns>
+        /// <returns>
+        /// The Database Manager
+        /// </returns>
         public static IDBManager GetDBManager()
         {
             if (dbManager == null)
             {
-                log.Debug("DBManager does not exist, create one...");
+                Log.Debug("DBManager does not exist, create one...");
                 dbManager = new DBManager();
             }
             
@@ -46,10 +48,10 @@
         }
 
         /// <summary>
-        /// adds a new Object (Component, Issue, Source)
-        /// and saves it in database
+        /// Adds a new Object (Component, Issue, Source)
+        /// and saves it in database.
         /// </summary>
-        /// <param name="obj">Object</param>
+        /// <param name="entity">The entity to add in database.</param>
         public void AddNewObject(object entity)
         {
             using (ISession session = DBSession.OpenSession())
@@ -57,14 +59,14 @@
             {
                 session.Save(entity);
                 transaction.Commit();
-                log.Info("Instance saved successfully in database");
+                Log.Info("Instance saved successfully in database");
             }
         }
 
         /// <summary>
-        /// saves changings of a object in database
+        /// Saves changings of a object in database.
         /// </summary>
-        /// <param name="obj">Object</param>
+        /// <param name="entity">The entity that should be updated.</param>
         public void UpdateObject(object entity)
         {
             using (ISession session = DBSession.OpenSession())
@@ -72,7 +74,7 @@
             {
                 session.Update(entity);
                 transaction.Commit();
-                log.Info("Instance updated successfully in database");
+                Log.Info("Instance updated successfully in database");
             }
         }
 
@@ -80,8 +82,10 @@
         /// Gets an entity from database.
         /// </summary>
         /// <typeparam name="T">The type of what you want.</typeparam>
-        /// <param name="entityGuid">The entity GUID as primary key.</param>
-        /// <returns>The entity you asked for.</returns>
+        /// <param name="entityGUID">The entity GUID.</param>
+        /// <returns>
+        /// The entity you asked for.
+        /// </returns>
         public T GetEntity<T>(Guid entityGUID)
         {
             T entity;
@@ -91,16 +95,18 @@
                 entity = session.Get<T>(entityGUID);
             }
 
-            log.InfoFormat("Got component {0} with GUID {1}", entity, entityGUID);
+            Log.InfoFormat("Got component {0} with GUID {1}", entity, entityGUID);
 
             return entity;
         }
 
         /// <summary>
-        /// returns a Component-Object 
+        /// Returns a component object.
         /// </summary>
         /// <param name="componentGUID">Id of the Object</param>
-        /// <returns>Component-Object</returns>
+        /// <returns>
+        /// The component object by its GUID.
+        /// </returns>
         public Component GetComponent(Guid componentGUID)
         {
             Component component;
@@ -110,16 +116,18 @@
                 component = session.Get<Component>(componentGUID);
             }
 
-            log.InfoFormat("Got component {0} with GUID {1}", component, componentGUID);
+            Log.InfoFormat("Got component {0} with GUID {1}", component, componentGUID);
 
             return component;
         }
 
         /// <summary>
-        /// return a Issue-Object from database
+        /// Return a issue object from database
         /// </summary>
-        /// <param name="issueGUID">Id of the Object </param>
-        /// <returns>Issue-Object</returns>
+        /// <param name="issueGUID">Id of the object</param>
+        /// <returns>
+        /// The issue object by its GUID.
+        /// </returns>
         public Issue GetIssue(Guid issueGUID)
         {
             Issue issue;
@@ -129,16 +137,18 @@
                 issue = session.Get<Issue>(issueGUID);
             }
 
-            log.InfoFormat("Got issue {0} with GUID {1}", issue, issueGUID);
+            Log.InfoFormat("Got issue {0} with GUID {1}", issue, issueGUID);
 
             return issue;
         }
 
         /// <summary>
-        /// returns a Source-Object from database
+        /// Returns a source object from database
         /// </summary>
-        /// <param name="sourceGUID">Id of the Object</param>
-        /// <returns>Source-Object</returns>
+        /// <param name="sourceGUID">Id of the object.</param>
+        /// <returns>
+        /// The source object by its GUID.
+        /// </returns>
         public Source GetSource(Guid sourceGUID)
         {
             Source source;
@@ -149,45 +159,49 @@
                 source = session.Get<Source>(sourceGUID);
             }
 
-            log.InfoFormat("Got source {0} with GUID {1}", source, sourceGUID);
+            Log.InfoFormat("Got source {0} with GUID {1}", source, sourceGUID);
 
             return source;  
         }
 
         /// <summary>
-        /// creates an Component-Object and returns it
+        /// Creates a component object.
         /// </summary>
-        /// <param name="componentName">name of the component</param>
-        /// <param name="componentCategory">categroy of the component</param>
-        /// <returns>Component-Object</returns>
+        /// <param name="componentName">Name of the component.</param>
+        /// <param name="componentCategory">The component category.</param>
+        /// <returns>
+        /// The created component object.
+        /// </returns>
         public Component CreateComponent(string componentName, string componentCategory)
         {
             var component = new Component
             { 
-                componentGUID = System.Guid.NewGuid(),
-                category = componentCategory,
-                name = componentName
+                ComponentGUID = System.Guid.NewGuid(),
+                Category = componentCategory,
+                Name = componentName
             };
 
-            log.InfoFormat("New component [{0}] created.", component);
+            Log.InfoFormat("New component [{0}] created.", component);
 
             return component;
         }
 
         /// <summary>
-        /// creates an Source-Object and returns it
+        /// Creates an source object.
         /// </summary>
-        /// <param name="sourceURL">URL</param>
-        /// <returns> Source-Object</returns>
+        /// <param name="sourceURL">The URL where the source points to.</param>
+        /// <returns>
+        /// The created source object.
+        /// </returns>
         public Source CreateSource(string sourceURL)
         {
             var source = new Source
             { 
-                sourceGUID = System.Guid.NewGuid(),
+                SourceGUID = System.Guid.NewGuid(),
                 URL = sourceURL
             };
 
-            log.InfoFormat("New source [{0}] created.", source);
+            Log.InfoFormat("New source [{0}] created.", source);
 
             return source;
         }
