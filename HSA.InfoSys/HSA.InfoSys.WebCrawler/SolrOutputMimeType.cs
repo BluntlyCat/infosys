@@ -8,7 +8,7 @@ namespace HSA.InfoSys.WebCrawler
     using System.Text;
 
     //enum  represents possible types in which a solr - query - respond can be represent by
-    public enum MimeType
+    public enum SolrOutputMimeType
     {
         xml,
         json,
