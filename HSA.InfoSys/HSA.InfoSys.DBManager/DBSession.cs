@@ -6,6 +6,7 @@
     using System.Data;
     using System.Data.Common;
     using System.Collections.Generic;
+    using System;
 
     /// <summary>
     /// Gets the db session by using the abstract factory pattern.
@@ -22,17 +23,22 @@
         /// <value>
         /// The session factory.
         /// </value>
-        private static Database Database
+        public static Database Database
         {
             get
             {
                 if (_dataBase == null)
                 {
-                    _dataBase = new Database("mysql");
+                    Database = new Database("mysql");
                 }
 
                 log.Debug("### Return sessionfactory...");
                 return _dataBase;
+            }
+
+            private set
+            {
+                _dataBase = value;
             }
         }
 
@@ -43,12 +49,17 @@
 
         public static void Add(object entity)
         {
-            Database.Insert(entity);
+            
         }
 
         public static void Update(object entity)
         {
             Database.Update("Component", "componentGUID", entity);
+        }
+
+        public static T SingleOrDefault<T>(string query, params object[] args)
+        {
+            return Database.SingleOrDefault<T>(query, args);
         }
     }
 }

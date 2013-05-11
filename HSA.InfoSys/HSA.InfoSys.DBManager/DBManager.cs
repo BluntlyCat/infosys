@@ -49,9 +49,9 @@
         /// and saves it in database
         /// </summary>
         /// <param name="obj">Object</param>
-        public void AddNewObject(object obj)
+        public void AddNewObject(object entity)
         {
-            DBSession.Add(obj);
+            DBSession.Database.Insert(entity);
             log.Info("Instance saved successfully in database");
         }
 
@@ -59,10 +59,9 @@
         /// saves changings of a object in database
         /// </summary>
         /// <param name="obj">Object</param>
-        public void UpdateObject(object obj)
+        public void UpdateObject(object entity)
         {
-            
-
+            DBSession.Database.Update(entity);
             log.Info("Instance updated successfully in database");
         }
 
@@ -73,10 +72,7 @@
         /// <returns>Component-Object</returns>
         public Component GetComponent(Guid componentGUID)
         {
-            Component component = DBSession.Query<Component>("SELECT * FROM Component")
-                .Where(x => x.componentGUID == componentGUID)
-                .SingleOrDefault();
-            
+            var component = DBSession.Database.SingleOrDefault<Component>("SELECT * FROM Component WHERE componentGUID=@0", componentGUID);
             log.InfoFormat("Got component {0} with GUID {1}", component, componentGUID);
 
             return component;
@@ -89,10 +85,7 @@
         /// <returns>Issue-Object</returns>
         public Issue GetIssue(Guid issueGUID)
         {
-            Issue issue = DBSession.Query<Issue>("SELECT * FROM Issue")
-                .Where(x => x.issueGUID == issueGUID)
-                .SingleOrDefault();
-
+            var issue = DBSession.Database.SingleOrDefault<Issue>("SELECT * FROM Issue WHERE issueGUID=@0", issueGUID);
             log.InfoFormat("Got issue {0} with GUID {1}", issue, issueGUID);
 
             return issue;
@@ -105,10 +98,7 @@
         /// <returns>Source-Object</returns>
         public Source GetSource(Guid sourceGUID)
         {
-            Source source = DBSession.Query<Source>("SELECT * FROM Source")
-                .Where(x => x.sourceGUID == sourceGUID)
-                .SingleOrDefault();
-
+            var source = DBSession.Database.SingleOrDefault<Source>("SELECT * FROM Source WHERE sourceGUID=@0", sourceGUID);
             log.InfoFormat("Got source {0} with GUID {1}", source, sourceGUID);
 
             return source;  
