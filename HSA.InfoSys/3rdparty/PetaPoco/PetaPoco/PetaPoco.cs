@@ -1925,6 +1925,7 @@ namespace PetaPoco
                         {
                             // Do we need to install a converter?
                             var srcType = r.GetFieldType(0);
+                            Console.WriteLine("### Converter1 ###");
                             var converter = GetConverter(ForceDateTimesToUtc, null, srcType, type);
 
                             // "if (!rdr.IsDBNull(i))"
@@ -1980,6 +1981,7 @@ namespace PetaPoco
                                 il.Emit(OpCodes.Dup);											// poco,poco
 
                                 // Do we need to install a converter?
+                                Console.WriteLine("### Converter2 ###");
                                 var converter = GetConverter(ForceDateTimesToUtc, pc, srcType, dstType);
 
                                 // Fast
@@ -2074,6 +2076,7 @@ namespace PetaPoco
                 {
                     if (pc != null)
                     {
+                        Console.WriteLine("### Converter3 ###");
                         converter = Database.Mapper.GetFromDbConverter(pc.PropertyInfo, srcType);
                     }
                     else
