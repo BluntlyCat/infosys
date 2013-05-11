@@ -10,15 +10,7 @@
     using log4net;
     using System;
 
-    //enum  represents possible types in which a solr - query - respond can be represent by
-    public enum MimeType { 
-        xml, 
-        json,
-        python,
-        ruby,
-        php,
-        csv
-    }
+   
 
     //SolrClient deals as an API
 
@@ -59,7 +51,7 @@
         // Method to send a query to solr
         public int solrQuery (string queryString,
           //  string fq, string sort, int start, int rows, string fl, string df, string[] rawQueryParameters, 
-            MimeType mimeType)
+            SolrOutputMimeType mimeType)
         {
             string query = "/solr/"+collection+"/select?q="+queryString+"&wt="+mimeType;
             messagesSend.Add(queryTicket, query);
@@ -67,7 +59,7 @@
             return queryTicket++;
         }
 
-
+        //Method for getting the Response
         public string getRespondByKey(int key)
         {
             string respondse = "";
