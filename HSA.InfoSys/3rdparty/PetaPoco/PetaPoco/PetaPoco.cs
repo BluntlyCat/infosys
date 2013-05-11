@@ -1989,6 +1989,7 @@ namespace PetaPoco
                                 bool Handled = false;
                                 if (converter == null)
                                 {
+                                    Console.WriteLine("### Converter2 Not Null###");
                                     var valuegetter = typeof(IDataRecord).GetMethod("Get" + srcType.Name, new Type[] { typeof(int) });
                                     if (valuegetter != null
                                             && valuegetter.ReturnType == srcType
@@ -2012,6 +2013,7 @@ namespace PetaPoco
                                 // Not so fast
                                 if (!Handled)
                                 {
+                                    Console.WriteLine("### Converter2  Handled###");
                                     // Setup stack for call to converter
                                     AddConverterToStack(il, converter);
 
