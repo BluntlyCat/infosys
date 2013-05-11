@@ -2057,6 +2057,8 @@ namespace PetaPoco
 
                     Log.DebugFormat("Key: {0}, del: {1}", key, del);
                     PocoFactories.Add(key, del);
+
+                    Log.Debug("Return...");
                     return del;
                 }
                 finally
