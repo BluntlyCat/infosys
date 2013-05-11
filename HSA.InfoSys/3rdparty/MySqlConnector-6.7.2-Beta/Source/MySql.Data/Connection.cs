@@ -527,6 +527,7 @@ namespace MySql.Data.MySqlClient
       // if we are opening up inside a current transaction, then autoenlist
       // TODO: control this with a connection string option
 #if !MONO && !CF && !RT
+      Console.WriteLine("### Should not be here... ###");
       if (Transaction.Current != null && Settings.AutoEnlist)
         EnlistTransaction(Transaction.Current);
 #endif
