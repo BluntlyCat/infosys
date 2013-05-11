@@ -5,7 +5,6 @@
     using HSA.InfoSys.DBManager.Data;
     using HSA.InfoSys.Logging;
     using log4net;
-    using NHibernate;
 
     /// <summary>
     /// The DBManager handles database requests.
@@ -52,13 +51,8 @@
         /// <param name="obj">Object</param>
         public void AddNewObject(object obj)
         {
-            using (ISession session = DBSession.OpenSession())
-            using (ITransaction transaction = session.BeginTransaction())
-            {
-                session.Save(obj);
-                transaction.Commit();
-                log.Info("Instance saved successfully in database");
-            }
+            DBSession.Add(obj);
+            log.Info("Instance saved successfully in database");
         }
 
         /// <summary>
@@ -67,13 +61,9 @@
         /// <param name="obj">Object</param>
         public void UpdateObject(object obj)
         {
-            using (ISession session = DBSession.OpenSession())
-            using (ITransaction transaction = session.BeginTransaction())
-            {
-                session.Update(obj);
-                transaction.Commit();
-                log.Info("Instance updated successfully in database");
-            }
+            
+
+            log.Info("Instance updated successfully in database");
         }
 
         /// <summary>
@@ -83,13 +73,10 @@
         /// <returns>Component-Object</returns>
         public Component GetComponent(Guid componentGUID)
         {
-            Component component;
-            using (ISession session = DBSession.OpenSession())
-            using (ITransaction transaction = session.BeginTransaction())
-            {
-                component = session.Get<Component>(componentGUID);
-            }
-
+            Component component = DBSession.Query<Component>("SELECT * FROM Component")
+                .Where(x => x.componentGUID == componentGUID)
+                .SingleOrDefault();
+            
             log.InfoFormat("Got component {0} with GUID {1}", component, componentGUID);
 
             return component;
@@ -102,12 +89,9 @@
         /// <returns>Issue-Object</returns>
         public Issue GetIssue(Guid issueGUID)
         {
-            Issue issue;
-            using (ISession session = DBSession.OpenSession())
-            using (ITransaction transaction = session.BeginTransaction())
-            {
-                issue = session.Get<Issue>(issueGUID);
-            }
+            Issue issue = DBSession.Query<Issue>("SELECT * FROM Issue")
+                .Where(x => x.issueGUID == issueGUID)
+                .SingleOrDefault();
 
             log.InfoFormat("Got issue {0} with GUID {1}", issue, issueGUID);
 
@@ -121,13 +105,9 @@
         /// <returns>Source-Object</returns>
         public Source GetSource(Guid sourceGUID)
         {
-            Source source;
-            using (ISession session = DBSession.OpenSession())
-
-            using (ITransaction transaction = session.BeginTransaction())
-            {
-                source = session.Get<Source>(sourceGUID);
-            }
+            Source source = DBSession.Query<Source>("SELECT * FROM Source")
+                .Where(x => x.sourceGUID == sourceGUID)
+                .SingleOrDefault();
 
             log.InfoFormat("Got source {0} with GUID {1}", source, sourceGUID);
 

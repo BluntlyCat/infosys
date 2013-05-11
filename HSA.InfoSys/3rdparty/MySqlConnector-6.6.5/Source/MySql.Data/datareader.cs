@@ -832,6 +832,15 @@ namespace MySql.Data.MySqlClient
         else
           return dt.GetDateTime();
       }
+      else if (val.Value is string)
+      {
+          Guid guid;
+
+          Guid.TryParse(val.Value.ToString(), out guid);
+
+          if(!guid.Equals(Guid.Empty))
+            return guid;
+      }
 
       return val.Value;
     }

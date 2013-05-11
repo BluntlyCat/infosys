@@ -35,9 +35,10 @@
         public void Test()
         {
             // Beispiel
-            string s = "29e16064-c283-4e63-9f69-a1b400b2ab54";
+            string s = "054778a5-b151-465a-9c48-9b4e7e09a8a3";
 
             var newComp = dbManager.CreateComponent("Windows8", "TestWin");
+            dbManager.AddNewObject(newComp);
             var existingComp = dbManager.GetComponent(new Guid(s));
         }
 

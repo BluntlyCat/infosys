@@ -1,7 +1,9 @@
 ﻿namespace HSA.InfoSys.DBManager.Data
 {
     using System;
+    using PetaPoco;
 
+    [TableName("Component"), PrimaryKey("componentGuid", autoIncrement=false, sequenceName="string")]
     public class Component
     {
         /// <summary>

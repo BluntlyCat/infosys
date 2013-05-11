@@ -4,6 +4,8 @@
     using System.Threading;
     using HSA.InfoSys.Logging;
     using log4net;
+    using System.Data;
+    using System.Data.Common;
 
     /// <summary>
     /// The WebCrawler searches the internet
@@ -41,6 +43,8 @@
         /// </summary>
         private void RunServer()
         {
+            DataTable factoryClasses = DbProviderFactories.GetFactoryClasses();
+
             Log.Debug("Starting server...");
             Log.Info("Press q for quit.");
 
