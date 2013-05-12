@@ -41,24 +41,6 @@ namespace HSA.InfoSys.DBManager
         }
 
         /// <summary>
-        /// Gets the DB manager and ensures that the configuration
-        /// will be executed only once and that there is only one db manager.
-        /// </summary>
-        /// <returns>
-        /// The Database Manager
-        /// </returns>
-        public static IDBManager GetDBManager()
-        {
-            if (dbManager == null)
-            {
-                Log.Debug(Properties.Resources.DBMANAGER_NO_MANAGER_FOUND);
-                dbManager = new DBManager();
-            }
-
-            return dbManager;
-        }
-
-        /// <summary>
         /// Gets the session factory.
         /// </summary>
         /// <value>
@@ -85,13 +67,21 @@ namespace HSA.InfoSys.DBManager
         }
 
         /// <summary>
-        /// Opens the session.
+        /// Gets the DB manager and ensures that the configuration
+        /// will be executed only once and that there is only one db manager.
         /// </summary>
-        /// <returns>An ISession to the session object.</returns>
-        private static ISession OpenSession()
+        /// <returns>
+        /// The Database Manager
+        /// </returns>
+        public static IDBManager GetDBManager()
         {
-            Log.Debug(Properties.Resources.DBSESSION_OPEN_SESSION);
-            return SessionFactory.OpenSession();
+            if (dbManager == null)
+            {
+                Log.Debug(Properties.Resources.DBMANAGER_NO_MANAGER_FOUND);
+                dbManager = new DBManager();
+            }
+
+            return dbManager;
         }
 
         /// <summary>
@@ -147,7 +137,6 @@ namespace HSA.InfoSys.DBManager
             return entity;
         }
 
-
         /// <summary>
         /// Creates a component object.
         /// </summary>
@@ -188,6 +177,16 @@ namespace HSA.InfoSys.DBManager
             Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SOURCE, source);
 
             return source;
+        }
+
+        /// <summary>
+        /// Opens the session.
+        /// </summary>
+        /// <returns>An ISession to the session object.</returns>
+        private static ISession OpenSession()
+        {
+            Log.Debug(Properties.Resources.DBSESSION_OPEN_SESSION);
+            return SessionFactory.OpenSession();
         }
     }
 }
