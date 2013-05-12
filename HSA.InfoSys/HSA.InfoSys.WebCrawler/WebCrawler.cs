@@ -48,8 +48,8 @@ namespace HSA.InfoSys.WebCrawler
         /// </summary>
         private void RunServer()
         {
-            Log.Debug("Starting server...");
-            Log.Info("Press q for quit.");
+            Log.Debug(Properties.Resources.WEB_CRAWLER_START_SERVER);
+            Log.Info(Properties.Resources.WEB_CRAWLER_QUIT_MESSAGE);
 
             this.controller = new CrawlController();
 
@@ -66,16 +66,16 @@ namespace HSA.InfoSys.WebCrawler
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-                    Log.InfoFormat("Got user input key {0}", keyInfo.Key);
+                    Log.InfoFormat(Properties.Resources.WEB_CRAWLER_GOT_USERINPUT, keyInfo.Key);
 
                     if (keyInfo.Key == ConsoleKey.Q)
                     {
-                        Log.Info("User exited the application.");
+                        Log.Info(Properties.Resources.WEB_CRAWLER_EXITED_BY_USER);
                         this.ShutdownCrawler();
                     }
                     else
                     {
-                        Log.Info("Unkown user input.");
+                        Log.Info(Properties.Resources.WEB_CRAWLER_UNKOWN_USERINPUT);
                     }
                 }
 

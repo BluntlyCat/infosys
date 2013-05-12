@@ -98,7 +98,7 @@ namespace HSA.InfoSys.WebCrawler
 
             this.messagesSend.Add(this.queryTicket, query);
             
-            Log.Info("Received a request for a solr query: " + query);
+            Log.InfoFormat(Properties.Resources.SOLR_CLIENT_REQUEST_RECEIVED, query);
 
             return this.queryTicket++;
         }
@@ -135,7 +135,7 @@ namespace HSA.InfoSys.WebCrawler
 
                 if (this.solrSocket.Connected)
                 {
-                    Log.Info("Connection Established: " + this.ipAddress);
+                    Log.InfoFormat(Properties.Resources.SOLR_CLIENT_CONNECTION_ESTABLISHED, this.ipAddress);
                 }
 
                 // Starting a Thread which runs the threadRoutine
@@ -145,7 +145,7 @@ namespace HSA.InfoSys.WebCrawler
             }
             catch (SocketException e)
             {
-                Log.Error("Unable to Connect\n" + e.Message);
+                Log.ErrorFormat(Properties.Resources.SOLR_CLIENT_UNABLE_TO_CONNECT, e.Message);
             }
         }
 
@@ -183,11 +183,12 @@ namespace HSA.InfoSys.WebCrawler
             while (this.running && this.solrSocket.Connected);
 
             // Closing Connection
-            Log.Info("Connection shutdown");
+            Log.Info(Properties.Resources.SOLR_CLIENT_CLOSE_CONNECTION);
+
             if (this.solrSocket.Connected)
             {
                 this.solrSocket.Close();
-                Log.Info("Socket to: " + this.ipAddress + " closed!");
+                Log.InfoFormat(Properties.Resources.SOLR_CLIENT_SOCKET_CLOSED, this.ipAddress);
             }  
         }
 
@@ -214,7 +215,7 @@ namespace HSA.InfoSys.WebCrawler
 
             // Send request to Solr
             this.solrSocket.Send(bytesSend);
-            Log.Info("Message was send: " + request);
+            Log.InfoFormat(Properties.Resources.SOLR_CLIENT_MESSAGE_SENT, request);
 
             // Receive solr server request
             do
@@ -224,7 +225,7 @@ namespace HSA.InfoSys.WebCrawler
             }
             while (bytes > 0);
 
-            Log.Info("Message from " + this.ipAddress + ": " + content);
+            Log.InfoFormat(Properties.Resources.SOLR_CLIENT_RESULT_RECEIVED, this.ipAddress, content);
 
             return content;
         }

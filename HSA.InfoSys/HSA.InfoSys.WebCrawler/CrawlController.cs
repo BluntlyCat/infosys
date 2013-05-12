@@ -55,7 +55,7 @@ namespace HSA.InfoSys.WebCrawler
         /// </summary>
         public void OpenWCFHost()
         {
-            log.Info("WCF service host opened...");
+            log.Info(Properties.Resources.CRAWL_CONTROLLER_WCF_HOST_OPENED);
             this.host.Open();
         }
 
@@ -64,7 +64,7 @@ namespace HSA.InfoSys.WebCrawler
         /// </summary>
         public void CloseWCFHost()
         {
-            log.Info("WCF service host closed...");
+            log.Info(Properties.Resources.CRAWL_CONTROLLER_WCF_HOST_CLOSED);
             this.host.Close();
         }
 
@@ -73,7 +73,7 @@ namespace HSA.InfoSys.WebCrawler
         /// </summary>
         public void StartSearch()
         {
-            log.Info("Search started from GUI");
+            log.Info(Properties.Resources.CRAWL_CONTROLLER_SEARCH_STARTED);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace HSA.InfoSys.WebCrawler
         /// </summary>
         public void StopServices()
         {
-            log.Info("Shutdown Services");
+            log.Info(Properties.Resources.CRAWL_CONTROLLER_SHUTDOWN);
         }
     }
 }

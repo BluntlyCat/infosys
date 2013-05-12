@@ -45,7 +45,7 @@ namespace HSA.InfoSys.DBManager
                     sessionFactory = configuration.BuildSessionFactory();
                 }
 
-                Log.Debug("NHibernate successfully configured and session factory ready.");
+                Log.Debug(Properties.Resources.DBSESSION_NHIBERNATE_CONFIG_READY);
                 return sessionFactory;
             }
         }
@@ -56,7 +56,7 @@ namespace HSA.InfoSys.DBManager
         /// <returns>An ISession to the session object.</returns>
         public static ISession OpenSession()
         {
-            Log.Debug("Open new session");
+            Log.Debug("");
             return SessionFactory.OpenSession();   
         }
     }

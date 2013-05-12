@@ -45,7 +45,7 @@ namespace HSA.InfoSys.DBManager
         {
             if (dbManager == null)
             {
-                Log.Debug("DBManager does not exist, create one...");
+                Log.Debug(Properties.Resources.DBMANAGER_NO_MANAGER_FOUND);
                 dbManager = new DBManager();
             }
             
@@ -64,7 +64,7 @@ namespace HSA.InfoSys.DBManager
             {
                 session.Save(entity);
                 transaction.Commit();
-                Log.Info("Instance saved successfully in database");
+                Log.Info(Properties.Resources.DBMANAGER_ADD_OBJECT);
             }
         }
 
@@ -79,7 +79,7 @@ namespace HSA.InfoSys.DBManager
             {
                 session.Update(entity);
                 transaction.Commit();
-                Log.Info("Instance updated successfully in database");
+                Log.Info(Properties.Resources.DBMANAGER_UPDATE_OBJECT);
             }
         }
 
@@ -100,7 +100,7 @@ namespace HSA.InfoSys.DBManager
                 entity = session.Get<T>(entityGUID);
             }
 
-            Log.InfoFormat("Got component {0} with GUID {1}", entity, entityGUID);
+            Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ENTITY, entity, entityGUID);
 
             return entity;
         }
@@ -186,7 +186,7 @@ namespace HSA.InfoSys.DBManager
                 Name = componentName
             };
 
-            Log.InfoFormat("New component [{0}] created.", component);
+            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_COMPONENT, component);
 
             return component;
         }
@@ -206,7 +206,7 @@ namespace HSA.InfoSys.DBManager
                 URL = sourceURL
             };
 
-            Log.InfoFormat("New source [{0}] created.", source);
+            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SOURCE, source);
 
             return source;
         }
