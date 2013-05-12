@@ -46,7 +46,8 @@ namespace HSA.InfoSys.WebCrawler
             //var newComp = this.dbManager.CreateComponent("Windows8", "TestWin");
             //this.dbManager.AddNewObject(newComp);
             //var existingComp = this.dbManager.GetEntity<Component>(new Guid(s));
-            SolrClient c = new SolrClient(8983, "141.82");
+            SolrClient c = new SolrClient(8983, "141.82.59.193");
+            c.SolrQuery("solr", SolrOutputMimeType.xml);
         }
 
         /// <summary>

@@ -27,12 +27,12 @@ namespace HSA.InfoSys.DBManager
         void UpdateObject(object entity);
 
         /// <summary>
-        /// Returns a component object.
+        /// Returns a entity.
         /// </summary>
         /// <typeparam name="T">Can be any entity found in DBManager.Data.</typeparam>
         /// <param name="entityGuid">The entity GUID.</param>
         /// <returns>
-        /// The component object by its GUID.
+        /// The entity by its GUID.
         /// </returns>
         T GetEntity<T>(Guid entityGuid);
 
