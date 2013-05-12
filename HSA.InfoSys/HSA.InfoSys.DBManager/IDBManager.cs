@@ -37,33 +37,6 @@ namespace HSA.InfoSys.DBManager
         T GetEntity<T>(Guid entityGuid);
 
         /// <summary>
-        /// Returns a component object.
-        /// </summary>
-        /// <param name="componentGUID">Id of the Object</param>
-        /// <returns>
-        /// The component object by its GUID.
-        /// </returns>
-        Component GetComponent(Guid componentGUID);
-
-        /// <summary>
-        /// Return a issue object from database
-        /// </summary>
-        /// <param name="issueGUID">Id of the object</param>
-        /// <returns>
-        /// The issue object by its GUID.
-        /// </returns>
-        Issue GetIssue(Guid issueGUID);
-
-        /// <summary>
-        /// Returns a source object from database
-        /// </summary>
-        /// <param name="sourceGUID">Id of the object.</param>
-        /// <returns>
-        /// The source object by its GUID.
-        /// </returns>
-        Source GetSource(Guid sourceGUID);
-
-        /// <summary>
         /// Creates a component object.
         /// </summary>
         /// <param name="name">The name.</param>

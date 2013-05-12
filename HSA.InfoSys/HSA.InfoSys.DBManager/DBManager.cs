@@ -11,6 +11,8 @@ namespace HSA.InfoSys.DBManager
     using HSA.InfoSys.Logging;
     using log4net;
     using NHibernate;
+    using NHibernate.Cfg;
+    using NHibernate.Tool.hbm2ddl;
 
     /// <summary>
     /// The DBManager handles database requests.
@@ -28,8 +30,14 @@ namespace HSA.InfoSys.DBManager
         private static IDBManager dbManager;
 
         /// <summary>
+        /// The DB session factory.
+        /// </summary>
+        private static ISessionFactory sessionFactory;
+        /// <summary>
         /// Prevents a default instance of the <see cref="DBManager"/> class from being created.
         /// </summary>
+
+
         private DBManager()
         {
         }
@@ -48,8 +56,44 @@ namespace HSA.InfoSys.DBManager
                 Log.Debug(Properties.Resources.DBMANAGER_NO_MANAGER_FOUND);
                 dbManager = new DBManager();
             }
-            
+
             return dbManager;
+        }
+
+        /// <summary>
+        /// Gets the session factory.
+        /// </summary>
+        /// <value>
+        /// The session factory.
+        /// </value>
+        private static ISessionFactory SessionFactory
+        {
+            get
+            {
+                if (sessionFactory == null)
+                {
+                    var configuration = new Configuration();
+
+                    configuration.Configure();
+                    configuration.AddAssembly(typeof(DBManager).Assembly);
+
+                    sessionFactory = configuration.BuildSessionFactory();
+                    new SchemaExport(configuration).Drop(false, false);
+                }
+
+                Log.Debug("NHibernate successfully configured and session factory ready.");
+                return sessionFactory;
+            }
+        }
+
+        /// <summary>
+        /// Opens the session.
+        /// </summary>
+        /// <returns>An ISession to the session object.</returns>
+        private static ISession OpenSession()
+        {
+            Log.Debug("Open new session");
+            return SessionFactory.OpenSession();
         }
 
         /// <summary>
@@ -59,7 +103,7 @@ namespace HSA.InfoSys.DBManager
         /// <param name="entity">The entity to add in database.</param>
         public void AddNewObject(object entity)
         {
-            using (ISession session = DBSession.OpenSession())
+            using (ISession session = OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
             {
                 session.Save(entity);
@@ -74,7 +118,7 @@ namespace HSA.InfoSys.DBManager
         /// <param name="entity">The entity that should be updated.</param>
         public void UpdateObject(object entity)
         {
-            using (ISession session = DBSession.OpenSession())
+            using (ISession session = OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
             {
                 session.Update(entity);
@@ -94,7 +138,7 @@ namespace HSA.InfoSys.DBManager
         public T GetEntity<T>(Guid entityGUID)
         {
             T entity;
-            using (ISession session = DBSession.OpenSession())
+            using (ISession session = OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
             {
                 entity = session.Get<T>(entityGUID);
@@ -105,69 +149,6 @@ namespace HSA.InfoSys.DBManager
             return entity;
         }
 
-        /// <summary>
-        /// Returns a component object.
-        /// </summary>
-        /// <param name="componentGUID">Id of the Object</param>
-        /// <returns>
-        /// The component object by its GUID.
-        /// </returns>
-        public Component GetComponent(Guid componentGUID)
-        {
-            Component component;
-            using (ISession session = DBSession.OpenSession())
-            using (ITransaction transaction = session.BeginTransaction())
-            {
-                component = session.Get<Component>(componentGUID);
-            }
-
-            Log.InfoFormat("Got component {0} with GUID {1}", component, componentGUID);
-
-            return component;
-        }
-
-        /// <summary>
-        /// Return a issue object from database
-        /// </summary>
-        /// <param name="issueGUID">Id of the object</param>
-        /// <returns>
-        /// The issue object by its GUID.
-        /// </returns>
-        public Issue GetIssue(Guid issueGUID)
-        {
-            Issue issue;
-            using (ISession session = DBSession.OpenSession())
-            using (ITransaction transaction = session.BeginTransaction())
-            {
-                issue = session.Get<Issue>(issueGUID);
-            }
-
-            Log.InfoFormat("Got issue {0} with GUID {1}", issue, issueGUID);
-
-            return issue;
-        }
-
-        /// <summary>
-        /// Returns a source object from database
-        /// </summary>
-        /// <param name="sourceGUID">Id of the object.</param>
-        /// <returns>
-        /// The source object by its GUID.
-        /// </returns>
-        public Source GetSource(Guid sourceGUID)
-        {
-            Source source;
-            using (ISession session = DBSession.OpenSession())
-
-            using (ITransaction transaction = session.BeginTransaction())
-            {
-                source = session.Get<Source>(sourceGUID);
-            }
-
-            Log.InfoFormat("Got source {0} with GUID {1}", source, sourceGUID);
-
-            return source;  
-        }
 
         /// <summary>
         /// Creates a component object.
@@ -180,7 +161,7 @@ namespace HSA.InfoSys.DBManager
         public Component CreateComponent(string componentName, string componentCategory)
         {
             var component = new Component
-            { 
+            {
                 ComponentGUID = System.Guid.NewGuid(),
                 Category = componentCategory,
                 Name = componentName
@@ -201,7 +182,7 @@ namespace HSA.InfoSys.DBManager
         public Source CreateSource(string sourceURL)
         {
             var source = new Source
-            { 
+            {
                 SourceGUID = System.Guid.NewGuid(),
                 URL = sourceURL
             };
