@@ -43,9 +43,10 @@ namespace HSA.InfoSys.WebCrawler
             // Beispiel
             string s = "054778a5-b151-465a-9c48-9b4e7e09a8a3";
 
-            var newComp = this.dbManager.CreateComponent("Windows8", "TestWin");
-            this.dbManager.AddNewObject(newComp);
-            var existingComp = this.dbManager.GetEntity<Component>(new Guid(s));
+            //var newComp = this.dbManager.CreateComponent("Windows8", "TestWin");
+            //this.dbManager.AddNewObject(newComp);
+            //var existingComp = this.dbManager.GetEntity<Component>(new Guid(s));
+            SolrClient c = new SolrClient(8983, "141.82");
         }
 
         /// <summary>

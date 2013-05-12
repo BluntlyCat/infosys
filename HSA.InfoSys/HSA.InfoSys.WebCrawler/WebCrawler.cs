@@ -48,8 +48,6 @@ namespace HSA.InfoSys.WebCrawler
         /// </summary>
         private void RunServer()
         {
-            DataTable factoryClasses = DbProviderFactories.GetFactoryClasses();
-
             Log.Debug("Starting server...");
             Log.Info("Press q for quit.");
 
