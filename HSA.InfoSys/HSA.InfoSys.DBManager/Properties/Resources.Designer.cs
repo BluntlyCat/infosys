@@ -88,7 +88,7 @@ namespace HSA.InfoSys.DBManager.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Got entity {0} with GUID {1} ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Got entity of type [{0}] with values [{1}] by GUID [{2}] ähnelt.
         /// </summary>
         internal static string DBMANAGER_GET_ENTITY {
             get {

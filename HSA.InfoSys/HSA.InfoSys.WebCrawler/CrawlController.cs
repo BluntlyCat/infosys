@@ -41,11 +41,11 @@ namespace HSA.InfoSys.WebCrawler
         public void Test()
         {
             // Beispiel
-            string s = "054778a5-b151-465a-9c48-9b4e7e09a8a3";
+            string s = "99b7816e-4ca1-49a7-a607-a1bc00ff72a5";
 
-            //var newComp = this.dbManager.CreateComponent("Windows8", "TestWin");
-            //this.dbManager.AddNewObject(newComp);
-            //var existingComp = this.dbManager.GetEntity<Component>(new Guid(s));
+            var newComp = this.dbManager.CreateComponent("Windows8", "TestWin");
+            this.dbManager.AddNewObject(newComp);
+            var existingComp = this.dbManager.GetEntity<Component>(new Guid(s));
             SolrClient c = new SolrClient(8983, "141.82.59.193");
             c.SolrQuery("solr", SolrOutputMimeType.xml);
         }

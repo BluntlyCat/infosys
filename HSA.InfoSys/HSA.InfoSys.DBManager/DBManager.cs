@@ -100,7 +100,7 @@ namespace HSA.InfoSys.DBManager
                 entity = session.Get<T>(entityGUID);
             }
 
-            Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ENTITY, entity, entityGUID);
+            Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ENTITY, typeof(T), entity, entityGUID);
 
             return entity;
         }
