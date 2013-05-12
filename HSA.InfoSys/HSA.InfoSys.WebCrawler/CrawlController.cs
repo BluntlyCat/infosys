@@ -41,7 +41,7 @@ namespace HSA.InfoSys.WebCrawler
         public void Test()
         {
             // Beispiel
-            string s = "99b7816e-4ca1-49a7-a607-a1bc00ff72a5";
+            string s = "99cee797-3ec0-458c-a016-a1bd0001bf34";
 
             var newComp = this.dbManager.CreateComponent("Windows8", "TestWin");
             this.dbManager.AddNewObject(newComp);
