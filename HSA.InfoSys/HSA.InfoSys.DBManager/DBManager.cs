@@ -6,7 +6,6 @@
 namespace HSA.InfoSys.DBManager
 {
     using System;
-    using System.Linq;
     using HSA.InfoSys.DBManager.Data;
     using HSA.InfoSys.Logging;
     using log4net;
@@ -33,11 +32,10 @@ namespace HSA.InfoSys.DBManager
         /// The DB session factory.
         /// </summary>
         private static ISessionFactory sessionFactory;
+
         /// <summary>
         /// Prevents a default instance of the <see cref="DBManager"/> class from being created.
         /// </summary>
-
-
         private DBManager()
         {
         }
@@ -81,7 +79,7 @@ namespace HSA.InfoSys.DBManager
                     new SchemaExport(configuration).Drop(false, false);
                 }
 
-                Log.Debug("NHibernate successfully configured and session factory ready.");
+                Log.Debug(Properties.Resources.DBSESSION_NHIBERNATE_CONFIG_READY);
                 return sessionFactory;
             }
         }
@@ -92,7 +90,7 @@ namespace HSA.InfoSys.DBManager
         /// <returns>An ISession to the session object.</returns>
         private static ISession OpenSession()
         {
-            Log.Debug("Open new session");
+            Log.Debug(Properties.Resources.DBSESSION_OPEN_SESSION);
             return SessionFactory.OpenSession();
         }
 
