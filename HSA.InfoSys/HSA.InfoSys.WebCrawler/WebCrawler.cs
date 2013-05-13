@@ -56,9 +56,6 @@ namespace HSA.InfoSys.WebCrawler
             this.controller.StartServices();
             this.controller.OpenWCFHost();
 
-#warning Only for testing, remove me when finished.
-            this.controller.Test();
-
             running = true;
 
             while (running)

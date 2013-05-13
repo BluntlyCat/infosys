@@ -35,22 +35,6 @@ namespace HSA.InfoSys.WebCrawler
         private IDBManager dbManager;
 
         /// <summary>
-        /// Tests this instance.
-        /// </summary>
-#warning Only for testing, remove me when finished.
-        public void Test()
-        {
-            // Beispiel
-            string s = "99cee797-3ec0-458c-a016-a1bd0001bf34";
-
-            var newComp = this.dbManager.CreateComponent("Windows8", "TestWin");
-            this.dbManager.AddNewObject(newComp);
-            var existingComp = this.dbManager.GetEntity<Component>(new Guid(s));
-            SolrClient c = new SolrClient(8983, "141.82.59.193");
-            c.SolrQuery("solr", SolrOutputMimeType.xml);
-        }
-
-        /// <summary>
         /// Opens the WCF host.
         /// </summary>
         public void OpenWCFHost()
@@ -74,6 +58,8 @@ namespace HSA.InfoSys.WebCrawler
         public void StartSearch()
         {
             log.Info(Properties.Resources.CRAWL_CONTROLLER_SEARCH_STARTED);
+            SolrClient client = new SolrClient(8983, "141.82.59.139");
+            client.SolrQuery("solr", SolrOutputMimeType.xml);
         }
 
         /// <summary>
