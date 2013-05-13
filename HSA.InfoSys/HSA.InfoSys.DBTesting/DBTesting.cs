@@ -17,7 +17,6 @@
             ILog log = Logging.GetLogger("WCFTesting");
 
             IDBManager dbManager = DBManager.GetDBManager();
-            string s = "99cee797-3ec0-458c-a016-a1bd0001bf34";
 
             bool running = true;
 
@@ -47,6 +46,8 @@
 
                         case ConsoleKey.S:
                             log.Info("Send request to database.");
+
+                            string s = "99cee797-3ec0-458c-a016-a1bd0001bf34";
                             var newComp = dbManager.CreateComponent("Windows8", "TestWin");
                             dbManager.AddNewObject(newComp);
                             var existingComp = dbManager.GetEntity<Component>(new Guid(s));
