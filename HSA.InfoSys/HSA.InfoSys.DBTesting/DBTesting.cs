@@ -1,13 +1,10 @@
 ﻿namespace HSA.InfoSys.DBTesting
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using HSA.InfoSys.DBManager.Data;
-    using HSA.InfoSys.DBManager;
-    using HSA.InfoSys.Logging;
     using System.Threading;
+    using HSA.InfoSys.DBManager;
+    using HSA.InfoSys.DBManager.Data;
+    using HSA.InfoSys.Logging;
     using log4net;
 
     public class DBTesting
