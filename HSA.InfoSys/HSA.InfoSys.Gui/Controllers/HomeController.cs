@@ -7,6 +7,7 @@
     public class HomeController : Controller
     {
         private static readonly ILog log = Logging.Logging.GetLogger("Gui");
+        private CrawlControllerClient client = new CrawlControllerClient();
 
         [Authorize]
         public ActionResult Index()
@@ -26,6 +27,8 @@
         {
             ViewData["navid"] = "about";
             ViewData["message"] = "About Action";
+
+            client.StartSearch();
 
             return View();
         }

@@ -12,9 +12,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HSA.InfoSys.Gui</RootNamespace>
     <AssemblyName>HSA.InfoSys.Gui</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -189,6 +187,11 @@
     <MonoDevelop>
       <Properties VerifyCodeBehindFields="True" VerifyCodeBehindEvents="True">
         <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
+        <WebDeployTargets>
+          <Target Name="">
+            <FileCopier Handler="MonoDevelop.Deployment.SshFuseFileCopyHandler" TargetDirectory="michael@infosys.informatik.hs-augsburg.de:/var/www/infosys/public_html" ExtraMountArguments="" ctype="SshFuseFileCopyConfiguration" />
+          </Target>
+        </WebDeployTargets>
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
