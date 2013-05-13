@@ -6,10 +6,13 @@
 namespace HSA.InfoSys.WebCrawler
 {
     using System.ServiceModel;
+    using System.Linq;
     using HSA.InfoSys.DBManager;
     using HSA.InfoSys.Logging;
     using HSA.InfoSys.SolrClient;
     using log4net;
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// This class is the controller for the crawler
@@ -21,7 +24,17 @@ namespace HSA.InfoSys.WebCrawler
         /// <summary>
         /// The logger.
         /// </summary>
-        private static ILog log = Logging.GetLogger("CrawlController");
+        private static ILog Log = Logging.GetLogger("CrawlController");
+
+        public delegate void InvokeSolrSearch();
+
+        private static InvokeSolrSearch invokeSearch;
+
+        private static SolrClient client = new SolrClient(
+                Properties.Settings.Default.SOLR_PORT,
+                Properties.Settings.Default.SOLR_HOST);
+
+        private static List<Guid> searchTickets = new List<Guid>();
 
         /// <summary>
         /// The service host for communication between server and gui.
@@ -38,7 +51,7 @@ namespace HSA.InfoSys.WebCrawler
         /// </summary>
         public void OpenWCFHost()
         {
-            log.Info(Properties.Resources.CRAWL_CONTROLLER_WCF_HOST_OPENED);
+            Log.Info(Properties.Resources.CRAWL_CONTROLLER_WCF_HOST_OPENED);
             this.host.Open();
         }
 
@@ -47,22 +60,44 @@ namespace HSA.InfoSys.WebCrawler
         /// </summary>
         public void CloseWCFHost()
         {
-            log.Info(Properties.Resources.CRAWL_CONTROLLER_WCF_HOST_CLOSED);
+            Log.Info(Properties.Resources.CRAWL_CONTROLLER_WCF_HOST_CLOSED);
             this.host.Close();
         }
 
         /// <summary>
         /// Starts a new search.
         /// </summary>
-        public void StartSearch()
+        public int StartSearch(string query)
         {
-            log.Info(Properties.Resources.CRAWL_CONTROLLER_SEARCH_STARTED);
+            Log.Info(Properties.Resources.CRAWL_CONTROLLER_SEARCH_STARTED);
 
-            SolrClient client = new SolrClient(
-                Properties.Settings.Default.SOLR_PORT,
-                Properties.Settings.Default.SOLR_HOST);
+            searchTickets.Add(client.SolrQuery(query, SolrOutputMimeType.xml));
+            
+            invokeSearch = new InvokeSolrSearch(client.StartSearch);
+            AsyncCallback callback = new AsyncCallback(SearchFinished);
 
-            client.SolrQuery("solr", SolrOutputMimeType.xml);
+            invokeSearch.BeginInvoke(callback, this);
+
+            return 0;
+        }
+
+        /// <summary>
+        /// Gets the response from solr.
+        /// </summary>
+        /// <param name="key">The response key.</param>
+        /// <returns>
+        /// The response by key.
+        /// </returns>
+        public static void SearchFinished(IAsyncResult result)
+        {
+            Log.Info("AsyncCallback invoked");
+
+            foreach (var ticket in searchTickets)
+            {
+                Log.InfoFormat("Response for ticket [{0}] is [{1}]", ticket, client.GetRespondByTicket(ticket));
+            }
+
+            searchTickets.Clear();
         }
 
         /// <summary>
@@ -79,7 +114,7 @@ namespace HSA.InfoSys.WebCrawler
         /// </summary>
         public void StopServices()
         {
-            log.Info(Properties.Resources.CRAWL_CONTROLLER_SHUTDOWN);
+            Log.Info(Properties.Resources.CRAWL_CONTROLLER_SHUTDOWN);
         }
     }
 }

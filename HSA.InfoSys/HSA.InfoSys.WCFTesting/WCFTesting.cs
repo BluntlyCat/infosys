@@ -12,7 +12,14 @@
             ILog log = Logging.GetLogger("WCFTesting");
 
             CrawlControllerClient client = new CrawlControllerClient();
+
             bool running = true;
+
+            bool requestSent = false;
+
+            int key = -1;
+
+            string response = string.Empty;
 
             Console.WriteLine("");
             Console.WriteLine("Here you can test the WCF feautures to the WebCrawler.");
@@ -23,6 +30,14 @@
 
             while (running)
             {
+                if (!string.IsNullOrEmpty(response) && requestSent)
+                {
+                    log.InfoFormat("Got response from solr: [{0}]", response);
+
+                    requestSent = false;
+                    key = -1;
+                }
+
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo keyInfo = Console.ReadKey(true);
@@ -47,7 +62,8 @@
                             if(client.State == System.ServiceModel.CommunicationState.Opened)
                                 try
                                 {
-                                    client.StartSearch();
+                                    key = client.StartSearch("solr");
+                                    
                                 }
                                 catch
                                 {

@@ -79,6 +79,15 @@ namespace HSA.InfoSys.WebCrawler.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Waiting for response from Solr. ähnelt.
+        /// </summary>
+        internal static string CRAWL_CONTROLLER_TRY_GET_RESPONSE {
+            get {
+                return ResourceManager.GetString("CRAWL_CONTROLLER_TRY_GET_RESPONSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die WCF service host closed. ähnelt.
         /// </summary>
         internal static string CRAWL_CONTROLLER_WCF_HOST_CLOSED {

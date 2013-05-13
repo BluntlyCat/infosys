@@ -21,7 +21,15 @@ namespace HSA.InfoSys.WebCrawler
         /// Starts the search.
         /// </summary>
         [OperationContract]
-        void StartSearch();
+        int StartSearch(string query);
+
+        /// <summary>
+        /// Gets the response from solr.
+        /// </summary>
+        /// <param name="key">The response key.</param>
+        /// <returns>The response by key.</returns>
+        //[OperationContract]
+        //void GetResponse(int key);
 
         /// <summary>
         /// Starts the services.

@@ -16,7 +16,7 @@ public interface ICrawlController
 {
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrawlController/StartSearch", ReplyAction="http://tempuri.org/ICrawlController/StartSearchResponse")]
-    void StartSearch();
+    int StartSearch(string query);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrawlController/StartServices", ReplyAction="http://tempuri.org/ICrawlController/StartServicesResponse")]
     void StartServices();
@@ -59,9 +59,9 @@ public partial class CrawlControllerClient : System.ServiceModel.ClientBase<ICra
     {
     }
     
-    public void StartSearch()
+    public int StartSearch(string query)
     {
-        base.Channel.StartSearch();
+        return base.Channel.StartSearch(query);
     }
     
     public void StartServices()

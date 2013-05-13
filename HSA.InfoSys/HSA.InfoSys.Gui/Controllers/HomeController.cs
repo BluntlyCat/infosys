@@ -28,8 +28,6 @@
             ViewData["navid"] = "about";
             ViewData["message"] = "About Action";
 
-            client.StartSearch();
-
             return View();
         }
 
