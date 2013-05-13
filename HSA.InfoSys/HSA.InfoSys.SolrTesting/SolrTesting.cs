@@ -2,13 +2,13 @@
 {
     using System;
     using System.Threading;
-    using HSA.InfoSys.WebCrawler;
+    using HSA.InfoSys.SolrClient;
 
     public class SolrTesting
     {
         static void Main(string[] args)
         {
-            SolrClient client = new SolrClient(8983, "141.82.59.139");
+            SolrClient client = new SolrClient(Properties.Settings.Default.SOLR_PORT, Properties.Settings.Default.SOLR_HOST);
             bool running = true;
 
             Console.WriteLine("Here you can test the Solr feautures.");

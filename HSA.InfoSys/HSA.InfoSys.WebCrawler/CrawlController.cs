@@ -5,11 +5,10 @@
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.WebCrawler
 {
-    using System;
     using System.ServiceModel;
     using HSA.InfoSys.DBManager;
-    using HSA.InfoSys.DBManager.Data;
     using HSA.InfoSys.Logging;
+    using HSA.InfoSys.SolrClient;
     using log4net;
 
     /// <summary>
@@ -58,7 +57,11 @@ namespace HSA.InfoSys.WebCrawler
         public void StartSearch()
         {
             log.Info(Properties.Resources.CRAWL_CONTROLLER_SEARCH_STARTED);
-            SolrClient client = new SolrClient(8983, "141.82.59.139");
+
+            SolrClient client = new SolrClient(
+                Properties.Settings.Default.SOLR_PORT,
+                Properties.Settings.Default.SOLR_HOST);
+
             client.SolrQuery("solr", SolrOutputMimeType.xml);
         }
 

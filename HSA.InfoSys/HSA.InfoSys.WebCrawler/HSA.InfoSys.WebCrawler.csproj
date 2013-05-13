@@ -60,8 +60,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SolrClient.cs" />
-    <Compile Include="SolrOutputMimeType.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="WebCrawler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -82,12 +86,20 @@
       <Project>{3A43F6B7-10B3-4615-987F-0D9EE0024FD0}</Project>
       <Name>HSA.InfoSys.Logging</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HSA.InfoSys.SolrClient\HSA.InfoSys.SolrClient.csproj">
+      <Project>{916F672E-D760-4C08-BB75-9246F2A712EB}</Project>
+      <Name>HSA.InfoSys.SolrClient</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

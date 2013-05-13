@@ -3,7 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.WebCrawler
+namespace HSA.InfoSys.SolrClient
 {
     using System;
     using System.Collections.Generic;

@@ -1,9 +1,9 @@
 ﻿// ------------------------------------------------------------------------
-// <copyright file="SolrClient.cs" company="HSA.InfoSys">
+// <copyright file="Class1.cs" company="HSA.InfoSys">
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.WebCrawler
+namespace HSA.InfoSys.SolrClient
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -80,7 +80,7 @@ namespace HSA.InfoSys.WebCrawler
         /// Commits to solr.
         /// </summary>
         public void CommitToSolr()
-        { 
+        {
         }
 
         /// <summary>
@@ -91,13 +91,13 @@ namespace HSA.InfoSys.WebCrawler
         /// <returns>The result of the query to Solr.</returns>
         public int SolrQuery(
             string queryString,
-          //// string fq, string sort, int start, int rows, string fl, string df, string[] rawQueryParameters, 
+            //// string fq, string sort, int start, int rows, string fl, string df, string[] rawQueryParameters, 
             SolrOutputMimeType mimeType)
         {
             string query = "/solr/" + Collection + "/select?q=" + queryString + "&wt=" + mimeType;
 
             this.messagesSend.Add(this.queryTicket, query);
-            
+
             Log.InfoFormat(Properties.Resources.SOLR_CLIENT_REQUEST_RECEIVED, query);
 
             return this.queryTicket++;
@@ -189,7 +189,7 @@ namespace HSA.InfoSys.WebCrawler
             {
                 this.solrSocket.Close();
                 Log.InfoFormat(Properties.Resources.SOLR_CLIENT_SOCKET_CLOSED, this.ipAddress);
-            }  
+            }
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace HSA.InfoSys.WebCrawler
             string content = string.Empty;
             byte[] bytesReceived = new byte[256];
             byte[] bytesSend;
-            int bytes = 0; 
+            int bytes = 0;
 
             // Request send to the Server
             request = "GET " + request + " HTTP/1.1\r\n" +

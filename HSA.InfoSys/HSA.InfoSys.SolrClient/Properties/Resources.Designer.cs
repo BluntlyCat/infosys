@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HSA.InfoSys.WebCrawler.Properties {
+namespace HSA.InfoSys.SolrClient.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace HSA.InfoSys.WebCrawler.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HSA.InfoSys.WebCrawler.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HSA.InfoSys.SolrClient.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,83 +61,65 @@ namespace HSA.InfoSys.WebCrawler.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Search started. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Close Connection ähnelt.
         /// </summary>
-        internal static string CRAWL_CONTROLLER_SEARCH_STARTED {
+        internal static string SOLR_CLIENT_CLOSE_CONNECTION {
             get {
-                return ResourceManager.GetString("CRAWL_CONTROLLER_SEARCH_STARTED", resourceCulture);
+                return ResourceManager.GetString("SOLR_CLIENT_CLOSE_CONNECTION", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Shutdown Services. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Connection Established to host: [{0}] ähnelt.
         /// </summary>
-        internal static string CRAWL_CONTROLLER_SHUTDOWN {
+        internal static string SOLR_CLIENT_CONNECTION_ESTABLISHED {
             get {
-                return ResourceManager.GetString("CRAWL_CONTROLLER_SHUTDOWN", resourceCulture);
+                return ResourceManager.GetString("SOLR_CLIENT_CONNECTION_ESTABLISHED", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die WCF service host closed. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Message was send: [{0}] ähnelt.
         /// </summary>
-        internal static string CRAWL_CONTROLLER_WCF_HOST_CLOSED {
+        internal static string SOLR_CLIENT_MESSAGE_SENT {
             get {
-                return ResourceManager.GetString("CRAWL_CONTROLLER_WCF_HOST_CLOSED", resourceCulture);
+                return ResourceManager.GetString("SOLR_CLIENT_MESSAGE_SENT", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die WCF service host opened. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Received a request for a solr query: [{0}] ähnelt.
         /// </summary>
-        internal static string CRAWL_CONTROLLER_WCF_HOST_OPENED {
+        internal static string SOLR_CLIENT_REQUEST_RECEIVED {
             get {
-                return ResourceManager.GetString("CRAWL_CONTROLLER_WCF_HOST_OPENED", resourceCulture);
+                return ResourceManager.GetString("SOLR_CLIENT_REQUEST_RECEIVED", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die User exited the application. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Message from host: [{0}] received with content: [{1}] ähnelt.
         /// </summary>
-        internal static string WEB_CRAWLER_EXITED_BY_USER {
+        internal static string SOLR_CLIENT_RESULT_RECEIVED {
             get {
-                return ResourceManager.GetString("WEB_CRAWLER_EXITED_BY_USER", resourceCulture);
+                return ResourceManager.GetString("SOLR_CLIENT_RESULT_RECEIVED", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Got user input key: [{0}] ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Socket to host: [{0}] closed. ähnelt.
         /// </summary>
-        internal static string WEB_CRAWLER_GOT_USERINPUT {
+        internal static string SOLR_CLIENT_SOCKET_CLOSED {
             get {
-                return ResourceManager.GetString("WEB_CRAWLER_GOT_USERINPUT", resourceCulture);
+                return ResourceManager.GetString("SOLR_CLIENT_SOCKET_CLOSED", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Press q for quit. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Unable to Connect to host: [{0}] ähnelt.
         /// </summary>
-        internal static string WEB_CRAWLER_QUIT_MESSAGE {
+        internal static string SOLR_CLIENT_UNABLE_TO_CONNECT {
             get {
-                return ResourceManager.GetString("WEB_CRAWLER_QUIT_MESSAGE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Starting server. ähnelt.
-        /// </summary>
-        internal static string WEB_CRAWLER_START_SERVER {
-            get {
-                return ResourceManager.GetString("WEB_CRAWLER_START_SERVER", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Unkown user input. ähnelt.
-        /// </summary>
-        internal static string WEB_CRAWLER_UNKOWN_USERINPUT {
-            get {
-                return ResourceManager.GetString("WEB_CRAWLER_UNKOWN_USERINPUT", resourceCulture);
+                return ResourceManager.GetString("SOLR_CLIENT_UNABLE_TO_CONNECT", resourceCulture);
             }
         }
     }
