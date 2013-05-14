@@ -1,5 +1,5 @@
 ﻿// ------------------------------------------------------------------------
-// <copyright file="Class1.cs" company="HSA.InfoSys">
+// <copyright file="SolrClient.cs" company="HSA.InfoSys">
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
@@ -41,6 +41,11 @@ namespace HSA.InfoSys.SolrClient
         private string ipAddress;
 
         /// <summary>
+        /// The solr response.
+        /// </summary>
+        private string solrResponse;
+
+        /// <summary>
         /// The port on which Solr is listening.
         /// </summary>
         private int port;
@@ -49,16 +54,6 @@ namespace HSA.InfoSys.SolrClient
         /// Indicates if the thread is running.
         /// </summary>
         private bool running;
-
-        /// <summary>
-        /// The messages send are contained in this dictionary
-        /// </summary>
-        private Dictionary<Guid, string> requestSend = new Dictionary<Guid, string>();
-
-        /// <summary>
-        /// The messages received are contained in this dictionary
-        /// </summary>
-        private Dictionary<Guid, string> responseReceived = new Dictionary<Guid, string>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SolrClient"/> class.
@@ -80,53 +75,19 @@ namespace HSA.InfoSys.SolrClient
         }
 
         /// <summary>
-        /// Query from Solr.
+        /// Gets the response from solr.
         /// </summary>
-        /// <param name="queryString">The query string is the actual search term.</param>
-        /// <param name="mimeType">Type of the MIME.</param>
-        /// <returns>The result of the query to Solr.</returns>
-        public Guid SolrQuery(
-            string queryString,
-            //// string fq, string sort, int start, int rows, string fl, string df, string[] rawQueryParameters, 
-            SolrOutputMimeType mimeType)
+        /// <returns>The response.</returns>
+        public string GetResponse()
         {
-            Guid queryTicket = Guid.NewGuid();
-
-            string query = string.Format(
-                "/solr/{0}/select?q={1}&wt={2}",
-                Collection, queryString, mimeType);
-
-            this.requestSend.Add(queryTicket, query);
-
-            Log.InfoFormat(Properties.Resources.SOLR_CLIENT_REQUEST_RECEIVED, query);
-
-            return queryTicket;
-        }
-
-        /// <summary>
-        /// Gets the respond by key.
-        /// </summary>
-        /// <param name="key">The key you want the response for.</param>
-        /// <returns>The respond.</returns>
-        public string GetResponseByTicket(Guid ticket)
-        {
-            string response = string.Empty;
-
-            if (this.responseReceived.ContainsKey(ticket))
-            {
-                Log.InfoFormat("Response by key [{0}] exists.", ticket);
-
-                response = this.responseReceived[ticket];
-                this.responseReceived.Remove(ticket);
-            }
-
-            return response;
+            return this.solrResponse;
         }
 
         /// <summary>
         /// Connects this instance.
         /// </summary>
-        public void StartSearch()
+        /// <param name="query">The query pattern for solr.</param>
+        public void StartSearch(string query)
         {
             try
             {
@@ -138,9 +99,10 @@ namespace HSA.InfoSys.SolrClient
                 if (this.solrSocket.Connected)
                 {
                     Log.InfoFormat(Properties.Resources.SOLR_CLIENT_CONNECTION_ESTABLISHED, this.ipAddress);
-
+                    string solrQuery = this.BuildSolrQuery(query, SolrOutputMimeType.xml);
                     this.running = true;
-                    ThreadRoutine();
+
+                    this.solrResponse = this.ThreadRoutine(solrQuery);
                 }
             }
             catch (SocketException e)
@@ -158,40 +120,63 @@ namespace HSA.InfoSys.SolrClient
 
             this.running = false;
 
-            solrSocket.Close();
+            this.solrSocket.Close();
             Log.InfoFormat(Properties.Resources.SOLR_CLIENT_SOCKET_CLOSED, this.ipAddress);
+        }
+
+        /// <summary>
+        /// Build the query string for Solr.
+        /// </summary>
+        /// <param name="queryString">The query string is the actual search term.</param>
+        /// <param name="mimeType">Type of the MIME.</param>
+        /// <returns>
+        /// The query string to send to solr..
+        /// </returns>
+        private string BuildSolrQuery(
+            string queryString,
+            //// string fq, string sort, int start, int rows, string fl, string df, string[] rawQueryParameters, 
+            SolrOutputMimeType mimeType)
+        {
+            Guid queryTicket = Guid.NewGuid();
+
+            string query = string.Format(
+                "/solr/{0}/select?q={1}&wt={2}",
+                Collection,
+                queryString,
+                mimeType);
+
+            Log.InfoFormat(Properties.Resources.SOLR_CLIENT_REQUEST_RECEIVED, query);
+
+            return query;
         }
 
         /// <summary>
         /// Threads the routine.
         /// </summary>
-        private void ThreadRoutine()
-        {   
+        /// <param name="solrQuery">The solr query.</param>
+        /// <returns>The search result from solr.</returns>
+        private string ThreadRoutine(string solrQuery)
+        {
+            string response = string.Empty;
+
             // Main Loop which is checking, whether there is an message for the server or not
             while (this.running && this.solrSocket.Connected)
             {
-                if (this.requestSend.Count > 0)
-                {
-                    Guid ticket = this.requestSend.First().Key;
-                    string query = this.requestSend[ticket];
+                // waiting for the server's responde
+                response = this.InvokeSolrQuery(solrQuery);
 
-                    // waiting for the server's responde
-                    string response = this.InvokeSolrQuery(query);
-                    
-                    this.responseReceived.Add(ticket, response);
-                    this.requestSend.Remove(ticket);
-                }
-                
                 Thread.Sleep(100);
             }
+
+            return response;
         }
 
         /// <summary>
         /// Sockets the send receive.
         /// </summary>
-        /// <param name="query">The search query to solr.</param>
-        /// <returns></returns>
-        private string InvokeSolrQuery(string query)
+        /// <param name="solrQuery">The solr query.</param>
+        /// <returns>The search result from solr.</returns>
+        private string InvokeSolrQuery(string solrQuery)
         {
             string request = string.Empty;
             string response = string.Empty;
@@ -203,7 +188,7 @@ namespace HSA.InfoSys.SolrClient
             // Request send to the Server
             request = string.Format(
                 "GET {0} HTTP/1.1\r\nHost: {1}\r\nContent-Length: 0\r\n\r\n",
-                query,
+                solrQuery,
                 this.ipAddress);
 
             // Mince request into an byte Array
@@ -223,7 +208,7 @@ namespace HSA.InfoSys.SolrClient
 
             Log.InfoFormat(Properties.Resources.SOLR_CLIENT_RESULT_RECEIVED, this.ipAddress, response);
 
-            CloseConnection();
+            this.CloseConnection();
 
             return response;
         }

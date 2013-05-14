@@ -39,14 +39,8 @@ namespace HSA.InfoSys.WebCrawler
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
-            SolrClient c = new SolrClient(8983, "141.82.59.139");
-            c.connect();
-            int key = c.solrQuery("ipod", SolrOutputMimeType.xml);
-            Thread.Sleep(30*1000);
-            Console.WriteLine(c.getRespondByKey(key));
-
-           // WebCrawler crawler = new WebCrawler();
-           // crawler.RunServer();
+           WebCrawler crawler = new WebCrawler();
+           crawler.RunServer();
         }
 
         /// <summary>

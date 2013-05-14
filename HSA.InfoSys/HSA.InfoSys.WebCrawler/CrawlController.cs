@@ -5,14 +5,12 @@
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.WebCrawler
 {
+    using System;
     using System.ServiceModel;
-    using System.Linq;
     using HSA.InfoSys.DBManager;
     using HSA.InfoSys.Logging;
     using HSA.InfoSys.SolrClient;
     using log4net;
-    using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// This class is the controller for the crawler
@@ -24,17 +22,7 @@ namespace HSA.InfoSys.WebCrawler
         /// <summary>
         /// The logger.
         /// </summary>
-        private static ILog Log = Logging.GetLogger("CrawlController");
-
-        public delegate void InvokeSolrSearch();
-
-        private static InvokeSolrSearch invokeSearch;
-
-        private static SolrClient client = new SolrClient(
-                Properties.Settings.Default.SOLR_PORT,
-                Properties.Settings.Default.SOLR_HOST);
-
-        private static List<Guid> searchTickets = new List<Guid>();
+        private static readonly ILog Log = Logging.GetLogger("CrawlController");
 
         /// <summary>
         /// The service host for communication between server and gui.
@@ -45,6 +33,12 @@ namespace HSA.InfoSys.WebCrawler
         /// The db manager.
         /// </summary>
         private IDBManager dbManager;
+
+        /// <summary>
+        /// Our delegate for invoking an async callback.
+        /// </summary>
+        /// <param name="query">The query.</param>
+        public delegate void InvokeSolrSearch(string query);
 
         /// <summary>
         /// Opens the WCF host.
@@ -67,37 +61,30 @@ namespace HSA.InfoSys.WebCrawler
         /// <summary>
         /// Starts a new search.
         /// </summary>
-        public int StartSearch(string query)
+        /// <param name="query">The search query pattern.</param>
+        public void StartSearch(string query)
         {
             Log.Info(Properties.Resources.CRAWL_CONTROLLER_SEARCH_STARTED);
 
-            searchTickets.Add(client.SolrQuery(query, SolrOutputMimeType.xml));
+            var client = new SolrClient(
+                Properties.Settings.Default.SOLR_PORT,
+                Properties.Settings.Default.SOLR_HOST);
             
-            invokeSearch = new InvokeSolrSearch(client.StartSearch);
-            AsyncCallback callback = new AsyncCallback(SearchFinished);
+            ////Here we tell our delegate which method to call.
+            InvokeSolrSearch invokeSearch = new InvokeSolrSearch(client.StartSearch);
 
-            invokeSearch.BeginInvoke(callback, this);
+            ////This is our callback method which will be
+            ////called when solr finished the searchrequest.
+            AsyncCallback callback = new AsyncCallback(
+                c =>
+                {
+                    if (c.IsCompleted)
+                    {
+                        Log.InfoFormat("Response for query [{0}] is [{1}]", query, client.GetResponse());
+                    }
+                });
 
-            return 0;
-        }
-
-        /// <summary>
-        /// Gets the response from solr.
-        /// </summary>
-        /// <param name="key">The response key.</param>
-        /// <returns>
-        /// The response by key.
-        /// </returns>
-        public static void SearchFinished(IAsyncResult result)
-        {
-            Log.Info("AsyncCallback invoked");
-
-            foreach (var ticket in searchTickets)
-            {
-                Log.InfoFormat("Response for ticket [{0}] is [{1}]", ticket, client.GetResponseByTicket(ticket));
-            }
-
-            searchTickets.Clear();
+            invokeSearch.BeginInvoke(query, callback, this);
         }
 
         /// <summary>

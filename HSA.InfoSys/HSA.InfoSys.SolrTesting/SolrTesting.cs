@@ -41,7 +41,7 @@
 
                         case ConsoleKey.S:
                             log.Info("Send request to solr.");
-                            client.SolrQuery("solr", SolrOutputMimeType.xml);
+                            client.StartSearch("solr");
                             break;
                     }
                 }

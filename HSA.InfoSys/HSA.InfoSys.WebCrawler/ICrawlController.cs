@@ -18,18 +18,11 @@ namespace HSA.InfoSys.WebCrawler
     public interface ICrawlController
     {
         /// <summary>
-        /// Starts the search.
+        /// Starts a new search.
         /// </summary>
+        /// <param name="query">The search query pattern.</param>
         [OperationContract]
-        int StartSearch(string query);
-
-        /// <summary>
-        /// Gets the response from solr.
-        /// </summary>
-        /// <param name="key">The response key.</param>
-        /// <returns>The response by key.</returns>
-        //[OperationContract]
-        //void GetResponse(int key);
+        void StartSearch(string query);
 
         /// <summary>
         /// Starts the services.
