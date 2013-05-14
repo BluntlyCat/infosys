@@ -76,6 +76,8 @@ namespace HSA.InfoSys.WebCrawler
                     }
                 }
 
+                Console.Write(".");
+
                 Thread.Sleep(500);
             }
         }

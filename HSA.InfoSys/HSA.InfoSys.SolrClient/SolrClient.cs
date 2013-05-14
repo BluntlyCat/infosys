@@ -5,6 +5,7 @@
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.SolrClient
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
@@ -13,7 +14,6 @@ namespace HSA.InfoSys.SolrClient
     using System.Threading;
     using HSA.InfoSys.Logging;
     using log4net;
-    using System;
 
     /// <summary>
     ///  SolrClient deals as an API
@@ -91,10 +91,10 @@ namespace HSA.InfoSys.SolrClient
             SolrOutputMimeType mimeType)
         {
             Guid queryTicket = Guid.NewGuid();
-            
+
             string query = string.Format(
-	      "/solr/{0}/select?q={1}&wt={2}",
-	      Collection, queryString, mimeType);
+                "/solr/{0}/select?q={1}&wt={2}",
+                Collection, queryString, mimeType);
 
             this.requestSend.Add(queryTicket, query);
 
@@ -154,10 +154,10 @@ namespace HSA.InfoSys.SolrClient
         /// </summary>
         public void CloseConnection()
         {
-	    Log.Info(Properties.Resources.SOLR_CLIENT_CLOSE_CONNECTION);
-	    
-	    this.running = false;
-	    
+            Log.Info(Properties.Resources.SOLR_CLIENT_CLOSE_CONNECTION);
+
+            this.running = false;
+
             solrSocket.Close();
             Log.InfoFormat(Properties.Resources.SOLR_CLIENT_SOCKET_CLOSED, this.ipAddress);
         }
@@ -168,7 +168,7 @@ namespace HSA.InfoSys.SolrClient
         private void ThreadRoutine()
         {   
             // Main Loop which is checking, whether there is an message for the server or not
-            while (this.running && this.solrSocket.Connected);
+            while (this.running && this.solrSocket.Connected)
             {
                 if (this.requestSend.Count > 0)
                 {
@@ -202,9 +202,9 @@ namespace HSA.InfoSys.SolrClient
 
             // Request send to the Server
             request = string.Format(
-	      "GET {0} HTTP/1.1\r\nHost: {1}\r\nContent-Length: 0\r\n\r\n",
-	      query,
-	      this.ipAddress);
+                "GET {0} HTTP/1.1\r\nHost: {1}\r\nContent-Length: 0\r\n\r\n",
+                query,
+                this.ipAddress);
 
             // Mince request into an byte Array
             bytesSend = new ASCIIEncoding().GetBytes(request);
