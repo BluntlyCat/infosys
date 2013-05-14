@@ -94,7 +94,7 @@ namespace HSA.InfoSys.WebCrawler
 
             foreach (var ticket in searchTickets)
             {
-                Log.InfoFormat("Response for ticket [{0}] is [{1}]", ticket, client.GetRespondByTicket(ticket));
+                Log.InfoFormat("Response for ticket [{0}] is [{1}]", ticket, client.GetResponseByTicket(ticket));
             }
 
             searchTickets.Clear();
