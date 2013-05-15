@@ -7,6 +7,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Net.Mail;
+using System.Configuration;
 
 namespace HSA.InfoSys.Gui.Models
 {
@@ -85,6 +87,9 @@ namespace HSA.InfoSys.Gui.Models
         bool ValidateUser(string userName, string password);
         MembershipCreateStatus CreateUser(string userName, string password, string email);
         bool ChangePassword(string userName, string oldPassword, string newPassword);
+
+        //Email Confirmation
+        void SendConfirmationEmail(string userName);
     }
 
     public class AccountMembershipService : IMembershipService
@@ -124,7 +129,10 @@ namespace HSA.InfoSys.Gui.Models
             if (String.IsNullOrEmpty(email)) throw new ArgumentException("Der Wert darf nicht NULL oder leer sein.", "email");
 
             MembershipCreateStatus status;
-            _provider.CreateUser(userName, password, email, null, null, true, null, out status);
+            // ORIGINAL: 6th Parameter is IsApproved property - which defaults to true
+            //_provider.CreateUser(userName, password, email, null, null, true, null, out status);
+            // MODIFICATION: Set the IsApproved property to false
+            _provider.CreateUser(userName, password, email, null, null, false, null, out status);
             return status;
         }
 
@@ -149,6 +157,28 @@ namespace HSA.InfoSys.Gui.Models
             {
                 return false;
             }
+        }
+
+        public void SendConfirmationEmail(string userName)
+        {
+            MembershipUser user = Membership.GetUser(userName);
+            string confirmationGuid = user.ProviderUserKey.ToString();
+            string verifyUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) +
+                             "/account/verify?ID=" + confirmationGuid;
+
+            MembershipUser admin = Membership.GetUser("webmaster");
+
+            var message = new MailMessage("infosysss13@web.de", admin.Email)
+            {
+                Subject = "activate user",
+                Body = verifyUrl
+
+            };
+
+            var client = new SmtpClient();
+            //client.EnableSsl = true;
+
+            client.Send(message);
         }
     }
 

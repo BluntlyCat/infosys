@@ -1,18 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
-<script runat="server">
-CrawlControllerClient client = new CrawlControllerClient();
-
-        void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        void StartSearchButton_Click(object sender, EventArgs e)
-        {
-            client.StartSearch();
-        }
-</script>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Informationssystem für sicherheitskritische Komponenten
 </asp:Content>
@@ -53,15 +40,6 @@ CrawlControllerClient client = new CrawlControllerClient();
                 </div>
             </div>
         </div> 
-    </form>
-
-    <form id="search" runat="server" method="post">
-        <div>
-            <asp:Button id="StartSearchButton"
-                Text="Start search"
-                OnClick="StartSearchButton_Click"
-                runat="server" />
-        </div>
     </form>
 
     <script type="text/javascript">

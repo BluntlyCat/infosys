@@ -5,6 +5,7 @@
     using System.Web.Routing;
     using System.Web.Security;
     using HSA.InfoSys.Gui.Models;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// The controller for authentication.
@@ -130,8 +131,12 @@
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
-                    FormsService.SignIn(model.UserName, false /* createPersistentCookie */);
-                    return RedirectToAction("Index", "Home");
+                    //User will not be logged in until the admin accepted it
+                    //FormsService.SignIn(model.UserName, false /* createPersistentCookie */);
+
+                    MembershipService.SendConfirmationEmail(model.UserName);
+
+                    return RedirectToAction("Confirmation");
                 }
                 else
                 {
@@ -192,5 +197,50 @@
             return View();
         }
 
+        /// <summary>
+        /// Confirmationpage.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Confirmation()
+        {
+            return View();
+        }
+
+
+        /// <summary>
+        /// Verifies the specified ID.
+        /// </summary>
+        /// <param name="ID">The ID.</param>
+        /// <returns></returns>
+        public ActionResult Verify(string ID)
+        {
+            //if (string.IsNullOrEmpty(ID) || (!Regex.IsMatch(ID, @"[0-9a-f]{8}\-([0-9a-f]{4}\-){3}[0-9a-f]{12}")))
+            if (string.IsNullOrEmpty(ID))
+            {
+                TempData["tempMessage"] = "The user account is not valid. Please try clicking the link in your email again.";
+                return RedirectToAction("LogOn");
+            }
+ 
+            else
+            {
+                //MembershipUser user = Membership.GetUser(new Guid(ID));
+                MembershipUser user = Membership.GetUser(Convert.ToInt32(ID));
+
+ 
+                if (!user.IsApproved)
+                {
+                    user.IsApproved = true;
+                    Membership.UpdateUser(user);
+                    //FormsService.SignIn(user.UserName, false);
+                    return RedirectToAction("LogOn");
+                }
+                else
+                {
+                    //FormsService.SignOut();
+                    TempData["tempMessage"] = "user is already active";
+                    return RedirectToAction("LogOn");
+                }
+             }
+        }
     }
 }
