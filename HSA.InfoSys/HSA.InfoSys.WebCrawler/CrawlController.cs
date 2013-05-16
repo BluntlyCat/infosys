@@ -80,7 +80,7 @@ namespace HSA.InfoSys.WebCrawler
                 {
                     if (c.IsCompleted)
                     {
-                        Log.InfoFormat("Response for query [{0}] is [{1}]", query, client.GetResponse());
+                        Log.InfoFormat("Response for query [{0}] is\r\n[{1}]", query, client.GetResponse());
                     }
                 });
 
