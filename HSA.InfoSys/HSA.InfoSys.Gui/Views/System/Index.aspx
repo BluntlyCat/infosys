@@ -79,7 +79,7 @@
                 <a class="btn btn-success" style="margin-bottom: 10px; margin-right: 10px;" href="#createModal" data-toggle="modal">
                     <i class="icon-plus icon-white"></i>&nbsp;&nbsp;<b>Create new System</b></a>
                 <button type="submit" class="btn btn-primary" style="margin-bottom: 10px; margin-right: 10px;">
-                    <i class="icon-search icon-white"></i>&nbsp;&nbsp;<b>Search</b></button>
+                    <i class="icon-search icon-white"></i>&nbsp;&nbsp;<b>Search now!</b></button>
             </div>
         </div>
     </div>
