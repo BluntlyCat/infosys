@@ -19,7 +19,7 @@ namespace HSA.InfoSys.CrawlerService
         /// <summary>
         /// The logger.
         /// </summary>
-        private static readonly ILog Log = Logging.GetLogger("WebCrawler");
+        private static readonly ILog Log = Logging.GetLogger("CrawlerService");
 
         /// <summary>
         /// The running flag for this server.
