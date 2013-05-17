@@ -45,13 +45,23 @@
         [HttpPost]
         public ActionResult SearchResult()
         {
+            
             /*
+            
+            // Beispiel nhibernate
             IDBManager dbm = new DBManager.DBManager();
 
             Component comp = new Component { componentGUID = System.Guid.NewGuid(), name = "abc", category = "hardware", componentId = 12 };
 
             dbm.addNewObject(comp);
-             */
+             * */
+
+            /*
+            // Beispiel, zugriff über wcf
+            CrawlControllerClient client = new CrawlControllerClient();
+            client.
+             * */
+            
 
 
             ViewData["navid"] = "home";
