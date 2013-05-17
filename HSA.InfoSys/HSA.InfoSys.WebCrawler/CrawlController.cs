@@ -6,21 +6,20 @@
 namespace HSA.InfoSys.WebCrawler
 {
     using System;
+    using System.IO;
     using System.ServiceModel;
     using HSA.InfoSys.DBManager;
+    using HSA.InfoSys.DBManager.Data;
     using HSA.InfoSys.Logging;
     using HSA.InfoSys.SolrClient;
     using log4net;
-    using HSA.InfoSys.DBManager.Data;
-    using System.Runtime.Serialization;
 
     /// <summary>
     /// This class is the controller for the crawler
     /// it implements an interface for communication
     /// between the crawler and the gui by using wcf.
     /// </summary>
-    [KnownType(typeof(Component))]
-    public class CrawlController : ICrawlController, IDBManager
+    public class CrawlController : ICrawlController
     {
         /// <summary>
         /// The logger.
@@ -28,14 +27,14 @@ namespace HSA.InfoSys.WebCrawler
         private static readonly ILog Log = Logging.GetLogger("CrawlController");
 
         /// <summary>
-        /// The service host for communication between server and gui.
-        /// </summary>
-        private ServiceHost host;
-
-        /// <summary>
         /// The db manager.
         /// </summary>
         private static IDBManager dbManager = DBManager.GetDBManager();
+
+        /// <summary>
+        /// The service host for communication between server and gui.
+        /// </summary>
+        private ServiceHost host;
 
         /// <summary>
         /// Our delegate for invoking an async callback.
@@ -108,35 +107,57 @@ namespace HSA.InfoSys.WebCrawler
             Log.Info(Properties.Resources.CRAWL_CONTROLLER_SHUTDOWN);
         }
 
-        #endregion
-
-        #region IDBManager Service Contract
-
-        public void AddEntity(object entity)
+        /// <summary>
+        /// Adds the entity.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        public Guid AddEntity(Entity entity)
         {
-            dbManager.AddEntity(entity);
+            return dbManager.AddEntity(entity);
         }
 
-        public void UpdateEntity(object entity)
+        /// <summary>
+        /// Updates the entity.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        public Guid UpdateEntity(Entity entity)
         {
-            dbManager.UpdateEntity(entity);
+            return dbManager.UpdateEntity(entity);
         }
 
-        public Component GetComponent(Guid componentGuid)
+        /// <summary>
+        /// Gets an entity from database.
+        /// </summary>
+        /// <typeparam name="T">The type of what you want.</typeparam>
+        /// <param name="entityGUID">The entity GUID.</param>
+        /// <returns>
+        /// The entity you asked for.
+        /// </returns>
+        public Entity GetEntity(Guid entityGuid)
         {
-            return dbManager.GetComponent(componentGuid);
+            return dbManager.GetEntity<Entity>(entityGuid);
         }
 
-        public Source GetSource(Guid sourceGuid)
+        /// <summary>
+        /// Creates the component.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="category">The category.</param>
+        /// <returns>
+        /// The new component.
+        /// </returns>
+        public Component CreateComponent(string name, string category)
         {
-            return dbManager.GetSource(sourceGuid);
+            return dbManager.CreateComponent(name, category);
         }
 
-        public Component CreateComponent(string name, string categroy)
-        {
-            return dbManager.CreateComponent(name, categroy);
-        }
-
+        /// <summary>
+        /// Creates the source.
+        /// </summary>
+        /// <param name="sourceURL">The source URL.</param>
+        /// <returns>
+        /// The new source.
+        /// </returns>
         public Source CreateSource(string sourceURL)
         {
             return dbManager.CreateSource(sourceURL);

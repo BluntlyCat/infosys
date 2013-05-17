@@ -6,14 +6,11 @@
 namespace HSA.InfoSys.DBManager
 {
     using System;
-    using System.ServiceModel;
     using HSA.InfoSys.DBManager.Data;
-    using System.Runtime.Serialization;
 
     /// <summary>
     /// The interface for accessing the data base.
     /// </summary>
-    [ServiceContract]
     public interface IDBManager
     {
         /// <summary>
@@ -21,21 +18,23 @@ namespace HSA.InfoSys.DBManager
         /// and saves it in database.
         /// </summary>
         /// <param name="entity">The entity to add in database.</param>
-        [OperationContract]
-        void AddEntity(object entity);
+        Guid AddEntity(Entity entity);
 
         /// <summary>
         /// Saves changings of a object in database.
         /// </summary>
         /// <param name="entity">The entity that should be updated.</param>
-        [OperationContract]
-        void UpdateEntity(object entity);
+        Guid UpdateEntity(Entity entity);
 
-        [OperationContract]
-        Component GetComponent(Guid componentGuid);
-
-        [OperationContract]
-        Source GetSource(Guid sourceGuid);
+        /// <summary>
+        /// Gets an entity from database.
+        /// </summary>
+        /// <typeparam name="T">The type of what you want.</typeparam>
+        /// <param name="entityGuid">The entity GUID.</param>
+        /// <returns>
+        /// The entity you asked for.
+        /// </returns>
+        T GetEntity<T>(Guid entityGuid) where T : Entity;
 
         /// <summary>
         /// Creates a component object.
@@ -45,7 +44,6 @@ namespace HSA.InfoSys.DBManager
         /// <returns>
         /// The created component object.
         /// </returns>
-        [OperationContract]
         Component CreateComponent(string name, string category);
 
         /// <summary>
@@ -55,7 +53,6 @@ namespace HSA.InfoSys.DBManager
         /// <returns>
         /// The created source object.
         /// </returns>
-        [OperationContract]
         Source CreateSource(string sourceURL);
     }
 }

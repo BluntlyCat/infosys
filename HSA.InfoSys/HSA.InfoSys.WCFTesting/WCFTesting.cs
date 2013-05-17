@@ -4,6 +4,7 @@
     using System.Threading;
     using log4net;
     using HSA.InfoSys.Logging;
+    using HSA.InfoSys.DBManager.Data;
 
     public class WCFTesting
     {
@@ -44,11 +45,17 @@
                     {
                         case ConsoleKey.A:
                             log.Info("Add new Component.");
+                            var comp = client.CreateComponent("Michis Special Component", "Funny Stuff") as Component;
+                            log.InfoFormat("Component Created: [{0}]", comp.ToString());
+                            Guid cguid = client.AddEntity(comp);
+                            var dbComp = client.GetEntity(cguid) as Component;
+                            log.InfoFormat("Component from DB: [{0}]", dbComp);
 
-                            DBManagerClient dbClient = new DBManagerClient();
-                            var comp = dbClient.CreateComponent("Michis Special Component", "Funny Stuff");
-
-                            dbClient.AddEntity(comp);
+                            var source = client.CreateSource("http://miitsoft.de") as Source;
+                            log.InfoFormat("Source Created: [{0}]", source.ToString());
+                            Guid sguid = client.AddEntity(source);
+                            var dbSrc = client.GetEntity(sguid) as Source;
+                            log.InfoFormat("Source from DB: [{0}]", dbSrc);
                             break;
 
                         case ConsoleKey.H:

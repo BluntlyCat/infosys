@@ -1,5 +1,5 @@
 ﻿// ------------------------------------------------------------------------
-// <copyright file="Component.cs" company="HSA.InfoSys">
+// <copyright file="Result.cs" company="HSA.InfoSys">
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
@@ -8,39 +8,26 @@ namespace HSA.InfoSys.DBManager.Data
     using System;
     using System.Runtime.Serialization;
 
-    /// <summary>
-    /// A component represents a system as a whole
-    /// for example a web server or a database server.
-    /// </summary>
     [DataContract]
-    public class Component : Entity
+    public class Result : Entity
     {
         /// <summary>
-        /// Gets or sets the name.
+        /// Gets or sets the data.
         /// </summary>
         /// <value>
-        /// The name.
+        /// The data.
         /// </value>
         [DataMember]
-        public virtual string Name { get; set; }
+        public virtual string Data { get; set; }
 
         /// <summary>
-        /// Gets or sets the category.
+        /// Gets or sets the time stamp.
         /// </summary>
         /// <value>
-        /// The category.
+        /// The time stamp.
         /// </value>
         [DataMember]
-        public virtual string Category { get; set; }
-
-        /// <summary>
-        /// Gets or sets the result.
-        /// </summary>
-        /// <value>
-        /// The result.
-        /// </value>
-        [DataMember]
-        public virtual Result Result { get; set; }
+        public virtual DateTime TimeStamp { get; set; }
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
@@ -50,7 +37,7 @@ namespace HSA.InfoSys.DBManager.Data
         /// </returns>
         public override string ToString()
         {
-            return string.Format("{0}, {1}, {2}, {3}", this.EntityId, this.Name, this.Category, this.Result);
+            return string.Format("{0}, {1}", this.Data, this.TimeStamp);
         }
     }
 }

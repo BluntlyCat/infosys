@@ -3,38 +3,48 @@
                     assembly="HSA.InfoSys.DBManager"
                     namespace="HSA.InfoSys.DBManager.Data">
 
-  <class name= "Issue" table ="Issue">
-    <id name ="IssueGUID" type ="guid">
-      <generator class="guid.comb"/>
+  <class name="Entity" table="Entity">
+    <id name="EntityId" type="guid">
+      <generator class="guid.comb" />
     </id>
-    <!--><property name="issueId" type ="int" column="issueId" length ="11" not-null="true" unique="true" />-->
-    <property name="Text" type="string">
-      <column name="text" sql-type="mediumtext" length="16777215" not-null="false"/>
-    </property>
-    <property name="Title" type="string" column="title" length ="40" not-null="true"/>
-    <property name="ThreatLevel" type="int" column="threatlevel" length ="11" not-null="true"/>
-    <property name="Date" type="date" column="date" not-null="true"/>
-    <many-to-one name="Component" class="Component" column="componentGUID"></many-to-one>
-    <many-to-one name="Source" class="Source" column="sourceGUID"></many-to-one>
-  </class>
+    
+    <joined-subclass name="Component" table="Component">
+      <key column="ComponentGUID" />
+      
+      <property name="Name" type="string" column="name" length ="100" not-null="true" />
+      <many-to-one name="Result" class="Result" column="resultGUID"></many-to-one>
+    </joined-subclass>
 
-  <class name= "Component" table ="Component">
-    <id name ="ComponentGUID" type ="guid">
-      <generator class="guid.comb"/>
-    </id>
-    <!--><property name="componentId" type ="int" column="componentId" length ="11" not-null="true" unique="true" />-->
-    <property name="Name" type="string" column="name" length ="100" not-null="true" />
-    <one-to-one name="Result" class="Result" />
-  </class>
+    <joined-subclass name ="Issue" table="Issue">
+      <key column="IssueGUID"/>
+      
+      <property name="Text" type="string">
+        <column name="text" sql-type="mediumtext" length="16777215" not-null="false"/>
+      </property>
+      <property name="Title" type="string" column="title" length ="40" not-null="true"/>
+      <property name="ThreatLevel" type="int" column="threatlevel" length ="11" not-null="true"/>
+      <property name="Date" type="date" column="date" not-null="true"/>
+      <many-to-one name="Component" class="Component" column="componentGUID"></many-to-one>
+      <many-to-one name="Source" class="Source" column="sourceGUID"></many-to-one>
+    </joined-subclass>
 
-  <class name= "Source" table ="Source">
-    <id name ="SourceGUID" type ="guid">
-      <generator class="guid.comb"/>
-    </id>
-    <!--><property name="sourceId" type ="int" column="sourceId" length ="11" not-null="true" unique="true" />-->
-    <property name="URL" type="string" >
-      <column name="URL" length ="2043" not-null="true" />
-    </property>
+    <joined-subclass name="Source" table="Source">
+      <key column="SourceGUID" />
+
+      <property name="URL" type="string" >
+        <column name="URL" length ="2043" not-null="true" />
+      </property>
+    </joined-subclass>
+
+    <joined-subclass name="Result" table="Result">
+      <key column="ResultGUID" />
+
+      <property name="Data" type="string" >
+        <column name="Data" length ="2043" not-null="true" />
+      </property>
+      
+      <property name="TimeStamp" type="timestamp" column="timestamp" not-null="true"/>
+    </joined-subclass>
   </class>
 
 
@@ -43,7 +53,7 @@
         Musst jetzt nochmal anhand von Raffis Email kontrollieren und ausbessern, weil wir uns ja nicht mit nhibernate
         auskennen. Danke!!
   -->
-  
+<!--  
   <class name="System" table="System">
     <id name="SystemGUID" type="guid">
       <generator class="guid.comb"/>
@@ -64,14 +74,6 @@
     <property name="EmailNotification" type="bool" column="emailnotification" not-null="true"/>
   </class>
 
-  <class name="Result" table="Result">
-    <id name ="ResultGUID" type ="guid">
-      <generator class="guid.comb"/>
-    </id>
-    <property name="Data" type="object" column="data" not-null="true"/>
-    <property name="TimeStamp" type="timestamp" column="timestamp" not-null="true"/>
-  </class>
-
   <class name="Scheduler" table="Scheduler">
     <id name ="ResultGUID" type ="guid">
       <generator class="guid.comb"/>
@@ -80,5 +82,6 @@
     <property name="hour" type="int" column="hour" not-null="true"/>
     <property name="TimeStamp" type="timestamp" column="timestamp" not-null="true"/>
   </class>
+  -->
 
 </hibernate-mapping>

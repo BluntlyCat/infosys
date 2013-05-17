@@ -89,7 +89,7 @@ namespace HSA.InfoSys.DBManager
         /// and saves it in database.
         /// </summary>
         /// <param name="entity">The entity to add in database.</param>
-        public void AddEntity(object entity)
+        public Guid AddEntity(Entity entity)
         {
             using (ISession session = OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
@@ -98,13 +98,15 @@ namespace HSA.InfoSys.DBManager
                 transaction.Commit();
                 Log.Info(Properties.Resources.DBMANAGER_ADD_OBJECT);
             }
+
+            return entity.EntityId;
         }
 
         /// <summary>
         /// Saves changings of a object in database.
         /// </summary>
         /// <param name="entity">The entity that should be updated.</param>
-        public void UpdateEntity(object entity)
+        public Guid UpdateEntity(Entity entity)
         {
             using (ISession session = OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
@@ -113,6 +115,8 @@ namespace HSA.InfoSys.DBManager
                 transaction.Commit();
                 Log.Info(Properties.Resources.DBMANAGER_UPDATE_OBJECT);
             }
+
+            return entity.EntityId;
         }
 
         /// <summary>
@@ -123,7 +127,7 @@ namespace HSA.InfoSys.DBManager
         /// <returns>
         /// The entity you asked for.
         /// </returns>
-        private T GetEntity<T>(Guid entityGUID)
+        public T GetEntity<T>(Guid entityGUID) where T : Entity
         {
             T entity;
             using (ISession session = OpenSession())
@@ -135,16 +139,6 @@ namespace HSA.InfoSys.DBManager
             Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ENTITY, typeof(T), entity, entityGUID);
 
             return entity;
-        }
-
-        public Component GetComponent(Guid componentGuid)
-        {
-            return this.GetEntity<Component>(componentGuid);
-        }
-
-        public Source GetSource(Guid sourceGuid)
-        {
-            return this.GetEntity<Source>(sourceGuid);
         }
 
         /// <summary>
@@ -159,7 +153,7 @@ namespace HSA.InfoSys.DBManager
         {
             var component = new Component
             {
-                ComponentGUID = System.Guid.NewGuid(),
+                EntityId = System.Guid.NewGuid(),
                 Category = componentCategory,
                 Name = componentName
             };
@@ -180,7 +174,7 @@ namespace HSA.InfoSys.DBManager
         {
             var source = new Source
             {
-                SourceGUID = System.Guid.NewGuid(),
+                EntityId = System.Guid.NewGuid(),
                 URL = sourceURL
             };
 

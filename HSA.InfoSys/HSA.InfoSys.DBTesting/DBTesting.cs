@@ -47,7 +47,7 @@
                             string s = "99cee797-3ec0-458c-a016-a1bd0001bf34";
                             var newComp = dbManager.CreateComponent("Windows8", "TestWin");
                             dbManager.AddEntity(newComp);
-                            var existingComp = dbManager.GetComponent(new Guid(s));
+                            var existingComp = dbManager.GetEntity<Component>(new Guid(s));
                             break;
                     }
                 }

@@ -6,26 +6,21 @@
 namespace HSA.InfoSys.DBManager.Data
 {
     using System;
+    using System.Runtime.Serialization;
 
     /// <summary>
     /// This class represents the source of an issue.
     /// </summary>
-    public class Source
+    [DataContract]
+    public class Source : Entity
     {
-        /// <summary>
-        /// Gets or sets the source GUID.
-        /// </summary>
-        /// <value>
-        /// The source GUID.
-        /// </value>
-        public virtual Guid SourceGUID { get; set; }
-
         /// <summary>
         /// Gets or sets the source URL.
         /// </summary>
         /// <value>
         /// The URL.
         /// </value>
+        [DataMember]
         public virtual string URL { get; set; }
 
         /// <summary>
@@ -36,7 +31,7 @@ namespace HSA.InfoSys.DBManager.Data
         /// </returns>
         public override string ToString()
         {
-            return string.Format("{0}, {1}", this.SourceGUID, this.URL);
+            return string.Format("{0}, {1}", this.EntityId, this.URL);
         }
     }
 }
