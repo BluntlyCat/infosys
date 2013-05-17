@@ -7,10 +7,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>Confirmation</h2>
-    <p>Thank you for registering. E-Mail was send to admin. Before you can login, your account has to be activated by admin.</p>
+    <p>Thank you for registering. Your registration will be completed if the admin activates your account.</p>
 
 </asp:Content>
-
-
-
-
