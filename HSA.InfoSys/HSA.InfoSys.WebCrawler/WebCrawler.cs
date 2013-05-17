@@ -6,10 +6,8 @@
 namespace HSA.InfoSys.WebCrawler
 {
     using System;
-    using System.Data;
-    using System.Data.Common;
     using System.Threading;
-    using HSA.InfoSys.Logging;
+    using HSA.InfoSys.Common.Logging;
     using log4net;
 
     /// <summary>

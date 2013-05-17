@@ -1,15 +1,27 @@
-﻿namespace HSA.InfoSys.DBTesting
+﻿// ------------------------------------------------------------------------
+// <copyright file="DBTesting.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
+namespace HSA.InfoSys.DBTesting
 {
     using System;
     using System.Threading;
-    using HSA.InfoSys.DBManager;
-    using HSA.InfoSys.DBManager.Data;
-    using HSA.InfoSys.Logging;
+    using HSA.InfoSys.Common.DBManager;
+    using HSA.InfoSys.Common.DBManager.Data;
+    using HSA.InfoSys.Common.Logging;
     using log4net;
 
+    /// <summary>
+    /// Implement your testing methods for NHibernate here.
+    /// </summary>
     public class DBTesting
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Mains the specified args.
+        /// </summary>
+        /// <param name="args">The args.</param>
+        public static void Main(string[] args)
         {
             ILog log = Logging.GetLogger("WCFTesting");
 
@@ -17,10 +29,10 @@
 
             bool running = true;
 
-            Console.WriteLine("");
+            Console.WriteLine(string.Empty);
             Console.WriteLine("Here you can test the DB Nhibernate feautures to the DB Server.");
             Console.WriteLine("To see your options press h or press q for quit.");
-            Console.WriteLine("");
+            Console.WriteLine(string.Empty);
 
             while (running)
             {
@@ -56,14 +68,17 @@
             }
         }
 
+        /// <summary>
+        /// Prints the help.
+        /// </summary>
         private static void PrintHelp()
         {
-            Console.WriteLine("");
+            Console.WriteLine(string.Empty);
             Console.WriteLine("Press h to see this help text.");
             Console.WriteLine("Press q to quit this application.");
             Console.WriteLine("Press s to start a new request to db server.");
 
-            Console.WriteLine("");
+            Console.WriteLine(string.Empty);
         }
     }
 }

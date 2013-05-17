@@ -3,16 +3,14 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.SolrClient
+namespace HSA.InfoSys.Common.SolrClient
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Net;
     using System.Net.Sockets;
     using System.Text;
     using System.Threading;
-    using HSA.InfoSys.Logging;
+    using HSA.InfoSys.Common.Logging;
     using log4net;
 
     /// <summary>

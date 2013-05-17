@@ -3,10 +3,10 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.DBManager
+namespace HSA.InfoSys.Common.DBManager
 {
     using System;
-    using HSA.InfoSys.DBManager.Data;
+    using HSA.InfoSys.Common.DBManager.Data;
 
     /// <summary>
     /// The interface for accessing the data base.
@@ -18,12 +18,14 @@ namespace HSA.InfoSys.DBManager
         /// and saves it in database.
         /// </summary>
         /// <param name="entity">The entity to add in database.</param>
+        /// <returns>The GUID of the added entity.</returns>
         Guid AddEntity(Entity entity);
 
         /// <summary>
         /// Saves changings of a object in database.
         /// </summary>
         /// <param name="entity">The entity that should be updated.</param>
+        /// <returns>The GUID of the updated entity.</returns>
         Guid UpdateEntity(Entity entity);
 
         /// <summary>

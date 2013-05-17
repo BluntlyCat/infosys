@@ -3,11 +3,11 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.DBManager
+namespace HSA.InfoSys.Common.DBManager
 {
     using System;
-    using HSA.InfoSys.DBManager.Data;
-    using HSA.InfoSys.Logging;
+    using HSA.InfoSys.Common.DBManager.Data;
+    using HSA.InfoSys.Common.Logging;
     using log4net;
     using NHibernate;
     using NHibernate.Cfg;
@@ -89,6 +89,7 @@ namespace HSA.InfoSys.DBManager
         /// and saves it in database.
         /// </summary>
         /// <param name="entity">The entity to add in database.</param>
+        /// <returns>The GUID of the added entity.</returns>
         public Guid AddEntity(Entity entity)
         {
             using (ISession session = OpenSession())
@@ -106,6 +107,7 @@ namespace HSA.InfoSys.DBManager
         /// Saves changings of a object in database.
         /// </summary>
         /// <param name="entity">The entity that should be updated.</param>
+        /// <returns>The GUID of the updated entity.</returns>
         public Guid UpdateEntity(Entity entity)
         {
             using (ISession session = OpenSession())

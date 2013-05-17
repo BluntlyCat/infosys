@@ -6,12 +6,11 @@
 namespace HSA.InfoSys.WebCrawler
 {
     using System;
-    using System.IO;
     using System.ServiceModel;
-    using HSA.InfoSys.DBManager;
-    using HSA.InfoSys.DBManager.Data;
-    using HSA.InfoSys.Logging;
-    using HSA.InfoSys.SolrClient;
+    using HSA.InfoSys.Common.DBManager;
+    using HSA.InfoSys.Common.DBManager.Data;
+    using HSA.InfoSys.Common.Logging;
+    using HSA.InfoSys.Common.SolrClient;
     using log4net;
 
     /// <summary>
@@ -111,6 +110,7 @@ namespace HSA.InfoSys.WebCrawler
         /// Adds the entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
+        /// <returns>The GUID of the new entity.</returns>
         public Guid AddEntity(Entity entity)
         {
             return dbManager.AddEntity(entity);
@@ -120,6 +120,7 @@ namespace HSA.InfoSys.WebCrawler
         /// Updates the entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
+        /// <returns>The GUID of the updated entity.</returns>
         public Guid UpdateEntity(Entity entity)
         {
             return dbManager.UpdateEntity(entity);
@@ -128,8 +129,7 @@ namespace HSA.InfoSys.WebCrawler
         /// <summary>
         /// Gets an entity from database.
         /// </summary>
-        /// <typeparam name="T">The type of what you want.</typeparam>
-        /// <param name="entityGUID">The entity GUID.</param>
+        /// <param name="entityGuid">The GUID of the entity we want from database.</param>
         /// <returns>
         /// The entity you asked for.
         /// </returns>

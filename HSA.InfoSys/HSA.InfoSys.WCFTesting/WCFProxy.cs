@@ -15,9 +15,11 @@ namespace HSA.InfoSys.WCFProxy
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Entity", Namespace="http://schemas.datacontract.org/2004/07/HSA.InfoSys.DBManager.Data")]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HSA.InfoSys.DBManager.Data.Component))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HSA.InfoSys.DBManager.Data.Source))]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Entity", Namespace="http://schemas.datacontract.org/2004/07/HSA.InfoSys.Common.DBManager.Data")]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HSA.InfoSys.Common.DBManager.Data.Source))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HSA.InfoSys.Common.DBManager.Data.Component))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HSA.InfoSys.Common.DBManager.Data.Result))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HSA.InfoSys.Common.DBManager.Data.Issue))]
     public partial class Entity : object, System.Runtime.Serialization.IExtensibleDataObject
     {
         
@@ -53,13 +55,37 @@ namespace HSA.InfoSys.WCFProxy
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Component", Namespace="http://schemas.datacontract.org/2004/07/HSA.InfoSys.DBManager.Data")]
-    public partial class Component : HSA.InfoSys.DBManager.Data.Entity
+    [System.Runtime.Serialization.DataContractAttribute(Name="Source", Namespace="http://schemas.datacontract.org/2004/07/HSA.InfoSys.Common.DBManager.Data")]
+    public partial class Source : HSA.InfoSys.Common.DBManager.Data.Entity
+    {
+        
+        private string URLField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string URL
+        {
+            get
+            {
+                return this.URLField;
+            }
+            set
+            {
+                this.URLField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Component", Namespace="http://schemas.datacontract.org/2004/07/HSA.InfoSys.Common.DBManager.Data")]
+    public partial class Component : HSA.InfoSys.Common.DBManager.Data.Entity
     {
         
         private string CategoryField;
         
         private string NameField;
+        
+        private HSA.InfoSys.Common.DBManager.Data.Result ResultField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string Category
@@ -86,26 +112,151 @@ namespace HSA.InfoSys.WCFProxy
                 this.NameField = value;
             }
         }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public HSA.InfoSys.Common.DBManager.Data.Result Result
+        {
+            get
+            {
+                return this.ResultField;
+            }
+            set
+            {
+                this.ResultField = value;
+            }
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Source", Namespace="http://schemas.datacontract.org/2004/07/HSA.InfoSys.DBManager.Data")]
-    public partial class Source : HSA.InfoSys.DBManager.Data.Entity
+    [System.Runtime.Serialization.DataContractAttribute(Name="Result", Namespace="http://schemas.datacontract.org/2004/07/HSA.InfoSys.Common.DBManager.Data")]
+    public partial class Result : HSA.InfoSys.Common.DBManager.Data.Entity
     {
         
-        private string URLField;
+        private string DataField;
+        
+        private System.DateTime TimeStampField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string URL
+        public string Data
         {
             get
             {
-                return this.URLField;
+                return this.DataField;
             }
             set
             {
-                this.URLField = value;
+                this.DataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime TimeStamp
+        {
+            get
+            {
+                return this.TimeStampField;
+            }
+            set
+            {
+                this.TimeStampField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Issue", Namespace="http://schemas.datacontract.org/2004/07/HSA.InfoSys.Common.DBManager.Data")]
+    public partial class Issue : HSA.InfoSys.Common.DBManager.Data.Entity
+    {
+        
+        private HSA.InfoSys.Common.DBManager.Data.Component ComponentField;
+        
+        private System.DateTime DateField;
+        
+        private HSA.InfoSys.Common.DBManager.Data.Source SourceField;
+        
+        private string TextField;
+        
+        private int ThreatLevelField;
+        
+        private string TitleField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public HSA.InfoSys.Common.DBManager.Data.Component Component
+        {
+            get
+            {
+                return this.ComponentField;
+            }
+            set
+            {
+                this.ComponentField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Date
+        {
+            get
+            {
+                return this.DateField;
+            }
+            set
+            {
+                this.DateField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public HSA.InfoSys.Common.DBManager.Data.Source Source
+        {
+            get
+            {
+                return this.SourceField;
+            }
+            set
+            {
+                this.SourceField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Text
+        {
+            get
+            {
+                return this.TextField;
+            }
+            set
+            {
+                this.TextField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ThreatLevel
+        {
+            get
+            {
+                return this.ThreatLevelField;
+            }
+            set
+            {
+                this.ThreatLevelField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title
+        {
+            get
+            {
+                return this.TitleField;
+            }
+            set
+            {
+                this.TitleField = value;
             }
         }
     }
@@ -127,19 +278,19 @@ public interface ICrawlController
     void StopServices();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrawlController/AddEntity", ReplyAction="http://tempuri.org/ICrawlController/AddEntityResponse")]
-    System.Guid AddEntity(HSA.InfoSys.DBManager.Data.Entity entity);
+    System.Guid AddEntity(HSA.InfoSys.Common.DBManager.Data.Entity entity);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrawlController/UpdateEntity", ReplyAction="http://tempuri.org/ICrawlController/UpdateEntityResponse")]
-    System.Guid UpdateEntity(HSA.InfoSys.DBManager.Data.Entity entity);
+    System.Guid UpdateEntity(HSA.InfoSys.Common.DBManager.Data.Entity entity);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrawlController/GetEntity", ReplyAction="http://tempuri.org/ICrawlController/GetEntityResponse")]
-    HSA.InfoSys.DBManager.Data.Entity GetEntity(System.Guid entityGuid);
+    HSA.InfoSys.Common.DBManager.Data.Entity GetEntity(System.Guid entityGuid);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrawlController/CreateComponent", ReplyAction="http://tempuri.org/ICrawlController/CreateComponentResponse")]
-    HSA.InfoSys.DBManager.Data.Component CreateComponent(string name, string category);
+    HSA.InfoSys.Common.DBManager.Data.Component CreateComponent(string name, string category);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICrawlController/CreateSource", ReplyAction="http://tempuri.org/ICrawlController/CreateSourceResponse")]
-    HSA.InfoSys.DBManager.Data.Source CreateSource(string sourceURL);
+    HSA.InfoSys.Common.DBManager.Data.Source CreateSource(string sourceURL);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -191,27 +342,27 @@ public partial class CrawlControllerClient : System.ServiceModel.ClientBase<ICra
         base.Channel.StopServices();
     }
     
-    public System.Guid AddEntity(HSA.InfoSys.DBManager.Data.Entity entity)
+    public System.Guid AddEntity(HSA.InfoSys.Common.DBManager.Data.Entity entity)
     {
         return base.Channel.AddEntity(entity);
     }
     
-    public System.Guid UpdateEntity(HSA.InfoSys.DBManager.Data.Entity entity)
+    public System.Guid UpdateEntity(HSA.InfoSys.Common.DBManager.Data.Entity entity)
     {
         return base.Channel.UpdateEntity(entity);
     }
     
-    public HSA.InfoSys.DBManager.Data.Entity GetEntity(System.Guid entityGuid)
+    public HSA.InfoSys.Common.DBManager.Data.Entity GetEntity(System.Guid entityGuid)
     {
         return base.Channel.GetEntity(entityGuid);
     }
     
-    public HSA.InfoSys.DBManager.Data.Component CreateComponent(string name, string category)
+    public HSA.InfoSys.Common.DBManager.Data.Component CreateComponent(string name, string category)
     {
         return base.Channel.CreateComponent(name, category);
     }
     
-    public HSA.InfoSys.DBManager.Data.Source CreateSource(string sourceURL)
+    public HSA.InfoSys.Common.DBManager.Data.Source CreateSource(string sourceURL)
     {
         return base.Channel.CreateSource(sourceURL);
     }

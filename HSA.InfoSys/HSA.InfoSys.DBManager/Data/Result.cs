@@ -3,11 +3,14 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.DBManager.Data
+namespace HSA.InfoSys.Common.DBManager.Data
 {
     using System;
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// This class represents the search result to an issue.
+    /// </summary>
     [DataContract]
     public class Result : Entity
     {

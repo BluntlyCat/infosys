@@ -1,27 +1,34 @@
-﻿namespace HSA.InfoSys.NutchTesting
+﻿// ------------------------------------------------------------------------
+// <copyright file="NutchTesting.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
+namespace HSA.InfoSys.NutchTesting
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using HSA.InfoSys.DBManager.Data;
     using System.Threading;
+    using HSA.InfoSys.Common.Logging;
     using log4net;
-    using HSA.InfoSys.Logging;
-    using HSA.InfoSys.DBManager;
 
+    /// <summary>
+    /// Implement your testing methods for Nutch here.
+    /// </summary>
     public class NutchTesting
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Mains the specified args.
+        /// </summary>
+        /// <param name="args">The args.</param>
+        public static void Main(string[] args)
         {
             ILog log = Logging.GetLogger("NutchTesting");
 
             bool running = true;
 
-            Console.WriteLine("");
+            Console.WriteLine(string.Empty);
             Console.WriteLine("Here you can test the nutch funcionality.");
             Console.WriteLine("To see your options press h or press q for quit.");
-            Console.WriteLine("");
+            Console.WriteLine(string.Empty);
 
             while (running)
             {
@@ -52,14 +59,17 @@
             }
         }
 
+        /// <summary>
+        /// Prints the help.
+        /// </summary>
         private static void PrintHelp()
         {
-            Console.WriteLine("");
+            Console.WriteLine(string.Empty);
             Console.WriteLine("Press h to see this help text.");
             Console.WriteLine("Press q to quit this application.");
             Console.WriteLine("Press s to start a new request to nutch server.");
 
-            Console.WriteLine("");
+            Console.WriteLine(string.Empty);
         }
     }
 }

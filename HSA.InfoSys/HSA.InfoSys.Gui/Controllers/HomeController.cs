@@ -2,11 +2,12 @@
 {
     using System.Web.Mvc;
     using log4net;
+    using HSA.InfoSys.Common.Logging;
 
     [HandleError]
     public class HomeController : Controller
     {
-        private static readonly ILog log = Logging.Logging.GetLogger("Gui");
+        private static readonly ILog log = Logging.GetLogger("Gui");
         private CrawlControllerClient client = new CrawlControllerClient();
 
         [Authorize]

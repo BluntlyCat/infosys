@@ -1,14 +1,26 @@
-﻿namespace HSA.InfoSys.WCFTesting
+﻿// ------------------------------------------------------------------------
+// <copyright file="WCFTesting.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
+namespace HSA.InfoSys.WCFTesting
 {
     using System;
     using System.Threading;
+    using HSA.InfoSys.Common.DBManager.Data;
+    using HSA.InfoSys.Common.Logging;
     using log4net;
-    using HSA.InfoSys.Logging;
-    using HSA.InfoSys.DBManager.Data;
 
+    /// <summary>
+    /// Implement your testing methods for WCF here.
+    /// </summary>
     public class WCFTesting
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Mains the specified args.
+        /// </summary>
+        /// <param name="args">The args.</param>
+        public static void Main(string[] args)
         {
             ILog log = Logging.GetLogger("WCFTesting");
 
@@ -20,10 +32,10 @@
 
             string response = string.Empty;
 
-            Console.WriteLine("");
+            Console.WriteLine(string.Empty);
             Console.WriteLine("Here you can test the WCF feautures to the WebCrawler.");
             Console.WriteLine("To see your options press h or press q for quit.");
-            Console.WriteLine("");
+            Console.WriteLine(string.Empty);
 
             client.Open();
 
@@ -41,7 +53,7 @@
                     ConsoleKeyInfo keyInfo = Console.ReadKey(true);
                     log.InfoFormat("Key [{0}] was pressed.", keyInfo.Key);
 
-                    switch(keyInfo.Key)
+                    switch (keyInfo.Key)
                     {
                         case ConsoleKey.A:
                             log.Info("Add new Component.");
@@ -72,16 +84,18 @@
                         case ConsoleKey.S:
                             log.Info("Send request to host.");
 
-                            if(client.State == System.ServiceModel.CommunicationState.Opened)
+                            if (client.State == System.ServiceModel.CommunicationState.Opened)
+                            {
                                 try
                                 {
                                     client.StartSearch("solr");
-                                    
                                 }
                                 catch
                                 {
                                     log.Error("Unable to communicate with host.");
                                 }
+                            }
+
                             break;
                     }
                 }
@@ -90,14 +104,17 @@
             }
         }
 
+        /// <summary>
+        /// Prints the help.
+        /// </summary>
         private static void PrintHelp()
         {
-            Console.WriteLine("");
+            Console.WriteLine(string.Empty);
             Console.WriteLine("Press h to see this help text.");
             Console.WriteLine("Press q to quit this application.");
             Console.WriteLine("Press s to start a new search request to solr server.");
 
-            Console.WriteLine("");
+            Console.WriteLine(string.Empty);
         }
     }
 }

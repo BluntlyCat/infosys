@@ -3,7 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Logging
+namespace HSA.InfoSys.Common.Logging
 {
     using System.Collections;
     using System.Collections.Generic;

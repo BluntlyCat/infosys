@@ -1,24 +1,36 @@
-﻿namespace HSA.InfoSys.SolrTesting
+﻿// ------------------------------------------------------------------------
+// <copyright file="SolrTesting.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
+namespace HSA.InfoSys.SolrTesting
 {
     using System;
     using System.Threading;
-    using HSA.InfoSys.SolrClient;
-    using HSA.InfoSys.Logging;
+    using HSA.InfoSys.Common.Logging;
+    using HSA.InfoSys.Common.SolrClient;
     using log4net;
 
+    /// <summary>
+    /// Implement your testing methods for Solr here.
+    /// </summary>
     public class SolrTesting
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Mains the specified args.
+        /// </summary>
+        /// <param name="args">The args.</param>
+        public static void Main(string[] args)
         {
             ILog log = Logging.GetLogger("SolrTesting");
 
             SolrClient client = new SolrClient(Properties.Settings.Default.SOLR_PORT, Properties.Settings.Default.SOLR_HOST);
             bool running = true;
 
-            Console.WriteLine("");
+            Console.WriteLine(string.Empty);
             Console.WriteLine("Here you can test the Solr feautures.");
             Console.WriteLine("To see your options press h or press q for quit.");
-            Console.WriteLine("");
+            Console.WriteLine(string.Empty);
 
             while (running)
             {
@@ -50,14 +62,17 @@
             }
         }
 
+        /// <summary>
+        /// Prints the help.
+        /// </summary>
         private static void PrintHelp()
         {
-            Console.WriteLine("");
+            Console.WriteLine(string.Empty);
             Console.WriteLine("Press h to see this help text.");
             Console.WriteLine("Press q to quit this application.");
             Console.WriteLine("Press s to start a new search request to solr server.");
 
-            Console.WriteLine("");
+            Console.WriteLine(string.Empty);
         }
     }
 }

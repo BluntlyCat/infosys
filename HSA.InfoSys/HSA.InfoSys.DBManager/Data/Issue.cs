@@ -3,13 +3,10 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.DBManager.Data
+namespace HSA.InfoSys.Common.DBManager.Data
 {
     using System;
-    using System.Collections.Generic;
     using System.Runtime.Serialization;
-    using System.Linq;
-    using System.Text;
 
     /// <summary>
     /// The description of a security issue for a component.
