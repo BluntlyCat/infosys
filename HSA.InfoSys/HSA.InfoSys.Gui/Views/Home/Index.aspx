@@ -5,6 +5,9 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    
+    <p>Momentan ist diese Seite eine Dev-Testing Seite zum rumprobieren. Im Release kommt hier nur Text, z.B. "Willkommen auf unserer Seite..."</p>
+
     <form action="/Home/SearchResult" method="post">
         <div class="container">
             <div class="contentbox cb-large left-nomargin">
