@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HSA.InfoSys.WebCrawler.Properties {
+namespace HSA.InfoSys.CrawlerService.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace HSA.InfoSys.WebCrawler.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HSA.InfoSys.WebCrawler.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HSA.InfoSys.CrawlerService.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

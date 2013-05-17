@@ -3,7 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.WebCrawler
+namespace HSA.InfoSys.CrawlerService
 {
     using System;
     using System.ServiceModel;

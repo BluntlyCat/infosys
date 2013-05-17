@@ -3,7 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.WebCrawler.Properties
+namespace HSA.InfoSys.CrawlerService.Properties
 {    
     // Diese Klasse ermöglicht die Behandlung bestimmter Ereignisse der Einstellungsklasse:
     //  Das SettingChanging-Ereignis wird ausgelöst, bevor der Wert einer Einstellung geändert wird.

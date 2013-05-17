@@ -3,7 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.WebCrawler
+namespace HSA.InfoSys.CrawlerService
 {
     using System;
     using System.Threading;
@@ -14,7 +14,7 @@ namespace HSA.InfoSys.WebCrawler
     /// The WebCrawler searches the internet
     /// for security issues of several hardware
     /// </summary>
-    public class WebCrawler
+    public class CrawlerService
     {
         /// <summary>
         /// The logger.
@@ -37,7 +37,7 @@ namespace HSA.InfoSys.WebCrawler
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
-           WebCrawler crawler = new WebCrawler();
+           CrawlerService crawler = new CrawlerService();
            crawler.RunServer();
         }
 
