@@ -13,7 +13,7 @@
         public ActionResult Index()
         {
             ViewData["navid"] = "home";
-            ViewData["label1"] = "System Setup";
+            ViewData["label1"] = Properties.Resources.TEST_LABLE1;
 
             // Test
             //MySqlConnection connection = new MySqlConnection("server=infosys.informatik.hs-augsburg.de;uid=root;pwd=goqu!ae0Ah;database=infosys");
