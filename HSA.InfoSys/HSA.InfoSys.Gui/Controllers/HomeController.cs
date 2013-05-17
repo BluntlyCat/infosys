@@ -1,81 +1,96 @@
-﻿namespace HSA.InfoSys.Gui.Controllers
+﻿// ------------------------------------------------------------------------
+// <copyright file="HomeController.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
+namespace HSA.InfoSys.Gui.Controllers
 {
     using System.Web.Mvc;
-    using log4net;
     using HSA.InfoSys.Common.Logging;
+    using log4net;
 
+    /// <summary>
+    /// The controller for the home page.
+    /// </summary>
     [HandleError]
     public class HomeController : Controller
     {
-        private static readonly ILog log = Logging.GetLogger("Gui");
-        private CrawlControllerClient client = new CrawlControllerClient();
+        /// <summary>
+        /// The logger for the home controller
+        /// </summary>
+        private static readonly ILog Log = Logging.GetLogger("HomeController");
 
+        /// <summary>
+        /// Shows the home page.
+        /// </summary>
+        /// <returns>The result of this action.</returns>
         [Authorize]
         public ActionResult Index()
         {
-            ViewData["navid"] = "home";
-            ViewData["label1"] = Properties.Resources.TEST_LABLE1;
+            this.ViewData["navid"] = "home";
+            this.ViewData["label1"] = Properties.Resources.TEST_LABLE1;
 
-            // Test
-            //MySqlConnection connection = new MySqlConnection("server=infosys.informatik.hs-augsburg.de;uid=root;pwd=goqu!ae0Ah;database=infosys");
-            //connection.Open();
+            //// Test
+            //// MySqlConnection connection = new MySqlConnection("server=infosys.informatik.hs-augsburg.de;uid=root;pwd=goqu!ae0Ah;database=infosys");
+            //// connection.Open();
 
-
-            return View();
+            return this.View();
         }
 
+        /// <summary>
+        /// Shows the about site.
+        /// </summary>
+        /// <returns>The result of this action.</returns>
         public ActionResult About()
         {
-            ViewData["navid"] = "about";
-            ViewData["message"] = "About Action";
+            this.ViewData["navid"] = "about";
+            this.ViewData["message"] = "About Action";
 
-            return View();
+            return this.View();
         }
 
+        /// <summary>
+        /// Shows the contact site.
+        /// </summary>
+        /// <returns>The result of this action.</returns>
         public ActionResult Contact()
         {
-            ViewData["navid"] = "contact";
-            ViewData["message"] = "Contact Action";
+            this.ViewData["navid"] = "contact";
+            this.ViewData["message"] = "Contact Action";
 
-            //log.Debug("jemand will kontakt aufnehmen");
+            //// log.Debug("jemand will kontakt aufnehmen");
 
-            return View();
+            return this.View();
         }
 
+        /// <summary>
+        /// Shows the search results.
+        /// </summary>
+        /// <returns>The result of this action.</returns>
         [Authorize]
         [HttpPost]
         public ActionResult SearchResult()
         {
-            
-            /*
-            
-            // Beispiel nhibernate
-            IDBManager dbm = new DBManager.DBManager();
-
-            Component comp = new Component { componentGUID = System.Guid.NewGuid(), name = "abc", category = "hardware", componentId = 12 };
-
-            dbm.addNewObject(comp);
-             * */
-
             /*
             // Beispiel, zugriff über wcf
             CrawlControllerClient client = new CrawlControllerClient();
-            client.
-             * */
-            
 
+            var comp = client.CreateComponent("abc", "nutzloser Kram");
 
-            ViewData["navid"] = "home";
+            client.AddEntity(comp);
+            */
+
+            this.ViewData["navid"] = "home";
 
             // get POST data from form
             string[] components = Request["components[]"].Split(',');
 
-            //string test = Request.Form["components"];
+            // string test = Request.Form["components"];
 
             // vars to view
-            ViewData["components"] = components;
+            this.ViewData["components"] = components;
 
-            return View();
+            return this.View();
         }
     }
 }

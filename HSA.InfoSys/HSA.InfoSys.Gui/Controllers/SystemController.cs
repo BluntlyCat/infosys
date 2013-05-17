@@ -1,39 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Security;
-
+﻿// ------------------------------------------------------------------------
+// <copyright file="SystemController.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
 namespace HSA.InfoSys.Gui.Controllers
 {
+    using System.Web.Mvc;
+    using System.Web.Security;
+
+    /// <summary>
+    /// The controller for the system.
+    /// </summary>
     [HandleError]
     public class SystemController : Controller
     {
+        /// <summary>
+        /// Called when the home page is loading.
+        /// </summary>
+        /// <returns>The result of this action.</returns>
         [Authorize]
         public ActionResult Index()
         {
-            ViewData["navid"] = "mysystems";
-            return View();
+            this.ViewData["navid"] = "mysystems";
+            return this.View();
         }
 
+        /// <summary>
+        /// Called when page components is loading.
+        /// </summary>
+        /// <returns>The result of this action.</returns>
         [Authorize]
         public ActionResult Components()
         {
-            ViewData["navid"] = "mysystems";
-            return View();
+            this.ViewData["navid"] = "mysystems";
+            return this.View();
         }
 
+        /// <summary>
+        /// Called when page search is loading.
+        /// </summary>
+        /// <returns>The result of this action.</returns>
         [Authorize]
         public ActionResult SearchConfig()
         {
-            ViewData["navid"] = "mysystems";
+            this.ViewData["navid"] = "mysystems";
 
             MembershipUser user = Membership.GetUser();
-            ViewData["useremail"] = user.Email;
+            this.ViewData["useremail"] = user.Email;
 
-            return View();
+            return this.View();
         }
-
     }
 }

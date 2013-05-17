@@ -9,7 +9,7 @@ namespace MvcReCaptcha
     using System.Web.Mvc;
 
     /// <summary>
-    /// 
+    /// Spam prevention for the web interface.
     /// </summary>
     public class CaptchaValidatorAttribute : ActionFilterAttribute
     {
