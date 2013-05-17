@@ -89,7 +89,7 @@ namespace HSA.InfoSys.DBManager
         /// and saves it in database.
         /// </summary>
         /// <param name="entity">The entity to add in database.</param>
-        public void AddNewObject(object entity)
+        public void AddEntity(object entity)
         {
             using (ISession session = OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
@@ -104,7 +104,7 @@ namespace HSA.InfoSys.DBManager
         /// Saves changings of a object in database.
         /// </summary>
         /// <param name="entity">The entity that should be updated.</param>
-        public void UpdateObject(object entity)
+        public void UpdateEntity(object entity)
         {
             using (ISession session = OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
@@ -123,7 +123,7 @@ namespace HSA.InfoSys.DBManager
         /// <returns>
         /// The entity you asked for.
         /// </returns>
-        public T GetEntity<T>(Guid entityGUID)
+        private T GetEntity<T>(Guid entityGUID)
         {
             T entity;
             using (ISession session = OpenSession())
@@ -135,6 +135,16 @@ namespace HSA.InfoSys.DBManager
             Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ENTITY, typeof(T), entity, entityGUID);
 
             return entity;
+        }
+
+        public Component GetComponent(Guid componentGuid)
+        {
+            return this.GetEntity<Component>(componentGuid);
+        }
+
+        public Source GetSource(Guid sourceGuid)
+        {
+            return this.GetEntity<Source>(sourceGuid);
         }
 
         /// <summary>

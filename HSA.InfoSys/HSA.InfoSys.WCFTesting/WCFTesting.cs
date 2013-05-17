@@ -17,8 +17,6 @@
 
             bool requestSent = false;
 
-            int key = -1;
-
             string response = string.Empty;
 
             Console.WriteLine("");
@@ -35,7 +33,6 @@
                     log.InfoFormat("Got response from solr: [{0}]", response);
 
                     requestSent = false;
-                    key = -1;
                 }
 
                 if (Console.KeyAvailable)
@@ -45,6 +42,15 @@
 
                     switch(keyInfo.Key)
                     {
+                        case ConsoleKey.A:
+                            log.Info("Add new Component.");
+
+                            DBManagerClient dbClient = new DBManagerClient();
+                            var comp = dbClient.CreateComponent("Michis Special Component", "Funny Stuff");
+
+                            dbClient.AddEntity(comp);
+                            break;
+
                         case ConsoleKey.H:
                             log.Info("Print help text.");
                             PrintHelp();
@@ -62,7 +68,7 @@
                             if(client.State == System.ServiceModel.CommunicationState.Opened)
                                 try
                                 {
-                                    key = client.StartSearch("solr");
+                                    client.StartSearch("solr");
                                     
                                 }
                                 catch

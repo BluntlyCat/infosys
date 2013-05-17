@@ -6,11 +6,13 @@
 namespace HSA.InfoSys.DBManager.Data
 {
     using System;
+    using System.Runtime.Serialization;
 
     /// <summary>
     /// A component represents a system as a whole
     /// for example a web server or a database server.
     /// </summary>
+    [KnownType(typeof(Component))]
     public class Component
     {
         /// <summary>
@@ -19,6 +21,7 @@ namespace HSA.InfoSys.DBManager.Data
         /// <value>
         /// The component GUID.
         /// </value>
+        [DataMember]
         public virtual Guid ComponentGUID { get; set; }
 
         /// <summary>
@@ -27,6 +30,7 @@ namespace HSA.InfoSys.DBManager.Data
         /// <value>
         /// The name.
         /// </value>
+        [DataMember]
         public virtual string Name { get; set; }
 
         /// <summary>
@@ -35,6 +39,7 @@ namespace HSA.InfoSys.DBManager.Data
         /// <value>
         /// The category.
         /// </value>
+        [DataMember]
         public virtual string Category { get; set; }
 
         /// <summary>

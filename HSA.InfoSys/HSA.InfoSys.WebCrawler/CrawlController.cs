@@ -11,13 +11,16 @@ namespace HSA.InfoSys.WebCrawler
     using HSA.InfoSys.Logging;
     using HSA.InfoSys.SolrClient;
     using log4net;
+    using HSA.InfoSys.DBManager.Data;
+    using System.Runtime.Serialization;
 
     /// <summary>
     /// This class is the controller for the crawler
     /// it implements an interface for communication
     /// between the crawler and the gui by using wcf.
     /// </summary>
-    public class CrawlController : ICrawlController
+    [KnownType(typeof(Component))]
+    public class CrawlController : ICrawlController, IDBManager
     {
         /// <summary>
         /// The logger.
@@ -32,7 +35,7 @@ namespace HSA.InfoSys.WebCrawler
         /// <summary>
         /// The db manager.
         /// </summary>
-        private IDBManager dbManager;
+        private static IDBManager dbManager = DBManager.GetDBManager();
 
         /// <summary>
         /// Our delegate for invoking an async callback.
@@ -57,6 +60,8 @@ namespace HSA.InfoSys.WebCrawler
             Log.Info(Properties.Resources.CRAWL_CONTROLLER_WCF_HOST_CLOSED);
             this.host.Close();
         }
+
+        #region ICrawlController Service Contract
 
         /// <summary>
         /// Starts a new search.
@@ -93,7 +98,6 @@ namespace HSA.InfoSys.WebCrawler
         public void StartServices()
         {
             this.host = new ServiceHost(typeof(CrawlController));
-            this.dbManager = DBManager.GetDBManager();
         }
 
         /// <summary>
@@ -103,5 +107,41 @@ namespace HSA.InfoSys.WebCrawler
         {
             Log.Info(Properties.Resources.CRAWL_CONTROLLER_SHUTDOWN);
         }
+
+        #endregion
+
+        #region IDBManager Service Contract
+
+        public void AddEntity(object entity)
+        {
+            dbManager.AddEntity(entity);
+        }
+
+        public void UpdateEntity(object entity)
+        {
+            dbManager.UpdateEntity(entity);
+        }
+
+        public Component GetComponent(Guid componentGuid)
+        {
+            return dbManager.GetComponent(componentGuid);
+        }
+
+        public Source GetSource(Guid sourceGuid)
+        {
+            return dbManager.GetSource(sourceGuid);
+        }
+
+        public Component CreateComponent(string name, string categroy)
+        {
+            return dbManager.CreateComponent(name, categroy);
+        }
+
+        public Source CreateSource(string sourceURL)
+        {
+            return dbManager.CreateSource(sourceURL);
+        }
+
+        #endregion
     }
 }
