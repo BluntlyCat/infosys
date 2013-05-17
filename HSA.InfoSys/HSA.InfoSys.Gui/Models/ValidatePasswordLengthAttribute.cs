@@ -19,7 +19,7 @@ namespace HSA.InfoSys.Gui.Models
         /// <summary>
         /// The default error message
         /// </summary>
-        private const string DefaultErrorMessage = Properties.Resources.VALIDATE_PASSWORD_LENGTH;
+        //private readonly string DefaultErrorMessage = Properties.Resources.VALIDATE_PASSWORD_LENGTH;
 
         /// <summary>
         /// The minimum characters
@@ -29,7 +29,7 @@ namespace HSA.InfoSys.Gui.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="ValidatePasswordLengthAttribute"/> class.
         /// </summary>
-        public ValidatePasswordLengthAttribute() : base(DefaultErrorMessage)
+        public ValidatePasswordLengthAttribute() : base(Properties.Resources.VALIDATE_PASSWORD_LENGTH)
         {
         }
 

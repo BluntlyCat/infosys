@@ -11,7 +11,7 @@ namespace HSA.InfoSys.Gui.Models
     /// <summary>
     /// This class provides the functionality for registration.
     /// </summary>
-    [PropertiesMustMatch("Password", "ConfirmPassword", ErrorMessage = Properties.Resources.REGISTER_MODEL_PASSWORD_MISSMATCH)]
+    [PropertiesMustMatch("Password", "ConfirmPassword", ErrorMessage = "Das Kennwort entspricht nicht dem Bestätigungskennwort.")]
     public class RegisterModel
     {
         /// <summary>

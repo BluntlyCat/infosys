@@ -19,7 +19,7 @@ namespace HSA.InfoSys.Gui.Models
         /// <summary>
         /// The default error message
         /// </summary>
-        private const string DefaultErrorMessage = Properties.Resources.PROPERTIE_MATCH_NOT_EQUAL;
+        //private readonly string DefaultErrorMessage = Properties.Resources.PROPERTIE_MATCH_NOT_EQUAL;
 
         /// <summary>
         /// The type id.
@@ -31,8 +31,7 @@ namespace HSA.InfoSys.Gui.Models
         /// </summary>
         /// <param name="originalProperty">The original property.</param>
         /// <param name="confirmProperty">The confirm property.</param>
-        public PropertiesMustMatchAttribute(string originalProperty, string confirmProperty)
-            : base(DefaultErrorMessage)
+        public PropertiesMustMatchAttribute(string originalProperty, string confirmProperty) : base(Properties.Resources.PROPERTIE_MATCH_NOT_EQUAL)
         {
             this.OriginalProperty = originalProperty;
             this.ConfirmProperty = confirmProperty;
