@@ -7,8 +7,12 @@ namespace HSA.InfoSys.Common.Logging
 {
     using System.Collections;
     using System.Collections.Generic;
+    using System.Linq;
     using log4net;
     using log4net.Config;
+    using log4net.Repository.Hierarchy;
+    using log4net.Appender;
+    using System.Text;
 
     /// <summary>
     /// Handles requests for logger for a specific class,
@@ -66,8 +70,9 @@ namespace HSA.InfoSys.Common.Logging
         private static void CreateBaseLogger()
         {
             config = XmlConfigurator.Configure();
-            AddLogger(baseLogger);
 
+            AddLogger(baseLogger);
+            
             logger[baseLogger].Debug(Properties.Resources.LOGGING_BASELOGGER_CREATED);
         }
 
@@ -77,7 +82,9 @@ namespace HSA.InfoSys.Common.Logging
         /// <param name="name">The name of the logger.</param>
         private static void AddLogger(string name)
         {
-            logger.Add(name, LogManager.GetLogger(name));
+            var log = log4net.LogManager.GetLogger(name);
+
+            logger.Add(name, log);
             logger[baseLogger].DebugFormat(Properties.Resources.LOGGING_NEW_LOGGER_ADDED, name);
         }
     }

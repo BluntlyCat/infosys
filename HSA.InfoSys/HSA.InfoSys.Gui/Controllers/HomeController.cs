@@ -43,6 +43,8 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <returns>The result of this action.</returns>
         public ActionResult About()
         {
+            Log.Info("Testlog in Database");
+
             this.ViewData["navid"] = "about";
             this.ViewData["message"] = "About Action";
 

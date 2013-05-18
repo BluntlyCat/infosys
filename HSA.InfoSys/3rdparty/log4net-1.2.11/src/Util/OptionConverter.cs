@@ -300,15 +300,16 @@ namespace log4net.Util
 					// that will take an argument of type string. i.e. T.Parse(string)->T we call this
 					// method to convert the string to the type required by the property.
 					System.Reflection.MethodInfo meth = target.GetMethod("Parse", new Type[] {typeof(string)});
-					if (meth != null)
-					{
-						// Call the Parse method
-						return meth.Invoke(null, BindingFlags.InvokeMethod, null, new object[] {txt}, CultureInfo.InvariantCulture);
-					}
-					else
-					{
-						// No Parse() method found.
-					}
+                    if (meth != null)
+                    {
+                        return meth.Invoke(null, BindingFlags.InvokeMethod, null, new object[] { txt }, CultureInfo.InvariantCulture);
+                        // Call the Parse method
+
+                    }
+                    else
+                    {
+                        // No Parse() method found.
+                    }
 				}
 			}
 			return null;

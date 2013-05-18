@@ -74,7 +74,7 @@ namespace HSA.InfoSys.CrawlerService
                     }
                 }
 
-                Console.Write(".");
+                //Console.Write(".");
 
                 Thread.Sleep(500);
             }
