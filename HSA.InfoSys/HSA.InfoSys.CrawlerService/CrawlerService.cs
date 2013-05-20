@@ -7,6 +7,7 @@ namespace HSA.InfoSys.CrawlerService
 {
     using System;
     using System.Threading;
+    using HSA.InfoSys.Common.CrawlController;
     using HSA.InfoSys.Common.Logging;
     using log4net;
 
@@ -74,7 +75,9 @@ namespace HSA.InfoSys.CrawlerService
                     }
                 }
 
-                //Console.Write(".");
+#if DEBUG
+                Console.Write(".");
+#endif
 
                 Thread.Sleep(500);
             }

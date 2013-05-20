@@ -1,9 +1,4 @@
-﻿// ------------------------------------------------------------------------
-// <copyright file="CrawlController.cs" company="HSA.InfoSys">
-//     Copyright statement. All right reserved
-// </copyright>
-// ------------------------------------------------------------------------
-namespace HSA.InfoSys.CrawlerService
+﻿namespace HSA.InfoSys.Common.CrawlController
 {
     using System;
     using System.ServiceModel;
@@ -12,6 +7,8 @@ namespace HSA.InfoSys.CrawlerService
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.SolrClient;
     using log4net;
+    using System.Security.Cryptography.X509Certificates;
+    using System.ServiceModel.Description;
 
     /// <summary>
     /// This class is the controller for the crawler
@@ -41,13 +38,54 @@ namespace HSA.InfoSys.CrawlerService
         /// <param name="query">The query.</param>
         public delegate void InvokeSolrSearch(string query);
 
+        public static ICrawlController GetCrawlControllerProxy()
+        {
+            return ChannelFactory<ICrawlController>.CreateChannel(
+                new NetTcpBinding(SecurityMode.Transport),
+                new EndpointAddress("net.tcp://localhost:8085/test/"),
+                new Uri("net.tcp://localhost:8085/test/"));
+        }
+
         /// <summary>
         /// Opens the WCF host.
         /// </summary>
         public void OpenWCFHost()
         {
-            Log.Info(Properties.Resources.CRAWL_CONTROLLER_WCF_HOST_OPENED);
+            var binding = new NetTcpBinding();
+            var bindingMex = new NetTcpBinding();
+
+            this.host = new ServiceHost(typeof(CrawlController));
+
+            binding.Security.Mode = SecurityMode.Transport;
+            binding.Security.Message.ClientCredentialType = MessageCredentialType.None;
+
+            this.host.AddServiceEndpoint(
+                typeof(ICrawlController),
+                binding,
+                "net.tcp://localhost:8085/test/");
+
+            this.host.Credentials.ServiceCertificate.SetCertificate(
+                StoreLocation.CurrentUser,
+                StoreName.My,
+                X509FindType.FindBySerialNumber,
+                "10 db cc 32 e5 13 6d 89 47 70 2e 5b ac 86 c0 82");
+
+            var metadataBevavior = this.host.Description.Behaviors.Find<ServiceMetadataBehavior>();
+
+            if (metadataBevavior == null)
+            {
+                metadataBevavior = new ServiceMetadataBehavior();
+                this.host.Description.Behaviors.Add(metadataBevavior);
+            }
+
+            this.host.AddServiceEndpoint(
+                typeof(IMetadataExchange),
+                MetadataExchangeBindings.CreateMexHttpBinding(),
+                "http://localhost:8086/test/");
+
             this.host.Open();
+
+            Log.Info(Properties.Resources.CRAWL_CONTROLLER_WCF_HOST_OPENED);
         }
 
         /// <summary>
@@ -67,12 +105,12 @@ namespace HSA.InfoSys.CrawlerService
         /// <param name="query">The search query pattern.</param>
         public void StartSearch(string query)
         {
-            Log.Info(Properties.Resources.CRAWL_CONTROLLER_SEARCH_STARTED);
+            Log.InfoFormat(Properties.Resources.CRAWL_CONTROLLER_SEARCH_STARTED, query);
 
             var client = new SolrClient(
                 Properties.Settings.Default.SOLR_PORT,
                 Properties.Settings.Default.SOLR_HOST);
-            
+
             ////Here we tell our delegate which method to call.
             InvokeSolrSearch invokeSearch = new InvokeSolrSearch(client.StartSearch);
 
@@ -95,6 +133,7 @@ namespace HSA.InfoSys.CrawlerService
         /// </summary>
         public void StartServices()
         {
+            Log.Info(Properties.Resources.CRAWL_CONTROLLER_START);
             this.host = new ServiceHost(typeof(CrawlController));
         }
 
@@ -113,6 +152,7 @@ namespace HSA.InfoSys.CrawlerService
         /// <returns>The GUID of the new entity.</returns>
         public Guid AddEntity(Entity entity)
         {
+            Log.DebugFormat("Add new entity: [{0}]", entity);
             return dbManager.AddEntity(entity);
         }
 
@@ -123,6 +163,7 @@ namespace HSA.InfoSys.CrawlerService
         /// <returns>The GUID of the updated entity.</returns>
         public Guid UpdateEntity(Entity entity)
         {
+            Log.DebugFormat("Update new entity: [{0}]", entity);
             return dbManager.UpdateEntity(entity);
         }
 
@@ -135,6 +176,7 @@ namespace HSA.InfoSys.CrawlerService
         /// </returns>
         public Entity GetEntity(Guid entityGuid)
         {
+            Log.DebugFormat("Get new entity by GUID: [{0}]", entityGuid);
             return dbManager.GetEntity<Entity>(entityGuid);
         }
 
@@ -148,6 +190,7 @@ namespace HSA.InfoSys.CrawlerService
         /// </returns>
         public Component CreateComponent(string name, string category)
         {
+            Log.DebugFormat("Create new component: [{0}], [{1}]", name, category);
             return dbManager.CreateComponent(name, category);
         }
 
@@ -160,6 +203,7 @@ namespace HSA.InfoSys.CrawlerService
         /// </returns>
         public Source CreateSource(string sourceURL)
         {
+            Log.DebugFormat("Create new source: [{0}]", sourceURL);
             return dbManager.CreateSource(sourceURL);
         }
 

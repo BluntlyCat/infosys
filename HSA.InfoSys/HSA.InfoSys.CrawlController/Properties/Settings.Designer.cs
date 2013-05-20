@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HSA.InfoSys.CrawlerService.Properties {
+namespace HSA.InfoSys.Common.CrawlController.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

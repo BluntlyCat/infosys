@@ -1,9 +1,4 @@
-﻿// ------------------------------------------------------------------------
-// <copyright file="ICrawlController.cs" company="HSA.InfoSys">
-//     Copyright statement. All right reserved
-// </copyright>
-// ------------------------------------------------------------------------
-namespace HSA.InfoSys.CrawlerService
+﻿namespace HSA.InfoSys.Common.CrawlController
 {
     using System;
     using System.ServiceModel;

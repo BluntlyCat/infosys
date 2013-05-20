@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
-                    assembly="HSA.InfoSys.Common.DBManager"
+                    assembly="HSA.InfoSys.DBManager"
                     namespace="HSA.InfoSys.Common.DBManager.Data">
 
   <class name="Entity" table="Entity">
@@ -11,8 +11,8 @@
     <joined-subclass name="Component" table="Component">
       <key column="ComponentGUID" />
       
-      <property name="Name" type="string" column="name" length ="100" not-null="true" />
-      <many-to-one name="Result" class="Result" column="resultGUID"></many-to-one>
+      <property name="Name" type="string" length ="100" not-null="true" />
+      <many-to-one name="Result" class="Result" column="ResultGUID"></many-to-one>
     </joined-subclass>
 
     <joined-subclass name ="Issue" table="Issue">
@@ -21,11 +21,11 @@
       <property name="Text" type="string">
         <column name="text" sql-type="mediumtext" length="16777215" not-null="false"/>
       </property>
-      <property name="Title" type="string" column="title" length ="40" not-null="true"/>
-      <property name="ThreatLevel" type="int" column="threatlevel" length ="11" not-null="true"/>
-      <property name="Date" type="date" column="date" not-null="true"/>
-      <many-to-one name="Component" class="Component" column="componentGUID"></many-to-one>
-      <many-to-one name="Source" class="Source" column="sourceGUID"></many-to-one>
+      <property name="Title" type="string" length ="40" not-null="true"/>
+      <property name="ThreatLevel" type="int" length ="11" not-null="true"/>
+      <property name="Date" type="date" not-null="true"/>
+      <many-to-one name="Component" class="Component" column="ComponentGUID"></many-to-one>
+      <many-to-one name="Source" class="Source" column="SourceGUID"></many-to-one>
     </joined-subclass>
 
     <joined-subclass name="Source" table="Source">
@@ -43,7 +43,7 @@
         <column name="Data" length ="2043" not-null="true" />
       </property>
       
-      <property name="TimeStamp" type="timestamp" column="timestamp" not-null="true"/>
+      <property name="TimeStamp" type="timestamp" not-null="true"/>
     </joined-subclass>
   </class>
 

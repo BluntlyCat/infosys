@@ -6,7 +6,9 @@
 namespace HSA.InfoSys.WCFTesting
 {
     using System;
+    using System.ServiceModel;
     using System.Threading;
+    using HSA.InfoSys.Common.CrawlController;
     using HSA.InfoSys.Common.DBManager.Data;
     using HSA.InfoSys.Common.Logging;
     using log4net;
@@ -24,7 +26,7 @@ namespace HSA.InfoSys.WCFTesting
         {
             ILog log = Logging.GetLogger("WCFTesting");
 
-            CrawlControllerClient client = new CrawlControllerClient();
+            var controller = CrawlController.GetCrawlControllerProxy();
 
             bool running = true;
 
@@ -36,8 +38,6 @@ namespace HSA.InfoSys.WCFTesting
             Console.WriteLine("Here you can test the WCF feautures to the WebCrawler.");
             Console.WriteLine("To see your options press h or press q for quit.");
             Console.WriteLine(string.Empty);
-
-            client.Open();
 
             while (running)
             {
@@ -57,16 +57,16 @@ namespace HSA.InfoSys.WCFTesting
                     {
                         case ConsoleKey.A:
                             log.Info("Add new Component.");
-                            var comp = client.CreateComponent("Michis Special Component", "Funny Stuff") as Component;
+                            var comp = controller.CreateComponent("Michis Special Component", "Funny Stuff") as Component;
                             log.InfoFormat("Component Created: [{0}]", comp.ToString());
-                            Guid cguid = client.AddEntity(comp);
-                            var dbComp = client.GetEntity(cguid) as Component;
+                            Guid cguid = controller.AddEntity(comp);
+                            var dbComp = controller.GetEntity(cguid) as Component;
                             log.InfoFormat("Component from DB: [{0}]", dbComp);
 
-                            var source = client.CreateSource("http://miitsoft.de") as Source;
+                            var source = controller.CreateSource("http://miitsoft.de") as Source;
                             log.InfoFormat("Source Created: [{0}]", source.ToString());
-                            Guid sguid = client.AddEntity(source);
-                            var dbSrc = client.GetEntity(sguid) as Source;
+                            Guid sguid = controller.AddEntity(source);
+                            var dbSrc = controller.GetEntity(sguid) as Source;
                             log.InfoFormat("Source from DB: [{0}]", dbSrc);
                             break;
 
@@ -78,23 +78,19 @@ namespace HSA.InfoSys.WCFTesting
                         case ConsoleKey.Q:
                             log.Info("Quit application.");
                             running = false;
-                            client.Close();
                             break;
 
                         case ConsoleKey.S:
                             log.Info("Send request to host.");
 
-                            if (client.State == System.ServiceModel.CommunicationState.Opened)
-                            {
-                                try
-                                {
-                                    client.StartSearch("solr");
-                                }
-                                catch
-                                {
-                                    log.Error("Unable to communicate with host.");
-                                }
-                            }
+                            //try
+                            //{
+                                controller.StartSearch("solr");
+                            //}
+                            //catch(Exception e)
+                            //{
+                                //log.ErrorFormat("Unable to communicate with host: [{0}]", e);
+                            //}
 
                             break;
                     }
