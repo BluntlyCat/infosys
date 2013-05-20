@@ -53,6 +53,7 @@
         {
             var binding = new NetTcpBinding();
             var bindingMex = new NetTcpBinding();
+            var certificate = new X509Certificate2("../../Certificate/InfoSysMetaInformation.cer");
 
             this.host = new ServiceHost(typeof(CrawlController));
 
@@ -64,11 +65,14 @@
                 binding,
                 "net.tcp://localhost:8085/test/");
 
+            this.host.Credentials.ServiceCertificate.Certificate = certificate;
+            /*
             this.host.Credentials.ServiceCertificate.SetCertificate(
                 StoreLocation.CurrentUser,
                 StoreName.My,
                 X509FindType.FindBySerialNumber,
                 "10 db cc 32 e5 13 6d 89 47 70 2e 5b ac 86 c0 82");
+            */
 
             var metadataBevavior = this.host.Description.Behaviors.Find<ServiceMetadataBehavior>();
 
