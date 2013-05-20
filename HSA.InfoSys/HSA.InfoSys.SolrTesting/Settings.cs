@@ -3,7 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.SolrTesting.Properties
+namespace HSA.InfoSys.Testing.SolrTesting.Properties
 {    
     //// Diese Klasse ermöglicht die Behandlung bestimmter Ereignisse der Einstellungsklasse:
     ////  Das SettingChanging-Ereignis wird ausgelöst, bevor der Wert einer Einstellung geändert wird.

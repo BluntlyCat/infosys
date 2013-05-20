@@ -3,7 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.DBTesting
+namespace HSA.InfoSys.Testing.DBTesting
 {
     using System;
     using System.Threading;

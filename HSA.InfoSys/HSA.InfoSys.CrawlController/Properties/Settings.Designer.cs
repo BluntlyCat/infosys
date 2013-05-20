@@ -53,9 +53,9 @@ namespace HSA.InfoSys.Common.CrawlController.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("../../Certificate/InfoSysMetaInformation.cer")]
-        public string CERTIFICATE_PATH {
+        public string CERTIFICATE_PATH_DOTNET {
             get {
-                return ((string)(this["CERTIFICATE_PATH"]));
+                return ((string)(this["CERTIFICATE_PATH_DOTNET"]));
             }
         }
         
@@ -65,6 +65,15 @@ namespace HSA.InfoSys.Common.CrawlController.Properties {
         public string HTTP_ADDRESS {
             get {
                 return ((string)(this["HTTP_ADDRESS"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/etc/ssl/crawlerService/")]
+        public string CERTIFICATE_PATH_MONO {
+            get {
+                return ((string)(this["CERTIFICATE_PATH_MONO"]));
             }
         }
     }

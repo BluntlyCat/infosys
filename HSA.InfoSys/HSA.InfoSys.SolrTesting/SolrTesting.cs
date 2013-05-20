@@ -3,7 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.SolrTesting
+namespace HSA.InfoSys.Testing.SolrTesting
 {
     using System;
     using System.Threading;

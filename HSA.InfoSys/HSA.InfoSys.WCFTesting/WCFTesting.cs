@@ -3,7 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.WCFTesting
+namespace HSA.InfoSys.Testing.WCFTesting
 {
     using System;
     using System.ServiceModel;

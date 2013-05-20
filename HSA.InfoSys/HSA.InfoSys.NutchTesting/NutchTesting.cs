@@ -3,7 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.NutchTesting
+namespace HSA.InfoSys.Testing.NutchTesting
 {
     using System;
     using System.Threading;
