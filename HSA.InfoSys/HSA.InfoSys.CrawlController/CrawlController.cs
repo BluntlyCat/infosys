@@ -51,7 +51,7 @@ namespace HSA.InfoSys.Common.CrawlController
         {
             get
             {
-                var address = new EndpointAddress(Properties.Settings.Default.NET_TCP_ADDRESS);
+                var address = new EndpointAddress(Properties.Settings.Default.NET_TCP_ADDRESS_CLIENT);
                 var binding = new NetTcpBinding(SecurityMode.Transport);
                 var proxy = new ClientProxy(binding, address);
 
@@ -87,7 +87,7 @@ namespace HSA.InfoSys.Common.CrawlController
             this.host.AddServiceEndpoint(
                 typeof(ICrawlController),
                 binding,
-                Properties.Settings.Default.NET_TCP_ADDRESS);
+                Properties.Settings.Default.NET_TCP_ADDRESS_SERVER);
 
             this.host.Credentials.ServiceCertificate.Certificate = certificate;
 
