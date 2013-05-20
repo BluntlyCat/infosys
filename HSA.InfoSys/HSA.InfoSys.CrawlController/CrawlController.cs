@@ -43,6 +43,8 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <param name="query">The query.</param>
         public delegate void InvokeSolrSearch(string query);
 
+        public static string netTcp = "net.tcp://192.168.0.9:8085/CrawlerProxy/";
+        public string http = "http://192.168.0.9:8086/CrawlerProxy/";
         /// <summary>
         /// Gets the crawl controller proxy.
         /// </summary>
@@ -51,7 +53,7 @@ namespace HSA.InfoSys.Common.CrawlController
         {
             get
             {
-                var address = new EndpointAddress("net.tcp://192.168.0.9:8085/CrawlerProxy/");
+                var address = new EndpointAddress(CrawlController.netTcp);
                 var binding = new NetTcpBinding(SecurityMode.Transport);
                 var proxy = new ClientProxy(binding, address);
 
@@ -79,7 +81,7 @@ namespace HSA.InfoSys.Common.CrawlController
             certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_MONO);
 #endif
 
-            this.host = new ServiceHost(typeof(CrawlController), new Uri("http://192.168.0.9:8086/CrawlerProxy/"));
+            this.host = new ServiceHost(typeof(CrawlController), new Uri(http));
 
             binding.Security.Mode = SecurityMode.Transport;
             binding.Security.Message.ClientCredentialType = MessageCredentialType.Certificate;
@@ -87,7 +89,7 @@ namespace HSA.InfoSys.Common.CrawlController
             this.host.AddServiceEndpoint(
                 typeof(ICrawlController),
                 binding,
-                "net.tcp://192.168.0.9:8085/CrawlerProxy/");
+                CrawlController.netTcp);
 
             this.host.Credentials.ServiceCertificate.Certificate = certificate;
 
@@ -102,7 +104,7 @@ namespace HSA.InfoSys.Common.CrawlController
             this.host.AddServiceEndpoint(
                 typeof(IMetadataExchange),
                 MetadataExchangeBindings.CreateMexHttpBinding(),
-                "http://192.168.0.9:8086/CrawlerProxy/");
+                http);
 
             this.host.Open();
 
