@@ -71,7 +71,7 @@ namespace HSA.InfoSys.Common.CrawlController
             certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_MONO);
 #endif
 
-            this.host = new ServiceHost(typeof(CrawlController));
+            this.host = new ServiceHost(typeof(CrawlController), new Uri(Properties.Settings.Default.HTTP_ADDRESS));
 
             binding.Security.Mode = SecurityMode.Transport;
             binding.Security.Message.ClientCredentialType = MessageCredentialType.Certificate;
