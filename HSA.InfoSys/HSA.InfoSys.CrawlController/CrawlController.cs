@@ -47,12 +47,17 @@ namespace HSA.InfoSys.Common.CrawlController
         /// Gets the crawl controller proxy.
         /// </summary>
         /// <returns>An ICrawlController.</returns>
-        public static ICrawlController GetCrawlControllerProxy()
+        public static ClientProxy GetCrawlControllerProxy()
         {
-            return ChannelFactory<ICrawlController>.CreateChannel(
+            EndpointAddress address = new EndpointAddress(Properties.Settings.Default.NET_TCP_ADDRESS);
+            NetTcpBinding binding = new NetTcpBinding();
+            ClientProxy proxy = new ClientProxy(binding, address);
+
+            return proxy;
+            /*return ChannelFactory<ICrawlController>.CreateChannel(
                 new NetTcpBinding(SecurityMode.Transport),
                 new EndpointAddress(Properties.Settings.Default.NET_TCP_ADDRESS),
-                new Uri(Properties.Settings.Default.NET_TCP_ADDRESS));
+                new Uri(Properties.Settings.Default.NET_TCP_ADDRESS));*/
         }
 
         /// <summary>
