@@ -51,7 +51,7 @@ namespace HSA.InfoSys.Common.CrawlController
         {
             get
             {
-                var address = new EndpointAddress(Properties.Settings.Default.NET_TCP_ADDRESS_CLIENT);
+                var address = new EndpointAddress("net.tcp://192.168.0.9:8085/CrawlerProxy/");
                 var binding = new NetTcpBinding(SecurityMode.Transport);
                 var proxy = new ClientProxy(binding, address);
 
@@ -79,7 +79,7 @@ namespace HSA.InfoSys.Common.CrawlController
             certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_MONO);
 #endif
 
-            this.host = new ServiceHost(typeof(CrawlController), new Uri(Properties.Settings.Default.HTTP_ADDRESS));
+            this.host = new ServiceHost(typeof(CrawlController), new Uri("http://192.168.0.9:8086/CrawlerProxy/"));
 
             binding.Security.Mode = SecurityMode.Transport;
             binding.Security.Message.ClientCredentialType = MessageCredentialType.Certificate;
@@ -87,7 +87,7 @@ namespace HSA.InfoSys.Common.CrawlController
             this.host.AddServiceEndpoint(
                 typeof(ICrawlController),
                 binding,
-                Properties.Settings.Default.NET_TCP_ADDRESS_SERVER);
+                "net.tcp://192.168.0.9:8085/CrawlerProxy/");
 
             this.host.Credentials.ServiceCertificate.Certificate = certificate;
 
@@ -102,7 +102,7 @@ namespace HSA.InfoSys.Common.CrawlController
             this.host.AddServiceEndpoint(
                 typeof(IMetadataExchange),
                 MetadataExchangeBindings.CreateMexHttpBinding(),
-                Properties.Settings.Default.HTTP_ADDRESS);
+                "http://192.168.0.9:8086/CrawlerProxy/");
 
             this.host.Open();
 
