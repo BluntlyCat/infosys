@@ -19,7 +19,7 @@ namespace HSA.InfoSys.Gui.Models
         /// <summary>
         /// The default error message
         /// </summary>
-        //private readonly string DefaultErrorMessage = Properties.Resources.VALIDATE_PASSWORD_LENGTH;
+        //// private readonly string DefaultErrorMessage = Properties.Resources.VALIDATE_PASSWORD_LENGTH;
 
         /// <summary>
         /// The minimum characters

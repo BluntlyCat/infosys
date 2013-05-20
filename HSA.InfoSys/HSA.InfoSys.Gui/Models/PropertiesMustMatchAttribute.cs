@@ -19,7 +19,7 @@ namespace HSA.InfoSys.Gui.Models
         /// <summary>
         /// The default error message
         /// </summary>
-        //private readonly string DefaultErrorMessage = Properties.Resources.PROPERTIE_MATCH_NOT_EQUAL;
+        //// private readonly string DefaultErrorMessage = Properties.Resources.PROPERTIE_MATCH_NOT_EQUAL;
 
         /// <summary>
         /// The type id.

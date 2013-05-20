@@ -7,12 +7,8 @@ namespace HSA.InfoSys.Common.Logging
 {
     using System.Collections;
     using System.Collections.Generic;
-    using System.Linq;
     using log4net;
     using log4net.Config;
-    using log4net.Repository.Hierarchy;
-    using log4net.Appender;
-    using System.Text;
 
     /// <summary>
     /// Handles requests for logger for a specific class,

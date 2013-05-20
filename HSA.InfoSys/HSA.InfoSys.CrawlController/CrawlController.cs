@@ -1,14 +1,19 @@
-﻿namespace HSA.InfoSys.Common.CrawlController
+﻿// ------------------------------------------------------------------------
+// <copyright file="CrawlController.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
+namespace HSA.InfoSys.Common.CrawlController
 {
     using System;
+    using System.Security.Cryptography.X509Certificates;
     using System.ServiceModel;
+    using System.ServiceModel.Description;
     using HSA.InfoSys.Common.DBManager;
     using HSA.InfoSys.Common.DBManager.Data;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.SolrClient;
     using log4net;
-    using System.Security.Cryptography.X509Certificates;
-    using System.ServiceModel.Description;
 
     /// <summary>
     /// This class is the controller for the crawler
@@ -23,7 +28,7 @@
         private static readonly ILog Log = Logging.GetLogger("CrawlController");
 
         /// <summary>
-        /// The db manager.
+        /// The database manager.
         /// </summary>
         private static IDBManager dbManager = DBManager.GetDBManager();
 
@@ -38,22 +43,28 @@
         /// <param name="query">The query.</param>
         public delegate void InvokeSolrSearch(string query);
 
+        /// <summary>
+        /// Gets the crawl controller proxy.
+        /// </summary>
+        /// <returns>An ICrawlController.</returns>
         public static ICrawlController GetCrawlControllerProxy()
         {
             return ChannelFactory<ICrawlController>.CreateChannel(
                 new NetTcpBinding(SecurityMode.Transport),
-                new EndpointAddress("net.tcp://localhost:8085/test/"),
-                new Uri("net.tcp://localhost:8085/test/"));
+                new EndpointAddress(Properties.Settings.Default.NET_TCP_ADDRESS),
+                new Uri(Properties.Settings.Default.NET_TCP_ADDRESS));
         }
 
         /// <summary>
-        /// Opens the WCF host.
+        /// Creates the bindings, certificate and the service host
+        /// adds the endpoint and metadata behavior to the service host
+        /// and finally opens the service host.
         /// </summary>
         public void OpenWCFHost()
         {
             var binding = new NetTcpBinding();
             var bindingMex = new NetTcpBinding();
-            var certificate = new X509Certificate2("../../Certificate/InfoSysMetaInformation.cer");
+            var certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH);
 
             this.host = new ServiceHost(typeof(CrawlController));
 
@@ -63,16 +74,9 @@
             this.host.AddServiceEndpoint(
                 typeof(ICrawlController),
                 binding,
-                "net.tcp://localhost:8085/test/");
+                Properties.Settings.Default.NET_TCP_ADDRESS);
 
             this.host.Credentials.ServiceCertificate.Certificate = certificate;
-            /*
-            this.host.Credentials.ServiceCertificate.SetCertificate(
-                StoreLocation.CurrentUser,
-                StoreName.My,
-                X509FindType.FindBySerialNumber,
-                "10 db cc 32 e5 13 6d 89 47 70 2e 5b ac 86 c0 82");
-            */
 
             var metadataBevavior = this.host.Description.Behaviors.Find<ServiceMetadataBehavior>();
 
@@ -85,7 +89,7 @@
             this.host.AddServiceEndpoint(
                 typeof(IMetadataExchange),
                 MetadataExchangeBindings.CreateMexHttpBinding(),
-                "http://localhost:8086/test/");
+                Properties.Settings.Default.HTTP_ADDRESS);
 
             this.host.Open();
 

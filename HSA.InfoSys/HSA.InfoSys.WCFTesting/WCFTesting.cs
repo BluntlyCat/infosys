@@ -83,14 +83,14 @@ namespace HSA.InfoSys.WCFTesting
                         case ConsoleKey.S:
                             log.Info("Send request to host.");
 
-                            //try
-                            //{
+                            try
+                            {
                                 controller.StartSearch("solr");
-                            //}
-                            //catch(Exception e)
-                            //{
-                                //log.ErrorFormat("Unable to communicate with host: [{0}]", e);
-                            //}
+                            }
+                            catch (Exception e)
+                            {
+                                log.ErrorFormat("Unable to communicate with host: [{0}]", e);
+                            }
 
                             break;
                     }

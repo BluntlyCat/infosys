@@ -40,5 +40,32 @@ namespace HSA.InfoSys.Common.CrawlController.Properties {
                 return ((int)(this["SOLR_PORT"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("net.tcp://localhost:8085/test/")]
+        public string NET_TCP_ADDRESS {
+            get {
+                return ((string)(this["NET_TCP_ADDRESS"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("../../Certificate/InfoSysMetaInformation.cer")]
+        public string CERTIFICATE_PATH {
+            get {
+                return ((string)(this["CERTIFICATE_PATH"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:8086/test/")]
+        public string HTTP_ADDRESS {
+            get {
+                return ((string)(this["HTTP_ADDRESS"]));
+            }
+        }
     }
 }
