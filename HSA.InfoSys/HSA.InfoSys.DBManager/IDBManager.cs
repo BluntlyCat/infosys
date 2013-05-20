@@ -43,10 +43,11 @@ namespace HSA.InfoSys.Common.DBManager
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="category">The category.</param>
+        /// <param name="result">a result object .</param>
         /// <returns>
         /// The created component object.
         /// </returns>
-        Component CreateComponent(string name, string category);
+        Component CreateComponent(string name, string category, Result result);
 
         /// <summary>
         /// Creates an source object.
@@ -56,5 +57,45 @@ namespace HSA.InfoSys.Common.DBManager
         /// The created source object.
         /// </returns>
         Source CreateSource(string sourceURL);
+
+        /// <summary>
+        /// Creates a result object
+        /// </summary>
+        /// <param name="data">the content of the result</param>
+        /// <returns>
+        /// the created result object
+        /// </returns>
+        Result CreateResult(string data);
+
+        /// <summary>
+        /// Creates a SystemService object
+        /// </summary>
+        /// <param name="component">a component object </param>
+        /// <param name="sysconfig">a systemconfig object</param>
+        /// <returns>
+        /// the created SystemService object
+        /// </returns>
+        SystemService CreateSystemService(int UserId, Component component, SystemConfig sysconfig);
+
+        /// <summary>
+        /// Creates a SystemConfig object
+        /// </summary>
+        /// <param name="URL">the URL</param>
+        /// <param name="Email">the Emailtext</param>
+        /// <param name="URLActive">accessibility of the URL</param>
+        /// <param name="EmailNotification">the EmailNotification </param>
+        /// <param name="SchedulerActive">accessibility of the scheduler</param>
+        /// <param name="scheduler">a scheduler object</param>
+        /// <returns>the created SystemConfig object</returns>
+        SystemConfig CreateSystemConfig(string URL, string Email, bool URLActive,
+            bool EmailNotification, bool SchedulerActive, Scheduler scheduler);
+
+        /// <summary>
+        /// Creates a Scheduler object
+        /// </summary>
+        /// <param name="Days">the days for scheduling</param>
+        /// <param name="Hours">the hours for Scheuduling</param>
+        /// <returns>the created Scheduler object</returns>
+        Scheduler CreateScheduler(int Days, int Hours);
     }
 }

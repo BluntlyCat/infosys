@@ -15,73 +15,70 @@
       <many-to-one name="Result" class="Result" column="ResultGUID"></many-to-one>
     </joined-subclass>
 
-    <joined-subclass name ="Issue" table="Issue">
-      <key column="IssueGUID"/>
-      
-      <property name="Text" type="string">
-        <column name="text" sql-type="mediumtext" length="16777215" not-null="false"/>
-      </property>
-      <property name="Title" type="string" length ="40" not-null="true"/>
-      <property name="ThreatLevel" type="int" length ="11" not-null="true"/>
-      <property name="Date" type="date" not-null="true"/>
-      <many-to-one name="Component" class="Component" column="ComponentGUID"></many-to-one>
-      <many-to-one name="Source" class="Source" column="SourceGUID"></many-to-one>
-    </joined-subclass>
-
-    <joined-subclass name="Source" table="Source">
-      <key column="SourceGUID" />
-
-      <property name="URL" type="string" >
-        <column name="URL" length ="2043" not-null="true" />
-      </property>
-    </joined-subclass>
-
     <joined-subclass name="Result" table="Result">
       <key column="ResultGUID" />
 
       <property name="Data" type="string" >
-        <column name="Data" length ="2043" not-null="true" />
+        <column name="Data" sql-type="text" not-null="true" />
       </property>
-      
       <property name="TimeStamp" type="timestamp" not-null="true"/>
     </joined-subclass>
-  </class>
 
+    <joined-subclass name="Scheduler" table="Scheduler">
+      <key column="SchedulerGUID"/>
+        
+      <property name="Days" type="int" column="Days" not-null="true"/>
+      <property name="Hours" type="int" column="Hours" not-null="true"/>
+      <property name="TimeStamp" type="timestamp" column="timestamp" not-null="true"/>
+    </joined-subclass>
 
-  <!-- 
-        Hallo Sanim die Tabellen unten haben wir schon einmal soweit wir bescheid wussten reingeschrieben.
-        Musst jetzt nochmal anhand von Raffis Email kontrollieren und ausbessern, weil wir uns ja nicht mit nhibernate
-        auskennen. Danke!!
-  -->
-<!--  
-  <class name="System" table="System">
-    <id name="SystemGUID" type="guid">
-      <generator class="guid.comb"/>
-    </id>
-    <property name="SystemName" type="string" column="systemname" length="100" not-null="true"/>
-    <property name="UserID" type="int" column="userid" length="10" not-null="true"/>
-    <many-to-one name="Compononent" class="Component" column="componentGUID" ></many-to-one>
-    <many-to-one name="SystemConfig" class="SystemConfig" column="systemconfigGUID"></many-to-one>
-  </class>
+    <joined-subclass name="SystemService" table="SystemService">
+      <key column="SystemServiceGUID"/>
+      
+      <property name="SystemName" type="string" column="Systemname" length="100" not-null="true"/>
+      <property name="UserId" type="int" column="UserId" length="10" not-null="true"/>
+      <many-to-one name="Compononent" class="Component" column="componentGUID" ></many-to-one>
+      <property name="TimeStamp" type="timestamp" column="timestamp" not-null="true"/>
+      <many-to-one name="SystemConfig" class="SystemConfig" column="systemconfigGUID"></many-to-one>
+    </joined-subclass>
 
-  <class name="SystemConfig" table="SystemConfig">
-    <id name="SystemConfigGUID" type="guid">
-      <generator class="guid.comb"/>
-    </id>
-    <property name="TimeStamp" type="timestamp" column="timestamp" not-null="true"/>
-    <property name="E-Mail" type="string" column="email" not-null="false"/>
-    <property name="SearchLinks" type="string" column="searchlinks" not-null="true"/>
-    <property name="EmailNotification" type="bool" column="emailnotification" not-null="true"/>
-  </class>
+    <joined-subclass name="SystemConfig" table="SystemConfig">
+      <key column="SystemConfigGUID"/>
 
-  <class name="Scheduler" table="Scheduler">
-    <id name ="ResultGUID" type ="guid">
-      <generator class="guid.comb"/>
-    </id>
-    <property name="days" type="int" column="days" not-null="true"/>
-    <property name="hour" type="int" column="hour" not-null="true"/>
-    <property name="TimeStamp" type="timestamp" column="timestamp" not-null="true"/>
-  </class>
-  -->
+      <property name="EMail" type="string">
+        <column name="Email" sql-type="text" not-null="false"/>
+      </property>  
+      <property name="URL" type="string" >
+        <column name="URL" length ="2043" not-null="true" />
+      </property>
+      <property name="URLActive" type="bool" column="URLActive" not-null="true"/>
+      <property name="EmailNotification" type="bool" column="EmailNotification" not-null="true"/>
+      <property name="SchedulerActive" type="bool" column="SchedulerActive" not-null="true"/>
+      <many-to-one name="Scheduler" class="Scheduler" column="SchedulerGUID"></many-to-one>
+    </joined-subclass>
+    
+  
+    <joined-subclass name ="Issue" table="Issue">
+        <key column="IssueGUID"/>
 
+        <property name="Text" type="string">
+          <column name="text" sql-type="mediumtext" length="16777215" not-null="false"/>
+        </property>
+        <property name="Title" type="string" length ="40" not-null="true"/>
+        <property name="ThreatLevel" type="int" length ="11" not-null="true"/>
+        <property name="Date" type="date" not-null="true"/>
+        <many-to-one name="Component" class="Component" column="ComponentGUID"></many-to-one>
+        <many-to-one name="Source" class="Source" column="SourceGUID"></many-to-one>
+      </joined-subclass>
+
+      <joined-subclass name="Source" table="Source">
+        <key column="SourceGUID" />
+
+        <property name="URL" type="string" >
+          <column name="URL" length ="2043" not-null="true" />
+        </property>
+      </joined-subclass>
+  
+ </class> 
+  
 </hibernate-mapping>

@@ -211,10 +211,10 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <returns>
         /// The new component.
         /// </returns>
-        public Component CreateComponent(string name, string category)
+        public Component CreateComponent(string name, string category, Result result)
         {
             Log.DebugFormat("Create new component: [{0}], [{1}]", name, category);
-            return dbManager.CreateComponent(name, category);
+            return dbManager.CreateComponent(name, category, result);
         }
 
         /// <summary>

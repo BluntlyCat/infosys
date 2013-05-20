@@ -65,11 +65,12 @@ namespace HSA.InfoSys.Common.CrawlController
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="category">The category.</param>
+        /// <param name="result">The result.</param> 
         /// <returns>
         /// The new component.
         /// </returns>
         [OperationContract]
-        Component CreateComponent(string name, string category);
+        Component CreateComponent(string name, string category, Result result);
 
         /// <summary>
         /// Creates the source.

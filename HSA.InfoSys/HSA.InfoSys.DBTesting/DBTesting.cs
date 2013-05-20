@@ -26,7 +26,6 @@ namespace HSA.InfoSys.Testing.DBTesting
             ILog log = Logging.GetLogger("WCFTesting");
 
             IDBManager dbManager = DBManager.GetDBManager();
-
             bool running = true;
 
             Console.WriteLine(string.Empty);
@@ -56,10 +55,10 @@ namespace HSA.InfoSys.Testing.DBTesting
                         case ConsoleKey.S:
                             log.Info("Send request to database.");
 
-                            string s = "99cee797-3ec0-458c-a016-a1bd0001bf34";
+                          /*  string s = "99cee797-3ec0-458c-a016-a1bd0001bf34";
                             var newComp = dbManager.CreateComponent("Windows8", "TestWin");
                             dbManager.AddEntity(newComp);
-                            var existingComp = dbManager.GetEntity<Component>(new Guid(s));
+                            var existingComp = dbManager.GetEntity<Component>(new Guid(s));*/
                             break;
                     }
                 }

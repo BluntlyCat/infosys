@@ -57,7 +57,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
                     {
                         case ConsoleKey.A:
                             log.Info("Add new Component.");
-                            var comp = controller.CreateComponent("Michis Special Component", "Funny Stuff") as Component;
+                            var comp = controller.CreateComponent("Michis Special Component", "Funny Stuff", null) as Component;
                             log.InfoFormat("Component Created: [{0}]", comp.ToString());
                             Guid cguid = controller.AddEntity(comp);
                             var dbComp = controller.GetEntity(cguid) as Component;

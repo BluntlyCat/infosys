@@ -17,6 +17,9 @@ namespace HSA.InfoSys.Common.DBManager.Data
     [KnownType(typeof(Issue))]
     [KnownType(typeof(Source))]
     [KnownType(typeof(Result))]
+    [KnownType(typeof(SystemService))]
+    [KnownType(typeof(SystemConfig))]
+    [KnownType(typeof(Scheduler))]
     public class Entity
     {
         /// <summary>

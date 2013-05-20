@@ -122,6 +122,16 @@ namespace HSA.InfoSys.Common.DBManager
         }
 
         /// <summary>
+        /// Opens the session.
+        /// </summary>
+        /// <returns>An ISession to the session object.</returns>
+        private static ISession OpenSession()
+        {
+            Log.Debug(Properties.Resources.DBSESSION_OPEN_SESSION);
+            return SessionFactory.OpenSession();
+        }
+
+        /// <summary>
         /// Gets an entity from database.
         /// </summary>
         /// <typeparam name="T">The type of what you want.</typeparam>
@@ -151,13 +161,14 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The created component object.
         /// </returns>
-        public Component CreateComponent(string componentName, string componentCategory)
+        public Component CreateComponent(string componentName, string componentCategory, Result result)
         {
             var component = new Component
             {
                 EntityId = System.Guid.NewGuid(),
                 Category = componentCategory,
-                Name = componentName
+                Name = componentName,
+                Result = result
             };
 
             Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_COMPONENT, component);
@@ -165,6 +176,7 @@ namespace HSA.InfoSys.Common.DBManager
             return component;
         }
 
+        
         /// <summary>
         /// Creates an source object.
         /// </summary>
@@ -186,13 +198,98 @@ namespace HSA.InfoSys.Common.DBManager
         }
 
         /// <summary>
-        /// Opens the session.
+        /// Creates a result object
         /// </summary>
-        /// <returns>An ISession to the session object.</returns>
-        private static ISession OpenSession()
+        /// <param name="data">the content of the result</param>
+        /// <returns>
+        /// the created result object
+        /// </returns>
+        public Result CreateResult(string data)
         {
-            Log.Debug(Properties.Resources.DBSESSION_OPEN_SESSION);
-            return SessionFactory.OpenSession();
+            var result = new Result
+            {
+                EntityId = System.Guid.NewGuid(),
+                TimeStamp = new DateTime(),
+                Data = data
+            };
+
+            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SOURCE);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Creates a SystemService object
+        /// </summary>
+        /// <param name="component">a component object </param>
+        /// <param name="sysconfig">a systemconfig object</param>
+        /// <returns>
+        /// the created SystemService object
+        /// </returns>
+        public SystemService CreateSystemService(int UId, Component component, SystemConfig sysconfig)
+        {
+            var systemService = new SystemService
+            {
+                EntityId = System.Guid.NewGuid(),
+                UserId = UId,
+                TimeStamp = new DateTime(),
+                Component = component,
+                SystemConfig = sysconfig,
+            };
+
+            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SOURCE);
+
+            return systemService;
+        }
+
+        /// <summary>
+        /// Creates a SystemConfig object
+        /// </summary>
+        /// <param name="scURL">the URL</param>
+        /// <param name="scEmail">the Emailtext</param>
+        /// <param name="scURLActive">accessibility of the URL</param>
+        /// <param name="scEmailNotification">the EmailNotification </param>
+        /// <param name="scSchedulerActive">accessibility of the scheduler</param>
+        /// <param name="scscheduler">a scheduler object</param>
+        /// <returns>the created SystemConfig object</returns>
+        public SystemConfig CreateSystemConfig(string scURL, string scEmail, bool scURLActive, bool scEmailNotification, bool scSchedulerActive, Scheduler scscheduler)
+        {
+            var systemConfig = new SystemConfig
+            {
+                EntityId = System.Guid.NewGuid(),
+                URL = scURL,
+                Email = scEmail,
+                URLActive = scURLActive,
+                EmailNotification = scEmailNotification,
+                SchedulerActive = scSchedulerActive,
+                scheduler = scscheduler
+
+            };
+
+            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SOURCE);
+
+            return systemConfig;
+        }
+
+        /// <summary>
+        /// Creates a Scheduler object
+        /// </summary>
+        /// <param name="sDays">the days for scheduling</param>
+        /// <param name="sHours">the hours for Scheuduling</param>
+        /// <returns>the created Scheduler object</returns>
+        public Scheduler CreateScheduler(int sDays, int sHours)
+        {
+            var scheduler = new Scheduler
+            {
+                EntityId = System.Guid.NewGuid(),
+                TimeStamp = new DateTime(),
+                Days = sDays,
+                Hours = sHours
+            };
+
+            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SOURCE);
+
+            return scheduler;
         }
     }
 }
