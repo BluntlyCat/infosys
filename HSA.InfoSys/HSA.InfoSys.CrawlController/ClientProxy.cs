@@ -8,7 +8,6 @@ namespace HSA.InfoSys.Common.CrawlController
     using System;
     using System.ServiceModel;
     using System.ServiceModel.Channels;
-    using HSA.InfoSys.Common.DBManager;
     using HSA.InfoSys.Common.DBManager.Data;
     using HSA.InfoSys.Common.Logging;
     using log4net;
@@ -18,19 +17,13 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <summary>
         /// The logger.
         /// </summary>
-        private static readonly ILog Log = Logging.GetLogger("CrawlController");
+        private static readonly ILog Log = Logging.GetLogger("ClientProxy");
 
         /// <summary>
-        /// The database manager.
+        /// Initializes a new instance of the <see cref="ClientProxy"/> class.
         /// </summary>
-        private static IDBManager dbManager = DBManager.GetDBManager();
-
-        /// <summary>
-        /// Our delegate for invoking an async callback.
-        /// </summary>
-        /// <param name="query">The query.</param>
-        public delegate void InvokeSolrSearch(string query);
-
+        /// <param name="binding">The binding.</param>
+        /// <param name="address">The address.</param>
         public ClientProxy(Binding binding, EndpointAddress address) : base(binding, address)
         {
         }

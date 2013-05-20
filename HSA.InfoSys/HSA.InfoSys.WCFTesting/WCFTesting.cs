@@ -26,7 +26,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
         {
             ILog log = Logging.GetLogger("WCFTesting");
 
-            var controller = CrawlController.GetCrawlControllerProxy();
+            var controller = CrawlController.ClientProxy;
 
             bool running = true;
 
