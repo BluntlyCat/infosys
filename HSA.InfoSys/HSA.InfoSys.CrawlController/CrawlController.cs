@@ -63,13 +63,12 @@ namespace HSA.InfoSys.Common.CrawlController
         public void OpenWCFHost()
         {
             var binding = new NetTcpBinding();
-            var bindingMex = new NetTcpBinding();
             var certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH);
 
             this.host = new ServiceHost(typeof(CrawlController));
 
             binding.Security.Mode = SecurityMode.Transport;
-            binding.Security.Message.ClientCredentialType = MessageCredentialType.None;
+            binding.Security.Message.ClientCredentialType = MessageCredentialType.Certificate;
 
             this.host.AddServiceEndpoint(
                 typeof(ICrawlController),
