@@ -61,41 +61,51 @@ namespace HSA.InfoSys.Common.DBManager
         /// <summary>
         /// Creates a result object
         /// </summary>
-        /// <param name="data">the content of the result</param>
+        /// <param name="data">The content of the result</param>
         /// <returns>
-        /// the created result object
+        /// The created result object
         /// </returns>
         Result CreateResult(string data);
 
         /// <summary>
         /// Creates a SystemService object
         /// </summary>
-        /// <param name="component">a component object </param>
-        /// <param name="sysconfig">a systemconfig object</param>
+        /// <param name="userId">The user id.</param>
+        /// <param name="component">A component object</param>
+        /// <param name="sysconfig">A system config object</param>
         /// <returns>
-        /// the created SystemService object
+        /// The created SystemService object
         /// </returns>
-        SystemService CreateSystemService(int UserId, Component component, SystemConfig sysconfig);
+        SystemService CreateSystemService(int userId, Component component, SystemConfig sysconfig);
 
         /// <summary>
         /// Creates a SystemConfig object
         /// </summary>
-        /// <param name="URL">the URL</param>
-        /// <param name="Email">the Emailtext</param>
-        /// <param name="URLActive">accessibility of the URL</param>
-        /// <param name="EmailNotification">the EmailNotification </param>
-        /// <param name="SchedulerActive">accessibility of the scheduler</param>
-        /// <param name="scheduler">a scheduler object</param>
-        /// <returns>the created SystemConfig object</returns>
-        SystemConfig CreateSystemConfig(string URL, string Email, bool URLActive,
-            bool EmailNotification, bool SchedulerActive, Scheduler scheduler);
+        /// <param name="url">The URL.</param>
+        /// <param name="email">The email text.</param>
+        /// <param name="urlActive">if set to <c>true</c> [URL active].</param>
+        /// <param name="emailNotification">if set to <c>true</c> [email notification].</param>
+        /// <param name="schedulerActive">if set to <c>true</c> [scheduler active].</param>
+        /// <param name="scheduler">A scheduler object.</param>
+        /// <returns>
+        /// The created SystemConfig object.
+        /// </returns>
+        SystemConfig CreateSystemConfig(
+            string url,
+            string email,
+            bool urlActive,
+            bool emailNotification,
+            bool schedulerActive,
+            Scheduler scheduler);
 
         /// <summary>
         /// Creates a Scheduler object
         /// </summary>
-        /// <param name="Days">the days for scheduling</param>
-        /// <param name="Hours">the hours for Scheuduling</param>
-        /// <returns>the created Scheduler object</returns>
-        Scheduler CreateScheduler(int Days, int Hours);
+        /// <param name="days">The days.</param>
+        /// <param name="hours">The hours.</param>
+        /// <returns>
+        /// The created Scheduler object.
+        /// </returns>
+        Scheduler CreateScheduler(int days, int hours);
     }
 }

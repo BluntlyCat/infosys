@@ -9,12 +9,11 @@ namespace HSA.InfoSys.Common.DBManager.Data
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// This represents the Systeminformation of a Component
+    /// This represents the system information of a Component
     /// </summary>
     [DataContract]
-    public class SystemService:Entity
+    public class SystemService : Entity
     {
-
         /// <summary>
         /// Gets or sets the UserId.
         /// </summary>
@@ -43,10 +42,10 @@ namespace HSA.InfoSys.Common.DBManager.Data
         public virtual Component Component { get; set; }
 
         /// <summary>
-        /// Gets or sets the systemconfig.
+        /// Gets or sets the system config.
         /// </summary>
         /// <value>
-        /// The systemconfig.
+        /// The system config.
         /// </value>
         [DataMember]
         public virtual SystemConfig SystemConfig { get; set; }
@@ -67,7 +66,5 @@ namespace HSA.InfoSys.Common.DBManager.Data
                 this.Component,
                 this.SystemConfig);
         }
-
-
     }
 }

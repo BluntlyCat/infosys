@@ -3,16 +3,19 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-
 namespace HSA.InfoSys.Common.DBManager.Data
 {
     using System;
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// This class represents the scheduler which
+    /// stores the values for repeating crawling
+    /// for a component
+    /// </summary>
     [DataContract]
-    public class Scheduler:Entity
+    public class Scheduler : Entity
     {
-
         /// <summary>
         /// Gets or sets the Days.
         /// </summary>
@@ -30,7 +33,6 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// </value>
         [DataMember]
         public virtual int Hours { get; set; }
-        
 
         /// <summary>
         /// Gets or sets the time stamp.

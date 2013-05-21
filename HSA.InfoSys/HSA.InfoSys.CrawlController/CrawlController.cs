@@ -43,25 +43,20 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <param name="query">The query.</param>
         public delegate void InvokeSolrSearch(string query);
 
-        public static string netTcp = "net.tcp://192.168.0.9:8085/CrawlerProxy/";
-        public string http = "http://192.168.0.9:8086/CrawlerProxy/";
         /// <summary>
         /// Gets the crawl controller proxy.
         /// </summary>
-        /// <returns>An ICrawlController.</returns>
-        public static ClientProxy ClientProxy
+        /// <value>
+        /// The client proxy.
+        /// </value>
+        public static ICrawlController ClientProxy
         {
             get
             {
-                var address = new EndpointAddress(CrawlController.netTcp);
-                var binding = new NetTcpBinding(SecurityMode.Transport);
-                var proxy = new ClientProxy(binding, address);
-
-                return proxy;
-                /*return ChannelFactory<ICrawlController>.CreateChannel(
+                return ChannelFactory<ICrawlController>.CreateChannel(
                     new NetTcpBinding(SecurityMode.Transport),
                     new EndpointAddress(Properties.Settings.Default.NET_TCP_ADDRESS),
-                    new Uri(Properties.Settings.Default.NET_TCP_ADDRESS));*/
+                    new Uri(Properties.Settings.Default.NET_TCP_ADDRESS));
             }
         }
 
@@ -81,7 +76,7 @@ namespace HSA.InfoSys.Common.CrawlController
             certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_MONO);
 #endif
 
-            this.host = new ServiceHost(typeof(CrawlController), new Uri(http));
+            this.host = new ServiceHost(typeof(CrawlController), new Uri(Properties.Settings.Default.HTTP_ADDRESS));
 
             binding.Security.Mode = SecurityMode.Transport;
             binding.Security.Message.ClientCredentialType = MessageCredentialType.Certificate;
@@ -89,7 +84,7 @@ namespace HSA.InfoSys.Common.CrawlController
             this.host.AddServiceEndpoint(
                 typeof(ICrawlController),
                 binding,
-                CrawlController.netTcp);
+                Properties.Settings.Default.NET_TCP_ADDRESS);
 
             this.host.Credentials.ServiceCertificate.Certificate = certificate;
 
@@ -104,7 +99,7 @@ namespace HSA.InfoSys.Common.CrawlController
             this.host.AddServiceEndpoint(
                 typeof(IMetadataExchange),
                 MetadataExchangeBindings.CreateMexHttpBinding(),
-                http);
+                Properties.Settings.Default.HTTP_ADDRESS);
 
             this.host.Open();
 

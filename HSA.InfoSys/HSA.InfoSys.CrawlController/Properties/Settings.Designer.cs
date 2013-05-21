@@ -43,10 +43,10 @@ namespace HSA.InfoSys.Common.CrawlController.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("net.tcp://192.168.0.9:8085/CrawlerProxy/")]
-        public string NET_TCP_ADDRESS_CLIENT {
+        [global::System.Configuration.DefaultSettingValueAttribute("net.tcp://192.168.0.5:8085/CrawlerProxy/")]
+        public string NET_TCP_ADDRESS {
             get {
-                return ((string)(this["NET_TCP_ADDRESS_CLIENT"]));
+                return ((string)(this["NET_TCP_ADDRESS"]));
             }
         }
         
@@ -61,7 +61,7 @@ namespace HSA.InfoSys.Common.CrawlController.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://0:8086/CrawlerProxy/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.0.5:8086/CrawlerProxy/")]
         public string HTTP_ADDRESS {
             get {
                 return ((string)(this["HTTP_ADDRESS"]));
@@ -74,18 +74,6 @@ namespace HSA.InfoSys.Common.CrawlController.Properties {
         public string CERTIFICATE_PATH_MONO {
             get {
                 return ((string)(this["CERTIFICATE_PATH_MONO"]));
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("net.tcp://0:8085/CrawlerProxy/")]
-        public string NET_TCP_ADDRESS_SERVER {
-            get {
-                return ((string)(this["NET_TCP_ADDRESS_SERVER"]));
-            }
-            set {
-                this["NET_TCP_ADDRESS_SERVER"] = value;
             }
         }
     }

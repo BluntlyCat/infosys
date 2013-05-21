@@ -26,7 +26,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
         {
             ILog log = Logging.GetLogger("WCFTesting");
 
-            var controller = CrawlController.ClientProxy;
+            ICrawlController controller;
 
             bool running = true;
 
@@ -56,8 +56,15 @@ namespace HSA.InfoSys.Testing.WCFTesting
                     switch (keyInfo.Key)
                     {
                         case ConsoleKey.A:
+                            controller = CrawlController.ClientProxy;
                             log.Info("Add new Component.");
-                            var comp = controller.CreateComponent("Michis Special Component", "Funny Stuff", null) as Component;
+
+                            var result = new Result();
+                            result.Data = "Some data";
+                            result.EntityId = Guid.NewGuid();
+                            result.TimeStamp = new DateTime();
+
+                            var comp = controller.CreateComponent("Michis Special Component", "Funny Stuff", result) as Component;
                             log.InfoFormat("Component Created: [{0}]", comp.ToString());
                             Guid cguid = controller.AddEntity(comp);
                             var dbComp = controller.GetEntity(cguid) as Component;
@@ -85,6 +92,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
 
                             try
                             {
+                                controller = CrawlController.ClientProxy;
                                 controller.StartSearch("solr");
                             }
                             catch (Exception e)

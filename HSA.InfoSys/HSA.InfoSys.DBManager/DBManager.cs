@@ -122,16 +122,6 @@ namespace HSA.InfoSys.Common.DBManager
         }
 
         /// <summary>
-        /// Opens the session.
-        /// </summary>
-        /// <returns>An ISession to the session object.</returns>
-        private static ISession OpenSession()
-        {
-            Log.Debug(Properties.Resources.DBSESSION_OPEN_SESSION);
-            return SessionFactory.OpenSession();
-        }
-
-        /// <summary>
         /// Gets an entity from database.
         /// </summary>
         /// <typeparam name="T">The type of what you want.</typeparam>
@@ -158,6 +148,7 @@ namespace HSA.InfoSys.Common.DBManager
         /// </summary>
         /// <param name="componentName">Name of the component.</param>
         /// <param name="componentCategory">The component category.</param>
+        /// <param name="result">The result.</param>
         /// <returns>
         /// The created component object.
         /// </returns>
@@ -176,7 +167,6 @@ namespace HSA.InfoSys.Common.DBManager
             return component;
         }
 
-        
         /// <summary>
         /// Creates an source object.
         /// </summary>
@@ -221,17 +211,18 @@ namespace HSA.InfoSys.Common.DBManager
         /// <summary>
         /// Creates a SystemService object
         /// </summary>
-        /// <param name="component">a component object </param>
-        /// <param name="sysconfig">a systemconfig object</param>
+        /// <param name="userId">The user id.</param>
+        /// <param name="component">A component object</param>
+        /// <param name="sysconfig">A system config object</param>
         /// <returns>
-        /// the created SystemService object
+        /// The created SystemService object
         /// </returns>
-        public SystemService CreateSystemService(int UId, Component component, SystemConfig sysconfig)
+        public SystemService CreateSystemService(int userId, Component component, SystemConfig sysconfig)
         {
             var systemService = new SystemService
             {
                 EntityId = System.Guid.NewGuid(),
-                UserId = UId,
+                UserId = userId,
                 TimeStamp = new DateTime(),
                 Component = component,
                 SystemConfig = sysconfig,
@@ -245,25 +236,32 @@ namespace HSA.InfoSys.Common.DBManager
         /// <summary>
         /// Creates a SystemConfig object
         /// </summary>
-        /// <param name="scURL">the URL</param>
-        /// <param name="scEmail">the Emailtext</param>
-        /// <param name="scURLActive">accessibility of the URL</param>
-        /// <param name="scEmailNotification">the EmailNotification </param>
-        /// <param name="scSchedulerActive">accessibility of the scheduler</param>
-        /// <param name="scscheduler">a scheduler object</param>
-        /// <returns>the created SystemConfig object</returns>
-        public SystemConfig CreateSystemConfig(string scURL, string scEmail, bool scURLActive, bool scEmailNotification, bool scSchedulerActive, Scheduler scscheduler)
+        /// <param name="url">The URL.</param>
+        /// <param name="email">The email text.</param>
+        /// <param name="urlActive">if set to <c>true</c> [URL active].</param>
+        /// <param name="emailNotification">if set to <c>true</c> [email notification].</param>
+        /// <param name="schedulerActive">if set to <c>true</c> [scheduler active].</param>
+        /// <param name="scheduler">A scheduler object.</param>
+        /// <returns>
+        /// The created SystemConfig object.
+        /// </returns>
+        public SystemConfig CreateSystemConfig(
+            string url,
+            string email,
+            bool urlActive,
+            bool emailNotification,
+            bool schedulerActive,
+            Scheduler scheduler)
         {
             var systemConfig = new SystemConfig
             {
                 EntityId = System.Guid.NewGuid(),
-                URL = scURL,
-                Email = scEmail,
-                URLActive = scURLActive,
-                EmailNotification = scEmailNotification,
-                SchedulerActive = scSchedulerActive,
-                scheduler = scscheduler
-
+                URL = url,
+                Email = email,
+                URLActive = urlActive,
+                EmailNotification = emailNotification,
+                SchedulerActive = schedulerActive,
+                Scheduler = scheduler
             };
 
             Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SOURCE);
@@ -274,22 +272,34 @@ namespace HSA.InfoSys.Common.DBManager
         /// <summary>
         /// Creates a Scheduler object
         /// </summary>
-        /// <param name="sDays">the days for scheduling</param>
-        /// <param name="sHours">the hours for Scheuduling</param>
-        /// <returns>the created Scheduler object</returns>
-        public Scheduler CreateScheduler(int sDays, int sHours)
+        /// <param name="days">The days.</param>
+        /// <param name="hours">The hours.</param>
+        /// <returns>
+        /// The created Scheduler object.
+        /// </returns>
+        public Scheduler CreateScheduler(int days, int hours)
         {
             var scheduler = new Scheduler
             {
                 EntityId = System.Guid.NewGuid(),
                 TimeStamp = new DateTime(),
-                Days = sDays,
-                Hours = sHours
+                Days = days,
+                Hours = hours
             };
 
             Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SOURCE);
 
             return scheduler;
+        }
+
+        /// <summary>
+        /// Opens the session.
+        /// </summary>
+        /// <returns>An ISession to the session object.</returns>
+        private static ISession OpenSession()
+        {
+            Log.Debug(Properties.Resources.DBSESSION_OPEN_SESSION);
+            return SessionFactory.OpenSession();
         }
     }
 }
