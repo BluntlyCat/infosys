@@ -50,7 +50,12 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// </returns>
         public override string ToString()
         {
-            return string.Format("{0}, {1}, {2}, {3}", this.EntityId, this.Name, this.Category, this.Result);
+            return string.Format(
+                "{0}, {1}, {2}, {3}",
+                this.EntityId,
+                this.Name,
+                this.Category,
+                this.Result);
         }
     }
 }

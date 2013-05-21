@@ -203,6 +203,7 @@ namespace HSA.InfoSys.Common.CrawlController
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="category">The category.</param>
+        /// <param name="result">The result.</param>
         /// <returns>
         /// The new component.
         /// </returns>
