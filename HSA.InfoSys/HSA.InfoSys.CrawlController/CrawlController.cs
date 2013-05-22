@@ -233,6 +233,80 @@ namespace HSA.InfoSys.Common.CrawlController
             return dbManager.CreateSource(sourceURL);
         }
 
+        /// <summary>
+        /// Creates a result object
+        /// </summary>
+        /// <param name="data">The content of the result</param>
+        /// <returns>
+        /// The created result object
+        /// </returns>
+        public Result CreateResult(string data)
+        {
+            Log.DebugFormat("Create new result: [{0}]", data);
+            return dbManager.CreateResult(data);
+        }
+
+        /// <summary>
+        /// Creates a SystemService object
+        /// </summary>
+        /// <param name="userId">The user id.</param>
+        /// <param name="component">A component object</param>
+        /// <param name="sysconfig">A system config object</param>
+        /// <returns>
+        /// The created SystemService object
+        /// </returns>
+        public SystemService CreateSystemService(int userId, Component component, SystemConfig sysconfig)
+        {
+            Log.DebugFormat("Create new system service: [{0}, {1}, {2}]", userId, component, sysconfig);
+            return dbManager.CreateSystemService(userId, component, sysconfig);
+        }
+
+        /// <summary>
+        /// Creates a SystemConfig object
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <param name="email">The email text.</param>
+        /// <param name="urlActive">if set to <c>true</c> [URL active].</param>
+        /// <param name="emailNotification">if set to <c>true</c> [email notification].</param>
+        /// <param name="schedulerActive">if set to <c>true</c> [scheduler active].</param>
+        /// <param name="scheduler">A scheduler object.</param>
+        /// <returns>
+        /// The created SystemConfig object.
+        /// </returns>
+        public SystemConfig CreateSystemConfig(
+            string url,
+            string email,
+            bool urlActive,
+            bool emailNotification,
+            bool schedulerActive,
+            Scheduler scheduler)
+        {
+            Log.DebugFormat(
+                "Create new system service: [{0}, {1}, {2}, {3}, {4}, {5}]",
+                url,
+                email,
+                urlActive,
+                emailNotification,
+                schedulerActive,
+                scheduler);
+
+            return dbManager.CreateSystemConfig(url, email, urlActive, emailNotification, schedulerActive, scheduler);
+        }
+
+        /// <summary>
+        /// Creates a Scheduler object
+        /// </summary>
+        /// <param name="days">The days.</param>
+        /// <param name="hours">The hours.</param>
+        /// <returns>
+        /// The created Scheduler object.
+        /// </returns>
+        public Scheduler CreateScheduler(int days, int hours)
+        {
+            Log.DebugFormat("Create new scheduler: [{0}, {1}]", days, hours);
+            return dbManager.CreateScheduler(days, hours);
+        }
+
         #endregion
     }
 }

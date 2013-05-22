@@ -79,5 +79,59 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <returns>The new source.</returns>
         [OperationContract]
         Source CreateSource(string sourceURL);
+
+        /// <summary>
+        /// Creates a result object
+        /// </summary>
+        /// <param name="data">The content of the result</param>
+        /// <returns>
+        /// The created result object
+        /// </returns>
+        [OperationContract]
+        Result CreateResult(string data);
+
+        /// <summary>
+        /// Creates a SystemService object
+        /// </summary>
+        /// <param name="userId">The user id.</param>
+        /// <param name="component">A component object</param>
+        /// <param name="sysconfig">A system config object</param>
+        /// <returns>
+        /// The created SystemService object
+        /// </returns>
+        [OperationContract]
+        SystemService CreateSystemService(int userId, Component component, SystemConfig sysconfig);
+
+        /// <summary>
+        /// Creates a SystemConfig object
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <param name="email">The email text.</param>
+        /// <param name="urlActive">if set to <c>true</c> [URL active].</param>
+        /// <param name="emailNotification">if set to <c>true</c> [email notification].</param>
+        /// <param name="schedulerActive">if set to <c>true</c> [scheduler active].</param>
+        /// <param name="scheduler">A scheduler object.</param>
+        /// <returns>
+        /// The created SystemConfig object.
+        /// </returns>
+        [OperationContract]
+        SystemConfig CreateSystemConfig(
+            string url,
+            string email,
+            bool urlActive,
+            bool emailNotification,
+            bool schedulerActive,
+            Scheduler scheduler);
+
+        /// <summary>
+        /// Creates a Scheduler object
+        /// </summary>
+        /// <param name="days">The days.</param>
+        /// <param name="hours">The hours.</param>
+        /// <returns>
+        /// The created Scheduler object.
+        /// </returns>
+        [OperationContract]
+        Scheduler CreateScheduler(int days, int hours);
     }
 }

@@ -70,7 +70,7 @@ namespace HSA.InfoSys.Common.CrawlController.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("/etc/ssl/crawlerService/InfoSysMetaInformation.cer")]
+        [global::System.Configuration.DefaultSettingValueAttribute("/etc/ssl/crawlerService/InfoSys.pfx")]
         public string CERTIFICATE_PATH_MONO {
             get {
                 return ((string)(this["CERTIFICATE_PATH_MONO"]));
