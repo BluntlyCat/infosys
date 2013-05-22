@@ -75,7 +75,7 @@ namespace HSA.InfoSys.Common.CrawlController
             X509Certificate2 certificate;
 
 #if !MONO
-            certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_DOTNET);
+            certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_DOTNET, "Aes2xe1baetei8Y");
 #else
             certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_MONO);
 #endif
