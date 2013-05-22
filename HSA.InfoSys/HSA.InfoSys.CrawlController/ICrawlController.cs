@@ -65,7 +65,6 @@ namespace HSA.InfoSys.Common.CrawlController
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="category">The category.</param>
-        /// <param name="result">The result.</param> 
         /// <returns>
         /// The new component.
         /// </returns>
@@ -94,13 +93,14 @@ namespace HSA.InfoSys.Common.CrawlController
         /// Creates a SystemService object
         /// </summary>
         /// <param name="userId">The user id.</param>
+        /// <param name="name">The system name.</param>
         /// <param name="component">A component object</param>
         /// <param name="sysconfig">A system config object</param>
         /// <returns>
         /// The created SystemService object
         /// </returns>
         [OperationContract]
-        SystemService CreateSystemService(int userId, Component component, SystemConfig sysconfig);
+        SystemService CreateSystemService(int userId, string name, Component component, SystemConfig sysconfig);
 
         /// <summary>
         /// Creates a SystemConfig object

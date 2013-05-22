@@ -111,14 +111,16 @@ namespace HSA.InfoSys.Common.DBManager
         public Guid UpdateEntity(Entity entity)
         {
             using (ISession session = OpenSession())
-            using (ITransaction transaction = session.BeginTransaction())
             {
-                session.Update(entity);
-                transaction.Commit();
-                Log.Info(Properties.Resources.DBMANAGER_UPDATE_OBJECT);
-            }
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    session.Update(entity);
+                    transaction.Commit();
+                    Log.Info(Properties.Resources.DBMANAGER_UPDATE_OBJECT);
+                }
 
-            return entity.EntityId;
+                return entity.EntityId;
+            }
         }
 
         /// <summary>
@@ -148,7 +150,6 @@ namespace HSA.InfoSys.Common.DBManager
         /// </summary>
         /// <param name="componentName">Name of the component.</param>
         /// <param name="componentCategory">The component category.</param>
-        /// <param name="result">The result.</param>
         /// <returns>
         /// The created component object.
         /// </returns>
@@ -208,16 +209,18 @@ namespace HSA.InfoSys.Common.DBManager
         /// Creates a SystemService object
         /// </summary>
         /// <param name="userId">The user id.</param>
+        /// <param name="name">The system name.</param>
         /// <param name="component">A component object</param>
         /// <param name="sysconfig">A system config object</param>
         /// <returns>
         /// The created SystemService object
         /// </returns>
-        public SystemService CreateSystemService(int userId, Component component, SystemConfig sysconfig)
+        public SystemService CreateSystemService(int userId, string name, Component component, SystemConfig sysconfig)
         {
             var systemService = new SystemService
             {
                 UserId = userId,
+                Name = name,
                 TimeStamp = DateTime.Now,
                 Component = component,
                 SystemConfig = sysconfig

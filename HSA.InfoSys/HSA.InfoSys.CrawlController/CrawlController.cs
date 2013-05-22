@@ -49,17 +49,10 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <value>
         /// The client proxy.
         /// </value>
-        public static ClientProxy ClientProxy
+        public static ICrawlController ClientProxy
         {
             get
             {
-                EndpointAddress address = new EndpointAddress(Properties.Settings.Default.NET_TCP_ADDRESS);
-                NetTcpBinding binding = new NetTcpBinding();
-                ClientProxy proxy = new ClientProxy(binding, address);
-
-                return proxy;
-
-                /*
                 Log.Info("Try get new client proxy.");
 
                 var binding = new NetTcpBinding();
@@ -76,7 +69,6 @@ namespace HSA.InfoSys.Common.CrawlController
                 Log.Info("Create URI for proxy.");
 
                 return ChannelFactory<ICrawlController>.CreateChannel(binding, address, uri);
-                 */
             }
         }
 
@@ -223,7 +215,6 @@ namespace HSA.InfoSys.Common.CrawlController
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="category">The category.</param>
-        /// <param name="result">The result.</param>
         /// <returns>
         /// The new component.
         /// </returns>
@@ -263,15 +254,16 @@ namespace HSA.InfoSys.Common.CrawlController
         /// Creates a SystemService object
         /// </summary>
         /// <param name="userId">The user id.</param>
+        /// <param name="name">The system name.</param>
         /// <param name="component">A component object</param>
         /// <param name="sysconfig">A system config object</param>
         /// <returns>
         /// The created SystemService object
         /// </returns>
-        public SystemService CreateSystemService(int userId, Component component, SystemConfig sysconfig)
+        public SystemService CreateSystemService(int userId, string name, Component component, SystemConfig sysconfig)
         {
             Log.DebugFormat("Create new system service: [{0}, {1}, {2}]", userId, component, sysconfig);
-            return dbManager.CreateSystemService(userId, component, sysconfig);
+            return dbManager.CreateSystemService(userId, name, component, sysconfig);
         }
 
         /// <summary>

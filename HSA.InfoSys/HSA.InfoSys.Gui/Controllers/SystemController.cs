@@ -9,7 +9,6 @@ namespace HSA.InfoSys.Gui.Controllers
     using System.Web.Security;
     using System;
     using HSA.InfoSys.Common.CrawlController;
-    using HSA.InfoSys.Common.DBManager.Data;
     using HSA.InfoSys.Common.Logging;
     using log4net;
 
@@ -19,7 +18,6 @@ namespace HSA.InfoSys.Gui.Controllers
     [HandleError]
     public class SystemController : Controller
     {
-        ICrawlController cc;
         ILog log = Logging.GetLogger("GuiLogger");
  
         /// <summary>

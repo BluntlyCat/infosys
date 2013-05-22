@@ -43,7 +43,6 @@ namespace HSA.InfoSys.Common.DBManager
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="category">The category.</param>
-        /// <param name="result">a result object .</param>
         /// <returns>
         /// The created component object.
         /// </returns>
@@ -71,12 +70,13 @@ namespace HSA.InfoSys.Common.DBManager
         /// Creates a SystemService object
         /// </summary>
         /// <param name="userId">The user id.</param>
+        /// <param name="name">The system name.</param>
         /// <param name="component">A component object</param>
         /// <param name="sysconfig">A system config object</param>
         /// <returns>
         /// The created SystemService object
         /// </returns>
-        SystemService CreateSystemService(int userId, Component component, SystemConfig sysconfig);
+        SystemService CreateSystemService(int userId, string name, Component component, SystemConfig sysconfig);
 
         /// <summary>
         /// Creates a SystemConfig object

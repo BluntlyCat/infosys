@@ -35,12 +35,13 @@ namespace HSA.InfoSys.Gui.Controllers
             //DateTime date2 = DateTime.Now;              //jetztiges Datum / Uhrzeit
             //TimeSpan ts = new TimeSpan(date2.Ticks - date1.Ticks);  // das Delta ermitteln
             //// Das Delta als gesammtzahl der sekunden ist der Timestamp
-            //string timestamp = Convert.ToInt32(ts.TotalSeconds);
+            //// string timestamp = Convert.ToInt32(ts.TotalSeconds);
 
             TimeSpan ts = (DateTime.Now - new DateTime(1970, 1, 1));
             int timestamp = (int)ts.TotalSeconds;
             Console.WriteLine(timestamp);
 
+            //// Hey Rafi und Max, DateTime.Now tuts auch ^^
             System.DateTime dt = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
             dt = dt.AddSeconds(timestamp);
             Console.WriteLine(dt);

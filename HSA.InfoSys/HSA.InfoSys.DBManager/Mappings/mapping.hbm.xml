@@ -8,6 +8,8 @@
       <generator class="guid.comb" />
     </id>
 
+    <property name="Type" type="string" length="50" not-null="true" />
+
     <!-- Component -->
     <joined-subclass name="Component" table="Component">
       <key column="ComponentGUID" />
@@ -42,8 +44,9 @@
       <key column="SystemServiceGUID" />
 
       <many-to-one name="Component" class="Component" column="ComponentGUID" cascade="save-update"  />
-      <many-to-one name="SystemConfig" class="SystemConfig" column="SystemconfigGUID" cascade="save-update" />
+      <many-to-one name="SystemConfig" class="SystemConfig" column="SystemConfigGUID" cascade="save-update" />
 
+      <property name="Name" type="string" length ="40" not-null="true" />
       <property name="UserId" type="int" column="UserId" length="10" not-null="true"/>
       <property name="TimeStamp" type="timestamp" column="Timestamp" not-null="true"/>
 

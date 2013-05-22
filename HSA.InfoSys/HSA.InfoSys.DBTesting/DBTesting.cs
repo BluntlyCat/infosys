@@ -50,7 +50,7 @@ namespace HSA.InfoSys.Testing.DBTesting
                             var result = dbManager.CreateResult("Some Data...");
                             log.InfoFormat("Result Created: [{0}]", result.ToString());
 
-                            var comp = dbManager.CreateComponent("Michis Special Component", "Funny Stuff", null);
+                            var comp = dbManager.CreateComponent("Michis Special Component", "Funny Stuff");
                             log.InfoFormat("Component Created: [{0}]", comp.ToString());
 
                             guid = dbManager.AddEntity(comp);
@@ -60,9 +60,16 @@ namespace HSA.InfoSys.Testing.DBTesting
 
                             dbComp.Result = result;
                             dbManager.UpdateEntity(dbComp);
+                            log.InfoFormat("Component from DB updated: [{0}]", dbComp);
 
-                            dbComp = dbManager.GetEntity<Component>(guid);
-                            log.InfoFormat("Component from DB: [{0}]", dbComp);
+                            var dbComp2 = dbManager.GetEntity<Component>(guid);
+                            log.InfoFormat("Component from DB: [{0}]", dbComp2);
+
+                            var scheduler = dbManager.CreateScheduler(1, 12);
+                            var config = dbManager.CreateSystemConfig("http://miitsoft.de", "michael@miitsoft.de", true, true, true, scheduler);
+                            var service = dbManager.CreateSystemService(0, "Useless system", dbComp2, config);
+
+                            guid = dbManager.AddEntity(service);
                             break;
 
                         case ConsoleKey.H:

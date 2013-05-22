@@ -24,6 +24,15 @@ namespace HSA.InfoSys.Common.DBManager.Data
         public virtual int UserId { get; set; }
 
         /// <summary>
+        /// Gets or sets the service name.
+        /// </summary>
+        /// <value>
+        /// The service name.
+        /// </value>
+        [DataMember]
+        public virtual string Name { get; set; }
+
+        /// <summary>
         /// Gets or sets the time stamp.
         /// </summary>
         /// <value>
