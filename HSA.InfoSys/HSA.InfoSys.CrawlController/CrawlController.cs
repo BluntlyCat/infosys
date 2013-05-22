@@ -57,12 +57,12 @@ namespace HSA.InfoSys.Common.CrawlController
 
                 var binding = new NetTcpBinding();
                 binding.Security.Mode = SecurityMode.Transport;
-                //binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
+                binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
                 Log.Info("Create binding for proxy.");
 
                 var address = new EndpointAddress(
-                    Properties.Settings.Default.NET_TCP_ADDRESS);//,
-                        //EndpointIdentity.CreateDnsIdentity("InfoSys"));
+                    new Uri(Properties.Settings.Default.NET_TCP_ADDRESS),
+                        EndpointIdentity.CreateDnsIdentity("InfoSys"));
                 Log.Info("Create endpoint for proxy.");
 
                 var uri = new Uri(Properties.Settings.Default.NET_TCP_ADDRESS);
@@ -85,13 +85,13 @@ namespace HSA.InfoSys.Common.CrawlController
 #if !MONO
             certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_DOTNET, "Aes2xe1baetei8Y");
 #else
-            certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_MONO);
+            certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_MONO, "Aes2xe1baetei8Y");
 #endif
 
             this.host = new ServiceHost(typeof(CrawlController), new Uri(Properties.Settings.Default.HTTP_ADDRESS));
 
             binding.Security.Mode = SecurityMode.Transport;
-            binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
+            binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
 
             this.host.AddServiceEndpoint(
                 typeof(ICrawlController),
