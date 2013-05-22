@@ -8,6 +8,7 @@ namespace HSA.InfoSys.Gui.Controllers
     using System.Web.Mvc;
     using HSA.InfoSys.Common.Logging;
     using log4net;
+    using System;
 
     /// <summary>
     /// The controller for the home page.
@@ -29,6 +30,21 @@ namespace HSA.InfoSys.Gui.Controllers
         {
             this.ViewData["navid"] = "home";
             this.ViewData["label1"] = Properties.Resources.TEST_LABLE1;
+
+            //DateTime date1 = new DateTime(1970, 1, 1);  //Refernzdatum (festgelegt)
+            //DateTime date2 = DateTime.Now;              //jetztiges Datum / Uhrzeit
+            //TimeSpan ts = new TimeSpan(date2.Ticks - date1.Ticks);  // das Delta ermitteln
+            //// Das Delta als gesammtzahl der sekunden ist der Timestamp
+            //string timestamp = Convert.ToInt32(ts.TotalSeconds);
+
+            TimeSpan ts = (DateTime.Now - new DateTime(1970, 1, 1));
+            int timestamp = (int)ts.TotalSeconds;
+            Console.WriteLine(timestamp);
+
+            System.DateTime dt = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
+            dt = dt.AddSeconds(timestamp);
+            Console.WriteLine(dt);
+
 
             //// Test
             //// MySqlConnection connection = new MySqlConnection("server=infosys.informatik.hs-augsburg.de;uid=root;pwd=goqu!ae0Ah;database=infosys");
