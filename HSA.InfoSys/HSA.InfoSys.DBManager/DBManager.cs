@@ -225,7 +225,7 @@ namespace HSA.InfoSys.Common.DBManager
                 UserId = userId,
                 TimeStamp = new DateTime(),
                 Component = component,
-                SystemConfig = sysconfig,
+                SystemConfig = sysconfig
             };
 
             Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SOURCE);
