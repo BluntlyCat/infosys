@@ -131,7 +131,7 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The entity you asked for.
         /// </returns>
-        public T GetEntity<T>(Guid entityGUID) where T : Entity
+        public T GetEntity<T>(Guid entityGUID)
         {
             T entity;
             using (ISession session = OpenSession())

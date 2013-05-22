@@ -36,7 +36,7 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The entity you asked for.
         /// </returns>
-        T GetEntity<T>(Guid entityGuid) where T : Entity;
+        T GetEntity<T>(Guid entityGuid);
 
         /// <summary>
         /// Creates a component object.
