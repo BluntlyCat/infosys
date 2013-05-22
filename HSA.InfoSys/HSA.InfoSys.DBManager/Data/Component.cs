@@ -7,6 +7,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
 {
     using System;
     using System.Runtime.Serialization;
+    using NHibernate.Mapping;
 
     /// <summary>
     /// A component represents a system as a whole

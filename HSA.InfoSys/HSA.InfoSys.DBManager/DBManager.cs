@@ -156,7 +156,6 @@ namespace HSA.InfoSys.Common.DBManager
         {
             var component = new Component
             {
-                EntityId = System.Guid.NewGuid(),
                 Category = componentCategory,
                 Name = componentName,
                 Result = result
@@ -178,7 +177,6 @@ namespace HSA.InfoSys.Common.DBManager
         {
             var source = new Source
             {
-                EntityId = System.Guid.NewGuid(),
                 URL = sourceURL
             };
 
@@ -198,7 +196,6 @@ namespace HSA.InfoSys.Common.DBManager
         {
             var result = new Result
             {
-                EntityId = System.Guid.NewGuid(),
                 TimeStamp = new DateTime(),
                 Data = data
             };
@@ -221,7 +218,6 @@ namespace HSA.InfoSys.Common.DBManager
         {
             var systemService = new SystemService
             {
-                EntityId = System.Guid.NewGuid(),
                 UserId = userId,
                 TimeStamp = new DateTime(),
                 Component = component,
@@ -255,7 +251,6 @@ namespace HSA.InfoSys.Common.DBManager
         {
             var systemConfig = new SystemConfig
             {
-                EntityId = System.Guid.NewGuid(),
                 URL = url,
                 Email = email,
                 URLActive = urlActive,
@@ -281,7 +276,6 @@ namespace HSA.InfoSys.Common.DBManager
         {
             var scheduler = new Scheduler
             {
-                EntityId = System.Guid.NewGuid(),
                 TimeStamp = new DateTime(),
                 Days = days,
                 Hours = hours
