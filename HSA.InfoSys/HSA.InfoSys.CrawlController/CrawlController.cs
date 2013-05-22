@@ -56,7 +56,7 @@ namespace HSA.InfoSys.Common.CrawlController
                 Log.Info("Try get new client proxy.");
 
                 var binding = new NetTcpBinding();
-                binding.Security.Mode = SecurityMode.Transport;
+                //binding.Security.Mode = SecurityMode.Transport;
                 binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
                 Log.Info("Create binding for proxy.");
 
@@ -90,7 +90,7 @@ namespace HSA.InfoSys.Common.CrawlController
 
             this.host = new ServiceHost(typeof(CrawlController), new Uri(Properties.Settings.Default.HTTP_ADDRESS));
 
-            binding.Security.Mode = SecurityMode.Transport;
+            //binding.Security.Mode = SecurityMode.Transport;
             binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
 
             this.host.AddServiceEndpoint(
