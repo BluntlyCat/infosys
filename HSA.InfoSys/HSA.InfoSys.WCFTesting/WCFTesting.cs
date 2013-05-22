@@ -59,22 +59,16 @@ namespace HSA.InfoSys.Testing.WCFTesting
                             controller = CrawlController.ClientProxy;
                             log.Info("Add new Component.");
 
-                            var result = new Result();
-                            result.Data = "Some data";
-                            result.EntityId = Guid.NewGuid();
-                            result.TimeStamp = new DateTime();
+                            Guid guid;
+                            var result = controller.CreateResult("some data...");
 
-                            var comp = controller.CreateComponent("Michis Special Component", "Funny Stuff", result) as Component;
+                            var comp = controller.CreateComponent("Michis Special Component", "Funny Stuff", null) as Component;
                             log.InfoFormat("Component Created: [{0}]", comp.ToString());
-                            Guid cguid = controller.AddEntity(comp);
-                            var dbComp = controller.GetEntity(cguid) as Component;
-                            log.InfoFormat("Component from DB: [{0}]", dbComp);
 
-                            var source = controller.CreateSource("http://miitsoft.de") as Source;
-                            log.InfoFormat("Source Created: [{0}]", source.ToString());
-                            Guid sguid = controller.AddEntity(source);
-                            var dbSrc = controller.GetEntity(sguid) as Source;
-                            log.InfoFormat("Source from DB: [{0}]", dbSrc);
+                            guid = controller.AddEntity(comp);
+                            
+                            var dbComp = controller.GetEntity(guid) as Component;
+                            log.InfoFormat("Component from DB: [{0}]", dbComp);
                             break;
 
                         case ConsoleKey.H:
