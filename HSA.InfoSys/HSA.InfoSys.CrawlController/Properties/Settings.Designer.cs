@@ -43,7 +43,7 @@ namespace HSA.InfoSys.Common.CrawlController.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("net.tcp://192.168.0.9:8085/CrawlerProxy/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("net.tcp://miitsoft.de:8085/CrawlerProxy/")]
         public string NET_TCP_ADDRESS {
             get {
                 return ((string)(this["NET_TCP_ADDRESS"]));
@@ -61,7 +61,7 @@ namespace HSA.InfoSys.Common.CrawlController.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.0.9:8086/CrawlerProxy/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://miitsoft.de:8086/CrawlerProxy/")]
         public string HTTP_ADDRESS {
             get {
                 return ((string)(this["HTTP_ADDRESS"]));
