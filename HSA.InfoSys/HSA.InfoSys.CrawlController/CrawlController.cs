@@ -56,11 +56,14 @@ namespace HSA.InfoSys.Common.CrawlController
                 var binding = new NetTcpBinding();
                 binding.Security.Mode = SecurityMode.Transport;
                 binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
+
+                var address = new EndpointAddress(
+                    new Uri(Properties.Settings.Default.NET_TCP_ADDRESS),
+                        EndpointIdentity.CreateDnsIdentity("InfoSys"));
+
+                var uri = new Uri(Properties.Settings.Default.NET_TCP_ADDRESS);
                 
-                return ChannelFactory<ICrawlController>.CreateChannel(
-                    binding,
-                    new EndpointAddress(new Uri(Properties.Settings.Default.NET_TCP_ADDRESS), EndpointIdentity.CreateDnsIdentity("InfoSys")),
-                    new Uri(Properties.Settings.Default.NET_TCP_ADDRESS));
+                return ChannelFactory<ICrawlController>.CreateChannel(binding, address, uri);
             }
         }
 
