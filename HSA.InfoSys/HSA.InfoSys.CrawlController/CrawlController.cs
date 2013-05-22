@@ -61,8 +61,8 @@ namespace HSA.InfoSys.Common.CrawlController
                 Log.Info("Create binding for proxy.");
 
                 var address = new EndpointAddress(
-                    new Uri(Properties.Settings.Default.NET_TCP_ADDRESS),
-                        EndpointIdentity.CreateDnsIdentity("InfoSys"));
+                    new Uri(Properties.Settings.Default.NET_TCP_ADDRESS));//,
+                        //EndpointIdentity.CreateDnsIdentity("InfoSys"));
                 Log.Info("Create endpoint for proxy.");
 
                 var uri = new Uri(Properties.Settings.Default.NET_TCP_ADDRESS);
