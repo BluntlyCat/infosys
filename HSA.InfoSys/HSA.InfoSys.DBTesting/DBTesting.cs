@@ -45,14 +45,23 @@ namespace HSA.InfoSys.Testing.DBTesting
                         case ConsoleKey.A:
                             log.Info("Add entity to db.");
 
-                            var result = new Result();
-                            result.Data = "Some data";
-                            result.TimeStamp = DateTime.UtcNow;
+                            Guid guid;
 
-                            var comp = dbManager.CreateComponent("Michis Special Component", "Funny Stuff", null) as Component;
+                            var result = dbManager.CreateResult("Some Data...");
+                            log.InfoFormat("Result Created: [{0}]", result.ToString());
+
+                            var comp = dbManager.CreateComponent("Michis Special Component", "Funny Stuff", null);
                             log.InfoFormat("Component Created: [{0}]", comp.ToString());
-                            Guid cguid = dbManager.AddEntity(comp);
-                            var dbComp = dbManager.GetEntity<Component>(cguid);
+
+                            guid = dbManager.AddEntity(comp);
+
+                            var dbComp = dbManager.GetEntity<Component>(guid);
+                            log.InfoFormat("Component from DB: [{0}]", dbComp);
+
+                            dbComp.Result = result;
+                            dbManager.UpdateEntity(dbComp);
+
+                            dbComp = dbManager.GetEntity<Component>(guid);
                             log.InfoFormat("Component from DB: [{0}]", dbComp);
                             break;
 
