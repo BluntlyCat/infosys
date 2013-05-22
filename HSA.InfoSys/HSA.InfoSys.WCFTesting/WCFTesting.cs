@@ -62,8 +62,8 @@ namespace HSA.InfoSys.Testing.WCFTesting
                             Guid guid;
                             var result = controller.CreateResult("some data...");
 
-                            var comp = controller.CreateComponent("Michis Special Component", "Funny Stuff") as Component;
-                            log.InfoFormat("Component Created: [{0}]", comp.ToString());
+                            var comp = controller.CreateComponent("Michis Special Component", "Funny Stuff");
+                            log.InfoFormat("Component Created: [{0}]", comp);
 
                             guid = controller.AddEntity(comp);
                             

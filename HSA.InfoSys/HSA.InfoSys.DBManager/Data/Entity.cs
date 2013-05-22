@@ -46,6 +46,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// <value>
         /// The type of this instance.
         /// </value>
+        [DataMember]
         public virtual string Type { get; protected set; }
 
         /// <summary>
