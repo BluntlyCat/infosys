@@ -196,7 +196,7 @@ namespace HSA.InfoSys.Common.DBManager
         {
             var result = new Result
             {
-                TimeStamp = new DateTime(),
+                TimeStamp = DateTime.Now,
                 Data = data
             };
 
