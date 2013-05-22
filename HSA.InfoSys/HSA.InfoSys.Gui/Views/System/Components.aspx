@@ -22,7 +22,7 @@
                 <span>Add all your components here</span>
             </div>
 
-            <form action="/System/Components" method="post">
+            <form action="/System/ComponentsSubmit" method="post">
 
                 <div class="contentbox-content cutline-bot">
                     <div id="allBoxes" style="margin-left: 100px;">

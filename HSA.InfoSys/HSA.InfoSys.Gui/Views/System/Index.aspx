@@ -85,24 +85,24 @@
     </div>
 
     <!-- createModal -->
-    <div id="createModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                ×</button>
-            <h3 id="myModalLabel">
-                Create new system</h3>
-        </div>
-        <div class="modal-body">
-            <p>Please enter a name for your new system:</p>
-            <input type="text" style="width: 440px;" placeholder="i.e. Webserver, Working-Station, Backup-Server">
-        </div>
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">
-                Close</button>
-            <a class="btn btn-success" href="#">
-                <i class="icon-plus icon-white"></i>&nbsp;&nbsp;<b>Create</b></a>
-        </div>
+    <div id="createModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form id="createSystemForm" action="/System/IndexSubmit" method="post">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×</button>
+                <h3 id="myModalLabel">
+                    Create new system</h3>
+            </div>
+            <div class="modal-body">
+                <p>Please enter a name for your new system:</p>
+                <input type="text" name="newsystem" style="width: 440px;" placeholder="i.e. Webserver, Working-Station, Backup-Server">
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">
+                    Close</button>
+                <button id="createSystem" class="btn btn-success"><i class="icon-plus icon-white"></i>&nbsp;&nbsp;<b>Create</b></button>
+            </div>
+        </form>
     </div>
 
     <!-- deleteModal -->
@@ -129,6 +129,10 @@
 
     <script>
         $(document).ready(function () {
+
+            $('#createSystem').click(function () {
+                $('#createSystemForm').submit();
+            });
 
             // addButton click event
             $('#addButton').click(function () {

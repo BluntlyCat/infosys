@@ -250,7 +250,7 @@ namespace HSA.InfoSys.Gui.Controllers
             }
             else
             {
-                //// MembershipUser user = Membership.GetUser(new Guid(ID));
+                // MembershipUser user = Membership.GetUser(new Guid(ID));
                 MembershipUser user = Membership.GetUser(Convert.ToInt32(id));
 
                 if (!user.IsApproved)

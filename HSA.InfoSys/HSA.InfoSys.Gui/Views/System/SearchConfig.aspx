@@ -36,7 +36,7 @@
                 </form>
             </div>
 
-            <form action="/System/SearchConfig" method="post">
+            <form action="/System/SearchConfigSubmit" method="post">
 
                 <!-- Scheduler -->
                 <div id="schedulerblock" class="contentbox-content cutline-bot">
@@ -45,14 +45,14 @@
                     System durchgeführt werden soll.</span>
                     <div id="schedulerEnabled" style="width: 500px; margin-left: 100px; margin-bottom: 10px; margin-top: 20px;">
                         <label class="checkbox inline">
-                            <input id="schedulerOn" type="checkbox" /> Zeitplan verwenden
+                            <input id="schedulerOn" type="checkbox" name="schedulerOn" /> Zeitplan verwenden
                         </label>
                     </div>
                     <div id="schedulerconfig" class="form-horizontal" style="margin-left: 100px; width: 700px;">
                        Suche alle 
-                       <input style="width: 30px;" id="sc_days" type="text" placeholder="z.B. 3" value="3">
+                       <input style="width: 30px;" id="sc_days" type="text" name="sc_days" placeholder="z.B. 3" value="3">
                        Tage um 
-                       <select id="sc_time" style="width: 75px;">
+                       <select id="sc_time" style="width: 75px;" name="sc_time">
                             <% for (int i = 0; i < 24; i++) { %>
                                 <% 
                                    string time = i + ":00";
@@ -65,7 +65,7 @@
                         </select> 
                         Uhr. Starte erste Suche am
                         <div class="input-append date">
-                            <input id="dp" data-date="12-02-2012" data-date-format="dd-mm-yyyy" class="span2" size="16" type="text" value="12-02-2012">
+                            <input id="sc_date" data-date="12-02-2012" data-date-format="dd-mm-yyyy" class="span2" size="16" type="text" name="sc_date" value="12-02-2012">
                             <span class="add-on"><i class="icon-th"></i></span>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                     Du kannst mehrere E-Mail Adressen angeben.</span>
                     <div id="emailEnabled" style="width: 500px; margin-left: 100px; margin-bottom: 10px; margin-top: 20px;">
                         <label class="checkbox inline">
-                            <input id="emailsOn" type="checkbox"> Sende E-Mail mit Suchergebnissen an:
+                            <input id="emailsOn" type="checkbox" name="emailsOn"> Sende E-Mail mit Suchergebnissen an:
                         </label>
                     </div>
                     <div id="emails" style="margin-left: 100px; width: 500px;">
@@ -105,7 +105,7 @@
                             <input type="checkbox" id="Checkbox2" name="irgendeineseite" checked="checked" /> irgendeineseite.de
                         </label><br />
                         <label class="checkbox inline">
-                            <input id="websitesOn" type="checkbox"> weitere...
+                            <input id="websitesOn" type="checkbox" name="websitesOn"> weitere...
                         </label>
                     </div>
 
@@ -170,13 +170,6 @@
                 }
             });
 
-
-
-
-
-
-
-
             // addButton click event
             $('#addEmail').click(function () {
                 addEmailBox();
@@ -198,7 +191,7 @@
             var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
             // bind datepicker on element
-            $('#dp').datepicker('setValue', now);
+            $('#sc_date').datepicker('setValue', now);
 
         }
 
