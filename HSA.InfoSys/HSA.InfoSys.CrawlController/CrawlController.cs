@@ -57,7 +57,7 @@ namespace HSA.InfoSys.Common.CrawlController
 
                 var binding = new NetTcpBinding();
                 binding.Security.Mode = SecurityMode.Transport;
-                binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
+                //binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
                 Log.Info("Create binding for proxy.");
 
                 var address = new EndpointAddress(
