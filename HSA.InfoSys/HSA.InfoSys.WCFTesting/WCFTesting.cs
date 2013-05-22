@@ -87,6 +87,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
                             try
                             {
                                 controller = CrawlController.ClientProxy;
+                                log.Info("Got client proxy...");
                                 controller.StartSearch("solr");
                             }
                             catch (Exception e)
