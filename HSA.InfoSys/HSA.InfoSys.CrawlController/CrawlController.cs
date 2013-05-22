@@ -49,13 +49,15 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <value>
         /// The client proxy.
         /// </value>
-        public static ICrawlController ClientProxy
+        public static ClientProxy ClientProxy
         {
             get
             {
                 EndpointAddress address = new EndpointAddress(Properties.Settings.Default.NET_TCP_ADDRESS);
                 NetTcpBinding binding = new NetTcpBinding();
                 ClientProxy proxy = new ClientProxy(binding, address);
+
+                return proxy;
 
                 /*
                 Log.Info("Try get new client proxy.");
@@ -225,10 +227,10 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <returns>
         /// The new component.
         /// </returns>
-        public Component CreateComponent(string name, string category, Result result)
+        public Component CreateComponent(string name, string category)
         {
             Log.DebugFormat("Create new component: [{0}], [{1}]", name, category);
-            return dbManager.CreateComponent(name, category, result);
+            return dbManager.CreateComponent(name, category);
         }
 
         /// <summary>

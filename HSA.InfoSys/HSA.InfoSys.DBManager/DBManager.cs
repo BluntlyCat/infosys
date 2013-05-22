@@ -152,13 +152,12 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The created component object.
         /// </returns>
-        public Component CreateComponent(string componentName, string componentCategory, Result result)
+        public Component CreateComponent(string componentName, string componentCategory)
         {
             var component = new Component
             {
                 Category = componentCategory,
                 Name = componentName,
-                Result = result
             };
 
             Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_COMPONENT, component);

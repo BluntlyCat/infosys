@@ -47,7 +47,7 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The created component object.
         /// </returns>
-        Component CreateComponent(string name, string category, Result result);
+        Component CreateComponent(string name, string category);
 
         /// <summary>
         /// Creates an source object.
