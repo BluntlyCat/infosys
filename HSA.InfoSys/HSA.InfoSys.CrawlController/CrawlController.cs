@@ -53,6 +53,11 @@ namespace HSA.InfoSys.Common.CrawlController
         {
             get
             {
+                EndpointAddress address = new EndpointAddress(Properties.Settings.Default.NET_TCP_ADDRESS);
+                NetTcpBinding binding = new NetTcpBinding();
+                ClientProxy proxy = new ClientProxy(binding, address);
+
+                /*
                 Log.Info("Try get new client proxy.");
 
                 var binding = new NetTcpBinding();
@@ -69,6 +74,7 @@ namespace HSA.InfoSys.Common.CrawlController
                 Log.Info("Create URI for proxy.");
 
                 return ChannelFactory<ICrawlController>.CreateChannel(binding, address, uri);
+                 */
             }
         }
 
