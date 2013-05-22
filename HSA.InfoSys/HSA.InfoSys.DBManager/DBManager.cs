@@ -219,7 +219,7 @@ namespace HSA.InfoSys.Common.DBManager
             var systemService = new SystemService
             {
                 UserId = userId,
-                TimeStamp = new DateTime(),
+                TimeStamp = DateTime.Now,
                 Component = component,
                 SystemConfig = sysconfig
             };
@@ -276,7 +276,7 @@ namespace HSA.InfoSys.Common.DBManager
         {
             var scheduler = new Scheduler
             {
-                TimeStamp = new DateTime(),
+                TimeStamp = DateTime.Now,
                 Days = days,
                 Hours = hours
             };
