@@ -53,16 +53,21 @@ namespace HSA.InfoSys.Common.CrawlController
         {
             get
             {
+                Log.Info("Try get new client proxy.");
+
                 var binding = new NetTcpBinding();
                 binding.Security.Mode = SecurityMode.Transport;
                 binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
+                Log.Info("Create binding for proxy.");
 
                 var address = new EndpointAddress(
                     new Uri(Properties.Settings.Default.NET_TCP_ADDRESS),
                         EndpointIdentity.CreateDnsIdentity("InfoSys"));
+                Log.Info("Create endpoint for proxy.");
 
                 var uri = new Uri(Properties.Settings.Default.NET_TCP_ADDRESS);
-                
+                Log.Info("Create URI for proxy.");
+
                 return ChannelFactory<ICrawlController>.CreateChannel(binding, address, uri);
             }
         }
