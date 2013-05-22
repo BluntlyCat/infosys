@@ -53,8 +53,12 @@ namespace HSA.InfoSys.Common.CrawlController
         {
             get
             {
+                var binding = new NetTcpBinding();
+                binding.Security.Mode = SecurityMode.Transport;
+                binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
+
                 return ChannelFactory<ICrawlController>.CreateChannel(
-                    new NetTcpBinding(SecurityMode.Transport),
+                    binding,
                     new EndpointAddress(Properties.Settings.Default.NET_TCP_ADDRESS),
                     new Uri(Properties.Settings.Default.NET_TCP_ADDRESS));
             }
@@ -79,7 +83,7 @@ namespace HSA.InfoSys.Common.CrawlController
             this.host = new ServiceHost(typeof(CrawlController), new Uri(Properties.Settings.Default.HTTP_ADDRESS));
 
             binding.Security.Mode = SecurityMode.Transport;
-            binding.Security.Message.ClientCredentialType = MessageCredentialType.Certificate;
+            binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
 
             this.host.AddServiceEndpoint(
                 typeof(ICrawlController),
