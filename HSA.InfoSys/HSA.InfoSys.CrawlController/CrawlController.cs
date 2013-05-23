@@ -101,7 +101,7 @@ namespace HSA.InfoSys.Common.CrawlController
             this.host.Credentials.ServiceCertificate.Certificate = certificate;
 
             var metadataBevavior = this.host.Description.Behaviors.Find<ServiceMetadataBehavior>();
-
+           
             if (metadataBevavior == null)
             {
                 metadataBevavior = new ServiceMetadataBehavior();

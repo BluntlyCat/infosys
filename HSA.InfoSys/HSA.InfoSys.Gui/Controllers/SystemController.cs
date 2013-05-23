@@ -18,6 +18,7 @@ namespace HSA.InfoSys.Gui.Controllers
     [HandleError]
     public class SystemController : Controller
     {
+        ICrawlController cc;
         ILog log = Logging.GetLogger("GuiLogger");
  
         /// <summary>
@@ -38,21 +39,21 @@ namespace HSA.InfoSys.Gui.Controllers
             // get name of the new system
             string newsystem = Request["newsystem"];
 
-            //// init
-            //cc = CrawlController.ClientProxy;
+            // init
+            cc = CrawlController.ClientProxy;
 
-            //// log
-            //log.Info("add new system");
+            // log
+            log.Info("add new system");
 
-            //// get id of current logged-in user
-            //MembershipUser membershipUser = Membership.GetUser();
-            //string UserID = membershipUser.ProviderUserKey.ToString();
-            //int id = Convert.ToInt32(UserID);
+            // get id of current logged-in user
+            MembershipUser membershipuser = Membership.GetUser();
+            string userid = membershipuser.ProviderUserKey.ToString();
+            int id = Convert.ToInt32(userid);
 
-            //// save to db
-            //Guid guid;
-            //var system = cc.CreateSystemService(id, null, null);
-            //guid = cc.AddEntity(system);
+            // save to db
+            Guid guid;
+            var system = cc.CreateSystemService(id, newsystem);
+            guid = cc.AddEntity(system);
 
             return this.RedirectToAction("Index", "System");
         }
