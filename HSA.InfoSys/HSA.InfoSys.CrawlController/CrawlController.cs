@@ -44,6 +44,49 @@ namespace HSA.InfoSys.Common.CrawlController
         public delegate void InvokeSolrSearch(string query);
 
         /// <summary>
+        /// The net TCP address.
+        /// </summary>
+        private static string NetTCPAddress;
+
+        /// <summary>
+        /// The HTTP address.
+        /// </summary>
+        private static string HTTPAddress;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CrawlController"/> class.
+        /// </summary>
+        public CrawlController()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CrawlController"/> class.
+        /// </summary>
+        /// <param name="netTcpAddress">The net TCP address.</param>
+        /// <param name="httpAddress">The HTTP address.</param>
+        public CrawlController(string netTcpAddress, string httpAddress)
+        {
+            if (netTcpAddress == null)
+            {
+                NetTCPAddress = string.Format("net.tcp://{0}/CrawlerProxy/", Properties.Settings.Default.NET_TCP_ADDRESS);
+            }
+            else
+            {
+                NetTCPAddress = string.Format("net.tcp://{0}/CrawlerProxy/", netTcpAddress);
+            }
+
+            if (httpAddress == null)
+            {
+                HTTPAddress = string.Format("http://{0}/CrawlerProxy/", Properties.Settings.Default.HTTP_ADDRESS);
+            }
+            else
+            {
+                HTTPAddress = string.Format("http://{0}/CrawlerProxy/", httpAddress);
+            }
+        }
+
+        /// <summary>
         /// Gets the crawl controller proxy.
         /// </summary>
         /// <value>
@@ -61,11 +104,11 @@ namespace HSA.InfoSys.Common.CrawlController
                 Log.Info("Create binding for proxy.");
 
                 var address = new EndpointAddress(
-                    new Uri(Properties.Settings.Default.NET_TCP_ADDRESS),
+                    new Uri(NetTCPAddress),
                         EndpointIdentity.CreateDnsIdentity("InfoSys"));
                 Log.Info("Create endpoint for proxy.");
 
-                var uri = new Uri(Properties.Settings.Default.NET_TCP_ADDRESS);
+                var uri = new Uri(NetTCPAddress);
                 Log.Info("Create URI for proxy.");
 
                 return ChannelFactory<ICrawlController>.CreateChannel(binding, address, uri);
@@ -88,7 +131,7 @@ namespace HSA.InfoSys.Common.CrawlController
             certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_MONO, "Aes2xe1baetei8Y");
 #endif
 
-            this.host = new ServiceHost(typeof(CrawlController), new Uri(Properties.Settings.Default.HTTP_ADDRESS));
+            this.host = new ServiceHost(typeof(CrawlController), new Uri(HTTPAddress));
 
             binding.Security.Mode = SecurityMode.Transport;
             binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
@@ -96,7 +139,7 @@ namespace HSA.InfoSys.Common.CrawlController
             this.host.AddServiceEndpoint(
                 typeof(ICrawlController),
                 binding,
-                Properties.Settings.Default.NET_TCP_ADDRESS);
+                NetTCPAddress);
 
             this.host.Credentials.ServiceCertificate.Certificate = certificate;
 
@@ -111,7 +154,7 @@ namespace HSA.InfoSys.Common.CrawlController
             this.host.AddServiceEndpoint(
                 typeof(IMetadataExchange),
                 MetadataExchangeBindings.CreateMexHttpBinding(),
-                Properties.Settings.Default.HTTP_ADDRESS);
+                HTTPAddress);
 
             this.host.Open();
 

@@ -38,19 +38,28 @@ namespace HSA.InfoSys.CrawlerService
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
-           CrawlerService crawler = new CrawlerService();
-           crawler.RunServer();
+            string netTcpAddress = null;
+            string httpAddress = null;
+
+            if (args.Length == 2)
+            {
+                netTcpAddress = args[0];
+                httpAddress = args[1];
+            }
+
+            CrawlerService crawler = new CrawlerService();
+            crawler.RunServer(netTcpAddress, httpAddress);
         }
 
         /// <summary>
         /// Runs the server.
         /// </summary>
-        private void RunServer()
+        private void RunServer(string netTcpAddress = null, string httpAddress = null)
         {
             Log.Debug(Properties.Resources.WEB_CRAWLER_START_SERVER);
             Log.Info(Properties.Resources.WEB_CRAWLER_QUIT_MESSAGE);
 
-            this.controller = new CrawlController();
+            this.controller = new CrawlController(netTcpAddress, httpAddress);
 
             this.controller.StartServices();
             this.controller.OpenWCFHost();
