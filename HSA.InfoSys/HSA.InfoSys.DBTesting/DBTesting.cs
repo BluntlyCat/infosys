@@ -71,7 +71,7 @@ namespace HSA.InfoSys.Testing.DBTesting
 
                             guid = dbManager.AddEntity(service);
 
-                            var dbService = dbManager.GetEntity<SystemService>(guid, new Type[] { typeof(Component), typeof(Result) });
+                            var dbService = dbManager.GetEntity<SystemService>(guid, new Type[] { typeof(Component), typeof(SystemConfig) });
                             log.InfoFormat("Service from DB: [{0}]", dbService);
                             break;
 

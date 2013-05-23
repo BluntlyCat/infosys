@@ -88,6 +88,15 @@ namespace HSA.InfoSys.Common.DBManager.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die New systemservice [{0}] created. ähnelt.
+        /// </summary>
+        internal static string DBMANAGER_CREATE_SYSTEMSERVICE {
+            get {
+                return ResourceManager.GetString("DBMANAGER_CREATE_SYSTEMSERVICE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Got entity of type [{0}] with values [{1}] by GUID [{2}] ähnelt.
         /// </summary>
         internal static string DBMANAGER_GET_ENTITY {

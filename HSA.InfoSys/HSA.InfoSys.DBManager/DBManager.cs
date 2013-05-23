@@ -232,7 +232,7 @@ namespace HSA.InfoSys.Common.DBManager
                 SystemConfig = sysconfig
             };
 
-            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SOURCE);
+            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SYSTEMSERVICE, systemService);
 
             return systemService;
         }

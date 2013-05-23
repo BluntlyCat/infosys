@@ -74,13 +74,11 @@ namespace HSA.InfoSys.Common.DBManager.Data
                 {
                     if (type == typeof(Component))
                     {
-                        this.Component = this.Component.Unproxy() as Component;
-                        this.Component.Unproxy(types);
+                        this.Component = this.Component.Unproxy(types) as Component;
                     }
                     else if (type == typeof(SystemConfig))
                     {
-                        this.SystemConfig = this.SystemConfig.Unproxy() as SystemConfig;
-                        this.SystemConfig.Unproxy(types);
+                        this.SystemConfig = this.SystemConfig.Unproxy(types) as SystemConfig;
                     }
                 }
             }
