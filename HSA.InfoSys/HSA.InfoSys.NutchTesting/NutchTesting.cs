@@ -22,16 +22,13 @@ namespace HSA.InfoSys.Testing.NutchTesting
         public static void Main(string[] args)
         {
             ILog log = Logging.GetLogger("NutchTesting");
-            NutchClient client = new NutchClient(8080, "141.82.59.139");
-            client.StartSearch();
-
             
             bool running = true;
            
-            /*Console.WriteLine(string.Empty);
+            Console.WriteLine(string.Empty);
             Console.WriteLine("Here you can test the nutch funcionality.");
             Console.WriteLine("To see your options press h or press q for quit.");
-            Console.WriteLine(string.Empty);*/
+            Console.WriteLine(string.Empty);
 
             while (running)
             {
