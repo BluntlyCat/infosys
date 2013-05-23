@@ -33,10 +33,11 @@ namespace HSA.InfoSys.Common.DBManager
         /// </summary>
         /// <typeparam name="T">The type of what you want.</typeparam>
         /// <param name="entityGuid">The entity GUID.</param>
+        /// <param name="types">The types you want load eager.</param>
         /// <returns>
         /// The entity you asked for.
         /// </returns>
-        T GetEntity<T>(Guid entityGuid);
+        T GetEntity<T>(Guid entityGuid, Type[] types = null) where T : Entity;
 
         /// <summary>
         /// Creates a component object.

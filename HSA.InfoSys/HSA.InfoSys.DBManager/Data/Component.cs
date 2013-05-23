@@ -44,6 +44,29 @@ namespace HSA.InfoSys.Common.DBManager.Data
         public virtual Result Result { get; set; }
 
         /// <summary>
+        /// Loads this instance from NHibernate.
+        /// </summary>
+        /// <param name="types">The types you want load eager.</param>
+        /// <returns>
+        /// The entity behind the NHibernate proxy.
+        /// </returns>
+        public override Entity Unproxy(Type[] types = null)
+        {
+            if (types != null)
+            {
+                foreach (var type in types)
+                {
+                    if (type == typeof(Result))
+                    {
+                        this.Result = this.Result.Unproxy() as Result;
+                    }
+                }
+            }
+
+            return base.Unproxy(types);
+        }
+
+        /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
         /// <returns>

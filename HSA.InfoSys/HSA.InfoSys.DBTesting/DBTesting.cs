@@ -62,7 +62,7 @@ namespace HSA.InfoSys.Testing.DBTesting
                             dbManager.UpdateEntity(dbComp);
                             log.InfoFormat("Component from DB updated: [{0}]", dbComp);
 
-                            var dbComp2 = dbManager.GetEntity<Component>(guid);
+                            var dbComp2 = dbManager.GetEntity<Component>(guid, new Type[] { typeof(Result) });
                             log.InfoFormat("Component from DB: [{0}]", dbComp2);
 
                             var scheduler = dbManager.CreateScheduler(1, 12);
@@ -70,6 +70,9 @@ namespace HSA.InfoSys.Testing.DBTesting
                             var service = dbManager.CreateSystemService(0, "Useless system", dbComp2, config);
 
                             guid = dbManager.AddEntity(service);
+
+                            var dbService = dbManager.GetEntity<SystemService>(guid, new Type[] { typeof(Component), typeof(Result) });
+                            log.InfoFormat("Service from DB: [{0}]", dbService);
                             break;
 
                         case ConsoleKey.H:

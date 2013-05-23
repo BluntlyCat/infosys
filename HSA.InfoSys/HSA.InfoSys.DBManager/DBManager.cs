@@ -128,16 +128,22 @@ namespace HSA.InfoSys.Common.DBManager
         /// </summary>
         /// <typeparam name="T">The type of what you want.</typeparam>
         /// <param name="entityGUID">The entity GUID.</param>
+        /// <param name="types">The types you want load eager.</param>
         /// <returns>
         /// The entity you asked for.
         /// </returns>
-        public T GetEntity<T>(Guid entityGUID)
+        public T GetEntity<T>(Guid entityGUID, Type[] types = null) where T : Entity
         {
             T entity;
             using (ISession session = OpenSession())
             using (ITransaction transaction = session.BeginTransaction())
             {
                 entity = session.Get<T>(entityGUID);
+
+                if (types != null)
+                {
+                    entity.Unproxy(types);
+                }
             }
 
             Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ENTITY, typeof(T), entity, entityGUID);

@@ -52,8 +52,11 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// <summary>
         /// Loads this instance from NHibernate.
         /// </summary>
-        /// <returns>The entity behind the NHibernate proxy.</returns>
-        public virtual Entity Unproxy()
+        /// <param name="types">The types you want load eager.</param>
+        /// <returns>
+        /// The entity behind the NHibernate proxy.
+        /// </returns>
+        public virtual Entity Unproxy(Type[] types = null)
         {
             return this;
         }

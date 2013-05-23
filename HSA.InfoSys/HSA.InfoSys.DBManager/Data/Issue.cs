@@ -69,6 +69,34 @@ namespace HSA.InfoSys.Common.DBManager.Data
         public virtual Source Source { get; set; }
 
         /// <summary>
+        /// Loads this instance from NHibernate.
+        /// </summary>
+        /// <param name="types">The types you want load eager.</param>
+        /// <returns>
+        /// The entity behind the NHibernate proxy.
+        /// </returns>
+        public override Entity Unproxy(Type[] types = null)
+        {
+            if (types != null)
+            {
+                foreach (var type in types)
+                {
+                    if (type == typeof(Source))
+                    {
+                        this.Source = this.Source.Unproxy() as Source;
+                    }
+                    else if (type == typeof(Component))
+                    {
+                        this.Component = this.Component.Unproxy() as Component;
+                        this.Component.Unproxy(types);
+                    }
+                }
+            }
+
+            return base.Unproxy(types);
+        }
+
+        /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
         /// <returns>
