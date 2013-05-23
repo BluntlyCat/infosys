@@ -72,22 +72,15 @@ namespace HSA.InfoSys.Common.CrawlController
         Component CreateComponent(string name, string category);
 
         /// <summary>
-        /// Creates the source.
-        /// </summary>
-        /// <param name="sourceURL">The source URL.</param>
-        /// <returns>The new source.</returns>
-        [OperationContract]
-        Source CreateSource(string sourceURL);
-
-        /// <summary>
         /// Creates a result object
         /// </summary>
         /// <param name="data">The content of the result</param>
+        /// <param name="source">The source.</param>
         /// <returns>
         /// The created result object
         /// </returns>
         [OperationContract]
-        Result CreateResult(string data);
+        Result CreateResult(string data, string source);
 
         /// <summary>
         /// Creates a SystemService object
@@ -100,7 +93,7 @@ namespace HSA.InfoSys.Common.CrawlController
         /// The created SystemService object
         /// </returns>
         [OperationContract]
-        SystemService CreateSystemService(int userId, string name, Component component, SystemConfig sysconfig);
+        SystemService CreateSystemService(int userId, string name);
 
         /// <summary>
         /// Creates a SystemConfig object

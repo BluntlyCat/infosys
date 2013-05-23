@@ -225,29 +225,17 @@ namespace HSA.InfoSys.Common.CrawlController
         }
 
         /// <summary>
-        /// Creates the source.
-        /// </summary>
-        /// <param name="sourceURL">The source URL.</param>
-        /// <returns>
-        /// The new source.
-        /// </returns>
-        public Source CreateSource(string sourceURL)
-        {
-            Log.DebugFormat("Create new source: [{0}]", sourceURL);
-            return dbManager.CreateSource(sourceURL);
-        }
-
-        /// <summary>
         /// Creates a result object
         /// </summary>
         /// <param name="data">The content of the result</param>
+        /// <param name="source">The source.</param>
         /// <returns>
         /// The created result object
         /// </returns>
-        public Result CreateResult(string data)
+        public Result CreateResult(string data, string source)
         {
             Log.DebugFormat("Create new result: [{0}]", data);
-            return dbManager.CreateResult(data);
+            return dbManager.CreateResult(data, source);
         }
 
         /// <summary>
@@ -260,10 +248,10 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <returns>
         /// The created SystemService object
         /// </returns>
-        public SystemService CreateSystemService(int userId, string name, Component component, SystemConfig sysconfig)
+        public SystemService CreateSystemService(int userId, string name)
         {
-            Log.DebugFormat("Create new system service: [{0}, {1}, {2}]", userId, component, sysconfig);
-            return dbManager.CreateSystemService(userId, name, component, sysconfig);
+            Log.DebugFormat("Create new system service: [{0}, {1}, {2}]", userId);
+            return dbManager.CreateSystemService(userId, name);
         }
 
         /// <summary>

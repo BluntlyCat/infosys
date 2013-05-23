@@ -24,13 +24,22 @@ namespace HSA.InfoSys.Common.DBManager.Data
         public virtual string Data { get; set; }
 
         /// <summary>
-        /// Gets or sets the time stamp.
+        /// Gets or sets the source.
+        /// </summary>
+        /// <value>
+        /// The source URL.
+        /// </value>
+        [DataMember]
+        public virtual string Source { get; set; }
+
+        /// <summary>
+        /// Gets or sets the time.
         /// </summary>
         /// <value>
         /// The time stamp.
         /// </value>
         [DataMember]
-        public virtual DateTime TimeStamp { get; set; }
+        public virtual DateTime Time { get; set; }
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
@@ -40,7 +49,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// </returns>
         public override string ToString()
         {
-            return string.Format("{0}, {1}", this.Data, this.TimeStamp);
+            return string.Format("{0}, {1}", this.Data, this.Time);
         }
     }
 }

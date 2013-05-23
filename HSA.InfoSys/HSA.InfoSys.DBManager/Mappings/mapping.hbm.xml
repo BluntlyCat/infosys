@@ -16,7 +16,6 @@
 
       <many-to-one class="Result" name="Result" column="ResultGUID" cascade="save-update" />
 
-      <property name="Category" type="string" length ="100" not-null="true" />
       <property name="Name" type="string" length ="100" not-null="true" />
     </joined-subclass>
 
@@ -25,30 +24,32 @@
       <key column="ResultGUID" />
 
       <property name="Data" type="string" >
-        <column name="Data" sql-type="text" not-null="true" />
+        <column name="Data" sql-type="text" not-null="false" />
       </property>
-      <property name="TimeStamp" type="timestamp" not-null="true"/>
+
+      <property name="Source" type="string" length="1024" not-null="true" />
+      <property name="Time" type="timestamp" column="FindDate" not-null="true"/>
     </joined-subclass>
 
     <!-- Scheduler -->
     <joined-subclass name="Scheduler" table="Scheduler">
       <key column="SchedulerGUID" />
 
-      <property name="Days" type="int" column="Days" not-null="true"/>
-      <property name="Hours" type="int" column="Hours" not-null="true"/>
-      <property name="TimeStamp" type="timestamp" column="Timestamp" not-null="true"/>
+      <property name="Days" type="int" not-null="true"/>
+      <property name="Hours" type="int" not-null="true"/>
+      <property name="Begin" type="timestamp" not-null="true"/>
     </joined-subclass>
 
     <!-- SystemService -->
     <joined-subclass name="SystemService" table="SystemService">
       <key column="SystemServiceGUID" />
 
-      <many-to-one name="Component" class="Component" column="ComponentGUID" cascade="save-update"  />
+      <many-to-one name="Component" class="Component" column="ComponentGUID" cascade="save-update" />
       <many-to-one name="SystemConfig" class="SystemConfig" column="SystemConfigGUID" cascade="save-update" />
 
       <property name="Name" type="string" length ="40" not-null="true" />
-      <property name="UserId" type="int" column="UserId" length="10" not-null="true"/>
-      <property name="TimeStamp" type="timestamp" column="Timestamp" not-null="true"/>
+      <property name="UserId" type="int" length="10" not-null="true"/>
+      <property name="NextSearch" type="timestamp" not-null="false"/>
 
     </joined-subclass>
 
@@ -58,42 +59,17 @@
 
       <many-to-one name="Scheduler" class="Scheduler" column="SchedulerGUID" cascade="save-update" />
 
-      <property name="Email" type="string">
-        <column name="Email" sql-type="text" not-null="false"/>
+      <property name="Emails" type="string">
+        <column name="Emails" sql-type="text" not-null="false"/>
       </property>
 
-      <property name="URL" type="string" >
-        <column name="URL" length ="2043" not-null="true" />
+      <property name="URLS" type="string" >
+        <column name="URLS" sql-type="text" not-null="false" />
       </property>
 
-      <property name="URLActive" type="bool" column="URLActive" not-null="true"/>
-      <property name="EmailNotification" type="bool" column="EmailNotification" not-null="true"/>
-      <property name="SchedulerActive" type="bool" column="SchedulerActive" not-null="true"/>
-    </joined-subclass>
-
-    <!-- Issue -->
-    <joined-subclass name ="Issue" table="Issue">
-      <key column="IssueGUID" />
-
-      <many-to-one name="Component" class="Component" column="ComponentGUID" cascade="save-update" />
-      <many-to-one name="Source" class="Source" column="SourceGUID" cascade="save-update" />
-
-      <property name="Text" type="string">
-        <column name="text" sql-type="mediumtext" length="16777215" not-null="false"/>
-      </property>
-
-      <property name="Title" type="string" length ="40" not-null="true"/>
-      <property name="ThreatLevel" type="int" length ="11" not-null="true"/>
-      <property name="Date" type="date" not-null="true"/>
-    </joined-subclass>
-
-    <!-- Source -->
-    <joined-subclass name="Source" table="Source">
-      <key column="SourceGUID" />
-
-      <property name="URL" type="string" >
-        <column name="URL" length ="2043" not-null="true" />
-      </property>
+      <property name="URLActive" type="bool" not-null="true"/>
+      <property name="EmailActive" type="bool" not-null="true"/>
+      <property name="SchedulerActive" type="bool" not-null="true"/>
     </joined-subclass>
   </class>
 </hibernate-mapping>

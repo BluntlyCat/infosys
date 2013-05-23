@@ -41,7 +41,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// The time stamp.
         /// </value>
         [DataMember]
-        public virtual DateTime TimeStamp { get; set; }
+        public virtual DateTime Begin { get; set; }
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
@@ -56,7 +56,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
                 this.EntityId,
                 this.Days,
                 this.Hours,
-                this.TimeStamp);
+                this.Begin);
         }
     }
 }

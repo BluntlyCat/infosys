@@ -26,15 +26,6 @@ namespace HSA.InfoSys.Common.DBManager.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the category.
-        /// </summary>
-        /// <value>
-        /// The category.
-        /// </value>
-        [DataMember]
-        public virtual string Category { get; set; }
-
-        /// <summary>
         /// Gets or sets the result.
         /// </summary>
         /// <value>
@@ -75,10 +66,9 @@ namespace HSA.InfoSys.Common.DBManager.Data
         public override string ToString()
         {
             return string.Format(
-                "{0}, {1}, {2}, {3}",
+                "{0}, {1}, {2}",
                 this.EntityId,
                 this.Name,
-                this.Category,
                 this.Result);
         }
     }

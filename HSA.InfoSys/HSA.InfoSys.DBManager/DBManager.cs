@@ -163,7 +163,6 @@ namespace HSA.InfoSys.Common.DBManager
         {
             var component = new Component
             {
-                Category = componentCategory,
                 Name = componentName,
             };
 
@@ -173,36 +172,19 @@ namespace HSA.InfoSys.Common.DBManager
         }
 
         /// <summary>
-        /// Creates an source object.
-        /// </summary>
-        /// <param name="sourceURL">The URL where the source points to.</param>
-        /// <returns>
-        /// The created source object.
-        /// </returns>
-        public Source CreateSource(string sourceURL)
-        {
-            var source = new Source
-            {
-                URL = sourceURL
-            };
-
-            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SOURCE, source);
-
-            return source;
-        }
-
-        /// <summary>
         /// Creates a result object
         /// </summary>
         /// <param name="data">the content of the result</param>
+        /// <param name="source">The source.</param>
         /// <returns>
         /// the created result object
         /// </returns>
-        public Result CreateResult(string data)
+        public Result CreateResult(string data, string source)
         {
             var result = new Result
             {
-                TimeStamp = DateTime.Now,
+                Time = DateTime.Now,
+                Source = source,
                 Data = data
             };
 
@@ -221,15 +203,13 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The created SystemService object
         /// </returns>
-        public SystemService CreateSystemService(int userId, string name, Component component, SystemConfig sysconfig)
+        public SystemService CreateSystemService(int userId, string name)
         {
             var systemService = new SystemService
             {
                 UserId = userId,
                 Name = name,
-                TimeStamp = DateTime.Now,
-                Component = component,
-                SystemConfig = sysconfig
+                NextSearch = DateTime.Now
             };
 
             Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SYSTEMSERVICE, systemService);
@@ -259,10 +239,10 @@ namespace HSA.InfoSys.Common.DBManager
         {
             var systemConfig = new SystemConfig
             {
-                URL = url,
-                Email = email,
+                URLS = url,
+                Emails = email,
                 URLActive = urlActive,
-                EmailNotification = emailNotification,
+                EmailActive = emailNotification,
                 SchedulerActive = schedulerActive,
                 Scheduler = scheduler
             };
@@ -284,7 +264,7 @@ namespace HSA.InfoSys.Common.DBManager
         {
             var scheduler = new Scheduler
             {
-                TimeStamp = DateTime.Now,
+                Begin = DateTime.Now,
                 Days = days,
                 Hours = hours
             };

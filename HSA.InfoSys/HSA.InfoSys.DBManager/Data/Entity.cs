@@ -14,8 +14,6 @@ namespace HSA.InfoSys.Common.DBManager.Data
     /// </summary>
     [DataContract]
     [KnownType(typeof(Component))]
-    [KnownType(typeof(Issue))]
-    [KnownType(typeof(Source))]
     [KnownType(typeof(Result))]
     [KnownType(typeof(SystemService))]
     [KnownType(typeof(SystemConfig))]

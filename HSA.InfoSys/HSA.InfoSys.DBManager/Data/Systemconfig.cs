@@ -21,7 +21,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// The URL.
         /// </value>
         [DataMember]
-        public virtual string URL { get; set; }
+        public virtual string URLS { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the URL is active or not.
@@ -39,7 +39,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// The Email.
         /// </value>
         [DataMember]
-        public virtual string Email { get; set; }
+        public virtual string Emails { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether email notification is enabled or not.
@@ -48,7 +48,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// The EmailNotification.
         /// </value>
         [DataMember]
-        public virtual bool EmailNotification { get; set; }
+        public virtual bool EmailActive { get; set; }
 
         /// <summary>
         /// Gets or sets the scheduler.
@@ -102,10 +102,10 @@ namespace HSA.InfoSys.Common.DBManager.Data
             return string.Format(
                 "{0}, {1}, {2}, {3}, {4}, {5}, {6}",
                 this.EntityId,
-                this.URL,
+                this.URLS,
                 this.URLActive,
-                this.Email,
-                this.EmailNotification,
+                this.Emails,
+                this.EmailActive,
                 this.Scheduler,
                 this.SchedulerActive);
         }

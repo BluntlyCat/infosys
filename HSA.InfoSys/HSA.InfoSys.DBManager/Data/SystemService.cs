@@ -39,7 +39,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// The time stamp.
         /// </value>
         [DataMember]
-        public virtual DateTime TimeStamp { get; set; }
+        public virtual DateTime NextSearch { get; set; }
 
         /// <summary>
         /// Gets or sets the component.
@@ -72,11 +72,11 @@ namespace HSA.InfoSys.Common.DBManager.Data
             {
                 foreach (var type in types)
                 {
-                    if (type == typeof(Component))
+                    if (type == typeof(Component) && this.Component != null)
                     {
                         this.Component = this.Component.Unproxy(types) as Component;
                     }
-                    else if (type == typeof(SystemConfig))
+                    else if (type == typeof(SystemConfig) && this.SystemConfig != null)
                     {
                         this.SystemConfig = this.SystemConfig.Unproxy(types) as SystemConfig;
                     }
@@ -98,7 +98,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
                 "{0}, {1}, {2}, {3}, {4}",
                 this.EntityId,
                 this.UserId,
-                this.TimeStamp,
+                this.NextSearch,
                 this.Component,
                 this.SystemConfig);
         }

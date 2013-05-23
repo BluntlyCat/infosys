@@ -47,7 +47,7 @@ namespace HSA.InfoSys.Testing.DBTesting
 
                             Guid guid;
 
-                            var result = dbManager.CreateResult("Some Data...");
+                            var result = dbManager.CreateResult("Some Data...", "http://miitsoft.de");
                             log.InfoFormat("Result Created: [{0}]", result.ToString());
 
                             var comp = dbManager.CreateComponent("Michis Special Component", "Funny Stuff");
@@ -67,7 +67,7 @@ namespace HSA.InfoSys.Testing.DBTesting
 
                             var scheduler = dbManager.CreateScheduler(1, 12);
                             var config = dbManager.CreateSystemConfig("http://miitsoft.de", "michael@miitsoft.de", true, true, true, scheduler);
-                            var service = dbManager.CreateSystemService(0, "Useless system", dbComp2, config);
+                            var service = dbManager.CreateSystemService(0, "Useless system");
 
                             guid = dbManager.AddEntity(service);
 

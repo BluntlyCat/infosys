@@ -60,7 +60,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
                             log.Info("Add new Component.");
 
                             Guid guid;
-                            var result = controller.CreateResult("some data...");
+                            var result = controller.CreateResult("some data...", "http://miitsoft.de");
 
                             var comp = controller.CreateComponent("Michis Special Component", "Funny Stuff");
                             log.InfoFormat("Component Created: [{0}]", comp);
@@ -69,6 +69,12 @@ namespace HSA.InfoSys.Testing.WCFTesting
                             
                             var dbComp = controller.GetEntity(guid) as Component;
                             log.InfoFormat("Component from DB: [{0}]", dbComp);
+                            dbComp.Result = result;
+
+                            controller.UpdateEntity(dbComp);
+
+                            var dbComp2 = controller.GetEntity(guid) as Component;
+                            log.InfoFormat("Component from DB: [{0}]", dbComp2);
                             break;
 
                         case ConsoleKey.H:
