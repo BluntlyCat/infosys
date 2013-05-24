@@ -28,6 +28,16 @@ namespace HSA.InfoSys.Gui.Controllers
         [Authorize]
         public ActionResult Index()
         {
+
+            var cc = CrawlControllerClient<IDBManager>.ClientProxy;
+            // get id of current logged-in user
+            MembershipUser membershipuser = Membership.GetUser();
+            string userid = membershipuser.ProviderUserKey.ToString();
+            int id = Convert.ToInt32(userid);
+
+            //cc.GetOrgUnitsByUserID(id);
+
+
             this.ViewData["navid"] = "mysystems";
             return this.View();
         }

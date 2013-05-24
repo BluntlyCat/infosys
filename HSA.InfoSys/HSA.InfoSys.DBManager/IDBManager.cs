@@ -61,6 +61,15 @@ namespace HSA.InfoSys.Common.DBManager
         [OperationContract]
         Entity GetEntity(Guid entityGuid, List<Type> types = null);
 
+
+        /// <summary>
+        /// Gets the org units by user ID.
+        /// </summary>
+        /// <param name="userID">The user ID.</param>
+        /// <returns></returns>
+        [OperationContract]
+        IList<OrgUnit> GetOrgUnitsByUserID(int userID);
+
         /// <summary>
         /// Creates a component object.
         /// </summary>

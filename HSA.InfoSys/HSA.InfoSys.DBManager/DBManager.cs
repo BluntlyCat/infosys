@@ -14,6 +14,7 @@ namespace HSA.InfoSys.Common.DBManager
     using NHibernate;
     using NHibernate.Cfg;
     using NHibernate.Tool.hbm2ddl;
+    using NHibernate.Criterion;
 
     /// <summary>
     /// The DBManager handles database requests.
@@ -203,6 +204,31 @@ namespace HSA.InfoSys.Common.DBManager
                 return entity;
             }
         }
+
+
+        /// <summary>
+        /// Gets the org units by user ID.
+        /// </summary>
+        /// <param name="userID">The user ID.</param>
+        /// <returns></returns>
+        public IList<OrgUnit> GetOrgUnitsByUserID(int userID)
+        {
+            using (ISession session = Session)
+            using (ITransaction transaction = session.BeginTransaction())
+            {
+
+                var orgUnitList = session
+                    .CreateCriteria(typeof(OrgUnit))
+                    .Add(Restrictions.Eq("UserID", userID))
+                    .List<OrgUnit>();
+
+
+                //Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ENTITY, entity.GetType(), entity, entityGUID);
+
+                return orgUnitList;
+            }
+        }
+
 
         /// <summary>
         /// Creates a component object.
