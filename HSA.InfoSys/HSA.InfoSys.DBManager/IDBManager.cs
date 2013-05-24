@@ -117,10 +117,10 @@ namespace HSA.InfoSys.Common.DBManager
         /// </returns>
         [OperationContract]
         OrgUnitConfig CreateOrgUnitConfig(
-            string url,
-            string email,
+            string urls,
+            string emails,
             bool urlActive,
-            bool emailNotification,
+            bool emailActive,
             bool schedulerActive,
             Scheduler scheduler);
 

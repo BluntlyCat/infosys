@@ -38,7 +38,7 @@
                                 Webserver lnx07
                             </td>
                             <td>
-                                <a class="btn btn-small" href="/System/Components"><i class="icon-cog"></i></a>
+                                <a class="btn btn-small" href="/System/Components?sysguid=<%= ViewData["systemguid"] %>"><i class="icon-cog"></i></a>
                             </td>
                             <td>
                                 <a class="btn btn-small" href="#deleteModal" data-toggle="modal"><i class="icon-trash"></i></a>
@@ -52,7 +52,7 @@
                                 Workstation1
                             </td>
                             <td>
-                                <a class="btn btn-small" href="/System/Components"><i class="icon-cog"></i></a>
+                                <a class="btn btn-small" href="/System/Components?sysguid=<%= ViewData["systemguid"] %>"><i class="icon-cog"></i></a>
                             </td>
                             <td>
                                 <a class="btn btn-small" href="#deleteModal" data-toggle="modal"><i class="icon-trash"></i></a>
@@ -66,7 +66,7 @@
                                 Backup-Server 002
                             </td>
                             <td>
-                                <a class="btn btn-small" href="/System/Components"><i class="icon-cog"></i></a>
+                                <a class="btn btn-small" href="/System/Components?sysguid=<%= ViewData["systemguid"] %>"><i class="icon-cog"></i></a>
                             </td>
                             <td>
                                 <a class="btn btn-small" href="#deleteModal" data-toggle="modal"><i class="icon-trash"></i></a>
@@ -85,25 +85,25 @@
     </div>
 
     <!-- createModal -->
+    <form id="Form1" action="/System/IndexSubmit" method="post">
     <div id="createModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <form id="createSystemForm" action="/System/IndexSubmit" method="post">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    ×</button>
-                <h3 id="myModalLabel">
-                    Create new system</h3>
-            </div>
-            <div class="modal-body">
-                <p>Please enter a name for your new system:</p>
-                <input type="text" name="newsystem" style="width: 440px;" placeholder="i.e. Webserver, Working-Station, Backup-Server">
-            </div>
-            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">
-                    Close</button>
-                <button id="createSystem" class="btn btn-success"><i class="icon-plus icon-white"></i>&nbsp;&nbsp;<b>Create</b></button>
-            </div>
-        </form>
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                ×</button>
+            <h3 id="myModalLabel">
+                Create new system</h3>
+        </div>
+        <div class="modal-body">
+            <p>Please enter a name for your new system:</p>
+            <input type="text" name="newsystem" style="width: 440px;" placeholder="i.e. Webserver, Working-Station, Backup-Server">
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">
+                Close</button>
+            <button id="createSystem" class="btn btn-success"><i class="icon-plus icon-white"></i>&nbsp;&nbsp;<b>Create</b></button>
+        </div>
     </div>
+    </form>
 
     <!-- deleteModal -->
     <div id="deleteModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"

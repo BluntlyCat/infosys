@@ -13,9 +13,9 @@
                 <i class="icon-align-justify"></i>&nbsp;<b>Webserver lnx07</b>
             </div>
             <div class="contentbox-content cutline-bot">
-                <a class="btn" style="margin-right: 6px;" href="/System/Components">
+                <a class="btn" style="margin-right: 6px;" href="/System/Components?sysguid=<%= ViewData["systemguid"] %>">
                     <b>Components</b></a>
-                <a class="btn btn-primary" style="margin-right: 6px;" href="/System/SearchConfig">
+                <a class="btn btn-primary" style="margin-right: 6px;" href="/System/SearchConfig?sysguid=<%= ViewData["systemguid"] %>">
                     <b>Search Configuration</b></a>
             </div>
 

@@ -14,7 +14,6 @@ namespace HSA.InfoSys.Common.DBManager
     using NHibernate;
     using NHibernate.Cfg;
     using NHibernate.Tool.hbm2ddl;
-    using NHibernate.Criterion;
 
     /// <summary>
     /// The DBManager handles database requests.
@@ -205,31 +204,6 @@ namespace HSA.InfoSys.Common.DBManager
             }
         }
 
-
-        /// <summary>
-        /// Gets the org units by user ID.
-        /// </summary>
-        /// <param name="userID">The user ID.</param>
-        /// <returns></returns>
-        public IList<OrgUnit> GetOrgUnitsByUserID(int userID)
-        {
-            using (ISession session = Session)
-            using (ITransaction transaction = session.BeginTransaction())
-            {
-
-                var orgUnitList = session
-                    .CreateCriteria(typeof(OrgUnit))
-                    .Add(Restrictions.Eq("UserID", userID))
-                    .List<OrgUnit>();
-
-
-                //Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ENTITY, entity.GetType(), entity, entityGUID);
-
-                return orgUnitList;
-            }
-        }
-
-
         /// <summary>
         /// Creates a component object.
         /// </summary>
@@ -308,19 +282,19 @@ namespace HSA.InfoSys.Common.DBManager
         /// The created OrgUnitConfig object.
         /// </returns>
         public OrgUnitConfig CreateOrgUnitConfig(
-            string url,
-            string email,
+            string urls,
+            string emails,
             bool urlActive,
-            bool emailNotification,
+            bool emailActive,
             bool schedulerActive,
             Scheduler scheduler)
         {
             var orgUnitConfig = new OrgUnitConfig
             {
-                URLS = url,
-                Emails = email,
+                URLS = urls,
+                Emails = emails,
                 URLActive = urlActive,
-                EmailActive = emailNotification,
+                EmailActive = emailActive,
                 SchedulerActive = schedulerActive,
                 Scheduler = scheduler
             };

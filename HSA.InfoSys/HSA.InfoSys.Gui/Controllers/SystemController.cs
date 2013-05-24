@@ -12,6 +12,7 @@ namespace HSA.InfoSys.Gui.Controllers
     using HSA.InfoSys.Common.DBManager;
     using HSA.InfoSys.Common.Logging;
     using log4net;
+    using HSA.InfoSys.Common.DBManager.Data;
 
     /// <summary>
     /// The controller for the system.
@@ -37,8 +38,15 @@ namespace HSA.InfoSys.Gui.Controllers
 
             //cc.GetOrgUnitsByUserID(id);
 
-
             this.ViewData["navid"] = "mysystems";
+
+            // Testing -> Dummy SystemGUID
+            // Da wir über das WCF noch keine OrgUnits abfragen können, haben wir zum Testen ein
+            // ein OrgUnit erzeugt, und dessen GUID aus der DB hergenommen und hier eingefügt, sodass
+            // wenn wir in der GUI auf den Edit-Button eines Systems klicken, diese GUID mitgeliefert wird, 
+            // und wir auf der Editor-Seite über diese GUID das Objekt aus der DB holen können.
+            this.ViewData["systemguid"] = "05e1b084-535d-4bd9-b2d2-a1c800c87161";
+
             return this.View();
         }
 
@@ -60,10 +68,18 @@ namespace HSA.InfoSys.Gui.Controllers
             string userid = membershipuser.ProviderUserKey.ToString();
             int id = Convert.ToInt32(userid);
 
-            // save to db
-            Guid guid;
+            // create Scheduler
+            var scheduler = cc.CreateScheduler(3,0);
+
+            // create SystemConfig
+            var systemConfig = cc.CreateOrgUnitConfig(null, null, false, false, false, scheduler);
+
+            // create System
             var system = cc.CreateOrgUnit(id, newsystem);
-            guid = cc.AddEntity(system);
+            system.OrgUnitConfig = systemConfig;
+
+            // save to db
+            Guid guid = cc.AddEntity(system);
 
             return this.RedirectToAction("Index", "System");
         }
@@ -73,9 +89,15 @@ namespace HSA.InfoSys.Gui.Controllers
         /// </summary>
         /// <returns>The result of this action.</returns>
         [Authorize]
-        public ActionResult Components()
+        [HttpGet]
+        public ActionResult Components(string sysguid)
         {
+            // get systemguid from GET-Request
+            string systemguid = Request.QueryString["sysguid"];
+
             this.ViewData["navid"] = "mysystems";
+            this.ViewData["systemguid"] = systemguid;
+
             return this.View();
         }
 
@@ -106,12 +128,39 @@ namespace HSA.InfoSys.Gui.Controllers
         /// </summary>
         /// <returns>The result of this action.</returns>
         [Authorize]
-        public ActionResult SearchConfig()
+        [HttpGet]
+        public ActionResult SearchConfig(string sysguid)
         {
-            this.ViewData["navid"] = "mysystems";
+            // get systemguid from GET-Request
+            string systemguid = Request.QueryString["sysguid"];
 
-            MembershipUser user = Membership.GetUser();
-            this.ViewData["useremail"] = user.Email;
+            // init
+            var cc = CrawlControllerClient<IDBManager>.ClientProxy;
+
+            // get SystemConfig, OrgUnitConfig, Scheduler
+            var system = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnitConfig", "Scheduler")) as OrgUnit;
+            var config = system.OrgUnitConfig;
+            var scheduler = config.Scheduler;
+
+            // set all config data for view
+            this.ViewData["schedulerActive"] = config.SchedulerActive;
+            this.ViewData["emailActive"] = config.EmailActive;
+            this.ViewData["urlActive"] = config.URLActive;
+
+            this.ViewData["sc_days"] = scheduler.Days;
+            this.ViewData["sc_hours"] = scheduler.Hours;
+            this.ViewData["sc_begin"] = scheduler.Begin;
+
+            this.ViewData["emails"] = config.Emails;
+            this.ViewData["urls"] = config.URLS;
+
+
+            //MembershipUser user = Membership.GetUser();
+            //this.ViewData["useremail"] = user.Email;
+
+
+            this.ViewData["navid"] = "mysystems";
+            this.ViewData["systemguid"] = systemguid;
 
             return this.View();
         }
