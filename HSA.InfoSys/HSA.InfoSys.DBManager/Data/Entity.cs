@@ -15,6 +15,11 @@ namespace HSA.InfoSys.Common.DBManager.Data
     /// It holds the unique id for each entity.
     /// </summary>
     [DataContract]
+    [KnownType(typeof(Component))]
+    [KnownType(typeof(Result))]
+    [KnownType(typeof(OrgUnit))]
+    [KnownType(typeof(OrgUnitConfig))]
+    [KnownType(typeof(Scheduler))]
     public abstract class Entity
     {
         /// <summary>
