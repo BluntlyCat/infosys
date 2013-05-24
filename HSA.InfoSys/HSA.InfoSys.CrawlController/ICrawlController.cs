@@ -6,6 +6,7 @@
 namespace HSA.InfoSys.Common.CrawlController
 {
     using System;
+    using System.Collections.Generic;
     using System.ServiceModel;
     using HSA.InfoSys.Common.DBManager.Data;
 
@@ -15,6 +16,16 @@ namespace HSA.InfoSys.Common.CrawlController
     [ServiceContract]
     public interface ICrawlController
     {
+        /// <summary>
+        /// Loads this entities eager.
+        /// </summary>
+        /// <param name="param">The names of the entities.</param>
+        /// <returns>
+        /// A list of entities NHibernate must load eager.
+        /// </returns>
+        [OperationContract]
+        List<Type> LoadThisEntities(params string[] param);
+
         /// <summary>
         /// Starts a new search.
         /// </summary>
@@ -54,22 +65,23 @@ namespace HSA.InfoSys.Common.CrawlController
         /// Gets an entity from database.
         /// </summary>
         /// <param name="entityGuid">The entity GUID.</param>
+        /// <param name="types">The types you want load eager.</param>
         /// <returns>
         /// The entity you asked for.
         /// </returns>
         [OperationContract]
-        Entity GetEntity(Guid entityGuid);
+        Entity GetEntity(Guid entityGuid, List<Type> types = null);
 
         /// <summary>
         /// Creates the component.
         /// </summary>
         /// <param name="name">The name.</param>
-        /// <param name="category">The category.</param>
+        /// <param name="orgUnit">The org unit.</param>
         /// <returns>
         /// The new component.
         /// </returns>
         [OperationContract]
-        Component CreateComponent(string name, string category);
+        Component CreateComponent(string name, OrgUnit orgUnit);
 
         /// <summary>
         /// Creates a result object
@@ -83,20 +95,18 @@ namespace HSA.InfoSys.Common.CrawlController
         Result CreateResult(string data, string source);
 
         /// <summary>
-        /// Creates a SystemService object
+        /// Creates a OrgUnit object
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <param name="name">The system name.</param>
-        /// <param name="component">A component object</param>
-        /// <param name="sysconfig">A system config object</param>
         /// <returns>
-        /// The created SystemService object
+        /// The created OrgUnit object
         /// </returns>
         [OperationContract]
-        SystemService CreateSystemService(int userId, string name);
+        OrgUnit CreateOrgUnit(int userId, string name);
 
         /// <summary>
-        /// Creates a SystemConfig object
+        /// Creates a OrgUnitConfig object
         /// </summary>
         /// <param name="url">The URL.</param>
         /// <param name="email">The email text.</param>
@@ -105,10 +115,10 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <param name="schedulerActive">if set to <c>true</c> [scheduler active].</param>
         /// <param name="scheduler">A scheduler object.</param>
         /// <returns>
-        /// The created SystemConfig object.
+        /// The created OrgUnitConfig object.
         /// </returns>
         [OperationContract]
-        SystemConfig CreateSystemConfig(
+        OrgUnitConfig CreateOrgUnitConfig(
             string url,
             string email,
             bool urlActive,

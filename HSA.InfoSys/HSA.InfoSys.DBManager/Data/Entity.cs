@@ -6,6 +6,7 @@
 namespace HSA.InfoSys.Common.DBManager.Data
 {
     using System;
+    using System.Collections.Generic;
     using System.Runtime.Serialization;
 
     /// <summary>
@@ -15,8 +16,8 @@ namespace HSA.InfoSys.Common.DBManager.Data
     [DataContract]
     [KnownType(typeof(Component))]
     [KnownType(typeof(Result))]
-    [KnownType(typeof(SystemService))]
-    [KnownType(typeof(SystemConfig))]
+    [KnownType(typeof(OrgUnit))]
+    [KnownType(typeof(OrgUnitConfig))]
     [KnownType(typeof(Scheduler))]
     public abstract class Entity
     {
@@ -54,7 +55,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// <returns>
         /// The entity behind the NHibernate proxy.
         /// </returns>
-        public virtual Entity Unproxy(Type[] types = null)
+        public virtual Entity Unproxy(List<Type> types = null)
         {
             return this;
         }
@@ -67,7 +68,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// </returns>
         public override string ToString()
         {
-            return string.Format("{0}", this.EntityId);
+            return string.Format("ID: {0}", this.EntityId);
         }
     }
 }

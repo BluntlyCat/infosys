@@ -1,63 +1,74 @@
 ﻿// ------------------------------------------------------------------------
-// <copyright file="SystemService.cs" company="HSA.InfoSys">
+// <copyright file="OrgUnitConfig.cs" company="HSA.InfoSys">
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.Common.DBManager.Data
 {
     using System;
+    using System.Collections.Generic;
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// This represents the system information of a Component
+    /// This represents the OrgUnitConfiguration
     /// </summary>
     [DataContract]
-    public class SystemService : Entity
+    [Serializable]
+    public class OrgUnitConfig : Entity
     {
         /// <summary>
-        /// Gets or sets the UserId.
+        /// Gets or sets the URL.
         /// </summary>
         /// <value>
-        /// The UserId.
+        /// The URL.
         /// </value>
         [DataMember]
-        public virtual int UserId { get; set; }
+        public virtual string URLS { get; set; }
 
         /// <summary>
-        /// Gets or sets the service name.
+        /// Gets or sets a value indicating whether the URL is active or not.
         /// </summary>
         /// <value>
-        /// The service name.
+        /// The URLActive.
         /// </value>
         [DataMember]
-        public virtual string Name { get; set; }
+        public virtual bool URLActive { get; set; }
 
         /// <summary>
-        /// Gets or sets the time stamp.
+        /// Gets or sets the Email.
         /// </summary>
         /// <value>
-        /// The time stamp.
+        /// The Email.
         /// </value>
         [DataMember]
-        public virtual DateTime NextSearch { get; set; }
+        public virtual string Emails { get; set; }
 
         /// <summary>
-        /// Gets or sets the component.
+        /// Gets or sets a value indicating whether email notification is enabled or not.
         /// </summary>
         /// <value>
-        /// The component.
+        /// The EmailNotification.
         /// </value>
         [DataMember]
-        public virtual Component Component { get; set; }
+        public virtual bool EmailActive { get; set; }
 
         /// <summary>
-        /// Gets or sets the system config.
+        /// Gets or sets the scheduler.
         /// </summary>
         /// <value>
-        /// The system config.
+        /// The scheduler.
         /// </value>
         [DataMember]
-        public virtual SystemConfig SystemConfig { get; set; }
+        public virtual Scheduler Scheduler { get; set; }
+        
+        /// <summary>
+        /// Gets or sets a value indicating whether the scheduler is active or not.
+        /// </summary>
+        /// <value>
+        /// The SchedulerActive.
+        /// </value>
+        [DataMember]
+        public virtual bool SchedulerActive { get; set; }
 
         /// <summary>
         /// Loads this instance from NHibernate.
@@ -66,24 +77,20 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// <returns>
         /// The entity behind the NHibernate proxy.
         /// </returns>
-        public override Entity Unproxy(Type[] types = null)
+        public override Entity Unproxy(List<Type> types = null)
         {
             if (types != null)
             {
                 foreach (var type in types)
                 {
-                    if (type == typeof(Component) && this.Component != null)
+                    if (type == typeof(Scheduler) && this.Scheduler != null)
                     {
-                        this.Component = this.Component.Unproxy(types) as Component;
-                    }
-                    else if (type == typeof(SystemConfig) && this.SystemConfig != null)
-                    {
-                        this.SystemConfig = this.SystemConfig.Unproxy(types) as SystemConfig;
+                        this.Scheduler = this.Scheduler.Unproxy(types) as Scheduler;
                     }
                 }
             }
 
-            return base.Unproxy(types);
+            return base.Unproxy();
         }
 
         /// <summary>
@@ -95,12 +102,14 @@ namespace HSA.InfoSys.Common.DBManager.Data
         public override string ToString()
         {
             return string.Format(
-                "{0}, {1}, {2}, {3}, {4}",
+                "ID: {0}, URLs: {1}, Urls active: {2}, Mails: {3}, Mails active: {4}, Scheduler: ({5}), Scheduler active: {6}",
                 this.EntityId,
-                this.UserId,
-                this.NextSearch,
-                this.Component,
-                this.SystemConfig);
+                this.URLS,
+                this.URLActive,
+                this.Emails,
+                this.EmailActive,
+                this.Scheduler,
+                this.SchedulerActive);
         }
     }
 }

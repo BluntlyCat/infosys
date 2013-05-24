@@ -41,67 +41,71 @@ namespace HSA.InfoSys.Testing.WCFTesting
 
             while (running)
             {
-                if (!string.IsNullOrEmpty(response) && requestSent)
+                try
                 {
-                    log.InfoFormat("Got response from solr: [{0}]", response);
+                    if (!string.IsNullOrEmpty(response) && requestSent)
+                    {
+                        log.InfoFormat("Got response from solr: [{0}]", response);
 
-                    requestSent = false;
+                        requestSent = false;
+                    }
+
+                    if (Console.KeyAvailable)
+                    {
+                        ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                        log.InfoFormat("Key [{0}] was pressed.", keyInfo.Key);
+
+                        switch (keyInfo.Key)
+                        {
+                            case ConsoleKey.A:
+                                controller = CrawlController.ClientProxy;
+                                log.Info("Add new Component.");
+
+                                Guid guid;
+                                var orgUnit = controller.CreateOrgUnit(0, "Webserver");
+                                var comp = controller.CreateComponent("Apache", orgUnit);
+
+                                log.DebugFormat("Entity created: {0}", comp);
+
+                                guid = controller.AddEntity(comp);
+                                log.DebugFormat("Entity added in db: {0}", comp);
+
+                                var entity = controller.GetEntity(guid);
+                                log.DebugFormat("Entity from db: {0}", entity);
+
+                                break;
+
+                            case ConsoleKey.H:
+                                log.Info("Print help text.");
+                                PrintHelp();
+                                break;
+
+                            case ConsoleKey.Q:
+                                log.Info("Quit application.");
+                                running = false;
+                                break;
+
+                            case ConsoleKey.S:
+                                log.Info("Send request to host.");
+
+                                try
+                                {
+                                    log.Info("Got client proxy...");
+                                    CrawlController.ClientProxy.StartSearch("solr");
+                                }
+                                catch (Exception e)
+                                {
+                                    log.ErrorFormat("Unable to communicate with host: [{0}]", e);
+                                }
+
+                                break;
+                        }
+                    }
                 }
 
-                if (Console.KeyAvailable)
+                catch (Exception e)
                 {
-                    ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-                    log.InfoFormat("Key [{0}] was pressed.", keyInfo.Key);
-
-                    switch (keyInfo.Key)
-                    {
-                        case ConsoleKey.A:
-                            controller = CrawlController.ClientProxy;
-                            log.Info("Add new Component.");
-
-                            Guid guid;
-                            var result = controller.CreateResult("some data...", "http://miitsoft.de");
-
-                            var comp = controller.CreateComponent("Michis Special Component", "Funny Stuff");
-                            log.InfoFormat("Component Created: [{0}]", comp);
-
-                            guid = controller.AddEntity(comp);
-                            
-                            var dbComp = controller.GetEntity(guid) as Component;
-                            log.InfoFormat("Component from DB: [{0}]", dbComp);
-                            dbComp.Result = result;
-
-                            controller.UpdateEntity(dbComp);
-
-                            var dbComp2 = controller.GetEntity(guid) as Component;
-                            log.InfoFormat("Component from DB: [{0}]", dbComp2);
-                            break;
-
-                        case ConsoleKey.H:
-                            log.Info("Print help text.");
-                            PrintHelp();
-                            break;
-
-                        case ConsoleKey.Q:
-                            log.Info("Quit application.");
-                            running = false;
-                            break;
-
-                        case ConsoleKey.S:
-                            log.Info("Send request to host.");
-
-                            try
-                            {
-                                log.Info("Got client proxy...");
-                                CrawlController.ClientProxy.StartSearch("solr");
-                            }
-                            catch (Exception e)
-                            {
-                                log.ErrorFormat("Unable to communicate with host: [{0}]", e);
-                            }
-
-                            break;
-                    }
+                    log.ErrorFormat("Message: {0}", e);
                 }
 
                 Thread.Sleep(500);

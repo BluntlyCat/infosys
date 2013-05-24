@@ -43,7 +43,7 @@ namespace HSA.InfoSys.Common.CrawlController.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("localhost:8085")]
+        [global::System.Configuration.DefaultSettingValueAttribute("net.tcp://localhost:8085/CrawlerProxy/")]
         public string NET_TCP_ADDRESS {
             get {
                 return ((string)(this["NET_TCP_ADDRESS"]));
@@ -61,7 +61,7 @@ namespace HSA.InfoSys.Common.CrawlController.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("localhost:8086")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:8086/CrawlerProxy/")]
         public string HTTP_ADDRESS {
             get {
                 return ((string)(this["HTTP_ADDRESS"]));

@@ -25,7 +25,7 @@ namespace HSA.InfoSys.Testing.DBTesting
         {
             ILog log = Logging.GetLogger("WCFTesting");
 
-            IDBManager dbManager = DBManager.GetDBManager();
+            IDBManager dbManager = DBManager.Manager;
             bool running = true;
 
             Console.WriteLine(string.Empty);
@@ -46,33 +46,13 @@ namespace HSA.InfoSys.Testing.DBTesting
                             log.Info("Add entity to db.");
 
                             Guid guid;
+                            var orgUnit = dbManager.CreateOrgUnit(0, "Webserver");
+                            var component = dbManager.CreateComponent("Apache", orgUnit);
+                            guid = dbManager.AddEntity(component);
 
-                            var result = dbManager.CreateResult("Some Data...", "http://miitsoft.de");
-                            log.InfoFormat("Result Created: [{0}]", result.ToString());
+                            var component2 = dbManager.GetEntity<Component>(guid, dbManager.LoadThisEntities("OrgUnit"));
+                            log.InfoFormat("Got component from db: [{0}]", component2);
 
-                            var comp = dbManager.CreateComponent("Michis Special Component", "Funny Stuff");
-                            log.InfoFormat("Component Created: [{0}]", comp.ToString());
-
-                            guid = dbManager.AddEntity(comp);
-
-                            var dbComp = dbManager.GetEntity<Component>(guid);
-                            log.InfoFormat("Component from DB: [{0}]", dbComp);
-
-                            dbComp.Result = result;
-                            dbManager.UpdateEntity(dbComp);
-                            log.InfoFormat("Component from DB updated: [{0}]", dbComp);
-
-                            var dbComp2 = dbManager.GetEntity<Component>(guid, new Type[] { typeof(Result) });
-                            log.InfoFormat("Component from DB: [{0}]", dbComp2);
-
-                            var scheduler = dbManager.CreateScheduler(1, 12);
-                            var config = dbManager.CreateSystemConfig("http://miitsoft.de", "michael@miitsoft.de", true, true, true, scheduler);
-                            var service = dbManager.CreateSystemService(0, "Useless system");
-
-                            guid = dbManager.AddEntity(service);
-
-                            var dbService = dbManager.GetEntity<SystemService>(guid, new Type[] { typeof(Component), typeof(SystemConfig) });
-                            log.InfoFormat("Service from DB: [{0}]", dbService);
                             break;
 
                         case ConsoleKey.H:
@@ -93,6 +73,10 @@ namespace HSA.InfoSys.Testing.DBTesting
                             dbManager.AddEntity(newComp);
                             var existingComp = dbManager.GetEntity<Component>(new Guid(s));*/
                             break;
+
+                        case ConsoleKey.T:
+                            var entities = dbManager.LoadThisEntities();
+                            break;
                     }
                 }
 
@@ -109,6 +93,7 @@ namespace HSA.InfoSys.Testing.DBTesting
             Console.WriteLine("Press h to see this help text.");
             Console.WriteLine("Press q to quit this application.");
             Console.WriteLine("Press s to start a new request to db server.");
+            Console.WriteLine("Press t to test some new method.");
 
             Console.WriteLine(string.Empty);
         }

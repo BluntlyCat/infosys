@@ -15,6 +15,7 @@
       <key column="ComponentGUID" />
 
       <many-to-one class="Result" name="Result" column="ResultGUID" cascade="save-update" />
+      <many-to-one name="OrgUnit" class="OrgUnit" column="OrgUnitGuid" cascade="save-update" not-null="true" />
 
       <property name="Name" type="string" length ="100" not-null="true" />
     </joined-subclass>
@@ -40,12 +41,11 @@
       <property name="Begin" type="timestamp" not-null="true"/>
     </joined-subclass>
 
-    <!-- SystemService -->
-    <joined-subclass name="SystemService" table="SystemService">
-      <key column="SystemServiceGUID" />
+    <!-- OrgUnit -->
+    <joined-subclass name="OrgUnit" table="OrgUnit">
+      <key column="OrgUnitGUID" />
 
-      <many-to-one name="Component" class="Component" column="ComponentGUID" cascade="save-update" />
-      <many-to-one name="SystemConfig" class="SystemConfig" column="SystemConfigGUID" cascade="save-update" />
+      <many-to-one name="OrgUnitConfig" class="OrgUnitConfig" column="OrgUnitConfigGUID" cascade="save-update" />
 
       <property name="Name" type="string" length ="40" not-null="true" />
       <property name="UserId" type="int" length="10" not-null="true"/>
@@ -53,9 +53,9 @@
 
     </joined-subclass>
 
-    <!-- SystemConfig -->
-    <joined-subclass name="SystemConfig" table="SystemConfig">
-      <key column="SystemConfigGUID" />
+    <!-- OrgUnitConfig -->
+    <joined-subclass name="OrgUnitConfig" table="OrgUnitConfig">
+      <key column="OrgUnitConfigGUID" />
 
       <many-to-one name="Scheduler" class="Scheduler" column="SchedulerGUID" cascade="save-update" />
 

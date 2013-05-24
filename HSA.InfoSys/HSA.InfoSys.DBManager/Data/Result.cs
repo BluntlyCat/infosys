@@ -12,6 +12,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
     /// This class represents the search result to an issue.
     /// </summary>
     [DataContract]
+    [Serializable]
     public class Result : Entity
     {
         /// <summary>
@@ -49,7 +50,12 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// </returns>
         public override string ToString()
         {
-            return string.Format("{0}, {1}", this.Data, this.Time);
+            return string.Format(
+                "ID: {0}, Data: {1}, Source: {2}, Time: {3}",
+                this.EntityId,
+                this.Data,
+                this.Source,
+                this.Time);
         }
     }
 }

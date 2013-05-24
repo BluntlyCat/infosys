@@ -14,6 +14,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
     /// for a component
     /// </summary>
     [DataContract]
+    [Serializable]
     public class Scheduler : Entity
     {
         /// <summary>
@@ -43,6 +44,9 @@ namespace HSA.InfoSys.Common.DBManager.Data
         [DataMember]
         public virtual DateTime Begin { get; set; }
 
+        [DataMember]
+        public virtual Result Result { get; set; }
+
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
@@ -52,7 +56,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
         public override string ToString()
         {
             return string.Format(
-                "{0}, {1}, {2}, {3}",
+                "ID: {0}, Days: {1}, Hours: {2}, Begin: {3}",
                 this.EntityId,
                 this.Days,
                 this.Hours,

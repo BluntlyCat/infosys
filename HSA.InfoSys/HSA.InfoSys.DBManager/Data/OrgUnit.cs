@@ -1,5 +1,5 @@
 ﻿// ------------------------------------------------------------------------
-// <copyright file="Component.cs" company="HSA.InfoSys">
+// <copyright file="OrgUnit.cs" company="HSA.InfoSys">
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
@@ -10,39 +10,47 @@ namespace HSA.InfoSys.Common.DBManager.Data
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// A component represents a system as a whole
-    /// for example a web server or a database server.
+    /// This represents the system information of a Component
     /// </summary>
     [DataContract]
     [Serializable]
-    public class Component : Entity
+    public class OrgUnit : Entity
     {
         /// <summary>
-        /// Gets or sets the name.
+        /// Gets or sets the UserId.
         /// </summary>
         /// <value>
-        /// The name.
+        /// The UserId.
+        /// </value>
+        [DataMember]
+        public virtual int UserId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the service name.
+        /// </summary>
+        /// <value>
+        /// The service name.
         /// </value>
         [DataMember]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the org unit.
+        /// Gets or sets the time stamp.
         /// </summary>
         /// <value>
-        /// The org unit.
+        /// The time stamp.
         /// </value>
         [DataMember]
-        public virtual OrgUnit OrgUnit { get; set; }
+        public virtual DateTime NextSearch { get; set; }
 
         /// <summary>
-        /// Gets or sets the result.
+        /// Gets or sets the system config.
         /// </summary>
         /// <value>
-        /// The result.
+        /// The system config.
         /// </value>
         [DataMember]
-        public virtual Result Result { get; set; }
+        public virtual OrgUnitConfig OrgUnitConfig { get; set; }
 
         /// <summary>
         /// Loads this instance from NHibernate.
@@ -57,13 +65,9 @@ namespace HSA.InfoSys.Common.DBManager.Data
             {
                 foreach (var type in types)
                 {
-                    if (type == typeof(OrgUnit) && this.OrgUnit != null)
+                    if (type == typeof(OrgUnitConfig) && this.OrgUnitConfig != null)
                     {
-                        this.OrgUnit = this.OrgUnit.Unproxy(types) as OrgUnit;
-                    }
-                    else if (type == typeof(Result) && this.Result != null)
-                    {
-                        this.Result = this.Result.Unproxy(types) as Result;
+                        this.OrgUnitConfig = this.OrgUnitConfig.Unproxy(types) as OrgUnitConfig;
                     }
                 }
             }
@@ -80,11 +84,12 @@ namespace HSA.InfoSys.Common.DBManager.Data
         public override string ToString()
         {
             return string.Format(
-                "ID: {0}, Name: {1}, OrgUnit: ({2}), Result: ({3})",
+                "ID: {0}, UserId: {1}, Name: {2}, NextSearch: {3}, OrgUnitConfig: ({4})",
                 this.EntityId,
+                this.UserId,
                 this.Name,
-                this.OrgUnit,
-                this.Result);
+                this.NextSearch,
+                this.OrgUnitConfig);
         }
     }
 }

@@ -6,6 +6,7 @@
 namespace HSA.InfoSys.Common.CrawlController
 {
     using System;
+    using System.Collections.Generic;
     using System.Security.Cryptography.X509Certificates;
     using System.ServiceModel;
     using System.ServiceModel.Description;
@@ -30,7 +31,7 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <summary>
         /// The database manager.
         /// </summary>
-        private static IDBManager dbManager = DBManager.GetDBManager();
+        private static IDBManager dbManager = DBManager.Manager;
 
         /// <summary>
         /// The service host for communication between server and gui.
@@ -42,49 +43,6 @@ namespace HSA.InfoSys.Common.CrawlController
         /// </summary>
         /// <param name="query">The query.</param>
         public delegate void InvokeSolrSearch(string query);
-
-        /// <summary>
-        /// The net TCP address.
-        /// </summary>
-        private static string NetTCPAddress;
-
-        /// <summary>
-        /// The HTTP address.
-        /// </summary>
-        private static string HTTPAddress;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CrawlController"/> class.
-        /// </summary>
-        public CrawlController()
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CrawlController"/> class.
-        /// </summary>
-        /// <param name="netTcpAddress">The net TCP address.</param>
-        /// <param name="httpAddress">The HTTP address.</param>
-        public CrawlController(string netTcpAddress, string httpAddress)
-        {
-            if (netTcpAddress == null)
-            {
-                NetTCPAddress = string.Format("net.tcp://{0}/CrawlerProxy/", Properties.Settings.Default.NET_TCP_ADDRESS);
-            }
-            else
-            {
-                NetTCPAddress = string.Format("net.tcp://{0}/CrawlerProxy/", netTcpAddress);
-            }
-
-            if (httpAddress == null)
-            {
-                HTTPAddress = string.Format("http://{0}/CrawlerProxy/", Properties.Settings.Default.HTTP_ADDRESS);
-            }
-            else
-            {
-                HTTPAddress = string.Format("http://{0}/CrawlerProxy/", httpAddress);
-            }
-        }
 
         /// <summary>
         /// Gets the crawl controller proxy.
@@ -99,20 +57,41 @@ namespace HSA.InfoSys.Common.CrawlController
                 Log.Info("Try get new client proxy.");
 
                 var binding = new NetTcpBinding();
+                binding.MaxReceivedMessageSize = 10485760L;
                 binding.Security.Mode = SecurityMode.Transport;
                 binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
                 Log.Info("Create binding for proxy.");
 
                 var address = new EndpointAddress(
-                    new Uri(NetTCPAddress),
+                    new Uri(Properties.Settings.Default.NET_TCP_ADDRESS),
                         EndpointIdentity.CreateDnsIdentity("InfoSys"));
                 Log.Info("Create endpoint for proxy.");
 
-                var uri = new Uri(NetTCPAddress);
+                var uri = new Uri(Properties.Settings.Default.NET_TCP_ADDRESS);
                 Log.Info("Create URI for proxy.");
 
                 return ChannelFactory<ICrawlController>.CreateChannel(binding, address, uri);
             }
+        }
+
+        public string HostState
+        {
+            get
+            {
+                return this.host.State.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Loads this entities eager.
+        /// </summary>
+        /// <param name="param">The names of the entities.</param>
+        /// <returns>
+        /// A list of entities NHibernate must load eager.
+        /// </returns>
+        public List<Type> LoadThisEntities(params string[] param)
+        {
+            return dbManager.LoadThisEntities(param);
         }
 
         /// <summary>
@@ -131,15 +110,16 @@ namespace HSA.InfoSys.Common.CrawlController
             certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_MONO, "Aes2xe1baetei8Y");
 #endif
 
-            this.host = new ServiceHost(typeof(CrawlController), new Uri(HTTPAddress));
+            this.host = new ServiceHost(typeof(CrawlController), new Uri(Properties.Settings.Default.HTTP_ADDRESS));
 
+            binding.MaxReceivedMessageSize = 10485760L;
             binding.Security.Mode = SecurityMode.Transport;
             binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
 
             this.host.AddServiceEndpoint(
                 typeof(ICrawlController),
                 binding,
-                NetTCPAddress);
+                Properties.Settings.Default.NET_TCP_ADDRESS);
 
             this.host.Credentials.ServiceCertificate.Certificate = certificate;
 
@@ -154,7 +134,7 @@ namespace HSA.InfoSys.Common.CrawlController
             this.host.AddServiceEndpoint(
                 typeof(IMetadataExchange),
                 MetadataExchangeBindings.CreateMexHttpBinding(),
-                HTTPAddress);
+                Properties.Settings.Default.HTTP_ADDRESS);
 
             this.host.Open();
 
@@ -244,27 +224,28 @@ namespace HSA.InfoSys.Common.CrawlController
         /// Gets an entity from database.
         /// </summary>
         /// <param name="entityGuid">The GUID of the entity we want from database.</param>
+        /// <param name="types">The types you want load eager.</param>
         /// <returns>
         /// The entity you asked for.
         /// </returns>
-        public Entity GetEntity(Guid entityGuid)
+        public Entity GetEntity(Guid entityGuid, List<Type> types = null)
         {
             Log.DebugFormat("Get new entity by GUID: [{0}]", entityGuid);
-            return dbManager.GetEntity<Entity>(entityGuid);
+            return dbManager.GetEntity<Entity>(entityGuid, types);
         }
 
         /// <summary>
         /// Creates the component.
         /// </summary>
         /// <param name="name">The name.</param>
-        /// <param name="category">The category.</param>
+        /// <param name="orgUnit">The org unit.</param>
         /// <returns>
         /// The new component.
         /// </returns>
-        public Component CreateComponent(string name, string category)
+        public Component CreateComponent(string name, OrgUnit orgUnit)
         {
-            Log.DebugFormat("Create new component: [{0}], [{1}]", name, category);
-            return dbManager.CreateComponent(name, category);
+            Log.DebugFormat("Create new component: [{0}]", name);
+            return dbManager.CreateComponent(name, orgUnit);
         }
 
         /// <summary>
@@ -282,23 +263,21 @@ namespace HSA.InfoSys.Common.CrawlController
         }
 
         /// <summary>
-        /// Creates a SystemService object
+        /// Creates a OrgUnit object
         /// </summary>
         /// <param name="userId">The user id.</param>
-        /// <param name="name">The system name.</param>
-        /// <param name="component">A component object</param>
-        /// <param name="sysconfig">A system config object</param>
+        /// <param name="name">The org unit name.</param>
         /// <returns>
-        /// The created SystemService object
+        /// The created OrgUnit object
         /// </returns>
-        public SystemService CreateSystemService(int userId, string name)
+        public OrgUnit CreateOrgUnit(int userId, string name)
         {
             Log.DebugFormat("Create new system service: [{0}, {1}, {2}]", userId);
-            return dbManager.CreateSystemService(userId, name);
+            return dbManager.CreateOrgUnit(userId, name);
         }
 
         /// <summary>
-        /// Creates a SystemConfig object
+        /// Creates a OrgUnitConfig object
         /// </summary>
         /// <param name="url">The URL.</param>
         /// <param name="email">The email text.</param>
@@ -307,9 +286,9 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <param name="schedulerActive">if set to <c>true</c> [scheduler active].</param>
         /// <param name="scheduler">A scheduler object.</param>
         /// <returns>
-        /// The created SystemConfig object.
+        /// The created OrgUnitConfig object.
         /// </returns>
-        public SystemConfig CreateSystemConfig(
+        public OrgUnitConfig CreateOrgUnitConfig(
             string url,
             string email,
             bool urlActive,
@@ -326,7 +305,7 @@ namespace HSA.InfoSys.Common.CrawlController
                 schedulerActive,
                 scheduler);
 
-            return dbManager.CreateSystemConfig(url, email, urlActive, emailNotification, schedulerActive, scheduler);
+            return dbManager.CreateOrgUnitConfig(url, email, urlActive, emailNotification, schedulerActive, scheduler);
         }
 
         /// <summary>

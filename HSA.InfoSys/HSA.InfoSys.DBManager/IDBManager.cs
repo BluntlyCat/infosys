@@ -6,6 +6,7 @@
 namespace HSA.InfoSys.Common.DBManager
 {
     using System;
+    using System.Collections.Generic;
     using HSA.InfoSys.Common.DBManager.Data;
 
     /// <summary>
@@ -13,6 +14,15 @@ namespace HSA.InfoSys.Common.DBManager
     /// </summary>
     public interface IDBManager
     {
+        /// <summary>
+        /// Loads this entities eager.
+        /// </summary>
+        /// <param name="param">The names of the entities.</param>
+        /// <returns>
+        /// A list of entities NHibernate must load eager.
+        /// </returns>
+        List<Type> LoadThisEntities(params string[] param);
+
         /// <summary>
         /// Adds a new Object (Component, Issue, Source)
         /// and saves it in database.
@@ -37,17 +47,17 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The entity you asked for.
         /// </returns>
-        T GetEntity<T>(Guid entityGuid, Type[] types = null) where T : Entity;
+        T GetEntity<T>(Guid entityGuid, List<Type> types = null);
 
         /// <summary>
         /// Creates a component object.
         /// </summary>
         /// <param name="name">The name.</param>
-        /// <param name="category">The category.</param>
+        /// <param name="orgUnit">The org unit.</param>
         /// <returns>
         /// The created component object.
         /// </returns>
-        Component CreateComponent(string name, string category);
+        Component CreateComponent(string name, OrgUnit orgUnit);
 
         /// <summary>
         /// Creates a result object
@@ -60,19 +70,17 @@ namespace HSA.InfoSys.Common.DBManager
         Result CreateResult(string data, string source);
 
         /// <summary>
-        /// Creates a SystemService object
+        /// Creates a OrgUnit object
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <param name="name">The system name.</param>
-        /// <param name="component">A component object</param>
-        /// <param name="sysconfig">A system config object</param>
         /// <returns>
-        /// The created SystemService object
+        /// The created OrgUnit object
         /// </returns>
-        SystemService CreateSystemService(int userId, string name);
+        OrgUnit CreateOrgUnit(int userId, string name);
 
         /// <summary>
-        /// Creates a SystemConfig object
+        /// Creates a OrgUnitConfig object
         /// </summary>
         /// <param name="url">The URL.</param>
         /// <param name="email">The email text.</param>
@@ -81,9 +89,9 @@ namespace HSA.InfoSys.Common.DBManager
         /// <param name="schedulerActive">if set to <c>true</c> [scheduler active].</param>
         /// <param name="scheduler">A scheduler object.</param>
         /// <returns>
-        /// The created SystemConfig object.
+        /// The created OrgUnitConfig object.
         /// </returns>
-        SystemConfig CreateSystemConfig(
+        OrgUnitConfig CreateOrgUnitConfig(
             string url,
             string email,
             bool urlActive,

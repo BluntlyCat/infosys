@@ -6,6 +6,8 @@
 namespace HSA.InfoSys.Common.DBManager
 {
     using System;
+    using System.Collections.Generic;
+    using System.Reflection;
     using HSA.InfoSys.Common.DBManager.Data;
     using HSA.InfoSys.Common.Logging;
     using log4net;
@@ -29,41 +31,10 @@ namespace HSA.InfoSys.Common.DBManager
         private static IDBManager dbManager;
 
         /// <summary>
-        /// The DB session factory.
-        /// </summary>
-        private static ISessionFactory sessionFactory;
-
-        /// <summary>
         /// Prevents a default instance of the <see cref="DBManager"/> class from being created.
         /// </summary>
         private DBManager()
         {
-        }
-
-        /// <summary>
-        /// Gets the session factory.
-        /// </summary>
-        /// <value>
-        /// The session factory.
-        /// </value>
-        private static ISessionFactory SessionFactory
-        {
-            get
-            {
-                if (sessionFactory == null)
-                {
-                    var configuration = new Configuration();
-
-                    configuration.Configure();
-                    configuration.AddAssembly(typeof(DBManager).Assembly);
-
-                    sessionFactory = configuration.BuildSessionFactory();
-                    new SchemaExport(configuration).Drop(false, false);
-                }
-
-                Log.Debug(Properties.Resources.DBSESSION_NHIBERNATE_CONFIG_READY);
-                return sessionFactory;
-            }
         }
 
         /// <summary>
@@ -73,15 +44,82 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The Database Manager
         /// </returns>
-        public static IDBManager GetDBManager()
+        public static IDBManager Manager
         {
-            if (dbManager == null)
+            get
             {
-                Log.Debug(Properties.Resources.DBMANAGER_NO_MANAGER_FOUND);
-                dbManager = new DBManager();
+                if (dbManager == null)
+                {
+                    Log.Debug(Properties.Resources.DBMANAGER_NO_MANAGER_FOUND);
+                    dbManager = new DBManager();
+                }
+
+                return dbManager;
+            }
+        }
+
+        /// <summary>
+        /// Gets the opened session.
+        /// </summary>
+        /// <value>
+        /// The session.
+        /// </value>
+        /// <returns>An ISession to the session object.</returns>
+        private static ISession Session
+        {
+            get
+            {
+                if (SessionFactory == null)
+                {
+                    var configuration = new Configuration();
+
+                    configuration.Configure();
+                    configuration.AddAssembly(typeof(DBManager).Assembly);
+
+                    SessionFactory = configuration.BuildSessionFactory();
+                    new SchemaExport(configuration).Drop(false, false);
+
+                    Log.Debug(Properties.Resources.DBSESSION_NHIBERNATE_CONFIG_READY);
+                }
+
+                Log.Debug(Properties.Resources.DBSESSION_OPEN_SESSION);
+                return SessionFactory.OpenSession();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the session factory.
+        /// </summary>
+        /// <value>
+        /// The session factory.
+        /// </value>
+        private static ISessionFactory SessionFactory { get; set; }
+
+        /// <summary>
+        /// Loads this entities eager.
+        /// </summary>
+        /// <param name="param">The names of the entities.</param>
+        /// <returns>
+        /// A list of entities NHibernate must load eager.
+        /// </returns>
+        public List<Type> LoadThisEntities(params string[] param)
+        {
+            List<Type> entities = new List<Type>();
+            var assembly = Assembly.GetAssembly(typeof(DBManager));
+            var types = assembly.GetTypes();
+
+            foreach (var p in param)
+            {
+                foreach (var t in types)
+                {
+                    if (t.Name.Equals(p))
+                    {
+                        entities.Add(t);
+                    }
+                }
             }
 
-            return dbManager;
+            return entities;
         }
 
         /// <summary>
@@ -92,7 +130,7 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>The GUID of the added entity.</returns>
         public Guid AddEntity(Entity entity)
         {
-            using (ISession session = OpenSession())
+            using (ISession session = Session)
             using (ITransaction transaction = session.BeginTransaction())
             {
                 session.Save(entity);
@@ -110,7 +148,7 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>The GUID of the updated entity.</returns>
         public Guid UpdateEntity(Entity entity)
         {
-            using (ISession session = OpenSession())
+            using (ISession session = Session)
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
@@ -132,17 +170,17 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The entity you asked for.
         /// </returns>
-        public T GetEntity<T>(Guid entityGUID, Type[] types = null) where T : Entity
+        public T GetEntity<T>(Guid entityGUID, List<Type> types = null)
         {
             T entity;
-            using (ISession session = OpenSession())
+            using (ISession session = Session)
             using (ITransaction transaction = session.BeginTransaction())
             {
                 entity = session.Get<T>(entityGUID);
 
                 if (types != null)
                 {
-                    entity.Unproxy(types);
+                    //entity.Unproxy(types);
                 }
             }
 
@@ -155,15 +193,16 @@ namespace HSA.InfoSys.Common.DBManager
         /// Creates a component object.
         /// </summary>
         /// <param name="componentName">Name of the component.</param>
-        /// <param name="componentCategory">The component category.</param>
+        /// <param name="orgUnit">The org unit.</param>
         /// <returns>
         /// The created component object.
         /// </returns>
-        public Component CreateComponent(string componentName, string componentCategory)
+        public Component CreateComponent(string componentName, OrgUnit orgUnit)
         {
             var component = new Component
             {
                 Name = componentName,
+                OrgUnit = orgUnit
             };
 
             Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_COMPONENT, component);
@@ -194,31 +233,29 @@ namespace HSA.InfoSys.Common.DBManager
         }
 
         /// <summary>
-        /// Creates a SystemService object
+        /// Creates a OrgUnit object
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <param name="name">The system name.</param>
-        /// <param name="component">A component object</param>
-        /// <param name="sysconfig">A system config object</param>
         /// <returns>
-        /// The created SystemService object
+        /// The created OrgUnit object
         /// </returns>
-        public SystemService CreateSystemService(int userId, string name)
+        public OrgUnit CreateOrgUnit(int userId, string name)
         {
-            var systemService = new SystemService
+            var orgUnit = new OrgUnit
             {
                 UserId = userId,
                 Name = name,
                 NextSearch = DateTime.Now
             };
 
-            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SYSTEMSERVICE, systemService);
+            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SYSTEMSERVICE, orgUnit);
 
-            return systemService;
+            return orgUnit;
         }
 
         /// <summary>
-        /// Creates a SystemConfig object
+        /// Creates a OrgUnitConfig object
         /// </summary>
         /// <param name="url">The URL.</param>
         /// <param name="email">The email text.</param>
@@ -227,9 +264,9 @@ namespace HSA.InfoSys.Common.DBManager
         /// <param name="schedulerActive">if set to <c>true</c> [scheduler active].</param>
         /// <param name="scheduler">A scheduler object.</param>
         /// <returns>
-        /// The created SystemConfig object.
+        /// The created OrgUnitConfig object.
         /// </returns>
-        public SystemConfig CreateSystemConfig(
+        public OrgUnitConfig CreateOrgUnitConfig(
             string url,
             string email,
             bool urlActive,
@@ -237,7 +274,7 @@ namespace HSA.InfoSys.Common.DBManager
             bool schedulerActive,
             Scheduler scheduler)
         {
-            var systemConfig = new SystemConfig
+            var orgUnitConfig = new OrgUnitConfig
             {
                 URLS = url,
                 Emails = email,
@@ -249,7 +286,7 @@ namespace HSA.InfoSys.Common.DBManager
 
             Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SOURCE);
 
-            return systemConfig;
+            return orgUnitConfig;
         }
 
         /// <summary>
@@ -272,16 +309,6 @@ namespace HSA.InfoSys.Common.DBManager
             Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SOURCE);
 
             return scheduler;
-        }
-
-        /// <summary>
-        /// Opens the session.
-        /// </summary>
-        /// <returns>An ISession to the session object.</returns>
-        private static ISession OpenSession()
-        {
-            Log.Debug(Properties.Resources.DBSESSION_OPEN_SESSION);
-            return SessionFactory.OpenSession();
         }
     }
 }

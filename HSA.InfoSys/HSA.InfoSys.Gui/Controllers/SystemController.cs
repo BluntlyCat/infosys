@@ -52,7 +52,7 @@ namespace HSA.InfoSys.Gui.Controllers
 
             // save to db
             Guid guid;
-            var system = cc.CreateSystemService(id, newsystem);
+            var system = cc.CreateOrgUnit(id, newsystem);
             guid = cc.AddEntity(system);
 
             return this.RedirectToAction("Index", "System");
