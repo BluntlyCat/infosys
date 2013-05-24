@@ -44,9 +44,6 @@ namespace HSA.InfoSys.Common.DBManager.Data
         [DataMember]
         public virtual DateTime Begin { get; set; }
 
-        [DataMember]
-        public virtual Result Result { get; set; }
-
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
