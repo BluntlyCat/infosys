@@ -55,6 +55,12 @@ namespace HSA.InfoSys.Testing.DBTesting
 
                             break;
 
+                        case ConsoleKey.D:
+                            var dguid = new Guid("8f662bf9-4118-48c2-8a89-a1c8007cfd86");
+                            var entity = dbManager.GetEntity(dguid);
+                            dbManager.DeleteEntity(entity);
+                            break;
+
                         case ConsoleKey.H:
                             log.Info("Print help text.");
                             PrintHelp();
@@ -90,6 +96,8 @@ namespace HSA.InfoSys.Testing.DBTesting
         private static void PrintHelp()
         {
             Console.WriteLine(string.Empty);
+            Console.WriteLine("Press a to add an entity.");
+            Console.WriteLine("Press d to delete an entity.");
             Console.WriteLine("Press h to see this help text.");
             Console.WriteLine("Press q to quit this application.");
             Console.WriteLine("Press s to start a new request to db server.");

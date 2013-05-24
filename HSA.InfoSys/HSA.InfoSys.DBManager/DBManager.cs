@@ -172,6 +172,7 @@ namespace HSA.InfoSys.Common.DBManager
                 using (ITransaction transaction = session.BeginTransaction())
                 {
                     session.Delete(entity);
+                    transaction.Commit();
                     Log.Info(Properties.Resources.DBMANAGER_UPDATE_OBJECT);
                 }
             }
