@@ -66,7 +66,7 @@ namespace HSA.InfoSys.Common.DBManager
         /// Gets the org units by user ID.
         /// </summary>
         /// <param name="userID">The user ID.</param>
-        /// <returns></returns>
+        /// <returns>A list of org units for the user id.</returns>
         [OperationContract]
         IList<OrgUnit> GetOrgUnitsByUserID(int userID);
 

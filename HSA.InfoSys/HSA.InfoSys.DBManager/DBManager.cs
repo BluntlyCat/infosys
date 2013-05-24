@@ -205,6 +205,24 @@ namespace HSA.InfoSys.Common.DBManager
         }
 
         /// <summary>
+        /// Gets the org units by user ID.
+        /// </summary>
+        /// <param name="userID">The user ID.</param>
+        /// <returns>
+        /// A list of org units for the user id.
+        /// </returns>
+        public IList<OrgUnit> GetOrgUnitsByUserID(int userID)
+        {
+            using (ISession session = Session)
+            using (ITransaction transaction = session.BeginTransaction())
+            {
+                return session.QueryOver<OrgUnit>()
+                    .Where(x => x.UserId == userID)
+                    .List<OrgUnit>();
+            }
+        }
+
+        /// <summary>
         /// Creates a component object.
         /// </summary>
         /// <param name="componentName">Name of the component.</param>

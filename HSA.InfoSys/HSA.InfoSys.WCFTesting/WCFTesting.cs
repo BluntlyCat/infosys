@@ -97,6 +97,10 @@ namespace HSA.InfoSys.Testing.WCFTesting
                                 }
 
                                 break;
+
+                            case ConsoleKey.T:
+                                var entities = CrawlControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(32);
+                                break;
                         }
                     }
                 }

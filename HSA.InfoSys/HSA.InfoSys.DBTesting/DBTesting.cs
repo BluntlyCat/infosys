@@ -86,7 +86,7 @@ namespace HSA.InfoSys.Testing.DBTesting
                             break;
 
                         case ConsoleKey.T:
-                            var entities = dbManager.LoadThisEntities();
+                            var entities = dbManager.GetOrgUnitsByUserID(32);
                             break;
                     }
                 }
