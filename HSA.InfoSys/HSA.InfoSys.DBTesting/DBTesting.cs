@@ -50,7 +50,7 @@ namespace HSA.InfoSys.Testing.DBTesting
                             var component = dbManager.CreateComponent("Apache", orgUnit);
                             guid = dbManager.AddEntity(component);
 
-                            var component2 = dbManager.GetEntity<Component>(guid, dbManager.LoadThisEntities("OrgUnit"));
+                            var component2 = dbManager.GetEntity(guid, dbManager.LoadThisEntities("OrgUnit"));
                             log.InfoFormat("Got component from db: [{0}]", component2);
 
                             break;

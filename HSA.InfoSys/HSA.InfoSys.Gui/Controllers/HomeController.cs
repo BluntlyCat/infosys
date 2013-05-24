@@ -5,10 +5,10 @@
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.Gui.Controllers
 {
+    using System;
     using System.Web.Mvc;
     using HSA.InfoSys.Common.Logging;
     using log4net;
-    using System;
 
     /// <summary>
     /// The controller for the home page.

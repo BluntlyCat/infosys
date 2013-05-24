@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HSA.InfoSys.Common.CrawlController.Properties {
+namespace HSA.InfoSys.Common.SolrClient.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,37 +25,19 @@ namespace HSA.InfoSys.Common.CrawlController.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("net.tcp://localhost:{0}/CrawlerProxy/")]
-        public string NET_TCP_ADDRESS {
+        [global::System.Configuration.DefaultSettingValueAttribute("141.82.59.139")]
+        public string SOLR_HOST {
             get {
-                return ((string)(this["NET_TCP_ADDRESS"]));
+                return ((string)(this["SOLR_HOST"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("../../Certificate/InfoSys.pfx")]
-        public string CERTIFICATE_PATH_DOTNET {
+        [global::System.Configuration.DefaultSettingValueAttribute("8983")]
+        public int SOLR_PORT {
             get {
-                return ((string)(this["CERTIFICATE_PATH_DOTNET"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:{0}/CrawlerProxy/")]
-        public string HTTP_ADDRESS {
-            get {
-                return ((string)(this["HTTP_ADDRESS"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("/etc/ssl/crawlerService/InfoSys.pfx")]
-        public string CERTIFICATE_PATH_MONO {
-            get {
-                return ((string)(this["CERTIFICATE_PATH_MONO"]));
+                return ((int)(this["SOLR_PORT"]));
             }
         }
     }

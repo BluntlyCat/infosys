@@ -8,7 +8,9 @@ namespace HSA.InfoSys.CrawlerService
     using System;
     using System.Threading;
     using HSA.InfoSys.Common.CrawlController;
+    using HSA.InfoSys.Common.DBManager;
     using HSA.InfoSys.Common.Logging;
+    using HSA.InfoSys.Common.SolrClient;
     using log4net;
 
     /// <summary>
@@ -30,7 +32,7 @@ namespace HSA.InfoSys.CrawlerService
         /// <summary>
         /// The controller for the crawler.
         /// </summary>
-        private CrawlController controller;
+        private CrawlControllerHost controllerHost;
 
         /// <summary>
         /// Main function.
@@ -50,10 +52,12 @@ namespace HSA.InfoSys.CrawlerService
             Log.Debug(Properties.Resources.WEB_CRAWLER_START_SERVER);
             Log.Info(Properties.Resources.WEB_CRAWLER_QUIT_MESSAGE);
 
-            this.controller = new CrawlController();
+            Addresses.Initialize();
+            this.controllerHost = new CrawlControllerHost();
 
-            this.controller.StartServices();
-            this.controller.OpenWCFHost();
+            this.controllerHost.OpenWCFHost<DBManager, IDBManager>();
+            this.controllerHost.OpenWCFHost<CrawlController, ICrawlController>();
+            this.controllerHost.OpenWCFHost<SolrController, ISolrController>();
 
             running = true;
 
@@ -75,10 +79,6 @@ namespace HSA.InfoSys.CrawlerService
                     }
                 }
 
-#if DEBUG
-                Log.DebugFormat("HostState: {0}", controller.HostState);
-#endif
-
                 Thread.Sleep(500);
             }
         }
@@ -88,10 +88,9 @@ namespace HSA.InfoSys.CrawlerService
         /// </summary>
         private void ShutdownCrawler()
         {
-            if (this.controller != null)
+            if (this.controllerHost != null)
             {
-                this.controller.CloseWCFHost();
-                this.controller.StopServices();
+                this.controllerHost.CloseWCFHosts();
 
                 running = false;
             }

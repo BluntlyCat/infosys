@@ -7,11 +7,13 @@ namespace HSA.InfoSys.Common.DBManager
 {
     using System;
     using System.Collections.Generic;
+    using System.ServiceModel;
     using HSA.InfoSys.Common.DBManager.Data;
 
     /// <summary>
     /// The interface for accessing the data base.
     /// </summary>
+    [ServiceContract]
     public interface IDBManager
     {
         /// <summary>
@@ -21,6 +23,7 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// A list of entities NHibernate must load eager.
         /// </returns>
+        [OperationContract]
         List<Type> LoadThisEntities(params string[] param);
 
         /// <summary>
@@ -29,6 +32,7 @@ namespace HSA.InfoSys.Common.DBManager
         /// </summary>
         /// <param name="entity">The entity to add in database.</param>
         /// <returns>The GUID of the added entity.</returns>
+        [OperationContract]
         Guid AddEntity(Entity entity);
 
         /// <summary>
@@ -36,18 +40,26 @@ namespace HSA.InfoSys.Common.DBManager
         /// </summary>
         /// <param name="entity">The entity that should be updated.</param>
         /// <returns>The GUID of the updated entity.</returns>
+        [OperationContract]
         Guid UpdateEntity(Entity entity);
+
+        /// <summary>
+        /// Deletes the entity.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        [OperationContract]
+        void DeleteEntity(Entity entity);
 
         /// <summary>
         /// Gets an entity from database.
         /// </summary>
-        /// <typeparam name="T">The type of what you want.</typeparam>
         /// <param name="entityGuid">The entity GUID.</param>
         /// <param name="types">The types you want load eager.</param>
         /// <returns>
         /// The entity you asked for.
         /// </returns>
-        T GetEntity<T>(Guid entityGuid, List<Type> types = null);
+        [OperationContract]
+        Entity GetEntity(Guid entityGuid, List<Type> types = null);
 
         /// <summary>
         /// Creates a component object.
@@ -57,6 +69,7 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The created component object.
         /// </returns>
+        [OperationContract]
         Component CreateComponent(string name, OrgUnit orgUnit);
 
         /// <summary>
@@ -67,6 +80,7 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The created result object
         /// </returns>
+        [OperationContract]
         Result CreateResult(string data, string source);
 
         /// <summary>
@@ -77,6 +91,7 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The created OrgUnit object
         /// </returns>
+        [OperationContract]
         OrgUnit CreateOrgUnit(int userId, string name);
 
         /// <summary>
@@ -91,6 +106,7 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The created OrgUnitConfig object.
         /// </returns>
+        [OperationContract]
         OrgUnitConfig CreateOrgUnitConfig(
             string url,
             string email,
@@ -107,6 +123,7 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The created Scheduler object.
         /// </returns>
+        [OperationContract]
         Scheduler CreateScheduler(int days, int hours);
     }
 }

@@ -5,10 +5,11 @@
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.Gui.Controllers
 {
+    using System;
     using System.Web.Mvc;
     using System.Web.Security;
-    using System;
     using HSA.InfoSys.Common.CrawlController;
+    using HSA.InfoSys.Common.DBManager;
     using HSA.InfoSys.Common.Logging;
     using log4net;
 
@@ -18,8 +19,7 @@ namespace HSA.InfoSys.Gui.Controllers
     [HandleError]
     public class SystemController : Controller
     {
-        ICrawlController cc;
-        ILog log = Logging.GetLogger("GuiLogger");
+        private static readonly ILog log = Logging.GetLogger("GuiLogger");
  
         /// <summary>
         /// Called when the home page is loading.
@@ -40,7 +40,7 @@ namespace HSA.InfoSys.Gui.Controllers
             string newsystem = Request["newsystem"];
 
             // init
-            cc = CrawlController.ClientProxy;
+            var cc = CrawlControllerClient<IDBManager>.ClientProxy;
 
             // log
             log.Info("add new system");

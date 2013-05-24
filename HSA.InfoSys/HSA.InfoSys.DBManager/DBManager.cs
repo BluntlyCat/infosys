@@ -162,31 +162,45 @@ namespace HSA.InfoSys.Common.DBManager
         }
 
         /// <summary>
+        /// Deletes the entity.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        public void DeleteEntity(Entity entity)
+        {
+            using (ISession session = Session)
+            {
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    session.Delete(entity);
+                    Log.Info(Properties.Resources.DBMANAGER_UPDATE_OBJECT);
+                }
+            }
+        }
+
+        /// <summary>
         /// Gets an entity from database.
         /// </summary>
-        /// <typeparam name="T">The type of what you want.</typeparam>
         /// <param name="entityGUID">The entity GUID.</param>
         /// <param name="types">The types you want load eager.</param>
         /// <returns>
         /// The entity you asked for.
         /// </returns>
-        public T GetEntity<T>(Guid entityGUID, List<Type> types = null)
+        public Entity GetEntity(Guid entityGUID, List<Type> types = null)
         {
-            T entity;
             using (ISession session = Session)
             using (ITransaction transaction = session.BeginTransaction())
             {
-                entity = session.Get<T>(entityGUID);
+                var entity = session.Get<Entity>(entityGUID);
 
                 if (types != null)
                 {
-                    //entity.Unproxy(types);
+                    entity.Unproxy(types);
                 }
+
+                Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ENTITY, entity.GetType(), entity, entityGUID);
+
+                return entity;
             }
-
-            Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ENTITY, typeof(T), entity, entityGUID);
-
-            return entity;
         }
 
         /// <summary>

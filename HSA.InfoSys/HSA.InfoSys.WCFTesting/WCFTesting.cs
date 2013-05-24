@@ -6,11 +6,11 @@
 namespace HSA.InfoSys.Testing.WCFTesting
 {
     using System;
-    using System.ServiceModel;
     using System.Threading;
     using HSA.InfoSys.Common.CrawlController;
-    using HSA.InfoSys.Common.DBManager.Data;
+    using HSA.InfoSys.Common.DBManager;
     using HSA.InfoSys.Common.Logging;
+    using HSA.InfoSys.Common.SolrClient;
     using log4net;
 
     /// <summary>
@@ -25,8 +25,6 @@ namespace HSA.InfoSys.Testing.WCFTesting
         public static void Main(string[] args)
         {
             ILog log = Logging.GetLogger("WCFTesting");
-
-            ICrawlController controller;
 
             bool running = true;
 
@@ -58,7 +56,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
                         switch (keyInfo.Key)
                         {
                             case ConsoleKey.A:
-                                controller = CrawlController.ClientProxy;
+                                var controller = CrawlControllerClient<IDBManager>.ClientProxy;
                                 log.Info("Add new Component.");
 
                                 Guid guid;
@@ -91,7 +89,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
                                 try
                                 {
                                     log.Info("Got client proxy...");
-                                    CrawlController.ClientProxy.StartSearch("solr");
+                                    CrawlControllerClient<ISolrController>.ClientProxy.StartSearch("solr");
                                 }
                                 catch (Exception e)
                                 {
@@ -102,7 +100,6 @@ namespace HSA.InfoSys.Testing.WCFTesting
                         }
                     }
                 }
-
                 catch (Exception e)
                 {
                     log.ErrorFormat("Message: {0}", e);
