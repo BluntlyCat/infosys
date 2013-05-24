@@ -67,11 +67,11 @@ namespace HSA.InfoSys.Testing.WCFTesting
 
                                 log.DebugFormat("Entity created: {0}", comp);
 
-                                guid = controller.AddEntity(comp);
-                                log.DebugFormat("Entity added in db: {0}", comp);
+                                guid = controller.AddEntity(orgUnit);
+                                log.DebugFormat("Entity added in db: {0}", orgUnit);
 
                                 var entity = controller.GetEntity(guid);
-                                log.DebugFormat("Entity from db: {0}", entity);
+                                log.DebugFormat("Entity from db: {0} is type {1}", entity, entity.GetType());
 
                                 break;
 
