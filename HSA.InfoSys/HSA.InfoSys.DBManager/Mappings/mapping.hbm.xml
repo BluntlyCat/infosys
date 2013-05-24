@@ -14,8 +14,8 @@
     <joined-subclass name="Component" table="Component">
       <key column="ComponentGUID" />
 
-      <many-to-one class="Result" name="Result" column="ResultGUID" cascade="save-update" />
-      <many-to-one name="OrgUnit" class="OrgUnit" column="OrgUnitGuid" cascade="save-update" not-null="true" />
+      <many-to-one class="Result" name="Result" column="ResultGUID" lazy="proxy" cascade="save-update" />
+      <many-to-one name="OrgUnit" class="OrgUnit" column="OrgUnitGuid" lazy="proxy" cascade="save-update" not-null="true" />
 
       <property name="Name" type="string" length ="100" not-null="true" />
     </joined-subclass>
@@ -45,7 +45,7 @@
     <joined-subclass name="OrgUnit" table="OrgUnit">
       <key column="OrgUnitGUID" />
 
-      <many-to-one name="OrgUnitConfig" class="OrgUnitConfig" column="OrgUnitConfigGUID" cascade="save-update" />
+      <many-to-one name="OrgUnitConfig" class="OrgUnitConfig" column="OrgUnitConfigGUID" lazy="proxy" cascade="save-update" />
 
       <property name="Name" type="string" length ="40" not-null="true" />
       <property name="UserId" type="int" length="10" not-null="true"/>
@@ -57,7 +57,7 @@
     <joined-subclass name="OrgUnitConfig" table="OrgUnitConfig">
       <key column="OrgUnitConfigGUID" />
 
-      <many-to-one name="Scheduler" class="Scheduler" column="SchedulerGUID" cascade="save-update" />
+      <many-to-one name="Scheduler" class="Scheduler" column="SchedulerGUID" lazy="proxy" cascade="save-update" />
 
       <property name="Emails" type="string">
         <column name="Emails" sql-type="text" not-null="false"/>

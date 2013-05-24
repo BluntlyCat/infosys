@@ -138,8 +138,8 @@ namespace HSA.InfoSys.Gui.Controllers
             var cc = CrawlControllerClient<IDBManager>.ClientProxy;
 
             // get SystemConfig, OrgUnitConfig, Scheduler
-            var system = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnitConfig", "Scheduler")) as OrgUnit;
-            var config = system.OrgUnitConfig;
+            var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnitConfig", "Scheduler")) as OrgUnit;
+            var config = orgUnit.OrgUnitConfig;
             var scheduler = config.Scheduler;
 
             // set all config data for view

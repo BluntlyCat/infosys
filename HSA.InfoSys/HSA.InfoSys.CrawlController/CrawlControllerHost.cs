@@ -51,7 +51,6 @@ namespace HSA.InfoSys.Common.CrawlController
 
             var host = new ServiceHost(typeof(T), new Uri(httpAddress));
 
-            binding.MaxReceivedMessageSize = 10485760L;
             binding.Security.Mode = SecurityMode.Transport;
             binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
 
@@ -70,9 +69,10 @@ namespace HSA.InfoSys.Common.CrawlController
                 host.Description.Behaviors.Add(metadataBevavior);
             }
 
+            var mexBinding = MetadataExchangeBindings.CreateMexHttpBinding();
             host.AddServiceEndpoint(
                 typeof(IMetadataExchange),
-                MetadataExchangeBindings.CreateMexHttpBinding(),
+                mexBinding,
                 httpAddress);
 
             host.Open();

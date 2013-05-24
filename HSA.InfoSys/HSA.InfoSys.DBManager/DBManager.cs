@@ -102,9 +102,9 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// A list of entities NHibernate must load eager.
         /// </returns>
-        public List<Type> LoadThisEntities(params string[] param)
+        public string[] LoadThisEntities(params string[] param)
         {
-            List<Type> entities = new List<Type>();
+            List<string> entities = new List<string>();
             var assembly = Assembly.GetAssembly(typeof(DBManager));
             var types = assembly.GetTypes();
 
@@ -114,12 +114,12 @@ namespace HSA.InfoSys.Common.DBManager
                 {
                     if (t.Name.Equals(p))
                     {
-                        entities.Add(t);
+                        entities.Add(t.Name);
                     }
                 }
             }
 
-            return entities;
+            return entities.ToArray();
         }
 
         /// <summary>
@@ -186,22 +186,23 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The entity you asked for.
         /// </returns>
-        public Entity GetEntity(Guid entityGUID, List<Type> types = null)
+        public Entity GetEntity(Guid entityGUID, string[] types = null)
         {
+            Entity entity;
             using (ISession session = Session)
             using (ITransaction transaction = session.BeginTransaction())
             {
-                var entity = session.Get<Entity>(entityGUID);
+                entity = session.Get<Entity>(entityGUID);
 
-                if (types.Count > 0)
+                if (types != null)
                 {
                     entity.Unproxy(types);
                 }
 
                 Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ENTITY, entity.GetType(), entity, entityGUID);
-
-                return entity;
             }
+
+            return entity;
         }
 
         /// <summary>
@@ -211,14 +212,14 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// A list of org units for the user id.
         /// </returns>
-        public IList<OrgUnit> GetOrgUnitsByUserID(int userID)
+        public OrgUnit[] GetOrgUnitsByUserID(int userID)
         {
             using (ISession session = Session)
             using (ITransaction transaction = session.BeginTransaction())
             {
-                return session.QueryOver<OrgUnit>()
+                return (session.QueryOver<OrgUnit>()
                     .Where(x => x.UserId == userID)
-                    .List<OrgUnit>();
+                    .List<OrgUnit>() as List<OrgUnit>).ToArray();
             }
         }
 
@@ -290,8 +291,8 @@ namespace HSA.InfoSys.Common.DBManager
         /// <summary>
         /// Creates a OrgUnitConfig object
         /// </summary>
-        /// <param name="url">The URL.</param>
-        /// <param name="email">The email text.</param>
+        /// <param name="urls">The URL.</param>
+        /// <param name="emails">The email text.</param>
         /// <param name="urlActive">if set to <c>true</c> [URL active].</param>
         /// <param name="emailNotification">if set to <c>true</c> [email notification].</param>
         /// <param name="schedulerActive">if set to <c>true</c> [scheduler active].</param>
@@ -303,7 +304,7 @@ namespace HSA.InfoSys.Common.DBManager
             string urls,
             string emails,
             bool urlActive,
-            bool emailActive,
+            bool emailNotification,
             bool schedulerActive,
             Scheduler scheduler)
         {
@@ -312,7 +313,7 @@ namespace HSA.InfoSys.Common.DBManager
                 URLS = urls,
                 Emails = emails,
                 URLActive = urlActive,
-                EmailActive = emailActive,
+                EmailActive = emailNotification,
                 SchedulerActive = schedulerActive,
                 Scheduler = scheduler
             };

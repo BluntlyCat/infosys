@@ -8,12 +8,12 @@ namespace HSA.InfoSys.Common.DBManager.Data
     using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
+    using HSA.InfoSys.Common.NetDataContractSerializer;
 
     /// <summary>
     /// This represents the OrgUnitConfiguration
     /// </summary>
     [DataContract]
-    [Serializable]
     public class OrgUnitConfig : Entity
     {
         /// <summary>
@@ -77,13 +77,13 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// <returns>
         /// The entity behind the NHibernate proxy.
         /// </returns>
-        public override Entity Unproxy(List<Type> types = null)
+        public override Entity Unproxy(string[] types = null)
         {
             if (types != null)
             {
                 foreach (var type in types)
                 {
-                    if (type == typeof(Scheduler) && this.Scheduler != null)
+                    if (type.Equals(typeof(Scheduler).Name) && this.Scheduler != null)
                     {
                         this.Scheduler = this.Scheduler.Unproxy(types) as Scheduler;
                     }

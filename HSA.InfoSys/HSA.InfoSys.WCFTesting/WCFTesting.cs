@@ -6,9 +6,11 @@
 namespace HSA.InfoSys.Testing.WCFTesting
 {
     using System;
+    using System.ServiceModel;
     using System.Threading;
     using HSA.InfoSys.Common.CrawlController;
     using HSA.InfoSys.Common.DBManager;
+    using HSA.InfoSys.Common.DBManager.Data;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.SolrClient;
     using log4net;
@@ -56,21 +58,18 @@ namespace HSA.InfoSys.Testing.WCFTesting
                         switch (keyInfo.Key)
                         {
                             case ConsoleKey.A:
-                                var controller = CrawlControllerClient<IDBManager>.ClientProxy;
-                                log.Info("Add new Component.");
+                                ////var result = CrawlControllerClient<IDBManager>.ClientProxy.CreateResult("Schmeckt gut!", "Selbst getestet.");
+                                ////var putensalami = CrawlControllerClient<IDBManager>.ClientProxy.GetEntity(new Guid("23c83f7f-a371-43ad-8734-a1c8013b55ee")) as Component;
+                                ////putensalami.Result = result;
+                                ////CrawlControllerClient<IDBManager>.ClientProxy.UpdateEntity(putensalami);
 
-                                Guid guid;
-                                var orgUnit = controller.CreateOrgUnit(0, "Webserver");
-                                var comp = controller.CreateComponent("Apache", orgUnit);
+                                break;
 
-                                log.DebugFormat("Entity created: {0}", comp);
+                            case ConsoleKey.G:
+                                var c = CrawlControllerClient<IDBManager>.ClientProxy;
+                                var entity = c.GetEntity(new Guid("23c83f7f-a371-43ad-8734-a1c8013b55ee"));
 
-                                guid = controller.AddEntity(orgUnit);
-                                log.DebugFormat("Entity added in db: {0}", orgUnit);
-
-                                var entity = controller.GetEntity(guid);
-                                log.DebugFormat("Entity from db: {0} is type {1}", entity, entity.GetType());
-
+                                log.InfoFormat("Entity: [{0}]", entity);
                                 break;
 
                             case ConsoleKey.H:
@@ -99,10 +98,25 @@ namespace HSA.InfoSys.Testing.WCFTesting
                                 break;
 
                             case ConsoleKey.T:
-                                var entities = CrawlControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(32);
+                                var entities = CrawlControllerClient<IDBManager>.ClientProxy
+                                    .GetEntity(new Guid("01b5e81b-fa58-47a5-b4af-a1c8013b55ff")) as OrgUnit;
+
+                                log.InfoFormat("Entity: [{0}]", entities);
+                                break;
+
+                            case ConsoleKey.U:
+                                ////var config = CrawlControllerClient<IDBManager>.ClientProxy.CreateOrgUnitConfig("Paprika, Salz, Pfeffer, Putensalami, Streichkäse, Ketchup, Butterkäse, Gurken, Tomaten", "wurst@semmel.me", false, false, false, null);
+                                var scheduler = CrawlControllerClient<IDBManager>.ClientProxy.CreateScheduler(1, 2);
+                                var config = CrawlControllerClient<IDBManager>.ClientProxy.GetEntity(new Guid("4427be10-c455-4643-bf17-a1c8013eafea")) as OrgUnitConfig;
+                                config.Scheduler = scheduler;
+                                CrawlControllerClient<IDBManager>.ClientProxy.UpdateEntity(config);
                                 break;
                         }
                     }
+                }
+                catch (QuotaExceededException e)
+                {
+                    log.ErrorFormat("Quota Exceeded: {0}", e);
                 }
                 catch (Exception e)
                 {

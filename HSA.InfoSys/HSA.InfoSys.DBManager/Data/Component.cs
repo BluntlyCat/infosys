@@ -14,7 +14,6 @@ namespace HSA.InfoSys.Common.DBManager.Data
     /// for example a web server or a database server.
     /// </summary>
     [DataContract]
-    [Serializable]
     public class Component : Entity
     {
         /// <summary>
@@ -51,17 +50,17 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// <returns>
         /// The entity behind the NHibernate proxy.
         /// </returns>
-        public override Entity Unproxy(List<Type> types = null)
+        public override Entity Unproxy(string[] types = null)
         {
             if (types != null)
             {
                 foreach (var type in types)
                 {
-                    if (type == typeof(OrgUnit) && this.OrgUnit != null)
+                    if (type.Equals(typeof(OrgUnit).Name) && this.OrgUnit != null)
                     {
                         this.OrgUnit = this.OrgUnit.Unproxy(types) as OrgUnit;
                     }
-                    else if (type == typeof(Result) && this.Result != null)
+                    else if (type.Equals(typeof(Result).Name) && this.Result != null)
                     {
                         this.Result = this.Result.Unproxy(types) as Result;
                     }

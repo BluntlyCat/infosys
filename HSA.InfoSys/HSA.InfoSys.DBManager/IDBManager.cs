@@ -9,6 +9,7 @@ namespace HSA.InfoSys.Common.DBManager
     using System.Collections.Generic;
     using System.ServiceModel;
     using HSA.InfoSys.Common.DBManager.Data;
+    using HSA.InfoSys.Common.NetDataContractSerializer;
 
     /// <summary>
     /// The interface for accessing the data base.
@@ -23,8 +24,9 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// A list of entities NHibernate must load eager.
         /// </returns>
-        [OperationContract]
-        List<Type> LoadThisEntities(params string[] param);
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        string[] LoadThisEntities(params string[] param);
 
         /// <summary>
         /// Adds a new Object (Component, Issue, Source)
@@ -32,7 +34,8 @@ namespace HSA.InfoSys.Common.DBManager
         /// </summary>
         /// <param name="entity">The entity to add in database.</param>
         /// <returns>The GUID of the added entity.</returns>
-        [OperationContract]
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
         Guid AddEntity(Entity entity);
 
         /// <summary>
@@ -40,14 +43,16 @@ namespace HSA.InfoSys.Common.DBManager
         /// </summary>
         /// <param name="entity">The entity that should be updated.</param>
         /// <returns>The GUID of the updated entity.</returns>
-        [OperationContract]
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
         Guid UpdateEntity(Entity entity);
 
         /// <summary>
         /// Deletes the entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        [OperationContract]
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
         void DeleteEntity(Entity entity);
 
         /// <summary>
@@ -58,17 +63,18 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The entity you asked for.
         /// </returns>
-        [OperationContract]
-        Entity GetEntity(Guid entityGuid, List<Type> types = null);
-
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        Entity GetEntity(Guid entityGuid, string[] types = null);
 
         /// <summary>
         /// Gets the org units by user ID.
         /// </summary>
         /// <param name="userID">The user ID.</param>
         /// <returns>A list of org units for the user id.</returns>
-        [OperationContract]
-        IList<OrgUnit> GetOrgUnitsByUserID(int userID);
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        OrgUnit[] GetOrgUnitsByUserID(int userID);
 
         /// <summary>
         /// Creates a component object.
@@ -78,7 +84,8 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The created component object.
         /// </returns>
-        [OperationContract]
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
         Component CreateComponent(string name, OrgUnit orgUnit);
 
         /// <summary>
@@ -89,7 +96,8 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The created result object
         /// </returns>
-        [OperationContract]
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
         Result CreateResult(string data, string source);
 
         /// <summary>
@@ -100,14 +108,15 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The created OrgUnit object
         /// </returns>
-        [OperationContract]
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
         OrgUnit CreateOrgUnit(int userId, string name);
 
         /// <summary>
         /// Creates a OrgUnitConfig object
         /// </summary>
-        /// <param name="url">The URL.</param>
-        /// <param name="email">The email text.</param>
+        /// <param name="urls">The URL.</param>
+        /// <param name="emails">The email text.</param>
         /// <param name="urlActive">if set to <c>true</c> [URL active].</param>
         /// <param name="emailNotification">if set to <c>true</c> [email notification].</param>
         /// <param name="schedulerActive">if set to <c>true</c> [scheduler active].</param>
@@ -115,12 +124,13 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The created OrgUnitConfig object.
         /// </returns>
-        [OperationContract]
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
         OrgUnitConfig CreateOrgUnitConfig(
             string urls,
             string emails,
             bool urlActive,
-            bool emailActive,
+            bool emailNotification,
             bool schedulerActive,
             Scheduler scheduler);
 
@@ -132,7 +142,8 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The created Scheduler object.
         /// </returns>
-        [OperationContract]
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
         Scheduler CreateScheduler(int days, int hours);
     }
 }

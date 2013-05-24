@@ -12,7 +12,6 @@ namespace HSA.InfoSys.Common.DBManager.Data
     /// This class represents the search result to an issue.
     /// </summary>
     [DataContract]
-    [Serializable]
     public class Result : Entity
     {
         /// <summary>

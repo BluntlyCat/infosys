@@ -14,9 +14,17 @@ namespace HSA.InfoSys.Common.DBManager.Data
     /// for a component
     /// </summary>
     [DataContract]
-    [Serializable]
     public class Scheduler : Entity
     {
+        /// <summary>
+        /// Gets or sets the time stamp.
+        /// </summary>
+        /// <value>
+        /// The time stamp.
+        /// </value>
+        [DataMember]
+        public virtual DateTime Begin { get; set; }
+
         /// <summary>
         /// Gets or sets the Days.
         /// </summary>
@@ -34,15 +42,6 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// </value>
         [DataMember]
         public virtual int Hours { get; set; }
-
-        /// <summary>
-        /// Gets or sets the time stamp.
-        /// </summary>
-        /// <value>
-        /// The time stamp.
-        /// </value>
-        [DataMember]
-        public virtual DateTime Begin { get; set; }
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.

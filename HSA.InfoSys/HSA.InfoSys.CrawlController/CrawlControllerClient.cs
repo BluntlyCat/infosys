@@ -37,7 +37,6 @@ namespace HSA.InfoSys.Common.CrawlController
                 var netTcpAddress = new Uri(Addresses.GetNetTcpAddress(typeof(T)));
 
                 var binding = new NetTcpBinding();
-                binding.MaxReceivedMessageSize = 10485760L;
                 binding.Security.Mode = SecurityMode.Transport;
                 binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
                 Log.Info("Create binding for proxy.");

@@ -62,8 +62,8 @@ namespace HSA.InfoSys.Testing.DBTesting
                             break;
 
                         case ConsoleKey.G:
-                            var gguid = new Guid("2de33831-856a-4438-bbff-a1c70180e5fb");
-                            var gentity = dbManager.GetEntity(gguid, dbManager.LoadThisEntities()) as Component;
+                            var e = dbManager.GetEntity(new Guid("01b5e81b-fa58-47a5-b4af-a1c8013b55ff"));
+                            log.InfoFormat("Entity: [{0}]", e);
                             break;
 
                         case ConsoleKey.H:

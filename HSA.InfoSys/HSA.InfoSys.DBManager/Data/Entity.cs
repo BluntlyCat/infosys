@@ -6,19 +6,15 @@
 namespace HSA.InfoSys.Common.DBManager.Data
 {
     using System;
-    using System.Collections.Generic;
     using System.Runtime.Serialization;
+    using NHibernate.Proxy;
+    using NHibernate.Proxy.DynamicProxy;
 
     /// <summary>
     /// This is the base class for all data base objects
     /// It holds the unique id for each entity.
     /// </summary>
     [DataContract]
-    [KnownType(typeof(Component))]
-    [KnownType(typeof(Result))]
-    [KnownType(typeof(OrgUnit))]
-    [KnownType(typeof(OrgUnitConfig))]
-    [KnownType(typeof(Scheduler))]
     public abstract class Entity
     {
         /// <summary>
@@ -46,7 +42,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// The type of this instance.
         /// </value>
         [DataMember]
-        public virtual string Type { get; protected set; }
+        public virtual string Type { get; set; }
 
         /// <summary>
         /// Loads this instance from NHibernate.
@@ -55,7 +51,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// <returns>
         /// The entity behind the NHibernate proxy.
         /// </returns>
-        public virtual Entity Unproxy(List<Type> types = null)
+        public virtual Entity Unproxy(string[] types = null)
         {
             return this;
         }
