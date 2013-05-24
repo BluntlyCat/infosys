@@ -193,7 +193,7 @@ namespace HSA.InfoSys.Common.DBManager
             {
                 var entity = session.Get<Entity>(entityGUID);
 
-                if (types != null)
+                if (types.Count > 0)
                 {
                     entity.Unproxy(types);
                 }

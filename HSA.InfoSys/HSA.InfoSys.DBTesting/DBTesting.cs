@@ -61,6 +61,11 @@ namespace HSA.InfoSys.Testing.DBTesting
                             dbManager.DeleteEntity(entity);
                             break;
 
+                        case ConsoleKey.G:
+                            var gguid = new Guid("2de33831-856a-4438-bbff-a1c70180e5fb");
+                            var gentity = dbManager.GetEntity(gguid, dbManager.LoadThisEntities()) as Component;
+                            break;
+
                         case ConsoleKey.H:
                             log.Info("Print help text.");
                             PrintHelp();
