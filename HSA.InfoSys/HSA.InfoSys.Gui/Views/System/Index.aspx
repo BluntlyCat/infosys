@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage"%>
+<%@ Import Namespace="HSA.InfoSys.Common.DBManager.Data"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     My Systems
@@ -30,6 +31,28 @@
                         </tr>
                     </thead>
                     <tbody>
+                        
+                        <% foreach (var item in this.ViewData["orgUnits"] as List<OrgUnit>)
+                           { %>
+
+                            <tr>
+                                <td>
+                                    <input type="checkbox" value="1" />
+                                </td>
+                                <td>
+                                    <%= item.Name %>
+                                </td>
+                                <td>
+                                    <a class="btn btn-small" href="/System/Components/?sysguid="<%= item.EntityId %>"><i class="icon-cog"></i></a> 
+                                </td>
+                                <td>
+                                    <a class="btn btn-small" href="#deleteModal" data-toggle="modal"><i class="icon-trash"></i></a>
+                                </td>
+                            </tr>
+                          <% } %>
+                                                    
+
+                        <!-- 
                         <tr>
                             <td>
                                 <input type="checkbox" value="1" />
@@ -44,34 +67,7 @@
                                 <a class="btn btn-small" href="#deleteModal" data-toggle="modal"><i class="icon-trash"></i></a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" value="2" />
-                            </td>
-                            <td>
-                                Workstation1
-                            </td>
-                            <td>
-                                <a class="btn btn-small" href="/System/Components?sysguid=<%= ViewData["systemguid"] %>"><i class="icon-cog"></i></a>
-                            </td>
-                            <td>
-                                <a class="btn btn-small" href="#deleteModal" data-toggle="modal"><i class="icon-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" value="3" />
-                            </td>
-                            <td>
-                                Backup-Server 002
-                            </td>
-                            <td>
-                                <a class="btn btn-small" href="/System/Components?sysguid=<%= ViewData["systemguid"] %>"><i class="icon-cog"></i></a>
-                            </td>
-                            <td>
-                                <a class="btn btn-small" href="#deleteModal" data-toggle="modal"><i class="icon-trash"></i></a>
-                            </td>
-                        </tr>
+                        -->
                     </tbody>
                 </table>
             </div>

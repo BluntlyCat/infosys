@@ -13,6 +13,7 @@ namespace HSA.InfoSys.Gui.Controllers
     using HSA.InfoSys.Common.DBManager.Data;
     using HSA.InfoSys.Common.Logging;
     using log4net;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The controller for the system.
@@ -38,7 +39,9 @@ namespace HSA.InfoSys.Gui.Controllers
             string userid = membershipuser.ProviderUserKey.ToString();
             int id = Convert.ToInt32(userid);
 
-            //cc.GetOrgUnitsByUserID(id);
+            List<OrgUnit> orgUnits =  cc.GetOrgUnitsByUserID(id);
+
+            this.ViewData["orgUnits"] = orgUnits;
 
             this.ViewData["navid"] = "mysystems";
 
