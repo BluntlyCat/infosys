@@ -212,14 +212,14 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// A list of org units for the user id.
         /// </returns>
-        public OrgUnit[] GetOrgUnitsByUserID(int userID)
+        public List<OrgUnit> GetOrgUnitsByUserID(int userID)
         {
             using (ISession session = Session)
             using (ITransaction transaction = session.BeginTransaction())
             {
                 return (session.QueryOver<OrgUnit>()
                     .Where(x => x.UserId == userID)
-                    .List<OrgUnit>() as List<OrgUnit>).ToArray();
+                    .List<OrgUnit>() as List<OrgUnit>);
             }
         }
 

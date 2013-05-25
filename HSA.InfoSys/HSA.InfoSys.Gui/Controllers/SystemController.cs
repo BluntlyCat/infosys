@@ -10,9 +10,9 @@ namespace HSA.InfoSys.Gui.Controllers
     using System.Web.Security;
     using HSA.InfoSys.Common.CrawlController;
     using HSA.InfoSys.Common.DBManager;
+    using HSA.InfoSys.Common.DBManager.Data;
     using HSA.InfoSys.Common.Logging;
     using log4net;
-    using HSA.InfoSys.Common.DBManager.Data;
 
     /// <summary>
     /// The controller for the system.
@@ -20,7 +20,10 @@ namespace HSA.InfoSys.Gui.Controllers
     [HandleError]
     public class SystemController : Controller
     {
-        private static readonly ILog log = Logging.GetLogger("GuiLogger");
+        /// <summary>
+        /// The logger.
+        /// </summary>
+        private static readonly ILog Log = Logging.GetLogger("SystemController");
  
         /// <summary>
         /// Called when the home page is loading.
@@ -29,7 +32,6 @@ namespace HSA.InfoSys.Gui.Controllers
         [Authorize]
         public ActionResult Index()
         {
-
             var cc = CrawlControllerClient<IDBManager>.ClientProxy;
             // get id of current logged-in user
             MembershipUser membershipuser = Membership.GetUser();
@@ -61,7 +63,7 @@ namespace HSA.InfoSys.Gui.Controllers
             var cc = CrawlControllerClient<IDBManager>.ClientProxy;
 
             // log
-            log.Info("add new system");
+            Log.Info("add new system");
 
             // get id of current logged-in user
             MembershipUser membershipuser = Membership.GetUser();
@@ -69,7 +71,7 @@ namespace HSA.InfoSys.Gui.Controllers
             int id = Convert.ToInt32(userid);
 
             // create Scheduler
-            var scheduler = cc.CreateScheduler(3,0);
+            var scheduler = cc.CreateScheduler(3, 0);
 
             // create SystemConfig
             var systemConfig = cc.CreateOrgUnitConfig(null, null, false, false, false, scheduler);
@@ -87,10 +89,13 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <summary>
         /// Called when page components is loading.
         /// </summary>
-        /// <returns>The result of this action.</returns>
+        /// <param name="systemGUID">The systemGUID.</param>
+        /// <returns>
+        /// The result of this action.
+        /// </returns>
         [Authorize]
         [HttpGet]
-        public ActionResult Components(string sysguid)
+        public ActionResult Components(string systemGUID)
         {
             // get systemguid from GET-Request
             string systemguid = Request.QueryString["sysguid"];
@@ -126,10 +131,13 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <summary>
         /// Called when page search is loading.
         /// </summary>
-        /// <returns>The result of this action.</returns>
+        /// <param name="systemGUID">The systemGUID.</param>
+        /// <returns>
+        /// The result of this action.
+        /// </returns>
         [Authorize]
         [HttpGet]
-        public ActionResult SearchConfig(string sysguid)
+        public ActionResult SearchConfig(string systemGUID)
         {
             // get systemguid from GET-Request
             string systemguid = Request.QueryString["sysguid"];
@@ -154,10 +162,8 @@ namespace HSA.InfoSys.Gui.Controllers
             this.ViewData["emails"] = config.Emails;
             this.ViewData["urls"] = config.URLS;
 
-
             //MembershipUser user = Membership.GetUser();
             //this.ViewData["useremail"] = user.Email;
-
 
             this.ViewData["navid"] = "mysystems";
             this.ViewData["systemguid"] = systemguid;
@@ -165,6 +171,10 @@ namespace HSA.InfoSys.Gui.Controllers
             return this.View();
         }
 
+        /// <summary>
+        /// Called on submitting the config search.
+        /// </summary>
+        /// <returns>The action result.</returns>
         [Authorize]
         [HttpPost]
         public ActionResult SearchConfigSubmit()
