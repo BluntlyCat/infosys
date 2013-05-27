@@ -31,13 +31,6 @@ namespace HSA.InfoSys.Common.DBManager
         private static IDBManager dbManager;
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="DBManager"/> class from being created.
-        /// </summary>
-        private DBManager()
-        {
-        }
-
-        /// <summary>
         /// Gets the DB manager and ensures that the configuration
         /// will be executed only once and that there is only one db manager.
         /// </summary>
@@ -108,6 +101,8 @@ namespace HSA.InfoSys.Common.DBManager
             var assembly = Assembly.GetAssembly(typeof(DBManager));
             var types = assembly.GetTypes();
 
+            Log.InfoFormat(Properties.Resources.DBMANAGER_EAGER_LOAD_THIS_ENTITIES, param);
+
             foreach (var p in param)
             {
                 foreach (var t in types)
@@ -135,7 +130,7 @@ namespace HSA.InfoSys.Common.DBManager
             {
                 session.Save(entity);
                 transaction.Commit();
-                Log.Info(Properties.Resources.DBMANAGER_ADD_OBJECT);
+                Log.Info(Properties.Resources.DBMANAGER_ADD_ENTITY);
             }
 
             return entity.EntityId;
@@ -154,7 +149,7 @@ namespace HSA.InfoSys.Common.DBManager
                 {
                     session.Update(entity);
                     transaction.Commit();
-                    Log.Info(Properties.Resources.DBMANAGER_UPDATE_OBJECT);
+                    Log.Info(Properties.Resources.DBMANAGER_UPDATE_ENTITY);
                 }
 
                 return entity.EntityId;
@@ -173,7 +168,7 @@ namespace HSA.InfoSys.Common.DBManager
                 {
                     session.Delete(entity);
                     transaction.Commit();
-                    Log.Info(Properties.Resources.DBMANAGER_UPDATE_OBJECT);
+                    Log.Info(Properties.Resources.DBMANAGER_DELETE_ENTITY);
                 }
             }
         }
@@ -217,9 +212,13 @@ namespace HSA.InfoSys.Common.DBManager
             using (ISession session = Session)
             using (ITransaction transaction = session.BeginTransaction())
             {
-                return session.QueryOver<OrgUnit>()
+                var orgUnit = session.QueryOver<OrgUnit>()
                     .Where(x => x.UserId == userID)
                     .List<OrgUnit>();
+
+                Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ORGUNIT_BY_USERID, orgUnit, userID);
+
+                return orgUnit;
             }
         }
 
@@ -261,7 +260,7 @@ namespace HSA.InfoSys.Common.DBManager
                 Data = data
             };
 
-            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SOURCE);
+            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_RESULT, result);
 
             return result;
         }
@@ -283,7 +282,7 @@ namespace HSA.InfoSys.Common.DBManager
                 NextSearch = DateTime.Now
             };
 
-            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SYSTEMSERVICE, orgUnit);
+            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_ORGUNIT, orgUnit);
 
             return orgUnit;
         }
@@ -318,7 +317,7 @@ namespace HSA.InfoSys.Common.DBManager
                 Scheduler = scheduler
             };
 
-            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SOURCE);
+            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_ORGUNITCONFIG, orgUnitConfig);
 
             return orgUnitConfig;
         }
@@ -340,7 +339,7 @@ namespace HSA.InfoSys.Common.DBManager
                 Hours = hours
             };
 
-            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SOURCE);
+            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SCHEDULER, scheduler);
 
             return scheduler;
         }
