@@ -39,7 +39,7 @@ namespace HSA.InfoSys.Gui.Controllers
             string userid = membershipuser.ProviderUserKey.ToString();
             int id = Convert.ToInt32(userid);
 
-            List<OrgUnit> orgUnits =  cc.GetOrgUnitsByUserID(id);
+            IList<OrgUnit> orgUnits =  cc.GetOrgUnitsByUserID(id);
 
             this.ViewData["orgUnits"] = orgUnits;
 

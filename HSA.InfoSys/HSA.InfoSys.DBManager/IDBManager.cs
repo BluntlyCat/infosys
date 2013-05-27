@@ -74,7 +74,7 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>A list of org units for the user id.</returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        List<OrgUnit> GetOrgUnitsByUserID(int userID);
+        IList<OrgUnit> GetOrgUnitsByUserID(int userID);
 
         /// <summary>
         /// Creates a component object.
