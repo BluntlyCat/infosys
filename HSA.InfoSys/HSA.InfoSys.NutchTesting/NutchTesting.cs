@@ -21,6 +21,9 @@ namespace HSA.InfoSys.Testing.NutchTesting
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
+            RegexManager m = new RegexManager();
+            m.AddUrl("www.google.de");
+
             ILog log = Logging.GetLogger("NutchTesting");
             
             bool running = true;
@@ -63,12 +66,14 @@ namespace HSA.InfoSys.Testing.NutchTesting
         /// Prints the help.
         /// </summary>
         private static void PrintHelp()
+
         {
+
+            
             Console.WriteLine(string.Empty);
             Console.WriteLine("Press h to see this help text.");
             Console.WriteLine("Press q to quit this application.");
             Console.WriteLine("Press s to start a new request to nutch server.");
-
             Console.WriteLine(string.Empty);
         }
     }
