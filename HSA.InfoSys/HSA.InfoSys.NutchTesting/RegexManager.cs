@@ -32,7 +32,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
         /// <param name="NewUrl">The new URL.</param>
         public void AddUrl(string NewUrl)
         {
-            string Regex = string.Format("\n{0}{1}",UrlPrefix,NewUrl);
+            string Regex = string.Format("{0}{1}",UrlPrefix,NewUrl);
             StreamWriter sw = File.AppendText(Path);
             sw.WriteLine(Regex);
             sw.Close();
