@@ -80,6 +80,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
                 sw.WriteLine(FilterRule);
             }
             RegexFilters.Add(FilterRule);
+            log.Info(string.Format("New FilterRule Added: {0}", FilterRule));
         }
 
 
