@@ -14,11 +14,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
 
         ILog log = Logging.GetLogger("NutchTesting");
 
-        /// <summary>
-        /// Put your Path here
-        /// </summary>
-        private const string YourPath = "C:/Users/A/Dropbox/Semester 6/Projekt/Tortoise/conf/";
-
+  
         /// <summary>
         /// The filter file
         /// </summary>
@@ -27,7 +23,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
         /// <summary>
         /// The path to your nutch - regex - urlfilter file 
         /// </summary>
-        private string Path = string.Format("{0}{1}", YourPath, FilterFile);
+        private string Path; 
 
         /// <summary>
         /// The URL prefix
@@ -45,8 +41,10 @@ namespace HSA.InfoSys.Testing.NutchTesting
         /// puts found filters into RegexFilters array.
         /// </summary>
         /// <exception cref="System.IO.FileNotFoundException"></exception>
-        public NutchRegexFilerManager()
+        public NutchRegexFilerManager(string YourPath)
         {
+            Path  = string.Format("{0}{1}", YourPath, FilterFile);
+
             if(!File.Exists(Path))
             {
                 log.Error(string.Format("File: regex-urlfilter.txt not found, check your Path. Actual Path: {0}", Path));
