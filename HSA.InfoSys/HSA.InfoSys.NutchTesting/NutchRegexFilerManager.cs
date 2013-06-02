@@ -43,11 +43,11 @@ namespace HSA.InfoSys.Testing.NutchTesting
         /// <exception cref="System.IO.FileNotFoundException"></exception>
         public NutchRegexFilerManager(string YourPath)
         {
-            Path  = string.Format("{0}{1}", YourPath, FilterFile);
+            Path = string.Format("{0}{1}", YourPath, FilterFile);
 
-            if(!File.Exists(Path))
+            if (!File.Exists(Path))
             {
-                log.Error(string.Format("File: regex-urlfilter.txt not found, check your Path. Actual Path: {0}", Path));
+                log.Error(string.Format("Your Path is not correctly set! Actual Path: {0}", Path));
                 throw new FileNotFoundException();
             }
 
