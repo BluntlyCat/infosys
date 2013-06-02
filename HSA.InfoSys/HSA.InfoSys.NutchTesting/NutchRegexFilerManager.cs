@@ -15,9 +15,19 @@ namespace HSA.InfoSys.Testing.NutchTesting
         ILog log = Logging.GetLogger("NutchTesting");
 
         /// <summary>
-        /// The path to your nutch - regex - urlfilter file
+        /// Put your Path here
         /// </summary>
-        private const string Path = "C:/Users/A/Dropbox/Semester 6/Projekt/Tortoise/conf/regex-urlfilter.txt";
+        private const string YourPath = "C:/Users/A/Dropbox/Semester 6/Projekt/Tortoise/conf/";
+
+        /// <summary>
+        /// The filter file
+        /// </summary>
+        private const string FilterFile = "regex-urlfilter.txt";
+
+        /// <summary>
+        /// The path to your nutch - regex - urlfilter file 
+        /// </summary>
+        private string Path = string.Format("{0}{1}", YourPath, FilterFile);
 
         /// <summary>
         /// The URL prefix
@@ -39,6 +49,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
         {
             if(!File.Exists(Path))
             {
+                log.Error(string.Format("File: regex-urlfilter.txt not found, check your Path. Actual Path: {0}", Path));
                 throw new FileNotFoundException();
             }
 
