@@ -9,6 +9,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
     using System.Threading;
     using HSA.InfoSys.Common.Logging;
     using log4net;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Implement your testing methods for Nutch here.
@@ -21,8 +22,14 @@ namespace HSA.InfoSys.Testing.NutchTesting
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
-            RegexManager m = new RegexManager();
-            m.AddUrl("www.google.de");
+
+            //Test für das Hinzufügen von Urls und deren Filter in die jeweiligen Nutch verzeichznisse
+            //
+           // string regex = "C:/Users/A/Dropbox/Semester 6/Projekt/Tortoise/conf/";
+           // string urls = "C:/Users/A/Dropbox/Semester 6/Projekt/Tortoise/urls/Nutch.txt";
+           // NutchUrlManager m = new NutchUrlManager(regex, urls);
+           // m.AddUrl("www.schokolade.de");
+          
 
             ILog log = Logging.GetLogger("NutchTesting");
             
