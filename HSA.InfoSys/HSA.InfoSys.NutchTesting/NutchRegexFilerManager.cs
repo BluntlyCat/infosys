@@ -73,14 +73,18 @@ namespace HSA.InfoSys.Testing.NutchTesting
         /// </summary>
         /// <param name="NewUrl">The new URL.</param>
         public void AddUrl(string NewUrl)
-        {
+        {   
             string FilterRule = string.Format("{0}{1}", UrlPrefix, NewUrl);
-            using (StreamWriter sw = File.AppendText(Path))
+            if (!RegexFilters.Contains(FilterRule))
             {
-                sw.WriteLine(FilterRule);
+                using (StreamWriter sw = File.AppendText(Path))
+                {
+                    sw.WriteLine(FilterRule);
+                }
+
+                RegexFilters.Add(FilterRule);
+                log.Info(string.Format("New FilterRule Added: {0}", FilterRule));
             }
-            RegexFilters.Add(FilterRule);
-            log.Info(string.Format("New FilterRule Added: {0}", FilterRule));
         }
 
 
