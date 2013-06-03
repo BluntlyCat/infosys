@@ -21,7 +21,7 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <summary>
         /// The logger.
         /// </summary>
-        private static readonly ILog Log = Logging.GetLogger("CrawlControllerHost");
+        private static readonly ILog Log = Logger<string>.GetLogger("CrawlControllerHost");
 
         /// <summary>
         /// The service host for communication between server and gui.

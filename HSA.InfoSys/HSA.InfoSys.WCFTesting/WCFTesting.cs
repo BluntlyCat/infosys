@@ -26,7 +26,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
-            ILog log = Logging.GetLogger("WCFTesting");
+            ILog log = Logger<string>.GetLogger("WCFTesting");
 
             bool running = true;
 

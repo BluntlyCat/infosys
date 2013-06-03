@@ -1,10 +1,11 @@
 ﻿// ------------------------------------------------------------------------
-// <copyright file="Logging.cs" company="HSA.InfoSys">
+// <copyright file="logger.cs" company="HSA.InfoSys">
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.Common.Logging
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using log4net;
@@ -14,48 +15,37 @@ namespace HSA.InfoSys.Common.Logging
     /// Handles requests for logger for a specific class,
     /// creates the configuration if there is none.
     /// </summary>
-    public class Logging
+    /// <typeparam name="T">The type of the key for the logger.</typeparam>
+    public static class Logger<T>
     {
         /// <summary>
-        /// The configuration for this logging instance.
+        /// The configuration of log4net.
         /// </summary>
         private static ICollection config;
 
         /// <summary>
         /// The base logger.
         /// </summary>
-        private static string baseLogger = "Logging";
+        private static Type baseLogger = typeof(Logger<T>);
 
         /// <summary>
-        /// The logger dictionary.
+        /// The logger dictionary
         /// </summary>
-        private static Dictionary<string, ILog> logger = new Dictionary<string, ILog>();
+        private static Dictionary<T, ILog> logger = new Dictionary<T, ILog>();
 
         /// <summary>
         /// Gets the logger and add a new logger if not exist.
         /// </summary>
         /// <param name="name">The name of the new logger.</param>
         /// <returns>The ILog logger.</returns>
-        public static ILog GetLogger(string name)
+        public static ILog GetLogger(T name)
         {
             if (config == null)
             {
                 CreateBaseLogger();
             }
 
-            if (string.IsNullOrEmpty(name))
-            {
-                return logger[baseLogger];
-            }
-
-            if (logger.ContainsKey(name) == false)
-            {
-                AddLogger(name);
-            }
-            else
-            {
-                logger[baseLogger].DebugFormat(Properties.Resources.LOGGING_LOGGER_EXISTS, name);
-            }
+            AddLogger(name);
 
             return logger[name];
         }
@@ -63,25 +53,29 @@ namespace HSA.InfoSys.Common.Logging
         /// <summary>
         /// Creates the base logger and config.
         /// </summary>
-        private static void CreateBaseLogger()
+        public static void CreateBaseLogger()
         {
             config = XmlConfigurator.Configure();
+            Logger<Type>.AddLogger(baseLogger);
 
-            AddLogger(baseLogger);
-            
-            logger[baseLogger].Debug(Properties.Resources.LOGGING_BASELOGGER_CREATED);
+            Logger<Type>.logger[baseLogger].Debug("Base logger successfully created");
         }
 
         /// <summary>
         /// Adds the logger.
         /// </summary>
         /// <param name="name">The name of the logger.</param>
-        private static void AddLogger(string name)
+        private static void AddLogger(T name)
         {
-            var log = log4net.LogManager.GetLogger(name);
-
-            logger.Add(name, log);
-            logger[baseLogger].DebugFormat(Properties.Resources.LOGGING_NEW_LOGGER_ADDED, name);
+            if (Logger<T>.logger.ContainsKey(name) == false)
+            {
+                Logger<T>.logger.Add(name, LogManager.GetLogger(typeof(T)));
+                Logger<Type>.logger[baseLogger].DebugFormat("Added new logger [{0}]", name);
+            }
+            else
+            {
+                Logger<Type>.logger[baseLogger].DebugFormat("Logger already exists [{0}]", name);
+            }
         }
     }
 }

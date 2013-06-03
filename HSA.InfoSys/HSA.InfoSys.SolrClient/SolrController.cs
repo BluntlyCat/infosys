@@ -17,7 +17,7 @@ namespace HSA.InfoSys.Common.SolrClient
         /// <summary>
         /// The logger.
         /// </summary>
-        private static readonly ILog Log = Logging.GetLogger("CrawlController");
+        private static readonly ILog Log = Logger<string>.GetLogger("CrawlController");
 
         /// <summary>
         /// Our delegate for invoking an async callback.

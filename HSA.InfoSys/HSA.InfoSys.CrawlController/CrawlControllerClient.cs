@@ -19,7 +19,7 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <summary>
         /// The logger.
         /// </summary>
-        private static readonly ILog Log = Logging.GetLogger("CrawlControllerClient");
+        private static readonly ILog Log = Logger<string>.GetLogger("CrawlControllerClient");
 
         /// <summary>
         /// Gets the client proxy.

@@ -5,6 +5,7 @@
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.Common.CrawlController
 {
+    using System.Collections.Generic;
     using HSA.InfoSys.Common.Logging;
     using log4net;
 
@@ -18,7 +19,21 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <summary>
         /// The logger.
         /// </summary>
-        private static readonly ILog Log = Logging.GetLogger("CrawlController");
+        private static readonly ILog Log = Logger<string>.GetLogger("CrawlController");
+
+        /// <summary>
+        /// The services list.
+        /// </summary>
+        private List<IService> services = new List<IService>();
+
+        /// <summary>
+        /// Registers a new service.
+        /// </summary>
+        /// <param name="service">The new service.</param>
+        public void RegisterService(IService service)
+        {
+            this.services.Add(service);
+        }
 
         /// <summary>
         /// Starts the services.
@@ -26,6 +41,11 @@ namespace HSA.InfoSys.Common.CrawlController
         public void StartServices()
         {
             Log.Info(Properties.Resources.CRAWL_CONTROLLER_START);
+
+            foreach (var service in this.services)
+            {
+                service.StartService();
+            }
         }
 
         /// <summary>
@@ -34,6 +54,11 @@ namespace HSA.InfoSys.Common.CrawlController
         public void StopServices()
         {
             Log.Info(Properties.Resources.CRAWL_CONTROLLER_SHUTDOWN);
+
+            foreach (var service in this.services)
+            {
+                service.StopService();
+            }
         }
     }
 }

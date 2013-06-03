@@ -29,9 +29,9 @@ namespace HSA.InfoSys.Testing.NutchTesting
            // string urls = "C:/Users/A/Dropbox/Semester 6/Projekt/Tortoise/urls/Nutch.txt";
            // NutchUrlManager m = new NutchUrlManager(regex, urls);
            // m.AddUrl("www.schokolade.de");
-          
 
-            ILog log = Logging.GetLogger("NutchTesting");
+
+            ILog log = Logger<string>.GetLogger("NutchTesting");
             
             bool running = true;
            

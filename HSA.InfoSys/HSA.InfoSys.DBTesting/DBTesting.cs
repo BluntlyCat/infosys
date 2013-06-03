@@ -23,7 +23,7 @@ namespace HSA.InfoSys.Testing.DBTesting
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
-            ILog log = Logging.GetLogger("WCFTesting");
+            ILog log = Logger<string>.GetLogger("WCFTesting");
 
             IDBManager dbManager = DBManager.Manager;
             bool running = true;

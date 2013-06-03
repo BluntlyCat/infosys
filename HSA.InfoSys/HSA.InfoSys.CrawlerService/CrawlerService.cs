@@ -11,6 +11,7 @@ namespace HSA.InfoSys.CrawlerService
     using HSA.InfoSys.Common.DBManager;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.SolrClient;
+    using HSA.InfoSys.Scheduling;
     using log4net;
 
     /// <summary>
@@ -22,17 +23,22 @@ namespace HSA.InfoSys.CrawlerService
         /// <summary>
         /// The logger.
         /// </summary>
-        private static readonly ILog Log = Logging.GetLogger("CrawlerService");
+        private static readonly ILog Log = Logger<string>.GetLogger("CrawlerService");
 
         /// <summary>
         /// The running flag for this server.
         /// </summary>
-        private static bool running;
+        private bool running;
 
         /// <summary>
-        /// The controller for the crawler.
+        /// The WCF controller for the crawler service.
         /// </summary>
         private CrawlControllerHost controllerHost;
+
+        /// <summary>
+        /// The controller for the crawler service.
+        /// </summary>
+        private CrawlController controller;
 
         /// <summary>
         /// Main function.
@@ -52,16 +58,12 @@ namespace HSA.InfoSys.CrawlerService
             Log.Debug(Properties.Resources.WEB_CRAWLER_START_SERVER);
             Log.Info(Properties.Resources.WEB_CRAWLER_QUIT_MESSAGE);
 
-            Addresses.Initialize();
-            this.controllerHost = new CrawlControllerHost();
+            this.InitializeControllerHost();
+            this.InitializeController();
 
-            this.controllerHost.OpenWCFHost<DBManager, IDBManager>();
-            this.controllerHost.OpenWCFHost<CrawlController, ICrawlController>();
-            this.controllerHost.OpenWCFHost<SolrController, ISolrController>();
+            this.running = true;
 
-            running = true;
-
-            while (running)
+            while (this.running)
             {
                 if (Console.KeyAvailable)
                 {
@@ -84,6 +86,35 @@ namespace HSA.InfoSys.CrawlerService
         }
 
         /// <summary>
+        /// Initializes the controller host.
+        /// </summary>
+        private void InitializeControllerHost()
+        {
+            Addresses.Initialize();
+            this.controllerHost = new CrawlControllerHost();
+
+            this.controllerHost.OpenWCFHost<DBManager, IDBManager>();
+            this.controllerHost.OpenWCFHost<CrawlController, ICrawlController>();
+            this.controllerHost.OpenWCFHost<SolrController, ISolrController>();
+        }
+
+        /// <summary>
+        /// Initializes the controller.
+        /// </summary>
+        private void InitializeController()
+        {
+            this.controller = new CrawlController();
+        }
+
+        /// <summary>
+        /// Registers the services.
+        /// </summary>
+        private void RegisterServices()
+        {
+            this.controller.RegisterService(new Scheduler());
+        }
+
+        /// <summary>
         /// Shutdown this instance.
         /// </summary>
         private void ShutdownCrawler()
@@ -92,7 +123,7 @@ namespace HSA.InfoSys.CrawlerService
             {
                 this.controllerHost.CloseWCFHosts();
 
-                running = false;
+                this.running = false;
             }
         }
     }

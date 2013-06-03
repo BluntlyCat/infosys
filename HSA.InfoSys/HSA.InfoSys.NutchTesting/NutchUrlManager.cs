@@ -12,8 +12,8 @@ namespace HSA.InfoSys.Testing.NutchTesting
 
     class NutchUrlManager
     {
-        
-        ILog log = Logging.GetLogger("NutchTesting");
+
+        ILog log = Logger<string>.GetLogger("NutchTesting");
 
         private string  NutchSeedUrlPath;
 

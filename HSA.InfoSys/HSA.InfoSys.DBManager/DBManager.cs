@@ -23,7 +23,7 @@ namespace HSA.InfoSys.Common.DBManager
         /// <summary>
         /// The logger for db manager.
         /// </summary>
-        private static readonly ILog Log = Logging.GetLogger("DBManager");
+        private static readonly ILog Log = Logger<string>.GetLogger("DBManager");
 
         /// <summary>
         /// The database manager.

@@ -1,5 +1,5 @@
 ﻿// ------------------------------------------------------------------------
-// <copyright file="AssemblyInfo.cs" company="HSA.InfoSys">
+// <copyright file="AssemblyInfo.cs" company="Miitsoft">
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
@@ -10,11 +10,11 @@ using System.Runtime.InteropServices;
 // Allgemeine Informationen über eine Assembly werden über die folgenden 
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die mit einer Assembly verknüpft sind.
-[assembly: AssemblyTitle("HSA.InfoSys.Scheduler")]
+[assembly: AssemblyTitle("Timing")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("HSA.InfoSys.Scheduler")]
+[assembly: AssemblyProduct("Timing")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -25,7 +25,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM verfügbar gemacht wird
-[assembly: Guid("16f3a01b-abda-46d1-ab10-f13678a4d62b")]
+[assembly: Guid("176b0cf4-047e-43aa-9c81-53af926b5fb3")]
 
 // Versionsinformationen für eine Assembly bestehen aus den folgenden vier Werten:
 //

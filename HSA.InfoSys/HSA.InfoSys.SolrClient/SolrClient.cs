@@ -26,7 +26,7 @@ namespace HSA.InfoSys.Common.SolrClient
         /// <summary>
         /// The logger for SolrClient.
         /// </summary>
-        private static readonly ILog Log = Logging.GetLogger("SolrClient");
+        private static readonly ILog Log = Logger<string>.GetLogger("SolrClient");
 
         /// <summary>
         /// The solr socket.

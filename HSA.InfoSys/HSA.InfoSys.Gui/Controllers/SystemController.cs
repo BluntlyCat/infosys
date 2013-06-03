@@ -24,7 +24,7 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <summary>
         /// The logger.
         /// </summary>
-        private static readonly ILog Log = Logging.GetLogger("SystemController");
+        private static readonly ILog Log = Logger<string>.GetLogger("SystemController");
  
         /// <summary>
         /// Called when the home page is loading.

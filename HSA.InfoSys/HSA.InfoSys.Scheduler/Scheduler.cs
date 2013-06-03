@@ -3,9 +3,10 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Scheduler
+namespace HSA.InfoSys.Scheduling
 {
     using System.Threading;
+    using HSA.InfoSys.Common.CrawlController;
     using HSA.InfoSys.Common.DBManager;
     using HSA.InfoSys.Common.Logging;
     using log4net;
@@ -14,17 +15,12 @@ namespace HSA.InfoSys.Scheduler
     /// This class watches the scheduling objects in database
     /// and runs a task when necessary.
     /// </summary>
-    public class Scheduler
+    public class Scheduler : Service
     {
         /// <summary>
         /// The thread logger.
         /// </summary>
-        private static readonly ILog Log = Logging.GetLogger("Scheduler");
-
-        /// <summary>
-        /// The scheduler thread.
-        /// </summary>
-        private Thread schedulerThread;
+        private static readonly ILog Log = Logger<string>.GetLogger("Scheduler");
 
         /// <summary>
         /// The database manager.
@@ -32,41 +28,19 @@ namespace HSA.InfoSys.Scheduler
         private IDBManager dbManager;
 
         /// <summary>
-        /// The run flag for running this thread.
-        /// </summary>
-        private bool run = true;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="Scheduler"/> class.
         /// </summary>
         public Scheduler()
         {
-            this.schedulerThread = new Thread(new ThreadStart(this.Run));
             this.dbManager = DBManager.Manager;
-        }
-
-        /// <summary>
-        /// Starts this instance.
-        /// </summary>
-        public void Start()
-        {
-            this.schedulerThread.Start();
-        }
-
-        /// <summary>
-        /// Stops this instance.
-        /// </summary>
-        public void Stop()
-        {
-            this.run = false;
         }
 
         /// <summary>
         /// Runs this instance.
         /// </summary>
-        private void Run()
+        protected override void Run()
         {
-            while (this.run)
+            while (this.Running)
             {
             }
         }

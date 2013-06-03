@@ -22,7 +22,7 @@ namespace HSA.InfoSys.Testing.SolrTesting
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
-            ILog log = Logging.GetLogger("SolrTesting");
+            ILog log = Logger<string>.GetLogger("SolrTesting");
 
             SolrClient client = new SolrClient(Properties.Settings.Default.SOLR_PORT, Properties.Settings.Default.SOLR_HOST);
             bool running = true;

@@ -1,4 +1,8 @@
-﻿
+﻿// ------------------------------------------------------------------------
+// <copyright file="NutchRegexFilerManager.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
 namespace HSA.InfoSys.Testing.NutchTesting
 {
     using System;
@@ -12,7 +16,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
     class NutchRegexFilerManager
     {
 
-        ILog log = Logging.GetLogger("NutchTesting");
+        ILog log = Logger<string>.GetLogger("NutchTesting");
 
   
         /// <summary>

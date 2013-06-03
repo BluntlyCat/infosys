@@ -19,7 +19,7 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <summary>
         /// The logger for the home controller
         /// </summary>
-        private static readonly ILog Log = Logging.GetLogger("HomeController");
+        private static readonly ILog Log = Logger<string>.GetLogger("HomeController");
 
         /// <summary>
         /// Shows the home page.
