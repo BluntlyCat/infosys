@@ -1,5 +1,5 @@
 ﻿// ------------------------------------------------------------------------
-// <copyright file="Scheduler.cs" company="HSA.InfoSys">
+// <copyright file="SchedulerTime.cs" company="HSA.InfoSys">
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
@@ -14,7 +14,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
     /// for a component
     /// </summary>
     [DataContract]
-    public class Scheduler : Entity
+    public class SchedulerTime : Entity
     {
         /// <summary>
         /// Gets or sets the time stamp.

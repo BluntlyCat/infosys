@@ -104,6 +104,9 @@ namespace HSA.InfoSys.CrawlerService
         private void InitializeController()
         {
             this.controller = new CrawlController();
+            this.RegisterServices();
+
+            this.controller.StartServices();
         }
 
         /// <summary>
@@ -121,6 +124,7 @@ namespace HSA.InfoSys.CrawlerService
         {
             if (this.controllerHost != null)
             {
+                this.controller.StopServices(true);
                 this.controllerHost.CloseWCFHosts();
 
                 this.running = false;

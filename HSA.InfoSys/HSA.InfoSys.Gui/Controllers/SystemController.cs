@@ -151,7 +151,7 @@ namespace HSA.InfoSys.Gui.Controllers
             // get SystemConfig, OrgUnitConfig, Scheduler
             var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnitConfig", "Scheduler")) as OrgUnit;
             var config = orgUnit.OrgUnitConfig;
-            var scheduler = config.Scheduler;
+            var scheduler = config.SchedulerTime;
 
             // set all config data for view
             this.ViewData["schedulerActive"] = config.SchedulerActive;

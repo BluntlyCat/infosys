@@ -19,7 +19,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
     [KnownType(typeof(Result))]
     [KnownType(typeof(OrgUnit))]
     [KnownType(typeof(OrgUnitConfig))]
-    [KnownType(typeof(Scheduler))]
+    [KnownType(typeof(SchedulerTime))]
     public abstract class Entity
     {
         /// <summary>

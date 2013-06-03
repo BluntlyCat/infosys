@@ -51,13 +51,14 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <summary>
         /// Stops the services.
         /// </summary>
-        public void StopServices()
+        /// <param name="cancel">if set to <c>true</c> [cancel].</param>
+        public void StopServices(bool cancel = false)
         {
             Log.Info(Properties.Resources.CRAWL_CONTROLLER_SHUTDOWN);
 
             foreach (var service in this.services)
             {
-                service.StopService();
+                service.StopService(cancel);
             }
         }
     }

@@ -59,7 +59,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
         /// The scheduler.
         /// </value>
         [DataMember]
-        public virtual Scheduler Scheduler { get; set; }
+        public virtual SchedulerTime SchedulerTime { get; set; }
         
         /// <summary>
         /// Gets or sets a value indicating whether the scheduler is active or not.
@@ -83,9 +83,9 @@ namespace HSA.InfoSys.Common.DBManager.Data
             {
                 foreach (var type in types)
                 {
-                    if (type.Equals(typeof(Scheduler).Name) && this.Scheduler != null)
+                    if (type.Equals(typeof(SchedulerTime).Name) && this.SchedulerTime != null)
                     {
-                        this.Scheduler = this.Scheduler.Unproxy(types) as Scheduler;
+                        this.SchedulerTime = this.SchedulerTime.Unproxy(types) as SchedulerTime;
                     }
                 }
             }
@@ -108,7 +108,7 @@ namespace HSA.InfoSys.Common.DBManager.Data
                 this.URLActive,
                 this.Emails,
                 this.EmailActive,
-                this.Scheduler,
+                this.SchedulerTime,
                 this.SchedulerActive);
         }
     }

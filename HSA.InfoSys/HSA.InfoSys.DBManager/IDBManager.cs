@@ -77,6 +77,12 @@ namespace HSA.InfoSys.Common.DBManager
         IList<OrgUnit> GetOrgUnitsByUserID(int userID);
 
         /// <summary>
+        /// Gets the scheduler times.
+        /// </summary>
+        /// <returns>A list of all scheduler times.</returns>
+        IList<SchedulerTime> GetSchedulerTimes();
+
+        /// <summary>
         /// Creates a component object.
         /// </summary>
         /// <param name="name">The name.</param>
@@ -132,7 +138,7 @@ namespace HSA.InfoSys.Common.DBManager
             bool urlActive,
             bool emailNotification,
             bool schedulerActive,
-            Scheduler scheduler);
+            SchedulerTime scheduler);
 
         /// <summary>
         /// Creates a Scheduler object
@@ -144,6 +150,6 @@ namespace HSA.InfoSys.Common.DBManager
         /// </returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        Scheduler CreateScheduler(int days, int hours);
+        SchedulerTime CreateScheduler(int days, int hours);
     }
 }

@@ -25,7 +25,8 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <summary>
         /// Stops the services.
         /// </summary>
+        /// <param name="cancel">if set to <c>true</c> [cancel].</param>
         [OperationContract]
-        void StopServices();
+        void StopServices(bool cancel = false);
     }
 }

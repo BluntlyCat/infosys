@@ -223,6 +223,20 @@ namespace HSA.InfoSys.Common.DBManager
         }
 
         /// <summary>
+        /// Gets the scheduler times.
+        /// </summary>
+        /// <returns>
+        /// A list of all scheduler times.
+        /// </returns>
+        public IList<SchedulerTime> GetSchedulerTimes()
+        {
+            using (ISession session = Session)
+            {
+                return session.QueryOver<SchedulerTime>().List<SchedulerTime>();
+            }
+        }
+
+        /// <summary>
         /// Creates a component object.
         /// </summary>
         /// <param name="componentName">Name of the component.</param>
@@ -305,7 +319,7 @@ namespace HSA.InfoSys.Common.DBManager
             bool urlActive,
             bool emailNotification,
             bool schedulerActive,
-            Scheduler scheduler)
+            SchedulerTime scheduler)
         {
             var orgUnitConfig = new OrgUnitConfig
             {
@@ -314,7 +328,7 @@ namespace HSA.InfoSys.Common.DBManager
                 URLActive = urlActive,
                 EmailActive = emailNotification,
                 SchedulerActive = schedulerActive,
-                Scheduler = scheduler
+                SchedulerTime = scheduler
             };
 
             Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_ORGUNITCONFIG, orgUnitConfig);
@@ -330,9 +344,9 @@ namespace HSA.InfoSys.Common.DBManager
         /// <returns>
         /// The created Scheduler object.
         /// </returns>
-        public Scheduler CreateScheduler(int days, int hours)
+        public SchedulerTime CreateScheduler(int days, int hours)
         {
-            var scheduler = new Scheduler
+            var scheduler = new SchedulerTime
             {
                 Begin = DateTime.Now,
                 Days = days,

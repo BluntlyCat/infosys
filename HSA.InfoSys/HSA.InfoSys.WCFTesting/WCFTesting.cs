@@ -108,7 +108,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
                                 ////var config = CrawlControllerClient<IDBManager>.ClientProxy.CreateOrgUnitConfig("Paprika, Salz, Pfeffer, Putensalami, Streichkäse, Ketchup, Butterkäse, Gurken, Tomaten", "wurst@semmel.me", false, false, false, null);
                                 var scheduler = CrawlControllerClient<IDBManager>.ClientProxy.CreateScheduler(1, 2);
                                 var config = CrawlControllerClient<IDBManager>.ClientProxy.GetEntity(new Guid("4427be10-c455-4643-bf17-a1c8013eafea")) as OrgUnitConfig;
-                                config.Scheduler = scheduler;
+                                config.SchedulerTime = scheduler;
                                 CrawlControllerClient<IDBManager>.ClientProxy.UpdateEntity(config);
                                 break;
                         }

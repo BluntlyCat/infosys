@@ -70,6 +70,14 @@ namespace HSA.InfoSys.Common.Timing
         public Time Time { get; private set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="Countdown"/> is canceled.
+        /// </summary>
+        /// <value>
+        /// Cancel is <c>true</c> if cancels; otherwise, <c>false</c>.
+        /// </value>
+        private bool Cancel { get; set; }
+
+        /// <summary>
         /// Sets the time to repeat.
         /// </summary>
         /// <returns>A new time instance for next countdown.</returns>
@@ -122,6 +130,20 @@ namespace HSA.InfoSys.Common.Timing
         }
 
         /// <summary>
+        /// Sets the time to repeat.
+        /// </summary>
+        /// <param name="timeSpan">The time span.</param>
+        /// <param name="type">The type.</param>
+        /// <param name="repeat">if set to <c>true</c> [repeat].</param>
+        /// <returns>
+        /// A new time instance for next countdown.
+        /// </returns>
+        public Time SetTimeToRepeat(TimeSpan timeSpan, TypeOfTime type, bool repeat)
+        {
+            return new Time(timeSpan, type, repeat);
+        }
+
+        /// <summary>
         /// Starts this instance.
         /// </summary>
         /// <param name="time">The time.</param>
@@ -138,16 +160,20 @@ namespace HSA.InfoSys.Common.Timing
                 this.countdown = new Thread(new ThreadStart(this.Run));
                 this.countdown.Start();
             }
-
-            errorMessage = Properties.Resources.TIME_VALIDATION_ERROR_INVALID_TIME_FORMAT;
+            else
+            {
+                errorMessage = Properties.Resources.TIME_VALIDATION_ERROR_INVALID_TIME_FORMAT;
+            }
         }
 
         /// <summary>
         /// Stops this instance.
         /// </summary>
-        public void Stop()
+        /// <param name="cancel">if set to <c>true</c> [cancel].</param>
+        public void Stop(bool cancel = false)
         {
             Log.Info(Properties.Resources.LOG_COUNTDOWN_STOP_COUNTDOWN);
+            this.Cancel = cancel;
             this.Active = false;
         }
 
@@ -160,7 +186,11 @@ namespace HSA.InfoSys.Common.Timing
 
             while (this.Active && this.Time.RemainTime.Time.Ticks > 0)
             {
-                this.OnTick();
+                if (this.OnTick != null)
+                {
+                    this.OnTick();
+                }
+                
                 this.Time.RemainTime.Time = this.Time.Endtime.Subtract(DateTime.Now);
                 Thread.Sleep(500);
             }
@@ -168,7 +198,11 @@ namespace HSA.InfoSys.Common.Timing
             Log.Debug(Properties.Resources.LOG_COUNTDOWN_THREAD_ENDS);
 
             this.ResetValues();
-            this.OnZero();
+
+            if (!this.Cancel)
+            {
+                this.OnZero();
+            }
         }
 
         /// <summary>

@@ -26,7 +26,7 @@ namespace HSA.InfoSys.Common.Logging
         /// <summary>
         /// The base logger.
         /// </summary>
-        private static Type baseLogger = typeof(Logger<T>);
+        private static Type baseLogger = typeof(Logger<Type>);
 
         /// <summary>
         /// The logger dictionary

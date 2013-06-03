@@ -48,6 +48,21 @@ namespace HSA.InfoSys.Common.Timing
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Time"/> class.
+        /// </summary>
+        /// <param name="timeSpan">The time span.</param>
+        /// <param name="type">The type.</param>
+        /// <param name="repeat">if set to <c>true</c> [repeat].</param>
+        public Time(TimeSpan timeSpan, TypeOfTime type, bool repeat)
+        {
+            this.StartTime = DateTime.Now;
+            this.Endtime = DateTime.Now.Add(timeSpan);
+            this.RemainTime = new RemainTime(this.Endtime.Subtract(this.StartTime));
+            this.TypeOfTime = type;
+            this.Repeat = repeat;
+        }
+
+        /// <summary>
         /// Gets the start time.
         /// </summary>
         /// <value>

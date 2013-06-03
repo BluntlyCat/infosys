@@ -33,8 +33,8 @@
     </joined-subclass>
 
     <!-- Scheduler -->
-    <joined-subclass name="Scheduler" table="Scheduler">
-      <key column="SchedulerGUID" />
+    <joined-subclass name="SchedulerTime" table="SchedulerTime">
+      <key column="SchedulerTimeGUID" />
 
       <property name="Days" type="int" not-null="true"/>
       <property name="Hours" type="int" not-null="true"/>
@@ -57,7 +57,7 @@
     <joined-subclass name="OrgUnitConfig" table="OrgUnitConfig">
       <key column="OrgUnitConfigGUID" />
 
-      <many-to-one name="Scheduler" class="Scheduler" column="SchedulerGUID" lazy="proxy" cascade="save-update" />
+      <many-to-one name="SchedulerTime" class="SchedulerTime" column="SchedulerTimeGUID" lazy="proxy" cascade="save-update" />
 
       <property name="Emails" type="string">
         <column name="Emails" sql-type="text" not-null="false"/>
