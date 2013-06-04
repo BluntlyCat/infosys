@@ -78,7 +78,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
 
 
         /// <summary>
-        /// Gets the urls.
+        /// Gets the URLS.
         /// </summary>
         /// <returns></returns>
         public List<string> GetUrls()

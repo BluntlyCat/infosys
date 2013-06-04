@@ -42,6 +42,11 @@ namespace HSA.InfoSys.Scheduling
         private Dictionary<Guid, SchedulerTime> schedulerTimes = new Dictionary<Guid, SchedulerTime>();
 
         /// <summary>
+        /// The time span for repeating the jobDispatcherTimer.
+        /// </summary>
+        private TimeSpan dispatcherTime;
+
+        /// <summary>
         /// The job dispatcher timer.
         /// </summary>
         private Countdown jobDispatcherTimer;
@@ -51,10 +56,14 @@ namespace HSA.InfoSys.Scheduling
         /// </summary>
         public Scheduler()
         {
+            Log.DebugFormat(Properties.Resources.LOG_INSTANCIATE_NEW_SCHEDULER, this.GetType().Name);
+
             this.dbManager = DBManager.Manager;
 
             this.jobDispatcherTimer = new Countdown();
             this.jobDispatcherTimer.OnZero += this.JobDispatcherTimer_OnZero;
+
+            this.dispatcherTime = new TimeSpan(0, Properties.Settings.Default.JOB_DISPATCHER_TIME, 0);
         }
 
         /// <summary>
@@ -62,9 +71,10 @@ namespace HSA.InfoSys.Scheduling
         /// </summary>
         public override void StartService()
         {
+            Log.DebugFormat(Properties.Resources.LOG_START_SERVICE, this.GetType().Name);
+
             var errorMessage = string.Empty;
-            var timeSpan = new TimeSpan(0, Properties.Settings.Default.JOB_DISPATCHER_TIME, 0);
-            var time = new Time(timeSpan, TypeOfTime.Timespan, true);
+            var time = new Time(this.dispatcherTime, TypeOfTime.Timespan, true);
 
             this.jobDispatcherTimer.Start(time, out errorMessage);
 
@@ -82,8 +92,10 @@ namespace HSA.InfoSys.Scheduling
         /// <param name="cancel">if set to <c>true</c> [cancel].</param>
         public override void StopService(bool cancel = false)
         {
+            Log.DebugFormat(Properties.Resources.LOG_STOP_SERVICE, this.GetType().Name);
+
             this.jobDispatcherTimer.Stop(cancel);
-            base.StopService();
+            base.StopService(cancel);
         }
 
         /// <summary>
@@ -102,16 +114,15 @@ namespace HSA.InfoSys.Scheduling
         /// </summary>
         private void JobDispatcherTimer_OnZero()
         {
-            Log.Debug("Job dispatcher timer reached zero.");
+            Log.Debug(Properties.Resources.LOG_DISPATCHER_ZERO);
 
             var errorMessage = string.Empty;
             this.FetchJobsFromDB();
 
-            var repeatTime = new TimeSpan(0, Properties.Settings.Default.JOB_DISPATCHER_TIME, 0);
-            var time = this.jobDispatcherTimer.SetTimeToRepeat(repeatTime, TypeOfTime.Timespan, true);
+            var time = this.jobDispatcherTimer.SetTimeToRepeat(this.dispatcherTime, TypeOfTime.Timespan, true);
             this.jobDispatcherTimer.Start(time, out errorMessage);
 
-            Log.Debug("Job dispatcher timer restarted.");
+            Log.Debug(Properties.Resources.LOG_RESTART_DISPATCHER);
 
             if (!errorMessage.Equals(string.Empty))
             {
@@ -124,15 +135,21 @@ namespace HSA.InfoSys.Scheduling
         /// </summary>
         private void FetchJobsFromDB()
         {
-            Log.Debug("Fetch jobs from database.");
+            Log.Debug(Properties.Resources.LOG_FETCH_JOBS_FROM_DB);
 
             IList<SchedulerTime> scheduler = this.dbManager.GetSchedulerTimes();
+            Log.DebugFormat(Properties.Resources.LOG_GOT_SCHEDULER_LIST_FROM_DB, scheduler);
 
             foreach (var time in scheduler)
             {
                 if (!this.schedulerTimes.ContainsKey(time.EntityId))
                 {
                     this.schedulerTimes.Add(time.EntityId, time);
+                    Log.DebugFormat(Properties.Resources.LOG_SCHEDULER_ADD, time);
+                }
+                else
+                {
+                    Log.Debug(Properties.Resources.LOG_SCHEDULER_ALREADY_EXIST);
                 }
             }
         }

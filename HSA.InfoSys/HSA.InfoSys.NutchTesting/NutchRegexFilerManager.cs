@@ -25,7 +25,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
         private const string FilterFile = "regex-urlfilter.txt";
 
         /// <summary>
-        /// The path to your nutch - regex - urlfilter file 
+        /// The path to your nutch - regex - url filter file 
         /// </summary>
         private string Path; 
 
@@ -36,7 +36,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
 
 
         /// <summary>
-        /// Array contains all flters
+        /// Array contains all filters
         /// </summary>
         private List<string> RegexFilters;
 

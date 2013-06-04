@@ -45,7 +45,7 @@ namespace HSA.InfoSys.Common.CrawlController
         /// </summary>
         public virtual void StartService()
         {
-            Log.Debug("Start service");
+            Log.Debug(Properties.Resources.LOG_START_SERVICE);
 
             this.Running = true;
             this.serviceThread.Start();
@@ -57,7 +57,7 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <param name="cancel">if set to <c>true</c> [cancel].</param>
         public virtual void StopService(bool cancel = false)
         {
-            Log.Debug("Stop service");
+            Log.Debug(Properties.Resources.LOG_STOP_SERVICE);
 
             this.Running = false;
         }
