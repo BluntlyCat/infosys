@@ -97,10 +97,12 @@ namespace HSA.InfoSys.Testing.WCFTesting
                                 break;
 
                             case ConsoleKey.T:
-                                var entities = CrawlControllerClient<IDBManager>.ClientProxy
-                                    .GetEntity(new Guid("01b5e81b-fa58-47a5-b4af-a1c8013b55ff")) as OrgUnit;
+                                var config = new OrgUnitConfig();
+                                config.SchedulerActive = true;
+                                config.Time = 2;
+                                config.Days = 1;
 
-                                log.InfoFormat("Entity: [{0}]", entities);
+                                CrawlControllerClient<IScheduler>.ClientProxy.AddOrgUnitConfig(config);
                                 break;
 
                             case ConsoleKey.U:

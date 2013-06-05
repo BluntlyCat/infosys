@@ -213,6 +213,9 @@ namespace HSA.InfoSys.Common.Timing
         /// </summary>
         private void Run()
         {
+#warning OrgUnitConfig beim Start aus DB laden.
+#warning Suchvorgang muss noch gestartet werden.
+#warning NextSearch in OrgConfig setzen
             Log.Debug(Properties.Resources.LOG_COUNTDOWN_THREAD_IS_RUNNING);
 
             while (this.Active && this.Time.RemainTime.Time.Ticks > 0)
@@ -223,7 +226,7 @@ namespace HSA.InfoSys.Common.Timing
                 }
                 
                 this.Time.RemainTime.Time = this.Time.Endtime.Subtract(DateTime.Now);
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
             }
 
             Log.Debug(Properties.Resources.LOG_COUNTDOWN_THREAD_ENDS);

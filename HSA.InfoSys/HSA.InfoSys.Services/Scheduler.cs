@@ -135,6 +135,16 @@ namespace HSA.InfoSys.Common.Services
         }
 
         /// <summary>
+        /// Occurs when [tick].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        public void Countdown_OnTick(object sender)
+        {
+            var job = sender as Countdown;
+            Log.DebugFormat("Remaintime: [{0}]", job.Time.RemainTime);
+        }
+
+        /// <summary>
         /// Occurs when [on error].
         /// </summary>
         /// <param name="sender">The sender.</param>
@@ -143,6 +153,24 @@ namespace HSA.InfoSys.Common.Services
         {
             var job = sender as Countdown;
             Log.DebugFormat(Properties.Resources.LOG_TIME_VALIDATION_ERROR, job, error);
+        }
+
+        /// <summary>
+        /// Stops all jobs.
+        /// </summary>
+        /// <param name="cancel">if set to <c>true</c> [cancel].</param>
+        public override void StopService(bool cancel = false)
+        {
+            mutex.WaitOne();
+
+            foreach (var job in this.jobs.Values)
+            {
+                job.Stop(cancel);
+            }
+
+            mutex.ReleaseMutex();
+
+            base.StopService(cancel);
         }
 
         /// <summary>
@@ -193,6 +221,7 @@ namespace HSA.InfoSys.Common.Services
                     var countdown = new Countdown(config, time);
 
                     countdown.OnZero += this.Countdown_OnZero;
+                    countdown.OnTick += Countdown_OnTick;
                     countdown.OnError += this.Countdown_OnError;
 
                     if (countdown.Start())
