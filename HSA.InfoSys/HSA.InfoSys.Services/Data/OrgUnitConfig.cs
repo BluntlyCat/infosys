@@ -52,14 +52,23 @@ namespace HSA.InfoSys.Common.Services.Data
         [DataMember]
         public virtual bool EmailActive { get; set; }
 
-        /// <summary>
-        /// Gets or sets the scheduler.
-        /// </summary>
-        /// <value>
-        /// The scheduler.
-        /// </value>
-        [DataMember]
-        public virtual SchedulerTime SchedulerTime { get; set; }
+		/// <summary>
+		/// Gets or sets the Days.
+		/// </summary>
+		/// <value>
+		/// The Days.
+		/// </value>
+		[DataMember]
+		public virtual int Days { get; set; }
+
+		/// <summary>
+		/// Gets or sets the Time.
+		/// </summary>
+		/// <value>
+		/// The Time for crawling.
+		/// </value>
+		[DataMember]
+		public virtual int Time { get; set; }
         
         /// <summary>
         /// Gets or sets a value indicating whether the scheduler is active or not.
@@ -71,29 +80,6 @@ namespace HSA.InfoSys.Common.Services.Data
         public virtual bool SchedulerActive { get; set; }
 
         /// <summary>
-        /// Loads this instance from NHibernate.
-        /// </summary>
-        /// <param name="types">The types you want load eager.</param>
-        /// <returns>
-        /// The entity behind the NHibernate proxy.
-        /// </returns>
-        public override Entity Unproxy(string[] types = null)
-        {
-            if (types != null)
-            {
-                foreach (var type in types)
-                {
-                    if (type.Equals(typeof(SchedulerTime).Name) && this.SchedulerTime != null)
-                    {
-                        this.SchedulerTime = this.SchedulerTime.Unproxy(types) as SchedulerTime;
-                    }
-                }
-            }
-
-            return base.Unproxy();
-        }
-
-        /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
         /// <returns>
@@ -102,13 +88,14 @@ namespace HSA.InfoSys.Common.Services.Data
         public override string ToString()
         {
             return string.Format(
-                "ID: {0}, URLs: {1}, Urls active: {2}, Mails: {3}, Mails active: {4}, Scheduler: ({5}), Scheduler active: {6}",
+				"ID: {0}, URLs: {1}, Urls active: {2}, Mails: {3}, Mails active: {4}, Schedule every {5} days at ({6}), Scheduler active: {7}",
                 this.EntityId,
                 this.URLS,
                 this.URLActive,
                 this.Emails,
                 this.EmailActive,
-                this.SchedulerTime,
+                this.Days,
+				this.Time,
                 this.SchedulerActive);
         }
     }

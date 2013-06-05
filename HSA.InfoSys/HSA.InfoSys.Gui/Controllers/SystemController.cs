@@ -66,11 +66,8 @@ namespace HSA.InfoSys.Gui.Controllers
             string userid = membershipuser.ProviderUserKey.ToString();
             int id = Convert.ToInt32(userid);
 
-            // create Scheduler
-            var scheduler = cc.CreateScheduler(3, 0);
-
             // create SystemConfig
-            var systemConfig = cc.CreateOrgUnitConfig(null, null, false, false, false, scheduler);
+            var systemConfig = cc.CreateOrgUnitConfig(null, null, false, false, 0, 0, true);
 
             // create System
             var system = cc.CreateOrgUnit(id, newsystem);
@@ -153,18 +150,16 @@ namespace HSA.InfoSys.Gui.Controllers
             var cc = CrawlControllerClient<IDBManager>.ClientProxy;
 
             // get SystemConfig, OrgUnitConfig, Scheduler
-            var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnitConfig", "Scheduler")) as OrgUnit;
+            var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
             var config = orgUnit.OrgUnitConfig;
-            var scheduler = config.SchedulerTime;
 
             // set all config data for view
             this.ViewData["schedulerActive"] = config.SchedulerActive;
             this.ViewData["emailActive"] = config.EmailActive;
             this.ViewData["urlActive"] = config.URLActive;
 
-            this.ViewData["sc_days"] = scheduler.Days;
-            this.ViewData["sc_hours"] = scheduler.Hours;
-            this.ViewData["sc_begin"] = scheduler.Begin;
+            this.ViewData["sc_days"] = config.Days;
+            this.ViewData["sc_hours"] = config.Time;
 
             this.ViewData["emails"] = config.Emails;
             this.ViewData["urls"] = config.URLS;

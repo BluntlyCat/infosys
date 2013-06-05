@@ -19,7 +19,6 @@ namespace HSA.InfoSys.Common.Services.Data
     [KnownType(typeof(Result))]
     [KnownType(typeof(OrgUnit))]
     [KnownType(typeof(OrgUnitConfig))]
-    [KnownType(typeof(SchedulerTime))]
     public abstract class Entity
     {
         /// <summary>

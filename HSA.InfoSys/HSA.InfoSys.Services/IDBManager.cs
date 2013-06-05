@@ -79,8 +79,8 @@ namespace HSA.InfoSys.Common.Services
         /// <summary>
         /// Gets the scheduler times.
         /// </summary>
-        /// <returns>A list of all scheduler times.</returns>
-        IList<SchedulerTime> GetSchedulerTimes();
+        /// <returns>A list of all OrgUnitConfig objects.</returns>
+        IList<OrgUnitConfig> GetOrgUnitConfigurations();
 
         /// <summary>
         /// Creates a component object.
@@ -132,24 +132,13 @@ namespace HSA.InfoSys.Common.Services
         /// </returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        OrgUnitConfig CreateOrgUnitConfig(
-            string urls,
-            string emails,
-            bool urlActive,
-            bool emailNotification,
-            bool schedulerActive,
-            SchedulerTime scheduler);
-
-        /// <summary>
-        /// Creates a Scheduler object
-        /// </summary>
-        /// <param name="days">The days.</param>
-        /// <param name="hours">The hours.</param>
-        /// <returns>
-        /// The created Scheduler object.
-        /// </returns>
-        [UseNetDataContractSerializer]
-        [OperationContractAttribute]
-        SchedulerTime CreateScheduler(int days, int hours);
+        OrgUnitConfig CreateOrgUnitConfig (
+			string urls,
+			string emails,
+			bool urlActive,
+			bool emailNotification,
+			int days,
+			int time,
+			bool schedulerActive);
     }
 }

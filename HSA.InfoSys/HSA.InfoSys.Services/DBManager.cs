@@ -230,11 +230,11 @@ namespace HSA.InfoSys.Common.Services
         /// <returns>
         /// A list of all scheduler times.
         /// </returns>
-        public IList<SchedulerTime> GetSchedulerTimes()
+        public IList<OrgUnitConfig> GetOrgUnitConfigurations()
         {
             using (ISession session = Session)
             {
-                return session.QueryOver<SchedulerTime>().List<SchedulerTime>();
+                return session.QueryOver<OrgUnitConfig>().List<OrgUnitConfig>();
             }
         }
 
@@ -315,13 +315,14 @@ namespace HSA.InfoSys.Common.Services
         /// <returns>
         /// The created OrgUnitConfig object.
         /// </returns>
-        public OrgUnitConfig CreateOrgUnitConfig(
-            string urls,
-            string emails,
-            bool urlActive,
-            bool emailNotification,
-            bool schedulerActive,
-            SchedulerTime scheduler)
+        public OrgUnitConfig CreateOrgUnitConfig (
+			string urls,
+			string emails,
+			bool urlActive,
+			bool emailNotification,
+			int days,
+			int time,
+			bool schedulerActive)
         {
             var orgUnitConfig = new OrgUnitConfig
             {
@@ -329,35 +330,14 @@ namespace HSA.InfoSys.Common.Services
                 Emails = emails,
                 URLActive = urlActive,
                 EmailActive = emailNotification,
-                SchedulerActive = schedulerActive,
-                SchedulerTime = scheduler
+				Days = days,
+				Time = time,
+                SchedulerActive = schedulerActive
             };
 
             Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_ORGUNITCONFIG, orgUnitConfig);
 
             return orgUnitConfig;
-        }
-
-        /// <summary>
-        /// Creates a Scheduler object
-        /// </summary>
-        /// <param name="days">The days.</param>
-        /// <param name="hours">The hours.</param>
-        /// <returns>
-        /// The created Scheduler object.
-        /// </returns>
-        public SchedulerTime CreateScheduler(int days, int hours)
-        {
-            var scheduler = new SchedulerTime
-            {
-                Begin = DateTime.Now,
-                Days = days,
-                Hours = hours
-            };
-
-            Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SCHEDULER, scheduler);
-
-            return scheduler;
         }
 
         /// <summary>

@@ -32,15 +32,6 @@
       <property name="Time" type="timestamp" column="FindDate" not-null="true"/>
     </joined-subclass>
 
-    <!-- Scheduler -->
-    <joined-subclass name="SchedulerTime" table="SchedulerTime">
-      <key column="SchedulerTimeGUID" />
-
-      <property name="Days" type="int" not-null="true"/>
-      <property name="Hours" type="int" not-null="true"/>
-      <property name="Begin" type="timestamp" not-null="true"/>
-    </joined-subclass>
-
     <!-- OrgUnit -->
     <joined-subclass name="OrgUnit" table="OrgUnit">
       <key column="OrgUnitGUID" />
@@ -57,8 +48,6 @@
     <joined-subclass name="OrgUnitConfig" table="OrgUnitConfig">
       <key column="OrgUnitConfigGUID" />
 
-      <many-to-one name="SchedulerTime" class="SchedulerTime" column="SchedulerTimeGUID" lazy="proxy" cascade="save-update" />
-
       <property name="Emails" type="string">
         <column name="Emails" sql-type="text" not-null="false"/>
       </property>
@@ -69,6 +58,9 @@
 
       <property name="URLActive" type="bool" not-null="true"/>
       <property name="EmailActive" type="bool" not-null="true"/>
+      
+      <property name="Days" type="int" not-null="true"/>
+      <property name="Time" type="int" not-null="true"/>
       <property name="SchedulerActive" type="bool" not-null="true"/>
     </joined-subclass>
   </class>

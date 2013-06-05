@@ -33,7 +33,7 @@ namespace HSA.InfoSys.Common.Services
         /// <summary>
         /// The scheduler times.
         /// </summary>
-        private Dictionary<Guid, SchedulerTime> schedulerTimes = new Dictionary<Guid, SchedulerTime>();
+        private Dictionary<Guid, OrgUnitConfig> schedulerTimes = new Dictionary<Guid, OrgUnitConfig>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Scheduler"/> class.
@@ -49,13 +49,13 @@ namespace HSA.InfoSys.Common.Services
         /// Adds the scheduler time.
         /// </summary>
         /// <param name="schedulerTime">The scheduler time.</param>
-        public void AddSchedulerTime(SchedulerTime schedulerTime)
+		public void AddOrgUnitConfig(OrgUnitConfig orgConfig)
         {
-            Log.DebugFormat(Properties.Resources.LOG_SCHEDULER_ADD, schedulerTime);
+			Log.DebugFormat(Properties.Resources.LOG_SCHEDULER_ADD, orgConfig);
 
-            if (!this.schedulerTimes.ContainsKey(schedulerTime.EntityId))
+			if (!this.schedulerTimes.ContainsKey(orgConfig.EntityId))
             {
-                this.schedulerTimes.Add(schedulerTime.EntityId, schedulerTime);
+				this.schedulerTimes.Add(orgConfig.EntityId, orgConfig);
             }
         }
 
@@ -63,11 +63,11 @@ namespace HSA.InfoSys.Common.Services
         /// Removes the scheduler time.
         /// </summary>
         /// <param name="schedulerTimeGUID">The scheduler time GUID.</param>
-        public void RemoveSchedulerTime(Guid schedulerTimeGUID)
+		public void RemoveOrgUnitConfig(Guid orgUnitConfigGuid)
         {
-            if (this.schedulerTimes.ContainsKey(schedulerTimeGUID))
+			if (this.schedulerTimes.ContainsKey(orgUnitConfigGuid))
             {
-                this.schedulerTimes.Remove(schedulerTimeGUID);
+				this.schedulerTimes.Remove(orgUnitConfigGuid);
             }
         }
 

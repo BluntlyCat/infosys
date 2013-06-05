@@ -11,23 +11,23 @@ namespace HSA.InfoSys.Common.Services
 
     /// <summary>
     /// This interface provides functionality for
-    /// adding or removing scheduler time objects
+    /// adding or removing OrgUnitConfig objects
     /// </summary>
     [ServiceContract]
     public interface IScheduler
     {
         /// <summary>
-        /// Adds the scheduler time.
+        /// Adds the OrgUnitConfig.
         /// </summary>
-        /// <param name="schedulerTime">The scheduler time.</param>
+        /// <param name="orgConfig">The OrgUnitConfig.</param>
         [OperationContract]
-        void AddSchedulerTime(SchedulerTime schedulerTime);
+        void AddOrgUnitConfig(OrgUnitConfig orgConfig);
 
         /// <summary>
-        /// Removes the scheduler time.
+        /// Removes the OrgUnitConfig.
         /// </summary>
-        /// <param name="schedulerTimeGUID">The scheduler time GUID.</param>
+        /// <param name="orgUnitConfigGuid">The OrgUnitConfigGuid.</param>
         [OperationContract]
-        void RemoveSchedulerTime(Guid schedulerTimeGUID);
+        void RemoveOrgUnitConfig(Guid orgUnitConfigGuid);
     }
 }
