@@ -39,15 +39,6 @@ namespace HSA.InfoSys.Common.Services
         Guid AddEntity(Entity entity);
 
         /// <summary>
-        /// Adds the scheduler if not exist.
-        /// </summary>
-        /// <param name="scheduler">The scheduler.</param>
-        /// <returns>The GUID of the new scheduler.</returns>
-        [UseNetDataContractSerializer]
-        [OperationContractAttribute]
-        Guid AddSchedulerTimeIfNotExist(SchedulerTime scheduler);
-
-        /// <summary>
         /// Saves changings of a object in database.
         /// </summary>
         /// <param name="entity">The entity that should be updated.</param>

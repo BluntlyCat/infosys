@@ -139,27 +139,6 @@ namespace HSA.InfoSys.Common.Services
         }
 
         /// <summary>
-        /// Adds the scheduler if not exist.
-        /// </summary>
-        /// <param name="scheduler">The scheduler.</param>
-        /// <returns>
-        /// The GUID of the new scheduler.
-        /// </returns>
-        public Guid AddSchedulerTimeIfNotExist(SchedulerTime schedulerTime)
-        {
-            var schedulerTimes = this.GetSchedulerTimes();
-
-            if (schedulerTimes.Any(s => s.Days == schedulerTime.Days && s.Hours == schedulerTime.Hours))
-            {
-                return schedulerTimes.First(s => s.EntityId == schedulerTime.EntityId).EntityId;
-            }
-            else
-            {
-                return this.AddEntity(schedulerTime);
-            }
-        }
-
-        /// <summary>
         /// Saves changings of a object in database.
         /// </summary>
         /// <param name="entity">The entity that should be updated.</param>
