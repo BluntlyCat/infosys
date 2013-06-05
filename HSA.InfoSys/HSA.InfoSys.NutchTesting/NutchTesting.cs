@@ -30,7 +30,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
         //// n.MkUserDir("andre");
         //n.AddURL(urls, "andre");
 
-           
+            
             ILog log = Logger<string>.GetLogger("NutchTesting");
             
             bool running = true;
