@@ -31,5 +31,14 @@ namespace HSA.InfoSys.Common.Nutch.Properties {
                 return ((string)(this["PREFIX"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://infosys.informatik.hs-augsburg.de:8983/solr")]
+        public string SOLRSERVER {
+            get {
+                return ((string)(this["SOLRSERVER"]));
+            }
+        }
     }
 }

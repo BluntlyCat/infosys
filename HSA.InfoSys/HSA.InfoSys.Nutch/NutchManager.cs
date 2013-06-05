@@ -12,10 +12,14 @@ namespace HSA.InfoSys.Common.Nutch
     using System.Text;
     using System.IO;
     using System.Diagnostics;
+    using HSA.InfoSys.Common.Logging;
+    using log4net;
 
 
     public class NutchManager
     {
+
+        ILog log = Logger<string>.GetLogger("NutchTesting");
 
         private string PrefixPath;
 
@@ -39,12 +43,12 @@ namespace HSA.InfoSys.Common.Nutch
             Directory.CreateDirectory(NewDirectory);
             StreamWriter myWriter = File.CreateText(string.Format("{0}/{1}",NewDirectory, this.FileName));
             myWriter.Close();
+
         }
   
-        public List<string> GetFileContent(string pattern, string filePath)
+        private List<string> GetFileContent(string pattern, string filePath)
         {
             List<string> content = new List<string>();
-
             using (StreamReader sr = new StreamReader(filePath))
             {
                 string line;
@@ -80,10 +84,6 @@ namespace HSA.InfoSys.Common.Nutch
             AddURLToFile(prefixUrls, this.PrefixPath);
             AddURLToFile(urls, userURLPath);
         }
-
-
-
-
  
         private void AddURLToFile(List<string> urls, string path)
         {
@@ -96,11 +96,14 @@ namespace HSA.InfoSys.Common.Nutch
             }
         }
 
-        public void startCrawl(string argument)
+        public void startCrawl(string urlDir, int depth, int topN)
         {
+            
+            string CrawlRequest = string.Format("crawl {0} -solr {1} -depth {2} -topN {3}", urlDir, Properties.Settings.Default.SOLRSERVER, depth, topN );
             ProcessStartInfo process = new ProcessStartInfo();
             process.FileName= "nutch";
-            process.Arguments = argument;
+            process.Arguments = CrawlRequest;
+            log.Info(string.Format("Crawl request was send: {0}" , CrawlRequest));
             Process.Start(process);
         }
 
