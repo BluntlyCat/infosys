@@ -61,6 +61,15 @@ namespace HSA.InfoSys.Common.Timing.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Countdown time: [{0}], source: [{1}] ähnelt.
+        /// </summary>
+        internal static string COUNTDOWN_TO_STRING {
+            get {
+                return ResourceManager.GetString("COUNTDOWN_TO_STRING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Initialize a new instance of Countdown ähnelt.
         /// </summary>
         internal static string LOG_COUNTDOWN_INITIALIZE {

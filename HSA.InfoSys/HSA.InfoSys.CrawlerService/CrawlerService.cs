@@ -91,15 +91,15 @@ namespace HSA.InfoSys.CrawlerService
             Addresses.Initialize();
             this.controllerHost = new CrawlControllerHost();
 
-            this.crawlController = this.controllerHost.OpenWCFHost<CrawlController, ICrawlController>(new CrawlController());
+            this.crawlController = this.controllerHost.OpenWCFHost<CrawlController, ICrawlController>(CrawlController.ControllerFactory);
 
-            var solrController = this.controllerHost.OpenWCFHost<SolrController, ISolrController>(new SolrController());
+            var solrController = this.controllerHost.OpenWCFHost<SolrController, ISolrController>(SolrController.SolrFactory);
             this.RegisterServices(solrController);
 
-            var dbManager = this.controllerHost.OpenWCFHost<DBManager, IDBManager>(DBManager.Manager as DBManager);
+            var dbManager = this.controllerHost.OpenWCFHost<DBManager, IDBManager>(DBManager.ManagerFactory as DBManager);
             this.RegisterServices(dbManager);
 
-            var scheduler = this.controllerHost.OpenWCFHost<Scheduler, IScheduler>(new Scheduler());
+            var scheduler = this.controllerHost.OpenWCFHost<Scheduler, IScheduler>(Scheduler.SchedulerFactory);
             this.RegisterServices(scheduler);
         }
 

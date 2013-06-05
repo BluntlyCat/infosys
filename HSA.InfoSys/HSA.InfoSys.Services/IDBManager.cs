@@ -80,7 +80,9 @@ namespace HSA.InfoSys.Common.Services
         /// Gets the components by org unit id.
         /// </summary>
         /// <param name="orgUnitGuid">The org unit GUID.</param>
-        /// <returns></returns>
+        /// <returns>
+        /// A list of components which belongs to the given OrgUnit.
+        /// </returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
         IList<Component> GetComponentsByOrgUnitId(Guid orgUnitGuid);
@@ -134,14 +136,16 @@ namespace HSA.InfoSys.Common.Services
         /// <param name="emails">The email text.</param>
         /// <param name="urlActive">if set to <c>true</c> [URL active].</param>
         /// <param name="emailNotification">if set to <c>true</c> [email notification].</param>
+        /// <param name="days">The days.</param>
+        /// <param name="time">The time.</param>
+        /// <param name="nextSearch">The next search.</param>
         /// <param name="schedulerActive">if set to <c>true</c> [scheduler active].</param>
-        /// <param name="scheduler">A scheduler object.</param>
         /// <returns>
         /// The created OrgUnitConfig object.
         /// </returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        OrgUnitConfig CreateOrgUnitConfig (
+        OrgUnitConfig CreateOrgUnitConfig(
             string urls,
             string emails,
             bool urlActive,

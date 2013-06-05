@@ -11,6 +11,7 @@ namespace HSA.InfoSys.Common.Services
     using System.Threading;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services.Data;
+    using HSA.InfoSys.Common.Timing;
     using log4net;
 
     /// <summary>
@@ -26,6 +27,16 @@ namespace HSA.InfoSys.Common.Services
         private static readonly ILog Log = Logger<string>.GetLogger("Scheduler");
 
         /// <summary>
+        /// The scheduler.
+        /// </summary>
+        private static Scheduler scheduler;
+
+        /// <summary>
+        /// The mutex for the OrgUnitConfigurations dictionary.
+        /// </summary>
+        private static Mutex mutex = new Mutex();
+
+        /// <summary>
         /// The database manager.
         /// </summary>
         private IDBManager dbManager;
@@ -33,42 +44,105 @@ namespace HSA.InfoSys.Common.Services
         /// <summary>
         /// The scheduler times.
         /// </summary>
-        private Dictionary<Guid, OrgUnitConfig> schedulerTimes = new Dictionary<Guid, OrgUnitConfig>();
+        private Dictionary<Guid, OrgUnitConfig> orgUnitConfigurations = new Dictionary<Guid, OrgUnitConfig>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Scheduler"/> class.
+        /// The jobs dictionary.
         /// </summary>
-        public Scheduler()
+        private Dictionary<Guid, Countdown> jobs = new Dictionary<Guid, Countdown>();
+
+        /// <summary>
+        /// Prevents a default instance of the <see cref="Scheduler"/> class from being created.
+        /// </summary>
+        private Scheduler()
         {
             Log.DebugFormat(Properties.Resources.LOG_INSTANCIATE_NEW_SCHEDULER, this.GetType().Name);
+            this.dbManager = DBManager.ManagerFactory;
+        }
 
-            this.dbManager = DBManager.Manager;
+        /// <summary>
+        /// Gets the scheduler.
+        /// </summary>
+        /// <value>
+        /// The scheduler.
+        /// </value>
+        public static Scheduler SchedulerFactory
+        {
+            get
+            {
+                if (scheduler == null)
+                {
+                    scheduler = new Scheduler();
+                }
+
+                return scheduler;
+            }
         }
 
         /// <summary>
         /// Adds the scheduler time.
         /// </summary>
-        /// <param name="schedulerTime">The scheduler time.</param>
-		public void AddOrgUnitConfig(OrgUnitConfig orgConfig)
+        /// <param name="orgConfig">The OrgUnitConfig.</param>
+        public void AddOrgUnitConfig(OrgUnitConfig orgConfig)
         {
-			Log.DebugFormat(Properties.Resources.LOG_SCHEDULER_ADD, orgConfig);
+            Log.DebugFormat(Properties.Resources.LOG_SCHEDULER_ADD, orgConfig);
 
-			if (!this.schedulerTimes.ContainsKey(orgConfig.EntityId))
+            mutex.WaitOne();
+
+            if (this.orgUnitConfigurations.ContainsKey(orgConfig.EntityId))
             {
-				this.schedulerTimes.Add(orgConfig.EntityId, orgConfig);
+                this.orgUnitConfigurations[orgConfig.EntityId] = orgConfig;
             }
+            else
+            {
+                this.orgUnitConfigurations.Add(orgConfig.EntityId, orgConfig);
+            }
+
+            mutex.ReleaseMutex();
         }
 
         /// <summary>
         /// Removes the scheduler time.
         /// </summary>
-        /// <param name="schedulerTimeGUID">The scheduler time GUID.</param>
-		public void RemoveOrgUnitConfig(Guid orgUnitConfigGuid)
+        /// <param name="orgUnitConfigGUID">The OrgUnitConfigGUID.</param>
+        public void RemoveOrgUnitConfig(Guid orgUnitConfigGUID)
         {
-			if (this.schedulerTimes.ContainsKey(orgUnitConfigGuid))
+            mutex.WaitOne();
+
+            if (this.jobs.ContainsKey(orgUnitConfigGUID))
             {
-				this.schedulerTimes.Remove(orgUnitConfigGuid);
+                var job = this.jobs[orgUnitConfigGUID];
+                job.Stop(true);
+                job.OnZero -= this.Countdown_OnZero;
+                job.OnError -= this.Countdown_OnError;
+
+                this.jobs.Remove(orgUnitConfigGUID);
             }
+
+            mutex.ReleaseMutex();
+        }
+
+        /// <summary>
+        /// Occurs when [zero].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="source">The source.</param>
+        public void Countdown_OnZero(object sender, object source)
+        {
+            var job = sender as Countdown;
+            job.SetTimeToRepeat();
+            job.Start();
+        }
+
+        /// <summary>
+        /// Occurs when [on error].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="error">The error.</param>
+        public void Countdown_OnError(object sender, string error)
+        {
+            var job = sender as Countdown;
+            Log.DebugFormat(Properties.Resources.LOG_TIME_VALIDATION_ERROR, job, error);
         }
 
         /// <summary>
@@ -76,13 +150,75 @@ namespace HSA.InfoSys.Common.Services
         /// </summary>
         protected override void Run()
         {
+            var errorMessage = string.Empty;
+
             while (this.Running)
             {
-                foreach (var scheduler in this.schedulerTimes.Values)
-                {
-                }
+                mutex.WaitOne();
+
+                this.SetCountdownTimes();
+                this.RemoveHandledConfigs();
+
+                mutex.ReleaseMutex();
 
                 Thread.Sleep(1000);
+            }
+        }
+
+        /// <summary>
+        /// Sets the countdown times.
+        /// </summary>
+        private void SetCountdownTimes()
+        {
+            foreach (var config in this.orgUnitConfigurations.Values)
+            {
+                if (!this.jobs.ContainsKey(config.EntityId))
+                {
+                    var now = DateTime.Now;
+                    var startTime = now;
+                    var endTime = new DateTime(now.Year, now.Month, now.Day, config.Time, 0, 0);
+                    var repeatIn = new TimeSpan(config.Days, config.Time, 0, 0);
+                    var remainTime = new RemainTime(endTime.Subtract(startTime));
+
+                    var time = new Time(
+                        startTime,
+                        endTime,
+                        repeatIn,
+                        remainTime,
+                        TypeOfTime.Time,
+                        null,
+                        null,
+                        true);
+
+                    var countdown = new Countdown(config, time);
+
+                    countdown.OnZero += this.Countdown_OnZero;
+                    countdown.OnError += this.Countdown_OnError;
+
+                    if (countdown.Start())
+                    {
+                        this.jobs.Add(config.EntityId, countdown);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Removes the handled configurations.
+        /// </summary>
+        private void RemoveHandledConfigs()
+        {
+            if (this.orgUnitConfigurations.Count > 0)
+            {
+                foreach (var job in this.jobs.Values)
+                {
+                    var config = job.Source as OrgUnitConfig;
+
+                    if (this.orgUnitConfigurations.ContainsKey(config.EntityId))
+                    {
+                        this.orgUnitConfigurations.Remove(config.EntityId);
+                    }
+                }
             }
         }
     }

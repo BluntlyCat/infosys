@@ -5,12 +5,9 @@
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.Common.Nutch
 {
-    using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
-    using System.Linq;
-    using System.Text;
     using HSA.InfoSys.Common.Logging;
     using log4net;
 
@@ -20,9 +17,19 @@ namespace HSA.InfoSys.Common.Nutch
     public class NutchManager
     {
         /// <summary>
+        /// The logger for NutchManager.
+        /// </summary>
+        private static readonly ILog Log = Logger<string>.GetLogger("NutchManager");
+
+        /// <summary>
         /// The logger for nutch manager.
         /// </summary>
         private ILog log = Logger<string>.GetLogger("NutchTesting");
+
+        /// <summary>
+        /// The path to prefix file.
+        /// </summary>
+        private string prefixPath;
 
         /// <summary>
         /// The path for the regex url filter.
@@ -30,63 +37,116 @@ namespace HSA.InfoSys.Common.Nutch
         private string regexPath;
 
         /// <summary>
-        /// The path for the url.
+        /// The path to URL file.
         /// </summary>
         private string urlPath;
 
         /// <summary>
-        /// The name of the file in which the url are written.
+        /// The seed file name.
         /// </summary>
-        private string fileName = "seed.txt";
+        private string fileName = Properties.Settings.Default.SEED_FILENAME;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NutchManager"/> class.
         /// </summary>
         public NutchManager()
         {
-            this.urlPath = "C:/Users/A/Desktop/urls";
-            this.regexPath = "C:/Users/A/Desktop/conf/regex-urlfilter.txt";
+#if !MONO
+            this.urlPath = Properties.Settings.Default.URL_PATH_DOTNET;
+            this.prefixPath = Properties.Settings.Default.PREFIX_PATH_DOTNET;
+#else
+            this.URLPath = Properties.Settings.Default.URL_PATH_MONO;
+            this.PrefixPath = Properties.Settings.Default.PREFIX_PATH_MONO;
+#endif
         }
 
         /// <summary>
-        /// Adds a the url in the user url file.
+        /// Starts the crawling.
         /// </summary>
-        /// <param name="urls">The list of the url.</param>
-        /// <param name="user">The user name.</param>
+        /// <param name="urlDir">The URL directory.</param>
+        /// <param name="depth">The depth.</param>
+        /// <param name="topN">The top N.</param>
+        public void StartCrawl(string urlDir, int depth, int topN)
+        {
+            Process nutch = new Process();
+
+            string crawlRequest =
+                string.Format(
+                Properties.Settings.Default.NUTCH_CRAWL_REQUEST,
+                urlDir,
+                Properties.Settings.Default.SOLRSERVER,
+                depth,
+                topN);
+
+            nutch.StartInfo.FileName = Properties.Settings.Default.NUTCH_COMMAND;
+            nutch.StartInfo.Arguments = crawlRequest;
+
+            nutch.Start();
+
+            Log.Info(string.Format(Properties.Resources.CRAWL_REQUEST_SENT, crawlRequest));
+        }
+
+        /// <summary>
+        /// Creates the user directory.
+        /// </summary>
+        /// <param name="user">The username.</param>
+        public void CreateUserDir(string user)
+        {
+            string newDirectory = string.Format(Properties.Settings.Default.USER_DIR, this.urlPath, user);
+            Directory.CreateDirectory(newDirectory);
+            StreamWriter writer = File.CreateText(string.Format(Properties.Settings.Default.USER_DIR, newDirectory, this.fileName));
+
+            writer.Close();
+        }
+
+        /// <summary>
+        /// Adds the URL.
+        /// </summary>
+        /// <param name="urls">The URLs.</param>
+        /// <param name="user">The username.</param>
         public void AddURL(List<string> urls, string user)
         {
-            string userURLPath = string.Format("{0}/{1}/{2}", this.urlPath, user, this.fileName);
+            string userURLPath = string.Format(Properties.Settings.Default.USER_URL_PATH, this.urlPath, user, this.fileName);
 
             List<string> prefixUrls = new List<string>();
 
             foreach (string url in urls)
             {
-                string prefix = string.Format("{0}{1}", Properties.Settings.Default.PREFIX, url);
+                string prefix = string.Format(Properties.Settings.Default.USER_DIR, Properties.Settings.Default.PREFIX, url);
 
-                if (!this.GetFileContent(Properties.Settings.Default.PREFIX, this.regexPath).Contains(prefix))
+                if (!this.GetFileContent(Properties.Settings.Default.PREFIX, this.prefixPath).Contains(prefix))
                 {
                     prefixUrls.Add(prefix);
                 }
             }
 
-            this.AddURLToFile(prefixUrls, this.regexPath);
+            this.AddURLToFile(prefixUrls, this.prefixPath);
             this.AddURLToFile(urls, userURLPath);
         }
 
         /// <summary>
-        /// Start the web crawl.
+        /// Gets the content of the file.
         /// </summary>
-        /// <param name="urlDir">The path of the url directory.</param>
-        /// <param name="depth">The depth of the crawl.</param>
-        /// <param name="topN">The top of the crawl.</param>
-        public void StartCrawl(string urlDir, int depth, int topN)
+        /// <param name="pattern">The pattern.</param>
+        /// <param name="filePath">The file path.</param>
+        /// <returns>A list containing the file content.</returns>
+        private List<string> GetFileContent(string pattern, string filePath)
         {
-            string crawlRequest = string.Format("crawl {0} -solr {1} -depth {2} -topN {3}", urlDir, Properties.Settings.Default.SOLRSERVER, depth, topN);
-            ProcessStartInfo process = new ProcessStartInfo();
-            process.FileName = "nutch";
-            process.Arguments = crawlRequest;
-            this.log.Info(string.Format("Crawl request was send: {0}", crawlRequest));
-            Process.Start(process);
+            List<string> content = new List<string>();
+            using (StreamReader sr = new StreamReader(filePath))
+            {
+                var line = string.Empty;
+
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (line.Contains(pattern))
+                    {
+                        content.Add(line);
+                    }
+                }
+            }
+
+            return content;
         }
 
         /// <summary>
@@ -103,43 +163,6 @@ namespace HSA.InfoSys.Common.Nutch
                     sw.WriteLine(url);
                 }
             }
-        }
-
-        /// <summary>
-        /// Creates a new url directory for an user.
-        /// </summary>
-        /// <param name="user">The user.</param>
-        private void MkUserDir(string user)
-        {
-            string newDirectory = string.Format("{0}/{1}", this.urlPath, user);
-            Directory.CreateDirectory(newDirectory);
-            StreamWriter myWriter = File.CreateText(string.Format("{0}/{1}", newDirectory, this.fileName));
-            myWriter.Close();
-        }
-
-        /// <summary>
-        /// Adds all the url in a list which are in the regex file.
-        /// </summary>
-        /// <param name="pattern">The prefix pattern.</param>
-        /// <param name="filePath">The file path.</param>
-        /// <returns>Returns a List with the already existing url.</returns>
-        private List<string> GetFileContent(string pattern, string filePath)
-        {
-            List<string> content = new List<string>();
-            using (StreamReader sr = new StreamReader(filePath))
-            {
-                string line;
-
-                while ((line = sr.ReadLine()) != null)
-                {
-                    if (line.Contains(pattern))
-                    {
-                        content.Add(line);
-                    }
-                }
-            }
-
-            return content;
         }
     }
 }

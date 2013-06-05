@@ -26,8 +26,8 @@ namespace HSA.InfoSys.Common.Services
         /// <summary>
         /// Removes the OrgUnitConfig.
         /// </summary>
-        /// <param name="orgUnitConfigGuid">The OrgUnitConfigGuid.</param>
+        /// <param name="orgUnitConfigGUID">The OrgUnitConfigGUID.</param>
         [OperationContract]
-        void RemoveOrgUnitConfig(Guid orgUnitConfigGuid);
+        void RemoveOrgUnitConfig(Guid orgUnitConfigGUID);
     }
 }

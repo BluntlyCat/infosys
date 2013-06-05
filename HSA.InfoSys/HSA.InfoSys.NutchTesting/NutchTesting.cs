@@ -6,11 +6,11 @@
 namespace HSA.InfoSys.Testing.NutchTesting
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading;
     using HSA.InfoSys.Common.Logging;
-    using log4net;
-    using System.Collections.Generic;
     using HSA.InfoSys.Common.Nutch;
+    using log4net;
 
     /// <summary>
     /// Implement your testing methods for Nutch here.
@@ -18,21 +18,16 @@ namespace HSA.InfoSys.Testing.NutchTesting
     public class NutchTesting
     {
         /// <summary>
+        /// The logger for NutchTesting.
+        /// </summary>
+        private static readonly ILog Log = Logger<string>.GetLogger("NutchTesting");
+
+        /// <summary>
         /// Mains the specified args.
         /// </summary>
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
-
-            List<string> urls = new List<string>{"www.schnitzel.de","test1", "wwwswdasd"};
-            NutchManager n = new NutchManager();
-        //n.MkUserDir("sanim");
-        //// n.MkUserDir("andre");
-        //n.AddURL(urls, "andre");
-
-            
-            ILog log = Logger<string>.GetLogger("NutchTesting");
-            
             bool running = true;
            
             Console.WriteLine(string.Empty);
@@ -45,23 +40,24 @@ namespace HSA.InfoSys.Testing.NutchTesting
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-                    log.InfoFormat("Key [{0}] was pressed.", keyInfo.Key);
+                    Log.InfoFormat("Key [{0}] was pressed.", keyInfo.Key);
 
                     switch (keyInfo.Key)
                     {
                         case ConsoleKey.H:
-                            log.Info("Print help text.");
+                            Log.Info("Print help text.");
                             PrintHelp();
                             break;
 
                         case ConsoleKey.Q:
-                            log.Info("Quit application.");
+                            Log.Info("Quit application.");
                             running = false;
                             break;
 
                         case ConsoleKey.S:
-                            log.Info("Send request to nutch.");
-                            //n.startCrawl("crawl urls -solr http://infosys.informatik.hs-augsburg.de:8983/solr -depth 1 -topN 1");
+                            NutchManager n = new NutchManager();
+                            Log.Info("Send request to nutch.");
+                            n.StartCrawl("path", 1, 1);
                             break;
                     }
                 }
@@ -74,10 +70,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
         /// Prints the help.
         /// </summary>
         private static void PrintHelp()
-
-        {
-
-            
+        {   
             Console.WriteLine(string.Empty);
             Console.WriteLine("Press h to see this help text.");
             Console.WriteLine("Press q to quit this application.");

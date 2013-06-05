@@ -151,6 +151,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Got components: [{0}] by GUID: [{1}]. ähnelt.
+        /// </summary>
+        internal static string DBMANAGER_GET_COMPONENT_BY_ORGUNIT_ID {
+            get {
+                return ResourceManager.GetString("DBMANAGER_GET_COMPONENT_BY_ORGUNIT_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Got entity of type [{0}] with values [{1}] by GUID [{2}] ähnelt.
         /// </summary>
         internal static string DBMANAGER_GET_ENTITY {
@@ -277,7 +286,7 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Start service. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Start service {0}. ähnelt.
         /// </summary>
         internal static string LOG_START_SERVICE {
             get {
@@ -286,11 +295,20 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Stop service. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stop service {0}. ähnelt.
         /// </summary>
         internal static string LOG_STOP_SERVICE {
             get {
                 return ResourceManager.GetString("LOG_STOP_SERVICE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die An error occured in countdown [{0}], message was: [{1}]. ähnelt.
+        /// </summary>
+        internal static string LOG_TIME_VALIDATION_ERROR {
+            get {
+                return ResourceManager.GetString("LOG_TIME_VALIDATION_ERROR", resourceCulture);
             }
         }
         

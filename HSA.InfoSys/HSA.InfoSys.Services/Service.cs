@@ -45,7 +45,7 @@ namespace HSA.InfoSys.Common.Services
         /// </summary>
         public virtual void StartService()
         {
-            Log.Debug(Properties.Resources.LOG_START_SERVICE);
+            Log.DebugFormat(Properties.Resources.LOG_START_SERVICE, this.GetType().Name);
 
             this.Running = true;
             this.serviceThread.Start();
@@ -57,7 +57,7 @@ namespace HSA.InfoSys.Common.Services
         /// <param name="cancel">if set to <c>true</c> [cancel].</param>
         public virtual void StopService(bool cancel = false)
         {
-            Log.Debug(Properties.Resources.LOG_STOP_SERVICE);
+            Log.DebugFormat(Properties.Resources.LOG_STOP_SERVICE, this.GetType().Name);
 
             this.Running = false;
         }

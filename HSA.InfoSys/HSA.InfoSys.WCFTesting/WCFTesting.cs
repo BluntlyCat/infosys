@@ -10,10 +10,9 @@ namespace HSA.InfoSys.Testing.WCFTesting
     using System.Threading;
     using HSA.InfoSys.Common.CrawlController;
     using HSA.InfoSys.Common.Logging;
-    using HSA.InfoSys.Common.SolrClient;
-    using log4net;
     using HSA.InfoSys.Common.Services;
     using HSA.InfoSys.Common.Services.Data;
+    using log4net;
 
     /// <summary>
     /// Implement your testing methods for WCF here.

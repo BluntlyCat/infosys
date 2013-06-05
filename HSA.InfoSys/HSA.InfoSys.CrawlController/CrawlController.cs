@@ -25,9 +25,40 @@ namespace HSA.InfoSys.Common.CrawlController
         private static readonly ILog Log = Logger<string>.GetLogger("CrawlController");
 
         /// <summary>
+        /// The crawl controller.
+        /// </summary>
+        private static CrawlController crawlController;
+
+        /// <summary>
         /// The services list.
         /// </summary>
         private List<IService> services = new List<IService>();
+
+        /// <summary>
+        /// Prevents a default instance of the <see cref="CrawlController"/> class from being created.
+        /// </summary>
+        private CrawlController()
+        {
+        }
+
+        /// <summary>
+        /// Gets the crawl controller.
+        /// </summary>
+        /// <value>
+        /// The crawl controller.
+        /// </value>
+        public static CrawlController ControllerFactory
+        {
+            get
+            {
+                if (crawlController == null)
+                {
+                    crawlController = new CrawlController();
+                }
+
+                return crawlController;
+            }
+        }
 
         /// <summary>
         /// Registers a new service.

@@ -6,7 +6,6 @@
 namespace HSA.InfoSys.Common.Services
 {
     using System;
-    using System.Linq;
     using System.Collections.Generic;
     using System.Reflection;
     using System.ServiceModel;
@@ -47,7 +46,7 @@ namespace HSA.InfoSys.Common.Services
         /// <returns>
         /// The Database Manager
         /// </returns>
-        public static IDBManager Manager
+        public static IDBManager ManagerFactory
         {
             get
             {
@@ -235,11 +234,13 @@ namespace HSA.InfoSys.Common.Services
         {
             using (ISession session = Session)
             {
-                //Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ORGUNIT_BY_USERID, orgUnit, userID);
-
-                return session.QueryOver<Component>()
+                var components = session.QueryOver<Component>()
                     .Where(x => x.OrgUnit.EntityId == orgUnitGuid)
                     .List<Component>();
+
+                Log.InfoFormat(Properties.Resources.DBMANAGER_GET_COMPONENT_BY_ORGUNIT_ID, components, orgUnitGuid);
+
+                return components;
             }
         }
 
@@ -328,20 +329,22 @@ namespace HSA.InfoSys.Common.Services
         /// <param name="emails">The email text.</param>
         /// <param name="urlActive">if set to <c>true</c> [URL active].</param>
         /// <param name="emailNotification">if set to <c>true</c> [email notification].</param>
+        /// <param name="days">The days.</param>
+        /// <param name="time">The time.</param>
+        /// <param name="nextSearch">The next search.</param>
         /// <param name="schedulerActive">if set to <c>true</c> [scheduler active].</param>
-        /// <param name="scheduler">A scheduler object.</param>
         /// <returns>
         /// The created OrgUnitConfig object.
         /// </returns>
-        public OrgUnitConfig CreateOrgUnitConfig (
-			string urls,
-			string emails,
-			bool urlActive,
-			bool emailNotification,
-			int days,
-			int time,
+        public OrgUnitConfig CreateOrgUnitConfig(
+            string urls,
+            string emails,
+            bool urlActive,
+            bool emailNotification,
+            int days,
+            int time,
             DateTime nextSearch,
-			bool schedulerActive)
+            bool schedulerActive)
         {
             var orgUnitConfig = new OrgUnitConfig
             {
@@ -349,8 +352,8 @@ namespace HSA.InfoSys.Common.Services
                 Emails = emails,
                 URLActive = urlActive,
                 EmailActive = emailNotification,
-				Days = days,
-				Time = time,
+                Days = days,
+                Time = time,
                 NextSearch = nextSearch,
                 SchedulerActive = schedulerActive
             };

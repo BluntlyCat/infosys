@@ -28,20 +28,34 @@ namespace HSA.InfoSys.Common.Timing
         /// <summary>
         /// Initializes a new instance of the <see cref="Countdown" /> class.
         /// </summary>
-        public Countdown()
+        /// <param name="source">The source.</param>
+        /// <param name="time">The time.</param>
+        public Countdown(object source, Time time = null)
         {
             Log.Debug(Properties.Resources.LOG_COUNTDOWN_INITIALIZE);
+            this.Source = source;
+            this.Time = time;
         }
 
         /// <summary>
         /// The delegate for indicating that the time value has changed.
         /// </summary>
-        public delegate void TickEventHandler();
+        /// <param name="sender">The sender.</param>
+        public delegate void TickEventHandler(object sender);
 
         /// <summary>
         /// The delegate for indicating that the time value is zero.
         /// </summary>
-        public delegate void ZeroEventHandler();
+        /// <param name="sender">The sender.</param>
+        /// <param name="source">The source.</param>
+        public delegate void ZeroEventHandler(object sender, object source);
+
+        /// <summary>
+        /// The delegate for indicating that there was an error.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="error">The error.</param>
+        public delegate void ErrorEventHandler(object sender, string error);
 
         /// <summary>
         /// Occurs when [tick].
@@ -52,6 +66,11 @@ namespace HSA.InfoSys.Common.Timing
         /// Occurs when [zero].
         /// </summary>
         public event ZeroEventHandler OnZero;
+
+        /// <summary>
+        /// Occurs when [on error].
+        /// </summary>
+        public event ErrorEventHandler OnError;
 
         /// <summary>
         /// Gets a value indicating whether this <see cref="Countdown"/> is active.
@@ -70,6 +89,14 @@ namespace HSA.InfoSys.Common.Timing
         public Time Time { get; private set; }
 
         /// <summary>
+        /// Gets the source.
+        /// </summary>
+        /// <value>
+        /// The source.
+        /// </value>
+        public object Source { get; private set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Countdown"/> is canceled.
         /// </summary>
         /// <value>
@@ -85,44 +112,16 @@ namespace HSA.InfoSys.Common.Timing
         {
             Log.Info(Properties.Resources.LOG_COUNTDOWN_SET_REPEAT_TIME);
 
-            DateTime endtime = new DateTime();
+            var startTime = DateTime.Now;
+            var endTime = DateTime.Now.Add(this.Time.RepeatIn);
 
-            switch (this.Time.TypeOfTime)
-            {
-#if DEBUG
-                case TypeOfTime.Timespan:
-                    endtime = DateTime.Now.Add(new TimeSpan(0, 0, int.Parse(this.Time.TimeValues[0].ToString())));
-                    break;
-#endif
-                case TypeOfTime.Time:
-                    endtime = new DateTime(
-                        this.Time.Endtime.Year,
-                        this.Time.Endtime.Month,
-                        this.Time.Endtime.Day + 1,
-                        this.Time.Endtime.Hour,
-                        this.Time.Endtime.Minute,
-                        this.Time.Endtime.Second);
-                    break;
-
-                case TypeOfTime.Date:
-                    endtime = new DateTime(
-                        this.Time.Endtime.Year,
-                        this.Time.Endtime.Month + 1,
-                        this.Time.Endtime.Day,
-                        this.Time.Endtime.Hour,
-                        this.Time.Endtime.Minute,
-                        this.Time.Endtime.Second);
-                    break;
-            }
-
-            Log.DebugFormat(Properties.Resources.LOG_COUNTDOWN_SET_NEW_REPEAT_TIME, endtime);
-
-            var remain = new RemainTime(endtime.Subtract(DateTime.Now));
+            Log.DebugFormat(Properties.Resources.LOG_COUNTDOWN_SET_NEW_REPEAT_TIME, endTime);
 
             return new Time(
-                DateTime.Now,
-                endtime,
-                remain,
+                startTime,
+                endTime,
+                this.Time.RepeatIn,
+                new RemainTime(endTime.Subtract(startTime)),
                 this.Time.TypeOfTime,
                 this.Time.TimeValues,
                 this.Time.TimeString,
@@ -146,10 +145,23 @@ namespace HSA.InfoSys.Common.Timing
         /// <summary>
         /// Starts this instance.
         /// </summary>
-        /// <param name="time">The time.</param>
-        /// <param name="errorMessage">The error message.</param>
-        public void Start(Time time, out string errorMessage)
+        /// <returns>True on success.</returns>
+        public bool Start()
         {
+            return this.Start(this.Time);
+        }
+
+        /// <summary>
+        /// Starts this instance.
+        /// </summary>
+        /// <param name="time">The time.</param>
+        /// <returns>
+        /// True on success.
+        /// </returns>
+        public bool Start(Time time)
+        {
+            var errorMessage = string.Empty;
+
             if (time != null && TimeValidation.IsTimeInFuture(time, out errorMessage))
             {
                 Log.Info(Properties.Resources.LOG_COUNTDOWN_START_COUNTDOWN);
@@ -164,6 +176,14 @@ namespace HSA.InfoSys.Common.Timing
             {
                 errorMessage = Properties.Resources.TIME_VALIDATION_ERROR_INVALID_TIME_FORMAT;
             }
+
+            if (this.OnError != null && !errorMessage.Equals(string.Empty))
+            {
+                this.OnError(this, errorMessage);
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -178,6 +198,17 @@ namespace HSA.InfoSys.Common.Timing
         }
 
         /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public override string ToString()
+        {
+            return string.Format(Properties.Resources.COUNTDOWN_TO_STRING, this.Time, this.Source);
+        }
+
+        /// <summary>
         /// Runs this instance.
         /// </summary>
         private void Run()
@@ -188,7 +219,7 @@ namespace HSA.InfoSys.Common.Timing
             {
                 if (this.OnTick != null)
                 {
-                    this.OnTick();
+                    this.OnTick(this);
                 }
                 
                 this.Time.RemainTime.Time = this.Time.Endtime.Subtract(DateTime.Now);
@@ -201,7 +232,7 @@ namespace HSA.InfoSys.Common.Timing
 
             if (!this.Cancel)
             {
-                this.OnZero();
+                this.OnZero(this, this.Source);
             }
         }
 

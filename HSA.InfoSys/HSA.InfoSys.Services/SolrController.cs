@@ -23,10 +23,41 @@ namespace HSA.InfoSys.Common.Services
         private static readonly ILog Log = Logger<string>.GetLogger("CrawlController");
 
         /// <summary>
+        /// The solr controller.
+        /// </summary>
+        private static SolrController solrController;
+
+        /// <summary>
+        /// Prevents a default instance of the <see cref="SolrController"/> class from being created.
+        /// </summary>
+        private SolrController()
+        {
+        }
+
+        /// <summary>
         /// Our delegate for invoking an async callback.
         /// </summary>
         /// <param name="query">The query.</param>
         public delegate void InvokeSolrSearch(string query);
+
+        /// <summary>
+        /// Gets the solr controller.
+        /// </summary>
+        /// <value>
+        /// The solr controller.
+        /// </value>
+        public static SolrController SolrFactory
+        {
+            get
+            {
+                if (solrController == null)
+                {
+                    solrController = new SolrController();
+                }
+
+                return solrController;
+            }
+        }
 
         /// <summary>
         /// Starts a new search.

@@ -8,8 +8,8 @@ namespace HSA.InfoSys.Testing.DBTesting
     using System;
     using System.Threading;
     using HSA.InfoSys.Common.Logging;
-    using log4net;
     using HSA.InfoSys.Common.Services;
+    using log4net;
 
     /// <summary>
     /// Implement your testing methods for NHibernate here.
@@ -24,7 +24,7 @@ namespace HSA.InfoSys.Testing.DBTesting
         {
             ILog log = Logger<string>.GetLogger("WCFTesting");
 
-            IDBManager dbManager = DBManager.Manager;
+            IDBManager dbManager = DBManager.ManagerFactory;
             bool running = true;
 
             Console.WriteLine(string.Empty);
