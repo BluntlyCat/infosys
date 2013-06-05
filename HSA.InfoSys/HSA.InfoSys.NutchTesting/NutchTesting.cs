@@ -24,19 +24,13 @@ namespace HSA.InfoSys.Testing.NutchTesting
         public static void Main(string[] args)
         {
 
-            //Test für das Hinzufügen von Urls und deren Filter in die jeweiligen Nutch verzeichznisse
-            //
-           // string regex = "C:/Users/A/Dropbox/Semester 6/Projekt/Tortoise/conf/";
-           // string urls = "C:/Users/A/Dropbox/Semester 6/Projekt/Tortoise/urls/Nutch.txt";
-           // NutchUrlManager m = new NutchUrlManager(regex, urls);
-           // m.AddUrl("www.schokolade.de");
             List<string> urls = new List<string>{"www.schnitzel.de","test1", "wwwswdasd"};
             NutchManager n = new NutchManager();
-            n.MkUserDir("sanim");
-           // n.MkUserDir("andre");
-            n.AddURL(urls, "andre");
-           
+        //n.MkUserDir("sanim");
+        //// n.MkUserDir("andre");
+        //n.AddURL(urls, "andre");
 
+           
             ILog log = Logger<string>.GetLogger("NutchTesting");
             
             bool running = true;
@@ -67,6 +61,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
 
                         case ConsoleKey.S:
                             log.Info("Send request to nutch.");
+                            n.startCrawl("crawl urls -solr http://infosys.informatik.hs-augsburg.de:8983/solr -depth 1 -topN 1");
                             break;
                     }
                 }
