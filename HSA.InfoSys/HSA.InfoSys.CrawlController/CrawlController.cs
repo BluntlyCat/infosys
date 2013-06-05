@@ -6,14 +6,17 @@
 namespace HSA.InfoSys.Common.CrawlController
 {
     using System.Collections.Generic;
+    using System.ServiceModel;
     using HSA.InfoSys.Common.Logging;
+    using HSA.InfoSys.Common.Services;
     using log4net;
 
     /// <summary>
     /// This class is the controller for the crawler
     /// it implements an interface for communication
-    /// between the crawler and the gui by using wcf.
+    /// between the crawler and the GUI by using WCF.
     /// </summary>
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class CrawlController : ICrawlController
     {
         /// <summary>
@@ -34,6 +37,8 @@ namespace HSA.InfoSys.Common.CrawlController
         {
             this.services.Add(service);
         }
+
+        #region ICrawlController
 
         /// <summary>
         /// Starts the services.
@@ -61,5 +66,7 @@ namespace HSA.InfoSys.Common.CrawlController
                 service.StopService(cancel);
             }
         }
+
+        #endregion
     }
 }

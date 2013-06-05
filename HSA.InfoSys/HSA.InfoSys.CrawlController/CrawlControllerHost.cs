@@ -35,7 +35,9 @@ namespace HSA.InfoSys.Common.CrawlController
         /// </summary>
         /// <typeparam name="T">The implementing class.</typeparam>
         /// <typeparam name="IT">The interface for service contract.</typeparam>
-        public void OpenWCFHost<T, IT>()
+        /// <param name="instance">The instance.</param>
+        /// <returns>The T instance what was registered at WCF service.</returns>
+        public T OpenWCFHost<T, IT>(T instance)
         {
             var binding = new NetTcpBinding();
             X509Certificate2 certificate;
@@ -49,7 +51,7 @@ namespace HSA.InfoSys.Common.CrawlController
             var netTcpAddress = Addresses.GetNetTcpAddress(typeof(IT));
             var httpAddress = Addresses.GetHttpAddress(typeof(IT));
 
-            var host = new ServiceHost(typeof(T), new Uri(httpAddress));
+            var host = new ServiceHost(instance, new Uri(netTcpAddress));
 
             binding.Security.Mode = SecurityMode.Transport;
             binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
@@ -80,6 +82,8 @@ namespace HSA.InfoSys.Common.CrawlController
             this.hosts.Add(host);
             
             Log.InfoFormat(Properties.Resources.CRAWL_CONTROLLER_WCF_HOST_OPENED, typeof(T).Name);
+
+            return instance;
         }
 
         /// <summary>

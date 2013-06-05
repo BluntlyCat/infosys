@@ -7,10 +7,9 @@ namespace HSA.InfoSys.Testing.DBTesting
 {
     using System;
     using System.Threading;
-    using HSA.InfoSys.Common.DBManager;
-    using HSA.InfoSys.Common.DBManager.Data;
     using HSA.InfoSys.Common.Logging;
     using log4net;
+    using HSA.InfoSys.Common.Services;
 
     /// <summary>
     /// Implement your testing methods for NHibernate here.

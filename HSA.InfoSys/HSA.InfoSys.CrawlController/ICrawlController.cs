@@ -5,10 +5,8 @@
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.Common.CrawlController
 {
-    using System;
-    using System.Collections.Generic;
     using System.ServiceModel;
-    using HSA.InfoSys.Common.DBManager.Data;
+    using HSA.InfoSys.Common.Services;
 
     /// <summary>
     /// This is the interface for communication between the GUI and the web crawler
@@ -16,6 +14,12 @@ namespace HSA.InfoSys.Common.CrawlController
     [ServiceContract]
     public interface ICrawlController
     {
+        /// <summary>
+        /// Registers the service.
+        /// </summary>
+        /// <param name="service">The service.</param>
+        void RegisterService(IService service);
+
         /// <summary>
         /// Starts the services.
         /// </summary>

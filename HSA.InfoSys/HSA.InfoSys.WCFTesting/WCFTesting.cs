@@ -9,11 +9,11 @@ namespace HSA.InfoSys.Testing.WCFTesting
     using System.ServiceModel;
     using System.Threading;
     using HSA.InfoSys.Common.CrawlController;
-    using HSA.InfoSys.Common.DBManager;
-    using HSA.InfoSys.Common.DBManager.Data;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.SolrClient;
     using log4net;
+    using HSA.InfoSys.Common.Services;
+    using HSA.InfoSys.Common.Services.Data;
 
     /// <summary>
     /// Implement your testing methods for WCF here.
@@ -62,6 +62,8 @@ namespace HSA.InfoSys.Testing.WCFTesting
                                 ////var putensalami = CrawlControllerClient<IDBManager>.ClientProxy.GetEntity(new Guid("23c83f7f-a371-43ad-8734-a1c8013b55ee")) as Component;
                                 ////putensalami.Result = result;
                                 ////CrawlControllerClient<IDBManager>.ClientProxy.UpdateEntity(putensalami);
+
+                                CrawlControllerClient<IScheduler>.ClientProxy.AddSchedulerTime(new SchedulerTime());
 
                                 break;
 

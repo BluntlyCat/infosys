@@ -3,13 +3,8 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Common.CrawlController
+namespace HSA.InfoSys.Common.Services
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     /// <summary>
     /// This interface provides all methods for controlling a service.
     /// </summary>

@@ -7,8 +7,7 @@ namespace HSA.InfoSys.Common.CrawlController
 {
     using System;
     using System.Collections.Generic;
-    using HSA.InfoSys.Common.DBManager;
-    using HSA.InfoSys.Common.SolrClient;
+    using HSA.InfoSys.Common.Services;
 
     /// <summary>
     /// This is a helper class to get the correct service address by its type.
@@ -36,7 +35,7 @@ namespace HSA.InfoSys.Common.CrawlController
         private static int netTcpPort = 8086;
 
         /// <summary>
-        /// The initialized{CC2D43FA-BBC4-448A-9D0B-7B57ADF2655C}
+        /// Indicates if addresses are initialized.
         /// </summary>
         private static bool notInitialized = true;
 
@@ -51,6 +50,7 @@ namespace HSA.InfoSys.Common.CrawlController
                 {
                     typeof(ICrawlController),
                     typeof(ISolrController),
+                    typeof(IScheduler),
                     typeof(IDBManager)
                 };
 

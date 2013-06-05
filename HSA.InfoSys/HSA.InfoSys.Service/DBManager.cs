@@ -3,13 +3,14 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Common.DBManager
+namespace HSA.InfoSys.Common.Services
 {
     using System;
     using System.Collections.Generic;
     using System.Reflection;
-    using HSA.InfoSys.Common.DBManager.Data;
+    using System.ServiceModel;
     using HSA.InfoSys.Common.Logging;
+    using HSA.InfoSys.Common.Services.Data;
     using log4net;
     using NHibernate;
     using NHibernate.Cfg;
@@ -18,7 +19,8 @@ namespace HSA.InfoSys.Common.DBManager
     /// <summary>
     /// The DBManager handles database requests.
     /// </summary>
-    public class DBManager : IDBManager
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
+    public class DBManager : Service, IDBManager
     {
         /// <summary>
         /// The logger for db manager.
@@ -29,6 +31,13 @@ namespace HSA.InfoSys.Common.DBManager
         /// The database manager.
         /// </summary>
         private static IDBManager dbManager;
+
+        /// <summary>
+        /// Prevents a default instance of the <see cref="DBManager"/> class from being created.
+        /// </summary>
+        private DBManager()
+        {
+        }
 
         /// <summary>
         /// Gets the DB manager and ensures that the configuration
@@ -64,15 +73,7 @@ namespace HSA.InfoSys.Common.DBManager
             {
                 if (SessionFactory == null)
                 {
-                    var configuration = new Configuration();
-
-                    configuration.Configure();
-                    configuration.AddAssembly(typeof(DBManager).Assembly);
-
-                    SessionFactory = configuration.BuildSessionFactory();
-                    new SchemaExport(configuration).Drop(false, false);
-
-                    Log.Debug(Properties.Resources.DBSESSION_NHIBERNATE_CONFIG_READY);
+                    ConfigureSession();
                 }
 
                 Log.Debug(Properties.Resources.DBSESSION_OPEN_SESSION);
@@ -356,6 +357,65 @@ namespace HSA.InfoSys.Common.DBManager
             Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_SCHEDULER, scheduler);
 
             return scheduler;
+        }
+
+        /// <summary>
+        /// Starts the service.
+        /// </summary>
+        public override void StartService()
+        {
+            DBManager.Initialize();
+            base.StartService();
+        }
+
+        /// <summary>
+        /// Stops the service.
+        /// </summary>
+        /// <param name="cancel">if set to <c>true</c> [cancel].</param>
+        public override void StopService(bool cancel = false)
+        {
+            if (DBManager.SessionFactory != null && !DBManager.SessionFactory.IsClosed)
+            {
+                DBManager.SessionFactory.Close();
+            }
+
+            base.StopService(cancel);
+        }
+
+        /// <summary>
+        /// Runs this instance.
+        /// </summary>
+        protected override void Run()
+        {
+        }
+
+        /// <summary>
+        /// Initializes this instance of DBManager.
+        /// </summary>
+        private static void Initialize()
+        {
+            if (SessionFactory == null)
+            {
+                ConfigureSession();
+            }
+
+            Log.Debug(Properties.Resources.DBSESSION_OPEN_SESSION);
+        }
+
+        /// <summary>
+        /// Configures the session.
+        /// </summary>
+        private static void ConfigureSession()
+        {
+            var configuration = new Configuration();
+
+            configuration.Configure();
+            configuration.AddAssembly(typeof(DBManager).Assembly);
+
+            SessionFactory = configuration.BuildSessionFactory();
+            new SchemaExport(configuration).Drop(false, false);
+
+            Log.Debug(Properties.Resources.DBSESSION_NHIBERNATE_CONFIG_READY);
         }
     }
 }

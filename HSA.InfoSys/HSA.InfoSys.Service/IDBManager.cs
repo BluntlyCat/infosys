@@ -3,13 +3,13 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Common.DBManager
+namespace HSA.InfoSys.Common.Services
 {
     using System;
     using System.Collections.Generic;
     using System.ServiceModel;
-    using HSA.InfoSys.Common.DBManager.Data;
     using HSA.InfoSys.Common.NetDataContractSerializer;
+    using HSA.InfoSys.Common.Services.Data;
 
     /// <summary>
     /// The interface for accessing the data base.

@@ -3,16 +3,19 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Common.SolrClient
+namespace HSA.InfoSys.Common.Services
 {
     using System;
+    using System.ServiceModel;
     using HSA.InfoSys.Common.Logging;
+    using HSA.InfoSys.Common.SolrClient;
     using log4net;
 
     /// <summary>
-    /// In this class are all methods implemented for controlling solr.
+    /// In this class are all methods implemented for controlling Solr.
     /// </summary>
-    public class SolrController : ISolrController
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
+    public class SolrController : Service, ISolrController
     {
         /// <summary>
         /// The logger.
@@ -52,6 +55,13 @@ namespace HSA.InfoSys.Common.SolrClient
                 });
 
             invokeSearch.BeginInvoke(query, callback, this);
+        }
+
+        /// <summary>
+        /// Runs this instance.
+        /// </summary>
+        protected override void Run()
+        {
         }
     }
 }

@@ -106,15 +106,6 @@ namespace HSA.InfoSys.Common.SolrClient.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Search started with query: [{0}]. ähnelt.
-        /// </summary>
-        internal static string SOLR_CLIENT_SEARCH_STARTED {
-            get {
-                return ResourceManager.GetString("SOLR_CLIENT_SEARCH_STARTED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Socket to host: [{0}] closed. ähnelt.
         /// </summary>
         internal static string SOLR_CLIENT_SOCKET_CLOSED {

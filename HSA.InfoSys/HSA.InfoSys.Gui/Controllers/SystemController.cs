@@ -9,11 +9,11 @@ namespace HSA.InfoSys.Gui.Controllers
     using System.Web.Mvc;
     using System.Web.Security;
     using HSA.InfoSys.Common.CrawlController;
-    using HSA.InfoSys.Common.DBManager;
-    using HSA.InfoSys.Common.DBManager.Data;
     using HSA.InfoSys.Common.Logging;
     using log4net;
     using System.Collections.Generic;
+    using HSA.InfoSys.Common.Services;
+    using HSA.InfoSys.Common.Services.Data;
 
     /// <summary>
     /// The controller for the system.
