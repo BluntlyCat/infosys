@@ -10,7 +10,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
     using HSA.InfoSys.Common.Logging;
     using log4net;
     using System.Collections.Generic;
-    using HSA.InfoSys.Nutch;
+    using HSA.InfoSys.Common.Nutch;
 
     /// <summary>
     /// Implement your testing methods for Nutch here.
