@@ -10,6 +10,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
     using HSA.InfoSys.Common.Logging;
     using log4net;
     using System.Collections.Generic;
+    using HSA.InfoSys.Nutch;
 
     /// <summary>
     /// Implement your testing methods for Nutch here.
@@ -30,6 +31,8 @@ namespace HSA.InfoSys.Testing.NutchTesting
            // NutchUrlManager m = new NutchUrlManager(regex, urls);
            // m.AddUrl("www.schokolade.de");
 
+            NutchManager n = new NutchManager();
+            n.MkUserDir("sanim");
 
             ILog log = Logger<string>.GetLogger("NutchTesting");
             
