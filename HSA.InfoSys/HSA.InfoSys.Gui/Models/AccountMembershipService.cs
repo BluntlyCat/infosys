@@ -189,7 +189,7 @@ namespace HSA.InfoSys.Gui.Models
             string verifyUrl = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) +
                              "/account/verify?ID=" + confirmationGuid;
 
-            MembershipUser admin = Membership.GetUser("webmaster");
+            MembershipUser admin = Membership.GetUser("webmaster1");
 
             var message = new MailMessage("infosysss13@web.de", admin.Email)
             {

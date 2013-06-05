@@ -96,11 +96,16 @@ namespace HSA.InfoSys.Gui.Controllers
             // init
             var cc = CrawlControllerClient<IDBManager>.ClientProxy;
 
+            // get all components by OrgUnitId
             var components = cc.GetComponentsByOrgUnitId(new Guid(systemguid));
 
             this.ViewData["navid"] = "mysystems";
             this.ViewData["systemguid"] = systemguid;
-            this.ViewData["components"] = components;
+
+            if (components.Count > 0)
+            {
+                this.ViewData["components"] = components;
+            }
 
             return this.View();
         }
@@ -113,28 +118,44 @@ namespace HSA.InfoSys.Gui.Controllers
             string systemguid = Request.QueryString["sysguid"];
 
             // get POST data from form
-            string[] components = Request["components[]"].Split(',');
+            string component = Request["components"];
 
             // init
             var cc = CrawlControllerClient<IDBManager>.ClientProxy;
 
+            // get orgUnit by id
             var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnit")) as OrgUnit;
             
             // log
             Log.Info("add new component");
 
-            foreach (string comp in components)
-            {
-                // save component to DB
-                cc.AddEntity(cc.CreateComponent(comp, orgUnit));
-            }
-
-            // vars to view
-            //this.ViewData["components"] = components;
+            // save component to DB
+            cc.AddEntity(cc.CreateComponent(component, orgUnit));
 
             return this.Redirect("/System/Components?sysguid=" + systemguid);
 
-            //return this.RedirectToAction("Components", "System");
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult DeleteComponent()
+        {
+            // get systemguid from GET-Request
+            string systemguid = Request.QueryString["sysguid"];
+
+            // get compid from GET-Request
+            string compid = Request.QueryString["compid"];
+
+            // init
+            var cc = CrawlControllerClient<IDBManager>.ClientProxy;
+
+            // get component by id
+            var component = cc.GetEntity(new Guid(compid), cc.LoadThisEntities("Component"));
+            
+            // delete component
+            cc.DeleteEntity(component);
+
+            return this.Redirect("/System/Components?sysguid=" + systemguid);
         }
 
         /// <summary>
