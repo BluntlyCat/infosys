@@ -45,13 +45,6 @@ namespace HSA.InfoSys.Gui.Controllers
 
             this.ViewData["navid"] = "mysystems";
 
-            // Testing -> Dummy SystemGUID
-            // Da wir über das WCF noch keine OrgUnits abfragen können, haben wir zum Testen ein
-            // ein OrgUnit erzeugt, und dessen GUID aus der DB hergenommen und hier eingefügt, sodass
-            // wenn wir in der GUI auf den Edit-Button eines Systems klicken, diese GUID mitgeliefert wird, 
-            // und wir auf der Editor-Seite über diese GUID das Objekt aus der DB holen können.
-            this.ViewData["systemguid"] = "05e1b084-535d-4bd9-b2d2-a1c800c87161";
-
             return this.View();
         }
 
@@ -116,13 +109,24 @@ namespace HSA.InfoSys.Gui.Controllers
             // get POST data from form
             string[] components = Request["components[]"].Split(',');
 
+            // init
+            var cc = CrawlControllerClient<IDBManager>.ClientProxy;
+
+            // log
+            Log.Info("add new component");
+
+            // get id of current logged-in user
+            MembershipUser membershipuser = Membership.GetUser();
+            string userid = membershipuser.ProviderUserKey.ToString();
+            int id = Convert.ToInt32(userid);
+
             foreach (string comp in components)
             {
-                // create new GUID
-                string guid = Guid.NewGuid().ToString();
+                
 
                 // save component to DB
-                // #TODO
+                //cc.CreateComponent(comp, orgUnit);
+                
             }
 
             // vars to view

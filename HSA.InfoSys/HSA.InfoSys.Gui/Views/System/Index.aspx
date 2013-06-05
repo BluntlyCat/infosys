@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage"%>
-<%@ Import Namespace="HSA.InfoSys.Common.DBManager.Data"%>
+<%@ Import Namespace="HSA.InfoSys.Common.Services.Data"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     My Systems
@@ -43,31 +43,13 @@
                                     <%= item.Name %>
                                 </td>
                                 <td>
-                                    <a class="btn btn-small" href="/System/Components/?sysguid="<%= item.EntityId %>"><i class="icon-cog"></i></a> 
+                                    <a class="btn btn-small" href="/System/Components/?sysguid=<%= item.EntityId %>"><i class="icon-cog"></i></a> 
                                 </td>
                                 <td>
                                     <a class="btn btn-small" href="#deleteModal" data-toggle="modal"><i class="icon-trash"></i></a>
                                 </td>
                             </tr>
                           <% } %>
-                                                    
-
-                        <!-- 
-                        <tr>
-                            <td>
-                                <input type="checkbox" value="1" />
-                            </td>
-                            <td>
-                                Webserver lnx07
-                            </td>
-                            <td>
-                                <a class="btn btn-small" href="/System/Components?sysguid=<%= ViewData["systemguid"] %>"><i class="icon-cog"></i></a>
-                            </td>
-                            <td>
-                                <a class="btn btn-small" href="#deleteModal" data-toggle="modal"><i class="icon-trash"></i></a>
-                            </td>
-                        </tr>
-                        -->
                     </tbody>
                 </table>
             </div>
