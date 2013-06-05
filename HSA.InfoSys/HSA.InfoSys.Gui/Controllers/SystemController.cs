@@ -88,13 +88,19 @@ namespace HSA.InfoSys.Gui.Controllers
         /// </returns>
         [Authorize]
         [HttpGet]
-        public ActionResult Components(string systemGUID)
+        public ActionResult Components()
         {
             // get systemguid from GET-Request
             string systemguid = Request.QueryString["sysguid"];
 
+            // init
+            var cc = CrawlControllerClient<IDBManager>.ClientProxy;
+
+            var components = cc.GetComponentsByOrgUnitId(new Guid(systemguid));
+
             this.ViewData["navid"] = "mysystems";
             this.ViewData["systemguid"] = systemguid;
+            this.ViewData["components"] = components;
 
             return this.View();
         }
@@ -103,33 +109,32 @@ namespace HSA.InfoSys.Gui.Controllers
         [HttpPost]
         public ActionResult ComponentsSubmit()
         {
+            // get systemguid from GET-Request
+            string systemguid = Request.QueryString["sysguid"];
+
             // get POST data from form
             string[] components = Request["components[]"].Split(',');
 
             // init
             var cc = CrawlControllerClient<IDBManager>.ClientProxy;
 
+            var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnit")) as OrgUnit;
+            
             // log
             Log.Info("add new component");
 
-            // get id of current logged-in user
-            MembershipUser membershipuser = Membership.GetUser();
-            string userid = membershipuser.ProviderUserKey.ToString();
-            int id = Convert.ToInt32(userid);
-
             foreach (string comp in components)
             {
-                
-
                 // save component to DB
-                //cc.CreateComponent(comp, orgUnit);
-                
+                cc.AddEntity(cc.CreateComponent(comp, orgUnit));
             }
 
             // vars to view
             //this.ViewData["components"] = components;
 
-            return this.RedirectToAction("Components", "System");
+            return this.Redirect("/System/Components?sysguid=" + systemguid);
+
+            //return this.RedirectToAction("Components", "System");
         }
 
         /// <summary>

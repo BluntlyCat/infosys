@@ -225,6 +225,25 @@ namespace HSA.InfoSys.Common.Services
         }
 
         /// <summary>
+        /// Gets the components by org unit id.
+        /// </summary>
+        /// <param name="orgUnitGuid">The org unit GUID.</param>
+        /// <returns>
+        /// A list of components which belongs to the given OrgUnit.
+        /// </returns>
+        public IList<Component> GetComponentsByOrgUnitId(Guid orgUnitGuid)
+        {
+            using (ISession session = Session)
+            {
+                //Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ORGUNIT_BY_USERID, orgUnit, userID);
+
+                return session.QueryOver<Component>()
+                    .Where(x => x.OrgUnit.EntityId == orgUnitGuid)
+                    .List<Component>();
+            }
+        }
+
+        /// <summary>
         /// Gets the scheduler times.
         /// </summary>
         /// <returns>

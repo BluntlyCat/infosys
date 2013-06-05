@@ -77,6 +77,15 @@ namespace HSA.InfoSys.Common.Services
         IList<OrgUnit> GetOrgUnitsByUserID(int userID);
 
         /// <summary>
+        /// Gets the components by org unit id.
+        /// </summary>
+        /// <param name="orgUnitGuid">The org unit GUID.</param>
+        /// <returns></returns>
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        IList<Component> GetComponentsByOrgUnitId(Guid orgUnitGuid);
+
+        /// <summary>
         /// Gets the scheduler times.
         /// </summary>
         /// <returns>A list of all OrgUnitConfig objects.</returns>
