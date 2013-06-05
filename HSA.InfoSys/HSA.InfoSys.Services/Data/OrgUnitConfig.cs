@@ -52,23 +52,32 @@ namespace HSA.InfoSys.Common.Services.Data
         [DataMember]
         public virtual bool EmailActive { get; set; }
 
-		/// <summary>
-		/// Gets or sets the Days.
-		/// </summary>
-		/// <value>
-		/// The Days.
-		/// </value>
-		[DataMember]
-		public virtual int Days { get; set; }
+        /// <summary>
+        /// Gets or sets the Days.
+        /// </summary>
+        /// <value>
+        /// The Days.
+        /// </value>
+        [DataMember]
+        public virtual int Days { get; set; }
 
-		/// <summary>
-		/// Gets or sets the Time.
-		/// </summary>
-		/// <value>
-		/// The Time for crawling.
-		/// </value>
-		[DataMember]
-		public virtual int Time { get; set; }
+        /// <summary>
+        /// Gets or sets the Time.
+        /// </summary>
+        /// <value>
+        /// The Time for crawling.
+        /// </value>
+        [DataMember]
+        public virtual int Time { get; set; }
+
+        /// <summary>
+        /// Gets or sets the time stamp.
+        /// </summary>
+        /// <value>
+        /// The time stamp.
+        /// </value>
+        [DataMember]
+        public virtual DateTime NextSearch { get; set; }
         
         /// <summary>
         /// Gets or sets a value indicating whether the scheduler is active or not.
@@ -88,14 +97,14 @@ namespace HSA.InfoSys.Common.Services.Data
         public override string ToString()
         {
             return string.Format(
-				"ID: {0}, URLs: {1}, Urls active: {2}, Mails: {3}, Mails active: {4}, Schedule every {5} days at ({6}), Scheduler active: {7}",
+                "ID: {0}, URLs: {1}, Urls active: {2}, Mails: {3}, Mails active: {4}, Schedule every {5} days at ({6}), Scheduler active: {7}",
                 this.EntityId,
                 this.URLS,
                 this.URLActive,
                 this.Emails,
                 this.EmailActive,
                 this.Days,
-				this.Time,
+                this.Time,
                 this.SchedulerActive);
         }
     }

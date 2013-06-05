@@ -35,15 +35,6 @@ namespace HSA.InfoSys.Common.Services.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the time stamp.
-        /// </summary>
-        /// <value>
-        /// The time stamp.
-        /// </value>
-        [DataMember]
-        public virtual DateTime NextSearch { get; set; }
-
-        /// <summary>
         /// Gets or sets the system config.
         /// </summary>
         /// <value>
@@ -85,11 +76,10 @@ namespace HSA.InfoSys.Common.Services.Data
         public override string ToString()
         {
             return string.Format(
-                "ID: {0}, UserId: {1}, Name: {2}, NextSearch: {3}, OrgUnitConfig: ({4})",
+                "ID: {0}, UserId: {1}, Name: {2}, OrgUnitConfig: ({3})",
                 this.EntityId,
                 this.UserId,
                 this.Name,
-                this.NextSearch,
                 this.OrgUnitConfig);
         }
     }

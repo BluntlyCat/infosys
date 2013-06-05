@@ -133,12 +133,13 @@ namespace HSA.InfoSys.Common.Services
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
         OrgUnitConfig CreateOrgUnitConfig (
-			string urls,
-			string emails,
-			bool urlActive,
-			bool emailNotification,
-			int days,
-			int time,
-			bool schedulerActive);
+            string urls,
+            string emails,
+            bool urlActive,
+            bool emailNotification,
+            int days,
+            int time,
+            DateTime nextSearch,
+            bool schedulerActive);
     }
 }

@@ -67,7 +67,7 @@ namespace HSA.InfoSys.Gui.Controllers
             int id = Convert.ToInt32(userid);
 
             // create SystemConfig
-            var systemConfig = cc.CreateOrgUnitConfig(null, null, false, false, 0, 0, true);
+            var systemConfig = cc.CreateOrgUnitConfig(null, null, false, false, 0, 0, new DateTime(), true);
 
             // create System
             var system = cc.CreateOrgUnit(id, newsystem);

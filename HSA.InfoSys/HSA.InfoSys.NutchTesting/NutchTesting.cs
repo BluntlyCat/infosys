@@ -61,7 +61,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
 
                         case ConsoleKey.S:
                             log.Info("Send request to nutch.");
-                            n.startCrawl("crawl urls -solr http://infosys.informatik.hs-augsburg.de:8983/solr -depth 1 -topN 1");
+                            //n.startCrawl("crawl urls -solr http://infosys.informatik.hs-augsburg.de:8983/solr -depth 1 -topN 1");
                             break;
                     }
                 }

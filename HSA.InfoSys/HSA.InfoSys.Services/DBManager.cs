@@ -294,8 +294,7 @@ namespace HSA.InfoSys.Common.Services
             var orgUnit = new OrgUnit
             {
                 UserId = userId,
-                Name = name,
-                NextSearch = DateTime.Now
+                Name = name
             };
 
             Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_ORGUNIT, orgUnit);
@@ -322,6 +321,7 @@ namespace HSA.InfoSys.Common.Services
 			bool emailNotification,
 			int days,
 			int time,
+            DateTime nextSearch,
 			bool schedulerActive)
         {
             var orgUnitConfig = new OrgUnitConfig
@@ -332,6 +332,7 @@ namespace HSA.InfoSys.Common.Services
                 EmailActive = emailNotification,
 				Days = days,
 				Time = time,
+                NextSearch = nextSearch,
                 SchedulerActive = schedulerActive
             };
 
