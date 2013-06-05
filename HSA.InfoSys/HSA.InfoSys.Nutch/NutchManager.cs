@@ -4,7 +4,7 @@
 // </copyright>
 // ------------------------------------------------------------------------
 
-namespace HSA.InfoSys.Nutch
+namespace HSA.InfoSys.Common.Nutch
 {
     using System;
     using System.Collections.Generic;
