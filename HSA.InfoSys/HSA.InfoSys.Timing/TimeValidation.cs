@@ -465,7 +465,9 @@ namespace HSA.InfoSys.Common.Timing
             }
 
             var remainTime = new RemainTime(endtime.Subtract(now));
-            return new Time(now, endtime, remainTime, type, timeValues, time, repeat);
+            var repeatIn = remainTime.Time
+                ;
+            return new Time(now, endtime, repeatIn, remainTime, type, timeValues, time, repeat);
         }
     }
 }
