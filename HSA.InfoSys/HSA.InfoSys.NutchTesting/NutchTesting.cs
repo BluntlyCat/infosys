@@ -28,6 +28,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
+            INutchManager n = NutchManager.ManagerFactory;
             bool running = true;
            
             Console.WriteLine(string.Empty);
@@ -55,7 +56,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
                             break;
 
                         case ConsoleKey.S:
-                            NutchManager n = new NutchManager();
+                            
                             Log.Info("Send request to nutch.");
                             n.StartCrawl("path", 1, 1);
                             break;

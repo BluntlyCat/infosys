@@ -22,19 +22,14 @@ namespace HSA.InfoSys.Common.Nutch
         private static readonly ILog Log = Logger<string>.GetLogger("NutchManager");
 
         /// <summary>
-        /// The logger for nutch manager.
+        /// The NutchManager.
         /// </summary>
-        private ILog log = Logger<string>.GetLogger("NutchTesting");
+        private static INutchManager nutchManager;
 
         /// <summary>
         /// The path to prefix file.
         /// </summary>
         private string prefixPath;
-
-        /// <summary>
-        /// The path for the regex url filter.
-        /// </summary>
-        private string regexPath;
 
         /// <summary>
         /// The path to URL file.
@@ -47,9 +42,9 @@ namespace HSA.InfoSys.Common.Nutch
         private string fileName = Properties.Settings.Default.SEED_FILENAME;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NutchManager"/> class.
+        /// Prevents a default instance of the <see cref="NutchManager"/> class from being created.
         /// </summary>
-        public NutchManager()
+        private NutchManager()
         {
 #if !MONO
             this.urlPath = Properties.Settings.Default.URL_PATH_DOTNET;
@@ -58,6 +53,27 @@ namespace HSA.InfoSys.Common.Nutch
             this.URLPath = Properties.Settings.Default.URL_PATH_MONO;
             this.PrefixPath = Properties.Settings.Default.PREFIX_PATH_MONO;
 #endif
+        }
+
+        /// <summary>
+        /// Gets the NutchManager and ensures that the configuration
+        /// will be executed only once and that there is only one NutchManager.
+        /// </summary>
+        /// <returns>
+        /// The NutchManager
+        /// </returns>
+        public static INutchManager ManagerFactory
+        {
+            get
+            {
+                if (nutchManager == null)
+                {
+                    Log.Debug(Properties.Resources.NUTCHMANAGER_NO_MANAGER_FOUND);
+                    nutchManager = new NutchManager();
+                }
+
+                return nutchManager;
+            }
         }
 
         /// <summary>
