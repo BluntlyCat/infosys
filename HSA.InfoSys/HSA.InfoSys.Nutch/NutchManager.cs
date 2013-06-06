@@ -14,7 +14,7 @@ namespace HSA.InfoSys.Common.Nutch
     /// <summary>
     /// The Nutch Manager handles the WebCrawl
     /// </summary>
-    public class NutchManager
+    public class NutchManager : INutchManager
     {
         /// <summary>
         /// The logger for NutchManager.
