@@ -36,7 +36,7 @@
                 </form>
             </div>
 
-            <form action="/System/SearchConfigSubmit" method="post">
+            <form action="/System/SearchConfigSubmit?sysguid=<%= ViewData["systemguid"] %>" method="post">
 
                 <!-- Scheduler -->
                 <div id="schedulerblock" class="contentbox-content cutline-bot">
@@ -63,11 +63,12 @@
                                 <option value="<%= i %>"><%= time %></option>
                             <% } %>
                         </select> 
-                        Uhr. Starte erste Suche am
+                        Uhr. 
+<%--                        Starte erste Suche am
                         <div class="input-append date">
                             <input id="sc_date" data-date="12-02-2012" data-date-format="dd-mm-yyyy" class="span2" size="16" type="text" name="sc_date" value="12-02-2012">
                             <span class="add-on"><i class="icon-th"></i></span>
-                        </div>
+                        </div>--%>
                     </div>
                 </div>
 
@@ -78,7 +79,7 @@
                     Du kannst mehrere E-Mail Adressen angeben.</span>
                     <div id="emailEnabled" style="width: 500px; margin-left: 100px; margin-bottom: 10px; margin-top: 20px;">
                         <label class="checkbox inline">
-                            <input id="emailsOn" type="checkbox" name="emailsOn"> Sende E-Mail mit Suchergebnissen an:
+                            <input id="emailsOn" type="checkbox" name="emailsOn" /> Sende E-Mail mit Suchergebnissen an:
                         </label>
                     </div>
                     <div id="emails" style="margin-left: 100px; width: 500px;">
@@ -105,7 +106,7 @@
                             <input type="checkbox" id="Checkbox2" name="irgendeineseite" checked="checked" /> irgendeineseite.de
                         </label><br />
                         <label class="checkbox inline">
-                            <input id="websitesOn" type="checkbox" name="websitesOn"> weitere...
+                            <input id="websitesOn" type="checkbox" name="websitesOn"/> weitere...
                         </label>
                     </div>
 

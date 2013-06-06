@@ -14,6 +14,8 @@ namespace HSA.InfoSys.Gui.Controllers
     using System.Collections.Generic;
     using HSA.InfoSys.Common.Services;
     using HSA.InfoSys.Common.Services.Data;
+    using System.Web.Helpers;
+    
 
     /// <summary>
     /// The controller for the system.
@@ -67,7 +69,7 @@ namespace HSA.InfoSys.Gui.Controllers
             int id = Convert.ToInt32(userid);
 
             // create SystemConfig
-            var systemConfig = cc.CreateOrgUnitConfig(null, null, false, false, 0, 0, new DateTime(), true);
+            var systemConfig = cc.CreateOrgUnitConfig(null, null, false, false, 0, 0, new DateTime(), false);
 
             // create System
             var system = cc.CreateOrgUnit(id, newsystem);
@@ -167,7 +169,7 @@ namespace HSA.InfoSys.Gui.Controllers
         /// </returns>
         [Authorize]
         [HttpGet]
-        public ActionResult SearchConfig(string systemGUID)
+        public ActionResult SearchConfig()
         {
             // get systemguid from GET-Request
             string systemguid = Request.QueryString["sysguid"];
@@ -175,7 +177,7 @@ namespace HSA.InfoSys.Gui.Controllers
             // init
             var cc = CrawlControllerClient<IDBManager>.ClientProxy;
 
-            // get SystemConfig, OrgUnitConfig, Scheduler
+            // get SystemConfig, OrgUnitConfig
             var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
             var config = orgUnit.OrgUnitConfig;
 
@@ -187,8 +189,8 @@ namespace HSA.InfoSys.Gui.Controllers
             this.ViewData["sc_days"] = config.Days;
             this.ViewData["sc_hours"] = config.Time;
 
-            this.ViewData["emails"] = config.Emails;
-            this.ViewData["urls"] = config.URLS;
+            this.ViewData["emails"] = System.Web.Helpers.Json.Decode(config.Emails);
+            this.ViewData["urls"] = System.Web.Helpers.Json.Decode(config.URLS);
 
             //MembershipUser user = Membership.GetUser();
             //this.ViewData["useremail"] = user.Email;
@@ -207,22 +209,58 @@ namespace HSA.InfoSys.Gui.Controllers
         [HttpPost]
         public ActionResult SearchConfigSubmit()
         {
-            System.Web.HttpRequestBase r = Request;
-
-            string schedulerOn = Request["schedulerOn"];
-            string emailsOn = Request["emailsOn"];
-            string websitesOn = Request["websitesOn"];
-
+            // get data from GET-Request
+            string systemguid = Request.QueryString["sysguid"];
             string sc_days = Request["sc_days"];
             string sc_time = Request["sc_time"];
-            string sc_date = Request["sc_date"];
 
             string[] emails = Request["emails[]"].Split(',');
             string[] websites = Request["websites[]"].Split(',');
 
-            // #TODO save to db
+            // init
+            var cc = CrawlControllerClient<IDBManager>.ClientProxy;
 
-            return this.RedirectToAction("SearchConfig", "System");
+            // get SystemConfig, OrgUnitConfig
+            var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
+            var config = orgUnit.OrgUnitConfig;
+
+            if (Request["schedulerOn"] == "on")
+            {
+                config.SchedulerActive = true;
+                config.Days = Convert.ToInt32(sc_days);
+                config.Time = Convert.ToInt32(sc_time);
+            }
+            else
+            {
+                config.SchedulerActive = false;
+            }
+
+            if (Request["emailsOn"] == "on")
+            {
+                config.EmailActive = true;
+                config.Emails = System.Web.Helpers.Json.Encode(emails);
+            }
+            else
+            {
+                config.EmailActive = false;
+            }
+
+            if (Request["websitesOn"] == "on")
+            {
+                config.URLActive = true;
+                config.URLS = System.Web.Helpers.Json.Encode(websites);
+
+            }
+            else
+            {
+                config.URLActive = false;
+            }
+
+            //save to db
+            cc.UpdateEntity(config);
+
+            return this.Redirect("/System/SearchConfig?sysguid=" + systemguid);
         }
     }
 }
+
