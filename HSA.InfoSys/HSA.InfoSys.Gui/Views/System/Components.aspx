@@ -57,7 +57,7 @@
                                             <%= item.Name %>
                                         </td>
                                         <td>
-                                            <a class="btn btn-small" href="/System/DeleteComponent?sysguid=<%= ViewData["systemguid"] %>&compid=<%= item.EntityId %>"><i class="icon-thumbs-up"></i></a> 
+                                            <a class="btn btn-small" href=""><i class="icon-thumbs-up"></i></a> 
                                         </td>
                                         <td>
                                             <a class="btn btn-small" href="/System/DeleteComponent?sysguid=<%= ViewData["systemguid"] %>&compid=<%= item.EntityId %>"><i class="icon-minus"></i></a> 
