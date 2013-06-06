@@ -50,6 +50,10 @@ namespace HSA.InfoSys.Gui.Controllers
             return this.View();
         }
 
+        /// <summary>
+        /// Is Called when a new OrgUnit was created
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         [HttpPost]
         public ActionResult IndexSubmit()
@@ -82,6 +86,45 @@ namespace HSA.InfoSys.Gui.Controllers
         }
 
         /// <summary>
+        /// Deletes the system.
+        /// </summary>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet]
+        public ActionResult DeleteSystem()
+        {
+            // get systemguid from GET-Request
+            string systemguid = Request.QueryString["sysguid"];
+
+            // init
+            var cc = CrawlControllerClient<IDBManager>.ClientProxy;
+
+            //get orgUnit
+            var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnit", "OrgUnitConfig")) as OrgUnit;
+
+            // get all components by OrgUnitId
+            var components = cc.GetComponentsByOrgUnitId(new Guid(systemguid));
+
+            
+            // entities must be deleted in this order because of db dependencies
+            // delete all components and their results 
+            foreach (Component comp in components)
+            {
+                if (comp.Result != null)
+                {
+                    cc.DeleteEntity(comp.Result);
+                }
+                cc.DeleteEntity(comp);
+            }
+
+            //delete OrgUnit and orgUnitConfig
+            cc.DeleteEntity(orgUnit);
+            cc.DeleteEntity(orgUnit.OrgUnitConfig);
+
+            return this.RedirectToAction("Index", "System");
+        }
+
+        /// <summary>
         /// Called when page components is loading.
         /// </summary>
         /// <param name="systemGUID">The systemGUID.</param>
@@ -98,11 +141,15 @@ namespace HSA.InfoSys.Gui.Controllers
             // init
             var cc = CrawlControllerClient<IDBManager>.ClientProxy;
 
+            //get OrgUnit
+            var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnit")) as OrgUnit;
+
             // get all components by OrgUnitId
             var components = cc.GetComponentsByOrgUnitId(new Guid(systemguid));
 
             this.ViewData["navid"] = "mysystems";
             this.ViewData["systemguid"] = systemguid;
+            this.ViewData["orgUnitName"] = orgUnit.Name;
 
             if (components.Count > 0)
             {

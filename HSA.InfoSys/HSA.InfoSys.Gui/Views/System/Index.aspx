@@ -46,9 +46,31 @@
                                     <a class="btn btn-small" href="/System/Components/?sysguid=<%= item.EntityId %>"><i class="icon-cog"></i></a> 
                                 </td>
                                 <td>
-                                    <a class="btn btn-small" href="#deleteModal" data-toggle="modal"><i class="icon-trash"></i></a>
+                                    <a class="btn btn-small" href="#deleteModal<%= item.EntityId %>" data-toggle="modal"><i class="icon-trash"></i></a>
                                 </td>
                             </tr>
+
+                            <!-- deleteModal -->
+                            <div id="deleteModal<%= item.EntityId %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        ×</button>
+                                    <h3 id="H1">
+                                        Delete System</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to delete the following system?</p>
+                                    <span class="label"><%= item.Name %></span>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn" data-dismiss="modal" aria-hidden="true">
+                                        Close</button>
+                                    <a class="btn btn-danger" href="/System/DeleteSystem?sysguid=<%= item.EntityId %>"">
+                                        <i class="icon-trash icon-white"></i>&nbsp;&nbsp;<b>Delete</b></a>
+                                </div>
+                            </div>
+
                           <% } %>
                     </tbody>
                 </table>
@@ -83,26 +105,7 @@
     </div>
     </form>
 
-    <!-- deleteModal -->
-    <div id="deleteModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                ×</button>
-            <h3 id="H1">
-                Delete System</h3>
-        </div>
-        <div class="modal-body">
-            <p>Are you sure you want to delete the following system?</p>
-            <span class="label">Webserver</span>
-        </div>
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">
-                Close</button>
-            <a class="btn btn-danger" href="#">
-                <i class="icon-trash icon-white"></i>&nbsp;&nbsp;<b>Delete</b></a>
-        </div>
-    </div>
+    
 
 
     <script>
