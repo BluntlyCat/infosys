@@ -45,12 +45,19 @@
                     System durchgeführt werden soll.</span>
                     <div id="schedulerEnabled" style="width: 500px; margin-left: 100px; margin-bottom: 10px; margin-top: 20px;">
                         <label class="checkbox inline">
-                            <input id="schedulerOn" type="checkbox" name="schedulerOn" /> Zeitplan verwenden
+                            <% if ((bool)ViewData["schedulerActive"] == true)
+                               { %>
+                                <input id="schedulerOn" type="checkbox" name="schedulerOn" checked="checked" /> Zeitplan verwenden
+                            <% }
+                               else
+                               { %>
+                                <input id="schedulerOn" type="checkbox" name="schedulerOn" /> Zeitplan verwenden
+                            <% } %>
                         </label>
                     </div>
                     <div id="schedulerconfig" class="form-horizontal" style="margin-left: 100px; width: 700px;">
                        Suche alle 
-                       <input style="width: 30px;" id="sc_days" type="text" name="sc_days" placeholder="z.B. 3" value="3">
+                       <input style="width: 30px;" id="sc_days" type="text" name="sc_days" placeholder="z.B. 3" value="<%= ViewData["sc_days"] %>">
                        Tage um 
                        <select id="sc_time" style="width: 75px;" name="sc_time">
                             <% for (int i = 0; i < 24; i++) { %>
@@ -60,7 +67,11 @@
                                        time = "0" + i + ":00";
                                    }
                                 %>
-                                <option value="<%= i %>"><%= time %></option>
+                                <% if ((int)ViewData["sc_hours"] == i) { %>
+                                    <option value="<%= i %>" selected><%= time %></option>
+                                <% } else { %>
+                                    <option value="<%= i %>"><%= time %></option>
+                                <% } %>
                             <% } %>
                         </select> 
                         Uhr. 
@@ -79,18 +90,34 @@
                     Du kannst mehrere E-Mail Adressen angeben.</span>
                     <div id="emailEnabled" style="width: 500px; margin-left: 100px; margin-bottom: 10px; margin-top: 20px;">
                         <label class="checkbox inline">
-                            <input id="emailsOn" type="checkbox" name="emailsOn" /> Sende E-Mail mit Suchergebnissen an:
+                            <% if ((bool)ViewData["emailActive"] == true)
+                               { %>
+                                <input id="emailsOn" type="checkbox" name="emailsOn" checked="checked" /> Sende E-Mail mit Suchergebnissen an:
+                            <% }
+                               else
+                               { %>
+                                <input id="emailsOn" type="checkbox" name="emailsOn" /> Sende E-Mail mit Suchergebnissen an:
+                            <% } %>
                         </label>
                     </div>
                     <div id="emails" style="margin-left: 100px; width: 500px;">
+                        
+                        <% foreach (var email in this.ViewData["emails"] as string[])
+                           { %>
+                            <div class="input-prepend input-append">
+                                <span class="add-on"><i class="icon-envelope"></i></span>
+                                <input class="input-xlarge" type="text" placeholder="email address" value="<%= email %>" name="emails[]" />
+                                <button type="button" class="btn" onclick="removeInputBox($(this))"><i class="icon-minus"></i></button>
+                            </div>
+                          <% } %>
+
                         <div id="addedEmails">
                         </div>
-                        <div class="input-prepend">
-                            <span class="add-on"><i class="icon-envelope"></i></span>
-                            <input id="mainEmailBox" class="input-xlarge" type="text" placeholder="email address" value="<%= ViewData["useremail"] %>" name="emails[]" />
+                        <div>
+                            <button id="addEmail" class="btn" type="button" style="margin-bottom: 10px;">
+                                <i class="icon-plus"></i>&nbsp;&nbsp;<b>Add E-Mail address</b></button>
                         </div>
-                        <button id="addEmail" class="btn" type="button" style="margin-bottom: 10px; margin-right: 10px;">
-                            <i class="icon-plus"></i>&nbsp;&nbsp;<b>Add E-Mail address</b></button>
+                        
                     </div>
                 </div>
 
@@ -106,19 +133,34 @@
                             <input type="checkbox" id="Checkbox2" name="irgendeineseite" checked="checked" /> irgendeineseite.de
                         </label><br />
                         <label class="checkbox inline">
-                            <input id="websitesOn" type="checkbox" name="websitesOn"/> weitere...
+                            <% if ((bool)ViewData["urlActive"] == true)
+                               { %>
+                                <input id="websitesOn" type="checkbox" name="websitesOn" checked="checked" /> weitere...
+                            <% }
+                               else
+                               { %>
+                                <input id="websitesOn" type="checkbox" name="websitesOn"/> weitere...
+                            <% } %>
                         </label>
                     </div>
 
                     <div id="websites" style="margin-left: 100px; width: 600px; margin-top: 20px;">
+                        
+                        <% foreach (var website in this.ViewData["urls"] as string[])
+                           { %>
+                            <div class="input-prepend input-append">
+                                <span class="add-on"><i class="icon-globe"></i></span>
+                                <input class="input-xxlarge" type="text" placeholder="website-url" value="<%= website %>" name="websites[]" />
+                                <button type="button" class="btn" onclick="removeInputBox($(this))"><i class="icon-minus"></i></button>
+                            </div>
+                          <% } %>
+
                         <div id="addedWebsites">
                         </div>
-                        <div class="input-prepend">
-                            <span class="add-on"><i class="icon-globe"></i></span>
-                            <input id="mainWebsiteBox" class="input-xxlarge" type="text" placeholder="website-url" name="websites[]" />
+                        <div>
+                            <button id="addWebsite" class="btn" type="button" style="margin-bottom: 10px; margin-right: 10px;">
+                                <i class="icon-plus"></i>&nbsp;&nbsp;<b>Add E-Mail address</b></button>
                         </div>
-                        <button id="addWebsite" class="btn" type="button" style="margin-bottom: 10px; margin-right: 10px;">
-                            <i class="icon-plus"></i>&nbsp;&nbsp;<b>Add URL</b></button>
                     </div>
 
                 </div>
@@ -142,7 +184,12 @@
             initDatepicker();
 
             // show / hide scheduler
-            $('#schedulerconfig').hide();
+            if ($('#schedulerOn').is(':checked')) {
+                $('#schedulerconfig').show();
+            } else {
+                $('#schedulerconfig').hide();
+            }
+
             $('#schedulerOn').click(function () {
                 if ($(this).is(':checked')) {
                     $('#schedulerconfig').show();
@@ -152,7 +199,12 @@
             });
 
             // show / hide email
-            $('#emails').hide();
+            if ($('#emailsOn').is(':checked')) {
+                $('#emails').show();
+            } else {
+                $('#emails').hide();
+            }
+
             $('#emailsOn').click(function () {
                 if ($(this).is(':checked')) {
                     $('#emails').show();
@@ -162,7 +214,12 @@
             });
 
             // show / hide email
-            $('#websites').hide();
+            if ($('#websitesOn').is(':checked')) {
+                $('#websites').show();
+            } else {
+                $('#websites').hide();
+            }
+
             $('#websitesOn').click(function () {
                 if ($(this).is(':checked')) {
                     $('#websites').show();
@@ -202,15 +259,15 @@
         function addEmailBox() {
 
             // get Value of mainBox
-            var value = $('#mainEmailBox').val();
+            //var value = $('#mainEmailBox').val();
 
             // clear Value of mainBox
-            $('#mainEmailBox').val('');
+            //$('#mainEmailBox').val('');
 
             var newEmailBox = 
                 '<div class="input-prepend input-append">'
                 + '<span class="add-on"><i class="icon-envelope"></i></span>'
-                + '<input class="input-xlarge" type="text" placeholder="email address" value="' + value + '" name="emails[]" />'
+                + '<input class="input-xlarge" type="text" placeholder="email address" value="" name="emails[]" />'
                 + '<button type="button" class="btn" onclick="removeInputBox($(this))"><i class="icon-minus"></i></button>'
                 + '</div>';
 
@@ -223,15 +280,15 @@
         function addWebsiteBox() {
 
             // get Value of mainBox
-            var value = $('#mainWebsiteBox').val();
+            //var value = $('#mainWebsiteBox').val();
 
             // clear Value of mainBox
-            $('#mainWebsiteBox').val('');
+            //$('#mainWebsiteBox').val('');
 
             var newEmailBox = 
                 '<div class="input-prepend input-append">'
                 + '<span class="add-on"><i class="icon-globe"></i></span>'
-                + '<input class="input-xxlarge" type="text" placeholder="website-url" value="' + value + '" name="websites[]" />'
+                + '<input class="input-xxlarge" type="text" placeholder="website-url" value="" name="websites[]" />'
                 + '<button type="button" class="btn" onclick="removeInputBox($(this))"><i class="icon-minus"></i></button>'
                 + '</div>';
 

@@ -236,8 +236,24 @@ namespace HSA.InfoSys.Gui.Controllers
             this.ViewData["sc_days"] = config.Days;
             this.ViewData["sc_hours"] = config.Time;
 
-            this.ViewData["emails"] = System.Web.Helpers.Json.Decode(config.Emails);
-            this.ViewData["urls"] = System.Web.Helpers.Json.Decode(config.URLS);
+            if (!String.IsNullOrEmpty(config.Emails))
+            {
+                this.ViewData["emails"] = System.Web.Helpers.Json.Decode<string[]>(config.Emails);
+            }
+            else
+            {
+                this.ViewData["emails"] = new string[0];
+            }
+
+            if (!String.IsNullOrEmpty(config.URLS))
+            {
+                this.ViewData["urls"] = System.Web.Helpers.Json.Decode<string[]>(config.URLS);
+            } 
+            else 
+            {
+                this.ViewData["urls"] = new string[0];
+            }
+            
 
             //MembershipUser user = Membership.GetUser();
             //this.ViewData["useremail"] = user.Email;
@@ -258,11 +274,6 @@ namespace HSA.InfoSys.Gui.Controllers
         {
             // get data from GET-Request
             string systemguid = Request.QueryString["sysguid"];
-            string sc_days = Request["sc_days"];
-            string sc_time = Request["sc_time"];
-
-            string[] emails = Request["emails[]"].Split(',');
-            string[] websites = Request["websites[]"].Split(',');
 
             // init
             var cc = CrawlControllerClient<IDBManager>.ClientProxy;
@@ -271,8 +282,12 @@ namespace HSA.InfoSys.Gui.Controllers
             var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
             var config = orgUnit.OrgUnitConfig;
 
+            // set schedulerOn, days, time
             if (Request["schedulerOn"] == "on")
             {
+                string sc_days = Request["sc_days"];
+                string sc_time = Request["sc_time"];
+
                 config.SchedulerActive = true;
                 config.Days = Convert.ToInt32(sc_days);
                 config.Time = Convert.ToInt32(sc_time);
@@ -282,21 +297,42 @@ namespace HSA.InfoSys.Gui.Controllers
                 config.SchedulerActive = false;
             }
 
+            // set Emails
+            if (!String.IsNullOrEmpty(Request["emails[]"]))
+            {
+                string[] emails = Request["emails[]"].Split(',');
+                config.Emails = System.Web.Helpers.Json.Encode(emails);
+            }
+            else
+            {
+                config.Emails = null;
+            }
+
+            // set emailsOn
             if (Request["emailsOn"] == "on")
             {
                 config.EmailActive = true;
-                config.Emails = System.Web.Helpers.Json.Encode(emails);
             }
             else
             {
                 config.EmailActive = false;
             }
 
+            // set Websites
+            if (!String.IsNullOrEmpty(Request["websites[]"]))
+            {
+                string[] websites = Request["websites[]"].Split(',');
+                config.URLS = System.Web.Helpers.Json.Encode(websites);
+            }
+            else
+            {
+                config.URLS = null;
+            }
+
+            // set websitesOn
             if (Request["websitesOn"] == "on")
             {
                 config.URLActive = true;
-                config.URLS = System.Web.Helpers.Json.Encode(websites);
-
             }
             else
             {
