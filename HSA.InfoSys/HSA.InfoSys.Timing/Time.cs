@@ -25,60 +25,17 @@ namespace HSA.InfoSys.Common.Timing
         /// <param name="start">The start time.</param>
         /// <param name="end">The end time.</param>
         /// <param name="repeatIn">The repeat in.</param>
-        /// <param name="remainTime">The remain time.</param>
-        /// <param name="type">The type of time.</param>
-        /// <param name="values">The time values.</param>
-        /// <param name="time">The time string.</param>
         /// <param name="repeat">if set to <c>true</c> [repeat].</param>
         public Time(
             DateTime start,
             DateTime end,
             TimeSpan repeatIn,
-            RemainTime remainTime,
-            TypeOfTime type,
-            string[] values,
-            string time,
             bool repeat)
         {
             this.StartTime = start;
             this.Endtime = end;
             this.RepeatIn = repeatIn;
-            this.RemainTime = remainTime;
-            this.TypeOfTime = type;
-            this.TimeValues = values;
-            this.TimeString = time;
-            this.Repeat = repeat;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Time"/> class.
-        /// </summary>
-        /// <param name="timeSpan">The time span.</param>
-        /// <param name="type">The type.</param>
-        /// <param name="repeat">if set to <c>true</c> [repeat].</param>
-        public Time(TimeSpan timeSpan, TypeOfTime type, bool repeat)
-        {
-            this.StartTime = DateTime.Now;
-            this.Endtime = DateTime.Now.Add(timeSpan);
-            this.RepeatIn = this.Endtime.Subtract(this.StartTime);
-            this.RemainTime = new RemainTime(this.RepeatIn);
-            this.TypeOfTime = type;
-            this.Repeat = repeat;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Time" /> class.
-        /// </summary>
-        /// <param name="endTime">The end time.</param>
-        /// <param name="type">The type.</param>
-        /// <param name="repeat">if set to <c>true</c> [repeat].</param>
-        public Time(DateTime endTime, TypeOfTime type, bool repeat)
-        {
-            this.StartTime = DateTime.Now;
-            this.Endtime = endTime;
-            this.RepeatIn = this.Endtime.Subtract(this.StartTime);
-            this.RemainTime = new RemainTime(this.RepeatIn);
-            this.TypeOfTime = type;
+            this.RemainTime = new RemainTime(end.Subtract(start));
             this.Repeat = repeat;
         }
 
@@ -115,36 +72,26 @@ namespace HSA.InfoSys.Common.Timing
         public TimeSpan RepeatIn { get; private set; }
 
         /// <summary>
-        /// Gets or sets the type of time.
-        /// </summary>
-        /// <value>
-        /// The type of time.
-        /// </value>
-        public TypeOfTime TypeOfTime { get; set; }
-
-        /// <summary>
-        /// Gets the time values.
-        /// </summary>
-        /// <value>
-        /// The time values.
-        /// </value>
-        public string[] TimeValues { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the time string.
-        /// </summary>
-        /// <value>
-        /// The time string.
-        /// </value>
-        public string TimeString { get; set; }
-
-        /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Time"/> is repeat.
         /// </summary>
         /// <value>
         ///   <c>true</c> if repeat; otherwise, <c>false</c>.
         /// </value>
         public bool Repeat { get; set; }
+
+        /// <summary>
+        /// Gets a value indicating whether this instance is time in future.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if this instance is time in future; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsTimeInFuture
+        {
+            get
+            {
+                return DateTime.Now < this.Endtime;
+            }
+        }
 
         /// <summary>
         /// Resets the values.
@@ -154,19 +101,13 @@ namespace HSA.InfoSys.Common.Timing
             this.StartTime = new DateTime();
             this.Endtime = new DateTime();
             this.RemainTime = null;
-            this.TypeOfTime = TypeOfTime.Invalid;
-            this.TimeValues = null;
-            this.TimeString = string.Empty;
             this.Repeat = false;
 
             Log.DebugFormat(
                 Properties.Resources.LOG_TIME_RESET_VALUES,
                 this.StartTime,
                 this.Endtime,
-                this.RemainTime,
-                this.TypeOfTime,
-                this.TimeValues,
-                this.TimeString);
+                this.RemainTime);
         }
 
         /// <summary>
@@ -181,10 +122,7 @@ namespace HSA.InfoSys.Common.Timing
                 Properties.Resources.TIME_TO_STRING,
                 this.StartTime,
                 this.Endtime,
-                this.RemainTime,
-                this.TypeOfTime,
-                this.TimeValues,
-                this.TimeString);
+                this.RemainTime);
         }
     }
 }

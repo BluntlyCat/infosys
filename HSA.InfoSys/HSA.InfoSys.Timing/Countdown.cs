@@ -112,34 +112,13 @@ namespace HSA.InfoSys.Common.Timing
         {
             Log.Info(Properties.Resources.LOG_COUNTDOWN_SET_REPEAT_TIME);
 
-            var startTime = DateTime.Now;
-            var endTime = DateTime.Now.Add(this.Time.RepeatIn);
+            var now = DateTime.Now;
+            var startTime = now;
+            var endTime = new DateTime(now.Year, now.Month, now.Day + this.Time.RepeatIn.Days, this.Time.RepeatIn.Hours, 0, 0);
 
             Log.DebugFormat(Properties.Resources.LOG_COUNTDOWN_SET_NEW_REPEAT_TIME, endTime);
 
-            return new Time(
-                startTime,
-                endTime,
-                this.Time.RepeatIn,
-                new RemainTime(endTime.Subtract(startTime)),
-                this.Time.TypeOfTime,
-                this.Time.TimeValues,
-                this.Time.TimeString,
-                this.Time.Repeat);
-        }
-
-        /// <summary>
-        /// Sets the time to repeat.
-        /// </summary>
-        /// <param name="timeSpan">The time span.</param>
-        /// <param name="type">The type.</param>
-        /// <param name="repeat">if set to <c>true</c> [repeat].</param>
-        /// <returns>
-        /// A new time instance for next countdown.
-        /// </returns>
-        public Time SetTimeToRepeat(TimeSpan timeSpan, TypeOfTime type, bool repeat)
-        {
-            return new Time(timeSpan, type, repeat);
+            return new Time(startTime, endTime, this.Time.RepeatIn, this.Time.Repeat);
         }
 
         /// <summary>
@@ -162,7 +141,7 @@ namespace HSA.InfoSys.Common.Timing
         {
             var errorMessage = string.Empty;
 
-            if (time != null && TimeValidation.IsTimeInFuture(time, out errorMessage))
+            if (time != null && time.IsTimeInFuture)
             {
                 Log.Info(Properties.Resources.LOG_COUNTDOWN_START_COUNTDOWN);
 
@@ -213,9 +192,6 @@ namespace HSA.InfoSys.Common.Timing
         /// </summary>
         private void Run()
         {
-#warning OrgUnitConfig beim Start aus DB laden.
-#warning Suchvorgang muss noch gestartet werden.
-#warning NextSearch in OrgConfig setzen
             Log.Debug(Properties.Resources.LOG_COUNTDOWN_THREAD_IS_RUNNING);
 
             while (this.Active && this.Time.RemainTime.Time.Ticks > 0)
@@ -233,7 +209,7 @@ namespace HSA.InfoSys.Common.Timing
 
             this.ResetValues();
 
-            if (!this.Cancel)
+            if (this.OnZero != null && !this.Cancel)
             {
                 this.OnZero(this, this.Source);
             }

@@ -52,55 +52,37 @@ namespace HSA.InfoSys.Common.Nutch.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:/Users/A/Desktop/urls")]
-        public string URL_PATH_DOTNET {
+        [global::System.Configuration.DefaultSettingValueAttribute("./nutch/urls/")]
+        public string BASEURL_PATH {
             get {
-                return ((string)(this["URL_PATH_DOTNET"]));
+                return ((string)(this["BASEURL_PATH"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("/home/$USER/urls")]
-        public string URL_PATH_MONO {
+        [global::System.Configuration.DefaultSettingValueAttribute(".nutch/regex-urlfilter.txt")]
+        public string PREFIX_PATH {
             get {
-                return ((string)(this["URL_PATH_MONO"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:/Users/A/Desktop/conf/regex-urlfilter.txt")]
-        public string PREFIX_PATH_DOTNET {
-            get {
-                return ((string)(this["PREFIX_PATH_DOTNET"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("/home/$USER/.regex-urlfilter.txt")]
-        public string PREFIX_PATH_MONO {
-            get {
-                return ((string)(this["PREFIX_PATH_MONO"]));
+                return ((string)(this["PREFIX_PATH"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("{0}/{1}")]
-        public string USER_DIR {
+        public string PATH_FORMAT_TWO {
             get {
-                return ((string)(this["USER_DIR"]));
+                return ((string)(this["PATH_FORMAT_TWO"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("{0}/{1}/{2}")]
-        public string USER_URL_PATH {
+        public string PATH_FORMAT_THREE {
             get {
-                return ((string)(this["USER_URL_PATH"]));
+                return ((string)(this["PATH_FORMAT_THREE"]));
             }
         }
         
@@ -119,6 +101,42 @@ namespace HSA.InfoSys.Common.Nutch.Properties {
         public string NUTCH_CRAWL_REQUEST {
             get {
                 return ((string)(this["NUTCH_CRAWL_REQUEST"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("%HOMEPATH%")]
+        public string USER_DIR_DOTNET {
+            get {
+                return ((string)(this["USER_DIR_DOTNET"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("$HOME")]
+        public string USER_DIR_MONO {
+            get {
+                return ((string)(this["USER_DIR_MONO"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{0}/{1}")]
+        public string PREFIX_FORMAT {
+            get {
+                return ((string)(this["PREFIX_FORMAT"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{0}/{1}/{2}/{3}")]
+        public string PATH_FORMAT_FOUR {
+            get {
+                return ((string)(this["PATH_FORMAT_FOUR"]));
             }
         }
     }

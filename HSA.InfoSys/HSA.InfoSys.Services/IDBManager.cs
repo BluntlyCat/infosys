@@ -10,6 +10,7 @@ namespace HSA.InfoSys.Common.Services
     using System.ServiceModel;
     using HSA.InfoSys.Common.NetDataContractSerializer;
     using HSA.InfoSys.Common.Services.Data;
+    using NHibernate;
 
     /// <summary>
     /// The interface for accessing the data base.
@@ -17,6 +18,15 @@ namespace HSA.InfoSys.Common.Services
     [ServiceContract]
     public interface IDBManager
     {
+        /// <summary>
+        /// Gets the opened session.
+        /// </summary>
+        /// <value>
+        /// The session.
+        /// </value>
+        /// <returns>A NHibernate session object.</returns>
+        ISession GetSession { get; }
+
         /// <summary>
         /// Loads this entities eager.
         /// </summary>

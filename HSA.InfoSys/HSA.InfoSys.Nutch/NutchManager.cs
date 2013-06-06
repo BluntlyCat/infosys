@@ -22,19 +22,19 @@ namespace HSA.InfoSys.Common.Nutch
         private static readonly ILog Log = Logger<string>.GetLogger("NutchManager");
 
         /// <summary>
-        /// The NutchManager.
+        /// The path to prefix file.
+        /// </summary>
+        private string prefixPath = Properties.Settings.Default.PREFIX_PATH;
+
+        /// <summary>
+        /// The nutch manager
         /// </summary>
         private static INutchManager nutchManager;
 
         /// <summary>
-        /// The path to prefix file.
-        /// </summary>
-        private string prefixPath;
-
-        /// <summary>
         /// The path to URL file.
         /// </summary>
-        private string urlPath;
+        private string baseUrlPath = Properties.Settings.Default.BASEURL_PATH;
 
         /// <summary>
         /// The seed file name.
@@ -42,16 +42,24 @@ namespace HSA.InfoSys.Common.Nutch
         private string fileName = Properties.Settings.Default.SEED_FILENAME;
 
         /// <summary>
+        /// The path for the regex url filter.
+        /// </summary>
+        private string regexPath;
+
+        /// <summary>
+        /// The home directory.
+        /// </summary>
+        private string homeDir;
+
+        /// <summary>
         /// Prevents a default instance of the <see cref="NutchManager"/> class from being created.
         /// </summary>
         private NutchManager()
         {
 #if !MONO
-            this.urlPath = Properties.Settings.Default.URL_PATH_DOTNET;
-            this.prefixPath = Properties.Settings.Default.PREFIX_PATH_DOTNET;
+            this.homeDir = Properties.Settings.Default.USER_DIR_DOTNET;
 #else
-            this.URLPath = Properties.Settings.Default.URL_PATH_MONO;
-            this.PrefixPath = Properties.Settings.Default.PREFIX_PATH_MONO;
+            this.homeDir = Properties.Settings.Default.USER_DIR_MONO;
 #endif
         }
 
@@ -79,17 +87,23 @@ namespace HSA.InfoSys.Common.Nutch
         /// <summary>
         /// Starts the crawling.
         /// </summary>
-        /// <param name="urlDir">The URL directory.</param>
+        /// <param name="userName">Name of the user.</param>
         /// <param name="depth">The depth.</param>
         /// <param name="topN">The top N.</param>
-        public void StartCrawl(string urlDir, int depth, int topN)
+        public void StartCrawl(string userName, int depth, int topN)
         {
             Process nutch = new Process();
+
+            var urlPath = string.Format(
+                Properties.Settings.Default.PATH_FORMAT_THREE,
+                this.homeDir,
+                this.baseUrlPath,
+                userName);
 
             string crawlRequest =
                 string.Format(
                 Properties.Settings.Default.NUTCH_CRAWL_REQUEST,
-                urlDir,
+                urlPath,
                 Properties.Settings.Default.SOLRSERVER,
                 depth,
                 topN);
@@ -108,11 +122,18 @@ namespace HSA.InfoSys.Common.Nutch
         /// <param name="user">The username.</param>
         public void CreateUserDir(string user)
         {
-            string newDirectory = string.Format(Properties.Settings.Default.USER_DIR, this.urlPath, user);
-            Directory.CreateDirectory(newDirectory);
-            StreamWriter writer = File.CreateText(string.Format(Properties.Settings.Default.USER_DIR, newDirectory, this.fileName));
+            string newDirectory = string.Format(
+                Properties.Settings.Default.PATH_FORMAT_THREE,
+                this.homeDir,
+                this.baseUrlPath,
+                user);
 
-            writer.Close();
+            Directory.CreateDirectory(newDirectory);
+
+            File.CreateText(string.Format(
+                Properties.Settings.Default.PATH_FORMAT_TWO,
+                newDirectory,
+                this.fileName));
         }
 
         /// <summary>
@@ -122,13 +143,21 @@ namespace HSA.InfoSys.Common.Nutch
         /// <param name="user">The username.</param>
         public void AddURL(List<string> urls, string user)
         {
-            string userURLPath = string.Format(Properties.Settings.Default.USER_URL_PATH, this.urlPath, user, this.fileName);
+            string userURLPath = string.Format(
+                Properties.Settings.Default.PATH_FORMAT_FOUR,
+                this.homeDir,
+                this.baseUrlPath,
+                user,
+                this.fileName);
 
             List<string> prefixUrls = new List<string>();
 
             foreach (string url in urls)
             {
-                string prefix = string.Format(Properties.Settings.Default.USER_DIR, Properties.Settings.Default.PREFIX, url);
+                string prefix = string.Format(
+                    Properties.Settings.Default.PREFIX_FORMAT,
+                    Properties.Settings.Default.PREFIX,
+                    url);
 
                 if (!this.GetFileContent(Properties.Settings.Default.PREFIX, this.prefixPath).Contains(prefix))
                 {

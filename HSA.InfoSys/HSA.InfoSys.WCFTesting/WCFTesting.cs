@@ -99,7 +99,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
                             case ConsoleKey.T:
                                 var config = new OrgUnitConfig();
                                 config.SchedulerActive = true;
-                                config.Time = 2;
+                                config.Time = 10;
                                 config.Days = 1;
 
                                 CrawlControllerClient<IScheduler>.ClientProxy.AddOrgUnitConfig(config);

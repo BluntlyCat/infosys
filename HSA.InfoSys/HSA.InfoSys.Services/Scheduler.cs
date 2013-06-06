@@ -10,9 +10,12 @@ namespace HSA.InfoSys.Common.Services
     using System.ServiceModel;
     using System.Threading;
     using HSA.InfoSys.Common.Logging;
+    using HSA.InfoSys.Common.Nutch;
     using HSA.InfoSys.Common.Services.Data;
     using HSA.InfoSys.Common.Timing;
     using log4net;
+
+#warning Suchvorgang muss noch gestartet werden.
 
     /// <summary>
     /// This class watches the scheduling objects in database
@@ -42,9 +45,19 @@ namespace HSA.InfoSys.Common.Services
         private IDBManager dbManager;
 
         /// <summary>
+        /// The Nutch manager.
+        /// </summary>
+        private INutchManager nutchManager;
+
+        /// <summary>
         /// The scheduler times.
         /// </summary>
         private Dictionary<Guid, OrgUnitConfig> orgUnitConfigurations = new Dictionary<Guid, OrgUnitConfig>();
+
+        /// <summary>
+        /// The failed configurations dictionary.
+        /// </summary>
+        private Dictionary<Guid, OrgUnitConfig> failedConfigs = new Dictionary<Guid, OrgUnitConfig>();
 
         /// <summary>
         /// The jobs dictionary.
@@ -57,7 +70,9 @@ namespace HSA.InfoSys.Common.Services
         private Scheduler()
         {
             Log.DebugFormat(Properties.Resources.LOG_INSTANCIATE_NEW_SCHEDULER, this.GetType().Name);
+
             this.dbManager = DBManager.ManagerFactory;
+            this.nutchManager = NutchManager.ManagerFactory;
         }
 
         /// <summary>
@@ -130,18 +145,12 @@ namespace HSA.InfoSys.Common.Services
         public void Countdown_OnZero(object sender, object source)
         {
             var job = sender as Countdown;
-            job.SetTimeToRepeat();
-            job.Start();
-        }
+            var config = job.Source as OrgUnitConfig;
+            var time = this.SetNextSearch(config, job);
 
-        /// <summary>
-        /// Occurs when [tick].
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        public void Countdown_OnTick(object sender)
-        {
-            var job = sender as Countdown;
-            Log.DebugFormat("Remaintime: [{0}]", job.Time.RemainTime);
+            this.nutchManager.StartCrawl("michael", 1, 1);
+
+            job.Start(time);
         }
 
         /// <summary>
@@ -153,6 +162,25 @@ namespace HSA.InfoSys.Common.Services
         {
             var job = sender as Countdown;
             Log.DebugFormat(Properties.Resources.LOG_TIME_VALIDATION_ERROR, job, error);
+        }
+
+        /// <summary>
+        /// Starts this instance.
+        /// </summary>
+        public override void StartService()
+        {
+            var configs = this.dbManager.GetSession.QueryOver<OrgUnitConfig>().List<OrgUnitConfig>();
+
+            mutex.WaitOne();
+
+            foreach (var config in configs)
+            {
+                this.orgUnitConfigurations.Add(config.EntityId, config);
+            }
+
+            mutex.ReleaseMutex();
+
+            base.StartService();
         }
 
         /// <summary>
@@ -185,6 +213,7 @@ namespace HSA.InfoSys.Common.Services
                 mutex.WaitOne();
 
                 this.SetCountdownTimes();
+                this.RemoveFailedConfigurations();
                 this.RemoveHandledConfigs();
 
                 mutex.ReleaseMutex();
@@ -198,38 +227,75 @@ namespace HSA.InfoSys.Common.Services
         /// </summary>
         private void SetCountdownTimes()
         {
-            foreach (var config in this.orgUnitConfigurations.Values)
+            if (this.orgUnitConfigurations.Count > 0)
             {
-                if (!this.jobs.ContainsKey(config.EntityId))
+                foreach (var config in this.orgUnitConfigurations.Values)
                 {
-                    var now = DateTime.Now;
-                    var startTime = now;
-                    var endTime = new DateTime(now.Year, now.Month, now.Day, config.Time, 0, 0);
-                    var repeatIn = new TimeSpan(config.Days, config.Time, 0, 0);
-                    var remainTime = new RemainTime(endTime.Subtract(startTime));
+                    if (!this.jobs.ContainsKey(config.EntityId) && config.SchedulerActive)
+                    {
+                        var now = DateTime.Now;
+                        var startTime = now;
+#if DEBUG
+                        var endTime = new DateTime(now.Year, now.Month, now.Day, now.Hour, config.Time, 0);
+                        var repeatIn = new TimeSpan(0, 0, config.Time, 0);
+#else
+                        var endTime = new DateTime(now.Year, now.Month, now.Day, config.Time, 0, 0);
+                        var repeatIn = new TimeSpan(config.Days, config.Time, 0, 0);
+#endif
 
-                    var time = new Time(
-                        startTime,
-                        endTime,
-                        repeatIn,
-                        remainTime,
-                        TypeOfTime.Time,
-                        null,
-                        null,
-                        true);
+                        var time = new Time(startTime, endTime, repeatIn, true);
+                        var countdown = new Countdown(config, time);
 
-                    var countdown = new Countdown(config, time);
+                        countdown.OnZero += this.Countdown_OnZero;
+                        countdown.OnError += this.Countdown_OnError;
 
-                    countdown.OnZero += this.Countdown_OnZero;
-                    countdown.OnTick += Countdown_OnTick;
-                    countdown.OnError += this.Countdown_OnError;
+                        this.StartCountdown(config, countdown);
+                    }
+                }
+            }
+        }
 
-                    if (countdown.Start())
+        /// <summary>
+        /// Starts the countdown.
+        /// </summary>
+        /// <param name="config">The config.</param>
+        /// <param name="countdown">The countdown.</param>
+        private void StartCountdown(OrgUnitConfig config, Countdown countdown)
+        {
+            if (countdown.Start())
+            {
+                this.jobs.Add(config.EntityId, countdown);
+            }
+            else
+            {
+                if (!countdown.Time.IsTimeInFuture)
+                {
+                    if (!countdown.Start(this.SetNextSearch(config, countdown)))
+                    {
+                        this.failedConfigs.Add(config.EntityId, config);
+                    }
+                    else
                     {
                         this.jobs.Add(config.EntityId, countdown);
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Sets the next search.
+        /// </summary>
+        /// <param name="config">The config.</param>
+        /// <param name="countdown">The countdown.</param>
+        /// <returns>The time for the next search.</returns>
+        private Time SetNextSearch(OrgUnitConfig config, Countdown countdown)
+        {
+            var time = countdown.SetTimeToRepeat();
+
+            config.NextSearch = time.Endtime;
+            this.dbManager.UpdateEntity(config);
+
+            return time;
         }
 
         /// <summary>
@@ -248,6 +314,25 @@ namespace HSA.InfoSys.Common.Services
                         this.orgUnitConfigurations.Remove(config.EntityId);
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Removes the failed configurations.
+        /// </summary>
+        private void RemoveFailedConfigurations()
+        {
+            if (this.failedConfigs.Count > 0)
+            {
+                foreach (var config in this.failedConfigs.Values)
+                {
+                    if (this.orgUnitConfigurations.ContainsKey(config.EntityId))
+                    {
+                        this.orgUnitConfigurations.Remove(config.EntityId);
+                    }
+                }
+
+                this.failedConfigs.Clear();
             }
         }
     }

@@ -66,8 +66,8 @@ namespace HSA.InfoSys.Common.Services
         /// <value>
         /// The session.
         /// </value>
-        /// <returns>An ISession to the session object.</returns>
-        private static ISession Session
+        /// <returns>A NHibernate session object.</returns>
+        public static ISession Session
         {
             get
             {
@@ -78,6 +78,21 @@ namespace HSA.InfoSys.Common.Services
 
                 Log.Debug(Properties.Resources.DBSESSION_OPEN_SESSION);
                 return SessionFactory.OpenSession();
+            }
+        }
+
+        /// <summary>
+        /// Gets the opened session.
+        /// </summary>
+        /// <value>
+        /// The session.
+        /// </value>
+        /// <returns>A NHibernate session object.</returns>
+        public ISession GetSession
+        {
+            get
+            {
+                return Session;
             }
         }
 
