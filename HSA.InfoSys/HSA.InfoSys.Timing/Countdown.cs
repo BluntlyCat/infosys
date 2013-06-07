@@ -21,6 +21,11 @@ namespace HSA.InfoSys.Common.Timing
         private static readonly ILog Log = Logger<Type>.GetLogger(typeof(Countdown));
 
         /// <summary>
+        /// The tick mutex.
+        /// </summary>
+        public static Mutex onTickMutex = new Mutex();
+
+        /// <summary>
         /// The timer thread
         /// </summary>
         private Thread countdown;
@@ -30,10 +35,11 @@ namespace HSA.InfoSys.Common.Timing
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="time">The time.</param>
-        public Countdown(object source, Time time = null)
+        public Countdown(object source, Guid id, Time time = null)
         {
             Log.Debug(Properties.Resources.LOG_COUNTDOWN_INITIALIZE);
             this.Source = source;
+            this.ID = id;
             this.Time = time;
         }
 
@@ -105,6 +111,14 @@ namespace HSA.InfoSys.Common.Timing
         private bool Cancel { get; set; }
 
         /// <summary>
+        /// Gets the ID.
+        /// </summary>
+        /// <value>
+        /// The ID.
+        /// </value>
+        public Guid ID { get; private set; }
+
+        /// <summary>
         /// Sets the time to repeat.
         /// </summary>
         /// <returns>A new time instance for next countdown.</returns>
@@ -118,7 +132,7 @@ namespace HSA.InfoSys.Common.Timing
 
             Log.DebugFormat(Properties.Resources.LOG_COUNTDOWN_SET_NEW_REPEAT_TIME, endTime);
 
-            return new Time(startTime, endTime, this.Time.RepeatIn, this.Time.Repeat);
+            return new Time(startTime, endTime, this.Time.RepeatIn, this.ID, this.Time.Repeat);
         }
 
         /// <summary>
@@ -196,12 +210,17 @@ namespace HSA.InfoSys.Common.Timing
 
             while (this.Active && this.Time.RemainTime.Time.Ticks > 0)
             {
+                Countdown.onTickMutex.WaitOne();
+
                 if (this.OnTick != null)
                 {
                     this.OnTick(this);
                 }
+
+                Countdown.onTickMutex.ReleaseMutex();
                 
                 this.Time.RemainTime.Time = this.Time.Endtime.Subtract(DateTime.Now);
+
                 Thread.Sleep(1000);
             }
 

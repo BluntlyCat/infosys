@@ -40,6 +40,16 @@ namespace HSA.InfoSys.Common.Services
         private static Mutex mutex = new Mutex();
 
         /// <summary>
+        /// The tick mutex.
+        /// </summary>
+        private static Mutex onErrorMutex = new Mutex();
+
+        /// <summary>
+        /// The tick mutex.
+        /// </summary>
+        private static Mutex onZeroMutex = new Mutex();
+
+        /// <summary>
         /// The database manager.
         /// </summary>
         private IDBManager dbManager;
@@ -48,16 +58,6 @@ namespace HSA.InfoSys.Common.Services
         /// The Nutch manager.
         /// </summary>
         private INutchManager nutchManager;
-
-        /// <summary>
-        /// The scheduler times.
-        /// </summary>
-        private Dictionary<Guid, OrgUnitConfig> orgUnitConfigurations = new Dictionary<Guid, OrgUnitConfig>();
-
-        /// <summary>
-        /// The failed configurations dictionary.
-        /// </summary>
-        private Dictionary<Guid, OrgUnitConfig> failedConfigs = new Dictionary<Guid, OrgUnitConfig>();
 
         /// <summary>
         /// The jobs dictionary.
@@ -106,13 +106,16 @@ namespace HSA.InfoSys.Common.Services
 
                 mutex.WaitOne();
 
-                if (this.orgUnitConfigurations.ContainsKey(orgConfig.EntityId))
+                var job = this.SetNewJob(orgConfig);
+
+                if (this.jobs.ContainsKey(orgConfig.EntityId) && job.Active)
                 {
-                    this.orgUnitConfigurations[orgConfig.EntityId] = orgConfig;
+                    this.jobs[orgConfig.EntityId].Stop(true);
+                    this.jobs[orgConfig.EntityId] = job;
                 }
-                else
+                else if(job.Active)
                 {
-                    this.orgUnitConfigurations.Add(orgConfig.EntityId, orgConfig);
+                    this.jobs.Add(orgConfig.EntityId, job);
                 }
 
                 mutex.ReleaseMutex();
@@ -131,10 +134,10 @@ namespace HSA.InfoSys.Common.Services
             {
                 var job = this.jobs[orgUnitConfigGUID];
                 job.Stop(true);
-                job.OnZero -= this.Countdown_OnZero;
-                job.OnError -= this.Countdown_OnError;
+                job.OnZero -= this.Job_OnZero;
+                job.OnError -= this.Job_OnError;
 #if DEBUG
-                job.OnTick += this.Countdown_OnTick;
+                job.OnTick -= this.Job_OnTick;
 #endif
 
                 this.jobs.Remove(orgUnitConfigGUID);
@@ -148,8 +151,10 @@ namespace HSA.InfoSys.Common.Services
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="source">The source.</param>
-        public void Countdown_OnZero(object sender, object source)
+        public void Job_OnZero(object sender, object source)
         {
+            onZeroMutex.WaitOne();
+
             var job = sender as Countdown;
             var config = job.Source as OrgUnitConfig;
             var time = this.SetNextSearch(config, job);
@@ -157,6 +162,8 @@ namespace HSA.InfoSys.Common.Services
             this.nutchManager.StartCrawl("michael", 1, 1);
 
             job.Start(time);
+
+            onZeroMutex.ReleaseMutex();
         }
 
         /// <summary>
@@ -164,17 +171,24 @@ namespace HSA.InfoSys.Common.Services
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="error">The error.</param>
-        public void Countdown_OnError(object sender, string error)
+        public void Job_OnError(object sender, string error)
         {
+            onErrorMutex.WaitOne();
+
             var job = sender as Countdown;
             Log.DebugFormat(Properties.Resources.LOG_TIME_VALIDATION_ERROR, job, error);
+
+            onErrorMutex.ReleaseMutex();
         }
 
 #if DEBUG
-        public void Countdown_OnTick(object sender)
+        public void Job_OnTick(object sender)
         {
-            var countdown = sender as Countdown;
-            Log.DebugFormat(Properties.Resources.SCHEDULER_ON_TICK, countdown.Time.RemainTime);
+            var job = sender as Countdown;
+
+#warning should not be in this way but the call to the logger causes a freeze of the whole application
+            //Log.DebugFormat(Properties.Resources.SCHEDULER_ON_TICK, job.Time.RemainTime);
+            Console.WriteLine(string.Format(Properties.Resources.SCHEDULER_ON_TICK, job.Time.RemainTime));
         }
 #endif
 
@@ -183,18 +197,23 @@ namespace HSA.InfoSys.Common.Services
         /// </summary>
         public override void StartService()
         {
-            /*var configs = DBManager.Session.QueryOver<OrgUnitConfig>().List<OrgUnitConfig>();
+            var configs = DBManager.Session.QueryOver<OrgUnitConfig>().List<OrgUnitConfig>();
 
             mutex.WaitOne();
 
             foreach (var config in configs)
             {
-                this.orgUnitConfigurations.Add(config.EntityId, config);
+                var job = this.SetNewJob(config);
+
+                if (job.Active)
+                {
+                    this.jobs.Add(config.EntityId, job);
+                }
             }
 
             mutex.ReleaseMutex();
 
-            base.StartService();*/
+            base.StartService();
         }
 
         /// <summary>
@@ -220,77 +239,50 @@ namespace HSA.InfoSys.Common.Services
         /// </summary>
         protected override void Run()
         {
-            var errorMessage = string.Empty;
-
-            while (this.Running)
-            {
-                mutex.WaitOne();
-
-                this.SetCountdownTimes();
-                this.RemoveFailedConfigurations();
-                this.RemoveHandledConfigs();
-
-                mutex.ReleaseMutex();
-
-                Thread.Sleep(1000);
-            }
         }
 
         /// <summary>
         /// Sets the countdown times.
         /// </summary>
-        private void SetCountdownTimes()
+        private Countdown SetNewJob(OrgUnitConfig config)
         {
-            if (this.orgUnitConfigurations.Count > 0)
+            Countdown job = null;
+
+            if (!this.jobs.ContainsKey(config.EntityId) && config.SchedulerActive)
             {
-                foreach (var config in this.orgUnitConfigurations.Values)
-                {
-                    if (!this.jobs.ContainsKey(config.EntityId) && config.SchedulerActive)
-                    {
-                        var now = DateTime.Now;
-                        var startTime = now;
+                var now = DateTime.Now;
+                var startTime = now;
 
-                        var endTime = new DateTime(now.Year, now.Month, now.Day, config.Time, 0, 0);
-                        var repeatIn = new TimeSpan(config.Days, config.Time, 0, 0);
+                var endTime = new DateTime(now.Year, now.Month, now.Day, config.Time, 0, 0);
+                var repeatIn = new TimeSpan(config.Days, config.Time, 0, 0);
 
-                        var time = new Time(startTime, endTime, repeatIn, true);
-                        var countdown = new Countdown(config, time);
+                var time = new Time(startTime, endTime, repeatIn, config.EntityId, true);
 
-                        countdown.OnZero += this.Countdown_OnZero;
-                        countdown.OnError += this.Countdown_OnError;
+                job = new Countdown(config, config.EntityId, time);
+                job.OnZero += new Countdown.ZeroEventHandler(this.Job_OnZero);
+                job.OnError += new Countdown.ErrorEventHandler(this.Job_OnError);
 #if DEBUG
-                        countdown.OnTick += this.Countdown_OnTick;
+                job.OnTick += new Countdown.TickEventHandler(this.Job_OnTick);
 #endif
 
-                        this.StartCountdown(config, countdown);
-                    }
-                }
+                this.StartJob(config, job);
             }
+
+            return job;
         }
 
         /// <summary>
         /// Starts the countdown.
         /// </summary>
         /// <param name="config">The config.</param>
-        /// <param name="countdown">The countdown.</param>
-        private void StartCountdown(OrgUnitConfig config, Countdown countdown)
+        /// <param name="job">The countdown.</param>
+        private void StartJob(OrgUnitConfig config, Countdown job)
         {
-            if (countdown.Start())
+            if (!job.Start())
             {
-                this.jobs.Add(config.EntityId, countdown);
-            }
-            else
-            {
-                if (!countdown.Time.IsTimeInFuture)
+                if (!job.Time.IsTimeInFuture)
                 {
-                    if (countdown.Start(this.SetNextSearch(config, countdown)))
-                    {
-                        this.jobs.Add(config.EntityId, countdown);
-                    }
-                    else
-                    {
-                        this.failedConfigs.Add(config.EntityId, config);
-                    }
+                    job.Start(this.SetNextSearch(config, job));
                 }
             }
         }
@@ -309,44 +301,6 @@ namespace HSA.InfoSys.Common.Services
             this.dbManager.UpdateEntity(config);
 
             return time;
-        }
-
-        /// <summary>
-        /// Removes the handled configurations.
-        /// </summary>
-        private void RemoveHandledConfigs()
-        {
-            if (this.orgUnitConfigurations.Count > 0)
-            {
-                foreach (var job in this.jobs.Values)
-                {
-                    var config = job.Source as OrgUnitConfig;
-
-                    if (this.orgUnitConfigurations.ContainsKey(config.EntityId))
-                    {
-                        this.orgUnitConfigurations.Remove(config.EntityId);
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Removes the failed configurations.
-        /// </summary>
-        private void RemoveFailedConfigurations()
-        {
-            if (this.failedConfigs.Count > 0)
-            {
-                foreach (var config in this.failedConfigs.Values)
-                {
-                    if (this.orgUnitConfigurations.ContainsKey(config.EntityId))
-                    {
-                        this.orgUnitConfigurations.Remove(config.EntityId);
-                    }
-                }
-
-                this.failedConfigs.Clear();
-            }
         }
     }
 }

@@ -23,10 +23,11 @@ namespace HSA.InfoSys.Common.Timing
         /// Initializes a new instance of the <see cref="RemainTime"/> class.
         /// </summary>
         /// <param name="time">The remaining time.</param>
-        public RemainTime(TimeSpan time)
+        public RemainTime(TimeSpan time, Guid id)
         {
             Log.DebugFormat(Properties.Resources.LOG_REMAIN_TIME_INITIALIZE, time);
             this.Time = time;
+            this.ID = id;
         }
 
         /// <summary>
@@ -38,6 +39,14 @@ namespace HSA.InfoSys.Common.Timing
         public TimeSpan Time { get; set; }
 
         /// <summary>
+        /// Gets the ID.
+        /// </summary>
+        /// <value>
+        /// The ID.
+        /// </value>
+        public Guid ID { get; private set; }
+
+        /// <summary>
         /// Gets the days.
         /// </summary>
         /// <value>
@@ -47,8 +56,6 @@ namespace HSA.InfoSys.Common.Timing
         {
             get
             {
-                Log.DebugFormat(Properties.Resources.LOG_REMAIN_TIME_GET_DAYS, this.Time.Days);
-
                 if (this.Time.Days < 10)
                 {
                     return string.Format("0{0}", this.Time.Days.ToString());
@@ -70,8 +77,6 @@ namespace HSA.InfoSys.Common.Timing
         {
             get
             {
-                Log.DebugFormat(Properties.Resources.LOG_REMAIN_TIME_GET_HOURS, this.Time.Hours);
-
                 if (this.Time.Hours < 10)
                 {
                     return string.Format("0{0}", this.Time.Hours.ToString());
@@ -93,8 +98,6 @@ namespace HSA.InfoSys.Common.Timing
         {
             get
             {
-                Log.DebugFormat(Properties.Resources.LOG_REMAIN_TIME_GET_MINUTES, this.Time.Minutes);
-
                 if (this.Time.Minutes < 10)
                 {
                     return string.Format("0{0}", this.Time.Minutes.ToString());
@@ -116,8 +119,6 @@ namespace HSA.InfoSys.Common.Timing
         {
             get
             {
-                Log.DebugFormat(Properties.Resources.LOG_REMAIN_TIME_GET_SECONDS, this.Time.Seconds);
-
                 if (this.Time.Seconds < 10)
                 {
                     return string.Format("0{0}", this.Time.Seconds.ToString());
@@ -139,8 +140,6 @@ namespace HSA.InfoSys.Common.Timing
         {
             get
             {
-                Log.DebugFormat(Properties.Resources.LOG_REMAIN_TIME_GET_MILLISECONDS, this.Time.Milliseconds);
-
                 if (this.Time.Milliseconds < 10)
                 {
                     return string.Format("0{0}", this.Time.Milliseconds.ToString());
@@ -162,6 +161,7 @@ namespace HSA.InfoSys.Common.Timing
         {
             return string.Format(
                 Properties.Resources.LOG_REMAIN_TIME_TO_STRING,
+                this.ID,
                 this.Days,
                 this.Hours,
                 this.Minutes,

@@ -30,13 +30,15 @@ namespace HSA.InfoSys.Common.Timing
             DateTime start,
             DateTime end,
             TimeSpan repeatIn,
+            Guid id,
             bool repeat)
         {
             this.StartTime = start;
             this.Endtime = end;
             this.RepeatIn = repeatIn;
-            this.RemainTime = new RemainTime(end.Subtract(start));
+            this.RemainTime = new RemainTime(end.Subtract(start), id);
             this.Repeat = repeat;
+            this.ID = id;
         }
 
         /// <summary>
@@ -78,6 +80,14 @@ namespace HSA.InfoSys.Common.Timing
         ///   <c>true</c> if repeat; otherwise, <c>false</c>.
         /// </value>
         public bool Repeat { get; set; }
+
+        /// <summary>
+        /// Gets the ID.
+        /// </summary>
+        /// <value>
+        /// The ID.
+        /// </value>
+        public Guid ID { get; private set; }
 
         /// <summary>
         /// Gets a value indicating whether this instance is time in future.

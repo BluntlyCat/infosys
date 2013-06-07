@@ -214,7 +214,7 @@ namespace HSA.InfoSys.Common.Timing.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Remaining time: [{0}D : {1}H : {2}m : {3}s] ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Remaining time: [ID: {0} - {1}D : {2}H : {3}m : {4}s] ähnelt.
         /// </summary>
         internal static string LOG_REMAIN_TIME_TO_STRING {
             get {
@@ -475,7 +475,16 @@ namespace HSA.InfoSys.Common.Timing.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Starttime: {0}, Endtime: {1}, Remaintime: {2}, Type: {3}, Values: {4}, Timestring: {5} ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Remaintime: [{0}]. ähnelt.
+        /// </summary>
+        internal static string SCHEDULER_ON_TICK {
+            get {
+                return ResourceManager.GetString("SCHEDULER_ON_TICK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Starttime: {0}, Endtime: {1}, Remaintime: {2} ähnelt.
         /// </summary>
         internal static string TIME_TO_STRING {
             get {
