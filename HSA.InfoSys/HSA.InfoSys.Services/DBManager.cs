@@ -15,7 +15,7 @@ namespace HSA.InfoSys.Common.Services
     using NHibernate;
     using NHibernate.Cfg;
     using NHibernate.Tool.hbm2ddl;
-    //using HSA.InfoSys.Exceptions;
+    using HSA.InfoSys.Exceptions;
 
     /// <summary>
     /// The DBManager handles database requests.
@@ -349,7 +349,7 @@ namespace HSA.InfoSys.Common.Services
         {
             if (days <= 0 || time < 0)
             {
-                //throw new OrgUnitConfigTimeException(this.GetType().Name);
+                throw new OrgUnitConfigTimeException(this.GetType().Name);
             }
 
             var orgUnitConfig = new OrgUnitConfig
