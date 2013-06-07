@@ -10,6 +10,10 @@ namespace HSA.InfoSys.Testing.SolrTesting
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.SolrClient;
     using log4net;
+    using System.Xml;
+    using System.IO;
+    using System.Text;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Implement your testing methods for Solr here.
@@ -54,6 +58,10 @@ namespace HSA.InfoSys.Testing.SolrTesting
                         case ConsoleKey.S:
                             log.Info("Send request to solr.");
                             client.StartSearch("solr");
+                            var result = client.GetResponse();
+
+                            var json = JsonConvert.DeserializeObject(result);
+                            
                             break;
                     }
                 }

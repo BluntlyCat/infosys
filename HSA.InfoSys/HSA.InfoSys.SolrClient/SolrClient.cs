@@ -78,7 +78,9 @@ namespace HSA.InfoSys.Common.SolrClient
         /// <returns>The response.</returns>
         public string GetResponse()
         {
-            return this.solrResponse;
+            var start = this.solrResponse.IndexOf('{');
+            var end = this.solrResponse.LastIndexOf('}');
+            return this.solrResponse.Substring(start, end - start + 1);
         }
 
         /// <summary>
@@ -97,7 +99,7 @@ namespace HSA.InfoSys.Common.SolrClient
                 if (this.solrSocket.Connected)
                 {
                     Log.InfoFormat(Properties.Resources.SOLR_CLIENT_CONNECTION_ESTABLISHED, this.ipAddress);
-                    string solrQuery = this.BuildSolrQuery(query, SolrOutputMimeType.xml);
+                    string solrQuery = this.BuildSolrQuery(query, SolrOutputMimeType.json);
                     this.running = true;
 
                     this.solrResponse = this.ThreadRoutine(solrQuery);

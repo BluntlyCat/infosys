@@ -183,7 +183,7 @@ namespace HSA.InfoSys.Common.Services
         /// </summary>
         public override void StartService()
         {
-            var configs = DBManager.Session.QueryOver<OrgUnitConfig>().List<OrgUnitConfig>();
+            /*var configs = DBManager.Session.QueryOver<OrgUnitConfig>().List<OrgUnitConfig>();
 
             mutex.WaitOne();
 
@@ -194,7 +194,7 @@ namespace HSA.InfoSys.Common.Services
 
             mutex.ReleaseMutex();
 
-            base.StartService();
+            base.StartService();*/
         }
 
         /// <summary>
