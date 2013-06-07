@@ -22,14 +22,14 @@ namespace HSA.InfoSys.Common.Nutch
         private static readonly ILog Log = Logger<string>.GetLogger("NutchManager");
 
         /// <summary>
-        /// The path to prefix file.
-        /// </summary>
-        private string prefixPath = Properties.Settings.Default.PREFIX_PATH;
-
-        /// <summary>
         /// The nutch manager
         /// </summary>
         private static INutchManager nutchManager;
+
+        /// <summary>
+        /// The path to prefix file.
+        /// </summary>
+        private string prefixPath = Properties.Settings.Default.PREFIX_PATH;
 
         /// <summary>
         /// The path to URL file.

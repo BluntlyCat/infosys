@@ -40,16 +40,6 @@ namespace HSA.InfoSys.Common.Services
         private static Mutex mutex = new Mutex();
 
         /// <summary>
-        /// The tick mutex.
-        /// </summary>
-        private static Mutex onErrorMutex = new Mutex();
-
-        /// <summary>
-        /// The tick mutex.
-        /// </summary>
-        private static Mutex onZeroMutex = new Mutex();
-
-        /// <summary>
         /// The database manager.
         /// </summary>
         private IDBManager dbManager;
@@ -113,7 +103,7 @@ namespace HSA.InfoSys.Common.Services
                     this.jobs[orgConfig.EntityId].Stop(true);
                     this.jobs[orgConfig.EntityId] = job;
                 }
-                else if(job.Active)
+                else if (job.Active)
                 {
                     this.jobs.Add(orgConfig.EntityId, job);
                 }
@@ -153,8 +143,6 @@ namespace HSA.InfoSys.Common.Services
         /// <param name="source">The source.</param>
         public void Job_OnZero(object sender, object source)
         {
-            onZeroMutex.WaitOne();
-
             var job = sender as Countdown;
             var config = job.Source as OrgUnitConfig;
             var time = this.SetNextSearch(config, job);
@@ -162,8 +150,6 @@ namespace HSA.InfoSys.Common.Services
             this.nutchManager.StartCrawl("michael", 1, 1);
 
             job.Start(time);
-
-            onZeroMutex.ReleaseMutex();
         }
 
         /// <summary>
@@ -173,21 +159,21 @@ namespace HSA.InfoSys.Common.Services
         /// <param name="error">The error.</param>
         public void Job_OnError(object sender, string error)
         {
-            onErrorMutex.WaitOne();
-
             var job = sender as Countdown;
             Log.DebugFormat(Properties.Resources.LOG_TIME_VALIDATION_ERROR, job, error);
-
-            onErrorMutex.ReleaseMutex();
         }
 
 #if DEBUG
+        /// <summary>
+        /// Occurs when [on tick].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
         public void Job_OnTick(object sender)
         {
             var job = sender as Countdown;
 
 #warning should not be in this way but the call to the logger causes a freeze of the whole application
-            //Log.DebugFormat(Properties.Resources.SCHEDULER_ON_TICK, job.Time.RemainTime);
+            // Log.DebugFormat(Properties.Resources.SCHEDULER_ON_TICK, job.Time.RemainTime);
             Console.WriteLine(string.Format(Properties.Resources.SCHEDULER_ON_TICK, job.Time.RemainTime));
         }
 #endif
@@ -244,6 +230,8 @@ namespace HSA.InfoSys.Common.Services
         /// <summary>
         /// Sets the countdown times.
         /// </summary>
+        /// <param name="config">The config.</param>
+        /// <returns>A started countdown.</returns>
         private Countdown SetNewJob(OrgUnitConfig config)
         {
             Countdown job = null;

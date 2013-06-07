@@ -25,6 +25,7 @@ namespace HSA.InfoSys.Common.Timing
         /// <param name="start">The start time.</param>
         /// <param name="end">The end time.</param>
         /// <param name="repeatIn">The repeat in.</param>
+        /// <param name="id">The id.</param>
         /// <param name="repeat">if set to <c>true</c> [repeat].</param>
         public Time(
             DateTime start,

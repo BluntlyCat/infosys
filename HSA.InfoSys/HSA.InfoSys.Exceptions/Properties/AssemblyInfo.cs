@@ -1,4 +1,9 @@
-﻿using System.Reflection;
+﻿// ------------------------------------------------------------------------
+// <copyright file="AssemblyInfo.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 

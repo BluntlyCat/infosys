@@ -11,11 +11,11 @@ namespace HSA.InfoSys.Common.Services
     using System.ServiceModel;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services.Data;
+    using HSA.InfoSys.Exceptions;
     using log4net;
     using NHibernate;
     using NHibernate.Cfg;
     using NHibernate.Tool.hbm2ddl;
-    using HSA.InfoSys.Exceptions;
 
     /// <summary>
     /// The DBManager handles database requests.

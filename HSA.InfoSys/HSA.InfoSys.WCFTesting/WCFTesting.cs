@@ -99,7 +99,16 @@ namespace HSA.InfoSys.Testing.WCFTesting
                                 break;
 
                             case ConsoleKey.T:
-                                var config = dbManager.CreateOrgUnitConfig("", "", true, true, 1, 2, new DateTime(), true);
+                                var config = dbManager.CreateOrgUnitConfig(
+                                    string.Empty,
+                                    string.Empty,
+                                    true,
+                                    true,
+                                    1,
+                                    2,
+                                    new DateTime(),
+                                    true);
+
                                 dbManager.AddEntity(config);
 
                                 CrawlControllerClient<IScheduler>.ClientProxy.AddOrgUnitConfig(config);

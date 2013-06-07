@@ -20,9 +20,10 @@ namespace HSA.InfoSys.Common.Timing
         private static readonly ILog Log = Logger<Type>.GetLogger(typeof(RemainTime));
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RemainTime"/> class.
+        /// Initializes a new instance of the <see cref="RemainTime" /> class.
         /// </summary>
         /// <param name="time">The remaining time.</param>
+        /// <param name="id">The id.</param>
         public RemainTime(TimeSpan time, Guid id)
         {
             Log.DebugFormat(Properties.Resources.LOG_REMAIN_TIME_INITIALIZE, time);

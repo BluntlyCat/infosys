@@ -10,9 +10,6 @@ namespace HSA.InfoSys.Testing.SolrTesting
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.SolrClient;
     using log4net;
-    using System.Xml;
-    using System.IO;
-    using System.Text;
     using Newtonsoft.Json;
 
     /// <summary>

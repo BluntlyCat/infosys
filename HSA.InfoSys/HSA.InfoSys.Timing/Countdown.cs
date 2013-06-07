@@ -23,7 +23,17 @@ namespace HSA.InfoSys.Common.Timing
         /// <summary>
         /// The tick mutex.
         /// </summary>
-        public static Mutex onTickMutex = new Mutex();
+        private static Mutex onTickMutex = new Mutex();
+
+        /// <summary>
+        /// The tick mutex.
+        /// </summary>
+        private static Mutex onErrorMutex = new Mutex();
+
+        /// <summary>
+        /// The tick mutex.
+        /// </summary>
+        private static Mutex onZeroMutex = new Mutex();
 
         /// <summary>
         /// The timer thread
@@ -34,6 +44,7 @@ namespace HSA.InfoSys.Common.Timing
         /// Initializes a new instance of the <see cref="Countdown" /> class.
         /// </summary>
         /// <param name="source">The source.</param>
+        /// <param name="id">The id.</param>
         /// <param name="time">The time.</param>
         public Countdown(object source, Guid id, Time time = null)
         {
@@ -103,20 +114,20 @@ namespace HSA.InfoSys.Common.Timing
         public object Source { get; private set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="Countdown"/> is canceled.
-        /// </summary>
-        /// <value>
-        /// Cancel is <c>true</c> if cancels; otherwise, <c>false</c>.
-        /// </value>
-        private bool Cancel { get; set; }
-
-        /// <summary>
         /// Gets the ID.
         /// </summary>
         /// <value>
         /// The ID.
         /// </value>
         public Guid ID { get; private set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="Countdown"/> is canceled.
+        /// </summary>
+        /// <value>
+        /// Cancel is <c>true</c> if cancels; otherwise, <c>false</c>.
+        /// </value>
+        private bool Cancel { get; set; }
 
         /// <summary>
         /// Sets the time to repeat.
