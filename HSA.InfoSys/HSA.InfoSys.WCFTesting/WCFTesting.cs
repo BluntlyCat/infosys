@@ -27,6 +27,8 @@ namespace HSA.InfoSys.Testing.WCFTesting
         {
             ILog log = Logger<string>.GetLogger("WCFTesting");
 
+            IDBManager dbManager = DBManager.ManagerFactory;
+
             bool running = true;
 
             bool requestSent = false;
@@ -97,10 +99,8 @@ namespace HSA.InfoSys.Testing.WCFTesting
                                 break;
 
                             case ConsoleKey.T:
-                                var config = new OrgUnitConfig();
-                                config.SchedulerActive = true;
-                                config.Time = 10;
-                                config.Days = 1;
+                                var config = dbManager.CreateOrgUnitConfig("", "", true, true, 1, 2, new DateTime(), true);
+                                dbManager.AddEntity(config);
 
                                 CrawlControllerClient<IScheduler>.ClientProxy.AddOrgUnitConfig(config);
                                 break;

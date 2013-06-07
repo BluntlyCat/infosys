@@ -15,6 +15,7 @@ namespace HSA.InfoSys.Common.Services
     using NHibernate;
     using NHibernate.Cfg;
     using NHibernate.Tool.hbm2ddl;
+    using HSA.InfoSys.Exceptions;
 
     /// <summary>
     /// The DBManager handles database requests.
@@ -78,21 +79,6 @@ namespace HSA.InfoSys.Common.Services
 
                 Log.Debug(Properties.Resources.DBSESSION_OPEN_SESSION);
                 return SessionFactory.OpenSession();
-            }
-        }
-
-        /// <summary>
-        /// Gets the opened session.
-        /// </summary>
-        /// <value>
-        /// The session.
-        /// </value>
-        /// <returns>A NHibernate session object.</returns>
-        public ISession GetSession
-        {
-            get
-            {
-                return Session;
             }
         }
 
@@ -361,6 +347,11 @@ namespace HSA.InfoSys.Common.Services
             DateTime nextSearch,
             bool schedulerActive)
         {
+            if (days <= 0 || time < 0)
+            {
+                throw new OrgUnitConfigTimeException(this.GetType().Name);
+            }
+
             var orgUnitConfig = new OrgUnitConfig
             {
                 URLS = urls,

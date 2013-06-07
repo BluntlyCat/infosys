@@ -313,6 +313,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Remaintime: [{0}]. ähnelt.
+        /// </summary>
+        internal static string SCHEDULER_ON_TICK {
+            get {
+                return ResourceManager.GetString("SCHEDULER_ON_TICK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Search started with query: [{0}]. ähnelt.
         /// </summary>
         internal static string SOLR_CLIENT_SEARCH_STARTED {

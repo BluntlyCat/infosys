@@ -100,20 +100,23 @@ namespace HSA.InfoSys.Common.Services
         /// <param name="orgConfig">The OrgUnitConfig.</param>
         public void AddOrgUnitConfig(OrgUnitConfig orgConfig)
         {
-            Log.DebugFormat(Properties.Resources.LOG_SCHEDULER_ADD, orgConfig);
-
-            mutex.WaitOne();
-
-            if (this.orgUnitConfigurations.ContainsKey(orgConfig.EntityId))
+            if (orgConfig.SchedulerActive)
             {
-                this.orgUnitConfigurations[orgConfig.EntityId] = orgConfig;
-            }
-            else
-            {
-                this.orgUnitConfigurations.Add(orgConfig.EntityId, orgConfig);
-            }
+                Log.DebugFormat(Properties.Resources.LOG_SCHEDULER_ADD, orgConfig);
 
-            mutex.ReleaseMutex();
+                mutex.WaitOne();
+
+                if (this.orgUnitConfigurations.ContainsKey(orgConfig.EntityId))
+                {
+                    this.orgUnitConfigurations[orgConfig.EntityId] = orgConfig;
+                }
+                else
+                {
+                    this.orgUnitConfigurations.Add(orgConfig.EntityId, orgConfig);
+                }
+
+                mutex.ReleaseMutex();
+            }
         }
 
         /// <summary>
@@ -130,6 +133,9 @@ namespace HSA.InfoSys.Common.Services
                 job.Stop(true);
                 job.OnZero -= this.Countdown_OnZero;
                 job.OnError -= this.Countdown_OnError;
+#if DEBUG
+                job.OnTick += this.Countdown_OnTick;
+#endif
 
                 this.jobs.Remove(orgUnitConfigGUID);
             }
@@ -164,12 +170,20 @@ namespace HSA.InfoSys.Common.Services
             Log.DebugFormat(Properties.Resources.LOG_TIME_VALIDATION_ERROR, job, error);
         }
 
+#if DEBUG
+        public void Countdown_OnTick(object sender)
+        {
+            var countdown = sender as Countdown;
+            Log.DebugFormat(Properties.Resources.SCHEDULER_ON_TICK, countdown.Time.RemainTime);
+        }
+#endif
+
         /// <summary>
         /// Starts this instance.
         /// </summary>
         public override void StartService()
         {
-            var configs = this.dbManager.GetSession.QueryOver<OrgUnitConfig>().List<OrgUnitConfig>();
+            var configs = DBManager.Session.QueryOver<OrgUnitConfig>().List<OrgUnitConfig>();
 
             mutex.WaitOne();
 
@@ -235,19 +249,18 @@ namespace HSA.InfoSys.Common.Services
                     {
                         var now = DateTime.Now;
                         var startTime = now;
-#if DEBUG
-                        var endTime = new DateTime(now.Year, now.Month, now.Day, now.Hour, config.Time, 0);
-                        var repeatIn = new TimeSpan(0, 0, config.Time, 0);
-#else
+
                         var endTime = new DateTime(now.Year, now.Month, now.Day, config.Time, 0, 0);
                         var repeatIn = new TimeSpan(config.Days, config.Time, 0, 0);
-#endif
 
                         var time = new Time(startTime, endTime, repeatIn, true);
                         var countdown = new Countdown(config, time);
 
                         countdown.OnZero += this.Countdown_OnZero;
                         countdown.OnError += this.Countdown_OnError;
+#if DEBUG
+                        countdown.OnTick += this.Countdown_OnTick;
+#endif
 
                         this.StartCountdown(config, countdown);
                     }
@@ -270,13 +283,13 @@ namespace HSA.InfoSys.Common.Services
             {
                 if (!countdown.Time.IsTimeInFuture)
                 {
-                    if (!countdown.Start(this.SetNextSearch(config, countdown)))
+                    if (countdown.Start(this.SetNextSearch(config, countdown)))
                     {
-                        this.failedConfigs.Add(config.EntityId, config);
+                        this.jobs.Add(config.EntityId, countdown);
                     }
                     else
                     {
-                        this.jobs.Add(config.EntityId, countdown);
+                        this.failedConfigs.Add(config.EntityId, config);
                     }
                 }
             }

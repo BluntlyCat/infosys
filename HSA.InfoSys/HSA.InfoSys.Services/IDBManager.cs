@@ -19,15 +19,6 @@ namespace HSA.InfoSys.Common.Services
     public interface IDBManager
     {
         /// <summary>
-        /// Gets the opened session.
-        /// </summary>
-        /// <value>
-        /// The session.
-        /// </value>
-        /// <returns>A NHibernate session object.</returns>
-        ISession GetSession { get; }
-
-        /// <summary>
         /// Loads this entities eager.
         /// </summary>
         /// <param name="param">The names of the entities.</param>
