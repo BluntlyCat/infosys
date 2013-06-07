@@ -42,11 +42,6 @@ namespace HSA.InfoSys.Common.Nutch
         private string fileName = Properties.Settings.Default.SEED_FILENAME;
 
         /// <summary>
-        /// The path for the regex url filter.
-        /// </summary>
-        private string regexPath;
-
-        /// <summary>
         /// The home directory.
         /// </summary>
         private string homeDir;
@@ -117,32 +112,14 @@ namespace HSA.InfoSys.Common.Nutch
         }
 
         /// <summary>
-        /// Creates the user directory.
-        /// </summary>
-        /// <param name="user">The username.</param>
-        public void CreateUserDir(string user)
-        {
-            string newDirectory = string.Format(
-                Properties.Settings.Default.PATH_FORMAT_THREE,
-                this.homeDir,
-                this.baseUrlPath,
-                user);
-
-            Directory.CreateDirectory(newDirectory);
-
-            File.CreateText(string.Format(
-                Properties.Settings.Default.PATH_FORMAT_TWO,
-                newDirectory,
-                this.fileName));
-        }
-
-        /// <summary>
         /// Adds the URL.
         /// </summary>
         /// <param name="urls">The URLs.</param>
         /// <param name="user">The username.</param>
         public void AddURL(List<string> urls, string user)
         {
+            this.CreateUserDir(user);
+
             string userURLPath = string.Format(
                 Properties.Settings.Default.PATH_FORMAT_FOUR,
                 this.homeDir,
@@ -167,6 +144,26 @@ namespace HSA.InfoSys.Common.Nutch
 
             this.AddURLToFile(prefixUrls, this.prefixPath);
             this.AddURLToFile(urls, userURLPath);
+        }
+
+        /// <summary>
+        /// Creates the user directory.
+        /// </summary>
+        /// <param name="user">The username.</param>
+        private void CreateUserDir(string user)
+        {
+            string newDirectory = string.Format(
+                Properties.Settings.Default.PATH_FORMAT_THREE,
+                this.homeDir,
+                this.baseUrlPath,
+                user);
+
+            Directory.CreateDirectory(newDirectory);
+
+            File.CreateText(string.Format(
+                Properties.Settings.Default.PATH_FORMAT_TWO,
+                newDirectory,
+                this.fileName));
         }
 
         /// <summary>

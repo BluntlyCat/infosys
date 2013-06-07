@@ -24,12 +24,6 @@ namespace HSA.InfoSys.Common.Nutch
         void StartCrawl(string urlDir, int depth, int topN);
 
         /// <summary>
-        /// Creates the user directory.
-        /// </summary>
-        /// <param name="user">The username.</param>
-        void CreateUserDir(string user);
-
-        /// <summary>
         /// Adds the URL.
         /// </summary>
         /// <param name="urls">The URLs.</param>
