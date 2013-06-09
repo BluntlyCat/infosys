@@ -12,6 +12,10 @@
         </i></span></a>
         <ul class="dropdown-menu">
             <li><a href="/Account/Changepassword">Change Password</a></li>
+            <!-- check if logged in user is an admin -->
+            <% if(Page.User.IsInRole("Admin")) { %>
+            <li><a href="/Account/UserControl">User Control</a></li>
+            <% } %>
         </ul>
     </li>
     <li id="user"><span class="label label-info pull-right" style="padding: 6px 8px;

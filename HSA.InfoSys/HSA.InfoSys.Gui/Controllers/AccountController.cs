@@ -270,6 +270,56 @@ namespace HSA.InfoSys.Gui.Controllers
         }
 
         /// <summary>
+        /// returns the user control view
+        /// </summary>
+        /// <returns></returns>
+        [Authorize]
+        public ActionResult UserControl()
+        {
+            return this.View();
+        }
+
+
+        /// <summary>
+        /// Deletes the user.
+        /// </summary>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet]
+        public ActionResult DeleteUser()
+        {
+            string username = Request.QueryString["username"];
+
+            Membership.DeleteUser(username, true);
+
+            return this.RedirectToAction("UserControl");
+        }
+
+        /// <summary>
+        /// Activates or deactivates the user.
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ActivateUser()
+        {
+            string username = Request.QueryString["username"];
+
+            var user = Membership.GetUser(username);
+
+            if (user.IsApproved)
+            {
+                user.IsApproved = false;
+            }
+            else
+            {
+                user.IsApproved = true;
+            }
+
+            Membership.UpdateUser(user);
+
+            return this.RedirectToAction("UserControl");
+        }
+
+        /// <summary>
         /// Initializes data which may will be no available while the constructor is called.
         /// </summary>
         /// <param name="requestContext">The HTTP-context and the route data.</param>
