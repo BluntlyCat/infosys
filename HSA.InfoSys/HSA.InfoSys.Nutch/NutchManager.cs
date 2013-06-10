@@ -116,7 +116,11 @@ namespace HSA.InfoSys.Common.Nutch
 
             client.Connect();
 
-            var command = client.CreateCommand("export JAVA_HOME='/usr/lib/jvm/java-6-openjdk' && " + crawlRequest);
+            var command = client.CreateCommand(string.Format(
+                "{0} && {1}",
+                "export JAVA_HOME='/usr/lib/jvm/java-6-openjdk'",
+                crawlRequest));
+
             command.BeginExecute(
                 x =>
                 {
