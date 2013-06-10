@@ -54,7 +54,7 @@ namespace HSA.InfoSys.Testing.SolrTesting
 
                         case ConsoleKey.S:
                             log.Info("Send request to solr.");
-                            client.StartSearch("solr");
+                            client.StartSearch("miitsoft");
                             var result = client.GetResponse();
 
                             var json = JsonConvert.DeserializeObject(result);

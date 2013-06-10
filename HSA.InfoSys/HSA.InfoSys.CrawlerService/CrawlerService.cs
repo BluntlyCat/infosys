@@ -68,14 +68,20 @@ namespace HSA.InfoSys.CrawlerService
                     ConsoleKeyInfo keyInfo = Console.ReadKey(true);
                     Log.InfoFormat(Properties.Resources.WEB_CRAWLER_GOT_USERINPUT, keyInfo.Key);
 
-                    if (keyInfo.Key == ConsoleKey.Q)
+                    switch (keyInfo.Key)
                     {
-                        Log.Info(Properties.Resources.WEB_CRAWLER_EXITED_BY_USER);
-                        this.ShutdownCrawler();
-                    }
-                    else
-                    {
-                        Log.Info(Properties.Resources.WEB_CRAWLER_UNKOWN_USERINPUT);
+                        case ConsoleKey.Q:
+                            Log.Info(Properties.Resources.WEB_CRAWLER_EXITED_BY_USER);
+                            this.ShutdownCrawler();
+                            break;
+
+                        case ConsoleKey.S:
+                            this.crawlController.StopServices(true);
+                            break;
+
+                        default:
+                            Log.Info(Properties.Resources.WEB_CRAWLER_UNKOWN_USERINPUT);
+                            break;
                     }
                 }
 

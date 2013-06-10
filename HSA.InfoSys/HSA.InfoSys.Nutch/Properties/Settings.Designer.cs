@@ -52,7 +52,7 @@ namespace HSA.InfoSys.Common.Nutch.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("./nutch/urls/")]
+        [global::System.Configuration.DefaultSettingValueAttribute(".nutch/urls/")]
         public string BASEURL_PATH {
             get {
                 return ((string)(this["BASEURL_PATH"]));
@@ -88,7 +88,7 @@ namespace HSA.InfoSys.Common.Nutch.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("nutch")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files (x86)\\apache-nutch-1.6\\bin\\nutch")]
         public string NUTCH_COMMAND {
             get {
                 return ((string)(this["NUTCH_COMMAND"]));

@@ -66,13 +66,6 @@ namespace HSA.InfoSys.Common.SolrClient
         }
 
         /// <summary>
-        /// Commits to solr.
-        /// </summary>
-        public void CommitToSolr()
-        {
-        }
-
-        /// <summary>
         /// Gets the response from solr.
         /// </summary>
         /// <returns>The response.</returns>
@@ -139,8 +132,9 @@ namespace HSA.InfoSys.Common.SolrClient
         {
             Guid queryTicket = Guid.NewGuid();
 
+            // http://infosys.informatik.hs-augsburg.de:8983/solr/collection1/select?q=miitsoft&wt=json&indent=true
             string query = string.Format(
-                "/solr/{0}/select?q={1}&wt={2}",
+                "/solr/{0}/select?q={1}&wt={2}&indent=true",
                 Collection,
                 queryString,
                 mimeType);

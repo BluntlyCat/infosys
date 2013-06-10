@@ -241,9 +241,13 @@ namespace HSA.InfoSys.Common.Services
                 var now = DateTime.Now;
                 var startTime = now;
 
+#if DEBUG
+                var endTime = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, config.Time);
+                var repeatIn = new TimeSpan(0, 0, config.Days, config.Time);
+#else
                 var endTime = new DateTime(now.Year, now.Month, now.Day, config.Time, 0, 0);
                 var repeatIn = new TimeSpan(config.Days, config.Time, 0, 0);
-
+#endif
                 var time = new Time(startTime, endTime, repeatIn, config.EntityId, true);
 
                 job = new Countdown(config, config.EntityId, time);
