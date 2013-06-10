@@ -34,7 +34,7 @@ namespace HSA.InfoSys.Common.CrawlController.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("../../Certificate/InfoSys.pfx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Certificates/InfoSys.pfx")]
         public string CERTIFICATE_PATH_DOTNET {
             get {
                 return ((string)(this["CERTIFICATE_PATH_DOTNET"]));

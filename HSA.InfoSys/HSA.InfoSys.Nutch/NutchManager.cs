@@ -6,10 +6,10 @@
 namespace HSA.InfoSys.Common.Nutch
 {
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.IO;
     using HSA.InfoSys.Common.Logging;
     using log4net;
+    using Renci.SshNet;
 
     /// <summary>
     /// The Nutch Manager handles the WebCrawl
@@ -79,6 +79,57 @@ namespace HSA.InfoSys.Common.Nutch
             }
         }
 
+#warning Only for testing, remove the !MONO part when finished but keep the else part!!! Also remove the reference to RenciSSH
+#if !MONO
+        /// <summary>
+        /// Starts the crawling.
+        /// </summary>
+        /// <param name="userName">Name of the user.</param>
+        /// <param name="depth">The depth.</param>
+        /// <param name="topN">The top N.</param>
+        public void StartCrawl(string userName, int depth, int topN)
+        {
+            this.homeDir = Properties.Settings.Default.USER_DIR_MONO;
+
+            var keyFile = new FileStream("Certificates/devteam.id.rsa", FileMode.Open);
+            byte[] keyBytes = new byte[keyFile.Length];
+            keyFile.Read(keyBytes, 0, (int)keyFile.Length);
+            keyFile.Close();
+
+            PrivateKeyFile key = new PrivateKeyFile(new MemoryStream(keyBytes));
+            PrivateKeyConnectionInfo info = new PrivateKeyConnectionInfo("infosys.informatik.hs-augsburg.de", 22, "devteam", key);
+            SshClient client = new SshClient(info);
+
+            var urlPath = string.Format(
+                Properties.Settings.Default.PATH_FORMAT_THREE,
+                this.homeDir,
+                this.baseUrlPath,
+                userName);
+
+            string crawlRequest =
+                string.Format(
+                Properties.Settings.Default.NUTCH_CRAWL_REQUEST,
+                urlPath,
+                Properties.Settings.Default.SOLRSERVER,
+                depth,
+                topN);
+
+            client.Connect();
+
+            var command = client.CreateCommand("export JAVA_HOME='/usr/lib/jvm/java-6-openjdk' && " + crawlRequest);
+            command.BeginExecute(
+                x =>
+                {
+                    if (x.IsCompleted)
+                    {
+                        Log.DebugFormat("Result from Nutch: {0}", command.Result);
+                        client.Disconnect();
+                    }
+                });
+
+            Log.Info(string.Format(Properties.Resources.CRAWL_REQUEST_SENT, crawlRequest));
+        }
+#else
         /// <summary>
         /// Starts the crawling.
         /// </summary>
@@ -110,6 +161,7 @@ namespace HSA.InfoSys.Common.Nutch
 
             Log.Info(string.Format(Properties.Resources.CRAWL_REQUEST_SENT, crawlRequest));
         }
+#endif
 
         /// <summary>
         /// Adds the URL.
