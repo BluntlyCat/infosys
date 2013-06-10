@@ -11,6 +11,7 @@ namespace HSA.InfoSys.Testing.SolrTesting
     using HSA.InfoSys.Common.SolrClient;
     using log4net;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Implement your testing methods for Solr here.
@@ -57,7 +58,10 @@ namespace HSA.InfoSys.Testing.SolrTesting
                             client.StartSearch("miitsoft");
                             var result = client.GetResponse();
 
-                            var json = JsonConvert.DeserializeObject(result);
+                            var json = JsonConvert.DeserializeObject(result) as JObject;
+
+                            var response = json["response"];
+                            var content = response["docs"]["content"];
                             
                             break;
                     }
