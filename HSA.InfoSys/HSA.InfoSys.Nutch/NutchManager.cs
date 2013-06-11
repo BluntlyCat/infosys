@@ -243,9 +243,14 @@ namespace HSA.InfoSys.Common.Nutch
         {
             List<string> content = new List<string>();
 
+            var prefixFile = string.Format(
+                Properties.Settings.Default.PATH_FORMAT_TWO,
+                filePath,
+                Properties.Settings.Default.PREFIX_FILENAME);
+
             try
             {
-                using (StreamReader sr = new StreamReader(filePath))
+                using (StreamReader sr = new StreamReader(prefixFile))
                 {
                     var line = string.Empty;
 
@@ -259,6 +264,11 @@ namespace HSA.InfoSys.Common.Nutch
 
                     Log.DebugFormat(Properties.Resources.LOG_FILE_READING_SUCCESS, filePath);
                 }
+            }
+            catch (FileNotFoundException)
+            {
+                Log.DebugFormat(Properties.Resources.LOG_PREFIX_FILE_NOT_FOUND);
+                File.CreateText(prefixFile);
             }
             catch (Exception e)
             {

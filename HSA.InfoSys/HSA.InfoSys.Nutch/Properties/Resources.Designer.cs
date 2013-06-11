@@ -133,6 +133,15 @@ namespace HSA.InfoSys.Common.Nutch.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Prefix file does not exist, create it. ähnelt.
+        /// </summary>
+        internal static string LOG_PREFIX_FILE_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("LOG_PREFIX_FILE_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die NutchManager does not exist, create one ähnelt.
         /// </summary>
         internal static string NUTCHMANAGER_NO_MANAGER_FOUND {

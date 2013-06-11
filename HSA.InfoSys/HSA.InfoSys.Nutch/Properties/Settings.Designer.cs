@@ -61,7 +61,7 @@ namespace HSA.InfoSys.Common.Nutch.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(".nutch/regex-urlfilter.txt")]
+        [global::System.Configuration.DefaultSettingValueAttribute(".nutch/")]
         public string PREFIX_PATH {
             get {
                 return ((string)(this["PREFIX_PATH"]));
@@ -119,6 +119,15 @@ namespace HSA.InfoSys.Common.Nutch.Properties {
         public string PATH_FORMAT_FOUR {
             get {
                 return ((string)(this["PATH_FORMAT_FOUR"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("regex-urlfilter.txt")]
+        public string PREFIX_FILENAME {
+            get {
+                return ((string)(this["PREFIX_FILENAME"]));
             }
         }
     }
