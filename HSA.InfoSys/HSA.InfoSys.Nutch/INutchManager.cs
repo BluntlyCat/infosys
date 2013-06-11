@@ -29,7 +29,7 @@ namespace HSA.InfoSys.Common.Nutch
         /// <param name="userName">Name of the user.</param>
         /// <param name="depth">The depth.</param>
         /// <param name="topN">The top N.</param>
-        /// <param name="urls">The urls.</param>
+        /// <param name="urls">The URLs.</param>
         void StartCrawl(string userName, int depth, int topN, params string[] urls);
 
         /// <summary>

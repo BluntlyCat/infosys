@@ -89,6 +89,7 @@ namespace HSA.InfoSys.CrawlerService
                             {
                                 this.servicesRunning = this.crawlController.StartServices();
                             }
+
                             break;
 
                         default:

@@ -5,14 +5,13 @@
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.Common.Nutch
 {
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics;
-    using System.Linq;
     using System.IO;
+    using System.Linq;
     using HSA.InfoSys.Common.Logging;
     using log4net;
-    using Renci.SshNet;
-    using System;
 
     /// <summary>
     /// The Nutch Manager handles the WebCrawl
@@ -51,7 +50,7 @@ namespace HSA.InfoSys.Common.Nutch
 #endif
             this.prefixPath = string.Format(
                 Properties.Settings.Default.PATH_FORMAT_TWO,
-                homeDir,
+                this.homeDir,
                 Properties.Settings.Default.PREFIX_PATH);
         }
 
@@ -93,7 +92,7 @@ namespace HSA.InfoSys.Common.Nutch
         /// <param name="userName">Name of the user.</param>
         /// <param name="depth">The depth.</param>
         /// <param name="topN">The top N.</param>
-        /// <param name="urls">The urls.</param>
+        /// <param name="urls">The URLs.</param>
         public void StartCrawl(string userName, int depth, int topN, params string[] urls)
         {
             this.AddURL(userName, urls);
@@ -135,26 +134,6 @@ namespace HSA.InfoSys.Common.Nutch
         }
 
         /// <summary>
-        /// Creates the user directory.
-        /// </summary>
-        /// <param name="user">The username.</param>
-        private void CreateUserDir(string user)
-        {
-            string newDirectory = string.Format(
-                Properties.Settings.Default.PATH_FORMAT_THREE,
-                this.homeDir,
-                Properties.Settings.Default.BASEURL_PATH,
-                user);
-
-            var info = Directory.CreateDirectory(newDirectory);
-
-            if (!info.Exists)
-            {
-                Log.ErrorFormat(Properties.Resources.LOG_DIRECTORY_CREATION_ERROR, newDirectory);
-            }
-        }
-
-        /// <summary>
         /// Adds the URL.
         /// </summary>
         /// <param name="user">The username.</param>
@@ -189,9 +168,30 @@ namespace HSA.InfoSys.Common.Nutch
         }
 
         /// <summary>
+        /// Creates the user directory.
+        /// </summary>
+        /// <param name="user">The username.</param>
+        private void CreateUserDir(string user)
+        {
+            string newDirectory = string.Format(
+                Properties.Settings.Default.PATH_FORMAT_THREE,
+                this.homeDir,
+                Properties.Settings.Default.BASEURL_PATH,
+                user);
+
+            var info = Directory.CreateDirectory(newDirectory);
+
+            if (!info.Exists)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_DIRECTORY_CREATION_ERROR, newDirectory);
+            }
+        }
+
+        /// <summary>
         /// Adds the url in the corresponding file.
         /// </summary>
         /// <param name="path">The path of the file.</param>
+        /// <param name="fileName">Name of the file.</param>
         /// <param name="urls">The array of url.</param>
         private void AddURLToFile(string path, string fileName, params string[] urls)
         {
@@ -214,9 +214,10 @@ namespace HSA.InfoSys.Common.Nutch
             catch (FileNotFoundException)
             {
                 this.CreateFile(path, fileName);
-                AddURLToFile(path, fileName, urls);
+                this.AddURLToFile(path, fileName, urls);
 
-                Log.DebugFormat(Properties.Resources.LOG_FILE_CREATION_SUCCESS,
+                Log.DebugFormat(
+                    Properties.Resources.LOG_FILE_CREATION_SUCCESS,
                     fileName,
                     path);
             }
@@ -261,7 +262,7 @@ namespace HSA.InfoSys.Common.Nutch
             catch (FileNotFoundException)
             {
                 Log.DebugFormat(Properties.Resources.LOG_PREFIX_FILE_NOT_FOUND);
-                this.CreateFile(prefixPath, Properties.Settings.Default.PREFIX_FILENAME, true);
+                this.CreateFile(this.prefixPath, Properties.Settings.Default.PREFIX_FILENAME, true);
             }
             catch (Exception e)
             {
@@ -276,6 +277,7 @@ namespace HSA.InfoSys.Common.Nutch
         /// </summary>
         /// <param name="path">The path.</param>
         /// <param name="fileName">Name of the file.</param>
+        /// <param name="createNew">if set to <c>true</c> [create new].</param>
         private void CreateFile(string path, string fileName, bool createNew = false)
         {
             var info = new DirectoryInfo(path);
