@@ -88,7 +88,7 @@ namespace HSA.InfoSys.Common.Nutch.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files (x86)\\apache-nutch-1.6\\bin\\nutch")]
+        [global::System.Configuration.DefaultSettingValueAttribute("nutch")]
         public string NUTCH_COMMAND {
             get {
                 return ((string)(this["NUTCH_COMMAND"]));
