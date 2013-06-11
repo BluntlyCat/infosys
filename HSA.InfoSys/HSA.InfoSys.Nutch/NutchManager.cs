@@ -211,7 +211,12 @@ namespace HSA.InfoSys.Common.Nutch
         {
             try
             {
-                using (StreamWriter sw = File.AppendText(path))
+                var file = string.Format(
+                    Properties.Settings.Default.PATH_FORMAT_TWO,
+                    path,
+                    Properties.Settings.Default.PREFIX_FILENAME);
+
+                using (StreamWriter sw = File.AppendText(file))
                 {
                     foreach (string url in urls)
                     {
