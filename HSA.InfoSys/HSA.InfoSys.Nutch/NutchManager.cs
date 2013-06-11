@@ -136,7 +136,7 @@ namespace HSA.InfoSys.Common.Nutch
 
             nutch.Start();
 
-            Log.Info(string.Format(Properties.Resources.CRAWL_REQUEST_SENT, crawlRequest));
+            Log.DebugFormat(Properties.Resources.CRAWL_REQUEST_SENT, crawlRequest);
         }
 
         /// <summary>
@@ -151,12 +151,21 @@ namespace HSA.InfoSys.Common.Nutch
                 this.baseUrlPath,
                 user);
 
-            Directory.CreateDirectory(newDirectory);
+            var info = Directory.CreateDirectory(newDirectory);
 
-            File.CreateText(string.Format(
-                Properties.Settings.Default.PATH_FORMAT_TWO,
-                newDirectory,
-                this.fileName));
+            if (info.Exists)
+            {
+                File.CreateText(string.Format(
+                    Properties.Settings.Default.PATH_FORMAT_TWO,
+                    newDirectory,
+                    this.fileName));
+
+                Log.DebugFormat(Properties.Resources.LOG_DIRECTORY_CREATION_SUCCESS, newDirectory, this.fileName);
+            }
+            else
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_DIRECTORY_CREATION_ERROR, newDirectory);
+            }
         }
 
         /// <summary>
@@ -175,7 +184,8 @@ namespace HSA.InfoSys.Common.Nutch
                 user,
                 this.fileName);
 
-            List<string> prefixUrls = new List<string>();
+            var prefixUrls = new List<string>();
+            var knownPrefixes = this.GetFileContent(Properties.Settings.Default.PREFIX, this.prefixPath);
 
             foreach (string url in urls)
             {
@@ -184,9 +194,10 @@ namespace HSA.InfoSys.Common.Nutch
                     Properties.Settings.Default.PREFIX,
                     url);
 
-                if (!this.GetFileContent(Properties.Settings.Default.PREFIX, this.prefixPath).Contains(prefix))
+                if (!knownPrefixes.Contains(prefix))
                 {
                     prefixUrls.Add(prefix);
+                    Log.DebugFormat(Properties.Resources.LOG_PREFIX_ADDED, prefix);
                 }
             }
 
@@ -201,12 +212,20 @@ namespace HSA.InfoSys.Common.Nutch
         /// <param name="urls">The array of url.</param>
         private void AddURLToFile(string path, params string[] urls)
         {
-            foreach (string url in urls)
+            try
             {
-                using (StreamWriter sw = File.AppendText(path))
+                foreach (string url in urls)
                 {
-                    sw.WriteLine(url);
+                    using (StreamWriter sw = File.AppendText(path))
+                    {
+                        sw.WriteLine(url);
+                        Log.DebugFormat(Properties.Resources.LOG_FILE_WRITING_SUCCESS, url);
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_FILE_WRITING_ERROR, path, e);
             }
         }
 
@@ -219,17 +238,27 @@ namespace HSA.InfoSys.Common.Nutch
         private List<string> GetFileContent(string pattern, string filePath)
         {
             List<string> content = new List<string>();
-            using (StreamReader sr = new StreamReader(filePath))
-            {
-                var line = string.Empty;
 
-                while ((line = sr.ReadLine()) != null)
+            try
+            {
+                using (StreamReader sr = new StreamReader(filePath))
                 {
-                    if (line.Contains(pattern))
+                    var line = string.Empty;
+
+                    while ((line = sr.ReadLine()) != null)
                     {
-                        content.Add(line);
+                        if (line.Contains(pattern))
+                        {
+                            content.Add(line);
+                        }
                     }
+
+                    Log.DebugFormat(Properties.Resources.LOG_FILE_READING_SUCCESS, filePath);
                 }
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_FILE_READING_ERROR, filePath, e);
             }
 
             return content;
