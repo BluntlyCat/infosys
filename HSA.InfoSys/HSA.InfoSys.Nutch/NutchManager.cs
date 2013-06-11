@@ -7,6 +7,7 @@ namespace HSA.InfoSys.Common.Nutch
 {
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Linq;
     using System.IO;
     using HSA.InfoSys.Common.Logging;
     using log4net;
@@ -37,11 +38,6 @@ namespace HSA.InfoSys.Common.Nutch
         /// The path to URL file.
         /// </summary>
         private string baseUrlPath = Properties.Settings.Default.BASEURL_PATH;
-
-        /// <summary>
-        /// The seed file name.
-        /// </summary>
-        private string fileName = Properties.Settings.Default.SEED_FILENAME;
 
         /// <summary>
         /// The home directory.
@@ -159,12 +155,9 @@ namespace HSA.InfoSys.Common.Nutch
 
             if (info.Exists)
             {
-                File.CreateText(string.Format(
-                    Properties.Settings.Default.PATH_FORMAT_TWO,
-                    newDirectory,
-                    this.fileName));
-
-                Log.DebugFormat(Properties.Resources.LOG_DIRECTORY_CREATION_SUCCESS, newDirectory, this.fileName);
+                this.CreateFile(newDirectory, Properties.Settings.Default.SEED_FILENAME, true);
+                Log.DebugFormat(Properties.Resources.LOG_DIRECTORY_CREATION_SUCCESS, newDirectory,
+                    Properties.Settings.Default.SEED_FILENAME);
             }
             else
             {
@@ -186,7 +179,7 @@ namespace HSA.InfoSys.Common.Nutch
                 this.homeDir,
                 this.baseUrlPath,
                 user,
-                this.fileName);
+                Properties.Settings.Default.SEED_FILENAME);
 
             var prefixUrls = new List<string>();
             var knownPrefixes = this.GetFileContent(Properties.Settings.Default.PREFIX, this.prefixPath);
@@ -218,9 +211,9 @@ namespace HSA.InfoSys.Common.Nutch
         {
             try
             {
-                foreach (string url in urls)
+                using (StreamWriter sw = File.AppendText(path))
                 {
-                    using (StreamWriter sw = File.AppendText(path))
+                    foreach (string url in urls)
                     {
                         sw.WriteLine(url);
                         Log.DebugFormat(Properties.Resources.LOG_FILE_WRITING_SUCCESS, url);
@@ -268,7 +261,7 @@ namespace HSA.InfoSys.Common.Nutch
             catch (FileNotFoundException)
             {
                 Log.DebugFormat(Properties.Resources.LOG_PREFIX_FILE_NOT_FOUND);
-                File.CreateText(prefixFile);
+                this.CreateFile(prefixPath, Properties.Settings.Default.PREFIX_FILENAME, true);
             }
             catch (Exception e)
             {
@@ -276,6 +269,27 @@ namespace HSA.InfoSys.Common.Nutch
             }
 
             return content;
+        }
+
+        /// <summary>
+        /// Creates the file.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="fileName">Name of the file.</param>
+        private void CreateFile(string path, string fileName, bool createNew = false)
+        {
+            var info = new DirectoryInfo(path);
+
+            if (info.Exists && (!info.GetFiles().Contains(new FileInfo(fileName)) || createNew))
+            {
+                var file = File.Create(
+                    string.Format(
+                    Properties.Settings.Default.PATH_FORMAT_TWO,
+                    path,
+                    fileName));
+
+                file.Close();
+            }
         }
     }
 }
