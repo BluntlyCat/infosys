@@ -35,11 +35,6 @@ namespace HSA.InfoSys.Common.Nutch
         private string prefixPath;
 
         /// <summary>
-        /// The path to URL file.
-        /// </summary>
-        private string baseUrlPath = Properties.Settings.Default.BASEURL_PATH;
-
-        /// <summary>
         /// The home directory.
         /// </summary>
         private string homeDir;
@@ -118,7 +113,7 @@ namespace HSA.InfoSys.Common.Nutch
             var urlPath = string.Format(
                 Properties.Settings.Default.PATH_FORMAT_THREE,
                 this.homeDir,
-                this.baseUrlPath,
+                Properties.Settings.Default.BASEURL_PATH,
                 userName);
 
             string crawlRequest =
@@ -148,7 +143,7 @@ namespace HSA.InfoSys.Common.Nutch
             string newDirectory = string.Format(
                 Properties.Settings.Default.PATH_FORMAT_THREE,
                 this.homeDir,
-                this.baseUrlPath,
+                Properties.Settings.Default.BASEURL_PATH,
                 user);
 
             var info = Directory.CreateDirectory(newDirectory);
@@ -175,11 +170,10 @@ namespace HSA.InfoSys.Common.Nutch
             this.CreateUserDir(user);
 
             string userURLPath = string.Format(
-                Properties.Settings.Default.PATH_FORMAT_FOUR,
+                Properties.Settings.Default.PATH_FORMAT_THREE,
                 this.homeDir,
-                this.baseUrlPath,
-                user,
-                Properties.Settings.Default.SEED_FILENAME);
+                Properties.Settings.Default.BASEURL_PATH,
+                user);
 
             var prefixUrls = new List<string>();
             var knownPrefixes = this.GetFileContent(Properties.Settings.Default.PREFIX, this.prefixPath);
