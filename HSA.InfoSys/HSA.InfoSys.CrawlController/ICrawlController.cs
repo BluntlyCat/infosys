@@ -23,14 +23,16 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <summary>
         /// Starts the services.
         /// </summary>
+        /// <returns>True indicates that the services are started.</returns>
         [OperationContract]
-        void StartServices();
+        bool StartServices();
 
         /// <summary>
         /// Stops the services.
         /// </summary>
         /// <param name="cancel">if set to <c>true</c> [cancel].</param>
+        /// <returns>False indicates that the services are stopped.</returns>
         [OperationContract]
-        void StopServices(bool cancel = false);
+        bool StopServices(bool cancel = false);
     }
 }

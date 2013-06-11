@@ -25,14 +25,6 @@ namespace HSA.InfoSys.Common.Services
         private Thread serviceThread;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Service"/> class.
-        /// </summary>
-        public Service()
-        {
-            this.serviceThread = new Thread(new ThreadStart(this.Run));
-        }
-
-        /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Service"/> is running.
         /// </summary>
         /// <value>
@@ -46,6 +38,8 @@ namespace HSA.InfoSys.Common.Services
         public virtual void StartService()
         {
             Log.DebugFormat(Properties.Resources.LOG_START_SERVICE, this.GetType().Name);
+            
+            this.serviceThread = new Thread(new ThreadStart(this.Run));
 
             this.Running = true;
             this.serviceThread.Start();

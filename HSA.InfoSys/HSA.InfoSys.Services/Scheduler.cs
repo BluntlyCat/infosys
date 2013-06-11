@@ -215,6 +215,8 @@ namespace HSA.InfoSys.Common.Services
                 job.Stop(cancel);
             }
 
+            this.jobs.Clear();
+
             mutex.ReleaseMutex();
 
             base.StopService(cancel);

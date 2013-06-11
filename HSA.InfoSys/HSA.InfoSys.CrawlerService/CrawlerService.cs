@@ -29,6 +29,11 @@ namespace HSA.InfoSys.CrawlerService
         private bool running;
 
         /// <summary>
+        /// The services running flag.
+        /// </summary>
+        private bool servicesRunning = false;
+
+        /// <summary>
         /// The WCF controller for the crawler service.
         /// </summary>
         private CrawlControllerHost controllerHost;
@@ -57,7 +62,7 @@ namespace HSA.InfoSys.CrawlerService
             Log.Info(Properties.Resources.WEB_CRAWLER_QUIT_MESSAGE);
 
             this.InitializeControllerHost();
-            this.crawlController.StartServices();
+            this.servicesRunning = this.crawlController.StartServices();
 
             this.running = true;
 
@@ -76,7 +81,14 @@ namespace HSA.InfoSys.CrawlerService
                             break;
 
                         case ConsoleKey.S:
-                            this.crawlController.StopServices(true);
+                            if (this.servicesRunning)
+                            {
+                                this.servicesRunning = this.crawlController.StopServices(true);
+                            }
+                            else
+                            {
+                                this.servicesRunning = this.crawlController.StartServices();
+                            }
                             break;
 
                         default:

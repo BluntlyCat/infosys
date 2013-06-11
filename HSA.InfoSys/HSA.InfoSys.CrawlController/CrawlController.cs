@@ -74,7 +74,8 @@ namespace HSA.InfoSys.Common.CrawlController
         /// <summary>
         /// Starts the services.
         /// </summary>
-        public void StartServices()
+        /// <returns>True indicates that the services are started.</returns>
+        public bool StartServices()
         {
             Log.Info(Properties.Resources.CRAWL_CONTROLLER_START);
 
@@ -82,13 +83,16 @@ namespace HSA.InfoSys.Common.CrawlController
             {
                 service.StartService();
             }
+
+            return true;
         }
 
         /// <summary>
         /// Stops the services.
         /// </summary>
         /// <param name="cancel">if set to <c>true</c> [cancel].</param>
-        public void StopServices(bool cancel = false)
+        /// <returns>False indicates that the services are stopped.</returns>
+        public bool StopServices(bool cancel = false)
         {
             Log.Info(Properties.Resources.CRAWL_CONTROLLER_SHUTDOWN);
 
@@ -96,6 +100,8 @@ namespace HSA.InfoSys.Common.CrawlController
             {
                 service.StopService(cancel);
             }
+
+            return false;
         }
 
         #endregion
