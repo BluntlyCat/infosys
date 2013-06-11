@@ -167,8 +167,6 @@ namespace HSA.InfoSys.Common.Nutch
         /// <param name="urls">The URLs.</param>
         public void AddURL(string user, params string[] urls)
         {
-            this.CreateUserDir(user);
-
             string userURLPath = string.Format(
                 Properties.Settings.Default.PATH_FORMAT_THREE,
                 this.homeDir,
