@@ -1269,7 +1269,11 @@ namespace Newtonsoft.Json
           {
 #if !(NET20 || NET35 || SILVERLIGHT || PORTABLE40 || PORTABLE)
             string number = _stringReference.ToString();
+#if MONO
+            numberValue = BigInteger.Parse(number);
+#else
             numberValue = BigInteger.Parse(number, CultureInfo.InvariantCulture);
+#endif
             numberType = JsonToken.Integer;
 #else
             // todo - validate number was a valid integer to make sure overflow was the reason for failure

@@ -6,6 +6,7 @@
 namespace HSA.InfoSys.Common.Nutch
 {
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.IO;
     using HSA.InfoSys.Common.Logging;
     using log4net;

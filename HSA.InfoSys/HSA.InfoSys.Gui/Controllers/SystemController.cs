@@ -6,16 +6,15 @@
 namespace HSA.InfoSys.Gui.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Web.Mvc;
     using System.Web.Security;
     using HSA.InfoSys.Common.CrawlController;
     using HSA.InfoSys.Common.Logging;
-    using log4net;
-    using System.Collections.Generic;
     using HSA.InfoSys.Common.Services;
     using HSA.InfoSys.Common.Services.Data;
-    using System.Web.Helpers;
-    
+    using log4net;
+
 
     /// <summary>
     /// The controller for the system.

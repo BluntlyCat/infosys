@@ -301,7 +301,13 @@ namespace Newtonsoft.Json.Utilities
       if (value is BigInteger)
         return (BigInteger)value;
       if (value is string)
-        return BigInteger.Parse((string)value, CultureInfo.InvariantCulture);
+      {
+#if MONO
+          return BigInteger.Parse((string)value);
+#else
+          return BigInteger.Parse((string)value, CultureInfo.InvariantCulture);
+#endif
+      }
       if (value is float)
         return new BigInteger((float)value);
       if (value is double)
