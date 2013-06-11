@@ -18,18 +18,25 @@ namespace HSA.InfoSys.Common.Nutch
         /// <summary>
         /// Starts the crawling.
         /// </summary>
-        /// <param name="urlDir">The URL directory.</param>
+        /// <param name="userName">Name of the user.</param>
         /// <param name="depth">The depth.</param>
         /// <param name="topN">The top N.</param>
-        void StartCrawl(string urlDir, int depth, int topN);
+        void StartCrawl(string userName, int depth, int topN);
+
+        /// <summary>
+        /// Starts the crawling.
+        /// </summary>
+        /// <param name="userName">Name of the user.</param>
+        /// <param name="depth">The depth.</param>
+        /// <param name="topN">The top N.</param>
+        /// <param name="urls">The urls.</param>
+        void StartCrawl(string userName, int depth, int topN, params string[] urls);
 
         /// <summary>
         /// Adds the URL.
         /// </summary>
-        /// <param name="urls">The URLs.</param>
         /// <param name="user">The username.</param>
-        void AddURL(List<string> urls, string user);
-
-        void CreateUserDir(string user);
+        /// <param name="urls">The URLs.</param>
+        void AddURL(string user, params string[] urls);
     }
 }

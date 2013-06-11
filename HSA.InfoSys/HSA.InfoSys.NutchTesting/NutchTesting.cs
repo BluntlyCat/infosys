@@ -48,8 +48,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
                     {
                         case ConsoleKey.C:
                             Log.Info("Connect to SSH.");
-                            n.CreateUserDir("michael");
-                            //SshConnect();
+                            SshConnect();
                             break;
 
                         case ConsoleKey.H:
@@ -63,9 +62,8 @@ namespace HSA.InfoSys.Testing.NutchTesting
                             break;
 
                         case ConsoleKey.S:
-                            
                             Log.Info("Send request to nutch.");
-                            n.StartCrawl("path", 1, 1);
+                            n.StartCrawl("michael", 1, 1, "http://www.hs-augsburg.de");
                             break;
                     }
                 }
