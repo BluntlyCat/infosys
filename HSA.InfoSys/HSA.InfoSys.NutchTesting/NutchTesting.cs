@@ -48,7 +48,8 @@ namespace HSA.InfoSys.Testing.NutchTesting
                     {
                         case ConsoleKey.C:
                             Log.Info("Connect to SSH.");
-                            SshConnect();
+                            n.CreateUserDir("michael");
+                            //SshConnect();
                             break;
 
                         case ConsoleKey.H:

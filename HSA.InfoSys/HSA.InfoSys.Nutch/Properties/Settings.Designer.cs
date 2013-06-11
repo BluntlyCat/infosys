@@ -106,24 +106,6 @@ namespace HSA.InfoSys.Common.Nutch.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("%HOMEPATH%")]
-        public string USER_DIR_DOTNET {
-            get {
-                return ((string)(this["USER_DIR_DOTNET"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("$HOME")]
-        public string USER_DIR_MONO {
-            get {
-                return ((string)(this["USER_DIR_MONO"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("{0}/{1}")]
         public string PREFIX_FORMAT {
             get {

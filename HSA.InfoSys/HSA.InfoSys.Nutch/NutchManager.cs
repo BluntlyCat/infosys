@@ -11,6 +11,7 @@ namespace HSA.InfoSys.Common.Nutch
     using HSA.InfoSys.Common.Logging;
     using log4net;
     using Renci.SshNet;
+    using System;
 
     /// <summary>
     /// The Nutch Manager handles the WebCrawl
@@ -53,9 +54,9 @@ namespace HSA.InfoSys.Common.Nutch
         private NutchManager()
         {
 #if !MONO
-            this.homeDir = Properties.Settings.Default.USER_DIR_DOTNET;
+            this.homeDir = Environment.GetEnvironmentVariable("HOMEPATH");
 #else
-            this.homeDir = Properties.Settings.Default.USER_DIR_MONO;
+            this.homeDir = Environment.GetEnvironmentVariable("HOME");
 #endif
         }
 
@@ -209,7 +210,7 @@ namespace HSA.InfoSys.Common.Nutch
         /// Creates the user directory.
         /// </summary>
         /// <param name="user">The username.</param>
-        private void CreateUserDir(string user)
+        public void CreateUserDir(string user)
         {
             string newDirectory = string.Format(
                 Properties.Settings.Default.PATH_FORMAT_THREE,

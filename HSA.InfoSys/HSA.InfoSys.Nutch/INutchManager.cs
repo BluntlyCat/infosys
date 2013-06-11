@@ -29,5 +29,7 @@ namespace HSA.InfoSys.Common.Nutch
         /// <param name="urls">The URLs.</param>
         /// <param name="user">The username.</param>
         void AddURL(List<string> urls, string user);
+
+        void CreateUserDir(string user);
     }
 }
