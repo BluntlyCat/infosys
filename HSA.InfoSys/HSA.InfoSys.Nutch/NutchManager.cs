@@ -159,6 +159,8 @@ namespace HSA.InfoSys.Common.Nutch
                 depth,
                 topN);
 
+            this.CreateUserDir(userName);
+
             nutch.StartInfo.FileName = Properties.Settings.Default.NUTCH_COMMAND;
             nutch.StartInfo.Arguments = crawlRequest;
 
