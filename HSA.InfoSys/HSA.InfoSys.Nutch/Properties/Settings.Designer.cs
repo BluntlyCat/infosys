@@ -52,7 +52,7 @@ namespace HSA.InfoSys.Common.Nutch.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(".nutch/urls/")]
+        [global::System.Configuration.DefaultSettingValueAttribute(".nutch/urls")]
         public string BASEURL_PATH {
             get {
                 return ((string)(this["BASEURL_PATH"]));
