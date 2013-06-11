@@ -81,9 +81,9 @@ namespace HSA.InfoSys.Common.Nutch.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die File {0} at {1} successfully created. ähnelt.
         /// </summary>
-        internal static string LOG_DIRECTORY_CREATION_SUCCESS {
+        internal static string LOG_FILE_CREATION_SUCCESS {
             get {
-                return ResourceManager.GetString("LOG_DIRECTORY_CREATION_SUCCESS", resourceCulture);
+                return ResourceManager.GetString("LOG_FILE_CREATION_SUCCESS", resourceCulture);
             }
         }
         

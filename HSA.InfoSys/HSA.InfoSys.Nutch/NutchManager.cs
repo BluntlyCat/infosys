@@ -148,13 +148,7 @@ namespace HSA.InfoSys.Common.Nutch
 
             var info = Directory.CreateDirectory(newDirectory);
 
-            if (info.Exists)
-            {
-                this.CreateFile(newDirectory, Properties.Settings.Default.SEED_FILENAME, true);
-                Log.DebugFormat(Properties.Resources.LOG_DIRECTORY_CREATION_SUCCESS, newDirectory,
-                    Properties.Settings.Default.SEED_FILENAME);
-            }
-            else
+            if (!info.Exists)
             {
                 Log.ErrorFormat(Properties.Resources.LOG_DIRECTORY_CREATION_ERROR, newDirectory);
             }
@@ -221,6 +215,10 @@ namespace HSA.InfoSys.Common.Nutch
             {
                 this.CreateFile(path, fileName);
                 AddURLToFile(path, fileName, urls);
+
+                Log.DebugFormat(Properties.Resources.LOG_FILE_CREATION_SUCCESS,
+                    fileName,
+                    path);
             }
             catch (Exception e)
             {
