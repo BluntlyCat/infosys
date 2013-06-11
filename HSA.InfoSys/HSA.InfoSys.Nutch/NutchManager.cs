@@ -209,13 +209,13 @@ namespace HSA.InfoSys.Common.Nutch
         /// <param name="urls">The array of url.</param>
         private void AddURLToFile(string path, string fileName, params string[] urls)
         {
+            var file = string.Format(
+                Properties.Settings.Default.PATH_FORMAT_TWO,
+                path,
+                fileName);
+
             try
             {
-                var file = string.Format(
-                    Properties.Settings.Default.PATH_FORMAT_TWO,
-                    path,
-                    fileName);
-
                 using (StreamWriter sw = File.AppendText(file))
                 {
                     foreach (string url in urls)
