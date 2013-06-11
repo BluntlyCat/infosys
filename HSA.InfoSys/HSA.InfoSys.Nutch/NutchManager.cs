@@ -219,6 +219,11 @@ namespace HSA.InfoSys.Common.Nutch
                     }
                 }
             }
+            catch (FileNotFoundException)
+            {
+                this.CreateFile(path, fileName);
+                AddURLToFile(path, fileName, urls);
+            }
             catch (Exception e)
             {
                 Log.ErrorFormat(Properties.Resources.LOG_FILE_WRITING_ERROR, file, e);
