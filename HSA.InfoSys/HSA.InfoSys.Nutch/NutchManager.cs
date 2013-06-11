@@ -31,7 +31,7 @@ namespace HSA.InfoSys.Common.Nutch
         /// <summary>
         /// The path to prefix file.
         /// </summary>
-        private string prefixPath = Properties.Settings.Default.PREFIX_PATH;
+        private string prefixPath;
 
         /// <summary>
         /// The path to URL file.
@@ -58,6 +58,10 @@ namespace HSA.InfoSys.Common.Nutch
 #else
             this.homeDir = Environment.GetEnvironmentVariable("HOME");
 #endif
+            this.prefixPath = string.Format(
+                Properties.Settings.Default.PATH_FORMAT_TWO,
+                homeDir,
+                Properties.Settings.Default.PREFIX_PATH);
         }
 
         /// <summary>
