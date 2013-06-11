@@ -198,8 +198,8 @@ namespace HSA.InfoSys.Common.Nutch
                 }
             }
 
-            this.AddURLToFile(this.prefixPath, prefixUrls.ToArray());
-            this.AddURLToFile(userURLPath, urls);
+            this.AddURLToFile(this.prefixPath, Properties.Settings.Default.PREFIX_FILENAME, prefixUrls.ToArray());
+            this.AddURLToFile(userURLPath, Properties.Settings.Default.SEED_FILENAME, urls);
         }
 
         /// <summary>
@@ -207,14 +207,14 @@ namespace HSA.InfoSys.Common.Nutch
         /// </summary>
         /// <param name="path">The path of the file.</param>
         /// <param name="urls">The array of url.</param>
-        private void AddURLToFile(string path, params string[] urls)
+        private void AddURLToFile(string path, string fileName, params string[] urls)
         {
             try
             {
                 var file = string.Format(
                     Properties.Settings.Default.PATH_FORMAT_TWO,
                     path,
-                    Properties.Settings.Default.PREFIX_FILENAME);
+                    fileName);
 
                 using (StreamWriter sw = File.AppendText(file))
                 {
@@ -227,7 +227,7 @@ namespace HSA.InfoSys.Common.Nutch
             }
             catch (Exception e)
             {
-                Log.ErrorFormat(Properties.Resources.LOG_FILE_WRITING_ERROR, path, e);
+                Log.ErrorFormat(Properties.Resources.LOG_FILE_WRITING_ERROR, file, e);
             }
         }
 
