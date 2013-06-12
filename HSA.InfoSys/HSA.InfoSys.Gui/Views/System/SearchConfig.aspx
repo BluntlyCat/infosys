@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Import Namespace="HSA.InfoSys.Common.Services.Data"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     My Systems
@@ -24,12 +25,13 @@
                 <p><b>Saved Configs</b></p>
                 <span>Du kannst bereits gespeicherte Konfigurationen deiner anderen Systeme für dieses System verwenden.<br />
                 Wähle einfach die entsprechende Konfiguration, die geladen werden soll:</span>
-                <form action="/System/SearchConfig" method="post">
+                <form action="/System/LoadConfig?sysguid=<%= ViewData["systemguid"] %>" method="post">
                     <div id="loadconfig" style="width: 500px; margin-left: 100px; margin-top: 20px;">
-                        <select>
-                            <option></option>
-                            <option>Workstation1</option>
-                            <option>Backup-Server 07</option>
+                        <select name="orgUnitConfigId">
+                        <% foreach (var item in this.ViewData["orgUnits"] as List<OrgUnit>)
+                           { %>
+                            <option value="<%= item.OrgUnitConfig.EntityId %>"><%= item.Name %></option>
+                        <% } %>
                         </select>
                         <button type="submit" class="btn" style="margin-bottom: 10px; margin-left: 5px;"><b>Load & Save</b></button>
                     </div>

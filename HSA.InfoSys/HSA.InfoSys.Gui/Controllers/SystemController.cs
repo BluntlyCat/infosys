@@ -41,6 +41,7 @@ namespace HSA.InfoSys.Gui.Controllers
             int id = Convert.ToInt32(userid);
 
             IList<OrgUnit> orgUnits =  cc.GetOrgUnitsByUserID(id);
+            
 
             this.ViewData["orgUnits"] = orgUnits;
 
@@ -72,7 +73,7 @@ namespace HSA.InfoSys.Gui.Controllers
             int id = Convert.ToInt32(userid);
 
             // create SystemConfig
-            var systemConfig = cc.CreateOrgUnitConfig(null, null, false, false, 0, 0, new DateTime(), false);
+            var systemConfig = cc.CreateOrgUnitConfig(null, null, false, false, 1, 12, new DateTime(), false);
 
             // create System
             var system = cc.CreateOrgUnit(id, newsystem);
@@ -223,6 +224,27 @@ namespace HSA.InfoSys.Gui.Controllers
             // init
             var cc = CrawlControllerClient<IDBManager>.ClientProxy;
 
+            // get id of current logged-in user
+            MembershipUser membershipuser = Membership.GetUser();
+            string userid = membershipuser.ProviderUserKey.ToString();
+            int id = Convert.ToInt32(userid);
+
+            IList<OrgUnit> orgUnits = cc.GetOrgUnitsByUserID(id);
+
+            OrgUnit delItem = null;
+
+            foreach (var item in orgUnits)
+            {
+                if (item.EntityId == new Guid(systemguid))
+                {
+                     delItem = item;
+                }
+            }
+
+            orgUnits.Remove(delItem);
+            this.ViewData["orgUnits"] = orgUnits;
+
+
             // get SystemConfig, OrgUnitConfig
             var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
             var config = orgUnit.OrgUnitConfig;
@@ -263,6 +285,7 @@ namespace HSA.InfoSys.Gui.Controllers
             return this.View();
         }
 
+
         /// <summary>
         /// Called on submitting the config search.
         /// </summary>
@@ -290,6 +313,8 @@ namespace HSA.InfoSys.Gui.Controllers
                 config.SchedulerActive = true;
                 config.Days = Convert.ToInt32(sc_days);
                 config.Time = Convert.ToInt32(sc_time);
+
+                //TODO: vergleich der zeiten
             }
             else
             {
@@ -340,6 +365,42 @@ namespace HSA.InfoSys.Gui.Controllers
 
             //save to db
             cc.UpdateEntity(config);
+
+            return this.Redirect("/System/SearchConfig?sysguid=" + systemguid);
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult LoadConfig()
+        {
+            // get data from GET-Request
+            string systemguid = Request.QueryString["sysguid"];
+
+            // get data from GET-Request
+            string loadedConfigId = Request["orgUnitConfigId"];
+
+            // init
+            var cc = CrawlControllerClient<IDBManager>.ClientProxy;
+
+            //get config from other orgUnit
+            var loadedConfig = cc.GetEntity(new Guid(loadedConfigId), cc.LoadThisEntities("OrgUnitConfig")) as OrgUnitConfig;
+
+            // get SystemConfig, OrgUnitConfig
+            var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
+            var config = orgUnit.OrgUnitConfig;
+
+            // copy orgUnitConfig data 
+            config.EmailActive = loadedConfig.EmailActive;
+            config.URLActive = loadedConfig.URLActive;
+            config.SchedulerActive = loadedConfig.SchedulerActive;
+            config.Days = loadedConfig.Days;
+            config.Time = loadedConfig.Time;
+            config.Emails = loadedConfig.Emails;
+            config.URLS = loadedConfig.URLS;
+            
+            cc.UpdateEntity(config);
+
 
             return this.Redirect("/System/SearchConfig?sysguid=" + systemguid);
         }
