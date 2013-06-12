@@ -26,14 +26,14 @@ namespace HSA.InfoSys.Common.SolrClient
         /// <summary>
         /// The content
         /// </summary>
-        string content = null;
+        string content { get; set; }
         /// <summary>
         /// The URL
         /// </summary>
-        string url = null;
+        string url { get; set; }
         /// <summary>
         /// The tstamp
         /// </summary>
-        string tstamp = null;
+        string tstamp { get; set; }
     }
 }
