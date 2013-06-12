@@ -17,15 +17,25 @@ namespace HSA.InfoSys.Common.SolrClient
     /// </summary>
     public class SolrJsonParser
     {
-        public List<Result> results = new List<Result>();
+        /// <summary>
+        /// The results list in which all Results can be found
+        /// </summary>
+        private List<Result> results = new List<Result>();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SolrJsonParser"/> class.
+        /// </summary>
         public SolrJsonParser()
         {
-            //this.results = new List<Result>();
+            this.results = new List<Result>();
         }
 
-        public void ParsetoString(string result)
-        { 
+        /// <summary>
+        /// Parses to string.
+        /// </summary>
+        /// <param name="result">The result.</param>
+        public void ParseToString(string result)
+        {
             var json = JsonConvert.DeserializeObject(result) as JObject;
             var response = json["response"];
             var docs = response["docs"];
@@ -33,18 +43,20 @@ namespace HSA.InfoSys.Common.SolrClient
             foreach (var doc in docs)
             {
                 r = new Result();
-                r.content = doc["content"].ToString();
-                r.url = doc["url"].ToString();
-                r.tstamp = (DateTime)doc["tstamp"];
-
+                r.Content = doc["content"].ToString();
+                r.Url = doc["url"].ToString();
+                r.Tstamp = (DateTime)doc["tstamp"];
                 this.results.Add(r);
             }
         }
-        public List<Result> getResults()
+
+        /// <summary>
+        /// Gets the results.
+        /// </summary>
+        /// <returns>The results</returns>
+        public List<Result> GetResults()
         {
             return this.results;
         }
-
-        
     }
 }

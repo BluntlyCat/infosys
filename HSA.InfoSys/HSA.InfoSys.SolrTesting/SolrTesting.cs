@@ -55,14 +55,19 @@ namespace HSA.InfoSys.Testing.SolrTesting
                             break;
 
                         case ConsoleKey.S:
-                            log.Info("Send request to solr.");
-                            client.StartSearch("miitsoft");
+                            log.Info("Send request to solr");
+                            client.StartSearch("windows");
                             var result = client.GetResponse();
 
                             SolrJsonParser jp = new SolrJsonParser();
-                            jp.ParsetoString(result);
+                            jp.ParseToString(result);
                             List<Result> list;
-                            list = jp.getResults();
+                            list = jp.GetResults();
+
+                            foreach(Result r in list)
+                            {
+                                Console.WriteLine(r);
+                            }
                             
                             break;
                     }
