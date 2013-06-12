@@ -1,32 +1,59 @@
 ﻿// ***********************************************************************
-// <copyright file="Result.cs" company="">
-//     Copyright (c) . All rights reserved.
+// <copyright file="Result.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
 // </copyright>
 // 
 /////////////////////////////////////////////////////////////////////////
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace HSA.InfoSys.Common.SolrClient
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
     /// <summary>
     /// Class Result is one Result Solr found in a query
     /// </summary>
     public class Result
     {
         /// <summary>
-        /// The content
+        /// Gets or sets the content.
         /// </summary>
-        public string content { get; set; }
+        /// <value>
+        /// The content.
+        /// </value>
+        public string Content { get; set; }
+
         /// <summary>
-        /// The URL
+        /// Gets or sets the url.
         /// </summary>
-        public string url { get; set; }
+        /// <value>
+        /// The url.
+        /// </value>
+        public string Url { get; set; }
+
         /// <summary>
-        /// The tstamp
+        /// Gets or sets the timestamp.
         /// </summary>
-        public DateTime tstamp { get; set; }
+        /// <value>
+        /// The timestamp.
+        /// </value>
+        public DateTime Tstamp { get; set; }
+
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public override string ToString()
+        {
+            return string.Format(
+                "Search result found at {0}\nContent:\n{1}\nAt time:\n{2}",
+                this.Url,
+                this.Content,
+                this.Tstamp);
+        }
     }
 }
