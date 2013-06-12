@@ -11,7 +11,6 @@ namespace HSA.InfoSys.Testing.NutchTesting
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Nutch;
     using log4net;
-    using Renci.SshNet;
 
     /// <summary>
     /// Implement your testing methods for Nutch here.
@@ -48,7 +47,6 @@ namespace HSA.InfoSys.Testing.NutchTesting
                     {
                         case ConsoleKey.C:
                             Log.Info("Connect to SSH.");
-                            SshConnect();
                             break;
 
                         case ConsoleKey.H:
@@ -82,33 +80,6 @@ namespace HSA.InfoSys.Testing.NutchTesting
             Console.WriteLine("Press q to quit this application.");
             Console.WriteLine("Press s to start a new request to nutch server.");
             Console.WriteLine(string.Empty);
-        }
-
-        /// <summary>
-        /// Execute a command via SSH.
-        /// </summary>
-        private static void SshConnect()
-        {
-            var keyFile = new FileStream("Certificates/devteam.id.rsa", FileMode.Open);
-            byte[] keyBytes = new byte[keyFile.Length];
-            keyFile.Read(keyBytes, 0, (int)keyFile.Length);
-
-            PrivateKeyFile key = new PrivateKeyFile(new MemoryStream(keyBytes));
-            PrivateKeyConnectionInfo info = new PrivateKeyConnectionInfo("infosys.informatik.hs-augsburg.de", 22, "devteam", key);
-            SshClient client = new SshClient(info);
-
-            client.Connect();
-            var command = client.CreateCommand("ls -la");
-
-            command.BeginExecute(
-                x =>
-                {
-                    if (x.IsCompleted)
-                    {
-                        Log.DebugFormat("Result: {0}", command.Result);
-                        client.Disconnect();
-                    }
-                });
         }
     }
 }
