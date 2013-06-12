@@ -58,7 +58,7 @@ namespace HSA.InfoSys.Common.SolrClient
         public override string ToString()
         {
             return string.Format(
-                "Issue was found:\"{0}\" Search result found at Website: {1}\nContent:\n{2}\nAt time:\n{3}",
+                Properties.Resources.RESULT_TO_STRING,
                 this.Title,
                 this.Url,
                 this.Content,

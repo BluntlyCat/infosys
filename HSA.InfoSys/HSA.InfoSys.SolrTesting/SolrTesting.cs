@@ -6,13 +6,13 @@
 namespace HSA.InfoSys.Testing.SolrTesting
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.SolrClient;
     using log4net;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Implement your testing methods for Solr here.
@@ -60,10 +60,13 @@ namespace HSA.InfoSys.Testing.SolrTesting
                             var result = client.GetResponse();
 
                             SolrJsonParser jp = new SolrJsonParser();
-                            //parse request wird an den SolrJsonParser gesendet
+
+                            // parse request wird an den SolrJsonParser gesendet
                             jp.ParseToString(result);
-                                //hier sind alle Results drinnen
+
+                            // hier sind alle Results drinnen
                             List<Result> list  = jp.GetResults();
+
                             break;
                     }
                 }
