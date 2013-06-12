@@ -47,16 +47,17 @@ namespace HSA.InfoSys.Common.SolrClient
             var response = json["response"];
             var docs = response["docs"];
 
-            Result r = new Result();
-
             foreach (var doc in docs)
             {
-                r = new Result();
+                var r = new Result();
+
                 r.Content = doc["content"].ToString();
                 r.Url = doc["url"].ToString();
                 r.Title = doc["title"].ToString();
                 r.Timestamp = (DateTime)doc["tstamp"];
+
                 this.results.Add(r);
+
                 Log.Info(string.Format("Search resualt was added! ", r.Title));
             }
         }
