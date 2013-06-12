@@ -17,9 +17,11 @@ namespace HSA.InfoSys.Common.SolrClient
     /// </summary>
     public class SolrJsonParser
     {
-        public  List<Result> results;
+        public List<Result> results = new List<Result>();
+
         public SolrJsonParser()
         {
+            //this.results = new List<Result>();
         }
 
         public void ParsetoString(string result)
@@ -35,13 +37,14 @@ namespace HSA.InfoSys.Common.SolrClient
                 r.url = doc["url"].ToString();
                 r.tstamp = (DateTime)doc["tstamp"];
 
-                results.Add(r);
+                this.results.Add(r);
             }
         }
-
         public List<Result> getResults()
         {
             return this.results;
         }
+
+        
     }
 }

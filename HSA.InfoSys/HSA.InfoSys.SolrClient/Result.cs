@@ -14,7 +14,7 @@ namespace HSA.InfoSys.Common.SolrClient
     /// <summary>
     /// Class Result is one Result Solr found in a query
     /// </summary>
-    class Result
+    public class Result
     {
         /// <summary>
         /// The content
