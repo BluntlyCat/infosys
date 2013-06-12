@@ -17,7 +17,7 @@ namespace HSA.InfoSys.Common.SolrClient
     /// </summary>
     public class SolrJsonParser
     {
-        private List<Result> results;
+        public  List<Result> results;
         public SolrJsonParser()
         {
         }

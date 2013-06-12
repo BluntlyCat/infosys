@@ -2,8 +2,8 @@
 // <copyright file="Result.cs" company="">
 //     Copyright (c) . All rights reserved.
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+// 
+/////////////////////////////////////////////////////////////////////////
 using System;
 using System.Collections.Generic;
 using System.Linq;
