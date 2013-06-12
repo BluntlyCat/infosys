@@ -60,15 +60,10 @@ namespace HSA.InfoSys.Testing.SolrTesting
                             var result = client.GetResponse();
 
                             SolrJsonParser jp = new SolrJsonParser();
+                            //parse request wird an den SolrJsonParser gesendet
                             jp.ParseToString(result);
-                            List<Result> list;
-                            list = jp.GetResults();
-
-                            foreach(Result r in list)
-                            {
-                                Console.WriteLine(r);
-                            }
-                            
+                                //hier sind alle Results drinnen
+                            List<Result> list  = jp.GetResults();
                             break;
                     }
                 }

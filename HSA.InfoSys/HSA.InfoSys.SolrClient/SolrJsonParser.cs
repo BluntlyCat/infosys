@@ -56,7 +56,7 @@ namespace HSA.InfoSys.Common.SolrClient
                 r.Title = doc["title"].ToString();
                 r.Timestamp = (DateTime)doc["tstamp"];
                 this.results.Add(r);
-                log.Info(string.Format("Search resualt was added: ", r.Title));
+                log.Info(string.Format("Search resualt was added! ", r.Title));
             }
         }
 
