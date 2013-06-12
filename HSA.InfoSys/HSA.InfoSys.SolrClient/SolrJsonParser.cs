@@ -45,7 +45,8 @@ namespace HSA.InfoSys.Common.SolrClient
                 r = new Result();
                 r.Content = doc["content"].ToString();
                 r.Url = doc["url"].ToString();
-                r.Tstamp = (DateTime)doc["tstamp"];
+                r.Title = doc["title"].ToString();
+                r.Timestamp = (DateTime)doc["tstamp"];
                 this.results.Add(r);
             }
         }

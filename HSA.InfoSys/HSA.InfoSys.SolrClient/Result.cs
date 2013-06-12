@@ -34,12 +34,20 @@ namespace HSA.InfoSys.Common.SolrClient
         public string Url { get; set; }
 
         /// <summary>
-        /// Gets or sets the timestamp.
+        /// Gets or sets the Title.
         /// </summary>
         /// <value>
-        /// The timestamp.
+        /// The Title.
         /// </value>
-        public DateTime Tstamp { get; set; }
+        public string Title { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Timestamp.
+        /// </summary>
+        /// <value>
+        /// The Timestamp.
+        /// </value>
+        public DateTime Timestamp { get; set; }
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
@@ -50,10 +58,11 @@ namespace HSA.InfoSys.Common.SolrClient
         public override string ToString()
         {
             return string.Format(
-                "Search result found at {0}\nContent:\n{1}\nAt time:\n{2}",
+                "Issue was found:\"{0}\" Search result found at Website: {1}\nContent:\n{2}\nAt time:\n{3}",
+                this.Title,
                 this.Url,
                 this.Content,
-                this.Tstamp);
+                this.Timestamp);
         }
     }
 }
