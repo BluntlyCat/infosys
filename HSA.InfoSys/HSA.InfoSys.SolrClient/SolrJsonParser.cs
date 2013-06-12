@@ -11,12 +11,20 @@ namespace HSA.InfoSys.Common.SolrClient
     using System.Text;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using HSA.InfoSys.Common.Logging;
+    using log4net;
 
     /// <summary>
     /// SolrJsonParser parses the response of SolrClient
     /// </summary>
     public class SolrJsonParser
     {
+
+        /// <summary>
+        /// The loger
+        /// </summary>
+        ILog log = Logger<string>.GetLogger("SolrJsonParser");
+
         /// <summary>
         /// The results list in which all Results can be found
         /// </summary>
@@ -48,6 +56,7 @@ namespace HSA.InfoSys.Common.SolrClient
                 r.Title = doc["title"].ToString();
                 r.Timestamp = (DateTime)doc["tstamp"];
                 this.results.Add(r);
+                log.Info(string.Format("Search resualt was added: ", r.Title));
             }
         }
 
