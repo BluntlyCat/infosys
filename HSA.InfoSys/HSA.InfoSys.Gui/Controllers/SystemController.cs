@@ -11,10 +11,10 @@ namespace HSA.InfoSys.Gui.Controllers
     using System.Web.Security;
     using HSA.InfoSys.Common.CrawlController;
     using HSA.InfoSys.Common.Logging;
-    using HSA.InfoSys.Common.Services;
-    using HSA.InfoSys.Common.Services.Data;
     using log4net;
-
+    using Newtonsoft.Json;
+    using HSA.InfoSys.Common.Services;
+    using HSA.InfoSys.Common.Entities;
 
     /// <summary>
     /// The controller for the system.
@@ -259,7 +259,7 @@ namespace HSA.InfoSys.Gui.Controllers
 
             if (!String.IsNullOrEmpty(config.Emails))
             {
-                this.ViewData["emails"] = System.Web.Helpers.Json.Decode<string[]>(config.Emails);
+                this.ViewData["emails"] = JsonConvert.DeserializeObject<string[]>(config.Emails);
             }
             else
             {
@@ -268,7 +268,7 @@ namespace HSA.InfoSys.Gui.Controllers
 
             if (!String.IsNullOrEmpty(config.URLS))
             {
-                this.ViewData["urls"] = System.Web.Helpers.Json.Decode<string[]>(config.URLS);
+                this.ViewData["urls"] = JsonConvert.DeserializeObject<string[]>(config.URLS);
             } 
             else 
             {
@@ -325,7 +325,7 @@ namespace HSA.InfoSys.Gui.Controllers
             if (!String.IsNullOrEmpty(Request["emails[]"]))
             {
                 string[] emails = Request["emails[]"].Split(',');
-                config.Emails = System.Web.Helpers.Json.Encode(emails);
+                config.Emails = JsonConvert.SerializeObject(emails);
             }
             else
             {
@@ -346,7 +346,7 @@ namespace HSA.InfoSys.Gui.Controllers
             if (!String.IsNullOrEmpty(Request["websites[]"]))
             {
                 string[] websites = Request["websites[]"].Split(',');
-                config.URLS = System.Web.Helpers.Json.Encode(websites);
+                config.URLS = JsonConvert.SerializeObject(websites);
             }
             else
             {

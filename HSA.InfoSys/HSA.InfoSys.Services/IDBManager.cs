@@ -9,8 +9,8 @@ namespace HSA.InfoSys.Common.Services
     using System.Collections.Generic;
     using System.ServiceModel;
     using HSA.InfoSys.Common.NetDataContractSerializer;
-    using HSA.InfoSys.Common.Services.Data;
     using NHibernate;
+    using HSA.InfoSys.Common.Entities;
 
     /// <summary>
     /// The interface for accessing the data base.
@@ -107,16 +107,16 @@ namespace HSA.InfoSys.Common.Services
         Component CreateComponent(string name, OrgUnit orgUnit);
 
         /// <summary>
-        /// Creates a result object
+        /// Creates the result.
         /// </summary>
-        /// <param name="data">The content of the result</param>
-        /// <param name="source">The source.</param>
-        /// <returns>
-        /// The created result object
-        /// </returns>
+        /// <param name="component">The component.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="url">The URL.</param>
+        /// <param name="title">The title.</param>
+        /// <returns></returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        Result CreateResult(string data, string source);
+        Result CreateResult(Component component, string content, string url, string title);
 
         /// <summary>
         /// Creates a OrgUnit object

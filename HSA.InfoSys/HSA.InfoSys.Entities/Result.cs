@@ -3,7 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Common.Services.Data
+namespace HSA.InfoSys.Common.Entities
 {
     using System;
     using System.Runtime.Serialization;
@@ -15,22 +15,40 @@ namespace HSA.InfoSys.Common.Services.Data
     public class Result : Entity
     {
         /// <summary>
-        /// Gets or sets the data.
+        /// Gets or sets the content.
         /// </summary>
         /// <value>
-        /// The data.
+        /// The content.
         /// </value>
         [DataMember]
-        public virtual string Data { get; set; }
+        public virtual string Content { get; set; }
 
         /// <summary>
-        /// Gets or sets the source.
+        /// Gets or sets the component.
         /// </summary>
         /// <value>
-        /// The source URL.
+        /// The component.
         /// </value>
         [DataMember]
-        public virtual string Source { get; set; }
+        public virtual Component Component { get; set; }
+
+        /// <summary>
+        /// Gets or sets the title.
+        /// </summary>
+        /// <value>
+        /// The title.
+        /// </value>
+        [DataMember]
+        public virtual string Title { get; set; }
+
+        /// <summary>
+        /// Gets or sets the URL.
+        /// </summary>
+        /// <value>
+        /// The URL.
+        /// </value>
+        [DataMember]
+        public virtual string URL { get; set; } //Ehemals source
 
         /// <summary>
         /// Gets or sets the time.
@@ -50,10 +68,12 @@ namespace HSA.InfoSys.Common.Services.Data
         public override string ToString()
         {
             return string.Format(
-                "ID: {0}, Data: {1}, Source: {2}, Time: {3}",
+                Properties.Resources.RESULT_TO_STRING,
                 this.EntityId,
-                this.Data,
-                this.Source,
+                this.Component,
+                this.Title,
+                this.URL,
+                this.Content,
                 this.Time);
         }
     }

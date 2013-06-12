@@ -62,30 +62,36 @@ namespace HSA.InfoSys.Common.Services
         /// <summary>
         /// Starts a new search.
         /// </summary>
-        /// <param name="query">The search query pattern.</param>
-        public void StartSearch(string query)
+        /// <param name="orgUnitGuid">The org unit GUID.</param>
+        public void StartSearch(Guid orgUnitGuid)
         {
-            Log.InfoFormat(Properties.Resources.SOLR_CLIENT_SEARCH_STARTED, query);
+            var db = DBManager.ManagerFactory;
+            var components = db.GetComponentsByOrgUnitId(orgUnitGuid);
 
-            var client = new SolrClient(
-                Properties.Settings.Default.SOLR_PORT,
-                Properties.Settings.Default.SOLR_HOST);
+            foreach (var component in components)
+            {
+                Log.InfoFormat(Properties.Resources.SOLR_CLIENT_SEARCH_STARTED, component.Name);
 
-            ////Here we tell our delegate which method to call.
-            InvokeSolrSearch invokeSearch = new InvokeSolrSearch(client.StartSearch);
+                var client = new SolrClient(
+                    Properties.Settings.Default.SOLR_PORT,
+                    Properties.Settings.Default.SOLR_HOST);
 
-            ////This is our callback method which will be
-            ////called when solr finished the searchrequest.
-            AsyncCallback callback = new AsyncCallback(
-                c =>
-                {
-                    if (c.IsCompleted)
+                ////Here we tell our delegate which method to call.
+                InvokeSolrSearch invokeSearch = new InvokeSolrSearch(client.StartSearch);
+
+                ////This is our callback method which will be
+                ////called when solr finished the searchrequest.
+                AsyncCallback callback = new AsyncCallback(
+                    c =>
                     {
-                        Log.InfoFormat("Response for query [{0}] is\r\n[{1}]", query, client.GetResponse());
-                    }
-                });
+                        if (c.IsCompleted)
+                        {
+                            Log.InfoFormat("Response for query [{0}] is\r\n[{1}]", component.Name, client.GetResponse());
+                        }
+                    });
 
-            invokeSearch.BeginInvoke(query, callback, this);
+                invokeSearch.BeginInvoke(component.Name, callback, this);
+            }
         }
 
         /// <summary>

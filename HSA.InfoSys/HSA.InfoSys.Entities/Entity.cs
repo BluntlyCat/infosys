@@ -3,7 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Common.Services.Data
+namespace HSA.InfoSys.Common.Entities
 {
     using System;
     using System.Runtime.Serialization;

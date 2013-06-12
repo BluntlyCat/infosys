@@ -13,6 +13,7 @@ namespace HSA.InfoSys.Testing.SolrTesting
     using log4net;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using HSA.InfoSys.Common.Entities;
 
     /// <summary>
     /// Implement your testing methods for Solr here.

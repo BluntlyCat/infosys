@@ -6,6 +6,7 @@
 namespace HSA.InfoSys.Common.Services
 {
     using System.ServiceModel;
+    using System;
 
     /// <summary>
     /// This interface provides methods for controlling Solr.
@@ -16,8 +17,8 @@ namespace HSA.InfoSys.Common.Services
         /// <summary>
         /// Starts a new search.
         /// </summary>
-        /// <param name="query">The search query pattern.</param>
+        /// <param name="orgUnitGuid">The org unit GUID.</param>
         [OperationContract]
-        void StartSearch(string query);
+        void StartSearch(Guid orgUnitGuid);
     }
 }

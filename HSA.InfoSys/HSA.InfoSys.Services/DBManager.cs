@@ -10,12 +10,12 @@ namespace HSA.InfoSys.Common.Services
     using System.Reflection;
     using System.ServiceModel;
     using HSA.InfoSys.Common.Logging;
-    using HSA.InfoSys.Common.Services.Data;
     using HSA.InfoSys.Exceptions;
     using log4net;
     using NHibernate;
     using NHibernate.Cfg;
     using NHibernate.Tool.hbm2ddl;
+    using HSA.InfoSys.Common.Entities;
 
     /// <summary>
     /// The DBManager handles database requests.
@@ -283,18 +283,22 @@ namespace HSA.InfoSys.Common.Services
         /// <summary>
         /// Creates a result object
         /// </summary>
-        /// <param name="data">the content of the result</param>
-        /// <param name="source">The source.</param>
+        /// <param name="component">The component.</param>
+        /// <param name="content">the content of the result</param>
+        /// <param name="url">The source.</param>
+        /// <param name="title">The title.</param>
         /// <returns>
         /// the created result object
         /// </returns>
-        public Result CreateResult(string data, string source)
+        public Result CreateResult(Component component, string content, string url, string title)
         {
             var result = new Result
             {
-                Time = DateTime.Now,
-                Source = source,
-                Data = data
+                Component = component,
+                Content = content,
+                URL = url,
+                Title = title,
+                Time = DateTime.Now
             };
 
             Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_RESULT, result);

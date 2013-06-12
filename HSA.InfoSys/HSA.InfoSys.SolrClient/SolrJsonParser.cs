@@ -13,6 +13,7 @@ namespace HSA.InfoSys.Common.SolrClient
     using log4net;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using HSA.InfoSys.Common.Entities;
 
     /// <summary>
     /// SolrJsonParser parses the response of SolrClient
@@ -52,9 +53,9 @@ namespace HSA.InfoSys.Common.SolrClient
                 var r = new Result();
 
                 r.Content = doc["content"].ToString();
-                r.Url = doc["url"].ToString();
+                r.URL = doc["url"].ToString();
                 r.Title = doc["title"].ToString();
-                r.Timestamp = (DateTime)doc["tstamp"];
+                r.Time = (DateTime)doc["tstamp"];
 
                 this.results.Add(r);
 

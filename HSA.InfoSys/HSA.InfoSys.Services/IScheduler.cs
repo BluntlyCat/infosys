@@ -7,7 +7,7 @@ namespace HSA.InfoSys.Common.Services
 {
     using System;
     using System.ServiceModel;
-    using HSA.InfoSys.Common.Services.Data;
+    using HSA.InfoSys.Common.Entities;
 
     /// <summary>
     /// This interface provides functionality for
