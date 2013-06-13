@@ -15,10 +15,17 @@ namespace HSA.InfoSys.Common.Services
     public interface ISolrController
     {
         /// <summary>
-        /// Starts a new search.
+        /// Searches for all components of an org unit.
         /// </summary>
-        /// <param name="orgUnitGuid">The org unit GUID.</param>
+        /// <param name="orgUnitGUID">The org unit GUID.</param>
         [OperationContract]
-        void StartSearch(Guid orgUnitGuid);
+        void SearchForOrgUnit(Guid orgUnitGUID);
+
+        /// <summary>
+        /// Searches for one component.
+        /// </summary>
+        /// <param name="componentGUID">The component GUID.</param>
+        [OperationContract]
+        void SearchForComponent(Guid componentGUID);
     }
 }

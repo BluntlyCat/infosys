@@ -6,6 +6,7 @@
 namespace HSA.InfoSys.Common.Services
 {
     using System;
+    using System.Collections.Generic;
     using System.ServiceModel;
     using System.Threading;
     using HSA.InfoSys.Common.Entities;
@@ -33,6 +34,11 @@ namespace HSA.InfoSys.Common.Services
         /// The db mutex.
         /// </summary>
         private static Mutex dbMutex = new Mutex();
+
+        /// <summary>
+        /// The data base manager.
+        /// </summary>
+        private IDBManager dbManager = DBManager.ManagerFactory;
 
         /// <summary>
         /// Prevents a default instance of the <see cref="SolrController"/> class from being created.
@@ -68,14 +74,35 @@ namespace HSA.InfoSys.Common.Services
         }
 
         /// <summary>
+        /// Searches for all components of an org unit.
+        /// </summary>
+        /// <param name="orgUnitGUID">The org unit GUID.</param>
+        public void SearchForOrgUnit(Guid orgUnitGUID)
+        {
+            var components = this.dbManager.GetComponentsByOrgUnitId(orgUnitGUID);
+            this.Search(components);
+        }
+
+        /// <summary>
+        /// Searches for one component.
+        /// </summary>
+        /// <param name="componentGUID">The component GUID.</param>
+        public void SearchForComponent(Guid componentGUID)
+        {
+            var list = new List<Component>();
+            var component = this.dbManager.GetEntity(componentGUID) as Component;
+
+            list.Add(component);
+
+            this.Search(list);
+        }
+
+        /// <summary>
         /// Starts a new search.
         /// </summary>
-        /// <param name="orgUnitGuid">The org unit GUID.</param>
-        public void StartSearch(Guid orgUnitGuid)
+        /// <param name="components">The components.</param>
+        public void Search(IList<Component> components)
         {
-            var db = DBManager.ManagerFactory;
-            var components = db.GetComponentsByOrgUnitId(orgUnitGuid);
-
             foreach (var component in components)
             {
                 Log.InfoFormat(Properties.Resources.SOLR_CLIENT_SEARCH_STARTED, component.Name);
@@ -100,9 +127,9 @@ namespace HSA.InfoSys.Common.Services
 
                             foreach (var result in resultPot.Results)
                             {
-                                result.Component = db.GetEntity(resultPot.EntityId) as Component;
+                                result.Component = dbManager.GetEntity(resultPot.EntityId) as Component;
 
-                                db.AddEntity(result);
+                                dbManager.AddEntity(result);
 
                                 Log.InfoFormat(
                                     Properties.Resources.QUERY_RESPONSE,

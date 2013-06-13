@@ -73,7 +73,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
                                 CrawlControllerClient<IDBManager>.ClientProxy.AddEntitys(comp1, comp2, comp3, comp4);
 
                                 var orgUnitGuids = CrawlControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(22);
-                                CrawlControllerClient<ISolrController>.ClientProxy.StartSearch(orgUnitGuids.First().EntityId);
+                                CrawlControllerClient<ISolrController>.ClientProxy.SearchForOrgUnit(orgUnitGuids.First().EntityId);
 
                                 break;
 
@@ -100,7 +100,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
                                 try
                                 {
                                     log.Info("Got client proxy...");
-                                    CrawlControllerClient<ISolrController>.ClientProxy.StartSearch(Guid.Empty);
+                                    CrawlControllerClient<ISolrController>.ClientProxy.SearchForComponent(Guid.Empty);
                                 }
                                 catch (Exception e)
                                 {
