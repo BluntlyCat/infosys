@@ -121,6 +121,25 @@ namespace HSA.InfoSys.Gui.Controllers
         }
 
         /// <summary>
+        /// starts the real time search
+        /// </summary>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet]
+        public ActionResult RealTimeSearch()
+        {
+
+            string systemguid = Request.QueryString["sysguid"];
+
+            //trigger search
+
+            //start thread which is watching the list of searches
+
+            //returns to page with progress bar (not existing yet)
+            return this.RedirectToAction("WaitForResults", "System"); 
+        }
+
+        /// <summary>
         /// Called when page components is loading.
         /// </summary>
         /// <param name="systemGUID">The systemGUID.</param>

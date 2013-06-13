@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage"%>
-<%@ Import Namespace="HSA.InfoSys.Common.Services.Data"%>
+<%@ Import Namespace="HSA.InfoSys.Common.Entities"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     My Systems
@@ -28,6 +28,9 @@
                             <th>
                                 Delete
                             </th>
+                            <th>
+                                Search Now
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,6 +50,9 @@
                                 </td>
                                 <td>
                                     <a class="btn btn-small" href="#deleteModal<%= item.EntityId %>" data-toggle="modal"><i class="icon-trash"></i></a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-small" href="/System/RealTimeSearch/?sysguid=<%= item.EntityId %>"><i class="icon-search"></i></a>
                                 </td>
                             </tr>
 
@@ -78,7 +84,7 @@
             <div id="buttons" style="float: right;">
                 <a class="btn btn-success" style="margin-bottom: 10px; margin-right: 10px;" href="#createModal" data-toggle="modal">
                     <i class="icon-plus icon-white"></i>&nbsp;&nbsp;<b>Create new System</b></a>
-                <button type="submit" class="btn btn-primary" style="margin-bottom: 10px; margin-right: 10px;">
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 10px; margin-right: 10px;">
                     <i class="icon-search icon-white"></i>&nbsp;&nbsp;<b>Search now!</b></button>
             </div>
         </div>
