@@ -89,10 +89,18 @@ namespace HSA.InfoSys.Common.SolrClient
         public bool Running { get; private set; }
 
         /// <summary>
+        /// Gets the component GUID.
+        /// </summary>
+        /// <value>
+        /// The component GUID.
+        /// </value>
+        public Guid ComponentGUID { get; private set; }
+
+        /// <summary>
         /// Gets the response from solr.
         /// </summary>
         /// <returns>The response.</returns>
-        public List<Result> GetResult()
+        public ResultPot GetResult()
         {
             var start = this.SolrResponse.IndexOf('{');
             var end = this.SolrResponse.LastIndexOf('}');
@@ -104,7 +112,7 @@ namespace HSA.InfoSys.Common.SolrClient
             }
             catch
             {
-                return new List<Result>();
+                return new ResultPot();
             }
         }
 
@@ -112,7 +120,8 @@ namespace HSA.InfoSys.Common.SolrClient
         /// Connects this instance.
         /// </summary>
         /// <param name="query">The query pattern for solr.</param>
-        public void StartSearch(string query)
+        /// <param name="componentGUID">The component GUID.</param>
+        public void StartSearch(string query, Guid componentGUID)
         {
             try
             {
@@ -121,6 +130,7 @@ namespace HSA.InfoSys.Common.SolrClient
 
                 this.SolrSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 this.SolrSocket.Connect(ipe);
+                this.ComponentGUID = componentGUID;
 
                 if (this.SolrSocket.Connected)
                 {
@@ -249,10 +259,10 @@ namespace HSA.InfoSys.Common.SolrClient
         /// </summary>
         /// <param name="jsonResult">The result in json format.</param>
         /// <returns>The results in a list.</returns>
-        private List<Result> ParseToResult(string jsonResult)
+        private ResultPot ParseToResult(string jsonResult)
         {
             var json = JsonConvert.DeserializeObject(jsonResult) as JObject;
-            var results = new List<Result>();
+            var resultPot = new ResultPot(this.ComponentGUID);
 
             var response = json["response"];
             var docs = response["docs"];
@@ -261,17 +271,44 @@ namespace HSA.InfoSys.Common.SolrClient
             {
                 var result = new Result();
 
-                result.Content = doc["content"].ToString();
-                result.URL = doc["url"].ToString();
-                result.Title = this.RemoveSpecialChars(doc["title"].ToString());
-                result.Time = (DateTime)doc["tstamp"];
+                result.Content = this.GetJsonValue(doc, "content");
+                result.URL = this.GetJsonValue(doc, "url");
+                result.Title = this.RemoveSpecialChars(this.GetJsonValue(doc, "title"));
 
-                results.Add(result);
+                try
+                {
+                    result.Time = DateTime.Parse(this.GetJsonValue(doc, "tstamp"));
+                }
+                catch
+                {
+                    result.Time = DateTime.Now;
+                }
 
-                Log.Info(string.Format("Search resualt was added! ", result.Title));
+                resultPot.Results.Add(result);
+
+                Log.InfoFormat("Search resualt was added [{0}]", result.Title);
             }
 
-            return results;
+            return resultPot;
+        }
+
+        /// <summary>
+        /// Gets the json value.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <param name="key">The key.</param>
+        /// <returns>The value as string if exists or empty string.</returns>
+        private string GetJsonValue(JToken token, string key)
+        {
+            try
+            {
+                var value = token[key].ToString();
+                return value;
+            }
+            catch
+            {
+                return string.Empty;
+            }
         }
 
         /// <summary>

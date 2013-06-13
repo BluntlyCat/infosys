@@ -7,6 +7,8 @@ namespace HSA.InfoSys.Common.Services
 {
     using System;
     using System.ServiceModel;
+    using System.Threading;
+    using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.SolrClient;
     using log4net;
@@ -28,6 +30,11 @@ namespace HSA.InfoSys.Common.Services
         private static SolrController solrController;
 
         /// <summary>
+        /// The db mutex.
+        /// </summary>
+        private static Mutex dbMutex = new Mutex();
+
+        /// <summary>
         /// Prevents a default instance of the <see cref="SolrController"/> class from being created.
         /// </summary>
         private SolrController()
@@ -38,7 +45,8 @@ namespace HSA.InfoSys.Common.Services
         /// Our delegate for invoking an async callback.
         /// </summary>
         /// <param name="query">The query.</param>
-        public delegate void InvokeSolrSearch(string query);
+        /// <param name="componentGUID">The component GUID.</param>
+        public delegate void InvokeSolrSearch(string query, Guid componentGUID);
 
         /// <summary>
         /// Gets the solr controller.
@@ -84,22 +92,29 @@ namespace HSA.InfoSys.Common.Services
                 AsyncCallback callback = new AsyncCallback(
                     c =>
                     {
+                        dbMutex.WaitOne();
+
                         if (c.IsCompleted)
                         {
-                            var results = client.GetResult();
+                            var resultPot = client.GetResult();
 
-                            foreach (var result in results)
+                            foreach (var result in resultPot.Results)
                             {
-                                result.Component = component;
+                                result.Component = db.GetEntity(resultPot.EntityId) as Component;
 
                                 db.AddEntity(result);
 
-                                Log.InfoFormat("Response for query [{0}] is\r\n[{1}]", component.Name, result);
+                                Log.InfoFormat(
+                                    Properties.Resources.QUERY_RESPONSE,
+                                    result.Component.Name,
+                                    result);
                             }
                         }
+
+                        dbMutex.ReleaseMutex();
                     });
 
-                invokeSearch.BeginInvoke(component.Name, callback, this);
+                invokeSearch.BeginInvoke(component.Name, component.EntityId, callback, this);
             }
         }
 

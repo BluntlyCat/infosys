@@ -53,7 +53,7 @@ namespace HSA.InfoSys.Testing.SolrTesting
 
                         case ConsoleKey.S:
                             log.Info("Send request to solr");
-                            client.StartSearch("windows");
+                            client.StartSearch("windows", Guid.Empty);
 
                             var result = client.GetResult();
 

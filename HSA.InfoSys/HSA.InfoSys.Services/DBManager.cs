@@ -134,8 +134,6 @@ namespace HSA.InfoSys.Common.Services
         /// <returns>The GUID of the added entity.</returns>
         public Guid AddEntity(Entity entity)
         {
-            mutex.WaitOne();
-
             using (ISession session = Session)
             using (ITransaction transaction = session.BeginTransaction())
             {
@@ -143,8 +141,6 @@ namespace HSA.InfoSys.Common.Services
                 transaction.Commit();
                 Log.Info(Properties.Resources.DBMANAGER_ADD_ENTITY);
             }
-
-            mutex.ReleaseMutex();
 
             return entity.EntityId;
         }
@@ -156,8 +152,6 @@ namespace HSA.InfoSys.Common.Services
         /// <param name="entities">The entities.</param>
         public void AddEntitys(params Entity[] entities)
         {
-            mutex.WaitOne();
-
             foreach (var entity in entities)
             {
                 using (ISession session = Session)
@@ -168,8 +162,6 @@ namespace HSA.InfoSys.Common.Services
                     Log.Info(Properties.Resources.DBMANAGER_ADD_ENTITY);
                 }
             }
-
-            mutex.ReleaseMutex();
         }
 
         /// <summary>
@@ -179,8 +171,6 @@ namespace HSA.InfoSys.Common.Services
         /// <returns>The GUID of the updated entity.</returns>
         public Guid UpdateEntity(Entity entity)
         {
-            mutex.WaitOne();
-
             using (ISession session = Session)
             {
                 using (ITransaction transaction = session.BeginTransaction())
@@ -189,8 +179,6 @@ namespace HSA.InfoSys.Common.Services
                     transaction.Commit();
                     Log.Info(Properties.Resources.DBMANAGER_UPDATE_ENTITY);
                 }
-
-                mutex.ReleaseMutex();
 
                 return entity.EntityId;
             }
@@ -202,8 +190,6 @@ namespace HSA.InfoSys.Common.Services
         /// <param name="entity">The entity.</param>
         public void DeleteEntity(Entity entity)
         {
-            mutex.WaitOne();
-
             using (ISession session = Session)
             {
                 using (ITransaction transaction = session.BeginTransaction())
@@ -213,8 +199,6 @@ namespace HSA.InfoSys.Common.Services
                     Log.Info(Properties.Resources.DBMANAGER_DELETE_ENTITY);
                 }
             }
-
-            mutex.ReleaseMutex();
         }
 
         /// <summary>
@@ -227,8 +211,6 @@ namespace HSA.InfoSys.Common.Services
         /// </returns>
         public Entity GetEntity(Guid entityGUID, string[] types = null)
         {
-            mutex.WaitOne();
-
             Entity entity;
             using (ISession session = Session)
             using (ITransaction transaction = session.BeginTransaction())
@@ -243,8 +225,6 @@ namespace HSA.InfoSys.Common.Services
                 Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ENTITY, entity.GetType(), entity, entityGUID);
             }
 
-            mutex.ReleaseMutex();
-
             return entity;
         }
 
@@ -257,8 +237,6 @@ namespace HSA.InfoSys.Common.Services
         /// </returns>
         public IList<OrgUnit> GetOrgUnitsByUserID(int userID)
         {
-            mutex.WaitOne();
-
             using (ISession session = Session)
             using (ITransaction transaction = session.BeginTransaction())
             {
@@ -267,8 +245,6 @@ namespace HSA.InfoSys.Common.Services
                     .List<OrgUnit>();
 
                 Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ORGUNIT_BY_USERID, orgUnit, userID);
-
-                mutex.ReleaseMutex();
 
                 return orgUnit;
             }
@@ -283,8 +259,6 @@ namespace HSA.InfoSys.Common.Services
         /// </returns>
         public IList<Component> GetComponentsByOrgUnitId(Guid orgUnitGuid)
         {
-            mutex.WaitOne();
-
             using (ISession session = Session)
             {
                 var components = session.QueryOver<Component>()
@@ -292,8 +266,6 @@ namespace HSA.InfoSys.Common.Services
                     .List<Component>();
 
                 Log.InfoFormat(Properties.Resources.DBMANAGER_GET_COMPONENT_BY_ORGUNIT_ID, components, orgUnitGuid);
-
-                mutex.ReleaseMutex();
 
                 return components;
             }
@@ -307,13 +279,9 @@ namespace HSA.InfoSys.Common.Services
         /// </returns>
         public IList<OrgUnitConfig> GetOrgUnitConfigurations()
         {
-            mutex.WaitOne();
-
             using (ISession session = Session)
             {
                 var configs = session.QueryOver<OrgUnitConfig>().List<OrgUnitConfig>();
-
-                mutex.ReleaseMutex();
 
                 return configs;
             }

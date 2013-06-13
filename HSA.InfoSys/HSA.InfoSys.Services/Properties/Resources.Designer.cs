@@ -313,6 +313,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Response for query [{0}] is: [{1}] ähnelt.
+        /// </summary>
+        internal static string QUERY_RESPONSE {
+            get {
+                return ResourceManager.GetString("QUERY_RESPONSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Remaintime: [{0}]. ähnelt.
         /// </summary>
         internal static string SCHEDULER_ON_TICK {
