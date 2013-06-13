@@ -5,8 +5,8 @@
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.Common.Services
 {
-    using System.ServiceModel;
     using System;
+    using System.ServiceModel;
 
     /// <summary>
     /// This interface provides methods for controlling Solr.

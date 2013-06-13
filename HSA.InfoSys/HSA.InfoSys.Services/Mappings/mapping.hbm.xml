@@ -10,21 +10,11 @@
 
     <property name="Type" type="string" length="50" not-null="true" />
 
-    <!-- Component -->
-    <joined-subclass name="Component" table="Component">
-      <key column="ComponentGUID" />
-
-      <many-to-one class="Result" name="Result" column="ResultGUID" lazy="proxy" cascade="save-update" />
-      <many-to-one name="OrgUnit" class="OrgUnit" column="OrgUnitGuid" lazy="proxy" cascade="save-update" not-null="true" />
-
-      <property name="Name" type="string" length ="100" not-null="true" />
-    </joined-subclass>
-
     <!-- Result -->
     <joined-subclass name="Result" table="Result">
-      <key column="ResultGUID" />
+      <key column="ResultGUID" unique="true" />
 
-      <many-to-one name="Component" class="Component" column="ComponentGuid" lazy="proxy" cascade="save-update" not-null="true" />
+      <many-to-one name="Component" class="Component" foreign-key="Component" cascade="all" not-null="true" />
 
       <property name="Content" type="string" >
         <column name="Content" sql-type="text" not-null="false" />
@@ -35,20 +25,28 @@
       <property name="Time" type="timestamp" column="FindDate" not-null="true"/>
     </joined-subclass>
 
+    <!-- Component -->
+    <joined-subclass name="Component" table="Component">
+      <key column="ComponentGUID" unique="true" />
+
+      <many-to-one name="OrgUnit" class="OrgUnit" foreign-key="OrgUnit" cascade="all" />
+
+      <property name="Name" type="string" length ="100" not-null="true" />
+    </joined-subclass>
+
     <!-- OrgUnit -->
     <joined-subclass name="OrgUnit" table="OrgUnit">
-      <key column="OrgUnitGUID" />
+      <key column="OrgUnitGUID" unique="true" />
 
-      <many-to-one name="OrgUnitConfig" class="OrgUnitConfig" column="OrgUnitConfigGUID" lazy="proxy" cascade="save-update" />
+      <many-to-one name="OrgUnitConfig" class="OrgUnitConfig" foreign-key="OrgUnitConfig" cascade="all" />
 
       <property name="Name" type="string" length ="40" not-null="true" />
       <property name="UserId" type="int" length="10" not-null="true"/>
-
     </joined-subclass>
 
     <!-- OrgUnitConfig -->
     <joined-subclass name="OrgUnitConfig" table="OrgUnitConfig">
-      <key column="OrgUnitConfigGUID" />
+      <key column="OrgUnitConfigGUID" unique="true" />
 
       <property name="Emails" type="string">
         <column name="Emails" sql-type="text" not-null="false"/>

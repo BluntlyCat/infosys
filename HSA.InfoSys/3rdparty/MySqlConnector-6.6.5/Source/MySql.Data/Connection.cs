@@ -528,7 +528,6 @@ namespace MySql.Data.MySqlClient
       // TODO: control this with a connection string option
 
 #if !MONO && !CF
-      Console.WriteLine("### Should not be here... ###");
       if (Transaction.Current != null && settings.AutoEnlist)
         EnlistTransaction(Transaction.Current);
 #endif

@@ -9,11 +9,11 @@ namespace HSA.InfoSys.Common.Services
     using System.Collections.Generic;
     using System.ServiceModel;
     using System.Threading;
+    using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Nutch;
     using HSA.InfoSys.Common.Timing;
     using log4net;
-    using HSA.InfoSys.Common.Entities;
 
 #warning Suchvorgang muss noch gestartet werden.
 

@@ -8,9 +8,8 @@ namespace HSA.InfoSys.Common.Services
     using System;
     using System.Collections.Generic;
     using System.ServiceModel;
-    using HSA.InfoSys.Common.NetDataContractSerializer;
-    using NHibernate;
     using HSA.InfoSys.Common.Entities;
+    using HSA.InfoSys.Common.NetDataContractSerializer;
 
     /// <summary>
     /// The interface for accessing the data base.
@@ -30,7 +29,7 @@ namespace HSA.InfoSys.Common.Services
         string[] LoadThisEntities(params string[] param);
 
         /// <summary>
-        /// Adds a new Object (Component, Issue, Source)
+        /// Adds a new Object (Component, Issue, Source...)
         /// and saves it in database.
         /// </summary>
         /// <param name="entity">The entity to add in database.</param>
@@ -38,6 +37,15 @@ namespace HSA.InfoSys.Common.Services
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
         Guid AddEntity(Entity entity);
+
+        /// <summary>
+        /// Adds a new Objects (Component, Issue, Source...)
+        /// and saves it in database.
+        /// </summary>
+        /// <param name="entities">The entities.</param>
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        void AddEntitys(params Entity[] entities);
 
         /// <summary>
         /// Saves changings of a object in database.
@@ -113,7 +121,7 @@ namespace HSA.InfoSys.Common.Services
         /// <param name="content">The content.</param>
         /// <param name="url">The URL.</param>
         /// <param name="title">The title.</param>
-        /// <returns></returns>
+        /// <returns>A result object of for a web crawl.</returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
         Result CreateResult(Component component, string content, string url, string title);

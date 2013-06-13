@@ -86,7 +86,16 @@ namespace HSA.InfoSys.Common.Services
                     {
                         if (c.IsCompleted)
                         {
-                            Log.InfoFormat("Response for query [{0}] is\r\n[{1}]", component.Name, client.GetResponse());
+                            var results = client.GetResult();
+
+                            foreach (var result in results)
+                            {
+                                result.Component = component;
+
+                                db.AddEntity(result);
+
+                                Log.InfoFormat("Response for query [{0}] is\r\n[{1}]", component.Name, result);
+                            }
                         }
                     });
 

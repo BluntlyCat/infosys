@@ -48,7 +48,7 @@ namespace HSA.InfoSys.Common.Entities
         /// The URL.
         /// </value>
         [DataMember]
-        public virtual string URL { get; set; } //Ehemals source
+        public virtual string URL { get; set; }
 
         /// <summary>
         /// Gets or sets the time.

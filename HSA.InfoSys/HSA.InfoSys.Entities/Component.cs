@@ -35,15 +35,6 @@ namespace HSA.InfoSys.Common.Entities
         public virtual OrgUnit OrgUnit { get; set; }
 
         /// <summary>
-        /// Gets or sets the result.
-        /// </summary>
-        /// <value>
-        /// The result.
-        /// </value>
-        [DataMember]
-        public virtual Result Result { get; set; }
-
-        /// <summary>
         /// Loads this instance from NHibernate.
         /// </summary>
         /// <param name="types">The types you want load eager.</param>
@@ -60,10 +51,6 @@ namespace HSA.InfoSys.Common.Entities
                     {
                         this.OrgUnit = this.OrgUnit.Unproxy(types) as OrgUnit;
                     }
-                    else if (type.Equals(typeof(Result).Name) && this.Result != null)
-                    {
-                        this.Result = this.Result.Unproxy(types) as Result;
-                    }
                 }
             }
 
@@ -79,11 +66,10 @@ namespace HSA.InfoSys.Common.Entities
         public override string ToString()
         {
             return string.Format(
-                "ID: {0}, Name: {1}, OrgUnit: ({2}), Result: ({3})",
+                "ID: {0}, Name: {1}, OrgUnit: ({2})",
                 this.EntityId,
                 this.Name,
-                this.OrgUnit,
-                this.Result);
+                this.OrgUnit);
         }
     }
 }

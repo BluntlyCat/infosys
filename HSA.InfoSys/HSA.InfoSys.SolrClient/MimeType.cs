@@ -1,5 +1,5 @@
 ﻿// ------------------------------------------------------------------------
-// <copyright file="SolrOutputMimeType.cs" company="HSA.InfoSys">
+// <copyright file="MimeType.cs" company="HSA.InfoSys">
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
@@ -13,7 +13,7 @@ namespace HSA.InfoSys.Common.SolrClient
     /// <summary>
     /// SolrOutputMimeType represents possible Output - MimeTypes, which solr can generate
     /// </summary>
-    public enum SolrOutputMimeType
+    public enum MimeType
     {
         /// <summary>
         /// The XML

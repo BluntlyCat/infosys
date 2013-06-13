@@ -6,9 +6,11 @@
 namespace HSA.InfoSys.Testing.WCFTesting
 {
     using System;
+    using System.Linq;
     using System.ServiceModel;
     using System.Threading;
     using HSA.InfoSys.Common.CrawlController;
+    using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services;
     using log4net;
@@ -58,10 +60,20 @@ namespace HSA.InfoSys.Testing.WCFTesting
                         switch (keyInfo.Key)
                         {
                             case ConsoleKey.A:
-                                ////var result = CrawlControllerClient<IDBManager>.ClientProxy.CreateResult("Schmeckt gut!", "Selbst getestet.");
-                                ////var putensalami = CrawlControllerClient<IDBManager>.ClientProxy.GetEntity(new Guid("23c83f7f-a371-43ad-8734-a1c8013b55ee")) as Component;
-                                ////putensalami.Result = result;
-                                ////CrawlControllerClient<IDBManager>.ClientProxy.UpdateEntity(putensalami);
+                                var org1 = CrawlControllerClient<IDBManager>.ClientProxy.CreateOrgUnit(22, "Desktop PC");
+
+                                var orgId = CrawlControllerClient<IDBManager>.ClientProxy.AddEntity(org1);
+                                org1 = CrawlControllerClient<IDBManager>.ClientProxy.GetEntity(orgId) as OrgUnit;
+
+                                var comp1 = CrawlControllerClient<IDBManager>.ClientProxy.CreateComponent("Windows", org1);
+                                var comp2 = CrawlControllerClient<IDBManager>.ClientProxy.CreateComponent("Solr", org1);
+                                var comp3 = CrawlControllerClient<IDBManager>.ClientProxy.CreateComponent("Office", org1);
+                                var comp4 = CrawlControllerClient<IDBManager>.ClientProxy.CreateComponent("Star Money", org1);
+
+                                CrawlControllerClient<IDBManager>.ClientProxy.AddEntitys(comp1, comp2, comp3, comp4);
+
+                                var orgUnitGuids = CrawlControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(22);
+                                CrawlControllerClient<ISolrController>.ClientProxy.StartSearch(orgUnitGuids.First().EntityId);
 
                                 break;
 

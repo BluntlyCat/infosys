@@ -6,12 +6,16 @@
 namespace HSA.InfoSys.Common.SolrClient
 {
     using System;
+    using System.Collections.Generic;
     using System.Net;
     using System.Net.Sockets;
     using System.Text;
     using System.Threading;
+    using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
     using log4net;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     ///  SolrClient deals as an API
@@ -19,39 +23,9 @@ namespace HSA.InfoSys.Common.SolrClient
     public class SolrClient
     {
         /// <summary>
-        /// The collection where everything is stored in Solr.
-        /// </summary>
-        private const string Collection = "collection1";
-
-        /// <summary>
         /// The logger for SolrClient.
         /// </summary>
         private static readonly ILog Log = Logger<string>.GetLogger("SolrClient");
-
-        /// <summary>
-        /// The solr socket.
-        /// </summary>
-        private Socket solrSocket;
-
-        /// <summary>
-        /// The ip address to the Solr server.
-        /// </summary>
-        private string ipAddress;
-
-        /// <summary>
-        /// The solr response.
-        /// </summary>
-        private string solrResponse;
-
-        /// <summary>
-        /// The port on which Solr is listening.
-        /// </summary>
-        private int port;
-
-        /// <summary>
-        /// Indicates if the thread is running.
-        /// </summary>
-        private bool running;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SolrClient"/> class.
@@ -60,20 +34,78 @@ namespace HSA.InfoSys.Common.SolrClient
         /// <param name="ipAddress">The ip address.</param>
         public SolrClient(int port, string ipAddress)
         {
-            this.port = port;
-            this.ipAddress = ipAddress;
-            this.solrSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            this.Port = port;
+            this.Host = ipAddress;
+            this.SolrResponse = string.Empty;
+            this.Collection = Properties.Settings.Default.SOLR_COLLECTION;
         }
+
+        /// <summary>
+        /// Gets the socket.
+        /// </summary>
+        /// <value>
+        /// The socket.
+        /// </value>
+        public Socket SolrSocket { get; private set; }
+
+        /// <summary>
+        /// Gets the host.
+        /// </summary>
+        /// <value>
+        /// The host.
+        /// </value>
+        public string Host { get; private set; }
+
+        /// <summary>
+        /// Gets the collection.
+        /// </summary>
+        /// <value>
+        /// The collection.
+        /// </value>
+        public string Collection { get; private set; }
+
+        /// <summary>
+        /// Gets the solr response.
+        /// </summary>
+        /// <value>
+        /// The solr response.
+        /// </value>
+        public string SolrResponse { get; private set; }
+
+        /// <summary>
+        /// Gets the port.
+        /// </summary>
+        /// <value>
+        /// The port.
+        /// </value>
+        public int Port { get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether this <see cref="SolrClient"/> is running.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if running; otherwise, <c>false</c>.
+        /// </value>
+        public bool Running { get; private set; }
 
         /// <summary>
         /// Gets the response from solr.
         /// </summary>
         /// <returns>The response.</returns>
-        public string GetResponse()
+        public List<Result> GetResult()
         {
-            var start = this.solrResponse.IndexOf('{');
-            var end = this.solrResponse.LastIndexOf('}');
-            return this.solrResponse.Substring(start, end - start + 1);
+            var start = this.SolrResponse.IndexOf('{');
+            var end = this.SolrResponse.LastIndexOf('}');
+
+            try
+            {
+                var result = this.SolrResponse.Substring(start, end - start + 1);
+                return this.ParseToResult(result);
+            }
+            catch
+            {
+                return new List<Result>();
+            }
         }
 
         /// <summary>
@@ -84,21 +116,22 @@ namespace HSA.InfoSys.Common.SolrClient
         {
             try
             {
-                IPAddress ipa = IPAddress.Parse(this.ipAddress);
-                IPEndPoint ipe = new IPEndPoint(ipa, this.port);
+                IPAddress ipa = IPAddress.Parse(this.Host);
+                IPEndPoint ipe = new IPEndPoint(ipa, this.Port);
 
-                this.solrSocket.Connect(ipe);
+                this.SolrSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                this.SolrSocket.Connect(ipe);
 
-                if (this.solrSocket.Connected)
+                if (this.SolrSocket.Connected)
                 {
-                    Log.InfoFormat(Properties.Resources.SOLR_CLIENT_CONNECTION_ESTABLISHED, this.ipAddress);
-                    string solrQuery = this.BuildSolrQuery(query, SolrOutputMimeType.json);
-                    this.running = true;
+                    Log.InfoFormat(Properties.Resources.SOLR_CLIENT_CONNECTION_ESTABLISHED, this.Host);
+                    string solrQuery = this.BuildSolrQuery(query, MimeType.json);
+                    this.Running = true;
 
-                    this.solrResponse = this.ThreadRoutine(solrQuery);
+                    this.SolrResponse = this.ThreadRoutine(solrQuery);
                 }
             }
-            catch (SocketException e)
+            catch (Exception e)
             {
                 Log.ErrorFormat(Properties.Resources.SOLR_CLIENT_UNABLE_TO_CONNECT, e.Message);
             }
@@ -111,10 +144,12 @@ namespace HSA.InfoSys.Common.SolrClient
         {
             Log.Info(Properties.Resources.SOLR_CLIENT_CLOSE_CONNECTION);
 
-            this.running = false;
+            this.Running = false;
 
-            this.solrSocket.Close();
-            Log.InfoFormat(Properties.Resources.SOLR_CLIENT_SOCKET_CLOSED, this.ipAddress);
+            this.SolrSocket.Disconnect(false);
+            this.SolrSocket.Close();
+            
+            Log.InfoFormat(Properties.Resources.SOLR_CLIENT_SOCKET_CLOSED, this.Host);
         }
 
         /// <summary>
@@ -128,14 +163,13 @@ namespace HSA.InfoSys.Common.SolrClient
         private string BuildSolrQuery(
             string queryString,
             //// string fq, string sort, int start, int rows, string fl, string df, string[] rawQueryParameters, 
-            SolrOutputMimeType mimeType)
+            MimeType mimeType)
         {
             Guid queryTicket = Guid.NewGuid();
 
-            // http://infosys.informatik.hs-augsburg.de:8983/solr/collection1/select?q=miitsoft&wt=json&indent=true
             string query = string.Format(
-                "/solr/{0}/select?q={1}&wt={2}&indent=true",
-                Collection,
+                Properties.Settings.Default.SOLR_QUERY_FORMAT,
+                this.Collection,
                 queryString,
                 mimeType);
 
@@ -154,7 +188,7 @@ namespace HSA.InfoSys.Common.SolrClient
             string response = string.Empty;
 
             // Main Loop which is checking, whether there is an message for the server or not
-            while (this.running && this.solrSocket.Connected)
+            while (this.Running && this.SolrSocket.Connected)
             {
                 // waiting for the server's responde
                 response = this.InvokeSolrQuery(solrQuery);
@@ -181,30 +215,93 @@ namespace HSA.InfoSys.Common.SolrClient
 
             // Request send to the Server
             request = string.Format(
-                "GET {0} HTTP/1.1\r\nHost: {1}\r\nContent-Length: 0\r\n\r\n",
+                Properties.Settings.Default.SOLR_REQUEST_FORMAT,
                 solrQuery,
-                this.ipAddress);
+                "\r\n",
+                this.Host,
+                "\r\n",
+                "\r\n\r\n");
 
             // Mince request into an byte Array
             bytesSend = new ASCIIEncoding().GetBytes(request);
 
             // Send request to Solr
-            this.solrSocket.Send(bytesSend);
+            this.SolrSocket.Send(bytesSend);
             Log.InfoFormat(Properties.Resources.SOLR_CLIENT_MESSAGE_SENT, request);
 
             // Receive solr server response
             do
             {
-                bytes = this.solrSocket.Receive(bytesReceived, bytesReceived.Length, 0);
+                bytes = this.SolrSocket.Receive(bytesReceived, bytesReceived.Length, 0);
                 response += Encoding.ASCII.GetString(bytesReceived, 0, bytes);
             }
             while (bytes > 0);
 
-            Log.InfoFormat(Properties.Resources.SOLR_CLIENT_RESULT_RECEIVED, this.ipAddress, response);
+            Log.InfoFormat(Properties.Resources.SOLR_CLIENT_RESULT_RECEIVED, this.Host, response);
 
             this.CloseConnection();
 
             return response;
+        }
+
+        /// <summary>
+        /// Parses to result.
+        /// </summary>
+        /// <param name="jsonResult">The result in json format.</param>
+        /// <returns>The results in a list.</returns>
+        private List<Result> ParseToResult(string jsonResult)
+        {
+            var json = JsonConvert.DeserializeObject(jsonResult) as JObject;
+            var results = new List<Result>();
+
+            var response = json["response"];
+            var docs = response["docs"];
+
+            foreach (var doc in docs)
+            {
+                var result = new Result();
+
+                result.Content = doc["content"].ToString();
+                result.URL = doc["url"].ToString();
+                result.Title = this.RemoveSpecialChars(doc["title"].ToString());
+                result.Time = (DateTime)doc["tstamp"];
+
+                results.Add(result);
+
+                Log.Info(string.Format("Search resualt was added! ", result.Title));
+            }
+
+            return results;
+        }
+
+        /// <summary>
+        /// Removes the special chars.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns>A hopefully better looking title.</returns>
+        private string RemoveSpecialChars(string text)
+        {
+            string tmp = string.Empty;
+
+            text = text.Replace("\r", string.Empty);
+            text = text.Replace("\n", string.Empty);
+            text = text.Replace("\"", string.Empty);
+
+            foreach (var c in text)
+            {
+                if ('!' <= c && c <= '~')
+                {
+                    tmp += c;
+                }
+                else
+                {
+                    tmp += '#';
+                }
+            }
+
+            tmp = tmp.Replace('#', ' ').Trim();
+
+            return tmp;
         }
     }
 }

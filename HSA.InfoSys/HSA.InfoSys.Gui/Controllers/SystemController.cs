@@ -80,7 +80,7 @@ namespace HSA.InfoSys.Gui.Controllers
             system.OrgUnitConfig = systemConfig;
 
             // save to db
-            Guid guid = cc.AddEntity(system);
+            cc.AddEntity(system);
 
             return this.RedirectToAction("Index", "System");
         }
@@ -110,10 +110,6 @@ namespace HSA.InfoSys.Gui.Controllers
             // delete all components and their results 
             foreach (Component comp in components)
             {
-                if (comp.Result != null)
-                {
-                    cc.DeleteEntity(comp.Result);
-                }
                 cc.DeleteEntity(comp);
             }
 
