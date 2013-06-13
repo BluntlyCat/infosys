@@ -60,7 +60,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
                         switch (keyInfo.Key)
                         {
                             case ConsoleKey.A:
-                                var org1 = CrawlControllerClient<IDBManager>.ClientProxy.CreateOrgUnit(22, "Desktop PC");
+                                /*var org1 = CrawlControllerClient<IDBManager>.ClientProxy.CreateOrgUnit(32, "Desktop PC");
 
                                 var orgId = CrawlControllerClient<IDBManager>.ClientProxy.AddEntity(org1);
                                 org1 = CrawlControllerClient<IDBManager>.ClientProxy.GetEntity(orgId) as OrgUnit;
@@ -70,9 +70,9 @@ namespace HSA.InfoSys.Testing.WCFTesting
                                 var comp3 = CrawlControllerClient<IDBManager>.ClientProxy.CreateComponent("Office", org1);
                                 var comp4 = CrawlControllerClient<IDBManager>.ClientProxy.CreateComponent("Star Money", org1);
 
-                                CrawlControllerClient<IDBManager>.ClientProxy.AddEntitys(comp1, comp2, comp3, comp4);
+                                CrawlControllerClient<IDBManager>.ClientProxy.AddEntitys(comp1, comp2, comp3, comp4);*/
 
-                                var orgUnitGuids = CrawlControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(22);
+                                var orgUnitGuids = CrawlControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(32);
                                 CrawlControllerClient<ISolrController>.ClientProxy.SearchForOrgUnit(orgUnitGuids.First().EntityId);
 
                                 break;
@@ -100,7 +100,9 @@ namespace HSA.InfoSys.Testing.WCFTesting
                                 try
                                 {
                                     log.Info("Got client proxy...");
-                                    CrawlControllerClient<ISolrController>.ClientProxy.SearchForComponent(Guid.Empty);
+                                    var orgUnitGuids2 = CrawlControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(32);
+
+                                    CrawlControllerClient<ISolrController>.ClientProxy.SearchForComponent(orgUnitGuids2.First().EntityId);
                                 }
                                 catch (Exception e)
                                 {
