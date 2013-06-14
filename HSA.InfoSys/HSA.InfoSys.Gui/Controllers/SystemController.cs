@@ -159,11 +159,12 @@ namespace HSA.InfoSys.Gui.Controllers
         [HttpGet]
         public ActionResult RealTimeSearch()
         {
-            string systemguid = Request.QueryString["sysguid"];
+            Guid orgUnitGuid = Guid.Parse(Request.QueryString["sysguid"]);
             SearchFinished = false;
+            SearchRecall.Searches.Add(orgUnitGuid, false);
 
             //trigger search
-            WCFControllerClient<ISolrController>.ClientProxy.SearchForOrgUnit(Guid.Parse(systemguid));
+            WCFControllerClient<ISolrController>.ClientProxy.SearchForOrgUnit(orgUnitGuid);
 
             //start thread which is watching the list of searches
             SearchRecall.StartService();
@@ -176,12 +177,11 @@ namespace HSA.InfoSys.Gui.Controllers
         /// Occurs when [recall] when all searches finished.
         /// </summary>
         /// <param name="sender">The sender.</param>
-        void SearchRecall_OnRecall(object sender)
+        void SearchRecall_OnRecall(object sender, Guid orgUnitGuid)
         {
-            SearchRecall.StopService(true);
             SearchFinished = true;
 
-            Server.Transfer(this.Request.Path);
+            this.Redirect("Index");
         }
 
         /// <summary>

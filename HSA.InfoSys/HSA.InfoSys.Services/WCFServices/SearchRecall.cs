@@ -9,6 +9,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     using System.Collections.Generic;
     using System.ServiceModel;
     using System.Threading;
+    using HSA.InfoSys.Common.Logging;
+    using log4net;
 
     /// <summary>
     /// This class implements the method for
@@ -18,15 +20,12 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class SearchRecall : Service, ISearchRecall
     {
+        private static readonly ILog Log = Logger<string>.GetLogger("SearchRecall");
+
         /// <summary>
         /// The search recall
         /// </summary>
         private static SearchRecall searchRecall;
-
-        /// <summary>
-        /// The finished searches
-        /// </summary>
-        private List<Guid> finisedSearches = new List<Guid>();
 
         /// <summary>
         /// The amount of running searches.
@@ -43,13 +42,14 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         private SearchRecall()
         {
+            this.Searches = new Dictionary<Guid, bool>();
         }
 
         /// <summary>
         /// The recall handler indicates that all search requests are finished.
         /// </summary>
         /// <param name="sender">The sender.</param>
-        public delegate void RecallHandler(object sender);
+        public delegate void RecallHandler(object sender, Guid orgUnitGuid);
 
         /// <summary>
         /// Occurs when [recall].
@@ -126,16 +126,28 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
+        /// Gets the searches.
+        /// </summary>
+        /// <value>
+        /// The searches.
+        /// </value>
+        public Dictionary<Guid, bool> Searches { get; private set; }
+
+        /// <summary>
         /// Recalls the GUI when search for an org unit is finished.
         /// </summary>
-        /// <param name="orgUnitGuid">The org unit GUID.</param>
-        public void Recall(Guid orgUnitGuid)
+        /// <param name="orgUnitGUID">The org unit GUID.</param>
+        public void Recall(Guid orgUnitGUID)
         {
             this.ServiceMutex.WaitOne();
+
+            Log.DebugFormat(Properties.Resources.SEARCH_RECALL, orgUnitGUID);
 
             if (this.Running)
             {
                 this.runningSearches--;
+                this.Searches[orgUnitGUID] = true;
+                this.OnRecall(this, orgUnitGUID);
             }
 
             this.ServiceMutex.ReleaseMutex();
@@ -148,8 +160,12 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         {
             this.runningSearches++;
 
+            Log.DebugFormat(Properties.Resources.SEARCH_RECALL_START_SERVICE, this.RunningSearches);
+
             if (!this.Running)
             {
+                Log.Info(Properties.Resources.LOG_START_SERVICE);
+
                 this.Timeout = 600000;
                 base.StartService();
             }
@@ -161,6 +177,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <param name="cancel">if set to <c>true</c> [cancel].</param>
         public override void StopService(bool cancel = false)
         {
+            Log.Info(Properties.Resources.LOG_STOP_SERVICE);
+
             this.timeout = 0;
             this.runningSearches = 0;
             this.Cancel = cancel;
@@ -175,25 +193,21 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         {
             while (this.Running && this.RunningSearches > 0 && this.Timeout > 0)
             {
-                this.Timeout -= 1000;
+                Log.DebugFormat(
+                    Properties.Resources.SEARCH_RECALL_THREAD_STATE,
+                    this.Running,
+                    this.runningSearches,
+                    this.Timeout);
+
+                this.timeout -= 1000;
                 Thread.Sleep(1000);
             }
 
-            if (!this.Cancel)
-            {
-                this.OnRecall(this);
-            }
-        }
-
-        /// <summary>
-        /// Adds the finished search.
-        /// </summary>
-        /// <param name="orgUnitGUID">The org unit GUID.</param>
-        private void AddFinishedSearch(Guid orgUnitGUID)
-        {
-            this.ServiceMutex.WaitOne();
-            this.finisedSearches.Add(orgUnitGUID);
-            this.ServiceMutex.ReleaseMutex();
+            Log.InfoFormat(
+                    Properties.Resources.SEARCH_RECALL_THREAD_STATE_END,
+                    this.Running,
+                    this.runningSearches,
+                    this.Timeout);
         }
     }
 }

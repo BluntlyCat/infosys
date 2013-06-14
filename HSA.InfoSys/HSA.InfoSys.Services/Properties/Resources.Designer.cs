@@ -448,6 +448,42 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Recall for OrgUnit [{0}] ähnelt.
+        /// </summary>
+        internal static string SEARCH_RECALL {
+            get {
+                return ResourceManager.GetString("SEARCH_RECALL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die New search started, running searches: [{0}] ähnelt.
+        /// </summary>
+        internal static string SEARCH_RECALL_START_SERVICE {
+            get {
+                return ResourceManager.GetString("SEARCH_RECALL_START_SERVICE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Current thread state running: {0}, running searches: {1}, timeout: {2} ähnelt.
+        /// </summary>
+        internal static string SEARCH_RECALL_THREAD_STATE {
+            get {
+                return ResourceManager.GetString("SEARCH_RECALL_THREAD_STATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Thread state at end running: {0}, running searches: {1}, timeout: {2} ähnelt.
+        /// </summary>
+        internal static string SEARCH_RECALL_THREAD_STATE_END {
+            get {
+                return ResourceManager.GetString("SEARCH_RECALL_THREAD_STATE_END", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Close Connection ähnelt.
         /// </summary>
         internal static string SOLR_CLIENT_CLOSE_CONNECTION {
