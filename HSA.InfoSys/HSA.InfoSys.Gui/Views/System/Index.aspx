@@ -31,6 +31,9 @@
                             <th>
                                 Search Now
                             </th>
+                            <th>
+                                Results
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,6 +57,30 @@
                                 <td>
                                     <a class="btn btn-small" href="/System/RealTimeSearch/?sysguid=<%= item.EntityId %>"><i class="icon-search"></i></a>
                                 </td>
+                                
+                               <%
+                               if (((bool?)this.ViewData["searchFinished"]).HasValue)
+                                   {
+                                       if (((bool?)this.ViewData["searchFinished"]).Value)
+                                       {%>
+                                        <td>
+                                            <!-- result button--> 
+                                            <a class="btn btn-small" href="/System/Results/?sysguid=<%= item.EntityId %>"><i class="icon-list"></i></a>
+                                        </td>                                           
+                                       <%}%>
+                                       <% else {%>
+                                        <td>
+                                            <!-- loading gif -->
+                                                <img src="../../Bootstrap/img/ajax-loader.gif" />
+                                        </td>
+	                                   <% } %>
+                                <% } %>
+                                <% else {%>
+                                        <td>
+                                            <!-- empty -->
+                                        </td>
+	                            <% } %>
+
                             </tr>
 
                             <!-- deleteModal -->

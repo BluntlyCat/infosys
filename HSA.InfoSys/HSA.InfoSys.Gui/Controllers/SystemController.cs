@@ -30,7 +30,7 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <summary>
         /// The controller host for WCF service.
         /// </summary>
-        private WCFControllerHost controllerHost;
+        private static WCFControllerHost ControllerHost;
 
         /// <summary>
         /// The search recall.
@@ -38,14 +38,22 @@ namespace HSA.InfoSys.Gui.Controllers
         private static SearchRecall SearchRecall;
 
         /// <summary>
+        /// The search finished
+        /// </summary>
+        private static bool? SearchFinished;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="SystemController"/> class.
         /// </summary>
         public SystemController()
         {
-            Addresses.Initialize();
-            controllerHost = new WCFControllerHost();
-            SearchRecall = controllerHost.OpenWCFHost<SearchRecall, ISearchRecall>(SearchRecall.SearchRecallFactory);
-            SearchRecall.OnRecall += new SearchRecall.RecallHandler(SearchRecall_OnRecall);
+            if (ControllerHost == null && SearchRecall == null)
+            {
+                Addresses.Initialize();
+                ControllerHost = new WCFControllerHost();
+                SearchRecall = ControllerHost.OpenWCFHost<SearchRecall, ISearchRecall>(SearchRecall.SearchRecallFactory);
+                SearchRecall.OnRecall += new SearchRecall.RecallHandler(SearchRecall_OnRecall);
+            }
         }
  
         /// <summary>
@@ -67,6 +75,8 @@ namespace HSA.InfoSys.Gui.Controllers
             this.ViewData["orgUnits"] = orgUnits;
 
             this.ViewData["navid"] = "mysystems";
+
+            this.ViewData["searchFinished"] = SearchFinished;
 
             return this.View();
         }
@@ -150,6 +160,7 @@ namespace HSA.InfoSys.Gui.Controllers
         public ActionResult RealTimeSearch()
         {
             string systemguid = Request.QueryString["sysguid"];
+            SearchFinished = false;
 
             //trigger search
             WCFControllerClient<ISolrController>.ClientProxy.SearchForOrgUnit(Guid.Parse(systemguid));
@@ -157,9 +168,9 @@ namespace HSA.InfoSys.Gui.Controllers
             //start thread which is watching the list of searches
             SearchRecall.StartService();
 
-            //returns to page with progress bar (not existing yet)
-            return this.RedirectToAction("WaitForResults", "System"); 
+            return this.RedirectToAction("Index", "System");
         }
+
 
         /// <summary>
         /// Occurs when [recall] when all searches finished.
@@ -167,6 +178,10 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <param name="sender">The sender.</param>
         void SearchRecall_OnRecall(object sender)
         {
+            SearchRecall.StopService(true);
+            SearchFinished = true;
+
+            Server.Transfer(this.Request.Path);
         }
 
         /// <summary>

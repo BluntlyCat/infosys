@@ -41,6 +41,14 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         protected bool Running { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="Countdown"/> is canceled.
+        /// </summary>
+        /// <value>
+        /// Cancel is <c>true</c> if cancels; otherwise, <c>false</c>.
+        /// </value>
+        protected bool Cancel { get; set; }
+
+        /// <summary>
         /// Gets the service mutex.
         /// </summary>
         /// <value>

@@ -98,6 +98,20 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
+        /// Gets a value indicating whether this instance is running.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if this instance is running; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsRunning
+        {
+            get
+            {
+                return this.Running;
+            }
+        }
+
+        /// <summary>
         /// Gets the amount of running searches.
         /// </summary>
         /// <value>
@@ -134,7 +148,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         {
             this.runningSearches++;
 
-            if (this.ServiceThread == null || !this.Running)
+            if (!this.Running)
             {
                 this.Timeout = 600000;
                 base.StartService();
@@ -147,9 +161,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <param name="cancel">if set to <c>true</c> [cancel].</param>
         public override void StopService(bool cancel = false)
         {
-            this.Running = false;
             this.timeout = 0;
             this.runningSearches = 0;
+            this.Cancel = cancel;
 
             base.StopService(cancel);
         }
@@ -165,7 +179,10 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 Thread.Sleep(1000);
             }
 
-            this.OnRecall(this);
+            if (!this.Cancel)
+            {
+                this.OnRecall(this);
+            }
         }
 
         /// <summary>
