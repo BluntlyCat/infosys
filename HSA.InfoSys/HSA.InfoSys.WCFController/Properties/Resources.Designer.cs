@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HSA.InfoSys.Common.CrawlController.Properties {
+namespace HSA.InfoSys.Common.WCFController.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace HSA.InfoSys.Common.CrawlController.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HSA.InfoSys.Common.CrawlController.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HSA.InfoSys.Common.WCFController.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,20 @@ namespace HSA.InfoSys.Common.CrawlController.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Shutdown Services. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die WCF service host {0} closed. ähnelt.
         /// </summary>
-        internal static string CRAWL_CONTROLLER_SHUTDOWN {
+        internal static string CRAWL_CONTROLLER_WCF_HOST_CLOSED {
             get {
-                return ResourceManager.GetString("CRAWL_CONTROLLER_SHUTDOWN", resourceCulture);
+                return ResourceManager.GetString("CRAWL_CONTROLLER_WCF_HOST_CLOSED", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Start crawl controller ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die WCF service host {0} opened. ähnelt.
         /// </summary>
-        internal static string CRAWL_CONTROLLER_START {
+        internal static string CRAWL_CONTROLLER_WCF_HOST_OPENED {
             get {
-                return ResourceManager.GetString("CRAWL_CONTROLLER_START", resourceCulture);
+                return ResourceManager.GetString("CRAWL_CONTROLLER_WCF_HOST_OPENED", resourceCulture);
             }
         }
     }
