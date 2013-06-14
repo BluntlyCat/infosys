@@ -7,16 +7,17 @@ namespace HSA.InfoSys.CrawlerService
 {
     using System;
     using System.Threading;
-    using HSA.InfoSys.Common.CrawlController;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services;
     using log4net;
+    using HSA.InfoSys.Common.Services.LocalServices;
+    using HSA.InfoSys.Common.Services.WCFServices;
 
     /// <summary>
     /// The WebCrawler searches the internet
     /// for security issues of several hardware
     /// </summary>
-    public class CrawlerService
+    public class CrawlerService : Service
     {
         /// <summary>
         /// The logger.
@@ -36,7 +37,7 @@ namespace HSA.InfoSys.CrawlerService
         /// <summary>
         /// The WCF controller for the crawler service.
         /// </summary>
-        private CrawlControllerHost controllerHost;
+        private WCFControllerHost controllerHost;
 
         /// <summary>
         /// The crawl controller.
@@ -50,13 +51,13 @@ namespace HSA.InfoSys.CrawlerService
         public static void Main(string[] args)
         {
             CrawlerService crawler = new CrawlerService();
-            crawler.RunServer();
+            crawler.StartService();
         }
 
         /// <summary>
-        /// Runs the server.
+        /// Runs this instance.
         /// </summary>
-        private void RunServer()
+        protected override void Run()
         {
             Log.Debug(Properties.Resources.WEB_CRAWLER_START_SERVER);
             Log.Info(Properties.Resources.WEB_CRAWLER_QUIT_MESSAGE);
@@ -108,7 +109,7 @@ namespace HSA.InfoSys.CrawlerService
         private void InitializeControllerHost()
         {
             Addresses.Initialize();
-            this.controllerHost = new CrawlControllerHost();
+            this.controllerHost = new WCFControllerHost();
 
             this.crawlController = this.controllerHost.OpenWCFHost<CrawlController, ICrawlController>(CrawlController.ControllerFactory);
 

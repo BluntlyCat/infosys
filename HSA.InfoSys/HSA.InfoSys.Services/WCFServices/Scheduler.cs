@@ -3,7 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Common.Services
+namespace HSA.InfoSys.Common.Services.WCFServices
 {
     using System;
     using System.Collections.Generic;
@@ -11,7 +11,7 @@ namespace HSA.InfoSys.Common.Services
     using System.Threading;
     using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
-    using HSA.InfoSys.Common.Nutch;
+    using HSA.InfoSys.Common.Services.LocalServices;
     using HSA.InfoSys.Common.Timing;
     using log4net;
 

@@ -1,9 +1,9 @@
 ﻿// ------------------------------------------------------------------------
-// <copyright file="CrawlControllerClient.cs" company="HSA.InfoSys">
+// <copyright file="WCFControllerClient.cs" company="HSA.InfoSys">
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Common.CrawlController
+namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System;
     using System.ServiceModel;
@@ -14,7 +14,7 @@ namespace HSA.InfoSys.Common.CrawlController
     /// This class is for clients which want use the WCF service
     /// </summary>
     /// <typeparam name="T">The type of what the proxy must be.</typeparam>
-    public class CrawlControllerClient<T>
+    public class WCFControllerClient<T>
     {
         /// <summary>
         /// The logger.

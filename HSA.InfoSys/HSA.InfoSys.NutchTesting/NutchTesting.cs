@@ -6,10 +6,9 @@
 namespace HSA.InfoSys.Testing.NutchTesting
 {
     using System;
-    using System.IO;
     using System.Threading;
     using HSA.InfoSys.Common.Logging;
-    using HSA.InfoSys.Common.Nutch;
+    using HSA.InfoSys.Common.Services.LocalServices;
     using log4net;
 
     /// <summary>

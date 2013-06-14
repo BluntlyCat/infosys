@@ -3,7 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Common.Services
+namespace HSA.InfoSys.Common.Services.WCFServices
 {
     using System.Threading;
     using HSA.InfoSys.Common.Logging;
@@ -20,9 +20,17 @@ namespace HSA.InfoSys.Common.Services
         private static readonly ILog Log = Logger<string>.GetLogger("Scheduler");
 
         /// <summary>
-        /// The scheduler thread.
+        /// The service mutex.
         /// </summary>
-        private Thread serviceThread;
+        private Mutex serviceMutex = new Mutex();
+
+        /// <summary>
+        /// Gets the service thread.
+        /// </summary>
+        /// <value>
+        /// The service thread.
+        /// </value>
+        protected Thread ServiceThread { get; private set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Service"/> is running.
@@ -33,16 +41,30 @@ namespace HSA.InfoSys.Common.Services
         protected bool Running { get; set; }
 
         /// <summary>
+        /// Gets the service mutex.
+        /// </summary>
+        /// <value>
+        /// The service mutex.
+        /// </value>
+        protected Mutex ServiceMutex
+        {
+            get
+            {
+                return this.serviceMutex;
+            }
+        }
+
+        /// <summary>
         /// Starts this instance.
         /// </summary>
         public virtual void StartService()
         {
             Log.DebugFormat(Properties.Resources.LOG_START_SERVICE, this.GetType().Name);
             
-            this.serviceThread = new Thread(new ThreadStart(this.Run));
+            this.ServiceThread = new Thread(new ThreadStart(this.Run));
 
             this.Running = true;
-            this.serviceThread.Start();
+            this.ServiceThread.Start();
         }
 
         /// <summary>

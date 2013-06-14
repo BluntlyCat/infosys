@@ -3,12 +3,12 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Common.CrawlController
+namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System.Collections.Generic;
     using System.ServiceModel;
     using HSA.InfoSys.Common.Logging;
-    using HSA.InfoSys.Common.Services;
+    using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
 
     /// <summary>
@@ -17,7 +17,7 @@ namespace HSA.InfoSys.Common.CrawlController
     /// between the crawler and the GUI by using WCF.
     /// </summary>
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
-    public class CrawlController : ICrawlController
+    public class CrawlController : Service, ICrawlController
     {
         /// <summary>
         /// The logger.
@@ -69,8 +69,6 @@ namespace HSA.InfoSys.Common.CrawlController
             this.services.Add(service);
         }
 
-        #region ICrawlController
-
         /// <summary>
         /// Starts the services.
         /// </summary>
@@ -104,6 +102,11 @@ namespace HSA.InfoSys.Common.CrawlController
             return false;
         }
 
-        #endregion
+        /// <summary>
+        /// Runs this instance.
+        /// </summary>
+        protected override void Run()
+        {
+        }
     }
 }

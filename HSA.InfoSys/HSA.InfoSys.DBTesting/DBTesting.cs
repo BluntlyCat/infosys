@@ -8,7 +8,7 @@ namespace HSA.InfoSys.Testing.DBTesting
     using System;
     using System.Threading;
     using HSA.InfoSys.Common.Logging;
-    using HSA.InfoSys.Common.Services;
+    using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
 
     /// <summary>

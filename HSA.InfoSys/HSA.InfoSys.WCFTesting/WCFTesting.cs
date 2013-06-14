@@ -9,10 +9,9 @@ namespace HSA.InfoSys.Testing.WCFTesting
     using System.Linq;
     using System.ServiceModel;
     using System.Threading;
-    using HSA.InfoSys.Common.CrawlController;
-    using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
-    using HSA.InfoSys.Common.Services;
+    using HSA.InfoSys.Common.Services.LocalServices;
+    using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
 
     /// <summary>
@@ -60,25 +59,25 @@ namespace HSA.InfoSys.Testing.WCFTesting
                         switch (keyInfo.Key)
                         {
                             case ConsoleKey.A:
-                                /*var org1 = CrawlControllerClient<IDBManager>.ClientProxy.CreateOrgUnit(32, "Desktop PC");
+                                /*var org1 = WCFControllerClient<IDBManager>.ClientProxy.CreateOrgUnit(32, "Desktop PC");
 
-                                var orgId = CrawlControllerClient<IDBManager>.ClientProxy.AddEntity(org1);
-                                org1 = CrawlControllerClient<IDBManager>.ClientProxy.GetEntity(orgId) as OrgUnit;
+                                var orgId = WCFControllerClient<IDBManager>.ClientProxy.AddEntity(org1);
+                                org1 = WCFControllerClient<IDBManager>.ClientProxy.GetEntity(orgId) as OrgUnit;
 
-                                var comp1 = CrawlControllerClient<IDBManager>.ClientProxy.CreateComponent("Windows", org1);
-                                var comp2 = CrawlControllerClient<IDBManager>.ClientProxy.CreateComponent("Solr", org1);
-                                var comp3 = CrawlControllerClient<IDBManager>.ClientProxy.CreateComponent("Office", org1);
-                                var comp4 = CrawlControllerClient<IDBManager>.ClientProxy.CreateComponent("Star Money", org1);
+                                var comp1 = WCFControllerClient<IDBManager>.ClientProxy.CreateComponent("Windows", org1);
+                                var comp2 = WCFControllerClient<IDBManager>.ClientProxy.CreateComponent("Solr", org1);
+                                var comp3 = WCFControllerClient<IDBManager>.ClientProxy.CreateComponent("Office", org1);
+                                var comp4 = WCFControllerClient<IDBManager>.ClientProxy.CreateComponent("Star Money", org1);
 
-                                CrawlControllerClient<IDBManager>.ClientProxy.AddEntitys(comp1, comp2, comp3, comp4);*/
+                                WCFControllerClient<IDBManager>.ClientProxy.AddEntitys(comp1, comp2, comp3, comp4);*/
 
-                                var orgUnitGuids = CrawlControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(32);
-                                CrawlControllerClient<ISolrController>.ClientProxy.SearchForOrgUnit(orgUnitGuids.First().EntityId);
+                                var orgUnitGuids = WCFControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(32);
+                                WCFControllerClient<ISolrController>.ClientProxy.SearchForOrgUnit(orgUnitGuids.First().EntityId);
 
                                 break;
 
                             case ConsoleKey.G:
-                                var c = CrawlControllerClient<IDBManager>.ClientProxy;
+                                var c = WCFControllerClient<IDBManager>.ClientProxy;
                                 var entity = c.GetEntity(new Guid("23c83f7f-a371-43ad-8734-a1c8013b55ee"));
 
                                 log.InfoFormat("Entity: [{0}]", entity);
@@ -100,9 +99,9 @@ namespace HSA.InfoSys.Testing.WCFTesting
                                 try
                                 {
                                     log.Info("Got client proxy...");
-                                    var orgUnitGuids2 = CrawlControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(32);
+                                    var orgUnitGuids2 = WCFControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(32);
 
-                                    CrawlControllerClient<ISolrController>.ClientProxy.SearchForComponent(orgUnitGuids2.First().EntityId);
+                                    WCFControllerClient<ISolrController>.ClientProxy.SearchForComponent(orgUnitGuids2.First().EntityId);
                                 }
                                 catch (Exception e)
                                 {
@@ -124,7 +123,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
 
                                 dbManager.AddEntity(config);
 
-                                CrawlControllerClient<IScheduler>.ClientProxy.AddOrgUnitConfig(config);
+                                WCFControllerClient<IScheduler>.ClientProxy.AddOrgUnitConfig(config);
                                 break;
 
                             case ConsoleKey.U:

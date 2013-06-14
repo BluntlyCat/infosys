@@ -3,10 +3,10 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Common.CrawlController
+namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System.ServiceModel;
-    using HSA.InfoSys.Common.Services;
+    using HSA.InfoSys.Common.Services.WCFServices;
 
     /// <summary>
     /// This is the interface for communication between the GUI and the web crawler

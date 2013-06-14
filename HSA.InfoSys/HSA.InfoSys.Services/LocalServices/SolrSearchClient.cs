@@ -1,41 +1,44 @@
 ﻿// ------------------------------------------------------------------------
-// <copyright file="SolrClient.cs" company="HSA.InfoSys">
+// <copyright file="SolrSearchClient.cs" company="HSA.InfoSys">
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Common.SolrClient
+namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System;
-    using System.Collections.Generic;
     using System.Net;
     using System.Net.Sockets;
     using System.Text;
-    using System.Threading;
     using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
+    using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    ///  SolrClient deals as an API
+    /// This class connects to the Solr server and invokes the search.
     /// </summary>
-    public class SolrClient
+    public class SolrSearchClient
     {
         /// <summary>
-        /// The logger for SolrClient.
+        /// The logger for SolrSearch.
         /// </summary>
-        private static readonly ILog Log = Logger<string>.GetLogger("SolrClient");
+        private static readonly ILog Log = Logger<string>.GetLogger("SolrSearch");
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SolrClient"/> class.
+        /// The database manager.
         /// </summary>
-        /// <param name="port">The port .</param>
-        /// <param name="ipAddress">The ip address.</param>
-        public SolrClient(int port, string ipAddress)
+        private IDBManager dbManager = DBManager.ManagerFactory;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SolrSearchClient"/> class.
+        /// </summary>
+        public SolrSearchClient()
         {
-            this.Port = port;
-            this.Host = ipAddress;
+            this.Host = Properties.Settings.Default.SOLR_HOST;
+            this.Port = Properties.Settings.Default.SOLR_PORT;
+
             this.SolrResponse = string.Empty;
             this.Collection = Properties.Settings.Default.SOLR_COLLECTION;
         }
@@ -57,6 +60,14 @@ namespace HSA.InfoSys.Common.SolrClient
         public string Host { get; private set; }
 
         /// <summary>
+        /// Gets the port.
+        /// </summary>
+        /// <value>
+        /// The port.
+        /// </value>
+        public int Port { get; private set; }
+
+        /// <summary>
         /// Gets the collection.
         /// </summary>
         /// <value>
@@ -73,22 +84,6 @@ namespace HSA.InfoSys.Common.SolrClient
         public string SolrResponse { get; private set; }
 
         /// <summary>
-        /// Gets the port.
-        /// </summary>
-        /// <value>
-        /// The port.
-        /// </value>
-        public int Port { get; private set; }
-
-        /// <summary>
-        /// Gets a value indicating whether this <see cref="SolrClient"/> is running.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if running; otherwise, <c>false</c>.
-        /// </value>
-        public bool Running { get; private set; }
-
-        /// <summary>
         /// Gets the component GUID.
         /// </summary>
         /// <value>
@@ -100,7 +95,7 @@ namespace HSA.InfoSys.Common.SolrClient
         /// Gets the response from solr.
         /// </summary>
         /// <returns>The response.</returns>
-        public ResultPot GetResult()
+        public SolrResultPot GetResult()
         {
             var start = this.SolrResponse.IndexOf('{');
             var end = this.SolrResponse.LastIndexOf('}');
@@ -112,7 +107,7 @@ namespace HSA.InfoSys.Common.SolrClient
             }
             catch
             {
-                return new ResultPot();
+                return new SolrResultPot();
             }
         }
 
@@ -135,10 +130,8 @@ namespace HSA.InfoSys.Common.SolrClient
                 if (this.SolrSocket.Connected)
                 {
                     Log.InfoFormat(Properties.Resources.SOLR_CLIENT_CONNECTION_ESTABLISHED, this.Host);
-                    string solrQuery = this.BuildSolrQuery(query, MimeType.json);
-                    this.Running = true;
-
-                    this.SolrResponse = this.ThreadRoutine(solrQuery);
+                    string solrQuery = this.BuildSolrQuery(query, SolrMimeType.json);
+                    this.SolrResponse = this.InvokeSolrQuery(solrQuery);
                 }
             }
             catch (Exception e)
@@ -154,59 +147,10 @@ namespace HSA.InfoSys.Common.SolrClient
         {
             Log.Info(Properties.Resources.SOLR_CLIENT_CLOSE_CONNECTION);
 
-            this.Running = false;
-
             this.SolrSocket.Disconnect(false);
             this.SolrSocket.Close();
-            
+
             Log.InfoFormat(Properties.Resources.SOLR_CLIENT_SOCKET_CLOSED, this.Host);
-        }
-
-        /// <summary>
-        /// Build the query string for Solr.
-        /// </summary>
-        /// <param name="queryString">The query string is the actual search term.</param>
-        /// <param name="mimeType">Type of the MIME.</param>
-        /// <returns>
-        /// The query string to send to solr..
-        /// </returns>
-        private string BuildSolrQuery(
-            string queryString,
-            //// string fq, string sort, int start, int rows, string fl, string df, string[] rawQueryParameters, 
-            MimeType mimeType)
-        {
-            Guid queryTicket = Guid.NewGuid();
-
-            string query = string.Format(
-                Properties.Settings.Default.SOLR_QUERY_FORMAT,
-                this.Collection,
-                queryString,
-                mimeType);
-
-            Log.InfoFormat(Properties.Resources.SOLR_CLIENT_REQUEST_RECEIVED, query);
-
-            return query;
-        }
-
-        /// <summary>
-        /// Threads the routine.
-        /// </summary>
-        /// <param name="solrQuery">The solr query.</param>
-        /// <returns>The search result from solr.</returns>
-        private string ThreadRoutine(string solrQuery)
-        {
-            string response = string.Empty;
-
-            // Main Loop which is checking, whether there is an message for the server or not
-            while (this.Running && this.SolrSocket.Connected)
-            {
-                // waiting for the server's responde
-                response = this.InvokeSolrQuery(solrQuery);
-
-                Thread.Sleep(100);
-            }
-
-            return response;
         }
 
         /// <summary>
@@ -218,7 +162,7 @@ namespace HSA.InfoSys.Common.SolrClient
         {
             string request = string.Empty;
             string response = string.Empty;
-            
+
             byte[] bytesReceived = new byte[256];
             byte[] bytesSend;
             int bytes = 0;
@@ -255,14 +199,40 @@ namespace HSA.InfoSys.Common.SolrClient
         }
 
         /// <summary>
+        /// Build the query string for Solr.
+        /// </summary>
+        /// <param name="queryString">The query string is the actual search term.</param>
+        /// <param name="mimeType">Type of the MIME.</param>
+        /// <returns>
+        /// The query string to send to solr..
+        /// </returns>
+        private string BuildSolrQuery(
+            string queryString,
+            //// string fq, string sort, int start, int rows, string fl, string df, string[] rawQueryParameters, 
+            SolrMimeType mimeType)
+        {
+            Guid queryTicket = Guid.NewGuid();
+
+            string query = string.Format(
+                Properties.Settings.Default.SOLR_QUERY_FORMAT,
+                this.Collection,
+                queryString,
+                mimeType);
+
+            Log.InfoFormat(Properties.Resources.SOLR_CLIENT_REQUEST_RECEIVED, query);
+
+            return query;
+        }
+
+        /// <summary>
         /// Parses to result.
         /// </summary>
         /// <param name="jsonResult">The result in json format.</param>
         /// <returns>The results in a list.</returns>
-        private ResultPot ParseToResult(string jsonResult)
+        private SolrResultPot ParseToResult(string jsonResult)
         {
             var json = JsonConvert.DeserializeObject(jsonResult) as JObject;
-            var resultPot = new ResultPot(this.ComponentGUID);
+            var resultPot = new SolrResultPot(this.ComponentGUID);
 
             var response = json["response"];
             var docs = response["docs"];

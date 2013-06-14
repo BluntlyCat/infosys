@@ -1,34 +1,26 @@
 ﻿// ------------------------------------------------------------------------
-// <copyright file="SolrController.cs" company="HSA.InfoSys">
+// <copyright file="SolrSearchController.cs" company="HSA.InfoSys">
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Common.Services
+namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System;
-    using System.Collections.Generic;
-    using System.ServiceModel;
     using System.Threading;
     using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
-    using HSA.InfoSys.Common.SolrClient;
+    using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
 
     /// <summary>
-    /// In this class are all methods implemented for controlling Solr.
+    ///  SolrClient deals as an API
     /// </summary>
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
-    public class SolrController : Service, ISolrController
+    public class SolrSearchController
     {
         /// <summary>
-        /// The logger.
+        /// The logger for SolrClient.
         /// </summary>
-        private static readonly ILog Log = Logger<string>.GetLogger("CrawlController");
-
-        /// <summary>
-        /// The solr controller.
-        /// </summary>
-        private static SolrController solrController;
+        private static readonly ILog Log = Logger<string>.GetLogger("SolrClient");
 
         /// <summary>
         /// The db mutex.
@@ -36,16 +28,14 @@ namespace HSA.InfoSys.Common.Services
         private static Mutex dbMutex = new Mutex();
 
         /// <summary>
-        /// The data base manager.
+        /// The database manager.
         /// </summary>
         private IDBManager dbManager = DBManager.ManagerFactory;
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="SolrController"/> class from being created.
+        /// The components finished.
         /// </summary>
-        private SolrController()
-        {
-        }
+        private int componentsFinished = 0;
 
         /// <summary>
         /// Our delegate for invoking an async callback.
@@ -55,64 +45,31 @@ namespace HSA.InfoSys.Common.Services
         public delegate void InvokeSolrSearch(string query, Guid componentGUID);
 
         /// <summary>
-        /// Gets the solr controller.
+        /// Gets or sets the org unit GUID.
         /// </summary>
         /// <value>
-        /// The solr controller.
+        /// The org unit GUID.
         /// </value>
-        public static SolrController SolrFactory
-        {
-            get
-            {
-                if (solrController == null)
-                {
-                    solrController = new SolrController();
-                }
-
-                return solrController;
-            }
-        }
+        private Guid OrgUnitGuid { get; set; }
 
         /// <summary>
-        /// Searches for all components of an org unit.
+        /// Connects this instance.
         /// </summary>
-        /// <param name="orgUnitGUID">The org unit GUID.</param>
-        public void SearchForOrgUnit(Guid orgUnitGUID)
+        /// <param name="orgUnitGuid">The org unit GUID.</param>
+        public void StartSearch(Guid orgUnitGuid)
         {
-            var components = this.dbManager.GetComponentsByOrgUnitId(orgUnitGUID);
-            this.Search(components);
-        }
+            this.OrgUnitGuid = orgUnitGuid;
 
-        /// <summary>
-        /// Searches for one component.
-        /// </summary>
-        /// <param name="componentGUID">The component GUID.</param>
-        public void SearchForComponent(Guid componentGUID)
-        {
-            var list = new List<Component>();
-            var component = this.dbManager.GetEntity(componentGUID) as Component;
+            var components = this.dbManager.GetComponentsByOrgUnitId(this.OrgUnitGuid);
 
-            list.Add(component);
-
-            this.Search(list);
-        }
-
-        /// <summary>
-        /// Starts a new search.
-        /// </summary>
-        /// <param name="components">The components.</param>
-        public void Search(IList<Component> components)
-        {
             foreach (var component in components)
             {
                 Log.InfoFormat(Properties.Resources.SOLR_CLIENT_SEARCH_STARTED, component.Name);
 
-                var client = new SolrClient(
-                    Properties.Settings.Default.SOLR_PORT,
-                    Properties.Settings.Default.SOLR_HOST);
+                var searchClient = new SolrSearchClient();
 
                 ////Here we tell our delegate which method to call.
-                InvokeSolrSearch invokeSearch = new InvokeSolrSearch(client.StartSearch);
+                InvokeSolrSearch invokeSearch = new InvokeSolrSearch(searchClient.StartSearch);
 
                 ////This is our callback method which will be
                 ////called when solr finished the searchrequest.
@@ -123,7 +80,7 @@ namespace HSA.InfoSys.Common.Services
 
                         if (c.IsCompleted)
                         {
-                            var resultPot = client.GetResult();
+                            var resultPot = searchClient.GetResult();
 
                             foreach (var result in resultPot.Results)
                             {
@@ -136,6 +93,13 @@ namespace HSA.InfoSys.Common.Services
                                     result.Component.Name,
                                     result);
                             }
+
+                            componentsFinished++;
+                        }
+
+                        if (this.componentsFinished == components.Count)
+                        {
+                            WCFControllerClient<ISearchRecall>.ClientProxy.Recall(this.OrgUnitGuid);
                         }
 
                         dbMutex.ReleaseMutex();
@@ -146,10 +110,24 @@ namespace HSA.InfoSys.Common.Services
         }
 
         /// <summary>
-        /// Runs this instance.
+        /// Threads the routine.
         /// </summary>
-        protected override void Run()
+        /// <param name="solrQuery">The solr query.</param>
+        /// <returns>The search result from solr.</returns>
+        /*private void ThreadRoutine(string solrQuery)
         {
-        }
+            string response = string.Empty;
+
+            // Main Loop which is checking, whether there is an message for the server or not
+            while (this.Running && this.SolrSocket.Connected)
+            {
+                // waiting for the server's responde
+                response = this.InvokeSolrQuery(solrQuery);
+
+                Thread.Sleep(100);
+            }
+
+            this.SolrResponse = response;
+        }*/
     }
 }

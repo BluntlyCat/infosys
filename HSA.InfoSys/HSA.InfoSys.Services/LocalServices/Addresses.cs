@@ -3,11 +3,13 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Common.CrawlController
+namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System;
     using System.Collections.Generic;
     using HSA.InfoSys.Common.Services;
+    using HSA.InfoSys.Common.Services.LocalServices;
+    using HSA.InfoSys.Common.Services.WCFServices;
 
     /// <summary>
     /// This is a helper class to get the correct service address by its type.
@@ -51,7 +53,8 @@ namespace HSA.InfoSys.Common.CrawlController
                     typeof(ICrawlController),
                     typeof(ISolrController),
                     typeof(IScheduler),
-                    typeof(IDBManager)
+                    typeof(IDBManager),
+                    typeof(ISearchRecall)
                 };
 
                 foreach (var t in types)

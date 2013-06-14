@@ -3,7 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Common.Services
+namespace HSA.InfoSys.Common.Services.WCFServices
 {
     /// <summary>
     /// This interface provides all methods for controlling a service.

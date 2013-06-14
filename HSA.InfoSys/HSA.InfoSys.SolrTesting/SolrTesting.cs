@@ -8,7 +8,7 @@ namespace HSA.InfoSys.Testing.SolrTesting
     using System;
     using System.Threading;
     using HSA.InfoSys.Common.Logging;
-    using HSA.InfoSys.Common.SolrClient;
+    using HSA.InfoSys.Common.Services.LocalServices;
     using log4net;
 
     /// <summary>
@@ -24,7 +24,7 @@ namespace HSA.InfoSys.Testing.SolrTesting
         {
             ILog log = Logger<string>.GetLogger("SolrTesting");
 
-            SolrClient client = new SolrClient(Properties.Settings.Default.SOLR_PORT, Properties.Settings.Default.SOLR_HOST);
+            SolrSearchController client = new SolrSearchController();
             bool running = true;
 
             Console.WriteLine(string.Empty);
@@ -53,9 +53,7 @@ namespace HSA.InfoSys.Testing.SolrTesting
 
                         case ConsoleKey.S:
                             log.Info("Send request to solr");
-                            client.StartSearch("windows", Guid.Empty);
-
-                            var result = client.GetResult();
+                            client.StartSearch(Guid.Empty);
 
                             break;
                     }

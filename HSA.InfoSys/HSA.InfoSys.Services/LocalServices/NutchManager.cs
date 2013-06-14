@@ -3,7 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Common.Nutch
+namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System;
     using System.Collections.Generic;

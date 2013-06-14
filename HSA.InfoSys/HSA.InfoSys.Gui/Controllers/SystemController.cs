@@ -9,12 +9,12 @@ namespace HSA.InfoSys.Gui.Controllers
     using System.Collections.Generic;
     using System.Web.Mvc;
     using System.Web.Security;
-    using HSA.InfoSys.Common.CrawlController;
+    using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
+    using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
     using Newtonsoft.Json;
-    using HSA.InfoSys.Common.Services;
-    using HSA.InfoSys.Common.Entities;
+    using HSA.InfoSys.Common.Services.LocalServices;
 
     /// <summary>
     /// The controller for the system.
@@ -26,6 +26,27 @@ namespace HSA.InfoSys.Gui.Controllers
         /// The logger.
         /// </summary>
         private static readonly ILog Log = Logger<string>.GetLogger("SystemController");
+
+        /// <summary>
+        /// The controller host for WCF service.
+        /// </summary>
+        private WCFControllerHost controllerHost;
+
+        /// <summary>
+        /// The search recall.
+        /// </summary>
+        private static SearchRecall SearchRecall;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SystemController"/> class.
+        /// </summary>
+        public SystemController()
+        {
+            Addresses.Initialize();
+            controllerHost = new WCFControllerHost();
+            SearchRecall = controllerHost.OpenWCFHost<SearchRecall, ISearchRecall>(SearchRecall.SearchRecallFactory);
+            SearchRecall.OnRecall += new SearchRecall.RecallHandler(SearchRecall_OnRecall);
+        }
  
         /// <summary>
         /// Called when the home page is loading.
@@ -34,7 +55,7 @@ namespace HSA.InfoSys.Gui.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            var cc = CrawlControllerClient<IDBManager>.ClientProxy;
+            var cc = WCFControllerClient<IDBManager>.ClientProxy;
             // get id of current logged-in user
             MembershipUser membershipuser = Membership.GetUser();
             string userid = membershipuser.ProviderUserKey.ToString();
@@ -62,7 +83,7 @@ namespace HSA.InfoSys.Gui.Controllers
             string newsystem = Request["newsystem"];
 
             // init
-            var cc = CrawlControllerClient<IDBManager>.ClientProxy;
+            var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
             // log
             Log.Info("add new system");
@@ -97,7 +118,7 @@ namespace HSA.InfoSys.Gui.Controllers
             string systemguid = Request.QueryString["sysguid"];
 
             // init
-            var cc = CrawlControllerClient<IDBManager>.ClientProxy;
+            var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
             //get orgUnit
             var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnit", "OrgUnitConfig")) as OrgUnit;
@@ -128,15 +149,24 @@ namespace HSA.InfoSys.Gui.Controllers
         [HttpGet]
         public ActionResult RealTimeSearch()
         {
-
             string systemguid = Request.QueryString["sysguid"];
 
             //trigger search
+            WCFControllerClient<ISolrController>.ClientProxy.SearchForOrgUnit(Guid.Parse(systemguid));
 
             //start thread which is watching the list of searches
+            SearchRecall.StartService();
 
             //returns to page with progress bar (not existing yet)
             return this.RedirectToAction("WaitForResults", "System"); 
+        }
+
+        /// <summary>
+        /// Occurs when [recall] when all searches finished.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        void SearchRecall_OnRecall(object sender)
+        {
         }
 
         /// <summary>
@@ -154,7 +184,7 @@ namespace HSA.InfoSys.Gui.Controllers
             string systemguid = Request.QueryString["sysguid"];
 
             // init
-            var cc = CrawlControllerClient<IDBManager>.ClientProxy;
+            var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
             //get OrgUnit
             var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnit")) as OrgUnit;
@@ -185,7 +215,7 @@ namespace HSA.InfoSys.Gui.Controllers
             string component = Request["components"];
 
             // init
-            var cc = CrawlControllerClient<IDBManager>.ClientProxy;
+            var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
             // get orgUnit by id
             var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnit")) as OrgUnit;
@@ -211,7 +241,7 @@ namespace HSA.InfoSys.Gui.Controllers
             string compid = Request.QueryString["compid"];
 
             // init
-            var cc = CrawlControllerClient<IDBManager>.ClientProxy;
+            var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
             // get component by id
             var component = cc.GetEntity(new Guid(compid), cc.LoadThisEntities("Component"));
@@ -237,7 +267,7 @@ namespace HSA.InfoSys.Gui.Controllers
             string systemguid = Request.QueryString["sysguid"];
 
             // init
-            var cc = CrawlControllerClient<IDBManager>.ClientProxy;
+            var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
             // get id of current logged-in user
             MembershipUser membershipuser = Membership.GetUser();
@@ -313,7 +343,7 @@ namespace HSA.InfoSys.Gui.Controllers
             string systemguid = Request.QueryString["sysguid"];
 
             // init
-            var cc = CrawlControllerClient<IDBManager>.ClientProxy;
+            var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
             // get SystemConfig, OrgUnitConfig
             var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
@@ -396,7 +426,7 @@ namespace HSA.InfoSys.Gui.Controllers
             string loadedConfigId = Request["orgUnitConfigId"];
 
             // init
-            var cc = CrawlControllerClient<IDBManager>.ClientProxy;
+            var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
             //get config from other orgUnit
             var loadedConfig = cc.GetEntity(new Guid(loadedConfigId), cc.LoadThisEntities("OrgUnitConfig")) as OrgUnitConfig;
