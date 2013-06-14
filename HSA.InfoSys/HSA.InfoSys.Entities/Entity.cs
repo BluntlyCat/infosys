@@ -6,9 +6,8 @@
 namespace HSA.InfoSys.Common.Entities
 {
     using System;
+    using System.Collections.Generic;
     using System.Runtime.Serialization;
-    using NHibernate.Proxy;
-    using NHibernate.Proxy.DynamicProxy;
 
     /// <summary>
     /// This is the base class for all data base objects
@@ -18,6 +17,7 @@ namespace HSA.InfoSys.Common.Entities
     [KnownType(typeof(Component))]
     [KnownType(typeof(Result))]
     [KnownType(typeof(OrgUnit))]
+    [KnownType(typeof(IList<OrgUnit>))]
     [KnownType(typeof(OrgUnitConfig))]
     public abstract class Entity
     {
