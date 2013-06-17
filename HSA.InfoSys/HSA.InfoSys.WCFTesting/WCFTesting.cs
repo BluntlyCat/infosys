@@ -19,14 +19,14 @@ namespace HSA.InfoSys.Testing.WCFTesting
     /// </summary>
     public class WCFTesting
     {
+        private static readonly ILog Log = Logger<string>.GetLogger("WCFTesting");
+
         /// <summary>
         /// Mains the specified args.
         /// </summary>
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
-            ILog log = Logger<string>.GetLogger("WCFTesting");
-
             IDBManager dbManager = DBManager.ManagerFactory;
 
             bool running = true;
@@ -46,7 +46,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
                 {
                     if (!string.IsNullOrEmpty(response) && requestSent)
                     {
-                        log.InfoFormat("Got response from solr: [{0}]", response);
+                        Log.InfoFormat("Got response from solr: [{0}]", response);
 
                         requestSent = false;
                     }
@@ -54,7 +54,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
                     if (Console.KeyAvailable)
                     {
                         ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-                        log.InfoFormat("Key [{0}] was pressed.", keyInfo.Key);
+                        Log.InfoFormat("Key [{0}] was pressed.", keyInfo.Key);
 
                         switch (keyInfo.Key)
                         {
@@ -80,50 +80,50 @@ namespace HSA.InfoSys.Testing.WCFTesting
                                 var c = WCFControllerClient<IDBManager>.ClientProxy;
                                 var entity = c.GetEntity(new Guid("23c83f7f-a371-43ad-8734-a1c8013b55ee"));
 
-                                log.InfoFormat("Entity: [{0}]", entity);
+                                Log.InfoFormat("Entity: [{0}]", entity);
                                 break;
 
                             case ConsoleKey.H:
-                                log.Info("Print help text.");
+                                Log.Info("Print help text.");
                                 PrintHelp();
                                 break;
 
                             case ConsoleKey.Q:
-                                log.Info("Quit application.");
+                                Log.Info("Quit application.");
                                 running = false;
                                 break;
 
                             case ConsoleKey.S:
-                                log.Info("Send request to host.");
+                                Log.Info("Send request to host.");
 
                                 try
                                 {
-                                    log.Info("Got client proxy...");
+                                    Log.Info("Got client proxy...");
                                     var orgUnitGuids2 = WCFControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(32);
 
                                     WCFControllerClient<ISolrController>.ClientProxy.SearchForComponent(orgUnitGuids2.First().EntityId);
                                 }
                                 catch (Exception e)
                                 {
-                                    log.ErrorFormat("Unable to communicate with host: [{0}]", e);
+                                    Log.ErrorFormat("Unable to communicate with host: [{0}]", e);
                                 }
 
                                 break;
 
                             case ConsoleKey.T:
-                                var config = dbManager.CreateOrgUnitConfig(
-                                    string.Empty,
-                                    string.Empty,
-                                    true,
-                                    true,
-                                    1,
-                                    2,
-                                    new DateTime(),
-                                    true);
+                                var OrgUconf = WCFControllerClient<IDBManager>.ClientProxy.CreateOrgUnitConfig("miitsoft.de", "michael@miitsoft.de", true, true, 2, 10, new DateTime(), true);
+                                Log.DebugFormat("Config: {0}", OrgUconf);
 
-                                dbManager.AddEntity(config);
+                                var orgU = WCFControllerClient<IDBManager>.ClientProxy.CreateOrgUnit(32, "Webserver");
+                                orgU.OrgUnitConfig = OrgUconf;
+                                Log.DebugFormat("OrgUnit: {0}", orgU);
 
-                                WCFControllerClient<IScheduler>.ClientProxy.AddOrgUnitConfig(config);
+                                var comp = WCFControllerClient<IDBManager>.ClientProxy.CreateComponent("Apache", orgU);
+                                Log.DebugFormat("Component: {0}", comp);
+
+                                var result = WCFControllerClient<IDBManager>.ClientProxy.CreateResult(comp, "content", "url", "problem");
+                                result.Component = comp;
+                                Log.DebugFormat("Result: {0}", result);
                                 break;
 
                             case ConsoleKey.U:
@@ -133,11 +133,11 @@ namespace HSA.InfoSys.Testing.WCFTesting
                 }
                 catch (QuotaExceededException e)
                 {
-                    log.ErrorFormat("Quota Exceeded: {0}", e);
+                    Log.ErrorFormat("Quota Exceeded: {0}", e);
                 }
                 catch (Exception e)
                 {
-                    log.ErrorFormat("Message: {0}", e);
+                    Log.ErrorFormat("Message: {0}", e);
                 }
 
                 Thread.Sleep(500);
