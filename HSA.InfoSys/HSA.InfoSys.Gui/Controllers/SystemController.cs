@@ -70,7 +70,7 @@ namespace HSA.InfoSys.Gui.Controllers
             string userid = membershipuser.ProviderUserKey.ToString();
             int id = Convert.ToInt32(userid);
 
-            IList<OrgUnit> orgUnits =  cc.GetOrgUnitsByUserID(id).ToList<OrgUnit>();
+            var orgUnits =  cc.GetOrgUnitsByUserID(id).ToList<OrgUnit>();
             
 
             this.ViewData["orgUnits"] = orgUnits;
