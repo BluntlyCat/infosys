@@ -6,6 +6,7 @@
 namespace HSA.InfoSys.Gui.Controllers
 {
     using System;
+    using System.Linq;
     using System.Collections.Generic;
     using System.Web.Mvc;
     using System.Web.Security;
@@ -69,7 +70,7 @@ namespace HSA.InfoSys.Gui.Controllers
             string userid = membershipuser.ProviderUserKey.ToString();
             int id = Convert.ToInt32(userid);
 
-            IList<OrgUnit> orgUnits =  cc.GetOrgUnitsByUserID(id);
+            IList<OrgUnit> orgUnits =  cc.GetOrgUnitsByUserID(id).ToList<OrgUnit>();
             
 
             this.ViewData["orgUnits"] = orgUnits;
@@ -289,7 +290,7 @@ namespace HSA.InfoSys.Gui.Controllers
             string userid = membershipuser.ProviderUserKey.ToString();
             int id = Convert.ToInt32(userid);
 
-            IList<OrgUnit> orgUnits = cc.GetOrgUnitsByUserID(id);
+            var orgUnits = cc.GetOrgUnitsByUserID(id).ToList<OrgUnit>();
 
             OrgUnit delItem = null;
 
