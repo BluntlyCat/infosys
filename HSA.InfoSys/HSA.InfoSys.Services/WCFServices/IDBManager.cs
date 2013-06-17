@@ -100,6 +100,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// Gets the scheduler times.
         /// </summary>
         /// <returns>A list of all OrgUnitConfig objects.</returns>
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
         OrgUnitConfig[] GetOrgUnitConfigurations();
 
         /// <summary>
