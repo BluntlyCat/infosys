@@ -62,6 +62,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             var components = this.dbManager.GetComponentsByOrgUnitId(this.OrgUnitGuid);
 
+            if (components == null)
+            {
+                WCFControllerClient<ISearchRecall>.ClientProxy.Recall(this.OrgUnitGuid);
+                return;
+            }
+
             foreach (var component in components)
             {
                 Log.InfoFormat(Properties.Resources.SOLR_CLIENT_SEARCH_STARTED, component.Name);
@@ -97,7 +103,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                             componentsFinished++;
                         }
 
-                        if (this.componentsFinished == components.Count)
+                        if (this.componentsFinished == components.Length)
                         {
                             WCFControllerClient<ISearchRecall>.ClientProxy.Recall(this.OrgUnitGuid);
                         }

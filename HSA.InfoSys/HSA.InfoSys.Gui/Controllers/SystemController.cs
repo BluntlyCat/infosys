@@ -211,7 +211,7 @@ namespace HSA.InfoSys.Gui.Controllers
             this.ViewData["systemguid"] = systemguid;
             this.ViewData["orgUnitName"] = orgUnit.Name;
 
-            if (components.Count > 0)
+            if (components.Length > 0)
             {
                 this.ViewData["components"] = components;
             }
