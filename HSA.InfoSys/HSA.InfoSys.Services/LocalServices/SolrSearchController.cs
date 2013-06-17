@@ -6,6 +6,7 @@
 namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System;
+    using System.Linq;
     using System.Threading;
     using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
@@ -60,7 +61,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             this.OrgUnitGuid = orgUnitGuid;
 
-            var components = this.dbManager.GetComponentsByOrgUnitId(this.OrgUnitGuid);
+            var components = this.dbManager.GetComponentsByOrgUnitId(this.OrgUnitGuid).ToList<Component>();
 
             if (components == null)
             {

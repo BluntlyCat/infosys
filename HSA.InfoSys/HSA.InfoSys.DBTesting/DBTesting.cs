@@ -6,10 +6,12 @@
 namespace HSA.InfoSys.Testing.DBTesting
 {
     using System;
+    using System.Linq;
     using System.Threading;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
+    using HSA.InfoSys.Common.Entities;
 
     /// <summary>
     /// Implement your testing methods for NHibernate here.
@@ -85,7 +87,7 @@ namespace HSA.InfoSys.Testing.DBTesting
                             break;
 
                         case ConsoleKey.T:
-                            var entities = dbManager.GetOrgUnitsByUserID(32);
+                            var entities = dbManager.GetOrgUnitsByUserID(32).ToList<OrgUnit>();
                             break;
                     }
                 }

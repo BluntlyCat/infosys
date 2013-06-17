@@ -135,7 +135,7 @@ namespace HSA.InfoSys.Gui.Controllers
             var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnit", "OrgUnitConfig")) as OrgUnit;
 
             // get all components by OrgUnitId
-            var components = cc.GetComponentsByOrgUnitId(new Guid(systemguid));
+            var components = cc.GetComponentsByOrgUnitId(new Guid(systemguid)).ToList<Component>();
 
             
             // entities must be deleted in this order because of db dependencies
@@ -206,7 +206,7 @@ namespace HSA.InfoSys.Gui.Controllers
             var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnit")) as OrgUnit;
 
             // get all components by OrgUnitId
-            var components = cc.GetComponentsByOrgUnitId(new Guid(systemguid));
+            var components = cc.GetComponentsByOrgUnitId(new Guid(systemguid)).ToList<Component>();
 
             this.ViewData["navid"] = "mysystems";
             this.ViewData["systemguid"] = systemguid;

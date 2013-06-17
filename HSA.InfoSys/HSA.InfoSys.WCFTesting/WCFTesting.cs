@@ -13,6 +13,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
     using HSA.InfoSys.Common.Services.LocalServices;
     using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
+    using HSA.InfoSys.Common.Entities;
 
     /// <summary>
     /// Implement your testing methods for WCF here.
@@ -71,7 +72,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
 
                                 WCFControllerClient<IDBManager>.ClientProxy.AddEntitys(comp1, comp2, comp3, comp4);*/
 
-                                var orgUnitGuids = WCFControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(32);
+                                var orgUnitGuids = WCFControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(32).ToList<OrgUnit>();
                                 WCFControllerClient<ISolrController>.ClientProxy.SearchForOrgUnit(orgUnitGuids.First().EntityId);
 
                                 break;
@@ -99,7 +100,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
                                 try
                                 {
                                     Log.Info("Got client proxy...");
-                                    var orgUnitGuids2 = WCFControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(32);
+                                    var orgUnitGuids2 = WCFControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(32).ToList<OrgUnit>();
 
                                     WCFControllerClient<ISolrController>.ClientProxy.SearchForComponent(orgUnitGuids2.First().EntityId);
                                 }
@@ -125,13 +126,13 @@ namespace HSA.InfoSys.Testing.WCFTesting
                                 result.Component = comp;
                                 Log.DebugFormat("Result: {0}", result);
 
-                                var comps = WCFControllerClient<IDBManager>.ClientProxy.GetComponentsByOrgUnitId(Guid.Empty);
+                                var comps = WCFControllerClient<IDBManager>.ClientProxy.GetComponentsByOrgUnitId(Guid.Empty).ToList<Component>();
                                 Log.DebugFormat("Components: {0}", comps);
 
-                                var orgUnits = WCFControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(32);
+                                var orgUnits = WCFControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(32).ToList<OrgUnit>();
                                 Log.DebugFormat("OrgUnits: {0}", orgUnits);
 
-                                var configs = WCFControllerClient<IDBManager>.ClientProxy.GetOrgUnitConfigurations();
+                                var configs = WCFControllerClient<IDBManager>.ClientProxy.GetOrgUnitConfigurations().ToList<OrgUnitConfig>();
                                 Log.DebugFormat("Configurations: {0}", configs);
                                 break;
 
