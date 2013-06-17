@@ -124,6 +124,15 @@ namespace HSA.InfoSys.Testing.WCFTesting
                                 var result = WCFControllerClient<IDBManager>.ClientProxy.CreateResult(comp, "content", "url", "problem");
                                 result.Component = comp;
                                 Log.DebugFormat("Result: {0}", result);
+
+                                var comps = WCFControllerClient<IDBManager>.ClientProxy.GetComponentsByOrgUnitId(Guid.Empty);
+                                Log.DebugFormat("Components: {0}", comps);
+
+                                var orgUnits = WCFControllerClient<IDBManager>.ClientProxy.GetOrgUnitsByUserID(32);
+                                Log.DebugFormat("OrgUnits: {0}", orgUnits);
+
+                                var configs = WCFControllerClient<IDBManager>.ClientProxy.GetOrgUnitConfigurations();
+                                Log.DebugFormat("Configurations: {0}", configs);
                                 break;
 
                             case ConsoleKey.U:
