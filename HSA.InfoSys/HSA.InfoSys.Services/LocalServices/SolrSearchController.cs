@@ -104,7 +104,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                             componentsFinished++;
                         }
 
-                        if (this.componentsFinished == components.Length)
+                        if (this.componentsFinished == components.Count)
                         {
                             WCFControllerClient<ISearchRecall>.ClientProxy.Recall(this.OrgUnitGuid);
                         }

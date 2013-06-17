@@ -191,7 +191,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             {
                 var job = this.SetNewJob(config);
 
-                if (job.Active)
+                if (job != null && job.Active)
                 {
                     this.jobs.Add(config.EntityId, job);
                 }
@@ -260,6 +260,10 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 #endif
 
                 this.StartJob(config, job);
+            }
+            else if (config.SchedulerActive)
+            {
+                return this.jobs[config.EntityId];
             }
 
             return job;
