@@ -235,18 +235,18 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <returns>
         /// A list of org units for the user id.
         /// </returns>
-        public IList<OrgUnit> GetOrgUnitsByUserID(int userID)
+        public OrgUnit[] GetOrgUnitsByUserID(int userID)
         {
             using (ISession session = Session)
             using (ITransaction transaction = session.BeginTransaction())
             {
                 var orgUnit = session.QueryOver<OrgUnit>()
                     .Where(x => x.UserId == userID)
-                    .List<OrgUnit>();
+                    .List<OrgUnit>() as List<OrgUnit>;
 
                 Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ORGUNIT_BY_USERID, orgUnit, userID);
 
-                return orgUnit;
+                return orgUnit.ToArray();
             }
         }
 
@@ -257,17 +257,17 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <returns>
         /// A list of components which belongs to the given OrgUnit.
         /// </returns>
-        public IList<Component> GetComponentsByOrgUnitId(Guid orgUnitGuid)
+        public Component[] GetComponentsByOrgUnitId(Guid orgUnitGuid)
         {
             using (ISession session = Session)
             {
                 var components = session.QueryOver<Component>()
                     .Where(x => x.OrgUnit.EntityId == orgUnitGuid)
-                    .List<Component>();
+                    .List<Component>() as List<Component>;
 
                 Log.InfoFormat(Properties.Resources.DBMANAGER_GET_COMPONENT_BY_ORGUNIT_ID, components, orgUnitGuid);
 
-                return components;
+                return components.ToArray();
             }
         }
 
@@ -277,13 +277,13 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <returns>
         /// A list of all scheduler times.
         /// </returns>
-        public IList<OrgUnitConfig> GetOrgUnitConfigurations()
+        public OrgUnitConfig[] GetOrgUnitConfigurations()
         {
             using (ISession session = Session)
             {
-                var configs = session.QueryOver<OrgUnitConfig>().List<OrgUnitConfig>();
+                var configs = session.QueryOver<OrgUnitConfig>().List<OrgUnitConfig>() as List<OrgUnitConfig>;
 
-                return configs;
+                return configs.ToArray();
             }
         }
 

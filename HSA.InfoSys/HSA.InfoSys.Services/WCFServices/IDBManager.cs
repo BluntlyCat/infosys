@@ -83,7 +83,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <returns>A list of org units for the user id.</returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        IList<OrgUnit> GetOrgUnitsByUserID(int userID);
+        OrgUnit[] GetOrgUnitsByUserID(int userID);
 
         /// <summary>
         /// Gets the components by org unit id.
@@ -94,13 +94,13 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        IList<Component> GetComponentsByOrgUnitId(Guid orgUnitGuid);
+        Component[] GetComponentsByOrgUnitId(Guid orgUnitGuid);
 
         /// <summary>
         /// Gets the scheduler times.
         /// </summary>
         /// <returns>A list of all OrgUnitConfig objects.</returns>
-        IList<OrgUnitConfig> GetOrgUnitConfigurations();
+        OrgUnitConfig[] GetOrgUnitConfigurations();
 
         /// <summary>
         /// Creates a component object.
