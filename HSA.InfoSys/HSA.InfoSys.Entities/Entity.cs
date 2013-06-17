@@ -17,7 +17,7 @@ namespace HSA.InfoSys.Common.Entities
     [KnownType(typeof(Component))]
     [KnownType(typeof(Result))]
     [KnownType(typeof(OrgUnit))]
-    [KnownType(typeof(IList<OrgUnit>))]
+    [KnownType(typeof(List<OrgUnit>))]
     [KnownType(typeof(OrgUnitConfig))]
     public abstract class Entity
     {
