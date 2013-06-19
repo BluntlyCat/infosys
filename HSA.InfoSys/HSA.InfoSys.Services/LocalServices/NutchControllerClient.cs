@@ -16,17 +16,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     /// <summary>
     /// The Nutch Manager handles the WebCrawl
     /// </summary>
-    public class NutchManager : INutchManager
+    public class NutchControllerClient
     {
         /// <summary>
         /// The logger for NutchManager.
         /// </summary>
-        private static readonly ILog Log = Logger<string>.GetLogger("NutchManager");
-
-        /// <summary>
-        /// The nutch manager
-        /// </summary>
-        private static INutchManager nutchManager;
+        private static readonly ILog Log = Logger<string>.GetLogger("NutchControllerClient");
 
         /// <summary>
         /// The path to prefix file.
@@ -39,9 +34,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private string homeDir;
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="NutchManager"/> class from being created.
+        /// Prevents a default instance of the <see cref="NutchControllerClient"/> class from being created.
         /// </summary>
-        private NutchManager()
+        public NutchControllerClient()
         {
 #if !MONO
             this.homeDir = Environment.GetEnvironmentVariable("HOMEPATH");
@@ -55,59 +50,18 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Gets the NutchManager and ensures that the configuration
-        /// will be executed only once and that there is only one NutchManager.
-        /// </summary>
-        /// <returns>
-        /// The NutchManager
-        /// </returns>
-        public static INutchManager ManagerFactory
-        {
-            get
-            {
-                if (nutchManager == null)
-                {
-                    Log.Debug(Properties.Resources.NUTCHMANAGER_NO_MANAGER_FOUND);
-                    nutchManager = new NutchManager();
-                }
-
-                return nutchManager;
-            }
-        }
-
-        /// <summary>
-        /// Starts the crawling.
-        /// </summary>
-        /// <param name="userName">Name of the user.</param>
-        /// <param name="depth">The depth.</param>
-        /// <param name="topN">The top N.</param>
-        public void StartCrawl(string userName, int depth, int topN)
-        {
-            this.Start(userName, depth, topN);
-        }
-
-        /// <summary>
         /// Starts the crawling.
         /// </summary>
         /// <param name="userName">Name of the user.</param>
         /// <param name="depth">The depth.</param>
         /// <param name="topN">The top N.</param>
         /// <param name="urls">The URLs.</param>
-        public void StartCrawl(string userName, int depth, int topN, params string[] urls)
-        {
-            this.AddURL(userName, urls);
-            this.Start(userName, depth, topN);
-        }
-
-        /// <summary>
-        /// Starts the crawling.
-        /// </summary>
-        /// <param name="userName">Name of the user.</param>
-        /// <param name="depth">The depth.</param>
-        /// <param name="topN">The top N.</param>
-        public void Start(string userName, int depth, int topN)
+        public Process GetCrawlProcess(string userName, int depth, int topN, params string[] urls)
         {
             Process nutch = new Process();
+
+            this.CreateUserDir(userName);
+            this.AddURL(userName, urls);
 
             var urlPath = string.Format(
                 Properties.Settings.Default.PATH_FORMAT_THREE,
@@ -123,14 +77,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 depth,
                 topN);
 
-            this.CreateUserDir(userName);
-
             nutch.StartInfo.FileName = Properties.Settings.Default.NUTCH_COMMAND;
             nutch.StartInfo.Arguments = crawlRequest;
 
-            nutch.Start();
-
             Log.DebugFormat(Properties.Resources.CRAWL_REQUEST_SENT, crawlRequest);
+
+            return nutch;
         }
 
         /// <summary>
@@ -138,7 +90,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="user">The username.</param>
         /// <param name="urls">The URLs.</param>
-        public void AddURL(string user, params string[] urls)
+        private void AddURL(string user, params string[] urls)
         {
             string userURLPath = string.Format(
                 Properties.Settings.Default.PATH_FORMAT_THREE,

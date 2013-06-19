@@ -39,11 +39,6 @@ namespace HSA.InfoSys.Gui.Controllers
         private static SearchRecall SearchRecall;
 
         /// <summary>
-        /// The search finished
-        /// </summary>
-        private static bool? SearchFinished;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="SystemController"/> class.
         /// </summary>
         public SystemController()
@@ -76,8 +71,6 @@ namespace HSA.InfoSys.Gui.Controllers
             this.ViewData["orgUnits"] = orgUnits;
 
             this.ViewData["navid"] = "mysystems";
-
-            this.ViewData["searchFinished"] = SearchFinished;
 
             return this.View();
         }
@@ -161,8 +154,6 @@ namespace HSA.InfoSys.Gui.Controllers
         public ActionResult RealTimeSearch()
         {
             Guid orgUnitGuid = Guid.Parse(Request.QueryString["sysguid"]);
-            SearchFinished = false;
-            SearchRecall.Searches.Add(orgUnitGuid, false);
 
             //trigger search
             WCFControllerClient<ISolrController>.ClientProxy.SearchForOrgUnit(orgUnitGuid);
@@ -178,11 +169,16 @@ namespace HSA.InfoSys.Gui.Controllers
         /// Occurs when [recall] when all searches finished.
         /// </summary>
         /// <param name="sender">The sender.</param>
-        void SearchRecall_OnRecall(object sender, Guid orgUnitGuid)
+        void SearchRecall_OnRecall(object sender, Guid orgUnitGuid, IList<Result> results)
         {
-            SearchFinished = true;
+            var proxy =  WCFControllerClient<IDBManager>.ClientProxy;
+            var orgUnit = proxy.GetEntity(orgUnitGuid, proxy.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
+            var emails = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(orgUnit.OrgUnitConfig.Emails);
 
-            this.Redirect("Index");
+            foreach (var mail in emails)
+            {
+                Log.DebugFormat("Send mail to {0} for OrgUnit {1}.", mail, orgUnitGuid);
+            }
         }
 
         /// <summary>

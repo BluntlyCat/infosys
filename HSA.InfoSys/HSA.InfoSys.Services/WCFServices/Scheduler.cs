@@ -47,7 +47,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// The Nutch manager.
         /// </summary>
-        private INutchManager nutchManager;
+        private NutchController nutchController;
 
         /// <summary>
         /// The jobs dictionary.
@@ -62,7 +62,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             Log.DebugFormat(Properties.Resources.LOG_INSTANCIATE_NEW_SCHEDULER, this.GetType().Name);
 
             this.dbManager = DBManager.ManagerFactory;
-            this.nutchManager = NutchManager.ManagerFactory;
+            this.nutchController = NutchController.NutchFactory;
+            this.nutchController.OnCrawlFinished += NutchController_OnCrawlFinished;
         }
 
         /// <summary>
@@ -145,11 +146,22 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         {
             var job = sender as Countdown;
             var config = job.Source as OrgUnitConfig;
+
+            var orgUnitGUID = DBManager.Session.QueryOver<OrgUnit>()
+                .Where(u => u.OrgUnitConfig.EntityId == config.EntityId)
+                .SingleOrDefault().EntityId;
+
             var time = this.SetNextSearch(config, job);
 
-            this.nutchManager.StartCrawl("michael", 1, 1);
+            this.nutchController.SetPendingCrawl(orgUnitGUID, "michael", 1, 1);
 
             job.Start(time);
+        }
+
+        public void NutchController_OnCrawlFinished(object sender, Guid orgUnitGUID)
+        {
+            var solrController = new SolrSearchController();
+            solrController.StartSearch(orgUnitGUID, false);
         }
 
         /// <summary>

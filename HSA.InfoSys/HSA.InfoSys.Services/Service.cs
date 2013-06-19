@@ -3,7 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Common.Services.WCFServices
+namespace HSA.InfoSys.Common.Services
 {
     using System.Threading;
     using HSA.InfoSys.Common.Logging;

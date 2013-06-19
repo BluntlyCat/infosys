@@ -27,7 +27,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
-            INutchManager n = NutchManager.ManagerFactory;
+            var controller = NutchController.NutchFactory;
             bool running = true;
            
             Console.WriteLine(string.Empty);
@@ -44,6 +44,10 @@ namespace HSA.InfoSys.Testing.NutchTesting
 
                     switch (keyInfo.Key)
                     {
+                        case ConsoleKey.A:
+                            Log.Info("Add new job and start crawling");
+                            controller.SetPendingCrawl(Guid.Empty, "webmaster1", 10, 10, "http://miitsoft.de", "http://microsoft.com");
+                            break;
                         case ConsoleKey.C:
                             Log.Info("Connect to SSH.");
                             break;
@@ -60,7 +64,6 @@ namespace HSA.InfoSys.Testing.NutchTesting
 
                         case ConsoleKey.S:
                             Log.Info("Send request to nutch.");
-                            n.StartCrawl("michael", 1, 1, "http://www.hs-augsburg.de");
                             break;
                     }
                 }

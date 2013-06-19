@@ -6,9 +6,11 @@
 namespace HSA.InfoSys.Common.Services.WCFServices
 {
     using System;
+    using System.Linq;
     using System.Collections.Generic;
     using System.ServiceModel;
     using System.Threading;
+    using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
     using log4net;
 
@@ -42,14 +44,13 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         private SearchRecall()
         {
-            this.Searches = new Dictionary<Guid, bool>();
         }
 
         /// <summary>
         /// The recall handler indicates that all search requests are finished.
         /// </summary>
         /// <param name="sender">The sender.</param>
-        public delegate void RecallHandler(object sender, Guid orgUnitGuid);
+        public delegate void RecallHandler(object sender, Guid orgUnitGuid, IList<Result> results);
 
         /// <summary>
         /// Occurs when [recall].
@@ -126,28 +127,19 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Gets the searches.
-        /// </summary>
-        /// <value>
-        /// The searches.
-        /// </value>
-        public Dictionary<Guid, bool> Searches { get; private set; }
-
-        /// <summary>
         /// Recalls the GUI when search for an org unit is finished.
         /// </summary>
         /// <param name="orgUnitGUID">The org unit GUID.</param>
-        public void Recall(Guid orgUnitGUID)
+        public void Recall(Guid orgUnitGUID, Result[] results)
         {
-            this.ServiceMutex.WaitOne();
-
             Log.DebugFormat(Properties.Resources.SEARCH_RECALL, orgUnitGUID);
+
+            this.ServiceMutex.WaitOne();
 
             if (this.Running)
             {
                 this.runningSearches--;
-                this.Searches[orgUnitGUID] = true;
-                this.OnRecall(this, orgUnitGUID);
+                this.OnRecall(this, orgUnitGUID, results.ToList<Result>());
             }
 
             this.ServiceMutex.ReleaseMutex();
@@ -158,7 +150,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         public override void StartService()
         {
+            this.ServiceMutex.WaitOne();
             this.runningSearches++;
+            this.ServiceMutex.ReleaseMutex();
 
             Log.DebugFormat(Properties.Resources.SEARCH_RECALL_START_SERVICE, this.RunningSearches);
 
@@ -191,7 +185,11 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         protected override void Run()
         {
-            while (this.Running && this.RunningSearches > 0 && this.Timeout > 0)
+            this.ServiceMutex.WaitOne();
+            var runningSearches = this.RunningSearches;
+            this.ServiceMutex.ReleaseMutex();
+
+            while (this.Running && runningSearches > 0 && this.Timeout > 0)
             {
                 Log.DebugFormat(
                     Properties.Resources.SEARCH_RECALL_THREAD_STATE,
@@ -200,6 +198,11 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                     this.Timeout);
 
                 this.timeout -= 1000;
+
+                this.ServiceMutex.WaitOne();
+                runningSearches = this.RunningSearches;
+                this.ServiceMutex.ReleaseMutex();
+
                 Thread.Sleep(1000);
             }
 

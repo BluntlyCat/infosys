@@ -7,6 +7,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 {
     using System;
     using System.ServiceModel;
+using HSA.InfoSys.Common.Entities;
+    using HSA.InfoSys.Common.NetDataContractSerializer;
 
     /// <summary>
     /// This interface provides only one method
@@ -20,7 +22,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// Recalls the GUI when search for an org unit is finished.
         /// </summary>
         /// <param name="orgUnitGuid">The org unit GUID.</param>
-        [OperationContract]
-        void Recall(Guid orgUnitGuid);
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        void Recall(Guid orgUnitGuid, Result[] results);
     }
 }

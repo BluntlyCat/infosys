@@ -57,15 +57,15 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// Connects this instance.
         /// </summary>
         /// <param name="orgUnitGuid">The org unit GUID.</param>
-        public void StartSearch(Guid orgUnitGuid)
+        public void StartSearch(Guid orgUnitGuid, bool guiCallback = true)
         {
             this.OrgUnitGuid = orgUnitGuid;
 
             var components = this.dbManager.GetComponentsByOrgUnitId(this.OrgUnitGuid).ToList<Component>();
 
-            if (components == null)
+            if (components == null && guiCallback)
             {
-                WCFControllerClient<ISearchRecall>.ClientProxy.Recall(this.OrgUnitGuid);
+                WCFControllerClient<ISearchRecall>.ClientProxy.Recall(this.OrgUnitGuid, new Result[0]);
                 return;
             }
 
@@ -74,6 +74,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 Log.InfoFormat(Properties.Resources.SOLR_CLIENT_SEARCH_STARTED, component.Name);
 
                 var searchClient = new SolrSearchClient();
+
+                SolrResultPot resultPot = new SolrResultPot(component.EntityId);
 
                 ////Here we tell our delegate which method to call.
                 InvokeSolrSearch invokeSearch = new InvokeSolrSearch(searchClient.StartSearch);
@@ -87,7 +89,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                         if (c.IsCompleted)
                         {
-                            var resultPot = searchClient.GetResult();
+                            resultPot = searchClient.GetResult();
 
                             foreach (var result in resultPot.Results)
                             {
@@ -104,9 +106,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                             componentsFinished++;
                         }
 
-                        if (this.componentsFinished == components.Count)
+                        if (this.componentsFinished == components.Count && guiCallback)
                         {
-                            WCFControllerClient<ISearchRecall>.ClientProxy.Recall(this.OrgUnitGuid);
+                            WCFControllerClient<ISearchRecall>.ClientProxy.Recall(
+                                this.OrgUnitGuid,
+                                resultPot.Results.ToArray());
                         }
 
                         dbMutex.ReleaseMutex();
@@ -115,26 +119,5 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 invokeSearch.BeginInvoke(component.Name, component.EntityId, callback, this);
             }
         }
-
-        /// <summary>
-        /// Threads the routine.
-        /// </summary>
-        /// <param name="solrQuery">The solr query.</param>
-        /// <returns>The search result from solr.</returns>
-        /*private void ThreadRoutine(string solrQuery)
-        {
-            string response = string.Empty;
-
-            // Main Loop which is checking, whether there is an message for the server or not
-            while (this.Running && this.SolrSocket.Connected)
-            {
-                // waiting for the server's responde
-                response = this.InvokeSolrQuery(solrQuery);
-
-                Thread.Sleep(100);
-            }
-
-            this.SolrResponse = response;
-        }*/
     }
 }
