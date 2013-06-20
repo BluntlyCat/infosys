@@ -9,9 +9,9 @@ namespace HSA.InfoSys.CrawlerService
     using System.Threading;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services;
-    using log4net;
     using HSA.InfoSys.Common.Services.LocalServices;
     using HSA.InfoSys.Common.Services.WCFServices;
+    using log4net;
 
     /// <summary>
     /// The WebCrawler searches the internet

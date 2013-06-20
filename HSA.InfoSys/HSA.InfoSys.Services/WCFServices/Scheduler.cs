@@ -63,7 +63,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
             this.dbManager = DBManager.ManagerFactory;
             this.nutchController = NutchController.NutchFactory;
-            this.nutchController.OnCrawlFinished += NutchController_OnCrawlFinished;
+            this.nutchController.OnCrawlFinished += this.NutchController_OnCrawlFinished;
         }
 
         /// <summary>
@@ -158,6 +158,11 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             job.Start(time);
         }
 
+        /// <summary>
+        /// Occurs when [on crawl finished].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="orgUnitGUID">The org unit GUID.</param>
         public void NutchController_OnCrawlFinished(object sender, Guid orgUnitGUID)
         {
             var solrController = new SolrSearchController();

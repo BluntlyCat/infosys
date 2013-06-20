@@ -113,7 +113,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                             try
                             {
                                 var proxy = WCFControllerClient<ISearchRecall>.ClientProxy;
-
                                 proxy.Recall(this.OrgUnitGuid, resultPot.Results.ToArray());
                             }
                             catch (CommunicationException ce)

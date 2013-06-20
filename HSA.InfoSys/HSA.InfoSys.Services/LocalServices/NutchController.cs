@@ -8,9 +8,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Threading;
     using HSA.InfoSys.Common.Logging;
     using log4net;
-    using System.Threading;
 
     /// <summary>
     /// This class invokes the crawl and handles all pending crawls.
@@ -55,6 +55,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// Our delegate for invoking an async callback.
         /// </summary>
         /// <param name="sender">The sender.</param>
+        /// <param name="orgUnitGUID">The org unit GUID.</param>
         public delegate void CrawlFinishedHandler(object sender, Guid orgUnitGUID);
 
         /// <summary>
@@ -84,10 +85,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Sets the pending crawl.
         /// </summary>
+        /// <param name="orgUnitGUID">The org unit GUID.</param>
         /// <param name="userName">Name of the user.</param>
         /// <param name="depth">The depth.</param>
         /// <param name="topN">The top N.</param>
-        /// <param name="urls">The urls.</param>
+        /// <param name="urls">The URLs.</param>
         public void SetPendingCrawl(Guid orgUnitGUID, string userName, int depth, int topN, params string[] urls)
         {
             this.ServiceMutex.WaitOne();

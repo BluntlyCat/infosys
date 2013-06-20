@@ -26,7 +26,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private static readonly ILog Log = Logger<string>.GetLogger("CrawlControllerHost");
 
         /// <summary>
-        /// The service host for communication between server and gui.
+        /// The service host for communication between server and GUI.
         /// </summary>
         private static Dictionary<Service, ServiceHost> hosts = new Dictionary<Service, ServiceHost>();
 
@@ -47,57 +47,65 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             }
             else
             {
-                var binding = new NetTcpBinding();
-                X509Certificate2 certificate;
+                try
+                {
+                    var binding = new NetTcpBinding();
+                    X509Certificate2 certificate;
 
-                var dir = System.Environment.CurrentDirectory;
+                    var dir = System.Environment.CurrentDirectory;
 
 #if !MONO
-                certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_DOTNET, "Aes2xe1baetei8Y");
+                    certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_DOTNET, "Aes2xe1baetei8Y");
 #else
-                certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_MONO, "Aes2xe1baetei8Y");
+                    certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_MONO, "Aes2xe1baetei8Y");
 #endif
 
-                var netTcpAddress = Addresses.GetNetTcpAddress(typeof(IT));
-                var httpAddress = Addresses.GetHttpAddress(typeof(IT));
+                    var netTcpAddress = Addresses.GetNetTcpAddress(typeof(IT));
+                    var httpAddress = Addresses.GetHttpAddress(typeof(IT));
 
-                var host = new ServiceHost(instance, new Uri(netTcpAddress));
+                    var host = new ServiceHost(instance, new Uri(netTcpAddress));
 
-                var quotas = new System.Xml.XmlDictionaryReaderQuotas();
-                quotas.MaxBytesPerRead = 1024 * 1024;
-                quotas.MaxArrayLength = 4096;
-                quotas.MaxStringContentLength = 1024 * 1024;
+                    var quotas = new System.Xml.XmlDictionaryReaderQuotas();
+                    quotas.MaxBytesPerRead = 1024 * 1024;
+                    quotas.MaxArrayLength = 4096;
+                    quotas.MaxStringContentLength = 1024 * 1024;
 
-                binding.Security.Mode = SecurityMode.Transport;
-                binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
-                binding.ReaderQuotas = quotas;
+                    binding.Security.Mode = SecurityMode.Transport;
+                    binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
+                    binding.ReaderQuotas = quotas;
+                    binding.MaxReceivedMessageSize = 1024 * 1024;
 
-                host.AddServiceEndpoint(
-                    typeof(IT),
-                    binding,
-                    netTcpAddress);
+                    host.AddServiceEndpoint(
+                        typeof(IT),
+                        binding,
+                        netTcpAddress);
 
-                host.Credentials.ServiceCertificate.Certificate = certificate;
+                    host.Credentials.ServiceCertificate.Certificate = certificate;
 
-                var metadataBevavior = host.Description.Behaviors.Find<ServiceMetadataBehavior>();
+                    var metadataBevavior = host.Description.Behaviors.Find<ServiceMetadataBehavior>();
 
-                if (metadataBevavior == null)
-                {
-                    metadataBevavior = new ServiceMetadataBehavior();
-                    host.Description.Behaviors.Add(metadataBevavior);
+                    if (metadataBevavior == null)
+                    {
+                        metadataBevavior = new ServiceMetadataBehavior();
+                        host.Description.Behaviors.Add(metadataBevavior);
+                    }
+
+                    var mexBinding = MetadataExchangeBindings.CreateMexHttpBinding();
+                    host.AddServiceEndpoint(
+                        typeof(IMetadataExchange),
+                        mexBinding,
+                        httpAddress);
+
+                    host.Open();
+
+                    hosts.Add(instance, host);
+
+                    Log.InfoFormat(Properties.Resources.WCF_CONTROLLER_WCF_HOST_OPENED, typeof(T).Name);
                 }
-
-                var mexBinding = MetadataExchangeBindings.CreateMexHttpBinding();
-                host.AddServiceEndpoint(
-                    typeof(IMetadataExchange),
-                    mexBinding,
-                    httpAddress);
-
-                host.Open();
-
-                hosts.Add(instance, host);
-
-                Log.InfoFormat(Properties.Resources.WCF_CONTROLLER_WCF_HOST_OPENED, typeof(T).Name);
+                catch (Exception e)
+                {
+                    Log.ErrorFormat("Common error: {0}", e);
+                }
 
                 return instance;
             }

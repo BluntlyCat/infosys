@@ -6,8 +6,8 @@
 namespace HSA.InfoSys.Common.Services.WCFServices
 {
     using System;
-    using System.Linq;
     using System.Collections.Generic;
+    using System.Linq;
     using System.ServiceModel;
     using System.Threading;
     using HSA.InfoSys.Common.Entities;
@@ -22,6 +22,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class SearchRecall : Service, ISearchRecall
     {
+        /// <summary>
+        /// The logger of SearchRecall
+        /// </summary>
         private static readonly ILog Log = Logger<string>.GetLogger("SearchRecall");
 
         /// <summary>
@@ -50,6 +53,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// The recall handler indicates that all search requests are finished.
         /// </summary>
         /// <param name="sender">The sender.</param>
+        /// <param name="orgUnitGuid">The org unit GUID.</param>
+        /// <param name="results">The results.</param>
         public delegate void RecallHandler(object sender, Guid orgUnitGuid, IList<Result> results);
 
         /// <summary>
@@ -130,6 +135,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// Recalls the GUI when search for an org unit is finished.
         /// </summary>
         /// <param name="orgUnitGUID">The org unit GUID.</param>
+        /// <param name="results">The results.</param>
         public void Recall(Guid orgUnitGUID, Result[] results)
         {
             Log.DebugFormat(Properties.Resources.SEARCH_RECALL, orgUnitGUID);

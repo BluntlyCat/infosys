@@ -6,16 +6,17 @@
 namespace HSA.InfoSys.Gui.Controllers
 {
     using System;
-    using System.Linq;
     using System.Collections.Generic;
+    using System.Linq;
+    using System.ServiceModel;
     using System.Web.Mvc;
     using System.Web.Security;
     using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
+    using HSA.InfoSys.Common.Services.LocalServices;
     using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
     using Newtonsoft.Json;
-    using HSA.InfoSys.Common.Services.LocalServices;
 
     /// <summary>
     /// The controller for the system.
@@ -31,24 +32,24 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <summary>
         /// The controller host for WCF service.
         /// </summary>
-        private static WCFControllerHost ControllerHost;
+        private static WCFControllerHost controllerHost;
 
         /// <summary>
         /// The search recall.
         /// </summary>
-        private static SearchRecall SearchRecall;
+        private static SearchRecall searchRecall;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SystemController"/> class.
         /// </summary>
         public SystemController()
         {
-            if (ControllerHost == null && SearchRecall == null)
+            if (controllerHost == null && searchRecall == null)
             {
                 Addresses.Initialize();
-                ControllerHost = new WCFControllerHost();
-                SearchRecall = ControllerHost.OpenWCFHost<SearchRecall, ISearchRecall>(SearchRecall.SearchRecallFactory);
-                SearchRecall.OnRecall += new SearchRecall.RecallHandler(SearchRecall_OnRecall);
+                controllerHost = new WCFControllerHost();
+                searchRecall = controllerHost.OpenWCFHost<SearchRecall, ISearchRecall>(SearchRecall.SearchRecallFactory);
+                searchRecall.OnRecall += new SearchRecall.RecallHandler(this.SearchRecall_OnRecall);
             }
         }
  
@@ -59,18 +60,31 @@ namespace HSA.InfoSys.Gui.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            var cc = WCFControllerClient<IDBManager>.ClientProxy;
-            // get id of current logged-in user
-            MembershipUser membershipuser = Membership.GetUser();
-            string userid = membershipuser.ProviderUserKey.ToString();
-            int id = Convert.ToInt32(userid);
+            try
+            {
+                var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
-            var orgUnits =  cc.GetOrgUnitsByUserID(id).ToList<OrgUnit>();
-            
+                // get id of current logged-in user
+                MembershipUser membershipuser = Membership.GetUser();
 
-            this.ViewData["orgUnits"] = orgUnits;
+                string userid = membershipuser.ProviderUserKey.ToString();
 
-            this.ViewData["navid"] = "mysystems";
+                int id = Convert.ToInt32(userid);
+
+                var orgUnits = cc.GetOrgUnitsByUserID(id).ToList<OrgUnit>();
+
+                this.ViewData["orgUnits"] = orgUnits;
+
+                this.ViewData["navid"] = "mysystems";
+            }
+            catch (CommunicationException ce)
+            {
+                Log.ErrorFormat("Communication error: {0}", ce);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat("Common error: {0}", e);
+            }
 
             return this.View();
         }
@@ -78,34 +92,45 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <summary>
         /// Is Called when a new OrgUnit was created
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns to the defined action.</returns>
         [Authorize]
         [HttpPost]
         public ActionResult IndexSubmit()
         {
-            // get name of the new system
-            string newsystem = Request["newsystem"];
+            try
+            {
+                // get name of the new system
+                string orgUnitName = Request["newsystem"];
 
-            // init
-            var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                // init
+                var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
-            // log
-            Log.Info("add new system");
+                // log
+                Log.Info("add new system");
 
-            // get id of current logged-in user
-            MembershipUser membershipuser = Membership.GetUser();
-            string userid = membershipuser.ProviderUserKey.ToString();
-            int id = Convert.ToInt32(userid);
+                // get id of current logged-in user
+                MembershipUser membershipuser = Membership.GetUser();
+                string userid = membershipuser.ProviderUserKey.ToString();
+                int id = Convert.ToInt32(userid);
 
-            // create SystemConfig
-            var systemConfig = cc.CreateOrgUnitConfig(null, null, false, false, 1, 12, new DateTime(), false);
+                // create SystemConfig
+                var orgUnitConfig = cc.CreateOrgUnitConfig(null, null, false, false, 1, 12, new DateTime(), false);
 
-            // create System
-            var system = cc.CreateOrgUnit(id, newsystem);
-            system.OrgUnitConfig = systemConfig;
+                // create System
+                var orgUnit = cc.CreateOrgUnit(id, orgUnitName);
+                orgUnit.OrgUnitConfig = orgUnitConfig;
 
-            // save to db
-            cc.AddEntity(system);
+                // save to db
+                cc.AddEntity(orgUnit);
+            }
+            catch (CommunicationException ce)
+            {
+                Log.ErrorFormat("Communication error: {0}", ce);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat("Common error: {0}", e);
+            }
 
             return this.RedirectToAction("Index", "System");
         }
@@ -113,34 +138,44 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <summary>
         /// Deletes the system.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns to the defined action.</returns>
         [Authorize]
         [HttpGet]
-        public ActionResult DeleteSystem()
+        public ActionResult DeleteOrgUnit()
         {
-            // get systemguid from GET-Request
-            string systemguid = Request.QueryString["sysguid"];
-
-            // init
-            var cc = WCFControllerClient<IDBManager>.ClientProxy;
-
-            //get orgUnit
-            var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnit", "OrgUnitConfig")) as OrgUnit;
-
-            // get all components by OrgUnitId
-            var components = cc.GetComponentsByOrgUnitId(new Guid(systemguid)).ToList<Component>();
-
-            
-            // entities must be deleted in this order because of db dependencies
-            // delete all components and their results 
-            foreach (Component comp in components)
+            try
             {
-                cc.DeleteEntity(comp);
-            }
+                // get systemguid from GET-Request
+                Guid orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
-            //delete OrgUnit and orgUnitConfig
-            cc.DeleteEntity(orgUnit);
-            cc.DeleteEntity(orgUnit.OrgUnitConfig);
+                // init
+                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+
+                // get orgUnit
+                var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnit", "OrgUnitConfig")) as OrgUnit;
+
+                // get all components by OrgUnitId
+                var components = cc.GetComponentsByOrgUnitId(orgUnitGUID).ToList<Component>();
+
+                // entities must be deleted in this order because of db dependencies
+                // delete all components and their results 
+                foreach (Component comp in components)
+                {
+                    cc.DeleteEntity(comp);
+                }
+
+                // delete OrgUnit and orgUnitConfig
+                cc.DeleteEntity(orgUnit);
+                cc.DeleteEntity(orgUnit.OrgUnitConfig);
+            }
+            catch (CommunicationException ce)
+            {
+                Log.ErrorFormat("Communication error: {0}", ce);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat("Common error: {0}", e);
+            }
 
             return this.RedirectToAction("Index", "System");
         }
@@ -148,200 +183,275 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <summary>
         /// starts the real time search
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns to the defined action.</returns>
         [Authorize]
         [HttpGet]
         public ActionResult RealTimeSearch()
         {
-            Guid orgUnitGuid = Guid.Parse(Request.QueryString["sysguid"]);
+            // trigger search
+            try
+            {
+                Guid orgUnitGuid = Guid.Parse(Request.QueryString["sysguid"]);
+                WCFControllerClient<ISolrController>.ClientProxy.SearchForOrgUnit(orgUnitGuid);
+            }
+            catch (CommunicationException ce)
+            {
+                Log.ErrorFormat("Communication error: {0}", ce);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat("Common error: {0}", e);
+            }
 
-            //trigger search
-            WCFControllerClient<ISolrController>.ClientProxy.SearchForOrgUnit(orgUnitGuid);
-
-            //start thread which is watching the list of searches
-            SearchRecall.StartService();
+            // start thread which is watching the list of searches
+            searchRecall.StartService();
 
             return this.RedirectToAction("Index", "System");
         }
-
 
         /// <summary>
         /// Occurs when [recall] when all searches finished.
         /// </summary>
         /// <param name="sender">The sender.</param>
-        void SearchRecall_OnRecall(object sender, Guid orgUnitGuid, IList<Result> results)
+        /// <param name="orgUnitGuid">The org unit GUID.</param>
+        /// <param name="results">The results.</param>
+        public void SearchRecall_OnRecall(object sender, Guid orgUnitGuid, IList<Result> results)
         {
-            var proxy =  WCFControllerClient<IDBManager>.ClientProxy;
-            var orgUnit = proxy.GetEntity(orgUnitGuid, proxy.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
-            var emails = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(orgUnit.OrgUnitConfig.Emails);
-
-            foreach (var mail in emails)
+            try
             {
-                Log.DebugFormat("Send mail to {0} for OrgUnit {1}.", mail, orgUnitGuid);
+                var proxy = WCFControllerClient<IDBManager>.ClientProxy;
+                var orgUnit = proxy.GetEntity(orgUnitGuid, proxy.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
+
+#warning Emails können null sein? Die OrgUnitConfig wird ja von einem Benutzer angelegt, dessen Email Adresse im System hinterlegt ist...
+                if (orgUnit.OrgUnitConfig.Emails != null)
+                {
+                    var emails = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(orgUnit.OrgUnitConfig.Emails);
+
+                    foreach (var mail in emails)
+                    {
+                        Log.DebugFormat("Send mail to {0} for OrgUnit {1}.", mail, orgUnitGuid);
+                    }
+                }
+            }
+            catch (CommunicationException ce)
+            {
+                Log.ErrorFormat("Communication error: {0}", ce);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat("Common error: {0}", e);
             }
         }
 
         /// <summary>
         /// Called when page components is loading.
         /// </summary>
-        /// <param name="systemGUID">The systemGUID.</param>
-        /// <returns>
-        /// The result of this action.
-        /// </returns>
+        /// <returns>Returns to this view.</returns>
         [Authorize]
         [HttpGet]
         public ActionResult Components()
         {
-            // get systemguid from GET-Request
-            string systemguid = Request.QueryString["sysguid"];
-
-            // init
-            var cc = WCFControllerClient<IDBManager>.ClientProxy;
-
-            //get OrgUnit
-            var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnit")) as OrgUnit;
-
-            // get all components by OrgUnitId
-            var components = cc.GetComponentsByOrgUnitId(new Guid(systemguid)).ToList<Component>();
-
-            this.ViewData["navid"] = "mysystems";
-            this.ViewData["systemguid"] = systemguid;
-            this.ViewData["orgUnitName"] = orgUnit.Name;
-
-            if (components.Count > 0)
+            try
             {
-                this.ViewData["components"] = components;
+                // get systemguid from GET-Request
+                Guid componentGUID = Guid.Parse(Request.QueryString["sysguid"]);
+
+                // init
+                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+
+                // get OrgUnit
+                var orgUnit = cc.GetEntity(componentGUID, cc.LoadThisEntities("OrgUnit")) as OrgUnit;
+
+                // get all components by OrgUnitId
+                var components = cc.GetComponentsByOrgUnitId(componentGUID).ToList<Component>();
+
+                this.ViewData["navid"] = "mysystems";
+                this.ViewData["systemguid"] = componentGUID;
+                this.ViewData["orgUnitName"] = orgUnit.Name;
+
+                if (components.Count > 0)
+                {
+                    this.ViewData["components"] = components;
+                }
+            }
+            catch (CommunicationException ce)
+            {
+                Log.ErrorFormat("Communication error: {0}", ce);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat("Common error: {0}", e);
             }
 
             return this.View();
         }
 
+        /// <summary>
+        /// Submits the component.
+        /// </summary>
+        /// <returns>Redirect to the defined URL.</returns>
         [Authorize]
         [HttpPost]
-        public ActionResult ComponentsSubmit()
+        public ActionResult SubmitComponent()
         {
             // get systemguid from GET-Request
-            string systemguid = Request.QueryString["sysguid"];
+            Guid componentGUID = Guid.Empty;
 
-            // get POST data from form
-            string component = Request["components"];
+            try
+            {
+                componentGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
-            // init
-            var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                // get POST data from form
+                string component = Request["components"];
 
-            // get orgUnit by id
-            var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnit")) as OrgUnit;
-            
-            // log
-            Log.Info("add new component");
+                // init
+                var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
-            // save component to DB
-            cc.AddEntity(cc.CreateComponent(component, orgUnit));
+                // get orgUnit by id
+                var orgUnit = cc.GetEntity(componentGUID, cc.LoadThisEntities("OrgUnit")) as OrgUnit;
 
-            return this.Redirect("/System/Components?sysguid=" + systemguid);
+                // log
+                Log.Info("add new component");
 
+                // save component to DB
+                cc.AddEntity(cc.CreateComponent(component, orgUnit));
+            }
+            catch (CommunicationException ce)
+            {
+                Log.ErrorFormat("Communication error: {0}", ce);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat("Common error: {0}", e);
+            }
+
+            return this.Redirect("/System/Components?sysguid=" + componentGUID);
         }
 
+        /// <summary>
+        /// Deletes the component.
+        /// </summary>
+        /// <returns>Redirect to the defined URL.</returns>
         [Authorize]
         [HttpGet]
         public ActionResult DeleteComponent()
         {
-            // get systemguid from GET-Request
-            string systemguid = Request.QueryString["sysguid"];
+            Guid componentGUID = Guid.Empty;
 
-            // get compid from GET-Request
-            string compid = Request.QueryString["compid"];
+            try
+            {
+                // get systemguid from GET-Request
+                componentGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
-            // init
-            var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                // get compid from GET-Request
+                string compid = Request.QueryString["compid"];
 
-            // get component by id
-            var component = cc.GetEntity(new Guid(compid), cc.LoadThisEntities("Component"));
-            
-            // delete component
-            cc.DeleteEntity(component);
+                // init
+                var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
-            return this.Redirect("/System/Components?sysguid=" + systemguid);
+                // get component by id
+                var component = cc.GetEntity(new Guid(compid), cc.LoadThisEntities("Component"));
+
+                // delete component
+                cc.DeleteEntity(component);
+            }
+            catch (CommunicationException ce)
+            {
+                Log.ErrorFormat("Communication error: {0}", ce);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat("Common error: {0}", e);
+            }
+
+            return this.Redirect("/System/Components?sysguid=" + componentGUID);
         }
 
         /// <summary>
         /// Called when page search is loading.
         /// </summary>
-        /// <param name="systemGUID">The systemGUID.</param>
         /// <returns>
-        /// The result of this action.
+        /// Returns to this view.
         /// </returns>
         [Authorize]
         [HttpGet]
         public ActionResult SearchConfig()
         {
-            // get systemguid from GET-Request
-            string systemguid = Request.QueryString["sysguid"];
-
-            // init
-            var cc = WCFControllerClient<IDBManager>.ClientProxy;
-
-            // get id of current logged-in user
-            MembershipUser membershipuser = Membership.GetUser();
-            string userid = membershipuser.ProviderUserKey.ToString();
-            int id = Convert.ToInt32(userid);
-
-            var orgUnits = cc.GetOrgUnitsByUserID(id).ToList<OrgUnit>();
-
-            OrgUnit delItem = null;
-
-            foreach (var item in orgUnits)
+            try
             {
-                if (item.EntityId == new Guid(systemguid))
+                // get systemguid from GET-Request
+                Guid componentGUID = Guid.Parse(Request.QueryString["sysguid"]);
+
+                // init
+                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+
+                // get id of current logged-in user
+                MembershipUser membershipuser = Membership.GetUser();
+                string userid = membershipuser.ProviderUserKey.ToString();
+                int id = Convert.ToInt32(userid);
+
+                var orgUnits = cc.GetOrgUnitsByUserID(id).ToList<OrgUnit>();
+
+                OrgUnit delItem = null;
+
+                foreach (var item in orgUnits)
                 {
-                     delItem = item;
+                    if (item.EntityId == componentGUID)
+                    {
+                        delItem = item;
+                    }
                 }
+
+                orgUnits.Remove(delItem);
+                this.ViewData["orgUnits"] = orgUnits;
+
+                // get SystemConfig, OrgUnitConfig
+                var orgUnit = cc.GetEntity(componentGUID, cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
+                var config = orgUnit.OrgUnitConfig;
+
+                // set all config data for view
+                this.ViewData["schedulerActive"] = config.SchedulerActive;
+                this.ViewData["emailActive"] = config.EmailActive;
+                this.ViewData["urlActive"] = config.URLActive;
+
+                this.ViewData["sc_days"] = config.Days;
+                this.ViewData["sc_hours"] = config.Time;
+
+                if (!string.IsNullOrEmpty(config.Emails))
+                {
+                    this.ViewData["emails"] = JsonConvert.DeserializeObject<string[]>(config.Emails);
+                }
+                else
+                {
+                    this.ViewData["emails"] = new string[0];
+                }
+
+                if (!string.IsNullOrEmpty(config.URLS))
+                {
+                    this.ViewData["urls"] = JsonConvert.DeserializeObject<string[]>(config.URLS);
+                }
+                else
+                {
+                    this.ViewData["urls"] = new string[0];
+                }
+
+                //// MembershipUser user = Membership.GetUser();
+                //// this.ViewData["useremail"] = user.Email;
+
+                this.ViewData["navid"] = "mysystems";
+                this.ViewData["systemguid"] = componentGUID;
             }
-
-            orgUnits.Remove(delItem);
-            this.ViewData["orgUnits"] = orgUnits;
-
-
-            // get SystemConfig, OrgUnitConfig
-            var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
-            var config = orgUnit.OrgUnitConfig;
-
-            // set all config data for view
-            this.ViewData["schedulerActive"] = config.SchedulerActive;
-            this.ViewData["emailActive"] = config.EmailActive;
-            this.ViewData["urlActive"] = config.URLActive;
-
-            this.ViewData["sc_days"] = config.Days;
-            this.ViewData["sc_hours"] = config.Time;
-
-            if (!String.IsNullOrEmpty(config.Emails))
+            catch (CommunicationException ce)
             {
-                this.ViewData["emails"] = JsonConvert.DeserializeObject<string[]>(config.Emails);
+                Log.ErrorFormat("Communication error: {0}", ce);
             }
-            else
+            catch (Exception e)
             {
-                this.ViewData["emails"] = new string[0];
+                Log.ErrorFormat("Common error: {0}", e);
             }
-
-            if (!String.IsNullOrEmpty(config.URLS))
-            {
-                this.ViewData["urls"] = JsonConvert.DeserializeObject<string[]>(config.URLS);
-            } 
-            else 
-            {
-                this.ViewData["urls"] = new string[0];
-            }
-            
-
-            //MembershipUser user = Membership.GetUser();
-            //this.ViewData["useremail"] = user.Email;
-
-            this.ViewData["navid"] = "mysystems";
-            this.ViewData["systemguid"] = systemguid;
 
             return this.View();
         }
-
 
         /// <summary>
         /// Called on submitting the config search.
@@ -351,141 +461,183 @@ namespace HSA.InfoSys.Gui.Controllers
         [HttpPost]
         public ActionResult SearchConfigSubmit()
         {
-            // get data from GET-Request
-            string systemguid = Request.QueryString["sysguid"];
+            Guid componentGUID = Guid.Empty;
 
-            // init
-            var cc = WCFControllerClient<IDBManager>.ClientProxy;
-
-            // get SystemConfig, OrgUnitConfig
-            var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
-            var config = orgUnit.OrgUnitConfig;
-
-            // set schedulerOn, days, time
-            if (Request["schedulerOn"] == "on")
+            try
             {
-                string sc_days = Request["sc_days"];
-                string sc_time = Request["sc_time"];
+                // get data from GET-Request
+                componentGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
-                config.SchedulerActive = true;
-                config.Days = Convert.ToInt32(sc_days);
-                config.Time = Convert.ToInt32(sc_time);
+                // init
+                var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
-                //TODO: vergleich der zeiten
+                // get SystemConfig, OrgUnitConfig
+                var orgUnit = cc.GetEntity(componentGUID, cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
+                var config = orgUnit.OrgUnitConfig;
+
+                // set schedulerOn, days, time
+                if (this.Request["schedulerOn"] == "on")
+                {
+                    string sc_days = Request["sc_days"];
+                    string sc_time = Request["sc_time"];
+
+                    config.SchedulerActive = true;
+                    config.Days = Convert.ToInt32(sc_days);
+                    config.Time = Convert.ToInt32(sc_time);
+
+                    // TODO: vergleich der zeiten
+                }
+                else
+                {
+                    config.SchedulerActive = false;
+                }
+
+                // set Emails
+                if (!string.IsNullOrEmpty(this.Request["emails[]"]))
+                {
+                    string[] emails = Request["emails[]"].Split(',');
+                    config.Emails = JsonConvert.SerializeObject(emails);
+                }
+                else
+                {
+                    config.Emails = null;
+                }
+
+                // set emailsOn
+                if (this.Request["emailsOn"] == "on")
+                {
+                    config.EmailActive = true;
+                }
+                else
+                {
+                    config.EmailActive = false;
+                }
+
+                // set Websites
+                if (!string.IsNullOrEmpty(this.Request["websites[]"]))
+                {
+                    string[] websites = Request["websites[]"].Split(',');
+                    config.URLS = JsonConvert.SerializeObject(websites);
+                }
+                else
+                {
+                    config.URLS = null;
+                }
+
+                // set websitesOn
+                if (this.Request["websitesOn"] == "on")
+                {
+                    config.URLActive = true;
+                }
+                else
+                {
+                    config.URLActive = false;
+                }
+
+                // save to db
+                cc.UpdateEntity(config);
             }
-            else
+            catch (CommunicationException ce)
             {
-                config.SchedulerActive = false;
+                Log.ErrorFormat("Communication error: {0}", ce);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat("Common error: {0}", e);
             }
 
-            // set Emails
-            if (!String.IsNullOrEmpty(Request["emails[]"]))
-            {
-                string[] emails = Request["emails[]"].Split(',');
-                config.Emails = JsonConvert.SerializeObject(emails);
-            }
-            else
-            {
-                config.Emails = null;
-            }
-
-            // set emailsOn
-            if (Request["emailsOn"] == "on")
-            {
-                config.EmailActive = true;
-            }
-            else
-            {
-                config.EmailActive = false;
-            }
-
-            // set Websites
-            if (!String.IsNullOrEmpty(Request["websites[]"]))
-            {
-                string[] websites = Request["websites[]"].Split(',');
-                config.URLS = JsonConvert.SerializeObject(websites);
-            }
-            else
-            {
-                config.URLS = null;
-            }
-
-            // set websitesOn
-            if (Request["websitesOn"] == "on")
-            {
-                config.URLActive = true;
-            }
-            else
-            {
-                config.URLActive = false;
-            }
-
-            //save to db
-            cc.UpdateEntity(config);
-
-            return this.Redirect("/System/SearchConfig?sysguid=" + systemguid);
+            return this.Redirect("/System/SearchConfig?sysguid=" + componentGUID);
         }
 
-
+        /// <summary>
+        /// Loads the config.
+        /// </summary>
+        /// <returns>Redirect to the defined URL.</returns>
         [Authorize]
         [HttpPost]
         public ActionResult LoadConfig()
         {
             // get data from GET-Request
-            string systemguid = Request.QueryString["sysguid"];
+            Guid componentGUID = Guid.Empty;
 
-            // get data from GET-Request
-            string loadedConfigId = Request["orgUnitConfigId"];
+            try
+            {
+                componentGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
-            // init
-            var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                // get data from GET-Request
+                string loadedConfigId = Request["orgUnitConfigId"];
 
-            //get config from other orgUnit
-            var loadedConfig = cc.GetEntity(new Guid(loadedConfigId), cc.LoadThisEntities("OrgUnitConfig")) as OrgUnitConfig;
+                // init
+                var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
-            // get SystemConfig, OrgUnitConfig
-            var orgUnit = cc.GetEntity(new Guid(systemguid), cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
-            var config = orgUnit.OrgUnitConfig;
+                // get config from other orgUnit
+                var loadedConfig = cc.GetEntity(new Guid(loadedConfigId), cc.LoadThisEntities("OrgUnitConfig")) as OrgUnitConfig;
 
-            // copy orgUnitConfig data 
-            config.EmailActive = loadedConfig.EmailActive;
-            config.URLActive = loadedConfig.URLActive;
-            config.SchedulerActive = loadedConfig.SchedulerActive;
-            config.Days = loadedConfig.Days;
-            config.Time = loadedConfig.Time;
-            config.Emails = loadedConfig.Emails;
-            config.URLS = loadedConfig.URLS;
-            
-            cc.UpdateEntity(config);
+                // get SystemConfig, OrgUnitConfig
+                var orgUnit = cc.GetEntity(componentGUID, cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
+                var config = orgUnit.OrgUnitConfig;
 
+                // copy orgUnitConfig data 
+                config.EmailActive = loadedConfig.EmailActive;
+                config.URLActive = loadedConfig.URLActive;
+                config.SchedulerActive = loadedConfig.SchedulerActive;
+                config.Days = loadedConfig.Days;
+                config.Time = loadedConfig.Time;
+                config.Emails = loadedConfig.Emails;
+                config.URLS = loadedConfig.URLS;
 
-            return this.Redirect("/System/SearchConfig?sysguid=" + systemguid);
+                cc.UpdateEntity(config);
+            }
+            catch (CommunicationException ce)
+            {
+                Log.ErrorFormat("Communication error: {0}", ce);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat("Common error: {0}", e);
+            }
+
+            return this.Redirect("/System/SearchConfig?sysguid=" + componentGUID);
         }
 
+        /// <summary>
+        /// Shows the results.
+        /// </summary>
+        /// <returns>Returns to this view.</returns>
         [Authorize]
         [HttpGet]
-        public ActionResult Results()
+        public ActionResult ShowResults()
         {
-            /*
-            // get data from GET-Request
-            string orgUnitGuid = Request.QueryString["sysguid"];
-
-            // init
-            var cc = WCFControllerClient<IDBManager>.ClientProxy;
-            
-            // get all components by OrgUnitId
-            var components = cc.GetComponentsByOrgUnitId(new Guid(orgUnitGuid)).ToList<Component>();
-
-            foreach (var item in components)
+            try
             {
-                //cc.item.EntityId
-            }
-             * */
+                /*
+                // get data from GET-Request
+                var orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
-            this.ViewData["navid"] = "mysystems";
+                // init
+                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+
+                // get all components by OrgUnitId
+                var components = cc.GetComponentsByOrgUnitId(orgUnitGUID).ToList<Component>();
+
+                foreach (var item in components)
+                {
+                    //cc.item.EntityId
+                }
+
+                this.ViewData["navid"] = "mysystems";
+                */
+            }
+            catch (CommunicationException ce)
+            {
+                Log.ErrorFormat("Communication error: {0}", ce);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat("Common error: {0}", e);
+            }
 
             return this.View();
         }
     }
 }
-

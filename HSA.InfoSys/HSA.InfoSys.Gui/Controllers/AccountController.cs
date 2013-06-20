@@ -272,18 +272,17 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <summary>
         /// returns the user control view
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns to this view.</returns>
         [Authorize]
         public ActionResult UserControl()
         {
             return this.View();
         }
 
-
         /// <summary>
         /// Deletes the user.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns to the defined action.</returns>
         [Authorize]
         [HttpGet]
         public ActionResult DeleteUser()
@@ -298,7 +297,7 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <summary>
         /// Activates or deactivates the user.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns to the defined action.</returns>
         public ActionResult ActivateUser()
         {
             string username = Request.QueryString["username"];

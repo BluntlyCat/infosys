@@ -1,5 +1,5 @@
 ﻿// ------------------------------------------------------------------------
-// <copyright file="NutchManager.cs" company="HSA.InfoSys">
+// <copyright file="NutchControllerClient.cs" company="HSA.InfoSys">
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
@@ -34,7 +34,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private string homeDir;
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="NutchControllerClient"/> class from being created.
+        /// Initializes a new instance of the <see cref="NutchControllerClient"/> class.
         /// </summary>
         public NutchControllerClient()
         {
@@ -56,6 +56,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="depth">The depth.</param>
         /// <param name="topN">The top N.</param>
         /// <param name="urls">The URLs.</param>
+        /// <returns>A new crawl process.</returns>
         public Process GetCrawlProcess(string userName, int depth, int topN, params string[] urls)
         {
             Process nutch = new Process();
