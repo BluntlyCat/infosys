@@ -72,7 +72,7 @@
                                 <div class="modal-footer">
                                     <button class="btn" data-dismiss="modal" aria-hidden="true">
                                         Close</button>
-                                    <a class="btn btn-danger" href="/System/DeleteSystem?sysguid=<%= item.EntityId %>"">
+                                    <a class="btn btn-danger" href="/System/DeleteOrgUnit?sysguid=<%= item.EntityId %>"">
                                         <i class="icon-trash icon-white"></i>&nbsp;&nbsp;<b>Delete</b></a>
                                 </div>
                             </div>

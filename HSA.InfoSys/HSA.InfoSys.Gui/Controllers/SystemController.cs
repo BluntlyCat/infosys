@@ -136,7 +136,7 @@ namespace HSA.InfoSys.Gui.Controllers
         }
 
         /// <summary>
-        /// Deletes the system.
+        /// Deletes the org unit.
         /// </summary>
         /// <returns>Returns to the defined action.</returns>
         [Authorize]
