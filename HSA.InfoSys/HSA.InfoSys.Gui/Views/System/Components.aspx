@@ -21,7 +21,7 @@
                     <b>Search Configuration</b></a>
             </div>
 
-            <form action="/System/ComponentsSubmit?sysguid=<%= ViewData["systemguid"] %>" method="post">
+            <form action="/System/SubmitComponent?sysguid=<%= ViewData["systemguid"] %>" method="post">
 
                 <div class="contentbox-content">
 

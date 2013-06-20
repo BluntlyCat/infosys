@@ -88,13 +88,22 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets the components by org unit id.
         /// </summary>
-        /// <param name="orgUnitGuid">The org unit GUID.</param>
+        /// <param name="orgUnitGUID">The org unit GUID.</param>
         /// <returns>
         /// A list of components which belongs to the given OrgUnit.
         /// </returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        Component[] GetComponentsByOrgUnitId(Guid orgUnitGuid);
+        Component[] GetComponentsByOrgUnitId(Guid orgUnitGUID);
+
+        /// <summary>
+        /// Gets the results by component id.
+        /// </summary>
+        /// <param name="componentGUID">The component GUID.</param>
+        /// <returns>A list of results which belongs to the given component.</returns>
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        Result[] GetResultsByComponentId(Guid componentGUID);
 
         /// <summary>
         /// Gets the scheduler times.
@@ -108,25 +117,27 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// Creates a component object.
         /// </summary>
         /// <param name="name">The name.</param>
-        /// <param name="orgUnit">The org unit.</param>
+        /// <param name="orgUnitGUID">The org unit GUID.</param>
         /// <returns>
         /// The created component object.
         /// </returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        Component CreateComponent(string name, OrgUnit orgUnit);
+        Component CreateComponent(string name, Guid orgUnitGUID);
 
         /// <summary>
         /// Creates the result.
         /// </summary>
-        /// <param name="component">The component.</param>
+        /// <param name="componentGUID">The component GUID.</param>
         /// <param name="content">The content.</param>
         /// <param name="url">The URL.</param>
         /// <param name="title">The title.</param>
-        /// <returns>A result object of for a web crawl.</returns>
+        /// <returns>
+        /// A result object of for a web crawl.
+        /// </returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        Result CreateResult(Component component, string content, string url, string title);
+        Result CreateResult(Guid componentGUID, string content, string url, string title);
 
         /// <summary>
         /// Creates a OrgUnit object

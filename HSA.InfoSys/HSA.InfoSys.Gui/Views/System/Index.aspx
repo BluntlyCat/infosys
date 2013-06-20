@@ -35,7 +35,9 @@
                     </thead>
                     <tbody>
                         
-                        <% foreach (var item in this.ViewData["orgUnits"] as List<OrgUnit>)
+                        <% 
+                            var items = this.ViewData["orgUnits"];
+                           foreach (var item in items as List<OrgUnit>)
                            { %>
 
                             <tr>

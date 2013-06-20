@@ -9,17 +9,20 @@ namespace HSA.InfoSys.Testing.WCFTesting
     using System.Linq;
     using System.ServiceModel;
     using System.Threading;
+    using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services.LocalServices;
     using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
-    using HSA.InfoSys.Common.Entities;
 
     /// <summary>
     /// Implement your testing methods for WCF here.
     /// </summary>
     public class WCFTesting
     {
+        /// <summary>
+        /// The logger for WCFTesting
+        /// </summary>
         private static readonly ILog Log = Logger<string>.GetLogger("WCFTesting");
 
         /// <summary>
@@ -112,18 +115,18 @@ namespace HSA.InfoSys.Testing.WCFTesting
                                 break;
 
                             case ConsoleKey.T:
-                                var OrgUconf = WCFControllerClient<IDBManager>.ClientProxy.CreateOrgUnitConfig("miitsoft.de", "michael@miitsoft.de", true, true, 2, 10, new DateTime(), true);
-                                Log.DebugFormat("Config: {0}", OrgUconf);
+                                var orgUconf = WCFControllerClient<IDBManager>.ClientProxy.CreateOrgUnitConfig("miitsoft.de", "michael@miitsoft.de", true, true, 2, 10, new DateTime(), true);
+                                Log.DebugFormat("Config: {0}", orgUconf);
 
                                 var orgU = WCFControllerClient<IDBManager>.ClientProxy.CreateOrgUnit(32, "Webserver");
-                                orgU.OrgUnitConfig = OrgUconf;
+                                orgU.OrgUnitConfig = orgUconf;
                                 Log.DebugFormat("OrgUnit: {0}", orgU);
 
-                                var comp = WCFControllerClient<IDBManager>.ClientProxy.CreateComponent("Apache", orgU);
+                                var comp = WCFControllerClient<IDBManager>.ClientProxy.CreateComponent("Apache", orgU.EntityId);
                                 Log.DebugFormat("Component: {0}", comp);
 
-                                var result = WCFControllerClient<IDBManager>.ClientProxy.CreateResult(comp, "content", "url", "problem");
-                                result.Component = comp;
+                                var result = WCFControllerClient<IDBManager>.ClientProxy.CreateResult(comp.EntityId, "content", "url", "problem");
+                                result.ComponentGUID = comp.EntityId;
                                 Log.DebugFormat("Result: {0}", result);
 
                                 var comps = WCFControllerClient<IDBManager>.ClientProxy.GetComponentsByOrgUnitId(Guid.Empty).ToList<Component>();

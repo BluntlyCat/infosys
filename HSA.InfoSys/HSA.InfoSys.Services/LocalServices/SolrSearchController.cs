@@ -95,13 +95,13 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                             foreach (var result in resultPot.Results)
                             {
-                                result.Component = dbManager.GetEntity(resultPot.EntityId) as Component;
+                                result.ComponentGUID = resultPot.EntityId;
 
                                 dbManager.AddEntity(result);
 
                                 Log.InfoFormat(
                                     Properties.Resources.QUERY_RESPONSE,
-                                    result.Component.Name,
+                                    result.ComponentGUID,
                                     result);
                             }
 

@@ -166,7 +166,6 @@ namespace HSA.InfoSys.Gui.Controllers
 
                 // delete OrgUnit and orgUnitConfig
                 cc.DeleteEntity(orgUnit);
-                cc.DeleteEntity(orgUnit.OrgUnitConfig);
             }
             catch (CommunicationException ce)
             {
@@ -314,7 +313,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 Log.Info("add new component");
 
                 // save component to DB
-                cc.AddEntity(cc.CreateComponent(component, orgUnit));
+                cc.AddEntity(cc.CreateComponent(component, orgUnit.EntityId));
             }
             catch (CommunicationException ce)
             {
@@ -610,7 +609,6 @@ namespace HSA.InfoSys.Gui.Controllers
         {
             try
             {
-                /*
                 // get data from GET-Request
                 var orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
@@ -620,13 +618,16 @@ namespace HSA.InfoSys.Gui.Controllers
                 // get all components by OrgUnitId
                 var components = cc.GetComponentsByOrgUnitId(orgUnitGUID).ToList<Component>();
 
-                foreach (var item in components)
+                foreach (var component in components)
                 {
-                    //cc.item.EntityId
+                    var results = cc.GetResultsByComponentId(component.EntityId).ToList<Result>();
+
+                    foreach (var result in results)
+                    {
+                    }
                 }
 
                 this.ViewData["navid"] = "mysystems";
-                */
             }
             catch (CommunicationException ce)
             {

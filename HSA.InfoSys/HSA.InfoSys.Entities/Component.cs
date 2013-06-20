@@ -32,30 +32,7 @@ namespace HSA.InfoSys.Common.Entities
         /// The org unit.
         /// </value>
         [DataMember]
-        public virtual OrgUnit OrgUnit { get; set; }
-
-        /// <summary>
-        /// Loads this instance from NHibernate.
-        /// </summary>
-        /// <param name="types">The types you want load eager.</param>
-        /// <returns>
-        /// The entity behind the NHibernate proxy.
-        /// </returns>
-        public override Entity Unproxy(string[] types = null)
-        {
-            if (types != null)
-            {
-                foreach (var type in types)
-                {
-                    if (type.Equals(typeof(OrgUnit).Name) && this.OrgUnit != null)
-                    {
-                        this.OrgUnit = this.OrgUnit.Unproxy(types) as OrgUnit;
-                    }
-                }
-            }
-
-            return base.Unproxy(types);
-        }
+        public virtual Guid OrgUnitGUID { get; set; }
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
@@ -69,7 +46,7 @@ namespace HSA.InfoSys.Common.Entities
                 "ID: {0}, Name: {1}, OrgUnit: ({2})",
                 this.EntityId,
                 this.Name,
-                this.OrgUnit);
+                this.OrgUnitGUID);
         }
     }
 }

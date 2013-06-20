@@ -14,8 +14,10 @@
     <joined-subclass name="Result" table="Result">
       <key column="ResultGUID" unique="true" />
 
-      <many-to-one name="Component" class="Component" foreign-key="Component" cascade="all" not-null="true" />
+      <!--<many-to-one name="Component" class="Component" column="Component" cascade="all" not-null="true" />-->
 
+      <property name="ComponentGUID" type="Guid" not-null="true" />
+      
       <property name="Content" type="string" >
         <column name="Content" sql-type="text" not-null="false" />
       </property>
@@ -29,8 +31,8 @@
     <joined-subclass name="Component" table="Component">
       <key column="ComponentGUID" unique="true" />
 
-      <many-to-one name="OrgUnit" class="OrgUnit" foreign-key="OrgUnit" cascade="all" />
-
+      <!--<one-to-one name="OrgUnit" class="OrgUnit"  cascade="all" />-->
+      <property name="OrgUnitGUID" type="Guid" not-null="true" />
       <property name="Name" type="string" length ="100" not-null="true" />
     </joined-subclass>
 
@@ -38,8 +40,8 @@
     <joined-subclass name="OrgUnit" table="OrgUnit">
       <key column="OrgUnitGUID" unique="true" />
 
-      <many-to-one name="OrgUnitConfig" class="OrgUnitConfig" foreign-key="OrgUnitConfig" cascade="all" />
-
+      <many-to-one name="OrgUnitConfig" class="OrgUnitConfig" column="OrgUnitConfig" cascade="all" />
+      
       <property name="Name" type="string" length ="40" not-null="true" />
       <property name="UserId" type="int" length="10" not-null="true"/>
     </joined-subclass>

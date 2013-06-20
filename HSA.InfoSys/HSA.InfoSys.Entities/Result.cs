@@ -30,7 +30,7 @@ namespace HSA.InfoSys.Common.Entities
         /// The component.
         /// </value>
         [DataMember]
-        public virtual Component Component { get; set; }
+        public virtual Guid ComponentGUID { get; set; }
 
         /// <summary>
         /// Gets or sets the title.
@@ -70,7 +70,7 @@ namespace HSA.InfoSys.Common.Entities
             return string.Format(
                 Properties.Resources.RESULT_TO_STRING,
                 this.EntityId,
-                this.Component,
+                this.ComponentGUID,
                 this.Title,
                 this.URL,
                 this.Content,

@@ -8,10 +8,10 @@ namespace HSA.InfoSys.Testing.DBTesting
     using System;
     using System.Linq;
     using System.Threading;
+    using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
-    using HSA.InfoSys.Common.Entities;
 
     /// <summary>
     /// Implement your testing methods for NHibernate here.
@@ -48,7 +48,7 @@ namespace HSA.InfoSys.Testing.DBTesting
 
                             Guid guid;
                             var orgUnit = dbManager.CreateOrgUnit(0, "Webserver");
-                            var component = dbManager.CreateComponent("Apache", orgUnit);
+                            var component = dbManager.CreateComponent("Apache", orgUnit.EntityId);
                             guid = dbManager.AddEntity(component);
 
                             var component2 = dbManager.GetEntity(guid, dbManager.LoadThisEntities("OrgUnit"));

@@ -262,12 +262,31 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             using (ISession session = Session)
             {
                 var components = session.QueryOver<Component>()
-                    .Where(x => x.OrgUnit.EntityId == orgUnitGuid)
+                    .Where(x => x.OrgUnitGUID == orgUnitGuid)
                     .List<Component>() as List<Component>;
 
                 Log.InfoFormat(Properties.Resources.DBMANAGER_GET_COMPONENT_BY_ORGUNIT_ID, components, orgUnitGuid);
 
                 return components.ToArray();
+            }
+        }
+
+        /// <summary>
+        /// Gets the results by component id.
+        /// </summary>
+        /// <param name="componentGUID">The component GUID.</param>
+        /// <returns>A list of results which belongs to the given component.</returns>
+        public Result[] GetResultsByComponentId(Guid componentGUID)
+        {
+            using (ISession session = Session)
+            {
+                var results = session.QueryOver<Result>()
+                    .Where(x => x.ComponentGUID == componentGUID)
+                    .List<Result>() as List<Result>;
+
+                Log.InfoFormat(Properties.Resources.DBMANAGER_GET_RESULTS_BY_COMPONENT_ID, results, componentGUID);
+
+                return results.ToArray();
             }
         }
 
@@ -291,16 +310,16 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// Creates a component object.
         /// </summary>
         /// <param name="componentName">Name of the component.</param>
-        /// <param name="orgUnit">The org unit.</param>
+        /// <param name="orgUnitGUID">The org unit GUID.</param>
         /// <returns>
         /// The created component object.
         /// </returns>
-        public Component CreateComponent(string componentName, OrgUnit orgUnit)
+        public Component CreateComponent(string componentName, Guid orgUnitGUID)
         {
             var component = new Component
             {
                 Name = componentName,
-                OrgUnit = orgUnit
+                OrgUnitGUID = orgUnitGUID
             };
 
             Log.InfoFormat(Properties.Resources.DBMANAGER_CREATE_COMPONENT, component);
@@ -311,18 +330,18 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Creates a result object
         /// </summary>
-        /// <param name="component">The component.</param>
+        /// <param name="componentGUID">The component GUID.</param>
         /// <param name="content">the content of the result</param>
         /// <param name="url">The source.</param>
         /// <param name="title">The title.</param>
         /// <returns>
         /// the created result object
         /// </returns>
-        public Result CreateResult(Component component, string content, string url, string title)
+        public Result CreateResult(Guid componentGUID, string content, string url, string title)
         {
             var result = new Result
             {
-                Component = component,
+                ComponentGUID = componentGUID,
                 Content = content,
                 URL = url,
                 Title = title,

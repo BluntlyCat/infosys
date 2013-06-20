@@ -205,6 +205,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Got results: [{0}] by GUID: [{1}]. ähnelt.
+        /// </summary>
+        internal static string DBMANAGER_GET_RESULTS_BY_COMPONENT_ID {
+            get {
+                return ResourceManager.GetString("DBMANAGER_GET_RESULTS_BY_COMPONENT_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die DBManager does not exist, create one. ähnelt.
         /// </summary>
         internal static string DBMANAGER_NO_MANAGER_FOUND {
