@@ -55,7 +55,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 #if !MONO
                 certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_DOTNET, "Aes2xe1baetei8Y");
 #else
-            certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_MONO, "Aes2xe1baetei8Y");
+                certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_MONO, "Aes2xe1baetei8Y");
 #endif
 
                 var netTcpAddress = Addresses.GetNetTcpAddress(typeof(IT));
@@ -63,8 +63,14 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                 var host = new ServiceHost(instance, new Uri(netTcpAddress));
 
+                var quotas = new System.Xml.XmlDictionaryReaderQuotas();
+                quotas.MaxBytesPerRead = 1024 * 1024;
+                quotas.MaxArrayLength = 4096;
+                quotas.MaxStringContentLength = 1024 * 1024;
+
                 binding.Security.Mode = SecurityMode.Transport;
                 binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
+                binding.ReaderQuotas = quotas;
 
                 host.AddServiceEndpoint(
                     typeof(IT),

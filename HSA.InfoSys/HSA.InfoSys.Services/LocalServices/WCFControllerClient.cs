@@ -36,9 +36,15 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 Addresses.Initialize();
                 var netTcpAddress = new Uri(Addresses.GetNetTcpAddress(typeof(T)));
 
+                var quotas = new System.Xml.XmlDictionaryReaderQuotas();
+                quotas.MaxBytesPerRead = 1024 * 1024;
+                quotas.MaxArrayLength = 4096;
+                quotas.MaxStringContentLength = 1024 * 1024;
+
                 var binding = new NetTcpBinding();
                 binding.Security.Mode = SecurityMode.Transport;
                 binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
+                binding.ReaderQuotas = quotas;
                 Log.Info("Create binding for proxy.");
 
                 var address = new EndpointAddress(

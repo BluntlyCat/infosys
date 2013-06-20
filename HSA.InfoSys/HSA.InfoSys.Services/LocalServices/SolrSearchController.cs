@@ -7,6 +7,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System;
     using System.Linq;
+    using System.ServiceModel;
     using System.Threading;
     using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
@@ -57,6 +58,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// Connects this instance.
         /// </summary>
         /// <param name="orgUnitGuid">The org unit GUID.</param>
+        /// <param name="guiCallback">if set to <c>true</c> [GUI callback].</param>
         public void StartSearch(Guid orgUnitGuid, bool guiCallback = true)
         {
             this.OrgUnitGuid = orgUnitGuid;
@@ -108,9 +110,20 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                         if (this.componentsFinished == components.Count && guiCallback)
                         {
-                            WCFControllerClient<ISearchRecall>.ClientProxy.Recall(
-                                this.OrgUnitGuid,
-                                resultPot.Results.ToArray());
+                            try
+                            {
+                                var proxy = WCFControllerClient<ISearchRecall>.ClientProxy;
+
+                                proxy.Recall(this.OrgUnitGuid, resultPot.Results.ToArray());
+                            }
+                            catch (CommunicationException ce)
+                            {
+                                Log.ErrorFormat("Communication error: {0}", ce);
+                            }
+                            catch (Exception e)
+                            {
+                                Log.ErrorFormat("Common error: {0}", e);
+                            }
                         }
 
                         dbMutex.ReleaseMutex();

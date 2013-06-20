@@ -7,7 +7,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 {
     using System;
     using System.ServiceModel;
-using HSA.InfoSys.Common.Entities;
+    using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.NetDataContractSerializer;
 
     /// <summary>
@@ -22,6 +22,7 @@ using HSA.InfoSys.Common.Entities;
         /// Recalls the GUI when search for an org unit is finished.
         /// </summary>
         /// <param name="orgUnitGuid">The org unit GUID.</param>
+        /// <param name="results">The results.</param>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
         void Recall(Guid orgUnitGuid, Result[] results);
