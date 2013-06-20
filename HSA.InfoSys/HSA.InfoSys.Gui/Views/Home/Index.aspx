@@ -6,44 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     
-    <p>Momentan ist diese Seite eine Dev-Testing Seite zum rumprobieren. Im Release kommt hier nur Text, z.B. "Willkommen auf unserer Seite..."</p>
-
-    <form action="/Home/SearchResult" method="post">
-        <div class="container">
-            <div class="contentbox cb-large left-nomargin">
-                <div class="contentbox-header">
-                    <i class="icon-align-justify"></i>
-                    <b><%= ViewData["label1"] %></b>
-                </div>
-                <div class="contentbox-content cutline-bot">
-                    <span>Add all your components here</span>
-                </div>
-                <div class="contentbox-content">
-                    <div id="allBoxes">
-                        <!-- addedBoxes -->
-                        <div id="addedBoxes"></div>
-                        <!-- mainInputBox -->
-                        <div class="input-append">
-                            <input id="mainInputBox" class="input-components" type="text" placeholder="component" name="components[]" />
-                            <button id="addButton" type="button" class="btn btn-success"><i class="icon-plus-sign"></i></button>
-                        </div>
-                        <!-- clearAllButton -->
-                        <button id="clearAllButton" type="button" class="btn btn-danger marginBot-10"><i class="icon-trash"></i></button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contentbox cb-medium right-nomargin">
-                <div class="contentbox-header">
-                    <i class="icon-align-justify"></i>
-                    <b>Search Configuration</b>
-                </div>
-                <div class="contentbox-content">
-                    <button type="submit" class="btn btn-primary"><i class="icon-search icon-white"></i>&nbsp;&nbsp;<b>Search</b></button>
-                </div>
-            </div>
-        </div> 
-    </form>
+    <p>Willkommen auf dem Informationssystem für sicherheitskritische Komponenten!</p>
 
     <script type="text/javascript">
         $(document).ready(function () {

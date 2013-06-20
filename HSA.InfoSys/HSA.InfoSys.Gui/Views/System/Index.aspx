@@ -31,9 +31,6 @@
                             <th>
                                 Search Now
                             </th>
-                            <th>
-                                Results
-                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,30 +54,6 @@
                                 <td>
                                     <a class="btn btn-small" href="/System/RealTimeSearch/?sysguid=<%= item.EntityId %>"><i class="icon-search"></i></a>
                                 </td>
-                                
-                               <%
-                               if (((bool?)this.ViewData["searchFinished"]).HasValue)
-                                   {
-                                       if (((bool?)this.ViewData["searchFinished"]).Value)
-                                       {%>
-                                        <td>
-                                            <!-- result button--> 
-                                            <a class="btn btn-small" href="/System/Results/?sysguid=<%= item.EntityId %>"><i class="icon-list"></i></a>
-                                        </td>                                           
-                                       <%}%>
-                                       <% else {%>
-                                        <td>
-                                            <!-- loading gif -->
-                                                <img src="../../Bootstrap/img/ajax-loader.gif" />
-                                        </td>
-	                                   <% } %>
-                                <% } %>
-                                <% else {%>
-                                        <td>
-                                            <!-- empty -->
-                                        </td>
-	                            <% } %>
-
                             </tr>
 
                             <!-- deleteModal -->
@@ -111,8 +84,6 @@
             <div id="buttons" style="float: right;">
                 <a class="btn btn-success" style="margin-bottom: 10px; margin-right: 10px;" href="#createModal" data-toggle="modal">
                     <i class="icon-plus icon-white"></i>&nbsp;&nbsp;<b>Create new System</b></a>
-                    <button type="submit" class="btn btn-primary" style="margin-bottom: 10px; margin-right: 10px;">
-                    <i class="icon-search icon-white"></i>&nbsp;&nbsp;<b>Search now!</b></button>
             </div>
         </div>
     </div>

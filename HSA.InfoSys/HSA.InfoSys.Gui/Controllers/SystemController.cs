@@ -461,6 +461,31 @@ namespace HSA.InfoSys.Gui.Controllers
 
             return this.Redirect("/System/SearchConfig?sysguid=" + systemguid);
         }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult Results()
+        {
+            /*
+            // get data from GET-Request
+            string orgUnitGuid = Request.QueryString["sysguid"];
+
+            // init
+            var cc = WCFControllerClient<IDBManager>.ClientProxy;
+            
+            // get all components by OrgUnitId
+            var components = cc.GetComponentsByOrgUnitId(new Guid(orgUnitGuid)).ToList<Component>();
+
+            foreach (var item in components)
+            {
+                //cc.item.EntityId
+            }
+             * */
+
+            this.ViewData["navid"] = "mysystems";
+
+            return this.View();
+        }
     }
 }
 

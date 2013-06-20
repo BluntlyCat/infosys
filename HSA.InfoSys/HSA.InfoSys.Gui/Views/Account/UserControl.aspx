@@ -21,23 +21,24 @@
 
         <% foreach (var item in Membership.GetAllUsers())
            {
-               MembershipUser user = (MembershipUser)item;   
+               MembershipUser user = (MembershipUser)item;
+
+               if (user.UserName != this.User.Identity.Name)
+               { 
                %>
+                <tr>
+                    <td><%= user.UserName %></td>
+                    <td><%= user.Email %></td>
+                    <td><%= user.IsApproved %></td>
 
-        <tr>
-            <td><%= user.UserName %></td>
-            <td><%= user.Email %></td>
-            <td><%= user.IsApproved %></td>
-
-            <% if (user.IsApproved){ %>
-                <td><a href="/Account/ActivateUser?username=<%= user.UserName %>"><i class="icon-remove"></i></a></td>
-            <%} else { %>
-                <td><a href="/Account/ActivateUser?username=<%= user.UserName %>"><i class="icon-ok"></i></a></td>
-            <% } %>            
-            <td><a href="/Account/DeleteUser?username=<%= user.UserName %>"><i class="icon-trash"></i></a></td>
-
-        </tr>
-
+                    <% if (user.IsApproved){ %>
+                        <td><a href="/Account/ActivateUser?username=<%= user.UserName %>"><i class="icon-remove"></i></a></td>
+                    <%} else { %>
+                        <td><a href="/Account/ActivateUser?username=<%= user.UserName %>"><i class="icon-ok"></i></a></td>
+                    <% } %>            
+                    <td><a href="/Account/DeleteUser?username=<%= user.UserName %>"><i class="icon-trash"></i></a></td>
+                </tr>
+            <% } %>
         <% } %>
     </tbody>
 
