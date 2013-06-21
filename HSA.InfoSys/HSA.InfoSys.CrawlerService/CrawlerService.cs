@@ -114,25 +114,16 @@ namespace HSA.InfoSys.CrawlerService
             this.crawlController = this.controllerHost.OpenWCFHost<CrawlController, ICrawlController>(CrawlController.ControllerFactory);
 
             var solrController = this.controllerHost.OpenWCFHost<SolrController, ISolrController>(SolrController.SolrFactory);
-            this.RegisterServices(solrController);
+            this.crawlController.RegisterService(solrController);
 
             var dbManager = this.controllerHost.OpenWCFHost<DBManager, IDBManager>(DBManager.ManagerFactory as DBManager);
-            this.RegisterServices(dbManager);
+            this.crawlController.RegisterService(dbManager);
 
             var nutchController = NutchController.NutchFactory;
-            this.RegisterServices(nutchController);
+            this.crawlController.RegisterService(nutchController);
 
             var scheduler = this.controllerHost.OpenWCFHost<Scheduler, IScheduler>(Scheduler.SchedulerFactory(nutchController));
-            this.RegisterServices(scheduler);
-        }
-
-        /// <summary>
-        /// Registers the services.
-        /// </summary>
-        /// <param name="service">The service.</param>
-        private void RegisterServices(Service service)
-        {
-            this.crawlController.RegisterService(service);
+            this.crawlController.RegisterService(scheduler);
         }
 
         /// <summary>

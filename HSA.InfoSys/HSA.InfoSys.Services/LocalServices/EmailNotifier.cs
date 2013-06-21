@@ -86,7 +86,7 @@
                 if (orgUnit.OrgUnitConfig.Emails != null)
                 {
                     var addresses = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(orgUnit.OrgUnitConfig.Emails);
-                    var mail = this.BuildMail("Michael", string.Format("Crawl failed.", orgUnit.Name));
+                    var mail = this.BuildMail("michael.juenger1@hs-augsburg.de", string.Format("Crawl failed.", orgUnit.Name));
 
                     foreach (var address in addresses)
                     {

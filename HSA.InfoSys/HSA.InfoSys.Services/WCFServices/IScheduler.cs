@@ -8,6 +8,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     using System;
     using System.ServiceModel;
     using HSA.InfoSys.Common.Entities;
+    using HSA.InfoSys.Common.NetDataContractSerializer;
 
     /// <summary>
     /// This interface provides functionality for
@@ -20,14 +21,16 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// Adds the OrgUnitConfig.
         /// </summary>
         /// <param name="orgConfig">The OrgUnitConfig.</param>
-        [OperationContract]
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
         void AddOrgUnitConfig(OrgUnitConfig orgConfig);
 
         /// <summary>
         /// Removes the OrgUnitConfig.
         /// </summary>
         /// <param name="orgUnitConfigGUID">The OrgUnitConfigGUID.</param>
-        [OperationContract]
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
         void RemoveOrgUnitConfig(Guid orgUnitConfigGUID);
     }
 }
