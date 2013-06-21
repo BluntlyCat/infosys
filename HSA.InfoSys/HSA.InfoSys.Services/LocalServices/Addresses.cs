@@ -53,8 +53,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     typeof(ICrawlController),
                     typeof(ISolrController),
                     typeof(IScheduler),
-                    typeof(IDBManager),
-                    typeof(IGUIRecall)
+                    typeof(IDBManager)
                 };
 
                 foreach (var t in types)

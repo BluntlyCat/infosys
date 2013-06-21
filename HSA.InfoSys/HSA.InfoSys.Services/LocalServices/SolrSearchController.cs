@@ -59,15 +59,14 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="orgUnitGuid">The org unit GUID.</param>
         /// <param name="guiCallback">if set to <c>true</c> [GUI callback].</param>
-        public void StartSearch(Guid orgUnitGuid, bool guiCallback = true)
+        public void StartSearch(Guid orgUnitGuid)
         {
             this.OrgUnitGuid = orgUnitGuid;
 
             var components = this.dbManager.GetComponentsByOrgUnitId(this.OrgUnitGuid).ToList<Component>();
 
-            if (components == null && guiCallback)
+            if (components == null)
             {
-                WCFControllerClient<ISearchRecall>.ClientProxy.Recall(this.OrgUnitGuid, new Result[0]);
                 return;
             }
 
@@ -108,12 +107,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                             componentsFinished++;
                         }
 
-                        if (this.componentsFinished == components.Count && guiCallback)
+                        if (this.componentsFinished == components.Count)
                         {
                             try
                             {
-                                var proxy = WCFControllerClient<ISearchRecall>.ClientProxy;
-                                proxy.Recall(this.OrgUnitGuid, resultPot.Results.ToArray());
+                                EmailNotifier mailNotifier = new EmailNotifier();
+                                mailNotifier.SearchFinished(this.OrgUnitGuid, resultPot.Results.ToArray());
                             }
                             catch (CommunicationException ce)
                             {

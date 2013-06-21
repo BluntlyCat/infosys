@@ -166,7 +166,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             {
                 try
                 {
-                    WCFControllerClient<IGUIRecall>.ClientProxy.CrawlFailedRecall(orgUnitGUID);
+                    EmailNotifier mailNotifier = new EmailNotifier();
+                    mailNotifier.CrawlFailed(orgUnitGUID);
                 }
                 catch (CommunicationException ce)
                 {

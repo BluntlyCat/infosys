@@ -30,29 +30,6 @@ namespace HSA.InfoSys.Gui.Controllers
         private static readonly ILog Log = Logger<string>.GetLogger("SystemController");
 
         /// <summary>
-        /// The controller host for WCF service.
-        /// </summary>
-        private static WCFControllerHost controllerHost;
-
-        /// <summary>
-        /// The search recall.
-        /// </summary>
-        private static GUIRecall searchRecall;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SystemController"/> class.
-        /// </summary>
-        public SystemController()
-        {
-            if (controllerHost == null && searchRecall == null)
-            {
-                Addresses.Initialize();
-                controllerHost = new WCFControllerHost();
-                searchRecall = controllerHost.OpenWCFHost<GUIRecall, IGUIRecall>(GUIRecall.GUIRecallFactory);
-            }
-        }
- 
-        /// <summary>
         /// Called when the home page is loading.
         /// </summary>
         /// <returns>The result of this action.</returns>
@@ -200,9 +177,6 @@ namespace HSA.InfoSys.Gui.Controllers
             {
                 Log.ErrorFormat("Common error: {0}", e);
             }
-
-            // start thread which is watching the list of searches
-            searchRecall.StartService();
 
             return this.RedirectToAction("Index", "System");
         }
