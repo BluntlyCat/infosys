@@ -164,7 +164,18 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
             else
             {
-                WCFControllerClient<IGUIRecall>.ClientProxy.CrawlFailedRecall(orgUnitGUID);
+                try
+                {
+                    WCFControllerClient<IGUIRecall>.ClientProxy.CrawlFailedRecall(orgUnitGUID);
+                }
+                catch (CommunicationException ce)
+                {
+                    Log.ErrorFormat("Communication error: {0}", ce);
+                }
+                catch (Exception e)
+                {
+                    Log.ErrorFormat("Common error: {0}", e);
+                }
             }
         }
 
