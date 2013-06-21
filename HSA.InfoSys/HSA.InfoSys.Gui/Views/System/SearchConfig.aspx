@@ -173,11 +173,8 @@
                     <button type="submit" class="btn btn-success" style="float:right; margin-bottom: 10px; margin-right: 10px;">
                     <i class="icon-check icon-white"></i>&nbsp;&nbsp;<b>Save Changes</b></button>
                 </div>
-
             </form>
-
         </div>
-
     </div>
 
     <script>

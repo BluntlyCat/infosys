@@ -192,19 +192,19 @@ namespace HSA.InfoSys.Gui.Controllers
             try
             {
                 // get systemguid from GET-Request
-                Guid componentGUID = Guid.Parse(Request.QueryString["sysguid"]);
+                Guid orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
                 // init
                 var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
                 // get OrgUnit
-                var orgUnit = cc.GetEntity(componentGUID, cc.LoadThisEntities("OrgUnit")) as OrgUnit;
+                var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnit")) as OrgUnit;
 
                 // get all components by OrgUnitId
-                var components = cc.GetComponentsByOrgUnitId(componentGUID).ToList<Component>();
+                var components = cc.GetComponentsByOrgUnitId(orgUnitGUID).ToList<Component>();
 
                 this.ViewData["navid"] = "mysystems";
-                this.ViewData["systemguid"] = componentGUID;
+                this.ViewData["systemguid"] = orgUnitGUID;
                 this.ViewData["orgUnitName"] = orgUnit.Name;
 
                 if (components.Count > 0)
@@ -233,11 +233,11 @@ namespace HSA.InfoSys.Gui.Controllers
         public ActionResult SubmitComponent()
         {
             // get systemguid from GET-Request
-            Guid componentGUID = Guid.Empty;
+            Guid orgUnitGUID = Guid.Empty;
 
             try
             {
-                componentGUID = Guid.Parse(Request.QueryString["sysguid"]);
+                orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
                 // get POST data from form
                 string component = Request["components"];
@@ -246,7 +246,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
                 // get orgUnit by id
-                var orgUnit = cc.GetEntity(componentGUID, cc.LoadThisEntities("OrgUnit")) as OrgUnit;
+                var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnit")) as OrgUnit;
 
                 // log
                 Log.Info("add new component");
@@ -263,7 +263,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 Log.ErrorFormat("Common error: {0}", e);
             }
 
-            return this.Redirect("/System/Components?sysguid=" + componentGUID);
+            return this.Redirect("/System/Components?sysguid=" + orgUnitGUID);
         }
 
         /// <summary>
@@ -274,12 +274,12 @@ namespace HSA.InfoSys.Gui.Controllers
         [HttpGet]
         public ActionResult DeleteComponent()
         {
-            Guid componentGUID = Guid.Empty;
+            Guid orgUnitGUID = Guid.Empty;
 
             try
             {
                 // get systemguid from GET-Request
-                componentGUID = Guid.Parse(Request.QueryString["sysguid"]);
+                orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
                 // get compid from GET-Request
                 string compid = Request.QueryString["compid"];
@@ -302,7 +302,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 Log.ErrorFormat("Common error: {0}", e);
             }
 
-            return this.Redirect("/System/Components?sysguid=" + componentGUID);
+            return this.Redirect("/System/Components?sysguid=" + orgUnitGUID);
         }
 
         /// <summary>
@@ -318,7 +318,7 @@ namespace HSA.InfoSys.Gui.Controllers
             try
             {
                 // get systemguid from GET-Request
-                Guid componentGUID = Guid.Parse(Request.QueryString["sysguid"]);
+                Guid orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
                 // init
                 var cc = WCFControllerClient<IDBManager>.ClientProxy;
@@ -334,7 +334,7 @@ namespace HSA.InfoSys.Gui.Controllers
 
                 foreach (var item in orgUnits)
                 {
-                    if (item.EntityId == componentGUID)
+                    if (item.EntityId == orgUnitGUID)
                     {
                         delItem = item;
                     }
@@ -344,7 +344,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 this.ViewData["orgUnits"] = orgUnits;
 
                 // get SystemConfig, OrgUnitConfig
-                var orgUnit = cc.GetEntity(componentGUID, cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
+                var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
                 var config = orgUnit.OrgUnitConfig;
 
                 // set all config data for view
@@ -377,7 +377,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 //// this.ViewData["useremail"] = user.Email;
 
                 this.ViewData["navid"] = "mysystems";
-                this.ViewData["systemguid"] = componentGUID;
+                this.ViewData["systemguid"] = orgUnitGUID;
             }
             catch (CommunicationException ce)
             {
@@ -399,18 +399,18 @@ namespace HSA.InfoSys.Gui.Controllers
         [HttpPost]
         public ActionResult SearchConfigSubmit()
         {
-            Guid componentGUID = Guid.Empty;
+            Guid orgUnitGUID = Guid.Empty;
 
             try
             {
                 // get data from GET-Request
-                componentGUID = Guid.Parse(Request.QueryString["sysguid"]);
+                orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
                 // init
                 var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
                 // get SystemConfig, OrgUnitConfig
-                var orgUnit = cc.GetEntity(componentGUID, cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
+                var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
                 var config = orgUnit.OrgUnitConfig;
 
                 string sc_days = Request["sc_days"];
@@ -480,7 +480,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 Log.ErrorFormat("Common error: {0}", e);
             }
 
-            return this.Redirect("/System/SearchConfig?sysguid=" + componentGUID);
+            return this.Redirect("/System/SearchConfig?sysguid=" + orgUnitGUID);
         }
 
         /// <summary>
@@ -492,11 +492,11 @@ namespace HSA.InfoSys.Gui.Controllers
         public ActionResult LoadConfig()
         {
             // get data from GET-Request
-            Guid componentGUID = Guid.Empty;
+            Guid orgUnitGUID = Guid.Empty;
 
             try
             {
-                componentGUID = Guid.Parse(Request.QueryString["sysguid"]);
+                orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
                 // get data from GET-Request
                 string loadedConfigId = Request["orgUnitConfigId"];
@@ -508,7 +508,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 var loadedConfig = cc.GetEntity(new Guid(loadedConfigId), cc.LoadThisEntities("OrgUnitConfig")) as OrgUnitConfig;
 
                 // get SystemConfig, OrgUnitConfig
-                var orgUnit = cc.GetEntity(componentGUID, cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
+                var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
                 var config = orgUnit.OrgUnitConfig;
 
                 // copy orgUnitConfig data 
@@ -531,7 +531,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 Log.ErrorFormat("Common error: {0}", e);
             }
 
-            return this.Redirect("/System/SearchConfig?sysguid=" + componentGUID);
+            return this.Redirect("/System/SearchConfig?sysguid=" + orgUnitGUID);
         }
 
         /// <summary>

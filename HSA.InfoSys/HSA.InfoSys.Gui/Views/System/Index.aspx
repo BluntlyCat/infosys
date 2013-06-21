@@ -29,7 +29,10 @@
                                 Delete
                             </th>
                             <th>
-                                Search Now
+                                Search
+                            </th>
+                            <th>
+                                Results
                             </th>
                         </tr>
                     </thead>
@@ -55,6 +58,9 @@
                                 </td>
                                 <td>
                                     <a class="btn btn-small" href="/System/RealTimeSearch/?sysguid=<%= item.EntityId %>"><i class="icon-search"></i></a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-small" href="/System/ShowResults/?sysguid=<%= item.EntityId %>"><i class="icon-list"></i></a>
                                 </td>
                             </tr>
 
