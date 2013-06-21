@@ -232,10 +232,11 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// Gets the org units by user ID.
         /// </summary>
         /// <param name="userID">The user ID.</param>
+        /// <param name="types">The types.</param>
         /// <returns>
         /// A list of org units for the user id.
         /// </returns>
-        public OrgUnit[] GetOrgUnitsByUserID(int userID)
+        public OrgUnit[] GetOrgUnitsByUserID(int userID, string[] types = null)
         {
             using (ISession session = Session)
             using (ITransaction transaction = session.BeginTransaction())
@@ -243,6 +244,14 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 var orgUnits = session.QueryOver<OrgUnit>()
                     .Where(x => x.UserId == userID)
                     .List<OrgUnit>() as List<OrgUnit>;
+
+                if (types != null)
+                {
+                    foreach (var orgUnit in orgUnits)
+                    {
+                        orgUnit.Unproxy(types);
+                    }
+                }
 
                 Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ORGUNIT_BY_USERID, orgUnits, userID);
 

@@ -80,10 +80,13 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// Gets the org units by user ID.
         /// </summary>
         /// <param name="userID">The user ID.</param>
-        /// <returns>A list of org units for the user id.</returns>
+        /// <param name="types">The types.</param>
+        /// <returns>
+        /// A list of org units for the user id.
+        /// </returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        OrgUnit[] GetOrgUnitsByUserID(int userID);
+        OrgUnit[] GetOrgUnitsByUserID(int userID, string[] types = null);
 
         /// <summary>
         /// Gets the components by org unit id.
