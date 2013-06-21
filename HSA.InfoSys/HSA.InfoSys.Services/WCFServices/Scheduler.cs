@@ -35,11 +35,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         private static Scheduler scheduler;
 
         /// <summary>
-        /// The mutex for the OrgUnitConfigurations dictionary.
-        /// </summary>
-        private static Mutex mutex = new Mutex();
-
-        /// <summary>
         /// The database manager.
         /// </summary>
         private IDBManager dbManager;
@@ -57,12 +52,12 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Prevents a default instance of the <see cref="Scheduler"/> class from being created.
         /// </summary>
-        private Scheduler()
+        private Scheduler(NutchController nutchController)
         {
             Log.DebugFormat(Properties.Resources.LOG_INSTANCIATE_NEW_SCHEDULER, this.GetType().Name);
 
             this.dbManager = DBManager.ManagerFactory;
-            this.nutchController = NutchController.NutchFactory;
+            this.nutchController = nutchController;
             this.nutchController.OnCrawlFinished += this.NutchController_OnCrawlFinished;
         }
 
@@ -72,44 +67,41 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The scheduler.
         /// </value>
-        public static Scheduler SchedulerFactory
+        public static Scheduler SchedulerFactory(NutchController nutchController)
         {
-            get
+            if (scheduler == null)
             {
-                if (scheduler == null)
-                {
-                    scheduler = new Scheduler();
-                }
-
-                return scheduler;
+                scheduler = new Scheduler(nutchController);
             }
+
+            return scheduler;
         }
 
         /// <summary>
         /// Adds the scheduler time.
         /// </summary>
-        /// <param name="orgConfig">The OrgUnitConfig.</param>
-        public void AddOrgUnitConfig(OrgUnitConfig orgConfig)
+        /// <param name="orgUnitConfig">The OrgUnitConfig.</param>
+        public void AddOrgUnitConfig(OrgUnitConfig orgUnitConfig)
         {
-            if (orgConfig.SchedulerActive)
+            if (orgUnitConfig.SchedulerActive)
             {
-                Log.DebugFormat(Properties.Resources.LOG_SCHEDULER_ADD, orgConfig);
+                Log.DebugFormat(Properties.Resources.LOG_SCHEDULER_ADD, orgUnitConfig);
 
-                mutex.WaitOne();
+                this.ServiceMutex.WaitOne();
 
-                var job = this.SetNewJob(orgConfig);
+                var job = this.SetNewJob(orgUnitConfig);
 
-                if (this.jobs.ContainsKey(orgConfig.EntityId) && job.Active)
+                if (job != null && this.jobs.ContainsKey(orgUnitConfig.EntityId) && job.Active)
                 {
-                    this.jobs[orgConfig.EntityId].Stop(true);
-                    this.jobs[orgConfig.EntityId] = job;
+                    this.jobs[orgUnitConfig.EntityId].Stop(true);
+                    this.jobs[orgUnitConfig.EntityId] = job;
                 }
-                else if (job.Active)
+                else if (job != null && job.Active)
                 {
-                    this.jobs.Add(orgConfig.EntityId, job);
+                    this.jobs.Add(orgUnitConfig.EntityId, job);
                 }
 
-                mutex.ReleaseMutex();
+                this.ServiceMutex.ReleaseMutex();
             }
         }
 
@@ -119,7 +111,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <param name="orgUnitConfigGUID">The OrgUnitConfigGUID.</param>
         public void RemoveOrgUnitConfig(Guid orgUnitConfigGUID)
         {
-            mutex.WaitOne();
+            this.ServiceMutex.WaitOne();
 
             if (this.jobs.ContainsKey(orgUnitConfigGUID))
             {
@@ -134,7 +126,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 this.jobs.Remove(orgUnitConfigGUID);
             }
 
-            mutex.ReleaseMutex();
+            this.ServiceMutex.ReleaseMutex();
         }
 
         /// <summary>
@@ -152,10 +144,10 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 .SingleOrDefault().EntityId;
 
             var time = this.SetNextSearch(config, job);
-
-            this.nutchController.SetPendingCrawl(orgUnitGUID, "michael", 1, 1);
-
             job.Start(time);
+
+#warning username must be set here
+            this.nutchController.SetPendingCrawl(orgUnitGUID, "michael", 1, 1);
         }
 
         /// <summary>
@@ -163,10 +155,17 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="orgUnitGUID">The org unit GUID.</param>
-        public void NutchController_OnCrawlFinished(object sender, Guid orgUnitGUID)
+        public void NutchController_OnCrawlFinished(object sender, Guid orgUnitGUID, bool success)
         {
-            var solrController = new SolrSearchController();
-            solrController.StartSearch(orgUnitGUID, false);
+            if (success)
+            {
+                var solrController = new SolrSearchController();
+                solrController.StartSearch(orgUnitGUID);
+            }
+            else
+            {
+                WCFControllerClient<IGUIRecall>.ClientProxy.CrawlFailedRecall(orgUnitGUID);
+            }
         }
 
         /// <summary>
@@ -190,8 +189,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             var job = sender as Countdown;
 
 #warning should not be in this way but the call to the logger causes a freeze of the whole application
-            // Log.DebugFormat(Properties.Resources.SCHEDULER_ON_TICK, job.Time.RemainTime);
-            Console.WriteLine(string.Format(Properties.Resources.SCHEDULER_ON_TICK, job.Time.RemainTime));
+            Log.DebugFormat(Properties.Resources.SCHEDULER_ON_TICK, job.Time.RemainTime);
+            //Console.WriteLine(string.Format(Properties.Resources.SCHEDULER_ON_TICK, job.Time.RemainTime));
         }
 #endif
 
@@ -200,9 +199,11 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         public override void StartService()
         {
-            var configs = DBManager.Session.QueryOver<OrgUnitConfig>().List<OrgUnitConfig>();
+            var configs = DBManager.Session.QueryOver<OrgUnitConfig>()
+                .Where(x => x.SchedulerActive)
+                .List<OrgUnitConfig>();
 
-            mutex.WaitOne();
+            this.ServiceMutex.WaitOne();
 
             foreach (var config in configs)
             {
@@ -214,7 +215,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 }
             }
 
-            mutex.ReleaseMutex();
+            this.ServiceMutex.ReleaseMutex();
 
             base.StartService();
         }
@@ -225,7 +226,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <param name="cancel">if set to <c>true</c> [cancel].</param>
         public override void StopService(bool cancel = false)
         {
-            mutex.WaitOne();
+            this.ServiceMutex.WaitOne();
 
             foreach (var job in this.jobs.Values)
             {
@@ -234,7 +235,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
             this.jobs.Clear();
 
-            mutex.ReleaseMutex();
+            this.ServiceMutex.ReleaseMutex();
 
             base.StopService(cancel);
         }
@@ -249,38 +250,38 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Sets the countdown times.
         /// </summary>
-        /// <param name="config">The config.</param>
+        /// <param name="orgUnitConfig">The config.</param>
         /// <returns>A started countdown.</returns>
-        private Countdown SetNewJob(OrgUnitConfig config)
+        private Countdown SetNewJob(OrgUnitConfig orgUnitConfig)
         {
             Countdown job = null;
 
-            if (!this.jobs.ContainsKey(config.EntityId) && config.SchedulerActive)
+            if (!this.jobs.ContainsKey(orgUnitConfig.EntityId) && orgUnitConfig.SchedulerActive)
             {
                 var now = DateTime.Now;
                 var startTime = now;
 
 #if DEBUG
-                var endTime = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, config.Time);
-                var repeatIn = new TimeSpan(0, 0, config.Days, config.Time);
+                var endTime = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, orgUnitConfig.Time);
+                var repeatIn = new TimeSpan(0, 0, orgUnitConfig.Days, orgUnitConfig.Time);
 #else
                 var endTime = new DateTime(now.Year, now.Month, now.Day, config.Time, 0, 0);
                 var repeatIn = new TimeSpan(config.Days, config.Time, 0, 0);
 #endif
-                var time = new Time(startTime, endTime, repeatIn, config.EntityId, true);
+                var time = new Time(startTime, endTime, repeatIn, orgUnitConfig.EntityId, true);
 
-                job = new Countdown(config, config.EntityId, time);
+                job = new Countdown(orgUnitConfig, orgUnitConfig.EntityId, time);
                 job.OnZero += new Countdown.ZeroEventHandler(this.Job_OnZero);
                 job.OnError += new Countdown.ErrorEventHandler(this.Job_OnError);
 #if DEBUG
                 job.OnTick += new Countdown.TickEventHandler(this.Job_OnTick);
 #endif
 
-                this.StartJob(config, job);
+                this.StartJob(orgUnitConfig, job);
             }
-            else if (config.SchedulerActive)
+            else if (orgUnitConfig.SchedulerActive)
             {
-                return this.jobs[config.EntityId];
+                return this.jobs[orgUnitConfig.EntityId];
             }
 
             return job;
@@ -293,12 +294,13 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <param name="job">The countdown.</param>
         private void StartJob(OrgUnitConfig config, Countdown job)
         {
-            if (!job.Start())
+            if (job.Time.IsTimeInFuture)
             {
-                if (!job.Time.IsTimeInFuture)
-                {
-                    job.Start(this.SetNextSearch(config, job));
-                }
+                job.Start();
+            }
+            else
+            {
+                job.Start(this.SetNextSearch(config, job));
             }
         }
 

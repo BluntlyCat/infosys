@@ -37,7 +37,7 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <summary>
         /// The search recall.
         /// </summary>
-        private static SearchRecall searchRecall;
+        private static GUIRecall searchRecall;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SystemController"/> class.
@@ -48,8 +48,7 @@ namespace HSA.InfoSys.Gui.Controllers
             {
                 Addresses.Initialize();
                 controllerHost = new WCFControllerHost();
-                searchRecall = controllerHost.OpenWCFHost<SearchRecall, ISearchRecall>(SearchRecall.SearchRecallFactory);
-                searchRecall.OnRecall += new SearchRecall.RecallHandler(this.SearchRecall_OnRecall);
+                searchRecall = controllerHost.OpenWCFHost<GUIRecall, IGUIRecall>(GUIRecall.GUIRecallFactory);
             }
         }
  
@@ -206,40 +205,6 @@ namespace HSA.InfoSys.Gui.Controllers
             searchRecall.StartService();
 
             return this.RedirectToAction("Index", "System");
-        }
-
-        /// <summary>
-        /// Occurs when [recall] when all searches finished.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="orgUnitGuid">The org unit GUID.</param>
-        /// <param name="results">The results.</param>
-        public void SearchRecall_OnRecall(object sender, Guid orgUnitGuid, IList<Result> results)
-        {
-            try
-            {
-                var proxy = WCFControllerClient<IDBManager>.ClientProxy;
-                var orgUnit = proxy.GetEntity(orgUnitGuid, proxy.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
-
-#warning Emails können null sein? Die OrgUnitConfig wird ja von einem Benutzer angelegt, dessen Email Adresse im System hinterlegt ist...
-                if (orgUnit.OrgUnitConfig.Emails != null)
-                {
-                    var emails = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(orgUnit.OrgUnitConfig.Emails);
-
-                    foreach (var mail in emails)
-                    {
-                        Log.DebugFormat("Send mail to {0} for OrgUnit {1}.", mail, orgUnitGuid);
-                    }
-                }
-            }
-            catch (CommunicationException ce)
-            {
-                Log.ErrorFormat("Communication error: {0}", ce);
-            }
-            catch (Exception e)
-            {
-                Log.ErrorFormat("Common error: {0}", e);
-            }
         }
 
         /// <summary>
@@ -474,21 +439,24 @@ namespace HSA.InfoSys.Gui.Controllers
                 var orgUnit = cc.GetEntity(componentGUID, cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
                 var config = orgUnit.OrgUnitConfig;
 
+                string sc_days = Request["sc_days"];
+                string sc_time = Request["sc_time"];
+
+                config.Days = Convert.ToInt32(sc_days);
+                config.Time = Convert.ToInt32(sc_time);
+
+                // TODO: vergleich der zeiten
+
                 // set schedulerOn, days, time
                 if (this.Request["schedulerOn"] == "on")
                 {
-                    string sc_days = Request["sc_days"];
-                    string sc_time = Request["sc_time"];
-
                     config.SchedulerActive = true;
-                    config.Days = Convert.ToInt32(sc_days);
-                    config.Time = Convert.ToInt32(sc_time);
-
-                    // TODO: vergleich der zeiten
+                    WCFControllerClient<IScheduler>.ClientProxy.AddOrgUnitConfig(config);
                 }
                 else
                 {
                     config.SchedulerActive = false;
+                    WCFControllerClient<IScheduler>.ClientProxy.RemoveOrgUnitConfig(config.EntityId);
                 }
 
                 // set Emails
@@ -502,15 +470,8 @@ namespace HSA.InfoSys.Gui.Controllers
                     config.Emails = null;
                 }
 
-                // set emailsOn
-                if (this.Request["emailsOn"] == "on")
-                {
-                    config.EmailActive = true;
-                }
-                else
-                {
-                    config.EmailActive = false;
-                }
+
+                config.EmailActive = this.Request["emailsOn"] == "on";
 
                 // set Websites
                 if (!string.IsNullOrEmpty(this.Request["websites[]"]))

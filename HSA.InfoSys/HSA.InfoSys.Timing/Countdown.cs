@@ -224,14 +224,10 @@ namespace HSA.InfoSys.Common.Timing
 
             while (this.Active && this.Time.RemainTime.Time.Ticks > 0)
             {
-                Countdown.onTickMutex.WaitOne();
-
                 if (this.OnTick != null)
                 {
                     this.OnTick(this);
                 }
-
-                Countdown.onTickMutex.ReleaseMutex();
                 
                 this.Time.RemainTime.Time = this.Time.Endtime.Subtract(DateTime.Now);
 

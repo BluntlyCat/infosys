@@ -119,7 +119,10 @@ namespace HSA.InfoSys.CrawlerService
             var dbManager = this.controllerHost.OpenWCFHost<DBManager, IDBManager>(DBManager.ManagerFactory as DBManager);
             this.RegisterServices(dbManager);
 
-            var scheduler = this.controllerHost.OpenWCFHost<Scheduler, IScheduler>(Scheduler.SchedulerFactory);
+            var nutchController = NutchController.NutchFactory;
+            this.RegisterServices(nutchController);
+
+            var scheduler = this.controllerHost.OpenWCFHost<Scheduler, IScheduler>(Scheduler.SchedulerFactory(nutchController));
             this.RegisterServices(scheduler);
         }
 

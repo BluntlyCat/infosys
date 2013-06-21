@@ -16,15 +16,23 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     /// search request for an org unit is finished.
     /// </summary>
     [ServiceContract]
-    public interface ISearchRecall
+    public interface IGUIRecall
     {
         /// <summary>
         /// Recalls the GUI when search for an org unit is finished.
         /// </summary>
-        /// <param name="orgUnitGuid">The org unit GUID.</param>
+        /// <param name="orgUnitGUID">The org unit GUID.</param>
         /// <param name="results">The results.</param>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        void Recall(Guid orgUnitGuid, Result[] results);
+        void SearchRecall(Guid orgUnitGUID, Result[] results);
+
+        /// <summary>
+        /// Called if the crawl failed.
+        /// </summary>
+        /// <param name="orgUnitGUID">The org unit GUID.</param>
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        void CrawlFailedRecall(Guid orgUnitGUID);
     }
 }

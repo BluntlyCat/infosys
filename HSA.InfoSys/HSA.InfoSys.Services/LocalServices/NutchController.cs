@@ -56,7 +56,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="orgUnitGUID">The org unit GUID.</param>
-        public delegate void CrawlFinishedHandler(object sender, Guid orgUnitGUID);
+        public delegate void CrawlFinishedHandler(object sender, Guid orgUnitGUID, bool success);
 
         /// <summary>
         /// Occurs when [on crawl finished].
@@ -112,6 +112,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             {
                 this.ServiceMutex.WaitOne();
 
+                bool success = false;
+
                 if (this.newCrawlJobArrived)
                 {
                     this.runningCrawls = this.pendingCrawls;
@@ -123,12 +125,20 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                 foreach (var crawl in this.runningCrawls)
                 {
-                    crawl.Value.Start();
-                    crawl.Value.WaitForExit();
+                    try
+                    {
+                        crawl.Value.Start();
+                        crawl.Value.WaitForExit();
+                        success = true;
+                    }
+                    catch (Exception e)
+                    {
+                        Log.ErrorFormat("Common error: {0}", e);
+                    }
 
                     if (this.OnCrawlFinished != null)
                     {
-                        this.OnCrawlFinished(this, crawl.Key);
+                        this.OnCrawlFinished(this, crawl.Key, success);
                     }
                 }
 
