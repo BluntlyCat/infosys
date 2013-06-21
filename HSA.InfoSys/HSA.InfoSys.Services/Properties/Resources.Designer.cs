@@ -259,6 +259,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Common error: {0} ähnelt.
+        /// </summary>
+        internal static string LOG_COMMON_ERROR {
+            get {
+                return ResourceManager.GetString("LOG_COMMON_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die The directory {0} could not be created. ähnelt.
         /// </summary>
         internal static string LOG_DIRECTORY_CREATION_ERROR {
@@ -448,6 +457,42 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Can not set job for OrgUnitConfig [{0}]. ähnelt.
+        /// </summary>
+        internal static string SCHEDULER_CANT_SET_JOB {
+            get {
+                return ResourceManager.GetString("SCHEDULER_CANT_SET_JOB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The crawl failed: OrgUnit [{0}]. ähnelt.
+        /// </summary>
+        internal static string SCHEDULER_CRAWL_FAILED {
+            get {
+                return ResourceManager.GetString("SCHEDULER_CRAWL_FAILED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The crawl finished without errors: OrgUnit [{0}]. ähnelt.
+        /// </summary>
+        internal static string SCHEDULER_CRAWL_SUCCEEDED {
+            get {
+                return ResourceManager.GetString("SCHEDULER_CRAWL_SUCCEEDED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create new job for OrgUnitConfig [{0}]. ähnelt.
+        /// </summary>
+        internal static string SCHEDULER_CREATE_NEW_JOB {
+            get {
+                return ResourceManager.GetString("SCHEDULER_CREATE_NEW_JOB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Remaintime: [{0}]. ähnelt.
         /// </summary>
         internal static string SCHEDULER_ON_TICK {
@@ -579,6 +624,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         internal static string SOLR_CLIENT_UNABLE_TO_CONNECT {
             get {
                 return ResourceManager.GetString("SOLR_CLIENT_UNABLE_TO_CONNECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Communication error: {0} ähnelt.
+        /// </summary>
+        internal static string WCF_COMMUNICATION_ERROR {
+            get {
+                return ResourceManager.GetString("WCF_COMMUNICATION_ERROR", resourceCulture);
             }
         }
         

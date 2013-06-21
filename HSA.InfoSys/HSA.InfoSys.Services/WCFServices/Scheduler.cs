@@ -15,8 +15,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     using HSA.InfoSys.Common.Timing;
     using log4net;
 
-#warning Suchvorgang muss noch gestartet werden.
-
     /// <summary>
     /// This class watches the scheduling objects in database
     /// and runs a task when necessary.
@@ -159,6 +157,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         {
             if (success)
             {
+                Log.InfoFormat(Properties.Resources.SCHEDULER_CRAWL_SUCCEEDED, orgUnitGUID);
                 var solrController = new SolrSearchController();
                 solrController.StartSearch(orgUnitGUID);
             }
@@ -166,16 +165,17 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             {
                 try
                 {
+                    Log.ErrorFormat(Properties.Resources.SCHEDULER_CRAWL_FAILED, orgUnitGUID);
                     EmailNotifier mailNotifier = new EmailNotifier();
                     mailNotifier.CrawlFailed(orgUnitGUID);
                 }
                 catch (CommunicationException ce)
                 {
-                    Log.ErrorFormat("Communication error: {0}", ce);
+                    Log.ErrorFormat(Properties.Resources.WCF_COMMUNICATION_ERROR, ce);
                 }
                 catch (Exception e)
                 {
-                    Log.ErrorFormat("Common error: {0}", e);
+                    Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
                 }
             }
         }
@@ -266,23 +266,41 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <returns>A started countdown.</returns>
         private Countdown SetNewJob(OrgUnitConfig orgUnitConfig)
         {
-            Countdown job = null;
-
             if (!this.jobs.ContainsKey(orgUnitConfig.EntityId) && orgUnitConfig.SchedulerActive)
             {
+                Log.InfoFormat(Properties.Resources.SCHEDULER_CREATE_NEW_JOB, orgUnitConfig);
+
+                DateTime endTime = DateTime.Now;
+                TimeSpan repeatIn = new TimeSpan();
+
                 var now = DateTime.Now;
                 var startTime = now;
 
+                try
+                {
 #if DEBUG
-                var endTime = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, orgUnitConfig.Time);
-                var repeatIn = new TimeSpan(0, 0, orgUnitConfig.Days, orgUnitConfig.Time);
+                    endTime = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, orgUnitConfig.Time);
+                    repeatIn = new TimeSpan(0, 0, orgUnitConfig.Days, orgUnitConfig.Time);
 #else
-                var endTime = new DateTime(now.Year, now.Month, now.Day, orgUnitConfig.Time, 0, 0);
-                var repeatIn = new TimeSpan(orgUnitConfig.Days, orgUnitConfig.Time, 0, 0);
+                    var endTime = new DateTime(now.Year, now.Month, now.Day, orgUnitConfig.Time, 0, 0);
+                    var repeatIn = new TimeSpan(orgUnitConfig.Days, orgUnitConfig.Time, 0, 0);
 #endif
+                }
+                catch
+                {
+                    EmailNotifier mailNotifier = new EmailNotifier();
+
+                    var subject = "Wrong time format";
+                    var body = string.Format("The scheduler time of system {0} could not be set.");
+
+                    mailNotifier.SendMailToEntityOwner(orgUnitConfig, subject, body);
+
+                    return null;
+                }
+
                 var time = new Time(startTime, endTime, repeatIn, orgUnitConfig.EntityId, true);
 
-                job = new Countdown(orgUnitConfig, orgUnitConfig.EntityId, time);
+                var job = new Countdown(orgUnitConfig, orgUnitConfig.EntityId, time);
                 job.OnZero += new Countdown.ZeroEventHandler(this.Job_OnZero);
                 job.OnError += new Countdown.ErrorEventHandler(this.Job_OnError);
 #if DEBUG
@@ -290,13 +308,17 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 #endif
 
                 this.StartJob(orgUnitConfig, job);
+
+                return job;
             }
             else if (orgUnitConfig.SchedulerActive)
             {
                 return this.jobs[orgUnitConfig.EntityId];
             }
 
-            return job;
+            Log.WarnFormat(Properties.Resources.SCHEDULER_CANT_SET_JOB, orgUnitConfig);
+
+            return null;
         }
 
         /// <summary>
