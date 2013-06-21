@@ -39,7 +39,7 @@
                     <tbody>
                         
                         <% 
-                            var items = this.ViewData["orgUnits"] as List<OrgUnit>;
+                            var items = this.ViewData["orgUnits"] as OrgUnit[];
                             HSA.InfoSys.Common.Logging.Logger<string>.GetLogger("SystemIndex").DebugFormat("Items: {0}", items);
                            foreach (var item in items)
                            { %>

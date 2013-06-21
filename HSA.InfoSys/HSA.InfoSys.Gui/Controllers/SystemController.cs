@@ -47,7 +47,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 int uid = int.Parse(userid);
                 Log.DebugFormat("Got user id {0}", uid);
 
-                var orgUnits = cc.GetOrgUnitsByUserID(uid).ToList<OrgUnit>();
+                var orgUnits = cc.GetOrgUnitsByUserID(uid);
                 Log.DebugFormat("Got org units {0}", orgUnits);
 
                 this.ViewData["orgUnits"] = orgUnits;
