@@ -240,13 +240,13 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             using (ISession session = Session)
             using (ITransaction transaction = session.BeginTransaction())
             {
-                var orgUnit = session.QueryOver<OrgUnit>()
+                var orgUnits = session.QueryOver<OrgUnit>()
                     .Where(x => x.UserId == userID)
                     .List<OrgUnit>() as List<OrgUnit>;
 
-                Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ORGUNIT_BY_USERID, orgUnit, userID);
+                Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ORGUNIT_BY_USERID, orgUnits, userID);
 
-                return orgUnit.ToArray();
+                return orgUnits.ToArray();
             }
         }
 

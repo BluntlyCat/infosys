@@ -44,10 +44,11 @@ namespace HSA.InfoSys.Gui.Controllers
                 MembershipUser membershipuser = Membership.GetUser();
 
                 string userid = membershipuser.ProviderUserKey.ToString();
+                int uid = int.Parse(userid);
+                Log.DebugFormat("Got user id {0}", uid);
 
-                int id = Convert.ToInt32(userid);
-
-                var orgUnits = cc.GetOrgUnitsByUserID(id).ToList<OrgUnit>();
+                var orgUnits = cc.GetOrgUnitsByUserID(uid).ToList<OrgUnit>();
+                Log.DebugFormat("Got org units {0}", orgUnits);
 
                 this.ViewData["orgUnits"] = orgUnits;
 
