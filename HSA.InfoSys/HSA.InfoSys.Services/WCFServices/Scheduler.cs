@@ -279,10 +279,10 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 try
                 {
 #if DEBUG
-                    endTime = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, orgUnitConfig.Time);
+                    endTime = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second).AddMinutes(orgUnitConfig.Days);
                     repeatIn = new TimeSpan(0, 0, orgUnitConfig.Days, orgUnitConfig.Time);
 #else
-                    var endTime = new DateTime(now.Year, now.Month, now.Day, orgUnitConfig.Time, 0, 0);
+                    var endTime = new DateTime(now.Year, now.Month, now.Day, orgUnitConfig.Time.RepeatIn.Hours, 0, 0);
                     var repeatIn = new TimeSpan(orgUnitConfig.Days, orgUnitConfig.Time, 0, 0);
 #endif
                 }

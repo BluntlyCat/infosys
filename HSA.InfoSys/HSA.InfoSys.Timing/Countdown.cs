@@ -140,9 +140,21 @@ namespace HSA.InfoSys.Common.Timing
             var now = DateTime.Now;
             var startTime = now;
 #if DEBUG
-            var endTime = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute + this.Time.RepeatIn.Minutes, this.Time.RepeatIn.Seconds);
+            var endTime = new DateTime(
+                now.Year,
+                now.Month,
+                now.Day,
+                now.Hour,
+                now.Minute,
+                this.Time.RepeatIn.Seconds).AddMinutes(this.Time.RepeatIn.Days);
 #else
-            var endTime = new DateTime(now.Year, now.Month, now.Day + this.Time.RepeatIn.Days, this.Time.RepeatIn.Hours, 0, 0);
+            var endTime = new DateTime(
+                now.Year,
+                now.Month,
+                now.Day,
+                this.Time.RepeatIn.Hours,
+                0,
+                0).AddDays(this.Time.RepeatIn.Days);
 #endif
             Log.DebugFormat(Properties.Resources.LOG_COUNTDOWN_SET_NEW_REPEAT_TIME, endTime);
 
