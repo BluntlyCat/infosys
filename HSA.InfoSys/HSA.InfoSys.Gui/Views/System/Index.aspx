@@ -40,6 +40,7 @@
                         
                         <% 
                             var items = this.ViewData["orgUnits"];
+                            HSA.InfoSys.Common.Logging.Logger<string>.GetLogger("SystemIndex").DebugFormat("Items: {0}", items);
                            foreach (var item in items as List<OrgUnit>)
                            { %>
 
