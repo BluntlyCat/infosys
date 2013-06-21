@@ -107,7 +107,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         public string[] LoadThisEntities(params string[] param)
         {
             List<string> entities = new List<string>();
-            var assembly = Assembly.GetAssembly(typeof(DBManager));
+            var assembly = Assembly.GetAssembly(typeof(Entity));
             var types = assembly.GetTypes();
 
             Log.InfoFormat(Properties.Resources.DBMANAGER_EAGER_LOAD_THIS_ENTITIES, param);

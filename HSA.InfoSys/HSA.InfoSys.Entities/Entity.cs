@@ -25,8 +25,7 @@ namespace HSA.InfoSys.Common.Entities
         /// </summary>
         protected Entity()
         {
-            var type = this.GetType().ToString().Split('.');
-            this.Type = type[type.Length - 1];
+            this.Type = this.GetType().Name;
         }
 
         /// <summary>
