@@ -329,7 +329,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 string userid = membershipuser.ProviderUserKey.ToString();
                 int id = Convert.ToInt32(userid);
 
-                var orgUnits = cc.GetOrgUnitsByUserID(id).ToList<OrgUnit>();
+                var orgUnits = cc.GetOrgUnitsByUserID(id, cc.LoadThisEntities("OrgUnitConfig")).ToList<OrgUnit>();
 
                 OrgUnit delItem = null;
 
