@@ -27,8 +27,8 @@
 
             try
             {
-                var proxy = WCFControllerClient<IDBManager>.ClientProxy;
-                var orgUnit = proxy.GetEntity(orgUnitGUID, proxy.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
+                var dbManager = DBManager.ManagerFactory;
+                var orgUnit = dbManager.GetEntity(orgUnitGUID, dbManager.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
                 var mailBody = string.Empty;
                 var oldResultGUID = Guid.Empty;
 
@@ -48,7 +48,7 @@
                     {
                         if (oldResultGUID.Equals(Guid.Empty) || oldResultGUID.Equals(result.EntityId) == false)
                         {
-                            var component = proxy.GetEntity(result.ComponentGUID) as Component;
+                            var component = dbManager.GetEntity(result.ComponentGUID) as Component;
                             mailBody += string.Format("{0}:\n\n", component.Name);
                         }
 
@@ -78,8 +78,8 @@
         {
             try
             {
-                var proxy = WCFControllerClient<IDBManager>.ClientProxy;
-                var orgUnit = proxy.GetEntity(orgUnitGUID, proxy.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
+                var dbManager = DBManager.ManagerFactory;
+                var orgUnit = dbManager.GetEntity(orgUnitGUID, dbManager.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
                 var mailBody = string.Format("The crawl for {0} failed.", orgUnit.Name);
 
 #warning Emails können null sein? Die OrgUnitConfig wird ja von einem Benutzer angelegt, dessen Email Adresse im System hinterlegt ist...
