@@ -419,8 +419,6 @@ namespace HSA.InfoSys.Gui.Controllers
                 config.Days = Convert.ToInt32(sc_days);
                 config.Time = Convert.ToInt32(sc_time);
 
-                // TODO: vergleich der zeiten
-
                 // set schedulerOn, days, time
                 if (this.Request["schedulerOn"] == "on")
                 {
@@ -547,21 +545,36 @@ namespace HSA.InfoSys.Gui.Controllers
                 // get data from GET-Request
                 var orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
+                string compGUID = Request.QueryString["compguid"];
+                //var componentGUID = Guid.Parse(Request.QueryString["componentguid"]);
+
                 // init
                 var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
                 // get all components by OrgUnitId
                 var components = cc.GetComponentsByOrgUnitId(orgUnitGUID).ToList<Component>();
 
-                foreach (var component in components)
+                //if a compGUID was selected by the user then show the results 
+                //else show the results of the first component
+                if (compGUID != null)
                 {
-                    var results = cc.GetResultsByComponentId(component.EntityId).ToList<Result>();
-
-                    foreach (var result in results)
-                    {
-                    }
+                    var selectedCompGUID = Guid.Parse(compGUID);
+                    var component = cc.GetEntity(selectedCompGUID) as Component;
+                    var results = cc.GetResultsByComponentId(selectedCompGUID).ToList<Result>();
+                    this.ViewData["selectedComp"] = component.Name;
+                    this.ViewData["results"] = results;
+                }
+                else
+                {
+                    var selectedComp = components[0];
+                    var results = cc.GetResultsByComponentId(selectedComp.EntityId).ToList<Result>();
+                    this.ViewData["selectedComp"] = selectedComp.Name;
+                    this.ViewData["results"] = results;
                 }
 
+
+                this.ViewData["systemguid"] = orgUnitGUID;
+                this.ViewData["components"] = components;
                 this.ViewData["navid"] = "mysystems";
             }
             catch (CommunicationException ce)
