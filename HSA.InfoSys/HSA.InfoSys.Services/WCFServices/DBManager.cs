@@ -250,6 +250,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                     foreach (var orgUnit in orgUnits)
                     {
                         orgUnit.Unproxy(types);
+                        Log.DebugFormat("OrgUnitConfig after call to unproxy: {0}", orgUnit.OrgUnitConfig);
                     }
                 }
 
