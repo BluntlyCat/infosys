@@ -199,7 +199,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
                 // get OrgUnit
-                var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnit")) as OrgUnit;
+                var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnit", "OrgUnitConfig")) as OrgUnit;
 
                 // get all components by OrgUnitId
                 var components = cc.GetComponentsByOrgUnitId(orgUnitGUID).ToList<Component>();
