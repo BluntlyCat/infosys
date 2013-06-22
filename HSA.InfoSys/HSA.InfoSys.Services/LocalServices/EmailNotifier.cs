@@ -44,7 +44,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             try
             {
-                Log.InfoFormat("Search finished for OrgUnit: [{0}]", orgUnitGUID);
+                Log.InfoFormat(Properties.Resources.EMAIL_NOTIFIER_SEARCH_FINISHED, orgUnitGUID);
 
                 var orgUnit = this.dbManager.GetEntity(
                     orgUnitGUID,
@@ -55,11 +55,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                 var addresses = this.DeserializeAddresses(orgUnit);
                 var subject = string.Format(
-                    "New issues for System {0} found.",
+                    Properties.Resources.EMAIL_NOTIFIER_ISSUE_FOUND_SUBJECT,
                     orgUnit.Name);
 
                 var mail = this.BuildMail(
-                    "michael.juenger1@hs-augsburg.de",
+                    Properties.Settings.Default.EMAIL_NOTIFIER_FROM,
                     subject);
 
                 this.AddMailRecipient(mail, orgUnitGUID, addresses);
@@ -69,23 +69,19 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     if (oldResultGUID.Equals(Guid.Empty) || oldResultGUID.Equals(result.EntityId) == false)
                     {
                         var component = this.dbManager.GetEntity(result.ComponentGUID) as Component;
-                        mailBody += string.Format("{0}:\n\n", component.Name);
+                        mailBody += string.Format("{0}:\n", component.Name);
                     }
 
                     oldResultGUID = result.EntityId;
-                    mailBody += string.Format("{0} - {1}\n", result.Title, result.URL);
+                    mailBody += string.Format("\t{0} - {1}\n\n", result.Title, result.URL);
                 }
 
                 this.AddMailBody(mail, mailBody);
                 this.SendMail(mail);
             }
-            catch (CommunicationException ce)
-            {
-                Log.ErrorFormat("Communication error: {0}", ce);
-            }
             catch (Exception e)
             {
-                Log.ErrorFormat("Common error: {0}", e);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
             }
         }
 
@@ -97,32 +93,28 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             try
             {
-                Log.WarnFormat("Crawl failed for OrgUnit: [{0}]", orgUnitGUID);
+                Log.WarnFormat(Properties.Resources.EMAIL_NOTIFIER_CRAWL_FAILED, orgUnitGUID);
 
                 var orgUnit = this.dbManager.GetEntity(
                     orgUnitGUID,
                     this.dbManager.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
 
-                var mailBody = string.Format("The crawl for {0} failed.", orgUnit.Name);
+                var mailBody = string.Format(Properties.Resources.EMAIL_NOTIFIER_CRAWL_FAILED_BODY, orgUnit.Name);
 
                 var addresses = this.DeserializeAddresses(orgUnit);
 
                 var mail = this.BuildMail(
-                    "michael.juenger1@hs-augsburg.de",
-                    "Crawl failed.");
+                    Properties.Settings.Default.EMAIL_NOTIFIER_FROM,
+                    Properties.Resources.EMAIL_NOTIFIER_CRAWL_FAILED_SUBJECT);
 
                 this.AddMailRecipient(mail, orgUnitGUID, addresses);
 
                 this.AddMailBody(mail, mailBody);
                 this.SendMail(mail);
             }
-            catch (CommunicationException ce)
-            {
-                Log.ErrorFormat("Communication error: {0}", ce);
-            }
             catch (Exception e)
             {
-                Log.ErrorFormat("Common error: {0}", e);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
             }
         }
 
@@ -134,7 +126,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="body">The body.</param>
         public void SendMailToEntityOwner(Entity entity, string subject, string body)
         {
-            Log.DebugFormat("Send mail: entity: [{0}], subject: [{1}], body: [{2}]", entity, subject, body);
+            Log.DebugFormat(Properties.Resources.EMAIL_NOTIFIER_SEND_MAIL_TO_ENTITY_OWNER, entity, subject, body);
 
             var orgUnit = this.GetOrgUnit(entity);
 
@@ -143,7 +135,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             var addresses = this.DeserializeAddresses(orgUnit);
 
             var mail = this.BuildMail(
-                "michael.juenger1@hs-augsburg.de",
+                Properties.Settings.Default.EMAIL_NOTIFIER_FROM,
                 subject);
 
             this.AddMailRecipient(mail, orgUnit.EntityId, addresses);
@@ -195,7 +187,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 }
             }
 
-            Log.DebugFormat("Got org unit [{0}] for entity [{1}]", orgUnit, entity);
+            Log.DebugFormat(Properties.Resources.EMAIL_NOTIFIER_GET_ORG_UNIT, orgUnit, entity);
 
             return orgUnit;
         }
@@ -212,13 +204,13 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             {
                 var addresses = JsonConvert.DeserializeObject<string[]>(orgUnit.OrgUnitConfig.Emails).ToList<string>();
 
-                Log.DebugFormat("Deserializing of addresses [{0}] finished.", addresses);
+                Log.DebugFormat(Properties.Resources.EMAIL_NOTIFIER_DESERIALIZE_ADDESSSES, addresses);
 
                 return addresses;
             }
             else
             {
-                Log.Warn("No email addresses found.");
+                Log.Warn(Properties.Resources.EMAIL_NOTIFIER_NO_ADDRESSES);
                 return new List<string>();
             }
         }
@@ -233,7 +225,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </returns>
         private MailMessage BuildMail(string from, string subject)
         {
-            Log.DebugFormat("Build mail from [{0}] with subject: [{1}]", from, subject);
+            Log.DebugFormat(Properties.Resources.EMAIL_NOTIFIER_BUID_MAIL, from, subject);
 
             MailMessage mail = new MailMessage();
 
@@ -254,7 +246,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             foreach (var address in addresses)
             {
                 mail.To.Add(address);
-                Log.DebugFormat("Send mail to {0} for OrgUnit {1}.", address, orgUnitGUID);
+                Log.DebugFormat(Properties.Resources.EMAIL_NOTIFIER_ADD_RECIPIENT, address, orgUnitGUID);
             }
         }
 
@@ -265,7 +257,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="body">The body.</param>
         private void AddMailBody(MailMessage mail, string body)
         {
-            Log.DebugFormat("Add mail body: [{0}]", body);
+            Log.DebugFormat(Properties.Resources.EMAIL_NOTIFIER_ADD_MAILBODY, body);
             mail.Body = body;
         }
 
@@ -275,8 +267,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="mail">The mail.</param>
         private void SendMail(MailMessage mail)
         {
-            Log.InfoFormat("Send mail from {0} with subject {1} to {2}", mail.From, mail.Subject, mail.To);
-            SmtpClient smtpServer = new SmtpClient("smtp.hs-augsburg.de");
+            Log.InfoFormat(Properties.Resources.EMAIL_NOTIFIER_SEND_MAIL, mail.From, mail.Subject, mail.To);
+            SmtpClient smtpServer = new SmtpClient(Properties.Settings.Default.SMTP_SERVER);
             smtpServer.Send(mail);
         }
     }

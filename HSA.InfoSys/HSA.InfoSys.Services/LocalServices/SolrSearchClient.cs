@@ -107,7 +107,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             }
             catch
             {
-                return new SolrResultPot();
+                return new SolrResultPot(this.ComponentGUID);
             }
         }
 

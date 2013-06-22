@@ -211,5 +211,23 @@ namespace HSA.InfoSys.Common.Services.Properties {
                 return ((string)(this["CERTIFICATE_PATH_MONO"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("smtp.hs-augsburg.de")]
+        public string SMTP_SERVER {
+            get {
+                return ((string)(this["SMTP_SERVER"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("noreply@infosys.hs-augsburg.de")]
+        public string EMAIL_NOTIFIER_FROM {
+            get {
+                return ((string)(this["EMAIL_NOTIFIER_FROM"]));
+            }
+        }
     }
 }

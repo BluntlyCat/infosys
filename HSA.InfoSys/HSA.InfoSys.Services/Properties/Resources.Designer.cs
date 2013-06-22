@@ -241,6 +241,123 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Add mail body: [{0}] ähnelt.
+        /// </summary>
+        internal static string EMAIL_NOTIFIER_ADD_MAILBODY {
+            get {
+                return ResourceManager.GetString("EMAIL_NOTIFIER_ADD_MAILBODY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Add mail recipient {0} for OrgUnit {1}. ähnelt.
+        /// </summary>
+        internal static string EMAIL_NOTIFIER_ADD_RECIPIENT {
+            get {
+                return ResourceManager.GetString("EMAIL_NOTIFIER_ADD_RECIPIENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Build mail from [{0}] with subject: [{1}] ähnelt.
+        /// </summary>
+        internal static string EMAIL_NOTIFIER_BUID_MAIL {
+            get {
+                return ResourceManager.GetString("EMAIL_NOTIFIER_BUID_MAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Crawl failed for OrgUnit: [{0}] ähnelt.
+        /// </summary>
+        internal static string EMAIL_NOTIFIER_CRAWL_FAILED {
+            get {
+                return ResourceManager.GetString("EMAIL_NOTIFIER_CRAWL_FAILED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The crawl for {0} failed. ähnelt.
+        /// </summary>
+        internal static string EMAIL_NOTIFIER_CRAWL_FAILED_BODY {
+            get {
+                return ResourceManager.GetString("EMAIL_NOTIFIER_CRAWL_FAILED_BODY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Crawl failed. ähnelt.
+        /// </summary>
+        internal static string EMAIL_NOTIFIER_CRAWL_FAILED_SUBJECT {
+            get {
+                return ResourceManager.GetString("EMAIL_NOTIFIER_CRAWL_FAILED_SUBJECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Deserializing of addresses [{0}] finished. ähnelt.
+        /// </summary>
+        internal static string EMAIL_NOTIFIER_DESERIALIZE_ADDESSSES {
+            get {
+                return ResourceManager.GetString("EMAIL_NOTIFIER_DESERIALIZE_ADDESSSES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Got org unit [{0}] for entity [{1}] ähnelt.
+        /// </summary>
+        internal static string EMAIL_NOTIFIER_GET_ORG_UNIT {
+            get {
+                return ResourceManager.GetString("EMAIL_NOTIFIER_GET_ORG_UNIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die New issues for System {0} found. ähnelt.
+        /// </summary>
+        internal static string EMAIL_NOTIFIER_ISSUE_FOUND_SUBJECT {
+            get {
+                return ResourceManager.GetString("EMAIL_NOTIFIER_ISSUE_FOUND_SUBJECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No email addresses found. ähnelt.
+        /// </summary>
+        internal static string EMAIL_NOTIFIER_NO_ADDRESSES {
+            get {
+                return ResourceManager.GetString("EMAIL_NOTIFIER_NO_ADDRESSES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Search finished for OrgUnit: [{0}] ähnelt.
+        /// </summary>
+        internal static string EMAIL_NOTIFIER_SEARCH_FINISHED {
+            get {
+                return ResourceManager.GetString("EMAIL_NOTIFIER_SEARCH_FINISHED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Send mail from {0} with subject {1} to {2} ähnelt.
+        /// </summary>
+        internal static string EMAIL_NOTIFIER_SEND_MAIL {
+            get {
+                return ResourceManager.GetString("EMAIL_NOTIFIER_SEND_MAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Send mail: entity: [{0}], subject: [{1}], body: [{2}] ähnelt.
+        /// </summary>
+        internal static string EMAIL_NOTIFIER_SEND_MAIL_TO_ENTITY_OWNER {
+            get {
+                return ResourceManager.GetString("EMAIL_NOTIFIER_SEND_MAIL_TO_ENTITY_OWNER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Error during time initialisation, error was:\n{0} ähnelt.
         /// </summary>
         internal static string ERROR_TIME_INIT {
@@ -439,7 +556,7 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die New craw jobs received, set as running crawls. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die New crawl jobs received, set as running crawls. ähnelt.
         /// </summary>
         internal static string NUTCH_CONTROLLER_SET_RUNNING_CRAWLS {
             get {
