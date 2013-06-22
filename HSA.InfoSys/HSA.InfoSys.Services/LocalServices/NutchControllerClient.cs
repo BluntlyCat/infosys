@@ -81,7 +81,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 topN);
 
             nutch.StartInfo.FileName = Properties.Settings.Default.NUTCH_COMMAND;
-            nutch.StartInfo.Arguments = crawlRequest + " > nutch.log";
+            nutch.StartInfo.Arguments = crawlRequest;
 
             Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CRAWL_PROCESS_CREATED, crawlRequest);
 
