@@ -33,6 +33,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private Process crawlProcess;
 
         /// <summary>
+        /// The lock mutex.
+        /// </summary>
+        private object lockMutex = new object();
+
+        /// <summary>
         /// Prevents a default instance of the <see cref="NutchController"/> class from being created.
         /// </summary>
         private NutchController()
@@ -78,19 +83,18 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="urls">The URLs.</param>
         public void SetNextCrawl(string folder, int depth, int topN, params string[] urls)
         {
-            this.ServiceMutex.WaitOne();
-
-            if (!this.Running)
+            lock (this.lockMutex)
             {
-                var nutchClient = new NutchControllerClient();
-                this.crawlProcess = nutchClient.CreateCrawlProcess(folder, depth, topN, urls);
+                if (!this.Running)
+                {
+                    var nutchClient = new NutchControllerClient();
+                    this.crawlProcess = nutchClient.CreateCrawlProcess(folder, depth, topN, urls);
 
-                Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_SET_PENDING_CRAWL, urls);
+                    Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_SET_PENDING_CRAWL, urls);
 
-                this.StartService();
+                    this.StartService();
+                }
             }
-
-            this.ServiceMutex.ReleaseMutex();
         }
 
         /// <summary>
