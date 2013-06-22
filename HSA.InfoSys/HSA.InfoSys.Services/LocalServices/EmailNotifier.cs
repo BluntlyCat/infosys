@@ -44,6 +44,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             try
             {
+                Log.InfoFormat("Search finished for OrgUnit: [{0}]", orgUnitGUID);
+
                 var orgUnit = this.dbManager.GetEntity(
                     orgUnitGUID,
                     this.dbManager.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
@@ -51,7 +53,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 var mailBody = string.Empty;
                 var oldResultGUID = Guid.Empty;
 
-                var addresses = DeserializeAddresses(orgUnit);
+                var addresses = this.DeserializeAddresses(orgUnit);
                 var subject = string.Format(
                     "New issues for System {0} found.",
                     orgUnit.Name);
@@ -95,13 +97,15 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             try
             {
+                Log.WarnFormat("Crawl failed for OrgUnit: [{0}]", orgUnitGUID);
+
                 var orgUnit = this.dbManager.GetEntity(
                     orgUnitGUID,
                     this.dbManager.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
 
                 var mailBody = string.Format("The crawl for {0} failed.", orgUnit.Name);
 
-                var addresses = DeserializeAddresses(orgUnit);
+                var addresses = this.DeserializeAddresses(orgUnit);
 
                 var mail = this.BuildMail(
                     "michael.juenger1@hs-augsburg.de",
@@ -130,11 +134,13 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="body">The body.</param>
         public void SendMailToEntityOwner(Entity entity, string subject, string body)
         {
-            var orgUnit = GetOrgUnit(entity);
+            Log.DebugFormat("Send mail: entity: [{0}], subject: [{1}], body: [{2}]", entity, subject, body);
+
+            var orgUnit = this.GetOrgUnit(entity);
 
             var mailBody = body;
 
-            var addresses = DeserializeAddresses(orgUnit);
+            var addresses = this.DeserializeAddresses(orgUnit);
 
             var mail = this.BuildMail(
                 "michael.juenger1@hs-augsburg.de",
@@ -151,7 +157,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>The OrgUnitConfig.</returns>
-        private static OrgUnit GetOrgUnit(Entity entity)
+        private OrgUnit GetOrgUnit(Entity entity)
         {
             OrgUnit orgUnit = null;
 
@@ -189,6 +195,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 }
             }
 
+            Log.DebugFormat("Got org unit [{0}] for entity [{1}]", orgUnit, entity);
+
             return orgUnit;
         }
 
@@ -197,16 +205,20 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="orgUnit">The org unit.</param>
         /// <returns>A string array containing the mail addresses.</returns>
-        private static IList<string> DeserializeAddresses(OrgUnit orgUnit)
+        private IList<string> DeserializeAddresses(OrgUnit orgUnit)
         {
 #warning Emails können null sein? Die OrgUnitConfig wird ja von einem Benutzer angelegt, dessen Email Adresse im System hinterlegt ist...
             if (orgUnit.OrgUnitConfig.Emails != null)
             {
-                var addresses = JsonConvert.DeserializeObject<string[]>(orgUnit.OrgUnitConfig.Emails);
-                return addresses.ToList<string>();
+                var addresses = JsonConvert.DeserializeObject<string[]>(orgUnit.OrgUnitConfig.Emails).ToList<string>();
+
+                Log.DebugFormat("Deserializing of addresses [{0}] finished.", addresses);
+
+                return addresses;
             }
             else
             {
+                Log.Warn("No email addresses found.");
                 return new List<string>();
             }
         }
@@ -221,6 +233,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </returns>
         private MailMessage BuildMail(string from, string subject)
         {
+            Log.DebugFormat("Build mail from [{0}] with subject: [{1}]", from, subject);
+
             MailMessage mail = new MailMessage();
 
             mail.From = new MailAddress(from);
@@ -251,6 +265,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="body">The body.</param>
         private void AddMailBody(MailMessage mail, string body)
         {
+            Log.DebugFormat("Add mail body: [{0}]", body);
             mail.Body = body;
         }
 
@@ -260,6 +275,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="mail">The mail.</param>
         private void SendMail(MailMessage mail)
         {
+            Log.InfoFormat("Send mail from {0} with subject {1} to {2}", mail.From, mail.Subject, mail.To);
             SmtpClient smtpServer = new SmtpClient("smtp.hs-augsburg.de");
             smtpServer.Send(mail);
         }
