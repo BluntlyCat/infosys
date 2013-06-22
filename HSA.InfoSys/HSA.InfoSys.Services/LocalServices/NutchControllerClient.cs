@@ -50,14 +50,16 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Starts the crawling.
+        /// Creates the crawl process.
         /// </summary>
         /// <param name="userName">Name of the user.</param>
         /// <param name="depth">The depth.</param>
         /// <param name="topN">The top N.</param>
         /// <param name="urls">The URLs.</param>
-        /// <returns>A new crawl process.</returns>
-        public Process GetCrawlProcess(string userName, int depth, int topN, params string[] urls)
+        /// <returns>
+        /// A new crawl process.
+        /// </returns>
+        public Process CreateCrawlProcess(string userName, int depth, int topN, params string[] urls)
         {
             Process nutch = new Process();
 
@@ -81,7 +83,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             nutch.StartInfo.FileName = Properties.Settings.Default.NUTCH_COMMAND;
             nutch.StartInfo.Arguments = crawlRequest;
 
-            Log.DebugFormat(Properties.Resources.CRAWL_REQUEST_SENT, crawlRequest);
+            Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CRAWL_PROCESS_CREATED, crawlRequest);
 
             return nutch;
         }

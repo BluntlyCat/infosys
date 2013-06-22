@@ -134,6 +134,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <param name="source">The source.</param>
         public void Job_OnZero(object sender, object source)
         {
+            Log.DebugFormat("Scheduler starts new job for {0}", source);
+
             var job = sender as Countdown;
             var config = job.Source as OrgUnitConfig;
 
@@ -157,21 +159,19 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         {
             if (success)
             {
-                Log.InfoFormat(Properties.Resources.SCHEDULER_CRAWL_SUCCEEDED, orgUnitGUID);
                 var solrController = new SolrSearchController();
                 solrController.StartSearch(orgUnitGUID);
+
+                Log.InfoFormat(Properties.Resources.SCHEDULER_CRAWL_SUCCEEDED, orgUnitGUID);
             }
             else
             {
                 try
                 {
-                    Log.ErrorFormat(Properties.Resources.SCHEDULER_CRAWL_FAILED, orgUnitGUID);
                     EmailNotifier mailNotifier = new EmailNotifier();
                     mailNotifier.CrawlFailed(orgUnitGUID);
-                }
-                catch (CommunicationException ce)
-                {
-                    Log.ErrorFormat(Properties.Resources.WCF_COMMUNICATION_ERROR, ce);
+
+                    Log.ErrorFormat(Properties.Resources.SCHEDULER_CRAWL_FAILED, orgUnitGUID);
                 }
                 catch (Exception e)
                 {
@@ -188,7 +188,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         public void Job_OnError(object sender, string error)
         {
             var job = sender as Countdown;
-            Log.DebugFormat(Properties.Resources.LOG_TIME_VALIDATION_ERROR, job, error);
+            Log.ErrorFormat(Properties.Resources.LOG_TIME_VALIDATION_ERROR, job, error);
         }
 
 #if DEBUG
@@ -353,6 +353,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             this.ServiceMutex.WaitOne();
             this.dbManager.UpdateEntity(config);
             this.ServiceMutex.ReleaseMutex();
+
+            Log.DebugFormat("Next search for {0} starts in: [{1}]", config.EntityId, time);
 
             return time;
         }

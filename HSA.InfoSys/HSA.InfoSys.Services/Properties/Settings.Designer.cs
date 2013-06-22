@@ -61,7 +61,7 @@ namespace HSA.InfoSys.Common.Services.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("collection1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("InfoSys")]
         public string SOLR_COLLECTION {
             get {
                 return ((string)(this["SOLR_COLLECTION"]));

@@ -79,15 +79,6 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Crawl request was send: {0} ähnelt.
-        /// </summary>
-        internal static string CRAWL_REQUEST_SENT {
-            get {
-                return ResourceManager.GetString("CRAWL_REQUEST_SENT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Instance saved successfully in database. ähnelt.
         /// </summary>
         internal static string DBMANAGER_ADD_ENTITY {
@@ -430,20 +421,38 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Crawl process was created: {0} ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_CLIENT_CRAWL_PROCESS_CREATED {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_CLIENT_CRAWL_PROCESS_CREATED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set pending job: org unit: {0}, user: {1} ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_SET_PENDING_CRAWL {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_SET_PENDING_CRAWL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die New craw jobs received, set as running crawls. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_SET_RUNNING_CRAWLS {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_SET_RUNNING_CRAWLS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die NutchManager does not exist, create one ähnelt.
         /// </summary>
         internal static string NUTCHMANAGER_NO_MANAGER_FOUND {
             get {
                 return ResourceManager.GetString("NUTCHMANAGER_NO_MANAGER_FOUND", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Response for query [{0}] is: [{1}] ähnelt.
-        /// </summary>
-        internal static string QUERY_RESPONSE {
-            get {
-                return ResourceManager.GetString("QUERY_RESPONSE", resourceCulture);
             }
         }
         
@@ -583,24 +592,6 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Search started with query: [{0}]. ähnelt.
-        /// </summary>
-        internal static string SOLR_CLIENT_SEARCH_STARTED {
-            get {
-                return ResourceManager.GetString("SOLR_CLIENT_SEARCH_STARTED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Search started with query: [{0}]. ähnelt.
-        /// </summary>
-        internal static string SOLR_CLIENT_SEARCH_STARTED1 {
-            get {
-                return ResourceManager.GetString("SOLR_CLIENT_SEARCH_STARTED1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Socket to host: [{0}] closed. ähnelt.
         /// </summary>
         internal static string SOLR_CLIENT_SOCKET_CLOSED {
@@ -624,6 +615,42 @@ namespace HSA.InfoSys.Common.Services.Properties {
         internal static string SOLR_CLIENT_UNABLE_TO_CONNECT {
             get {
                 return ResourceManager.GetString("SOLR_CLIENT_UNABLE_TO_CONNECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Search for component {0} finished. ähnelt.
+        /// </summary>
+        internal static string SOLR_SEARCH_COMPONENT_FINISHED {
+            get {
+                return ResourceManager.GetString("SOLR_SEARCH_COMPONENT_FINISHED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Search for component {0} started. ähnelt.
+        /// </summary>
+        internal static string SOLR_SEARCH_COMPONENT_STARTED {
+            get {
+                return ResourceManager.GetString("SOLR_SEARCH_COMPONENT_STARTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Search for OrgUnit {0} finished. ähnelt.
+        /// </summary>
+        internal static string SOLR_SEARCH_ORGUNIT_FINISHED {
+            get {
+                return ResourceManager.GetString("SOLR_SEARCH_ORGUNIT_FINISHED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Response for query [{0}] is: [{1}] ähnelt.
+        /// </summary>
+        internal static string SOLR_SEARCH_RESULT {
+            get {
+                return ResourceManager.GetString("SOLR_SEARCH_RESULT", resourceCulture);
             }
         }
         

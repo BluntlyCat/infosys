@@ -96,10 +96,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             this.ServiceMutex.WaitOne();
 
             var nutchClient = new NutchControllerClient();
-            var process = nutchClient.GetCrawlProcess(userName, depth, topN, urls);
+            var process = nutchClient.CreateCrawlProcess(userName, depth, topN, urls);
 
             this.pendingCrawls.Add(orgUnitGUID, process);
             this.newCrawlJobArrived = true;
+
+            Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_SET_PENDING_CRAWL, orgUnitGUID, userName);
 
             this.ServiceMutex.ReleaseMutex();
         }
@@ -120,6 +122,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     this.newCrawlJobArrived = false;
                 }
 
+                Log.Debug(Properties.Resources.NUTCH_CONTROLLER_SET_RUNNING_CRAWLS);
+
                 this.ServiceMutex.ReleaseMutex();
 
                 foreach (var crawl in this.runningCrawls)
@@ -131,10 +135,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                         crawl.Value.Start();
                         crawl.Value.WaitForExit();
                         success = true;
+
+                        Log.InfoFormat("Crawl for OrgUnit {0} with arguments {1} finished.", crawl.Key, crawl.Value.StartInfo.Arguments);
                     }
                     catch (Exception e)
                     {
-                        Log.ErrorFormat("Common error: {0}", e);
+                        Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
                     }
 
                     if (this.OnCrawlFinished != null)

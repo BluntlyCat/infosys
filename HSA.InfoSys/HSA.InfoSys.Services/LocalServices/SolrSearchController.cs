@@ -7,7 +7,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System;
     using System.Linq;
-    using System.ServiceModel;
     using System.Threading;
     using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
@@ -72,8 +71,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             foreach (var component in components)
             {
-                Log.InfoFormat(Properties.Resources.SOLR_CLIENT_SEARCH_STARTED, component.Name);
-
                 var searchClient = new SolrSearchClient();
 
                 SolrResultPot resultPot = new SolrResultPot(component.EntityId);
@@ -99,12 +96,15 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                                 dbManager.AddEntity(result);
 
                                 Log.InfoFormat(
-                                    Properties.Resources.QUERY_RESPONSE,
+                                    Properties.Resources.SOLR_SEARCH_RESULT,
                                     result.ComponentGUID,
                                     result);
                             }
 
                             componentsFinished++;
+
+                            var comp = dbManager.GetEntity(resultPot.EntityId) as Component;
+                            Log.InfoFormat(Properties.Resources.SOLR_SEARCH_COMPONENT_FINISHED, comp.Name);
                         }
 
                         if (this.componentsFinished == components.Count)
@@ -113,14 +113,14 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                             {
                                 EmailNotifier mailNotifier = new EmailNotifier();
                                 mailNotifier.SearchFinished(this.OrgUnitGuid, resultPot.Results.ToArray());
-                            }
-                            catch (CommunicationException ce)
-                            {
-                                Log.ErrorFormat("Communication error: {0}", ce);
+
+                                var orgUnit = dbManager.GetEntity(orgUnitGuid) as OrgUnit;
+
+                                Log.InfoFormat(Properties.Resources.SOLR_SEARCH_ORGUNIT_FINISHED, orgUnit.Name);
                             }
                             catch (Exception e)
                             {
-                                Log.ErrorFormat("Common error: {0}", e);
+                                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
                             }
                         }
 
@@ -128,6 +128,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     });
 
                 invokeSearch.BeginInvoke(component.Name, component.EntityId, callback, this);
+
+                Log.InfoFormat(Properties.Resources.SOLR_SEARCH_COMPONENT_STARTED, component.Name);
             }
         }
     }
