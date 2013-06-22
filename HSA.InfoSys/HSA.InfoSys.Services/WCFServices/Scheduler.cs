@@ -349,7 +349,10 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             var time = countdown.SetTimeToRepeat();
 
             config.NextSearch = time.Endtime;
+
+            this.ServiceMutex.WaitOne();
             this.dbManager.UpdateEntity(config);
+            this.ServiceMutex.ReleaseMutex();
 
             return time;
         }

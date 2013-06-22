@@ -247,7 +247,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
                 // get orgUnit by id
-                var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnit")) as OrgUnit;
+                var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnit", "OrgUnitConfig")) as OrgUnit;
 
                 // log
                 Log.Info("add new component");
@@ -283,13 +283,13 @@ namespace HSA.InfoSys.Gui.Controllers
                 orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
                 // get compid from GET-Request
-                string compid = Request.QueryString["compid"];
+                Guid componentGUID = Guid.Parse(Request.QueryString["compid"]);
 
                 // init
                 var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
                 // get component by id
-                var component = cc.GetEntity(new Guid(compid), cc.LoadThisEntities("Component"));
+                var component = cc.GetEntity(componentGUID);
 
                 // delete component
                 cc.DeleteEntity(component);
@@ -331,22 +331,13 @@ namespace HSA.InfoSys.Gui.Controllers
 
                 var orgUnits = cc.GetOrgUnitsByUserID(id, cc.LoadThisEntities("OrgUnitConfig")).ToList<OrgUnit>();
 
-                OrgUnit delItem = null;
-
-                foreach (var item in orgUnits)
-                {
-                    if (item.EntityId == orgUnitGUID)
-                    {
-                        delItem = item;
-                    }
-                }
+                var delItem = orgUnits.Find(x => x.EntityId == orgUnitGUID);
 
                 orgUnits.Remove(delItem);
                 this.ViewData["orgUnits"] = orgUnits;
 
                 // get SystemConfig, OrgUnitConfig
-                var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
-                var config = orgUnit.OrgUnitConfig;
+                var config = delItem.OrgUnitConfig;
 
                 // set all config data for view
                 this.ViewData["schedulerActive"] = config.SchedulerActive;
@@ -498,13 +489,13 @@ namespace HSA.InfoSys.Gui.Controllers
                 orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
                 // get data from GET-Request
-                string loadedConfigId = Request["orgUnitConfigId"];
+                Guid loadedConfigId = Guid.Parse(Request["orgUnitConfigId"]);
 
                 // init
                 var cc = WCFControllerClient<IDBManager>.ClientProxy;
 
                 // get config from other orgUnit
-                var loadedConfig = cc.GetEntity(new Guid(loadedConfigId), cc.LoadThisEntities("OrgUnitConfig")) as OrgUnitConfig;
+                var loadedConfig = cc.GetEntity(loadedConfigId) as OrgUnitConfig;
 
                 // get SystemConfig, OrgUnitConfig
                 var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
