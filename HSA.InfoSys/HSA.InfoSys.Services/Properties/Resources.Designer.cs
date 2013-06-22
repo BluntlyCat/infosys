@@ -772,6 +772,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No results for {0} found. ähnelt.
+        /// </summary>
+        internal static string SOLR_SEARCH_NO_RESULTS {
+            get {
+                return ResourceManager.GetString("SOLR_SEARCH_NO_RESULTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Search for OrgUnit {0} finished. ähnelt.
         /// </summary>
         internal static string SOLR_SEARCH_ORGUNIT_FINISHED {

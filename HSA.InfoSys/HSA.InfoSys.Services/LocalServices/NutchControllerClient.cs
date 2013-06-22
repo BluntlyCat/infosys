@@ -157,7 +157,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             try
             {
-                using (StreamWriter sw = File.AppendText(file))
+                using (StreamWriter sw = File.CreateText(file))
                 {
                     foreach (string url in urls)
                     {

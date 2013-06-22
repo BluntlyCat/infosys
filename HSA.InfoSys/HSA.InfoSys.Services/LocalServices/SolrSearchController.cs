@@ -110,10 +110,17 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                         {
                             try
                             {
-                                EmailNotifier mailNotifier = new EmailNotifier();
-                                mailNotifier.SearchFinished(this.OrgUnitGuid, resultPot.Results.ToArray());
-
                                 var orgUnit = dbManager.GetEntity(orgUnitGuid) as OrgUnit;
+
+                                if (resultPot.HasResults)
+                                {
+                                    EmailNotifier mailNotifier = new EmailNotifier();
+                                    mailNotifier.SearchFinished(this.OrgUnitGuid, resultPot.Results.ToArray());
+                                }
+                                else
+                                {
+                                    Log.WarnFormat(Properties.Resources.SOLR_SEARCH_NO_RESULTS, orgUnit.Name);
+                                }
 
                                 Log.InfoFormat(Properties.Resources.SOLR_SEARCH_ORGUNIT_FINISHED, orgUnit.Name);
                             }

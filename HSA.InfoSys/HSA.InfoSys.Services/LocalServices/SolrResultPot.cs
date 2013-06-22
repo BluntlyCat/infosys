@@ -55,5 +55,19 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// The results.
         /// </value>
         public List<Result> Results { get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether this instance has results.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if this instance has results; otherwise, <c>false</c>.
+        /// </value>
+        public bool HasResults
+        {
+            get
+            {
+                return Results.Count > 0;
+            }
+        }
     }
 }
