@@ -87,21 +87,21 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// Sets the pending crawl.
         /// </summary>
         /// <param name="orgUnitGUID">The org unit GUID.</param>
-        /// <param name="userName">Name of the user.</param>
+        /// <param name="userId">Name of the user.</param>
         /// <param name="depth">The depth.</param>
         /// <param name="topN">The top N.</param>
         /// <param name="urls">The URLs.</param>
-        public void SetPendingCrawl(Guid orgUnitGUID, string userName, int depth, int topN, params string[] urls)
+        public void SetPendingCrawl(Guid orgUnitGUID, int userId, int depth, int topN, params string[] urls)
         {
             this.ServiceMutex.WaitOne();
 
             var nutchClient = new NutchControllerClient();
-            var process = nutchClient.CreateCrawlProcess(userName, depth, topN, urls);
+            var process = nutchClient.CreateCrawlProcess(userId, depth, topN, urls);
 
             this.pendingCrawls.Add(orgUnitGUID, process);
             this.newCrawlJobArrived = true;
 
-            Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_SET_PENDING_CRAWL, orgUnitGUID, userName);
+            Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_SET_PENDING_CRAWL, orgUnitGUID, userId);
 
             this.ServiceMutex.ReleaseMutex();
         }
@@ -120,9 +120,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     this.runningCrawls = this.pendingCrawls;
                     this.pendingCrawls = new Dictionary<Guid, Process>();
                     this.newCrawlJobArrived = false;
-                }
 
-                Log.Debug(Properties.Resources.NUTCH_CONTROLLER_SET_RUNNING_CRAWLS);
+                    Log.Debug(Properties.Resources.NUTCH_CONTROLLER_SET_RUNNING_CRAWLS);
+                }
 
                 this.ServiceMutex.ReleaseMutex();
 

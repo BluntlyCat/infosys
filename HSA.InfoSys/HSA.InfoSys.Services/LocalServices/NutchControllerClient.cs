@@ -52,25 +52,25 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Creates the crawl process.
         /// </summary>
-        /// <param name="userName">Name of the user.</param>
+        /// <param name="userId">Name of the user.</param>
         /// <param name="depth">The depth.</param>
         /// <param name="topN">The top N.</param>
         /// <param name="urls">The URLs.</param>
         /// <returns>
         /// A new crawl process.
         /// </returns>
-        public Process CreateCrawlProcess(string userName, int depth, int topN, params string[] urls)
+        public Process CreateCrawlProcess(int userId, int depth, int topN, params string[] urls)
         {
             Process nutch = new Process();
 
-            this.CreateUserDir(userName);
-            this.AddURL(userName, urls);
+            this.CreateUserDir(userId);
+            this.AddURL(userId, urls);
 
             var urlPath = string.Format(
                 Properties.Settings.Default.PATH_FORMAT_THREE,
                 this.homeDir,
                 Properties.Settings.Default.BASEURL_PATH,
-                userName);
+                userId);
 
             string crawlRequest =
                 string.Format(
@@ -91,15 +91,15 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Adds the URL.
         /// </summary>
-        /// <param name="user">The username.</param>
+        /// <param name="userId">The username.</param>
         /// <param name="urls">The URLs.</param>
-        private void AddURL(string user, params string[] urls)
+        private void AddURL(int userId, params string[] urls)
         {
             string userURLPath = string.Format(
                 Properties.Settings.Default.PATH_FORMAT_THREE,
                 this.homeDir,
                 Properties.Settings.Default.BASEURL_PATH,
-                user);
+                userId);
 
             var prefixUrls = new List<string>();
             var knownPrefixes = this.GetFileContent(Properties.Settings.Default.PREFIX, this.prefixPath);
@@ -125,14 +125,14 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Creates the user directory.
         /// </summary>
-        /// <param name="user">The username.</param>
-        private void CreateUserDir(string user)
+        /// <param name="userId">The username.</param>
+        private void CreateUserDir(int userId)
         {
             string newDirectory = string.Format(
                 Properties.Settings.Default.PATH_FORMAT_THREE,
                 this.homeDir,
                 Properties.Settings.Default.BASEURL_PATH,
-                user);
+                userId);
 
             var info = Directory.CreateDirectory(newDirectory);
 

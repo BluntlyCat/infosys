@@ -46,7 +46,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
                     {
                         case ConsoleKey.A:
                             Log.Info("Add new job and start crawling");
-                            controller.SetPendingCrawl(Guid.Empty, "webmaster1", 10, 10, "http://miitsoft.de", "http://microsoft.com");
+                            controller.SetPendingCrawl(Guid.Empty, 32, 10, 10, "http://miitsoft.de", "http://microsoft.com");
                             break;
                         case ConsoleKey.C:
                             Log.Info("Connect to SSH.");

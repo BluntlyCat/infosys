@@ -137,17 +137,21 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             Log.DebugFormat("Scheduler starts new job for {0}", source);
 
             var job = sender as Countdown;
-            var config = job.Source as OrgUnitConfig;
+            var orgUnitConfig = source as OrgUnitConfig;
+            var urls = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(orgUnitConfig.URLS);
+
+            var userId = DBManager.Session.QueryOver<OrgUnit>()
+                .Where(x => x.OrgUnitConfig.EntityId == orgUnitConfig.EntityId)
+                .SingleOrDefault().UserId;
 
             var orgUnitGUID = DBManager.Session.QueryOver<OrgUnit>()
-                .Where(u => u.OrgUnitConfig.EntityId == config.EntityId)
+                .Where(u => u.OrgUnitConfig.EntityId == orgUnitConfig.EntityId)
                 .SingleOrDefault().EntityId;
 
-            var time = this.SetNextSearch(config, job);
+            var time = this.SetNextSearch(orgUnitConfig, job);
             job.Start(time);
 
-#warning username must be set here
-            this.nutchController.SetPendingCrawl(orgUnitGUID, "michael", 1, 1);
+            this.nutchController.SetPendingCrawl(orgUnitGUID, userId, 10, 10, urls);
         }
 
         /// <summary>

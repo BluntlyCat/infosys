@@ -111,7 +111,7 @@ namespace HSA.InfoSys.Common.Timing
         /// <value>
         /// The source.
         /// </value>
-        public object Source { get; private set; }
+        private object Source { get; set; }
 
         /// <summary>
         /// Gets the ID.

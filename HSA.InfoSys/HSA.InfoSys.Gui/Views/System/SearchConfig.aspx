@@ -162,7 +162,7 @@
                         </div>
                         <div>
                             <button id="addWebsite" class="btn" type="button" style="margin-bottom: 10px; margin-right: 10px;">
-                                <i class="icon-plus"></i>&nbsp;&nbsp;<b>Add E-Mail address</b></button>
+                                <i class="icon-plus"></i>&nbsp;&nbsp;<b>Add URL</b></button>
                         </div>
                     </div>
 
