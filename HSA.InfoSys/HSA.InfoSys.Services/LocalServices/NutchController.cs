@@ -86,9 +86,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 this.crawlProcess = nutchClient.CreateCrawlProcess(folder, depth, topN, urls);
 
                 Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_SET_PENDING_CRAWL, urls);
-            }
 
-            this.StartService();
+                this.StartService();
+            }
 
             this.ServiceMutex.ReleaseMutex();
         }
