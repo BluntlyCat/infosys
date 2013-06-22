@@ -223,7 +223,7 @@ namespace HSA.InfoSys.Common.Services.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("noreply@infosys.hs-augsburg.de")]
+        [global::System.Configuration.DefaultSettingValueAttribute("michael.juenger1@hs-augsburg.de")]
         public string EMAIL_NOTIFIER_FROM {
             get {
                 return ((string)(this["EMAIL_NOTIFIER_FROM"]));
