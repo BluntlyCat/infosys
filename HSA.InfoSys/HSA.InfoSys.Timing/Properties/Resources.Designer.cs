@@ -484,7 +484,7 @@ namespace HSA.InfoSys.Common.Timing.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Starttime: {0}, Endtime: {1}, Remaintime: {2} ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ID: {0}, repeat: {1}, repeat in: {2} hours. ähnelt.
         /// </summary>
         internal static string TIME_TO_STRING {
             get {

@@ -7,6 +7,7 @@ namespace HSA.InfoSys.Common.Timing
 {
     using System;
     using System.Threading;
+    using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
     using log4net;
 
@@ -21,21 +22,6 @@ namespace HSA.InfoSys.Common.Timing
         private static readonly ILog Log = Logger<Type>.GetLogger(typeof(Countdown));
 
         /// <summary>
-        /// The tick mutex.
-        /// </summary>
-        private static Mutex onTickMutex = new Mutex();
-
-        /// <summary>
-        /// The tick mutex.
-        /// </summary>
-        private static Mutex onErrorMutex = new Mutex();
-
-        /// <summary>
-        /// The tick mutex.
-        /// </summary>
-        private static Mutex onZeroMutex = new Mutex();
-
-        /// <summary>
         /// The timer thread
         /// </summary>
         private Thread countdown;
@@ -43,29 +29,56 @@ namespace HSA.InfoSys.Common.Timing
         /// <summary>
         /// Initializes a new instance of the <see cref="Countdown" /> class.
         /// </summary>
-        /// <param name="source">The source.</param>
+        /// <param name="orgUnitConfig">The org unit config.</param>
         /// <param name="id">The id.</param>
-        /// <param name="time">The time.</param>
-        public Countdown(object source, Guid id, Time time = null)
+        /// <param name="zeroEventHandler">The zero event handler.</param>
+        public Countdown(OrgUnitConfig orgUnitConfig, Guid id, ZeroEventHandler zeroEventHandler)
         {
             Log.Debug(Properties.Resources.LOG_COUNTDOWN_INITIALIZE);
-            this.Source = source;
+            this.OrgUnitConfig = orgUnitConfig;
             this.ID = id;
+            this.OnZero = zeroEventHandler;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Countdown" /> class.
+        /// </summary>
+        /// <param name="orgUnitConfig">The org unit config.</param>
+        /// <param name="time">The time.</param>
+        /// <param name="zeroEventHandler">The zero event handler.</param>
+        public Countdown(OrgUnitConfig orgUnitConfig, Time time, ZeroEventHandler zeroEventHandler)
+        {
+            Log.Debug(Properties.Resources.LOG_COUNTDOWN_INITIALIZE);
+            this.OrgUnitConfig = orgUnitConfig;
             this.Time = time;
+            this.OnZero = zeroEventHandler;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Countdown" /> class.
+        /// </summary>
+        /// <param name="time">The time.</param>
+        /// <param name="zeroEventHandler">The zero event handler.</param>
+        public Countdown(Time time, ZeroEventHandler zeroEventHandler)
+        {
+            Log.Debug(Properties.Resources.LOG_COUNTDOWN_INITIALIZE);
+            this.Time = time;
+            this.OnZero = zeroEventHandler;
         }
 
         /// <summary>
         /// The delegate for indicating that the time value has changed.
         /// </summary>
         /// <param name="sender">The sender.</param>
-        public delegate void TickEventHandler(object sender);
+        /// <param name="remainTime">The remain time.</param>
+        public delegate void TickEventHandler(object sender, TimeSpan remainTime);
 
         /// <summary>
         /// The delegate for indicating that the time value is zero.
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="source">The source.</param>
-        public delegate void ZeroEventHandler(object sender, object source);
+        /// <param name="orgUnitConfig">The org unit config.</param>
+        public delegate void ZeroEventHandler(object sender, OrgUnitConfig orgUnitConfig);
 
         /// <summary>
         /// The delegate for indicating that there was an error.
@@ -78,11 +91,6 @@ namespace HSA.InfoSys.Common.Timing
         /// Occurs when [tick].
         /// </summary>
         public event TickEventHandler OnTick;
-
-        /// <summary>
-        /// Occurs when [zero].
-        /// </summary>
-        public event ZeroEventHandler OnZero;
 
         /// <summary>
         /// Occurs when [on error].
@@ -106,20 +114,28 @@ namespace HSA.InfoSys.Common.Timing
         public Time Time { get; private set; }
 
         /// <summary>
-        /// Gets the source.
-        /// </summary>
-        /// <value>
-        /// The source.
-        /// </value>
-        private object Source { get; set; }
-
-        /// <summary>
         /// Gets the ID.
         /// </summary>
         /// <value>
         /// The ID.
         /// </value>
         public Guid ID { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the org unit config.
+        /// </summary>
+        /// <value>
+        /// The org unit config.
+        /// </value>
+        private OrgUnitConfig OrgUnitConfig { get; set; }
+
+        /// <summary>
+        /// Gets or sets the on zero event handler.
+        /// </summary>
+        /// <value>
+        /// The on zero event handler.
+        /// </value>
+        private ZeroEventHandler OnZero { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Countdown"/> is canceled.
@@ -130,79 +146,33 @@ namespace HSA.InfoSys.Common.Timing
         private bool Cancel { get; set; }
 
         /// <summary>
+        /// Starts this instance.
+        /// </summary>
+        public void Start()
+        {
+            Log.Info(Properties.Resources.LOG_COUNTDOWN_START_COUNTDOWN);
+
+            this.Active = true;
+
+            this.SetTime();
+
+            this.countdown = new Thread(new ThreadStart(this.Run));
+            this.countdown.Start();
+        }
+
+        /// <summary>
         /// Sets the time to repeat.
         /// </summary>
-        /// <returns>A new time instance for next countdown.</returns>
-        public Time SetTimeToRepeat()
+        public void Restart()
         {
             Log.Info(Properties.Resources.LOG_COUNTDOWN_SET_REPEAT_TIME);
 
-            var now = DateTime.Now;
-            var startTime = now;
-#if DEBUG
-            var endTime = new DateTime(
-                now.Year,
-                now.Month,
-                now.Day,
-                now.Hour,
-                now.Minute,
-                this.Time.RepeatIn.Seconds).AddMinutes(this.Time.RepeatIn.Days);
-#else
-            var endTime = new DateTime(
-                now.Year,
-                now.Month,
-                now.Day,
-                this.Time.RepeatIn.Hours,
-                0,
-                0).AddDays(this.Time.RepeatIn.Days);
-#endif
-            Log.DebugFormat(Properties.Resources.LOG_COUNTDOWN_SET_NEW_REPEAT_TIME, endTime);
+            this.SetTime();
 
-            return new Time(startTime, endTime, this.Time.RepeatIn, this.ID, this.Time.Repeat);
-        }
-
-        /// <summary>
-        /// Starts this instance.
-        /// </summary>
-        /// <returns>True on success.</returns>
-        public bool Start()
-        {
-            return this.Start(this.Time);
-        }
-
-        /// <summary>
-        /// Starts this instance.
-        /// </summary>
-        /// <param name="time">The time.</param>
-        /// <returns>
-        /// True on success.
-        /// </returns>
-        public bool Start(Time time)
-        {
-            var errorMessage = string.Empty;
-
-            if (time != null && time.IsTimeInFuture)
+            if (this.Time != null)
             {
-                Log.Info(Properties.Resources.LOG_COUNTDOWN_START_COUNTDOWN);
-
-                this.Time = time;
-                this.Active = true;
-
-                this.countdown = new Thread(new ThreadStart(this.Run));
-                this.countdown.Start();
+                this.Start();
             }
-            else
-            {
-                errorMessage = Properties.Resources.TIME_VALIDATION_ERROR_INVALID_TIME_FORMAT;
-            }
-
-            if (this.OnError != null && !errorMessage.Equals(string.Empty))
-            {
-                this.OnError(this, errorMessage);
-                return false;
-            }
-
-            return true;
         }
 
         /// <summary>
@@ -214,6 +184,8 @@ namespace HSA.InfoSys.Common.Timing
             Log.Info(Properties.Resources.LOG_COUNTDOWN_STOP_COUNTDOWN);
             this.Cancel = cancel;
             this.Active = false;
+
+            this.countdown.Interrupt();
         }
 
         /// <summary>
@@ -224,7 +196,30 @@ namespace HSA.InfoSys.Common.Timing
         /// </returns>
         public override string ToString()
         {
-            return string.Format(Properties.Resources.COUNTDOWN_TO_STRING, this.Time, this.Source);
+            return string.Format(Properties.Resources.COUNTDOWN_TO_STRING, this.Time, this.OrgUnitConfig);
+        }
+
+        /// <summary>
+        /// Sets the time.
+        /// </summary>
+        private void SetTime()
+        {
+            var now = DateTime.Now;
+            DateTime repeatIn;
+
+            try
+            {
+#if DEBUG
+                repeatIn = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, 0).AddMinutes(this.OrgUnitConfig.Days);
+#else
+                repeatIn = new DateTime(now.Year, now.Month, now.Day, orgUnitConfig.Time, 0, 0).AddDays(orgUnitConfig.Days);
+#endif
+                this.Time = new Time(this.OrgUnitConfig.Time, this.OrgUnitConfig.Days, repeatIn, this.OrgUnitConfig.EntityId, true);
+            }
+            catch (Exception e)
+            {
+                this.OnError(this, e.Message);
+            }
         }
 
         /// <summary>
@@ -234,41 +229,31 @@ namespace HSA.InfoSys.Common.Timing
         {
             Log.Debug(Properties.Resources.LOG_COUNTDOWN_THREAD_IS_RUNNING);
 
-            while (this.Active && this.Time.RemainTime.Time.Ticks > 0)
+#if DEBUG
+            var runTime = this.Time.RepeatIn.Subtract(DateTime.Now);
+
+            while (this.Active && runTime.TotalSeconds > 0)
             {
                 if (this.OnTick != null)
                 {
-                    this.OnTick(this);
+                    this.OnTick(this, runTime);
                 }
-                
-                this.Time.RemainTime.Time = this.Time.Endtime.Subtract(DateTime.Now);
 
+                runTime = runTime.Subtract(new TimeSpan(0, 0, 1));
                 Thread.Sleep(1000);
             }
-
+#else
+            var runtime = this.Time.RepeatIn.Subtract(DateTime.Now).Ticks / 10000;
+            Thread.Sleep((int)runtime);
+#endif
             Log.Debug(Properties.Resources.LOG_COUNTDOWN_THREAD_ENDS);
-
-            this.ResetValues();
-
-            if (this.OnZero != null && !this.Cancel)
-            {
-                this.OnZero(this, this.Source);
-            }
-        }
-
-        /// <summary>
-        /// Resets the values.
-        /// </summary>
-        private void ResetValues()
-        {
-            Log.Debug(Properties.Resources.LOG_RESET_VALUES);
 
             this.Active = false;
 
-            Log.DebugFormat(
-                Properties.Resources.LOG_COUNTDOWN_RESET_VALUES,
-                this.Active,
-                this.Time);
+            if (!this.Cancel)
+            {
+                this.OnZero(this, this.OrgUnitConfig);
+            }
         }
     }
 }

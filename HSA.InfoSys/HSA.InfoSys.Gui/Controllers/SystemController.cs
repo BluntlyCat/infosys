@@ -434,7 +434,6 @@ namespace HSA.InfoSys.Gui.Controllers
                     config.Emails = null;
                 }
 
-
                 config.EmailActive = this.Request["emailsOn"] == "on";
 
                 // set Websites
@@ -537,8 +536,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 // get data from GET-Request
                 var orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
-                string compGUID = Request.QueryString["compguid"];
-                //var componentGUID = Guid.Parse(Request.QueryString["componentguid"]);
+                var componentGUID = Request.QueryString["compguid"];
 
                 // init
                 var cc = WCFControllerClient<IDBManager>.ClientProxy;
@@ -546,11 +544,11 @@ namespace HSA.InfoSys.Gui.Controllers
                 // get all components by OrgUnitId
                 var components = cc.GetComponentsByOrgUnitId(orgUnitGUID).ToList<Component>();
 
-                //if a compGUID was selected by the user then show the results 
-                //else show the results of the first component
-                if (compGUID != null)
+                // if a compGUID was selected by the user then show the results 
+                // else show the results of the first component
+                if (componentGUID != null)
                 {
-                    var selectedCompGUID = Guid.Parse(compGUID);
+                    var selectedCompGUID = Guid.Parse(componentGUID);
                     var component = cc.GetEntity(selectedCompGUID) as Component;
                     var results = cc.GetResultsByComponentId(selectedCompGUID).ToList<Result>();
                     this.ViewData["selectedComp"] = component.Name;
@@ -563,7 +561,6 @@ namespace HSA.InfoSys.Gui.Controllers
                     this.ViewData["selectedComp"] = selectedComp.Name;
                     this.ViewData["results"] = results;
                 }
-
 
                 this.ViewData["systemguid"] = orgUnitGUID;
                 this.ViewData["components"] = components;

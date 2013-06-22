@@ -57,7 +57,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// Connects this instance.
         /// </summary>
         /// <param name="orgUnitGuid">The org unit GUID.</param>
-        /// <param name="guiCallback">if set to <c>true</c> [GUI callback].</param>
         public void StartSearch(Guid orgUnitGuid)
         {
             this.OrgUnitGuid = orgUnitGuid;

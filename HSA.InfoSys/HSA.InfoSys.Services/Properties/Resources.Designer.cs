@@ -511,6 +511,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Remove OrgUnitConfig [{0}]. ähnelt.
+        /// </summary>
+        internal static string LOG_SCHEDULER_REMOVE {
+            get {
+                return ResourceManager.GetString("LOG_SCHEDULER_REMOVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Start service {0}. ähnelt.
         /// </summary>
         internal static string LOG_START_SERVICE {
@@ -547,7 +556,7 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Set pending job: org unit: {0}, user: {1} ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set pending job for urls: {0} ähnelt.
         /// </summary>
         internal static string NUTCH_CONTROLLER_SET_PENDING_CRAWL {
             get {
@@ -601,7 +610,16 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die The crawl finished without errors: OrgUnit [{0}]. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Scheduler starts new crawl job ähnelt.
+        /// </summary>
+        internal static string SCHEDULER_CRAWL_RESTART {
+            get {
+                return ResourceManager.GetString("SCHEDULER_CRAWL_RESTART", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The crawl finished without errors. ähnelt.
         /// </summary>
         internal static string SCHEDULER_CRAWL_SUCCEEDED {
             get {
@@ -619,7 +637,7 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Remaintime: [{0}]. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Countdown [{0}] has remaintime: [{1}]. ähnelt.
         /// </summary>
         internal static string SCHEDULER_ON_TICK {
             get {

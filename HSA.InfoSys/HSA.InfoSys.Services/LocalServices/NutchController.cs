@@ -28,36 +28,22 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private static NutchController nutchController;
 
         /// <summary>
-        /// The pending crawls
+        /// The crawl process.
         /// </summary>
-        private Dictionary<Guid, Process> pendingCrawls;
-
-        /// <summary>
-        /// The running crawls
-        /// </summary>
-        private Dictionary<Guid, Process> runningCrawls;
-
-        /// <summary>
-        /// The new crawl job arrived.
-        /// </summary>
-        private bool newCrawlJobArrived = false;
+        private Process crawlProcess;
 
         /// <summary>
         /// Prevents a default instance of the <see cref="NutchController"/> class from being created.
         /// </summary>
         private NutchController()
         {
-            this.pendingCrawls = new Dictionary<Guid, Process>();
-            this.runningCrawls = new Dictionary<Guid, Process>();
         }
 
         /// <summary>
         /// Our delegate for invoking an async callback.
         /// </summary>
         /// <param name="sender">The sender.</param>
-        /// <param name="orgUnitGUID">The org unit GUID.</param>
-        /// <param name="success">if set to <c>true</c> [success].</param>
-        public delegate void CrawlFinishedHandler(object sender, Guid orgUnitGUID, bool success);
+        public delegate void CrawlFinishedHandler(object sender);
 
         /// <summary>
         /// Occurs when [on crawl finished].
@@ -86,22 +72,23 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Sets the pending crawl.
         /// </summary>
-        /// <param name="orgUnitGUID">The org unit GUID.</param>
-        /// <param name="userId">Name of the user.</param>
+        /// <param name="folder">The folder.</param>
         /// <param name="depth">The depth.</param>
         /// <param name="topN">The top N.</param>
         /// <param name="urls">The URLs.</param>
-        public void SetPendingCrawl(Guid orgUnitGUID, int userId, int depth, int topN, params string[] urls)
+        public void SetNextCrawl(string folder, int depth, int topN, params string[] urls)
         {
             this.ServiceMutex.WaitOne();
 
-            var nutchClient = new NutchControllerClient();
-            var process = nutchClient.CreateCrawlProcess(userId, depth, topN, urls);
+            if (!this.Running)
+            {
+                var nutchClient = new NutchControllerClient();
+                this.crawlProcess = nutchClient.CreateCrawlProcess(folder, depth, topN, urls.ToString());
 
-            this.pendingCrawls.Add(orgUnitGUID, process);
-            this.newCrawlJobArrived = true;
+                Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_SET_PENDING_CRAWL, urls);
+            }
 
-            Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_SET_PENDING_CRAWL, orgUnitGUID, userId);
+            this.StartService();
 
             this.ServiceMutex.ReleaseMutex();
         }
@@ -111,47 +98,19 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         protected override void Run()
         {
-            while (this.Running)
+            try
             {
-                this.ServiceMutex.WaitOne();
+                this.crawlProcess.Start();
+                this.crawlProcess.WaitForExit();
 
-                if (this.newCrawlJobArrived)
+                if (this.OnCrawlFinished != null)
                 {
-                    this.runningCrawls = this.pendingCrawls;
-                    this.pendingCrawls = new Dictionary<Guid, Process>();
-                    this.newCrawlJobArrived = false;
-
-                    Log.Debug(Properties.Resources.NUTCH_CONTROLLER_SET_RUNNING_CRAWLS);
+                    this.OnCrawlFinished(this);
                 }
-
-                this.ServiceMutex.ReleaseMutex();
-
-                foreach (var crawl in this.runningCrawls)
-                {
-                    bool success = false;
-
-                    try
-                    {
-                        crawl.Value.Start();
-                        crawl.Value.WaitForExit();
-                        success = true;
-
-                        Log.InfoFormat("Crawl for OrgUnit {0} with arguments {1} finished.", crawl.Key, crawl.Value.StartInfo.Arguments);
-                    }
-                    catch (Exception e)
-                    {
-                        Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
-                    }
-
-                    if (this.OnCrawlFinished != null)
-                    {
-                        this.OnCrawlFinished(this, crawl.Key, success);
-                    }
-                }
-
-                this.runningCrawls.Clear();
-
-                Thread.Sleep(5000);
+            }
+            catch (Exception e)
+            {
+                Log.DebugFormat(Properties.Resources.LOG_COMMON_ERROR, e);
             }
         }
     }

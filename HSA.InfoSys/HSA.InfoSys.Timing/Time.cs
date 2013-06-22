@@ -22,49 +22,57 @@ namespace HSA.InfoSys.Common.Timing
         /// <summary>
         /// Initializes a new instance of the <see cref="Time" /> class.
         /// </summary>
-        /// <param name="start">The start time.</param>
-        /// <param name="end">The end time.</param>
-        /// <param name="repeatIn">The repeat in.</param>
+        /// <param name="time">The time.</param>
+        /// <param name="days">The days.</param>
         /// <param name="id">The id.</param>
         /// <param name="repeat">if set to <c>true</c> [repeat].</param>
         public Time(
-            DateTime start,
-            DateTime end,
-            TimeSpan repeatIn,
+            int time,
+            int days,
             Guid id,
             bool repeat)
         {
-            this.StartTime = start;
-            this.Endtime = end;
-            this.RepeatIn = repeatIn;
-            this.RemainTime = new RemainTime(end.Subtract(start), id);
+            var now = DateTime.Now;
+            this.RepeatIn = new DateTime(now.Year, now.Month, now.Day, time, 0, 0).AddDays(days);
             this.Repeat = repeat;
             this.ID = id;
         }
 
         /// <summary>
-        /// Gets the start time.
+        /// Initializes a new instance of the <see cref="Time"/> class.
         /// </summary>
-        /// <value>
-        /// The start time.
-        /// </value>
-        public DateTime StartTime { get; private set; }
+        /// <param name="time">The time.</param>
+        /// <param name="days">The days.</param>
+        /// <param name="repeat">if set to <c>true</c> [repeat].</param>
+        public Time(
+            int time,
+            int days,
+            bool repeat)
+        {
+            var now = DateTime.Now;
+            this.RepeatIn = new DateTime(now.Year, now.Month, now.Day, time, 0, 0).AddDays(days);
+            this.Repeat = repeat;
+        }
 
         /// <summary>
-        /// Gets the end time.
+        /// Initializes a new instance of the <see cref="Time"/> class.
         /// </summary>
-        /// <value>
-        /// The end time.
-        /// </value>
-        public DateTime Endtime { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the remain time.
-        /// </summary>
-        /// <value>
-        /// The remain time.
-        /// </value>
-        public RemainTime RemainTime { get; set; }
+        /// <param name="time">The time.</param>
+        /// <param name="days">The days.</param>
+        /// <param name="repeatIn">The repeat in.</param>
+        /// <param name="id">The id.</param>
+        /// <param name="repeat">if set to <c>true</c> [repeat].</param>
+        public Time(
+            int time,
+            int days,
+            DateTime repeatIn,
+            Guid id,
+            bool repeat)
+        {
+            this.RepeatIn = repeatIn;
+            this.Repeat = repeat;
+            this.ID = id;
+        }
 
         /// <summary>
         /// Gets the duration.
@@ -72,7 +80,7 @@ namespace HSA.InfoSys.Common.Timing
         /// <value>
         /// The duration.
         /// </value>
-        public TimeSpan RepeatIn { get; private set; }
+        public DateTime RepeatIn { get; private set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Time"/> is repeat.
@@ -91,37 +99,6 @@ namespace HSA.InfoSys.Common.Timing
         public Guid ID { get; private set; }
 
         /// <summary>
-        /// Gets a value indicating whether this instance is time in future.
-        /// </summary>
-        /// <value>
-        /// <c>true</c> if this instance is time in future; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsTimeInFuture
-        {
-            get
-            {
-                return DateTime.Now < this.Endtime;
-            }
-        }
-
-        /// <summary>
-        /// Resets the values.
-        /// </summary>
-        public void ResetValues()
-        {
-            this.StartTime = new DateTime();
-            this.Endtime = new DateTime();
-            this.RemainTime = null;
-            this.Repeat = false;
-
-            Log.DebugFormat(
-                Properties.Resources.LOG_TIME_RESET_VALUES,
-                this.StartTime,
-                this.Endtime,
-                this.RemainTime);
-        }
-
-        /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
         /// <returns>
@@ -131,9 +108,9 @@ namespace HSA.InfoSys.Common.Timing
         {
             return string.Format(
                 Properties.Resources.TIME_TO_STRING,
-                this.StartTime,
-                this.Endtime,
-                this.RemainTime);
+                this.ID,
+                this.Repeat,
+                this.RepeatIn.Subtract(DateTime.Now).TotalHours);
         }
     }
 }
