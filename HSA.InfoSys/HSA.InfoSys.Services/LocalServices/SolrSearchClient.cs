@@ -97,12 +97,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <returns>The response.</returns>
         public SolrResultPot GetResult()
         {
-            var start = this.SolrResponse.IndexOf('{');
-            var end = this.SolrResponse.LastIndexOf('}');
-
             try
             {
+                var start = this.SolrResponse.IndexOf('{');
+                var end = this.SolrResponse.LastIndexOf('}');
                 var result = this.SolrResponse.Substring(start, end - start + 1);
+
                 return this.ParseToResult(result);
             }
             catch
