@@ -191,7 +191,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             Log.Debug(Properties.Resources.LOG_COUNTDOWN_THREAD_IS_RUNNING);
 
-#if DEBUG
             var runTime = this.Time.RepeatIn.Subtract(DateTime.Now);
 
             while (this.Running && this.Active && runTime.TotalSeconds > 0)
@@ -202,12 +201,13 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 }
 
                 runTime = runTime.Subtract(new TimeSpan(0, 0, 1));
+#if DEBUG
                 Thread.Sleep(1000);
-            }
 #else
-            var runtime = this.Time.RepeatIn.Subtract(DateTime.Now).Ticks / 10000;
-            Thread.Sleep((int)runtime);
+                Thread.Sleep(300000);
 #endif
+            }
+
             Log.Debug(Properties.Resources.LOG_COUNTDOWN_THREAD_ENDS);
 
             this.Active = false;

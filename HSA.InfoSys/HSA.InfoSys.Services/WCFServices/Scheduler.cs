@@ -164,9 +164,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 var job = this.jobs[orgUnitConfigGUID];
                 job.StopService(true);
                 job.OnError -= this.Job_OnError;
-#if DEBUG
                 job.OnTick -= this.Job_OnTick;
-#endif
 
                 this.jobs.Remove(orgUnitConfigGUID);
             }
@@ -194,7 +192,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             Log.ErrorFormat(Properties.Resources.LOG_TIME_VALIDATION_ERROR, job, error);
         }
 
-#if DEBUG
         /// <summary>
         /// Occurs when [tick].
         /// </summary>
@@ -203,9 +200,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         public void Job_OnTick(object sender, TimeSpan remainTime)
         {
             var job = sender as Countdown;
-            Log.DebugFormat(Properties.Resources.SCHEDULER_ON_TICK, job.ID, remainTime);
+            Log.InfoFormat(Properties.Resources.SCHEDULER_ON_TICK, job.ID, remainTime);
         }
-#endif
 
         /// <summary>
         /// Starts this instance.
@@ -318,9 +314,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
                 var job = new Countdown(orgUnitConfig, orgUnitConfig.EntityId, new Countdown.ZeroEventHandler(this.StartSolrSearch));
                 job.OnError += new Countdown.ErrorEventHandler(this.Job_OnError);
-#if DEBUG
                 job.OnTick += new Countdown.TickEventHandler(this.Job_OnTick);
-#endif
                 return job;
             }
             else if (orgUnitConfig.SchedulerActive)
