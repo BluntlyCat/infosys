@@ -556,7 +556,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 }
                 else
                 {
-                    var selectedComp = components[0];
+                    var selectedComp = components.First();
                     var results = cc.GetResultsByComponentId(selectedComp.EntityId).ToList<Result>();
                     this.ViewData["selectedComp"] = selectedComp.Name;
                     this.ViewData["results"] = results;

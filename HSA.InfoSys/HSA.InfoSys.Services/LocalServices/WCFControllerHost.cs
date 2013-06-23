@@ -73,7 +73,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     binding.Security.Mode = SecurityMode.Transport;
                     binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
                     binding.ReaderQuotas = quotas;
-                    binding.MaxReceivedMessageSize = 1024 * 1024;
+                    binding.MaxReceivedMessageSize = 10240000;
 
                     host.AddServiceEndpoint(
                         typeof(IT),
