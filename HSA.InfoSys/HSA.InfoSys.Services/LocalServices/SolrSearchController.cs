@@ -6,6 +6,7 @@
 namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
     using HSA.InfoSys.Common.Entities;
@@ -83,16 +84,21 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     c =>
                     {
                         dbMutex.WaitOne();
+                        var sendResults = new List<Result>();
 
                         if (c.IsCompleted)
                         {
                             resultPot = searchClient.GetResult();
+                            var results = DBManager.Session.QueryOver<Result>().List();
 
                             foreach (var result in resultPot.Results)
                             {
-                                result.ComponentGUID = resultPot.EntityId;
-
-                                dbManager.AddEntity(result);
+                                if (!results.Any(r => r.Content.Equals(result.Content)))
+                                {
+                                    sendResults.Add(result);
+                                    result.ComponentGUID = resultPot.EntityId;
+                                    dbManager.AddEntity(result);
+                                }
 
                                 Log.InfoFormat(
                                     Properties.Resources.SOLR_SEARCH_RESULT,
@@ -114,8 +120,15 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                                 if (resultPot.HasResults)
                                 {
-                                    EmailNotifier mailNotifier = new EmailNotifier();
-                                    mailNotifier.SearchFinished(this.OrgUnitGuid, resultPot.Results.ToArray());
+                                    if (sendResults.Count > 0)
+                                    {
+                                        EmailNotifier mailNotifier = new EmailNotifier();
+                                        mailNotifier.SearchFinished(this.OrgUnitGuid, sendResults);
+                                    }
+                                    else
+                                    {
+                                        Log.InfoFormat(Properties.Resources.SOLR_SEARCH_CONTROLLER_NO_NEW_RESULTS, orgUnit.Name);
+                                    }
                                 }
                                 else
                                 {

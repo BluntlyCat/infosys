@@ -106,11 +106,14 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             {
                 this.crawlProcess.Start();
                 this.crawlProcess.WaitForExit();
+                Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CRAWL_FINISHED, this.crawlProcess.StartInfo.Arguments);
 
                 if (this.OnCrawlFinished != null)
                 {
                     this.OnCrawlFinished(this);
                 }
+
+                this.Running = false;
             }
             catch (Exception e)
             {

@@ -38,7 +38,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="orgUnitGUID">The org unit GUID.</param>
         /// <param name="results">The results.</param>
-        public void SearchFinished(Guid orgUnitGUID, Result[] results)
+        public void SearchFinished(Guid orgUnitGUID, List<Result> results)
         {
             Log.DebugFormat(Properties.Resources.SEARCH_RECALL, orgUnitGUID);
 
@@ -64,7 +64,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                 this.AddMailRecipient(mail, orgUnitGUID, addresses);
 
-                foreach (var result in results.ToList<Result>())
+                foreach (var result in results)
                 {
                     if (oldResultGUID.Equals(Guid.Empty) || oldResultGUID.Equals(result.EntityId) == false)
                     {

@@ -556,6 +556,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Crawling [{0}] finished. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_CRAWL_FINISHED {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_CRAWL_FINISHED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Set pending job for urls: {0} ähnelt.
         /// </summary>
         internal static string NUTCH_CONTROLLER_SET_PENDING_CRAWL {
@@ -610,7 +619,7 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Scheduler starts new crawl job ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Scheduler starts new timer for crawl job. ähnelt.
         /// </summary>
         internal static string SCHEDULER_CRAWL_RESTART {
             get {
@@ -768,6 +777,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         internal static string SOLR_SEARCH_COMPONENT_STARTED {
             get {
                 return ResourceManager.GetString("SOLR_SEARCH_COMPONENT_STARTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No new results found for {0}. ähnelt.
+        /// </summary>
+        internal static string SOLR_SEARCH_CONTROLLER_NO_NEW_RESULTS {
+            get {
+                return ResourceManager.GetString("SOLR_SEARCH_CONTROLLER_NO_NEW_RESULTS", resourceCulture);
             }
         }
         
