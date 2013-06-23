@@ -1,9 +1,9 @@
 ﻿// ------------------------------------------------------------------------
-// <copyright file="Time.cs" company="HSA.InfoSys">
+// <copyright file="CountdownTime.cs" company="HSA.InfoSys">
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-namespace HSA.InfoSys.Common.Timing
+namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System;
     using HSA.InfoSys.Common.Logging;
@@ -12,21 +12,21 @@ namespace HSA.InfoSys.Common.Timing
     /// <summary>
     /// This class represents the time object.
     /// </summary>
-    public class Time
+    public class CountdownTime
     {
         /// <summary>
         /// The logger.
         /// </summary>
-        private static readonly ILog Log = Logger<Type>.GetLogger(typeof(Time));
+        private static readonly ILog Log = Logger<Type>.GetLogger(typeof(CountdownTime));
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Time" /> class.
+        /// Initializes a new instance of the <see cref="CountdownTime" /> class.
         /// </summary>
         /// <param name="time">The time.</param>
         /// <param name="days">The days.</param>
         /// <param name="id">The id.</param>
         /// <param name="repeat">if set to <c>true</c> [repeat].</param>
-        public Time(
+        public CountdownTime(
             int time,
             int days,
             Guid id,
@@ -39,12 +39,12 @@ namespace HSA.InfoSys.Common.Timing
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Time"/> class.
+        /// Initializes a new instance of the <see cref="CountdownTime"/> class.
         /// </summary>
         /// <param name="time">The time.</param>
         /// <param name="days">The days.</param>
         /// <param name="repeat">if set to <c>true</c> [repeat].</param>
-        public Time(
+        public CountdownTime(
             int time,
             int days,
             bool repeat)
@@ -55,14 +55,14 @@ namespace HSA.InfoSys.Common.Timing
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Time"/> class.
+        /// Initializes a new instance of the <see cref="CountdownTime"/> class.
         /// </summary>
         /// <param name="time">The time.</param>
         /// <param name="days">The days.</param>
         /// <param name="repeatIn">The repeat in.</param>
         /// <param name="id">The id.</param>
         /// <param name="repeat">if set to <c>true</c> [repeat].</param>
-        public Time(
+        public CountdownTime(
             int time,
             int days,
             DateTime repeatIn,
@@ -83,7 +83,7 @@ namespace HSA.InfoSys.Common.Timing
         public DateTime RepeatIn { get; private set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="Time"/> is repeat.
+        /// Gets or sets a value indicating whether this <see cref="CountdownTime"/> is repeat.
         /// </summary>
         /// <value>
         ///   <c>true</c> if repeat; otherwise, <c>false</c>.

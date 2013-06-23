@@ -13,7 +13,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services.LocalServices;
-    using HSA.InfoSys.Common.Timing;
     using log4net;
 
     /// <summary>
@@ -99,7 +98,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
             this.crawler = new Countdown(
                 orgUnitConfig,
-                new Time(0, 1, true),
+                new CountdownTime(0, 1, true),
                 new Countdown.ZeroEventHandler(this.CrawlFinished));
         }
 
@@ -138,7 +137,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
                 if (job != null && this.jobs.ContainsKey(orgUnitConfig.EntityId) && job.Active)
                 {
-                    this.jobs[orgUnitConfig.EntityId].Stop(true);
+                    this.jobs[orgUnitConfig.EntityId].StopService(true);
                     this.jobs[orgUnitConfig.EntityId] = job;
                 }
                 else if (job != null && job.Active)
@@ -163,7 +162,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 Log.DebugFormat(Properties.Resources.LOG_SCHEDULER_REMOVE, orgUnitConfigGUID);
 
                 var job = this.jobs[orgUnitConfigGUID];
-                job.Stop(true);
+                job.StopService(true);
                 job.OnError -= this.Job_OnError;
 #if DEBUG
                 job.OnTick -= this.Job_OnTick;
@@ -226,13 +225,13 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 if (job != null)
                 {
                     this.jobs.Add(config.EntityId, job);
-                    job.Start();
+                    job.StartService();
                 }
             }
 
             this.jobMutex.ReleaseMutex();
 
-            this.crawler.Start();
+            this.crawler.StartService();
 
             base.StartService();
         }
@@ -247,14 +246,14 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
             foreach (var job in this.jobs.Values)
             {
-                job.Stop(cancel);
+                job.StopService(cancel);
             }
 
             this.jobs.Clear();
 
             this.jobMutex.ReleaseMutex();
 
-            this.crawler.Stop(cancel);
+            this.crawler.StopService(cancel);
 
             base.StopService(cancel);
         }

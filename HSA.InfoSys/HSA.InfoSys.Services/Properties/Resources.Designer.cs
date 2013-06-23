@@ -61,6 +61,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Countdown time: [{0}], source: [{1}] ähnelt.
+        /// </summary>
+        internal static string COUNTDOWN_TO_STRING {
+            get {
+                return ResourceManager.GetString("COUNTDOWN_TO_STRING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Shutdown Services. ähnelt.
         /// </summary>
         internal static string CRAWL_CONTROLLER_SHUTDOWN {
@@ -372,6 +381,51 @@ namespace HSA.InfoSys.Common.Services.Properties {
         internal static string LOG_COMMON_ERROR {
             get {
                 return ResourceManager.GetString("LOG_COMMON_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Initialize a new instance of Countdown ähnelt.
+        /// </summary>
+        internal static string LOG_COUNTDOWN_INITIALIZE {
+            get {
+                return ResourceManager.GetString("LOG_COUNTDOWN_INITIALIZE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set new repeat time. ähnelt.
+        /// </summary>
+        internal static string LOG_COUNTDOWN_SET_REPEAT_TIME {
+            get {
+                return ResourceManager.GetString("LOG_COUNTDOWN_SET_REPEAT_TIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Start new countdown. ähnelt.
+        /// </summary>
+        internal static string LOG_COUNTDOWN_START_COUNTDOWN {
+            get {
+                return ResourceManager.GetString("LOG_COUNTDOWN_START_COUNTDOWN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Thread left while loop. ähnelt.
+        /// </summary>
+        internal static string LOG_COUNTDOWN_THREAD_ENDS {
+            get {
+                return ResourceManager.GetString("LOG_COUNTDOWN_THREAD_ENDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Thread is running. ähnelt.
+        /// </summary>
+        internal static string LOG_COUNTDOWN_THREAD_IS_RUNNING {
+            get {
+                return ResourceManager.GetString("LOG_COUNTDOWN_THREAD_IS_RUNNING", resourceCulture);
             }
         }
         
@@ -813,6 +867,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         internal static string SOLR_SEARCH_RESULT {
             get {
                 return ResourceManager.GetString("SOLR_SEARCH_RESULT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Remaining time: [ID: {0} - {1}D : {2}H : {3}m : {4}s] ähnelt.
+        /// </summary>
+        internal static string TIME_TO_STRING {
+            get {
+                return ResourceManager.GetString("TIME_TO_STRING", resourceCulture);
             }
         }
         

@@ -66,7 +66,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             get
             {
-                return Results.Count > 0;
+                return this.Results.Count > 0;
             }
         }
     }
