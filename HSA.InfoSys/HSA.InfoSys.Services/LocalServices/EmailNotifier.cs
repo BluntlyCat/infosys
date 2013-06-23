@@ -51,7 +51,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     this.dbManager.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
 
                 var mailBody = string.Empty;
-                var oldResultGUID = Guid.Empty;
+                var oldComponentGUID = Guid.Empty;
 
                 var addresses = this.DeserializeAddresses(orgUnit);
                 var subject = string.Format(
@@ -66,13 +66,13 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                 foreach (var result in results)
                 {
-                    if (oldResultGUID.Equals(Guid.Empty) || oldResultGUID.Equals(result.EntityId) == false)
+                    if (oldComponentGUID.Equals(Guid.Empty) || oldComponentGUID.Equals(result.ComponentGUID) == false)
                     {
                         var component = this.dbManager.GetEntity(result.ComponentGUID) as Component;
                         mailBody += string.Format("{0}:\n", component.Name);
                     }
 
-                    oldResultGUID = result.EntityId;
+                    oldComponentGUID = result.ComponentGUID;
                     mailBody += string.Format("\t{0} - {1}\n\n", result.Title, result.URL);
                 }
 
