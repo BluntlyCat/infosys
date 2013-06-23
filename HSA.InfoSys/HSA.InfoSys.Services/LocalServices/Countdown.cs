@@ -193,6 +193,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             var runTime = this.Time.RepeatIn.Subtract(DateTime.Now);
 
+#if DEBUG
+            var sleep = 1000;
+#else
+            var sleep = 300000;
+#endif
+
             while (this.Running && this.Active && runTime.TotalSeconds > 0)
             {
                 if (this.OnTick != null)
@@ -200,12 +206,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     this.OnTick(this, runTime);
                 }
 
-                runTime = runTime.Subtract(new TimeSpan(0, 0, 1));
-#if DEBUG
-                Thread.Sleep(1000);
-#else
-                Thread.Sleep(300000);
-#endif
+                runTime = runTime.Subtract(new TimeSpan(0, 0, 0, 0, sleep));
+
+                Thread.Sleep(sleep);
             }
 
             Log.Debug(Properties.Resources.LOG_COUNTDOWN_THREAD_ENDS);
