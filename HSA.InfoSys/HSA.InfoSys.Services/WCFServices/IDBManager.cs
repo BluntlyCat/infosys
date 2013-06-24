@@ -179,5 +179,39 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             int time,
             DateTime nextSearch,
             bool schedulerActive);
+
+#if MONO
+        /// <summary>
+        /// Gets the list of indexes of results.
+        /// In MONO we only can send 2^16 Bytes because of a
+        /// MONO intern restriction, so we need to split the 
+        /// results into more than one request to fetch all
+        /// results of this component.
+        /// Each couple of indexes includes a range of results
+        /// whose size is in range of 2^15 bytes because we will
+        /// need some space for serialisation too. A couple of
+        /// indexes is the first and the next index in this list.
+        /// </summary>
+        /// <param name="componentGUID">The component GUID.</param>
+        /// <returns>A list of indexes.</returns>
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        List<int> GetResultIndexes(Guid componentGUID);
+
+        /// <summary>
+        /// Gets the index of the results by request.
+        /// In this method we fetch the results.
+        /// The last index is the first index of the next request so
+        /// we begin at the first index and ending one index before the last index.
+        /// Otherwise we would fetch the last result two times.
+        /// </summary>
+        /// <param name="componentGUID">The component GUID.</param>
+        /// <param name="first">The first result index.</param>
+        /// <param name="last">The last result index.</param>
+        /// <returns></returns>
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        Result[] GetResultsByRequestIndex(Guid componentGUID, int first, int last);
+#endif
     }
 }

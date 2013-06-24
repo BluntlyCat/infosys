@@ -550,14 +550,25 @@ namespace HSA.InfoSys.Gui.Controllers
                 {
                     var selectedCompGUID = Guid.Parse(componentGUID);
                     var component = cc.GetEntity(selectedCompGUID) as Component;
+
+#if MONO
+                    var results = this.GetResults(selectedCompGUID);
+#else
                     var results = cc.GetResultsByComponentId(selectedCompGUID).ToList<Result>();
+#endif
                     this.ViewData["selectedComp"] = component.Name;
                     this.ViewData["results"] = results;
                 }
                 else
                 {
                     var selectedComp = components.First();
+
+#if MONO
+                    var results = this.GetResults(selectedComp.EntityId);
+#else
                     var results = cc.GetResultsByComponentId(selectedComp.EntityId).ToList<Result>();
+#endif
+
                     this.ViewData["selectedComp"] = selectedComp.Name;
                     this.ViewData["results"] = results;
                 }
@@ -577,5 +588,42 @@ namespace HSA.InfoSys.Gui.Controllers
 
             return this.View();
         }
+
+#if MONO
+        /// <summary>
+        /// Gets the results.
+        /// Because of restrictions of maximum amount of bytes (2^16)
+        /// which can be send in MONO over WCF we need this special
+        /// implementation if we run our server under unix based
+        /// operating systems. It fetches the results from the database
+        /// manager behind witch splits the results in pieces of
+        /// 2^15 bytes until all results are received.
+        /// </summary>
+        /// <param name="componentGuid">The component GUID.</param>
+        /// <returns>A list of results which belongs to the given component.</returns>
+        private List<Result> GetResults(Guid componentGuid)
+        {
+            var cc = WCFControllerClient<IDBManager>.ClientProxy;
+
+            var indexes = cc.GetResultIndexes(componentGuid).ToArray();
+            var splittedResults = new List<Result[]>();
+            var results = new List<Result>();
+
+            for (int i = 0; i < indexes.Length - 1; i++)
+            {
+                splittedResults.Add(cc.GetResultsByRequestIndex(componentGuid, indexes[i], indexes[i + 1]));
+            }
+
+            foreach (var splittedResult in splittedResults)
+            {
+                foreach (var result in splittedResult)
+                {
+                    results.Add(result);
+                }
+            }
+
+            return results;
+        }
+#endif
     }
 }

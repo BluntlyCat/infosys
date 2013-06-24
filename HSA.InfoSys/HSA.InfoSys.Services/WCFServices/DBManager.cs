@@ -17,6 +17,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     using NHibernate;
     using NHibernate.Cfg;
     using NHibernate.Tool.hbm2ddl;
+    using System.Text;
 
     /// <summary>
     /// The DBManager handles database requests.
@@ -429,6 +430,80 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             return orgUnitConfig;
         }
 
+#if MONO
+        /// <summary>
+        /// Gets the list of indexes of results.
+        /// In MONO we only can send 2^16 Bytes because of a
+        /// MONO intern restriction, so we need to split the
+        /// results into more than one request to fetch all
+        /// results of this component.
+        /// Each couple of indexes includes a range of results
+        /// whose size is in range of 2^15 bytes because we will
+        /// need some space for serialisation too. A couple of
+        /// indexes is the first and the next index in this list.
+        /// </summary>
+        /// <param name="componentGUID">The component GUID.</param>
+        /// <returns>
+        /// A list of indexes.
+        /// </returns>
+        public List<int> GetResultIndexes(Guid componentGUID)
+        {
+            var results = GetResultsByComponentId(componentGUID);
+
+            var maxBytes = Math.Pow(2, 15);
+            int byteCount = this.GetByteCount(results);
+            int requests = this.GetAmountOfRequests(byteCount, maxBytes);
+            int byteAmount = 0;
+
+            int index = 0;
+            List<int> indexes = new List<int>();
+            indexes.Add(0);
+
+            foreach (var result in results)
+            {
+                byteAmount += Encoding.UTF8.GetBytes(result.Title).Length;
+                byteAmount += Encoding.UTF8.GetBytes(result.Content).Length;
+
+                if (byteAmount > maxBytes)
+                {
+                    indexes.Add(index - 1);
+                    byteAmount = 0;
+                }
+
+                index++;
+            }
+
+            indexes.Add(results.Length);
+
+            return indexes;
+        }
+
+        /// <summary>
+        /// Gets the index of the results by request.
+        /// In this method we fetch the results.
+        /// The last index is the first index of the next request so
+        /// we begin at the first index and ending one index before the last index.
+        /// Otherwise we would fetch the last result two times.
+        /// </summary>
+        /// <param name="componentGUID">The component GUID.</param>
+        /// <param name="first">The first result index.</param>
+        /// <param name="last">The last result index.</param>
+        /// <returns></returns>
+        public Result[] GetResultsByRequestIndex(Guid componentGUID, int first, int last)
+        {
+            var tmp = new Result[last - first];
+            var splittedResults = new List<Result>();
+            var results = GetResultsByComponentId(componentGUID);
+
+            for (int i = first; i < last; i++)
+            {
+                splittedResults.Add(results[i]);
+            }
+
+            return splittedResults.ToArray();
+        }
+#endif
+
         /// <summary>
         /// Starts the service.
         /// </summary>
@@ -487,5 +562,43 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
             Log.Debug(Properties.Resources.DBSESSION_NHIBERNATE_CONFIG_READY);
         }
+
+#if MONO
+        /// <summary>
+        /// Gets the byte count.
+        /// </summary>
+        /// <param name="componentGUID">The component GUID.</param>
+        /// <returns>The amount of bytes of all results.</returns>
+        private int GetByteCount(Result[] results)
+        {
+            int byteCount = 0;
+
+            foreach (var result in results)
+            {
+                byteCount += Encoding.UTF8.GetBytes(result.Title).Length;
+                byteCount += Encoding.UTF8.GetBytes(result.Content).Length;
+            }
+
+            return byteCount;
+        }
+
+        /// <summary>
+        /// Gets the amount of requests.
+        /// </summary>
+        /// <param name="byteCount">The byte count.</param>
+        /// <param name="maxBytes">The max bytes.</param>
+        /// <returns>The amount of necessarry requests.</returns>
+        private int GetAmountOfRequests(double byteCount, double maxBytes)
+        {
+            var tmp = (byteCount / maxBytes);
+
+            if (tmp % 2 != 0)
+            {
+                tmp++;
+            }
+
+            return (int)tmp;
+        }
+#endif
     }
 }
