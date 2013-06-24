@@ -574,7 +574,7 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Start service {0}. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Start service {0} with ID: {1}. ähnelt.
         /// </summary>
         internal static string LOG_START_SERVICE {
             get {
@@ -583,7 +583,7 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Stop service {0}. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stop service {0} with ID: {1}. ähnelt.
         /// </summary>
         internal static string LOG_STOP_SERVICE {
             get {

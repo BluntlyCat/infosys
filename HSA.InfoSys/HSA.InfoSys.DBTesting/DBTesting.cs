@@ -26,7 +26,7 @@ namespace HSA.InfoSys.Testing.DBTesting
         {
             ILog log = Logger<string>.GetLogger("WCFTesting");
 
-            IDBManager dbManager = DBManager.ManagerFactory;
+            IDBManager dbManager = DBManager.ManagerFactory(Guid.NewGuid());
             bool running = true;
 
             Console.WriteLine(string.Empty);

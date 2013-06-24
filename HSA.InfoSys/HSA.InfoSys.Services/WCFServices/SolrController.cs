@@ -30,32 +30,32 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// The data base manager.
         /// </summary>
-        private IDBManager dbManager = DBManager.ManagerFactory;
+        private IDBManager dbManager = DBManager.ManagerFactory(Guid.NewGuid());
 
         /// <summary>
         /// Prevents a default instance of the <see cref="SolrController"/> class from being created.
         /// </summary>
-        private SolrController()
+        /// <param name="serviceGUID">The service GUID.</param>
+        private SolrController(Guid serviceGUID) : base(serviceGUID)
         {
         }
 
         /// <summary>
         /// Gets the solr controller.
         /// </summary>
+        /// <param name="serviceGUID">The service GUID.</param>
+        /// <returns>A new solr controller service.</returns>
         /// <value>
         /// The solr controller.
         /// </value>
-        public static SolrController SolrFactory
+        public static SolrController SolrFactory(Guid serviceGUID)
         {
-            get
+            if (solrController == null)
             {
-                if (solrController == null)
-                {
-                    solrController = new SolrController();
-                }
-
-                return solrController;
+                solrController = new SolrController(serviceGUID);
             }
+
+            return solrController;
         }
 
         /// <summary>

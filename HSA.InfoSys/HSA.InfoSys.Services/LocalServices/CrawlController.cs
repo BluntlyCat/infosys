@@ -5,10 +5,10 @@
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.Common.Services.LocalServices
 {
+    using System;
     using System.Collections.Generic;
     using System.ServiceModel;
     using HSA.InfoSys.Common.Logging;
-    using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
 
     /// <summary>
@@ -35,29 +35,29 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private List<IService> services = new List<IService>();
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="CrawlController"/> class from being created.
+        /// Prevents a default instance of the <see cref="CrawlController" /> class from being created.
         /// </summary>
-        private CrawlController()
+        /// <param name="serviceGUID">The service GUID.</param>
+        private CrawlController(Guid serviceGUID) : base(serviceGUID)
         {
         }
 
         /// <summary>
         /// Gets the crawl controller.
         /// </summary>
+        /// <param name="serviceGUID">The service GUID.</param>
+        /// <returns>The crawl controller service.</returns>
         /// <value>
         /// The crawl controller.
         /// </value>
-        public static CrawlController ControllerFactory
+        public static CrawlController ControllerFactory(Guid serviceGUID)
         {
-            get
+            if (crawlController == null)
             {
-                if (crawlController == null)
-                {
-                    crawlController = new CrawlController();
-                }
-
-                return crawlController;
+                crawlController = new CrawlController(serviceGUID);
             }
+
+            return crawlController;
         }
 
         /// <summary>

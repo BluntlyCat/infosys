@@ -5,6 +5,7 @@
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.Common.Services
 {
+    using System;
     using System.Threading;
     using HSA.InfoSys.Common.Logging;
     using log4net;
@@ -23,6 +24,23 @@ namespace HSA.InfoSys.Common.Services
         /// The service mutex.
         /// </summary>
         private Mutex serviceMutex = new Mutex();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Service"/> class.
+        /// </summary>
+        /// <param name="serviceGUID">The service GUID.</param>
+        public Service(Guid serviceGUID)
+        {
+            this.ServiceGUID = serviceGUID;
+        }
+
+        /// <summary>
+        /// Gets the ID.
+        /// </summary>
+        /// <value>
+        /// The ID.
+        /// </value>
+        public Guid ServiceGUID { get; private set; }
 
         /// <summary>
         /// Gets the service thread.
@@ -67,7 +85,7 @@ namespace HSA.InfoSys.Common.Services
         /// </summary>
         public virtual void StartService()
         {
-            Log.DebugFormat(Properties.Resources.LOG_START_SERVICE, this.GetType().Name);
+            Log.DebugFormat(Properties.Resources.LOG_START_SERVICE, this.GetType().Name, this.ServiceGUID);
             
             this.ServiceThread = new Thread(new ThreadStart(this.Run));
 
@@ -81,7 +99,7 @@ namespace HSA.InfoSys.Common.Services
         /// <param name="cancel">if set to <c>true</c> [cancel].</param>
         public virtual void StopService(bool cancel = false)
         {
-            Log.DebugFormat(Properties.Resources.LOG_STOP_SERVICE, this.GetType().Name);
+            Log.DebugFormat(Properties.Resources.LOG_STOP_SERVICE, this.GetType().Name, this.ServiceGUID);
 
             this.Running = false;
         }

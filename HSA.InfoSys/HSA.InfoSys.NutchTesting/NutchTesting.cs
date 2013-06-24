@@ -27,7 +27,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
-            var controller = NutchController.NutchFactory;
+            var controller = NutchController.NutchFactory(Guid.NewGuid());
             bool running = true;
            
             Console.WriteLine(string.Empty);

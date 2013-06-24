@@ -60,12 +60,13 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Prevents a default instance of the <see cref="Scheduler" /> class from being created.
         /// </summary>
-        private Scheduler()
+        /// <param name="serviceGUID">The service GUID.</param>
+        private Scheduler(Guid serviceGUID) : base(serviceGUID)
         {
             Log.DebugFormat(Properties.Resources.LOG_INSTANCIATE_NEW_SCHEDULER, this.GetType().Name);
 
-            this.dbManager = DBManager.ManagerFactory;
-            this.nutchController = NutchController.NutchFactory;
+            this.dbManager = DBManager.ManagerFactory(Guid.NewGuid());
+            this.nutchController = NutchController.NutchFactory(Guid.NewGuid());
             this.nutchController.OnCrawlFinished += this.NutchController_OnCrawlFinished;
 
             var orgUnitConfigs = this.dbManager.GetOrgUnitConfigurations();
@@ -99,26 +100,26 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             this.crawler = new Countdown(
                 orgUnitConfig,
                 new CountdownTime(0, 1, true),
+                Guid.NewGuid(),
                 new Countdown.ZeroEventHandler(this.CrawlFinished));
         }
 
         /// <summary>
         /// Gets the scheduler service.
         /// </summary>
+        /// <param name="serviceGUID">The service GUID.</param>
+        /// <returns>A new scheduler service.</returns>
         /// <value>
         /// The scheduler factory.
         /// </value>
-        public static Scheduler SchedulerFactory
+        public static Scheduler SchedulerFactory(Guid serviceGUID)
         {
-            get
+            if (scheduler == null)
             {
-                if (scheduler == null)
-                {
-                    scheduler = new Scheduler();
-                }
-
-                return scheduler;
+                scheduler = new Scheduler(serviceGUID);
             }
+
+            return scheduler;
         }
 
         /// <summary>
@@ -200,7 +201,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         public void Job_OnTick(object sender, TimeSpan remainTime)
         {
             var job = sender as Countdown;
-            Log.InfoFormat(Properties.Resources.SCHEDULER_ON_TICK, job.ID, remainTime);
+            Log.InfoFormat(Properties.Resources.SCHEDULER_ON_TICK, job.ServiceGUID, remainTime);
         }
 
         /// <summary>
@@ -272,7 +273,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
             var countdown = sender as Countdown;
             var urls = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(orgUnitConfig.URLS);
-            var nutchController = NutchController.NutchFactory;
+            var nutchController = NutchController.NutchFactory(Guid.NewGuid());
 
             nutchController.SetNextCrawl("crawler", 10, 10, urls);
 

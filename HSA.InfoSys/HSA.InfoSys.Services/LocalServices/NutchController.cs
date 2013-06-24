@@ -38,9 +38,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private object lockMutex = new object();
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="NutchController"/> class from being created.
+        /// Prevents a default instance of the <see cref="NutchController" /> class from being created.
         /// </summary>
-        private NutchController()
+        /// <param name="serviceGUID">The service GUID.</param>
+        private NutchController(Guid serviceGUID) : base(serviceGUID)
         {
         }
 
@@ -58,20 +59,19 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Gets the nutch controller.
         /// </summary>
+        /// <param name="serviceGUID">The service GUID.</param>
+        /// <returns>A new nutch controller service.</returns>
         /// <value>
         /// The nutch factory.
         /// </value>
-        public static NutchController NutchFactory
+        public static NutchController NutchFactory(Guid serviceGUID)
         {
-            get
+            if (nutchController == null)
             {
-                if (nutchController == null)
-                {
-                    nutchController = new NutchController();
-                }
-
-                return nutchController;
+                nutchController = new NutchController(serviceGUID);
             }
+
+            return nutchController;
         }
 
         /// <summary>

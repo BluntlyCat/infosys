@@ -25,13 +25,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// Initializes a new instance of the <see cref="Countdown" /> class.
         /// </summary>
         /// <param name="orgUnitConfig">The org unit config.</param>
-        /// <param name="id">The id.</param>
+        /// <param name="serviceGUID">The service GUID.</param>
         /// <param name="zeroEventHandler">The zero event handler.</param>
-        public Countdown(OrgUnitConfig orgUnitConfig, Guid id, ZeroEventHandler zeroEventHandler)
+        public Countdown(OrgUnitConfig orgUnitConfig, Guid serviceGUID, ZeroEventHandler zeroEventHandler) : base(serviceGUID)
         {
             Log.Debug(Properties.Resources.LOG_COUNTDOWN_INITIALIZE);
             this.OrgUnitConfig = orgUnitConfig;
-            this.ID = id;
             this.OnZero = zeroEventHandler;
         }
 
@@ -40,8 +39,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="orgUnitConfig">The org unit config.</param>
         /// <param name="time">The time.</param>
+        /// <param name="serviceGUID">The service GUID.</param>
         /// <param name="zeroEventHandler">The zero event handler.</param>
-        public Countdown(OrgUnitConfig orgUnitConfig, CountdownTime time, ZeroEventHandler zeroEventHandler)
+        public Countdown(OrgUnitConfig orgUnitConfig, CountdownTime time, Guid serviceGUID, ZeroEventHandler zeroEventHandler)
+            : base(serviceGUID)
         {
             Log.Debug(Properties.Resources.LOG_COUNTDOWN_INITIALIZE);
             this.OrgUnitConfig = orgUnitConfig;
@@ -53,8 +54,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// Initializes a new instance of the <see cref="Countdown" /> class.
         /// </summary>
         /// <param name="time">The time.</param>
+        /// <param name="serviceGUID">The service GUID.</param>
         /// <param name="zeroEventHandler">The zero event handler.</param>
-        public Countdown(CountdownTime time, ZeroEventHandler zeroEventHandler)
+        public Countdown(CountdownTime time, Guid serviceGUID, ZeroEventHandler zeroEventHandler)
+            : base(serviceGUID)
         {
             Log.Debug(Properties.Resources.LOG_COUNTDOWN_INITIALIZE);
             this.Time = time;
@@ -107,14 +110,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// The shutdown time.
         /// </value>
         public CountdownTime Time { get; private set; }
-
-        /// <summary>
-        /// Gets the ID.
-        /// </summary>
-        /// <value>
-        /// The ID.
-        /// </value>
-        public Guid ID { get; private set; }
 
         /// <summary>
         /// Gets or sets the org unit config.

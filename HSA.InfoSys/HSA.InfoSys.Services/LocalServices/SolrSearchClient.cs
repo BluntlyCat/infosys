@@ -29,7 +29,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The database manager.
         /// </summary>
-        private IDBManager dbManager = DBManager.ManagerFactory;
+        private IDBManager dbManager = DBManager.ManagerFactory(Guid.NewGuid());
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SolrSearchClient"/> class.

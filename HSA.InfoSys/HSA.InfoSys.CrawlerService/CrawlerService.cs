@@ -45,12 +45,20 @@ namespace HSA.InfoSys.CrawlerService
         private CrawlController crawlController;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="CrawlerService"/> class.
+        /// </summary>
+        /// <param name="serviceGUID">The service GUID.</param>
+        public CrawlerService(Guid serviceGUID) : base(serviceGUID)
+        {
+        }
+
+        /// <summary>
         /// Main function.
         /// </summary>
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
-            CrawlerService crawler = new CrawlerService();
+            CrawlerService crawler = new CrawlerService(Guid.NewGuid());
             crawler.StartService();
         }
 
@@ -111,15 +119,15 @@ namespace HSA.InfoSys.CrawlerService
             Addresses.Initialize();
             this.controllerHost = new WCFControllerHost();
 
-            this.crawlController = this.controllerHost.OpenWCFHost<CrawlController, ICrawlController>(CrawlController.ControllerFactory);
+            this.crawlController = this.controllerHost.OpenWCFHost<CrawlController, ICrawlController>(CrawlController.ControllerFactory(Guid.NewGuid()));
 
-            var solrController = this.controllerHost.OpenWCFHost<SolrController, ISolrController>(SolrController.SolrFactory);
+            var solrController = this.controllerHost.OpenWCFHost<SolrController, ISolrController>(SolrController.SolrFactory(Guid.NewGuid()));
             this.crawlController.RegisterService(solrController);
 
-            var dbManager = this.controllerHost.OpenWCFHost<DBManager, IDBManager>(DBManager.ManagerFactory as DBManager);
+            var dbManager = this.controllerHost.OpenWCFHost<DBManager, IDBManager>(DBManager.ManagerFactory(Guid.NewGuid()) as DBManager);
             this.crawlController.RegisterService(dbManager);
 
-            var scheduler = this.controllerHost.OpenWCFHost<Scheduler, IScheduler>(Scheduler.SchedulerFactory);
+            var scheduler = this.controllerHost.OpenWCFHost<Scheduler, IScheduler>(Scheduler.SchedulerFactory(Guid.NewGuid()));
             this.crawlController.RegisterService(scheduler);
         }
 

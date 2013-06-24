@@ -40,31 +40,11 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         private static IDBManager dbManager;
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="DBManager"/> class from being created.
+        /// Prevents a default instance of the <see cref="DBManager" /> class from being created.
         /// </summary>
-        private DBManager()
+        /// <param name="serviceGUID">The service GUID.</param>
+        private DBManager(Guid serviceGUID) : base(serviceGUID)
         {
-        }
-
-        /// <summary>
-        /// Gets the DB manager and ensures that the configuration
-        /// will be executed only once and that there is only one db manager.
-        /// </summary>
-        /// <returns>
-        /// The Database Manager
-        /// </returns>
-        public static IDBManager ManagerFactory
-        {
-            get
-            {
-                if (dbManager == null)
-                {
-                    Log.Debug(Properties.Resources.DBMANAGER_NO_MANAGER_FOUND);
-                    dbManager = new DBManager();
-                }
-
-                return dbManager;
-            }
         }
 
         /// <summary>
@@ -96,6 +76,25 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// The session factory.
         /// </value>
         private static ISessionFactory SessionFactory { get; set; }
+
+        /// <summary>
+        /// Gets the DB manager and ensures that the configuration
+        /// will be executed only once and that there is only one db manager.
+        /// </summary>
+        /// <param name="serviceGUID">The service GUID.</param>
+        /// <returns>
+        /// The database manager service.
+        /// </returns>
+        public static IDBManager ManagerFactory(Guid serviceGUID)
+        {
+            if (dbManager == null)
+            {
+                Log.Debug(Properties.Resources.DBMANAGER_NO_MANAGER_FOUND);
+                dbManager = new DBManager(serviceGUID);
+            }
+
+            return dbManager;
+        }
 
         /// <summary>
         /// Loads this entities eager.

@@ -32,7 +32,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The database manager.
         /// </summary>
-        private IDBManager dbManager = DBManager.ManagerFactory;
+        private IDBManager dbManager = DBManager.ManagerFactory(Guid.NewGuid());
 
         /// <summary>
         /// The components finished.
@@ -61,6 +61,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         public void StartSearch(Guid orgUnitGuid)
         {
             this.OrgUnitGuid = orgUnitGuid;
+            var results = DBManager.Session.QueryOver<Result>().List();
 
             var components = this.dbManager.GetComponentsByOrgUnitId(this.OrgUnitGuid).ToList<Component>();
 
@@ -89,7 +90,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                         if (c.IsCompleted)
                         {
                             resultPot = searchClient.GetResult();
-                            var results = DBManager.Session.QueryOver<Result>().List();
 
                             foreach (var result in resultPot.Results)
                             {

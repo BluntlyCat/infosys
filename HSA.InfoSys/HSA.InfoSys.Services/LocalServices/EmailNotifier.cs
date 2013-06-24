@@ -31,7 +31,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The db manager.
         /// </summary>
-        private IDBManager dbManager = DBManager.ManagerFactory;
+        private IDBManager dbManager = DBManager.ManagerFactory(Guid.NewGuid());
 
         /// <summary>
         /// Recalls the GUI when search for an org unit is finished.
