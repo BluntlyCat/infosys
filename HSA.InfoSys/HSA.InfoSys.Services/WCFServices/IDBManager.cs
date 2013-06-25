@@ -18,6 +18,15 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     public interface IDBManager
     {
         /// <summary>
+        /// Gets the settings for.
+        /// </summary>
+        /// <typeparam name="T">The type of settings.</typeparam>
+        /// <returns>
+        /// The entity containing the requested settings.
+        /// </returns>
+        T GetSettingsFor<T>() where T : Entity;
+
+        /// <summary>
         /// Loads this entities eager.
         /// </summary>
         /// <param name="param">The names of the entities.</param>

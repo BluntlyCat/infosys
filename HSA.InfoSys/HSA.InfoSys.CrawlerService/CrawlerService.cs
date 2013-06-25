@@ -116,16 +116,16 @@ namespace HSA.InfoSys.CrawlerService
         /// </summary>
         private void InitializeControllerHost()
         {
-            Addresses.Initialize();
+            WCFControllerAddresses.Initialize();
             this.controllerHost = new WCFControllerHost();
 
             this.crawlController = this.controllerHost.OpenWCFHost<CrawlController, ICrawlController>(CrawlController.ControllerFactory(Guid.NewGuid()));
 
-            var solrController = this.controllerHost.OpenWCFHost<SolrController, ISolrController>(SolrController.SolrFactory(Guid.NewGuid()));
-            this.crawlController.RegisterService(solrController);
-
             var dbManager = this.controllerHost.OpenWCFHost<DBManager, IDBManager>(DBManager.ManagerFactory(Guid.NewGuid()) as DBManager);
             this.crawlController.RegisterService(dbManager);
+
+            var solrController = this.controllerHost.OpenWCFHost<SolrController, ISolrController>(SolrController.SolrFactory(Guid.NewGuid()));
+            this.crawlController.RegisterService(solrController);
 
             var scheduler = this.controllerHost.OpenWCFHost<Scheduler, IScheduler>(Scheduler.SchedulerFactory(Guid.NewGuid()));
             this.crawlController.RegisterService(scheduler);

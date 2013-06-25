@@ -1,5 +1,5 @@
 ﻿// ------------------------------------------------------------------------
-// <copyright file="Addresses.cs" company="HSA.InfoSys">
+// <copyright file="WCFControllerAddresses.cs" company="HSA.InfoSys">
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
@@ -7,14 +7,13 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System;
     using System.Collections.Generic;
-    using HSA.InfoSys.Common.Services;
-    using HSA.InfoSys.Common.Services.LocalServices;
+    using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Services.WCFServices;
 
     /// <summary>
     /// This is a helper class to get the correct service address by its type.
     /// </summary>
-    public static class Addresses
+    public static class WCFControllerAddresses
     {
         /// <summary>
         /// The net TCP addresses
@@ -27,14 +26,20 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private static Dictionary<Type, string> httpAddresses = new Dictionary<Type, string>();
 
         /// <summary>
+        /// The settings.
+        /// </summary>
+        private static WCFControllerAddressesSettings settings = 
+            DBManager.ManagerFactory(Guid.NewGuid()).GetSettingsFor<WCFControllerAddressesSettings>();
+
+        /// <summary>
         /// The HTTP port
         /// </summary>
-        private static int httpPort = 8085;
+        private static int httpPort = settings.HttpPort;
 
         /// <summary>
         /// The net TCP port
         /// </summary>
-        private static int netTcpPort = 8086;
+        private static int netTcpPort = settings.NetTcpPort;
 
         /// <summary>
         /// Indicates if addresses are initialized.
@@ -58,8 +63,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                 foreach (var t in types)
                 {
-                    var netTcpAddress = string.Format(Properties.Settings.Default.NET_TCP_ADDRESS, netTcpPort);
-                    var httpAddress = string.Format(Properties.Settings.Default.HTTP_ADDRESS, httpPort);
+                    var netTcpAddress = string.Format(settings.NetTcpAddress, netTcpPort);
+                    var httpAddress = string.Format(settings.HttpAddress, httpPort);
 
                     netTcpAddresses.Add(t, netTcpAddress);
                     httpAddresses.Add(t, httpAddress);

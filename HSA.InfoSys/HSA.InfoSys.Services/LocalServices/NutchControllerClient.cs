@@ -10,7 +10,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
+    using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
+    using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
 
     /// <summary>
@@ -24,9 +26,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private static readonly ILog Log = Logger<string>.GetLogger("NutchControllerClient");
 
         /// <summary>
-        /// The path to prefix file.
+        /// The settings.
         /// </summary>
-        private string prefixPath;
+        private NutchControllerClientSettings settings;
 
         /// <summary>
         /// The home directory.
@@ -38,15 +40,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         public NutchControllerClient()
         {
+            this.settings = DBManager.ManagerFactory(Guid.NewGuid()).GetSettingsFor<NutchControllerClientSettings>();
 #if !MONO
             this.homeDir = Environment.GetEnvironmentVariable("HOMEPATH");
 #else
             this.homeDir = Environment.GetEnvironmentVariable("HOME");
 #endif
-            this.prefixPath = string.Format(
-                Properties.Settings.Default.PATH_FORMAT_TWO,
-                this.homeDir,
-                Properties.Settings.Default.PREFIX_PATH);
         }
 
         /// <summary>
@@ -67,20 +66,20 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             this.AddURL(folder, urls);
 
             var urlPath = string.Format(
-                Properties.Settings.Default.PATH_FORMAT_THREE,
+                this.settings.PathFormatThree,
                 this.homeDir,
-                Properties.Settings.Default.BASEURL_PATH,
+                this.settings.BaseUrlPath,
                 folder);
 
             string crawlRequest =
                 string.Format(
-                Properties.Settings.Default.NUTCH_CRAWL_REQUEST,
+                this.settings.CrawlRequest,
                 urlPath,
-                Properties.Settings.Default.SOLRSERVER,
+                this.settings.SolrServer,
                 depth,
                 topN);
 
-            nutch.StartInfo.FileName = Properties.Settings.Default.NUTCH_COMMAND;
+            nutch.StartInfo.FileName = this.settings.NutchCommand;
             nutch.StartInfo.Arguments = crawlRequest;
 
             Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CRAWL_PROCESS_CREATED, crawlRequest);
@@ -96,30 +95,14 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private void AddURL(string folder, params string[] urls)
         {
             string userURLPath = string.Format(
-                Properties.Settings.Default.PATH_FORMAT_THREE,
+                this.settings.PathFormatThree,
                 this.homeDir,
-                Properties.Settings.Default.BASEURL_PATH,
+                this.settings.BaseUrlPath,
                 folder);
 
             var prefixUrls = new List<string>();
-            var knownPrefixes = this.GetFileContent(Properties.Settings.Default.PREFIX, this.prefixPath);
 
-            foreach (string url in urls)
-            {
-                string prefix = string.Format(
-                    Properties.Settings.Default.PREFIX_FORMAT,
-                    Properties.Settings.Default.PREFIX,
-                    url);
-
-                if (!knownPrefixes.Contains(prefix))
-                {
-                    prefixUrls.Add(prefix);
-                    Log.DebugFormat(Properties.Resources.LOG_PREFIX_ADDED, prefix);
-                }
-            }
-
-            this.AddURLToFile(this.prefixPath, Properties.Settings.Default.PREFIX_FILENAME, prefixUrls.ToArray());
-            this.AddURLToFile(userURLPath, Properties.Settings.Default.SEED_FILENAME, urls);
+            this.AddURLToFile(userURLPath, this.settings.SeedFileName, urls);
         }
 
         /// <summary>
@@ -129,9 +112,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private void CreateUserDir(string folder)
         {
             string newDirectory = string.Format(
-                Properties.Settings.Default.PATH_FORMAT_THREE,
+                this.settings.PathFormatThree,
                 this.homeDir,
-                Properties.Settings.Default.BASEURL_PATH,
+                this.settings.BaseUrlPath,
                 folder);
 
             var info = Directory.CreateDirectory(newDirectory);
@@ -151,7 +134,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private void AddURLToFile(string path, string fileName, params string[] urls)
         {
             var file = string.Format(
-                Properties.Settings.Default.PATH_FORMAT_TWO,
+                this.settings.PathFormatTwo,
                 path,
                 fileName);
 
@@ -183,51 +166,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Gets the content of the file.
-        /// </summary>
-        /// <param name="pattern">The pattern.</param>
-        /// <param name="filePath">The file path.</param>
-        /// <returns>A list containing the file content.</returns>
-        private List<string> GetFileContent(string pattern, string filePath)
-        {
-            List<string> content = new List<string>();
-
-            var prefixFile = string.Format(
-                Properties.Settings.Default.PATH_FORMAT_TWO,
-                filePath,
-                Properties.Settings.Default.PREFIX_FILENAME);
-
-            try
-            {
-                using (StreamReader sr = new StreamReader(prefixFile))
-                {
-                    var line = string.Empty;
-
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        if (line.Contains(pattern))
-                        {
-                            content.Add(line);
-                        }
-                    }
-
-                    Log.DebugFormat(Properties.Resources.LOG_FILE_READING_SUCCESS, filePath);
-                }
-            }
-            catch (FileNotFoundException)
-            {
-                Log.DebugFormat(Properties.Resources.LOG_PREFIX_FILE_NOT_FOUND);
-                this.CreateFile(this.prefixPath, Properties.Settings.Default.PREFIX_FILENAME, true);
-            }
-            catch (Exception e)
-            {
-                Log.ErrorFormat(Properties.Resources.LOG_FILE_READING_ERROR, filePath, e);
-            }
-
-            return content;
-        }
-
-        /// <summary>
         /// Creates the file.
         /// </summary>
         /// <param name="path">The path.</param>
@@ -241,7 +179,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             {
                 var file = File.Create(
                     string.Format(
-                    Properties.Settings.Default.PATH_FORMAT_TWO,
+                    this.settings.PathFormatTwo,
                     path,
                     fileName));
 

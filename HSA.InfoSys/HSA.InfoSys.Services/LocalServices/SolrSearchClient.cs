@@ -32,15 +32,21 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private IDBManager dbManager = DBManager.ManagerFactory(Guid.NewGuid());
 
         /// <summary>
+        /// The settings.
+        /// </summary>
+        private SolrSearchClientSettings settings;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="SolrSearchClient"/> class.
         /// </summary>
         public SolrSearchClient()
         {
-            this.Host = Properties.Settings.Default.SOLR_HOST;
-            this.Port = Properties.Settings.Default.SOLR_PORT;
+            this.settings = dbManager.GetSettingsFor<SolrSearchClientSettings>();
+            this.Host = settings.Host;
+            this.Port = settings.Port;
 
             this.SolrResponse = string.Empty;
-            this.Collection = Properties.Settings.Default.SOLR_COLLECTION;
+            this.Collection = settings.Collection;
         }
 
         /// <summary>
@@ -169,7 +175,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             // Request send to the Server
             request = string.Format(
-                Properties.Settings.Default.SOLR_REQUEST_FORMAT,
+                settings.RequestFormat,
                 solrQuery,
                 "\r\n",
                 this.Host,
@@ -214,7 +220,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             Guid queryTicket = Guid.NewGuid();
 
             string query = string.Format(
-                Properties.Settings.Default.SOLR_QUERY_FORMAT,
+                settings.QueryFormat,
                 this.Collection,
                 queryString,
                 mimeType);

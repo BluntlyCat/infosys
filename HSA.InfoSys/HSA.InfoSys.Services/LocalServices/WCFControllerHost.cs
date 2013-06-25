@@ -11,6 +11,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using System.Security.Cryptography.X509Certificates;
     using System.ServiceModel;
     using System.ServiceModel.Description;
+    using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
@@ -29,6 +30,19 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// The service host for communication between server and GUI.
         /// </summary>
         private static Dictionary<Service, ServiceHost> hosts = new Dictionary<Service, ServiceHost>();
+
+        /// <summary>
+        /// The settings.
+        /// </summary>
+        private WCFControllerHostSettings settings;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WCFControllerHost"/> class.
+        /// </summary>
+        public WCFControllerHost()
+        {
+            this.settings = DBManager.ManagerFactory(Guid.NewGuid()).GetSettingsFor<WCFControllerHostSettings>();
+        }
 
         /// <summary>
         /// Creates the bindings, certificate and the service host
@@ -54,14 +68,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                     var dir = System.Environment.CurrentDirectory;
 
-#if !MONO
-                    certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_DOTNET, "Aes2xe1baetei8Y");
-#else
-                    certificate = new X509Certificate2(Properties.Settings.Default.CERTIFICATE_PATH_MONO, "Aes2xe1baetei8Y");
-#endif
+                    certificate = new X509Certificate2(this.settings.CertificatePath, this.settings.CertificatePassword);
 
-                    var netTcpAddress = Addresses.GetNetTcpAddress(typeof(IT));
-                    var httpAddress = Addresses.GetHttpAddress(typeof(IT));
+                    var netTcpAddress = WCFControllerAddresses.GetNetTcpAddress(typeof(IT));
+                    var httpAddress = WCFControllerAddresses.GetHttpAddress(typeof(IT));
 
                     var host = new ServiceHost(instance, new Uri(netTcpAddress));
 
@@ -104,7 +114,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 }
                 catch (Exception e)
                 {
-                    Log.ErrorFormat("Common error: {0}", e);
+                    Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
                 }
 
                 return instance;

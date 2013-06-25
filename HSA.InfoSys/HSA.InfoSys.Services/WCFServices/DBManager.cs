@@ -108,6 +108,27 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
+        /// Gets the settings for.
+        /// </summary>
+        /// <typeparam name="T">The type of settings.</typeparam>
+        /// <returns>
+        /// The entity containing the requested settings.
+        /// </returns>
+        public T GetSettingsFor<T>() where T : Entity
+        {
+            T setting;
+
+            using (ISession session = Session)
+            {
+                setting = session.QueryOver<T>()
+                    .Where(s => s.Type == typeof(T).Name)
+                    .SingleOrDefault() as T;
+            }
+
+            return setting;
+        }
+
+        /// <summary>
         /// Loads this entities eager.
         /// </summary>
         /// <param name="param">The names of the entities.</param>

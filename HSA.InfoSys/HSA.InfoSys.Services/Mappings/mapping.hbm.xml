@@ -14,8 +14,6 @@
     <joined-subclass name="Result" table="Result">
       <key column="ResultGUID" unique="true" />
 
-      <!--<many-to-one name="Component" class="Component" column="Component" cascade="all" not-null="true" />-->
-
       <property name="ComponentGUID" type="Guid" not-null="true" />
       
       <property name="Content" type="string" >
@@ -31,7 +29,6 @@
     <joined-subclass name="Component" table="Component">
       <key column="ComponentGUID" unique="true" />
 
-      <!--<one-to-one name="OrgUnit" class="OrgUnit"  cascade="all" />-->
       <property name="OrgUnitGUID" type="Guid" not-null="true" />
       <property name="Name" type="string" length ="100" not-null="true" />
     </joined-subclass>
@@ -66,6 +63,59 @@
       <property name="NextSearch" type="timestamp" not-null="false"/>
       
       <property name="SchedulerActive" type="bool" not-null="true"/>
+    </joined-subclass>
+
+    <!-- EmailNotifierSettings -->
+    <joined-subclass name="EmailNotifierSettings" table="EmailNotifierSettings">
+      <key column="EmailNotifierSettingsGUID" unique="true" />
+
+      <property name="SmtpServer" type="string" length ="40" not-null="true" />
+      <property name="MailFrom" type="string" length ="40" not-null="true" />
+    </joined-subclass>
+
+    <!-- NutchControllerClientSettings -->
+    <joined-subclass name="NutchControllerClientSettings" table="NutchControllerClientSettings">
+      <key column="NutchControllerClientSettingsGUID" unique="true" />
+
+      <property name="SolrServer" type="string" length ="40" not-null="true" />
+      <property name="SeedFileName" type="string" length ="40" not-null="true" />
+      <property name="BaseUrlPath" type="string" length ="40" not-null="true" />
+      <property name="PathFormatTwo" type="string" length ="40" not-null="true" />
+      <property name="PathFormatThree" type="string" length ="40" not-null="true" />
+      <property name="PathFormatFour" type="string" length ="40" not-null="true" />
+      <property name="NutchCommand" type="string" length ="40" not-null="true" />
+      <property name="CrawlRequest" type="string" length ="40" not-null="true" />
+    </joined-subclass>
+
+    <!-- SolrSearchClientSettings -->
+    <joined-subclass name="SolrSearchClientSettings" table="SolrSearchClientSettings">
+      <key column="SolrSearchClientSettingsGUID" unique="true" />
+
+      <property name="Host" type="string" length ="40" not-null="true" />
+      <property name="Port" type="int" not-null="true"/>
+
+      <property name="Collection" type="string" length ="40" not-null="true" />
+      <property name="QueryFormat" type="string" length ="40" not-null="true" />
+      <property name="RequestFormat" type="string" length ="40" not-null="true" />
+    </joined-subclass>
+
+    <!-- WCFControllerAddressesSettings -->
+    <joined-subclass name="WCFControllerAddressesSettings" table="WCFControllerAddressesSettings">
+      <key column="SolrSearchClientSettingsGUIDWCFControllerAddressesSettingsGUID" unique="true" />
+
+      <property name="HttpAddress" type="string" length ="40" not-null="true" />
+      <property name="NetTcpAddress" type="string" length ="40" not-null="true" />
+      
+      <property name="HttpPort" type="int" not-null="true"/>
+      <property name="NetTcpPort" type="int" not-null="true"/>
+    </joined-subclass>
+
+    <!-- WCFControllerHostSettings -->
+    <joined-subclass name="WCFControllerHostSettings" table="WCFControllerHostSettings">
+      <key column="WCFControllerHostSettingsGUID" unique="true" />
+
+      <property name="CertificatePath" type="string" length ="40" not-null="true" />
+      <property name="CertificatePassword" type="string" length ="40" not-null="true" />
     </joined-subclass>
   </class>
 </hibernate-mapping>

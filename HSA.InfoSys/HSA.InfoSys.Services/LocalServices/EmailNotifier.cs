@@ -34,6 +34,16 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private IDBManager dbManager = DBManager.ManagerFactory(Guid.NewGuid());
 
         /// <summary>
+        /// The settings.
+        /// </summary>
+        private EmailNotifierSettings settings;
+
+        public EmailNotifier()
+        {
+            settings = dbManager.GetSettingsFor<EmailNotifierSettings>();
+        }
+
+        /// <summary>
         /// Recalls the GUI when search for an org unit is finished.
         /// </summary>
         /// <param name="orgUnitGUID">The org unit GUID.</param>
@@ -59,7 +69,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     orgUnit.Name);
 
                 var mail = this.BuildMail(
-                    Properties.Settings.Default.EMAIL_NOTIFIER_FROM,
+                    this.settings.MailFrom,
                     subject);
 
                 this.AddMailRecipient(mail, orgUnitGUID, addresses);
@@ -104,7 +114,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 var addresses = this.DeserializeAddresses(orgUnit);
 
                 var mail = this.BuildMail(
-                    Properties.Settings.Default.EMAIL_NOTIFIER_FROM,
+                    this.settings.MailFrom,
                     Properties.Resources.EMAIL_NOTIFIER_CRAWL_FAILED_SUBJECT);
 
                 this.AddMailRecipient(mail, orgUnitGUID, addresses);
@@ -135,7 +145,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             var addresses = this.DeserializeAddresses(orgUnit);
 
             var mail = this.BuildMail(
-                Properties.Settings.Default.EMAIL_NOTIFIER_FROM,
+                this.settings.MailFrom,
                 subject);
 
             this.AddMailRecipient(mail, orgUnit.EntityId, addresses);
@@ -268,7 +278,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private void SendMail(MailMessage mail)
         {
             Log.InfoFormat(Properties.Resources.EMAIL_NOTIFIER_SEND_MAIL, mail.From, mail.Subject, mail.To);
-            SmtpClient smtpServer = new SmtpClient(Properties.Settings.Default.SMTP_SERVER);
+            SmtpClient smtpServer = new SmtpClient(this.settings.SmtpServer);
             smtpServer.Send(mail);
         }
     }

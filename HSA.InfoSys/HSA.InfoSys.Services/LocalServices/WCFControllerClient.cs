@@ -33,8 +33,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             {
                 Log.Info("Try get new client proxy.");
 
-                Addresses.Initialize();
-                var netTcpAddress = new Uri(Addresses.GetNetTcpAddress(typeof(T)));
+                WCFControllerAddresses.Initialize();
+                var netTcpAddress = new Uri(WCFControllerAddresses.GetNetTcpAddress(typeof(T)));
 
                 var quotas = new System.Xml.XmlDictionaryReaderQuotas();
                 quotas.MaxBytesPerRead = 1024 * 1024;

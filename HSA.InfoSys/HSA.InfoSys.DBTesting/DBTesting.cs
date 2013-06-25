@@ -45,15 +45,6 @@ namespace HSA.InfoSys.Testing.DBTesting
                     {
                         case ConsoleKey.A:
                             log.Info("Add entity to db.");
-
-                            Guid guid;
-                            var orgUnit = dbManager.CreateOrgUnit(0, "Webserver");
-                            var component = dbManager.CreateComponent("Apache", orgUnit.EntityId);
-                            guid = dbManager.AddEntity(component);
-
-                            var component2 = dbManager.GetEntity(guid, dbManager.LoadThisEntities("OrgUnit"));
-                            log.InfoFormat("Got component from db: [{0}]", component2);
-
                             break;
 
                         case ConsoleKey.D:
