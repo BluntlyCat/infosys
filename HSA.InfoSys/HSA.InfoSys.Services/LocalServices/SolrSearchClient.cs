@@ -225,6 +225,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 queryString,
                 mimeType);
 
+            query = query.Replace(" ", "%20");
+
             Log.InfoFormat(Properties.Resources.SOLR_CLIENT_REQUEST_RECEIVED, query);
 
             return query;

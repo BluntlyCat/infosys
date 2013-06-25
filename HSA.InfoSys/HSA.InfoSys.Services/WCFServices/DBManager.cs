@@ -6,6 +6,7 @@
 namespace HSA.InfoSys.Common.Services.WCFServices
 {
     using System;
+    using System.Linq;
     using System.Collections.Generic;
 #if MONO
     using System.IO;
@@ -191,6 +192,23 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                     session.Save(entity);
                     transaction.Commit();
                     Log.Info(Properties.Resources.DBMANAGER_ADD_ENTITY);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Adds the unique component.
+        /// </summary>
+        /// <param name="component">The component.</param>
+        public void AddUniqueComponent(Component component)
+        {
+            using (ISession session = Session)
+            {
+                var components = session.QueryOver<Component>().List<Component>();
+
+                if(components.Any(c => c.Name.Equals(component.Name)) == false)
+                {
+                
                 }
             }
         }

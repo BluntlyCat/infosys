@@ -57,6 +57,14 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         void AddEntitys(params Entity[] entities);
 
         /// <summary>
+        /// Adds the unique component.
+        /// </summary>
+        /// <param name="component">The component.</param>
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        void AddUniqueComponent(Component component);
+
+        /// <summary>
         /// Saves changings of a object in database.
         /// </summary>
         /// <param name="entity">The entity that should be updated.</param>
