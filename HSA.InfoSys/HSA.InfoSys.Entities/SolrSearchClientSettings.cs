@@ -59,6 +59,24 @@ namespace HSA.InfoSys.Common.Entities
         public virtual string RequestFormat { get; set; }
 
         /// <summary>
+        /// Gets or sets the filter query format.
+        /// </summary>
+        /// <value>
+        /// The filter query format.
+        /// </value>
+        [DataMember]
+        public virtual string FilterQueryFormat { get; set; }
+
+        /// <summary>
+        /// Gets or sets the filter.
+        /// </summary>
+        /// <value>
+        /// The filter.
+        /// </value>
+        [DataMember]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
         /// <returns>
@@ -73,6 +91,8 @@ namespace HSA.InfoSys.Common.Entities
                 this.Collection,
                 this.QueryFormat,
                 this.RequestFormat,
+                this.FilterQueryFormat,
+                this.Filter,
                 this.SizeOf());
         }
     }

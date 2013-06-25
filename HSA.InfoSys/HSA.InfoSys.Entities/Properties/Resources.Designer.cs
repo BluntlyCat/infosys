@@ -142,7 +142,7 @@ namespace HSA.InfoSys.Common.Entities.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Host: {0}, Port: {1}, Collection: {2}, QueryFormat: {3}, RequestFormat: {4}, {5}. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Host: {0}, Port: {1}, Collection: {2}, QueryFormat: {3}, RequestFormat: {4}, FilterFormat: {5}, Filter: {6}, {7}. ähnelt.
         /// </summary>
         internal static string SOLRSEARCHCLIENTSETTINGS_TO_STRING {
             get {
