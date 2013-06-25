@@ -102,6 +102,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 new CountdownTime(0, 1, true),
                 Guid.NewGuid(),
                 new Countdown.ZeroEventHandler(this.CrawlFinished));
+
+            this.crawler.OnTick += new Countdown.TickEventHandler(this.Job_OnTick);
         }
 
         /// <summary>
@@ -250,6 +252,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
             this.jobMutex.ReleaseMutex();
 
+            this.crawler.OnTick -= new Countdown.TickEventHandler(this.Job_OnTick);
             this.crawler.StopService(cancel);
 
             base.StopService(cancel);
