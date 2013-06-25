@@ -17,10 +17,15 @@ namespace HSA.InfoSys.Common.Entities
     /// It holds the unique id for each entity.
     /// </summary>
     [DataContract]
-    [KnownType(typeof(Component))]
     [KnownType(typeof(Result))]
     [KnownType(typeof(OrgUnit))]
+    [KnownType(typeof(Component))]
     [KnownType(typeof(OrgUnitConfig))]
+    [KnownType(typeof(EmailNotifierSettings))]
+    [KnownType(typeof(SolrSearchClientSettings))]
+    [KnownType(typeof(WCFControllerHostSettings))]
+    [KnownType(typeof(NutchControllerClientSettings))]
+    [KnownType(typeof(WCFControllerAddressesSettings))]
     [Serializable]
     public abstract class Entity
     {

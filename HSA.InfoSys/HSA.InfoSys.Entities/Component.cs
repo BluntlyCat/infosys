@@ -6,7 +6,6 @@
 namespace HSA.InfoSys.Common.Entities
 {
     using System;
-    using System.Collections.Generic;
     using System.Runtime.Serialization;
 
     /// <summary>
@@ -14,6 +13,7 @@ namespace HSA.InfoSys.Common.Entities
     /// for example a web server or a database server.
     /// </summary>
     [DataContract]
+    [Serializable]
     public class Component : Entity
     {
         /// <summary>

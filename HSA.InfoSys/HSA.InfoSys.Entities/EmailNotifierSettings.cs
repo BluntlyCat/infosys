@@ -5,12 +5,14 @@
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.Common.Entities
 {
+    using System;
     using System.Runtime.Serialization;
 
     /// <summary>
     /// There we can store settings for email notifier.
     /// </summary>
     [DataContract]
+    [Serializable]
     public class EmailNotifierSettings : Entity
     {
         /// <summary>

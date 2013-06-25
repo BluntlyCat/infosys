@@ -6,14 +6,13 @@
 namespace HSA.InfoSys.Common.Entities
 {
     using System;
-    using System.Collections.Generic;
     using System.Runtime.Serialization;
-    using HSA.InfoSys.Common.NetDataContractSerializer;
 
     /// <summary>
     /// This represents the system information of a Component
     /// </summary>
     [DataContract]
+    [Serializable]
     public class OrgUnit : Entity
     {
         /// <summary>

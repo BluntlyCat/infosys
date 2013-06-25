@@ -5,12 +5,14 @@
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.Common.Entities
 {
+    using System;
     using System.Runtime.Serialization;
 
     /// <summary>
     /// There we can store settings for solr search client.
     /// </summary>
     [DataContract]
+    [Serializable]
     public class SolrSearchClientSettings : Entity
     {
         /// <summary>
