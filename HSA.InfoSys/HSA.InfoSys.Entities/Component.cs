@@ -43,10 +43,11 @@ namespace HSA.InfoSys.Common.Entities
         public override string ToString()
         {
             return string.Format(
-                "ID: {0}, Name: {1}, OrgUnit: ({2})",
+                Properties.Resources.COMPONENT_TO_STRING,
                 this.EntityId,
                 this.Name,
-                this.OrgUnitGUID);
+                this.OrgUnitGUID,
+                this.SizeOf());
         }
     }
 }

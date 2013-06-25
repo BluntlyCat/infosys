@@ -6,8 +6,11 @@
 namespace HSA.InfoSys.Common.Entities
 {
     using System;
-    using System.Collections.Generic;
+    using System.IO;
     using System.Runtime.Serialization;
+    using System.Runtime.Serialization.Formatters.Binary;
+    using HSA.InfoSys.Common.Logging;
+    using log4net;
 
     /// <summary>
     /// This is the base class for all data base objects
@@ -21,6 +24,11 @@ namespace HSA.InfoSys.Common.Entities
     [Serializable]
     public abstract class Entity
     {
+        /// <summary>
+        /// The logger of result.
+        /// </summary>
+        private static readonly ILog Log = Logger<string>.GetLogger("Entity");
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Entity"/> class.
         /// </summary>
@@ -60,6 +68,36 @@ namespace HSA.InfoSys.Common.Entities
         }
 
         /// <summary>
+        /// Size of result.
+        /// </summary>
+        /// <returns>The size of this instance.</returns>
+        public virtual long SizeOf()
+        {
+            MemoryStream m = new MemoryStream();
+            BinaryFormatter b = new BinaryFormatter();
+
+            long size = -1;
+
+            try
+            {
+                b.Serialize(m, this);
+                size = m.Length;
+
+                Log.DebugFormat(Properties.Resources.ENTITY_SIZE_OF, size);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat(Properties.Resources.ENTITY_SIZEOF_ERROR, e);
+            }
+            finally
+            {
+                m.Close();
+            }
+
+            return size;
+        }
+
+        /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
         /// <returns>
@@ -67,7 +105,10 @@ namespace HSA.InfoSys.Common.Entities
         /// </returns>
         public override string ToString()
         {
-            return string.Format("ID: {0}", this.EntityId);
+            return string.Format(
+                Properties.Resources.ENTITY_TO_STRING,
+                this.EntityId,
+                this.SizeOf());
         }
     }
 }

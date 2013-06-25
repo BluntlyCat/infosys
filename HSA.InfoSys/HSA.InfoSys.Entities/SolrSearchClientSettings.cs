@@ -1,7 +1,15 @@
-﻿namespace HSA.InfoSys.Common.Entities
+﻿// ------------------------------------------------------------------------
+// <copyright file="SolrSearchClientSettings.cs" company="HSA.InfoSys">
+//     Copyright statement. All right reserved
+// </copyright>
+// ------------------------------------------------------------------------
+namespace HSA.InfoSys.Common.Entities
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// There we can store settings for solr search client.
+    /// </summary>
     [DataContract]
     public class SolrSearchClientSettings : Entity
     {
@@ -58,12 +66,14 @@
         /// </returns>
         public override string ToString()
         {
-            return string.Format("Host: {0}, Port: {1}, Collection: {2}, QueryFormat: {3}, RequestFormat: {4}",
+            return string.Format(
+                Properties.Resources.SOLRSEARCHCLIENTSETTINGS_TO_STRING,
                 this.Host,
                 this.Port,
                 this.Collection,
                 this.QueryFormat,
-                this.RequestFormat);
+                this.RequestFormat,
+                this.SizeOf());
         }
     }
 }

@@ -7,6 +7,9 @@ namespace HSA.InfoSys.Common.Entities
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// There we can store settings for WCF controller addresses.
+    /// </summary>
     [DataContract]
     public class WCFControllerAddressesSettings : Entity
     {
@@ -45,5 +48,22 @@ namespace HSA.InfoSys.Common.Entities
         /// </value>
         [DataMember]
         public virtual int NetTcpPort { get; set; }
+
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public override string ToString()
+        {
+            return string.Format(
+                Properties.Resources.WCFADDRESSES_TO_STRING,
+                this.HttpAddress,
+                this.HttpPort,
+                this.NetTcpAddress,
+                this.NetTcpPort,
+                this.SizeOf());
+        }
     }
 }

@@ -6,17 +6,9 @@
 namespace HSA.InfoSys.Common.Services.WCFServices
 {
     using System;
-    using System.Linq;
     using System.Collections.Generic;
-#if MONO
-    using System.IO;
-#endif
     using System.Reflection;
-#if MONO
-    using System.Runtime.Serialization.Formatters.Binary;
-#endif
     using System.ServiceModel;
-    using System.Text;
     using System.Threading;
     using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
@@ -42,7 +34,10 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         private static Mutex mutex = new Mutex();
 
-#if MONO
+#if !MONO
+        /// <summary>
+        /// The results if we run this in mono.
+        /// </summary>
         private static Result[] results;
 #endif
 
@@ -192,23 +187,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                     session.Save(entity);
                     transaction.Commit();
                     Log.Info(Properties.Resources.DBMANAGER_ADD_ENTITY);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Adds the unique component.
-        /// </summary>
-        /// <param name="component">The component.</param>
-        public void AddUniqueComponent(Component component)
-        {
-            using (ISession session = Session)
-            {
-                var components = session.QueryOver<Component>().List<Component>();
-
-                if(components.Any(c => c.Name.Equals(component.Name)) == false)
-                {
-                
                 }
             }
         }
@@ -479,7 +457,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             return orgUnitConfig;
         }
 
-#if MONO
+#if !MONO
         /// <summary>
         /// Gets the list of indexes of results.
         /// In MONO we only can send 2^16 Bytes because of a
@@ -497,12 +475,14 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </returns>
         public List<int> GetResultIndexes(Guid componentGUID)
         {
-            results = GetResultsByComponentId(componentGUID);
+            Log.InfoFormat(Properties.Resources.DBMANAGER_GET_RESULTS_BY_COMPONENT_ID, componentGUID);
+
+            results = this.GetResultsByComponentId(componentGUID);
 
             var maxBytes = Math.Pow(2, 15);
             long byteCount = this.GetByteCount(results);
             int requests = this.GetAmountOfRequests(byteCount, maxBytes);
-            int byteAmount = 0;
+            long byteAmount = 0;
 
             int index = 0;
             List<int> indexes = new List<int>();
@@ -510,13 +490,16 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
             foreach (var result in results)
             {
-                byteAmount += Encoding.UTF8.GetBytes(result.Title).Length;
-                byteAmount += Encoding.UTF8.GetBytes(result.Content).Length;
+                byteAmount += result.SizeOf();
 
                 if (byteAmount > maxBytes)
                 {
-                    indexes.Add(index - 1);
+                    var i = index - 1;
+
+                    indexes.Add(i);
                     byteAmount = 0;
+
+                    Log.DebugFormat(Properties.Resources.DBMANAGER_BYTEAMOUNT_GREATER_THAN_MAX_BYTES, byteAmount, maxBytes, i);
                 }
 
                 index++;
@@ -534,18 +517,32 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// we begin at the first index and ending one index before the last index.
         /// Otherwise we would fetch the last result two times.
         /// </summary>
-        /// <param name="componentGUID">The component GUID.</param>
         /// <param name="first">The first result index.</param>
         /// <param name="last">The last result index.</param>
-        /// <returns>All results in range of first and the index before last index</returns>
+        /// <returns>
+        /// All results in range of first and the index before last index
+        /// </returns>
         public Result[] GetResultsByRequestIndex(int first, int last)
         {
+            Log.DebugFormat(Properties.Resources.DBMANAGER_SPLITTED_RESULTS_FROM_TO, first, last);
+
             var tmp = new Result[last - first];
             var splittedResults = new List<Result>();
 
             for (int i = first; i < last; i++)
             {
-                splittedResults.Add(results[i]);
+                try
+                {
+                    splittedResults.Add(results[i]);
+                }
+                catch (IndexOutOfRangeException ior)
+                {
+                    Log.ErrorFormat(Properties.Resources.LOG_INDEX_OUT_OF_RANGE, ior);
+                }
+                catch (Exception e)
+                {
+                    Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+                }
             }
 
             return splittedResults.ToArray();
@@ -611,23 +608,24 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             Log.Debug(Properties.Resources.DBSESSION_NHIBERNATE_CONFIG_READY);
         }
 
-#if MONO
+#if !MONO
         /// <summary>
         /// Gets the byte count.
         /// </summary>
-        /// <param name="componentGUID">The component GUID.</param>
-        /// <returns>The amount of bytes of all results.</returns>
+        /// <param name="results">The results.</param>
+        /// <returns>
+        /// The amount of bytes of all results.
+        /// </returns>
         private long GetByteCount(Result[] results)
         {
             long byteCount = 0;
 
             foreach (var result in results)
             {
-                BinaryFormatter b = new BinaryFormatter();
-                MemoryStream m = new MemoryStream();
-                b.Serialize(m, result);
-                byteCount += m.Length;
+                byteCount += result.SizeOf();
             }
+
+            Log.DebugFormat(Properties.Resources.DBMANAGER_RESULTS_BYTE_COUNT, byteCount);
 
             return byteCount;
         }
@@ -637,15 +635,18 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         /// <param name="byteCount">The byte count.</param>
         /// <param name="maxBytes">The max bytes.</param>
-        /// <returns>The amount of necessarry requests.</returns>
+        /// <returns>The amount of necessary requests.</returns>
         private int GetAmountOfRequests(double byteCount, double maxBytes)
         {
-            var tmp = (byteCount / maxBytes);
+            var tmp = byteCount / maxBytes;
 
             if (tmp % 2 != 0)
             {
                 tmp++;
+                Log.Debug(Properties.Resources.DBMANAGER_INCREASE_REQUEST_AMOUNT);
             }
+
+            Log.DebugFormat(Properties.Resources.DBMANAGER_TOTAL_REQUEST_AMOUNT, tmp);
 
             return (int)tmp;
         }

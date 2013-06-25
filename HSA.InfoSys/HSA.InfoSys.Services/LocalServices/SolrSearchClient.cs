@@ -41,12 +41,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         public SolrSearchClient()
         {
-            this.settings = dbManager.GetSettingsFor<SolrSearchClientSettings>();
-            this.Host = settings.Host;
-            this.Port = settings.Port;
+            this.settings = this.dbManager.GetSettingsFor<SolrSearchClientSettings>();
+            this.Host = this.settings.Host;
+            this.Port = this.settings.Port;
 
             this.SolrResponse = string.Empty;
-            this.Collection = settings.Collection;
+            this.Collection = this.settings.Collection;
         }
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             // Request send to the Server
             request = string.Format(
-                settings.RequestFormat,
+                this.settings.RequestFormat,
                 solrQuery,
                 "\r\n",
                 this.Host,
@@ -220,7 +220,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             Guid queryTicket = Guid.NewGuid();
 
             string query = string.Format(
-                settings.QueryFormat,
+                this.settings.QueryFormat,
                 this.Collection,
                 queryString,
                 mimeType);
@@ -250,7 +250,17 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 var result = new Result();
 
                 // todo: Länge von content begrenzen.
-                result.Content = this.GetJsonValue(doc, "content");
+                var content = this.GetJsonValue(doc, "content");
+
+                if (content.Length > 300)
+                {
+                    result.Content = string.Format("{0}...", content.Substring(0, 300));
+                }
+                else
+                {
+                    result.Content = content;
+                }
+
                 result.URL = this.GetJsonValue(doc, "url");
                 result.Title = this.RemoveSpecialChars(this.GetJsonValue(doc, "title"));
 

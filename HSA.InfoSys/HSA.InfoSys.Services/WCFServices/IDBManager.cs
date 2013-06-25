@@ -57,14 +57,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         void AddEntitys(params Entity[] entities);
 
         /// <summary>
-        /// Adds the unique component.
-        /// </summary>
-        /// <param name="component">The component.</param>
-        [UseNetDataContractSerializer]
-        [OperationContractAttribute]
-        void AddUniqueComponent(Component component);
-
-        /// <summary>
         /// Saves changings of a object in database.
         /// </summary>
         /// <param name="entity">The entity that should be updated.</param>
@@ -197,7 +189,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             DateTime nextSearch,
             bool schedulerActive);
 
-#if MONO
+#if !MONO
         /// <summary>
         /// Gets the list of indexes of results.
         /// In MONO we only can send 2^16 Bytes because of a
@@ -222,10 +214,11 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// we begin at the first index and ending one index before the last index.
         /// Otherwise we would fetch the last result two times.
         /// </summary>
-        /// <param name="componentGUID">The component GUID.</param>
         /// <param name="first">The first result index.</param>
         /// <param name="last">The last result index.</param>
-        /// <returns>All results in range of first and the index before last index</returns>
+        /// <returns>
+        /// All results in range of first and the index before last index
+        /// </returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
         Result[] GetResultsByRequestIndex(int first, int last);

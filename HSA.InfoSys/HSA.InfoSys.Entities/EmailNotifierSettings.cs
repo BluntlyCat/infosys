@@ -7,6 +7,9 @@ namespace HSA.InfoSys.Common.Entities
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// There we can store settings for email notifier.
+    /// </summary>
     [DataContract]
     public class EmailNotifierSettings : Entity
     {
@@ -26,5 +29,20 @@ namespace HSA.InfoSys.Common.Entities
         /// The mail from.
         /// </value>
         public virtual string MailFrom { get; set; }
+
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public override string ToString()
+        {
+            return string.Format(
+                Properties.Resources.MAILNOTIFIERSETTINGS_TO_STRING,
+                this.SmtpServer,
+                this.MailFrom,
+                this.SizeOf());
+        }
     }
 }

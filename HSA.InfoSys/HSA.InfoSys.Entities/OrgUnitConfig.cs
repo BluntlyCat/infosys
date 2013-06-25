@@ -97,7 +97,7 @@ namespace HSA.InfoSys.Common.Entities
         public override string ToString()
         {
             return string.Format(
-                "ID: {0}, URLs: {1}, Urls active: {2}, Mails: {3}, Mails active: {4}, Schedule every {5} days at ({6}), Scheduler active: {7}",
+                Properties.Resources.ORGUNITCONFIG_TO_STRING,
                 this.EntityId,
                 this.URLS,
                 this.URLActive,
@@ -105,7 +105,8 @@ namespace HSA.InfoSys.Common.Entities
                 this.EmailActive,
                 this.Days,
                 this.Time,
-                this.SchedulerActive);
+                this.SchedulerActive,
+                this.SizeOf());
         }
     }
 }

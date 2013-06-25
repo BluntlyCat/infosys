@@ -7,6 +7,9 @@ namespace HSA.InfoSys.Common.Entities
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// There we can store settings for nutch controller client
+    /// </summary>
     [DataContract]
     public class NutchControllerClientSettings : Entity
     {
@@ -81,5 +84,23 @@ namespace HSA.InfoSys.Common.Entities
         /// </value>
         [DataMember]
         public virtual string CrawlRequest { get; set; }
+
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public override string ToString()
+        {
+            return string.Format(
+                Properties.Resources.NUTCHCONTROLLERSETTINGS_TO_STRING,
+                this.SolrServer,
+                this.SeedFileName,
+                this.BaseUrlPath,
+                this.NutchCommand,
+                this.CrawlRequest,
+                this.SizeOf());
+        }
     }
 }

@@ -75,7 +75,8 @@ namespace HSA.InfoSys.Common.Entities
                 this.Title,
                 this.URL,
                 this.Content,
-                this.Time);
+                this.Time,
+                this.SizeOf());
         }
     }
 }

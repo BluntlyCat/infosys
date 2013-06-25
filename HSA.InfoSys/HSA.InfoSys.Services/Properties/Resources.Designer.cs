@@ -97,6 +97,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Byte amount {0} &gt; maxbytes {1} at index {2} ähnelt.
+        /// </summary>
+        internal static string DBMANAGER_BYTEAMOUNT_GREATER_THAN_MAX_BYTES {
+            get {
+                return ResourceManager.GetString("DBMANAGER_BYTEAMOUNT_GREATER_THAN_MAX_BYTES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die New component [{0}] created. ähnelt.
         /// </summary>
         internal static string DBMANAGER_CREATE_COMPONENT {
@@ -214,11 +223,47 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Increase request amount. ähnelt.
+        /// </summary>
+        internal static string DBMANAGER_INCREASE_REQUEST_AMOUNT {
+            get {
+                return ResourceManager.GetString("DBMANAGER_INCREASE_REQUEST_AMOUNT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die DBManager does not exist, create one. ähnelt.
         /// </summary>
         internal static string DBMANAGER_NO_MANAGER_FOUND {
             get {
                 return ResourceManager.GetString("DBMANAGER_NO_MANAGER_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Total byte count of results: {0} ähnelt.
+        /// </summary>
+        internal static string DBMANAGER_RESULTS_BYTE_COUNT {
+            get {
+                return ResourceManager.GetString("DBMANAGER_RESULTS_BYTE_COUNT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Get splitted results from index {0} to index {1}. ähnelt.
+        /// </summary>
+        internal static string DBMANAGER_SPLITTED_RESULTS_FROM_TO {
+            get {
+                return ResourceManager.GetString("DBMANAGER_SPLITTED_RESULTS_FROM_TO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Total request amount: {0}. ähnelt.
+        /// </summary>
+        internal static string DBMANAGER_TOTAL_REQUEST_AMOUNT {
+            get {
+                return ResourceManager.GetString("DBMANAGER_TOTAL_REQUEST_AMOUNT", resourceCulture);
             }
         }
         
@@ -507,6 +552,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         internal static string LOG_GOT_SCHEDULER_LIST_FROM_DB {
             get {
                 return ResourceManager.GetString("LOG_GOT_SCHEDULER_LIST_FROM_DB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The index was out of range: {0}. ähnelt.
+        /// </summary>
+        internal static string LOG_INDEX_OUT_OF_RANGE {
+            get {
+                return ResourceManager.GetString("LOG_INDEX_OUT_OF_RANGE", resourceCulture);
             }
         }
         

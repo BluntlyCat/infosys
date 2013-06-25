@@ -96,7 +96,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                             foreach (var result in resultPot.Results)
                             {
-                                if (results.Count != 0 || !results.Any(r => r.Content.Equals(result.Content)))
+                                if (results.Count == 0 || !results.Any(r => r.Content.Equals(result.Content)))
                                 {
                                     sendResults.Add(result);
                                     result.ComponentGUID = resultPot.EntityId;

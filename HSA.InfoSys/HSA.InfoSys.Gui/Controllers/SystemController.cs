@@ -544,38 +544,45 @@ namespace HSA.InfoSys.Gui.Controllers
                 // get all components by OrgUnitId
                 var components = cc.GetComponentsByOrgUnitId(orgUnitGUID).ToList<Component>();
 
-                // if a compGUID was selected by the user then show the results 
-                // else show the results of the first component
-                if (componentGUID != null)
+                if (components.Count != 0)
                 {
-                    var selectedCompGUID = Guid.Parse(componentGUID);
-                    var component = cc.GetEntity(selectedCompGUID) as Component;
+                    // if a compGUID was selected by the user then show the results 
+                    // else show the results of the first component
+                    if (componentGUID != null)
+                    {
+                        var selectedCompGUID = Guid.Parse(componentGUID);
+                        var component = cc.GetEntity(selectedCompGUID) as Component;
 
-#if MONO
-                    var results = this.GetResults(selectedCompGUID);
+#if !MONO
+                        var results = this.GetResults(selectedCompGUID);
 #else
-                    var results = cc.GetResultsByComponentId(selectedCompGUID).ToList<Result>();
+                        var results = cc.GetResultsByComponentId(selectedCompGUID).ToList<Result>();
 #endif
-                    this.ViewData["selectedComp"] = component.Name;
-                    this.ViewData["results"] = results;
+                        this.ViewData["selectedComp"] = component.Name;
+                        this.ViewData["results"] = results;
+                    }
+                    else
+                    {
+                        var selectedComp = components.First();
+
+#if !MONO
+                        var results = this.GetResults(selectedComp.EntityId);
+#else
+                        var results = cc.GetResultsByComponentId(selectedComp.EntityId).ToList<Result>();
+#endif
+
+                        this.ViewData["selectedComp"] = selectedComp.Name;
+                        this.ViewData["results"] = results;
+                    }
+
+                    this.ViewData["systemguid"] = orgUnitGUID;
+                    this.ViewData["components"] = components;
+                    this.ViewData["navid"] = "mysystems";
                 }
                 else
                 {
-                    var selectedComp = components.First();
-
-#if MONO
-                    var results = this.GetResults(selectedComp.EntityId);
-#else
-                    var results = cc.GetResultsByComponentId(selectedComp.EntityId).ToList<Result>();
-#endif
-
-                    this.ViewData["selectedComp"] = selectedComp.Name;
-                    this.ViewData["results"] = results;
+                    return this.RedirectToAction("Index", "System");
                 }
-
-                this.ViewData["systemguid"] = orgUnitGUID;
-                this.ViewData["components"] = components;
-                this.ViewData["navid"] = "mysystems";
             }
             catch (CommunicationException ce)
             {
@@ -589,7 +596,7 @@ namespace HSA.InfoSys.Gui.Controllers
             return this.View();
         }
 
-#if MONO
+#if !MONO
         /// <summary>
         /// Gets the results.
         /// Because of restrictions of maximum amount of bytes (2^16)

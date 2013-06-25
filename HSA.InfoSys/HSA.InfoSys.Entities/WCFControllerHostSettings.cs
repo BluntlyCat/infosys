@@ -7,6 +7,9 @@ namespace HSA.InfoSys.Common.Entities
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// There we can store settings for WCF controller host.
+    /// </summary>
     [DataContract]
     public class WCFControllerHostSettings : Entity
     {
@@ -27,5 +30,19 @@ namespace HSA.InfoSys.Common.Entities
         /// </value>
         [DataMember]
         public virtual string CertificatePassword { get; set; }
+
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public override string ToString()
+        {
+            return string.Format(
+                Properties.Resources.WCFCONTROLLERHOSTSETTINGS_TO_STRING,
+                this.CertificatePath,
+                this.SizeOf());
+        }
     }
 }

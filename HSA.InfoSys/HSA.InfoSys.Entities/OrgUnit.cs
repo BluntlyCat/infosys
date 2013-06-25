@@ -76,11 +76,12 @@ namespace HSA.InfoSys.Common.Entities
         public override string ToString()
         {
             return string.Format(
-                "ID: {0}, UserId: {1}, Name: {2}, OrgUnitConfig: ({3})",
+                Properties.Resources.ORGUNIT_TO_STRING,
                 this.EntityId,
                 this.UserId,
                 this.Name,
-                this.OrgUnitConfig);
+                this.OrgUnitConfig,
+                this.SizeOf());
         }
     }
 }

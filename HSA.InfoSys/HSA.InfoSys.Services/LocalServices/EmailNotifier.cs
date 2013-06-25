@@ -38,9 +38,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         private EmailNotifierSettings settings;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmailNotifier"/> class.
+        /// </summary>
         public EmailNotifier()
         {
-            settings = dbManager.GetSettingsFor<EmailNotifierSettings>();
+            this.settings = this.dbManager.GetSettingsFor<EmailNotifierSettings>();
         }
 
         /// <summary>
