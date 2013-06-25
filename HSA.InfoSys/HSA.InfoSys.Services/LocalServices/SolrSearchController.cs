@@ -61,7 +61,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         public void StartSearch(Guid orgUnitGuid)
         {
             this.OrgUnitGuid = orgUnitGuid;
-            var results = DBManager.Session.QueryOver<Result>().List();
 
             var components = this.dbManager.GetComponentsByOrgUnitId(this.OrgUnitGuid).ToList<Component>();
 
@@ -73,6 +72,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             foreach (var component in components)
             {
                 var searchClient = new SolrSearchClient();
+
+                var results = DBManager.Session.QueryOver<Result>()
+                    .Where(c => c.ComponentGUID == component.EntityId)
+                    .List();
 
                 SolrResultPot resultPot = new SolrResultPot(component.EntityId);
 
@@ -93,7 +96,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                             foreach (var result in resultPot.Results)
                             {
-                                if (!results.Any(r => r.Content.Equals(result.Content)))
+                                if (results.Count != 0 || !results.Any(r => r.Content.Equals(result.Content)))
                                 {
                                     sendResults.Add(result);
                                     result.ComponentGUID = resultPot.EntityId;
