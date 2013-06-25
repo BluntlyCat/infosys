@@ -6,9 +6,8 @@
 namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System;
-    using System.Collections.Generic;
+    using System.ComponentModel;
     using System.Diagnostics;
-    using System.Threading;
     using HSA.InfoSys.Common.Logging;
     using log4net;
 
@@ -41,8 +40,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// Prevents a default instance of the <see cref="NutchController" /> class from being created.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
-        private NutchController(Guid serviceGUID) : base(serviceGUID)
+        private NutchController(Guid serviceGUID)
+            : base(serviceGUID)
         {
+            this.NutchFound = true;
         }
 
         /// <summary>
@@ -55,6 +56,14 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// Occurs when [on crawl finished].
         /// </summary>
         public event CrawlFinishedHandler OnCrawlFinished;
+
+        /// <summary>
+        /// Gets a value indicating whether [nutch found].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [nutch found]; otherwise, <c>false</c>.
+        /// </value>
+        public bool NutchFound { get; private set; }
 
         /// <summary>
         /// Gets the nutch controller.
@@ -85,7 +94,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             lock (this.lockMutex)
             {
-                if (!this.Running)
+                if (!this.Running && this.NutchFound)
                 {
                     var nutchClient = new NutchControllerClient();
                     this.crawlProcess = nutchClient.CreateCrawlProcess(folder, depth, topN, urls);
@@ -112,12 +121,19 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 {
                     this.OnCrawlFinished(this);
                 }
-
-                this.Running = false;
+            }
+            catch (Win32Exception w32e)
+            {
+                Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_NUTCH_NOT_FOUND, w32e);
+                this.NutchFound = false;
             }
             catch (Exception e)
             {
                 Log.DebugFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+            }
+            finally
+            {
+                this.Running = false;
             }
         }
     }

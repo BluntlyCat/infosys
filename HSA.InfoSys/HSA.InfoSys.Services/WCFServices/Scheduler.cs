@@ -50,7 +50,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// The crawler
         /// </summary>
-        private Countdown crawler;
+        private FinishAndRepeatService crawler;
 
         /// <summary>
         /// The jobs dictionary.
@@ -69,41 +69,10 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             this.nutchController = NutchController.NutchFactory(Guid.NewGuid());
             this.nutchController.OnCrawlFinished += this.NutchController_OnCrawlFinished;
 
-            var orgUnitConfigs = this.dbManager.GetOrgUnitConfigurations();
-            var urlList = new List<string>();
-
-            foreach (var config in orgUnitConfigs)
-            {
-                if (config.URLS != null)
-                {
-                    var urls = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(config.URLS);
-
-                    foreach (var url in urls)
-                    {
-                        urlList.Add(url);
-                    }
-                }
-            }
-
-            var allURLs = Newtonsoft.Json.JsonConvert.SerializeObject(urlList.Distinct());
-
-            var orgUnitConfig = this.dbManager.CreateOrgUnitConfig(
-                allURLs,
-                string.Empty,
-                true,
-                false,
-                1,
-                0,
-                new DateTime(),
-                true);
-
-            this.crawler = new Countdown(
-                orgUnitConfig,
-                new CountdownTime(0, 1, true),
+            this.crawler = new FinishAndRepeatService(
                 Guid.NewGuid(),
-                new Countdown.ZeroEventHandler(this.CrawlFinished));
-
-            this.crawler.OnTick += new Countdown.TickEventHandler(this.Job_OnTick);
+                this.dbManager.GetAllUrls(),
+                new FinishAndRepeatService.ZeroEventHandler(this.CrawlFinished));
         }
 
         /// <summary>
@@ -252,7 +221,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
             this.jobMutex.ReleaseMutex();
 
-            this.crawler.OnTick -= new Countdown.TickEventHandler(this.Job_OnTick);
             this.crawler.StopService(cancel);
 
             base.StopService(cancel);
@@ -270,18 +238,15 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="orgUnitConfig">The org unit config.</param>
-        private void CrawlFinished(object sender, OrgUnitConfig orgUnitConfig)
+        private void CrawlFinished(object sender, string[] urls)
         {
             Log.InfoFormat(Properties.Resources.SCHEDULER_CRAWL_SUCCEEDED);
 
-            var countdown = sender as Countdown;
-            var urls = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(orgUnitConfig.URLS);
             var nutchController = NutchController.NutchFactory(Guid.NewGuid());
 
             nutchController.SetNextCrawl("crawler", 10, 10, urls);
 
             Log.Debug(Properties.Resources.SCHEDULER_CRAWL_RESTART);
-            countdown.Restart();
         }
 
         /// <summary>
@@ -299,7 +264,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
             solrController.StartSearch(orgUnitGUID);
 
-            if (countdown.Time.Repeat)
+            if (countdown.Time == null || countdown.Time.Repeat)
             {
                 countdown.Restart();
             }

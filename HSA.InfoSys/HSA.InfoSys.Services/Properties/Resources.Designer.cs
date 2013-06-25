@@ -673,6 +673,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Nutch not found, disable crawling. Install Nutch first and restart crawler. Messsage was: {0}. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_NUTCH_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_NUTCH_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Set pending job for urls: {0} ähnelt.
         /// </summary>
         internal static string NUTCH_CONTROLLER_SET_PENDING_CRAWL {

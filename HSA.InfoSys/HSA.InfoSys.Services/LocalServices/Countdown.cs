@@ -19,7 +19,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The logger.
         /// </summary>
-        private static readonly ILog Log = Logger<Type>.GetLogger(typeof(Countdown));
+        private static readonly ILog Log = Logger<String>.GetLogger("Countdown");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Countdown" /> class.
@@ -86,6 +86,14 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         public delegate void ErrorEventHandler(object sender, string error);
 
         /// <summary>
+        /// Gets or sets the on zero event handler.
+        /// </summary>
+        /// <value>
+        /// The on zero event handler.
+        /// </value>
+        private ZeroEventHandler OnZero { get; set; }
+
+        /// <summary>
         /// Occurs when [tick].
         /// </summary>
         public event TickEventHandler OnTick;
@@ -120,14 +128,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private OrgUnitConfig OrgUnitConfig { get; set; }
 
         /// <summary>
-        /// Gets or sets the on zero event handler.
-        /// </summary>
-        /// <value>
-        /// The on zero event handler.
-        /// </value>
-        private ZeroEventHandler OnZero { get; set; }
-
-        /// <summary>
         /// Starts this instance.
         /// </summary>
         public override void StartService()
@@ -148,12 +148,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             Log.Info(Properties.Resources.LOG_COUNTDOWN_SET_REPEAT_TIME);
 
-            this.SetTime();
-
-            if (this.Time != null)
-            {
-                this.StartService();
-            }
+            this.StartService();
         }
 
         /// <summary>

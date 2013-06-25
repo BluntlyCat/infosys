@@ -38,6 +38,14 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         string[] LoadThisEntities(params string[] param);
 
         /// <summary>
+        /// Gets all urls.
+        /// </summary>
+        /// <returns>An array containing all urls for crawling.</returns>
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        string[] GetAllUrls();
+
+        /// <summary>
         /// Adds a new Object (Component, Issue, Source...)
         /// and saves it in database.
         /// </summary>

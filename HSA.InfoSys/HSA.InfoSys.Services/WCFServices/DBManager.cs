@@ -154,6 +154,33 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
+        /// Gets all urls.
+        /// </summary>
+        /// <returns>
+        /// An array containing all urls for crawling.
+        /// </returns>
+        public string[] GetAllUrls()
+        {
+            var orgUnitConfigs = this.GetOrgUnitConfigurations();
+            var urlList = new List<string>();
+
+            foreach (var config in orgUnitConfigs)
+            {
+                if (config.URLS != null)
+                {
+                    var urls = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(config.URLS);
+
+                    foreach (var url in urls)
+                    {
+                        urlList.Add(url);
+                    }
+                }
+            }
+
+            return urlList.ToArray();
+        }
+
+        /// <summary>
         /// Adds a new Object (Component, Issue, Source)
         /// and saves it in database.
         /// </summary>
