@@ -208,10 +208,10 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <param name="componentGUID">The component GUID.</param>
         /// <param name="first">The first result index.</param>
         /// <param name="last">The last result index.</param>
-        /// <returns></returns>
+        /// <returns>All results in range of first and the index before last index</returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        Result[] GetResultsByRequestIndex(Guid componentGUID, int first, int last);
+        Result[] GetResultsByRequestIndex(int first, int last);
 #endif
     }
 }

@@ -12,6 +12,7 @@ namespace HSA.InfoSys.Common.Entities
     /// This class represents the search result to an issue.
     /// </summary>
     [DataContract]
+    [Serializable]
     public class Result : Entity
     {
         /// <summary>

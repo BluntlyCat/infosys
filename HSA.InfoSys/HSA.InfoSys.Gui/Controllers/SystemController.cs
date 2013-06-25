@@ -611,7 +611,7 @@ namespace HSA.InfoSys.Gui.Controllers
 
             for (int i = 0; i < indexes.Length - 1; i++)
             {
-                splittedResults.Add(cc.GetResultsByRequestIndex(componentGuid, indexes[i], indexes[i + 1]));
+                splittedResults.Add(cc.GetResultsByRequestIndex(indexes[i], indexes[i + 1]));
             }
 
             foreach (var splittedResult in splittedResults)

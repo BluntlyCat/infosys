@@ -7,8 +7,15 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 {
     using System;
     using System.Collections.Generic;
+#if MONO
+    using System.IO;
+#endif
     using System.Reflection;
+#if MONO
+    using System.Runtime.Serialization.Formatters.Binary;
+#endif
     using System.ServiceModel;
+    using System.Text;
     using System.Threading;
     using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
@@ -17,7 +24,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     using NHibernate;
     using NHibernate.Cfg;
     using NHibernate.Tool.hbm2ddl;
-    using System.Text;
 
     /// <summary>
     /// The DBManager handles database requests.
@@ -34,6 +40,10 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// The mutex for data base session.
         /// </summary>
         private static Mutex mutex = new Mutex();
+
+#if MONO
+        private static Result[] results;
+#endif
 
         /// <summary>
         /// The database manager.
@@ -448,10 +458,10 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </returns>
         public List<int> GetResultIndexes(Guid componentGUID)
         {
-            var results = GetResultsByComponentId(componentGUID);
+            results = GetResultsByComponentId(componentGUID);
 
             var maxBytes = Math.Pow(2, 15);
-            int byteCount = this.GetByteCount(results);
+            long byteCount = this.GetByteCount(results);
             int requests = this.GetAmountOfRequests(byteCount, maxBytes);
             int byteAmount = 0;
 
@@ -488,12 +498,11 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <param name="componentGUID">The component GUID.</param>
         /// <param name="first">The first result index.</param>
         /// <param name="last">The last result index.</param>
-        /// <returns></returns>
-        public Result[] GetResultsByRequestIndex(Guid componentGUID, int first, int last)
+        /// <returns>All results in range of first and the index before last index</returns>
+        public Result[] GetResultsByRequestIndex(int first, int last)
         {
             var tmp = new Result[last - first];
             var splittedResults = new List<Result>();
-            var results = GetResultsByComponentId(componentGUID);
 
             for (int i = first; i < last; i++)
             {
@@ -569,14 +578,16 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         /// <param name="componentGUID">The component GUID.</param>
         /// <returns>The amount of bytes of all results.</returns>
-        private int GetByteCount(Result[] results)
+        private long GetByteCount(Result[] results)
         {
-            int byteCount = 0;
+            long byteCount = 0;
 
             foreach (var result in results)
             {
-                byteCount += Encoding.UTF8.GetBytes(result.Title).Length;
-                byteCount += Encoding.UTF8.GetBytes(result.Content).Length;
+                BinaryFormatter b = new BinaryFormatter();
+                MemoryStream m = new MemoryStream();
+                b.Serialize(m, result);
+                byteCount += m.Length;
             }
 
             return byteCount;

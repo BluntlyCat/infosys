@@ -18,6 +18,7 @@ namespace HSA.InfoSys.Common.Entities
     [KnownType(typeof(Result))]
     [KnownType(typeof(OrgUnit))]
     [KnownType(typeof(OrgUnitConfig))]
+    [Serializable]
     public abstract class Entity
     {
         /// <summary>
