@@ -37,12 +37,19 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private object lockMutex = new object();
 
         /// <summary>
+        /// The URLs.
+        /// </summary>
+        private string[] urls = new string[0];
+
+        /// <summary>
         /// Prevents a default instance of the <see cref="NutchController" /> class from being created.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
-        private NutchController(Guid serviceGUID)
+        /// <param name="urls">The URLs.</param>
+        private NutchController(Guid serviceGUID, string[] urls)
             : base(serviceGUID)
         {
+            this.URLs = urls;
             this.NutchFound = true;
         }
 
@@ -66,18 +73,47 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         public bool NutchFound { get; private set; }
 
         /// <summary>
+        /// Gets or sets the URLs.
+        /// </summary>
+        /// <value>
+        /// The URLs.
+        /// </value>
+        public string[] URLs
+        {
+            get
+            {
+                return this.urls;
+            }
+
+            set
+            {
+                this.ServiceMutex.WaitOne();
+
+                if (this.urls != value)
+                {
+                    this.urls = value;
+                }
+
+                this.ServiceMutex.ReleaseMutex();
+            }
+        }
+
+        /// <summary>
         /// Gets the nutch controller.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
-        /// <returns>A new nutch controller service.</returns>
+        /// <param name="urls">The URLs.</param>
+        /// <returns>
+        /// A new nutch controller service.
+        /// </returns>
         /// <value>
         /// The nutch factory.
         /// </value>
-        public static NutchController NutchFactory(Guid serviceGUID)
+        public static NutchController NutchFactory(Guid serviceGUID, string[] urls)
         {
             if (nutchController == null)
             {
-                nutchController = new NutchController(serviceGUID);
+                nutchController = new NutchController(serviceGUID, urls);
             }
 
             return nutchController;
@@ -86,20 +122,20 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Sets the pending crawl.
         /// </summary>
-        /// <param name="folder">The folder.</param>
-        /// <param name="depth">The depth.</param>
-        /// <param name="topN">The top N.</param>
-        /// <param name="urls">The URLs.</param>
-        public void SetNextCrawl(string folder, int depth, int topN, params string[] urls)
+        public void SetNextCrawl()
         {
             lock (this.lockMutex)
             {
                 if (!this.Running && this.NutchFound)
                 {
-                    var nutchClient = new NutchControllerClient();
-                    this.crawlProcess = nutchClient.CreateCrawlProcess(folder, depth, topN, urls);
+                    this.ServiceMutex.WaitOne();
 
-                    Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_SET_PENDING_CRAWL, urls);
+                    var nutchClient = new NutchControllerClient();
+                    this.crawlProcess = nutchClient.CreateCrawlProcess(this.URLs);
+
+                    Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_SET_PENDING_CRAWL, this.URLs);
+
+                    this.ServiceMutex.ReleaseMutex();
 
                     this.StartService();
                 }

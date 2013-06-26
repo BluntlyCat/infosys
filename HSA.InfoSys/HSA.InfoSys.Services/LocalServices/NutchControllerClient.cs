@@ -51,33 +51,30 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Creates the crawl process.
         /// </summary>
-        /// <param name="folder">The folder.</param>
-        /// <param name="depth">The depth.</param>
-        /// <param name="topN">The top N.</param>
         /// <param name="urls">The URLs.</param>
         /// <returns>
         /// A new crawl process.
         /// </returns>
-        public Process CreateCrawlProcess(string folder, int depth, int topN, params string[] urls)
+        public Process CreateCrawlProcess(params string[] urls)
         {
             Process nutch = new Process();
 
-            this.CreateUserDir(folder);
-            this.AddURL(folder, urls);
+            this.CreateUserDir(this.settings.BaseCrawlPath);
+            this.AddURL(this.settings.BaseCrawlPath, urls);
 
             var urlPath = string.Format(
                 this.settings.PathFormatThree,
                 this.homeDir,
                 this.settings.BaseUrlPath,
-                folder);
+                this.settings.BaseCrawlPath);
 
             string crawlRequest =
                 string.Format(
                 this.settings.CrawlRequest,
                 urlPath,
                 this.settings.SolrServer,
-                depth,
-                topN);
+                this.settings.CrawlDepth,
+                this.settings.CrawlTopN);
 
             nutch.StartInfo.FileName = this.settings.NutchCommand;
             nutch.StartInfo.Arguments = crawlRequest;

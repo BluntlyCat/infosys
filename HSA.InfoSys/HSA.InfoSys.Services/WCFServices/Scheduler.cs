@@ -48,11 +48,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         private NutchController nutchController;
 
         /// <summary>
-        /// The crawler
-        /// </summary>
-        private FinishAndRepeatService crawler;
-
-        /// <summary>
         /// The jobs dictionary.
         /// </summary>
         private Dictionary<Guid, Countdown> jobs = new Dictionary<Guid, Countdown>();
@@ -66,13 +61,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             Log.DebugFormat(Properties.Resources.LOG_INSTANCIATE_NEW_SCHEDULER, this.GetType().Name);
 
             this.dbManager = DBManager.ManagerFactory(Guid.NewGuid());
-            this.nutchController = NutchController.NutchFactory(Guid.NewGuid());
+            this.nutchController = NutchController.NutchFactory(Guid.NewGuid(), this.dbManager.GetAllUrls());
             this.nutchController.OnCrawlFinished += this.NutchController_OnCrawlFinished;
-
-            this.crawler = new FinishAndRepeatService(
-                Guid.NewGuid(),
-                this.dbManager.GetAllUrls(),
-                new FinishAndRepeatService.ZeroEventHandler(this.CrawlFinished));
         }
 
         /// <summary>
@@ -99,6 +89,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <param name="orgUnitConfig">The OrgUnitConfig.</param>
         public void AddOrgUnitConfig(OrgUnitConfig orgUnitConfig)
         {
+            this.nutchController.URLs = this.dbManager.GetAllUrls();
+
             if (orgUnitConfig.SchedulerActive)
             {
                 Log.DebugFormat(Properties.Resources.LOG_SCHEDULER_ADD, orgUnitConfig);
@@ -150,7 +142,13 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <param name="sender">The sender.</param>
         public void NutchController_OnCrawlFinished(object sender)
         {
-            this.crawler.Restart();
+            Log.InfoFormat(Properties.Resources.SCHEDULER_CRAWL_SUCCEEDED);
+
+            if (this.nutchController.NutchFound)
+            {
+                this.nutchController.SetNextCrawl();
+                Log.Debug(Properties.Resources.SCHEDULER_CRAWL_RESTART);
+            }
         }
 
         /// <summary>
@@ -199,7 +197,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
             this.jobMutex.ReleaseMutex();
 
-            this.crawler.StartService();
+            this.nutchController.SetNextCrawl();
 
             base.StartService();
         }
@@ -221,7 +219,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
             this.jobMutex.ReleaseMutex();
 
-            this.crawler.StopService(cancel);
+            this.nutchController.StopService(cancel);
 
             base.StopService(cancel);
         }
@@ -231,22 +229,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         protected override void Run()
         {
-        }
-
-        /// <summary>
-        /// Crawls the finished.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="orgUnitConfig">The org unit config.</param>
-        private void CrawlFinished(object sender, string[] urls)
-        {
-            Log.InfoFormat(Properties.Resources.SCHEDULER_CRAWL_SUCCEEDED);
-
-            var nutchController = NutchController.NutchFactory(Guid.NewGuid());
-
-            nutchController.SetNextCrawl("crawler", 10, 10, urls);
-
-            Log.Debug(Properties.Resources.SCHEDULER_CRAWL_RESTART);
         }
 
         /// <summary>

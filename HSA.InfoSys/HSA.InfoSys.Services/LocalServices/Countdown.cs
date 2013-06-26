@@ -19,7 +19,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The logger.
         /// </summary>
-        private static readonly ILog Log = Logger<String>.GetLogger("Countdown");
+        private static readonly ILog Log = Logger<string>.GetLogger("Countdown");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Countdown" /> class.
@@ -86,14 +86,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         public delegate void ErrorEventHandler(object sender, string error);
 
         /// <summary>
-        /// Gets or sets the on zero event handler.
-        /// </summary>
-        /// <value>
-        /// The on zero event handler.
-        /// </value>
-        private ZeroEventHandler OnZero { get; set; }
-
-        /// <summary>
         /// Occurs when [tick].
         /// </summary>
         public event TickEventHandler OnTick;
@@ -118,6 +110,14 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// The shutdown time.
         /// </value>
         public CountdownTime Time { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the on zero event handler.
+        /// </summary>
+        /// <value>
+        /// The on zero event handler.
+        /// </value>
+        private ZeroEventHandler OnZero { get; set; }
 
         /// <summary>
         /// Gets or sets the org unit config.

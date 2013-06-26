@@ -154,10 +154,10 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Gets all urls.
+        /// Gets all URLs.
         /// </summary>
         /// <returns>
-        /// An array containing all urls for crawling.
+        /// An array containing all URLs for crawling.
         /// </returns>
         public string[] GetAllUrls()
         {

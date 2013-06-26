@@ -43,6 +43,15 @@ namespace HSA.InfoSys.Common.Entities
         public virtual string BaseUrlPath { get; set; }
 
         /// <summary>
+        /// Gets or sets the base crawl path.
+        /// </summary>
+        /// <value>
+        /// The base crawl path.
+        /// </value>
+        [DataMember]
+        public virtual string BaseCrawlPath { get; set; }
+
+        /// <summary>
         /// Gets or sets the path format two.
         /// </summary>
         /// <value>
@@ -86,6 +95,24 @@ namespace HSA.InfoSys.Common.Entities
         /// </value>
         [DataMember]
         public virtual string CrawlRequest { get; set; }
+
+        /// <summary>
+        /// Gets or sets the crawl depth.
+        /// </summary>
+        /// <value>
+        /// The crawl depth.
+        /// </value>
+        [DataMember]
+        public virtual int CrawlDepth { get; set; }
+
+        /// <summary>
+        /// Gets or sets the crawl top N.
+        /// </summary>
+        /// <value>
+        /// The crawl top N.
+        /// </value>
+        [DataMember]
+        public virtual int CrawlTopN { get; set; }
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
