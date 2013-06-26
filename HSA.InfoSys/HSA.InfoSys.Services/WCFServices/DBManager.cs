@@ -8,6 +8,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     using System;
     using System.Collections.Generic;
     using System.Reflection;
+    using System.Runtime.Serialization;
     using System.ServiceModel;
     using System.Threading;
     using HSA.InfoSys.Common.Entities;
@@ -132,6 +133,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The mail settings.
         /// </value>
+        [DataMember]
         public EmailNotifierSettings MailSettings
         { 
             get
@@ -146,6 +148,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The nutch client settings.
         /// </value>
+        [DataMember]
         public NutchControllerClientSettings NutchClientSettings
         {
             get
@@ -160,6 +163,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The solr client settings.
         /// </value>
+        [DataMember]
         public SolrSearchClientSettings SolrClientSettings
         {
             get
@@ -174,6 +178,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The WCF addresses settings.
         /// </value>
+        [DataMember]
         public WCFControllerAddressesSettings WCFAddressesSettings
         {
             get
@@ -188,6 +193,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The WCF controller settings.
         /// </value>
+        [DataMember]
         public WCFControllerHostSettings WCFControllerSettings
         {
             get
