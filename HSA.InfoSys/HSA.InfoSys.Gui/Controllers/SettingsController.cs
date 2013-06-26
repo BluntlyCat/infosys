@@ -65,15 +65,39 @@ namespace HSA.InfoSys.Gui.Controllers
         [HttpPost]
         public ActionResult Email()
         {
-            this.ViewData["navid"] = "serversettings";
 
-            // get POST data from form
-            string smtpserver = Request["smtpserver"];
-            string mailfrom = Request["mailfrom"];
+            try
+            {
+                this.ViewData["navid"] = "serversettings";
+                // get POST data from form
+                string smtpserver = Request["smtpserver"];
+                string smtpport = Request["smtpport"];
+                string mailfrom = Request["mailfrom"];
 
-            // TODO: save Post-Data in DB
+                //@TODO check for null values
 
-            return this.RedirectToAction("Settings", "Index");
+                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                var mailSettings = cc.GetMailSettings();
+
+                mailSettings.SmtpPort = int.Parse(smtpport);
+                mailSettings.SmtpServer = smtpserver;
+                mailSettings.MailFrom = mailfrom;
+
+
+                cc.UpdateEntity(mailSettings);
+
+            }
+            catch (CommunicationException ce)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_COMMUNICATION_ERROR, ce);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+            }
+
+
+            return this.RedirectToAction("Index", "Settings");
         }
 
         /// <summary>
