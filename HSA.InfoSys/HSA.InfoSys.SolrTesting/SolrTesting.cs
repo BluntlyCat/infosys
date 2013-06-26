@@ -6,10 +6,12 @@
 namespace HSA.InfoSys.Testing.SolrTesting
 {
     using System;
+    using System.Linq;
     using System.Threading;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services.LocalServices;
     using log4net;
+    using HSA.InfoSys.Common.Services.WCFServices;
 
     /// <summary>
     /// Implement your testing methods for Solr here.
@@ -52,8 +54,9 @@ namespace HSA.InfoSys.Testing.SolrTesting
                             break;
 
                         case ConsoleKey.S:
+                            var oUnit = DBManager.ManagerFactory(Guid.NewGuid()).GetOrgUnitsByUserID(32);
                             log.Info("Send request to solr");
-                            client.StartSearch(Guid.Empty);
+                            client.StartSearch(oUnit.First().EntityId);
 
                             break;
                     }

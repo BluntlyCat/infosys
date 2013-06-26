@@ -15,6 +15,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using log4net;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System.Collections.Generic;
 
     /// <summary>
     /// This class connects to the Solr server and invokes the search.
@@ -219,10 +220,23 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             Guid queryTicket = Guid.NewGuid();
 
+            var filter = this.settings.Filter.Split(',');
+            var formatArgs = new List<string>();
+            
+            formatArgs.Add(queryString);
+
+            foreach (var arg in filter)
+            {
+                formatArgs.Add(arg);
+            }
+
+            var filterQuery = this.settings.FilterQueryFormat;
+            filterQuery = string.Format(this.settings.FilterQueryFormat, formatArgs.ToArray());
+
             string query = string.Format(
                 this.settings.QueryFormat,
                 this.Collection,
-                queryString,
+                filterQuery,
                 mimeType);
 
             query = query.Replace(" ", "%20");

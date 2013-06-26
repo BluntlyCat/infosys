@@ -89,7 +89,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     {
                         dbMutex.WaitOne();
                         var sendResults = new List<Result>();
-
                         if (c.IsCompleted)
                         {
                             resultPot = searchClient.GetResult();
