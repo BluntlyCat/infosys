@@ -9,6 +9,9 @@ namespace HSA.InfoSys.Gui.Controllers
     using System.Web.Mvc;
     using HSA.InfoSys.Common.Logging;
     using log4net;
+    using HSA.InfoSys.Common.Services.LocalServices;
+    using HSA.InfoSys.Common.Services.WCFServices;
+    using System.ServiceModel;
 
     /// <summary>
     /// The controller for the home page.
@@ -28,10 +31,25 @@ namespace HSA.InfoSys.Gui.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            this.ViewData["navid"] = "serversettings";
-            this.ViewData["label1"] = Properties.Resources.TEST_LABLE1;
+            try
+            {
+                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                this.ViewData["navid"] = "serversettings";
+                this.ViewData["label1"] = Properties.Resources.TEST_LABLE1;
 
-            // TODO: hier muessen alle settings aus der db abgefragt werden und in ViewData gesetzt werden
+                this.ViewData["MailFrom"] = cc.MailSettings().MailFrom;
+
+                // TODO: hier muessen alle settings aus der db abgefragt werden und in ViewData gesetzt werden
+            }
+            catch (CommunicationException ce)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_COMMUNICATION_ERROR, ce);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+            }
+            
 
             return this.View();
         }

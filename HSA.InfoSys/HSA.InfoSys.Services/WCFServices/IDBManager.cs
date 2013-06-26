@@ -33,8 +33,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The mail settings.
         /// </value>
+        [OperationContract]
         [UseNetDataContractSerializer]
-        EmailNotifierSettings MailSettings { get; }
+        EmailNotifierSettings MailSettings();
 
         /// <summary>
         /// Gets the nutch client settings.
@@ -42,8 +43,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The nutch client settings.
         /// </value>
+        [OperationContract]
         [UseNetDataContractSerializer]
-        NutchControllerClientSettings NutchClientSettings { get; }
+        NutchControllerClientSettings NutchClientSettings();
 
         /// <summary>
         /// Gets the solr client settings.
@@ -51,8 +53,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The solr client settings.
         /// </value>
+        [OperationContract]
         [UseNetDataContractSerializer]
-        SolrSearchClientSettings SolrClientSettings { get; }
+        SolrSearchClientSettings SolrClientSettings();
 
         /// <summary>
         /// Gets the WCF addresses settings.
@@ -60,8 +63,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The WCF addresses settings.
         /// </value>
+        [OperationContract]
         [UseNetDataContractSerializer]
-        WCFControllerAddressesSettings WCFAddressesSettings { get; }
+        WCFControllerAddressesSettings WCFAddressesSettings();
 
         /// <summary>
         /// Gets the WCF controller settings.
@@ -69,8 +73,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The WCF controller settings.
         /// </value>
+        [OperationContract]
         [UseNetDataContractSerializer]
-        WCFControllerHostSettings WCFControllerSettings { get; }
+        WCFControllerHostSettings WCFControllerSettings();
 
         /// <summary>
         /// Loads this entities eager.

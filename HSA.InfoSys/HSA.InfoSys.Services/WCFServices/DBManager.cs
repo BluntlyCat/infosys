@@ -23,7 +23,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     /// The DBManager handles database requests.
     /// </summary>
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
-    [DataContract]
     public class DBManager : Service, IDBManager
     {
         /// <summary>
@@ -134,13 +133,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The mail settings.
         /// </value>
-        [DataMember]
-        public EmailNotifierSettings MailSettings
+        public EmailNotifierSettings MailSettings()
         { 
-            get
-            {
-                return this.GetSettingsFor<EmailNotifierSettings>();
-            }
+            return this.GetSettingsFor<EmailNotifierSettings>();
         }
 
         /// <summary>
@@ -149,13 +144,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The nutch client settings.
         /// </value>
-        [DataMember]
-        public NutchControllerClientSettings NutchClientSettings
+        public NutchControllerClientSettings NutchClientSettings()
         {
-            get
-            {
-                return this.GetSettingsFor<NutchControllerClientSettings>();
-            }
+            return this.GetSettingsFor<NutchControllerClientSettings>();
         }
 
         /// <summary>
@@ -164,13 +155,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The solr client settings.
         /// </value>
-        [DataMember]
-        public SolrSearchClientSettings SolrClientSettings
+        public SolrSearchClientSettings SolrClientSettings()
         {
-            get
-            {
-                return this.GetSettingsFor<SolrSearchClientSettings>();
-            }
+            return this.GetSettingsFor<SolrSearchClientSettings>();
         }
 
         /// <summary>
@@ -179,13 +166,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The WCF addresses settings.
         /// </value>
-        [DataMember]
-        public WCFControllerAddressesSettings WCFAddressesSettings
+        public WCFControllerAddressesSettings WCFAddressesSettings()
         {
-            get
-            {
-                return this.GetSettingsFor<WCFControllerAddressesSettings>();
-            }
+            return this.GetSettingsFor<WCFControllerAddressesSettings>();
         }
 
         /// <summary>
@@ -194,13 +177,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The WCF controller settings.
         /// </value>
-        [DataMember]
-        public WCFControllerHostSettings WCFControllerSettings
+        public WCFControllerHostSettings WCFControllerSettings()
         {
-            get
-            {
-                return this.GetSettingsFor<WCFControllerHostSettings>();
-            }
+            return this.GetSettingsFor<WCFControllerHostSettings>();
         }
 
         #endregion
