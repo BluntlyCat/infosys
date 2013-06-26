@@ -77,14 +77,18 @@
     <joined-subclass name="NutchControllerClientSettings" table="NutchControllerClientSettings">
       <key column="NutchControllerClientSettingsGUID" unique="true" />
 
-      <property name="SolrServer" type="string" length ="40" not-null="true" />
+      <property name="SolrServer" type="string" length ="100" not-null="true" />
       <property name="SeedFileName" type="string" length ="40" not-null="true" />
-      <property name="BaseUrlPath" type="string" length ="40" not-null="true" />
+      <property name="BaseUrlPath" type="string" length ="100" not-null="true" />
+      <property name="BaseCrawlPath" type="string" length ="100" not-null="true" />
       <property name="PathFormatTwo" type="string" length ="40" not-null="true" />
       <property name="PathFormatThree" type="string" length ="40" not-null="true" />
       <property name="PathFormatFour" type="string" length ="40" not-null="true" />
       <property name="NutchCommand" type="string" length ="40" not-null="true" />
       <property name="CrawlRequest" type="string" length ="40" not-null="true" />
+      
+      <property name="CrawlDepth" type="int" not-null="true"/>
+      <property name="CrawlTopN" type="int" not-null="true"/>
     </joined-subclass>
 
     <!-- SolrSearchClientSettings -->
