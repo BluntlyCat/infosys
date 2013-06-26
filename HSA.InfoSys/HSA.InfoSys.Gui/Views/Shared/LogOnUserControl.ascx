@@ -15,6 +15,7 @@
             <!-- check if logged in user is an admin -->
             <% if(Page.User.IsInRole("Admin")) { %>
             <li><a href="/Account/UserControl">User Control</a></li>
+            <li><a href="/Settings/">Server Settings</a></li>
             <% } %>
         </ul>
     </li>
