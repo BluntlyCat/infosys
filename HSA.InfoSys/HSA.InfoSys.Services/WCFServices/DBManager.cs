@@ -23,6 +23,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     /// The DBManager handles database requests.
     /// </summary>
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
+    [DataContract]
     public class DBManager : Service, IDBManager
     {
         /// <summary>

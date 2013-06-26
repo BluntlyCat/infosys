@@ -16,7 +16,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     /// The interface for accessing the data base.
     /// </summary>
     [ServiceContract]
-    [DataContract]
     public interface IDBManager
     {
         /// <summary>
@@ -35,7 +34,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// The mail settings.
         /// </value>
         [UseNetDataContractSerializer]
-        [DataMember]
         EmailNotifierSettings MailSettings { get; }
 
         /// <summary>
@@ -45,7 +43,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// The nutch client settings.
         /// </value>
         [UseNetDataContractSerializer]
-        [DataMember]
         NutchControllerClientSettings NutchClientSettings { get; }
 
         /// <summary>
@@ -55,7 +52,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// The solr client settings.
         /// </value>
         [UseNetDataContractSerializer]
-        [DataMember]
         SolrSearchClientSettings SolrClientSettings { get; }
 
         /// <summary>
@@ -65,7 +61,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// The WCF addresses settings.
         /// </value>
         [UseNetDataContractSerializer]
-        [DataMember]
         WCFControllerAddressesSettings WCFAddressesSettings { get; }
 
         /// <summary>
@@ -75,7 +70,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// The WCF controller settings.
         /// </value>
         [UseNetDataContractSerializer]
-        [DataMember]
         WCFControllerHostSettings WCFControllerSettings { get; }
 
         /// <summary>
