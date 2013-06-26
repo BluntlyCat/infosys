@@ -27,7 +27,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
-            var controller = NutchController.NutchFactory(Guid.NewGuid());
+            var controller = NutchController.NutchFactory(Guid.NewGuid(), "http://miitsoft.de");
             bool running = true;
            
             Console.WriteLine(string.Empty);
@@ -46,7 +46,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
                     {
                         case ConsoleKey.A:
                             Log.Info("Add new job and start crawling");
-                            controller.SetNextCrawl("crawler", 1, 1, "http://miitsoft.de");
+                            controller.SetNextCrawl();
                             break;
                         case ConsoleKey.C:
                             Log.Info("Connect to SSH.");

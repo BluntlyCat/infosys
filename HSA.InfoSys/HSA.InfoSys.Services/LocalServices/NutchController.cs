@@ -109,7 +109,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <value>
         /// The nutch factory.
         /// </value>
-        public static NutchController NutchFactory(Guid serviceGUID, string[] urls)
+        public static NutchController NutchFactory(Guid serviceGUID, params string[] urls)
         {
             if (nutchController == null)
             {
