@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
+<%@ Import Namespace="HSA.InfoSys.Common.Entities"%>
 
 <asp:Content ID="aboutTitle" ContentPlaceHolderID="TitleContent" runat="server">
     Server Settings
@@ -9,6 +10,7 @@
 
     <div class="accordion" id="accordion2">
 
+        <!-- Mail Settings -->
         <div class="accordion-group">
             <div class="accordion-heading">
                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">Email Notifier Settings</a>
@@ -18,11 +20,13 @@
 
                     <form class="form-horizontal" action="/Settings/Email" method="post">
 
+                    <% var mailSettings = this.ViewData["mailSettings"] as EmailNotifierSettings; %>
+
                         <div class="control-group">
                             <label class="control-label" for="smtpserver">
                                 SmtpServer:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="smtpserver" placeholder="" value="smtp.hs-augsburg.de" />
+                                <input class="input-xxlarge" type="text" name="smtpserver" placeholder="" value="<%= mailSettings.SmtpServer %>" />
                             </div>
                         </div>
 
@@ -30,7 +34,7 @@
                             <label class="control-label" for="mailfrom">
                                 MailFrom:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="mailfrom" placeholder="" value="michael.juenger1@hs-augsburg.de">
+                                <input class="input-xxlarge" type="text" name="mailfrom" placeholder="" value="<%= mailSettings.MailFrom %>">
                             </div>
                         </div>
 
@@ -38,7 +42,7 @@
                             <label class="control-label" for="smtpport">
                                 SmtpPort:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="smtpport" placeholder="" value="25">
+                                <input class="input-xxlarge" type="text" name="smtpport" placeholder="" value="<%= mailSettings.SmtpPort %>">
                             </div>
                         </div>
 
@@ -53,6 +57,7 @@
             </div>
         </div>
 
+        <!-- Nutch Controller Settings -->
         <div class="accordion-group">
             <div class="accordion-heading">
                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">Nutch Controller Client Settings</a>
@@ -62,11 +67,13 @@
                     
                     <form class="form-horizontal" action="/Settings/Nutch" method="post">
 
+                    <% var nutchSettings = this.ViewData["NutchClientSettings"] as NutchControllerClientSettings; %>
+                    
                         <div class="control-group">
                             <label class="control-label" for="solrserver">
                                 SolrServer:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="solrserver" placeholder="" value="http://infosys.informatik.hs-augsburg.de" />
+                                <input class="input-xxlarge" type="text" name="solrserver" placeholder="" value="<%= nutchSettings.SolrServer %>" />
                             </div>
                         </div>
 
@@ -74,7 +81,7 @@
                             <label class="control-label" for="seedfilename">
                                 SeedFileName:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="seedfilename" placeholder="" value="seed.txt">
+                                <input class="input-xxlarge" type="text" name="seedfilename" placeholder="" value="<%= nutchSettings.SeedFileName %>">
                             </div>
                         </div>
 
@@ -82,7 +89,7 @@
                             <label class="control-label" for="baseurlpath">
                                 BaseUrlPath:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="baseurlpath" placeholder="" value=".nutch/urls">
+                                <input class="input-xxlarge" type="text" name="baseurlpath" placeholder="" value="<%= nutchSettings.BaseUrlPath %>">
                             </div>
                         </div>
 
@@ -90,7 +97,7 @@
                             <label class="control-label" for="nutchcommand">
                                 NutchCommand:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="nutchcommand" placeholder="" value="nutch">
+                                <input class="input-xxlarge" type="text" name="nutchcommand" placeholder="" value="<%= nutchSettings.NutchCommand %>">
                             </div>
                         </div>
 
@@ -98,7 +105,7 @@
                             <label class="control-label" for="crawlrequest">
                                 CrawlRequest:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="crawlrequest" placeholder="" value="crawl {0} -solr {1} -depth {2} -topN {3}">
+                                <input class="input-xxlarge" type="text" name="crawlrequest" placeholder="" value="<%= nutchSettings.CrawlRequest %>">
                             </div>
                         </div>
 
@@ -106,7 +113,7 @@
                             <label class="control-label" for="basecrawlpath">
                                 BaseCrawlPath:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="basecrawlpath" placeholder="" value="crawler">
+                                <input class="input-xxlarge" type="text" name="basecrawlpath" placeholder="" value="<%= nutchSettings.BaseCrawlPath %>">
                             </div>
                         </div>
 
@@ -114,7 +121,7 @@
                             <label class="control-label" for="crawldepth">
                                 CrawlDepth:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="crawldepth" placeholder="" value="100">
+                                <input class="input-xxlarge" type="text" name="crawldepth" placeholder="" value="<%= nutchSettings.CrawlDepth %>">
                             </div>
                         </div>
 
@@ -122,7 +129,7 @@
                             <label class="control-label" for="crawltopn">
                                 CrawlTopN:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="crawltopn" placeholder="" value="1000">
+                                <input class="input-xxlarge" type="text" name="crawltopn" placeholder="" value="<%= nutchSettings.CrawlTopN %>">
                             </div>
                         </div>
 
@@ -130,7 +137,7 @@
                             <label class="control-label" for="prefixpath">
                                 PrefixPath:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="prefixpath" placeholder="" value="/usr/local/apache-nutch-1.6/conf">
+                                <input class="input-xxlarge" type="text" name="prefixpath" placeholder="" value="<%= nutchSettings.PrefixPath %>">
                             </div>
                         </div>
 
@@ -138,7 +145,7 @@
                             <label class="control-label" for="prefixfilename">
                                 PrefixFileName:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="prefixfilename" placeholder="" value="regex-urlfilter.txt">
+                                <input class="input-xxlarge" type="text" name="prefixfilename" placeholder="" value="<%= nutchSettings.PrefixFileName %>">
                             </div>
                         </div>
 
@@ -146,7 +153,15 @@
                             <label class="control-label" for="prefix">
                                 Prefix:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="prefix" placeholder="" value="+^http://([a-z0-9]*\\.)*">
+                                <input class="input-xxlarge" type="text" name="prefix" placeholder="" value="<%= nutchSettings.Prefix %>">
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="nutchclients">
+                                NutchClients:</label>
+                            <div class="controls">
+                                <input class="input-xxlarge" type="text" name="nutchclients" placeholder="" value="<%= nutchSettings.NutchClients %>">
                             </div>
                         </div>
 
@@ -161,6 +176,7 @@
             </div>
         </div>
 
+        <!-- Solr Search Client Settings -->
         <div class="accordion-group">
             <div class="accordion-heading">
                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">Solr Search Client Settings</a>
@@ -170,11 +186,13 @@
                     
                     <form class="form-horizontal" action="/Settings/Solr" method="post">
 
+                    <% var solrClientSettings = this.ViewData["SolrClientSettings"] as SolrSearchClientSettings; %>
+
                         <div class="control-group">
                             <label class="control-label" for="host">
                                 Host:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="host" placeholder="" value="141.82.59.139" />
+                                <input class="input-xxlarge" type="text" name="host" placeholder="" value="<%= solrClientSettings.Host %>" />
                             </div>
                         </div>
 
@@ -182,7 +200,7 @@
                             <label class="control-label" for="port">
                                 Port:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="port" placeholder="" value="8983">
+                                <input class="input-xxlarge" type="text" name="port" placeholder="" value="<%= solrClientSettings.Port %>">
                             </div>
                         </div>
 
@@ -190,7 +208,7 @@
                             <label class="control-label" for="collection">
                                 Collection:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="collection" placeholder="" value="InfoSys">
+                                <input class="input-xxlarge" type="text" name="collection" placeholder="" value="<%= solrClientSettings.Collection %>">
                             </div>
                         </div>
 
@@ -198,7 +216,7 @@
                             <label class="control-label" for="queryformat">
                                 QueryFormat:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="queryformat" placeholder="" value="solr/{0}/select?q={1}&wt={2}&indent=true">
+                                <input class="input-xxlarge" type="text" name="queryformat" placeholder="" value="<%= solrClientSettings.QueryFormat %>">
                             </div>
                         </div>
 
@@ -206,7 +224,7 @@
                             <label class="control-label" for="requestformat">
                                 RequestFormat:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="requestformat" placeholder="" value="GET {0} HTTP/1.1{1}Host: {2}{3}Content-Length: 0{4}">
+                                <input class="input-xxlarge" type="text" name="requestformat" placeholder="" value="<%= solrClientSettings.RequestFormat %>">
                             </div>
                         </div>
 
@@ -214,7 +232,7 @@
                             <label class="control-label" for="filterqueryformat">
                                 FilterQueryFormat:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="filterqueryformat" placeholder="" value="(title:({0} AND {1}) OR title:({0} AND {2}) OR title:({0} AND {3}))">
+                                <input class="input-xxlarge" type="text" name="filterqueryformat" placeholder="" value="<%= solrClientSettings.FilterQueryFormat %>">
                             </div>
                         </div>
 
@@ -222,7 +240,7 @@
                             <label class="control-label" for="filter">
                                 Filter:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="filter" placeholder="" value="Bedrohung,Threat,Sicherheit">
+                                <input class="input-xxlarge" type="text" name="filter" placeholder="" value="<%= solrClientSettings.Filter %>">
                             </div>
                         </div>
 
@@ -236,7 +254,8 @@
                 </div>
             </div>
         </div>
-
+        
+        <!-- WCF Controller Addresses Settings -->
         <div class="accordion-group">
             <div class="accordion-heading">
                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">WCF Controller Addresses Settings</a>
@@ -246,11 +265,13 @@
                     
                     <form class="form-horizontal" action="/Settings/WcfAddresses" method="post">
 
+                    <% var wcfAddressesSettings = this.ViewData["WCFAddressesSettings"] as WCFControllerAddressesSettings; %>
+
                         <div class="control-group">
                             <label class="control-label" for="httpaddress">
                                 HttpAddress:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="httpaddress" placeholder="" value="http://localhost:{0}/CrawlerProxy/" />
+                                <input class="input-xxlarge" type="text" name="httpaddress" placeholder="" value="<%= wcfAddressesSettings.HttpAddress %>" />
                             </div>
                         </div>
 
@@ -258,7 +279,7 @@
                             <label class="control-label" for="nettcpaddress">
                                 NetTcpAddress:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="nettcpaddress" placeholder="" value="net.tcp://localhost:{0}/CrawlerProxy/">
+                                <input class="input-xxlarge" type="text" name="nettcpaddress" placeholder="" value="<%= wcfAddressesSettings.NetTcpAddress %>">
                             </div>
                         </div>
 
@@ -266,7 +287,7 @@
                             <label class="control-label" for="httpport">
                                 HttpPort:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="httpport" placeholder="" value="8085">
+                                <input class="input-xxlarge" type="text" name="httpport" placeholder="" value="<%= wcfAddressesSettings.HttpPort %>">
                             </div>
                         </div>
 
@@ -274,7 +295,7 @@
                             <label class="control-label" for="nettcpport">
                                 NetTcpPort:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="nettcpport" placeholder="" value="8086">
+                                <input class="input-xxlarge" type="text" name="nettcpport" placeholder="" value="<%= wcfAddressesSettings.NetTcpPort %>">
                             </div>
                         </div>
 
@@ -289,6 +310,7 @@
             </div>
         </div>
 
+        <!-- WCF Controller Host Settings -->
         <div class="accordion-group">
             <div class="accordion-heading">
                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive">WCF Controller Host Settings</a>
@@ -298,11 +320,13 @@
                     
                     <form class="form-horizontal" action="/Settings/WcfHost" method="post">
 
+                    <% var wcfControllerSettings = this.ViewData["WCFControllerSettings"] as WCFControllerHostSettings; %>
+
                         <div class="control-group">
                             <label class="control-label" for="certificatepath">
                                 CertificatePath:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="certificatepath" placeholder="" value="Certificates/InfoSys.pfx" />
+                                <input class="input-xxlarge" type="text" name="certificatepath" placeholder="" value="<%= wcfControllerSettings.CertificatePath %>" />
                             </div>
                         </div>
 
@@ -310,7 +334,7 @@
                             <label class="control-label" for="certificatepassword">
                                 CertificatePassword:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="certificatepassword" placeholder="" value="Aes2xe1baetei8Y">
+                                <input class="input-xxlarge" type="text" name="certificatepassword" placeholder="" value="<%= wcfControllerSettings.CertificatePassword %>">
                             </div>
                         </div>
 

@@ -36,10 +36,14 @@ namespace HSA.InfoSys.Gui.Controllers
                 var cc = WCFControllerClient<IDBManager>.ClientProxy;
                 this.ViewData["navid"] = "serversettings";
                 this.ViewData["label1"] = Properties.Resources.TEST_LABLE1;
+                
+                // get all Settings from DB
+                this.ViewData["MailSettings"] = cc.GetMailSettings();
+                this.ViewData["NutchClientSettings"] = cc.GetNutchClientSettings();
+                this.ViewData["SolrClientSettings"] = cc.GetSolrClientSettings();
+                this.ViewData["WCFAddressesSettings"] = cc.GetWCFAddressesSettings();
+                this.ViewData["WCFControllerSettings"] = cc.GetWCFControllerSettings();
 
-                this.ViewData["MailFrom"] = cc.GetMailSettings().MailFrom;
-
-                // TODO: hier muessen alle settings aus der db abgefragt werden und in ViewData gesetzt werden
             }
             catch (CommunicationException ce)
             {
