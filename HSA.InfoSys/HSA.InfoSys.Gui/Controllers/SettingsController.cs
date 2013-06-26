@@ -37,7 +37,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 this.ViewData["navid"] = "serversettings";
                 this.ViewData["label1"] = Properties.Resources.TEST_LABLE1;
 
-                this.ViewData["MailFrom"] = cc.MailSettings().MailFrom;
+                this.ViewData["MailFrom"] = cc.GetMailSettings().MailFrom;
 
                 // TODO: hier muessen alle settings aus der db abgefragt werden und in ViewData gesetzt werden
             }
@@ -49,7 +49,6 @@ namespace HSA.InfoSys.Gui.Controllers
             {
                 Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
             }
-            
 
             return this.View();
         }

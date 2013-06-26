@@ -133,7 +133,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The mail settings.
         /// </value>
-        public EmailNotifierSettings MailSettings()
+        public EmailNotifierSettings GetMailSettings()
         { 
             return this.GetSettingsFor<EmailNotifierSettings>();
         }
@@ -144,7 +144,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The nutch client settings.
         /// </value>
-        public NutchControllerClientSettings NutchClientSettings()
+        public NutchControllerClientSettings GetNutchClientSettings()
         {
             return this.GetSettingsFor<NutchControllerClientSettings>();
         }
@@ -155,7 +155,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The solr client settings.
         /// </value>
-        public SolrSearchClientSettings SolrClientSettings()
+        public SolrSearchClientSettings GetSolrClientSettings()
         {
             return this.GetSettingsFor<SolrSearchClientSettings>();
         }
@@ -166,7 +166,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The WCF addresses settings.
         /// </value>
-        public WCFControllerAddressesSettings WCFAddressesSettings()
+        public WCFControllerAddressesSettings GetWCFAddressesSettings()
         {
             return this.GetSettingsFor<WCFControllerAddressesSettings>();
         }
@@ -177,7 +177,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <value>
         /// The WCF controller settings.
         /// </value>
-        public WCFControllerHostSettings WCFControllerSettings()
+        public WCFControllerHostSettings GetWCFControllerSettings()
         {
             return this.GetSettingsFor<WCFControllerHostSettings>();
         }

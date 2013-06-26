@@ -35,7 +35,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </value>
         [OperationContract]
         [UseNetDataContractSerializer]
-        EmailNotifierSettings MailSettings();
+        EmailNotifierSettings GetMailSettings();
 
         /// <summary>
         /// Gets the nutch client settings.
@@ -45,7 +45,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </value>
         [OperationContract]
         [UseNetDataContractSerializer]
-        NutchControllerClientSettings NutchClientSettings();
+        NutchControllerClientSettings GetNutchClientSettings();
 
         /// <summary>
         /// Gets the solr client settings.
@@ -55,7 +55,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </value>
         [OperationContract]
         [UseNetDataContractSerializer]
-        SolrSearchClientSettings SolrClientSettings();
+        SolrSearchClientSettings GetSolrClientSettings();
 
         /// <summary>
         /// Gets the WCF addresses settings.
@@ -65,7 +65,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </value>
         [OperationContract]
         [UseNetDataContractSerializer]
-        WCFControllerAddressesSettings WCFAddressesSettings();
+        WCFControllerAddressesSettings GetWCFAddressesSettings();
 
         /// <summary>
         /// Gets the WCF controller settings.
@@ -75,7 +75,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </value>
         [OperationContract]
         [UseNetDataContractSerializer]
-        WCFControllerHostSettings WCFControllerSettings();
+        WCFControllerHostSettings GetWCFControllerSettings();
 
         /// <summary>
         /// Loads this entities eager.
