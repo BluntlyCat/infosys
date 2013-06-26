@@ -103,6 +103,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             return dbManager;
         }
 
+        #region Settings
+
         /// <summary>
         /// Gets the settings for.
         /// </summary>
@@ -123,6 +125,78 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
             return setting;
         }
+
+        /// <summary>
+        /// Gets the mail settings.
+        /// </summary>
+        /// <value>
+        /// The mail settings.
+        /// </value>
+        public EmailNotifierSettings MailSettings
+        { 
+            get
+            {
+                return this.GetSettingsFor<EmailNotifierSettings>();
+            }
+        }
+
+        /// <summary>
+        /// Gets the nutch client settings.
+        /// </summary>
+        /// <value>
+        /// The nutch client settings.
+        /// </value>
+        public NutchControllerClientSettings NutchClientSettings
+        {
+            get
+            {
+                return this.GetSettingsFor<NutchControllerClientSettings>();
+            }
+        }
+
+        /// <summary>
+        /// Gets the solr client settings.
+        /// </summary>
+        /// <value>
+        /// The solr client settings.
+        /// </value>
+        public SolrSearchClientSettings SolrClientSettings
+        {
+            get
+            {
+                return this.GetSettingsFor<SolrSearchClientSettings>();
+            }
+        }
+
+        /// <summary>
+        /// Gets the WCF addresses settings.
+        /// </summary>
+        /// <value>
+        /// The WCF addresses settings.
+        /// </value>
+        public WCFControllerAddressesSettings WCFAddressesSettings
+        {
+            get
+            {
+                return this.GetSettingsFor<WCFControllerAddressesSettings>();
+            }
+        }
+
+        /// <summary>
+        /// Gets the WCF controller settings.
+        /// </summary>
+        /// <value>
+        /// The WCF controller settings.
+        /// </value>
+        public WCFControllerHostSettings WCFControllerSettings
+        {
+            get
+            {
+                return this.GetSettingsFor<WCFControllerHostSettings>();
+            }
+        }
+
+        #endregion
 
         /// <summary>
         /// Loads this entities eager.

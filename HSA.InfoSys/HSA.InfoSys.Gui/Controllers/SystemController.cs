@@ -48,11 +48,12 @@ namespace HSA.InfoSys.Gui.Controllers
                 Log.DebugFormat("Got user id {0}", uid);
 
                 var orgUnits = cc.GetOrgUnitsByUserID(uid, cc.LoadThisEntities("OrgUnitConfig")).ToList<OrgUnit>();
+
+
                 Log.DebugFormat("Got org units {0}", orgUnits);
-
                 this.ViewData["orgUnits"] = orgUnits;
-
                 this.ViewData["navid"] = "mysystems";
+
             }
             catch (CommunicationException ce)
             {

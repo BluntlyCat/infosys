@@ -27,6 +27,56 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         T GetSettingsFor<T>() where T : Entity;
 
         /// <summary>
+        /// Gets the mail settings.
+        /// </summary>
+        /// <value>
+        /// The mail settings.
+        /// </value>
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        EmailNotifierSettings MailSettings { get; }
+
+        /// <summary>
+        /// Gets the nutch client settings.
+        /// </summary>
+        /// <value>
+        /// The nutch client settings.
+        /// </value>
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        NutchControllerClientSettings NutchClientSettings { get; }
+
+        /// <summary>
+        /// Gets the solr client settings.
+        /// </summary>
+        /// <value>
+        /// The solr client settings.
+        /// </value>
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        SolrSearchClientSettings SolrClientSettings { get; }
+
+        /// <summary>
+        /// Gets the WCF addresses settings.
+        /// </summary>
+        /// <value>
+        /// The WCF addresses settings.
+        /// </value>
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        WCFControllerAddressesSettings WCFAddressesSettings { get; }
+
+        /// <summary>
+        /// Gets the WCF controller settings.
+        /// </summary>
+        /// <value>
+        /// The WCF controller settings.
+        /// </value>
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        WCFControllerHostSettings WCFControllerSettings { get; }
+
+        /// <summary>
         /// Loads this entities eager.
         /// </summary>
         /// <param name="param">The names of the entities.</param>

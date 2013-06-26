@@ -25,11 +25,21 @@ namespace HSA.InfoSys.Common.Entities
         public virtual string SmtpServer { get; set; }
 
         /// <summary>
+        /// Gets or sets the SMTP port.
+        /// </summary>
+        /// <value>
+        /// The SMTP port.
+        /// </value>
+        [DataMember]
+        public virtual int SmtpPort { get; set; }
+
+        /// <summary>
         /// Gets or sets the mail from.
         /// </summary>
         /// <value>
         /// The mail from.
         /// </value>
+        [DataMember]
         public virtual string MailFrom { get; set; }
 
         /// <summary>

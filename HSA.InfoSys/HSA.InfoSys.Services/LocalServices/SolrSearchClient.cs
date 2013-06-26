@@ -264,7 +264,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 var result = new Result();
 
                 // todo: Länge von content begrenzen.
-                var content = this.GetJsonValue(doc, "content");
+                var content = this.GetJsonValue(doc, "content").Replace(".", ".\r\n");
 
                 if (content.Length > 300)
                 {

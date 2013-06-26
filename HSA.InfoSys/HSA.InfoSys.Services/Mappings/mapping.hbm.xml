@@ -69,6 +69,8 @@
     <joined-subclass name="EmailNotifierSettings" table="EmailNotifierSettings">
       <key column="EmailNotifierSettingsGUID" unique="true" />
 
+      <property name="SmtpPort" type="int" length="3" not-null="true"/>
+
       <property name="SmtpServer" type="string" length ="40" not-null="true" />
       <property name="MailFrom" type="string" length ="40" not-null="true" />
     </joined-subclass>
