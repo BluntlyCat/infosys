@@ -43,6 +43,42 @@ namespace HSA.InfoSys.Common.Entities
         public virtual string BaseUrlPath { get; set; }
 
         /// <summary>
+        /// Gets or sets the prefix path.
+        /// </summary>
+        /// <value>
+        /// The prefix path.
+        /// </value>
+        [DataMember]
+        public virtual string PrefixPath { get; set; } // .nutch/
+
+        /// <summary>
+        /// Gets or sets the name of the prefix file.
+        /// </summary>
+        /// <value>
+        /// The name of the prefix file.
+        /// </value>
+        [DataMember]
+        public virtual string PrefixFileName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the prefix format.
+        /// </summary>
+        /// <value>
+        /// The prefix format.
+        /// </value>
+        [DataMember]
+        public virtual string PrefixFormat { get; set; }
+
+        /// <summary>
+        /// Gets or sets the prefix.
+        /// </summary>
+        /// <value>
+        /// The prefix.
+        /// </value>
+        [DataMember]
+        public virtual string Prefix { get; set; }
+
+        /// <summary>
         /// Gets or sets the base crawl path.
         /// </summary>
         /// <value>

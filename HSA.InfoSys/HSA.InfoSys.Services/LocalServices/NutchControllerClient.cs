@@ -98,7 +98,23 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 folder);
 
             var prefixUrls = new List<string>();
+            var knownPrefixes = this.GetFileContent(this.settings.Prefix, this.settings.PrefixPath);
 
+            foreach (string url in urls)
+            {
+                string prefix = string.Format(
+                    this.settings.PrefixFormat,
+                    this.settings.Prefix,
+                    url);
+
+                if (!knownPrefixes.Contains(prefix))
+                {
+                    prefixUrls.Add(prefix);
+                    Log.DebugFormat(Properties.Resources.LOG_PREFIX_ADDED, prefix);
+                }
+            }
+
+            this.AddURLToFile(this.settings.PrefixPath, this.settings.PrefixFileName, prefixUrls.ToArray());
             this.AddURLToFile(userURLPath, this.settings.SeedFileName, urls);
         }
 
@@ -160,6 +176,51 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             {
                 Log.ErrorFormat(Properties.Resources.LOG_FILE_WRITING_ERROR, file, e);
             }
+        }
+
+        /// <summary>
+        /// Gets the content of the file.
+        /// </summary>
+        /// <param name="pattern">The pattern.</param>
+        /// <param name="filePath">The file path.</param>
+        /// <returns>A list containing the file content.</returns>
+        private List<string> GetFileContent(string pattern, string filePath)
+        {
+            List<string> content = new List<string>();
+
+            var prefixFile = string.Format(
+                this.settings.PathFormatTwo,
+                filePath,
+                this.settings.PrefixFileName);
+
+            try
+            {
+                using (StreamReader sr = new StreamReader(prefixFile))
+                {
+                    var line = string.Empty;
+
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        if (line.Contains(pattern))
+                        {
+                            content.Add(line);
+                        }
+                    }
+
+                    Log.DebugFormat(Properties.Resources.LOG_FILE_READING_SUCCESS, filePath);
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                Log.DebugFormat(Properties.Resources.LOG_PREFIX_FILE_NOT_FOUND);
+                this.CreateFile(this.settings.PrefixPath, this.settings.PrefixFileName, true);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_FILE_READING_ERROR, filePath, e);
+            }
+
+            return content;
         }
 
         /// <summary>
