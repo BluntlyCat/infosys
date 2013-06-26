@@ -14,6 +14,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
+    using System.Text;
 
     /// <summary>
     /// The Nutch Manager handles the WebCrawl
@@ -97,8 +98,24 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 this.settings.BaseUrlPath,
                 folder);
 
+            var prefixUrls = this.GetKnownPrefxes(urls);
+
+            this.AddURLToFile(this.settings.PrefixPath, this.settings.PrefixFileName, FileMode.Append, prefixUrls.ToArray());
+            this.AddURLToFile(userURLPath, this.settings.SeedFileName, FileMode.Create, urls);
+        }
+
+        /// <summary>
+        /// Gets the known prefxes.
+        /// </summary>
+        /// <param name="urls">The urls.</param>
+        /// <returns></returns>
+        private IList<string> GetKnownPrefxes(params string[] urls)
+        {
             var prefixUrls = new List<string>();
-            var knownPrefixes = this.GetFileContent(this.settings.Prefix, this.settings.PrefixPath);
+            var knownPrefixes = this.GetFileContent(
+                this.settings.Prefix,
+                this.settings.PrefixPath,
+                this.settings.PrefixFileName);
 
             foreach (string url in urls)
             {
@@ -114,8 +131,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 }
             }
 
-            this.AddURLToFile(this.settings.PrefixPath, this.settings.PrefixFileName, prefixUrls.ToArray());
-            this.AddURLToFile(userURLPath, this.settings.SeedFileName, urls);
+            return prefixUrls;
         }
 
         /// <summary>
@@ -144,7 +160,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="path">The path of the file.</param>
         /// <param name="fileName">Name of the file.</param>
         /// <param name="urls">The array of url.</param>
-        private void AddURLToFile(string path, string fileName, params string[] urls)
+        private void AddURLToFile(string path, string fileName, FileMode mode, params string[] urls)
         {
             var file = string.Format(
                 this.settings.PathFormatTwo,
@@ -153,11 +169,13 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             try
             {
-                using (StreamWriter sw = File.CreateText(file))
+                using (FileStream fs = File.Open(file, mode, FileAccess.Write))
                 {
                     foreach (string url in urls)
                     {
-                        sw.WriteLine(url);
+                        var bytes = Encoding.ASCII.GetBytes(string.Format("{0}{1}", url, "\r\n"));
+
+                        fs.Write(bytes, 0, bytes.Length);
                         Log.DebugFormat(Properties.Resources.LOG_FILE_WRITING_SUCCESS, url);
                     }
                 }
@@ -165,7 +183,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             catch (FileNotFoundException)
             {
                 this.CreateFile(path, fileName);
-                this.AddURLToFile(path, fileName, urls);
+                this.AddURLToFile(path, fileName, mode, urls);
 
                 Log.DebugFormat(
                     Properties.Resources.LOG_FILE_CREATION_SUCCESS,
@@ -184,14 +202,14 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="pattern">The pattern.</param>
         /// <param name="filePath">The file path.</param>
         /// <returns>A list containing the file content.</returns>
-        private List<string> GetFileContent(string pattern, string filePath)
+        private List<string> GetFileContent(string pattern, string filePath, string fileName)
         {
             List<string> content = new List<string>();
 
             var prefixFile = string.Format(
                 this.settings.PathFormatTwo,
                 filePath,
-                this.settings.PrefixFileName);
+                fileName);
 
             try
             {
