@@ -6,6 +6,7 @@
 namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System;
+    using System.Linq;
     using System.ComponentModel;
     using System.Diagnostics;
     using HSA.InfoSys.Common.Logging;
@@ -89,9 +90,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             {
                 this.ServiceMutex.WaitOne();
 
-                if (this.urls != value)
+                var tmp = value.Distinct().ToArray();
+
+                if (this.urls != tmp)
                 {
-                    this.urls = value;
+                    this.urls = tmp;
                 }
 
                 this.ServiceMutex.ReleaseMutex();
