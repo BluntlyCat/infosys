@@ -12,7 +12,7 @@
 
         <div class="contentbox" style="width:100%;">
             <div class="contentbox-header">
-                <i class="icon-align-justify"></i>&nbsp;<b>Webserver lnx07</b>
+                <i class="icon-align-justify"></i>&nbsp;<b><%= ViewData["orgUnitName"] %></b>
             </div>
             <div class="contentbox-content cutline-bot">
                 <a class="btn" style="margin-right: 6px;" href="/System/Components?sysguid=<%= ViewData["systemguid"] %>">

@@ -339,12 +339,15 @@ namespace HSA.InfoSys.Gui.Controllers
                 var config = delItem.OrgUnitConfig;
 
                 // set all config data for view
+                this.ViewData["orgUnitName"] = delItem.Name;
+
                 this.ViewData["schedulerActive"] = config.SchedulerActive;
                 this.ViewData["emailActive"] = config.EmailActive;
                 this.ViewData["urlActive"] = config.URLActive;
 
                 this.ViewData["sc_days"] = config.Days;
                 this.ViewData["sc_hours"] = config.Time;
+
 
                 if (!string.IsNullOrEmpty(config.Emails))
                 {

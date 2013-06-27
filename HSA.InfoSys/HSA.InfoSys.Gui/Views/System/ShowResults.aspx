@@ -10,6 +10,9 @@
 
     <div class="container" >
         <div class="contentbox" style="width:100%;">
+            <div class="contentbox-header">
+                <i class="icon-align-justify"></i>&nbsp;<b>Results</b>
+            </div>
             <div class="btn-group accordion-group" style="margin:15px;">
                 <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><%= this.ViewData["selectedComp"] %> <span class="caret">
                 </span></a>
