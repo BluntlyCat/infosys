@@ -6,10 +6,13 @@
 namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System;
-    using System.Linq;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.Diagnostics;
+    using System.Linq;
+    using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
+    using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
 
     /// <summary>
@@ -30,7 +33,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The crawl process.
         /// </summary>
-        private Process crawlProcess;
+        private IList<NutchControllerClient> nutchClients = new List<NutchControllerClient>();
+
+        /// <summary>
+        /// The settings.
+        /// </summary>
+        private NutchControllerClientSettings settings;
 
         /// <summary>
         /// The lock mutex.
@@ -43,6 +51,16 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private string[] urls = new string[0];
 
         /// <summary>
+        /// The clients
+        /// </summary>
+        private string[] clients;
+
+        /// <summary>
+        /// The crawls finished.
+        /// </summary>
+        private int crawlsFinished = 0;
+
+        /// <summary>
         /// Prevents a default instance of the <see cref="NutchController" /> class from being created.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
@@ -50,9 +68,27 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private NutchController(Guid serviceGUID, string[] urls)
             : base(serviceGUID)
         {
+            this.settings = DBManager.ManagerFactory(Guid.NewGuid()).GetSettingsFor<NutchControllerClientSettings>();
+
             this.URLs = urls;
+
             this.NutchFound = true;
+
+            this.clients = this.settings.NutchClients.Split(',');
+
+            foreach (var client in this.clients)
+            {
+                var nutchClient = new NutchControllerClient(this.settings, client);
+                nutchClient.OnNutchNotFound += new NutchControllerClient.NutchNotFoundHandler(this.NutchClient_OnNutchNotFound);
+
+                this.nutchClients.Add(nutchClient);
+            }
         }
+
+        /// <summary>
+        /// Our delegate for invoking an async crawl.
+        /// </summary>
+        public delegate void InvokeCrawl();
 
         /// <summary>
         /// Our delegate for invoking an async callback.
@@ -131,18 +167,55 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             {
                 if (!this.Running && this.NutchFound)
                 {
-                    this.ServiceMutex.WaitOne();
+                    this.InitializeNextCrawl();
 
-                    var nutchClient = new NutchControllerClient();
-                    this.crawlProcess = nutchClient.CreateCrawlProcess(this.URLs);
+                    foreach (var client in this.nutchClients)
+                    {
+                        if (client.URLs.Count > 0)
+                        {
+                            Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_SET_PENDING_CRAWL, client.URLs);
 
-                    Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_SET_PENDING_CRAWL, this.URLs);
+                            InvokeCrawl invokeCrawl = new InvokeCrawl(client.StartCrawl);
 
-                    this.ServiceMutex.ReleaseMutex();
+                            AsyncCallback callback = new AsyncCallback(
+                                c =>
+                                {
+                                    this.ServiceMutex.WaitOne();
 
-                    this.StartService();
+                                    if (c.IsCompleted)
+                                    {
+                                        this.crawlsFinished--;
+
+                                        if (this.crawlsFinished == 0 && this.OnCrawlFinished != null)
+                                        {
+                                            this.ResetCrawls();
+                                            this.Running = false;
+                                            this.OnCrawlFinished(this);
+                                        }
+                                    }
+
+                                    this.ServiceMutex.ReleaseMutex();
+                                });
+
+                            this.crawlsFinished++;
+                            invokeCrawl.BeginInvoke(callback, this);
+                        }
+                    }
+
+                    this.Running = true;
                 }
             }
+        }
+
+        /// <summary>
+        /// Occurs when [on nutch not found].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="nutchFound">if set to <c>true</c> [nutch found].</param>
+        public void NutchClient_OnNutchNotFound(object sender, bool nutchFound)
+        {
+            this.Running = false;
+            this.NutchFound = nutchFound;
         }
 
         /// <summary>
@@ -150,30 +223,50 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         protected override void Run()
         {
-            try
-            {
-                this.crawlProcess.Start();
-                this.crawlProcess.WaitForExit();
-                Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CRAWL_FINISHED, this.crawlProcess.StartInfo.Arguments);
+        }
 
-                if (this.OnCrawlFinished != null)
+        /// <summary>
+        /// Initializes the next crawl.
+        /// </summary>
+        private void InitializeNextCrawl()
+        {
+            this.ServiceMutex.WaitOne();
+
+            int index = 0;
+
+            foreach (var url in this.URLs)
+            {
+                this.nutchClients[index % this.clients.Length].URLs.Add(url);
+                index++;
+            }
+
+            foreach (var client in this.nutchClients)
+            {
+                if (client.URLs.Count > 0)
                 {
-                    this.OnCrawlFinished(this);
+                    client.SetCrawlProcess();
                 }
             }
-            catch (Win32Exception w32e)
+
+            this.ServiceMutex.ReleaseMutex();
+        }
+
+        /// <summary>
+        /// Resets the crawls.
+        /// </summary>
+        private void ResetCrawls()
+        {
+            this.ServiceMutex.WaitOne();
+
+            foreach (var client in this.nutchClients)
             {
-                Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_NUTCH_NOT_FOUND, w32e);
-                this.NutchFound = false;
+                if (client.URLs.Count > 0)
+                {
+                    client.URLs.Clear();
+                }
             }
-            catch (Exception e)
-            {
-                Log.DebugFormat(Properties.Resources.LOG_COMMON_ERROR, e);
-            }
-            finally
-            {
-                this.Running = false;
-            }
+
+            this.ServiceMutex.ReleaseMutex();
         }
     }
 }

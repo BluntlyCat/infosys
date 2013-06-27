@@ -34,6 +34,16 @@ namespace HSA.InfoSys.Common.Entities
         public virtual string NutchClients { get; set; }
 
         /// <summary>
+        /// Gets or sets the nutch clients password.
+        /// </summary>
+        /// <value>
+        /// The nutch clients password.
+        /// </value>
+        [DataMember]
+#warning password must be saved encrypted in data base
+        public virtual string NutchClientsPassword { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of the seed file.
         /// </summary>
         /// <value>

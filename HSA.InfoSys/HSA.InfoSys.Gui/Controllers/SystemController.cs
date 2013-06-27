@@ -49,11 +49,9 @@ namespace HSA.InfoSys.Gui.Controllers
 
                 var orgUnits = cc.GetOrgUnitsByUserID(uid, cc.LoadThisEntities("OrgUnitConfig")).ToList<OrgUnit>();
 
-
                 Log.DebugFormat("Got org units {0}", orgUnits);
                 this.ViewData["orgUnits"] = orgUnits;
                 this.ViewData["navid"] = "mysystems";
-
             }
             catch (CommunicationException ce)
             {

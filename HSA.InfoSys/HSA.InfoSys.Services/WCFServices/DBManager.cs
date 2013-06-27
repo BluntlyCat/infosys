@@ -130,9 +130,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets the mail settings.
         /// </summary>
-        /// <value>
+        /// <returns>
         /// The mail settings.
-        /// </value>
+        /// </returns>
         public EmailNotifierSettings GetMailSettings()
         { 
             return this.GetSettingsFor<EmailNotifierSettings>();
@@ -141,9 +141,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets the nutch client settings.
         /// </summary>
-        /// <value>
+        /// <returns>
         /// The nutch client settings.
-        /// </value>
+        /// </returns>
         public NutchControllerClientSettings GetNutchClientSettings()
         {
             return this.GetSettingsFor<NutchControllerClientSettings>();
@@ -152,9 +152,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets the solr client settings.
         /// </summary>
-        /// <value>
+        /// <returns>
         /// The solr client settings.
-        /// </value>
+        /// </returns>
         public SolrSearchClientSettings GetSolrClientSettings()
         {
             return this.GetSettingsFor<SolrSearchClientSettings>();
@@ -163,9 +163,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets the WCF addresses settings.
         /// </summary>
-        /// <value>
+        /// <returns>
         /// The WCF addresses settings.
-        /// </value>
+        /// </returns>
         public WCFControllerAddressesSettings GetWCFAddressesSettings()
         {
             return this.GetSettingsFor<WCFControllerAddressesSettings>();
@@ -174,9 +174,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets the WCF controller settings.
         /// </summary>
-        /// <value>
+        /// <returns>
         /// The WCF controller settings.
-        /// </value>
+        /// </returns>
         public WCFControllerHostSettings GetWCFControllerSettings()
         {
             return this.GetSettingsFor<WCFControllerHostSettings>();

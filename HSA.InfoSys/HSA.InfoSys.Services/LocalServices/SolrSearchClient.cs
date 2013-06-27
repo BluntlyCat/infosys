@@ -6,6 +6,7 @@
 namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System;
+    using System.Collections.Generic;
     using System.Net;
     using System.Net.Sockets;
     using System.Text;
@@ -15,7 +16,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using log4net;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-    using System.Collections.Generic;
 
     /// <summary>
     /// This class connects to the Solr server and invokes the search.

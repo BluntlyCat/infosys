@@ -1,17 +1,17 @@
 ﻿// ------------------------------------------------------------------------
-// <copyright file="HomeController.cs" company="HSA.InfoSys">
+// <copyright file="SettingsController.cs" company="HSA.InfoSys">
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.Gui.Controllers
 {
     using System;
+    using System.ServiceModel;
     using System.Web.Mvc;
     using HSA.InfoSys.Common.Logging;
-    using log4net;
     using HSA.InfoSys.Common.Services.LocalServices;
     using HSA.InfoSys.Common.Services.WCFServices;
-    using System.ServiceModel;
+    using log4net;
 
     /// <summary>
     /// The controller for the home page.
@@ -191,6 +191,5 @@ namespace HSA.InfoSys.Gui.Controllers
 
             return this.RedirectToAction("Settings", "Index");
         }
-        
     }
 }

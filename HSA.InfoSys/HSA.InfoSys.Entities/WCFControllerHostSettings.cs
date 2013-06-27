@@ -31,6 +31,7 @@ namespace HSA.InfoSys.Common.Entities
         /// The certificate password.
         /// </value>
         [DataMember]
+#warning password must be saved encrypted in data base
         public virtual string CertificatePassword { get; set; }
 
         /// <summary>

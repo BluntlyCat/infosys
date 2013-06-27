@@ -30,9 +30,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets the mail settings.
         /// </summary>
-        /// <value>
-        /// The mail settings.
-        /// </value>
+        /// <returns>The mail settings.</returns>
         [OperationContract]
         [UseNetDataContractSerializer]
         EmailNotifierSettings GetMailSettings();
@@ -40,9 +38,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets the nutch client settings.
         /// </summary>
-        /// <value>
-        /// The nutch client settings.
-        /// </value>
+        /// <returns>The nutch client settings.</returns>
         [OperationContract]
         [UseNetDataContractSerializer]
         NutchControllerClientSettings GetNutchClientSettings();
@@ -50,9 +46,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets the solr client settings.
         /// </summary>
-        /// <value>
+        /// <returns>
         /// The solr client settings.
-        /// </value>
+        /// </returns>
         [OperationContract]
         [UseNetDataContractSerializer]
         SolrSearchClientSettings GetSolrClientSettings();
@@ -60,9 +56,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets the WCF addresses settings.
         /// </summary>
-        /// <value>
-        /// The WCF addresses settings.
-        /// </value>
+        /// <returns>The WCF addresses settings.</returns>
         [OperationContract]
         [UseNetDataContractSerializer]
         WCFControllerAddressesSettings GetWCFAddressesSettings();
@@ -70,9 +64,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets the WCF controller settings.
         /// </summary>
-        /// <value>
-        /// The WCF controller settings.
-        /// </value>
+        /// <returns>The WCF controller settings.</returns>
         [OperationContract]
         [UseNetDataContractSerializer]
         WCFControllerHostSettings GetWCFControllerSettings();

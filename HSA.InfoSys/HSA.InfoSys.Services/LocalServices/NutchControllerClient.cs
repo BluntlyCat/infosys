@@ -10,11 +10,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using System.Diagnostics;
     using System.IO;
     using System.Linq;
+    using System.Net.Sockets;
+    using System.Text;
     using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
-    using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
-    using System.Text;
+    using Renci.SshNet;
 
     /// <summary>
     /// The Nutch Manager handles the WebCrawl
@@ -32,36 +33,107 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private NutchControllerClientSettings settings;
 
         /// <summary>
+        /// The crawl process.
+        /// </summary>
+        private Process crawlProcess;
+
+        /// <summary>
+        /// The SSH client.
+        /// </summary>
+        private SshClient sshClient;
+
+        /// <summary>
         /// The home directory.
         /// </summary>
         private string homeDir;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NutchControllerClient"/> class.
+        /// Initializes a new instance of the <see cref="NutchControllerClient" /> class.
         /// </summary>
-        public NutchControllerClient()
+        /// <param name="settings">The settings.</param>
+        /// <param name="connectionString">The connection string.</param>
+        public NutchControllerClient(NutchControllerClientSettings settings, string connectionString)
         {
-            this.settings = DBManager.ManagerFactory(Guid.NewGuid()).GetSettingsFor<NutchControllerClientSettings>();
+            this.settings = settings;
 #if !MONO
             this.homeDir = Environment.GetEnvironmentVariable("HOMEPATH");
 #else
             this.homeDir = Environment.GetEnvironmentVariable("HOME");
 #endif
+            this.URLs = new List<string>();
+
+            try
+            {
+                var connectionArgs = connectionString.Split('@');
+#warning Password must be decrypted if saved encrypted in database
+                var connectionInfo = new PasswordConnectionInfo(connectionArgs[1], 22, connectionArgs[0], this.settings.NutchClientsPassword);
+
+                this.sshClient = new SshClient(connectionInfo);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+            }
+        }
+
+        /// <summary>
+        /// Invoked if nutch is not found.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="nutchFound">if set to <c>true</c> [nutch found].</param>
+        public delegate void NutchNotFoundHandler(object sender, bool nutchFound);
+
+        /// <summary>
+        /// Occurs when [on nutch not found].
+        /// </summary>
+        public event NutchNotFoundHandler OnNutchNotFound;
+
+        /// <summary>
+        /// Gets the URLs.
+        /// </summary>
+        /// <value>
+        /// The URLs.
+        /// </value>
+        public IList<string> URLs { get; private set; }
+
+        /// <summary>
+        /// Starts the crawl.
+        /// </summary>
+        public void StartCrawl()
+        {
+            try
+            {
+                var command = this.sshClient.CreateCommand("sleep 5");
+
+                this.sshClient.Connect();
+                command.Execute();
+                //// this.crawlProcess.Start();
+                //// this.crawlProcess.WaitForExit();
+            }
+            catch (SocketException se)
+            {
+                Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_NUTCH_NOT_FOUND, se);
+                this.OnNutchNotFound(this, false);
+            }
+            catch (Exception e)
+            {
+                Log.DebugFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+            }
+            finally
+            {
+                this.sshClient.Disconnect();
+            }
         }
 
         /// <summary>
         /// Creates the crawl process.
         /// </summary>
-        /// <param name="urls">The URLs.</param>
-        /// <returns>
-        /// A new crawl process.
-        /// </returns>
-        public Process CreateCrawlProcess(params string[] urls)
+        public void SetCrawlProcess()
         {
             Process nutch = new Process();
 
             this.CreateUserDir(this.settings.BaseCrawlPath);
-            this.AddURL(this.settings.BaseCrawlPath, urls);
+            this.AddURL(this.settings.BaseCrawlPath, this.URLs);
 
             var urlPath = string.Format(
                 this.settings.PathFormatThree,
@@ -82,7 +154,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CRAWL_PROCESS_CREATED, crawlRequest);
 
-            return nutch;
+            this.crawlProcess = nutch;
         }
 
         /// <summary>
@@ -90,7 +162,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="folder">The folder.</param>
         /// <param name="urls">The URLs.</param>
-        private void AddURL(string folder, params string[] urls)
+        private void AddURL(string folder, IList<string> urls)
         {
             string userURLPath = string.Format(
                 this.settings.PathFormatThree,
@@ -98,18 +170,18 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 this.settings.BaseUrlPath,
                 folder);
 
-            var prefixUrls = this.GetKnownPrefxes(urls);
+            var prefixUrls = this.GetKnownPrefixes(urls);
 
             this.AddURLToFile(this.settings.PrefixPath, this.settings.PrefixFileName, FileMode.Append, prefixUrls.ToArray());
             this.AddURLToFile(userURLPath, this.settings.SeedFileName, FileMode.Create, urls);
         }
 
         /// <summary>
-        /// Gets the known prefxes.
+        /// Gets the known prefixes.
         /// </summary>
-        /// <param name="urls">The urls.</param>
-        /// <returns></returns>
-        private IList<string> GetKnownPrefxes(params string[] urls)
+        /// <param name="urls">The URLs.</param>
+        /// <returns>A list of already known prefixes.</returns>
+        private IList<string> GetKnownPrefixes(IList<string> urls)
         {
             var prefixUrls = new List<string>();
             var knownPrefixes = this.GetFileContent(
@@ -159,8 +231,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="path">The path of the file.</param>
         /// <param name="fileName">Name of the file.</param>
+        /// <param name="mode">The mode.</param>
         /// <param name="urls">The array of url.</param>
-        private void AddURLToFile(string path, string fileName, FileMode mode, params string[] urls)
+        private void AddURLToFile(string path, string fileName, FileMode mode, IList<string> urls)
         {
             var file = string.Format(
                 this.settings.PathFormatTwo,
@@ -201,7 +274,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="pattern">The pattern.</param>
         /// <param name="filePath">The file path.</param>
-        /// <returns>A list containing the file content.</returns>
+        /// <param name="fileName">Name of the file.</param>
+        /// <returns>
+        /// A list containing the file content.
+        /// </returns>
         private List<string> GetFileContent(string pattern, string filePath, string fileName)
         {
             List<string> content = new List<string>();
