@@ -108,24 +108,58 @@ namespace HSA.InfoSys.Gui.Controllers
         [HttpPost]
         public ActionResult Nutch()
         {
-            this.ViewData["navid"] = "serversettings";
 
-            // get POST data from form
-            string solrserver = Request["solrserver"];
-            string seedfilename = Request["seedfilename"];
-            string baseurlpath = Request["baseurlpath"];
-            string nutchcommand = Request["nutchcommand"];
-            string crawlrequest = Request["crawlrequest"];
-            string basecrawlpath = Request["basecrawlpath"];
-            string crawldepth = Request["crawldepth"];
-            string crawltopn = Request["crawltopn"];
-            string prefixpath = Request["prefixpath"];
-            string prefixfilename = Request["prefixfilename"];
-            string prefix = Request["prefix"];
+            try
+            {
+                this.ViewData["navid"] = "serversettings";
 
-            // TODO: save Post-Data in DB
+                // get POST data from form
+                string solrserver = Request["solrserver"];
+                string seedfilename = Request["seedfilename"];
+                string baseurlpath = Request["baseurlpath"];
+                string nutchcommand = Request["nutchcommand"];
+                string crawlrequest = Request["crawlrequest"];
+                string basecrawlpath = Request["basecrawlpath"];
+                string crawldepth = Request["crawldepth"];
+                string crawltopn = Request["crawltopn"];
+                string prefixpath = Request["prefixpath"];
+                string prefixfilename = Request["prefixfilename"];
+                string prefix = Request["prefix"];
 
-            return this.RedirectToAction("Settings", "Index");
+                //@TODO check for null values
+
+                //get settings from db
+                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                var nutchClientSettings = cc.GetNutchClientSettings();
+
+                //change to new values
+                nutchClientSettings.SolrServer = solrserver;
+                nutchClientSettings.SeedFileName = seedfilename;
+                nutchClientSettings.BaseUrlPath = baseurlpath;
+                nutchClientSettings.NutchCommand = nutchcommand;
+                nutchClientSettings.CrawlRequest = crawlrequest;
+                nutchClientSettings.BaseCrawlPath = basecrawlpath;
+                nutchClientSettings.CrawlDepth = int.Parse(crawldepth);
+                nutchClientSettings.CrawlTopN = int.Parse(crawltopn);
+                nutchClientSettings.PrefixPath = prefixpath;
+                nutchClientSettings.PrefixFileName = prefixfilename;
+                nutchClientSettings.Prefix = prefix;
+
+                //save into db
+                cc.UpdateEntity(nutchClientSettings);
+
+            }
+            catch (CommunicationException ce)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_COMMUNICATION_ERROR, ce);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+            }
+
+            return this.RedirectToAction("Index", "Settings");
+
         }
 
         /// <summary>
@@ -136,20 +170,51 @@ namespace HSA.InfoSys.Gui.Controllers
         [HttpPost]
         public ActionResult Solr()
         {
-            this.ViewData["navid"] = "serversettings";
 
-            // get POST data from form
-            string host = Request["host"];
-            string port = Request["port"];
-            string collection = Request["collection"];
-            string queryformat = Request["queryformat"];
-            string requestformat = Request["requestformat"];
-            string filterqueryformat = Request["filterqueryformat"];
-            string filter = Request["filter"];
+            try
+            {
 
-            // TODO: save Post-Data in DB
+                this.ViewData["navid"] = "serversettings";
 
-            return this.RedirectToAction("Settings", "Index");
+                // get POST data from form
+                string host = Request["host"];
+                string port = Request["port"];
+                string collection = Request["collection"];
+                string queryformat = Request["queryformat"];
+                string requestformat = Request["requestformat"];
+                string filterqueryformat = Request["filterqueryformat"];
+                string filter = Request["filter"];
+
+                //@TODO check for null values
+
+                //get settings from db
+                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                var solrClientSettings = cc.GetSolrClientSettings();
+
+                //save changes
+                solrClientSettings.Host = host;
+                solrClientSettings.Port = int.Parse(port);
+                solrClientSettings.Collection = collection;
+                solrClientSettings.QueryFormat = queryformat;
+                solrClientSettings.RequestFormat = requestformat;
+                solrClientSettings.FilterQueryFormat = filterqueryformat;
+                solrClientSettings.Filter = filter;
+
+                //save to db
+                cc.UpdateEntity(solrClientSettings);
+
+            }
+            catch (CommunicationException ce)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_COMMUNICATION_ERROR, ce);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+            }
+
+            return this.RedirectToAction("Index", "Settings");
+
         }
 
         /// <summary>
@@ -160,17 +225,44 @@ namespace HSA.InfoSys.Gui.Controllers
         [HttpPost]
         public ActionResult WcfAddresses()
         {
-            this.ViewData["navid"] = "serversettings";
 
-            // get POST data from form
-            string httpaddress = Request["httpaddress"];
-            string nettcpaddress = Request["nettcpaddress"];
-            string httpport = Request["httpport"];
-            string nettcpport = Request["nettcpport"];
+            try
+            {
+                this.ViewData["navid"] = "serversettings";
 
-            // TODO: save Post-Data in DB
+                // get POST data from form
+                string httpaddress = Request["httpaddress"];
+                string nettcpaddress = Request["nettcpaddress"];
+                string httpport = Request["httpport"];
+                string nettcpport = Request["nettcpport"];
 
-            return this.RedirectToAction("Settings", "Index");
+                //@TODO check for null values
+
+                //get settings from db
+                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                var wcfAddressesSettings = cc.GetWCFAddressesSettings();
+
+                //save changes
+                wcfAddressesSettings.HttpAddress = httpaddress;
+                wcfAddressesSettings.NetTcpAddress = nettcpaddress;
+                wcfAddressesSettings.HttpPort = int.Parse(httpport);
+                wcfAddressesSettings.NetTcpPort = int.Parse(nettcpport);
+
+                //save to db
+                cc.UpdateEntity(wcfAddressesSettings);
+
+            }
+            catch (CommunicationException ce)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_COMMUNICATION_ERROR, ce);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+            }
+
+            return this.RedirectToAction("Index", "Settings");
+
         }
 
         /// <summary>
@@ -181,15 +273,40 @@ namespace HSA.InfoSys.Gui.Controllers
         [HttpPost]
         public ActionResult WcfHost()
         {
-            this.ViewData["navid"] = "serversettings";
 
-            // get POST data from form
-            string certificatepath = Request["certificatepath"];
-            string certificatepassword = Request["certificatepassword"];
+            try
+            {
+                this.ViewData["navid"] = "serversettings";
 
-            // TODO: save Post-Data in DB
+                // get POST data from form
+                string certificatepath = Request["certificatepath"];
+                string certificatepassword = Request["certificatepassword"];
 
-            return this.RedirectToAction("Settings", "Index");
+                //@TODO check for null values
+
+                //get settings from db
+                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                var wcfControllerSettings = cc.GetWCFControllerSettings();
+
+                //save changes
+                wcfControllerSettings.CertificatePath = certificatepath;
+                wcfControllerSettings.CertificatePassword = certificatepassword;
+
+                //save into db
+                cc.UpdateEntity(wcfControllerSettings);
+
+            }
+            catch (CommunicationException ce)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_COMMUNICATION_ERROR, ce);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+            }
+
+            return this.RedirectToAction("Index", "Settings");
+
         }
     }
 }
