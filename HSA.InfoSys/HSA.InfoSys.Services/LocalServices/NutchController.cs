@@ -14,6 +14,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
+    using System.Threading;
 
     /// <summary>
     /// This class invokes the crawl and handles all pending crawls.
@@ -59,6 +60,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// The crawls finished.
         /// </summary>
         private int crawlsFinished = 0;
+
+        /// <summary>
+        /// The is crawling.
+        /// </summary>
+        private bool isCrawling = false;
 
         /// <summary>
         /// Prevents a default instance of the <see cref="NutchController" /> class from being created.
@@ -165,7 +171,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             lock (this.lockMutex)
             {
-                if (!this.Running && this.NutchFound)
+                if (!this.isCrawling && this.NutchFound)
                 {
                     this.InitializeNextCrawl();
 
@@ -186,11 +192,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                                     {
                                         this.crawlsFinished--;
 
-                                        if (this.crawlsFinished == 0 && this.OnCrawlFinished != null)
+                                        if (this.crawlsFinished == 0)
                                         {
                                             this.ResetCrawls();
-                                            this.Running = false;
-                                            this.OnCrawlFinished(this);
+                                            this.isCrawling = false;
                                         }
                                     }
 
@@ -202,7 +207,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                         }
                     }
 
-                    this.Running = true;
+                    this.isCrawling = true;
                 }
             }
         }
@@ -214,8 +219,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="nutchFound">if set to <c>true</c> [nutch found].</param>
         public void NutchClient_OnNutchNotFound(object sender, bool nutchFound)
         {
-            this.Running = false;
-            this.NutchFound = nutchFound;
+            //this.Running = false;
+            //this.NutchFound = nutchFound;
         }
 
         /// <summary>
@@ -223,6 +228,15 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         protected override void Run()
         {
+            while (this.Running && this.NutchFound)
+            {
+                if (!this.isCrawling)
+                {
+                    this.SetNextCrawl();
+                }
+
+                Thread.Sleep(10000);
+            }
         }
 
         /// <summary>

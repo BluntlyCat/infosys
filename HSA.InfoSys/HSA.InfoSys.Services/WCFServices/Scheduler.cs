@@ -43,11 +43,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         private IDBManager dbManager;
 
         /// <summary>
-        /// The Nutch manager.
-        /// </summary>
-        private NutchController nutchController;
-
-        /// <summary>
         /// The jobs dictionary.
         /// </summary>
         private Dictionary<Guid, Countdown> jobs = new Dictionary<Guid, Countdown>();
@@ -61,8 +56,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             Log.DebugFormat(Properties.Resources.LOG_INSTANCIATE_NEW_SCHEDULER, this.GetType().Name);
 
             this.dbManager = DBManager.ManagerFactory(Guid.NewGuid());
-            this.nutchController = NutchController.NutchFactory(Guid.NewGuid(), this.dbManager.GetAllUrls());
-            this.nutchController.OnCrawlFinished += this.NutchController_OnCrawlFinished;
         }
 
         /// <summary>
@@ -89,8 +82,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <param name="orgUnitConfig">The OrgUnitConfig.</param>
         public void AddOrgUnitConfig(OrgUnitConfig orgUnitConfig)
         {
-            this.nutchController.URLs = this.dbManager.GetAllUrls();
-
             if (orgUnitConfig.SchedulerActive)
             {
                 Log.DebugFormat(Properties.Resources.LOG_SCHEDULER_ADD, orgUnitConfig);
@@ -134,21 +125,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
 
             this.jobMutex.ReleaseMutex();
-        }
-
-        /// <summary>
-        /// Occurs when [on crawl finished].
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        public void NutchController_OnCrawlFinished(object sender)
-        {
-            Log.InfoFormat(Properties.Resources.SCHEDULER_CRAWL_SUCCEEDED);
-
-            if (this.nutchController.NutchFound)
-            {
-                this.nutchController.SetNextCrawl();
-                Log.Debug(Properties.Resources.SCHEDULER_CRAWL_RESTART);
-            }
         }
 
         /// <summary>
@@ -197,8 +173,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
             this.jobMutex.ReleaseMutex();
 
-            this.nutchController.SetNextCrawl();
-
             base.StartService();
         }
 
@@ -218,8 +192,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             this.jobs.Clear();
 
             this.jobMutex.ReleaseMutex();
-
-            this.nutchController.StopService(cancel);
 
             base.StopService(cancel);
         }

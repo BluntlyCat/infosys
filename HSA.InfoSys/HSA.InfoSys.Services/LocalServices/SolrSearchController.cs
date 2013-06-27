@@ -77,7 +77,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     .Where(c => c.ComponentGUID == component.EntityId)
                     .List();
 
-                SolrResultPot resultPot = new SolrResultPot(component.EntityId);
+                SolrResultPot resultPot = new SolrResultPot();
+
+                var sendResults = new List<Result>();
 
                 ////Here we tell our delegate which method to call.
                 InvokeSolrSearch invokeSearch = new InvokeSolrSearch(searchClient.StartSearch);
@@ -88,7 +90,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     c =>
                     {
                         dbMutex.WaitOne();
-                        var sendResults = new List<Result>();
+                        
                         if (c.IsCompleted)
                         {
                             resultPot = searchClient.GetResult();

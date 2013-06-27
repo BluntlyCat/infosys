@@ -16,6 +16,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using HSA.InfoSys.Common.Logging;
     using log4net;
     using Renci.SshNet;
+    using System.Threading;
+    using Renci.SshNet.Common;
 
     /// <summary>
     /// The Nutch Manager handles the WebCrawl
@@ -38,14 +40,24 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private Process crawlProcess;
 
         /// <summary>
-        /// The SSH client.
-        /// </summary>
-        private SshClient sshClient;
-
-        /// <summary>
         /// The home directory.
         /// </summary>
         private string homeDir;
+
+        /// <summary>
+        /// The hostname.
+        /// </summary>
+        private string hostname;
+
+        /// <summary>
+        /// The username.
+        /// </summary>
+        private string username;
+
+        /// <summary>
+        /// The SSH connection info.
+        /// </summary>
+        private PrivateKeyConnectionInfo sshConnectionInfo;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NutchControllerClient" /> class.
@@ -65,10 +77,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             try
             {
                 var connectionArgs = connectionString.Split('@');
-#warning Password must be decrypted if saved encrypted in database
-                var connectionInfo = new PasswordConnectionInfo(connectionArgs[1], 22, connectionArgs[0], this.settings.NutchClientsPassword);
+                this.hostname = connectionArgs[1];
+                this.username = connectionArgs[0];
 
-                this.sshClient = new SshClient(connectionInfo);
+                var key = new PrivateKeyFile("Certificates/devteam.id.rsa");
+
+                this.sshConnectionInfo = new PrivateKeyConnectionInfo(this.hostname, this.username, key);
             }
             catch (Exception e)
             {
@@ -101,27 +115,54 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         public void StartCrawl()
         {
-            try
+            using (var client = new SshClient(this.sshConnectionInfo))
             {
-                var command = this.sshClient.CreateCommand("sleep 5");
+                try
+                {
+                    Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_START_CRAWL, this.hostname);
 
-                this.sshClient.Connect();
-                command.Execute();
-                //// this.crawlProcess.Start();
-                //// this.crawlProcess.WaitForExit();
-            }
-            catch (SocketException se)
-            {
-                Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_NUTCH_NOT_FOUND, se);
-                this.OnNutchNotFound(this, false);
-            }
-            catch (Exception e)
-            {
-                Log.DebugFormat(Properties.Resources.LOG_COMMON_ERROR, e);
-            }
-            finally
-            {
-                this.sshClient.Disconnect();
+                    client.Connect();
+                    var command = client.CreateCommand("sleep 5");
+                    command.Execute();
+
+                    Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CRAWL_FINISHED, this.hostname);
+                }
+                catch (SocketException se)
+                {
+                    Log.ErrorFormat(
+                        Properties.Resources.NUTCH_CONTROLLER_SOCKET_EXCEPTION,
+                        this.hostname,
+                        se);
+
+                    this.OnNutchNotFound(this, false);
+                }
+                catch (SshAuthenticationException ae)
+                {
+                    Log.ErrorFormat(
+                        Properties.Resources.NUTCH_CONTROLLER_CLIENT_AUTHENTICATION_EXCEPTION,
+                        this.hostname,
+                        ae);
+                }
+                catch (SshConnectionException ce)
+                {
+                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CONNECTION_EXEPTION,
+                        this.hostname,
+                        ce);
+                }
+                catch (SshOperationTimeoutException toe)
+                {
+                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_SSH_TIMEOUT_EXCEPTION,
+                        this.hostname,
+                        toe);
+                }
+                catch (Exception e)
+                {
+                    Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+                }
+                finally
+                {
+                    client.Disconnect();
+                }
             }
         }
 
@@ -212,17 +253,59 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="folder">The folder.</param>
         private void CreateUserDir(string folder)
         {
-            string newDirectory = string.Format(
-                this.settings.PathFormatThree,
-                this.homeDir,
-                this.settings.BaseUrlPath,
-                folder);
-
-            var info = Directory.CreateDirectory(newDirectory);
-
-            if (!info.Exists)
+            using (var client = new SshClient(this.sshConnectionInfo))
             {
-                Log.ErrorFormat(Properties.Resources.LOG_DIRECTORY_CREATION_ERROR, newDirectory);
+                try
+                {
+                    string newDirectory = string.Format(
+                    this.settings.PathFormatThree,
+                    this.homeDir,
+                    this.settings.BaseUrlPath,
+                    folder);
+
+                    var info = Directory.CreateDirectory(newDirectory);
+
+                    if (!info.Exists)
+                    {
+                        Log.ErrorFormat(Properties.Resources.LOG_DIRECTORY_CREATION_ERROR, newDirectory);
+                    }
+                }
+                catch (SocketException se)
+                {
+                    Log.ErrorFormat(
+                        Properties.Resources.NUTCH_CONTROLLER_SOCKET_EXCEPTION,
+                        this.hostname,
+                        se);
+
+                    this.OnNutchNotFound(this, false);
+                }
+                catch (SshAuthenticationException ae)
+                {
+                    Log.ErrorFormat(
+                        Properties.Resources.NUTCH_CONTROLLER_CLIENT_AUTHENTICATION_EXCEPTION,
+                        this.hostname,
+                        ae);
+                }
+                catch (SshConnectionException ce)
+                {
+                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CONNECTION_EXEPTION,
+                        this.hostname,
+                        ce);
+                }
+                catch (SshOperationTimeoutException toe)
+                {
+                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_SSH_TIMEOUT_EXCEPTION,
+                        this.hostname,
+                        toe);
+                }
+                catch (Exception e)
+                {
+                    Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+                }
+                finally
+                {
+                    client.Disconnect();
+                }
             }
         }
 
@@ -235,37 +318,70 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="urls">The array of url.</param>
         private void AddURLToFile(string path, string fileName, FileMode mode, IList<string> urls)
         {
-            var file = string.Format(
-                this.settings.PathFormatTwo,
-                path,
-                fileName);
-
-            try
+            using (var client = new SshClient(this.sshConnectionInfo))
             {
-                using (FileStream fs = File.Open(file, mode, FileAccess.Write))
+                var file = string.Format(
+                    this.settings.PathFormatTwo,
+                    path,
+                    fileName);
+
+                try
                 {
+                    client.Connect();
+
+                    var insertString = string.Empty;
+
                     foreach (string url in urls)
                     {
-                        var bytes = Encoding.ASCII.GetBytes(string.Format("{0}{1}", url, "\r\n"));
+                        insertString += string.Format("{0}{1}", url, "\n");
+                    }
 
-                        fs.Write(bytes, 0, bytes.Length);
-                        Log.DebugFormat(Properties.Resources.LOG_FILE_WRITING_SUCCESS, url);
+                    switch (mode)
+                    {
+                        case FileMode.Append:
+                            client.RunCommand(string.Format("echo '{0}' >> {1}", insertString, file));
+                            break;
+                        case FileMode.Create:
+                            client.RunCommand(string.Format("echo '{0}' > {1}", insertString, file));
+                            break;
                     }
                 }
-            }
-            catch (FileNotFoundException)
-            {
-                this.CreateFile(path, fileName);
-                this.AddURLToFile(path, fileName, mode, urls);
+                catch (SocketException se)
+                {
+                    Log.ErrorFormat(
+                        Properties.Resources.NUTCH_CONTROLLER_SOCKET_EXCEPTION,
+                        this.hostname,
+                        se);
 
-                Log.DebugFormat(
-                    Properties.Resources.LOG_FILE_CREATION_SUCCESS,
-                    fileName,
-                    path);
-            }
-            catch (Exception e)
-            {
-                Log.ErrorFormat(Properties.Resources.LOG_FILE_WRITING_ERROR, file, e);
+                    this.OnNutchNotFound(this, false);
+                }
+                catch (SshAuthenticationException ae)
+                {
+                    Log.ErrorFormat(
+                        Properties.Resources.NUTCH_CONTROLLER_CLIENT_AUTHENTICATION_EXCEPTION,
+                        this.hostname,
+                        ae);
+                }
+                catch (SshConnectionException ce)
+                {
+                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CONNECTION_EXEPTION,
+                        this.hostname,
+                        ce);
+                }
+                catch (SshOperationTimeoutException toe)
+                {
+                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_SSH_TIMEOUT_EXCEPTION,
+                        this.hostname,
+                        toe);
+                }
+                catch (Exception e)
+                {
+                    Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+                }
+                finally
+                {
+                    client.Disconnect();
+                }
             }
         }
 
@@ -280,41 +396,76 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </returns>
         private List<string> GetFileContent(string pattern, string filePath, string fileName)
         {
-            List<string> content = new List<string>();
-
-            var prefixFile = string.Format(
-                this.settings.PathFormatTwo,
-                filePath,
-                fileName);
-
-            try
+            using (var client = new SshClient(this.sshConnectionInfo))
             {
-                using (StreamReader sr = new StreamReader(prefixFile))
+                List<string> content = new List<string>();
+
+                var prefixFile = string.Format(
+                    this.settings.PathFormatTwo,
+                    filePath,
+                    fileName);
+
+                try
                 {
-                    var line = string.Empty;
+                    client.Connect();
+                    var cmd = client.RunCommand(string.Format("cat {0}", prefixFile));
 
-                    while ((line = sr.ReadLine()) != null)
+                    var fileContent = cmd.Result;
+
+                    using (StreamReader sr = new StreamReader(new MemoryStream(Encoding.ASCII.GetBytes(fileContent))))
                     {
-                        if (line.Contains(pattern))
+                        var line = string.Empty;
+
+                        while ((line = sr.ReadLine()) != null)
                         {
-                            content.Add(line);
+                            if (line.Contains(pattern))
+                            {
+                                content.Add(line);
+                            }
                         }
+
+                        Log.DebugFormat(Properties.Resources.LOG_FILE_READING_SUCCESS, filePath);
                     }
-
-                    Log.DebugFormat(Properties.Resources.LOG_FILE_READING_SUCCESS, filePath);
                 }
-            }
-            catch (FileNotFoundException)
-            {
-                Log.DebugFormat(Properties.Resources.LOG_PREFIX_FILE_NOT_FOUND);
-                this.CreateFile(this.settings.PrefixPath, this.settings.PrefixFileName, true);
-            }
-            catch (Exception e)
-            {
-                Log.ErrorFormat(Properties.Resources.LOG_FILE_READING_ERROR, filePath, e);
-            }
+                catch (SocketException se)
+                {
+                    Log.ErrorFormat(
+                        Properties.Resources.NUTCH_CONTROLLER_SOCKET_EXCEPTION,
+                        this.hostname,
+                        se);
 
-            return content;
+                    this.OnNutchNotFound(this, false);
+                }
+                catch (SshAuthenticationException ae)
+                {
+                    Log.ErrorFormat(
+                        Properties.Resources.NUTCH_CONTROLLER_CLIENT_AUTHENTICATION_EXCEPTION,
+                        this.hostname,
+                        ae);
+                }
+                catch (SshConnectionException ce)
+                {
+                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CONNECTION_EXEPTION,
+                        this.hostname,
+                        ce);
+                }
+                catch (SshOperationTimeoutException toe)
+                {
+                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_SSH_TIMEOUT_EXCEPTION,
+                        this.hostname,
+                        toe);
+                }
+                catch (Exception e)
+                {
+                    Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+                }
+                finally
+                {
+                    client.Disconnect();
+                }
+
+                return content;
+            }
         }
 
         /// <summary>
@@ -325,17 +476,59 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="createNew">if set to <c>true</c> [create new].</param>
         private void CreateFile(string path, string fileName, bool createNew = false)
         {
-            var info = new DirectoryInfo(path);
-
-            if (info.Exists && (!info.GetFiles().Contains(new FileInfo(fileName)) || createNew))
+            using (var client = new SshClient(this.sshConnectionInfo))
             {
-                var file = File.Create(
-                    string.Format(
-                    this.settings.PathFormatTwo,
-                    path,
-                    fileName));
+                try
+                {
+                    var info = new DirectoryInfo(path);
 
-                file.Close();
+                    if (info.Exists && (!info.GetFiles().Contains(new FileInfo(fileName)) || createNew))
+                    {
+                        var file = string.Format(
+                            this.settings.PathFormatTwo,
+                            path,
+                            fileName);
+
+                        client.Connect();
+                        client.RunCommand(string.Format("touch {0}", file));
+                    }
+                }
+                catch (SocketException se)
+                {
+                    Log.ErrorFormat(
+                        Properties.Resources.NUTCH_CONTROLLER_SOCKET_EXCEPTION,
+                        this.hostname,
+                        se);
+
+                    this.OnNutchNotFound(this, false);
+                }
+                catch (SshAuthenticationException ae)
+                {
+                    Log.ErrorFormat(
+                        Properties.Resources.NUTCH_CONTROLLER_CLIENT_AUTHENTICATION_EXCEPTION,
+                        this.hostname,
+                        ae);
+                }
+                catch (SshConnectionException ce)
+                {
+                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CONNECTION_EXEPTION,
+                        this.hostname,
+                        ce);
+                }
+                catch (SshOperationTimeoutException toe)
+                {
+                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_SSH_TIMEOUT_EXCEPTION,
+                        this.hostname,
+                        toe);
+                }
+                catch (Exception e)
+                {
+                    Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+                }
+                finally
+                {
+                    client.Disconnect();
+                }
             }
         }
     }

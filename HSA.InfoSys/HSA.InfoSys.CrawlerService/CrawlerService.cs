@@ -124,6 +124,9 @@ namespace HSA.InfoSys.CrawlerService
             var dbManager = this.controllerHost.OpenWCFHost<DBManager, IDBManager>(DBManager.ManagerFactory(Guid.NewGuid()) as DBManager);
             this.crawlController.RegisterService(dbManager);
 
+            var nutchController = NutchController.NutchFactory(Guid.NewGuid(), dbManager.GetAllUrls());
+            this.crawlController.RegisterService(nutchController);
+
             var solrController = this.controllerHost.OpenWCFHost<SolrController, ISolrController>(SolrController.SolrFactory(Guid.NewGuid()));
             this.crawlController.RegisterService(solrController);
 
