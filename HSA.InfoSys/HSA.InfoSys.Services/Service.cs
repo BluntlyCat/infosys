@@ -99,8 +99,7 @@ namespace HSA.InfoSys.Common.Services
         /// <param name="cancel">if set to <c>true</c> [cancel].</param>
         public virtual void StopService(bool cancel = false)
         {
-            Log.DebugFormat(Properties.Resources.LOG_STOP_SERVICE, this.GetType().Name, this.ServiceGUID);
-
+            Log.WarnFormat(Properties.Resources.LOG_STOP_SERVICE, this.GetType().Name, this.ServiceGUID);
             this.Running = false;
         }
 

@@ -16,7 +16,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using HSA.InfoSys.Common.Logging;
     using log4net;
     using Renci.SshNet;
-    using System.Threading;
     using Renci.SshNet.Common;
 
     /// <summary>
@@ -35,19 +34,14 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private NutchControllerClientSettings settings;
 
         /// <summary>
-        /// The crawl process.
+        /// The SSH client.
         /// </summary>
-        private Process crawlProcess;
+        private SshClient client;
 
         /// <summary>
         /// The home directory.
         /// </summary>
         private string homeDir;
-
-        /// <summary>
-        /// The hostname.
-        /// </summary>
-        private string hostname;
 
         /// <summary>
         /// The username.
@@ -67,40 +61,41 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         public NutchControllerClient(NutchControllerClientSettings settings, string connectionString)
         {
             this.settings = settings;
-#if !MONO
-            this.homeDir = Environment.GetEnvironmentVariable("HOMEPATH");
-#else
-            this.homeDir = Environment.GetEnvironmentVariable("HOME");
-#endif
+
+            this.homeDir = "/home/devteam";
             this.URLs = new List<string>();
 
             try
             {
                 var connectionArgs = connectionString.Split('@');
-                this.hostname = connectionArgs[1];
+                this.Hostname = connectionArgs[1];
                 this.username = connectionArgs[0];
 
                 var key = new PrivateKeyFile("Certificates/devteam.id.rsa");
 
-                this.sshConnectionInfo = new PrivateKeyConnectionInfo(this.hostname, this.username, key);
+                this.sshConnectionInfo = new PrivateKeyConnectionInfo(this.Hostname, this.username, key);
             }
             catch (Exception e)
             {
                 Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
             }
+
+            this.URLPath = string.Format(
+                this.settings.PathFormatThree,
+                this.homeDir,
+                this.settings.BaseUrlPath,
+                this.settings.BaseCrawlPath);
+
+            this.PrefixFile = string.Format(
+                this.settings.PathFormatTwo,
+                this.settings.PrefixPath,
+                this.settings.PrefixFileName);
+
+            this.SeedFile = string.Format(
+                this.settings.PathFormatTwo,
+                this.URLPath,
+                this.settings.SeedFileName);
         }
-
-        /// <summary>
-        /// Invoked if nutch is not found.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="nutchFound">if set to <c>true</c> [nutch found].</param>
-        public delegate void NutchNotFoundHandler(object sender, bool nutchFound);
-
-        /// <summary>
-        /// Occurs when [on nutch not found].
-        /// </summary>
-        public event NutchNotFoundHandler OnNutchNotFound;
 
         /// <summary>
         /// Gets the URLs.
@@ -111,57 +106,92 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         public IList<string> URLs { get; private set; }
 
         /// <summary>
+        /// Gets a value indicating whether [nutch found].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [nutch found]; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsClientUsable { get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether [prefix file found].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [prefix file found]; otherwise, <c>false</c>.
+        /// </value>
+        public bool PrefixFileFound { get; private set; }
+
+        /// <summary>
+        /// Gets the hostname.
+        /// </summary>
+        /// <value>
+        /// The hostname.
+        /// </value>
+        public string Hostname { get; private set; }
+
+        /// <summary>
+        /// Gets the prefix file.
+        /// </summary>
+        /// <value>
+        /// The prefix file.
+        /// </value>
+        public string PrefixFile { get; private set; }
+
+        /// <summary>
+        /// Gets the seed file.
+        /// </summary>
+        /// <value>
+        /// The seed file.
+        /// </value>
+        public string SeedFile { get; private set; }
+
+        /// <summary>
+        /// Gets the URL path.
+        /// </summary>
+        /// <value>
+        /// The URL path.
+        /// </value>
+        public string URLPath { get; private set; }
+
+        /// <summary>
+        /// Gets the crawl command.
+        /// </summary>
+        /// <value>
+        /// The crawl command.
+        /// </value>
+        public string CrawlCommand { get; private set; }
+
+        /// <summary>
         /// Starts the crawl.
         /// </summary>
         public void StartCrawl()
         {
-            using (var client = new SshClient(this.sshConnectionInfo))
+            if (this.IsClientUsable)
             {
+                Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_START_CRAWL, this.Hostname);
+
                 try
                 {
-                    Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_START_CRAWL, this.hostname);
+                    this.RunCommand("echo '' > crawler.log");
 
-                    client.Connect();
-                    var command = client.CreateCommand("sleep 5");
-                    command.Execute();
+                    var command = this.RunCommand(string.Format("{0} >> crawler.log", this.CrawlCommand));
 
-                    Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CRAWL_FINISHED, this.hostname);
-                }
-                catch (SocketException se)
-                {
-                    Log.ErrorFormat(
-                        Properties.Resources.NUTCH_CONTROLLER_SOCKET_EXCEPTION,
-                        this.hostname,
-                        se);
+                    if (!command.Error.Equals(string.Empty))
+                    {
+                        Log.ErrorFormat(
+                            Properties.Resources.NUTCH_CONTROLLER_CLIENT_NUTCH_COMMAND_ERROR,
+                            this.Hostname,
+                            command.Error);
+                    }
 
-                    this.OnNutchNotFound(this, false);
-                }
-                catch (SshAuthenticationException ae)
-                {
-                    Log.ErrorFormat(
-                        Properties.Resources.NUTCH_CONTROLLER_CLIENT_AUTHENTICATION_EXCEPTION,
-                        this.hostname,
-                        ae);
-                }
-                catch (SshConnectionException ce)
-                {
-                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CONNECTION_EXEPTION,
-                        this.hostname,
-                        ce);
-                }
-                catch (SshOperationTimeoutException toe)
-                {
-                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_SSH_TIMEOUT_EXCEPTION,
-                        this.hostname,
-                        toe);
+                    var crawlerLog = this.RunCommand("cat crawler.log").Result;
+                    Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CRAWLER_LOG, this.Hostname, crawlerLog);
+
+                    Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CRAWL_FINISHED, this.Hostname);
                 }
                 catch (Exception e)
                 {
-                    Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
-                }
-                finally
-                {
-                    client.Disconnect();
+                    Log.ErrorFormat(Properties.Resources.LOG_SSH_ERROR, e);
                 }
             }
         }
@@ -171,31 +201,70 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         public void SetCrawlProcess()
         {
-            Process nutch = new Process();
+            if (this.IsClientUsable)
+            {
+                this.CreateUserDir(this.settings.BaseCrawlPath);
+                this.AddURL(this.settings.BaseCrawlPath, this.URLs);
 
-            this.CreateUserDir(this.settings.BaseCrawlPath);
-            this.AddURL(this.settings.BaseCrawlPath, this.URLs);
+                var urlPath = string.Format(
+                    this.settings.PathFormatThree,
+                    this.homeDir,
+                    this.settings.BaseUrlPath,
+                    this.settings.BaseCrawlPath);
 
-            var urlPath = string.Format(
-                this.settings.PathFormatThree,
-                this.homeDir,
-                this.settings.BaseUrlPath,
-                this.settings.BaseCrawlPath);
+                string crawlRequest =
+                    string.Format(
+                    this.settings.CrawlRequest,
+                    urlPath,
+                    this.settings.SolrServer,
+                    this.settings.CrawlDepth,
+                    this.settings.CrawlTopN);
 
-            string crawlRequest =
-                string.Format(
-                this.settings.CrawlRequest,
-                urlPath,
-                this.settings.SolrServer,
-                this.settings.CrawlDepth,
-                this.settings.CrawlTopN);
+                var setJavaHome = string.Format("export JAVA_HOME='{0}'", this.settings.JavaHome);
+                this.CrawlCommand = string.Format("{0} && {1} {2}", setJavaHome, this.settings.NutchCommand, crawlRequest);
 
-            nutch.StartInfo.FileName = this.settings.NutchCommand;
-            nutch.StartInfo.Arguments = crawlRequest;
+                Log.DebugFormat(
+                    Properties.Resources.NUTCH_CONTROLLER_CLIENT_CRAWL_PROCESS_CREATED,
+                    this.CrawlCommand,
+                    this.Hostname);
+            }
+        }
 
-            Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CRAWL_PROCESS_CREATED, crawlRequest);
+        /// <summary>
+        /// Checks the client for usage.
+        /// </summary>
+        public void CheckClientForUsage()
+        {
+            this.IsClientUsable = this.IsNutchInstalled()
+                && this.IsFileExistent("-f", this.PrefixFile)
+                && this.IsFileExistent("-d", this.settings.JavaHome);
 
-            this.crawlProcess = nutch;
+            if (this.IsClientUsable)
+            {
+                Log.InfoFormat(
+                Properties.Resources.NUTCH_CONTROLLER_CLIENT_HOST_IS_USABLE,
+                this.Hostname,
+                this.IsClientUsable);
+            }
+            else
+            {
+                Log.WarnFormat(
+                Properties.Resources.NUTCH_CONTROLLER_CLIENT_HOST_IS_USABLE,
+                this.Hostname,
+                this.IsClientUsable);
+            }
+        }
+
+        /// <summary>
+        /// Disconnects this client.
+        /// </summary>
+        public void Disconnect()
+        {
+            if (this.client != null && this.client.IsConnected)
+            {
+                this.client.Disconnect();
+                Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_DISCONNECT, this.Hostname);
+            }
         }
 
         /// <summary>
@@ -211,10 +280,15 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 this.settings.BaseUrlPath,
                 folder);
 
+            Log.InfoFormat(
+                Properties.Resources.NUTCH_CONTROLLER_CLIENT_USER_PATH_IS,
+                this.Hostname,
+                userURLPath);
+
             var prefixUrls = this.GetKnownPrefixes(urls);
 
-            this.AddURLToFile(this.settings.PrefixPath, this.settings.PrefixFileName, FileMode.Append, prefixUrls.ToArray());
-            this.AddURLToFile(userURLPath, this.settings.SeedFileName, FileMode.Create, urls);
+            this.AddURLToFile(this.PrefixFile, FileMode.Append, prefixUrls.ToArray());
+            this.AddURLToFile(this.SeedFile, FileMode.Create, urls);
         }
 
         /// <summary>
@@ -225,10 +299,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private IList<string> GetKnownPrefixes(IList<string> urls)
         {
             var prefixUrls = new List<string>();
-            var knownPrefixes = this.GetFileContent(
-                this.settings.Prefix,
-                this.settings.PrefixPath,
-                this.settings.PrefixFileName);
+            var knownPrefixes = this.GetFileContent(this.settings.Prefix);
 
             foreach (string url in urls)
             {
@@ -240,7 +311,17 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 if (!knownPrefixes.Contains(prefix))
                 {
                     prefixUrls.Add(prefix);
-                    Log.DebugFormat(Properties.Resources.LOG_PREFIX_ADDED, prefix);
+                    Log.InfoFormat(
+                        Properties.Resources.NUTCH_CONTROLLER_CLIENT_PREFIX_ADDED,
+                        prefix,
+                        this.Hostname);
+                }
+                else
+                {
+                    Log.InfoFormat(
+                        Properties.Resources.NUTCH_CONTROLLER_CLIENT_PREFIX_EXISTS,
+                        prefix,
+                        this.Hostname);
                 }
             }
 
@@ -253,135 +334,80 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="folder">The folder.</param>
         private void CreateUserDir(string folder)
         {
-            using (var client = new SshClient(this.sshConnectionInfo))
+            string newDirectory = string.Format(
+                this.settings.PathFormatThree,
+                this.homeDir,
+                this.settings.BaseUrlPath,
+                folder);
+
+            try
             {
-                try
-                {
-                    string newDirectory = string.Format(
-                    this.settings.PathFormatThree,
-                    this.homeDir,
-                    this.settings.BaseUrlPath,
-                    folder);
+                this.RunCommand(string.Format("mkdir -p {0}", newDirectory));
 
-                    var info = Directory.CreateDirectory(newDirectory);
-
-                    if (!info.Exists)
-                    {
-                        Log.ErrorFormat(Properties.Resources.LOG_DIRECTORY_CREATION_ERROR, newDirectory);
-                    }
-                }
-                catch (SocketException se)
+                if (!this.IsFileExistent("-d", newDirectory))
                 {
                     Log.ErrorFormat(
-                        Properties.Resources.NUTCH_CONTROLLER_SOCKET_EXCEPTION,
-                        this.hostname,
-                        se);
-
-                    this.OnNutchNotFound(this, false);
+                        Properties.Resources.NUTCH_CONTROLLER_CLIENT_DIRECTORY_CREATION_ERROR,
+                        newDirectory,
+                        this.Hostname);
                 }
-                catch (SshAuthenticationException ae)
+                else
                 {
-                    Log.ErrorFormat(
-                        Properties.Resources.NUTCH_CONTROLLER_CLIENT_AUTHENTICATION_EXCEPTION,
-                        this.hostname,
-                        ae);
+                    Log.InfoFormat(
+                        Properties.Resources.NUTCH_CONTROLLER_CLIENT_DIRECTORY_CREATION_SUCCESS,
+                        newDirectory,
+                        this.Hostname);
                 }
-                catch (SshConnectionException ce)
-                {
-                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CONNECTION_EXEPTION,
-                        this.hostname,
-                        ce);
-                }
-                catch (SshOperationTimeoutException toe)
-                {
-                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_SSH_TIMEOUT_EXCEPTION,
-                        this.hostname,
-                        toe);
-                }
-                catch (Exception e)
-                {
-                    Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
-                }
-                finally
-                {
-                    client.Disconnect();
-                }
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_SSH_ERROR, e);
             }
         }
 
         /// <summary>
         /// Adds the url in the corresponding file.
         /// </summary>
-        /// <param name="path">The path of the file.</param>
-        /// <param name="fileName">Name of the file.</param>
+        /// <param name="file">The file.</param>
         /// <param name="mode">The mode.</param>
         /// <param name="urls">The array of url.</param>
-        private void AddURLToFile(string path, string fileName, FileMode mode, IList<string> urls)
+        private void AddURLToFile(string file, FileMode mode, IList<string> urls)
         {
-            using (var client = new SshClient(this.sshConnectionInfo))
+            var insertString = string.Empty;
+
+            foreach (string url in urls)
             {
-                var file = string.Format(
-                    this.settings.PathFormatTwo,
-                    path,
-                    fileName);
+                insertString += string.Format("{0}{1}", url, "\n");
+            }
 
-                try
-                {
-                    client.Connect();
+            Log.DebugFormat(
+                Properties.Resources.NUTCH_CONTROLLER_CLIENT_WRITE_FILE,
+                insertString,
+                file,
+                mode,
+                this.Hostname);
 
-                    var insertString = string.Empty;
+            try
+            {
+                switch (mode)
+                {
+                    case FileMode.Append:
+                        this.RunCommand(string.Format("echo '{0}' >> {1}", insertString, file));
+                        break;
 
-                    foreach (string url in urls)
-                    {
-                        insertString += string.Format("{0}{1}", url, "\n");
-                    }
+                    case FileMode.Create:
+                        this.RunCommand(string.Format("echo '{0}' > {1}", insertString, file));
+                        break;
+                }
 
-                    switch (mode)
-                    {
-                        case FileMode.Append:
-                            client.RunCommand(string.Format("echo '{0}' >> {1}", insertString, file));
-                            break;
-                        case FileMode.Create:
-                            client.RunCommand(string.Format("echo '{0}' > {1}", insertString, file));
-                            break;
-                    }
-                }
-                catch (SocketException se)
-                {
-                    Log.ErrorFormat(
-                        Properties.Resources.NUTCH_CONTROLLER_SOCKET_EXCEPTION,
-                        this.hostname,
-                        se);
-
-                    this.OnNutchNotFound(this, false);
-                }
-                catch (SshAuthenticationException ae)
-                {
-                    Log.ErrorFormat(
-                        Properties.Resources.NUTCH_CONTROLLER_CLIENT_AUTHENTICATION_EXCEPTION,
-                        this.hostname,
-                        ae);
-                }
-                catch (SshConnectionException ce)
-                {
-                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CONNECTION_EXEPTION,
-                        this.hostname,
-                        ce);
-                }
-                catch (SshOperationTimeoutException toe)
-                {
-                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_SSH_TIMEOUT_EXCEPTION,
-                        this.hostname,
-                        toe);
-                }
-                catch (Exception e)
-                {
-                    Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
-                }
-                finally
-                {
-                    client.Disconnect();
-                }
+                Log.InfoFormat(
+                    Properties.Resources.NUTCH_CONTROLLER_CLIENT_WRITING_SUCCESS,
+                    insertString,
+                    this.Hostname);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_FILE_WRITING_ERROR, file, this.Hostname, e);
             }
         }
 
@@ -389,146 +415,176 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// Gets the content of the file.
         /// </summary>
         /// <param name="pattern">The pattern.</param>
-        /// <param name="filePath">The file path.</param>
-        /// <param name="fileName">Name of the file.</param>
         /// <returns>
         /// A list containing the file content.
         /// </returns>
-        private List<string> GetFileContent(string pattern, string filePath, string fileName)
+        private List<string> GetFileContent(string pattern)
         {
-            using (var client = new SshClient(this.sshConnectionInfo))
+            List<string> content = new List<string>();
+
+            try
             {
-                List<string> content = new List<string>();
+                var fileContent = this.RunCommand(string.Format("cat {0}", this.PrefixFile)).Result;
+                Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_GOT_FILE_CONTENT, this.Hostname, fileContent);
 
-                var prefixFile = string.Format(
-                    this.settings.PathFormatTwo,
-                    filePath,
-                    fileName);
-
-                try
+                using (StreamReader sr = new StreamReader(new MemoryStream(Encoding.ASCII.GetBytes(fileContent))))
                 {
-                    client.Connect();
-                    var cmd = client.RunCommand(string.Format("cat {0}", prefixFile));
+                    var line = string.Empty;
 
-                    var fileContent = cmd.Result;
-
-                    using (StreamReader sr = new StreamReader(new MemoryStream(Encoding.ASCII.GetBytes(fileContent))))
+                    while ((line = sr.ReadLine()) != null)
                     {
-                        var line = string.Empty;
-
-                        while ((line = sr.ReadLine()) != null)
+                        if (line.Contains(pattern))
                         {
-                            if (line.Contains(pattern))
-                            {
-                                content.Add(line);
-                            }
+                            content.Add(line);
+                            Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_ADD_PREFIX, line);
                         }
-
-                        Log.DebugFormat(Properties.Resources.LOG_FILE_READING_SUCCESS, filePath);
                     }
-                }
-                catch (SocketException se)
-                {
-                    Log.ErrorFormat(
-                        Properties.Resources.NUTCH_CONTROLLER_SOCKET_EXCEPTION,
-                        this.hostname,
-                        se);
 
-                    this.OnNutchNotFound(this, false);
+                    Log.DebugFormat(
+                        Properties.Resources.NUTCH_CONTROLLER_CLIENT_FILE_READING_SUCCESS,
+                        this.PrefixFile,
+                        this.Hostname);
                 }
-                catch (SshAuthenticationException ae)
-                {
-                    Log.ErrorFormat(
-                        Properties.Resources.NUTCH_CONTROLLER_CLIENT_AUTHENTICATION_EXCEPTION,
-                        this.hostname,
-                        ae);
-                }
-                catch (SshConnectionException ce)
-                {
-                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CONNECTION_EXEPTION,
-                        this.hostname,
-                        ce);
-                }
-                catch (SshOperationTimeoutException toe)
-                {
-                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_SSH_TIMEOUT_EXCEPTION,
-                        this.hostname,
-                        toe);
-                }
-                catch (Exception e)
-                {
-                    Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
-                }
-                finally
-                {
-                    client.Disconnect();
-                }
-
-                return content;
             }
+            catch (Exception e)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_SSH_ERROR, e);
+            }
+
+            return content;
         }
 
         /// <summary>
-        /// Creates the file.
+        /// Determines whether [is nutch installed].
         /// </summary>
-        /// <param name="path">The path.</param>
-        /// <param name="fileName">Name of the file.</param>
-        /// <param name="createNew">if set to <c>true</c> [create new].</param>
-        private void CreateFile(string path, string fileName, bool createNew = false)
+        /// <returns>
+        ///   <c>true</c> if [is nutch installed]; otherwise, <c>false</c>.
+        /// </returns>
+        private bool IsNutchInstalled()
         {
-            using (var client = new SshClient(this.sshConnectionInfo))
+            bool installed = false;
+
+            try
+            {
+                installed = this.RunCommand("nutch").ExitStatus == 1;
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_SSH_ERROR, e);
+            }
+
+            if (installed)
+            {
+                Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_NUTCH_INSTALLED, this.Hostname);
+            }
+            else
+            {
+                Log.WarnFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_NUTCH_NOT_INSTALLED, this.Hostname);
+            }
+
+            return installed;
+        }
+
+        /// <summary>
+        /// Determines whether [is file existent] [the specified mode].
+        /// </summary>
+        /// <param name="mode">The mode.</param>
+        /// <param name="file">The file.</param>
+        /// <returns>
+        ///   <c>true</c> if [is file existent] [the specified mode]; otherwise, <c>false</c>.
+        /// </returns>
+        private bool IsFileExistent(string mode, string file)
+        {
+            bool exists = false;
+
+            try
+            {
+                exists = this.RunCommand(string.Format("test {0} {1}", mode, file)).ExitStatus == 0;
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_SSH_ERROR, e);
+            }
+
+            if (exists)
+            {
+                Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_FILE_EXISTS, file, mode, this.Hostname);
+            }
+            else
+            {
+                Log.WarnFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_FILE_NOT_EXISTS, file, mode, this.Hostname);
+            }
+
+            return exists;
+        }
+
+        /// <summary>
+        /// Runs the command.
+        /// </summary>
+        /// <param name="command">The command.</param>
+        /// <returns>The SSH command.</returns>
+        private SshCommand RunCommand(string command)
+        {
+            SshCommand sshCommand = null;
+
+            using (this.client = new SshClient(this.sshConnectionInfo))
             {
                 try
                 {
-                    var info = new DirectoryInfo(path);
+                    this.client.Connect();
+                    Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CONNECT, this.Hostname);
 
-                    if (info.Exists && (!info.GetFiles().Contains(new FileInfo(fileName)) || createNew))
-                    {
-                        var file = string.Format(
-                            this.settings.PathFormatTwo,
-                            path,
-                            fileName);
-
-                        client.Connect();
-                        client.RunCommand(string.Format("touch {0}", file));
-                    }
+                    sshCommand = this.client.RunCommand(command);
+                    Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_COMMAND_EXECUTED, command, this.Hostname);
                 }
                 catch (SocketException se)
                 {
                     Log.ErrorFormat(
                         Properties.Resources.NUTCH_CONTROLLER_SOCKET_EXCEPTION,
-                        this.hostname,
+                        this.Hostname,
                         se);
 
-                    this.OnNutchNotFound(this, false);
+                    throw se;
                 }
                 catch (SshAuthenticationException ae)
                 {
                     Log.ErrorFormat(
                         Properties.Resources.NUTCH_CONTROLLER_CLIENT_AUTHENTICATION_EXCEPTION,
-                        this.hostname,
+                        this.Hostname,
                         ae);
+
+                    throw ae;
                 }
                 catch (SshConnectionException ce)
                 {
-                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CONNECTION_EXEPTION,
-                        this.hostname,
+                    Log.ErrorFormat(
+                        Properties.Resources.NUTCH_CONTROLLER_CLIENT_CONNECTION_EXEPTION,
+                        this.Hostname,
                         ce);
+
+                    throw ce;
                 }
                 catch (SshOperationTimeoutException toe)
                 {
-                    Log.ErrorFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_SSH_TIMEOUT_EXCEPTION,
-                        this.hostname,
+                    Log.ErrorFormat(
+                        Properties.Resources.NUTCH_CONTROLLER_CLIENT_SSH_TIMEOUT_EXCEPTION,
+                        this.Hostname,
                         toe);
+
+                    throw toe;
                 }
                 catch (Exception e)
                 {
                     Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+
+                    throw e;
                 }
                 finally
                 {
-                    client.Disconnect();
+                    this.Disconnect();
                 }
+
+                return sshCommand;
             }
         }
     }

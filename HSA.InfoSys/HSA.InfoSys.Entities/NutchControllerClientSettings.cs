@@ -107,6 +107,15 @@ namespace HSA.InfoSys.Common.Entities
         public virtual string BaseCrawlPath { get; set; }
 
         /// <summary>
+        /// Gets or sets the java home.
+        /// </summary>
+        /// <value>
+        /// The java home.
+        /// </value>
+        [DataMember]
+        public virtual string JavaHome { get; set; }
+
+        /// <summary>
         /// Gets or sets the path format two.
         /// </summary>
         /// <value>

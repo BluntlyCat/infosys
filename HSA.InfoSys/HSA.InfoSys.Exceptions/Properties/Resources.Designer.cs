@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HSA.InfoSys.Exceptions.Properties {
+namespace HSA.InfoSys.Common.Exceptions.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace HSA.InfoSys.Exceptions.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HSA.InfoSys.Exceptions.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HSA.InfoSys.Common.Exceptions.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,15 @@ namespace HSA.InfoSys.Exceptions.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die There is no usable client for crawling. See logfile for further information. ähnelt.
+        /// </summary>
+        internal static string NO_USABLE_NUTCH_CLIENT_EXCEPTION {
+            get {
+                return ResourceManager.GetString("NO_USABLE_NUTCH_CLIENT_EXCEPTION", resourceCulture);
             }
         }
         

@@ -8,12 +8,11 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     using System;
     using System.Collections.Generic;
     using System.Reflection;
-    using System.Runtime.Serialization;
     using System.ServiceModel;
     using System.Threading;
     using HSA.InfoSys.Common.Entities;
+    using HSA.InfoSys.Common.Exceptions;
     using HSA.InfoSys.Common.Logging;
-    using HSA.InfoSys.Exceptions;
     using log4net;
     using NHibernate;
     using NHibernate.Cfg;

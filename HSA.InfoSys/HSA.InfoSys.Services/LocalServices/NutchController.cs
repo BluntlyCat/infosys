@@ -7,14 +7,14 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Diagnostics;
     using System.Linq;
+    using System.Threading;
     using HSA.InfoSys.Common.Entities;
+    using HSA.InfoSys.Common.Exceptions;
+    using HSA.InfoSys.Common.Extensions;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
-    using System.Threading;
 
     /// <summary>
     /// This class invokes the crawl and handles all pending crawls.
@@ -78,14 +78,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             this.URLs = urls;
 
-            this.NutchFound = true;
-
             this.clients = this.settings.NutchClients.Split(',');
 
             foreach (var client in this.clients)
             {
                 var nutchClient = new NutchControllerClient(this.settings, client);
-                nutchClient.OnNutchNotFound += new NutchControllerClient.NutchNotFoundHandler(this.NutchClient_OnNutchNotFound);
 
                 this.nutchClients.Add(nutchClient);
             }
@@ -106,14 +103,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// Occurs when [on crawl finished].
         /// </summary>
         public event CrawlFinishedHandler OnCrawlFinished;
-
-        /// <summary>
-        /// Gets a value indicating whether [nutch found].
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [nutch found]; otherwise, <c>false</c>.
-        /// </value>
-        public bool NutchFound { get; private set; }
 
         /// <summary>
         /// Gets or sets the URLs.
@@ -171,56 +160,74 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             lock (this.lockMutex)
             {
-                if (!this.isCrawling && this.NutchFound)
+                try
                 {
-                    this.InitializeNextCrawl();
-
-                    foreach (var client in this.nutchClients)
+                    if (!this.isCrawling)
                     {
-                        if (client.URLs.Count > 0)
+                        this.InitializeNextCrawl();
+
+                        foreach (var client in this.nutchClients)
                         {
-                            Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_SET_PENDING_CRAWL, client.URLs);
+                            if (client.IsClientUsable && client.URLs.Count > 0)
+                            {
+                                Log.DebugFormat(
+                                    Properties.Resources.NUTCH_CONTROLLER_SET_PENDING_CRAWL,
+                                    client.Hostname,
+                                    client.URLs.ElementsToString());
 
-                            InvokeCrawl invokeCrawl = new InvokeCrawl(client.StartCrawl);
+                                InvokeCrawl invokeCrawl = new InvokeCrawl(client.StartCrawl);
 
-                            AsyncCallback callback = new AsyncCallback(
-                                c =>
-                                {
-                                    this.ServiceMutex.WaitOne();
-
-                                    if (c.IsCompleted)
+                                AsyncCallback callback = new AsyncCallback(
+                                    c =>
                                     {
-                                        this.crawlsFinished--;
+                                        this.ServiceMutex.WaitOne();
 
-                                        if (this.crawlsFinished == 0)
+                                        if (c.IsCompleted)
                                         {
-                                            this.ResetCrawls();
-                                            this.isCrawling = false;
+                                            this.crawlsFinished--;
+
+                                            if (this.crawlsFinished == 0)
+                                            {
+                                                this.ResetCrawls();
+                                                this.isCrawling = false;
+                                            }
                                         }
-                                    }
 
-                                    this.ServiceMutex.ReleaseMutex();
-                                });
+                                        this.ServiceMutex.ReleaseMutex();
+                                    });
 
-                            this.crawlsFinished++;
-                            invokeCrawl.BeginInvoke(callback, this);
+                                this.crawlsFinished++;
+                                invokeCrawl.BeginInvoke(callback, this);
+                            }
+                            else
+                            {
+                                Log.WarnFormat(Properties.Resources.NUTCH_CONTROLLER_DO_NOT_CRAWL_ON_HOST, client.Hostname);
+                            }
                         }
-                    }
 
-                    this.isCrawling = true;
+                        this.isCrawling = true;
+                    }
+                }
+                catch (NoNutchClientUsableException nuce)
+                {
+                    Log.FatalFormat(Properties.Resources.NUTCH_CONTROLLER_NO_USABLE_CLIENT, nuce);
+                    this.StopService(true);
                 }
             }
         }
 
         /// <summary>
-        /// Occurs when [on nutch not found].
+        /// Stops this instance.
         /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="nutchFound">if set to <c>true</c> [nutch found].</param>
-        public void NutchClient_OnNutchNotFound(object sender, bool nutchFound)
+        /// <param name="cancel">if set to <c>true</c> [cancel].</param>
+        public override void StopService(bool cancel = false)
         {
-            //this.Running = false;
-            //this.NutchFound = nutchFound;
+            foreach (var client in this.nutchClients)
+            {
+                client.Disconnect();
+            }
+
+            base.StopService(cancel);
         }
 
         /// <summary>
@@ -228,9 +235,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         protected override void Run()
         {
-            while (this.Running && this.NutchFound)
+            while (this.Running)
             {
-                if (!this.isCrawling)
+                if (!this.isCrawling && !this.Cancel)
                 {
                     this.SetNextCrawl();
                 }
@@ -248,15 +255,37 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             int index = 0;
 
+            foreach (var client in this.nutchClients)
+            {
+                client.CheckClientForUsage();
+            }
+
             foreach (var url in this.URLs)
             {
-                this.nutchClients[index % this.clients.Length].URLs.Add(url);
-                index++;
+                bool urlAdded = false;
+
+                while (!urlAdded)
+                {
+                    var client = this.nutchClients[index % this.clients.Length];
+
+                    if (client.IsClientUsable)
+                    {
+                        client.URLs.Add(url);
+                        urlAdded = true;
+                    }
+
+                    index++;
+
+                    if (index % this.clients.Length == 0 && !urlAdded)
+                    {
+                        throw new NoNutchClientUsableException(this.GetType().Name);
+                    }
+                }
             }
 
             foreach (var client in this.nutchClients)
             {
-                if (client.URLs.Count > 0)
+                if (client.IsClientUsable && client.URLs.Count > 0)
                 {
                     client.SetCrawlProcess();
                 }
