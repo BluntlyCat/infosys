@@ -253,15 +253,19 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             this.ServiceMutex.WaitOne();
 
+            Log.Info("Initialize next crawl.");
+
             int index = 0;
 
             foreach (var client in this.nutchClients)
             {
+                Log.Info("Chech for usage.");
                 client.CheckClientForUsage();
             }
 
             foreach (var url in this.URLs)
             {
+                Log.InfoFormat("Add URL {0}.", url);
                 bool urlAdded = false;
 
                 while (!urlAdded)
@@ -287,6 +291,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             {
                 if (client.IsClientUsable && client.URLs.Count > 0)
                 {
+                    Log.Info("Set next crawl.");
                     client.SetCrawlProcess();
                 }
             }
