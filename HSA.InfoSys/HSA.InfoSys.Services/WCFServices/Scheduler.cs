@@ -146,7 +146,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         public void Job_OnTick(object sender, TimeSpan remainTime)
         {
             var job = sender as Countdown;
-            Log.InfoFormat(Properties.Resources.SCHEDULER_ON_TICK, job.ServiceGUID, remainTime);
+            //Log.InfoFormat(Properties.Resources.SCHEDULER_ON_TICK, job.ServiceGUID, remainTime);
         }
 
         /// <summary>
