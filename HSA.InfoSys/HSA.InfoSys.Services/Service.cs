@@ -85,12 +85,19 @@ namespace HSA.InfoSys.Common.Services
         /// </summary>
         public virtual void StartService()
         {
-            Log.DebugFormat(Properties.Resources.LOG_START_SERVICE, this.GetType().Name, this.ServiceGUID);
-            
-            this.ServiceThread = new Thread(new ThreadStart(this.Run));
+            if (!this.Running)
+            {
+                Log.DebugFormat(Properties.Resources.LOG_START_SERVICE, this.GetType().Name, this.ServiceGUID);
 
-            this.Running = true;
-            this.ServiceThread.Start();
+                this.ServiceThread = new Thread(new ThreadStart(this.Run));
+
+                this.Running = true;
+                this.ServiceThread.Start();
+            }
+            else
+            {
+                Log.WarnFormat(Properties.Resources.SERVICE_IS_ALREADY_UP, this.GetType().Name);
+            }
         }
 
         /// <summary>
@@ -99,8 +106,15 @@ namespace HSA.InfoSys.Common.Services
         /// <param name="cancel">if set to <c>true</c> [cancel].</param>
         public virtual void StopService(bool cancel = false)
         {
-            Log.WarnFormat(Properties.Resources.LOG_STOP_SERVICE, this.GetType().Name, this.ServiceGUID);
-            this.Running = false;
+            if (this.Running)
+            {
+                Log.WarnFormat(Properties.Resources.LOG_STOP_SERVICE, this.GetType().Name, this.ServiceGUID);
+                this.Running = false;
+            }
+            else
+            {
+                Log.WarnFormat(Properties.Resources.SERVICE_IS_NOT_RUNNING, this.GetType().Name);
+            }
         }
 
         /// <summary>

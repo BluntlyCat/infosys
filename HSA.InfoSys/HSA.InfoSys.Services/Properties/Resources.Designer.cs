@@ -1150,6 +1150,24 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Service {0} is already up ähnelt.
+        /// </summary>
+        internal static string SERVICE_IS_ALREADY_UP {
+            get {
+                return ResourceManager.GetString("SERVICE_IS_ALREADY_UP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Service {0} is not running. ähnelt.
+        /// </summary>
+        internal static string SERVICE_IS_NOT_RUNNING {
+            get {
+                return ResourceManager.GetString("SERVICE_IS_NOT_RUNNING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Close Connection ähnelt.
         /// </summary>
         internal static string SOLR_CLIENT_CLOSE_CONNECTION {

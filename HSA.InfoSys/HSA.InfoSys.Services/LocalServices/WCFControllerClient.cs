@@ -34,6 +34,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 Log.Info("Try get new client proxy.");
 
                 WCFControllerAddresses.Initialize();
+
                 var netTcpAddress = new Uri(WCFControllerAddresses.GetNetTcpAddress(typeof(T)));
 
                 var quotas = new System.Xml.XmlDictionaryReaderQuotas();

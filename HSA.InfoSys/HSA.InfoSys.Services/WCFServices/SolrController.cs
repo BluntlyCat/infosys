@@ -20,7 +20,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// The logger.
         /// </summary>
-        private static readonly ILog Log = Logger<string>.GetLogger("CrawlController");
+        private static readonly ILog Log = Logger<string>.GetLogger("SolrController");
 
         /// <summary>
         /// The solr controller.
@@ -30,29 +30,34 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// The data base manager.
         /// </summary>
-        private IDBManager dbManager = DBManager.ManagerFactory(Guid.NewGuid());
+        private IDBManager dbManager;
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="SolrController"/> class from being created.
+        /// Initializes a new instance of the <see cref="SolrController"/> class.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
-        private SolrController(Guid serviceGUID) : base(serviceGUID)
+        /// <param name="dbManager">The db manager.</param>
+        private SolrController(Guid serviceGUID, DBManager dbManager) : base(serviceGUID)
         {
+            this.dbManager = dbManager;
         }
 
         /// <summary>
         /// Gets the solr controller.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
-        /// <returns>A new solr controller service.</returns>
+        /// <param name="dbManager">The db manager.</param>
+        /// <returns>
+        /// A new solr controller service.
+        /// </returns>
         /// <value>
         /// The solr controller.
         /// </value>
-        public static SolrController SolrFactory(Guid serviceGUID)
+        public static SolrController SolrFactory(Guid serviceGUID, DBManager dbManager)
         {
             if (solrController == null)
             {
-                solrController = new SolrController(serviceGUID);
+                solrController = new SolrController(serviceGUID, dbManager);
             }
 
             return solrController;

@@ -48,29 +48,33 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         private Dictionary<Guid, Countdown> jobs = new Dictionary<Guid, Countdown>();
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="Scheduler"/> class from being created.
+        /// Initializes a new instance of the <see cref="Scheduler"/> class.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
-        private Scheduler(Guid serviceGUID) : base(serviceGUID)
+        /// <param name="dbManager">The db manager.</param>
+        private Scheduler(Guid serviceGUID, IDBManager dbManager) : base(serviceGUID)
         {
             Log.DebugFormat(Properties.Resources.LOG_INSTANCIATE_NEW_SCHEDULER, this.GetType().Name);
 
-            this.dbManager = DBManager.ManagerFactory(Guid.NewGuid());
+            this.dbManager = dbManager;
         }
 
         /// <summary>
         /// Gets the scheduler service.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
-        /// <returns>A new scheduler service.</returns>
+        /// <param name="dbManager">The db manager.</param>
+        /// <returns>
+        /// A new scheduler service.
+        /// </returns>
         /// <value>
-        /// The scheduler factory.
+        /// The scheduler factory.   
         /// </value>
-        public static Scheduler SchedulerFactory(Guid serviceGUID)
+        public static Scheduler SchedulerFactory(Guid serviceGUID, IDBManager dbManager)
         {
             if (scheduler == null)
             {
-                scheduler = new Scheduler(serviceGUID);
+                scheduler = new Scheduler(serviceGUID, dbManager);
             }
 
             return scheduler;

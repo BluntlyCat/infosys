@@ -38,11 +38,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private WCFControllerHostSettings settings;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WCFControllerHost"/> class.
+        /// Initializes a new instance of the <see cref="WCFControllerHost" /> class.
         /// </summary>
-        public WCFControllerHost()
+        /// <param name="dbManager">The db manager.</param>
+        public WCFControllerHost(DBManager dbManager)
         {
-            this.settings = DBManager.ManagerFactory(Guid.NewGuid()).GetSettingsFor<WCFControllerHostSettings>();
+            this.settings = dbManager.GetSettingsFor<WCFControllerHostSettings>();
         }
 
         /// <summary>

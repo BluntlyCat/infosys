@@ -148,6 +148,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             Log.Info(Properties.Resources.LOG_COUNTDOWN_SET_REPEAT_TIME);
 
+            this.StopService();
             this.StartService();
         }
 

@@ -67,16 +67,16 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private bool isCrawling = false;
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="NutchController" /> class from being created.
+        /// Initializes a new instance of the <see cref="NutchController"/> class.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
-        /// <param name="urls">The URLs.</param>
-        private NutchController(Guid serviceGUID, string[] urls)
+        /// <param name="dbManager">The db manager.</param>
+        private NutchController(Guid serviceGUID, DBManager dbManager)
             : base(serviceGUID)
         {
-            this.settings = DBManager.ManagerFactory(Guid.NewGuid()).GetSettingsFor<NutchControllerClientSettings>();
+            this.settings = dbManager.GetSettingsFor<NutchControllerClientSettings>();
 
-            this.URLs = urls;
+            this.URLs = dbManager.GetAllUrls();
 
             this.clients = this.settings.NutchClients.Split(',');
 
@@ -126,18 +126,18 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// Gets the nutch controller.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
-        /// <param name="urls">The URLs.</param>
+        /// <param name="dbManager">The db manager.</param>
         /// <returns>
         /// A new nutch controller service.
         /// </returns>
         /// <value>
         /// The nutch factory.
         /// </value>
-        public static NutchController NutchFactory(Guid serviceGUID, params string[] urls)
+        public static NutchController NutchFactory(Guid serviceGUID, DBManager dbManager)
         {
             if (nutchController == null)
             {
-                nutchController = new NutchController(serviceGUID, urls);
+                nutchController = new NutchController(serviceGUID, dbManager);
             }
 
             return nutchController;

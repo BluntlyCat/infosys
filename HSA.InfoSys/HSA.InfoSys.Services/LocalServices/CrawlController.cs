@@ -35,7 +35,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private List<IService> services = new List<IService>();
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="CrawlController" /> class from being created.
+        /// Initializes a new instance of the <see cref="CrawlController"/> class.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
         private CrawlController(Guid serviceGUID) : base(serviceGUID)

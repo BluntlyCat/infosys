@@ -47,7 +47,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         private static IDBManager dbManager;
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="DBManager" /> class from being created.
+        /// Initializes a new instance of the <see cref="DBManager"/> class.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
         private DBManager(Guid serviceGUID) : base(serviceGUID)

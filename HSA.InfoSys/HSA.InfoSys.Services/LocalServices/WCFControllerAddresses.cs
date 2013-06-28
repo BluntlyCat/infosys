@@ -56,6 +56,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 var types = new Type[]
                 {
                     typeof(ICrawlController),
+                    typeof(ICrawlerService),
                     typeof(ISolrController),
                     typeof(IScheduler),
                     typeof(IDBManager)

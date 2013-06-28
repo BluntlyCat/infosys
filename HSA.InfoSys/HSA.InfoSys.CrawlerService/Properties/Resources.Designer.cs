@@ -88,6 +88,15 @@ namespace HSA.InfoSys.CrawlerService.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die CrawlerService does not exist, create one. ähnelt.
+        /// </summary>
+        internal static string WEB_CRAWLER_NO_SERVICE_FOUND {
+            get {
+                return ResourceManager.GetString("WEB_CRAWLER_NO_SERVICE_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Press q for quit. ähnelt.
         /// </summary>
         internal static string WEB_CRAWLER_QUIT_MESSAGE {
