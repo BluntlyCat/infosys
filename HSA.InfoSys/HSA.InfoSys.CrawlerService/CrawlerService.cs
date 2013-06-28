@@ -186,7 +186,8 @@ namespace HSA.InfoSys.CrawlerService
                 //// Register services.
                 this.crawlController.RegisterService(scheduler);
                 this.crawlController.RegisterService(solrController);
-                this.crawlController.RegisterService(nutchController);
+#warning enable nutchController before building on mono
+                //this.crawlController.RegisterService(nutchController);
                 this.crawlController.RegisterService(dbManager);
                 this.crawlController.RegisterService(this);
             }
