@@ -22,7 +22,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The logger for SolrClient.
         /// </summary>
-        private static readonly ILog Log = Logger<string>.GetLogger("SolrClient");
+        private static readonly ILog Log = Logger<string>.GetLogger("SolrSearchController");
 
         /// <summary>
         /// The db mutex.
@@ -71,6 +71,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             this.OrgUnitGuid = orgUnitGuid;
 
+            var notifyMail = (this.dbManager.GetEntity(orgUnitGuid) as OrgUnit).OrgUnitConfig.EmailActive;
             var components = this.dbManager.GetComponentsByOrgUnitId(this.OrgUnitGuid).ToList<Component>();
 
             if (components == null)
@@ -133,7 +134,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                                 if (resultPot.HasResults)
                                 {
-                                    if (sendResults.Count > 0)
+                                    if (sendResults.Count > 0 && notifyMail)
                                     {
                                         EmailNotifier mailNotifier = new EmailNotifier();
                                         mailNotifier.SearchFinished(this.OrgUnitGuid, sendResults);

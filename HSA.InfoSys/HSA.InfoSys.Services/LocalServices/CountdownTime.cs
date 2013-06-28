@@ -17,7 +17,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The logger.
         /// </summary>
-        private static readonly ILog Log = Logger<Type>.GetLogger(typeof(CountdownTime));
+        private static readonly ILog Log = Logger<string>.GetLogger("CountdownTime");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CountdownTime" /> class.

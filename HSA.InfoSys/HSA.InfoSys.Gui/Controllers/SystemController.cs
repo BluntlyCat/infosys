@@ -95,8 +95,10 @@ namespace HSA.InfoSys.Gui.Controllers
                 string userid = membershipuser.ProviderUserKey.ToString();
                 int id = Convert.ToInt32(userid);
 
+                var mails = JsonConvert.SerializeObject(membershipuser.Email);
+
                 // create SystemConfig
-                var orgUnitConfig = cc.CreateOrgUnitConfig(null, null, false, false, 1, 12, new DateTime(), false);
+                var orgUnitConfig = cc.CreateOrgUnitConfig(null, mails, false, false, 1, 12, new DateTime(), false);
 
                 // create System
                 var orgUnit = cc.CreateOrgUnit(id, orgUnitName);

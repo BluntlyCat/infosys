@@ -58,7 +58,7 @@ namespace HSA.InfoSys.Common.Logging
             config = XmlConfigurator.Configure();
             Logger<Type>.AddLogger(baseLogger);
 
-            Logger<Type>.logger[baseLogger].Debug("Base logger successfully created");
+            Logger<Type>.logger[baseLogger].Debug(Properties.Resources.LOGGING_BASELOGGER_CREATED);
         }
 
         /// <summary>
@@ -70,11 +70,11 @@ namespace HSA.InfoSys.Common.Logging
             if (Logger<T>.logger.ContainsKey(name) == false)
             {
                 Logger<T>.logger.Add(name, LogManager.GetLogger(typeof(T)));
-                Logger<Type>.logger[baseLogger].DebugFormat("Added new logger [{0}]", name);
+                Logger<Type>.logger[baseLogger].DebugFormat(Properties.Resources.LOGGING_NEW_LOGGER_ADDED, name);
             }
             else
             {
-                Logger<Type>.logger[baseLogger].DebugFormat("Logger already exists [{0}]", name);
+                Logger<Type>.logger[baseLogger].DebugFormat(Properties.Resources.LOGGING_LOGGER_EXISTS, name);
             }
         }
     }

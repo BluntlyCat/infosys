@@ -19,7 +19,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The logger.
         /// </summary>
-        private static readonly ILog Log = Logger<string>.GetLogger("CrawlControllerClient");
+        private static readonly ILog Log = Logger<string>.GetLogger("WCFControllerClient");
 
         /// <summary>
         /// Gets the client proxy.
@@ -31,7 +31,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             get
             {
-                Log.Info("Try get new client proxy.");
+                Log.Info(Properties.Resources.WCF_CONTROLLER_CLIENT_TRY_GET_PROXY);
 
                 WCFControllerAddresses.Initialize();
 
@@ -47,13 +47,13 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
                 binding.ReaderQuotas = quotas;
                 binding.MaxReceivedMessageSize = 10240000;
-                Log.Info("Create binding for proxy.");
+                Log.Info(Properties.Resources.WCF_CONTROLLER_CLIENT_CREATE_BINDING);
 
                 var address = new EndpointAddress(
                     netTcpAddress,
                     EndpointIdentity.CreateDnsIdentity("InfoSys"));
 
-                Log.Info("Create endpoint for proxy.");
+                Log.Info(Properties.Resources.WCF_CONTROLLER_CLIENT_CREATE_ENDPOINT);
 
                 return ChannelFactory<T>.CreateChannel(binding, address, netTcpAddress);
             }

@@ -18,7 +18,7 @@ namespace HSA.InfoSys.Common.Services
         /// <summary>
         /// The thread logger.
         /// </summary>
-        private static readonly ILog Log = Logger<string>.GetLogger("Scheduler");
+        private static readonly ILog Log = Logger<string>.GetLogger("Service");
 
         /// <summary>
         /// The service mutex.

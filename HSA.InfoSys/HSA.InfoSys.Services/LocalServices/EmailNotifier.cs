@@ -9,7 +9,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using System.Collections.Generic;
     using System.Linq;
     using System.Net.Mail;
-    using System.ServiceModel;
     using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services.WCFServices;
@@ -212,20 +211,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <returns>A string array containing the mail addresses.</returns>
         private IList<string> DeserializeAddresses(OrgUnit orgUnit)
         {
-#warning Emails können null sein? Die OrgUnitConfig wird ja von einem Benutzer angelegt, dessen Email Adresse im System hinterlegt ist...
-            if (orgUnit.OrgUnitConfig.Emails != null)
-            {
-                var addresses = JsonConvert.DeserializeObject<string[]>(orgUnit.OrgUnitConfig.Emails).ToList<string>();
+            var addresses = JsonConvert.DeserializeObject<string[]>(orgUnit.OrgUnitConfig.Emails).ToList<string>();
 
-                Log.DebugFormat(Properties.Resources.EMAIL_NOTIFIER_DESERIALIZE_ADDESSSES, addresses);
+            Log.DebugFormat(Properties.Resources.EMAIL_NOTIFIER_DESERIALIZE_ADDESSSES, addresses);
 
-                return addresses;
-            }
-            else
-            {
-                Log.Warn(Properties.Resources.EMAIL_NOTIFIER_NO_ADDRESSES);
-                return new List<string>();
-            }
+            return addresses;
         }
 
         /// <summary>
