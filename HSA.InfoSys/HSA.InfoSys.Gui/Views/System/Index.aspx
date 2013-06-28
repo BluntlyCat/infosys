@@ -9,15 +9,7 @@
 
     <div class="container">
 
-       <div id="messageBoxes">
-            <% if (this.ViewData["error"] != "") { %>
-                <div class="alert alert-error">
-                    <button type="button" class="close" data-dismiss="alert">
-                        &times;</button>
-                    <h4>Warning!</h4>
-                </div>
-            <% } %>
-        </div>
+
 
         <div class="contentbox" style="width: 100%;">
             <div class="contentbox-header">
@@ -50,53 +42,55 @@
                     <tbody>
                         
                         <% 
-                            var items = this.ViewData["orgUnits"] as List<OrgUnit>;
-                            HSA.InfoSys.Common.Logging.Logger<string>.GetLogger("SystemIndex").DebugFormat("Items: {0}", items);
-                           foreach (var item in items)
-                           { %>
+                            if (this.ViewData["orgUnits"] as List<OrgUnit> != null)
+                            {
+                                var items = this.ViewData["orgUnits"] as List<OrgUnit>;
+                                HSA.InfoSys.Common.Logging.Logger<string>.GetLogger("SystemIndex").DebugFormat("Items: {0}", items);
+                                foreach (var item in items)
+                                { %>
 
-                            <tr>
-                                <td>
-                                    <input type="checkbox" value="1" />
-                                </td>
-                                <td>
-                                    <%= item.Name %>
-                                </td>
-                                <td>
-                                    <a class="btn btn-small" href="/System/Components/?sysguid=<%= item.EntityId %>"><i class="icon-cog"></i></a> 
-                                </td>
-                                <td>
-                                    <a class="btn btn-small" href="#deleteModal<%= item.EntityId %>" data-toggle="modal"><i class="icon-trash"></i></a>
-                                </td>
-                                <td>
-                                    <a class="btn btn-small" href="/System/RealTimeSearch/?sysguid=<%= item.EntityId %>"><i class="icon-search"></i></a>
-                                </td>
-                                <td>
-                                    <a class="btn btn-small" href="/System/ShowResults/?sysguid=<%= item.EntityId %>"><i class="icon-list"></i></a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" value="1" />
+                                    </td>
+                                    <td>
+                                        <%= item.Name%>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-small" href="/System/Components/?sysguid=<%= item.EntityId %>"><i class="icon-cog"></i></a> 
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-small" href="#deleteModal<%= item.EntityId %>" data-toggle="modal"><i class="icon-trash"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-small" href="/System/RealTimeSearch/?sysguid=<%= item.EntityId %>"><i class="icon-search"></i></a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-small" href="/System/ShowResults/?sysguid=<%= item.EntityId %>"><i class="icon-list"></i></a>
+                                    </td>
+                                </tr>
 
-                            <!-- deleteModal -->
-                            <div id="deleteModal<%= item.EntityId %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                        ×</button>
-                                    <h3 id="H1">
-                                        Delete System</h3>
+                                <!-- deleteModal -->
+                                <div id="deleteModal<%= item.EntityId %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            ×</button>
+                                        <h3 id="H1">
+                                            Delete System</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to delete the following system?</p>
+                                        <span class="label"><%= item.Name%></span>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn" data-dismiss="modal" aria-hidden="true">
+                                            Close</button>
+                                        <a class="btn btn-danger" href="/System/DeleteOrgUnit?sysguid=<%= item.EntityId %>"">
+                                            <i class="icon-trash icon-white"></i>&nbsp;&nbsp;<b>Delete</b></a>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                    <p>Are you sure you want to delete the following system?</p>
-                                    <span class="label"><%= item.Name %></span>
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn" data-dismiss="modal" aria-hidden="true">
-                                        Close</button>
-                                    <a class="btn btn-danger" href="/System/DeleteOrgUnit?sysguid=<%= item.EntityId %>"">
-                                        <i class="icon-trash icon-white"></i>&nbsp;&nbsp;<b>Delete</b></a>
-                                </div>
-                            </div>
-
+                                <% } %>
                           <% } %>
                     </tbody>
                 </table>

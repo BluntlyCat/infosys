@@ -51,6 +51,20 @@
     </header>
 
     <div class="container">
+        <!-- Error Message Box -->
+        <% if (this.ViewData["error"] != null) { %>
+           <div id="messageBoxes">
+                <div class="alert alert-error">
+                    <button type="button" class="close" data-dismiss="alert">
+                        &times;</button>
+                    <h4>Warning!</h4>
+                    <br />
+                    <p><%= this.ViewData["error"] %></p>
+                </div>
+            </div>
+        <% } %>
+
+        <!-- Main Content -->
         <section class="content-wrapper main-content clear-fix">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </section>
