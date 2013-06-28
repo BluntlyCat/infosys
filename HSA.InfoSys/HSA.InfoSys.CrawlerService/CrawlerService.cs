@@ -186,7 +186,7 @@ namespace HSA.InfoSys.CrawlerService
                 //// Register services.
                 this.crawlController.RegisterService(scheduler);
                 this.crawlController.RegisterService(solrController);
-#warning enable nutchController before building on mono
+#warning enable nutchController before building on mono, must be disabled to avoid starting many crawls on the hosts while developing.
                 //this.crawlController.RegisterService(nutchController);
                 this.crawlController.RegisterService(dbManager);
                 this.crawlController.RegisterService(this);
