@@ -55,10 +55,16 @@ namespace HSA.InfoSys.Gui.Controllers
             }
             catch (CommunicationException ce)
             {
+                //return to error page
+                this.ViewData["error"] = "Error, please try again!";
+                return this.View();
                 Log.ErrorFormat("Communication error: {0}", ce);
             }
             catch (Exception e)
             {
+                //return to error page
+                this.ViewData["error"] = "Error, please try again!";
+                return this.View();
                 Log.ErrorFormat("Common error: {0}", e);
             }
 

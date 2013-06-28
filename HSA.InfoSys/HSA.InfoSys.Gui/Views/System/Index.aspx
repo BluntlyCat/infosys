@@ -8,6 +8,17 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="container">
+
+       <div id="messageBoxes">
+            <% if (this.ViewData["error"] != "") { %>
+                <div class="alert alert-error">
+                    <button type="button" class="close" data-dismiss="alert">
+                        &times;</button>
+                    <h4>Warning!</h4>
+                </div>
+            <% } %>
+        </div>
+
         <div class="contentbox" style="width: 100%;">
             <div class="contentbox-header">
                 <i class="icon-align-justify"></i>&nbsp;<b>My Systems</b>
