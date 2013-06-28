@@ -42,6 +42,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private NutchControllerClientSettings settings;
 
         /// <summary>
+        /// The db manager.
+        /// </summary>
+        private DBManager dbManager;
+
+        /// <summary>
         /// The lock mutex.
         /// </summary>
         private object lockMutex = new object();
@@ -74,6 +79,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private NutchController(Guid serviceGUID, DBManager dbManager)
             : base(serviceGUID)
         {
+            this.dbManager = dbManager;
+
             this.settings = dbManager.GetSettingsFor<NutchControllerClientSettings>();
 
             this.URLs = dbManager.GetAllUrls();
@@ -154,6 +161,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 {
                     if (!this.isCrawling)
                     {
+                        this.settings = dbManager.GetSettingsFor<NutchControllerClientSettings>();
                         this.InitializeNextCrawl();
 
                         foreach (var client in this.nutchClients)

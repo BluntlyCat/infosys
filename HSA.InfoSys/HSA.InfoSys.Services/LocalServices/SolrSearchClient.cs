@@ -30,7 +30,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The database manager.
         /// </summary>
-        private IDBManager dbManager = DBManager.ManagerFactory(Guid.NewGuid());
+        private IDBManager dbManager;
 
         /// <summary>
         /// The settings.
@@ -40,8 +40,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Initializes a new instance of the <see cref="SolrSearchClient"/> class.
         /// </summary>
-        public SolrSearchClient()
+        public SolrSearchClient(IDBManager dbManager)
         {
+            this.dbManager = dbManager;
             this.settings = this.dbManager.GetSettingsFor<SolrSearchClientSettings>();
             this.Host = this.settings.Host;
             this.Port = this.settings.Port;

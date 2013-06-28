@@ -215,7 +215,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         private void StartSolrSearch(object sender, OrgUnitConfig orgUnitConfig)
         {
             var countdown = sender as Countdown;
-            var solrController = new SolrSearchController();
+            var solrController = new SolrSearchController(this.dbManager);
             var orgUnitGUID = DBManager.Session.QueryOver<OrgUnit>()
                 .Where(u => u.OrgUnitConfig.EntityId == orgUnitConfig.EntityId)
                 .SingleOrDefault().EntityId;

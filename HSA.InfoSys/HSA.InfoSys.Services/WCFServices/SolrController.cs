@@ -86,7 +86,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <param name="orgUnitGUID">The org unit GUID.</param>
         public void Search(Guid orgUnitGUID)
         {
-            var controller = new SolrSearchController();
+            var controller = new SolrSearchController(this.dbManager);
             controller.StartSearch(orgUnitGUID);
         }
 

@@ -32,12 +32,21 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The database manager.
         /// </summary>
-        private IDBManager dbManager = DBManager.ManagerFactory(Guid.NewGuid());
+        private IDBManager dbManager;
 
         /// <summary>
         /// The components finished.
         /// </summary>
         private int componentsFinished = 0;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SolrSearchController"/> class.
+        /// </summary>
+        /// <param name="dbManager">The db manager.</param>
+        public SolrSearchController(IDBManager dbManager)
+        {
+            this.dbManager = dbManager;
+        }
 
         /// <summary>
         /// Our delegate for invoking an async callback.
@@ -71,7 +80,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             foreach (var component in components)
             {
-                var searchClient = new SolrSearchClient();
+                var searchClient = new SolrSearchClient(this.dbManager);
 
                 var results = DBManager.Session.QueryOver<Result>()
                     .Where(c => c.ComponentGUID == component.EntityId)
