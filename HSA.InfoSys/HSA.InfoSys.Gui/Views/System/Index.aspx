@@ -8,9 +8,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="container">
-
-
-
         <div class="contentbox" style="width: 100%;">
             <div class="contentbox-header">
                 <i class="icon-align-justify"></i>&nbsp;<b>My Systems</b>
