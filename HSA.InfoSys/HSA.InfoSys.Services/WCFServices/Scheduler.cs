@@ -48,7 +48,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         private Dictionary<Guid, Countdown> jobs = new Dictionary<Guid, Countdown>();
 
         /// <summary>
-        /// Prevents a default instance of the <see cref="Scheduler" /> class from being created.
+        /// Prevents a default instance of the <see cref="Scheduler"/> class from being created.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
         private Scheduler(Guid serviceGUID) : base(serviceGUID)
@@ -146,7 +146,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         public void Job_OnTick(object sender, TimeSpan remainTime)
         {
             var job = sender as Countdown;
-            //Log.InfoFormat(Properties.Resources.SCHEDULER_ON_TICK, job.ServiceGUID, remainTime);
+            Log.InfoFormat(Properties.Resources.SCHEDULER_ON_TICK, job.ServiceGUID, remainTime);
         }
 
         /// <summary>

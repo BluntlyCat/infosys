@@ -94,17 +94,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         public delegate void InvokeCrawl();
 
         /// <summary>
-        /// Our delegate for invoking an async callback.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        public delegate void CrawlFinishedHandler(object sender);
-
-        /// <summary>
-        /// Occurs when [on crawl finished].
-        /// </summary>
-        public event CrawlFinishedHandler OnCrawlFinished;
-
-        /// <summary>
         /// Gets or sets the URLs.
         /// </summary>
         /// <value>
@@ -126,6 +115,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 if (this.urls != tmp)
                 {
                     this.urls = tmp;
+                    Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_UPDATE_URLS, tmp);
                 }
 
                 this.ServiceMutex.ReleaseMutex();
@@ -190,6 +180,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                                             {
                                                 this.ResetCrawls();
                                                 this.isCrawling = false;
+
+                                                Log.Info(Properties.Resources.NUTCH_CONTROLLER_CRAWLS_FINISHED);
                                             }
                                         }
 
@@ -224,6 +216,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             foreach (var client in this.nutchClients)
             {
+                Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_DISCONNECT, client.Hostname);
                 client.Disconnect();
             }
 
@@ -239,10 +232,13 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             {
                 if (!this.isCrawling && !this.Cancel)
                 {
+                    Log.Info(Properties.Resources.NUTCH_CONTROLLER_START_CRAWL);
                     this.SetNextCrawl();
                 }
 
                 Thread.Sleep(10000);
+
+                Log.Info(Properties.Resources.NUTCH_CONTROLLER_IS_ALIVE);
             }
         }
 
@@ -253,19 +249,18 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             this.ServiceMutex.WaitOne();
 
-            Log.Info("Initialize next crawl.");
+            Log.Info(Properties.Resources.NUTCH_CONTROLLER_INIT_NEXT_CRAWL);
 
             int index = 0;
 
             foreach (var client in this.nutchClients)
             {
-                Log.Info("Chech for usage.");
+                Log.Info(Properties.Resources.NUTCH_CONTROLLER_CHECK_CLIENT_USAGE);
                 client.CheckClientForUsage();
             }
 
             foreach (var url in this.URLs)
             {
-                Log.InfoFormat("Add URL {0}.", url);
                 bool urlAdded = false;
 
                 while (!urlAdded)
@@ -276,6 +271,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     {
                         client.URLs.Add(url);
                         urlAdded = true;
+                        Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_ADD_URL, url, client.Hostname);
+                    }
+                    else
+                    {
+                        Log.WarnFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_NOT_USABLE, client.Hostname);
                     }
 
                     index++;
@@ -291,7 +291,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             {
                 if (client.IsClientUsable && client.URLs.Count > 0)
                 {
-                    Log.Info("Set next crawl.");
+                    Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_SET_CRAWL_PROCESS, client.Hostname);
                     client.SetCrawlProcess();
                 }
             }
@@ -311,6 +311,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 if (client.URLs.Count > 0)
                 {
                     client.URLs.Clear();
+                    Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_RESET_CLIENTS, client.Hostname);
                 }
             }
 

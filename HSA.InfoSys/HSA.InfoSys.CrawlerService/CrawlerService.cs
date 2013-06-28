@@ -7,6 +7,7 @@ namespace HSA.InfoSys.CrawlerService
 {
     using System;
     using System.Threading;
+    using HSA.InfoSys.Common.Exceptions;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services;
     using HSA.InfoSys.Common.Services.LocalServices;
@@ -116,22 +117,30 @@ namespace HSA.InfoSys.CrawlerService
         /// </summary>
         private void InitializeControllerHost()
         {
-            WCFControllerAddresses.Initialize();
-            this.controllerHost = new WCFControllerHost();
+            try
+            {
+                WCFControllerAddresses.Initialize();
+                this.controllerHost = new WCFControllerHost();
 
-            this.crawlController = this.controllerHost.OpenWCFHost<CrawlController, ICrawlController>(CrawlController.ControllerFactory(Guid.NewGuid()));
+                this.crawlController = this.controllerHost.OpenWCFHost<CrawlController, ICrawlController>(CrawlController.ControllerFactory(Guid.NewGuid()));
 
-            var dbManager = this.controllerHost.OpenWCFHost<DBManager, IDBManager>(DBManager.ManagerFactory(Guid.NewGuid()) as DBManager);
-            this.crawlController.RegisterService(dbManager);
+                var dbManager = this.controllerHost.OpenWCFHost<DBManager, IDBManager>(DBManager.ManagerFactory(Guid.NewGuid()) as DBManager);
+                this.crawlController.RegisterService(dbManager);
 
-            var nutchController = NutchController.NutchFactory(Guid.NewGuid(), dbManager.GetAllUrls());
-            this.crawlController.RegisterService(nutchController);
+                var nutchController = NutchController.NutchFactory(Guid.NewGuid(), dbManager.GetAllUrls());
+                this.crawlController.RegisterService(nutchController);
 
-            var solrController = this.controllerHost.OpenWCFHost<SolrController, ISolrController>(SolrController.SolrFactory(Guid.NewGuid()));
-            this.crawlController.RegisterService(solrController);
+                var solrController = this.controllerHost.OpenWCFHost<SolrController, ISolrController>(SolrController.SolrFactory(Guid.NewGuid()));
+                this.crawlController.RegisterService(solrController);
 
-            var scheduler = this.controllerHost.OpenWCFHost<Scheduler, IScheduler>(Scheduler.SchedulerFactory(Guid.NewGuid()));
-            this.crawlController.RegisterService(scheduler);
+                var scheduler = this.controllerHost.OpenWCFHost<Scheduler, IScheduler>(Scheduler.SchedulerFactory(Guid.NewGuid()));
+                this.crawlController.RegisterService(scheduler);
+            }
+            catch (OpenWCFHostException ohe)
+            {
+                Log.FatalFormat(Properties.Resources.WEB_CRAWLER_CAN_NOT_OPEN_WCF_HOST, ohe);
+                this.StopService(true);
+            }
         }
 
         /// <summary>

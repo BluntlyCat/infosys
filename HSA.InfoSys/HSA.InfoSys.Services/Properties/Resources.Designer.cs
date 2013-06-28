@@ -628,6 +628,24 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Add URL {0} to client {1}. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_ADD_URL {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_ADD_URL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Check client usability. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_CHECK_CLIENT_USAGE {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_CHECK_CLIENT_USAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Add known prefix {0}. ähnelt.
         /// </summary>
         internal static string NUTCH_CONTROLLER_CLIENT_ADD_PREFIX {
@@ -682,6 +700,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Crawling on host {0} finished. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_CLIENT_CRAWL_FINISHED {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_CLIENT_CRAWL_FINISHED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Crawl process {0} was created on host {1}.  ähnelt.
         /// </summary>
         internal static string NUTCH_CONTROLLER_CLIENT_CRAWL_PROCESS_CREATED {
@@ -696,6 +723,24 @@ namespace HSA.InfoSys.Common.Services.Properties {
         internal static string NUTCH_CONTROLLER_CLIENT_CRAWLER_LOG {
             get {
                 return ResourceManager.GetString("NUTCH_CONTROLLER_CLIENT_CRAWLER_LOG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Try to create new directory {0} on host {1}. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_CLIENT_CREATE_DIRECTORY {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_CLIENT_CREATE_DIRECTORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Create new NutchControllerClient: {0}. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_CLIENT_CREATE_NEW {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_CLIENT_CREATE_NEW", resourceCulture);
             }
         }
         
@@ -768,6 +813,24 @@ namespace HSA.InfoSys.Common.Services.Properties {
         internal static string NUTCH_CONTROLLER_CLIENT_HOST_IS_USABLE {
             get {
                 return ResourceManager.GetString("NUTCH_CONTROLLER_CLIENT_HOST_IS_USABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Host {0} is null or not connected. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_CLIENT_NOT_CONNECTED {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_CLIENT_NOT_CONNECTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Client {0} is not usable. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_CLIENT_NOT_USABLE {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_CLIENT_NOT_USABLE", resourceCulture);
             }
         }
         
@@ -862,11 +925,20 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Crawling [{0}] finished. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die All crawls finished. ähnelt.
         /// </summary>
-        internal static string NUTCH_CONTROLLER_CRAWL_FINISHED {
+        internal static string NUTCH_CONTROLLER_CRAWLS_FINISHED {
             get {
-                return ResourceManager.GetString("NUTCH_CONTROLLER_CRAWL_FINISHED", resourceCulture);
+                return ResourceManager.GetString("NUTCH_CONTROLLER_CRAWLS_FINISHED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Try to disconnect host {0}. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_DISCONNECT {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_DISCONNECT", resourceCulture);
             }
         }
         
@@ -880,11 +952,47 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Initialize next crawl. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_INIT_NEXT_CRAWL {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_INIT_NEXT_CRAWL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Nutch controller is still alive. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_IS_ALIVE {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_IS_ALIVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Can not connect to any of the specified hosts: {0}. ähnelt.
         /// </summary>
         internal static string NUTCH_CONTROLLER_NO_USABLE_CLIENT {
             get {
                 return ResourceManager.GetString("NUTCH_CONTROLLER_NO_USABLE_CLIENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Reset URLs for client {0}. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_RESET_CLIENTS {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_RESET_CLIENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set next crawl process for client {0}. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_SET_CRAWL_PROCESS {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_SET_CRAWL_PROCESS", resourceCulture);
             }
         }
         
@@ -912,6 +1020,24 @@ namespace HSA.InfoSys.Common.Services.Properties {
         internal static string NUTCH_CONTROLLER_SOCKET_EXCEPTION {
             get {
                 return ResourceManager.GetString("NUTCH_CONTROLLER_SOCKET_EXCEPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Start new crawl. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_START_CRAWL {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_START_CRAWL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Update URLs: {0}. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_UPDATE_URLS {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_UPDATE_URLS", resourceCulture);
             }
         }
         

@@ -43,7 +43,6 @@ namespace HSA.InfoSys.Gui.Controllers
                 this.ViewData["SolrClientSettings"] = cc.GetSolrClientSettings();
                 this.ViewData["WCFAddressesSettings"] = cc.GetWCFAddressesSettings();
                 this.ViewData["WCFControllerSettings"] = cc.GetWCFControllerSettings();
-
             }
             catch (CommunicationException ce)
             {
@@ -65,16 +64,15 @@ namespace HSA.InfoSys.Gui.Controllers
         [HttpPost]
         public ActionResult Email()
         {
-
             try
             {
                 this.ViewData["navid"] = "serversettings";
-                // get POST data from form
+                //// get POST data from form
                 string smtpserver = Request["smtpserver"];
                 string smtpport = Request["smtpport"];
                 string mailfrom = Request["mailfrom"];
 
-                //@TODO check for null values
+                //// @TODO check for null values
 
                 var cc = WCFControllerClient<IDBManager>.ClientProxy;
                 var mailSettings = cc.GetMailSettings();
@@ -83,9 +81,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 mailSettings.SmtpServer = smtpserver;
                 mailSettings.MailFrom = mailfrom;
 
-
                 cc.UpdateEntity(mailSettings);
-
             }
             catch (CommunicationException ce)
             {
@@ -95,7 +91,6 @@ namespace HSA.InfoSys.Gui.Controllers
             {
                 Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
             }
-
 
             return this.RedirectToAction("Index", "Settings");
         }
@@ -108,7 +103,6 @@ namespace HSA.InfoSys.Gui.Controllers
         [HttpPost]
         public ActionResult Nutch()
         {
-
             try
             {
                 this.ViewData["navid"] = "serversettings";
@@ -126,13 +120,13 @@ namespace HSA.InfoSys.Gui.Controllers
                 string prefixfilename = Request["prefixfilename"];
                 string prefix = Request["prefix"];
 
-                //@TODO check for null values
+                //// @TODO check for null values
 
-                //get settings from db
+                //// get settings from db
                 var cc = WCFControllerClient<IDBManager>.ClientProxy;
                 var nutchClientSettings = cc.GetNutchClientSettings();
 
-                //change to new values
+                //// change to new values
                 nutchClientSettings.SolrServer = solrserver;
                 nutchClientSettings.SeedFileName = seedfilename;
                 nutchClientSettings.BaseUrlPath = baseurlpath;
@@ -145,9 +139,8 @@ namespace HSA.InfoSys.Gui.Controllers
                 nutchClientSettings.PrefixFileName = prefixfilename;
                 nutchClientSettings.Prefix = prefix;
 
-                //save into db
+                //// save into db
                 cc.UpdateEntity(nutchClientSettings);
-
             }
             catch (CommunicationException ce)
             {
@@ -159,7 +152,6 @@ namespace HSA.InfoSys.Gui.Controllers
             }
 
             return this.RedirectToAction("Index", "Settings");
-
         }
 
         /// <summary>
@@ -170,10 +162,8 @@ namespace HSA.InfoSys.Gui.Controllers
         [HttpPost]
         public ActionResult Solr()
         {
-
             try
             {
-
                 this.ViewData["navid"] = "serversettings";
 
                 // get POST data from form
@@ -185,13 +175,13 @@ namespace HSA.InfoSys.Gui.Controllers
                 string filterqueryformat = Request["filterqueryformat"];
                 string filter = Request["filter"];
 
-                //@TODO check for null values
+                //// @TODO check for null values
 
-                //get settings from db
+                //// get settings from db
                 var cc = WCFControllerClient<IDBManager>.ClientProxy;
                 var solrClientSettings = cc.GetSolrClientSettings();
 
-                //save changes
+                //// save changes
                 solrClientSettings.Host = host;
                 solrClientSettings.Port = int.Parse(port);
                 solrClientSettings.Collection = collection;
@@ -200,9 +190,8 @@ namespace HSA.InfoSys.Gui.Controllers
                 solrClientSettings.FilterQueryFormat = filterqueryformat;
                 solrClientSettings.Filter = filter;
 
-                //save to db
+                //// save to db
                 cc.UpdateEntity(solrClientSettings);
-
             }
             catch (CommunicationException ce)
             {
@@ -214,7 +203,6 @@ namespace HSA.InfoSys.Gui.Controllers
             }
 
             return this.RedirectToAction("Index", "Settings");
-
         }
 
         /// <summary>
@@ -225,32 +213,30 @@ namespace HSA.InfoSys.Gui.Controllers
         [HttpPost]
         public ActionResult WcfAddresses()
         {
-
             try
             {
                 this.ViewData["navid"] = "serversettings";
 
-                // get POST data from form
+                //// get POST data from form
                 string httpaddress = Request["httpaddress"];
                 string nettcpaddress = Request["nettcpaddress"];
                 string httpport = Request["httpport"];
                 string nettcpport = Request["nettcpport"];
 
-                //@TODO check for null values
+                //// @TODO check for null values
 
-                //get settings from db
+                //// get settings from db
                 var cc = WCFControllerClient<IDBManager>.ClientProxy;
                 var wcfAddressesSettings = cc.GetWCFAddressesSettings();
 
-                //save changes
+                //// save changes
                 wcfAddressesSettings.HttpAddress = httpaddress;
                 wcfAddressesSettings.NetTcpAddress = nettcpaddress;
                 wcfAddressesSettings.HttpPort = int.Parse(httpport);
                 wcfAddressesSettings.NetTcpPort = int.Parse(nettcpport);
 
-                //save to db
+                //// save to db
                 cc.UpdateEntity(wcfAddressesSettings);
-
             }
             catch (CommunicationException ce)
             {
@@ -262,7 +248,6 @@ namespace HSA.InfoSys.Gui.Controllers
             }
 
             return this.RedirectToAction("Index", "Settings");
-
         }
 
         /// <summary>
@@ -273,28 +258,26 @@ namespace HSA.InfoSys.Gui.Controllers
         [HttpPost]
         public ActionResult WcfHost()
         {
-
             try
             {
                 this.ViewData["navid"] = "serversettings";
 
-                // get POST data from form
+                //// get POST data from form
                 string certificatepath = Request["certificatepath"];
                 string certificatepassword = Request["certificatepassword"];
 
-                //@TODO check for null values
+                //// @TODO check for null values
 
-                //get settings from db
+                //// get settings from db
                 var cc = WCFControllerClient<IDBManager>.ClientProxy;
                 var wcfControllerSettings = cc.GetWCFControllerSettings();
 
-                //save changes
+                //// save changes
                 wcfControllerSettings.CertificatePath = certificatepath;
                 wcfControllerSettings.CertificatePassword = certificatepassword;
 
-                //save into db
+                //// save into db
                 cc.UpdateEntity(wcfControllerSettings);
-
             }
             catch (CommunicationException ce)
             {
@@ -306,7 +289,6 @@ namespace HSA.InfoSys.Gui.Controllers
             }
 
             return this.RedirectToAction("Index", "Settings");
-
         }
     }
 }

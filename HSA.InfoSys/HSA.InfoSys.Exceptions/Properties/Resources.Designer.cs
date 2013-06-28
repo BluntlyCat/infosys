@@ -70,6 +70,24 @@ namespace HSA.InfoSys.Common.Exceptions.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Unable to open the connection for WCF-service {0}. ähnelt.
+        /// </summary>
+        internal static string OPEN_WCF_HOST_EXCEPTION {
+            get {
+                return ResourceManager.GetString("OPEN_WCF_HOST_EXCEPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Error while opening service {0} in {1}, error was: {2}. ähnelt.
+        /// </summary>
+        internal static string OPEN_WCF_HOST_EXCEPTION_TO_STRING {
+            get {
+                return ResourceManager.GetString("OPEN_WCF_HOST_EXCEPTION_TO_STRING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die The day or time value can not be zero or less [{0}]. ähnelt.
         /// </summary>
         internal static string ORGUNIT_CONFIG_TIME_ZERO_EXCEPTION {

@@ -60,9 +60,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="connectionString">The connection string.</param>
         public NutchControllerClient(NutchControllerClientSettings settings, string connectionString)
         {
+            Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CREATE_NEW, connectionString);
+
             this.settings = settings;
 
-            this.homeDir = "/home/devteam";
+            this.homeDir = this.settings.HomePath;
             this.URLs = new List<string>();
 
             try
@@ -71,7 +73,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 this.Hostname = connectionArgs[1];
                 this.username = connectionArgs[0];
 
-                var key = new PrivateKeyFile("Certificates/devteam.id.rsa");
+                var key = new PrivateKeyFile(this.settings.CertificatePath);
 
                 this.sshConnectionInfo = new PrivateKeyConnectionInfo(this.Hostname, this.username, key);
             }
@@ -187,7 +189,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     var crawlerLog = this.RunCommand("cat crawler.log").Result;
                     Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CRAWLER_LOG, this.Hostname, crawlerLog);
 
-                    Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CRAWL_FINISHED, this.Hostname);
+                    Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CRAWL_FINISHED, this.Hostname);
                 }
                 catch (Exception e)
                 {
@@ -265,6 +267,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 this.client.Disconnect();
                 Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_DISCONNECT, this.Hostname);
             }
+            else
+            {
+                Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_NOT_CONNECTED, this.Hostname);
+            }
         }
 
         /// <summary>
@@ -339,6 +345,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 this.homeDir,
                 this.settings.BaseUrlPath,
                 folder);
+
+            Log.InfoFormat(
+                Properties.Resources.NUTCH_CONTROLLER_CLIENT_CREATE_DIRECTORY,
+                newDirectory,
+                this.Hostname);
 
             try
             {

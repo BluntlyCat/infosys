@@ -34,16 +34,6 @@ namespace HSA.InfoSys.Common.Entities
         public virtual string NutchClients { get; set; }
 
         /// <summary>
-        /// Gets or sets the nutch clients password.
-        /// </summary>
-        /// <value>
-        /// The nutch clients password.
-        /// </value>
-        [DataMember]
-#warning password must be saved encrypted in data base
-        public virtual string NutchClientsPassword { get; set; }
-
-        /// <summary>
         /// Gets or sets the name of the seed file.
         /// </summary>
         /// <value>
@@ -69,6 +59,23 @@ namespace HSA.InfoSys.Common.Entities
         /// </value>
         [DataMember]
         public virtual string PrefixPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets the certificate path.
+        /// </summary>
+        /// <value>
+        /// The certificate path.
+        /// </value>
+        [DataMember]
+        public virtual string CertificatePath { get; set; }
+
+        /// <summary>
+        /// Gets or sets the home path.
+        /// </summary>
+        /// <value>
+        /// The home path.
+        /// </value>
+        public virtual string HomePath { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the prefix file.

@@ -29,7 +29,7 @@ namespace HSA.InfoSys.Common.Services
         /// Initializes a new instance of the <see cref="Service"/> class.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
-        public Service(Guid serviceGUID)
+        protected Service(Guid serviceGUID)
         {
             this.ServiceGUID = serviceGUID;
         }

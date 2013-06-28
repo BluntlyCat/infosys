@@ -12,6 +12,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using System.ServiceModel;
     using System.ServiceModel.Description;
     using HSA.InfoSys.Common.Entities;
+    using HSA.InfoSys.Common.Exceptions;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
@@ -114,7 +115,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 }
                 catch (Exception e)
                 {
-                    Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+                    throw new OpenWCFHostException(e, this.GetType().Name, instance.GetType().Name);
                 }
 
                 return instance;

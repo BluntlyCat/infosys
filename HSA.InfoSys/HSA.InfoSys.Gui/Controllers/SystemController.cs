@@ -348,7 +348,6 @@ namespace HSA.InfoSys.Gui.Controllers
                 this.ViewData["sc_days"] = config.Days;
                 this.ViewData["sc_hours"] = config.Time;
 
-
                 if (!string.IsNullOrEmpty(config.Emails))
                 {
                     this.ViewData["emails"] = JsonConvert.DeserializeObject<string[]>(config.Emails);
