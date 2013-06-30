@@ -723,7 +723,7 @@ namespace HSA.InfoSys.Gui.Controllers
         {
             var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
 
-            var indexes = cc.GetResultsByComponentId(componentGuid).ToArray();
+            var indexes = cc.GetResultIndexes(componentGuid).ToArray();
             var splittedResults = new List<Result[]>();
             var results = new List<Result>();
 
