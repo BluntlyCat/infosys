@@ -14,7 +14,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Exceptions;
     using HSA.InfoSys.Common.Logging;
-    using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
 
     /// <summary>
@@ -25,7 +24,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The logger.
         /// </summary>
-        private static readonly ILog Log = Logger<string>.GetLogger("CrawlControllerHost");
+        private static readonly ILog Log = Logger<string>.GetLogger("WCFControllerHost");
 
         /// <summary>
         /// The service host for communication between server and GUI.
@@ -35,15 +34,18 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The settings.
         /// </summary>
-        private WCFControllerHostSettings settings;
+        private WCFSettings settings;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WCFControllerHost" /> class.
         /// </summary>
-        /// <param name="dbManager">The db manager.</param>
-        public WCFControllerHost(DBManager dbManager)
+        /// <param name="settings">The settings.</param>
+        public WCFControllerHost(WCFSettings settings)
         {
-            this.settings = dbManager.GetSettingsFor<WCFControllerHostSettings>();
+            this.settings = settings;
+
+            //// Initialize WCF addresses
+            WCFControllerAddresses.Initialize(this.settings);
         }
 
         /// <summary>
@@ -131,9 +133,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             foreach (var h in hosts.Values)
             {
                 h.Close();
+                Log.InfoFormat(Properties.Resources.WCF_CONTROLLER_WCF_HOST_CLOSED, h.SingletonInstance.GetType().Name);
             }
-
-            Log.Info(Properties.Resources.WCF_CONTROLLER_WCF_HOST_CLOSED);
         }
     }
 }

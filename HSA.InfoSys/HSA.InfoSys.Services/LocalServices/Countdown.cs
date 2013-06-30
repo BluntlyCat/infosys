@@ -128,6 +128,16 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private OrgUnitConfig OrgUnitConfig { get; set; }
 
         /// <summary>
+        /// Updates the org unit config.
+        /// </summary>
+        /// <param name="orgUnitConfig">The org unit config.</param>
+        public void UpdateOrgUnitConfig(OrgUnitConfig orgUnitConfig)
+        {
+            this.OrgUnitConfig = orgUnitConfig;
+            this.ServiceGUID = orgUnitConfig.EntityId;
+        }
+
+        /// <summary>
         /// Starts this instance.
         /// </summary>
         public override void StartService()
@@ -144,12 +154,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Sets the time to repeat.
         /// </summary>
-        public void Restart()
+        /// <param name="cancel">if set to <c>true</c> [cancel].</param>
+        public override void RestartService(bool cancel = false)
         {
             Log.Info(Properties.Resources.LOG_COUNTDOWN_SET_REPEAT_TIME);
-
-            this.StopService();
-            this.StartService();
+            base.RestartService(cancel);
         }
 
         /// <summary>

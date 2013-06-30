@@ -16,6 +16,19 @@ namespace HSA.InfoSys.Common.Entities
     public class SolrSearchClientSettings : Entity
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="SolrSearchClientSettings"/> class.
+        /// </summary>
+        public SolrSearchClientSettings()
+        {
+            this.Host = string.Empty;
+            this.Port = 0;
+            this.Collection = string.Empty;
+            this.FilterQuery = string.Empty;
+            this.RequestFormat = string.Empty;
+            this.QueryFormat = string.Empty;
+        }
+
+        /// <summary>
         /// Gets or sets the host.
         /// </summary>
         /// <value>
@@ -43,14 +56,15 @@ namespace HSA.InfoSys.Common.Entities
         public virtual string Collection { get; set; }
 
         /// <summary>
-        /// Gets or sets the query format.
+        /// Gets or sets the filter query format.
         /// </summary>
         /// <value>
-        /// The query format.
+        /// The filter query format.
         /// </value>
         [DataMember]
-        public virtual string QueryFormat { get; set; }
+        public virtual string FilterQuery { get; set; }
 
+        #region No user settings
         /// <summary>
         /// Gets or sets the request format.
         /// </summary>
@@ -61,22 +75,14 @@ namespace HSA.InfoSys.Common.Entities
         public virtual string RequestFormat { get; set; }
 
         /// <summary>
-        /// Gets or sets the filter query format.
+        /// Gets or sets the query format.
         /// </summary>
         /// <value>
-        /// The filter query format.
+        /// The query format.
         /// </value>
         [DataMember]
-        public virtual string FilterQueryFormat { get; set; }
-
-        /// <summary>
-        /// Gets or sets the filter.
-        /// </summary>
-        /// <value>
-        /// The filter.
-        /// </value>
-        [DataMember]
-        public virtual string Filter { get; set; }
+        public virtual string QueryFormat { get; set; }
+        #endregion
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
@@ -91,10 +97,9 @@ namespace HSA.InfoSys.Common.Entities
                 this.Host,
                 this.Port,
                 this.Collection,
-                this.QueryFormat,
+                this.FilterQuery,
                 this.RequestFormat,
-                this.FilterQueryFormat,
-                this.Filter,
+                this.QueryFormat,
                 this.SizeOf());
         }
     }

@@ -54,20 +54,12 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         SolrSearchClientSettings GetSolrClientSettings();
 
         /// <summary>
-        /// Gets the WCF addresses settings.
-        /// </summary>
-        /// <returns>The WCF addresses settings.</returns>
-        [OperationContract]
-        [UseNetDataContractSerializer]
-        WCFControllerAddressesSettings GetWCFAddressesSettings();
-
-        /// <summary>
         /// Gets the WCF controller settings.
         /// </summary>
         /// <returns>The WCF controller settings.</returns>
         [OperationContract]
         [UseNetDataContractSerializer]
-        WCFControllerHostSettings GetWCFControllerSettings();
+        WCFSettings GetWCFSettings();
 
         /// <summary>
         /// Loads this entities eager.

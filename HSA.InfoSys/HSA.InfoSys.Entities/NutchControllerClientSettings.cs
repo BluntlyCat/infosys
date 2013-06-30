@@ -16,13 +16,57 @@ namespace HSA.InfoSys.Common.Entities
     public class NutchControllerClientSettings : Entity
     {
         /// <summary>
-        /// Gets or sets the solr server.
+        /// Initializes a new instance of the <see cref="NutchControllerClientSettings"/> class.
+        /// </summary>
+        public NutchControllerClientSettings()
+        {
+            this.HomePath = string.Empty;
+            this.NutchPath = string.Empty;
+            this.NutchCommand = string.Empty;
+            this.NutchClients = string.Empty;
+            this.CrawlDepth = 0;
+            this.CrawlTopN = 0;
+            this.SolrServer = string.Empty;
+            this.JavaHome = string.Empty;
+            this.CertificatePath = string.Empty;
+            this.Prefix = string.Empty;
+            this.CrawlRequest = string.Empty;
+            this.SeedFileName = string.Empty;
+            this.PrefixFileName = string.Empty;
+            this.BaseUrlPath = string.Empty;
+            this.BaseCrawlPath = string.Empty;
+            this.PathFormatTwo = string.Empty;
+            this.PathFormatThree = string.Empty;
+            this.PathFormatFour = string.Empty;
+            this.PrefixFormat = string.Empty;
+        }
+
+        /// <summary>
+        /// Gets or sets the home path.
         /// </summary>
         /// <value>
-        /// The solr server.
+        /// The home path.
         /// </value>
         [DataMember]
-        public virtual string SolrServer { get; set; }
+        public virtual string HomePath { get; set; }
+
+        /// <summary>
+        /// Gets or sets the nutch path.
+        /// </summary>
+        /// <value>
+        /// The nutch path.
+        /// </value>
+        [DataMember]
+        public virtual string NutchPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets the nutch command.
+        /// </summary>
+        /// <value>
+        /// The nutch command.
+        /// </value>
+        [DataMember]
+        public virtual string NutchCommand { get; set; }
 
         /// <summary>
         /// Gets or sets the nutch clients.
@@ -34,31 +78,40 @@ namespace HSA.InfoSys.Common.Entities
         public virtual string NutchClients { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the seed file.
+        /// Gets or sets the crawl depth.
         /// </summary>
         /// <value>
-        /// The name of the seed file.
+        /// The crawl depth.
         /// </value>
         [DataMember]
-        public virtual string SeedFileName { get; set; }
+        public virtual int CrawlDepth { get; set; }
 
         /// <summary>
-        /// Gets or sets the base URL path.
+        /// Gets or sets the crawl top N.
         /// </summary>
         /// <value>
-        /// The base URL path.
+        /// The crawl top N.
         /// </value>
         [DataMember]
-        public virtual string BaseUrlPath { get; set; }
+        public virtual int CrawlTopN { get; set; }
 
         /// <summary>
-        /// Gets or sets the prefix path.
+        /// Gets or sets the solr server.
         /// </summary>
         /// <value>
-        /// The prefix path.
+        /// The solr server.
         /// </value>
         [DataMember]
-        public virtual string PrefixPath { get; set; }
+        public virtual string SolrServer { get; set; }
+
+        /// <summary>
+        /// Gets or sets the java home.
+        /// </summary>
+        /// <value>
+        /// The java home.
+        /// </value>
+        [DataMember]
+        public virtual string JavaHome { get; set; }
 
         /// <summary>
         /// Gets or sets the certificate path.
@@ -70,12 +123,32 @@ namespace HSA.InfoSys.Common.Entities
         public virtual string CertificatePath { get; set; }
 
         /// <summary>
-        /// Gets or sets the home path.
+        /// Gets or sets the prefix.
         /// </summary>
         /// <value>
-        /// The home path.
+        /// The prefix.
         /// </value>
-        public virtual string HomePath { get; set; }
+        [DataMember]
+        public virtual string Prefix { get; set; }
+
+        #region No user settings
+        /// <summary>
+        /// Gets or sets the crawl request.
+        /// </summary>
+        /// <value>
+        /// The crawl request.
+        /// </value>
+        [DataMember]
+        public virtual string CrawlRequest { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the seed file.
+        /// </summary>
+        /// <value>
+        /// The name of the seed file.
+        /// </value>
+        [DataMember]
+        public virtual string SeedFileName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the prefix file.
@@ -87,22 +160,13 @@ namespace HSA.InfoSys.Common.Entities
         public virtual string PrefixFileName { get; set; }
 
         /// <summary>
-        /// Gets or sets the prefix format.
+        /// Gets or sets the base URL path.
         /// </summary>
         /// <value>
-        /// The prefix format.
+        /// The base URL path.
         /// </value>
         [DataMember]
-        public virtual string PrefixFormat { get; set; }
-
-        /// <summary>
-        /// Gets or sets the prefix.
-        /// </summary>
-        /// <value>
-        /// The prefix.
-        /// </value>
-        [DataMember]
-        public virtual string Prefix { get; set; }
+        public virtual string BaseUrlPath { get; set; }
 
         /// <summary>
         /// Gets or sets the base crawl path.
@@ -112,15 +176,6 @@ namespace HSA.InfoSys.Common.Entities
         /// </value>
         [DataMember]
         public virtual string BaseCrawlPath { get; set; }
-
-        /// <summary>
-        /// Gets or sets the java home.
-        /// </summary>
-        /// <value>
-        /// The java home.
-        /// </value>
-        [DataMember]
-        public virtual string JavaHome { get; set; }
 
         /// <summary>
         /// Gets or sets the path format two.
@@ -150,40 +205,14 @@ namespace HSA.InfoSys.Common.Entities
         public virtual string PathFormatFour { get; set; }
 
         /// <summary>
-        /// Gets or sets the nutch command.
+        /// Gets or sets the prefix format.
         /// </summary>
         /// <value>
-        /// The nutch command.
+        /// The prefix format.
         /// </value>
         [DataMember]
-        public virtual string NutchCommand { get; set; }
-
-        /// <summary>
-        /// Gets or sets the crawl request.
-        /// </summary>
-        /// <value>
-        /// The crawl request.
-        /// </value>
-        [DataMember]
-        public virtual string CrawlRequest { get; set; }
-
-        /// <summary>
-        /// Gets or sets the crawl depth.
-        /// </summary>
-        /// <value>
-        /// The crawl depth.
-        /// </value>
-        [DataMember]
-        public virtual int CrawlDepth { get; set; }
-
-        /// <summary>
-        /// Gets or sets the crawl top N.
-        /// </summary>
-        /// <value>
-        /// The crawl top N.
-        /// </value>
-        [DataMember]
-        public virtual int CrawlTopN { get; set; }
+        public virtual string PrefixFormat { get; set; }
+        #endregion
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
@@ -195,11 +224,25 @@ namespace HSA.InfoSys.Common.Entities
         {
             return string.Format(
                 Properties.Resources.NUTCHCONTROLLERSETTINGS_TO_STRING,
-                this.SolrServer,
-                this.SeedFileName,
-                this.BaseUrlPath,
+                this.HomePath,
+                this.NutchPath,
                 this.NutchCommand,
+                this.NutchClients,
+                this.CrawlDepth,
+                this.CrawlTopN,
+                this.SolrServer,
+                this.JavaHome,
+                this.CertificatePath,
+                this.Prefix,
                 this.CrawlRequest,
+                this.SeedFileName,
+                this.PrefixFileName,
+                this.BaseUrlPath,
+                this.BaseCrawlPath,
+                this.PathFormatTwo,
+                this.PathFormatThree,
+                this.PathFormatFour,
+                this.PrefixFormat,
                 this.SizeOf());
         }
     }

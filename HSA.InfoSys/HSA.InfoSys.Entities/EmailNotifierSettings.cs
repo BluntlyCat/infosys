@@ -16,6 +16,16 @@ namespace HSA.InfoSys.Common.Entities
     public class EmailNotifierSettings : Entity
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="EmailNotifierSettings"/> class.
+        /// </summary>
+        public EmailNotifierSettings()
+        {
+            this.SmtpServer = string.Empty;
+            this.SmtpPort = 0;
+            this.MailFrom = string.Empty;
+        }
+
+        /// <summary>
         /// Gets or sets the SMTP server.
         /// </summary>
         /// <value>
@@ -53,6 +63,7 @@ namespace HSA.InfoSys.Common.Entities
             return string.Format(
                 Properties.Resources.MAILNOTIFIERSETTINGS_TO_STRING,
                 this.SmtpServer,
+                this.SmtpPort,
                 this.MailFrom,
                 this.SizeOf());
         }

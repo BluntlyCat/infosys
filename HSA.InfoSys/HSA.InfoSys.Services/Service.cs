@@ -35,12 +35,20 @@ namespace HSA.InfoSys.Common.Services
         }
 
         /// <summary>
-        /// Gets the ID.
+        /// Gets or sets the service GUID.
         /// </summary>
         /// <value>
         /// The ID.
         /// </value>
-        public Guid ServiceGUID { get; private set; }
+        public Guid ServiceGUID { get; protected set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="Service"/> is running.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if running; otherwise, <c>false</c>.
+        /// </value>
+        public bool Running { get; protected set; }
 
         /// <summary>
         /// Gets the service thread.
@@ -49,14 +57,6 @@ namespace HSA.InfoSys.Common.Services
         /// The service thread.
         /// </value>
         protected Thread ServiceThread { get; private set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="Service"/> is running.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if running; otherwise, <c>false</c>.
-        /// </value>
-        protected bool Running { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Countdown"/> is canceled.
@@ -98,6 +98,16 @@ namespace HSA.InfoSys.Common.Services
             {
                 Log.WarnFormat(Properties.Resources.SERVICE_IS_ALREADY_UP, this.GetType().Name);
             }
+        }
+
+        /// <summary>
+        /// Restarts the service.
+        /// </summary>
+        /// <param name="cancel">if set to <c>true</c> [cancel].</param>
+        public virtual void RestartService(bool cancel = false)
+        {
+            this.StopService();
+            this.StartService();
         }
 
         /// <summary>

@@ -1,5 +1,5 @@
 ﻿// ------------------------------------------------------------------------
-// <copyright file="OpenWCFHostException.cs" company="HSA.InfoSys">
+// <copyright file="DBManagerAccessException.cs" company="HSA.InfoSys">
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
@@ -10,28 +10,18 @@ namespace HSA.InfoSys.Common.Exceptions
     /// <summary>
     /// Throws an exception if day or time value is zero or less.
     /// </summary>
-    public class OpenWCFHostException : Exception
+    public class DBManagerAccessException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="OpenWCFHostException" /> class.
+        /// Initializes a new instance of the <see cref="DBManagerAccessException" /> class.
         /// </summary>
         /// <param name="e">The e.</param>
-        /// <param name="name">The name.</param>
-        /// <param name="service">The service.</param>
-        public OpenWCFHostException(Exception e, string name, string service)
-            : base(Properties.Resources.OPEN_WCF_SERVICE_EXCEPTION, e)
+        /// <param name="source">The source.</param>
+        public DBManagerAccessException(Exception e, string source)
+            : base(Properties.Resources.DBMANAGER_ACCESS_EXCEPTION, e)
         {
-            this.Source = name;
-            this.Service = service;
+            this.Source = source;
         }
-
-        /// <summary>
-        /// Gets the service.
-        /// </summary>
-        /// <value>
-        /// The service.
-        /// </value>
-        public string Service { get; private set; }
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
@@ -45,8 +35,7 @@ namespace HSA.InfoSys.Common.Exceptions
         public override string ToString()
         {
             return string.Format(
-                Properties.Resources.OPEN_WCF_SERVICE_EXCEPTION_TO_STRING,
-                this.Service,
+                Properties.Resources.DBMANAGER_ACCESS_EXCEPTION_TO_STRING,
                 this.Source,
                 this.InnerException);
         }

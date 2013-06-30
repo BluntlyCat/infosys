@@ -26,7 +26,7 @@ namespace HSA.InfoSys.Testing.SolrTesting
         {
             ILog log = Logger<string>.GetLogger("SolrTesting");
 
-            var dbManager = DBManager.ManagerFactory(Guid.NewGuid());
+            var dbManager = DBManager.ManagerFactory;
 
             SolrSearchController client = new SolrSearchController(dbManager);
             bool running = true;

@@ -30,7 +30,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The db manager.
         /// </summary>
-        private IDBManager dbManager = DBManager.ManagerFactory(Guid.NewGuid());
+        private IDBManager dbManager;
 
         /// <summary>
         /// The settings.
@@ -38,10 +38,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private EmailNotifierSettings settings;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EmailNotifier"/> class.
+        /// Initializes a new instance of the <see cref="EmailNotifier" /> class.
         /// </summary>
-        public EmailNotifier()
+        /// <param name="dbManager">The db manager.</param>
+        public EmailNotifier(IDBManager dbManager)
         {
+            this.dbManager = dbManager;
             this.settings = this.dbManager.GetSettingsFor<EmailNotifierSettings>();
         }
 

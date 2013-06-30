@@ -61,6 +61,42 @@ namespace HSA.InfoSys.Common.Exceptions.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Error while accessing the database: error was: {0} ähnelt.
+        /// </summary>
+        internal static string DBMANAGER_ACCESS_EXCEPTION {
+            get {
+                return ResourceManager.GetString("DBMANAGER_ACCESS_EXCEPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Error while accessing the database in {0}, error was: {1} ähnelt.
+        /// </summary>
+        internal static string DBMANAGER_ACCESS_EXCEPTION_TO_STRING {
+            get {
+                return ResourceManager.GetString("DBMANAGER_ACCESS_EXCEPTION_TO_STRING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Unable to open the database connection. ähnelt.
+        /// </summary>
+        internal static string DBMANAGER_CONFIGURATION_EXCEPTION {
+            get {
+                return ResourceManager.GetString("DBMANAGER_CONFIGURATION_EXCEPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Error while opening database connection in {0}, error was: {1}. ähnelt.
+        /// </summary>
+        internal static string DBMANAGER_CONFIGURATION_EXCEPTION_TO_STRING {
+            get {
+                return ResourceManager.GetString("DBMANAGER_CONFIGURATION_EXCEPTION_TO_STRING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die There is no usable client for crawling. See logfile for further information. ähnelt.
         /// </summary>
         internal static string NO_USABLE_NUTCH_CLIENT_EXCEPTION {
@@ -72,18 +108,18 @@ namespace HSA.InfoSys.Common.Exceptions.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Unable to open the connection for WCF-service {0}. ähnelt.
         /// </summary>
-        internal static string OPEN_WCF_HOST_EXCEPTION {
+        internal static string OPEN_WCF_SERVICE_EXCEPTION {
             get {
-                return ResourceManager.GetString("OPEN_WCF_HOST_EXCEPTION", resourceCulture);
+                return ResourceManager.GetString("OPEN_WCF_SERVICE_EXCEPTION", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Error while opening service {0} in {1}, error was: {2}. ähnelt.
         /// </summary>
-        internal static string OPEN_WCF_HOST_EXCEPTION_TO_STRING {
+        internal static string OPEN_WCF_SERVICE_EXCEPTION_TO_STRING {
             get {
-                return ResourceManager.GetString("OPEN_WCF_HOST_EXCEPTION_TO_STRING", resourceCulture);
+                return ResourceManager.GetString("OPEN_WCF_SERVICE_EXCEPTION_TO_STRING", resourceCulture);
             }
         }
         

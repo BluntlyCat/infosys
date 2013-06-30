@@ -8,6 +8,7 @@ namespace HSA.InfoSys.CrawlerService
     using System;
     using System.ServiceModel;
     using System.Threading;
+    using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Exceptions;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services;
@@ -38,6 +39,11 @@ namespace HSA.InfoSys.CrawlerService
         private bool servicesRunning = false;
 
         /// <summary>
+        /// The other services initialized flag.
+        /// </summary>
+        private bool otherServicesInitialized = false;
+
+        /// <summary>
         /// The WCF controller for the crawler service.
         /// </summary>
         private WCFControllerHost controllerHost;
@@ -53,6 +59,37 @@ namespace HSA.InfoSys.CrawlerService
         /// <param name="serviceGUID">The service GUID.</param>
         private CrawlerService(Guid serviceGUID) : base(serviceGUID)
         {
+            this.PrintStartupMessage();
+
+            //// Initialize the database.
+            var dbManager = InitializeDataBase();
+
+            //// Initialize the controller host.
+            this.InitializeControllerHost(dbManager);
+
+            //// Create CrawlerService.
+            this.controllerHost.OpenWCFHost<CrawlerService, ICrawlerService>(this);
+
+            //// Initialize other services
+            this.InitializeOtherServices(dbManager);
+        }
+
+        /// <summary>
+        /// Gets the CrawlerService. Create one if none exist.
+        /// </summary>
+        /// <returns>The CrawlerService</returns>
+        public static CrawlerService CrawlerFactory
+        {
+            get
+            {
+                if (crawlerService == null)
+                {
+                    Log.Debug(Properties.Resources.WEB_CRAWLER_NO_SERVICE_FOUND);
+                    crawlerService = new CrawlerService(Guid.NewGuid());
+                }
+
+                return crawlerService;
+            }
         }
 
         /// <summary>
@@ -61,24 +98,15 @@ namespace HSA.InfoSys.CrawlerService
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
-            CrawlerService crawler = CrawlerService.CrawlerFactory(Guid.NewGuid());
-            crawler.StartService();
-        }
-
-        /// <summary>
-        /// Gets the CrawlerService. Create one if none exist.
-        /// </summary>
-        /// <param name="serviceGUID">The service GUID.</param>
-        /// <returns>The CrawlerService</returns>
-        public static CrawlerService CrawlerFactory(Guid serviceGUID)
-        {
-            if (crawlerService == null)
+            try
             {
-                Log.Debug(Properties.Resources.WEB_CRAWLER_NO_SERVICE_FOUND);
-                crawlerService = new CrawlerService(serviceGUID);
+                CrawlerService crawler = CrawlerService.CrawlerFactory;
+                crawler.StartService();
             }
-
-            return crawlerService;
+            catch (Exception e)
+            {
+                Log.FatalFormat(Properties.Resources.CRAWLER_SERVICE_FATAL_ERROR, e);
+            }
         }
 
         /// <summary>
@@ -105,6 +133,7 @@ namespace HSA.InfoSys.CrawlerService
             {
                 this.crawlController.StopServices(true);
                 this.controllerHost.CloseWCFHosts();
+                this.StopService();
             }
         }
 
@@ -113,12 +142,6 @@ namespace HSA.InfoSys.CrawlerService
         /// </summary>
         protected override void Run()
         {
-            Log.Debug(Properties.Resources.WEB_CRAWLER_START_SERVER);
-            Log.Info(Properties.Resources.WEB_CRAWLER_QUIT_MESSAGE);
-
-            this.InitializeControllerHost();
-            this.servicesRunning = this.crawlController.StartServices();
-
             while (this.Running)
             {
                 if (Console.KeyAvailable)
@@ -148,53 +171,108 @@ namespace HSA.InfoSys.CrawlerService
         }
 
         /// <summary>
+        /// Initializes the data base.
+        /// </summary>
+        /// <returns>The database manager.</returns>
+        private static DBManager InitializeDataBase()
+        {
+            DBManager dbManager = null;
+
+            try
+            {
+                //// Create DBManager.
+                dbManager = DBManager.ManagerFactory as DBManager;
+                dbManager.StartService();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return dbManager;
+        }
+
+        /// <summary>
+        /// Prints the startup message.
+        /// </summary>
+        private void PrintStartupMessage()
+        {
+            Log.Debug(Properties.Resources.WEB_CRAWLER_START_SERVER);
+            Log.Info(Properties.Resources.WEB_CRAWLER_QUIT_MESSAGE);
+        }
+
+        /// <summary>
         /// Initializes the controller host.
         /// </summary>
-        private void InitializeControllerHost()
+        /// <param name="dbManager">The database manager.</param>
+        private void InitializeControllerHost(DBManager dbManager)
         {
             try
             {
-                WCFControllerAddresses.Initialize();
+                var settings = dbManager.GetSettingsFor<WCFSettings>();
 
-                //// Create DBManager.
-                var dbManager = DBManager.ManagerFactory(Guid.NewGuid()) as DBManager;
+                if (settings == null)
+                {
+                    settings = new WCFSettings(
+                        "localhost",
+                        8085,
+                        "CrawlerProxy",
+                        "localhost",
+                        8086,
+                        "CrawlerProxy",
+                        "Certificates/InfoSys.pfx",
+                        "Aes2xe1baetei8Y");
+
+                    dbManager.AddEntity(settings);
+                }
 
                 //// Create WCFControllerHost.
-                this.controllerHost = new WCFControllerHost(dbManager);
+                this.controllerHost = new WCFControllerHost(settings);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
+        /// <summary>
+        /// Initializes the controller host.
+        /// </summary>
+        /// <param name="dbManager">The database manager.</param>
+        private void InitializeOtherServices(DBManager dbManager)
+        {
+            try
+            {
                 //// Open DBManagers WCF Service.
                 this.controllerHost.OpenWCFHost<DBManager, IDBManager>(dbManager);
 
                 //// Create CrawlController.
                 this.crawlController = this.controllerHost.OpenWCFHost<CrawlController, ICrawlController>(
-                    CrawlController.ControllerFactory(Guid.NewGuid()));
+                    CrawlController.ControllerFactory);
 
                 //// Create NutchController.
-                var nutchController = NutchController.NutchFactory(Guid.NewGuid(), dbManager);
+                var nutchController = NutchController.NutchFactory(dbManager);
 
                 //// Create SolrController.
                 var solrController = this.controllerHost.OpenWCFHost<SolrController, ISolrController>(
-                    SolrController.SolrFactory(Guid.NewGuid(), dbManager));
+                    SolrController.SolrFactory(dbManager));
 
                 //// Create Scheduler.
-                var scheduler = this.controllerHost.OpenWCFHost<Scheduler, IScheduler>(
-                    Scheduler.SchedulerFactory(Guid.NewGuid(), dbManager));
-
-                //// Create CrawlerService.
-                this.controllerHost.OpenWCFHost<CrawlerService, ICrawlerService>(this);
-
+                var scheduler = this.controllerHost.OpenWCFHost<Scheduler, IScheduler>(Scheduler.SchedulerFactory(dbManager));
+            
                 //// Register services.
-                this.crawlController.RegisterService(scheduler);
-                this.crawlController.RegisterService(solrController);
+                this.crawlController.RegisterService(typeof(Scheduler), scheduler);
+                this.crawlController.RegisterService(typeof(SolrController), solrController);
 #warning enable nutchController before building on mono, must be disabled to avoid starting many crawls on the hosts while developing.
-                //this.crawlController.RegisterService(nutchController);
-                this.crawlController.RegisterService(dbManager);
-                this.crawlController.RegisterService(this);
+                //// this.crawlController.RegisterService(typeof(NutchController), nutchController);
+                this.crawlController.RegisterService(typeof(DBManager), dbManager);
+
+                this.otherServicesInitialized = true;
+                this.servicesRunning = this.crawlController.StartServices();
             }
-            catch (OpenWCFHostException ohe)
+            catch (Exception e)
             {
-                Log.FatalFormat(Properties.Resources.WEB_CRAWLER_CAN_NOT_OPEN_WCF_HOST, ohe);
-                this.StopService(true);
+                throw e;
             }
         }
     }

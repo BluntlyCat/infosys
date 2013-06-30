@@ -43,21 +43,15 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Gets the solr controller.
+        /// The Solr controller.
         /// </summary>
-        /// <param name="serviceGUID">The service GUID.</param>
         /// <param name="dbManager">The db manager.</param>
-        /// <returns>
-        /// A new solr controller service.
-        /// </returns>
-        /// <value>
-        /// The solr controller.
-        /// </value>
-        public static SolrController SolrFactory(Guid serviceGUID, DBManager dbManager)
+        /// <returns>an instance of the Solr controller.</returns>
+        public static SolrController SolrFactory(DBManager dbManager)
         {
             if (solrController == null)
             {
-                solrController = new SolrController(serviceGUID, dbManager);
+                solrController = new SolrController(Guid.NewGuid(), dbManager);
             }
 
             return solrController;

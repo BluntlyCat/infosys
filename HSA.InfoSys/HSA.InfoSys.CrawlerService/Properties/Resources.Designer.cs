@@ -61,11 +61,11 @@ namespace HSA.InfoSys.CrawlerService.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Unable to open WCF-service, exit application. Error was: {0}. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die A fatal error occurred. Error was: {0}. ähnelt.
         /// </summary>
-        internal static string WEB_CRAWLER_CAN_NOT_OPEN_WCF_HOST {
+        internal static string CRAWLER_SERVICE_FATAL_ERROR {
             get {
-                return ResourceManager.GetString("WEB_CRAWLER_CAN_NOT_OPEN_WCF_HOST", resourceCulture);
+                return ResourceManager.GetString("CRAWLER_SERVICE_FATAL_ERROR", resourceCulture);
             }
         }
         

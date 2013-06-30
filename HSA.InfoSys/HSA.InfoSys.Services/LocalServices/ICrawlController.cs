@@ -5,8 +5,8 @@
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.Common.Services.LocalServices
 {
+    using System;
     using System.ServiceModel;
-    using HSA.InfoSys.Common.Services.WCFServices;
 
     /// <summary>
     /// This is the interface for communication between the GUI and the web crawler
@@ -17,8 +17,30 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Registers the service.
         /// </summary>
+        /// <param name="type">The type.</param>
         /// <param name="service">The service.</param>
-        void RegisterService(IService service);
+        void RegisterService(Type type, IService service);
+
+        /// <summary>
+        /// Starts the service.
+        /// </summary>
+        /// <param name="type">The type of the service to start.</param>
+        /// <returns>
+        /// True indicates that the service is started.
+        /// </returns>
+        [OperationContract]
+        bool StartService(Type type);
+
+        /// <summary>
+        /// Stops the service.
+        /// </summary>
+        /// <param name="type">The type of the service to stop.</param>
+        /// <param name="cancel">if set to <c>true</c> [cancel].</param>
+        /// <returns>
+        /// False indicates that the service is stopped.
+        /// </returns>
+        [OperationContract]
+        bool StopService(Type type, bool cancel = false);
 
         /// <summary>
         /// Starts the services.

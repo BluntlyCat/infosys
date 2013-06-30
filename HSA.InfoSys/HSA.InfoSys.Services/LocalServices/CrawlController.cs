@@ -32,7 +32,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The services list.
         /// </summary>
-        private List<IService> services = new List<IService>();
+        private Dictionary<Type, IService> services = new Dictionary<Type, IService>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CrawlController"/> class.
@@ -45,28 +45,75 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Gets the crawl controller.
         /// </summary>
-        /// <param name="serviceGUID">The service GUID.</param>
-        /// <returns>The crawl controller service.</returns>
         /// <value>
         /// The crawl controller.
         /// </value>
-        public static CrawlController ControllerFactory(Guid serviceGUID)
+        public static CrawlController ControllerFactory
         {
-            if (crawlController == null)
+            get
             {
-                crawlController = new CrawlController(serviceGUID);
-            }
+                if (crawlController == null)
+                {
+                    crawlController = new CrawlController(Guid.NewGuid());
+                }
 
-            return crawlController;
+                return crawlController;
+            }
         }
 
         /// <summary>
         /// Registers a new service.
         /// </summary>
+        /// <param name="type">The type.</param>
         /// <param name="service">The new service.</param>
-        public void RegisterService(IService service)
+        public void RegisterService(Type type, IService service)
         {
-            this.services.Add(service);
+            this.services.Add(type, service);
+        }
+
+        /// <summary>
+        /// Starts the services.
+        /// </summary>
+        /// <param name="type">The type of the service to start.</param>
+        /// <returns>
+        /// True indicates that the services are started.
+        /// </returns>
+        public bool StartService(Type type)
+        {
+            Log.Info(Properties.Resources.CRAWL_CONTROLLER_START);
+
+            if (this.services.ContainsKey(type))
+            {
+                this.services[type].StartService();
+                return this.services[type].Running;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Stops the services.
+        /// </summary>
+        /// <param name="type">The type of the service to stop.</param>
+        /// <param name="cancel">if set to <c>true</c> [cancel].</param>
+        /// <returns>
+        /// False indicates that the services are stopped.
+        /// </returns>
+        public bool StopService(Type type, bool cancel = false)
+        {
+            Log.Info(Properties.Resources.CRAWL_CONTROLLER_SHUTDOWN);
+
+            if (this.services.ContainsKey(type))
+            {
+                this.services[type].StopService(cancel);
+                return this.services[type].Running;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -77,7 +124,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             Log.Info(Properties.Resources.CRAWL_CONTROLLER_START);
 
-            foreach (var service in this.services)
+            foreach (var service in this.services.Values)
             {
                 service.StartService();
             }
@@ -94,7 +141,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             Log.Info(Properties.Resources.CRAWL_CONTROLLER_SHUTDOWN);
 
-            foreach (var service in this.services)
+            foreach (var service in this.services.Values)
             {
                 service.StopService(cancel);
             }

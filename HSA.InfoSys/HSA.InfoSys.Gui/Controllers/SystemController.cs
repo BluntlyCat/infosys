@@ -30,6 +30,12 @@ namespace HSA.InfoSys.Gui.Controllers
         private static readonly ILog Log = Logger<string>.GetLogger("SystemController");
 
         /// <summary>
+        /// The settings for WCF.
+        /// </summary>
+        private static WCFSettings settings = 
+            new WCFSettings("localhost", 8085, "CrawlerProxy", "localhost", 8086, "CrawlerProxy");
+
+        /// <summary>
         /// Called when the home page is loading.
         /// </summary>
         /// <returns>The result of this action.</returns>
@@ -38,7 +44,7 @@ namespace HSA.InfoSys.Gui.Controllers
         {
             try
             {
-                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
 
                 // get id of current logged-in user
                 MembershipUser membershipuser = Membership.GetUser();
@@ -55,17 +61,19 @@ namespace HSA.InfoSys.Gui.Controllers
             }
             catch (CommunicationException ce)
             {
+                Log.ErrorFormat(Properties.Resources.LOG_COMMUNICATION_ERROR, ce);
+
                 //return to error page
-                this.ViewData["error"] = "Error, please try again!";
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
                 return this.View();
-                Log.ErrorFormat("Communication error: {0}", ce);
             }
             catch (Exception e)
             {
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+
                 //return to error page
-                this.ViewData["error"] = "Error, please try again!";
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
                 return this.View();
-                Log.ErrorFormat("Common error: {0}", e);
             }
 
             return this.View();
@@ -85,7 +93,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 string orgUnitName = Request["newsystem"];
 
                 // init
-                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
 
                 // log
                 Log.Info("add new system");
@@ -95,10 +103,10 @@ namespace HSA.InfoSys.Gui.Controllers
                 string userid = membershipuser.ProviderUserKey.ToString();
                 int id = Convert.ToInt32(userid);
 
-                var mails = JsonConvert.SerializeObject(membershipuser.Email);
+                var mails = JsonConvert.SerializeObject(new string[] { membershipuser.Email });
 
                 // create SystemConfig
-                var orgUnitConfig = cc.CreateOrgUnitConfig(null, mails, false, false, 1, 12, new DateTime(), false);
+                var orgUnitConfig = cc.CreateOrgUnitConfig(null, mails, false, true, 1, 12, new DateTime(), true);
 
                 // create System
                 var orgUnit = cc.CreateOrgUnit(id, orgUnitName);
@@ -109,11 +117,19 @@ namespace HSA.InfoSys.Gui.Controllers
             }
             catch (CommunicationException ce)
             {
-                Log.ErrorFormat("Communication error: {0}", ce);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMUNICATION_ERROR, ce);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
             catch (Exception e)
             {
-                Log.ErrorFormat("Common error: {0}", e);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
 
             return this.RedirectToAction("Index", "System");
@@ -133,10 +149,13 @@ namespace HSA.InfoSys.Gui.Controllers
                 Guid orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
                 // init
-                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
 
                 // get orgUnit
                 var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnit", "OrgUnitConfig")) as OrgUnit;
+
+                // Remove from scheduler if registered and stop.
+                WCFControllerClient<IScheduler>.GetClientProxy(settings).RemoveOrgUnitConfig(orgUnit.OrgUnitConfig.EntityId);
 
                 // get all components by OrgUnitId
                 var components = cc.GetComponentsByOrgUnitId(orgUnitGUID).ToList<Component>();
@@ -153,11 +172,19 @@ namespace HSA.InfoSys.Gui.Controllers
             }
             catch (CommunicationException ce)
             {
-                Log.ErrorFormat("Communication error: {0}", ce);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMUNICATION_ERROR, ce);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
             catch (Exception e)
             {
-                Log.ErrorFormat("Common error: {0}", e);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
 
             return this.RedirectToAction("Index", "System");
@@ -175,15 +202,23 @@ namespace HSA.InfoSys.Gui.Controllers
             try
             {
                 Guid orgUnitGuid = Guid.Parse(Request.QueryString["sysguid"]);
-                WCFControllerClient<ISolrController>.ClientProxy.SearchForOrgUnit(orgUnitGuid);
+                WCFControllerClient<ISolrController>.GetClientProxy(settings).SearchForOrgUnit(orgUnitGuid);
             }
             catch (CommunicationException ce)
             {
-                Log.ErrorFormat("Communication error: {0}", ce);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMUNICATION_ERROR, ce);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
             catch (Exception e)
             {
-                Log.ErrorFormat("Common error: {0}", e);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
 
             return this.RedirectToAction("Index", "System");
@@ -203,7 +238,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 Guid orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
                 // init
-                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
 
                 // get OrgUnit
                 var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnit", "OrgUnitConfig")) as OrgUnit;
@@ -222,11 +257,19 @@ namespace HSA.InfoSys.Gui.Controllers
             }
             catch (CommunicationException ce)
             {
-                Log.ErrorFormat("Communication error: {0}", ce);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMUNICATION_ERROR, ce);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
             catch (Exception e)
             {
-                Log.ErrorFormat("Common error: {0}", e);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
 
             return this.View();
@@ -251,7 +294,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 string component = Request["components"];
 
                 // init
-                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
 
                 // get orgUnit by id
                 var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnit", "OrgUnitConfig")) as OrgUnit;
@@ -264,11 +307,19 @@ namespace HSA.InfoSys.Gui.Controllers
             }
             catch (CommunicationException ce)
             {
-                Log.ErrorFormat("Communication error: {0}", ce);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMUNICATION_ERROR, ce);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
             catch (Exception e)
             {
-                Log.ErrorFormat("Common error: {0}", e);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
 
             return this.Redirect("/System/Components?sysguid=" + orgUnitGUID);
@@ -293,7 +344,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 Guid componentGUID = Guid.Parse(Request.QueryString["compid"]);
 
                 // init
-                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
 
                 // get component by id
                 var component = cc.GetEntity(componentGUID);
@@ -303,11 +354,19 @@ namespace HSA.InfoSys.Gui.Controllers
             }
             catch (CommunicationException ce)
             {
-                Log.ErrorFormat("Communication error: {0}", ce);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMUNICATION_ERROR, ce);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
             catch (Exception e)
             {
-                Log.ErrorFormat("Common error: {0}", e);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
 
             return this.Redirect("/System/Components?sysguid=" + orgUnitGUID);
@@ -329,7 +388,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 Guid orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
                 // init
-                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
 
                 // get id of current logged-in user
                 MembershipUser membershipuser = Membership.GetUser();
@@ -382,11 +441,19 @@ namespace HSA.InfoSys.Gui.Controllers
             }
             catch (CommunicationException ce)
             {
-                Log.ErrorFormat("Communication error: {0}", ce);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMUNICATION_ERROR, ce);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
             catch (Exception e)
             {
-                Log.ErrorFormat("Common error: {0}", e);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
 
             return this.View();
@@ -408,7 +475,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
                 // init
-                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
 
                 // get SystemConfig, OrgUnitConfig
                 var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
@@ -424,12 +491,12 @@ namespace HSA.InfoSys.Gui.Controllers
                 if (this.Request["schedulerOn"] == "on")
                 {
                     config.SchedulerActive = true;
-                    WCFControllerClient<IScheduler>.ClientProxy.AddOrgUnitConfig(config);
+                    WCFControllerClient<IScheduler>.GetClientProxy(settings).AddOrgUnitConfig(config);
                 }
                 else
                 {
                     config.SchedulerActive = false;
-                    WCFControllerClient<IScheduler>.ClientProxy.RemoveOrgUnitConfig(config.EntityId);
+                    WCFControllerClient<IScheduler>.GetClientProxy(settings).RemoveOrgUnitConfig(config.EntityId);
                 }
 
                 // set Emails
@@ -471,11 +538,19 @@ namespace HSA.InfoSys.Gui.Controllers
             }
             catch (CommunicationException ce)
             {
-                Log.ErrorFormat("Communication error: {0}", ce);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMUNICATION_ERROR, ce);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
             catch (Exception e)
             {
-                Log.ErrorFormat("Common error: {0}", e);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
 
             return this.Redirect("/System/SearchConfig?sysguid=" + orgUnitGUID);
@@ -500,7 +575,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 Guid loadedConfigId = Guid.Parse(Request["orgUnitConfigId"]);
 
                 // init
-                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
 
                 // get config from other orgUnit
                 var loadedConfig = cc.GetEntity(loadedConfigId) as OrgUnitConfig;
@@ -522,11 +597,19 @@ namespace HSA.InfoSys.Gui.Controllers
             }
             catch (CommunicationException ce)
             {
-                Log.ErrorFormat("Communication error: {0}", ce);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMUNICATION_ERROR, ce);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
             catch (Exception e)
             {
-                Log.ErrorFormat("Common error: {0}", e);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
 
             return this.Redirect("/System/SearchConfig?sysguid=" + orgUnitGUID);
@@ -548,7 +631,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 var componentGUID = Request.QueryString["compguid"];
 
                 // init
-                var cc = WCFControllerClient<IDBManager>.ClientProxy;
+                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
 
                 // get all components by OrgUnitId
                 var components = cc.GetComponentsByOrgUnitId(orgUnitGUID).ToList<Component>();
@@ -595,11 +678,19 @@ namespace HSA.InfoSys.Gui.Controllers
             }
             catch (CommunicationException ce)
             {
-                Log.ErrorFormat("Communication error: {0}", ce);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMUNICATION_ERROR, ce);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
             catch (Exception e)
             {
-                Log.ErrorFormat("Common error: {0}", e);
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+
+                //return to error page
+                this.ViewData["error"] = Properties.Resources.ERROR_REDIRECT_MESSAGE;
+                return this.View();
             }
 
             return this.View();
@@ -619,7 +710,7 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <returns>A list of results which belongs to the given component.</returns>
         private List<Result> GetResults(Guid componentGuid)
         {
-            var cc = WCFControllerClient<IDBManager>.ClientProxy;
+            var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
 
             var indexes = cc.GetResultIndexes(componentGuid).ToArray();
             var splittedResults = new List<Result[]>();

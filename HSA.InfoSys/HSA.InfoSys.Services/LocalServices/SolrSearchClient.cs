@@ -38,17 +38,22 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private SolrSearchClientSettings settings;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SolrSearchClient"/> class.
+        /// Initializes a new instance of the <see cref="SolrSearchClient" /> class.
         /// </summary>
+        /// <param name="dbManager">The db manager.</param>
         public SolrSearchClient(IDBManager dbManager)
         {
             this.dbManager = dbManager;
             this.settings = this.dbManager.GetSettingsFor<SolrSearchClientSettings>();
-            this.Host = this.settings.Host;
-            this.Port = this.settings.Port;
 
-            this.SolrResponse = string.Empty;
-            this.Collection = this.settings.Collection;
+            if (this.settings != null)
+            {
+                this.Host = this.settings.Host;
+                this.Port = this.settings.Port;
+
+                this.SolrResponse = string.Empty;
+                this.Collection = this.settings.Collection;
+            }
         }
 
         /// <summary>
@@ -128,18 +133,26 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             try
             {
-                IPAddress ipa = IPAddress.Parse(this.Host);
-                IPEndPoint ipe = new IPEndPoint(ipa, this.Port);
-
-                this.SolrSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                this.SolrSocket.Connect(ipe);
-                this.ComponentGUID = componentGUID;
-
-                if (this.SolrSocket.Connected)
+                if (this.settings != null)
                 {
-                    Log.InfoFormat(Properties.Resources.SOLR_CLIENT_CONNECTION_ESTABLISHED, this.Host);
-                    string solrQuery = this.BuildSolrQuery(query, SolrMimeType.json);
-                    this.SolrResponse = this.InvokeSolrQuery(solrQuery);
+                    IPAddress ipa = IPAddress.Parse(this.Host);
+                    IPEndPoint ipe = new IPEndPoint(ipa, this.Port);
+
+                    this.SolrSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    this.SolrSocket.Connect(ipe);
+                    this.ComponentGUID = componentGUID;
+
+                    if (this.SolrSocket.Connected)
+                    {
+                        Log.InfoFormat(Properties.Resources.SOLR_CLIENT_CONNECTION_ESTABLISHED, this.Host);
+                        string solrQuery = this.BuildSolrQuery(query, SolrMimeType.json);
+                        this.SolrResponse = this.InvokeSolrQuery(solrQuery);
+                    }
+                }
+                else
+                {
+                    var component = this.dbManager.GetEntity(this.ComponentGUID) as Component;
+                    Log.WarnFormat(Properties.Resources.SOLR_SEARCH_CLIENT_NO_SOLR_SETTINGS, component.Name);
                 }
             }
             catch (Exception e)
@@ -221,23 +234,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             Guid queryTicket = Guid.NewGuid();
 
-            var filter = this.settings.Filter.Split(',');
-            var formatArgs = new List<string>();
-            
-            formatArgs.Add(queryString);
-
-            foreach (var arg in filter)
-            {
-                formatArgs.Add(arg);
-            }
-
-            var filterQuery = this.settings.FilterQueryFormat;
-            filterQuery = string.Format(this.settings.FilterQueryFormat, formatArgs.ToArray());
-
             string query = string.Format(
                 this.settings.QueryFormat,
                 this.Collection,
-                filterQuery,
+                this.settings.FilterQuery,
                 mimeType);
 
             query = query.Replace(" ", "%20");

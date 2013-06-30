@@ -60,21 +60,17 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Gets the scheduler service.
+        /// The scheduler service.
         /// </summary>
-        /// <param name="serviceGUID">The service GUID.</param>
         /// <param name="dbManager">The db manager.</param>
         /// <returns>
-        /// A new scheduler service.
+        /// An instance of the scheduler service.
         /// </returns>
-        /// <value>
-        /// The scheduler factory.   
-        /// </value>
-        public static Scheduler SchedulerFactory(Guid serviceGUID, IDBManager dbManager)
+        public static Scheduler SchedulerFactory(IDBManager dbManager)
         {
             if (scheduler == null)
             {
-                scheduler = new Scheduler(serviceGUID, dbManager);
+                scheduler = new Scheduler(Guid.NewGuid(), dbManager);
             }
 
             return scheduler;
@@ -92,16 +88,26 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
                 this.jobMutex.WaitOne();
 
-                var job = this.SetNewJob(orgUnitConfig);
+                if (this.jobs.ContainsKey(orgUnitConfig.EntityId))
+                {
+                    var job = this.UpdateJob(orgUnitConfig);
 
-                if (job != null && this.jobs.ContainsKey(orgUnitConfig.EntityId) && job.Active)
-                {
-                    this.jobs[orgUnitConfig.EntityId].StopService(true);
-                    this.jobs[orgUnitConfig.EntityId] = job;
+                    if (job != null)
+                    {
+                        this.jobs[orgUnitConfig.EntityId].StopService(true);
+                        this.jobs[orgUnitConfig.EntityId] = job;
+                        this.jobs[orgUnitConfig.EntityId].StartService();
+                    }
                 }
-                else if (job != null && job.Active)
+                else
                 {
-                    this.jobs.Add(orgUnitConfig.EntityId, job);
+                    var job = this.SetNewJob(orgUnitConfig);
+
+                    if (job != null)
+                    {
+                        this.jobs.Add(orgUnitConfig.EntityId, job);
+                        job.StartService();
+                    }
                 }
 
                 this.jobMutex.ReleaseMutex();
@@ -224,7 +230,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
             if (countdown.Time == null || countdown.Time.Repeat)
             {
-                countdown.Restart();
+                countdown.RestartService();
             }
         }
 
@@ -235,17 +241,32 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <returns>A started countdown.</returns>
         private Countdown SetNewJob(OrgUnitConfig orgUnitConfig)
         {
-            if (!this.jobs.ContainsKey(orgUnitConfig.EntityId) && orgUnitConfig.SchedulerActive)
+            if (orgUnitConfig.SchedulerActive)
             {
                 Log.InfoFormat(Properties.Resources.SCHEDULER_CREATE_NEW_JOB, orgUnitConfig);
 
                 var job = new Countdown(orgUnitConfig, orgUnitConfig.EntityId, new Countdown.ZeroEventHandler(this.StartSolrSearch));
                 job.OnError += new Countdown.ErrorEventHandler(this.Job_OnError);
                 job.OnTick += new Countdown.TickEventHandler(this.Job_OnTick);
+
                 return job;
             }
-            else if (orgUnitConfig.SchedulerActive)
+
+            return null;
+        }
+
+        /// <summary>
+        /// Updates the job.
+        /// </summary>
+        /// <param name="orgUnitConfig">The org unit config.</param>
+        /// <returns>The updated job.</returns>
+        private Countdown UpdateJob(OrgUnitConfig orgUnitConfig)
+        {
+#warning logmeldungen noch schreiben...
+            if (orgUnitConfig.SchedulerActive)
             {
+                Log.DebugFormat("", orgUnitConfig);
+                this.jobs[orgUnitConfig.EntityId].UpdateOrgUnitConfig(orgUnitConfig);
                 return this.jobs[orgUnitConfig.EntityId];
             }
 

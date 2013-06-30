@@ -61,6 +61,15 @@ namespace HSA.InfoSys.Gui.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Error, please try again! ähnelt.
+        /// </summary>
+        internal static string ERROR_REDIRECT_MESSAGE {
+            get {
+                return ResourceManager.GetString("ERROR_REDIRECT_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Common error: {0}. ähnelt.
         /// </summary>
         internal static string LOG_COMMON_ERROR {

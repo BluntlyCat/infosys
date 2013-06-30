@@ -11,9 +11,23 @@ namespace HSA.InfoSys.Common.Services
     public interface IService
     {
         /// <summary>
+        /// Gets a value indicating whether this <see cref="IService"/> is running.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if running; otherwise, <c>false</c>.
+        /// </value>
+        bool Running { get; }
+
+        /// <summary>
         /// Starts the service.
         /// </summary>
         void StartService();
+
+        /// <summary>
+        /// Restarts the service.
+        /// </summary>
+        /// <param name="cancel">if set to <c>true</c> [cancel].</param>
+        void RestartService(bool cancel = false);
 
         /// <summary>
         /// Stops the service.

@@ -21,7 +21,7 @@ namespace HSA.InfoSys.CrawlerServiceController
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
-            var crawlerService = WCFControllerClient<ICrawlerService>.ClientProxy;
+            var crawlerService = WCFControllerClient<ICrawlerService>.GetClientProxy;
 
             switch (args[0])
             {

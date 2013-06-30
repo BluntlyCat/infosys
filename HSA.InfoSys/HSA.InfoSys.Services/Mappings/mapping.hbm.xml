@@ -69,77 +69,79 @@
     <joined-subclass name="EmailNotifierSettings" table="EmailNotifierSettings">
       <key column="EmailNotifierSettingsGUID" unique="true" />
 
+      <!-- Public settings -->
+      <property name="SmtpServer" type="string" length ="100" not-null="true" />
       <property name="SmtpPort" type="int" length="3" not-null="true"/>
-
-      <property name="SmtpServer" type="string" length ="40" not-null="true" />
-      <property name="MailFrom" type="string" length ="40" not-null="true" />
+      <property name="MailFrom" type="string" length ="100" not-null="true" />
     </joined-subclass>
 
     <!-- NutchControllerClientSettings -->
     <joined-subclass name="NutchControllerClientSettings" table="NutchControllerClientSettings">
       <key column="NutchControllerClientSettingsGUID" unique="true" />
 
-      <property name="SolrServer" type="string" length ="100" not-null="true" />
+      <!-- Public settings -->
+      <property name="HomePath" type="string" length ="100" not-null="true" />
+      <property name="NutchPath" type="string" length ="100" not-null="true" />
+      <property name="NutchCommand" type="string" length ="40" not-null="true" />
 
       <property name="NutchClients" type="string" >
         <column name="NutchClients" sql-type="text" not-null="true" />
       </property>
-      
-      <property name="BaseCrawlPath" type="string" length ="100" not-null="true" />
-      <property name="BaseUrlPath" type="string" length ="100" not-null="true" />
-      <property name="CertificatePath" type="string" length ="100" not-null="true" />
-      <property name="HomePath" type="string" length ="100" not-null="true" />
+
+      <property name="CrawlDepth" type="int" not-null="true"/>
+      <property name="CrawlTopN" type="int" not-null="true"/>
+
+      <property name="SolrServer" type="string" length ="100" not-null="true" />
+
       <property name="JavaHome" type="string" length ="100" not-null="true" />
-      <property name="SeedFileName" type="string" length ="40" not-null="true" />
-      
-      <property name="PrefixPath" type="string" length ="100" not-null="true" />
-      <property name="PrefixFileName" type="string" length ="100" not-null="true" />
-      <property name="PrefixFormat" type="string" length ="100" not-null="true" />
+      <property name="CertificatePath" type="string" length ="100" not-null="true" />
       <property name="Prefix" type="string" length ="100" not-null="true" />
+      
+      <!-- Non public settings -->
+      <property name="CrawlRequest" type="string" length ="40" not-null="true" />
+      <property name="SeedFileName" type="string" length ="40" not-null="true" />
+      <property name="PrefixFileName" type="string" length ="100" not-null="true" />
+      <property name="BaseUrlPath" type="string" length ="100" not-null="true" />
+      <property name="BaseCrawlPath" type="string" length ="100" not-null="true" />
       
       <property name="PathFormatTwo" type="string" length ="40" not-null="true" />
       <property name="PathFormatThree" type="string" length ="40" not-null="true" />
       <property name="PathFormatFour" type="string" length ="40" not-null="true" />
-      
-      <property name="NutchCommand" type="string" length ="40" not-null="true" />
-      <property name="CrawlRequest" type="string" length ="40" not-null="true" />
-      
-      <property name="CrawlDepth" type="int" not-null="true"/>
-      <property name="CrawlTopN" type="int" not-null="true"/>
+
+      <property name="PrefixFormat" type="string" length ="100" not-null="true" />
     </joined-subclass>
 
     <!-- SolrSearchClientSettings -->
     <joined-subclass name="SolrSearchClientSettings" table="SolrSearchClientSettings">
       <key column="SolrSearchClientSettingsGUID" unique="true" />
 
-      <property name="Host" type="string" length ="40" not-null="true" />
+      <!-- Public settings -->
+      <property name="Host" type="string" length ="100" not-null="true" />
       <property name="Port" type="int" not-null="true"/>
 
       <property name="Collection" type="string" length ="40" not-null="true" />
+      <property name="FilterQuery" type="string" length ="100" not-null="true" />
+
+      <!-- Non public settings -->
       <property name="QueryFormat" type="string" length ="100" not-null="true" />
       <property name="RequestFormat" type="string" length ="100" not-null="true" />
-
-      <property name="FilterQueryFormat" type="string" length ="100" not-null="true" />
-      <property name="Filter" type="string" length ="512" not-null="false" />
     </joined-subclass>
 
-    <!-- WCFControllerAddressesSettings -->
-    <joined-subclass name="WCFControllerAddressesSettings" table="WCFControllerAddressesSettings">
-      <key column="SolrSearchClientSettingsGUIDWCFControllerAddressesSettingsGUID" unique="true" />
-
-      <property name="HttpAddress" type="string" length ="40" not-null="true" />
-      <property name="NetTcpAddress" type="string" length ="40" not-null="true" />
+    <!-- WCF Settings -->
+    <joined-subclass name="WCFSettings" table="WCFSettings">
+      <key column="WCFSettingsGUID" unique="true" />
       
+      <!-- Public settings -->
+      <property name="HttpHost" type="string" length ="100" not-null="true" />
       <property name="HttpPort" type="int" not-null="true"/>
+      <property name="HttpPath" type="string" length ="100" not-null="true" />
+
+      <property name="NetTcpHost" type="string" length ="100" not-null="true" />
       <property name="NetTcpPort" type="int" not-null="true"/>
-    </joined-subclass>
+      <property name="NetTcpPath" type="string" length ="100" not-null="true" />
 
-    <!-- WCFControllerHostSettings -->
-    <joined-subclass name="WCFControllerHostSettings" table="WCFControllerHostSettings">
-      <key column="WCFControllerHostSettingsGUID" unique="true" />
-
-      <property name="CertificatePath" type="string" length ="40" not-null="true" />
-      <property name="CertificatePassword" type="string" length ="40" not-null="true" />
+      <property name="CertificatePath" type="string" length ="100" not-null="true" />
+      <property name="CertificatePassword" type="string" length ="4096" not-null="true" />
     </joined-subclass>
   </class>
 </hibernate-mapping>

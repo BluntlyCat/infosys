@@ -12,6 +12,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     using System.Threading;
     using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Exceptions;
+    using HSA.InfoSys.Common.Extensions;
     using HSA.InfoSys.Common.Logging;
     using log4net;
     using NHibernate;
@@ -32,7 +33,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// The mutex for data base session.
         /// </summary>
-        private static Mutex mutex = new Mutex();
+        private static Mutex dbButex = new Mutex();
 
 #if !MONO
         /// <summary>
@@ -47,11 +48,24 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         private static IDBManager dbManager;
 
         /// <summary>
+        /// The is database ready.
+        /// </summary>
+        private static bool isDatabaseReady = false;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="DBManager"/> class.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
         private DBManager(Guid serviceGUID) : base(serviceGUID)
         {
+            try
+            {
+                isDatabaseReady = true;
+            }
+            catch (Exception e)
+            {
+                throw new DBManagerConfigurationException(e, this.GetType().Name);
+            }
         }
 
         /// <summary>
@@ -65,14 +79,40 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         {
             get
             {
-                if (SessionFactory == null)
+                if (dbManager == null)
                 {
-                    ConfigureSession();
+                    dbManager = ManagerFactory;
                 }
 
                 Log.Debug(Properties.Resources.DBSESSION_OPEN_SESSION);
 
                 return SessionFactory.OpenSession();
+            }
+        }
+
+        /// <summary>
+        /// Gets the DB manager and ensures that the configuration
+        /// will be executed only once and that there is only one db manager.
+        /// </summary>
+        /// <param name="serviceGUID">The service GUID.</param>
+        /// <returns>
+        /// The database manager service.
+        /// </returns>
+        public static IDBManager ManagerFactory
+        {
+            get
+            {
+                dbButex.WaitOne();
+
+                if (dbManager == null)
+                {
+                    Log.Debug(Properties.Resources.DBMANAGER_NO_MANAGER_FOUND);
+                    dbManager = new DBManager(Guid.NewGuid());
+                }
+
+                dbButex.ReleaseMutex();
+
+                return dbManager;
             }
         }
 
@@ -83,25 +123,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// The session factory.
         /// </value>
         private static ISessionFactory SessionFactory { get; set; }
-
-        /// <summary>
-        /// Gets the DB manager and ensures that the configuration
-        /// will be executed only once and that there is only one db manager.
-        /// </summary>
-        /// <param name="serviceGUID">The service GUID.</param>
-        /// <returns>
-        /// The database manager service.
-        /// </returns>
-        public static IDBManager ManagerFactory(Guid serviceGUID)
-        {
-            if (dbManager == null)
-            {
-                Log.Debug(Properties.Resources.DBMANAGER_NO_MANAGER_FOUND);
-                dbManager = new DBManager(serviceGUID);
-            }
-
-            return dbManager;
-        }
 
         #region Settings
 
@@ -114,16 +135,23 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </returns>
         public T GetSettingsFor<T>() where T : Entity
         {
-            T setting;
-
-            using (ISession session = Session)
+            try
             {
-                setting = session.QueryOver<T>()
-                    .Where(s => s.Type == typeof(T).Name)
-                    .SingleOrDefault() as T;
-            }
+                T setting;
 
-            return setting;
+                using (ISession session = Session)
+                {
+                    setting = session.QueryOver<T>()
+                        .Where(s => s.Type == typeof(T).Name)
+                        .SingleOrDefault() as T;
+                }
+
+                return setting;
+            }
+            catch (Exception e)
+            {
+                throw new DBManagerAccessException(e, "GetSettingsFor<T>()");
+            }
         }
 
         /// <summary>
@@ -133,8 +161,24 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// The mail settings.
         /// </returns>
         public EmailNotifierSettings GetMailSettings()
-        { 
-            return this.GetSettingsFor<EmailNotifierSettings>();
+        {
+            try
+            {
+                var setting = this.GetSettingsFor<EmailNotifierSettings>();
+
+                if (setting == null)
+                {
+                    var newSetting = new EmailNotifierSettings();
+                    var guid = dbManager.AddEntity(newSetting);
+                    return dbManager.GetEntity(guid) as EmailNotifierSettings;
+                }
+
+                return setting;
+            }
+            catch (Exception e)
+            {
+                throw new DBManagerAccessException(e, "GetMailSettings()");
+            }
         }
 
         /// <summary>
@@ -145,7 +189,23 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </returns>
         public NutchControllerClientSettings GetNutchClientSettings()
         {
-            return this.GetSettingsFor<NutchControllerClientSettings>();
+            try
+            {
+                var setting = this.GetSettingsFor<NutchControllerClientSettings>();
+
+                if (setting == null)
+                {
+                    var newSetting = new NutchControllerClientSettings();
+                    var guid = dbManager.AddEntity(newSetting);
+                    return dbManager.GetEntity(guid) as NutchControllerClientSettings;
+                }
+
+                return setting;
+            }
+            catch (Exception e)
+            {
+                throw new DBManagerAccessException(e, "GetNutchClientSettings()");
+            }
         }
 
         /// <summary>
@@ -156,18 +216,23 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </returns>
         public SolrSearchClientSettings GetSolrClientSettings()
         {
-            return this.GetSettingsFor<SolrSearchClientSettings>();
-        }
+            try
+            {
+                var setting = this.GetSettingsFor<SolrSearchClientSettings>();
 
-        /// <summary>
-        /// Gets the WCF addresses settings.
-        /// </summary>
-        /// <returns>
-        /// The WCF addresses settings.
-        /// </returns>
-        public WCFControllerAddressesSettings GetWCFAddressesSettings()
-        {
-            return this.GetSettingsFor<WCFControllerAddressesSettings>();
+                if (setting == null)
+                {
+                    var newSetting = new SolrSearchClientSettings();
+                    var guid = dbManager.AddEntity(newSetting);
+                    return dbManager.GetEntity(guid) as SolrSearchClientSettings;
+                }
+
+                return setting;
+            }
+            catch (Exception e)
+            {
+                throw new DBManagerAccessException(e, "GetSolrClientSettings()");
+            }
         }
 
         /// <summary>
@@ -176,9 +241,25 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <returns>
         /// The WCF controller settings.
         /// </returns>
-        public WCFControllerHostSettings GetWCFControllerSettings()
+        public WCFSettings GetWCFSettings()
         {
-            return this.GetSettingsFor<WCFControllerHostSettings>();
+            try
+            {
+                var setting = this.GetSettingsFor<WCFSettings>();
+
+                if (setting == null)
+                {
+                    var newSetting = new WCFSettings();
+                    var guid = dbManager.AddEntity(newSetting);
+                    return dbManager.GetEntity(guid) as WCFSettings;
+                }
+
+                return setting;
+            }
+            catch (Exception e)
+            {
+                throw new DBManagerAccessException(e, "GetWCFSettings()");
+            }
         }
 
         #endregion
@@ -220,23 +301,30 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </returns>
         public string[] GetAllUrls()
         {
-            var orgUnitConfigs = this.GetOrgUnitConfigurations();
-            var urlList = new List<string>();
-
-            foreach (var config in orgUnitConfigs)
+            try
             {
-                if (config.URLS != null)
-                {
-                    var urls = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(config.URLS);
+                var urlList = new List<string>();
+                var orgUnitConfigs = this.GetOrgUnitConfigurations();
 
-                    foreach (var url in urls)
+                foreach (var config in orgUnitConfigs)
+                {
+                    if (config.URLS != null)
                     {
-                        urlList.Add(url);
+                        var urls = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(config.URLS);
+
+                        foreach (var url in urls)
+                        {
+                            urlList.Add(url);
+                        }
                     }
                 }
-            }
 
-            return urlList.ToArray();
+                return urlList.ToArray();
+            }
+            catch (Exception e)
+            {
+                throw new DBManagerAccessException(e, "GetAllUrls()");
+            }
         }
 
         /// <summary>
@@ -247,15 +335,22 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <returns>The GUID of the added entity.</returns>
         public Guid AddEntity(Entity entity)
         {
-            using (ISession session = Session)
-            using (ITransaction transaction = session.BeginTransaction())
+            try
             {
-                session.Save(entity);
-                transaction.Commit();
-                Log.Info(Properties.Resources.DBMANAGER_ADD_ENTITY);
-            }
+                using (ISession session = Session)
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    session.Save(entity);
+                    transaction.Commit();
+                    Log.InfoFormat(Properties.Resources.DBMANAGER_ADD_ENTITY, entity.Type);
+                }
 
-            return entity.EntityId;
+                return entity.EntityId;
+            }
+            catch (Exception e)
+            {
+                throw new DBManagerAccessException(e, "AddEntity(Entity entity)");
+            }
         }
 
         /// <summary>
@@ -265,15 +360,16 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <param name="entities">The entities.</param>
         public void AddEntitys(params Entity[] entities)
         {
-            foreach (var entity in entities)
+            try
             {
-                using (ISession session = Session)
-                using (ITransaction transaction = session.BeginTransaction())
+                foreach (var entity in entities)
                 {
-                    session.Save(entity);
-                    transaction.Commit();
-                    Log.Info(Properties.Resources.DBMANAGER_ADD_ENTITY);
+                    this.AddEntity(entity);
                 }
+            }
+            catch (Exception e)
+            {
+                throw new DBManagerAccessException(e, "AddEntitys(params Entity[] entities)");
             }
         }
 
@@ -284,16 +380,23 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <returns>The GUID of the updated entity.</returns>
         public Guid UpdateEntity(Entity entity)
         {
-            using (ISession session = Session)
+            try
             {
-                using (ITransaction transaction = session.BeginTransaction())
+                using (ISession session = Session)
                 {
-                    session.Update(entity);
-                    transaction.Commit();
-                    Log.Info(Properties.Resources.DBMANAGER_UPDATE_ENTITY);
-                }
+                    using (ITransaction transaction = session.BeginTransaction())
+                    {
+                        session.Update(entity);
+                        transaction.Commit();
+                        Log.InfoFormat(Properties.Resources.DBMANAGER_UPDATE_ENTITY, entity.Type);
+                    }
 
-                return entity.EntityId;
+                    return entity.EntityId;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DBManagerAccessException(e, "UpdateEntity(Entity entity)");
             }
         }
 
@@ -303,14 +406,21 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <param name="entity">The entity.</param>
         public void DeleteEntity(Entity entity)
         {
-            using (ISession session = Session)
+            try
             {
-                using (ITransaction transaction = session.BeginTransaction())
+                using (ISession session = Session)
                 {
-                    session.Delete(entity);
-                    transaction.Commit();
-                    Log.Info(Properties.Resources.DBMANAGER_DELETE_ENTITY);
+                    using (ITransaction transaction = session.BeginTransaction())
+                    {
+                        session.Delete(entity);
+                        transaction.Commit();
+                        Log.InfoFormat(Properties.Resources.DBMANAGER_DELETE_ENTITY, entity);
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                throw new DBManagerAccessException(e, "DeleteEntity(Entity entity)");
             }
         }
 
@@ -324,21 +434,28 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </returns>
         public Entity GetEntity(Guid entityGUID, string[] types = null)
         {
-            Entity entity;
-            using (ISession session = Session)
-            using (ITransaction transaction = session.BeginTransaction())
+            try
             {
-                entity = session.Get<Entity>(entityGUID);
-
-                if (types != null)
+                Entity entity;
+                using (ISession session = Session)
+                using (ITransaction transaction = session.BeginTransaction())
                 {
-                    entity.Unproxy(types);
+                    entity = session.Get<Entity>(entityGUID);
+
+                    if (types != null)
+                    {
+                        entity.Unproxy(types);
+                    }
+
+                    Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ENTITY, entity.GetType().Name, entity, entityGUID);
                 }
 
-                Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ENTITY, entity.GetType(), entity, entityGUID);
+                return entity;
             }
-
-            return entity;
+            catch (Exception e)
+            {
+                throw new DBManagerAccessException(e, "GetEntity(Guid entityGUID, string[] types = null)");
+            }
         }
 
         /// <summary>
@@ -351,25 +468,32 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </returns>
         public OrgUnit[] GetOrgUnitsByUserID(int userID, string[] types = null)
         {
-            using (ISession session = Session)
-            using (ITransaction transaction = session.BeginTransaction())
+            try
             {
-                var orgUnits = session.QueryOver<OrgUnit>()
-                    .Where(x => x.UserId == userID)
-                    .List<OrgUnit>() as List<OrgUnit>;
-
-                if (types != null)
+                using (ISession session = Session)
+                using (ITransaction transaction = session.BeginTransaction())
                 {
-                    foreach (var orgUnit in orgUnits)
+                    var orgUnits = session.QueryOver<OrgUnit>()
+                        .Where(x => x.UserId == userID)
+                        .List<OrgUnit>() as List<OrgUnit>;
+
+                    if (types != null)
                     {
-                        orgUnit.Unproxy(types);
-                        Log.DebugFormat("OrgUnitConfig after call to unproxy: {0}", orgUnit.OrgUnitConfig);
+                        foreach (var orgUnit in orgUnits)
+                        {
+                            orgUnit.Unproxy(types);
+                            Log.DebugFormat(Properties.Resources.DBMANAGER_UNPROXY_ORGUNITS, orgUnit.OrgUnitConfig);
+                        }
                     }
+
+                    Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ORGUNIT_BY_USERID, orgUnits.OrgUnitsToString(), userID);
+
+                    return orgUnits.ToArray();
                 }
-
-                Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ORGUNIT_BY_USERID, orgUnits, userID);
-
-                return orgUnits.ToArray();
+            }
+            catch (Exception e)
+            {
+                throw new DBManagerAccessException(e, "GetOrgUnitsByUserID(int userID, string[] types = null)");
             }
         }
 
@@ -382,15 +506,22 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </returns>
         public Component[] GetComponentsByOrgUnitId(Guid orgUnitGuid)
         {
-            using (ISession session = Session)
+            try
             {
-                var components = session.QueryOver<Component>()
-                    .Where(x => x.OrgUnitGUID == orgUnitGuid)
-                    .List<Component>() as List<Component>;
+                using (ISession session = Session)
+                {
+                    var components = session.QueryOver<Component>()
+                        .Where(x => x.OrgUnitGUID == orgUnitGuid)
+                        .List<Component>() as List<Component>;
 
-                Log.InfoFormat(Properties.Resources.DBMANAGER_GET_COMPONENT_BY_ORGUNIT_ID, components, orgUnitGuid);
+                    Log.InfoFormat(Properties.Resources.DBMANAGER_GET_COMPONENT_BY_ORGUNIT_ID, components.ComponentsToString(), orgUnitGuid);
 
-                return components.ToArray();
+                    return components.ToArray();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DBManagerAccessException(e, "GetComponentsByOrgUnitId(Guid orgUnitGuid)");
             }
         }
 
@@ -401,15 +532,22 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <returns>A list of results which belongs to the given component.</returns>
         public Result[] GetResultsByComponentId(Guid componentGUID)
         {
-            using (ISession session = Session)
+            try
             {
-                var results = session.QueryOver<Result>()
-                    .Where(x => x.ComponentGUID == componentGUID)
-                    .List<Result>() as List<Result>;
+                using (ISession session = Session)
+                {
+                    var results = session.QueryOver<Result>()
+                        .Where(x => x.ComponentGUID == componentGUID)
+                        .List<Result>() as List<Result>;
 
-                Log.InfoFormat(Properties.Resources.DBMANAGER_GET_RESULTS_BY_COMPONENT_ID, results, componentGUID);
+                    Log.InfoFormat(Properties.Resources.DBMANAGER_GET_RESULTS_BY_COMPONENT_ID, results.ResultsToString(), componentGUID);
 
-                return results.ToArray();
+                    return results.ToArray();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DBManagerAccessException(e, "GetResultsByComponentId(Guid componentGUID)");
             }
         }
 
@@ -421,11 +559,18 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </returns>
         public OrgUnitConfig[] GetOrgUnitConfigurations()
         {
-            using (ISession session = Session)
+            try
             {
-                var configs = session.QueryOver<OrgUnitConfig>().List<OrgUnitConfig>() as List<OrgUnitConfig>;
+                using (ISession session = Session)
+                {
+                    var configs = session.QueryOver<OrgUnitConfig>().List<OrgUnitConfig>() as List<OrgUnitConfig>;
 
-                return configs.ToArray();
+                    return configs.ToArray();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DBManagerAccessException(e, "GetOrgUnitConfigurations()");
             }
         }
 
@@ -561,39 +706,46 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </returns>
         public List<int> GetResultIndexes(Guid componentGUID)
         {
-            Log.InfoFormat(Properties.Resources.DBMANAGER_GET_RESULTS_BY_COMPONENT_ID, componentGUID);
-
-            results = this.GetResultsByComponentId(componentGUID);
-
-            var maxBytes = Math.Pow(2, 15);
-            long byteCount = this.GetByteCount(results);
-            int requests = this.GetAmountOfRequests(byteCount, maxBytes);
-            long byteAmount = 0;
-
-            int index = 0;
-            List<int> indexes = new List<int>();
-            indexes.Add(0);
-
-            foreach (var result in results)
+            try
             {
-                byteAmount += result.SizeOf();
+                Log.InfoFormat(Properties.Resources.DBMANAGER_GET_RESULTS_BY_COMPONENT_ID, componentGUID);
 
-                if (byteAmount > maxBytes)
+                results = this.GetResultsByComponentId(componentGUID);
+
+                var maxBytes = Math.Pow(2, 15);
+                long byteCount = this.GetByteCount(results);
+                int requests = this.GetAmountOfRequests(byteCount, maxBytes);
+                long byteAmount = 0;
+
+                int index = 0;
+                List<int> indexes = new List<int>();
+                indexes.Add(0);
+
+                foreach (var result in results)
                 {
-                    var i = index - 1;
+                    byteAmount += result.SizeOf();
 
-                    indexes.Add(i);
-                    byteAmount = 0;
+                    if (byteAmount > maxBytes)
+                    {
+                        var i = index - 1;
 
-                    Log.DebugFormat(Properties.Resources.DBMANAGER_BYTEAMOUNT_GREATER_THAN_MAX_BYTES, byteAmount, maxBytes, i);
+                        indexes.Add(i);
+                        byteAmount = 0;
+
+                        Log.DebugFormat(Properties.Resources.DBMANAGER_BYTEAMOUNT_GREATER_THAN_MAX_BYTES, byteAmount, maxBytes, i);
+                    }
+
+                    index++;
                 }
 
-                index++;
+                indexes.Add(results.Length);
+
+                return indexes;
             }
-
-            indexes.Add(results.Length);
-
-            return indexes;
+            catch (Exception e)
+            {
+                throw new DBManagerAccessException(e, "GetResultIndexes(Guid componentGUID)");
+            }
         }
 
         /// <summary>
@@ -610,28 +762,35 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </returns>
         public Result[] GetResultsByRequestIndex(int first, int last)
         {
-            Log.DebugFormat(Properties.Resources.DBMANAGER_SPLITTED_RESULTS_FROM_TO, first, last);
-
-            var tmp = new Result[last - first];
-            var splittedResults = new List<Result>();
-
-            for (int i = first; i < last; i++)
+            try
             {
-                try
-                {
-                    splittedResults.Add(results[i]);
-                }
-                catch (IndexOutOfRangeException ior)
-                {
-                    Log.ErrorFormat(Properties.Resources.LOG_INDEX_OUT_OF_RANGE, ior);
-                }
-                catch (Exception e)
-                {
-                    Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
-                }
-            }
+                Log.DebugFormat(Properties.Resources.DBMANAGER_SPLITTED_RESULTS_FROM_TO, first, last);
 
-            return splittedResults.ToArray();
+                var tmp = new Result[last - first];
+                var splittedResults = new List<Result>();
+
+                for (int i = first; i < last; i++)
+                {
+                    try
+                    {
+                        splittedResults.Add(results[i]);
+                    }
+                    catch (IndexOutOfRangeException ior)
+                    {
+                        Log.ErrorFormat(Properties.Resources.LOG_INDEX_OUT_OF_RANGE, ior);
+                    }
+                    catch (Exception e)
+                    {
+                        Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+                    }
+                }
+
+                return splittedResults.ToArray();
+            }
+            catch (Exception e)
+            {
+                throw new DBManagerAccessException(e, "GetResultsByRequestIndex(int first, int last)");
+            }
         }
 #endif
 
@@ -640,8 +799,10 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         public override void StartService()
         {
-            DBManager.Initialize();
+            ConfigureSession();
             base.StartService();
+
+            Log.Debug(Properties.Resources.DBSESSION_OPEN_SESSION);
         }
 
         /// <summary>
@@ -666,32 +827,26 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Initializes this instance of DBManager.
-        /// </summary>
-        private static void Initialize()
-        {
-            if (SessionFactory == null)
-            {
-                ConfigureSession();
-            }
-
-            Log.Debug(Properties.Resources.DBSESSION_OPEN_SESSION);
-        }
-
-        /// <summary>
         /// Configures the session.
         /// </summary>
         private static void ConfigureSession()
         {
-            var configuration = new Configuration();
+            try
+            {
+                var configuration = new Configuration();
 
-            configuration.Configure();
-            configuration.AddAssembly(typeof(DBManager).Assembly);
+                configuration.Configure();
+                configuration.AddAssembly(typeof(DBManager).Assembly);
 
-            SessionFactory = configuration.BuildSessionFactory();
-            new SchemaExport(configuration).Drop(false, false);
+                SessionFactory = configuration.BuildSessionFactory();
+                new SchemaExport(configuration).Drop(false, false);
 
-            Log.Debug(Properties.Resources.DBSESSION_NHIBERNATE_CONFIG_READY);
+                Log.Debug(Properties.Resources.DBSESSION_NHIBERNATE_CONFIG_READY);
+            }
+            catch (Exception e)
+            {
+                throw new DBManagerAccessException(e, "ConfigureSession()");
+            }
         }
 
 #if !MONO

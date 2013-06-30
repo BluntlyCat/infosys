@@ -29,11 +29,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private static readonly ILog Log = Logger<string>.GetLogger("NutchControllerClient");
 
         /// <summary>
-        /// The settings.
-        /// </summary>
-        private NutchControllerClientSettings settings;
-
-        /// <summary>
         /// The SSH client.
         /// </summary>
         private SshClient client;
@@ -49,6 +44,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private string username;
 
         /// <summary>
+        /// The connection string
+        /// </summary>
+        private string connectionString;
+
+        /// <summary>
         /// The SSH connection info.
         /// </summary>
         private PrivateKeyConnectionInfo sshConnectionInfo;
@@ -62,41 +62,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CREATE_NEW, connectionString);
 
-            this.settings = settings;
-
-            this.homeDir = this.settings.HomePath;
             this.URLs = new List<string>();
+            this.connectionString = connectionString;
 
-            try
-            {
-                var connectionArgs = connectionString.Split('@');
-                this.Hostname = connectionArgs[1];
-                this.username = connectionArgs[0];
-
-                var key = new PrivateKeyFile(this.settings.CertificatePath);
-
-                this.sshConnectionInfo = new PrivateKeyConnectionInfo(this.Hostname, this.username, key);
-            }
-            catch (Exception e)
-            {
-                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
-            }
-
-            this.URLPath = string.Format(
-                this.settings.PathFormatThree,
-                this.homeDir,
-                this.settings.BaseUrlPath,
-                this.settings.BaseCrawlPath);
-
-            this.PrefixFile = string.Format(
-                this.settings.PathFormatTwo,
-                this.settings.PrefixPath,
-                this.settings.PrefixFileName);
-
-            this.SeedFile = string.Format(
-                this.settings.PathFormatTwo,
-                this.URLPath,
-                this.settings.SeedFileName);
+            this.InitializeClient(settings);
         }
 
         /// <summary>
@@ -164,9 +133,43 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         public string CrawlCommand { get; private set; }
 
         /// <summary>
+        /// Initializes the client.
+        /// </summary>
+        /// <param name="settings">The settings.</param>
+        public void InitializeClient(NutchControllerClientSettings settings)
+        {
+            if (settings != null)
+            {
+                this.homeDir = settings.HomePath;
+
+                this.URLPath = string.Format(
+                    settings.PathFormatThree,
+                    this.homeDir,
+                    settings.BaseUrlPath,
+                    settings.BaseCrawlPath);
+
+                this.PrefixFile = string.Format(
+                    settings.PathFormatTwo,
+                    settings.NutchPath,
+                    settings.PrefixFileName);
+
+                this.SeedFile = string.Format(
+                    settings.PathFormatTwo,
+                    this.URLPath,
+                    settings.SeedFileName);
+
+                if (this.sshConnectionInfo == null)
+                {
+                    this.InitializeSSHClient(settings);
+                }
+            }
+        }
+
+        /// <summary>
         /// Starts the crawl.
         /// </summary>
-        public void StartCrawl()
+        /// <param name="settings">The settings.</param>
+        public void StartCrawl(NutchControllerClientSettings settings)
         {
             if (this.IsClientUsable)
             {
@@ -174,9 +177,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                 try
                 {
-                    this.RunCommand("echo '' > crawler.log");
+                    if (this.IsFileExistent("-f", "crawler.log"))
+                    {
+                        this.RunCommand("mv crawler.log crawler-$(date +%Y-%m-%d-%H-%M).log");
+                    }
 
-                    var command = this.RunCommand(string.Format("{0} >> crawler.log", this.CrawlCommand));
+                    var command = this.RunCommand(string.Format("{0} > crawler.log", this.CrawlCommand));
 
                     if (!command.Error.Equals(string.Empty))
                     {
@@ -184,9 +190,16 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                             Properties.Resources.NUTCH_CONTROLLER_CLIENT_NUTCH_COMMAND_ERROR,
                             this.Hostname,
                             command.Error);
+
+                        var hadoopLog = this.GetLogfileContent(100, string.Format("{0}{1}", settings.NutchPath, "/logs/hadoop.log"));
+
+                        Log.ErrorFormat(
+                            Properties.Resources.NUTCH_CONTROLLER_CLIENT_HADOOP_LOG,
+                            this.Hostname,
+                            hadoopLog);
                     }
 
-                    var crawlerLog = this.RunCommand("cat crawler.log").Result;
+                    var crawlerLog = this.GetLogfileContent(100, "crawler.log");
                     Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CRAWLER_LOG, this.Hostname, crawlerLog);
 
                     Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_CRAWL_FINISHED, this.Hostname);
@@ -201,29 +214,30 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Creates the crawl process.
         /// </summary>
-        public void SetCrawlProcess()
+        /// <param name="settings">The settings.</param>
+        public void SetCrawlProcess(NutchControllerClientSettings settings)
         {
             if (this.IsClientUsable)
             {
-                this.CreateUserDir(this.settings.BaseCrawlPath);
-                this.AddURL(this.settings.BaseCrawlPath, this.URLs);
+                this.CreateUserDir(settings);
+                this.AddURL(settings);
 
                 var urlPath = string.Format(
-                    this.settings.PathFormatThree,
+                    settings.PathFormatThree,
                     this.homeDir,
-                    this.settings.BaseUrlPath,
-                    this.settings.BaseCrawlPath);
+                    settings.BaseUrlPath,
+                    settings.BaseCrawlPath);
 
                 string crawlRequest =
                     string.Format(
-                    this.settings.CrawlRequest,
+                    settings.CrawlRequest,
                     urlPath,
-                    this.settings.SolrServer,
-                    this.settings.CrawlDepth,
-                    this.settings.CrawlTopN);
+                    settings.SolrServer,
+                    settings.CrawlDepth,
+                    settings.CrawlTopN);
 
-                var setJavaHome = string.Format("export JAVA_HOME='{0}'", this.settings.JavaHome);
-                this.CrawlCommand = string.Format("{0} && {1} {2}", setJavaHome, this.settings.NutchCommand, crawlRequest);
+                var setJavaHome = string.Format("export JAVA_HOME='{0}'", settings.JavaHome);
+                this.CrawlCommand = string.Format("{0} && {1} {2}", setJavaHome, settings.NutchCommand, crawlRequest);
 
                 Log.DebugFormat(
                     Properties.Resources.NUTCH_CONTROLLER_CLIENT_CRAWL_PROCESS_CREATED,
@@ -235,11 +249,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Checks the client for usage.
         /// </summary>
-        public void CheckClientForUsage()
+        /// <param name="settings">The settings.</param>
+        public void CheckClientForUsage(NutchControllerClientSettings settings)
         {
-            this.IsClientUsable = this.IsNutchInstalled()
+            this.IsClientUsable = this.IsNutchInstalled(settings)
                 && this.IsFileExistent("-f", this.PrefixFile)
-                && this.IsFileExistent("-d", this.settings.JavaHome);
+                && this.IsFileExistent("-d", settings.JavaHome);
 
             if (this.IsClientUsable)
             {
@@ -274,44 +289,68 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
+        /// Initializes the SSH client.
+        /// </summary>
+        /// <param name="settings">The settings.</param>
+        private void InitializeSSHClient(NutchControllerClientSettings settings)
+        {
+            try
+            {
+                var connectionArgs = this.connectionString.Split('@');
+                this.Hostname = connectionArgs[1];
+                this.username = connectionArgs[0];
+
+                var key = new PrivateKeyFile(settings.CertificatePath);
+
+                this.sshConnectionInfo = new PrivateKeyConnectionInfo(this.Hostname, this.username, key);
+            }
+            catch (Exception e)
+            {
+                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+            }
+        }
+
+        /// <summary>
         /// Adds the URL.
         /// </summary>
-        /// <param name="folder">The folder.</param>
-        /// <param name="urls">The URLs.</param>
-        private void AddURL(string folder, IList<string> urls)
+        /// <param name="settings">The settings.</param>
+        private void AddURL(NutchControllerClientSettings settings)
         {
             string userURLPath = string.Format(
-                this.settings.PathFormatThree,
+                settings.PathFormatThree,
                 this.homeDir,
-                this.settings.BaseUrlPath,
-                folder);
+                settings.BaseUrlPath,
+                settings.BaseCrawlPath);
 
             Log.InfoFormat(
                 Properties.Resources.NUTCH_CONTROLLER_CLIENT_USER_PATH_IS,
                 this.Hostname,
                 userURLPath);
 
-            var prefixUrls = this.GetKnownPrefixes(urls);
+            var prefixUrls = this.GetKnownPrefixes(settings, this.URLs);
 
             this.AddURLToFile(this.PrefixFile, FileMode.Append, prefixUrls.ToArray());
-            this.AddURLToFile(this.SeedFile, FileMode.Create, urls);
+            this.AddURLToFile(this.SeedFile, FileMode.Create, this.URLs);
         }
 
         /// <summary>
         /// Gets the known prefixes.
         /// </summary>
+        /// <param name="settings">The settings.</param>
         /// <param name="urls">The URLs.</param>
-        /// <returns>A list of already known prefixes.</returns>
-        private IList<string> GetKnownPrefixes(IList<string> urls)
+        /// <returns>
+        /// A list of already known prefixes.
+        /// </returns>
+        private IList<string> GetKnownPrefixes(NutchControllerClientSettings settings, IList<string> urls)
         {
             var prefixUrls = new List<string>();
-            var knownPrefixes = this.GetFileContent(this.settings.Prefix);
+            var knownPrefixes = this.GetFileContent(settings.Prefix);
 
             foreach (string url in urls)
             {
                 string prefix = string.Format(
-                    this.settings.PrefixFormat,
-                    this.settings.Prefix,
+                    settings.PrefixFormat,
+                    settings.Prefix,
                     url);
 
                 if (!knownPrefixes.Contains(prefix))
@@ -337,14 +376,14 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Creates the user directory.
         /// </summary>
-        /// <param name="folder">The folder.</param>
-        private void CreateUserDir(string folder)
+        /// <param name="settings">The settings.</param>
+        private void CreateUserDir(NutchControllerClientSettings settings)
         {
             string newDirectory = string.Format(
-                this.settings.PathFormatThree,
+                settings.PathFormatThree,
                 this.homeDir,
-                this.settings.BaseUrlPath,
-                folder);
+                settings.BaseUrlPath,
+                settings.BaseCrawlPath);
 
             Log.InfoFormat(
                 Properties.Resources.NUTCH_CONTROLLER_CLIENT_CREATE_DIRECTORY,
@@ -468,16 +507,17 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Determines whether [is nutch installed].
         /// </summary>
+        /// <param name="settings">The settings.</param>
         /// <returns>
         ///   <c>true</c> if [is nutch installed]; otherwise, <c>false</c>.
         /// </returns>
-        private bool IsNutchInstalled()
+        private bool IsNutchInstalled(NutchControllerClientSettings settings)
         {
             bool installed = false;
 
             try
             {
-                installed = this.RunCommand("nutch").ExitStatus == 1;
+                installed = this.RunCommand(settings.NutchCommand).ExitStatus == 1;
             }
             catch (Exception e)
             {
@@ -527,6 +567,28 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             }
 
             return exists;
+        }
+
+        /// <summary>
+        /// Gets the content of the log file.
+        /// </summary>
+        /// <param name="n">The n lines of the log file.</param>
+        /// <param name="logFile">The log file.</param>
+        /// <returns>
+        /// The last n lines of the specified log file.
+        /// </returns>
+        private string GetLogfileContent(int n, string logFile)
+        {
+            var cmd = this.RunCommand(string.Format("tail -n {0} {1} | cat -n", n, logFile));
+
+            if (cmd.Error.Equals(string.Empty))
+            {
+                return cmd.Result;
+            }
+            else
+            {
+                return cmd.Error;
+            }
         }
 
         /// <summary>

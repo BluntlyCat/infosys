@@ -16,30 +16,34 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     public static class WCFControllerAddresses
     {
         /// <summary>
-        /// The net TCP addresses
+        /// The net TCP addresses.
         /// </summary>
         private static Dictionary<Type, string> netTcpAddresses = new Dictionary<Type, string>();
 
         /// <summary>
-        /// The net TCP addresses
+        /// The net TCP addresses.
         /// </summary>
         private static Dictionary<Type, string> httpAddresses = new Dictionary<Type, string>();
 
         /// <summary>
-        /// The settings.
+        /// The HTTP format.
         /// </summary>
-        private static WCFControllerAddressesSettings settings = 
-            DBManager.ManagerFactory(Guid.NewGuid()).GetSettingsFor<WCFControllerAddressesSettings>();
+        private static string httpFormat = "http://{0}:{1}/{2}/";
 
         /// <summary>
-        /// The HTTP port
+        /// The net TCP format.
         /// </summary>
-        private static int httpPort = settings.HttpPort;
+        private static string netTcpFormat = "net.tcp://{0}:{1}/{2}/";
 
         /// <summary>
-        /// The net TCP port
+        /// The HTTP port.
         /// </summary>
-        private static int netTcpPort = settings.NetTcpPort;
+        private static int httpPort;
+
+        /// <summary>
+        /// The net TCP port.
+        /// </summary>
+        private static int netTcpPort;
 
         /// <summary>
         /// Indicates if addresses are initialized.
@@ -49,7 +53,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Initializes this instance.
         /// </summary>
-        public static void Initialize()
+        /// <param name="settings">The settings.</param>
+        public static void Initialize(WCFSettings settings)
         {
             if (notInitialized)
             {
@@ -62,20 +67,29 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     typeof(IDBManager)
                 };
 
+                httpPort = settings.HttpPort;
+                netTcpPort = settings.NetTcpPort;
+
                 foreach (var t in types)
                 {
-                    var netTcpAddress = string.Format(settings.NetTcpAddress, netTcpPort);
-                    var httpAddress = string.Format(settings.HttpAddress, httpPort);
+                    var httpAddress = string.Format(
+                        httpFormat,
+                        settings.HttpHost,
+                        httpPort,
+                        settings.HttpPath);
 
-                    netTcpAddresses.Add(t, netTcpAddress);
+                    var netTcpAddress = string.Format(
+                        netTcpFormat,
+                        settings.NetTcpHost,
+                        netTcpPort,
+                        settings.NetTcpPath);
+
                     httpAddresses.Add(t, httpAddress);
+                    netTcpAddresses.Add(t, netTcpAddress);
 
-                    netTcpPort += 2;
                     httpPort += 2;
+                    netTcpPort += 2;
                 }
-
-                httpPort = 8085;
-                netTcpPort = 8086;
 
                 notInitialized = false;
             }

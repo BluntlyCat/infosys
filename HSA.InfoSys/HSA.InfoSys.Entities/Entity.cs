@@ -20,12 +20,11 @@ namespace HSA.InfoSys.Common.Entities
     [KnownType(typeof(Result))]
     [KnownType(typeof(OrgUnit))]
     [KnownType(typeof(Component))]
+    [KnownType(typeof(WCFSettings))]
     [KnownType(typeof(OrgUnitConfig))]
     [KnownType(typeof(EmailNotifierSettings))]
     [KnownType(typeof(SolrSearchClientSettings))]
-    [KnownType(typeof(WCFControllerHostSettings))]
     [KnownType(typeof(NutchControllerClientSettings))]
-    [KnownType(typeof(WCFControllerAddressesSettings))]
     [Serializable]
     public abstract class Entity
     {
