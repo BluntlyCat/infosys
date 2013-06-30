@@ -8,6 +8,19 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="container">
+        <!-- Error Message Box -->
+        <% if (this.ViewData["searchStarted"]  != null) { %>
+           <div id="messageBoxes">
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">
+                        &times;</button>
+                    <h4>Info!</h4>
+                    <br />
+                    <p>Die Suche wurde gestartet. Sie werden per E-Mail benachrichtigt, wenn Ergebnisse vorhanden sind.</p>
+                </div>
+            </div>
+        <% } %>
+
         <div class="contentbox" style="width: 100%;">
             <div class="contentbox-header">
                 <i class="icon-align-justify"></i>&nbsp;<b>My Systems</b>
@@ -119,9 +132,6 @@
         </div>
     </div>
     </form>
-
-    
-
 
     <script>
         $(document).ready(function () {

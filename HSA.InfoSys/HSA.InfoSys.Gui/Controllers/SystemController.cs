@@ -42,6 +42,7 @@ namespace HSA.InfoSys.Gui.Controllers
         /// </summary>
         /// <returns>The result of this action.</returns>
         [Authorize]
+        [HttpGet]
         public ActionResult Index()
         {
             try
@@ -60,6 +61,13 @@ namespace HSA.InfoSys.Gui.Controllers
                 Log.DebugFormat("Got org units {0}", orgUnits);
                 this.ViewData["orgUnits"] = orgUnits;
                 this.ViewData["navid"] = "mysystems";
+
+
+                // if search was started submit success 
+                if (Request.QueryString["searchStarted"] == "true")
+                {
+                    this.ViewData["searchStarted"] = "true";
+                }
             }
             catch (CommunicationException ce)
             {
@@ -223,7 +231,8 @@ namespace HSA.InfoSys.Gui.Controllers
                 return this.View();
             }
 
-            return this.RedirectToAction("Index", "System");
+            //return this.RedirectToAction("Index", "System");
+            return this.Redirect("/System/Index?searchStarted=true");
         }
 
         /// <summary>
@@ -714,7 +723,7 @@ namespace HSA.InfoSys.Gui.Controllers
         {
             var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
 
-            var indexes = cc.GetResultIndexes(componentGuid).ToArray();
+            var indexes = cc.GetResultsByComponentId(componentGuid).ToArray();
             var splittedResults = new List<Result[]>();
             var results = new List<Result>();
 
