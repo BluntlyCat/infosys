@@ -35,7 +35,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         private static Mutex dbButex = new Mutex();
 
-#if !MONO
+#if MONO
         /// <summary>
         /// The results if we run this in mono.
         /// </summary>
@@ -688,7 +688,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             return orgUnitConfig;
         }
 
-#if !MONO
+#if MONO
         /// <summary>
         /// Gets the list of indexes of results.
         /// In MONO we only can send 2^16 Bytes because of a
@@ -849,7 +849,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
         }
 
-#if !MONO
+#if MONO
         /// <summary>
         /// Gets the byte count.
         /// </summary>

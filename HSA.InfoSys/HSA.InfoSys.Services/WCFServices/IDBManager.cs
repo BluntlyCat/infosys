@@ -6,8 +6,9 @@
 namespace HSA.InfoSys.Common.Services.WCFServices
 {
     using System;
+#if MONO
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
+#endif
     using System.ServiceModel;
     using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.NetDataContractSerializer;
@@ -232,7 +233,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             DateTime nextSearch,
             bool schedulerActive);
 
-#if !MONO
+#if MONO
         /// <summary>
         /// Gets the list of indexes of results.
         /// In MONO we only can send 2^16 Bytes because of a
