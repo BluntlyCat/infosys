@@ -13,6 +13,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using System.Net.Sockets;
     using System.Text;
     using HSA.InfoSys.Common.Entities;
+    using HSA.InfoSys.Common.Extensions;
     using HSA.InfoSys.Common.Logging;
     using log4net;
     using Renci.SshNet;
@@ -64,6 +65,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             this.URLs = new List<string>();
             this.connectionString = connectionString;
+            this.IsCrawling = false;
 
             this.InitializeClient(settings);
         }
@@ -83,6 +85,14 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         ///   <c>true</c> if [nutch found]; otherwise, <c>false</c>.
         /// </value>
         public bool IsClientUsable { get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether this instance is crawling.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if this instance is crawling; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsCrawling { get; private set; }
 
         /// <summary>
         /// Gets a value indicating whether [prefix file found].
@@ -182,7 +192,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                         this.RunCommand("mv crawler.log crawler-$(date +%Y-%m-%d-%H-%M).log");
                     }
 
+                    this.IsCrawling = true;
                     var command = this.RunCommand(string.Format("{0} > crawler.log", this.CrawlCommand));
+                    this.IsCrawling = false;
 
                     if (!command.Error.Equals(string.Empty))
                     {
@@ -286,6 +298,25 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             {
                 Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_NOT_CONNECTED, this.Hostname);
             }
+        }
+
+        /// <summary>
+        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="System.String" /> that represents this instance.
+        /// </returns>
+        public override string ToString()
+        {
+            return string.Format(
+                Properties.Resources.CRAWL_CONTROLLER_CLIENT_TO_STRING,
+                this.Hostname,
+                this.IsClientUsable,
+                this.IsCrawling,
+                this.URLs.ElementsToString(),
+                this.URLPath,
+                this.SeedFile,
+                this.CrawlCommand);
         }
 
         /// <summary>

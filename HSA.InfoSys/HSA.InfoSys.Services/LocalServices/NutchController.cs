@@ -202,11 +202,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                                 }
                                 else
                                 {
-                                    Log.WarnFormat(Properties.Resources.NUTCH_CONTROLLER_DO_NOT_CRAWL_ON_HOST, client.Hostname);
+                                    Log.WarnFormat(Properties.Resources.NUTCH_CONTROLLER_DO_NOT_CRAWL_ON_HOST, client);
                                 }
                             }
 
-                            this.isCrawling = true;
+                            this.isCrawling = this.nutchClients.Any(c => c.IsCrawling == true);
                         }
                         else
                         {
@@ -264,6 +264,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             if (this.settings != null)
             {
+                this.nutchClients.Clear();
+
                 string[] clients = new string[0];
 
                 if (string.IsNullOrEmpty(this.settings.NutchClients) == false)

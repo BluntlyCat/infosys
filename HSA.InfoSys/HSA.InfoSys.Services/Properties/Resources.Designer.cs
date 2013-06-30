@@ -79,6 +79,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Crawl client {0}, usable {1}, crawling {2}, URLs: [{3}], URL path: {4}, seed file {5}, command {6}. ähnelt.
+        /// </summary>
+        internal static string CRAWL_CONTROLLER_CLIENT_TO_STRING {
+            get {
+                return ResourceManager.GetString("CRAWL_CONTROLLER_CLIENT_TO_STRING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Shutdown Services. ähnelt.
         /// </summary>
         internal static string CRAWL_CONTROLLER_SHUTDOWN {
