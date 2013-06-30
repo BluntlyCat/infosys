@@ -988,6 +988,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Host {0} will not be used for crawling because it has no urls: [{1}]. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_DO_NOT_CRAWL_ON_HOST_NO_URLS {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_DO_NOT_CRAWL_ON_HOST_NO_URLS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Initialize next crawl. ähnelt.
         /// </summary>
         internal static string NUTCH_CONTROLLER_INIT_NEXT_CRAWL {

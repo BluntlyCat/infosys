@@ -200,6 +200,13 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                                     this.crawlsFinished++;
                                     invokeCrawl.BeginInvoke(this.settings, callback, this);
                                 }
+                                else if (client.URLs.Count == 0)
+                                {
+                                    Log.WarnFormat(
+                                        Properties.Resources.NUTCH_CONTROLLER_DO_NOT_CRAWL_ON_HOST_NO_URLS,
+                                        client.Hostname,
+                                        client);
+                                }
                                 else
                                 {
                                     Log.WarnFormat(Properties.Resources.NUTCH_CONTROLLER_DO_NOT_CRAWL_ON_HOST, client);
