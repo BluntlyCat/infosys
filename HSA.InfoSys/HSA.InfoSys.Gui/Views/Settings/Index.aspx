@@ -61,7 +61,7 @@
                             <label class="control-label" for="nutchpath" style="text-align:left">
                                 Nutch home:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="nutchpath" placeholder="" value="<%= nutchPath %>">
+                                <input class="input-xxlarge" type="text" name="nutchpath" placeholder="" value="<%= nutchPath %>" />
                             </div>
                         </div>
 
@@ -69,7 +69,7 @@
                             <label class="control-label" for="nutchcommand" style="text-align:left">
                                 Nutch command:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="nutchcommand" placeholder="" value="<%= nutchCommand %>">
+                                <input class="input-xxlarge" type="text" name="nutchcommand" placeholder="" value="<%= nutchCommand %>" />
                             </div>
                         </div>
 
@@ -77,7 +77,7 @@
                             <label class="control-label" for="nutchclients" style="text-align:left">
                                 Nutch clients:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="nutchclients" placeholder="" value="<%= nutchClients %>">
+                                <input class="input-xxlarge" type="text" name="nutchclients" placeholder="" value="<%= nutchClients %>" />
                             </div>
                         </div>
 
