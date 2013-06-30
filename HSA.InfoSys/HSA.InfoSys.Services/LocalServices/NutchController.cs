@@ -306,6 +306,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 client.CheckClientForUsage(this.settings);
             }
 
+            this.URLs = dbManager.GetAllUrls();
+
             foreach (var url in this.URLs)
             {
                 bool urlAdded = false;
