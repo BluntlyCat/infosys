@@ -19,7 +19,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The logger for database manager.
         /// </summary>
-        private static readonly ILog Log = Logger<string>.GetLogger("ResultPot");
+        private static readonly ILog Log = Logger<string>.GetLogger("SolrResultPot");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SolrResultPot"/> class.

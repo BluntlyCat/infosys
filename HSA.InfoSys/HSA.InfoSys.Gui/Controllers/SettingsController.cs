@@ -14,6 +14,7 @@ namespace HSA.InfoSys.Gui.Controllers
     using log4net;
     using Newtonsoft.Json;
     using HSA.InfoSys.Common.Entities;
+    using System.Text;
 
     /// <summary>
     /// The controller for the home page.
@@ -45,10 +46,9 @@ namespace HSA.InfoSys.Gui.Controllers
                 this.ViewData["navid"] = "serversettings";
                 this.ViewData["label1"] = Properties.Resources.TEST_LABLE1;
 
-                var nutchSettings = cc.GetNutchClientSettings();
                 // get all Settings from DB
                 this.ViewData["MailSettings"] = cc.GetMailSettings();
-                this.ViewData["NutchClientSettings"] = nutchSettings;
+                this.ViewData["NutchClientSettings"] = cc.GetNutchClientSettings();
                 this.ViewData["SolrClientSettings"] = cc.GetSolrClientSettings();
                 this.ViewData["WCFSettings"] = cc.GetWCFSettings();
             }
@@ -277,7 +277,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 wcfSettings.NetTcpPath = nettcppath;
 
                 wcfSettings.CertificatePath = certificatepath;
-                wcfSettings.CertificatePassword = certificatepassword;
+                wcfSettings.CertificatePassword = Encryption.Encrypt(Encoding.UTF8.GetBytes(certificatepassword));
 
                 //// save into db
                 cc.UpdateEntity(wcfSettings);

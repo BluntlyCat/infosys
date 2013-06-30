@@ -20,9 +20,9 @@ namespace HSA.InfoSys.Common.Entities
         /// </summary>
         public EmailNotifierSettings()
         {
-            this.SmtpServer = string.Empty;
-            this.SmtpPort = 0;
-            this.MailFrom = string.Empty;
+            this.SmtpServer = "localhost";
+            this.SmtpPort = 25;
+            this.MailFrom = "your.name@your_server";
         }
 
         /// <summary>

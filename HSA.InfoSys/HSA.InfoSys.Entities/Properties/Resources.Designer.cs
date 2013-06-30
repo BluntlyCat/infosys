@@ -70,6 +70,24 @@ namespace HSA.InfoSys.Common.Entities.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Decrypt bytes. ähnelt.
+        /// </summary>
+        internal static string DECRYPT {
+            get {
+                return ResourceManager.GetString("DECRYPT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Encrypt bytes ähnelt.
+        /// </summary>
+        internal static string ENCRYPT {
+            get {
+                return ResourceManager.GetString("ENCRYPT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Entity has size of {0} Bytes. ähnelt.
         /// </summary>
         internal static string ENTITY_SIZE_OF {

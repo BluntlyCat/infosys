@@ -48,24 +48,11 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         private static IDBManager dbManager;
 
         /// <summary>
-        /// The is database ready.
-        /// </summary>
-        private static bool isDatabaseReady = false;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="DBManager"/> class.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
         private DBManager(Guid serviceGUID) : base(serviceGUID)
         {
-            try
-            {
-                isDatabaseReady = true;
-            }
-            catch (Exception e)
-            {
-                throw new DBManagerConfigurationException(e, this.GetType().Name);
-            }
         }
 
         /// <summary>
@@ -137,13 +124,13 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         {
             try
             {
-                T setting;
+                T setting = null;
 
                 using (ISession session = Session)
                 {
                     setting = session.QueryOver<T>()
-                        .Where(s => s.Type == typeof(T).Name)
-                        .SingleOrDefault() as T;
+                    .Where(s => s.Type == typeof(T).Name)
+                    .SingleOrDefault() as T;
                 }
 
                 return setting;
@@ -845,7 +832,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "ConfigureSession()");
+                throw new DBManagerConfigurationException(e, typeof(DBManager).Name);
             }
         }
 

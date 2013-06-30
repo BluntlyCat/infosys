@@ -304,7 +304,7 @@
                             netTcpPath = wcfSettings.NetTcpPath;
 
                             wcfCertificatePath = wcfSettings.CertificatePath;
-                            certificatePassword = wcfSettings.CertificatePassword;
+                            certificatePassword = Encryption.Decrypt(wcfSettings.CertificatePassword);
                         }
                     %>
 

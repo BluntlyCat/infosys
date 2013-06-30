@@ -133,6 +133,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="orgUnitConfig">The org unit config.</param>
         public void UpdateOrgUnitConfig(OrgUnitConfig orgUnitConfig)
         {
+            Log.InfoFormat(
+                Properties.Resources.COUNTDOWN_SET_NEW_CONFIG,
+                this.OrgUnitConfig,
+                orgUnitConfig,
+                this.OrgUnitConfig.EntityId);
+
             this.OrgUnitConfig = orgUnitConfig;
             this.ServiceGUID = orgUnitConfig.EntityId;
         }

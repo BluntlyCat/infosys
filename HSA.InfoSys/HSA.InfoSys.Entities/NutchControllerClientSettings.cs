@@ -20,6 +20,7 @@ namespace HSA.InfoSys.Common.Entities
         /// </summary>
         public NutchControllerClientSettings()
         {
+            //// Public settings
             this.HomePath = string.Empty;
             this.NutchPath = string.Empty;
             this.NutchCommand = string.Empty;
@@ -30,15 +31,17 @@ namespace HSA.InfoSys.Common.Entities
             this.JavaHome = string.Empty;
             this.CertificatePath = string.Empty;
             this.Prefix = string.Empty;
-            this.CrawlRequest = string.Empty;
-            this.SeedFileName = string.Empty;
-            this.PrefixFileName = string.Empty;
-            this.BaseUrlPath = string.Empty;
-            this.BaseCrawlPath = string.Empty;
-            this.PathFormatTwo = string.Empty;
-            this.PathFormatThree = string.Empty;
-            this.PathFormatFour = string.Empty;
-            this.PrefixFormat = string.Empty;
+
+            //// Non public settings
+            this.CrawlRequest = "crawl {0} -solr {1} -depth {2} -topN {3}";
+            this.SeedFileName = "seed.txt";
+            this.PrefixFileName = "conf/regex-urlfilter.txt";
+            this.BaseUrlPath = ".nutch/urls";
+            this.BaseCrawlPath = "crawler";
+            this.PathFormatTwo = "{0}/{1}";
+            this.PathFormatThree = "{0}/{1}/{2}";
+            this.PathFormatFour = "{0}/{1}/{2}/{3}";
+            this.PrefixFormat = "{0}/{1}";
         }
 
         /// <summary>

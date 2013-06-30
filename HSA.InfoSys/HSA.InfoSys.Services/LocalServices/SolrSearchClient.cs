@@ -25,7 +25,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The logger for SolrSearch.
         /// </summary>
-        private static readonly ILog Log = Logger<string>.GetLogger("SolrSearch");
+        private static readonly ILog Log = Logger<string>.GetLogger("SolrSearchClient");
 
         /// <summary>
         /// The database manager.

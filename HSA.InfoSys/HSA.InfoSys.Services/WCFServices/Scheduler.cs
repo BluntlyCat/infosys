@@ -251,6 +251,10 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
                 return job;
             }
+            else
+            {
+                Log.WarnFormat(Properties.Resources.SCHEDULER_SKIP_NOT_ACTIVE_JOB, orgUnitConfig);
+            }
 
             return null;
         }
@@ -262,12 +266,15 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <returns>The updated job.</returns>
         private Countdown UpdateJob(OrgUnitConfig orgUnitConfig)
         {
-#warning logmeldungen noch schreiben...
             if (orgUnitConfig.SchedulerActive)
             {
-                Log.DebugFormat("", orgUnitConfig);
+                Log.DebugFormat(Properties.Resources.SCHEDULER_UPDATE_JOB, orgUnitConfig);
                 this.jobs[orgUnitConfig.EntityId].UpdateOrgUnitConfig(orgUnitConfig);
                 return this.jobs[orgUnitConfig.EntityId];
+            }
+            else
+            {
+                Log.WarnFormat(Properties.Resources.SCHEDULER_SKIP_NOT_ACTIVE_JOB, orgUnitConfig);
             }
 
             return null;

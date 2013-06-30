@@ -6,7 +6,9 @@
 namespace HSA.InfoSys.Gui.Controllers
 {
     using System;
+#if MONO
     using System.Collections.Generic;
+#endif
     using System.Linq;
     using System.ServiceModel;
     using System.Web.Mvc;
@@ -645,7 +647,7 @@ namespace HSA.InfoSys.Gui.Controllers
                         var selectedCompGUID = Guid.Parse(componentGUID);
                         var component = cc.GetEntity(selectedCompGUID) as Component;
 
-#if !MONO
+#if MONO
                         var results = this.GetResults(selectedCompGUID);
 #else
                         var results = cc.GetResultsByComponentId(selectedCompGUID).ToList<Result>();
@@ -657,7 +659,7 @@ namespace HSA.InfoSys.Gui.Controllers
                     {
                         var selectedComp = components.First();
 
-#if !MONO
+#if MONO
                         var results = this.GetResults(selectedComp.EntityId);
 #else
                         var results = cc.GetResultsByComponentId(selectedComp.EntityId).ToList<Result>();
@@ -696,7 +698,7 @@ namespace HSA.InfoSys.Gui.Controllers
             return this.View();
         }
 
-#if !MONO
+#if MONO
         /// <summary>
         /// Gets the results.
         /// Because of restrictions of maximum amount of bytes (2^16)

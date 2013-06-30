@@ -8,8 +8,6 @@ namespace HSA.InfoSys.CrawlerService
     using System;
     using System.ServiceModel;
     using System.Threading;
-    using HSA.InfoSys.Common.Entities;
-    using HSA.InfoSys.Common.Exceptions;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services;
     using HSA.InfoSys.Common.Services.LocalServices;
@@ -37,11 +35,6 @@ namespace HSA.InfoSys.CrawlerService
         /// The services running flag.
         /// </summary>
         private bool servicesRunning = false;
-
-        /// <summary>
-        /// The other services initialized flag.
-        /// </summary>
-        private bool otherServicesInitialized = false;
 
         /// <summary>
         /// The WCF controller for the crawler service.
@@ -209,22 +202,7 @@ namespace HSA.InfoSys.CrawlerService
         {
             try
             {
-                var settings = dbManager.GetSettingsFor<WCFSettings>();
-
-                if (settings == null)
-                {
-                    settings = new WCFSettings(
-                        "localhost",
-                        8085,
-                        "CrawlerProxy",
-                        "localhost",
-                        8086,
-                        "CrawlerProxy",
-                        "Certificates/InfoSys.pfx",
-                        "Aes2xe1baetei8Y");
-
-                    dbManager.AddEntity(settings);
-                }
+                var settings = dbManager.GetWCFSettings();
 
                 //// Create WCFControllerHost.
                 this.controllerHost = new WCFControllerHost(settings);
@@ -267,7 +245,6 @@ namespace HSA.InfoSys.CrawlerService
                 //// this.crawlController.RegisterService(typeof(NutchController), nutchController);
                 this.crawlController.RegisterService(typeof(DBManager), dbManager);
 
-                this.otherServicesInitialized = true;
                 this.servicesRunning = this.crawlController.StartServices();
             }
             catch (Exception e)

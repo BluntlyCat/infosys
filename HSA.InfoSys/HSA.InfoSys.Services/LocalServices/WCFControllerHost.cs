@@ -72,7 +72,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                     var dir = System.Environment.CurrentDirectory;
 
-                    certificate = new X509Certificate2(this.settings.CertificatePath, this.settings.CertificatePassword);
+                    certificate = new X509Certificate2(this.settings.CertificatePath, Encryption.Decrypt(this.settings.CertificatePassword));
 
                     var netTcpAddress = WCFControllerAddresses.GetNetTcpAddress(typeof(IT));
                     var httpAddress = WCFControllerAddresses.GetHttpAddress(typeof(IT));

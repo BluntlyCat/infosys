@@ -61,6 +61,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Change settings {0} =&gt; {1} for job {2}. ähnelt.
+        /// </summary>
+        internal static string COUNTDOWN_SET_NEW_CONFIG {
+            get {
+                return ResourceManager.GetString("COUNTDOWN_SET_NEW_CONFIG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Countdown time: [{0}], source: [{1}] ähnelt.
         /// </summary>
         internal static string COUNTDOWN_TO_STRING {
@@ -1137,6 +1146,24 @@ namespace HSA.InfoSys.Common.Services.Properties {
         internal static string SCHEDULER_ON_TICK {
             get {
                 return ResourceManager.GetString("SCHEDULER_ON_TICK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Skip not active job {0}. ähnelt.
+        /// </summary>
+        internal static string SCHEDULER_SKIP_NOT_ACTIVE_JOB {
+            get {
+                return ResourceManager.GetString("SCHEDULER_SKIP_NOT_ACTIVE_JOB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Update job {0}. ähnelt.
+        /// </summary>
+        internal static string SCHEDULER_UPDATE_JOB {
+            get {
+                return ResourceManager.GetString("SCHEDULER_UPDATE_JOB", resourceCulture);
             }
         }
         

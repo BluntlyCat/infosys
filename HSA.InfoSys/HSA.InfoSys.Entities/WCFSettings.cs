@@ -7,6 +7,7 @@ namespace HSA.InfoSys.Common.Entities
 {
     using System;
     using System.Runtime.Serialization;
+    using System.Text;
 
     /// <summary>
     /// There we can store settings for WCF controller host.
@@ -16,20 +17,25 @@ namespace HSA.InfoSys.Common.Entities
     public class WCFSettings : Entity
     {
         /// <summary>
+        /// The certificate password.
+        /// </summary>
+        private byte[] certificatePassword;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="WCFSettings"/> class.
         /// </summary>
         public WCFSettings()
         {
-            this.HttpHost = string.Empty;
-            this.HttpPort = 0;
-            this.HttpPath = string.Empty;
+            this.HttpHost = "localhost";
+            this.HttpPort = 8085;
+            this.HttpPath = "CrawlerProxy";
 
-            this.NetTcpHost = string.Empty;
-            this.NetTcpPort = 0;
-            this.NetTcpPath = string.Empty;
+            this.NetTcpHost = "localhost";
+            this.NetTcpPort = 8086;
+            this.NetTcpPath = "CrawlerProxy";
 
-            this.CertificatePath = string.Empty;
-            this.CertificatePassword = string.Empty;
+            this.CertificatePath = "Certificates/InfoSys.pfx";
+            this.CertificatePassword = Encryption.Encrypt(Encoding.UTF8.GetBytes("Aes2xe1baetei8Y"));
         }
 
         /// <summary>
@@ -62,7 +68,11 @@ namespace HSA.InfoSys.Common.Entities
             this.NetTcpPath = netTcpPath;
 
             this.CertificatePath = certificatePath;
-            this.CertificatePassword = certificatePassword;
+
+            if (certificatePassword != null)
+            {
+                this.CertificatePassword = Encryption.Encrypt(Encoding.UTF8.GetBytes(certificatePassword));
+            }
         }
 
         /// <summary>
@@ -135,8 +145,18 @@ namespace HSA.InfoSys.Common.Entities
         /// The certificate password.
         /// </value>
         [DataMember]
-#warning password must be saved encrypted in data base
-        public virtual string CertificatePassword { get; set; }
+        public virtual byte[] CertificatePassword
+        {
+            get
+            {
+                return this.certificatePassword;
+            }
+
+            set
+            {
+                this.certificatePassword = value;
+            }
+        }
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.

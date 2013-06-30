@@ -20,12 +20,15 @@ namespace HSA.InfoSys.Common.Entities
         /// </summary>
         public SolrSearchClientSettings()
         {
+            //// Public settings
             this.Host = string.Empty;
             this.Port = 0;
             this.Collection = string.Empty;
             this.FilterQuery = string.Empty;
-            this.RequestFormat = string.Empty;
-            this.QueryFormat = string.Empty;
+
+            //// Non public settings
+            this.RequestFormat = "GET {0} HTTP/1.1{1}Host: {2}{3}Content-Length: 0{4}";
+            this.QueryFormat = "solr/{0}/select?q={1}&wt={2}&indent=true";
         }
 
         /// <summary>
