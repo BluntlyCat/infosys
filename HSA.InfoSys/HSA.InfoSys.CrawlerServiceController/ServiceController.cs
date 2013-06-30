@@ -21,9 +21,9 @@ namespace HSA.InfoSys.CrawlerServiceController
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
-            var crawlerService = WCFControllerClient<ICrawlerService>.GetClientProxy;
+            //var crawlerService = WCFControllerClient<ICrawlerService>.GetClientProxy();
 
-            switch (args[0])
+            /*switch (args[0])
             {
                 case "--start":
                     crawlerService.StopServices();
@@ -41,7 +41,7 @@ namespace HSA.InfoSys.CrawlerServiceController
                 default:
                     PrintHelp();
                     break;
-            }
+            }*/
         }
 
         /// <summary>
