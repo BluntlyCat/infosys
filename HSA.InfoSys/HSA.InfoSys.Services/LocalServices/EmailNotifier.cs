@@ -44,7 +44,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         public EmailNotifier(IDBManager dbManager)
         {
             this.dbManager = dbManager;
-            this.settings = this.dbManager.GetSettingsFor<EmailNotifierSettings>();
+            this.settings = this.dbManager.GetMailSettings();
         }
 
         /// <summary>

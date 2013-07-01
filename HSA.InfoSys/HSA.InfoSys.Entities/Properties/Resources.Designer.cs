@@ -160,7 +160,7 @@ namespace HSA.InfoSys.Common.Entities.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Host: {0}, Port: {1}, Collection: {2}, FilterQuery: {3}, RequestFormat: {4}, QueryFormat {5}, Size: {7} Bytes. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Host: {0}, Port: {1}, Collection: {2}, FilterQuery: {3}, RequestFormat: {4}, QueryFormat {5}, Size: {6} Bytes. ähnelt.
         /// </summary>
         internal static string SOLRSEARCHCLIENTSETTINGS_TO_STRING {
             get {
@@ -169,7 +169,7 @@ namespace HSA.InfoSys.Common.Entities.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Http address: {0}, Http port {1}, NetTcp address: {1}, NetTcp port: {3}, Certificate path: {4}, Size: {5} Bytes. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Http address: {0}, Http port {1}, NetTcp address: {2}, NetTcp port: {3}, Certificate path: {4}, Size: {5} Bytes. ähnelt.
         /// </summary>
         internal static string WCF_SETTINGS_TO_STRING {
             get {

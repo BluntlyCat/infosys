@@ -76,7 +76,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             this.dbManager = dbManager;
 
-            this.settings = dbManager.GetSettingsFor<NutchControllerClientSettings>();
+            this.settings = dbManager.GetNutchClientSettings();
             this.URLs = dbManager.GetAllUrls();
 
             this.InitializeClients();
@@ -151,9 +151,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 {
                     if (!this.isCrawling)
                     {
-                        var newSettings = this.dbManager.GetSettingsFor<NutchControllerClientSettings>();
+                        var newSettings = this.dbManager.GetNutchClientSettings();
 
-                        if (newSettings != null && newSettings.Equals(this.settings) == false)
+                        if (newSettings.Equals(this.settings) == false)
                         {
                             Log.InfoFormat(
                                 Properties.Resources.NUTCH_CONTROLLER_UPDATE_SETTINGS,
@@ -164,7 +164,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                             this.InitializeClients();
                         }
 
-                        if (this.settings != null)
+                        if (!this.settings.Equals(new NutchControllerClientSettings()) == false)
                         {
                             this.InitializeNextCrawl();
 
@@ -276,7 +276,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             Log.Info(Properties.Resources.NUTCH_CONTROLLER_INITIALIZE_CLIENT);
 
-            if (this.settings != null)
+            if (this.settings.Equals(new NutchControllerClientSettings()) == false)
             {
                 this.nutchClients.Clear();
 

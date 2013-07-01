@@ -22,7 +22,7 @@ namespace HSA.InfoSys.Common.Entities
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (obj.GetType() == this.GetType())
+            if (obj != null && obj.GetType() == this.GetType())
             {
                 return this.ToString().Equals(obj.ToString());
             }

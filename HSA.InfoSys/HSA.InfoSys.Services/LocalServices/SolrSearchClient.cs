@@ -44,9 +44,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         public SolrSearchClient(IDBManager dbManager)
         {
             this.dbManager = dbManager;
-            this.settings = this.dbManager.GetSettingsFor<SolrSearchClientSettings>();
+            this.settings = this.dbManager.GetSolrClientSettings();
 
-            if (this.settings != null)
+            if (this.settings.Equals(new SolrSearchClientSettings()) == false)
             {
                 this.Host = this.settings.Host;
                 this.Port = this.settings.Port;
@@ -133,7 +133,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             try
             {
-                if (this.settings != null)
+                if (this.settings.Equals(new SolrSearchClientSettings()) == false)
                 {
                     IPAddress ipa = IPAddress.Parse(this.Host);
                     IPEndPoint ipe = new IPEndPoint(ipa, this.Port);

@@ -34,7 +34,7 @@
                         var certificatePath = string.Empty;
                         var prefix = string.Empty;
 
-                        if (nutchSettings != null)
+                        if (nutchSettings.Equals(new NutchControllerClientSettings()) == false)
                         {
                             homePath = nutchSettings.HomePath;
                             nutchPath = nutchSettings.NutchPath;
@@ -158,7 +158,7 @@
                         var collection = string.Empty;
                         var filterQuery = string.Empty;
 
-                        if (solrClientSettings != null)
+                        if (solrClientSettings.Equals(new SolrSearchClientSettings()) == false)
                         {
                             host = solrClientSettings.Host;
                             port = solrClientSettings.Port;
@@ -227,7 +227,7 @@
                         var smtpPort = 0;
                         var mailFrom = string.Empty;
 
-                        if (mailSettings != null)
+                        if (mailSettings.Equals(new EmailNotifierSettings()) == false)
                         {
                             smtpServer = mailSettings.SmtpServer;
                             smtpPort = mailSettings.SmtpPort;
@@ -293,7 +293,7 @@
                         var wcfCertificatePath = string.Empty;
                         var certificatePassword = string.Empty;
                         
-                        if (wcfSettings != null)
+                        if (wcfSettings.Equals(new WCFSettings()) == false)
                         {
                             httpHost = wcfSettings.HttpHost;
                             httpPort = wcfSettings.HttpPort;

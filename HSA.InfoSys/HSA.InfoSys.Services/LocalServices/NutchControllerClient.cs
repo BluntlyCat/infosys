@@ -148,7 +148,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="settings">The settings.</param>
         public void InitializeClient(NutchControllerClientSettings settings)
         {
-            if (settings != null)
+            if (settings.Equals(new NutchControllerClientSettings()) == false)
             {
                 this.homeDir = settings.HomePath;
 
