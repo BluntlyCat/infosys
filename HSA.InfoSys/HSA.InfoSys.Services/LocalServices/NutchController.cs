@@ -189,6 +189,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                                             if (c.IsCompleted)
                                             {
                                                 this.crawlsFinished--;
+                                                Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CRAWL_FINISHED, this.crawlsFinished);
 
                                                 if (this.crawlsFinished == 0)
                                                 {

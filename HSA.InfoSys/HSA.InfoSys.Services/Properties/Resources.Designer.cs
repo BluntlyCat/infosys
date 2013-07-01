@@ -970,6 +970,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Crawl finished, crawls left: {0}. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_CRAWL_FINISHED {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_CRAWL_FINISHED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die All crawls finished. ähnelt.
         /// </summary>
         internal static string NUTCH_CONTROLLER_CRAWLS_FINISHED {
