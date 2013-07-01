@@ -39,7 +39,7 @@
                 </form>
             </div>
 
-            <form action="/System/SearchConfigSubmit?sysguid=<%= ViewData["systemguid"] %>" method="post">
+            <form id="configForm" action="/System/SearchConfigSubmit?sysguid=<%= ViewData["systemguid"] %>" method="post">
 
                 <!-- Scheduler -->
                 <div id="schedulerblock" class="contentbox-content cutline-bot">
@@ -105,16 +105,15 @@
                     </div>
                     <div id="emails" style="margin-left: 100px; width: 500px;">
                         
-                        <% foreach (var email in this.ViewData["emails"] as string[])
-                           { %>
-                            <div class="input-prepend input-append">
-                                <span class="add-on"><i class="icon-envelope"></i></span>
-                                <input class="input-xlarge" type="text" placeholder="email address" value="<%= email %>" name="emails[]" />
-                                <button type="button" class="btn" onclick="removeInputBox($(this))"><i class="icon-minus"></i></button>
-                            </div>
-                          <% } %>
-
                         <div id="addedEmails">
+                            <% foreach (var email in this.ViewData["emails"] as string[])
+                               { %>
+                                <div class="input-prepend input-append">
+                                    <span class="add-on"><i class="icon-envelope"></i></span>
+                                    <input class="input-xlarge" type="text" placeholder="email address" value="<%= email %>" name="emails[]" />
+                                    <button type="button" class="btn" onclick="removeInputBox($(this))"><i class="icon-minus"></i></button>
+                                </div>
+                              <% } %>
                         </div>
                         <div>
                             <button id="addEmail" class="btn" type="button" style="margin-bottom: 10px;">
@@ -128,37 +127,19 @@
                 <div id="websitesblock" class="contentbox-content cutline-bot">
                     <p><b>Websites</b></p>
                     <span>Hier kannst Du bestimmen, welche Websiten durchsucht werden sollen, und kannst zusätzliche Websites angeben.</span>
-                    <div id="defaultWebsites" style="width: 500px; margin-left: 100px; margin-bottom: 10px; margin-top: 20px;">
-                        <label class="checkbox inline">
-                            <input type="checkbox" id="Checkbox1" name="heise" checked="checked" /> heise.de
-                        </label><br />
-                        <label class="checkbox inline">
-                            <input type="checkbox" id="Checkbox2" name="irgendeineseite" checked="checked" /> irgendeineseite.de
-                        </label><br />
-                        <label class="checkbox inline">
-                            <% if ((bool)ViewData["urlActive"] == true)
-                               { %>
-                                <input id="websitesOn" type="checkbox" name="websitesOn" checked="checked" /> weitere...
-                            <% }
-                               else
-                               { %>
-                                <input id="websitesOn" type="checkbox" name="websitesOn"/> weitere...
-                            <% } %>
-                        </label>
-                    </div>
-
                     <div id="websites" style="margin-left: 100px; width: 600px; margin-top: 20px;">
-                        
-                        <% foreach (var website in this.ViewData["urls"] as string[])
-                           { %>
-                            <div class="input-prepend input-append">
-                                <span class="add-on"><i class="icon-globe"></i></span>
-                                <input class="input-xxlarge" type="text" placeholder="website-url" value="<%= website %>" name="websites[]" />
-                                <button type="button" class="btn" onclick="removeInputBox($(this))"><i class="icon-minus"></i></button>
-                            </div>
-                          <% } %>
+
+                        <button id="addDefaultUrls" class="btn" type="button" style="margin-bottom: 10px; margin-right: 10px;"><b>Add default urls</b></button>
 
                         <div id="addedWebsites">
+                            <% foreach (var website in this.ViewData["urls"] as string[])
+                               { %>
+                                <div class="input-prepend input-append">
+                                    <span class="add-on"><i class="icon-globe"></i></span>
+                                    <input class="input-xxlarge" type="text" placeholder="website-url" value="<%= website %>" name="websites[]" />
+                                    <button type="button" class="btn" onclick="removeInputBox($(this))"><i class="icon-minus"></i></button>
+                                </div>
+                              <% } %>
                         </div>
                         <div>
                             <button id="addWebsite" class="btn" type="button" style="margin-bottom: 10px; margin-right: 10px;">
@@ -170,7 +151,7 @@
 
                 <!-- submit -->
                 <div class="contentbox-content">
-                    <button type="submit" class="btn btn-success" style="float:right; margin-bottom: 10px; margin-right: 10px;">
+                    <button id="savechanges" type="button" class="btn btn-success" style="float:right; margin-bottom: 10px; margin-right: 10px;">
                     <i class="icon-check icon-white"></i>&nbsp;&nbsp;<b>Save Changes</b></button>
                 </div>
             </form>
@@ -213,21 +194,6 @@
                 }
             });
 
-            // show / hide email
-            if ($('#websitesOn').is(':checked')) {
-                $('#websites').show();
-            } else {
-                $('#websites').hide();
-            }
-
-            $('#websitesOn').click(function () {
-                if ($(this).is(':checked')) {
-                    $('#websites').show();
-                } else {
-                    $('#websites').hide();
-                }
-            });
-
             // addButton click event
             $('#addEmail').click(function () {
                 addEmailBox();
@@ -236,6 +202,34 @@
             // addButton click event
             $('#addWebsite').click(function () {
                 addWebsiteBox();
+            });
+
+            // addDefaultUrls click event
+            $('#addDefaultUrls').click(function () {
+                var urls = '<%= ViewData["defaulturls"] %>'.split(",");
+                for (var url in urls) {
+                    addWebsiteBox(urls[url]);
+                }
+            });
+
+            // addDefaultUrls click event
+            $('#savechanges').click(function () {
+
+                var submit = true;
+
+                $("#configForm :input[type=text]").each(function () {
+                    if ($(this).val() === "") {
+                        alert("Daten nicht gespeichert, da mind. ein leeres Feld vorhanden!");
+                        submit = false;
+                        return false;
+                    }
+                });
+
+                if (submit === true) {
+                    $("#configForm").submit();
+                }
+
+
             });
 
         });
@@ -277,7 +271,7 @@
         /**
         * adds a new website-InputBox
         */
-        function addWebsiteBox() {
+        function addWebsiteBox(value) {
 
             // get Value of mainBox
             //var value = $('#mainWebsiteBox').val();
@@ -285,10 +279,15 @@
             // clear Value of mainBox
             //$('#mainWebsiteBox').val('');
 
+            // if optional parameter (value) not given
+            if (value === undefined) {
+                value = "";
+            }
+
             var newEmailBox = 
                 '<div class="input-prepend input-append">'
                 + '<span class="add-on"><i class="icon-globe"></i></span>'
-                + '<input class="input-xxlarge" type="text" placeholder="website-url" value="" name="websites[]" />'
+                + '<input class="input-xxlarge" type="text" placeholder="website-url" value="'+value+'" name="websites[]" />'
                 + '<button type="button" class="btn" onclick="removeInputBox($(this))"><i class="icon-minus"></i></button>'
                 + '</div>';
 
@@ -299,9 +298,18 @@
         * deletes a component-InputBox
         */
         function removeInputBox(button) {
+            
+            // email or website div-box
+            var box = button.parent().parent().parent()
 
-            // remove the parent element of the button (in this case the div)
-            button.parent().remove();
+            if (box.find('input').length <= 1) {
+                alert('Löschen fehlgeschlagen! Mindestens eine Eingabe muss vorhanden sein!');    
+            } else {
+                // remove the parent element of the button (in this case the div)
+                button.parent().remove();
+            }
+
+
 
             //$('#addedBoxes').find(':last-child').not(':only-child').remove();
         }

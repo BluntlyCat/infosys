@@ -115,8 +115,11 @@ namespace HSA.InfoSys.Gui.Controllers
 
                 var mails = JsonConvert.SerializeObject(new string[] { membershipuser.Email });
 
+                // TODO: default urls nicht hardcoded, sondern müssen hier noch zuvor aus der DB aus Settings ausgelesen werden
+                var urls = JsonConvert.SerializeObject(new string[] { "http://www.heise.de/security/", "http://nvd.nist.gov/" });
+
                 // create SystemConfig
-                var orgUnitConfig = cc.CreateOrgUnitConfig(null, mails, false, true, 1, 12, new DateTime(), true);
+                var orgUnitConfig = cc.CreateOrgUnitConfig(urls, mails, true, true, 1, 12, new DateTime(), true);
 
                 // create System
                 var orgUnit = cc.CreateOrgUnit(id, orgUnitName);
@@ -401,6 +404,12 @@ namespace HSA.InfoSys.Gui.Controllers
                 // init
                 var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
 
+                // TODO: default urls nicht hardcoded, sondern müssen hier noch zuvor aus der DB aus Settings ausgelesen werden
+                string defaulturls = "http://www.heise.de/security/,http://nvd.nist.gov/,http://blabla.de";
+
+                // default urls
+                this.ViewData["defaulturls"] = defaulturls;
+
                 // get id of current logged-in user
                 MembershipUser membershipuser = Membership.GetUser();
                 string userid = membershipuser.ProviderUserKey.ToString();
@@ -532,16 +541,6 @@ namespace HSA.InfoSys.Gui.Controllers
                 else
                 {
                     config.URLS = null;
-                }
-
-                // set websitesOn
-                if (this.Request["websitesOn"] == "on")
-                {
-                    config.URLActive = true;
-                }
-                else
-                {
-                    config.URLActive = false;
                 }
 
                 // save to db
