@@ -242,7 +242,7 @@ namespace HSA.InfoSys.CrawlerService
                 this.crawlController.RegisterService(typeof(Scheduler), scheduler);
                 this.crawlController.RegisterService(typeof(SolrController), solrController);
 #warning enable nutchController before building on mono, must be disabled to avoid starting many crawls on the hosts while developing.
-                this.crawlController.RegisterService(typeof(NutchController), nutchController);
+                //// this.crawlController.RegisterService(typeof(NutchController), nutchController);
                 this.crawlController.RegisterService(typeof(DBManager), dbManager);
 
                 this.servicesRunning = this.crawlController.StartServices();
