@@ -164,7 +164,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                             this.InitializeClients();
                         }
 
-                        if (!this.settings.Equals(new NutchControllerClientSettings()) == false)
+                        if (this.settings.Equals(new NutchControllerClientSettings()) == false)
                         {
                             this.InitializeNextCrawl();
 
