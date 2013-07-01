@@ -155,6 +155,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                         if (newSettings != null && newSettings.Equals(this.settings) == false)
                         {
+                            Log.InfoFormat(
+                                Properties.Resources.NUTCH_CONTROLLER_UPDATE_SETTINGS,
+                                this.settings,
+                                newSettings);
+
                             this.settings = newSettings;
                             this.InitializeClients();
                         }
@@ -269,6 +274,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         private void InitializeClients()
         {
+            Log.Info(Properties.Resources.NUTCH_CONTROLLER_INITIALIZE_CLIENT);
+
             if (this.settings != null)
             {
                 this.nutchClients.Clear();
@@ -278,14 +285,26 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 if (string.IsNullOrEmpty(this.settings.NutchClients) == false)
                 {
                     clients = this.settings.NutchClients.Split(',');
+
+                    Log.DebugFormat(
+                        Properties.Resources.NUTCH_CONTROLLER_CLIENTS_SPLIT,
+                        clients.ElementsToString());
                 }
 
                 foreach (var client in clients)
                 {
                     var nutchClient = new NutchControllerClient(this.settings, client);
 
+                    Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_NEW_CLIENT_INITIALIZED, client);
+
                     this.nutchClients.Add(nutchClient);
                 }
+
+                Log.Info(Properties.Resources.NUTCH_CONTROLLER_INITIALIZE_CLIENT_FINISHED);
+            }
+            else
+            {
+                Log.Warn(Properties.Resources.NUTCH_CONTROLLER_NO_INITIALIZING_NO_SETTINGS);
             }
         }
 

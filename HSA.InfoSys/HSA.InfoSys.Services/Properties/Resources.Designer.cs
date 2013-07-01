@@ -961,6 +961,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Got clients: [{0}]. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_CLIENTS_SPLIT {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_CLIENTS_SPLIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die All crawls finished. ähnelt.
         /// </summary>
         internal static string NUTCH_CONTROLLER_CRAWLS_FINISHED {
@@ -1006,11 +1015,47 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Initialize clients. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_INITIALIZE_CLIENT {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_INITIALIZE_CLIENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Clients initialized. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_INITIALIZE_CLIENT_FINISHED {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_INITIALIZE_CLIENT_FINISHED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Nutch controller is still alive. ähnelt.
         /// </summary>
         internal static string NUTCH_CONTROLLER_IS_ALIVE {
             get {
                 return ResourceManager.GetString("NUTCH_CONTROLLER_IS_ALIVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die New client initialized: [{0}]. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_NEW_CLIENT_INITIALIZED {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_NEW_CLIENT_INITIALIZED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Can not initialize clients because there are no settings. Please configure nutch first. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_NO_INITIALIZING_NO_SETTINGS {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_NO_INITIALIZING_NO_SETTINGS", resourceCulture);
             }
         }
         
@@ -1083,6 +1128,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         internal static string NUTCH_CONTROLLER_START_CRAWL {
             get {
                 return ResourceManager.GetString("NUTCH_CONTROLLER_START_CRAWL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Update settings [{0}] =&gt; [{1}]. ähnelt.
+        /// </summary>
+        internal static string NUTCH_CONTROLLER_UPDATE_SETTINGS {
+            get {
+                return ResourceManager.GetString("NUTCH_CONTROLLER_UPDATE_SETTINGS", resourceCulture);
             }
         }
         
