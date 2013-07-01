@@ -127,9 +127,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Connects this instance.
         /// </summary>
-        /// <param name="query">The query pattern for solr.</param>
+        /// <param name="componentName">The query pattern for solr.</param>
         /// <param name="componentGUID">The component GUID.</param>
-        public void StartSearch(SolrSearchClientSettings settings,  string query, Guid componentGUID)
+        public void StartSearch(SolrSearchClientSettings settings,  string componentName, Guid componentGUID)
         {
             try
             {
@@ -145,7 +145,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     if (this.SolrSocket.Connected)
                     {
                         Log.InfoFormat(Properties.Resources.SOLR_CLIENT_CONNECTION_ESTABLISHED, this.Host);
-                        string solrQuery = this.BuildSolrQuery(settings, query, SolrMimeType.json);
+                        string solrQuery = this.BuildSolrQuery(settings, componentName, SolrMimeType.json);
                         this.SolrResponse = this.InvokeSolrQuery(settings, solrQuery);
                     }
                 }
@@ -217,23 +217,22 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Build the query string for Solr.
         /// </summary>
-        /// <param name="queryString">The query string is the actual search term.</param>
+        /// <param name="componentName">The query string is the actual search term.</param>
         /// <param name="mimeType">Type of the MIME.</param>
         /// <returns>
         /// The query string to send to solr..
         /// </returns>
         private string BuildSolrQuery(
             SolrSearchClientSettings settings,
-            string queryString,
-            //// string fq, string sort, int start, int rows, string fl, string df, string[] rawQueryParameters, 
+            string componentName,
             SolrMimeType mimeType)
         {
-            Guid queryTicket = Guid.NewGuid();
+            var filterQuery = string.Format(settings.FilterQuery, componentName);
 
             string query = string.Format(
                 settings.QueryFormat,
                 this.Collection,
-                settings.FilterQuery,
+                filterQuery,
                 mimeType);
 
             query = query.Replace(" ", "%20");
