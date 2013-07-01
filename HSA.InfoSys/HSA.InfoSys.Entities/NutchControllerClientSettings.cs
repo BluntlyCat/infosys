@@ -13,7 +13,7 @@ namespace HSA.InfoSys.Common.Entities
     /// </summary>
     [DataContract]
     [Serializable]
-    public class NutchControllerClientSettings : Entity
+    public class NutchControllerClientSettings : Settings
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="NutchControllerClientSettings"/> class.

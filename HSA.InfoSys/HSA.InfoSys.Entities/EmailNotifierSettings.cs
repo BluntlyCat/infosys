@@ -13,7 +13,7 @@ namespace HSA.InfoSys.Common.Entities
     /// </summary>
     [DataContract]
     [Serializable]
-    public class EmailNotifierSettings : Entity
+    public class EmailNotifierSettings : Settings
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="EmailNotifierSettings"/> class.

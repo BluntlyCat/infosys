@@ -14,7 +14,7 @@ namespace HSA.InfoSys.Common.Entities
     /// </summary>
     [DataContract]
     [Serializable]
-    public class WCFSettings : Entity
+    public class WCFSettings : Settings
     {
         /// <summary>
         /// The certificate password.

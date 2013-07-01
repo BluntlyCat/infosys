@@ -19,6 +19,7 @@ namespace HSA.InfoSys.Common.Entities
     [DataContract]
     [KnownType(typeof(Result))]
     [KnownType(typeof(OrgUnit))]
+    [KnownType(typeof(Settings))]
     [KnownType(typeof(Component))]
     [KnownType(typeof(WCFSettings))]
     [KnownType(typeof(OrgUnitConfig))]

@@ -10,6 +10,7 @@ namespace HSA.InfoSys.Testing.NutchTesting
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services.LocalServices;
     using log4net;
+    using HSA.InfoSys.Common.Entities;
 
     /// <summary>
     /// Implement your testing methods for Nutch here.
@@ -67,6 +68,20 @@ namespace HSA.InfoSys.Testing.NutchTesting
 
                         case ConsoleKey.S:
                             Log.Info("Send request to nutch.");
+                            NutchControllerClientSettings ns1 = new NutchControllerClientSettings();
+                            NutchControllerClientSettings ns2 = new NutchControllerClientSettings();
+                            ns2.CrawlTopN = 9;
+                            WCFSettings ws = new WCFSettings();
+
+                            if (ns1.Equals(ns2))
+                            {
+                                Log.Info("Equal");
+                            }
+                            else
+                            {
+                                Log.Info("Not equal");
+                            }
+
                             break;
                     }
                 }

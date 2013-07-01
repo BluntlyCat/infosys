@@ -13,7 +13,7 @@ namespace HSA.InfoSys.Common.Entities
     /// </summary>
     [DataContract]
     [Serializable]
-    public class SolrSearchClientSettings : Entity
+    public class SolrSearchClientSettings : Settings
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SolrSearchClientSettings"/> class.
