@@ -195,7 +195,7 @@
                             <label class="control-label" for="filterquery" style="text-align:left">
                                 Filter query:</label>
                             <div class="controls">
-                                <textarea class="input-xxlarge" rows="5" name="filterquery" placeholder="" value="<%= filterQuery %>"></textarea>
+                                <textarea class="input-xxlarge" rows="5" name="filterquery" placeholder=""><%= filterQuery %></textarea>
                             </div>
                         </div>
 
