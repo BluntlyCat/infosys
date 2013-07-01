@@ -220,6 +220,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <param name="orgUnitConfig">The org unit config.</param>
         private void StartSolrSearch(object sender, OrgUnitConfig orgUnitConfig)
         {
+            this.ServiceMutex.WaitOne();
+
             var countdown = sender as Countdown;
             var solrController = new SolrSearchController(this.dbManager);
             var orgUnitGUID = DBManager.Session.QueryOver<OrgUnit>()
@@ -232,6 +234,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             {
                 countdown.RestartService();
             }
+
+            this.ServiceMutex.ReleaseMutex();
         }
 
         /// <summary>

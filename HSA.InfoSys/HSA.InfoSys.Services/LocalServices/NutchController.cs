@@ -59,7 +59,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The crawls finished.
         /// </summary>
-        private int crawlsFinished = 0;
+        private int runningCrawls = 0;
 
         /// <summary>
         /// The is crawling.
@@ -188,10 +188,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                                             if (c.IsCompleted)
                                             {
-                                                this.crawlsFinished--;
-                                                Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CRAWL_FINISHED, this.crawlsFinished);
+                                                this.runningCrawls--;
+                                                Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_CRAWL_FINISHED, this.runningCrawls);
 
-                                                if (this.crawlsFinished == 0)
+                                                if (this.runningCrawls == 0)
                                                 {
                                                     this.ResetCrawls();
                                                     this.isCrawling = false;
@@ -203,7 +203,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                                             this.ServiceMutex.ReleaseMutex();
                                         });
 
-                                    this.crawlsFinished++;
+                                    this.runningCrawls++;
                                     invokeCrawl.BeginInvoke(this.settings, callback, this);
                                 }
                                 else if (client.URLs.Count == 0)
@@ -219,7 +219,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                                 }
                             }
 
-                            this.isCrawling = this.nutchClients.Any(c => c.IsCrawling == true);
+                            this.isCrawling = this.runningCrawls > 0;
                         }
                         else
                         {

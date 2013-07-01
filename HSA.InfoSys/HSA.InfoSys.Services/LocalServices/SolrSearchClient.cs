@@ -35,24 +35,24 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The settings.
         /// </summary>
-        private SolrSearchClientSettings settings;
+        //private SolrSearchClientSettings settings;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SolrSearchClient" /> class.
         /// </summary>
         /// <param name="dbManager">The db manager.</param>
-        public SolrSearchClient(IDBManager dbManager)
+        public SolrSearchClient(IDBManager dbManager, SolrSearchClientSettings settings)
         {
             this.dbManager = dbManager;
-            this.settings = this.dbManager.GetSolrClientSettings();
+            settings = this.dbManager.GetSolrClientSettings();
 
-            if (this.settings.Equals(new SolrSearchClientSettings()) == false)
+            if (settings.Equals(new SolrSearchClientSettings()) == false)
             {
-                this.Host = this.settings.Host;
-                this.Port = this.settings.Port;
+                this.Host = settings.Host;
+                this.Port = settings.Port;
 
                 this.SolrResponse = string.Empty;
-                this.Collection = this.settings.Collection;
+                this.Collection = settings.Collection;
             }
         }
 
@@ -129,11 +129,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="query">The query pattern for solr.</param>
         /// <param name="componentGUID">The component GUID.</param>
-        public void StartSearch(string query, Guid componentGUID)
+        public void StartSearch(SolrSearchClientSettings settings,  string query, Guid componentGUID)
         {
             try
             {
-                if (this.settings.Equals(new SolrSearchClientSettings()) == false)
+                if (settings.Equals(new SolrSearchClientSettings()) == false)
                 {
                     IPAddress ipa = IPAddress.Parse(this.Host);
                     IPEndPoint ipe = new IPEndPoint(ipa, this.Port);
@@ -145,14 +145,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     if (this.SolrSocket.Connected)
                     {
                         Log.InfoFormat(Properties.Resources.SOLR_CLIENT_CONNECTION_ESTABLISHED, this.Host);
-                        string solrQuery = this.BuildSolrQuery(query, SolrMimeType.json);
-                        this.SolrResponse = this.InvokeSolrQuery(solrQuery);
+                        string solrQuery = this.BuildSolrQuery(settings, query, SolrMimeType.json);
+                        this.SolrResponse = this.InvokeSolrQuery(settings, solrQuery);
                     }
-                }
-                else
-                {
-                    var component = this.dbManager.GetEntity(this.ComponentGUID) as Component;
-                    Log.WarnFormat(Properties.Resources.SOLR_SEARCH_CLIENT_NO_SOLR_SETTINGS, component.Name);
                 }
             }
             catch (Exception e)
@@ -179,7 +174,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="solrQuery">The solr query.</param>
         /// <returns>The search result from solr.</returns>
-        private string InvokeSolrQuery(string solrQuery)
+        private string InvokeSolrQuery(SolrSearchClientSettings settings, string solrQuery)
         {
             string request = string.Empty;
             string response = string.Empty;
@@ -190,7 +185,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             // Request send to the Server
             request = string.Format(
-                this.settings.RequestFormat,
+                settings.RequestFormat,
                 solrQuery,
                 "\r\n",
                 this.Host,
@@ -228,6 +223,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// The query string to send to solr..
         /// </returns>
         private string BuildSolrQuery(
+            SolrSearchClientSettings settings,
             string queryString,
             //// string fq, string sort, int start, int rows, string fl, string df, string[] rawQueryParameters, 
             SolrMimeType mimeType)
@@ -235,9 +231,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             Guid queryTicket = Guid.NewGuid();
 
             string query = string.Format(
-                this.settings.QueryFormat,
+                settings.QueryFormat,
                 this.Collection,
-                this.settings.FilterQuery,
+                settings.FilterQuery,
                 mimeType);
 
             query = query.Replace(" ", "%20");

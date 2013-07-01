@@ -53,7 +53,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="query">The query.</param>
         /// <param name="componentGUID">The component GUID.</param>
-        public delegate void InvokeSolrSearch(string query, Guid componentGUID);
+        public delegate void InvokeSolrSearch(SolrSearchClientSettings settings, string query, Guid componentGUID);
 
         /// <summary>
         /// Gets or sets the org unit GUID.
@@ -69,122 +69,133 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="orgUnitGuid">The org unit GUID.</param>
         public void StartSearch(Guid orgUnitGuid)
         {
-            var orgUnit = this.dbManager.GetEntity(orgUnitGuid, this.dbManager.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
+            var settings = dbManager.GetSolrClientSettings();
 
-            if (orgUnit != null)
+            if (settings.Equals(new SolrSearchClientSettings()) == false)
             {
-                var notifyMail = false;
 
-                this.OrgUnitGuid = orgUnitGuid;
+                var orgUnit = this.dbManager.GetEntity(orgUnitGuid, this.dbManager.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
 
-                if (orgUnit.OrgUnitConfig != null)
+                if (orgUnit != null)
                 {
-                    notifyMail = orgUnit.OrgUnitConfig.EmailActive;
-                }
-                
-                var components = this.dbManager.GetComponentsByOrgUnitId(this.OrgUnitGuid).ToList<Component>();
+                    var notifyMail = false;
 
-                if (components != null)
-                {
-                    foreach (var component in components)
+                    this.OrgUnitGuid = orgUnitGuid;
+
+                    if (orgUnit.OrgUnitConfig != null)
                     {
-                        var searchClient = new SolrSearchClient(this.dbManager);
+                        notifyMail = orgUnit.OrgUnitConfig.EmailActive;
+                    }
 
-                        var results = DBManager.Session.QueryOver<Result>()
-                            .Where(c => c.ComponentGUID == component.EntityId)
-                            .List();
+                    var components = this.dbManager.GetComponentsByOrgUnitId(this.OrgUnitGuid).ToList<Component>();
 
-                        SolrResultPot resultPot = new SolrResultPot();
+                    if (components != null)
+                    {
+                        foreach (var component in components)
+                        {
+                            var searchClient = new SolrSearchClient(this.dbManager, settings);
 
-                        var sendResults = new List<Result>();
+                            var results = DBManager.Session.QueryOver<Result>()
+                                .Where(c => c.ComponentGUID == component.EntityId)
+                                .List();
 
-                        ////Here we tell our delegate which method to call.
-                        InvokeSolrSearch invokeSearch = new InvokeSolrSearch(searchClient.StartSearch);
+                            SolrResultPot resultPot = new SolrResultPot();
 
-                        ////This is our callback method which will be
-                        ////called when solr finished the searchrequest.
-                        AsyncCallback callback = new AsyncCallback(
-                            c =>
-                            {
-                                dbMutex.WaitOne();
+                            var sendResults = new List<Result>();
 
-                                if (c.IsCompleted)
+                            ////Here we tell our delegate which method to call.
+                            InvokeSolrSearch invokeSearch = new InvokeSolrSearch(searchClient.StartSearch);
+
+                            ////This is our callback method which will be
+                            ////called when solr finished the searchrequest.
+                            AsyncCallback callback = new AsyncCallback(
+                                c =>
                                 {
-                                    resultPot = searchClient.GetResult();
+                                    dbMutex.WaitOne();
 
-                                    foreach (var result in resultPot.Results)
+                                    if (c.IsCompleted)
                                     {
-                                        if (results.Count == 0 || !results.Any(r => r.Content.Equals(result.Content)))
+                                        resultPot = searchClient.GetResult();
+
+                                        foreach (var result in resultPot.Results)
                                         {
-                                            sendResults.Add(result);
-                                            result.ComponentGUID = resultPot.EntityId;
-                                            dbManager.AddEntity(result);
+                                            if (results.Count == 0 || !results.Any(r => r.Content.Equals(result.Content)))
+                                            {
+                                                sendResults.Add(result);
+                                                result.ComponentGUID = resultPot.EntityId;
+                                                dbManager.AddEntity(result);
+                                            }
+
+                                            Log.InfoFormat(
+                                                Properties.Resources.SOLR_SEARCH_RESULT,
+                                                result.ComponentGUID,
+                                                result);
                                         }
 
-                                        Log.InfoFormat(
-                                            Properties.Resources.SOLR_SEARCH_RESULT,
-                                            result.ComponentGUID,
-                                            result);
+                                        componentsFinished++;
+
+                                        var comp = dbManager.GetEntity(resultPot.EntityId) as Component;
+                                        Log.InfoFormat(Properties.Resources.SOLR_SEARCH_COMPONENT_FINISHED, comp.Name);
                                     }
 
-                                    componentsFinished++;
-
-                                    var comp = dbManager.GetEntity(resultPot.EntityId) as Component;
-                                    Log.InfoFormat(Properties.Resources.SOLR_SEARCH_COMPONENT_FINISHED, comp.Name);
-                                }
-
-                                if (this.componentsFinished == components.Count)
-                                {
-                                    try
+                                    if (this.componentsFinished == components.Count)
                                     {
-                                        if (resultPot.HasResults)
+                                        try
                                         {
-                                            if (sendResults.Count > 0 && notifyMail)
+                                            if (resultPot.HasResults)
                                             {
-                                                EmailNotifier mailNotifier = new EmailNotifier(this.dbManager);
-                                                mailNotifier.SearchFinished(this.OrgUnitGuid, sendResults);
+                                                if (sendResults.Count > 0 && notifyMail)
+                                                {
+                                                    EmailNotifier mailNotifier = new EmailNotifier(this.dbManager);
+                                                    mailNotifier.SearchFinished(this.OrgUnitGuid, sendResults);
+                                                }
+                                                else if (sendResults.Count == 0)
+                                                {
+                                                    Log.InfoFormat(
+                                                        Properties.Resources.SOLR_SEARCH_CONTROLLER_NO_NEW_RESULTS,
+                                                        orgUnit.Name);
+                                                }
                                             }
-                                            else if (sendResults.Count == 0)
+                                            else
                                             {
-                                                Log.InfoFormat(
-                                                    Properties.Resources.SOLR_SEARCH_CONTROLLER_NO_NEW_RESULTS,
+                                                Log.WarnFormat(
+                                                    Properties.Resources.SOLR_SEARCH_NO_RESULTS,
                                                     orgUnit.Name);
                                             }
-                                        }
-                                        else
-                                        {
-                                            Log.WarnFormat(
-                                                Properties.Resources.SOLR_SEARCH_NO_RESULTS,
+
+                                            Log.InfoFormat(
+                                                Properties.Resources.SOLR_SEARCH_ORGUNIT_FINISHED,
                                                 orgUnit.Name);
                                         }
-
-                                        Log.InfoFormat(
-                                            Properties.Resources.SOLR_SEARCH_ORGUNIT_FINISHED,
-                                            orgUnit.Name);
+                                        catch (Exception e)
+                                        {
+                                            Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+                                        }
                                     }
-                                    catch (Exception e)
-                                    {
-                                        Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
-                                    }
-                                }
 
-                                dbMutex.ReleaseMutex();
-                            });
+                                    dbMutex.ReleaseMutex();
+                                });
 
-                        invokeSearch.BeginInvoke(component.Name, component.EntityId, callback, this);
-                        Log.InfoFormat(Properties.Resources.SOLR_SEARCH_COMPONENT_STARTED, component.Name);
+                            invokeSearch.BeginInvoke(settings, component.Name, component.EntityId, callback, this);
+                            Log.InfoFormat(Properties.Resources.SOLR_SEARCH_COMPONENT_STARTED, component.Name);
+                        }
+                    }
+                    else
+                    {
+                        //// No components
+                        Log.WarnFormat(Properties.Resources.SOLR_SEARCH_CONTROLLER_NO_COMPONENTS, orgUnit.Name);
                     }
                 }
                 else
                 {
-                    //// No components
-                    Log.WarnFormat(Properties.Resources.SOLR_SEARCH_CONTROLLER_NO_COMPONENTS, orgUnit.Name);
+                    //// No OrgUnit
+                    Log.WarnFormat(Properties.Resources.SOLR_SEARCH_CONTROLLER_NO_ORGUNIT, orgUnitGuid);
                 }
             }
             else
             {
-                //// No OrgUnit
-                Log.WarnFormat(Properties.Resources.SOLR_SEARCH_CONTROLLER_NO_ORGUNIT, orgUnitGuid);
+                //// No settings
+                Log.WarnFormat(Properties.Resources.SOLR_SEARCH_CONTROLLER_NO_SETTINGS);
             }
         }
     }
