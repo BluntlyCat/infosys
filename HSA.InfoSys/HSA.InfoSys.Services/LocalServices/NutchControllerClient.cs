@@ -359,8 +359,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             var prefixUrls = this.GetKnownPrefixes(settings, this.URLs);
 
-            this.AddURLToFile(this.PrefixFile, FileMode.Append, prefixUrls.ToArray());
-            this.AddURLToFile(this.SeedFile, FileMode.Create, this.URLs);
+            this.AddURLToFile(this.PrefixFile, FileMode.Append, settings, prefixUrls.ToArray());
+            this.AddURLToFile(this.SeedFile, FileMode.Create, settings, this.URLs);
         }
 
         /// <summary>
@@ -451,43 +451,50 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <param name="file">The file.</param>
         /// <param name="mode">The mode.</param>
         /// <param name="urls">The array of url.</param>
-        private void AddURLToFile(string file, FileMode mode, IList<string> urls)
+        private void AddURLToFile(
+            string file,
+            FileMode mode,
+            NutchControllerClientSettings settings,
+            IList<string> urls)
         {
-            var insertString = string.Empty;
-
-            foreach (string url in urls)
+            if (urls.Count > 0)
             {
-                insertString += string.Format("{0}{1}", url, "\n");
-            }
+                var insertString = string.Empty;
 
-            Log.DebugFormat(
-                Properties.Resources.NUTCH_CONTROLLER_CLIENT_WRITE_FILE,
-                insertString,
-                file,
-                mode,
-                this.Hostname);
-
-            try
-            {
-                switch (mode)
+                foreach (string url in urls)
                 {
-                    case FileMode.Append:
-                        this.RunCommand(string.Format("echo '{0}' >> {1}", insertString, file));
-                        break;
-
-                    case FileMode.Create:
-                        this.RunCommand(string.Format("echo '{0}' > {1}", insertString, file));
-                        break;
+                    insertString += string.Format("{0}", url);
                 }
 
-                Log.InfoFormat(
-                    Properties.Resources.NUTCH_CONTROLLER_CLIENT_WRITING_SUCCESS,
+                Log.DebugFormat(
+                    Properties.Resources.NUTCH_CONTROLLER_CLIENT_WRITE_FILE,
                     insertString,
+                    file,
+                    mode,
                     this.Hostname);
-            }
-            catch (Exception e)
-            {
-                Log.ErrorFormat(Properties.Resources.LOG_FILE_WRITING_ERROR, file, this.Hostname, e);
+
+                try
+                {
+                    switch (mode)
+                    {
+                        case FileMode.Append:
+                            this.RunCommand(string.Format("echo '{0}' >> {1}", insertString, file));
+                            break;
+
+                        case FileMode.Create:
+                            this.RunCommand(string.Format("echo '{0}' > {1}", insertString, file));
+                            break;
+                    }
+
+                    Log.InfoFormat(
+                        Properties.Resources.NUTCH_CONTROLLER_CLIENT_WRITING_SUCCESS,
+                        insertString,
+                        this.Hostname);
+                }
+                catch (Exception e)
+                {
+                    Log.ErrorFormat(Properties.Resources.LOG_FILE_WRITING_ERROR, file, this.Hostname, e);
+                }
             }
         }
 
