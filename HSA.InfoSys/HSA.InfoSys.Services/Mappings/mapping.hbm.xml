@@ -114,14 +114,17 @@
     <!-- SolrSearchClientSettings -->
     <joined-subclass name="SolrSearchClientSettings" table="SolrSearchClientSettings">
       <key column="SolrSearchClientSettingsGUID" unique="true" />
-
+      
       <!-- Public settings -->
       <property name="Host" type="string" length ="100" not-null="true" />
       <property name="Port" type="int" not-null="true"/>
 
       <property name="Collection" type="string" length ="40" not-null="true" />
-      <property name="FilterQuery" type="string" length ="100" not-null="true" />
-
+      
+      <property name="FilterQuery" type="string" >
+        <column name="FilterQuery" sql-type="text" not-null="true" />
+      </property>
+      
       <!-- Non public settings -->
       <property name="QueryFormat" type="string" length ="100" not-null="true" />
       <property name="RequestFormat" type="string" length ="100" not-null="true" />
