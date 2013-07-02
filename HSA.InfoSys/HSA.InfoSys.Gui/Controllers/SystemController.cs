@@ -3,7 +3,6 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
-#define MONO
 namespace HSA.InfoSys.Gui.Controllers
 {
     using System;
