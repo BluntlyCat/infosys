@@ -28,7 +28,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The db mutex.
         /// </summary>
-        private static readonly Mutex DbMutex = new Mutex();
+        private readonly Mutex dbMutex = new Mutex();
 
         /// <summary>
         /// The database manager.
@@ -99,7 +99,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                         var callback = new AsyncCallback(
                             c =>
                                 {
-                                    DbMutex.WaitOne();
+                                    dbMutex.WaitOne();
 
                                     if (c.IsCompleted)
                                     {
@@ -150,7 +150,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                                         this.SendResults(sendResults, orgUnit);
                                     }
 
-                                    DbMutex.ReleaseMutex();
+                                    dbMutex.ReleaseMutex();
                                 });
 
                         invokeSearch.BeginInvoke(settings, callback, this);
