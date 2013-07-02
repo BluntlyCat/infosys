@@ -111,15 +111,25 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                                             componentsFinished++;
 
                                             resultPot = searchClient.GetResult();
-                                            sendResults = this.GetSendResults(resultPot, results);
 
-                                            var comp = dbManager.GetEntity(resultPot.EntityId) as Component;
-
-                                            if (comp != null)
+                                            if (resultPot.HasResults)
                                             {
-                                                Log.InfoFormat(
-                                                    Properties.Resources.SOLR_SEARCH_COMPONENT_FINISHED,
-                                                    comp.Name);
+                                                sendResults = this.GetSendResults(resultPot, results);
+
+                                                var comp = dbManager.GetEntity(resultPot.EntityId) as Component;
+
+                                                if (comp != null)
+                                                {
+                                                    Log.InfoFormat(
+                                                        Properties.Resources.SOLR_SEARCH_COMPONENT_FINISHED,
+                                                        comp.Name);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                Log.WarnFormat(
+                                                    Properties.Resources.SOLR_SEARCH_NO_RESULTS,
+                                                    orgUnit.Name);
                                             }
                                         }
                                         catch (SolrResponseBadRequestException bre)
@@ -136,7 +146,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                                     if (this.componentsFinished == components.Count)
                                     {
-                                        this.SendResults(resultPot, sendResults, orgUnit);
+                                        this.SendResults(sendResults, orgUnit);
                                     }
 
                                     DbMutex.ReleaseMutex();
@@ -191,31 +201,21 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Sends the results.
         /// </summary>
-        /// <param name="resultPot">The result pot.</param>
         /// <param name="sendResults">The send results.</param>
         /// <param name="orgUnit">The org unit.</param>
-        private void SendResults(SolrResultPot resultPot, List<Result> sendResults, OrgUnit orgUnit)
+        private void SendResults(List<Result> sendResults, OrgUnit orgUnit)
         {
             try
             {
-                if (resultPot.HasResults)
+                if (sendResults.Count > 0 && orgUnit.OrgUnitConfig.EmailActive)
                 {
-                    if (sendResults.Count > 0 && orgUnit.OrgUnitConfig.EmailActive)
-                    {
-                        var mailNotifier = new EmailNotifier(this.dbManager);
-                        mailNotifier.SearchFinished(this.OrgUnitGuid, sendResults);
-                    }
-                    else if (sendResults.Count == 0)
-                    {
-                        Log.InfoFormat(
-                            Properties.Resources.SOLR_SEARCH_CONTROLLER_NO_NEW_RESULTS,
-                            orgUnit.Name);
-                    }
+                    var mailNotifier = new EmailNotifier(this.dbManager);
+                    mailNotifier.SearchFinished(this.OrgUnitGuid, sendResults);
                 }
-                else
+                else if (sendResults.Count == 0)
                 {
-                    Log.WarnFormat(
-                        Properties.Resources.SOLR_SEARCH_NO_RESULTS,
+                    Log.InfoFormat(
+                        Properties.Resources.SOLR_SEARCH_CONTROLLER_NO_NEW_RESULTS,
                         orgUnit.Name);
                 }
 

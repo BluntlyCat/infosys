@@ -720,7 +720,7 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <returns>A list of results which belongs to the given component.</returns>
         private List<Result> GetResults(Guid componentGuid)
         {
-            var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
+            var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
 
             var indexes = cc.GetResultIndexes(componentGuid).ToArray();
             var splittedResults = new List<Result[]>();
