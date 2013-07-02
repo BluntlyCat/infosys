@@ -133,6 +133,25 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         OrgUnit[] GetOrgUnitsByUserId(int userId, string[] types = null);
 
         /// <summary>
+        /// Gets the org unit GUID by org unit config GUID.
+        /// </summary>
+        /// <param name="orgUnitConfigGUID">The org unit config GUID.</param>
+        /// <param name="types">The types.</param>
+        /// <returns>The OrgUnitGUID of the OrgUnit belonging to the OrgUnitConfigGUID.</returns>
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        Guid GetOrgUnitGuidByOrgUnitConfigGuid(Guid orgUnitConfigGUID, string[] types = null);
+
+        /// <summary>
+        /// Gets the org unit configurations by active scheduler.
+        /// </summary>
+        /// <param name="types">The types.</param>
+        /// <returns>A list of Orgunit configurations where the Scheduler is active.</returns>
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        OrgUnitConfig[] GetOrgUnitConfigsByActiveScheduler(string[] types = null);
+
+        /// <summary>
         /// Gets the components by org unit id.
         /// </summary>
         /// <param name="orgUnitGUID">The org unit GUID.</param>
@@ -171,20 +190,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
         Component CreateComponent(string name, Guid orgUnitGUID);
-
-        /// <summary>
-        /// Creates the result.
-        /// </summary>
-        /// <param name="componentGUID">The component GUID.</param>
-        /// <param name="content">The content.</param>
-        /// <param name="url">The URL.</param>
-        /// <param name="title">The title.</param>
-        /// <returns>
-        /// A result object of for a web crawl.
-        /// </returns>
-        [UseNetDataContractSerializer]
-        [OperationContractAttribute]
-        Result CreateResult(Guid componentGUID, string content, string url, string title);
 
         /// <summary>
         /// Creates a OrgUnit object

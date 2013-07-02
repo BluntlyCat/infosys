@@ -6,7 +6,7 @@
 namespace HSA.InfoSys.Gui.Controllers
 {
     using System;
-#if MONO
+#if !MONO
     using System.Collections.Generic;
 #endif
     using System.Linq;

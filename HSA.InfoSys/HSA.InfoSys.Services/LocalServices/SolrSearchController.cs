@@ -89,9 +89,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                         var searchClient = new SolrSearchClient(this.dbManager, component.EntityId, component.Name);
 
                         var innerComp = component;
-                        var results = DbManager.Session.QueryOver<Result>()
-                            .Where(c => innerComp != null && c.ComponentGUID == innerComp.EntityId)
-                            .List();
+                        var results = this.dbManager.GetResultsByComponentId(innerComp.EntityId).ToList();
 
                         ////Here we tell our delegate which method to call.
                         var invokeSearch = new InvokeSolrSearch(searchClient.StartSearch);
@@ -183,7 +181,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </returns>
         private static IEnumerable<Result> GetSendResults(
             SolrResultPot resultPot,
-            ICollection<Result> results,
+            IList<Result> results,
             IDbManager dbManager)
         {
             var sendResults = new List<Result>();

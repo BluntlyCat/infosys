@@ -152,9 +152,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         public override void StartService()
         {
-            var configs = DbManager.Session.QueryOver<OrgUnitConfig>()
-                .Where(x => x.SchedulerActive)
-                .List<OrgUnitConfig>();
+            var configs = this.dbManager.GetOrgUnitConfigsByActiveScheduler();
 
             this.jobMutex.WaitOne();
 
@@ -227,9 +225,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
             var countdown = sender as Countdown;
             var solrController = new SolrSearchController(this.dbManager);
-            var orgUnitGUID = DbManager.Session.QueryOver<OrgUnit>()
-                .Where(u => u.OrgUnitConfig.EntityId == orgUnitConfig.EntityId)
-                .SingleOrDefault().EntityId;
+
+            var orgUnitGUID = this.dbManager.GetOrgUnitGuidByOrgUnitConfigGuid(orgUnitConfig.EntityId);
 
             solrController.StartSearch(orgUnitGUID);
 
