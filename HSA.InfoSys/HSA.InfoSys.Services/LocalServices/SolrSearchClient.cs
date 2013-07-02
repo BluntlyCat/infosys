@@ -133,7 +133,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     if (this.SolrSocket.Connected)
                     {
                         Log.InfoFormat(Properties.Resources.SOLR_CLIENT_CONNECTION_ESTABLISHED, this.Host);
-                        string solrQuery = this.BuildSolrQuery(settings, componentName, SolrMimeType.Json);
+                        string solrQuery = this.BuildSolrQuery(settings, componentName);
                         this.SolrResponse = this.InvokeSolrQuery(settings, solrQuery);
                     }
                 }
@@ -182,23 +182,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <returns>The search result from solr.</returns>
         private string InvokeSolrQuery(SolrSearchClientSettings settings, string solrQuery)
         {
-            string request;
-            string response = string.Empty;
+            var response = string.Empty;
 
             var bytesReceived = new byte[256];
-            byte[] bytesSend;
             int bytes;
 
-            // Request send to the Server
-            /*request = string.Format(
-                Properties.Settings.Default.SOLR_REQUEST_FORMAT,
-                solrQuery,
-                "\r\n",
-                this.Host,
-                "\r\n",
-                "\r\n\r\n");*/
-
-            request = string.Format(
+            var request = string.Format(
                 settings.RequestFormat,
                 solrQuery,
                 "\r\n",
@@ -207,7 +196,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 "\r\n\r\n");
 
             // Mince request into an byte Array
-            bytesSend = new ASCIIEncoding().GetBytes(request);
+            var bytesSend = new ASCIIEncoding().GetBytes(request);
 
             // Send request to Solr
             this.SolrSocket.Send(bytesSend);
@@ -233,22 +222,19 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="settings">The settings for Solr.</param>
         /// <param name="componentName">The query string is the actual search term.</param>
-        /// <param name="mimeType">Type of the MIME.</param>
         /// <returns>
         /// The query string to send to solr..
         /// </returns>
         private string BuildSolrQuery(
             SolrSearchClientSettings settings,
-            string componentName,
-            SolrMimeType mimeType)
+            string componentName)
         {
             var filterQuery = string.Format(settings.FilterQuery, componentName);
 
-            string query = string.Format(
+            var query = string.Format(
                 settings.QueryFormat,
                 this.Collection,
-                filterQuery,
-                mimeType);
+                filterQuery);
 
             query = query.Replace(" ", "%20");
 
