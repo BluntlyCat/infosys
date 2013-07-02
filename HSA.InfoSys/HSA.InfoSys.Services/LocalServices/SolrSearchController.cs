@@ -91,7 +91,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                             .Where(c => component != null && c.ComponentGUID == component.EntityId)
                             .List();
 
-                        var resultPot = new SolrResultPot();
                         var sendResults = new List<Result>();
 
                         ////Here we tell our delegate which method to call.
@@ -110,7 +109,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                                         {
                                             componentsFinished++;
 
-                                            resultPot = searchClient.GetResult();
+                                            var resultPot = searchClient.GetResult();
 
                                             if (resultPot.HasResults)
                                             {
