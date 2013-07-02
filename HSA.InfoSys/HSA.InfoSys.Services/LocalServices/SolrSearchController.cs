@@ -53,9 +53,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// Our delegate for invoking an async callback.
         /// </summary>
         /// <param name="settings">The settings for SolrSearchClient.</param>
-        /// <param name="query">The query.</param>
-        /// <param name="componentGUID">The component GUID.</param>
-        private delegate void InvokeSolrSearch(SolrSearchClientSettings settings, string query, Guid componentGUID);
+        private delegate void InvokeSolrSearch(SolrSearchClientSettings settings);
 
         /// <summary>
         /// Gets or sets the org unit GUID.
@@ -75,23 +73,25 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             if (settings.Equals(new SolrSearchClientSettings()) == false)
             {
-                var orgUnit = this.dbManager.GetEntity(orgUnitGuid, this.dbManager.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
+                var orgUnit = this.dbManager.GetEntity(
+                    orgUnitGuid,
+                    this.dbManager.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
 
                 if (orgUnit != null)
                 {
                     this.OrgUnitGuid = orgUnitGuid;
 
                     var components = this.dbManager.GetComponentsByOrgUnitId(this.OrgUnitGuid).ToList();
+                    var sendResults = new List<Result>();
 
                     foreach (var component in components)
                     {
-                        var searchClient = new SolrSearchClient(this.dbManager);
+                        var searchClient = new SolrSearchClient(this.dbManager, component.EntityId, component.Name);
 
+                        var innerComp = component;
                         var results = DbManager.Session.QueryOver<Result>()
-                            .Where(c => component != null && c.ComponentGUID == component.EntityId)
+                            .Where(c => innerComp != null && c.ComponentGUID == innerComp.EntityId)
                             .List();
-
-                        var sendResults = new List<Result>();
 
                         ////Here we tell our delegate which method to call.
                         var invokeSearch = new InvokeSolrSearch(searchClient.StartSearch);
@@ -113,7 +113,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                                             if (resultPot.HasResults)
                                             {
-                                                sendResults = this.GetSendResults(resultPot, results);
+                                                sendResults.AddRange(
+                                                    GetSendResults(
+                                                    resultPot,
+                                                    results,
+                                                    this.dbManager));
 
                                                 var comp = dbManager.GetEntity(resultPot.EntityId) as Component;
 
@@ -151,7 +155,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                                     DbMutex.ReleaseMutex();
                                 });
 
-                        invokeSearch.BeginInvoke(settings, component.Name, component.EntityId, callback, this);
+                        invokeSearch.BeginInvoke(settings, callback, this);
                         Log.InfoFormat(Properties.Resources.SOLR_SEARCH_COMPONENT_STARTED, component.Name);
                     }
                 }
@@ -173,19 +177,25 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="resultPot">The result pot.</param>
         /// <param name="results">The results.</param>
-        /// <returns>A list of the results to store in database.</returns>
-        private List<Result> GetSendResults(SolrResultPot resultPot, ICollection<Result> results)
+        /// <param name="dbManager">The db manager.</param>
+        /// <returns>
+        /// A list of the results to store in database.
+        /// </returns>
+        private static IEnumerable<Result> GetSendResults(
+            SolrResultPot resultPot,
+            ICollection<Result> results,
+            IDbManager dbManager)
         {
             var sendResults = new List<Result>();
 
             foreach (var result in resultPot.Results)
             {
-                if (results.Count == 0 ||
-                    !results.Any(r => r.Content.Equals(result.Content)))
+                if (results.Count == 0 || results.All(r => r.ContentHash != result.ContentHash))
                 {
+                    results.Add(result);
                     sendResults.Add(result);
                     result.ComponentGUID = resultPot.EntityId;
-                    this.dbManager.AddEntity(result);
+                    dbManager.AddEntity(result);
                 }
 
                 Log.InfoFormat(
@@ -202,8 +212,13 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="sendResults">The send results.</param>
         /// <param name="orgUnit">The org unit.</param>
-        private void SendResults(List<Result> sendResults, OrgUnit orgUnit)
+        private void SendResults(ICollection<Result> sendResults, OrgUnit orgUnit)
         {
+            if (sendResults == null)
+            {
+                throw new ArgumentNullException("sendResults");
+            }
+
             try
             {
                 if (sendResults.Count > 0 && orgUnit.OrgUnitConfig.EmailActive)

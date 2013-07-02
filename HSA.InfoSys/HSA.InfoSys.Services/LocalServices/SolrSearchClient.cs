@@ -6,9 +6,8 @@
 namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System;
+    using System.IO;
     using System.Net;
-    using System.Net.Sockets;
-    using System.Text;
     using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Exceptions;
     using HSA.InfoSys.Common.Logging;
@@ -33,65 +32,70 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private readonly IDbManager dbManager;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SolrSearchClient" /> class.
+        /// Initializes a new instance of the <see cref="SolrSearchClient"/> class.
         /// </summary>
         /// <param name="dbManager">The db manager.</param>
-        public SolrSearchClient(IDbManager dbManager)
+        /// <param name="componentGUID">The component GUID.</param>
+        /// <param name="componentName">Name of the component.</param>
+        public SolrSearchClient(IDbManager dbManager, Guid componentGUID, string componentName)
         {
             this.dbManager = dbManager;
+            this.ComponentGUID = componentGUID;
+            this.ComponentName = componentName;
         }
 
         /// <summary>
-        /// Gets the host.
+        /// Gets or sets the host.
         /// </summary>
         /// <value>
         /// The host.
         /// </value>
-        public string Host { get; private set; }
+        private string Host { get; set; }
 
         /// <summary>
-        /// Gets the port.
+        /// Gets or sets the port.
         /// </summary>
         /// <value>
         /// The port.
         /// </value>
-        public int Port { get; private set; }
+        private int Port { get; set; }
 
         /// <summary>
-        /// Gets the collection.
+        /// Gets or sets the collection.
         /// </summary>
         /// <value>
         /// The collection.
         /// </value>
-        public string Collection { get; private set; }
+        private string Collection { get; set; }
 
         /// <summary>
-        /// Gets the solr response.
+        /// Gets or sets the solr response.
         /// </summary>
         /// <value>
         /// The solr response.
         /// </value>
-        public string SolrResponse { get; private set; }
+        private string SolrResponse { get; set; }
 
         /// <summary>
-        /// Gets the component GUID.
+        /// Gets or sets the component GUID.
         /// </summary>
         /// <value>
         /// The component GUID.
         /// </value>
-        public Guid ComponentGUID { get; private set; }
+        private Guid ComponentGUID { get; set; }
 
         /// <summary>
-        /// Gets or sets the solr socket.
+        /// Gets or sets the name of the component.
         /// </summary>
         /// <value>
-        /// The solr socket.
+        /// The name of the component.
         /// </value>
-        private Socket SolrSocket { get; set; }
+        private string ComponentName { get; set; }
 
         /// <summary>
         /// Gets the response from solr.
         /// </summary>
+        /// <exception cref="SolrResponseBadRequestException">Thrown if we got a bad response from Solr.</exception>
         /// <returns>The response.</returns>
         public SolrResultPot GetResult()
         {
@@ -105,7 +109,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             }
             catch (Exception e)
             {
-                throw new SolrResponseBadRequestException(e, "GetResult()");
+                throw new SolrResponseBadRequestException(e, string.Format("GetResult() for: {0}", this.ComponentName));
             }
         }
 
@@ -113,48 +117,25 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// Connects this instance.
         /// </summary>
         /// <param name="settings">The settings.</param>
-        /// <param name="componentName">The query pattern for solr.</param>
-        /// <param name="componentGUID">The component GUID.</param>
-        public void StartSearch(SolrSearchClientSettings settings,  string componentName, Guid componentGUID)
+        public void StartSearch(SolrSearchClientSettings settings)
         {
             try
             {
                 this.SetConnectionProperties();
 
-                if (settings.Equals(new SolrSearchClientSettings()) == false)
+                if (settings.Equals(new SolrSearchClientSettings()))
                 {
-                    var ipa = IPAddress.Parse(this.Host);
-                    var ipe = new IPEndPoint(ipa, this.Port);
-
-                    this.SolrSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                    this.SolrSocket.Connect(ipe);
-                    this.ComponentGUID = componentGUID;
-
-                    if (this.SolrSocket.Connected)
-                    {
-                        Log.InfoFormat(Properties.Resources.SOLR_CLIENT_CONNECTION_ESTABLISHED, this.Host);
-                        string solrQuery = this.BuildSolrQuery(settings, componentName);
-                        this.SolrResponse = this.InvokeSolrQuery(settings, solrQuery);
-                    }
+                    return;
                 }
+
+                Log.InfoFormat(Properties.Resources.SOLR_CLIENT_CONNECTION_ESTABLISHED, this.Host);
+                var solrQuery = this.BuildSolrQuery(settings, this.ComponentName);
+                this.SolrResponse = this.InvokeSolrQuery(solrQuery);
             }
             catch (Exception e)
             {
                 Log.ErrorFormat(Properties.Resources.SOLR_CLIENT_UNABLE_TO_CONNECT, e.Message);
             }
-        }
-
-        /// <summary>
-        /// Closes the connection.
-        /// </summary>
-        public void CloseConnection()
-        {
-            Log.Info(Properties.Resources.SOLR_CLIENT_CLOSE_CONNECTION);
-
-            this.SolrSocket.Disconnect(false);
-            this.SolrSocket.Close();
-
-            Log.InfoFormat(Properties.Resources.SOLR_CLIENT_SOCKET_CLOSED, this.Host);
         }
 
         /// <summary>
@@ -164,57 +145,49 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             var settings = this.dbManager.GetSolrClientSettings();
 
-            if (settings.Equals(new SolrSearchClientSettings()) == false)
+            if (settings.Equals(new SolrSearchClientSettings()))
             {
-                this.Host = settings.Host;
-                this.Port = settings.Port;
-
-                this.SolrResponse = string.Empty;
-                this.Collection = settings.Collection;
+                return;
             }
+
+            this.Host = settings.Host;
+            this.Port = settings.Port;
+
+            this.SolrResponse = string.Empty;
+            this.Collection = settings.Collection;
         }
 
         /// <summary>
         /// Sockets the send receive.
         /// </summary>
-        /// <param name="settings">The settings for Solr.</param>
         /// <param name="solrQuery">The solr query.</param>
-        /// <returns>The search result from solr.</returns>
-        private string InvokeSolrQuery(SolrSearchClientSettings settings, string solrQuery)
+        /// <returns>
+        /// The search result from solr.
+        /// </returns>
+        private string InvokeSolrQuery(string solrQuery)
         {
-            var response = string.Empty;
+            var url = string.Format("http://{0}:{1}{2}", this.Host, this.Port, solrQuery);
+            var request = WebRequest.Create(url);
 
-            var bytesReceived = new byte[256];
-            int bytes;
+            request.Method = "GET";
 
-            var request = string.Format(
-                settings.RequestFormat,
-                solrQuery,
-                "\r\n",
-                this.Host,
-                "\r\n",
-                "\r\n\r\n");
+            var response = request.GetResponse();
+            var data = response.GetResponseStream();
 
-            // Mince request into an byte Array
-            var bytesSend = new ASCIIEncoding().GetBytes(request);
-
-            // Send request to Solr
-            this.SolrSocket.Send(bytesSend);
-            Log.InfoFormat(Properties.Resources.SOLR_CLIENT_MESSAGE_SENT, request);
-
-            // Receive solr server response
-            do
+            if (data != null)
             {
-                bytes = this.SolrSocket.Receive(bytesReceived, bytesReceived.Length, 0);
-                response += Encoding.ASCII.GetString(bytesReceived, 0, bytes);
+                var reader = new StreamReader(data);
+
+                var responseFromSolr = reader.ReadToEnd();
+
+                reader.Close();
+                data.Close();
+                response.Close();
+
+                return responseFromSolr;
             }
-            while (bytes > 0);
 
-            Log.InfoFormat(Properties.Resources.SOLR_CLIENT_RESULT_RECEIVED, this.Host, response);
-
-            this.CloseConnection();
-
-            return response;
+            return string.Empty;
         }
 
         /// <summary>
@@ -262,10 +235,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 {
                     var result = new Result();
 
-                    // todo: Länge von content begrenzen.
                     var content = this.GetJsonValue(doc, "content").Replace(".", ".\r\n");
 
-                    result.Content = content.Length > 300 ? string.Format("{0}...", content.Substring(0, 300)) : content;
+                    result.ContentHash = content.GetHashCode();
+                    result.Content = content.Length > 300 ? string.Format(
+                        "{0}...",
+                        content.Substring(0, 300)) : content;
 
                     result.URL = this.GetJsonValue(doc, "url");
                     result.Title = this.RemoveSpecialChars(this.GetJsonValue(doc, "title"));

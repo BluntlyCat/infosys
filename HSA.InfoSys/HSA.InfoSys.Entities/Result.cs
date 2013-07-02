@@ -25,6 +25,15 @@ namespace HSA.InfoSys.Common.Entities
         public virtual string Content { get; set; }
 
         /// <summary>
+        /// Gets or sets the content hash.
+        /// </summary>
+        /// <value>
+        /// The content hash.
+        /// </value>
+        [DataMember]
+        public virtual int ContentHash { get; set; }
+
+        /// <summary>
         /// Gets or sets the component.
         /// </summary>
         /// <value>
