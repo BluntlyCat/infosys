@@ -11,10 +11,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using System.Net.Mail;
     using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Logging;
-    using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
     using Newtonsoft.Json;
     using NHibernate;
+    using WCFServices;
 
     /// <summary>
     /// This class sends emails to notify the owner
@@ -30,18 +30,18 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The db manager.
         /// </summary>
-        private IDBManager dbManager;
+        private readonly IDbManager dbManager;
 
         /// <summary>
         /// The settings.
         /// </summary>
-        private EmailNotifierSettings settings;
+        private readonly EmailNotifierSettings settings;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EmailNotifier" /> class.
         /// </summary>
         /// <param name="dbManager">The db manager.</param>
-        public EmailNotifier(IDBManager dbManager)
+        public EmailNotifier(IDbManager dbManager)
         {
             this.dbManager = dbManager;
             this.settings = this.dbManager.GetMailSettings();
@@ -52,50 +52,66 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="orgUnitGUID">The org unit GUID.</param>
         /// <param name="results">The results.</param>
-        public void SearchFinished(Guid orgUnitGUID, List<Result> results)
+        public void SearchFinished(Guid orgUnitGUID, IEnumerable<Result> results)
         {
             Log.DebugFormat(Properties.Resources.SEARCH_RECALL, orgUnitGUID);
 
-            try
+            if (this.settings.Equals(new EmailNotifierSettings()) == false)
             {
-                Log.InfoFormat(Properties.Resources.EMAIL_NOTIFIER_SEARCH_FINISHED, orgUnitGUID);
-
-                var orgUnit = this.dbManager.GetEntity(
-                    orgUnitGUID,
-                    this.dbManager.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
-
-                var mailBody = string.Empty;
-                var oldComponentGUID = Guid.Empty;
-
-                var addresses = this.DeserializeAddresses(orgUnit);
-                var subject = string.Format(
-                    Properties.Resources.EMAIL_NOTIFIER_ISSUE_FOUND_SUBJECT,
-                    orgUnit.Name);
-
-                var mail = this.BuildMail(
-                    this.settings.MailFrom,
-                    subject);
-
-                this.AddMailRecipient(mail, orgUnitGUID, addresses);
-
-                foreach (var result in results)
+                try
                 {
-                    if (oldComponentGUID.Equals(Guid.Empty) || oldComponentGUID.Equals(result.ComponentGUID) == false)
+                    Log.InfoFormat(Properties.Resources.EMAIL_NOTIFIER_SEARCH_FINISHED, orgUnitGUID);
+
+                    var orgUnit = this.dbManager.GetEntity(
+                        orgUnitGUID,
+                        this.dbManager.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
+
+                    var mailBody = string.Empty;
+                    var oldComponentGUID = Guid.Empty;
+
+                    var addresses = this.DeserializeAddresses(orgUnit);
+
+                    if (orgUnit != null)
                     {
-                        var component = this.dbManager.GetEntity(result.ComponentGUID) as Component;
-                        mailBody += string.Format("{0}:\n", component.Name);
+                        var subject = string.Format(
+                            Properties.Resources.EMAIL_NOTIFIER_ISSUE_FOUND_SUBJECT,
+                            orgUnit.Name);
+
+                        var mail = this.BuildMail(
+                            this.settings.MailFrom,
+                            subject);
+
+                        this.AddMailRecipient(mail, orgUnitGUID, addresses);
+
+                        foreach (var result in results)
+                        {
+                            if (oldComponentGUID.Equals(Guid.Empty) ||
+                                oldComponentGUID.Equals(result.ComponentGUID) == false)
+                            {
+                                var component = this.dbManager.GetEntity(result.ComponentGUID) as Component;
+
+                                if (component != null)
+                                {
+                                    mailBody += string.Format("{0}:\n", component.Name);
+                                }
+                            }
+
+                            oldComponentGUID = result.ComponentGUID;
+                            mailBody += string.Format("\t{0} - {1}\n\n", result.Title, result.URL);
+                        }
+
+                        this.AddMailBody(mail, mailBody);
+                        this.SendMail(mail);
                     }
-
-                    oldComponentGUID = result.ComponentGUID;
-                    mailBody += string.Format("\t{0} - {1}\n\n", result.Title, result.URL);
                 }
-
-                this.AddMailBody(mail, mailBody);
-                this.SendMail(mail);
+                catch (Exception e)
+                {
+                    Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+                }
             }
-            catch (Exception e)
+            else
             {
-                Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
+                Log.WarnFormat(Properties.Resources.EMAIL_NOTIFIER_NO_SETTINGS);
             }
         }
 
@@ -113,18 +129,21 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     orgUnitGUID,
                     this.dbManager.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
 
-                var mailBody = string.Format(Properties.Resources.EMAIL_NOTIFIER_CRAWL_FAILED_BODY, orgUnit.Name);
+                if (orgUnit != null)
+                {
+                    var mailBody = string.Format(Properties.Resources.EMAIL_NOTIFIER_CRAWL_FAILED_BODY, orgUnit.Name);
 
-                var addresses = this.DeserializeAddresses(orgUnit);
+                    var addresses = this.DeserializeAddresses(orgUnit);
 
-                var mail = this.BuildMail(
-                    this.settings.MailFrom,
-                    Properties.Resources.EMAIL_NOTIFIER_CRAWL_FAILED_SUBJECT);
+                    var mail = this.BuildMail(
+                        this.settings.MailFrom,
+                        Properties.Resources.EMAIL_NOTIFIER_CRAWL_FAILED_SUBJECT);
 
-                this.AddMailRecipient(mail, orgUnitGUID, addresses);
+                    this.AddMailRecipient(mail, orgUnitGUID, addresses);
 
-                this.AddMailBody(mail, mailBody);
-                this.SendMail(mail);
+                    this.AddMailBody(mail, mailBody);
+                    this.SendMail(mail);
+                }
             }
             catch (Exception e)
             {
@@ -171,11 +190,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             {
                 return entity as OrgUnit;
             }
-            else if (entity.GetType() == typeof(Component))
+
+            if (entity.GetType() == typeof(Component))
             {
                 var component = entity as Component;
 
-                using (ISession session = DBManager.Session)
+                using (ISession session = DbManager.Session)
                 {
                     orgUnit = session.QueryOver<OrgUnit>()
                         .Where(x => x.EntityId == component.OrgUnitGUID)
@@ -186,14 +206,15 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             }
             else if (entity.GetType() == typeof(Result))
             {
-                using (ISession session = DBManager.Session)
+                using (ISession session = DbManager.Session)
                 {
                     var result = entity as Result;
-                    var component = DBManager.Session.QueryOver<Component>()
+
+                    var component = session.QueryOver<Component>()
                         .Where(x => x.EntityId == result.ComponentGUID)
                         .SingleOrDefault();
 
-                    orgUnit = DBManager.Session.QueryOver<OrgUnit>()
+                    orgUnit = session.QueryOver<OrgUnit>()
                         .Where(x => x.EntityId == component.OrgUnitGUID)
                         .SingleOrDefault();
 

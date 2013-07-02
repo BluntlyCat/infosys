@@ -17,17 +17,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     /// The interface for accessing the data base.
     /// </summary>
     [ServiceContract]
-    public interface IDBManager
+    public interface IDbManager
     {
-        /// <summary>
-        /// Gets the settings for.
-        /// </summary>
-        /// <typeparam name="T">The type of settings.</typeparam>
-        /// <returns>
-        /// The entity containing the requested settings.
-        /// </returns>
-        T GetSettingsFor<T>() where T : Entity;
-
         /// <summary>
         /// Gets the mail settings.
         /// </summary>
@@ -60,7 +51,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <returns>The WCF controller settings.</returns>
         [OperationContract]
         [UseNetDataContractSerializer]
-        WCFSettings GetWCFSettings();
+        WCFSettings GetWcfSettings();
 
         /// <summary>
         /// Loads this entities eager.
@@ -71,7 +62,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        string[] LoadThisEntities(params string[] param);
+        string[] LoadThisEntities(params object[] param);
 
         /// <summary>
         /// Gets all URLs.
@@ -132,14 +123,14 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets the org units by user ID.
         /// </summary>
-        /// <param name="userID">The user ID.</param>
+        /// <param name="userId">The user ID.</param>
         /// <param name="types">The types.</param>
         /// <returns>
         /// A list of org units for the user id.
         /// </returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        OrgUnit[] GetOrgUnitsByUserID(int userID, string[] types = null);
+        OrgUnit[] GetOrgUnitsByUserId(int userId, string[] types = null);
 
         /// <summary>
         /// Gets the components by org unit id.

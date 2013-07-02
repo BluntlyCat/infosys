@@ -34,7 +34,7 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <summary>
         /// The settings for WCF.
         /// </summary>
-        private static WCFSettings settings = 
+        private static readonly WCFSettings Settings = 
             new WCFSettings("localhost", 8085, "CrawlerProxy", "localhost", 8086, "CrawlerProxy");
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace HSA.InfoSys.Gui.Controllers
         {
             try
             {
-                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
+                var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
 
                 // get id of current logged-in user
                 MembershipUser membershipuser = Membership.GetUser();
@@ -56,7 +56,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 int uid = int.Parse(userid);
                 Log.DebugFormat("Got user id {0}", uid);
 
-                var orgUnits = cc.GetOrgUnitsByUserID(uid, cc.LoadThisEntities("OrgUnitConfig")).ToList<OrgUnit>();
+                var orgUnits = cc.GetOrgUnitsByUserId(uid, cc.LoadThisEntities("OrgUnitConfig")).ToList<OrgUnit>();
 
                 Log.DebugFormat("Got org units {0}", orgUnits);
                 this.ViewData["orgUnits"] = orgUnits;
@@ -103,7 +103,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 string orgUnitName = Request["newsystem"];
 
                 // init
-                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
+                var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
 
                 // log
                 Log.Info("add new system");
@@ -162,13 +162,13 @@ namespace HSA.InfoSys.Gui.Controllers
                 Guid orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
                 // init
-                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
+                var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
 
                 // get orgUnit
                 var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnit", "OrgUnitConfig")) as OrgUnit;
 
                 // Remove from scheduler if registered and stop.
-                WCFControllerClient<IScheduler>.GetClientProxy(settings).RemoveOrgUnitConfig(orgUnit.OrgUnitConfig.EntityId);
+                WCFControllerClient<IScheduler>.GetClientProxy(Settings).RemoveOrgUnitConfig(orgUnit.OrgUnitConfig.EntityId);
 
                 // get all components by OrgUnitId
                 var components = cc.GetComponentsByOrgUnitId(orgUnitGUID).ToList<Component>();
@@ -215,7 +215,7 @@ namespace HSA.InfoSys.Gui.Controllers
             try
             {
                 Guid orgUnitGuid = Guid.Parse(Request.QueryString["sysguid"]);
-                WCFControllerClient<ISolrController>.GetClientProxy(settings).SearchForOrgUnit(orgUnitGuid);
+                WCFControllerClient<ISolrController>.GetClientProxy(Settings).SearchForOrgUnit(orgUnitGuid);
             }
             catch (CommunicationException ce)
             {
@@ -252,7 +252,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 Guid orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
                 // init
-                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
+                var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
 
                 // get OrgUnit
                 var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnit", "OrgUnitConfig")) as OrgUnit;
@@ -308,7 +308,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 string component = Request["components"];
 
                 // init
-                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
+                var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
 
                 // get orgUnit by id
                 var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnit", "OrgUnitConfig")) as OrgUnit;
@@ -358,7 +358,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 Guid componentGUID = Guid.Parse(Request.QueryString["compid"]);
 
                 // init
-                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
+                var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
 
                 // get component by id
                 var component = cc.GetEntity(componentGUID);
@@ -402,10 +402,10 @@ namespace HSA.InfoSys.Gui.Controllers
                 Guid orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
                 // init
-                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
+                var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
+                var settings = WCFControllerClient<IDbManager>.GetClientProxy(Settings).GetNutchClientSettings();
 
-                // TODO: default urls nicht hardcoded, sondern müssen hier noch zuvor aus der DB aus Settings ausgelesen werden
-                string defaulturls = "http://www.heise.de/security/,http://nvd.nist.gov/,http://blabla.de";
+                string defaulturls = settings.DefaultURLs;
 
                 // default urls
                 this.ViewData["defaulturls"] = defaulturls;
@@ -415,7 +415,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 string userid = membershipuser.ProviderUserKey.ToString();
                 int id = Convert.ToInt32(userid);
 
-                var orgUnits = cc.GetOrgUnitsByUserID(id, cc.LoadThisEntities("OrgUnitConfig")).ToList<OrgUnit>();
+                var orgUnits = cc.GetOrgUnitsByUserId(id, cc.LoadThisEntities("OrgUnitConfig")).ToList<OrgUnit>();
 
                 var delItem = orgUnits.Find(x => x.EntityId == orgUnitGUID);
 
@@ -495,7 +495,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 orgUnitGUID = Guid.Parse(Request.QueryString["sysguid"]);
 
                 // init
-                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
+                var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
 
                 // get SystemConfig, OrgUnitConfig
                 var orgUnit = cc.GetEntity(orgUnitGUID, cc.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
@@ -511,12 +511,12 @@ namespace HSA.InfoSys.Gui.Controllers
                 if (this.Request["schedulerOn"] == "on")
                 {
                     config.SchedulerActive = true;
-                    WCFControllerClient<IScheduler>.GetClientProxy(settings).AddOrgUnitConfig(config);
+                    WCFControllerClient<IScheduler>.GetClientProxy(Settings).AddOrgUnitConfig(config);
                 }
                 else
                 {
                     config.SchedulerActive = false;
-                    WCFControllerClient<IScheduler>.GetClientProxy(settings).RemoveOrgUnitConfig(config.EntityId);
+                    WCFControllerClient<IScheduler>.GetClientProxy(Settings).RemoveOrgUnitConfig(config.EntityId);
                 }
 
                 // set Emails
@@ -585,7 +585,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 Guid loadedConfigId = Guid.Parse(Request["orgUnitConfigId"]);
 
                 // init
-                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
+                var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
 
                 // get config from other orgUnit
                 var loadedConfig = cc.GetEntity(loadedConfigId) as OrgUnitConfig;
@@ -641,7 +641,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 var componentGUID = Request.QueryString["compguid"];
 
                 // init
-                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
+                var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
 
                 // get all components by OrgUnitId
                 var components = cc.GetComponentsByOrgUnitId(orgUnitGUID).ToList<Component>();

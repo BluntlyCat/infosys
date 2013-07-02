@@ -13,8 +13,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using HSA.InfoSys.Common.Exceptions;
     using HSA.InfoSys.Common.Extensions;
     using HSA.InfoSys.Common.Logging;
-    using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
+    using WCFServices;
 
     /// <summary>
     /// This class invokes the crawl and handles all pending crawls.
@@ -32,24 +32,24 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private static NutchController nutchController;
 
         /// <summary>
+        /// The db manager.
+        /// </summary>
+        private readonly DbManager dbManager;
+
+        /// <summary>
+        /// The lock mutex.
+        /// </summary>
+        private readonly object lockMutex = new object();
+
+        /// <summary>
         /// The crawl process.
         /// </summary>
-        private IList<NutchControllerClient> nutchClients = new List<NutchControllerClient>();
+        private readonly IList<NutchControllerClient> nutchClients = new List<NutchControllerClient>();
 
         /// <summary>
         /// The settings.
         /// </summary>
         private NutchControllerClientSettings settings;
-
-        /// <summary>
-        /// The db manager.
-        /// </summary>
-        private DBManager dbManager;
-
-        /// <summary>
-        /// The lock mutex.
-        /// </summary>
-        private object lockMutex = new object();
 
         /// <summary>
         /// The URLs.
@@ -59,19 +59,19 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The crawls finished.
         /// </summary>
-        private int runningCrawls = 0;
+        private int runningCrawls;
 
         /// <summary>
         /// The is crawling.
         /// </summary>
-        private bool isCrawling = false;
+        private bool isCrawling;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NutchController"/> class.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
         /// <param name="dbManager">The db manager.</param>
-        private NutchController(Guid serviceGUID, DBManager dbManager)
+        private NutchController(Guid serviceGUID, DbManager dbManager)
             : base(serviceGUID)
         {
             this.dbManager = dbManager;
@@ -107,11 +107,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                 if (value != null && value.Length != 0)
                 {
-                    var tmp = value.Distinct().ToArray();
+                    object tmp = value.Distinct().ToArray();
 
                     if (this.urls != tmp)
                     {
-                        this.urls = tmp;
+                        this.urls = tmp as string[];
                         Log.InfoFormat(Properties.Resources.NUTCH_CONTROLLER_UPDATE_URLS, tmp);
                     }
                 }
@@ -130,7 +130,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <value>
         /// The nutch factory.
         /// </value>
-        public static NutchController NutchFactory(DBManager dbManager)
+        public static NutchController NutchFactory(DbManager dbManager)
         {
             if (nutchController == null)
             {
@@ -179,9 +179,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                                         client.Hostname,
                                         client.URLs.ElementsToString());
 
-                                    InvokeCrawl invokeCrawl = new InvokeCrawl(client.StartCrawl);
+                                    var invokeCrawl = new InvokeCrawl(client.StartCrawl);
 
-                                    AsyncCallback callback = new AsyncCallback(
+                                    var callback = new AsyncCallback(
                                         c =>
                                         {
                                             this.ServiceMutex.WaitOne();
@@ -326,7 +326,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 client.CheckClientForUsage(this.settings);
             }
 
-            this.URLs = dbManager.GetAllUrls();
+            this.URLs = this.dbManager.GetAllUrls();
 
             foreach (var url in this.URLs)
             {

@@ -28,7 +28,7 @@ namespace HSA.InfoSys.Common.Entities
 
             //// Non public settings
             this.RequestFormat = "GET {0} HTTP/1.1{1}Host: {2}{3}Content-Length: 0{4}";
-            this.QueryFormat = "solr/{0}/select?q={1}&wt={2}&indent=true";
+            this.QueryFormat = "/solr/{0}/select?q={1}&wt={2}&indent=true";
         }
 
         /// <summary>

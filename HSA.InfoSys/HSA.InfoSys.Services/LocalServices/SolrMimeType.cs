@@ -5,11 +5,6 @@
 // ------------------------------------------------------------------------
 namespace HSA.InfoSys.Common.Services.LocalServices
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
     /// <summary>
     /// SolrOutputMimeType represents possible Output - MimeTypes, which solr can generate
     /// </summary>
@@ -18,31 +13,31 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The XML
         /// </summary>
-        xml,
+        Xml,
 
         /// <summary>
         /// The json
         /// </summary>
-        json,
+        Json,
 
         /// <summary>
         /// The python
         /// </summary>
-        python,
+        Python,
 
         /// <summary>
         /// The ruby
         /// </summary>
-        ruby,
+        Ruby,
 
         /// <summary>
         /// The PHP
         /// </summary>
-        php,
+        Php,
 
         /// <summary>
         /// The CSV
         /// </summary>
-        csv
+        Csv
     }
 }

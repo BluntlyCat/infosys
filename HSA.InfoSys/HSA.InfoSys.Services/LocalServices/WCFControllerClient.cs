@@ -15,7 +15,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     /// This class is for clients which want use the WCF service
     /// </summary>
     /// <typeparam name="T">The type of what the proxy must be.</typeparam>
-    public class WCFControllerClient<T>
+    public static class WCFControllerClient<T>
     {
         /// <summary>
         /// The logger.
@@ -35,16 +35,28 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             var netTcpAddress = new Uri(WCFControllerAddresses.GetNetTcpAddress(typeof(T)));
 
-            var quotas = new System.Xml.XmlDictionaryReaderQuotas();
-            quotas.MaxBytesPerRead = 1024 * 1024;
-            quotas.MaxArrayLength = 4096;
-            quotas.MaxStringContentLength = 1024 * 1024;
+            var quotas = new System.Xml.XmlDictionaryReaderQuotas
+                {
+                    MaxBytesPerRead = 1024 * 1024,
+                    MaxArrayLength = 4096,
+                    MaxStringContentLength = 1024 * 1024
+        };
 
-            var binding = new NetTcpBinding();
-            binding.Security.Mode = SecurityMode.Transport;
-            binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
-            binding.ReaderQuotas = quotas;
-            binding.MaxReceivedMessageSize = 10240000;
+            var binding = new NetTcpBinding
+                {
+                    Security =
+                        {
+                            Mode = SecurityMode.Transport,
+                            Transport =
+                                {
+                                    ClientCredentialType = TcpClientCredentialType.None
+                                }
+                        },
+
+                    ReaderQuotas = quotas,
+                    MaxReceivedMessageSize = 10240000
+                };
+
             Log.Info(Properties.Resources.WCF_CONTROLLER_CLIENT_CREATE_BINDING);
 
             var address = new EndpointAddress(

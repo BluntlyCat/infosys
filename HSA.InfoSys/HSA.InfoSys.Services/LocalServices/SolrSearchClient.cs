@@ -6,16 +6,16 @@
 namespace HSA.InfoSys.Common.Services.LocalServices
 {
     using System;
-    using System.Collections.Generic;
     using System.Net;
     using System.Net.Sockets;
     using System.Text;
     using HSA.InfoSys.Common.Entities;
+    using HSA.InfoSys.Common.Exceptions;
     using HSA.InfoSys.Common.Logging;
-    using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using WCFServices;
 
     /// <summary>
     /// This class connects to the Solr server and invokes the search.
@@ -30,39 +30,16 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The database manager.
         /// </summary>
-        private IDBManager dbManager;
-
-        /// <summary>
-        /// The settings.
-        /// </summary>
-        //private SolrSearchClientSettings settings;
+        private readonly IDbManager dbManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SolrSearchClient" /> class.
         /// </summary>
         /// <param name="dbManager">The db manager.</param>
-        public SolrSearchClient(IDBManager dbManager, SolrSearchClientSettings settings)
+        public SolrSearchClient(IDbManager dbManager)
         {
             this.dbManager = dbManager;
-            settings = this.dbManager.GetSolrClientSettings();
-
-            if (settings.Equals(new SolrSearchClientSettings()) == false)
-            {
-                this.Host = settings.Host;
-                this.Port = settings.Port;
-
-                this.SolrResponse = string.Empty;
-                this.Collection = settings.Collection;
-            }
         }
-
-        /// <summary>
-        /// Gets the socket.
-        /// </summary>
-        /// <value>
-        /// The socket.
-        /// </value>
-        public Socket SolrSocket { get; private set; }
 
         /// <summary>
         /// Gets the host.
@@ -105,6 +82,14 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         public Guid ComponentGUID { get; private set; }
 
         /// <summary>
+        /// Gets or sets the solr socket.
+        /// </summary>
+        /// <value>
+        /// The solr socket.
+        /// </value>
+        private Socket SolrSocket { get; set; }
+
+        /// <summary>
         /// Gets the response from solr.
         /// </summary>
         /// <returns>The response.</returns>
@@ -118,25 +103,28 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                 return this.ParseToResult(result);
             }
-            catch
+            catch (Exception e)
             {
-                return new SolrResultPot(this.ComponentGUID);
+                throw new SolrResponseBadRequestException(e, "GetResult()");
             }
         }
 
         /// <summary>
         /// Connects this instance.
         /// </summary>
+        /// <param name="settings">The settings.</param>
         /// <param name="componentName">The query pattern for solr.</param>
         /// <param name="componentGUID">The component GUID.</param>
         public void StartSearch(SolrSearchClientSettings settings,  string componentName, Guid componentGUID)
         {
             try
             {
+                this.SetConnectionProperties();
+
                 if (settings.Equals(new SolrSearchClientSettings()) == false)
                 {
-                    IPAddress ipa = IPAddress.Parse(this.Host);
-                    IPEndPoint ipe = new IPEndPoint(ipa, this.Port);
+                    var ipa = IPAddress.Parse(this.Host);
+                    var ipe = new IPEndPoint(ipa, this.Port);
 
                     this.SolrSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     this.SolrSocket.Connect(ipe);
@@ -145,7 +133,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     if (this.SolrSocket.Connected)
                     {
                         Log.InfoFormat(Properties.Resources.SOLR_CLIENT_CONNECTION_ESTABLISHED, this.Host);
-                        string solrQuery = this.BuildSolrQuery(settings, componentName, SolrMimeType.json);
+                        string solrQuery = this.BuildSolrQuery(settings, componentName, SolrMimeType.Json);
                         this.SolrResponse = this.InvokeSolrQuery(settings, solrQuery);
                     }
                 }
@@ -170,20 +158,46 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
+        /// Sets the connection properties.
+        /// </summary>
+        private void SetConnectionProperties()
+        {
+            var settings = this.dbManager.GetSolrClientSettings();
+
+            if (settings.Equals(new SolrSearchClientSettings()) == false)
+            {
+                this.Host = settings.Host;
+                this.Port = settings.Port;
+
+                this.SolrResponse = string.Empty;
+                this.Collection = settings.Collection;
+            }
+        }
+
+        /// <summary>
         /// Sockets the send receive.
         /// </summary>
+        /// <param name="settings">The settings for Solr.</param>
         /// <param name="solrQuery">The solr query.</param>
         /// <returns>The search result from solr.</returns>
         private string InvokeSolrQuery(SolrSearchClientSettings settings, string solrQuery)
         {
-            string request = string.Empty;
+            string request;
             string response = string.Empty;
 
-            byte[] bytesReceived = new byte[256];
+            var bytesReceived = new byte[256];
             byte[] bytesSend;
-            int bytes = 0;
+            int bytes;
 
             // Request send to the Server
+            /*request = string.Format(
+                Properties.Settings.Default.SOLR_REQUEST_FORMAT,
+                solrQuery,
+                "\r\n",
+                this.Host,
+                "\r\n",
+                "\r\n\r\n");*/
+
             request = string.Format(
                 settings.RequestFormat,
                 solrQuery,
@@ -217,6 +231,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Build the query string for Solr.
         /// </summary>
+        /// <param name="settings">The settings for Solr.</param>
         /// <param name="componentName">The query string is the actual search term.</param>
         /// <param name="mimeType">Type of the MIME.</param>
         /// <returns>
@@ -252,40 +267,36 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             var json = JsonConvert.DeserializeObject(jsonResult) as JObject;
             var resultPot = new SolrResultPot(this.ComponentGUID);
 
-            var response = json["response"];
-            var docs = response["docs"];
-
-            foreach (var doc in docs)
+            if (json != null)
             {
-                var result = new Result();
+                var response = json["response"];
+                var docs = response["docs"];
 
-                // todo: Länge von content begrenzen.
-                var content = this.GetJsonValue(doc, "content").Replace(".", ".\r\n");
-
-                if (content.Length > 300)
+                foreach (var doc in docs)
                 {
-                    result.Content = string.Format("{0}...", content.Substring(0, 300));
-                }
-                else
-                {
-                    result.Content = content;
-                }
+                    var result = new Result();
 
-                result.URL = this.GetJsonValue(doc, "url");
-                result.Title = this.RemoveSpecialChars(this.GetJsonValue(doc, "title"));
+                    // todo: Länge von content begrenzen.
+                    var content = this.GetJsonValue(doc, "content").Replace(".", ".\r\n");
 
-                try
-                {
-                    result.Time = DateTime.Parse(this.GetJsonValue(doc, "tstamp"));
+                    result.Content = content.Length > 300 ? string.Format("{0}...", content.Substring(0, 300)) : content;
+
+                    result.URL = this.GetJsonValue(doc, "url");
+                    result.Title = this.RemoveSpecialChars(this.GetJsonValue(doc, "title"));
+
+                    try
+                    {
+                        result.Time = DateTime.Parse(this.GetJsonValue(doc, "tstamp"));
+                    }
+                    catch
+                    {
+                        result.Time = DateTime.Now;
+                    }
+
+                    resultPot.Results.Add(result);
+
+                    Log.InfoFormat("Search resualt was added [{0}]", result.Title);
                 }
-                catch
-                {
-                    result.Time = DateTime.Now;
-                }
-
-                resultPot.Results.Add(result);
-
-                Log.InfoFormat("Search resualt was added [{0}]", result.Title);
             }
 
             return resultPot;

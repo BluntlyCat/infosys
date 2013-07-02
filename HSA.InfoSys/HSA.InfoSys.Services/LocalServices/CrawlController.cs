@@ -87,10 +87,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 this.services[type].StartService();
                 return this.services[type].Running;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         /// <summary>
@@ -110,10 +108,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 this.services[type].StopService(cancel);
                 return this.services[type].Running;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         /// <summary>

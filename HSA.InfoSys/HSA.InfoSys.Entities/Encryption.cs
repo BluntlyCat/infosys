@@ -17,19 +17,19 @@ namespace HSA.InfoSys.Common.Entities
     public static class Encryption
     {
         /// <summary>
+        /// The key.
+        /// </summary>
+        private const string Key = "tha=aciephuo`zeuzoh6mooj1dohthie";
+
+        /// <summary>
         /// The logger for Encryption.
         /// </summary>
         private static readonly ILog Log = Logger<string>.GetLogger("Encryption");
 
         /// <summary>
-        /// The key.
-        /// </summary>
-        private static string key = "tha=aciephuo`zeuzoh6mooj1dohthie";
-
-        /// <summary>
         /// The certificate key.
         /// </summary>
-        private static byte[] keyBytes = Encoding.UTF8.GetBytes(key);
+        private static readonly byte[] KeyBytes = Encoding.UTF8.GetBytes(Key);
 
         /// <summary>
         /// Encrypts the specified plain text bytes.
@@ -40,29 +40,33 @@ namespace HSA.InfoSys.Common.Entities
         /// </returns>
         public static byte[] Encrypt(byte[] plainTextBytes)
         {
-            byte[] iv = new byte[16];
+            var iv = new byte[16];
+            var myAes = Aes.Create();
 
-            Aes myAes = Aes.Create();
+            if (myAes != null)
+            {
+                var encryptor = myAes.CreateEncryptor(KeyBytes, iv);
 
-            ICryptoTransform encryptor = myAes.CreateEncryptor(keyBytes, iv);
+                var memoryStream = new MemoryStream();
 
-            MemoryStream memoryStream = new MemoryStream();
+                var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write);
 
-            CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write);
+                cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
 
-            cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
+                cryptoStream.FlushFinalBlock();
 
-            cryptoStream.FlushFinalBlock();
+                var cipherTextBytes = memoryStream.ToArray();
 
-            byte[] cipherTextBytes = memoryStream.ToArray();
+                // Close both streams.
+                memoryStream.Close();
+                cryptoStream.Close();
 
-            // Close both streams.
-            memoryStream.Close();
-            cryptoStream.Close();
+                Log.Debug(Properties.Resources.ENCRYPT);
 
-            Log.Debug(Properties.Resources.ENCRYPT);
+                return cipherTextBytes;
+            }
 
-            return cipherTextBytes;
+            return new byte[0];
         }
 
         /// <summary>
@@ -74,33 +78,38 @@ namespace HSA.InfoSys.Common.Entities
         /// </returns>
         public static string Decrypt(byte[] cipherTextBytes)
         {
-            byte[] iv = new byte[16];
+            var iv = new byte[16];
 
-            Aes myAes = Aes.Create();
+            var myAes = Aes.Create();
 
-            ICryptoTransform decryptor = myAes.CreateDecryptor(keyBytes, iv);
+            if (myAes != null)
+            {
+                var decryptor = myAes.CreateDecryptor(KeyBytes, iv);
 
-            MemoryStream memoryStream = new MemoryStream(cipherTextBytes);
+                var memoryStream = new MemoryStream(cipherTextBytes);
 
-            CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
+                var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
 
-            byte[] plainTextBytes = new byte[cipherTextBytes.Length];
+                var plainTextBytes = new byte[cipherTextBytes.Length];
 
-            // Start decrypting.
-            int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+                // Start decrypting.
+                var decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
 
-            // Close both streams.
-            memoryStream.Close();
-            cryptoStream.Close();
+                // Close both streams.
+                memoryStream.Close();
+                cryptoStream.Close();
 
-            // Convert decrypted data into a string.
-            // Let us assume that the original plaintext string was UTF8-encoded.
-            string plainText = Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
+                // Convert decrypted data into a string.
+                // Let us assume that the original plaintext string was UTF8-encoded.
+                var plainText = Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
 
-            Log.Debug(Properties.Resources.DECRYPT);
+                Log.Debug(Properties.Resources.DECRYPT);
 
-            // Return decrypted string.
-            return plainText;
+                // Return decrypted string.
+                return plainText;
+            }
+
+            return string.Empty;
         }
     }
 }

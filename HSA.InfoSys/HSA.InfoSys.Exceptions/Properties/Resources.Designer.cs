@@ -131,5 +131,23 @@ namespace HSA.InfoSys.Common.Exceptions.Properties {
                 return ResourceManager.GetString("ORGUNIT_CONFIG_TIME_ZERO_EXCEPTION", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Got a bad request from Solr. ähnelt.
+        /// </summary>
+        internal static string SOLR_RESPONSE_BAD_REQUEST_EXCEPTION {
+            get {
+                return ResourceManager.GetString("SOLR_RESPONSE_BAD_REQUEST_EXCEPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Got a bad request from Solr in {0}, error was: {1}. ähnelt.
+        /// </summary>
+        internal static string SOLR_RESPONSE_BAD_REQUEST_EXCEPTION_TO_STRING {
+            get {
+                return ResourceManager.GetString("SOLR_RESPONSE_BAD_REQUEST_EXCEPTION_TO_STRING", resourceCulture);
+            }
+        }
     }
 }

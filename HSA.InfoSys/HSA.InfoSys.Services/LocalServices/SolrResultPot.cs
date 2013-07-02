@@ -8,19 +8,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using System;
     using System.Collections.Generic;
     using HSA.InfoSys.Common.Entities;
-    using HSA.InfoSys.Common.Logging;
-    using log4net;
 
     /// <summary>
     /// Is a container for search results from Solr.
     /// </summary>
     public class SolrResultPot
     {
-        /// <summary>
-        /// The logger for database manager.
-        /// </summary>
-        private static readonly ILog Log = Logger<string>.GetLogger("SolrResultPot");
-
         /// <summary>
         /// Initializes a new instance of the <see cref="SolrResultPot"/> class.
         /// </summary>

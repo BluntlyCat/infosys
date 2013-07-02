@@ -29,12 +29,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The service host for communication between server and GUI.
         /// </summary>
-        private static Dictionary<Service, ServiceHost> hosts = new Dictionary<Service, ServiceHost>();
+        private static readonly Dictionary<Service, ServiceHost> Hosts = new Dictionary<Service, ServiceHost>();
 
         /// <summary>
         /// The settings.
         /// </summary>
-        private WCFSettings settings;
+        private readonly WCFSettings settings;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WCFControllerHost" /> class.
@@ -54,75 +54,72 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// and finally opens the service host.
         /// </summary>
         /// <typeparam name="T">The implementing class.</typeparam>
-        /// <typeparam name="IT">The interface for service contract.</typeparam>
+        /// <typeparam name="TIT">The interface for service contract.</typeparam>
         /// <param name="instance">The instance.</param>
         /// <returns>The T instance what was registered at WCF service.</returns>
-        public T OpenWCFHost<T, IT>(T instance) where T : Service
+        public T OpenWCFHost<T, TIT>(T instance) where T : Service
         {
-            if (hosts.ContainsKey(instance))
+            if (Hosts.ContainsKey(instance))
             {
-                return hosts.Keys.Single(i => i.GetType() == instance.GetType()) as T;
+                return Hosts.Keys.Single(i => i.GetType() == instance.GetType()) as T;
             }
-            else
+
+            try
             {
-                try
-                {
-                    var binding = new NetTcpBinding();
-                    X509Certificate2 certificate;
+                var binding = new NetTcpBinding();
 
-                    var dir = System.Environment.CurrentDirectory;
+                var certificate = new X509Certificate2(this.settings.CertificatePath, Encryption.Decrypt(this.settings.CertificatePassword));
 
-                    certificate = new X509Certificate2(this.settings.CertificatePath, Encryption.Decrypt(this.settings.CertificatePassword));
+                var netTcpAddress = WCFControllerAddresses.GetNetTcpAddress(typeof(TIT));
+                var httpAddress = WCFControllerAddresses.GetHttpAddress(typeof(TIT));
 
-                    var netTcpAddress = WCFControllerAddresses.GetNetTcpAddress(typeof(IT));
-                    var httpAddress = WCFControllerAddresses.GetHttpAddress(typeof(IT));
+                var host = new ServiceHost(instance, new Uri(netTcpAddress));
 
-                    var host = new ServiceHost(instance, new Uri(netTcpAddress));
-
-                    var quotas = new System.Xml.XmlDictionaryReaderQuotas();
-                    quotas.MaxBytesPerRead = 1024 * 1024;
-                    quotas.MaxArrayLength = 4096;
-                    quotas.MaxStringContentLength = 1024 * 1024;
-
-                    binding.Security.Mode = SecurityMode.Transport;
-                    binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
-                    binding.ReaderQuotas = quotas;
-                    binding.MaxReceivedMessageSize = 10240000;
-
-                    host.AddServiceEndpoint(
-                        typeof(IT),
-                        binding,
-                        netTcpAddress);
-
-                    host.Credentials.ServiceCertificate.Certificate = certificate;
-
-                    var metadataBevavior = host.Description.Behaviors.Find<ServiceMetadataBehavior>();
-
-                    if (metadataBevavior == null)
+                var quotas = new System.Xml.XmlDictionaryReaderQuotas
                     {
-                        metadataBevavior = new ServiceMetadataBehavior();
-                        host.Description.Behaviors.Add(metadataBevavior);
-                    }
+                        MaxBytesPerRead = 1024 * 1024,
+                        MaxArrayLength = 4096,
+                        MaxStringContentLength = 1024 * 1024
+                    };
 
-                    var mexBinding = MetadataExchangeBindings.CreateMexHttpBinding();
-                    host.AddServiceEndpoint(
-                        typeof(IMetadataExchange),
-                        mexBinding,
-                        httpAddress);
+                binding.Security.Mode = SecurityMode.Transport;
+                binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.None;
+                binding.ReaderQuotas = quotas;
+                binding.MaxReceivedMessageSize = 10240000;
 
-                    host.Open();
+                host.AddServiceEndpoint(
+                    typeof(TIT),
+                    binding,
+                    netTcpAddress);
 
-                    hosts.Add(instance, host);
+                host.Credentials.ServiceCertificate.Certificate = certificate;
 
-                    Log.InfoFormat(Properties.Resources.WCF_CONTROLLER_WCF_HOST_OPENED, typeof(T).Name);
-                }
-                catch (Exception e)
+                var metadataBevavior = host.Description.Behaviors.Find<ServiceMetadataBehavior>();
+
+                if (metadataBevavior == null)
                 {
-                    throw new OpenWCFHostException(e, this.GetType().Name, instance.GetType().Name);
+                    metadataBevavior = new ServiceMetadataBehavior();
+                    host.Description.Behaviors.Add(metadataBevavior);
                 }
 
-                return instance;
+                var mexBinding = MetadataExchangeBindings.CreateMexHttpBinding();
+                host.AddServiceEndpoint(
+                    typeof(IMetadataExchange),
+                    mexBinding,
+                    httpAddress);
+
+                host.Open();
+
+                Hosts.Add(instance, host);
+
+                Log.InfoFormat(Properties.Resources.WCF_CONTROLLER_WCF_HOST_OPENED, typeof(T).Name);
             }
+            catch (Exception e)
+            {
+                throw new OpenWCFHostException(e, this.GetType().Name, instance.GetType().Name);
+            }
+
+            return instance;
         }
 
         /// <summary>
@@ -130,7 +127,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         public void CloseWCFHosts()
         {
-            foreach (var h in hosts.Values)
+            foreach (var h in Hosts.Values)
             {
                 h.Close();
                 Log.InfoFormat(Properties.Resources.WCF_CONTROLLER_WCF_HOST_CLOSED, h.SingletonInstance.GetType().Name);

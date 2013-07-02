@@ -29,6 +29,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private static readonly ILog Log = Logger<string>.GetLogger("NutchControllerClient");
 
         /// <summary>
+        /// The connection string
+        /// </summary>
+        private readonly string connectionString;
+
+        /// <summary>
         /// The SSH client.
         /// </summary>
         private SshClient client;
@@ -42,11 +47,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// The username.
         /// </summary>
         private string username;
-
-        /// <summary>
-        /// The connection string
-        /// </summary>
-        private string connectionString;
 
         /// <summary>
         /// The SSH connection info.
@@ -92,14 +92,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <c>true</c> if this instance is crawling; otherwise, <c>false</c>.
         /// </value>
         public bool IsCrawling { get; private set; }
-
-        /// <summary>
-        /// Gets a value indicating whether [prefix file found].
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [prefix file found]; otherwise, <c>false</c>.
-        /// </value>
-        public bool PrefixFileFound { get; private set; }
 
         /// <summary>
         /// Gets the hostname.
@@ -359,8 +351,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             var prefixUrls = this.GetKnownPrefixes(settings, this.URLs);
 
-            this.AddURLToFile(this.PrefixFile, FileMode.Append, settings, prefixUrls.ToArray());
-            this.AddURLToFile(this.SeedFile, FileMode.Create, settings, this.URLs);
+            this.AddURLToFile(this.PrefixFile, FileMode.Append, prefixUrls.ToArray());
+            this.AddURLToFile(this.SeedFile, FileMode.Create, this.URLs);
         }
 
         /// <summary>
@@ -454,17 +446,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private void AddURLToFile(
             string file,
             FileMode mode,
-            NutchControllerClientSettings settings,
             IList<string> urls)
         {
             if (urls.Count > 0)
             {
-                var insertString = string.Empty;
-
-                foreach (string url in urls)
-                {
-                    insertString += string.Format("{0}", url);
-                }
+                var insertString = urls.Aggregate(string.Empty, (current, url) => current + string.Format("{0}", url));
 
                 Log.DebugFormat(
                     Properties.Resources.NUTCH_CONTROLLER_CLIENT_WRITE_FILE,
@@ -507,16 +493,16 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </returns>
         private List<string> GetFileContent(string pattern)
         {
-            List<string> content = new List<string>();
+            var content = new List<string>();
 
             try
             {
                 var fileContent = this.RunCommand(string.Format("cat {0}", this.PrefixFile)).Result;
                 Log.DebugFormat(Properties.Resources.NUTCH_CONTROLLER_CLIENT_GOT_FILE_CONTENT, this.Hostname, fileContent);
 
-                using (StreamReader sr = new StreamReader(new MemoryStream(Encoding.ASCII.GetBytes(fileContent))))
+                using (var sr = new StreamReader(new MemoryStream(Encoding.ASCII.GetBytes(fileContent))))
                 {
-                    var line = string.Empty;
+                    string line;
 
                     while ((line = sr.ReadLine()) != null)
                     {
@@ -622,10 +608,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             {
                 return cmd.Result;
             }
-            else
-            {
-                return cmd.Error;
-            }
+
+            return cmd.Error;
         }
 
         /// <summary>
@@ -635,10 +619,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <returns>The SSH command.</returns>
         private SshCommand RunCommand(string command)
         {
-            SshCommand sshCommand = null;
-
             using (this.client = new SshClient(this.sshConnectionInfo))
             {
+                SshCommand sshCommand;
+
                 try
                 {
                     this.client.Connect();
@@ -654,7 +638,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                         this.Hostname,
                         se);
 
-                    throw se;
+                    throw;
                 }
                 catch (SshAuthenticationException ae)
                 {
@@ -663,7 +647,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                         this.Hostname,
                         ae);
 
-                    throw ae;
+                    throw;
                 }
                 catch (SshConnectionException ce)
                 {
@@ -672,7 +656,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                         this.Hostname,
                         ce);
 
-                    throw ce;
+                    throw;
                 }
                 catch (SshOperationTimeoutException toe)
                 {
@@ -681,13 +665,13 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                         this.Hostname,
                         toe);
 
-                    throw toe;
+                    throw;
                 }
                 catch (Exception e)
                 {
                     Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
 
-                    throw e;
+                    throw;
                 }
                 finally
                 {

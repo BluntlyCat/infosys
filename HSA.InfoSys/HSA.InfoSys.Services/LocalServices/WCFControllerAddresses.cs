@@ -16,24 +16,24 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     public static class WCFControllerAddresses
     {
         /// <summary>
-        /// The net TCP addresses.
-        /// </summary>
-        private static Dictionary<Type, string> netTcpAddresses = new Dictionary<Type, string>();
-
-        /// <summary>
-        /// The net TCP addresses.
-        /// </summary>
-        private static Dictionary<Type, string> httpAddresses = new Dictionary<Type, string>();
-
-        /// <summary>
         /// The HTTP format.
         /// </summary>
-        private static string httpFormat = "http://{0}:{1}/{2}/";
+        private const string HttpFormat = "http://{0}:{1}/{2}/";
 
         /// <summary>
         /// The net TCP format.
         /// </summary>
-        private static string netTcpFormat = "net.tcp://{0}:{1}/{2}/";
+        private const string NetTcpFormat = "net.tcp://{0}:{1}/{2}/";
+
+        /// <summary>
+        /// The net TCP addresses.
+        /// </summary>
+        private static readonly Dictionary<Type, string> NetTcpAddresses = new Dictionary<Type, string>();
+
+        /// <summary>
+        /// The net TCP addresses.
+        /// </summary>
+        private static readonly Dictionary<Type, string> HttpAddresses = new Dictionary<Type, string>();
 
         /// <summary>
         /// The HTTP port.
@@ -58,13 +58,13 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             if (notInitialized)
             {
-                var types = new Type[]
+                var types = new[]
                 {
                     typeof(ICrawlController),
                     typeof(ICrawlerService),
                     typeof(ISolrController),
                     typeof(IScheduler),
-                    typeof(IDBManager)
+                    typeof(IDbManager)
                 };
 
                 httpPort = settings.HttpPort;
@@ -73,19 +73,19 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 foreach (var t in types)
                 {
                     var httpAddress = string.Format(
-                        httpFormat,
+                        HttpFormat,
                         settings.HttpHost,
                         httpPort,
                         settings.HttpPath);
 
                     var netTcpAddress = string.Format(
-                        netTcpFormat,
+                        NetTcpFormat,
                         settings.NetTcpHost,
                         netTcpPort,
                         settings.NetTcpPath);
 
-                    httpAddresses.Add(t, httpAddress);
-                    netTcpAddresses.Add(t, netTcpAddress);
+                    HttpAddresses.Add(t, httpAddress);
+                    NetTcpAddresses.Add(t, netTcpAddress);
 
                     httpPort += 2;
                     netTcpPort += 2;
@@ -102,7 +102,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <returns>Returns the net TCP address by type.</returns>
         public static string GetNetTcpAddress(Type type)
         {
-            return netTcpAddresses.ContainsKey(type) ? netTcpAddresses[type] : string.Empty;
+            return NetTcpAddresses.ContainsKey(type) ? NetTcpAddresses[type] : string.Empty;
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <returns>Returns the http address by type.</returns>
         public static string GetHttpAddress(Type type)
         {
-            return httpAddresses.ContainsKey(type) ? httpAddresses[type] : string.Empty;
+            return HttpAddresses.ContainsKey(type) ? HttpAddresses[type] : string.Empty;
         }
     }
 }

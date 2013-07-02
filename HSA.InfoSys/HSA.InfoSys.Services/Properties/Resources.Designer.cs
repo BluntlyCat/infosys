@@ -412,6 +412,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die There are no email settings. Please configure your email provider first. ähnelt.
+        /// </summary>
+        internal static string EMAIL_NOTIFIER_NO_SETTINGS {
+            get {
+                return ResourceManager.GetString("EMAIL_NOTIFIER_NO_SETTINGS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Search finished for OrgUnit: [{0}] ähnelt.
         /// </summary>
         internal static string EMAIL_NOTIFIER_SEARCH_FINISHED {
@@ -1425,6 +1434,15 @@ namespace HSA.InfoSys.Common.Services.Properties {
         internal static string SOLR_SEARCH_CONTROLLER_NO_SETTINGS {
             get {
                 return ResourceManager.GetString("SOLR_SEARCH_CONTROLLER_NO_SETTINGS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Error while computing the search results, error was: {0}. ähnelt.
+        /// </summary>
+        internal static string SOLR_SEARCH_CONTROLLER_RESULT_ERROR {
+            get {
+                return ResourceManager.GetString("SOLR_SEARCH_CONTROLLER_RESULT_ERROR", resourceCulture);
             }
         }
         

@@ -176,7 +176,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             this.Cancel = cancel;
             this.Active = false;
 
-            base.StopService();
+            base.StopService(cancel);
         }
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 #else
                 repeatIn = new DateTime(now.Year, now.Month, now.Day, this.OrgUnitConfig.Time, 0, 0).AddDays(this.OrgUnitConfig.Days);
 #endif
-                this.Time = new CountdownTime(this.OrgUnitConfig.Time, this.OrgUnitConfig.Days, repeatIn, this.OrgUnitConfig.EntityId, true);
+                this.Time = new CountdownTime(repeatIn, this.OrgUnitConfig.EntityId, true);
             }
             catch (Exception e)
             {

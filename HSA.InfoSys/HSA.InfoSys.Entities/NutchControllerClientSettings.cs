@@ -25,6 +25,7 @@ namespace HSA.InfoSys.Common.Entities
             this.NutchPath = string.Empty;
             this.NutchCommand = string.Empty;
             this.NutchClients = string.Empty;
+            this.DefaultURLs = "http://nvd.nist.gov/,http://www.heise.de/security/";
             this.CrawlDepth = 0;
             this.CrawlTopN = 0;
             this.SolrServer = string.Empty;
@@ -79,6 +80,15 @@ namespace HSA.InfoSys.Common.Entities
         /// </value>
         [DataMember]
         public virtual string NutchClients { get; set; }
+
+        /// <summary>
+        /// Gets or sets the default URLs.
+        /// </summary>
+        /// <value>
+        /// The default URLs.
+        /// </value>
+        [DataMember]
+        public virtual string DefaultURLs { get; set; }
 
         /// <summary>
         /// Gets or sets the crawl depth.

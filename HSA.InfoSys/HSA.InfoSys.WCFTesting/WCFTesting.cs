@@ -31,7 +31,7 @@ namespace HSA.InfoSys.Testing.WCFTesting
         /// <param name="args">The args.</param>
         public static void Main(string[] args)
         {
-            IDBManager dbManager = DBManager.ManagerFactory;
+            IDbManager dbManager = DbManager.ManagerFactory;
 
             bool running = true;
 

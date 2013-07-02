@@ -26,9 +26,10 @@ namespace HSA.InfoSys.Testing.SolrTesting
         {
             ILog log = Logger<string>.GetLogger("SolrTesting");
 
-            var dbManager = DBManager.ManagerFactory;
+            var dbManager = DbManager.ManagerFactory as DbManager;
+            dbManager.StartService();
 
-            SolrSearchController client = new SolrSearchController(dbManager);
+            SolrSearchController controller = new SolrSearchController(dbManager);
             bool running = true;
 
             Console.WriteLine(string.Empty);
@@ -56,6 +57,8 @@ namespace HSA.InfoSys.Testing.SolrTesting
                             break;
 
                         case ConsoleKey.S:
+                            var orgUnits = dbManager.GetOrgUnitsByUserId(32);
+                            controller.StartSearch(orgUnits.First().EntityId);
                             break;
                     }
                 }

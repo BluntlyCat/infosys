@@ -30,14 +30,14 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// The data base manager.
         /// </summary>
-        private IDBManager dbManager;
+        private IDbManager dbManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SolrController"/> class.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
         /// <param name="dbManager">The db manager.</param>
-        private SolrController(Guid serviceGUID, DBManager dbManager) : base(serviceGUID)
+        private SolrController(Guid serviceGUID, DbManager dbManager) : base(serviceGUID)
         {
             this.dbManager = dbManager;
         }
@@ -47,7 +47,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         /// <param name="dbManager">The db manager.</param>
         /// <returns>an instance of the Solr controller.</returns>
-        public static SolrController SolrFactory(DBManager dbManager)
+        public static SolrController SolrFactory(DbManager dbManager)
         {
             if (solrController == null)
             {

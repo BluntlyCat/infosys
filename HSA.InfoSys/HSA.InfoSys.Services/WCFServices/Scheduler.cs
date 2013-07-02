@@ -7,7 +7,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.ServiceModel;
     using System.Threading;
     using HSA.InfoSys.Common.Entities;
@@ -40,7 +39,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// The database manager.
         /// </summary>
-        private IDBManager dbManager;
+        private IDbManager dbManager;
 
         /// <summary>
         /// The jobs dictionary.
@@ -52,7 +51,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
         /// <param name="dbManager">The db manager.</param>
-        private Scheduler(Guid serviceGUID, IDBManager dbManager) : base(serviceGUID)
+        private Scheduler(Guid serviceGUID, IDbManager dbManager) : base(serviceGUID)
         {
             Log.DebugFormat(Properties.Resources.LOG_INSTANCIATE_NEW_SCHEDULER, this.GetType().Name);
 
@@ -66,7 +65,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <returns>
         /// An instance of the scheduler service.
         /// </returns>
-        public static Scheduler SchedulerFactory(IDBManager dbManager)
+        public static Scheduler SchedulerFactory(IDbManager dbManager)
         {
             if (scheduler == null)
             {
@@ -149,22 +148,11 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Occurs when [tick].
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="remainTime">The remain time.</param>
-        public void Job_OnTick(object sender, TimeSpan remainTime)
-        {
-            var job = sender as Countdown;
-            Log.InfoFormat(Properties.Resources.SCHEDULER_ON_TICK, job.ServiceGUID, remainTime);
-        }
-
-        /// <summary>
         /// Starts this instance.
         /// </summary>
         public override void StartService()
         {
-            var configs = DBManager.Session.QueryOver<OrgUnitConfig>()
+            var configs = DbManager.Session.QueryOver<OrgUnitConfig>()
                 .Where(x => x.SchedulerActive)
                 .List<OrgUnitConfig>();
 
@@ -214,6 +202,21 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
+        /// Occurs when [tick].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="remainTime">The remain time.</param>
+        private void Job_OnTick(object sender, TimeSpan remainTime)
+        {
+            var job = sender as Countdown;
+
+            if (job != null)
+            {
+                Log.InfoFormat(Properties.Resources.SCHEDULER_ON_TICK, job.ServiceGUID, remainTime);
+            }
+        }
+
+        /// <summary>
         /// Occurs when [zero].
         /// </summary>
         /// <param name="sender">The sender.</param>
@@ -224,13 +227,13 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
             var countdown = sender as Countdown;
             var solrController = new SolrSearchController(this.dbManager);
-            var orgUnitGUID = DBManager.Session.QueryOver<OrgUnit>()
+            var orgUnitGUID = DbManager.Session.QueryOver<OrgUnit>()
                 .Where(u => u.OrgUnitConfig.EntityId == orgUnitConfig.EntityId)
                 .SingleOrDefault().EntityId;
 
             solrController.StartSearch(orgUnitGUID);
 
-            if (countdown.Time == null || countdown.Time.Repeat)
+            if (countdown != null && (countdown.Time == null || countdown.Time.Repeat))
             {
                 countdown.RestartService();
             }
@@ -249,16 +252,14 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             {
                 Log.InfoFormat(Properties.Resources.SCHEDULER_CREATE_NEW_JOB, orgUnitConfig);
 
-                var job = new Countdown(orgUnitConfig, orgUnitConfig.EntityId, new Countdown.ZeroEventHandler(this.StartSolrSearch));
-                job.OnError += new Countdown.ErrorEventHandler(this.Job_OnError);
-                job.OnTick += new Countdown.TickEventHandler(this.Job_OnTick);
+                var job = new Countdown(orgUnitConfig, orgUnitConfig.EntityId, this.StartSolrSearch);
+                job.OnError += this.Job_OnError;
+                job.OnTick += this.Job_OnTick;
 
                 return job;
             }
-            else
-            {
-                Log.WarnFormat(Properties.Resources.SCHEDULER_SKIP_NOT_ACTIVE_JOB, orgUnitConfig);
-            }
+
+            Log.WarnFormat(Properties.Resources.SCHEDULER_SKIP_NOT_ACTIVE_JOB, orgUnitConfig);
 
             return null;
         }
@@ -276,10 +277,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 this.jobs[orgUnitConfig.EntityId].UpdateOrgUnitConfig(orgUnitConfig);
                 return this.jobs[orgUnitConfig.EntityId];
             }
-            else
-            {
-                Log.WarnFormat(Properties.Resources.SCHEDULER_SKIP_NOT_ACTIVE_JOB, orgUnitConfig);
-            }
+
+            Log.WarnFormat(Properties.Resources.SCHEDULER_SKIP_NOT_ACTIVE_JOB, orgUnitConfig);
 
             return null;
         }

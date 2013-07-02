@@ -23,7 +23,7 @@ namespace HSA.InfoSys.Common.Services
         /// <summary>
         /// The service mutex.
         /// </summary>
-        private Mutex serviceMutex = new Mutex();
+        private readonly Mutex serviceMutex = new Mutex();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Service"/> class.
@@ -59,7 +59,7 @@ namespace HSA.InfoSys.Common.Services
         protected Thread ServiceThread { get; private set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="Countdown"/> is canceled.
+        /// Gets or sets a value indicating whether this <see cref="Service"/> is canceled.
         /// </summary>
         /// <value>
         /// Cancel is <c>true</c> if cancels; otherwise, <c>false</c>.
@@ -89,7 +89,7 @@ namespace HSA.InfoSys.Common.Services
             {
                 Log.DebugFormat(Properties.Resources.LOG_START_SERVICE, this.GetType().Name, this.ServiceGUID);
 
-                this.ServiceThread = new Thread(new ThreadStart(this.Run));
+                this.ServiceThread = new Thread(this.Run);
 
                 this.Running = true;
                 this.ServiceThread.Start();

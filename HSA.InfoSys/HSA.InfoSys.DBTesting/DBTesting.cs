@@ -26,7 +26,7 @@ namespace HSA.InfoSys.Testing.DBTesting
         {
             ILog log = Logger<string>.GetLogger("WCFTesting");
 
-            IDBManager dbManager = DBManager.ManagerFactory;
+            IDbManager dbManager = DbManager.ManagerFactory;
             bool running = true;
 
             Console.WriteLine(string.Empty);
@@ -78,7 +78,7 @@ namespace HSA.InfoSys.Testing.DBTesting
                             break;
 
                         case ConsoleKey.T:
-                            var entities = dbManager.GetOrgUnitsByUserID(32).ToList<OrgUnit>();
+                            var entities = dbManager.GetOrgUnitsByUserId(32).ToList<OrgUnit>();
                             break;
                     }
                 }

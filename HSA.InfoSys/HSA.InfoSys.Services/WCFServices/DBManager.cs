@@ -7,6 +7,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Reflection;
     using System.ServiceModel;
     using System.Threading;
@@ -23,7 +24,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     /// The DBManager handles database requests.
     /// </summary>
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
-    public class DBManager : Service, IDBManager
+    public class DbManager : Service, IDbManager
     {
         /// <summary>
         /// The logger for db manager.
@@ -45,13 +46,13 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// The database manager.
         /// </summary>
-        private static IDBManager dbManager;
+        private static IDbManager manager;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DBManager"/> class.
+        /// Initializes a new instance of the <see cref="DbManager"/> class.
         /// </summary>
         /// <param name="serviceGUID">The service GUID.</param>
-        private DBManager(Guid serviceGUID) : base(serviceGUID)
+        private DbManager(Guid serviceGUID) : base(serviceGUID)
         {
         }
 
@@ -66,9 +67,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         {
             get
             {
-                if (dbManager == null)
+                if (manager == null)
                 {
-                    dbManager = ManagerFactory;
+                    manager = ManagerFactory;
                 }
 
                 Log.Debug(Properties.Resources.DBSESSION_OPEN_SESSION);
@@ -78,28 +79,26 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Gets the DB manager and ensures that the configuration
-        /// will be executed only once and that there is only one db manager.
+        /// Gets the manager factory.
         /// </summary>
-        /// <param name="serviceGUID">The service GUID.</param>
-        /// <returns>
-        /// The database manager service.
-        /// </returns>
-        public static IDBManager ManagerFactory
+        /// <value>
+        /// The manager factory.
+        /// </value>
+        public static IDbManager ManagerFactory
         {
             get
             {
                 dbButex.WaitOne();
 
-                if (dbManager == null)
+                if (manager == null)
                 {
                     Log.Debug(Properties.Resources.DBMANAGER_NO_MANAGER_FOUND);
-                    dbManager = new DBManager(Guid.NewGuid());
+                    manager = new DbManager(Guid.NewGuid());
                 }
 
                 dbButex.ReleaseMutex();
 
-                return dbManager;
+                return manager;
             }
         }
 
@@ -124,16 +123,12 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         {
             try
             {
-                T setting = null;
-
-                using (ISession session = Session)
+                using (var session = Session)
                 {
-                    setting = session.QueryOver<T>()
-                    .Where(s => s.Type == typeof(T).Name)
-                    .SingleOrDefault() as T;
+                    return session.QueryOver<T>()
+                        .Where(s => s.Type == typeof(T).Name)
+                        .SingleOrDefault();
                 }
-
-                return setting;
             }
             catch (Exception e)
             {
@@ -156,8 +151,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 if (setting == null)
                 {
                     var newSetting = new EmailNotifierSettings();
-                    var guid = dbManager.AddEntity(newSetting);
-                    return dbManager.GetEntity(guid) as EmailNotifierSettings;
+                    var guid = manager.AddEntity(newSetting);
+                    return manager.GetEntity(guid) as EmailNotifierSettings;
                 }
 
                 return setting;
@@ -183,8 +178,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 if (setting == null)
                 {
                     var newSetting = new NutchControllerClientSettings();
-                    var guid = dbManager.AddEntity(newSetting);
-                    return dbManager.GetEntity(guid) as NutchControllerClientSettings;
+                    var guid = manager.AddEntity(newSetting);
+                    return manager.GetEntity(guid) as NutchControllerClientSettings;
                 }
 
                 return setting;
@@ -210,8 +205,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 if (setting == null)
                 {
                     var newSetting = new SolrSearchClientSettings();
-                    var guid = dbManager.AddEntity(newSetting);
-                    return dbManager.GetEntity(guid) as SolrSearchClientSettings;
+                    var guid = manager.AddEntity(newSetting);
+                    return manager.GetEntity(guid) as SolrSearchClientSettings;
                 }
 
                 return setting;
@@ -228,7 +223,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <returns>
         /// The WCF controller settings.
         /// </returns>
-        public WCFSettings GetWCFSettings()
+        public WCFSettings GetWcfSettings()
         {
             try
             {
@@ -237,8 +232,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 if (setting == null)
                 {
                     var newSetting = new WCFSettings();
-                    var guid = dbManager.AddEntity(newSetting);
-                    return dbManager.GetEntity(guid) as WCFSettings;
+                    var guid = manager.AddEntity(newSetting);
+                    return manager.GetEntity(guid) as WCFSettings;
                 }
 
                 return setting;
@@ -258,26 +253,14 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <returns>
         /// A list of entities NHibernate must load eager.
         /// </returns>
-        public string[] LoadThisEntities(params string[] param)
+        public string[] LoadThisEntities(params object[] param)
         {
-            List<string> entities = new List<string>();
             var assembly = Assembly.GetAssembly(typeof(Entity));
             var types = assembly.GetTypes();
 
             Log.InfoFormat(Properties.Resources.DBMANAGER_EAGER_LOAD_THIS_ENTITIES, param);
 
-            foreach (var p in param)
-            {
-                foreach (var t in types)
-                {
-                    if (t.Name.Equals(p))
-                    {
-                        entities.Add(t.Name);
-                    }
-                }
-            }
-
-            return entities.ToArray();
+            return (from p in param from t in types where t.Name.Equals(p) select t.Name).ToArray();
         }
 
         /// <summary>
@@ -295,15 +278,14 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
                 foreach (var config in orgUnitConfigs)
                 {
-                    if (config.URLS != null)
+                    if (config.URLS == null)
                     {
-                        var urls = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(config.URLS);
-
-                        foreach (var url in urls)
-                        {
-                            urlList.Add(url);
-                        }
+                        continue;
                     }
+
+                    var urls = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(config.URLS);
+
+                    urlList.AddRange(urls);
                 }
 
                 return urlList.ToArray();
@@ -324,8 +306,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         {
             try
             {
-                using (ISession session = Session)
-                using (ITransaction transaction = session.BeginTransaction())
+                using (var session = Session)
+                using (var transaction = session.BeginTransaction())
                 {
                     session.Save(entity);
                     transaction.Commit();
@@ -369,9 +351,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         {
             try
             {
-                using (ISession session = Session)
+                using (var session = Session)
                 {
-                    using (ITransaction transaction = session.BeginTransaction())
+                    using (var transaction = session.BeginTransaction())
                     {
                         session.Update(entity);
                         transaction.Commit();
@@ -395,9 +377,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         {
             try
             {
-                using (ISession session = Session)
+                using (var session = Session)
                 {
-                    using (ITransaction transaction = session.BeginTransaction())
+                    using (var transaction = session.BeginTransaction())
                     {
                         session.Delete(entity);
                         transaction.Commit();
@@ -424,14 +406,13 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             try
             {
                 Entity entity;
-                using (ISession session = Session)
-                using (ITransaction transaction = session.BeginTransaction())
+                using (var session = Session)
                 {
                     entity = session.Get<Entity>(entityGUID);
 
                     if (types != null)
                     {
-                        entity.Unproxy(types);
+                        entity.Unproxy();
                     }
 
                     Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ENTITY, entity.GetType().Name, entity, entityGUID);
@@ -448,40 +429,47 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets the org units by user ID.
         /// </summary>
-        /// <param name="userID">The user ID.</param>
+        /// <param name="userId">The user ID.</param>
         /// <param name="types">The types.</param>
         /// <returns>
         /// A list of org units for the user id.
         /// </returns>
-        public OrgUnit[] GetOrgUnitsByUserID(int userID, string[] types = null)
+        public OrgUnit[] GetOrgUnitsByUserId(int userId, string[] types = null)
         {
             try
             {
-                using (ISession session = Session)
-                using (ITransaction transaction = session.BeginTransaction())
+                using (var session = Session)
                 {
                     var orgUnits = session.QueryOver<OrgUnit>()
-                        .Where(x => x.UserId == userID)
+                        .Where(x => x.UserId == userId)
                         .List<OrgUnit>() as List<OrgUnit>;
 
                     if (types != null)
                     {
-                        foreach (var orgUnit in orgUnits)
+                        if (orgUnits != null)
                         {
-                            orgUnit.Unproxy(types);
-                            Log.DebugFormat(Properties.Resources.DBMANAGER_UNPROXY_ORGUNITS, orgUnit.OrgUnitConfig);
+                            foreach (var orgUnit in orgUnits)
+                            {
+                                orgUnit.Unproxy(types);
+                                Log.DebugFormat(Properties.Resources.DBMANAGER_UNPROXY_ORGUNITS, orgUnit.OrgUnitConfig);
+                            }
                         }
                     }
 
-                    Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ORGUNIT_BY_USERID, orgUnits.OrgUnitsToString(), userID);
+                    Log.InfoFormat(Properties.Resources.DBMANAGER_GET_ORGUNIT_BY_USERID, orgUnits.OrgUnitsToString(), userId);
 
-                    return orgUnits.ToArray();
+                    if (orgUnits != null)
+                    {
+                        return orgUnits.ToArray();
+                    }
                 }
             }
             catch (Exception e)
             {
                 throw new DBManagerAccessException(e, "GetOrgUnitsByUserID(int userID, string[] types = null)");
             }
+
+            return new OrgUnit[0];
         }
 
         /// <summary>
@@ -495,21 +483,29 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         {
             try
             {
-                using (ISession session = Session)
+                using (var session = Session)
                 {
                     var components = session.QueryOver<Component>()
                         .Where(x => x.OrgUnitGUID == orgUnitGuid)
                         .List<Component>() as List<Component>;
 
-                    Log.InfoFormat(Properties.Resources.DBMANAGER_GET_COMPONENT_BY_ORGUNIT_ID, components.ComponentsToString(), orgUnitGuid);
+                    Log.InfoFormat(
+                        Properties.Resources.DBMANAGER_GET_COMPONENT_BY_ORGUNIT_ID,
+                        components.ComponentsToString(),
+                        orgUnitGuid);
 
-                    return components.ToArray();
+                    if (components != null)
+                    {
+                        return components.ToArray();
+                    }
                 }
             }
             catch (Exception e)
             {
                 throw new DBManagerAccessException(e, "GetComponentsByOrgUnitId(Guid orgUnitGuid)");
             }
+
+            return new Component[0];
         }
 
         /// <summary>
@@ -521,7 +517,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         {
             try
             {
-                using (ISession session = Session)
+                using (var session = Session)
                 {
                     var results = session.QueryOver<Result>()
                         .Where(x => x.ComponentGUID == componentGUID)
@@ -529,13 +525,18 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
                     Log.InfoFormat(Properties.Resources.DBMANAGER_GET_RESULTS_BY_COMPONENT_ID, results.ResultsToString(), componentGUID);
 
-                    return results.ToArray();
+                    if (results != null)
+                    {
+                        return results.ToArray();
+                    }
                 }
             }
             catch (Exception e)
             {
                 throw new DBManagerAccessException(e, "GetResultsByComponentId(Guid componentGUID)");
             }
+
+            return new Result[0];
         }
 
         /// <summary>
@@ -548,17 +549,22 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         {
             try
             {
-                using (ISession session = Session)
+                using (var session = Session)
                 {
                     var configs = session.QueryOver<OrgUnitConfig>().List<OrgUnitConfig>() as List<OrgUnitConfig>;
 
-                    return configs.ToArray();
+                    if (configs != null)
+                    {
+                        return configs.ToArray();
+                    }
                 }
             }
             catch (Exception e)
             {
                 throw new DBManagerAccessException(e, "GetOrgUnitConfigurations()");
             }
+
+            return new OrgUnitConfig[0];
         }
 
         /// <summary>
@@ -753,7 +759,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             {
                 Log.DebugFormat(Properties.Resources.DBMANAGER_SPLITTED_RESULTS_FROM_TO, first, last);
 
-                var tmp = new Result[last - first];
                 var splittedResults = new List<Result>();
 
                 for (int i = first; i < last; i++)
@@ -798,9 +803,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <param name="cancel">if set to <c>true</c> [cancel].</param>
         public override void StopService(bool cancel = false)
         {
-            if (DBManager.SessionFactory != null && !DBManager.SessionFactory.IsClosed)
+            if (SessionFactory != null && !SessionFactory.IsClosed)
             {
-                DBManager.SessionFactory.Close();
+                SessionFactory.Close();
             }
 
             base.StopService(cancel);
@@ -823,7 +828,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 var configuration = new Configuration();
 
                 configuration.Configure();
-                configuration.AddAssembly(typeof(DBManager).Assembly);
+                configuration.AddAssembly(typeof(DbManager).Assembly);
 
                 SessionFactory = configuration.BuildSessionFactory();
                 new SchemaExport(configuration).Drop(false, false);
@@ -832,7 +837,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
             catch (Exception e)
             {
-                throw new DBManagerConfigurationException(e, typeof(DBManager).Name);
+                throw new DBManagerConfigurationException(e, typeof(DbManager).Name);
             }
         }
 
@@ -846,12 +851,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </returns>
         private long GetByteCount(Result[] results)
         {
-            long byteCount = 0;
-
-            foreach (var result in results)
-            {
-                byteCount += result.SizeOf();
-            }
+            long byteCount = results.Sum(result => result.SizeOf());
 
             Log.DebugFormat(Properties.Resources.DBMANAGER_RESULTS_BYTE_COUNT, byteCount);
 

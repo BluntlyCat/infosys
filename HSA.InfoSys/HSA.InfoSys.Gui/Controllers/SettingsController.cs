@@ -7,14 +7,13 @@ namespace HSA.InfoSys.Gui.Controllers
 {
     using System;
     using System.ServiceModel;
-    using System.Web.Mvc;
-    using HSA.InfoSys.Common.Logging;
-    using HSA.InfoSys.Common.Services.LocalServices;
-    using HSA.InfoSys.Common.Services.WCFServices;
-    using log4net;
-    using Newtonsoft.Json;
-    using HSA.InfoSys.Common.Entities;
     using System.Text;
+    using System.Web.Mvc;
+    using Common.Entities;
+    using Common.Logging;
+    using Common.Services.LocalServices;
+    using Common.Services.WCFServices;
+    using log4net;
 
     /// <summary>
     /// The controller for the home page.
@@ -30,7 +29,7 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <summary>
         /// The settings for WCF.
         /// </summary>
-        private static WCFSettings settings =
+        private static readonly WCFSettings Settings =
             new WCFSettings("localhost", 8085, "CrawlerProxy", "localhost", 8086, "CrawlerProxy");
 
         /// <summary>
@@ -42,7 +41,7 @@ namespace HSA.InfoSys.Gui.Controllers
         {
             try
             {
-                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
+                var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
                 this.ViewData["navid"] = "serversettings";
                 this.ViewData["label1"] = Properties.Resources.TEST_LABLE1;
 
@@ -50,7 +49,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 this.ViewData["MailSettings"] = cc.GetMailSettings();
                 this.ViewData["NutchClientSettings"] = cc.GetNutchClientSettings();
                 this.ViewData["SolrClientSettings"] = cc.GetSolrClientSettings();
-                this.ViewData["WCFSettings"] = cc.GetWCFSettings();
+                this.ViewData["WCFSettings"] = cc.GetWcfSettings();
             }
             catch (CommunicationException ce)
             {
@@ -90,7 +89,7 @@ namespace HSA.InfoSys.Gui.Controllers
 
                 //// @TODO check for null values
 
-                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
+                var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
                 var mailSettings = cc.GetMailSettings();
 
                 mailSettings.SmtpServer = smtpserver;
@@ -136,6 +135,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 string nutchpath = Request["nutchpath"];
                 string nutchcommand = Request["nutchcommand"];
                 string nutchclients = Request["nutchclients"];
+                string defaulturls = Request["defaulturls"];
                 string crawldepth = Request["crawldepth"];
                 string crawltopn = Request["crawltopn"];
                 string solrserver = Request["solrserver"];
@@ -146,7 +146,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 //// @TODO check for null values
 
                 //// get settings from db
-                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
+                var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
                 var nutchClientSettings = cc.GetNutchClientSettings();
 
                 //// change to new values
@@ -154,9 +154,10 @@ namespace HSA.InfoSys.Gui.Controllers
                 nutchClientSettings.NutchPath = nutchpath;
                 nutchClientSettings.NutchCommand = nutchcommand.Replace(" ", "");
                 nutchClientSettings.NutchClients = nutchclients.Replace(" ", "");
+                nutchClientSettings.DefaultURLs = defaulturls.Replace(" ", "");
                 nutchClientSettings.CrawlDepth = int.Parse(crawldepth.Replace(" ", ""));
                 nutchClientSettings.CrawlTopN = int.Parse(crawltopn.Replace(" ", ""));
-                nutchClientSettings.SolrServer = solrserver.Replace(" ", ""); ;
+                nutchClientSettings.SolrServer = solrserver.Replace(" ", "");
                 nutchClientSettings.JavaHome = javahome;
                 nutchClientSettings.CertificatePath = certificatepath;
                 nutchClientSettings.Prefix = prefix;
@@ -205,7 +206,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 //// @TODO check for null values
 
                 //// get settings from db
-                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
+                var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
                 var solrClientSettings = cc.GetSolrClientSettings();
 
                 //// save changes
@@ -264,8 +265,8 @@ namespace HSA.InfoSys.Gui.Controllers
                 //// @TODO check for null values
 
                 //// get settings from db
-                var cc = WCFControllerClient<IDBManager>.GetClientProxy(settings);
-                var wcfSettings = cc.GetWCFSettings();
+                var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
+                var wcfSettings = cc.GetWcfSettings();
 
                 //// save changes
                 wcfSettings.HttpHost = httphost;
