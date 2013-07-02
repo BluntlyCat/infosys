@@ -17,15 +17,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Initializes a new instance of the <see cref="SolrResultPot"/> class.
         /// </summary>
-        public SolrResultPot()
-        {
-            this.EntityId = Guid.Empty;
-            this.Results = new List<Result>();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SolrResultPot"/> class.
-        /// </summary>
         /// <param name="entityId">The entity id.</param>
         public SolrResultPot(Guid entityId)
         {

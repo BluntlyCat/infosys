@@ -3,6 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
+#define MONO
 namespace HSA.InfoSys.Common.Services.WCFServices
 {
     using System;
@@ -233,7 +234,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets the list of indexes of results.
         /// In MONO we only can send 2^16 Bytes because of a
-        /// MONO intern restriction, so we need to split the 
+        /// MONO intern restriction, so we need to split the
         /// results into more than one request to fetch all
         /// results of this component.
         /// Each couple of indexes includes a range of results
@@ -242,10 +243,13 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// indexes is the first and the next index in this list.
         /// </summary>
         /// <param name="componentGUID">The component GUID.</param>
-        /// <returns>A list of indexes.</returns>
+        /// <param name="allResults">All results.</param>
+        /// <returns>
+        /// A list of indexes.
+        /// </returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        List<int> GetResultIndexes(Guid componentGUID);
+        List<int> GetResultIndexes(Guid componentGUID, Result[] allResults);
 
         /// <summary>
         /// Gets the index of the results by request.
@@ -256,12 +260,13 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         /// <param name="first">The first result index.</param>
         /// <param name="last">The last result index.</param>
+        /// <param name="allResults">All results.</param>
         /// <returns>
         /// All results in range of first and the index before last index
         /// </returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        Result[] GetResultsByRequestIndex(int first, int last);
+        Result[] GetResultsByRequestIndex(int first, int last, Result[] allResults);
 #endif
     }
 }

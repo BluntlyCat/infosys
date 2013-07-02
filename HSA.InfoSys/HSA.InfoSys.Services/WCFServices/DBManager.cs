@@ -3,6 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
+#define MONO
 namespace HSA.InfoSys.Common.Services.WCFServices
 {
     using System;
@@ -35,18 +36,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// The mutex for data base session.
         /// </summary>
         private static readonly Mutex DbMutex = new Mutex();
-
-#if MONO
-        /// <summary>
-        /// The allResults if we run this in mono.
-        /// </summary>
-        private static Result[] allResults;
-
-        /// <summary>
-        /// The mono mutex.
-        /// </summary>
-        private static readonly Mutex MonoMutex = new Mutex();
-#endif
 
         /// <summary>
         /// The database manager.
@@ -876,18 +865,16 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// indexes is the first and the next index in this list.
         /// </summary>
         /// <param name="componentGUID">The component GUID.</param>
+        /// <param name="allResults">All results.</param>
         /// <returns>
         /// A list of indexes.
         /// </returns>
-        public List<int> GetResultIndexes(Guid componentGUID)
+        /// <exception cref="DBManagerAccessException">GetResultIndexes(Guid componentGUID)</exception>
+        public List<int> GetResultIndexes(Guid componentGUID, Result[] allResults)
         {
-            MonoMutex.WaitOne();
-
             try
             {
                 Log.InfoFormat(Properties.Resources.DBMANAGER_GET_RESULTS_BY_COMPONENT_ID, componentGUID);
-
-                allResults = this.GetResultsByComponentId(componentGUID);
 
                 var maxBytes = Math.Pow(2, 15);
                 var byteAmount = 0L;
@@ -922,7 +909,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
             catch (Exception e)
             {
-                MonoMutex.ReleaseMutex();
                 throw new DBManagerAccessException(e, "GetResultIndexes(Guid componentGUID)");
             }
         }
@@ -936,16 +922,18 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         /// <param name="first">The first result index.</param>
         /// <param name="last">The last result index.</param>
+        /// <param name="allResults">All results.</param>
         /// <returns>
         /// All allResults in range of first and the index before last index
         /// </returns>
-        public Result[] GetResultsByRequestIndex(int first, int last)
+        /// <exception cref="DBManagerAccessException">GetResultsByRequestIndex(int first, int last)</exception>
+        public Result[] GetResultsByRequestIndex(int first, int last, Result[] allResults)
         {
+            var splittedResults = new List<Result>();
+
             try
             {
                 Log.DebugFormat(Properties.Resources.DBMANAGER_SPLITTED_RESULTS_FROM_TO, first, last);
-
-                var splittedResults = new List<Result>();
 
                 for (var i = first; i < last; i++)
                 {
@@ -962,17 +950,13 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                         Log.ErrorFormat(Properties.Resources.LOG_COMMON_ERROR, e);
                     }
                 }
-
-                return splittedResults.ToArray();
             }
             catch (Exception e)
             {
                 throw new DBManagerAccessException(e, "GetResultsByRequestIndex(int first, int last)");
             }
-            finally
-            {
-                MonoMutex.ReleaseMutex();
-            }
+
+            return splittedResults.ToArray();
         }
 #endif
 

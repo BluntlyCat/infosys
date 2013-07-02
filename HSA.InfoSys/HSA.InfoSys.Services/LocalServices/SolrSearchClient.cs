@@ -224,6 +224,12 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private SolrResultPot ParseToResult(string jsonResult)
         {
             var json = JsonConvert.DeserializeObject(jsonResult) as JObject;
+
+            if (this.ComponentGUID.Equals(Guid.Empty))
+            {
+                int i = 0;
+            }
+
             var resultPot = new SolrResultPot(this.ComponentGUID);
 
             if (json != null)

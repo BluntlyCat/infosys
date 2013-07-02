@@ -3,6 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
+#define MONO
 namespace HSA.InfoSys.Gui.Controllers
 {
     using System;
@@ -656,7 +657,7 @@ namespace HSA.InfoSys.Gui.Controllers
                         var component = cc.GetEntity(selectedCompGUID) as Component;
 
 #if MONO
-                        var results = this.GetResults(selectedCompGUID);
+                        var results = GetResults(selectedCompGUID);
 #else
                         var results = cc.GetResultsByComponentId(selectedCompGUID).ToList<Result>();
 #endif
@@ -668,7 +669,7 @@ namespace HSA.InfoSys.Gui.Controllers
                         var selectedComp = components.First();
 
 #if MONO
-                        var results = this.GetResults(selectedComp.EntityId);
+                        var results = GetResults(selectedComp.EntityId);
 #else
                         var results = cc.GetResultsByComponentId(selectedComp.EntityId).ToList<Result>();
 #endif
@@ -716,30 +717,22 @@ namespace HSA.InfoSys.Gui.Controllers
         /// manager behind witch splits the results in pieces of
         /// 2^15 bytes until all results are received.
         /// </summary>
-        /// <param name="componentGuid">The component GUID.</param>
+        /// <param name="componentGUID">The component GUID.</param>
         /// <returns>A list of results which belongs to the given component.</returns>
-        private List<Result> GetResults(Guid componentGuid)
+        private static List<Result> GetResults(Guid componentGUID)
         {
             var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
 
-            var indexes = cc.GetResultIndexes(componentGuid).ToArray();
+            var allResults = cc.GetResultsByComponentId(componentGUID);
+            var indexes = cc.GetResultIndexes(componentGUID, allResults).ToArray();
             var splittedResults = new List<Result[]>();
-            var results = new List<Result>();
 
             for (int i = 0; i < indexes.Length - 1; i++)
             {
-                splittedResults.Add(cc.GetResultsByRequestIndex(indexes[i], indexes[i + 1]));
+                splittedResults.Add(cc.GetResultsByRequestIndex(indexes[i], indexes[i + 1], allResults));
             }
 
-            foreach (var splittedResult in splittedResults)
-            {
-                foreach (var result in splittedResult)
-                {
-                    results.Add(result);
-                }
-            }
-
-            return results;
+            return splittedResults.SelectMany(splittedResult => splittedResult).ToList();
         }
 #endif
     }

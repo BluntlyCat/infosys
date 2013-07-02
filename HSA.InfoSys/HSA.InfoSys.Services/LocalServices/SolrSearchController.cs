@@ -196,6 +196,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     dbManager.AddEntity(result);
                 }
 
+                if (result.ComponentGUID.Equals(Guid.Empty))
+                {
+                    int i = 0;
+                }
+
                 Log.InfoFormat(
                     Properties.Resources.SOLR_SEARCH_RESULT,
                     result.ComponentGUID,
