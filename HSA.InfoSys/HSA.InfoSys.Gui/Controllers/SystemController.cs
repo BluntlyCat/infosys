@@ -3,6 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
+#define MONO
 namespace HSA.InfoSys.Gui.Controllers
 {
     using System;
@@ -729,13 +730,12 @@ namespace HSA.InfoSys.Gui.Controllers
         {
             var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
 
-            var allResults = cc.GetResultsByComponentId(componentGUID);
-            var indexes = cc.GetResultIndexes(componentGUID, allResults).ToArray();
+            var indexes = cc.GetResultIndexes(componentGUID);
             var splittedResults = new List<Result[]>();
 
             for (int i = 0; i < indexes.Length - 1; i++)
             {
-                splittedResults.Add(cc.GetResultsByRequestIndex(indexes[i], indexes[i + 1], allResults));
+                splittedResults.Add(cc.GetResultsByRequestIndex(componentGUID, indexes[i], indexes[i + 1]));
             }
 
             return splittedResults.SelectMany(splittedResult => splittedResult).ToList();

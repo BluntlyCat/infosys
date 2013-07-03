@@ -3,6 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
+#define MONO
 namespace HSA.InfoSys.Common.Services.WCFServices
 {
     using System;
@@ -35,6 +36,16 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// The mutex for data base session.
         /// </summary>
         private static readonly Mutex DbMutex = new Mutex();
+
+        /// <summary>
+        /// The get result indexes mutex.
+        /// </summary>
+        private static readonly Mutex GetResultIndexesMutex = new Mutex();
+
+        /// <summary>
+        /// The get result by index mutex.
+        /// </summary>
+        private static readonly Mutex GetResultByIndexMutex = new Mutex();
 
         /// <summary>
         /// The database manager.
@@ -891,28 +902,29 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
 #if MONO
         /// <summary>
-        /// Gets the list of indexes of allResults.
+        /// Gets the list of indexes of results.
         /// In MONO we only can send 2^16 Bytes because of a
         /// MONO intern restriction, so we need to split the
-        /// allResults into more than one request to fetch all
-        /// allResults of this component.
-        /// Each couple of indexes includes a range of allResults
+        /// results into more than one request to fetch all
+        /// results of this component.
+        /// Each couple of indexes includes a range of results
         /// whose size is in range of 2^15 bytes because we will
         /// need some space for serialisation too. A couple of
         /// indexes is the first and the next index in this list.
         /// </summary>
         /// <param name="componentGUID">The component GUID.</param>
-        /// <param name="allResults">All results.</param>
         /// <returns>
         /// A list of indexes.
         /// </returns>
-        /// <exception cref="DBManagerAccessException">GetResultIndexes(Guid componentGUID)</exception>
-        public List<int> GetResultIndexes(Guid componentGUID, Result[] allResults)
+        /// <exception cref="DbManagerAccessException">GetResultIndexes(Guid componentGUID)</exception>
+        public int[] GetResultIndexes(Guid componentGUID)
         {
+            GetResultIndexesMutex.WaitOne();
+
             try
             {
-                var results = allResults.ToList();
-                Log.InfoFormat(Properties.Resources.DBMANAGER_GET_RESULTS_BY_COMPONENT_ID, results.ResultsToString(), componentGUID);
+                var results = this.GetResultsByComponentId(componentGUID);
+                Log.InfoFormat(Properties.Resources.DBMANAGER_GET_RESULTS_BY_COMPONENT_ID, results.Length, componentGUID);
 
                 var maxBytes = Math.Pow(2, 15);
                 var byteAmount = 0L;
@@ -920,7 +932,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 var index = 0;
                 var indexes = new List<int> {0};
 
-                foreach (var result in allResults)
+                foreach (var result in results)
                 {
                     byteAmount += result.SizeOf();
 
@@ -941,37 +953,45 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                     index++;
                 }
 
-                indexes.Add(allResults.Length);
+                indexes.Add(results.Length);
 
-                return indexes;
+                return indexes.ToArray();
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "GetResultIndexes(Guid componentGUID)");
+                throw new DbManagerAccessException(e, "GetResultIndexes(Guid componentGUID)");
+            }
+            finally
+            {
+                GetResultIndexesMutex.ReleaseMutex();
             }
         }
 
         /// <summary>
-        /// Gets the index of the allResults by request.
-        /// In this method we fetch the allResults.
+        /// Gets the index of the results by request.
+        /// In this method we fetch the results.
         /// The last index is the first index of the next request so
         /// we begin at the first index and ending one index before the last index.
         /// Otherwise we would fetch the last result two times.
         /// </summary>
+        /// <param name="componentGUID">The component GUID.</param>
         /// <param name="first">The first result index.</param>
         /// <param name="last">The last result index.</param>
-        /// <param name="allResults">All results.</param>
         /// <returns>
-        /// All allResults in range of first and the index before last index
+        /// All results in range of first and the index before last index
         /// </returns>
-        /// <exception cref="DBManagerAccessException">GetResultsByRequestIndex(int first, int last)</exception>
-        public Result[] GetResultsByRequestIndex(int first, int last, Result[] allResults)
+        /// <exception cref="DbManagerAccessException">GetResultsByRequestIndex(int first, int last)</exception>
+        public Result[] GetResultsByRequestIndex(Guid componentGUID, int first, int last)
         {
+            GetResultByIndexMutex.WaitOne();
+
             var splittedResults = new List<Result>();
 
             try
             {
                 Log.DebugFormat(Properties.Resources.DBMANAGER_SPLITTED_RESULTS_FROM_TO, first, last);
+
+                var allResults = this.GetResultsByComponentId(componentGUID);
 
                 for (var i = first; i < last; i++)
                 {
@@ -991,7 +1011,11 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "GetResultsByRequestIndex(int first, int last)");
+                throw new DbManagerAccessException(e, "GetResultsByRequestIndex(int first, int last)");
+            }
+            finally
+            {
+                GetResultByIndexMutex.ReleaseMutex();
             }
 
             return splittedResults.ToArray();

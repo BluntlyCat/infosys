@@ -3,6 +3,7 @@
 //     Copyright statement. All right reserved
 // </copyright>
 // ------------------------------------------------------------------------
+#define MONO
 namespace HSA.InfoSys.Common.Services.WCFServices
 {
     using System;
@@ -251,13 +252,12 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// indexes is the first and the next index in this list.
         /// </summary>
         /// <param name="componentGUID">The component GUID.</param>
-        /// <param name="allResults">All results.</param>
         /// <returns>
         /// A list of indexes.
         /// </returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        List<int> GetResultIndexes(Guid componentGUID, Result[] allResults);
+        int[] GetResultIndexes(Guid componentGUID);
 
         /// <summary>
         /// Gets the index of the results by request.
@@ -266,15 +266,15 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// we begin at the first index and ending one index before the last index.
         /// Otherwise we would fetch the last result two times.
         /// </summary>
+        /// <param name="componentGUID">The component GUID.</param>
         /// <param name="first">The first result index.</param>
         /// <param name="last">The last result index.</param>
-        /// <param name="allResults">All results.</param>
         /// <returns>
         /// All results in range of first and the index before last index
         /// </returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
-        Result[] GetResultsByRequestIndex(int first, int last, Result[] allResults);
+        Result[] GetResultsByRequestIndex(Guid componentGUID, int first, int last);
 #endif
     }
 }
