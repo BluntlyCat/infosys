@@ -207,9 +207,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             try
             {
 #if DEBUG
-                DateTime repeatIn = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, 0).AddMinutes(this.OrgUnitConfig.Days);
+                var repeatIn = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, 0).AddMinutes(this.OrgUnitConfig.Days);
 #else
-                repeatIn = new DateTime(now.Year, now.Month, now.Day, this.OrgUnitConfig.Time, 0, 0).AddDays(this.OrgUnitConfig.Days);
+                var repeatIn = new DateTime(now.Year, now.Month, now.Day, this.OrgUnitConfig.Time, 0, 0).AddDays(this.OrgUnitConfig.Days);
 #endif
                 this.Time = new CountdownTime(repeatIn, this.OrgUnitConfig.EntityId, true);
             }
