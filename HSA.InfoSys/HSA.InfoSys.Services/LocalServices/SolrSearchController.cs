@@ -112,7 +112,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                                             if (resultPot.HasResults)
                                             {
                                                 sendResults.AddRange(
-                                                    GetSendResults(
+                                                    this.GetSendResults(
                                                     resultPot,
                                                     results,
                                                     this.dbManager));
@@ -179,7 +179,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <returns>
         /// A list of the results to store in database.
         /// </returns>
-        private static IEnumerable<Result> GetSendResults(
+        private IEnumerable<Result> GetSendResults(
             SolrResultPot resultPot,
             IList<Result> results,
             IDbManager dbManager)
