@@ -108,6 +108,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     mexBinding,
                     httpAddress);
 
+                host.CloseTimeout = new TimeSpan(0, 0, 10);
+
                 host.Open();
 
                 Hosts.Add(instance, host);
@@ -127,10 +129,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         public void CloseWCFHosts()
         {
-            foreach (var h in Hosts.Values)
+            foreach (var host in Hosts.Values)
             {
-                h.Close();
-                Log.InfoFormat(Properties.Resources.WCF_CONTROLLER_WCF_HOST_CLOSED, h.SingletonInstance.GetType().Name);
+                host.Close();
+                Log.InfoFormat(Properties.Resources.WCF_CONTROLLER_WCF_HOST_CLOSED, host.SingletonInstance.GetType().Name);
             }
         }
     }
