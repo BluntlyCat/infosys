@@ -851,7 +851,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             return orgUnitConfig;
         }
 
-#if !MONO
+#if MONO
         /// <summary>
         /// Gets the list of indexes of allResults.
         /// In MONO we only can send 2^16 Bytes because of a
