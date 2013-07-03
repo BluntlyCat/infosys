@@ -92,7 +92,7 @@ namespace HSA.InfoSys.Common.Entities
         /// Size of result.
         /// </summary>
         /// <returns>The size of this instance.</returns>
-        protected virtual long SizeOf()
+        public virtual long SizeOf()
         {
             var m = new MemoryStream();
             var b = new BinaryFormatter();
