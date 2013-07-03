@@ -15,12 +15,13 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     public class SolrResultPot
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SolrResultPot"/> class.
+        /// Initializes a new instance of the <see cref="SolrResultPot" /> class.
         /// </summary>
-        /// <param name="entityId">The entity id.</param>
-        public SolrResultPot(Guid entityId)
+        /// <param name="componentID">The entity id.</param>
+        public SolrResultPot(Guid componentID)
         {
-            this.EntityId = entityId;
+            this.ComponentID = componentID;
+
             this.Results = new List<Result>();
         }
 
@@ -30,7 +31,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <value>
         /// The entity id.
         /// </value>
-        public Guid EntityId { get; private set; }
+        public Guid ComponentID { get; private set; }
 
         /// <summary>
         /// Gets the results.

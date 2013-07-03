@@ -10,7 +10,7 @@ namespace HSA.InfoSys.Common.Exceptions
     /// <summary>
     /// Throws an exception if day or time value is zero or less.
     /// </summary>
-    public class OpenWCFHostException : Exception
+    public sealed class OpenWCFHostException : Exception
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="OpenWCFHostException" /> class.
@@ -31,7 +31,7 @@ namespace HSA.InfoSys.Common.Exceptions
         /// <value>
         /// The service.
         /// </value>
-        public string Service { get; private set; }
+        private string Service { get; set; }
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.

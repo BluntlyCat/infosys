@@ -58,7 +58,7 @@ namespace HSA.InfoSys.Common.NetDataContractSerializer
         /// <param name="description">The description.</param>
         private static void ReplaceDataContractSerializerOperationBehavior(OperationDescription description)
         {
-            DataContractSerializerOperationBehavior dcsOperationBehavior =
+            var dcsOperationBehavior =
             description.Behaviors.Find<DataContractSerializerOperationBehavior>();
 
             if (dcsOperationBehavior != null)

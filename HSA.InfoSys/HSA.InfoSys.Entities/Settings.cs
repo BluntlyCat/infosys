@@ -11,8 +11,13 @@ namespace HSA.InfoSys.Common.Entities
     /// This is the base class for settings.
     /// </summary>
     [Serializable]
-    public class Settings : Entity
+    public abstract class Settings : Entity
     {
+        /// <summary>
+        /// Sets the default values.
+        /// </summary>
+        public abstract void SetDefaults();
+
         /// <summary>
         /// Determines whether the specified <see cref="System.Object" /> is equal to this instance.
         /// </summary>
@@ -38,7 +43,7 @@ namespace HSA.InfoSys.Common.Entities
         /// </returns>
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return this.ToString().GetHashCode();
         }
     }
 }

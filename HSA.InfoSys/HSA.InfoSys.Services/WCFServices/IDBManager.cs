@@ -180,6 +180,15 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         OrgUnitConfig[] GetOrgUnitConfigurations();
 
         /// <summary>
+        /// Gets the emails by urls.
+        /// </summary>
+        /// <param name="urls">The urls.</param>
+        /// <returns>A list of email addresses according to the url of an OrgUnitConfig.</returns>
+        [UseNetDataContractSerializer]
+        [OperationContractAttribute]
+        string[] GetEmailsByUrls(string[] urls);
+
+        /// <summary>
         /// Creates a component object.
         /// </summary>
         /// <param name="name">The name.</param>

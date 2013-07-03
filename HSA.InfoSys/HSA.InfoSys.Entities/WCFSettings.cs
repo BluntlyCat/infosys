@@ -22,60 +22,6 @@ namespace HSA.InfoSys.Common.Entities
         private byte[] certificatePassword;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WCFSettings"/> class.
-        /// </summary>
-        public WCFSettings()
-        {
-            this.HttpHost = "localhost";
-            this.HttpPort = 8085;
-            this.HttpPath = "CrawlerProxy";
-
-            this.NetTcpHost = "localhost";
-            this.NetTcpPort = 8086;
-            this.NetTcpPath = "CrawlerProxy";
-
-            this.CertificatePath = "Certificates/InfoSys.pfx";
-            this.CertificatePassword = Encryption.Encrypt(Encoding.UTF8.GetBytes("Aes2xe1baetei8Y"));
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WCFSettings" /> class.
-        /// </summary>
-        /// <param name="httpHost">The HTTP host.</param>
-        /// <param name="httpPort">The HTTP port.</param>
-        /// <param name="httpPath">The HTTP path.</param>
-        /// <param name="netTcpHost">The net TCP host.</param>
-        /// <param name="netTcpPort">The net TCP port.</param>
-        /// <param name="netTcpPath">The net TCP path.</param>
-        /// <param name="certificatePath">The certificate path.</param>
-        /// <param name="certificatePassword">The certificate password.</param>
-        public WCFSettings(
-            string httpHost,
-            int httpPort,
-            string httpPath,
-            string netTcpHost,
-            int netTcpPort,
-            string netTcpPath,
-            string certificatePath = null,
-            string certificatePassword = null)
-        {
-            this.HttpHost = httpHost;
-            this.HttpPort = httpPort;
-            this.HttpPath = httpPath;
-
-            this.NetTcpHost = netTcpHost;
-            this.NetTcpPort = netTcpPort;
-            this.NetTcpPath = netTcpPath;
-
-            this.CertificatePath = certificatePath;
-
-            if (certificatePassword != null)
-            {
-                this.CertificatePassword = Encryption.Encrypt(Encoding.UTF8.GetBytes(certificatePassword));
-            }
-        }
-
-        /// <summary>
         /// Gets or sets the HTTP host.
         /// </summary>
         /// <value>
@@ -159,6 +105,43 @@ namespace HSA.InfoSys.Common.Entities
         }
 
         /// <summary>
+        /// Initializes the settings.
+        /// </summary>
+        /// <param name="httpHost">The HTTP host.</param>
+        /// <param name="httpPort">The HTTP port.</param>
+        /// <param name="httpPath">The HTTP path.</param>
+        /// <param name="netTcpHost">The net TCP host.</param>
+        /// <param name="netTcpPort">The net TCP port.</param>
+        /// <param name="netTcpPath">The net TCP path.</param>
+        /// <param name="certificatePath">The certificate path.</param>
+        /// <param name="password">The password.</param>
+        public virtual void InitializeSettings(
+            string httpHost,
+            int httpPort,
+            string httpPath,
+            string netTcpHost,
+            int netTcpPort,
+            string netTcpPath,
+            string certificatePath = null,
+            string password = null)
+        {
+            this.HttpHost = httpHost;
+            this.HttpPort = httpPort;
+            this.HttpPath = httpPath;
+
+            this.NetTcpHost = netTcpHost;
+            this.NetTcpPort = netTcpPort;
+            this.NetTcpPath = netTcpPath;
+
+            this.CertificatePath = certificatePath;
+
+            if (password != null)
+            {
+                this.CertificatePassword = Encryption.Encrypt(Encoding.UTF8.GetBytes(password));
+            }
+        }
+
+        /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.
         /// </summary>
         /// <returns>
@@ -176,6 +159,23 @@ namespace HSA.InfoSys.Common.Entities
                 this.NetTcpPath,
                 this.CertificatePath,
                 this.SizeOf());
+        }
+
+        /// <summary>
+        /// Sets the default values.
+        /// </summary>
+        public override void SetDefaults()
+        {
+            this.HttpHost = "localhost";
+            this.HttpPort = 8085;
+            this.HttpPath = "CrawlerProxy";
+
+            this.NetTcpHost = "localhost";
+            this.NetTcpPort = 8086;
+            this.NetTcpPath = "CrawlerProxy";
+
+            this.CertificatePath = "Certificates/InfoSys.pfx";
+            this.CertificatePassword = Encryption.Encrypt(Encoding.UTF8.GetBytes("Aes2xe1baetei8Y"));
         }
     }
 }

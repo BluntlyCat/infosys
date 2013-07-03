@@ -35,11 +35,16 @@ namespace HSA.InfoSys.Common.Entities
         private static readonly ILog Log = Logger<string>.GetLogger("Entity");
 
         /// <summary>
+        /// The type name.
+        /// </summary>
+        private string type;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Entity"/> class.
         /// </summary>
         protected Entity()
         {
-            this.Type = this.GetType().Name;
+            this.type = this.GetType().Name;
         }
 
         /// <summary>
@@ -58,7 +63,18 @@ namespace HSA.InfoSys.Common.Entities
         /// The type of this instance.
         /// </value>
         [DataMember]
-        public virtual string Type { get; set; }
+        public virtual string Type
+        {
+            get
+            {
+                return this.type;
+            }
+
+            set
+            {
+                this.type = value;
+            }
+        }
 
         /// <summary>
         /// Loads this instance from NHibernate.
@@ -76,10 +92,10 @@ namespace HSA.InfoSys.Common.Entities
         /// Size of result.
         /// </summary>
         /// <returns>The size of this instance.</returns>
-        public virtual long SizeOf()
+        protected virtual long SizeOf()
         {
-            MemoryStream m = new MemoryStream();
-            BinaryFormatter b = new BinaryFormatter();
+            var m = new MemoryStream();
+            var b = new BinaryFormatter();
 
             long size = -1;
 

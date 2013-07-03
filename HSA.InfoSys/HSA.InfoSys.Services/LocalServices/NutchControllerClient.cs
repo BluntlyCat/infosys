@@ -14,6 +14,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using HSA.InfoSys.Common.Entities;
     using HSA.InfoSys.Common.Extensions;
     using HSA.InfoSys.Common.Logging;
+    using HSA.InfoSys.Common.Services.WCFServices;
     using log4net;
     using Renci.SshNet;
     using Renci.SshNet.Common;
@@ -91,7 +92,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <value>
         /// <c>true</c> if this instance is crawling; otherwise, <c>false</c>.
         /// </value>
-        public bool IsCrawling { get; private set; }
+        private bool IsCrawling { get; set; }
 
         /// <summary>
         /// Gets the hostname.
@@ -107,7 +108,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <value>
         /// The prefix file.
         /// </value>
-        public string PrefixFile { get; private set; }
+        private string PrefixFile { get; set; }
 
         /// <summary>
         /// Gets the seed file.
@@ -115,7 +116,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <value>
         /// The seed file.
         /// </value>
-        public string SeedFile { get; private set; }
+        private string SeedFile { get; set; }
 
         /// <summary>
         /// Gets the URL path.
@@ -123,7 +124,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <value>
         /// The URL path.
         /// </value>
-        public string URLPath { get; private set; }
+        private string URLPath { get; set; }
 
         /// <summary>
         /// Gets the crawl command.
@@ -131,7 +132,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <value>
         /// The crawl command.
         /// </value>
-        public string CrawlCommand { get; private set; }
+        private string CrawlCommand { get; set; }
 
         /// <summary>
         /// Initializes the client.
@@ -170,7 +171,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// Starts the crawl.
         /// </summary>
         /// <param name="settings">The settings.</param>
-        public void StartCrawl(NutchControllerClientSettings settings)
+        /// <param name="dbManager">The db manager.</param>
+        public void StartCrawl(NutchControllerClientSettings settings, DbManager dbManager)
         {
             if (this.IsClientUsable)
             {
@@ -187,7 +189,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                     var command = this.RunCommand(string.Format("{0} > crawler.log", this.CrawlCommand));
                     this.IsCrawling = false;
 
-                    if (!command.Error.Equals(string.Empty))
+                    if (command.Error.Equals(string.Empty) == false)
                     {
                         Log.ErrorFormat(
                             Properties.Resources.NUTCH_CONTROLLER_CLIENT_NUTCH_COMMAND_ERROR,
@@ -200,6 +202,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                             Properties.Resources.NUTCH_CONTROLLER_CLIENT_HADOOP_LOG,
                             this.Hostname,
                             hadoopLog);
+
+                        var mail = new EmailNotifier(dbManager);
+                        mail.CrawlFailed(hadoopLog, this.URLs);
                     }
 
                     var crawlerLog = this.GetLogfileContent(100, "crawler.log");
@@ -363,7 +368,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <returns>
         /// A list of already known prefixes.
         /// </returns>
-        private IList<string> GetKnownPrefixes(NutchControllerClientSettings settings, IList<string> urls)
+        private IEnumerable<string> GetKnownPrefixes(NutchControllerClientSettings settings, IEnumerable<string> urls)
         {
             var prefixUrls = new List<string>();
             var knownPrefixes = this.GetFileContent(settings.Prefix);

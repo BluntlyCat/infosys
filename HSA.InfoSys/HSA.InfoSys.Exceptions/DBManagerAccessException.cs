@@ -10,14 +10,14 @@ namespace HSA.InfoSys.Common.Exceptions
     /// <summary>
     /// Throws an exception if day or time value is zero or less.
     /// </summary>
-    public class DBManagerAccessException : Exception
+    public sealed class DbManagerAccessException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DBManagerAccessException" /> class.
+        /// Initializes a new instance of the <see cref="DbManagerAccessException" /> class.
         /// </summary>
         /// <param name="e">The e.</param>
         /// <param name="source">The source.</param>
-        public DBManagerAccessException(Exception e, string source)
+        public DbManagerAccessException(Exception e, string source)
             : base(Properties.Resources.DBMANAGER_ACCESS_EXCEPTION, e)
         {
             this.Source = source;

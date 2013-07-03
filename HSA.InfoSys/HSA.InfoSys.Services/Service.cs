@@ -48,7 +48,7 @@ namespace HSA.InfoSys.Common.Services
         /// <value>
         ///   <c>true</c> if running; otherwise, <c>false</c>.
         /// </value>
-        public bool Running { get; protected set; }
+        public bool Running { get; private set; }
 
         /// <summary>
         /// Gets the service thread.
@@ -56,7 +56,7 @@ namespace HSA.InfoSys.Common.Services
         /// <value>
         /// The service thread.
         /// </value>
-        protected Thread ServiceThread { get; private set; }
+        private Thread ServiceThread { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Service"/> is canceled.
@@ -106,7 +106,7 @@ namespace HSA.InfoSys.Common.Services
         /// <param name="cancel">if set to <c>true</c> [cancel].</param>
         public virtual void RestartService(bool cancel = false)
         {
-            this.StopService();
+            this.StopService(cancel);
             this.StartService();
         }
 

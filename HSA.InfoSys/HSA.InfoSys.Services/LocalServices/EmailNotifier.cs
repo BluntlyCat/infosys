@@ -13,7 +13,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using HSA.InfoSys.Common.Logging;
     using log4net;
     using Newtonsoft.Json;
-    using NHibernate;
     using WCFServices;
 
     /// <summary>
@@ -81,7 +80,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                             this.settings.MailFrom,
                             subject);
 
-                        this.AddMailRecipient(mail, orgUnitGUID, addresses);
+                        this.AddMailRecipient(mail, addresses);
 
                         foreach (var result in results)
                         {
@@ -118,28 +117,25 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Called if the crawl failed.
         /// </summary>
-        /// <param name="orgUnitGUID">The org unit GUID.</param>
-        public void CrawlFailed(Guid orgUnitGUID)
+        /// <param name="log">The log.</param>
+        /// <param name="urls">The urls.</param>
+        public void CrawlFailed(string log, IEnumerable<string> urls)
         {
             try
             {
-                Log.WarnFormat(Properties.Resources.EMAIL_NOTIFIER_CRAWL_FAILED, orgUnitGUID);
+                Log.Warn(Properties.Resources.EMAIL_NOTIFIER_CRAWL_FAILED);
 
-                var orgUnit = this.dbManager.GetEntity(
-                    orgUnitGUID,
-                    this.dbManager.LoadThisEntities("OrgUnitConfig")) as OrgUnit;
-
-                if (orgUnit != null)
+                if (string.IsNullOrEmpty(log) == false)
                 {
-                    var mailBody = string.Format(Properties.Resources.EMAIL_NOTIFIER_CRAWL_FAILED_BODY, orgUnit.Name);
-
-                    var addresses = this.DeserializeAddresses(orgUnit);
+                    var mailBody = string.Format(Properties.Resources.EMAIL_NOTIFIER_CRAWL_FAILED_BODY, log);
 
                     var mail = this.BuildMail(
                         this.settings.MailFrom,
                         Properties.Resources.EMAIL_NOTIFIER_CRAWL_FAILED_SUBJECT);
 
-                    this.AddMailRecipient(mail, orgUnitGUID, addresses);
+                    var addresses = dbManager.GetEmailsByUrls(urls.ToArray());
+
+                    this.AddMailRecipient(mail, addresses);
 
                     this.AddMailBody(mail, mailBody);
                     this.SendMail(mail);
@@ -156,7 +152,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="orgUnit">The org unit.</param>
         /// <returns>A string array containing the mail addresses.</returns>
-        private IList<string> DeserializeAddresses(OrgUnit orgUnit)
+        private IEnumerable<string> DeserializeAddresses(OrgUnit orgUnit)
         {
             var addresses = JsonConvert.DeserializeObject<string[]>(orgUnit.OrgUnitConfig.Emails).ToList<string>();
 
@@ -177,10 +173,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             Log.DebugFormat(Properties.Resources.EMAIL_NOTIFIER_BUID_MAIL, from, subject);
 
-            MailMessage mail = new MailMessage();
-
-            mail.From = new MailAddress(from);
-            mail.Subject = subject;
+            var mail = new MailMessage
+                {
+                    From = new MailAddress(@from),
+                    Subject = subject
+                };
 
             return mail;
         }
@@ -189,14 +186,13 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// Adds the mail recipients.
         /// </summary>
         /// <param name="mail">The mail.</param>
-        /// <param name="orgUnitGUID">The org unit GUID.</param>
         /// <param name="addresses">The addresses.</param>
-        private void AddMailRecipient(MailMessage mail, Guid orgUnitGUID, IList<string> addresses)
+        private void AddMailRecipient(MailMessage mail, IEnumerable<string> addresses)
         {
             foreach (var address in addresses)
             {
                 mail.To.Add(address);
-                Log.DebugFormat(Properties.Resources.EMAIL_NOTIFIER_ADD_RECIPIENT, address, orgUnitGUID);
+                Log.DebugFormat(Properties.Resources.EMAIL_NOTIFIER_ADD_RECIPIENT, address);
             }
         }
 
@@ -218,7 +214,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private void SendMail(MailMessage mail)
         {
             Log.InfoFormat(Properties.Resources.EMAIL_NOTIFIER_SEND_MAIL, mail.From, mail.Subject, mail.To);
-            SmtpClient smtpServer = new SmtpClient(this.settings.SmtpServer);
+            var smtpServer = new SmtpClient(this.settings.SmtpServer);
+
             smtpServer.Send(mail);
         }
     }

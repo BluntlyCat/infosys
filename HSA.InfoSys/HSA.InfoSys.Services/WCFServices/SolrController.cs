@@ -7,9 +7,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 {
     using System;
     using System.ServiceModel;
-    using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services.LocalServices;
-    using log4net;
 
     /// <summary>
     /// In this class are all methods implemented for controlling Solr.
@@ -18,11 +16,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     public class SolrController : Service, ISolrController
     {
         /// <summary>
-        /// The logger.
-        /// </summary>
-        private static readonly ILog Log = Logger<string>.GetLogger("SolrController");
-
-        /// <summary>
         /// The solr controller.
         /// </summary>
         private static SolrController solrController;
@@ -30,7 +23,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// The data base manager.
         /// </summary>
-        private IDbManager dbManager;
+        private readonly IDbManager dbManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SolrController"/> class.
@@ -49,12 +42,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <returns>an instance of the Solr controller.</returns>
         public static SolrController SolrFactory(DbManager dbManager)
         {
-            if (solrController == null)
-            {
-                solrController = new SolrController(Guid.NewGuid(), dbManager);
-            }
-
-            return solrController;
+            return solrController ?? (solrController = new SolrController(Guid.NewGuid(), dbManager));
         }
 
         /// <summary>
@@ -78,7 +66,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// Starts a new search.
         /// </summary>
         /// <param name="orgUnitGUID">The org unit GUID.</param>
-        public void Search(Guid orgUnitGUID)
+        private void Search(Guid orgUnitGUID)
         {
             var controller = new SolrSearchController(this.dbManager);
             controller.StartSearch(orgUnitGUID);

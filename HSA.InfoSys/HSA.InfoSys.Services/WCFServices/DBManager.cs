@@ -125,7 +125,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "GetSettingsFor<T>()");
+                throw new DbManagerAccessException(e, "GetSettingsFor<T>()");
             }
         }
 
@@ -148,13 +148,14 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 if (settings == null)
                 {
                     var newSetting = new EmailNotifierSettings();
+                    newSetting.SetDefaults();
                     var guid = manager.AddEntity(newSetting);
                     settings = manager.GetEntity(guid) as EmailNotifierSettings;
                 }
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "GetMailSettings()");
+                throw new DbManagerAccessException(e, "GetMailSettings()");
             }
             finally
             {
@@ -167,7 +168,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets the nutch client settings.
         /// </summary>
-        /// <exception cref="DBManagerAccessException"></exception>
+        /// <exception cref="DbManagerAccessException"></exception>
         /// <returns>
         /// The nutch client settings.
         /// </returns>
@@ -184,13 +185,14 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 if (settings == null)
                 {
                     var newSetting = new NutchControllerClientSettings();
+                    newSetting.SetDefaults();
                     var guid = manager.AddEntity(newSetting);
                     settings = manager.GetEntity(guid) as NutchControllerClientSettings;
                 }
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "GetNutchClientSettings()");
+                throw new DbManagerAccessException(e, "GetNutchClientSettings()");
             }
             finally
             {
@@ -203,7 +205,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets the solr client settings.
         /// </summary>
-        /// <exception cref="DBManagerAccessException"></exception>
+        /// <exception cref="DbManagerAccessException"></exception>
         /// <returns>
         /// The solr client settings.
         /// </returns>
@@ -220,13 +222,14 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 if (settings == null)
                 {
                     var newSetting = new SolrSearchClientSettings();
+                    newSetting.SetDefaults();
                     var guid = manager.AddEntity(newSetting);
                     settings = manager.GetEntity(guid) as SolrSearchClientSettings;
                 }
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "GetSolrClientSettings()");
+                throw new DbManagerAccessException(e, "GetSolrClientSettings()");
             }
             finally
             {
@@ -239,7 +242,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets the WCF controller settings.
         /// </summary>
-        /// <exception cref="DBManagerAccessException"></exception>
+        /// <exception cref="DbManagerAccessException"></exception>
         /// <returns>
         /// The WCF controller settings.
         /// </returns>
@@ -256,13 +259,14 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 if (settings == null)
                 {
                     var newSetting = new WCFSettings();
+                    newSetting.SetDefaults();
                     var guid = manager.AddEntity(newSetting);
                     settings = manager.GetEntity(guid) as WCFSettings;
                 }
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "GetWCFSettings()");
+                throw new DbManagerAccessException(e, "GetWCFSettings()");
             }
             finally
             {
@@ -311,12 +315,12 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                 {
                     foreach (var config in orgUnitConfigs)
                     {
-                        if (config.URLS == null)
+                        if (config.URLs == null)
                         {
                             continue;
                         }
 
-                        var urls = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(config.URLS);
+                        var urls = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(config.URLs);
 
                         urlList.AddRange(urls);
                     }
@@ -324,7 +328,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "GetAllUrls()");
+                throw new DbManagerAccessException(e, "GetAllUrls()");
             }
             finally
             {
@@ -339,7 +343,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// and saves it in database.
         /// </summary>
         /// <param name="entity">The entity to add in database.</param>
-        /// <exception cref="DBManagerAccessException"></exception>
+        /// <exception cref="DbManagerAccessException"></exception>
         /// <returns>The GUID of the added entity.</returns>
         public Guid AddEntity(Entity entity)
         {
@@ -362,7 +366,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "AddEntity(Entity entity)");
+                throw new DbManagerAccessException(e, "AddEntity(Entity entity)");
             }
             finally
             {
@@ -377,7 +381,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// and saves it in database.
         /// </summary>
         /// <param name="entities">The entities.</param>
-        /// <exception cref="DBManagerAccessException"></exception>
+        /// <exception cref="DbManagerAccessException"></exception>
         public void AddEntitys(params Entity[] entities)
         {
             DbMutex.WaitOne();
@@ -394,7 +398,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "AddEntitys(params Entity[] entities)");
+                throw new DbManagerAccessException(e, "AddEntitys(params Entity[] entities)");
             }
             finally
             {
@@ -406,7 +410,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// Saves changings of a object in database.
         /// </summary>
         /// <param name="entity">The entity that should be updated.</param>
-        /// <exception cref="DBManagerAccessException"></exception>
+        /// <exception cref="DbManagerAccessException"></exception>
         /// <returns>The GUID of the updated entity.</returns>
         public Guid UpdateEntity(Entity entity)
         {
@@ -433,7 +437,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "UpdateEntity(Entity entity)");
+                throw new DbManagerAccessException(e, "UpdateEntity(Entity entity)");
             }
             finally
             {
@@ -470,7 +474,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "DeleteEntity(Entity entity)");
+                throw new DbManagerAccessException(e, "DeleteEntity(Entity entity)");
             }
             finally
             {
@@ -511,7 +515,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "GetEntity(Guid entityGUID, string[] types = null)");
+                throw new DbManagerAccessException(e, "GetEntity(Guid entityGUID, string[] types = null)");
             }
             finally
             {
@@ -526,7 +530,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         /// <param name="userId">The user ID.</param>
         /// <param name="types">The types.</param>
-        /// <exception cref="DBManagerAccessException"></exception>
+        /// <exception cref="DbManagerAccessException"></exception>
         /// <returns>
         /// A list of org units for the user id.
         /// </returns>
@@ -563,7 +567,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "GetOrgUnitsByUserID(int userID, string[] types = null)");
+                throw new DbManagerAccessException(e, "GetOrgUnitsByUserID(int userID, string[] types = null)");
             }
             finally
             {
@@ -581,7 +585,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <returns>
         /// The OrgUnitGUID of the OrgUnit belonging to the OrgUnitConfigGUID.
         /// </returns>
-        /// <exception cref="DBManagerAccessException">GetOrgUnitsByUserID(int userID, string[] types = null)</exception>
+        /// <exception cref="DbManagerAccessException">GetOrgUnitsByUserID(int userID, string[] types = null)</exception>
         public Guid GetOrgUnitGuidByOrgUnitConfigGuid(Guid orgUnitConfigGUID, string[] types = null)
         {
             DbMutex.WaitOne();
@@ -599,7 +603,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "GetOrgUnitsByUserID(int userID, string[] types = null)");
+                throw new DbManagerAccessException(e, "GetOrgUnitsByUserID(int userID, string[] types = null)");
             }
             finally
             {
@@ -613,7 +617,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// Gets the org unit configurations by active scheduler.
         /// </summary>
         /// <param name="types">The types.</param>
-        /// <exception cref="DBManagerAccessException"></exception>
+        /// <exception cref="DbManagerAccessException"></exception>
         /// <returns>
         /// A list of Orgunit configurations where the Scheduler is active.
         /// </returns>
@@ -639,7 +643,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "GetOrgUnitsByUserID(int userID, string[] types = null)");
+                throw new DbManagerAccessException(e, "GetOrgUnitsByUserID(int userID, string[] types = null)");
             }
             finally
             {
@@ -681,7 +685,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "GetComponentsByOrgUnitId(Guid orgUnitGuid)");
+                throw new DbManagerAccessException(e, "GetComponentsByOrgUnitId(Guid orgUnitGuid)");
             }
             finally
             {
@@ -714,14 +718,14 @@ namespace HSA.InfoSys.Common.Services.WCFServices
                     {
                         Log.InfoFormat(
                             Properties.Resources.DBMANAGER_GET_RESULTS_BY_COMPONENT_ID,
-                            results.ResultsToString(),
+                            results.Count,
                             componentGUID);
                     }
                 }
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "GetResultsByComponentId(Guid componentGUID)");
+                throw new DbManagerAccessException(e, "GetResultsByComponentId(Guid componentGUID)");
             }
             finally
             {
@@ -753,7 +757,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
             catch (Exception e)
             {
-                throw new DBManagerAccessException(e, "GetOrgUnitConfigurations()");
+                throw new DbManagerAccessException(e, "GetOrgUnitConfigurations()");
             }
             finally
             {
@@ -761,6 +765,40 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
 
             return configs != null ? configs.ToArray() : new OrgUnitConfig[0];
+        }
+
+        /// <summary>
+        /// Gets the emails by urls.
+        /// </summary>
+        /// <param name="urls">The urls.</param>
+        /// <returns>
+        /// A list of email addresses according to the url of an OrgUnitConfig.
+        /// </returns>
+        public string[] GetEmailsByUrls(string[] urls)
+        {
+            DbMutex.WaitOne();
+
+            IEnumerable<string> addresses;
+
+            try
+            {
+                using (var session = Session)
+                {
+                    addresses = session.QueryOver<OrgUnitConfig>()
+                        .Where(c => c.URLs.Equals(urls.ElementsToString()))
+                        .List<string>().Distinct();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new DbManagerAccessException(e, "GetEmailsByUrls(string[] urls)");
+            }
+            finally
+            {
+                DbMutex.ReleaseMutex();
+            }
+
+            return addresses.ToArray();
         }
 
         /// <summary>
@@ -836,7 +874,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
             var orgUnitConfig = new OrgUnitConfig
             {
-                URLS = urls,
+                URLs = urls,
                 Emails = emails,
                 URLActive = urlActive,
                 EmailActive = emailNotification,
@@ -1017,7 +1055,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             }
             catch (Exception e)
             {
-                throw new DBManagerConfigurationException(e, typeof (DbManager).Name);
+                throw new DbManagerConfigurationException(e, typeof (DbManager).Name);
             }
             finally
             {

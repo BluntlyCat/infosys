@@ -11,7 +11,7 @@ namespace HSA.InfoSys.Common.Exceptions
     /// Throws an exception if all clients returned
     /// an error while trying to connect over SSH.
     /// </summary>
-    public class NoNutchClientUsableException : Exception
+    public sealed class NoNutchClientUsableException : Exception
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="NoNutchClientUsableException"/> class.

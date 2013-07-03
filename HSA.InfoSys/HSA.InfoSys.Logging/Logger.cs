@@ -15,7 +15,7 @@ namespace HSA.InfoSys.Common.Logging
     /// Handles requests for logger for a specific class,
     /// creates the configuration if there is none.
     /// </summary>
-    /// <typeparam name="T">The type of the key for the logger.</typeparam>
+    /// <typeparam name="T">The type of the key for the LogContainerDictionary.</typeparam>
     public static class Logger<T>
     {
         /// <summary>
@@ -26,12 +26,12 @@ namespace HSA.InfoSys.Common.Logging
         /// <summary>
         /// The base logger.
         /// </summary>
-        private static Type baseLogger = typeof(Logger<Type>);
+        private static readonly Type BaseLogger = typeof(Logger<Type>);
 
         /// <summary>
-        /// The logger dictionary
+        /// The LogContainerDictionary dictionary
         /// </summary>
-        private static Dictionary<T, ILog> logger = new Dictionary<T, ILog>();
+        private static readonly Dictionary<T, ILog> LogContainerDictionary = new Dictionary<T, ILog>();
 
         /// <summary>
         /// Gets the logger and add a new logger if not exist.
@@ -47,18 +47,18 @@ namespace HSA.InfoSys.Common.Logging
 
             AddLogger(name);
 
-            return logger[name];
+            return LogContainerDictionary[name];
         }
 
         /// <summary>
         /// Creates the base logger and config.
         /// </summary>
-        public static void CreateBaseLogger()
+        private static void CreateBaseLogger()
         {
             config = XmlConfigurator.Configure();
-            Logger<Type>.AddLogger(baseLogger);
+            Logger<Type>.AddLogger(BaseLogger);
 
-            Logger<Type>.logger[baseLogger].Debug(Properties.Resources.LOGGING_BASELOGGER_CREATED);
+            Logger<Type>.LogContainerDictionary[BaseLogger].Debug(Properties.Resources.LOGGING_BASELOGGER_CREATED);
         }
 
         /// <summary>
@@ -67,14 +67,14 @@ namespace HSA.InfoSys.Common.Logging
         /// <param name="name">The name of the logger.</param>
         private static void AddLogger(T name)
         {
-            if (Logger<T>.logger.ContainsKey(name) == false)
+            if (Logger<T>.LogContainerDictionary.ContainsKey(name) == false)
             {
-                Logger<T>.logger.Add(name, LogManager.GetLogger(typeof(T)));
-                Logger<Type>.logger[baseLogger].DebugFormat(Properties.Resources.LOGGING_NEW_LOGGER_ADDED, name);
+                Logger<T>.LogContainerDictionary.Add(name, LogManager.GetLogger(typeof(T)));
+                Logger<Type>.LogContainerDictionary[BaseLogger].DebugFormat(Properties.Resources.LOGGING_NEW_LOGGER_ADDED, name);
             }
             else
             {
-                Logger<Type>.logger[baseLogger].DebugFormat(Properties.Resources.LOGGING_LOGGER_EXISTS, name);
+                Logger<Type>.LogContainerDictionary[BaseLogger].DebugFormat(Properties.Resources.LOGGING_LOGGER_EXISTS, name);
             }
         }
     }

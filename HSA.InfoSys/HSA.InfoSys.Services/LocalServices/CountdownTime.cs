@@ -13,41 +13,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     public class CountdownTime
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CountdownTime" /> class.
-        /// </summary>
-        /// <param name="time">The time.</param>
-        /// <param name="days">The days.</param>
-        /// <param name="id">The id.</param>
-        /// <param name="repeat">if set to <c>true</c> [repeat].</param>
-        public CountdownTime(
-            int time,
-            int days,
-            Guid id,
-            bool repeat)
-        {
-            var now = DateTime.Now;
-            this.RepeatIn = new DateTime(now.Year, now.Month, now.Day, time, 0, 0).AddDays(days);
-            this.Repeat = repeat;
-            this.Id = id;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CountdownTime"/> class.
-        /// </summary>
-        /// <param name="time">The time.</param>
-        /// <param name="days">The days.</param>
-        /// <param name="repeat">if set to <c>true</c> [repeat].</param>
-        public CountdownTime(
-            int time,
-            int days,
-            bool repeat)
-        {
-            var now = DateTime.Now;
-            this.RepeatIn = new DateTime(now.Year, now.Month, now.Day, time, 0, 0).AddDays(days);
-            this.Repeat = repeat;
-        }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="CountdownTime"/> class.
         /// </summary>
         /// <param name="repeatIn">The repeat in.</param>
@@ -77,7 +42,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <value>
         ///   <c>true</c> if repeat; otherwise, <c>false</c>.
         /// </value>
-        public bool Repeat { get; set; }
+        public bool Repeat { get; private set; }
 
         /// <summary>
         /// Gets or sets the id.
@@ -85,7 +50,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <value>
         /// The ID.
         /// </value>
-        public Guid Id { get; set; }
+        private Guid Id { get; set; }
 
         /// <summary>
         /// Returns a <see cref="System.String" /> that represents this instance.

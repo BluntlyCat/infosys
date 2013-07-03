@@ -57,8 +57,7 @@ namespace HSA.InfoSys.Common.Entities
                 {
                     if (type.Equals(typeof(OrgUnitConfig).Name) && this.OrgUnitConfig != null)
                     {
-                        this.OrgUnitConfig = this.OrgUnitConfig.Unproxy() as OrgUnitConfig;
-                        this.OrgUnitConfig.Unproxy(types);
+                        this.OrgUnitConfig = this.OrgUnitConfig.Unproxy(types) as OrgUnitConfig;
                     }
                 }
             }

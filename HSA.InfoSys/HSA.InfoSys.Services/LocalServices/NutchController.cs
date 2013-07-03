@@ -86,7 +86,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// Our delegate for invoking an async crawl.
         /// </summary>
         /// <param name="settings">The settings.</param>
-        public delegate void InvokeCrawl(NutchControllerClientSettings settings);
+        /// <param name="dbManager">The db manager.</param>
+        private delegate void InvokeCrawl(NutchControllerClientSettings settings, DbManager dbManager);
 
         /// <summary>
         /// Gets or sets the URLs.
@@ -94,7 +95,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <value>
         /// The URLs.
         /// </value>
-        public string[] URLs
+        private string[] URLs
         {
             get
             {
@@ -132,18 +133,13 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </value>
         public static NutchController NutchFactory(DbManager dbManager)
         {
-            if (nutchController == null)
-            {
-                nutchController = new NutchController(Guid.NewGuid(), dbManager);
-            }
-
-            return nutchController;
+            return nutchController ?? (nutchController = new NutchController(Guid.NewGuid(), dbManager));
         }
 
         /// <summary>
         /// Sets the pending crawl.
         /// </summary>
-        public void SetNextCrawl()
+        private void SetNextCrawl()
         {
             lock (this.lockMutex)
             {
@@ -204,7 +200,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                                         });
 
                                     this.runningCrawls++;
-                                    invokeCrawl.BeginInvoke(this.settings, callback, this);
+                                    invokeCrawl.BeginInvoke(this.settings, this.dbManager, callback, this);
                                 }
                                 else if (client.URLs.Count == 0)
                                 {
@@ -281,7 +277,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             {
                 this.nutchClients.Clear();
 
-                string[] clients = new string[0];
+                var clients = new string[0];
 
                 if (string.IsNullOrEmpty(this.settings.NutchClients) == false)
                 {

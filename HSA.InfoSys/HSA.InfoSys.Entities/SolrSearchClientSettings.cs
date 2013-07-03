@@ -16,22 +16,6 @@ namespace HSA.InfoSys.Common.Entities
     public class SolrSearchClientSettings : Settings
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SolrSearchClientSettings"/> class.
-        /// </summary>
-        public SolrSearchClientSettings()
-        {
-            //// Public settings
-            this.Host = string.Empty;
-            this.Port = 0;
-            this.Collection = string.Empty;
-            this.FilterQuery = string.Empty;
-
-            //// Non public settings
-            this.RequestFormat = "GET {0} HTTP/1.1{1}Host: {2}{3}Content-Length: 0{4}";
-            this.QueryFormat = "/solr/{0}/select?q={1}&wt={2}&indent=true";
-        }
-
-        /// <summary>
         /// Gets or sets the host.
         /// </summary>
         /// <value>
@@ -104,6 +88,22 @@ namespace HSA.InfoSys.Common.Entities
                 this.RequestFormat,
                 this.QueryFormat,
                 this.SizeOf());
+        }
+
+        /// <summary>
+        /// Sets the default values.
+        /// </summary>
+        public override void SetDefaults()
+        {
+            //// Public settings
+            this.Host = string.Empty;
+            this.Port = 0;
+            this.Collection = string.Empty;
+            this.FilterQuery = string.Empty;
+
+            //// Non public settings
+            this.RequestFormat = "GET {0} HTTP/1.1{1}Host: {2}{3}Content-Length: 0{4}";
+            this.QueryFormat = "/solr/{0}/select?q={1}&wt={2}&indent=true";
         }
     }
 }

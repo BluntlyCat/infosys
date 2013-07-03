@@ -10,7 +10,7 @@ namespace HSA.InfoSys.Common.Exceptions
     /// <summary>
     /// Throws an exception if day or time value is zero or less.
     /// </summary>
-    public class OrgUnitConfigTimeException : Exception
+    public sealed class OrgUnitConfigTimeException : Exception
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="OrgUnitConfigTimeException"/> class.

@@ -35,36 +35,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Countdown" /> class.
-        /// </summary>
-        /// <param name="orgUnitConfig">The org unit config.</param>
-        /// <param name="time">The time.</param>
-        /// <param name="serviceGUID">The service GUID.</param>
-        /// <param name="zeroEventHandler">The zero event handler.</param>
-        public Countdown(OrgUnitConfig orgUnitConfig, CountdownTime time, Guid serviceGUID, ZeroEventHandler zeroEventHandler)
-            : base(serviceGUID)
-        {
-            Log.Debug(Properties.Resources.LOG_COUNTDOWN_INITIALIZE);
-            this.OrgUnitConfig = orgUnitConfig;
-            this.Time = time;
-            this.OnZero = zeroEventHandler;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Countdown" /> class.
-        /// </summary>
-        /// <param name="time">The time.</param>
-        /// <param name="serviceGUID">The service GUID.</param>
-        /// <param name="zeroEventHandler">The zero event handler.</param>
-        public Countdown(CountdownTime time, Guid serviceGUID, ZeroEventHandler zeroEventHandler)
-            : base(serviceGUID)
-        {
-            Log.Debug(Properties.Resources.LOG_COUNTDOWN_INITIALIZE);
-            this.Time = time;
-            this.OnZero = zeroEventHandler;
-        }
-
-        /// <summary>
         /// The delegate for indicating that the time value has changed.
         /// </summary>
         /// <param name="sender">The sender.</param>
@@ -101,7 +71,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <value>
         ///   <c>true</c> if active; otherwise, <c>false</c>.
         /// </value>
-        public bool Active { get; private set; }
+        private bool Active { get; set; }
 
         /// <summary>
         /// Gets the shutdown time.
@@ -200,9 +170,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             var runTime = this.Time.RepeatIn.Subtract(DateTime.Now);
 
 #if DEBUG
-            var sleep = 1000;
+            const int sleep = 1000;
 #else
-            var sleep = 300000;
+            const int sleep = 300000;
 #endif
 
             while (this.Running && this.Active && runTime.TotalSeconds > 0)
@@ -233,12 +203,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private void SetTime()
         {
             var now = DateTime.Now;
-            DateTime repeatIn;
 
             try
             {
 #if DEBUG
-                repeatIn = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, 0).AddMinutes(this.OrgUnitConfig.Days);
+                DateTime repeatIn = new DateTime(now.Year, now.Month, now.Day, now.Hour, now.Minute, 0).AddMinutes(this.OrgUnitConfig.Days);
 #else
                 repeatIn = new DateTime(now.Year, now.Month, now.Day, this.OrgUnitConfig.Time, 0, 0).AddDays(this.OrgUnitConfig.Days);
 #endif

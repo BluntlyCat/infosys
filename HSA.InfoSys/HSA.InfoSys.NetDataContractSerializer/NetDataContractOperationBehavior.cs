@@ -8,7 +8,6 @@ namespace HSA.InfoSys.Common.NetDataContractSerializer
     using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
-    using System.ServiceModel;
     using System.ServiceModel.Description;
     using System.Xml;
 
@@ -22,18 +21,6 @@ namespace HSA.InfoSys.Common.NetDataContractSerializer
         /// </summary>
         /// <param name="operation">The operation.</param>
         public NetDataContractOperationBehavior(OperationDescription operation) : base(operation)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NetDataContractOperationBehavior"/> class.
-        /// </summary>
-        /// <param name="operation">The operation.</param>
-        /// <param name="dataContractFormatAttribute">The data contract format attribute.</param>
-        public NetDataContractOperationBehavior(
-            OperationDescription operation,
-            DataContractFormatAttribute dataContractFormatAttribute)
-            : base(operation, dataContractFormatAttribute)
         {
         }
 

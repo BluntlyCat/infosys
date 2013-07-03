@@ -34,8 +34,15 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <summary>
         /// The settings for WCF.
         /// </summary>
-        private static readonly WCFSettings Settings = 
-            new WCFSettings("localhost", 8085, "CrawlerProxy", "localhost", 8086, "CrawlerProxy");
+        private static readonly WCFSettings Settings = new WCFSettings();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SystemController"/> class.
+        /// </summary>
+        public SystemController()
+        {
+            Settings.InitializeSettings("localhost", 8085, "CrawlerProxy", "localhost", 8086, "CrawlerProxy");
+        }
 
         /// <summary>
         /// Called when the home page is loading.
@@ -444,9 +451,9 @@ namespace HSA.InfoSys.Gui.Controllers
                     this.ViewData["emails"] = new string[0];
                 }
 
-                if (!string.IsNullOrEmpty(config.URLS))
+                if (!string.IsNullOrEmpty(config.URLs))
                 {
-                    this.ViewData["urls"] = JsonConvert.DeserializeObject<string[]>(config.URLS);
+                    this.ViewData["urls"] = JsonConvert.DeserializeObject<string[]>(config.URLs);
                 }
                 else
                 {
@@ -536,11 +543,11 @@ namespace HSA.InfoSys.Gui.Controllers
                 if (!string.IsNullOrEmpty(this.Request["websites[]"]))
                 {
                     string[] websites = Request["websites[]"].Split(',');
-                    config.URLS = JsonConvert.SerializeObject(websites);
+                    config.URLs = JsonConvert.SerializeObject(websites);
                 }
                 else
                 {
-                    config.URLS = null;
+                    config.URLs = null;
                 }
 
                 // save to db
@@ -601,7 +608,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 config.Days = loadedConfig.Days;
                 config.Time = loadedConfig.Time;
                 config.Emails = loadedConfig.Emails;
-                config.URLS = loadedConfig.URLS;
+                config.URLs = loadedConfig.URLs;
 
                 cc.UpdateEntity(config);
             }

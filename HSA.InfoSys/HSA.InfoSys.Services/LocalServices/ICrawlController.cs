@@ -15,13 +15,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     public interface ICrawlController
     {
         /// <summary>
-        /// Registers the service.
-        /// </summary>
-        /// <param name="type">The type.</param>
-        /// <param name="service">The service.</param>
-        void RegisterService(Type type, IService service);
-
-        /// <summary>
         /// Starts the service.
         /// </summary>
         /// <param name="type">The type of the service to start.</param>

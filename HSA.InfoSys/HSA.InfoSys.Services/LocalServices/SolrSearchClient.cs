@@ -211,7 +211,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
             query = query.Replace(" ", "%20");
 
-            Log.InfoFormat(Properties.Resources.SOLR_CLIENT_REQUEST_RECEIVED, query);
+            Log.InfoFormat(Properties.Resources.SOLR_CLIENT_QUERY_BUILT, query);
 
             return query;
         }
@@ -224,11 +224,6 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private SolrResultPot ParseToResult(string jsonResult)
         {
             var json = JsonConvert.DeserializeObject(jsonResult) as JObject;
-
-            if (this.ComponentGUID.Equals(Guid.Empty))
-            {
-                int i = 0;
-            }
 
             var resultPot = new SolrResultPot(this.ComponentGUID);
 
@@ -250,6 +245,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                     result.URL = this.GetJsonValue(doc, "url");
                     result.Title = this.RemoveSpecialChars(this.GetJsonValue(doc, "title"));
+                    result.ComponentGUID = this.ComponentGUID;
 
                     try
                     {

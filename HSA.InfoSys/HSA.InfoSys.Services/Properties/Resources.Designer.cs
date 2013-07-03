@@ -331,7 +331,7 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Add mail recipient {0} for OrgUnit {1}. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Add mail recipient {0}. ähnelt.
         /// </summary>
         internal static string EMAIL_NOTIFIER_ADD_RECIPIENT {
             get {
@@ -349,7 +349,7 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Crawl failed for OrgUnit: [{0}] ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Crawl failed. ähnelt.
         /// </summary>
         internal static string EMAIL_NOTIFIER_CRAWL_FAILED {
             get {
@@ -358,7 +358,7 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die The crawl for {0} failed. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die The Crawl failed:\n\n{0} ähnelt.
         /// </summary>
         internal static string EMAIL_NOTIFIER_CRAWL_FAILED_BODY {
             get {
@@ -1339,11 +1339,11 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Received a request for a solr query: [{0}] ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Query to Solr successfully build. ähnelt.
         /// </summary>
-        internal static string SOLR_CLIENT_REQUEST_RECEIVED {
+        internal static string SOLR_CLIENT_QUERY_BUILT {
             get {
-                return ResourceManager.GetString("SOLR_CLIENT_REQUEST_RECEIVED", resourceCulture);
+                return ResourceManager.GetString("SOLR_CLIENT_QUERY_BUILT", resourceCulture);
             }
         }
         
@@ -1447,6 +1447,24 @@ namespace HSA.InfoSys.Common.Services.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Result already in database: [{0}]. ähnelt.
+        /// </summary>
+        internal static string SOLR_SEARCH_KNOWN_RESULT {
+            get {
+                return ResourceManager.GetString("SOLR_SEARCH_KNOWN_RESULT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Add new result ähnelt.
+        /// </summary>
+        internal static string SOLR_SEARCH_NEW_RESULT {
+            get {
+                return ResourceManager.GetString("SOLR_SEARCH_NEW_RESULT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die No results for {0} found. ähnelt.
         /// </summary>
         internal static string SOLR_SEARCH_NO_RESULTS {
@@ -1461,15 +1479,6 @@ namespace HSA.InfoSys.Common.Services.Properties {
         internal static string SOLR_SEARCH_ORGUNIT_FINISHED {
             get {
                 return ResourceManager.GetString("SOLR_SEARCH_ORGUNIT_FINISHED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Response for query [{0}] is: [{1}] ähnelt.
-        /// </summary>
-        internal static string SOLR_SEARCH_RESULT {
-            get {
-                return ResourceManager.GetString("SOLR_SEARCH_RESULT", resourceCulture);
             }
         }
         

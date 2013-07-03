@@ -29,8 +29,15 @@ namespace HSA.InfoSys.Gui.Controllers
         /// <summary>
         /// The settings for WCF.
         /// </summary>
-        private static readonly WCFSettings Settings =
-            new WCFSettings("localhost", 8085, "CrawlerProxy", "localhost", 8086, "CrawlerProxy");
+        private static readonly WCFSettings Settings = new WCFSettings();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SettingsController"/> class.
+        /// </summary>
+        public SettingsController()
+        {
+            Settings.InitializeSettings("localhost", 8085, "CrawlerProxy", "localhost", 8086, "CrawlerProxy");
+        }
 
         /// <summary>
         /// Shows the home page.

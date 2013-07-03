@@ -24,12 +24,6 @@ namespace HSA.InfoSys.Common.Services
         void StartService();
 
         /// <summary>
-        /// Restarts the service.
-        /// </summary>
-        /// <param name="cancel">if set to <c>true</c> [cancel].</param>
-        void RestartService(bool cancel = false);
-
-        /// <summary>
         /// Stops the service.
         /// </summary>
         /// <param name="cancel">if set to <c>true</c> [cancel].</param>

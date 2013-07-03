@@ -34,17 +34,17 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// The job mutex.
         /// </summary>
-        private Mutex jobMutex = new Mutex();
+        private readonly Mutex jobMutex = new Mutex();
 
         /// <summary>
         /// The database manager.
         /// </summary>
-        private IDbManager dbManager;
+        private readonly IDbManager dbManager;
 
         /// <summary>
         /// The jobs dictionary.
         /// </summary>
-        private Dictionary<Guid, Countdown> jobs = new Dictionary<Guid, Countdown>();
+        private readonly Dictionary<Guid, Countdown> jobs = new Dictionary<Guid, Countdown>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Scheduler"/> class.
@@ -67,12 +67,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </returns>
         public static Scheduler SchedulerFactory(IDbManager dbManager)
         {
-            if (scheduler == null)
-            {
-                scheduler = new Scheduler(Guid.NewGuid(), dbManager);
-            }
-
-            return scheduler;
+            return scheduler ?? (scheduler = new Scheduler(Guid.NewGuid(), dbManager));
         }
 
         /// <summary>
@@ -141,7 +136,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="error">The error.</param>
-        public void Job_OnError(object sender, string error)
+        private void Job_OnError(object sender, string error)
         {
             var job = sender as Countdown;
             Log.ErrorFormat(Properties.Resources.LOG_TIME_VALIDATION_ERROR, job, error);

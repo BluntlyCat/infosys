@@ -84,6 +84,7 @@ namespace HSA.InfoSys.Common.Entities
                 this.Title,
                 this.URL,
                 this.Content,
+                this.ContentHash,
                 this.Time,
                 this.SizeOf());
         }

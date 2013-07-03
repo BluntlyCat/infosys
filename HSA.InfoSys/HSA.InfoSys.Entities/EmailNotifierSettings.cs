@@ -16,16 +16,6 @@ namespace HSA.InfoSys.Common.Entities
     public class EmailNotifierSettings : Settings
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EmailNotifierSettings"/> class.
-        /// </summary>
-        public EmailNotifierSettings()
-        {
-            this.SmtpServer = "localhost";
-            this.SmtpPort = 25;
-            this.MailFrom = "your.name@your_server";
-        }
-
-        /// <summary>
         /// Gets or sets the SMTP server.
         /// </summary>
         /// <value>
@@ -66,6 +56,17 @@ namespace HSA.InfoSys.Common.Entities
                 this.SmtpPort,
                 this.MailFrom,
                 this.SizeOf());
+        }
+
+        /// <summary>
+        /// Sets the default values.
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public override void SetDefaults()
+        {
+            this.SmtpServer = "localhost";
+            this.SmtpPort = 25;
+            this.MailFrom = "your.name@your_server";
         }
     }
 }

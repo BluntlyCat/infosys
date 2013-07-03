@@ -31,7 +31,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private readonly Mutex dbMutex = new Mutex();
 
         /// <summary>
-        /// The database manager.
+        /// The database dbmanager.
         /// </summary>
         private readonly IDbManager dbManager;
 
@@ -43,7 +43,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// Initializes a new instance of the <see cref="SolrSearchController"/> class.
         /// </summary>
-        /// <param name="dbManager">The db manager.</param>
+        /// <param name="dbManager">The db dbmanager.</param>
         public SolrSearchController(IDbManager dbManager)
         {
             this.dbManager = dbManager;
@@ -117,7 +117,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                                                     results,
                                                     this.dbManager));
 
-                                                var comp = dbManager.GetEntity(resultPot.EntityId) as Component;
+                                                var comp = dbManager.GetEntity(resultPot.ComponentID) as Component;
 
                                                 if (comp != null)
                                                 {
@@ -175,14 +175,14 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </summary>
         /// <param name="resultPot">The result pot.</param>
         /// <param name="results">The results.</param>
-        /// <param name="dbManager">The db manager.</param>
+        /// <param name="dbmanager">The database manager.</param>
         /// <returns>
         /// A list of the results to store in database.
         /// </returns>
         private IEnumerable<Result> GetSendResults(
             SolrResultPot resultPot,
-            IList<Result> results,
-            IDbManager dbManager)
+            ICollection<Result> results,
+            IDbManager dbmanager)
         {
             var sendResults = new List<Result>();
 
@@ -192,19 +192,19 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                 {
                     results.Add(result);
                     sendResults.Add(result);
-                    result.ComponentGUID = resultPot.EntityId;
-                    dbManager.AddEntity(result);
-                }
 
-                if (result.ComponentGUID.Equals(Guid.Empty))
-                {
-                    int i = 0;
-                }
+                    var addEntity = dbmanager.AddEntity(result);
+                    result.EntityId = addEntity;
 
-                Log.InfoFormat(
-                    Properties.Resources.SOLR_SEARCH_RESULT,
-                    result.ComponentGUID,
+                    Log.InfoFormat(
+                    Properties.Resources.SOLR_SEARCH_NEW_RESULT,
                     result);
+                }
+                else
+                {
+                    Log.WarnFormat(Properties.Resources.SOLR_SEARCH_KNOWN_RESULT,
+                        result);
+                }
             }
 
             return sendResults;

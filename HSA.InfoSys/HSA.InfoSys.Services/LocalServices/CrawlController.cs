@@ -32,7 +32,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// <summary>
         /// The services list.
         /// </summary>
-        private Dictionary<Type, IService> services = new Dictionary<Type, IService>();
+        private readonly Dictionary<Type, IService> services = new Dictionary<Type, IService>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CrawlController"/> class.
@@ -50,15 +50,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         /// </value>
         public static CrawlController ControllerFactory
         {
-            get
-            {
-                if (crawlController == null)
-                {
-                    crawlController = new CrawlController(Guid.NewGuid());
-                }
-
-                return crawlController;
-            }
+            get { return crawlController ?? (crawlController = new CrawlController(Guid.NewGuid())); }
         }
 
         /// <summary>

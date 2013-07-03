@@ -18,9 +18,9 @@ namespace HSA.InfoSys.Common.Extensions
         /// </summary>
         /// <param name="strings">The strings.</param>
         /// <returns>A string containing all elements of this list.</returns>
-        public static string ElementsToString(this IList<string> strings)
+        public static string ElementsToString(this IEnumerable<string> strings)
         {
-            int i = 0;
+            var i = 0;
             var tmp = string.Empty;
 
             foreach (var str in strings)
@@ -31,7 +31,7 @@ namespace HSA.InfoSys.Common.Extensions
                 }
                 else
                 {
-                    tmp += string.Format(", {0}", str);
+                    tmp += string.Format(",{0}", str);
                 }
 
                 i++;
@@ -45,7 +45,7 @@ namespace HSA.InfoSys.Common.Extensions
         /// </summary>
         /// <param name="components">The components.</param>
         /// <returns>A string containing all components of this list.</returns>
-        public static string ComponentsToString(this List<Component> components)
+        public static string ComponentsToString(this IEnumerable<Component> components)
         {
             int i = 0;
             var tmp = string.Empty;
@@ -74,7 +74,7 @@ namespace HSA.InfoSys.Common.Extensions
         /// <returns>
         /// A string containing all org units of this list.
         /// </returns>
-        public static string OrgUnitsToString(this List<OrgUnit> orgUnits)
+        public static string OrgUnitsToString(this IEnumerable<OrgUnit> orgUnits)
         {
             int i = 0;
             var tmp = string.Empty;
@@ -88,33 +88,6 @@ namespace HSA.InfoSys.Common.Extensions
                 else
                 {
                     tmp += string.Format(", {0}", orgUnit);
-                }
-
-                i++;
-            }
-
-            return tmp;
-        }
-
-        /// <summary>
-        /// Results to string.
-        /// </summary>
-        /// <param name="results">The results.</param>
-        /// <returns>A string containing all results of this list.</returns>
-        public static string ResultsToString(this List<Result> results)
-        {
-            int i = 0;
-            var tmp = string.Empty;
-
-            foreach (var result in results)
-            {
-                if (i == 0)
-                {
-                    tmp += string.Format("{0}", result);
-                }
-                else
-                {
-                    tmp += string.Format(", {0}", result);
                 }
 
                 i++;

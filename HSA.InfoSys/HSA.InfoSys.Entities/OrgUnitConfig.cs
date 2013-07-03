@@ -22,7 +22,7 @@ namespace HSA.InfoSys.Common.Entities
         /// The URL.
         /// </value>
         [DataMember]
-        public virtual string URLS { get; set; }
+        public virtual string URLs { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the URL is active or not.
@@ -98,7 +98,7 @@ namespace HSA.InfoSys.Common.Entities
             return string.Format(
                 Properties.Resources.ORGUNITCONFIG_TO_STRING,
                 this.EntityId,
-                this.URLS,
+                this.URLs,
                 this.URLActive,
                 this.Emails,
                 this.EmailActive,

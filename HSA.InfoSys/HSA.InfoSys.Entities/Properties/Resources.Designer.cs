@@ -151,7 +151,7 @@ namespace HSA.InfoSys.Common.Entities.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die ID: {0}, Component: {1}, Title: {2}, URL: {3}, Content: {4}, Time: {5}, Size: {6} Bytes. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ID: {0}, Component: {1}, Title: {2}, URL: {3}, Content: {4}, Hash: {5}, Time: {6}, Size: {7} Bytes. ähnelt.
         /// </summary>
         internal static string RESULT_TO_STRING {
             get {
