@@ -851,7 +851,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             return orgUnitConfig;
         }
 
-#if MONO
+#if !MONO
         /// <summary>
         /// Gets the list of indexes of allResults.
         /// In MONO we only can send 2^16 Bytes because of a
@@ -873,7 +873,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         {
             try
             {
-                Log.InfoFormat(Properties.Resources.DBMANAGER_GET_RESULTS_BY_COMPONENT_ID, componentGUID);
+                var results = allResults.ToList();
+                Log.InfoFormat(Properties.Resources.DBMANAGER_GET_RESULTS_BY_COMPONENT_ID, results.ResultsToString(), componentGUID);
 
                 var maxBytes = Math.Pow(2, 15);
                 var byteAmount = 0L;
