@@ -410,7 +410,7 @@ namespace HSA.InfoSys.Gui.Controllers
 
                 // init
                 var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
-                var settings = WCFControllerClient<IDbManager>.GetClientProxy(Settings).GetNutchClientSettings();
+                var settings = cc.GetNutchClientSettings();
 
                 string defaulturls = settings.DefaultURLs;
 
