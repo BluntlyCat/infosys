@@ -1,0 +1,77 @@
+.TH "NHibernate.Loader.Entity.EntityJoinWalker" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Loader.Entity.EntityJoinWalker \- 
+.PP
+A walker for loaders that fetch entities  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Loader\&.AbstractEntityJoinWalker\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEntityJoinWalker\fP (\fBIOuterJoinLoadable\fP persister, string[] uniqueKey, int batchSize, \fBLockMode\fP lockMode, \fBISessionFactoryImplementor\fP factory, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBGenerateAliasForColumn\fP (string rootAlias, string column)"
+.br
+.RI "\fIOverride to use the persister to change the table-alias for columns in join-tables \fP"
+.ti -1c
+.RI "override bool \fBIsJoinedFetchEnabled\fP (\fBIAssociationType\fP type, \fBFetchMode\fP config, \fBCascadeStyle\fP cascadeStyle)"
+.br
+.RI "\fIDisable outer join fetching if this loader obtains an upgrade lock mode \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBComment\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A walker for loaders that fetch entities 
+
+
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBEntityLoader\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 14 of file EntityJoinWalker\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override string NHibernate\&.Loader\&.Entity\&.EntityJoinWalker\&.GenerateAliasForColumn (stringrootAlias, stringcolumn)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Override to use the persister to change the table-alias for columns in join-tables 
+.PP
+Reimplemented from \fBNHibernate\&.Loader\&.JoinWalker\fP\&.
+.PP
+Definition at line 34 of file EntityJoinWalker\&.cs\&.
+.SS "override bool NHibernate\&.Loader\&.Entity\&.EntityJoinWalker\&.IsJoinedFetchEnabled (\fBIAssociationType\fPtype, \fBFetchMode\fPconfig, \fBCascadeStyle\fPcascadeStyle)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Disable outer join fetching if this loader obtains an upgrade lock mode 
+.PP
+Reimplemented from \fBNHibernate\&.Loader\&.AbstractEntityJoinWalker\fP\&.
+.PP
+Definition at line 43 of file EntityJoinWalker\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

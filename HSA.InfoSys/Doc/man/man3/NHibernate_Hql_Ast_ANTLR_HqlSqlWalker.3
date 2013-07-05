@@ -1,0 +1,1873 @@
+.TH "NHibernate.Hql.Ast.ANTLR.HqlSqlWalker" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.HqlSqlWalker \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits TreeParser\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBaddrExpr_return\fP"
+.br
+.ti -1c
+.RI "class \fBaddrExprDot_return\fP"
+.br
+.ti -1c
+.RI "class \fBaddrExprIdent_return\fP"
+.br
+.ti -1c
+.RI "class \fBaddrExprIndex_return\fP"
+.br
+.ti -1c
+.RI "class \fBaddrExprLhs_return\fP"
+.br
+.ti -1c
+.RI "class \fBaggregateExpr_return\fP"
+.br
+.ti -1c
+.RI "class \fBaliasedSelectExpr_return\fP"
+.br
+.ti -1c
+.RI "class \fBaliasRef_return\fP"
+.br
+.ti -1c
+.RI "class \fBarithmeticExpr_return\fP"
+.br
+.ti -1c
+.RI "class \fBassignment_return\fP"
+.br
+.ti -1c
+.RI "class \fBcaseExpr_return\fP"
+.br
+.ti -1c
+.RI "class \fBcollectionFunction_return\fP"
+.br
+.ti -1c
+.RI "class \fBcollectionFunctionOrSubselect_return\fP"
+.br
+.ti -1c
+.RI "class \fBcomparisonExpr_return\fP"
+.br
+.ti -1c
+.RI "class \fBconstant_return\fP"
+.br
+.ti -1c
+.RI "class \fBconstructor_return\fP"
+.br
+.ti -1c
+.RI "class \fBcount_return\fP"
+.br
+.ti -1c
+.RI "class \fBdeleteStatement_return\fP"
+.br
+.ti -1c
+.RI "class \fBexpr_return\fP"
+.br
+.ti -1c
+.RI "class \fBexprOrSubquery_return\fP"
+.br
+.ti -1c
+.RI "class \fBfromClause_return\fP"
+.br
+.ti -1c
+.RI "class \fBfromElement_return\fP"
+.br
+.ti -1c
+.RI "class \fBfromElementList_return\fP"
+.br
+.ti -1c
+.RI "class \fBfunctionCall_return\fP"
+.br
+.ti -1c
+.RI "class \fBgroupClause_return\fP"
+.br
+.ti -1c
+.RI "class \fBhavingClause_return\fP"
+.br
+.ti -1c
+.RI "class \fBidentifier_return\fP"
+.br
+.ti -1c
+.RI "class \fBinRhs_return\fP"
+.br
+.ti -1c
+.RI "class \fBinsertablePropertySpec_return\fP"
+.br
+.ti -1c
+.RI "class \fBinsertStatement_return\fP"
+.br
+.ti -1c
+.RI "class \fBintoClause_return\fP"
+.br
+.ti -1c
+.RI "class \fBjoinElement_return\fP"
+.br
+.ti -1c
+.RI "class \fBjoinType_return\fP"
+.br
+.ti -1c
+.RI "class \fBliteral_return\fP"
+.br
+.ti -1c
+.RI "class \fBlogicalExpr_return\fP"
+.br
+.ti -1c
+.RI "class \fBlogicalPath_return\fP"
+.br
+.ti -1c
+.RI "class \fBnewValue_return\fP"
+.br
+.ti -1c
+.RI "class \fBnumericInteger_return\fP"
+.br
+.ti -1c
+.RI "class \fBnumericLiteral_return\fP"
+.br
+.ti -1c
+.RI "class \fBorderClause_return\fP"
+.br
+.ti -1c
+.RI "class \fBorderExprs_return\fP"
+.br
+.ti -1c
+.RI "class \fBparameter_return\fP"
+.br
+.ti -1c
+.RI "class \fBpath_return\fP"
+.br
+.ti -1c
+.RI "class \fBpathAsIdent_return\fP"
+.br
+.ti -1c
+.RI "class \fBpropertyName_return\fP"
+.br
+.ti -1c
+.RI "class \fBpropertyRef_return\fP"
+.br
+.ti -1c
+.RI "class \fBpropertyRefIdent_return\fP"
+.br
+.ti -1c
+.RI "class \fBpropertyRefLhs_return\fP"
+.br
+.ti -1c
+.RI "class \fBpropertyRefPath_return\fP"
+.br
+.ti -1c
+.RI "class \fBquery_return\fP"
+.br
+.ti -1c
+.RI "class \fBselectClause_return\fP"
+.br
+.ti -1c
+.RI "class \fBselectExpr_return\fP"
+.br
+.ti -1c
+.RI "class \fBselectExprList_return\fP"
+.br
+.ti -1c
+.RI "class \fBselectStatement_return\fP"
+.br
+.ti -1c
+.RI "class \fBsetClause_return\fP"
+.br
+.ti -1c
+.RI "class \fBskipClause_return\fP"
+.br
+.ti -1c
+.RI "class \fBstatement_return\fP"
+.br
+.ti -1c
+.RI "class \fBstringLiteral_return\fP"
+.br
+.ti -1c
+.RI "class \fBtakeClause_return\fP"
+.br
+.ti -1c
+.RI "class \fBunionedQuery_return\fP"
+.br
+.ti -1c
+.RI "class \fBupdateStatement_return\fP"
+.br
+.ti -1c
+.RI "class \fBwhereClause_return\fP"
+.br
+.ti -1c
+.RI "class \fBwithClause_return\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBHqlSqlWalker\fP (ITreeNodeStream input)"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\fP (ITreeNodeStream input, RecognizerSharedState state)"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.statement_return\fP \fBstatement\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.selectStatement_return\fP \fBselectStatement\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.updateStatement_return\fP \fBupdateStatement\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.deleteStatement_return\fP \fBdeleteStatement\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.insertStatement_return\fP \fBinsertStatement\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.intoClause_return\fP \fBintoClause\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.insertablePropertySpec_return\fP \fBinsertablePropertySpec\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.setClause_return\fP \fBsetClause\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.assignment_return\fP \fBassignment\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.newValue_return\fP \fBnewValue\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.query_return\fP \fBquery\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.unionedQuery_return\fP \fBunionedQuery\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.orderClause_return\fP \fBorderClause\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.orderExprs_return\fP \fBorderExprs\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.skipClause_return\fP \fBskipClause\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.takeClause_return\fP \fBtakeClause\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.groupClause_return\fP \fBgroupClause\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.havingClause_return\fP \fBhavingClause\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.selectClause_return\fP \fBselectClause\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.selectExprList_return\fP \fBselectExprList\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.aliasedSelectExpr_return\fP \fBaliasedSelectExpr\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.selectExpr_return\fP \fBselectExpr\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.count_return\fP \fBcount\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.constructor_return\fP \fBconstructor\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.aggregateExpr_return\fP \fBaggregateExpr\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.fromClause_return\fP \fBfromClause\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.fromElementList_return\fP \fBfromElementList\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.fromElement_return\fP \fBfromElement\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.joinElement_return\fP \fBjoinElement\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.joinType_return\fP \fBjoinType\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.path_return\fP \fBpath\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.pathAsIdent_return\fP \fBpathAsIdent\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.withClause_return\fP \fBwithClause\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.whereClause_return\fP \fBwhereClause\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.logicalExpr_return\fP \fBlogicalExpr\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.logicalPath_return\fP \fBlogicalPath\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.comparisonExpr_return\fP \fBcomparisonExpr\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.inRhs_return\fP \fBinRhs\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.exprOrSubquery_return\fP \fBexprOrSubquery\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.collectionFunctionOrSubselect_return\fP \fBcollectionFunctionOrSubselect\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.expr_return\fP \fBexpr\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.arithmeticExpr_return\fP \fBarithmeticExpr\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.caseExpr_return\fP \fBcaseExpr\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.collectionFunction_return\fP \fBcollectionFunction\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.functionCall_return\fP \fBfunctionCall\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.constant_return\fP \fBconstant\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.literal_return\fP \fBliteral\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.numericLiteral_return\fP \fBnumericLiteral\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.stringLiteral_return\fP \fBstringLiteral\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.identifier_return\fP \fBidentifier\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.addrExpr_return\fP \fBaddrExpr\fP (bool root)"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.addrExprDot_return\fP \fBaddrExprDot\fP (bool root)"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.addrExprIndex_return\fP \fBaddrExprIndex\fP (bool root)"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.addrExprIdent_return\fP \fBaddrExprIdent\fP (bool root)"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.addrExprLhs_return\fP \fBaddrExprLhs\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.propertyName_return\fP \fBpropertyName\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.propertyRef_return\fP \fBpropertyRef\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.propertyRefPath_return\fP \fBpropertyRefPath\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.propertyRefIdent_return\fP \fBpropertyRefIdent\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.propertyRefLhs_return\fP \fBpropertyRefLhs\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.aliasRef_return\fP \fBaliasRef\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.parameter_return\fP \fBparameter\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\&.numericInteger_return\fP \fBnumericInteger\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSqlWalker\fP (\fBQueryTranslatorImpl\fP qti, \fBISessionFactoryImplementor\fP sfi, ITreeNodeStream input, IDictionary< string, string > tokenReplacements, string collectionRole)"
+.br
+.ti -1c
+.RI "override void \fBReportError\fP (RecognitionException e)"
+.br
+.ti -1c
+.RI "\fBFromClause\fP \fBGetFinalFromClause\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsFilter\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddQuerySpaces\fP (string[] spaces)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBSupportsIdGenWithBulkInsertion\fP (\fBIIdentifierGenerator\fP generator)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBSELECT_COLUMNS\fP = 144"
+.br
+.ti -1c
+.RI "const int \fBLT\fP = 109"
+.br
+.ti -1c
+.RI "const int \fBEXPONENT\fP = 130"
+.br
+.ti -1c
+.RI "const int \fBSTAR\fP = 120"
+.br
+.ti -1c
+.RI "const int \fBFLOAT_SUFFIX\fP = 131"
+.br
+.ti -1c
+.RI "const int \fBFILTERS\fP = 147"
+.br
+.ti -1c
+.RI "const int \fBLITERAL_by\fP = 56"
+.br
+.ti -1c
+.RI "const int \fBPROPERTY_REF\fP = 142"
+.br
+.ti -1c
+.RI "const int \fBTHETA_JOINS\fP = 146"
+.br
+.ti -1c
+.RI "const int \fBCASE\fP = 57"
+.br
+.ti -1c
+.RI "const int \fBNEW\fP = 37"
+.br
+.ti -1c
+.RI "const int \fBFILTER_ENTITY\fP = 76"
+.br
+.ti -1c
+.RI "const int \fBPARAM\fP = 106"
+.br
+.ti -1c
+.RI "const int \fBCOUNT\fP = 12"
+.br
+.ti -1c
+.RI "const int \fBNOT\fP = 38"
+.br
+.ti -1c
+.RI "const int \fBEOF\fP = -1"
+.br
+.ti -1c
+.RI "const int \fBUNARY_PLUS\fP = 91"
+.br
+.ti -1c
+.RI "const int \fBQUOTED_String\fP = 124"
+.br
+.ti -1c
+.RI "const int \fBESCqs\fP = 128"
+.br
+.ti -1c
+.RI "const int \fBWEIRD_IDENT\fP = 93"
+.br
+.ti -1c
+.RI "const int \fBOPEN_BRACKET\fP = 122"
+.br
+.ti -1c
+.RI "const int \fBFULL\fP = 23"
+.br
+.ti -1c
+.RI "const int \fBORDER_ELEMENT\fP = 85"
+.br
+.ti -1c
+.RI "const int \fBIS_NULL\fP = 80"
+.br
+.ti -1c
+.RI "const int \fBESCAPE\fP = 18"
+.br
+.ti -1c
+.RI "const int \fBINSERT\fP = 29"
+.br
+.ti -1c
+.RI "const int \fBFROM_FRAGMENT\fP = 135"
+.br
+.ti -1c
+.RI "const int \fBNAMED_PARAM\fP = 149"
+.br
+.ti -1c
+.RI "const int \fBBOTH\fP = 64"
+.br
+.ti -1c
+.RI "const int \fBSELECT_CLAUSE\fP = 138"
+.br
+.ti -1c
+.RI "const int \fBNUM_DECIMAL\fP = 97"
+.br
+.ti -1c
+.RI "const int \fBVERSIONED\fP = 54"
+.br
+.ti -1c
+.RI "const int \fBEQ\fP = 102"
+.br
+.ti -1c
+.RI "const int \fBSELECT\fP = 45"
+.br
+.ti -1c
+.RI "const int \fBINTO\fP = 30"
+.br
+.ti -1c
+.RI "const int \fBNE\fP = 107"
+.br
+.ti -1c
+.RI "const int \fBGE\fP = 112"
+.br
+.ti -1c
+.RI "const int \fBTAKE\fP = 50"
+.br
+.ti -1c
+.RI "const int \fBCONCAT\fP = 113"
+.br
+.ti -1c
+.RI "const int \fBID_LETTER\fP = 127"
+.br
+.ti -1c
+.RI "const int \fBNULL\fP = 39"
+.br
+.ti -1c
+.RI "const int \fBELSE\fP = 59"
+.br
+.ti -1c
+.RI "const int \fBSELECT_FROM\fP = 89"
+.br
+.ti -1c
+.RI "const int \fBTRAILING\fP = 70"
+.br
+.ti -1c
+.RI "const int \fBON\fP = 62"
+.br
+.ti -1c
+.RI "const int \fBNUM_LONG\fP = 99"
+.br
+.ti -1c
+.RI "const int \fBNUM_DOUBLE\fP = 96"
+.br
+.ti -1c
+.RI "const int \fBUNARY_MINUS\fP = 90"
+.br
+.ti -1c
+.RI "const int \fBDELETE\fP = 13"
+.br
+.ti -1c
+.RI "const int \fBINDICES\fP = 27"
+.br
+.ti -1c
+.RI "const int \fBOF\fP = 69"
+.br
+.ti -1c
+.RI "const int \fBMETHOD_CALL\fP = 81"
+.br
+.ti -1c
+.RI "const int \fBLEADING\fP = 66"
+.br
+.ti -1c
+.RI "const int \fBMETHOD_NAME\fP = 148"
+.br
+.ti -1c
+.RI "const int \fBSKIP\fP = 47"
+.br
+.ti -1c
+.RI "const int \fBEMPTY\fP = 65"
+.br
+.ti -1c
+.RI "const int \fBGROUP\fP = 24"
+.br
+.ti -1c
+.RI "const int \fBWS\fP = 129"
+.br
+.ti -1c
+.RI "const int \fBFETCH\fP = 21"
+.br
+.ti -1c
+.RI "const int \fBVECTOR_EXPR\fP = 92"
+.br
+.ti -1c
+.RI "const int \fBNOT_IN\fP = 83"
+.br
+.ti -1c
+.RI "const int \fBSELECT_EXPR\fP = 145"
+.br
+.ti -1c
+.RI "const int \fBNUM_INT\fP = 95"
+.br
+.ti -1c
+.RI "const int \fBOR\fP = 40"
+.br
+.ti -1c
+.RI "const int \fBALIAS\fP = 72"
+.br
+.ti -1c
+.RI "const int \fBJAVA_CONSTANT\fP = 100"
+.br
+.ti -1c
+.RI "const int \fBCONSTANT\fP = 94"
+.br
+.ti -1c
+.RI "const int \fBGT\fP = 110"
+.br
+.ti -1c
+.RI "const int \fBQUERY\fP = 86"
+.br
+.ti -1c
+.RI "const int \fBBNOT\fP = 114"
+.br
+.ti -1c
+.RI "const int \fBINDEX_OP\fP = 78"
+.br
+.ti -1c
+.RI "const int \fBNUM_FLOAT\fP = 98"
+.br
+.ti -1c
+.RI "const int \fBFROM\fP = 22"
+.br
+.ti -1c
+.RI "const int \fBEND\fP = 58"
+.br
+.ti -1c
+.RI "const int \fBFALSE\fP = 20"
+.br
+.ti -1c
+.RI "const int \fBDISTINCT\fP = 16"
+.br
+.ti -1c
+.RI "const int \fBCONSTRUCTOR\fP = 73"
+.br
+.ti -1c
+.RI "const int \fBT__133\fP = 133"
+.br
+.ti -1c
+.RI "const int \fBT__134\fP = 134"
+.br
+.ti -1c
+.RI "const int \fBCLOSE_BRACKET\fP = 123"
+.br
+.ti -1c
+.RI "const int \fBWHERE\fP = 55"
+.br
+.ti -1c
+.RI "const int \fBCLASS\fP = 11"
+.br
+.ti -1c
+.RI "const int \fBMEMBER\fP = 67"
+.br
+.ti -1c
+.RI "const int \fBINNER\fP = 28"
+.br
+.ti -1c
+.RI "const int \fBPROPERTIES\fP = 43"
+.br
+.ti -1c
+.RI "const int \fBBOGUS\fP = 150"
+.br
+.ti -1c
+.RI "const int \fBORDER\fP = 41"
+.br
+.ti -1c
+.RI "const int \fBMAX\fP = 35"
+.br
+.ti -1c
+.RI "const int \fBUPDATE\fP = 53"
+.br
+.ti -1c
+.RI "const int \fBJOIN_FRAGMENT\fP = 137"
+.br
+.ti -1c
+.RI "const int \fBSQL_NE\fP = 108"
+.br
+.ti -1c
+.RI "const int \fBAND\fP = 6"
+.br
+.ti -1c
+.RI "const int \fBSUM\fP = 49"
+.br
+.ti -1c
+.RI "const int \fBASCENDING\fP = 8"
+.br
+.ti -1c
+.RI "const int \fBEXPR_LIST\fP = 75"
+.br
+.ti -1c
+.RI "const int \fBAS\fP = 7"
+.br
+.ti -1c
+.RI "const int \fBIN\fP = 26"
+.br
+.ti -1c
+.RI "const int \fBTHEN\fP = 60"
+.br
+.ti -1c
+.RI "const int \fBOBJECT\fP = 68"
+.br
+.ti -1c
+.RI "const int \fBCOMMA\fP = 101"
+.br
+.ti -1c
+.RI "const int \fBSQL_TOKEN\fP = 143"
+.br
+.ti -1c
+.RI "const int \fBIS\fP = 31"
+.br
+.ti -1c
+.RI "const int \fBAVG\fP = 9"
+.br
+.ti -1c
+.RI "const int \fBLEFT\fP = 33"
+.br
+.ti -1c
+.RI "const int \fBSOME\fP = 48"
+.br
+.ti -1c
+.RI "const int \fBALL\fP = 4"
+.br
+.ti -1c
+.RI "const int \fBBOR\fP = 115"
+.br
+.ti -1c
+.RI "const int \fBIMPLIED_FROM\fP = 136"
+.br
+.ti -1c
+.RI "const int \fBIDENT\fP = 125"
+.br
+.ti -1c
+.RI "const int \fBCASE2\fP = 74"
+.br
+.ti -1c
+.RI "const int \fBBXOR\fP = 116"
+.br
+.ti -1c
+.RI "const int \fBPLUS\fP = 118"
+.br
+.ti -1c
+.RI "const int \fBEXISTS\fP = 19"
+.br
+.ti -1c
+.RI "const int \fBDOT\fP = 15"
+.br
+.ti -1c
+.RI "const int \fBWITH\fP = 63"
+.br
+.ti -1c
+.RI "const int \fBLIKE\fP = 34"
+.br
+.ti -1c
+.RI "const int \fBOUTER\fP = 42"
+.br
+.ti -1c
+.RI "const int \fBID_START_LETTER\fP = 126"
+.br
+.ti -1c
+.RI "const int \fBLEFT_OUTER\fP = 139"
+.br
+.ti -1c
+.RI "const int \fBROW_STAR\fP = 88"
+.br
+.ti -1c
+.RI "const int \fBNOT_LIKE\fP = 84"
+.br
+.ti -1c
+.RI "const int \fBRIGHT_OUTER\fP = 140"
+.br
+.ti -1c
+.RI "const int \fBRANGE\fP = 87"
+.br
+.ti -1c
+.RI "const int \fBNOT_BETWEEN\fP = 82"
+.br
+.ti -1c
+.RI "const int \fBHEX_DIGIT\fP = 132"
+.br
+.ti -1c
+.RI "const int \fBSET\fP = 46"
+.br
+.ti -1c
+.RI "const int \fBRIGHT\fP = 44"
+.br
+.ti -1c
+.RI "const int \fBHAVING\fP = 25"
+.br
+.ti -1c
+.RI "const int \fBMIN\fP = 36"
+.br
+.ti -1c
+.RI "const int \fBIS_NOT_NULL\fP = 79"
+.br
+.ti -1c
+.RI "const int \fBMINUS\fP = 119"
+.br
+.ti -1c
+.RI "const int \fBELEMENTS\fP = 17"
+.br
+.ti -1c
+.RI "const int \fBBAND\fP = 117"
+.br
+.ti -1c
+.RI "const int \fBTRUE\fP = 51"
+.br
+.ti -1c
+.RI "const int \fBJOIN\fP = 32"
+.br
+.ti -1c
+.RI "const int \fBIN_LIST\fP = 77"
+.br
+.ti -1c
+.RI "const int \fBUNION\fP = 52"
+.br
+.ti -1c
+.RI "const int \fBOPEN\fP = 103"
+.br
+.ti -1c
+.RI "const int \fBCOLON\fP = 105"
+.br
+.ti -1c
+.RI "const int \fBANY\fP = 5"
+.br
+.ti -1c
+.RI "const int \fBCLOSE\fP = 104"
+.br
+.ti -1c
+.RI "const int \fBWHEN\fP = 61"
+.br
+.ti -1c
+.RI "const int \fBALIAS_REF\fP = 141"
+.br
+.ti -1c
+.RI "const int \fBDIV\fP = 121"
+.br
+.ti -1c
+.RI "const int \fBDESCENDING\fP = 14"
+.br
+.ti -1c
+.RI "const int \fBAGGREGATE\fP = 71"
+.br
+.ti -1c
+.RI "const int \fBBETWEEN\fP = 10"
+.br
+.ti -1c
+.RI "const int \fBLE\fP = 111"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly string[] \fBtokenNames\fP"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_selectStatement_in_statement168\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_updateStatement_in_statement172\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_deleteStatement_in_statement176\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_insertStatement_in_statement180\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_query_in_selectStatement191\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_UPDATE_in_updateStatement215\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_VERSIONED_in_updateStatement222\fP = new BitSet(new ulong[]{0x0000000000400000UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_fromClause_in_updateStatement228\fP = new BitSet(new ulong[]{0x0000400000000000UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_setClause_in_updateStatement232\fP = new BitSet(new ulong[]{0x0080000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_whereClause_in_updateStatement237\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_DELETE_in_deleteStatement280\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_fromClause_in_deleteStatement284\fP = new BitSet(new ulong[]{0x0080000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_whereClause_in_deleteStatement287\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_INSERT_in_insertStatement317\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_intoClause_in_insertStatement321\fP = new BitSet(new ulong[]{0x0010000000000000UL,0x0000000000400000UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_query_in_insertStatement323\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_INTO_in_intoClause347\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_path_in_intoClause354\fP = new BitSet(new ulong[]{0x0000000000000000UL,0x0000000000800000UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_insertablePropertySpec_in_intoClause359\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_RANGE_in_insertablePropertySpec375\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_IDENT_in_insertablePropertySpec378\fP = new BitSet(new ulong[]{0x0000000000000008UL,0x2000000000000000UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_SET_in_setClause395\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_assignment_in_setClause400\fP = new BitSet(new ulong[]{0x0000000000000008UL,0x0000004000000000UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_EQ_in_assignment427\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_propertyRef_in_assignment432\fP = new BitSet(new ulong[]{0x0218008000109000UL,0x33FC061FB4424480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_newValue_in_assignment438\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_newValue454\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_query_in_newValue458\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_unionedQuery_in_query469\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_UNION_in_query476\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_unionedQuery_in_query478\fP = new BitSet(new ulong[]{0x0010000000000000UL,0x0000000000400000UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_query_in_query480\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_QUERY_in_unionedQuery503\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_SELECT_FROM_in_unionedQuery515\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_fromClause_in_unionedQuery523\fP = new BitSet(new ulong[]{0x0000200000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_selectClause_in_unionedQuery532\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_whereClause_in_unionedQuery547\fP = new BitSet(new ulong[]{0x0004820003000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_groupClause_in_unionedQuery557\fP = new BitSet(new ulong[]{0x0004820002000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_havingClause_in_unionedQuery567\fP = new BitSet(new ulong[]{0x0004820000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_orderClause_in_unionedQuery577\fP = new BitSet(new ulong[]{0x0004800000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_skipClause_in_unionedQuery587\fP = new BitSet(new ulong[]{0x0004000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_takeClause_in_unionedQuery597\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_ORDER_in_orderClause654\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_orderExprs_in_orderClause659\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_query_in_orderClause663\fP = new BitSet(new ulong[]{0x0000000000004108UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_set_in_orderClause665\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_orderExprs686\fP = new BitSet(new ulong[]{0x020800800010D102UL,0x33FC061FB4024480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_set_in_orderExprs688\fP = new BitSet(new ulong[]{0x0208008000109002UL,0x33FC061FB4024480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_orderExprs_in_orderExprs700\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_SKIP_in_skipClause714\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_NUM_INT_in_skipClause717\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_parameter_in_skipClause721\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_TAKE_in_takeClause735\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_NUM_INT_in_takeClause738\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_parameter_in_takeClause742\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_GROUP_in_groupClause756\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_groupClause761\fP = new BitSet(new ulong[]{0x0208008000109008UL,0x33FC061FB4024480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_HAVING_in_havingClause777\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_logicalExpr_in_havingClause779\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_SELECT_in_selectClause793\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_DISTINCT_in_selectClause800\fP = new BitSet(new ulong[]{0x0218008008129090UL,0x33FC061FB4424690UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_selectExprList_in_selectClause806\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_selectExpr_in_selectExprList841\fP = new BitSet(new ulong[]{0x0218008008129092UL,0x33FC061FB4424690UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_aliasedSelectExpr_in_selectExprList845\fP = new BitSet(new ulong[]{0x0218008008129092UL,0x33FC061FB4424690UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_AS_in_aliasedSelectExpr869\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_selectExpr_in_aliasedSelectExpr873\fP = new BitSet(new ulong[]{0x0000000000008000UL,0x2000000020004000UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_identifier_in_aliasedSelectExpr877\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_propertyRef_in_selectExpr892\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_ALL_in_selectExpr904\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_aliasRef_in_selectExpr908\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_OBJECT_in_selectExpr920\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_aliasRef_in_selectExpr924\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_constructor_in_selectExpr935\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_functionCall_in_selectExpr946\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_parameter_in_selectExpr951\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_count_in_selectExpr956\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_collectionFunction_in_selectExpr961\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_literal_in_selectExpr969\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_arithmeticExpr_in_selectExpr974\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_query_in_selectExpr979\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_COUNT_in_count991\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_set_in_count993\fP = new BitSet(new ulong[]{0x0208008008129000UL,0x33FC061FB5024480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_aggregateExpr_in_count1006\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_ROW_STAR_in_count1010\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_CONSTRUCTOR_in_constructor1026\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_path_in_constructor1028\fP = new BitSet(new ulong[]{0x0218008008129098UL,0x33FC061FB4424690UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_selectExpr_in_constructor1032\fP = new BitSet(new ulong[]{0x0218008008129098UL,0x33FC061FB4424690UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_aliasedSelectExpr_in_constructor1036\fP = new BitSet(new ulong[]{0x0218008008129098UL,0x33FC061FB4424690UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_aggregateExpr1052\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_collectionFunction_in_aggregateExpr1058\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_FROM_in_fromClause1078\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_fromElementList_in_fromClause1082\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_fromElement_in_fromElementList1100\fP = new BitSet(new ulong[]{0x0000000100000002UL,0x0000000000801000UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_RANGE_in_fromElement1125\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_path_in_fromElement1129\fP = new BitSet(new ulong[]{0x0000000000200008UL,0x0000000000000100UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_ALIAS_in_fromElement1134\fP = new BitSet(new ulong[]{0x0000000000200008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_FETCH_in_fromElement1141\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_joinElement_in_fromElement1168\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_FILTER_ENTITY_in_fromElement1183\fP = new BitSet(new ulong[]{0x0000000000000000UL,0x0000000000000100UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_ALIAS_in_fromElement1187\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_JOIN_in_joinElement1216\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_joinType_in_joinElement1221\fP = new BitSet(new ulong[]{0x0000000000208000UL,0x2000000020004000UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_FETCH_in_joinElement1231\fP = new BitSet(new ulong[]{0x0000000000008000UL,0x2000000020004000UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_propertyRef_in_joinElement1237\fP = new BitSet(new ulong[]{0x8000000000200008UL,0x0000000000000100UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_ALIAS_in_joinElement1242\fP = new BitSet(new ulong[]{0x8000000000200008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_FETCH_in_joinElement1249\fP = new BitSet(new ulong[]{0x8000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_WITH_in_joinElement1258\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_LEFT_in_joinType1299\fP = new BitSet(new ulong[]{0x0000040000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_RIGHT_in_joinType1305\fP = new BitSet(new ulong[]{0x0000040000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_OUTER_in_joinType1311\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_FULL_in_joinType1325\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_INNER_in_joinType1332\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_identifier_in_path1354\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_DOT_in_path1362\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_path_in_path1366\fP = new BitSet(new ulong[]{0x0000000000008000UL,0x2000000020004000UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_identifier_in_path1370\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_path_in_pathAsIdent1389\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_WITH_in_withClause1430\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_logicalExpr_in_withClause1436\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_WHERE_in_whereClause1464\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_logicalExpr_in_whereClause1470\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_AND_in_logicalExpr1496\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_logicalExpr_in_logicalExpr1498\fP = new BitSet(new ulong[]{0x0000014404088440UL,0x2001E840201FC080UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_logicalExpr_in_logicalExpr1500\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_OR_in_logicalExpr1507\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_logicalExpr_in_logicalExpr1509\fP = new BitSet(new ulong[]{0x0000014404088440UL,0x2001E840201FC080UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_logicalExpr_in_logicalExpr1511\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_NOT_in_logicalExpr1518\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_logicalExpr_in_logicalExpr1520\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_comparisonExpr_in_logicalExpr1526\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_functionCall_in_logicalExpr1531\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_logicalPath_in_logicalExpr1536\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_addrExpr_in_logicalPath1555\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_EQ_in_comparisonExpr1593\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1595\fP = new BitSet(new ulong[]{0x0219008000109030UL,0x33FC061FB4424480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1597\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_NE_in_comparisonExpr1604\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1606\fP = new BitSet(new ulong[]{0x0219008000109030UL,0x33FC061FB4424480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1608\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_LT_in_comparisonExpr1615\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1617\fP = new BitSet(new ulong[]{0x0219008000109030UL,0x33FC061FB4424480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1619\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_GT_in_comparisonExpr1626\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1628\fP = new BitSet(new ulong[]{0x0219008000109030UL,0x33FC061FB4424480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1630\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_LE_in_comparisonExpr1637\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1639\fP = new BitSet(new ulong[]{0x0219008000109030UL,0x33FC061FB4424480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1641\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_GE_in_comparisonExpr1648\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1650\fP = new BitSet(new ulong[]{0x0219008000109030UL,0x33FC061FB4424480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1652\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_LIKE_in_comparisonExpr1659\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1661\fP = new BitSet(new ulong[]{0x0208008000109000UL,0x33FC061FB4024480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_comparisonExpr1663\fP = new BitSet(new ulong[]{0x0000000000040008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_ESCAPE_in_comparisonExpr1668\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_comparisonExpr1670\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_NOT_LIKE_in_comparisonExpr1682\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1684\fP = new BitSet(new ulong[]{0x0208008000109000UL,0x33FC061FB4024480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_comparisonExpr1686\fP = new BitSet(new ulong[]{0x0000000000040008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_ESCAPE_in_comparisonExpr1691\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_comparisonExpr1693\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_BETWEEN_in_comparisonExpr1705\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1707\fP = new BitSet(new ulong[]{0x0219008000109030UL,0x33FC061FB4424480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1709\fP = new BitSet(new ulong[]{0x0219008000109030UL,0x33FC061FB4424480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1711\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_NOT_BETWEEN_in_comparisonExpr1718\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1720\fP = new BitSet(new ulong[]{0x0219008000109030UL,0x33FC061FB4424480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1722\fP = new BitSet(new ulong[]{0x0219008000109030UL,0x33FC061FB4424480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1724\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_IN_in_comparisonExpr1731\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1733\fP = new BitSet(new ulong[]{0x0000000000000000UL,0x0000000000002000UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_inRhs_in_comparisonExpr1735\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_NOT_IN_in_comparisonExpr1743\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1745\fP = new BitSet(new ulong[]{0x0000000000000000UL,0x0000000000002000UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_inRhs_in_comparisonExpr1747\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_IS_NULL_in_comparisonExpr1755\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1757\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_IS_NOT_NULL_in_comparisonExpr1764\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_comparisonExpr1766\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_EXISTS_in_comparisonExpr1775\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_comparisonExpr1779\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_collectionFunctionOrSubselect_in_comparisonExpr1783\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_IN_LIST_in_inRhs1807\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_collectionFunctionOrSubselect_in_inRhs1811\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_inRhs1815\fP = new BitSet(new ulong[]{0x0208008000109008UL,0x33FC061FB4024480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_exprOrSubquery1831\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_query_in_exprOrSubquery1836\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_ANY_in_exprOrSubquery1842\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_collectionFunctionOrSubselect_in_exprOrSubquery1844\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_ALL_in_exprOrSubquery1851\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_collectionFunctionOrSubselect_in_exprOrSubquery1853\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_SOME_in_exprOrSubquery1860\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_collectionFunctionOrSubselect_in_exprOrSubquery1862\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_collectionFunction_in_collectionFunctionOrSubselect1875\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_query_in_collectionFunctionOrSubselect1880\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_addrExpr_in_expr1894\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_VECTOR_EXPR_in_expr1906\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_expr1909\fP = new BitSet(new ulong[]{0x0208008000109008UL,0x33FC061FB4024480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_constant_in_expr1918\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_arithmeticExpr_in_expr1923\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_functionCall_in_expr1928\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_parameter_in_expr1940\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_count_in_expr1945\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_PLUS_in_arithmeticExpr1973\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_arithmeticExpr1975\fP = new BitSet(new ulong[]{0x0219008000109030UL,0x33FC061FB4424480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_arithmeticExpr1977\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_MINUS_in_arithmeticExpr1984\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_arithmeticExpr1986\fP = new BitSet(new ulong[]{0x0219008000109030UL,0x33FC061FB4424480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_arithmeticExpr1988\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_DIV_in_arithmeticExpr1995\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_arithmeticExpr1997\fP = new BitSet(new ulong[]{0x0219008000109030UL,0x33FC061FB4424480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_arithmeticExpr1999\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_STAR_in_arithmeticExpr2006\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_arithmeticExpr2008\fP = new BitSet(new ulong[]{0x0219008000109030UL,0x33FC061FB4424480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_arithmeticExpr2010\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_BNOT_in_arithmeticExpr2017\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_arithmeticExpr2019\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_BAND_in_arithmeticExpr2026\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_arithmeticExpr2028\fP = new BitSet(new ulong[]{0x0219008000109030UL,0x33FC061FB4424480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_arithmeticExpr2030\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_BOR_in_arithmeticExpr2037\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_arithmeticExpr2039\fP = new BitSet(new ulong[]{0x0219008000109030UL,0x33FC061FB4424480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_arithmeticExpr2041\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_BXOR_in_arithmeticExpr2048\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_arithmeticExpr2050\fP = new BitSet(new ulong[]{0x0219008000109030UL,0x33FC061FB4424480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_arithmeticExpr2052\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_UNARY_MINUS_in_arithmeticExpr2060\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_exprOrSubquery_in_arithmeticExpr2062\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_caseExpr_in_arithmeticExpr2070\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_CASE_in_caseExpr2082\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_WHEN_in_caseExpr2088\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_logicalExpr_in_caseExpr2090\fP = new BitSet(new ulong[]{0x0208008000109000UL,0x33FC061FB4024480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_caseExpr2092\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_ELSE_in_caseExpr2099\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_caseExpr2101\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_CASE2_in_caseExpr2113\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_caseExpr2117\fP = new BitSet(new ulong[]{0x2000000000000000UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_WHEN_in_caseExpr2121\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_caseExpr2123\fP = new BitSet(new ulong[]{0x0208008000109000UL,0x33FC061FB4024480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_caseExpr2125\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_ELSE_in_caseExpr2132\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_caseExpr2134\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_ELEMENTS_in_collectionFunction2156\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_propertyRef_in_collectionFunction2162\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_INDICES_in_collectionFunction2181\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_propertyRef_in_collectionFunction2187\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_METHOD_CALL_in_functionCall2212\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_pathAsIdent_in_functionCall2217\fP = new BitSet(new ulong[]{0x0000000000000008UL,0x0000000000000800UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_EXPR_LIST_in_functionCall2222\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_functionCall2225\fP = new BitSet(new ulong[]{0x0218008404189408UL,0x33FDEE5FB45FC480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_query_in_functionCall2229\fP = new BitSet(new ulong[]{0x0218008404189408UL,0x33FDEE5FB45FC480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_comparisonExpr_in_functionCall2233\fP = new BitSet(new ulong[]{0x0218008404189408UL,0x33FDEE5FB45FC480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_AGGREGATE_in_functionCall2252\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_aggregateExpr_in_functionCall2254\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_literal_in_constant2267\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_NULL_in_constant2272\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_TRUE_in_constant2279\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_FALSE_in_constant2289\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_JAVA_CONSTANT_in_constant2296\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_numericLiteral_in_literal2307\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_stringLiteral_in_literal2312\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_set_in_numericLiteral0\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_QUOTED_String_in_stringLiteral2359\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_set_in_identifier2370\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_addrExprDot_in_addrExpr2389\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_addrExprIndex_in_addrExpr2396\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_addrExprIdent_in_addrExpr2403\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_DOT_in_addrExprDot2427\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_addrExprLhs_in_addrExprDot2431\fP = new BitSet(new ulong[]{0x0000000008028800UL,0x2000000020004000UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_propertyName_in_addrExprDot2435\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_INDEX_OP_in_addrExprIndex2474\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_addrExprLhs_in_addrExprIndex2478\fP = new BitSet(new ulong[]{0x0208008000109000UL,0x33FC061FB4024480UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_expr_in_addrExprIndex2482\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_identifier_in_addrExprIdent2514\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_addrExpr_in_addrExprLhs2542\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_identifier_in_propertyName2555\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_CLASS_in_propertyName2560\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_ELEMENTS_in_propertyName2565\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_INDICES_in_propertyName2570\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_propertyRefPath_in_propertyRef2582\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_propertyRefIdent_in_propertyRef2587\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_DOT_in_propertyRefPath2607\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_propertyRefLhs_in_propertyRefPath2611\fP = new BitSet(new ulong[]{0x0000000008028800UL,0x2000000020004000UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_propertyName_in_propertyRefPath2615\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_identifier_in_propertyRefIdent2652\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_propertyRef_in_propertyRefLhs2664\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_identifier_in_aliasRef2685\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_COLON_in_parameter2703\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_identifier_in_parameter2707\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_PARAM_in_parameter2728\fP = new BitSet(new ulong[]{0x0000000000000004UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_NUM_INT_in_parameter2733\fP = new BitSet(new ulong[]{0x0000000000000008UL})"
+.br
+.ti -1c
+.RI "static readonly BitSet \fBFOLLOW_NUM_INT_in_numericInteger2766\fP = new BitSet(new ulong[]{0x0000000000000002UL})"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBEvaluateAssignment\fP (\fBIASTNode\fP eq)"
+.br
+.ti -1c
+.RI "\fBIASTNode\fP \fBLookupProperty\fP (\fBIASTNode\fP dot, bool root, bool inSelect)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "ITreeAdaptor \fBadaptor\fP = new CommonTreeAdaptor()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "ITreeAdaptor \fBTreeAdaptor\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override string[] \fBTokenNames\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBGrammarFileName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IList< \fBAssignmentSpecification\fP > \fBAssignmentSpecifications\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBNumberOfParametersInSetClause\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIParseErrorHandler\fP \fBParseErrorHandler\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBAliasGenerator\fP \fBAliasGenerator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "ISet< string > \fBQuerySpaces\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, object > \fBNamedParameters\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBCurrentStatementType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBJoinType\fP \fBImpliedJoinType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "String[] \fBReturnAliases\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP[] \fBReturnTypes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBCollectionFilterRole\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSelectClause\fP \fBSelectClause\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IList< \fBIParameterSpecification\fP > \fBParameters\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBFromClause\fP \fBCurrentFromClause\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBStatementType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBLiteralProcessor\fP \fBLiteralProcessor\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBCurrentClauseType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, \fBIFilter\fP > \fBEnabledFilters\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSubQuery\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSelectStatement\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsInFrom\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsInSelect\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, string > \fBTokenReplacements\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsComparativeExpressionClause\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsInCase\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsShallowQuery\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIASTFactory\fP \fBASTFactory\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 23 of file HqlSqlWalker\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

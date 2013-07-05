@@ -1,0 +1,111 @@
+.TH "NHibernate.Criterion.SQLCriterion" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.SQLCriterion \- 
+.PP
+An \fBICriterion\fP that creates a SQLExpression\&. The string {alias} will be replaced by the alias of the root entity\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSQLCriterion\fP (\fBSqlString\fP sql, object[] values, \fBIType\fP[] types)"
+.br
+.ti -1c
+.RI "override \fBSqlString\fP \fBToSqlString\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIRender a SqlString for the expression\&. \fP"
+.ti -1c
+.RI "override \fBTypedValue\fP[] \fBGetTypedValues\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery)"
+.br
+.RI "\fIReturn typed values for all parameters in the rendered SQL fragment \fP"
+.ti -1c
+.RI "override \fBIProjection\fP[] \fBGetProjections\fP ()"
+.br
+.RI "\fIReturn all projections used in this criterion \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIGets a string representation of the \fBAbstractCriterion\fP\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An \fBICriterion\fP that creates a SQLExpression\&. The string {alias} will be replaced by the alias of the root entity\&. 
+
+This allows for database specific Expressions at the cost of needing to write a correct SqlString\&. 
+.PP
+Definition at line 19 of file SQLCriterion\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBIProjection\fP [] NHibernate\&.Criterion\&.SQLCriterion\&.GetProjections ()\fC [virtual]\fP"
+
+.PP
+Return all projections used in this criterion 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of \fBIProjection\fP used by the \fBExpression\fP\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 54 of file SQLCriterion\&.cs\&.
+.SS "override \fBTypedValue\fP [] NHibernate\&.Criterion\&.SQLCriterion\&.GetTypedValues (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery)\fC [virtual]\fP"
+
+.PP
+Return typed values for all parameters in the rendered SQL fragment 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of TypedValues for the \fBExpression\fP\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 49 of file SQLCriterion\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Criterion\&.SQLCriterion\&.ToSqlString (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery, IDictionary< string, \fBIFilter\fP >enabledFilters)\fC [virtual]\fP"
+
+.PP
+Render a SqlString for the expression\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A SqlString that contains a valid Sql fragment\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 34 of file SQLCriterion\&.cs\&.
+.SS "override string NHibernate\&.Criterion\&.SQLCriterion\&.ToString ()\fC [virtual]\fP"
+
+.PP
+Gets a string representation of the \fBAbstractCriterion\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A String that shows the contents of the \fBAbstractCriterion\fP\&. 
+.RE
+.PP
+.PP
+This is not a well formed Sql fragment\&. It is useful for logging what the \fBAbstractCriterion\fP looks like\&. 
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 59 of file SQLCriterion\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

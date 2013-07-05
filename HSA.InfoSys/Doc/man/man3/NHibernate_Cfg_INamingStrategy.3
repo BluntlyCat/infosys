@@ -1,0 +1,161 @@
+.TH "NHibernate.Cfg.INamingStrategy" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cfg.INamingStrategy \- 
+.PP
+A set of rules for determining the physical column and table names given the information in the mapping document\&. May be used to implement project-scoped naming standards for database objects\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Cfg\&.DefaultNamingStrategy\fP, and \fBNHibernate\&.Cfg\&.ImprovedNamingStrategy\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBClassToTableName\fP (string className)"
+.br
+.RI "\fIReturn a table name for an entity class \fP"
+.ti -1c
+.RI "string \fBPropertyToColumnName\fP (string propertyName)"
+.br
+.RI "\fIReturn a column name for a property path expression \fP"
+.ti -1c
+.RI "string \fBTableName\fP (string tableName)"
+.br
+.RI "\fIAlter the table name given in the mapping document \fP"
+.ti -1c
+.RI "string \fBColumnName\fP (string columnName)"
+.br
+.RI "\fIAlter the column name given in the mapping document \fP"
+.ti -1c
+.RI "string \fBPropertyToTableName\fP (string className, string propertyName)"
+.br
+.RI "\fIReturn a table name for a collection \fP"
+.ti -1c
+.RI "string \fBLogicalColumnName\fP (string columnName, string propertyName)"
+.br
+.RI "\fIReturn the logical column name used to refer to a column in the metadata (like index, unique constraints etc) A full bijection is required between logicalNames and physical ones logicalName have to be case insersitively unique for a given table \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A set of rules for determining the physical column and table names given the information in the mapping document\&. May be used to implement project-scoped naming standards for database objects\&. 
+
+
+.PP
+Definition at line 7 of file INamingStrategy\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string NHibernate\&.Cfg\&.INamingStrategy\&.ClassToTableName (stringclassName)"
+
+.PP
+Return a table name for an entity class 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclassName\fP the fully-qualified class name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a table name
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Cfg\&.DefaultNamingStrategy\fP, and \fBNHibernate\&.Cfg\&.ImprovedNamingStrategy\fP\&.
+.SS "string NHibernate\&.Cfg\&.INamingStrategy\&.ColumnName (stringcolumnName)"
+
+.PP
+Alter the column name given in the mapping document 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnName\fP a column name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a column name
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Cfg\&.DefaultNamingStrategy\fP, and \fBNHibernate\&.Cfg\&.ImprovedNamingStrategy\fP\&.
+.SS "string NHibernate\&.Cfg\&.INamingStrategy\&.LogicalColumnName (stringcolumnName, stringpropertyName)"
+
+.PP
+Return the logical column name used to refer to a column in the metadata (like index, unique constraints etc) A full bijection is required between logicalNames and physical ones logicalName have to be case insersitively unique for a given table 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnName\fP given column name if any 
+.br
+\fIpropertyName\fP property name of this column 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Cfg\&.DefaultNamingStrategy\fP, and \fBNHibernate\&.Cfg\&.ImprovedNamingStrategy\fP\&.
+.SS "string NHibernate\&.Cfg\&.INamingStrategy\&.PropertyToColumnName (stringpropertyName)"
+
+.PP
+Return a column name for a property path expression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP a property path
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a column name
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Cfg\&.DefaultNamingStrategy\fP, and \fBNHibernate\&.Cfg\&.ImprovedNamingStrategy\fP\&.
+.SS "string NHibernate\&.Cfg\&.INamingStrategy\&.PropertyToTableName (stringclassName, stringpropertyName)"
+
+.PP
+Return a table name for a collection 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclassName\fP the fully-qualified name of the owning entity class
+.br
+\fIpropertyName\fP a property path
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a table name
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Cfg\&.DefaultNamingStrategy\fP, and \fBNHibernate\&.Cfg\&.ImprovedNamingStrategy\fP\&.
+.SS "string NHibernate\&.Cfg\&.INamingStrategy\&.TableName (stringtableName)"
+
+.PP
+Alter the table name given in the mapping document 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItableName\fP a table name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a table name
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Cfg\&.DefaultNamingStrategy\fP, and \fBNHibernate\&.Cfg\&.ImprovedNamingStrategy\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

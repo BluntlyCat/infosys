@@ -1,0 +1,312 @@
+.TH "Newtonsoft.Json.Linq.JContainer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.Linq.JContainer \- 
+.PP
+Represents a token that can contain other tokens\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP, IList< JToken >, ITypedList, IBindingList, IList, and INotifyCollectionChanged\&.
+.PP
+Inherited by \fBNewtonsoft\&.Json\&.Linq\&.JArray\fP, \fBNewtonsoft\&.Json\&.Linq\&.JConstructor\fP, \fBNewtonsoft\&.Json\&.Linq\&.JObject\fP, and \fBNewtonsoft\&.Json\&.Linq\&.JProperty\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override JEnumerable< \fBJToken\fP > \fBChildren\fP ()"
+.br
+.RI "\fIReturns a collection of the child tokens of this token, in document order\&. \fP"
+.ti -1c
+.RI "override IEnumerable< T > \fBValues< T >\fP ()"
+.br
+.RI "\fIReturns a collection of the child values of this token, in document order\&. \fP"
+.ti -1c
+.RI "IEnumerable< \fBJToken\fP > \fBDescendants\fP ()"
+.br
+.RI "\fIReturns a collection of the descendant tokens for this token in document order\&. \fP"
+.ti -1c
+.RI "virtual void \fBAdd\fP (object content)"
+.br
+.RI "\fIAdds the specified content as children of this \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "void \fBAddFirst\fP (object content)"
+.br
+.RI "\fIAdds the specified content as the first children of this \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "\fBJsonWriter\fP \fBCreateWriter\fP ()"
+.br
+.RI "\fICreates an \fBJsonWriter\fP that can be used to add tokens to the \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "void \fBReplaceAll\fP (object content)"
+.br
+.RI "\fIReplaces the children nodes of this token with the specified content\&. \fP"
+.ti -1c
+.RI "void \fBRemoveAll\fP ()"
+.br
+.RI "\fIRemoves the child nodes from this token\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBOnAddingNew\fP (AddingNewEventArgs e)"
+.br
+.RI "\fIRaises the \fBAddingNew\fP event\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnListChanged\fP (ListChangedEventArgs e)"
+.br
+.RI "\fIRaises the \fBListChanged\fP event\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnCollectionChanged\fP (NotifyCollectionChangedEventArgs e)"
+.br
+.RI "\fIRaises the \fBCollectionChanged\fP event\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "ListChangedEventHandler \fBListChanged\fP"
+.br
+.RI "\fIOccurs when the list changes or an item in the list changes\&. \fP"
+.ti -1c
+.RI "AddingNewEventHandler \fBAddingNew\fP"
+.br
+.RI "\fIOccurs before an item is added to the collection\&. \fP"
+.ti -1c
+.RI "NotifyCollectionChangedEventHandler \fBCollectionChanged\fP"
+.br
+.RI "\fIOccurs when the items list of the collection has changed, or the collection is reset\&. \fP"
+.ti -1c
+.RI "abstract IList< \fBJToken\fP > \fBChildrenTokens\fP\fC [get]\fP"
+.br
+.RI "\fIGets the container's children tokens\&. \fP"
+.ti -1c
+.RI "override bool \fBHasValues\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether this token has childen tokens\&. \fP"
+.ti -1c
+.RI "override \fBJToken\fP \fBFirst\fP\fC [get]\fP"
+.br
+.RI "\fIGet the first child token of this token\&. \fP"
+.ti -1c
+.RI "override \fBJToken\fP \fBLast\fP\fC [get]\fP"
+.br
+.RI "\fIGet the last child token of this token\&. \fP"
+.ti -1c
+.RI "int \fBCount\fP\fC [get]\fP"
+.br
+.RI "\fIGets the count of child JSON tokens\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Represents a token that can contain other tokens\&. 
+
+
+.PP
+Definition at line 47 of file JContainer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void Newtonsoft\&.Json\&.Linq\&.JContainer\&.Add (objectcontent)\fC [virtual]\fP"
+
+.PP
+Adds the specified content as children of this \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontent\fP The content to be added\&.
+.RE
+.PP
+
+.PP
+Definition at line 550 of file JContainer\&.cs\&.
+.SS "void Newtonsoft\&.Json\&.Linq\&.JContainer\&.AddFirst (objectcontent)"
+
+.PP
+Adds the specified content as the first children of this \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontent\fP The content to be added\&.
+.RE
+.PP
+
+.PP
+Definition at line 564 of file JContainer\&.cs\&.
+.SS "override JEnumerable<\fBJToken\fP> Newtonsoft\&.Json\&.Linq\&.JContainer\&.Children ()\fC [virtual]\fP"
+
+.PP
+Returns a collection of the child tokens of this token, in document order\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An IEnumerable{T} of \fBJToken\fP containing the child tokens of this \fBJToken\fP, in document order\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP\&.
+.PP
+Definition at line 249 of file JContainer\&.cs\&.
+.SS "\fBJsonWriter\fP Newtonsoft\&.Json\&.Linq\&.JContainer\&.CreateWriter ()"
+
+.PP
+Creates an \fBJsonWriter\fP that can be used to add tokens to the \fBJToken\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBJsonWriter\fP that is ready to have content written to it\&.
+.RE
+.PP
+
+.PP
+Definition at line 602 of file JContainer\&.cs\&.
+.SS "IEnumerable<\fBJToken\fP> Newtonsoft\&.Json\&.Linq\&.JContainer\&.Descendants ()"
+
+.PP
+Returns a collection of the descendant tokens for this token in document order\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An IEnumerable{JToken} containing the descendant tokens of the \fBJToken\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 270 of file JContainer\&.cs\&.
+.SS "virtual void Newtonsoft\&.Json\&.Linq\&.JContainer\&.OnAddingNew (AddingNewEventArgse)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Raises the \fBAddingNew\fP event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIe\fP The AddingNewEventArgs instance containing the event data\&.
+.RE
+.PP
+
+.PP
+Definition at line 137 of file JContainer\&.cs\&.
+.SS "virtual void Newtonsoft\&.Json\&.Linq\&.JContainer\&.OnCollectionChanged (NotifyCollectionChangedEventArgse)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Raises the \fBCollectionChanged\fP event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIe\fP The NotifyCollectionChangedEventArgs instance containing the event data\&.
+.RE
+.PP
+
+.PP
+Definition at line 171 of file JContainer\&.cs\&.
+.SS "virtual void Newtonsoft\&.Json\&.Linq\&.JContainer\&.OnListChanged (ListChangedEventArgse)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Raises the \fBListChanged\fP event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIe\fP The ListChangedEventArgs instance containing the event data\&.
+.RE
+.PP
+
+.PP
+Definition at line 148 of file JContainer\&.cs\&.
+.SS "void Newtonsoft\&.Json\&.Linq\&.JContainer\&.RemoveAll ()"
+
+.PP
+Removes the child nodes from this token\&. 
+.PP
+Definition at line 620 of file JContainer\&.cs\&.
+.SS "void Newtonsoft\&.Json\&.Linq\&.JContainer\&.ReplaceAll (objectcontent)"
+
+.PP
+Replaces the children nodes of this token with the specified content\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontent\fP The content\&.
+.RE
+.PP
+
+.PP
+Definition at line 611 of file JContainer\&.cs\&.
+.SS "override IEnumerable<T> Newtonsoft\&.Json\&.Linq\&.JContainer\&.Values< T > ()\fC [virtual]\fP"
+
+.PP
+Returns a collection of the child values of this token, in document order\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The type to convert the values to\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A IEnumerable{T} containing the child values of this \fBJToken\fP, in document order\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP\&.
+.PP
+Definition at line 261 of file JContainer\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "AddingNewEventHandler Newtonsoft\&.Json\&.Linq\&.JContainer\&.AddingNew\fC [add]\fP, \fC [remove]\fP"
+
+.PP
+Occurs before an item is added to the collection\&. 
+.PP
+Definition at line 75 of file JContainer\&.cs\&.
+.SS "abstract IList<\fBJToken\fP> Newtonsoft\&.Json\&.Linq\&.JContainer\&.ChildrenTokens\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Gets the container's children tokens\&. The container's children tokens\&.
+.PP
+Definition at line 97 of file JContainer\&.cs\&.
+.SS "NotifyCollectionChangedEventHandler Newtonsoft\&.Json\&.Linq\&.JContainer\&.CollectionChanged\fC [add]\fP, \fC [remove]\fP"
+
+.PP
+Occurs when the items list of the collection has changed, or the collection is reset\&. 
+.PP
+Definition at line 87 of file JContainer\&.cs\&.
+.SS "int Newtonsoft\&.Json\&.Linq\&.JContainer\&.Count\fC [get]\fP"
+
+.PP
+Gets the count of child JSON tokens\&. The count of child JSON tokens
+.PP
+Definition at line 908 of file JContainer\&.cs\&.
+.SS "override \fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JContainer\&.First\fC [get]\fP"
+
+.PP
+Get the first child token of this token\&. A \fBJToken\fP containing the first child token of the \fBJToken\fP\&. 
+.PP
+Definition at line 228 of file JContainer\&.cs\&.
+.SS "override bool Newtonsoft\&.Json\&.Linq\&.JContainer\&.HasValues\fC [get]\fP"
+
+.PP
+Gets a value indicating whether this token has childen tokens\&. \fCtrue\fP if this token has child values; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 197 of file JContainer\&.cs\&.
+.SS "override \fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JContainer\&.Last\fC [get]\fP"
+
+.PP
+Get the last child token of this token\&. A \fBJToken\fP containing the last child token of the \fBJToken\fP\&. 
+.PP
+Definition at line 239 of file JContainer\&.cs\&.
+.SS "ListChangedEventHandler Newtonsoft\&.Json\&.Linq\&.JContainer\&.ListChanged\fC [add]\fP, \fC [remove]\fP"
+
+.PP
+Occurs when the list changes or an item in the list changes\&. 
+.PP
+Definition at line 66 of file JContainer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

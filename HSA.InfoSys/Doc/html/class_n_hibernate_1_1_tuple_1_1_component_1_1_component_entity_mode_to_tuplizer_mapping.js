@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_tuple_1_1_component_1_1_component_entity_mode_to_tuplizer_mapping =
+[
+    [ "ComponentEntityModeToTuplizerMapping", "class_n_hibernate_1_1_tuple_1_1_component_1_1_component_entity_mode_to_tuplizer_mapping.html#aeccbff0f56e1fd416a9f472e12db6501", null ]
+];

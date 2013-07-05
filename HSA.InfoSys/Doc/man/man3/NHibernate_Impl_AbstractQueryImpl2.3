@@ -1,0 +1,179 @@
+.TH "NHibernate.Impl.AbstractQueryImpl2" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Impl.AbstractQueryImpl2 \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Impl\&.AbstractQueryImpl\fP\&.
+.PP
+Inherited by NHibernate\&.Impl\&.ExpressionQueryImpl, and \fBNHibernate\&.Impl\&.QueryImpl\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override \fBIQuery\fP \fBSetLockMode\fP (string alias, \fBLockMode\fP lockMode)"
+.br
+.RI "\fISet the lockmode for the objects idententified by the given alias that appears in the \fCFROM\fP clause\&. \fP"
+.ti -1c
+.RI "override int \fBExecuteUpdate\fP ()"
+.br
+.RI "\fIExecute the update or delete statement\&. \fP"
+.ti -1c
+.RI "override IEnumerable \fBEnumerable\fP ()"
+.br
+.RI "\fIReturn the query results as an IEnumerable\&. If the query contains multiple results per row, the results are returned in an instance of \fCobject[]\fP\&. \fP"
+.ti -1c
+.RI "override IEnumerable< T > \fBEnumerable< T >\fP ()"
+.br
+.RI "\fIStrongly-typed version of \fBEnumerable()\fP\&. \fP"
+.ti -1c
+.RI "override IList \fBList\fP ()"
+.br
+.RI "\fIReturn the query results as an IList\&. If the query contains multiple results per row, the results are returned in an instance of \fCobject[]\fP\&. \fP"
+.ti -1c
+.RI "override void \fBList\fP (IList results)"
+.br
+.RI "\fIReturn the query results an place them into the IList\&. \fP"
+.ti -1c
+.RI "override IList< T > \fBList< T >\fP ()"
+.br
+.RI "\fIStrongly-typed version of \fBList()\fP\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractQueryImpl2\fP (string queryString, \fBFlushMode\fP flushMode, \fBISessionImplementor\fP session, \fBParameterMetadata\fP parameterMetadata)"
+.br
+.ti -1c
+.RI "abstract \fBIQueryExpression\fP \fBExpandParameters\fP (IDictionary< string, \fBTypedValue\fP > namedParamsCopy)"
+.br
+.RI "\fIWarning: adds new parameters to the argument by side-effect, as well as mutating the query expression tree! \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 9 of file AbstractQueryImpl2\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override IEnumerable NHibernate\&.Impl\&.AbstractQueryImpl2\&.Enumerable ()\fC [virtual]\fP"
+
+.PP
+Return the query results as an IEnumerable\&. If the query contains multiple results per row, the results are returned in an instance of \fCobject[]\fP\&. Entities returned as results are initialized on demand\&. The first SQL query returns identifiers only\&. 
+.PP
+This is a good strategy to use if you expect a high number of the objects returned to be already loaded in the \fBISession\fP or in the 2nd level cache\&. 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractQueryImpl\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Impl\&.CollectionFilterImpl\fP\&.
+.PP
+Definition at line 44 of file AbstractQueryImpl2\&.cs\&.
+.SS "override IEnumerable<T> \fBNHibernate\&.Impl\&.AbstractQueryImpl2\&.Enumerable\fP< T > ()\fC [virtual]\fP"
+
+.PP
+Strongly-typed version of \fBEnumerable()\fP\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractQueryImpl\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Impl\&.CollectionFilterImpl\fP\&.
+.PP
+Definition at line 59 of file AbstractQueryImpl2\&.cs\&.
+.SS "override int NHibernate\&.Impl\&.AbstractQueryImpl2\&.ExecuteUpdate ()\fC [virtual]\fP"
+
+.PP
+Execute the update or delete statement\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The number of entities updated or deleted\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractQueryImpl\fP\&.
+.PP
+Definition at line 29 of file AbstractQueryImpl2\&.cs\&.
+.SS "abstract \fBIQueryExpression\fP NHibernate\&.Impl\&.AbstractQueryImpl2\&.ExpandParameters (IDictionary< string, \fBTypedValue\fP >namedParamsCopy)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Warning: adds new parameters to the argument by side-effect, as well as mutating the query expression tree! 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.QueryImpl\fP\&.
+.SS "override IList NHibernate\&.Impl\&.AbstractQueryImpl2\&.List ()\fC [virtual]\fP"
+
+.PP
+Return the query results as an IList\&. If the query contains multiple results per row, the results are returned in an instance of \fCobject[]\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The IList filled with the results\&.
+.RE
+.PP
+.PP
+This is a good strategy to use if you expect few of the objects being returned are already loaded or if you want to fill the 2nd level cache\&. 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractQueryImpl\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Impl\&.CollectionFilterImpl\fP\&.
+.PP
+Definition at line 74 of file AbstractQueryImpl2\&.cs\&.
+.SS "override void NHibernate\&.Impl\&.AbstractQueryImpl2\&.List (IListresults)\fC [virtual]\fP"
+
+.PP
+Return the query results an place them into the IList\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIresults\fP The IList to place the results in\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractQueryImpl\fP\&.
+.PP
+Definition at line 89 of file AbstractQueryImpl2\&.cs\&.
+.SS "override IList<T> \fBNHibernate\&.Impl\&.AbstractQueryImpl2\&.List\fP< T > ()\fC [virtual]\fP"
+
+.PP
+Strongly-typed version of \fBList()\fP\&. 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractQueryImpl\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Impl\&.CollectionFilterImpl\fP\&.
+.PP
+Definition at line 104 of file AbstractQueryImpl2\&.cs\&.
+.SS "override \fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl2\&.SetLockMode (stringalias, \fBLockMode\fPlockMode)\fC [virtual]\fP"
+
+.PP
+Set the lockmode for the objects idententified by the given alias that appears in the \fCFROM\fP clause\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP alias a query alias, or \fCthis\fP for a collection filter
+.br
+\fIlockMode\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractQueryImpl\fP\&.
+.PP
+Definition at line 23 of file AbstractQueryImpl2\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

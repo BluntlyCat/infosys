@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_proxy_validator_1_1_fixture_1_1_invalid_public_field =
+[
+    [ "publicField", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_proxy_validator_1_1_fixture_1_1_invalid_public_field.html#a82b46fccced2c1a09a6a33f8bb38d2df", null ]
+];

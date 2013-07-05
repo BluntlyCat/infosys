@@ -1,0 +1,95 @@
+.TH "NHibernate.Proxy.IProxyFactory" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Proxy.IProxyFactory \- 
+.PP
+Contract for run-time, proxy-based lazy initialization proxies\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Proxy\&.AbstractProxyFactory\fP, and \fBNHibernate\&.Proxy\&.Map\&.MapProxyFactory\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBPostInstantiate\fP (string entityName, System\&.Type persistentClass, ISet< System\&.Type > interfaces, MethodInfo getIdentifierMethod, MethodInfo setIdentifierMethod, \fBIAbstractComponentType\fP componentIdType)"
+.br
+.RI "\fICalled immediately after instantiation of this factory\&. \fP"
+.ti -1c
+.RI "\fBINHibernateProxy\fP \fBGetProxy\fP (object id, \fBISessionImplementor\fP session)"
+.br
+.RI "\fICreate a new proxy \fP"
+.ti -1c
+.RI "object \fBGetFieldInterceptionProxy\fP (object instanceToWrap)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Contract for run-time, proxy-based lazy initialization proxies\&. 
+
+
+.PP
+Definition at line 9 of file IProxyFactory\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBINHibernateProxy\fP NHibernate\&.Proxy\&.IProxyFactory\&.GetProxy (objectid, \fBISessionImplementor\fPsession)"
+
+.PP
+Create a new proxy 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The id value for the proxy to be generated\&.
+.br
+\fIsession\fP The session to which the generated proxy will be associated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The generated proxy\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP Indicates problems generating requested proxy\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Proxy\&.AbstractProxyFactory\fP, \fBNHibernate\&.Proxy\&.Map\&.MapProxyFactory\fP, and \fBNHibernate\&.Proxy\&.DefaultProxyFactory\fP\&.
+.SS "void NHibernate\&.Proxy\&.IProxyFactory\&.PostInstantiate (stringentityName, System\&.TypepersistentClass, ISet< System\&.Type >interfaces, MethodInfogetIdentifierMethod, MethodInfosetIdentifierMethod, \fBIAbstractComponentType\fPcomponentIdType)"
+
+.PP
+Called immediately after instantiation of this factory\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The name of the entity for which this factory should generate proxies\&. 
+.br
+\fIpersistentClass\fP The entity class for which to generate proxies; not always the same as the entityName\&. 
+.br
+\fIinterfaces\fP The interfaces to expose in the generated proxy; \fBINHibernateProxy\fP is already included in this collection\&. 
+.br
+\fIgetIdentifierMethod\fP Reference to the identifier getter method; invocation on this method should not force initialization 
+.br
+\fIsetIdentifierMethod\fP Reference to the identifier setter method; invocation on this method should not force initialization 
+.br
+\fIcomponentIdType\fP For composite identifier types, a reference to the \fBtype\fP of the identifier property; again accessing the id should generally not cause initialization - but need to bear in mind key-many-to-one mappings\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP Indicates a problem completing post 
+.RE
+.PP
+.PP
+Essentially equivalent to constructor injection, but contracted here via interface\&. 
+.PP
+Implemented in \fBNHibernate\&.Proxy\&.AbstractProxyFactory\fP, and \fBNHibernate\&.Proxy\&.Map\&.MapProxyFactory\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

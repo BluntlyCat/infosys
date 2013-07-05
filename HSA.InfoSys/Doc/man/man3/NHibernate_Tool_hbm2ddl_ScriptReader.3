@@ -1,0 +1,94 @@
+.TH "NHibernate.Tool.hbm2ddl.ScriptReader" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Tool.hbm2ddl.ScriptReader \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Tool\&.hbm2ddl\&.SeparatorLineReader\fP, and \fBNHibernate\&.Tool\&.hbm2ddl\&.SqlScriptReader\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBReadNextSection\fP ()"
+.br
+.RI "\fIThis acts as a template method\&. Specific Reader instances override the component methods\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBScriptReader\fP (\fBScriptSplitter\fP splitter)"
+.br
+.ti -1c
+.RI "virtual bool \fBReadDashDashComment\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBReadSlashStarComment\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBReadQuotedString\fP ()"
+.br
+.ti -1c
+.RI "abstract bool \fBReadNext\fP ()"
+.br
+.ti -1c
+.RI "bool \fBCharEquals\fP (char compare)"
+.br
+.ti -1c
+.RI "char \fBPeek\fP ()"
+.br
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBCharEquals\fP (char expected, char actual)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly \fBScriptSplitter\fP \fBSplitter\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBHasNext\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBWhiteSpace\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBEndOfLine\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsQuote\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "char \fBCurrent\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "char \fBLastChar\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 115 of file ScriptSplitter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool NHibernate\&.Tool\&.hbm2ddl\&.ScriptReader\&.ReadNextSection ()"
+
+.PP
+This acts as a template method\&. Specific Reader instances override the component methods\&. 
+.PP
+Definition at line 128 of file ScriptSplitter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

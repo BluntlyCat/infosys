@@ -1,0 +1,131 @@
+.TH "NHibernate.WrongClassException" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.WrongClassException \- 
+.PP
+Thrown when \fC\fBISession\&.Load()\fP\fP selects a row with the given primary key (identifier value) but the row's discriminator value specifies a different subclass from the one requested  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.HibernateException\fP, and ISerializable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBWrongClassException\fP (string message, object identifier, string entityName)"
+.br
+.RI "\fIInitializes a new instance of the \fBWrongClassException\fP class\&. \fP"
+.ti -1c
+.RI "override void \fBGetObjectData\fP (SerializationInfo info, StreamingContext context)"
+.br
+.RI "\fISets the serialization info for \fBWrongClassException\fP after getting the info from the base Exception\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBWrongClassException\fP (SerializationInfo info, StreamingContext context)"
+.br
+.RI "\fIInitializes a new instance of the \fBWrongClassException\fP class with serialized data\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "object \fBIdentifier\fP\fC [get]\fP"
+.br
+.RI "\fIGets the identifier of the object that was being loaded\&. \fP"
+.ti -1c
+.RI "string \fBEntityName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the name of entity that \fBNHibernate\fP was told to load\&. \fP"
+.ti -1c
+.RI "override string \fBMessage\fP\fC [get]\fP"
+.br
+.RI "\fIGets a message that describes the current \fBWrongClassException\fP\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Thrown when \fC\fBISession\&.Load()\fP\fP selects a row with the given primary key (identifier value) but the row's discriminator value specifies a different subclass from the one requested 
+
+
+.PP
+Definition at line 13 of file WrongClassException\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.WrongClassException\&.WrongClassException (stringmessage, objectidentifier, stringentityName)"
+
+.PP
+Initializes a new instance of the \fBWrongClassException\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message that describes the error\&. 
+.br
+\fIidentifier\fP The identifier of the object that was being loaded\&.
+.br
+\fIentityName\fP The name of entity that \fBNHibernate\fP was told to load\&.
+.RE
+.PP
+
+.PP
+Definition at line 24 of file WrongClassException\&.cs\&.
+.SS "NHibernate\&.WrongClassException\&.WrongClassException (SerializationInfoinfo, StreamingContextcontext)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBWrongClassException\fP class with serialized data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinfo\fP The SerializationInfo that holds the serialized object data about the exception being thrown\&. 
+.br
+\fIcontext\fP The StreamingContext that contains contextual information about the source or destination\&. 
+.RE
+.PP
+
+.PP
+Definition at line 72 of file WrongClassException\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.WrongClassException\&.GetObjectData (SerializationInfoinfo, StreamingContextcontext)"
+
+.PP
+Sets the serialization info for \fBWrongClassException\fP after getting the info from the base Exception\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinfo\fP The SerializationInfo that holds the serialized object data about the exception being thrown\&. 
+.br
+\fIcontext\fP The StreamingContext that contains contextual information about the source or destination\&. 
+.RE
+.PP
+
+.PP
+Definition at line 94 of file WrongClassException\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string NHibernate\&.WrongClassException\&.EntityName\fC [get]\fP"
+
+.PP
+Gets the name of entity that \fBNHibernate\fP was told to load\&. 
+.PP
+Definition at line 43 of file WrongClassException\&.cs\&.
+.SS "object NHibernate\&.WrongClassException\&.Identifier\fC [get]\fP"
+
+.PP
+Gets the identifier of the object that was being loaded\&. 
+.PP
+Definition at line 35 of file WrongClassException\&.cs\&.
+.SS "override string NHibernate\&.WrongClassException\&.Message\fC [get]\fP"
+
+.PP
+Gets a message that describes the current \fBWrongClassException\fP\&. The error message that explains the reason for this exception\&.
+.PP
+Definition at line 52 of file WrongClassException\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

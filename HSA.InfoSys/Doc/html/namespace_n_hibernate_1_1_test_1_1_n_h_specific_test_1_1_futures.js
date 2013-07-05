@@ -1,0 +1,12 @@
+var namespace_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures =
+[
+    [ "TestDriverThatDoesntSupportQueryBatching", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_test_driver_that_doesnt_support_query_batching.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_test_driver_that_doesnt_support_query_batching" ],
+    [ "FallbackFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_fallback_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_fallback_fixture" ],
+    [ "FutureCriteriaFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_future_criteria_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_future_criteria_fixture" ],
+    [ "FutureFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_future_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_future_fixture" ],
+    [ "FutureQueryFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_future_query_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_future_query_fixture" ],
+    [ "FutureQueryOverFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_future_query_over_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_future_query_over_fixture" ],
+    [ "LinqFutureFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_linq_future_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_linq_future_fixture" ],
+    [ "LinqToFutureValueFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_linq_to_future_value_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_linq_to_future_value_fixture" ],
+    [ "Person", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_person.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_person" ]
+];

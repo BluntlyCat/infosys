@@ -1,0 +1,536 @@
+.TH "log4net.Core.LevelCollection" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Core.LevelCollection \- 
+.PP
+A strongly-typed collection of \fBLevel\fP objects\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits ICollection, IList, IEnumerable, and ICloneable\&.
+.PP
+Inherited by log4net\&.Core\&.LevelCollection\&.ReadOnlyLevelCollection\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "interface \fBILevelCollectionEnumerator\fP"
+.br
+.RI "\fISupports type-safe iteration over a \fBLevelCollection\fP\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLevelCollection\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fC\fBLevelCollection\fP\fP class that is empty and has the default initial capacity\&. \fP"
+.ti -1c
+.RI "\fBLevelCollection\fP (int capacity)"
+.br
+.RI "\fIInitializes a new instance of the \fC\fBLevelCollection\fP\fP class that has the specified initial capacity\&. \fP"
+.ti -1c
+.RI "\fBLevelCollection\fP (\fBLevelCollection\fP c)"
+.br
+.RI "\fIInitializes a new instance of the \fC\fBLevelCollection\fP\fP class that contains elements copied from the specified \fC\fBLevelCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "\fBLevelCollection\fP (\fBLevel\fP[] a)"
+.br
+.RI "\fIInitializes a new instance of the \fC\fBLevelCollection\fP\fP class that contains elements copied from the specified \fBLevel\fP array\&. \fP"
+.ti -1c
+.RI "\fBLevelCollection\fP (ICollection col)"
+.br
+.RI "\fIInitializes a new instance of the \fC\fBLevelCollection\fP\fP class that contains elements copied from the specified \fBLevel\fP collection\&. \fP"
+.ti -1c
+.RI "virtual void \fBCopyTo\fP (\fBLevel\fP[] array)"
+.br
+.RI "\fICopies the entire \fC\fBLevelCollection\fP\fP to a one-dimensional \fBLevel\fP array\&. \fP"
+.ti -1c
+.RI "virtual void \fBCopyTo\fP (\fBLevel\fP[] array, int start)"
+.br
+.RI "\fICopies the entire \fC\fBLevelCollection\fP\fP to a one-dimensional \fBLevel\fP array, starting at the specified index of the target array\&. \fP"
+.ti -1c
+.RI "virtual int \fBAdd\fP (\fBLevel\fP item)"
+.br
+.RI "\fIAdds a \fBLevel\fP to the end of the \fC\fBLevelCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual void \fBClear\fP ()"
+.br
+.RI "\fIRemoves all elements from the \fC\fBLevelCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual object \fBClone\fP ()"
+.br
+.RI "\fICreates a shallow copy of the \fBLevelCollection\fP\&. \fP"
+.ti -1c
+.RI "virtual bool \fBContains\fP (\fBLevel\fP item)"
+.br
+.RI "\fIDetermines whether a given \fBLevel\fP is in the \fC\fBLevelCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual int \fBIndexOf\fP (\fBLevel\fP item)"
+.br
+.RI "\fIReturns the zero-based index of the first occurrence of a \fBLevel\fP in the \fC\fBLevelCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual void \fBInsert\fP (int index, \fBLevel\fP item)"
+.br
+.RI "\fIInserts an element into the \fC\fBLevelCollection\fP\fP at the specified index\&. \fP"
+.ti -1c
+.RI "virtual void \fBRemove\fP (\fBLevel\fP item)"
+.br
+.RI "\fIRemoves the first occurrence of a specific \fBLevel\fP from the \fC\fBLevelCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual void \fBRemoveAt\fP (int index)"
+.br
+.RI "\fIRemoves the element at the specified index of the \fC\fBLevelCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual \fBILevelCollectionEnumerator\fP \fBGetEnumerator\fP ()"
+.br
+.RI "\fIReturns an enumerator that can iterate through the \fC\fBLevelCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual int \fBAddRange\fP (\fBLevelCollection\fP x)"
+.br
+.RI "\fIAdds the elements of another \fC\fBLevelCollection\fP\fP to the current \fC\fBLevelCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual int \fBAddRange\fP (\fBLevel\fP[] x)"
+.br
+.RI "\fIAdds the elements of a \fBLevel\fP array to the current \fC\fBLevelCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual int \fBAddRange\fP (ICollection col)"
+.br
+.RI "\fIAdds the elements of a \fBLevel\fP collection to the current \fC\fBLevelCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual void \fBTrimToSize\fP ()"
+.br
+.RI "\fISets the capacity to the actual number of elements\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBLevelCollection\fP \fBReadOnly\fP (\fBLevelCollection\fP list)"
+.br
+.RI "\fICreates a read-only wrapper for a \fC\fBLevelCollection\fP\fP instance\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual int \fBCount\fP\fC [get]\fP"
+.br
+.RI "\fIGets the number of elements actually contained in the \fC\fBLevelCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsSynchronized\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether access to the collection is synchronized (thread-safe)\&. \fP"
+.ti -1c
+.RI "virtual object \fBSyncRoot\fP\fC [get]\fP"
+.br
+.RI "\fIGets an object that can be used to synchronize access to the collection\&. \fP"
+.ti -1c
+.RI "virtual \fBLevel\fP \fBthis[int index]\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBLevel\fP at the specified index\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsFixedSize\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether the collection has a fixed size\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsReadOnly\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether the IList is read-only\&. \fP"
+.ti -1c
+.RI "virtual int \fBCapacity\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the number of elements the \fC\fBLevelCollection\fP\fP can contain\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A strongly-typed collection of \fBLevel\fP objects\&. 
+
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 29 of file LevelCollection\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Core\&.LevelCollection\&.LevelCollection ()"
+
+.PP
+Initializes a new instance of the \fC\fBLevelCollection\fP\fP class that is empty and has the default initial capacity\&. 
+.PP
+Definition at line 97 of file LevelCollection\&.cs\&.
+.SS "log4net\&.Core\&.LevelCollection\&.LevelCollection (intcapacity)"
+
+.PP
+Initializes a new instance of the \fC\fBLevelCollection\fP\fP class that has the specified initial capacity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcapacity\fP The number of elements that the new \fC\fBLevelCollection\fP\fP is initially capable of storing\&. 
+.RE
+.PP
+
+.PP
+Definition at line 109 of file LevelCollection\&.cs\&.
+.SS "log4net\&.Core\&.LevelCollection\&.LevelCollection (\fBLevelCollection\fPc)"
+
+.PP
+Initializes a new instance of the \fC\fBLevelCollection\fP\fP class that contains elements copied from the specified \fC\fBLevelCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIc\fP The \fC\fBLevelCollection\fP\fP whose elements are copied to the new collection\&.
+.RE
+.PP
+
+.PP
+Definition at line 119 of file LevelCollection\&.cs\&.
+.SS "log4net\&.Core\&.LevelCollection\&.LevelCollection (\fBLevel\fP[]a)"
+
+.PP
+Initializes a new instance of the \fC\fBLevelCollection\fP\fP class that contains elements copied from the specified \fBLevel\fP array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP The \fBLevel\fP array whose elements are copied to the new list\&.
+.RE
+.PP
+
+.PP
+Definition at line 130 of file LevelCollection\&.cs\&.
+.SS "log4net\&.Core\&.LevelCollection\&.LevelCollection (ICollectioncol)"
+
+.PP
+Initializes a new instance of the \fC\fBLevelCollection\fP\fP class that contains elements copied from the specified \fBLevel\fP collection\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcol\fP The \fBLevel\fP collection whose elements are copied to the new list\&.
+.RE
+.PP
+
+.PP
+Definition at line 141 of file LevelCollection\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual int log4net\&.Core\&.LevelCollection\&.Add (\fBLevel\fPitem)\fC [virtual]\fP"
+
+.PP
+Adds a \fBLevel\fP to the end of the \fC\fBLevelCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The \fBLevel\fP to be added to the end of the \fC\fBLevelCollection\fP\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The index at which the value has been added\&.
+.RE
+.PP
+
+.PP
+Definition at line 255 of file LevelCollection\&.cs\&.
+.SS "virtual int log4net\&.Core\&.LevelCollection\&.AddRange (\fBLevelCollection\fPx)\fC [virtual]\fP"
+
+.PP
+Adds the elements of another \fC\fBLevelCollection\fP\fP to the current \fC\fBLevelCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP The \fC\fBLevelCollection\fP\fP whose elements should be added to the end of the current \fC\fBLevelCollection\fP\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new \fBLevelCollection\&.Count\fP of the \fC\fBLevelCollection\fP\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 478 of file LevelCollection\&.cs\&.
+.SS "virtual int log4net\&.Core\&.LevelCollection\&.AddRange (\fBLevel\fP[]x)\fC [virtual]\fP"
+
+.PP
+Adds the elements of a \fBLevel\fP array to the current \fC\fBLevelCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP The \fBLevel\fP array whose elements should be added to the end of the \fC\fBLevelCollection\fP\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new \fBLevelCollection\&.Count\fP of the \fC\fBLevelCollection\fP\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 497 of file LevelCollection\&.cs\&.
+.SS "virtual int log4net\&.Core\&.LevelCollection\&.AddRange (ICollectioncol)\fC [virtual]\fP"
+
+.PP
+Adds the elements of a \fBLevel\fP collection to the current \fC\fBLevelCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcol\fP The \fBLevel\fP collection whose elements should be added to the end of the \fC\fBLevelCollection\fP\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new \fBLevelCollection\&.Count\fP of the \fC\fBLevelCollection\fP\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 516 of file LevelCollection\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LevelCollection\&.Clear ()\fC [virtual]\fP"
+
+.PP
+Removes all elements from the \fC\fBLevelCollection\fP\fP\&. 
+.PP
+Definition at line 271 of file LevelCollection\&.cs\&.
+.SS "virtual object log4net\&.Core\&.LevelCollection\&.Clone ()\fC [virtual]\fP"
+
+.PP
+Creates a shallow copy of the \fBLevelCollection\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A new \fBLevelCollection\fP with a shallow copy of the collection data\&.
+.RE
+.PP
+
+.PP
+Definition at line 282 of file LevelCollection\&.cs\&.
+.SS "virtual bool log4net\&.Core\&.LevelCollection\&.Contains (\fBLevel\fPitem)\fC [virtual]\fP"
+
+.PP
+Determines whether a given \fBLevel\fP is in the \fC\fBLevelCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The \fBLevel\fP to check for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fIitem\fP  is found in the \fC\fBLevelCollection\fP\fP; otherwise, \fCfalse\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 297 of file LevelCollection\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LevelCollection\&.CopyTo (\fBLevel\fP[]array)\fC [virtual]\fP"
+
+.PP
+Copies the entire \fC\fBLevelCollection\fP\fP to a one-dimensional \fBLevel\fP array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarray\fP The one-dimensional \fBLevel\fP array to copy to\&.
+.RE
+.PP
+
+.PP
+Definition at line 184 of file LevelCollection\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LevelCollection\&.CopyTo (\fBLevel\fP[]array, intstart)\fC [virtual]\fP"
+
+.PP
+Copies the entire \fC\fBLevelCollection\fP\fP to a one-dimensional \fBLevel\fP array, starting at the specified index of the target array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarray\fP The one-dimensional \fBLevel\fP array to copy to\&.
+.br
+\fIstart\fP The zero-based index in \fIarray\fP  at which copying begins\&.
+.RE
+.PP
+
+.PP
+Definition at line 195 of file LevelCollection\&.cs\&.
+.SS "virtual \fBILevelCollectionEnumerator\fP log4net\&.Core\&.LevelCollection\&.GetEnumerator ()\fC [virtual]\fP"
+
+.PP
+Returns an enumerator that can iterate through the \fC\fBLevelCollection\fP\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An Enumerator for the entire \fC\fBLevelCollection\fP\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 432 of file LevelCollection\&.cs\&.
+.SS "virtual int log4net\&.Core\&.LevelCollection\&.IndexOf (\fBLevel\fPitem)\fC [virtual]\fP"
+
+.PP
+Returns the zero-based index of the first occurrence of a \fBLevel\fP in the \fC\fBLevelCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The \fBLevel\fP to locate in the \fC\fBLevelCollection\fP\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The zero-based index of the first occurrence of \fIitem\fP  in the entire \fC\fBLevelCollection\fP\fP, if found; otherwise, -1\&. 
+.RE
+.PP
+
+.PP
+Definition at line 318 of file LevelCollection\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LevelCollection\&.Insert (intindex, \fBLevel\fPitem)\fC [virtual]\fP"
+
+.PP
+Inserts an element into the \fC\fBLevelCollection\fP\fP at the specified index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The zero-based index at which \fIitem\fP  should be inserted\&.
+.br
+\fIitem\fP The \fBLevel\fP to insert\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentOutOfRangeException\fP \fIindex\fP  is less than zero
+.PP
+-or-
+.PP
+\fIindex\fP  is equal to or greater than \fBLevelCollection\&.Count\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 340 of file LevelCollection\&.cs\&.
+.SS "static \fBLevelCollection\fP log4net\&.Core\&.LevelCollection\&.ReadOnly (\fBLevelCollection\fPlist)\fC [static]\fP"
+
+.PP
+Creates a read-only wrapper for a \fC\fBLevelCollection\fP\fP instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlist\fP list to create a readonly wrapper arround
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fC\fBLevelCollection\fP\fP wrapper that is read-only\&. 
+.RE
+.PP
+
+.PP
+Definition at line 82 of file LevelCollection\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LevelCollection\&.Remove (\fBLevel\fPitem)\fC [virtual]\fP"
+
+.PP
+Removes the first occurrence of a specific \fBLevel\fP from the \fC\fBLevelCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The \fBLevel\fP to remove from the \fC\fBLevelCollection\fP\fP\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP The specified \fBLevel\fP was not found in the \fC\fBLevelCollection\fP\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 366 of file LevelCollection\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LevelCollection\&.RemoveAt (intindex)\fC [virtual]\fP"
+
+.PP
+Removes the element at the specified index of the \fC\fBLevelCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The zero-based index of the element to remove\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentOutOfRangeException\fP \fIindex\fP  is less than zero
+.PP
+-or-
+.PP
+\fIindex\fP  is equal to or greater than \fBLevelCollection\&.Count\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 387 of file LevelCollection\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LevelCollection\&.TrimToSize ()\fC [virtual]\fP"
+
+.PP
+Sets the capacity to the actual number of elements\&. 
+.PP
+Definition at line 534 of file LevelCollection\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual int log4net\&.Core\&.LevelCollection\&.Capacity\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the number of elements the \fC\fBLevelCollection\fP\fP can contain\&. 
+.PP
+Definition at line 445 of file LevelCollection\&.cs\&.
+.SS "virtual int log4net\&.Core\&.LevelCollection\&.Count\fC [get]\fP"
+
+.PP
+Gets the number of elements actually contained in the \fC\fBLevelCollection\fP\fP\&. 
+.PP
+Definition at line 175 of file LevelCollection\&.cs\&.
+.SS "virtual bool log4net\&.Core\&.LevelCollection\&.IsFixedSize\fC [get]\fP"
+
+.PP
+Gets a value indicating whether the collection has a fixed size\&. true if the collection has a fixed size; otherwise, false\&. The default is false
+.PP
+Definition at line 411 of file LevelCollection\&.cs\&.
+.SS "virtual bool log4net\&.Core\&.LevelCollection\&.IsReadOnly\fC [get]\fP"
+
+.PP
+Gets a value indicating whether the IList is read-only\&. true if the collection is read-only; otherwise, false\&. The default is false
+.PP
+Definition at line 420 of file LevelCollection\&.cs\&.
+.SS "virtual bool log4net\&.Core\&.LevelCollection\&.IsSynchronized\fC [get]\fP"
+
+.PP
+Gets a value indicating whether access to the collection is synchronized (thread-safe)\&. true if access to the ICollection is synchronized (thread-safe); otherwise, false\&.
+.PP
+Definition at line 210 of file LevelCollection\&.cs\&.
+.SS "virtual object log4net\&.Core\&.LevelCollection\&.SyncRoot\fC [get]\fP"
+
+.PP
+Gets an object that can be used to synchronize access to the collection\&. 
+.PP
+Definition at line 218 of file LevelCollection\&.cs\&.
+.SS "virtual \fBLevel\fP log4net\&.Core\&.LevelCollection\&.this[int index]\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBLevel\fP at the specified index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The zero-based index of the element to get or set\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentOutOfRangeException\fP \fIindex\fP  is less than zero
+.PP
+-or-
+.PP
+\fIindex\fP  is equal to or greater than \fBLevelCollection\&.Count\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 236 of file LevelCollection\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

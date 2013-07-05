@@ -1,0 +1,148 @@
+.TH "NHibernate.IDatabinder" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.IDatabinder \- 
+.PP
+Provides XML marshalling for classes registered with a \fCSessionFactory\fP  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIDatabinder\fP \fBBind\fP (object obj)"
+.br
+.RI "\fIAdd an object to the output document\&. \fP"
+.ti -1c
+.RI "\fBIDatabinder\fP \fBBindAll\fP (ICollection objs)"
+.br
+.RI "\fIAdd a collection of objects to the output document \fP"
+.ti -1c
+.RI "string \fBToGenericXml\fP ()"
+.br
+.RI "\fIOutput the generic XML representation of the bound objects \fP"
+.ti -1c
+.RI "XmlDocument \fBToGenericXmlDocument\fP ()"
+.br
+.RI "\fIOutput the generic XML Representation of the bound objects to a \fCXmlDocument\fP \fP"
+.ti -1c
+.RI "string \fBToXML\fP ()"
+.br
+.RI "\fIOutput the custom XML representation of the bound objects \fP"
+.ti -1c
+.RI "XmlDocument \fBToXmlDocument\fP ()"
+.br
+.RI "\fIOutput the custom XML representation of the bound objects as an \fCXmlDocument\fP \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBInitializeLazy\fP\fC [get, set]\fP"
+.br
+.RI "\fIControls whether bound objects (and their associated objects) that are lazily instanciated are explicityl initialized or left as they are \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Provides XML marshalling for classes registered with a \fCSessionFactory\fP 
+
+Hibernate defines a generic XML format that may be used to represent any class (\fChibernate-generic\&.dtd\fP)\&. The user configures an XSLT stylesheet for marshalling data from this generic format to an application and/or user readable format\&. By default, Hibernate will use \fChibernate-default\&.xslt\fP which maps data to a useful human- readable format\&. 
+.PP
+The property \fCxml\&.output_stylesheet\fP specifies a user-written stylesheet\&. Hibernate will attempt to load the stylesheet from the classpath first and if not found, will attempt to load it as a file 
+.PP
+It is not intended that implementors be threadsafe 
+.PP
+Definition at line 26 of file IDatabinder\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIDatabinder\fP NHibernate\&.IDatabinder\&.Bind (objectobj)"
+
+.PP
+Add an object to the output document\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP A transient or persistent instance
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Databinder
+.RE
+.PP
+
+.SS "\fBIDatabinder\fP NHibernate\&.IDatabinder\&.BindAll (ICollectionobjs)"
+
+.PP
+Add a collection of objects to the output document 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobjs\fP A collection of transient or persistent instance
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Databinder
+.RE
+.PP
+
+.SS "string NHibernate\&.IDatabinder\&.ToGenericXml ()"
+
+.PP
+Output the generic XML representation of the bound objects 
+.PP
+\fBReturns:\fP
+.RS 4
+Generic Xml representation
+.RE
+.PP
+
+.SS "XmlDocument NHibernate\&.IDatabinder\&.ToGenericXmlDocument ()"
+
+.PP
+Output the generic XML Representation of the bound objects to a \fCXmlDocument\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+A generic Xml tree
+.RE
+.PP
+
+.SS "string NHibernate\&.IDatabinder\&.ToXML ()"
+
+.PP
+Output the custom XML representation of the bound objects 
+.PP
+\fBReturns:\fP
+.RS 4
+Custom Xml representation
+.RE
+.PP
+
+.SS "XmlDocument NHibernate\&.IDatabinder\&.ToXmlDocument ()"
+
+.PP
+Output the custom XML representation of the bound objects as an \fCXmlDocument\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+A custom Xml Tree
+.RE
+.PP
+
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.IDatabinder\&.InitializeLazy\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Controls whether bound objects (and their associated objects) that are lazily instanciated are explicityl initialized or left as they are True to explicitly initilize lazy objects, false to leave them in the state they are in
+.PP
+Definition at line 73 of file IDatabinder\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

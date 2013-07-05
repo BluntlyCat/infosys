@@ -1,0 +1,139 @@
+.TH "NHibernate.Criterion.MatchMode" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.MatchMode \- 
+.PP
+Represents an strategy for matching strings using 'like'\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by NHibernate\&.Criterion\&.MatchMode\&.AnywhereMatchMode, NHibernate\&.Criterion\&.MatchMode\&.EndMatchMode, NHibernate\&.Criterion\&.MatchMode\&.ExactMatchMode, and NHibernate\&.Criterion\&.MatchMode\&.StartMatchMode\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIThe string representation of the \fBMatchMode\fP\&. \fP"
+.ti -1c
+.RI "abstract string \fBToMatchString\fP (string pattern)"
+.br
+.RI "\fIConvert the pattern, by appending/prepending '%' \fP"
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly \fBMatchMode\fP \fBExact\fP = new ExactMatchMode()"
+.br
+.RI "\fIMatch the entire string to the pattern \fP"
+.ti -1c
+.RI "static readonly \fBMatchMode\fP \fBStart\fP = new StartMatchMode()"
+.br
+.RI "\fIMatch the start of the string to the pattern \fP"
+.ti -1c
+.RI "static readonly \fBMatchMode\fP \fBEnd\fP = new EndMatchMode()"
+.br
+.RI "\fIMatch the end of the string to the pattern \fP"
+.ti -1c
+.RI "static readonly \fBMatchMode\fP \fBAnywhere\fP = new AnywhereMatchMode()"
+.br
+.RI "\fIMatch the pattern anywhere in the string \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMatchMode\fP (int intCode, string name)"
+.br
+.RI "\fIInitialize a new instance of the \fBMatchMode\fP class\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents an strategy for matching strings using 'like'\&. 
+
+
+.PP
+Definition at line 9 of file MatchMode\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Criterion\&.MatchMode\&.MatchMode (intintCode, stringname)\fC [protected]\fP"
+
+.PP
+Initialize a new instance of the \fBMatchMode\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIintCode\fP The code that identifies the match mode\&.
+.br
+\fIname\fP The friendly name of the match mode\&.
+.RE
+.PP
+.PP
+The parameter \fCintCode\fP is used as the key of IDictionary to store instances and to ensure only instance of a particular \fBMatchMode\fP is created\&. 
+.PP
+Definition at line 33 of file MatchMode\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract string NHibernate\&.Criterion\&.MatchMode\&.ToMatchString (stringpattern)\fC [pure virtual]\fP"
+
+.PP
+Convert the pattern, by appending/prepending '%' 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpattern\fP The string to convert to the appropriate match pattern\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A String that contains a '%' in the appropriate place for the Match Strategy\&. 
+.RE
+.PP
+
+.SS "override string NHibernate\&.Criterion\&.MatchMode\&.ToString ()"
+
+.PP
+The string representation of the \fBMatchMode\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The friendly name used to describe the \fBMatchMode\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 45 of file MatchMode\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly \fBMatchMode\fP NHibernate\&.Criterion\&.MatchMode\&.Anywhere = new AnywhereMatchMode()\fC [static]\fP"
+
+.PP
+Match the pattern anywhere in the string 
+.PP
+Definition at line 87 of file MatchMode\&.cs\&.
+.SS "readonly \fBMatchMode\fP NHibernate\&.Criterion\&.MatchMode\&.End = new EndMatchMode()\fC [static]\fP"
+
+.PP
+Match the end of the string to the pattern 
+.PP
+Definition at line 82 of file MatchMode\&.cs\&.
+.SS "readonly \fBMatchMode\fP NHibernate\&.Criterion\&.MatchMode\&.Exact = new ExactMatchMode()\fC [static]\fP"
+
+.PP
+Match the entire string to the pattern 
+.PP
+Definition at line 72 of file MatchMode\&.cs\&.
+.SS "readonly \fBMatchMode\fP NHibernate\&.Criterion\&.MatchMode\&.Start = new StartMatchMode()\fC [static]\fP"
+
+.PP
+Match the start of the string to the pattern 
+.PP
+Definition at line 77 of file MatchMode\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

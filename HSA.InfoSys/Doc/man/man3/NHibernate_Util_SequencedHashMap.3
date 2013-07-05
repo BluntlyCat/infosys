@@ -1,0 +1,395 @@
+.TH "NHibernate.Util.SequencedHashMap" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Util.SequencedHashMap \- 
+.PP
+A map of objects whose mapping entries are sequenced based on the order in which they were added\&. This data structure has fast \fCO(1)\fP search time, deletion time, and insertion time  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDictionary, and IDeserializationCallback\&.
+.PP
+Inherited by \fBNHibernate\&.Util\&.LRUMap\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSequencedHashMap\fP ()"
+.br
+.RI "\fIConstruct a new sequenced hash map with default initial size and load factor \fP"
+.ti -1c
+.RI "\fBSequencedHashMap\fP (int capacity)"
+.br
+.RI "\fIConstruct a new sequenced hash map with the specified initial size and default load factor \fP"
+.ti -1c
+.RI "\fBSequencedHashMap\fP (int capacity, float loadFactor)"
+.br
+.RI "\fIConstruct a new sequenced hash map with the specified initial size and load factor \fP"
+.ti -1c
+.RI "\fBSequencedHashMap\fP (int capacity, IEqualityComparer equalityComparer)"
+.br
+.RI "\fIConstruct a new sequenced hash map with the specified initial size, hash code provider and comparer \fP"
+.ti -1c
+.RI "\fBSequencedHashMap\fP (IEqualityComparer equalityComparer)"
+.br
+.RI "\fICreates an empty Hashtable with the default initial capacity and using the default load factor, the specified hash code provider and the specified comparer \fP"
+.ti -1c
+.RI "\fBSequencedHashMap\fP (int capacity, float loadFactor, IEqualityComparer equalityComparer)"
+.br
+.RI "\fICreates an empty Hashtable with the default initial capacity and using the default load factor, the specified hash code provider and the specified comparer \fP"
+.ti -1c
+.RI "virtual void \fBAdd\fP (object key, object value)"
+.br
+.ti -1c
+.RI "virtual void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBContains\fP (object key)"
+.br
+.ti -1c
+.RI "virtual IDictionaryEnumerator \fBGetEnumerator\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRemove\fP (object key)"
+.br
+.ti -1c
+.RI "virtual void \fBCopyTo\fP (Array array, int index)"
+.br
+.ti -1c
+.RI "virtual bool \fBContainsKey\fP (object key)"
+.br
+.ti -1c
+.RI "virtual bool \fBContainsValue\fP (object value)"
+.br
+.ti -1c
+.RI "void \fBOnDeserialization\fP (object sender)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBIsFixedSize\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsReadOnly\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual object \fBthis[object o]\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual ICollection \fBKeys\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual ICollection \fBValues\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBCount\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsSynchronized\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual object \fBSyncRoot\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual object \fBFirstKey\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual object \fBFirstValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual object \fBLastKey\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual object \fBLastValue\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A map of objects whose mapping entries are sequenced based on the order in which they were added\&. This data structure has fast \fCO(1)\fP search time, deletion time, and insertion time 
+
+This class is not thread safe\&. 
+.PP
+Definition at line 82 of file SequencedHashMap\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Util\&.SequencedHashMap\&.SequencedHashMap ()"
+
+.PP
+Construct a new sequenced hash map with default initial size and load factor 
+.PP
+Definition at line 180 of file SequencedHashMap\&.cs\&.
+.SS "NHibernate\&.Util\&.SequencedHashMap\&.SequencedHashMap (intcapacity)"
+
+.PP
+Construct a new sequenced hash map with the specified initial size and default load factor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcapacity\fP the initial size for the hash table
+.RE
+.PP
+
+.PP
+Definition at line 189 of file SequencedHashMap\&.cs\&.
+.SS "NHibernate\&.Util\&.SequencedHashMap\&.SequencedHashMap (intcapacity, floatloadFactor)"
+
+.PP
+Construct a new sequenced hash map with the specified initial size and load factor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcapacity\fP the initial size for the hashtable
+.br
+\fIloadFactor\fP the load factor for the hash table
+.RE
+.PP
+
+.PP
+Definition at line 199 of file SequencedHashMap\&.cs\&.
+.SS "NHibernate\&.Util\&.SequencedHashMap\&.SequencedHashMap (intcapacity, IEqualityComparerequalityComparer)"
+
+.PP
+Construct a new sequenced hash map with the specified initial size, hash code provider and comparer 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcapacity\fP the initial size for the hashtable
+.br
+\fIequalityComparer\fP 
+.RE
+.PP
+
+.PP
+Definition at line 210 of file SequencedHashMap\&.cs\&.
+.SS "NHibernate\&.Util\&.SequencedHashMap\&.SequencedHashMap (IEqualityComparerequalityComparer)"
+
+.PP
+Creates an empty Hashtable with the default initial capacity and using the default load factor, the specified hash code provider and the specified comparer 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIequalityComparer\fP 
+.RE
+.PP
+
+.PP
+Definition at line 220 of file SequencedHashMap\&.cs\&.
+.SS "NHibernate\&.Util\&.SequencedHashMap\&.SequencedHashMap (intcapacity, floatloadFactor, IEqualityComparerequalityComparer)"
+
+.PP
+Creates an empty Hashtable with the default initial capacity and using the default load factor, the specified hash code provider and the specified comparer 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcapacity\fP the initial size for the hashtable
+.br
+\fIloadFactor\fP the load factor for the hash table
+.br
+\fIequalityComparer\fP 
+.RE
+.PP
+
+.PP
+Definition at line 232 of file SequencedHashMap\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Util\&.SequencedHashMap\&.Add (objectkey, objectvalue)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP 
+.br
+\fIvalue\fP 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Util\&.LRUMap\fP\&.
+.PP
+Definition at line 323 of file SequencedHashMap\&.cs\&.
+.SS "virtual void NHibernate\&.Util\&.SequencedHashMap\&.Clear ()\fC [virtual]\fP"
+
+.PP
+
+.PP
+Definition at line 329 of file SequencedHashMap\&.cs\&.
+.SS "virtual bool NHibernate\&.Util\&.SequencedHashMap\&.Contains (objectkey)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 344 of file SequencedHashMap\&.cs\&.
+.SS "virtual bool NHibernate\&.Util\&.SequencedHashMap\&.ContainsKey (objectkey)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 421 of file SequencedHashMap\&.cs\&.
+.SS "virtual bool NHibernate\&.Util\&.SequencedHashMap\&.ContainsValue (objectvalue)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 431 of file SequencedHashMap\&.cs\&.
+.SS "virtual void NHibernate\&.Util\&.SequencedHashMap\&.CopyTo (Arrayarray, intindex)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarray\fP 
+.br
+\fIindex\fP 
+.RE
+.PP
+
+.PP
+Definition at line 391 of file SequencedHashMap\&.cs\&.
+.SS "virtual IDictionaryEnumerator NHibernate\&.Util\&.SequencedHashMap\&.GetEnumerator ()\fC [virtual]\fP"
+
+.PP
+
+.PP
+Definition at line 350 of file SequencedHashMap\&.cs\&.
+.SS "virtual void NHibernate\&.Util\&.SequencedHashMap\&.Remove (objectkey)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP 
+.RE
+.PP
+
+.PP
+Definition at line 359 of file SequencedHashMap\&.cs\&.
+.SS "override string NHibernate\&.Util\&.SequencedHashMap\&.ToString ()"
+
+.PP
+
+.PP
+Definition at line 508 of file SequencedHashMap\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual int NHibernate\&.Util\&.SequencedHashMap\&.Count\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 370 of file SequencedHashMap\&.cs\&.
+.SS "virtual object NHibernate\&.Util\&.SequencedHashMap\&.FirstKey\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 458 of file SequencedHashMap\&.cs\&.
+.SS "virtual object NHibernate\&.Util\&.SequencedHashMap\&.FirstValue\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 464 of file SequencedHashMap\&.cs\&.
+.SS "virtual bool NHibernate\&.Util\&.SequencedHashMap\&.IsFixedSize\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 266 of file SequencedHashMap\&.cs\&.
+.SS "virtual bool NHibernate\&.Util\&.SequencedHashMap\&.IsReadOnly\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 272 of file SequencedHashMap\&.cs\&.
+.SS "virtual bool NHibernate\&.Util\&.SequencedHashMap\&.IsSynchronized\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 376 of file SequencedHashMap\&.cs\&.
+.SS "virtual ICollection NHibernate\&.Util\&.SequencedHashMap\&.Keys\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 308 of file SequencedHashMap\&.cs\&.
+.SS "virtual object NHibernate\&.Util\&.SequencedHashMap\&.LastKey\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 475 of file SequencedHashMap\&.cs\&.
+.SS "virtual object NHibernate\&.Util\&.SequencedHashMap\&.LastValue\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 481 of file SequencedHashMap\&.cs\&.
+.SS "virtual object NHibernate\&.Util\&.SequencedHashMap\&.SyncRoot\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 382 of file SequencedHashMap\&.cs\&.
+.SS "virtual object NHibernate\&.Util\&.SequencedHashMap\&.this[object o]\fC [get]\fP, \fC [set]\fP"
+
+.PP
+
+.PP
+Definition at line 278 of file SequencedHashMap\&.cs\&.
+.SS "virtual ICollection NHibernate\&.Util\&.SequencedHashMap\&.Values\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 314 of file SequencedHashMap\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

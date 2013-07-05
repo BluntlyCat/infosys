@@ -1,0 +1,226 @@
+.TH "NHibernate.Engine.EntityEntry" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.EntityEntry \- 
+.PP
+We need an entry to tell us all about the current state of an object with respect to its persistent state  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBGetLoadedValue\fP (string propertyName)"
+.br
+.ti -1c
+.RI "void \fBPostInsert\fP ()"
+.br
+.RI "\fIAfter actually inserting a row, record the fact that the instance exists on the database (needed for identity-column key generation) \fP"
+.ti -1c
+.RI "void \fBPostUpdate\fP (object entity, object[] updatedState, object nextVersion)"
+.br
+.RI "\fIAfter actually updating the database, update the snapshot information, and escalate the lock mode\&. \fP"
+.ti -1c
+.RI "void \fBPostDelete\fP ()"
+.br
+.RI "\fIAfter actually deleting a row, record the fact that the instance no longer exists in the database \fP"
+.ti -1c
+.RI "void \fBForceLocked\fP (object entity, object nextVersion)"
+.br
+.ti -1c
+.RI "bool \fBIsNullifiable\fP (bool earlyInsert, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "bool \fBRequiresDirtyCheck\fP (object entity)"
+.br
+.ti -1c
+.RI "bool \fBIsModifiableEntity\fP ()"
+.br
+.RI "\fICan the entity be modified? The entity is modifiable if all of the following are true: \fP"
+.ti -1c
+.RI "void \fBSetReadOnly\fP (bool readOnly, object entity)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBLockMode\fP \fBLockMode\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the current \fBLockMode\fP of the Entity\&. \fP"
+.ti -1c
+.RI "\fBStatus\fP \fBStatus\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBStatus\fP of this Entity with respect to its persistence in the database\&. \fP"
+.ti -1c
+.RI "object \fBId\fP\fC [get]\fP"
+.br
+.RI "\fIGets or sets the identifier of the Entity in the database\&. \fP"
+.ti -1c
+.RI "object[] \fBLoadedState\fP\fC [get]\fP"
+.br
+.RI "\fIGets or sets the snapshot of the Entity when it was loaded from the database\&. \fP"
+.ti -1c
+.RI "object[] \fBDeletedState\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the snapshot of the Entity when it was marked as being ready for deletion\&. \fP"
+.ti -1c
+.RI "bool \fBExistsInDatabase\fP\fC [get]\fP"
+.br
+.RI "\fIGets or sets a Boolean indicating if this Entity exists in the database\&. \fP"
+.ti -1c
+.RI "object \fBVersion\fP\fC [get]\fP"
+.br
+.RI "\fIGets or sets the version of the Entity\&. \fP"
+.ti -1c
+.RI "\fBIEntityPersister\fP \fBPersister\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the IEntityPersister that is responsible for this Entity\&. \fP"
+.ti -1c
+.RI "string \fBEntityName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the Fully Qualified Name of the class this Entity is an instance of\&. \fP"
+.ti -1c
+.RI "bool \fBIsBeingReplicated\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "object \fBRowId\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBLoadedWithLazyPropertiesUnfetched\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBEntityKey\fP \fBEntityKey\fP\fC [get]\fP"
+.br
+.RI "\fIGet the \fBEntityKey\fP based on this \fBEntityEntry\fP\&. \fP"
+.ti -1c
+.RI "bool \fBIsReadOnly\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+We need an entry to tell us all about the current state of an object with respect to its persistent state 
+
+
+.PP
+Definition at line 13 of file EntityEntry\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool NHibernate\&.Engine\&.EntityEntry\&.IsModifiableEntity ()"
+
+.PP
+Can the entity be modified? The entity is modifiable if all of the following are true: 
+.IP "\(bu" 2
+the entity class is mutable
+.IP "\(bu" 2
+the entity is not read-only
+.IP "\(bu" 2
+if the current status is Status\&.Deleted, then the entity was not read-only when it was deleted 
+.PP
+.PP
+\fBReturns:\fP
+.RS 4
+true, if the entity is modifiable; false, otherwise
+.RE
+.PP
+
+.PP
+Definition at line 282 of file EntityEntry\&.cs\&.
+.SS "void NHibernate\&.Engine\&.EntityEntry\&.PostDelete ()"
+
+.PP
+After actually deleting a row, record the fact that the instance no longer exists in the database 
+.PP
+Definition at line 246 of file EntityEntry\&.cs\&.
+.SS "void NHibernate\&.Engine\&.EntityEntry\&.PostInsert ()"
+
+.PP
+After actually inserting a row, record the fact that the instance exists on the database (needed for identity-column key generation) 
+.PP
+Definition at line 219 of file EntityEntry\&.cs\&.
+.SS "void NHibernate\&.Engine\&.EntityEntry\&.PostUpdate (objectentity, object[]updatedState, objectnextVersion)"
+
+.PP
+After actually updating the database, update the snapshot information, and escalate the lock mode\&. 
+.PP
+Definition at line 228 of file EntityEntry\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "object [] NHibernate\&.Engine\&.EntityEntry\&.DeletedState\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the snapshot of the Entity when it was marked as being ready for deletion\&. The snapshot of the Entity\&.
+.PP
+This will be  if the Entity is not being deleted\&.
+.PP
+Definition at line 130 of file EntityEntry\&.cs\&.
+.SS "\fBEntityKey\fP NHibernate\&.Engine\&.EntityEntry\&.EntityKey\fC [get]\fP"
+
+.PP
+Get the \fBEntityKey\fP based on this \fBEntityEntry\fP\&. 
+.PP
+Definition at line 195 of file EntityEntry\&.cs\&.
+.SS "string NHibernate\&.Engine\&.EntityEntry\&.EntityName\fC [get]\fP"
+
+.PP
+Gets the Fully Qualified Name of the class this Entity is an instance of\&. The Fully Qualified Name of the class this Entity is an instance of\&.
+.PP
+Definition at line 172 of file EntityEntry\&.cs\&.
+.SS "bool NHibernate\&.Engine\&.EntityEntry\&.ExistsInDatabase\fC [get]\fP"
+
+.PP
+Gets or sets a Boolean indicating if this Entity exists in the database\&. if it is already in the database\&.
+.PP
+It can also be  if it does not exists in the database yet and the IEntityPersister\&.IsIdentifierAssignedByInsert is \&. 
+.PP
+Definition at line 144 of file EntityEntry\&.cs\&.
+.SS "object NHibernate\&.Engine\&.EntityEntry\&.Id\fC [get]\fP"
+
+.PP
+Gets or sets the identifier of the Entity in the database\&. The identifier of the Entity in the database if one has been assigned\&.
+.PP
+This might be  when the \fBEntityEntry\&.Status\fP is Engine\&.Status\&.Saving and the database generates the id\&.
+.PP
+Definition at line 108 of file EntityEntry\&.cs\&.
+.SS "object [] NHibernate\&.Engine\&.EntityEntry\&.LoadedState\fC [get]\fP"
+
+.PP
+Gets or sets the snapshot of the Entity when it was loaded from the database\&. The snapshot of the Entity\&.
+.PP
+There will only be a value when the Entity was loaded in the current Session\&. 
+.PP
+Definition at line 120 of file EntityEntry\&.cs\&.
+.SS "\fBLockMode\fP NHibernate\&.Engine\&.EntityEntry\&.LockMode\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the current \fBLockMode\fP of the Entity\&. The \fBLockMode\fP of the Entity\&.
+.PP
+Definition at line 75 of file EntityEntry\&.cs\&.
+.SS "\fBIEntityPersister\fP NHibernate\&.Engine\&.EntityEntry\&.Persister\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the IEntityPersister that is responsible for this Entity\&. The IEntityPersister that is responsible for this Entity\&.
+.PP
+Definition at line 162 of file EntityEntry\&.cs\&.
+.SS "\fBStatus\fP NHibernate\&.Engine\&.EntityEntry\&.Status\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBStatus\fP of this Entity with respect to its persistence in the database\&. The \fBStatus\fP of this Entity\&.
+.PP
+Definition at line 86 of file EntityEntry\&.cs\&.
+.SS "object NHibernate\&.Engine\&.EntityEntry\&.Version\fC [get]\fP"
+
+.PP
+Gets or sets the version of the Entity\&. The version of the Entity\&.
+.PP
+Definition at line 153 of file EntityEntry\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

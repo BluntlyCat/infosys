@@ -1,0 +1,78 @@
+.TH "log4net.Util.TypeConverters.IConvertFrom" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.TypeConverters.IConvertFrom \- 
+.PP
+Interface supported by type converters  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBlog4net\&.Layout\&.RawLayoutConverter\fP, log4net\&.Util\&.TypeConverters\&.BooleanConverter, log4net\&.Util\&.TypeConverters\&.EncodingConverter, log4net\&.Util\&.TypeConverters\&.IPAddressConverter, log4net\&.Util\&.TypeConverters\&.PatternLayoutConverter, log4net\&.Util\&.TypeConverters\&.PatternStringConverter, and log4net\&.Util\&.TypeConverters\&.TypeConverter\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBCanConvertFrom\fP (Type sourceType)"
+.br
+.RI "\fICan the source type be converted to the type supported by this object \fP"
+.ti -1c
+.RI "object \fBConvertFrom\fP (object source)"
+.br
+.RI "\fIConvert the source object to the type supported by this object \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Interface supported by type converters 
+
+This interface supports conversion from arbitrary types to a single target type\&. See \fBTypeConverterAttribute\fP\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 35 of file IConvertFrom\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool log4net\&.Util\&.TypeConverters\&.IConvertFrom\&.CanConvertFrom (TypesourceType)"
+
+.PP
+Can the source type be converted to the type supported by this object 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsourceType\fP the type to convert
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the conversion is possible
+.RE
+.PP
+.PP
+Test if the \fIsourceType\fP  can be converted to the type supported by this converter\&. 
+.PP
+Implemented in \fBlog4net\&.Layout\&.RawLayoutConverter\fP\&.
+.SS "object log4net\&.Util\&.TypeConverters\&.IConvertFrom\&.ConvertFrom (objectsource)"
+
+.PP
+Convert the source object to the type supported by this object 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP the object to convert
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the converted object
+.RE
+.PP
+.PP
+Converts the \fIsource\fP  to the type supported by this converter\&. 
+.PP
+Implemented in \fBlog4net\&.Layout\&.RawLayoutConverter\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

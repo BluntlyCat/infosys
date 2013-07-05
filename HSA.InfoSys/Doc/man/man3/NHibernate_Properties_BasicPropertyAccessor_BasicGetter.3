@@ -1,0 +1,156 @@
+.TH "NHibernate.Properties.BasicPropertyAccessor.BasicGetter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Properties.BasicPropertyAccessor.BasicGetter \- 
+.PP
+An \fBIGetter\fP for a Property \fCget\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Properties\&.IGetter\fP, and \fBNHibernate\&.Properties\&.IOptimizableGetter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBasicGetter\fP (System\&.Type clazz, PropertyInfo property, string propertyName)"
+.br
+.RI "\fIInitializes a new instance of \fBBasicGetter\fP\&. \fP"
+.ti -1c
+.RI "object \fBGet\fP (object target)"
+.br
+.RI "\fIGets the value of the Property from the object\&. \fP"
+.ti -1c
+.RI "object \fBGetForInsert\fP (object owner, IDictionary mergeMap, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGet the property value from the given owner instance\&. \fP"
+.ti -1c
+.RI "void \fBEmit\fP (ILGenerator il)"
+.br
+.RI "\fIEmit IL to get the property value from the object on top of the stack\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "PropertyInfo \fBProperty\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "System\&.Type \fBReturnType\fP\fC [get]\fP"
+.br
+.RI "\fIGets the System\&.Type that the Property returns\&. \fP"
+.ti -1c
+.RI "string \fBPropertyName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the name of the Property\&. \fP"
+.ti -1c
+.RI "MethodInfo \fBMethod\fP\fC [get]\fP"
+.br
+.RI "\fIGets the PropertyInfo for the Property\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An \fBIGetter\fP for a Property \fCget\fP\&. 
+
+
+.PP
+Definition at line 170 of file BasicPropertyAccessor\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Properties\&.BasicPropertyAccessor\&.BasicGetter\&.BasicGetter (System\&.Typeclazz, PropertyInfoproperty, stringpropertyName)"
+
+.PP
+Initializes a new instance of \fBBasicGetter\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclazz\fP The System\&.Type that contains the Property \fCget\fP\&.
+.br
+\fIproperty\fP The PropertyInfo for reflection\&.
+.br
+\fIpropertyName\fP The name of the Property\&.
+.RE
+.PP
+
+.PP
+Definition at line 182 of file BasicPropertyAccessor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Properties\&.BasicPropertyAccessor\&.BasicGetter\&.Emit (ILGeneratoril)"
+
+.PP
+Emit IL to get the property value from the object on top of the stack\&. 
+.PP
+Implements \fBNHibernate\&.Properties\&.IOptimizableGetter\fP\&.
+.PP
+Definition at line 251 of file BasicPropertyAccessor\&.cs\&.
+.SS "object NHibernate\&.Properties\&.BasicPropertyAccessor\&.BasicGetter\&.Get (objecttarget)"
+
+.PP
+Gets the value of the Property from the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItarget\fP The object to get the Property value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value of the Property for the target\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.IGetter\fP\&.
+.PP
+Definition at line 203 of file BasicPropertyAccessor\&.cs\&.
+.SS "object NHibernate\&.Properties\&.BasicPropertyAccessor\&.BasicGetter\&.GetForInsert (objectowner, IDictionarymergeMap, \fBISessionImplementor\fPsession)"
+
+.PP
+Get the property value from the given owner instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIowner\fP The instance containing the value to be retrieved\&. 
+.br
+\fImergeMap\fP a map of merged persistent instances to detached instances 
+.br
+\fIsession\fP The session from which this request originated\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The extracted value\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.IGetter\fP\&.
+.PP
+Definition at line 244 of file BasicPropertyAccessor\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "MethodInfo NHibernate\&.Properties\&.BasicPropertyAccessor\&.BasicGetter\&.Method\fC [get]\fP"
+
+.PP
+Gets the PropertyInfo for the Property\&. The PropertyInfo for the Property\&. 
+.PP
+Definition at line 240 of file BasicPropertyAccessor\&.cs\&.
+.SS "string NHibernate\&.Properties\&.BasicPropertyAccessor\&.BasicGetter\&.PropertyName\fC [get]\fP"
+
+.PP
+Gets the name of the Property\&. The name of the Property\&.
+.PP
+Definition at line 229 of file BasicPropertyAccessor\&.cs\&.
+.SS "System\&.Type NHibernate\&.Properties\&.BasicPropertyAccessor\&.BasicGetter\&.ReturnType\fC [get]\fP"
+
+.PP
+Gets the System\&.Type that the Property returns\&. The System\&.Type that the Property returns\&.
+.PP
+Definition at line 220 of file BasicPropertyAccessor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

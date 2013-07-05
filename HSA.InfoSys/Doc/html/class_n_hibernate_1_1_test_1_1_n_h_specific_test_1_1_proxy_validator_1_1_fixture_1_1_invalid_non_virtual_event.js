@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_proxy_validator_1_1_fixture_1_1_invalid_non_virtual_event =
+[
+    [ "NonVirtualEvent", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_proxy_validator_1_1_fixture_1_1_invalid_non_virtual_event.html#ac5b28be4a888ec5110475d3005397948", null ]
+];

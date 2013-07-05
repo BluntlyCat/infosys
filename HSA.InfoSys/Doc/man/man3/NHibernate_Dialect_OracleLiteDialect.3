@@ -1,0 +1,86 @@
+.TH "NHibernate.Dialect.OracleLiteDialect" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.OracleLiteDialect \- 
+.PP
+It's a immature version, it just work\&. An SQL dialect for Oracle Lite  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Oracle9iDialect\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOracleLiteDialect\fP ()"
+.br
+.ti -1c
+.RI "override string \fBGetCreateSequenceString\fP (string sequenceName)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBGetCreateSequenceString\fP (string sequenceName, int initialValue, int incrementSize)"
+.br
+.RI "\fIOverloaded form of \fBGetCreateSequenceString(string)\fP, additionally taking the initial value and increment size to be applied to the sequence definition\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+It's a immature version, it just work\&. An SQL dialect for Oracle Lite 
+
+The \fBOracleLiteDialect\fP defaults the following configuration properties: Property Default Value  connection\&.driver_class \fBNHibernate\&.Driver\&.OracleLiteDataClientDriver\fP  
+.PP
+Definition at line 24 of file OracleLiteDialect\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Dialect\&.OracleLiteDialect\&.OracleLiteDialect ()"
+
+.PP
+
+.PP
+Definition at line 27 of file OracleLiteDialect\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override string NHibernate\&.Dialect\&.OracleLiteDialect\&.GetCreateSequenceString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Oracle8iDialect\fP\&.
+.PP
+Definition at line 111 of file OracleLiteDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.OracleLiteDialect\&.GetCreateSequenceString (stringsequenceName, intinitialValue, intincrementSize)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Overloaded form of \fBGetCreateSequenceString(string)\fP, additionally taking the initial value and increment size to be applied to the sequence definition\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP The name of the sequence 
+.br
+\fIinitialValue\fP The initial value to apply to 'create sequence' statement 
+.br
+\fIincrementSize\fP The increment value to apply to 'create sequence' statement 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sequence creation command 
+.RE
+.PP
+.PP
+The default definition is to suffix \fBGetCreateSequenceString(string,int,int)\fP with the string: ' start with {initialValue} increment by {incrementSize}' where {initialValue} and {incrementSize} are replacement placeholders\&. Generally dialects should only need to override this method if different key phrases are used to apply the allocation information\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 116 of file OracleLiteDialect\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

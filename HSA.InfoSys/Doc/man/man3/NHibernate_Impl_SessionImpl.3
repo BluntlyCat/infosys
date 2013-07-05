@@ -1,0 +1,2380 @@
+.TH "NHibernate.Impl.SessionImpl" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Impl.SessionImpl \- 
+.PP
+Concrete implementation of an \fBNHibernate\&.ISession\fP, also the central, organizing component of \fBNHibernate\fP's internal implementation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP, \fBNHibernate\&.Event\&.IEventSource\fP, ISerializable, and IDeserializationCallback\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "IDbConnection \fBClose\fP ()"
+.br
+.RI "\fIClose the session and release all resources \fP"
+.ti -1c
+.RI "override void \fBAfterTransactionCompletion\fP (bool success, \fBITransaction\fP tx)"
+.br
+.RI "\fIEnsure that the locks are downgraded to \fBLockMode\&.None\fP and that all of the softlocks in the \fBCache\fP have been released\&. \fP"
+.ti -1c
+.RI "\fBLockMode\fP \fBGetCurrentLockMode\fP (object obj)"
+.br
+.RI "\fIDetermine the current lock mode of the given object \fP"
+.ti -1c
+.RI "object \fBSave\fP (object obj)"
+.br
+.RI "\fISave a transient object\&. An id is generated, assigned to the object and returned \fP"
+.ti -1c
+.RI "object \fBSave\fP (string entityName, object obj)"
+.br
+.RI "\fIPersist the given transient instance, first assigning a generated identifier\&. (Or using the current value of the identifier property if the \fCassigned\fP generator is used\&.) \fP"
+.ti -1c
+.RI "void \fBSave\fP (string entityName, object obj, object id)"
+.br
+.RI "\fIPersist the given transient instance, using the given identifier\&. \fP"
+.ti -1c
+.RI "void \fBSave\fP (object obj, object id)"
+.br
+.RI "\fISave a transient object with a manually assigned ID \fP"
+.ti -1c
+.RI "void \fBDelete\fP (object obj)"
+.br
+.RI "\fIDelete a persistent object \fP"
+.ti -1c
+.RI "void \fBDelete\fP (string entityName, object obj)"
+.br
+.RI "\fIDelete a persistent object (by explicit entity name)\fP"
+.ti -1c
+.RI "void \fBUpdate\fP (object obj)"
+.br
+.RI "\fIUpdate the persistent instance with the identifier of the given transient instance\&. \fP"
+.ti -1c
+.RI "void \fBUpdate\fP (string entityName, object obj)"
+.br
+.RI "\fIUpdate the persistent instance with the identifier of the given detached instance\&. \fP"
+.ti -1c
+.RI "void \fBUpdate\fP (string entityName, object obj, object id)"
+.br
+.RI "\fIUpdate the persistent instance associated with the given identifier\&. \fP"
+.ti -1c
+.RI "void \fBSaveOrUpdate\fP (object obj)"
+.br
+.RI "\fIEither \fC\fBSave()\fP\fP or \fC\fBUpdate()\fP\fP the given instance, depending upon the value of its identifier property\&. \fP"
+.ti -1c
+.RI "void \fBSaveOrUpdate\fP (string entityName, object obj)"
+.br
+.RI "\fIEither Save(String,Object) or Update(String,Object) the given instance, depending upon resolution of the unsaved-value checks (see the manual for discussion of unsaved-value checking)\&. \fP"
+.ti -1c
+.RI "void \fBSaveOrUpdate\fP (string entityName, object obj, object id)"
+.br
+.RI "\fIEither \fC\fBSave()\fP\fP or \fC\fBUpdate()\fP\fP the given instance, depending upon the value of its identifier property\&. \fP"
+.ti -1c
+.RI "void \fBUpdate\fP (object obj, object id)"
+.br
+.RI "\fIUpdate the persistent state associated with the given identifier\&. \fP"
+.ti -1c
+.RI "override void \fBCloseSessionFromDistributedTransaction\fP ()"
+.br
+.ti -1c
+.RI "override void \fBList\fP (\fBIQueryExpression\fP queryExpression, \fBQueryParameters\fP queryParameters, IList results)"
+.br
+.ti -1c
+.RI "override \fBIQueryTranslator\fP[] \fBGetQueries\fP (\fBIQueryExpression\fP query, bool scalar)"
+.br
+.ti -1c
+.RI "override IEnumerable< T > \fBEnumerable< T >\fP (\fBIQueryExpression\fP queryExpression, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIStrongly-typed version of \fBEnumerable(IQueryExpression, QueryParameters)\fP \fP"
+.ti -1c
+.RI "override IEnumerable \fBEnumerable\fP (\fBIQueryExpression\fP queryExpression, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIExecute an \fCIterate()\fP query \fP"
+.ti -1c
+.RI "int \fBDelete\fP (string query)"
+.br
+.RI "\fIDelete all objects returned by the query\&. \fP"
+.ti -1c
+.RI "int \fBDelete\fP (string query, object value, \fBIType\fP type)"
+.br
+.RI "\fIDelete all objects returned by the query\&. \fP"
+.ti -1c
+.RI "int \fBDelete\fP (string query, object[] values, \fBIType\fP[] types)"
+.br
+.RI "\fIDelete all objects returned by the query\&. \fP"
+.ti -1c
+.RI "void \fBLock\fP (object obj, \fBLockMode\fP lockMode)"
+.br
+.RI "\fIObtain the specified lock level upon the given object\&. \fP"
+.ti -1c
+.RI "void \fBLock\fP (string entityName, object obj, \fBLockMode\fP lockMode)"
+.br
+.RI "\fIObtain the specified lock level upon the given object\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBCreateFilter\fP (object collection, string queryString)"
+.br
+.ti -1c
+.RI "override object \fBInstantiate\fP (string clazz, object id)"
+.br
+.RI "\fIInstantiate the entity class, initializing with the given identifier \fP"
+.ti -1c
+.RI "object \fBInstantiate\fP (\fBIEntityPersister\fP persister, object id)"
+.br
+.RI "\fIGive the interceptor an opportunity to override the default instantiation \fP"
+.ti -1c
+.RI "void \fBForceFlush\fP (\fBEntityEntry\fP entityEntry)"
+.br
+.RI "\fIForce an immediate flush\fP"
+.ti -1c
+.RI "void \fBMerge\fP (string entityName, object obj, IDictionary copiedAlready)"
+.br
+.RI "\fICascade merge an entity instance\fP"
+.ti -1c
+.RI "void \fBPersist\fP (string entityName, object obj, IDictionary createdAlready)"
+.br
+.RI "\fICascade persist an entity instance\fP"
+.ti -1c
+.RI "void \fBPersistOnFlush\fP (string entityName, object obj, IDictionary copiedAlready)"
+.br
+.RI "\fICascade persist an entity instance during the flush process\fP"
+.ti -1c
+.RI "void \fBRefresh\fP (object obj, IDictionary refreshedAlready)"
+.br
+.RI "\fICascade refresh an entity instance\fP"
+.ti -1c
+.RI "void \fBDelete\fP (string entityName, object child, bool isCascadeDeleteEnabled, ISet< object > transientEntities)"
+.br
+.RI "\fICascade delete an entity instance\fP"
+.ti -1c
+.RI "object \fBMerge\fP (string entityName, object obj)"
+.br
+.RI "\fICopy the state of the given object onto the persistent object with the same identifier\&. If there is no persistent instance currently associated with the session, it will be loaded\&. Return the persistent instance\&. If the given instance is unsaved, save a copy of and return it as a newly persistent instance\&. The given instance does not become associated with the session\&. This operation cascades to associated instances if the association is mapped with \fCcascade='merge'\fP\&.
+.br
+ The semantics of this method are defined by JSR-220\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP Name of the entity\&.
+.br
+\fIobj\fP a detached instance with state to be copied 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an updated persistent instance 
+.RE
+.PP
+\fP"
+.ti -1c
+.RI "T \fBMerge< T >\fP (T entity)"
+.br
+.RI "\fICopy the state of the given object onto the persistent object with the same identifier\&. If there is no persistent instance currently associated with the session, it will be loaded\&. Return the persistent instance\&. If the given instance is unsaved, save a copy of and return it as a newly persistent instance\&. The given instance does not become associated with the session\&. This operation cascades to associated instances if the association is mapped with \fCcascade='merge'\fP\&.
+.br
+ The semantics of this method are defined by JSR-220\&. \fP"
+.ti -1c
+.RI "T \fBMerge< T >\fP (string entityName, T entity)"
+.br
+.RI "\fICopy the state of the given object onto the persistent object with the same identifier\&. If there is no persistent instance currently associated with the session, it will be loaded\&. Return the persistent instance\&. If the given instance is unsaved, save a copy of and return it as a newly persistent instance\&. The given instance does not become associated with the session\&. This operation cascades to associated instances if the association is mapped with \fCcascade='merge'\fP\&.
+.br
+ The semantics of this method are defined by JSR-220\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP Name of the entity\&.
+.br
+\fIentity\fP a detached instance with state to be copied 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an updated persistent instance 
+.RE
+.PP
+\fP"
+.ti -1c
+.RI "object \fBMerge\fP (object obj)"
+.br
+.RI "\fICopy the state of the given object onto the persistent object with the same identifier\&. If there is no persistent instance currently associated with the session, it will be loaded\&. Return the persistent instance\&. If the given instance is unsaved, save a copy of and return it as a newly persistent instance\&. The given instance does not become associated with the session\&. This operation cascades to associated instances if the association is mapped with \fCcascade='merge'\fP\&.
+.br
+ The semantics of this method are defined by JSR-220\&. \fP"
+.ti -1c
+.RI "void \fBPersist\fP (string entityName, object obj)"
+.br
+.RI "\fIMake a transient instance persistent\&. This operation cascades to associated instances if the association is mapped with \fCcascade='persist'\fP\&.
+.br
+ The semantics of this method are defined by JSR-220\&. \fP"
+.ti -1c
+.RI "void \fBPersist\fP (object obj)"
+.br
+.RI "\fIMake a transient instance persistent\&. This operation cascades to associated instances if the association is mapped with \fCcascade='persist'\fP\&.
+.br
+ The semantics of this method are defined by JSR-220\&. \fP"
+.ti -1c
+.RI "void \fBPersistOnFlush\fP (string entityName, object obj)"
+.br
+.ti -1c
+.RI "void \fBPersistOnFlush\fP (object obj)"
+.br
+.ti -1c
+.RI "override string \fBBestGuessEntityName\fP (object entity)"
+.br
+.RI "\fIThe best guess entity name for an entity not in an association\fP"
+.ti -1c
+.RI "override string \fBGuessEntityName\fP (object entity)"
+.br
+.RI "\fIThe guessed entity name for an entity not in an association\fP"
+.ti -1c
+.RI "override object \fBGetEntityUsingInterceptor\fP (\fBEntityKey\fP key)"
+.br
+.RI "\fIGet the entity instance associated with the given \fCKey\fP, calling the Interceptor if necessary \fP"
+.ti -1c
+.RI "void \fBLoad\fP (object obj, object id)"
+.br
+.RI "\fIRead the persistent state associated with the given identifier into the given transient instance\&. \fP"
+.ti -1c
+.RI "T \fBLoad< T >\fP (object id)"
+.br
+.RI "\fIReturn the persistent instance of the given entity class with the given identifier, assuming that the instance exists\&. \fP"
+.ti -1c
+.RI "T \fBLoad< T >\fP (object id, \fBLockMode\fP lockMode)"
+.br
+.RI "\fIReturn the persistent instance of the given entity class with the given identifier, obtaining the specified lock mode\&. \fP"
+.ti -1c
+.RI "object \fBLoad\fP (System\&.Type entityClass, object id, \fBLockMode\fP lockMode)"
+.br
+.RI "\fILoad the data for the object with the specified id into a newly created object using 'for update', if supported\&. A new key will be assigned to the object\&. This should return an existing proxy where appropriate\&. \fP"
+.ti -1c
+.RI "object \fBLoad\fP (string entityName, object id)"
+.br
+.RI "\fIReturn the persistent instance of the given \fIentityName\fP  with the given identifier, assuming that the instance exists\&. \fP"
+.ti -1c
+.RI "object \fBLoad\fP (string entityName, object id, \fBLockMode\fP lockMode)"
+.br
+.RI "\fIReturn the persistent instance of the given entity class with the given identifier, obtaining the specified lock mode, assuming the instance exists\&. \fP"
+.ti -1c
+.RI "object \fBLoad\fP (System\&.Type entityClass, object id)"
+.br
+.RI "\fIReturn the persistent instance of the given entity class with the given identifier, assuming that the instance exists\&. \fP"
+.ti -1c
+.RI "T \fBGet< T >\fP (object id)"
+.br
+.RI "\fIStrongly-typed version of Get(System\&.Type, object) \fP"
+.ti -1c
+.RI "T \fBGet< T >\fP (object id, \fBLockMode\fP lockMode)"
+.br
+.RI "\fIStrongly-typed version of Get(System\&.Type, object, LockMode) \fP"
+.ti -1c
+.RI "object \fBGet\fP (System\&.Type entityClass, object id)"
+.br
+.RI "\fIReturn the persistent instance of the given entity class with the given identifier, or null if there is no such persistent instance\&. (If the instance, or a proxy for the instance, is already associated with the session, return that instance or proxy\&.) \fP"
+.ti -1c
+.RI "object \fBGet\fP (System\&.Type clazz, object id, \fBLockMode\fP lockMode)"
+.br
+.RI "\fILoad the data for the object with the specified id into a newly created object using 'for update', if supported\&. A new key will be assigned to the object\&. This should return an existing proxy where appropriate\&. \fP"
+.ti -1c
+.RI "string \fBGetEntityName\fP (object obj)"
+.br
+.RI "\fIReturn the entity name for a persistent entity \fP"
+.ti -1c
+.RI "object \fBGet\fP (string entityName, object id)"
+.br
+.RI "\fIReturn the persistent instance of the given named entity with the given identifier, or null if there is no such persistent instance\&. (If the instance, or a proxy for the instance, is already associated with the session, return that instance or proxy\&.) \fP"
+.ti -1c
+.RI "override object \fBImmediateLoad\fP (string entityName, object id)"
+.br
+.RI "\fILoad the data for the object with the specified id into a newly created object\&. This is only called when lazily initializing a proxy\&. Do NOT return a proxy\&. \fP"
+.ti -1c
+.RI "override object \fBInternalLoad\fP (string entityName, object id, bool eager, bool isNullable)"
+.br
+.RI "\fIReturn the object with the specified id or throw exception if no row with that id exists\&. Defer the load, return a new proxy or return an existing proxy if possible\&. Do not check if the object was deleted\&. \fP"
+.ti -1c
+.RI "void \fBRefresh\fP (object obj)"
+.br
+.RI "\fIRe-read the state of the given instance from the underlying database\&. \fP"
+.ti -1c
+.RI "void \fBRefresh\fP (object obj, \fBLockMode\fP lockMode)"
+.br
+.RI "\fIRe-read the state of the given instance from the underlying database, with the given \fC\fBLockMode\fP\fP\&. \fP"
+.ti -1c
+.RI "\fBITransaction\fP \fBBeginTransaction\fP (IsolationLevel isolationLevel)"
+.br
+.RI "\fIBegin a transaction with the specified \fCisolationLevel\fP \fP"
+.ti -1c
+.RI "\fBITransaction\fP \fBBeginTransaction\fP ()"
+.br
+.RI "\fIBegin a unit of work and return the associated \fC\fBITransaction\fP\fP object\&. \fP"
+.ti -1c
+.RI "override void \fBFlush\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsDirty\fP ()"
+.br
+.RI "\fIDoes this \fC\fBISession\fP\fP contain any changes which must be synchronized with the database? Would any SQL be executed if we flushed this session? \fP"
+.ti -1c
+.RI "object \fBGetIdentifier\fP (object obj)"
+.br
+.RI "\fINot for internal use \fP"
+.ti -1c
+.RI "override object \fBGetContextEntityIdentifier\fP (object obj)"
+.br
+.RI "\fIGet the id value for an object that is actually associated with the session\&. This is a bit stricter than GetEntityIdentifierIfNotUnsaved()\&. \fP"
+.ti -1c
+.RI "override void \fBInitializeCollection\fP (\fBIPersistentCollection\fP collection, bool writing)"
+.br
+.RI "\fIcalled by a collection that wants to initialize itself \fP"
+.ti -1c
+.RI "IDbConnection \fBDisconnect\fP ()"
+.br
+.ti -1c
+.RI "void \fBReconnect\fP ()"
+.br
+.RI "\fIObtain a new ADO\&.NET connection\&. \fP"
+.ti -1c
+.RI "void \fBReconnect\fP (IDbConnection conn)"
+.br
+.RI "\fIReconnect to the given ADO\&.NET connection\&. \fP"
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "\fIPerform a soft (distributed transaction aware) close of the session \fP"
+.ti -1c
+.RI "override IList \fBListFilter\fP (object collection, string filter, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIExecute a filter \fP"
+.ti -1c
+.RI "override IList< T > \fBListFilter< T >\fP (object collection, string filter, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIExecute a filter (strongly-typed version)\&. \fP"
+.ti -1c
+.RI "override IEnumerable \fBEnumerableFilter\fP (object collection, string filter, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fI\fBCollection\fP from a filter \fP"
+.ti -1c
+.RI "override IEnumerable< T > \fBEnumerableFilter< T >\fP (object collection, string filter, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIStrongly-typed version of \fBEnumerableFilter(object, string, QueryParameters)\fP \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateCriteria< T >\fP ()"
+.br
+.RI "\fICreates a new \fCCriteria\fP for the entity class\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateCriteria\fP (System\&.Type persistentClass)"
+.br
+.RI "\fICreates a new \fCCriteria\fP for the entity class\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateCriteria< T >\fP (string alias)"
+.br
+.RI "\fICreates a new \fCCriteria\fP for the entity class with a specific alias \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateCriteria\fP (System\&.Type persistentClass, string alias)"
+.br
+.RI "\fICreates a new \fCCriteria\fP for the entity class with a specific alias \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateCriteria\fP (string entityName, string alias)"
+.br
+.RI "\fICreate a new \fCCriteria\fP instance, for the given entity name, with the given alias\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateCriteria\fP (string entityName)"
+.br
+.RI "\fICreate a new \fCCriteria\fP instance, for the given entity name\&. \fP"
+.ti -1c
+.RI "\fBIQueryOver\fP< T, T > \fBQueryOver< T >\fP ()"
+.br
+.RI "\fICreates a new \fC\fBIQueryOver\fP<T>\fP for the entity class\&. \fP"
+.ti -1c
+.RI "\fBIQueryOver\fP< T, T > \fBQueryOver< T >\fP (\fBExpression\fP< Func< T >> alias)"
+.br
+.ti -1c
+.RI "\fBIQueryOver\fP< T, T > \fBQueryOver< T >\fP (string entityName)"
+.br
+.RI "\fICreates a new \fC\fBIQueryOver\fP{T};\fP for the entity class\&. \fP"
+.ti -1c
+.RI "\fBIQueryOver\fP< T, T > \fBQueryOver< T >\fP (string entityName, \fBExpression\fP< Func< T >> alias)"
+.br
+.ti -1c
+.RI "override void \fBList\fP (\fBCriteriaImpl\fP criteria, IList results)"
+.br
+.ti -1c
+.RI "bool \fBContains\fP (object obj)"
+.br
+.RI "\fIIs this instance associated with this Session? \fP"
+.ti -1c
+.RI "void \fBEvict\fP (object obj)"
+.br
+.RI "\fIremove any hard references to the entity that are held by the infrastructure (references held by application or other persistant instances are okay) \fP"
+.ti -1c
+.RI "override \fBISQLQuery\fP \fBCreateSQLQuery\fP (string sql)"
+.br
+.ti -1c
+.RI "override void \fBListCustomQuery\fP (\fBICustomQuery\fP customQuery, \fBQueryParameters\fP queryParameters, IList results)"
+.br
+.RI "\fIExecute an SQL Query\fP"
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "void \fBReplicate\fP (object obj, \fBReplicationMode\fP replicationMode)"
+.br
+.RI "\fIPersist all reachable transient objects, reusing the current identifier values\&. Note that this will not trigger the Interceptor of the Session\&. \fP"
+.ti -1c
+.RI "void \fBReplicate\fP (string entityName, object obj, \fBReplicationMode\fP replicationMode)"
+.br
+.RI "\fIPersist the state of the given detached instance, reusing the current identifier value\&. This operation cascades to associated instances if the association is mapped with \fCcascade='replicate'\fP\&. \fP"
+.ti -1c
+.RI "void \fBCancelQuery\fP ()"
+.br
+.RI "\fICancel execution of the current query\&. \fP"
+.ti -1c
+.RI "\fBIFilter\fP \fBGetEnabledFilter\fP (string filterName)"
+.br
+.RI "\fIRetrieve a currently enabled filter by name\&. \fP"
+.ti -1c
+.RI "\fBIFilter\fP \fBEnableFilter\fP (string filterName)"
+.br
+.RI "\fIEnable the named filter for this current session\&. \fP"
+.ti -1c
+.RI "void \fBDisableFilter\fP (string filterName)"
+.br
+.RI "\fIDisable the named filter for the current session\&. \fP"
+.ti -1c
+.RI "override Object \fBGetFilterParameterValue\fP (string filterParameterName)"
+.br
+.RI "\fIRetrieve the currently set value for a filter parameter\&. \fP"
+.ti -1c
+.RI "override \fBIType\fP \fBGetFilterParameterType\fP (string filterParameterName)"
+.br
+.RI "\fIRetrieve the type for a given filter parameter\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBCreateMultiQuery\fP ()"
+.br
+.RI "\fICreate a multi query, a query that can send several queries to the server, and return all their results in a single call\&. \fP"
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBCreateMultiCriteria\fP ()"
+.br
+.RI "\fIAn \fBIMultiCriteria\fP that can return a list of all the results of all the criterias\&. \fP"
+.ti -1c
+.RI "override void \fBAfterTransactionBegin\fP (\fBITransaction\fP tx)"
+.br
+.RI "\fINotify the session that an \fBNHibernate\fP transaction has begun\&. \fP"
+.ti -1c
+.RI "override void \fBBeforeTransactionCompletion\fP (\fBITransaction\fP tx)"
+.br
+.RI "\fINotify the session that the transaction is about to complete \fP"
+.ti -1c
+.RI "\fBISession\fP \fBSetBatchSize\fP (int batchSize)"
+.br
+.RI "\fISets the batch size of the session \fP"
+.ti -1c
+.RI "\fBISessionImplementor\fP \fBGetSessionImplementation\fP ()"
+.br
+.RI "\fIGets the session implementation\&. \fP"
+.ti -1c
+.RI "\fBISession\fP \fBGetSession\fP (\fBEntityMode\fP entityMode)"
+.br
+.RI "\fIStarts a new Session with the given entity mode in effect\&. This secondary Session inherits the connection, transaction, and other context information from the primary Session\&. It doesn't need to be flushed or closed by the developer\&. \fP"
+.ti -1c
+.RI "void \fBSetReadOnly\fP (object entityOrProxy, bool readOnly)"
+.br
+.RI "\fIChange the read-only status of an entity (or proxy)\&. 
+.PP
+Read-only entities can be modified, but changes are not persisted\&. They are not dirty-checked and snapshots of persistent state are not maintained\&.  \fP"
+.ti -1c
+.RI "bool \fBIsReadOnly\fP (object entityOrProxy)"
+.br
+.RI "\fIIs the specified entity (or proxy) read-only? 
+.PP
+Facade for IPersistenceContext\&.IsReadOnly(object)\&.  \fP"
+.ti -1c
+.RI "override int \fBExecuteNativeUpdate\fP (\fBNativeSQLQuerySpecification\fP nativeQuerySpecification, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIExecute a native SQL update or delete query\fP"
+.ti -1c
+.RI "override int \fBExecuteUpdate\fP (\fBIQueryExpression\fP queryExpression, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIExecute a HQL update or delete query\fP"
+.ti -1c
+.RI "override \fBIEntityPersister\fP \fBGetEntityPersister\fP (string entityName, object obj)"
+.br
+.RI "\fIGet the IEntityPersister for any instance\fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override \fBFutureCriteriaBatch\fP \fBFutureCriteriaBatch\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override \fBFutureQueryBatch\fP \fBFutureQueryBatch\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override \fBIBatcher\fP \fBBatcher\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override long \fBTimestamp\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "ConnectionReleaseMode \fBConnectionReleaseMode\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsAutoCloseSessionEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBShouldAutoClose\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsOpen\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBActionQueue\fP \fBActionQueue\fP\fC [get]\fP"
+.br
+.RI "\fIGet the ActionQueue for this session\fP"
+.ti -1c
+.RI "override \fBFlushMode\fP \fBFlushMode\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBFlushBeforeCompletionEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsEventSource\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBIPersistenceContext\fP \fBPersistenceContext\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBITransaction\fP \fBTransaction\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBTransactionInProgress\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override IDbConnection \fBConnection\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsConnected\fP\fC [get]\fP"
+.br
+.RI "\fIGets if the \fBISession\fP is connected\&. \fP"
+.ti -1c
+.RI "\fBISessionFactory\fP \fBSessionFactory\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override IDictionary< string, 
+.br
+\fBIFilter\fP > \fBEnabledFilters\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBConnectionManager\fP \fBConnectionManager\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBISessionStatistics\fP \fBStatistics\fP\fC [get]\fP"
+.br
+.RI "\fIGet the statistics for this session\&.\fP"
+.ti -1c
+.RI "override \fBIInterceptor\fP \fBInterceptor\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBEventListeners\fP \fBListeners\fP\fC [get]\fP"
+.br
+.RI "\fIRetrieves the configured event listeners from this event source\&. \fP"
+.ti -1c
+.RI "override int \fBDontFlushFromFind\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBCacheMode\fP \fBCacheMode\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override \fBEntityMode\fP \fBEntityMode\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBEntityMode\fP \fBActiveEntityMode\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBFetchProfile\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBDefaultReadOnly\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Concrete implementation of an \fBNHibernate\&.ISession\fP, also the central, organizing component of \fBNHibernate\fP's internal implementation\&. 
+
+Exposes two interfaces: \fBNHibernate\&.ISession\fP itself, to the application and ISessionImplementor to other components of \fBNHibernate\fP\&. This is where the hard stuff is\&.\&.\&. This class is NOT THREADSAFE\&. 
+.PP
+Definition at line 40 of file SessionImpl\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Impl\&.SessionImpl\&.AfterTransactionBegin (\fBITransaction\fPtx)\fC [virtual]\fP"
+
+.PP
+Notify the session that an \fBNHibernate\fP transaction has begun\&. 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 2178 of file SessionImpl\&.cs\&.
+.SS "override void NHibernate\&.Impl\&.SessionImpl\&.AfterTransactionCompletion (boolsuccess, \fBITransaction\fPtx)\fC [virtual]\fP"
+
+.PP
+Ensure that the locks are downgraded to \fBLockMode\&.None\fP and that all of the softlocks in the \fBCache\fP have been released\&. 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 398 of file SessionImpl\&.cs\&.
+.SS "override void NHibernate\&.Impl\&.SessionImpl\&.BeforeTransactionCompletion (\fBITransaction\fPtx)\fC [virtual]\fP"
+
+.PP
+Notify the session that the transaction is about to complete 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 2187 of file SessionImpl\&.cs\&.
+.SS "\fBITransaction\fP NHibernate\&.Impl\&.SessionImpl\&.BeginTransaction (IsolationLevelisolationLevel)"
+
+.PP
+Begin a transaction with the specified \fCisolationLevel\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIisolationLevel\fP Isolation level for the new transaction
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A transaction instance having the specified isolation level
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1388 of file SessionImpl\&.cs\&.
+.SS "\fBITransaction\fP NHibernate\&.Impl\&.SessionImpl\&.BeginTransaction ()"
+
+.PP
+Begin a unit of work and return the associated \fC\fBITransaction\fP\fP object\&. If a new underlying transaction is required, begin the transaction\&. Otherwise continue the new work in the context of the existing underlying transaction\&. The class of the returned \fBITransaction\fP object is determined by the property \fCtransaction_factory\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+A transaction instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1404 of file SessionImpl\&.cs\&.
+.SS "override string NHibernate\&.Impl\&.SessionImpl\&.BestGuessEntityName (objectentity)\fC [virtual]\fP"
+
+.PP
+The best guess entity name for an entity not in an association
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 1020 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.CancelQuery ()"
+
+.PP
+Cancel execution of the current query\&. May be called from one thread to stop execution of a query in another thread\&. Use with care! 
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 2034 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Clear ()"
+
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 2003 of file SessionImpl\&.cs\&.
+.SS "IDbConnection NHibernate\&.Impl\&.SessionImpl\&.Close ()"
+
+.PP
+Close the session and release all resources Do not call this method inside a transaction scope, use \fCDispose\fP instead, since \fBClose()\fP is not aware of distributed transactions 
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 348 of file SessionImpl\&.cs\&.
+.SS "bool NHibernate\&.Impl\&.SessionImpl\&.Contains (objectobj)"
+
+.PP
+Is this instance associated with this Session? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP an instance of a persistent class
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the given instance is associated with this Session
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1918 of file SessionImpl\&.cs\&.
+.SS "\fBICriteria\fP NHibernate\&.Impl\&.SessionImpl\&.CreateCriteria (System\&.TypepersistentClass)"
+
+.PP
+Creates a new \fCCriteria\fP for the entity class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersistentClass\fP The class to Query
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBICriteria\fP object
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1779 of file SessionImpl\&.cs\&.
+.SS "\fBICriteria\fP NHibernate\&.Impl\&.SessionImpl\&.CreateCriteria (System\&.TypepersistentClass, stringalias)"
+
+.PP
+Creates a new \fCCriteria\fP for the entity class with a specific alias 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersistentClass\fP The class to Query
+.br
+\fIalias\fP The alias of the entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBICriteria\fP object
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1797 of file SessionImpl\&.cs\&.
+.SS "\fBICriteria\fP NHibernate\&.Impl\&.SessionImpl\&.CreateCriteria (stringentityName, stringalias)"
+
+.PP
+Create a new \fCCriteria\fP instance, for the given entity name, with the given alias\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The name of the entity to Query
+.br
+\fIalias\fP The alias of the entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBICriteria\fP object
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1807 of file SessionImpl\&.cs\&.
+.SS "\fBICriteria\fP NHibernate\&.Impl\&.SessionImpl\&.CreateCriteria (stringentityName)"
+
+.PP
+Create a new \fCCriteria\fP instance, for the given entity name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The name of the entity to Query
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBICriteria\fP object
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1816 of file SessionImpl\&.cs\&.
+.SS "\fBICriteria\fP \fBNHibernate\&.Impl\&.SessionImpl\&.CreateCriteria\fP< T > ()"
+
+.PP
+Creates a new \fCCriteria\fP for the entity class\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The entity class
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBICriteria\fP object
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fIclass\fP
+.PP
+Definition at line 1771 of file SessionImpl\&.cs\&.
+.SS "\fBICriteria\fP \fBNHibernate\&.Impl\&.SessionImpl\&.CreateCriteria\fP< T > (stringalias)"
+
+.PP
+Creates a new \fCCriteria\fP for the entity class with a specific alias 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The entity class
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP The alias of the entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBICriteria\fP object
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fIclass\fP
+.PP
+Definition at line 1789 of file SessionImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.SessionImpl\&.CreateFilter (objectcollection, stringqueryString)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP 
+.br
+\fIqueryString\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 767 of file SessionImpl\&.cs\&.
+.SS "\fBIMultiCriteria\fP NHibernate\&.Impl\&.SessionImpl\&.CreateMultiCriteria ()"
+
+.PP
+An \fBIMultiCriteria\fP that can return a list of all the results of all the criterias\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 2161 of file SessionImpl\&.cs\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.Impl\&.SessionImpl\&.CreateMultiQuery ()"
+
+.PP
+Create a multi query, a query that can send several queries to the server, and return all their results in a single call\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBIMultiQuery\fP that can return a list of all the results of all the queries\&. Note that each query result is itself usually a list\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 2153 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Delete (objectobj)"
+
+.PP
+Delete a persistent object 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 523 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Delete (stringentityName, objectobj)"
+
+.PP
+Delete a persistent object (by explicit entity name)
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 532 of file SessionImpl\&.cs\&.
+.SS "int NHibernate\&.Impl\&.SessionImpl\&.Delete (stringquery)"
+
+.PP
+Delete all objects returned by the query\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIquery\fP The query string
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Returns the number of objects deleted\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 699 of file SessionImpl\&.cs\&.
+.SS "int NHibernate\&.Impl\&.SessionImpl\&.Delete (stringquery, objectvalue, \fBIType\fPtype)"
+
+.PP
+Delete all objects returned by the query\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIquery\fP The query string
+.br
+\fIvalue\fP A value to be written to a '?' placeholer in the query
+.br
+\fItype\fP The hibernate type of value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of instances deleted
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 707 of file SessionImpl\&.cs\&.
+.SS "int NHibernate\&.Impl\&.SessionImpl\&.Delete (stringquery, object[]values, \fBIType\fP[]types)"
+
+.PP
+Delete all objects returned by the query\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIquery\fP The query string
+.br
+\fIvalues\fP A list of values to be written to '?' placeholders in the query
+.br
+\fItypes\fP A list of Hibernate types of the values
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of instances deleted
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 715 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Delete (stringentityName, objectchild, boolisCascadeDeleteEnabled, ISet< object >transientEntities)"
+
+.PP
+Cascade delete an entity instance
+.PP
+Implements \fBNHibernate\&.Event\&.IEventSource\fP\&.
+.PP
+Definition at line 940 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.DisableFilter (stringfilterName)"
+
+.PP
+Disable the named filter for the current session\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilterName\fP The name of the filter to be disabled\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 2070 of file SessionImpl\&.cs\&.
+.SS "IDbConnection NHibernate\&.Impl\&.SessionImpl\&.Disconnect ()"
+
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1603 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Dispose ()"
+
+.PP
+Perform a soft (distributed transaction aware) close of the session 
+.PP
+Definition at line 1648 of file SessionImpl\&.cs\&.
+.SS "\fBIFilter\fP NHibernate\&.Impl\&.SessionImpl\&.EnableFilter (stringfilterName)"
+
+.PP
+Enable the named filter for this current session\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilterName\fP The name of the filter to be enabled\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The Filter instance representing the enabled filter\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 2055 of file SessionImpl\&.cs\&.
+.SS "override IEnumerable NHibernate\&.Impl\&.SessionImpl\&.Enumerable (\fBIQueryExpression\fPquery, \fBQueryParameters\fPparameters)\fC [virtual]\fP"
+
+.PP
+Execute an \fCIterate()\fP query 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIquery\fP 
+.br
+\fIparameters\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 676 of file SessionImpl\&.cs\&.
+.SS "override IEnumerable<T> \fBNHibernate\&.Impl\&.SessionImpl\&.Enumerable\fP< T > (\fBIQueryExpression\fPquery, \fBQueryParameters\fPqueryParameters)\fC [virtual]\fP"
+
+.PP
+Strongly-typed version of \fBEnumerable(IQueryExpression, QueryParameters)\fP 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 655 of file SessionImpl\&.cs\&.
+.SS "override IEnumerable NHibernate\&.Impl\&.SessionImpl\&.EnumerableFilter (objectcollection, stringfilter, \fBQueryParameters\fPparameters)\fC [virtual]\fP"
+
+.PP
+\fBCollection\fP from a filter 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 1751 of file SessionImpl\&.cs\&.
+.SS "override IEnumerable<T> \fBNHibernate\&.Impl\&.SessionImpl\&.EnumerableFilter\fP< T > (objectcollection, stringfilter, \fBQueryParameters\fPparameters)\fC [virtual]\fP"
+
+.PP
+Strongly-typed version of \fBEnumerableFilter(object, string, QueryParameters)\fP 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 1761 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Evict (objectobj)"
+
+.PP
+remove any hard references to the entity that are held by the infrastructure (references held by application or other persistant instances are okay) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1961 of file SessionImpl\&.cs\&.
+.SS "override int NHibernate\&.Impl\&.SessionImpl\&.ExecuteNativeUpdate (\fBNativeSQLQuerySpecification\fPspecification, \fBQueryParameters\fPqueryParameters)\fC [virtual]\fP"
+
+.PP
+Execute a native SQL update or delete query
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 2559 of file SessionImpl\&.cs\&.
+.SS "override int NHibernate\&.Impl\&.SessionImpl\&.ExecuteUpdate (\fBIQueryExpression\fPquery, \fBQueryParameters\fPqueryParameters)\fC [virtual]\fP"
+
+.PP
+Execute a HQL update or delete query
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 2584 of file SessionImpl\&.cs\&.
+.SS "override void NHibernate\&.Impl\&.SessionImpl\&.Flush ()\fC [virtual]\fP"
+
+.PP
+This can be called from commit() or at the start of a List() method\&. 
+.PP
+Perform all the necessary SQL statements in a sensible order, to allow users to repect foreign key constraints: 
+.PD 0
+
+.IP "\(bu" 2
+Inserts, in the order they were performed 
+.IP "\(bu" 2
+Updates 
+.IP "\(bu" 2
+Deletion of collection elements 
+.IP "\(bu" 2
+Insertion of collection elements 
+.IP "\(bu" 2
+Deletes, in the order they were performed 
+.PP
+.PP
+Go through all the persistent objects and look for collections they might be holding\&. If they had a nonpersistable collection, substitute a persistable one 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 1446 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.ForceFlush (\fBEntityEntry\fPentityEntry)"
+
+.PP
+Force an immediate flush
+.PP
+Implements \fBNHibernate\&.Event\&.IEventSource\fP\&.
+.PP
+Definition at line 880 of file SessionImpl\&.cs\&.
+.SS "object NHibernate\&.Impl\&.SessionImpl\&.Get (System\&.Typeclazz, objectid)"
+
+.PP
+Return the persistent instance of the given entity class with the given identifier, or null if there is no such persistent instance\&. (If the instance, or a proxy for the instance, is already associated with the session, return that instance or proxy\&.) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclazz\fP a persistent class
+.br
+\fIid\fP an identifier
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a persistent instance or null
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1248 of file SessionImpl\&.cs\&.
+.SS "object NHibernate\&.Impl\&.SessionImpl\&.Get (System\&.Typeclazz, objectid, \fBLockMode\fPlockMode)"
+
+.PP
+Load the data for the object with the specified id into a newly created object using 'for update', if supported\&. A new key will be assigned to the object\&. This should return an existing proxy where appropriate\&. If the object does not exist in the database, null is returned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclazz\fP 
+.br
+\fIid\fP 
+.br
+\fIlockMode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1267 of file SessionImpl\&.cs\&.
+.SS "object NHibernate\&.Impl\&.SessionImpl\&.Get (stringentityName, objectid)"
+
+.PP
+Return the persistent instance of the given named entity with the given identifier, or null if there is no such persistent instance\&. (If the instance, or a proxy for the instance, is already associated with the session, return that instance or proxy\&.) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP the entity name 
+.br
+\fIid\fP an identifier 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a persistent instance or null 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1307 of file SessionImpl\&.cs\&.
+.SS "T \fBNHibernate\&.Impl\&.SessionImpl\&.Get\fP< T > (objectid)"
+
+.PP
+Strongly-typed version of Get(System\&.Type, object) 
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1232 of file SessionImpl\&.cs\&.
+.SS "T \fBNHibernate\&.Impl\&.SessionImpl\&.Get\fP< T > (objectid, \fBLockMode\fPlockMode)"
+
+.PP
+Strongly-typed version of Get(System\&.Type, object, LockMode) 
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1240 of file SessionImpl\&.cs\&.
+.SS "override object NHibernate\&.Impl\&.SessionImpl\&.GetContextEntityIdentifier (objectobj)\fC [virtual]\fP"
+
+.PP
+Get the id value for an object that is actually associated with the session\&. This is a bit stricter than GetEntityIdentifierIfNotUnsaved()\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 1537 of file SessionImpl\&.cs\&.
+.SS "\fBLockMode\fP NHibernate\&.Impl\&.SessionImpl\&.GetCurrentLockMode (objectobj)"
+
+.PP
+Determine the current lock mode of the given object 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP A persistent instance
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The current lock mode
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 437 of file SessionImpl\&.cs\&.
+.SS "\fBIFilter\fP NHibernate\&.Impl\&.SessionImpl\&.GetEnabledFilter (stringfilterName)"
+
+.PP
+Retrieve a currently enabled filter by name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilterName\fP The name of the filter to be retrieved\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The Filter instance representing the enabled filter\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 2044 of file SessionImpl\&.cs\&.
+.SS "string NHibernate\&.Impl\&.SessionImpl\&.GetEntityName (objectobj)"
+
+.PP
+Return the entity name for a persistent entity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP a persistent entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the entity name 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1277 of file SessionImpl\&.cs\&.
+.SS "override \fBIEntityPersister\fP NHibernate\&.Impl\&.SessionImpl\&.GetEntityPersister (stringentityName, objectobj)\fC [virtual]\fP"
+
+.PP
+Get the IEntityPersister for any instance
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP optional entity name 
+.br
+\fIobj\fP the entity instance 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 2608 of file SessionImpl\&.cs\&.
+.SS "override object NHibernate\&.Impl\&.SessionImpl\&.GetEntityUsingInterceptor (\fBEntityKey\fPkey)\fC [virtual]\fP"
+
+.PP
+Get the entity instance associated with the given \fCKey\fP, calling the Interceptor if necessary 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 1077 of file SessionImpl\&.cs\&.
+.SS "override \fBIType\fP NHibernate\&.Impl\&.SessionImpl\&.GetFilterParameterType (stringfilterParameterName)\fC [virtual]\fP"
+
+.PP
+Retrieve the type for a given filter parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilterParameterName\fP The filter parameter name in the format {FILTER_NAME\&.PARAMETER_NAME}\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The filter parameter type\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 2097 of file SessionImpl\&.cs\&.
+.SS "override Object NHibernate\&.Impl\&.SessionImpl\&.GetFilterParameterValue (stringfilterParameterName)\fC [virtual]\fP"
+
+.PP
+Retrieve the currently set value for a filter parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilterParameterName\fP The filter parameter name in the format {FILTER_NAME\&.PARAMETER_NAME}\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The filter parameter value\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 2080 of file SessionImpl\&.cs\&.
+.SS "object NHibernate\&.Impl\&.SessionImpl\&.GetIdentifier (objectobj)"
+
+.PP
+Not for internal use 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1501 of file SessionImpl\&.cs\&.
+.SS "\fBISession\fP NHibernate\&.Impl\&.SessionImpl\&.GetSession (\fBEntityMode\fPentityMode)"
+
+.PP
+Starts a new Session with the given entity mode in effect\&. This secondary Session inherits the connection, transaction, and other context information from the primary Session\&. It doesn't need to be flushed or closed by the developer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityMode\fP The entity mode to use for the new session\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new session
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 2219 of file SessionImpl\&.cs\&.
+.SS "\fBISessionImplementor\fP NHibernate\&.Impl\&.SessionImpl\&.GetSessionImplementation ()"
+
+.PP
+Gets the session implementation\&. This method is provided in order to get the \fB\fBNHibernate\fP\fP implementation of the session from wrapper implementions\&. Implementors of the 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBISession\fP
+.PP
+.RE
+.PP
+interface should return the \fBNHibernate\fP implementation of this method\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBNHibernate\fP implementation of the 
+.PP
+\fBSee Also:\fP
+.RS 4
+ISessionImplementor
+.PP
+.RE
+.PP
+interface 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 2214 of file SessionImpl\&.cs\&.
+.SS "override string NHibernate\&.Impl\&.SessionImpl\&.GuessEntityName (objectentity)\fC [virtual]\fP"
+
+.PP
+The guessed entity name for an entity not in an association
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 1055 of file SessionImpl\&.cs\&.
+.SS "override object NHibernate\&.Impl\&.SessionImpl\&.ImmediateLoad (stringentityName, objectid)\fC [virtual]\fP"
+
+.PP
+Load the data for the object with the specified id into a newly created object\&. This is only called when lazily initializing a proxy\&. Do NOT return a proxy\&. 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 1331 of file SessionImpl\&.cs\&.
+.SS "override void NHibernate\&.Impl\&.SessionImpl\&.InitializeCollection (\fBIPersistentCollection\fPcollection, boolwriting)\fC [virtual]\fP"
+
+.PP
+called by a collection that wants to initialize itself 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP 
+.br
+\fIwriting\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 1568 of file SessionImpl\&.cs\&.
+.SS "override object NHibernate\&.Impl\&.SessionImpl\&.Instantiate (stringentityName, objectid)\fC [virtual]\fP"
+
+.PP
+Instantiate the entity class, initializing with the given identifier 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 840 of file SessionImpl\&.cs\&.
+.SS "object NHibernate\&.Impl\&.SessionImpl\&.Instantiate (\fBIEntityPersister\fPpersister, objectid)"
+
+.PP
+Give the interceptor an opportunity to override the default instantiation 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP 
+.br
+\fIid\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Event\&.IEventSource\fP\&.
+.PP
+Definition at line 864 of file SessionImpl\&.cs\&.
+.SS "override object NHibernate\&.Impl\&.SessionImpl\&.InternalLoad (stringentityName, objectid, booleager, boolisNullable)\fC [virtual]\fP"
+
+.PP
+Return the object with the specified id or throw exception if no row with that id exists\&. Defer the load, return a new proxy or return an existing proxy if possible\&. Do not check if the object was deleted\&. 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 1352 of file SessionImpl\&.cs\&.
+.SS "bool NHibernate\&.Impl\&.SessionImpl\&.IsDirty ()"
+
+.PP
+Does this \fC\fBISession\fP\fP contain any changes which must be synchronized with the database? Would any SQL be executed if we flushed this session? 
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1471 of file SessionImpl\&.cs\&.
+.SS "override void NHibernate\&.Impl\&.SessionImpl\&.ListCustomQuery (\fBICustomQuery\fPcustomQuery, \fBQueryParameters\fPqueryParameters, IListresults)\fC [virtual]\fP"
+
+.PP
+Execute an SQL Query
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 1978 of file SessionImpl\&.cs\&.
+.SS "override IList NHibernate\&.Impl\&.SessionImpl\&.ListFilter (objectcollection, stringfilter, \fBQueryParameters\fPparameters)\fC [virtual]\fP"
+
+.PP
+Execute a filter 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 1731 of file SessionImpl\&.cs\&.
+.SS "override IList<T> \fBNHibernate\&.Impl\&.SessionImpl\&.ListFilter\fP< T > (objectcollection, stringfilter, \fBQueryParameters\fPparameters)\fC [virtual]\fP"
+
+.PP
+Execute a filter (strongly-typed version)\&. 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 1741 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Load (objectobj, objectid)"
+
+.PP
+Read the persistent state associated with the given identifier into the given transient instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP An 'empty' instance of the persistent class
+.br
+\fIid\fP A valid identifier of an existing persistent instance of the class
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1139 of file SessionImpl\&.cs\&.
+.SS "object NHibernate\&.Impl\&.SessionImpl\&.Load (System\&.TypeentityClass, objectid, \fBLockMode\fPlockMode)"
+
+.PP
+Load the data for the object with the specified id into a newly created object using 'for update', if supported\&. A new key will be assigned to the object\&. This should return an existing proxy where appropriate\&. If the object does not exist in the database, an exception is thrown\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityClass\fP 
+.br
+\fIid\fP 
+.br
+\fIlockMode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBObjectNotFoundException\fP\fP Thrown when the object with the specified id does not exist in the database\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1178 of file SessionImpl\&.cs\&.
+.SS "object NHibernate\&.Impl\&.SessionImpl\&.Load (stringentityName, objectid)"
+
+.PP
+Return the persistent instance of the given \fIentityName\fP  with the given identifier, assuming that the instance exists\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The entity-name of a persistent class
+.br
+\fIid\fP a valid identifier of an existing persistent instance of the class 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The persistent instance or proxy 
+.RE
+.PP
+.PP
+You should not use this method to determine if an instance exists (use \fBGet(string,object)\fP instead)\&. Use this only to retrieve an instance that you assume exists, where non-existence would be an actual error\&. 
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1186 of file SessionImpl\&.cs\&.
+.SS "object NHibernate\&.Impl\&.SessionImpl\&.Load (stringentityName, objectid, \fBLockMode\fPlockMode)"
+
+.PP
+Return the persistent instance of the given entity class with the given identifier, obtaining the specified lock mode, assuming the instance exists\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The entity-name of a persistent class
+.br
+\fIid\fP a valid identifier of an existing persistent instance of the class 
+.br
+\fIlockMode\fP the lock level 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the persistent instance or proxy 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1214 of file SessionImpl\&.cs\&.
+.SS "object NHibernate\&.Impl\&.SessionImpl\&.Load (System\&.TypetheType, objectid)"
+
+.PP
+Return the persistent instance of the given entity class with the given identifier, assuming that the instance exists\&. You should not use this method to determine if an instance exists (use a query or Get(System\&.Type, object) instead)\&. Use this only to retrieve an instance that you assume exists, where non-existence would be an actual error\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItheType\fP A persistent class
+.br
+\fIid\fP A valid identifier of an existing persistent instance of the class
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The persistent instance or proxy
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1224 of file SessionImpl\&.cs\&.
+.SS "T \fBNHibernate\&.Impl\&.SessionImpl\&.Load\fP< T > (objectid)"
+
+.PP
+Return the persistent instance of the given entity class with the given identifier, assuming that the instance exists\&. You should not use this method to determine if an instance exists (use a query or Get{T}(object) instead)\&. Use this only to retrieve an instance that you assume exists, where non-existence would be an actual error\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP A persistent class
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP A valid identifier of an existing persistent instance of the class
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The persistent instance or proxy
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1148 of file SessionImpl\&.cs\&.
+.SS "T \fBNHibernate\&.Impl\&.SessionImpl\&.Load\fP< T > (objectid, \fBLockMode\fPlockMode)"
+
+.PP
+Return the persistent instance of the given entity class with the given identifier, obtaining the specified lock mode\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP A persistent class
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP A valid identifier of an existing persistent instance of the class
+.br
+\fIlockMode\fP The lock level
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the persistent instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1156 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Lock (objectobj, \fBLockMode\fPlockMode)"
+
+.PP
+Obtain the specified lock level upon the given object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP A persistent instance
+.br
+\fIlockMode\fP The lock level
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 745 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Lock (stringentityName, objectobj, \fBLockMode\fPlockMode)"
+
+.PP
+Obtain the specified lock level upon the given object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The Entity name\&.
+.br
+\fIobj\fP a persistent or transient instance 
+.br
+\fIlockMode\fP the lock level 
+.RE
+.PP
+.PP
+This may be used to perform a version check (\fBLockMode\&.Read\fP), to upgrade to a pessimistic lock (\fBLockMode\&.Upgrade\fP), or to simply reassociate a transient instance with a session (\fBLockMode\&.None\fP)\&. This operation cascades to associated instances if the association is mapped with \fCcascade='lock'\fP\&. 
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 753 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Merge (stringentityName, objectobj, IDictionarycopiedAlready)"
+
+.PP
+Cascade merge an entity instance
+.PP
+Implements \fBNHibernate\&.Event\&.IEventSource\fP\&.
+.PP
+Definition at line 904 of file SessionImpl\&.cs\&.
+.SS "object NHibernate\&.Impl\&.SessionImpl\&.Merge (stringentityName, objectobj)"
+
+.PP
+Copy the state of the given object onto the persistent object with the same identifier\&. If there is no persistent instance currently associated with the session, it will be loaded\&. Return the persistent instance\&. If the given instance is unsaved, save a copy of and return it as a newly persistent instance\&. The given instance does not become associated with the session\&. This operation cascades to associated instances if the association is mapped with \fCcascade='merge'\fP\&.
+.br
+ The semantics of this method are defined by JSR-220\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP Name of the entity\&.
+.br
+\fIobj\fP a detached instance with state to be copied 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an updated persistent instance 
+.RE
+.PP
+
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 950 of file SessionImpl\&.cs\&.
+.SS "object NHibernate\&.Impl\&.SessionImpl\&.Merge (objectobj)"
+
+.PP
+Copy the state of the given object onto the persistent object with the same identifier\&. If there is no persistent instance currently associated with the session, it will be loaded\&. Return the persistent instance\&. If the given instance is unsaved, save a copy of and return it as a newly persistent instance\&. The given instance does not become associated with the session\&. This operation cascades to associated instances if the association is mapped with \fCcascade='merge'\fP\&.
+.br
+ The semantics of this method are defined by JSR-220\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP a detached instance with state to be copied 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an updated persistent instance 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 968 of file SessionImpl\&.cs\&.
+.SS "T \fBNHibernate\&.Impl\&.SessionImpl\&.Merge\fP< T > (Tentity)"
+
+.PP
+Copy the state of the given object onto the persistent object with the same identifier\&. If there is no persistent instance currently associated with the session, it will be loaded\&. Return the persistent instance\&. If the given instance is unsaved, save a copy of and return it as a newly persistent instance\&. The given instance does not become associated with the session\&. This operation cascades to associated instances if the association is mapped with \fCcascade='merge'\fP\&.
+.br
+ The semantics of this method are defined by JSR-220\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP a detached instance with state to be copied 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an updated persistent instance 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fIclass\fP
+.PP
+Definition at line 958 of file SessionImpl\&.cs\&.
+.SS "T \fBNHibernate\&.Impl\&.SessionImpl\&.Merge\fP< T > (stringentityName, Tentity)"
+
+.PP
+Copy the state of the given object onto the persistent object with the same identifier\&. If there is no persistent instance currently associated with the session, it will be loaded\&. Return the persistent instance\&. If the given instance is unsaved, save a copy of and return it as a newly persistent instance\&. The given instance does not become associated with the session\&. This operation cascades to associated instances if the association is mapped with \fCcascade='merge'\fP\&.
+.br
+ The semantics of this method are defined by JSR-220\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP Name of the entity\&.
+.br
+\fIentity\fP a detached instance with state to be copied 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an updated persistent instance 
+.RE
+.PP
+
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fIclass\fP
+.PP
+Definition at line 963 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Persist (stringentityName, objectobj, IDictionarycreatedAlready)"
+
+.PP
+Cascade persist an entity instance
+.PP
+Implements \fBNHibernate\&.Event\&.IEventSource\fP\&.
+.PP
+Definition at line 913 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Persist (stringentityName, objectobj)"
+
+.PP
+Make a transient instance persistent\&. This operation cascades to associated instances if the association is mapped with \fCcascade='persist'\fP\&.
+.br
+ The semantics of this method are defined by JSR-220\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP Name of the entity\&.
+.br
+\fIobj\fP a transient instance to be made persistent
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 976 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Persist (objectobj)"
+
+.PP
+Make a transient instance persistent\&. This operation cascades to associated instances if the association is mapped with \fCcascade='persist'\fP\&.
+.br
+ The semantics of this method are defined by JSR-220\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP a transient instance to be made persistent 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 984 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.PersistOnFlush (stringentityName, objectobj, IDictionarycopiedAlready)"
+
+.PP
+Cascade persist an entity instance during the flush process
+.PP
+Implements \fBNHibernate\&.Event\&.IEventSource\fP\&.
+.PP
+Definition at line 922 of file SessionImpl\&.cs\&.
+.SS "\fBIQueryOver\fP<T, T> NHibernate\&.Impl\&.SessionImpl\&.QueryOver< T > ()"
+
+.PP
+Creates a new \fC\fBIQueryOver\fP<T>\fP for the entity class\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The entity class
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBIQueryOver\fP<T> object
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fIclass\fP
+.PP
+Definition at line 1825 of file SessionImpl\&.cs\&.
+.SS "\fBIQueryOver\fP<T, T> NHibernate\&.Impl\&.SessionImpl\&.QueryOver< T > (stringentityName)"
+
+.PP
+Creates a new \fC\fBIQueryOver\fP{T};\fP for the entity class\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The entity class
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The name of the entity to Query
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBIQueryOver\fP{T} object
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fIclass\fP
+.PP
+Definition at line 1844 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Reconnect ()"
+
+.PP
+Obtain a new ADO\&.NET connection\&. This is used by applications which require long transactions 
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1613 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Reconnect (IDbConnectionconnection)"
+
+.PP
+Reconnect to the given ADO\&.NET connection\&. This is used by applications which require long transactions
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnection\fP An ADO\&.NET connection
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1623 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Refresh (objectobj, IDictionaryrefreshedAlready)"
+
+.PP
+Cascade refresh an entity instance
+.PP
+Implements \fBNHibernate\&.Event\&.IEventSource\fP\&.
+.PP
+Definition at line 931 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Refresh (objectobj)"
+
+.PP
+Re-read the state of the given instance from the underlying database\&. It is inadvisable to use this to implement long-running sessions that span many business tasks\&. This method is, however, useful in certain special circumstances\&. 
+.PP
+For example, 
+.PD 0
+
+.IP "\(bu" 2
+Where a database trigger alters the object state upon insert or update 
+.IP "\(bu" 2
+After executing direct SQL (eg\&. a mass update) in the same session 
+.IP "\(bu" 2
+After inserting a \fCBlob\fP or \fCClob\fP 
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP A persistent instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1372 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Refresh (objectobj, \fBLockMode\fPlockMode)"
+
+.PP
+Re-read the state of the given instance from the underlying database, with the given \fC\fBLockMode\fP\fP\&. It is inadvisable to use this to implement long-running sessions that span many business tasks\&. This method is, however, useful in certain special circumstances\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP a persistent or transient instance
+.br
+\fIlockMode\fP the lock mode to use
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 1380 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Replicate (objectobj, \fBReplicationMode\fPreplicationMode)"
+
+.PP
+Persist all reachable transient objects, reusing the current identifier values\&. Note that this will not trigger the Interceptor of the Session\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP a detached instance of a persistent class
+.br
+\fIreplicationMode\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 2013 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Replicate (stringentityName, objectobj, \fBReplicationMode\fPreplicationMode)"
+
+.PP
+Persist the state of the given detached instance, reusing the current identifier value\&. This operation cascades to associated instances if the association is mapped with \fCcascade='replicate'\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP 
+.br
+\fIobj\fP a detached instance of a persistent class 
+.br
+\fIreplicationMode\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 2021 of file SessionImpl\&.cs\&.
+.SS "object NHibernate\&.Impl\&.SessionImpl\&.Save (objectobj)"
+
+.PP
+Save a transient object\&. An id is generated, assigned to the object and returned 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 482 of file SessionImpl\&.cs\&.
+.SS "object NHibernate\&.Impl\&.SessionImpl\&.Save (stringentityName, objectobj)"
+
+.PP
+Persist the given transient instance, first assigning a generated identifier\&. (Or using the current value of the identifier property if the \fCassigned\fP generator is used\&.) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The Entity name\&.
+.br
+\fIobj\fP a transient instance of a persistent class 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the generated identifier 
+.RE
+.PP
+.PP
+This operation cascades to associated instances if the association is mapped with \fCcascade='save-update'\fP\&. 
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 490 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Save (stringentityName, objectobj, objectid)"
+
+.PP
+Persist the given transient instance, using the given identifier\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The Entity name\&.
+.br
+\fIobj\fP a transient instance of a persistent class 
+.br
+\fIid\fP An unused valid identifier
+.RE
+.PP
+.PP
+This operation cascades to associated instances if the association is mapped with \fCcascade='save-update'\fP\&. 
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 498 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Save (objectobj, objectid)"
+
+.PP
+Save a transient object with a manually assigned ID 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP 
+.br
+\fIid\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 511 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.SaveOrUpdate (objectobj)"
+
+.PP
+Either \fC\fBSave()\fP\fP or \fC\fBUpdate()\fP\fP the given instance, depending upon the value of its identifier property\&. By default the instance is always saved\&. This behaviour may be adjusted by specifying an \fCunsaved-value\fP attribute of the identifier property mapping 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP A transient instance containing new or updated state
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 564 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.SaveOrUpdate (stringentityName, objectobj)"
+
+.PP
+Either Save(String,Object) or Update(String,Object) the given instance, depending upon resolution of the unsaved-value checks (see the manual for discussion of unsaved-value checking)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The name of the entity 
+.br
+\fIobj\fP a transient or detached instance containing new or updated state 
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+ISession\&.Save(String,Object), ISession\&.Update(String,Object)
+.PP
+.RE
+.PP
+.PP
+This operation cascades to associated instances if the association is mapped with \fCcascade='save-update'\fP\&. 
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 572 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.SaveOrUpdate (stringentityName, objectobj, objectid)"
+
+.PP
+Either \fC\fBSave()\fP\fP or \fC\fBUpdate()\fP\fP the given instance, depending upon the value of its identifier property\&. By default the instance is always saved\&. This behaviour may be adjusted by specifying an \fCunsaved-value\fP attribute of the identifier property mapping 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The name of the entity
+.br
+\fIobj\fP A transient instance containing new or updated state
+.br
+\fIid\fP Identifier of persistent instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 580 of file SessionImpl\&.cs\&.
+.SS "\fBISession\fP NHibernate\&.Impl\&.SessionImpl\&.SetBatchSize (intbatchSize)"
+
+.PP
+Sets the batch size of the session 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbatchSize\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 2207 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Update (objectobj)"
+
+.PP
+Update the persistent instance with the identifier of the given transient instance\&. If there is a persistent instance with the same identifier, an exception is thrown\&. If the given transient instance has a  identifier, an exception will be thrown\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP A transient instance containing updated state
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 540 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Update (stringentityName, objectobj)"
+
+.PP
+Update the persistent instance with the identifier of the given detached instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The Entity name\&.
+.br
+\fIobj\fP a detached instance containing updated state 
+.RE
+.PP
+.PP
+If there is a persistent instance with the same identifier, an exception is thrown\&. This operation cascades to associated instances if the association is mapped with \fCcascade='save-update'\fP\&. 
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 548 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Update (stringentityName, objectobj, objectid)"
+
+.PP
+Update the persistent instance associated with the given identifier\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The Entity name\&.
+.br
+\fIobj\fP a detached instance containing updated state 
+.br
+\fIid\fP Identifier of persistent instance
+.RE
+.PP
+.PP
+If there is a persistent instance with the same identifier, an exception is thrown\&. This operation cascades to associated instances if the association is mapped with \fCcascade='save-update'\fP\&. 
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 556 of file SessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionImpl\&.Update (objectobj, objectid)"
+
+.PP
+Update the persistent state associated with the given identifier\&. An exception is thrown if there is a persistent instance with the same identifier in the current session\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP A transient instance containing updated state
+.br
+\fIid\fP Identifier of persistent instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISession\fP\&.
+.PP
+Definition at line 588 of file SessionImpl\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBActionQueue\fP NHibernate\&.Impl\&.SessionImpl\&.ActionQueue\fC [get]\fP"
+
+.PP
+Get the ActionQueue for this session
+.PP
+Definition at line 850 of file SessionImpl\&.cs\&.
+.SS "override \fBIBatcher\fP NHibernate\&.Impl\&.SessionImpl\&.Batcher\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 312 of file SessionImpl\&.cs\&.
+.SS "override \fBFlushMode\fP NHibernate\&.Impl\&.SessionImpl\&.FlushMode\fC [get]\fP, \fC [set]\fP"
+
+.PP
+
+.PP
+Definition at line 1010 of file SessionImpl\&.cs\&.
+.SS "override bool NHibernate\&.Impl\&.SessionImpl\&.IsConnected\fC [get]\fP"
+
+.PP
+Gets if the \fBISession\fP is connected\&. if the \fBISession\fP is connected\&. 
+.PP
+An \fBISession\fP is considered connected if there is an IDbConnection (regardless of its state) or if it the field \fCconnect\fP is true\&. Meaning that it will connect at the next operation that requires a connection\&. 
+.PP
+Definition at line 1598 of file SessionImpl\&.cs\&.
+.SS "override \fBEventListeners\fP NHibernate\&.Impl\&.SessionImpl\&.Listeners\fC [get]\fP"
+
+.PP
+Retrieves the configured event listeners from this event source\&. 
+.PP
+Definition at line 2268 of file SessionImpl\&.cs\&.
+.SS "\fBISessionStatistics\fP NHibernate\&.Impl\&.SessionImpl\&.Statistics\fC [get]\fP"
+
+.PP
+Get the statistics for this session\&.
+.PP
+Definition at line 2171 of file SessionImpl\&.cs\&.
+.SS "override long NHibernate\&.Impl\&.SessionImpl\&.Timestamp\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 322 of file SessionImpl\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

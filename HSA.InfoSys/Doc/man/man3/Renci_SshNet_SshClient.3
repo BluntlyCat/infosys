@@ -1,0 +1,683 @@
+.TH "Renci.SshNet.SshClient" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.SshClient \- 
+.PP
+Provides client connection to SSH server\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.BaseClient\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSshClient\fP (\fBConnectionInfo\fP connectionInfo)"
+.br
+.RI "\fIInitializes a new instance of the \fBSshClient\fP class\&. \fP"
+.ti -1c
+.RI "\fBSshClient\fP (string host, int port, string username, string password)"
+.br
+.RI "\fIInitializes a new instance of the \fBSshClient\fP class\&. \fP"
+.ti -1c
+.RI "\fBSshClient\fP (string host, string username, string password)"
+.br
+.RI "\fIInitializes a new instance of the \fBSshClient\fP class\&. \fP"
+.ti -1c
+.RI "\fBSshClient\fP (string host, int port, string username, params \fBPrivateKeyFile\fP[] keyFiles)"
+.br
+.RI "\fIInitializes a new instance of the \fBSshClient\fP class\&. \fP"
+.ti -1c
+.RI "\fBSshClient\fP (string host, string username, params \fBPrivateKeyFile\fP[] keyFiles)"
+.br
+.RI "\fIInitializes a new instance of the \fBSshClient\fP class\&. \fP"
+.ti -1c
+.RI "void \fBAddForwardedPort\fP (\fBForwardedPort\fP port)"
+.br
+.RI "\fIAdds the forwarded port\&. \fP"
+.ti -1c
+.RI "void \fBRemoveForwardedPort\fP (\fBForwardedPort\fP port)"
+.br
+.RI "\fIStops and removes the forwarded port from the list\&. \fP"
+.ti -1c
+.RI "\fBSshCommand\fP \fBCreateCommand\fP (string commandText)"
+.br
+.RI "\fICreates the command to be executed\&. \fP"
+.ti -1c
+.RI "\fBSshCommand\fP \fBCreateCommand\fP (string commandText, Encoding encoding)"
+.br
+.RI "\fICreates the command to be executed with specified encoding\&. \fP"
+.ti -1c
+.RI "\fBSshCommand\fP \fBRunCommand\fP (string commandText)"
+.br
+.RI "\fICreates and executes the command\&. \fP"
+.ti -1c
+.RI "\fBShell\fP \fBCreateShell\fP (Stream input, Stream output, Stream extendedOutput, string terminalName, uint columns, uint rows, uint width, uint height, IDictionary< \fBTerminalModes\fP, uint > terminalModes, int bufferSize)"
+.br
+.RI "\fICreates the shell\&. \fP"
+.ti -1c
+.RI "\fBShell\fP \fBCreateShell\fP (Stream input, Stream output, Stream extendedOutput, string terminalName, uint columns, uint rows, uint width, uint height, IDictionary< \fBTerminalModes\fP, uint > terminalModes)"
+.br
+.RI "\fICreates the shell\&. \fP"
+.ti -1c
+.RI "\fBShell\fP \fBCreateShell\fP (Stream input, Stream output, Stream extendedOutput)"
+.br
+.RI "\fICreates the shell\&. \fP"
+.ti -1c
+.RI "\fBShell\fP \fBCreateShell\fP (Encoding encoding, string input, Stream output, Stream extendedOutput, string terminalName, uint columns, uint rows, uint width, uint height, IDictionary< \fBTerminalModes\fP, uint > terminalModes, int bufferSize)"
+.br
+.RI "\fICreates the shell\&. \fP"
+.ti -1c
+.RI "\fBShell\fP \fBCreateShell\fP (Encoding encoding, string input, Stream output, Stream extendedOutput, string terminalName, uint columns, uint rows, uint width, uint height, IDictionary< \fBTerminalModes\fP, uint > terminalModes)"
+.br
+.RI "\fICreates the shell\&. \fP"
+.ti -1c
+.RI "\fBShell\fP \fBCreateShell\fP (Encoding encoding, string input, Stream output, Stream extendedOutput)"
+.br
+.RI "\fICreates the shell\&. \fP"
+.ti -1c
+.RI "\fBShellStream\fP \fBCreateShellStream\fP (string terminalName, uint columns, uint rows, uint width, uint height, int bufferSize)"
+.br
+.RI "\fICreates the shell stream\&. \fP"
+.ti -1c
+.RI "\fBShellStream\fP \fBCreateShellStream\fP (string terminalName, uint columns, uint rows, uint width, uint height, int bufferSize, IDictionary< \fBTerminalModes\fP, uint > terminalModeValues)"
+.br
+.RI "\fICreates the shell stream\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBOnDisconnecting\fP ()"
+.br
+.RI "\fICalled when client is disconnecting from the server\&. \fP"
+.ti -1c
+.RI "override void \fBOnDisconnected\fP ()"
+.br
+.RI "\fICalled when client is disconnected from the server\&. \fP"
+.ti -1c
+.RI "override void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIReleases unmanaged and - optionally - managed resources \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "IEnumerable< \fBForwardedPort\fP > \fBForwardedPorts\fP\fC [get]\fP"
+.br
+.RI "\fIGets the list of forwarded ports\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Provides client connection to SSH server\&. 
+
+
+.PP
+Definition at line 14 of file SshClient\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.SshClient\&.SshClient (\fBConnectionInfo\fPconnectionInfo)"
+
+.PP
+Initializes a new instance of the \fBSshClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnectionInfo\fP The connection info\&.
+.RE
+.PP
+\fC \fC \fC \fC \fP\fP\fP\fP
+.PP
+\fC\fC\fC\fC 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIconnectionInfo\fP  is null\&.
+.RE
+.PP
+\fP\fP\fP\fP
+.PP
+Definition at line 52 of file SshClient\&.cs\&.
+.SS "Renci\&.SshNet\&.SshClient\&.SshClient (stringhost, intport, stringusername, stringpassword)"
+
+.PP
+Initializes a new instance of the \fBSshClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP Connection host\&.
+.br
+\fIport\fP Connection port\&.
+.br
+\fIusername\fP Authentication username\&.
+.br
+\fIpassword\fP Authentication password\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpassword\fP  is null\&.
+.br
+\fIArgumentException\fP \fIhost\fP  is invalid, or \fIusername\fP  is null or contains whitespace characters\&.
+.br
+\fIArgumentOutOfRangeException\fP \fIport\fP  is not within F:System\&.Net\&.IPEndPoint\&.MinPort and System\&.Net\&.IPEndPoint\&.MaxPort\&.
+.RE
+.PP
+
+.PP
+Definition at line 68 of file SshClient\&.cs\&.
+.SS "Renci\&.SshNet\&.SshClient\&.SshClient (stringhost, stringusername, stringpassword)"
+
+.PP
+Initializes a new instance of the \fBSshClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP Connection host\&.
+.br
+\fIusername\fP Authentication username\&.
+.br
+\fIpassword\fP Authentication password\&.
+.RE
+.PP
+\fC \fP
+.PP
+\fC 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpassword\fP  is null\&.
+.br
+\fIArgumentException\fP \fIhost\fP  is invalid, or \fIusername\fP  is null or contains whitespace characters\&.
+.RE
+.PP
+\fP
+.PP
+Definition at line 85 of file SshClient\&.cs\&.
+.SS "Renci\&.SshNet\&.SshClient\&.SshClient (stringhost, intport, stringusername, params \fBPrivateKeyFile\fP[]keyFiles)"
+
+.PP
+Initializes a new instance of the \fBSshClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP Connection host\&.
+.br
+\fIport\fP Connection port\&.
+.br
+\fIusername\fP Authentication username\&.
+.br
+\fIkeyFiles\fP Authentication private key file(s) \&.
+.RE
+.PP
+\fC \fC \fP\fP
+.PP
+\fC\fC 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIkeyFiles\fP  is null\&.
+.br
+\fIArgumentException\fP \fIhost\fP  is invalid, -or- \fIusername\fP  is null or contains whitespace characters\&.
+.br
+\fIArgumentOutOfRangeException\fP \fIport\fP  is not within F:System\&.Net\&.IPEndPoint\&.MinPort and System\&.Net\&.IPEndPoint\&.MaxPort\&.
+.RE
+.PP
+\fP\fP
+.PP
+Definition at line 105 of file SshClient\&.cs\&.
+.SS "Renci\&.SshNet\&.SshClient\&.SshClient (stringhost, stringusername, params \fBPrivateKeyFile\fP[]keyFiles)"
+
+.PP
+Initializes a new instance of the \fBSshClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP Connection host\&.
+.br
+\fIusername\fP Authentication username\&.
+.br
+\fIkeyFiles\fP Authentication private key file(s) \&.
+.RE
+.PP
+\fC \fC \fP\fP
+.PP
+\fC\fC 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIkeyFiles\fP  is null\&.
+.br
+\fIArgumentException\fP \fIhost\fP  is invalid, -or- \fIusername\fP  is null or contains whitespace characters\&.
+.RE
+.PP
+\fP\fP
+.PP
+Definition at line 123 of file SshClient\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Renci\&.SshNet\&.SshClient\&.AddForwardedPort (\fBForwardedPort\fPport)"
+
+.PP
+Adds the forwarded port\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP The port\&.
+.RE
+.PP
+\fC \fC \fP\fP
+.PP
+\fC\fC 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInvalidOperationException\fP Forwarded port is already added to a different client\&.
+.br
+\fIArgumentNullException\fP \fIport\fP  is null\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.RE
+.PP
+\fP\fP
+.PP
+Definition at line 154 of file SshClient\&.cs\&.
+.SS "\fBSshCommand\fP Renci\&.SshNet\&.SshClient\&.CreateCommand (stringcommandText)"
+
+.PP
+Creates the command to be executed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommandText\fP The command text\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBSshCommand\fP object\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISshConnectionException\fP Client is not connected\&.
+.RE
+.PP
+
+.PP
+Definition at line 191 of file SshClient\&.cs\&.
+.SS "\fBSshCommand\fP Renci\&.SshNet\&.SshClient\&.CreateCommand (stringcommandText, Encodingencoding)"
+
+.PP
+Creates the command to be executed with specified encoding\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommandText\fP The command text\&.
+.br
+\fIencoding\fP The encoding to use for results\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBSshCommand\fP object which uses specified encoding\&.
+.RE
+.PP
+.PP
+TThis method will change current default encoding\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fIArgumentNullException\fP \fIcommandText\fP  or \fIencoding\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 205 of file SshClient\&.cs\&.
+.SS "\fBShell\fP Renci\&.SshNet\&.SshClient\&.CreateShell (Streaminput, Streamoutput, StreamextendedOutput, stringterminalName, uintcolumns, uintrows, uintwidth, uintheight, IDictionary< \fBTerminalModes\fP, uint >terminalModes, intbufferSize)"
+
+.PP
+Creates the shell\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP The input\&.
+.br
+\fIoutput\fP The output\&.
+.br
+\fIextendedOutput\fP The extended output\&.
+.br
+\fIterminalName\fP Name of the terminal\&.
+.br
+\fIcolumns\fP The columns\&.
+.br
+\fIrows\fP The rows\&.
+.br
+\fIwidth\fP The width\&.
+.br
+\fIheight\fP The height\&.
+.br
+\fIterminalModes\fP The terminal mode\&.
+.br
+\fIbufferSize\fP Size of the internal read buffer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Returns a representation of a \fBShell\fP object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 249 of file SshClient\&.cs\&.
+.SS "\fBShell\fP Renci\&.SshNet\&.SshClient\&.CreateShell (Streaminput, Streamoutput, StreamextendedOutput, stringterminalName, uintcolumns, uintrows, uintwidth, uintheight, IDictionary< \fBTerminalModes\fP, uint >terminalModes)"
+
+.PP
+Creates the shell\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP The input\&.
+.br
+\fIoutput\fP The output\&.
+.br
+\fIextendedOutput\fP The extended output\&.
+.br
+\fIterminalName\fP Name of the terminal\&.
+.br
+\fIcolumns\fP The columns\&.
+.br
+\fIrows\fP The rows\&.
+.br
+\fIwidth\fP The width\&.
+.br
+\fIheight\fP The height\&.
+.br
+\fIterminalModes\fP The terminal mode\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Returns a representation of a \fBShell\fP object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 269 of file SshClient\&.cs\&.
+.SS "\fBShell\fP Renci\&.SshNet\&.SshClient\&.CreateShell (Streaminput, Streamoutput, StreamextendedOutput)"
+
+.PP
+Creates the shell\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP The input\&.
+.br
+\fIoutput\fP The output\&.
+.br
+\fIextendedOutput\fP The extended output\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Returns a representation of a \fBShell\fP object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 283 of file SshClient\&.cs\&.
+.SS "\fBShell\fP Renci\&.SshNet\&.SshClient\&.CreateShell (Encodingencoding, stringinput, Streamoutput, StreamextendedOutput, stringterminalName, uintcolumns, uintrows, uintwidth, uintheight, IDictionary< \fBTerminalModes\fP, uint >terminalModes, intbufferSize)"
+
+.PP
+Creates the shell\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIencoding\fP The encoding to use to send the input\&.
+.br
+\fIinput\fP The input\&.
+.br
+\fIoutput\fP The output\&.
+.br
+\fIextendedOutput\fP The extended output\&.
+.br
+\fIterminalName\fP Name of the terminal\&.
+.br
+\fIcolumns\fP The columns\&.
+.br
+\fIrows\fP The rows\&.
+.br
+\fIwidth\fP The width\&.
+.br
+\fIheight\fP The height\&.
+.br
+\fIterminalModes\fP The terminal mode\&.
+.br
+\fIbufferSize\fP Size of the internal read buffer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Returns a representation of a \fBShell\fP object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 305 of file SshClient\&.cs\&.
+.SS "\fBShell\fP Renci\&.SshNet\&.SshClient\&.CreateShell (Encodingencoding, stringinput, Streamoutput, StreamextendedOutput, stringterminalName, uintcolumns, uintrows, uintwidth, uintheight, IDictionary< \fBTerminalModes\fP, uint >terminalModes)"
+
+.PP
+Creates the shell\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIencoding\fP The encoding\&.
+.br
+\fIinput\fP The input\&.
+.br
+\fIoutput\fP The output\&.
+.br
+\fIextendedOutput\fP The extended output\&.
+.br
+\fIterminalName\fP Name of the terminal\&.
+.br
+\fIcolumns\fP The columns\&.
+.br
+\fIrows\fP The rows\&.
+.br
+\fIwidth\fP The width\&.
+.br
+\fIheight\fP The height\&.
+.br
+\fIterminalModes\fP The terminal modes\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Returns a representation of a \fBShell\fP object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 332 of file SshClient\&.cs\&.
+.SS "\fBShell\fP Renci\&.SshNet\&.SshClient\&.CreateShell (Encodingencoding, stringinput, Streamoutput, StreamextendedOutput)"
+
+.PP
+Creates the shell\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIencoding\fP The encoding\&.
+.br
+\fIinput\fP The input\&.
+.br
+\fIoutput\fP The output\&.
+.br
+\fIextendedOutput\fP The extended output\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Returns a representation of a \fBShell\fP object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 347 of file SshClient\&.cs\&.
+.SS "\fBShellStream\fP Renci\&.SshNet\&.SshClient\&.CreateShellStream (stringterminalName, uintcolumns, uintrows, uintwidth, uintheight, intbufferSize)"
+
+.PP
+Creates the shell stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIterminalName\fP Name of the terminal\&.
+.br
+\fIcolumns\fP The columns\&.
+.br
+\fIrows\fP The rows\&.
+.br
+\fIwidth\fP The width\&.
+.br
+\fIheight\fP The height\&.
+.br
+\fIbufferSize\fP Size of the buffer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to Created \fBShellStream\fP object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 364 of file SshClient\&.cs\&.
+.SS "\fBShellStream\fP Renci\&.SshNet\&.SshClient\&.CreateShellStream (stringterminalName, uintcolumns, uintrows, uintwidth, uintheight, intbufferSize, IDictionary< \fBTerminalModes\fP, uint >terminalModeValues)"
+
+.PP
+Creates the shell stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIterminalName\fP Name of the terminal\&.
+.br
+\fIcolumns\fP The columns\&.
+.br
+\fIrows\fP The rows\&.
+.br
+\fIwidth\fP The width\&.
+.br
+\fIheight\fP The height\&.
+.br
+\fIbufferSize\fP Size of the buffer\&.
+.br
+\fIterminalModeValues\fP The terminal mode values\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to Created \fBShellStream\fP object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 382 of file SshClient\&.cs\&.
+.SS "override void Renci\&.SshNet\&.SshClient\&.Dispose (booldisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Releases unmanaged and - optionally - managed resources 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP \fCtrue\fP to release both managed and unmanaged resources; \fCfalse\fP to release only unmanaged ResourceMessages\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBRenci\&.SshNet\&.BaseClient\fP\&.
+.PP
+Definition at line 402 of file SshClient\&.cs\&.
+.SS "override void Renci\&.SshNet\&.SshClient\&.OnDisconnected ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when client is disconnected from the server\&. 
+.PP
+Reimplemented from \fBRenci\&.SshNet\&.BaseClient\fP\&.
+.PP
+Definition at line 387 of file SshClient\&.cs\&.
+.SS "override void Renci\&.SshNet\&.SshClient\&.OnDisconnecting ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when client is disconnecting from the server\&. 
+.PP
+Reimplemented from \fBRenci\&.SshNet\&.BaseClient\fP\&.
+.PP
+Definition at line 133 of file SshClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SshClient\&.RemoveForwardedPort (\fBForwardedPort\fPport)"
+
+.PP
+Stops and removes the forwarded port from the list\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP Forwarded port\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIport\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 172 of file SshClient\&.cs\&.
+.SS "\fBSshCommand\fP Renci\&.SshNet\&.SshClient\&.RunCommand (stringcommandText)"
+
+.PP
+Creates and executes the command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommandText\fP The command text\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Returns an instance of \fBSshCommand\fP with execution results\&.
+.RE
+.PP
+.PP
+This method internally uses asynchronous calls\&.
+.PP
+.PP
+.nf
+    <code source="\&.\&.\\&.\&.\Renci\&.SshNet\&.Tests\Classes\SshCommandTest\&.NET40\&.cs" region="Example SshCommand RunCommand Parallel" language="C#" title="Run many commands in parallel" />
+</example>
+<exception cref="ArgumentException">CommandText property is empty\&.</exception>
+<exception cref="T:Renci\&.SshNet\&.Common\&.SshException">Invalid Operation - An existing channel was used to execute this command\&.</exception>
+<exception cref="InvalidOperationException">Asynchronous operation is already in progress\&.</exception>
+<exception cref="SshConnectionException">Client is not connected\&.</exception>
+<exception cref="ArgumentNullException"><paramref name="commandText"/> is null\&.</exception>  
+.fi
+.PP
+
+.PP
+Definition at line 226 of file SshClient\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "IEnumerable<\fBForwardedPort\fP> Renci\&.SshNet\&.SshClient\&.ForwardedPorts\fC [get]\fP"
+
+.PP
+Gets the list of forwarded ports\&. 
+.PP
+Definition at line 32 of file SshClient\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

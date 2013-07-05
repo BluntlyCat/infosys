@@ -1,0 +1,96 @@
+.TH "NHibernate.Loader.Collection.CollectionLoader" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Loader.Collection.CollectionLoader \- 
+.PP
+Superclass for loaders that initialize collections 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBOneToManyLoader\fP, \fBBasicCollectionLoader\fP
+.PP
+.RE
+.PP
+ 
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Loader\&.OuterJoinLoader\fP, and \fBNHibernate\&.Loader\&.Collection\&.ICollectionInitializer\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Loader\&.Collection\&.BasicCollectionLoader\fP, and \fBNHibernate\&.Loader\&.Collection\&.OneToManyLoader\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCollectionLoader\fP (\fBIQueryableCollection\fP persister, \fBISessionFactoryImplementor\fP factory, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "virtual void \fBInitialize\fP (object id, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIInitialize the given collection \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual IEnumerable
+.br
+< \fBIParameterSpecification\fP > \fBCreateParameterSpecificationsAndAssignBackTrack\fP (IEnumerable< \fBParameter\fP > sqlPatameters)"
+.br
+.ti -1c
+.RI "override IEnumerable
+.br
+< \fBIParameterSpecification\fP > \fBGetParameterSpecifications\fP ()"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBGetSubSelectWithLimits\fP (\fBSqlString\fP subquery, ICollection< \fBIParameterSpecification\fP > parameterSpecs, \fBRowSelection\fP processedRowSelection, IDictionary< string, \fBTypedValue\fP > parameters)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBIsSubselectLoadingEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP \fBKeyType\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Superclass for loaders that initialize collections 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBOneToManyLoader\fP, \fBBasicCollectionLoader\fP
+.PP
+.RE
+.PP
+
+
+
+.PP
+Definition at line 16 of file CollectionLoader\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Loader\&.Collection\&.CollectionLoader\&.Initialize (objectid, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Initialize the given collection 
+.PP
+Implements \fBNHibernate\&.Loader\&.Collection\&.ICollectionInitializer\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Loader\&.Collection\&.SubselectOneToManyLoader\fP, and \fBNHibernate\&.Loader\&.Collection\&.SubselectCollectionLoader\fP\&.
+.PP
+Definition at line 38 of file CollectionLoader\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

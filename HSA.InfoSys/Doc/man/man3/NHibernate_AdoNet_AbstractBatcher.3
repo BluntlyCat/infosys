@@ -1,0 +1,441 @@
+.TH "NHibernate.AdoNet.AbstractBatcher" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.AdoNet.AbstractBatcher \- 
+.PP
+Manages prepared statements and batching\&. Class exists to enforce separation of concerns  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Engine\&.IBatcher\fP\&.
+.PP
+Inherited by \fBNHibernate\&.AdoNet\&.MySqlClientBatchingBatcher\fP, \fBNHibernate\&.AdoNet\&.NonBatchingBatcher\fP, \fBNHibernate\&.AdoNet\&.OracleDataClientBatchingBatcher\fP, and \fBNHibernate\&.AdoNet\&.SqlClientBatchingBatcher\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "IDbCommand \fBGenerate\fP (CommandType type, \fBSqlString\fP sqlString, \fBSqlType\fP[] parameterTypes)"
+.br
+.ti -1c
+.RI "virtual IDbCommand \fBPrepareBatchCommand\fP (CommandType type, \fBSqlString\fP sql, \fBSqlType\fP[] parameterTypes)"
+.br
+.RI "\fIGet a batchable IDbCommand to use for inserting / deleting / updating (might be called many times before a single call to \fC\fBExecuteBatch()\fP\fP \fP"
+.ti -1c
+.RI "IDbCommand \fBPrepareCommand\fP (CommandType type, \fBSqlString\fP sql, \fBSqlType\fP[] parameterTypes)"
+.br
+.RI "\fIGet a non-batchable an IDbCommand to use for inserting / deleting / updating\&. Must be explicitly released by \fCCloseCommand()\fP \fP"
+.ti -1c
+.RI "IDbCommand \fBPrepareQueryCommand\fP (CommandType type, \fBSqlString\fP sql, \fBSqlType\fP[] parameterTypes)"
+.br
+.RI "\fIGet an IDbCommand for using in loading / querying\&. \fP"
+.ti -1c
+.RI "void \fBAbortBatch\fP (Exception e)"
+.br
+.RI "\fIMust be called when an exception occurs\&. \fP"
+.ti -1c
+.RI "int \fBExecuteNonQuery\fP (IDbCommand cmd)"
+.br
+.RI "\fIExecutes the IDbCommand\&. \fP"
+.ti -1c
+.RI "virtual IDataReader \fBExecuteReader\fP (IDbCommand cmd)"
+.br
+.RI "\fIGets an IDataReader by calling ExecuteReader on the IDbCommand\&. \fP"
+.ti -1c
+.RI "void \fBCloseCommands\fP ()"
+.br
+.RI "\fIClose any query statements that were left lying around \fP"
+.ti -1c
+.RI "void \fBCloseCommand\fP (IDbCommand st, IDataReader reader)"
+.br
+.RI "\fIClose a IDbCommand opened using \fC\fBPrepareCommand()\fP\fP \fP"
+.ti -1c
+.RI "void \fBCloseReader\fP (IDataReader reader)"
+.br
+.RI "\fIClose a IDataReader opened using \fBExecuteReader\fP \fP"
+.ti -1c
+.RI "void \fBExecuteBatch\fP ()"
+.br
+.RI "\fIExecute the batch \fP"
+.ti -1c
+.RI "abstract void \fBAddToBatch\fP (\fBIExpectation\fP expectation)"
+.br
+.RI "\fIAdds the expected row count into the batch\&. \fP"
+.ti -1c
+.RI "void \fBCancelLastQuery\fP ()"
+.br
+.RI "\fICancel the current query statement \fP"
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "\fITakes care of freeing the managed and unmanaged resources that this class is responsible for\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractBatcher\fP (\fBConnectionManager\fP connectionManager, \fBIInterceptor\fP interceptor)"
+.br
+.RI "\fIInitializes a new instance of the \fBAbstractBatcher\fP class\&. \fP"
+.ti -1c
+.RI "void \fBPrepare\fP (IDbCommand cmd)"
+.br
+.RI "\fIPrepares the IDbCommand for execution in the database\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnPreparedCommand\fP ()"
+.br
+.ti -1c
+.RI "void \fBCheckReaders\fP ()"
+.br
+.RI "\fIEnsures that the \fBDriver\fP's rules for Multiple Open DataReaders are being followed\&. \fP"
+.ti -1c
+.RI "void \fBExecuteBatchWithTiming\fP (IDbCommand ps)"
+.br
+.ti -1c
+.RI "abstract void \fBDoExecuteBatch\fP (IDbCommand ps)"
+.br
+.ti -1c
+.RI "void \fBLogCommand\fP (IDbCommand command)"
+.br
+.ti -1c
+.RI "Exception \fBConvert\fP (Exception sqlException, string message)"
+.br
+.ti -1c
+.RI "virtual void \fBDispose\fP (bool isDisposing)"
+.br
+.RI "\fITakes care of freeing the managed and unmanaged resources that this class is responsible for\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBGetSQL\fP (\fBSqlString\fP sql)"
+.br
+.in -1c
+.SS "Static Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly \fBIInternalLogger\fP \fBLog\fP = LoggerProvider\&.LoggerFor(typeof(\fBAbstractBatcher\fP))"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIDriver\fP \fBDriver\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDbCommand \fBCurrentCommand\fP\fC [get]\fP"
+.br
+.RI "\fIGets the current IDbCommand that is contained for this Batch \fP"
+.ti -1c
+.RI "abstract int \fBCountOfStatementsInCurrentBatch\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract int \fBBatchSize\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the size of the batch, this can change dynamically by calling the session's SetBatchSize\&. \fP"
+.ti -1c
+.RI "\fBISessionFactoryImplementor\fP \fBFactory\fP\fC [get]\fP"
+.br
+.RI "\fIGets the ISessionFactoryImplementor the Batcher was created in\&. \fP"
+.ti -1c
+.RI "\fBConnectionManager\fP \fBConnectionManager\fP\fC [get]\fP"
+.br
+.RI "\fIGets the \fBConnectionManager\fP for this batcher\&. \fP"
+.ti -1c
+.RI "bool \fBHasOpenResources\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Manages prepared statements and batching\&. Class exists to enforce separation of concerns 
+
+
+.PP
+Definition at line 20 of file AbstractBatcher\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.AdoNet\&.AbstractBatcher\&.AbstractBatcher (\fBConnectionManager\fPconnectionManager, \fBIInterceptor\fPinterceptor)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBAbstractBatcher\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnectionManager\fP The \fBConnectionManager\fP owning this batcher\&.
+.br
+\fIinterceptor\fP 
+.RE
+.PP
+
+.PP
+Definition at line 48 of file AbstractBatcher\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.AdoNet\&.AbstractBatcher\&.AbortBatch (Exceptione)"
+
+.PP
+Must be called when an exception occurs\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIe\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Engine\&.IBatcher\fP\&.
+.PP
+Definition at line 168 of file AbstractBatcher\&.cs\&.
+.SS "abstract void NHibernate\&.AdoNet\&.AbstractBatcher\&.AddToBatch (\fBIExpectation\fPexpectation)\fC [pure virtual]\fP"
+
+.PP
+Adds the expected row count into the batch\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpectation\fP The number of rows expected to be affected by the query\&.
+.RE
+.PP
+.PP
+If Batching is not supported, then this is when the Command should be executed\&. If Batching is supported then it should hold of on executing the batch until explicitly told to\&. 
+.PP
+Implements \fBNHibernate\&.Engine\&.IBatcher\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Test\&.Insertordering\&.InsertOrderingFixture\&.StatsBatcher\fP, \fBNHibernate\&.AdoNet\&.SqlClientBatchingBatcher\fP, \fBNHibernate\&.AdoNet\&.MySqlClientBatchingBatcher\fP, \fBNHibernate\&.AdoNet\&.OracleDataClientBatchingBatcher\fP, and \fBNHibernate\&.AdoNet\&.NonBatchingBatcher\fP\&.
+.SS "void NHibernate\&.AdoNet\&.AbstractBatcher\&.CancelLastQuery ()"
+
+.PP
+Cancel the current query statement 
+.PP
+Implements \fBNHibernate\&.Engine\&.IBatcher\fP\&.
+.PP
+Definition at line 515 of file AbstractBatcher\&.cs\&.
+.SS "void NHibernate\&.AdoNet\&.AbstractBatcher\&.CheckReaders ()\fC [protected]\fP"
+
+.PP
+Ensures that the \fBDriver\fP's rules for Multiple Open DataReaders are being followed\&. 
+.PP
+Definition at line 252 of file AbstractBatcher\&.cs\&.
+.SS "void NHibernate\&.AdoNet\&.AbstractBatcher\&.CloseCommand (IDbCommandcmd, IDataReaderreader)"
+
+.PP
+Close a IDbCommand opened using \fC\fBPrepareCommand()\fP\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP The IDbCommand to ensure is closed\&.
+.br
+\fIreader\fP The IDataReader to ensure is closed\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Engine\&.IBatcher\fP\&.
+.PP
+Definition at line 331 of file AbstractBatcher\&.cs\&.
+.SS "void NHibernate\&.AdoNet\&.AbstractBatcher\&.CloseCommands ()"
+
+.PP
+Close any query statements that were left lying around Use this method instead of \fCDispose\fP if the IBatcher can be used again\&. 
+.PP
+Implements \fBNHibernate\&.Engine\&.IBatcher\fP\&.
+.PP
+Definition at line 267 of file AbstractBatcher\&.cs\&.
+.SS "void NHibernate\&.AdoNet\&.AbstractBatcher\&.CloseReader (IDataReaderreader)"
+
+.PP
+Close a IDataReader opened using \fBExecuteReader\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The IDataReader to ensure is closed\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Engine\&.IBatcher\fP\&.
+.PP
+Definition at line 344 of file AbstractBatcher\&.cs\&.
+.SS "void NHibernate\&.AdoNet\&.AbstractBatcher\&.Dispose ()"
+
+.PP
+Takes care of freeing the managed and unmanaged resources that this class is responsible for\&. 
+.PP
+Definition at line 567 of file AbstractBatcher\&.cs\&.
+.SS "virtual void NHibernate\&.AdoNet\&.AbstractBatcher\&.Dispose (boolisDisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Takes care of freeing the managed and unmanaged resources that this class is responsible for\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIisDisposing\fP Indicates if this BatcherImpl is being Disposed of or Finalized\&.
+.RE
+.PP
+.PP
+If this BatcherImpl is being Finalized (\fCisDisposing==false\fP) then make sure not to call any methods that could potentially bring this BatcherImpl back to life\&. 
+.PP
+Definition at line 582 of file AbstractBatcher\&.cs\&.
+.SS "void NHibernate\&.AdoNet\&.AbstractBatcher\&.ExecuteBatch ()"
+
+.PP
+Execute the batch 
+.PP
+Implements \fBNHibernate\&.Engine\&.IBatcher\fP\&.
+.PP
+Definition at line 386 of file AbstractBatcher\&.cs\&.
+.SS "int NHibernate\&.AdoNet\&.AbstractBatcher\&.ExecuteNonQuery (IDbCommandcmd)"
+
+.PP
+Executes the IDbCommand\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP The IDbCommand to execute\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of rows affected\&.
+.RE
+.PP
+.PP
+The Batcher is responsible for ensuring that all of the Drivers rules for how many open IDataReaders it can have are followed\&. 
+.PP
+Implements \fBNHibernate\&.Engine\&.IBatcher\fP\&.
+.PP
+Definition at line 186 of file AbstractBatcher\&.cs\&.
+.SS "virtual IDataReader NHibernate\&.AdoNet\&.AbstractBatcher\&.ExecuteReader (IDbCommandcmd)\fC [virtual]\fP"
+
+.PP
+Gets an IDataReader by calling ExecuteReader on the IDbCommand\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP The IDbCommand to execute to get the IDataReader\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The IDataReader from the IDbCommand\&.
+.RE
+.PP
+.PP
+The Batcher is responsible for ensuring that all of the Drivers rules for how many open IDataReaders it can have are followed\&. 
+.PP
+Implements \fBNHibernate\&.Engine\&.IBatcher\fP\&.
+.PP
+Definition at line 211 of file AbstractBatcher\&.cs\&.
+.SS "void NHibernate\&.AdoNet\&.AbstractBatcher\&.Prepare (IDbCommandcmd)\fC [protected]\fP"
+
+.PP
+Prepares the IDbCommand for execution in the database\&. This takes care of hooking the IDbCommand up to an IDbConnection and IDbTransaction if one exists\&. It will call \fCPrepare\fP if the \fBDriver\fP supports preparing commands\&. 
+.PP
+Definition at line 91 of file AbstractBatcher\&.cs\&.
+.SS "virtual IDbCommand NHibernate\&.AdoNet\&.AbstractBatcher\&.PrepareBatchCommand (CommandTypecommandType, \fBSqlString\fPsql, \fBSqlType\fP[]parameterTypes)\fC [virtual]\fP"
+
+.PP
+Get a batchable IDbCommand to use for inserting / deleting / updating (might be called many times before a single call to \fC\fBExecuteBatch()\fP\fP After setting parameters, call \fC\fBAddToBatch()\fP\fP - do not execute the statement explicitly\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsql\fP The SqlString to convert to an IDbCommand\&.
+.br
+\fIcommandType\fP The CommandType of the command\&.
+.br
+\fIparameterTypes\fP The \fBSqlTypes\fP of parameters in \fIsql\fP \&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Engine\&.IBatcher\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Test\&.Insertordering\&.InsertOrderingFixture\&.StatsBatcher\fP\&.
+.PP
+Definition at line 120 of file AbstractBatcher\&.cs\&.
+.SS "IDbCommand NHibernate\&.AdoNet\&.AbstractBatcher\&.PrepareCommand (CommandTypecommandType, \fBSqlString\fPsql, \fBSqlType\fP[]parameterTypes)"
+
+.PP
+Get a non-batchable an IDbCommand to use for inserting / deleting / updating\&. Must be explicitly released by \fCCloseCommand()\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsql\fP The SqlString to convert to an IDbCommand\&.
+.br
+\fIcommandType\fP The CommandType of the command\&.
+.br
+\fIparameterTypes\fP The \fBSqlTypes\fP of parameters in \fIsql\fP \&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IDbCommand that is ready to have the parameter values set and then executed\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Engine\&.IBatcher\fP\&.
+.PP
+Definition at line 139 of file AbstractBatcher\&.cs\&.
+.SS "IDbCommand NHibernate\&.AdoNet\&.AbstractBatcher\&.PrepareQueryCommand (CommandTypecommandType, \fBSqlString\fPsql, \fBSqlType\fP[]parameterTypes)"
+
+.PP
+Get an IDbCommand for using in loading / querying\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsql\fP The SqlString to convert to an IDbCommand\&.
+.br
+\fIcommandType\fP The CommandType of the command\&.
+.br
+\fIparameterTypes\fP The \fBSqlTypes\fP of parameters in \fIsql\fP \&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IDbCommand that is ready to be executed\&. 
+.RE
+.PP
+.PP
+If not explicitly released by CloseCommand, it will be released when the session is closed or disconnected\&. 
+.PP
+This does NOT add anything to the batch - it only creates the IDbCommand and does NOT cause the batch to execute\&.\&.\&. 
+.PP
+Implements \fBNHibernate\&.Engine\&.IBatcher\fP\&.
+.PP
+Definition at line 157 of file AbstractBatcher\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "abstract int NHibernate\&.AdoNet\&.AbstractBatcher\&.BatchSize\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the size of the batch, this can change dynamically by calling the session's SetBatchSize\&. The size of the batch\&.
+.PP
+Definition at line 428 of file AbstractBatcher\&.cs\&.
+.SS "\fBConnectionManager\fP NHibernate\&.AdoNet\&.AbstractBatcher\&.ConnectionManager\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Gets the \fBConnectionManager\fP for this batcher\&. 
+.PP
+Definition at line 460 of file AbstractBatcher\&.cs\&.
+.SS "IDbCommand NHibernate\&.AdoNet\&.AbstractBatcher\&.CurrentCommand\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Gets the current IDbCommand that is contained for this Batch The current IDbCommand\&.
+.PP
+Definition at line 65 of file AbstractBatcher\&.cs\&.
+.SS "\fBISessionFactoryImplementor\fP NHibernate\&.AdoNet\&.AbstractBatcher\&.Factory\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Gets the ISessionFactoryImplementor the Batcher was created in\&. The ISessionFactoryImplementor the Batcher was created in\&. 
+.PP
+Definition at line 452 of file AbstractBatcher\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

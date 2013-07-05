@@ -1,0 +1,124 @@
+.TH "NHibernate.Classic.ILifecycle" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Classic.ILifecycle \- 
+.PP
+Provides callbacks from the \fBISession\fP to the persistent object\&. Persistent classes may implement this interface but they are not required to\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.DomainModel\&.Foo\fP, \fBNHibernate\&.DomainModel\&.Fum\fP, \fBNHibernate\&.DomainModel\&.Glarch\fP, \fBNHibernate\&.DomainModel\&.Qux\fP, \fBNHibernate\&.DomainModel\&.Vetoer\fP, \fBNHibernate\&.Test\&.Classic\&.EntityWithLifecycle\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1914\&.CustomList< T >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLifecycleVeto\fP \fBOnSave\fP (\fBISession\fP s)"
+.br
+.RI "\fICalled when an entity is saved \fP"
+.ti -1c
+.RI "\fBLifecycleVeto\fP \fBOnUpdate\fP (\fBISession\fP s)"
+.br
+.RI "\fICalled when an entity is passed to \fBISession\&.Update(object)\fP\&. \fP"
+.ti -1c
+.RI "\fBLifecycleVeto\fP \fBOnDelete\fP (\fBISession\fP s)"
+.br
+.RI "\fICalled when an entity is deleted \fP"
+.ti -1c
+.RI "void \fBOnLoad\fP (\fBISession\fP s, object id)"
+.br
+.RI "\fICalled after an entity is loaded\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Provides callbacks from the \fBISession\fP to the persistent object\&. Persistent classes may implement this interface but they are not required to\&. 
+
+\fBOnSave\fP, \fBOnDelete\fP, and \fBOnUpdate\fP are intended to be used to cascade saves and deletions of dependent objects\&. This is an alternative to declaring cascaded operations in the mapping file\&. 
+.PP
+\fBOnLoad\fP may be used to initialize transient properties of the object from its persistent state\&. It may \fInot\fP be used to load dependent objects since the \fBISession\fP interface may not be invoked from inside this method\&. 
+.PP
+A further intended usage of \fBOnLoad\fP, \fBOnSave\fP, and \fBOnUpdate\fP is to store a reference to the \fBISession\fP for later use\&. 
+.PP
+If \fBOnSave\fP, \fBOnUpdate\fP, or \fBOnDelete\fP return LifecycleVeto\&.Veto, the operation is silently vetoed\&. If a \fBCallbackException\fP is thrown, the operation is vetoed and the exception is passed back to the application\&. 
+.PP
+Note that \fBOnSave\fP is called after an identifier is assigned to the object, except when \fCidentity\fP key generation is used\&. 
+.PP
+Definition at line 32 of file ILifecycle\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBLifecycleVeto\fP NHibernate\&.Classic\&.ILifecycle\&.OnDelete (\fBISession\fPs)"
+
+.PP
+Called when an entity is deleted 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLifecycleVeto\fP value indicating whether the operation should be vetoed or allowed to proceed\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.DomainModel\&.Foo\fP, \fBNHibernate\&.DomainModel\&.Glarch\fP, \fBNHibernate\&.DomainModel\&.Fum\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1914\&.CustomList< T >\fP, \fBNHibernate\&.DomainModel\&.Qux\fP, \fBNHibernate\&.DomainModel\&.Vetoer\fP, and \fBNHibernate\&.Test\&.Classic\&.EntityWithLifecycle\fP\&.
+.SS "void NHibernate\&.Classic\&.ILifecycle\&.OnLoad (\fBISession\fPs, objectid)"
+
+.PP
+Called after an entity is loaded\&. <note>It is illegal to access the \fBISession\fP from inside this method\&.</note>\&. However, the object may keep a reference to the session for later use 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.br
+\fIid\fP The identifier
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.DomainModel\&.Foo\fP, \fBNHibernate\&.DomainModel\&.Fum\fP, \fBNHibernate\&.DomainModel\&.Glarch\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1914\&.CustomList< T >\fP, \fBNHibernate\&.DomainModel\&.Qux\fP, \fBNHibernate\&.DomainModel\&.Vetoer\fP, and \fBNHibernate\&.Test\&.Classic\&.EntityWithLifecycle\fP\&.
+.SS "\fBLifecycleVeto\fP NHibernate\&.Classic\&.ILifecycle\&.OnSave (\fBISession\fPs)"
+
+.PP
+Called when an entity is saved 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+If we should veto the save
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.DomainModel\&.Foo\fP, \fBNHibernate\&.DomainModel\&.Fum\fP, \fBNHibernate\&.DomainModel\&.Glarch\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1914\&.CustomList< T >\fP, \fBNHibernate\&.DomainModel\&.Vetoer\fP, \fBNHibernate\&.DomainModel\&.Qux\fP, and \fBNHibernate\&.Test\&.Classic\&.EntityWithLifecycle\fP\&.
+.SS "\fBLifecycleVeto\fP NHibernate\&.Classic\&.ILifecycle\&.OnUpdate (\fBISession\fPs)"
+
+.PP
+Called when an entity is passed to \fBISession\&.Update(object)\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLifecycleVeto\fP value indicating whether the operation should be vetoed or allowed to proceed\&.
+.RE
+.PP
+.PP
+This method is \fInot\fP called every time the object's state is persisted during a flush\&. 
+.PP
+Implemented in \fBNHibernate\&.DomainModel\&.Foo\fP, \fBNHibernate\&.DomainModel\&.Fum\fP, \fBNHibernate\&.DomainModel\&.Glarch\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1914\&.CustomList< T >\fP, \fBNHibernate\&.DomainModel\&.Qux\fP, \fBNHibernate\&.DomainModel\&.Vetoer\fP, and \fBNHibernate\&.Test\&.Classic\&.EntityWithLifecycle\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

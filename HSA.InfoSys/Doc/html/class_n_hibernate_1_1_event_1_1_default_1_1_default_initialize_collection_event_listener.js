@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_event_1_1_default_1_1_default_initialize_collection_event_listener =
+[
+    [ "OnInitializeCollection", "class_n_hibernate_1_1_event_1_1_default_1_1_default_initialize_collection_event_listener.html#a749926c54e3a56c0d04f225ce129bf2a", null ]
+];

@@ -1,0 +1,182 @@
+.TH "HSA.InfoSys.Common.Services.LocalServices.NutchControllerClient" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HSA.InfoSys.Common.Services.LocalServices.NutchControllerClient \- 
+.PP
+The \fBNutchControllerClient\fP starts a crawl on the specified host\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNutchControllerClient\fP (\fBNutchControllerClientSettings\fP settings, string connectionString)"
+.br
+.RI "\fIInitializes a new instance of the \fBNutchControllerClient\fP class\&. \fP"
+.ti -1c
+.RI "void \fBInitializeClient\fP (\fBNutchControllerClientSettings\fP settings)"
+.br
+.RI "\fIInitializes the client before its next crawl to be sure it has the correct values if settings have changed since the last crawl\&. \fP"
+.ti -1c
+.RI "void \fBStartCrawl\fP (\fBNutchControllerClientSettings\fP settings, \fBDbManager\fP dbManager)"
+.br
+.RI "\fIStarts the crawl\&. If the crawl finishes in any way it returns to the controller\&. to tell that this client finished\&. If the crawl fails it sends an email to all users who want to crawl the urls this client was crawling\&. Furthermore it fetches the log from the client of nutch and writes it into our own logfile\&. \fP"
+.ti -1c
+.RI "void \fBSetCrawlProcess\fP (\fBNutchControllerClientSettings\fP settings)"
+.br
+.RI "\fISets the crawl process before each crawl to be sure that we have the current settings if they were updated since the last time\&. \fP"
+.ti -1c
+.RI "void \fBCheckClientForUsage\fP (\fBNutchControllerClientSettings\fP settings)"
+.br
+.RI "\fIChecks the client for usage\&. Returns false if nutch or java is not installed or not on this location we expect or if any error happens while connecting\&. \fP"
+.ti -1c
+.RI "void \fBDisconnect\fP ()"
+.br
+.RI "\fIDisconnects this client\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIReturns a System\&.String that represents this instance\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "IList< string > \fBURLs\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the URLs on which this client crawls\&. \fP"
+.ti -1c
+.RI "bool \fBIsClientUsable\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets a value indicating whether [client can crawl] Can be false if nutch or java is not installed on this client or on the wrong path or if any error happens while we establish the connection\&. \fP"
+.ti -1c
+.RI "string \fBHostname\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the hostname\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The \fBNutchControllerClient\fP starts a crawl on the specified host\&. 
+
+
+.PP
+Definition at line 25 of file NutchControllerClient\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.NutchControllerClient\&.NutchControllerClient (\fBNutchControllerClientSettings\fPsettings, stringconnectionString)"
+
+.PP
+Initializes a new instance of the \fBNutchControllerClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsettings\fP The settings\&.
+.br
+\fIconnectionString\fP The connection string\&.
+.RE
+.PP
+
+.PP
+Definition at line 64 of file NutchControllerClient\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.NutchControllerClient\&.CheckClientForUsage (\fBNutchControllerClientSettings\fPsettings)"
+
+.PP
+Checks the client for usage\&. Returns false if nutch or java is not installed or not on this location we expect or if any error happens while connecting\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsettings\fP The settings\&.
+.RE
+.PP
+
+.PP
+Definition at line 283 of file NutchControllerClient\&.cs\&.
+.SS "void HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.NutchControllerClient\&.Disconnect ()"
+
+.PP
+Disconnects this client\&. 
+.PP
+Definition at line 308 of file NutchControllerClient\&.cs\&.
+.SS "void HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.NutchControllerClient\&.InitializeClient (\fBNutchControllerClientSettings\fPsettings)"
+
+.PP
+Initializes the client before its next crawl to be sure it has the correct values if settings have changed since the last crawl\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsettings\fP The settings\&.
+.RE
+.PP
+
+.PP
+Definition at line 153 of file NutchControllerClient\&.cs\&.
+.SS "void HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.NutchControllerClient\&.SetCrawlProcess (\fBNutchControllerClientSettings\fPsettings)"
+
+.PP
+Sets the crawl process before each crawl to be sure that we have the current settings if they were updated since the last time\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsettings\fP The settings\&.
+.RE
+.PP
+
+.PP
+Definition at line 245 of file NutchControllerClient\&.cs\&.
+.SS "void HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.NutchControllerClient\&.StartCrawl (\fBNutchControllerClientSettings\fPsettings, \fBDbManager\fPdbManager)"
+
+.PP
+Starts the crawl\&. If the crawl finishes in any way it returns to the controller\&. to tell that this client finished\&. If the crawl fails it sends an email to all users who want to crawl the urls this client was crawling\&. Furthermore it fetches the log from the client of nutch and writes it into our own logfile\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsettings\fP The settings\&.
+.br
+\fIdbManager\fP The db manager\&.
+.RE
+.PP
+
+.PP
+Definition at line 192 of file NutchControllerClient\&.cs\&.
+.SS "override string HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.NutchControllerClient\&.ToString ()"
+
+.PP
+Returns a System\&.String that represents this instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A System\&.String that represents this instance\&. 
+.RE
+.PP
+
+.PP
+Definition at line 327 of file NutchControllerClient\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.NutchControllerClient\&.Hostname\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the hostname\&. The hostname\&. 
+.PP
+Definition at line 108 of file NutchControllerClient\&.cs\&.
+.SS "bool HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.NutchControllerClient\&.IsClientUsable\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets a value indicating whether [client can crawl] Can be false if nutch or java is not installed on this client or on the wrong path or if any error happens while we establish the connection\&. \fCtrue\fP if [can crawl]; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 92 of file NutchControllerClient\&.cs\&.
+.SS "IList<string> HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.NutchControllerClient\&.URLs\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the URLs on which this client crawls\&. The URLs\&. 
+.PP
+Definition at line 81 of file NutchControllerClient\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,167 @@
+.TH "Renci.SshNet.Shell" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Shell \- 
+.PP
+Represents instance of the SSH shell object  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDisposable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBStart\fP ()"
+.br
+.RI "\fIStarts this shell\&. \fP"
+.ti -1c
+.RI "void \fBStop\fP ()"
+.br
+.RI "\fIStops this shell\&. \fP"
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "\fIPerforms application-defined tasks associated with freeing, releasing, or resetting unmanaged ResourceMessages\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIReleases unmanaged and - optionally - managed resources \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsStarted\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets a value indicating whether this shell is started\&. \fP"
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "EventHandler< EventArgs > \fBStarting\fP"
+.br
+.RI "\fIOccurs when shell is starting\&. \fP"
+.ti -1c
+.RI "EventHandler< EventArgs > \fBStarted\fP"
+.br
+.RI "\fIOccurs when shell is started\&. \fP"
+.ti -1c
+.RI "EventHandler< EventArgs > \fBStopping\fP"
+.br
+.RI "\fIOccurs when shell is stopping\&. \fP"
+.ti -1c
+.RI "EventHandler< EventArgs > \fBStopped\fP"
+.br
+.RI "\fIOccurs when shell is stopped\&. \fP"
+.ti -1c
+.RI "EventHandler< \fBExceptionEventArgs\fP > \fBErrorOccurred\fP"
+.br
+.RI "\fIOccurs when an error occurred\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents instance of the SSH shell object 
+
+
+.PP
+Definition at line 17 of file Shell\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Renci\&.SshNet\&.Shell\&.Dispose ()"
+
+.PP
+Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged ResourceMessages\&. 
+.PP
+Definition at line 291 of file Shell\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Shell\&.Dispose (booldisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Releases unmanaged and - optionally - managed resources 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP \fCtrue\fP to release both managed and unmanaged resources; \fCfalse\fP to release only unmanaged ResourceMessages\&.
+.RE
+.PP
+
+.PP
+Definition at line 302 of file Shell\&.cs\&.
+.SS "void Renci\&.SshNet\&.Shell\&.Start ()"
+
+.PP
+Starts this shell\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISshException\fP \fBShell\fP is started\&.
+.RE
+.PP
+
+.PP
+Definition at line 113 of file Shell\&.cs\&.
+.SS "void Renci\&.SshNet\&.Shell\&.Stop ()"
+
+.PP
+Stops this shell\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISshException\fP \fBShell\fP is not started\&.
+.RE
+.PP
+
+.PP
+Definition at line 192 of file Shell\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool Renci\&.SshNet\&.Shell\&.IsStarted\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets a value indicating whether this shell is started\&. \fCtrue\fP if started is started; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 53 of file Shell\&.cs\&.
+.SH "Event Documentation"
+.PP 
+.SS "EventHandler<\fBExceptionEventArgs\fP> Renci\&.SshNet\&.Shell\&.ErrorOccurred"
+
+.PP
+Occurs when an error occurred\&. 
+.PP
+Definition at line 78 of file Shell\&.cs\&.
+.SS "EventHandler<EventArgs> Renci\&.SshNet\&.Shell\&.Started"
+
+.PP
+Occurs when shell is started\&. 
+.PP
+Definition at line 63 of file Shell\&.cs\&.
+.SS "EventHandler<EventArgs> Renci\&.SshNet\&.Shell\&.Starting"
+
+.PP
+Occurs when shell is starting\&. 
+.PP
+Definition at line 58 of file Shell\&.cs\&.
+.SS "EventHandler<EventArgs> Renci\&.SshNet\&.Shell\&.Stopped"
+
+.PP
+Occurs when shell is stopped\&. 
+.PP
+Definition at line 73 of file Shell\&.cs\&.
+.SS "EventHandler<EventArgs> Renci\&.SshNet\&.Shell\&.Stopping"
+
+.PP
+Occurs when shell is stopping\&. 
+.PP
+Definition at line 68 of file Shell\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

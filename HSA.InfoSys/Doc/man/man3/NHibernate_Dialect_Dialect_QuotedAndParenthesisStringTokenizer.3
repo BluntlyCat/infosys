@@ -1,0 +1,44 @@
+.TH "NHibernate.Dialect.Dialect.QuotedAndParenthesisStringTokenizer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.Dialect.QuotedAndParenthesisStringTokenizer \- 
+.PP
+This specialized string tokenizier will break a string to tokens, taking into account single quotes, parenthesis and commas and [ ] Notice that we aren't differenciating between [ ) and ( ] on purpose, it would complicate the code and it is not legal at any rate\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IEnumerable< SqlString >\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBTokenizerState\fP { \fBWhiteSpace\fP, \fBQuoted\fP, \fBInParenthesis\fP, \fBToken\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQuotedAndParenthesisStringTokenizer\fP (\fBSqlString\fP original)"
+.br
+.ti -1c
+.RI "IEnumerator \fBGetEnumerator\fP ()"
+.br
+.ti -1c
+.RI "IList< \fBSqlString\fP > \fBGetTokens\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This specialized string tokenizier will break a string to tokens, taking into account single quotes, parenthesis and commas and [ ] Notice that we aren't differenciating between [ ) and ( ] on purpose, it would complicate the code and it is not legal at any rate\&. 
+
+
+.PP
+Definition at line 1223 of file Dialect\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

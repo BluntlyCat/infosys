@@ -1,0 +1,275 @@
+.TH "log4net.Core" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Core \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBCompactRepositorySelector\fP"
+.br
+.RI "\fIThe implementation of the \fBIRepositorySelector\fP interface suitable for use with the compact framework \fP"
+.ti -1c
+.RI "class \fBDefaultRepositorySelector\fP"
+.br
+.RI "\fIThe default implementation of the \fBIRepositorySelector\fP interface\&. \fP"
+.ti -1c
+.RI "class \fBExceptionEvaluator\fP"
+.br
+.RI "\fIAn evaluator that triggers on an Exception type \fP"
+.ti -1c
+.RI "interface \fBIAppenderAttachable\fP"
+.br
+.RI "\fIInterface for attaching appenders to objects\&. \fP"
+.ti -1c
+.RI "interface \fBIErrorHandler\fP"
+.br
+.RI "\fIAppenders may delegate their error handling to an \fBIErrorHandler\fP\&. \fP"
+.ti -1c
+.RI "interface \fBIFixingRequired\fP"
+.br
+.RI "\fIInterface for objects that require fixing\&. \fP"
+.ti -1c
+.RI "interface \fBILogger\fP"
+.br
+.RI "\fIInterface that all loggers implement \fP"
+.ti -1c
+.RI "interface \fBILoggerWrapper\fP"
+.br
+.RI "\fIBase interface for all wrappers \fP"
+.ti -1c
+.RI "interface \fBIOptionHandler\fP"
+.br
+.RI "\fIInterface used to delay activate a configured object\&. \fP"
+.ti -1c
+.RI "class \fBLoggerRepositoryCreationEventArgs\fP"
+.br
+.RI "\fIProvides data for the \fBIRepositorySelector\&.LoggerRepositoryCreatedEvent\fP event\&. \fP"
+.ti -1c
+.RI "interface \fBIRepositorySelector\fP"
+.br
+.RI "\fIInterface used by the \fBLogManager\fP to select the ILoggerRepository\&. \fP"
+.ti -1c
+.RI "interface \fBITriggeringEventEvaluator\fP"
+.br
+.RI "\fITest if an \fBLoggingEvent\fP triggers an action \fP"
+.ti -1c
+.RI "class \fBLevel\fP"
+.br
+.RI "\fIDefines the default set of levels recognized by the system\&. \fP"
+.ti -1c
+.RI "class \fBLevelCollection\fP"
+.br
+.RI "\fIA strongly-typed collection of \fBLevel\fP objects\&. \fP"
+.ti -1c
+.RI "class \fBLevelEvaluator\fP"
+.br
+.RI "\fIAn evaluator that triggers at a threshold level \fP"
+.ti -1c
+.RI "class \fBLevelMap\fP"
+.br
+.RI "\fIMapping between string name and \fBLevel\fP object \fP"
+.ti -1c
+.RI "class \fBLocationInfo\fP"
+.br
+.RI "\fIThe internal representation of caller location information\&. \fP"
+.ti -1c
+.RI "class \fBLogException\fP"
+.br
+.RI "\fIException base type for \fBlog4net\fP\&. \fP"
+.ti -1c
+.RI "class \fBLoggerManager\fP"
+.br
+.RI "\fIStatic manager that controls the creation of repositories \fP"
+.ti -1c
+.RI "class \fBLoggerWrapperImpl\fP"
+.br
+.RI "\fIImplementation of the \fBILoggerWrapper\fP interface\&. \fP"
+.ti -1c
+.RI "struct \fBLoggingEventData\fP"
+.br
+.RI "\fIPortable data structure used by \fBLoggingEvent\fP \fP"
+.ti -1c
+.RI "class \fBLoggingEvent\fP"
+.br
+.RI "\fIThe internal representation of logging events\&. \fP"
+.ti -1c
+.RI "class \fBLogImpl\fP"
+.br
+.RI "\fIImplementation of \fBILog\fP wrapper interface\&. \fP"
+.ti -1c
+.RI "class \fBSecurityContext\fP"
+.br
+.RI "\fIA \fBSecurityContext\fP used by \fBlog4net\fP when interacting with protected resources \fP"
+.ti -1c
+.RI "class \fBSecurityContextProvider\fP"
+.br
+.RI "\fIThe \fBSecurityContextProvider\fP providers default \fBSecurityContext\fP instances\&. \fP"
+.ti -1c
+.RI "class \fBTimeEvaluator\fP"
+.br
+.RI "\fIAn evaluator that triggers after specified number of seconds\&. \fP"
+.ti -1c
+.RI "class \fBWrapperMap\fP"
+.br
+.RI "\fIMaps between logger objects and wrapper objects\&. \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBErrorCode\fP : int { \fBErrorCode\&.GenericFailure\fP = 0, \fBErrorCode\&.WriteFailure\fP, \fBErrorCode\&.FlushFailure\fP, \fBErrorCode\&.CloseFailure\fP, \fBErrorCode\&.FileOpenFailure\fP, \fBErrorCode\&.MissingLayout\fP, \fBErrorCode\&.AddressParseFailure\fP }"
+.br
+.RI "\fIDefined error codes that can be passed to the IErrorHandler\&.Error(string, Exception, ErrorCode) method\&. \fP"
+.ti -1c
+.RI "enum \fBFixFlags\fP { \fBFixFlags\&.Mdc\fP = 0x01, \fBFixFlags\&.Ndc\fP = 0x02, \fBFixFlags\&.Message\fP = 0x04, \fBFixFlags\&.ThreadName\fP = 0x08, \fBFixFlags\&.LocationInfo\fP = 0x10, \fBFixFlags\&.UserName\fP = 0x20, \fBFixFlags\&.Domain\fP = 0x40, \fBFixFlags\&.Identity\fP = 0x80, \fBFixFlags\&.Exception\fP = 0x100, \fBFixFlags\&.Properties\fP = 0x200, \fBFixFlags\&.None\fP = 0x0, \fBFixFlags\&.All\fP = 0xFFFFFFF, \fBFixFlags\&.Partial\fP = Message | ThreadName | Exception | Domain | Properties }"
+.br
+.RI "\fIFlags passed to the LoggingEvent\&.Fix property \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "delegate void \fBLoggerRepositoryCreationEventHandler\fP (object sender, \fBLoggerRepositoryCreationEventArgs\fP e)"
+.br
+.RI "\fIDelegate used to handle logger repository creation event notifications \fP"
+.ti -1c
+.RI "delegate \fBILoggerWrapper\fP \fBWrapperCreationHandler\fP (\fBILogger\fP logger)"
+.br
+.RI "\fIDelegate used to handle creation of new wrappers\&. \fP"
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBlog4net\&.Core\&.ErrorCode\fP : int"
+
+.PP
+Defined error codes that can be passed to the \fBIErrorHandler\&.Error(string, Exception, ErrorCode)\fP method\&. Values passed to the \fBIErrorHandler\&.Error(string, Exception, ErrorCode)\fP method\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIGenericFailure \fP\fP
+A general error 
+.TP
+\fB\fIWriteFailure \fP\fP
+Error while writing output 
+.TP
+\fB\fIFlushFailure \fP\fP
+Failed to flush file 
+.TP
+\fB\fICloseFailure \fP\fP
+Failed to close file 
+.TP
+\fB\fIFileOpenFailure \fP\fP
+Unable to open output file 
+.TP
+\fB\fIMissingLayout \fP\fP
+No layout specified 
+.TP
+\fB\fIAddressParseFailure \fP\fP
+Failed to parse address 
+.PP
+Definition at line 33 of file ErrorCode\&.cs\&.
+.SS "enum \fBlog4net\&.Core\&.FixFlags\fP"
+
+.PP
+Flags passed to the \fBLoggingEvent\&.Fix\fP property Flags passed to the \fBLoggingEvent\&.Fix\fP property 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIMdc \fP\fP
+Fix the \fBMDC\fP 
+.TP
+\fB\fINdc \fP\fP
+Fix the \fBNDC\fP 
+.TP
+\fB\fIMessage \fP\fP
+Fix the rendered message 
+.TP
+\fB\fIThreadName \fP\fP
+Fix the thread name 
+.TP
+\fB\fILocationInfo \fP\fP
+Fix the callers location information CAUTION: Very slow to generate 
+.TP
+\fB\fIUserName \fP\fP
+Fix the callers windows user name CAUTION: Slow to generate 
+.TP
+\fB\fIDomain \fP\fP
+Fix the domain friendly name 
+.TP
+\fB\fIIdentity \fP\fP
+Fix the callers principal name CAUTION: May be slow to generate 
+.TP
+\fB\fIException \fP\fP
+Fix the exception text 
+.TP
+\fB\fIProperties \fP\fP
+Fix the event properties\&. Active properties must implement \fBIFixingRequired\fP in order to be eligible for fixing\&. 
+.TP
+\fB\fINone \fP\fP
+No fields fixed 
+.TP
+\fB\fIAll \fP\fP
+All fields fixed 
+.TP
+\fB\fIPartial \fP\fP
+Partial fields fixed This set of partial fields gives good performance\&. The following fields are fixed: 
+.PP
+.PD 0
+.IP "\(bu" 2
+\fBMessage\fP 
+.IP "\(bu" 2
+\fBThreadName\fP 
+.IP "\(bu" 2
+\fBException\fP 
+.IP "\(bu" 2
+\fBDomain\fP 
+.IP "\(bu" 2
+\fBProperties\fP 
+.PP
+
+.PP
+Definition at line 173 of file LoggingEvent\&.cs\&.
+.SH "Function Documentation"
+.PP 
+.SS "delegate void log4net\&.Core\&.LoggerRepositoryCreationEventHandler (objectsender, LoggerRepositoryCreationEventArgse)"
+
+.PP
+Delegate used to handle logger repository creation event notifications 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsender\fP The \fBIRepositorySelector\fP which created the repository\&.
+.br
+\fIe\fP The \fBLoggerRepositoryCreationEventArgs\fP event args that holds the ILoggerRepository instance that has been created\&.
+.RE
+.PP
+.PP
+Delegate used to handle logger repository creation event notifications\&. 
+.SS "delegate \fBILoggerWrapper\fP log4net\&.Core\&.WrapperCreationHandler (ILoggerlogger)"
+
+.PP
+Delegate used to handle creation of new wrappers\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlogger\fP The logger to wrap in a wrapper\&.
+.RE
+.PP
+.PP
+Delegate used to handle creation of new wrappers\&. This delegate is called from the \fBWrapperMap\&.CreateNewWrapperObject\fP method to construct the wrapper for the specified logger\&. 
+.PP
+The delegate to use is supplied to the \fBWrapperMap\fP constructor\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

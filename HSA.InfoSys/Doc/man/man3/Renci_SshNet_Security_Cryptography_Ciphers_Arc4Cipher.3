@@ -1,0 +1,195 @@
+.TH "Renci.SshNet.Security.Cryptography.Ciphers.Arc4Cipher" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Security.Cryptography.Ciphers.Arc4Cipher \- 
+.PP
+Implements ARCH4 cipher algorithm  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.Security\&.Cryptography\&.StreamCipher\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBArc4Cipher\fP (byte[] key, bool dischargeFirstBytes)"
+.br
+.RI "\fIInitializes a new instance of the \fBArc4Cipher\fP class\&. \fP"
+.ti -1c
+.RI "override int \fBEncryptBlock\fP (byte[] inputBuffer, int inputOffset, int inputCount, byte[] outputBuffer, int outputOffset)"
+.br
+.RI "\fIEncrypts the specified region of the input byte array and copies the encrypted data to the specified region of the output byte array\&. \fP"
+.ti -1c
+.RI "override int \fBDecryptBlock\fP (byte[] inputBuffer, int inputOffset, int inputCount, byte[] outputBuffer, int outputOffset)"
+.br
+.RI "\fIDecrypts the specified region of the input byte array and copies the decrypted data to the specified region of the output byte array\&. \fP"
+.ti -1c
+.RI "override byte[] \fBEncrypt\fP (byte[] input)"
+.br
+.RI "\fIEncrypts the specified input\&. \fP"
+.ti -1c
+.RI "override byte[] \fBDecrypt\fP (byte[] input)"
+.br
+.RI "\fIDecrypts the specified input\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override byte \fBMinimumSize\fP\fC [get]\fP"
+.br
+.RI "\fIGets the minimum data size\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Implements ARCH4 cipher algorithm 
+
+
+.PP
+Definition at line 11 of file Arc4Cipher\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Arc4Cipher\&.Arc4Cipher (byte[]key, booldischargeFirstBytes)"
+
+.PP
+Initializes a new instance of the \fBArc4Cipher\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key\&.
+.br
+\fIdischargeFirstBytes\fP if set to \fCtrue\fP will disharged first 1536 bytes\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIkey\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 43 of file Arc4Cipher\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override byte [] Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Arc4Cipher\&.Decrypt (byte[]input)\fC [virtual]\fP"
+
+.PP
+Decrypts the specified input\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP The input\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Decrypted data\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.NotImplementedException\fP 
+.RE
+.PP
+
+.PP
+Implements \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Cipher\fP\&.
+.PP
+Definition at line 111 of file Arc4Cipher\&.cs\&.
+.SS "override int Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Arc4Cipher\&.DecryptBlock (byte[]inputBuffer, intinputOffset, intinputCount, byte[]outputBuffer, intoutputOffset)\fC [virtual]\fP"
+
+.PP
+Decrypts the specified region of the input byte array and copies the decrypted data to the specified region of the output byte array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinputBuffer\fP The input data to decrypt\&.
+.br
+\fIinputOffset\fP The offset into the input byte array from which to begin using data\&.
+.br
+\fIinputCount\fP The number of bytes in the input byte array to use as data\&.
+.br
+\fIoutputBuffer\fP The output to which to write decrypted data\&.
+.br
+\fIoutputOffset\fP The offset into the output byte array from which to begin writing data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes decrypted\&. 
+.RE
+.PP
+
+.PP
+Implements \fBRenci\&.SshNet\&.Security\&.Cryptography\&.SymmetricCipher\fP\&.
+.PP
+Definition at line 83 of file Arc4Cipher\&.cs\&.
+.SS "override byte [] Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Arc4Cipher\&.Encrypt (byte[]input)\fC [virtual]\fP"
+
+.PP
+Encrypts the specified input\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP The input\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Encrypted data\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.NotImplementedException\fP 
+.RE
+.PP
+
+.PP
+Implements \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Cipher\fP\&.
+.PP
+Definition at line 96 of file Arc4Cipher\&.cs\&.
+.SS "override int Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Arc4Cipher\&.EncryptBlock (byte[]inputBuffer, intinputOffset, intinputCount, byte[]outputBuffer, intoutputOffset)\fC [virtual]\fP"
+
+.PP
+Encrypts the specified region of the input byte array and copies the encrypted data to the specified region of the output byte array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinputBuffer\fP The input data to encrypt\&.
+.br
+\fIinputOffset\fP The offset into the input byte array from which to begin using data\&.
+.br
+\fIinputCount\fP The number of bytes in the input byte array to use as data\&.
+.br
+\fIoutputBuffer\fP The output to which to write encrypted data\&.
+.br
+\fIoutputOffset\fP The offset into the output byte array from which to begin writing data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes encrypted\&. 
+.RE
+.PP
+
+.PP
+Implements \fBRenci\&.SshNet\&.Security\&.Cryptography\&.SymmetricCipher\fP\&.
+.PP
+Definition at line 67 of file Arc4Cipher\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override byte Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Arc4Cipher\&.MinimumSize\fC [get]\fP"
+
+.PP
+Gets the minimum data size\&. The minimum data size\&. 
+.PP
+Definition at line 33 of file Arc4Cipher\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

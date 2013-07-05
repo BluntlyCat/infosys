@@ -1,0 +1,6 @@
+var class_n_hibernate_1_1_persister_1_1_collection_1_1_abstract_collection_persister_1_1_generated_identifier_binder =
+[
+    [ "GeneratedIdentifierBinder", "class_n_hibernate_1_1_persister_1_1_collection_1_1_abstract_collection_persister_1_1_generated_identifier_binder.html#aba43b18eda5d5715a665e2489ea73ac9", null ],
+    [ "BindValues", "class_n_hibernate_1_1_persister_1_1_collection_1_1_abstract_collection_persister_1_1_generated_identifier_binder.html#a530ea66e3efd301a2237cec8414a8470", null ],
+    [ "Entity", "class_n_hibernate_1_1_persister_1_1_collection_1_1_abstract_collection_persister_1_1_generated_identifier_binder.html#a549f2da7cf37954b553056edc978c3e2", null ]
+];

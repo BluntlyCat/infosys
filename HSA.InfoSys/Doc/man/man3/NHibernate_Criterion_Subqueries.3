@@ -1,0 +1,383 @@
+.TH "NHibernate.Criterion.Subqueries" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.Subqueries \- 
+.PP
+Factory class for \fBAbstractCriterion\fP instances that represent involving subqueries\&. \fC\fBExpression\fP\fP \fCProjection\fP \fC\fBAbstractCriterion\fP\fP  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBExists\fP (\fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBNotExists\fP (\fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBPropertyEqAll\fP (String propertyName, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBPropertyIn\fP (String propertyName, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBPropertyNotIn\fP (String propertyName, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBPropertyEq\fP (String propertyName, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBPropertyNe\fP (String propertyName, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBPropertyGt\fP (String propertyName, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBPropertyLt\fP (String propertyName, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBPropertyGe\fP (String propertyName, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBPropertyLe\fP (String propertyName, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBPropertyGtAll\fP (String propertyName, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBPropertyLtAll\fP (String propertyName, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBPropertyGeAll\fP (String propertyName, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBPropertyLeAll\fP (String propertyName, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBPropertyGtSome\fP (String propertyName, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBPropertyLtSome\fP (String propertyName, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBPropertyGeSome\fP (String propertyName, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBPropertyLeSome\fP (String propertyName, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBEqAll\fP (Object value, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBIn\fP (Object value, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBNotIn\fP (Object value, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBEq\fP (Object value, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBGt\fP (Object value, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBLt\fP (Object value, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBGe\fP (Object value, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBLe\fP (Object value, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBNe\fP (Object value, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBGtAll\fP (Object value, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBLtAll\fP (Object value, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBGeAll\fP (Object value, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBLeAll\fP (Object value, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBGtSome\fP (Object value, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBLtSome\fP (Object value, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBGeSome\fP (Object value, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBLeSome\fP (Object value, \fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBSelect\fP (\fBDetachedCriteria\fP detachedCriteria)"
+.br
+.ti -1c
+.RI "static \fBLambdaSubqueryBuilder\fP \fBWhereProperty< T >\fP (\fBExpression\fP< Func< T, object >> expression)"
+.br
+.RI "\fICreate a \fBICriterion\fP for the specified property subquery expression \fP"
+.ti -1c
+.RI "static \fBLambdaSubqueryBuilder\fP \fBWhereProperty\fP (\fBExpression\fP< Func< object >> expression)"
+.br
+.RI "\fICreate a \fBICriterion\fP for the specified property subquery expression \fP"
+.ti -1c
+.RI "static \fBLambdaSubqueryBuilder\fP \fBWhereValue\fP (object value)"
+.br
+.RI "\fICreate a \fBICriterion\fP for the specified value subquery expression \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBWhere< T >\fP (\fBExpression\fP< Func< T, bool >> expression)"
+.br
+.RI "\fICreate \fBICriterion\fP for subquery expression using lambda syntax \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBWhere\fP (\fBExpression\fP< Func< bool >> expression)"
+.br
+.RI "\fICreate \fBICriterion\fP for (exact) subquery expression using lambda syntax \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBWhereAll< T >\fP (\fBExpression\fP< Func< T, bool >> expression)"
+.br
+.RI "\fICreate \fBICriterion\fP for (all) subquery expression using lambda syntax \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBWhereAll\fP (\fBExpression\fP< Func< bool >> expression)"
+.br
+.RI "\fICreate \fBICriterion\fP for (all) subquery expression using lambda syntax \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBWhereSome< T >\fP (\fBExpression\fP< Func< T, bool >> expression)"
+.br
+.RI "\fICreate \fBICriterion\fP for (some) subquery expression using lambda syntax \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBWhereSome\fP (\fBExpression\fP< Func< bool >> expression)"
+.br
+.RI "\fICreate \fBICriterion\fP for (some) subquery expression using lambda syntax \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBWhereExists< U >\fP (\fBQueryOver\fP< U > detachedQuery)"
+.br
+.RI "\fIAdd an Exists subquery criterion \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBWhereNotExists< U >\fP (\fBQueryOver\fP< U > detachedQuery)"
+.br
+.RI "\fIAdd a NotExists subquery criterion \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBIsNull\fP (\fBDetachedCriteria\fP dc)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBIsNotNull\fP (\fBDetachedCriteria\fP dc)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Factory class for \fBAbstractCriterion\fP instances that represent involving subqueries\&. \fC\fBExpression\fP\fP \fCProjection\fP \fC\fBAbstractCriterion\fP\fP 
+
+
+.PP
+Definition at line 16 of file Subqueries\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Subqueries\&.Where (\fBExpression\fP< Func< bool >>expression)\fC [static]\fP"
+
+.PP
+Create \fBICriterion\fP for (exact) subquery expression using lambda syntax 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP lambda expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+NHibernate\&.ICriterion\&.AbstractCriterion
+.RE
+.PP
+
+.PP
+Definition at line 253 of file Subqueries\&.cs\&.
+.SS "static \fBAbstractCriterion\fP \fBNHibernate\&.Criterion\&.Subqueries\&.Where\fP< T > (\fBExpression\fP< Func< T, bool >>expression)\fC [static]\fP"
+
+.PP
+Create \fBICriterion\fP for subquery expression using lambda syntax 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP type of property
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP lambda expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+NHibernate\&.ICriterion\&.AbstractCriterion
+.RE
+.PP
+
+.PP
+Definition at line 242 of file Subqueries\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Subqueries\&.WhereAll (\fBExpression\fP< Func< bool >>expression)\fC [static]\fP"
+
+.PP
+Create \fBICriterion\fP for (all) subquery expression using lambda syntax 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP lambda expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+NHibernate\&.ICriterion\&.AbstractCriterion
+.RE
+.PP
+
+.PP
+Definition at line 276 of file Subqueries\&.cs\&.
+.SS "static \fBAbstractCriterion\fP \fBNHibernate\&.Criterion\&.Subqueries\&.WhereAll\fP< T > (\fBExpression\fP< Func< T, bool >>expression)\fC [static]\fP"
+
+.PP
+Create \fBICriterion\fP for (all) subquery expression using lambda syntax 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP type of property
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP lambda expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+NHibernate\&.ICriterion\&.AbstractCriterion
+.RE
+.PP
+
+.PP
+Definition at line 265 of file Subqueries\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Subqueries\&.WhereExists< U > (\fBQueryOver\fP< U >detachedQuery)\fC [static]\fP"
+
+.PP
+Add an Exists subquery criterion 
+.PP
+Definition at line 308 of file Subqueries\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Subqueries\&.WhereNotExists< U > (\fBQueryOver\fP< U >detachedQuery)\fC [static]\fP"
+
+.PP
+Add a NotExists subquery criterion 
+.PP
+Definition at line 316 of file Subqueries\&.cs\&.
+.SS "static \fBLambdaSubqueryBuilder\fP NHibernate\&.Criterion\&.Subqueries\&.WhereProperty (\fBExpression\fP< Func< object >>expression)\fC [static]\fP"
+
+.PP
+Create a \fBICriterion\fP for the specified property subquery expression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP lambda expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+returns LambdaSubqueryBuilder
+.RE
+.PP
+
+.PP
+Definition at line 220 of file Subqueries\&.cs\&.
+.SS "static \fBLambdaSubqueryBuilder\fP \fBNHibernate\&.Criterion\&.Subqueries\&.WhereProperty\fP< T > (\fBExpression\fP< Func< T, object >>expression)\fC [static]\fP"
+
+.PP
+Create a \fBICriterion\fP for the specified property subquery expression 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP generic type
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP lambda expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+returns LambdaSubqueryBuilder
+.RE
+.PP
+
+.PP
+Definition at line 209 of file Subqueries\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Subqueries\&.WhereSome (\fBExpression\fP< Func< bool >>expression)\fC [static]\fP"
+
+.PP
+Create \fBICriterion\fP for (some) subquery expression using lambda syntax 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP lambda expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+NHibernate\&.ICriterion\&.AbstractCriterion
+.RE
+.PP
+
+.PP
+Definition at line 299 of file Subqueries\&.cs\&.
+.SS "static \fBAbstractCriterion\fP \fBNHibernate\&.Criterion\&.Subqueries\&.WhereSome\fP< T > (\fBExpression\fP< Func< T, bool >>expression)\fC [static]\fP"
+
+.PP
+Create \fBICriterion\fP for (some) subquery expression using lambda syntax 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP type of property
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP lambda expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+NHibernate\&.ICriterion\&.AbstractCriterion
+.RE
+.PP
+
+.PP
+Definition at line 288 of file Subqueries\&.cs\&.
+.SS "static \fBLambdaSubqueryBuilder\fP NHibernate\&.Criterion\&.Subqueries\&.WhereValue (objectvalue)\fC [static]\fP"
+
+.PP
+Create a \fBICriterion\fP for the specified value subquery expression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP value
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+returns LambdaSubqueryBuilder
+.RE
+.PP
+
+.PP
+Definition at line 231 of file Subqueries\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

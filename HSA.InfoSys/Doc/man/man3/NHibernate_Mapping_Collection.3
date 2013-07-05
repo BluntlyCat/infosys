@@ -1,0 +1,364 @@
+.TH "NHibernate.Mapping.Collection" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.Collection \- 
+.PP
+Base class that stores the mapping information for \fC<array>\fP, \fC<bag>\fP, \fC<id-bag>\fP, \fC<list>\fP, \fC<map>\fP, and \fC<set>\fP collections\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.IFetchable\fP, \fBNHibernate\&.Mapping\&.IValue\fP, and \fBNHibernate\&.Mapping\&.IFilterable\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Mapping\&.Bag\fP, \fBNHibernate\&.Mapping\&.IdentifierCollection\fP, \fBNHibernate\&.Mapping\&.IndexedCollection\fP, and \fBNHibernate\&.Mapping\&.Set\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBCreateForeignKey\fP ()"
+.br
+.ti -1c
+.RI "abstract void \fBCreatePrimaryKey\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBCreateAllKeys\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsValid\fP (\fBIMapping\fP mapping)"
+.br
+.RI "\fIDetermines if the Value is part of a valid mapping\&. \fP"
+.ti -1c
+.RI "virtual void \fBValidate\fP (\fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "void \fBSetCustomSQLInsert\fP (string sql, bool callable, \fBExecuteUpdateResultCheckStyle\fP checkStyle)"
+.br
+.ti -1c
+.RI "void \fBSetCustomSQLDelete\fP (string sql, bool callable, \fBExecuteUpdateResultCheckStyle\fP checkStyle)"
+.br
+.ti -1c
+.RI "void \fBSetCustomSQLDeleteAll\fP (string sql, bool callable, \fBExecuteUpdateResultCheckStyle\fP checkStyle)"
+.br
+.ti -1c
+.RI "void \fBSetCustomSQLUpdate\fP (string sql, bool callable, \fBExecuteUpdateResultCheckStyle\fP checkStyle)"
+.br
+.ti -1c
+.RI "void \fBAddFilter\fP (string name, string condition)"
+.br
+.ti -1c
+.RI "void \fBAddManyToManyFilter\fP (string name, string condition)"
+.br
+.ti -1c
+.RI "void \fBSetTypeUsingReflection\fP (string className, string propertyName, string access)"
+.br
+.ti -1c
+.RI "object \fBAccept\fP (\fBIValueVisitor\fP visitor)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBDefaultElementColumnName\fP = 'elt'"
+.br
+.ti -1c
+.RI "const string \fBDefaultKeyColumnName\fP = 'id'"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCollection\fP (\fBPersistentClass\fP owner)"
+.br
+.ti -1c
+.RI "void \fBCheckGenericArgumentsLength\fP (int expectedLength)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBColumnSpan\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsSet\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIKeyValue\fP \fBKey\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIValue\fP \fBElement\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsIndexed\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBTable\fP \fBCollectionTable\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBTable\fP \fBTable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSorted\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasOrder\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBPersistentClass\fP \fBOwner\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "System\&.Type \fBCollectionPersisterClass\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "object \fBComparer\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBComparerClassName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsLazy\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBRole\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< \fBISelectable\fP > \fBColumnIterator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBFormula\fP \fBFormula\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsNullable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsUnique\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBCollectionType\fP \fBCollectionType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract \fBCollectionType\fP \fBDefaultCollectionType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP \fBType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsPrimitiveArray\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsArray\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasFormula\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsIdentified\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsOneToMany\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBCacheConcurrencyStrategy\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBCacheRegionName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsInverse\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBOwnerEntityName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBOrderBy\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBWhere\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasOrphanDelete\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBBatchSize\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBFetchMode\fP \fBFetchMode\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsGeneric\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a Boolean indicating if this is a mapping for a generic collection\&. \fP"
+.ti -1c
+.RI "System\&.Type[] \fBGenericArguments\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets an array of System\&.Type that contains the arguments needed to construct an instance of a closed type\&. \fP"
+.ti -1c
+.RI "bool \fBIsSimpleValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBReferencedPropertyName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBColumnInsertability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBColumnUpdateability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBTypeName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBCustomSQLInsert\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBCustomSQLDelete\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBCustomSQLUpdate\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBCustomSQLDeleteAll\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsCustomInsertCallable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsCustomDeleteCallable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsCustomUpdateCallable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsCustomDeleteAllCallable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBExecuteUpdateResultCheckStyle\fP \fBCustomSQLInsertCheckStyle\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBExecuteUpdateResultCheckStyle\fP \fBCustomSQLDeleteCheckStyle\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBExecuteUpdateResultCheckStyle\fP \fBCustomSQLUpdateCheckStyle\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBExecuteUpdateResultCheckStyle\fP \fBCustomSQLDeleteAllCheckStyle\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, string > \fBFilterMap\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, string > \fBManyToManyFilterMap\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBLoaderName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSubselectLoadable\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBManyToManyWhere\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBManyToManyOrdering\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsOptimisticLocked\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBElementNodeName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBEmbedded\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBExtraLazy\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsAlternateUniqueKey\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsMap\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsMutable\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBNodeName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ISet< string > \fBSynchronizedTables\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, string > \fBTypeParameters\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class that stores the mapping information for \fC<array>\fP, \fC<bag>\fP, \fC<id-bag>\fP, \fC<list>\fP, \fC<map>\fP, and \fC<set>\fP collections\&. 
+
+Subclasses are responsible for the specialization required for the particular collection style\&. 
+.PP
+Definition at line 20 of file Collection\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Mapping\&.Collection\&.CreateForeignKey ()"
+
+.PP
+
+.PP
+Implements \fBNHibernate\&.Mapping\&.IValue\fP\&.
+.PP
+Definition at line 344 of file Collection\&.cs\&.
+.SS "bool NHibernate\&.Mapping\&.Collection\&.IsValid (\fBIMapping\fPmapping)"
+
+.PP
+Determines if the Value is part of a valid mapping\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImapping\fP The IMapping to validate\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+if the Value is part of a valid mapping,  otherwise\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBMappingException\fP\fP 
+.RE
+.PP
+.PP
+Mainly used to make sure that Value maps to the correct number of columns\&. 
+.PP
+Implements \fBNHibernate\&.Mapping\&.IValue\fP\&.
+.PP
+Definition at line 373 of file Collection\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "System\&.Type [] NHibernate\&.Mapping\&.Collection\&.GenericArguments\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets an array of System\&.Type that contains the arguments needed to construct an instance of a closed type\&. 
+.PP
+Definition at line 328 of file Collection\&.cs\&.
+.SS "bool NHibernate\&.Mapping\&.Collection\&.IsGeneric\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a Boolean indicating if this is a mapping for a generic collection\&. if a collection from the System\&.Collections\&.Generic namespace should be used,  if a collection from the System\&.Collections namespace should be used\&. 
+.PP
+This has no affect on any versions of the \&.net framework before \&.net-2\&.0\&. 
+.PP
+Definition at line 318 of file Collection\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,8 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mix_automapping_1_1_polymorphic_properties_mapping =
+[
+    [ "WhenMapIdThroughBaseInterfaceThenFindIt", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mix_automapping_1_1_polymorphic_properties_mapping.html#a216e05d41377720b628e068e21dc2668", null ],
+    [ "WhenMapPropertyThroughBaseAbstractClassThenFindIt", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mix_automapping_1_1_polymorphic_properties_mapping.html#aad3300b76270acaef552d3aae879963b", null ],
+    [ "WhenMapPropertyThroughBaseConcreteClassThenFindIt", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mix_automapping_1_1_polymorphic_properties_mapping.html#ac3bd7f69d6cfc5b6c5c8e110e5bf0fd2", null ],
+    [ "WhenMapPropertyThroughBaseInterfaceThenFindIt", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mix_automapping_1_1_polymorphic_properties_mapping.html#ad97d82b93c8b015a2db6b105eeacbc46", null ],
+    [ "WhenMapPropertyThroughClassThenFindIt", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mix_automapping_1_1_polymorphic_properties_mapping.html#a0088edbe07b1e003bb3ce7592d71005e", null ]
+];

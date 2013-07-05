@@ -1,0 +1,60 @@
+.TH "NHibernate.Cache.StandardQueryCache" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cache.StandardQueryCache \- 
+.PP
+The standard implementation of the Hibernate \fBIQueryCache\fP interface\&. This implementation is very good at recognizing stale query results and re-running queries when it detects this condition, recaching the new results\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Cache\&.IQueryCache\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBStandardQueryCache\fP (\fBSettings\fP settings, IDictionary< string, string > props, \fBUpdateTimestampsCache\fP updateTimestampsCache, string regionName)"
+.br
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "bool \fBPut\fP (\fBQueryKey\fP key, \fBICacheAssembler\fP[] returnTypes, IList result, bool isNaturalKeyLookup, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "IList \fBGet\fP (\fBQueryKey\fP key, \fBICacheAssembler\fP[] returnTypes, bool isNaturalKeyLookup, ISet< string > spaces, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "void \fBDestroy\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBIsUpToDate\fP (ISet< string > spaces, long timestamp)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBICache\fP \fBCache\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBRegionName\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The standard implementation of the Hibernate \fBIQueryCache\fP interface\&. This implementation is very good at recognizing stale query results and re-running queries when it detects this condition, recaching the new results\&. 
+
+
+.PP
+Definition at line 18 of file StandardQueryCache\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

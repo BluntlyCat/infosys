@@ -1,0 +1,149 @@
+.TH "NHibernate.Id.Enhanced.IDatabaseStructure" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.Enhanced.IDatabaseStructure \- 
+.PP
+Encapsulates definition of the underlying data structure backing a sequence-style generator\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Id\&.Enhanced\&.SequenceStructure\fP, and \fBNHibernate\&.Id\&.Enhanced\&.TableStructure\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIAccessCallback\fP \fBBuildCallback\fP (\fBISessionImplementor\fP session)"
+.br
+.RI "\fIA callback to be able to get the next value from the underlying structure as needed\&. \fP"
+.ti -1c
+.RI "void \fBPrepare\fP (\fBIOptimizer\fP optimizer)"
+.br
+.RI "\fIPrepare this structure for use\&. Called sometime after instantiation, but before first use\&. \fP"
+.ti -1c
+.RI "string[] \fBSqlCreateStrings\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fICommands needed to create the underlying structures\&.\fP"
+.ti -1c
+.RI "string[] \fBSqlDropStrings\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fICommands needed to drop the underlying structures\&.\fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBName\fP\fC [get]\fP"
+.br
+.RI "\fIThe name of the database structure (table or sequence)\&.\fP"
+.ti -1c
+.RI "int \fBTimesAccessed\fP\fC [get]\fP"
+.br
+.RI "\fIHow many times has this structure been accessed through this reference?\fP"
+.ti -1c
+.RI "int \fBIncrementSize\fP\fC [get]\fP"
+.br
+.RI "\fIThe configured increment size\fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Encapsulates definition of the underlying data structure backing a sequence-style generator\&. 
+
+
+.PP
+Definition at line 8 of file IDatabaseStructure\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIAccessCallback\fP NHibernate\&.Id\&.Enhanced\&.IDatabaseStructure\&.BuildCallback (\fBISessionImplementor\fPsession)"
+
+.PP
+A callback to be able to get the next value from the underlying structure as needed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The next value\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Id\&.Enhanced\&.TableStructure\fP, and \fBNHibernate\&.Id\&.Enhanced\&.SequenceStructure\fP\&.
+.SS "void NHibernate\&.Id\&.Enhanced\&.IDatabaseStructure\&.Prepare (\fBIOptimizer\fPoptimizer)"
+
+.PP
+Prepare this structure for use\&. Called sometime after instantiation, but before first use\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoptimizer\fP The optimizer being applied to the generator\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Id\&.Enhanced\&.TableStructure\fP, and \fBNHibernate\&.Id\&.Enhanced\&.SequenceStructure\fP\&.
+.SS "string [] NHibernate\&.Id\&.Enhanced\&.IDatabaseStructure\&.SqlCreateStrings (\fBDialect\&.Dialect\fPdialect)"
+
+.PP
+Commands needed to create the underlying structures\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The database dialect being used\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The creation commands\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Id\&.Enhanced\&.TableStructure\fP, and \fBNHibernate\&.Id\&.Enhanced\&.SequenceStructure\fP\&.
+.SS "string [] NHibernate\&.Id\&.Enhanced\&.IDatabaseStructure\&.SqlDropStrings (\fBDialect\&.Dialect\fPdialect)"
+
+.PP
+Commands needed to drop the underlying structures\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The database dialect being used\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The drop commands\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Id\&.Enhanced\&.TableStructure\fP, and \fBNHibernate\&.Id\&.Enhanced\&.SequenceStructure\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "int NHibernate\&.Id\&.Enhanced\&.IDatabaseStructure\&.IncrementSize\fC [get]\fP"
+
+.PP
+The configured increment size
+.PP
+Definition at line 17 of file IDatabaseStructure\&.cs\&.
+.SS "string NHibernate\&.Id\&.Enhanced\&.IDatabaseStructure\&.Name\fC [get]\fP"
+
+.PP
+The name of the database structure (table or sequence)\&.
+.PP
+Definition at line 11 of file IDatabaseStructure\&.cs\&.
+.SS "int NHibernate\&.Id\&.Enhanced\&.IDatabaseStructure\&.TimesAccessed\fC [get]\fP"
+
+.PP
+How many times has this structure been accessed through this reference?
+.PP
+Definition at line 14 of file IDatabaseStructure\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

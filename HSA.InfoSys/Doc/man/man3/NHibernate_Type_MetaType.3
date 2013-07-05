@@ -1,0 +1,146 @@
+.TH "NHibernate.Type.MetaType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.MetaType \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMetaType\fP (IDictionary< object, string > values, \fBIType\fP baseType)"
+.br
+.ti -1c
+.RI "override \fBSqlType\fP[] \fBSqlTypes\fP (\fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "override int \fBGetColumnSpan\fP (\fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "override object \fBNullSafeGet\fP (IDataReader rs, string[] names, \fBISessionImplementor\fP session, object owner)"
+.br
+.ti -1c
+.RI "override object \fBNullSafeGet\fP (IDataReader rs, string name, \fBISessionImplementor\fP session, object owner)"
+.br
+.ti -1c
+.RI "override void \fBNullSafeSet\fP (IDbCommand st, object value, int index, bool[] settable, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override void \fBNullSafeSet\fP (IDbCommand st, object value, int index, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override string \fBToLoggableString\fP (object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "override object \fBDeepCopy\fP (object value, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "override bool \fBIsDirty\fP (object old, object current, bool[] checkable, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override object \fBFromXMLNode\fP (XmlNode xml, \fBIMapping\fP factory)"
+.br
+.RI "\fIParse the XML representation of an instance\&.\fP"
+.ti -1c
+.RI "object \fBFromXMLString\fP (string xml, \fBIMapping\fP factory)"
+.br
+.ti -1c
+.RI "override object \fBReplace\fP (object original, object current, \fBISessionImplementor\fP session, object owner, System\&.Collections\&.IDictionary copiedAlready)"
+.br
+.ti -1c
+.RI "override void \fBSetToXMLNode\fP (XmlNode node, object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIA representation of the value to be embedded in an XML element\&. \fP"
+.ti -1c
+.RI "override bool[] \fBToColumnNullness\fP (object value, \fBIMapping\fP mapping)"
+.br
+.RI "\fIGiven an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. \fP"
+.ti -1c
+.RI "string \fBToXMLString\fP (object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsMutable\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 11 of file MetaType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.MetaType\&.FromXMLNode (XmlNodexml, \fBIMapping\fPfactory)\fC [virtual]\fP"
+
+.PP
+Parse the XML representation of an instance\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an instance of the type 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 90 of file MetaType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.MetaType\&.SetToXMLNode (XmlNodenode, objectvalue, \fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+A representation of the value to be embedded in an XML element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInode\fP 
+.br
+\fIvalue\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 105 of file MetaType\&.cs\&.
+.SS "override bool [] NHibernate\&.Type\&.MetaType\&.ToColumnNullness (objectvalue, \fBIMapping\fPmapping)\fC [virtual]\fP"
+
+.PP
+Given an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP an instance of the type 
+.br
+\fImapping\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 110 of file MetaType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

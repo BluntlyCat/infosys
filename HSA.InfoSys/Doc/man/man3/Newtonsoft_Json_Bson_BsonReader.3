@@ -1,0 +1,290 @@
+.TH "Newtonsoft.Json.Bson.BsonReader" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.Bson.BsonReader \- 
+.PP
+Represents a reader that provides fast, non-cached, forward-only access to serialized \fBJson\fP data\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBsonReader\fP (Stream stream)"
+.br
+.RI "\fIInitializes a new instance of the \fBBsonReader\fP class\&. \fP"
+.ti -1c
+.RI "\fBBsonReader\fP (BinaryReader reader)"
+.br
+.RI "\fIInitializes a new instance of the \fBBsonReader\fP class\&. \fP"
+.ti -1c
+.RI "\fBBsonReader\fP (Stream stream, bool readRootValueAsArray, DateTimeKind dateTimeKindHandling)"
+.br
+.RI "\fIInitializes a new instance of the \fBBsonReader\fP class\&. \fP"
+.ti -1c
+.RI "\fBBsonReader\fP (BinaryReader reader, bool readRootValueAsArray, DateTimeKind dateTimeKindHandling)"
+.br
+.RI "\fIInitializes a new instance of the \fBBsonReader\fP class\&. \fP"
+.ti -1c
+.RI "override byte[] \fBReadAsBytes\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a T:Byte[]\&. \fP"
+.ti -1c
+.RI "override decimal \fBReadAsDecimal\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{Decimal}\&. \fP"
+.ti -1c
+.RI "override int \fBReadAsInt32\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{Int32}\&. \fP"
+.ti -1c
+.RI "override string \fBReadAsString\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a String\&. \fP"
+.ti -1c
+.RI "override \fBDateTime\fP \fBReadAsDateTime\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{DateTime}\&. \fP"
+.ti -1c
+.RI "override \fBDateTimeOffset\fP \fBReadAsDateTimeOffset\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{DateTimeOffset}\&. \fP"
+.ti -1c
+.RI "override bool \fBRead\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream\&. \fP"
+.ti -1c
+.RI "override void \fBClose\fP ()"
+.br
+.RI "\fIChanges the JsonReader\&.State to Closed\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBJsonNet35BinaryCompatibility\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether binary data reading should compatible with incorrect Json\&.NET 3\&.5 written binary\&. \fP"
+.ti -1c
+.RI "bool \fBReadRootValueAsArray\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether the root object will be read as a JSON array\&. \fP"
+.ti -1c
+.RI "DateTimeKind \fBDateTimeKindHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the DateTimeKind used when reading \fBDateTime\fP values from BSON\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Represents a reader that provides fast, non-cached, forward-only access to serialized \fBJson\fP data\&. 
+
+
+.PP
+Definition at line 39 of file BsonReader\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Newtonsoft\&.Json\&.Bson\&.BsonReader\&.BsonReader (Streamstream)"
+
+.PP
+Initializes a new instance of the \fBBsonReader\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP The stream\&.
+.RE
+.PP
+
+.PP
+Definition at line 125 of file BsonReader\&.cs\&.
+.SS "Newtonsoft\&.Json\&.Bson\&.BsonReader\&.BsonReader (BinaryReaderreader)"
+
+.PP
+Initializes a new instance of the \fBBsonReader\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The reader\&.
+.RE
+.PP
+
+.PP
+Definition at line 134 of file BsonReader\&.cs\&.
+.SS "Newtonsoft\&.Json\&.Bson\&.BsonReader\&.BsonReader (Streamstream, boolreadRootValueAsArray, DateTimeKinddateTimeKindHandling)"
+
+.PP
+Initializes a new instance of the \fBBsonReader\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP The stream\&.
+.br
+\fIreadRootValueAsArray\fP if set to \fCtrue\fP the root object will be read as a JSON array\&.
+.br
+\fIdateTimeKindHandling\fP The DateTimeKind used when reading \fBDateTime\fP values from BSON\&.
+.RE
+.PP
+
+.PP
+Definition at line 145 of file BsonReader\&.cs\&.
+.SS "Newtonsoft\&.Json\&.Bson\&.BsonReader\&.BsonReader (BinaryReaderreader, boolreadRootValueAsArray, DateTimeKinddateTimeKindHandling)"
+
+.PP
+Initializes a new instance of the \fBBsonReader\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The reader\&.
+.br
+\fIreadRootValueAsArray\fP if set to \fCtrue\fP the root object will be read as a JSON array\&.
+.br
+\fIdateTimeKindHandling\fP The DateTimeKind used when reading \fBDateTime\fP values from BSON\&.
+.RE
+.PP
+
+.PP
+Definition at line 160 of file BsonReader\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void Newtonsoft\&.Json\&.Bson\&.BsonReader\&.Close ()\fC [virtual]\fP"
+
+.PP
+Changes the JsonReader\&.State to Closed\&. 
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 294 of file BsonReader\&.cs\&.
+.SS "override bool Newtonsoft\&.Json\&.Bson\&.BsonReader\&.Read ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the next token was read successfully; false if there are no more tokens to read\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 242 of file BsonReader\&.cs\&.
+.SS "override byte [] Newtonsoft\&.Json\&.Bson\&.BsonReader\&.ReadAsBytes ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a T:Byte[]\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A T:Byte[] or a null reference if the next JSON token is null\&. This method will return \fCnull\fP at the end of an array\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 182 of file BsonReader\&.cs\&.
+.SS "override \fBDateTime\fP Newtonsoft\&.Json\&.Bson\&.BsonReader\&.ReadAsDateTime ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{DateTime}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A String\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 218 of file BsonReader\&.cs\&.
+.SS "override \fBDateTimeOffset\fP Newtonsoft\&.Json\&.Bson\&.BsonReader\&.ReadAsDateTimeOffset ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{DateTimeOffset}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A Nullable{DateTimeOffset}\&. This method will return \fCnull\fP at the end of an array\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 230 of file BsonReader\&.cs\&.
+.SS "override decimal Newtonsoft\&.Json\&.Bson\&.BsonReader\&.ReadAsDecimal ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{Decimal}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A Nullable{Decimal}\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 191 of file BsonReader\&.cs\&.
+.SS "override int Newtonsoft\&.Json\&.Bson\&.BsonReader\&.ReadAsInt32 ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{Int32}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A Nullable{Int32}\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 200 of file BsonReader\&.cs\&.
+.SS "override string Newtonsoft\&.Json\&.Bson\&.BsonReader\&.ReadAsString ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a String\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A String\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 209 of file BsonReader\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "DateTimeKind Newtonsoft\&.Json\&.Bson\&.BsonReader\&.DateTimeKindHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the DateTimeKind used when reading \fBDateTime\fP values from BSON\&. The DateTimeKind used when reading \fBDateTime\fP values from BSON\&.
+.PP
+Definition at line 116 of file BsonReader\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Bson\&.BsonReader\&.JsonNet35BinaryCompatibility\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether binary data reading should compatible with incorrect Json\&.NET 3\&.5 written binary\&. \fCtrue\fP if binary data reading will be compatible with incorrect Json\&.NET 3\&.5 written binary; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 94 of file BsonReader\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Bson\&.BsonReader\&.ReadRootValueAsArray\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether the root object will be read as a JSON array\&. \fCtrue\fP if the root object will be read as a JSON array; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 106 of file BsonReader\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

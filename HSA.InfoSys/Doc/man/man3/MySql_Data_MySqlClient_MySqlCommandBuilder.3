@@ -1,0 +1,163 @@
+.TH "MySql.Data.MySqlClient.MySqlCommandBuilder" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MySql.Data.MySqlClient.MySqlCommandBuilder \- 
+.PP
+ 
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits DbCommandBuilder\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMySqlCommandBuilder\fP ()"
+.br
+.ti -1c
+.RI "\fBMySqlCommandBuilder\fP (\fBMySqlDataAdapter\fP adapter)"
+.br
+.ti -1c
+.RI "new \fBMySqlCommand\fP \fBGetDeleteCommand\fP ()"
+.br
+.RI "\fIGets the delete command\&. \fP"
+.ti -1c
+.RI "new \fBMySqlCommand\fP \fBGetUpdateCommand\fP ()"
+.br
+.RI "\fIGets the update command\&. \fP"
+.ti -1c
+.RI "new \fBMySqlCommand\fP \fBGetInsertCommand\fP ()"
+.br
+.RI "\fIGets the insert command\&. \fP"
+.ti -1c
+.RI "override string \fBQuoteIdentifier\fP (string unquotedIdentifier)"
+.br
+.ti -1c
+.RI "override string \fBUnquoteIdentifier\fP (string quotedIdentifier)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBDeriveParameters\fP (\fBMySqlCommand\fP command)"
+.br
+.RI "\fIRetrieves parameter information from the stored procedure specified in the \fBMySqlCommand\fP and populates the Parameters collection of the specified \fBMySqlCommand\fP object\&. This method is not currently supported since stored procedures are not available in \fBMySql\fP\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override DataTable \fBGetSchemaTable\fP (DbCommand sourceCommand)"
+.br
+.ti -1c
+.RI "override string \fBGetParameterName\fP (string parameterName)"
+.br
+.ti -1c
+.RI "override void \fBApplyParameterInfo\fP (DbParameter parameter, DataRow row, StatementType statementType, bool whereClause)"
+.br
+.ti -1c
+.RI "override string \fBGetParameterName\fP (int parameterOrdinal)"
+.br
+.ti -1c
+.RI "override string \fBGetParameterPlaceholder\fP (int parameterOrdinal)"
+.br
+.ti -1c
+.RI "override void \fBSetRowUpdatingHandler\fP (DbDataAdapter adapter)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "new \fBMySqlDataAdapter\fP \fBDataAdapter\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+Definition at line 42 of file CommandBuilder\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static void MySql\&.Data\&.MySqlClient\&.MySqlCommandBuilder\&.DeriveParameters (\fBMySqlCommand\fPcommand)\fC [static]\fP"
+
+.PP
+Retrieves parameter information from the stored procedure specified in the \fBMySqlCommand\fP and populates the Parameters collection of the specified \fBMySqlCommand\fP object\&. This method is not currently supported since stored procedures are not available in \fBMySql\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP The \fBMySqlCommand\fP referencing the stored procedure from which the parameter information is to be derived\&. The derived parameters are added to the Parameters collection of the \fBMySqlCommand\fP\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInvalidOperationException\fP The command text is not a valid stored procedure name\&.
+.RE
+.PP
+
+.PP
+Definition at line 79 of file CommandBuilder\&.cs\&.
+.SS "new \fBMySqlCommand\fP MySql\&.Data\&.MySqlClient\&.MySqlCommandBuilder\&.GetDeleteCommand ()"
+
+.PP
+Gets the delete command\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 176 of file CommandBuilder\&.cs\&.
+.SS "new \fBMySqlCommand\fP MySql\&.Data\&.MySqlClient\&.MySqlCommandBuilder\&.GetInsertCommand ()"
+
+.PP
+Gets the insert command\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 194 of file CommandBuilder\&.cs\&.
+.SS "override string MySql\&.Data\&.MySqlClient\&.MySqlCommandBuilder\&.GetParameterName (stringparameterName)\fC [protected]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameterName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 252 of file CommandBuilder\&.cs\&.
+.SS "new \fBMySqlCommand\fP MySql\&.Data\&.MySqlClient\&.MySqlCommandBuilder\&.GetUpdateCommand ()"
+
+.PP
+Gets the update command\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 185 of file CommandBuilder\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

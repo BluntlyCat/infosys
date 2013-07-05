@@ -1,0 +1,92 @@
+.TH "NHibernate.Properties.PropertyAccessorFactory" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Properties.PropertyAccessorFactory \- 
+.PP
+Factory for creating the various PropertyAccessor strategies\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBIPropertyAccessor\fP \fBGetPropertyAccessor\fP (string type)"
+.br
+.RI "\fIGets or creates the \fBIPropertyAccessor\fP specified by the type\&. \fP"
+.ti -1c
+.RI "static \fBIPropertyAccessor\fP \fBGetPropertyAccessor\fP (\fBMapping\&.Property\fP property, \fBEntityMode\fP?mode)"
+.br
+.RI "\fIRetrieves a PropertyAccessor instance based on the given property definition and entity mode\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "static \fBIPropertyAccessor\fP \fBDynamicMapPropertyAccessor\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Factory for creating the various PropertyAccessor strategies\&. 
+
+
+.PP
+Definition at line 12 of file PropertyAccessorFactory\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBIPropertyAccessor\fP NHibernate\&.Properties\&.PropertyAccessorFactory\&.GetPropertyAccessor (stringtype)\fC [static]\fP"
+
+.PP
+Gets or creates the \fBIPropertyAccessor\fP specified by the type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBIPropertyAccessor\fP specified by the type\&.
+.RE
+.PP
+.PP
+The built in ways of accessing the values of \fBProperties\fP in your domain class are: 
+.PP
+Access Method How \fBNHibernate\fP accesses the Mapped Class\&.  property The \fCname\fP attribute is the name of the Property\&. This is the default implementation\&.   field The \fCname\fP attribute is the name of the field\&. If you have any \fBProperties\fP in the Mapped Class those will be bypassed and \fBNHibernate\fP will go straight to the field\&. This is a good option if your setters have business rules attached to them or if you don't want to expose a field through a Getter & Setter\&.   nosetter The \fCname\fP attribute is the name of the Property\&. \fBNHibernate\fP will use the Property's get method to retrieve the value and will use the field to set the value\&. This is a good option for <id> \fBProperties\fP because this access method allows users of the Class to get the value of the \fBId\fP but not set the value\&.   readonly The \fCname\fP attribute is the name of the Property\&. \fBNHibernate\fP will use the Property's get method to retrieve the value but will never set the value back in the domain\&. This is used for read-only calculated properties with only a get method\&.   Assembly Qualified Name If \fBNHibernate\fP's built in \fBIPropertyAccessor\fPs are not what is needed for your situation then you are free to build your own\&. Provide an Assembly Qualified Name so that \fBNHibernate\fP can call \fCActivator\&.CreateInstance(AssemblyQualifiedName)\fP to create it\&.   
+.PP
+In order for the \fCnosetter\fP to know the name of the field to access \fBNHibernate\fP needs to know what the naming strategy is\&. The following naming strategies are built into \fBNHibernate\fP: 
+.PP
+Naming Strategy How \fBNHibernate\fP converts the value of the \fCname\fP attribute to a field name\&.  camelcase The \fCname\fP attribute should be changed to CamelCase to find the field\&. \fC<property name='FooBar' \&.\&.\&. >\fP finds a field \fCfooBar\fP\&.   camelcase-underscore The \fCname\fP attribute should be changed to CamelCase and prefixed with an underscore to find the field\&. \fC<property name='FooBar' \&.\&.\&. >\fP finds a field \fC_fooBar\fP\&.   camelcase-m-underscore The \fCname\fP attribute should be changed to CamelCase and prefixed with an 'm' and underscore to find the field\&. \fC<property name='FooBar' \&.\&.\&. >\fP finds a field \fCm_fooBar\fP\&.   pascalcase-underscore The \fCname\fP attribute should be prefixed with an underscore to find the field\&. \fC<property name='FooBar' \&.\&.\&. >\fP finds a field \fC_FooBar\fP\&.   pascalcase-m-underscore The \fCname\fP attribute should be prefixed with an 'm' and underscore to find the field\&. \fC<property name='FooBar' \&.\&.\&. >\fP finds a field \fCm_FooBar\fP\&.   pascalcase-m The \fCname\fP attribute should be prefixed with an 'm'\&. \fC<property name='FooBar' \&.\&.\&. >\fP finds a field \fCmFooBar\fP\&.   lowercase The \fCname\fP attribute should be changed to lowercase to find the field\&. \fC<property name='FooBar' \&.\&.\&. >\fP finds a field \fCfoobar\fP\&.   lowercase-underscore The \fCname\fP attribute should be changed to lowercase and prefixed with and underscore to find the field\&. \fC<property name='FooBar' \&.\&.\&. >\fP finds a field \fC_foobar\fP\&.   
+.PP
+The naming strategy can also be appended at the end of the \fCfield\fP access method\&. Where this could be useful is a scenario where you do expose a get and set method in the Domain Class but \fBNHibernate\fP should only use the fields\&. 
+.PP
+With a naming strategy and a get/set for the Property available the user of the Domain Class could write an \fBHql\fP statement \fCfrom Foo as foo where foo\&.SomeProperty = 'a'\fP\&. If no naming strategy was specified the \fBHql\fP statement would have to be \fCfrom Foo as foo where foo\&._someProperty\fP (assuming CamelCase with an underscore field naming strategy is used)\&. 
+.PP
+Definition at line 191 of file PropertyAccessorFactory\&.cs\&.
+.SS "static \fBIPropertyAccessor\fP NHibernate\&.Properties\&.PropertyAccessorFactory\&.GetPropertyAccessor (\fBMapping\&.Property\fPproperty, \fBEntityMode\fP?mode)\fC [static]\fP"
+
+.PP
+Retrieves a PropertyAccessor instance based on the given property definition and entity mode\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproperty\fP The property for which to retrieve an accessor\&. 
+.br
+\fImode\fP The mode for the resulting entity\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An appropriate accessor\&. 
+.RE
+.PP
+
+.PP
+Definition at line 228 of file PropertyAccessorFactory\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

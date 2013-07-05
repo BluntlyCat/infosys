@@ -1,0 +1,4 @@
+var interface_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_w_c_f_services_1_1_i_solr_controller =
+[
+    [ "SearchForOrgUnit", "interface_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_w_c_f_services_1_1_i_solr_controller.html#aa5a0dd2995fe5eb891b134152f72c3a8", null ]
+];

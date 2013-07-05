@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_elements_enums_1_1_int_enums_bag_no_name_fixture =
+[
+    [ "Mappings", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_elements_enums_1_1_int_enums_bag_no_name_fixture.html#af4501a385a67fbac13977cd2f02bb964", null ]
+];

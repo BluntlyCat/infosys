@@ -1,0 +1,99 @@
+.TH "log4net.Util.LevelMapping" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.LevelMapping \- 
+.PP
+Manages a mapping from levels to \fBLevelMappingEntry\fP  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Core\&.IOptionHandler\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLevelMapping\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.ti -1c
+.RI "void \fBAdd\fP (\fBLevelMappingEntry\fP entry)"
+.br
+.RI "\fIAdd a \fBLevelMappingEntry\fP to this mapping \fP"
+.ti -1c
+.RI "\fBLevelMappingEntry\fP \fBLookup\fP (\fBLevel\fP level)"
+.br
+.RI "\fILookup the mapping for the specified level \fP"
+.ti -1c
+.RI "void \fBActivateOptions\fP ()"
+.br
+.RI "\fIInitialize options \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Manages a mapping from levels to \fBLevelMappingEntry\fP 
+
+Manages an ordered mapping from Level instances to \fBLevelMappingEntry\fP subclasses\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 37 of file LevelMapping\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Util\&.LevelMapping\&.LevelMapping ()"
+
+.PP
+Default constructor Initialise a new instance of \fBLevelMapping\fP\&. 
+.PP
+Definition at line 49 of file LevelMapping\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Util\&.LevelMapping\&.ActivateOptions ()"
+
+.PP
+Initialize options Caches the sorted list of \fBLevelMappingEntry\fP in an array 
+.PP
+Implements \fBlog4net\&.Core\&.IOptionHandler\fP\&.
+.PP
+Definition at line 119 of file LevelMapping\&.cs\&.
+.SS "void log4net\&.Util\&.LevelMapping\&.Add (\fBLevelMappingEntry\fPentry)"
+
+.PP
+Add a \fBLevelMappingEntry\fP to this mapping 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentry\fP the entry to add
+.RE
+.PP
+.PP
+If a \fBLevelMappingEntry\fP has previously been added for the same Level then that entry will be overwritten\&. 
+.PP
+Definition at line 68 of file LevelMapping\&.cs\&.
+.SS "\fBLevelMappingEntry\fP log4net\&.Util\&.LevelMapping\&.Lookup (\fBLevel\fPlevel)"
+
+.PP
+Lookup the mapping for the specified level 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlevel\fP the level to lookup
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBLevelMappingEntry\fP for the level or \fCnull\fP if no mapping found
+.RE
+.PP
+.PP
+Lookup the value for the specified level\&. Finds the nearest mapping value for the level that is equal to or less than the \fIlevel\fP  specified\&. 
+.PP
+If no mapping could be found then \fCnull\fP is returned\&. 
+.PP
+Definition at line 92 of file LevelMapping\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

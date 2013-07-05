@@ -1,0 +1,147 @@
+.TH "log4net.Core.IAppenderAttachable" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Core.IAppenderAttachable \- 
+.PP
+Interface for attaching appenders to objects\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBlog4net\&.Appender\&.BufferingForwardingAppender\fP, \fBlog4net\&.Appender\&.ForwardingAppender\fP, \fBlog4net\&.Repository\&.Hierarchy\&.Logger\fP, and \fBlog4net\&.Util\&.AppenderAttachedImpl\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAddAppender\fP (\fBIAppender\fP appender)"
+.br
+.RI "\fIAttaches an appender\&. \fP"
+.ti -1c
+.RI "\fBIAppender\fP \fBGetAppender\fP (string name)"
+.br
+.RI "\fIGets an attached appender with the specified name\&. \fP"
+.ti -1c
+.RI "void \fBRemoveAllAppenders\fP ()"
+.br
+.RI "\fIRemoves all attached appenders\&. \fP"
+.ti -1c
+.RI "\fBIAppender\fP \fBRemoveAppender\fP (\fBIAppender\fP appender)"
+.br
+.RI "\fIRemoves the specified appender from the list of attached appenders\&. \fP"
+.ti -1c
+.RI "\fBIAppender\fP \fBRemoveAppender\fP (string name)"
+.br
+.RI "\fIRemoves the appender with the specified name from the list of appenders\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBAppenderCollection\fP \fBAppenders\fP\fC [get]\fP"
+.br
+.RI "\fIGets all attached appenders\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Interface for attaching appenders to objects\&. 
+
+Interface for attaching, removing and retrieving appenders\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 36 of file IAppenderAttachable\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Core\&.IAppenderAttachable\&.AddAppender (\fBIAppender\fPappender)"
+
+.PP
+Attaches an appender\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIappender\fP The appender to add\&.
+.RE
+.PP
+.PP
+Add the specified appender\&. The implementation may choose to allow or deny duplicate appenders\&. 
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Logger\fP, \fBlog4net\&.Util\&.AppenderAttachedImpl\fP, \fBlog4net\&.Appender\&.ForwardingAppender\fP, and \fBlog4net\&.Appender\&.BufferingForwardingAppender\fP\&.
+.SS "\fBIAppender\fP log4net\&.Core\&.IAppenderAttachable\&.GetAppender (stringname)"
+
+.PP
+Gets an attached appender with the specified name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the appender to get\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appender with the name specified, or \fCnull\fP if no appender with the specified name is found\&. 
+.RE
+.PP
+.PP
+Returns an attached appender with the \fIname\fP  specified\&. If no appender with the specified name is found \fCnull\fP will be returned\&. 
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Logger\fP, \fBlog4net\&.Util\&.AppenderAttachedImpl\fP, \fBlog4net\&.Appender\&.ForwardingAppender\fP, and \fBlog4net\&.Appender\&.BufferingForwardingAppender\fP\&.
+.SS "void log4net\&.Core\&.IAppenderAttachable\&.RemoveAllAppenders ()"
+
+.PP
+Removes all attached appenders\&. Removes and closes all attached appenders 
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Logger\fP, \fBlog4net\&.Util\&.AppenderAttachedImpl\fP, \fBlog4net\&.Appender\&.ForwardingAppender\fP, and \fBlog4net\&.Appender\&.BufferingForwardingAppender\fP\&.
+.SS "\fBIAppender\fP log4net\&.Core\&.IAppenderAttachable\&.RemoveAppender (\fBIAppender\fPappender)"
+
+.PP
+Removes the specified appender from the list of attached appenders\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIappender\fP The appender to remove\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appender removed from the list
+.RE
+.PP
+.PP
+The appender removed is not closed\&. If you are discarding the appender you must call IAppender\&.Close on the appender removed\&. 
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Logger\fP, \fBlog4net\&.Util\&.AppenderAttachedImpl\fP, \fBlog4net\&.Appender\&.ForwardingAppender\fP, and \fBlog4net\&.Appender\&.BufferingForwardingAppender\fP\&.
+.SS "\fBIAppender\fP log4net\&.Core\&.IAppenderAttachable\&.RemoveAppender (stringname)"
+
+.PP
+Removes the appender with the specified name from the list of appenders\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the appender to remove\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appender removed from the list
+.RE
+.PP
+.PP
+The appender removed is not closed\&. If you are discarding the appender you must call IAppender\&.Close on the appender removed\&. 
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Logger\fP, \fBlog4net\&.Util\&.AppenderAttachedImpl\fP, \fBlog4net\&.Appender\&.ForwardingAppender\fP, and \fBlog4net\&.Appender\&.BufferingForwardingAppender\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBAppenderCollection\fP log4net\&.Core\&.IAppenderAttachable\&.Appenders\fC [get]\fP"
+
+.PP
+Gets all attached appenders\&. A collection of attached appenders\&. 
+.PP
+Gets a collection of attached appenders\&. If there are no attached appenders the implementation should return an empty collection rather than \fCnull\fP\&. 
+.PP
+Definition at line 64 of file IAppenderAttachable\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

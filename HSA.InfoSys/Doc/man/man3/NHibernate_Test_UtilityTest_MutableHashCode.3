@@ -1,0 +1,42 @@
+.TH "NHibernate.Test.UtilityTest.MutableHashCode" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.UtilityTest.MutableHashCode \- 
+.PP
+Provides an object whose HashCode is based on a Mutable field\&. Not a good practice but perfect for testing IdentityMap because it simulates an object being loaded with its default constructor (no params) and then having the fields initialized\&. If the class overrides GetHashCode() then it will be inconsistent between the construction and field population by \fBNHibernate\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMutableHashCode\fP (int hashCodeField)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBHashCodeField\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Provides an object whose HashCode is based on a Mutable field\&. Not a good practice but perfect for testing IdentityMap because it simulates an object being loaded with its default constructor (no params) and then having the fields initialized\&. If the class overrides GetHashCode() then it will be inconsistent between the construction and field population by \fBNHibernate\fP\&. 
+
+
+.PP
+Definition at line 13 of file MutableHashCode\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

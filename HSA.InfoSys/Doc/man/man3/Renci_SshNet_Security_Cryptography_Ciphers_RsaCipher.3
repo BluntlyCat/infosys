@@ -1,0 +1,105 @@
+.TH "Renci.SshNet.Security.Cryptography.Ciphers.RsaCipher" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Security.Cryptography.Ciphers.RsaCipher \- 
+.PP
+Implements RSA cipher algorithm\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.Security\&.Cryptography\&.AsymmetricCipher\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRsaCipher\fP (\fBRsaKey\fP key)"
+.br
+.RI "\fIInitializes a new instance of the \fBRsaCipher\fP class\&. \fP"
+.ti -1c
+.RI "override byte[] \fBEncrypt\fP (byte[] data)"
+.br
+.RI "\fIEncrypts the specified data\&. \fP"
+.ti -1c
+.RI "override byte[] \fBDecrypt\fP (byte[] data)"
+.br
+.RI "\fIDecrypts the specified data\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Implements RSA cipher algorithm\&. 
+
+
+.PP
+Definition at line 13 of file RsaCipher\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.RsaCipher\&.RsaCipher (\fBRsaKey\fPkey)"
+
+.PP
+Initializes a new instance of the \fBRsaCipher\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The RSA key\&.
+.RE
+.PP
+
+.PP
+Definition at line 23 of file RsaCipher\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override byte [] Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.RsaCipher\&.Decrypt (byte[]data)\fC [virtual]\fP"
+
+.PP
+Decrypts the specified data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Decrypted data\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.NotSupportedException\fP Only block type 01 or 02 are supported\&.
+.br
+\fINotSupportedException\fP Thrown when decrypted block type is not supported\&.
+.RE
+.PP
+
+.PP
+Implements \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Cipher\fP\&.
+.PP
+Definition at line 65 of file RsaCipher\&.cs\&.
+.SS "override byte [] Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.RsaCipher\&.Encrypt (byte[]data)\fC [virtual]\fP"
+
+.PP
+Encrypts the specified data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Encrypted data\&.
+.RE
+.PP
+
+.PP
+Implements \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Cipher\fP\&.
+.PP
+Definition at line 38 of file RsaCipher\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

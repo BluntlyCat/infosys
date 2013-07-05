@@ -1,0 +1,69 @@
+.TH "NHibernate.Type.DbTimestampType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.DbTimestampType \- 
+.PP
+An extension of \fBTimestampType\fP which maps to the database's current timestamp, rather than the vm's current timestamp\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.TimestampType\fP, and \fBNHibernate\&.Type\&.IVersionType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override object \fBSeed\fP (\fBISessionImplementor\fP session)"
+.br
+.RI "\fIWhen implemented by a class, gets an initial version\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual object \fBUsePreparedStatement\fP (string timestampSelectString, \fBISessionImplementor\fP session)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An extension of \fBTimestampType\fP which maps to the database's current timestamp, rather than the vm's current timestamp\&. 
+
+Note: May/may-not cause issues on dialects which do not properly support a true notion of timestamp 
+.PP
+Definition at line 22 of file DbTimestampType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.DbTimestampType\&.Seed (\fBISessionImplementor\fPsession)"
+
+.PP
+When implemented by a class, gets an initial version\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The current session, if available\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An instance of the type\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IVersionType\fP\&.
+.PP
+Definition at line 32 of file DbTimestampType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,398 @@
+.TH "NHibernate.Type" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAbstractBinaryType\fP"
+.br
+.RI "\fILogic to bind stream of byte into a VARBINARY \fP"
+.ti -1c
+.RI "class \fBAbstractCharType\fP"
+.br
+.RI "\fICommon base class for \fBCharType\fP and \fBAnsiCharType\fP\&. \fP"
+.ti -1c
+.RI "class \fBAbstractDateTimeSpecificKindType\fP"
+.br
+.ti -1c
+.RI "class \fBAbstractEnumType\fP"
+.br
+.RI "\fIBase class for enum types\&. \fP"
+.ti -1c
+.RI "class \fBAbstractStringType\fP"
+.br
+.ti -1c
+.RI "class \fBAbstractType\fP"
+.br
+.RI "\fIThe base implementation of the \fBIType\fP interface\&. \fBMapping\fP of the built in \fBType\fP hierarchy\&. \fP"
+.ti -1c
+.RI "class \fBAnsiCharType\fP"
+.br
+.RI "\fIMaps a System\&.Char Property to a \fCDbType\&.AnsiStringFixedLength\fP column\&. \fP"
+.ti -1c
+.RI "class \fBAnsiStringType\fP"
+.br
+.RI "\fIMaps a System\&.String Property to a DbType\&.AnsiString column\&. \fP"
+.ti -1c
+.RI "class \fBAnyType\fP"
+.br
+.RI "\fIHandles 'any' mappings and the old deprecated 'object' type\&. /summary> remarks> The identifierType is any \fBNHibernate\fP \fBIType\fP that can be serailized by default\&. For example, you can specify the identifierType as an Int32 or a custom identifier type that you built\&. The identifierType matches to one or many columns\&. \fP"
+.ti -1c
+.RI "class \fBArrayType\fP"
+.br
+.RI "\fIAn \fBIType\fP that maps an Array collection to the database\&. \fP"
+.ti -1c
+.RI "class \fBBagType\fP"
+.br
+.RI "\fIAn \fBIType\fP that maps an IList collection using bag semantics to the database\&. \fP"
+.ti -1c
+.RI "class \fBBinaryBlobType\fP"
+.br
+.RI "\fIMaps a System\&.Byte[] Property to an column that can store a BLOB\&. \fP"
+.ti -1c
+.RI "class \fBBinaryType\fP"
+.br
+.RI "\fI\fBBinaryType\fP\&. \fP"
+.ti -1c
+.RI "class \fBBooleanType\fP"
+.br
+.RI "\fIMaps a System\&.Boolean Property to a DbType\&.Boolean column\&. \fP"
+.ti -1c
+.RI "class \fBByteType\fP"
+.br
+.RI "\fIMaps a System\&.Byte property to a DbType\&.Byte column\&. \fP"
+.ti -1c
+.RI "class \fBCharBooleanType\fP"
+.br
+.RI "\fIMaps a System\&.Boolean Property to a DbType\&.AnsiStringFixedLength column\&. \fP"
+.ti -1c
+.RI "class \fBCharType\fP"
+.br
+.RI "\fIMaps a System\&.Char Property to a \fCDbType\&.StringFixedLength\fP column\&. \fP"
+.ti -1c
+.RI "class \fBClassMetaType\fP"
+.br
+.RI "\fI\fBClassMetaType\fP is a NH specific type to support 'any' with meta-type='class' \fP"
+.ti -1c
+.RI "class \fBCollectionType\fP"
+.br
+.RI "\fIThe base class for an \fBIType\fP that maps collections to the database\&. \fP"
+.ti -1c
+.RI "class \fBComponentType\fP"
+.br
+.ti -1c
+.RI "class \fBCompositeCustomType\fP"
+.br
+.ti -1c
+.RI "class \fBCultureInfoType\fP"
+.br
+.RI "\fIMaps a System\&.Globalization\&.CultureInfo Property to a DbType\&.String column\&. \fP"
+.ti -1c
+.RI "class \fBCurrencyType\fP"
+.br
+.ti -1c
+.RI "class \fBCustomCollectionType\fP"
+.br
+.RI "\fIA custom type for mapping user-written classes that implement IPersistentCollection\&. \fP"
+.ti -1c
+.RI "class \fBCustomType\fP"
+.br
+.RI "\fIAdapts IUserType to the generic \fBIType\fP interface\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+IUserType
+.PP
+.RE
+.PP
+\fP"
+.ti -1c
+.RI "class \fBDateTime2Type\fP"
+.br
+.RI "\fIMaps a System\&.DateTime Property to a DbType\&.DateTime \fP"
+.ti -1c
+.RI "class \fBDateTimeOffsetType\fP"
+.br
+.RI "\fIMaps a System\&.DateTimeOffset Property to a DbType\&.DateTimeOffset \fP"
+.ti -1c
+.RI "class \fBDateTimeType\fP"
+.br
+.RI "\fIMaps a System\&.DateTime Property to a DbType\&.DateTime column that stores date & time down to the accuracy of a second\&. \fP"
+.ti -1c
+.RI "class \fBDateType\fP"
+.br
+.RI "\fIMaps the Year, Month, and Day of a System\&.DateTime Property to a DbType\&.Date column \fP"
+.ti -1c
+.RI "class \fBDbTimestampType\fP"
+.br
+.RI "\fIAn extension of \fBTimestampType\fP which maps to the database's current timestamp, rather than the vm's current timestamp\&. \fP"
+.ti -1c
+.RI "class \fBDecimalType\fP"
+.br
+.RI "\fIMaps a System\&.Decimal Property to a DbType\&.Decimal column\&. \fP"
+.ti -1c
+.RI "class \fBDefaultCollectionTypeFactory\fP"
+.br
+.ti -1c
+.RI "class \fBDoubleType\fP"
+.br
+.RI "\fIMaps a System\&.Double Property to a DbType\&.Double column\&. \fP"
+.ti -1c
+.RI "class \fBEmbeddedComponentType\fP"
+.br
+.ti -1c
+.RI "class \fBEntityType\fP"
+.br
+.RI "\fIA reference to an entity class \fP"
+.ti -1c
+.RI "class \fBEnumCharType< T >\fP"
+.br
+.ti -1c
+.RI "class \fBEnumStringType\fP"
+.br
+.RI "\fIMaps a System\&.Enum to a \fBDbType\&.String\fP\&. \fP"
+.ti -1c
+.RI "class \fBEnumStringType< T >\fP"
+.br
+.ti -1c
+.RI "class \fBForeignKeyDirection\fP"
+.br
+.RI "\fIRepresents directionality of the foreign key constraint \fP"
+.ti -1c
+.RI "class \fBGenericBagType< T >\fP"
+.br
+.RI "\fIAn \fBIType\fP that maps an IList{T} collection to the database using bag semantics\&. \fP"
+.ti -1c
+.RI "class \fBGenericIdentifierBagType< T >\fP"
+.br
+.ti -1c
+.RI "class \fBGenericListType< T >\fP"
+.br
+.RI "\fIAn \fBIType\fP that maps an IList{T} collection to the database using list semantics\&. \fP"
+.ti -1c
+.RI "class \fBGenericMapType< TKey, TValue >\fP"
+.br
+.RI "\fIAn \fBIType\fP that maps an IDictionary{TKey,TValue} collection to the database\&. \fP"
+.ti -1c
+.RI "class \fBGenericOrderedSetType< T >\fP"
+.br
+.RI "\fIAn \fBIType\fP that maps a sorted ISet{T} collection to the database\&. \fP"
+.ti -1c
+.RI "class \fBGenericSetType< T >\fP"
+.br
+.RI "\fIAn \fBIType\fP that maps an ISet{T} collection to the database\&. \fP"
+.ti -1c
+.RI "class \fBGenericSortedDictionaryType< TKey, TValue >\fP"
+.br
+.ti -1c
+.RI "class \fBGenericSortedListType< TKey, TValue >\fP"
+.br
+.ti -1c
+.RI "class \fBGenericSortedSetType< T >\fP"
+.br
+.RI "\fIAn \fBIType\fP that maps a sorted ISet{T} collection to the database\&. \fP"
+.ti -1c
+.RI "class \fBGuidType\fP"
+.br
+.RI "\fIMaps a System\&.Guid Property to a DbType\&.Guid column\&. \fP"
+.ti -1c
+.RI "interface \fBIAbstractComponentType\fP"
+.br
+.RI "\fIEnables other Component-like types to hold collections and have cascades, etc\&. \fP"
+.ti -1c
+.RI "interface \fBIAssociationType\fP"
+.br
+.RI "\fIAn \fBIType\fP that represents some kind of association between entities\&. \fP"
+.ti -1c
+.RI "interface \fBICacheAssembler\fP"
+.br
+.ti -1c
+.RI "class \fBIdentifierBagType\fP"
+.br
+.RI "\fIAn \fBIType\fP that maps an IList collection using bag semantics with an identifier to the database\&. \fP"
+.ti -1c
+.RI "interface \fBIDiscriminatorType\fP"
+.br
+.RI "\fIAn \fBIType\fP that may be used for a discriminator column\&. \fP"
+.ti -1c
+.RI "interface \fBIIdentifierType\fP"
+.br
+.RI "\fIAn \fBIType\fP that may be used as an identifier\&. \fP"
+.ti -1c
+.RI "interface \fBILiteralType\fP"
+.br
+.RI "\fIAn \fBIType\fP that may appear as an SQL literal \fP"
+.ti -1c
+.RI "class \fBImmutableType\fP"
+.br
+.RI "\fISuperclass of nullable immutable types\&. \fP"
+.ti -1c
+.RI "class \fBInt16Type\fP"
+.br
+.RI "\fIMaps a System\&.Int16 Property to a DbType\&.Int16 column\&. \fP"
+.ti -1c
+.RI "class \fBInt32Type\fP"
+.br
+.RI "\fIMaps a System\&.Int32 Property to a DbType\&.Int32 column\&. \fP"
+.ti -1c
+.RI "class \fBInt64Type\fP"
+.br
+.RI "\fIMaps a System\&.Int64 Property to a DbType\&.Int64 column\&. \fP"
+.ti -1c
+.RI "interface \fBIType\fP"
+.br
+.ti -1c
+.RI "interface \fBIVersionType\fP"
+.br
+.RI "\fIAn \fBIType\fP that may be used to version data\&. \fP"
+.ti -1c
+.RI "class \fBListType\fP"
+.br
+.RI "\fIAn \fBIType\fP that maps an IList collection using list semantics to the database\&. \fP"
+.ti -1c
+.RI "class \fBLocalDateTimeType\fP"
+.br
+.ti -1c
+.RI "class \fBManyToOneType\fP"
+.br
+.RI "\fIA many-to-one association to an entity \fP"
+.ti -1c
+.RI "class \fBMapType\fP"
+.br
+.RI "\fIAn \fBIType\fP that maps an IDictionary collection to the database\&. \fP"
+.ti -1c
+.RI "class \fBMetaType\fP"
+.br
+.ti -1c
+.RI "class \fBMutableType\fP"
+.br
+.RI "\fISuperclass for mutable nullable types\&. \fP"
+.ti -1c
+.RI "class \fBNullableType\fP"
+.br
+.RI "\fISuperclass of single-column nullable types\&. \fP"
+.ti -1c
+.RI "class \fBOneToOneType\fP"
+.br
+.RI "\fIA one-to-one association to an entity \fP"
+.ti -1c
+.RI "class \fBOrderedMapType\fP"
+.br
+.RI "\fIA \fBMapType\fP implemented using a collection that maintains the order in which elements are inserted into it\&. \fP"
+.ti -1c
+.RI "class \fBPersistentEnumType\fP"
+.br
+.RI "\fI\fBPersistentEnumType\fP \fP"
+.ti -1c
+.RI "class \fBEnumType< T >\fP"
+.br
+.ti -1c
+.RI "class \fBPrimitiveType\fP"
+.br
+.RI "\fISuperclass of ValueType types\&. \fP"
+.ti -1c
+.RI "class \fBSByteType\fP"
+.br
+.RI "\fIMaps a System\&.SByte Property to a DbType\&.SByte column\&. \fP"
+.ti -1c
+.RI "class \fBSerializableType\fP"
+.br
+.RI "\fIMaps an instance of a System\&.Object that has the System\&.SerializableAttribute to a DbType\&.Binary column\&. \fP"
+.ti -1c
+.RI "class \fBSerializationException\fP"
+.br
+.RI "\fIThrown when a property cannot be serialized/deserialized \fP"
+.ti -1c
+.RI "class \fBSingleType\fP"
+.br
+.RI "\fIMaps a System\&.Single Property to an DbType\&.Single column\&. \fP"
+.ti -1c
+.RI "class \fBSortedMapType\fP"
+.br
+.RI "\fIExtends the \fBMapType\fP to provide sorting\&. \fP"
+.ti -1c
+.RI "class \fBSpecialOneToOneType\fP"
+.br
+.RI "\fIA one-to-one association that maps to specific formula(s) instead of the primary key column of the owning entity\&. \fP"
+.ti -1c
+.RI "class \fBStringClobType\fP"
+.br
+.RI "\fIMaps a System\&.String Property to an System\&.String column that can store a CLOB\&. \fP"
+.ti -1c
+.RI "class \fBStringType\fP"
+.br
+.RI "\fIMaps a System\&.String to a DbType\&.String column\&. \fP"
+.ti -1c
+.RI "class \fBTicksType\fP"
+.br
+.RI "\fIMaps a System\&.DateTime Property to an DbType\&.Int64 column that stores the DateTime using the Ticks property\&. \fP"
+.ti -1c
+.RI "class \fBTimeAsTimeSpanType\fP"
+.br
+.RI "\fIMaps a System\&.TimeSpan Property to an DbType\&.Time column This is an extra way to map a DbType\&.Time\&. You already have \fBTimeType\fP but mapping against a DateTime\&. \fP"
+.ti -1c
+.RI "class \fBTimeSpanType\fP"
+.br
+.RI "\fIMaps a System\&.TimeSpan Property to an DbType\&.Int64 column \fP"
+.ti -1c
+.RI "class \fBTimestampType\fP"
+.br
+.RI "\fIThis is almost the exact same type as the DateTime except it can be used in the version column, stores it to the accuracy the database supports, and will default to the value of DateTime\&.Now if the value is null\&. \fP"
+.ti -1c
+.RI "class \fBTimeType\fP"
+.br
+.RI "\fIMaps a System\&.DateTime Property to an DateTime column that only stores the Hours, Minutes, and Seconds of the DateTime as significant\&. Also you have for DbType\&.Time handling, the \fBNHibernate\fP \fBType\fP \fBTimeAsTimeSpanType\fP, the which maps to a TimeSpan\&. \fP"
+.ti -1c
+.RI "class \fBTrueFalseType\fP"
+.br
+.RI "\fIMaps a System\&.Boolean to a 1 char System\&.Data\&.DbType\&.AnsiStringFixedLength column that stores a \fP"
+.ti -1c
+.RI "class \fBTypeFactory\fP"
+.br
+.RI "\fIUsed internally to obtain instances of \fBIType\fP\&. \fP"
+.ti -1c
+.RI "class \fBTypeHelper\fP"
+.br
+.RI "\fI\fBCollection\fP of convenience methods relating to operations across arrays of types\&.\&.\&. \fP"
+.ti -1c
+.RI "class \fBTypeType\fP"
+.br
+.RI "\fIMaps the Assembly Qualified Name of a System\&.Type to a DbType\&.String column\&. \fP"
+.ti -1c
+.RI "class \fBUInt16Type\fP"
+.br
+.RI "\fIMaps a System\&.UInt16 Property to a DbType\&.UInt16 column\&. \fP"
+.ti -1c
+.RI "class \fBUInt32Type\fP"
+.br
+.RI "\fIMaps a System\&.UInt32 Property to a DbType\&.UInt32 column\&. \fP"
+.ti -1c
+.RI "class \fBUInt64Type\fP"
+.br
+.RI "\fIMaps a System\&.UInt64 Property to a DbType\&.UInt64 column\&. \fP"
+.ti -1c
+.RI "class \fBUriType\fP"
+.br
+.ti -1c
+.RI "class \fBUtcDateTimeType\fP"
+.br
+.ti -1c
+.RI "class \fBXDocType\fP"
+.br
+.ti -1c
+.RI "class \fBXmlDocType\fP"
+.br
+.ti -1c
+.RI "class \fBYesNoType\fP"
+.br
+.RI "\fIMaps a System\&.Boolean to a 1 char System\&.Data\&.DbType\&.AnsiStringFixedLength column that stores a \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

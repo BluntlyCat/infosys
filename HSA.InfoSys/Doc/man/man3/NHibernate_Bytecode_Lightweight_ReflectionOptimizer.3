@@ -1,0 +1,91 @@
+.TH "NHibernate.Bytecode.Lightweight.ReflectionOptimizer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Bytecode.Lightweight.ReflectionOptimizer \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Bytecode\&.IReflectionOptimizer\fP, and \fBNHibernate\&.Bytecode\&.IInstantiationOptimizer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual object \fBCreateInstance\fP ()"
+.br
+.RI "\fIPerform instantiation of an instance of the underlying class\&. \fP"
+.ti -1c
+.RI "\fBReflectionOptimizer\fP (System\&.Type mappedType, \fBIGetter\fP[] getters, \fBISetter\fP[] setters)"
+.br
+.RI "\fIClass constructor\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual CreateInstanceInvoker \fBCreateCreateInstanceMethod\fP (System\&.Type type)"
+.br
+.RI "\fIGenerates a dynamic method which creates a new instance of \fItype\fP  when invoked\&. \fP"
+.ti -1c
+.RI "virtual void \fBThrowExceptionForNoDefaultCtor\fP (System\&.Type type)"
+.br
+.ti -1c
+.RI "DynamicMethod \fBCreateDynamicMethod\fP (System\&.Type returnType, System\&.Type[] argumentTypes)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly System\&.Type \fBmappedType\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIAccessOptimizer\fP \fBAccessOptimizer\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIInstantiationOptimizer\fP \fBInstantiationOptimizer\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 10 of file ReflectionOptimizer\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Bytecode\&.Lightweight\&.ReflectionOptimizer\&.ReflectionOptimizer (System\&.TypemappedType, \fBIGetter\fP[]getters, \fBISetter\fP[]setters)"
+
+.PP
+Class constructor\&. 
+.PP
+Definition at line 35 of file ReflectionOptimizer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual CreateInstanceInvoker NHibernate\&.Bytecode\&.Lightweight\&.ReflectionOptimizer\&.CreateCreateInstanceMethod (System\&.Typetype)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Generates a dynamic method which creates a new instance of \fItype\fP  when invoked\&. 
+.PP
+Definition at line 55 of file ReflectionOptimizer\&.cs\&.
+.SS "virtual object NHibernate\&.Bytecode\&.Lightweight\&.ReflectionOptimizer\&.CreateInstance ()\fC [virtual]\fP"
+
+.PP
+Perform instantiation of an instance of the underlying class\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The new instance\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Bytecode\&.IInstantiationOptimizer\fP\&.
+.PP
+Definition at line 27 of file ReflectionOptimizer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

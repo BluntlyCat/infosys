@@ -1,0 +1,139 @@
+.TH "NHibernate.Event.Default.DefaultDeleteEventListener" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.Default.DefaultDeleteEventListener \- 
+.PP
+Defines the default delete event listener used by hibernate for deleting entities from the datastore in response to generated delete events\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Event\&.IDeleteEventListener\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBOnDelete\fP (\fBDeleteEvent\fP @event)"
+.br
+.RI "\fIHandle the given delete event\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnDelete\fP (\fBDeleteEvent\fP @event, ISet< object > transientEntities)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBPerformDetachedEntityDeletionCheck\fP (\fBDeleteEvent\fP @event)"
+.br
+.RI "\fICalled when we have recognized an attempt to delete a detached entity\&. \fP"
+.ti -1c
+.RI "virtual void \fBDeleteTransientEntity\fP (\fBIEventSource\fP session, object entity, bool cascadeDeleteEnabled, \fBIEntityPersister\fP persister, ISet< object > transientEntities)"
+.br
+.RI "\fIWe encountered a delete request on a transient instance\&. 
+.PP
+This is a deviation from historical Hibernate (pre-3\&.2) behavior to align with the JPA spec, which states that transient entities can be passed to remove operation in which case cascades still need to be performed\&. \fP"
+.ti -1c
+.RI "virtual void \fBDeleteEntity\fP (\fBIEventSource\fP session, object entity, \fBEntityEntry\fP entityEntry, bool isCascadeDeleteEnabled, \fBIEntityPersister\fP persister, ISet< object > transientEntities)"
+.br
+.RI "\fIPerform the entity deletion\&. Well, as with most operations, does not really perform it; just schedules an action/execution with the ActionQueue for execution during flush\&. \fP"
+.ti -1c
+.RI "virtual bool \fBInvokeDeleteLifecycle\fP (\fBIEventSource\fP session, object entity, \fBIEntityPersister\fP persister)"
+.br
+.ti -1c
+.RI "virtual void \fBCascadeBeforeDelete\fP (\fBIEventSource\fP session, \fBIEntityPersister\fP persister, object entity, \fBEntityEntry\fP entityEntry, ISet< object > transientEntities)"
+.br
+.ti -1c
+.RI "virtual void \fBCascadeAfterDelete\fP (\fBIEventSource\fP session, \fBIEntityPersister\fP persister, object entity, ISet< object > transientEntities)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the default delete event listener used by hibernate for deleting entities from the datastore in response to generated delete events\&. 
+
+
+.PP
+Definition at line 19 of file DefaultDeleteEventListener\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Event\&.Default\&.DefaultDeleteEventListener\&.DeleteEntity (\fBIEventSource\fPsession, objectentity, \fBEntityEntry\fPentityEntry, boolisCascadeDeleteEnabled, \fBIEntityPersister\fPpersister, ISet< object >transientEntities)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Perform the entity deletion\&. Well, as with most operations, does not really perform it; just schedules an action/execution with the ActionQueue for execution during flush\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The originating session 
+.br
+\fIentity\fP The entity to delete 
+.br
+\fIentityEntry\fP The entity's entry in the \fBISession\fP 
+.br
+\fIisCascadeDeleteEnabled\fP Is delete cascading enabled? 
+.br
+\fIpersister\fP The entity persister\&. 
+.br
+\fItransientEntities\fP A cache of already deleted entities\&. 
+.RE
+.PP
+
+.PP
+Definition at line 169 of file DefaultDeleteEventListener\&.cs\&.
+.SS "virtual void NHibernate\&.Event\&.Default\&.DefaultDeleteEventListener\&.DeleteTransientEntity (\fBIEventSource\fPsession, objectentity, boolcascadeDeleteEnabled, \fBIEntityPersister\fPpersister, ISet< object >transientEntities)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+We encountered a delete request on a transient instance\&. 
+.PP
+This is a deviation from historical Hibernate (pre-3\&.2) behavior to align with the JPA spec, which states that transient entities can be passed to remove operation in which case cascades still need to be performed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session which is the source of the event 
+.br
+\fIentity\fP The entity being delete processed 
+.br
+\fIcascadeDeleteEnabled\fP Is cascading of deletes enabled
+.br
+\fIpersister\fP The entity persister 
+.br
+\fItransientEntities\fP A cache of already visited transient entities (to avoid infinite recursion)\&. 
+.RE
+.PP
+
+.PP
+Definition at line 141 of file DefaultDeleteEventListener\&.cs\&.
+.SS "virtual void NHibernate\&.Event\&.Default\&.DefaultDeleteEventListener\&.OnDelete (\fBDeleteEvent\fP @event)\fC [virtual]\fP"
+
+.PP
+Handle the given delete event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The delete event to be handled\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Event\&.IDeleteEventListener\fP\&.
+.PP
+Definition at line 27 of file DefaultDeleteEventListener\&.cs\&.
+.SS "virtual void NHibernate\&.Event\&.Default\&.DefaultDeleteEventListener\&.PerformDetachedEntityDeletionCheck (\fBDeleteEvent\fP @event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when we have recognized an attempt to delete a detached entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The event\&. 
+.RE
+.PP
+.PP
+This is perfectly valid in Hibernate usage; JPA, however, forbids this\&. Thus, this is a hook for HEM to affect this behavior\&. 
+.PP
+Definition at line 120 of file DefaultDeleteEventListener\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

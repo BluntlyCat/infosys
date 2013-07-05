@@ -1,0 +1,157 @@
+.TH "NHibernate.Engine.Loading.LoadContexts" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.Loading.LoadContexts \- 
+.PP
+Maps IDataReader to specific contextual data related to processing that IDataReader\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLoadContexts\fP (\fBIPersistenceContext\fP persistenceContext)"
+.br
+.RI "\fICreates and binds this to the given persistence context\&. \fP"
+.ti -1c
+.RI "virtual void \fBCleanup\fP (IDataReader resultSet)"
+.br
+.RI "\fIRelease internal state associated with the given result set\&. \fP"
+.ti -1c
+.RI "void \fBCleanup\fP ()"
+.br
+.RI "\fIRelease internal state associated with \fIall\fP result sets\&. \fP"
+.ti -1c
+.RI "\fBCollectionLoadContext\fP \fBGetCollectionLoadContext\fP (IDataReader resultSet)"
+.br
+.RI "\fIGet the \fBCollectionLoadContext\fP associated with the given \fBResultSet\fP, creating one if needed\&. \fP"
+.ti -1c
+.RI "\fBIPersistentCollection\fP \fBLocateLoadingCollection\fP (\fBICollectionPersister\fP persister, object ownerKey)"
+.br
+.RI "\fIAttempt to locate the loading collection given the owner's key\&. The lookup here occurs against all result-set contexts\&.\&.\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIPersistenceContext\fP \fBPersistenceContext\fP\fC [get]\fP"
+.br
+.RI "\fIRetrieves the persistence context to which this is bound\&. \fP"
+.ti -1c
+.RI "bool \fBHasLoadingCollectionEntries\fP\fC [get]\fP"
+.br
+.RI "\fIDo we currently have any internal entries corresponding to loading collections? \fP"
+.ti -1c
+.RI "bool \fBHasRegisteredLoadingCollectionEntries\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Maps IDataReader to specific contextual data related to processing that IDataReader\&. 
+
+Implementation note: internally an IdentityMap is used to maintain the mappings; IdentityMap was chosen because I'd rather not be dependent upon potentially bad IDataReader and IDataReader implementations\&. Considering the JDBC-redesign work, would further like this contextual info not mapped separately, but available based on the result set being processed\&. This would also allow maintaining a single mapping as we could reliably get notification of the result-set closing\&.\&.\&. 
+.PP
+Definition at line 27 of file LoadContexts\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Engine\&.Loading\&.LoadContexts\&.LoadContexts (\fBIPersistenceContext\fPpersistenceContext)"
+
+.PP
+Creates and binds this to the given persistence context\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersistenceContext\fP The persistence context to which this will be bound\&. 
+.RE
+.PP
+
+.PP
+Definition at line 39 of file LoadContexts\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Engine\&.Loading\&.LoadContexts\&.Cleanup (IDataReaderresultSet)\fC [virtual]\fP"
+
+.PP
+Release internal state associated with the given result set\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIresultSet\fP The result set for which it is ok to release associated resources\&. 
+.RE
+.PP
+.PP
+This should be called when we are done with processing said result set, ideally as the result set is being closed\&. 
+.PP
+Definition at line 70 of file LoadContexts\&.cs\&.
+.SS "void NHibernate\&.Engine\&.Loading\&.LoadContexts\&.Cleanup ()"
+
+.PP
+Release internal state associated with \fIall\fP result sets\&. This is intended as a 'failsafe' process to make sure we get everything cleaned up and released\&. 
+.PP
+Definition at line 85 of file LoadContexts\&.cs\&.
+.SS "\fBCollectionLoadContext\fP NHibernate\&.Engine\&.Loading\&.LoadContexts\&.GetCollectionLoadContext (IDataReaderresultSet)"
+
+.PP
+Get the \fBCollectionLoadContext\fP associated with the given \fBResultSet\fP, creating one if needed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIresultSet\fP The result set for which to retrieve the context\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The processing context\&. 
+.RE
+.PP
+
+.PP
+Definition at line 124 of file LoadContexts\&.cs\&.
+.SS "\fBIPersistentCollection\fP NHibernate\&.Engine\&.Loading\&.LoadContexts\&.LocateLoadingCollection (\fBICollectionPersister\fPpersister, objectownerKey)"
+
+.PP
+Attempt to locate the loading collection given the owner's key\&. The lookup here occurs against all result-set contexts\&.\&.\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The collection persister 
+.br
+\fIownerKey\fP The owner key 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The loading collection, or null if not found\&. 
+.RE
+.PP
+
+.PP
+Definition at line 154 of file LoadContexts\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.Engine\&.Loading\&.LoadContexts\&.HasLoadingCollectionEntries\fC [get]\fP"
+
+.PP
+Do we currently have any internal entries corresponding to loading collections? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if we currently hold state pertaining to loading collections; false otherwise\&. 
+.RE
+.PP
+summary> Do we currently have any registered internal entries corresponding to loading collections? True if we currently hold state pertaining to a registered loading collections; false otherwise\&. 
+.PP
+Definition at line 104 of file LoadContexts\&.cs\&.
+.SS "\fBIPersistenceContext\fP NHibernate\&.Engine\&.Loading\&.LoadContexts\&.PersistenceContext\fC [get]\fP"
+
+.PP
+Retrieves the persistence context to which this is bound\&. 
+.PP
+Definition at line 48 of file LoadContexts\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,98 @@
+.TH "NHibernate.Tuple.Component.IComponentTuplizer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Tuple.Component.IComponentTuplizer \- 
+.PP
+Defines further responsibilities regarding tuplization based on a mapped components\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Tuple\&.ITuplizer\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBGetParent\fP (object component)"
+.br
+.RI "\fIRetrieve the current value of the parent property\&. \fP"
+.ti -1c
+.RI "void \fBSetParent\fP (object component, object parent, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fISet the value of the parent property\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBHasParentProperty\fP\fC [get]\fP"
+.br
+.RI "\fIDoes the component managed by this tuuplizer contain a parent property? \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines further responsibilities regarding tuplization based on a mapped components\&. 
+
+ComponentTuplizer implementations should have the following constructor signature: (org\&.hibernate\&.mapping\&.Component) 
+.PP
+Definition at line 13 of file IComponentTuplizer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.Tuple\&.Component\&.IComponentTuplizer\&.GetParent (objectcomponent)"
+
+.PP
+Retrieve the current value of the parent property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomponent\fP The component instance from which to extract the parent property value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The current value of the parent property\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Component\&.PocoComponentTuplizer\fP, and \fBNHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\fP\&.
+.SS "void NHibernate\&.Tuple\&.Component\&.IComponentTuplizer\&.SetParent (objectcomponent, objectparent, \fBISessionFactoryImplementor\fPfactory)"
+
+.PP
+Set the value of the parent property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomponent\fP The component instance on which to set the parent\&. 
+.br
+\fIparent\fP The parent to be set on the component\&. 
+.br
+\fIfactory\fP The current session factory\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.Tuple\&.Component\&.IComponentTuplizer\&.HasParentProperty\fC [get]\fP"
+
+.PP
+Does the component managed by this tuuplizer contain a parent property? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if the component does contain a parent property; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 30 of file IComponentTuplizer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

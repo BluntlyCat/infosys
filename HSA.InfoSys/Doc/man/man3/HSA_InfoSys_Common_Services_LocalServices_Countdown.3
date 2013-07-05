@@ -1,0 +1,246 @@
+.TH "HSA.InfoSys.Common.Services.LocalServices.Countdown" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HSA.InfoSys.Common.Services.LocalServices.Countdown \- 
+.PP
+This class represents the countdown thread\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBHSA\&.InfoSys\&.Common\&.Services\&.Service\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCountdown\fP (\fBOrgUnitConfig\fP orgUnitConfig, Guid serviceGUID, \fBZeroEventHandler\fP zeroEventHandler)"
+.br
+.RI "\fIInitializes a new instance of the \fBCountdown\fP class\&. \fP"
+.ti -1c
+.RI "delegate void \fBTickEventHandler\fP (object sender, TimeSpan remainTime)"
+.br
+.RI "\fIThe delegate for indicating that the time value has changed\&. \fP"
+.ti -1c
+.RI "delegate void \fBZeroEventHandler\fP (object sender, \fBOrgUnitConfig\fP orgUnitConfig)"
+.br
+.RI "\fIThe delegate for indicating that the time value is zero\&. \fP"
+.ti -1c
+.RI "delegate void \fBErrorEventHandler\fP (object sender, string error)"
+.br
+.RI "\fIThe delegate for indicating that there was an error\&. \fP"
+.ti -1c
+.RI "void \fBUpdateOrgUnitConfig\fP (\fBOrgUnitConfig\fP orgUnitConfig)"
+.br
+.RI "\fIUpdates the org unit config\&. \fP"
+.ti -1c
+.RI "override void \fBStartService\fP ()"
+.br
+.RI "\fIStarts this instance\&. \fP"
+.ti -1c
+.RI "override void \fBRestartService\fP (bool cancel=false)"
+.br
+.RI "\fISets the time to repeat\&. \fP"
+.ti -1c
+.RI "override void \fBStopService\fP (bool cancel=false)"
+.br
+.RI "\fIStops this instance\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIReturns a System\&.String that represents this instance\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBRun\fP ()"
+.br
+.RI "\fIRuns this instance\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBCountdownTime\fP \fBTime\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the shutdown time\&. \fP"
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "\fBTickEventHandler\fP \fBOnTick\fP"
+.br
+.RI "\fIOccurs when [tick]\&. \fP"
+.ti -1c
+.RI "\fBErrorEventHandler\fP \fBOnError\fP"
+.br
+.RI "\fIOccurs when [on error]\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class represents the countdown thread\&. 
+
+
+.PP
+Definition at line 17 of file Countdown\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.Countdown\&.Countdown (\fBOrgUnitConfig\fPorgUnitConfig, GuidserviceGUID, \fBZeroEventHandler\fPzeroEventHandler)"
+
+.PP
+Initializes a new instance of the \fBCountdown\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIorgUnitConfig\fP The org unit config\&.
+.br
+\fIserviceGUID\fP The service GUID\&.
+.br
+\fIzeroEventHandler\fP The zero event handler\&.
+.RE
+.PP
+
+.PP
+Definition at line 30 of file Countdown\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "delegate void HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.Countdown\&.ErrorEventHandler (objectsender, stringerror)"
+
+.PP
+The delegate for indicating that there was an error\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsender\fP The sender\&.
+.br
+\fIerror\fP The error\&.
+.RE
+.PP
+
+.SS "override void HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.Countdown\&.RestartService (boolcancel = \fCfalse\fP)\fC [virtual]\fP"
+
+.PP
+Sets the time to repeat\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcancel\fP if set to \fCtrue\fP [cancel]\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBHSA\&.InfoSys\&.Common\&.Services\&.Service\fP\&.
+.PP
+Definition at line 134 of file Countdown\&.cs\&.
+.SS "override void HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.Countdown\&.Run ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Runs this instance\&. 
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.Service\fP\&.
+.PP
+Definition at line 166 of file Countdown\&.cs\&.
+.SS "override void HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.Countdown\&.StartService ()\fC [virtual]\fP"
+
+.PP
+Starts this instance\&. 
+.PP
+Reimplemented from \fBHSA\&.InfoSys\&.Common\&.Services\&.Service\fP\&.
+.PP
+Definition at line 119 of file Countdown\&.cs\&.
+.SS "override void HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.Countdown\&.StopService (boolcancel = \fCfalse\fP)\fC [virtual]\fP"
+
+.PP
+Stops this instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcancel\fP if set to \fCtrue\fP [cancel]\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBHSA\&.InfoSys\&.Common\&.Services\&.Service\fP\&.
+.PP
+Definition at line 144 of file Countdown\&.cs\&.
+.SS "delegate void HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.Countdown\&.TickEventHandler (objectsender, TimeSpanremainTime)"
+
+.PP
+The delegate for indicating that the time value has changed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsender\fP The sender\&.
+.br
+\fIremainTime\fP The remain time\&.
+.RE
+.PP
+
+.SS "override string HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.Countdown\&.ToString ()"
+
+.PP
+Returns a System\&.String that represents this instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A System\&.String that represents this instance\&. 
+.RE
+.PP
+
+.PP
+Definition at line 158 of file Countdown\&.cs\&.
+.SS "void HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.Countdown\&.UpdateOrgUnitConfig (\fBOrgUnitConfig\fPorgUnitConfig)"
+
+.PP
+Updates the org unit config\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIorgUnitConfig\fP The org unit config\&.
+.RE
+.PP
+
+.PP
+Definition at line 104 of file Countdown\&.cs\&.
+.SS "delegate void HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.Countdown\&.ZeroEventHandler (objectsender, \fBOrgUnitConfig\fPorgUnitConfig)"
+
+.PP
+The delegate for indicating that the time value is zero\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsender\fP The sender\&.
+.br
+\fIorgUnitConfig\fP The org unit config\&.
+.RE
+.PP
+
+.SH "Property Documentation"
+.PP 
+.SS "\fBCountdownTime\fP HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.Countdown\&.Time\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the shutdown time\&. The shutdown time\&. 
+.PP
+Definition at line 82 of file Countdown\&.cs\&.
+.SH "Event Documentation"
+.PP 
+.SS "\fBErrorEventHandler\fP HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.Countdown\&.OnError"
+
+.PP
+Occurs when [on error]\&. 
+.PP
+Definition at line 66 of file Countdown\&.cs\&.
+.SS "\fBTickEventHandler\fP HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.Countdown\&.OnTick"
+
+.PP
+Occurs when [tick]\&. 
+.PP
+Definition at line 61 of file Countdown\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

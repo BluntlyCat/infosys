@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1710_1_1_fixture_with_explicit_defined_type =
+[
+    [ "GetResourceName", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1710_1_1_fixture_with_explicit_defined_type.html#a6c39bd11b62c4275cbc263d47e440c1a", null ]
+];

@@ -1,0 +1,561 @@
+.TH "log4net.Util.SystemInfo" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.SystemInfo \- 
+.PP
+Utility class for system specific information\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static string \fBAssemblyLocationInfo\fP (Assembly myAssembly)"
+.br
+.RI "\fIGets the assembly location path for the specified assembly\&. \fP"
+.ti -1c
+.RI "static string \fBAssemblyQualifiedName\fP (Type type)"
+.br
+.RI "\fIGets the fully qualified name of the Type, including the name of the assembly from which the Type was loaded\&. \fP"
+.ti -1c
+.RI "static string \fBAssemblyShortName\fP (Assembly myAssembly)"
+.br
+.RI "\fIGets the short name of the Assembly\&. \fP"
+.ti -1c
+.RI "static string \fBAssemblyFileName\fP (Assembly myAssembly)"
+.br
+.RI "\fIGets the file name portion of the Assembly, including the extension\&. \fP"
+.ti -1c
+.RI "static Type \fBGetTypeFromString\fP (Type relativeType, string typeName, bool throwOnError, bool ignoreCase)"
+.br
+.RI "\fILoads the type specified in the type string\&. \fP"
+.ti -1c
+.RI "static Type \fBGetTypeFromString\fP (string typeName, bool throwOnError, bool ignoreCase)"
+.br
+.RI "\fILoads the type specified in the type string\&. \fP"
+.ti -1c
+.RI "static Type \fBGetTypeFromString\fP (Assembly relativeAssembly, string typeName, bool throwOnError, bool ignoreCase)"
+.br
+.RI "\fILoads the type specified in the type string\&. \fP"
+.ti -1c
+.RI "static Guid \fBNewGuid\fP ()"
+.br
+.RI "\fIGenerate a new guid \fP"
+.ti -1c
+.RI "static ArgumentOutOfRangeException \fBCreateArgumentOutOfRangeException\fP (string parameterName, object actualValue, string message)"
+.br
+.RI "\fICreate an ArgumentOutOfRangeException \fP"
+.ti -1c
+.RI "static bool \fBTryParse\fP (string s, out int val)"
+.br
+.RI "\fIParse a string into an Int32 value \fP"
+.ti -1c
+.RI "static bool \fBTryParse\fP (string s, out long val)"
+.br
+.RI "\fIParse a string into an Int64 value \fP"
+.ti -1c
+.RI "static bool \fBTryParse\fP (string s, out short val)"
+.br
+.RI "\fIParse a string into an Int16 value \fP"
+.ti -1c
+.RI "static string \fBGetAppSetting\fP (string key)"
+.br
+.RI "\fILookup an application setting \fP"
+.ti -1c
+.RI "static string \fBConvertToFullPath\fP (string path)"
+.br
+.RI "\fIConvert a path into a fully qualified local file path\&. \fP"
+.ti -1c
+.RI "static Hashtable \fBCreateCaseInsensitiveHashtable\fP ()"
+.br
+.RI "\fICreates a new case-insensitive instance of the Hashtable class with the default initial capacity\&. \fP"
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly Type[] \fBEmptyTypes\fP = new Type[0]"
+.br
+.RI "\fIGets an empty array of types\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "static string \fBNewLine\fP\fC [get]\fP"
+.br
+.RI "\fIGets the system dependent line terminator\&. \fP"
+.ti -1c
+.RI "static string \fBApplicationBaseDirectory\fP\fC [get]\fP"
+.br
+.RI "\fIGets the base directory for this AppDomain\&. \fP"
+.ti -1c
+.RI "static string \fBConfigurationFileLocation\fP\fC [get]\fP"
+.br
+.RI "\fIGets the path to the configuration file for the current AppDomain\&. \fP"
+.ti -1c
+.RI "static string \fBEntryAssemblyLocation\fP\fC [get]\fP"
+.br
+.RI "\fIGets the path to the file that first executed in the current AppDomain\&. \fP"
+.ti -1c
+.RI "static int \fBCurrentThreadId\fP\fC [get]\fP"
+.br
+.RI "\fIGets the ID of the current thread\&. \fP"
+.ti -1c
+.RI "static string \fBHostName\fP\fC [get]\fP"
+.br
+.RI "\fIGet the host name or machine name for the current machine \fP"
+.ti -1c
+.RI "static string \fBApplicationFriendlyName\fP\fC [get]\fP"
+.br
+.RI "\fIGet this application's friendly name \fP"
+.ti -1c
+.RI "static DateTime \fBProcessStartTime\fP\fC [get]\fP"
+.br
+.RI "\fIGet the start time for the current process\&. \fP"
+.ti -1c
+.RI "static string \fBNullText\fP\fC [get, set]\fP"
+.br
+.RI "\fIText to output when a \fCnull\fP is encountered\&. \fP"
+.ti -1c
+.RI "static string \fBNotAvailableText\fP\fC [get, set]\fP"
+.br
+.RI "\fIText to output when an unsupported feature is requested\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Utility class for system specific information\&. 
+
+Utility class of static methods for system specific information\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> <author>Alexey Solofnenko</author> 
+.PP
+Definition at line 41 of file SystemInfo\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static string log4net\&.Util\&.SystemInfo\&.AssemblyFileName (AssemblymyAssembly)\fC [static]\fP"
+
+.PP
+Gets the file name portion of the Assembly, including the extension\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImyAssembly\fP The Assembly to get the file name for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The file name of the assembly\&.
+.RE
+.PP
+.PP
+Gets the file name portion of the Assembly, including the extension\&. 
+.PP
+Definition at line 532 of file SystemInfo\&.cs\&.
+.SS "static string log4net\&.Util\&.SystemInfo\&.AssemblyLocationInfo (AssemblymyAssembly)\fC [static]\fP"
+
+.PP
+Gets the assembly location path for the specified assembly\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImyAssembly\fP The assembly to get the location for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The location of the assembly\&.
+.RE
+.PP
+.PP
+This method does not guarantee to return the correct path to the assembly\&. If only tries to give an indication as to where the assembly was loaded from\&. 
+.PP
+Definition at line 440 of file SystemInfo\&.cs\&.
+.SS "static string log4net\&.Util\&.SystemInfo\&.AssemblyQualifiedName (Typetype)\fC [static]\fP"
+
+.PP
+Gets the fully qualified name of the Type, including the name of the assembly from which the Type was loaded\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The Type to get the fully qualified name for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The fully qualified name for the Type\&.
+.RE
+.PP
+.PP
+This is equivalent to the \fCType\&.AssemblyQualifiedName\fP property, but this method works on the \&.NET Compact Framework 1\&.0 as well as the full \&.NET runtime\&. 
+.PP
+Definition at line 480 of file SystemInfo\&.cs\&.
+.SS "static string log4net\&.Util\&.SystemInfo\&.AssemblyShortName (AssemblymyAssembly)\fC [static]\fP"
+
+.PP
+Gets the short name of the Assembly\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImyAssembly\fP The Assembly to get the name for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The short name of the Assembly\&.
+.RE
+.PP
+.PP
+The short name of the assembly is the Assembly\&.FullName without the version, culture, or public key\&. i\&.e\&. it is just the assembly's file name without the extension\&. 
+.PP
+Use this rather than \fCAssembly\&.GetName()\&.Name\fP because that is not available on the Compact Framework\&. 
+.PP
+Because of a FileIOPermission security demand we cannot do the obvious Assembly\&.GetName()\&.Name\&. We are allowed to get the Assembly\&.FullName of the assembly so we start from there and strip out just the assembly name\&. 
+.PP
+Definition at line 507 of file SystemInfo\&.cs\&.
+.SS "static string log4net\&.Util\&.SystemInfo\&.ConvertToFullPath (stringpath)\fC [static]\fP"
+
+.PP
+Convert a path into a fully qualified local file path\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path to convert\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The fully qualified path\&.
+.RE
+.PP
+.PP
+Converts the path specified to a fully qualified path\&. If the path is relative it is taken as relative from the application base directory\&. 
+.PP
+The path specified must be a local file path, a URI is not supported\&. 
+.PP
+Definition at line 932 of file SystemInfo\&.cs\&.
+.SS "static ArgumentOutOfRangeException log4net\&.Util\&.SystemInfo\&.CreateArgumentOutOfRangeException (stringparameterName, objectactualValue, stringmessage)\fC [static]\fP"
+
+.PP
+Create an ArgumentOutOfRangeException 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameterName\fP The name of the parameter that caused the exception
+.br
+\fIactualValue\fP The value of the argument that causes this exception
+.br
+\fImessage\fP The message that describes the error
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the ArgumentOutOfRangeException object
+.RE
+.PP
+.PP
+Create a new instance of the ArgumentOutOfRangeException class with a specified error message, the parameter name, and the value of the argument\&. 
+.PP
+The Compact Framework does not support the 3 parameter constructor for the ArgumentOutOfRangeException type\&. This method provides an implementation that works for all platforms\&. 
+.PP
+Definition at line 730 of file SystemInfo\&.cs\&.
+.SS "static Hashtable log4net\&.Util\&.SystemInfo\&.CreateCaseInsensitiveHashtable ()\fC [static]\fP"
+
+.PP
+Creates a new case-insensitive instance of the Hashtable class with the default initial capacity\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A new case-insensitive instance of the Hashtable class with the default initial capacity
+.RE
+.PP
+.PP
+The new Hashtable instance uses the default load factor, the CaseInsensitiveHashCodeProvider, and the CaseInsensitiveComparer\&. 
+.PP
+Definition at line 975 of file SystemInfo\&.cs\&.
+.SS "static string log4net\&.Util\&.SystemInfo\&.GetAppSetting (stringkey)\fC [static]\fP"
+
+.PP
+Lookup an application setting 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP the application settings key to lookup
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the value for the key, or \fCnull\fP
+.RE
+.PP
+.PP
+Configuration APIs are not supported under the Compact Framework 
+.PP
+Definition at line 896 of file SystemInfo\&.cs\&.
+.SS "static Type log4net\&.Util\&.SystemInfo\&.GetTypeFromString (TyperelativeType, stringtypeName, boolthrowOnError, boolignoreCase)\fC [static]\fP"
+
+.PP
+Loads the type specified in the type string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrelativeType\fP A sibling type to use to load the type\&.
+.br
+\fItypeName\fP The name of the type to load\&.
+.br
+\fIthrowOnError\fP Flag set to \fCtrue\fP to throw an exception if the type cannot be loaded\&.
+.br
+\fIignoreCase\fP \fCtrue\fP to ignore the case of the type name; otherwise, \fCfalse\fP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The type loaded or \fCnull\fP if it could not be loaded\&.
+.RE
+.PP
+.PP
+If the type name is fully qualified, i\&.e\&. if contains an assembly name in the type name, the type will be loaded from the system using Type\&.GetType(string,bool)\&. 
+.PP
+If the type name is not fully qualified, it will be loaded from the assembly containing the specified relative type\&. If the type is not found in the assembly then all the loaded assemblies will be searched for the type\&. 
+.PP
+Definition at line 577 of file SystemInfo\&.cs\&.
+.SS "static Type log4net\&.Util\&.SystemInfo\&.GetTypeFromString (stringtypeName, boolthrowOnError, boolignoreCase)\fC [static]\fP"
+
+.PP
+Loads the type specified in the type string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItypeName\fP The name of the type to load\&.
+.br
+\fIthrowOnError\fP Flag set to \fCtrue\fP to throw an exception if the type cannot be loaded\&.
+.br
+\fIignoreCase\fP \fCtrue\fP to ignore the case of the type name; otherwise, \fCfalse\fP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The type loaded or \fCnull\fP if it could not be loaded\&.
+.RE
+.PP
+.PP
+If the type name is fully qualified, i\&.e\&. if contains an assembly name in the type name, the type will be loaded from the system using Type\&.GetType(string,bool)\&. 
+.PP
+If the type name is not fully qualified it will be loaded from the assembly that is directly calling this method\&. If the type is not found in the assembly then all the loaded assemblies will be searched for the type\&. 
+.PP
+Definition at line 601 of file SystemInfo\&.cs\&.
+.SS "static Type log4net\&.Util\&.SystemInfo\&.GetTypeFromString (AssemblyrelativeAssembly, stringtypeName, boolthrowOnError, boolignoreCase)\fC [static]\fP"
+
+.PP
+Loads the type specified in the type string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrelativeAssembly\fP An assembly to load the type from\&.
+.br
+\fItypeName\fP The name of the type to load\&.
+.br
+\fIthrowOnError\fP Flag set to \fCtrue\fP to throw an exception if the type cannot be loaded\&.
+.br
+\fIignoreCase\fP \fCtrue\fP to ignore the case of the type name; otherwise, \fCfalse\fP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The type loaded or \fCnull\fP if it could not be loaded\&.
+.RE
+.PP
+.PP
+If the type name is fully qualified, i\&.e\&. if contains an assembly name in the type name, the type will be loaded from the system using Type\&.GetType(string,bool)\&. 
+.PP
+If the type name is not fully qualified it will be loaded from the specified assembly\&. If the type is not found in the assembly then all the loaded assemblies will be searched for the type\&. 
+.PP
+Definition at line 626 of file SystemInfo\&.cs\&.
+.SS "static Guid log4net\&.Util\&.SystemInfo\&.NewGuid ()\fC [static]\fP"
+
+.PP
+Generate a new guid 
+.PP
+\fBReturns:\fP
+.RS 4
+A new Guid
+.RE
+.PP
+.PP
+Generate a new guid 
+.PP
+Definition at line 702 of file SystemInfo\&.cs\&.
+.SS "static bool log4net\&.Util\&.SystemInfo\&.TryParse (strings, out intval)\fC [static]\fP"
+
+.PP
+Parse a string into an Int32 value 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP the string to parse
+.br
+\fIval\fP out param where the parsed value is placed
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the string was able to be parsed into an integer
+.RE
+.PP
+.PP
+Attempts to parse the string into an integer\&. If the string cannot be parsed then this method returns \fCfalse\fP\&. The method does not throw an exception\&. 
+.PP
+Definition at line 754 of file SystemInfo\&.cs\&.
+.SS "static bool log4net\&.Util\&.SystemInfo\&.TryParse (strings, out longval)\fC [static]\fP"
+
+.PP
+Parse a string into an Int64 value 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP the string to parse
+.br
+\fIval\fP out param where the parsed value is placed
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the string was able to be parsed into an integer
+.RE
+.PP
+.PP
+Attempts to parse the string into an integer\&. If the string cannot be parsed then this method returns \fCfalse\fP\&. The method does not throw an exception\&. 
+.PP
+Definition at line 802 of file SystemInfo\&.cs\&.
+.SS "static bool log4net\&.Util\&.SystemInfo\&.TryParse (strings, out shortval)\fC [static]\fP"
+
+.PP
+Parse a string into an Int16 value 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP the string to parse
+.br
+\fIval\fP out param where the parsed value is placed
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the string was able to be parsed into an integer
+.RE
+.PP
+.PP
+Attempts to parse the string into an integer\&. If the string cannot be parsed then this method returns \fCfalse\fP\&. The method does not throw an exception\&. 
+.PP
+Definition at line 850 of file SystemInfo\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly Type [] log4net\&.Util\&.SystemInfo\&.EmptyTypes = new Type[0]\fC [static]\fP"
+
+.PP
+Gets an empty array of types\&. The \fCType\&.EmptyTypes\fP field is not available on the \&.NET Compact Framework 1\&.0\&. 
+.PP
+Definition at line 1040 of file SystemInfo\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string log4net\&.Util\&.SystemInfo\&.ApplicationBaseDirectory\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Gets the base directory for this AppDomain\&. The base directory path for the current AppDomain\&.
+.PP
+Gets the base directory for this AppDomain\&. 
+.PP
+The value returned may be either a local file path or a URI\&. 
+.PP
+Definition at line 142 of file SystemInfo\&.cs\&.
+.SS "string log4net\&.Util\&.SystemInfo\&.ApplicationFriendlyName\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Get this application's friendly name The friendly name of this application as a string 
+.PP
+If available the name of the application is retrieved from the \fCAppDomain\fP using \fCAppDomain\&.CurrentDomain\&.FriendlyName\fP\&. 
+.PP
+Otherwise the file name of the entry assembly is used\&. 
+.PP
+Definition at line 320 of file SystemInfo\&.cs\&.
+.SS "string log4net\&.Util\&.SystemInfo\&.ConfigurationFileLocation\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Gets the path to the configuration file for the current AppDomain\&. The path to the configuration file for the current AppDomain\&.
+.PP
+The \&.NET Compact Framework 1\&.0 does not have a concept of a configuration file\&. For this runtime, we use the entry assembly location as the root for the configuration file name\&. 
+.PP
+The value returned may be either a local file path or a URI\&. 
+.PP
+Definition at line 168 of file SystemInfo\&.cs\&.
+.SS "int log4net\&.Util\&.SystemInfo\&.CurrentThreadId\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Gets the ID of the current thread\&. The ID of the current thread\&.
+.PP
+On the \&.NET framework, the \fCAppDomain\&.GetCurrentThreadId\fP method is used to obtain the thread ID for the current thread\&. This is the operating system ID for the thread\&. 
+.PP
+On the \&.NET Compact Framework 1\&.0 it is not possible to get the operating system thread ID for the current thread\&. The native method \fCGetCurrentThreadId\fP is implemented inline in a header file and cannot be called\&. 
+.PP
+On the \&.NET Framework 2\&.0 the \fCThread\&.ManagedThreadId\fP is used as this gives a stable id unrelated to the operating system thread ID which may change if the runtime is using fibers\&. 
+.PP
+Definition at line 223 of file SystemInfo\&.cs\&.
+.SS "string log4net\&.Util\&.SystemInfo\&.EntryAssemblyLocation\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Gets the path to the file that first executed in the current AppDomain\&. The path to the entry assembly\&.
+.PP
+Gets the path to the file that first executed in the current AppDomain\&. 
+.PP
+Definition at line 189 of file SystemInfo\&.cs\&.
+.SS "string log4net\&.Util\&.SystemInfo\&.HostName\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Get the host name or machine name for the current machine The hostname or machine name 
+.PP
+Get the host name or machine name for the current machine 
+.PP
+The host name (System\&.Net\&.Dns\&.GetHostName) or the machine name (\fCEnvironment\&.MachineName\fP) for the current machine, or if neither of these are available then \fCNOT AVAILABLE\fP is returned\&. 
+.PP
+Definition at line 254 of file SystemInfo\&.cs\&.
+.SS "string log4net\&.Util\&.SystemInfo\&.NewLine\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Gets the system dependent line terminator\&. The system dependent line terminator\&. 
+.PP
+Gets the system dependent line terminator\&. 
+.PP
+Definition at line 118 of file SystemInfo\&.cs\&.
+.SS "string log4net\&.Util\&.SystemInfo\&.NotAvailableText\fC [static]\fP, \fC [get]\fP, \fC [set]\fP"
+
+.PP
+Text to output when an unsupported feature is requested\&. Use this value when an unsupported feature is requested\&. 
+.PP
+The default value is \fCNOT AVAILABLE\fP\&. This value can be overridden by specifying a value for the \fClog4net\&.NotAvailableText\fP appSetting in the application's \&.config file\&. 
+.PP
+Definition at line 419 of file SystemInfo\&.cs\&.
+.SS "string log4net\&.Util\&.SystemInfo\&.NullText\fC [static]\fP, \fC [get]\fP, \fC [set]\fP"
+
+.PP
+Text to output when a \fCnull\fP is encountered\&. Use this value to indicate a \fCnull\fP has been encountered while outputting a string representation of an item\&. 
+.PP
+The default value is \fC(null)\fP\&. This value can be overridden by specifying a value for the \fClog4net\&.NullText\fP appSetting in the application's \&.config file\&. 
+.PP
+Definition at line 400 of file SystemInfo\&.cs\&.
+.SS "DateTime log4net\&.Util\&.SystemInfo\&.ProcessStartTime\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Get the start time for the current process\&. This is the time at which the \fBlog4net\fP library was loaded into the AppDomain\&. Due to reports of a hang in the call to \fCSystem\&.Diagnostics\&.Process\&.StartTime\fP this is not the start time for the current process\&. 
+.PP
+The \fBlog4net\fP library should be loaded by an application early during its startup, therefore this start time should be a good approximation for the actual start time\&. 
+.PP
+Note that AppDomains may be loaded and unloaded within the same process without the process terminating, however this start time will be set per AppDomain\&. 
+.PP
+Definition at line 381 of file SystemInfo\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,98 @@
+.TH "NHibernate.Cfg.ConfigurationSchema.MappingConfiguration" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cfg.ConfigurationSchema.MappingConfiguration \- 
+.PP
+\fBConfiguration\fP parsed values for a mapping XML node  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IEquatable< MappingConfiguration >\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMappingConfiguration\fP (string file)"
+.br
+.RI "\fIInitializes a new instance of the \fBMappingConfiguration\fP class\&. \fP"
+.ti -1c
+.RI "\fBMappingConfiguration\fP (string assembly, string resource)"
+.br
+.RI "\fIInitializes a new instance of the \fBMappingConfiguration\fP class\&. \fP"
+.ti -1c
+.RI "bool \fBIsEmpty\fP ()"
+.br
+.ti -1c
+.RI "bool \fBEquals\fP (\fBMappingConfiguration\fP other)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBFile\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBAssembly\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBResource\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBConfiguration\fP parsed values for a mapping XML node 
+
+There are 3 possible combinations of mapping attributes 1 - resource and assembly: \fBNHibernate\fP will read the mapping resource from the specified assembly 2 - file only: \fBNHibernate\fP will read the mapping from the file\&. 3 - assembly only: \fBNHibernate\fP will find all the resources ending in hbm\&.xml from the assembly\&. 
+.PP
+Definition at line 15 of file MappingConfiguration\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Cfg\&.ConfigurationSchema\&.MappingConfiguration\&.MappingConfiguration (stringfile)"
+
+.PP
+Initializes a new instance of the \fBMappingConfiguration\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP Mapped file\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP When \fIfile\fP  is null or empty\&.
+.RE
+.PP
+
+.PP
+Definition at line 27 of file MappingConfiguration\&.cs\&.
+.SS "NHibernate\&.Cfg\&.ConfigurationSchema\&.MappingConfiguration\&.MappingConfiguration (stringassembly, stringresource)"
+
+.PP
+Initializes a new instance of the \fBMappingConfiguration\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassembly\fP The assembly name\&.
+.br
+\fIresource\fP The mapped embedded resource\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP When \fIassembly\fP  is null or empty\&.
+.RE
+.PP
+
+.PP
+Definition at line 40 of file MappingConfiguration\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

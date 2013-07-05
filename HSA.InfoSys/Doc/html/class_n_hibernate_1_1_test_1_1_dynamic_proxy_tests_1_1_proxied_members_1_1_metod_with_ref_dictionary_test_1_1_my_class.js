@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_proxied_members_1_1_metod_with_ref_dictionary_test_1_1_my_class =
+[
+    [ "Method", "class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_proxied_members_1_1_metod_with_ref_dictionary_test_1_1_my_class.html#ac0a609adcc06b3e55b034bee6c457c90", null ]
+];

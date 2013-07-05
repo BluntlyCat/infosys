@@ -1,0 +1,284 @@
+.TH "NHibernate.SqlCommand.SqlSimpleSelectBuilder" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.SqlCommand.SqlSimpleSelectBuilder \- 
+.PP
+Summary description for \fBSqlSimpleSelectBuilder\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.SqlCommand\&.SqlBaseBuilder\fP, and \fBNHibernate\&.SqlCommand\&.ISqlStringBuilder\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlSimpleSelectBuilder\fP (\fBDialect\&.Dialect\fP dialect, \fBIMapping\fP factory)"
+.br
+.ti -1c
+.RI "\fBSqlSimpleSelectBuilder\fP \fBSetTableName\fP (string tableName)"
+.br
+.ti -1c
+.RI "\fBSqlSimpleSelectBuilder\fP \fBAddColumn\fP (string columnName)"
+.br
+.RI "\fIAdds a columnName to the SELECT fragment\&. \fP"
+.ti -1c
+.RI "\fBSqlSimpleSelectBuilder\fP \fBAddColumn\fP (string columnName, string alias)"
+.br
+.RI "\fIAdds a columnName and its \fBAlias\fP to the SELECT fragment\&. \fP"
+.ti -1c
+.RI "\fBSqlSimpleSelectBuilder\fP \fBAddColumns\fP (string[] columnNames)"
+.br
+.RI "\fIAdds an array of columnNames to the SELECT fragment\&. \fP"
+.ti -1c
+.RI "\fBSqlSimpleSelectBuilder\fP \fBAddColumns\fP (string[] columnNames, string[] aliases)"
+.br
+.RI "\fIAdds an array of columnNames with their Aliases to the SELECT fragment\&. \fP"
+.ti -1c
+.RI "\fBSqlSimpleSelectBuilder\fP \fBAddColumns\fP (string[] columns, string[] aliases, bool[] ignore)"
+.br
+.ti -1c
+.RI "virtual \fBSqlSimpleSelectBuilder\fP \fBSetLockMode\fP (\fBLockMode\fP lockMode)"
+.br
+.ti -1c
+.RI "string \fBGetAlias\fP (string columnName)"
+.br
+.RI "\fIGets the \fBAlias\fP that should be used for the column \fP"
+.ti -1c
+.RI "\fBSqlSimpleSelectBuilder\fP \fBSetIdentityColumn\fP (string[] columnNames, \fBIType\fP identityType)"
+.br
+.RI "\fISets the IdentityColumn for the \fCSELECT\fP sql to use\&. \fP"
+.ti -1c
+.RI "\fBSqlSimpleSelectBuilder\fP \fBSetVersionColumn\fP (string[] columnNames, \fBIVersionType\fP versionType)"
+.br
+.RI "\fISets the VersionColumn for the \fCSELECT\fP sql to use\&. \fP"
+.ti -1c
+.RI "\fBSqlSimpleSelectBuilder\fP \fBSetOrderBy\fP (string orderBy)"
+.br
+.RI "\fISet the Order By fragment of the Select Command \fP"
+.ti -1c
+.RI "\fBSqlSimpleSelectBuilder\fP \fBAddWhereFragment\fP (string[] columnNames, \fBIType\fP type, string op)"
+.br
+.RI "\fIAdds the columns for the \fBType\fP to the WhereFragment \fP"
+.ti -1c
+.RI "virtual \fBSqlSimpleSelectBuilder\fP \fBSetComment\fP (System\&.String comment)"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBToSqlString\fP ()"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Summary description for \fBSqlSimpleSelectBuilder\fP\&. 
+
+
+.PP
+Definition at line 11 of file SqlSimpleSelectBuilder\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSqlSimpleSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSimpleSelectBuilder\&.AddColumn (stringcolumnName)"
+
+.PP
+Adds a columnName to the SELECT fragment\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnName\fP The name of the column to add\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlSimpleSelectBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 47 of file SqlSimpleSelectBuilder\&.cs\&.
+.SS "\fBSqlSimpleSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSimpleSelectBuilder\&.AddColumn (stringcolumnName, stringalias)"
+
+.PP
+Adds a columnName and its \fBAlias\fP to the SELECT fragment\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnName\fP The name of the column to add\&.
+.br
+\fIalias\fP The alias to use for the column
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlSimpleSelectBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 59 of file SqlSimpleSelectBuilder\&.cs\&.
+.SS "\fBSqlSimpleSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSimpleSelectBuilder\&.AddColumns (string[]columnNames)"
+
+.PP
+Adds an array of columnNames to the SELECT fragment\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnNames\fP The names of the columns to add\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlSimpleSelectBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 71 of file SqlSimpleSelectBuilder\&.cs\&.
+.SS "\fBSqlSimpleSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSimpleSelectBuilder\&.AddColumns (string[]columnNames, string[]aliases)"
+
+.PP
+Adds an array of columnNames with their Aliases to the SELECT fragment\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnNames\fP The names of the columns to add\&.
+.br
+\fIaliases\fP The aliases to use for the columns
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlSimpleSelectBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 87 of file SqlSimpleSelectBuilder\&.cs\&.
+.SS "\fBSqlSimpleSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSimpleSelectBuilder\&.AddWhereFragment (string[]columnNames, \fBIType\fPtype, stringop)"
+
+.PP
+Adds the columns for the \fBType\fP to the WhereFragment 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnNames\fP The names of the columns to add\&.
+.br
+\fItype\fP The IType of the property\&.
+.br
+\fIop\fP The operator to put between the column name and value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlSimpleSelectBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 167 of file SqlSimpleSelectBuilder\&.cs\&.
+.SS "string NHibernate\&.SqlCommand\&.SqlSimpleSelectBuilder\&.GetAlias (stringcolumnName)"
+
+.PP
+Gets the \fBAlias\fP that should be used for the column 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnName\fP The name of the column to get the \fBAlias\fP for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBAlias\fP if one exists, null otherwise
+.RE
+.PP
+
+.PP
+Definition at line 118 of file SqlSimpleSelectBuilder\&.cs\&.
+.SS "\fBSqlSimpleSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSimpleSelectBuilder\&.SetIdentityColumn (string[]columnNames, \fBIType\fPidentityType)"
+
+.PP
+Sets the IdentityColumn for the \fCSELECT\fP sql to use\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnNames\fP An array of the column names for the Property
+.br
+\fIidentityType\fP The IType of the Identity Property\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlSimpleSelectBuilder\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 131 of file SqlSimpleSelectBuilder\&.cs\&.
+.SS "\fBSqlSimpleSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSimpleSelectBuilder\&.SetOrderBy (stringorderBy)"
+
+.PP
+Set the Order By fragment of the Select Command 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIorderBy\fP The OrderBy fragment\&. It should include the SQL 'ORDER BY'
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlSimpleSelectBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 154 of file SqlSimpleSelectBuilder\&.cs\&.
+.SS "\fBSqlSimpleSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSimpleSelectBuilder\&.SetTableName (stringtableName)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fItableName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 35 of file SqlSimpleSelectBuilder\&.cs\&.
+.SS "\fBSqlSimpleSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSimpleSelectBuilder\&.SetVersionColumn (string[]columnNames, \fBIVersionType\fPversionType)"
+
+.PP
+Sets the VersionColumn for the \fCSELECT\fP sql to use\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnNames\fP An array of the column names for the Property
+.br
+\fIversionType\fP The IVersionType of the Version Property\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlSimpleSelectBuilder\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 143 of file SqlSimpleSelectBuilder\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.SqlCommand\&.SqlSimpleSelectBuilder\&.ToSqlString ()"
+
+.PP
+
+.PP
+Implements \fBNHibernate\&.SqlCommand\&.ISqlStringBuilder\fP\&.
+.PP
+Definition at line 182 of file SqlSimpleSelectBuilder\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

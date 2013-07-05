@@ -1,0 +1,301 @@
+.TH "NHibernate.Type.CompositeCustomType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.CompositeCustomType \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.AbstractType\fP, and \fBNHibernate\&.Type\&.IAbstractComponentType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCompositeCustomType\fP (System\&.Type userTypeClass, IDictionary< string, string > parameters)"
+.br
+.ti -1c
+.RI "virtual object[] \fBGetPropertyValues\fP (object component, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGet the values of the component properties of a component instance \fP"
+.ti -1c
+.RI "virtual object[] \fBGetPropertyValues\fP (object component, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIOptional Operation \fP"
+.ti -1c
+.RI "virtual void \fBSetPropertyValues\fP (object component, object[] values, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIOptional operation \fP"
+.ti -1c
+.RI "virtual object \fBGetPropertyValue\fP (object component, int i, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "object \fBGetPropertyValue\fP (object component, int i)"
+.br
+.ti -1c
+.RI "virtual \fBCascadeStyle\fP \fBGetCascadeStyle\fP (int i)"
+.br
+.ti -1c
+.RI "virtual \fBFetchMode\fP \fBGetFetchMode\fP (int i)"
+.br
+.ti -1c
+.RI "override object \fBAssemble\fP (object cached, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIReconstructs the object from its cached 'disassembled' state\&. \fP"
+.ti -1c
+.RI "override object \fBDeepCopy\fP (object value, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "override object \fBDisassemble\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIDisassembles the object into a cacheable representation\&. \fP"
+.ti -1c
+.RI "override int \fBGetColumnSpan\fP (\fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "override object \fBNullSafeGet\fP (IDataReader rs, string name, \fBISessionImplementor\fP session, object owner)"
+.br
+.ti -1c
+.RI "override object \fBNullSafeGet\fP (IDataReader rs, string[] names, \fBISessionImplementor\fP session, object owner)"
+.br
+.ti -1c
+.RI "override void \fBNullSafeSet\fP (IDbCommand st, object value, int index, bool[] settable, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override void \fBNullSafeSet\fP (IDbCommand cmd, object value, int index, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override \fBSqlType\fP[] \fBSqlTypes\fP (\fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "override string \fBToLoggableString\fP (object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBIsDirty\fP (object old, object current, bool[] checkable, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override object \fBReplace\fP (object original, object current, \fBISessionImplementor\fP session, object owner, IDictionary copiedAlready)"
+.br
+.ti -1c
+.RI "override object \fBFromXMLNode\fP (XmlNode xml, \fBIMapping\fP factory)"
+.br
+.RI "\fIParse the XML representation of an instance\&.\fP"
+.ti -1c
+.RI "override bool \fBIsEqual\fP (object x, object y, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fICompare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsMethodOf\fP (MethodBase method)"
+.br
+.ti -1c
+.RI "override void \fBSetToXMLNode\fP (XmlNode node, object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIA representation of the value to be embedded in an XML element\&. \fP"
+.ti -1c
+.RI "override bool[] \fBToColumnNullness\fP (object value, \fBIMapping\fP mapping)"
+.br
+.RI "\fIGiven an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBICompositeUserType\fP \fBUserType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBIType\fP[] \fBSubtypes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string[] \fBPropertyNames\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsEmbedded\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsComponentType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsMutable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBPropertyNullability\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 16 of file CompositeCustomType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.CompositeCustomType\&.Assemble (objectcached, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Reconstructs the object from its cached 'disassembled' state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcached\fP The disassembled state from the cache
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP The parent Entity object is not used by this method
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The assembled object\&.
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 126 of file CompositeCustomType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.CompositeCustomType\&.Disassemble (objectvalue, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Disassembles the object into a cacheable representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to disassemble\&.
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP optional parent entity object (needed for collections) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The disassembled, deep cloned state of the object
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 136 of file CompositeCustomType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.CompositeCustomType\&.FromXMLNode (XmlNodexml, \fBIMapping\fPfactory)\fC [virtual]\fP"
+
+.PP
+Parse the XML representation of an instance\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an instance of the type 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 239 of file CompositeCustomType\&.cs\&.
+.SS "virtual object [] NHibernate\&.Type\&.CompositeCustomType\&.GetPropertyValues (objectcomponent, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Get the values of the component properties of a component instance 
+.PP
+Implements \fBNHibernate\&.Type\&.IAbstractComponentType\fP\&.
+.PP
+Definition at line 74 of file CompositeCustomType\&.cs\&.
+.SS "virtual object [] NHibernate\&.Type\&.CompositeCustomType\&.GetPropertyValues (objectcomponent, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Optional Operation 
+.PP
+Implements \fBNHibernate\&.Type\&.IAbstractComponentType\fP\&.
+.PP
+Definition at line 79 of file CompositeCustomType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.CompositeCustomType\&.IsEqual (objectx, objecty, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Compare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+boolean 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 244 of file CompositeCustomType\&.cs\&.
+.SS "virtual void NHibernate\&.Type\&.CompositeCustomType\&.SetPropertyValues (objectcomponent, object[]values, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Optional operation 
+.PP
+Implements \fBNHibernate\&.Type\&.IAbstractComponentType\fP\&.
+.PP
+Definition at line 90 of file CompositeCustomType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.CompositeCustomType\&.SetToXMLNode (XmlNodenode, objectvalue, \fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+A representation of the value to be embedded in an XML element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInode\fP 
+.br
+\fIvalue\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 254 of file CompositeCustomType\&.cs\&.
+.SS "override bool [] NHibernate\&.Type\&.CompositeCustomType\&.ToColumnNullness (objectvalue, \fBIMapping\fPmapping)\fC [virtual]\fP"
+
+.PP
+Given an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP an instance of the type 
+.br
+\fImapping\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 259 of file CompositeCustomType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

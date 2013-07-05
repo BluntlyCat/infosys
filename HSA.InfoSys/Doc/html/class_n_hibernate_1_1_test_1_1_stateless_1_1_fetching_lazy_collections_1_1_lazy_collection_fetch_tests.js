@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_stateless_1_1_fetching_lazy_collections_1_1_lazy_collection_fetch_tests =
+[
+    [ "GetMappings", "class_n_hibernate_1_1_test_1_1_stateless_1_1_fetching_lazy_collections_1_1_lazy_collection_fetch_tests.html#a944f9cf7b029c64a9e6a5abde8e2f4cc", null ],
+    [ "ShouldWorkLoadingComplexEntities", "class_n_hibernate_1_1_test_1_1_stateless_1_1_fetching_lazy_collections_1_1_lazy_collection_fetch_tests.html#ab0bc0e39fc54c6d872f9d5d1e9076409", null ]
+];

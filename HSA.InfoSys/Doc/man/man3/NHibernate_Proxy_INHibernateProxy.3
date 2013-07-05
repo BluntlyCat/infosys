@@ -1,0 +1,42 @@
+.TH "NHibernate.Proxy.INHibernateProxy" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Proxy.INHibernateProxy \- 
+.PP
+A marker interface so \fBNHibernate\fP can know if it is dealing with an object that is a \fBProxy\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Proxy\&.Map\&.MapProxy\fP\&.
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBILazyInitializer\fP \fBHibernateLazyInitializer\fP\fC [get]\fP"
+.br
+.RI "\fIGet the underlying lazy initialization handler\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A marker interface so \fBNHibernate\fP can know if it is dealing with an object that is a \fBProxy\fP\&. 
+
+This interface should not be implemented by anything other than the Dynamically generated \fBProxy\fP\&. If it is implemented by a class then \fBNHibernate\fP will think that class is a \fBProxy\fP and will not work\&. 
+.PP
+It has to be public scope because the Proxies are created in a separate DLL than \fBNHibernate\fP\&. 
+.PP
+Definition at line 18 of file INHibernateProxy\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBILazyInitializer\fP NHibernate\&.Proxy\&.INHibernateProxy\&.HibernateLazyInitializer\fC [get]\fP"
+
+.PP
+Get the underlying lazy initialization handler\&. 
+.PP
+Definition at line 21 of file INHibernateProxy\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

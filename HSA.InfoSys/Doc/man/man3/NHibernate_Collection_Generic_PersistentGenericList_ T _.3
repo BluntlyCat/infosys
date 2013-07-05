@@ -1,0 +1,80 @@
+.TH "NHibernate.Collection.Generic.PersistentGenericList< T >" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Collection.Generic.PersistentGenericList< T > \- 
+.PP
+A persistent wrapper for an IList{T}  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Collection\&.PersistentList\fP, and IList< T >\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPersistentGenericList\fP (\fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "\fBPersistentGenericList\fP (\fBISessionImplementor\fP session, IList< T > list)"
+.br
+.ti -1c
+.RI "override void \fBBeforeInitialize\fP (\fBICollectionPersister\fP persister, int anticipatedSize)"
+.br
+.RI "\fICalled before any elements are read into the collection, allowing appropriate initializations to occur\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "IList< T > \fBglist\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override object \fBDefaultForType\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A persistent wrapper for an IList{T} 
+
+
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The type of the element the list should hold\&.
+.RE
+.PP
+.PP
+The underlying collection used is a List{T}
+.PP
+Definition at line 18 of file PersistentGenericList\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Collection\&.Generic\&.PersistentGenericList< T >\&.BeforeInitialize (\fBICollectionPersister\fPpersister, intanticipatedSize)\fC [virtual]\fP"
+
+.PP
+Called before any elements are read into the collection, allowing appropriate initializations to occur\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The underlying collection persister\&. 
+.br
+\fIanticipatedSize\fP The anticipated size of the collection after initilization is complete\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 47 of file PersistentGenericList\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

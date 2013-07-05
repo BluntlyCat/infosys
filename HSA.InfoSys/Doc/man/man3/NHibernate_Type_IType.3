@@ -1,0 +1,531 @@
+.TH "NHibernate.Type.IType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.IType \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.ICacheAssembler\fP\&.
+.PP
+Inherited by NHibernate\&.Param\&.DynamicFilterParameterSpecification\&.CollectionOfValuesType, \fBNHibernate\&.Type\&.AbstractType\fP, \fBNHibernate\&.Type\&.IAbstractComponentType\fP, \fBNHibernate\&.Type\&.IAssociationType\fP, \fBNHibernate\&.Type\&.IIdentifierType\fP, and \fBNHibernate\&.Type\&.IVersionType\fP\&.
+.SS "Public Member Functions"
+
+.PP
+.RI "\fB='M:IType\&.SqlTypes']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBSqlType\fP[] \fBSqlTypes\fP (\fBIMapping\fP mapping)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.GetColumnSpan']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "int \fBGetColumnSpan\fP (\fBIMapping\fP mapping)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.IsDirty']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBIsDirty\fP (object old, object current, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "bool \fBIsDirty\fP (object old, object current, bool[] checkable, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "bool \fBIsModified\fP (object oldHydratedState, object currentState, bool[] checkable, \fBISessionImplementor\fP session)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.NullSafeGet(IDataReader, String[], ISessionImplementor, Object)']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "object \fBNullSafeGet\fP (IDataReader rs, string[] names, \fBISessionImplementor\fP session, object owner)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.NullSafeGet(IDataReader, String, ISessionImplementor, Object)']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "object \fBNullSafeGet\fP (IDataReader rs, string name, \fBISessionImplementor\fP session, object owner)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.NullSafeSet(settable)']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "void \fBNullSafeSet\fP (IDbCommand st, object value, int index, bool[] settable, \fBISessionImplementor\fP session)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.NullSafeSet']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "void \fBNullSafeSet\fP (IDbCommand st, object value, int index, \fBISessionImplementor\fP session)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.ToString']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "string \fBToLoggableString\fP (object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.DeepCopy']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "object \fBDeepCopy\fP (object val, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.Hydrate']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "object \fBHydrate\fP (IDataReader rs, string[] names, \fBISessionImplementor\fP session, object owner)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.ResolveIdentifier']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "object \fBResolveIdentifier\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.ti -1c
+.RI "object \fBSemiResolve\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIGiven a hydrated, but unresolved value, return a value that may be used to reconstruct property-ref associations\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.Copy']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "object \fBReplace\fP (object original, object target, \fBISessionImplementor\fP session, object owner, IDictionary copiedAlready)"
+.br
+.ti -1c
+.RI "object \fBReplace\fP (object original, object target, \fBISessionImplementor\fP session, object owner, IDictionary copyCache, \fBForeignKeyDirection\fP foreignKeyDirection)"
+.br
+.RI "\fIDuring merge, replace the existing (target) value in the entity we are merging to with a new (original) value from the detached entity we are merging\&. For immutable objects, or null values, it is safe to simply return the first parameter\&. For mutable objects, it is safe to return a copy of the first parameter\&. For objects with component values, it might make sense to recursively replace component values\&. \fP"
+.ti -1c
+.RI "bool \fBIsSame\fP (object x, object y, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fICompare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state - taking a shortcut for entity references\&. \fP"
+.ti -1c
+.RI "bool \fBIsEqual\fP (object x, object y, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fICompare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. \fP"
+.ti -1c
+.RI "bool \fBIsEqual\fP (object x, object y, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fICompare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. \fP"
+.ti -1c
+.RI "int \fBGetHashCode\fP (object x, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet a hashcode, consistent with persistence 'equality'\fP"
+.ti -1c
+.RI "int \fBGetHashCode\fP (object x, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIGet a hashcode, consistent with persistence 'equality'\fP"
+.ti -1c
+.RI "int \fBCompare\fP (object x, object y, \fBEntityMode\fP?entityMode)"
+.br
+.RI "\fIcompare two instances of the type\fP"
+.ti -1c
+.RI "\fBIType\fP \fBGetSemiResolvedType\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIGet the type of a semi-resolved value\&.\fP"
+.ti -1c
+.RI "void \fBSetToXMLNode\fP (XmlNode node, object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIA representation of the value to be embedded in an XML element\&. \fP"
+.ti -1c
+.RI "object \fBFromXMLNode\fP (XmlNode xml, \fBIMapping\fP factory)"
+.br
+.RI "\fIParse the XML representation of an instance\&.\fP"
+.ti -1c
+.RI "bool[] \fBToColumnNullness\fP (object value, \fBIMapping\fP mapping)"
+.br
+.RI "\fIGiven an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. \fP"
+.in -1c
+.in -1c
+.SS "Properties"
+
+.PP
+.RI "\fB='P:IType\&.Name']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "string \fBName\fP\fC [get]\fP"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='P:IType\&.ReturnedClass']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='P:IType\&.IsMutable']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBIsMutable\fP\fC [get]\fP"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='P:IType\&.IsAssociationType']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBIsAssociationType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsXMLElement\fP\fC [get]\fP"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='P:IType\&.IsCollectionType']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBIsCollectionType\fP\fC [get]\fP"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='P:IType\&.IsComponentType']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBIsComponentType\fP\fC [get]\fP"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='P:IType\&.IsEntityType']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBIsEntityType\fP\fC [get]\fP"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='P:IType\&.IsAnyType']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "bool \fBIsAnyType\fP\fC [get]\fP"
+.br
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 12 of file IType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int NHibernate\&.Type\&.IType\&.Compare (objectx, objecty, \fBEntityMode\fP?entityMode)"
+
+.PP
+compare two instances of the type
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.EntityType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.AnyType\fP, \fBNHibernate\&.Type\&.AbstractType\fP, and \fBNHibernate\&.Type\&.AbstractBinaryType\fP\&.
+.SS "object NHibernate\&.Type\&.IType\&.FromXMLNode (XmlNodexml, \fBIMapping\fPfactory)"
+
+.PP
+Parse the XML representation of an instance\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an instance of the type 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.NullableType\fP, \fBNHibernate\&.Type\&.AbstractType\fP, \fBNHibernate\&.Type\&.CompositeCustomType\fP, \fBNHibernate\&.Type\&.EntityType\fP, \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.AnyType\fP, \fBNHibernate\&.Type\&.ClassMetaType\fP, and \fBNHibernate\&.Type\&.MetaType\fP\&.
+.SS "int NHibernate\&.Type\&.IType\&.GetHashCode (objectx, \fBEntityMode\fPentityMode)"
+
+.PP
+Get a hashcode, consistent with persistence 'equality'
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.AbstractType\fP, \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.DateTimeType\fP, \fBNHibernate\&.Type\&.AbstractBinaryType\fP, \fBNHibernate\&.Type\&.TimeType\fP, \fBNHibernate\&.Type\&.DateType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, and \fBNHibernate\&.Type\&.AbstractDateTimeSpecificKindType\fP\&.
+.SS "int NHibernate\&.Type\&.IType\&.GetHashCode (objectx, \fBEntityMode\fPentityMode, \fBISessionFactoryImplementor\fPfactory)"
+
+.PP
+Get a hashcode, consistent with persistence 'equality'
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIentityMode\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.EntityType\fP, \fBNHibernate\&.Type\&.AbstractType\fP, and \fBNHibernate\&.Type\&.ComponentType\fP\&.
+.SS "\fBIType\fP NHibernate\&.Type\&.IType\&.GetSemiResolvedType (\fBISessionFactoryImplementor\fPfactory)"
+
+.PP
+Get the type of a semi-resolved value\&.
+.PP
+Implemented in \fBNHibernate\&.Type\&.EntityType\fP, and \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.SS "bool NHibernate\&.Type\&.IType\&.IsEqual (objectx, objecty, \fBEntityMode\fPentityMode)"
+
+.PP
+Compare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+boolean 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.NullableType\fP, \fBNHibernate\&.Type\&.CompositeCustomType\fP, \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.AbstractType\fP, and \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.SS "bool NHibernate\&.Type\&.IType\&.IsEqual (objectx, objecty, \fBEntityMode\fPentityMode, \fBISessionFactoryImplementor\fPfactory)"
+
+.PP
+Compare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+boolean 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.AbstractType\fP, and \fBNHibernate\&.Type\&.EntityType\fP\&.
+.SS "bool NHibernate\&.Type\&.IType\&.IsSame (objectx, objecty, \fBEntityMode\fPentityMode)"
+
+.PP
+Compare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state - taking a shortcut for entity references\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+boolean 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.AnyType\fP, \fBNHibernate\&.Type\&.AbstractType\fP, and \fBNHibernate\&.Type\&.EntityType\fP\&.
+.SS "object NHibernate\&.Type\&.IType\&.Replace (objectoriginal, objecttarget, \fBISessionImplementor\fPsession, objectowner, IDictionarycopyCache, \fBForeignKeyDirection\fPforeignKeyDirection)"
+
+.PP
+During merge, replace the existing (target) value in the entity we are merging to with a new (original) value from the detached entity we are merging\&. For immutable objects, or null values, it is safe to simply return the first parameter\&. For mutable objects, it is safe to return a copy of the first parameter\&. For objects with component values, it might make sense to recursively replace component values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoriginal\fP the value from the detached entity being merged 
+.br
+\fItarget\fP the value in the managed entity 
+.br
+\fIsession\fP 
+.br
+\fIowner\fP 
+.br
+\fIcopyCache\fP 
+.br
+\fIforeignKeyDirection\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the value to be merged 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.ComponentType\fP, and \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.SS "object NHibernate\&.Type\&.IType\&.SemiResolve (objectvalue, \fBISessionImplementor\fPsession, objectowner)"
+
+.PP
+Given a hydrated, but unresolved value, return a value that may be used to reconstruct property-ref associations\&. 
+.PP
+Implemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.AbstractType\fP, and \fBNHibernate\&.Type\&.AnyType\fP\&.
+.SS "void NHibernate\&.Type\&.IType\&.SetToXMLNode (XmlNodenode, objectvalue, \fBISessionFactoryImplementor\fPfactory)"
+
+.PP
+A representation of the value to be embedded in an XML element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInode\fP 
+.br
+\fIvalue\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.EntityType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.AnyType\fP, \fBNHibernate\&.Type\&.NullableType\fP, \fBNHibernate\&.Type\&.AbstractType\fP, \fBNHibernate\&.Type\&.CompositeCustomType\fP, \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.ClassMetaType\fP, and \fBNHibernate\&.Type\&.MetaType\fP\&.
+.SS "bool [] NHibernate\&.Type\&.IType\&.ToColumnNullness (objectvalue, \fBIMapping\fPmapping)"
+
+.PP
+Given an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP an instance of the type 
+.br
+\fImapping\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.AnyType\fP, \fBNHibernate\&.Type\&.NullableType\fP, \fBNHibernate\&.Type\&.AbstractType\fP, \fBNHibernate\&.Type\&.CompositeCustomType\fP, \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.ManyToOneType\fP, \fBNHibernate\&.Type\&.OneToOneType\fP, \fBNHibernate\&.Type\&.ClassMetaType\fP, and \fBNHibernate\&.Type\&.MetaType\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

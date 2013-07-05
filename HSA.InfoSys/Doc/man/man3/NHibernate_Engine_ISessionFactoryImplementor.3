@@ -1,0 +1,420 @@
+.TH "NHibernate.Engine.ISessionFactoryImplementor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.ISessionFactoryImplementor \- 
+.PP
+Defines the internal contract between the \fC\fBISessionFactory\fP\fP and other parts of \fBNHibernate\fP such as implementors of \fCIType\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Engine\&.IMapping\fP, and \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Impl\&.SessionFactoryImpl\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "IDictionary< string, \fBICache\fP > \fBGetAllSecondLevelCacheRegions\fP ()"
+.br
+.ti -1c
+.RI "\fBIEntityPersister\fP \fBGetEntityPersister\fP (string entityName)"
+.br
+.RI "\fIGet the persister for the named entity \fP"
+.ti -1c
+.RI "\fBICollectionPersister\fP \fBGetCollectionPersister\fP (string role)"
+.br
+.RI "\fIGet the persister object for a collection role \fP"
+.ti -1c
+.RI "\fBIType\fP[] \fBGetReturnTypes\fP (string queryString)"
+.br
+.RI "\fIGet the return types of a query \fP"
+.ti -1c
+.RI "string[] \fBGetReturnAliases\fP (string queryString)"
+.br
+.RI "\fIGet the return aliases of a query\fP"
+.ti -1c
+.RI "string[] \fBGetImplementors\fP (string entityOrClassName)"
+.br
+.RI "\fIGet the names of all persistent classes that implement/extend the given interface/class \fP"
+.ti -1c
+.RI "string \fBGetImportedClassName\fP (string name)"
+.br
+.RI "\fIGet a class name, using query language imports \fP"
+.ti -1c
+.RI "\fBIQueryCache\fP \fBGetQueryCache\fP (string regionName)"
+.br
+.RI "\fIGet a particular named query cache, or the default cache \fP"
+.ti -1c
+.RI "\fBNamedQueryDefinition\fP \fBGetNamedQuery\fP (string queryName)"
+.br
+.RI "\fIGets the \fChql\fP query identified by the \fCname\fP\&. \fP"
+.ti -1c
+.RI "\fBNamedSQLQueryDefinition\fP \fBGetNamedSQLQuery\fP (string queryName)"
+.br
+.ti -1c
+.RI "\fBResultSetMappingDefinition\fP \fBGetResultSetMapping\fP (string resultSetRef)"
+.br
+.ti -1c
+.RI "\fBIIdentifierGenerator\fP \fBGetIdentifierGenerator\fP (string rootEntityName)"
+.br
+.RI "\fIGet the identifier generator for the hierarchy \fP"
+.ti -1c
+.RI "\fBICache\fP \fBGetSecondLevelCacheRegion\fP (string regionName)"
+.br
+.RI "\fIGet a named second-level cache region\fP"
+.ti -1c
+.RI "\fBISession\fP \fBOpenSession\fP (IDbConnection connection, bool flushBeforeCompletionEnabled, bool autoCloseSessionEnabled, ConnectionReleaseMode connectionReleaseMode)"
+.br
+.RI "\fIOpen a session conforming to the given parameters\&. Used mainly for current session processing\&. \fP"
+.ti -1c
+.RI "ISet< string > \fBGetCollectionRolesByEntityParticipant\fP (string entityName)"
+.br
+.RI "\fIRetrieves a set of all the collection roles in which the given entity is a participant, as either an index or an element\&. \fP"
+.ti -1c
+.RI "\fBIEntityPersister\fP \fBTryGetEntityPersister\fP (string entityName)"
+.br
+.RI "\fIGet the persister for the named entity \fP"
+.ti -1c
+.RI "string \fBTryGetGuessEntityName\fP (System\&.Type implementor)"
+.br
+.RI "\fIGet the entity-name for a given mapped class\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBDialect\&.Dialect\fP \fBDialect\fP\fC [get]\fP"
+.br
+.RI "\fIGet the SQL \fBNHibernate\&.Dialect\&.Dialect\fP\&. \fP"
+.ti -1c
+.RI "\fBIInterceptor\fP \fBInterceptor\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBQueryPlanCache\fP \fBQueryPlanCache\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIConnectionProvider\fP \fBConnectionProvider\fP\fC [get]\fP"
+.br
+.RI "\fIGet the IConnectionProvider used\&. \fP"
+.ti -1c
+.RI "\fBITransactionFactory\fP \fBTransactionFactory\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBUpdateTimestampsCache\fP \fBUpdateTimestampsCache\fP\fC [get]\fP"
+.br
+.RI "\fIThe cache of table update timestamps\fP"
+.ti -1c
+.RI "\fBIStatisticsImplementor\fP \fBStatisticsImplementor\fP\fC [get]\fP"
+.br
+.RI "\fIStatistics SPI\fP"
+.ti -1c
+.RI "\fBISQLExceptionConverter\fP \fBSQLExceptionConverter\fP\fC [get]\fP"
+.br
+.RI "\fIRetrieves the SQLExceptionConverter in effect for this SessionFactory\&. \fP"
+.ti -1c
+.RI "\fBSettings\fP \fBSettings\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIEntityNotFoundDelegate\fP \fBEntityNotFoundDelegate\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSQLFunctionRegistry\fP \fBSQLFunctionRegistry\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIQueryCache\fP \fBQueryCache\fP\fC [get]\fP"
+.br
+.RI "\fIGet the default query cache \fP"
+.ti -1c
+.RI "\fBICurrentSessionContext\fP \fBCurrentSessionContext\fP\fC [get]\fP"
+.br
+.RI "\fIGets the ICurrentSessionContext instance attached to this session factory\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the internal contract between the \fC\fBISessionFactory\fP\fP and other parts of \fBNHibernate\fP such as implementors of \fCIType\fP\&. 
+
+
+.PP
+Definition at line 24 of file ISessionFactoryImplementor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBICollectionPersister\fP NHibernate\&.Engine\&.ISessionFactoryImplementor\&.GetCollectionPersister (stringrole)"
+
+.PP
+Get the persister object for a collection role 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionFactoryImpl\fP\&.
+.SS "ISet<string> NHibernate\&.Engine\&.ISessionFactoryImplementor\&.GetCollectionRolesByEntityParticipant (stringentityName)"
+
+.PP
+Retrieves a set of all the collection roles in which the given entity is a participant, as either an index or an element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The entity name for which to get the collection roles\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Set of all the collection roles in which the given entityName participates\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionFactoryImpl\fP\&.
+.SS "\fBIEntityPersister\fP NHibernate\&.Engine\&.ISessionFactoryImplementor\&.GetEntityPersister (stringentityName)"
+
+.PP
+Get the persister for the named entity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The name of the entity that is persisted\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The IEntityPersister for the entity\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBMappingException\fP\fP If no IEntityPersister can be found\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionFactoryImpl\fP\&.
+.SS "\fBIIdentifierGenerator\fP NHibernate\&.Engine\&.ISessionFactoryImplementor\&.GetIdentifierGenerator (stringrootEntityName)"
+
+.PP
+Get the identifier generator for the hierarchy 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionFactoryImpl\fP\&.
+.SS "string [] NHibernate\&.Engine\&.ISessionFactoryImplementor\&.GetImplementors (stringentityOrClassName)"
+
+.PP
+Get the names of all persistent classes that implement/extend the given interface/class 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityOrClassName\fP The entity-name, the class name or full name, the imported class name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+All implementors class names\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionFactoryImpl\fP\&.
+.SS "string NHibernate\&.Engine\&.ISessionFactoryImplementor\&.GetImportedClassName (stringname)"
+
+.PP
+Get a class name, using query language imports 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionFactoryImpl\fP\&.
+.SS "\fBNamedQueryDefinition\fP NHibernate\&.Engine\&.ISessionFactoryImplementor\&.GetNamedQuery (stringqueryName)"
+
+.PP
+Gets the \fChql\fP query identified by the \fCname\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryName\fP The name of that identifies the query\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fChql\fP query or  if the named query does not exist\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionFactoryImpl\fP\&.
+.SS "\fBIQueryCache\fP NHibernate\&.Engine\&.ISessionFactoryImplementor\&.GetQueryCache (stringregionName)"
+
+.PP
+Get a particular named query cache, or the default cache 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIregionName\fP the name of the cache region, or null for the default query cache
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the existing cache, or a newly created cache if none by that region name
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionFactoryImpl\fP\&.
+.SS "string [] NHibernate\&.Engine\&.ISessionFactoryImplementor\&.GetReturnAliases (stringqueryString)"
+
+.PP
+Get the return aliases of a query
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionFactoryImpl\fP\&.
+.SS "\fBIType\fP [] NHibernate\&.Engine\&.ISessionFactoryImplementor\&.GetReturnTypes (stringqueryString)"
+
+.PP
+Get the return types of a query 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryString\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.SS "\fBICache\fP NHibernate\&.Engine\&.ISessionFactoryImplementor\&.GetSecondLevelCacheRegion (stringregionName)"
+
+.PP
+Get a named second-level cache region
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionFactoryImpl\fP\&.
+.SS "\fBISession\fP NHibernate\&.Engine\&.ISessionFactoryImplementor\&.OpenSession (IDbConnectionconnection, boolflushBeforeCompletionEnabled, boolautoCloseSessionEnabled, ConnectionReleaseModeconnectionReleaseMode)"
+
+.PP
+Open a session conforming to the given parameters\&. Used mainly for current session processing\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnection\fP The external ado\&.net connection to use, if one (i\&.e\&., optional)\&.
+.br
+\fIflushBeforeCompletionEnabled\fP Should the session be auto-flushed prior to transaction completion? 
+.br
+\fIautoCloseSessionEnabled\fP Should the session be auto-closed after transaction completion? 
+.br
+\fIconnectionReleaseMode\fP The release mode for managed jdbc connections\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An appropriate session\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionFactoryImpl\fP\&.
+.SS "\fBIEntityPersister\fP NHibernate\&.Engine\&.ISessionFactoryImplementor\&.TryGetEntityPersister (stringentityName)"
+
+.PP
+Get the persister for the named entity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The name of the entity that is persisted\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The IEntityPersister for the entity or  is the name was not found\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionFactoryImpl\fP\&.
+.SS "string NHibernate\&.Engine\&.ISessionFactoryImplementor\&.TryGetGuessEntityName (System\&.Typeimplementor)"
+
+.PP
+Get the entity-name for a given mapped class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIimplementor\fP the mapped class
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the enntity name where available or null
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionFactoryImpl\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBIConnectionProvider\fP NHibernate\&.Engine\&.ISessionFactoryImplementor\&.ConnectionProvider\fC [get]\fP"
+
+.PP
+Get the IConnectionProvider used\&. 
+.PP
+Definition at line 38 of file ISessionFactoryImplementor\&.cs\&.
+.SS "\fBICurrentSessionContext\fP NHibernate\&.Engine\&.ISessionFactoryImplementor\&.CurrentSessionContext\fC [get]\fP"
+
+.PP
+Gets the ICurrentSessionContext instance attached to this session factory\&. 
+.PP
+Definition at line 168 of file ISessionFactoryImplementor\&.cs\&.
+.SS "\fBDialect\&.Dialect\fP NHibernate\&.Engine\&.ISessionFactoryImplementor\&.Dialect\fC [get]\fP"
+
+.PP
+Get the SQL \fBNHibernate\&.Dialect\&.Dialect\fP\&. 
+.PP
+Definition at line 29 of file ISessionFactoryImplementor\&.cs\&.
+.SS "\fBIQueryCache\fP NHibernate\&.Engine\&.ISessionFactoryImplementor\&.QueryCache\fC [get]\fP"
+
+.PP
+Get the default query cache 
+.PP
+Definition at line 102 of file ISessionFactoryImplementor\&.cs\&.
+.SS "\fBISQLExceptionConverter\fP NHibernate\&.Engine\&.ISessionFactoryImplementor\&.SQLExceptionConverter\fC [get]\fP"
+
+.PP
+Retrieves the SQLExceptionConverter in effect for this SessionFactory\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The SQLExceptionConverter for this SessionFactory\&. 
+.RE
+.PP
+
+.PP
+Definition at line 50 of file ISessionFactoryImplementor\&.cs\&.
+.SS "\fBIStatisticsImplementor\fP NHibernate\&.Engine\&.ISessionFactoryImplementor\&.StatisticsImplementor\fC [get]\fP"
+
+.PP
+Statistics SPI
+.PP
+Definition at line 46 of file ISessionFactoryImplementor\&.cs\&.
+.SS "\fBUpdateTimestampsCache\fP NHibernate\&.Engine\&.ISessionFactoryImplementor\&.UpdateTimestampsCache\fC [get]\fP"
+
+.PP
+The cache of table update timestamps
+.PP
+Definition at line 43 of file ISessionFactoryImplementor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

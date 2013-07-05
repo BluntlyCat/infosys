@@ -1,0 +1,274 @@
+.TH "NHibernate.Hql.Ast.HqlTreeBuilder" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.HqlTreeBuilder \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBHqlQuery\fP \fBQuery\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlQuery\fP \fBQuery\fP (\fBHqlSelectFrom\fP selectFrom)"
+.br
+.ti -1c
+.RI "\fBHqlQuery\fP \fBQuery\fP (\fBHqlSelectFrom\fP selectFrom, \fBHqlWhere\fP where)"
+.br
+.ti -1c
+.RI "\fBHqlTreeNode\fP \fBQuery\fP (\fBHqlSelectFrom\fP selectFrom, \fBHqlWhere\fP where, \fBHqlOrderBy\fP orderBy)"
+.br
+.ti -1c
+.RI "\fBHqlSelectFrom\fP \fBSelectFrom\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSelectFrom\fP \fBSelectFrom\fP (\fBHqlSelect\fP select)"
+.br
+.ti -1c
+.RI "\fBHqlSelectFrom\fP \fBSelectFrom\fP (\fBHqlFrom\fP @from, \fBHqlSelect\fP select)"
+.br
+.ti -1c
+.RI "\fBHqlSelectFrom\fP \fBSelectFrom\fP (\fBHqlFrom\fP @from)"
+.br
+.ti -1c
+.RI "\fBHqlFrom\fP \fBFrom\fP (\fBHqlRange\fP range)"
+.br
+.ti -1c
+.RI "\fBHqlFrom\fP \fBFrom\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlRange\fP \fBRange\fP (\fBHqlIdent\fP ident)"
+.br
+.ti -1c
+.RI "\fBHqlRange\fP \fBRange\fP (\fBHqlTreeNode\fP ident, \fBHqlAlias\fP alias)"
+.br
+.ti -1c
+.RI "\fBHqlIdent\fP \fBIdent\fP (string ident)"
+.br
+.ti -1c
+.RI "\fBHqlIdent\fP \fBIdent\fP (System\&.Type type)"
+.br
+.ti -1c
+.RI "\fBHqlAlias\fP \fBAlias\fP (string alias)"
+.br
+.ti -1c
+.RI "\fBHqlEquality\fP \fBEquality\fP (\fBHqlExpression\fP lhs, \fBHqlExpression\fP rhs)"
+.br
+.ti -1c
+.RI "\fBHqlBooleanAnd\fP \fBBooleanAnd\fP (\fBHqlBooleanExpression\fP lhs, \fBHqlBooleanExpression\fP rhs)"
+.br
+.ti -1c
+.RI "\fBHqlBooleanOr\fP \fBBooleanOr\fP (\fBHqlBooleanExpression\fP lhs, \fBHqlBooleanExpression\fP rhs)"
+.br
+.ti -1c
+.RI "\fBHqlAdd\fP \fBAdd\fP (\fBHqlExpression\fP lhs, \fBHqlExpression\fP rhs)"
+.br
+.ti -1c
+.RI "\fBHqlSubtract\fP \fBSubtract\fP (\fBHqlExpression\fP lhs, \fBHqlExpression\fP rhs)"
+.br
+.ti -1c
+.RI "\fBHqlMultiplty\fP \fBMultiply\fP (\fBHqlExpression\fP lhs, \fBHqlExpression\fP rhs)"
+.br
+.ti -1c
+.RI "\fBHqlDivide\fP \fBDivide\fP (\fBHqlExpression\fP lhs, \fBHqlExpression\fP rhs)"
+.br
+.ti -1c
+.RI "\fBHqlDot\fP \fBDot\fP (\fBHqlExpression\fP lhs, \fBHqlExpression\fP rhs)"
+.br
+.ti -1c
+.RI "\fBHqlParameter\fP \fBParameter\fP (string name)"
+.br
+.ti -1c
+.RI "\fBHqlWhere\fP \fBWhere\fP (\fBHqlExpression\fP expression)"
+.br
+.ti -1c
+.RI "\fBHqlWith\fP \fBWith\fP (\fBHqlExpression\fP expression)"
+.br
+.ti -1c
+.RI "\fBHqlHaving\fP \fBHaving\fP (\fBHqlExpression\fP expression)"
+.br
+.ti -1c
+.RI "\fBHqlConstant\fP \fBConstant\fP (object value)"
+.br
+.ti -1c
+.RI "\fBHqlOrderBy\fP \fBOrderBy\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlSkip\fP \fBSkip\fP (\fBHqlExpression\fP parameter)"
+.br
+.ti -1c
+.RI "\fBHqlTake\fP \fBTake\fP (\fBHqlExpression\fP parameter)"
+.br
+.ti -1c
+.RI "\fBHqlSelect\fP \fBSelect\fP (\fBHqlExpression\fP expression)"
+.br
+.ti -1c
+.RI "\fBHqlSelect\fP \fBSelect\fP (params \fBHqlExpression\fP[] expression)"
+.br
+.ti -1c
+.RI "\fBHqlSelect\fP \fBSelect\fP (IEnumerable< \fBHqlExpression\fP > expressions)"
+.br
+.ti -1c
+.RI "\fBHqlCase\fP \fBCase\fP (\fBHqlWhen\fP[] whenClauses)"
+.br
+.ti -1c
+.RI "\fBHqlCase\fP \fBCase\fP (\fBHqlWhen\fP[] whenClauses, \fBHqlExpression\fP ifFalse)"
+.br
+.ti -1c
+.RI "\fBHqlWhen\fP \fBWhen\fP (\fBHqlExpression\fP predicate, \fBHqlExpression\fP ifTrue)"
+.br
+.ti -1c
+.RI "\fBHqlElse\fP \fBElse\fP (\fBHqlExpression\fP ifFalse)"
+.br
+.ti -1c
+.RI "\fBHqlInequality\fP \fBInequality\fP (\fBHqlExpression\fP lhs, \fBHqlExpression\fP rhs)"
+.br
+.ti -1c
+.RI "\fBHqlLessThan\fP \fBLessThan\fP (\fBHqlExpression\fP lhs, \fBHqlExpression\fP rhs)"
+.br
+.ti -1c
+.RI "\fBHqlLessThanOrEqual\fP \fBLessThanOrEqual\fP (\fBHqlExpression\fP lhs, \fBHqlExpression\fP rhs)"
+.br
+.ti -1c
+.RI "\fBHqlGreaterThan\fP \fBGreaterThan\fP (\fBHqlExpression\fP lhs, \fBHqlExpression\fP rhs)"
+.br
+.ti -1c
+.RI "\fBHqlGreaterThanOrEqual\fP \fBGreaterThanOrEqual\fP (\fBHqlExpression\fP lhs, \fBHqlExpression\fP rhs)"
+.br
+.ti -1c
+.RI "\fBHqlCount\fP \fBCount\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlCount\fP \fBCount\fP (\fBHqlExpression\fP child)"
+.br
+.ti -1c
+.RI "\fBHqlRowStar\fP \fBRowStar\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlCast\fP \fBCast\fP (\fBHqlExpression\fP expression, System\&.Type type)"
+.br
+.ti -1c
+.RI "\fBHqlBitwiseNot\fP \fBBitwiseNot\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlBooleanNot\fP \fBBooleanNot\fP (\fBHqlBooleanExpression\fP operand)"
+.br
+.ti -1c
+.RI "\fBHqlAverage\fP \fBAverage\fP (\fBHqlExpression\fP expression)"
+.br
+.ti -1c
+.RI "\fBHqlSum\fP \fBSum\fP (\fBHqlExpression\fP expression)"
+.br
+.ti -1c
+.RI "\fBHqlMin\fP \fBMin\fP (\fBHqlExpression\fP expression)"
+.br
+.ti -1c
+.RI "\fBHqlMax\fP \fBMax\fP (\fBHqlExpression\fP expression)"
+.br
+.ti -1c
+.RI "\fBHqlJoin\fP \fBJoin\fP (\fBHqlExpression\fP expression, \fBHqlAlias\fP @alias)"
+.br
+.ti -1c
+.RI "\fBHqlAny\fP \fBAny\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlExists\fP \fBExists\fP (\fBHqlQuery\fP query)"
+.br
+.ti -1c
+.RI "\fBHqlElements\fP \fBElements\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlDistinct\fP \fBDistinct\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlDirectionAscending\fP \fBAscending\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlDirectionDescending\fP \fBDescending\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlGroupBy\fP \fBGroupBy\fP (params \fBHqlExpression\fP[] expressions)"
+.br
+.ti -1c
+.RI "\fBHqlAll\fP \fBAll\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlLike\fP \fBLike\fP (\fBHqlExpression\fP lhs, \fBHqlExpression\fP rhs)"
+.br
+.ti -1c
+.RI "\fBHqlConcat\fP \fBConcat\fP (params \fBHqlExpression\fP[] args)"
+.br
+.ti -1c
+.RI "\fBHqlMethodCall\fP \fBMethodCall\fP (string methodName, IEnumerable< \fBHqlExpression\fP > parameters)"
+.br
+.ti -1c
+.RI "\fBHqlMethodCall\fP \fBMethodCall\fP (string methodName, params \fBHqlExpression\fP[] parameters)"
+.br
+.ti -1c
+.RI "\fBHqlBooleanMethodCall\fP \fBBooleanMethodCall\fP (string methodName, IEnumerable< \fBHqlExpression\fP > parameters)"
+.br
+.ti -1c
+.RI "\fBHqlExpressionSubTreeHolder\fP \fBExpressionSubTreeHolder\fP (params \fBHqlTreeNode\fP[] children)"
+.br
+.ti -1c
+.RI "\fBHqlExpressionSubTreeHolder\fP \fBExpressionSubTreeHolder\fP (IEnumerable< \fBHqlTreeNode\fP > children)"
+.br
+.ti -1c
+.RI "\fBHqlIsNull\fP \fBIsNull\fP (\fBHqlExpression\fP lhs)"
+.br
+.ti -1c
+.RI "\fBHqlIsNotNull\fP \fBIsNotNull\fP (\fBHqlExpression\fP lhs)"
+.br
+.ti -1c
+.RI "\fBHqlTreeNode\fP \fBExpressionList\fP (IEnumerable< \fBHqlExpression\fP > expressions)"
+.br
+.ti -1c
+.RI "\fBHqlStar\fP \fBStar\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlTrue\fP \fBTrue\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlFalse\fP \fBFalse\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlIn\fP \fBIn\fP (\fBHqlExpression\fP itemExpression, \fBHqlTreeNode\fP source)"
+.br
+.ti -1c
+.RI "\fBHqlLeftJoin\fP \fBLeftJoin\fP (\fBHqlExpression\fP expression, \fBHqlAlias\fP @alias)"
+.br
+.ti -1c
+.RI "\fBHqlFetchJoin\fP \fBFetchJoin\fP (\fBHqlExpression\fP expression, \fBHqlAlias\fP @alias)"
+.br
+.ti -1c
+.RI "\fBHqlLeftFetchJoin\fP \fBLeftFetchJoin\fP (\fBHqlExpression\fP expression, \fBHqlAlias\fP @alias)"
+.br
+.ti -1c
+.RI "\fBHqlClass\fP \fBClass\fP ()"
+.br
+.ti -1c
+.RI "\fBHqlBitwiseAnd\fP \fBBitwiseAnd\fP (\fBHqlExpression\fP lhs, \fBHqlExpression\fP rhs)"
+.br
+.ti -1c
+.RI "\fBHqlBitwiseOr\fP \fBBitwiseOr\fP (\fBHqlExpression\fP lhs, \fBHqlExpression\fP rhs)"
+.br
+.ti -1c
+.RI "\fBHqlTreeNode\fP \fBCoalesce\fP (\fBHqlExpression\fP lhs, \fBHqlExpression\fP rhs)"
+.br
+.ti -1c
+.RI "\fBHqlTreeNode\fP \fBDictionaryItem\fP (\fBHqlExpression\fP dictionary, \fBHqlExpression\fP index)"
+.br
+.ti -1c
+.RI "\fBHqlTreeNode\fP \fBIndices\fP (\fBHqlExpression\fP dictionary)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file HqlTreeBuilder\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

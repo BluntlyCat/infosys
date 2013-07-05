@@ -1,0 +1,144 @@
+.TH "NHibernate.Tuple.Entity.DynamicMapEntityTuplizer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Tuple.Entity.DynamicMapEntityTuplizer \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP\&.
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override \fBIGetter\fP \fBBuildPropertyGetter\fP (\fBMapping\&.Property\fP mappedProperty, \fBPersistentClass\fP mappedEntity)"
+.br
+.RI "\fIBuild an appropriate Getter for the given property\&. \fP"
+.ti -1c
+.RI "override \fBISetter\fP \fBBuildPropertySetter\fP (\fBMapping\&.Property\fP mappedProperty, \fBPersistentClass\fP mappedEntity)"
+.br
+.RI "\fIBuild an appropriate Setter for the given property\&. \fP"
+.ti -1c
+.RI "override \fBIInstantiator\fP \fBBuildInstantiator\fP (\fBPersistentClass\fP mappingInfo)"
+.br
+.RI "\fIBuild an appropriate Instantiator for the given mapped entity\&. \fP"
+.ti -1c
+.RI "override \fBIProxyFactory\fP \fBBuildProxyFactory\fP (\fBPersistentClass\fP mappingInfo, \fBIGetter\fP idGetter, \fBISetter\fP idSetter)"
+.br
+.RI "\fIBuild an appropriate ProxyFactory for the given mapped entity\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override System\&.Type \fBConcreteProxyClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsInstrumented\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override System\&.Type \fBMappedClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBEntityMode\fP \fBEntityMode\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 12 of file DynamicMapEntityTuplizer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBIInstantiator\fP NHibernate\&.Tuple\&.Entity\&.DynamicMapEntityTuplizer\&.BuildInstantiator (\fBPersistentClass\fPmappingInfo)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Build an appropriate Instantiator for the given mapped entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImappingInfo\fP The mapping information regarding the mapped entity\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An appropriate Instantiator instance\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP\&.
+.PP
+Definition at line 58 of file DynamicMapEntityTuplizer\&.cs\&.
+.SS "override \fBIGetter\fP NHibernate\&.Tuple\&.Entity\&.DynamicMapEntityTuplizer\&.BuildPropertyGetter (\fBMapping\&.Property\fPmappedProperty, \fBPersistentClass\fPmappedEntity)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Build an appropriate Getter for the given property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImappedProperty\fP The property to be accessed via the built Getter\&. 
+.br
+\fImappedEntity\fP The entity information regarding the mapped entity owning this property\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An appropriate Getter instance\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP\&.
+.PP
+Definition at line 43 of file DynamicMapEntityTuplizer\&.cs\&.
+.SS "override \fBISetter\fP NHibernate\&.Tuple\&.Entity\&.DynamicMapEntityTuplizer\&.BuildPropertySetter (\fBMapping\&.Property\fPmappedProperty, \fBPersistentClass\fPmappedEntity)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Build an appropriate Setter for the given property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImappedProperty\fP The property to be accessed via the built Setter\&. 
+.br
+\fImappedEntity\fP The entity information regarding the mapped entity owning this property\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An appropriate Setter instance\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP\&.
+.PP
+Definition at line 53 of file DynamicMapEntityTuplizer\&.cs\&.
+.SS "override \fBIProxyFactory\fP NHibernate\&.Tuple\&.Entity\&.DynamicMapEntityTuplizer\&.BuildProxyFactory (\fBPersistentClass\fPmappingInfo, \fBIGetter\fPidGetter, \fBISetter\fPidSetter)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Build an appropriate ProxyFactory for the given mapped entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImappingInfo\fP The mapping information regarding the mapped entity\&. 
+.br
+\fIidGetter\fP The constructed Getter relating to the entity's id property\&. 
+.br
+\fIidSetter\fP The constructed Setter relating to the entity's id property\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An appropriate ProxyFactory instance\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP\&.
+.PP
+Definition at line 63 of file DynamicMapEntityTuplizer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

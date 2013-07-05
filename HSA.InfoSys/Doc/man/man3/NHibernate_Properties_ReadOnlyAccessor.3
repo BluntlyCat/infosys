@@ -1,0 +1,106 @@
+.TH "NHibernate.Properties.ReadOnlyAccessor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Properties.ReadOnlyAccessor \- 
+.PP
+Access the mapped property through a Property \fCget\fP to get the value and do nothing to set the value\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Properties\&.IPropertyAccessor\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBReadOnlyAccessor\fP ()"
+.br
+.RI "\fIInitializes a new instance of \fBReadOnlyAccessor\fP\&. \fP"
+.ti -1c
+.RI "\fBIGetter\fP \fBGetGetter\fP (System\&.Type type, string propertyName)"
+.br
+.RI "\fICreates an \fBBasicPropertyAccessor\&.BasicGetter\fP to \fCget\fP the value from the Property\&. \fP"
+.ti -1c
+.RI "\fBISetter\fP \fBGetSetter\fP (System\&.Type type, string propertyName)"
+.br
+.RI "\fICreate a NoopAccessor\&.NoopSetter to do nothing when trying to se the value of the mapped Property \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBCanAccessThroughReflectionOptimizer\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Access the mapped property through a Property \fCget\fP to get the value and do nothing to set the value\&. 
+
+This is useful to allow calculated properties in the domain that will never be recovered from the DB but can be used for querying\&. 
+.PP
+Definition at line 15 of file ReadonlyAccessor\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Properties\&.ReadOnlyAccessor\&.ReadOnlyAccessor ()"
+
+.PP
+Initializes a new instance of \fBReadOnlyAccessor\fP\&. 
+.PP
+Definition at line 20 of file ReadonlyAccessor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIGetter\fP NHibernate\&.Properties\&.ReadOnlyAccessor\&.GetGetter (System\&.Typetype, stringpropertyName)"
+
+.PP
+Creates an \fBBasicPropertyAccessor\&.BasicGetter\fP to \fCget\fP the value from the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The System\&.Type to find the Property in\&.
+.br
+\fIpropertyName\fP The name of the mapped Property to get\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBBasicPropertyAccessor\&.BasicGetter\fP to use to get the value of the Property from an instance of the System\&.Type\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBPropertyNotFoundException\fP\fP Thrown when a Property specified by the \fCpropertyName\fP could not be found in the System\&.Type\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.IPropertyAccessor\fP\&.
+.PP
+Definition at line 38 of file ReadonlyAccessor\&.cs\&.
+.SS "\fBISetter\fP NHibernate\&.Properties\&.ReadOnlyAccessor\&.GetSetter (System\&.Typetype, stringpropertyName)"
+
+.PP
+Create a NoopAccessor\&.NoopSetter to do nothing when trying to se the value of the mapped Property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The System\&.Type to find the mapped Property in\&.
+.br
+\fIpropertyName\fP The name of the mapped Property to set\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An instance of NoopAccessor\&.NoopSetter\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.IPropertyAccessor\fP\&.
+.PP
+Definition at line 57 of file ReadonlyAccessor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

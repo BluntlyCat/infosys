@@ -1,0 +1,107 @@
+.TH "log4net.Layout.Pattern.PatternLayoutConverter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Layout.Pattern.PatternLayoutConverter \- 
+.PP
+Abstract class that provides the formatting functionality that derived classes need\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Util\&.PatternConverter\fP\&.
+.PP
+Inherited by log4net\&.Layout\&.Pattern\&.AppDomainPatternConverter, log4net\&.Layout\&.Pattern\&.AspNetPatternLayoutConverter, log4net\&.Layout\&.Pattern\&.DatePatternConverter, log4net\&.Layout\&.Pattern\&.ExceptionPatternConverter, log4net\&.Layout\&.Pattern\&.FileLocationPatternConverter, log4net\&.Layout\&.Pattern\&.FullLocationPatternConverter, log4net\&.Layout\&.Pattern\&.IdentityPatternConverter, log4net\&.Layout\&.Pattern\&.LevelPatternConverter, log4net\&.Layout\&.Pattern\&.LineLocationPatternConverter, log4net\&.Layout\&.Pattern\&.MessagePatternConverter, log4net\&.Layout\&.Pattern\&.MethodLocationPatternConverter, \fBlog4net\&.Layout\&.Pattern\&.NamedPatternConverter\fP, log4net\&.Layout\&.Pattern\&.NdcPatternConverter, log4net\&.Layout\&.Pattern\&.PropertyPatternConverter, log4net\&.Layout\&.Pattern\&.RelativeTimePatternConverter, log4net\&.Layout\&.Pattern\&.StackTracePatternConverter, log4net\&.Layout\&.Pattern\&.ThreadPatternConverter, and log4net\&.Layout\&.Pattern\&.UserNamePatternConverter\&.
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPatternLayoutConverter\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBPatternLayoutConverter\fP class\&. \fP"
+.ti -1c
+.RI "abstract void \fBConvert\fP (TextWriter writer, \fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIDerived pattern converters must override this method in order to convert conversion specifiers in the correct way\&. \fP"
+.ti -1c
+.RI "override void \fBConvert\fP (TextWriter writer, object state)"
+.br
+.RI "\fIDerived pattern converters must override this method in order to convert conversion specifiers in the correct way\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBIgnoresException\fP\fC [get, set]\fP"
+.br
+.RI "\fIFlag indicating if this converter handles the logging event exception \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Abstract class that provides the formatting functionality that derived classes need\&. 
+
+Conversion specifiers in a conversion patterns are parsed to individual PatternConverters\&. Each of which is responsible for converting a logging event in a converter specific manner\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 41 of file PatternLayoutConverter\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Layout\&.Pattern\&.PatternLayoutConverter\&.PatternLayoutConverter ()\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBPatternLayoutConverter\fP class\&. 
+.PP
+Definition at line 48 of file PatternLayoutConverter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract void log4net\&.Layout\&.Pattern\&.PatternLayoutConverter\&.Convert (TextWriterwriter, \fBLoggingEvent\fPloggingEvent)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Derived pattern converters must override this method in order to convert conversion specifiers in the correct way\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP TextWriter that will receive the formatted result\&.
+.br
+\fIloggingEvent\fP The LoggingEvent on which the pattern converter should be executed\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBlog4net\&.Layout\&.Pattern\&.NamedPatternConverter\fP\&.
+.SS "override void log4net\&.Layout\&.Pattern\&.PatternLayoutConverter\&.Convert (TextWriterwriter, objectstate)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Derived pattern converters must override this method in order to convert conversion specifiers in the correct way\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP TextWriter that will receive the formatted result\&.
+.br
+\fIstate\fP The state object on which the pattern converter should be executed\&.
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.Util\&.PatternConverter\fP\&.
+.PP
+Definition at line 100 of file PatternLayoutConverter\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual bool log4net\&.Layout\&.Pattern\&.PatternLayoutConverter\&.IgnoresException\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Flag indicating if this converter handles the logging event exception \fCfalse\fP if this converter handles the logging event exception
+.PP
+If this converter handles the exception object contained within LoggingEvent, then this property should be set to \fCfalse\fP\&. Otherwise, if the layout ignores the exception object, then the property should be set to \fCtrue\fP\&. 
+.PP
+Set this value to override a this default setting\&. The default value is \fCtrue\fP, this converter does not handle the exception\&. 
+.PP
+Definition at line 73 of file PatternLayoutConverter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

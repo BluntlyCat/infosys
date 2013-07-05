@@ -1,0 +1,6 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2228_1_1_fixture_1_1_parent_with_two_children_scenario =
+[
+    [ "ParentWithTwoChildrenScenario", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2228_1_1_fixture_1_1_parent_with_two_children_scenario.html#a7834f0f85506354b54138a66801b6a63", null ],
+    [ "Dispose", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2228_1_1_fixture_1_1_parent_with_two_children_scenario.html#a5c203ae69f48ebdc3d7052f305c2bdd5", null ],
+    [ "ParentId", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2228_1_1_fixture_1_1_parent_with_two_children_scenario.html#afc0a68c1d305180950534a3233575ef4", null ]
+];

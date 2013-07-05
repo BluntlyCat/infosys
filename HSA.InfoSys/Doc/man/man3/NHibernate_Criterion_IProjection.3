@@ -1,0 +1,225 @@
+.TH "NHibernate.Criterion.IProjection" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.IProjection \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Criterion\&.GroupedProjection\fP, \fBNHibernate\&.Criterion\&.IEnhancedProjection\fP, and \fBNHibernate\&.Criterion\&.SQLProjection\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlString\fP \fBToSqlString\fP (\fBICriteria\fP criteria, int position, \fBICriteriaQuery\fP criteriaQuery, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIRender the SQL Fragment\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBToGroupSqlString\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIRender the SQL Fragment to be used in the Group By Clause\&. \fP"
+.ti -1c
+.RI "\fBIType\fP[] \fBGetTypes\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery)"
+.br
+.RI "\fIReturn types for a particular user-visible alias \fP"
+.ti -1c
+.RI "\fBIType\fP[] \fBGetTypes\fP (string alias, \fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery)"
+.br
+.ti -1c
+.RI "string[] \fBGetColumnAliases\fP (int loc)"
+.br
+.RI "\fIGet the SQL select clause column aliases for a particular user-visible alias \fP"
+.ti -1c
+.RI "string[] \fBGetColumnAliases\fP (string alias, int loc)"
+.br
+.RI "\fIGet the SQL select clause column aliases for a particular user-visible alias \fP"
+.ti -1c
+.RI "\fBTypedValue\fP[] \fBGetTypedValues\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery)"
+.br
+.RI "\fIGets the typed values for parameters in this projection \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string[] \fBAliases\fP\fC [get]\fP"
+.br
+.RI "\fIGet the user-visible aliases for this projection (ie\&. the ones that will be passed to the ResultTransformer) \fP"
+.ti -1c
+.RI "bool \fBIsGrouped\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this projection specify grouping attributes? \fP"
+.ti -1c
+.RI "bool \fBIsAggregate\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this projection specify aggregate attributes? \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 10 of file IProjection\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string [] NHibernate\&.Criterion\&.IProjection\&.GetColumnAliases (intloc)"
+
+.PP
+Get the SQL select clause column aliases for a particular user-visible alias 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloc\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.ProjectionList\fP, \fBNHibernate\&.Criterion\&.SQLProjection\fP, \fBNHibernate\&.Criterion\&.AliasedProjection\fP, \fBNHibernate\&.Criterion\&.GroupedProjection\fP, \fBNHibernate\&.Criterion\&.Distinct\fP, and \fBNHibernate\&.Criterion\&.SimpleProjection\fP\&.
+.SS "string [] NHibernate\&.Criterion\&.IProjection\&.GetColumnAliases (stringalias, intloc)"
+
+.PP
+Get the SQL select clause column aliases for a particular user-visible alias 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIloc\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.ProjectionList\fP, \fBNHibernate\&.Criterion\&.Distinct\fP, \fBNHibernate\&.Criterion\&.AliasedProjection\fP, \fBNHibernate\&.Criterion\&.GroupedProjection\fP, and \fBNHibernate\&.Criterion\&.SimpleProjection\fP\&.
+.SS "\fBTypedValue\fP [] NHibernate\&.Criterion\&.IProjection\&.GetTypedValues (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery)"
+
+.PP
+Gets the typed values for parameters in this projection 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcriteria\fP The criteria\&.
+.br
+\fIcriteriaQuery\fP The criteria query\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.ProjectionList\fP, \fBNHibernate\&.Criterion\&.SqlFunctionProjection\fP, \fBNHibernate\&.Criterion\&.AliasedProjection\fP, \fBNHibernate\&.Criterion\&.SQLProjection\fP, \fBNHibernate\&.Criterion\&.Distinct\fP, \fBNHibernate\&.Criterion\&.ConditionalProjection\fP, \fBNHibernate\&.Criterion\&.AggregateProjection\fP, \fBNHibernate\&.Criterion\&.GroupedProjection\fP, \fBNHibernate\&.Criterion\&.SimpleProjection\fP, \fBNHibernate\&.Criterion\&.ConstantProjection\fP, \fBNHibernate\&.Criterion\&.SubqueryProjection\fP, \fBNHibernate\&.Criterion\&.CastProjection\fP, and \fBNHibernate\&.Test\&.Criteria\&.AddNumberProjection\fP\&.
+.SS "\fBIType\fP [] NHibernate\&.Criterion\&.IProjection\&.GetTypes (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery)"
+
+.PP
+Return types for a particular user-visible alias 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcriteria\fP 
+.br
+\fIcriteriaQuery\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.SqlFunctionProjection\fP, \fBNHibernate\&.Criterion\&.SimpleProjection\fP, \fBNHibernate\&.Criterion\&.SQLProjection\fP, \fBNHibernate\&.Criterion\&.ConditionalProjection\fP, \fBNHibernate\&.Criterion\&.ConstantProjection\fP, \fBNHibernate\&.Criterion\&.PropertyProjection\fP, \fBNHibernate\&.Criterion\&.CastProjection\fP, \fBNHibernate\&.Test\&.Criteria\&.AddNumberProjection\fP, \fBNHibernate\&.Criterion\&.AggregateProjection\fP, \fBNHibernate\&.Criterion\&.ProjectionList\fP, \fBNHibernate\&.Criterion\&.AvgProjection\fP, \fBNHibernate\&.Criterion\&.SubqueryProjection\fP, \fBNHibernate\&.Criterion\&.AliasedProjection\fP, \fBNHibernate\&.Criterion\&.GroupedProjection\fP, \fBNHibernate\&.Criterion\&.Distinct\fP, \fBNHibernate\&.Criterion\&.IdentifierProjection\fP, \fBNHibernate\&.Criterion\&.RowCountProjection\fP, \fBNHibernate\&.Criterion\&.CountProjection\fP, and \fBNHibernate\&.Criterion\&.RowCountInt64Projection\fP\&.
+.SS "\fBIType\fP [] NHibernate\&.Criterion\&.IProjection\&.GetTypes (stringalias, \fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIcriteria\fP 
+.br
+\fIcriteriaQuery\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.ProjectionList\fP, \fBNHibernate\&.Criterion\&.SQLProjection\fP, and \fBNHibernate\&.Criterion\&.SimpleProjection\fP\&.
+.SS "\fBSqlString\fP NHibernate\&.Criterion\&.IProjection\&.ToGroupSqlString (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery, IDictionary< string, \fBIFilter\fP >enabledFilters)"
+
+.PP
+Render the SQL Fragment to be used in the Group By Clause\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcriteria\fP The criteria\&.
+.br
+\fIcriteriaQuery\fP The criteria query\&.
+.br
+\fIenabledFilters\fP The enabled filters\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.ConditionalProjection\fP, \fBNHibernate\&.Criterion\&.AggregateProjection\fP, \fBNHibernate\&.Criterion\&.ProjectionList\fP, \fBNHibernate\&.Criterion\&.PropertyProjection\fP, \fBNHibernate\&.Criterion\&.CastProjection\fP, \fBNHibernate\&.Criterion\&.IdentifierProjection\fP, \fBNHibernate\&.Criterion\&.SimpleProjection\fP, \fBNHibernate\&.Test\&.Criteria\&.AddNumberProjection\fP, \fBNHibernate\&.Criterion\&.SqlFunctionProjection\fP, \fBNHibernate\&.Criterion\&.SubqueryProjection\fP, \fBNHibernate\&.Criterion\&.SQLProjection\fP, \fBNHibernate\&.Criterion\&.RowCountProjection\fP, \fBNHibernate\&.Criterion\&.ConstantProjection\fP, \fBNHibernate\&.Criterion\&.AliasedProjection\fP, \fBNHibernate\&.Criterion\&.GroupedProjection\fP, and \fBNHibernate\&.Criterion\&.Distinct\fP\&.
+.SS "\fBSqlString\fP NHibernate\&.Criterion\&.IProjection\&.ToSqlString (\fBICriteria\fPcriteria, intposition, \fBICriteriaQuery\fPcriteriaQuery, IDictionary< string, \fBIFilter\fP >enabledFilters)"
+
+.PP
+Render the SQL Fragment\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcriteria\fP The criteria\&.
+.br
+\fIposition\fP The position\&.
+.br
+\fIcriteriaQuery\fP The criteria query\&.
+.br
+\fIenabledFilters\fP The enabled filters\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.SimpleProjection\fP, \fBNHibernate\&.Criterion\&.SqlFunctionProjection\fP, \fBNHibernate\&.Criterion\&.ProjectionList\fP, \fBNHibernate\&.Criterion\&.PropertyProjection\fP, \fBNHibernate\&.Criterion\&.AggregateProjection\fP, \fBNHibernate\&.Criterion\&.ConditionalProjection\fP, \fBNHibernate\&.Criterion\&.ConstantProjection\fP, \fBNHibernate\&.Criterion\&.SubqueryProjection\fP, \fBNHibernate\&.Criterion\&.SQLProjection\fP, \fBNHibernate\&.Criterion\&.IdentifierProjection\fP, \fBNHibernate\&.Criterion\&.CastProjection\fP, \fBNHibernate\&.Criterion\&.CountProjection\fP, \fBNHibernate\&.Test\&.Criteria\&.AddNumberProjection\fP, \fBNHibernate\&.Criterion\&.RowCountProjection\fP, \fBNHibernate\&.Criterion\&.AliasedProjection\fP, \fBNHibernate\&.Criterion\&.GroupedProjection\fP, \fBNHibernate\&.Criterion\&.Distinct\fP, and \fBNHibernate\&.Criterion\&.AvgProjection\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "string [] NHibernate\&.Criterion\&.IProjection\&.Aliases\fC [get]\fP"
+
+.PP
+Get the user-visible aliases for this projection (ie\&. the ones that will be passed to the ResultTransformer) 
+.PP
+Definition at line 70 of file IProjection\&.cs\&.
+.SS "bool NHibernate\&.Criterion\&.IProjection\&.IsAggregate\fC [get]\fP"
+
+.PP
+Does this projection specify aggregate attributes? 
+.PP
+Definition at line 80 of file IProjection\&.cs\&.
+.SS "bool NHibernate\&.Criterion\&.IProjection\&.IsGrouped\fC [get]\fP"
+
+.PP
+Does this projection specify grouping attributes? 
+.PP
+Definition at line 75 of file IProjection\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

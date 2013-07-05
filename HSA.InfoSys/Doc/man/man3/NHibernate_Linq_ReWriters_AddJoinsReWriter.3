@@ -1,0 +1,46 @@
+.TH "NHibernate.Linq.ReWriters.AddJoinsReWriter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Linq.ReWriters.AddJoinsReWriter \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits QueryModelVisitorBase, and NHibernate\&.Linq\&.ReWriters\&.IIsEntityDecider\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBVisitSelectClause\fP (SelectClause selectClause, QueryModel queryModel)"
+.br
+.ti -1c
+.RI "override void \fBVisitOrdering\fP (Ordering ordering, QueryModel queryModel, OrderByClause orderByClause, int index)"
+.br
+.ti -1c
+.RI "override void \fBVisitResultOperator\fP (ResultOperatorBase resultOperator, QueryModel queryModel, int index)"
+.br
+.ti -1c
+.RI "override void \fBVisitWhereClause\fP (WhereClause whereClause, QueryModel queryModel, int index)"
+.br
+.ti -1c
+.RI "bool \fBIsEntity\fP (System\&.Type type)"
+.br
+.ti -1c
+.RI "bool \fBIsIdentifier\fP (System\&.Type type, string propertyName)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBReWrite\fP (QueryModel queryModel, \fBISessionFactory\fP sessionFactory)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 13 of file AddJoinsReWriter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

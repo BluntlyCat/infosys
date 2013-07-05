@@ -1,0 +1,101 @@
+.TH "NHibernate.Criterion.AbstractEmptinessExpression" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.AbstractEmptinessExpression \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Criterion\&.IsEmptyExpression\fP, and \fBNHibernate\&.Criterion\&.IsNotEmptyExpression\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override \fBTypedValue\fP[] \fBGetTypedValues\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery)"
+.br
+.RI "\fIReturn typed values for all parameters in the rendered SQL fragment \fP"
+.ti -1c
+.RI "override sealed string \fBToString\fP ()"
+.br
+.RI "\fIGets a string representation of the \fBAbstractCriterion\fP\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBToSqlString\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIRender a SqlString for the expression\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractEmptinessExpression\fP (string propertyName)"
+.br
+.ti -1c
+.RI "\fBIQueryableCollection\fP \fBGetQueryableCollection\fP (string entityName, string actualPropertyName, \fBISessionFactoryImplementor\fP factory)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "abstract bool \fBExcludeEmpty\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 13 of file AbstractEmptinessExpression\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBTypedValue\fP [] NHibernate\&.Criterion\&.AbstractEmptinessExpression\&.GetTypedValues (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery)\fC [virtual]\fP"
+
+.PP
+Return typed values for all parameters in the rendered SQL fragment 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of TypedValues for the \fBExpression\fP\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 26 of file AbstractEmptinessExpression\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Criterion\&.AbstractEmptinessExpression\&.ToSqlString (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery, IDictionary< string, \fBIFilter\fP >enabledFilters)\fC [virtual]\fP"
+
+.PP
+Render a SqlString for the expression\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A SqlString that contains a valid Sql fragment\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 36 of file AbstractEmptinessExpression\&.cs\&.
+.SS "override sealed string NHibernate\&.Criterion\&.AbstractEmptinessExpression\&.ToString ()\fC [virtual]\fP"
+
+.PP
+Gets a string representation of the \fBAbstractCriterion\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A String that shows the contents of the \fBAbstractCriterion\fP\&. 
+.RE
+.PP
+.PP
+This is not a well formed Sql fragment\&. It is useful for logging what the \fBAbstractCriterion\fP looks like\&. 
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 31 of file AbstractEmptinessExpression\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

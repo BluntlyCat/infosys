@@ -1,0 +1,63 @@
+.TH "NHibernate.Loader.Collection.BatchingCollectionInitializer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Loader.Collection.BatchingCollectionInitializer \- 
+.PP
+'Batch' loads collections, using multiple foreign key values in the SQL Where clause  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Loader\&.Collection\&.ICollectionInitializer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBatchingCollectionInitializer\fP (\fBICollectionPersister\fP collectionPersister, int[] batchSizes, \fBLoader\fP[] loaders)"
+.br
+.ti -1c
+.RI "void \fBInitialize\fP (object id, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIInitialize the given collection \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBICollectionInitializer\fP \fBCreateBatchingOneToManyInitializer\fP (\fBOneToManyPersister\fP persister, int maxBatchSize, \fBISessionFactoryImplementor\fP factory, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "static \fBICollectionInitializer\fP \fBCreateBatchingCollectionInitializer\fP (\fBIQueryableCollection\fP persister, int maxBatchSize, \fBISessionFactoryImplementor\fP factory, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+'Batch' loads collections, using multiple foreign key values in the SQL Where clause 
+
+
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBBasicCollectionLoader\fP, \fBOneToManyLoader\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 14 of file BatchingCollectionInitializer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Loader\&.Collection\&.BatchingCollectionInitializer\&.Initialize (objectid, \fBISessionImplementor\fPsession)"
+
+.PP
+Initialize the given collection 
+.PP
+Implements \fBNHibernate\&.Loader\&.Collection\&.ICollectionInitializer\fP\&.
+.PP
+Definition at line 27 of file BatchingCollectionInitializer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

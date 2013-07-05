@@ -1,0 +1,138 @@
+.TH "log4net.Config.BasicConfigurator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Config.BasicConfigurator \- 
+.PP
+Use this class to quickly configure a Hierarchy\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static ICollection \fBConfigure\fP ()"
+.br
+.RI "\fIInitializes the \fBlog4net\fP system with a default configuration\&. \fP"
+.ti -1c
+.RI "static ICollection \fBConfigure\fP (\fBIAppender\fP appender)"
+.br
+.RI "\fIInitializes the \fBlog4net\fP system using the specified appender\&. \fP"
+.ti -1c
+.RI "static ICollection \fBConfigure\fP (params \fBIAppender\fP[] appenders)"
+.br
+.RI "\fIInitializes the \fBlog4net\fP system using the specified appenders\&. \fP"
+.ti -1c
+.RI "static ICollection \fBConfigure\fP (\fBILoggerRepository\fP repository)"
+.br
+.RI "\fIInitializes the ILoggerRepository with a default configuration\&. \fP"
+.ti -1c
+.RI "static ICollection \fBConfigure\fP (\fBILoggerRepository\fP repository, \fBIAppender\fP appender)"
+.br
+.RI "\fIInitializes the ILoggerRepository using the specified appender\&. \fP"
+.ti -1c
+.RI "static ICollection \fBConfigure\fP (\fBILoggerRepository\fP repository, params \fBIAppender\fP[] appenders)"
+.br
+.RI "\fIInitializes the ILoggerRepository using the specified appenders\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Use this class to quickly configure a Hierarchy\&. 
+
+Allows very simple programmatic configuration of \fBlog4net\fP\&. 
+.PP
+Only one appender can be configured using this configurator\&. The appender is set at the root of the hierarchy and all logging events will be delivered to that appender\&. 
+.PP
+Appenders can also implement the \fBlog4net\&.Core\&.IOptionHandler\fP interface\&. Therefore they would require that the \fBlog4net\&.Core\&.IOptionHandler\&.ActivateOptions()\fP method be called after the appenders properties have been configured\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 52 of file BasicConfigurator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static ICollection log4net\&.Config\&.BasicConfigurator\&.Configure ()\fC [static]\fP"
+
+.PP
+Initializes the \fBlog4net\fP system with a default configuration\&. Initializes the \fBlog4net\fP logging system using a ConsoleAppender that will write to \fCConsole\&.Out\fP\&. The log messages are formatted using the PatternLayout layout object with the PatternLayout\&.DetailConversionPattern layout style\&. 
+.PP
+Definition at line 97 of file BasicConfigurator\&.cs\&.
+.SS "static ICollection log4net\&.Config\&.BasicConfigurator\&.Configure (\fBIAppender\fPappender)\fC [static]\fP"
+
+.PP
+Initializes the \fBlog4net\fP system using the specified appender\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIappender\fP The appender to use to log all logging events\&.
+.RE
+.PP
+.PP
+Initializes the \fBlog4net\fP system using the specified appender\&. 
+.PP
+Definition at line 111 of file BasicConfigurator\&.cs\&.
+.SS "static ICollection log4net\&.Config\&.BasicConfigurator\&.Configure (params \fBIAppender\fP[]appenders)\fC [static]\fP"
+
+.PP
+Initializes the \fBlog4net\fP system using the specified appenders\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIappenders\fP The appenders to use to log all logging events\&.
+.RE
+.PP
+.PP
+Initializes the \fBlog4net\fP system using the specified appenders\&. 
+.PP
+Definition at line 125 of file BasicConfigurator\&.cs\&.
+.SS "static ICollection log4net\&.Config\&.BasicConfigurator\&.Configure (\fBILoggerRepository\fPrepository)\fC [static]\fP"
+
+.PP
+Initializes the ILoggerRepository with a default configuration\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The repository to configure\&.
+.RE
+.PP
+.PP
+Initializes the specified repository using a ConsoleAppender that will write to \fCConsole\&.Out\fP\&. The log messages are formatted using the PatternLayout layout object with the PatternLayout\&.DetailConversionPattern layout style\&. 
+.PP
+Definition at line 154 of file BasicConfigurator\&.cs\&.
+.SS "static ICollection log4net\&.Config\&.BasicConfigurator\&.Configure (\fBILoggerRepository\fPrepository, \fBIAppender\fPappender)\fC [static]\fP"
+
+.PP
+Initializes the ILoggerRepository using the specified appender\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The repository to configure\&.
+.br
+\fIappender\fP The appender to use to log all logging events\&.
+.RE
+.PP
+.PP
+Initializes the ILoggerRepository using the specified appender\&. 
+.PP
+Definition at line 188 of file BasicConfigurator\&.cs\&.
+.SS "static ICollection log4net\&.Config\&.BasicConfigurator\&.Configure (\fBILoggerRepository\fPrepository, params \fBIAppender\fP[]appenders)\fC [static]\fP"
+
+.PP
+Initializes the ILoggerRepository using the specified appenders\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The repository to configure\&.
+.br
+\fIappenders\fP The appenders to use to log all logging events\&.
+.RE
+.PP
+.PP
+Initializes the ILoggerRepository using the specified appender\&. 
+.PP
+Definition at line 203 of file BasicConfigurator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

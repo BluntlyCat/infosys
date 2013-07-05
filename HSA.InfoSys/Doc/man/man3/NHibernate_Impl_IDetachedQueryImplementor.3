@@ -1,0 +1,96 @@
+.TH "NHibernate.Impl.IDetachedQueryImplementor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Impl.IDetachedQueryImplementor \- 
+.PP
+Interface for \fBDetachedQuery\fP implementors\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Impl\&.AbstractDetachedQuery\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBCopyTo\fP (\fBIDetachedQuery\fP destination)"
+.br
+.RI "\fICopy all properties to a given \fBIDetachedQuery\fP\&. \fP"
+.ti -1c
+.RI "void \fBSetParametersTo\fP (\fBIDetachedQuery\fP destination)"
+.br
+.RI "\fISet only parameters to a given \fBIDetachedQuery\fP\&. \fP"
+.ti -1c
+.RI "void \fBOverrideInfoFrom\fP (\fBIDetachedQueryImplementor\fP origin)"
+.br
+.RI "\fIOverride all properties reading new values from a given \fBIDetachedQueryImplementor\fP\&. \fP"
+.ti -1c
+.RI "void \fBOverrideParametersFrom\fP (\fBIDetachedQueryImplementor\fP origin)"
+.br
+.RI "\fIOverride all parameters reading new values from a given \fBIDetachedQueryImplementor\fP\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Interface for \fBDetachedQuery\fP implementors\&. 
+
+When you are working with queries in 'detached mode' you may need some additional services like clone, copy of parameters from another query and so on\&. 
+.PP
+Definition at line 12 of file IDetachedQueryImplementor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Impl\&.IDetachedQueryImplementor\&.CopyTo (\fBIDetachedQuery\fPdestination)"
+
+.PP
+Copy all properties to a given \fBIDetachedQuery\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestination\fP The given \fBIDetachedQuery\fP\&.
+.RE
+.PP
+.PP
+Usually the implementation use \fBIDetachedQuery\fP to set properties to the \fIdestination\fP \&. This mean that existing properties are merged/overriden\&. 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.AbstractDetachedQuery\fP\&.
+.SS "void NHibernate\&.Impl\&.IDetachedQueryImplementor\&.OverrideInfoFrom (\fBIDetachedQueryImplementor\fPorigin)"
+
+.PP
+Override all properties reading new values from a given \fBIDetachedQueryImplementor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIorigin\fP The given origin\&.
+.RE
+.PP
+
+.SS "void NHibernate\&.Impl\&.IDetachedQueryImplementor\&.OverrideParametersFrom (\fBIDetachedQueryImplementor\fPorigin)"
+
+.PP
+Override all parameters reading new values from a given \fBIDetachedQueryImplementor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIorigin\fP The given origin\&.
+.RE
+.PP
+
+.SS "void NHibernate\&.Impl\&.IDetachedQueryImplementor\&.SetParametersTo (\fBIDetachedQuery\fPdestination)"
+
+.PP
+Set only parameters to a given \fBIDetachedQuery\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestination\fP The given \fBIDetachedQuery\fP\&.
+.RE
+.PP
+.PP
+Existing parameters are merged/overriden\&. 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.AbstractDetachedQuery\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

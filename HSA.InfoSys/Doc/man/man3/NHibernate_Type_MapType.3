@@ -1,0 +1,190 @@
+.TH "NHibernate.Type.MapType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.MapType \- 
+.PP
+An \fBIType\fP that maps an IDictionary collection to the database\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Type\&.GenericMapType< TKey, TValue >\fP, \fBNHibernate\&.Type\&.OrderedMapType\fP, and \fBNHibernate\&.Type\&.SortedMapType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMapType\fP (string role, string propertyRef, bool isEmbeddedInXML)"
+.br
+.RI "\fIInitializes a new instance of a \fBMapType\fP class for a specific role\&. \fP"
+.ti -1c
+.RI "override \fBIPersistentCollection\fP \fBInstantiate\fP (\fBISessionImplementor\fP session, \fBICollectionPersister\fP persister, object key)"
+.br
+.RI "\fIInstantiates a new IPersistentCollection for the map\&. \fP"
+.ti -1c
+.RI "override IEnumerable \fBGetElementsIterator\fP (object collection)"
+.br
+.RI "\fIGet an iterator over the element set of the collection in POCO mode \fP"
+.ti -1c
+.RI "override \fBIPersistentCollection\fP \fBWrap\fP (\fBISessionImplementor\fP session, object collection)"
+.br
+.RI "\fIWraps an IDictionary in a PersistentMap\&. \fP"
+.ti -1c
+.RI "override object \fBReplaceElements\fP (object original, object target, object owner, IDictionary copyCache, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override object \fBInstantiate\fP (int anticipatedSize)"
+.br
+.RI "\fIInstantiate an empty instance of the 'underlying' collection (not a wrapper), but with the given anticipated size (i\&.e\&. accounting for initial capacity and perhaps load factor)\&. \fP"
+.ti -1c
+.RI "override object \fBIndexOf\fP (object collection, object element)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBAdd\fP (object collection, object element)"
+.br
+.ti -1c
+.RI "override void \fBClear\fP (object collection)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An \fBIType\fP that maps an IDictionary collection to the database\&. 
+
+
+.PP
+Definition at line 14 of file MapType\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Type\&.MapType\&.MapType (stringrole, stringpropertyRef, boolisEmbeddedInXML)"
+
+.PP
+Initializes a new instance of a \fBMapType\fP class for a specific role\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the persistent collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&.
+.br
+\fIisEmbeddedInXML\fP 
+.RE
+.PP
+
+.PP
+Definition at line 25 of file MapType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override IEnumerable NHibernate\&.Type\&.MapType\&.GetElementsIterator (objectcollection)\fC [virtual]\fP"
+
+.PP
+Get an iterator over the element set of the collection in POCO mode 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP The collection to be iterated 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The iterator\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.PP
+Definition at line 48 of file MapType\&.cs\&.
+.SS "override \fBIPersistentCollection\fP NHibernate\&.Type\&.MapType\&.Instantiate (\fBISessionImplementor\fPsession, \fBICollectionPersister\fPpersister, objectkey)\fC [virtual]\fP"
+
+.PP
+Instantiates a new IPersistentCollection for the map\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The current ISessionImplementor for the map\&.
+.br
+\fIpersister\fP 
+.br
+\fIkey\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.PP
+Definition at line 37 of file MapType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.MapType\&.Instantiate (intanticipatedSize)\fC [virtual]\fP"
+
+.PP
+Instantiate an empty instance of the 'underlying' collection (not a wrapper), but with the given anticipated size (i\&.e\&. accounting for initial capacity and perhaps load factor)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIanticipatedSize\fP The anticipated size of the instantiated collection after we are done populating it\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A newly instantiated collection to be wrapped\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.SortedMapType\fP, and \fBNHibernate\&.Type\&.OrderedMapType\fP\&.
+.PP
+Definition at line 103 of file MapType\&.cs\&.
+.SS "override \fBIPersistentCollection\fP NHibernate\&.Type\&.MapType\&.Wrap (\fBISessionImplementor\fPsession, objectcollection)\fC [virtual]\fP"
+
+.PP
+Wraps an IDictionary in a PersistentMap\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The ISessionImplementor for the collection to be a part of\&.
+.br
+\fIcollection\fP The unwrapped IDictionary\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An PersistentMap that wraps the non \fBNHibernate\fP IDictionary\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.PP
+Definition at line 61 of file MapType\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override System\&.Type NHibernate\&.Type\&.MapType\&.ReturnedClass\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 44 of file MapType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

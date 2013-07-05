@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1515_1_1_fixture_1_1_class_with_internal_property =
+[
+    [ "DoSomething", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1515_1_1_fixture_1_1_class_with_internal_property.html#ade1e112d5bc12e2fed4a66dc7ee6161b", null ]
+];

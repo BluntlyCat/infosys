@@ -1,0 +1,149 @@
+.TH "NHibernate.SqlCommand.SqlInsertBuilder" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.SqlCommand.SqlInsertBuilder \- 
+.PP
+A class that builds an \fCINSERT\fP sql statement\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.SqlCommand\&.ISqlStringBuilder\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Id\&.Insert\&.IdentifierGeneratingInsert\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlInsertBuilder\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "virtual \fBSqlInsertBuilder\fP \fBSetComment\fP (string comment)"
+.br
+.ti -1c
+.RI "\fBSqlInsertBuilder\fP \fBSetTableName\fP (string tableName)"
+.br
+.ti -1c
+.RI "virtual \fBSqlInsertBuilder\fP \fBAddColumn\fP (string columnName, \fBIType\fP propertyType)"
+.br
+.RI "\fIAdds the Property's columns to the INSERT sql \fP"
+.ti -1c
+.RI "\fBSqlInsertBuilder\fP \fBAddColumn\fP (string columnName, object val, \fBILiteralType\fP literalType)"
+.br
+.RI "\fIAdd a column with a specific value to the INSERT sql \fP"
+.ti -1c
+.RI "\fBSqlInsertBuilder\fP \fBAddColumn\fP (string columnName, string val)"
+.br
+.RI "\fIAdd a column with a specific value to the INSERT sql \fP"
+.ti -1c
+.RI "\fBSqlInsertBuilder\fP \fBAddColumns\fP (string[] columnNames, bool[] insertable, \fBIType\fP propertyType)"
+.br
+.ti -1c
+.RI "virtual \fBSqlInsertBuilder\fP \fBAddIdentityColumn\fP (string columnName)"
+.br
+.ti -1c
+.RI "virtual \fBSqlString\fP \fBToSqlString\fP ()"
+.br
+.RI "\fIBuilds a \fBSqlString\fP from the internal data\&. \fP"
+.ti -1c
+.RI "\fBSqlCommandInfo\fP \fBToSqlCommandInfo\fP ()"
+.br
+.ti -1c
+.RI "\fBSqlType\fP[] \fBGetParametersTypeArray\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A class that builds an \fCINSERT\fP sql statement\&. 
+
+
+.PP
+Definition at line 13 of file SqlInsertBuilder\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBSqlInsertBuilder\fP NHibernate\&.SqlCommand\&.SqlInsertBuilder\&.AddColumn (stringcolumnName, \fBIType\fPpropertyType)\fC [virtual]\fP"
+
+.PP
+Adds the Property's columns to the INSERT sql 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnName\fP The column name for the Property
+.br
+\fIpropertyType\fP The IType of the property\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlInsertBuilder\fP\&.
+.RE
+.PP
+.PP
+The column will be associated with a parameter\&.
+.PP
+Definition at line 53 of file SqlInsertBuilder\&.cs\&.
+.SS "\fBSqlInsertBuilder\fP NHibernate\&.SqlCommand\&.SqlInsertBuilder\&.AddColumn (stringcolumnName, objectval, \fBILiteralType\fPliteralType)"
+
+.PP
+Add a column with a specific value to the INSERT sql 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnName\fP The name of the Column to add\&.
+.br
+\fIval\fP The value to set for the column\&.
+.br
+\fIliteralType\fP The NHibernateType to use to convert the value to a sql string\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlInsertBuilder\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 69 of file SqlInsertBuilder\&.cs\&.
+.SS "\fBSqlInsertBuilder\fP NHibernate\&.SqlCommand\&.SqlInsertBuilder\&.AddColumn (stringcolumnName, stringval)"
+
+.PP
+Add a column with a specific value to the INSERT sql 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnName\fP The name of the Column to add\&.
+.br
+\fIval\fP A valid sql string to set as the value of the column\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlInsertBuilder\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 81 of file SqlInsertBuilder\&.cs\&.
+.SS "virtual \fBSqlString\fP NHibernate\&.SqlCommand\&.SqlInsertBuilder\&.ToSqlString ()\fC [virtual]\fP"
+
+.PP
+Builds a \fBSqlString\fP from the internal data\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A valid \fBSqlString\fP that can be converted into an IDbCommand
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.SqlCommand\&.ISqlStringBuilder\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Id\&.Insert\&.ReturningIdentifierInsert\fP, and \fBNHibernate\&.Id\&.Insert\&.InsertSelectIdentityInsert\fP\&.
+.PP
+Definition at line 116 of file SqlInsertBuilder\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,8 @@
+var namespace_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h3280 =
+[
+    [ "PersonDetail", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h3280_1_1_person_detail.html", null ],
+    [ "PersonDetailBase", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h3280_1_1_person_detail_base.html", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h3280_1_1_person_detail_base" ],
+    [ "Person", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h3280_1_1_person.html", null ],
+    [ "PersonBase", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h3280_1_1_person_base.html", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h3280_1_1_person_base" ],
+    [ "OneToOneToInheritedProperty", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h3280_1_1_one_to_one_to_inherited_property.html", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h3280_1_1_one_to_one_to_inherited_property" ]
+];

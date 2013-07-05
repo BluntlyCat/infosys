@@ -1,0 +1,113 @@
+.TH "NHibernate.Type.IAbstractComponentType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.IAbstractComponentType \- 
+.PP
+Enables other Component-like types to hold collections and have cascades, etc\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Type\&.AnyType\fP, \fBNHibernate\&.Type\&.ComponentType\fP, and \fBNHibernate\&.Type\&.CompositeCustomType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object[] \fBGetPropertyValues\fP (object component, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGet the values of the component properties of a component instance \fP"
+.ti -1c
+.RI "object[] \fBGetPropertyValues\fP (object component, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIOptional Operation \fP"
+.ti -1c
+.RI "void \fBSetPropertyValues\fP (object component, object[] values, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIOptional operation \fP"
+.ti -1c
+.RI "object \fBGetPropertyValue\fP (object component, int i, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "\fBCascadeStyle\fP \fBGetCascadeStyle\fP (int i)"
+.br
+.ti -1c
+.RI "\fBFetchMode\fP \fBGetFetchMode\fP (int i)"
+.br
+.ti -1c
+.RI "bool \fBIsMethodOf\fP (MethodBase method)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIType\fP[] \fBSubtypes\fP\fC [get]\fP"
+.br
+.RI "\fIGet the types of the component properties\fP"
+.ti -1c
+.RI "string[] \fBPropertyNames\fP\fC [get]\fP"
+.br
+.RI "\fIGet the names of the component properties\fP"
+.ti -1c
+.RI "bool[] \fBPropertyNullability\fP\fC [get]\fP"
+.br
+.RI "\fIOptional operation \fP"
+.ti -1c
+.RI "bool \fBIsEmbedded\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Enables other Component-like types to hold collections and have cascades, etc\&. 
+
+
+.PP
+Definition at line 9 of file IAbstractComponentType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object [] NHibernate\&.Type\&.IAbstractComponentType\&.GetPropertyValues (objectcomponent, \fBISessionImplementor\fPsession)"
+
+.PP
+Get the values of the component properties of a component instance 
+.PP
+Implemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.AnyType\fP, and \fBNHibernate\&.Type\&.CompositeCustomType\fP\&.
+.SS "object [] NHibernate\&.Type\&.IAbstractComponentType\&.GetPropertyValues (objectcomponent, \fBEntityMode\fPentityMode)"
+
+.PP
+Optional Operation 
+.PP
+Implemented in \fBNHibernate\&.Type\&.ComponentType\fP, and \fBNHibernate\&.Type\&.CompositeCustomType\fP\&.
+.SS "void NHibernate\&.Type\&.IAbstractComponentType\&.SetPropertyValues (objectcomponent, object[]values, \fBEntityMode\fPentityMode)"
+
+.PP
+Optional operation 
+.PP
+Implemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.AnyType\fP, and \fBNHibernate\&.Type\&.CompositeCustomType\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "string [] NHibernate\&.Type\&.IAbstractComponentType\&.PropertyNames\fC [get]\fP"
+
+.PP
+Get the names of the component properties
+.PP
+Definition at line 15 of file IAbstractComponentType\&.cs\&.
+.SS "bool [] NHibernate\&.Type\&.IAbstractComponentType\&.PropertyNullability\fC [get]\fP"
+
+.PP
+Optional operation nullability of component properties
+.PP
+Definition at line 21 of file IAbstractComponentType\&.cs\&.
+.SS "\fBIType\fP [] NHibernate\&.Type\&.IAbstractComponentType\&.Subtypes\fC [get]\fP"
+
+.PP
+Get the types of the component properties
+.PP
+Definition at line 12 of file IAbstractComponentType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

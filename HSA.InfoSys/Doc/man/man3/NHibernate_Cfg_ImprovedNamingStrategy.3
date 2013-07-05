@@ -1,0 +1,184 @@
+.TH "NHibernate.Cfg.ImprovedNamingStrategy" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cfg.ImprovedNamingStrategy \- 
+.PP
+Summary description for \fBImprovedNamingStrategy\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Cfg\&.INamingStrategy\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBClassToTableName\fP (string className)"
+.br
+.RI "\fIReturn the unqualified class name, mixed case converted to underscores \fP"
+.ti -1c
+.RI "string \fBPropertyToColumnName\fP (string propertyName)"
+.br
+.RI "\fIReturn the full property path with underscore separators, mixed case converted to underscores \fP"
+.ti -1c
+.RI "string \fBTableName\fP (string tableName)"
+.br
+.RI "\fIConvert mixed case to underscores \fP"
+.ti -1c
+.RI "string \fBColumnName\fP (string columnName)"
+.br
+.RI "\fIConvert mixed case to underscores \fP"
+.ti -1c
+.RI "string \fBPropertyToTableName\fP (string className, string propertyName)"
+.br
+.RI "\fIReturn the full property path prefixed by the unqualified class name, with underscore separators, mixed case converted to underscores \fP"
+.ti -1c
+.RI "string \fBLogicalColumnName\fP (string columnName, string propertyName)"
+.br
+.RI "\fIReturn the logical column name used to refer to a column in the metadata (like index, unique constraints etc) A full bijection is required between logicalNames and physical ones logicalName have to be case insersitively unique for a given table \fP"
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly \fBINamingStrategy\fP \fBInstance\fP = new \fBImprovedNamingStrategy\fP()"
+.br
+.RI "\fIThe singleton instance \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Summary description for \fBImprovedNamingStrategy\fP\&. 
+
+
+.PP
+Definition at line 9 of file ImprovedNamingStrategy\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string NHibernate\&.Cfg\&.ImprovedNamingStrategy\&.ClassToTableName (stringclassName)"
+
+.PP
+Return the unqualified class name, mixed case converted to underscores 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclassName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cfg\&.INamingStrategy\fP\&.
+.PP
+Definition at line 27 of file ImprovedNamingStrategy\&.cs\&.
+.SS "string NHibernate\&.Cfg\&.ImprovedNamingStrategy\&.ColumnName (stringcolumnName)"
+
+.PP
+Convert mixed case to underscores 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cfg\&.INamingStrategy\fP\&.
+.PP
+Definition at line 57 of file ImprovedNamingStrategy\&.cs\&.
+.SS "string NHibernate\&.Cfg\&.ImprovedNamingStrategy\&.LogicalColumnName (stringcolumnName, stringpropertyName)"
+
+.PP
+Return the logical column name used to refer to a column in the metadata (like index, unique constraints etc) A full bijection is required between logicalNames and physical ones logicalName have to be case insersitively unique for a given table 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnName\fP given column name if any 
+.br
+\fIpropertyName\fP property name of this column 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cfg\&.INamingStrategy\fP\&.
+.PP
+Definition at line 73 of file ImprovedNamingStrategy\&.cs\&.
+.SS "string NHibernate\&.Cfg\&.ImprovedNamingStrategy\&.PropertyToColumnName (stringpropertyName)"
+
+.PP
+Return the full property path with underscore separators, mixed case converted to underscores 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cfg\&.INamingStrategy\fP\&.
+.PP
+Definition at line 37 of file ImprovedNamingStrategy\&.cs\&.
+.SS "string NHibernate\&.Cfg\&.ImprovedNamingStrategy\&.PropertyToTableName (stringclassName, stringpropertyName)"
+
+.PP
+Return the full property path prefixed by the unqualified class name, with underscore separators, mixed case converted to underscores 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclassName\fP 
+.br
+\fIpropertyName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cfg\&.INamingStrategy\fP\&.
+.PP
+Definition at line 68 of file ImprovedNamingStrategy\&.cs\&.
+.SS "string NHibernate\&.Cfg\&.ImprovedNamingStrategy\&.TableName (stringtableName)"
+
+.PP
+Convert mixed case to underscores 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItableName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cfg\&.INamingStrategy\fP\&.
+.PP
+Definition at line 47 of file ImprovedNamingStrategy\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly \fBINamingStrategy\fP NHibernate\&.Cfg\&.ImprovedNamingStrategy\&.Instance = new \fBImprovedNamingStrategy\fP()\fC [static]\fP"
+
+.PP
+The singleton instance 
+.PP
+Definition at line 14 of file ImprovedNamingStrategy\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

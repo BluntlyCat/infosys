@@ -1,0 +1,44 @@
+.TH "NHibernate.Engine.Query.QueryPlanCache" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.Query.QueryPlanCache \- 
+.PP
+Acts as a cache for compiled query plans, as well as query-parameter metadata\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQueryPlanCache\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "\fBParameterMetadata\fP \fBGetSQLParameterMetadata\fP (string query)"
+.br
+.ti -1c
+.RI "\fBIQueryPlan\fP \fBGetHQLQueryPlan\fP (string queryString, bool shallow, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "\fBIQueryExpressionPlan\fP \fBGetHQLQueryPlan\fP (\fBIQueryExpression\fP queryExpression, bool shallow, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "\fBFilterQueryPlan\fP \fBGetFilterQueryPlan\fP (string filterString, string collectionRole, bool shallow, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "\fBNativeSQLQueryPlan\fP \fBGetNativeSQLQueryPlan\fP (\fBNativeSQLQuerySpecification\fP spec)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Acts as a cache for compiled query plans, as well as query-parameter metadata\&. 
+
+
+.PP
+Definition at line 12 of file QueryPlanCache\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

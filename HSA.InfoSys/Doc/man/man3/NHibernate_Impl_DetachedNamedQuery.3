@@ -1,0 +1,255 @@
+.TH "NHibernate.Impl.DetachedNamedQuery" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Impl.DetachedNamedQuery \- 
+.PP
+Named query in 'detached mode' where the \fBNHibernate\fP session is not available\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Impl\&.AbstractDetachedQuery\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1741\&.Fixture\&.DetachedNamedQueryCrack\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDetachedNamedQuery\fP (string queryName)"
+.br
+.RI "\fICreate a new instance of \fBDetachedNamedQuery\fP for a named query string defined in the mapping file\&. \fP"
+.ti -1c
+.RI "override \fBIQuery\fP \fBGetExecutableQuery\fP (\fBISession\fP session)"
+.br
+.RI "\fIGet an executable instance of \fBIQuery\fP, to actually run the query\&. \fP"
+.ti -1c
+.RI "\fBDetachedNamedQuery\fP \fBClone\fP ()"
+.br
+.RI "\fICreates a new \fBDetachedNamedQuery\fP that is a deep copy of the current instance\&. \fP"
+.ti -1c
+.RI "override \fBIDetachedQuery\fP \fBSetCacheable\fP (bool cacheable)"
+.br
+.RI "\fIEnable caching of this query result set\&. \fP"
+.ti -1c
+.RI "override \fBIDetachedQuery\fP \fBSetCacheMode\fP (\fBCacheMode\fP cacheMode)"
+.br
+.RI "\fIOverride the current session cache mode, just for this query\&. \fP"
+.ti -1c
+.RI "override \fBIDetachedQuery\fP \fBSetCacheRegion\fP (string cacheRegion)"
+.br
+.ti -1c
+.RI "override \fBIDetachedQuery\fP \fBSetReadOnly\fP (bool readOnly)"
+.br
+.RI "\fIEntities retrieved by this query will be loaded in a read-only mode where Hibernate will never dirty-check them or make changes persistent\&. \fP"
+.ti -1c
+.RI "override \fBIDetachedQuery\fP \fBSetTimeout\fP (int timeout)"
+.br
+.RI "\fIThe timeout for the underlying ADO query \fP"
+.ti -1c
+.RI "override \fBIDetachedQuery\fP \fBSetFetchSize\fP (int fetchSize)"
+.br
+.RI "\fISet a fetch size for the underlying ADO query\&.\fP"
+.ti -1c
+.RI "override \fBIDetachedQuery\fP \fBSetComment\fP (string comment)"
+.br
+.RI "\fIAdd a comment to the generated SQL\&.\fP"
+.ti -1c
+.RI "override \fBIDetachedQuery\fP \fBSetFlushMode\fP (\fBFlushMode\fP flushMode)"
+.br
+.RI "\fIOverride the current session flush mode, just for this query\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBQueryName\fP\fC [get]\fP"
+.br
+.RI "\fIGet the query name\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Named query in 'detached mode' where the \fBNHibernate\fP session is not available\&. 
+
+
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBAbstractDetachedQuery\fP, \fBIDetachedQuery\fP, \fBIQuery\fP, \fBISession\&.GetNamedQuery(string)\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 14 of file DetachedNamedQuery\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Impl\&.DetachedNamedQuery\&.DetachedNamedQuery (stringqueryName)"
+
+.PP
+Create a new instance of \fBDetachedNamedQuery\fP for a named query string defined in the mapping file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryName\fP The name of a query defined externally\&.
+.RE
+.PP
+.PP
+The query can be either in HQL or SQL format\&. 
+.PP
+Definition at line 33 of file DetachedNamedQuery\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBDetachedNamedQuery\fP NHibernate\&.Impl\&.DetachedNamedQuery\&.Clone ()"
+
+.PP
+Creates a new \fBDetachedNamedQuery\fP that is a deep copy of the current instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The clone\&.
+.RE
+.PP
+
+.PP
+Definition at line 106 of file DetachedNamedQuery\&.cs\&.
+.SS "override \fBIQuery\fP NHibernate\&.Impl\&.DetachedNamedQuery\&.GetExecutableQuery (\fBISession\fPsession)\fC [virtual]\fP"
+
+.PP
+Get an executable instance of \fBIQuery\fP, to actually run the query\&. 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractDetachedQuery\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1741\&.Fixture\&.DetachedNamedQueryCrack\fP\&.
+.PP
+Definition at line 49 of file DetachedNamedQuery\&.cs\&.
+.SS "override \fBIDetachedQuery\fP NHibernate\&.Impl\&.DetachedNamedQuery\&.SetCacheable (boolcacheable)\fC [virtual]\fP"
+
+.PP
+Enable caching of this query result set\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcacheable\fP Should the query results be cacheable?
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Impl\&.AbstractDetachedQuery\fP\&.
+.PP
+Definition at line 113 of file DetachedNamedQuery\&.cs\&.
+.SS "override \fBIDetachedQuery\fP NHibernate\&.Impl\&.DetachedNamedQuery\&.SetCacheMode (\fBCacheMode\fPcacheMode)\fC [virtual]\fP"
+
+.PP
+Override the current session cache mode, just for this query\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcacheMode\fP The cache mode to use\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+this (for method chaining) 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Impl\&.AbstractDetachedQuery\fP\&.
+.PP
+Definition at line 119 of file DetachedNamedQuery\&.cs\&.
+.SS "override \fBIDetachedQuery\fP NHibernate\&.Impl\&.DetachedNamedQuery\&.SetCacheRegion (stringcacheRegion)\fC [virtual]\fP"
+Set the name of the cache region\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcacheRegion\fP The name of a query cache region, or  for the default query cache
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Impl\&.AbstractDetachedQuery\fP\&.
+.PP
+Definition at line 124 of file DetachedNamedQuery\&.cs\&.
+.SS "override \fBIDetachedQuery\fP NHibernate\&.Impl\&.DetachedNamedQuery\&.SetComment (stringcomment)\fC [virtual]\fP"
+
+.PP
+Add a comment to the generated SQL\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomment\fP a human-readable string 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Impl\&.AbstractDetachedQuery\fP\&.
+.PP
+Definition at line 148 of file DetachedNamedQuery\&.cs\&.
+.SS "override \fBIDetachedQuery\fP NHibernate\&.Impl\&.DetachedNamedQuery\&.SetFetchSize (intfetchSize)\fC [virtual]\fP"
+
+.PP
+Set a fetch size for the underlying ADO query\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfetchSize\fP the fetch size 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Impl\&.AbstractDetachedQuery\fP\&.
+.PP
+Definition at line 142 of file DetachedNamedQuery\&.cs\&.
+.SS "override \fBIDetachedQuery\fP NHibernate\&.Impl\&.DetachedNamedQuery\&.SetFlushMode (\fBFlushMode\fPflushMode)\fC [virtual]\fP"
+
+.PP
+Override the current session flush mode, just for this query\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Impl\&.AbstractDetachedQuery\fP\&.
+.PP
+Definition at line 154 of file DetachedNamedQuery\&.cs\&.
+.SS "override \fBIDetachedQuery\fP NHibernate\&.Impl\&.DetachedNamedQuery\&.SetReadOnly (boolreadOnly)\fC [virtual]\fP"
+
+.PP
+Entities retrieved by this query will be loaded in a read-only mode where Hibernate will never dirty-check them or make changes persistent\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreadOnly\fP Enable/Disable read -only mode
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Impl\&.AbstractDetachedQuery\fP\&.
+.PP
+Definition at line 130 of file DetachedNamedQuery\&.cs\&.
+.SS "override \fBIDetachedQuery\fP NHibernate\&.Impl\&.DetachedNamedQuery\&.SetTimeout (inttimeout)\fC [virtual]\fP"
+
+.PP
+The timeout for the underlying ADO query 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItimeout\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Impl\&.AbstractDetachedQuery\fP\&.
+.PP
+Definition at line 136 of file DetachedNamedQuery\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string NHibernate\&.Impl\&.DetachedNamedQuery\&.QueryName\fC [get]\fP"
+
+.PP
+Get the query name\&. 
+.PP
+Definition at line 42 of file DetachedNamedQuery\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

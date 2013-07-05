@@ -1,0 +1,183 @@
+.TH "NHibernate.Engine.CollectionEntry" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.CollectionEntry \- 
+.PP
+We need an entry to tell us all about the current state of a collection with respect to its persistent state  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCollectionEntry\fP (\fBICollectionPersister\fP persister, \fBIPersistentCollection\fP collection)"
+.br
+.RI "\fIInitializes a new instance of \fBCollectionEntry\fP\&. \fP"
+.ti -1c
+.RI "\fBCollectionEntry\fP (\fBIPersistentCollection\fP collection, \fBICollectionPersister\fP loadedPersister, object loadedKey, bool ignore)"
+.br
+.RI "\fIFor collections just loaded from the database\fP"
+.ti -1c
+.RI "\fBCollectionEntry\fP (\fBICollectionPersister\fP loadedPersister, object loadedKey)"
+.br
+.ti -1c
+.RI "void \fBPreFlush\fP (\fBIPersistentCollection\fP collection)"
+.br
+.RI "\fIPrepares this \fBCollectionEntry\fP for the Flush process\&. \fP"
+.ti -1c
+.RI "void \fBPostInitialize\fP (\fBIPersistentCollection\fP collection)"
+.br
+.RI "\fIUpdates the \fBCollectionEntry\fP to reflect that the IPersistentCollection has been initialized\&. \fP"
+.ti -1c
+.RI "void \fBPostFlush\fP (\fBIPersistentCollection\fP collection)"
+.br
+.RI "\fIUpdates the \fBCollectionEntry\fP to reflect that it is has been successfully flushed to the database\&. \fP"
+.ti -1c
+.RI "void \fBAfterAction\fP (\fBIPersistentCollection\fP collection)"
+.br
+.ti -1c
+.RI "ICollection \fBGetOrphans\fP (string entityName, \fBIPersistentCollection\fP collection)"
+.br
+.ti -1c
+.RI "bool \fBIsSnapshotEmpty\fP (\fBIPersistentCollection\fP collection)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "object \fBKey\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBRole\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "object \fBSnapshot\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsReached\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsProcessed\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsDoupdate\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsDoremove\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsDorecreate\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsIgnore\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBICollectionPersister\fP \fBCurrentPersister\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "object \fBCurrentKey\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "object \fBLoadedKey\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBICollectionPersister\fP \fBLoadedPersister\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBWasDereferenced\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+We need an entry to tell us all about the current state of a collection with respect to its persistent state 
+
+
+.PP
+Definition at line 15 of file CollectionEntry\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Engine\&.CollectionEntry\&.CollectionEntry (\fBICollectionPersister\fPpersister, \fBIPersistentCollection\fPcollection)"
+
+.PP
+Initializes a new instance of \fBCollectionEntry\fP\&. For newly wrapped collections, or dereferenced collection wrappers 
+.PP
+Definition at line 116 of file CollectionEntry\&.cs\&.
+.SS "NHibernate\&.Engine\&.CollectionEntry\&.CollectionEntry (\fBIPersistentCollection\fPcollection, \fBICollectionPersister\fPloadedPersister, objectloadedKey, boolignore)"
+
+.PP
+For collections just loaded from the database
+.PP
+Definition at line 129 of file CollectionEntry\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Engine\&.CollectionEntry\&.PostFlush (\fBIPersistentCollection\fPcollection)"
+
+.PP
+Updates the \fBCollectionEntry\fP to reflect that it is has been successfully flushed to the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP The IPersistentCollection that was flushed\&.
+.RE
+.PP
+.PP
+Called after a \fIsuccessful\fP flush\&. 
+.PP
+Definition at line 314 of file CollectionEntry\&.cs\&.
+.SS "void NHibernate\&.Engine\&.CollectionEntry\&.PostInitialize (\fBIPersistentCollection\fPcollection)"
+
+.PP
+Updates the \fBCollectionEntry\fP to reflect that the IPersistentCollection has been initialized\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP The initialized AbstractPersistentCollection that this Entry is for\&.
+.RE
+.PP
+
+.PP
+Definition at line 301 of file CollectionEntry\&.cs\&.
+.SS "void NHibernate\&.Engine\&.CollectionEntry\&.PreFlush (\fBIPersistentCollection\fPcollection)"
+
+.PP
+Prepares this \fBCollectionEntry\fP for the Flush process\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP The IPersistentCollection that this \fBCollectionEntry\fP will be responsible for flushing\&.
+.RE
+.PP
+
+.PP
+Definition at line 273 of file CollectionEntry\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "object NHibernate\&.Engine\&.CollectionEntry\&.Key\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 171 of file CollectionEntry\&.cs\&.
+.SS "string NHibernate\&.Engine\&.CollectionEntry\&.Role\fC [get]\fP, \fC [set]\fP"
+
+.PP
+
+.PP
+Definition at line 177 of file CollectionEntry\&.cs\&.
+.SS "object NHibernate\&.Engine\&.CollectionEntry\&.Snapshot\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 184 of file CollectionEntry\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,317 @@
+.TH "NHibernate.Persister.Entity.JoinedSubclassEntityPersister" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Persister.Entity.JoinedSubclassEntityPersister \- 
+.PP
+A \fC\fBIEntityPersister\fP\fP implementing the normalized 'table-per-subclass' mapping strategy  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJoinedSubclassEntityPersister\fP (\fBPersistentClass\fP persistentClass, \fBICacheConcurrencyStrategy\fP cache, \fBISessionFactoryImplementor\fP factory, \fBIMapping\fP mapping)"
+.br
+.RI "\fIConstructs the NormalizedEntityPerister for the PersistentClass\&. \fP"
+.ti -1c
+.RI "override string \fBGetSubclassPropertyTableName\fP (int i)"
+.br
+.RI "\fIReturn the table name used to persist the numbered property of the class or a subclass (optional operation) \fP"
+.ti -1c
+.RI "override string \fBGetSubclassForDiscriminatorValue\fP (object value)"
+.br
+.RI "\fIGet the concrete subclass corresponding to the given discriminator value \fP"
+.ti -1c
+.RI "override string \fBFromTableFragment\fP (string alias)"
+.br
+.RI "\fIGet the main from table fragment, given a query alias (optional operation) \fP"
+.ti -1c
+.RI "override string \fBFilterFragment\fP (string alias)"
+.br
+.ti -1c
+.RI "override string \fBGenerateFilterConditionAlias\fP (string rootAlias)"
+.br
+.RI "\fIThe alias used for any filter conditions (mapped where-fragments or enabled-filters)\&. \fP"
+.ti -1c
+.RI "override string[] \fBToColumns\fP (string alias, string propertyName)"
+.br
+.RI "\fIGiven a query alias and a property path, return the qualified column name \fP"
+.ti -1c
+.RI "override string \fBGetSubclassTableName\fP (int j)"
+.br
+.RI "\fIGet the name of the table with the given index from the internal array\&. \fP"
+.ti -1c
+.RI "override string \fBGetPropertyTableName\fP (string propertyName)"
+.br
+.RI "\fIGet the table name for the given property path \fP"
+.ti -1c
+.RI "override string \fBGetRootTableAlias\fP (string drivingAlias)"
+.br
+.RI "\fIGet the SQL alias this persister would use for the root table given the passed driving alias\&. \fP"
+.ti -1c
+.RI "override Declarer \fBGetSubclassPropertyDeclarer\fP (string propertyPath)"
+.br
+.RI "\fIDetermine whether the given property is declared by our mapped class, our super class, or one of our subclasses\&.\&.\&. 
+.PP
+Note: the method is called 'subclass property\&.\&.\&.' simply for consistency sake (e\&.g\&. \fBgetSubclassPropertyTableNumber\fP \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBGetTableName\fP (int table)"
+.br
+.ti -1c
+.RI "override string[] \fBGetKeyColumns\fP (int table)"
+.br
+.ti -1c
+.RI "override bool \fBIsTableCascadeDeleteEnabled\fP (int j)"
+.br
+.ti -1c
+.RI "override bool \fBIsPropertyOfTable\fP (int property, int table)"
+.br
+.ti -1c
+.RI "override void \fBAddDiscriminatorToSelect\fP (\fBSelectFragment\fP select, string name, string suffix)"
+.br
+.ti -1c
+.RI "override int \fBGetSubclassPropertyTableNumber\fP (int i)"
+.br
+.ti -1c
+.RI "override string[] \fBGetSubclassTableKeyColumns\fP (int j)"
+.br
+.ti -1c
+.RI "override bool \fBIsClassOrSuperclassTable\fP (int j)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override \fBIType\fP \fBDiscriminatorType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBDiscriminatorSQLValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override object \fBDiscriminatorValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string[] \fBPropertySpaces\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string[] \fBIdentifierColumnNames\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsMultiTable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int[] \fBSubclassColumnTableNumberClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int[] \fBSubclassFormulaTableNumberClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string[] \fBConstraintOrderedTableNameClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string[][] \fBContraintOrderedTableKeyColumnClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBRootTableName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBTableName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int \fBTableSpan\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int \fBSubclassTableSpan\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A \fC\fBIEntityPersister\fP\fP implementing the normalized 'table-per-subclass' mapping strategy 
+
+
+.PP
+Definition at line 16 of file JoinedSubclassEntityPersister\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\&.JoinedSubclassEntityPersister (\fBPersistentClass\fPpersistentClass, \fBICacheConcurrencyStrategy\fPcache, \fBISessionFactoryImplementor\fPfactory, \fBIMapping\fPmapping)"
+
+.PP
+Constructs the NormalizedEntityPerister for the PersistentClass\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersistentClass\fP The PersistentClass to create the \fBEntityPersister\fP for\&.
+.br
+\fIcache\fP The configured ICacheConcurrencyStrategy\&.
+.br
+\fIfactory\fP The SessionFactory that this \fBEntityPersister\fP will be stored in\&.
+.br
+\fImapping\fP The mapping used to retrieve type information\&.
+.RE
+.PP
+
+.PP
+Definition at line 98 of file JoinedSubclassEntityPersister\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override string NHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\&.FromTableFragment (stringalias)\fC [virtual]\fP"
+
+.PP
+Get the main from table fragment, given a query alias (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 464 of file JoinedSubclassEntityPersister\&.cs\&.
+.SS "override string NHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\&.GenerateFilterConditionAlias (stringrootAlias)\fC [virtual]\fP"
+
+.PP
+The alias used for any filter conditions (mapped where-fragments or enabled-filters)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrootAlias\fP The root alias 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The alias used for 'filter conditions' within the where clause\&. 
+.RE
+.PP
+.PP
+This may or may not be different from the root alias depending upon the inheritance mapping strategy\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 517 of file JoinedSubclassEntityPersister\&.cs\&.
+.SS "override string NHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\&.GetPropertyTableName (stringpropertyName)\fC [virtual]\fP"
+
+.PP
+Get the table name for the given property path 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 572 of file JoinedSubclassEntityPersister\&.cs\&.
+.SS "override string NHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\&.GetRootTableAlias (stringdrivingAlias)\fC [virtual]\fP"
+
+.PP
+Get the SQL alias this persister would use for the root table given the passed driving alias\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdrivingAlias\fP The driving alias; or the alias for the table mapped by this persister in the hierarchy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The root table alias\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 579 of file JoinedSubclassEntityPersister\&.cs\&.
+.SS "override string NHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\&.GetSubclassForDiscriminatorValue (objectvalue)\fC [virtual]\fP"
+
+.PP
+Get the concrete subclass corresponding to the given discriminator value 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 407 of file JoinedSubclassEntityPersister\&.cs\&.
+.SS "override Declarer NHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\&.GetSubclassPropertyDeclarer (stringpropertyPath)\fC [virtual]\fP"
+
+.PP
+Determine whether the given property is declared by our mapped class, our super class, or one of our subclasses\&.\&.\&. 
+.PP
+Note: the method is called 'subclass property\&.\&.\&.' simply for consistency sake (e\&.g\&. \fBgetSubclassPropertyTableNumber\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyPath\fP The property name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The property declarer 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 584 of file JoinedSubclassEntityPersister\&.cs\&.
+.SS "override string NHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\&.GetSubclassPropertyTableName (inti)\fC [virtual]\fP"
+
+.PP
+Return the table name used to persist the numbered property of the class or a subclass (optional operation) 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 402 of file JoinedSubclassEntityPersister\&.cs\&.
+.SS "override string NHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\&.GetSubclassTableName (intnumber)\fC [virtual]\fP"
+
+.PP
+Get the name of the table with the given index from the internal array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP The index into the internal array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 557 of file JoinedSubclassEntityPersister\&.cs\&.
+.SS "override string [] NHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\&.ToColumns (stringalias, stringpropertyName)\fC [virtual]\fP"
+
+.PP
+Given a query alias and a property path, return the qualified column name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIpropertyName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 522 of file JoinedSubclassEntityPersister\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

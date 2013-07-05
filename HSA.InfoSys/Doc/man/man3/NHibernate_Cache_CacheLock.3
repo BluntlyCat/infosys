@@ -1,0 +1,118 @@
+.TH "NHibernate.Cache.CacheLock" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cache.CacheLock \- 
+.PP
+A soft lock which supports concurrent locking, timestamped with the time it was released  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Cache\&.ReadWriteCache\&.ILockable\fP, and \fBNHibernate\&.Cache\&.Access\&.ISoftLock\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCacheLock\fP (long timeout, int id, object version)"
+.br
+.ti -1c
+.RI "\fBCacheLock\fP \fBLock\fP (long timeout, int id)"
+.br
+.RI "\fIIncrement the lock, setting the new lock timeout \fP"
+.ti -1c
+.RI "void \fBUnlock\fP (long currentTimestamp)"
+.br
+.RI "\fIDecrement the lock, setting the unlock timestamp if now unlocked \fP"
+.ti -1c
+.RI "bool \fBIsPuttable\fP (long txTimestamp, object newVersion, IComparer comparator)"
+.br
+.RI "\fICan the timestamped transaction re-cache this locked item now? \fP"
+.ti -1c
+.RI "bool \fBIsGettable\fP (long txTimestamp)"
+.br
+.RI "\fIlocks are not returned to the client! \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBWasLockedConcurrently\fP\fC [get]\fP"
+.br
+.RI "\fIWas this lock held concurrently by multiple transactions? \fP"
+.ti -1c
+.RI "bool \fBIsLock\fP\fC [get]\fP"
+.br
+.RI "\fIYes, this is a lock \fP"
+.ti -1c
+.RI "int \fBId\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A soft lock which supports concurrent locking, timestamped with the time it was released 
+
+This class was named Lock in H2\&.1 
+.PP
+Definition at line 15 of file CacheLock\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool NHibernate\&.Cache\&.CacheLock\&.IsGettable (longtxTimestamp)"
+
+.PP
+locks are not returned to the client! 
+.PP
+Implements \fBNHibernate\&.Cache\&.ReadWriteCache\&.ILockable\fP\&.
+.PP
+Definition at line 96 of file CacheLock\&.cs\&.
+.SS "bool NHibernate\&.Cache\&.CacheLock\&.IsPuttable (longtxTimestamp, objectnewVersion, IComparercomparator)"
+
+.PP
+Can the timestamped transaction re-cache this locked item now? 
+.PP
+Implements \fBNHibernate\&.Cache\&.ReadWriteCache\&.ILockable\fP\&.
+.PP
+Definition at line 60 of file CacheLock\&.cs\&.
+.SS "\fBCacheLock\fP NHibernate\&.Cache\&.CacheLock\&.Lock (longtimeout, intid)"
+
+.PP
+Increment the lock, setting the new lock timeout 
+.PP
+Implements \fBNHibernate\&.Cache\&.ReadWriteCache\&.ILockable\fP\&.
+.PP
+Definition at line 35 of file CacheLock\&.cs\&.
+.SS "void NHibernate\&.Cache\&.CacheLock\&.Unlock (longcurrentTimestamp)"
+
+.PP
+Decrement the lock, setting the unlock timestamp if now unlocked 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcurrentTimestamp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 48 of file CacheLock\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.Cache\&.CacheLock\&.IsLock\fC [get]\fP"
+
+.PP
+Yes, this is a lock 
+.PP
+Definition at line 89 of file CacheLock\&.cs\&.
+.SS "bool NHibernate\&.Cache\&.CacheLock\&.WasLockedConcurrently\fC [get]\fP"
+
+.PP
+Was this lock held concurrently by multiple transactions? 
+.PP
+Definition at line 81 of file CacheLock\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

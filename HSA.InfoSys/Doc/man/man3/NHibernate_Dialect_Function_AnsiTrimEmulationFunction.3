@@ -1,0 +1,94 @@
+.TH "NHibernate.Dialect.Function.AnsiTrimEmulationFunction" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.Function.AnsiTrimEmulationFunction \- 
+.PP
+A SQLFunction implementation that emulates the ANSI SQL trim function on dialects which do not support the full definition\&. However, this function definition does assume the availability of ltrim, rtrim, and replace functions which it uses in various combinations to emulate the desired ANSI trim() functionality\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Function\&.ISQLFunction\fP, and \fBNHibernate\&.Dialect\&.Function\&.IFunctionGrammar\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIType\fP \fBReturnType\fP (\fBIType\fP columnType, \fBIMapping\fP mapping)"
+.br
+.RI "\fIThe function return type \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBRender\fP (IList args, \fBISessionFactoryImplementor\fP factory)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBHasArguments\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasParenthesesIfNoArguments\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A SQLFunction implementation that emulates the ANSI SQL trim function on dialects which do not support the full definition\&. However, this function definition does assume the availability of ltrim, rtrim, and replace functions which it uses in various combinations to emulate the desired ANSI trim() functionality\&. 
+
+
+.PP
+Definition at line 21 of file AnsiTrimEmulationFunction\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSqlString\fP NHibernate\&.Dialect\&.Function\&.AnsiTrimEmulationFunction\&.Render (IListargs, \fBISessionFactoryImplementor\fPfactory)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIargs\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+.PP
+according to both the ANSI-SQL and EJB3 specs, trim can either take exactly one parameter or a variable number of parameters between 1 and 4\&. from the SQL spec: <![CDATA[ <trim function>=''> ::= TRIM <left paren>=''> <trim operands>=''> <right paren>=''>
+.PP
+<trim operands>=''> ::= [ [ <trim specification>=''> ] [ <trim character>=''> ] FROM ] <trim source>=''>
+.PP
+<trim specification>=''> ::= LEADING | TRAILING | BOTH ]]> If only trim specification is omitted, BOTH is assumed; if trim character is omitted, space is assumed 
+.PP
+Implements \fBNHibernate\&.Dialect\&.Function\&.ISQLFunction\fP\&.
+.PP
+Definition at line 86 of file AnsiTrimEmulationFunction\&.cs\&.
+.SS "\fBIType\fP NHibernate\&.Dialect\&.Function\&.AnsiTrimEmulationFunction\&.ReturnType (\fBIType\fPcolumnType, \fBIMapping\fPmapping)"
+
+.PP
+The function return type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnType\fP The type of the first argument
+.br
+\fImapping\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Dialect\&.Function\&.ISQLFunction\fP\&.
+.PP
+Definition at line 46 of file AnsiTrimEmulationFunction\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

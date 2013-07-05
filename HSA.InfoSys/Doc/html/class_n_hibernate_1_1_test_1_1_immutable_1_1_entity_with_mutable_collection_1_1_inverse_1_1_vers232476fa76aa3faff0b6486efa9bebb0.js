@@ -1,0 +1,6 @@
+var class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_inverse_1_1_vers232476fa76aa3faff0b6486efa9bebb0 =
+[
+    [ "CheckUpdateCountsAfterAddingExistingElement", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_inverse_1_1_vers232476fa76aa3faff0b6486efa9bebb0.html#a13a1346ca8f35de05111ccf882eda694", null ],
+    [ "CheckUpdateCountsAfterRemovingElementWithoutDelete", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_inverse_1_1_vers232476fa76aa3faff0b6486efa9bebb0.html#a18b5c89365842886e1f99df2355f76be", null ],
+    [ "Mappings", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_inverse_1_1_vers232476fa76aa3faff0b6486efa9bebb0.html#a7ec11a84170673f0b1c214466025cb2a", null ]
+];

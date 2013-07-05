@@ -1,0 +1,183 @@
+.TH "NHibernate.Engine.QueryParameters" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.QueryParameters \- 
+.PP
+Container for data that is used during the \fBNHibernate\fP query/load process\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQueryParameters\fP (\fBIType\fP[] positionalParameterTypes, object[] postionalParameterValues, object optionalObject, string optionalEntityName, object optionalObjectId)"
+.br
+.ti -1c
+.RI "\fBQueryParameters\fP (\fBIType\fP[] positionalParameterTypes, object[] postionalParameterValues)"
+.br
+.ti -1c
+.RI "\fBQueryParameters\fP (\fBIType\fP[] positionalParameterTypes, object[] postionalParameterValues, object[] collectionKeys)"
+.br
+.ti -1c
+.RI "\fBQueryParameters\fP (\fBIType\fP[] positionalParameterTypes, object[] postionalParameterValues, IDictionary< string, \fBTypedValue\fP > namedParameters, object[] collectionKeys)"
+.br
+.ti -1c
+.RI "\fBQueryParameters\fP (\fBIType\fP[] positionalParameterTypes, object[] positionalParameterValues, IDictionary< string, \fBLockMode\fP > lockModes, \fBRowSelection\fP rowSelection, bool isReadOnlyInitialized, bool readOnly, bool cacheable, string cacheRegion, string comment, bool isLookupByNaturalKey, \fBIResultTransformer\fP transformer)"
+.br
+.ti -1c
+.RI "\fBQueryParameters\fP (IDictionary< string, \fBTypedValue\fP > namedParameters, IDictionary< string, \fBLockMode\fP > lockModes, \fBRowSelection\fP rowSelection, bool isReadOnlyInitialized, bool readOnly, bool cacheable, string cacheRegion, string comment, bool isLookupByNaturalKey, \fBIResultTransformer\fP transformer)"
+.br
+.ti -1c
+.RI "\fBQueryParameters\fP (\fBIType\fP[] positionalParameterTypes, object[] positionalParameterValues, IDictionary< string, \fBTypedValue\fP > namedParameters, IDictionary< string, \fBLockMode\fP > lockModes, \fBRowSelection\fP rowSelection, bool isReadOnlyInitialized, bool readOnly, bool cacheable, string cacheRegion, string comment, object[] collectionKeys, \fBIResultTransformer\fP transformer)"
+.br
+.ti -1c
+.RI "\fBQueryParameters\fP (\fBIType\fP[] positionalParameterTypes, object[] positionalParameterValues, IDictionary< string, \fBTypedValue\fP > namedParameters, IDictionary< string, \fBLockMode\fP > lockModes, \fBRowSelection\fP rowSelection, bool isReadOnlyInitialized, bool readOnly, bool cacheable, string cacheRegion, string comment, object[] collectionKeys, object optionalObject, string optionalEntityName, object optionalId, \fBIResultTransformer\fP transformer)"
+.br
+.ti -1c
+.RI "void \fBLogParameters\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "void \fBValidateParameters\fP ()"
+.br
+.RI "\fIEnsure the Types and Values are the same length\&. \fP"
+.ti -1c
+.RI "\fBQueryParameters\fP \fBCreateCopyUsing\fP (\fBRowSelection\fP selection)"
+.br
+.ti -1c
+.RI "bool \fBIsReadOnly\fP (\fBISessionImplementor\fP session)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBHasRowSelection\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, \fBTypedValue\fP > \fBNamedParameters\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP[] \fBPositionalParameterTypes\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets an array of IType objects that is stored at the index of the Parameter\&. \fP"
+.ti -1c
+.RI "object[] \fBPositionalParameterValues\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets an array of object objects that is stored at the index of the Parameter\&. \fP"
+.ti -1c
+.RI "\fBRowSelection\fP \fBRowSelection\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBRowSelection\fP for the \fBQuery\fP\&. \fP"
+.ti -1c
+.RI "IDictionary< string, \fBLockMode\fP > \fBLockModes\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets an IDictionary that contains the alias name of the object from hql as the key and the \fBLockMode\fP as the value\&. \fP"
+.ti -1c
+.RI "bool \fBIsReadOnlyInitialized\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBCacheable\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBCacheRegion\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBComment\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBForceCacheRefresh\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBOptionalEntityName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "object \fBOptionalId\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "object \fBOptionalObject\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "object[] \fBCollectionKeys\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBCallable\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBReadOnly\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBProcessedSql\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "IEnumerable
+.br
+< \fBIParameterSpecification\fP > \fBProcessedSqlParameters\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBRowSelection\fP \fBProcessedRowSelection\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBNaturalKeyLookup\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIResultTransformer\fP \fBResultTransformer\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasAutoDiscoverScalarTypes\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Container for data that is used during the \fBNHibernate\fP query/load process\&. 
+
+
+.PP
+Definition at line 18 of file QueryParameters\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Engine\&.QueryParameters\&.ValidateParameters ()"
+
+.PP
+Ensure the Types and Values are the same length\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBQueryException\fP\fP If the Lengths of \fBPositionalParameterTypes\fP and \fBPositionalParameterValues\fP are not equal\&. 
+.RE
+.PP
+
+.PP
+Definition at line 190 of file QueryParameters\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "IDictionary<string, \fBLockMode\fP> NHibernate\&.Engine\&.QueryParameters\&.LockModes\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets an IDictionary that contains the alias name of the object from hql as the key and the \fBLockMode\fP as the value\&. An IDictionary of lock modes\&.
+.PP
+Definition at line 119 of file QueryParameters\&.cs\&.
+.SS "\fBIType\fP [] NHibernate\&.Engine\&.QueryParameters\&.PositionalParameterTypes\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets an array of IType objects that is stored at the index of the Parameter\&. 
+.PP
+Definition at line 101 of file QueryParameters\&.cs\&.
+.SS "object [] NHibernate\&.Engine\&.QueryParameters\&.PositionalParameterValues\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets an array of object objects that is stored at the index of the Parameter\&. 
+.PP
+Definition at line 107 of file QueryParameters\&.cs\&.
+.SS "\fBRowSelection\fP NHibernate\&.Engine\&.QueryParameters\&.RowSelection\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBRowSelection\fP for the \fBQuery\fP\&. 
+.PP
+Definition at line 112 of file QueryParameters\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

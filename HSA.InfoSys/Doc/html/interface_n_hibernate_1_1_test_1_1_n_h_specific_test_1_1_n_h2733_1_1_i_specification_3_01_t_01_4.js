@@ -1,0 +1,4 @@
+var interface_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2733_1_1_i_specification_3_01_t_01_4 =
+[
+    [ "Predicate", "interface_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2733_1_1_i_specification_3_01_t_01_4.html#aa65e91bf97f33e1183bff884ed4098a5", null ]
+];

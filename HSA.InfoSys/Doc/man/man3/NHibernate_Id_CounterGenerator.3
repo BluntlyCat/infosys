@@ -1,0 +1,63 @@
+.TH "NHibernate.Id.CounterGenerator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.CounterGenerator \- 
+.PP
+An \fBIIdentifierGenerator\fP that returns a \fCInt64\fP constructed from the system time and a counter value\&. Not safe for use in a clustser!  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Id\&.IIdentifierGenerator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBGenerate\fP (\fBISessionImplementor\fP cache, object obj)"
+.br
+.RI "\fIGenerate a new identifier \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "short \fBCount\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An \fBIIdentifierGenerator\fP that returns a \fCInt64\fP constructed from the system time and a counter value\&. Not safe for use in a clustser! 
+
+
+.PP
+Definition at line 11 of file CounterGenerator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.Id\&.CounterGenerator\&.Generate (\fBISessionImplementor\fPsession, objectobj)"
+
+.PP
+Generate a new identifier 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The ISessionImplementor this id is being generated in\&.
+.br
+\fIobj\fP The entity for which the id is being generated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new identifier
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IIdentifierGenerator\fP\&.
+.PP
+Definition at line 29 of file CounterGenerator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

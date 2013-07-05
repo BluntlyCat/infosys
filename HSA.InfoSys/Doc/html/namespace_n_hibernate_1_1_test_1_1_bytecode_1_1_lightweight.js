@@ -1,0 +1,4 @@
+var namespace_n_hibernate_1_1_test_1_1_bytecode_1_1_lightweight =
+[
+    [ "BytecodeProviderFixture", "class_n_hibernate_1_1_test_1_1_bytecode_1_1_lightweight_1_1_bytecode_provider_fixture.html", "class_n_hibernate_1_1_test_1_1_bytecode_1_1_lightweight_1_1_bytecode_provider_fixture" ]
+];

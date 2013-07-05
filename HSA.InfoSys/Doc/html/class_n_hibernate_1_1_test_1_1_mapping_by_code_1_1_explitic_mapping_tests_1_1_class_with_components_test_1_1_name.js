@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_class_with_components_test_1_1_name =
+[
+    [ "First", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_class_with_components_test_1_1_name.html#a8ed972d7f8d447aab02a2d2c0fe3572f", null ],
+    [ "Last", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_class_with_components_test_1_1_name.html#aa8cf1f3acb1a961b49d23e1e4c85b1e8", null ]
+];

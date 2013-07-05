@@ -1,0 +1,137 @@
+.TH "NHibernate.Dialect.MsSql2005Dialect" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.MsSql2005Dialect \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.MsSql2000Dialect\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.MsSql2008Dialect\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1849\&.CustomDialect\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2700\&.CustomDialect\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH645\&.CustomDialect\fP, and \fBNHibernate\&.Test\&.Pagination\&.CustomMsSqlDialect\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override \fBSqlString\fP \fBGetLimitString\fP (\fBSqlString\fP queryString, \fBSqlString\fP offset, \fBSqlString\fP limit)"
+.br
+.RI "\fIAttempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. \fP"
+.ti -1c
+.RI "override string \fBAppendLockHint\fP (\fBLockMode\fP lockMode, string tableName)"
+.br
+.RI "\fISome dialects support an alternative means to \fCSELECT FOR UPDATE\fP, whereby a 'lock hint' is appends to the table name in the from clause\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBRegisterCharacterTypeMappings\fP ()"
+.br
+.ti -1c
+.RI "override void \fBRegisterLargeObjectTypeMappings\fP ()"
+.br
+.ti -1c
+.RI "override void \fBRegisterKeywords\fP ()"
+.br
+.ti -1c
+.RI "override string \fBGetSelectExistingObject\fP (string name, \fBTable\fP table)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBSupportsLimit\fP\fC [get]\fP"
+.br
+.RI "\fISql Server 2005 supports a query statement that provides \fCLIMIT\fP functionality\&. \fP"
+.ti -1c
+.RI "override bool \fBSupportsLimitOffset\fP\fC [get]\fP"
+.br
+.RI "\fISql Server 2005 supports a query statement that provides \fCLIMIT\fP functionality with an offset\&. \fP"
+.ti -1c
+.RI "override bool \fBSupportsVariableLimit\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBUseMaxForLimit\fP\fC [get]\fP"
+.br
+.RI "\fISql Server 2005 supports a query statement that provides \fCLIMIT\fP functionality with an offset\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file MsSql2005Dialect\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override string NHibernate\&.Dialect\&.MsSql2005Dialect\&.AppendLockHint (\fBLockMode\fPlockMode, stringtableName)\fC [virtual]\fP"
+
+.PP
+Some dialects support an alternative means to \fCSELECT FOR UPDATE\fP, whereby a 'lock hint' is appends to the table name in the from clause\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlockMode\fP The lock mode to apply 
+.br
+\fItableName\fP The name of the table to which to apply the lock hint\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The table with any required lock hints\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.MsSql2000Dialect\fP\&.
+.PP
+Definition at line 91 of file MsSql2005Dialect\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Dialect\&.MsSql2005Dialect\&.GetLimitString (\fBSqlString\fPqueryString, \fBSqlString\fPoffset, \fBSqlString\fPlimit)\fC [virtual]\fP"
+
+.PP
+Attempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryString\fP The SqlString to base the limit query off\&.
+.br
+\fIoffset\fP Offset of the first row to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no limit is requested\&. This should have already been adjusted to account for OffsetStartsAtOne\&.
+.br
+\fIlimit\fP Maximum number of rows to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no offset is requested\&. This should have already been adjusted to account for UseMaxForLimit\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new SqlString that contains the \fCLIMIT\fP clause\&. Returns \fCnull\fP if \fIqueryString\fP  represents a SQL statement to which a limit clause cannot be added, for example when the query string is custom SQL invoking a stored procedure\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.MsSql2000Dialect\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.MsSql2012Dialect\fP\&.
+.PP
+Definition at line 36 of file MsSql2005Dialect\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool NHibernate\&.Dialect\&.MsSql2005Dialect\&.SupportsLimit\fC [get]\fP"
+
+.PP
+Sql Server 2005 supports a query statement that provides \fCLIMIT\fP functionality\&. \fCtrue\fP
+.PP
+Definition at line 47 of file MsSql2005Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.MsSql2005Dialect\&.SupportsLimitOffset\fC [get]\fP"
+
+.PP
+Sql Server 2005 supports a query statement that provides \fCLIMIT\fP functionality with an offset\&. \fCtrue\fP
+.PP
+Definition at line 57 of file MsSql2005Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.MsSql2005Dialect\&.UseMaxForLimit\fC [get]\fP"
+
+.PP
+Sql Server 2005 supports a query statement that provides \fCLIMIT\fP functionality with an offset\&. \fCfalse\fP
+.PP
+Definition at line 87 of file MsSql2005Dialect\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

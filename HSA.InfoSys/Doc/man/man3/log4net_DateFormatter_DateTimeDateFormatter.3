@@ -1,0 +1,73 @@
+.TH "log4net.DateFormatter.DateTimeDateFormatter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.DateFormatter.DateTimeDateFormatter \- 
+.PP
+Formats a DateTime as \fC'dd MMM yyyy HH:mm:ss,fff'\fP  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.DateFormatter\&.AbsoluteTimeDateFormatter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDateTimeDateFormatter\fP ()"
+.br
+.RI "\fIDefault constructor\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBFormatDateWithoutMillis\fP (DateTime dateToFormat, StringBuilder buffer)"
+.br
+.RI "\fIFormats the date without the milliseconds part \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Formats a DateTime as \fC'dd MMM yyyy HH:mm:ss,fff'\fP 
+
+Formats a DateTime in the format \fC'dd MMM yyyy HH:mm:ss,fff'\fP for example, \fC'06 Nov 1994 15:49:37,459'\fP\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> <author>Angelika Schnagl</author> 
+.PP
+Definition at line 39 of file DateTimeDateFormatter\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.DateFormatter\&.DateTimeDateFormatter\&.DateTimeDateFormatter ()"
+
+.PP
+Default constructor\&. Initializes a new instance of the \fBDateTimeDateFormatter\fP class\&. 
+.PP
+Definition at line 51 of file DateTimeDateFormatter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.DateFormatter\&.DateTimeDateFormatter\&.FormatDateWithoutMillis (DateTimedateToFormat, StringBuilderbuffer)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Formats the date without the milliseconds part 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdateToFormat\fP The date to format\&.
+.br
+\fIbuffer\fP The string builder to write to\&.
+.RE
+.PP
+.PP
+Formats a DateTime in the format \fC'dd MMM yyyy HH:mm:ss'\fP for example, \fC'06 Nov 1994 15:49:37'\fP\&. 
+.PP
+The base class will append the \fC',fff'\fP milliseconds section\&. This method will only be called at most once per second\&. 
+.PP
+Reimplemented from \fBlog4net\&.DateFormatter\&.AbsoluteTimeDateFormatter\fP\&.
+.PP
+Definition at line 75 of file DateTimeDateFormatter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

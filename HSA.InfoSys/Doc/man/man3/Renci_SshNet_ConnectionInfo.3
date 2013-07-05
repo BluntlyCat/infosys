@@ -1,0 +1,483 @@
+.TH "Renci.SshNet.ConnectionInfo" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.ConnectionInfo \- 
+.PP
+Represents remote connection information class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBRenci\&.SshNet\&.KeyboardInteractiveConnectionInfo\fP, \fBRenci\&.SshNet\&.NoneConnectionInfo\fP, \fBRenci\&.SshNet\&.PasswordConnectionInfo\fP, and \fBRenci\&.SshNet\&.PrivateKeyConnectionInfo\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBConnectionInfo\fP (string host, string username, params \fBAuthenticationMethod\fP[] authenticationMethods)"
+.br
+.RI "\fIInitializes a new instance of the \fBConnectionInfo\fP class\&. \fP"
+.ti -1c
+.RI "\fBConnectionInfo\fP (string host, int port, string username, params \fBAuthenticationMethod\fP[] authenticationMethods)"
+.br
+.RI "\fIInitializes a new instance of the \fBConnectionInfo\fP class\&. \fP"
+.ti -1c
+.RI "\fBConnectionInfo\fP (string host, int port, string username, \fBProxyTypes\fP proxyType, string proxyHost, int proxyPort, string proxyUsername, string proxyPassword, params \fBAuthenticationMethod\fP[] authenticationMethods)"
+.br
+.RI "\fIInitializes a new instance of the \fBConnectionInfo\fP class\&. \fP"
+.ti -1c
+.RI "bool \fBAuthenticate\fP (\fBSession\fP session)"
+.br
+.RI "\fIAuthenticates the specified session\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "IDictionary< string, Type > \fBKeyExchangeAlgorithms\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets supported key exchange algorithms for this connection\&. \fP"
+.ti -1c
+.RI "IDictionary< string, \fBCipherInfo\fP > \fBEncryptions\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets supported encryptions for this connection\&. \fP"
+.ti -1c
+.RI "IDictionary< string, \fBHashInfo\fP > \fBHmacAlgorithms\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets supported hash algorithms for this connection\&. \fP"
+.ti -1c
+.RI "IDictionary< string, Func
+.br
+< byte[], \fBKeyHostAlgorithm\fP > > \fBHostKeyAlgorithms\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets supported host key algorithms for this connection\&. \fP"
+.ti -1c
+.RI "IEnumerable< \fBAuthenticationMethod\fP > \fBAuthenticationMethods\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets supported authentication methods for this connection\&. \fP"
+.ti -1c
+.RI "IDictionary< string, Type > \fBCompressionAlgorithms\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets supported compression algorithms for this connection\&. \fP"
+.ti -1c
+.RI "IDictionary< string, \fBRequestInfo\fP > \fBChannelRequests\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets supported channel requests for this connection\&. \fP"
+.ti -1c
+.RI "bool \fBIsAuthenticated\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets a value indicating whether connection is authenticated\&. \fP"
+.ti -1c
+.RI "string \fBHost\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets connection host\&. \fP"
+.ti -1c
+.RI "int \fBPort\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets connection port\&. \fP"
+.ti -1c
+.RI "string \fBUsername\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets connection username\&. \fP"
+.ti -1c
+.RI "\fBProxyTypes\fP \fBProxyType\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets proxy type\&. \fP"
+.ti -1c
+.RI "string \fBProxyHost\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets proxy connection host\&. \fP"
+.ti -1c
+.RI "int \fBProxyPort\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets proxy connection port\&. \fP"
+.ti -1c
+.RI "string \fBProxyUsername\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets proxy connection username\&. \fP"
+.ti -1c
+.RI "string \fBProxyPassword\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets proxy connection password\&. \fP"
+.ti -1c
+.RI "TimeSpan \fBTimeout\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets connection timeout\&. \fP"
+.ti -1c
+.RI "Encoding \fBEncoding\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the default encoding\&. \fP"
+.ti -1c
+.RI "int \fBRetryAttempts\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets number of retry attempts when session channel creation failed\&. \fP"
+.ti -1c
+.RI "int \fBMaxSessions\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets maximum number of session channels to be open simultaneously\&. \fP"
+.ti -1c
+.RI "string \fBCurrentKeyExchangeAlgorithm\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the current key exchange algorithm\&. \fP"
+.ti -1c
+.RI "string \fBCurrentServerEncryption\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the current server encryption\&. \fP"
+.ti -1c
+.RI "string \fBCurrentClientEncryption\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the current client encryption\&. \fP"
+.ti -1c
+.RI "string \fBCurrentServerHmacAlgorithm\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the current server hash algorithm\&. \fP"
+.ti -1c
+.RI "string \fBCurrentClientHmacAlgorithm\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the current client hash algorithm\&. \fP"
+.ti -1c
+.RI "string \fBCurrentHostKeyAlgorithm\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the current host key algorithm\&. \fP"
+.ti -1c
+.RI "string \fBCurrentServerCompressionAlgorithm\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the current server compression algorithm\&. \fP"
+.ti -1c
+.RI "string \fBServerVersion\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the server version\&. \fP"
+.ti -1c
+.RI "string \fBClientVersion\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet the client version\&. \fP"
+.ti -1c
+.RI "string \fBCurrentClientCompressionAlgorithm\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the current client compression algorithm\&. \fP"
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "EventHandler
+.br
+< \fBAuthenticationBannerEventArgs\fP > \fBAuthenticationBanner\fP"
+.br
+.RI "\fIOccurs when authentication banner is sent by the server\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents remote connection information class\&. 
+
+
+.PP
+Definition at line 22 of file ConnectionInfo\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.ConnectionInfo\&.ConnectionInfo (stringhost, stringusername, params \fBAuthenticationMethod\fP[]authenticationMethods)"
+
+.PP
+Initializes a new instance of the \fBConnectionInfo\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP The host\&.
+.br
+\fIusername\fP The username\&.
+.br
+\fIauthenticationMethods\fP The authentication methods\&.
+.RE
+.PP
+
+.PP
+Definition at line 211 of file ConnectionInfo\&.cs\&.
+.SS "Renci\&.SshNet\&.ConnectionInfo\&.ConnectionInfo (stringhost, intport, stringusername, params \fBAuthenticationMethod\fP[]authenticationMethods)"
+
+.PP
+Initializes a new instance of the \fBConnectionInfo\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP The host\&.
+.br
+\fIport\fP The port\&.
+.br
+\fIusername\fP The username\&.
+.br
+\fIauthenticationMethods\fP The authentication methods\&.
+.RE
+.PP
+
+.PP
+Definition at line 223 of file ConnectionInfo\&.cs\&.
+.SS "Renci\&.SshNet\&.ConnectionInfo\&.ConnectionInfo (stringhost, intport, stringusername, \fBProxyTypes\fPproxyType, stringproxyHost, intproxyPort, stringproxyUsername, stringproxyPassword, params \fBAuthenticationMethod\fP[]authenticationMethods)"
+
+.PP
+Initializes a new instance of the \fBConnectionInfo\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP Connection host\&.
+.br
+\fIport\fP Connection port\&.
+.br
+\fIusername\fP Connection username\&.
+.br
+\fIproxyType\fP Type of the proxy\&.
+.br
+\fIproxyHost\fP The proxy host\&.
+.br
+\fIproxyPort\fP The proxy port\&.
+.br
+\fIproxyUsername\fP The proxy username\&.
+.br
+\fIproxyPassword\fP The proxy password\&.
+.br
+\fIauthenticationMethods\fP The authentication methods\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentException\fP host
+.br
+\fISystem\&.ArgumentOutOfRangeException\fP proxyPort
+.br
+\fIArgumentException\fP \fIhost\fP  is invalid, or \fIusername\fP  is null or contains whitespace characters\&.
+.br
+\fIArgumentOutOfRangeException\fP \fIport\fP  is not within F:System\&.Net\&.IPEndPoint\&.MinPort and F:System\&.Net\&.IPEndPoint\&.MaxPort\&.
+.br
+\fIArgumentException\fP \fIhost\fP  is invalid, or \fIusername\fP  is null or contains whitespace characters\&.
+.RE
+.PP
+
+.PP
+Definition at line 247 of file ConnectionInfo\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool Renci\&.SshNet\&.ConnectionInfo\&.Authenticate (\fBSession\fPsession)"
+
+.PP
+Authenticates the specified session\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session to be authenticated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if authenticated; otherwise false\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIsession\fP  is null\&.
+.br
+\fISshAuthenticationException\fP No suitable authentication method found to complete authentication\&.
+.RE
+.PP
+
+.PP
+Definition at line 390 of file ConnectionInfo\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "IEnumerable<\fBAuthenticationMethod\fP> Renci\&.SshNet\&.ConnectionInfo\&.AuthenticationMethods\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets supported authentication methods for this connection\&. 
+.PP
+Definition at line 49 of file ConnectionInfo\&.cs\&.
+.SS "IDictionary<string, \fBRequestInfo\fP> Renci\&.SshNet\&.ConnectionInfo\&.ChannelRequests\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets supported channel requests for this connection\&. 
+.PP
+Definition at line 59 of file ConnectionInfo\&.cs\&.
+.SS "string Renci\&.SshNet\&.ConnectionInfo\&.ClientVersion\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get the client version\&. 
+.PP
+Definition at line 198 of file ConnectionInfo\&.cs\&.
+.SS "IDictionary<string, Type> Renci\&.SshNet\&.ConnectionInfo\&.CompressionAlgorithms\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets supported compression algorithms for this connection\&. 
+.PP
+Definition at line 54 of file ConnectionInfo\&.cs\&.
+.SS "string Renci\&.SshNet\&.ConnectionInfo\&.CurrentClientCompressionAlgorithm\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the current client compression algorithm\&. 
+.PP
+Definition at line 203 of file ConnectionInfo\&.cs\&.
+.SS "string Renci\&.SshNet\&.ConnectionInfo\&.CurrentClientEncryption\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the current client encryption\&. 
+.PP
+Definition at line 168 of file ConnectionInfo\&.cs\&.
+.SS "string Renci\&.SshNet\&.ConnectionInfo\&.CurrentClientHmacAlgorithm\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the current client hash algorithm\&. 
+.PP
+Definition at line 178 of file ConnectionInfo\&.cs\&.
+.SS "string Renci\&.SshNet\&.ConnectionInfo\&.CurrentHostKeyAlgorithm\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the current host key algorithm\&. 
+.PP
+Definition at line 183 of file ConnectionInfo\&.cs\&.
+.SS "string Renci\&.SshNet\&.ConnectionInfo\&.CurrentKeyExchangeAlgorithm\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the current key exchange algorithm\&. 
+.PP
+Definition at line 158 of file ConnectionInfo\&.cs\&.
+.SS "string Renci\&.SshNet\&.ConnectionInfo\&.CurrentServerCompressionAlgorithm\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the current server compression algorithm\&. 
+.PP
+Definition at line 188 of file ConnectionInfo\&.cs\&.
+.SS "string Renci\&.SshNet\&.ConnectionInfo\&.CurrentServerEncryption\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the current server encryption\&. 
+.PP
+Definition at line 163 of file ConnectionInfo\&.cs\&.
+.SS "string Renci\&.SshNet\&.ConnectionInfo\&.CurrentServerHmacAlgorithm\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the current server hash algorithm\&. 
+.PP
+Definition at line 173 of file ConnectionInfo\&.cs\&.
+.SS "Encoding Renci\&.SshNet\&.ConnectionInfo\&.Encoding\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the default encoding\&. The default encoding\&. 
+.PP
+Definition at line 129 of file ConnectionInfo\&.cs\&.
+.SS "IDictionary<string, \fBCipherInfo\fP> Renci\&.SshNet\&.ConnectionInfo\&.Encryptions\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets supported encryptions for this connection\&. 
+.PP
+Definition at line 34 of file ConnectionInfo\&.cs\&.
+.SS "IDictionary<string, \fBHashInfo\fP> Renci\&.SshNet\&.ConnectionInfo\&.HmacAlgorithms\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets supported hash algorithms for this connection\&. 
+.PP
+Definition at line 39 of file ConnectionInfo\&.cs\&.
+.SS "string Renci\&.SshNet\&.ConnectionInfo\&.Host\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets connection host\&. 
+.PP
+Definition at line 72 of file ConnectionInfo\&.cs\&.
+.SS "IDictionary<string, Func<byte[], \fBKeyHostAlgorithm\fP> > Renci\&.SshNet\&.ConnectionInfo\&.HostKeyAlgorithms\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets supported host key algorithms for this connection\&. 
+.PP
+Definition at line 44 of file ConnectionInfo\&.cs\&.
+.SS "bool Renci\&.SshNet\&.ConnectionInfo\&.IsAuthenticated\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets a value indicating whether connection is authenticated\&. \fCtrue\fP if connection is authenticated; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 67 of file ConnectionInfo\&.cs\&.
+.SS "IDictionary<string, Type> Renci\&.SshNet\&.ConnectionInfo\&.KeyExchangeAlgorithms\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets supported key exchange algorithms for this connection\&. 
+.PP
+Definition at line 29 of file ConnectionInfo\&.cs\&.
+.SS "int Renci\&.SshNet\&.ConnectionInfo\&.MaxSessions\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets maximum number of session channels to be open simultaneously\&. The max sessions\&. 
+.PP
+Definition at line 145 of file ConnectionInfo\&.cs\&.
+.SS "int Renci\&.SshNet\&.ConnectionInfo\&.Port\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets connection port\&. 
+.PP
+Definition at line 77 of file ConnectionInfo\&.cs\&.
+.SS "string Renci\&.SshNet\&.ConnectionInfo\&.ProxyHost\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets proxy connection host\&. 
+.PP
+Definition at line 95 of file ConnectionInfo\&.cs\&.
+.SS "string Renci\&.SshNet\&.ConnectionInfo\&.ProxyPassword\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets proxy connection password\&. 
+.PP
+Definition at line 110 of file ConnectionInfo\&.cs\&.
+.SS "int Renci\&.SshNet\&.ConnectionInfo\&.ProxyPort\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets proxy connection port\&. 
+.PP
+Definition at line 100 of file ConnectionInfo\&.cs\&.
+.SS "\fBProxyTypes\fP Renci\&.SshNet\&.ConnectionInfo\&.ProxyType\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets proxy type\&. The type of the proxy\&. 
+.PP
+Definition at line 90 of file ConnectionInfo\&.cs\&.
+.SS "string Renci\&.SshNet\&.ConnectionInfo\&.ProxyUsername\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets proxy connection username\&. 
+.PP
+Definition at line 105 of file ConnectionInfo\&.cs\&.
+.SS "int Renci\&.SshNet\&.ConnectionInfo\&.RetryAttempts\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets number of retry attempts when session channel creation failed\&. Number of retry attempts\&. 
+.PP
+Definition at line 137 of file ConnectionInfo\&.cs\&.
+.SS "string Renci\&.SshNet\&.ConnectionInfo\&.ServerVersion\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the server version\&. 
+.PP
+Definition at line 193 of file ConnectionInfo\&.cs\&.
+.SS "TimeSpan Renci\&.SshNet\&.ConnectionInfo\&.Timeout\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets connection timeout\&. Connection timeout\&. 
+.PP
+\fC \fP
+.PP
+\fC \fP
+.PP
+Definition at line 121 of file ConnectionInfo\&.cs\&.
+.SS "string Renci\&.SshNet\&.ConnectionInfo\&.Username\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets connection username\&. 
+.PP
+Definition at line 82 of file ConnectionInfo\&.cs\&.
+.SH "Event Documentation"
+.PP 
+.SS "EventHandler<\fBAuthenticationBannerEventArgs\fP> Renci\&.SshNet\&.ConnectionInfo\&.AuthenticationBanner"
+
+.PP
+Occurs when authentication banner is sent by the server\&. \fC \fP
+.PP
+\fC \fP
+.PP
+Definition at line 153 of file ConnectionInfo\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

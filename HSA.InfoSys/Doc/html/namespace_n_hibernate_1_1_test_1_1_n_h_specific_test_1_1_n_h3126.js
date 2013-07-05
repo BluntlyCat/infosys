@@ -1,0 +1,7 @@
+var namespace_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3126 =
+[
+    [ "InvalidCastWithGenericDictionaryOnCascadeTest", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3126_1_1_invalid_cast_with_generic_dictionary_on_cascade_test.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3126_1_1_invalid_cast_with_generic_dictionary_on_cascade_test" ],
+    [ "Item", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3126_1_1_item.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3126_1_1_item" ],
+    [ "Property", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3126_1_1_property.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3126_1_1_property" ],
+    [ "PropertyValue", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3126_1_1_property_value.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3126_1_1_property_value" ]
+];

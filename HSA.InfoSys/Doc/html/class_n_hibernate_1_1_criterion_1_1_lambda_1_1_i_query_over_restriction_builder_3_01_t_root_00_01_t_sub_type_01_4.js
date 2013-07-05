@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_criterion_1_1_lambda_1_1_i_query_over_restriction_builder_3_01_t_root_00_01_t_sub_type_01_4 =
+[
+    [ "IQueryOverRestrictionBuilder", "class_n_hibernate_1_1_criterion_1_1_lambda_1_1_i_query_over_restriction_builder_3_01_t_root_00_01_t_sub_type_01_4.html#a12efdc5a72405bfb1c7ead7c889775c9", null ],
+    [ "Not", "class_n_hibernate_1_1_criterion_1_1_lambda_1_1_i_query_over_restriction_builder_3_01_t_root_00_01_t_sub_type_01_4.html#a21c6b8285784b90f04672eee7a74ff7d", null ]
+];

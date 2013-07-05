@@ -1,0 +1,174 @@
+.TH "NHibernate.Mapping.ByCode.Impl.CustomizersHolder" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.ByCode.Impl.CustomizersHolder \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.ByCode\&.Impl\&.ICustomizersHolder\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAddCustomizer\fP (System\&.Type type, Action< \fBIClassMapper\fP > classCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (System\&.Type type, Action< \fBISubclassMapper\fP > classCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (System\&.Type type, Action< \fBIJoinedSubclassAttributesMapper\fP > classCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (System\&.Type type, Action< \fBIUnionSubclassAttributesMapper\fP > classCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (System\&.Type type, Action< \fBIComponentAttributesMapper\fP > classCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (System\&.Type type, Action< \fBIJoinAttributesMapper\fP > joinCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBIPropertyMapper\fP > propertyCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBIManyToOneMapper\fP > propertyCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBIOneToOneMapper\fP > propertyCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBIAnyMapper\fP > propertyCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBISetPropertiesMapper\fP > propertyCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBIBagPropertiesMapper\fP > propertyCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBIListPropertiesMapper\fP > propertyCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBIMapPropertiesMapper\fP > propertyCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBIIdBagPropertiesMapper\fP > propertyCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBICollectionPropertiesMapper\fP > propertyCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBIComponentAttributesMapper\fP > propertyCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBIComponentAsIdAttributesMapper\fP > propertyCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBIDynamicComponentAttributesMapper\fP > propertyCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBIManyToManyMapper\fP > collectionRelationManyToManyCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBIElementMapper\fP > collectionRelationElementCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBIOneToManyMapper\fP > collectionRelationOneToManyCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBIManyToAnyMapper\fP > collectionRelationManyToAnyCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBIMapKeyManyToManyMapper\fP > mapKeyManyToManyCustomizer)"
+.br
+.ti -1c
+.RI "void \fBAddCustomizer\fP (\fBPropertyPath\fP member, Action< \fBIMapKeyMapper\fP > mapKeyElementCustomizer)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (\fBPropertyPath\fP member, \fBIManyToAnyMapper\fP mapper)"
+.br
+.ti -1c
+.RI "IEnumerable< System\&.Type > \fBGetAllCustomizedEntities\fP ()"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (System\&.Type type, \fBIClassMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (System\&.Type type, \fBISubclassMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (System\&.Type type, \fBIJoinedSubclassAttributesMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (System\&.Type type, \fBIUnionSubclassAttributesMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (System\&.Type type, \fBIComponentAttributesMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (System\&.Type type, \fBIJoinAttributesMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (\fBPropertyPath\fP member, \fBIPropertyMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (\fBPropertyPath\fP member, \fBIManyToOneMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (\fBPropertyPath\fP member, \fBIOneToOneMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (\fBPropertyPath\fP member, \fBIAnyMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (\fBPropertyPath\fP member, \fBISetPropertiesMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (\fBPropertyPath\fP member, \fBIBagPropertiesMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (\fBPropertyPath\fP member, \fBIListPropertiesMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (\fBPropertyPath\fP member, \fBIMapPropertiesMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (\fBPropertyPath\fP member, \fBIIdBagPropertiesMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (\fBPropertyPath\fP member, \fBIComponentAttributesMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (\fBPropertyPath\fP member, \fBIComponentAsIdAttributesMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (\fBPropertyPath\fP member, \fBIDynamicComponentAttributesMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (\fBPropertyPath\fP member, \fBIManyToManyMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (\fBPropertyPath\fP member, \fBIElementMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (\fBPropertyPath\fP member, \fBIOneToManyMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (\fBPropertyPath\fP member, \fBIMapKeyManyToManyMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBInvokeCustomizers\fP (\fBPropertyPath\fP member, \fBIMapKeyMapper\fP mapper)"
+.br
+.ti -1c
+.RI "void \fBMerge\fP (\fBCustomizersHolder\fP source)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 7 of file CustomizersHolder\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

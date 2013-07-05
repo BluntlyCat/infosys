@@ -1,0 +1,63 @@
+.TH "NHibernate.Id.GuidGenerator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.GuidGenerator \- 
+.PP
+An \fBIIdentifierGenerator\fP that generates Guid values using \fBGuid\&.NewGuid()\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Id\&.IIdentifierGenerator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBGenerate\fP (\fBISessionImplementor\fP session, object obj)"
+.br
+.RI "\fIGenerate a new Guid for the identifier\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An \fBIIdentifierGenerator\fP that generates Guid values using \fBGuid\&.NewGuid()\fP\&. 
+
+This id generation strategy is specified in the mapping file as 
+.PP
+.nf
+&lt;generator class="guid" /&gt;
+
+.fi
+.PP
+ 
+.PP
+Definition at line 16 of file GuidGenerator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.Id\&.GuidGenerator\&.Generate (\fBISessionImplementor\fPsession, objectobj)"
+
+.PP
+Generate a new Guid for the identifier\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The ISessionImplementor this id is being generated in\&.
+.br
+\fIobj\fP The entity for which the id is being generated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new identifier as a Guid\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IIdentifierGenerator\fP\&.
+.PP
+Definition at line 26 of file GuidGenerator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

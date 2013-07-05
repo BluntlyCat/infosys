@@ -1,0 +1,91 @@
+.TH "NHibernate.Id.Assigned" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.Assigned \- 
+.PP
+An \fBIIdentifierGenerator\fP that returns the current identifier assigned to an instance\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Id\&.IIdentifierGenerator\fP, and \fBNHibernate\&.Id\&.IConfigurable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBGenerate\fP (\fBISessionImplementor\fP session, object obj)"
+.br
+.RI "\fIGenerates a new identifier by getting the value of the identifier for the \fCobj\fP parameter\&. \fP"
+.ti -1c
+.RI "void \fBConfigure\fP (\fBIType\fP type, IDictionary< string, string > parms, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIConfigure this instance, given the values of parameters specified by the user as \fC<param>\fP elements\&. This method is called just once, followed by instantiation\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An \fBIIdentifierGenerator\fP that returns the current identifier assigned to an instance\&. 
+
+This id generation strategy is specified in the mapping file as 
+.PP
+.nf
+&lt;generator class="assigned" /&gt;
+
+.fi
+.PP
+ 
+.PP
+Definition at line 18 of file Assigned\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Id\&.Assigned\&.Configure (\fBIType\fPtype, IDictionary< string, string >parms, \fBDialect\&.Dialect\fPdialect)"
+
+.PP
+Configure this instance, given the values of parameters specified by the user as \fC<param>\fP elements\&. This method is called just once, followed by instantiation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The IType the identifier should be\&.
+.br
+\fIparms\fP An IDictionary of \fBParam\fP values that are keyed by parameter name\&.
+.br
+\fIdialect\fP The \fBDialect\&.Dialect\fP to help with Configuration\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IConfigurable\fP\&.
+.PP
+Definition at line 55 of file Assigned\&.cs\&.
+.SS "object NHibernate\&.Id\&.Assigned\&.Generate (\fBISessionImplementor\fPsession, objectobj)"
+
+.PP
+Generates a new identifier by getting the value of the identifier for the \fCobj\fP parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The ISessionImplementor this id is being generated in\&.
+.br
+\fIobj\fP The entity for which the id is being generated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value that was assigned to the mapped \fCid\fP's property\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBIdentifierGenerationException\fP\fP Thrown when a IPersistentCollection is passed in as the \fCobj\fP or if the identifier of \fCobj\fP is null\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IIdentifierGenerator\fP\&.
+.PP
+Definition at line 35 of file Assigned\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

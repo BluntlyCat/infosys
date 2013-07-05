@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_criterion_1_1_lambda_1_1_query_over_restriction_builder_base_3_01_t_return24b2479afcfb804a575a8a4ee83412cf =
+[
+    [ "LambdaBetweenBuilder", "class_n_hibernate_1_1_criterion_1_1_lambda_1_1_query_over_restriction_builder_base_3_01_t_return24b2479afcfb804a575a8a4ee83412cf.html#a7a16da420f096693c59ca824f1ae1f00", null ],
+    [ "And", "class_n_hibernate_1_1_criterion_1_1_lambda_1_1_query_over_restriction_builder_base_3_01_t_return24b2479afcfb804a575a8a4ee83412cf.html#ad82d017047bba4565ae09282b856591f", null ]
+];

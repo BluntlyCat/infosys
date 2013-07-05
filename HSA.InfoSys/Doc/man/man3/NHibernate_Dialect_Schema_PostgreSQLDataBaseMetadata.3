@@ -1,0 +1,210 @@
+.TH "NHibernate.Dialect.Schema.PostgreSQLDataBaseMetadata" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.Schema.PostgreSQLDataBaseMetadata \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPostgreSQLDataBaseMetadata\fP (DbConnection connection)"
+.br
+.ti -1c
+.RI "override \fBITableMetadata\fP \fBGetTableMetadata\fP (DataRow rs, bool extras)"
+.br
+.RI "\fIGet the Table MetaData\&. \fP"
+.ti -1c
+.RI "override DataTable \fBGetColumns\fP (string catalog, string schemaPattern, string tableNamePattern, string columnNamePattern)"
+.br
+.RI "\fIGets a description of the table columns available \fP"
+.ti -1c
+.RI "override DataTable \fBGetTables\fP (string catalog, string schemaPattern, string tableNamePattern, string[] types)"
+.br
+.RI "\fIGets a description of the tables available for the catalog \fP"
+.ti -1c
+.RI "override DataTable \fBGetIndexColumns\fP (string catalog, string schemaPattern, string tableName, string indexName)"
+.br
+.RI "\fIGet a description of the given table's indices and statistics\&. \fP"
+.ti -1c
+.RI "override DataTable \fBGetIndexInfo\fP (string catalog, string schemaPattern, string tableName)"
+.br
+.RI "\fIGet a description of the given table's indices and statistics\&. \fP"
+.ti -1c
+.RI "override DataTable \fBGetForeignKeys\fP (string catalog, string schema, string table)"
+.br
+.RI "\fIGets a description of the foreign keys available \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBStoresMixedCaseQuotedIdentifiers\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBStoresLowerCaseIdentifiers\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file PostgreSQLMetadata\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override DataTable NHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\&.GetColumns (stringcatalog, stringschemaPattern, stringtableNamePattern, stringcolumnNamePattern)\fC [virtual]\fP"
+
+.PP
+Gets a description of the table columns available 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcatalog\fP A catalog, retrieves those without a catalog
+.br
+\fIschemaPattern\fP \fBSchema\fP pattern, retrieves those without the schema
+.br
+\fItableNamePattern\fP A table name pattern
+.br
+\fIcolumnNamePattern\fP a columng name patterm
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A description of the table columns available
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\fP\&.
+.PP
+Definition at line 27 of file PostgreSQLMetadata\&.cs\&.
+.SS "override DataTable NHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\&.GetForeignKeys (stringcatalog, stringschema, stringtable)\fC [virtual]\fP"
+
+.PP
+Gets a description of the foreign keys available 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcatalog\fP A catalog, retrieves those without a catalog
+.br
+\fIschema\fP \fBSchema\fP name, retrieves those without the schema
+.br
+\fItable\fP A table name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A description of the foreign keys available
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\fP\&.
+.PP
+Definition at line 67 of file PostgreSQLMetadata\&.cs\&.
+.SS "override DataTable NHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\&.GetIndexColumns (stringcatalog, stringschemaPattern, stringtableName, stringindexName)\fC [virtual]\fP"
+
+.PP
+Get a description of the given table's indices and statistics\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcatalog\fP A catalog, retrieves those without a catalog
+.br
+\fIschemaPattern\fP \fBSchema\fP pattern, retrieves those without the schema
+.br
+\fItableName\fP A table name pattern
+.br
+\fIindexName\fP The name of the index
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A description of the table's indices available
+.RE
+.PP
+.PP
+The result is relative to the schema collections 'IndexColumns'\&.
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\fP\&.
+.PP
+Definition at line 47 of file PostgreSQLMetadata\&.cs\&.
+.SS "override DataTable NHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\&.GetIndexInfo (stringcatalog, stringschemaPattern, stringtableName)\fC [virtual]\fP"
+
+.PP
+Get a description of the given table's indices and statistics\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcatalog\fP A catalog, retrieves those without a catalog
+.br
+\fIschemaPattern\fP \fBSchema\fP pattern, retrieves those without the schema
+.br
+\fItableName\fP A table name pattern
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A description of the table's indices available
+.RE
+.PP
+.PP
+The result is relative to the schema collections 'Indexes'\&.
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\fP\&.
+.PP
+Definition at line 57 of file PostgreSQLMetadata\&.cs\&.
+.SS "override \fBITableMetadata\fP NHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\&.GetTableMetadata (DataRowrs, boolextras)\fC [virtual]\fP"
+
+.PP
+Get the Table MetaData\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The DataRow resultSet of \fBGetTables\fP\&.
+.br
+\fIextras\fP Include FKs and indexes
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\fP\&.
+.PP
+Definition at line 12 of file PostgreSQLMetadata\&.cs\&.
+.SS "override DataTable NHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\&.GetTables (stringcatalog, stringschemaPattern, stringtableNamePattern, string[]types)\fC [virtual]\fP"
+
+.PP
+Gets a description of the tables available for the catalog 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcatalog\fP A catalog, retrieves those without a catalog
+.br
+\fIschemaPattern\fP \fBSchema\fP pattern, retrieves those without the schema
+.br
+\fItableNamePattern\fP A table name pattern
+.br
+\fItypes\fP a list of table types to include
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Each row
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\fP\&.
+.PP
+Definition at line 37 of file PostgreSQLMetadata\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

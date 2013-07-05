@@ -1,0 +1,661 @@
+.TH "HSA.InfoSys.Common.Services.WCFServices.DbManager" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HSA.InfoSys.Common.Services.WCFServices.DbManager \- 
+.PP
+The DBManager handles database requests\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBHSA\&.InfoSys\&.Common\&.Services\&.Service\fP, and \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEmailNotifierSettings\fP \fBGetMailSettings\fP ()"
+.br
+.RI "\fIGets the mail settings\&. If there are none this method creates one and initializes them with default values\&. \fP"
+.ti -1c
+.RI "\fBNutchControllerClientSettings\fP \fBGetNutchClientSettings\fP ()"
+.br
+.RI "\fIGets the nutch client settings\&. If there are none this method creates one and initializes them with default values\&. \fP"
+.ti -1c
+.RI "\fBSolrSearchClientSettings\fP \fBGetSolrClientSettings\fP ()"
+.br
+.RI "\fIGets the solr client settings\&. If there are none this method creates one and initializes them with default values\&. \fP"
+.ti -1c
+.RI "\fBWCFSettings\fP \fBGetWcfSettings\fP ()"
+.br
+.RI "\fIGets the WCF controller settings\&. If there are none this method creates one and initializes them with default values\&. \fP"
+.ti -1c
+.RI "string[] \fBLoadThisEntities\fP (params object[] param)"
+.br
+.RI "\fILoads this instances from \fBNHibernate\fP eager\&. \fBNHibernate\fP supports lazy loading, so we need some functionality to load a reference to a foreign table too\&. \fP"
+.ti -1c
+.RI "string[] \fBGetAllUrls\fP ()"
+.br
+.RI "\fIGets all URLs\&. \fP"
+.ti -1c
+.RI "Guid \fBAddEntity\fP (\fBEntity\fP entity)"
+.br
+.RI "\fIAdds a new Object (Component, Issue, Source) and saves it in database\&. \fP"
+.ti -1c
+.RI "void \fBAddEntitys\fP (params \fBEntity\fP[] entities)"
+.br
+.RI "\fIAdds new Objects (Component, Issue, Source\&.\&.\&.) and saves it in database\&. \fP"
+.ti -1c
+.RI "Guid \fBUpdateEntity\fP (\fBEntity\fP entity)"
+.br
+.RI "\fISaves changings of a object in database\&. \fP"
+.ti -1c
+.RI "void \fBDeleteEntity\fP (\fBEntity\fP entity)"
+.br
+.RI "\fIDeletes the entity\&. \fP"
+.ti -1c
+.RI "\fBEntity\fP \fBGetEntity\fP (Guid entityGUID, string[] types=null)"
+.br
+.RI "\fIGets an entity from database\&. \fP"
+.ti -1c
+.RI "\fBOrgUnit\fP[] \fBGetOrgUnitsByUserId\fP (int userId, string[] types=null)"
+.br
+.RI "\fIGets the org units by user ID\&. \fP"
+.ti -1c
+.RI "Guid \fBGetOrgUnitGuidByOrgUnitConfigGuid\fP (Guid orgUnitConfigGUID, string[] types=null)"
+.br
+.RI "\fIGets the org unit GUID by org unit config GUID\&. \fP"
+.ti -1c
+.RI "\fBOrgUnitConfig\fP[] \fBGetOrgUnitConfigsByActiveScheduler\fP (string[] types=null)"
+.br
+.RI "\fIGets the org unit configurations by active scheduler\&. \fP"
+.ti -1c
+.RI "\fBComponent\fP[] \fBGetComponentsByOrgUnitId\fP (Guid orgUnitGuid)"
+.br
+.RI "\fIGets the components by org unit id\&. \fP"
+.ti -1c
+.RI "\fBResult\fP[] \fBGetResultsByComponentId\fP (Guid componentGUID)"
+.br
+.RI "\fIGets the results by component id\&. \fP"
+.ti -1c
+.RI "\fBOrgUnitConfig\fP[] \fBGetOrgUnitConfigurations\fP ()"
+.br
+.RI "\fIGets the scheduler times\&. \fP"
+.ti -1c
+.RI "string[] \fBGetEmailsByUrls\fP (string[] urls)"
+.br
+.RI "\fIGets the emails by urls\&. \fP"
+.ti -1c
+.RI "\fBComponent\fP \fBCreateComponent\fP (string componentName, Guid orgUnitGUID)"
+.br
+.RI "\fICreates a component object\&. \fP"
+.ti -1c
+.RI "\fBOrgUnit\fP \fBCreateOrgUnit\fP (int userId, string name)"
+.br
+.RI "\fICreates a OrgUnit object\&. \fP"
+.ti -1c
+.RI "\fBOrgUnitConfig\fP \fBCreateOrgUnitConfig\fP (string urls, string emails, bool emailNotification, int days, int time, bool schedulerActive)"
+.br
+.RI "\fICreates a OrgUnitConfig object\&. \fP"
+.ti -1c
+.RI "override void \fBStartService\fP ()"
+.br
+.RI "\fIStarts the service\&. \fP"
+.ti -1c
+.RI "override void \fBStopService\fP (bool cancel=false)"
+.br
+.RI "\fIStops the service\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBRun\fP ()"
+.br
+.RI "\fIRuns this instance\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "static \fBIDbManager\fP \fBManagerFactory\fP\fC [get]\fP"
+.br
+.RI "\fIGets the database manager\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The DBManager handles database requests\&. 
+
+
+.PP
+Definition at line 27 of file DBManager\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "Guid HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.AddEntity (\fBEntity\fPentity)"
+
+.PP
+Adds a new Object (Component, Issue, Source) and saves it in database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity to add in database\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIDbManagerAccessException\fP Thrown on error while accessing the database\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The GUID of the added entity\&.
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 370 of file DBManager\&.cs\&.
+.SS "void HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.AddEntitys (params \fBEntity\fP[]entities)"
+
+.PP
+Adds new Objects (Component, Issue, Source\&.\&.\&.) and saves it in database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentities\fP The entities\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIDbManagerAccessException\fP Thrown on error while accessing the database\&.
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 407 of file DBManager\&.cs\&.
+.SS "\fBComponent\fP HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.CreateComponent (stringcomponentName, GuidorgUnitGUID)"
+
+.PP
+Creates a component object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomponentName\fP Name of the component\&.
+.br
+\fIorgUnitGUID\fP The org unit GUID\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created component object\&. 
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 839 of file DBManager\&.cs\&.
+.SS "\fBOrgUnit\fP HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.CreateOrgUnit (intuserId, stringname)"
+
+.PP
+Creates a OrgUnit object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIuserId\fP The user id\&.
+.br
+\fIname\fP The system name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created OrgUnit object\&. 
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 860 of file DBManager\&.cs\&.
+.SS "\fBOrgUnitConfig\fP HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.CreateOrgUnitConfig (stringurls, stringemails, boolemailNotification, intdays, inttime, boolschedulerActive)"
+
+.PP
+Creates a OrgUnitConfig object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIurls\fP The URL\&.
+.br
+\fIemails\fP The email text\&.
+.br
+\fIemailNotification\fP if set to \fCtrue\fP [email notification]\&.
+.br
+\fIdays\fP The days\&.
+.br
+\fItime\fP The time\&.
+.br
+\fIschedulerActive\fP if set to \fCtrue\fP [scheduler active]\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created OrgUnitConfig object\&. 
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 885 of file DBManager\&.cs\&.
+.SS "void HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.DeleteEntity (\fBEntity\fPentity)"
+
+.PP
+Deletes the entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIDbManagerAccessException\fP Thrown on error while accessing the database\&.
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 477 of file DBManager\&.cs\&.
+.SS "string [] HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.GetAllUrls ()"
+
+.PP
+Gets all URLs\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIDbManagerAccessException\fP Thrown on error while accessing the database\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An array containing all URLs for crawling\&. 
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 326 of file DBManager\&.cs\&.
+.SS "\fBComponent\fP [] HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.GetComponentsByOrgUnitId (GuidorgUnitGuid)"
+
+.PP
+Gets the components by org unit id\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIorgUnitGuid\fP The org unit GUID\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIDbManagerAccessException\fP Thrown on error while accessing the database\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A list of components which belongs to the given OrgUnit\&. 
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 688 of file DBManager\&.cs\&.
+.SS "string [] HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.GetEmailsByUrls (string[]urls)"
+
+.PP
+Gets the emails by urls\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIurls\fP The urls\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A list of email addresses according to the url of an OrgUnitConfig\&. 
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 804 of file DBManager\&.cs\&.
+.SS "\fBEntity\fP HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.GetEntity (GuidentityGUID, string[]types = \fCnull\fP)"
+
+.PP
+Gets an entity from database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityGUID\fP The entity GUID\&.
+.br
+\fItypes\fP The types you want load eager\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIDbManagerAccessException\fP Thrown on error while accessing the database\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The entity you asked for\&. 
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 517 of file DBManager\&.cs\&.
+.SS "\fBEmailNotifierSettings\fP HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.GetMailSettings ()"
+
+.PP
+Gets the mail settings\&. If there are none this method creates one and initializes them with default values\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIDbManagerAccessException\fP Thrown on error while accessing the database\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The mail settings\&. 
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 151 of file DBManager\&.cs\&.
+.SS "\fBNutchControllerClientSettings\fP HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.GetNutchClientSettings ()"
+
+.PP
+Gets the nutch client settings\&. If there are none this method creates one and initializes them with default values\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIDbManagerAccessException\fP Thrown on error while accessing the database\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The nutch client settings\&. 
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 190 of file DBManager\&.cs\&.
+.SS "\fBOrgUnitConfig\fP [] HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.GetOrgUnitConfigsByActiveScheduler (string[]types = \fCnull\fP)"
+
+.PP
+Gets the org unit configurations by active scheduler\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItypes\fP The types\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIDbManagerAccessException\fP Thrown on error while accessing the database\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A list of Orgunit configurations where the \fBScheduler\fP is active\&. 
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 648 of file DBManager\&.cs\&.
+.SS "\fBOrgUnitConfig\fP [] HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.GetOrgUnitConfigurations ()"
+
+.PP
+Gets the scheduler times\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIDbManagerAccessException\fP Thrown on error while accessing the database\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBReturns:\fP
+.RS 4
+A list of all OrgUnitConfig objects\&.
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 771 of file DBManager\&.cs\&.
+.SS "Guid HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.GetOrgUnitGuidByOrgUnitConfigGuid (GuidorgUnitConfigGUID, string[]types = \fCnull\fP)"
+
+.PP
+Gets the org unit GUID by org unit config GUID\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIorgUnitConfigGUID\fP The org unit config GUID\&.
+.br
+\fItypes\fP The types\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The OrgUnitGUID of the OrgUnit belonging to the OrgUnitConfigGUID\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIDbManagerAccessException\fP Thrown on error while accessing the database\&.
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 613 of file DBManager\&.cs\&.
+.SS "\fBOrgUnit\fP [] HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.GetOrgUnitsByUserId (intuserId, string[]types = \fCnull\fP)"
+
+.PP
+Gets the org units by user ID\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIuserId\fP The user ID\&.
+.br
+\fItypes\fP The types\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIDbManagerAccessException\fP Thrown on error while accessing the database\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A list of org units for the user id\&. 
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 561 of file DBManager\&.cs\&.
+.SS "\fBResult\fP [] HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.GetResultsByComponentId (GuidcomponentGUID)"
+
+.PP
+Gets the results by component id\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomponentGUID\fP The component GUID\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIDbManagerAccessException\fP Thrown on error while accessing the database\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A list of results which belongs to the given component\&.
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 729 of file DBManager\&.cs\&.
+.SS "\fBSolrSearchClientSettings\fP HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.GetSolrClientSettings ()"
+
+.PP
+Gets the solr client settings\&. If there are none this method creates one and initializes them with default values\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIDbManagerAccessException\fP Thrown on error while accessing the database\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The solr client settings\&. 
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 229 of file DBManager\&.cs\&.
+.SS "\fBWCFSettings\fP HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.GetWcfSettings ()"
+
+.PP
+Gets the WCF controller settings\&. If there are none this method creates one and initializes them with default values\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIDbManagerAccessException\fP Thrown on error while accessing the database\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The WCF controller settings\&. 
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 268 of file DBManager\&.cs\&.
+.SS "string [] HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.LoadThisEntities (params object[]param)"
+
+.PP
+Loads this instances from \fBNHibernate\fP eager\&. \fBNHibernate\fP supports lazy loading, so we need some functionality to load a reference to a foreign table too\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparam\fP The names of the entities\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A list of entities \fBNHibernate\fP must load eager\&. 
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 309 of file DBManager\&.cs\&.
+.SS "override void HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.Run ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Runs this instance\&. 
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.Service\fP\&.
+.PP
+Definition at line 1067 of file DBManager\&.cs\&.
+.SS "override void HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.StartService ()\fC [virtual]\fP"
+
+.PP
+Starts the service\&. 
+.PP
+Reimplemented from \fBHSA\&.InfoSys\&.Common\&.Services\&.Service\fP\&.
+.PP
+Definition at line 1038 of file DBManager\&.cs\&.
+.SS "override void HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.StopService (boolcancel = \fCfalse\fP)\fC [virtual]\fP"
+
+.PP
+Stops the service\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcancel\fP if set to \fCtrue\fP [cancel]\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBHSA\&.InfoSys\&.Common\&.Services\&.Service\fP\&.
+.PP
+Definition at line 1050 of file DBManager\&.cs\&.
+.SS "Guid HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.UpdateEntity (\fBEntity\fPentity)"
+
+.PP
+Saves changings of a object in database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity that should be updated\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIDbManagerAccessException\fP Thrown on error while accessing the database\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The GUID of the updated entity\&.
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IDbManager\fP\&.
+.PP
+Definition at line 437 of file DBManager\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBIDbManager\fP HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\&.ManagerFactory\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Gets the database manager\&. The database manager\&. 
+.PP
+Definition at line 91 of file DBManager\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

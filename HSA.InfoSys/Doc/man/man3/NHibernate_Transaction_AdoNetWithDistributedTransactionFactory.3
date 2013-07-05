@@ -1,0 +1,70 @@
+.TH "NHibernate.Transaction.AdoNetWithDistributedTransactionFactory" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Transaction.AdoNetWithDistributedTransactionFactory \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Transaction\&.ITransactionFactory\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBDistributedTransactionContext\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBConfigure\fP (IDictionary props)"
+.br
+.RI "\fIConfigure from the given properties \fP"
+.ti -1c
+.RI "\fBITransaction\fP \fBCreateTransaction\fP (\fBISessionImplementor\fP session)"
+.br
+.RI "\fICreate a new transaction and return it without starting it\&. \fP"
+.ti -1c
+.RI "void \fBEnlistInDistributedTransactionIfNeeded\fP (\fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "bool \fBIsInDistributedActiveTransaction\fP (\fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "void \fBExecuteWorkInIsolation\fP (\fBISessionImplementor\fP session, \fBIIsolatedWork\fP work, bool transacted)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 10 of file AdoNetWithDistributedTransactionFactory\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Transaction\&.AdoNetWithDistributedTransactionFactory\&.Configure (IDictionaryprops)"
+
+.PP
+Configure from the given properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprops\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Transaction\&.ITransactionFactory\fP\&.
+.PP
+Definition at line 16 of file AdoNetWithDistributedTransactionFactory\&.cs\&.
+.SS "\fBITransaction\fP NHibernate\&.Transaction\&.AdoNetWithDistributedTransactionFactory\&.CreateTransaction (\fBISessionImplementor\fPsession)"
+
+.PP
+Create a new transaction and return it without starting it\&. 
+.PP
+Implements \fBNHibernate\&.Transaction\&.ITransactionFactory\fP\&.
+.PP
+Definition at line 20 of file AdoNetWithDistributedTransactionFactory\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

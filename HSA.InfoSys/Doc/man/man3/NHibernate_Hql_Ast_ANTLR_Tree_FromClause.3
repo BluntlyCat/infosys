@@ -1,0 +1,251 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Tree.FromClause" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Tree.FromClause \- 
+.PP
+Represents the 'FROM' part of a query or subquery, containing all mapped class references\&. Author: josh Ported by: Steve Strong  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.HqlSqlWalkerNode\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IDisplayableNode\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFromClause\fP (IToken token)"
+.br
+.ti -1c
+.RI "void \fBSetParentFromClause\fP (\fBFromClause\fP parentFromClause)"
+.br
+.ti -1c
+.RI "IList< \fBIASTNode\fP > \fBGetExplicitFromElements\fP ()"
+.br
+.ti -1c
+.RI "IList< \fBIASTNode\fP > \fBGetCollectionFetches\fP ()"
+.br
+.ti -1c
+.RI "\fBFromElement\fP \fBFindCollectionJoin\fP (String path)"
+.br
+.ti -1c
+.RI "bool \fBIsFromElementAlias\fP (string possibleAlias)"
+.br
+.RI "\fIConvenience method to check whether a given token represents a from-element alias\&. \fP"
+.ti -1c
+.RI "bool \fBContainsClassAlias\fP (string alias)"
+.br
+.RI "\fIReturns true if the from node contains the class alias name\&. \fP"
+.ti -1c
+.RI "bool \fBContainsTableAlias\fP (String alias)"
+.br
+.RI "\fIReturns true if the from node contains the table alias name\&. \fP"
+.ti -1c
+.RI "void \fBAddJoinByPathMap\fP (string path, \fBFromElement\fP destination)"
+.br
+.ti -1c
+.RI "void \fBAddCollectionJoinFromElementByPath\fP (string path, \fBFromElement\fP destination)"
+.br
+.ti -1c
+.RI "\fBFromElement\fP \fBAddFromElement\fP (string path, \fBIASTNode\fP alias)"
+.br
+.RI "\fIAdds a new from element to the from node\&. \fP"
+.ti -1c
+.RI "\fBFromElement\fP \fBGetFromElement\fP (string aliasOrClassName)"
+.br
+.RI "\fIRetreives the from-element represented by the given alias\&. \fP"
+.ti -1c
+.RI "IList< \fBIASTNode\fP > \fBGetFromElements\fP ()"
+.br
+.RI "\fIReturns the list of from elements in order\&. \fP"
+.ti -1c
+.RI "IList< \fBIASTNode\fP > \fBGetProjectionList\fP ()"
+.br
+.RI "\fIReturns the list of from elements that will be part of the result set\&. \fP"
+.ti -1c
+.RI "\fBFromElement\fP \fBGetFromElement\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddDuplicateAlias\fP (string alias, \fBFromElement\fP element)"
+.br
+.ti -1c
+.RI "\fBFromElement\fP \fBFindJoinByPath\fP (string path)"
+.br
+.RI "\fILook for an existing implicit or explicit join by the given path\&. \fP"
+.ti -1c
+.RI "string \fBGetDisplayText\fP ()"
+.br
+.RI "\fIReturns additional display text for the AST node\&. \fP"
+.ti -1c
+.RI "void \fBRegisterFromElement\fP (\fBFromElement\fP element)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBResolve\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBFromClause\fP \fBParentFromClause\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSubQuery\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents the 'FROM' part of a query or subquery, containing all mapped class references\&. Author: josh Ported by: Steve Strong 
+
+
+.PP
+Definition at line 16 of file FromClause\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBFromElement\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromClause\&.AddFromElement (stringpath, \fBIASTNode\fPalias)"
+
+.PP
+Adds a new from element to the from node\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The reference to the class\&.
+.br
+\fIalias\fP The alias AST\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new FROM element\&.
+.RE
+.PP
+
+.PP
+Definition at line 162 of file FromClause\&.cs\&.
+.SS "bool NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromClause\&.ContainsClassAlias (stringalias)"
+
+.PP
+Returns true if the from node contains the class alias name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP The HQL class alias name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the from node contains the class alias name\&.
+.RE
+.PP
+
+.PP
+Definition at line 104 of file FromClause\&.cs\&.
+.SS "bool NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromClause\&.ContainsTableAlias (Stringalias)"
+
+.PP
+Returns true if the from node contains the table alias name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP The SQL table alias name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the from node contains the table alias name\&.
+.RE
+.PP
+
+.PP
+Definition at line 122 of file FromClause\&.cs\&.
+.SS "\fBFromElement\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromClause\&.FindJoinByPath (stringpath)"
+
+.PP
+Look for an existing implicit or explicit join by the given path\&. 
+.PP
+Definition at line 228 of file FromClause\&.cs\&.
+.SS "string NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromClause\&.GetDisplayText ()"
+
+.PP
+Returns additional display text for the AST node\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The additional display text\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IDisplayableNode\fP\&.
+.PP
+Definition at line 252 of file FromClause\&.cs\&.
+.SS "\fBFromElement\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromClause\&.GetFromElement (stringaliasOrClassName)"
+
+.PP
+Retreives the from-element represented by the given alias\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaliasOrClassName\fP The alias by which to locate the from-element\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The from-element assigned the given alias, or null if none\&.
+.RE
+.PP
+
+.PP
+Definition at line 176 of file FromClause\&.cs\&.
+.SS "IList<\fBIASTNode\fP> NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromClause\&.GetFromElements ()"
+
+.PP
+Returns the list of from elements in order\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The list of from elements (instances of \fBFromElement\fP)\&.
+.RE
+.PP
+
+.PP
+Definition at line 197 of file FromClause\&.cs\&.
+.SS "IList<\fBIASTNode\fP> NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromClause\&.GetProjectionList ()"
+
+.PP
+Returns the list of from elements that will be part of the result set\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the list of from elements that will be part of the result set\&.
+.RE
+.PP
+
+.PP
+Definition at line 206 of file FromClause\&.cs\&.
+.SS "bool NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromClause\&.IsFromElementAlias (stringpossibleAlias)"
+
+.PP
+Convenience method to check whether a given token represents a from-element alias\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpossibleAlias\fP The potential from-element alias to check\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the possibleAlias is an alias to a from-element visible from this point in the query graph\&.
+.RE
+.PP
+
+.PP
+Definition at line 88 of file FromClause\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,1551 @@
+.TH "NHibernate.Criterion.QueryOver< TRoot, TSubType >" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.QueryOver< TRoot, TSubType > \- 
+.PP
+Implementation of the IQueryOver&lt;TRoot, TSubType&gt; interface  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Criterion\&.QueryOver< TRoot >\fP, and \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBAnd\fP (\fBExpression\fP< Func< TSubType, bool >> expression)"
+.br
+.RI "\fIAdd criterion expressed as a lambda expression \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBAnd\fP (\fBExpression\fP< Func< bool >> expression)"
+.br
+.RI "\fIAdd criterion expressed as a lambda expression \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBAnd\fP (\fBICriterion\fP expression)"
+.br
+.RI "\fIAdd arbitrary \fBICriterion\fP (e\&.g\&., to allow protected member access) \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBAndNot\fP (\fBExpression\fP< Func< TSubType, bool >> expression)"
+.br
+.RI "\fIAdd negation of criterion expressed as a lambda expression \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBAndNot\fP (\fBExpression\fP< Func< bool >> expression)"
+.br
+.RI "\fIAdd negation of criterion expressed as a lambda expression \fP"
+.ti -1c
+.RI "QueryOverRestrictionBuilder
+.br
+< TRoot, TSubType > \fBAndRestrictionOn\fP (\fBExpression\fP< Func< TSubType, object >> expression)"
+.br
+.RI "\fIAdd restriction to a property \fP"
+.ti -1c
+.RI "QueryOverRestrictionBuilder
+.br
+< TRoot, TSubType > \fBAndRestrictionOn\fP (\fBExpression\fP< Func< object >> expression)"
+.br
+.RI "\fIAdd restriction to a property \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBWhere\fP (\fBExpression\fP< Func< TSubType, bool >> expression)"
+.br
+.RI "\fIIdentical semantics to \fBAnd()\fP to allow more readable queries \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBWhere\fP (\fBExpression\fP< Func< bool >> expression)"
+.br
+.RI "\fIIdentical semantics to \fBAnd()\fP to allow more readable queries \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBWhere\fP (\fBICriterion\fP expression)"
+.br
+.RI "\fIAdd arbitrary \fBICriterion\fP (e\&.g\&., to allow protected member access) \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBWhereNot\fP (\fBExpression\fP< Func< TSubType, bool >> expression)"
+.br
+.RI "\fIIdentical semantics to \fBAndNot()\fP to allow more readable queries \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBWhereNot\fP (\fBExpression\fP< Func< bool >> expression)"
+.br
+.RI "\fIIdentical semantics to \fBAndNot()\fP to allow more readable queries \fP"
+.ti -1c
+.RI "QueryOverRestrictionBuilder
+.br
+< TRoot, TSubType > \fBWhereRestrictionOn\fP (\fBExpression\fP< Func< TSubType, object >> expression)"
+.br
+.RI "\fIIdentical semantics to \fBAndRestrictionOn()\fP to allow more readable queries \fP"
+.ti -1c
+.RI "QueryOverRestrictionBuilder
+.br
+< TRoot, TSubType > \fBWhereRestrictionOn\fP (\fBExpression\fP< Func< object >> expression)"
+.br
+.RI "\fIIdentical semantics to \fBAndRestrictionOn()\fP to allow more readable queries \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBSelect\fP (params \fBExpression\fP< Func< TRoot, object >>[] projections)"
+.br
+.RI "\fIAdd projection expressed as a lambda expression \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBSelect\fP (params \fBIProjection\fP[] projections)"
+.br
+.RI "\fIAdd arbitrary IProjections to query \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBSelectList\fP (Func< QueryOverProjectionBuilder< TRoot >, QueryOverProjectionBuilder< TRoot >> list)"
+.br
+.RI "\fICreate a list of projections using a projection builder \fP"
+.ti -1c
+.RI "QueryOverOrderBuilder< TRoot, 
+.br
+TSubType > \fBOrderBy\fP (\fBExpression\fP< Func< TSubType, object >> path)"
+.br
+.RI "\fIAdd order expressed as a lambda expression \fP"
+.ti -1c
+.RI "QueryOverOrderBuilder< TRoot, 
+.br
+TSubType > \fBOrderBy\fP (\fBExpression\fP< Func< object >> path)"
+.br
+.RI "\fIAdd order expressed as a lambda expression \fP"
+.ti -1c
+.RI "QueryOverOrderBuilder< TRoot, 
+.br
+TSubType > \fBOrderBy\fP (\fBIProjection\fP projection)"
+.br
+.RI "\fI\fBOrder\fP by arbitrary \fBIProjection\fP (e\&.g\&., to allow protected member access) \fP"
+.ti -1c
+.RI "QueryOverOrderBuilder< TRoot, 
+.br
+TSubType > \fBOrderByAlias\fP (\fBExpression\fP< Func< object >> path)"
+.br
+.RI "\fIAdd order for an aliased projection expressed as a lambda expression \fP"
+.ti -1c
+.RI "QueryOverOrderBuilder< TRoot, 
+.br
+TSubType > \fBThenBy\fP (\fBExpression\fP< Func< TSubType, object >> path)"
+.br
+.RI "\fIAdd order expressed as a lambda expression \fP"
+.ti -1c
+.RI "QueryOverOrderBuilder< TRoot, 
+.br
+TSubType > \fBThenBy\fP (\fBExpression\fP< Func< object >> path)"
+.br
+.RI "\fIAdd order expressed as a lambda expression \fP"
+.ti -1c
+.RI "QueryOverOrderBuilder< TRoot, 
+.br
+TSubType > \fBThenBy\fP (\fBIProjection\fP projection)"
+.br
+.RI "\fI\fBOrder\fP by arbitrary \fBIProjection\fP (e\&.g\&., to allow protected member access) \fP"
+.ti -1c
+.RI "QueryOverOrderBuilder< TRoot, 
+.br
+TSubType > \fBThenByAlias\fP (\fBExpression\fP< Func< object >> path)"
+.br
+.RI "\fIAdd order for an aliased projection expressed as a lambda expression \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBTransformUsing\fP (\fBIResultTransformer\fP resultTransformer)"
+.br
+.RI "\fI\fBTransform\fP the results using the supplied IResultTransformer \fP"
+.ti -1c
+.RI "QueryOverFetchBuilder< TRoot, 
+.br
+TSubType > \fBFetch\fP (\fBExpression\fP< Func< TRoot, object >> path)"
+.br
+.RI "\fISpecify an association fetching strategy\&. Currently, only one-to-many and one-to-one associations are supported\&. \fP"
+.ti -1c
+.RI "QueryOverLockBuilder< TRoot, 
+.br
+TSubType > \fBLock\fP ()"
+.br
+.RI "\fISet the lock mode of the current entity \fP"
+.ti -1c
+.RI "QueryOverLockBuilder< TRoot, 
+.br
+TSubType > \fBLock\fP (\fBExpression\fP< Func< object >> alias)"
+.br
+.RI "\fISet the lock mode of the aliased entity \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< TSubType, U >> path)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< U >> path)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< TSubType, U >> path, \fBExpression\fP< Func< U >> alias)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< U >> path, \fBExpression\fP< Func< U >> alias)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< TSubType, U >> path, \fBJoinType\fP joinType)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< U >> path, \fBJoinType\fP joinType)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< TSubType, U >> path, \fBExpression\fP< Func< U >> alias, \fBJoinType\fP joinType)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< TSubType, U >> path, \fBExpression\fP< Func< U >> alias, \fBJoinType\fP joinType, \fBICriterion\fP withClause)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< U >> path, \fBExpression\fP< Func< U >> alias, \fBJoinType\fP joinType)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< U >> path, \fBExpression\fP< Func< U >> alias, \fBJoinType\fP joinType, \fBICriterion\fP withClause)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< TSubType, IEnumerable< U >>> path, \fBExpression\fP< Func< U >> alias)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< IEnumerable< U >>> path, \fBExpression\fP< Func< U >> alias)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< TSubType, IEnumerable< U >>> path)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< IEnumerable< U >>> path)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< TSubType, IEnumerable< U >>> path, \fBExpression\fP< Func< U >> alias, \fBJoinType\fP joinType)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< TSubType, IEnumerable< U >>> path, \fBExpression\fP< Func< U >> alias, \fBJoinType\fP joinType, \fBICriterion\fP withClause)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< IEnumerable< U >>> path, \fBExpression\fP< Func< U >> alias, \fBJoinType\fP joinType)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< IEnumerable< U >>> path, \fBExpression\fP< Func< U >> alias, \fBJoinType\fP joinType, \fBICriterion\fP withClause)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< TSubType, IEnumerable< U >>> path, \fBJoinType\fP joinType)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, U > \fBJoinQueryOver< U >\fP (\fBExpression\fP< Func< IEnumerable< U >>> path, \fBJoinType\fP joinType)"
+.br
+.RI "\fICreates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBJoinAlias\fP (\fBExpression\fP< Func< TSubType, object >> path, \fBExpression\fP< Func< object >> alias)"
+.br
+.RI "\fIJoin an association, assigning an alias to the joined entity \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBJoinAlias\fP (\fBExpression\fP< Func< object >> path, \fBExpression\fP< Func< object >> alias)"
+.br
+.RI "\fIJoin an association, assigning an alias to the joined entity \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBJoinAlias\fP (\fBExpression\fP< Func< TSubType, object >> path, \fBExpression\fP< Func< object >> alias, \fBJoinType\fP joinType)"
+.br
+.RI "\fIJoin an association, assigning an alias to the joined entity \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBJoinAlias< U >\fP (\fBExpression\fP< Func< TSubType, U >> path, \fBExpression\fP< Func< U >> alias, \fBJoinType\fP joinType, \fBICriterion\fP withClause)"
+.br
+.RI "\fIJoin an association, assigning an alias to the joined entity \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBJoinAlias< U >\fP (\fBExpression\fP< Func< TSubType, IEnumerable< U >>> path, \fBExpression\fP< Func< U >> alias, \fBJoinType\fP joinType, \fBICriterion\fP withClause)"
+.br
+.RI "\fIJoin an association, assigning an alias to the joined entity \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBJoinAlias\fP (\fBExpression\fP< Func< object >> path, \fBExpression\fP< Func< object >> alias, \fBJoinType\fP joinType)"
+.br
+.RI "\fIJoin an association, assigning an alias to the joined entity \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBJoinAlias< U >\fP (\fBExpression\fP< Func< U >> path, \fBExpression\fP< Func< U >> alias, \fBJoinType\fP joinType, \fBICriterion\fP withClause)"
+.br
+.RI "\fIJoin an association, assigning an alias to the joined entity \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TSubType > \fBJoinAlias< U >\fP (\fBExpression\fP< Func< IEnumerable< U >>> path, \fBExpression\fP< Func< U >> alias, \fBJoinType\fP joinType, \fBICriterion\fP withClause)"
+.br
+.RI "\fIJoin an association, assigning an alias to the joined entity \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "QueryOverSubqueryBuilder
+.br
+< TRoot, TSubType > \fBWithSubquery\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "QueryOverJoinBuilder< TRoot, 
+.br
+TSubType > \fBInner\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "QueryOverJoinBuilder< TRoot, 
+.br
+TSubType > \fBLeft\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "QueryOverJoinBuilder< TRoot, 
+.br
+TSubType > \fBRight\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "QueryOverJoinBuilder< TRoot, 
+.br
+TSubType > \fBFull\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Implementation of the IQueryOver&lt;TRoot, TSubType&gt; interface 
+
+
+.PP
+Definition at line 279 of file QueryOver\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.And (\fBExpression\fP< Func< TSubType, bool >>expression)"
+
+.PP
+Add criterion expressed as a lambda expression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP \fBLambda\fP expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 320 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.And (\fBExpression\fP< Func< bool >>expression)"
+
+.PP
+Add criterion expressed as a lambda expression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP \fBLambda\fP expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 325 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.And (\fBICriterion\fPexpression)"
+
+.PP
+Add arbitrary \fBICriterion\fP (e\&.g\&., to allow protected member access) 
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 330 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.AndNot (\fBExpression\fP< Func< TSubType, bool >>expression)"
+
+.PP
+Add negation of criterion expressed as a lambda expression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP \fBLambda\fP expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 335 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.AndNot (\fBExpression\fP< Func< bool >>expression)"
+
+.PP
+Add negation of criterion expressed as a lambda expression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP \fBLambda\fP expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 340 of file QueryOver\&.cs\&.
+.SS "QueryOverRestrictionBuilder<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.AndRestrictionOn (\fBExpression\fP< Func< TSubType, object >>expression)"
+
+.PP
+Add restriction to a property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP \fBLambda\fP expression containing path to property
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 345 of file QueryOver\&.cs\&.
+.SS "QueryOverRestrictionBuilder<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.AndRestrictionOn (\fBExpression\fP< Func< object >>expression)"
+
+.PP
+Add restriction to a property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP \fBLambda\fP expression containing path to property
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 350 of file QueryOver\&.cs\&.
+.SS "QueryOverFetchBuilder<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.Fetch (\fBExpression\fP< Func< TRoot, object >>path)"
+
+.PP
+Specify an association fetching strategy\&. Currently, only one-to-many and one-to-one associations are supported\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP A lambda expression path (e\&.g\&., ChildList[0]\&.Granchildren[0]\&.Pets)\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 464 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinAlias (\fBExpression\fP< Func< TSubType, object >>path, \fBExpression\fP< Func< object >>alias)"
+
+.PP
+Join an association, assigning an alias to the joined entity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 647 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinAlias (\fBExpression\fP< Func< object >>path, \fBExpression\fP< Func< object >>alias)"
+
+.PP
+Join an association, assigning an alias to the joined entity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 655 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinAlias (\fBExpression\fP< Func< TSubType, object >>path, \fBExpression\fP< Func< object >>alias, \fBJoinType\fPjoinType)"
+
+.PP
+Join an association, assigning an alias to the joined entity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.br
+\fIjoinType\fP \fBType\fP of join
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 663 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinAlias (\fBExpression\fP< Func< object >>path, \fBExpression\fP< Func< object >>alias, \fBJoinType\fPjoinType)"
+
+.PP
+Join an association, assigning an alias to the joined entity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.br
+\fIjoinType\fP \fBType\fP of join
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 689 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.\fBJoinAlias\fP< U > (\fBExpression\fP< Func< TSubType, U >>path, \fBExpression\fP< Func< U >>alias, \fBJoinType\fPjoinType, \fBICriterion\fPwithClause)"
+
+.PP
+Join an association, assigning an alias to the joined entity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.br
+\fIjoinType\fP \fBType\fP of join
+.br
+\fIwithClause\fP Additional criterion for the SQL on clause
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 671 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.\fBJoinAlias\fP< U > (\fBExpression\fP< Func< TSubType, IEnumerable< U >>>path, \fBExpression\fP< Func< U >>alias, \fBJoinType\fPjoinType, \fBICriterion\fPwithClause)"
+
+.PP
+Join an association, assigning an alias to the joined entity 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria (type of the collection)
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.br
+\fIjoinType\fP \fBType\fP of join
+.br
+\fIwithClause\fP Additional criterion for the SQL on clause
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 680 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.\fBJoinAlias\fP< U > (\fBExpression\fP< Func< U >>path, \fBExpression\fP< Func< U >>alias, \fBJoinType\fPjoinType, \fBICriterion\fPwithClause)"
+
+.PP
+Join an association, assigning an alias to the joined entity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.br
+\fIjoinType\fP \fBType\fP of join
+.br
+\fIwithClause\fP Additional criterion for the SQL on clause
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 697 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.\fBJoinAlias\fP< U > (\fBExpression\fP< Func< IEnumerable< U >>>path, \fBExpression\fP< Func< U >>alias, \fBJoinType\fPjoinType, \fBICriterion\fPwithClause)"
+
+.PP
+Join an association, assigning an alias to the joined entity 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria (type of the collection)
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.br
+\fIjoinType\fP \fBType\fP of join
+.br
+\fIwithClause\fP Additional criterion for the SQL on clause
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 706 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< TSubType, U >>path)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 479 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< U >>path)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 486 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< TSubType, U >>path, \fBExpression\fP< Func< U >>alias)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 493 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< U >>path, \fBExpression\fP< Func< U >>alias)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 501 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< TSubType, U >>path, \fBJoinType\fPjoinType)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIjoinType\fP \fBType\fP of join
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 509 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< U >>path, \fBJoinType\fPjoinType)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIjoinType\fP \fBType\fP of join
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 517 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< TSubType, U >>path, \fBExpression\fP< Func< U >>alias, \fBJoinType\fPjoinType)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.br
+\fIjoinType\fP \fBType\fP of join
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 525 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< TSubType, U >>path, \fBExpression\fP< Func< U >>alias, \fBJoinType\fPjoinType, \fBICriterion\fPwithClause)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.br
+\fIjoinType\fP \fBType\fP of join
+.br
+\fIwithClause\fP Additional criterion for the SQL on clause
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 534 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< U >>path, \fBExpression\fP< Func< U >>alias, \fBJoinType\fPjoinType)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.br
+\fIjoinType\fP \fBType\fP of join
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 544 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< U >>path, \fBExpression\fP< Func< U >>alias, \fBJoinType\fPjoinType, \fBICriterion\fPwithClause)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.br
+\fIjoinType\fP \fBType\fP of join
+.br
+\fIwithClause\fP Additional criterion for the SQL on clause
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 553 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< TSubType, IEnumerable< U >>>path, \fBExpression\fP< Func< U >>alias)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria (type of the collection)
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 563 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< IEnumerable< U >>>path, \fBExpression\fP< Func< U >>alias)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria (type of the collection)
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 571 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< TSubType, IEnumerable< U >>>path)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria (type of the collection)
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 579 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< IEnumerable< U >>>path)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria (type of the collection)
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 586 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< TSubType, IEnumerable< U >>>path, \fBExpression\fP< Func< U >>alias, \fBJoinType\fPjoinType)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria (type of the collection)
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.br
+\fIjoinType\fP \fBType\fP of join
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 593 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< TSubType, IEnumerable< U >>>path, \fBExpression\fP< Func< U >>alias, \fBJoinType\fPjoinType, \fBICriterion\fPwithClause)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria (type of the collection)
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.br
+\fIjoinType\fP \fBType\fP of join
+.br
+\fIwithClause\fP Additional criterion for the SQL on clause
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 602 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< IEnumerable< U >>>path, \fBExpression\fP< Func< U >>alias, \fBJoinType\fPjoinType)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria (type of the collection)
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.br
+\fIjoinType\fP \fBType\fP of join
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 612 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< IEnumerable< U >>>path, \fBExpression\fP< Func< U >>alias, \fBJoinType\fPjoinType, \fBICriterion\fPwithClause)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria (type of the collection)
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIalias\fP \fBLambda\fP expression returning alias reference
+.br
+\fIjoinType\fP \fBType\fP of join
+.br
+\fIwithClause\fP Additional criterion for the SQL on clause
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 621 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< TSubType, IEnumerable< U >>>path, \fBJoinType\fPjoinType)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria (type of the collection)
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIjoinType\fP \fBType\fP of join
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 631 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,U> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.JoinQueryOver< U > (\fBExpression\fP< Func< IEnumerable< U >>>path, \fBJoinType\fPjoinType)"
+
+.PP
+Creates a new \fBNHibernate\&.IQueryOver\fP<TRoot, U>, 'rooted' at the associated entity specifying a collection for the join\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIU\fP \fBType\fP of sub-criteria (type of the collection)
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression returning association path
+.br
+\fIjoinType\fP \fBType\fP of join
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 639 of file QueryOver\&.cs\&.
+.SS "QueryOverLockBuilder<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.Lock ()"
+
+.PP
+Set the lock mode of the current entity 
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 469 of file QueryOver\&.cs\&.
+.SS "QueryOverLockBuilder<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.Lock (\fBExpression\fP< Func< object >>alias)"
+
+.PP
+Set the lock mode of the aliased entity 
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 474 of file QueryOver\&.cs\&.
+.SS "QueryOverOrderBuilder<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.OrderBy (\fBExpression\fP< Func< TSubType, object >>path)"
+
+.PP
+Add order expressed as a lambda expression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 413 of file QueryOver\&.cs\&.
+.SS "QueryOverOrderBuilder<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.OrderBy (\fBExpression\fP< Func< object >>path)"
+
+.PP
+Add order expressed as a lambda expression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 418 of file QueryOver\&.cs\&.
+.SS "QueryOverOrderBuilder<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.OrderBy (\fBIProjection\fPprojection)"
+
+.PP
+\fBOrder\fP by arbitrary \fBIProjection\fP (e\&.g\&., to allow protected member access) 
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 423 of file QueryOver\&.cs\&.
+.SS "QueryOverOrderBuilder<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.OrderByAlias (\fBExpression\fP< Func< object >>path)"
+
+.PP
+Add order for an aliased projection expressed as a lambda expression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 428 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.Select (params \fBExpression\fP< Func< TRoot, object >>[]projections)"
+
+.PP
+Add projection expressed as a lambda expression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojections\fP \fBLambda\fP expressions
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 390 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.Select (params \fBIProjection\fP[]projections)"
+
+.PP
+Add arbitrary IProjections to query 
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 401 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot, TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.SelectList (Func< QueryOverProjectionBuilder< TRoot >, QueryOverProjectionBuilder< TRoot >>list)"
+
+.PP
+Create a list of projections using a projection builder 
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 407 of file QueryOver\&.cs\&.
+.SS "QueryOverOrderBuilder<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.ThenBy (\fBExpression\fP< Func< TSubType, object >>path)"
+
+.PP
+Add order expressed as a lambda expression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 433 of file QueryOver\&.cs\&.
+.SS "QueryOverOrderBuilder<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.ThenBy (\fBExpression\fP< Func< object >>path)"
+
+.PP
+Add order expressed as a lambda expression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 438 of file QueryOver\&.cs\&.
+.SS "QueryOverOrderBuilder<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.ThenBy (\fBIProjection\fPprojection)"
+
+.PP
+\fBOrder\fP by arbitrary \fBIProjection\fP (e\&.g\&., to allow protected member access) 
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 443 of file QueryOver\&.cs\&.
+.SS "QueryOverOrderBuilder<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.ThenByAlias (\fBExpression\fP< Func< object >>path)"
+
+.PP
+Add order for an aliased projection expressed as a lambda expression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP \fBLambda\fP expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 448 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.TransformUsing (\fBIResultTransformer\fPresultTransformer)"
+
+.PP
+\fBTransform\fP the results using the supplied IResultTransformer 
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 453 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.Where (\fBExpression\fP< Func< TSubType, bool >>expression)"
+
+.PP
+Identical semantics to \fBAnd()\fP to allow more readable queries 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP \fBLambda\fP expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 355 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.Where (\fBExpression\fP< Func< bool >>expression)"
+
+.PP
+Identical semantics to \fBAnd()\fP to allow more readable queries 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP \fBLambda\fP expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 360 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.Where (\fBICriterion\fPexpression)"
+
+.PP
+Add arbitrary \fBICriterion\fP (e\&.g\&., to allow protected member access) 
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 365 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.WhereNot (\fBExpression\fP< Func< TSubType, bool >>expression)"
+
+.PP
+Identical semantics to \fBAndNot()\fP to allow more readable queries 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP \fBLambda\fP expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 370 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.WhereNot (\fBExpression\fP< Func< bool >>expression)"
+
+.PP
+Identical semantics to \fBAndNot()\fP to allow more readable queries 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP \fBLambda\fP expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 375 of file QueryOver\&.cs\&.
+.SS "QueryOverRestrictionBuilder<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.WhereRestrictionOn (\fBExpression\fP< Func< TSubType, object >>expression)"
+
+.PP
+Identical semantics to \fBAndRestrictionOn()\fP to allow more readable queries 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP \fBLambda\fP expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 380 of file QueryOver\&.cs\&.
+.SS "QueryOverRestrictionBuilder<TRoot,TSubType> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot, TSubType >\&.WhereRestrictionOn (\fBExpression\fP< Func< object >>expression)"
+
+.PP
+Identical semantics to \fBAndRestrictionOn()\fP to allow more readable queries 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP \fBLambda\fP expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+criteria instance
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.PP
+Definition at line 385 of file QueryOver\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

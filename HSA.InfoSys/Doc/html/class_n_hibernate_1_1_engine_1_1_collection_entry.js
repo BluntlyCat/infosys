@@ -1,0 +1,27 @@
+var class_n_hibernate_1_1_engine_1_1_collection_entry =
+[
+    [ "CollectionEntry", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#a645d995f7a5a10b0bd42a6420e96b9e1", null ],
+    [ "CollectionEntry", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#aeae8c34441112384b10c6dd6804b9da5", null ],
+    [ "CollectionEntry", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#a89e05dbeab90db199aa652b2e2e683af", null ],
+    [ "AfterAction", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#a9be2a62f9f040b0ff9b47a72924dce6c", null ],
+    [ "GetOrphans", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#ab3c89773cb55417664a97585c20b360b", null ],
+    [ "IsSnapshotEmpty", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#a6dafed9749c5c8a50dc5593e6db8b4cb", null ],
+    [ "PostFlush", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#a382a153235897ae9146373ee72557add", null ],
+    [ "PostInitialize", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#a4d046112c482b6517cdb89f780b93322", null ],
+    [ "PreFlush", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#af670775fbd9dfdb8b5849dba49416464", null ],
+    [ "ToString", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#a19e58eddbfdeac97d71e7fc09ec72930", null ],
+    [ "CurrentKey", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#ace41e3ad76f5c6f2772df04d2ce3f491", null ],
+    [ "CurrentPersister", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#a8a79202efb462de89f7c71d0e43246dd", null ],
+    [ "IsDorecreate", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#a48c8279b0c6c19ef98f2aa0ba1a83cea", null ],
+    [ "IsDoremove", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#a3a1ea4150d5ae9f41abfac11c0d4d82c", null ],
+    [ "IsDoupdate", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#aad3dd65082c394246131d57175dd89d4", null ],
+    [ "IsIgnore", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#aaa15235d49099765e7beebc2c0572613", null ],
+    [ "IsProcessed", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#a9e4f4aa033813c928304200e4811a431", null ],
+    [ "IsReached", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#a6bac450d3b43b4dcfca44750fc2804fa", null ],
+    [ "Key", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#ae5db39ffc5c32da030da648e58d3016d", null ],
+    [ "LoadedKey", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#ab1df8dc002be171abc23854ad4c5846d", null ],
+    [ "LoadedPersister", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#a99fd43eac1de8083ff93dc021b56c81c", null ],
+    [ "Role", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#adc43499583239933b81f0de059eddabc", null ],
+    [ "Snapshot", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#a7ef54cf677fe4328a4254900a0a1ef72", null ],
+    [ "WasDereferenced", "class_n_hibernate_1_1_engine_1_1_collection_entry.html#a4cd53bf769aa388b2cb730d8ff1e8d9e", null ]
+];

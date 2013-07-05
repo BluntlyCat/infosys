@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_columns_naming_convetions_1_1_my_class =
+[
+    [ "Id", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_columns_naming_convetions_1_1_my_class.html#a5bd9da9c2bb4b6aecf3fb2a8466e8656", null ],
+    [ "Something", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_columns_naming_convetions_1_1_my_class.html#a3d9c6e1b04956d2cd563b9c088d44563", null ]
+];

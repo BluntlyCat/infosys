@@ -1,0 +1,107 @@
+.TH "NHibernate.Loader.Criteria.CriteriaJoinWalker" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Loader.Criteria.CriteriaJoinWalker \- 
+.PP
+A \fBJoinWalker\fP for \fBICriteria\fP queries\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Loader\&.AbstractEntityJoinWalker\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCriteriaJoinWalker\fP (\fBIOuterJoinLoadable\fP persister, \fBCriteriaQueryTranslator\fP translator, \fBISessionFactoryImplementor\fP factory, \fBICriteria\fP criteria, string rootEntityName, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBWalkEntityTree\fP (\fBIOuterJoinLoadable\fP persister, string alias, string path, int currentDepth)"
+.br
+.RI "\fIFor an entity class, add to a list of associations to be fetched by outerjoin \fP"
+.ti -1c
+.RI "override \fBJoinType\fP \fBGetJoinType\fP (\fBIAssociationType\fP type, \fBFetchMode\fP config, string path, string lhsTable, string[] lhsColumns, bool nullable, int currentDepth, \fBCascadeStyle\fP cascadeStyle)"
+.br
+.RI "\fIGet the join type (inner, outer, etc) or -1 if the association should not be joined\&. Override on subclasses\&. \fP"
+.ti -1c
+.RI "override string \fBGenerateTableAlias\fP (int n, string path, \fBIJoinable\fP joinable)"
+.br
+.ti -1c
+.RI "override string \fBGenerateRootAlias\fP (string tableName)"
+.br
+.ti -1c
+.RI "override \fBSqlString\fP \fBGetWithClause\fP (string path)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIType\fP[] \fBResultTypes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBUserAliases\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBSqlString\fP \fBWhereFragment\fP\fC [get]\fP"
+.br
+.RI "\fIUse the discriminator, to narrow the select to instances of the queried subclass, also applying any filters\&. \fP"
+.ti -1c
+.RI "ISet< string > \fBQuerySpaces\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBComment\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A \fBJoinWalker\fP for \fBICriteria\fP queries\&. 
+
+
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBCriteriaLoader\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 18 of file CriteriaJoinWalker\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBJoinType\fP NHibernate\&.Loader\&.Criteria\&.CriteriaJoinWalker\&.GetJoinType (\fBIAssociationType\fPtype, \fBFetchMode\fPconfig, stringpath, stringlhsTable, string[]lhsColumns, boolnullable, intcurrentDepth, \fBCascadeStyle\fPcascadeStyle)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Get the join type (inner, outer, etc) or -1 if the association should not be joined\&. Override on subclasses\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Loader\&.JoinWalker\fP\&.
+.PP
+Definition at line 113 of file CriteriaJoinWalker\&.cs\&.
+.SS "override void NHibernate\&.Loader\&.Criteria\&.CriteriaJoinWalker\&.WalkEntityTree (\fBIOuterJoinLoadable\fPpersister, stringalias, stringpath, intcurrentDepth)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+For an entity class, add to a list of associations to be fetched by outerjoin 
+.PP
+Reimplemented from \fBNHibernate\&.Loader\&.JoinWalker\fP\&.
+.PP
+Definition at line 66 of file CriteriaJoinWalker\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override \fBSqlString\fP NHibernate\&.Loader\&.Criteria\&.CriteriaJoinWalker\&.WhereFragment\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Use the discriminator, to narrow the select to instances of the queried subclass, also applying any filters\&. 
+.PP
+Definition at line 99 of file CriteriaJoinWalker\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

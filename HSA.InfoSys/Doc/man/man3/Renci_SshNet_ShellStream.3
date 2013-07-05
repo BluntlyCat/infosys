@@ -1,0 +1,774 @@
+.TH "Renci.SshNet.ShellStream" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.ShellStream \- 
+.PP
+Contains operation for working with SSH \fBShell\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits Stream\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBFlush\fP ()"
+.br
+.RI "\fIClears all buffers for this stream and causes any buffered data to be written to the underlying device\&. \fP"
+.ti -1c
+.RI "override int \fBRead\fP (byte[] buffer, int offset, int count)"
+.br
+.RI "\fIReads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read\&. \fP"
+.ti -1c
+.RI "override long \fBSeek\fP (long offset, System\&.IO\&.SeekOrigin origin)"
+.br
+.RI "\fIThis method is not supported\&. \fP"
+.ti -1c
+.RI "override void \fBSetLength\fP (long value)"
+.br
+.RI "\fIThis method is not supported\&. \fP"
+.ti -1c
+.RI "override void \fBWrite\fP (byte[] buffer, int offset, int count)"
+.br
+.RI "\fIWrites a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written\&. \fP"
+.ti -1c
+.RI "void \fBExpect\fP (params \fBExpectAction\fP[] expectActions)"
+.br
+.RI "\fIExpects the specified expression and performs action when one is found\&. \fP"
+.ti -1c
+.RI "void \fBExpect\fP (TimeSpan timeout, params \fBExpectAction\fP[] expectActions)"
+.br
+.RI "\fIExpects the specified expression and performs action when one is found\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginExpect\fP (params \fBExpectAction\fP[] expectActions)"
+.br
+.RI "\fIBegins the expect\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginExpect\fP (AsyncCallback callback, params \fBExpectAction\fP[] expectActions)"
+.br
+.RI "\fIBegins the expect\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginExpect\fP (AsyncCallback callback, object state, params \fBExpectAction\fP[] expectActions)"
+.br
+.RI "\fIBegins the expect\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginExpect\fP (TimeSpan timeout, AsyncCallback callback, object state, params \fBExpectAction\fP[] expectActions)"
+.br
+.RI "\fIBegins the expect\&. \fP"
+.ti -1c
+.RI "string \fBEndExpect\fP (IAsyncResult asyncResult)"
+.br
+.RI "\fIEnds the execute\&. \fP"
+.ti -1c
+.RI "string \fBExpect\fP (string text)"
+.br
+.RI "\fIExpects the expression specified by text\&. \fP"
+.ti -1c
+.RI "string \fBExpect\fP (string text, TimeSpan timeout)"
+.br
+.RI "\fIExpects the expression specified by text\&. \fP"
+.ti -1c
+.RI "string \fBExpect\fP (Regex regex)"
+.br
+.RI "\fIExpects the expression specified by regular expression\&. \fP"
+.ti -1c
+.RI "string \fBExpect\fP (Regex regex, TimeSpan timeout)"
+.br
+.RI "\fIExpects the expression specified by regular expression\&. \fP"
+.ti -1c
+.RI "string \fBReadLine\fP ()"
+.br
+.RI "\fIReads the line from the shell\&. If line is not available it will block the execution and will wait for new line\&. \fP"
+.ti -1c
+.RI "string \fBReadLine\fP (TimeSpan timeout)"
+.br
+.RI "\fIReads the line from the shell\&. If line is not available it will block the execution and will wait for new line\&. \fP"
+.ti -1c
+.RI "string \fBRead\fP ()"
+.br
+.RI "\fIReads text available in the shell\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (string text)"
+.br
+.RI "\fIWrites the specified text to the shell\&. \fP"
+.ti -1c
+.RI "void \fBWriteLine\fP (string line)"
+.br
+.RI "\fIWrites the line to the shell\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIReleases the unmanaged resources used by the T:System\&.IO\&.Stream and optionally releases the managed resources\&. \fP"
+.ti -1c
+.RI "void \fBWaitHandle\fP (WaitHandle waitHandle)"
+.br
+.RI "\fIWaits for the handle to be signaled or for an error to occurs\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBDataAvailable\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value that indicates whether data is available on the \fBShellStream\fP to be read\&. \fP"
+.ti -1c
+.RI "override bool \fBCanRead\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether the current stream supports reading\&. \fP"
+.ti -1c
+.RI "override bool \fBCanSeek\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether the current stream supports seeking\&. \fP"
+.ti -1c
+.RI "override bool \fBCanWrite\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether the current stream supports writing\&. \fP"
+.ti -1c
+.RI "override long \fBLength\fP\fC [get]\fP"
+.br
+.RI "\fIGets the length in bytes of the stream\&. \fP"
+.ti -1c
+.RI "override long \fBPosition\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the position within the current stream\&. \fP"
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "EventHandler< \fBShellDataEventArgs\fP > \fBDataReceived\fP"
+.br
+.RI "\fIOccurs when data was received\&. \fP"
+.ti -1c
+.RI "EventHandler< \fBExceptionEventArgs\fP > \fBErrorOccurred\fP"
+.br
+.RI "\fIOccurs when an error occurred\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Contains operation for working with SSH \fBShell\fP\&. 
+
+Represents instance of the SSH shell object 
+.PP
+Definition at line 16 of file ShellStream\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "IAsyncResult Renci\&.SshNet\&.ShellStream\&.BeginExpect (params \fBExpectAction\fP[]expectActions)"
+
+.PP
+Begins the expect\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpectActions\fP The expect actions\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult that references the asynchronous operation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 335 of file ShellStream\&.cs\&.
+.SS "IAsyncResult Renci\&.SshNet\&.ShellStream\&.BeginExpect (AsyncCallbackcallback, params \fBExpectAction\fP[]expectActions)"
+
+.PP
+Begins the expect\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcallback\fP The callback\&.
+.br
+\fIexpectActions\fP The expect actions\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult that references the asynchronous operation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 348 of file ShellStream\&.cs\&.
+.SS "IAsyncResult Renci\&.SshNet\&.ShellStream\&.BeginExpect (AsyncCallbackcallback, objectstate, params \fBExpectAction\fP[]expectActions)"
+
+.PP
+Begins the expect\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcallback\fP The callback\&.
+.br
+\fIstate\fP The state\&.
+.br
+\fIexpectActions\fP The expect actions\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult that references the asynchronous operation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 362 of file ShellStream\&.cs\&.
+.SS "IAsyncResult Renci\&.SshNet\&.ShellStream\&.BeginExpect (TimeSpantimeout, AsyncCallbackcallback, objectstate, params \fBExpectAction\fP[]expectActions)"
+
+.PP
+Begins the expect\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItimeout\fP The timeout\&.
+.br
+\fIcallback\fP The callback\&.
+.br
+\fIstate\fP The state\&.
+.br
+\fIexpectActions\fP The expect actions\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult that references the asynchronous operation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 377 of file ShellStream\&.cs\&.
+.SS "override void Renci\&.SshNet\&.ShellStream\&.Dispose (booldisposing)\fC [protected]\fP"
+
+.PP
+Releases the unmanaged resources used by the T:System\&.IO\&.Stream and optionally releases the managed resources\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP true to release both managed and unmanaged resources; false to release only unmanaged resources\&.
+.RE
+.PP
+
+.PP
+Definition at line 670 of file ShellStream\&.cs\&.
+.SS "string Renci\&.SshNet\&.ShellStream\&.EndExpect (IAsyncResultasyncResult)"
+
+.PP
+Ends the execute\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIasyncResult\fP The async result\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentException\fP Either the IAsyncResult object did not come from the corresponding async method on this type, or EndExecute was called multiple times with the same IAsyncResult\&.
+.RE
+.PP
+
+.PP
+Definition at line 465 of file ShellStream\&.cs\&.
+.SS "void Renci\&.SshNet\&.ShellStream\&.Expect (params \fBExpectAction\fP[]expectActions)"
+
+.PP
+Expects the specified expression and performs action when one is found\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpectActions\fP The expected expressions and actions to perform\&.
+.RE
+.PP
+
+.PP
+Definition at line 263 of file ShellStream\&.cs\&.
+.SS "void Renci\&.SshNet\&.ShellStream\&.Expect (TimeSpantimeout, params \fBExpectAction\fP[]expectActions)"
+
+.PP
+Expects the specified expression and performs action when one is found\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItimeout\fP Time to wait for input\&.
+.br
+\fIexpectActions\fP The expected expressions and actions to perform, if the specified time elapsed and expected condition have not met, that method will exit without executing any action\&.
+.RE
+.PP
+
+.PP
+Definition at line 273 of file ShellStream\&.cs\&.
+.SS "string Renci\&.SshNet\&.ShellStream\&.Expect (stringtext)"
+
+.PP
+Expects the expression specified by text\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP The text to expect\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Text available in the shell that ends with expected text\&. 
+.RE
+.PP
+
+.PP
+Definition at line 483 of file ShellStream\&.cs\&.
+.SS "string Renci\&.SshNet\&.ShellStream\&.Expect (stringtext, TimeSpantimeout)"
+
+.PP
+Expects the expression specified by text\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP The text to expect\&.
+.br
+\fItimeout\fP Time to wait for input\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Text available in the shell that ends with expected text, if the specified time elapsed returns null\&. 
+.RE
+.PP
+
+.PP
+Definition at line 496 of file ShellStream\&.cs\&.
+.SS "string Renci\&.SshNet\&.ShellStream\&.Expect (Regexregex)"
+
+.PP
+Expects the expression specified by regular expression\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIregex\fP The regular expression to expect\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Text available in the shell that contains all the text that ends with expected expression\&.
+.RE
+.PP
+
+.PP
+Definition at line 506 of file ShellStream\&.cs\&.
+.SS "string Renci\&.SshNet\&.ShellStream\&.Expect (Regexregex, TimeSpantimeout)"
+
+.PP
+Expects the expression specified by regular expression\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIregex\fP The regular expression to expect\&.
+.br
+\fItimeout\fP Time to wait for input\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Text available in the shell that contains all the text that ends with expected expression, if the specified time elapsed returns null\&. 
+.RE
+.PP
+
+.PP
+Definition at line 519 of file ShellStream\&.cs\&.
+.SS "override void Renci\&.SshNet\&.ShellStream\&.Flush ()"
+
+.PP
+Clears all buffers for this stream and causes any buffered data to be written to the underlying device\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.IO\&.IOException\fP An I/O error occurs\&. 
+.RE
+.PP
+
+.PP
+Definition at line 110 of file ShellStream\&.cs\&.
+.SS "override int Renci\&.SshNet\&.ShellStream\&.Read (byte[]buffer, intoffset, intcount)"
+
+.PP
+Reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP An array of bytes\&. When this method returns, the buffer contains the specified byte array with the values between \fIoffset\fP  and (\fIoffset\fP  + \fIcount\fP  - 1) replaced by the bytes read from the current source\&.
+.br
+\fIoffset\fP The zero-based byte offset in \fIbuffer\fP  at which to begin storing the data read from the current stream\&.
+.br
+\fIcount\fP The maximum number of bytes to be read from the current stream\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The total number of bytes read into the buffer\&. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentException\fP The sum of \fIoffset\fP  and \fIcount\fP  is larger than the buffer length\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentNullException\fP \fIbuffer\fP  is null\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentOutOfRangeException\fP \fIoffset\fP  or \fIcount\fP  is negative\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.IO\&.IOException\fP An I/O error occurs\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.NotSupportedException\fP The stream does not support reading\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ObjectDisposedException\fP Methods were called after the stream was closed\&. 
+.RE
+.PP
+
+.PP
+Definition at line 177 of file ShellStream\&.cs\&.
+.SS "string Renci\&.SshNet\&.ShellStream\&.Read ()"
+
+.PP
+Reads text available in the shell\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The text available in the shell\&.
+.RE
+.PP
+
+.PP
+Definition at line 628 of file ShellStream\&.cs\&.
+.SS "string Renci\&.SshNet\&.ShellStream\&.ReadLine ()"
+
+.PP
+Reads the line from the shell\&. If line is not available it will block the execution and will wait for new line\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The line read from the shell\&.
+.RE
+.PP
+
+.PP
+Definition at line 567 of file ShellStream\&.cs\&.
+.SS "string Renci\&.SshNet\&.ShellStream\&.ReadLine (TimeSpantimeout)"
+
+.PP
+Reads the line from the shell\&. If line is not available it will block the execution and will wait for new line\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItimeout\fP Time to wait for input\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The line read from the shell, if the specified time elapsed returns null\&. 
+.RE
+.PP
+
+.PP
+Definition at line 579 of file ShellStream\&.cs\&.
+.SS "override long Renci\&.SshNet\&.ShellStream\&.Seek (longoffset, System\&.IO\&.SeekOriginorigin)"
+
+.PP
+This method is not supported\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoffset\fP A byte offset relative to the \fIorigin\fP  parameter\&.
+.br
+\fIorigin\fP A value of type T:System\&.IO\&.SeekOrigin indicating the reference point used to obtain the new position\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new position within the current stream\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.IO\&.IOException\fP An I/O error occurs\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.NotSupportedException\fP The stream does not support seeking, such as if the stream is constructed from a pipe or console output\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ObjectDisposedException\fP Methods were called after the stream was closed\&. 
+.RE
+.PP
+
+.PP
+Definition at line 205 of file ShellStream\&.cs\&.
+.SS "override void Renci\&.SshNet\&.ShellStream\&.SetLength (longvalue)"
+
+.PP
+This method is not supported\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The desired length of the current stream in bytes\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.IO\&.IOException\fP An I/O error occurs\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.NotSupportedException\fP The stream does not support both writing and seeking, such as if the stream is constructed from a pipe or console output\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ObjectDisposedException\fP Methods were called after the stream was closed\&. 
+.RE
+.PP
+
+.PP
+Definition at line 219 of file ShellStream\&.cs\&.
+.SS "void Renci\&.SshNet\&.ShellStream\&.WaitHandle (WaitHandlewaitHandle)\fC [protected]\fP"
+
+.PP
+Waits for the handle to be signaled or for an error to occurs\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwaitHandle\fP The wait handle\&.
+.RE
+.PP
+
+.PP
+Definition at line 697 of file ShellStream\&.cs\&.
+.SS "override void Renci\&.SshNet\&.ShellStream\&.Write (byte[]buffer, intoffset, intcount)"
+
+.PP
+Writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP An array of bytes\&. This method copies \fIcount\fP  bytes from \fIbuffer\fP  to the current stream\&.
+.br
+\fIoffset\fP The zero-based byte offset in \fIbuffer\fP  at which to begin copying bytes to the current stream\&.
+.br
+\fIcount\fP The number of bytes to be written to the current stream\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentException\fP The sum of \fIoffset\fP  and \fIcount\fP  is greater than the buffer length\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentNullException\fP \fIbuffer\fP  is null\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentOutOfRangeException\fP \fIoffset\fP  or \fIcount\fP  is negative\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.IO\&.IOException\fP An I/O error occurs\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.NotSupportedException\fP The stream does not support writing\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ObjectDisposedException\fP Methods were called after the stream was closed\&. 
+.RE
+.PP
+
+.PP
+Definition at line 243 of file ShellStream\&.cs\&.
+.SS "void Renci\&.SshNet\&.ShellStream\&.Write (stringtext)"
+
+.PP
+Writes the specified text to the shell\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP The text to be written to the shell\&.
+.RE
+.PP
+
+.PP
+Definition at line 645 of file ShellStream\&.cs\&.
+.SS "void Renci\&.SshNet\&.ShellStream\&.WriteLine (stringline)"
+
+.PP
+Writes the line to the shell\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIline\fP The line to be written to the shell\&.
+.RE
+.PP
+
+.PP
+Definition at line 660 of file ShellStream\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool Renci\&.SshNet\&.ShellStream\&.CanRead\fC [get]\fP"
+
+.PP
+Gets a value indicating whether the current stream supports reading\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the stream supports reading; otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 84 of file ShellStream\&.cs\&.
+.SS "override bool Renci\&.SshNet\&.ShellStream\&.CanSeek\fC [get]\fP"
+
+.PP
+Gets a value indicating whether the current stream supports seeking\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the stream supports seeking; otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 93 of file ShellStream\&.cs\&.
+.SS "override bool Renci\&.SshNet\&.ShellStream\&.CanWrite\fC [get]\fP"
+
+.PP
+Gets a value indicating whether the current stream supports writing\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the stream supports writing; otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 102 of file ShellStream\&.cs\&.
+.SS "bool Renci\&.SshNet\&.ShellStream\&.DataAvailable\fC [get]\fP"
+
+.PP
+Gets a value that indicates whether data is available on the \fBShellStream\fP to be read\&. \fCtrue\fP if data is available to be read; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 49 of file ShellStream\&.cs\&.
+.SS "override long Renci\&.SshNet\&.ShellStream\&.Length\fC [get]\fP"
+
+.PP
+Gets the length in bytes of the stream\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A long value representing the length of the stream in bytes\&.
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.NotSupportedException\fP A class derived from Stream does not support seeking\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ObjectDisposedException\fP Methods were called after the stream was closed\&. 
+.RE
+.PP
+
+.PP
+Definition at line 129 of file ShellStream\&.cs\&.
+.SS "override long Renci\&.SshNet\&.ShellStream\&.Position\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the position within the current stream\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The current position within the stream\&.
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.IO\&.IOException\fP An I/O error occurs\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.NotSupportedException\fP The stream does not support seeking\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ObjectDisposedException\fP Methods were called after the stream was closed\&. 
+.RE
+.PP
+
+.PP
+Definition at line 150 of file ShellStream\&.cs\&.
+.SH "Event Documentation"
+.PP 
+.SS "EventHandler<\fBShellDataEventArgs\fP> Renci\&.SshNet\&.ShellStream\&.DataReceived"
+
+.PP
+Occurs when data was received\&. 
+.PP
+Definition at line 35 of file ShellStream\&.cs\&.
+.SS "EventHandler<\fBExceptionEventArgs\fP> Renci\&.SshNet\&.ShellStream\&.ErrorOccurred"
+
+.PP
+Occurs when an error occurred\&. 
+.PP
+Definition at line 40 of file ShellStream\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_proxy_validator_1_1_fixture_1_1_invalid_non_virtual_protected_property =
+[
+    [ "NonVirtualProperty", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_proxy_validator_1_1_fixture_1_1_invalid_non_virtual_protected_property.html#a96e0fc091f34528febeaf3706733ffe4", null ]
+];

@@ -1,0 +1,326 @@
+.TH "NHibernate.Criterion.Example" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.Example \- 
+.PP
+Support for \fCQuery By \fBExample\fP\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "interface \fBIPropertySelector\fP"
+.br
+.RI "\fIA strategy for choosing property values for inclusion in the query criteria \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBExample\fP \fBSetEscapeCharacter\fP (char?escapeCharacter)"
+.br
+.RI "\fISet escape character for 'like' clause\fP"
+.ti -1c
+.RI "\fBExample\fP \fBSetPropertySelector\fP (\fBIPropertySelector\fP selector)"
+.br
+.RI "\fISet the \fBIPropertySelector\fP for this \fBExample\fP\&. \fP"
+.ti -1c
+.RI "\fBExample\fP \fBExcludeZeroes\fP ()"
+.br
+.RI "\fISet the \fBIPropertySelector\fP for this \fBExample\fP to exclude zero-valued properties\&. \fP"
+.ti -1c
+.RI "\fBExample\fP \fBExcludeNone\fP ()"
+.br
+.RI "\fISet the \fBIPropertySelector\fP for this \fBExample\fP to exclude no properties\&. \fP"
+.ti -1c
+.RI "\fBExample\fP \fBExcludeNulls\fP ()"
+.br
+.ti -1c
+.RI "\fBExample\fP \fBEnableLike\fP (\fBMatchMode\fP matchMode)"
+.br
+.RI "\fIUse the 'like' operator for all string-valued properties with the specified \fBMatchMode\fP\&. \fP"
+.ti -1c
+.RI "\fBExample\fP \fBEnableLike\fP ()"
+.br
+.RI "\fIUse the 'like' operator for all string-valued properties\&. \fP"
+.ti -1c
+.RI "\fBExample\fP \fBIgnoreCase\fP ()"
+.br
+.ti -1c
+.RI "\fBExample\fP \fBExcludeProperty\fP (String name)"
+.br
+.RI "\fIExclude a particular named property \fP"
+.ti -1c
+.RI "override String \fBToString\fP ()"
+.br
+.RI "\fIGets a string representation of the \fBAbstractCriterion\fP\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBToSqlString\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIRender a SqlString for the expression\&. \fP"
+.ti -1c
+.RI "override \fBTypedValue\fP[] \fBGetTypedValues\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery)"
+.br
+.RI "\fIReturn typed values for all parameters in the rendered SQL fragment \fP"
+.ti -1c
+.RI "override \fBIProjection\fP[] \fBGetProjections\fP ()"
+.br
+.RI "\fIReturn all projections used in this criterion \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBExample\fP \fBCreate\fP (object entity)"
+.br
+.RI "\fICreate a new instance, which includes all non-null properties by default \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBExample\fP (object entity, \fBIPropertySelector\fP selector)"
+.br
+.RI "\fIInitialize a new instance of the \fBExample\fP class for a particular entity\&. \fP"
+.ti -1c
+.RI "void \fBAddPropertyTypedValue\fP (object value, \fBIType\fP type, IList list)"
+.br
+.RI "\fIAdds a TypedValue based on the \fCvalue\fP and \fCtype\fP parameters to the IList in the \fClist\fP parameter\&. \fP"
+.ti -1c
+.RI "void \fBAddComponentTypedValues\fP (string path, object component, \fBIAbstractComponentType\fP type, IList list, \fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery)"
+.br
+.ti -1c
+.RI "void \fBAppendPropertyCondition\fP (String propertyName, object propertyValue, \fBICriteria\fP criteria, \fBICriteriaQuery\fP cq, IDictionary< string, \fBIFilter\fP > enabledFilters, \fBSqlStringBuilder\fP builder)"
+.br
+.ti -1c
+.RI "virtual \fBICriterion\fP \fBGetNotNullPropertyCriterion\fP (object propertyValue, string propertyName)"
+.br
+.ti -1c
+.RI "void \fBAppendComponentCondition\fP (String path, object component, \fBIAbstractComponentType\fP type, \fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery, IDictionary< string, \fBIFilter\fP > enabledFilters, \fBSqlStringBuilder\fP builder)"
+.br
+.in -1c
+.SS "Static Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly \fBIPropertySelector\fP \fBNotNullOrEmptyString\fP = new NotNullOrEmptyStringPropertySelector()"
+.br
+.ti -1c
+.RI "static readonly \fBIPropertySelector\fP \fBAll\fP = new AllPropertySelector()"
+.br
+.ti -1c
+.RI "static readonly \fBIPropertySelector\fP \fBNotNullOrZero\fP = new NotNullOrZeroPropertySelector()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Support for \fCQuery By \fBExample\fP\fP\&. 
+
+\fC List results = session\&.CreateCriteria(typeof(Parent)) \&.Add( Example\&.Create(parent)\&.IgnoreCase() ) \&.CreateCriteria('child') \&.Add( \fBExample\&.Create\fP( parent\&.Child ) ) \&.List(); \fP 
+.PP
+'Examples' may be mixed and matched with 'Expressions' in the same \fBICriteria\fP 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBICriteria\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 30 of file Example\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Criterion\&.Example\&.Example (objectentity, \fBIPropertySelector\fPselector)\fC [protected]\fP"
+
+.PP
+Initialize a new instance of the \fBExample\fP class for a particular entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The Object that the \fBExample\fP is being built from\&.
+.br
+\fIselector\fP The \fBIPropertySelector\fP the \fBExample\fP should use\&.
+.RE
+.PP
+
+.PP
+Definition at line 246 of file Example\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Criterion\&.Example\&.AddPropertyTypedValue (objectvalue, \fBIType\fPtype, IListlist)\fC [protected]\fP"
+
+.PP
+Adds a TypedValue based on the \fCvalue\fP and \fCtype\fP parameters to the IList in the \fClist\fP parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value of the \fBProperty\fP\&.
+.br
+\fItype\fP The IType of the \fBProperty\fP\&.
+.br
+\fIlist\fP The IList to add the TypedValue to\&.
+.RE
+.PP
+.PP
+This method will add TypedValue objects to the \fClist\fP parameter\&. 
+.PP
+Definition at line 412 of file Example\&.cs\&.
+.SS "static \fBExample\fP NHibernate\&.Criterion\&.Example\&.Create (objectentity)\fC [static]\fP"
+
+.PP
+Create a new instance, which includes all non-null properties by default 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new instance of \fBExample\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 232 of file Example\&.cs\&.
+.SS "\fBExample\fP NHibernate\&.Criterion\&.Example\&.EnableLike (\fBMatchMode\fPmatchMode)"
+
+.PP
+Use the 'like' operator for all string-valued properties with the specified \fBMatchMode\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatchMode\fP The \fBMatchMode\fP to convert the string to the pattern for the \fClike\fP comparison\&. 
+.RE
+.PP
+
+.PP
+Definition at line 192 of file Example\&.cs\&.
+.SS "\fBExample\fP NHibernate\&.Criterion\&.Example\&.EnableLike ()"
+
+.PP
+Use the 'like' operator for all string-valued properties\&. The default \fBMatchMode\fP is \fBMatchMode\&.Exact\fP\&. 
+.PP
+Definition at line 205 of file Example\&.cs\&.
+.SS "\fBExample\fP NHibernate\&.Criterion\&.Example\&.ExcludeNone ()"
+
+.PP
+Set the \fBIPropertySelector\fP for this \fBExample\fP to exclude no properties\&. 
+.PP
+Definition at line 172 of file Example\&.cs\&.
+.SS "\fBExample\fP NHibernate\&.Criterion\&.Example\&.ExcludeProperty (Stringname)"
+
+.PP
+Exclude a particular named property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the property to exclude\&.
+.RE
+.PP
+
+.PP
+Definition at line 220 of file Example\&.cs\&.
+.SS "\fBExample\fP NHibernate\&.Criterion\&.Example\&.ExcludeZeroes ()"
+
+.PP
+Set the \fBIPropertySelector\fP for this \fBExample\fP to exclude zero-valued properties\&. 
+.PP
+Definition at line 163 of file Example\&.cs\&.
+.SS "override \fBIProjection\fP [] NHibernate\&.Criterion\&.Example\&.GetProjections ()\fC [virtual]\fP"
+
+.PP
+Return all projections used in this criterion 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of \fBIProjection\fP used by the \fBExpression\fP\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 384 of file Example\&.cs\&.
+.SS "override \fBTypedValue\fP [] NHibernate\&.Criterion\&.Example\&.GetTypedValues (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery)\fC [virtual]\fP"
+
+.PP
+Return typed values for all parameters in the rendered SQL fragment 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of TypedValues for the \fBExpression\fP\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 352 of file Example\&.cs\&.
+.SS "virtual \fBExample\fP NHibernate\&.Criterion\&.Example\&.SetEscapeCharacter (char?escapeCharacter)\fC [virtual]\fP"
+
+.PP
+Set escape character for 'like' clause
+.PP
+Definition at line 136 of file Example\&.cs\&.
+.SS "\fBExample\fP NHibernate\&.Criterion\&.Example\&.SetPropertySelector (\fBIPropertySelector\fPselector)"
+
+.PP
+Set the \fBIPropertySelector\fP for this \fBExample\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIselector\fP The \fBIPropertySelector\fP to determine which properties to include\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBExample\fP instance\&.
+.RE
+.PP
+.PP
+This should be used when a custom \fBIPropertySelector\fP has been implemented\&. Otherwise use the methods Example\&.ExcludeNulls or \fBExample\&.ExcludeNone\fP to set the \fBIPropertySelector\fP to the \fBIPropertySelector\fPs built into \fBNHibernate\fP\&. 
+.PP
+Definition at line 153 of file Example\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Criterion\&.Example\&.ToSqlString (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery, IDictionary< string, \fBIFilter\fP >enabledFilters)\fC [virtual]\fP"
+
+.PP
+Render a SqlString for the expression\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A SqlString that contains a valid Sql fragment\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 298 of file Example\&.cs\&.
+.SS "override String NHibernate\&.Criterion\&.Example\&.ToString ()\fC [virtual]\fP"
+
+.PP
+Gets a string representation of the \fBAbstractCriterion\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A String that shows the contents of the \fBAbstractCriterion\fP\&. 
+.RE
+.PP
+.PP
+This is not a well formed Sql fragment\&. It is useful for logging what the \fBAbstractCriterion\fP looks like\&. 
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 252 of file Example\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

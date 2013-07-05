@@ -1,0 +1,172 @@
+.TH "NHibernate.Criterion.LogicalExpression" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.LogicalExpression \- 
+.PP
+An \fBICriterion\fP that combines two \fBICriterion\fPs with a operator (either '<c>and</c>' or '<c>or</c>') between them\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Criterion\&.AndExpression\fP, and \fBNHibernate\&.Criterion\&.OrExpression\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override \fBTypedValue\fP[] \fBGetTypedValues\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery)"
+.br
+.RI "\fICombines the TypedValue for the Left Hand Side and the Right Hand Side of the \fBExpression\fP into one array\&. \fP"
+.ti -1c
+.RI "override \fBIProjection\fP[] \fBGetProjections\fP ()"
+.br
+.RI "\fIReturn all projections used in this criterion \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBToSqlString\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIConverts the \fBLogicalExpression\fP to a SqlString\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIGets a string representation of the \fBLogicalExpression\fP\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLogicalExpression\fP (\fBICriterion\fP lhs, \fBICriterion\fP rhs)"
+.br
+.RI "\fIInitialize a new instance of the \fBLogicalExpression\fP class that combines two other \fBICriterion\fPs\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBICriterion\fP \fBLeftHandSide\fP\fC [get]\fP"
+.br
+.RI "\fIGets the \fBICriterion\fP that will be on the Left Hand Side of the Op\&. \fP"
+.ti -1c
+.RI "\fBICriterion\fP \fBRightHandSide\fP\fC [get]\fP"
+.br
+.RI "\fIGets the \fBICriterion\fP that will be on the Right Hand Side of the Op\&. \fP"
+.ti -1c
+.RI "abstract string \fBOp\fP\fC [get]\fP"
+.br
+.RI "\fIGet the Sql operator to put between the two \fBExpression\fPs\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An \fBICriterion\fP that combines two \fBICriterion\fPs with a operator (either '<c>and</c>' or '<c>or</c>') between them\&. 
+
+
+.PP
+Definition at line 13 of file LogicalExpression\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Criterion\&.LogicalExpression\&.LogicalExpression (\fBICriterion\fPlhs, \fBICriterion\fPrhs)\fC [protected]\fP"
+
+.PP
+Initialize a new instance of the \fBLogicalExpression\fP class that combines two other \fBICriterion\fPs\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP The \fBICriterion\fP to use in the Left Hand Side\&.
+.br
+\fIrhs\fP The \fBICriterion\fP to use in the Right Hand Side\&.
+.RE
+.PP
+
+.PP
+Definition at line 24 of file LogicalExpression\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBIProjection\fP [] NHibernate\&.Criterion\&.LogicalExpression\&.GetProjections ()\fC [virtual]\fP"
+
+.PP
+Return all projections used in this criterion 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of \fBIProjection\fP used by the \fBExpression\fP\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 61 of file LogicalExpression\&.cs\&.
+.SS "override \fBTypedValue\fP [] NHibernate\&.Criterion\&.LogicalExpression\&.GetTypedValues (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery)\fC [virtual]\fP"
+
+.PP
+Combines the TypedValue for the Left Hand Side and the Right Hand Side of the \fBExpression\fP into one array\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of TypedValues\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 51 of file LogicalExpression\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Criterion\&.LogicalExpression\&.ToSqlString (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery, IDictionary< string, \fBIFilter\fP >enabledFilters)\fC [virtual]\fP"
+
+.PP
+Converts the \fBLogicalExpression\fP to a SqlString\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A well formed SqlString for the Where clause\&.
+.RE
+.PP
+.PP
+The SqlString will be enclosed by \fC(\fP and \fC)\fP\&.
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 71 of file LogicalExpression\&.cs\&.
+.SS "override string NHibernate\&.Criterion\&.LogicalExpression\&.ToString ()\fC [virtual]\fP"
+
+.PP
+Gets a string representation of the \fBLogicalExpression\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The String contains the LeftHandSide\&.ToString() and the RightHandSide\&.ToString() joined by the Op\&. 
+.RE
+.PP
+.PP
+This is not a well formed Sql fragment\&. It is useful for logging what Expressions are being combined\&. 
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 106 of file LogicalExpression\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBICriterion\fP NHibernate\&.Criterion\&.LogicalExpression\&.LeftHandSide\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Gets the \fBICriterion\fP that will be on the Left Hand Side of the Op\&. 
+.PP
+Definition at line 34 of file LogicalExpression\&.cs\&.
+.SS "abstract string NHibernate\&.Criterion\&.LogicalExpression\&.Op\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Get the Sql operator to put between the two \fBExpression\fPs\&. 
+.PP
+Definition at line 93 of file LogicalExpression\&.cs\&.
+.SS "\fBICriterion\fP NHibernate\&.Criterion\&.LogicalExpression\&.RightHandSide\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Gets the \fBICriterion\fP that will be on the Right Hand Side of the Op\&. 
+.PP
+Definition at line 42 of file LogicalExpression\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,149 @@
+.TH "NHibernate.Id.Enhanced.TableStructure" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.Enhanced.TableStructure \- 
+.PP
+Describes a table used to mimic sequence behavior  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Engine\&.TransactionHelper\fP, and \fBNHibernate\&.Id\&.Enhanced\&.IDatabaseStructure\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTableStructure\fP (\fBDialect\&.Dialect\fP dialect, string tableName, string valueColumnName, int initialValue, int incrementSize)"
+.br
+.ti -1c
+.RI "virtual \fBIAccessCallback\fP \fBBuildCallback\fP (\fBISessionImplementor\fP session)"
+.br
+.RI "\fIA callback to be able to get the next value from the underlying structure as needed\&. \fP"
+.ti -1c
+.RI "virtual void \fBPrepare\fP (\fBIOptimizer\fP optimizer)"
+.br
+.RI "\fIPrepare this structure for use\&. Called sometime after instantiation, but before first use\&. \fP"
+.ti -1c
+.RI "virtual string[] \fBSqlCreateStrings\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fICommands needed to create the underlying structures\&.\fP"
+.ti -1c
+.RI "virtual string[] \fBSqlDropStrings\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fICommands needed to drop the underlying structures\&.\fP"
+.ti -1c
+.RI "override object \fBDoWorkInCurrentTransaction\fP (\fBISessionImplementor\fP session, IDbConnection conn, IDbTransaction transaction)"
+.br
+.RI "\fIThe work to be done\fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBTimesAccessed\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBIncrementSize\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Describes a table used to mimic sequence behavior 
+
+
+.PP
+Definition at line 14 of file TableStructure\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBIAccessCallback\fP NHibernate\&.Id\&.Enhanced\&.TableStructure\&.BuildCallback (\fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+A callback to be able to get the next value from the underlying structure as needed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The next value\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.Enhanced\&.IDatabaseStructure\fP\&.
+.PP
+Definition at line 71 of file TableStructure\&.cs\&.
+.SS "override object NHibernate\&.Id\&.Enhanced\&.TableStructure\&.DoWorkInCurrentTransaction (\fBISessionImplementor\fPsession, IDbConnectionconn, IDbTransactiontransaction)\fC [virtual]\fP"
+
+.PP
+The work to be done
+.PP
+Implements \fBNHibernate\&.Engine\&.TransactionHelper\fP\&.
+.PP
+Definition at line 99 of file TableStructure\&.cs\&.
+.SS "virtual void NHibernate\&.Id\&.Enhanced\&.TableStructure\&.Prepare (\fBIOptimizer\fPoptimizer)\fC [virtual]\fP"
+
+.PP
+Prepare this structure for use\&. Called sometime after instantiation, but before first use\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoptimizer\fP The optimizer being applied to the generator\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.Enhanced\&.IDatabaseStructure\fP\&.
+.PP
+Definition at line 76 of file TableStructure\&.cs\&.
+.SS "virtual string [] NHibernate\&.Id\&.Enhanced\&.TableStructure\&.SqlCreateStrings (\fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+Commands needed to create the underlying structures\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The database dialect being used\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The creation commands\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.Enhanced\&.IDatabaseStructure\fP\&.
+.PP
+Definition at line 81 of file TableStructure\&.cs\&.
+.SS "virtual string [] NHibernate\&.Id\&.Enhanced\&.TableStructure\&.SqlDropStrings (\fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+Commands needed to drop the underlying structures\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The database dialect being used\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The drop commands\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.Enhanced\&.IDatabaseStructure\fP\&.
+.PP
+Definition at line 90 of file TableStructure\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

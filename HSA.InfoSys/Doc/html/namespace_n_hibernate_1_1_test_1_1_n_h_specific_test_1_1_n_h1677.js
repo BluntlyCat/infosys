@@ -1,0 +1,4 @@
+var namespace_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1677 =
+[
+    [ "EntityModeMapCriteria", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1677_1_1_entity_mode_map_criteria.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1677_1_1_entity_mode_map_criteria" ]
+];

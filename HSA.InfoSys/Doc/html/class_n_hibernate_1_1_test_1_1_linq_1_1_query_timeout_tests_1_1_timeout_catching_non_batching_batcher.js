@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_linq_1_1_query_timeout_tests_1_1_timeout_catching_non_batching_batcher =
+[
+    [ "TimeoutCatchingNonBatchingBatcher", "class_n_hibernate_1_1_test_1_1_linq_1_1_query_timeout_tests_1_1_timeout_catching_non_batching_batcher.html#afe23029413d0be22007399085cf0b0c5", null ],
+    [ "ExecuteReader", "class_n_hibernate_1_1_test_1_1_linq_1_1_query_timeout_tests_1_1_timeout_catching_non_batching_batcher.html#a9313c90179035a94629079488310cf03", null ]
+];

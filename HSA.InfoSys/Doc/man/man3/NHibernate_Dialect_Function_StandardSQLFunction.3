@@ -1,0 +1,143 @@
+.TH "NHibernate.Dialect.Function.StandardSQLFunction" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.Function.StandardSQLFunction \- 
+.PP
+Provides a standard implementation that supports the majority of the HQL functions that are translated to SQL\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Function\&.ISQLFunction\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.Function\&.EmulatedLengthSubstringFunction\fP, and \fBNHibernate\&.Dialect\&.Function\&.StandardSafeSQLFunction\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBStandardSQLFunction\fP (string name)"
+.br
+.RI "\fIInitializes a new instance of the \fBStandardSQLFunction\fP class\&. \fP"
+.ti -1c
+.RI "\fBStandardSQLFunction\fP (string name, \fBIType\fP typeValue)"
+.br
+.RI "\fIInitializes a new instance of the \fBStandardSQLFunction\fP class\&. \fP"
+.ti -1c
+.RI "virtual \fBIType\fP \fBReturnType\fP (\fBIType\fP columnType, \fBIMapping\fP mapping)"
+.br
+.RI "\fIThe function return type \fP"
+.ti -1c
+.RI "virtual \fBSqlString\fP \fBRender\fP (IList args, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIRender the function call as SQL\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly string \fBname\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBHasArguments\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasParenthesesIfNoArguments\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Provides a standard implementation that supports the majority of the HQL functions that are translated to SQL\&. 
+
+The \fBDialect\fP and its sub-classes use this class to provide details required for processing of the associated function\&. 
+.PP
+Definition at line 19 of file StandardSQLFunction\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Dialect\&.Function\&.StandardSQLFunction\&.StandardSQLFunction (stringname)"
+
+.PP
+Initializes a new instance of the \fBStandardSQLFunction\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP SQL function name\&.
+.RE
+.PP
+
+.PP
+Definition at line 28 of file StandardSQLFunction\&.cs\&.
+.SS "NHibernate\&.Dialect\&.Function\&.StandardSQLFunction\&.StandardSQLFunction (stringname, \fBIType\fPtypeValue)"
+
+.PP
+Initializes a new instance of the \fBStandardSQLFunction\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP SQL function name\&.
+.br
+\fItypeValue\fP Return type for the fuction\&.
+.RE
+.PP
+
+.PP
+Definition at line 38 of file StandardSQLFunction\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBSqlString\fP NHibernate\&.Dialect\&.Function\&.StandardSQLFunction\&.Render (IListargs, \fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+Render the function call as SQL\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIargs\fP List of arguments
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+SQL fragment for the fuction\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Dialect\&.Function\&.ISQLFunction\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.Function\&.EmulatedLengthSubstringFunction\fP\&.
+.PP
+Definition at line 61 of file StandardSQLFunction\&.cs\&.
+.SS "virtual \fBIType\fP NHibernate\&.Dialect\&.Function\&.StandardSQLFunction\&.ReturnType (\fBIType\fPcolumnType, \fBIMapping\fPmapping)\fC [virtual]\fP"
+
+.PP
+The function return type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnType\fP The type of the first argument
+.br
+\fImapping\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Dialect\&.Function\&.ISQLFunction\fP\&.
+.PP
+Definition at line 46 of file StandardSQLFunction\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,139 @@
+.TH "Renci.SshNet.Security.Cryptography.Ciphers.TripleDesCipher" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Security.Cryptography.Ciphers.TripleDesCipher \- 
+.PP
+Implements 3DES cipher algorithm\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.DesCipher\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTripleDesCipher\fP (byte[] key, \fBCipherMode\fP mode, \fBCipherPadding\fP padding)"
+.br
+.RI "\fIInitializes a new instance of the \fBTripleDesCipher\fP class\&. \fP"
+.ti -1c
+.RI "override int \fBEncryptBlock\fP (byte[] inputBuffer, int inputOffset, int inputCount, byte[] outputBuffer, int outputOffset)"
+.br
+.RI "\fIEncrypts the specified region of the input byte array and copies the encrypted data to the specified region of the output byte array\&. \fP"
+.ti -1c
+.RI "override int \fBDecryptBlock\fP (byte[] inputBuffer, int inputOffset, int inputCount, byte[] outputBuffer, int outputOffset)"
+.br
+.RI "\fIDecrypts the specified region of the input byte array and copies the decrypted data to the specified region of the output byte array\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBValidateKey\fP ()"
+.br
+.RI "\fIValidates the key\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Implements 3DES cipher algorithm\&. 
+
+
+.PP
+Definition at line 11 of file TripleDesCipher\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.TripleDesCipher\&.TripleDesCipher (byte[]key, \fBCipherMode\fPmode, \fBCipherPadding\fPpadding)"
+
+.PP
+Initializes a new instance of the \fBTripleDesCipher\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key\&.
+.br
+\fImode\fP The mode\&.
+.br
+\fIpadding\fP The padding\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIkey\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 32 of file TripleDesCipher\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override int Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.TripleDesCipher\&.DecryptBlock (byte[]inputBuffer, intinputOffset, intinputCount, byte[]outputBuffer, intoutputOffset)\fC [virtual]\fP"
+
+.PP
+Decrypts the specified region of the input byte array and copies the decrypted data to the specified region of the output byte array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinputBuffer\fP The input data to decrypt\&.
+.br
+\fIinputOffset\fP The offset into the input byte array from which to begin using data\&.
+.br
+\fIinputCount\fP The number of bytes in the input byte array to use as data\&.
+.br
+\fIoutputBuffer\fP The output to which to write decrypted data\&.
+.br
+\fIoutputOffset\fP The offset into the output byte array from which to begin writing data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes decrypted\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.DesCipher\fP\&.
+.PP
+Definition at line 101 of file TripleDesCipher\&.cs\&.
+.SS "override int Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.TripleDesCipher\&.EncryptBlock (byte[]inputBuffer, intinputOffset, intinputCount, byte[]outputBuffer, intoutputOffset)\fC [virtual]\fP"
+
+.PP
+Encrypts the specified region of the input byte array and copies the encrypted data to the specified region of the output byte array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinputBuffer\fP The input data to encrypt\&.
+.br
+\fIinputOffset\fP The offset into the input byte array from which to begin using data\&.
+.br
+\fIinputCount\fP The number of bytes in the input byte array to use as data\&.
+.br
+\fIoutputBuffer\fP The output to which to write encrypted data\&.
+.br
+\fIoutputOffset\fP The offset into the output byte array from which to begin writing data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes encrypted\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.DesCipher\fP\&.
+.PP
+Definition at line 48 of file TripleDesCipher\&.cs\&.
+.SS "override void Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.TripleDesCipher\&.ValidateKey ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Validates the key\&. 
+.PP
+Reimplemented from \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.DesCipher\fP\&.
+.PP
+Definition at line 145 of file TripleDesCipher\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,95 @@
+.TH "log4net.Config.SecurityContextProviderAttribute" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Config.SecurityContextProviderAttribute \- 
+.PP
+Assembly level attribute to configure the SecurityContextProvider\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Config\&.ConfiguratorAttribute\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSecurityContextProviderAttribute\fP (Type providerType)"
+.br
+.RI "\fIConstruct provider attribute with type specified \fP"
+.ti -1c
+.RI "override void \fBConfigure\fP (Assembly sourceAssembly, \fBILoggerRepository\fP targetRepository)"
+.br
+.RI "\fIConfigures the SecurityContextProvider \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "Type \fBProviderType\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the type of the provider to use\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Assembly level attribute to configure the SecurityContextProvider\&. 
+
+This attribute may only be used at the assembly scope and can only be used once per assembly\&. 
+.PP
+Use this attribute to configure the \fBXmlConfigurator\fP without calling one of the \fBXmlConfigurator\&.Configure()\fP methods\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 49 of file SecurityContextProviderAttribute\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Config\&.SecurityContextProviderAttribute\&.SecurityContextProviderAttribute (TypeproviderType)"
+
+.PP
+Construct provider attribute with type specified 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproviderType\fP the type of the provider to use
+.RE
+.PP
+.PP
+The provider specified must subclass the SecurityContextProvider class\&. 
+.PP
+Definition at line 63 of file SecurityContextProviderAttribute\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Config\&.SecurityContextProviderAttribute\&.Configure (AssemblysourceAssembly, \fBILoggerRepository\fPtargetRepository)\fC [virtual]\fP"
+
+.PP
+Configures the SecurityContextProvider 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsourceAssembly\fP The assembly that this attribute was defined on\&.
+.br
+\fItargetRepository\fP The repository to configure\&.
+.RE
+.PP
+.PP
+Creates a provider instance from the \fBProviderType\fP specified\&. Sets this as the default security context provider SecurityContextProvider\&.DefaultProvider\&. 
+.PP
+Implements \fBlog4net\&.Config\&.ConfiguratorAttribute\fP\&.
+.PP
+Definition at line 105 of file SecurityContextProviderAttribute\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "Type log4net\&.Config\&.SecurityContextProviderAttribute\&.ProviderType\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the type of the provider to use\&. the type of the provider to use\&. 
+.PP
+The provider specified must subclass the SecurityContextProvider class\&. 
+.PP
+Definition at line 85 of file SecurityContextProviderAttribute\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

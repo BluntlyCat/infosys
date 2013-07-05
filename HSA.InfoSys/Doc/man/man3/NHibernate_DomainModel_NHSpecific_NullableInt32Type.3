@@ -1,0 +1,117 @@
+.TH "NHibernate.DomainModel.NHSpecific.NullableInt32Type" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.DomainModel.NHSpecific.NullableInt32Type \- 
+.PP
+\fBA\fP \fBNHibernate\fP IType for a \fBNullableInt32\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.DomainModel\&.NHSpecific\&.NullableTypesType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, int index)"
+.br
+.RI "\fIWhen implemented by a class, gets the object in the IDataReader for the Property\&. \fP"
+.ti -1c
+.RI "override void \fBSet\fP (IDbCommand cmd, object value, int index)"
+.br
+.RI "\fIWhen implemented by a class, put the value from the mapped Property into to the IDbCommand\&. \fP"
+.ti -1c
+.RI "override object \fBFromStringValue\fP (string xml)"
+.br
+.RI "\fIParse the XML representation of an instance \fP"
+.ti -1c
+.RI "override bool[] \fBToColumnNullness\fP (object value, \fBEngine\&.IMapping\fP mapping)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override object \fBNullValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBA\fP \fBNHibernate\fP IType for a \fBNullableInt32\fP\&. 
+
+
+.PP
+Definition at line 13 of file NullableInt32Type\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.DomainModel\&.NHSpecific\&.NullableInt32Type\&.FromStringValue (stringxml)\fC [virtual]\fP"
+
+.PP
+Parse the XML representation of an instance 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP XML string to parse, guaranteed to be non-empty
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 49 of file NullableInt32Type\&.cs\&.
+.SS "override object NHibernate\&.DomainModel\&.NHSpecific\&.NullableInt32Type\&.Get (IDataReaderrs, intindex)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, gets the object in the IDataReader for the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the value\&.
+.br
+\fIindex\fP The index of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object with the value from the database\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 29 of file NullableInt32Type\&.cs\&.
+.SS "override void NHibernate\&.DomainModel\&.NHSpecific\&.NullableInt32Type\&.Set (IDbCommandcmd, objectvalue, intindex)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, put the value from the mapped Property into to the IDbCommand\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP The IDbCommand to put the value into\&.
+.br
+\fIvalue\fP The object that contains the value\&.
+.br
+\fIindex\fP The index of the IDbDataParameter to start writing the values to\&.
+.RE
+.PP
+.PP
+Implementors do not need to handle possibility of null values because this will only be called from \fBNullSafeSet(IDbCommand, object, int)\fP after it has checked for nulls\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 34 of file NullableInt32Type\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

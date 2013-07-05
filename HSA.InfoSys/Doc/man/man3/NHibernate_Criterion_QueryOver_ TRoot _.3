@@ -1,0 +1,223 @@
+.TH "NHibernate.Criterion.QueryOver< TRoot >" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.QueryOver< TRoot > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Criterion\&.QueryOver\fP, and \fBNHibernate\&.IQueryOver< TRoot >\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Criterion\&.QueryOver< TRoot, TSubType >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIQueryOver\fP< TRoot, TRoot > \fBGetExecutableQueryOver\fP (\fBISession\fP session)"
+.br
+.RI "\fIGet an executable instance of \fC\fBIQueryOver\fP<TRoot>\fP, to actually run the query\&.\fP"
+.ti -1c
+.RI "\fBIQueryOver\fP< TRoot, TRoot > \fBGetExecutableQueryOver\fP (\fBIStatelessSession\fP session)"
+.br
+.RI "\fIGet an executable instance of \fC\fBIQueryOver\fP<TRoot>\fP, to actually run the query\&.\fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TRoot > \fBToRowCountQuery\fP ()"
+.br
+.RI "\fIClones the \fBQueryOver\fP, clears the orders and paging, and projects the RowCount \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TRoot > \fBToRowCountInt64Query\fP ()"
+.br
+.RI "\fIClones the \fBQueryOver\fP, clears the orders and paging, and projects the RowCount (Int64) \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot, TRoot > \fBClone\fP ()"
+.br
+.RI "\fICreates an exact clone of the \fBQueryOver\fP \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot > \fBClearOrders\fP ()"
+.br
+.RI "\fIClear all orders from the query\&. \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot > \fBSkip\fP (int firstResult)"
+.br
+.RI "\fISet the first result to be retrieved \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot > \fBTake\fP (int maxResults)"
+.br
+.RI "\fISet a limit upon the number of objects to be retrieved \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot > \fBCacheable\fP ()"
+.br
+.RI "\fIEnable caching of this query result set \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot > \fBCacheMode\fP (\fBCacheMode\fP cacheMode)"
+.br
+.RI "\fIOverride the cache mode for this particular query\&. \fP"
+.ti -1c
+.RI "\fBQueryOver\fP< TRoot > \fBCacheRegion\fP (string cacheRegion)"
+.br
+.RI "\fISet the name of the cache region\&. \fP"
+.ti -1c
+.RI "S \fBAs< S >\fP ()"
+.br
+.RI "\fIMethod to allow comparison of detached query in \fBLambda\fP expression e\&.g\&., p => p\&.Name == myQuery\&.As<string> \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 62 of file QueryOver\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "S \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot >\&.As< S > ()"
+
+.PP
+Method to allow comparison of detached query in \fBLambda\fP expression e\&.g\&., p => p\&.Name == myQuery\&.As<string> 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIS\fP type returned (projected) by query
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+throws an exception if evaluated directly at runtime\&.
+.RE
+.PP
+
+.PP
+Definition at line 207 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot >\&.Cacheable ()"
+
+.PP
+Enable caching of this query result set 
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot >\fP\&.
+.PP
+Definition at line 177 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot >\&.\fBCacheMode\fP (\fBCacheMode\fPcacheMode)"
+
+.PP
+Override the cache mode for this particular query\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcacheMode\fP The cache mode to use\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+this (for method chaining) 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot >\fP\&.
+.PP
+Definition at line 183 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot >\&.CacheRegion (stringcacheRegion)"
+
+.PP
+Set the name of the cache region\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcacheRegion\fP the name of a query cache region, or  for the default query cache
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot >\fP\&.
+.PP
+Definition at line 189 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot >\&.ClearOrders ()"
+
+.PP
+Clear all orders from the query\&. 
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot >\fP\&.
+.PP
+Definition at line 159 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TRoot> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot >\&.Clone ()"
+
+.PP
+Creates an exact clone of the \fBQueryOver\fP 
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot >\fP\&.
+.PP
+Definition at line 154 of file QueryOver\&.cs\&.
+.SS "\fBIQueryOver\fP<TRoot,TRoot> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot >\&.GetExecutableQueryOver (\fBISession\fPsession)"
+
+.PP
+Get an executable instance of \fC\fBIQueryOver\fP<TRoot>\fP, to actually run the query\&.
+.PP
+Definition at line 108 of file QueryOver\&.cs\&.
+.SS "\fBIQueryOver\fP<TRoot,TRoot> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot >\&.GetExecutableQueryOver (\fBIStatelessSession\fPsession)"
+
+.PP
+Get an executable instance of \fC\fBIQueryOver\fP<TRoot>\fP, to actually run the query\&.
+.PP
+Definition at line 117 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot >\&.Skip (intfirstResult)"
+
+.PP
+Set the first result to be retrieved 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirstResult\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot >\fP\&.
+.PP
+Definition at line 165 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot >\&.Take (intmaxResults)"
+
+.PP
+Set a limit upon the number of objects to be retrieved 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxResults\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot >\fP\&.
+.PP
+Definition at line 171 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TRoot> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot >\&.ToRowCountInt64Query ()"
+
+.PP
+Clones the \fBQueryOver\fP, clears the orders and paging, and projects the RowCount (Int64) 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot >\fP\&.
+.PP
+Definition at line 141 of file QueryOver\&.cs\&.
+.SS "\fBQueryOver\fP<TRoot,TRoot> \fBNHibernate\&.Criterion\&.QueryOver\fP< TRoot >\&.ToRowCountQuery ()"
+
+.PP
+Clones the \fBQueryOver\fP, clears the orders and paging, and projects the RowCount 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQueryOver< TRoot >\fP\&.
+.PP
+Definition at line 127 of file QueryOver\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

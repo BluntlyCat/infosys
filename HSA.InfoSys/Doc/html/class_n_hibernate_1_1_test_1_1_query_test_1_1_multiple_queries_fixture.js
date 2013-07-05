@@ -1,0 +1,25 @@
+var class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture =
+[
+    [ "AppliesTo", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#ae0b177dec106fad960e61680eafb2b02", null ],
+    [ "CanAddIQueryWithKeyAndRetrieveResultsWithKey", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#a513c3326925a210f4e09cbd14b098695", null ],
+    [ "CanExecuteMultiplyQueriesInSingleRoundTrip", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#a1816878c4cb8262db2d53b109e45c76d", null ],
+    [ "CanGetMultiQueryFromSecondLevelCache", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#a8c5b0ee884f1f088c9b0780926ea5899", null ],
+    [ "CanGetResultsInAGenericList", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#ab5fa893cd3828035e50bb952b6bbcfa1", null ],
+    [ "CanGetResultsInAGenericListClass", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#aac30bbf5c9f80333a802a8f53bb33e5f", null ],
+    [ "CanNotAddCriteriaWithKeyThatAlreadyExists", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#a35a98ad1959bc68eba94b15ac4e4d06a", null ],
+    [ "CanNotRetrieveCriteriaResultWithUnknownKey", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#ab4d4933aa87bd158e3979ebe40977466", null ],
+    [ "CanSpecifyParameterOnMultiQueryWhenItIsNotUsedInAllQueries", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#a2856c0460adc747c7c0c7abc13dca4b1", null ],
+    [ "CanSpecifyParameterOnMultiQueryWhenItIsNotUsedInAllQueries_MoreThanOneParameter", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#aa803fcc94b8adb91b4667bd49a0aa211", null ],
+    [ "CanUseSecondLevelCacheWithPositionalParameters", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#a84df7cfa2ae03a195d4d27ccc2fa1493", null ],
+    [ "CanUseSetParameterList", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#ae425d5914ffa5a0088b218bba441fc83", null ],
+    [ "CanUseWithParameterizedQueriesAndLimit", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#a91982c1830a999fe6fe0c112ea37ee51", null ],
+    [ "ExecutingCriteriaThroughMultiCriteriaTransformsResults", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#aed40f7b6a2ef8a5258091103c456a8b6", null ],
+    [ "ExecutingCriteriaThroughMultiQueryTransformsResults", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#a2499afce8832f29bdac334c97dcdc916", null ],
+    [ "ExecutingCriteriaThroughMultiQueryTransformsResults_When_setting_on_multi_query_directly", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#a18c015fa22d5a4c393c8590bfa7767a0", null ],
+    [ "NH_1085_WillGiveReasonableErrorIfBadParameterName", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#a901769cefc09c3c10bfa2d133b76e624", null ],
+    [ "NH_1085_WillIgnoreParametersIfDoesNotAppearInQuery", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#afe92e934ad57b31282261ae35038e91a", null ],
+    [ "OnTearDown", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#a18fd0a3972118c122a7d5b0af8cd398a", null ],
+    [ "TwoMultiQueriesWithDifferentPagingGetDifferentResultsWhenUsingCachedQueries", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#af02e52f9861a9e0aecfa3706b3935d87", null ],
+    [ "Mappings", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#a77486c09d641f612275cf77ccae9b110", null ],
+    [ "MappingsAssembly", "class_n_hibernate_1_1_test_1_1_query_test_1_1_multiple_queries_fixture.html#af3d191c0086119b0873920eb7f5af64d", null ]
+];

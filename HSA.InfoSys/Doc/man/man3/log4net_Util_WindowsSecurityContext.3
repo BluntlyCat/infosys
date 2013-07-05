@@ -1,0 +1,179 @@
+.TH "log4net.Util.WindowsSecurityContext" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.WindowsSecurityContext \- 
+.PP
+Impersonate a Windows Account  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Core\&.SecurityContext\fP, and \fBlog4net\&.Core\&.IOptionHandler\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBImpersonationMode\fP { \fBImpersonationMode\&.User\fP, \fBImpersonationMode\&.Process\fP }"
+.br
+.RI "\fIThe impersonation modes for the \fBWindowsSecurityContext\fP \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBWindowsSecurityContext\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.ti -1c
+.RI "void \fBActivateOptions\fP ()"
+.br
+.RI "\fIInitialize the SecurityContext based on the options set\&. \fP"
+.ti -1c
+.RI "override IDisposable \fBImpersonate\fP (object state)"
+.br
+.RI "\fIImpersonate the Windows account specified by the \fBUserName\fP and \fBDomainName\fP properties\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBImpersonationMode\fP \fBCredentials\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the impersonation mode for this security context \fP"
+.ti -1c
+.RI "string \fBUserName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the Windows username for this security context \fP"
+.ti -1c
+.RI "string \fBDomainName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the Windows domain name for this security context \fP"
+.ti -1c
+.RI "string \fBPassword\fP\fC [set]\fP"
+.br
+.RI "\fISets the password for the Windows account specified by the \fBUserName\fP and \fBDomainName\fP properties\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Impersonate a Windows Account 
+
+This SecurityContext impersonates a Windows account\&. 
+.PP
+How the impersonation is done depends on the value of \fBImpersonate\fP\&. This allows the context to either impersonate a set of user credentials specified using username, domain name and password or to revert to the process credentials\&. 
+.PP
+Definition at line 51 of file WindowsSecurityContext\&.cs\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBlog4net\&.Util\&.WindowsSecurityContext\&.ImpersonationMode\fP"
+
+.PP
+The impersonation modes for the \fBWindowsSecurityContext\fP See the \fBWindowsSecurityContext\&.Credentials\fP property for details\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIUser \fP\fP
+Impersonate a user using the credentials supplied 
+.TP
+\fB\fIProcess \fP\fP
+Revert this the thread to the credentials of the process 
+.PP
+Definition at line 62 of file WindowsSecurityContext\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Util\&.WindowsSecurityContext\&.WindowsSecurityContext ()"
+
+.PP
+Default constructor Default constructor 
+.PP
+Definition at line 95 of file WindowsSecurityContext\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Util\&.WindowsSecurityContext\&.ActivateOptions ()"
+
+.PP
+Initialize the SecurityContext based on the options set\&. This is part of the IOptionHandler delayed object activation scheme\&. The \fBActivateOptions\fP method must be called on this object after the configuration properties have been set\&. Until \fBActivateOptions\fP is called this object is in an undefined state and must not be used\&. 
+.PP
+If any of the configuration properties are modified then \fBActivateOptions\fP must be called again\&. 
+.PP
+The security context will try to Logon the specified user account and capture a primary token for impersonation\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP The required \fBUserName\fP, \fBDomainName\fP or \fBPassword\fP properties were not specified\&.
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.Core\&.IOptionHandler\fP\&.
+.PP
+Definition at line 220 of file WindowsSecurityContext\&.cs\&.
+.SS "override IDisposable log4net\&.Util\&.WindowsSecurityContext\&.Impersonate (objectstate)\fC [virtual]\fP"
+
+.PP
+Impersonate the Windows account specified by the \fBUserName\fP and \fBDomainName\fP properties\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstate\fP caller provided state
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IDisposable instance that will revoke the impersonation of this SecurityContext 
+.RE
+.PP
+.PP
+Depending on the \fBCredentials\fP property either impersonate a user using credentials supplied or revert to the process credentials\&. 
+.PP
+Implements \fBlog4net\&.Core\&.SecurityContext\fP\&.
+.PP
+Definition at line 248 of file WindowsSecurityContext\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBImpersonationMode\fP log4net\&.Util\&.WindowsSecurityContext\&.Credentials\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the impersonation mode for this security context The impersonation mode for this security context 
+.PP
+Impersonate either a user with user credentials or revert this thread to the credentials of the process\&. The value is one of the \fBImpersonationMode\fP enum\&. 
+.PP
+The default value is ImpersonationMode\&.User 
+.PP
+When the mode is set to ImpersonationMode\&.User the user's credentials are established using the \fBUserName\fP, \fBDomainName\fP and \fBPassword\fP values\&. 
+.PP
+When the mode is set to ImpersonationMode\&.Process no other properties need to be set\&. If the calling thread is impersonating then it will be reverted back to the process credentials\&. 
+.PP
+Definition at line 132 of file WindowsSecurityContext\&.cs\&.
+.SS "string log4net\&.Util\&.WindowsSecurityContext\&.DomainName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the Windows domain name for this security context The Windows domain name for this security context 
+.PP
+The default value for \fBDomainName\fP is the local machine name taken from the Environment\&.MachineName property\&. 
+.PP
+This property must be set if \fBCredentials\fP is set to ImpersonationMode\&.User (the default setting)\&. 
+.PP
+Definition at line 172 of file WindowsSecurityContext\&.cs\&.
+.SS "string log4net\&.Util\&.WindowsSecurityContext\&.Password\fC [set]\fP"
+
+.PP
+Sets the password for the Windows account specified by the \fBUserName\fP and \fBDomainName\fP properties\&. The password for the Windows account specified by the \fBUserName\fP and \fBDomainName\fP properties\&. 
+.PP
+This property must be set if \fBCredentials\fP is set to ImpersonationMode\&.User (the default setting)\&. 
+.PP
+Definition at line 190 of file WindowsSecurityContext\&.cs\&.
+.SS "string log4net\&.Util\&.WindowsSecurityContext\&.UserName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the Windows username for this security context The Windows username for this security context 
+.PP
+This property must be set if \fBCredentials\fP is set to ImpersonationMode\&.User (the default setting)\&. 
+.PP
+Definition at line 150 of file WindowsSecurityContext\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

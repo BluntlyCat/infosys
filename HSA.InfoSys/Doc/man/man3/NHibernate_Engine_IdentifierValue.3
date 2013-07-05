@@ -1,0 +1,130 @@
+.TH "NHibernate.Engine.IdentifierValue" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.IdentifierValue \- 
+.PP
+A strategy for determining if an identifier value is an identifier of a new transient instance or a previously persistent transient instance\&. The strategy is determined by the \fCUnsaved-Value\fP attribute in the mapping file\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by NHibernate\&.Engine\&.IdentifierValue\&.SaveAnyClass, NHibernate\&.Engine\&.IdentifierValue\&.SaveNoneClass, NHibernate\&.Engine\&.IdentifierValue\&.SaveNullClass, and \fBNHibernate\&.Engine\&.IdentifierValue\&.UndefinedClass\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBUndefinedClass\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIdentifierValue\fP (object value)"
+.br
+.RI "\fIAssume the transient instance is newly instantiated if its identifier is null or equal to \fCValue\fP \fP"
+.ti -1c
+.RI "virtual bool \fBIsUnsaved\fP (object id)"
+.br
+.RI "\fIDoes the given identifier belong to a new instance \fP"
+.ti -1c
+.RI "virtual object \fBGetDefaultValue\fP (object currentValue)"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly \fBIdentifierValue\fP \fBSaveAny\fP = new SaveAnyClass()"
+.br
+.RI "\fIAlways assume the transient instance is newly instantiated \fP"
+.ti -1c
+.RI "static readonly \fBIdentifierValue\fP \fBSaveNone\fP = new SaveNoneClass()"
+.br
+.RI "\fINever assume that transient instance is newly instantiated \fP"
+.ti -1c
+.RI "static readonly \fBIdentifierValue\fP \fBSaveNull\fP = new SaveNullClass()"
+.br
+.RI "\fIAssume the transient instance is newly instantiated if the identifier is null\&. \fP"
+.ti -1c
+.RI "static readonly \fBIdentifierValue\fP \fBUndefined\fP = new \fBUndefinedClass\fP()"
+.br
+.RI "\fIAssume nothing\&.\fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIdentifierValue\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A strategy for determining if an identifier value is an identifier of a new transient instance or a previously persistent transient instance\&. The strategy is determined by the \fCUnsaved-Value\fP attribute in the mapping file\&. 
+
+
+.PP
+Definition at line 10 of file IdentifierValue\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Engine\&.IdentifierValue\&.IdentifierValue ()\fC [protected]\fP"
+
+.PP
+
+.PP
+Definition at line 17 of file IdentifierValue\&.cs\&.
+.SS "NHibernate\&.Engine\&.IdentifierValue\&.IdentifierValue (objectvalue)"
+
+.PP
+Assume the transient instance is newly instantiated if its identifier is null or equal to \fCValue\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP 
+.RE
+.PP
+
+.PP
+Definition at line 27 of file IdentifierValue\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual bool NHibernate\&.Engine\&.IdentifierValue\&.IsUnsaved (objectid)\fC [virtual]\fP"
+
+.PP
+Does the given identifier belong to a new instance 
+.PP
+Reimplemented in \fBNHibernate\&.Engine\&.IdentifierValue\&.UndefinedClass\fP\&.
+.PP
+Definition at line 35 of file IdentifierValue\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly \fBIdentifierValue\fP NHibernate\&.Engine\&.IdentifierValue\&.SaveAny = new SaveAnyClass()\fC [static]\fP"
+
+.PP
+Always assume the transient instance is newly instantiated 
+.PP
+Definition at line 52 of file IdentifierValue\&.cs\&.
+.SS "readonly \fBIdentifierValue\fP NHibernate\&.Engine\&.IdentifierValue\&.SaveNone = new SaveNoneClass()\fC [static]\fP"
+
+.PP
+Never assume that transient instance is newly instantiated 
+.PP
+Definition at line 71 of file IdentifierValue\&.cs\&.
+.SS "readonly \fBIdentifierValue\fP NHibernate\&.Engine\&.IdentifierValue\&.SaveNull = new SaveNullClass()\fC [static]\fP"
+
+.PP
+Assume the transient instance is newly instantiated if the identifier is null\&. 
+.PP
+Definition at line 91 of file IdentifierValue\&.cs\&.
+.SS "readonly \fBIdentifierValue\fP NHibernate\&.Engine\&.IdentifierValue\&.Undefined = new \fBUndefinedClass\fP()\fC [static]\fP"
+
+.PP
+Assume nothing\&.
+.PP
+Definition at line 108 of file IdentifierValue\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

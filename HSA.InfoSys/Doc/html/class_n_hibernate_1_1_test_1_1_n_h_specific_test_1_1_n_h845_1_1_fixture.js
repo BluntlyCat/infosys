@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h845_1_1_fixture =
+[
+    [ "HbmOrdererForgetsMappingFilesWithoutClassesIfExtendsIsUsed", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h845_1_1_fixture.html#abf28070108a817fee49fb423f8c463fa", null ]
+];

@@ -1,0 +1,126 @@
+.TH "MySql.Data.Types.MySqlGeometry" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MySql.Data.Types.MySqlGeometry \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MySql\&.Data\&.Types\&.IMySqlValue\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMySqlGeometry\fP (bool isNull)"
+.br
+.ti -1c
+.RI "\fBMySqlGeometry\fP (Double xValue, Double yValue)"
+.br
+.ti -1c
+.RI "\fBMySqlGeometry\fP (Double xValue, Double yValue, int srid)"
+.br
+.ti -1c
+.RI "\fBMySqlGeometry\fP (\fBMySqlDbType\fP type, byte[] val)"
+.br
+.ti -1c
+.RI "void IMySqlValue\&. \fBWriteValue\fP (\fBMySqlPacket\fP packet, bool binary, object val, int length)"
+.br
+.ti -1c
+.RI "IMySqlValue IMySqlValue\&. \fBReadValue\fP (\fBMySqlPacket\fP packet, long length, bool nullVal)"
+.br
+.ti -1c
+.RI "void IMySqlValue\&. \fBSkipValue\fP (\fBMySqlPacket\fP packet)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIReturns the Well-Known Text representation of this value\fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBMySqlGeometry\fP \fBParse\fP (string value)"
+.br
+.RI "\fIGet value from WKT format SRID=0;POINT (x y) or POINT (x y) \fP"
+.ti -1c
+.RI "static bool \fBTryParse\fP (string value, out \fBMySqlGeometry\fP mySqlGeometryValue)"
+.br
+.RI "\fITry to get value from WKT format SRID=0;POINT (x y) or POINT (x y) \fP"
+.ti -1c
+.RI "static void \fBSetDSInfo\fP (DataTable dsTable)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "Double \fBXCoordinate\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "Double \fBYCoordinate\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBMySqlDbType\fP IMySqlValue\&. \fBMySqlDbType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "DbType IMySqlValue\&. \fBDbType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsNull\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "object IMySqlValue\&. \fBValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "byte[] \fBValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "Type IMySqlValue\&. \fBSystemType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string IMySqlValue\&. \fBMySqlTypeName\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 45 of file MySqlGeometry\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBMySqlGeometry\fP MySql\&.Data\&.Types\&.MySqlGeometry\&.Parse (stringvalue)\fC [static]\fP"
+
+.PP
+Get value from WKT format SRID=0;POINT (x y) or POINT (x y) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP WKT string format
+.RE
+.PP
+
+.PP
+Definition at line 287 of file MySqlGeometry\&.cs\&.
+.SS "override string MySql\&.Data\&.Types\&.MySqlGeometry\&.ToString ()"
+
+.PP
+Returns the Well-Known Text representation of this valuePOINT({0} {1})", longitude, latitude http://dev.mysql.com/doc/refman/4.1/en/gis-wkt-format.html 
+.PP
+Definition at line 274 of file MySqlGeometry\&.cs\&.
+.SS "static bool MySql\&.Data\&.Types\&.MySqlGeometry\&.TryParse (stringvalue, out \fBMySqlGeometry\fPmySqlGeometryValue)\fC [static]\fP"
+
+.PP
+Try to get value from WKT format SRID=0;POINT (x y) or POINT (x y) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP WKT string format
+.RE
+.PP
+
+.PP
+Definition at line 306 of file MySqlGeometry\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

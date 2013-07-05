@@ -1,0 +1,8 @@
+var class_n_hibernate_1_1_transaction_1_1_ado_net_with_distributed_transaction_factory_1_1_distributed_transaction_context =
+[
+    [ "DistributedTransactionContext", "class_n_hibernate_1_1_transaction_1_1_ado_net_with_distributed_transaction_factory_1_1_distributed_transaction_context.html#ada71f07fe3de2f772255a8c6964cf2e7", null ],
+    [ "Dispose", "class_n_hibernate_1_1_transaction_1_1_ado_net_with_distributed_transaction_factory_1_1_distributed_transaction_context.html#a09be931fdbeb5d5e6d9d523077946219", null ],
+    [ "IsInActiveTransaction", "class_n_hibernate_1_1_transaction_1_1_ado_net_with_distributed_transaction_factory_1_1_distributed_transaction_context.html#a2ed3e5c8b193ef23cd365808f5786c23", null ],
+    [ "AmbientTransation", "class_n_hibernate_1_1_transaction_1_1_ado_net_with_distributed_transaction_factory_1_1_distributed_transaction_context.html#afb865b57cb06aee728ce2e8bfccf9c09", null ],
+    [ "ShouldCloseSessionOnDistributedTransactionCompleted", "class_n_hibernate_1_1_transaction_1_1_ado_net_with_distributed_transaction_factory_1_1_distributed_transaction_context.html#aa19c11bba9f8a760f53a21ead32376f8", null ]
+];

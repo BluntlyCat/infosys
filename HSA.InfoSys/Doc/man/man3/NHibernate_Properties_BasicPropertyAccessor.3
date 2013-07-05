@@ -1,0 +1,111 @@
+.TH "NHibernate.Properties.BasicPropertyAccessor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Properties.BasicPropertyAccessor \- 
+.PP
+Accesses mapped property values via a get/set pair, which may be nonpublic\&. The default (and recommended strategy)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Properties\&.IPropertyAccessor\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBBasicGetter\fP"
+.br
+.RI "\fIAn \fBIGetter\fP for a Property \fCget\fP\&. \fP"
+.ti -1c
+.RI "class \fBBasicSetter\fP"
+.br
+.RI "\fIAn \fBISetter\fP for a Property \fCset\fP\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIGetter\fP \fBGetGetter\fP (System\&.Type type, string propertyName)"
+.br
+.RI "\fICreate a \fBBasicGetter\fP for the mapped property\&. \fP"
+.ti -1c
+.RI "\fBISetter\fP \fBGetSetter\fP (System\&.Type type, string propertyName)"
+.br
+.RI "\fICreate a \fBBasicSetter\fP for the mapped property\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBCanAccessThroughReflectionOptimizer\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Accesses mapped property values via a get/set pair, which may be nonpublic\&. The default (and recommended strategy)\&. 
+
+
+.PP
+Definition at line 14 of file BasicPropertyAccessor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIGetter\fP NHibernate\&.Properties\&.BasicPropertyAccessor\&.GetGetter (System\&.Typetype, stringpropertyName)"
+
+.PP
+Create a \fBBasicGetter\fP for the mapped property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The System\&.Type to find the Property in\&.
+.br
+\fIpropertyName\fP The name of the mapped Property to get\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBBasicGetter\fP to use to get the value of the Property from an instance of the System\&.Type\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBPropertyNotFoundException\fP\fP Thrown when a Property specified by the \fCpropertyName\fP could not be found in the System\&.Type\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.IPropertyAccessor\fP\&.
+.PP
+Definition at line 30 of file BasicPropertyAccessor\&.cs\&.
+.SS "\fBISetter\fP NHibernate\&.Properties\&.BasicPropertyAccessor\&.GetSetter (System\&.Typetype, stringpropertyName)"
+
+.PP
+Create a \fBBasicSetter\fP for the mapped property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The System\&.Type to find the Property in\&.
+.br
+\fIpropertyName\fP The name of the mapped Property to get\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBBasicSetter\fP to use to set the value of the Property on an instance of the System\&.Type\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBPropertyNotFoundException\fP\fP Thrown when a Property specified by the \fCpropertyName\fP could not be found in the System\&.Type\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.IPropertyAccessor\fP\&.
+.PP
+Definition at line 53 of file BasicPropertyAccessor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

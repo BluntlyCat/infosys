@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_pe_verify_fixture_1_1_class_with_protected_default_constructor =
+[
+    [ "ClassWithProtectedDefaultConstructor", "class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_pe_verify_fixture_1_1_class_with_protected_default_constructor.html#a33aa6b4641a5a74645f6c9d74b147248", null ]
+];

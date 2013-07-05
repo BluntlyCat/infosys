@@ -1,0 +1,156 @@
+.TH "NHibernate.Event.Default.EventCache" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.Default.EventCache \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDictionary\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBCopyTo\fP (Array array, int index)"
+.br
+.ti -1c
+.RI "void \fBAdd\fP (object key, object value)"
+.br
+.ti -1c
+.RI "bool \fBContains\fP (object key)"
+.br
+.ti -1c
+.RI "void \fBRemove\fP (object key)"
+.br
+.ti -1c
+.RI "IDictionaryEnumerator \fBGetEnumerator\fP ()"
+.br
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "void \fBAdd\fP (object entity, object copy, bool isOperatedOn)"
+.br
+.RI "\fIAssociates the specified entity with the specified copy in this \fBEventCache\fP; \fP"
+.ti -1c
+.RI "IDictionary \fBInvertMap\fP ()"
+.br
+.RI "\fIReturns copy-entity mappings \fP"
+.ti -1c
+.RI "bool \fBIsOperatedOn\fP (object entity)"
+.br
+.RI "\fIReturns true if the listener is performing the operation on the specified entity\&. \fP"
+.ti -1c
+.RI "void \fBSetOperatedOn\fP (object entity, bool isOperatedOn)"
+.br
+.RI "\fISet flag to indicate if the listener is performing the operation on the specified entity\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBCount\fP\fC [get]\fP"
+.br
+.RI "\fIReturns the number of entity-copy mappings in this \fBEventCache\fP \fP"
+.ti -1c
+.RI "bool \fBIsSynchronized\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "object \fBSyncRoot\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "object \fBthis[object key]\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsReadOnly\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFixedSize\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "ICollection \fBKeys\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "ICollection \fBValues\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file EventCache\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Event\&.Default\&.EventCache\&.Add (objectentity, objectcopy, boolisOperatedOn)"
+
+.PP
+Associates the specified entity with the specified copy in this \fBEventCache\fP; 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP 
+.br
+\fIcopy\fP 
+.br
+\fIisOperatedOn\fP indicates if the operation is performed on the entity
+.RE
+.PP
+
+.PP
+Definition at line 136 of file EventCache\&.cs\&.
+.SS "IDictionary NHibernate\&.Event\&.Default\&.EventCache\&.InvertMap ()"
+
+.PP
+Returns copy-entity mappings 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 151 of file EventCache\&.cs\&.
+.SS "bool NHibernate\&.Event\&.Default\&.EventCache\&.IsOperatedOn (objectentity)"
+
+.PP
+Returns true if the listener is performing the operation on the specified entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP Must be non-null and this \fBEventCache\fP must contain a mapping for this entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 161 of file EventCache\&.cs\&.
+.SS "void NHibernate\&.Event\&.Default\&.EventCache\&.SetOperatedOn (objectentity, boolisOperatedOn)"
+
+.PP
+Set flag to indicate if the listener is performing the operation on the specified entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP 
+.br
+\fIisOperatedOn\fP 
+.RE
+.PP
+
+.PP
+Definition at line 174 of file EventCache\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int NHibernate\&.Event\&.Default\&.EventCache\&.Count\fC [get]\fP"
+
+.PP
+Returns the number of entity-copy mappings in this \fBEventCache\fP 
+.PP
+Definition at line 24 of file EventCache\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

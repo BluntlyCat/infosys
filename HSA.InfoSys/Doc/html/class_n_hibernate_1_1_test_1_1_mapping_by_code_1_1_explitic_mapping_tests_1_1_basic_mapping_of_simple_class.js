@@ -1,0 +1,9 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_basic_mapping_of_simple_class =
+[
+    [ "MyClass", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_basic_mapping_of_simple_class_1_1_my_class.html", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_basic_mapping_of_simple_class_1_1_my_class" ],
+    [ "MapClassWithIdAndProperty", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_basic_mapping_of_simple_class.html#a215422d5b8607ab7141e768438eebabd", null ],
+    [ "WhenDuplicateClassDoesNotDuplicateMapping", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_basic_mapping_of_simple_class.html#ad80acc1fde98c4b94feed05656309a6a", null ],
+    [ "WhenDuplicatePropertiesDoesNotDuplicateMapping", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_basic_mapping_of_simple_class.html#a4344889cd84dda1b8310306f5d6f7049", null ],
+    [ "WhenMapClassWithoutIdAndWithoutGeneratorThenTypeShouldHaveValue", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_basic_mapping_of_simple_class.html#a15e2ad17e02a98b39088ad00981acbac", null ],
+    [ "WhenMapClassWithoutIdThenApplyTypeOfGeneratorDef", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_basic_mapping_of_simple_class.html#ae18dc8910b9b51cbd53f10e90dd0f012", null ]
+];

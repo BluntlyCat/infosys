@@ -1,0 +1,241 @@
+.TH "Renci.SshNet.BaseClient" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.BaseClient \- 
+.PP
+Serves as base class for client implementations, provides common client functionality\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDisposable\&.
+.PP
+Inherited by \fBRenci\&.SshNet\&.NetConfClient\fP, \fBRenci\&.SshNet\&.ScpClient\fP, \fBRenci\&.SshNet\&.SftpClient\fP, \fBRenci\&.SshNet\&.SftpClient\fP, and \fBRenci\&.SshNet\&.SshClient\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBaseClient\fP (\fBConnectionInfo\fP connectionInfo)"
+.br
+.RI "\fIInitializes a new instance of the \fBBaseClient\fP class\&. \fP"
+.ti -1c
+.RI "void \fBConnect\fP ()"
+.br
+.RI "\fIConnects client to the server\&. \fP"
+.ti -1c
+.RI "void \fBDisconnect\fP ()"
+.br
+.RI "\fIDisconnects client from the server\&. \fP"
+.ti -1c
+.RI "void \fBSendKeepAlive\fP ()"
+.br
+.RI "\fISends keep-alive message to the server\&. \fP"
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "\fIPerforms application-defined tasks associated with freeing, releasing, or resetting unmanaged ResourceMessages\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBOnConnecting\fP ()"
+.br
+.RI "\fICalled when client is connecting to the server\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnConnected\fP ()"
+.br
+.RI "\fICalled when client is connected to the server\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnDisconnecting\fP ()"
+.br
+.RI "\fICalled when client is disconnecting from the server\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnDisconnected\fP ()"
+.br
+.RI "\fICalled when client is disconnected from the server\&. \fP"
+.ti -1c
+.RI "virtual void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIReleases unmanaged and - optionally - managed resources \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBSession\fP \fBSession\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets current session\&. \fP"
+.ti -1c
+.RI "\fBConnectionInfo\fP \fBConnectionInfo\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the connection info\&. \fP"
+.ti -1c
+.RI "bool \fBIsConnected\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether this client is connected to the server\&. \fP"
+.ti -1c
+.RI "TimeSpan \fBKeepAliveInterval\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the keep alive interval in seconds\&. \fP"
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "EventHandler< \fBExceptionEventArgs\fP > \fBErrorOccurred\fP"
+.br
+.RI "\fIOccurs when an error occurred\&. \fP"
+.ti -1c
+.RI "EventHandler< \fBHostKeyEventArgs\fP > \fBHostKeyReceived\fP"
+.br
+.RI "\fIOccurs when host key received\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Serves as base class for client implementations, provides common client functionality\&. 
+
+
+.PP
+Definition at line 11 of file BaseClient\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.BaseClient\&.BaseClient (\fBConnectionInfo\fPconnectionInfo)"
+
+.PP
+Initializes a new instance of the \fBBaseClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnectionInfo\fP The connection info\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIconnectionInfo\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 93 of file BaseClient\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Renci\&.SshNet\&.BaseClient\&.Connect ()"
+
+.PP
+Connects client to the server\&. 
+.PP
+Definition at line 105 of file BaseClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.BaseClient\&.Disconnect ()"
+
+.PP
+Disconnects client from the server\&. 
+.PP
+Definition at line 125 of file BaseClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.BaseClient\&.Dispose ()"
+
+.PP
+Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged ResourceMessages\&. 
+.PP
+Definition at line 208 of file BaseClient\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.BaseClient\&.Dispose (booldisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Releases unmanaged and - optionally - managed resources 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP \fCtrue\fP to release both managed and unmanaged resources; \fCfalse\fP to release only unmanaged ResourceMessages\&.
+.RE
+.PP
+
+.PP
+Reimplemented in \fBRenci\&.SshNet\&.SftpClient\fP, \fBRenci\&.SshNet\&.ScpClient\fP, \fBRenci\&.SshNet\&.SshClient\fP, and \fBRenci\&.SshNet\&.NetConfClient\fP\&.
+.PP
+Definition at line 219 of file BaseClient\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.BaseClient\&.OnConnected ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when client is connected to the server\&. 
+.PP
+Reimplemented in \fBRenci\&.SshNet\&.SftpClient\fP, and \fBRenci\&.SshNet\&.NetConfClient\fP\&.
+.PP
+Definition at line 162 of file BaseClient\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.BaseClient\&.OnConnecting ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when client is connecting to the server\&. 
+.PP
+Definition at line 154 of file BaseClient\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.BaseClient\&.OnDisconnected ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when client is disconnected from the server\&. 
+.PP
+Reimplemented in \fBRenci\&.SshNet\&.SshClient\fP\&.
+.PP
+Definition at line 178 of file BaseClient\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.BaseClient\&.OnDisconnecting ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when client is disconnecting from the server\&. 
+.PP
+Reimplemented in \fBRenci\&.SshNet\&.SftpClient\fP, \fBRenci\&.SshNet\&.NetConfClient\fP, and \fBRenci\&.SshNet\&.SshClient\fP\&.
+.PP
+Definition at line 170 of file BaseClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.BaseClient\&.SendKeepAlive ()"
+
+.PP
+Sends keep-alive message to the server\&. 
+.PP
+Definition at line 140 of file BaseClient\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBConnectionInfo\fP Renci\&.SshNet\&.BaseClient\&.ConnectionInfo\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the connection info\&. 
+.PP
+Definition at line 25 of file BaseClient\&.cs\&.
+.SS "bool Renci\&.SshNet\&.BaseClient\&.IsConnected\fC [get]\fP"
+
+.PP
+Gets a value indicating whether this client is connected to the server\&. \fCtrue\fP if this client is connected; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 34 of file BaseClient\&.cs\&.
+.SS "TimeSpan Renci\&.SshNet\&.BaseClient\&.KeepAliveInterval\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the keep alive interval in seconds\&. The keep alive interval in seconds\&. 
+.PP
+Definition at line 51 of file BaseClient\&.cs\&.
+.SS "\fBSession\fP Renci\&.SshNet\&.BaseClient\&.Session\fC [get]\fP, \fC [set]\fP, \fC [protected]\fP"
+
+.PP
+Gets current session\&. 
+.PP
+Definition at line 20 of file BaseClient\&.cs\&.
+.SH "Event Documentation"
+.PP 
+.SS "EventHandler<\fBExceptionEventArgs\fP> Renci\&.SshNet\&.BaseClient\&.ErrorOccurred"
+
+.PP
+Occurs when an error occurred\&. \fC \fP
+.PP
+\fC \fP
+.PP
+Definition at line 78 of file BaseClient\&.cs\&.
+.SS "EventHandler<\fBHostKeyEventArgs\fP> Renci\&.SshNet\&.BaseClient\&.HostKeyReceived"
+
+.PP
+Occurs when host key received\&. \fC \fP
+.PP
+\fC \fP
+.PP
+Definition at line 86 of file BaseClient\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

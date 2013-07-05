@@ -1,0 +1,196 @@
+.TH "NHibernate.Dialect.SybaseSQLAnywhere12Dialect" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.SybaseSQLAnywhere12Dialect \- 
+.PP
+SQL \fBDialect\fP for SQL Anywhere 12 - for the \fBNHibernate\fP 3\&.2\&.0 distribution Copyright (C) 2011 Glenn Paulley Contact: http://iablog.sybase.com/paulley  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.SybaseSQLAnywhere11Dialect\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBGetSequenceNextValString\fP (string sequenceName)"
+.br
+.RI "\fIGenerate the appropriate select statement to to retreive the next value of a sequence\&. \fP"
+.ti -1c
+.RI "override string \fBGetSelectSequenceNextValString\fP (string sequenceName)"
+.br
+.RI "\fIGenerate the select expression fragment that will retrieve the next value of a sequence as part of another (typically DML) statement\&. \fP"
+.ti -1c
+.RI "override string \fBGetCreateSequenceString\fP (string sequenceName)"
+.br
+.RI "\fITypically dialects which support sequences can create a sequence with a single command\&. \fP"
+.ti -1c
+.RI "override string \fBGetDropSequenceString\fP (string sequenceName)"
+.br
+.RI "\fITypically dialects which support sequences can drop a sequence with a single command\&. \fP"
+.ti -1c
+.RI "override \fBIDataBaseSchema\fP \fBGetDataBaseSchema\fP (DbConnection connection)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "new void \fBRegisterKeywords\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBSupportsSequences\fP\fC [get]\fP"
+.br
+.RI "\fISQL Anywhere supports \fCSEQUENCES\fP using a primarily SQL Standard syntax\&. Sequence values can be queried using the \fC\&.CURRVAL\fP identifier, and the next value in a sequence can be retrieved using the \fC\&.NEXTVAL\fP identifier\&. Sequences are retained in the SYS\&.SYSSEQUENCE catalog table\&. \fP"
+.ti -1c
+.RI "override bool \fBSupportsPooledSequences\fP\fC [get]\fP"
+.br
+.RI "\fIPooled sequences does not refer to the CACHE parameter of the \fCCREATE SEQUENCE\fP statement, but merely if the DBMS supports sequences that can be incremented or decremented by values greater than 1\&. \fP"
+.ti -1c
+.RI "override string \fBQuerySequencesString\fP\fC [get]\fP"
+.br
+.RI "\fIGet the \fCSELECT\fP command used to retrieve the names of all sequences\&.\fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+SQL \fBDialect\fP for SQL Anywhere 12 - for the \fBNHibernate\fP 3\&.2\&.0 distribution Copyright (C) 2011 Glenn Paulley Contact: http://iablog.sybase.com/paulley 
+
+This \fBNHibernate\fP dialect for SQL Anywhere 12 is a contribution to the \fBNHibernate\fP open-source project\&. It is intended to be included in the \fBNHibernate\fP distribution and is licensed under LGPL\&.
+.PP
+This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 2\&.1 of the License, or (at your option) any later version\&.
+.PP
+This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE\&. See the GNU Lesser General Public License for more details\&.
+.PP
+You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc\&., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA 
+.PP
+The \fBSybaseSQLAnywhere12Dialect\fP uses the \fBSybaseSQLAnywhere11Dialect\fP as its base class\&. \fBSybaseSQLAnywhere12Dialect\fP includes support for ISO SQL standard sequences, which are defined in the catalog table \fCSYSSEQUENCE\fP\&. The dialect uses the SybaseSQLAnywhe11MetaData class for metadata API calls, which correctly supports reserved words defined by SQL Anywhere\&.
+.PP
+The dialect defaults the following configuration properties: Property Default Value  connection\&.driver_class \fBNHibernate\&.Driver\&.SybaseSQLAnywhereDotNet4Driver\fP  prepare_sql 
+.PP
+Definition at line 54 of file SybaseSQLAnywhere12Dialect\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override string NHibernate\&.Dialect\&.SybaseSQLAnywhere12Dialect\&.GetCreateSequenceString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+Typically dialects which support sequences can create a sequence with a single command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP The name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sequence creation command 
+.RE
+.PP
+.PP
+This is convenience form of \fBGetCreateSequenceStrings(string,int,int)\fP to help facilitate that\&. Dialects which support sequences and can create a sequence in a single command need \fIonly\fP override this method\&. Dialects which support sequences but require multiple commands to create a sequence should instead override \fBGetCreateSequenceStrings(string,int,int)\fP\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 115 of file SybaseSQLAnywhere12Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.SybaseSQLAnywhere12Dialect\&.GetDropSequenceString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+Typically dialects which support sequences can drop a sequence with a single command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP The name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sequence drop commands 
+.RE
+.PP
+.PP
+This is convenience form of \fBGetDropSequenceStrings\fP to help facilitate that\&.
+.PP
+Dialects which support sequences and can drop a sequence in a single command need \fIonly\fP override this method\&. Dialects which support sequences but require multiple commands to drop a sequence should instead override \fBGetDropSequenceStrings\fP\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 120 of file SybaseSQLAnywhere12Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.SybaseSQLAnywhere12Dialect\&.GetSelectSequenceNextValString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+Generate the select expression fragment that will retrieve the next value of a sequence as part of another (typically DML) statement\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP the name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The 'nextval' fragment\&. 
+.RE
+.PP
+.PP
+This differs from \fBGetSequenceNextValString\fP in that this should return an expression usable within another statement\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 110 of file SybaseSQLAnywhere12Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.SybaseSQLAnywhere12Dialect\&.GetSequenceNextValString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+Generate the appropriate select statement to to retreive the next value of a sequence\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP the name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+String The 'nextval' select string\&. 
+.RE
+.PP
+.PP
+This should be a 'stand alone' select statement\&.
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 105 of file SybaseSQLAnywhere12Dialect\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.Dialect\&.SybaseSQLAnywhere12Dialect\&.QuerySequencesString\fC [get]\fP"
+
+.PP
+Get the \fCSELECT\fP command used to retrieve the names of all sequences\&.
+.PP
+\fBReturns:\fP
+.RS 4
+The \fCSELECT\fP command; or NULL if sequences are not supported\&.
+.RE
+.PP
+
+.PP
+Definition at line 101 of file SybaseSQLAnywhere12Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.SybaseSQLAnywhere12Dialect\&.SupportsPooledSequences\fC [get]\fP"
+
+.PP
+Pooled sequences does not refer to the CACHE parameter of the \fCCREATE SEQUENCE\fP statement, but merely if the DBMS supports sequences that can be incremented or decremented by values greater than 1\&. 
+.PP
+Definition at line 94 of file SybaseSQLAnywhere12Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.SybaseSQLAnywhere12Dialect\&.SupportsSequences\fC [get]\fP"
+
+.PP
+SQL Anywhere supports \fCSEQUENCES\fP using a primarily SQL Standard syntax\&. Sequence values can be queried using the \fC\&.CURRVAL\fP identifier, and the next value in a sequence can be retrieved using the \fC\&.NEXTVAL\fP identifier\&. Sequences are retained in the SYS\&.SYSSEQUENCE catalog table\&. 
+.PP
+Definition at line 84 of file SybaseSQLAnywhere12Dialect\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

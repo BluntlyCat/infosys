@@ -1,0 +1,302 @@
+.TH "MySql.Web.Security.MySQLRoleProvider" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MySql.Web.Security.MySQLRoleProvider \- 
+.PP
+Manages storage of role membership information for an ASP\&.NET application in a MySQL database\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits RoleProvider\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBInitialize\fP (string name, NameValueCollection config)"
+.br
+.RI "\fIInitializes the provider\&. \fP"
+.ti -1c
+.RI "override void \fBAddUsersToRoles\fP (string[] usernames, string[] rolenames)"
+.br
+.RI "\fIAdds the users to roles\&. \fP"
+.ti -1c
+.RI "override void \fBCreateRole\fP (string rolename)"
+.br
+.RI "\fICreates the role\&. \fP"
+.ti -1c
+.RI "override bool \fBDeleteRole\fP (string rolename, bool throwOnPopulatedRole)"
+.br
+.RI "\fIDeletes the role\&. \fP"
+.ti -1c
+.RI "override string[] \fBGetAllRoles\fP ()"
+.br
+.RI "\fIGets a list of all the roles for the configured applicationName\&. \fP"
+.ti -1c
+.RI "override string[] \fBGetRolesForUser\fP (string username)"
+.br
+.RI "\fIGets a list of the roles that a specified user is in for the configured applicationName\&. \fP"
+.ti -1c
+.RI "override string[] \fBGetUsersInRole\fP (string rolename)"
+.br
+.RI "\fIGets the users in role\&. \fP"
+.ti -1c
+.RI "override bool \fBIsUserInRole\fP (string username, string rolename)"
+.br
+.RI "\fIDetermines whether [is user in role] [the specified username]\&. \fP"
+.ti -1c
+.RI "override void \fBRemoveUsersFromRoles\fP (string[] usernames, string[] rolenames)"
+.br
+.RI "\fIRemoves the users from roles\&. \fP"
+.ti -1c
+.RI "override bool \fBRoleExists\fP (string rolename)"
+.br
+.RI "\fIRoles the exists\&. \fP"
+.ti -1c
+.RI "override string[] \fBFindUsersInRole\fP (string rolename, string usernameToMatch)"
+.br
+.RI "\fIFinds the users in role\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBApplicationName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the name of the application to store and retrieve role information for\&. \fP"
+.ti -1c
+.RI "bool \fBWriteExceptionsToEventLog\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether [write exceptions to event log]\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Manages storage of role membership information for an ASP\&.NET application in a MySQL database\&. 
+
+
+.PP
+Definition at line 46 of file RoleProvider\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void MySql\&.Web\&.Security\&.MySQLRoleProvider\&.AddUsersToRoles (string[]usernames, string[]rolenames)"
+
+.PP
+Adds the users to roles\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIusernames\fP The usernames\&.
+.br
+\fIrolenames\fP The rolenames\&.
+.RE
+.PP
+
+.PP
+Definition at line 145 of file RoleProvider\&.cs\&.
+.SS "override void MySql\&.Web\&.Security\&.MySQLRoleProvider\&.CreateRole (stringrolename)"
+
+.PP
+Creates the role\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrolename\fP The rolename\&.
+.RE
+.PP
+
+.PP
+Definition at line 213 of file RoleProvider\&.cs\&.
+.SS "override bool MySql\&.Web\&.Security\&.MySQLRoleProvider\&.DeleteRole (stringrolename, boolthrowOnPopulatedRole)"
+
+.PP
+Deletes the role\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrolename\fP The rolename\&.
+.br
+\fIthrowOnPopulatedRole\fP if set to \fCtrue\fP [throw on populated role]\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the role was successfully deleted; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 247 of file RoleProvider\&.cs\&.
+.SS "override string [] MySql\&.Web\&.Security\&.MySQLRoleProvider\&.FindUsersInRole (stringrolename, stringusernameToMatch)"
+
+.PP
+Finds the users in role\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrolename\fP The rolename\&.
+.br
+\fIusernameToMatch\fP The username to match\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string array containing the names of all the users where the user name matches usernameToMatch and the user is a member of the specified role\&. 
+.RE
+.PP
+
+.PP
+Definition at line 501 of file RoleProvider\&.cs\&.
+.SS "override string [] MySql\&.Web\&.Security\&.MySQLRoleProvider\&.GetAllRoles ()"
+
+.PP
+Gets a list of all the roles for the configured applicationName\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A string array containing the names of all the roles stored in the data source for the configured applicationName\&. 
+.RE
+.PP
+
+.PP
+Definition at line 295 of file RoleProvider\&.cs\&.
+.SS "override string [] MySql\&.Web\&.Security\&.MySQLRoleProvider\&.GetRolesForUser (stringusername)"
+
+.PP
+Gets a list of the roles that a specified user is in for the configured applicationName\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIusername\fP The user to return a list of roles for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string array containing the names of all the roles that the specified user is in for the configured applicationName\&. 
+.RE
+.PP
+
+.PP
+Definition at line 311 of file RoleProvider\&.cs\&.
+.SS "override string [] MySql\&.Web\&.Security\&.MySQLRoleProvider\&.GetUsersInRole (stringrolename)"
+
+.PP
+Gets the users in role\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrolename\fP The rolename\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string array containing the names of all the users who are members of the specified role\&. 
+.RE
+.PP
+
+.PP
+Definition at line 326 of file RoleProvider\&.cs\&.
+.SS "override void MySql\&.Web\&.Security\&.MySQLRoleProvider\&.Initialize (stringname, NameValueCollectionconfig)"
+
+.PP
+Initializes the provider\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The friendly name of the provider\&.
+.br
+\fIconfig\fP A collection of the name/value pairs representing the provider-specific attributes specified in the configuration for this provider\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentNullException\fP The name of the provider is null\&.
+.br
+\fIT:System\&.ArgumentException\fP The name of the provider has a length of zero\&.
+.br
+\fIT:System\&.InvalidOperationException\fP An attempt is made to call M:System\&.Configuration\&.Provider\&.ProviderBase\&.Initialize(System\&.String,System\&.Collections\&.Specialized\&.NameValueCollection) on a provider after the provider has already been initialized\&.
+.RE
+.PP
+
+.PP
+Definition at line 64 of file RoleProvider\&.cs\&.
+.SS "override bool MySql\&.Web\&.Security\&.MySQLRoleProvider\&.IsUserInRole (stringusername, stringrolename)"
+
+.PP
+Determines whether [is user in role] [the specified username]\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIusername\fP The username\&.
+.br
+\fIrolename\fP The rolename\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if [is user in role] [the specified username]; otherwise, \fCfalse\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 367 of file RoleProvider\&.cs\&.
+.SS "override void MySql\&.Web\&.Security\&.MySQLRoleProvider\&.RemoveUsersFromRoles (string[]usernames, string[]rolenames)"
+
+.PP
+Removes the users from roles\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIusernames\fP The usernames\&.
+.br
+\fIrolenames\fP The rolenames\&.
+.RE
+.PP
+
+.PP
+Definition at line 404 of file RoleProvider\&.cs\&.
+.SS "override bool MySql\&.Web\&.Security\&.MySQLRoleProvider\&.RoleExists (stringrolename)"
+
+.PP
+Roles the exists\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrolename\fP The rolename\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the role name already exists in the database; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 470 of file RoleProvider\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string MySql\&.Web\&.Security\&.MySQLRoleProvider\&.ApplicationName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the name of the application to store and retrieve role information for\&. The name of the application to store and retrieve role information for\&.
+.PP
+\fC \fP
+.PP
+\fC \fP
+.PP
+Definition at line 116 of file RoleProvider\&.cs\&.
+.SS "bool MySql\&.Web\&.Security\&.MySQLRoleProvider\&.WriteExceptionsToEventLog\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether [write exceptions to event log]\&. \fCtrue\fP if exceptions should be written to the event log; otherwise, \fCfalse\fP\&. 
+.PP
+\fC \fP
+.PP
+\fC \fP
+.PP
+Definition at line 131 of file RoleProvider\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,159 @@
+.TH "NHibernate.IFilter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.IFilter \- 
+.PP
+\fBType\fP definition of Filter\&. Filter defines the user's view into enabled dynamic filters, allowing them to set filter parameter values\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Impl\&.FilterImpl\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIFilter\fP \fBSetParameter\fP (string name, object value)"
+.br
+.RI "\fISet the named parameter's value list for this filter\&. \fP"
+.ti -1c
+.RI "\fBIFilter\fP \fBSetParameterList\fP (string name, ICollection values)"
+.br
+.RI "\fISet the named parameter's value list for this filter\&. Used in conjunction with IN-style filter criteria\&. \fP"
+.ti -1c
+.RI "\fBIFilter\fP \fBSetParameterList\fP (string name, object[] values)"
+.br
+.RI "\fISet the named parameter's value list for this filter\&. Used in conjunction with IN-style filter criteria\&. \fP"
+.ti -1c
+.RI "void \fBValidate\fP ()"
+.br
+.RI "\fIPerform validation of the filter state\&. This is used to verify the state of the filter after its enablement and before its use\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBName\fP\fC [get]\fP"
+.br
+.RI "\fIGet the name of this filter\&. \fP"
+.ti -1c
+.RI "\fBFilterDefinition\fP \fBFilterDefinition\fP\fC [get]\fP"
+.br
+.RI "\fIGet the filter definition containing additional information about the filter (such as default-condition and expected parameter names/types)\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBType\fP definition of Filter\&. Filter defines the user's view into enabled dynamic filters, allowing them to set filter parameter values\&. 
+
+
+.PP
+Definition at line 10 of file IFilter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIFilter\fP NHibernate\&.IFilter\&.SetParameter (stringname, objectvalue)"
+
+.PP
+Set the named parameter's value list for this filter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The parameter's name\&.
+.br
+\fIvalue\fP The values to be applied\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This FilterImpl instance (for method chaining)\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.FilterImpl\fP\&.
+.SS "\fBIFilter\fP NHibernate\&.IFilter\&.SetParameterList (stringname, ICollectionvalues)"
+
+.PP
+Set the named parameter's value list for this filter\&. Used in conjunction with IN-style filter criteria\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The parameter's name\&.
+.br
+\fIvalues\fP The values to be expanded into an SQL IN list\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This FilterImpl instance (for method chaining)\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.FilterImpl\fP\&.
+.SS "\fBIFilter\fP NHibernate\&.IFilter\&.SetParameterList (stringname, object[]values)"
+
+.PP
+Set the named parameter's value list for this filter\&. Used in conjunction with IN-style filter criteria\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The parameter's name\&.
+.br
+\fIvalues\fP The values to be expanded into an SQL IN list\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This FilterImpl instance (for method chaining)\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.FilterImpl\fP\&.
+.SS "void NHibernate\&.IFilter\&.Validate ()"
+
+.PP
+Perform validation of the filter state\&. This is used to verify the state of the filter after its enablement and before its use\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.FilterImpl\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBFilterDefinition\fP NHibernate\&.IFilter\&.FilterDefinition\fC [get]\fP"
+
+.PP
+Get the filter definition containing additional information about the filter (such as default-condition and expected parameter names/types)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The filter definition
+.RE
+.PP
+
+.PP
+Definition at line 23 of file IFilter\&.cs\&.
+.SS "string NHibernate\&.IFilter\&.Name\fC [get]\fP"
+
+.PP
+Get the name of this filter\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+This filter's name\&.
+.RE
+.PP
+
+.PP
+Definition at line 16 of file IFilter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

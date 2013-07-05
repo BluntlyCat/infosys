@@ -1,0 +1,52 @@
+.TH "NHibernate.IdentityEqualityComparer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.IdentityEqualityComparer \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IEqualityComparer\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBGetHashCode\fP (object obj)"
+.br
+.ti -1c
+.RI "new bool \fBEquals\fP (object x, object y)"
+.br
+.RI "\fIPerforms a null safe comparison using '==' instead of Object\&.Equals() \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file IdentityEqualityComparer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "new bool NHibernate\&.IdentityEqualityComparer\&.Equals (objectx, objecty)"
+
+.PP
+Performs a null safe comparison using '==' instead of Object\&.Equals() 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP First object to compare\&.
+.br
+\fIy\fP Second object to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if x is the same instance as y or if both are null references; otherwise, false\&. /returns> 
+.PP
+This is Lazy collection safe since it uses Object\&.ReferenceEquals, unlike \fCObject\&.Equals()\fP which currently causes \fBNHibernate\fP to load up the collection\&. This behaivior of Collections is likely to change because Java's collections override \fBEquals()\fP and \&.net's collections don't\&. So in \&.net there is no need to override \fBEquals()\fP and GetHashCode() on the \fBNHibernate\fP \fBCollection\fP implementations\&. 
+.RE
+.PP
+
+.PP
+Definition at line 32 of file IdentityEqualityComparer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,355 @@
+.TH "MySql.Data.Types.MySqlDateTime" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MySql.Data.Types.MySqlDateTime \- 
+.PP
+ 
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MySql\&.Data\&.Types\&.IMySqlValue, IConvertible, and IComparable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMySqlDateTime\fP (int year, int month, int day, int hour, int minute, int second, int millisecond)"
+.br
+.RI "\fIConstructs a new \fB\fBMySqlDateTime\fP\fP object by setting the individual time properties to the given values\&. \fP"
+.ti -1c
+.RI "\fBMySqlDateTime\fP (DateTime dt)"
+.br
+.RI "\fIConstructs a new \fB\fBMySqlDateTime\fP\fP object by using values from the given DateTime object\&. \fP"
+.ti -1c
+.RI "\fBMySqlDateTime\fP (\fBMySqlDateTime\fP mdt)"
+.br
+.RI "\fIConstructs a new \fB\fBMySqlDateTime\fP\fP object by copying the current value of the given object\&. \fP"
+.ti -1c
+.RI "\fBMySqlDateTime\fP (string dateTime)"
+.br
+.RI "\fIEnables the contruction of a \fB\fBMySqlDateTime\fP\fP object by parsing a string\&. \fP"
+.ti -1c
+.RI "void IMySqlValue\&. \fBWriteValue\fP (\fBMySqlPacket\fP packet, bool binary, object value, int length)"
+.br
+.ti -1c
+.RI "IMySqlValue IMySqlValue\&. \fBReadValue\fP (\fBMySqlPacket\fP packet, long length, bool nullVal)"
+.br
+.ti -1c
+.RI "void IMySqlValue\&. \fBSkipValue\fP (\fBMySqlPacket\fP packet)"
+.br
+.ti -1c
+.RI "DateTime \fBGetDateTime\fP ()"
+.br
+.RI "\fIReturns this value as a DateTime\fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIReturns a MySQL specific string representation of this value\fP"
+.ti -1c
+.RI "ulong IConvertible\&. \fBToUInt64\fP (IFormatProvider provider)"
+.br
+.ti -1c
+.RI "sbyte IConvertible\&. \fBToSByte\fP (IFormatProvider provider)"
+.br
+.ti -1c
+.RI "double IConvertible\&. \fBToDouble\fP (IFormatProvider provider)"
+.br
+.ti -1c
+.RI "DateTime IConvertible\&. \fBToDateTime\fP (IFormatProvider provider)"
+.br
+.ti -1c
+.RI "float IConvertible\&. \fBToSingle\fP (IFormatProvider provider)"
+.br
+.ti -1c
+.RI "bool IConvertible\&. \fBToBoolean\fP (IFormatProvider provider)"
+.br
+.ti -1c
+.RI "int IConvertible\&. \fBToInt32\fP (IFormatProvider provider)"
+.br
+.ti -1c
+.RI "ushort IConvertible\&. \fBToUInt16\fP (IFormatProvider provider)"
+.br
+.ti -1c
+.RI "short IConvertible\&. \fBToInt16\fP (IFormatProvider provider)"
+.br
+.ti -1c
+.RI "string System\&.IConvertible\&. \fBToString\fP (IFormatProvider provider)"
+.br
+.ti -1c
+.RI "byte IConvertible\&. \fBToByte\fP (IFormatProvider provider)"
+.br
+.ti -1c
+.RI "char IConvertible\&. \fBToChar\fP (IFormatProvider provider)"
+.br
+.ti -1c
+.RI "long IConvertible\&. \fBToInt64\fP (IFormatProvider provider)"
+.br
+.ti -1c
+.RI "System\&.TypeCode IConvertible\&. \fBGetTypeCode\fP ()"
+.br
+.ti -1c
+.RI "decimal IConvertible\&. \fBToDecimal\fP (IFormatProvider provider)"
+.br
+.ti -1c
+.RI "object IConvertible\&. \fBToType\fP (Type conversionType, IFormatProvider provider)"
+.br
+.ti -1c
+.RI "uint IConvertible\&. \fBToUInt32\fP (IFormatProvider provider)"
+.br
+.ti -1c
+.RI "int IComparable\&. \fBCompareTo\fP (object obj)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBoperator DateTime\fP (\fBMySqlDateTime\fP val)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBmonth\fP"
+.br
+.ti -1c
+.RI "int \fBday\fP"
+.br
+.ti -1c
+.RI "int \fBhour\fP"
+.br
+.ti -1c
+.RI "int \fBminute\fP"
+.br
+.ti -1c
+.RI "int \fBsecond\fP"
+.br
+.ti -1c
+.RI "int \fBTimezoneOffset\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsValidDateTime\fP\fC [get]\fP"
+.br
+.RI "\fIIndicates if this object contains a value that can be represented as a DateTime \fP"
+.ti -1c
+.RI "int \fBYear\fP\fC [get, set]\fP"
+.br
+.RI "\fIReturns the year portion of this datetime\fP"
+.ti -1c
+.RI "int \fBMonth\fP\fC [get, set]\fP"
+.br
+.RI "\fIReturns the month portion of this datetime\fP"
+.ti -1c
+.RI "int \fBDay\fP\fC [get, set]\fP"
+.br
+.RI "\fIReturns the day portion of this datetime\fP"
+.ti -1c
+.RI "int \fBHour\fP\fC [get, set]\fP"
+.br
+.RI "\fIReturns the hour portion of this datetime\fP"
+.ti -1c
+.RI "int \fBMinute\fP\fC [get, set]\fP"
+.br
+.RI "\fIReturns the minute portion of this datetime\fP"
+.ti -1c
+.RI "int \fBSecond\fP\fC [get, set]\fP"
+.br
+.RI "\fIReturns the second portion of this datetime\fP"
+.ti -1c
+.RI "int \fBMillisecond\fP\fC [get, set]\fP"
+.br
+.RI "\fIRetrieves the millisecond value of this object\&. \fP"
+.ti -1c
+.RI "bool \fBIsNull\fP\fC [get]\fP"
+.br
+.RI "\fIReturns true if this datetime object has a null value \fP"
+.ti -1c
+.RI "\fBMySqlDbType\fP IMySqlValue\&. \fBMySqlDbType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "DbType IMySqlValue\&. \fBDbType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "object IMySqlValue\&. \fBValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "DateTime \fBValue\fP\fC [get]\fP"
+.br
+.RI "\fIRetrieves the value of this \fBMySqlDateTime\fP as a DateTime object\&. \fP"
+.ti -1c
+.RI "Type IMySqlValue\&. \fBSystemType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string IMySqlValue\&. \fBMySqlTypeName\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+
+
+.PP
+Definition at line 37 of file MySqlDateTime\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MySql\&.Data\&.Types\&.MySqlDateTime\&.MySqlDateTime (intyear, intmonth, intday, inthour, intminute, intsecond, intmillisecond)"
+
+.PP
+Constructs a new \fB\fBMySqlDateTime\fP\fP object by setting the individual time properties to the given values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIyear\fP The year to use\&.
+.br
+\fImonth\fP The month to use\&.
+.br
+\fIday\fP The day to use\&.
+.br
+\fIhour\fP The hour to use\&.
+.br
+\fIminute\fP The minute to use\&.
+.br
+\fIsecond\fP The second to use\&.
+.br
+\fImillisecond\fP The millisecond to use\&.
+.RE
+.PP
+
+.PP
+Definition at line 56 of file MySqlDateTime\&.cs\&.
+.SS "MySql\&.Data\&.Types\&.MySqlDateTime\&.MySqlDateTime (DateTimedt)"
+
+.PP
+Constructs a new \fB\fBMySqlDateTime\fP\fP object by using values from the given DateTime object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdt\fP The DateTime object to copy\&.
+.RE
+.PP
+
+.PP
+Definition at line 65 of file MySqlDateTime\&.cs\&.
+.SS "MySql\&.Data\&.Types\&.MySqlDateTime\&.MySqlDateTime (\fBMySqlDateTime\fPmdt)"
+
+.PP
+Constructs a new \fB\fBMySqlDateTime\fP\fP object by copying the current value of the given object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImdt\fP The \fB\fBMySqlDateTime\fP\fP object to copy\&.
+.RE
+.PP
+
+.PP
+Definition at line 74 of file MySqlDateTime\&.cs\&.
+.SS "MySql\&.Data\&.Types\&.MySqlDateTime\&.MySqlDateTime (stringdateTime)"
+
+.PP
+Enables the contruction of a \fB\fBMySqlDateTime\fP\fP object by parsing a string\&. 
+.PP
+Definition at line 91 of file MySqlDateTime\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "DateTime MySql\&.Data\&.Types\&.MySqlDateTime\&.GetDateTime ()"
+
+.PP
+Returns this value as a DateTime
+.PP
+Definition at line 405 of file MySqlDateTime\&.cs\&.
+.SS "static MySql\&.Data\&.Types\&.MySqlDateTime\&.operator DateTime (\fBMySqlDateTime\fPval)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 463 of file MySqlDateTime\&.cs\&.
+.SS "override string MySql\&.Data\&.Types\&.MySqlDateTime\&.ToString ()"
+
+.PP
+Returns a MySQL specific string representation of this value
+.PP
+Definition at line 442 of file MySqlDateTime\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int MySql\&.Data\&.Types\&.MySqlDateTime\&.Day\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Returns the day portion of this datetime
+.PP
+Definition at line 159 of file MySqlDateTime\&.cs\&.
+.SS "int MySql\&.Data\&.Types\&.MySqlDateTime\&.Hour\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Returns the hour portion of this datetime
+.PP
+Definition at line 166 of file MySqlDateTime\&.cs\&.
+.SS "bool MySql\&.Data\&.Types\&.MySqlDateTime\&.IsNull\fC [get]\fP"
+
+.PP
+Returns true if this datetime object has a null value 
+.PP
+Definition at line 202 of file MySqlDateTime\&.cs\&.
+.SS "bool MySql\&.Data\&.Types\&.MySqlDateTime\&.IsValidDateTime\fC [get]\fP"
+
+.PP
+Indicates if this object contains a value that can be represented as a DateTime 
+.PP
+Definition at line 136 of file MySqlDateTime\&.cs\&.
+.SS "int MySql\&.Data\&.Types\&.MySqlDateTime\&.Millisecond\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Retrieves the millisecond value of this object\&. 
+.PP
+Definition at line 189 of file MySqlDateTime\&.cs\&.
+.SS "int MySql\&.Data\&.Types\&.MySqlDateTime\&.Minute\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Returns the minute portion of this datetime
+.PP
+Definition at line 173 of file MySqlDateTime\&.cs\&.
+.SS "int MySql\&.Data\&.Types\&.MySqlDateTime\&.Month\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Returns the month portion of this datetime
+.PP
+Definition at line 152 of file MySqlDateTime\&.cs\&.
+.SS "int MySql\&.Data\&.Types\&.MySqlDateTime\&.Second\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Returns the second portion of this datetime
+.PP
+Definition at line 180 of file MySqlDateTime\&.cs\&.
+.SS "DateTime MySql\&.Data\&.Types\&.MySqlDateTime\&.Value\fC [get]\fP"
+
+.PP
+Retrieves the value of this \fBMySqlDateTime\fP as a DateTime object\&. 
+.PP
+Definition at line 230 of file MySqlDateTime\&.cs\&.
+.SS "int MySql\&.Data\&.Types\&.MySqlDateTime\&.Year\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Returns the year portion of this datetime
+.PP
+Definition at line 145 of file MySqlDateTime\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

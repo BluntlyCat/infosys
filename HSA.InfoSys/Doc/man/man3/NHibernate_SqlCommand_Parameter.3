@@ -1,0 +1,163 @@
+.TH "NHibernate.SqlCommand.Parameter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.SqlCommand.Parameter \- 
+.PP
+A placeholder for an ADO\&.NET parameter in an \fBSqlString\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBParameter\fP \fBClone\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.RI "\fIDetermines whether this instance and the specified object are of the same type and have the same values\&. \fP"
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.RI "\fIGets a hash code for the parameter\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBParameter\fP \fBWithIndex\fP (int position)"
+.br
+.RI "\fICreate a parameter with the specified position \fP"
+.ti -1c
+.RI "static \fBParameter\fP[] \fBGenerateParameters\fP (int count)"
+.br
+.RI "\fIGenerates an array of parameters\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator==\fP (\fBParameter\fP a, \fBParameter\fP b)"
+.br
+.ti -1c
+.RI "static bool \fBoperator==\fP (object a, \fBParameter\fP b)"
+.br
+.ti -1c
+.RI "static bool \fBoperator==\fP (\fBParameter\fP a, object b)"
+.br
+.ti -1c
+.RI "static bool \fBoperator!=\fP (\fBParameter\fP a, object b)"
+.br
+.ti -1c
+.RI "static bool \fBoperator!=\fP (object a, \fBParameter\fP b)"
+.br
+.ti -1c
+.RI "static bool \fBoperator!=\fP (\fBParameter\fP a, \fBParameter\fP b)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBParameterPosition\fP\fC [get, set]\fP"
+.br
+.RI "\fIUsed to determine the parameter's name (p0,p1 etc\&.) \fP"
+.ti -1c
+.RI "object \fBBackTrack\fP\fC [get, set]\fP"
+.br
+.RI "\fIUnique identifier of a parameter to be tracked back by its generator\&. \fP"
+.ti -1c
+.RI "static \fBParameter\fP \fBPlaceholder\fP\fC [get]\fP"
+.br
+.RI "\fIUsed as a placeholder when parsing HQL or SQL queries\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A placeholder for an ADO\&.NET parameter in an \fBSqlString\fP\&. 
+
+
+.PP
+Definition at line 11 of file Parameter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override bool NHibernate\&.SqlCommand\&.Parameter\&.Equals (objectobj)"
+
+.PP
+Determines whether this instance and the specified object are of the same type and have the same values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP An object to compare to this instance\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+if the object equals the current instance\&. 
+.RE
+.PP
+
+.PP
+Definition at line 88 of file Parameter\&.cs\&.
+.SS "static \fBParameter\fP [] NHibernate\&.SqlCommand\&.Parameter\&.GenerateParameters (intcount)\fC [static]\fP"
+
+.PP
+Generates an array of parameters\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcount\fP The number of parameters to generate\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An array of \fBParameter\fP objects
+.RE
+.PP
+
+.PP
+Definition at line 70 of file Parameter\&.cs\&.
+.SS "override int NHibernate\&.SqlCommand\&.Parameter\&.GetHashCode ()"
+
+.PP
+Gets a hash code for the parameter\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An int value for the hash code\&. 
+.RE
+.PP
+
+.PP
+Definition at line 101 of file Parameter\&.cs\&.
+.SS "static \fBParameter\fP NHibernate\&.SqlCommand\&.Parameter\&.WithIndex (intposition)\fC [static]\fP"
+
+.PP
+Create a parameter with the specified position 
+.PP
+Definition at line 54 of file Parameter\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "object NHibernate\&.SqlCommand\&.Parameter\&.BackTrack\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Unique identifier of a parameter to be tracked back by its generator\&. We have various query-systems\&. Each one, at the end, give us a \fBSqlString\fP\&. At the same time we have various bad-guys playing the game (hql function implementations, the dialect\&.\&.\&.)\&. A bad guy can rearrange a \fBSqlString\fP and the query-system can easly lost organization/sequence of parameters\&. Using the \fBBackTrack\fP the query-system can easily find where are its parameters\&. 
+.PP
+Definition at line 41 of file Parameter\&.cs\&.
+.SS "int NHibernate\&.SqlCommand\&.Parameter\&.ParameterPosition\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Used to determine the parameter's name (p0,p1 etc\&.) 
+.PP
+Definition at line 27 of file Parameter\&.cs\&.
+.SS "\fBParameter\fP NHibernate\&.SqlCommand\&.Parameter\&.Placeholder\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Used as a placeholder when parsing HQL or SQL queries\&. 
+.PP
+Definition at line 47 of file Parameter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,601 @@
+.TH "log4net.Appender.RollingFileAppender" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.RollingFileAppender \- 
+.PP
+\fBAppender\fP that rolls log files based on size or date or both\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.FileAppender\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "interface \fBIDateTime\fP"
+.br
+.RI "\fIThis interface is used to supply Date/Time information to the \fBRollingFileAppender\fP\&. \fP"
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBRollingMode\fP { \fBRollingMode\&.Once\fP = 0, \fBRollingMode\&.Size\fP = 1, \fBRollingMode\&.Date\fP = 2, \fBRollingMode\&.Composite\fP = 3 }"
+.br
+.RI "\fIStyle of rolling to use \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRollingFileAppender\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBRollingFileAppender\fP class\&. \fP"
+.ti -1c
+.RI "override void \fBActivateOptions\fP ()"
+.br
+.RI "\fIInitialize the appender based on the options set \fP"
+.in -1c
+.SS "Protected Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBRollPoint\fP { \fBRollPoint\&.InvalidRollPoint\fP =-1, \fBRollPoint\&.TopOfMinute\fP = 0, \fBRollPoint\&.TopOfHour\fP = 1, \fBRollPoint\&.HalfDay\fP = 2, \fBRollPoint\&.TopOfDay\fP = 3, \fBRollPoint\&.TopOfWeek\fP = 4, \fBRollPoint\&.TopOfMonth\fP = 5 }"
+.br
+.RI "\fIThe code assumes that the following 'time' constants are in a increasing sequence\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBSetQWForFiles\fP (TextWriter writer)"
+.br
+.RI "\fISets the quiet writer being used\&. \fP"
+.ti -1c
+.RI "override void \fBAppend\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIWrite out a logging event\&. \fP"
+.ti -1c
+.RI "override void \fBAppend\fP (\fBLoggingEvent\fP[] loggingEvents)"
+.br
+.RI "\fIWrite out an array of logging events\&. \fP"
+.ti -1c
+.RI "virtual void \fBAdjustFileBeforeAppend\fP ()"
+.br
+.RI "\fIPerforms any required rolling before outputting the next event \fP"
+.ti -1c
+.RI "override void \fBOpenFile\fP (string fileName, bool append)"
+.br
+.RI "\fICreates and opens the file for logging\&. If \fBStaticLogFileName\fP is false then the fully qualified name is determined and used\&. \fP"
+.ti -1c
+.RI "string \fBGetNextOutputFileName\fP (string fileName)"
+.br
+.RI "\fIGet the current output file name \fP"
+.ti -1c
+.RI "void \fBExistingInit\fP ()"
+.br
+.RI "\fIInitializes based on existing conditions at time of \fBActivateOptions\fP\&. \fP"
+.ti -1c
+.RI "void \fBRollOverTime\fP (bool fileIsOpen)"
+.br
+.RI "\fIRollover the file(s) to date/time tagged file(s)\&. \fP"
+.ti -1c
+.RI "void \fBRollFile\fP (string fromFile, string toFile)"
+.br
+.RI "\fIRenames file \fIfromFile\fP  to file \fItoFile\fP \&. \fP"
+.ti -1c
+.RI "bool \fBFileExists\fP (string path)"
+.br
+.RI "\fITest if a file exists at a specified path \fP"
+.ti -1c
+.RI "void \fBDeleteFile\fP (string fileName)"
+.br
+.RI "\fIDeletes the specified file if it exists\&. \fP"
+.ti -1c
+.RI "void \fBRollOverSize\fP ()"
+.br
+.RI "\fIImplements file roll base on file size\&. \fP"
+.ti -1c
+.RI "void \fBRollOverRenameFiles\fP (string baseFileName)"
+.br
+.RI "\fIImplements file roll\&. \fP"
+.ti -1c
+.RI "DateTime \fBNextCheckDate\fP (DateTime currentDateTime, \fBRollPoint\fP rollPoint)"
+.br
+.RI "\fIGet the start time of the next window for the current rollpoint \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIDateTime\fP \fBDateTimeStrategy\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the strategy for determining the current date and time\&. The default implementation is to use LocalDateTime which internally calls through to DateTime\&.Now\&. DateTime\&.UtcNow may be used on frameworks newer than \&.NET 1\&.0 by specifying RollingFileAppender\&.UniversalDateTime\&. \fP"
+.ti -1c
+.RI "string \fBDatePattern\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the date pattern to be used for generating file names when rolling over on date\&. \fP"
+.ti -1c
+.RI "int \fBMaxSizeRollBackups\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the maximum number of backup files that are kept before the oldest is erased\&. \fP"
+.ti -1c
+.RI "long \fBMaxFileSize\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the maximum size that the output file is allowed to reach before being rolled over to backup files\&. \fP"
+.ti -1c
+.RI "string \fBMaximumFileSize\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the maximum size that the output file is allowed to reach before being rolled over to backup files\&. \fP"
+.ti -1c
+.RI "int \fBCountDirection\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the rolling file count direction\&. \fP"
+.ti -1c
+.RI "\fBRollingMode\fP \fBRollingStyle\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the rolling style\&. \fP"
+.ti -1c
+.RI "bool \fBPreserveLogFileNameExtension\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether to preserve the file name extension when rolling\&. \fP"
+.ti -1c
+.RI "bool \fBStaticLogFileName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether to always log to the same file\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBAppender\fP that rolls log files based on size or date or both\&. 
+
+\fBRollingFileAppender\fP can roll log files based on size or date or both depending on the setting of the \fBRollingStyle\fP property\&. When set to RollingMode\&.Size the log file will be rolled once its size exceeds the \fBMaximumFileSize\fP\&. When set to RollingMode\&.Date the log file will be rolled once the date boundary specified in the \fBDatePattern\fP property is crossed\&. When set to RollingMode\&.Composite the log file will be rolled once the date boundary specified in the \fBDatePattern\fP property is crossed, but within a date boundary the file will also be rolled once its size exceeds the \fBMaximumFileSize\fP\&. When set to RollingMode\&.Once the log file will be rolled when the appender is configured\&. This effectively means that the log file can be rolled once per program execution\&. 
+.PP
+A of few additional optional features have been added: 
+.PD 0
+
+.IP "\(bu" 2
+Attach date pattern for current log file \fBStaticLogFileName\fP 
+.IP "\(bu" 2
+Backup number increments for newer files \fBCountDirection\fP 
+.IP "\(bu" 2
+Infinite number of backups by file size \fBMaxSizeRollBackups\fP 
+.PP
+.PP
+<note> 
+.PP
+For large or infinite numbers of backup files a \fBCountDirection\fP greater than zero is highly recommended, otherwise all the backup files need to be renamed each time a new backup is created\&. 
+.PP
+When Date/Time based rolling is used setting \fBStaticLogFileName\fP to  will reduce the number of file renamings to few or none\&. 
+.PP
+</note>
+.PP
+<note type='caution'> 
+.PP
+Changing \fBStaticLogFileName\fP or \fBCountDirection\fP without clearing the log file directory of backup files will cause unexpected and unwanted side effects\&. 
+.PP
+</note>
+.PP
+If Date/Time based rolling is enabled this appender will attempt to roll existing files in the directory without a Date/Time tag based on the last write date of the base log file\&. The appender only rolls the log file when a message is logged\&. If Date/Time based rolling is enabled then the appender will not roll the log file at the Date/Time boundary but at the point when the next message is logged after the boundary has been crossed\&. 
+.PP
+The \fBRollingFileAppender\fP extends the \fBFileAppender\fP and has the same behavior when opening the log file\&. The appender will first try to open the file for writing when \fBActivateOptions\fP is called\&. This will typically be during configuration\&. If the file cannot be opened for writing the appender will attempt to open the file again each time a message is logged to the appender\&. If the file cannot be opened for writing when a message is logged then the message will be discarded by this appender\&. 
+.PP
+When rolling a backup file necessitates deleting an older backup file the file to be deleted is moved to a temporary name before being deleted\&. 
+.PP
+<note type='caution'> 
+.PP
+A maximum number of backup files when rolling on date/time boundaries is not supported\&. 
+.PP
+</note> 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> <author>Aspi Havewala</author> <author>Douglas de la Torre</author> <author>Edward Smit</author> 
+.PP
+Definition at line 125 of file RollingFileAppender\&.cs\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBlog4net\&.Appender\&.RollingFileAppender\&.RollingMode\fP"
+
+.PP
+Style of rolling to use Style of rolling to use 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIOnce \fP\fP
+Roll files once per program execution Roll files once per program execution\&. Well really once each time this appender is configured\&. 
+.PP
+Setting this option also sets \fCAppendToFile\fP to \fCfalse\fP on the \fC\fBRollingFileAppender\fP\fP, otherwise this appender would just be a normal file appender\&. 
+.TP
+\fB\fISize \fP\fP
+Roll files based only on the size of the file 
+.TP
+\fB\fIDate \fP\fP
+Roll files based only on the date 
+.TP
+\fB\fIComposite \fP\fP
+Roll files based on both the size and date of the file 
+.PP
+Definition at line 137 of file RollingFileAppender\&.cs\&.
+.SS "enum \fBlog4net\&.Appender\&.RollingFileAppender\&.RollPoint\fP\fC [protected]\fP"
+
+.PP
+The code assumes that the following 'time' constants are in a increasing sequence\&. The code assumes that the following 'time' constants are in a increasing sequence\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIInvalidRollPoint \fP\fP
+Roll the log not based on the date 
+.TP
+\fB\fITopOfMinute \fP\fP
+Roll the log for each minute 
+.TP
+\fB\fITopOfHour \fP\fP
+Roll the log for each hour 
+.TP
+\fB\fIHalfDay \fP\fP
+Roll the log twice a day (midday and midnight) 
+.TP
+\fB\fITopOfDay \fP\fP
+Roll the log each day (midnight) 
+.TP
+\fB\fITopOfWeek \fP\fP
+Roll the log each week 
+.TP
+\fB\fITopOfMonth \fP\fP
+Roll the log each month 
+.PP
+Definition at line 184 of file RollingFileAppender\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.RollingFileAppender\&.RollingFileAppender ()"
+
+.PP
+Initializes a new instance of the \fBRollingFileAppender\fP class\&. Default constructor\&. 
+.PP
+Definition at line 234 of file RollingFileAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Appender\&.RollingFileAppender\&.ActivateOptions ()\fC [virtual]\fP"
+
+.PP
+Initialize the appender based on the options set This is part of the IOptionHandler delayed object activation scheme\&. The \fBActivateOptions\fP method must be called on this object after the configuration properties have been set\&. Until \fBActivateOptions\fP is called this object is in an undefined state and must not be used\&. 
+.PP
+If any of the configuration properties are modified then \fBActivateOptions\fP must be called again\&. 
+.PP
+Sets initial conditions including date/time roll over information, first check, scheduledFilename, and calls \fBExistingInit\fP to initialize the current number of backups\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.FileAppender\fP\&.
+.PP
+Definition at line 1074 of file RollingFileAppender\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.RollingFileAppender\&.AdjustFileBeforeAppend ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Performs any required rolling before outputting the next event Handles append time behavior for \fBRollingFileAppender\fP\&. This checks if a roll over either by date (checked first) or time (checked second) is need and then appends to the file last\&. 
+.PP
+Definition at line 593 of file RollingFileAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.RollingFileAppender\&.Append (\fBLoggingEvent\fPloggingEvent)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Write out a logging event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP the event to write to file\&.
+.RE
+.PP
+.PP
+Handles append time behavior for \fBRollingFileAppender\fP\&. This checks if a roll over either by date (checked first) or time (checked second) is need and then appends to the file last\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.FileAppender\fP\&.
+.PP
+Definition at line 560 of file RollingFileAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.RollingFileAppender\&.Append (\fBLoggingEvent\fP[]loggingEvents)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Write out an array of logging events\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvents\fP the events to write to file\&.
+.RE
+.PP
+.PP
+Handles append time behavior for \fBRollingFileAppender\fP\&. This checks if a roll over either by date (checked first) or time (checked second) is need and then appends to the file last\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.FileAppender\fP\&.
+.PP
+Definition at line 577 of file RollingFileAppender\&.cs\&.
+.SS "void log4net\&.Appender\&.RollingFileAppender\&.DeleteFile (stringfileName)\fC [protected]\fP"
+
+.PP
+Deletes the specified file if it exists\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP The file to delete\&.
+.RE
+.PP
+.PP
+Delete a file if is exists\&. The file is first moved to a new filename then deleted\&. This allows the file to be removed even when it cannot be deleted, but it still can be moved\&. 
+.PP
+Definition at line 1281 of file RollingFileAppender\&.cs\&.
+.SS "void log4net\&.Appender\&.RollingFileAppender\&.ExistingInit ()\fC [protected]\fP"
+
+.PP
+Initializes based on existing conditions at time of \fBActivateOptions\fP\&. Initializes based on existing conditions at time of \fBActivateOptions\fP\&. The following is done 
+.PD 0
+
+.IP "\(bu" 2
+determine curSizeRollBackups (only within the current roll point) 
+.IP "\(bu" 2
+initiates a roll over if needed for crossing a date boundary since the last run\&. 
+.PP
+
+.PP
+Definition at line 838 of file RollingFileAppender\&.cs\&.
+.SS "bool log4net\&.Appender\&.RollingFileAppender\&.FileExists (stringpath)\fC [protected]\fP"
+
+.PP
+Test if a file exists at a specified path 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP the path to the file
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the file exists
+.RE
+.PP
+.PP
+Test if a file exists at a specified path 
+.PP
+Definition at line 1261 of file RollingFileAppender\&.cs\&.
+.SS "string log4net\&.Appender\&.RollingFileAppender\&.GetNextOutputFileName (stringfileName)\fC [protected]\fP"
+
+.PP
+Get the current output file name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP the base file name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the output file name
+.RE
+.PP
+.PP
+The output file name is based on the base fileName specified\&. If \fBStaticLogFileName\fP is set then the output file name is the same as the base file passed in\&. Otherwise the output file depends on the date pattern, on the count direction or both\&. 
+.PP
+Definition at line 684 of file RollingFileAppender\&.cs\&.
+.SS "DateTime log4net\&.Appender\&.RollingFileAppender\&.NextCheckDate (DateTimecurrentDateTime, \fBRollPoint\fProllPoint)\fC [protected]\fP"
+
+.PP
+Get the start time of the next window for the current rollpoint 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcurrentDateTime\fP the current date
+.br
+\fIrollPoint\fP the type of roll point we are working with
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the start time for the next roll point an interval after the currentDateTime date
+.RE
+.PP
+.PP
+Returns the date of the next roll point after the currentDateTime date passed to the method\&. 
+.PP
+The basic strategy is to subtract the time parts that are less significant than the rollpoint from the current time\&. This should roll the time back to the start of the time window for the current rollpoint\&. Then we add 1 window worth of time and get the start time of the next window for the rollpoint\&. 
+.PP
+Definition at line 1489 of file RollingFileAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.RollingFileAppender\&.OpenFile (stringfileName, boolappend)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Creates and opens the file for logging\&. If \fBStaticLogFileName\fP is false then the fully qualified name is determined and used\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP the name of the file to open
+.br
+\fIappend\fP true to append to existing file
+.RE
+.PP
+.PP
+This method will ensure that the directory structure for the \fIfileName\fP  specified exists\&.
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.FileAppender\fP\&.
+.PP
+Definition at line 626 of file RollingFileAppender\&.cs\&.
+.SS "void log4net\&.Appender\&.RollingFileAppender\&.RollFile (stringfromFile, stringtoFile)\fC [protected]\fP"
+
+.PP
+Renames file \fIfromFile\fP  to file \fItoFile\fP \&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfromFile\fP Name of existing file to roll\&.
+.br
+\fItoFile\fP New name for file\&.
+.RE
+.PP
+.PP
+Renames file \fIfromFile\fP  to file \fItoFile\fP \&. It also checks for existence of target file and deletes if it does\&. 
+.PP
+Definition at line 1224 of file RollingFileAppender\&.cs\&.
+.SS "void log4net\&.Appender\&.RollingFileAppender\&.RollOverRenameFiles (stringbaseFileName)\fC [protected]\fP"
+
+.PP
+Implements file roll\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbaseFileName\fP the base name to rename
+.RE
+.PP
+.PP
+If the maximum number of size based backups is reached (\fCcurSizeRollBackups == maxSizeRollBackups\fP) then the oldest file is deleted -- its index determined by the sign of countDirection\&. If \fCcountDirection\fP < 0, then files {\fCFile\&.1\fP, \&.\&.\&., \fCFile\&.curSizeRollBackups -1\fP} are renamed to {\fCFile\&.2\fP, \&.\&.\&., \fCFile\&.curSizeRollBackups\fP}\&. 
+.PP
+If \fCmaxSizeRollBackups\fP is equal to zero, then the \fCFile\fP is truncated with no backup files created\&. 
+.PP
+If \fCmaxSizeRollBackups\fP < 0, then \fCFile\fP is renamed if needed and no files are deleted\&. 
+.PP
+This is called by \fBRollOverSize\fP to rename the files\&. 
+.PP
+Definition at line 1403 of file RollingFileAppender\&.cs\&.
+.SS "void log4net\&.Appender\&.RollingFileAppender\&.RollOverSize ()\fC [protected]\fP"
+
+.PP
+Implements file roll base on file size\&. If the maximum number of size based backups is reached (\fCcurSizeRollBackups == maxSizeRollBackups\fP) then the oldest file is deleted -- its index determined by the sign of countDirection\&. If \fCcountDirection\fP < 0, then files {\fCFile\&.1\fP, \&.\&.\&., \fCFile\&.curSizeRollBackups -1\fP} are renamed to {\fCFile\&.2\fP, \&.\&.\&., \fCFile\&.curSizeRollBackups\fP}\&. Moreover, \fCFile\fP is renamed \fCFile\&.1\fP and closed\&. 
+.PP
+A new file is created to receive further log output\&. 
+.PP
+If \fCmaxSizeRollBackups\fP is equal to zero, then the \fCFile\fP is truncated with no backup files created\&. 
+.PP
+If \fCmaxSizeRollBackups\fP < 0, then \fCFile\fP is renamed if needed and no files are deleted\&. 
+.PP
+Definition at line 1357 of file RollingFileAppender\&.cs\&.
+.SS "void log4net\&.Appender\&.RollingFileAppender\&.RollOverTime (boolfileIsOpen)\fC [protected]\fP"
+
+.PP
+Rollover the file(s) to date/time tagged file(s)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileIsOpen\fP set to true if the file to be rolled is currently open
+.RE
+.PP
+.PP
+Rollover the file(s) to date/time tagged file(s)\&. Resets curSizeRollBackups\&. If fileIsOpen is set then the new file is opened (through SafeOpenFile)\&. 
+.PP
+Definition at line 1162 of file RollingFileAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.RollingFileAppender\&.SetQWForFiles (TextWriterwriter)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Sets the quiet writer being used\&. This method can be overridden by sub classes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP the writer to set
+.RE
+.PP
+
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.FileAppender\fP\&.
+.PP
+Definition at line 544 of file RollingFileAppender\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int log4net\&.Appender\&.RollingFileAppender\&.CountDirection\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the rolling file count direction\&. The rolling file count direction\&. 
+.PP
+Indicates if the current file is the lowest numbered file or the highest numbered file\&. 
+.PP
+By default newer files have lower numbers (\fBCountDirection\fP < 0), i\&.e\&. log\&.1 is most recent, log\&.5 is the 5th backup, etc\&.\&.\&. 
+.PP
+\fBCountDirection\fP >= 0 does the opposite i\&.e\&. log\&.1 is the first backup made, log\&.5 is the 5th backup made, etc\&. For infinite backups use \fBCountDirection\fP >= 0 to reduce rollover costs\&. 
+.PP
+The default file count direction is -1\&.
+.PP
+Definition at line 422 of file RollingFileAppender\&.cs\&.
+.SS "string log4net\&.Appender\&.RollingFileAppender\&.DatePattern\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the date pattern to be used for generating file names when rolling over on date\&. The date pattern to be used for generating file names when rolling over on date\&. 
+.PP
+Takes a string in the same format as expected by \fBlog4net\&.DateFormatter\&.SimpleDateFormatter\fP\&. 
+.PP
+This property determines the rollover schedule when rolling over on date\&. 
+.PP
+Definition at line 307 of file RollingFileAppender\&.cs\&.
+.SS "\fBIDateTime\fP log4net\&.Appender\&.RollingFileAppender\&.DateTimeStrategy\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the strategy for determining the current date and time\&. The default implementation is to use LocalDateTime which internally calls through to DateTime\&.Now\&. DateTime\&.UtcNow may be used on frameworks newer than \&.NET 1\&.0 by specifying RollingFileAppender\&.UniversalDateTime\&. An implementation of the \fBRollingFileAppender\&.IDateTime\fP interface which returns the current date and time\&. 
+.PP
+Gets or sets the \fBRollingFileAppender\&.IDateTime\fP used to return the current date and time\&. 
+.PP
+There are two built strategies for determining the current date and time, RollingFileAppender\&.LocalDateTime and RollingFileAppender\&.UniversalDateTime\&. 
+.PP
+The default strategy is RollingFileAppender\&.LocalDateTime\&. 
+.PP
+Definition at line 283 of file RollingFileAppender\&.cs\&.
+.SS "long log4net\&.Appender\&.RollingFileAppender\&.MaxFileSize\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the maximum size that the output file is allowed to reach before being rolled over to backup files\&. The maximum size in bytes that the output file is allowed to reach before being rolled over to backup files\&. 
+.PP
+This property is equivalent to \fBMaximumFileSize\fP except that it is required for differentiating the setter taking a long argument from the setter taking a string argument\&. 
+.PP
+The default maximum file size is 10MB (10*1024*1024)\&. 
+.PP
+Definition at line 361 of file RollingFileAppender\&.cs\&.
+.SS "string log4net\&.Appender\&.RollingFileAppender\&.MaximumFileSize\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the maximum size that the output file is allowed to reach before being rolled over to backup files\&. The maximum size that the output file is allowed to reach before being rolled over to backup files\&. 
+.PP
+This property allows you to specify the maximum size with the suffixes 'KB', 'MB' or 'GB' so that the size is interpreted being expressed respectively in kilobytes, megabytes or gigabytes\&. 
+.PP
+For example, the value '10KB' will be interpreted as 10240 bytes\&. 
+.PP
+The default maximum file size is 10MB\&. 
+.PP
+If you have the option to set the maximum file size programmatically consider using the \fBMaxFileSize\fP property instead as this allows you to set the size in bytes as a Int64\&. 
+.PP
+Definition at line 393 of file RollingFileAppender\&.cs\&.
+.SS "int log4net\&.Appender\&.RollingFileAppender\&.MaxSizeRollBackups\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the maximum number of backup files that are kept before the oldest is erased\&. The maximum number of backup files that are kept before the oldest is erased\&. 
+.PP
+If set to zero, then there will be no backup files and the log file will be truncated when it reaches \fBMaxFileSize\fP\&. 
+.PP
+If a negative number is supplied then no deletions will be made\&. Note that this could result in very slow performance as a large number of files are rolled over unless \fBCountDirection\fP is used\&. 
+.PP
+The maximum applies to \fBeach\fP time based group of files and \fBnot\fP the total\&. 
+.PP
+Definition at line 336 of file RollingFileAppender\&.cs\&.
+.SS "bool log4net\&.Appender\&.RollingFileAppender\&.PreserveLogFileNameExtension\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether to preserve the file name extension when rolling\&. \fCtrue\fP if the file name extension should be preserved\&. 
+.PP
+By default file\&.log is rolled to file\&.log\&.yyyy-MM-dd or file\&.log\&.curSizeRollBackup\&. However, under Windows the new file name will loose any program associations as the extension is changed\&. Optionally file\&.log can be renamed to file\&.yyyy-MM-dd\&.log or file\&.curSizeRollBackup\&.log to maintain any program associations\&. 
+.PP
+Definition at line 490 of file RollingFileAppender\&.cs\&.
+.SS "\fBRollingMode\fP log4net\&.Appender\&.RollingFileAppender\&.RollingStyle\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the rolling style\&. The rolling style\&.
+.PP
+The default rolling style is RollingMode\&.Composite\&. 
+.PP
+When set to RollingMode\&.Once this appender's \fBFileAppender\&.AppendToFile\fP property is set to \fCfalse\fP, otherwise the appender would append to a single file rather than rolling the file each time it is opened\&. 
+.PP
+Definition at line 443 of file RollingFileAppender\&.cs\&.
+.SS "bool log4net\&.Appender\&.RollingFileAppender\&.StaticLogFileName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether to always log to the same file\&. \fCtrue\fP if always should be logged to the same file, otherwise \fCfalse\fP\&. 
+.PP
+By default file\&.log is always the current file\&. Optionally file\&.log\&.yyyy-mm-dd for current formatted datePattern can by the currently logging file (or file\&.log\&.curSizeRollBackup or even file\&.log\&.yyyy-mm-dd\&.curSizeRollBackup)\&. 
+.PP
+This will make time based rollovers with a large number of backups much faster as the appender it won't have to rename all the backups! 
+.PP
+Definition at line 515 of file RollingFileAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

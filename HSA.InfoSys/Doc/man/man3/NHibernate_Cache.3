@@ -1,0 +1,128 @@
+.TH "NHibernate.Cache" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cache \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "package \fBAccess\fP"
+.br
+.ti -1c
+.RI "package \fBEntry\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBCachedItem\fP"
+.br
+.RI "\fIAn item of cached data, timestamped with the time it was cached, when it was locked, when it was unlocked \fP"
+.ti -1c
+.RI "class \fBCacheException\fP"
+.br
+.RI "\fIRepresents any exception from an \fBICache\fP\&. \fP"
+.ti -1c
+.RI "class \fBCacheFactory\fP"
+.br
+.RI "\fIFactory class for creating an \fBICacheConcurrencyStrategy\fP\&. \fP"
+.ti -1c
+.RI "class \fBCacheKey\fP"
+.br
+.RI "\fIAllows multiple entity classes / collection roles to be stored in the same cache region\&. Also allows for composite keys which do not properly implement equals()/hashCode()\&. \fP"
+.ti -1c
+.RI "class \fBCacheLock\fP"
+.br
+.RI "\fIA soft lock which supports concurrent locking, timestamped with the time it was released \fP"
+.ti -1c
+.RI "class \fBFakeCache\fP"
+.br
+.RI "\fIUsed by \fBNoCacheProvider\fP \fP"
+.ti -1c
+.RI "class \fBFilterKey\fP"
+.br
+.ti -1c
+.RI "class \fBHashtableCache\fP"
+.br
+.RI "\fIA simple Hashtable-based cache \fP"
+.ti -1c
+.RI "class \fBHashtableCacheProvider\fP"
+.br
+.RI "\fI\fBCache\fP Provider plugin for \fBNHibernate\fP that is configured by using \fCcache\&.provider_class='NHibernate\&.Cache\&.HashtableCacheProvider'\fP \fP"
+.ti -1c
+.RI "interface \fBICache\fP"
+.br
+.RI "\fIImplementors define a caching algorithm\&. \fP"
+.ti -1c
+.RI "interface \fBICacheConcurrencyStrategy\fP"
+.br
+.RI "\fIImplementors manage transactional access to cached data\&. \fP"
+.ti -1c
+.RI "interface \fBICacheProvider\fP"
+.br
+.RI "\fISupport for pluggable caches \fP"
+.ti -1c
+.RI "interface \fBIOptimisticCacheSource\fP"
+.br
+.RI "\fIContract for sources of optimistically lockable data sent to the second level cache\&. \fP"
+.ti -1c
+.RI "interface \fBIQueryCache\fP"
+.br
+.RI "\fIDefines the contract for caches capable of storing query results\&. These caches should only concern themselves with storing the matching result ids\&. The transactional semantics are necessarily less strict than the semantics of an item cache\&. \fP"
+.ti -1c
+.RI "interface \fBIQueryCacheFactory\fP"
+.br
+.RI "\fIDefines a factory for query cache instances\&. These factories are responsible for creating individual QueryCache instances\&. \fP"
+.ti -1c
+.RI "class \fBNoCacheProvider\fP"
+.br
+.RI "\fIA cache provider placeholder used when caching is disabled\&. \fP"
+.ti -1c
+.RI "class \fBNonstrictReadWriteCache\fP"
+.br
+.RI "\fICaches data that is sometimes updated without ever locking the cache\&. If concurrent access to an item is possible, this concurrency strategy makes no guarantee that the item returned from the cache is the latest version available in the database\&. Configure your cache timeout accordingly! This is an 'asynchronous' concurrency strategy\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBReadWriteCache\fP
+.PP
+.RE
+.PP
+for a much stricter algorithm \fP"
+.ti -1c
+.RI "class \fBQueryKey\fP"
+.br
+.ti -1c
+.RI "class \fBReadOnlyCache\fP"
+.br
+.RI "\fICaches data that is never updated \fP"
+.ti -1c
+.RI "class \fBReadWriteCache\fP"
+.br
+.RI "\fICaches data that is sometimes updated while maintaining the semantics of 'read committed' isolation level\&. If the database is set to 'repeatable
+read', this concurrency strategy \fIalmost\fP maintains the semantics\&. Repeatable read isolation is compromised in the case of concurrent writes\&. This is an 'asynchronous' concurrency strategy\&. \fP"
+.ti -1c
+.RI "class \fBStandardQueryCache\fP"
+.br
+.RI "\fIThe standard implementation of the Hibernate \fBIQueryCache\fP interface\&. This implementation is very good at recognizing stale query results and re-running queries when it detects this condition, recaching the new results\&. \fP"
+.ti -1c
+.RI "class \fBStandardQueryCacheFactory\fP"
+.br
+.RI "\fIStandard Hibernate implementation of the \fBIQueryCacheFactory\fP interface\&. Returns instances of \fBStandardQueryCache\fP\&. \fP"
+.ti -1c
+.RI "class \fBTimestamper\fP"
+.br
+.RI "\fIGenerates increasing identifiers (in a single application domain only)\&. \fP"
+.ti -1c
+.RI "class \fBUpdateTimestampsCache\fP"
+.br
+.RI "\fITracks the timestamps of the most recent updates to particular tables\&. It is important that the cache timeout of the underlying cache implementation be set to a higher value than the timeouts of any of the query caches\&. In fact, we recommend that the the underlying cache not be configured for expiry at all\&. Note, in particular, that an LRU cache expiry policy is never appropriate\&. \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

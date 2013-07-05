@@ -1,0 +1,5 @@
+var namespace_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h2738 =
+[
+    [ "MyClass", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h2738_1_1_my_class.html", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h2738_1_1_my_class" ],
+    [ "Fixture", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h2738_1_1_fixture.html", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h2738_1_1_fixture" ]
+];

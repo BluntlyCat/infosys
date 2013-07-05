@@ -1,0 +1,7 @@
+var namespace_n_hibernate_1_1_test_1_1_id_gen_1_1_enhanced_1_1_forcedtable =
+[
+    [ "BasicForcedTableSequenceTest", "class_n_hibernate_1_1_test_1_1_id_gen_1_1_enhanced_1_1_forcedtable_1_1_basic_forced_table_sequence_test.html", "class_n_hibernate_1_1_test_1_1_id_gen_1_1_enhanced_1_1_forcedtable_1_1_basic_forced_table_sequence_test" ],
+    [ "Entity", "class_n_hibernate_1_1_test_1_1_id_gen_1_1_enhanced_1_1_forcedtable_1_1_entity.html", "class_n_hibernate_1_1_test_1_1_id_gen_1_1_enhanced_1_1_forcedtable_1_1_entity" ],
+    [ "HiLoForcedTableSequenceTest", "class_n_hibernate_1_1_test_1_1_id_gen_1_1_enhanced_1_1_forcedtable_1_1_hi_lo_forced_table_sequence_test.html", "class_n_hibernate_1_1_test_1_1_id_gen_1_1_enhanced_1_1_forcedtable_1_1_hi_lo_forced_table_sequence_test" ],
+    [ "PooledForcedTableSequenceTest", "class_n_hibernate_1_1_test_1_1_id_gen_1_1_enhanced_1_1_forcedtable_1_1_pooled_forced_table_sequence_test.html", "class_n_hibernate_1_1_test_1_1_id_gen_1_1_enhanced_1_1_forcedtable_1_1_pooled_forced_table_sequence_test" ]
+];

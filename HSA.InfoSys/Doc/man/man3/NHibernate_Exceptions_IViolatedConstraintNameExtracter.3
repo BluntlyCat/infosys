@@ -1,0 +1,52 @@
+.TH "NHibernate.Exceptions.IViolatedConstraintNameExtracter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Exceptions.IViolatedConstraintNameExtracter \- 
+.PP
+Defines a contract for implementations that can extract the name of a violated constraint from a SQLException that is the result of that constraint violation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Exceptions\&.NoOpViolatedConstraintNameExtracter\fP, and \fBNHibernate\&.Exceptions\&.TemplatedViolatedConstraintNameExtracter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBExtractConstraintName\fP (DbException sqle)"
+.br
+.RI "\fIExtract the name of the violated constraint from the given SQLException\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines a contract for implementations that can extract the name of a violated constraint from a SQLException that is the result of that constraint violation\&. 
+
+
+.PP
+Definition at line 9 of file IViolatedConstraintNameExtracter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string NHibernate\&.Exceptions\&.IViolatedConstraintNameExtracter\&.ExtractConstraintName (DbExceptionsqle)"
+
+.PP
+Extract the name of the violated constraint from the given SQLException\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqle\fP The exception that was the result of the constraint violation\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The extracted constraint name\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Dialect\&.IfxViolatedConstraintExtracter\fP, \fBNHibernate\&.Exceptions\&.TemplatedViolatedConstraintNameExtracter\fP, and \fBNHibernate\&.Exceptions\&.NoOpViolatedConstraintNameExtracter\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

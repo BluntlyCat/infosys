@@ -1,0 +1,5 @@
+var namespace_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1054 =
+[
+    [ "DummyTransactionFactory", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1054_1_1_dummy_transaction_factory.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1054_1_1_dummy_transaction_factory" ],
+    [ "NH1054Fixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1054_1_1_n_h1054_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1054_1_1_n_h1054_fixture" ]
+];

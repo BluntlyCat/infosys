@@ -1,0 +1,88 @@
+.TH "log4net.Filter.PropertyFilter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Filter.PropertyFilter \- 
+.PP
+Simple filter to match a string an event property  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Filter\&.StringMatchFilter\fP\&.
+.PP
+Inherited by \fBlog4net\&.Filter\&.MdcFilter\fP, and \fBlog4net\&.Filter\&.NdcFilter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPropertyFilter\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.ti -1c
+.RI "override \fBFilterDecision\fP \fBDecide\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fICheck if this filter should allow the event to be logged \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBKey\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe key to lookup in the event properties and then match against\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Simple filter to match a string an event property 
+
+Simple filter to match a string in the value for a specific event property 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 39 of file PropertyFilter\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Filter\&.PropertyFilter\&.PropertyFilter ()"
+
+.PP
+Default constructor 
+.PP
+Definition at line 55 of file PropertyFilter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBFilterDecision\fP log4net\&.Filter\&.PropertyFilter\&.Decide (\fBLoggingEvent\fPloggingEvent)\fC [virtual]\fP"
+
+.PP
+Check if this filter should allow the event to be logged 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP the event being logged
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+see remarks
+.RE
+.PP
+.PP
+The event property for the \fBKey\fP is matched against the \fBStringMatchFilter\&.StringToMatch\fP\&. If the \fBStringMatchFilter\&.StringToMatch\fP occurs as a substring within the property value then a match will have occurred\&. If no match occurs this function will return FilterDecision\&.Neutral allowing other filters to check the event\&. If a match occurs then the value of \fBStringMatchFilter\&.AcceptOnMatch\fP is checked\&. If it is true then FilterDecision\&.Accept is returned otherwise FilterDecision\&.Deny is returned\&. 
+.PP
+Implements \fBlog4net\&.Filter\&.FilterSkeleton\fP\&.
+.PP
+Definition at line 97 of file PropertyFilter\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string log4net\&.Filter\&.PropertyFilter\&.Key\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The key to lookup in the event properties and then match against\&. The key name to use to lookup in the properties map of the LoggingEvent\&. The match will be performed against the value of this property if it exists\&. 
+.PP
+Definition at line 72 of file PropertyFilter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,146 @@
+.TH "NHibernate.LockMode" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.LockMode \- 
+.PP
+Instances represent a lock mode for a row of a relational database table\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "bool \fBGreaterThan\fP (\fBLockMode\fP mode)"
+.br
+.RI "\fIIs this lock mode more restrictive than the given lock mode? \fP"
+.ti -1c
+.RI "bool \fBLessThan\fP (\fBLockMode\fP mode)"
+.br
+.RI "\fIIs this lock mode less restrictive than the given lock mode? \fP"
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.ti -1c
+.RI "bool \fBEquals\fP (\fBLockMode\fP other)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static \fBLockMode\fP \fBNone\fP = new \fBLockMode\fP(0, 'None')"
+.br
+.RI "\fINo lock required\&. \fP"
+.ti -1c
+.RI "static \fBLockMode\fP \fBRead\fP = new \fBLockMode\fP(5, 'Read')"
+.br
+.RI "\fIA shared lock\&. \fP"
+.ti -1c
+.RI "static \fBLockMode\fP \fBUpgrade\fP = new \fBLockMode\fP(10, 'Upgrade')"
+.br
+.RI "\fIAn upgrade lock\&. \fP"
+.ti -1c
+.RI "static \fBLockMode\fP \fBUpgradeNoWait\fP = new \fBLockMode\fP(10, 'UpgradeNoWait')"
+.br
+.RI "\fIAttempt to obtain an upgrade lock, using an Oracle-style \fCSELECT \&.\&.\&. FOR UPGRADE NOWAIT\fP\&. \fP"
+.ti -1c
+.RI "static \fBLockMode\fP \fBWrite\fP = new \fBLockMode\fP(10, 'Write')"
+.br
+.RI "\fIA \fCWrite\fP lock is obtained when an object is updated or inserted\&. \fP"
+.ti -1c
+.RI "static readonly \fBLockMode\fP \fBForce\fP = new \fBLockMode\fP(15, 'Force')"
+.br
+.RI "\fISimilar to \fBUpgrade\fP except that, for versioned entities, it results in a forced version increment\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Instances represent a lock mode for a row of a relational database table\&. 
+
+It is not intended that users spend much time worrying about locking since Hibernate usually obtains exactly the right lock level automatically\&. Some 'advanced' users may wish to explicitly specify lock levels\&. 
+.PP
+Definition at line 14 of file LockMode\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool NHibernate\&.LockMode\&.GreaterThan (\fBLockMode\fPmode)"
+
+.PP
+Is this lock mode more restrictive than the given lock mode? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 45 of file LockMode\&.cs\&.
+.SS "bool NHibernate\&.LockMode\&.LessThan (\fBLockMode\fPmode)"
+
+.PP
+Is this lock mode less restrictive than the given lock mode? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 54 of file LockMode\&.cs\&.
+.SS "override string NHibernate\&.LockMode\&.ToString ()"
+
+.PP
+
+.PP
+Definition at line 36 of file LockMode\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly \fBLockMode\fP NHibernate\&.LockMode\&.Force = new \fBLockMode\fP(15, 'Force')\fC [static]\fP"
+
+.PP
+Similar to \fBUpgrade\fP except that, for versioned entities, it results in a forced version increment\&. 
+.PP
+Definition at line 107 of file LockMode\&.cs\&.
+.SS "\fBLockMode\fP NHibernate\&.LockMode\&.None = new \fBLockMode\fP(0, 'None')\fC [static]\fP"
+
+.PP
+No lock required\&. If an object is requested with this lock mode, a \fCRead\fP lock might be obtained if necessary\&. 
+.PP
+Definition at line 66 of file LockMode\&.cs\&.
+.SS "\fBLockMode\fP NHibernate\&.LockMode\&.Read = new \fBLockMode\fP(5, 'Read')\fC [static]\fP"
+
+.PP
+A shared lock\&. Objects are loaded in \fCRead\fP mode by default 
+.PP
+Definition at line 74 of file LockMode\&.cs\&.
+.SS "\fBLockMode\fP NHibernate\&.LockMode\&.Upgrade = new \fBLockMode\fP(10, 'Upgrade')\fC [static]\fP"
+
+.PP
+An upgrade lock\&. Objects loaded in this lock mode are materialized using an SQL \fCSELECT \&.\&.\&. FOR UPDATE\fP 
+.PP
+Definition at line 83 of file LockMode\&.cs\&.
+.SS "\fBLockMode\fP NHibernate\&.LockMode\&.UpgradeNoWait = new \fBLockMode\fP(10, 'UpgradeNoWait')\fC [static]\fP"
+
+.PP
+Attempt to obtain an upgrade lock, using an Oracle-style \fCSELECT \&.\&.\&. FOR UPGRADE NOWAIT\fP\&. The semantics of this lock mode, once obtained, are the same as \fCUpgrade\fP 
+.PP
+Definition at line 92 of file LockMode\&.cs\&.
+.SS "\fBLockMode\fP NHibernate\&.LockMode\&.Write = new \fBLockMode\fP(10, 'Write')\fC [static]\fP"
+
+.PP
+A \fCWrite\fP lock is obtained when an object is updated or inserted\&. This is not a valid mode for \fCLoad()\fP or \fCLock()\fP\&. 
+.PP
+Definition at line 100 of file LockMode\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,157 @@
+.TH "NHibernate.Test.NHSpecificTest.NH1789.DomainObject" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.NHSpecificTest.NH1789.DomainObject \- 
+.PP
+The base for all objects in the model /summary>  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1789\&.IDomainObject\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1789\&.Cat\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBIsTransient\fP ()"
+.br
+.RI "\fITransient objects are not associated with an item already in storage\&. For instance, a Customer is transient if its ID is 0\&. \fP"
+.ti -1c
+.RI "virtual System\&.Type \fBGetConcreteType\fP ()"
+.br
+.RI "\fIReturns the concrete type of the object, not the proxy one\&. \fP"
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.RI "\fIMust be implemented to compare two objects \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static T \fBUnProxy< T >\fP (object proxy)"
+.br
+.RI "\fITurn a proxy object into a 'real' object\&. If the \fIproxy\fP  you give in parameter is not a INHibernateProxy, it will returns the same object without any change\&. \fP"
+.ti -1c
+.RI "static object \fBUnProxy\fP (object proxy)"
+.br
+.RI "\fITurn a proxy object into a 'real' object\&. If the \fIproxy\fP  you give in parameter is not a INHibernateProxy, it will returns the same object without any change\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "long \fB_id\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual long \fBID\fP\fC [get, set]\fP"
+.br
+.RI "\fIDatabase ID\&. This ID doesn't have any business meaning\&. \fP"
+.ti -1c
+.RI "abstract string \fBBusinessKey\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The base for all objects in the model /summary> 
+.PP
+Definition at line 10 of file DomainObject\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual System\&.Type NHibernate\&.Test\&.NHSpecificTest\&.NH1789\&.DomainObject\&.GetConcreteType ()\fC [virtual]\fP"
+
+.PP
+Returns the concrete type of the object, not the proxy one\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+summary> The equals method works with the persistence framework too /summary> param name='obj'>
+.PP
+returns>
+.PP
+Implements \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1789\&.IDomainObject\fP\&.
+.PP
+Definition at line 45 of file DomainObject\&.cs\&.
+.SS "override int NHibernate\&.Test\&.NHSpecificTest\&.NH1789\&.DomainObject\&.GetHashCode ()"
+
+.PP
+Must be implemented to compare two objects 
+.PP
+Implements \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1789\&.IDomainObject\fP\&.
+.PP
+Definition at line 99 of file DomainObject\&.cs\&.
+.SS "virtual bool NHibernate\&.Test\&.NHSpecificTest\&.NH1789\&.DomainObject\&.IsTransient ()\fC [virtual]\fP"
+
+.PP
+Transient objects are not associated with an item already in storage\&. For instance, a Customer is transient if its ID is 0\&. summary> This is a string which uniquely identifies an instance in the case that the ids are both transient /summary> 
+.PP
+Implements \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1789\&.IDomainObject\fP\&.
+.PP
+Definition at line 30 of file DomainObject\&.cs\&.
+.SS "static object NHibernate\&.Test\&.NHSpecificTest\&.NH1789\&.DomainObject\&.UnProxy (objectproxy)\fC [static]\fP"
+
+.PP
+Turn a proxy object into a 'real' object\&. If the \fIproxy\fP  you give in parameter is not a INHibernateProxy, it will returns the same object without any change\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproxy\fP \fBProxy\fP object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Unproxied object
+.RE
+.PP
+
+.PP
+Definition at line 128 of file DomainObject\&.cs\&.
+.SS "static T \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1789\&.DomainObject\&.UnProxy\fP< T > (objectproxy)\fC [static]\fP"
+
+.PP
+Turn a proxy object into a 'real' object\&. If the \fIproxy\fP  you give in parameter is not a INHibernateProxy, it will returns the same object without any change\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP \fBType\fP in which the unproxied object should be returned
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproxy\fP \fBProxy\fP object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Unproxied object
+.RE
+.PP
+
+.PP
+Definition at line 110 of file DomainObject\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual long NHibernate\&.Test\&.NHSpecificTest\&.NH1789\&.DomainObject\&.ID\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Database ID\&. This ID doesn't have any business meaning\&. 
+.PP
+Definition at line 20 of file DomainObject\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

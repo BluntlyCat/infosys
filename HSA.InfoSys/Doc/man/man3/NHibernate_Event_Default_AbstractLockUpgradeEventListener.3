@@ -1,0 +1,55 @@
+.TH "NHibernate.Event.Default.AbstractLockUpgradeEventListener" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.Default.AbstractLockUpgradeEventListener \- 
+.PP
+A convenience base class for listeners that respond to requests to perform a pessimistic lock upgrade on an entity\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Event\&.Default\&.AbstractReassociateEventListener\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Event\&.Default\&.DefaultLoadEventListener\fP, and \fBNHibernate\&.Event\&.Default\&.DefaultLockEventListener\fP\&.
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBUpgradeLock\fP (object entity, \fBEntityEntry\fP entry, \fBLockMode\fP requestedLockMode, \fBISessionImplementor\fP source)"
+.br
+.RI "\fIPerforms a pessimistic lock upgrade on a given entity, if needed\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A convenience base class for listeners that respond to requests to perform a pessimistic lock upgrade on an entity\&. 
+
+
+.PP
+Definition at line 17 of file AbstractLockUpgradeEventListener\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Event\&.Default\&.AbstractLockUpgradeEventListener\&.UpgradeLock (objectentity, \fBEntityEntry\fPentry, \fBLockMode\fPrequestedLockMode, \fBISessionImplementor\fPsource)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Performs a pessimistic lock upgrade on a given entity, if needed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity for which to upgrade the lock\&.
+.br
+\fIentry\fP The entity's EntityEntry instance\&.
+.br
+\fIrequestedLockMode\fP The lock mode being requested for locking\&. 
+.br
+\fIsource\fP The session which is the source of the event being processed\&.
+.RE
+.PP
+
+.PP
+Definition at line 28 of file AbstractLockUpgradeEventListener\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

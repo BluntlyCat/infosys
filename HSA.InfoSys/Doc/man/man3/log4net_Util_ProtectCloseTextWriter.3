@@ -1,0 +1,81 @@
+.TH "log4net.Util.ProtectCloseTextWriter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.ProtectCloseTextWriter \- 
+.PP
+A TextWriter that ignores the \fBClose\fP message  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Util\&.TextWriterAdapter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBProtectCloseTextWriter\fP (TextWriter writer)"
+.br
+.RI "\fIConstructor \fP"
+.ti -1c
+.RI "void \fBAttach\fP (TextWriter writer)"
+.br
+.RI "\fIAttach this instance to a different underlying TextWriter \fP"
+.ti -1c
+.RI "override void \fBClose\fP ()"
+.br
+.RI "\fIDoes not close the underlying output writer\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A TextWriter that ignores the \fBClose\fP message 
+
+This writer is used in special cases where it is necessary to protect a writer from being closed by a client\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 38 of file ProtectCloseTextWriter\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Util\&.ProtectCloseTextWriter\&.ProtectCloseTextWriter (TextWriterwriter)"
+
+.PP
+Constructor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP the writer to actually write to
+.RE
+.PP
+.PP
+Create a new \fBProtectCloseTextWriter\fP using a writer 
+.PP
+Definition at line 51 of file ProtectCloseTextWriter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Util\&.ProtectCloseTextWriter\&.Attach (TextWriterwriter)"
+
+.PP
+Attach this instance to a different underlying TextWriter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP the writer to attach to
+.RE
+.PP
+.PP
+Attach this instance to a different underlying TextWriter 
+.PP
+Definition at line 68 of file ProtectCloseTextWriter\&.cs\&.
+.SS "override void log4net\&.Util\&.ProtectCloseTextWriter\&.Close ()"
+
+.PP
+Does not close the underlying output writer\&. Does not close the underlying output writer\&. This method does nothing\&. 
+.PP
+Definition at line 86 of file ProtectCloseTextWriter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

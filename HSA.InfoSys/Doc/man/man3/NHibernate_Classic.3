@@ -1,0 +1,49 @@
+.TH "NHibernate.Classic" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Classic \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "interface \fBILifecycle\fP"
+.br
+.RI "\fIProvides callbacks from the \fBISession\fP to the persistent object\&. Persistent classes may implement this interface but they are not required to\&. \fP"
+.ti -1c
+.RI "interface \fBIValidatable\fP"
+.br
+.RI "\fIImplemented by persistent classes with invariants that must be checked before inserting into or updating the database \fP"
+.ti -1c
+.RI "class \fBValidationFailure\fP"
+.br
+.RI "\fIThrown from \fBIValidatable\&.Validate\fP when an invariant was violated\&. Some applications might subclass this exception in order to provide more information about the violation \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBLifecycleVeto\fP { \fBLifecycleVeto\&.Veto\fP, \fBLifecycleVeto\&.NoVeto\fP }"
+.br
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBNHibernate\&.Classic\&.LifecycleVeto\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIVeto \fP\fP
+Veto the action 
+.TP
+\fB\fINoVeto \fP\fP
+Accept the action 
+.PP
+Definition at line 73 of file ILifecycle\&.cs\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,27 @@
+.TH "NHibernate.Linq.ExpressionTransformers" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Linq.ExpressionTransformers \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBRemoveCharToIntConversion\fP"
+.br
+.RI "\fIRemove unwanted char-to-int conversions in binary expressions \fP"
+.ti -1c
+.RI "class \fBRemoveRedundantCast\fP"
+.br
+.RI "\fIRemove redundant casts to the same type or to superclass (upcast) in ExpressionType\&.Convert,  ExpressionType\&.ConvertChecked and ExpressionType\&.TypeAs UnaryExpressions \fP"
+.ti -1c
+.RI "class \fBSimplifyCompareTransformer\fP"
+.br
+.RI "\fIApplications of the string\&.Compare(a,b) and a\&.CompareTo(b) (for various types) that are then immediately compared to 0 can be simplified by removing the Compare/CompareTo method call\&. The comparison operator is then applied directly to the arguments for the Compare/CompareTo call\&. \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

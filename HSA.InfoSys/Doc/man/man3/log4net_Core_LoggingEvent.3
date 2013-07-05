@@ -1,0 +1,638 @@
+.TH "log4net.Core.LoggingEvent" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Core.LoggingEvent \- 
+.PP
+The internal representation of logging events\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits ISerializable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLoggingEvent\fP (Type callerStackBoundaryDeclaringType, \fBlog4net\&.Repository\&.ILoggerRepository\fP repository, string loggerName, \fBLevel\fP level, object message, \fBException\fP exception)"
+.br
+.RI "\fIInitializes a new instance of the \fBLoggingEvent\fP class from the supplied parameters\&. \fP"
+.ti -1c
+.RI "\fBLoggingEvent\fP (Type callerStackBoundaryDeclaringType, \fBlog4net\&.Repository\&.ILoggerRepository\fP repository, \fBLoggingEventData\fP data, \fBFixFlags\fP fixedData)"
+.br
+.RI "\fIInitializes a new instance of the \fBLoggingEvent\fP class using specific data\&. \fP"
+.ti -1c
+.RI "\fBLoggingEvent\fP (Type callerStackBoundaryDeclaringType, \fBlog4net\&.Repository\&.ILoggerRepository\fP repository, \fBLoggingEventData\fP data)"
+.br
+.RI "\fIInitializes a new instance of the \fBLoggingEvent\fP class using specific data\&. \fP"
+.ti -1c
+.RI "\fBLoggingEvent\fP (\fBLoggingEventData\fP data)"
+.br
+.RI "\fIInitializes a new instance of the \fBLoggingEvent\fP class using specific data\&. \fP"
+.ti -1c
+.RI "void \fBWriteRenderedMessage\fP (TextWriter writer)"
+.br
+.RI "\fIWrite the rendered message to a TextWriter \fP"
+.ti -1c
+.RI "virtual void \fBGetObjectData\fP (SerializationInfo info, StreamingContext context)"
+.br
+.RI "\fISerializes this object into the SerializationInfo provided\&. \fP"
+.ti -1c
+.RI "\fBLoggingEventData\fP \fBGetLoggingEventData\fP ()"
+.br
+.RI "\fIGets the portable data for this \fBLoggingEvent\fP\&. \fP"
+.ti -1c
+.RI "\fBLoggingEventData\fP \fBGetLoggingEventData\fP (\fBFixFlags\fP fixFlags)"
+.br
+.RI "\fIGets the portable data for this \fBLoggingEvent\fP\&. \fP"
+.ti -1c
+.RI "string \fBGetExceptionStrRep\fP ()"
+.br
+.RI "\fIReturns this event's exception's rendered using the ILoggerRepository\&.RendererMap\&. \fP"
+.ti -1c
+.RI "string \fBGetExceptionString\fP ()"
+.br
+.RI "\fIReturns this event's exception's rendered using the ILoggerRepository\&.RendererMap\&. \fP"
+.ti -1c
+.RI "void \fBFixVolatileData\fP ()"
+.br
+.RI "\fIFix instance fields that hold volatile data\&. \fP"
+.ti -1c
+.RI "void \fBFixVolatileData\fP (bool fastButLoose)"
+.br
+.RI "\fIFixes instance fields that hold volatile data\&. \fP"
+.ti -1c
+.RI "object \fBLookupProperty\fP (string key)"
+.br
+.RI "\fILookup a composite property in this event \fP"
+.ti -1c
+.RI "\fBPropertiesDictionary\fP \fBGetProperties\fP ()"
+.br
+.RI "\fIGet all the composite properties in this event \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBHostNameProperty\fP = 'log4net:HostName'"
+.br
+.RI "\fIThe key into the Properties map for the host name value\&. \fP"
+.ti -1c
+.RI "const string \fBIdentityProperty\fP = 'log4net:Identity'"
+.br
+.RI "\fIThe key into the Properties map for the thread identity value\&. \fP"
+.ti -1c
+.RI "const string \fBUserNameProperty\fP = 'log4net:UserName'"
+.br
+.RI "\fIThe key into the Properties map for the user name value\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLoggingEvent\fP (SerializationInfo info, StreamingContext context)"
+.br
+.RI "\fISerialization constructor \fP"
+.ti -1c
+.RI "void \fBFixVolatileData\fP (\fBFixFlags\fP flags)"
+.br
+.RI "\fIFix the fields specified by the \fBFixFlags\fP parameter \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "static DateTime \fBStartTime\fP\fC [get]\fP"
+.br
+.RI "\fIGets the time when the current process started\&. \fP"
+.ti -1c
+.RI "\fBLevel\fP \fBLevel\fP\fC [get]\fP"
+.br
+.RI "\fIGets the \fBLevel\fP of the logging event\&. \fP"
+.ti -1c
+.RI "DateTime \fBTimeStamp\fP\fC [get]\fP"
+.br
+.RI "\fIGets the time of the logging event\&. \fP"
+.ti -1c
+.RI "string \fBLoggerName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the name of the logger that logged the event\&. \fP"
+.ti -1c
+.RI "\fBLocationInfo\fP \fBLocationInformation\fP\fC [get]\fP"
+.br
+.RI "\fIGets the location information for this logging event\&. \fP"
+.ti -1c
+.RI "object \fBMessageObject\fP\fC [get]\fP"
+.br
+.RI "\fIGets the message object used to initialize this event\&. \fP"
+.ti -1c
+.RI "\fBException\fP \fBExceptionObject\fP\fC [get]\fP"
+.br
+.RI "\fIGets the exception object used to initialize this event\&. \fP"
+.ti -1c
+.RI "\fBILoggerRepository\fP \fBRepository\fP\fC [get]\fP"
+.br
+.RI "\fIThe ILoggerRepository that this event was created in\&. \fP"
+.ti -1c
+.RI "string \fBRenderedMessage\fP\fC [get]\fP"
+.br
+.RI "\fIGets the message, rendered through the ILoggerRepository\&.RendererMap\&. \fP"
+.ti -1c
+.RI "string \fBThreadName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the name of the current thread\&. \fP"
+.ti -1c
+.RI "string \fBUserName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the name of the current user\&. \fP"
+.ti -1c
+.RI "string \fBIdentity\fP\fC [get]\fP"
+.br
+.RI "\fIGets the identity of the current thread principal\&. \fP"
+.ti -1c
+.RI "string \fBDomain\fP\fC [get]\fP"
+.br
+.RI "\fIGets the AppDomain friendly name\&. \fP"
+.ti -1c
+.RI "\fBPropertiesDictionary\fP \fBProperties\fP\fC [get]\fP"
+.br
+.RI "\fIAdditional event specific properties\&. \fP"
+.ti -1c
+.RI "\fBFixFlags\fP \fBFix\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe fixed fields in this event \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The internal representation of logging events\&. 
+
+When an affirmative decision is made to log then a \fBLoggingEvent\fP instance is created\&. This instance is passed around to the different \fBlog4net\fP components\&. 
+.PP
+This class is of concern to those wishing to extend \fBlog4net\fP\&. 
+.PP
+Some of the values in instances of \fBLoggingEvent\fP are considered volatile, that is the values are correct at the time the event is delivered to appenders, but will not be consistent at any time afterwards\&. If an event is to be stored and then processed at a later time these volatile values must be fixed by calling \fBFixVolatileData()\fP\&. There is a performance penalty for incurred by calling \fBFixVolatileData()\fP but it is essential to maintaining data consistency\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> <author>Douglas de la Torre</author> <author>Daniel Cazzulino</author> 
+.PP
+Definition at line 293 of file LoggingEvent\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Core\&.LoggingEvent\&.LoggingEvent (TypecallerStackBoundaryDeclaringType, \fBlog4net\&.Repository\&.ILoggerRepository\fPrepository, stringloggerName, \fBLevel\fPlevel, objectmessage, \fBException\fPexception)"
+
+.PP
+Initializes a new instance of the \fBLoggingEvent\fP class from the supplied parameters\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcallerStackBoundaryDeclaringType\fP The declaring type of the method that is the stack boundary into the logging system for this call\&.
+.br
+\fIrepository\fP The repository this event is logged in\&.
+.br
+\fIloggerName\fP The name of the logger of this event\&.
+.br
+\fIlevel\fP The level of this event\&.
+.br
+\fImessage\fP The message of this event\&.
+.br
+\fIexception\fP The exception for this event\&.
+.RE
+.PP
+.PP
+Except \fBTimeStamp\fP, \fBLevel\fP and \fBLoggerName\fP, all fields of \fC\fBLoggingEvent\fP\fP are filled when actually needed\&. Call \fBFixVolatileData()\fP to cache all data locally to prevent inconsistencies\&. 
+.PP
+This method is called by the \fBlog4net\fP framework to create a logging event\&. 
+.PP
+Definition at line 324 of file LoggingEvent\&.cs\&.
+.SS "log4net\&.Core\&.LoggingEvent\&.LoggingEvent (TypecallerStackBoundaryDeclaringType, \fBlog4net\&.Repository\&.ILoggerRepository\fPrepository, \fBLoggingEventData\fPdata, \fBFixFlags\fPfixedData)"
+
+.PP
+Initializes a new instance of the \fBLoggingEvent\fP class using specific data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcallerStackBoundaryDeclaringType\fP The declaring type of the method that is the stack boundary into the logging system for this call\&.
+.br
+\fIrepository\fP The repository this event is logged in\&.
+.br
+\fIdata\fP Data used to initialize the logging event\&.
+.br
+\fIfixedData\fP The fields in the <paranref name='data'> struct that have already been fixed\&.
+.RE
+.PP
+.PP
+This constructor is provided to allow a \fBLoggingEvent\fP to be created independently of the \fBlog4net\fP framework\&. This can be useful if you require a custom serialization scheme\&. 
+.PP
+Use the \fBGetLoggingEventData(FixFlags)\fP method to obtain an instance of the \fBLoggingEventData\fP class\&. 
+.PP
+The \fIfixedData\fP  parameter should be used to specify which fields in the \fIdata\fP  struct have been preset\&. Fields not specified in the \fIfixedData\fP  will be captured from the environment if requested or fixed\&. 
+.PP
+Definition at line 363 of file LoggingEvent\&.cs\&.
+.SS "log4net\&.Core\&.LoggingEvent\&.LoggingEvent (TypecallerStackBoundaryDeclaringType, \fBlog4net\&.Repository\&.ILoggerRepository\fPrepository, \fBLoggingEventData\fPdata)"
+
+.PP
+Initializes a new instance of the \fBLoggingEvent\fP class using specific data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcallerStackBoundaryDeclaringType\fP The declaring type of the method that is the stack boundary into the logging system for this call\&.
+.br
+\fIrepository\fP The repository this event is logged in\&.
+.br
+\fIdata\fP Data used to initialize the logging event\&.
+.RE
+.PP
+.PP
+This constructor is provided to allow a \fBLoggingEvent\fP to be created independently of the \fBlog4net\fP framework\&. This can be useful if you require a custom serialization scheme\&. 
+.PP
+Use the \fBGetLoggingEventData(FixFlags)\fP method to obtain an instance of the \fBLoggingEventData\fP class\&. 
+.PP
+This constructor sets this objects \fBFix\fP flags to FixFlags\&.All, this assumes that all the data relating to this event is passed in via the \fIdata\fP  parameter and no other data should be captured from the environment\&. 
+.PP
+Definition at line 396 of file LoggingEvent\&.cs\&.
+.SS "log4net\&.Core\&.LoggingEvent\&.LoggingEvent (\fBLoggingEventData\fPdata)"
+
+.PP
+Initializes a new instance of the \fBLoggingEvent\fP class using specific data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Data used to initialize the logging event\&.
+.RE
+.PP
+.PP
+This constructor is provided to allow a \fBLoggingEvent\fP to be created independently of the \fBlog4net\fP framework\&. This can be useful if you require a custom serialization scheme\&. 
+.PP
+Use the \fBGetLoggingEventData(FixFlags)\fP method to obtain an instance of the \fBLoggingEventData\fP class\&. 
+.PP
+This constructor sets this objects \fBFix\fP flags to FixFlags\&.All, this assumes that all the data relating to this event is passed in via the \fIdata\fP  parameter and no other data should be captured from the environment\&. 
+.PP
+Definition at line 421 of file LoggingEvent\&.cs\&.
+.SS "log4net\&.Core\&.LoggingEvent\&.LoggingEvent (SerializationInfoinfo, StreamingContextcontext)\fC [protected]\fP"
+
+.PP
+Serialization constructor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinfo\fP The SerializationInfo that holds the serialized object data\&.
+.br
+\fIcontext\fP The StreamingContext that contains contextual information about the source or destination\&.
+.RE
+.PP
+.PP
+Initializes a new instance of the \fBLoggingEvent\fP class with serialized data\&. 
+.PP
+Definition at line 442 of file LoggingEvent\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Core\&.LoggingEvent\&.FixVolatileData ()"
+
+.PP
+Fix instance fields that hold volatile data\&. Some of the values in instances of \fBLoggingEvent\fP are considered volatile, that is the values are correct at the time the event is delivered to appenders, but will not be consistent at any time afterwards\&. If an event is to be stored and then processed at a later time these volatile values must be fixed by calling \fBFixVolatileData()\fP\&. There is a performance penalty incurred by calling \fBFixVolatileData()\fP but it is essential to maintaining data consistency\&. 
+.PP
+Calling \fBFixVolatileData()\fP is equivalent to calling \fBFixVolatileData(bool)\fP passing the parameter \fCfalse\fP\&. 
+.PP
+See \fBFixVolatileData(bool)\fP for more information\&. 
+.PP
+Definition at line 1162 of file LoggingEvent\&.cs\&.
+.SS "void log4net\&.Core\&.LoggingEvent\&.FixVolatileData (boolfastButLoose)"
+
+.PP
+Fixes instance fields that hold volatile data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfastButLoose\fP Set to \fCtrue\fP to not fix data that takes a long time to fix\&.
+.RE
+.PP
+.PP
+Some of the values in instances of \fBLoggingEvent\fP are considered volatile, that is the values are correct at the time the event is delivered to appenders, but will not be consistent at any time afterwards\&. If an event is to be stored and then processed at a later time these volatile values must be fixed by calling \fBFixVolatileData()\fP\&. There is a performance penalty for incurred by calling \fBFixVolatileData()\fP but it is essential to maintaining data consistency\&. 
+.PP
+The \fIfastButLoose\fP  param controls the data that is fixed\&. Some of the data that can be fixed takes a long time to generate, therefore if you do not require those settings to be fixed they can be ignored by setting the \fIfastButLoose\fP  param to \fCtrue\fP\&. This setting will ignore the \fBLocationInformation\fP and \fBUserName\fP settings\&. 
+.PP
+Set \fIfastButLoose\fP  to \fCfalse\fP to ensure that all settings are fixed\&. 
+.PP
+Definition at line 1196 of file LoggingEvent\&.cs\&.
+.SS "void log4net\&.Core\&.LoggingEvent\&.FixVolatileData (\fBFixFlags\fPflags)\fC [protected]\fP"
+
+.PP
+Fix the fields specified by the \fBFixFlags\fP parameter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIflags\fP the fields to fix
+.RE
+.PP
+.PP
+Only fields specified in the \fIflags\fP  will be fixed\&. Fields will not be fixed if they have previously been fixed\&. It is not possible to 'unfix' a field\&. 
+.PP
+Definition at line 1219 of file LoggingEvent\&.cs\&.
+.SS "string log4net\&.Core\&.LoggingEvent\&.GetExceptionString ()"
+
+.PP
+Returns this event's exception's rendered using the ILoggerRepository\&.RendererMap\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+This event's exception's rendered using the ILoggerRepository\&.RendererMap\&. 
+.RE
+.PP
+.PP
+Returns this event's exception's rendered using the ILoggerRepository\&.RendererMap\&. 
+.PP
+Definition at line 1112 of file LoggingEvent\&.cs\&.
+.SS "string log4net\&.Core\&.LoggingEvent\&.GetExceptionStrRep ()"
+
+.PP
+Returns this event's exception's rendered using the ILoggerRepository\&.RendererMap\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+This event's exception's rendered using the ILoggerRepository\&.RendererMap\&. 
+.RE
+.PP
+.PP
+\fBObsolete\&. Use \fBGetExceptionString\fP instead\&.\fP 
+.PP
+Definition at line 1094 of file LoggingEvent\&.cs\&.
+.SS "\fBLoggingEventData\fP log4net\&.Core\&.LoggingEvent\&.GetLoggingEventData ()"
+
+.PP
+Gets the portable data for this \fBLoggingEvent\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBLoggingEventData\fP for this event\&.
+.RE
+.PP
+.PP
+A new \fBLoggingEvent\fP can be constructed using a \fBLoggingEventData\fP instance\&. 
+.PP
+Does a FixFlags\&.Partial fix of the data in the logging event before returning the event data\&. 
+.PP
+Definition at line 1059 of file LoggingEvent\&.cs\&.
+.SS "\fBLoggingEventData\fP log4net\&.Core\&.LoggingEvent\&.GetLoggingEventData (\fBFixFlags\fPfixFlags)"
+
+.PP
+Gets the portable data for this \fBLoggingEvent\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfixFlags\fP The set of data to ensure is fixed in the \fBLoggingEventData\fP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBLoggingEventData\fP for this event\&.
+.RE
+.PP
+.PP
+A new \fBLoggingEvent\fP can be constructed using a \fBLoggingEventData\fP instance\&. 
+.PP
+Definition at line 1075 of file LoggingEvent\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LoggingEvent\&.GetObjectData (SerializationInfoinfo, StreamingContextcontext)\fC [virtual]\fP"
+
+.PP
+Serializes this object into the SerializationInfo provided\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinfo\fP The SerializationInfo to populate with data\&.
+.br
+\fIcontext\fP The destination for this serialization\&.
+.RE
+.PP
+.PP
+The data in this event must be fixed before it can be serialized\&. 
+.PP
+The \fBFixVolatileData()\fP method must be called during the \fBlog4net\&.Appender\&.IAppender\&.DoAppend\fP method call if this event is to be used outside that method\&. 
+.PP
+Definition at line 1021 of file LoggingEvent\&.cs\&.
+.SS "\fBPropertiesDictionary\fP log4net\&.Core\&.LoggingEvent\&.GetProperties ()"
+
+.PP
+Get all the composite properties in this event 
+.PP
+\fBReturns:\fP
+.RS 4
+the PropertiesDictionary containing all the properties
+.RE
+.PP
+.PP
+See \fBLookupProperty\fP for details of the composite properties stored by the event\&. 
+.PP
+This method returns a single PropertiesDictionary containing all the properties defined for this event\&. 
+.PP
+Definition at line 1434 of file LoggingEvent\&.cs\&.
+.SS "object log4net\&.Core\&.LoggingEvent\&.LookupProperty (stringkey)"
+
+.PP
+Lookup a composite property in this event 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP the key for the property to lookup
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the value for the property
+.RE
+.PP
+.PP
+This event has composite properties that combine together properties from several different contexts in the following order: 
+.PD 0
+
+.IP "\(bu" 2
+this events properties  This event has \fBProperties\fP that can be set\&. These properties are specific to this event only\&.   
+.IP "\(bu" 2
+the thread properties  The \fBThreadContext\&.Properties\fP that are set on the current thread\&. These properties are shared by all events logged on this thread\&.   
+.IP "\(bu" 2
+the global properties  The \fBGlobalContext\&.Properties\fP that are set globally\&. These properties are shared by all the threads in the AppDomain\&.   
+.PP
+
+.PP
+Definition at line 1407 of file LoggingEvent\&.cs\&.
+.SS "void log4net\&.Core\&.LoggingEvent\&.WriteRenderedMessage (TextWriterwriter)"
+
+.PP
+Write the rendered message to a TextWriter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP the writer to write the message to
+.RE
+.PP
+.PP
+Unlike the \fBRenderedMessage\fP property this method does store the message data in the internal cache\&. Therefore if called only once this method should be faster than the \fBRenderedMessage\fP property, however if the message is to be accessed multiple times then the property will be more efficient\&. 
+.PP
+Definition at line 703 of file LoggingEvent\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const string log4net\&.Core\&.LoggingEvent\&.HostNameProperty = 'log4net:HostName'"
+
+.PP
+The key into the Properties map for the host name value\&. 
+.PP
+Definition at line 1519 of file LoggingEvent\&.cs\&.
+.SS "const string log4net\&.Core\&.LoggingEvent\&.IdentityProperty = 'log4net:Identity'"
+
+.PP
+The key into the Properties map for the thread identity value\&. 
+.PP
+Definition at line 1524 of file LoggingEvent\&.cs\&.
+.SS "const string log4net\&.Core\&.LoggingEvent\&.UserNameProperty = 'log4net:UserName'"
+
+.PP
+The key into the Properties map for the user name value\&. 
+.PP
+Definition at line 1529 of file LoggingEvent\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string log4net\&.Core\&.LoggingEvent\&.Domain\fC [get]\fP"
+
+.PP
+Gets the AppDomain friendly name\&. The AppDomain friendly name\&. 
+.PP
+Gets the AppDomain friendly name\&. 
+.PP
+Definition at line 922 of file LoggingEvent\&.cs\&.
+.SS "\fBException\fP log4net\&.Core\&.LoggingEvent\&.ExceptionObject\fC [get]\fP"
+
+.PP
+Gets the exception object used to initialize this event\&. The exception object used to initialize this event\&. 
+.PP
+Gets the exception object used to initialize this event\&. Note that this event may not have a valid exception object\&. If the event is serialized the exception object will not be transferred\&. To get the text of the exception the \fBGetExceptionString\fP method must be used not this property\&. 
+.PP
+If there is no defined exception object for this event then null will be returned\&. 
+.PP
+Definition at line 622 of file LoggingEvent\&.cs\&.
+.SS "\fBFixFlags\fP log4net\&.Core\&.LoggingEvent\&.Fix\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The fixed fields in this event The set of fields that are fixed in this event 
+.PP
+Fields will not be fixed if they have previously been fixed\&. It is not possible to 'unfix' a field\&. 
+.PP
+Definition at line 990 of file LoggingEvent\&.cs\&.
+.SS "string log4net\&.Core\&.LoggingEvent\&.Identity\fC [get]\fP"
+
+.PP
+Gets the identity of the current thread principal\&. The string name of the identity of the current thread principal\&. 
+.PP
+Calls \fCSystem\&.Threading\&.Thread\&.CurrentPrincipal\&.Identity\&.Name\fP to get the name of the current thread principal\&. 
+.PP
+Definition at line 874 of file LoggingEvent\&.cs\&.
+.SS "\fBLevel\fP log4net\&.Core\&.LoggingEvent\&.Level\fC [get]\fP"
+
+.PP
+Gets the \fBLevel\fP of the logging event\&. The \fBLevel\fP of the logging event\&. 
+.PP
+Gets the \fBLevel\fP of the logging event\&. 
+.PP
+Definition at line 512 of file LoggingEvent\&.cs\&.
+.SS "\fBLocationInfo\fP log4net\&.Core\&.LoggingEvent\&.LocationInformation\fC [get]\fP"
+
+.PP
+Gets the location information for this logging event\&. The location information for this logging event\&. 
+.PP
+The collected information is cached for future use\&. 
+.PP
+See the \fBLocationInfo\fP class for more information on supported frameworks and the different behavior in Debug and Release builds\&. 
+.PP
+Definition at line 565 of file LoggingEvent\&.cs\&.
+.SS "string log4net\&.Core\&.LoggingEvent\&.LoggerName\fC [get]\fP"
+
+.PP
+Gets the name of the logger that logged the event\&. The name of the logger that logged the event\&. 
+.PP
+Gets the name of the logger that logged the event\&. 
+.PP
+Definition at line 544 of file LoggingEvent\&.cs\&.
+.SS "object log4net\&.Core\&.LoggingEvent\&.MessageObject\fC [get]\fP"
+
+.PP
+Gets the message object used to initialize this event\&. The message object used to initialize this event\&. 
+.PP
+Gets the message object used to initialize this event\&. Note that this event may not have a valid message object\&. If the event is serialized the message object will not be transferred\&. To get the text of the message the \fBRenderedMessage\fP property must be used not this property\&. 
+.PP
+If there is no defined message object for this event then null will be returned\&. 
+.PP
+Definition at line 597 of file LoggingEvent\&.cs\&.
+.SS "\fBPropertiesDictionary\fP log4net\&.Core\&.LoggingEvent\&.Properties\fC [get]\fP"
+
+.PP
+Additional event specific properties\&. Additional event specific properties\&. 
+.PP
+A logger or an appender may attach additional properties to specific events\&. These properties have a string key and an object value\&. 
+.PP
+This property is for events that have been added directly to this event\&. The aggregate properties (which include these event properties) can be retrieved using \fBLookupProperty\fP and \fBGetProperties\fP\&. 
+.PP
+Once the properties have been fixed \fBFix\fP this property returns the combined cached properties\&. This ensures that updates to this property are always reflected in the underlying storage\&. When returning the combined properties there may be more keys in the Dictionary than expected\&. 
+.PP
+Definition at line 960 of file LoggingEvent\&.cs\&.
+.SS "string log4net\&.Core\&.LoggingEvent\&.RenderedMessage\fC [get]\fP"
+
+.PP
+Gets the message, rendered through the ILoggerRepository\&.RendererMap\&. The message rendered through the ILoggerRepository\&.RendererMap\&. 
+.PP
+The collected information is cached for future use\&. 
+.PP
+Definition at line 663 of file LoggingEvent\&.cs\&.
+.SS "\fBILoggerRepository\fP log4net\&.Core\&.LoggingEvent\&.Repository\fC [get]\fP"
+
+.PP
+The ILoggerRepository that this event was created in\&. The ILoggerRepository that this event was created in\&. 
+.PP
+Definition at line 635 of file LoggingEvent\&.cs\&.
+.SS "DateTime log4net\&.Core\&.LoggingEvent\&.StartTime\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Gets the time when the current process started\&. This is the time when this process started\&. 
+.PP
+The TimeStamp is stored in the local time zone for this computer\&. 
+.PP
+Tries to get the start time for the current process\&. Failing that it returns the time of the first call to this property\&. 
+.PP
+Note that AppDomains may be loaded and unloaded within the same process without the process terminating and therefore without the process start time being reset\&. 
+.PP
+Definition at line 496 of file LoggingEvent\&.cs\&.
+.SS "string log4net\&.Core\&.LoggingEvent\&.ThreadName\fC [get]\fP"
+
+.PP
+Gets the name of the current thread\&. The name of the current thread, or the thread ID when the name is not available\&. 
+.PP
+The collected information is cached for future use\&. 
+.PP
+Definition at line 743 of file LoggingEvent\&.cs\&.
+.SS "DateTime log4net\&.Core\&.LoggingEvent\&.TimeStamp\fC [get]\fP"
+
+.PP
+Gets the time of the logging event\&. The time of the logging event\&. 
+.PP
+The TimeStamp is stored in the local time zone for this computer\&. 
+.PP
+Definition at line 528 of file LoggingEvent\&.cs\&.
+.SS "string log4net\&.Core\&.LoggingEvent\&.UserName\fC [get]\fP"
+
+.PP
+Gets the name of the current user\&. The name of the current user, or \fCNOT AVAILABLE\fP when the underlying runtime has no support for retrieving the name of the current user\&. 
+.PP
+Calls \fCWindowsIdentity\&.GetCurrent()\&.Name\fP to get the name of the current windows user\&. 
+.PP
+To improve performance, we could cache the string representation of the name, and reuse that as long as the identity stayed constant\&. Once the identity changed, we would need to re-assign and re-render the string\&. 
+.PP
+However, the \fCWindowsIdentity\&.GetCurrent()\fP call seems to return different objects every time, so the current implementation doesn't do this type of caching\&. 
+.PP
+Timing for these operations: 
+.PP
+Method Results  \fCWindowsIdentity\&.GetCurrent()\fP 10000 loops, 00:00:00\&.2031250 seconds  \fCWindowsIdentity\&.GetCurrent()\&.Name\fP 10000 loops, 00:00:08\&.0468750 seconds  
+.PP
+This means we could speed things up almost 40 times by caching the value of the \fCWindowsIdentity\&.GetCurrent()\&.Name\fP property, since this takes (8\&.04-0\&.20) = 7\&.84375 seconds\&. 
+.PP
+Definition at line 826 of file LoggingEvent\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

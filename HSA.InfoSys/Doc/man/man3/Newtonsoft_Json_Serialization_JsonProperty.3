@@ -1,0 +1,321 @@
+.TH "Newtonsoft.Json.Serialization.JsonProperty" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.Serialization.JsonProperty \- 
+.PP
+Maps a JSON property to a \&.NET member or constructor parameter\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIReturns a String that represents this instance\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBPropertyName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the name of the property\&. \fP"
+.ti -1c
+.RI "Type \fBDeclaringType\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the type that declared this property\&. \fP"
+.ti -1c
+.RI "int \fBOrder\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the order of serialization and deserialization of a member\&. \fP"
+.ti -1c
+.RI "string \fBUnderlyingName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the name of the underlying member or parameter\&. \fP"
+.ti -1c
+.RI "\fBIValueProvider\fP \fBValueProvider\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the \fBIValueProvider\fP that will get and set the \fBJsonProperty\fP during serialization\&. \fP"
+.ti -1c
+.RI "Type \fBPropertyType\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the type of the property\&. \fP"
+.ti -1c
+.RI "\fBJsonConverter\fP \fBConverter\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBJsonConverter\fP for the property\&. If set this converter takes presidence over the contract converter for the property type\&. \fP"
+.ti -1c
+.RI "\fBJsonConverter\fP \fBMemberConverter\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the member converter\&. \fP"
+.ti -1c
+.RI "bool \fBIgnored\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets a value indicating whether this \fBJsonProperty\fP is ignored\&. \fP"
+.ti -1c
+.RI "bool \fBReadable\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets a value indicating whether this \fBJsonProperty\fP is readable\&. \fP"
+.ti -1c
+.RI "bool \fBWritable\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets a value indicating whether this \fBJsonProperty\fP is writable\&. \fP"
+.ti -1c
+.RI "bool \fBHasMemberAttribute\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets a value indicating whether this \fBJsonProperty\fP has a member attribute\&. \fP"
+.ti -1c
+.RI "object \fBDefaultValue\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the default value\&. \fP"
+.ti -1c
+.RI "\fBRequired\fP \fBRequired\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets a value indicating whether this \fBJsonProperty\fP is required\&. \fP"
+.ti -1c
+.RI "bool \fBIsReference\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets a value indicating whether this property preserves object references\&. \fP"
+.ti -1c
+.RI "\fBNullValueHandling\fP \fBNullValueHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the property null value handling\&. \fP"
+.ti -1c
+.RI "\fBDefaultValueHandling\fP \fBDefaultValueHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the property default value handling\&. \fP"
+.ti -1c
+.RI "\fBReferenceLoopHandling\fP \fBReferenceLoopHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the property reference loop handling\&. \fP"
+.ti -1c
+.RI "\fBObjectCreationHandling\fP \fBObjectCreationHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the property object creation handling\&. \fP"
+.ti -1c
+.RI "\fBTypeNameHandling\fP \fBTypeNameHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the type name handling\&. \fP"
+.ti -1c
+.RI "Predicate< object > \fBShouldSerialize\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a predicate used to determine whether the property should be serialize\&. \fP"
+.ti -1c
+.RI "Predicate< object > \fBGetIsSpecified\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a predicate used to determine whether the property should be serialized\&. \fP"
+.ti -1c
+.RI "Action< object, object > \fBSetIsSpecified\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets an action used to set whether the property has been deserialized\&. \fP"
+.ti -1c
+.RI "\fBJsonConverter\fP \fBItemConverter\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the converter used when serializing the property's collection items\&. \fP"
+.ti -1c
+.RI "bool \fBItemIsReference\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets whether this property's collection items are serialized as a reference\&. \fP"
+.ti -1c
+.RI "\fBTypeNameHandling\fP \fBItemTypeNameHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the the type name handling used when serializing the property's collection items\&. \fP"
+.ti -1c
+.RI "\fBReferenceLoopHandling\fP \fBItemReferenceLoopHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the the reference loop handling used when serializing the property's collection items\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Maps a JSON property to a \&.NET member or constructor parameter\&. 
+
+
+.PP
+Definition at line 38 of file JsonProperty\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override string Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.ToString ()"
+
+.PP
+Returns a String that represents this instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A String that represents this instance\&. 
+.RE
+.PP
+
+.PP
+Definition at line 248 of file JsonProperty\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBJsonConverter\fP Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.Converter\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBJsonConverter\fP for the property\&. If set this converter takes presidence over the contract converter for the property type\&. The converter\&.
+.PP
+Definition at line 119 of file JsonProperty\&.cs\&.
+.SS "Type Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.DeclaringType\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the type that declared this property\&. The type that declared this property\&.
+.PP
+Definition at line 88 of file JsonProperty\&.cs\&.
+.SS "object Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.DefaultValue\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the default value\&. The default value\&.
+.PP
+Definition at line 156 of file JsonProperty\&.cs\&.
+.SS "\fBDefaultValueHandling\fP Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.DefaultValueHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the property default value handling\&. The default value handling\&.
+.PP
+Definition at line 204 of file JsonProperty\&.cs\&.
+.SS "Predicate<object> Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.GetIsSpecified\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a predicate used to determine whether the property should be serialized\&. A predicate used to determine whether the property should be serialized\&.
+.PP
+Definition at line 234 of file JsonProperty\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.HasMemberAttribute\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets a value indicating whether this \fBJsonProperty\fP has a member attribute\&. \fCtrue\fP if has a member attribute; otherwise, \fCfalse\fP\&.
+.PP
+Definition at line 149 of file JsonProperty\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.Ignored\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets a value indicating whether this \fBJsonProperty\fP is ignored\&. \fCtrue\fP if ignored; otherwise, \fCfalse\fP\&.
+.PP
+Definition at line 131 of file JsonProperty\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.IsReference\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets a value indicating whether this property preserves object references\&. \fCtrue\fP if this instance is reference; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 192 of file JsonProperty\&.cs\&.
+.SS "\fBJsonConverter\fP Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.ItemConverter\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the converter used when serializing the property's collection items\&. The collection's items converter\&.
+.PP
+Definition at line 257 of file JsonProperty\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.ItemIsReference\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets whether this property's collection items are serialized as a reference\&. Whether this property's collection items are serialized as a reference\&.
+.PP
+Definition at line 263 of file JsonProperty\&.cs\&.
+.SS "\fBReferenceLoopHandling\fP Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.ItemReferenceLoopHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the the reference loop handling used when serializing the property's collection items\&. The collection's items reference loop handling\&.
+.PP
+Definition at line 275 of file JsonProperty\&.cs\&.
+.SS "\fBTypeNameHandling\fP Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.ItemTypeNameHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the the type name handling used when serializing the property's collection items\&. The collection's items type name handling\&.
+.PP
+Definition at line 269 of file JsonProperty\&.cs\&.
+.SS "\fBJsonConverter\fP Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.MemberConverter\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the member converter\&. The member converter\&.
+.PP
+Definition at line 125 of file JsonProperty\&.cs\&.
+.SS "\fBNullValueHandling\fP Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.NullValueHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the property null value handling\&. The null value handling\&.
+.PP
+Definition at line 198 of file JsonProperty\&.cs\&.
+.SS "\fBObjectCreationHandling\fP Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.ObjectCreationHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the property object creation handling\&. The object creation handling\&.
+.PP
+Definition at line 216 of file JsonProperty\&.cs\&.
+.SS "int Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.Order\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the order of serialization and deserialization of a member\&. The numeric order of serialization or deserialization\&.
+.PP
+Definition at line 94 of file JsonProperty\&.cs\&.
+.SS "string Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.PropertyName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the name of the property\&. The name of the property\&.
+.PP
+Definition at line 55 of file JsonProperty\&.cs\&.
+.SS "Type Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.PropertyType\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the type of the property\&. The type of the property\&.
+.PP
+Definition at line 112 of file JsonProperty\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.Readable\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets a value indicating whether this \fBJsonProperty\fP is readable\&. \fCtrue\fP if readable; otherwise, \fCfalse\fP\&.
+.PP
+Definition at line 137 of file JsonProperty\&.cs\&.
+.SS "\fBReferenceLoopHandling\fP Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.ReferenceLoopHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the property reference loop handling\&. The reference loop handling\&.
+.PP
+Definition at line 210 of file JsonProperty\&.cs\&.
+.SS "\fBRequired\fP Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.Required\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets a value indicating whether this \fBJsonProperty\fP is required\&. A value indicating whether this \fBJsonProperty\fP is required\&.
+.PP
+Definition at line 181 of file JsonProperty\&.cs\&.
+.SS "Action<object, object> Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.SetIsSpecified\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets an action used to set whether the property has been deserialized\&. An action used to set whether the property has been deserialized\&.
+.PP
+Definition at line 240 of file JsonProperty\&.cs\&.
+.SS "Predicate<object> Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.ShouldSerialize\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a predicate used to determine whether the property should be serialize\&. A predicate used to determine whether the property should be serialize\&.
+.PP
+Definition at line 228 of file JsonProperty\&.cs\&.
+.SS "\fBTypeNameHandling\fP Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.TypeNameHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the type name handling\&. The type name handling\&.
+.PP
+Definition at line 222 of file JsonProperty\&.cs\&.
+.SS "string Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.UnderlyingName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the name of the underlying member or parameter\&. The name of the underlying member or parameter\&.
+.PP
+Definition at line 100 of file JsonProperty\&.cs\&.
+.SS "\fBIValueProvider\fP Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.ValueProvider\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the \fBIValueProvider\fP that will get and set the \fBJsonProperty\fP during serialization\&. The \fBIValueProvider\fP that will get and set the \fBJsonProperty\fP during serialization\&.
+.PP
+Definition at line 106 of file JsonProperty\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Serialization\&.JsonProperty\&.Writable\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets a value indicating whether this \fBJsonProperty\fP is writable\&. \fCtrue\fP if writable; otherwise, \fCfalse\fP\&.
+.PP
+Definition at line 143 of file JsonProperty\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

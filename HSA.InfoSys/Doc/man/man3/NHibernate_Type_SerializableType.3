@@ -1,0 +1,281 @@
+.TH "NHibernate.Type.SerializableType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.SerializableType \- 
+.PP
+Maps an instance of a System\&.Object that has the System\&.SerializableAttribute to a DbType\&.Binary column\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.MutableType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBSet\fP (IDbCommand st, object value, int index)"
+.br
+.RI "\fIWhen implemented by a class, put the value from the mapped Property into to the IDbCommand\&. \fP"
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, string name)"
+.br
+.RI "\fIWhen implemented by a class, gets the object in the IDataReader for the Property\&. \fP"
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, int index)"
+.br
+.RI "\fIWhen implemented by a class, gets the object in the IDataReader for the Property\&. \fP"
+.ti -1c
+.RI "override bool \fBIsEqual\fP (object x, object y)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP (Object x, \fBEntityMode\fP entityMode)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP (object value)"
+.br
+.RI "\fIA representation of the value to be embedded in an XML element \fP"
+.ti -1c
+.RI "override object \fBFromStringValue\fP (string xml)"
+.br
+.RI "\fIParse the XML representation of an instance \fP"
+.ti -1c
+.RI "override object \fBDeepCopyNotNull\fP (object value)"
+.br
+.ti -1c
+.RI "object \fBFromBytes\fP (byte[] bytes)"
+.br
+.ti -1c
+.RI "override object \fBAssemble\fP (object cached, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIReconstructs the object from its cached 'disassembled' state\&. \fP"
+.ti -1c
+.RI "override object \fBDisassemble\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIDisassembles the object into a cacheable representation\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Maps an instance of a System\&.Object that has the System\&.SerializableAttribute to a DbType\&.Binary column\&. 
+
+For performance reasons, the \fBSerializableType\fP should be used when you know that Bytes are not going to be greater than 8,000\&. Implementing a custom type is recommended for larger types\&. 
+.PP
+The base class is \fBMutableType\fP because the data is stored in a byte[]\&. The System\&.Array does not have a nice 'equals' method so we must do a custom implementation\&. 
+.PP
+Definition at line 28 of file SerializableType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.SerializableType\&.Assemble (objectcached, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Reconstructs the object from its cached 'disassembled' state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcached\fP The disassembled state from the cache
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP The parent Entity object is not used by this method
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The assembled object\&.
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 155 of file SerializableType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.SerializableType\&.DeepCopyNotNull (objectvalue)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.MutableType\fP\&.
+.PP
+Definition at line 117 of file SerializableType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.SerializableType\&.Disassemble (objectvalue, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Disassembles the object into a cacheable representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to disassemble\&.
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP optional parent entity object (needed for collections) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The disassembled, deep cloned state of the object
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 160 of file SerializableType\&.cs\&.
+.SS "object NHibernate\&.Type\&.SerializableType\&.FromBytes (byte[]bytes)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbytes\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 142 of file SerializableType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.SerializableType\&.FromStringValue (stringxml)\fC [virtual]\fP"
+
+.PP
+Parse the XML representation of an instance 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP XML string to parse, guaranteed to be non-empty
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 98 of file SerializableType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.SerializableType\&.Get (IDataReaderrs, stringname)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, gets the object in the IDataReader for the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the value\&.
+.br
+\fIname\fP The name of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object with the value from the database\&.
+.RE
+.PP
+.PP
+Most implementors just call the \fBGet(IDataReader, int)\fP overload of this method\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 54 of file SerializableType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.SerializableType\&.Get (IDataReaderrs, intindex)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, gets the object in the IDataReader for the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the value\&.
+.br
+\fIindex\fP The index of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object with the value from the database\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 59 of file SerializableType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.SerializableType\&.Set (IDbCommandcmd, objectvalue, intindex)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, put the value from the mapped Property into to the IDbCommand\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP The IDbCommand to put the value into\&.
+.br
+\fIvalue\fP The object that contains the value\&.
+.br
+\fIindex\fP The index of the IDbDataParameter to start writing the values to\&.
+.RE
+.PP
+.PP
+Implementors do not need to handle possibility of null values because this will only be called from \fBNullSafeSet(IDbCommand, object, int)\fP after it has checked for nulls\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 49 of file SerializableType\&.cs\&.
+.SS "override string NHibernate\&.Type\&.SerializableType\&.ToString (objectval)\fC [virtual]\fP"
+
+.PP
+A representation of the value to be embedded in an XML element 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP The object that contains the values\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An Xml formatted string\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 93 of file SerializableType\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.Type\&.SerializableType\&.Name\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 105 of file SerializableType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

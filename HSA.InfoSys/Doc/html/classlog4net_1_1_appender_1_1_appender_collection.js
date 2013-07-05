@@ -1,0 +1,37 @@
+var classlog4net_1_1_appender_1_1_appender_collection =
+[
+    [ "IAppenderCollectionEnumerator", "interfacelog4net_1_1_appender_1_1_appender_collection_1_1_i_appender_collection_enumerator.html", "interfacelog4net_1_1_appender_1_1_appender_collection_1_1_i_appender_collection_enumerator" ],
+    [ "Tag", "classlog4net_1_1_appender_1_1_appender_collection.html#ad9700b9d9adfbdb5058bfebe466c01cf", [
+      [ "Default", "classlog4net_1_1_appender_1_1_appender_collection.html#ad9700b9d9adfbdb5058bfebe466c01cfa7a1920d61156abc05a60135aefe8bc67", null ]
+    ] ],
+    [ "AppenderCollection", "classlog4net_1_1_appender_1_1_appender_collection.html#ad348d470e315b6c087075244fd2e0128", null ],
+    [ "AppenderCollection", "classlog4net_1_1_appender_1_1_appender_collection.html#a65b0328a5f6f76d89fadd638a554c477", null ],
+    [ "AppenderCollection", "classlog4net_1_1_appender_1_1_appender_collection.html#aa927c134146c535da58443202e58cb4a", null ],
+    [ "AppenderCollection", "classlog4net_1_1_appender_1_1_appender_collection.html#a16cd7af2c148e9f7547f172353ab0e13", null ],
+    [ "AppenderCollection", "classlog4net_1_1_appender_1_1_appender_collection.html#a7602e3f0354cd29f98dc5a15ed7200b7", null ],
+    [ "AppenderCollection", "classlog4net_1_1_appender_1_1_appender_collection.html#ad3f9aeaf1dbb2dce0967a656273a59de", null ],
+    [ "Add", "classlog4net_1_1_appender_1_1_appender_collection.html#adb7940a17ded2d8c9db31c768b33d118", null ],
+    [ "AddRange", "classlog4net_1_1_appender_1_1_appender_collection.html#a49ec6e60f49d948966a03c5d6f344c70", null ],
+    [ "AddRange", "classlog4net_1_1_appender_1_1_appender_collection.html#a11e5be2ac354846c07d2bf33ceb6c6d4", null ],
+    [ "AddRange", "classlog4net_1_1_appender_1_1_appender_collection.html#ac2ae9491929dbb7928dca7c6cdfd3af2", null ],
+    [ "Clear", "classlog4net_1_1_appender_1_1_appender_collection.html#ae1f4ccfb66a42a85b2469dfab41d3174", null ],
+    [ "Clone", "classlog4net_1_1_appender_1_1_appender_collection.html#a7b22b9506bb85518ea668a03069d132d", null ],
+    [ "Contains", "classlog4net_1_1_appender_1_1_appender_collection.html#a0def0c023417081ce86fa988dd43d082", null ],
+    [ "CopyTo", "classlog4net_1_1_appender_1_1_appender_collection.html#aa96f079f54ef60a2f39305b78136969b", null ],
+    [ "CopyTo", "classlog4net_1_1_appender_1_1_appender_collection.html#a2bcaec90c3d15ae770ca04823a6506ff", null ],
+    [ "GetEnumerator", "classlog4net_1_1_appender_1_1_appender_collection.html#a1b9718980e826b1468ab9e0d96b06205", null ],
+    [ "IndexOf", "classlog4net_1_1_appender_1_1_appender_collection.html#a56feb907304fcc38451039a4eb659f02", null ],
+    [ "Insert", "classlog4net_1_1_appender_1_1_appender_collection.html#ac3b8538d2069bd1702099bb5da21229a", null ],
+    [ "Remove", "classlog4net_1_1_appender_1_1_appender_collection.html#a64e5173b42ec9aedc96bb537cf45a5ee", null ],
+    [ "RemoveAt", "classlog4net_1_1_appender_1_1_appender_collection.html#a11223851727b31cf91030b2951847a85", null ],
+    [ "ToArray", "classlog4net_1_1_appender_1_1_appender_collection.html#a0a7e5d5f68bfb5568450e75ac02abad5", null ],
+    [ "TrimToSize", "classlog4net_1_1_appender_1_1_appender_collection.html#a5a021d9f3755fc22a97dad4cb5467ef7", null ],
+    [ "Capacity", "classlog4net_1_1_appender_1_1_appender_collection.html#a8950292cda30c13c418e12d5159cb296", null ],
+    [ "Count", "classlog4net_1_1_appender_1_1_appender_collection.html#a1a044ce52ec56db863be24e095a743e3", null ],
+    [ "IsFixedSize", "classlog4net_1_1_appender_1_1_appender_collection.html#a60337ce616384ed9e7a6a5adfd07c9e5", null ],
+    [ "IsReadOnly", "classlog4net_1_1_appender_1_1_appender_collection.html#aed9609736c9610265a678c78beaaa900", null ],
+    [ "IsSynchronized", "classlog4net_1_1_appender_1_1_appender_collection.html#a3f5508a261d2311c7b95f1f9c2f9d522", null ],
+    [ "SyncRoot", "classlog4net_1_1_appender_1_1_appender_collection.html#ab49229e6c2015dd2eed4a6aeaf644883", null ],
+    [ "this[int i]", "classlog4net_1_1_appender_1_1_appender_collection.html#ab72add2f6f72d51fecadcded023ce8d7", null ],
+    [ "this[int index]", "classlog4net_1_1_appender_1_1_appender_collection.html#aefb77d5a058b40821f2dd096d5642165", null ]
+];

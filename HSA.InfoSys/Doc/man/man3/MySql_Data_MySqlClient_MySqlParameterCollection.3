@@ -1,0 +1,503 @@
+.TH "MySql.Data.MySqlClient.MySqlParameterCollection" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MySql.Data.MySqlClient.MySqlParameterCollection \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits DbParameterCollection\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMySqlParameter\fP \fBAdd\fP (\fBMySqlParameter\fP value)"
+.br
+.RI "\fIAdds the specified \fBMySqlParameter\fP object to the \fBMySqlParameterCollection\fP\&. \fP"
+.ti -1c
+.RI "\fBMySqlParameter\fP \fBAdd\fP (string parameterName, object value)"
+.br
+.RI "\fIAdds a \fBMySqlParameter\fP to the \fBMySqlParameterCollection\fP given the specified parameter name and value\&. \fP"
+.ti -1c
+.RI "\fBMySqlParameter\fP \fBAddWithValue\fP (string parameterName, object value)"
+.br
+.ti -1c
+.RI "\fBMySqlParameter\fP \fBAdd\fP (string parameterName, \fBMySqlDbType\fP dbType)"
+.br
+.RI "\fIAdds a \fBMySqlParameter\fP to the \fBMySqlParameterCollection\fP given the parameter name and the data type\&. \fP"
+.ti -1c
+.RI "\fBMySqlParameter\fP \fBAdd\fP (string parameterName, \fBMySqlDbType\fP dbType, int size)"
+.br
+.RI "\fIAdds a \fBMySqlParameter\fP to the \fBMySqlParameterCollection\fP with the parameter name, the data type, and the column length\&. \fP"
+.ti -1c
+.RI "\fBMySqlParameter\fP \fBAdd\fP (string parameterName, \fBMySqlDbType\fP dbType, int size, string sourceColumn)"
+.br
+.RI "\fIAdds a \fBMySqlParameter\fP to the \fBMySqlParameterCollection\fP with the parameter name, the data type, the column length, and the source column name\&. \fP"
+.ti -1c
+.RI "override void \fBAddRange\fP (Array values)"
+.br
+.RI "\fIAdds an array of values to the end of the \fBMySqlParameterCollection\fP\&. \fP"
+.ti -1c
+.RI "override int \fBAdd\fP (object value)"
+.br
+.RI "\fIAdds the specified \fBMySqlParameter\fP object to the \fBMySqlParameterCollection\fP\&. \fP"
+.ti -1c
+.RI "override void \fBClear\fP ()"
+.br
+.RI "\fIRemoves all items from the collection\&. \fP"
+.ti -1c
+.RI "override bool \fBContains\fP (string parameterName)"
+.br
+.RI "\fIGets a value indicating whether a \fBMySqlParameter\fP with the specified parameter name exists in the collection\&. \fP"
+.ti -1c
+.RI "override bool \fBContains\fP (object value)"
+.br
+.RI "\fIGets a value indicating whether a \fBMySqlParameter\fP exists in the collection\&. \fP"
+.ti -1c
+.RI "override void \fBCopyTo\fP (Array array, int index)"
+.br
+.RI "\fICopies \fBMySqlParameter\fP objects from the \fBMySqlParameterCollection\fP to the specified array\&. \fP"
+.ti -1c
+.RI "override IEnumerator \fBGetEnumerator\fP ()"
+.br
+.RI "\fIReturns an enumerator that iterates through the \fBMySqlParameterCollection\fP\&. \fP"
+.ti -1c
+.RI "override int \fBIndexOf\fP (string parameterName)"
+.br
+.RI "\fIGets the location of the \fBMySqlParameter\fP in the collection with a specific parameter name\&. \fP"
+.ti -1c
+.RI "override int \fBIndexOf\fP (object value)"
+.br
+.RI "\fIGets the location of a \fBMySqlParameter\fP in the collection\&. \fP"
+.ti -1c
+.RI "override void \fBInsert\fP (int index, object value)"
+.br
+.RI "\fIInserts a \fBMySqlParameter\fP into the collection at the specified index\&. \fP"
+.ti -1c
+.RI "override void \fBRemove\fP (object value)"
+.br
+.RI "\fIRemoves the specified \fBMySqlParameter\fP from the collection\&. \fP"
+.ti -1c
+.RI "override void \fBRemoveAt\fP (string parameterName)"
+.br
+.RI "\fIRemoves the specified \fBMySqlParameter\fP from the collection using the parameter name\&. \fP"
+.ti -1c
+.RI "override void \fBRemoveAt\fP (int index)"
+.br
+.RI "\fIRemoves the specified \fBMySqlParameter\fP from the collection using a specific index\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override DbParameter \fBGetParameter\fP (string parameterName)"
+.br
+.RI "\fIRetrieve the parameter with the given name\&. \fP"
+.ti -1c
+.RI "override DbParameter \fBGetParameter\fP (int index)"
+.br
+.ti -1c
+.RI "override void \fBSetParameter\fP (string parameterName, DbParameter value)"
+.br
+.ti -1c
+.RI "override void \fBSetParameter\fP (int index, DbParameter value)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "new \fBMySqlParameter\fP \fBthis[int index]\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the \fBMySqlParameter\fP at the specified index\&. \fP"
+.ti -1c
+.RI "new \fBMySqlParameter\fP \fBthis[string name]\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the \fBMySqlParameter\fP with the specified name\&. \fP"
+.ti -1c
+.RI "override int \fBCount\fP\fC [get]\fP"
+.br
+.RI "\fIGets the number of \fBMySqlParameter\fP objects in the collection\&. \fP"
+.ti -1c
+.RI "override bool \fBIsFixedSize\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value that indicates whether the \fBMySqlParameterCollection\fP has a fixed size\&. \fP"
+.ti -1c
+.RI "override bool \fBIsReadOnly\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value that indicates whether the \fBMySqlParameterCollection\fP is read-only\&. \fP"
+.ti -1c
+.RI "override bool \fBIsSynchronized\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value that indicates whether the \fBMySqlParameterCollection\fP is synchronized\&. \fP"
+.ti -1c
+.RI "override object \fBSyncRoot\fP\fC [get]\fP"
+.br
+.RI "\fIGets an object that can be used to synchronize access to the \fBMySqlParameterCollection\fP\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 40 of file parameter_collection\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBMySqlParameter\fP MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.Add (\fBMySqlParameter\fPvalue)"
+
+.PP
+Adds the specified \fBMySqlParameter\fP object to the \fBMySqlParameterCollection\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The \fBMySqlParameter\fP to add to the collection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The newly added \fBMySqlParameter\fP object\&.
+.RE
+.PP
+
+.PP
+Definition at line 84 of file parameter_collection\&.cs\&.
+.SS "\fBMySqlParameter\fP MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.Add (stringparameterName, objectvalue)"
+
+.PP
+Adds a \fBMySqlParameter\fP to the \fBMySqlParameterCollection\fP given the specified parameter name and value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameterName\fP The name of the parameter\&.
+.br
+\fIvalue\fP The \fBMySqlParameter\&.Value\fP of the \fBMySqlParameter\fP to add to the collection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The newly added \fBMySqlParameter\fP object\&.
+.RE
+.PP
+
+.PP
+Definition at line 96 of file parameter_collection\&.cs\&.
+.SS "\fBMySqlParameter\fP MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.Add (stringparameterName, \fBMySqlDbType\fPdbType)"
+
+.PP
+Adds a \fBMySqlParameter\fP to the \fBMySqlParameterCollection\fP given the parameter name and the data type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameterName\fP The name of the parameter\&.
+.br
+\fIdbType\fP One of the \fBMySqlDbType\fP values\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The newly added \fBMySqlParameter\fP object\&.
+.RE
+.PP
+
+.PP
+Definition at line 112 of file parameter_collection\&.cs\&.
+.SS "\fBMySqlParameter\fP MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.Add (stringparameterName, \fBMySqlDbType\fPdbType, intsize)"
+
+.PP
+Adds a \fBMySqlParameter\fP to the \fBMySqlParameterCollection\fP with the parameter name, the data type, and the column length\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameterName\fP The name of the parameter\&.
+.br
+\fIdbType\fP One of the \fBMySqlDbType\fP values\&. 
+.br
+\fIsize\fP The length of the column\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The newly added \fBMySqlParameter\fP object\&.
+.RE
+.PP
+
+.PP
+Definition at line 124 of file parameter_collection\&.cs\&.
+.SS "\fBMySqlParameter\fP MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.Add (stringparameterName, \fBMySqlDbType\fPdbType, intsize, stringsourceColumn)"
+
+.PP
+Adds a \fBMySqlParameter\fP to the \fBMySqlParameterCollection\fP with the parameter name, the data type, the column length, and the source column name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameterName\fP The name of the parameter\&.
+.br
+\fIdbType\fP One of the \fBMySqlDbType\fP values\&. 
+.br
+\fIsize\fP The length of the column\&.
+.br
+\fIsourceColumn\fP The name of the source column\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The newly added \fBMySqlParameter\fP object\&.
+.RE
+.PP
+
+.PP
+Definition at line 137 of file parameter_collection\&.cs\&.
+.SS "override int MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.Add (objectvalue)"
+
+.PP
+Adds the specified \fBMySqlParameter\fP object to the \fBMySqlParameterCollection\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The \fBMySqlParameter\fP to add to the collection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The index of the new \fBMySqlParameter\fP object\&.
+.RE
+.PP
+
+.PP
+Definition at line 221 of file parameter_collection\&.cs\&.
+.SS "override void MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.AddRange (Arrayvalues)"
+
+.PP
+Adds an array of values to the end of the \fBMySqlParameterCollection\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP 
+.RE
+.PP
+
+.PP
+Definition at line 150 of file parameter_collection\&.cs\&.
+.SS "override void MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.Clear ()"
+
+.PP
+Removes all items from the collection\&. 
+.PP
+Definition at line 234 of file parameter_collection\&.cs\&.
+.SS "override bool MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.Contains (stringparameterName)"
+
+.PP
+Gets a value indicating whether a \fBMySqlParameter\fP with the specified parameter name exists in the collection\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameterName\fP The name of the \fBMySqlParameter\fP object to find\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the collection contains the parameter; otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 248 of file parameter_collection\&.cs\&.
+.SS "override bool MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.Contains (objectvalue)"
+
+.PP
+Gets a value indicating whether a \fBMySqlParameter\fP exists in the collection\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value of the \fBMySqlParameter\fP object to find\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the collection contains the \fBMySqlParameter\fP object; otherwise, false\&.
+.RE
+.PP
+<overloads>Gets a value indicating whether a \fBMySqlParameter\fP exists in the collection\&.</overloads> 
+.PP
+Definition at line 259 of file parameter_collection\&.cs\&.
+.SS "override void MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.CopyTo (Arrayarray, intindex)"
+
+.PP
+Copies \fBMySqlParameter\fP objects from the \fBMySqlParameterCollection\fP to the specified array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarray\fP 
+.br
+\fIindex\fP 
+.RE
+.PP
+
+.PP
+Definition at line 272 of file parameter_collection\&.cs\&.
+.SS "override IEnumerator MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.GetEnumerator ()"
+
+.PP
+Returns an enumerator that iterates through the \fBMySqlParameterCollection\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 289 of file parameter_collection\&.cs\&.
+.SS "override DbParameter MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.GetParameter (stringparameterName)\fC [protected]\fP"
+
+.PP
+Retrieve the parameter with the given name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameterName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 167 of file parameter_collection\&.cs\&.
+.SS "override int MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.IndexOf (stringparameterName)"
+
+.PP
+Gets the location of the \fBMySqlParameter\fP in the collection with a specific parameter name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameterName\fP The name of the \fBMySqlParameter\fP object to retrieve\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The zero-based location of the \fBMySqlParameter\fP in the collection\&.
+.RE
+.PP
+
+.PP
+Definition at line 299 of file parameter_collection\&.cs\&.
+.SS "override int MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.IndexOf (objectvalue)"
+
+.PP
+Gets the location of a \fBMySqlParameter\fP in the collection\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The \fBMySqlParameter\fP object to locate\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The zero-based location of the \fBMySqlParameter\fP in the collection\&.
+.RE
+.PP
+<overloads>Gets the location of a \fBMySqlParameter\fP in the collection\&.</overloads> 
+.PP
+Definition at line 315 of file parameter_collection\&.cs\&.
+.SS "override void MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.Insert (intindex, objectvalue)"
+
+.PP
+Inserts a \fBMySqlParameter\fP into the collection at the specified index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP 
+.br
+\fIvalue\fP 
+.RE
+.PP
+
+.PP
+Definition at line 328 of file parameter_collection\&.cs\&.
+.SS "override void MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.Remove (objectvalue)"
+
+.PP
+Removes the specified \fBMySqlParameter\fP from the collection\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP 
+.RE
+.PP
+
+.PP
+Definition at line 367 of file parameter_collection\&.cs\&.
+.SS "override void MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.RemoveAt (stringparameterName)"
+
+.PP
+Removes the specified \fBMySqlParameter\fP from the collection using the parameter name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameterName\fP The name of the \fBMySqlParameter\fP object to retrieve\&. 
+.RE
+.PP
+
+.PP
+Definition at line 383 of file parameter_collection\&.cs\&.
+.SS "override void MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.RemoveAt (intindex)"
+
+.PP
+Removes the specified \fBMySqlParameter\fP from the collection using a specific index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The zero-based index of the parameter\&. 
+.RE
+.PP
+<overloads>Removes the specified \fBMySqlParameter\fP from the collection\&.</overloads> 
+.PP
+Definition at line 394 of file parameter_collection\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override int MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.Count\fC [get]\fP"
+
+.PP
+Gets the number of \fBMySqlParameter\fP objects in the collection\&. 
+.PP
+Definition at line 281 of file parameter_collection\&.cs\&.
+.SS "override bool MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.IsFixedSize\fC [get]\fP"
+
+.PP
+Gets a value that indicates whether the \fBMySqlParameterCollection\fP has a fixed size\&. 
+.PP
+Definition at line 341 of file parameter_collection\&.cs\&.
+.SS "override bool MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.IsReadOnly\fC [get]\fP"
+
+.PP
+Gets a value that indicates whether the \fBMySqlParameterCollection\fP is read-only\&. 
+.PP
+Definition at line 350 of file parameter_collection\&.cs\&.
+.SS "override bool MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.IsSynchronized\fC [get]\fP"
+
+.PP
+Gets a value that indicates whether the \fBMySqlParameterCollection\fP is synchronized\&. 
+.PP
+Definition at line 359 of file parameter_collection\&.cs\&.
+.SS "override object MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.SyncRoot\fC [get]\fP"
+
+.PP
+Gets an object that can be used to synchronize access to the \fBMySqlParameterCollection\fP\&. 
+.PP
+Definition at line 405 of file parameter_collection\&.cs\&.
+.SS "new \fBMySqlParameter\fP MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.this[int index]\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the \fBMySqlParameter\fP at the specified index\&. <overloads>Gets the \fBMySqlParameter\fP with a specified attribute\&. [C#] In C#, this property is the indexer for the \fBMySqlParameterCollection\fP class\&. </overloads> 
+.PP
+Definition at line 65 of file parameter_collection\&.cs\&.
+.SS "new \fBMySqlParameter\fP MySql\&.Data\&.MySqlClient\&.MySqlParameterCollection\&.this[string name]\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the \fBMySqlParameter\fP with the specified name\&. 
+.PP
+Definition at line 74 of file parameter_collection\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

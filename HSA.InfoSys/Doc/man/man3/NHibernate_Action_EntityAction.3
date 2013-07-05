@@ -1,0 +1,141 @@
+.TH "NHibernate.Action.EntityAction" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Action.EntityAction \- 
+.PP
+Base class for actions relating to insert/update/delete of an entity instance\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Action\&.IExecutable\fP, IComparable< EntityAction >, and IDeserializationCallback\&.
+.PP
+Inherited by \fBNHibernate\&.Action\&.EntityDeleteAction\fP, \fBNHibernate\&.Action\&.EntityIdentityInsertAction\fP, \fBNHibernate\&.Action\&.EntityInsertAction\fP, and \fBNHibernate\&.Action\&.EntityUpdateAction\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBBeforeExecutions\fP ()"
+.br
+.RI "\fICalled before executing any actions\fP"
+.ti -1c
+.RI "abstract void \fBExecute\fP ()"
+.br
+.RI "\fIExecute this action\fP"
+.ti -1c
+.RI "virtual int \fBCompareTo\fP (\fBEntityAction\fP other)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBBeforeTransactionCompletionProcessImpl\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBAfterTransactionCompletionProcessImpl\fP (bool success)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBEntityName\fP\fC [get]\fP"
+.br
+.RI "\fIEntity name accessor \fP"
+.ti -1c
+.RI "object \fBId\fP\fC [get]\fP"
+.br
+.RI "\fIEntity \fBId\fP accessor \fP"
+.ti -1c
+.RI "object \fBInstance\fP\fC [get]\fP"
+.br
+.RI "\fIEntity Instance \fP"
+.ti -1c
+.RI "\fBISessionImplementor\fP \fBSession\fP\fC [get]\fP"
+.br
+.RI "\fISession from which this action originated \fP"
+.ti -1c
+.RI "\fBIEntityPersister\fP \fBPersister\fP\fC [get]\fP"
+.br
+.RI "\fIThe entity persister\&. \fP"
+.ti -1c
+.RI "string[] \fBPropertySpaces\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual 
+.br
+\fBBeforeTransactionCompletionProcessDelegate\fP \fBBeforeTransactionCompletionProcess\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual 
+.br
+\fBAfterTransactionCompletionProcessDelegate\fP \fBAfterTransactionCompletionProcess\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for actions relating to insert/update/delete of an entity instance\&. 
+
+
+.PP
+Definition at line 16 of file EntityAction\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Action\&.EntityAction\&.BeforeExecutions ()"
+
+.PP
+Called before executing any actions
+.PP
+Implements \fBNHibernate\&.Action\&.IExecutable\fP\&.
+.PP
+Definition at line 98 of file EntityAction\&.cs\&.
+.SS "abstract void NHibernate\&.Action\&.EntityAction\&.Execute ()\fC [pure virtual]\fP"
+
+.PP
+Execute this action
+.PP
+Implements \fBNHibernate\&.Action\&.IExecutable\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Action\&.EntityIdentityInsertAction\fP, \fBNHibernate\&.Action\&.EntityUpdateAction\fP, \fBNHibernate\&.Action\&.EntityInsertAction\fP, and \fBNHibernate\&.Action\&.EntityDeleteAction\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "string NHibernate\&.Action\&.EntityAction\&.EntityName\fC [get]\fP"
+
+.PP
+Entity name accessor 
+.PP
+Definition at line 46 of file EntityAction\&.cs\&.
+.SS "object NHibernate\&.Action\&.EntityAction\&.Id\fC [get]\fP"
+
+.PP
+Entity \fBId\fP accessor 
+.PP
+Definition at line 54 of file EntityAction\&.cs\&.
+.SS "object NHibernate\&.Action\&.EntityAction\&.Instance\fC [get]\fP"
+
+.PP
+Entity Instance 
+.PP
+Definition at line 69 of file EntityAction\&.cs\&.
+.SS "\fBIEntityPersister\fP NHibernate\&.Action\&.EntityAction\&.Persister\fC [get]\fP"
+
+.PP
+The entity persister\&. 
+.PP
+Definition at line 85 of file EntityAction\&.cs\&.
+.SS "\fBISessionImplementor\fP NHibernate\&.Action\&.EntityAction\&.Session\fC [get]\fP"
+
+.PP
+Session from which this action originated 
+.PP
+Definition at line 77 of file EntityAction\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,756 @@
+.TH "NHibernate.Engine.ISessionImplementor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.ISessionImplementor \- 
+.PP
+Defines the internal contract between the \fCSession\fP and other parts of \fBNHibernate\fP such as implementors of \fC\fBType\fP\fP or \fCClassPersister\fP  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Event\&.IEventSource\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBInitialize\fP ()"
+.br
+.RI "\fIInitialize the session after its construction was complete \fP"
+.ti -1c
+.RI "void \fBInitializeCollection\fP (\fBIPersistentCollection\fP collection, bool writing)"
+.br
+.RI "\fIInitialize the collection (if not already initialized) \fP"
+.ti -1c
+.RI "object \fBInternalLoad\fP (string entityName, object id, bool eager, bool isNullable)"
+.br
+.RI "\fILoad an instance without checking if it was deleted\&. If it does not exist and isn't nullable, throw an exception\&. This method may create a new proxy or return an existing proxy\&. \fP"
+.ti -1c
+.RI "object \fBImmediateLoad\fP (string entityName, object id)"
+.br
+.RI "\fILoad an instance immediately\&. Do not return a proxy\&. \fP"
+.ti -1c
+.RI "IList \fBList\fP (string query, \fBQueryParameters\fP parameters)"
+.br
+.RI "\fIExecute a \fC\fBList()\fP\fP query \fP"
+.ti -1c
+.RI "IList \fBList\fP (\fBIQueryExpression\fP queryExpression, \fBQueryParameters\fP parameters)"
+.br
+.RI "\fIExecute a \fC\fBList()\fP\fP expression query \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBCreateQuery\fP (\fBIQueryExpression\fP queryExpression)"
+.br
+.RI "\fICreate a new instance of \fC\fBQuery\fP\fP for the given query expression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryExpression\fP A hibernate query expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The query
+.RE
+.PP
+\fP"
+.ti -1c
+.RI "void \fBList\fP (string query, \fBQueryParameters\fP parameters, IList results)"
+.br
+.ti -1c
+.RI "void \fBList\fP (\fBIQueryExpression\fP queryExpression, \fBQueryParameters\fP queryParameters, IList results)"
+.br
+.ti -1c
+.RI "IList< T > \fBList< T >\fP (string query, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIStrongly-typed version of \fBList(string,QueryParameters)\fP \fP"
+.ti -1c
+.RI "IList< T > \fBList< T >\fP (\fBIQueryExpression\fP queryExpression, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIStrongly-typed version of \fBList(IQueryExpression,QueryParameters)\fP \fP"
+.ti -1c
+.RI "IList< T > \fBList< T >\fP (\fBCriteriaImpl\fP criteria)"
+.br
+.RI "\fIStrongly-typed version of List(CriteriaImpl) \fP"
+.ti -1c
+.RI "void \fBList\fP (\fBCriteriaImpl\fP criteria, IList results)"
+.br
+.ti -1c
+.RI "IList \fBList\fP (\fBCriteriaImpl\fP criteria)"
+.br
+.ti -1c
+.RI "IEnumerable \fBEnumerable\fP (string query, \fBQueryParameters\fP parameters)"
+.br
+.RI "\fIExecute an \fCIterate()\fP query \fP"
+.ti -1c
+.RI "IEnumerable \fBEnumerable\fP (\fBIQueryExpression\fP query, \fBQueryParameters\fP parameters)"
+.br
+.RI "\fIExecute an \fCIterate()\fP query \fP"
+.ti -1c
+.RI "IEnumerable< T > \fBEnumerable< T >\fP (string query, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIStrongly-typed version of \fBEnumerable(string, QueryParameters)\fP \fP"
+.ti -1c
+.RI "IEnumerable< T > \fBEnumerable< T >\fP (\fBIQueryExpression\fP query, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIStrongly-typed version of \fBEnumerable(IQueryExpression, QueryParameters)\fP \fP"
+.ti -1c
+.RI "IList \fBListFilter\fP (object collection, string filter, \fBQueryParameters\fP parameters)"
+.br
+.RI "\fIExecute a filter \fP"
+.ti -1c
+.RI "IList< T > \fBListFilter< T >\fP (object collection, string filter, \fBQueryParameters\fP parameters)"
+.br
+.RI "\fIExecute a filter (strongly-typed version)\&. \fP"
+.ti -1c
+.RI "IEnumerable \fBEnumerableFilter\fP (object collection, string filter, \fBQueryParameters\fP parameters)"
+.br
+.RI "\fI\fBCollection\fP from a filter \fP"
+.ti -1c
+.RI "IEnumerable< T > \fBEnumerableFilter< T >\fP (object collection, string filter, \fBQueryParameters\fP parameters)"
+.br
+.RI "\fIStrongly-typed version of \fBEnumerableFilter(object, string, QueryParameters)\fP \fP"
+.ti -1c
+.RI "\fBIEntityPersister\fP \fBGetEntityPersister\fP (string entityName, object obj)"
+.br
+.RI "\fIGet the IEntityPersister for any instance\fP"
+.ti -1c
+.RI "void \fBAfterTransactionBegin\fP (\fBITransaction\fP tx)"
+.br
+.RI "\fINotify the session that an \fBNHibernate\fP transaction has begun\&. \fP"
+.ti -1c
+.RI "void \fBBeforeTransactionCompletion\fP (\fBITransaction\fP tx)"
+.br
+.RI "\fINotify the session that the transaction is about to complete \fP"
+.ti -1c
+.RI "void \fBAfterTransactionCompletion\fP (bool successful, \fBITransaction\fP tx)"
+.br
+.RI "\fINotify the session that the transaction completed, so we no longer own the old locks\&. (Also we should release cache softlocks)\&. May be called multiple times during the transaction completion process\&. \fP"
+.ti -1c
+.RI "object \fBGetContextEntityIdentifier\fP (object obj)"
+.br
+.RI "\fIReturn the identifier of the persistent object, or null if transient \fP"
+.ti -1c
+.RI "object \fBInstantiate\fP (string entityName, object id)"
+.br
+.RI "\fIInstantiate the entity class, initializing with the given identifier \fP"
+.ti -1c
+.RI "IList \fBList\fP (\fBNativeSQLQuerySpecification\fP spec, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIExecute an SQL \fBQuery\fP \fP"
+.ti -1c
+.RI "void \fBList\fP (\fBNativeSQLQuerySpecification\fP spec, \fBQueryParameters\fP queryParameters, IList results)"
+.br
+.ti -1c
+.RI "IList< T > \fBList< T >\fP (\fBNativeSQLQuerySpecification\fP spec, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIStrongly-typed version of \fBList(NativeSQLQuerySpecification, QueryParameters)\fP \fP"
+.ti -1c
+.RI "void \fBListCustomQuery\fP (\fBICustomQuery\fP customQuery, \fBQueryParameters\fP queryParameters, IList results)"
+.br
+.RI "\fIExecute an SQL \fBQuery\fP\fP"
+.ti -1c
+.RI "IList< T > \fBListCustomQuery< T >\fP (\fBICustomQuery\fP customQuery, \fBQueryParameters\fP queryParameters)"
+.br
+.ti -1c
+.RI "object \fBGetFilterParameterValue\fP (string filterParameterName)"
+.br
+.RI "\fIRetrieve the currently set value for a filter parameter\&. \fP"
+.ti -1c
+.RI "\fBIType\fP \fBGetFilterParameterType\fP (string filterParameterName)"
+.br
+.RI "\fIRetrieve the type for a given filter parameter\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBGetNamedSQLQuery\fP (string name)"
+.br
+.ti -1c
+.RI "\fBIQueryTranslator\fP[] \fBGetQueries\fP (string query, bool scalar)"
+.br
+.ti -1c
+.RI "\fBIQueryTranslator\fP[] \fBGetQueries\fP (\fBIQueryExpression\fP query, bool scalar)"
+.br
+.ti -1c
+.RI "object \fBGetEntityUsingInterceptor\fP (\fBEntityKey\fP key)"
+.br
+.RI "\fIGet the entity instance associated with the given \fCKey\fP, calling the Interceptor if necessary \fP"
+.ti -1c
+.RI "string \fBBestGuessEntityName\fP (object entity)"
+.br
+.RI "\fIThe best guess entity name for an entity not in an association\fP"
+.ti -1c
+.RI "string \fBGuessEntityName\fP (object entity)"
+.br
+.RI "\fIThe guessed entity name for an entity not in an association\fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBGetNamedQuery\fP (string queryName)"
+.br
+.ti -1c
+.RI "void \fBFlush\fP ()"
+.br
+.ti -1c
+.RI "int \fBExecuteNativeUpdate\fP (\fBNativeSQLQuerySpecification\fP specification, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIExecute a native SQL update or delete query\fP"
+.ti -1c
+.RI "int \fBExecuteUpdate\fP (string query, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIExecute a HQL update or delete query\fP"
+.ti -1c
+.RI "int \fBExecuteUpdate\fP (\fBIQueryExpression\fP query, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIExecute a HQL update or delete query\fP"
+.ti -1c
+.RI "void \fBCloseSessionFromDistributedTransaction\fP ()"
+.br
+.ti -1c
+.RI "\fBEntityKey\fP \fBGenerateEntityKey\fP (object id, \fBIEntityPersister\fP persister)"
+.br
+.ti -1c
+.RI "\fBCacheKey\fP \fBGenerateCacheKey\fP (object id, \fBIType\fP type, string entityOrRoleName)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "long \fBTimestamp\fP\fC [get]\fP"
+.br
+.RI "\fISystem time before the start of the transaction \fP"
+.ti -1c
+.RI "\fBISessionFactoryImplementor\fP \fBFactory\fP\fC [get]\fP"
+.br
+.RI "\fIGet the creating SessionFactoryImplementor \fP"
+.ti -1c
+.RI "\fBIBatcher\fP \fBBatcher\fP\fC [get]\fP"
+.br
+.RI "\fIGet the prepared statement \fCBatcher\fP for this session \fP"
+.ti -1c
+.RI "IDictionary< string, \fBIFilter\fP > \fBEnabledFilters\fP\fC [get]\fP"
+.br
+.RI "\fIReturn the currently enabled filters\&. The filter map is keyed by filter name, with values corresponding to the FilterImpl instance\&. \fP"
+.ti -1c
+.RI "\fBIInterceptor\fP \fBInterceptor\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBEventListeners\fP \fBListeners\fP\fC [get]\fP"
+.br
+.RI "\fIRetrieves the configured event listeners from this event source\&. \fP"
+.ti -1c
+.RI "int \fBDontFlushFromFind\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBConnectionManager\fP \fBConnectionManager\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsEventSource\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIPersistenceContext\fP \fBPersistenceContext\fP\fC [get]\fP"
+.br
+.RI "\fIGet the persistence context for this session\fP"
+.ti -1c
+.RI "\fBCacheMode\fP \fBCacheMode\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsOpen\fP\fC [get]\fP"
+.br
+.RI "\fIIs the \fC\fBISession\fP\fP still open? \fP"
+.ti -1c
+.RI "bool \fBIsConnected\fP\fC [get]\fP"
+.br
+.RI "\fIIs the \fC\fBISession\fP\fP currently connected? \fP"
+.ti -1c
+.RI "\fBFlushMode\fP \fBFlushMode\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBFetchProfile\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "IDbConnection \fBConnection\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsClosed\fP\fC [get]\fP"
+.br
+.RI "\fIDetermine whether the session is closed\&. Provided separately from \fBisOpen()\fP as this method does not attempt any JTA synch registration, where as \fBisOpen()\fP does; which makes this one nicer to use for most internal purposes\&. \fP"
+.ti -1c
+.RI "bool \fBTransactionInProgress\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this \fCSession\fP have an active Hibernate transaction or is there a JTA transaction in progress? \fP"
+.ti -1c
+.RI "\fBEntityMode\fP \fBEntityMode\fP\fC [get]\fP"
+.br
+.RI "\fIRetrieve the entity mode in effect for this session\&. \fP"
+.ti -1c
+.RI "\fBFutureCriteriaBatch\fP \fBFutureCriteriaBatch\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBFutureQueryBatch\fP \fBFutureQueryBatch\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "Guid \fBSessionId\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBITransactionContext\fP \fBTransactionContext\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the internal contract between the \fCSession\fP and other parts of \fBNHibernate\fP such as implementors of \fC\fBType\fP\fP or \fCClassPersister\fP 
+
+
+.PP
+Definition at line 23 of file ISessionImplementor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Engine\&.ISessionImplementor\&.AfterTransactionBegin (\fBITransaction\fPtx)"
+
+.PP
+Notify the session that an \fBNHibernate\fP transaction has begun\&. 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "void NHibernate\&.Engine\&.ISessionImplementor\&.AfterTransactionCompletion (boolsuccessful, \fBITransaction\fPtx)"
+
+.PP
+Notify the session that the transaction completed, so we no longer own the old locks\&. (Also we should release cache softlocks)\&. May be called multiple times during the transaction completion process\&. 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "void NHibernate\&.Engine\&.ISessionImplementor\&.BeforeTransactionCompletion (\fBITransaction\fPtx)"
+
+.PP
+Notify the session that the transaction is about to complete 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "string NHibernate\&.Engine\&.ISessionImplementor\&.BestGuessEntityName (objectentity)"
+
+.PP
+The best guess entity name for an entity not in an association
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "\fBIQuery\fP NHibernate\&.Engine\&.ISessionImplementor\&.CreateQuery (\fBIQueryExpression\fPqueryExpression)"
+
+.PP
+Create a new instance of \fC\fBQuery\fP\fP for the given query expression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryExpression\fP A hibernate query expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The query
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "IEnumerable NHibernate\&.Engine\&.ISessionImplementor\&.Enumerable (stringquery, \fBQueryParameters\fPparameters)"
+
+.PP
+Execute an \fCIterate()\fP query 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIquery\fP 
+.br
+\fIparameters\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "IEnumerable NHibernate\&.Engine\&.ISessionImplementor\&.Enumerable (\fBIQueryExpression\fPquery, \fBQueryParameters\fPparameters)"
+
+.PP
+Execute an \fCIterate()\fP query 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIquery\fP 
+.br
+\fIparameters\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP, and \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP\&.
+.SS "IEnumerable<T> \fBNHibernate\&.Engine\&.ISessionImplementor\&.Enumerable\fP< T > (stringquery, \fBQueryParameters\fPqueryParameters)"
+
+.PP
+Strongly-typed version of \fBEnumerable(string, QueryParameters)\fP 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "IEnumerable<T> \fBNHibernate\&.Engine\&.ISessionImplementor\&.Enumerable\fP< T > (\fBIQueryExpression\fPquery, \fBQueryParameters\fPqueryParameters)"
+
+.PP
+Strongly-typed version of \fBEnumerable(IQueryExpression, QueryParameters)\fP 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP, and \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP\&.
+.SS "IEnumerable NHibernate\&.Engine\&.ISessionImplementor\&.EnumerableFilter (objectcollection, stringfilter, \fBQueryParameters\fPparameters)"
+
+.PP
+\fBCollection\fP from a filter 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "IEnumerable<T> \fBNHibernate\&.Engine\&.ISessionImplementor\&.EnumerableFilter\fP< T > (objectcollection, stringfilter, \fBQueryParameters\fPparameters)"
+
+.PP
+Strongly-typed version of \fBEnumerableFilter(object, string, QueryParameters)\fP 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "int NHibernate\&.Engine\&.ISessionImplementor\&.ExecuteNativeUpdate (\fBNativeSQLQuerySpecification\fPspecification, \fBQueryParameters\fPqueryParameters)"
+
+.PP
+Execute a native SQL update or delete query
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "int NHibernate\&.Engine\&.ISessionImplementor\&.ExecuteUpdate (stringquery, \fBQueryParameters\fPqueryParameters)"
+
+.PP
+Execute a HQL update or delete query
+.PP
+Implemented in \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "int NHibernate\&.Engine\&.ISessionImplementor\&.ExecuteUpdate (\fBIQueryExpression\fPquery, \fBQueryParameters\fPqueryParameters)"
+
+.PP
+Execute a HQL update or delete query
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "object NHibernate\&.Engine\&.ISessionImplementor\&.GetContextEntityIdentifier (objectobj)"
+
+.PP
+Return the identifier of the persistent object, or null if transient 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "\fBIEntityPersister\fP NHibernate\&.Engine\&.ISessionImplementor\&.GetEntityPersister (stringentityName, objectobj)"
+
+.PP
+Get the IEntityPersister for any instance
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP optional entity name 
+.br
+\fIobj\fP the entity instance 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "object NHibernate\&.Engine\&.ISessionImplementor\&.GetEntityUsingInterceptor (\fBEntityKey\fPkey)"
+
+.PP
+Get the entity instance associated with the given \fCKey\fP, calling the Interceptor if necessary 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "\fBIType\fP NHibernate\&.Engine\&.ISessionImplementor\&.GetFilterParameterType (stringfilterParameterName)"
+
+.PP
+Retrieve the type for a given filter parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilterParameterName\fP The filter parameter name in the format {FILTER_NAME\&.PARAMETER_NAME}\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The filter parameter type\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "object NHibernate\&.Engine\&.ISessionImplementor\&.GetFilterParameterValue (stringfilterParameterName)"
+
+.PP
+Retrieve the currently set value for a filter parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilterParameterName\fP The filter parameter name in the format {FILTER_NAME\&.PARAMETER_NAME}\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The filter parameter value\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "string NHibernate\&.Engine\&.ISessionImplementor\&.GuessEntityName (objectentity)"
+
+.PP
+The guessed entity name for an entity not in an association
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "object NHibernate\&.Engine\&.ISessionImplementor\&.ImmediateLoad (stringentityName, objectid)"
+
+.PP
+Load an instance immediately\&. Do not return a proxy\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP 
+.br
+\fIid\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "void NHibernate\&.Engine\&.ISessionImplementor\&.Initialize ()"
+
+.PP
+Initialize the session after its construction was complete 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "void NHibernate\&.Engine\&.ISessionImplementor\&.InitializeCollection (\fBIPersistentCollection\fPcollection, boolwriting)"
+
+.PP
+Initialize the collection (if not already initialized) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP 
+.br
+\fIwriting\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP, and \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP\&.
+.SS "object NHibernate\&.Engine\&.ISessionImplementor\&.Instantiate (stringentityName, objectid)"
+
+.PP
+Instantiate the entity class, initializing with the given identifier 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "object NHibernate\&.Engine\&.ISessionImplementor\&.InternalLoad (stringentityName, objectid, booleager, boolisNullable)"
+
+.PP
+Load an instance without checking if it was deleted\&. If it does not exist and isn't nullable, throw an exception\&. This method may create a new proxy or return an existing proxy\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The entityName (or class full name) to load\&.
+.br
+\fIid\fP The identifier of the object in the database\&.
+.br
+\fIisNullable\fP Allow null instance
+.br
+\fIeager\fP When enabled, the object is eagerly fetched\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A proxy of the object or an instance of the object if the \fCpersistentClass\fP does not have a proxy\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBObjectNotFoundException\fP\fP No object could be found with that \fCid\fP\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP, and \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP\&.
+.SS "IList NHibernate\&.Engine\&.ISessionImplementor\&.List (stringquery, \fBQueryParameters\fPparameters)"
+
+.PP
+Execute a \fC\fBList()\fP\fP query 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIquery\fP 
+.br
+\fIparameters\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "IList NHibernate\&.Engine\&.ISessionImplementor\&.List (\fBIQueryExpression\fPqueryExpression, \fBQueryParameters\fPparameters)"
+
+.PP
+Execute a \fC\fBList()\fP\fP expression query 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryExpression\fP 
+.br
+\fIparameters\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "IList NHibernate\&.Engine\&.ISessionImplementor\&.List (\fBNativeSQLQuerySpecification\fPspec, \fBQueryParameters\fPqueryParameters)"
+
+.PP
+Execute an SQL \fBQuery\fP 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "IList<T> \fBNHibernate\&.Engine\&.ISessionImplementor\&.List\fP< T > (\fBCriteriaImpl\fPcriteria)"
+
+.PP
+Strongly-typed version of List(CriteriaImpl) 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "IList<T> \fBNHibernate\&.Engine\&.ISessionImplementor\&.List\fP< T > (stringquery, \fBQueryParameters\fPqueryParameters)"
+
+.PP
+Strongly-typed version of \fBList(string,QueryParameters)\fP 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "IList<T> \fBNHibernate\&.Engine\&.ISessionImplementor\&.List\fP< T > (\fBIQueryExpression\fPqueryExpression, \fBQueryParameters\fPqueryParameters)"
+
+.PP
+Strongly-typed version of \fBList(IQueryExpression,QueryParameters)\fP 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "IList<T> \fBNHibernate\&.Engine\&.ISessionImplementor\&.List\fP< T > (\fBNativeSQLQuerySpecification\fPspec, \fBQueryParameters\fPqueryParameters)"
+
+.PP
+Strongly-typed version of \fBList(NativeSQLQuerySpecification, QueryParameters)\fP 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "void NHibernate\&.Engine\&.ISessionImplementor\&.ListCustomQuery (\fBICustomQuery\fPcustomQuery, \fBQueryParameters\fPqueryParameters, IListresults)"
+
+.PP
+Execute an SQL \fBQuery\fP
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "IList NHibernate\&.Engine\&.ISessionImplementor\&.ListFilter (objectcollection, stringfilter, \fBQueryParameters\fPparameters)"
+
+.PP
+Execute a filter 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SS "IList<T> \fBNHibernate\&.Engine\&.ISessionImplementor\&.ListFilter\fP< T > (objectcollection, stringfilter, \fBQueryParameters\fPparameters)"
+
+.PP
+Execute a filter (strongly-typed version)\&. 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP, \fBNHibernate\&.Impl\&.StatelessSessionImpl\fP, and \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBIBatcher\fP NHibernate\&.Engine\&.ISessionImplementor\&.Batcher\fC [get]\fP"
+
+.PP
+Get the prepared statement \fCBatcher\fP for this session 
+.PP
+Definition at line 75 of file ISessionImplementor\&.cs\&.
+.SS "IDictionary<string, \fBIFilter\fP> NHibernate\&.Engine\&.ISessionImplementor\&.EnabledFilters\fC [get]\fP"
+
+.PP
+Return the currently enabled filters\&. The filter map is keyed by filter name, with values corresponding to the FilterImpl instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The currently enabled filters\&.
+.RE
+.PP
+
+.PP
+Definition at line 245 of file ISessionImplementor\&.cs\&.
+.SS "\fBEntityMode\fP NHibernate\&.Engine\&.ISessionImplementor\&.EntityMode\fC [get]\fP"
+
+.PP
+Retrieve the entity mode in effect for this session\&. 
+.PP
+Definition at line 318 of file ISessionImplementor\&.cs\&.
+.SS "\fBISessionFactoryImplementor\fP NHibernate\&.Engine\&.ISessionImplementor\&.Factory\fC [get]\fP"
+
+.PP
+Get the creating SessionFactoryImplementor 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 70 of file ISessionImplementor\&.cs\&.
+.SS "bool NHibernate\&.Engine\&.ISessionImplementor\&.IsClosed\fC [get]\fP"
+
+.PP
+Determine whether the session is closed\&. Provided separately from \fBisOpen()\fP as this method does not attempt any JTA synch registration, where as \fBisOpen()\fP does; which makes this one nicer to use for most internal purposes\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if the session is closed; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 307 of file ISessionImplementor\&.cs\&.
+.SS "bool NHibernate\&.Engine\&.ISessionImplementor\&.IsConnected\fC [get]\fP"
+
+.PP
+Is the \fC\fBISession\fP\fP currently connected? 
+.PP
+Definition at line 284 of file ISessionImplementor\&.cs\&.
+.SS "bool NHibernate\&.Engine\&.ISessionImplementor\&.IsOpen\fC [get]\fP"
+
+.PP
+Is the \fC\fBISession\fP\fP still open? 
+.PP
+Definition at line 279 of file ISessionImplementor\&.cs\&.
+.SS "\fBEventListeners\fP NHibernate\&.Engine\&.ISessionImplementor\&.Listeners\fC [get]\fP"
+
+.PP
+Retrieves the configured event listeners from this event source\&. 
+.PP
+Definition at line 257 of file ISessionImplementor\&.cs\&.
+.SS "\fBIPersistenceContext\fP NHibernate\&.Engine\&.ISessionImplementor\&.PersistenceContext\fC [get]\fP"
+
+.PP
+Get the persistence context for this session
+.PP
+Definition at line 272 of file ISessionImplementor\&.cs\&.
+.SS "long NHibernate\&.Engine\&.ISessionImplementor\&.Timestamp\fC [get]\fP"
+
+.PP
+System time before the start of the transaction 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 64 of file ISessionImplementor\&.cs\&.
+.SS "bool NHibernate\&.Engine\&.ISessionImplementor\&.TransactionInProgress\fC [get]\fP"
+
+.PP
+Does this \fCSession\fP have an active Hibernate transaction or is there a JTA transaction in progress? 
+.PP
+Definition at line 315 of file ISessionImplementor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

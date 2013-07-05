@@ -1,0 +1,84 @@
+.TH "NHibernate.Loader.AbstractEntityJoinWalker" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Loader.AbstractEntityJoinWalker \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Loader\&.JoinWalker\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Loader\&.Criteria\&.CriteriaJoinWalker\fP, \fBNHibernate\&.Loader\&.Entity\&.CascadeEntityJoinWalker\fP, and \fBNHibernate\&.Loader\&.Entity\&.EntityJoinWalker\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractEntityJoinWalker\fP (\fBIOuterJoinLoadable\fP persister, \fBISessionFactoryImplementor\fP factory, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "\fBAbstractEntityJoinWalker\fP (string rootSqlAlias, \fBIOuterJoinLoadable\fP persister, \fBISessionFactoryImplementor\fP factory, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBInitAll\fP (\fBSqlString\fP whereString, \fBSqlString\fP orderByString, \fBLockMode\fP lockMode)"
+.br
+.ti -1c
+.RI "void \fBInitProjection\fP (\fBSqlString\fP projectionString, \fBSqlString\fP whereString, \fBSqlString\fP orderByString, \fBSqlString\fP groupByString, \fBSqlString\fP havingString, IDictionary< string, \fBIFilter\fP > enabledFilters, \fBLockMode\fP lockMode)"
+.br
+.ti -1c
+.RI "override bool \fBIsJoinedFetchEnabled\fP (\fBIAssociationType\fP type, \fBFetchMode\fP config, \fBCascadeStyle\fP cascadeStyle)"
+.br
+.RI "\fIThe superclass deliberately excludes collections \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBSqlString\fP \fBWhereFragment\fP\fC [get]\fP"
+.br
+.RI "\fIDon't bother with the discriminator, unless overridden by subclass \fP"
+.ti -1c
+.RI "abstract string \fBComment\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIOuterJoinLoadable\fP \fBPersister\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBAlias\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 11 of file AbstractEntityJoinWalker\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override bool NHibernate\&.Loader\&.AbstractEntityJoinWalker\&.IsJoinedFetchEnabled (\fBIAssociationType\fPtype, \fBFetchMode\fPconfig, \fBCascadeStyle\fPcascadeStyle)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+The superclass deliberately excludes collections 
+.PP
+Reimplemented from \fBNHibernate\&.Loader\&.JoinWalker\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Loader\&.Entity\&.EntityJoinWalker\fP, and \fBNHibernate\&.Loader\&.Entity\&.CascadeEntityJoinWalker\fP\&.
+.PP
+Definition at line 82 of file AbstractEntityJoinWalker\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual \fBSqlString\fP NHibernate\&.Loader\&.AbstractEntityJoinWalker\&.WhereFragment\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Don't bother with the discriminator, unless overridden by subclass 
+.PP
+Definition at line 91 of file AbstractEntityJoinWalker\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

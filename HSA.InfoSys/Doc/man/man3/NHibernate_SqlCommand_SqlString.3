@@ -1,0 +1,474 @@
+.TH "NHibernate.SqlCommand.SqlString" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.SqlCommand.SqlString \- 
+.PP
+This is a non-modifiable SQL statement that is ready to be prepared and sent to the Database for execution\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits ICollection, and IEnumerable< object >\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlString\fP (string sql)"
+.br
+.RI "\fICreates \fBSqlString\fP consisting of single string part\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP (\fBParameter\fP parameter)"
+.br
+.RI "\fICreates \fBSqlString\fP consisting of single parameter part\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP (params object[] parts)"
+.br
+.RI "\fICreates \fBSqlString\fP consisting of multiple parts\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBAppend\fP (\fBSqlString\fP sql)"
+.br
+.RI "\fIAppends the \fBSqlString\fP parameter to the end of the current \fBSqlString\fP to create a new \fBSqlString\fP object\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBAppend\fP (string text)"
+.br
+.RI "\fIAppends the string parameter to the end of the current \fBSqlString\fP to create a new \fBSqlString\fP object\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBCompact\fP ()"
+.br
+.RI "\fICompacts the \fBSqlString\fP into the fewest parts possible\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBCopy\fP ()"
+.br
+.RI "\fIMakes a copy of the \fBSqlString\fP, with new parameter references (Placeholders) \fP"
+.ti -1c
+.RI "bool \fBEndsWith\fP (string value)"
+.br
+.RI "\fIDetermines whether the end of this instance matches the specified String\&. \fP"
+.ti -1c
+.RI "bool \fBEndsWithCaseInsensitive\fP (string value)"
+.br
+.ti -1c
+.RI "IEnumerable< \fBParameter\fP > \fBGetParameters\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetParameterCount\fP ()"
+.br
+.ti -1c
+.RI "int \fBIndexOfCaseInsensitive\fP (string text)"
+.br
+.RI "\fIReturns the index of the first occurrence of \fItext\fP , case-insensitive\&. \fP"
+.ti -1c
+.RI "int \fBIndexOf\fP (string text, int startIndex, int length, StringComparison stringComparison)"
+.br
+.RI "\fIReturns the index of the first occurrence of \fItext\fP , case-insensitive\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBInsert\fP (int index, string text)"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBInsert\fP (int index, \fBSqlString\fP sql)"
+.br
+.ti -1c
+.RI "int \fBLastIndexOfCaseInsensitive\fP (string text)"
+.br
+.RI "\fIReturns the index of the first occurrence of \fItext\fP , case-insensitive\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBReplace\fP (string oldValue, string newValue)"
+.br
+.RI "\fIReplaces all occurrences of a specified String in this instance, with another specified String \&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP[] \fBSplit\fP (string splitter)"
+.br
+.ti -1c
+.RI "bool \fBStartsWithCaseInsensitive\fP (string value)"
+.br
+.RI "\fIDetermines whether the beginning of this \fBSqlString\fP matches the specified System\&.String, using case-insensitive comparison\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBSubstring\fP (int startIndex)"
+.br
+.RI "\fIRetrieves a substring from this instance\&. The substring starts at a specified character position\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBSubstring\fP (int startIndex, int length)"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBSubstringStartingWithLast\fP (string text)"
+.br
+.RI "\fIReturns substring of this \fBSqlString\fP starting with the specified \fItext\fP \&. If the text is not found, returns an empty, not-null \fBSqlString\fP\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBTrim\fP ()"
+.br
+.RI "\fIRemoves all occurrences of white space characters from the beginning and end of this instance\&. \fP"
+.ti -1c
+.RI "void \fBVisit\fP (\fBISqlStringVisitor\fP visitor)"
+.br
+.ti -1c
+.RI "IEnumerator< object > \fBGetEnumerator\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIReturns the \fBSqlString\fP in a string where it looks like SELECT col1, col2 FROM table WHERE col1 = ? \fP"
+.ti -1c
+.RI "string \fBToString\fP (int startIndex)"
+.br
+.ti -1c
+.RI "string \fBToString\fP (int startIndex, int length)"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBGetSubselectString\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBSqlString\fP \fBParse\fP (string sql)"
+.br
+.RI "\fIParse SQL in \fIsql\fP  and create a \fBSqlString\fP representing it\&. \fP"
+.ti -1c
+.RI "static \fBSqlString\fP \fBoperator+\fP (\fBSqlString\fP lhs, \fBSqlString\fP rhs)"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly \fBSqlString\fP \fBEmpty\fP = new \fBSqlString\fP(Enumerable\&.Empty<object>())"
+.br
+.RI "\fIEmpty \fBSqlString\fP instance\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBCount\fP\fC [get]\fP"
+.br
+.RI "\fIGets the number of SqlParts contained in this \fBSqlString\fP\&. \fP"
+.ti -1c
+.RI "int \fBLength\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is a non-modifiable SQL statement that is ready to be prepared and sent to the Database for execution\&. 
+
+A \fBSqlString\fP represents a (potentially partial) SQL query string that may or may not contain query parameter references\&. A \fBSqlString\fP decomposes the underlying SQL query string into a list of parts\&. Each part is either 1) a string part, which represents a fragment of the underlying SQL query string that does not contain any parameter references, or 2) a parameter part, which represents a single query parameter reference in the underlying SQL query string\&. 
+.PP
+The \fBSqlString\fP constructors ensure that the number of string parts in a \fBSqlString\fP are kept to an absolute minimum (as compact as possible) by concatenating any adjoining string parts into a single string part\&. 
+.PP
+Substring operations on a \fBSqlString\fP (such as Substring(int,int), Split, \fBTrim\fP) return a \fBSqlString\fP that reuses the parts list of the \fBSqlString\fP instance on which the operation was performed\&. Besides a reference to this parts list, the resulting \fBSqlString\fP instance also stores the character offset into the original underlying SQL string at which the substring starts and the length of the substring\&. By avoiding the unnecessary rebuilding of part lists these operations have O(1) behaviour rather than O(n) behaviour\&. 
+.PP
+If you need to modify this object pass it to a \fBSqlStringBuilder\fP and get a new object back from it\&. 
+.PP
+Definition at line 42 of file SqlString\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.SqlCommand\&.SqlString\&.SqlString (stringsql)"
+
+.PP
+Creates \fBSqlString\fP consisting of single string part\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsql\fP A SQL fragment
+.RE
+.PP
+
+.PP
+Definition at line 169 of file SqlString\&.cs\&.
+.SS "NHibernate\&.SqlCommand\&.SqlString\&.SqlString (\fBParameter\fPparameter)"
+
+.PP
+Creates \fBSqlString\fP consisting of single parameter part\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameter\fP A query parameter
+.RE
+.PP
+
+.PP
+Definition at line 182 of file SqlString\&.cs\&.
+.SS "NHibernate\&.SqlCommand\&.SqlString\&.SqlString (params object[]parts)"
+
+.PP
+Creates \fBSqlString\fP consisting of multiple parts\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparts\fP Arbitrary number of parts, which must be either string, \fBParameter\fP or \fBSqlString\fP values\&.
+.RE
+.PP
+.PP
+The \fBSqlString\fP instance is automatically compacted\&.
+.PP
+Definition at line 198 of file SqlString\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSqlString\fP NHibernate\&.SqlCommand\&.SqlString\&.Append (\fBSqlString\fPsql)"
+
+.PP
+Appends the \fBSqlString\fP parameter to the end of the current \fBSqlString\fP to create a new \fBSqlString\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsql\fP The \fBSqlString\fP to append\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new \fBSqlString\fP object\&.
+.RE
+.PP
+.PP
+A \fBSqlString\fP object is immutable so this returns a new \fBSqlString\fP\&. If multiple Appends are called it is better to use the \fBSqlStringBuilder\fP\&. 
+.PP
+Definition at line 329 of file SqlString\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.SqlCommand\&.SqlString\&.Append (stringtext)"
+
+.PP
+Appends the string parameter to the end of the current \fBSqlString\fP to create a new \fBSqlString\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP The string to append\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new \fBSqlString\fP object\&.
+.RE
+.PP
+.PP
+A \fBSqlString\fP object is immutable so this returns a new \fBSqlString\fP\&. If multiple Appends are called it is better to use the \fBSqlStringBuilder\fP\&. 
+.PP
+Definition at line 346 of file SqlString\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.SqlCommand\&.SqlString\&.Compact ()"
+
+.PP
+Compacts the \fBSqlString\fP into the fewest parts possible\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A new \fBSqlString\fP\&.
+.RE
+.PP
+.PP
+Combines all SqlParts that are strings and next to each other into one SqlPart\&. 
+.PP
+Definition at line 362 of file SqlString\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.SqlCommand\&.SqlString\&.Copy ()"
+
+.PP
+Makes a copy of the \fBSqlString\fP, with new parameter references (Placeholders) 
+.PP
+Definition at line 371 of file SqlString\&.cs\&.
+.SS "bool NHibernate\&.SqlCommand\&.SqlString\&.EndsWith (stringvalue)"
+
+.PP
+Determines whether the end of this instance matches the specified String\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP A string to seek at the end\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+if the end of this instance matches value; otherwise, 
+.RE
+.PP
+
+.PP
+Definition at line 381 of file SqlString\&.cs\&.
+.SS "int NHibernate\&.SqlCommand\&.SqlString\&.IndexOf (stringtext, intstartIndex, intlength, StringComparisonstringComparison)"
+
+.PP
+Returns the index of the first occurrence of \fItext\fP , case-insensitive\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP Text to look for in the \fBSqlString\fP\&. Must be in lower
+.br
+\fIstartIndex\fP The zero-based index of the search starting position\&.
+.br
+\fIlength\fP The number of character positions to examine\&.
+.br
+\fIstringComparison\fP One of the enumeration values that specifies the rules for the search\&.
+.RE
+.PP
+.PP
+The text must be located entirely in a string part of the \fBSqlString\fP\&. Searching for \fC'a ? b'\fP in an \fBSqlString\fP consisting of \fC'a ', \fBParameter\fP, ' b'\fP will result in no matches\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The index of the first occurrence of \fItext\fP , or -1 if not found\&.
+.RE
+.PP
+
+.PP
+Definition at line 436 of file SqlString\&.cs\&.
+.SS "int NHibernate\&.SqlCommand\&.SqlString\&.IndexOfCaseInsensitive (stringtext)"
+
+.PP
+Returns the index of the first occurrence of \fItext\fP , case-insensitive\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP Text to look for in the \fBSqlString\fP\&. Must be in lower case\&.
+.RE
+.PP
+.PP
+The text must be located entirely in a string part of the \fBSqlString\fP\&. Searching for \fC'a ? b'\fP in an \fBSqlString\fP consisting of \fC'a ', \fBParameter\fP, ' b'\fP will result in no matches\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The index of the first occurrence of \fItext\fP , or -1 if not found\&.
+.RE
+.PP
+
+.PP
+Definition at line 417 of file SqlString\&.cs\&.
+.SS "int NHibernate\&.SqlCommand\&.SqlString\&.LastIndexOfCaseInsensitive (stringtext)"
+
+.PP
+Returns the index of the first occurrence of \fItext\fP , case-insensitive\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP Text to look for in the \fBSqlString\fP\&. Must be in lower case\&.
+.RE
+.PP
+.PP
+The text must be located entirely in a string part of the \fBSqlString\fP\&. Searching for \fC'a ? b'\fP in an \fBSqlString\fP consisting of \fC'a ', \fBParameter\fP, ' b'\fP will result in no matches\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The index of the first occurrence of \fItext\fP , or -1 if not found\&.
+.RE
+.PP
+
+.PP
+Definition at line 489 of file SqlString\&.cs\&.
+.SS "static \fBSqlString\fP NHibernate\&.SqlCommand\&.SqlString\&.Parse (stringsql)\fC [static]\fP"
+
+.PP
+Parse SQL in \fIsql\fP  and create a \fBSqlString\fP representing it\&. \fBParameter\fP marks in single quotes will be correctly skipped, but otherwise the lexer is very simple and will not parse double quotes or escape sequences correctly, for example\&. 
+.PP
+Definition at line 232 of file SqlString\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.SqlCommand\&.SqlString\&.Replace (stringoldValue, stringnewValue)"
+
+.PP
+Replaces all occurrences of a specified String in this instance, with another specified String \&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoldValue\fP A String to be replaced\&.
+.br
+\fInewValue\fP A String to replace all occurrences of oldValue\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new \fBSqlString\fP with oldValue replaced by the newValue\&. The new \fBSqlString\fP is in the compacted form\&. 
+.RE
+.PP
+
+.PP
+Definition at line 547 of file SqlString\&.cs\&.
+.SS "bool NHibernate\&.SqlCommand\&.SqlString\&.StartsWithCaseInsensitive (stringvalue)"
+
+.PP
+Determines whether the beginning of this \fBSqlString\fP matches the specified System\&.String, using case-insensitive comparison\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The System\&.String to seek
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the \fBSqlString\fP starts with the value\&.
+.RE
+.PP
+
+.PP
+Definition at line 605 of file SqlString\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.SqlCommand\&.SqlString\&.Substring (intstartIndex)"
+
+.PP
+Retrieves a substring from this instance\&. The substring starts at a specified character position\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstartIndex\fP The starting character position of a substring in this instance\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new \fBSqlString\fP to the substring that begins at startIndex in this instance\&. 
+.RE
+.PP
+.PP
+If the startIndex is greater than the length of the \fBSqlString\fP then \fBSqlString\&.Empty\fP is returned\&. 
+.PP
+Definition at line 622 of file SqlString\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.SqlCommand\&.SqlString\&.SubstringStartingWithLast (stringtext)"
+
+.PP
+Returns substring of this \fBSqlString\fP starting with the specified \fItext\fP \&. If the text is not found, returns an empty, not-null \fBSqlString\fP\&. The method performs case-insensitive comparison, so the \fItext\fP  passed should be in lower case\&. 
+.PP
+Definition at line 646 of file SqlString\&.cs\&.
+.SS "override string NHibernate\&.SqlCommand\&.SqlString\&.ToString ()"
+
+.PP
+Returns the \fBSqlString\fP in a string where it looks like SELECT col1, col2 FROM table WHERE col1 = ? The question mark is used as the indicator of a parameter because at this point we are not using the specific provider so we don't know how that provider wants our parameters formatted\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A provider-neutral version of the CommandText
+.RE
+.PP
+
+.PP
+Definition at line 931 of file SqlString\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.SqlCommand\&.SqlString\&.Trim ()"
+
+.PP
+Removes all occurrences of white space characters from the beginning and end of this instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A new \fBSqlString\fP equivalent to this instance after white space characters are removed from the beginning and end\&. 
+.RE
+.PP
+
+.PP
+Definition at line 659 of file SqlString\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly \fBSqlString\fP NHibernate\&.SqlCommand\&.SqlString\&.Empty = new \fBSqlString\fP(Enumerable\&.Empty<object>())\fC [static]\fP"
+
+.PP
+Empty \fBSqlString\fP instance\&. 
+.PP
+Definition at line 47 of file SqlString\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int NHibernate\&.SqlCommand\&.SqlString\&.Count\fC [get]\fP"
+
+.PP
+Gets the number of SqlParts contained in this \fBSqlString\fP\&. The number of SqlParts contained in this \fBSqlString\fP\&.
+.PP
+Definition at line 297 of file SqlString\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

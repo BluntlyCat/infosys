@@ -1,0 +1,235 @@
+.TH "log4net.Util.OptionConverter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.OptionConverter \- 
+.PP
+A convenience class to convert property values to specific types\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBToBoolean\fP (string argValue, bool defaultValue)"
+.br
+.RI "\fIConverts a string to a bool value\&. \fP"
+.ti -1c
+.RI "static long \fBToFileSize\fP (string argValue, long defaultValue)"
+.br
+.RI "\fIParses a file size into a number\&. \fP"
+.ti -1c
+.RI "static object \fBConvertStringTo\fP (Type target, string txt)"
+.br
+.RI "\fIConverts a string to an object\&. \fP"
+.ti -1c
+.RI "static bool \fBCanConvertTypeTo\fP (Type sourceType, Type targetType)"
+.br
+.RI "\fIChecks if there is an appropriate type conversion from the source type to the target type\&. \fP"
+.ti -1c
+.RI "static object \fBConvertTypeTo\fP (object sourceInstance, Type targetType)"
+.br
+.RI "\fIConverts an object to the target type\&. \fP"
+.ti -1c
+.RI "static object \fBInstantiateByClassName\fP (string className, Type superClass, object defaultValue)"
+.br
+.RI "\fIInstantiates an object given a class name\&. \fP"
+.ti -1c
+.RI "static string \fBSubstituteVariables\fP (string value, System\&.Collections\&.IDictionary props)"
+.br
+.RI "\fIPerforms variable substitution in string \fIvalue\fP  from the values of keys found in \fIprops\fP \&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A convenience class to convert property values to specific types\&. 
+
+Utility functions for converting types and parsing values\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 41 of file OptionConverter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static bool log4net\&.Util\&.OptionConverter\&.CanConvertTypeTo (TypesourceType, TypetargetType)\fC [static]\fP"
+
+.PP
+Checks if there is an appropriate type conversion from the source type to the target type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsourceType\fP The type to convert from\&.
+.br
+\fItargetType\fP The type to convert to\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if there is a conversion from the source type to the target type\&.
+.RE
+.PP
+.PP
+Checks if there is an appropriate type conversion from the source type to the target type\&. 
+.PP
+Definition at line 344 of file OptionConverter\&.cs\&.
+.SS "static object log4net\&.Util\&.OptionConverter\&.ConvertStringTo (Typetarget, stringtxt)\fC [static]\fP"
+
+.PP
+Converts a string to an object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItarget\fP The target type to convert to\&.
+.br
+\fItxt\fP The string to convert to an object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The object converted from a string or \fCnull\fP when the conversion failed\&. 
+.RE
+.PP
+.PP
+Converts a string to an object\&. Uses the converter registry to try to convert the string value into the specified target type\&. 
+.PP
+Definition at line 267 of file OptionConverter\&.cs\&.
+.SS "static object log4net\&.Util\&.OptionConverter\&.ConvertTypeTo (objectsourceInstance, TypetargetType)\fC [static]\fP"
+
+.PP
+Converts an object to the target type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsourceInstance\fP The object to convert to the target type\&.
+.br
+\fItargetType\fP The type to convert to\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The converted object\&.
+.RE
+.PP
+.PP
+Converts an object to the target type\&. 
+.PP
+Definition at line 391 of file OptionConverter\&.cs\&.
+.SS "static object log4net\&.Util\&.OptionConverter\&.InstantiateByClassName (stringclassName, TypesuperClass, objectdefaultValue)\fC [static]\fP"
+
+.PP
+Instantiates an object given a class name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclassName\fP The fully qualified class name of the object to instantiate\&.
+.br
+\fIsuperClass\fP The class to which the new object should belong\&.
+.br
+\fIdefaultValue\fP The object to return in case of non-fulfillment\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An instance of the \fIclassName\fP  or \fIdefaultValue\fP  if the object could not be instantiated\&. 
+.RE
+.PP
+.PP
+Checks that the \fIclassName\fP  is a subclass of \fIsuperClass\fP \&. If that test fails or the object could not be instantiated, then \fIdefaultValue\fP  is returned\&. 
+.PP
+Definition at line 473 of file OptionConverter\&.cs\&.
+.SS "static string log4net\&.Util\&.OptionConverter\&.SubstituteVariables (stringvalue, System\&.Collections\&.IDictionaryprops)\fC [static]\fP"
+
+.PP
+Performs variable substitution in string \fIvalue\fP  from the values of keys found in \fIprops\fP \&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The string on which variable substitution is performed\&.
+.br
+\fIprops\fP The dictionary to use to lookup variables\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the substitutions\&.
+.RE
+.PP
+.PP
+The variable substitution delimiters are \fB${\fP and \fB}\fP\&. 
+.PP
+For example, if props contains \fCkey=value\fP, then the call 
+.PP
+.PP
+.nf
+string s = OptionConverter\&.SubstituteVariables("Value of key is ${key}\&.");
+.fi
+.PP
+ 
+.PP
+will set the variable \fCs\fP to 'Value of key is value\&.'\&. 
+.PP
+If no value could be found for the specified key, then substitution defaults to an empty string\&. 
+.PP
+For example, if system properties contains no value for the key 'nonExistentKey', then the call 
+.PP
+.PP
+.nf
+string s = OptionConverter\&.SubstituteVariables("Value of nonExistentKey is [${nonExistentKey}]");
+.fi
+.PP
+ 
+.PP
+will set <s>s</s> to 'Value of nonExistentKey is []'\&. 
+.PP
+An Exception is thrown if \fIvalue\fP  contains a start delimiter '${' which is not balanced by a stop delimiter '}'\&. 
+.PP
+Definition at line 538 of file OptionConverter\&.cs\&.
+.SS "static bool log4net\&.Util\&.OptionConverter\&.ToBoolean (stringargValue, booldefaultValue)\fC [static]\fP"
+
+.PP
+Converts a string to a bool value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIargValue\fP String to convert\&.
+.br
+\fIdefaultValue\fP The default value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The bool value of \fIargValue\fP \&.
+.RE
+.PP
+.PP
+If \fIargValue\fP  is 'true', then \fCtrue\fP is returned\&. If \fIargValue\fP  is 'false', then \fCfalse\fP is returned\&. Otherwise, \fIdefaultValue\fP  is returned\&. 
+.PP
+Definition at line 147 of file OptionConverter\&.cs\&.
+.SS "static long log4net\&.Util\&.OptionConverter\&.ToFileSize (stringargValue, longdefaultValue)\fC [static]\fP"
+
+.PP
+Parses a file size into a number\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIargValue\fP String to parse\&.
+.br
+\fIdefaultValue\fP The default value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The long value of \fIargValue\fP \&.
+.RE
+.PP
+.PP
+Parses a file size of the form: number[KB|MB|GB] into a long value\&. It is scaled with the appropriate multiplier\&. 
+.PP
+\fIdefaultValue\fP  is returned when \fIargValue\fP  cannot be converted to a long value\&. 
+.PP
+Definition at line 208 of file OptionConverter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

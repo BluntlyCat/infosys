@@ -1,0 +1,461 @@
+.TH "NHibernate.Id.Enhanced.TableGenerator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.Enhanced.TableGenerator \- 
+.PP
+An enhanced version of table-based id generation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Engine\&.TransactionHelper\fP, \fBNHibernate\&.Id\&.IPersistentIdentifierGenerator\fP, and \fBNHibernate\&.Id\&.IConfigurable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual string \fBGeneratorKey\fP ()"
+.br
+.RI "\fIReturn a key unique to the underlying database objects\&. \fP"
+.ti -1c
+.RI "virtual void \fBConfigure\fP (\fBIType\fP type, IDictionary< string, string > parms, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIConfigure this instance, given the values of parameters specified by the user as \fC<param>\fP elements\&. This method is called just once, followed by instantiation\&. \fP"
+.ti -1c
+.RI "virtual object \fBGenerate\fP (\fBISessionImplementor\fP session, object obj)"
+.br
+.RI "\fIGenerate a new identifier \fP"
+.ti -1c
+.RI "override object \fBDoWorkInCurrentTransaction\fP (\fBISessionImplementor\fP session, System\&.Data\&.IDbConnection conn, System\&.Data\&.IDbTransaction transaction)"
+.br
+.ti -1c
+.RI "virtual string[] \fBSqlCreateStrings\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIThe SQL required to create the underlying database objects \fP"
+.ti -1c
+.RI "virtual string[] \fBSqlDropString\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIThe SQL required to remove the underlying database objects \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBConfigPreferSegmentPerEntity\fP = 'prefer_entity_table_as_segment_value'"
+.br
+.ti -1c
+.RI "const string \fBTableParam\fP = 'table_name'"
+.br
+.ti -1c
+.RI "const string \fBDefaultTable\fP = 'hibernate_sequences'"
+.br
+.ti -1c
+.RI "const string \fBValueColumnParam\fP = 'value_column_name'"
+.br
+.ti -1c
+.RI "const string \fBDefaultValueColumn\fP = 'next_val'"
+.br
+.ti -1c
+.RI "const string \fBSegmentColumnParam\fP = 'segment_column_name'"
+.br
+.ti -1c
+.RI "const string \fBDefaultSegmentColumn\fP = 'sequence_name'"
+.br
+.ti -1c
+.RI "const string \fBSegmentValueParam\fP = 'segment_value'"
+.br
+.ti -1c
+.RI "const string \fBDefaultSegmentValue\fP = 'default'"
+.br
+.ti -1c
+.RI "const string \fBSegmentLengthParam\fP = 'segment_value_length'"
+.br
+.ti -1c
+.RI "const int \fBDefaultSegmentLength\fP = 255"
+.br
+.ti -1c
+.RI "const string \fBInitialParam\fP = 'initial_value'"
+.br
+.ti -1c
+.RI "const int \fBDefaltInitialValue\fP = 1"
+.br
+.ti -1c
+.RI "const string \fBIncrementParam\fP = 'increment_size'"
+.br
+.ti -1c
+.RI "const int \fBDefaultIncrementSize\fP = 1"
+.br
+.ti -1c
+.RI "const string \fBOptimizerParam\fP = 'optimizer'"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBDetermineGeneratorTableName\fP (IDictionary< string, string > parms, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIDetermine the table name to use for the generator values\&. Called during configuration\&. \fP"
+.ti -1c
+.RI "string \fBDetermineSegmentColumnName\fP (IDictionary< string, string > parms, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIDetermine the name of the column used to indicate the segment for each row\&. This column acts as the primary key\&. Called during configuration\&. \fP"
+.ti -1c
+.RI "string \fBDetermineValueColumnName\fP (IDictionary< string, string > parms, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIDetermine the name of the column in which we will store the generator persistent value\&. Called during configuration\&. \fP"
+.ti -1c
+.RI "string \fBDetermineSegmentValue\fP (IDictionary< string, string > parms)"
+.br
+.RI "\fIDetermine the segment value corresponding to this generator instance\&. Called during configuration\&. \fP"
+.ti -1c
+.RI "string \fBDetermineDefaultSegmentValue\fP (IDictionary< string, string > parms)"
+.br
+.RI "\fIUsed in the cases where \fBDetermineSegmentValue\fP is unable to determine the value to use\&. \fP"
+.ti -1c
+.RI "int \fBDetermineSegmentColumnSize\fP (IDictionary< string, string > parms)"
+.br
+.RI "\fIDetermine the size of the \fBSegmentColumnName\fP segment column\&. Called during configuration\&. \fP"
+.ti -1c
+.RI "int \fBDetermineInitialValue\fP (IDictionary< string, string > parms)"
+.br
+.ti -1c
+.RI "int \fBDetermineIncrementSize\fP (IDictionary< string, string > parms)"
+.br
+.ti -1c
+.RI "void \fBBuildSelectQuery\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.ti -1c
+.RI "void \fBBuildUpdateQuery\fP ()"
+.br
+.ti -1c
+.RI "void \fBBuildInsertQuery\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIType\fP \fBIdentifierType\fP\fC [get, set]\fP"
+.br
+.RI "\fI\fBType\fP mapping for the identifier\&. \fP"
+.ti -1c
+.RI "string \fBTableName\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe name of the table in which we store this generator's persistent state\&. \fP"
+.ti -1c
+.RI "string \fBSegmentColumnName\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe name of the column in which we store the segment to which each row belongs\&. The value here acts as primary key\&. \fP"
+.ti -1c
+.RI "string \fBSegmentValue\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe value in the column identified by \fBSegmentColumnName\fP which corresponds to this generator instance\&. In other words, this value indicates the row in which this generator instance will store values\&. \fP"
+.ti -1c
+.RI "int \fBSegmentValueLength\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe size of the column identified by \fBSegmentColumnName\fP in the underlying table\&. \fP"
+.ti -1c
+.RI "string \fBValueColumnName\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe name of the column in which we store our persistent generator value\&. \fP"
+.ti -1c
+.RI "int \fBInitialValue\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe initial value to use when we find no previous state in the generator table corresponding to this instance\&. \fP"
+.ti -1c
+.RI "int \fBIncrementSize\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe amount of increment to use\&. The exact implications of this depends on the optimizer being used, see \fBOptimizer\fP\&. \fP"
+.ti -1c
+.RI "\fBIOptimizer\fP \fBOptimizer\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe optimizer being used by this generator\&. This mechanism allows avoiding calling the database each time a new identifier is needed\&. \fP"
+.ti -1c
+.RI "long \fBTableAccessCount\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe table access count\&. Only really useful for unit test assertions\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An enhanced version of table-based id generation\&. 
+
+Unlike the simplistic legacy one (which, btw, was only ever intended for subclassing support) we 'segment' the table into multiple values\&. Thus a single table can actually serve as the persistent storage for multiple independent generators\&. One approach would be to segment the values by the name of the entity for which we are performing generation, which would mean that we would have a row in the generator table for each entity name\&. Or any configuration really; the setup is very flexible\&. 
+.PP
+In this respect it is very similar to the legacy MultipleHiLoPerTableGenerator (not available in \fBNHibernate\fP) in terms of the underlying storage structure (namely a single table capable of holding multiple generator values)\&. The differentiator is, as with \fBSequenceStyleGenerator\fP as well, the externalized notion of an optimizer\&. 
+.PP
+\fBNOTE\fP that by default we use a single row for all generators (based on DefaultSegmentValue)\&. The configuration parameter ConfigPreferSegmentPerEntity can be used to change that to instead default to using a row for each entity name\&. 
+.PP
+Configuration parameters: table> 
+.PP
+\fBNAME\fP 
+.PP
+\fBDEFAULT\fP 
+.PP
+\fBDESCRIPTION\fP  
+.PP
+TableParam 
+.PP
+DefaultTable 
+.PP
+The name of the table to use to store/retrieve values  
+.PP
+ValueColumnParam 
+.PP
+DefaultValueColumn 
+.PP
+The name of column which holds the sequence value for the given segment  
+.PP
+SegmentColumnParam 
+.PP
+DefaultSegmentColumn 
+.PP
+The name of the column which holds the segment key  
+.PP
+SegmentValueParam 
+.PP
+DefaultSegmentValue 
+.PP
+The value indicating which segment is used by this generator; refers to values in the SegmentColumnParam column  
+.PP
+SegmentLengthParam 
+.PP
+DefaultSegmentLength 
+.PP
+The data length of the SegmentColumnParam column; used for schema creation  
+.PP
+InitialParam 
+.PP
+DefaltInitialValue 
+.PP
+The initial value to be stored for the given segment  
+.PP
+IncrementParam 
+.PP
+DefaultIncrementSize 
+.PP
+The increment size for the underlying segment; see the discussion on \fBOptimizer\fP for more details\&.  
+.PP
+OptimizerParam 
+.PP
+\fIdepends on defined increment size\fP 
+.PP
+Allows explicit definition of which optimization strategy to use  /table> 
+.PP
+Definition at line 87 of file TableGenerator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.Configure (\fBIType\fPtype, IDictionary< string, string >parms, \fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+Configure this instance, given the values of parameters specified by the user as \fC<param>\fP elements\&. This method is called just once, followed by instantiation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The IType the identifier should be\&.
+.br
+\fIparms\fP An IDictionary of \fBParam\fP values that are keyed by parameter name\&.
+.br
+\fIdialect\fP The \fBDialect\&.Dialect\fP to help with Configuration\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IConfigurable\fP\&.
+.PP
+Definition at line 205 of file TableGenerator\&.cs\&.
+.SS "string NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.DetermineDefaultSegmentValue (IDictionary< string, string >parms)\fC [protected]\fP"
+
+.PP
+Used in the cases where \fBDetermineSegmentValue\fP is unable to determine the value to use\&. 
+.PP
+Definition at line 321 of file TableGenerator\&.cs\&.
+.SS "string NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.DetermineGeneratorTableName (IDictionary< string, string >parms, \fBDialect\&.Dialect\fPdialect)\fC [protected]\fP"
+
+.PP
+Determine the table name to use for the generator values\&. Called during configuration\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparms\fP The parameters supplied in the generator config (plus some standard useful extras)\&.
+.RE
+.PP
+
+.PP
+Definition at line 247 of file TableGenerator\&.cs\&.
+.SS "string NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.DetermineSegmentColumnName (IDictionary< string, string >parms, \fBDialect\&.Dialect\fPdialect)\fC [protected]\fP"
+
+.PP
+Determine the name of the column used to indicate the segment for each row\&. This column acts as the primary key\&. Called during configuration\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparms\fP The parameters supplied in the generator config (plus some standard useful extras)\&.
+.RE
+.PP
+
+.PP
+Definition at line 280 of file TableGenerator\&.cs\&.
+.SS "int NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.DetermineSegmentColumnSize (IDictionary< string, string >parms)\fC [protected]\fP"
+
+.PP
+Determine the size of the \fBSegmentColumnName\fP segment column\&. Called during configuration\&. 
+.PP
+Definition at line 336 of file TableGenerator\&.cs\&.
+.SS "string NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.DetermineSegmentValue (IDictionary< string, string >parms)\fC [protected]\fP"
+
+.PP
+Determine the segment value corresponding to this generator instance\&. Called during configuration\&. 
+.PP
+Definition at line 308 of file TableGenerator\&.cs\&.
+.SS "string NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.DetermineValueColumnName (IDictionary< string, string >parms, \fBDialect\&.Dialect\fPdialect)\fC [protected]\fP"
+
+.PP
+Determine the name of the column in which we will store the generator persistent value\&. Called during configuration\&. 
+.PP
+Definition at line 294 of file TableGenerator\&.cs\&.
+.SS "virtual object NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.Generate (\fBISessionImplementor\fPsession, objectobj)\fC [virtual]\fP"
+
+.PP
+Generate a new identifier 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The ISessionImplementor this id is being generated in\&.
+.br
+\fIobj\fP The entity for which the id is being generated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new identifier
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IIdentifierGenerator\fP\&.
+.PP
+Definition at line 405 of file TableGenerator\&.cs\&.
+.SS "virtual string NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.GeneratorKey ()\fC [virtual]\fP"
+
+.PP
+Return a key unique to the underlying database objects\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A key unique to the underlying database objects\&. 
+.RE
+.PP
+.PP
+Prevents us from trying to create/remove them multiple times 
+.PP
+Implements \fBNHibernate\&.Id\&.IPersistentIdentifierGenerator\fP\&.
+.PP
+Definition at line 197 of file TableGenerator\&.cs\&.
+.SS "virtual string [] NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.SqlCreateStrings (\fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+The SQL required to create the underlying database objects 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP to help with creating the sql\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An array of String objects that contain the sql to create the necessary database objects\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IPersistentIdentifierGenerator\fP\&.
+.PP
+Definition at line 515 of file TableGenerator\&.cs\&.
+.SS "virtual string [] NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.SqlDropString (\fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+The SQL required to remove the underlying database objects 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP to help with creating the sql\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A String that will drop the database objects\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IPersistentIdentifierGenerator\fP\&.
+.PP
+Definition at line 528 of file TableGenerator\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBIType\fP NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.IdentifierType\fC [get]\fP, \fC [set]\fP"
+
+.PP
+\fBType\fP mapping for the identifier\&. 
+.PP
+Definition at line 121 of file TableGenerator\&.cs\&.
+.SS "int NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.IncrementSize\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The amount of increment to use\&. The exact implications of this depends on the optimizer being used, see \fBOptimizer\fP\&. 
+.PP
+Definition at line 172 of file TableGenerator\&.cs\&.
+.SS "int NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.InitialValue\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The initial value to use when we find no previous state in the generator table corresponding to this instance\&. 
+.PP
+Definition at line 165 of file TableGenerator\&.cs\&.
+.SS "\fBIOptimizer\fP NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.Optimizer\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The optimizer being used by this generator\&. This mechanism allows avoiding calling the database each time a new identifier is needed\&. 
+.PP
+Definition at line 180 of file TableGenerator\&.cs\&.
+.SS "string NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.SegmentColumnName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The name of the column in which we store the segment to which each row belongs\&. The value here acts as primary key\&. 
+.PP
+Definition at line 134 of file TableGenerator\&.cs\&.
+.SS "string NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.SegmentValue\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The value in the column identified by \fBSegmentColumnName\fP which corresponds to this generator instance\&. In other words, this value indicates the row in which this generator instance will store values\&. 
+.PP
+Definition at line 142 of file TableGenerator\&.cs\&.
+.SS "int NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.SegmentValueLength\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The size of the column identified by \fBSegmentColumnName\fP in the underlying table\&. Should really have been called 'segmentColumnLength' or even better 'segmentColumnSize'\&. 
+.PP
+Definition at line 152 of file TableGenerator\&.cs\&.
+.SS "long NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.TableAccessCount\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The table access count\&. Only really useful for unit test assertions\&. 
+.PP
+Definition at line 186 of file TableGenerator\&.cs\&.
+.SS "string NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.TableName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The name of the table in which we store this generator's persistent state\&. 
+.PP
+Definition at line 127 of file TableGenerator\&.cs\&.
+.SS "string NHibernate\&.Id\&.Enhanced\&.TableGenerator\&.ValueColumnName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The name of the column in which we store our persistent generator value\&. 
+.PP
+Definition at line 158 of file TableGenerator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,97 @@
+.TH "log4net.Filter.LevelMatchFilter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Filter.LevelMatchFilter \- 
+.PP
+This is a very simple filter based on Level matching\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Filter\&.FilterSkeleton\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLevelMatchFilter\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.ti -1c
+.RI "override \fBFilterDecision\fP \fBDecide\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fITests if the Level of the logging event matches that of the filter \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBAcceptOnMatch\fP\fC [get, set]\fP"
+.br
+.RI "\fIFilterDecision\&.Accept when matching \fBLevelToMatch\fP \fP"
+.ti -1c
+.RI "\fBLevel\fP \fBLevelToMatch\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe Level that the filter will match \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is a very simple filter based on Level matching\&. 
+
+The filter admits two options \fBLevelToMatch\fP and \fBAcceptOnMatch\fP\&. If there is an exact match between the value of the \fBLevelToMatch\fP option and the Level of the LoggingEvent, then the \fBDecide\fP method returns FilterDecision\&.Accept in case the \fBAcceptOnMatch\fP option value is set to \fCtrue\fP, if it is \fCfalse\fP then FilterDecision\&.Deny is returned\&. If the Level does not match then the result will be FilterDecision\&.Neutral\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 45 of file LevelMatchFilter\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Filter\&.LevelMatchFilter\&.LevelMatchFilter ()"
+
+.PP
+Default constructor 
+.PP
+Definition at line 66 of file LevelMatchFilter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBFilterDecision\fP log4net\&.Filter\&.LevelMatchFilter\&.Decide (\fBLoggingEvent\fPloggingEvent)\fC [virtual]\fP"
+
+.PP
+Tests if the Level of the logging event matches that of the filter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP the event to filter
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+see remarks
+.RE
+.PP
+.PP
+If the Level of the event matches the level of the filter then the result of the function depends on the value of \fBAcceptOnMatch\fP\&. If it is true then the function will return FilterDecision\&.Accept, it it is false then it will return FilterDecision\&.Deny\&. If the Level does not match then the result will be FilterDecision\&.Neutral\&. 
+.PP
+Implements \fBlog4net\&.Filter\&.FilterSkeleton\fP\&.
+.PP
+Definition at line 125 of file LevelMatchFilter\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool log4net\&.Filter\&.LevelMatchFilter\&.AcceptOnMatch\fC [get]\fP, \fC [set]\fP"
+
+.PP
+FilterDecision\&.Accept when matching \fBLevelToMatch\fP The \fBAcceptOnMatch\fP property is a flag that determines the behavior when a matching Level is found\&. If the flag is set to true then the filter will FilterDecision\&.Accept the logging event, otherwise it will FilterDecision\&.Deny the event\&. 
+.PP
+The default is \fCtrue\fP i\&.e\&. to FilterDecision\&.Accept the event\&. 
+.PP
+Definition at line 87 of file LevelMatchFilter\&.cs\&.
+.SS "\fBLevel\fP log4net\&.Filter\&.LevelMatchFilter\&.LevelToMatch\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The Level that the filter will match The level that this filter will attempt to match against the LoggingEvent level\&. If a match is found then the result depends on the value of \fBAcceptOnMatch\fP\&. 
+.PP
+Definition at line 103 of file LevelMatchFilter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

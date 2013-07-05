@@ -1,0 +1,8 @@
+var class_n_hibernate_1_1_test_1_1_transform_tests_1_1_implementation_of_equality_tests =
+[
+    [ "AliasToBeanConstructorResultTransformer_ShouldHaveEqualityBasedOnCtorParameter", "class_n_hibernate_1_1_test_1_1_transform_tests_1_1_implementation_of_equality_tests.html#a3ad87674cd68c4f4450f6a43ab7471c3", null ],
+    [ "AliasToBeanResultTransformer_ShouldHaveEqualityBasedOnCtorParameter", "class_n_hibernate_1_1_test_1_1_transform_tests_1_1_implementation_of_equality_tests.html#a29dd2a7ac2edf07e02ce5107c23ea26c", null ],
+    [ "AllEmbeddedTransformersOverridesEqualsAndGetHashCode", "class_n_hibernate_1_1_test_1_1_transform_tests_1_1_implementation_of_equality_tests.html#a5013b171e246b19eed4b283327606bf7", null ],
+    [ "AllEmbeddedTransformersWithDefaultCtorHasEqualityWorkingAsSingleton", "class_n_hibernate_1_1_test_1_1_transform_tests_1_1_implementation_of_equality_tests.html#a6b3a6b092ac97e870e30fe98bab78839", null ],
+    [ "LinqResultTransformer_ShouldHaveEqualityBasedOnCtorParameter", "class_n_hibernate_1_1_test_1_1_transform_tests_1_1_implementation_of_equality_tests.html#a229b40df4bde9ae952232131f6cdfbdc", null ]
+];

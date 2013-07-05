@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_linq_1_1_query_timeout_tests_1_1_timeout_catching_non_batching_batcher_factory =
+[
+    [ "CreateBatcher", "class_n_hibernate_1_1_test_1_1_linq_1_1_query_timeout_tests_1_1_timeout_catching_non_batching_batcher_factory.html#aa764e5d6867b220ebb24d0536d99346e", null ]
+];

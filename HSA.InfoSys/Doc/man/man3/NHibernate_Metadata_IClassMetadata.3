@@ -1,0 +1,348 @@
+.TH "NHibernate.Metadata.IClassMetadata" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Metadata.IClassMetadata \- 
+.PP
+Exposes entity class metadata to the application  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIType\fP \fBGetPropertyType\fP (string propertyName)"
+.br
+.RI "\fIGet the type of a particular (named) property \fP"
+.ti -1c
+.RI "object[] \fBGetPropertyValuesToInsert\fP (object entity, IDictionary mergeMap, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIReturn the values of the mapped properties of the object\fP"
+.ti -1c
+.RI "System\&.Type \fBGetMappedClass\fP (\fBEntityMode\fP entityMode)"
+.br
+.RI "\fIThe persistent class \fP"
+.ti -1c
+.RI "object \fBInstantiate\fP (object id, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fICreate a class instance initialized with the given identifier \fP"
+.ti -1c
+.RI "object \fBGetPropertyValue\fP (object obj, string propertyName, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet the value of a particular (named) property \fP"
+.ti -1c
+.RI "object[] \fBGetPropertyValues\fP (object entity, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIExtract the property values from the given entity\&. \fP"
+.ti -1c
+.RI "void \fBSetPropertyValue\fP (object obj, string propertyName, object value, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fISet the value of a particular (named) property \fP"
+.ti -1c
+.RI "void \fBSetPropertyValues\fP (object entity, object[] values, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fISet the given values to the mapped properties of the given object \fP"
+.ti -1c
+.RI "object \fBGetIdentifier\fP (object entity, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet the identifier of an instance (throw an exception if no identifier property) \fP"
+.ti -1c
+.RI "void \fBSetIdentifier\fP (object entity, object id, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fISet the identifier of an instance (or do nothing if no identifier property) \fP"
+.ti -1c
+.RI "bool \fBImplementsLifecycle\fP (\fBEntityMode\fP entityMode)"
+.br
+.RI "\fIDoes the class implement the \fBClassic\&.ILifecycle\fP interface?\fP"
+.ti -1c
+.RI "bool \fBImplementsValidatable\fP (\fBEntityMode\fP entityMode)"
+.br
+.RI "\fIDoes the class implement the \fBClassic\&.IValidatable\fP interface?\fP"
+.ti -1c
+.RI "object \fBGetVersion\fP (object obj, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet the version number (or timestamp) from the object's version property (or return null if not versioned) \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBEntityName\fP\fC [get]\fP"
+.br
+.RI "\fIThe name of the entity \fP"
+.ti -1c
+.RI "string \fBIdentifierPropertyName\fP\fC [get]\fP"
+.br
+.RI "\fIThe name of the identifier property (or return null) \fP"
+.ti -1c
+.RI "string[] \fBPropertyNames\fP\fC [get]\fP"
+.br
+.RI "\fIThe names of the class' persistent properties \fP"
+.ti -1c
+.RI "\fBIType\fP \fBIdentifierType\fP\fC [get]\fP"
+.br
+.RI "\fIThe identifier Hibernate type \fP"
+.ti -1c
+.RI "\fBIType\fP[] \fBPropertyTypes\fP\fC [get]\fP"
+.br
+.RI "\fIThe Hibernate types of the classes properties \fP"
+.ti -1c
+.RI "bool \fBIsMutable\fP\fC [get]\fP"
+.br
+.RI "\fIAre instances of this class mutable? \fP"
+.ti -1c
+.RI "bool \fBIsVersioned\fP\fC [get]\fP"
+.br
+.RI "\fIAre instances of this class versioned by a timestamp or version number column? \fP"
+.ti -1c
+.RI "int \fBVersionProperty\fP\fC [get]\fP"
+.br
+.RI "\fIGets the index of the version property \fP"
+.ti -1c
+.RI "bool[] \fBPropertyNullability\fP\fC [get]\fP"
+.br
+.RI "\fIGet the nullability of the class' persistent properties \fP"
+.ti -1c
+.RI "bool[] \fBPropertyLaziness\fP\fC [get]\fP"
+.br
+.RI "\fIGet the 'laziness' of the properties of this class\fP"
+.ti -1c
+.RI "int[] \fBNaturalIdentifierProperties\fP\fC [get]\fP"
+.br
+.RI "\fIWhich properties hold the natural id?\fP"
+.ti -1c
+.RI "bool \fBIsInherited\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this entity extend a mapped superclass?\fP"
+.ti -1c
+.RI "bool \fBHasProxy\fP\fC [get]\fP"
+.br
+.RI "\fIDoes the class support dynamic proxies? \fP"
+.ti -1c
+.RI "bool \fBHasIdentifierProperty\fP\fC [get]\fP"
+.br
+.RI "\fIDoes the class have an identifier property? \fP"
+.ti -1c
+.RI "bool \fBHasNaturalIdentifier\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this entity declare a natural id?\fP"
+.ti -1c
+.RI "bool \fBHasSubclasses\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this entity have mapped subclasses?\fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Exposes entity class metadata to the application 
+
+
+.PP
+\fBSee Also:\fP
+.RS 4
+NHibernate\&.ISessionFactory\&.GetClassMetadata(System\&.Type)
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 11 of file IClassMetadata\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.Metadata\&.IClassMetadata\&.GetIdentifier (objectentity, \fBEntityMode\fPentityMode)"
+
+.PP
+Get the identifier of an instance (throw an exception if no identifier property) 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "System\&.Type NHibernate\&.Metadata\&.IClassMetadata\&.GetMappedClass (\fBEntityMode\fPentityMode)"
+
+.PP
+The persistent class 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "\fBIType\fP NHibernate\&.Metadata\&.IClassMetadata\&.GetPropertyType (stringpropertyName)"
+
+.PP
+Get the type of a particular (named) property 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "object NHibernate\&.Metadata\&.IClassMetadata\&.GetPropertyValue (objectobj, stringpropertyName, \fBEntityMode\fPentityMode)"
+
+.PP
+Get the value of a particular (named) property 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "object [] NHibernate\&.Metadata\&.IClassMetadata\&.GetPropertyValues (objectentity, \fBEntityMode\fPentityMode)"
+
+.PP
+Extract the property values from the given entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity from which to extract the property values\&. 
+.br
+\fIentityMode\fP The entity-mode of the given entity 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The property values\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "object [] NHibernate\&.Metadata\&.IClassMetadata\&.GetPropertyValuesToInsert (objectentity, IDictionarymergeMap, \fBISessionImplementor\fPsession)"
+
+.PP
+Return the values of the mapped properties of the object
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "object NHibernate\&.Metadata\&.IClassMetadata\&.GetVersion (objectobj, \fBEntityMode\fPentityMode)"
+
+.PP
+Get the version number (or timestamp) from the object's version property (or return null if not versioned) 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "bool NHibernate\&.Metadata\&.IClassMetadata\&.ImplementsLifecycle (\fBEntityMode\fPentityMode)"
+
+.PP
+Does the class implement the \fBClassic\&.ILifecycle\fP interface?
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "bool NHibernate\&.Metadata\&.IClassMetadata\&.ImplementsValidatable (\fBEntityMode\fPentityMode)"
+
+.PP
+Does the class implement the \fBClassic\&.IValidatable\fP interface?
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "object NHibernate\&.Metadata\&.IClassMetadata\&.Instantiate (objectid, \fBEntityMode\fPentityMode)"
+
+.PP
+Create a class instance initialized with the given identifier 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "void NHibernate\&.Metadata\&.IClassMetadata\&.SetIdentifier (objectentity, objectid, \fBEntityMode\fPentityMode)"
+
+.PP
+Set the identifier of an instance (or do nothing if no identifier property) 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "void NHibernate\&.Metadata\&.IClassMetadata\&.SetPropertyValue (objectobj, stringpropertyName, objectvalue, \fBEntityMode\fPentityMode)"
+
+.PP
+Set the value of a particular (named) property 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "void NHibernate\&.Metadata\&.IClassMetadata\&.SetPropertyValues (objectentity, object[]values, \fBEntityMode\fPentityMode)"
+
+.PP
+Set the given values to the mapped properties of the given object 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "string NHibernate\&.Metadata\&.IClassMetadata\&.EntityName\fC [get]\fP"
+
+.PP
+The name of the entity 
+.PP
+Definition at line 16 of file IClassMetadata\&.cs\&.
+.SS "bool NHibernate\&.Metadata\&.IClassMetadata\&.HasIdentifierProperty\fC [get]\fP"
+
+.PP
+Does the class have an identifier property? 
+.PP
+Definition at line 76 of file IClassMetadata\&.cs\&.
+.SS "bool NHibernate\&.Metadata\&.IClassMetadata\&.HasNaturalIdentifier\fC [get]\fP"
+
+.PP
+Does this entity declare a natural id?
+.PP
+Definition at line 79 of file IClassMetadata\&.cs\&.
+.SS "bool NHibernate\&.Metadata\&.IClassMetadata\&.HasProxy\fC [get]\fP"
+
+.PP
+Does the class support dynamic proxies? 
+.PP
+Definition at line 73 of file IClassMetadata\&.cs\&.
+.SS "bool NHibernate\&.Metadata\&.IClassMetadata\&.HasSubclasses\fC [get]\fP"
+
+.PP
+Does this entity have mapped subclasses?
+.PP
+Definition at line 82 of file IClassMetadata\&.cs\&.
+.SS "string NHibernate\&.Metadata\&.IClassMetadata\&.IdentifierPropertyName\fC [get]\fP"
+
+.PP
+The name of the identifier property (or return null) 
+.PP
+Definition at line 21 of file IClassMetadata\&.cs\&.
+.SS "\fBIType\fP NHibernate\&.Metadata\&.IClassMetadata\&.IdentifierType\fC [get]\fP"
+
+.PP
+The identifier Hibernate type 
+.PP
+Definition at line 31 of file IClassMetadata\&.cs\&.
+.SS "bool NHibernate\&.Metadata\&.IClassMetadata\&.IsInherited\fC [get]\fP"
+
+.PP
+Does this entity extend a mapped superclass?
+.PP
+Definition at line 65 of file IClassMetadata\&.cs\&.
+.SS "bool NHibernate\&.Metadata\&.IClassMetadata\&.IsMutable\fC [get]\fP"
+
+.PP
+Are instances of this class mutable? 
+.PP
+Definition at line 41 of file IClassMetadata\&.cs\&.
+.SS "bool NHibernate\&.Metadata\&.IClassMetadata\&.IsVersioned\fC [get]\fP"
+
+.PP
+Are instances of this class versioned by a timestamp or version number column? 
+.PP
+Definition at line 46 of file IClassMetadata\&.cs\&.
+.SS "int [] NHibernate\&.Metadata\&.IClassMetadata\&.NaturalIdentifierProperties\fC [get]\fP"
+
+.PP
+Which properties hold the natural id?
+.PP
+Definition at line 62 of file IClassMetadata\&.cs\&.
+.SS "bool [] NHibernate\&.Metadata\&.IClassMetadata\&.PropertyLaziness\fC [get]\fP"
+
+.PP
+Get the 'laziness' of the properties of this class
+.PP
+Definition at line 59 of file IClassMetadata\&.cs\&.
+.SS "string [] NHibernate\&.Metadata\&.IClassMetadata\&.PropertyNames\fC [get]\fP"
+
+.PP
+The names of the class' persistent properties 
+.PP
+Definition at line 26 of file IClassMetadata\&.cs\&.
+.SS "bool [] NHibernate\&.Metadata\&.IClassMetadata\&.PropertyNullability\fC [get]\fP"
+
+.PP
+Get the nullability of the class' persistent properties 
+.PP
+Definition at line 56 of file IClassMetadata\&.cs\&.
+.SS "\fBIType\fP [] NHibernate\&.Metadata\&.IClassMetadata\&.PropertyTypes\fC [get]\fP"
+
+.PP
+The Hibernate types of the classes properties 
+.PP
+Definition at line 36 of file IClassMetadata\&.cs\&.
+.SS "int NHibernate\&.Metadata\&.IClassMetadata\&.VersionProperty\fC [get]\fP"
+
+.PP
+Gets the index of the version property 
+.PP
+Definition at line 51 of file IClassMetadata\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

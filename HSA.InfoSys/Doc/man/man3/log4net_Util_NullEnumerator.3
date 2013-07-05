@@ -1,0 +1,103 @@
+.TH "log4net.Util.NullEnumerator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.NullEnumerator \- 
+.PP
+An always empty IEnumerator\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IEnumerator\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBMoveNext\fP ()"
+.br
+.RI "\fITest if the enumerator can advance, if so advance \fP"
+.ti -1c
+.RI "void \fBReset\fP ()"
+.br
+.RI "\fIResets the enumerator back to the start\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "static \fBNullEnumerator\fP \fBInstance\fP\fC [get]\fP"
+.br
+.RI "\fIGet the singleton instance of the \fBNullEnumerator\fP\&. \fP"
+.ti -1c
+.RI "object \fBCurrent\fP\fC [get]\fP"
+.br
+.RI "\fIGets the current object from the enumerator\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An always empty IEnumerator\&. 
+
+A singleton implementation of the IEnumerator over a collection that is empty and not modifiable\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 36 of file NullEnumerator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool log4net\&.Util\&.NullEnumerator\&.MoveNext ()"
+
+.PP
+Test if the enumerator can advance, if so advance 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCfalse\fP as the \fBNullEnumerator\fP cannot advance\&.
+.RE
+.PP
+.PP
+As the enumerator is over an empty collection its \fBCurrent\fP value cannot be moved over a valid position, therefore \fBMoveNext\fP will always return \fCfalse\fP\&. 
+.PP
+Definition at line 106 of file NullEnumerator\&.cs\&.
+.SS "void log4net\&.Util\&.NullEnumerator\&.Reset ()"
+
+.PP
+Resets the enumerator back to the start\&. As the enumerator is over an empty collection \fBReset\fP does nothing\&. 
+.PP
+Definition at line 119 of file NullEnumerator\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "object log4net\&.Util\&.NullEnumerator\&.Current\fC [get]\fP"
+
+.PP
+Gets the current object from the enumerator\&. Throws an InvalidOperationException because the \fBNullDictionaryEnumerator\fP never has a current value\&. 
+.PP
+As the enumerator is over an empty collection its \fBCurrent\fP value cannot be moved over a valid position, therefore \fBCurrent\fP will throw an InvalidOperationException\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInvalidOperationException\fP The collection is empty and \fBCurrent\fP cannot be positioned over a valid location\&.
+.RE
+.PP
+
+.PP
+Definition at line 91 of file NullEnumerator\&.cs\&.
+.SS "\fBNullEnumerator\fP log4net\&.Util\&.NullEnumerator\&.Instance\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Get the singleton instance of the \fBNullEnumerator\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The singleton instance of the \fBNullEnumerator\fP\&.
+.RE
+.PP
+.PP
+Gets the singleton instance of the \fBNullEnumerator\fP\&. 
+.PP
+Definition at line 66 of file NullEnumerator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

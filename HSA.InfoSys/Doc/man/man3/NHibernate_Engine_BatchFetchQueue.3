@@ -1,0 +1,185 @@
+.TH "NHibernate.Engine.BatchFetchQueue" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.BatchFetchQueue \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBatchFetchQueue\fP (\fBIPersistenceContext\fP context)"
+.br
+.RI "\fIConstructs a queue for the given context\&. \fP"
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.RI "\fIClears all entries from this fetch queue\&. \fP"
+.ti -1c
+.RI "\fBSubselectFetch\fP \fBGetSubselect\fP (\fBEntityKey\fP key)"
+.br
+.RI "\fIRetrieve the fetch descriptor associated with the given entity key\&. \fP"
+.ti -1c
+.RI "void \fBAddSubselect\fP (\fBEntityKey\fP key, \fBSubselectFetch\fP subquery)"
+.br
+.RI "\fIAdds a subselect fetch decriptor for the given entity key\&. \fP"
+.ti -1c
+.RI "void \fBRemoveSubselect\fP (\fBEntityKey\fP key)"
+.br
+.RI "\fIAfter evicting or deleting an entity, we don't need to know the query that was used to load it anymore (don't call this after loading the entity, since we might still need to load its collections) \fP"
+.ti -1c
+.RI "void \fBClearSubselects\fP ()"
+.br
+.RI "\fIClears all pending subselect fetches from the queue\&. \fP"
+.ti -1c
+.RI "void \fBAddBatchLoadableEntityKey\fP (\fBEntityKey\fP key)"
+.br
+.RI "\fIIf an \fBEntityKey\fP represents a batch loadable entity, add it to the queue\&. \fP"
+.ti -1c
+.RI "void \fBRemoveBatchLoadableEntityKey\fP (\fBEntityKey\fP key)"
+.br
+.RI "\fIAfter evicting or deleting or loading an entity, we don't need to batch fetch it anymore, remove it from the queue if necessary \fP"
+.ti -1c
+.RI "object[] \fBGetCollectionBatch\fP (\fBICollectionPersister\fP collectionPersister, object id, int batchSize)"
+.br
+.RI "\fIGet a batch of uninitialized collection keys for a given role \fP"
+.ti -1c
+.RI "object[] \fBGetEntityBatch\fP (\fBIEntityPersister\fP persister, object id, int batchSize)"
+.br
+.RI "\fIGet a batch of unloaded identifiers for this class, using a slightly complex algorithm that tries to grab keys registered immediately after the given key\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 11 of file BatchFetchQueue\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Engine\&.BatchFetchQueue\&.BatchFetchQueue (\fBIPersistenceContext\fPcontext)"
+
+.PP
+Constructs a queue for the given context\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontext\fP The owning persistence context\&.
+.RE
+.PP
+
+.PP
+Definition at line 42 of file BatchFetchQueue\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Engine\&.BatchFetchQueue\&.AddBatchLoadableEntityKey (\fBEntityKey\fPkey)"
+
+.PP
+If an \fBEntityKey\fP represents a batch loadable entity, add it to the queue\&. Note that the contract here is such that any key passed in should previously have been been checked for existence within the \fBISession\fP; failure to do so may cause the referenced entity to be included in a batch even though it is already associated with the \fBISession\fP\&. 
+.PP
+Definition at line 112 of file BatchFetchQueue\&.cs\&.
+.SS "void NHibernate\&.Engine\&.BatchFetchQueue\&.AddSubselect (\fBEntityKey\fPkey, \fBSubselectFetch\fPsubquery)"
+
+.PP
+Adds a subselect fetch decriptor for the given entity key\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The entity for which to register the subselect fetch\&.
+.br
+\fIsubquery\fP The fetch descriptor\&.
+.RE
+.PP
+
+.PP
+Definition at line 74 of file BatchFetchQueue\&.cs\&.
+.SS "void NHibernate\&.Engine\&.BatchFetchQueue\&.Clear ()"
+
+.PP
+Clears all entries from this fetch queue\&. 
+.PP
+Definition at line 50 of file BatchFetchQueue\&.cs\&.
+.SS "void NHibernate\&.Engine\&.BatchFetchQueue\&.ClearSubselects ()"
+
+.PP
+Clears all pending subselect fetches from the queue\&. Called after flushing\&. 
+.PP
+Definition at line 96 of file BatchFetchQueue\&.cs\&.
+.SS "object [] NHibernate\&.Engine\&.BatchFetchQueue\&.GetCollectionBatch (\fBICollectionPersister\fPcollectionPersister, objectid, intbatchSize)"
+
+.PP
+Get a batch of uninitialized collection keys for a given role 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollectionPersister\fP The persister for the collection role\&.
+.br
+\fIid\fP A key that must be included in the batch fetch
+.br
+\fIbatchSize\fP the maximum number of keys to return
+.br
+\fIentityMode\fP The entity mode\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an array of collection keys, of length batchSize (padded with nulls)
+.RE
+.PP
+
+.PP
+Definition at line 139 of file BatchFetchQueue\&.cs\&.
+.SS "object [] NHibernate\&.Engine\&.BatchFetchQueue\&.GetEntityBatch (\fBIEntityPersister\fPpersister, objectid, intbatchSize)"
+
+.PP
+Get a batch of unloaded identifiers for this class, using a slightly complex algorithm that tries to grab keys registered immediately after the given key\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The persister for the entities being loaded\&.
+.br
+\fIid\fP The identifier of the entity currently demanding load\&.
+.br
+\fIbatchSize\fP The maximum number of keys to return
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an array of identifiers, of length batchSize (possibly padded with nulls)
+.RE
+.PP
+
+.PP
+Definition at line 198 of file BatchFetchQueue\&.cs\&.
+.SS "\fBSubselectFetch\fP NHibernate\&.Engine\&.BatchFetchQueue\&.GetSubselect (\fBEntityKey\fPkey)"
+
+.PP
+Retrieve the fetch descriptor associated with the given entity key\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The entity key for which to locate any defined subselect fetch\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The fetch descriptor; may return null if no subselect fetch queued for this entity key\&.
+.RE
+.PP
+
+.PP
+Definition at line 62 of file BatchFetchQueue\&.cs\&.
+.SS "void NHibernate\&.Engine\&.BatchFetchQueue\&.RemoveBatchLoadableEntityKey (\fBEntityKey\fPkey)"
+
+.PP
+After evicting or deleting or loading an entity, we don't need to batch fetch it anymore, remove it from the queue if necessary 
+.PP
+Definition at line 125 of file BatchFetchQueue\&.cs\&.
+.SS "void NHibernate\&.Engine\&.BatchFetchQueue\&.RemoveSubselect (\fBEntityKey\fPkey)"
+
+.PP
+After evicting or deleting an entity, we don't need to know the query that was used to load it anymore (don't call this after loading the entity, since we might still need to load its collections) 
+.PP
+Definition at line 85 of file BatchFetchQueue\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

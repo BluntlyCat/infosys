@@ -1,0 +1,295 @@
+.TH "NHibernate.Criterion" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "package \fBLambda\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAbstractCriterion\fP"
+.br
+.RI "\fIBase class for \fBICriterion\fP implementations\&. \fP"
+.ti -1c
+.RI "class \fBAbstractEmptinessExpression\fP"
+.br
+.ti -1c
+.RI "class \fBAggregateProjection\fP"
+.br
+.RI "\fIAn Aggregation \fP"
+.ti -1c
+.RI "class \fBAliasedProjection\fP"
+.br
+.ti -1c
+.RI "class \fBAndExpression\fP"
+.br
+.RI "\fIAn \fBLogicalExpression\fP that combines two \fBICriterion\fPs with an \fCand\fP between them\&. \fP"
+.ti -1c
+.RI "class \fBAvgProjection\fP"
+.br
+.ti -1c
+.RI "class \fBBetweenExpression\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that represents a 'between' constraint\&. \fP"
+.ti -1c
+.RI "class \fBCastProjection\fP"
+.br
+.RI "\fICasting a value from one type to another, at the database level \fP"
+.ti -1c
+.RI "class \fBConditionalProjection\fP"
+.br
+.ti -1c
+.RI "class \fBConjunction\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that Junctions together multiple \fBICriterion\fPs with an \fCand\fP \fP"
+.ti -1c
+.RI "class \fBConstantProjection\fP"
+.br
+.RI "\fIThis is useful if we want to send a value to the database \fP"
+.ti -1c
+.RI "class \fBCountProjection\fP"
+.br
+.RI "\fIA Count \fP"
+.ti -1c
+.RI "class \fBCriteriaSpecification\fP"
+.br
+.ti -1c
+.RI "class \fBCriterionUtil\fP"
+.br
+.ti -1c
+.RI "class \fBDetachedCriteria\fP"
+.br
+.RI "\fISome applications need to create criteria queries in 'detached
+mode', where the Hibernate session is not available\&. This class may be instantiated anywhere, and then a \fC\fBICriteria\fP\fP may be obtained by passing a session to \fC\fBGetExecutableCriteria()\fP\fP\&. All methods have the same semantics and behavior as the corresponding methods of the \fC\fBICriteria\fP\fP interface\&. \fP"
+.ti -1c
+.RI "class \fBDisjunction\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that Junctions together multiple \fBICriterion\fPs with an \fCor\fP \fP"
+.ti -1c
+.RI "class \fBDistinct\fP"
+.br
+.ti -1c
+.RI "class \fBEqPropertyExpression\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that represents an 'equal' constraint between two properties\&. \fP"
+.ti -1c
+.RI "class \fBExample\fP"
+.br
+.RI "\fISupport for \fCQuery By \fBExample\fP\fP\&. \fP"
+.ti -1c
+.RI "class \fBExistsSubqueryExpression\fP"
+.br
+.ti -1c
+.RI "class \fBExpression\fP"
+.br
+.RI "\fIThis class is semi-deprecated\&. Use \fBRestrictions\fP\&. \fP"
+.ti -1c
+.RI "class \fBGePropertyExpression\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that represents an 'greater than or equal' constraint between two properties\&. \fP"
+.ti -1c
+.RI "class \fBGroupedProjection\fP"
+.br
+.ti -1c
+.RI "class \fBGtPropertyExpression\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that represents an 'greater than' constraint between two properties\&. \fP"
+.ti -1c
+.RI "interface \fBICriteriaQuery\fP"
+.br
+.RI "\fIAn instance of \fBICriteriaQuery\fP is passed to criterion, order and projection instances when actually compiling and executing the query\&. This interface is not used by application code\&. \fP"
+.ti -1c
+.RI "interface \fBICriterion\fP"
+.br
+.RI "\fIAn object-oriented representation of a query criterion that may be used as a constraint in a \fBICriteria\fP query\&. \fP"
+.ti -1c
+.RI "class \fBIdentifierEqExpression\fP"
+.br
+.RI "\fIAn identifier constraint \fP"
+.ti -1c
+.RI "class \fBIdentifierProjection\fP"
+.br
+.ti -1c
+.RI "interface \fBIEnhancedProjection\fP"
+.br
+.RI "\fIAn 'enhanced' Projection for a \fBICriteria\fP query\&. \fP"
+.ti -1c
+.RI "class \fBInExpression\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that constrains the property to a specified list of values\&. \fP"
+.ti -1c
+.RI "class \fBInsensitiveLikeExpression\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that represents an 'like' constraint that is \fBnot\fP case sensitive\&. \fP"
+.ti -1c
+.RI "interface \fBIProjection\fP"
+.br
+.ti -1c
+.RI "interface \fBIPropertyProjection\fP"
+.br
+.ti -1c
+.RI "class \fBIsEmptyExpression\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that represents empty association constraint\&. \fP"
+.ti -1c
+.RI "class \fBIsNotEmptyExpression\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that represents non-empty association constraint\&. \fP"
+.ti -1c
+.RI "class \fBJunction\fP"
+.br
+.RI "\fIA sequence of logical \fBICriterion\fPs combined by some associative logical operator\&. \fP"
+.ti -1c
+.RI "class \fBLePropertyExpression\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that represents an 'less than or equal' constraint between two properties\&. \fP"
+.ti -1c
+.RI "class \fBLikeExpression\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that represents an 'like' constraint\&. \fP"
+.ti -1c
+.RI "class \fBLogicalExpression\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that combines two \fBICriterion\fPs with a operator (either '<c>and</c>' or '<c>or</c>') between them\&. \fP"
+.ti -1c
+.RI "class \fBLtPropertyExpression\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that represents an 'less than' constraint between two properties\&. \fP"
+.ti -1c
+.RI "class \fBMatchMode\fP"
+.br
+.RI "\fIRepresents an strategy for matching strings using 'like'\&. \fP"
+.ti -1c
+.RI "class \fBNaturalIdentifier\fP"
+.br
+.ti -1c
+.RI "class \fBNotExpression\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that negates another \fBICriterion\fP\&. \fP"
+.ti -1c
+.RI "class \fBNotNullExpression\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that represents 'not null' constraint\&. \fP"
+.ti -1c
+.RI "class \fBNullExpression\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that represents 'null' constraint\&. \fP"
+.ti -1c
+.RI "class \fBNullSubqueryExpression\fP"
+.br
+.ti -1c
+.RI "class \fBOrder\fP"
+.br
+.RI "\fIRepresents an order imposed upon a \fBICriteria\fP result set\&. \fP"
+.ti -1c
+.RI "class \fBOrExpression\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that combines two \fBICriterion\fPs with an \fC'or'\fP between them\&. \fP"
+.ti -1c
+.RI "class \fBProjectionList\fP"
+.br
+.ti -1c
+.RI "class \fBProjections\fP"
+.br
+.RI "\fIThe \fCcriterion\fP package may be used by applications as a framework for building new kinds of \fCProjection\fP\&. However, it is intended that most applications will simply use the built-in projection types via the static factory methods of this class\&.
+.br
+ 
+.br
+ The factory methods that take an alias allow the projected value to be referred to by criterion and order instances\&. \fP"
+.ti -1c
+.RI "class \fBProjectionsExtensions\fP"
+.br
+.ti -1c
+.RI "class \fBProperty\fP"
+.br
+.RI "\fIA factory for property-specific \fBAbstractCriterion\fP and projection instances \fP"
+.ti -1c
+.RI "class \fBPropertyExpression\fP"
+.br
+.RI "\fISuperclass for an \fBICriterion\fP that represents a constraint between two properties (with SQL binary operators)\&. \fP"
+.ti -1c
+.RI "class \fBPropertyProjection\fP"
+.br
+.RI "\fIA property value, or grouped property value \fP"
+.ti -1c
+.RI "class \fBPropertySubqueryExpression\fP"
+.br
+.RI "\fIA comparison between a property value in the outer query and the result of a subquery \fP"
+.ti -1c
+.RI "class \fBQueryOver\fP"
+.br
+.ti -1c
+.RI "class \fBQueryOver< TRoot >\fP"
+.br
+.ti -1c
+.RI "class \fBQueryOver< TRoot, TSubType >\fP"
+.br
+.RI "\fIImplementation of the IQueryOver&lt;TRoot, TSubType&gt; interface \fP"
+.ti -1c
+.RI "class \fBQueryOverBuilderExtensions\fP"
+.br
+.ti -1c
+.RI "class \fBRestrictions\fP"
+.br
+.RI "\fIThe \fBNHibernate\&.Criterion\fP namespace may be used by applications as a framework for building new kinds of \fBICriterion\fP\&. However, it is intended that most applications will simply use the built-in criterion types via the static factory methods of this class\&. \fP"
+.ti -1c
+.RI "class \fBRestrictionExtensions\fP"
+.br
+.ti -1c
+.RI "class \fBRowCountInt64Projection\fP"
+.br
+.ti -1c
+.RI "class \fBRowCountProjection\fP"
+.br
+.ti -1c
+.RI "class \fBSelectSubqueryExpression\fP"
+.br
+.RI "\fIA comparison between a property value in the outer query and the result of a subquery \fP"
+.ti -1c
+.RI "class \fBSimpleExpression\fP"
+.br
+.RI "\fIThe base class for an \fBICriterion\fP that compares a single \fBProperty\fP to a value\&. \fP"
+.ti -1c
+.RI "class \fBSimpleProjection\fP"
+.br
+.RI "\fIA single-column projection that may be aliased \fP"
+.ti -1c
+.RI "class \fBSimpleSubqueryExpression\fP"
+.br
+.RI "\fIA comparison between a constant value and the the result of a subquery \fP"
+.ti -1c
+.RI "class \fBSQLCriterion\fP"
+.br
+.RI "\fIAn \fBICriterion\fP that creates a SQLExpression\&. The string {alias} will be replaced by the alias of the root entity\&. \fP"
+.ti -1c
+.RI "class \fBSqlFunctionProjection\fP"
+.br
+.ti -1c
+.RI "class \fBSQLProjection\fP"
+.br
+.RI "\fIA SQL fragment\&. The string {alias} will be replaced by the alias of the root entity\&. \fP"
+.ti -1c
+.RI "class \fBSubqueries\fP"
+.br
+.RI "\fIFactory class for \fBAbstractCriterion\fP instances that represent involving subqueries\&. \fC\fBExpression\fP\fP \fCProjection\fP \fC\fBAbstractCriterion\fP\fP \fP"
+.ti -1c
+.RI "class \fBSubqueryExpression\fP"
+.br
+.ti -1c
+.RI "class \fBSubqueryProjection\fP"
+.br
+.RI "\fIA property value, or grouped property value \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

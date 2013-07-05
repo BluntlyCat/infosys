@@ -1,0 +1,300 @@
+.TH "Renci.SshNet.Common.ASCIIEncoding" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Common.ASCIIEncoding \- 
+.PP
+Implementation of ASCII Encoding  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits Encoding\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBASCIIEncoding\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBASCIIEncoding\fP class\&. \fP"
+.ti -1c
+.RI "override int \fBGetByteCount\fP (char[] chars, int index, int count)"
+.br
+.RI "\fICalculates the number of bytes produced by encoding a set of characters from the specified character array\&. \fP"
+.ti -1c
+.RI "override int \fBGetBytes\fP (char[] chars, int charIndex, int charCount, byte[] bytes, int byteIndex)"
+.br
+.RI "\fIEncodes a set of characters from the specified character array into the specified byte array\&. \fP"
+.ti -1c
+.RI "override int \fBGetCharCount\fP (byte[] bytes, int index, int count)"
+.br
+.RI "\fICalculates the number of characters produced by decoding a sequence of bytes from the specified byte array\&. \fP"
+.ti -1c
+.RI "override int \fBGetChars\fP (byte[] bytes, int byteIndex, int byteCount, char[] chars, int charIndex)"
+.br
+.RI "\fIDecodes a sequence of bytes from the specified byte array into the specified character array\&. \fP"
+.ti -1c
+.RI "override int \fBGetMaxByteCount\fP (int charCount)"
+.br
+.RI "\fICalculates the maximum number of bytes produced by encoding the specified number of characters\&. \fP"
+.ti -1c
+.RI "override int \fBGetMaxCharCount\fP (int byteCount)"
+.br
+.RI "\fICalculates the maximum number of characters produced by decoding the specified number of bytes\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Implementation of ASCII Encoding 
+
+
+.PP
+Definition at line 11 of file ASCIIEncoding\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Common\&.ASCIIEncoding\&.ASCIIEncoding ()"
+
+.PP
+Initializes a new instance of the \fBASCIIEncoding\fP class\&. 
+.PP
+Definition at line 33 of file ASCIIEncoding\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override int Renci\&.SshNet\&.Common\&.ASCIIEncoding\&.GetByteCount (char[]chars, intindex, intcount)"
+
+.PP
+Calculates the number of bytes produced by encoding a set of characters from the specified character array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchars\fP The character array containing the set of characters to encode\&.
+.br
+\fIindex\fP The index of the first character to encode\&.
+.br
+\fIcount\fP The number of characters to encode\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes produced by encoding the specified characters\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentNullException\fP \fIchars\fP  is null\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentOutOfRangeException\fP \fIindex\fP  or \fIcount\fP  is less than zero\&.-or- \fIindex\fP  and \fIcount\fP  do not denote a valid range in \fIchars\fP \&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.Text\&.EncoderFallbackException\fP A fallback occurred (see Understanding Encodings for complete explanation)-and-P:System\&.Text\&.Encoding\&.EncoderFallback is set to T:System\&.Text\&.EncoderExceptionFallback\&.
+.RE
+.PP
+
+.PP
+Definition at line 54 of file ASCIIEncoding\&.cs\&.
+.SS "override int Renci\&.SshNet\&.Common\&.ASCIIEncoding\&.GetBytes (char[]chars, intcharIndex, intcharCount, byte[]bytes, intbyteIndex)"
+
+.PP
+Encodes a set of characters from the specified character array into the specified byte array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchars\fP The character array containing the set of characters to encode\&.
+.br
+\fIcharIndex\fP The index of the first character to encode\&.
+.br
+\fIcharCount\fP The number of characters to encode\&.
+.br
+\fIbytes\fP The byte array to contain the resulting sequence of bytes\&.
+.br
+\fIbyteIndex\fP The index at which to start writing the resulting sequence of bytes\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The actual number of bytes written into \fIbytes\fP \&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentNullException\fP \fIchars\fP  is null\&.-or- \fIbytes\fP  is null\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentOutOfRangeException\fP \fIcharIndex\fP  or \fIcharCount\fP  or \fIbyteIndex\fP  is less than zero\&.-or- \fIcharIndex\fP  and \fIcharCount\fP  do not denote a valid range in \fIchars\fP \&.-or- \fIbyteIndex\fP  is not a valid index in \fIbytes\fP \&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentException\fP \fIbytes\fP  does not have enough capacity from \fIbyteIndex\fP  to the end of the array to accommodate the resulting bytes\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.Text\&.EncoderFallbackException\fP A fallback occurred (see Understanding Encodings for complete explanation)-and-P:System\&.Text\&.Encoding\&.EncoderFallback is set to T:System\&.Text\&.EncoderExceptionFallback\&.
+.RE
+.PP
+
+.PP
+Definition at line 80 of file ASCIIEncoding\&.cs\&.
+.SS "override int Renci\&.SshNet\&.Common\&.ASCIIEncoding\&.GetCharCount (byte[]bytes, intindex, intcount)"
+
+.PP
+Calculates the number of characters produced by decoding a sequence of bytes from the specified byte array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbytes\fP The byte array containing the sequence of bytes to decode\&.
+.br
+\fIindex\fP The index of the first byte to decode\&.
+.br
+\fIcount\fP The number of bytes to decode\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of characters produced by decoding the specified sequence of bytes\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentNullException\fP \fIbytes\fP  is null\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentOutOfRangeException\fP \fIindex\fP  or \fIcount\fP  is less than zero\&.-or- \fIindex\fP  and \fIcount\fP  do not denote a valid range in \fIbytes\fP \&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.Text\&.DecoderFallbackException\fP A fallback occurred (see Understanding Encodings for complete explanation)-and-P:System\&.Text\&.Encoding\&.DecoderFallback is set to T:System\&.Text\&.DecoderExceptionFallback\&.
+.RE
+.PP
+
+.PP
+Definition at line 110 of file ASCIIEncoding\&.cs\&.
+.SS "override int Renci\&.SshNet\&.Common\&.ASCIIEncoding\&.GetChars (byte[]bytes, intbyteIndex, intbyteCount, char[]chars, intcharIndex)"
+
+.PP
+Decodes a sequence of bytes from the specified byte array into the specified character array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbytes\fP The byte array containing the sequence of bytes to decode\&.
+.br
+\fIbyteIndex\fP The index of the first byte to decode\&.
+.br
+\fIbyteCount\fP The number of bytes to decode\&.
+.br
+\fIchars\fP The character array to contain the resulting set of characters\&.
+.br
+\fIcharIndex\fP The index at which to start writing the resulting set of characters\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The actual number of characters written into \fIchars\fP \&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentNullException\fP \fIbytes\fP  is null\&.-or- \fIchars\fP  is null\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentOutOfRangeException\fP \fIbyteIndex\fP  or \fIbyteCount\fP  or \fIcharIndex\fP  is less than zero\&.-or- \fIbyteIndex\fP  and \fIbyteCount\fP  do not denote a valid range in \fIbytes\fP \&.-or- \fIcharIndex\fP  is not a valid index in \fIchars\fP \&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentException\fP \fIchars\fP  does not have enough capacity from \fIcharIndex\fP  to the end of the array to accommodate the resulting characters\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.Text\&.DecoderFallbackException\fP A fallback occurred (see Understanding Encodings for complete explanation)-and-P:System\&.Text\&.Encoding\&.DecoderFallback is set to T:System\&.Text\&.DecoderExceptionFallback\&.
+.RE
+.PP
+
+.PP
+Definition at line 136 of file ASCIIEncoding\&.cs\&.
+.SS "override int Renci\&.SshNet\&.Common\&.ASCIIEncoding\&.GetMaxByteCount (intcharCount)"
+
+.PP
+Calculates the maximum number of bytes produced by encoding the specified number of characters\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcharCount\fP The number of characters to encode\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The maximum number of bytes produced by encoding the specified number of characters\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentOutOfRangeException\fP \fIcharCount\fP  is less than zero\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.Text\&.EncoderFallbackException\fP A fallback occurred (see Understanding Encodings for complete explanation)-and-P:System\&.Text\&.Encoding\&.EncoderFallback is set to T:System\&.Text\&.EncoderExceptionFallback\&.
+.RE
+.PP
+
+.PP
+Definition at line 168 of file ASCIIEncoding\&.cs\&.
+.SS "override int Renci\&.SshNet\&.Common\&.ASCIIEncoding\&.GetMaxCharCount (intbyteCount)"
+
+.PP
+Calculates the maximum number of characters produced by decoding the specified number of bytes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbyteCount\fP The number of bytes to decode\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The maximum number of characters produced by decoding the specified number of bytes\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentOutOfRangeException\fP \fIbyteCount\fP  is less than zero\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.Text\&.DecoderFallbackException\fP A fallback occurred (see Understanding Encodings for complete explanation)-and-P:System\&.Text\&.Encoding\&.DecoderFallback is set to T:System\&.Text\&.DecoderExceptionFallback\&.
+.RE
+.PP
+
+.PP
+Definition at line 184 of file ASCIIEncoding\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

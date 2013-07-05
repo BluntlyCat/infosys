@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_conformist_mapping1b2556d030d79dd0b0973141e1e67726 =
+[
+    [ "Id", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_conformist_mapping1b2556d030d79dd0b0973141e1e67726.html#a7e123a77e5ff7c502de8fd80f11a5b3c", null ],
+    [ "Something", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_conformist_mapping1b2556d030d79dd0b0973141e1e67726.html#a3ede88ab1a66873c770922fc5dfb39bf", null ]
+];

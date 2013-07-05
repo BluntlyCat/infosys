@@ -1,0 +1,187 @@
+.TH "NHibernate.Criterion.DetachedCriteria" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.DetachedCriteria \- 
+.PP
+Some applications need to create criteria queries in 'detached
+mode', where the Hibernate session is not available\&. This class may be instantiated anywhere, and then a \fC\fBICriteria\fP\fP may be obtained by passing a session to \fC\fBGetExecutableCriteria()\fP\fP\&. All methods have the same semantics and behavior as the corresponding methods of the \fC\fBICriteria\fP\fP interface\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBICriteria\fP \fBGetExecutableCriteria\fP (\fBISession\fP session)"
+.br
+.RI "\fIGet an executable instance of \fCCriteria\fP, to actually run the query\&.\fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBGetExecutableCriteria\fP (\fBIStatelessSession\fP session)"
+.br
+.RI "\fIGet an executable instance of \fCCriteria\fP, to actually run the query\&.\fP"
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBAdd\fP (\fBICriterion\fP criterion)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBAddOrder\fP (\fBOrder\fP order)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBCreateAlias\fP (string associationPath, string alias)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBCreateAlias\fP (string associationPath, string alias, \fBJoinType\fP joinType)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBCreateAlias\fP (string associationPath, string alias, \fBJoinType\fP joinType, \fBICriterion\fP withClause)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBCreateCriteria\fP (string associationPath, string alias)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBCreateCriteria\fP (string associationPath)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBCreateCriteria\fP (string associationPath, \fBJoinType\fP joinType)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBCreateCriteria\fP (string associationPath, string alias, \fBJoinType\fP joinType)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBCreateCriteria\fP (string associationPath, string alias, \fBJoinType\fP joinType, \fBICriterion\fP withClause)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBSetFetchMode\fP (string associationPath, \fBFetchMode\fP mode)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBSetLockMode\fP (\fBLockMode\fP lockMode)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBSetLockMode\fP (string alias, \fBLockMode\fP lockMode)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBSetCacheMode\fP (\fBCacheMode\fP cacheMode)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBSetCacheRegion\fP (string region)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBSetCacheable\fP (bool cacheable)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBSetProjection\fP (\fBIProjection\fP projection)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBSetResultTransformer\fP (\fBIResultTransformer\fP resultTransformer)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBSetFirstResult\fP (int firstResult)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBSetMaxResults\fP (int maxResults)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBGetCriteriaByPath\fP (string path)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP \fBGetCriteriaByAlias\fP (string alias)"
+.br
+.ti -1c
+.RI "System\&.Type \fBGetRootEntityTypeIfAvailable\fP ()"
+.br
+.RI "\fIGets the root entity type if available, throws otherwise \fP"
+.ti -1c
+.RI "void \fBClearOrders\fP ()"
+.br
+.RI "\fIClear all orders from criteria\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBDetachedCriteria\fP \fBFor\fP (System\&.Type entityType)"
+.br
+.ti -1c
+.RI "static \fBDetachedCriteria\fP \fBFor< T >\fP ()"
+.br
+.ti -1c
+.RI "static \fBDetachedCriteria\fP \fBFor< T >\fP (string alias)"
+.br
+.ti -1c
+.RI "static \fBDetachedCriteria\fP \fBFor\fP (System\&.Type entityType, string alias)"
+.br
+.ti -1c
+.RI "static \fBDetachedCriteria\fP \fBForEntityName\fP (string entityName)"
+.br
+.ti -1c
+.RI "static \fBDetachedCriteria\fP \fBForEntityName\fP (string entityName, string alias)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDetachedCriteria\fP (System\&.Type entityType)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP (System\&.Type entityType, string alias)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP (string entityName)"
+.br
+.ti -1c
+.RI "\fBDetachedCriteria\fP (string entityName, string alias)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBAlias\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBEntityOrClassName\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Some applications need to create criteria queries in 'detached
+mode', where the Hibernate session is not available\&. This class may be instantiated anywhere, and then a \fC\fBICriteria\fP\fP may be obtained by passing a session to \fC\fBGetExecutableCriteria()\fP\fP\&. All methods have the same semantics and behavior as the corresponding methods of the \fC\fBICriteria\fP\fP interface\&. 
+
+
+.PP
+Definition at line 19 of file DetachedCriteria\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Criterion\&.DetachedCriteria\&.ClearOrders ()"
+
+.PP
+Clear all orders from criteria\&. 
+.PP
+Definition at line 278 of file DetachedCriteria\&.cs\&.
+.SS "\fBICriteria\fP NHibernate\&.Criterion\&.DetachedCriteria\&.GetExecutableCriteria (\fBISession\fPsession)"
+
+.PP
+Get an executable instance of \fCCriteria\fP, to actually run the query\&.
+.PP
+Definition at line 63 of file DetachedCriteria\&.cs\&.
+.SS "\fBICriteria\fP NHibernate\&.Criterion\&.DetachedCriteria\&.GetExecutableCriteria (\fBIStatelessSession\fPsession)"
+
+.PP
+Get an executable instance of \fCCriteria\fP, to actually run the query\&.
+.PP
+Definition at line 72 of file DetachedCriteria\&.cs\&.
+.SS "System\&.Type NHibernate\&.Criterion\&.DetachedCriteria\&.GetRootEntityTypeIfAvailable ()"
+
+.PP
+Gets the root entity type if available, throws otherwise This is an \fBNHibernate\fP specific method, used by several dependent frameworks for advance integration with \fBNHibernate\fP\&. 
+.PP
+Definition at line 270 of file DetachedCriteria\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

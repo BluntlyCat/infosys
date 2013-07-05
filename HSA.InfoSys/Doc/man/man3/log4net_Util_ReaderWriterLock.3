@@ -1,0 +1,84 @@
+.TH "log4net.Util.ReaderWriterLock" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.ReaderWriterLock \- 
+.PP
+Defines a lock that supports single writers and multiple readers  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBReaderWriterLock\fP ()"
+.br
+.RI "\fIConstructor \fP"
+.ti -1c
+.RI "void \fBAcquireReaderLock\fP ()"
+.br
+.RI "\fIAcquires a reader lock \fP"
+.ti -1c
+.RI "void \fBReleaseReaderLock\fP ()"
+.br
+.RI "\fIDecrements the lock count \fP"
+.ti -1c
+.RI "void \fBAcquireWriterLock\fP ()"
+.br
+.RI "\fIAcquires the writer lock \fP"
+.ti -1c
+.RI "void \fBReleaseWriterLock\fP ()"
+.br
+.RI "\fIDecrements the lock count on the writer lock \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines a lock that supports single writers and multiple readers 
+
+\fC\fBReaderWriterLock\fP\fP is used to synchronize access to a resource\&. At any given time, it allows either concurrent read access for multiple threads, or write access for a single thread\&. In a situation where a resource is changed infrequently, a \fC\fBReaderWriterLock\fP\fP provides better throughput than a simple one-at-a-time lock, such as System\&.Threading\&.Monitor\&. 
+.PP
+If a platform does not support a \fCSystem\&.Threading\&.ReaderWriterLock\fP implementation then all readers and writers are serialized\&. Therefore the caller must not rely on multiple simultaneous readers\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 47 of file ReaderWriterLock\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Util\&.ReaderWriterLock\&.ReaderWriterLock ()"
+
+.PP
+Constructor Initializes a new instance of the \fBReaderWriterLock\fP class\&. 
+.PP
+Definition at line 59 of file ReaderWriterLock\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Util\&.ReaderWriterLock\&.AcquireReaderLock ()"
+
+.PP
+Acquires a reader lock \fBAcquireReaderLock\fP blocks if a different thread has the writer lock, or if at least one thread is waiting for the writer lock\&. 
+.PP
+Definition at line 79 of file ReaderWriterLock\&.cs\&.
+.SS "void log4net\&.Util\&.ReaderWriterLock\&.AcquireWriterLock ()"
+
+.PP
+Acquires the writer lock This method blocks if another thread has a reader lock or writer lock\&. 
+.PP
+Definition at line 114 of file ReaderWriterLock\&.cs\&.
+.SS "void log4net\&.Util\&.ReaderWriterLock\&.ReleaseReaderLock ()"
+
+.PP
+Decrements the lock count \fBReleaseReaderLock\fP decrements the lock count\&. When the count reaches zero, the lock is released\&. 
+.PP
+Definition at line 97 of file ReaderWriterLock\&.cs\&.
+.SS "void log4net\&.Util\&.ReaderWriterLock\&.ReleaseWriterLock ()"
+
+.PP
+Decrements the lock count on the writer lock ReleaseWriterLock decrements the writer lock count\&. When the count reaches zero, the writer lock is released\&. 
+.PP
+Definition at line 132 of file ReaderWriterLock\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

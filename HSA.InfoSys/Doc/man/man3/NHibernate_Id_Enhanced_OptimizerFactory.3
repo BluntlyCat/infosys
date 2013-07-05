@@ -1,0 +1,65 @@
+.TH "NHibernate.Id.Enhanced.OptimizerFactory" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.Enhanced.OptimizerFactory \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBHiLoOptimizer\fP"
+.br
+.ti -1c
+.RI "interface \fBIInitialValueAwareOptimizer\fP"
+.br
+.RI "\fIMarker interface for an optimizer that wishes to know the user-specified initial value\&. 
+.PP
+Used instead of constructor injection since that is already a public understanding and because not all optimizers care\&. \fP"
+.ti -1c
+.RI "class \fBNoopOptimizer\fP"
+.br
+.ti -1c
+.RI "class \fBOptimizerSupport\fP"
+.br
+.RI "\fICommon support for optimizer implementations\&. \fP"
+.ti -1c
+.RI "class \fBPooledLoOptimizer\fP"
+.br
+.ti -1c
+.RI "class \fBPooledOptimizer\fP"
+.br
+.RI "\fIOptimizer which uses a pool of values, storing the next low value of the range in the database\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBIOptimizer\fP \fBBuildOptimizer\fP (string type, System\&.Type returnClass, int incrementSize, long explicitInitialValue)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBNone\fP = 'none'"
+.br
+.ti -1c
+.RI "const string \fBHiLo\fP = 'hilo'"
+.br
+.ti -1c
+.RI "const string \fBPool\fP = 'pooled'"
+.br
+.ti -1c
+.RI "const string \fBPoolLo\fP = 'pooled-lo'"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file OptimizerFactory\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

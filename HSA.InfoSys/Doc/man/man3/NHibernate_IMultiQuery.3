@@ -1,0 +1,1054 @@
+.TH "NHibernate.IMultiQuery" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.IMultiQuery \- 
+.PP
+Combines sevaral queries into a single database call  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "IList \fBList\fP ()"
+.br
+.RI "\fIGet all the results \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBAdd\fP (System\&.Type resultGenericListType, \fBIQuery\fP query)"
+.br
+.RI "\fIAdds the specified query to the query\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBAdd< T >\fP (\fBIQuery\fP query)"
+.br
+.RI "\fIAdd the specified HQL query to the multi query\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBAdd< T >\fP (string key, \fBIQuery\fP query)"
+.br
+.RI "\fIAdd the specified HQL query to the multi query, and associate it with the given key\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBAdd< T >\fP (string key, string hql)"
+.br
+.RI "\fIAdd the specified HQL Query to the multi query, and associate it with the given key\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBAdd< T >\fP (string hql)"
+.br
+.RI "\fIAdd the specified HQL query to the multi query\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBAddNamedQuery< T >\fP (string queryName)"
+.br
+.RI "\fIAdd a named query to the multi query\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBAddNamedQuery< T >\fP (string key, string queryName)"
+.br
+.RI "\fIAdd a named query to the multi query, and associate it with the given key\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBAdd\fP (string key, \fBIQuery\fP query)"
+.br
+.RI "\fIAdd the specified HQL query to the multi query, and associate it with the given key \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBAdd\fP (\fBIQuery\fP query)"
+.br
+.RI "\fIAdd the specified HQL query to the multi query \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBAdd\fP (string key, string hql)"
+.br
+.RI "\fIAdd the specified HQL Query to the multi query, and associate it with the given key \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBAdd\fP (string hql)"
+.br
+.RI "\fIAdd the specified HQL query to the multi query \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBAddNamedQuery\fP (string queryName)"
+.br
+.RI "\fIAdd a named query to the multi query \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBAddNamedQuery\fP (string key, string queryName)"
+.br
+.RI "\fIAdd a named query to the multi query, and associate it with the given key \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetCacheable\fP (bool cacheable)"
+.br
+.RI "\fIEnable caching of this query result set\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetCacheRegion\fP (string region)"
+.br
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetForceCacheRefresh\fP (bool forceCacheRefresh)"
+.br
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetTimeout\fP (int timeout)"
+.br
+.RI "\fIThe timeout for the underlying ADO query \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetParameter\fP (string name, object val, \fBIType\fP type)"
+.br
+.RI "\fIBind a value to a named query parameter \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetParameter\fP (string name, object val)"
+.br
+.RI "\fIBind a value to a named query parameter, guessing the \fBNHibernate\fP IType from the class of the given object\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetParameterList\fP (string name, IEnumerable vals, \fBIType\fP type)"
+.br
+.RI "\fIBind multiple values to a named query parameter\&. This is useful for binding a list of values to an expression such as \fCfoo\&.bar in (:value_list)\fP \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetParameterList\fP (string name, IEnumerable vals)"
+.br
+.RI "\fIBind multiple values to a named query parameter, guessing the Hibernate type from the class of the first object in the collection\&. This is useful for binding a list of values to an expression such as \fCfoo\&.bar in (:value_list)\fP \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetAnsiString\fP (string name, string val)"
+.br
+.RI "\fIBind an instance of a string to a named parameter using an \fBNHibernate\fP AnsiStringType\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetBinary\fP (string name, byte[] val)"
+.br
+.RI "\fIBind an instance of a byte array to a named parameter using an \fBNHibernate\fP BinaryType\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetBoolean\fP (string name, bool val)"
+.br
+.RI "\fIBind an instance of a bool to a named parameter using an \fBNHibernate\fP BooleanType\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetByte\fP (string name, byte val)"
+.br
+.RI "\fIBind an instance of a byte to a named parameter using an \fBNHibernate\fP ByteType\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetCharacter\fP (string name, char val)"
+.br
+.RI "\fIBind an instance of a char to a named parameter using an \fBNHibernate\fP CharType\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetDateTime\fP (string name, DateTime val)"
+.br
+.RI "\fIBind an instance of a DateTime to a named parameter using an \fBNHibernate\fP DateTimeType\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetDateTime2\fP (string name, DateTime val)"
+.br
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetTimeSpan\fP (string name, TimeSpan val)"
+.br
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetTimeAsTimeSpan\fP (string name, TimeSpan val)"
+.br
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetDateTimeOffset\fP (string name, DateTimeOffset val)"
+.br
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetDecimal\fP (string name, decimal val)"
+.br
+.RI "\fIBind an instance of a Decimal to a named parameter using an \fBNHibernate\fP DecimalType\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetDouble\fP (string name, double val)"
+.br
+.RI "\fIBind an instance of a Double to a named parameter using an \fBNHibernate\fP DoubleType\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetEntity\fP (string name, object val)"
+.br
+.RI "\fIBind an instance of a mapped persistent class to a named parameter\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetEnum\fP (string name, Enum val)"
+.br
+.RI "\fIBind an instance of a persistent enumeration class to a named parameter using an \fBNHibernate\fP PersistentEnumType\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetInt16\fP (string name, short val)"
+.br
+.RI "\fIBind an instance of a Int16 to a named parameter using an \fBNHibernate\fP Int16Type\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetInt32\fP (string name, int val)"
+.br
+.RI "\fIBind an instance of a Int32 to a named parameter using an \fBNHibernate\fP Int32Type\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetInt64\fP (string name, long val)"
+.br
+.RI "\fIBind an instance of a Int64 to a named parameter using an \fBNHibernate\fP Int64Type\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetSingle\fP (string name, float val)"
+.br
+.RI "\fIBind an instance of a Single to a named parameter using an \fBNHibernate\fP SingleType\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetString\fP (string name, string val)"
+.br
+.RI "\fIBind an instance of a String to a named parameter using an \fBNHibernate\fP StringType\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetGuid\fP (string name, Guid val)"
+.br
+.RI "\fIBind an instance of a Guid to a named parameter using an \fBNHibernate\fP GuidType\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetTime\fP (string name, DateTime val)"
+.br
+.RI "\fIBind an instance of a DateTime to a named parameter using an \fBNHibernate\fP DateTimeType\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetTimestamp\fP (string name, DateTime val)"
+.br
+.RI "\fIBind an instance of a DateTime to a named parameter using an \fBNHibernate\fP TimestampType\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetFlushMode\fP (\fBFlushMode\fP mode)"
+.br
+.RI "\fIOverride the current session flush mode, just for this query\&. \fP"
+.ti -1c
+.RI "\fBIMultiQuery\fP \fBSetResultTransformer\fP (\fBIResultTransformer\fP transformer)"
+.br
+.RI "\fISet a strategy for handling the query results\&. This can be used to change 'shape' of the query result\&. \fP"
+.ti -1c
+.RI "object \fBGetResult\fP (string key)"
+.br
+.RI "\fIReturns the result of one of the query based on the key \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Combines sevaral queries into a single database call 
+
+
+.PP
+Definition at line 11 of file IMultiQuery\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.Add (System\&.TyperesultGenericListType, \fBIQuery\fPquery)"
+
+.PP
+Adds the specified query to the query\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIresultGenericListType\fP Return results in a System\&.Collections\&.Generic\&.List{resultGenericListType}
+.br
+\fIquery\fP The query\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.Add (stringkey, \fBIQuery\fPquery)"
+
+.PP
+Add the specified HQL query to the multi query, and associate it with the given key 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key to get results of the specific query\&.
+.br
+\fIquery\fP The query
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBGetResult(string)\fP
+.PP
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.Add (\fBIQuery\fPquery)"
+
+.PP
+Add the specified HQL query to the multi query 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIquery\fP The query
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.Add (stringkey, stringhql)"
+
+.PP
+Add the specified HQL Query to the multi query, and associate it with the given key 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key to get results of the specific query\&.
+.br
+\fIhql\fP The query
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBGetResult(string)\fP
+.PP
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.Add (stringhql)"
+
+.PP
+Add the specified HQL query to the multi query 
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP \fBNHibernate\&.IMultiQuery\&.Add\fP< T > (\fBIQuery\fPquery)"
+
+.PP
+Add the specified HQL query to the multi query\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIquery\fP The query
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP \fBNHibernate\&.IMultiQuery\&.Add\fP< T > (stringkey, \fBIQuery\fPquery)"
+
+.PP
+Add the specified HQL query to the multi query, and associate it with the given key\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key to get results of the specific query\&.
+.br
+\fIquery\fP The query
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBGetResult(string)\fP
+.PP
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP \fBNHibernate\&.IMultiQuery\&.Add\fP< T > (stringkey, stringhql)"
+
+.PP
+Add the specified HQL Query to the multi query, and associate it with the given key\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key to get results of the specific query\&.
+.br
+\fIhql\fP The query
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBGetResult(string)\fP
+.PP
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP \fBNHibernate\&.IMultiQuery\&.Add\fP< T > (stringhql)"
+
+.PP
+Add the specified HQL query to the multi query\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhql\fP The query
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.AddNamedQuery (stringqueryName)"
+
+.PP
+Add a named query to the multi query 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryName\fP The query
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.AddNamedQuery (stringkey, stringqueryName)"
+
+.PP
+Add a named query to the multi query, and associate it with the given key 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key to get results of the specific query\&.
+.br
+\fIqueryName\fP The query
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBGetResult(string)\fP
+.PP
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP \fBNHibernate\&.IMultiQuery\&.AddNamedQuery\fP< T > (stringqueryName)"
+
+.PP
+Add a named query to the multi query\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryName\fP The query
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP \fBNHibernate\&.IMultiQuery\&.AddNamedQuery\fP< T > (stringkey, stringqueryName)"
+
+.PP
+Add a named query to the multi query, and associate it with the given key\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key to get results of the specific query\&.
+.br
+\fIqueryName\fP The query
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBGetResult(string)\fP
+.PP
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "object NHibernate\&.IMultiQuery\&.GetResult (stringkey)"
+
+.PP
+Returns the result of one of the query based on the key 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "IList NHibernate\&.IMultiQuery\&.List ()"
+
+.PP
+Get all the results The result is a IList of IList\&. 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetAnsiString (stringname, stringval)"
+
+.PP
+Bind an instance of a string to a named parameter using an \fBNHibernate\fP AnsiStringType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a string\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetBinary (stringname, byte[]val)"
+
+.PP
+Bind an instance of a byte array to a named parameter using an \fBNHibernate\fP BinaryType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a byte array\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetBoolean (stringname, boolval)"
+
+.PP
+Bind an instance of a bool to a named parameter using an \fBNHibernate\fP BooleanType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a bool\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetByte (stringname, byteval)"
+
+.PP
+Bind an instance of a byte to a named parameter using an \fBNHibernate\fP ByteType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a byte\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetCacheable (boolcacheable)"
+
+.PP
+Enable caching of this query result set\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcacheable\fP Should the query results be cacheable?
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetCacheRegion (stringregion)"
+Set the name of the cache region\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIregion\fP The name of a query cache region, or  for the default query cache
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetCharacter (stringname, charval)"
+
+.PP
+Bind an instance of a char to a named parameter using an \fBNHibernate\fP CharType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a char\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetDateTime (stringname, DateTimeval)"
+
+.PP
+Bind an instance of a DateTime to a named parameter using an \fBNHibernate\fP DateTimeType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP A non-null instance of a DateTime\&.
+.br
+\fIname\fP The name of the parameter
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetDecimal (stringname, decimalval)"
+
+.PP
+Bind an instance of a Decimal to a named parameter using an \fBNHibernate\fP DecimalType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Decimal\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetDouble (stringname, doubleval)"
+
+.PP
+Bind an instance of a Double to a named parameter using an \fBNHibernate\fP DoubleType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Double\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetEntity (stringname, objectval)"
+
+.PP
+Bind an instance of a mapped persistent class to a named parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a persistent class
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetEnum (stringname, Enumval)"
+
+.PP
+Bind an instance of a persistent enumeration class to a named parameter using an \fBNHibernate\fP PersistentEnumType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a persistent enumeration
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetFlushMode (\fBFlushMode\fPmode)"
+
+.PP
+Override the current session flush mode, just for this query\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetForceCacheRefresh (boolforceCacheRefresh)"
+Should the query force a refresh of the specified query cache region? This is particularly useful in cases where underlying data may have been updated via a separate process (i\&.e\&., not modified through Hibernate) and allows the application to selectively refresh the query cache regions based on its knowledge of those events\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIforceCacheRefresh\fP Should the query result in a forcible refresh of the query cache?
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetGuid (stringname, Guidval)"
+
+.PP
+Bind an instance of a Guid to a named parameter using an \fBNHibernate\fP GuidType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP An instance of a Guid\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetInt16 (stringname, shortval)"
+
+.PP
+Bind an instance of a Int16 to a named parameter using an \fBNHibernate\fP Int16Type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Int16\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetInt32 (stringname, intval)"
+
+.PP
+Bind an instance of a Int32 to a named parameter using an \fBNHibernate\fP Int32Type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Int32\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetInt64 (stringname, longval)"
+
+.PP
+Bind an instance of a Int64 to a named parameter using an \fBNHibernate\fP Int64Type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Int64\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetParameter (stringname, objectval, \fBIType\fPtype)"
+
+.PP
+Bind a value to a named query parameter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP The possibly null parameter value
+.br
+\fItype\fP The \fBNHibernate\fP IType\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetParameter (stringname, objectval)"
+
+.PP
+Bind a value to a named query parameter, guessing the \fBNHibernate\fP IType from the class of the given object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP The non-null parameter value
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetParameterList (stringname, IEnumerablevals, \fBIType\fPtype)"
+
+.PP
+Bind multiple values to a named query parameter\&. This is useful for binding a list of values to an expression such as \fCfoo\&.bar in (:value_list)\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIvals\fP A collection of values to list
+.br
+\fItype\fP The Hibernate type of the values
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetParameterList (stringname, IEnumerablevals)"
+
+.PP
+Bind multiple values to a named query parameter, guessing the Hibernate type from the class of the first object in the collection\&. This is useful for binding a list of values to an expression such as \fCfoo\&.bar in (:value_list)\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIvals\fP A collection of values to list
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetResultTransformer (\fBIResultTransformer\fPtransformer)"
+
+.PP
+Set a strategy for handling the query results\&. This can be used to change 'shape' of the query result\&. The 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItransformer\fP will be applied after the transformer of each single query\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetSingle (stringname, floatval)"
+
+.PP
+Bind an instance of a Single to a named parameter using an \fBNHibernate\fP SingleType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Single\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetString (stringname, stringval)"
+
+.PP
+Bind an instance of a String to a named parameter using an \fBNHibernate\fP StringType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a String\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetTime (stringname, DateTimeval)"
+
+.PP
+Bind an instance of a DateTime to a named parameter using an \fBNHibernate\fP DateTimeType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a DateTime\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetTimeout (inttimeout)"
+
+.PP
+The timeout for the underlying ADO query 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItimeout\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+.SS "\fBIMultiQuery\fP NHibernate\&.IMultiQuery\&.SetTimestamp (stringname, DateTimeval)"
+
+.PP
+Bind an instance of a DateTime to a named parameter using an \fBNHibernate\fP TimestampType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a DateTime\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance for method chain\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiQueryImpl\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

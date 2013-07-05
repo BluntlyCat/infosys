@@ -1,0 +1,223 @@
+.TH "NHibernate.Transaction.AdoTransaction" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Transaction.AdoTransaction \- 
+.PP
+Wraps an ADO\&.NET IDbTransaction to implement the \fBITransaction\fP interface\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.ITransaction\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAdoTransaction\fP (\fBISessionImplementor\fP session)"
+.br
+.RI "\fIInitializes a new instance of the \fBAdoTransaction\fP class\&. \fP"
+.ti -1c
+.RI "void \fBEnlist\fP (IDbCommand command)"
+.br
+.RI "\fIEnlist the IDbCommand in the current \fBITransaction\fP\&. \fP"
+.ti -1c
+.RI "void \fBRegisterSynchronization\fP (\fBISynchronization\fP sync)"
+.br
+.RI "\fIRegister a user synchronization callback for this transaction\&. \fP"
+.ti -1c
+.RI "void \fBBegin\fP ()"
+.br
+.RI "\fIBegin the transaction with the default isolation level\&. \fP"
+.ti -1c
+.RI "void \fBBegin\fP (IsolationLevel isolationLevel)"
+.br
+.RI "\fIBegins the IDbTransaction on the IDbConnection used by the \fBISession\fP\&. \fP"
+.ti -1c
+.RI "void \fBCommit\fP ()"
+.br
+.RI "\fICommits the \fBITransaction\fP by flushing the \fBISession\fP and committing the IDbTransaction\&. \fP"
+.ti -1c
+.RI "void \fBRollback\fP ()"
+.br
+.RI "\fIRolls back the \fBITransaction\fP by calling the method \fCRollback\fP on the underlying IDbTransaction\&. \fP"
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "\fITakes care of freeing the managed and unmanaged resources that this class is responsible for\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBDispose\fP (bool isDisposing)"
+.br
+.RI "\fITakes care of freeing the managed and unmanaged resources that this class is responsible for\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBWasRolledBack\fP\fC [get]\fP"
+.br
+.RI "\fIGets a Boolean indicating if the transaction was rolled back\&. \fP"
+.ti -1c
+.RI "bool \fBWasCommitted\fP\fC [get]\fP"
+.br
+.RI "\fIGets a Boolean indicating if the transaction was committed\&. \fP"
+.ti -1c
+.RI "bool \fBIsActive\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IsolationLevel \fBIsolationLevel\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Wraps an ADO\&.NET IDbTransaction to implement the \fBITransaction\fP interface\&. 
+
+
+.PP
+Definition at line 14 of file AdoTransaction\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Transaction\&.AdoTransaction\&.AdoTransaction (\fBISessionImplementor\fPsession)"
+
+.PP
+Initializes a new instance of the \fBAdoTransaction\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The ISessionImplementor the \fBTransaction\fP is for\&.
+.RE
+.PP
+
+.PP
+Definition at line 29 of file AdoTransaction\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Transaction\&.AdoTransaction\&.Begin ()"
+
+.PP
+Begin the transaction with the default isolation level\&. 
+.PP
+Implements \fBNHibernate\&.ITransaction\fP\&.
+.PP
+Definition at line 95 of file AdoTransaction\&.cs\&.
+.SS "void NHibernate\&.Transaction\&.AdoTransaction\&.Begin (IsolationLevelisolationLevel)"
+
+.PP
+Begins the IDbTransaction on the IDbConnection used by the \fBISession\fP\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBTransactionException\fP\fP Thrown if there is any problems encountered while trying to create the IDbTransaction\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ITransaction\fP\&.
+.PP
+Definition at line 108 of file AdoTransaction\&.cs\&.
+.SS "void NHibernate\&.Transaction\&.AdoTransaction\&.Commit ()"
+
+.PP
+Commits the \fBITransaction\fP by flushing the \fBISession\fP and committing the IDbTransaction\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBTransactionException\fP\fP Thrown if there is any exception while trying to call \fC\fBCommit()\fP\fP on the underlying IDbTransaction\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ITransaction\fP\&.
+.PP
+Definition at line 178 of file AdoTransaction\&.cs\&.
+.SS "void NHibernate\&.Transaction\&.AdoTransaction\&.Dispose ()"
+
+.PP
+Takes care of freeing the managed and unmanaged resources that this class is responsible for\&. 
+.PP
+Definition at line 338 of file AdoTransaction\&.cs\&.
+.SS "virtual void NHibernate\&.Transaction\&.AdoTransaction\&.Dispose (boolisDisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Takes care of freeing the managed and unmanaged resources that this class is responsible for\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIisDisposing\fP Indicates if this \fBAdoTransaction\fP is being Disposed of or Finalized\&.
+.RE
+.PP
+.PP
+If this \fBAdoTransaction\fP is being Finalized (\fCisDisposing==false\fP) then make sure not to call any methods that could potentially bring this \fBAdoTransaction\fP back to life\&. 
+.PP
+Definition at line 352 of file AdoTransaction\&.cs\&.
+.SS "void NHibernate\&.Transaction\&.AdoTransaction\&.Enlist (IDbCommandcommand)"
+
+.PP
+Enlist the IDbCommand in the current \fBITransaction\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP The IDbCommand to enlist in this \fBTransaction\fP\&.
+.RE
+.PP
+.PP
+This takes care of making sure the IDbCommand's \fBTransaction\fP property contains the correct IDbTransaction or  if there is no \fBTransaction\fP for the \fBISession\fP - ie \fCBeginTransaction()\fP not called\&. 
+.PP
+This method may be called even when the transaction is disposed\&. 
+.PP
+Implements \fBNHibernate\&.ITransaction\fP\&.
+.PP
+Definition at line 49 of file AdoTransaction\&.cs\&.
+.SS "void NHibernate\&.Transaction\&.AdoTransaction\&.RegisterSynchronization (\fBISynchronization\fPsynchronization)"
+
+.PP
+Register a user synchronization callback for this transaction\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsynchronization\fP The \fBISynchronization\fP callback to register\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ITransaction\fP\&.
+.PP
+Definition at line 85 of file AdoTransaction\&.cs\&.
+.SS "void NHibernate\&.Transaction\&.AdoTransaction\&.Rollback ()"
+
+.PP
+Rolls back the \fBITransaction\fP by calling the method \fCRollback\fP on the underlying IDbTransaction\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBTransactionException\fP\fP Thrown if there is any exception while trying to call \fC\fBRollback()\fP\fP on the underlying IDbTransaction\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ITransaction\fP\&.
+.PP
+Definition at line 235 of file AdoTransaction\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.Transaction\&.AdoTransaction\&.WasCommitted\fC [get]\fP"
+
+.PP
+Gets a Boolean indicating if the transaction was committed\&. if the IDbTransaction had \fCCommit\fP called without any exceptions\&. 
+.PP
+Definition at line 294 of file AdoTransaction\&.cs\&.
+.SS "bool NHibernate\&.Transaction\&.AdoTransaction\&.WasRolledBack\fC [get]\fP"
+
+.PP
+Gets a Boolean indicating if the transaction was rolled back\&. if the IDbTransaction had \fCRollback\fP called without any exceptions\&. 
+.PP
+Definition at line 282 of file AdoTransaction\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

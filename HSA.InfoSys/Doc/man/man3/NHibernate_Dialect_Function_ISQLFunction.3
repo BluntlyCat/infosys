@@ -1,0 +1,103 @@
+.TH "NHibernate.Dialect.Function.ISQLFunction" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.Function.ISQLFunction \- 
+.PP
+Provides support routines for the HQL functions as used in the various SQL Dialects  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.Function\&.AnsiSubstringFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.AnsiTrimEmulationFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.CastFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.CharIndexFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.ClassicAggregateFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.NoArgSQLFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.NvlFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.PositionSubstringFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.SQLFunctionTemplate\fP, \fBNHibernate\&.Dialect\&.Function\&.StandardSQLFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.VarArgsSQLFunction\fP, and NHibernate\&.Dialect\&.Oracle8iDialect\&.LocateFunction\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIType\fP \fBReturnType\fP (\fBIType\fP columnType, \fBIMapping\fP mapping)"
+.br
+.RI "\fIThe function return type \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBRender\fP (IList args, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIRender the function call as SQL\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBHasArguments\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this function have any arguments? \fP"
+.ti -1c
+.RI "bool \fBHasParenthesesIfNoArguments\fP\fC [get]\fP"
+.br
+.RI "\fIIf there are no arguments, are parens required? \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Provides support routines for the HQL functions as used in the various SQL Dialects 
+
+Provides an interface for supporting various HQL functions that are translated to SQL\&. The \fBDialect\fP and its sub-classes use this interface to provide details required for processing of the function\&. 
+.PP
+Definition at line 16 of file ISQLFunction\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSqlString\fP NHibernate\&.Dialect\&.Function\&.ISQLFunction\&.Render (IListargs, \fBISessionFactoryImplementor\fPfactory)"
+
+.PP
+Render the function call as SQL\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIargs\fP List of arguments
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+SQL fragment for the fuction\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Dialect\&.Function\&.SQLFunctionTemplate\fP, \fBNHibernate\&.Dialect\&.Function\&.AnsiTrimEmulationFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.StandardSQLFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.ClassicAggregateFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.VarArgsSQLFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.NoArgSQLFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.AnsiSubstringFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.CastFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.CharIndexFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.PositionSubstringFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.NvlFunction\fP, and \fBNHibernate\&.Dialect\&.Function\&.EmulatedLengthSubstringFunction\fP\&.
+.SS "\fBIType\fP NHibernate\&.Dialect\&.Function\&.ISQLFunction\&.ReturnType (\fBIType\fPcolumnType, \fBIMapping\fPmapping)"
+
+.PP
+The function return type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnType\fP The type of the first argument
+.br
+\fImapping\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Dialect\&.MsSql2000Dialect\&.CountBigQueryFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.SQLFunctionTemplate\fP, \fBNHibernate\&.Dialect\&.Function\&.AnsiTrimEmulationFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.StandardSQLFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.ClassicAggregateFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.VarArgsSQLFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.NoArgSQLFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.AnsiSubstringFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.CharIndexFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.PositionSubstringFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.NvlFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.CastFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.ClassicAvgFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.ClassicCountFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.SumQueryFunctionInfo\fP, \fBNHibernate\&.Dialect\&.Function\&.AvgQueryFunctionInfo\fP, and \fBNHibernate\&.Dialect\&.Function\&.CountQueryFunctionInfo\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.Dialect\&.Function\&.ISQLFunction\&.HasArguments\fC [get]\fP"
+
+.PP
+Does this function have any arguments? 
+.PP
+Definition at line 29 of file ISQLFunction\&.cs\&.
+.SS "bool NHibernate\&.Dialect\&.Function\&.ISQLFunction\&.HasParenthesesIfNoArguments\fC [get]\fP"
+
+.PP
+If there are no arguments, are parens required? 
+.PP
+Definition at line 34 of file ISQLFunction\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,276 @@
+.TH "log4net.Appender.EventLogAppender" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.EventLogAppender \- 
+.PP
+Writes events to the system event log\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBLevel2EventLogEntryType\fP"
+.br
+.RI "\fIA class to act as a mapping between the level that a logging call is made at and the color it should be displayed as\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEventLogAppender\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBEventLogAppender\fP class\&. \fP"
+.ti -1c
+.RI "\fBEventLogAppender\fP (\fBILayout\fP layout)"
+.br
+.RI "\fIInitializes a new instance of the \fBEventLogAppender\fP class with the specified ILayout\&. \fP"
+.ti -1c
+.RI "void \fBAddMapping\fP (\fBLevel2EventLogEntryType\fP mapping)"
+.br
+.RI "\fIAdd a mapping of level to EventLogEntryType - done by the config file \fP"
+.ti -1c
+.RI "override void \fBActivateOptions\fP ()"
+.br
+.RI "\fIInitialize the appender based on the options set \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBAppend\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIThis method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent)\fP method\&. \fP"
+.ti -1c
+.RI "virtual EventLogEntryType \fBGetEntryType\fP (\fBLevel\fP level)"
+.br
+.RI "\fIGet the equivalent EventLogEntryType for a Level \fIlevel\fP  \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBLogName\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe name of the log where messages will be stored\&. \fP"
+.ti -1c
+.RI "string \fBApplicationName\fP\fC [get, set]\fP"
+.br
+.RI "\fIProperty used to set the Application name\&. This appears in the event logs when logging\&. \fP"
+.ti -1c
+.RI "string \fBMachineName\fP\fC [get, set]\fP"
+.br
+.RI "\fIThis property is used to return the name of the computer to use when accessing the event logs\&. Currently, this is the current computer, denoted by a dot '\&.' \fP"
+.ti -1c
+.RI "\fBSecurityContext\fP \fBSecurityContext\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBSecurityContext\fP used to write to the EventLog\&. \fP"
+.ti -1c
+.RI "int \fBEventId\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fCEventId\fP to use unless one is explicitly specified via the \fCLoggingEvent\fP's properties\&. \fP"
+.ti -1c
+.RI "short \fBCategory\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fCCategory\fP to use unless one is explicitly specified via the \fCLoggingEvent\fP's properties\&. \fP"
+.ti -1c
+.RI "override bool \fBRequiresLayout\fP\fC [get]\fP"
+.br
+.RI "\fIThis appender requires a \fBLayout\fP to be set\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Writes events to the system event log\&. 
+
+The appender will fail if you try to write using an event source that doesn't exist unless it is running with local administrator privileges\&. See also http://logging.apache.org/log4net/release/faq.html#trouble-EventLog 
+.PP
+The \fCEventID\fP of the event log entry can be set using the \fCEventID\fP property (LoggingEvent\&.Properties) on the LoggingEvent\&. 
+.PP
+The \fCCategory\fP of the event log entry can be set using the \fCCategory\fP property (LoggingEvent\&.Properties) on the LoggingEvent\&. 
+.PP
+There is a limit of 32K characters for an event log message 
+.PP
+When configuring the \fBEventLogAppender\fP a mapping can be specified to map a logging level to an event log entry type\&. For example: 
+.PP
+.PP
+.nf
+&lt;mapping&gt;
+    &lt;level value="ERROR" /&gt;
+    &lt;eventLogEntryType value="Error" /&gt;
+&lt;/mapping&gt;
+&lt;mapping&gt;
+    &lt;level value="DEBUG" /&gt;
+    &lt;eventLogEntryType value="Information" /&gt;
+&lt;/mapping&gt;
+.fi
+.PP
+ 
+.PP
+The Level is the standard \fBlog4net\fP logging level and eventLogEntryType can be any value from the EventLogEntryType enum, i\&.e\&.: 
+.PD 0
+
+.IP "\(bu" 2
+Erroran error event 
+.IP "\(bu" 2
+Warninga warning event 
+.IP "\(bu" 2
+Informationan informational event 
+.PP
+.PP
+<author>Aspi Havewala</author> <author>Douglas de la Torre</author> <author>Nicko Cadell</author> <author>Gert Driesen</author> <author>Thomas Voss</author> 
+.PP
+Definition at line 87 of file EventLogAppender\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.EventLogAppender\&.EventLogAppender ()"
+
+.PP
+Initializes a new instance of the \fBEventLogAppender\fP class\&. Default constructor\&. 
+.PP
+Definition at line 99 of file EventLogAppender\&.cs\&.
+.SS "log4net\&.Appender\&.EventLogAppender\&.EventLogAppender (\fBILayout\fPlayout)"
+
+.PP
+Initializes a new instance of the \fBEventLogAppender\fP class with the specified ILayout\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlayout\fP The ILayout to use with this appender\&.
+.RE
+.PP
+.PP
+Obsolete constructor\&. 
+.PP
+Definition at line 117 of file EventLogAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Appender\&.EventLogAppender\&.ActivateOptions ()\fC [virtual]\fP"
+
+.PP
+Initialize the appender based on the options set This is part of the IOptionHandler delayed object activation scheme\&. The \fBActivateOptions\fP method must be called on this object after the configuration properties have been set\&. Until \fBActivateOptions\fP is called this object is in an undefined state and must not be used\&. 
+.PP
+If any of the configuration properties are modified then \fBActivateOptions\fP must be called again\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 276 of file EventLogAppender\&.cs\&.
+.SS "void log4net\&.Appender\&.EventLogAppender\&.AddMapping (\fBLevel2EventLogEntryType\fPmapping)"
+
+.PP
+Add a mapping of level to EventLogEntryType - done by the config file 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImapping\fP The mapping to add
+.RE
+.PP
+.PP
+Add a \fBLevel2EventLogEntryType\fP mapping to this appender\&. Each mapping defines the event log entry type for a level\&. 
+.PP
+Definition at line 195 of file EventLogAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.EventLogAppender\&.Append (\fBLoggingEvent\fPloggingEvent)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+This method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent)\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP the event to log
+.RE
+.PP
+.PP
+Writes the event to the system event log using the \fBApplicationName\fP\&.
+.PP
+If the event has an \fCEventID\fP property (see LoggingEvent\&.Properties) set then this integer will be used as the event log event id\&.
+.PP
+There is a limit of 32K characters for an event log message 
+.PP
+Implements \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 382 of file EventLogAppender\&.cs\&.
+.SS "virtual EventLogEntryType log4net\&.Appender\&.EventLogAppender\&.GetEntryType (\fBLevel\fPlevel)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Get the equivalent EventLogEntryType for a Level \fIlevel\fP  
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlevel\fP the Level to convert to an EventLogEntryType
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The equivalent EventLogEntryType for a Level \fIlevel\fP 
+.RE
+.PP
+.PP
+Because there are fewer applicable EventLogEntryType values to use in logging levels than there are in the Level this is a one way mapping\&. There is a loss of information during the conversion\&. 
+.PP
+Definition at line 505 of file EventLogAppender\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string log4net\&.Appender\&.EventLogAppender\&.ApplicationName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Property used to set the Application name\&. This appears in the event logs when logging\&. The string used to distinguish events from different sources\&. 
+.PP
+Sets the event log source property\&. 
+.PP
+Definition at line 161 of file EventLogAppender\&.cs\&.
+.SS "short log4net\&.Appender\&.EventLogAppender\&.Category\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fCCategory\fP to use unless one is explicitly specified via the \fCLoggingEvent\fP's properties\&. The \fCCategory\fP of the event log entry will normally be set using the \fCCategory\fP property (LoggingEvent\&.Properties) on the LoggingEvent\&. This property provides the fallback value which defaults to 0\&. 
+.PP
+Definition at line 252 of file EventLogAppender\&.cs\&.
+.SS "int log4net\&.Appender\&.EventLogAppender\&.EventId\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fCEventId\fP to use unless one is explicitly specified via the \fCLoggingEvent\fP's properties\&. The \fCEventID\fP of the event log entry will normally be set using the \fCEventID\fP property (LoggingEvent\&.Properties) on the LoggingEvent\&. This property provides the fallback value which defaults to 0\&. 
+.PP
+Definition at line 234 of file EventLogAppender\&.cs\&.
+.SS "string log4net\&.Appender\&.EventLogAppender\&.LogName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The name of the log where messages will be stored\&. The string name of the log where messages will be stored\&. 
+.PP
+This is the name of the log as it appears in the Event Viewer tree\&. The default value is to log into the \fCApplication\fP log, this is where most applications write their events\&. However if you need a separate log for your application (or applications) then you should set the \fBLogName\fP appropriately\&.
+.PP
+This should not be used to distinguish your event log messages from those of other applications, the \fBApplicationName\fP property should be used to distinguish events\&. This property should be used to group together events into a single log\&. 
+.PP
+Definition at line 145 of file EventLogAppender\&.cs\&.
+.SS "string log4net\&.Appender\&.EventLogAppender\&.MachineName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+This property is used to return the name of the computer to use when accessing the event logs\&. Currently, this is the current computer, denoted by a dot '\&.' The string name of the machine holding the event log that will be logged into\&. 
+.PP
+This property cannot be changed\&. It is currently set to '\&.' i\&.e\&. the local machine\&. This may be changed in future\&. 
+.PP
+Definition at line 180 of file EventLogAppender\&.cs\&.
+.SS "override bool log4net\&.Appender\&.EventLogAppender\&.RequiresLayout\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+This appender requires a \fBLayout\fP to be set\&. \fCtrue\fP
+.PP
+This appender requires a \fBLayout\fP to be set\&. 
+.PP
+Definition at line 486 of file EventLogAppender\&.cs\&.
+.SS "\fBSecurityContext\fP log4net\&.Appender\&.EventLogAppender\&.SecurityContext\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBSecurityContext\fP used to write to the EventLog\&. The \fBSecurityContext\fP used to write to the EventLog\&. 
+.PP
+The system security context used to write to the EventLog\&. 
+.PP
+Unless a \fBSecurityContext\fP specified here for this appender the SecurityContextProvider\&.DefaultProvider is queried for the security context to use\&. The default behavior is to use the security context of the current thread\&. 
+.PP
+Definition at line 218 of file EventLogAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

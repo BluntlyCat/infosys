@@ -1,0 +1,119 @@
+.TH "log4net.Plugin.RemoteLoggingServerPlugin" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Plugin.RemoteLoggingServerPlugin \- 
+.PP
+\fBPlugin\fP that listens for events from the \fBlog4net\&.Appender\&.RemotingAppender\fP  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Plugin\&.PluginSkeleton\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRemoteLoggingServerPlugin\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.ti -1c
+.RI "\fBRemoteLoggingServerPlugin\fP (string sinkUri)"
+.br
+.RI "\fIConstruct with sink Uri\&. \fP"
+.ti -1c
+.RI "override void \fBAttach\fP (\fBILoggerRepository\fP repository)"
+.br
+.RI "\fIAttaches this plugin to a ILoggerRepository\&. \fP"
+.ti -1c
+.RI "override void \fBShutdown\fP ()"
+.br
+.RI "\fIIs called when the plugin is to shutdown\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual string \fBSinkUri\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the URI of this sink\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBPlugin\fP that listens for events from the \fBlog4net\&.Appender\&.RemotingAppender\fP 
+
+This plugin publishes an instance of IRemoteLoggingSink on a specified \fBSinkUri\fP\&. This listens for logging events delivered from a remote \fBlog4net\&.Appender\&.RemotingAppender\fP\&. 
+.PP
+When an event is received it is relogged within the attached repository as if it had been raised locally\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 49 of file RemoteLoggingServerPlugin\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Plugin\&.RemoteLoggingServerPlugin\&.RemoteLoggingServerPlugin ()"
+
+.PP
+Default constructor Initializes a new instance of the \fBRemoteLoggingServerPlugin\fP class\&. 
+.PP
+The \fBSinkUri\fP property must be set\&. 
+.PP
+Definition at line 64 of file RemoteLoggingServerPlugin\&.cs\&.
+.SS "log4net\&.Plugin\&.RemoteLoggingServerPlugin\&.RemoteLoggingServerPlugin (stringsinkUri)"
+
+.PP
+Construct with sink Uri\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsinkUri\fP The name to publish the sink under in the remoting infrastructure\&. See \fBSinkUri\fP for more details\&.
+.RE
+.PP
+.PP
+Initializes a new instance of the \fBRemoteLoggingServerPlugin\fP class with specified name\&. 
+.PP
+Definition at line 79 of file RemoteLoggingServerPlugin\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Plugin\&.RemoteLoggingServerPlugin\&.Attach (\fBILoggerRepository\fPrepository)\fC [virtual]\fP"
+
+.PP
+Attaches this plugin to a ILoggerRepository\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The ILoggerRepository that this plugin should be attached to\&.
+.RE
+.PP
+.PP
+A plugin may only be attached to a single repository\&. 
+.PP
+This method is called when the plugin is attached to the repository\&. 
+.PP
+Reimplemented from \fBlog4net\&.Plugin\&.PluginSkeleton\fP\&.
+.PP
+Definition at line 122 of file RemoteLoggingServerPlugin\&.cs\&.
+.SS "override void log4net\&.Plugin\&.RemoteLoggingServerPlugin\&.Shutdown ()\fC [virtual]\fP"
+
+.PP
+Is called when the plugin is to shutdown\&. When the plugin is shutdown the remote logging sink is disconnected\&. 
+.PP
+Reimplemented from \fBlog4net\&.Plugin\&.PluginSkeleton\fP\&.
+.PP
+Definition at line 151 of file RemoteLoggingServerPlugin\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual string log4net\&.Plugin\&.RemoteLoggingServerPlugin\&.SinkUri\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the URI of this sink\&. The URI of this sink\&. 
+.PP
+This is the name under which the object is marshaled\&. RemotingServices\&.Marshal(MarshalByRefObject,String,Type) 
+.PP
+Definition at line 101 of file RemoteLoggingServerPlugin\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

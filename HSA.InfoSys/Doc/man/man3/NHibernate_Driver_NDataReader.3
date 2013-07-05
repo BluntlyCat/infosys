@@ -1,0 +1,614 @@
+.TH "NHibernate.Driver.NDataReader" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Driver.NDataReader \- 
+.PP
+Some Data Providers (ie - SqlClient) do not support Multiple Active Result Sets (MARS)\&. \fBNHibernate\fP relies on being able to create MARS to read Components and entities inside of Collections\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDataReader\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNDataReader\fP (IDataReader reader, bool isMidstream)"
+.br
+.RI "\fICreates a \fBNDataReader\fP from a IDataReader \fP"
+.ti -1c
+.RI "bool \fBNextResult\fP ()"
+.br
+.ti -1c
+.RI "void \fBClose\fP ()"
+.br
+.ti -1c
+.RI "bool \fBRead\fP ()"
+.br
+.ti -1c
+.RI "DataTable \fBGetSchemaTable\fP ()"
+.br
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "\fITakes care of freeing the managed and unmanaged resources that this class is responsible for\&. \fP"
+.ti -1c
+.RI "int \fBGetInt32\fP (int i)"
+.br
+.ti -1c
+.RI "object \fBGetValue\fP (int i)"
+.br
+.ti -1c
+.RI "bool \fBIsDBNull\fP (int i)"
+.br
+.ti -1c
+.RI "long \fBGetBytes\fP (int i, long fieldOffset, byte[] buffer, int bufferOffset, int length)"
+.br
+.ti -1c
+.RI "byte \fBGetByte\fP (int i)"
+.br
+.ti -1c
+.RI "System\&.Type \fBGetFieldType\fP (int i)"
+.br
+.ti -1c
+.RI "decimal \fBGetDecimal\fP (int i)"
+.br
+.ti -1c
+.RI "int \fBGetValues\fP (object[] values)"
+.br
+.ti -1c
+.RI "string \fBGetName\fP (int i)"
+.br
+.ti -1c
+.RI "long \fBGetInt64\fP (int i)"
+.br
+.ti -1c
+.RI "double \fBGetDouble\fP (int i)"
+.br
+.ti -1c
+.RI "bool \fBGetBoolean\fP (int i)"
+.br
+.ti -1c
+.RI "Guid \fBGetGuid\fP (int i)"
+.br
+.ti -1c
+.RI "DateTime \fBGetDateTime\fP (int i)"
+.br
+.ti -1c
+.RI "int \fBGetOrdinal\fP (string name)"
+.br
+.ti -1c
+.RI "string \fBGetDataTypeName\fP (int i)"
+.br
+.ti -1c
+.RI "float \fBGetFloat\fP (int i)"
+.br
+.ti -1c
+.RI "IDataReader \fBGetData\fP (int i)"
+.br
+.ti -1c
+.RI "long \fBGetChars\fP (int i, long fieldOffset, char[] buffer, int bufferOffset, int length)"
+.br
+.ti -1c
+.RI "string \fBGetString\fP (int i)"
+.br
+.ti -1c
+.RI "char \fBGetChar\fP (int i)"
+.br
+.ti -1c
+.RI "short \fBGetInt16\fP (int i)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBRecordsAffected\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsClosed\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBDepth\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "object \fBthis[string name]\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "object \fBthis[int i]\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBFieldCount\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Some Data Providers (ie - SqlClient) do not support Multiple Active Result Sets (MARS)\&. \fBNHibernate\fP relies on being able to create MARS to read Components and entities inside of Collections\&. 
+
+This is a completely off-line DataReader - the underlying IDataReader that was used to create this has been closed and no connections to the Db exists\&. 
+.PP
+Definition at line 18 of file NDataReader\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Driver\&.NDataReader\&.NDataReader (IDataReaderreader, boolisMidstream)"
+
+.PP
+Creates a \fBNDataReader\fP from a IDataReader 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The IDataReader to get the records from the Database\&.
+.br
+\fIisMidstream\fP if we are loading the IDataReader in the middle of reading it\&.
+.RE
+.PP
+.PP
+\fBNHibernate\fP attempts to not have to read the contents of an IDataReader into memory until it absolutely has to\&. What that means is that it might have processed some records from the IDataReader and will pick up the IDataReader midstream so that the underlying IDataReader can be closed so a new one can be opened\&. 
+.PP
+Definition at line 45 of file NDataReader\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Driver\&.NDataReader\&.Close ()"
+
+.PP
+
+.PP
+Definition at line 134 of file NDataReader\&.cs\&.
+.SS "void NHibernate\&.Driver\&.NDataReader\&.Dispose ()"
+
+.PP
+Takes care of freeing the managed and unmanaged resources that this class is responsible for\&. There are not any unmanaged resources or any disposable managed resources that this class is holding onto\&. It is in here to comply with the IDataReader interface\&. 
+.PP
+Definition at line 181 of file NDataReader\&.cs\&.
+.SS "bool NHibernate\&.Driver\&.NDataReader\&.GetBoolean (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 349 of file NDataReader\&.cs\&.
+.SS "byte NHibernate\&.Driver\&.NDataReader\&.GetByte (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 273 of file NDataReader\&.cs\&.
+.SS "long NHibernate\&.Driver\&.NDataReader\&.GetBytes (inti, longfieldOffset, byte[]buffer, intbufferOffset, intlength)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.br
+\fIfieldOffset\fP 
+.br
+\fIbuffer\fP 
+.br
+\fIbufferOffset\fP 
+.br
+\fIlength\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 243 of file NDataReader\&.cs\&.
+.SS "char NHibernate\&.Driver\&.NDataReader\&.GetChar (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 458 of file NDataReader\&.cs\&.
+.SS "long NHibernate\&.Driver\&.NDataReader\&.GetChars (inti, longfieldOffset, char[]buffer, intbufferOffset, intlength)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.br
+\fIfieldOffset\fP 
+.br
+\fIbuffer\fP 
+.br
+\fIbufferOffset\fP 
+.br
+\fIlength\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 423 of file NDataReader\&.cs\&.
+.SS "IDataReader NHibernate\&.Driver\&.NDataReader\&.GetData (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 409 of file NDataReader\&.cs\&.
+.SS "string NHibernate\&.Driver\&.NDataReader\&.GetDataTypeName (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 389 of file NDataReader\&.cs\&.
+.SS "DateTime NHibernate\&.Driver\&.NDataReader\&.GetDateTime (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 369 of file NDataReader\&.cs\&.
+.SS "decimal NHibernate\&.Driver\&.NDataReader\&.GetDecimal (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 293 of file NDataReader\&.cs\&.
+.SS "double NHibernate\&.Driver\&.NDataReader\&.GetDouble (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 339 of file NDataReader\&.cs\&.
+.SS "System\&.Type NHibernate\&.Driver\&.NDataReader\&.GetFieldType (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 283 of file NDataReader\&.cs\&.
+.SS "float NHibernate\&.Driver\&.NDataReader\&.GetFloat (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 399 of file NDataReader\&.cs\&.
+.SS "Guid NHibernate\&.Driver\&.NDataReader\&.GetGuid (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 359 of file NDataReader\&.cs\&.
+.SS "short NHibernate\&.Driver\&.NDataReader\&.GetInt16 (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 468 of file NDataReader\&.cs\&.
+.SS "int NHibernate\&.Driver\&.NDataReader\&.GetInt32 (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 197 of file NDataReader\&.cs\&.
+.SS "long NHibernate\&.Driver\&.NDataReader\&.GetInt64 (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 329 of file NDataReader\&.cs\&.
+.SS "string NHibernate\&.Driver\&.NDataReader\&.GetName (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 313 of file NDataReader\&.cs\&.
+.SS "int NHibernate\&.Driver\&.NDataReader\&.GetOrdinal (stringname)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 379 of file NDataReader\&.cs\&.
+.SS "DataTable NHibernate\&.Driver\&.NDataReader\&.GetSchemaTable ()"
+
+.PP
+
+.PP
+Definition at line 163 of file NDataReader\&.cs\&.
+.SS "string NHibernate\&.Driver\&.NDataReader\&.GetString (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 448 of file NDataReader\&.cs\&.
+.SS "object NHibernate\&.Driver\&.NDataReader\&.GetValue (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 219 of file NDataReader\&.cs\&.
+.SS "int NHibernate\&.Driver\&.NDataReader\&.GetValues (object[]values)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 303 of file NDataReader\&.cs\&.
+.SS "bool NHibernate\&.Driver\&.NDataReader\&.IsDBNull (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 229 of file NDataReader\&.cs\&.
+.SS "bool NHibernate\&.Driver\&.NDataReader\&.NextResult ()"
+
+.PP
+
+.PP
+Definition at line 117 of file NDataReader\&.cs\&.
+.SS "bool NHibernate\&.Driver\&.NDataReader\&.Read ()"
+
+.PP
+
+.PP
+Definition at line 140 of file NDataReader\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int NHibernate\&.Driver\&.NDataReader\&.Depth\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 158 of file NDataReader\&.cs\&.
+.SS "int NHibernate\&.Driver\&.NDataReader\&.FieldCount\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 320 of file NDataReader\&.cs\&.
+.SS "bool NHibernate\&.Driver\&.NDataReader\&.IsClosed\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 112 of file NDataReader\&.cs\&.
+.SS "int NHibernate\&.Driver\&.NDataReader\&.RecordsAffected\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 106 of file NDataReader\&.cs\&.
+.SS "object NHibernate\&.Driver\&.NDataReader\&.this[int i]\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 210 of file NDataReader\&.cs\&.
+.SS "object NHibernate\&.Driver\&.NDataReader\&.this[string name]\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 204 of file NDataReader\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

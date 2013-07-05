@@ -1,0 +1,191 @@
+.TH "NHibernate.Driver.IDriver" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Driver.IDriver \- 
+.PP
+A strategy for describing how \fBNHibernate\fP should interact with the different \&.NET Data Providers\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Driver\&.DriverBase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBConfigure\fP (IDictionary< string, string > settings)"
+.br
+.RI "\fIConfigure the driver using \fIsettings\fP \&. \fP"
+.ti -1c
+.RI "IDbConnection \fBCreateConnection\fP ()"
+.br
+.RI "\fICreates an uninitialized IDbConnection object for the specific \fBDriver\fP \fP"
+.ti -1c
+.RI "IDbCommand \fBGenerateCommand\fP (CommandType type, \fBSqlString\fP sqlString, \fBSqlType\fP[] parameterTypes)"
+.br
+.RI "\fIGenerates an IDbCommand from the SqlString according to the requirements of the DataProvider\&. \fP"
+.ti -1c
+.RI "void \fBPrepareCommand\fP (IDbCommand command)"
+.br
+.RI "\fIPrepare the \fIcommand\fP  by calling IDbCommand\&.Prepare()\&. May be a no-op if the driver does not support preparing commands, or for any other reason\&. \fP"
+.ti -1c
+.RI "IDbDataParameter \fBGenerateParameter\fP (IDbCommand command, string name, \fBSqlType\fP sqlType)"
+.br
+.RI "\fIGenerates an IDbDataParameter for the IDbCommand\&. It does not add the IDbDataParameter to the IDbCommand's Parameter collection\&. \fP"
+.ti -1c
+.RI "void \fBRemoveUnusedCommandParameters\fP (IDbCommand cmd, \fBSqlString\fP sqlString)"
+.br
+.RI "\fIRemove 'extra' parameters from the IDbCommand \fP"
+.ti -1c
+.RI "void \fBExpandQueryParameters\fP (IDbCommand cmd, \fBSqlString\fP sqlString)"
+.br
+.RI "\fIExpand the parameters of the cmd to have a single parameter for each parameter in the sql string \fP"
+.ti -1c
+.RI "\fBIResultSetsCommand\fP \fBGetResultSetsCommand\fP (\fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "void \fBAdjustCommand\fP (IDbCommand command)"
+.br
+.RI "\fIMake any adjustments to each IDbCommand object before it is added to the batcher\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBSupportsMultipleOpenReaders\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this \fBDriver\fP support having more than 1 open IDataReader with the same IDbConnection\&. \fP"
+.ti -1c
+.RI "bool \fBSupportsMultipleQueries\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A strategy for describing how \fBNHibernate\fP should interact with the different \&.NET Data Providers\&. 
+
+The \fC\fBIDriver\fP\fP interface is not intended to be exposed to the application\&. Instead it is used internally by \fBNHibernate\fP to obtain connection objects, command objects, and to generate and prepare \fBIDbCommands\fP\&. Implementors should provide a public default constructor\&. 
+.PP
+This is the interface to implement, or you can inherit from \fBDriverBase\fP if you have an ADO\&.NET data provider that \fBNHibernate\fP does not have built in support for\&. To use the driver, \fBNHibernate\fP property \fCconnection\&.driver_class\fP should be set to the assembly-qualified name of the driver class\&. 
+.PP
+.PP
+.nf
+key="connection\&.driver_class"
+value="FullyQualifiedClassName, AssemblyName"
+.fi
+.PP
+ 
+.PP
+Definition at line 31 of file IDriver\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Driver\&.IDriver\&.AdjustCommand (IDbCommandcommand)"
+
+.PP
+Make any adjustments to each IDbCommand object before it is added to the batcher\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP The command\&.
+.RE
+.PP
+.PP
+This method should be executed before add each single command to the batcher\&. If you have to adjust parameters values/type (when the command is full filled) this is a good place where do it\&. 
+.PP
+Implemented in \fBNHibernate\&.Driver\&.DriverBase\fP, and \fBNHibernate\&.Driver\&.Sql2008ClientDriver\fP\&.
+.SS "void NHibernate\&.Driver\&.IDriver\&.Configure (IDictionary< string, string >settings)"
+
+.PP
+Configure the driver using \fIsettings\fP \&. 
+.PP
+Implemented in \fBNHibernate\&.Driver\&.SqlServerCeDriver\fP, and \fBNHibernate\&.Driver\&.DriverBase\fP\&.
+.SS "IDbConnection NHibernate\&.Driver\&.IDriver\&.CreateConnection ()"
+
+.PP
+Creates an uninitialized IDbConnection object for the specific \fBDriver\fP 
+.PP
+Implemented in \fBNHibernate\&.Driver\&.ReflectionBasedDriver\fP, \fBNHibernate\&.Driver\&.DriverBase\fP, \fBNHibernate\&.Driver\&.SQLite20Driver\fP, \fBNHibernate\&.Driver\&.SqlClientDriver\fP, \fBNHibernate\&.Driver\&.OleDbDriver\fP, and \fBNHibernate\&.Driver\&.OdbcDriver\fP\&.
+.SS "void NHibernate\&.Driver\&.IDriver\&.ExpandQueryParameters (IDbCommandcmd, \fBSqlString\fPsqlString)"
+
+.PP
+Expand the parameters of the cmd to have a single parameter for each parameter in the sql string This is for databases that do not support named parameters\&. So, instead of a single parameter for 'select \&.\&.\&. from MyTable t where t\&.Col1 =  and t\&.Col2 = ' we can issue 'select \&.\&.\&. from MyTable t where t\&.Col1 = ? and t\&.Col2 = ?' 
+.PP
+Implemented in \fBNHibernate\&.Driver\&.DriverBase\fP\&.
+.SS "IDbCommand NHibernate\&.Driver\&.IDriver\&.GenerateCommand (CommandTypetype, \fBSqlString\fPsqlString, \fBSqlType\fP[]parameterTypes)"
+
+.PP
+Generates an IDbCommand from the SqlString according to the requirements of the DataProvider\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The CommandType of the command to generate\&.
+.br
+\fIsqlString\fP The SqlString that contains the SQL\&.
+.br
+\fIparameterTypes\fP The types of the parameters to generate for the command\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IDbCommand with the CommandText and Parameters fully set\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Driver\&.DriverBase\fP\&.
+.SS "IDbDataParameter NHibernate\&.Driver\&.IDriver\&.GenerateParameter (IDbCommandcommand, stringname, \fBSqlType\fPsqlType)"
+
+.PP
+Generates an IDbDataParameter for the IDbCommand\&. It does not add the IDbDataParameter to the IDbCommand's Parameter collection\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP The IDbCommand to use to create the IDbDataParameter\&.
+.br
+\fIname\fP The name to set for IDbDataParameter\&.Name
+.br
+\fIsqlType\fP The SqlType to set for IDbDataParameter\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IDbDataParameter ready to be added to an IDbCommand\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Driver\&.DriverBase\fP\&.
+.SS "void NHibernate\&.Driver\&.IDriver\&.PrepareCommand (IDbCommandcommand)"
+
+.PP
+Prepare the \fIcommand\fP  by calling IDbCommand\&.Prepare()\&. May be a no-op if the driver does not support preparing commands, or for any other reason\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP The command\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Driver\&.DriverBase\fP\&.
+.SS "void NHibernate\&.Driver\&.IDriver\&.RemoveUnusedCommandParameters (IDbCommandcmd, \fBSqlString\fPsqlString)"
+
+.PP
+Remove 'extra' parameters from the IDbCommand We sometimes create more parameters than necessary (see NH-2792 & also comments in SqlStringFormatter\&.ISqlStringVisitor\&.Parameter) 
+.PP
+Implemented in \fBNHibernate\&.Driver\&.DriverBase\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.Driver\&.IDriver\&.SupportsMultipleOpenReaders\fC [get]\fP"
+
+.PP
+Does this \fBDriver\fP support having more than 1 open IDataReader with the same IDbConnection\&. A value of  indicates that an exception would be thrown if \fBNHibernate\fP attempted to have 2 IDataReaders open using the same IDbConnection\&. \fBNHibernate\fP (since this version is a close to straight port of Hibernate) relies on the ability to recursively open 2 IDataReaders\&. If the \fBDriver\fP does not support it then \fBNHibernate\fP will read the values from the IDataReader into an \fBNDataReader\fP\&. 
+.PP
+A value of  will result in greater performance because an IDataReader can be used instead of the \fBNDataReader\fP\&. So if the \fBDriver\fP supports it then make sure it is set to \&. 
+.PP
+Definition at line 61 of file IDriver\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

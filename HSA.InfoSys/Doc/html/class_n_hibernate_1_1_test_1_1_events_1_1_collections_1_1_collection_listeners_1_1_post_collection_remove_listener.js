@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_collection_listeners_1_1_post_collection_remove_listener =
+[
+    [ "PostCollectionRemoveListener", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_collection_listeners_1_1_post_collection_remove_listener.html#a93f4c259cf4f9c22c8d1061ca4b4fd24", null ],
+    [ "OnPostRemoveCollection", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_collection_listeners_1_1_post_collection_remove_listener.html#a3a7972dcff863589d6de7fde4eb572e2", null ]
+];

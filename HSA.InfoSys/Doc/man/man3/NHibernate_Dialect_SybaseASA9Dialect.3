@@ -1,0 +1,113 @@
+.TH "NHibernate.Dialect.SybaseASA9Dialect" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.SybaseASA9Dialect \- 
+.PP
+An SQL dialect for Sybase Adaptive Server Anywhere 9\&.0  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override \fBSqlString\fP \fBGetLimitString\fP (\fBSqlString\fP queryString, \fBSqlString\fP offset, \fBSqlString\fP limit)"
+.br
+.RI "\fIAttempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. \fP"
+.ti -1c
+.RI "override \fBIDataBaseSchema\fP \fBGetDataBaseSchema\fP (DbConnection connection)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBSupportsLimit\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsVariableLimit\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBOffsetStartsAtOne\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBAddColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBNullColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBQualifyIndexName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBForUpdateString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsIdentityColumns\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBIdentitySelectString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBIdentityColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBNoColumnsInsertString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBDropConstraints\fP\fC [get]\fP"
+.br
+.RI "\fIASA does not require to drop constraint before dropping tables, and DROP statement syntax used by Hibernate to drop constraint is not compatible with ASA, so disable it\&. Comments matchs SybaseAnywhereDialect from Hibernate-3\&.1 src \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An SQL dialect for Sybase Adaptive Server Anywhere 9\&.0 
+
+This dialect probably will not work with schema-export\&. If anyone out there can fill in the ctor with DbTypes to Strings that would be helpful\&. 
+.PP
+The dialect defaults the following configuration properties: Property Default Value  connection\&.driver_class \fBNHibernate\&.Driver\&.SybaseAsaClientDriver\fP  prepare_sql 
+.PP
+Definition at line 35 of file SybaseASA9Dialect\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBSqlString\fP NHibernate\&.Dialect\&.SybaseASA9Dialect\&.GetLimitString (\fBSqlString\fPqueryString, \fBSqlString\fPoffset, \fBSqlString\fPlimit)\fC [virtual]\fP"
+
+.PP
+Attempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryString\fP The SqlString to base the limit query off\&.
+.br
+\fIoffset\fP Offset of the first row to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no limit is requested\&. This should have already been adjusted to account for OffsetStartsAtOne\&.
+.br
+\fIlimit\fP Maximum number of rows to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no offset is requested\&. This should have already been adjusted to account for UseMaxForLimit\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new SqlString that contains the \fCLIMIT\fP clause\&. Returns \fCnull\fP if \fIqueryString\fP  represents a SQL statement to which a limit clause cannot be added, for example when the query string is custom SQL invoking a stored procedure\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 99 of file SybaseASA9Dialect\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool NHibernate\&.Dialect\&.SybaseASA9Dialect\&.DropConstraints\fC [get]\fP"
+
+.PP
+ASA does not require to drop constraint before dropping tables, and DROP statement syntax used by Hibernate to drop constraint is not compatible with ASA, so disable it\&. Comments matchs SybaseAnywhereDialect from Hibernate-3\&.1 src 
+.PP
+Definition at line 170 of file SybaseASA9Dialect\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

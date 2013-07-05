@@ -1,0 +1,86 @@
+.TH "log4net.Util.CompositeProperties" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.CompositeProperties \- 
+.PP
+This class aggregates several \fBPropertiesDictionary\fP collections together\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAdd\fP (\fBReadOnlyPropertiesDictionary\fP properties)"
+.br
+.RI "\fIAdd a Properties Dictionary to this composite collection \fP"
+.ti -1c
+.RI "\fBPropertiesDictionary\fP \fBFlatten\fP ()"
+.br
+.RI "\fIFlatten this composite collection into a single properties dictionary \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "object \fBthis[string key]\fP\fC [get]\fP"
+.br
+.RI "\fIGets the value of a property \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class aggregates several \fBPropertiesDictionary\fP collections together\&. 
+
+Provides a dictionary style lookup over an ordered list of \fBPropertiesDictionary\fP collections\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 35 of file CompositeProperties\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Util\&.CompositeProperties\&.Add (\fBReadOnlyPropertiesDictionary\fPproperties)"
+
+.PP
+Add a Properties Dictionary to this composite collection 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproperties\fP the properties to add
+.RE
+.PP
+.PP
+Properties dictionaries added first take precedence over dictionaries added later\&. 
+.PP
+Definition at line 117 of file CompositeProperties\&.cs\&.
+.SS "\fBPropertiesDictionary\fP log4net\&.Util\&.CompositeProperties\&.Flatten ()"
+
+.PP
+Flatten this composite collection into a single properties dictionary 
+.PP
+\fBReturns:\fP
+.RS 4
+the flattened dictionary
+.RE
+.PP
+.PP
+Reduces the collection of ordered dictionaries to a single dictionary containing the resultant values for the keys\&. 
+.PP
+Definition at line 133 of file CompositeProperties\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "object log4net\&.Util\&.CompositeProperties\&.this[string key]\fC [get]\fP"
+
+.PP
+Gets the value of a property The value for the property with the specified key 
+.PP
+Looks up the value for the \fIkey\fP  specified\&. The \fBPropertiesDictionary\fP collections are searched in the order in which they were added to this collection\&. The value returned is the value held by the first collection that contains the specified key\&. 
+.PP
+If none of the collections contain the specified key then \fCnull\fP is returned\&. 
+.PP
+Definition at line 82 of file CompositeProperties\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

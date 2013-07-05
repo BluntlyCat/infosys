@@ -1,0 +1,79 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Util.JoinProcessor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Util.JoinProcessor \- 
+.PP
+Performs the post-processing of the join information gathered during semantic analysis\&. The join generating classes are complex, this encapsulates some of the JoinSequence-related code\&. Author: Joshua Davis Ported by: Steve Strong  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJoinProcessor\fP (\fBHqlSqlWalker\fP walker)"
+.br
+.RI "\fIConstructs a new \fBJoinProcessor\fP\&. \fP"
+.ti -1c
+.RI "void \fBProcessJoins\fP (\fBQueryNode\fP query)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBJoinType\fP \fBToHibernateJoinType\fP (int astJoinType)"
+.br
+.RI "\fITranslates an AST join type (i\&.e\&., the token type) into a JoinFragment\&.XXX join type\&. \fP"
+.ti -1c
+.RI "static void \fBProcessDynamicFilterParameters\fP (\fBSqlString\fP sqlFragment, \fBIParameterContainer\fP container, \fBHqlSqlWalker\fP walker)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Performs the post-processing of the join information gathered during semantic analysis\&. The join generating classes are complex, this encapsulates some of the JoinSequence-related code\&. Author: Joshua Davis Ported by: Steve Strong 
+
+
+.PP
+Definition at line 25 of file JoinProcessor\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Hql\&.Ast\&.ANTLR\&.Util\&.JoinProcessor\&.JoinProcessor (\fBHqlSqlWalker\fPwalker)"
+
+.PP
+Constructs a new \fBJoinProcessor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwalker\fP The walker to which we are bound, giving us access to needed resources\&.
+.RE
+.PP
+
+.PP
+Definition at line 36 of file JoinProcessor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBJoinType\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.Util\&.JoinProcessor\&.ToHibernateJoinType (intastJoinType)\fC [static]\fP"
+
+.PP
+Translates an AST join type (i\&.e\&., the token type) into a JoinFragment\&.XXX join type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIastJoinType\fP The AST join type (from \fBHqlSqlWalker\fP)
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a JoinType\&.XXX join type\&.
+.RE
+.PP
+
+.PP
+Definition at line 47 of file JoinProcessor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

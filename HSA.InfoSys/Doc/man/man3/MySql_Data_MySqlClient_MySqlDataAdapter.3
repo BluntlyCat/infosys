@@ -1,0 +1,198 @@
+.TH "MySql.Data.MySqlClient.MySqlDataAdapter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MySql.Data.MySqlClient.MySqlDataAdapter \- 
+.PP
+ 
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits DbDataAdapter, IDbDataAdapter, IDataAdapter, and ICloneable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMySqlDataAdapter\fP ()"
+.br
+.ti -1c
+.RI "\fBMySqlDataAdapter\fP (\fBMySqlCommand\fP selectCommand)"
+.br
+.ti -1c
+.RI "\fBMySqlDataAdapter\fP (string selectCommandText, \fBMySqlConnection\fP connection)"
+.br
+.ti -1c
+.RI "\fBMySqlDataAdapter\fP (string selectCommandText, string selectConnString)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override int \fBUpdate\fP (DataRow[] dataRows, DataTableMapping tableMapping)"
+.br
+.ti -1c
+.RI "override void \fBInitializeBatching\fP ()"
+.br
+.ti -1c
+.RI "override int \fBAddToBatch\fP (IDbCommand command)"
+.br
+.ti -1c
+.RI "override int \fBExecuteBatch\fP ()"
+.br
+.ti -1c
+.RI "override void \fBClearBatch\fP ()"
+.br
+.ti -1c
+.RI "override void \fBTerminateBatching\fP ()"
+.br
+.ti -1c
+.RI "override IDataParameter \fBGetBatchedParameter\fP (int commandIdentifier, int parameterIndex)"
+.br
+.ti -1c
+.RI "override RowUpdatedEventArgs \fBCreateRowUpdatedEvent\fP (DataRow dataRow, IDbCommand command, StatementType statementType, DataTableMapping tableMapping)"
+.br
+.RI "\fIOverridden\&. See DbDataAdapter\&.CreateRowUpdatedEvent\&. \fP"
+.ti -1c
+.RI "override RowUpdatingEventArgs \fBCreateRowUpdatingEvent\fP (DataRow dataRow, IDbCommand command, StatementType statementType, DataTableMapping tableMapping)"
+.br
+.RI "\fIOverridden\&. See DbDataAdapter\&.CreateRowUpdatingEvent\&. \fP"
+.ti -1c
+.RI "override void \fBOnRowUpdating\fP (RowUpdatingEventArgs value)"
+.br
+.RI "\fIOverridden\&. Raises the RowUpdating event\&. \fP"
+.ti -1c
+.RI "override void \fBOnRowUpdated\fP (RowUpdatedEventArgs value)"
+.br
+.RI "\fIOverridden\&. Raises the RowUpdated event\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "new \fBMySqlCommand\fP \fBDeleteCommand\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "new \fBMySqlCommand\fP \fBInsertCommand\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "new \fBMySqlCommand\fP \fBSelectCommand\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "new \fBMySqlCommand\fP \fBUpdateCommand\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override int \fBUpdateBatchSize\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "\fBMySqlRowUpdatingEventHandler\fP \fBRowUpdating\fP"
+.br
+.RI "\fIOccurs during Update before a command is executed against the data source\&. The attempt to update is made, so the event fires\&. \fP"
+.ti -1c
+.RI "\fBMySqlRowUpdatedEventHandler\fP \fBRowUpdated\fP"
+.br
+.RI "\fIOccurs during Update after a command is executed against the data source\&. The attempt to update is made, so the event fires\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+Definition at line 37 of file dataadapter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override RowUpdatedEventArgs MySql\&.Data\&.MySqlClient\&.MySqlDataAdapter\&.CreateRowUpdatedEvent (DataRowdataRow, IDbCommandcommand, StatementTypestatementType, DataTableMappingtableMapping)\fC [protected]\fP"
+
+.PP
+Overridden\&. See DbDataAdapter\&.CreateRowUpdatedEvent\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdataRow\fP 
+.br
+\fIcommand\fP 
+.br
+\fIstatementType\fP 
+.br
+\fItableMapping\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 276 of file dataadapter\&.cs\&.
+.SS "override RowUpdatingEventArgs MySql\&.Data\&.MySqlClient\&.MySqlDataAdapter\&.CreateRowUpdatingEvent (DataRowdataRow, IDbCommandcommand, StatementTypestatementType, DataTableMappingtableMapping)\fC [protected]\fP"
+
+.PP
+Overridden\&. See DbDataAdapter\&.CreateRowUpdatingEvent\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdataRow\fP 
+.br
+\fIcommand\fP 
+.br
+\fIstatementType\fP 
+.br
+\fItableMapping\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 289 of file dataadapter\&.cs\&.
+.SS "override void MySql\&.Data\&.MySqlClient\&.MySqlDataAdapter\&.OnRowUpdated (RowUpdatedEventArgsvalue)\fC [protected]\fP"
+
+.PP
+Overridden\&. Raises the RowUpdated event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP A \fBMySqlRowUpdatedEventArgs\fP that contains the event data\&. 
+.RE
+.PP
+
+.PP
+Definition at line 308 of file dataadapter\&.cs\&.
+.SS "override void MySql\&.Data\&.MySqlClient\&.MySqlDataAdapter\&.OnRowUpdating (RowUpdatingEventArgsvalue)\fC [protected]\fP"
+
+.PP
+Overridden\&. Raises the RowUpdating event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP A \fBMySqlRowUpdatingEventArgs\fP that contains the event data\&.
+.RE
+.PP
+
+.PP
+Definition at line 298 of file dataadapter\&.cs\&.
+.SH "Event Documentation"
+.PP 
+.SS "\fBMySqlRowUpdatedEventHandler\fP MySql\&.Data\&.MySqlClient\&.MySqlDataAdapter\&.RowUpdated"
+
+.PP
+Occurs during Update after a command is executed against the data source\&. The attempt to update is made, so the event fires\&. 
+.PP
+Definition at line 51 of file dataadapter\&.cs\&.
+.SS "\fBMySqlRowUpdatingEventHandler\fP MySql\&.Data\&.MySqlClient\&.MySqlDataAdapter\&.RowUpdating"
+
+.PP
+Occurs during Update before a command is executed against the data source\&. The attempt to update is made, so the event fires\&. 
+.PP
+Definition at line 46 of file dataadapter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

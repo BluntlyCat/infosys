@@ -1,0 +1,144 @@
+.TH "Newtonsoft.Json.JsonConverter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.JsonConverter \- 
+.PP
+Converts an object to and from JSON\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNewtonsoft\&.Json\&.Converters\&.BinaryConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.BsonObjectIdConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.CustomCreationConverter< T >\fP, \fBNewtonsoft\&.Json\&.Converters\&.DataSetConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.DataTableConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.DateTimeConverterBase\fP, \fBNewtonsoft\&.Json\&.Converters\&.EntityKeyMemberConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.ExpandoObjectConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.KeyValuePairConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.RegexConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.StringEnumConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.VersionConverter\fP, and \fBNewtonsoft\&.Json\&.Converters\&.XmlNodeConverter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract void \fBWriteJson\fP (\fBJsonWriter\fP writer, object value, \fBJsonSerializer\fP serializer)"
+.br
+.RI "\fIWrites the JSON representation of the object\&. \fP"
+.ti -1c
+.RI "abstract object \fBReadJson\fP (\fBJsonReader\fP reader, Type objectType, object existingValue, \fBJsonSerializer\fP serializer)"
+.br
+.RI "\fIReads the JSON representation of the object\&. \fP"
+.ti -1c
+.RI "abstract bool \fBCanConvert\fP (Type objectType)"
+.br
+.RI "\fIDetermines whether this instance can convert the specified object type\&. \fP"
+.ti -1c
+.RI "virtual \fBJsonSchema\fP \fBGetSchema\fP ()"
+.br
+.RI "\fIGets the JsonSchema of the JSON produced by the \fBJsonConverter\fP\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBCanRead\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether this \fBJsonConverter\fP can read JSON\&. \fP"
+.ti -1c
+.RI "virtual bool \fBCanWrite\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether this \fBJsonConverter\fP can write JSON\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Converts an object to and from JSON\&. 
+
+
+.PP
+Definition at line 37 of file JsonConverter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract bool Newtonsoft\&.Json\&.JsonConverter\&.CanConvert (TypeobjectType)\fC [pure virtual]\fP"
+
+.PP
+Determines whether this instance can convert the specified object type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobjectType\fP Type of the object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this instance can convert the specified object type; otherwise, \fCfalse\fP\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNewtonsoft\&.Json\&.Converters\&.XmlNodeConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.StringEnumConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.RegexConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.BinaryConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.DataTableConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.ExpandoObjectConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.EntityKeyMemberConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.KeyValuePairConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.DataSetConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.VersionConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.BsonObjectIdConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.CustomCreationConverter< T >\fP, and \fBNewtonsoft\&.Json\&.Converters\&.DateTimeConverterBase\fP\&.
+.SS "virtual \fBJsonSchema\fP Newtonsoft\&.Json\&.JsonConverter\&.GetSchema ()\fC [virtual]\fP"
+
+.PP
+Gets the JsonSchema of the JSON produced by the \fBJsonConverter\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The JsonSchema of the JSON produced by the \fBJsonConverter\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 70 of file JsonConverter\&.cs\&.
+.SS "abstract object Newtonsoft\&.Json\&.JsonConverter\&.ReadJson (\fBJsonReader\fPreader, TypeobjectType, objectexistingValue, \fBJsonSerializer\fPserializer)\fC [pure virtual]\fP"
+
+.PP
+Reads the JSON representation of the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The \fBJsonReader\fP to read from\&.
+.br
+\fIobjectType\fP Type of the object\&.
+.br
+\fIexistingValue\fP The existing value of object being read\&.
+.br
+\fIserializer\fP The calling serializer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The object value\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNewtonsoft\&.Json\&.Converters\&.XmlNodeConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.IsoDateTimeConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.RegexConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.StringEnumConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.EntityKeyMemberConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.BinaryConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.JavaScriptDateTimeConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.DataTableConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.KeyValuePairConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.DataSetConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.BsonObjectIdConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.VersionConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.ExpandoObjectConverter\fP, and \fBNewtonsoft\&.Json\&.Converters\&.CustomCreationConverter< T >\fP\&.
+.SS "abstract void Newtonsoft\&.Json\&.JsonConverter\&.WriteJson (\fBJsonWriter\fPwriter, objectvalue, \fBJsonSerializer\fPserializer)\fC [pure virtual]\fP"
+
+.PP
+Writes the JSON representation of the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP The \fBJsonWriter\fP to write to\&.
+.br
+\fIvalue\fP The value\&.
+.br
+\fIserializer\fP The calling serializer\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNewtonsoft\&.Json\&.Converters\&.XmlNodeConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.IsoDateTimeConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.StringEnumConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.BinaryConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.EntityKeyMemberConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.ExpandoObjectConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.KeyValuePairConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.RegexConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.BsonObjectIdConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.DataSetConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.DataTableConverter\fP, \fBNewtonsoft\&.Json\&.Converters\&.CustomCreationConverter< T >\fP, \fBNewtonsoft\&.Json\&.Converters\&.JavaScriptDateTimeConverter\fP, and \fBNewtonsoft\&.Json\&.Converters\&.VersionConverter\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual bool Newtonsoft\&.Json\&.JsonConverter\&.CanRead\fC [get]\fP"
+
+.PP
+Gets a value indicating whether this \fBJsonConverter\fP can read JSON\&. \fCtrue\fP if this \fBJsonConverter\fP can read JSON; otherwise, \fCfalse\fP\&.
+.PP
+Definition at line 80 of file JsonConverter\&.cs\&.
+.SS "virtual bool Newtonsoft\&.Json\&.JsonConverter\&.CanWrite\fC [get]\fP"
+
+.PP
+Gets a value indicating whether this \fBJsonConverter\fP can write JSON\&. \fCtrue\fP if this \fBJsonConverter\fP can write JSON; otherwise, \fCfalse\fP\&.
+.PP
+Definition at line 89 of file JsonConverter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,286 @@
+.TH "NHibernate.Engine.IBatcher" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.IBatcher \- 
+.PP
+Manages IDbCommands and IDataReaders for an \fBISession\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDisposable\&.
+.PP
+Inherited by \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "IDbCommand \fBPrepareQueryCommand\fP (CommandType commandType, \fBSqlString\fP sql, \fBSqlType\fP[] parameterTypes)"
+.br
+.RI "\fIGet an IDbCommand for using in loading / querying\&. \fP"
+.ti -1c
+.RI "IDbCommand \fBPrepareCommand\fP (CommandType commandType, \fBSqlString\fP sql, \fBSqlType\fP[] parameterTypes)"
+.br
+.RI "\fIGet a non-batchable an IDbCommand to use for inserting / deleting / updating\&. Must be explicitly released by \fC\fBCloseCommand()\fP\fP \fP"
+.ti -1c
+.RI "void \fBCloseCommand\fP (IDbCommand cmd, IDataReader reader)"
+.br
+.RI "\fIClose a IDbCommand opened using \fC\fBPrepareCommand()\fP\fP \fP"
+.ti -1c
+.RI "void \fBCloseReader\fP (IDataReader reader)"
+.br
+.RI "\fIClose a IDataReader opened using \fBExecuteReader\fP \fP"
+.ti -1c
+.RI "IDbCommand \fBPrepareBatchCommand\fP (CommandType commandType, \fBSqlString\fP sql, \fBSqlType\fP[] parameterTypes)"
+.br
+.RI "\fIGet a batchable IDbCommand to use for inserting / deleting / updating (might be called many times before a single call to \fC\fBExecuteBatch()\fP\fP \fP"
+.ti -1c
+.RI "void \fBAddToBatch\fP (\fBIExpectation\fP expectation)"
+.br
+.RI "\fIAdd an insert / delete / update to the current batch (might be called multiple times for a single \fCPrepareBatchStatement()\fP) \fP"
+.ti -1c
+.RI "void \fBExecuteBatch\fP ()"
+.br
+.RI "\fIExecute the batch \fP"
+.ti -1c
+.RI "void \fBCloseCommands\fP ()"
+.br
+.RI "\fIClose any query statements that were left lying around \fP"
+.ti -1c
+.RI "IDataReader \fBExecuteReader\fP (IDbCommand cmd)"
+.br
+.RI "\fIGets an IDataReader by calling ExecuteReader on the IDbCommand\&. \fP"
+.ti -1c
+.RI "int \fBExecuteNonQuery\fP (IDbCommand cmd)"
+.br
+.RI "\fIExecutes the IDbCommand\&. \fP"
+.ti -1c
+.RI "void \fBAbortBatch\fP (Exception e)"
+.br
+.RI "\fIMust be called when an exception occurs\&. \fP"
+.ti -1c
+.RI "void \fBCancelLastQuery\fP ()"
+.br
+.RI "\fICancel the current query statement \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBHasOpenResources\fP\fC [get]\fP"
+.br
+.RI "\fIGets the value indicating whether there are any open resources managed by this batcher (IDbCommands or IDataReaders)\&. \fP"
+.ti -1c
+.RI "int \fBBatchSize\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the size of the batch, this can change dynamically by calling the session's SetBatchSize\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Manages IDbCommands and IDataReaders for an \fBISession\fP\&. 
+
+Abstracts ADO\&.NET batching to maintain the illusion that a single logical batch exists for the whole session, even when batching is disabled\&. Provides transparent \fCIDbCommand\fP caching\&. 
+.PP
+This will be useful once ADO\&.NET gets support for batching\&. Until that point no code exists that will do batching, but this will provide a good point to do error checking and making sure the correct number of rows were affected\&. 
+.PP
+Definition at line 25 of file IBatcher\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Engine\&.IBatcher\&.AbortBatch (Exceptione)"
+
+.PP
+Must be called when an exception occurs\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIe\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP\&.
+.SS "void NHibernate\&.Engine\&.IBatcher\&.AddToBatch (\fBIExpectation\fPexpectation)"
+
+.PP
+Add an insert / delete / update to the current batch (might be called multiple times for a single \fCPrepareBatchStatement()\fP) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpectation\fP Determines whether the number of rows affected by query is correct\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP, \fBNHibernate\&.Test\&.Insertordering\&.InsertOrderingFixture\&.StatsBatcher\fP, \fBNHibernate\&.AdoNet\&.SqlClientBatchingBatcher\fP, \fBNHibernate\&.AdoNet\&.MySqlClientBatchingBatcher\fP, \fBNHibernate\&.AdoNet\&.OracleDataClientBatchingBatcher\fP, and \fBNHibernate\&.AdoNet\&.NonBatchingBatcher\fP\&.
+.SS "void NHibernate\&.Engine\&.IBatcher\&.CancelLastQuery ()"
+
+.PP
+Cancel the current query statement 
+.PP
+Implemented in \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP\&.
+.SS "void NHibernate\&.Engine\&.IBatcher\&.CloseCommand (IDbCommandcmd, IDataReaderreader)"
+
+.PP
+Close a IDbCommand opened using \fC\fBPrepareCommand()\fP\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP The IDbCommand to ensure is closed\&.
+.br
+\fIreader\fP The IDataReader to ensure is closed\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP\&.
+.SS "void NHibernate\&.Engine\&.IBatcher\&.CloseCommands ()"
+
+.PP
+Close any query statements that were left lying around Use this method instead of \fCDispose\fP if the \fBIBatcher\fP can be used again\&. 
+.PP
+Implemented in \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP\&.
+.SS "void NHibernate\&.Engine\&.IBatcher\&.CloseReader (IDataReaderreader)"
+
+.PP
+Close a IDataReader opened using \fBExecuteReader\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The IDataReader to ensure is closed\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP\&.
+.SS "void NHibernate\&.Engine\&.IBatcher\&.ExecuteBatch ()"
+
+.PP
+Execute the batch 
+.PP
+Implemented in \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP\&.
+.SS "int NHibernate\&.Engine\&.IBatcher\&.ExecuteNonQuery (IDbCommandcmd)"
+
+.PP
+Executes the IDbCommand\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP The IDbCommand to execute\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of rows affected\&.
+.RE
+.PP
+.PP
+The Batcher is responsible for ensuring that all of the Drivers rules for how many open IDataReaders it can have are followed\&. 
+.PP
+Implemented in \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP\&.
+.SS "IDataReader NHibernate\&.Engine\&.IBatcher\&.ExecuteReader (IDbCommandcmd)"
+
+.PP
+Gets an IDataReader by calling ExecuteReader on the IDbCommand\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP The IDbCommand to execute to get the IDataReader\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The IDataReader from the IDbCommand\&.
+.RE
+.PP
+.PP
+The Batcher is responsible for ensuring that all of the Drivers rules for how many open IDataReaders it can have are followed\&. 
+.PP
+Implemented in \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP\&.
+.SS "IDbCommand NHibernate\&.Engine\&.IBatcher\&.PrepareBatchCommand (CommandTypecommandType, \fBSqlString\fPsql, \fBSqlType\fP[]parameterTypes)"
+
+.PP
+Get a batchable IDbCommand to use for inserting / deleting / updating (might be called many times before a single call to \fC\fBExecuteBatch()\fP\fP After setting parameters, call \fC\fBAddToBatch()\fP\fP - do not execute the statement explicitly\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsql\fP The SqlString to convert to an IDbCommand\&.
+.br
+\fIcommandType\fP The CommandType of the command\&.
+.br
+\fIparameterTypes\fP The \fBSqlTypes\fP of parameters in \fIsql\fP \&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP, and \fBNHibernate\&.Test\&.Insertordering\&.InsertOrderingFixture\&.StatsBatcher\fP\&.
+.SS "IDbCommand NHibernate\&.Engine\&.IBatcher\&.PrepareCommand (CommandTypecommandType, \fBSqlString\fPsql, \fBSqlType\fP[]parameterTypes)"
+
+.PP
+Get a non-batchable an IDbCommand to use for inserting / deleting / updating\&. Must be explicitly released by \fC\fBCloseCommand()\fP\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsql\fP The SqlString to convert to an IDbCommand\&.
+.br
+\fIcommandType\fP The CommandType of the command\&.
+.br
+\fIparameterTypes\fP The \fBSqlTypes\fP of parameters in \fIsql\fP \&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IDbCommand that is ready to have the parameter values set and then executed\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP\&.
+.SS "IDbCommand NHibernate\&.Engine\&.IBatcher\&.PrepareQueryCommand (CommandTypecommandType, \fBSqlString\fPsql, \fBSqlType\fP[]parameterTypes)"
+
+.PP
+Get an IDbCommand for using in loading / querying\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsql\fP The SqlString to convert to an IDbCommand\&.
+.br
+\fIcommandType\fP The CommandType of the command\&.
+.br
+\fIparameterTypes\fP The \fBSqlTypes\fP of parameters in \fIsql\fP \&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IDbCommand that is ready to be executed\&. 
+.RE
+.PP
+.PP
+If not explicitly released by \fBCloseCommand\fP, it will be released when the session is closed or disconnected\&. 
+.PP
+This does NOT add anything to the batch - it only creates the IDbCommand and does NOT cause the batch to execute\&.\&.\&. 
+.PP
+Implemented in \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "int NHibernate\&.Engine\&.IBatcher\&.BatchSize\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the size of the batch, this can change dynamically by calling the session's SetBatchSize\&. The size of the batch\&.
+.PP
+Definition at line 156 of file IBatcher\&.cs\&.
+.SS "bool NHibernate\&.Engine\&.IBatcher\&.HasOpenResources\fC [get]\fP"
+
+.PP
+Gets the value indicating whether there are any open resources managed by this batcher (IDbCommands or IDataReaders)\&. 
+.PP
+Definition at line 149 of file IBatcher\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,185 @@
+.TH "NHibernate.Dialect" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "package \fBFunction\fP"
+.br
+.ti -1c
+.RI "package \fBLock\fP"
+.br
+.ti -1c
+.RI "package \fBSchema\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBDB2400Dialect\fP"
+.br
+.RI "\fIAn SQL dialect for DB2 on iSeries OS/400\&. \fP"
+.ti -1c
+.RI "class \fBDB2Dialect\fP"
+.br
+.RI "\fIAn SQL dialect for DB2\&. \fP"
+.ti -1c
+.RI "class \fBDialect\fP"
+.br
+.RI "\fIRepresents a dialect of SQL implemented by a particular RDBMS\&. Subclasses implement \fBNHibernate\fP compatibility with different systems\&. \fP"
+.ti -1c
+.RI "class \fBFirebirdDialect\fP"
+.br
+.RI "\fISummary description for \fBFirebirdDialect\fP\&. \fP"
+.ti -1c
+.RI "class \fBGenericDialect\fP"
+.br
+.RI "\fIA generic SQL dialect which may or may not work on any actual databases \fP"
+.ti -1c
+.RI "class \fBInformixDialect\fP"
+.br
+.RI "\fISummary description for \fBInformixDialect\fP\&. This dialect is intended to work with IDS version 7\&.31 However I can test only version 10\&.00 as I have only this version at work \fP"
+.ti -1c
+.RI "class \fBIfxViolatedConstraintExtracter\fP"
+.br
+.ti -1c
+.RI "class \fBInformixDialect0940\fP"
+.br
+.RI "\fISummary description for \fBInformixDialect\fP\&. This dialect is intended to work with IDS version 9\&.40 \fP"
+.ti -1c
+.RI "class \fBInformixDialect1000\fP"
+.br
+.RI "\fISummary description for \fBInformixDialect\fP\&. This dialect is intended to work with IDS version 10\&.00 \fP"
+.ti -1c
+.RI "class \fBIngres9Dialect\fP"
+.br
+.ti -1c
+.RI "class \fBIngresDialect\fP"
+.br
+.RI "\fIAn SQL dialect for IngresSQL\&. \fP"
+.ti -1c
+.RI "class \fBMsSql2000Dialect\fP"
+.br
+.RI "\fIAn SQL dialect compatible with Microsoft SQL Server 2000\&. \fP"
+.ti -1c
+.RI "class \fBMsSql2005Dialect\fP"
+.br
+.ti -1c
+.RI "class \fBMsSql2005DialectQueryPager\fP"
+.br
+.RI "\fITransforms a T-SQL SELECT statement into a statement that will - when executed - return a 'page' of results\&. The page is defined by a page size ('limit'), and/or a starting page number ('offset')\&. \fP"
+.ti -1c
+.RI "class \fBMsSql2008Dialect\fP"
+.br
+.ti -1c
+.RI "class \fBMsSql2012Dialect\fP"
+.br
+.ti -1c
+.RI "class \fBMsSql7Dialect\fP"
+.br
+.RI "\fIAn SQL dialect compatible with Microsoft SQL Server 7\&. \fP"
+.ti -1c
+.RI "class \fBMsSqlAzure2008Dialect\fP"
+.br
+.ti -1c
+.RI "class \fBMsSqlCe40Dialect\fP"
+.br
+.ti -1c
+.RI "class \fBMsSqlCeDialect\fP"
+.br
+.RI "\fIA dialect for SQL Server Everywhere (SQL Server CE)\&. \fP"
+.ti -1c
+.RI "class \fBMySQL5Dialect\fP"
+.br
+.ti -1c
+.RI "class \fBMySQLDialect\fP"
+.br
+.RI "\fIA SQL dialect for MySQL \fP"
+.ti -1c
+.RI "class \fBOracle10gDialect\fP"
+.br
+.RI "\fIA dialect specifically for use with Oracle 10g\&. \fP"
+.ti -1c
+.RI "class \fBOracle8iDialect\fP"
+.br
+.RI "\fIA dialect for Oracle 8i\&. \fP"
+.ti -1c
+.RI "class \fBOracle9iDialect\fP"
+.br
+.ti -1c
+.RI "class \fBOracleLiteDialect\fP"
+.br
+.RI "\fIIt's a immature version, it just work\&. An SQL dialect for Oracle Lite \fP"
+.ti -1c
+.RI "class \fBPostgreSQL81Dialect\fP"
+.br
+.RI "\fIAn SQL dialect for PostgreSQL 8\&.1 and above\&. \fP"
+.ti -1c
+.RI "class \fBPostgreSQL82Dialect\fP"
+.br
+.RI "\fIAn SQL dialect for PostgreSQL 8\&.2 and above\&. \fP"
+.ti -1c
+.RI "class \fBPostgreSQLDialect\fP"
+.br
+.RI "\fIAn SQL dialect for PostgreSQL\&. \fP"
+.ti -1c
+.RI "class \fBSQLiteDialect\fP"
+.br
+.RI "\fIA SQL dialect for SQLite\&. \fP"
+.ti -1c
+.RI "class \fBSybaseASA9Dialect\fP"
+.br
+.RI "\fIAn SQL dialect for Sybase Adaptive Server Anywhere 9\&.0 \fP"
+.ti -1c
+.RI "class \fBSybaseASE15Dialect\fP"
+.br
+.RI "\fIAn SQL dialect targeting Sybase Adaptive Server Enterprise (ASE) 15 and higher\&. \fP"
+.ti -1c
+.RI "class \fBSybaseSQLAnywhere10Dialect\fP"
+.br
+.RI "\fISQL \fBDialect\fP for SQL Anywhere 10 - for the \fBNHibernate\fP 3\&.0\&.0 distribution Copyright (C) 2010 Glenn Paulley Contact: http://iablog.sybase.com/paulley \fP"
+.ti -1c
+.RI "class \fBSybaseSQLAnywhere11Dialect\fP"
+.br
+.RI "\fISQL \fBDialect\fP for SQL Anywhere 11 - for the \fBNHibernate\fP 3\&.0\&.0 distribution Copyright (C) 2010 Glenn Paulley Contact: http://iablog.sybase.com/paulley \fP"
+.ti -1c
+.RI "class \fBSybaseSQLAnywhere12Dialect\fP"
+.br
+.RI "\fISQL \fBDialect\fP for SQL Anywhere 12 - for the \fBNHibernate\fP 3\&.2\&.0 distribution Copyright (C) 2011 Glenn Paulley Contact: http://iablog.sybase.com/paulley \fP"
+.ti -1c
+.RI "class \fBTypeNames\fP"
+.br
+.RI "\fIThis class maps a DbType to names\&. \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBInsertGeneratedIdentifierRetrievalMethod\fP { \fBInsertGeneratedIdentifierRetrievalMethod\&.OutputParameter\fP, \fBInsertGeneratedIdentifierRetrievalMethod\&.ReturnValueParameter\fP }"
+.br
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBNHibernate\&.Dialect\&.InsertGeneratedIdentifierRetrievalMethod\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIOutputParameter \fP\fP
+Use a parameter with ParameterDirection\&.Output 
+.TP
+\fB\fIReturnValueParameter \fP\fP
+Use a parameter with ParameterDirection\&.ReturnValue 
+.PP
+Definition at line 3 of file InsertGeneratedIdentifierRetrievalMethod\&.cs\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

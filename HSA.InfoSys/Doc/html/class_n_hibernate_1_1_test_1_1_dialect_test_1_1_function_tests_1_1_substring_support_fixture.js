@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_dialect_test_1_1_function_tests_1_1_substring_support_fixture =
+[
+    [ "DialectShouldUseCorrectSubstringImplementation", "class_n_hibernate_1_1_test_1_1_dialect_test_1_1_function_tests_1_1_substring_support_fixture.html#a220c8ea02f105a3c467feb52507ea625", null ]
+];

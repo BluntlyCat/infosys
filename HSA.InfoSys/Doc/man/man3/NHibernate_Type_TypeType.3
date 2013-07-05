@@ -1,0 +1,195 @@
+.TH "NHibernate.Type.TypeType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.TypeType \- 
+.PP
+Maps the Assembly Qualified Name of a System\&.Type to a DbType\&.String column\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.ImmutableType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, int index)"
+.br
+.RI "\fIGets the System\&.Type in the IDataReader for the Property\&. \fP"
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, string name)"
+.br
+.RI "\fIGets the System\&.Type in the IDataReader for the Property\&. \fP"
+.ti -1c
+.RI "override void \fBSet\fP (IDbCommand cmd, object value, int index)"
+.br
+.RI "\fIPuts the Assembly Qualified Name of the System\&.Type Property into to the IDbCommand\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP (object value)"
+.br
+.RI "\fIA representation of the value to be embedded in an XML element \fP"
+.ti -1c
+.RI "override object \fBFromStringValue\fP (string xml)"
+.br
+.RI "\fIParse the XML representation of an instance \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override \fBSqlType\fP \fBSqlType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.RI "\fIGets the System\&.Type that will be returned by the \fCNullSafeGet()\fP methods\&. \fP"
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Maps the Assembly Qualified Name of a System\&.Type to a DbType\&.String column\&. 
+
+
+.PP
+Definition at line 13 of file TypeType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.TypeType\&.FromStringValue (stringxml)\fC [virtual]\fP"
+
+.PP
+Parse the XML representation of an instance 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP XML string to parse, guaranteed to be non-empty
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 125 of file TypeType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.TypeType\&.Get (IDataReaderrs, intindex)\fC [virtual]\fP"
+
+.PP
+Gets the System\&.Type in the IDataReader for the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the value\&.
+.br
+\fIindex\fP The index of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The System\&.Type from the database\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fITypeLoadException\fP Thrown when the value in the database can not be loaded as a System\&.Type 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 41 of file TypeType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.TypeType\&.Get (IDataReaderrs, stringname)\fC [virtual]\fP"
+
+.PP
+Gets the System\&.Type in the IDataReader for the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the value\&.
+.br
+\fIname\fP The name of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The System\&.Type from the database\&.
+.RE
+.PP
+.PP
+This just calls gets the index of the name in the IDataReader and calls the overloaded version Get(IDataReader, Int32) (IDataReader, Int32)\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fITypeLoadException\fP Thrown when the value in the database can not be loaded as a System\&.Type 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 75 of file TypeType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.TypeType\&.Set (IDbCommandcmd, objectvalue, intindex)\fC [virtual]\fP"
+
+.PP
+Puts the Assembly Qualified Name of the System\&.Type Property into to the IDbCommand\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP The IDbCommand to put the value into\&.
+.br
+\fIvalue\fP The System\&.Type that contains the value\&.
+.br
+\fIindex\fP The index of the IDbDataParameter to start writing the value to\&.
+.RE
+.PP
+.PP
+This uses the NullableType\&.Set(IDbCommand, Object,Int32) method of the NHibernateUtil\&.String object to do the work\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 91 of file TypeType\&.cs\&.
+.SS "override string NHibernate\&.Type\&.TypeType\&.ToString (objectvalue)\fC [virtual]\fP"
+
+.PP
+A representation of the value to be embedded in an XML element 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The System\&.Type that contains the values\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An Xml formatted string that contains the Assembly Qualified Name\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 102 of file TypeType\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.Type\&.TypeType\&.Name\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 121 of file TypeType\&.cs\&.
+.SS "override System\&.Type NHibernate\&.Type\&.TypeType\&.ReturnedClass\fC [get]\fP"
+
+.PP
+Gets the System\&.Type that will be returned by the \fCNullSafeGet()\fP methods\&. A System\&.Type from the \&.NET framework\&. 
+.PP
+Definition at line 115 of file TypeType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

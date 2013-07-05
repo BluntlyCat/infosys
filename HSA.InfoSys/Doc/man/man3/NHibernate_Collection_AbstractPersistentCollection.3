@@ -1,0 +1,929 @@
+.TH "NHibernate.Collection.AbstractPersistentCollection" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Collection.AbstractPersistentCollection \- 
+.PP
+Base class for implementing \fBIPersistentCollection\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP, \fBNHibernate\&.Collection\&.PersistentBag\fP, \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP, \fBNHibernate\&.Collection\&.PersistentList\fP, and \fBNHibernate\&.Collection\&.PersistentMap\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "interface \fBIDelayedOperation\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual object \fBGetValue\fP ()"
+.br
+.RI "\fIReturn the user-visible collection (or array) instance \fP"
+.ti -1c
+.RI "void \fBClearDirty\fP ()"
+.br
+.RI "\fIClear the dirty flag, after flushing changes to the database\&. \fP"
+.ti -1c
+.RI "void \fBDirty\fP ()"
+.br
+.RI "\fIMark the collection as dirty \fP"
+.ti -1c
+.RI "virtual void \fBRead\fP ()"
+.br
+.RI "\fICalled by any read-only method of the collection interface \fP"
+.ti -1c
+.RI "void \fBSetSnapshot\fP (object key, string role, object snapshot)"
+.br
+.RI "\fIAfter flushing, re-init snapshot state\&.\fP"
+.ti -1c
+.RI "virtual void \fBPostAction\fP ()"
+.br
+.RI "\fIClears out any Queued operation\&. \fP"
+.ti -1c
+.RI "virtual void \fBBeginRead\fP ()"
+.br
+.RI "\fICalled just before reading any rows from the IDataReader \fP"
+.ti -1c
+.RI "virtual bool \fBEndRead\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fICalled after reading all rows from the IDataReader \fP"
+.ti -1c
+.RI "virtual bool \fBAfterInitialize\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fICalled after initializing from cache \fP"
+.ti -1c
+.RI "bool \fBUnsetSession\fP (\fBISessionImplementor\fP currentSession)"
+.br
+.RI "\fIDisassociate this collection from the given session\&. \fP"
+.ti -1c
+.RI "virtual bool \fBSetCurrentSession\fP (\fBISessionImplementor\fP session)"
+.br
+.RI "\fIAssociate the collection with the given session\&. \fP"
+.ti -1c
+.RI "virtual bool \fBNeedsRecreate\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fIGets a Boolean indicating if the rows for this collection need to be recreated in the table\&. \fP"
+.ti -1c
+.RI "virtual void \fBForceInitialization\fP ()"
+.br
+.RI "\fITo be called internally by the session, forcing immediate initalization\&. \fP"
+.ti -1c
+.RI "ICollection \fBGetQueuedOrphans\fP (string entityName)"
+.br
+.RI "\fIGet the 'queued' orphans\fP"
+.ti -1c
+.RI "virtual void \fBPreInsert\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fICalled before inserting rows, to ensure that any surrogate keys are fully generated \fP"
+.ti -1c
+.RI "virtual void \fBAfterRowInsert\fP (\fBICollectionPersister\fP persister, object entry, int i, object id)"
+.br
+.RI "\fICalled after inserting a row, to fetch the natively generated id \fP"
+.ti -1c
+.RI "abstract ICollection \fBGetOrphans\fP (object snapshot, string entityName)"
+.br
+.RI "\fIGet all 'orphaned' elements \fP"
+.ti -1c
+.RI "void \fBIdentityRemove\fP (IList list, object obj, string entityName, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "virtual object \fBGetIdentifier\fP (object entry, int i)"
+.br
+.RI "\fIGet the identifier of the given collection entry \fP"
+.ti -1c
+.RI "abstract object \fBDisassemble\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fIDisassemble the collection, ready for the cache \fP"
+.ti -1c
+.RI "abstract bool \fBIsWrapper\fP (object collection)"
+.br
+.RI "\fIIs this the wrapper for the given underlying collection instance? \fP"
+.ti -1c
+.RI "abstract bool \fBEntryExists\fP (object entry, int i)"
+.br
+.RI "\fIDoes an element exist at this entry in the collection? \fP"
+.ti -1c
+.RI "abstract IEnumerable \fBGetDeletes\fP (\fBICollectionPersister\fP persister, bool indexIsFormula)"
+.br
+.RI "\fIGet all the elements that need deleting \fP"
+.ti -1c
+.RI "abstract bool \fBIsSnapshotEmpty\fP (object snapshot)"
+.br
+.RI "\fIIs the snapshot empty?\fP"
+.ti -1c
+.RI "abstract IEnumerable \fBEntries\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fIIterate all collection entries, during update of the database \fP"
+.ti -1c
+.RI "abstract object \fBGetSnapshot\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fIReturn a new snapshot of the current state of the collection \fP"
+.ti -1c
+.RI "abstract bool \fBEqualsSnapshot\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fIDoes the current state exactly match the snapshot? \fP"
+.ti -1c
+.RI "abstract object \fBGetElement\fP (object entry)"
+.br
+.RI "\fIGet the value of the given collection entry \fP"
+.ti -1c
+.RI "abstract void \fBInitializeFromCache\fP (\fBICollectionPersister\fP persister, object disassembled, object owner)"
+.br
+.RI "\fIRead the state of the collection from a disassembled cached value\&. \fP"
+.ti -1c
+.RI "abstract bool \fBNeedsUpdating\fP (object entry, int i, \fBIType\fP elemType)"
+.br
+.RI "\fIDo we need to update this element? \fP"
+.ti -1c
+.RI "abstract object \fBReadFrom\fP (IDataReader reader, \fBICollectionPersister\fP role, \fBICollectionAliases\fP descriptor, object owner)"
+.br
+.RI "\fIReads the row from the IDataReader\&. \fP"
+.ti -1c
+.RI "abstract object \fBGetSnapshotElement\fP (object entry, int i)"
+.br
+.RI "\fIGet the snapshot value of the given collection entry \fP"
+.ti -1c
+.RI "abstract bool \fBNeedsInserting\fP (object entry, int i, \fBIType\fP elemType)"
+.br
+.RI "\fIDo we need to insert this element? \fP"
+.ti -1c
+.RI "abstract object \fBGetIndex\fP (object entry, int i, \fBICollectionPersister\fP persister)"
+.br
+.RI "\fIGet the index of the given collection entry \fP"
+.ti -1c
+.RI "abstract void \fBBeforeInitialize\fP (\fBICollectionPersister\fP persister, int anticipatedSize)"
+.br
+.RI "\fICalled before any elements are read into the collection, allowing appropriate initializations to occur\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractPersistentCollection\fP ()"
+.br
+.RI "\fINot called by Hibernate, but used by non-NET serialization, eg\&. SOAP libraries\&. \fP"
+.ti -1c
+.RI "\fBAbstractPersistentCollection\fP (\fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "virtual bool \fBReadSize\fP ()"
+.br
+.RI "\fICalled by the \fCCount\fP property\fP"
+.ti -1c
+.RI "virtual bool \fBReadIndexExistence\fP (object index)"
+.br
+.ti -1c
+.RI "virtual bool \fBReadElementExistence\fP (object element)"
+.br
+.ti -1c
+.RI "virtual object \fBReadElementByIndex\fP (object index)"
+.br
+.ti -1c
+.RI "virtual void \fBWrite\fP ()"
+.br
+.RI "\fICalled by any writer method of the collection interface \fP"
+.ti -1c
+.RI "virtual void \fBQueueOperation\fP (\fBIDelayedOperation\fP element)"
+.br
+.RI "\fIQueue an addition, delete etc\&. if the persistent collection supports it \fP"
+.ti -1c
+.RI "virtual void \fBPerformQueuedOperations\fP ()"
+.br
+.RI "\fIAfter reading all existing elements from the database, add the queued elements to the underlying collection\&. \fP"
+.ti -1c
+.RI "virtual void \fBInitialize\fP (bool writing)"
+.br
+.RI "\fIInitialize the collection, if possible, wrapping any exceptions in a runtime exception \fP"
+.ti -1c
+.RI "void \fBThrowLazyInitializationExceptionIfNotConnected\fP ()"
+.br
+.ti -1c
+.RI "void \fBThrowLazyInitializationException\fP (string message)"
+.br
+.ti -1c
+.RI "virtual void \fBSetInitialized\fP ()"
+.br
+.RI "\fIMark the collection as initialized\&. \fP"
+.ti -1c
+.RI "virtual object \fBGetSnapshot\fP ()"
+.br
+.RI "\fIGets the Snapshot from the current session the collection is in\&. \fP"
+.ti -1c
+.RI "virtual ICollection \fBGetOrphans\fP (ICollection oldElements, ICollection currentElements, string entityName, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGiven a collection of entity instances that used to belong to the collection, and a collection of instances that currently belong, return a collection of orphans \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBRole\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "object \fBKey\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsUnreferenced\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsDirty\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "object \fBStoredSnapshot\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBCachedSize\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsConnectedToSession\fP\fC [get]\fP"
+.br
+.RI "\fIIs the collection currently connected to an open session? \fP"
+.ti -1c
+.RI "bool \fBIsOperationQueueEnabled\fP\fC [get]\fP"
+.br
+.RI "\fIIs this collection in a state that would allow us to 'queue' additions? \fP"
+.ti -1c
+.RI "bool \fBPutQueueEnabled\fP\fC [get]\fP"
+.br
+.RI "\fIIs this collection in a state that would allow us to 'queue' puts? This is a special case, because of orphan delete\&. \fP"
+.ti -1c
+.RI "bool \fBClearQueueEnabled\fP\fC [get]\fP"
+.br
+.RI "\fIIs this collection in a state that would allow us to 'queue' clear? This is a special case, because of orphan delete\&. \fP"
+.ti -1c
+.RI "bool \fBIsInverseCollection\fP\fC [get]\fP"
+.br
+.RI "\fIIs this the 'inverse' end of a bidirectional association?\fP"
+.ti -1c
+.RI "bool \fBInverseCollectionNoOrphanDelete\fP\fC [get]\fP"
+.br
+.RI "\fIIs this the 'inverse' end of a bidirectional association with no orphan delete enabled? \fP"
+.ti -1c
+.RI "bool \fBInverseOneToManyOrNoOrphanDelete\fP\fC [get]\fP"
+.br
+.RI "\fIIs this the 'inverse' end of a bidirectional one-to-many, or of a collection with no orphan delete? \fP"
+.ti -1c
+.RI "virtual bool \fBRowUpdatePossible\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBISessionImplementor\fP \fBSession\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual object \fBOwner\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "abstract bool \fBEmpty\fP\fC [get]\fP"
+.br
+.RI "\fIIs the initialized collection empty? \fP"
+.ti -1c
+.RI "virtual bool \fBIsDirectlyAccessible\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets a Boolean indicating if the underlying collection is directly accessible through code\&. \fP"
+.ti -1c
+.RI "bool \fBWasInitialized\fP\fC [get]\fP"
+.br
+.RI "\fIIs this instance initialized?\fP"
+.ti -1c
+.RI "bool \fBHasQueuedOperations\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this instance have any 'queued' additions?\fP"
+.ti -1c
+.RI "IEnumerable \fBQueuedAdditionIterator\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for implementing \fBIPersistentCollection\fP\&. 
+
+
+.PP
+Definition at line 18 of file AbstractPersistentCollection\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Collection\&.AbstractPersistentCollection\&.AbstractPersistentCollection ()\fC [protected]\fP"
+
+.PP
+Not called by Hibernate, but used by non-NET serialization, eg\&. SOAP libraries\&. 
+.PP
+Definition at line 102 of file AbstractPersistentCollection\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.AfterInitialize (\fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Called after initializing from cache 
+.PP
+\fBReturns:\fP
+.RS 4
+true if NOT has Queued operations 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Collection\&.PersistentBag\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2278\&.CustomPersistentIdentifierBag< T >\fP\&.
+.PP
+Definition at line 433 of file AbstractPersistentCollection\&.cs\&.
+.SS "virtual void NHibernate\&.Collection\&.AbstractPersistentCollection\&.AfterRowInsert (\fBICollectionPersister\fPpersister, objectentry, inti, objectid)\fC [virtual]\fP"
+
+.PP
+Called after inserting a row, to fetch the natively generated id 
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP\&.
+.PP
+Definition at line 681 of file AbstractPersistentCollection\&.cs\&.
+.SS "abstract void NHibernate\&.Collection\&.AbstractPersistentCollection\&.BeforeInitialize (\fBICollectionPersister\fPpersister, intanticipatedSize)\fC [pure virtual]\fP"
+
+.PP
+Called before any elements are read into the collection, allowing appropriate initializations to occur\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The underlying collection persister\&. 
+.br
+\fIanticipatedSize\fP The anticipated size of the collection after initilization is complete\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP, \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP, \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, \fBNHibernate\&.Collection\&.PersistentList\fP, \fBNHibernate\&.Collection\&.PersistentMap\fP, \fBNHibernate\&.Collection\&.PersistentBag\fP, \fBNHibernate\&.Collection\&.Generic\&.PersistentIdentifierBag< T >\fP, \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericBag< T >\fP, \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericList< T >\fP, and \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericMap< TKey, TValue >\fP\&.
+.SS "virtual void NHibernate\&.Collection\&.AbstractPersistentCollection\&.BeginRead ()\fC [virtual]\fP"
+
+.PP
+Called just before reading any rows from the IDataReader 
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, and \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP\&.
+.PP
+Definition at line 414 of file AbstractPersistentCollection\&.cs\&.
+.SS "void NHibernate\&.Collection\&.AbstractPersistentCollection\&.ClearDirty ()"
+
+.PP
+Clear the dirty flag, after flushing changes to the database\&. 
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Definition at line 243 of file AbstractPersistentCollection\&.cs\&.
+.SS "void NHibernate\&.Collection\&.AbstractPersistentCollection\&.Dirty ()"
+
+.PP
+Mark the collection as dirty 
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Definition at line 248 of file AbstractPersistentCollection\&.cs\&.
+.SS "abstract object NHibernate\&.Collection\&.AbstractPersistentCollection\&.Disassemble (\fBICollectionPersister\fPpersister)\fC [pure virtual]\fP"
+
+.PP
+Disassemble the collection, ready for the cache 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP, \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, \fBNHibernate\&.Collection\&.PersistentList\fP, \fBNHibernate\&.Collection\&.PersistentBag\fP, \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP, and \fBNHibernate\&.Collection\&.PersistentMap\fP\&.
+.SS "virtual bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.EndRead (\fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Called after reading all rows from the IDataReader This should be overridden by sub collections that use temporary collections to store values read from the db\&. 
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, and \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP\&.
+.PP
+Definition at line 427 of file AbstractPersistentCollection\&.cs\&.
+.SS "abstract IEnumerable NHibernate\&.Collection\&.AbstractPersistentCollection\&.Entries (\fBICollectionPersister\fPpersister)\fC [pure virtual]\fP"
+
+.PP
+Iterate all collection entries, during update of the database 
+.PP
+\fBReturns:\fP
+.RS 4
+An IEnumerable that gives access to all entries in the collection\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP, \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP, \fBNHibernate\&.Collection\&.PersistentList\fP, \fBNHibernate\&.Collection\&.PersistentMap\fP, and \fBNHibernate\&.Collection\&.PersistentBag\fP\&.
+.SS "abstract bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.EntryExists (objectentry, inti)\fC [pure virtual]\fP"
+
+.PP
+Does an element exist at this entry in the collection? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentry\fP 
+.br
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Collection\&.PersistentBag\fP, \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP, \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, \fBNHibernate\&.Collection\&.PersistentList\fP, \fBNHibernate\&.Collection\&.PersistentMap\fP, \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP, and \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericMap< TKey, TValue >\fP\&.
+.SS "abstract bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.EqualsSnapshot (\fBICollectionPersister\fPpersister)\fC [pure virtual]\fP"
+
+.PP
+Does the current state exactly match the snapshot? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The ICollectionPersister to compare the elements of the \fBCollection\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+if the wrapped collection is different than the snapshot of the collection or if one of the elements in the collection is dirty\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP, \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP, \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, \fBNHibernate\&.Collection\&.PersistentBag\fP, \fBNHibernate\&.Collection\&.PersistentList\fP, and \fBNHibernate\&.Collection\&.PersistentMap\fP\&.
+.SS "virtual void NHibernate\&.Collection\&.AbstractPersistentCollection\&.ForceInitialization ()\fC [virtual]\fP"
+
+.PP
+To be called internally by the session, forcing immediate initalization\&. This method is similar to \fBInitialize\fP, except that different exceptions are thrown\&. 
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Definition at line 592 of file AbstractPersistentCollection\&.cs\&.
+.SS "abstract IEnumerable NHibernate\&.Collection\&.AbstractPersistentCollection\&.GetDeletes (\fBICollectionPersister\fPpersister, boolindexIsFormula)\fC [pure virtual]\fP"
+
+.PP
+Get all the elements that need deleting 
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP, \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, \fBNHibernate\&.Collection\&.PersistentBag\fP, \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP, \fBNHibernate\&.Collection\&.PersistentList\fP, \fBNHibernate\&.Collection\&.PersistentMap\fP, and \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericMap< TKey, TValue >\fP\&.
+.SS "abstract object NHibernate\&.Collection\&.AbstractPersistentCollection\&.GetElement (objectentry)\fC [pure virtual]\fP"
+
+.PP
+Get the value of the given collection entry 
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Collection\&.PersistentBag\fP, \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP, \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP, \fBNHibernate\&.Collection\&.PersistentList\fP, \fBNHibernate\&.Collection\&.PersistentMap\fP, and \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericMap< TKey, TValue >\fP\&.
+.SS "virtual object NHibernate\&.Collection\&.AbstractPersistentCollection\&.GetIdentifier (objectentry, inti)\fC [virtual]\fP"
+
+.PP
+Get the identifier of the given collection entry 
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP\&.
+.PP
+Definition at line 764 of file AbstractPersistentCollection\&.cs\&.
+.SS "abstract object NHibernate\&.Collection\&.AbstractPersistentCollection\&.GetIndex (objectentry, inti, \fBICollectionPersister\fPpersister)\fC [pure virtual]\fP"
+
+.PP
+Get the index of the given collection entry 
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Collection\&.PersistentBag\fP, \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP, \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP, \fBNHibernate\&.Collection\&.PersistentList\fP, \fBNHibernate\&.Collection\&.PersistentMap\fP, and \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericMap< TKey, TValue >\fP\&.
+.SS "abstract ICollection NHibernate\&.Collection\&.AbstractPersistentCollection\&.GetOrphans (objectsnapshot, stringentityName)\fC [pure virtual]\fP"
+
+.PP
+Get all 'orphaned' elements 
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP, \fBNHibernate\&.Collection\&.PersistentBag\fP, \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP, \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, \fBNHibernate\&.Collection\&.PersistentList\fP, and \fBNHibernate\&.Collection\&.PersistentMap\fP\&.
+.SS "virtual ICollection NHibernate\&.Collection\&.AbstractPersistentCollection\&.GetOrphans (ICollectionoldElements, ICollectioncurrentElements, stringentityName, \fBISessionImplementor\fPsession)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Given a collection of entity instances that used to belong to the collection, and a collection of instances that currently belong, return a collection of orphans 
+.PP
+Definition at line 693 of file AbstractPersistentCollection\&.cs\&.
+.SS "ICollection NHibernate\&.Collection\&.AbstractPersistentCollection\&.GetQueuedOrphans (stringentityName)"
+
+.PP
+Get the 'queued' orphans
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Definition at line 648 of file AbstractPersistentCollection\&.cs\&.
+.SS "virtual object NHibernate\&.Collection\&.AbstractPersistentCollection\&.GetSnapshot ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Gets the Snapshot from the current session the collection is in\&. 
+.PP
+Definition at line 615 of file AbstractPersistentCollection\&.cs\&.
+.SS "abstract object NHibernate\&.Collection\&.AbstractPersistentCollection\&.GetSnapshot (\fBICollectionPersister\fPpersister)\fC [pure virtual]\fP"
+
+.PP
+Return a new snapshot of the current state of the collection 
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP, \fBNHibernate\&.Collection\&.PersistentBag\fP, \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP, \fBNHibernate\&.Collection\&.PersistentList\fP, \fBNHibernate\&.Collection\&.PersistentMap\fP, and \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericMap< TKey, TValue >\fP\&.
+.SS "abstract object NHibernate\&.Collection\&.AbstractPersistentCollection\&.GetSnapshotElement (objectentry, inti)\fC [pure virtual]\fP"
+
+.PP
+Get the snapshot value of the given collection entry 
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Collection\&.PersistentBag\fP, \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP, \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP, \fBNHibernate\&.Collection\&.PersistentList\fP, \fBNHibernate\&.Collection\&.PersistentMap\fP, and \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericMap< TKey, TValue >\fP\&.
+.SS "virtual object NHibernate\&.Collection\&.AbstractPersistentCollection\&.GetValue ()\fC [virtual]\fP"
+
+.PP
+Return the user-visible collection (or array) instance 
+.PP
+\fBReturns:\fP
+.RS 4
+By default, the \fBNHibernate\fP wrapper is an acceptable collection for the end user code to work with because it is interface compatible\&. An \fBNHibernate\fP \fBPersistentList\fP is an IList, an \fBNHibernate\fP \fBPersistentMap\fP is an IDictionary and those are the types user code is expecting\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP\&.
+.PP
+Definition at line 221 of file AbstractPersistentCollection\&.cs\&.
+.SS "virtual void NHibernate\&.Collection\&.AbstractPersistentCollection\&.Initialize (boolwriting)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Initialize the collection, if possible, wrapping any exceptions in a runtime exception 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriting\fP currently obsolete
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBLazyInitializationException\fP\fP if we cannot initialize
+.RE
+.PP
+
+.PP
+Definition at line 456 of file AbstractPersistentCollection\&.cs\&.
+.SS "abstract void NHibernate\&.Collection\&.AbstractPersistentCollection\&.InitializeFromCache (\fBICollectionPersister\fPpersister, objectdisassembled, objectowner)\fC [pure virtual]\fP"
+
+.PP
+Read the state of the collection from a disassembled cached value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP 
+.br
+\fIdisassembled\fP 
+.br
+\fIowner\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP, \fBNHibernate\&.Collection\&.PersistentBag\fP, \fBNHibernate\&.Collection\&.PersistentList\fP, \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, \fBNHibernate\&.Collection\&.PersistentMap\fP, and \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP\&.
+.SS "abstract bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.IsSnapshotEmpty (objectsnapshot)\fC [pure virtual]\fP"
+
+.PP
+Is the snapshot empty?
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP, \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, \fBNHibernate\&.Collection\&.PersistentBag\fP, \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP, \fBNHibernate\&.Collection\&.PersistentList\fP, and \fBNHibernate\&.Collection\&.PersistentMap\fP\&.
+.SS "abstract bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.IsWrapper (objectcollection)\fC [pure virtual]\fP"
+
+.PP
+Is this the wrapper for the given underlying collection instance? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP, \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP, \fBNHibernate\&.Collection\&.PersistentList\fP, \fBNHibernate\&.Collection\&.PersistentMap\fP, and \fBNHibernate\&.Collection\&.PersistentBag\fP\&.
+.SS "abstract bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.NeedsInserting (objectentry, inti, \fBIType\fPelemType)\fC [pure virtual]\fP"
+
+.PP
+Do we need to insert this element? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentry\fP 
+.br
+\fIi\fP 
+.br
+\fIelemType\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP, \fBNHibernate\&.Collection\&.PersistentBag\fP, \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP, \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, \fBNHibernate\&.Collection\&.PersistentList\fP, \fBNHibernate\&.Collection\&.PersistentMap\fP, and \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericMap< TKey, TValue >\fP\&.
+.SS "virtual bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.NeedsRecreate (\fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Gets a Boolean indicating if the rows for this collection need to be recreated in the table\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The ICollectionPersister for this \fBCollection\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+by default since most collections can determine which rows need to be individually updated/inserted/deleted\&. Currently only \fBPersistentBag\fP's for \fCmany-to-many\fP need to be recreated\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Collection\&.PersistentBag\fP\&.
+.PP
+Definition at line 580 of file AbstractPersistentCollection\&.cs\&.
+.SS "abstract bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.NeedsUpdating (objectentry, inti, \fBIType\fPelemType)\fC [pure virtual]\fP"
+
+.PP
+Do we need to update this element? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentry\fP 
+.br
+\fIi\fP 
+.br
+\fIelemType\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Collection\&.PersistentBag\fP, \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP, \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP, \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, \fBNHibernate\&.Collection\&.PersistentList\fP, \fBNHibernate\&.Collection\&.PersistentMap\fP, and \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericMap< TKey, TValue >\fP\&.
+.SS "virtual void NHibernate\&.Collection\&.AbstractPersistentCollection\&.PerformQueuedOperations ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+After reading all existing elements from the database, add the queued elements to the underlying collection\&. 
+.PP
+Definition at line 382 of file AbstractPersistentCollection\&.cs\&.
+.SS "virtual void NHibernate\&.Collection\&.AbstractPersistentCollection\&.PostAction ()\fC [virtual]\fP"
+
+.PP
+Clears out any Queued operation\&. After flushing, clear any 'queued' additions, since the database state is now synchronized with the memory state\&. 
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Definition at line 404 of file AbstractPersistentCollection\&.cs\&.
+.SS "virtual void NHibernate\&.Collection\&.AbstractPersistentCollection\&.PreInsert (\fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Called before inserting rows, to ensure that any surrogate keys are fully generated 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP\&.
+.PP
+Definition at line 676 of file AbstractPersistentCollection\&.cs\&.
+.SS "virtual void NHibernate\&.Collection\&.AbstractPersistentCollection\&.QueueOperation (\fBIDelayedOperation\fPelement)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Queue an addition, delete etc\&. if the persistent collection supports it 
+.PP
+Definition at line 368 of file AbstractPersistentCollection\&.cs\&.
+.SS "virtual void NHibernate\&.Collection\&.AbstractPersistentCollection\&.Read ()\fC [virtual]\fP"
+
+.PP
+Called by any read-only method of the collection interface 
+.PP
+Definition at line 261 of file AbstractPersistentCollection\&.cs\&.
+.SS "abstract object NHibernate\&.Collection\&.AbstractPersistentCollection\&.ReadFrom (IDataReaderreader, \fBICollectionPersister\fProle, \fBICollectionAliases\fPdescriptor, objectowner)\fC [pure virtual]\fP"
+
+.PP
+Reads the row from the IDataReader\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The IDataReader that contains the value of the Identifier
+.br
+\fIrole\fP The persister for this \fBCollection\fP\&.
+.br
+\fIdescriptor\fP The descriptor providing result set column names
+.br
+\fIowner\fP The owner of this \fBCollection\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The object that was contained in the row\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Collection\&.PersistentIdentifierBag\fP, \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericSet< T >\fP, \fBNHibernate\&.Collection\&.PersistentArrayHolder\fP, \fBNHibernate\&.Collection\&.PersistentList\fP, \fBNHibernate\&.Collection\&.PersistentMap\fP, and \fBNHibernate\&.Collection\&.PersistentBag\fP\&.
+.SS "virtual bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.ReadSize ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called by the \fCCount\fP property
+.PP
+Definition at line 267 of file AbstractPersistentCollection\&.cs\&.
+.SS "virtual bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.SetCurrentSession (\fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Associate the collection with the given session\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+false if the collection was already associated with the session
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Definition at line 540 of file AbstractPersistentCollection\&.cs\&.
+.SS "virtual void NHibernate\&.Collection\&.AbstractPersistentCollection\&.SetInitialized ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Mark the collection as initialized\&. 
+.PP
+Definition at line 491 of file AbstractPersistentCollection\&.cs\&.
+.SS "void NHibernate\&.Collection\&.AbstractPersistentCollection\&.SetSnapshot (objectkey, stringrole, objectsnapshot)"
+
+.PP
+After flushing, re-init snapshot state\&.
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Definition at line 390 of file AbstractPersistentCollection\&.cs\&.
+.SS "bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.UnsetSession (\fBISessionImplementor\fPcurrentSession)"
+
+.PP
+Disassociate this collection from the given session\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcurrentSession\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if this was currently associated with the given session
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.IPersistentCollection\fP\&.
+.PP
+Definition at line 522 of file AbstractPersistentCollection\&.cs\&.
+.SS "virtual void NHibernate\&.Collection\&.AbstractPersistentCollection\&.Write ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called by any writer method of the collection interface 
+.PP
+Definition at line 359 of file AbstractPersistentCollection\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.ClearQueueEnabled\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Is this collection in a state that would allow us to 'queue' clear? This is a special case, because of orphan delete\&. 
+.PP
+Definition at line 170 of file AbstractPersistentCollection\&.cs\&.
+.SS "abstract bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.Empty\fC [get]\fP"
+
+.PP
+Is the initialized collection empty? 
+.PP
+Definition at line 256 of file AbstractPersistentCollection\&.cs\&.
+.SS "bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.HasQueuedOperations\fC [get]\fP"
+
+.PP
+Does this instance have any 'queued' additions?
+.PP
+Definition at line 628 of file AbstractPersistentCollection\&.cs\&.
+.SS "bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.InverseCollectionNoOrphanDelete\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Is this the 'inverse' end of a bidirectional association with no orphan delete enabled? 
+.PP
+Definition at line 189 of file AbstractPersistentCollection\&.cs\&.
+.SS "bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.InverseOneToManyOrNoOrphanDelete\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Is this the 'inverse' end of a bidirectional one-to-many, or of a collection with no orphan delete? 
+.PP
+Definition at line 202 of file AbstractPersistentCollection\&.cs\&.
+.SS "bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.IsConnectedToSession\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Is the collection currently connected to an open session? 
+.PP
+Definition at line 144 of file AbstractPersistentCollection\&.cs\&.
+.SS "virtual bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.IsDirectlyAccessible\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets a Boolean indicating if the underlying collection is directly accessible through code\&. if we are not guaranteed that the \fBNHibernate\fP collection wrapper is being used\&. 
+.PP
+This is typically  whenever a transient object that contains a collection is being associated with an \fBISession\fP through \fBISession\&.Save(object)\fP or \fBISession\&.SaveOrUpdate(object)\fP\&. \fBNHibernate\fP can't guarantee that it will know about all operations that would cause \fBNHibernate\fP's collections to call \fBRead()\fP or \fBWrite\fP\&. 
+.PP
+Definition at line 512 of file AbstractPersistentCollection\&.cs\&.
+.SS "bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.IsInverseCollection\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Is this the 'inverse' end of a bidirectional association?
+.PP
+Definition at line 176 of file AbstractPersistentCollection\&.cs\&.
+.SS "bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.IsOperationQueueEnabled\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Is this collection in a state that would allow us to 'queue' additions? 
+.PP
+Definition at line 152 of file AbstractPersistentCollection\&.cs\&.
+.SS "bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.PutQueueEnabled\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Is this collection in a state that would allow us to 'queue' puts? This is a special case, because of orphan delete\&. 
+.PP
+Definition at line 161 of file AbstractPersistentCollection\&.cs\&.
+.SS "IEnumerable NHibernate\&.Collection\&.AbstractPersistentCollection\&.QueuedAdditionIterator\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 634 of file AbstractPersistentCollection\&.cs\&.
+.SS "virtual \fBISessionImplementor\fP NHibernate\&.Collection\&.AbstractPersistentCollection\&.Session\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+
+.PP
+Definition at line 233 of file AbstractPersistentCollection\&.cs\&.
+.SS "bool NHibernate\&.Collection\&.AbstractPersistentCollection\&.WasInitialized\fC [get]\fP"
+
+.PP
+Is this instance initialized?
+.PP
+Definition at line 622 of file AbstractPersistentCollection\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

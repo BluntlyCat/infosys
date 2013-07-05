@@ -1,0 +1,85 @@
+.TH "log4net.Repository.Hierarchy.RootLogger" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Repository.Hierarchy.RootLogger \- 
+.PP
+The \fBRootLogger\fP sits at the root of the logger hierarchy tree\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Repository\&.Hierarchy\&.Logger\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRootLogger\fP (\fBLevel\fP level)"
+.br
+.RI "\fIConstruct a \fBRootLogger\fP \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override \fBLevel\fP \fBEffectiveLevel\fP\fC [get]\fP"
+.br
+.RI "\fIGets the assigned level value without walking the logger hierarchy\&. \fP"
+.ti -1c
+.RI "override \fBLevel\fP \fBLevel\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the assigned \fBLevel\fP for the root logger\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+The \fBRootLogger\fP sits at the root of the logger hierarchy tree\&. 
+
+The \fBRootLogger\fP is a regular \fBLogger\fP except that it provides several guarantees\&. 
+.PP
+First, it cannot be assigned a \fCnull\fP level\&. Second, since the root logger cannot have a parent, the \fBEffectiveLevel\fP property always returns the value of the level field without walking the hierarchy\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 44 of file RootLogger\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Repository\&.Hierarchy\&.RootLogger\&.RootLogger (\fBLevel\fPlevel)"
+
+.PP
+Construct a \fBRootLogger\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlevel\fP The level to assign to the root logger\&.
+.RE
+.PP
+.PP
+Initializes a new instance of the \fBRootLogger\fP class with the specified logging level\&. 
+.PP
+The root logger names itself as 'root'\&. However, the root logger cannot be retrieved by name\&. 
+.PP
+Definition at line 62 of file RootLogger\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override \fBLevel\fP log4net\&.Repository\&.Hierarchy\&.RootLogger\&.EffectiveLevel\fC [get]\fP"
+
+.PP
+Gets the assigned level value without walking the logger hierarchy\&. The assigned level value without walking the logger hierarchy\&.
+.PP
+Because the root logger cannot have a parent and its level must not be \fCnull\fP this property just returns the value of \fBLogger\&.Level\fP\&. 
+.PP
+Definition at line 83 of file RootLogger\&.cs\&.
+.SS "override \fBLevel\fP log4net\&.Repository\&.Hierarchy\&.RootLogger\&.Level\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the assigned \fBLevel\fP for the root logger\&. The \fBLevel\fP of the root logger\&. 
+.PP
+Setting the level of the root logger to a \fCnull\fP reference may have catastrophic results\&. We prevent this here\&. 
+.PP
+Definition at line 103 of file RootLogger\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,240 @@
+.TH "Newtonsoft.Json.JsonTextReader" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.JsonTextReader \- 
+.PP
+Represents a reader that provides fast, non-cached, forward-only access to JSON text data\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNewtonsoft\&.Json\&.JsonReader\fP, and \fBNewtonsoft\&.Json\&.IJsonLineInfo\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJsonTextReader\fP (TextReader reader)"
+.br
+.RI "\fIInitializes a new instance of the \fBJsonReader\fP class with the specified TextReader\&. \fP"
+.ti -1c
+.RI "override bool \fBRead\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream\&. \fP"
+.ti -1c
+.RI "override byte[] \fBReadAsBytes\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a T:Byte[]\&. \fP"
+.ti -1c
+.RI "override decimal \fBReadAsDecimal\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{Decimal}\&. \fP"
+.ti -1c
+.RI "override int \fBReadAsInt32\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{Int32}\&. \fP"
+.ti -1c
+.RI "override string \fBReadAsString\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a \fBString\fP\&. \fP"
+.ti -1c
+.RI "override \fBDateTime\fP \fBReadAsDateTime\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{DateTime}\&. \fP"
+.ti -1c
+.RI "override \fBDateTimeOffset\fP \fBReadAsDateTimeOffset\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{DateTimeOffset}\&. \fP"
+.ti -1c
+.RI "override void \fBClose\fP ()"
+.br
+.RI "\fIChanges the state to closed\&. \fP"
+.ti -1c
+.RI "bool \fBHasLineInfo\fP ()"
+.br
+.RI "\fIGets a value indicating whether the class can return line information\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBLineNumber\fP\fC [get]\fP"
+.br
+.RI "\fIGets the current line number\&. \fP"
+.ti -1c
+.RI "int \fBLinePosition\fP\fC [get]\fP"
+.br
+.RI "\fIGets the current line position\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Represents a reader that provides fast, non-cached, forward-only access to JSON text data\&. 
+
+
+.PP
+Definition at line 56 of file JsonTextReader\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Newtonsoft\&.Json\&.JsonTextReader\&.JsonTextReader (TextReaderreader)"
+
+.PP
+Initializes a new instance of the \fBJsonReader\fP class with the specified TextReader\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The \fCTextReader\fP containing the XML data to read\&.
+.RE
+.PP
+
+.PP
+Definition at line 74 of file JsonTextReader\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void Newtonsoft\&.Json\&.JsonTextReader\&.Close ()\fC [virtual]\fP"
+
+.PP
+Changes the state to closed\&. 
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 1518 of file JsonTextReader\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.JsonTextReader\&.HasLineInfo ()"
+
+.PP
+Gets a value indicating whether the class can return line information\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if LineNumber and LinePosition can be provided; otherwise, \fCfalse\fP\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.IJsonLineInfo\fP\&.
+.PP
+Definition at line 1539 of file JsonTextReader\&.cs\&.
+.SS "override bool Newtonsoft\&.Json\&.JsonTextReader\&.Read ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the next token was read successfully; false if there are no more tokens to read\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 301 of file JsonTextReader\&.cs\&.
+.SS "override byte [] Newtonsoft\&.Json\&.JsonTextReader\&.ReadAsBytes ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a T:Byte[]\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A T:Byte[] or a null reference if the next JSON token is null\&. This method will return \fCnull\fP at the end of an array\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 319 of file JsonTextReader\&.cs\&.
+.SS "override \fBDateTime\fP Newtonsoft\&.Json\&.JsonTextReader\&.ReadAsDateTime ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{DateTime}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBString\fP\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 355 of file JsonTextReader\&.cs\&.
+.SS "override \fBDateTimeOffset\fP Newtonsoft\&.Json\&.JsonTextReader\&.ReadAsDateTimeOffset ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{DateTimeOffset}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBDateTimeOffset\fP\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 365 of file JsonTextReader\&.cs\&.
+.SS "override decimal Newtonsoft\&.Json\&.JsonTextReader\&.ReadAsDecimal ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{Decimal}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A Nullable{Decimal}\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 328 of file JsonTextReader\&.cs\&.
+.SS "override int Newtonsoft\&.Json\&.JsonTextReader\&.ReadAsInt32 ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{Int32}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A Nullable{Int32}\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 337 of file JsonTextReader\&.cs\&.
+.SS "override string Newtonsoft\&.Json\&.JsonTextReader\&.ReadAsString ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a \fBString\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBString\fP\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 346 of file JsonTextReader\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int Newtonsoft\&.Json\&.JsonTextReader\&.LineNumber\fC [get]\fP"
+
+.PP
+Gets the current line number\&. The current line number or 0 if no line information is available (for example, HasLineInfo returns false)\&. 
+.PP
+Definition at line 1551 of file JsonTextReader\&.cs\&.
+.SS "int Newtonsoft\&.Json\&.JsonTextReader\&.LinePosition\fC [get]\fP"
+
+.PP
+Gets the current line position\&. The current line position or 0 if no line information is available (for example, HasLineInfo returns false)\&. 
+.PP
+Definition at line 1568 of file JsonTextReader\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

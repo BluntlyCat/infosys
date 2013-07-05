@@ -1,0 +1,168 @@
+.TH "log4net.Util.CyclicBuffer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.CyclicBuffer \- 
+.PP
+A fixed size rolling buffer of logging events\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCyclicBuffer\fP (int maxSize)"
+.br
+.RI "\fIConstructor \fP"
+.ti -1c
+.RI "\fBLoggingEvent\fP \fBAppend\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIAppends a \fIloggingEvent\fP  to the buffer\&. \fP"
+.ti -1c
+.RI "\fBLoggingEvent\fP \fBPopOldest\fP ()"
+.br
+.RI "\fIGet and remove the oldest event in the buffer\&. \fP"
+.ti -1c
+.RI "\fBLoggingEvent\fP[] \fBPopAll\fP ()"
+.br
+.RI "\fIPops all the logging events from the buffer into an array\&. \fP"
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.RI "\fIClear the buffer \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBLoggingEvent\fP \fBthis[int i]\fP\fC [get]\fP"
+.br
+.RI "\fIGets the \fIi\fP th oldest event currently in the buffer\&. \fP"
+.ti -1c
+.RI "int \fBMaxSize\fP\fC [get]\fP"
+.br
+.RI "\fIGets the maximum size of the buffer\&. \fP"
+.ti -1c
+.RI "int \fBLength\fP\fC [get]\fP"
+.br
+.RI "\fIGets the number of logging events in the buffer\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A fixed size rolling buffer of logging events\&. 
+
+An array backed fixed size leaky bucket\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 36 of file CyclicBuffer\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Util\&.CyclicBuffer\&.CyclicBuffer (intmaxSize)"
+
+.PP
+Constructor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxSize\fP The maximum number of logging events in the buffer\&.
+.RE
+.PP
+.PP
+Initializes a new instance of the \fBCyclicBuffer\fP class with the specified maximum number of buffered logging events\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentOutOfRangeException\fP The \fImaxSize\fP  argument is not a positive integer\&.
+.RE
+.PP
+
+.PP
+Definition at line 51 of file CyclicBuffer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBLoggingEvent\fP log4net\&.Util\&.CyclicBuffer\&.Append (\fBLoggingEvent\fPloggingEvent)"
+
+.PP
+Appends a \fIloggingEvent\fP  to the buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP The event to append to the buffer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The event discarded from the buffer, if the buffer is full, otherwise \fCnull\fP\&.
+.RE
+.PP
+.PP
+Append an event to the buffer\&. If the buffer still contains free space then \fCnull\fP is returned\&. If the buffer is full then an event will be dropped to make space for the new event, the event dropped is returned\&. 
+.PP
+Definition at line 81 of file CyclicBuffer\&.cs\&.
+.SS "void log4net\&.Util\&.CyclicBuffer\&.Clear ()"
+
+.PP
+Clear the buffer Clear the buffer of all events\&. The events in the buffer are lost\&. 
+.PP
+Definition at line 193 of file CyclicBuffer\&.cs\&.
+.SS "\fBLoggingEvent\fP [] log4net\&.Util\&.CyclicBuffer\&.PopAll ()"
+
+.PP
+Pops all the logging events from the buffer into an array\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of all the logging events in the buffer\&.
+.RE
+.PP
+.PP
+Get all the events in the buffer and clear the buffer\&. 
+.PP
+Definition at line 160 of file CyclicBuffer\&.cs\&.
+.SS "\fBLoggingEvent\fP log4net\&.Util\&.CyclicBuffer\&.PopOldest ()"
+
+.PP
+Get and remove the oldest event in the buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The oldest logging event in the buffer
+.RE
+.PP
+.PP
+Gets the oldest (first) logging event in the buffer and removes it from the buffer\&. 
+.PP
+Definition at line 132 of file CyclicBuffer\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int log4net\&.Util\&.CyclicBuffer\&.Length\fC [get]\fP"
+
+.PP
+Gets the number of logging events in the buffer\&. The number of logging events in the buffer\&.
+.PP
+This number is guaranteed to be in the range 0 to \fBMaxSize\fP (inclusive)\&. 
+.PP
+Definition at line 333 of file CyclicBuffer\&.cs\&.
+.SS "int log4net\&.Util\&.CyclicBuffer\&.MaxSize\fC [get]\fP"
+
+.PP
+Gets the maximum size of the buffer\&. The maximum size of the buffer\&.
+.PP
+Gets the maximum size of the buffer 
+.PP
+Definition at line 305 of file CyclicBuffer\&.cs\&.
+.SS "\fBLoggingEvent\fP log4net\&.Util\&.CyclicBuffer\&.this[int i]\fC [get]\fP"
+
+.PP
+Gets the \fIi\fP th oldest event currently in the buffer\&. The \fIi\fP th oldest event currently in the buffer\&.
+.PP
+If \fIi\fP  is outside the range 0 to the number of events currently in the buffer, then \fCnull\fP is returned\&. 
+.PP
+Definition at line 280 of file CyclicBuffer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,138 @@
+.TH "Newtonsoft.Json.Serialization.JsonPropertyCollection" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.Serialization.JsonPropertyCollection \- 
+.PP
+A collection of \fBJsonProperty\fP objects\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits KeyedCollection< string, JsonProperty >\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJsonPropertyCollection\fP (Type type)"
+.br
+.RI "\fIInitializes a new instance of the \fBJsonPropertyCollection\fP class\&. \fP"
+.ti -1c
+.RI "void \fBAddProperty\fP (\fBJsonProperty\fP property)"
+.br
+.RI "\fIAdds a \fBJsonProperty\fP object\&. \fP"
+.ti -1c
+.RI "\fBJsonProperty\fP \fBGetClosestMatchProperty\fP (string propertyName)"
+.br
+.RI "\fIGets the closest matching \fBJsonProperty\fP object\&. First attempts to get an exact case match of propertyName and then a case insensitive match\&. \fP"
+.ti -1c
+.RI "\fBJsonProperty\fP \fBGetProperty\fP (string propertyName, StringComparison comparisonType)"
+.br
+.RI "\fIGets a property by property name\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBGetKeyForItem\fP (\fBJsonProperty\fP item)"
+.br
+.RI "\fIWhen implemented in a derived class, extracts the key from the specified element\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A collection of \fBJsonProperty\fP objects\&. 
+
+
+.PP
+Definition at line 38 of file JsonPropertyCollection\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Newtonsoft\&.Json\&.Serialization\&.JsonPropertyCollection\&.JsonPropertyCollection (Typetype)"
+
+.PP
+Initializes a new instance of the \fBJsonPropertyCollection\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The type\&.
+.RE
+.PP
+
+.PP
+Definition at line 46 of file JsonPropertyCollection\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Newtonsoft\&.Json\&.Serialization\&.JsonPropertyCollection\&.AddProperty (\fBJsonProperty\fPproperty)"
+
+.PP
+Adds a \fBJsonProperty\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproperty\fP The property to add to the collection\&.
+.RE
+.PP
+
+.PP
+Definition at line 67 of file JsonPropertyCollection\&.cs\&.
+.SS "\fBJsonProperty\fP Newtonsoft\&.Json\&.Serialization\&.JsonPropertyCollection\&.GetClosestMatchProperty (stringpropertyName)"
+
+.PP
+Gets the closest matching \fBJsonProperty\fP object\&. First attempts to get an exact case match of propertyName and then a case insensitive match\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP Name of the property\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A matching property if found\&.
+.RE
+.PP
+
+.PP
+Definition at line 116 of file JsonPropertyCollection\&.cs\&.
+.SS "override string Newtonsoft\&.Json\&.Serialization\&.JsonPropertyCollection\&.GetKeyForItem (\fBJsonProperty\fPitem)\fC [protected]\fP"
+
+.PP
+When implemented in a derived class, extracts the key from the specified element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The element from which to extract the key\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The key for the specified element\&.
+.RE
+.PP
+
+.PP
+Definition at line 58 of file JsonPropertyCollection\&.cs\&.
+.SS "\fBJsonProperty\fP Newtonsoft\&.Json\&.Serialization\&.JsonPropertyCollection\&.GetProperty (stringpropertyName, StringComparisoncomparisonType)"
+
+.PP
+Gets a property by property name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the property to get\&.
+.br
+\fIcomparisonType\fP Type property name string comparison\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A matching property if found\&.
+.RE
+.PP
+
+.PP
+Definition at line 142 of file JsonPropertyCollection\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

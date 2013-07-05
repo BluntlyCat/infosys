@@ -1,0 +1,712 @@
+.TH "Renci.SshNet.Session" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Session \- 
+.PP
+Provides functionality to connect and interact with SSH server\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDisposable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBConnect\fP ()"
+.br
+.RI "\fIConnects to the server\&. \fP"
+.ti -1c
+.RI "void \fBDisconnect\fP ()"
+.br
+.RI "\fIDisconnects from the server \fP"
+.ti -1c
+.RI "void \fBRegisterMessage\fP (string messageName)"
+.br
+.RI "\fIRegisters SSH Message with the session\&. \fP"
+.ti -1c
+.RI "void \fBUnRegisterMessage\fP (string messageName)"
+.br
+.RI "\fIRemoves SSH message from the session \fP"
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "\fIPerforms application-defined tasks associated with freeing, releasing, or resetting unmanaged ResourceMessages\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBOnDisconnectReceived\fP (\fBDisconnectMessage\fP message)"
+.br
+.RI "\fICalled when DisconnectMessage received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnIgnoreReceived\fP (\fBIgnoreMessage\fP message)"
+.br
+.RI "\fICalled when IgnoreMessage received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnUnimplementedReceived\fP (\fBUnimplementedMessage\fP message)"
+.br
+.RI "\fICalled when UnimplementedMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnDebugReceived\fP (\fBDebugMessage\fP message)"
+.br
+.RI "\fICalled when DebugMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnServiceRequestReceived\fP (\fBServiceRequestMessage\fP message)"
+.br
+.RI "\fICalled when ServiceRequestMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnServiceAcceptReceived\fP (\fBServiceAcceptMessage\fP message)"
+.br
+.RI "\fICalled when ServiceAcceptMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnKeyExchangeInitReceived\fP (\fBKeyExchangeInitMessage\fP message)"
+.br
+.RI "\fICalled when KeyExchangeInitMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnNewKeysReceived\fP (\fBNewKeysMessage\fP message)"
+.br
+.RI "\fICalled when NewKeysMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnUserAuthenticationRequestReceived\fP (\fBRequestMessage\fP message)"
+.br
+.RI "\fICalled when RequestMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnUserAuthenticationFailureReceived\fP (\fBFailureMessage\fP message)"
+.br
+.RI "\fICalled when FailureMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnUserAuthenticationSuccessReceived\fP (\fBSuccessMessage\fP message)"
+.br
+.RI "\fICalled when SuccessMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnUserAuthenticationBannerReceived\fP (\fBBannerMessage\fP message)"
+.br
+.RI "\fICalled when BannerMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnGlobalRequestReceived\fP (\fBGlobalRequestMessage\fP message)"
+.br
+.RI "\fICalled when GlobalRequestMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnRequestSuccessReceived\fP (\fBRequestSuccessMessage\fP message)"
+.br
+.RI "\fICalled when RequestSuccessMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnRequestFailureReceived\fP (\fBRequestFailureMessage\fP message)"
+.br
+.RI "\fICalled when RequestFailureMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnChannelOpenReceived\fP (\fBChannelOpenMessage\fP message)"
+.br
+.RI "\fICalled when ChannelOpenMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnChannelOpenConfirmationReceived\fP (\fBChannelOpenConfirmationMessage\fP message)"
+.br
+.RI "\fICalled when ChannelOpenConfirmationMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnChannelOpenFailureReceived\fP (\fBChannelOpenFailureMessage\fP message)"
+.br
+.RI "\fICalled when ChannelOpenFailureMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnChannelWindowAdjustReceived\fP (\fBChannelWindowAdjustMessage\fP message)"
+.br
+.RI "\fICalled when ChannelWindowAdjustMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnChannelDataReceived\fP (\fBChannelDataMessage\fP message)"
+.br
+.RI "\fICalled when ChannelDataMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnChannelExtendedDataReceived\fP (\fBChannelExtendedDataMessage\fP message)"
+.br
+.RI "\fICalled when ChannelExtendedDataMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnChannelEofReceived\fP (\fBChannelEofMessage\fP message)"
+.br
+.RI "\fICalled when ChannelCloseMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnChannelCloseReceived\fP (\fBChannelCloseMessage\fP message)"
+.br
+.RI "\fICalled when ChannelCloseMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnChannelRequestReceived\fP (\fBChannelRequestMessage\fP message)"
+.br
+.RI "\fICalled when ChannelRequestMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnChannelSuccessReceived\fP (\fBChannelSuccessMessage\fP message)"
+.br
+.RI "\fICalled when ChannelSuccessMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnChannelFailureReceived\fP (\fBChannelFailureMessage\fP message)"
+.br
+.RI "\fICalled when ChannelFailureMessage message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnMessageReceived\fP (\fBMessage\fP message)"
+.br
+.RI "\fICalled when Message message received\&. \fP"
+.ti -1c
+.RI "virtual void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIReleases unmanaged and - optionally - managed resources \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBMAXIMUM_PACKET_SIZE\fP = 35000"
+.br
+.RI "\fISpecifies maximum packet size defined by the protocol\&. \fP"
+.ti -1c
+.RI "const int \fBMAXIMUM_PAYLOAD_SIZE\fP = 1024 * 32"
+.br
+.RI "\fISpecifies maximum payload size defined by the protocol\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBSemaphoreLight\fP \fBSessionSemaphore\fP\fC [get]\fP"
+.br
+.RI "\fIGets the session semaphore that controls session channels\&. \fP"
+.ti -1c
+.RI "bool \fBIsConnected\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether socket connected\&. \fP"
+.ti -1c
+.RI "byte[] \fBSessionId\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the session id\&. \fP"
+.ti -1c
+.RI "\fBMessage\fP \fBClientInitMessage\fP\fC [get]\fP"
+.br
+.RI "\fIGets the client init message\&. \fP"
+.ti -1c
+.RI "string \fBServerVersion\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the server version string\&. \fP"
+.ti -1c
+.RI "string \fBClientVersion\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the client version string\&. \fP"
+.ti -1c
+.RI "\fBConnectionInfo\fP \fBConnectionInfo\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the connection info\&. \fP"
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "EventHandler< \fBExceptionEventArgs\fP > \fBErrorOccured\fP"
+.br
+.RI "\fIOccurs when an error occurred\&. \fP"
+.ti -1c
+.RI "EventHandler< EventArgs > \fBDisconnected\fP"
+.br
+.RI "\fIOccurs when session has been disconnected form the server\&. \fP"
+.ti -1c
+.RI "EventHandler< \fBHostKeyEventArgs\fP > \fBHostKeyReceived\fP"
+.br
+.RI "\fIOccurs when host key received\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Provides functionality to connect and interact with SSH server\&. 
+
+
+.PP
+Definition at line 28 of file Session\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Renci\&.SshNet\&.Session\&.Connect ()"
+
+.PP
+Connects to the server\&. 
+.PP
+Definition at line 420 of file Session\&.cs\&.
+.SS "void Renci\&.SshNet\&.Session\&.Disconnect ()"
+
+.PP
+Disconnects from the server 
+.PP
+Definition at line 592 of file Session\&.cs\&.
+.SS "void Renci\&.SshNet\&.Session\&.Dispose ()"
+
+.PP
+Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged ResourceMessages\&. 
+.PP
+Definition at line 1925 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.Dispose (booldisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Releases unmanaged and - optionally - managed resources 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP \fCtrue\fP to release both managed and unmanaged resources; \fCfalse\fP to release only unmanaged ResourceMessages\&.
+.RE
+.PP
+
+.PP
+Definition at line 1936 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnChannelCloseReceived (\fBChannelCloseMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when ChannelCloseMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP ChannelCloseMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1424 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnChannelDataReceived (\fBChannelDataMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when ChannelDataMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP ChannelDataMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1388 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnChannelEofReceived (\fBChannelEofMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when ChannelCloseMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP ChannelCloseMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1412 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnChannelExtendedDataReceived (\fBChannelExtendedDataMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when ChannelExtendedDataMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP ChannelExtendedDataMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1400 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnChannelFailureReceived (\fBChannelFailureMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when ChannelFailureMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP ChannelFailureMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1460 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnChannelOpenConfirmationReceived (\fBChannelOpenConfirmationMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when ChannelOpenConfirmationMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP ChannelOpenConfirmationMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1352 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnChannelOpenFailureReceived (\fBChannelOpenFailureMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when ChannelOpenFailureMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP ChannelOpenFailureMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1364 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnChannelOpenReceived (\fBChannelOpenMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when ChannelOpenMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP ChannelOpenMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1340 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnChannelRequestReceived (\fBChannelRequestMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when ChannelRequestMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP ChannelRequestMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1436 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnChannelSuccessReceived (\fBChannelSuccessMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when ChannelSuccessMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP ChannelSuccessMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1448 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnChannelWindowAdjustReceived (\fBChannelWindowAdjustMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when ChannelWindowAdjustMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP ChannelWindowAdjustMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1376 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnDebugReceived (\fBDebugMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when DebugMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP DebugMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1118 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnDisconnectReceived (\fBDisconnectMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when DisconnectMessage received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP DisconnectMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1075 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnGlobalRequestReceived (\fBGlobalRequestMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when GlobalRequestMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP GlobalRequestMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1304 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnIgnoreReceived (\fBIgnoreMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when IgnoreMessage received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP IgnoreMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1094 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnKeyExchangeInitReceived (\fBKeyExchangeInitMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when KeyExchangeInitMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP KeyExchangeInitMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1154 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnMessageReceived (\fBMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when Message message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP Message message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1472 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnNewKeysReceived (\fBNewKeysMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when NewKeysMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP NewKeysMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1197 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnRequestFailureReceived (\fBRequestFailureMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when RequestFailureMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP RequestFailureMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1328 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnRequestSuccessReceived (\fBRequestSuccessMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when RequestSuccessMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP RequestSuccessMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1316 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnServiceAcceptReceived (\fBServiceAcceptMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when ServiceAcceptMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP ServiceAcceptMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1142 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnServiceRequestReceived (\fBServiceRequestMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when ServiceRequestMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP ServiceRequestMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1130 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnUnimplementedReceived (\fBUnimplementedMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when UnimplementedMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP UnimplementedMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1106 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnUserAuthenticationBannerReceived (\fBBannerMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when BannerMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP BannerMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1292 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnUserAuthenticationFailureReceived (\fBFailureMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when FailureMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP FailureMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1268 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnUserAuthenticationRequestReceived (\fBRequestMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when RequestMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP RequestMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1256 of file Session\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Session\&.OnUserAuthenticationSuccessReceived (\fBSuccessMessage\fPmessage)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when SuccessMessage message received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP SuccessMessage message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1280 of file Session\&.cs\&.
+.SS "void Renci\&.SshNet\&.Session\&.RegisterMessage (stringmessageName)"
+
+.PP
+Registers SSH Message with the session\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessageName\fP Name of the message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1511 of file Session\&.cs\&.
+.SS "void Renci\&.SshNet\&.Session\&.UnRegisterMessage (stringmessageName)"
+
+.PP
+Removes SSH message from the session 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessageName\fP Name of the message\&.
+.RE
+.PP
+
+.PP
+Definition at line 1520 of file Session\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const int Renci\&.SshNet\&.Session\&.MAXIMUM_PACKET_SIZE = 35000\fC [protected]\fP"
+
+.PP
+Specifies maximum packet size defined by the protocol\&. 
+.PP
+Definition at line 33 of file Session\&.cs\&.
+.SS "const int Renci\&.SshNet\&.Session\&.MAXIMUM_PAYLOAD_SIZE = 1024 * 32\fC [protected]\fP"
+
+.PP
+Specifies maximum payload size defined by the protocol\&. 
+.PP
+Definition at line 38 of file Session\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBMessage\fP Renci\&.SshNet\&.Session\&.ClientInitMessage\fC [get]\fP"
+
+.PP
+Gets the client init message\&. The client init message\&.
+.PP
+Definition at line 209 of file Session\&.cs\&.
+.SS "string Renci\&.SshNet\&.Session\&.ClientVersion\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the client version string\&. The client version\&.
+.PP
+Definition at line 244 of file Session\&.cs\&.
+.SS "\fBConnectionInfo\fP Renci\&.SshNet\&.Session\&.ConnectionInfo\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the connection info\&. The connection info\&.
+.PP
+Definition at line 250 of file Session\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Session\&.IsConnected\fC [get]\fP"
+
+.PP
+Gets a value indicating whether socket connected\&. \fCtrue\fP if socket connected; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 188 of file Session\&.cs\&.
+.SS "string Renci\&.SshNet\&.Session\&.ServerVersion\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the server version string\&. The server version\&.
+.PP
+Definition at line 238 of file Session\&.cs\&.
+.SS "byte [] Renci\&.SshNet\&.Session\&.SessionId\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the session id\&. The session id\&.
+.PP
+Definition at line 201 of file Session\&.cs\&.
+.SS "\fBSemaphoreLight\fP Renci\&.SshNet\&.Session\&.SessionSemaphore\fC [get]\fP"
+
+.PP
+Gets the session semaphore that controls session channels\&. The session semaphore\&.
+.PP
+Definition at line 141 of file Session\&.cs\&.
+.SH "Event Documentation"
+.PP 
+.SS "EventHandler<EventArgs> Renci\&.SshNet\&.Session\&.Disconnected"
+
+.PP
+Occurs when session has been disconnected form the server\&. 
+.PP
+Definition at line 260 of file Session\&.cs\&.
+.SS "EventHandler<\fBExceptionEventArgs\fP> Renci\&.SshNet\&.Session\&.ErrorOccured"
+
+.PP
+Occurs when an error occurred\&. 
+.PP
+Definition at line 255 of file Session\&.cs\&.
+.SS "EventHandler<\fBHostKeyEventArgs\fP> Renci\&.SshNet\&.Session\&.HostKeyReceived"
+
+.PP
+Occurs when host key received\&. 
+.PP
+Definition at line 265 of file Session\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

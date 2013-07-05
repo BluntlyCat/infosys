@@ -1,0 +1,93 @@
+.TH "NHibernate.Test.NHSpecificTest.NH2583.AbstractMassTestingFixture" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.NHSpecificTest.NH2583.AbstractMassTestingFixture \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Test\&.NHSpecificTest\&.BugTestCase\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2583\&.MassTestingMoreOperatorsFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2583\&.MassTestingNotAndDeMorganFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2583\&.MassTestingOneOrTreeFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2583\&.MassTestingOrderByFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2583\&.MassTestingSelectFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2583\&.MassTestingThreeOrTreesSideBySideFixture\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2583\&.MassTestingTwoOrTreesSideBySideFixture\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBSetterTuple< T1, T2, T3, T4, T5, T6, T7 >\fP"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBBatchSize\fP = 200"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBConfigure\fP (\fBConfiguration\fP configuration)"
+.br
+.ti -1c
+.RI "int \fBRunTest< T1, T2, T3, T4, T5, T6, T7 >\fP (Expression< Func< \fBMyBO\fP, bool >> condition, SetterTuple< T1, T2, T3, T4, T5, T6, T7 > setters)"
+.br
+.ti -1c
+.RI "abstract int \fBTestAndAssert\fP (Expression< Func< \fBMyBO\fP, bool >> condition, \fBISession\fP session, IEnumerable< int > expectedIds)"
+.br
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static SetterTuple< T1, T2, T3, 
+.br
+T4, T5, T6, T7 > \fBSetters< T1, T2, T3, T4, T5, T6, T7 >\fP (Action< \fBMyBO\fP, \fBISession\fP, T1 > set1, Action< \fBMyBO\fP, \fBISession\fP, T2 > set2, Action< \fBMyBO\fP, \fBISession\fP, T3 > set3, Action< \fBMyBO\fP, \fBISession\fP, T4 > set4, Action< \fBMyBO\fP, \fBISession\fP, T5 > set5, Action< \fBMyBO\fP, \fBISession\fP, T6 > set6, Action< \fBMyBO\fP, \fBISession\fP, T7 > set7)"
+.br
+.ti -1c
+.RI "static SetterTuple< T1, T2, T3, 
+.br
+T4, T5, T6, Ignore > \fBSetters< T1, T2, T3, T4, T5, T6 >\fP (Action< \fBMyBO\fP, \fBISession\fP, T1 > set1, Action< \fBMyBO\fP, \fBISession\fP, T2 > set2, Action< \fBMyBO\fP, \fBISession\fP, T3 > set3, Action< \fBMyBO\fP, \fBISession\fP, T4 > set4, Action< \fBMyBO\fP, \fBISession\fP, T5 > set5, Action< \fBMyBO\fP, \fBISession\fP, T6 > set6)"
+.br
+.ti -1c
+.RI "static SetterTuple< T1, T2, T3, 
+.br
+T4, T5, Ignore, Ignore > \fBSetters< T1, T2, T3, T4, T5 >\fP (Action< \fBMyBO\fP, \fBISession\fP, T1 > set1, Action< \fBMyBO\fP, \fBISession\fP, T2 > set2, Action< \fBMyBO\fP, \fBISession\fP, T3 > set3, Action< \fBMyBO\fP, \fBISession\fP, T4 > set4, Action< \fBMyBO\fP, \fBISession\fP, T5 > set5)"
+.br
+.ti -1c
+.RI "static SetterTuple< T1, T2, T3, 
+.br
+T4, Ignore, Ignore, Ignore > \fBSetters< T1, T2, T3, T4 >\fP (Action< \fBMyBO\fP, \fBISession\fP, T1 > set1, Action< \fBMyBO\fP, \fBISession\fP, T2 > set2, Action< \fBMyBO\fP, \fBISession\fP, T3 > set3, Action< \fBMyBO\fP, \fBISession\fP, T4 > set4)"
+.br
+.ti -1c
+.RI "static SetterTuple< T1, T2, T3, 
+.br
+Ignore, Ignore, Ignore, Ignore > \fBSetters< T1, T2, T3 >\fP (Action< \fBMyBO\fP, \fBISession\fP, T1 > set1, Action< \fBMyBO\fP, \fBISession\fP, T2 > set2, Action< \fBMyBO\fP, \fBISession\fP, T3 > set3)"
+.br
+.ti -1c
+.RI "static SetterTuple< T1, T2, 
+.br
+Ignore, Ignore, Ignore, Ignore, 
+.br
+Ignore > \fBSetters< T1, T2 >\fP (Action< \fBMyBO\fP, \fBISession\fP, T1 > set1, Action< \fBMyBO\fP, \fBISession\fP, T2 > set2)"
+.br
+.ti -1c
+.RI "static SetterTuple< T1, Ignore, 
+.br
+Ignore, Ignore, Ignore, Ignore, 
+.br
+Ignore > \fBSetters< T1 >\fP (Action< \fBMyBO\fP, \fBISession\fP, T1 > set1)"
+.br
+.ti -1c
+.RI "static void \fBAreEqual\fP (IEnumerable< int > expectedIds, IEnumerable< int > actualList)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 12 of file AbstractMassTestingFixture\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

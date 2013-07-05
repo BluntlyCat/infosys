@@ -1,0 +1,140 @@
+.TH "NHibernate.Dialect.Function.ClassicAggregateFunction" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.Function.ClassicAggregateFunction \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Function\&.ISQLFunction\fP, and \fBNHibernate\&.Dialect\&.Function\&.IFunctionGrammar\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.Function\&.AvgQueryFunctionInfo\fP, \fBNHibernate\&.Dialect\&.Function\&.ClassicAvgFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.ClassicCountFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.ClassicSumFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.CountQueryFunctionInfo\fP, \fBNHibernate\&.Dialect\&.Function\&.SumQueryFunctionInfo\fP, and \fBNHibernate\&.Dialect\&.MsSql2000Dialect\&.CountBigQueryFunction\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBClassicAggregateFunction\fP (string name, bool acceptAsterisk)"
+.br
+.RI "\fIInitializes a new instance of the \fBStandardSQLFunction\fP class\&. \fP"
+.ti -1c
+.RI "\fBClassicAggregateFunction\fP (string name, bool acceptAsterisk, \fBIType\fP typeValue)"
+.br
+.RI "\fIInitializes a new instance of the \fBStandardSQLFunction\fP class\&. \fP"
+.ti -1c
+.RI "virtual \fBIType\fP \fBReturnType\fP (\fBIType\fP columnType, \fBIMapping\fP mapping)"
+.br
+.RI "\fIThe function return type \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBRender\fP (IList args, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIRender the function call as SQL\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly bool \fBacceptAsterisk\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBHasArguments\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasParenthesesIfNoArguments\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 12 of file ClassicAggregateFunction\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Dialect\&.Function\&.ClassicAggregateFunction\&.ClassicAggregateFunction (stringname, boolacceptAsterisk)"
+
+.PP
+Initializes a new instance of the \fBStandardSQLFunction\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP SQL function name\&.
+.br
+\fIacceptAsterisk\fP Whether the function accepts an asterisk (*) in place of arguments
+.RE
+.PP
+
+.PP
+Definition at line 23 of file ClassicAggregateFunction\&.cs\&.
+.SS "NHibernate\&.Dialect\&.Function\&.ClassicAggregateFunction\&.ClassicAggregateFunction (stringname, boolacceptAsterisk, \fBIType\fPtypeValue)"
+
+.PP
+Initializes a new instance of the \fBStandardSQLFunction\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP SQL function name\&.
+.br
+\fIacceptAsterisk\fP True if accept asterisk like argument
+.br
+\fItypeValue\fP Return type for the fuction\&.
+.RE
+.PP
+
+.PP
+Definition at line 35 of file ClassicAggregateFunction\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSqlString\fP NHibernate\&.Dialect\&.Function\&.ClassicAggregateFunction\&.Render (IListargs, \fBISessionFactoryImplementor\fPfactory)"
+
+.PP
+Render the function call as SQL\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIargs\fP List of arguments
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+SQL fragment for the fuction\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Dialect\&.Function\&.ISQLFunction\fP\&.
+.PP
+Definition at line 58 of file ClassicAggregateFunction\&.cs\&.
+.SS "virtual \fBIType\fP NHibernate\&.Dialect\&.Function\&.ClassicAggregateFunction\&.ReturnType (\fBIType\fPcolumnType, \fBIMapping\fPmapping)\fC [virtual]\fP"
+
+.PP
+The function return type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnType\fP The type of the first argument
+.br
+\fImapping\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Dialect\&.Function\&.ISQLFunction\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.MsSql2000Dialect\&.CountBigQueryFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.ClassicAvgFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.ClassicCountFunction\fP, \fBNHibernate\&.Dialect\&.Function\&.SumQueryFunctionInfo\fP, \fBNHibernate\&.Dialect\&.Function\&.AvgQueryFunctionInfo\fP, and \fBNHibernate\&.Dialect\&.Function\&.CountQueryFunctionInfo\fP\&.
+.PP
+Definition at line 43 of file ClassicAggregateFunction\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

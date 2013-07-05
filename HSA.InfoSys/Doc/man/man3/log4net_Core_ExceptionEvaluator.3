@@ -1,0 +1,114 @@
+.TH "log4net.Core.ExceptionEvaluator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Core.ExceptionEvaluator \- 
+.PP
+An evaluator that triggers on an Exception type  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Core\&.ITriggeringEventEvaluator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBExceptionEvaluator\fP ()"
+.br
+.RI "\fIDefault ctor to allow dynamic creation through a configurator\&. \fP"
+.ti -1c
+.RI "\fBExceptionEvaluator\fP (Type exType, bool triggerOnSubClass)"
+.br
+.RI "\fIConstructs an evaluator and initializes to trigger on \fIexType\fP  \fP"
+.ti -1c
+.RI "bool \fBIsTriggeringEvent\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIIs this \fIloggingEvent\fP  the triggering event? \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "Type \fBExceptionType\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe type that triggers this evaluator\&. \fP"
+.ti -1c
+.RI "bool \fBTriggerOnSubclass\fP\fC [get, set]\fP"
+.br
+.RI "\fIIf true, this evaluator will trigger on subclasses of \fBExceptionType\fP\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An evaluator that triggers on an Exception type 
+
+This evaluator will trigger if the type of the Exception passed to \fBIsTriggeringEvent(LoggingEvent)\fP is equal to a Type in \fBExceptionType\fP\&. /// 
+.PP
+<author>Drew Schaeffer</author> 
+.PP
+Definition at line 35 of file ExceptionEvaluator\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Core\&.ExceptionEvaluator\&.ExceptionEvaluator ()"
+
+.PP
+Default ctor to allow dynamic creation through a configurator\&. 
+.PP
+Definition at line 50 of file ExceptionEvaluator\&.cs\&.
+.SS "log4net\&.Core\&.ExceptionEvaluator\&.ExceptionEvaluator (TypeexType, booltriggerOnSubClass)"
+
+.PP
+Constructs an evaluator and initializes to trigger on \fIexType\fP  
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexType\fP the type that triggers this evaluator\&.
+.br
+\fItriggerOnSubClass\fP If true, this evaluator will trigger on subclasses of \fBExceptionType\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 60 of file ExceptionEvaluator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool log4net\&.Core\&.ExceptionEvaluator\&.IsTriggeringEvent (\fBLoggingEvent\fPloggingEvent)"
+
+.PP
+Is this \fIloggingEvent\fP  the triggering event? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP The event to check
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This method returns \fCtrue\fP, if the logging event Exception Type is \fBExceptionType\fP\&. Otherwise it returns \fCfalse\fP
+.RE
+.PP
+.PP
+This evaluator will trigger if the Exception Type of the event passed to \fBIsTriggeringEvent(LoggingEvent)\fP is \fBExceptionType\fP\&. 
+.PP
+Implements \fBlog4net\&.Core\&.ITriggeringEventEvaluator\fP\&.
+.PP
+Definition at line 105 of file ExceptionEvaluator\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "Type log4net\&.Core\&.ExceptionEvaluator\&.ExceptionType\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The type that triggers this evaluator\&. 
+.PP
+Definition at line 75 of file ExceptionEvaluator\&.cs\&.
+.SS "bool log4net\&.Core\&.ExceptionEvaluator\&.TriggerOnSubclass\fC [get]\fP, \fC [set]\fP"
+
+.PP
+If true, this evaluator will trigger on subclasses of \fBExceptionType\fP\&. 
+.PP
+Definition at line 84 of file ExceptionEvaluator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

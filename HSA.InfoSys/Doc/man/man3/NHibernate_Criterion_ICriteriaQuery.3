@@ -1,0 +1,215 @@
+.TH "NHibernate.Criterion.ICriteriaQuery" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.ICriteriaQuery \- 
+.PP
+An instance of \fBICriteriaQuery\fP is passed to criterion, order and projection instances when actually compiling and executing the query\&. This interface is not used by application code\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Loader\&.Criteria\&.CriteriaQueryTranslator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBGetColumn\fP (\fBICriteria\fP criteria, string propertyPath)"
+.br
+.RI "\fIGet the name of the column mapped by a property path, ignoring projection alias\fP"
+.ti -1c
+.RI "string[] \fBGetColumns\fP (\fBICriteria\fP criteria, string propertyPath)"
+.br
+.RI "\fIGet the names of the columns mapped by a property path, ignoring projection aliases\fP"
+.ti -1c
+.RI "\fBIType\fP \fBGetType\fP (\fBICriteria\fP criteria, string propertyPath)"
+.br
+.RI "\fIGet the type of a property path, ignoring projection aliases\fP"
+.ti -1c
+.RI "string[] \fBGetColumnAliasesUsingProjection\fP (\fBICriteria\fP criteria, string propertyPath)"
+.br
+.ti -1c
+.RI "string[] \fBGetColumnsUsingProjection\fP (\fBICriteria\fP criteria, string propertyPath)"
+.br
+.RI "\fIGet the names of the columns mapped by a property path\fP"
+.ti -1c
+.RI "\fBIType\fP \fBGetTypeUsingProjection\fP (\fBICriteria\fP criteria, string propertyPath)"
+.br
+.RI "\fIGet the type of a property path\fP"
+.ti -1c
+.RI "\fBTypedValue\fP \fBGetTypedValue\fP (\fBICriteria\fP criteria, string propertyPath, object value)"
+.br
+.RI "\fIGet the a typed value for the given property value\&.\fP"
+.ti -1c
+.RI "string \fBGetEntityName\fP (\fBICriteria\fP criteria)"
+.br
+.RI "\fIGet the entity name of an entity\fP"
+.ti -1c
+.RI "string \fBGetEntityName\fP (\fBICriteria\fP criteria, string propertyPath)"
+.br
+.RI "\fIGet the entity name of an entity, taking into account the qualifier of the property path \fP"
+.ti -1c
+.RI "string \fBGetSQLAlias\fP (\fBICriteria\fP subcriteria)"
+.br
+.RI "\fIGet the root table alias of an entity\fP"
+.ti -1c
+.RI "string \fBGetSQLAlias\fP (\fBICriteria\fP criteria, string propertyPath)"
+.br
+.RI "\fIGet the root table alias of an entity, taking into account the qualifier of the property path \fP"
+.ti -1c
+.RI "string \fBGetPropertyName\fP (string propertyName)"
+.br
+.RI "\fIGet the property name, given a possibly qualified property name\fP"
+.ti -1c
+.RI "string[] \fBGetIdentifierColumns\fP (\fBICriteria\fP subcriteria)"
+.br
+.RI "\fIGet the identifier column names of this entity\fP"
+.ti -1c
+.RI "\fBIType\fP \fBGetIdentifierType\fP (\fBICriteria\fP subcriteria)"
+.br
+.RI "\fIGet the identifier type of this entity\fP"
+.ti -1c
+.RI "\fBTypedValue\fP \fBGetTypedIdentifierValue\fP (\fBICriteria\fP subcriteria, object value)"
+.br
+.ti -1c
+.RI "string \fBGenerateSQLAlias\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetIndexForAlias\fP ()"
+.br
+.ti -1c
+.RI "IEnumerable< \fBParameter\fP > \fBNewQueryParameter\fP (\fBTypedValue\fP parameter)"
+.br
+.RI "\fICreate a new query parameter to use in a \fBICriterion\fP \fP"
+.ti -1c
+.RI "\fBParameter\fP \fBCreateSkipParameter\fP (int value)"
+.br
+.ti -1c
+.RI "\fBParameter\fP \fBCreateTakeParameter\fP (int value)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBISessionFactoryImplementor\fP \fBFactory\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "ICollection
+.br
+< \fBIParameterSpecification\fP > \fBCollectedParameterSpecifications\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "ICollection< \fBNamedParameter\fP > \fBCollectedParameters\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An instance of \fBICriteriaQuery\fP is passed to criterion, order and projection instances when actually compiling and executing the query\&. This interface is not used by application code\&. 
+
+
+.PP
+Definition at line 15 of file ICriteriaQuery\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string NHibernate\&.Criterion\&.ICriteriaQuery\&.GetColumn (\fBICriteria\fPcriteria, stringpropertyPath)"
+
+.PP
+Get the name of the column mapped by a property path, ignoring projection alias
+.PP
+Implemented in \fBNHibernate\&.Loader\&.Criteria\&.CriteriaQueryTranslator\fP\&.
+.SS "string [] NHibernate\&.Criterion\&.ICriteriaQuery\&.GetColumns (\fBICriteria\fPcriteria, stringpropertyPath)"
+
+.PP
+Get the names of the columns mapped by a property path, ignoring projection aliases
+.PP
+Implemented in \fBNHibernate\&.Loader\&.Criteria\&.CriteriaQueryTranslator\fP\&.
+.SS "string [] NHibernate\&.Criterion\&.ICriteriaQuery\&.GetColumnsUsingProjection (\fBICriteria\fPcriteria, stringpropertyPath)"
+
+.PP
+Get the names of the columns mapped by a property path
+.PP
+Implemented in \fBNHibernate\&.Loader\&.Criteria\&.CriteriaQueryTranslator\fP\&.
+.SS "string NHibernate\&.Criterion\&.ICriteriaQuery\&.GetEntityName (\fBICriteria\fPcriteria)"
+
+.PP
+Get the entity name of an entity
+.PP
+Implemented in \fBNHibernate\&.Loader\&.Criteria\&.CriteriaQueryTranslator\fP\&.
+.SS "string NHibernate\&.Criterion\&.ICriteriaQuery\&.GetEntityName (\fBICriteria\fPcriteria, stringpropertyPath)"
+
+.PP
+Get the entity name of an entity, taking into account the qualifier of the property path 
+.PP
+Implemented in \fBNHibernate\&.Loader\&.Criteria\&.CriteriaQueryTranslator\fP\&.
+.SS "string [] NHibernate\&.Criterion\&.ICriteriaQuery\&.GetIdentifierColumns (\fBICriteria\fPsubcriteria)"
+
+.PP
+Get the identifier column names of this entity
+.PP
+Implemented in \fBNHibernate\&.Loader\&.Criteria\&.CriteriaQueryTranslator\fP\&.
+.SS "\fBIType\fP NHibernate\&.Criterion\&.ICriteriaQuery\&.GetIdentifierType (\fBICriteria\fPsubcriteria)"
+
+.PP
+Get the identifier type of this entity
+.PP
+Implemented in \fBNHibernate\&.Loader\&.Criteria\&.CriteriaQueryTranslator\fP\&.
+.SS "string NHibernate\&.Criterion\&.ICriteriaQuery\&.GetPropertyName (stringpropertyName)"
+
+.PP
+Get the property name, given a possibly qualified property name
+.PP
+Implemented in \fBNHibernate\&.Loader\&.Criteria\&.CriteriaQueryTranslator\fP\&.
+.SS "string NHibernate\&.Criterion\&.ICriteriaQuery\&.GetSQLAlias (\fBICriteria\fPsubcriteria)"
+
+.PP
+Get the root table alias of an entity
+.PP
+Implemented in \fBNHibernate\&.Loader\&.Criteria\&.CriteriaQueryTranslator\fP\&.
+.SS "string NHibernate\&.Criterion\&.ICriteriaQuery\&.GetSQLAlias (\fBICriteria\fPcriteria, stringpropertyPath)"
+
+.PP
+Get the root table alias of an entity, taking into account the qualifier of the property path 
+.PP
+Implemented in \fBNHibernate\&.Loader\&.Criteria\&.CriteriaQueryTranslator\fP\&.
+.SS "\fBIType\fP NHibernate\&.Criterion\&.ICriteriaQuery\&.GetType (\fBICriteria\fPcriteria, stringpropertyPath)"
+
+.PP
+Get the type of a property path, ignoring projection aliases
+.PP
+Implemented in \fBNHibernate\&.Loader\&.Criteria\&.CriteriaQueryTranslator\fP\&.
+.SS "\fBTypedValue\fP NHibernate\&.Criterion\&.ICriteriaQuery\&.GetTypedValue (\fBICriteria\fPcriteria, stringpropertyPath, objectvalue)"
+
+.PP
+Get the a typed value for the given property value\&.
+.PP
+Implemented in \fBNHibernate\&.Loader\&.Criteria\&.CriteriaQueryTranslator\fP\&.
+.SS "\fBIType\fP NHibernate\&.Criterion\&.ICriteriaQuery\&.GetTypeUsingProjection (\fBICriteria\fPcriteria, stringpropertyPath)"
+
+.PP
+Get the type of a property path
+.PP
+Implemented in \fBNHibernate\&.Loader\&.Criteria\&.CriteriaQueryTranslator\fP\&.
+.SS "IEnumerable<\fBParameter\fP> NHibernate\&.Criterion\&.ICriteriaQuery\&.NewQueryParameter (\fBTypedValue\fPparameter)"
+
+.PP
+Create a new query parameter to use in a \fBICriterion\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameter\fP The value and the IType of the parameter\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new instance of a query parameter to be added to a SqlString\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Loader\&.Criteria\&.CriteriaQueryTranslator\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

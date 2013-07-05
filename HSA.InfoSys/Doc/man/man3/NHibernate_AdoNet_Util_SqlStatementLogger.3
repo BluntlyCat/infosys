@@ -1,0 +1,124 @@
+.TH "NHibernate.AdoNet.Util.SqlStatementLogger" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.AdoNet.Util.SqlStatementLogger \- 
+.PP
+Centralize logging handling for SQL statements\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlStatementLogger\fP ()"
+.br
+.RI "\fIConstructs a new \fBSqlStatementLogger\fP instance\&.\fP"
+.ti -1c
+.RI "\fBSqlStatementLogger\fP (bool logToStdout, bool formatSql)"
+.br
+.RI "\fIConstructs a new \fBSqlStatementLogger\fP instance\&. \fP"
+.ti -1c
+.RI "virtual void \fBLogCommand\fP (string message, IDbCommand command, \fBFormatStyle\fP style)"
+.br
+.RI "\fILog a IDbCommand\&. \fP"
+.ti -1c
+.RI "virtual void \fBLogCommand\fP (IDbCommand command, \fBFormatStyle\fP style)"
+.br
+.RI "\fILog a IDbCommand\&. \fP"
+.ti -1c
+.RI "string \fBGetCommandLineWithParameters\fP (IDbCommand command)"
+.br
+.ti -1c
+.RI "string \fBGetParameterLogableValue\fP (IDataParameter parameter)"
+.br
+.ti -1c
+.RI "\fBFormatStyle\fP \fBDetermineActualStyle\fP (\fBFormatStyle\fP style)"
+.br
+.ti -1c
+.RI "void \fBLogBatchCommand\fP (string batchCommand)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBLogToStdout\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBFormatSql\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsDebugEnabled\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Centralize logging handling for SQL statements\&. 
+
+
+.PP
+Definition at line 9 of file SqlStatementLogger\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.AdoNet\&.Util\&.SqlStatementLogger\&.SqlStatementLogger ()"
+
+.PP
+Constructs a new \fBSqlStatementLogger\fP instance\&.
+.PP
+Definition at line 14 of file SqlStatementLogger\&.cs\&.
+.SS "NHibernate\&.AdoNet\&.Util\&.SqlStatementLogger\&.SqlStatementLogger (boollogToStdout, boolformatSql)"
+
+.PP
+Constructs a new \fBSqlStatementLogger\fP instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlogToStdout\fP Should we log to STDOUT in addition to our internal logger\&. 
+.br
+\fIformatSql\fP Should we format SQL ('prettify') prior to logging\&. 
+.RE
+.PP
+
+.PP
+Definition at line 19 of file SqlStatementLogger\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.AdoNet\&.Util\&.SqlStatementLogger\&.LogCommand (stringmessage, IDbCommandcommand, \fBFormatStyle\fPstyle)\fC [virtual]\fP"
+
+.PP
+Log a IDbCommand\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP Title
+.br
+\fIcommand\fP The SQL statement\&. 
+.br
+\fIstyle\fP The requested formatting style\&. 
+.RE
+.PP
+
+.PP
+Definition at line 38 of file SqlStatementLogger\&.cs\&.
+.SS "virtual void NHibernate\&.AdoNet\&.Util\&.SqlStatementLogger\&.LogCommand (IDbCommandcommand, \fBFormatStyle\fPstyle)\fC [virtual]\fP"
+
+.PP
+Log a IDbCommand\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP The SQL statement\&. 
+.br
+\fIstyle\fP The requested formatting style\&. 
+.RE
+.PP
+
+.PP
+Definition at line 66 of file SqlStatementLogger\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

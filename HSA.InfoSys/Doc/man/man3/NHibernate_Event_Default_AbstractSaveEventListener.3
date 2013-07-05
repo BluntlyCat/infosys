@@ -1,0 +1,314 @@
+.TH "NHibernate.Event.Default.AbstractSaveEventListener" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.Default.AbstractSaveEventListener \- 
+.PP
+A convenience bas class for listeners responding to save events\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Event\&.Default\&.AbstractReassociateEventListener\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Event\&.Default\&.DefaultMergeEventListener\fP, \fBNHibernate\&.Event\&.Default\&.DefaultPersistEventListener\fP, \fBNHibernate\&.Event\&.Default\&.DefaultReplicateEventListener\fP, and \fBNHibernate\&.Event\&.Default\&.DefaultSaveOrUpdateEventListener\fP\&.
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBInvokeSaveLifecycle\fP (object entity, \fBIEntityPersister\fP persister, \fBIEventSource\fP source)"
+.br
+.ti -1c
+.RI "virtual void \fBValidate\fP (object entity, \fBIEntityPersister\fP persister, \fBIEventSource\fP source)"
+.br
+.ti -1c
+.RI "virtual object \fBSaveWithRequestedId\fP (object entity, object requestedId, string entityName, object anything, \fBIEventSource\fP source)"
+.br
+.RI "\fIPrepares the save call using the given requested id\&. \fP"
+.ti -1c
+.RI "virtual object \fBSaveWithGeneratedId\fP (object entity, string entityName, object anything, \fBIEventSource\fP source, bool requiresImmediateIdAccess)"
+.br
+.RI "\fIPrepares the save call using a newly generated id\&. \fP"
+.ti -1c
+.RI "virtual object \fBPerformSave\fP (object entity, object id, \fBIEntityPersister\fP persister, bool useIdentityColumn, object anything, \fBIEventSource\fP source, bool requiresImmediateIdAccess)"
+.br
+.RI "\fIPrepares the save call by checking the session caches for a pre-existing entity and performing any lifecycle callbacks\&. \fP"
+.ti -1c
+.RI "virtual object \fBPerformSaveOrReplicate\fP (object entity, \fBEntityKey\fP key, \fBIEntityPersister\fP persister, bool useIdentityColumn, object anything, \fBIEventSource\fP source, bool requiresImmediateIdAccess)"
+.br
+.RI "\fIPerforms all the actual work needed to save an entity (well to get the save moved to the execution queue)\&. \fP"
+.ti -1c
+.RI "virtual IDictionary \fBGetMergeMap\fP (object anything)"
+.br
+.ti -1c
+.RI "virtual bool \fBVisitCollectionsBeforeSave\fP (object entity, object id, object[] values, \fBIType\fP[] types, \fBIEventSource\fP source)"
+.br
+.ti -1c
+.RI "virtual bool \fBSubstituteValuesIfNecessary\fP (object entity, object id, object[] values, \fBIEntityPersister\fP persister, \fBISessionImplementor\fP source)"
+.br
+.RI "\fIPerform any property value substitution that is necessary (interceptor callback, version initialization\&.\&.\&.) \fP"
+.ti -1c
+.RI "virtual void \fBCascadeBeforeSave\fP (\fBIEventSource\fP source, \fBIEntityPersister\fP persister, object entity, object anything)"
+.br
+.RI "\fIHandles the calls needed to perform pre-save cascades for the given entity\&. \fP"
+.ti -1c
+.RI "virtual void \fBCascadeAfterSave\fP (\fBIEventSource\fP source, \fBIEntityPersister\fP persister, object entity, object anything)"
+.br
+.RI "\fIHandles to calls needed to perform post-save cascades\&. \fP"
+.ti -1c
+.RI "virtual EntityState \fBGetEntityState\fP (object entity, string entityName, \fBEntityEntry\fP entry, \fBISessionImplementor\fP source)"
+.br
+.RI "\fIDetermine whether the entity is persistent, detached, or transient \fP"
+.ti -1c
+.RI "virtual string \fBGetLoggableName\fP (string entityName, object entity)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBAssumedUnsaved\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract \fBCascadingAction\fP \fBCascadeAction\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBVersionIncrementDisabled\fP\fC [get]\fP"
+.br
+.RI "\fIAfter the save, will te version number be incremented if the instance is modified? \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A convenience bas class for listeners responding to save events\&. 
+
+
+.PP
+Definition at line 29 of file AbstractSaveEventListener\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Event\&.Default\&.AbstractSaveEventListener\&.CascadeAfterSave (\fBIEventSource\fPsource, \fBIEntityPersister\fPpersister, objectentity, objectanything)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Handles to calls needed to perform post-save cascades\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP The session from which the event originated\&. 
+.br
+\fIpersister\fP The entity's persister instance\&. 
+.br
+\fIentity\fP The entity being saved\&. 
+.br
+\fIanything\fP Generally cascade-specific data 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Event\&.Default\&.DefaultMergeEventListener\fP\&.
+.PP
+Definition at line 373 of file AbstractSaveEventListener\&.cs\&.
+.SS "virtual void NHibernate\&.Event\&.Default\&.AbstractSaveEventListener\&.CascadeBeforeSave (\fBIEventSource\fPsource, \fBIEntityPersister\fPpersister, objectentity, objectanything)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Handles the calls needed to perform pre-save cascades for the given entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP The session from which the save event originated\&.
+.br
+\fIpersister\fP The entity's persister instance\&. 
+.br
+\fIentity\fP The entity to be saved\&. 
+.br
+\fIanything\fP Generally cascade-specific data 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Event\&.Default\&.DefaultMergeEventListener\fP\&.
+.PP
+Definition at line 354 of file AbstractSaveEventListener\&.cs\&.
+.SS "virtual EntityState NHibernate\&.Event\&.Default\&.AbstractSaveEventListener\&.GetEntityState (objectentity, stringentityName, \fBEntityEntry\fPentry, \fBISessionImplementor\fPsource)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Determine whether the entity is persistent, detached, or transient 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity to check 
+.br
+\fIentityName\fP The name of the entity 
+.br
+\fIentry\fP The entity's entry in the persistence context 
+.br
+\fIsource\fP The originating session\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The state\&. 
+.RE
+.PP
+
+.PP
+Definition at line 395 of file AbstractSaveEventListener\&.cs\&.
+.SS "virtual object NHibernate\&.Event\&.Default\&.AbstractSaveEventListener\&.PerformSave (objectentity, objectid, \fBIEntityPersister\fPpersister, booluseIdentityColumn, objectanything, \fBIEventSource\fPsource, boolrequiresImmediateIdAccess)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Prepares the save call by checking the session caches for a pre-existing entity and performing any lifecycle callbacks\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity to be saved\&. 
+.br
+\fIid\fP The id by which to save the entity\&. 
+.br
+\fIpersister\fP The entity's persister instance\&. 
+.br
+\fIuseIdentityColumn\fP Is an identity column being used? 
+.br
+\fIanything\fP Generally cascade-specific information\&. 
+.br
+\fIsource\fP The session from which the event originated\&. 
+.br
+\fIrequiresImmediateIdAccess\fP does the event context require access to the identifier immediately after execution of this method (if not, post-insert style id generators may be postponed if we are outside a transaction)\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The id used to save the entity; may be null depending on the type of id generator used and the requiresImmediateIdAccess value 
+.RE
+.PP
+
+.PP
+Definition at line 153 of file AbstractSaveEventListener\&.cs\&.
+.SS "virtual object NHibernate\&.Event\&.Default\&.AbstractSaveEventListener\&.PerformSaveOrReplicate (objectentity, \fBEntityKey\fPkey, \fBIEntityPersister\fPpersister, booluseIdentityColumn, objectanything, \fBIEventSource\fPsource, boolrequiresImmediateIdAccess)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Performs all the actual work needed to save an entity (well to get the save moved to the execution queue)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity to be saved 
+.br
+\fIkey\fP The id to be used for saving the entity (or null, in the case of identity columns) 
+.br
+\fIpersister\fP The entity's persister instance\&. 
+.br
+\fIuseIdentityColumn\fP Should an identity column be used for id generation? 
+.br
+\fIanything\fP Generally cascade-specific information\&. 
+.br
+\fIsource\fP The session which is the source of the current event\&. 
+.br
+\fIrequiresImmediateIdAccess\fP Is access to the identifier required immediately after the completion of the save? persist(), for example, does not require this\&.\&.\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The id used to save the entity; may be null depending on the type of id generator used and the requiresImmediateIdAccess value 
+.RE
+.PP
+
+.PP
+Definition at line 208 of file AbstractSaveEventListener\&.cs\&.
+.SS "virtual object NHibernate\&.Event\&.Default\&.AbstractSaveEventListener\&.SaveWithGeneratedId (objectentity, stringentityName, objectanything, \fBIEventSource\fPsource, boolrequiresImmediateIdAccess)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Prepares the save call using a newly generated id\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity to be saved 
+.br
+\fIentityName\fP The entity-name for the entity to be saved 
+.br
+\fIanything\fP Generally cascade-specific information\&. 
+.br
+\fIsource\fP The session which is the source of this save event\&. 
+.br
+\fIrequiresImmediateIdAccess\fP does the event context require access to the identifier immediately after execution of this method (if not, post-insert style id generators may be postponed if we are outside a transaction)\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The id used to save the entity; may be null depending on the type of id generator used and the requiresImmediateIdAccess value 
+.RE
+.PP
+
+.PP
+Definition at line 105 of file AbstractSaveEventListener\&.cs\&.
+.SS "virtual object NHibernate\&.Event\&.Default\&.AbstractSaveEventListener\&.SaveWithRequestedId (objectentity, objectrequestedId, stringentityName, objectanything, \fBIEventSource\fPsource)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Prepares the save call using the given requested id\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity to be saved\&. 
+.br
+\fIrequestedId\fP The id to which to associate the entity\&. 
+.br
+\fIentityName\fP The name of the entity being saved\&. 
+.br
+\fIanything\fP Generally cascade-specific information\&. 
+.br
+\fIsource\fP The session which is the source of this save event\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The id used to save the entity\&. 
+.RE
+.PP
+
+.PP
+Definition at line 83 of file AbstractSaveEventListener\&.cs\&.
+.SS "virtual bool NHibernate\&.Event\&.Default\&.AbstractSaveEventListener\&.SubstituteValuesIfNecessary (objectentity, objectid, object[]values, \fBIEntityPersister\fPpersister, \fBISessionImplementor\fPsource)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Perform any property value substitution that is necessary (interceptor callback, version initialization\&.\&.\&.) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity 
+.br
+\fIid\fP The entity identifier 
+.br
+\fIvalues\fP The snapshot entity state 
+.br
+\fIpersister\fP The entity persister 
+.br
+\fIsource\fP The originating session 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the snapshot state changed such that reinjection of the values into the entity is required\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Event\&.Default\&.DefaultReplicateEventListener\fP\&.
+.PP
+Definition at line 335 of file AbstractSaveEventListener\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual bool NHibernate\&.Event\&.Default\&.AbstractSaveEventListener\&.VersionIncrementDisabled\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+After the save, will te version number be incremented if the instance is modified? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if the version will be incremented on an entity change after save; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 46 of file AbstractSaveEventListener\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

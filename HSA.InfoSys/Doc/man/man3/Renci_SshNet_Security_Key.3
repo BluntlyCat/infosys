@@ -1,0 +1,157 @@
+.TH "Renci.SshNet.Security.Key" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Security.Key \- 
+.PP
+Base class for asymmetric cipher algorithms  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBRenci\&.SshNet\&.Security\&.DsaKey\fP, and \fBRenci\&.SshNet\&.Security\&.RsaKey\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBKey\fP (byte[] data)"
+.br
+.RI "\fIInitializes a new instance of the \fBKey\fP class\&. \fP"
+.ti -1c
+.RI "\fBKey\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBKey\fP class\&. \fP"
+.ti -1c
+.RI "byte[] \fBSign\fP (byte[] data)"
+.br
+.RI "\fISigns the specified data with the key\&. \fP"
+.ti -1c
+.RI "bool \fBVerifySignature\fP (byte[] data, byte[] signature)"
+.br
+.RI "\fIVerifies the signature\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBBigInteger\fP[] \fB_privateKey\fP"
+.br
+.RI "\fISpecifies array of big integers that represent private key \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "abstract \fBDigitalSignature\fP \fBDigitalSignature\fP\fC [get]\fP"
+.br
+.RI "\fIGets the key specific digital signature\&. \fP"
+.ti -1c
+.RI "abstract \fBBigInteger\fP[] \fBPublic\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the public key\&. \fP"
+.ti -1c
+.RI "abstract int \fBKeyLength\fP\fC [get]\fP"
+.br
+.RI "\fIGets the length of the key\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for asymmetric cipher algorithms 
+
+
+.PP
+Definition at line 13 of file Key\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Security\&.Key\&.Key (byte[]data)"
+
+.PP
+Initializes a new instance of the \fBKey\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP DER encoded private key data\&.
+.RE
+.PP
+
+.PP
+Definition at line 45 of file Key\&.cs\&.
+.SS "Renci\&.SshNet\&.Security\&.Key\&.Key ()"
+
+.PP
+Initializes a new instance of the \fBKey\fP class\&. 
+.PP
+Definition at line 65 of file Key\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "byte [] Renci\&.SshNet\&.Security\&.Key\&.Sign (byte[]data)"
+
+.PP
+Signs the specified data with the key\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The data to sign\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Signed data\&. 
+.RE
+.PP
+
+.PP
+Definition at line 78 of file Key\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Security\&.Key\&.VerifySignature (byte[]data, byte[]signature)"
+
+.PP
+Verifies the signature\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The data to verify\&.
+.br
+\fIsignature\fP The signature to verify against\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCTrue\fP is signature was successfully verifies; otherwise \fCfalse\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 89 of file Key\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBBigInteger\fP [] Renci\&.SshNet\&.Security\&.Key\&._privateKey\fC [protected]\fP"
+
+.PP
+Specifies array of big integers that represent private key 
+.PP
+Definition at line 18 of file Key\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "abstract \fBDigitalSignature\fP Renci\&.SshNet\&.Security\&.Key\&.DigitalSignature\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Gets the key specific digital signature\&. 
+.PP
+Definition at line 23 of file Key\&.cs\&.
+.SS "abstract int Renci\&.SshNet\&.Security\&.Key\&.KeyLength\fC [get]\fP"
+
+.PP
+Gets the length of the key\&. The length of the key\&. 
+.PP
+Definition at line 39 of file Key\&.cs\&.
+.SS "abstract \fBBigInteger\fP [] Renci\&.SshNet\&.Security\&.Key\&.Public\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the public key\&. The public\&. 
+.PP
+Definition at line 31 of file Key\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

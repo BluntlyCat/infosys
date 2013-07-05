@@ -1,0 +1,96 @@
+.TH "log4net.Config.RepositoryAttribute" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Config.RepositoryAttribute \- 
+.PP
+Assembly level attribute that specifies the logging repository for the assembly\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits Attribute\&.
+.PP
+Inherited by \fBlog4net\&.Config\&.DomainAttribute\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRepositoryAttribute\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBRepositoryAttribute\fP class\&. \fP"
+.ti -1c
+.RI "\fBRepositoryAttribute\fP (string name)"
+.br
+.RI "\fIInitialize a new instance of the \fBRepositoryAttribute\fP class with the name of the repository\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the name of the logging repository\&. \fP"
+.ti -1c
+.RI "Type \fBRepositoryType\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the type of repository to create for this assembly\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Assembly level attribute that specifies the logging repository for the assembly\&. 
+
+Assemblies are mapped to logging repository\&. This attribute specified on the assembly controls the configuration of the repository\&. The \fBName\fP property specifies the name of the repository that this assembly is a part of\&. The \fBRepositoryType\fP specifies the type of the \fBlog4net\&.Repository\&.ILoggerRepository\fP object to create for the assembly\&. If this attribute is not specified or a \fBName\fP is not specified then the assembly will be part of the default shared logging repository\&. 
+.PP
+This attribute can only be specified on the assembly and may only be used once per assembly\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 49 of file RepositoryAttribute\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Config\&.RepositoryAttribute\&.RepositoryAttribute ()"
+
+.PP
+Initializes a new instance of the \fBRepositoryAttribute\fP class\&. Default constructor\&. 
+.PP
+Definition at line 65 of file RepositoryAttribute\&.cs\&.
+.SS "log4net\&.Config\&.RepositoryAttribute\&.RepositoryAttribute (stringname)"
+
+.PP
+Initialize a new instance of the \fBRepositoryAttribute\fP class with the name of the repository\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the repository\&.
+.RE
+.PP
+.PP
+Initialize the attribute with the name for the assembly's repository\&. 
+.PP
+Definition at line 79 of file RepositoryAttribute\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string log4net\&.Config\&.RepositoryAttribute\&.Name\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the name of the logging repository\&. The string name to use as the name of the repository associated with this assembly\&. 
+.PP
+This value does not have to be unique\&. Several assemblies can share the same repository\&. They will share the logging configuration of the repository\&. 
+.PP
+Definition at line 102 of file RepositoryAttribute\&.cs\&.
+.SS "Type log4net\&.Config\&.RepositoryAttribute\&.RepositoryType\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the type of repository to create for this assembly\&. The type of repository to create for this assembly\&. 
+.PP
+The type of the repository to create for the assembly\&. The type must implement the \fBlog4net\&.Repository\&.ILoggerRepository\fP interface\&. 
+.PP
+This will be the type of repository created when the repository is created\&. If multiple assemblies reference the same repository then the repository is only created once using the \fBRepositoryType\fP of the first assembly to call into the repository\&. 
+.PP
+Definition at line 128 of file RepositoryAttribute\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

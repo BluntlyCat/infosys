@@ -1,0 +1,90 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Tree.SqlFragment" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Tree.SqlFragment \- 
+.PP
+Represents an SQL fragment in the AST\&. Author: josh Ported by: Steve Strong  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SqlNode\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IParameterContainer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlFragment\fP (IToken token)"
+.br
+.ti -1c
+.RI "void \fBSetJoinFragment\fP (\fBJoinFragment\fP joinFragment)"
+.br
+.ti -1c
+.RI "override \fBSqlString\fP \fBRenderText\fP (\fBEngine\&.ISessionFactoryImplementor\fP sessionFactory)"
+.br
+.ti -1c
+.RI "void \fBAddEmbeddedParameter\fP (\fBIParameterSpecification\fP specification)"
+.br
+.RI "\fIAdds a parameter specification for a parameter encountered within this node\&. We use the term 'embedded' here because of the fact that the parameter was simply encountered as part of the node's text; it does not exist as part of a subtree as it might in a true AST\&. \fP"
+.ti -1c
+.RI "\fBIParameterSpecification\fP[] \fBGetEmbeddedParameters\fP ()"
+.br
+.RI "\fIRetrieve all embedded parameter specifications\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBHasFilterCondition\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBFromElement\fP \fBFromElement\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasEmbeddedParameters\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents an SQL fragment in the AST\&. Author: josh Ported by: Steve Strong 
+
+
+.PP
+Definition at line 16 of file SqlFragment\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SqlFragment\&.AddEmbeddedParameter (\fBIParameterSpecification\fPspecification)"
+
+.PP
+Adds a parameter specification for a parameter encountered within this node\&. We use the term 'embedded' here because of the fact that the parameter was simply encountered as part of the node's text; it does not exist as part of a subtree as it might in a true AST\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspecification\fP The generated specification\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IParameterContainer\fP\&.
+.PP
+Definition at line 64 of file SqlFragment\&.cs\&.
+.SS "\fBIParameterSpecification\fP [] NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SqlFragment\&.GetEmbeddedParameters ()"
+
+.PP
+Retrieve all embedded parameter specifications\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+All embedded parameter specifications; may return null\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IParameterContainer\fP\&.
+.PP
+Definition at line 78 of file SqlFragment\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

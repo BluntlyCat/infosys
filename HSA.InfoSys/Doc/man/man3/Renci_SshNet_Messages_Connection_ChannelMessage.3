@@ -1,0 +1,97 @@
+.TH "Renci.SshNet.Messages.Connection.ChannelMessage" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Messages.Connection.ChannelMessage \- 
+.PP
+Base class for all channel specific SSH messages\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.Messages\&.Message\fP\&.
+.PP
+Inherited by \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelCloseMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelDataMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelEofMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelExtendedDataMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelFailureMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelOpenConfirmationMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelOpenFailureMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelOpenMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelRequestMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelSuccessMessage\fP, and \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelWindowAdjustMessage\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIReturns a System\&.String that represents this instance\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBLoadData\fP ()"
+.br
+.RI "\fICalled when type specific data need to be loaded\&. \fP"
+.ti -1c
+.RI "override void \fBSaveData\fP ()"
+.br
+.RI "\fICalled when type specific data need to be saved\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "uint \fBLocalChannelNumber\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the local channel number\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for all channel specific SSH messages\&. 
+
+
+.PP
+Definition at line 7 of file ChannelMessage\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void Renci\&.SshNet\&.Messages\&.Connection\&.ChannelMessage\&.LoadData ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when type specific data need to be loaded\&. 
+.PP
+Implements \fBRenci\&.SshNet\&.Common\&.SshData\fP\&.
+.PP
+Reimplemented in \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelOpenMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelOpenConfirmationMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelOpenFailureMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelRequestMessage\fP, and \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelWindowAdjustMessage\fP\&.
+.PP
+Definition at line 20 of file ChannelMessage\&.cs\&.
+.SS "override void Renci\&.SshNet\&.Messages\&.Connection\&.ChannelMessage\&.SaveData ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when type specific data need to be saved\&. 
+.PP
+Implements \fBRenci\&.SshNet\&.Common\&.SshData\fP\&.
+.PP
+Reimplemented in \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelOpenMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelOpenConfirmationMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelOpenFailureMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelRequestMessage\fP, and \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelWindowAdjustMessage\fP\&.
+.PP
+Definition at line 28 of file ChannelMessage\&.cs\&.
+.SS "override string Renci\&.SshNet\&.Messages\&.Connection\&.ChannelMessage\&.ToString ()"
+
+.PP
+Returns a System\&.String that represents this instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A System\&.String that represents this instance\&. 
+.RE
+.PP
+
+.PP
+Definition at line 39 of file ChannelMessage\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "uint Renci\&.SshNet\&.Messages\&.Connection\&.ChannelMessage\&.LocalChannelNumber\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the local channel number\&. The local channel number\&. 
+.PP
+Definition at line 15 of file ChannelMessage\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

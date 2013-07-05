@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_pe_verify_fixture_1_1_class_with_no_default_constructor =
+[
+    [ "ClassWithNoDefaultConstructor", "class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_pe_verify_fixture_1_1_class_with_no_default_constructor.html#a40ddf0b6f16bf472487a51bf4e74c98b", null ],
+    [ "ClassWithNoDefaultConstructor", "class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_pe_verify_fixture_1_1_class_with_no_default_constructor.html#ab68194e74bca2baed12c409f0e2e9280", null ]
+];

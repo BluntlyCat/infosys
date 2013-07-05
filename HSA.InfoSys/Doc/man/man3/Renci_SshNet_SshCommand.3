@@ -1,0 +1,402 @@
+.TH "Renci.SshNet.SshCommand" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.SshCommand \- 
+.PP
+Represents SSH command that can be executed\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDisposable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "IAsyncResult \fBBeginExecute\fP ()"
+.br
+.RI "\fIBegins an asynchronous command execution\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginExecute\fP (AsyncCallback callback)"
+.br
+.RI "\fIBegins an asynchronous command execution\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginExecute\fP (AsyncCallback callback, object state)"
+.br
+.RI "\fIBegins an asynchronous command execution\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginExecute\fP (string commandText, AsyncCallback callback, object state)"
+.br
+.RI "\fIBegins an asynchronous command execution\&. 22 \fP"
+.ti -1c
+.RI "string \fBEndExecute\fP (IAsyncResult asyncResult)"
+.br
+.RI "\fIWaits for the pending asynchronous command execution to complete\&. \fP"
+.ti -1c
+.RI "string \fBExecute\fP ()"
+.br
+.RI "\fIExecutes command specified by \fBCommandText\fP property\&. \fP"
+.ti -1c
+.RI "void \fBCancelAsync\fP ()"
+.br
+.RI "\fICancels command execution in asynchronous scenarios\&. \fP"
+.ti -1c
+.RI "string \fBExecute\fP (string commandText)"
+.br
+.RI "\fIExecutes the specified command text\&. \fP"
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "\fIPerforms application-defined tasks associated with freeing, releasing, or resetting unmanaged ResourceMessages\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIReleases unmanaged and - optionally - managed resources \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBCommandText\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the command text\&. \fP"
+.ti -1c
+.RI "TimeSpan \fBCommandTimeout\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the command timeout\&. \fP"
+.ti -1c
+.RI "int \fBExitStatus\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the command exit status\&. \fP"
+.ti -1c
+.RI "Stream \fBOutputStream\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the output stream\&. \fP"
+.ti -1c
+.RI "Stream \fBExtendedOutputStream\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the extended output stream\&. \fP"
+.ti -1c
+.RI "string \fBResult\fP\fC [get]\fP"
+.br
+.RI "\fIGets the command execution result\&. \fP"
+.ti -1c
+.RI "string \fBError\fP\fC [get]\fP"
+.br
+.RI "\fIGets the command execution error\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents SSH command that can be executed\&. 
+
+
+.PP
+Definition at line 18 of file SshCommand\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "IAsyncResult Renci\&.SshNet\&.SshCommand\&.BeginExecute ()"
+
+.PP
+Begins an asynchronous command execution\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An System\&.IAsyncResult that represents the asynchronous command execution, which could still be pending\&. 
+.RE
+.PP
+\fC \fP
+.PP
+\fC 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.InvalidOperationException\fP Asynchronous operation is already in progress\&.
+.br
+\fISshException\fP Invalid operation\&.
+.br
+\fISystem\&.ArgumentException\fP CommandText property is empty\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SshConnectionException\fP\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SshOperationTimeoutException\fP\fP Operation has timed out\&.
+.br
+\fIInvalidOperationException\fP Asynchronous operation is already in progress\&.
+.br
+\fIArgumentException\fP CommandText property is empty\&.
+.RE
+.PP
+\fP
+.PP
+Definition at line 176 of file SshCommand\&.cs\&.
+.SS "IAsyncResult Renci\&.SshNet\&.SshCommand\&.BeginExecute (AsyncCallbackcallback)"
+
+.PP
+Begins an asynchronous command execution\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcallback\fP An optional asynchronous callback, to be called when the command execution is complete\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An System\&.IAsyncResult that represents the asynchronous command execution, which could still be pending\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.InvalidOperationException\fP Asynchronous operation is already in progress\&.
+.br
+\fISshException\fP Invalid operation\&.
+.br
+\fISystem\&.ArgumentException\fP CommandText property is empty\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SshConnectionException\fP\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SshOperationTimeoutException\fP\fP Operation has timed out\&.
+.br
+\fIInvalidOperationException\fP Asynchronous operation is already in progress\&.
+.br
+\fIArgumentException\fP CommandText property is empty\&.
+.RE
+.PP
+
+.PP
+Definition at line 195 of file SshCommand\&.cs\&.
+.SS "IAsyncResult Renci\&.SshNet\&.SshCommand\&.BeginExecute (AsyncCallbackcallback, objectstate)"
+
+.PP
+Begins an asynchronous command execution\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcallback\fP An optional asynchronous callback, to be called when the command execution is complete\&.
+.br
+\fIstate\fP A user-provided object that distinguishes this particular asynchronous read request from other requests\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An System\&.IAsyncResult that represents the asynchronous command execution, which could still be pending\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.InvalidOperationException\fP Asynchronous operation is already in progress\&.
+.br
+\fISshException\fP Invalid operation\&.
+.br
+\fISystem\&.ArgumentException\fP CommandText property is empty\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SshConnectionException\fP\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SshOperationTimeoutException\fP\fP Operation has timed out\&.
+.br
+\fIInvalidOperationException\fP Asynchronous operation is already in progress\&.
+.br
+\fIArgumentException\fP CommandText property is empty\&.
+.RE
+.PP
+
+.PP
+Definition at line 215 of file SshCommand\&.cs\&.
+.SS "IAsyncResult Renci\&.SshNet\&.SshCommand\&.BeginExecute (stringcommandText, AsyncCallbackcallback, objectstate)"
+
+.PP
+Begins an asynchronous command execution\&. 22 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommandText\fP The command text\&.
+.br
+\fIcallback\fP An optional asynchronous callback, to be called when the command execution is complete\&.
+.br
+\fIstate\fP A user-provided object that distinguishes this particular asynchronous read request from other requests\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An System\&.IAsyncResult that represents the asynchronous command execution, which could still be pending\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBRenci\&.SshNet\&.Common\&.SshConnectionException\fP\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SshOperationTimeoutException\fP\fP Operation has timed out\&.
+.RE
+.PP
+
+.PP
+Definition at line 263 of file SshCommand\&.cs\&.
+.SS "void Renci\&.SshNet\&.SshCommand\&.CancelAsync ()"
+
+.PP
+Cancels command execution in asynchronous scenarios\&. 
+.PP
+Definition at line 329 of file SshCommand\&.cs\&.
+.SS "void Renci\&.SshNet\&.SshCommand\&.Dispose ()"
+
+.PP
+Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged ResourceMessages\&. 
+.PP
+Definition at line 504 of file SshCommand\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.SshCommand\&.Dispose (booldisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Releases unmanaged and - optionally - managed resources 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP \fCtrue\fP to release both managed and unmanaged resources; \fCfalse\fP to release only unmanaged ResourceMessages\&.
+.RE
+.PP
+
+.PP
+Definition at line 515 of file SshCommand\&.cs\&.
+.SS "string Renci\&.SshNet\&.SshCommand\&.EndExecute (IAsyncResultasyncResult)"
+
+.PP
+Waits for the pending asynchronous command execution to complete\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIasyncResult\fP The reference to the pending asynchronous request to finish\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Command execution result\&.
+.RE
+.PP
+\fC \fP
+.PP
+\fC 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentException\fP Either the IAsyncResult object did not come from the corresponding async method on this type, or EndExecute was called multiple times with the same IAsyncResult\&.
+.br
+\fIArgumentException\fP Either the IAsyncResult object did not come from the corresponding async method on this type, or EndExecute was called multiple times with the same IAsyncResult\&.
+.RE
+.PP
+\fP
+.PP
+Definition at line 280 of file SshCommand\&.cs\&.
+.SS "string Renci\&.SshNet\&.SshCommand\&.Execute ()"
+
+.PP
+Executes command specified by \fBCommandText\fP property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Command execution result
+.RE
+.PP
+\fC \fC \fC \fP\fP\fP
+.PP
+\fC\fC\fC 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBRenci\&.SshNet\&.Common\&.SshConnectionException\fP\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SshOperationTimeoutException\fP\fP Operation has timed out\&.
+.RE
+.PP
+\fP\fP\fP
+.PP
+Definition at line 321 of file SshCommand\&.cs\&.
+.SS "string Renci\&.SshNet\&.SshCommand\&.Execute (stringcommandText)"
+
+.PP
+Executes the specified command text\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommandText\fP The command text\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Command execution result
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBRenci\&.SshNet\&.Common\&.SshConnectionException\fP\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SshOperationTimeoutException\fP\fP Operation has timed out\&.
+.RE
+.PP
+
+.PP
+Definition at line 344 of file SshCommand\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string Renci\&.SshNet\&.SshCommand\&.CommandText\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the command text\&. 
+.PP
+Definition at line 39 of file SshCommand\&.cs\&.
+.SS "TimeSpan Renci\&.SshNet\&.SshCommand\&.CommandTimeout\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the command timeout\&. The command timeout\&. 
+.PP
+\fC \fP
+.PP
+\fC \fP
+.PP
+Definition at line 50 of file SshCommand\&.cs\&.
+.SS "string Renci\&.SshNet\&.SshCommand\&.Error\fC [get]\fP"
+
+.PP
+Gets the command execution error\&. \fC \fP
+.PP
+\fC \fP
+.PP
+Definition at line 112 of file SshCommand\&.cs\&.
+.SS "int Renci\&.SshNet\&.SshCommand\&.ExitStatus\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the command exit status\&. \fC \fP
+.PP
+\fC \fP
+.PP
+Definition at line 58 of file SshCommand\&.cs\&.
+.SS "Stream Renci\&.SshNet\&.SshCommand\&.ExtendedOutputStream\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the extended output stream\&. \fC \fP
+.PP
+\fC \fP
+.PP
+Definition at line 74 of file SshCommand\&.cs\&.
+.SS "Stream Renci\&.SshNet\&.SshCommand\&.OutputStream\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the output stream\&. \fC \fP
+.PP
+\fC \fP
+.PP
+Definition at line 66 of file SshCommand\&.cs\&.
+.SS "string Renci\&.SshNet\&.SshCommand\&.Result\fC [get]\fP"
+
+.PP
+Gets the command execution result\&. \fC \fP
+.PP
+\fC \fP
+.PP
+Definition at line 84 of file SshCommand\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

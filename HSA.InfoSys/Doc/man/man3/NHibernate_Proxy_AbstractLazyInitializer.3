@@ -1,0 +1,169 @@
+.TH "NHibernate.Proxy.AbstractLazyInitializer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Proxy.AbstractLazyInitializer \- 
+.PP
+Provides the base functionality to Handle Member calls into a dynamically generated \fBNHibernate\fP \fBProxy\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Proxy\&.ILazyInitializer\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Proxy\&.Map\&.MapLazyInitializer\fP, and \fBNHibernate\&.Proxy\&.Poco\&.BasicLazyInitializer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSetSession\fP (\fBISessionImplementor\fP s)"
+.br
+.RI "\fIAssociate the proxy with the given session\&.
+.PP
+Care should be given to make certain that the proxy is added to the session's persistence context as well to maintain the symmetry of the association\&. That must be done separately as this method simply sets an internal reference\&. We do also check that if there is already an associated session that the proxy reference was removed from that previous session's persistence context\&.  \fP"
+.ti -1c
+.RI "void \fBUnsetSession\fP ()"
+.br
+.RI "\fIUnset this initializer's reference to session\&. It is assumed that the caller is also taking care or cleaning up the owning proxy's reference in the persistence context\&.
+.PP
+Generally speaking this is intended to be called only during \fBNHibernate\&.ISession\&.Evict\fP and \fBNHibernate\&.ISession\&.Clear()\fP processing; most other use-cases should call \fBSetSession(ISessionImplementor)\fP instead\&.  \fP"
+.ti -1c
+.RI "virtual void \fBInitialize\fP ()"
+.br
+.RI "\fIPerform an ImmediateLoad of the actual object for the \fBProxy\fP\&. \fP"
+.ti -1c
+.RI "object \fBGetImplementation\fP ()"
+.br
+.RI "\fIReturn the Underlying Persistent Object, initializing if necessary\&. \fP"
+.ti -1c
+.RI "object \fBGetImplementation\fP (\fBISessionImplementor\fP s)"
+.br
+.RI "\fIReturn the Underlying Persistent Object in a given \fBISession\fP, or null\&. \fP"
+.ti -1c
+.RI "void \fBSetImplementation\fP (object target)"
+.br
+.RI "\fIInitialize the proxy manually by injecting its target\&. \fP"
+.in -1c
+.SS "Static Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly object \fBInvokeImplementation\fP = new object()"
+.br
+.RI "\fIIf this is returned by Invoke then the subclass needs to Invoke the method call against the object that is being proxied\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "object \fBIdentifier\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "abstract System\&.Type \fBPersistentClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsUninitialized\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBUnwrap\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBISessionImplementor\fP \fBSession\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBEntityName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsReadOnlySettingAvailable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBReadOnly\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Provides the base functionality to Handle Member calls into a dynamically generated \fBNHibernate\fP \fBProxy\fP\&. 
+
+This could be an extension point later if the \&.net framework ever gets a \fBProxy\fP class that is similar to the java\&.lang\&.reflect\&.Proxy or if a library similar to cglib was made in \&.net\&. 
+.PP
+Definition at line 17 of file AbstractLazyInitializer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.Proxy\&.AbstractLazyInitializer\&.GetImplementation ()"
+
+.PP
+Return the Underlying Persistent Object, initializing if necessary\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The Persistent Object this proxy is Proxying\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Proxy\&.ILazyInitializer\fP\&.
+.PP
+Definition at line 189 of file AbstractLazyInitializer\&.cs\&.
+.SS "object NHibernate\&.Proxy\&.AbstractLazyInitializer\&.GetImplementation (\fBISessionImplementor\fPs)"
+
+.PP
+Return the Underlying Persistent Object in a given \fBISession\fP, or null\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The Session to get the object from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The Persistent Object this proxy is Proxying, or \&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Proxy\&.ILazyInitializer\fP\&.
+.PP
+Definition at line 200 of file AbstractLazyInitializer\&.cs\&.
+.SS "virtual void NHibernate\&.Proxy\&.AbstractLazyInitializer\&.Initialize ()\fC [virtual]\fP"
+
+.PP
+Perform an ImmediateLoad of the actual object for the \fBProxy\fP\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP Thrown when the \fBProxy\fP has no Session or the Session is closed or disconnected\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Proxy\&.ILazyInitializer\fP\&.
+.PP
+Definition at line 107 of file AbstractLazyInitializer\&.cs\&.
+.SS "void NHibernate\&.Proxy\&.AbstractLazyInitializer\&.SetImplementation (objecttarget)"
+
+.PP
+Initialize the proxy manually by injecting its target\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItarget\fP The proxy target (the actual entity being proxied)\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Proxy\&.ILazyInitializer\fP\&.
+.PP
+Definition at line 206 of file AbstractLazyInitializer\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly object NHibernate\&.Proxy\&.AbstractLazyInitializer\&.InvokeImplementation = new object()\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+If this is returned by Invoke then the subclass needs to Invoke the method call against the object that is being proxied\&. 
+.PP
+Definition at line 23 of file AbstractLazyInitializer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

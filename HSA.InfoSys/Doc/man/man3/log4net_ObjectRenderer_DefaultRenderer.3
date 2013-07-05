@@ -1,0 +1,102 @@
+.TH "log4net.ObjectRenderer.DefaultRenderer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.ObjectRenderer.DefaultRenderer \- 
+.PP
+The default object Renderer\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.ObjectRenderer\&.IObjectRenderer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDefaultRenderer\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.ti -1c
+.RI "void \fBRenderObject\fP (\fBRendererMap\fP rendererMap, object obj, TextWriter writer)"
+.br
+.RI "\fIRender the object \fIobj\fP  to a string \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The default object Renderer\&. 
+
+The default renderer supports rendering objects and collections to strings\&. 
+.PP
+See the \fBRenderObject\fP method for details of the output\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 42 of file DefaultRenderer\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.ObjectRenderer\&.DefaultRenderer\&.DefaultRenderer ()"
+
+.PP
+Default constructor Default constructor 
+.PP
+Definition at line 54 of file DefaultRenderer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.ObjectRenderer\&.DefaultRenderer\&.RenderObject (\fBRendererMap\fPrendererMap, objectobj, TextWriterwriter)"
+
+.PP
+Render the object \fIobj\fP  to a string 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrendererMap\fP The map used to lookup renderers
+.br
+\fIobj\fP The object to render
+.br
+\fIwriter\fP The writer to render to
+.RE
+.PP
+.PP
+Render the object \fIobj\fP  to a string\&. 
+.PP
+The \fIrendererMap\fP  parameter is provided to lookup and render other objects\&. This is very useful where \fIobj\fP  contains nested objects of unknown type\&. The \fBRendererMap\&.FindAndRender(object)\fP method can be used to render these objects\&. 
+.PP
+The default renderer supports rendering objects to strings as follows: 
+.PP
+Value Rendered String  \fCnull\fP '(null)'
+.PP
+Array  
+.PP
+For a one dimensional array this is the array type name, an open brace, followed by a comma separated list of the elements (using the appropriate renderer), followed by a close brace\&. 
+.PP
+For example: \fCint[] {1, 2, 3}\fP\&. 
+.PP
+If the array is not one dimensional the \fCArray\&.ToString()\fP is returned\&. 
+.PP
+IEnumerable, ICollection & IEnumerator  
+.PP
+Rendered as an open brace, followed by a comma separated list of the elements (using the appropriate renderer), followed by a close brace\&. 
+.PP
+For example: \fC{a, b, c}\fP\&. 
+.PP
+All collection classes that implement ICollection its subclasses, or generic equivalents all implement the IEnumerable interface\&. 
+.PP
+DictionaryEntry  
+.PP
+Rendered as the key, an equals sign ('='), and the value (using the appropriate renderer)\&. 
+.PP
+For example: \fCkey=value\fP\&. 
+.PP
+other  
+.PP
+\fCObject\&.ToString()\fP
+.PP
+Implements \fBlog4net\&.ObjectRenderer\&.IObjectRenderer\fP\&.
+.PP
+Definition at line 148 of file DefaultRenderer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

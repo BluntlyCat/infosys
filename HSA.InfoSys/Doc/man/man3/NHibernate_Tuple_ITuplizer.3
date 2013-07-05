@@ -1,0 +1,184 @@
+.TH "NHibernate.Tuple.ITuplizer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Tuple.ITuplizer \- 
+.PP
+A tuplizer defines the contract for things which know how to manage a particular representation of a piece of data, given that representation's \fBEntityMode\fP (the entity-mode essentially defining which representation)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by NHibernate\&.Test\&.NHSpecificTest\&.EntityModeToTuplizerPerf\&.Fixture\&.TuplizerStub, \fBNHibernate\&.Tuple\&.Component\&.IComponentTuplizer\fP, and \fBNHibernate\&.Tuple\&.Entity\&.IEntityTuplizer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object[] \fBGetPropertyValues\fP (object entity)"
+.br
+.RI "\fIExtract the current values contained on the given entity\&. \fP"
+.ti -1c
+.RI "void \fBSetPropertyValues\fP (object entity, object[] values)"
+.br
+.RI "\fIInject the given values into the given entity\&. \fP"
+.ti -1c
+.RI "object \fBGetPropertyValue\fP (object entity, int i)"
+.br
+.RI "\fIExtract the value of a particular property from the given entity\&. \fP"
+.ti -1c
+.RI "object \fBInstantiate\fP ()"
+.br
+.RI "\fIGenerate a new, empty entity\&. \fP"
+.ti -1c
+.RI "bool \fBIsInstance\fP (object obj)"
+.br
+.RI "\fIIs the given object considered an instance of the the entity (acconting for entity-mode) managed by this tuplizer\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "System\&.Type \fBMappedClass\fP\fC [get]\fP"
+.br
+.RI "\fIReturn the pojo class managed by this tuplizer\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A tuplizer defines the contract for things which know how to manage a particular representation of a piece of data, given that representation's \fBEntityMode\fP (the entity-mode essentially defining which representation)\&. 
+
+If that given piece of data is thought of as a data structure, then a tuplizer is the thing which knows how to: 
+.PD 0
+
+.IP "\(bu" 2
+create such a data structure appropriately 
+.IP "\(bu" 2
+extract values from and inject values into such a data structure 
+.PP
+.PP
+For example, a given piece of data might be represented as a POCO class\&. Here, it's representation and entity-mode is POCO\&. Well a tuplizer for POCO entity-modes would know how to: 
+.PD 0
+
+.IP "\(bu" 2
+create the data structure by calling the POCO's constructor 
+.IP "\(bu" 2
+extract and inject values through getters/setter, or by direct field access, etc 
+.PP
+.PP
+That same piece of data might also be represented as a DOM structure, using the tuplizer associated with the XML entity-mode, which would generate instances of System\&.Xml\&.XmlElement as the data structure and know how to access the values as either nested System\&.Xml\&.XmlElements or as System\&.Xml\&.XmlAttributes\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBEntity\&.IEntityTuplizer\fP, \fBComponent\&.IComponentTuplizer\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 34 of file ITuplizer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.Tuple\&.ITuplizer\&.GetPropertyValue (objectentity, inti)"
+
+.PP
+Extract the value of a particular property from the given entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity from which to extract the property value\&. 
+.br
+\fIi\fP The index of the property for which to extract the value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The current value of the given property on the given entity\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP, and \fBNHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\fP\&.
+.SS "object [] NHibernate\&.Tuple\&.ITuplizer\&.GetPropertyValues (objectentity)"
+
+.PP
+Extract the current values contained on the given entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity from which to extract values\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The current property values\&. 
+.RE
+.PP
+<throws> \fBHibernateException\fP </throws> 
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP, \fBNHibernate\&.Tuple\&.Entity\&.PocoEntityTuplizer\fP, \fBNHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\fP, and \fBNHibernate\&.Tuple\&.Component\&.PocoComponentTuplizer\fP\&.
+.SS "object NHibernate\&.Tuple\&.ITuplizer\&.Instantiate ()"
+
+.PP
+Generate a new, empty entity\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The new, empty entity instance\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP, and \fBNHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\fP\&.
+.SS "bool NHibernate\&.Tuple\&.ITuplizer\&.IsInstance (objectobj)"
+
+.PP
+Is the given object considered an instance of the the entity (acconting for entity-mode) managed by this tuplizer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP The object to be checked\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the object is considered as an instance of this entity within the given mode\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP, and \fBNHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\fP\&.
+.SS "void NHibernate\&.Tuple\&.ITuplizer\&.SetPropertyValues (objectentity, object[]values)"
+
+.PP
+Inject the given values into the given entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity\&. 
+.br
+\fIvalues\fP The values to be injected\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Entity\&.PocoEntityTuplizer\fP, \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP, \fBNHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\fP, and \fBNHibernate\&.Tuple\&.Component\&.PocoComponentTuplizer\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "System\&.Type NHibernate\&.Tuple\&.ITuplizer\&.MappedClass\fC [get]\fP"
+
+.PP
+Return the pojo class managed by this tuplizer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The persistent class\&. 
+.RE
+.PP
+.PP
+Need to determine how to best handle this for the Tuplizers for EntityModes other than POCO\&. 
+.PP
+Definition at line 46 of file ITuplizer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

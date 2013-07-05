@@ -1,0 +1,6 @@
+var class_n_hibernate_1_1_linq_1_1_functions_1_1_generic_dictionary_runtime_method_hql_generator_base_3_01_t_generator_01_4 =
+[
+    [ "GetMethodGenerator", "class_n_hibernate_1_1_linq_1_1_functions_1_1_generic_dictionary_runtime_method_hql_generator_base_3_01_t_generator_01_4.html#ae6257137829ddefe9ba869938d532af8", null ],
+    [ "SupportsMethod", "class_n_hibernate_1_1_linq_1_1_functions_1_1_generic_dictionary_runtime_method_hql_generator_base_3_01_t_generator_01_4.html#a8927c308d77bcbe43406e8044a9d6a58", null ],
+    [ "MethodName", "class_n_hibernate_1_1_linq_1_1_functions_1_1_generic_dictionary_runtime_method_hql_generator_base_3_01_t_generator_01_4.html#a79de22e5691a8f566d2e241c00d44380", null ]
+];

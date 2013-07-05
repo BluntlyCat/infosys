@@ -1,0 +1,53 @@
+.TH "log4net.Appender.IBulkAppender" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.IBulkAppender \- 
+.PP
+Interface for appenders that support bulk logging\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.IAppender\fP\&.
+.PP
+Inherited by \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBDoAppend\fP (\fBLoggingEvent\fP[] loggingEvents)"
+.br
+.RI "\fILog the array of logging events in \fBAppender\fP specific way\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Interface for appenders that support bulk logging\&. 
+
+This interface extends the \fBIAppender\fP interface to support bulk logging of LoggingEvent objects\&. Appenders should only implement this interface if they can bulk log efficiently\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 35 of file IBulkAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Appender\&.IBulkAppender\&.DoAppend (\fBLoggingEvent\fP[]loggingEvents)"
+
+.PP
+Log the array of logging events in \fBAppender\fP specific way\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvents\fP The events to log
+.RE
+.PP
+.PP
+This method is called to log an array of events into this appender\&. 
+.PP
+Implemented in \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

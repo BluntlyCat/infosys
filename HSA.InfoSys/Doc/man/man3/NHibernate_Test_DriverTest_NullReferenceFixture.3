@@ -1,0 +1,60 @@
+.TH "NHibernate.Test.DriverTest.NullReferenceFixture" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.DriverTest.NullReferenceFixture \- 
+.PP
+http://jira.nhibernate.org/browse/NH-177  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Test\&.TestCase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBNoParameterNameNullReference\fP ()"
+.br
+.RI "\fINo value is assigned for the given named parameter \fP"
+.ti -1c
+.RI "void \fBNamedParameterAssignedNoError\fP ()"
+.br
+.RI "\fIquery succeeds when the parameter is assigned a value \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override IList \fBMappings\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+http://jira.nhibernate.org/browse/NH-177 
+
+
+.PP
+Definition at line 11 of file NullReferenceFixture\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Test\&.DriverTest\&.NullReferenceFixture\&.NamedParameterAssignedNoError ()"
+
+.PP
+query succeeds when the parameter is assigned a value 
+.PP
+Definition at line 52 of file NullReferenceFixture\&.cs\&.
+.SS "void NHibernate\&.Test\&.DriverTest\&.NullReferenceFixture\&.NoParameterNameNullReference ()"
+
+.PP
+No value is assigned for the given named parameter Was giving a NullReferenceException in \fBNHibernate\&.Driver\&.DriverBase\&.GenerateParameter\fP at the line 'dbParam\&.DbType = parameter\&.SqlType\&.DbType;' because 'parameter' existed but all properties were null\&. 
+.PP
+TODO: I think this fixture is redundant now due to the \fBQueryTest\fP fixtures, just mark it so that it catches the new exception type for now 
+.PP
+Definition at line 28 of file NullReferenceFixture\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

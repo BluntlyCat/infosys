@@ -1,0 +1,86 @@
+.TH "NHibernate.Loader.BasicLoader" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Loader.BasicLoader \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Loader\&.Loader\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Loader\&.Hql\&.QueryLoader\fP, and \fBNHibernate\&.Loader\&.OuterJoinLoader\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBasicLoader\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static string[] \fBGenerateSuffixes\fP (int length)"
+.br
+.RI "\fIUtility method that generates 0_, 1_ suffixes\&. Subclasses don't necessarily need to use this algorithm, but it is intended that they will in most cases\&. \fP"
+.ti -1c
+.RI "static string[] \fBGenerateSuffixes\fP (int seed, int length)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBPostInstantiate\fP ()"
+.br
+.RI "\fICalculate and cache select-clause suffixes\&. Must be called by subclasses after instantiation\&. \fP"
+.in -1c
+.SS "Static Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly string[] \fBNoSuffix\fP = {string\&.Empty}"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override sealed \fBIEntityAliases\fP[] \fBEntityAliases\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override sealed 
+.br
+\fBICollectionAliases\fP[] \fBCollectionAliases\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract string[] \fBSuffixes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract string[] \fBCollectionSuffixes\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 9 of file BasicLoader\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static string [] NHibernate\&.Loader\&.BasicLoader\&.GenerateSuffixes (intlength)\fC [static]\fP"
+
+.PP
+Utility method that generates 0_, 1_ suffixes\&. Subclasses don't necessarily need to use this algorithm, but it is intended that they will in most cases\&. 
+.PP
+Definition at line 79 of file BasicLoader\&.cs\&.
+.SS "override void NHibernate\&.Loader\&.BasicLoader\&.PostInstantiate ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Calculate and cache select-clause suffixes\&. Must be called by subclasses after instantiation\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Loader\&.Loader\fP\&.
+.PP
+Definition at line 31 of file BasicLoader\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

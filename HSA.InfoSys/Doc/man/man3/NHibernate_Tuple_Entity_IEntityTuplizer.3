@@ -1,0 +1,375 @@
+.TH "NHibernate.Tuple.Entity.IEntityTuplizer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Tuple.Entity.IEntityTuplizer \- 
+.PP
+Defines further responsibilities regarding tuplization based on a mapped entity\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Tuple\&.ITuplizer\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBInstantiate\fP (object id)"
+.br
+.RI "\fICreate an entity instance initialized with the given identifier\&. \fP"
+.ti -1c
+.RI "object \fBGetIdentifier\fP (object entity)"
+.br
+.RI "\fIExtract the identifier value from the given entity\&. \fP"
+.ti -1c
+.RI "void \fBSetIdentifier\fP (object entity, object id)"
+.br
+.RI "\fIInject the identifier value into the given entity\&. \fP"
+.ti -1c
+.RI "void \fBResetIdentifier\fP (object entity, object currentId, object currentVersion)"
+.br
+.RI "\fIInject the given identifier and version into the entity, in order to 'roll back' to their original values\&. \fP"
+.ti -1c
+.RI "object \fBGetVersion\fP (object entity)"
+.br
+.RI "\fIExtract the value of the version property from the given entity\&. \fP"
+.ti -1c
+.RI "void \fBSetPropertyValue\fP (object entity, int i, object value)"
+.br
+.RI "\fIInject the value of a particular property\&. \fP"
+.ti -1c
+.RI "void \fBSetPropertyValue\fP (object entity, string propertyName, object value)"
+.br
+.RI "\fIInject the value of a particular property\&. \fP"
+.ti -1c
+.RI "object[] \fBGetPropertyValuesToInsert\fP (object entity, IDictionary mergeMap, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIExtract the values of the insertable properties of the entity (including backrefs) \fP"
+.ti -1c
+.RI "object \fBGetPropertyValue\fP (object entity, string propertyName)"
+.br
+.RI "\fIExtract the value of a particular property from the given entity\&. \fP"
+.ti -1c
+.RI "void \fBAfterInitialize\fP (object entity, bool lazyPropertiesAreUnfetched, \fBISessionImplementor\fP session)"
+.br
+.RI "\fICalled just after the entities properties have been initialized\&. \fP"
+.ti -1c
+.RI "object \fBCreateProxy\fP (object id, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGenerates an appropriate proxy representation of this entity for this entity-mode\&. \fP"
+.ti -1c
+.RI "bool \fBHasUninitializedLazyProperties\fP (object entity)"
+.br
+.RI "\fIDoes the given entity instance have any currently uninitialized lazy properties? \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsLifecycleImplementor\fP\fC [get]\fP"
+.br
+.RI "\fIDoes the \fBclass\fP managed by this tuplizer implement the \fBNHibernate\&.Classic\&.ILifecycle\fP interface\&. \fP"
+.ti -1c
+.RI "bool \fBIsValidatableImplementor\fP\fC [get]\fP"
+.br
+.RI "\fIDoes the \fBclass\fP managed by this tuplizer implement the \fBNHibernate\&.Classic\&.IValidatable\fP interface\&. \fP"
+.ti -1c
+.RI "System\&.Type \fBConcreteProxyClass\fP\fC [get]\fP"
+.br
+.RI "\fIReturns the java class to which generated proxies will be typed\&. \fP"
+.ti -1c
+.RI "bool \fBIsInstrumented\fP\fC [get]\fP"
+.br
+.RI "\fIIs it an instrumented POCO?\fP"
+.ti -1c
+.RI "bool \fBHasProxy\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this entity, for this mode, present a possibility for proxying? \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines further responsibilities regarding tuplization based on a mapped entity\&. 
+
+EntityTuplizer implementations should have the following constructor signature: (\fBEntityMetamodel\fP, \fBMapping\&.PersistentClass\fP) 
+.PP
+Definition at line 13 of file IEntityTuplizer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Tuple\&.Entity\&.IEntityTuplizer\&.AfterInitialize (objectentity, boollazyPropertiesAreUnfetched, \fBISessionImplementor\fPsession)"
+
+.PP
+Called just after the entities properties have been initialized\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity being initialized\&. 
+.br
+\fIlazyPropertiesAreUnfetched\fP Are defined lazy properties currently unfecthed 
+.br
+\fIsession\fP The session initializing this entity\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Entity\&.PocoEntityTuplizer\fP, and \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP\&.
+.SS "object NHibernate\&.Tuple\&.Entity\&.IEntityTuplizer\&.CreateProxy (objectid, \fBISessionImplementor\fPsession)"
+
+.PP
+Generates an appropriate proxy representation of this entity for this entity-mode\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The id of the instance for which to generate a proxy\&. 
+.br
+\fIsession\fP The session to which the proxy should be bound\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The generate proxies\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP\&.
+.SS "object NHibernate\&.Tuple\&.Entity\&.IEntityTuplizer\&.GetIdentifier (objectentity)"
+
+.PP
+Extract the identifier value from the given entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity from which to extract the identifier value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The identifier value\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP\&.
+.SS "object NHibernate\&.Tuple\&.Entity\&.IEntityTuplizer\&.GetPropertyValue (objectentity, stringpropertyName)"
+
+.PP
+Extract the value of a particular property from the given entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity from which to extract the property value\&. 
+.br
+\fIpropertyName\fP The name of the property for which to extract the value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The current value of the given property on the given entity\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP\&.
+.SS "object [] NHibernate\&.Tuple\&.Entity\&.IEntityTuplizer\&.GetPropertyValuesToInsert (objectentity, IDictionarymergeMap, \fBISessionImplementor\fPsession)"
+
+.PP
+Extract the values of the insertable properties of the entity (including backrefs) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity from which to extract\&. 
+.br
+\fImergeMap\fP a map of instances being merged to merged instances 
+.br
+\fIsession\fP The session in which the resuest is being made\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The insertable property values\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP\&.
+.SS "object NHibernate\&.Tuple\&.Entity\&.IEntityTuplizer\&.GetVersion (objectentity)"
+
+.PP
+Extract the value of the version property from the given entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity from which to extract the version value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value of the version property, or null if not versioned\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP\&.
+.SS "bool NHibernate\&.Tuple\&.Entity\&.IEntityTuplizer\&.HasUninitializedLazyProperties (objectentity)"
+
+.PP
+Does the given entity instance have any currently uninitialized lazy properties? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity to be check for uninitialized lazy properties\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if uninitialized lazy properties were found; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Entity\&.PocoEntityTuplizer\fP, and \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP\&.
+.SS "object NHibernate\&.Tuple\&.Entity\&.IEntityTuplizer\&.Instantiate (objectid)"
+
+.PP
+Create an entity instance initialized with the given identifier\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The identifier value for the entity to be instantiated\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instantiated entity\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP\&.
+.SS "void NHibernate\&.Tuple\&.Entity\&.IEntityTuplizer\&.ResetIdentifier (objectentity, objectcurrentId, objectcurrentVersion)"
+
+.PP
+Inject the given identifier and version into the entity, in order to 'roll back' to their original values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP 
+.br
+\fIcurrentId\fP The identifier value to inject into the entity\&. 
+.br
+\fIcurrentVersion\fP The version value to inject into the entity\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP\&.
+.SS "void NHibernate\&.Tuple\&.Entity\&.IEntityTuplizer\&.SetIdentifier (objectentity, objectid)"
+
+.PP
+Inject the identifier value into the given entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity to inject with the identifier value\&.
+.br
+\fIid\fP The value to be injected as the identifier\&. 
+.RE
+.PP
+.PP
+Has no effect if the entity does not define an identifier property
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP\&.
+.SS "void NHibernate\&.Tuple\&.Entity\&.IEntityTuplizer\&.SetPropertyValue (objectentity, inti, objectvalue)"
+
+.PP
+Inject the value of a particular property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity into which to inject the value\&. 
+.br
+\fIi\fP The property's index\&. 
+.br
+\fIvalue\fP The property value to inject\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP\&.
+.SS "void NHibernate\&.Tuple\&.Entity\&.IEntityTuplizer\&.SetPropertyValue (objectentity, stringpropertyName, objectvalue)"
+
+.PP
+Inject the value of a particular property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity into which to inject the value\&. 
+.br
+\fIpropertyName\fP The name of the property\&. 
+.br
+\fIvalue\fP The property value to inject\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Tuple\&.Entity\&.AbstractEntityTuplizer\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "System\&.Type NHibernate\&.Tuple\&.Entity\&.IEntityTuplizer\&.ConcreteProxyClass\fC [get]\fP"
+
+.PP
+Returns the java class to which generated proxies will be typed\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The \&.NET class to which generated proxies will be typed 
+.RE
+.PP
+
+.PP
+Definition at line 34 of file IEntityTuplizer\&.cs\&.
+.SS "bool NHibernate\&.Tuple\&.Entity\&.IEntityTuplizer\&.HasProxy\fC [get]\fP"
+
+.PP
+Does this entity, for this mode, present a possibility for proxying? True if this tuplizer can generate proxies for this entity\&. 
+.PP
+Definition at line 104 of file IEntityTuplizer\&.cs\&.
+.SS "bool NHibernate\&.Tuple\&.Entity\&.IEntityTuplizer\&.IsInstrumented\fC [get]\fP"
+
+.PP
+Is it an instrumented POCO?
+.PP
+Definition at line 37 of file IEntityTuplizer\&.cs\&.
+.SS "bool NHibernate\&.Tuple\&.Entity\&.IEntityTuplizer\&.IsLifecycleImplementor\fC [get]\fP"
+
+.PP
+Does the \fBclass\fP managed by this tuplizer implement the \fBNHibernate\&.Classic\&.ILifecycle\fP interface\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if the ILifecycle interface is implemented; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 20 of file IEntityTuplizer\&.cs\&.
+.SS "bool NHibernate\&.Tuple\&.Entity\&.IEntityTuplizer\&.IsValidatableImplementor\fC [get]\fP"
+
+.PP
+Does the \fBclass\fP managed by this tuplizer implement the \fBNHibernate\&.Classic\&.IValidatable\fP interface\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if the IValidatable interface is implemented; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 27 of file IEntityTuplizer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,439 @@
+.TH "log4net.Appender.FileAppender" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.FileAppender \- 
+.PP
+Appends logging events to a file\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.TextWriterAppender\fP\&.
+.PP
+Inherited by \fBlog4net\&.Appender\&.RollingFileAppender\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBExclusiveLock\fP"
+.br
+.RI "\fIHold an exclusive lock on the output file \fP"
+.ti -1c
+.RI "class \fBInterProcessLock\fP"
+.br
+.RI "\fIProvides cross-process file locking\&. \fP"
+.ti -1c
+.RI "class \fBLockingModelBase\fP"
+.br
+.RI "\fILocking model base class \fP"
+.ti -1c
+.RI "class \fBMinimalLock\fP"
+.br
+.RI "\fIAcquires the file lock for each write \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFileAppender\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.ti -1c
+.RI "\fBFileAppender\fP (\fBILayout\fP layout, string filename, bool append)"
+.br
+.RI "\fIConstruct a new appender using the layout, file and append mode\&. \fP"
+.ti -1c
+.RI "\fBFileAppender\fP (\fBILayout\fP layout, string filename)"
+.br
+.RI "\fIConstruct a new appender using the layout and file specified\&. The file will be appended to\&. \fP"
+.ti -1c
+.RI "override void \fBActivateOptions\fP ()"
+.br
+.RI "\fIActivate the options on the file appender\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBReset\fP ()"
+.br
+.RI "\fICloses any previously opened file and calls the parent's \fBTextWriterAppender\&.Reset\fP\&. \fP"
+.ti -1c
+.RI "override void \fBPrepareWriter\fP ()"
+.br
+.RI "\fICalled to initialize the file writer \fP"
+.ti -1c
+.RI "override void \fBAppend\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIThis method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent)\fP method\&. \fP"
+.ti -1c
+.RI "override void \fBAppend\fP (\fBLoggingEvent\fP[] loggingEvents)"
+.br
+.RI "\fIThis method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent[])\fP method\&. \fP"
+.ti -1c
+.RI "override void \fBWriteFooter\fP ()"
+.br
+.RI "\fIWrites a footer as produced by the embedded layout's ILayout\&.Footer property\&. \fP"
+.ti -1c
+.RI "override void \fBWriteHeader\fP ()"
+.br
+.RI "\fIWrites a header produced by the embedded layout's ILayout\&.Header property\&. \fP"
+.ti -1c
+.RI "override void \fBCloseWriter\fP ()"
+.br
+.RI "\fICloses the underlying TextWriter\&. \fP"
+.ti -1c
+.RI "void \fBCloseFile\fP ()"
+.br
+.RI "\fICloses the previously opened file\&. \fP"
+.ti -1c
+.RI "virtual void \fBSafeOpenFile\fP (string fileName, bool append)"
+.br
+.RI "\fISets and \fIopens\fP the file where the log output will go\&. The specified file must be writable\&. \fP"
+.ti -1c
+.RI "virtual void \fBOpenFile\fP (string fileName, bool append)"
+.br
+.RI "\fISets and \fIopens\fP the file where the log output will go\&. The specified file must be writable\&. \fP"
+.ti -1c
+.RI "virtual void \fBSetQWForFiles\fP (Stream fileStream)"
+.br
+.RI "\fISets the quiet writer used for file output \fP"
+.ti -1c
+.RI "virtual void \fBSetQWForFiles\fP (TextWriter writer)"
+.br
+.RI "\fISets the quiet writer being used\&. \fP"
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static string \fBConvertToFullPath\fP (string path)"
+.br
+.RI "\fIConvert a path into a fully qualified path\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual string \fBFile\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the path to the file that logging will be written to\&. \fP"
+.ti -1c
+.RI "bool \fBAppendToFile\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a flag that indicates whether the file should be appended to or overwritten\&. \fP"
+.ti -1c
+.RI "Encoding \fBEncoding\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets \fBEncoding\fP used to write to the file\&. \fP"
+.ti -1c
+.RI "\fBSecurityContext\fP \fBSecurityContext\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBSecurityContext\fP used to write to the file\&. \fP"
+.ti -1c
+.RI "\fBFileAppender\&.LockingModelBase\fP \fBLockingModel\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBFileAppender\&.LockingModel\fP used to handle locking of the file\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Appends logging events to a file\&. 
+
+Logging events are sent to the file specified by the \fBFile\fP property\&. 
+.PP
+The file can be opened in either append or overwrite mode by specifying the \fBAppendToFile\fP property\&. If the file path is relative it is taken as relative from the application base directory\&. The file encoding can be specified by setting the \fBEncoding\fP property\&. 
+.PP
+The layout's ILayout\&.Header and ILayout\&.Footer values will be written each time the file is opened and closed respectively\&. If the \fBAppendToFile\fP property is  then the file may contain multiple copies of the header and footer\&. 
+.PP
+This appender will first try to open the file for writing when \fBActivateOptions\fP is called\&. This will typically be during configuration\&. If the file cannot be opened for writing the appender will attempt to open the file again each time a message is logged to the appender\&. If the file cannot be opened for writing when a message is logged then the message will be discarded by this appender\&. 
+.PP
+The \fBFileAppender\fP supports pluggable file locking models via the \fBLockingModel\fP property\&. The default behavior, implemented by \fBFileAppender\&.ExclusiveLock\fP is to obtain an exclusive write lock on the file until this appender is closed\&. The alternative models only hold a write lock while the appender is writing a logging event (\fBFileAppender\&.MinimalLock\fP) or synchronize by using a named system wide Mutex (\fBFileAppender\&.InterProcessLock\fP)\&. 
+.PP
+All locking strategies have issues and you should seriously consider using a different strategy that avoids having multiple processes logging to the same file\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> <author>Rodrigo B\&. de Oliveira</author> <author>Douglas de la Torre</author> <author>Niall Daley</author> 
+.PP
+Definition at line 128 of file FileAppender\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.FileAppender\&.FileAppender ()"
+
+.PP
+Default constructor Default constructor 
+.PP
+Definition at line 759 of file FileAppender\&.cs\&.
+.SS "log4net\&.Appender\&.FileAppender\&.FileAppender (\fBILayout\fPlayout, stringfilename, boolappend)"
+
+.PP
+Construct a new appender using the layout, file and append mode\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlayout\fP the layout to use with this appender
+.br
+\fIfilename\fP the full path to the file to write to
+.br
+\fIappend\fP flag to indicate if the file should be appended to
+.RE
+.PP
+.PP
+Obsolete constructor\&. 
+.PP
+Definition at line 775 of file FileAppender\&.cs\&.
+.SS "log4net\&.Appender\&.FileAppender\&.FileAppender (\fBILayout\fPlayout, stringfilename)"
+
+.PP
+Construct a new appender using the layout and file specified\&. The file will be appended to\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlayout\fP the layout to use with this appender
+.br
+\fIfilename\fP the full path to the file to write to
+.RE
+.PP
+.PP
+Obsolete constructor\&. 
+.PP
+Definition at line 795 of file FileAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Appender\&.FileAppender\&.ActivateOptions ()\fC [virtual]\fP"
+
+.PP
+Activate the options on the file appender\&. This is part of the IOptionHandler delayed object activation scheme\&. The \fBActivateOptions\fP method must be called on this object after the configuration properties have been set\&. Until \fBActivateOptions\fP is called this object is in an undefined state and must not be used\&. 
+.PP
+If any of the configuration properties are modified then \fBActivateOptions\fP must be called again\&. 
+.PP
+This will cause the file to be opened\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Reimplemented in \fBlog4net\&.Appender\&.RollingFileAppender\fP\&.
+.PP
+Definition at line 951 of file FileAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.FileAppender\&.Append (\fBLoggingEvent\fPloggingEvent)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+This method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent)\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP The event to log\&.
+.RE
+.PP
+.PP
+Writes a log statement to the output stream if the output stream exists and is writable\&. 
+.PP
+The format of the output will depend on the appender's layout\&. 
+.PP
+Implements \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Reimplemented in \fBlog4net\&.Appender\&.RollingFileAppender\fP\&.
+.PP
+Definition at line 1029 of file FileAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.FileAppender\&.Append (\fBLoggingEvent\fP[]loggingEvents)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+This method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent[])\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvents\fP The array of events to log\&.
+.RE
+.PP
+.PP
+Acquires the output file locks once before writing all the events to the stream\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Reimplemented in \fBlog4net\&.Appender\&.RollingFileAppender\fP\&.
+.PP
+Definition at line 1055 of file FileAppender\&.cs\&.
+.SS "void log4net\&.Appender\&.FileAppender\&.CloseFile ()\fC [protected]\fP"
+
+.PP
+Closes the previously opened file\&. Writes the ILayout\&.Footer to the file and then closes the file\&. 
+.PP
+Definition at line 1158 of file FileAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.FileAppender\&.CloseWriter ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Closes the underlying TextWriter\&. Closes the underlying TextWriter\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.TextWriterAppender\fP\&.
+.PP
+Definition at line 1129 of file FileAppender\&.cs\&.
+.SS "static string log4net\&.Appender\&.FileAppender\&.ConvertToFullPath (stringpath)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Convert a path into a fully qualified path\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path to convert\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The fully qualified path\&.
+.RE
+.PP
+.PP
+Converts the path specified to a fully qualified path\&. If the path is relative it is taken as relative from the application base directory\&. 
+.PP
+Definition at line 1305 of file FileAppender\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.FileAppender\&.OpenFile (stringfileName, boolappend)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Sets and \fIopens\fP the file where the log output will go\&. The specified file must be writable\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP The path to the log file\&. Must be a fully qualified path\&.
+.br
+\fIappend\fP If true will append to fileName\&. Otherwise will truncate fileName
+.RE
+.PP
+.PP
+If there was already an opened file, then the previous file is closed first\&. 
+.PP
+This method will ensure that the directory structure for the \fIfileName\fP  specified exists\&. 
+.PP
+Reimplemented in \fBlog4net\&.Appender\&.RollingFileAppender\fP\&.
+.PP
+Definition at line 1205 of file FileAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.FileAppender\&.PrepareWriter ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called to initialize the file writer Will be called for each logged message until the file is successfully opened\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.TextWriterAppender\fP\&.
+.PP
+Definition at line 1010 of file FileAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.FileAppender\&.Reset ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Closes any previously opened file and calls the parent's \fBTextWriterAppender\&.Reset\fP\&. Resets the filename and the file stream\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.TextWriterAppender\fP\&.
+.PP
+Definition at line 995 of file FileAppender\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.FileAppender\&.SafeOpenFile (stringfileName, boolappend)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Sets and \fIopens\fP the file where the log output will go\&. The specified file must be writable\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP The path to the log file\&. Must be a fully qualified path\&.
+.br
+\fIappend\fP If true will append to fileName\&. Otherwise will truncate fileName
+.RE
+.PP
+.PP
+Calls \fBOpenFile\fP but guarantees not to throw an exception\&. Errors are passed to the \fBTextWriterAppender\&.ErrorHandler\fP\&. 
+.PP
+Definition at line 1178 of file FileAppender\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.FileAppender\&.SetQWForFiles (StreamfileStream)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Sets the quiet writer used for file output 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileStream\fP the file stream that has been opened for writing
+.RE
+.PP
+.PP
+This implementation of \fBSetQWForFiles(Stream)\fP creates a StreamWriter over the \fIfileStream\fP  and passes it to the \fBSetQWForFiles(TextWriter)\fP method\&. 
+.PP
+This method can be overridden by sub classes that want to wrap the Stream in some way, for example to encrypt the output data using a \fCSystem\&.Security\&.Cryptography\&.CryptoStream\fP\&. 
+.PP
+Definition at line 1268 of file FileAppender\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.FileAppender\&.SetQWForFiles (TextWriterwriter)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Sets the quiet writer being used\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP the writer over the file stream that has been opened for writing
+.RE
+.PP
+.PP
+This method can be overridden by sub classes that want to wrap the TextWriter in some way\&. 
+.PP
+Reimplemented in \fBlog4net\&.Appender\&.RollingFileAppender\fP\&.
+.PP
+Definition at line 1283 of file FileAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.FileAppender\&.WriteFooter ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Writes a footer as produced by the embedded layout's ILayout\&.Footer property\&. Writes a footer as produced by the embedded layout's ILayout\&.Footer property\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.TextWriterAppender\fP\&.
+.PP
+Definition at line 1078 of file FileAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.FileAppender\&.WriteHeader ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Writes a header produced by the embedded layout's ILayout\&.Header property\&. Writes a header produced by the embedded layout's ILayout\&.Header property\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.TextWriterAppender\fP\&.
+.PP
+Definition at line 1103 of file FileAppender\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool log4net\&.Appender\&.FileAppender\&.AppendToFile\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a flag that indicates whether the file should be appended to or overwritten\&. Indicates whether the file should be appended to or overwritten\&. 
+.PP
+If the value is set to false then the file will be overwritten, if it is set to true then the file will be appended to\&. 
+.PP
+The default value is true\&. 
+.PP
+Definition at line 836 of file FileAppender\&.cs\&.
+.SS "Encoding log4net\&.Appender\&.FileAppender\&.Encoding\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets \fBEncoding\fP used to write to the file\&. The \fBEncoding\fP used to write to the file\&. 
+.PP
+The default encoding set is System\&.Text\&.Encoding\&.Default which is the encoding for the system's current ANSI code page\&. 
+.PP
+Definition at line 854 of file FileAppender\&.cs\&.
+.SS "virtual string log4net\&.Appender\&.FileAppender\&.File\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the path to the file that logging will be written to\&. The path to the file that logging will be written to\&. 
+.PP
+If the path is relative it is taken as relative from the application base directory\&. 
+.PP
+Definition at line 816 of file FileAppender\&.cs\&.
+.SS "\fBFileAppender\&.LockingModelBase\fP log4net\&.Appender\&.FileAppender\&.LockingModel\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBFileAppender\&.LockingModel\fP used to handle locking of the file\&. The \fBFileAppender\&.LockingModel\fP used to lock the file\&. 
+.PP
+Gets or sets the \fBFileAppender\&.LockingModel\fP used to handle locking of the file\&. 
+.PP
+There are three built in locking models, \fBFileAppender\&.ExclusiveLock\fP, \fBFileAppender\&.MinimalLock\fP and \fBFileAppender\&.InterProcessLock\fP \&. The first locks the file from the start of logging to the end, the second locks only for the minimal amount of time when logging each message and the last synchronizes processes using a named system wide Mutex\&. 
+.PP
+The default locking model is the \fBFileAppender\&.ExclusiveLock\fP\&. 
+.PP
+Definition at line 923 of file FileAppender\&.cs\&.
+.SS "\fBSecurityContext\fP log4net\&.Appender\&.FileAppender\&.SecurityContext\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBSecurityContext\fP used to write to the file\&. The \fBSecurityContext\fP used to write to the file\&. 
+.PP
+Unless a \fBSecurityContext\fP specified here for this appender the SecurityContextProvider\&.DefaultProvider is queried for the security context to use\&. The default behavior is to use the security context of the current thread\&. 
+.PP
+Definition at line 874 of file FileAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

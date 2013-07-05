@@ -1,0 +1,26 @@
+var classzlib_1_1_z_stream =
+[
+    [ "deflate", "classzlib_1_1_z_stream.html#a5936bb288d2ed0d3c96fd9cdf0d82ae7", null ],
+    [ "deflateEnd", "classzlib_1_1_z_stream.html#aa62af7eb30562fa5a8704a2637c88d34", null ],
+    [ "deflateInit", "classzlib_1_1_z_stream.html#a5cfe2821d10c200a5a945754fb418cd8", null ],
+    [ "deflateInit", "classzlib_1_1_z_stream.html#a02f4bd4330376b9ba8667781e232c24a", null ],
+    [ "deflateParams", "classzlib_1_1_z_stream.html#a65eccf4d5d82c659e9b42bd755fabdcc", null ],
+    [ "deflateSetDictionary", "classzlib_1_1_z_stream.html#af0e671c0c86161b2f20cd65ef5844826", null ],
+    [ "free", "classzlib_1_1_z_stream.html#a17eaa14b9421e877e32fd3517f79897e", null ],
+    [ "inflate", "classzlib_1_1_z_stream.html#a831ac3146b111672f1a573499e00f4ed", null ],
+    [ "inflateEnd", "classzlib_1_1_z_stream.html#a34417d406dd588fcd7c5e1c26b1ff2f0", null ],
+    [ "inflateInit", "classzlib_1_1_z_stream.html#a4a4d733b0110d3756767f12ecc4c34bf", null ],
+    [ "inflateInit", "classzlib_1_1_z_stream.html#ae16bfbb47e0d1815b822a606971591de", null ],
+    [ "inflateSetDictionary", "classzlib_1_1_z_stream.html#ac47d1f5a97d195533e07b33341aa4979", null ],
+    [ "inflateSync", "classzlib_1_1_z_stream.html#a9ec81dd2ba41faa52c97756927817956", null ],
+    [ "adler", "classzlib_1_1_z_stream.html#a30a1dcf83a4ba2a0341d77376ed78f26", null ],
+    [ "avail_in", "classzlib_1_1_z_stream.html#ae73783d26ec9aceb48c7e07a64a7ad36", null ],
+    [ "avail_out", "classzlib_1_1_z_stream.html#a3b9bcb079d2852c748d0df9c73ec310a", null ],
+    [ "msg", "classzlib_1_1_z_stream.html#a45ab693d92a3f912dad7d683e03cff29", null ],
+    [ "next_in", "classzlib_1_1_z_stream.html#ad75b54357ad311c0d54b5c253574654a", null ],
+    [ "next_in_index", "classzlib_1_1_z_stream.html#a440cada05b92cb076a398fd5cf89a163", null ],
+    [ "next_out", "classzlib_1_1_z_stream.html#a6e358f06920131aed2daf1e6b47a1ec0", null ],
+    [ "next_out_index", "classzlib_1_1_z_stream.html#acf9ad619bef25b0f469f6143a5fc8c48", null ],
+    [ "total_in", "classzlib_1_1_z_stream.html#aa271d11da10c0276e37159fd2612cbe0", null ],
+    [ "total_out", "classzlib_1_1_z_stream.html#a46562e40feebebc581c85adea932dcf9", null ]
+];

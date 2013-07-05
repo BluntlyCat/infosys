@@ -1,0 +1,83 @@
+.TH "NHibernate.Test.DynamicEntity.Tuplizer.MyEntityTuplizer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.DynamicEntity.Tuplizer.MyEntityTuplizer \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Tuple\&.Entity\&.PocoEntityTuplizer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMyEntityTuplizer\fP (\fBEntityMetamodel\fP entityMetamodel, \fBPersistentClass\fP mappedEntity)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override \fBTuple\&.IInstantiator\fP \fBBuildInstantiator\fP (\fBPersistentClass\fP persistentClass)"
+.br
+.RI "\fIBuild an appropriate Instantiator for the given mapped entity\&. \fP"
+.ti -1c
+.RI "override \fBProxy\&.IProxyFactory\fP \fBBuildProxyFactory\fP (\fBPersistentClass\fP persistentClass, \fBNHibernate\&.Properties\&.IGetter\fP idGetter, \fBNHibernate\&.Properties\&.ISetter\fP idSetter)"
+.br
+.RI "\fIBuild an appropriate ProxyFactory for the given mapped entity\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 6 of file MyEntityTuplizer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBTuple\&.IInstantiator\fP NHibernate\&.Test\&.DynamicEntity\&.Tuplizer\&.MyEntityTuplizer\&.BuildInstantiator (\fBPersistentClass\fPmappingInfo)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Build an appropriate Instantiator for the given mapped entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImappingInfo\fP The mapping information regarding the mapped entity\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An appropriate Instantiator instance\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Tuple\&.Entity\&.PocoEntityTuplizer\fP\&.
+.PP
+Definition at line 10 of file MyEntityTuplizer\&.cs\&.
+.SS "override \fBProxy\&.IProxyFactory\fP NHibernate\&.Test\&.DynamicEntity\&.Tuplizer\&.MyEntityTuplizer\&.BuildProxyFactory (\fBPersistentClass\fPmappingInfo, \fBNHibernate\&.Properties\&.IGetter\fPidGetter, \fBNHibernate\&.Properties\&.ISetter\fPidSetter)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Build an appropriate ProxyFactory for the given mapped entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImappingInfo\fP The mapping information regarding the mapped entity\&. 
+.br
+\fIidGetter\fP The constructed Getter relating to the entity's id property\&. 
+.br
+\fIidSetter\fP The constructed Setter relating to the entity's id property\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An appropriate ProxyFactory instance\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Tuple\&.Entity\&.PocoEntityTuplizer\fP\&.
+.PP
+Definition at line 15 of file MyEntityTuplizer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

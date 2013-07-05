@@ -1,0 +1,51 @@
+.TH "NHibernate.Driver.Sql2008ClientDriver" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Driver.Sql2008ClientDriver \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Driver\&.SqlClientDriver\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBAdjustCommand\fP (IDbCommand command)"
+.br
+.RI "\fIOverride to make any adjustments to each IDbCommand object before it added to the batcher\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBInitializeParameter\fP (IDbDataParameter dbParam, string name, \fBSqlTypes\&.SqlType\fP sqlType)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file Sql2008ClientDriver\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Driver\&.Sql2008ClientDriver\&.AdjustCommand (IDbCommandcommand)\fC [virtual]\fP"
+
+.PP
+Override to make any adjustments to each IDbCommand object before it added to the batcher\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP The command\&.
+.RE
+.PP
+.PP
+This method is similar to the \fBOnBeforePrepare\fP but, instead be called just before execute the command (that can be a batch) is executed before add each single command to the batcher and before \fBOnBeforePrepare\fP \&. If you have to adjust parameters values/type (when the command is full filled) this is a good place where do it\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Driver\&.DriverBase\fP\&.
+.PP
+Definition at line 19 of file Sql2008ClientDriver\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

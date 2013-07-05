@@ -1,0 +1,87 @@
+.TH "log4net.Filter.IFilter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Filter.IFilter \- 
+.PP
+Implement this interface to provide customized logging event filtering  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Core\&.IOptionHandler\fP\&.
+.PP
+Inherited by \fBlog4net\&.Filter\&.FilterSkeleton\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFilterDecision\fP \fBDecide\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIDecide if the logging event should be logged through an appender\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIFilter\fP \fBNext\fP\fC [get, set]\fP"
+.br
+.RI "\fIProperty to get and set the next filter \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Implement this interface to provide customized logging event filtering 
+
+Users should implement this interface to implement customized logging event filtering\&. Note that \fBlog4net\&.Repository\&.Hierarchy\&.Logger\fP and \fBlog4net\&.Appender\&.AppenderSkeleton\fP, the parent class of all standard appenders, have built-in filtering rules\&. It is suggested that you first use and understand the built-in rules before rushing to write your own custom filters\&. 
+.PP
+This abstract class assumes and also imposes that filters be organized in a linear chain\&. The \fBDecide\fP method of each filter is called sequentially, in the order of their addition to the chain\&. 
+.PP
+The \fBDecide\fP method must return one of the integer constants FilterDecision\&.Deny, FilterDecision\&.Neutral or FilterDecision\&.Accept\&. 
+.PP
+If the value FilterDecision\&.Deny is returned, then the log event is dropped immediately without consulting with the remaining filters\&. 
+.PP
+If the value FilterDecision\&.Neutral is returned, then the next filter in the chain is consulted\&. If there are no more filters in the chain, then the log event is logged\&. Thus, in the presence of no filters, the default behavior is to log all logging events\&. 
+.PP
+If the value FilterDecision\&.Accept is returned, then the log event is logged without consulting the remaining filters\&. 
+.PP
+The philosophy of \fBlog4net\fP filters is largely inspired from the Linux ipchains\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 70 of file IFilter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBFilterDecision\fP log4net\&.Filter\&.IFilter\&.Decide (\fBLoggingEvent\fPloggingEvent)"
+
+.PP
+Decide if the logging event should be logged through an appender\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP The LoggingEvent to decide upon
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The decision of the filter
+.RE
+.PP
+.PP
+If the decision is FilterDecision\&.Deny, then the event will be dropped\&. If the decision is FilterDecision\&.Neutral, then the next filter, if any, will be invoked\&. If the decision is FilterDecision\&.Accept then the event will be logged without consulting with other filters in the chain\&. 
+.PP
+Implemented in \fBlog4net\&.Filter\&.StringMatchFilter\fP, \fBlog4net\&.Filter\&.LevelRangeFilter\fP, \fBlog4net\&.Filter\&.FilterSkeleton\fP, \fBlog4net\&.Filter\&.LoggerMatchFilter\fP, \fBlog4net\&.Filter\&.LevelMatchFilter\fP, \fBlog4net\&.Filter\&.PropertyFilter\fP, and \fBlog4net\&.Filter\&.DenyAllFilter\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBIFilter\fP log4net\&.Filter\&.IFilter\&.Next\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Property to get and set the next filter The next filter in the chain 
+.PP
+Filters are typically composed into chains\&. This property allows the next filter in the chain to be accessed\&. 
+.PP
+Definition at line 100 of file IFilter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

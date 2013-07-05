@@ -1,0 +1,163 @@
+.TH "NHibernate.Mapping.Index" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.Index \- 
+.PP
+An \fBIndex\fP in the database\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.IRelationalModel\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBSqlCreateString\fP (\fBDialect\&.Dialect\fP dialect, \fBIMapping\fP p, string defaultCatalog, string defaultSchema)"
+.br
+.RI "\fIGenerates the SQL string to create this \fBIndex\fP in the database\&. \fP"
+.ti -1c
+.RI "string \fBSqlDropString\fP (\fBDialect\&.Dialect\fP dialect, string defaultCatalog, string defaultSchema)"
+.br
+.RI "\fIGenerates the SQL string to drop this \fBIndex\fP in the database\&. \fP"
+.ti -1c
+.RI "void \fBAddColumn\fP (\fBColumn\fP column)"
+.br
+.RI "\fIAdds the \fBColumn\fP to the ICollection of Columns that are part of the \fBIndex\fP\&. \fP"
+.ti -1c
+.RI "void \fBAddColumns\fP (IEnumerable< \fBColumn\fP > extraColumns)"
+.br
+.ti -1c
+.RI "bool \fBContainsColumn\fP (\fBColumn\fP column)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static string \fBBuildSqlCreateIndexString\fP (\fBDialect\&.Dialect\fP dialect, string name, \fBTable\fP table, IEnumerable< \fBColumn\fP > columns, bool unique, string defaultCatalog, string defaultSchema)"
+.br
+.ti -1c
+.RI "static string \fBBuildSqlDropIndexString\fP (\fBDialect\&.Dialect\fP dialect, \fBTable\fP table, string name, string defaultCatalog, string defaultSchema)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBTable\fP \fBTable\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBTable\fP this \fBIndex\fP is in\&. \fP"
+.ti -1c
+.RI "IEnumerable< \fBColumn\fP > \fBColumnIterator\fP\fC [get]\fP"
+.br
+.RI "\fIGets an ICollection of \fBColumn\fP objects that are part of the \fBIndex\fP\&. \fP"
+.ti -1c
+.RI "int \fBColumnSpan\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the Name used to identify the \fBIndex\fP in the database\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An \fBIndex\fP in the database\&. 
+
+
+.PP
+Definition at line 14 of file Index\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Mapping\&.Index\&.AddColumn (\fBColumn\fPcolumn)"
+
+.PP
+Adds the \fBColumn\fP to the ICollection of Columns that are part of the \fBIndex\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumn\fP The \fBColumn\fP to include in the \fBIndex\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 117 of file Index\&.cs\&.
+.SS "string NHibernate\&.Mapping\&.Index\&.SqlCreateString (\fBDialect\&.Dialect\fPdialect, \fBIMapping\fPp, stringdefaultCatalog, stringdefaultSchema)"
+
+.PP
+Generates the SQL string to create this \fBIndex\fP in the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP to use for SQL rules\&.
+.br
+\fIp\fP 
+.br
+\fIdefaultCatalog\fP 
+.br
+\fIdefaultSchema\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that contains the SQL to create this \fBIndex\fP\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Mapping\&.IRelationalModel\fP\&.
+.PP
+Definition at line 63 of file Index\&.cs\&.
+.SS "string NHibernate\&.Mapping\&.Index\&.SqlDropString (\fBDialect\&.Dialect\fPdialect, stringdefaultCatalog, stringdefaultSchema)"
+
+.PP
+Generates the SQL string to drop this \fBIndex\fP in the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP to use for SQL rules\&.
+.br
+\fIdefaultCatalog\fP 
+.br
+\fIdefaultSchema\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that contains the SQL to drop this \fBIndex\fP\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Mapping\&.IRelationalModel\fP\&.
+.PP
+Definition at line 77 of file Index\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "IEnumerable<\fBColumn\fP> NHibernate\&.Mapping\&.Index\&.ColumnIterator\fC [get]\fP"
+
+.PP
+Gets an ICollection of \fBColumn\fP objects that are part of the \fBIndex\fP\&. An ICollection of \fBColumn\fP objects that are part of the \fBIndex\fP\&. 
+.PP
+Definition at line 103 of file Index\&.cs\&.
+.SS "string NHibernate\&.Mapping\&.Index\&.Name\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the Name used to identify the \fBIndex\fP in the database\&. The Name used to identify the \fBIndex\fP in the database\&.
+.PP
+Definition at line 136 of file Index\&.cs\&.
+.SS "\fBTable\fP NHibernate\&.Mapping\&.Index\&.Table\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBTable\fP this \fBIndex\fP is in\&. The \fBTable\fP this \fBIndex\fP is in\&. 
+.PP
+Definition at line 89 of file Index\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

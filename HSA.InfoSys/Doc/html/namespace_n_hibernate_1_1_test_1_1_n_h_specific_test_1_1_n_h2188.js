@@ -1,0 +1,4 @@
+var namespace_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2188 =
+[
+    [ "AppDomainWithMultipleSearchPath", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2188_1_1_app_domain_with_multiple_search_path.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2188_1_1_app_domain_with_multiple_search_path" ]
+];

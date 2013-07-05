@@ -1,0 +1,273 @@
+.TH "NHibernate.Type.AbstractBinaryType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.AbstractBinaryType \- 
+.PP
+Logic to bind stream of byte into a VARBINARY  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.MutableType\fP, \fBNHibernate\&.Type\&.IVersionType\fP, and IComparer\&.
+.PP
+Inherited by \fBNHibernate\&.Type\&.BinaryType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBNext\fP (object current, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIWhen implemented by a class, increments the version\&. \fP"
+.ti -1c
+.RI "object \fBSeed\fP (\fBISessionImplementor\fP session)"
+.br
+.RI "\fIWhen implemented by a class, gets an initial version\&. \fP"
+.ti -1c
+.RI "override bool \fBIsEqual\fP (object x, object y)"
+.br
+.RI "\fIAre the two version values considered equal? \fP"
+.ti -1c
+.RI "virtual int \fBCompare\fP (object x, object y)"
+.br
+.ti -1c
+.RI "override void \fBSet\fP (IDbCommand cmd, object value, int index)"
+.br
+.RI "\fIWhen implemented by a class, put the value from the mapped Property into to the IDbCommand\&. \fP"
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, int index)"
+.br
+.RI "\fIWhen implemented by a class, gets the object in the IDataReader for the Property\&. \fP"
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, string name)"
+.br
+.RI "\fIWhen implemented by a class, gets the object in the IDataReader for the Property\&. \fP"
+.ti -1c
+.RI "override int \fBGetHashCode\fP (object x, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet a hashcode, consistent with persistence 'equality'\fP"
+.ti -1c
+.RI "override int \fBCompare\fP (object x, object y, \fBEntityMode\fP?entityMode)"
+.br
+.RI "\fIcompare two instances of the type\fP"
+.ti -1c
+.RI "override string \fBToString\fP (object val)"
+.br
+.RI "\fIA representation of the value to be embedded in an XML element \fP"
+.ti -1c
+.RI "override object \fBDeepCopyNotNull\fP (object value)"
+.br
+.ti -1c
+.RI "override object \fBFromStringValue\fP (string xml)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "IComparer \fBComparator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract override string \fBName\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Logic to bind stream of byte into a VARBINARY 
+
+
+.PP
+Definition at line 13 of file AbstractBinaryType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override int NHibernate\&.Type\&.AbstractBinaryType\&.Compare (objectx, objecty, \fBEntityMode\fP?entityMode)"
+
+.PP
+compare two instances of the type
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Definition at line 121 of file AbstractBinaryType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.AbstractBinaryType\&.Get (IDataReaderrs, intindex)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, gets the object in the IDataReader for the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the value\&.
+.br
+\fIindex\fP The index of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object with the value from the database\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 90 of file AbstractBinaryType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.AbstractBinaryType\&.Get (IDataReaderrs, stringname)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, gets the object in the IDataReader for the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the value\&.
+.br
+\fIname\fP The name of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object with the value from the database\&.
+.RE
+.PP
+.PP
+Most implementors just call the \fBGet(IDataReader, int)\fP overload of this method\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 102 of file AbstractBinaryType\&.cs\&.
+.SS "override int NHibernate\&.Type\&.AbstractBinaryType\&.GetHashCode (objectx, \fBEntityMode\fPentityMode)"
+
+.PP
+Get a hashcode, consistent with persistence 'equality'
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Definition at line 107 of file AbstractBinaryType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.AbstractBinaryType\&.IsEqual (objectx, objecty)"
+
+.PP
+Are the two version values considered equal? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP One value to check\&. 
+.br
+\fIy\fP The other value to check\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the values are equal, false otherwise\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IVersionType\fP\&.
+.PP
+Definition at line 41 of file AbstractBinaryType\&.cs\&.
+.SS "object NHibernate\&.Type\&.AbstractBinaryType\&.Next (objectcurrent, \fBISessionImplementor\fPsession)"
+
+.PP
+When implemented by a class, increments the version\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcurrent\fP The current version
+.br
+\fIsession\fP The current session, if available\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an instance of the \fBIType\fP that has been incremented\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IVersionType\fP\&.
+.PP
+Definition at line 31 of file AbstractBinaryType\&.cs\&.
+.SS "object NHibernate\&.Type\&.AbstractBinaryType\&.Seed (\fBISessionImplementor\fPsession)"
+
+.PP
+When implemented by a class, gets an initial version\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The current session, if available\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An instance of the type\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IVersionType\fP\&.
+.PP
+Definition at line 36 of file AbstractBinaryType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.AbstractBinaryType\&.Set (IDbCommandcmd, objectvalue, intindex)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, put the value from the mapped Property into to the IDbCommand\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP The IDbCommand to put the value into\&.
+.br
+\fIvalue\fP The object that contains the value\&.
+.br
+\fIindex\fP The index of the IDbDataParameter to start writing the values to\&.
+.RE
+.PP
+.PP
+Implementors do not need to handle possibility of null values because this will only be called from \fBNullSafeSet(IDbCommand, object, int)\fP after it has checked for nulls\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 76 of file AbstractBinaryType\&.cs\&.
+.SS "override string NHibernate\&.Type\&.AbstractBinaryType\&.ToString (objectval)\fC [virtual]\fP"
+
+.PP
+A representation of the value to be embedded in an XML element 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP The object that contains the values\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An Xml formatted string\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 139 of file AbstractBinaryType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

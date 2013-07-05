@@ -1,0 +1,120 @@
+.TH "log4net.DateFormatter.AbsoluteTimeDateFormatter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.DateFormatter.AbsoluteTimeDateFormatter \- 
+.PP
+Formats a DateTime as \fC'HH:mm:ss,fff'\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.DateFormatter\&.IDateFormatter\fP\&.
+.PP
+Inherited by \fBlog4net\&.DateFormatter\&.DateTimeDateFormatter\fP, and \fBlog4net\&.DateFormatter\&.Iso8601DateFormatter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBFormatDate\fP (DateTime dateToFormat, TextWriter writer)"
+.br
+.RI "\fIRenders the date into a string\&. Format is 'HH:mm:ss,fff'\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBAbsoluteTimeDateFormat\fP = 'ABSOLUTE'"
+.br
+.RI "\fIString constant used to specify AbsoluteTimeDateFormat in layouts\&. Current value is \fBABSOLUTE\fP\&. \fP"
+.ti -1c
+.RI "const string \fBDateAndTimeDateFormat\fP = 'DATE'"
+.br
+.RI "\fIString constant used to specify DateTimeDateFormat in layouts\&. Current value is \fBDATE\fP\&. \fP"
+.ti -1c
+.RI "const string \fBIso8601TimeDateFormat\fP = 'ISO8601'"
+.br
+.RI "\fIString constant used to specify ISO8601DateFormat in layouts\&. Current value is \fBISO8601\fP\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBFormatDateWithoutMillis\fP (DateTime dateToFormat, StringBuilder buffer)"
+.br
+.RI "\fIRenders the date into a string\&. Format is \fC'HH:mm:ss'\fP\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Formats a DateTime as \fC'HH:mm:ss,fff'\fP\&. 
+
+Formats a DateTime in the format \fC'HH:mm:ss,fff'\fP for example, \fC'15:49:37,459'\fP\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 36 of file AbsoluteTimeDateFormatter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void log4net\&.DateFormatter\&.AbsoluteTimeDateFormatter\&.FormatDate (DateTimedateToFormat, TextWriterwriter)\fC [virtual]\fP"
+
+.PP
+Renders the date into a string\&. Format is 'HH:mm:ss,fff'\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdateToFormat\fP The date to render into a string\&.
+.br
+\fIwriter\fP The writer to write to\&.
+.RE
+.PP
+.PP
+Uses the \fBFormatDateWithoutMillis\fP method to generate the time string up to the seconds and then appends the current milliseconds\&. The results from \fBFormatDateWithoutMillis\fP are cached and \fBFormatDateWithoutMillis\fP is called at most once per second\&. 
+.PP
+Sub classes should override \fBFormatDateWithoutMillis\fP rather than \fBFormatDate\fP\&. 
+.PP
+Implements \fBlog4net\&.DateFormatter\&.IDateFormatter\fP\&.
+.PP
+Definition at line 101 of file AbsoluteTimeDateFormatter\&.cs\&.
+.SS "virtual void log4net\&.DateFormatter\&.AbsoluteTimeDateFormatter\&.FormatDateWithoutMillis (DateTimedateToFormat, StringBuilderbuffer)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Renders the date into a string\&. Format is \fC'HH:mm:ss'\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdateToFormat\fP The date to render into a string\&.
+.br
+\fIbuffer\fP The string builder to write to\&.
+.RE
+.PP
+.PP
+Subclasses should override this method to render the date into a string using a precision up to the second\&. This method will be called at most once per second and the result will be reused if it is needed again during the same second\&. 
+.PP
+Reimplemented in \fBlog4net\&.DateFormatter\&.DateTimeDateFormatter\fP, and \fBlog4net\&.DateFormatter\&.Iso8601DateFormatter\fP\&.
+.PP
+Definition at line 53 of file AbsoluteTimeDateFormatter\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const string log4net\&.DateFormatter\&.AbsoluteTimeDateFormatter\&.AbsoluteTimeDateFormat = 'ABSOLUTE'"
+
+.PP
+String constant used to specify AbsoluteTimeDateFormat in layouts\&. Current value is \fBABSOLUTE\fP\&. 
+.PP
+Definition at line 162 of file AbsoluteTimeDateFormatter\&.cs\&.
+.SS "const string log4net\&.DateFormatter\&.AbsoluteTimeDateFormatter\&.DateAndTimeDateFormat = 'DATE'"
+
+.PP
+String constant used to specify DateTimeDateFormat in layouts\&. Current value is \fBDATE\fP\&. 
+.PP
+Definition at line 167 of file AbsoluteTimeDateFormatter\&.cs\&.
+.SS "const string log4net\&.DateFormatter\&.AbsoluteTimeDateFormatter\&.Iso8601TimeDateFormat = 'ISO8601'"
+
+.PP
+String constant used to specify ISO8601DateFormat in layouts\&. Current value is \fBISO8601\fP\&. 
+.PP
+Definition at line 172 of file AbsoluteTimeDateFormatter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_tools_1_1hbm2ddl_1_1_schema_export_tests_1_1_with_column_tag_fixture =
+[
+    [ "ShouldCreateSchemaWithDefaultClause", "class_n_hibernate_1_1_test_1_1_tools_1_1hbm2ddl_1_1_schema_export_tests_1_1_with_column_tag_fixture.html#abb4cb9d4f9b65e9859b0bfd3bc7ec56c", null ]
+];

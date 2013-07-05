@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_criterion_1_1_lambda_1_1_query_over_subquery_property_builder_base =
+[
+    [ "QueryOverSubqueryPropertyBuilderBase", "class_n_hibernate_1_1_criterion_1_1_lambda_1_1_query_over_subquery_property_builder_base.html#adeca94d1ac53d94eb821746917b3e3fa", null ]
+];

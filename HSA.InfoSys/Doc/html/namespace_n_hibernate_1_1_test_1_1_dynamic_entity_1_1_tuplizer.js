@@ -1,0 +1,7 @@
+var namespace_n_hibernate_1_1_test_1_1_dynamic_entity_1_1_tuplizer =
+[
+    [ "EntityNameInterceptor", "class_n_hibernate_1_1_test_1_1_dynamic_entity_1_1_tuplizer_1_1_entity_name_interceptor.html", "class_n_hibernate_1_1_test_1_1_dynamic_entity_1_1_tuplizer_1_1_entity_name_interceptor" ],
+    [ "MyEntityInstantiator", "class_n_hibernate_1_1_test_1_1_dynamic_entity_1_1_tuplizer_1_1_my_entity_instantiator.html", "class_n_hibernate_1_1_test_1_1_dynamic_entity_1_1_tuplizer_1_1_my_entity_instantiator" ],
+    [ "MyEntityTuplizer", "class_n_hibernate_1_1_test_1_1_dynamic_entity_1_1_tuplizer_1_1_my_entity_tuplizer.html", "class_n_hibernate_1_1_test_1_1_dynamic_entity_1_1_tuplizer_1_1_my_entity_tuplizer" ],
+    [ "TuplizerDynamicEntity", "class_n_hibernate_1_1_test_1_1_dynamic_entity_1_1_tuplizer_1_1_tuplizer_dynamic_entity.html", "class_n_hibernate_1_1_test_1_1_dynamic_entity_1_1_tuplizer_1_1_tuplizer_dynamic_entity" ]
+];

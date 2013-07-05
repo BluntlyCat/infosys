@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_test_driver_that_doesnt_support_query_batching =
+[
+    [ "SupportsMultipleQueries", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_futures_1_1_test_driver_that_doesnt_support_query_batching.html#ab573f38ab1e40a357b38b1b0a1134cae", null ]
+];

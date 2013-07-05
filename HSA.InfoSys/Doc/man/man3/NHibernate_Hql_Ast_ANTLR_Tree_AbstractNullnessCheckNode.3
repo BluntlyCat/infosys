@@ -1,0 +1,91 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Tree.AbstractNullnessCheckNode" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Tree.AbstractNullnessCheckNode \- 
+.PP
+Base class for nodes dealing 'is null' and 'is not null' operators\&. todo : a good deal of this is copied from \fBBinaryLogicOperatorNode\fP; look at consolidating these code fragments  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.UnaryLogicOperatorNode\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IsNotNullLogicOperatorNode\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IsNullLogicOperatorNode\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBInitialize\fP ()"
+.br
+.RI "\fICalled by the tree walker during hql-sql semantic analysis after the operator sub-tree is completely built\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractNullnessCheckNode\fP (IToken token)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "abstract int \fBExpansionConnectorType\fP\fC [get]\fP"
+.br
+.RI "\fIWhen (if) we need to expand a row value constructor, what is the type of connector to use between the expansion fragments\&. \fP"
+.ti -1c
+.RI "abstract string \fBExpansionConnectorText\fP\fC [get]\fP"
+.br
+.RI "\fIWhen (if) we need to expand a row value constructor, what is the text of connector to use between the expansion fragments\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for nodes dealing 'is null' and 'is not null' operators\&. todo : a good deal of this is copied from \fBBinaryLogicOperatorNode\fP; look at consolidating these code fragments 
+
+Author: Steve Ebersole Ported by: Steve Strong 
+.PP
+Definition at line 17 of file AbstractNullnessCheckNode\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.AbstractNullnessCheckNode\&.Initialize ()\fC [virtual]\fP"
+
+.PP
+Called by the tree walker during hql-sql semantic analysis after the operator sub-tree is completely built\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.UnaryLogicOperatorNode\fP\&.
+.PP
+Definition at line 23 of file AbstractNullnessCheckNode\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "abstract string NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.AbstractNullnessCheckNode\&.ExpansionConnectorText\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+When (if) we need to expand a row value constructor, what is the text of connector to use between the expansion fragments\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The expansion connector text\&.
+.RE
+.PP
+
+.PP
+Definition at line 56 of file AbstractNullnessCheckNode\&.cs\&.
+.SS "abstract int NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.AbstractNullnessCheckNode\&.ExpansionConnectorType\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+When (if) we need to expand a row value constructor, what is the type of connector to use between the expansion fragments\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The expansion connector type\&.
+.RE
+.PP
+
+.PP
+Definition at line 49 of file AbstractNullnessCheckNode\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,219 @@
+.TH "NHibernate.Param.NamedParameterSpecification" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Param.NamedParameterSpecification \- 
+.PP
+Parameter bind specification for an explicit named parameter\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Param\&.AbstractExplicitParameterSpecification\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNamedParameterSpecification\fP (int sourceLine, int sourceColumn, string name)"
+.br
+.RI "\fIConstructs a named parameter bind specification\&. \fP"
+.ti -1c
+.RI "override string \fBRenderDisplayInfo\fP ()"
+.br
+.RI "\fIRender this parameter into displayable info (for logging, etc)\&. \fP"
+.ti -1c
+.RI "override IEnumerable< string > \fBGetIdsForBackTrack\fP (\fBIMapping\fP sessionFactory)"
+.br
+.RI "\fIAn string array to unique identify this parameter-span inside an \fBNHibernate\&.SqlCommand\&.SqlString\fP\&. \fP"
+.ti -1c
+.RI "override void \fBBind\fP (IDbCommand command, IList< \fBParameter\fP > sqlQueryParametersList, \fBQueryParameters\fP queryParameters, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIBind the appropriate value into the given command\&. \fP"
+.ti -1c
+.RI "override void \fBBind\fP (IDbCommand command, IList< \fBParameter\fP > multiSqlQueryParametersList, int singleSqlParametersOffset, IList< \fBParameter\fP > sqlQueryParametersList, \fBQueryParameters\fP queryParameters, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIBind the appropriate value into the given command\&. \fP"
+.ti -1c
+.RI "override int \fBGetSkipValue\fP (\fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIRetrieve the skip/offset value for the query \fP"
+.ti -1c
+.RI "override void \fBSetEffectiveType\fP (\fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIExplicit parameters may have no set the \fBIParameterSpecification\&.ExpectedType\fP during query parse\&. \fP"
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.ti -1c
+.RI "bool \fBEquals\fP (\fBNamedParameterSpecification\fP other)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBName\fP\fC [get]\fP"
+.br
+.RI "\fIThe user parameter name\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Parameter bind specification for an explicit named parameter\&. 
+
+
+.PP
+Definition at line 13 of file NamedParameterSpecification\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Param\&.NamedParameterSpecification\&.NamedParameterSpecification (intsourceLine, intsourceColumn, stringname)"
+
+.PP
+Constructs a named parameter bind specification\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsourceLine\fP sourceLine
+.br
+\fIsourceColumn\fP sourceColumn
+.br
+\fIname\fP The named parameter name\&.
+.RE
+.PP
+
+.PP
+Definition at line 25 of file NamedParameterSpecification\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Param\&.NamedParameterSpecification\&.Bind (IDbCommandcommand, IList< \fBParameter\fP >sqlQueryParametersList, \fBQueryParameters\fPqueryParameters, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Bind the appropriate value into the given command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP The command into which the value should be bound\&.
+.br
+\fIsqlQueryParametersList\fP The list of Sql query parameter in the exact sequence they are present in the query\&.
+.br
+\fIqueryParameters\fP The defined values for the current query execution\&.
+.br
+\fIsession\fP The session against which the current execution is occuring\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Param\&.AbstractExplicitParameterSpecification\fP\&.
+.PP
+Definition at line 53 of file NamedParameterSpecification\&.cs\&.
+.SS "override void NHibernate\&.Param\&.NamedParameterSpecification\&.Bind (IDbCommandcommand, IList< \fBParameter\fP >multiSqlQueryParametersList, intsingleSqlParametersOffset, IList< \fBParameter\fP >sqlQueryParametersList, \fBQueryParameters\fPqueryParameters, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Bind the appropriate value into the given command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP The command into which the value should be bound\&.
+.br
+\fImultiSqlQueryParametersList\fP The parameter-list of the whole query of the command\&.
+.br
+\fIsingleSqlParametersOffset\fP The offset from where start the list of IDataParameter in the given \fIcommand\fP  for the query where this \fBIParameterSpecification\fP was used\&. 
+.br
+\fIsqlQueryParametersList\fP The list of Sql query parameter in the exact sequence they are present in the query where this \fBIParameterSpecification\fP was used\&.
+.br
+\fIqueryParameters\fP The defined values for the query where this \fBIParameterSpecification\fP was used\&.
+.br
+\fIsession\fP The session against which the current execution is occuring\&.
+.RE
+.PP
+.PP
+Suppose the \fIcommand\fP  is composed by two queries\&. The \fIsingleSqlParametersOffset\fP  for the first query is zero\&. If the first query in \fIcommand\fP  has 12 parameters (size of its SqlType array) the offset to bind all \fBIParameterSpecification\fPs of the second query in the \fIcommand\fP  is 12 (for the first query we are using from 0 to 11)\&. 
+.PP
+Implements \fBNHibernate\&.Param\&.AbstractExplicitParameterSpecification\fP\&.
+.PP
+Definition at line 58 of file NamedParameterSpecification\&.cs\&.
+.SS "override IEnumerable<string> NHibernate\&.Param\&.NamedParameterSpecification\&.GetIdsForBackTrack (\fBIMapping\fPsessionFactory)\fC [virtual]\fP"
+
+.PP
+An string array to unique identify this parameter-span inside an \fBNHibernate\&.SqlCommand\&.SqlString\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsessionFactory\fP The session-factory (used only because required by IType)\&.
+.RE
+.PP
+.PP
+The each id-for-backtrack is supposed to be unique in the context of a query\&. 
+.PP
+The number of elements returned depend on the column-span of the ExpectedType\&. 
+.PP
+Implements \fBNHibernate\&.Param\&.AbstractExplicitParameterSpecification\fP\&.
+.PP
+Definition at line 44 of file NamedParameterSpecification\&.cs\&.
+.SS "override int NHibernate\&.Param\&.NamedParameterSpecification\&.GetSkipValue (\fBQueryParameters\fPqueryParameters)\fC [virtual]\fP"
+
+.PP
+Retrieve the skip/offset value for the query 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryParameters\fP The parameters for the query
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The paging skip/offset value
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Param\&.AbstractExplicitParameterSpecification\fP\&.
+.PP
+Definition at line 68 of file NamedParameterSpecification\&.cs\&.
+.SS "override string NHibernate\&.Param\&.NamedParameterSpecification\&.RenderDisplayInfo ()\fC [virtual]\fP"
+
+.PP
+Render this parameter into displayable info (for logging, etc)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The displayable info
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Param\&.AbstractExplicitParameterSpecification\fP\&.
+.PP
+Definition at line 38 of file NamedParameterSpecification\&.cs\&.
+.SS "override void NHibernate\&.Param\&.NamedParameterSpecification\&.SetEffectiveType (\fBQueryParameters\fPqueryParameters)\fC [virtual]\fP"
+
+.PP
+Explicit parameters may have no set the \fBIParameterSpecification\&.ExpectedType\fP during query parse\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryParameters\fP The defined values for the current query execution\&.
+.RE
+.PP
+.PP
+This method should be removed when the parameter type is inferred during the parse\&. 
+.PP
+Implements \fBNHibernate\&.Param\&.AbstractExplicitParameterSpecification\fP\&.
+.PP
+Definition at line 73 of file NamedParameterSpecification\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string NHibernate\&.Param\&.NamedParameterSpecification\&.Name\fC [get]\fP"
+
+.PP
+The user parameter name\&. 
+.PP
+Definition at line 34 of file NamedParameterSpecification\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

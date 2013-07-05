@@ -1,0 +1,209 @@
+.TH "log4net.Util.ReadOnlyPropertiesDictionary" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.ReadOnlyPropertiesDictionary \- 
+.PP
+String keyed object map that is read only\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits ISerializable, and IDictionary\&.
+.PP
+Inherited by \fBlog4net\&.Util\&.PropertiesDictionary\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBReadOnlyPropertiesDictionary\fP ()"
+.br
+.RI "\fIConstructor \fP"
+.ti -1c
+.RI "\fBReadOnlyPropertiesDictionary\fP (\fBReadOnlyPropertiesDictionary\fP propertiesDictionary)"
+.br
+.RI "\fICopy Constructor \fP"
+.ti -1c
+.RI "string[] \fBGetKeys\fP ()"
+.br
+.RI "\fIGets the key names\&. \fP"
+.ti -1c
+.RI "bool \fBContains\fP (string key)"
+.br
+.RI "\fITest if the dictionary contains a specified key \fP"
+.ti -1c
+.RI "virtual void \fBGetObjectData\fP (SerializationInfo info, StreamingContext context)"
+.br
+.RI "\fISerializes this object into the SerializationInfo provided\&. \fP"
+.ti -1c
+.RI "virtual void \fBClear\fP ()"
+.br
+.RI "\fIRemove all properties from the properties collection \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBReadOnlyPropertiesDictionary\fP (SerializationInfo info, StreamingContext context)"
+.br
+.RI "\fIDeserialization constructor \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual object \fBthis[string key]\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the value of the property with the specified key\&. \fP"
+.ti -1c
+.RI "Hashtable \fBInnerHashtable\fP\fC [get]\fP"
+.br
+.RI "\fIThe hashtable used to store the properties \fP"
+.ti -1c
+.RI "int \fBCount\fP\fC [get]\fP"
+.br
+.RI "\fIThe number of properties in this collection \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+String keyed object map that is read only\&. 
+
+This collection is readonly and cannot be modified\&. 
+.PP
+While this collection is serializable only member objects that are serializable will be serialized along with this collection\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 47 of file ReadOnlyPropertiesDictionary\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Util\&.ReadOnlyPropertiesDictionary\&.ReadOnlyPropertiesDictionary ()"
+
+.PP
+Constructor Initializes a new instance of the \fBReadOnlyPropertiesDictionary\fP class\&. 
+.PP
+Definition at line 69 of file ReadOnlyPropertiesDictionary\&.cs\&.
+.SS "log4net\&.Util\&.ReadOnlyPropertiesDictionary\&.ReadOnlyPropertiesDictionary (\fBReadOnlyPropertiesDictionary\fPpropertiesDictionary)"
+
+.PP
+Copy Constructor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertiesDictionary\fP properties to copy
+.RE
+.PP
+.PP
+Initializes a new instance of the \fBReadOnlyPropertiesDictionary\fP class\&. 
+.PP
+Definition at line 82 of file ReadOnlyPropertiesDictionary\&.cs\&.
+.SS "log4net\&.Util\&.ReadOnlyPropertiesDictionary\&.ReadOnlyPropertiesDictionary (SerializationInfoinfo, StreamingContextcontext)\fC [protected]\fP"
+
+.PP
+Deserialization constructor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinfo\fP The SerializationInfo that holds the serialized object data\&.
+.br
+\fIcontext\fP The StreamingContext that contains contextual information about the source or destination\&.
+.RE
+.PP
+.PP
+Initializes a new instance of the \fBReadOnlyPropertiesDictionary\fP class with serialized data\&. 
+.PP
+Definition at line 106 of file ReadOnlyPropertiesDictionary\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void log4net\&.Util\&.ReadOnlyPropertiesDictionary\&.Clear ()\fC [virtual]\fP"
+
+.PP
+Remove all properties from the properties collection 
+.PP
+Reimplemented in \fBlog4net\&.Util\&.PropertiesDictionary\fP\&.
+.PP
+Definition at line 265 of file ReadOnlyPropertiesDictionary\&.cs\&.
+.SS "bool log4net\&.Util\&.ReadOnlyPropertiesDictionary\&.Contains (stringkey)"
+
+.PP
+Test if the dictionary contains a specified key 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP the key to look for
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the dictionary contains the specified key
+.RE
+.PP
+.PP
+Test if the dictionary contains a specified key 
+.PP
+Definition at line 170 of file ReadOnlyPropertiesDictionary\&.cs\&.
+.SS "string [] log4net\&.Util\&.ReadOnlyPropertiesDictionary\&.GetKeys ()"
+
+.PP
+Gets the key names\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of all the keys\&.
+.RE
+.PP
+.PP
+Gets the key names\&. 
+.PP
+Definition at line 129 of file ReadOnlyPropertiesDictionary\&.cs\&.
+.SS "virtual void log4net\&.Util\&.ReadOnlyPropertiesDictionary\&.GetObjectData (SerializationInfoinfo, StreamingContextcontext)\fC [virtual]\fP"
+
+.PP
+Serializes this object into the SerializationInfo provided\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinfo\fP The SerializationInfo to populate with data\&.
+.br
+\fIcontext\fP The destination for this serialization\&.
+.RE
+.PP
+.PP
+Serializes this object into the SerializationInfo provided\&. 
+.PP
+Definition at line 211 of file ReadOnlyPropertiesDictionary\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int log4net\&.Util\&.ReadOnlyPropertiesDictionary\&.Count\fC [get]\fP"
+
+.PP
+The number of properties in this collection 
+.PP
+Definition at line 354 of file ReadOnlyPropertiesDictionary\&.cs\&.
+.SS "Hashtable log4net\&.Util\&.ReadOnlyPropertiesDictionary\&.InnerHashtable\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+The hashtable used to store the properties The internal collection used to store the properties 
+.PP
+The hashtable used to store the properties 
+.PP
+Definition at line 189 of file ReadOnlyPropertiesDictionary\&.cs\&.
+.SS "virtual object log4net\&.Util\&.ReadOnlyPropertiesDictionary\&.this[string key]\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the value of the property with the specified key\&. The value of the property with the specified key\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key of the property to get or set\&.
+.RE
+.PP
+.PP
+The property value will only be serialized if it is serializable\&. If it cannot be serialized it will be silently ignored if a serialization operation is performed\&. 
+.PP
+Definition at line 151 of file ReadOnlyPropertiesDictionary\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,187 @@
+.TH "NHibernate.Mapping.Property" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.Property \- 
+.PP
+\fBMapping\fP for a property of a \&.NET class (entity or component)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.IMetaAttributable\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Mapping\&.Backref\fP, and \fBNHibernate\&.Mapping\&.IndexBackref\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBProperty\fP (\fBIValue\fP propertyValue)"
+.br
+.ti -1c
+.RI "\fBIGetter\fP \fBGetGetter\fP (System\&.Type clazz)"
+.br
+.ti -1c
+.RI "\fBISetter\fP \fBGetSetter\fP (System\&.Type clazz)"
+.br
+.ti -1c
+.RI "virtual string \fBGetAccessorPropertyName\fP (\fBEntityMode\fP mode)"
+.br
+.ti -1c
+.RI "\fBMetaAttribute\fP \fBGetMetaAttribute\fP (string attributeName)"
+.br
+.RI "\fIRetrieve the \fBMetaAttribute\fP \fP"
+.ti -1c
+.RI "bool \fBIsValid\fP (\fBIMapping\fP mapping)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIType\fP \fBType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBColumnSpan\fP\fC [get]\fP"
+.br
+.RI "\fIGets the number of columns this property uses in the db\&. \fP"
+.ti -1c
+.RI "IEnumerable< \fBISelectable\fP > \fBColumnIterator\fP\fC [get]\fP"
+.br
+.RI "\fIGets an ICollection of \fBColumn\fPs\&. \fP"
+.ti -1c
+.RI "string \fBName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or Sets the name of the \fBProperty\fP in the class\&. \fP"
+.ti -1c
+.RI "bool \fBIsComposite\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIValue\fP \fBValue\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBCascadeStyle\fP \fBCascadeStyle\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBCascade\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsUpdateable\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsInsertable\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsNullable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsOptional\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBPropertyAccessorName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual \fBIPropertyAccessor\fP \fBPropertyAccessor\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsBasicPropertyAccessor\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, 
+.br
+\fBMetaAttribute\fP > \fBMetaAttributes\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBNullValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBPersistentClass\fP \fBPersistentClass\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSelectable\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsOptimisticLocked\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBPropertyGeneration\fP \fBGeneration\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsLazy\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBBackRef\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsNaturalIdentifier\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBNodeName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBUnwrapProxy\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsEntityRelation\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBMapping\fP for a property of a \&.NET class (entity or component)\&. 
+
+
+.PP
+Definition at line 16 of file Property\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBMetaAttribute\fP NHibernate\&.Mapping\&.Property\&.GetMetaAttribute (stringattributeName)"
+
+.PP
+Retrieve the \fBMetaAttribute\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIattributeName\fP The attribute name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBMetaAttribute\fP if exists; null otherwise
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Mapping\&.IMetaAttributable\fP\&.
+.PP
+Definition at line 207 of file Property\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "IEnumerable<\fBISelectable\fP> NHibernate\&.Mapping\&.Property\&.ColumnIterator\fC [get]\fP"
+
+.PP
+Gets an ICollection of \fBColumn\fPs\&. 
+.PP
+Definition at line 60 of file Property\&.cs\&.
+.SS "int NHibernate\&.Mapping\&.Property\&.ColumnSpan\fC [get]\fP"
+
+.PP
+Gets the number of columns this property uses in the db\&. 
+.PP
+Definition at line 52 of file Property\&.cs\&.
+.SS "bool NHibernate\&.Mapping\&.Property\&.IsNullable\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 159 of file Property\&.cs\&.
+.SS "string NHibernate\&.Mapping\&.Property\&.Name\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or Sets the name of the \fBProperty\fP in the class\&. 
+.PP
+Definition at line 68 of file Property\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

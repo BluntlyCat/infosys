@@ -1,0 +1,287 @@
+.TH "NHibernate.Persister.Entity.IOuterJoinLoadable" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Persister.Entity.IOuterJoinLoadable \- 
+.PP
+A \fCClassPersister\fP that may be loaded by outer join using the \fCOuterJoinLoader\fP hierarchy and may be an element of a one-to-many association\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Persister\&.Entity\&.ILoadable\fP, and \fBNHibernate\&.Persister\&.Entity\&.IJoinable\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBSelectFragment\fP (string alias, string suffix)"
+.br
+.RI "\fIGenerate a list of collection index and element columns \fP"
+.ti -1c
+.RI "int \fBCountSubclassProperties\fP ()"
+.br
+.RI "\fIHow many properties are there, for this class and all subclasses? (optional operation) \fP"
+.ti -1c
+.RI "\fBFetchMode\fP \fBGetFetchMode\fP (int i)"
+.br
+.RI "\fIMay this property be fetched using an SQL outerjoin? \fP"
+.ti -1c
+.RI "\fBCascadeStyle\fP \fBGetCascadeStyle\fP (int i)"
+.br
+.RI "\fIGet the cascade style of this (subclass closure) property \fP"
+.ti -1c
+.RI "bool \fBIsDefinedOnSubclass\fP (int i)"
+.br
+.RI "\fIIs this property defined on a subclass of the mapped class? \fP"
+.ti -1c
+.RI "\fBIType\fP \fBGetSubclassPropertyType\fP (int i)"
+.br
+.RI "\fIGet an array of the types of all properties of all subclasses (optional operation) \fP"
+.ti -1c
+.RI "string \fBGetSubclassPropertyName\fP (int i)"
+.br
+.RI "\fIGet the name of the numbered property of the class or a subclass (optional operation) \fP"
+.ti -1c
+.RI "bool \fBIsSubclassPropertyNullable\fP (int i)"
+.br
+.RI "\fIIs the numbered property of the class of subclass nullable? \fP"
+.ti -1c
+.RI "string[] \fBGetSubclassPropertyColumnNames\fP (int i)"
+.br
+.RI "\fIReturn the column names used to persist all properties of all sublasses of the persistent class (optional operation) \fP"
+.ti -1c
+.RI "string \fBGetSubclassPropertyTableName\fP (int i)"
+.br
+.RI "\fIReturn the table name used to persist the numbered property of the class or a subclass (optional operation) \fP"
+.ti -1c
+.RI "string[] \fBToColumns\fP (string name, int i)"
+.br
+.RI "\fIGiven the number of a property of a subclass, and a table alias, return the aliased column names (optional operation) \fP"
+.ti -1c
+.RI "string \fBFromTableFragment\fP (string alias)"
+.br
+.RI "\fIGet the main from table fragment, given a query alias (optional operation) \fP"
+.ti -1c
+.RI "string[] \fBGetPropertyColumnNames\fP (string propertyPath)"
+.br
+.RI "\fIGet the column names for the given property path \fP"
+.ti -1c
+.RI "string \fBGetPropertyTableName\fP (string propertyName)"
+.br
+.RI "\fIGet the table name for the given property path \fP"
+.ti -1c
+.RI "string[] \fBToIdentifierColumns\fP (string alias)"
+.br
+.RI "\fIReturn the alised identifier column names \fP"
+.ti -1c
+.RI "string \fBGenerateTableAliasForColumn\fP (string rootAlias, string column)"
+.br
+.RI "\fIGet the table alias used for the supplied column \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBEntityType\fP \fBEntityType\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A \fCClassPersister\fP that may be loaded by outer join using the \fCOuterJoinLoader\fP hierarchy and may be an element of a one-to-many association\&. 
+
+
+.PP
+Definition at line 11 of file IOuterJoinLoadable\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int NHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\&.CountSubclassProperties ()"
+
+.PP
+How many properties are there, for this class and all subclasses? (optional operation) 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\&.FromTableFragment (stringalias)"
+
+.PP
+Get the main from table fragment, given a query alias (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, \fBNHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\fP, \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\fP\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\&.GenerateTableAliasForColumn (stringrootAlias, stringcolumn)"
+
+.PP
+Get the table alias used for the supplied column 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "\fBCascadeStyle\fP NHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\&.GetCascadeStyle (inti)"
+
+.PP
+Get the cascade style of this (subclass closure) property 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "\fBFetchMode\fP NHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\&.GetFetchMode (inti)"
+
+.PP
+May this property be fetched using an SQL outerjoin? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\&.GetPropertyColumnNames (stringpropertyPath)"
+
+.PP
+Get the column names for the given property path 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\&.GetPropertyTableName (stringpropertyName)"
+
+.PP
+Get the table name for the given property path 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, \fBNHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\fP, \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\fP\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\&.GetSubclassPropertyColumnNames (inti)"
+
+.PP
+Return the column names used to persist all properties of all sublasses of the persistent class (optional operation) 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\&.GetSubclassPropertyName (inti)"
+
+.PP
+Get the name of the numbered property of the class or a subclass (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\&.GetSubclassPropertyTableName (inti)"
+
+.PP
+Return the table name used to persist the numbered property of the class or a subclass (optional operation) 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, \fBNHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\fP, \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\fP\&.
+.SS "\fBIType\fP NHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\&.GetSubclassPropertyType (inti)"
+
+.PP
+Get an array of the types of all properties of all subclasses (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\&.IsDefinedOnSubclass (inti)"
+
+.PP
+Is this property defined on a subclass of the mapped class? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\&.IsSubclassPropertyNullable (inti)"
+
+.PP
+Is the numbered property of the class of subclass nullable? 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\&.SelectFragment (stringalias, stringsuffix)"
+
+.PP
+Generate a list of collection index and element columns 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIsuffix\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\&.ToColumns (stringname, inti)"
+
+.PP
+Given the number of a property of a subclass, and a table alias, return the aliased column names (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP 
+.br
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\&.ToIdentifierColumns (stringalias)"
+
+.PP
+Return the alised identifier column names 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

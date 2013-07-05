@@ -1,0 +1,178 @@
+.TH "NHibernate.Util.LinkedHashMap< TKey, TValue >" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Util.LinkedHashMap< TKey, TValue > \- 
+.PP
+A map of objects whose mapping entries are sequenced based on the order in which they were added\&. This data structure has fast \fCO(1)\fP search time, deletion time, and insertion time  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDictionary< TKey, TValue >\&.
+.PP
+Inherited by \fBNHibernate\&.Util\&.LinkedHashMap< TKey, TValue >\&.BackwardEnumerator< T >\fP, NHibernate\&.Util\&.LinkedHashMap< TKey, TValue >\&.Enumerator, NHibernate\&.Util\&.LinkedHashMap< TKey, TValue >\&.ForwardEnumerator< T >, NHibernate\&.Util\&.LinkedHashMap< TKey, TValue >\&.KeyCollection, NHibernate\&.Util\&.LinkedHashMap< TKey, TValue >\&.KeyCollection\&.Enumerator, NHibernate\&.Util\&.LinkedHashMap< TKey, TValue >\&.ValuesCollection, and NHibernate\&.Util\&.LinkedHashMap< TKey, TValue >\&.ValuesCollection\&.Enumerator\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBBackwardEnumerator< T >\fP"
+.br
+.ti -1c
+.RI "class \fBEntry\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLinkedHashMap\fP ()"
+.br
+.RI "\fIInitializes a new instance of the LinkedHashMap{K,V} class that is empty, has the default initial capacity, and uses the default equality comparer for the key type\&. \fP"
+.ti -1c
+.RI "\fBLinkedHashMap\fP (int capacity)"
+.br
+.RI "\fIInitializes a new instance of the LinkedHashMap{K,V} class that is empty, has the specified initial capacity, and uses the default equality comparer for the key type\&. \fP"
+.ti -1c
+.RI "\fBLinkedHashMap\fP (IEqualityComparer< TKey > equalityComparer)"
+.br
+.RI "\fIInitializes a new instance of the LinkedHashMap{K,V} class that is empty, has the default initial capacity, and uses the specified IEqualityComparer{K}\&. \fP"
+.ti -1c
+.RI "\fBLinkedHashMap\fP (int capacity, IEqualityComparer< TKey > equalityComparer)"
+.br
+.RI "\fIInitializes a new instance of the LinkedHashMap{K,V} class that is empty, has the specified initial capacity, and uses the specified IEqualityComparer{K}\&. \fP"
+.ti -1c
+.RI "virtual bool \fBContainsKey\fP (TKey key)"
+.br
+.ti -1c
+.RI "virtual void \fBAdd\fP (TKey key, TValue value)"
+.br
+.ti -1c
+.RI "virtual bool \fBRemove\fP (TKey key)"
+.br
+.ti -1c
+.RI "bool \fBTryGetValue\fP (TKey key, out TValue value)"
+.br
+.ti -1c
+.RI "void \fBAdd\fP (KeyValuePair< TKey, TValue > item)"
+.br
+.ti -1c
+.RI "virtual void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "bool \fBContains\fP (KeyValuePair< TKey, TValue > item)"
+.br
+.ti -1c
+.RI "void \fBCopyTo\fP (KeyValuePair< TKey, TValue >[] array, int arrayIndex)"
+.br
+.ti -1c
+.RI "bool \fBRemove\fP (KeyValuePair< TKey, TValue > item)"
+.br
+.ti -1c
+.RI "virtual IEnumerator \fBGetEnumerator\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBContains\fP (TKey key)"
+.br
+.ti -1c
+.RI "virtual bool \fBContainsValue\fP (TValue value)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "TValue \fBthis[TKey key]\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual ICollection< TKey > \fBKeys\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual ICollection< TValue > \fBValues\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBCount\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsReadOnly\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsFixedSize\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual TKey \fBFirstKey\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual TValue \fBFirstValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual TKey \fBLastKey\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual TValue \fBLastValue\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A map of objects whose mapping entries are sequenced based on the order in which they were added\&. This data structure has fast \fCO(1)\fP search time, deletion time, and insertion time 
+
+This class is not thread safe\&. This class is not a really replication of JDK LinkedHashMap{K, V}, this class is an adaptation of \fBSequencedHashMap\fP with generics\&. 
+.PP
+Definition at line 21 of file LinkedHashMap\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Util\&.LinkedHashMap< TKey, TValue >\&.LinkedHashMap ()"
+
+.PP
+Initializes a new instance of the LinkedHashMap{K,V} class that is empty, has the default initial capacity, and uses the default equality comparer for the key type\&. 
+.PP
+Definition at line 93 of file LinkedHashMap\&.cs\&.
+.SS "NHibernate\&.Util\&.LinkedHashMap< TKey, TValue >\&.LinkedHashMap (intcapacity)"
+
+.PP
+Initializes a new instance of the LinkedHashMap{K,V} class that is empty, has the specified initial capacity, and uses the default equality comparer for the key type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcapacity\fP The initial number of elements that the LinkedHashMap{K,V} can contain\&.
+.RE
+.PP
+
+.PP
+Definition at line 103 of file LinkedHashMap\&.cs\&.
+.SS "NHibernate\&.Util\&.LinkedHashMap< TKey, TValue >\&.LinkedHashMap (IEqualityComparer< TKey >equalityComparer)"
+
+.PP
+Initializes a new instance of the LinkedHashMap{K,V} class that is empty, has the default initial capacity, and uses the specified IEqualityComparer{K}\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIequalityComparer\fP The IEqualityComparer{K} implementation to use when comparing keys, or null to use the default EqualityComparer for the type of the key\&.
+.RE
+.PP
+
+.PP
+Definition at line 112 of file LinkedHashMap\&.cs\&.
+.SS "NHibernate\&.Util\&.LinkedHashMap< TKey, TValue >\&.LinkedHashMap (intcapacity, IEqualityComparer< TKey >equalityComparer)"
+
+.PP
+Initializes a new instance of the LinkedHashMap{K,V} class that is empty, has the specified initial capacity, and uses the specified IEqualityComparer{K}\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcapacity\fP The initial number of elements that the LinkedHashMap{K,V} can contain\&.
+.br
+\fIequalityComparer\fP The IEqualityComparer{K} implementation to use when comparing keys, or null to use the default EqualityComparer for the type of the key\&.
+.RE
+.PP
+
+.PP
+Definition at line 122 of file LinkedHashMap\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

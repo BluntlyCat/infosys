@@ -1,0 +1,388 @@
+.TH "Newtonsoft.Json.JsonReader" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.JsonReader \- 
+.PP
+Represents a reader that provides fast, non-cached, forward-only access to serialized \fBJson\fP data\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDisposable\&.
+.PP
+Inherited by \fBNewtonsoft\&.Json\&.Bson\&.BsonReader\fP, \fBNewtonsoft\&.Json\&.JsonTextReader\fP, \fBNewtonsoft\&.Json\&.JsonValidatingReader\fP, \fBNewtonsoft\&.Json\&.Linq\&.JTokenReader\fP, and Newtonsoft\&.Json\&.Serialization\&.TraceJsonReader\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract bool \fBRead\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream\&. \fP"
+.ti -1c
+.RI "abstract int \fBReadAsInt32\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{Int32}\&. \fP"
+.ti -1c
+.RI "abstract string \fBReadAsString\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a \fBString\fP\&. \fP"
+.ti -1c
+.RI "abstract byte[] \fBReadAsBytes\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a T:Byte[]\&. \fP"
+.ti -1c
+.RI "abstract decimal \fBReadAsDecimal\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{Decimal}\&. \fP"
+.ti -1c
+.RI "abstract \fBDateTime\fP \fBReadAsDateTime\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{DateTime}\&. \fP"
+.ti -1c
+.RI "abstract \fBDateTimeOffset\fP \fBReadAsDateTimeOffset\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{DateTimeOffset}\&. \fP"
+.ti -1c
+.RI "void \fBSkip\fP ()"
+.br
+.RI "\fISkips the children of the current token\&. \fP"
+.ti -1c
+.RI "virtual void \fBClose\fP ()"
+.br
+.RI "\fIChanges the State to Closed\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJsonReader\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBJsonReader\fP class with the specified TextReader\&. \fP"
+.ti -1c
+.RI "void \fBSetToken\fP (\fBJsonToken\fP newToken)"
+.br
+.RI "\fISets the current token\&. \fP"
+.ti -1c
+.RI "void \fBSetToken\fP (\fBJsonToken\fP newToken, object value)"
+.br
+.RI "\fISets the current token and value\&. \fP"
+.ti -1c
+.RI "void \fBSetStateBasedOnCurrent\fP ()"
+.br
+.RI "\fISets the state based on current token type\&. \fP"
+.ti -1c
+.RI "virtual void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIReleases unmanaged and - optionally - managed resources \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "State \fBCurrentState\fP\fC [get]\fP"
+.br
+.RI "\fIGets the current reader state\&. \fP"
+.ti -1c
+.RI "bool \fBCloseInput\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether the underlying stream or TextReader should be closed when the reader is closed\&. \fP"
+.ti -1c
+.RI "virtual char \fBQuoteChar\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the quotation mark character used to enclose the value of a string\&. \fP"
+.ti -1c
+.RI "\fBDateTimeZoneHandling\fP \fBDateTimeZoneHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how \fBDateTime\fP time zones are handling when reading JSON\&. \fP"
+.ti -1c
+.RI "\fBDateParseHandling\fP \fBDateParseHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how date formatted strings, e\&.g\&. '\\/Date(1198908717056)\\/' and '2012-03-21T05:40Z', are parsed when reading JSON\&. \fP"
+.ti -1c
+.RI "\fBFloatParseHandling\fP \fBFloatParseHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how floating point numbers, e\&.g\&. 1\&.0 and 9\&.9, are parsed when reading JSON text\&. \fP"
+.ti -1c
+.RI "int \fBMaxDepth\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the maximum depth allowed when reading JSON\&. Reading past this depth will throw a \fBJsonReaderException\fP\&. \fP"
+.ti -1c
+.RI "virtual \fBJsonToken\fP \fBTokenType\fP\fC [get]\fP"
+.br
+.RI "\fIGets the type of the current JSON token\&. \fP"
+.ti -1c
+.RI "virtual object \fBValue\fP\fC [get]\fP"
+.br
+.RI "\fIGets the text value of the current JSON token\&. \fP"
+.ti -1c
+.RI "virtual Type \fBValueType\fP\fC [get]\fP"
+.br
+.RI "\fIGets The Common Language Runtime (CLR) type for the current JSON token\&. \fP"
+.ti -1c
+.RI "virtual int \fBDepth\fP\fC [get]\fP"
+.br
+.RI "\fIGets the depth of the current token in the JSON document\&. \fP"
+.ti -1c
+.RI "virtual string \fBPath\fP\fC [get]\fP"
+.br
+.RI "\fIGets the path of the current JSON token\&. \fP"
+.ti -1c
+.RI "CultureInfo \fBCulture\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the culture used when reading JSON\&. Defaults to CultureInfo\&.InvariantCulture\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a reader that provides fast, non-cached, forward-only access to serialized \fBJson\fP data\&. 
+
+
+.PP
+Definition at line 42 of file JsonReader\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Newtonsoft\&.Json\&.JsonReader\&.JsonReader ()\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBJsonReader\fP class with the specified TextReader\&. 
+.PP
+Definition at line 270 of file JsonReader\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void Newtonsoft\&.Json\&.JsonReader\&.Close ()\fC [virtual]\fP"
+
+.PP
+Changes the State to Closed\&. 
+.PP
+Reimplemented in \fBNewtonsoft\&.Json\&.JsonTextReader\fP, and \fBNewtonsoft\&.Json\&.Bson\&.BsonReader\fP\&.
+.PP
+Definition at line 937 of file JsonReader\&.cs\&.
+.SS "virtual void Newtonsoft\&.Json\&.JsonReader\&.Dispose (booldisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Releases unmanaged and - optionally - managed resources 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP \fCtrue\fP to release both managed and unmanaged resources; \fCfalse\fP to release only unmanaged resources\&.
+.RE
+.PP
+
+.PP
+Definition at line 928 of file JsonReader\&.cs\&.
+.SS "abstract bool Newtonsoft\&.Json\&.JsonReader\&.Read ()\fC [pure virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the next token was read successfully; false if there are no more tokens to read\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNewtonsoft\&.Json\&.JsonValidatingReader\fP, \fBNewtonsoft\&.Json\&.JsonTextReader\fP, \fBNewtonsoft\&.Json\&.Bson\&.BsonReader\fP, and \fBNewtonsoft\&.Json\&.Linq\&.JTokenReader\fP\&.
+.SS "abstract byte [] Newtonsoft\&.Json\&.JsonReader\&.ReadAsBytes ()\fC [pure virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a T:Byte[]\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A T:Byte[] or a null reference if the next JSON token is null\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNewtonsoft\&.Json\&.JsonValidatingReader\fP, \fBNewtonsoft\&.Json\&.JsonTextReader\fP, \fBNewtonsoft\&.Json\&.Bson\&.BsonReader\fP, and \fBNewtonsoft\&.Json\&.Linq\&.JTokenReader\fP\&.
+.SS "abstract \fBDateTime\fP Newtonsoft\&.Json\&.JsonReader\&.ReadAsDateTime ()\fC [pure virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{DateTime}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBString\fP\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNewtonsoft\&.Json\&.JsonValidatingReader\fP, \fBNewtonsoft\&.Json\&.JsonTextReader\fP, \fBNewtonsoft\&.Json\&.Bson\&.BsonReader\fP, and \fBNewtonsoft\&.Json\&.Linq\&.JTokenReader\fP\&.
+.SS "abstract \fBDateTimeOffset\fP Newtonsoft\&.Json\&.JsonReader\&.ReadAsDateTimeOffset ()\fC [pure virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{DateTimeOffset}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A Nullable{DateTimeOffset}\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNewtonsoft\&.Json\&.JsonValidatingReader\fP, \fBNewtonsoft\&.Json\&.JsonTextReader\fP, \fBNewtonsoft\&.Json\&.Bson\&.BsonReader\fP, and \fBNewtonsoft\&.Json\&.Linq\&.JTokenReader\fP\&.
+.SS "abstract decimal Newtonsoft\&.Json\&.JsonReader\&.ReadAsDecimal ()\fC [pure virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{Decimal}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A Nullable{Decimal}\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNewtonsoft\&.Json\&.JsonValidatingReader\fP, \fBNewtonsoft\&.Json\&.JsonTextReader\fP, \fBNewtonsoft\&.Json\&.Bson\&.BsonReader\fP, and \fBNewtonsoft\&.Json\&.Linq\&.JTokenReader\fP\&.
+.SS "abstract int Newtonsoft\&.Json\&.JsonReader\&.ReadAsInt32 ()\fC [pure virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{Int32}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A Nullable{Int32}\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNewtonsoft\&.Json\&.JsonValidatingReader\fP, \fBNewtonsoft\&.Json\&.JsonTextReader\fP, \fBNewtonsoft\&.Json\&.Bson\&.BsonReader\fP, and \fBNewtonsoft\&.Json\&.Linq\&.JTokenReader\fP\&.
+.SS "abstract string Newtonsoft\&.Json\&.JsonReader\&.ReadAsString ()\fC [pure virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a \fBString\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBString\fP\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNewtonsoft\&.Json\&.JsonValidatingReader\fP, \fBNewtonsoft\&.Json\&.JsonTextReader\fP, \fBNewtonsoft\&.Json\&.Bson\&.BsonReader\fP, and \fBNewtonsoft\&.Json\&.Linq\&.JTokenReader\fP\&.
+.SS "void Newtonsoft\&.Json\&.JsonReader\&.SetStateBasedOnCurrent ()\fC [protected]\fP"
+
+.PP
+Sets the state based on current token type\&. 
+.PP
+Definition at line 847 of file JsonReader\&.cs\&.
+.SS "void Newtonsoft\&.Json\&.JsonReader\&.SetToken (\fBJsonToken\fPnewToken)\fC [protected]\fP"
+
+.PP
+Sets the current token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewToken\fP The new token\&.
+.RE
+.PP
+
+.PP
+Definition at line 769 of file JsonReader\&.cs\&.
+.SS "void Newtonsoft\&.Json\&.JsonReader\&.SetToken (\fBJsonToken\fPnewToken, objectvalue)\fC [protected]\fP"
+
+.PP
+Sets the current token and value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewToken\fP The new token\&.
+.br
+\fIvalue\fP The value\&.
+.RE
+.PP
+
+.PP
+Definition at line 779 of file JsonReader\&.cs\&.
+.SS "void Newtonsoft\&.Json\&.JsonReader\&.Skip ()"
+
+.PP
+Skips the children of the current token\&. 
+.PP
+Definition at line 750 of file JsonReader\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool Newtonsoft\&.Json\&.JsonReader\&.CloseInput\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether the underlying stream or TextReader should be closed when the reader is closed\&. true to close the underlying stream or TextReader when the reader is closed; otherwise false\&. The default is true\&. 
+.PP
+Definition at line 135 of file JsonReader\&.cs\&.
+.SS "CultureInfo Newtonsoft\&.Json\&.JsonReader\&.Culture\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the culture used when reading JSON\&. Defaults to CultureInfo\&.InvariantCulture\&. 
+.PP
+Definition at line 254 of file JsonReader\&.cs\&.
+.SS "State Newtonsoft\&.Json\&.JsonReader\&.CurrentState\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Gets the current reader state\&. The current reader state\&.
+.PP
+Definition at line 123 of file JsonReader\&.cs\&.
+.SS "\fBDateParseHandling\fP Newtonsoft\&.Json\&.JsonReader\&.DateParseHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how date formatted strings, e\&.g\&. '\\/Date(1198908717056)\\/' and '2012-03-21T05:40Z', are parsed when reading JSON\&. 
+.PP
+Definition at line 159 of file JsonReader\&.cs\&.
+.SS "\fBDateTimeZoneHandling\fP Newtonsoft\&.Json\&.JsonReader\&.DateTimeZoneHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how \fBDateTime\fP time zones are handling when reading JSON\&. 
+.PP
+Definition at line 150 of file JsonReader\&.cs\&.
+.SS "virtual int Newtonsoft\&.Json\&.JsonReader\&.Depth\fC [get]\fP"
+
+.PP
+Gets the depth of the current token in the JSON document\&. The depth of the current token in the JSON document\&.
+.PP
+Definition at line 217 of file JsonReader\&.cs\&.
+.SS "\fBFloatParseHandling\fP Newtonsoft\&.Json\&.JsonReader\&.FloatParseHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how floating point numbers, e\&.g\&. 1\&.0 and 9\&.9, are parsed when reading JSON text\&. 
+.PP
+Definition at line 168 of file JsonReader\&.cs\&.
+.SS "int Newtonsoft\&.Json\&.JsonReader\&.MaxDepth\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the maximum depth allowed when reading JSON\&. Reading past this depth will throw a \fBJsonReaderException\fP\&. 
+.PP
+Definition at line 177 of file JsonReader\&.cs\&.
+.SS "virtual string Newtonsoft\&.Json\&.JsonReader\&.Path\fC [get]\fP"
+
+.PP
+Gets the path of the current JSON token\&. 
+.PP
+Definition at line 232 of file JsonReader\&.cs\&.
+.SS "virtual char Newtonsoft\&.Json\&.JsonReader\&.QuoteChar\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the quotation mark character used to enclose the value of a string\&. 
+.PP
+Definition at line 141 of file JsonReader\&.cs\&.
+.SS "virtual \fBJsonToken\fP Newtonsoft\&.Json\&.JsonReader\&.TokenType\fC [get]\fP"
+
+.PP
+Gets the type of the current JSON token\&. 
+.PP
+Definition at line 192 of file JsonReader\&.cs\&.
+.SS "virtual object Newtonsoft\&.Json\&.JsonReader\&.Value\fC [get]\fP"
+
+.PP
+Gets the text value of the current JSON token\&. 
+.PP
+Definition at line 200 of file JsonReader\&.cs\&.
+.SS "virtual Type Newtonsoft\&.Json\&.JsonReader\&.ValueType\fC [get]\fP"
+
+.PP
+Gets The Common Language Runtime (CLR) type for the current JSON token\&. 
+.PP
+Definition at line 208 of file JsonReader\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

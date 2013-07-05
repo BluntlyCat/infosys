@@ -1,0 +1,193 @@
+.TH "NHibernate.Type.CharBooleanType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.CharBooleanType \- 
+.PP
+Maps a System\&.Boolean Property to a DbType\&.AnsiStringFixedLength column\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.BooleanType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Type\&.TrueFalseType\fP, and \fBNHibernate\&.Type\&.YesNoType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, int index)"
+.br
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, string name)"
+.br
+.ti -1c
+.RI "override void \fBSet\fP (IDbCommand cmd, Object value, int index)"
+.br
+.ti -1c
+.RI "override string \fBObjectToSQLString\fP (object value, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIWhen implemented by a class, return a String representation of the value, suitable for embedding in an SQL statement \fP"
+.ti -1c
+.RI "override object \fBStringToObject\fP (String xml)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCharBooleanType\fP (\fBAnsiStringFixedLengthSqlType\fP sqlType)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "abstract string \fBTrueString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract string \fBFalseString\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Maps a System\&.Boolean Property to a DbType\&.AnsiStringFixedLength column\&. 
+
+
+.PP
+Definition at line 13 of file CharBooleanType\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Type\&.CharBooleanType\&.CharBooleanType (\fBAnsiStringFixedLengthSqlType\fPsqlType)\fC [protected]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlType\fP 
+.RE
+.PP
+
+.PP
+Definition at line 25 of file CharBooleanType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.CharBooleanType\&.Get (IDataReaderrs, intindex)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP 
+.br
+\fIindex\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.BooleanType\fP\&.
+.PP
+Definition at line 35 of file CharBooleanType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.CharBooleanType\&.Get (IDataReaderrs, stringname)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP 
+.br
+\fIname\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.BooleanType\fP\&.
+.PP
+Definition at line 54 of file CharBooleanType\&.cs\&.
+.SS "override string NHibernate\&.Type\&.CharBooleanType\&.ObjectToSQLString (objectvalue, \fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, return a String representation of the value, suitable for embedding in an SQL statement 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The object to convert to a string for the SQL statement\&.
+.br
+\fIdialect\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that containts a well formed SQL Statement\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.BooleanType\fP\&.
+.PP
+Definition at line 75 of file CharBooleanType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.CharBooleanType\&.Set (IDbCommandcmd, Objectvalue, intindex)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP 
+.br
+\fIvalue\fP 
+.br
+\fIindex\fP 
+.RE
+.PP
+
+.PP
+Definition at line 65 of file CharBooleanType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.CharBooleanType\&.StringToObject (Stringxml)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 85 of file CharBooleanType\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "abstract string NHibernate\&.Type\&.CharBooleanType\&.FalseString\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+
+.PP
+Definition at line 19 of file CharBooleanType\&.cs\&.
+.SS "abstract string NHibernate\&.Type\&.CharBooleanType\&.TrueString\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+
+.PP
+Definition at line 16 of file CharBooleanType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

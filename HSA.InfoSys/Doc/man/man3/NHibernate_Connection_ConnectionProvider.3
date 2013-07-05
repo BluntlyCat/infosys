@@ -1,0 +1,199 @@
+.TH "NHibernate.Connection.ConnectionProvider" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Connection.ConnectionProvider \- 
+.PP
+The base class for the \fBConnectionProvider\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Connection\&.IConnectionProvider\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Connection\&.DriverConnectionProvider\fP, \fBNHibernate\&.Connection\&.UserSuppliedConnectionProvider\fP, and \fBNHibernate\&.Test\&.ConnectionStringTest\&.MockConnectionProvider\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBCloseConnection\fP (IDbConnection conn)"
+.br
+.RI "\fICloses the IDbConnection\&. \fP"
+.ti -1c
+.RI "virtual void \fBConfigure\fP (IDictionary< string, string > settings)"
+.br
+.RI "\fIConfigures the \fBConnectionProvider\fP with the \fBDriver\fP and the ConnectionString\&. \fP"
+.ti -1c
+.RI "abstract IDbConnection \fBGetConnection\fP ()"
+.br
+.RI "\fIGet an open IDbConnection\&. \fP"
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "\fITakes care of freeing the managed and unmanaged resources that this class is responsible for\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual string \fBGetNamedConnectionString\fP (IDictionary< string, string > settings)"
+.br
+.RI "\fIGet the \&.NET 2\&.0 named connection string \fP"
+.ti -1c
+.RI "virtual void \fBConfigureDriver\fP (IDictionary< string, string > settings)"
+.br
+.RI "\fIConfigures the driver for the \fBConnectionProvider\fP\&. \fP"
+.ti -1c
+.RI "virtual void \fBDispose\fP (bool isDisposing)"
+.br
+.RI "\fITakes care of freeing the managed and unmanaged resources that this class is responsible for\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual string \fBConnectionString\fP\fC [get]\fP"
+.br
+.RI "\fIGets the String for the IDbConnection to connect to the database\&. \fP"
+.ti -1c
+.RI "\fBIDriver\fP \fBDriver\fP\fC [get]\fP"
+.br
+.RI "\fIGets the IDriver that can create the IDbConnection object\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The base class for the \fBConnectionProvider\fP\&. 
+
+
+.PP
+Definition at line 16 of file ConnectionProvider\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Connection\&.ConnectionProvider\&.CloseConnection (IDbConnectionconn)\fC [virtual]\fP"
+
+.PP
+Closes the IDbConnection\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconn\fP The IDbConnection to clean up\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Connection\&.IConnectionProvider\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Test\&.DebugConnectionProvider\fP, \fBNHibernate\&.Connection\&.UserSuppliedConnectionProvider\fP, and \fBNHibernate\&.Connection\&.DriverConnectionProvider\fP\&.
+.PP
+Definition at line 26 of file ConnectionProvider\&.cs\&.
+.SS "virtual void NHibernate\&.Connection\&.ConnectionProvider\&.Configure (IDictionary< string, string >settings)\fC [virtual]\fP"
+
+.PP
+Configures the \fBConnectionProvider\fP with the \fBDriver\fP and the ConnectionString\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsettings\fP An IDictionary that contains the settings for this \fBConnectionProvider\fP\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP Thrown when a Cfg\&.Environment\&.ConnectionString could not be found in the \fCsettings\fP parameter or the \fBDriver\fP Class could not be loaded\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Connection\&.IConnectionProvider\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Connection\&.UserSuppliedConnectionProvider\fP\&.
+.PP
+Definition at line 47 of file ConnectionProvider\&.cs\&.
+.SS "virtual void NHibernate\&.Connection\&.ConnectionProvider\&.ConfigureDriver (IDictionary< string, string >settings)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Configures the driver for the \fBConnectionProvider\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsettings\fP An IDictionary that contains the settings for the \fBDriver\fP\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP Thrown when the Environment\&.ConnectionDriver could not be found in the \fCsettings\fP parameter or there is a problem with creating the IDriver\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Test\&.ConnectionStringTest\&.MockConnectionProvider\fP\&.
+.PP
+Definition at line 95 of file ConnectionProvider\&.cs\&.
+.SS "void NHibernate\&.Connection\&.ConnectionProvider\&.Dispose ()"
+
+.PP
+Takes care of freeing the managed and unmanaged resources that this class is responsible for\&. 
+.PP
+Definition at line 167 of file ConnectionProvider\&.cs\&.
+.SS "virtual void NHibernate\&.Connection\&.ConnectionProvider\&.Dispose (boolisDisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Takes care of freeing the managed and unmanaged resources that this class is responsible for\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIisDisposing\fP Indicates if this \fBConnectionProvider\fP is being Disposed of or Finalized\&.
+.RE
+.PP
+.PP
+If this \fBConnectionProvider\fP is being Finalized (\fCisDisposing==false\fP) then make sure not to call any methods that could potentially bring this \fBConnectionProvider\fP back to life\&. 
+.PP
+If any subclasses manage resources that also need to be disposed of this method should be overridden, but don't forget to call it in the override\&. 
+.PP
+Definition at line 188 of file ConnectionProvider\&.cs\&.
+.SS "abstract IDbConnection NHibernate\&.Connection\&.ConnectionProvider\&.GetConnection ()\fC [pure virtual]\fP"
+
+.PP
+Get an open IDbConnection\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An open IDbConnection\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Connection\&.IConnectionProvider\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Test\&.ConnectionStringTest\&.MockConnectionProvider\fP, \fBNHibernate\&.Connection\&.UserSuppliedConnectionProvider\fP, \fBNHibernate\&.Connection\&.DriverConnectionProvider\fP, and \fBNHibernate\&.Test\&.DebugConnectionProvider\fP\&.
+.SS "virtual string NHibernate\&.Connection\&.ConnectionProvider\&.GetNamedConnectionString (IDictionary< string, string >settings)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Get the \&.NET 2\&.0 named connection string 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP Thrown when a Environment\&.ConnectionStringName was found in the \fCsettings\fP parameter but could not be found in the app\&.config 
+.RE
+.PP
+
+.PP
+Definition at line 74 of file ConnectionProvider\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual string NHibernate\&.Connection\&.ConnectionProvider\&.ConnectionString\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Gets the String for the IDbConnection to connect to the database\&. The String for the IDbConnection to connect to the database\&. 
+.PP
+Definition at line 127 of file ConnectionProvider\&.cs\&.
+.SS "\fBIDriver\fP NHibernate\&.Connection\&.ConnectionProvider\&.Driver\fC [get]\fP"
+
+.PP
+Gets the IDriver that can create the IDbConnection object\&. The IDriver that can create the IDbConnection\&. 
+.PP
+Definition at line 138 of file ConnectionProvider\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

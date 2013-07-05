@@ -1,0 +1,109 @@
+.TH "NHibernate.Engine.Query.ParamLocationRecognizer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.Query.ParamLocationRecognizer \- 
+.PP
+Implements a parameter parser recognizer specifically for the purpose of journaling parameter locations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Engine\&.Query\&.ParameterParser\&.IRecognizer\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBNamedParameterDescription\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBOutParameter\fP (int position)"
+.br
+.ti -1c
+.RI "void \fBOrdinalParameter\fP (int position)"
+.br
+.ti -1c
+.RI "void \fBNamedParameter\fP (string name, int position)"
+.br
+.ti -1c
+.RI "void \fBJpaPositionalParameter\fP (string name, int position)"
+.br
+.ti -1c
+.RI "void \fBOther\fP (char character)"
+.br
+.ti -1c
+.RI "void \fBOther\fP (string sqlPart)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBParamLocationRecognizer\fP \fBParseLocations\fP (string query)"
+.br
+.RI "\fIConvenience method for creating a param location recognizer and initiating the parse\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "IDictionary< string, 
+.br
+\fBNamedParameterDescription\fP > \fBNamedParameterDescriptionMap\fP\fC [get]\fP"
+.br
+.RI "\fIThe dictionary of named parameter locations\&. The dictionary is keyed by parameter name\&. \fP"
+.ti -1c
+.RI "List< int > \fBOrdinalParameterLocationList\fP\fC [get]\fP"
+.br
+.RI "\fIThe list of ordinal parameter locations\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Implements a parameter parser recognizer specifically for the purpose of journaling parameter locations\&. 
+
+
+.PP
+Definition at line 9 of file ParamLocationRecognizer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBParamLocationRecognizer\fP NHibernate\&.Engine\&.Query\&.ParamLocationRecognizer\&.ParseLocations (stringquery)\fC [static]\fP"
+
+.PP
+Convenience method for creating a param location recognizer and initiating the parse\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIquery\fP The query to be parsed for parameter locations\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The generated recognizer, with journaled location info\&. 
+.RE
+.PP
+
+.PP
+Definition at line 22 of file ParamLocationRecognizer\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "IDictionary<string, \fBNamedParameterDescription\fP> NHibernate\&.Engine\&.Query\&.ParamLocationRecognizer\&.NamedParameterDescriptionMap\fC [get]\fP"
+
+.PP
+The dictionary of named parameter locations\&. The dictionary is keyed by parameter name\&. 
+.PP
+Definition at line 34 of file ParamLocationRecognizer\&.cs\&.
+.SS "List<int> NHibernate\&.Engine\&.Query\&.ParamLocationRecognizer\&.OrdinalParameterLocationList\fC [get]\fP"
+
+.PP
+The list of ordinal parameter locations\&. The list elements are integers, representing the location for that given ordinal\&. Thus OrdinalParameterLocationList[n] represents the location for the nth parameter\&. 
+.PP
+Definition at line 46 of file ParamLocationRecognizer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

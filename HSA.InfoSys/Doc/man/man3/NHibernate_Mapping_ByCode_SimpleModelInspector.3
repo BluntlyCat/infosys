@@ -1,0 +1,153 @@
+.TH "NHibernate.Mapping.ByCode.SimpleModelInspector" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.ByCode.SimpleModelInspector \- 
+.PP
+A \fBIModelInspector\fP which allows customization of conditions with explicitly declared members\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.ByCode\&.IModelInspector\fP, and \fBNHibernate\&.Mapping\&.ByCode\&.IModelExplicitDeclarationsHolder\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBIsRootEntity\fP (Func< System\&.Type, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsComponent\fP (Func< System\&.Type, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsEntity\fP (Func< System\&.Type, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsTablePerClass\fP (Func< System\&.Type, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsTablePerClassHierarchy\fP (Func< System\&.Type, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsTablePerConcreteClass\fP (Func< System\&.Type, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsOneToOne\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsManyToOne\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsManyToMany\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsOneToMany\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsManyToAny\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsAny\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsPersistentId\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsVersion\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsMemberOfNaturalId\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsPersistentProperty\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsSet\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsBag\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsIdBag\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsList\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsArray\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsDictionary\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsProperty\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBSplitsFor\fP (Func< System\&.Type, IEnumerable< string >, IEnumerable< string >> getPropertiesSplitsId)"
+.br
+.ti -1c
+.RI "void \fBIsTablePerClassSplit\fP (Func< \fBSplitDefinition\fP, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsDynamicComponent\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBMatchArrayMember\fP (MemberInfo subject)"
+.br
+.ti -1c
+.RI "bool \fBMatchDictionaryMember\fP (MemberInfo subject)"
+.br
+.ti -1c
+.RI "bool \fBMatchBagMember\fP (MemberInfo subject)"
+.br
+.ti -1c
+.RI "bool \fBMatchCollection\fP (MemberInfo subject, Predicate< MemberInfo > specificCollectionPredicate)"
+.br
+.ti -1c
+.RI "bool \fBMatchSetMember\fP (MemberInfo subject)"
+.br
+.ti -1c
+.RI "bool \fBMatchNoReadOnlyPropertyPattern\fP (MemberInfo subject)"
+.br
+.ti -1c
+.RI "bool \fBIsReadOnlyProperty\fP (MemberInfo subject)"
+.br
+.ti -1c
+.RI "bool \fBIsAutoproperty\fP (PropertyInfo property)"
+.br
+.ti -1c
+.RI "bool \fBCanReadCantWriteInsideType\fP (PropertyInfo property)"
+.br
+.ti -1c
+.RI "bool \fBCanReadCantWriteInBaseType\fP (PropertyInfo property)"
+.br
+.ti -1c
+.RI "bool \fBMatchPoIdPattern\fP (MemberInfo subject)"
+.br
+.ti -1c
+.RI "bool \fBMatchComponentPattern\fP (System\&.Type subject)"
+.br
+.ti -1c
+.RI "bool \fBMatchEntity\fP (System\&.Type subject)"
+.br
+.ti -1c
+.RI "virtual bool \fBDeclaredPolymorphicMatch\fP (MemberInfo member, Func< MemberInfo, bool > declaredMatch)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A \fBIModelInspector\fP which allows customization of conditions with explicitly declared members\&. 
+
+
+.PP
+Definition at line 12 of file SimpleModelInspector\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mix_automapping_1_1_inherited_version_test =
+[
+    [ "WhenPropertyVersionFromBaseEntityThenFindItAsVersion", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mix_automapping_1_1_inherited_version_test.html#acc29da114a69474265ae613ff1e350c7", null ]
+];

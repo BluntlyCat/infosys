@@ -1,0 +1,152 @@
+.TH "NHibernate.Mapping.ByCode.Impl.ClassMapper" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.ByCode.Impl.ClassMapper \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.ByCode\&.Impl\&.AbstractPropertyContainerMapper\fP, and \fBNHibernate\&.Mapping\&.ByCode\&.IClassMapper\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBClassMapper\fP (System\&.Type rootClass, \fBHbmMapping\fP mapDoc, MemberInfo idProperty)"
+.br
+.ti -1c
+.RI "void \fBId\fP (Action< \fBIIdMapper\fP > mapper)"
+.br
+.ti -1c
+.RI "void \fBId\fP (MemberInfo idProperty, Action< \fBIIdMapper\fP > mapper)"
+.br
+.ti -1c
+.RI "void \fBComponentAsId\fP (MemberInfo idProperty, Action< \fBIComponentAsIdMapper\fP > mapper)"
+.br
+.ti -1c
+.RI "void \fBComposedId\fP (Action< \fBIComposedIdMapper\fP > idPropertiesMapping)"
+.br
+.ti -1c
+.RI "void \fBDiscriminator\fP (Action< \fBIDiscriminatorMapper\fP > discriminatorMapping)"
+.br
+.ti -1c
+.RI "void \fBDiscriminatorValue\fP (object value)"
+.br
+.ti -1c
+.RI "void \fBTable\fP (string tableName)"
+.br
+.ti -1c
+.RI "void \fBCatalog\fP (string catalogName)"
+.br
+.ti -1c
+.RI "void \fBSchema\fP (string schemaName)"
+.br
+.ti -1c
+.RI "void \fBMutable\fP (bool isMutable)"
+.br
+.ti -1c
+.RI "void \fBVersion\fP (MemberInfo versionProperty, Action< \fBIVersionMapper\fP > versionMapping)"
+.br
+.ti -1c
+.RI "void \fBNaturalId\fP (Action< \fBINaturalIdMapper\fP > naturalIdMapping)"
+.br
+.ti -1c
+.RI "void \fBCache\fP (Action< \fBICacheMapper\fP > cacheMapping)"
+.br
+.ti -1c
+.RI "void \fBFilter\fP (string filterName, Action< \fBIFilterMapper\fP > filterMapping)"
+.br
+.ti -1c
+.RI "void \fBWhere\fP (string whereClause)"
+.br
+.ti -1c
+.RI "void \fBSchemaAction\fP (SchemaAction action)"
+.br
+.ti -1c
+.RI "void \fBJoin\fP (string splitGroupId, Action< \fBIJoinMapper\fP > splitMapping)"
+.br
+.RI "\fIUsing the \fBJoin\fP, it is possible to split properties of one class to several tables, when there's a 1-to-1 relationship between the table \fP"
+.ti -1c
+.RI "void \fBEntityName\fP (string value)"
+.br
+.ti -1c
+.RI "void \fBProxy\fP (System\&.Type proxy)"
+.br
+.ti -1c
+.RI "void \fBLazy\fP (bool value)"
+.br
+.ti -1c
+.RI "void \fBDynamicUpdate\fP (bool value)"
+.br
+.ti -1c
+.RI "void \fBDynamicInsert\fP (bool value)"
+.br
+.ti -1c
+.RI "void \fBBatchSize\fP (int value)"
+.br
+.ti -1c
+.RI "void \fBSelectBeforeUpdate\fP (bool value)"
+.br
+.ti -1c
+.RI "void \fBPersister< T >\fP ()"
+.br
+.ti -1c
+.RI "void \fBSynchronize\fP (params string[] table)"
+.br
+.ti -1c
+.RI "void \fBLoader\fP (string namedQueryReference)"
+.br
+.ti -1c
+.RI "void \fBSqlInsert\fP (string sql)"
+.br
+.ti -1c
+.RI "void \fBSqlUpdate\fP (string sql)"
+.br
+.ti -1c
+.RI "void \fBSqlDelete\fP (string sql)"
+.br
+.ti -1c
+.RI "void \fBSubselect\fP (string sql)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBAddProperty\fP (object property)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "Dictionary< string, \fBIJoinMapper\fP > \fBJoinMappers\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 10 of file ClassMapper\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Mapping\&.ByCode\&.Impl\&.ClassMapper\&.Join (stringsplitGroupId, Action< \fBIJoinMapper\fP >splitMapping)"
+
+.PP
+Using the \fBJoin\fP, it is possible to split properties of one class to several tables, when there's a 1-to-1 relationship between the table 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsplitGroupId\fP The split-group identifier\&. By default it is assigned to the join-table-name
+.br
+\fIsplitMapping\fP The lambda to map the join\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Mapping\&.ByCode\&.IClassMapper\fP\&.
+.PP
+Definition at line 239 of file ClassMapper\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,113 @@
+.TH "NHibernate.Driver.SqlServerCeDriver" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Driver.SqlServerCeDriver \- 
+.PP
+A \fBNHibernate\fP driver for Microsoft SQL Server CE data provider  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Driver\&.ReflectionBasedDriver\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlServerCeDriver\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBSqlServerCeDriver\fP class\&. \fP"
+.ti -1c
+.RI "override void \fBConfigure\fP (IDictionary< string, string > settings)"
+.br
+.RI "\fIConfigure the driver using \fIsettings\fP \&. \fP"
+.ti -1c
+.RI "override \fBIResultSetsCommand\fP \fBGetResultSetsCommand\fP (\fBEngine\&.ISessionImplementor\fP session)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBInitializeParameter\fP (IDbDataParameter dbParam, string name, \fBSqlType\fP sqlType)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBUseNamedPrefixInSql\fP\fC [get]\fP"
+.br
+.RI "\fIMsSql requires the use of a Named Prefix in the SQL statement\&. \fP"
+.ti -1c
+.RI "override bool \fBUseNamedPrefixInParameter\fP\fC [get]\fP"
+.br
+.RI "\fIMsSql requires the use of a Named Prefix in the Parameter\&. \fP"
+.ti -1c
+.RI "override string \fBNamedPrefix\fP\fC [get]\fP"
+.br
+.RI "\fIThe Named Prefix for parameters\&. \fP"
+.ti -1c
+.RI "override bool \fBSupportsMultipleOpenReaders\fP\fC [get]\fP"
+.br
+.RI "\fIThe SqlClient driver does NOT support more than 1 open IDataReader with only 1 IDbConnection\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A \fBNHibernate\fP driver for Microsoft SQL Server CE data provider 
+
+
+.PP
+Definition at line 14 of file SqlServerCeDriver\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Driver\&.SqlServerCeDriver\&.SqlServerCeDriver ()"
+
+.PP
+Initializes a new instance of the \fBSqlServerCeDriver\fP class\&. 
+.PP
+Definition at line 19 of file SqlServerCeDriver\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Driver\&.SqlServerCeDriver\&.Configure (IDictionary< string, string >settings)\fC [virtual]\fP"
+
+.PP
+Configure the driver using \fIsettings\fP \&. 
+.PP
+Reimplemented from \fBNHibernate\&.Driver\&.DriverBase\fP\&.
+.PP
+Definition at line 30 of file SqlServerCeDriver\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.Driver\&.SqlServerCeDriver\&.NamedPrefix\fC [get]\fP"
+
+.PP
+The Named Prefix for parameters\&. Sql Server uses \fC'@'\fP\&. 
+.PP
+Definition at line 71 of file SqlServerCeDriver\&.cs\&.
+.SS "override bool NHibernate\&.Driver\&.SqlServerCeDriver\&.SupportsMultipleOpenReaders\fC [get]\fP"
+
+.PP
+The SqlClient driver does NOT support more than 1 open IDataReader with only 1 IDbConnection\&. - it is not supported\&.
+.PP
+Ms Sql 2000 (and 7) throws an Exception when multiple DataReaders are attempted to be Opened\&. When Yukon comes out a new \fBDriver\fP will be created for Yukon because it is supposed to support it\&. 
+.PP
+Definition at line 86 of file SqlServerCeDriver\&.cs\&.
+.SS "override bool NHibernate\&.Driver\&.SqlServerCeDriver\&.UseNamedPrefixInParameter\fC [get]\fP"
+
+.PP
+MsSql requires the use of a Named Prefix in the Parameter\&. because MsSql uses '<c>@</c>'\&. 
+.PP
+Definition at line 60 of file SqlServerCeDriver\&.cs\&.
+.SS "override bool NHibernate\&.Driver\&.SqlServerCeDriver\&.UseNamedPrefixInSql\fC [get]\fP"
+
+.PP
+MsSql requires the use of a Named Prefix in the SQL statement\&. because MsSql uses '<c>@</c>'\&. 
+.PP
+Definition at line 49 of file SqlServerCeDriver\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

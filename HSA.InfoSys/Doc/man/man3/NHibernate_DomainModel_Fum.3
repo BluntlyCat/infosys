@@ -1,0 +1,145 @@
+.TH "NHibernate.DomainModel.Fum" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.DomainModel.Fum \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFum\fP (\fBFumCompositeID\fP id)"
+.br
+.ti -1c
+.RI "\fBLifecycleVeto\fP \fBOnDelete\fP (\fBISession\fP s)"
+.br
+.RI "\fICalled when an entity is deleted \fP"
+.ti -1c
+.RI "void \fBOnLoad\fP (\fBISession\fP s, object id)"
+.br
+.RI "\fICalled after an entity is loaded\&. \fP"
+.ti -1c
+.RI "\fBLifecycleVeto\fP \fBOnSave\fP (\fBISession\fP s)"
+.br
+.RI "\fICalled when an entity is saved \fP"
+.ti -1c
+.RI "\fBLifecycleVeto\fP \fBOnUpdate\fP (\fBISession\fP s)"
+.br
+.RI "\fICalled when an entity is passed to \fBISession\&.Update(object)\fP\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBFumString\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBFumCompositeID\fP \fBId\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBFum\fP \fBFo\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBQux\fP[] \fBQuxArray\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ISet< \fBFum\fP > \fBFriends\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "DateTime \fBLastUpdated\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBMapComponent\fP \fBMapComponent\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 34 of file Fum\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBLifecycleVeto\fP NHibernate\&.DomainModel\&.Fum\&.OnDelete (\fBISession\fPs)"
+
+.PP
+Called when an entity is deleted 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBA\fP LifecycleVeto value indicating whether the operation should be vetoed or allowed to proceed\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.PP
+Definition at line 104 of file Fum\&.cs\&.
+.SS "void NHibernate\&.DomainModel\&.Fum\&.OnLoad (\fBISession\fPs, objectid)"
+
+.PP
+Called after an entity is loaded\&. <note>It is illegal to access the \fBISession\fP from inside this method\&.</note>\&. However, the object may keep a reference to the session for later use 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.br
+\fIid\fP The identifier
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.PP
+Definition at line 122 of file Fum\&.cs\&.
+.SS "\fBLifecycleVeto\fP NHibernate\&.DomainModel\&.Fum\&.OnSave (\fBISession\fPs)"
+
+.PP
+Called when an entity is saved 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+If we should veto the save
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.PP
+Definition at line 127 of file Fum\&.cs\&.
+.SS "\fBLifecycleVeto\fP NHibernate\&.DomainModel\&.Fum\&.OnUpdate (\fBISession\fPs)"
+
+.PP
+Called when an entity is passed to \fBISession\&.Update(object)\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBA\fP LifecycleVeto value indicating whether the operation should be vetoed or allowed to proceed\&.
+.RE
+.PP
+.PP
+This method is \fInot\fP called every time the object's state is persisted during a flush\&. 
+.PP
+Implements \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.PP
+Definition at line 145 of file Fum\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

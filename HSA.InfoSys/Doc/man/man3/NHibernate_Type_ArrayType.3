@@ -1,0 +1,223 @@
+.TH "NHibernate.Type.ArrayType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.ArrayType \- 
+.PP
+An \fBIType\fP that maps an Array collection to the database\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBArrayType\fP (string role, string propertyRef, System\&.Type elementClass, bool isEmbeddedInXML)"
+.br
+.RI "\fIInitializes a new instance of a \fBArrayType\fP class for a specific role\&. \fP"
+.ti -1c
+.RI "override \fBIPersistentCollection\fP \fBInstantiate\fP (\fBISessionImplementor\fP session, \fBICollectionPersister\fP persister, object key)"
+.br
+.RI "\fIInstantiate an uninitialized collection wrapper or holder\&. Callers MUST add the holder to the persistence context! \fP"
+.ti -1c
+.RI "override void \fBNullSafeSet\fP (IDbCommand st, object value, int index, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override IEnumerable \fBGetElementsIterator\fP (object collection)"
+.br
+.RI "\fIGet an iterator over the element set of the collection in POCO mode \fP"
+.ti -1c
+.RI "override \fBIPersistentCollection\fP \fBWrap\fP (\fBISessionImplementor\fP session, object array)"
+.br
+.RI "\fIWraps a System\&.Array in a PersistentArrayHolder\&. \fP"
+.ti -1c
+.RI "override object \fBInstantiateResult\fP (object original)"
+.br
+.ti -1c
+.RI "override object \fBInstantiate\fP (int anticipatedSize)"
+.br
+.RI "\fIInstantiate an empty instance of the 'underlying' collection (not a wrapper), but with the given anticipated size (i\&.e\&. accounting for initial capacity and perhaps load factor)\&. \fP"
+.ti -1c
+.RI "override bool \fBHasHolder\fP (\fBEntityMode\fP entityMode)"
+.br
+.ti -1c
+.RI "override object \fBIndexOf\fP (object collection, object element)"
+.br
+.ti -1c
+.RI "override object \fBReplaceElements\fP (object original, object target, object owner, IDictionary copyCache, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override string \fBToLoggableString\fP (object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.RI "\fIThe System\&.Array for the element\&. \fP"
+.ti -1c
+.RI "override bool \fBIsArrayType\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An \fBIType\fP that maps an Array collection to the database\&. 
+
+
+.PP
+Definition at line 17 of file ArrayType\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Type\&.ArrayType\&.ArrayType (stringrole, stringpropertyRef, System\&.TypeelementClass, boolisEmbeddedInXML)"
+
+.PP
+Initializes a new instance of a \fBArrayType\fP class for a specific role\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the persistent collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&.
+.br
+\fIelementClass\fP The System\&.Type of the element contained in the array\&.
+.br
+\fIisEmbeddedInXML\fP 
+.RE
+.PP
+.PP
+This creates a bag that is non-generic\&. 
+.PP
+Definition at line 35 of file ArrayType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override IEnumerable NHibernate\&.Type\&.ArrayType\&.GetElementsIterator (objectcollection)\fC [virtual]\fP"
+
+.PP
+Get an iterator over the element set of the collection in POCO mode 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP The collection to be iterated 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The iterator\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.PP
+Definition at line 67 of file ArrayType\&.cs\&.
+.SS "override \fBIPersistentCollection\fP NHibernate\&.Type\&.ArrayType\&.Instantiate (\fBISessionImplementor\fPsession, \fBICollectionPersister\fPpersister, objectkey)\fC [virtual]\fP"
+
+.PP
+Instantiate an uninitialized collection wrapper or holder\&. Callers MUST add the holder to the persistence context! 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session from which the request is originating\&. 
+.br
+\fIpersister\fP The underlying collection persister (metadata) 
+.br
+\fIkey\fP The owner key\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instantiated collection\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.PP
+Definition at line 50 of file ArrayType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.ArrayType\&.Instantiate (intanticipatedSize)\fC [virtual]\fP"
+
+.PP
+Instantiate an empty instance of the 'underlying' collection (not a wrapper), but with the given anticipated size (i\&.e\&. accounting for initial capacity and perhaps load factor)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIanticipatedSize\fP The anticipated size of the instantiated collection after we are done populating it\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A newly instantiated collection to be wrapped\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.PP
+Definition at line 99 of file ArrayType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.ArrayType\&.NullSafeSet (IDbCommandst, objectvalue, intindex, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIst\fP 
+.br
+\fIvalue\fP 
+.br
+\fIindex\fP 
+.br
+\fIsession\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 62 of file ArrayType\&.cs\&.
+.SS "override \fBIPersistentCollection\fP NHibernate\&.Type\&.ArrayType\&.Wrap (\fBISessionImplementor\fPsession, objectarray)\fC [virtual]\fP"
+
+.PP
+Wraps a System\&.Array in a PersistentArrayHolder\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The ISessionImplementor for the collection to be a part of\&.
+.br
+\fIarray\fP The unwrapped array\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An PersistentArrayHolder that wraps the non \fBNHibernate\fP System\&.Array\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.PP
+Definition at line 80 of file ArrayType\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool NHibernate\&.Type\&.ArrayType\&.IsArrayType\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 87 of file ArrayType\&.cs\&.
+.SS "override System\&.Type NHibernate\&.Type\&.ArrayType\&.ReturnedClass\fC [get]\fP"
+
+.PP
+The System\&.Array for the element\&. 
+.PP
+Definition at line 46 of file ArrayType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,958 @@
+.TH "NHibernate.Engine.IPersistenceContext" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.IPersistenceContext \- 
+.PP
+Holds the state of the persistence context, including the first-level cache, entries, snapshots, proxies, etc\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAddUnownedCollection\fP (\fBCollectionKey\fP key, \fBIPersistentCollection\fP collection)"
+.br
+.RI "\fIAdd a collection which has no owner loaded\fP"
+.ti -1c
+.RI "\fBIPersistentCollection\fP \fBUseUnownedCollection\fP (\fBCollectionKey\fP key)"
+.br
+.RI "\fIGet and remove a collection whose owner is not yet loaded, when its owner is being loaded \fP"
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.RI "\fIClear the state of the persistence context\fP"
+.ti -1c
+.RI "void \fBSetEntryStatus\fP (\fBEntityEntry\fP entry, \fBStatus\fP status)"
+.br
+.RI "\fISet the status of an entry\fP"
+.ti -1c
+.RI "void \fBAfterTransactionCompletion\fP ()"
+.br
+.RI "\fICalled after transactions end\fP"
+.ti -1c
+.RI "object[] \fBGetDatabaseSnapshot\fP (object id, \fBIEntityPersister\fP persister)"
+.br
+.RI "\fIGet the current state of the entity as known to the underlying database, or null if there is no corresponding row \fP"
+.ti -1c
+.RI "object[] \fBGetCachedDatabaseSnapshot\fP (\fBEntityKey\fP key)"
+.br
+.RI "\fIRetrieve the cached database snapshot for the requested entity key\&. \fP"
+.ti -1c
+.RI "object[] \fBGetNaturalIdSnapshot\fP (object id, \fBIEntityPersister\fP persister)"
+.br
+.RI "\fIGet the values of the natural id fields as known to the underlying database, or null if the entity has no natural id or there is no corresponding row\&. \fP"
+.ti -1c
+.RI "void \fBAddEntity\fP (\fBEntityKey\fP key, object entity)"
+.br
+.RI "\fIAdd a canonical mapping from entity key to entity instance\fP"
+.ti -1c
+.RI "object \fBGetEntity\fP (\fBEntityKey\fP key)"
+.br
+.RI "\fIGet the entity instance associated with the given \fC\fBEntityKey\fP\fP \fP"
+.ti -1c
+.RI "bool \fBContainsEntity\fP (\fBEntityKey\fP key)"
+.br
+.RI "\fIIs there an entity with the given key in the persistence context\fP"
+.ti -1c
+.RI "object \fBRemoveEntity\fP (\fBEntityKey\fP key)"
+.br
+.RI "\fIRemove an entity from the session cache, also clear up other state associated with the entity, all except for the \fC\fBEntityEntry\fP\fP \fP"
+.ti -1c
+.RI "object \fBGetEntity\fP (\fBEntityUniqueKey\fP euk)"
+.br
+.RI "\fIGet an entity cached by unique key\fP"
+.ti -1c
+.RI "void \fBAddEntity\fP (\fBEntityUniqueKey\fP euk, object entity)"
+.br
+.RI "\fIAdd an entity to the cache by unique key\fP"
+.ti -1c
+.RI "\fBEntityEntry\fP \fBGetEntry\fP (object entity)"
+.br
+.RI "\fIRetrieve the \fBEntityEntry\fP representation of the given entity\&. \fP"
+.ti -1c
+.RI "\fBEntityEntry\fP \fBRemoveEntry\fP (object entity)"
+.br
+.RI "\fIRemove an entity entry from the session cache\fP"
+.ti -1c
+.RI "bool \fBIsEntryFor\fP (object entity)"
+.br
+.RI "\fIIs there an \fBEntityEntry\fP for this instance?\fP"
+.ti -1c
+.RI "\fBCollectionEntry\fP \fBGetCollectionEntry\fP (\fBIPersistentCollection\fP coll)"
+.br
+.RI "\fIGet the collection entry for a persistent collection\fP"
+.ti -1c
+.RI "\fBEntityEntry\fP \fBAddEntity\fP (object entity, \fBStatus\fP status, object[] loadedState, \fBEntityKey\fP entityKey, object version, \fBLockMode\fP lockMode, bool existsInDatabase, \fBIEntityPersister\fP persister, bool disableVersionIncrement, bool lazyPropertiesAreUnfetched)"
+.br
+.RI "\fIAdds an entity to the internal caches\&.\fP"
+.ti -1c
+.RI "\fBEntityEntry\fP \fBAddEntry\fP (object entity, \fBStatus\fP status, object[] loadedState, object rowId, object id, object version, \fBLockMode\fP lockMode, bool existsInDatabase, \fBIEntityPersister\fP persister, bool disableVersionIncrement, bool lazyPropertiesAreUnfetched)"
+.br
+.RI "\fIGenerates an appropriate \fBEntityEntry\fP instance and adds it to the event source's internal caches\&. \fP"
+.ti -1c
+.RI "bool \fBContainsCollection\fP (\fBIPersistentCollection\fP collection)"
+.br
+.RI "\fIIs the given collection associated with this persistence context?\fP"
+.ti -1c
+.RI "bool \fBContainsProxy\fP (\fBINHibernateProxy\fP proxy)"
+.br
+.RI "\fIIs the given proxy associated with this persistence context?\fP"
+.ti -1c
+.RI "bool \fBReassociateIfUninitializedProxy\fP (object value)"
+.br
+.RI "\fITakes the given object and, if it represents a proxy, reassociates it with this event source\&. \fP"
+.ti -1c
+.RI "void \fBReassociateProxy\fP (object value, object id)"
+.br
+.RI "\fIIf a deleted entity instance is re-saved, and it has a proxy, we need to reset the identifier of the proxy \fP"
+.ti -1c
+.RI "object \fBUnproxy\fP (object maybeProxy)"
+.br
+.RI "\fIGet the entity instance underlying the given proxy, throwing an exception if the proxy is uninitialized\&. If the given object is not a proxy, simply return the argument\&. \fP"
+.ti -1c
+.RI "object \fBUnproxyAndReassociate\fP (object maybeProxy)"
+.br
+.RI "\fIPossibly unproxy the given reference and reassociate it with the current session\&. \fP"
+.ti -1c
+.RI "void \fBCheckUniqueness\fP (\fBEntityKey\fP key, object obj)"
+.br
+.RI "\fIAttempts to check whether the given key represents an entity already loaded within the current session\&. \fP"
+.ti -1c
+.RI "object \fBNarrowProxy\fP (\fBINHibernateProxy\fP proxy, \fBIEntityPersister\fP persister, \fBEntityKey\fP key, object obj)"
+.br
+.RI "\fIIf the existing proxy is insufficiently 'narrow' (derived), instantiate a new proxy and overwrite the registration of the old one\&. This breaks == and occurs only for 'class' proxies rather than 'interface' proxies\&. Also init the proxy to point to the given target implementation if necessary\&. \fP"
+.ti -1c
+.RI "object \fBProxyFor\fP (\fBIEntityPersister\fP persister, \fBEntityKey\fP key, object impl)"
+.br
+.RI "\fIReturn the existing proxy associated with the given \fC\fBEntityKey\fP\fP, or the third argument (the entity associated with the key) if no proxy exists\&. Init the proxy to the target implementation, if necessary\&. \fP"
+.ti -1c
+.RI "object \fBProxyFor\fP (object impl)"
+.br
+.RI "\fIReturn the existing proxy associated with the given \fC\fBEntityKey\fP\fP, or the argument (the entity associated with the key) if no proxy exists\&. (slower than the form above) \fP"
+.ti -1c
+.RI "object \fBGetCollectionOwner\fP (object key, \fBICollectionPersister\fP collectionPersister)"
+.br
+.RI "\fIGet the entity that owns this persistent collection\fP"
+.ti -1c
+.RI "object \fBGetLoadedCollectionOwnerOrNull\fP (\fBIPersistentCollection\fP collection)"
+.br
+.RI "\fIGet the entity that owned this persistent collection when it was loaded \fP"
+.ti -1c
+.RI "object \fBGetLoadedCollectionOwnerIdOrNull\fP (\fBIPersistentCollection\fP collection)"
+.br
+.RI "\fIGet the ID for the entity that owned this persistent collection when it was loaded \fP"
+.ti -1c
+.RI "void \fBAddUninitializedCollection\fP (\fBICollectionPersister\fP persister, \fBIPersistentCollection\fP collection, object id)"
+.br
+.RI "\fIadd a collection we just loaded up (still needs initializing)\fP"
+.ti -1c
+.RI "void \fBAddUninitializedDetachedCollection\fP (\fBICollectionPersister\fP persister, \fBIPersistentCollection\fP collection)"
+.br
+.RI "\fIadd a detached uninitialized collection\fP"
+.ti -1c
+.RI "void \fBAddNewCollection\fP (\fBICollectionPersister\fP persister, \fBIPersistentCollection\fP collection)"
+.br
+.RI "\fIAdd a new collection (ie\&. a newly created one, just instantiated by the application, with no database state or snapshot) \fP"
+.ti -1c
+.RI "void \fBAddInitializedDetachedCollection\fP (\fBICollectionPersister\fP collectionPersister, \fBIPersistentCollection\fP collection)"
+.br
+.RI "\fIadd an (initialized) collection that was created by another session and passed into update() (ie\&. one with a snapshot and existing state on the database) \fP"
+.ti -1c
+.RI "\fBCollectionEntry\fP \fBAddInitializedCollection\fP (\fBICollectionPersister\fP persister, \fBIPersistentCollection\fP collection, object id)"
+.br
+.RI "\fIadd a collection we just pulled out of the cache (does not need initializing)\fP"
+.ti -1c
+.RI "\fBIPersistentCollection\fP \fBGetCollection\fP (\fBCollectionKey\fP collectionKey)"
+.br
+.RI "\fIGet the collection instance associated with the \fC\fBCollectionKey\fP\fP\fP"
+.ti -1c
+.RI "void \fBAddNonLazyCollection\fP (\fBIPersistentCollection\fP collection)"
+.br
+.RI "\fIRegister a collection for non-lazy loading at the end of the two-phase load \fP"
+.ti -1c
+.RI "void \fBInitializeNonLazyCollections\fP ()"
+.br
+.RI "\fIForce initialization of all non-lazy collections encountered during the current two-phase load (actually, this is a no-op, unless this is the 'outermost' load) \fP"
+.ti -1c
+.RI "\fBIPersistentCollection\fP \fBGetCollectionHolder\fP (object array)"
+.br
+.RI "\fIGet the \fCPersistentCollection\fP object for an array\fP"
+.ti -1c
+.RI "void \fBAddCollectionHolder\fP (\fBIPersistentCollection\fP holder)"
+.br
+.RI "\fIRegister a \fCPersistentCollection\fP object for an array\&. Associates a holder with an array - MUST be called after loading array, since the array instance is not created until endLoad()\&. \fP"
+.ti -1c
+.RI "\fBIPersistentCollection\fP \fBRemoveCollectionHolder\fP (object array)"
+.br
+.RI "\fIRemove the mapping of collection to holder during eviction of the owning entity \fP"
+.ti -1c
+.RI "object \fBGetSnapshot\fP (\fBIPersistentCollection\fP coll)"
+.br
+.RI "\fIGet the snapshot of the pre-flush collection state\fP"
+.ti -1c
+.RI "\fBCollectionEntry\fP \fBGetCollectionEntryOrNull\fP (object collection)"
+.br
+.RI "\fIGet the collection entry for a collection passed to filter, which might be a collection wrapper, an array, or an unwrapped collection\&. Return null if there is no entry\&. \fP"
+.ti -1c
+.RI "object \fBGetProxy\fP (\fBEntityKey\fP key)"
+.br
+.RI "\fIGet an existing proxy by key\fP"
+.ti -1c
+.RI "void \fBAddProxy\fP (\fBEntityKey\fP key, \fBINHibernateProxy\fP proxy)"
+.br
+.RI "\fIAdd a proxy to the session cache\fP"
+.ti -1c
+.RI "object \fBRemoveProxy\fP (\fBEntityKey\fP key)"
+.br
+.RI "\fIRemove a proxy from the session cache\fP"
+.ti -1c
+.RI "int \fBIncrementCascadeLevel\fP ()"
+.br
+.RI "\fICalled before cascading\fP"
+.ti -1c
+.RI "int \fBDecrementCascadeLevel\fP ()"
+.br
+.RI "\fICalled after cascading\fP"
+.ti -1c
+.RI "void \fBBeforeLoad\fP ()"
+.br
+.RI "\fICall this before beginning a two-phase load\fP"
+.ti -1c
+.RI "void \fBAfterLoad\fP ()"
+.br
+.RI "\fICall this after finishing a two-phase load\fP"
+.ti -1c
+.RI "object \fBGetOwnerId\fP (string entity, string property, object childObject, IDictionary mergeMap)"
+.br
+.RI "\fISearch the persistence context for an owner for the child object, given a collection role \fP"
+.ti -1c
+.RI "object \fBGetIndexInOwner\fP (string entity, string property, object childObject, IDictionary mergeMap)"
+.br
+.RI "\fISearch the persistence context for an index of the child object, given a collection role \fP"
+.ti -1c
+.RI "void \fBAddNullProperty\fP (\fBEntityKey\fP ownerKey, string propertyName)"
+.br
+.RI "\fIRecord the fact that the association belonging to the keyed entity is null\&. \fP"
+.ti -1c
+.RI "bool \fBIsPropertyNull\fP (\fBEntityKey\fP ownerKey, string propertyName)"
+.br
+.RI "\fIIs the association property belonging to the keyed entity null?\fP"
+.ti -1c
+.RI "void \fBSetReadOnly\fP (object entityOrProxy, bool readOnly)"
+.br
+.RI "\fIChange the read-only status of an entity (or proxy)\&. \fP"
+.ti -1c
+.RI "bool \fBIsReadOnly\fP (object entityOrProxy)"
+.br
+.RI "\fIIs the specified entity (or proxy) read-only? \fP"
+.ti -1c
+.RI "void \fBReplaceDelayedEntityIdentityInsertKeys\fP (\fBEntityKey\fP oldKey, object generatedId)"
+.br
+.ti -1c
+.RI "void \fBAddChildParent\fP (object child, object parent)"
+.br
+.RI "\fIAdd child/parent relation to cache for cascading operations \fP"
+.ti -1c
+.RI "void \fBRemoveChildParent\fP (object child)"
+.br
+.RI "\fIRemove child/parent relation from cache \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsStateless\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBISessionImplementor\fP \fBSession\fP\fC [get]\fP"
+.br
+.RI "\fIGet the session to which this persistence context is bound\&. \fP"
+.ti -1c
+.RI "\fBLoadContexts\fP \fBLoadContexts\fP\fC [get]\fP"
+.br
+.RI "\fIRetrieve this persistence context's managed load context\&. \fP"
+.ti -1c
+.RI "\fBBatchFetchQueue\fP \fBBatchFetchQueue\fP\fC [get]\fP"
+.br
+.RI "\fIGet the \fC\fBBatchFetchQueue\fP\fP, instantiating one if necessary\&. \fP"
+.ti -1c
+.RI "ISet< \fBEntityKey\fP > \fBNullifiableEntityKeys\fP\fC [get]\fP"
+.br
+.RI "\fIRetrieve the set of EntityKeys representing nullifiable references\fP"
+.ti -1c
+.RI "IDictionary< \fBEntityKey\fP, object > \fBEntitiesByKey\fP\fC [get]\fP"
+.br
+.RI "\fIGet the mapping from key value to entity instance\fP"
+.ti -1c
+.RI "IDictionary \fBEntityEntries\fP\fC [get]\fP"
+.br
+.RI "\fIGet the mapping from entity instance to entity entry\fP"
+.ti -1c
+.RI "IDictionary \fBCollectionEntries\fP\fC [get]\fP"
+.br
+.RI "\fIGet the mapping from collection instance to collection entry\fP"
+.ti -1c
+.RI "IDictionary< \fBCollectionKey\fP, 
+.br
+\fBIPersistentCollection\fP > \fBCollectionsByKey\fP\fC [get]\fP"
+.br
+.RI "\fIGet the mapping from collection key to collection instance\fP"
+.ti -1c
+.RI "int \fBCascadeLevel\fP\fC [get]\fP"
+.br
+.RI "\fIHow deep are we cascaded?\fP"
+.ti -1c
+.RI "bool \fBFlushing\fP\fC [get, set]\fP"
+.br
+.RI "\fIIs a flush cycle currently in process?\fP"
+.ti -1c
+.RI "bool \fBDefaultReadOnly\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe read-only status for entities (and proxies) loaded into this persistence context\&. \fP"
+.ti -1c
+.RI "bool \fBHasNonReadOnlyEntities\fP\fC [get]\fP"
+.br
+.RI "\fIFalse if we know for certain that all the entities are read-only\fP"
+.ti -1c
+.RI "bool \fBIsLoadFinished\fP\fC [get]\fP"
+.br
+.RI "\fIIs in a two-phase load? \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Holds the state of the persistence context, including the first-level cache, entries, snapshots, proxies, etc\&. 
+
+
+.PP
+Definition at line 15 of file IPersistenceContext\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.AddChildParent (objectchild, objectparent)"
+
+.PP
+Add child/parent relation to cache for cascading operations 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchild\fP The child\&.
+.br
+\fIparent\fP The parent\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.AddCollectionHolder (\fBIPersistentCollection\fPholder)"
+
+.PP
+Register a \fCPersistentCollection\fP object for an array\&. Associates a holder with an array - MUST be called after loading array, since the array instance is not created until endLoad()\&. 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.AddEntity (\fBEntityKey\fPkey, objectentity)"
+
+.PP
+Add a canonical mapping from entity key to entity instance
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.AddEntity (\fBEntityUniqueKey\fPeuk, objectentity)"
+
+.PP
+Add an entity to the cache by unique key
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "\fBEntityEntry\fP NHibernate\&.Engine\&.IPersistenceContext\&.AddEntity (objectentity, \fBStatus\fPstatus, object[]loadedState, \fBEntityKey\fPentityKey, objectversion, \fBLockMode\fPlockMode, boolexistsInDatabase, \fBIEntityPersister\fPpersister, booldisableVersionIncrement, boollazyPropertiesAreUnfetched)"
+
+.PP
+Adds an entity to the internal caches\&.
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "\fBEntityEntry\fP NHibernate\&.Engine\&.IPersistenceContext\&.AddEntry (objectentity, \fBStatus\fPstatus, object[]loadedState, objectrowId, objectid, objectversion, \fBLockMode\fPlockMode, boolexistsInDatabase, \fBIEntityPersister\fPpersister, booldisableVersionIncrement, boollazyPropertiesAreUnfetched)"
+
+.PP
+Generates an appropriate \fBEntityEntry\fP instance and adds it to the event source's internal caches\&. 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "\fBCollectionEntry\fP NHibernate\&.Engine\&.IPersistenceContext\&.AddInitializedCollection (\fBICollectionPersister\fPpersister, \fBIPersistentCollection\fPcollection, objectid)"
+
+.PP
+add a collection we just pulled out of the cache (does not need initializing)
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.AddInitializedDetachedCollection (\fBICollectionPersister\fPcollectionPersister, \fBIPersistentCollection\fPcollection)"
+
+.PP
+add an (initialized) collection that was created by another session and passed into update() (ie\&. one with a snapshot and existing state on the database) 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.AddNewCollection (\fBICollectionPersister\fPpersister, \fBIPersistentCollection\fPcollection)"
+
+.PP
+Add a new collection (ie\&. a newly created one, just instantiated by the application, with no database state or snapshot) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP The collection to be associated with the persistence context 
+.br
+\fIpersister\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.AddNonLazyCollection (\fBIPersistentCollection\fPcollection)"
+
+.PP
+Register a collection for non-lazy loading at the end of the two-phase load 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.AddNullProperty (\fBEntityKey\fPownerKey, stringpropertyName)"
+
+.PP
+Record the fact that the association belonging to the keyed entity is null\&. 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.AddProxy (\fBEntityKey\fPkey, \fBINHibernateProxy\fPproxy)"
+
+.PP
+Add a proxy to the session cache
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.AddUninitializedCollection (\fBICollectionPersister\fPpersister, \fBIPersistentCollection\fPcollection, objectid)"
+
+.PP
+add a collection we just loaded up (still needs initializing)
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.AddUninitializedDetachedCollection (\fBICollectionPersister\fPpersister, \fBIPersistentCollection\fPcollection)"
+
+.PP
+add a detached uninitialized collection
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.AddUnownedCollection (\fBCollectionKey\fPkey, \fBIPersistentCollection\fPcollection)"
+
+.PP
+Add a collection which has no owner loaded
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.AfterLoad ()"
+
+.PP
+Call this after finishing a two-phase load
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.AfterTransactionCompletion ()"
+
+.PP
+Called after transactions end
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.BeforeLoad ()"
+
+.PP
+Call this before beginning a two-phase load
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.CheckUniqueness (\fBEntityKey\fPkey, objectobj)"
+
+.PP
+Attempts to check whether the given key represents an entity already loaded within the current session\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP The entity reference against which to perform the uniqueness check\&.
+.br
+\fIkey\fP The entity key\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.Clear ()"
+
+.PP
+Clear the state of the persistence context
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "bool NHibernate\&.Engine\&.IPersistenceContext\&.ContainsCollection (\fBIPersistentCollection\fPcollection)"
+
+.PP
+Is the given collection associated with this persistence context?
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "bool NHibernate\&.Engine\&.IPersistenceContext\&.ContainsEntity (\fBEntityKey\fPkey)"
+
+.PP
+Is there an entity with the given key in the persistence context
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "bool NHibernate\&.Engine\&.IPersistenceContext\&.ContainsProxy (\fBINHibernateProxy\fPproxy)"
+
+.PP
+Is the given proxy associated with this persistence context?
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "int NHibernate\&.Engine\&.IPersistenceContext\&.DecrementCascadeLevel ()"
+
+.PP
+Called after cascading
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object [] NHibernate\&.Engine\&.IPersistenceContext\&.GetCachedDatabaseSnapshot (\fBEntityKey\fPkey)"
+
+.PP
+Retrieve the cached database snapshot for the requested entity key\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The entity key for which to retrieve the cached snapshot 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The cached snapshot 
+.RE
+.PP
+.PP
+.PD 0
+.PP
+This differs from \fBGetDatabaseSnapshot\fP is two important respects: no snapshot is obtained from the database if not already cached an entry of NO_ROW here is interpreted as an exception 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "\fBIPersistentCollection\fP NHibernate\&.Engine\&.IPersistenceContext\&.GetCollection (\fBCollectionKey\fPcollectionKey)"
+
+.PP
+Get the collection instance associated with the \fC\fBCollectionKey\fP\fP
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "\fBCollectionEntry\fP NHibernate\&.Engine\&.IPersistenceContext\&.GetCollectionEntry (\fBIPersistentCollection\fPcoll)"
+
+.PP
+Get the collection entry for a persistent collection
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "\fBCollectionEntry\fP NHibernate\&.Engine\&.IPersistenceContext\&.GetCollectionEntryOrNull (objectcollection)"
+
+.PP
+Get the collection entry for a collection passed to filter, which might be a collection wrapper, an array, or an unwrapped collection\&. Return null if there is no entry\&. 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "\fBIPersistentCollection\fP NHibernate\&.Engine\&.IPersistenceContext\&.GetCollectionHolder (objectarray)"
+
+.PP
+Get the \fCPersistentCollection\fP object for an array
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object NHibernate\&.Engine\&.IPersistenceContext\&.GetCollectionOwner (objectkey, \fBICollectionPersister\fPcollectionPersister)"
+
+.PP
+Get the entity that owns this persistent collection
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object [] NHibernate\&.Engine\&.IPersistenceContext\&.GetDatabaseSnapshot (objectid, \fBIEntityPersister\fPpersister)"
+
+.PP
+Get the current state of the entity as known to the underlying database, or null if there is no corresponding row 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object NHibernate\&.Engine\&.IPersistenceContext\&.GetEntity (\fBEntityKey\fPkey)"
+
+.PP
+Get the entity instance associated with the given \fC\fBEntityKey\fP\fP 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object NHibernate\&.Engine\&.IPersistenceContext\&.GetEntity (\fBEntityUniqueKey\fPeuk)"
+
+.PP
+Get an entity cached by unique key
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "\fBEntityEntry\fP NHibernate\&.Engine\&.IPersistenceContext\&.GetEntry (objectentity)"
+
+.PP
+Retrieve the \fBEntityEntry\fP representation of the given entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity for which to locate the \fBEntityEntry\fP\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBEntityEntry\fP for the given entity\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object NHibernate\&.Engine\&.IPersistenceContext\&.GetIndexInOwner (stringentity, stringproperty, objectchildObject, IDictionarymergeMap)"
+
+.PP
+Search the persistence context for an index of the child object, given a collection role 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object NHibernate\&.Engine\&.IPersistenceContext\&.GetLoadedCollectionOwnerIdOrNull (\fBIPersistentCollection\fPcollection)"
+
+.PP
+Get the ID for the entity that owned this persistent collection when it was loaded 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP The persistent collection 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the owner ID if available from the collection's loaded key; otherwise, returns null 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object NHibernate\&.Engine\&.IPersistenceContext\&.GetLoadedCollectionOwnerOrNull (\fBIPersistentCollection\fPcollection)"
+
+.PP
+Get the entity that owned this persistent collection when it was loaded 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP The persistent collection 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The owner if its entity ID is available from the collection's loaded key and the owner entity is in the persistence context; otherwise, returns null 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object [] NHibernate\&.Engine\&.IPersistenceContext\&.GetNaturalIdSnapshot (objectid, \fBIEntityPersister\fPpersister)"
+
+.PP
+Get the values of the natural id fields as known to the underlying database, or null if the entity has no natural id or there is no corresponding row\&. 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object NHibernate\&.Engine\&.IPersistenceContext\&.GetOwnerId (stringentity, stringproperty, objectchildObject, IDictionarymergeMap)"
+
+.PP
+Search the persistence context for an owner for the child object, given a collection role 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object NHibernate\&.Engine\&.IPersistenceContext\&.GetProxy (\fBEntityKey\fPkey)"
+
+.PP
+Get an existing proxy by key
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object NHibernate\&.Engine\&.IPersistenceContext\&.GetSnapshot (\fBIPersistentCollection\fPcoll)"
+
+.PP
+Get the snapshot of the pre-flush collection state
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "int NHibernate\&.Engine\&.IPersistenceContext\&.IncrementCascadeLevel ()"
+
+.PP
+Called before cascading
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.InitializeNonLazyCollections ()"
+
+.PP
+Force initialization of all non-lazy collections encountered during the current two-phase load (actually, this is a no-op, unless this is the 'outermost' load) 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "bool NHibernate\&.Engine\&.IPersistenceContext\&.IsEntryFor (objectentity)"
+
+.PP
+Is there an \fBEntityEntry\fP for this instance?
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "bool NHibernate\&.Engine\&.IPersistenceContext\&.IsPropertyNull (\fBEntityKey\fPownerKey, stringpropertyName)"
+
+.PP
+Is the association property belonging to the keyed entity null?
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "bool NHibernate\&.Engine\&.IPersistenceContext\&.IsReadOnly (objectentityOrProxy)"
+
+.PP
+Is the specified entity (or proxy) read-only? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityOrProxy\fP An entity (or \fBNHibernate\&.Proxy\&.INHibernateProxy\fP)
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the entity or proxy is read-only, otherwise \fCfalse\fP\&. 
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBIPersistenceContext\&.DefaultReadOnly\fP, \fBIPersistenceContext\&.SetReadOnly(object, bool)\fP
+.PP
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object NHibernate\&.Engine\&.IPersistenceContext\&.NarrowProxy (\fBINHibernateProxy\fPproxy, \fBIEntityPersister\fPpersister, \fBEntityKey\fPkey, objectobj)"
+
+.PP
+If the existing proxy is insufficiently 'narrow' (derived), instantiate a new proxy and overwrite the registration of the old one\&. This breaks == and occurs only for 'class' proxies rather than 'interface' proxies\&. Also init the proxy to point to the given target implementation if necessary\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproxy\fP The proxy instance to be narrowed\&. 
+.br
+\fIpersister\fP The persister for the proxied entity\&. 
+.br
+\fIkey\fP The internal cache key for the proxied entity\&. 
+.br
+\fIobj\fP (optional) the actual proxied entity instance\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An appropriately narrowed instance\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object NHibernate\&.Engine\&.IPersistenceContext\&.ProxyFor (\fBIEntityPersister\fPpersister, \fBEntityKey\fPkey, objectimpl)"
+
+.PP
+Return the existing proxy associated with the given \fC\fBEntityKey\fP\fP, or the third argument (the entity associated with the key) if no proxy exists\&. Init the proxy to the target implementation, if necessary\&. 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object NHibernate\&.Engine\&.IPersistenceContext\&.ProxyFor (objectimpl)"
+
+.PP
+Return the existing proxy associated with the given \fC\fBEntityKey\fP\fP, or the argument (the entity associated with the key) if no proxy exists\&. (slower than the form above) 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "bool NHibernate\&.Engine\&.IPersistenceContext\&.ReassociateIfUninitializedProxy (objectvalue)"
+
+.PP
+Takes the given object and, if it represents a proxy, reassociates it with this event source\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The possible proxy to be reassociated\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Whether the passed value represented an actual proxy which got initialized\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.ReassociateProxy (objectvalue, objectid)"
+
+.PP
+If a deleted entity instance is re-saved, and it has a proxy, we need to reset the identifier of the proxy 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.RemoveChildParent (objectchild)"
+
+.PP
+Remove child/parent relation from cache 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchild\fP The child\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "\fBIPersistentCollection\fP NHibernate\&.Engine\&.IPersistenceContext\&.RemoveCollectionHolder (objectarray)"
+
+.PP
+Remove the mapping of collection to holder during eviction of the owning entity 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object NHibernate\&.Engine\&.IPersistenceContext\&.RemoveEntity (\fBEntityKey\fPkey)"
+
+.PP
+Remove an entity from the session cache, also clear up other state associated with the entity, all except for the \fC\fBEntityEntry\fP\fP 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "\fBEntityEntry\fP NHibernate\&.Engine\&.IPersistenceContext\&.RemoveEntry (objectentity)"
+
+.PP
+Remove an entity entry from the session cache
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object NHibernate\&.Engine\&.IPersistenceContext\&.RemoveProxy (\fBEntityKey\fPkey)"
+
+.PP
+Remove a proxy from the session cache
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.SetEntryStatus (\fBEntityEntry\fPentry, \fBStatus\fPstatus)"
+
+.PP
+Set the status of an entry
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "void NHibernate\&.Engine\&.IPersistenceContext\&.SetReadOnly (objectentityOrProxy, boolreadOnly)"
+
+.PP
+Change the read-only status of an entity (or proxy)\&. Read-only entities can be modified, but changes are not persisted\&. They are not dirty-checked and snapshots of persistent state are not maintained\&. 
+.PP
+Immutable entities cannot be made read-only\&. 
+.PP
+To set the \fIdefault\fP read-only setting for entities and proxies that are loaded into the persistence context, see \fBIPersistenceContext\&.DefaultReadOnly\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityOrProxy\fP An entity (or \fBNHibernate\&.Proxy\&.INHibernateProxy\fP)\&.
+.br
+\fIreadOnly\fP If \fCtrue\fP, the entity or proxy is made read-only; if \fCfalse\fP, it is made modifiable\&.
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBIPersistenceContext\&.DefaultReadOnly\fP, \fBIPersistenceContext\&.IsReadOnly(object)\fP
+.PP
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object NHibernate\&.Engine\&.IPersistenceContext\&.Unproxy (objectmaybeProxy)"
+
+.PP
+Get the entity instance underlying the given proxy, throwing an exception if the proxy is uninitialized\&. If the given object is not a proxy, simply return the argument\&. 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "object NHibernate\&.Engine\&.IPersistenceContext\&.UnproxyAndReassociate (objectmaybeProxy)"
+
+.PP
+Possibly unproxy the given reference and reassociate it with the current session\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaybeProxy\fP The reference to be unproxied if it currently represents a proxy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The unproxied instance\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SS "\fBIPersistentCollection\fP NHibernate\&.Engine\&.IPersistenceContext\&.UseUnownedCollection (\fBCollectionKey\fPkey)"
+
+.PP
+Get and remove a collection whose owner is not yet loaded, when its owner is being loaded 
+.PP
+Implemented in \fBNHibernate\&.Engine\&.StatefulPersistenceContext\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBBatchFetchQueue\fP NHibernate\&.Engine\&.IPersistenceContext\&.BatchFetchQueue\fC [get]\fP"
+
+.PP
+Get the \fC\fBBatchFetchQueue\fP\fP, instantiating one if necessary\&. 
+.PP
+Definition at line 32 of file IPersistenceContext\&.cs\&.
+.SS "int NHibernate\&.Engine\&.IPersistenceContext\&.CascadeLevel\fC [get]\fP"
+
+.PP
+How deep are we cascaded?
+.PP
+Definition at line 50 of file IPersistenceContext\&.cs\&.
+.SS "IDictionary NHibernate\&.Engine\&.IPersistenceContext\&.CollectionEntries\fC [get]\fP"
+
+.PP
+Get the mapping from collection instance to collection entry
+.PP
+Definition at line 44 of file IPersistenceContext\&.cs\&.
+.SS "IDictionary<\fBCollectionKey\fP, \fBIPersistentCollection\fP> NHibernate\&.Engine\&.IPersistenceContext\&.CollectionsByKey\fC [get]\fP"
+
+.PP
+Get the mapping from collection key to collection instance
+.PP
+Definition at line 47 of file IPersistenceContext\&.cs\&.
+.SS "bool NHibernate\&.Engine\&.IPersistenceContext\&.DefaultReadOnly\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The read-only status for entities (and proxies) loaded into this persistence context\&. When a proxy is initialized, the loaded entity will have the same read-only setting as the uninitialized proxy has, regardless of the persistence context's current setting\&. 
+.PP
+To change the read-only setting for a particular entity or proxy that is already in the current persistence context, use \fBIPersistenceContext\&.SetReadOnly(object, bool)\fP\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBIPersistenceContext\&.IsReadOnly(object)\fP, \fBIPersistenceContext\&.SetReadOnly(object, bool)\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 72 of file IPersistenceContext\&.cs\&.
+.SS "IDictionary<\fBEntityKey\fP, object> NHibernate\&.Engine\&.IPersistenceContext\&.EntitiesByKey\fC [get]\fP"
+
+.PP
+Get the mapping from key value to entity instance
+.PP
+Definition at line 38 of file IPersistenceContext\&.cs\&.
+.SS "IDictionary NHibernate\&.Engine\&.IPersistenceContext\&.EntityEntries\fC [get]\fP"
+
+.PP
+Get the mapping from entity instance to entity entry
+.PP
+Definition at line 41 of file IPersistenceContext\&.cs\&.
+.SS "bool NHibernate\&.Engine\&.IPersistenceContext\&.Flushing\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Is a flush cycle currently in process?Called before and after the flushcycle
+.PP
+Definition at line 54 of file IPersistenceContext\&.cs\&.
+.SS "bool NHibernate\&.Engine\&.IPersistenceContext\&.HasNonReadOnlyEntities\fC [get]\fP"
+
+.PP
+False if we know for certain that all the entities are read-only
+.PP
+Definition at line 87 of file IPersistenceContext\&.cs\&.
+.SS "bool NHibernate\&.Engine\&.IPersistenceContext\&.IsLoadFinished\fC [get]\fP"
+
+.PP
+Is in a two-phase load? 
+.PP
+Definition at line 397 of file IPersistenceContext\&.cs\&.
+.SS "\fBLoadContexts\fP NHibernate\&.Engine\&.IPersistenceContext\&.LoadContexts\fC [get]\fP"
+
+.PP
+Retrieve this persistence context's managed load context\&. 
+.PP
+Definition at line 27 of file IPersistenceContext\&.cs\&.
+.SS "ISet<\fBEntityKey\fP> NHibernate\&.Engine\&.IPersistenceContext\&.NullifiableEntityKeys\fC [get]\fP"
+
+.PP
+Retrieve the set of EntityKeys representing nullifiable references
+.PP
+Definition at line 35 of file IPersistenceContext\&.cs\&.
+.SS "\fBISessionImplementor\fP NHibernate\&.Engine\&.IPersistenceContext\&.Session\fC [get]\fP"
+
+.PP
+Get the session to which this persistence context is bound\&. 
+.PP
+Definition at line 22 of file IPersistenceContext\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

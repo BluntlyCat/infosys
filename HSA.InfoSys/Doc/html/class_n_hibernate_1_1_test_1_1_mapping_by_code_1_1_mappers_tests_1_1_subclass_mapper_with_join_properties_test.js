@@ -1,0 +1,7 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_subclass_mapper_with_join_properties_test =
+[
+    [ "WhenDefineJoinThenAddJoinWithTableNameAndKey", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_subclass_mapper_with_join_properties_test.html#a673937dfd88a5a8d5fd25b6b80a6c796", null ],
+    [ "WhenDefineJoinThenCallJoinMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_subclass_mapper_with_join_properties_test.html#a3e7093ff2ca4497c655eab1d49aa234f", null ],
+    [ "WhenDefineMoreJoinsThenTableNameShouldBeUnique", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_subclass_mapper_with_join_properties_test.html#ab9bb8745569a39505c81453963323ec2", null ],
+    [ "WhenDefineMoreJoinsWithSameIdThenUseSameJoinMapperInstance", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_subclass_mapper_with_join_properties_test.html#aae2dd2ebf387eb00ace07fdee1a383ce", null ]
+];

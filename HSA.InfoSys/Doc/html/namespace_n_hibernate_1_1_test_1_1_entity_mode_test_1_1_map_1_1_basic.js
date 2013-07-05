@@ -1,0 +1,4 @@
+var namespace_n_hibernate_1_1_test_1_1_entity_mode_test_1_1_map_1_1_basic =
+[
+    [ "DynamicClassFixture", "class_n_hibernate_1_1_test_1_1_entity_mode_test_1_1_map_1_1_basic_1_1_dynamic_class_fixture.html", "class_n_hibernate_1_1_test_1_1_entity_mode_test_1_1_map_1_1_basic_1_1_dynamic_class_fixture" ]
+];

@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2318_1_1_extended_linqto_hql_generators_registry =
+[
+    [ "ExtendedLinqtoHqlGeneratorsRegistry", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2318_1_1_extended_linqto_hql_generators_registry.html#a4ff745981295f0f87125706aa1302887", null ]
+];

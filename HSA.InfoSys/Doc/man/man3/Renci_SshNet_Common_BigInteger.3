@@ -1,0 +1,2741 @@
+.TH "Renci.SshNet.Common.BigInteger" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Common.BigInteger \- 
+.PP
+Represents an arbitrarily large signed integer\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IComparable, IFormattable, IComparable< BigInteger >, and IEquatable< BigInteger >\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBigInteger\fP (short sign, uint[] data)"
+.br
+.RI "\fIInitializes a new instance of the \fBBigInteger\fP struct\&. \fP"
+.ti -1c
+.RI "\fBBigInteger\fP (int value)"
+.br
+.RI "\fIInitializes a new instance of the \fBBigInteger\fP struct\&. \fP"
+.ti -1c
+.RI "\fBBigInteger\fP (uint value)"
+.br
+.RI "\fIInitializes a new instance of the \fBBigInteger\fP struct\&. \fP"
+.ti -1c
+.RI "\fBBigInteger\fP (long value)"
+.br
+.RI "\fIInitializes a new instance of the \fBBigInteger\fP struct\&. \fP"
+.ti -1c
+.RI "\fBBigInteger\fP (ulong value)"
+.br
+.RI "\fIInitializes a new instance of the \fBBigInteger\fP struct\&. \fP"
+.ti -1c
+.RI "\fBBigInteger\fP (double value)"
+.br
+.RI "\fIInitializes a new instance of the \fBBigInteger\fP struct\&. \fP"
+.ti -1c
+.RI "\fBBigInteger\fP (float value)"
+.br
+.RI "\fIInitializes a new instance of the \fBBigInteger\fP struct\&. \fP"
+.ti -1c
+.RI "\fBBigInteger\fP (decimal value)"
+.br
+.RI "\fIInitializes a new instance of the \fBBigInteger\fP struct\&. \fP"
+.ti -1c
+.RI "\fBBigInteger\fP (byte[] value)"
+.br
+.RI "\fIInitializes a new instance of the \fBBigInteger\fP struct\&. \fP"
+.ti -1c
+.RI "int \fBCompareTo\fP (object obj)"
+.br
+.RI "\fICompares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object\&. \fP"
+.ti -1c
+.RI "int \fBCompareTo\fP (\fBBigInteger\fP other)"
+.br
+.RI "\fICompares this instance to a second System\&.Numerics\&.BigInteger and returns an integer that indicates whether the value of this instance is less than, equal to, or greater than the value of the specified object\&. \fP"
+.ti -1c
+.RI "int \fBCompareTo\fP (ulong other)"
+.br
+.RI "\fICompares this instance to an unsigned 64-bit integer and returns an integer that indicates whether the value of this instance is less than, equal to, or greater than the value of the unsigned 64-bit integer\&. \fP"
+.ti -1c
+.RI "bool \fBEquals\fP (\fBBigInteger\fP other)"
+.br
+.RI "\fIReturns a value that indicates whether the current instance and a specified System\&.Numerics\&.BigInteger object have the same value\&. \fP"
+.ti -1c
+.RI "bool \fBEquals\fP (long other)"
+.br
+.RI "\fIReturns a value that indicates whether the current instance and a signed 64-bit integer have the same value\&. \fP"
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.RI "\fIReturns a value that indicates whether the current instance and a specified object have the same value\&. \fP"
+.ti -1c
+.RI "bool \fBEquals\fP (ulong other)"
+.br
+.RI "\fIReturns a value that indicates whether the current instance and an unsigned 64-bit integer have the same value\&. \fP"
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.RI "\fIReturns the hash code for the current System\&.Numerics\&.BigInteger object\&. \fP"
+.ti -1c
+.RI "byte[] \fBToByteArray\fP ()"
+.br
+.RI "\fIConverts a System\&.Numerics\&.BigInteger value to a byte array\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIConverts the numeric value of the current System\&.Numerics\&.BigInteger object to its equivalent string representation\&. \fP"
+.ti -1c
+.RI "string \fBToString\fP (IFormatProvider provider)"
+.br
+.RI "\fIConverts the numeric value of the current System\&.Numerics\&.BigInteger object to its equivalent string representation by using the specified culture-specific formatting information\&. \fP"
+.ti -1c
+.RI "string \fBToString\fP (string format)"
+.br
+.RI "\fIConverts the numeric value of the current System\&.Numerics\&.BigInteger object to its equivalent string representation by using the specified format\&. \fP"
+.ti -1c
+.RI "string \fBToString\fP (string format, IFormatProvider provider)"
+.br
+.RI "\fIConverts the numeric value of the current System\&.Numerics\&.BigInteger object to its equivalent string representation by using the specified format and culture-specific format information\&. \fP"
+.ti -1c
+.RI "int \fBCompareTo\fP (long other)"
+.br
+.RI "\fICompares this instance to a signed 64-bit integer and returns an integer that indicates whether the value of this instance is less than, equal to, or greater than the value of the signed 64-bit integer\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBoperator int\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fIDefines an explicit conversion of a System\&.Numerics\&.BigInteger object to a 32-bit signed integer value\&. \fP"
+.ti -1c
+.RI "static \fBoperator uint\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fIDefines an explicit conversion of a System\&.Numerics\&.BigInteger object to an unsigned 32-bit integer value\&. \fP"
+.ti -1c
+.RI "static \fBoperator short\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fIDefines an explicit conversion of a System\&.Numerics\&.BigInteger object to a 16-bit signed integer value\&. \fP"
+.ti -1c
+.RI "static \fBoperator ushort\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fIDefines an explicit conversion of a System\&.Numerics\&.BigInteger object to an unsigned 16-bit integer value\&. \fP"
+.ti -1c
+.RI "static \fBoperator byte\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fIDefines an explicit conversion of a System\&.Numerics\&.BigInteger object to an unsigned byte value\&. \fP"
+.ti -1c
+.RI "static \fBoperator sbyte\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fIDefines an explicit conversion of a System\&.Numerics\&.BigInteger object to a signed 8-bit value\&. \fP"
+.ti -1c
+.RI "static \fBoperator long\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fIDefines an explicit conversion of a System\&.Numerics\&.BigInteger object to a 64-bit signed integer value\&. \fP"
+.ti -1c
+.RI "static \fBoperator ulong\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fIDefines an explicit conversion of a System\&.Numerics\&.BigInteger object to an unsigned 64-bit integer value\&. \fP"
+.ti -1c
+.RI "static \fBoperator double\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fIDefines an explicit conversion of a System\&.Numerics\&.BigInteger object to a System\&.Double value\&. \fP"
+.ti -1c
+.RI "static \fBoperator float\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fIDefines an explicit conversion of a System\&.Numerics\&.BigInteger object to a single-precision floating-point value\&. \fP"
+.ti -1c
+.RI "static \fBoperator decimal\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fIDefines an explicit conversion of a System\&.Numerics\&.BigInteger object to a System\&.Decimal value\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator BigInteger\fP (int value)"
+.br
+.RI "\fIDefines an implicit conversion of a signed 32-bit integer to a System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator BigInteger\fP (uint value)"
+.br
+.RI "\fIDefines an implicit conversion of a 32-bit unsigned integer to a System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator BigInteger\fP (short value)"
+.br
+.RI "\fIDefines an implicit conversion of a signed 16-bit integer to a System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator BigInteger\fP (ushort value)"
+.br
+.RI "\fIDefines an implicit conversion of a 16-bit unsigned integer to a System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator BigInteger\fP (byte value)"
+.br
+.RI "\fIDefines an implicit conversion of an unsigned byte to a System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator BigInteger\fP (sbyte value)"
+.br
+.RI "\fIDefines an implicit conversion of an 8-bit signed integer to a System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator BigInteger\fP (long value)"
+.br
+.RI "\fIDefines an implicit conversion of a signed 64-bit integer to a System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator BigInteger\fP (ulong value)"
+.br
+.RI "\fIDefines an implicit conversion of a 64-bit unsigned integer to a System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static \fBoperator BigInteger\fP (double value)"
+.br
+.RI "\fIDefines an explicit conversion of a System\&.Double value to a System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static \fBoperator BigInteger\fP (float value)"
+.br
+.RI "\fIDefines an explicit conversion of a System\&.Single object to a System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static \fBoperator BigInteger\fP (decimal value)"
+.br
+.RI "\fIDefines an explicit conversion of a System\&.Decimal object to a System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBoperator+\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fIAdds the values of two specified \fBBigInteger\fP objects\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBoperator-\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fISubtracts a \fBBigInteger\fP value from another \fBBigInteger\fP value\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBoperator*\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fIMultiplies two specified \fBBigInteger\fP values\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBoperator/\fP (\fBBigInteger\fP dividend, \fBBigInteger\fP divisor)"
+.br
+.RI "\fIDivides a specified \fBBigInteger\fP value by another specified \fBBigInteger\fP value by using integer division\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBoperator%\fP (\fBBigInteger\fP dividend, \fBBigInteger\fP divisor)"
+.br
+.RI "\fIReturns the remainder that results from division with two specified \fBBigInteger\fP values\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBoperator-\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fINegates a specified \fBBigInteger\fP value\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBoperator+\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fIReturns the value of the \fBBigInteger\fP operand\&. (The sign of the operand is unchanged\&.) \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBoperator++\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fIIncrements a \fBBigInteger\fP value by 1\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBoperator--\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fIDecrements a \fBBigInteger\fP value by 1\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBoperator&\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fIPerforms a bitwise And operation on two \fBBigInteger\fP values\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBoperator|\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fIPerforms a bitwise Or operation on two \fBBigInteger\fP values\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBoperator^\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fIPerforms a bitwise exclusive Or (XOr) operation on two \fBBigInteger\fP values\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBoperator~\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fIReturns the bitwise one's complement of a \fBBigInteger\fP value\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBoperator<<\fP (\fBBigInteger\fP value, int shift)"
+.br
+.RI "\fIShifts a \fBBigInteger\fP value a specified number of bits to the left\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBoperator>>\fP (\fBBigInteger\fP value, int shift)"
+.br
+.RI "\fIShifts a System\&.Numerics\&.BigInteger value a specified number of bits to the right\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator<\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns a value that indicates whether a \fBBigInteger\fP value is less than another \fBBigInteger\fP value\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator<\fP (\fBBigInteger\fP left, long right)"
+.br
+.RI "\fIReturns a value that indicates whether a \fBBigInteger\fP value is less than a 64-bit signed integer\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator<\fP (long left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns a value that indicates whether a 64-bit signed integer is less than a \fBBigInteger\fP value\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator<\fP (\fBBigInteger\fP left, ulong right)"
+.br
+.RI "\fIReturns a value that indicates whether a \fBBigInteger\fP value is less than a 64-bit unsigned integer\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator<\fP (ulong left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns a value that indicates whether a 64-bit unsigned integer is less than a \fBBigInteger\fP value\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator<=\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns a value that indicates whether a System\&.Numerics\&.BigInteger value is less than or equal to another System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator<=\fP (\fBBigInteger\fP left, long right)"
+.br
+.RI "\fIReturns a value that indicates whether a System\&.Numerics\&.BigInteger value is less than or equal to a 64-bit signed integer\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator<=\fP (long left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns a value that indicates whether a 64-bit signed integer is less than or equal to a System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator<=\fP (\fBBigInteger\fP left, ulong right)"
+.br
+.RI "\fIReturns a value that indicates whether a System\&.Numerics\&.BigInteger value is less than or equal to a 64-bit unsigned integer\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator<=\fP (ulong left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns a value that indicates whether a 64-bit unsigned integer is less than or equal to a System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator>\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns a value that indicates whether a System\&.Numerics\&.BigInteger value is greater than another System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator>\fP (\fBBigInteger\fP left, long right)"
+.br
+.RI "\fIReturns a value that indicates whether a System\&.Numerics\&.BigInteger is greater than a 64-bit signed integer value\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator>\fP (long left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns a value that indicates whether a 64-bit signed integer is greater than a System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator>\fP (\fBBigInteger\fP left, ulong right)"
+.br
+.RI "\fIReturns a value that indicates whether a System\&.Numerics\&.BigInteger value is greater than a 64-bit unsigned integer\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator>\fP (ulong left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns a value that indicates whether a System\&.Numerics\&.BigInteger value is greater than a 64-bit unsigned integer\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator>=\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns a value that indicates whether a System\&.Numerics\&.BigInteger value is greater than or equal to another System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator>=\fP (\fBBigInteger\fP left, long right)"
+.br
+.RI "\fIReturns a value that indicates whether a System\&.Numerics\&.BigInteger value is greater than or equal to a 64-bit signed integer value\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator>=\fP (long left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns a value that indicates whether a 64-bit signed integer is greater than or equal to a System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator>=\fP (\fBBigInteger\fP left, ulong right)"
+.br
+.RI "\fIReturns a value that indicates whether a System\&.Numerics\&.BigInteger value is greater than or equal to a 64-bit unsigned integer value\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator>=\fP (ulong left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns a value that indicates whether a 64-bit unsigned integer is greater than or equal to a System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator==\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns a value that indicates whether the values of two System\&.Numerics\&.BigInteger objects are equal\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator==\fP (\fBBigInteger\fP left, long right)"
+.br
+.RI "\fIReturns a value that indicates whether a System\&.Numerics\&.BigInteger value and a signed long integer value are equal\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator==\fP (long left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns a value that indicates whether a signed long integer value and a System\&.Numerics\&.BigInteger value are equal\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator==\fP (\fBBigInteger\fP left, ulong right)"
+.br
+.RI "\fIReturns a value that indicates whether a System\&.Numerics\&.BigInteger value and an unsigned long integer value are equal\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator==\fP (ulong left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns a value that indicates whether an unsigned long integer value and a System\&.Numerics\&.BigInteger value are equal\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator!=\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns a value that indicates whether two \fBBigInteger\fP objects have different values\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator!=\fP (\fBBigInteger\fP left, long right)"
+.br
+.RI "\fIReturns a value that indicates whether a \fBBigInteger\fP value and a 64-bit signed integer are not equal\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator!=\fP (long left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns a value that indicates whether a 64-bit signed integer and a \fBBigInteger\fP value are not equal\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator!=\fP (\fBBigInteger\fP left, ulong right)"
+.br
+.RI "\fIReturns a value that indicates whether a \fBBigInteger\fP value and a 64-bit unsigned integer are not equal\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator!=\fP (ulong left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns a value that indicates whether a 64-bit unsigned integer and a \fBBigInteger\fP value are not equal\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBAbs\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fIGets the absolute value of a System\&.Numerics\&.BigInteger object\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBAdd\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fIAdds two System\&.Numerics\&.BigInteger values and returns the result\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBRandom\fP (int bitLength)"
+.br
+.RI "\fIGenerates random \fBBigInteger\fP number \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBDivide\fP (\fBBigInteger\fP dividend, \fBBigInteger\fP divisor)"
+.br
+.RI "\fIDivides one System\&.Numerics\&.BigInteger value by another and returns the result\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBDivRem\fP (\fBBigInteger\fP dividend, \fBBigInteger\fP divisor, out \fBBigInteger\fP remainder)"
+.br
+.RI "\fIDivides one System\&.Numerics\&.BigInteger value by another, returns the result, and returns the remainder in an output parameter\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBGreatestCommonDivisor\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fIFinds the greatest common divisor of two System\&.Numerics\&.BigInteger values\&. \fP"
+.ti -1c
+.RI "static double \fBLog\fP (\fBBigInteger\fP value, Double baseValue)"
+.br
+.RI "\fIReturns the logarithm of a specified number in a specified base\&. \fP"
+.ti -1c
+.RI "static double \fBLog\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fIReturns the natural (base e) logarithm of a specified number\&. \fP"
+.ti -1c
+.RI "static double \fBLog10\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fIReturns the base 10 logarithm of a specified number\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBMax\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns the larger of two System\&.Numerics\&.BigInteger values\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBMin\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns the smaller of two System\&.Numerics\&.BigInteger values\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBModPow\fP (\fBBigInteger\fP value, \fBBigInteger\fP exponent, \fBBigInteger\fP modulus)"
+.br
+.RI "\fIPerforms modulus division on a number raised to the power of another number\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBModInverse\fP (\fBBigInteger\fP bi, \fBBigInteger\fP modulus)"
+.br
+.RI "\fIMods the inverse\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBPositiveMod\fP (\fBBigInteger\fP dividend, \fBBigInteger\fP divisor)"
+.br
+.RI "\fIReturns positive remainder that results from division with two specified \fBBigInteger\fP values\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBMultiply\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fIReturns the product of two System\&.Numerics\&.BigInteger values\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBNegate\fP (\fBBigInteger\fP value)"
+.br
+.RI "\fINegates a specified System\&.Numerics\&.BigInteger value\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBParse\fP (string value, System\&.Globalization\&.NumberStyles style, IFormatProvider provider)"
+.br
+.RI "\fIConverts the string representation of a number in a specified style and culture-specific format to its \fBBigInteger\fP equivalent\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBParse\fP (string value, IFormatProvider provider)"
+.br
+.RI "\fIConverts the string representation of a number in a specified culture-specific format to its System\&.Numerics\&.BigInteger equivalent\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBParse\fP (string value, NumberStyles style)"
+.br
+.RI "\fIConverts the string representation of a number in a specified style to its System\&.Numerics\&.BigInteger equivalent\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBPow\fP (\fBBigInteger\fP value, int exponent)"
+.br
+.RI "\fIRaises a System\&.Numerics\&.BigInteger value to the power of a specified value\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBRemainder\fP (\fBBigInteger\fP dividend, \fBBigInteger\fP divisor)"
+.br
+.RI "\fIPerforms integer division on two System\&.Numerics\&.BigInteger values and returns the remainder\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBSubtract\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fISubtracts one System\&.Numerics\&.BigInteger value from another and returns the result\&. \fP"
+.ti -1c
+.RI "static bool \fBTryParse\fP (string value, System\&.Globalization\&.NumberStyles style, CultureInfo cultureInfo, out \fBBigInteger\fP result)"
+.br
+.RI "\fITries to convert the string representation of a number in a specified style and culture-specific format to its System\&.Numerics\&.BigInteger equivalent, and returns a value that indicates whether the conversion succeeded\&. \fP"
+.ti -1c
+.RI "static bool \fBTryParse\fP (string value, out \fBBigInteger\fP result)"
+.br
+.RI "\fITries to convert the string representation of a number to its System\&.Numerics\&.BigInteger equivalent, and returns a value that indicates whether the conversion succeeded\&. \fP"
+.ti -1c
+.RI "static int \fBCompare\fP (\fBBigInteger\fP left, \fBBigInteger\fP right)"
+.br
+.RI "\fICompares two System\&.Numerics\&.BigInteger values and returns an integer that indicates whether the first value is less than, equal to, or greater than the second value\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBBitLength\fP\fC [get]\fP"
+.br
+.RI "\fIGets number of bits used by the number\&. \fP"
+.ti -1c
+.RI "bool \fBIsEven\fP\fC [get]\fP"
+.br
+.RI "\fIIndicates whether the value of the current System\&.Numerics\&.BigInteger object is an even number\&. \fP"
+.ti -1c
+.RI "bool \fBIsOne\fP\fC [get]\fP"
+.br
+.RI "\fIIndicates whether the value of the current System\&.Numerics\&.BigInteger object is System\&.Numerics\&.BigInteger\&.One\&. \fP"
+.ti -1c
+.RI "bool \fBIsPowerOfTwo\fP\fC [get]\fP"
+.br
+.RI "\fIIndicates whether the value of the current System\&.Numerics\&.BigInteger object is a power of two\&. \fP"
+.ti -1c
+.RI "bool \fBIsZero\fP\fC [get]\fP"
+.br
+.RI "\fIIndicates whether the value of the current System\&.Numerics\&.BigInteger object is System\&.Numerics\&.BigInteger\&.Zero\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBMinusOne\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value that represents the number negative one (-1)\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBOne\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value that represents the number one (1)\&. \fP"
+.ti -1c
+.RI "int \fBSign\fP\fC [get]\fP"
+.br
+.RI "\fIGets a number that indicates the sign (negative, positive, or zero) of the current System\&.Numerics\&.BigInteger object\&. \fP"
+.ti -1c
+.RI "static \fBBigInteger\fP \fBZero\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value that represents the number 0 (zero)\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents an arbitrarily large signed integer\&. 
+
+
+.PP
+Definition at line 71 of file BigInteger\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Common\&.BigInteger\&.BigInteger (shortsign, uint[]data)"
+
+.PP
+Initializes a new instance of the \fBBigInteger\fP struct\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsign\fP The sign\&.
+.br
+\fIdata\fP The data\&.
+.RE
+.PP
+
+.PP
+Definition at line 117 of file BigInteger\&.cs\&.
+.SS "Renci\&.SshNet\&.Common\&.BigInteger\&.BigInteger (intvalue)"
+
+.PP
+Initializes a new instance of the \fBBigInteger\fP struct\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+
+.PP
+Definition at line 127 of file BigInteger\&.cs\&.
+.SS "Renci\&.SshNet\&.Common\&.BigInteger\&.BigInteger (uintvalue)"
+
+.PP
+Initializes a new instance of the \fBBigInteger\fP struct\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+
+.PP
+Definition at line 150 of file BigInteger\&.cs\&.
+.SS "Renci\&.SshNet\&.Common\&.BigInteger\&.BigInteger (longvalue)"
+
+.PP
+Initializes a new instance of the \fBBigInteger\fP struct\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+
+.PP
+Definition at line 168 of file BigInteger\&.cs\&.
+.SS "Renci\&.SshNet\&.Common\&.BigInteger\&.BigInteger (ulongvalue)"
+
+.PP
+Initializes a new instance of the \fBBigInteger\fP struct\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+
+.PP
+Definition at line 204 of file BigInteger\&.cs\&.
+.SS "Renci\&.SshNet\&.Common\&.BigInteger\&.BigInteger (doublevalue)"
+
+.PP
+Initializes a new instance of the \fBBigInteger\fP struct\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+
+.PP
+Definition at line 228 of file BigInteger\&.cs\&.
+.SS "Renci\&.SshNet\&.Common\&.BigInteger\&.BigInteger (floatvalue)"
+
+.PP
+Initializes a new instance of the \fBBigInteger\fP struct\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+
+.PP
+Definition at line 268 of file BigInteger\&.cs\&.
+.SS "Renci\&.SshNet\&.Common\&.BigInteger\&.BigInteger (decimalvalue)"
+
+.PP
+Initializes a new instance of the \fBBigInteger\fP struct\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+
+.PP
+Definition at line 277 of file BigInteger\&.cs\&.
+.SS "Renci\&.SshNet\&.Common\&.BigInteger\&.BigInteger (byte[]value)"
+
+.PP
+Initializes a new instance of the \fBBigInteger\fP struct\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+
+.PP
+Definition at line 306 of file BigInteger\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.Abs (\fBBigInteger\fPvalue)\fC [static]\fP"
+
+.PP
+Gets the absolute value of a System\&.Numerics\&.BigInteger object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP A number\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The absolute value of value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1887 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.Add (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Adds two System\&.Numerics\&.BigInteger values and returns the result\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to add\&.
+.br
+\fIright\fP The second value to add\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sum of left and right\&.
+.RE
+.PP
+
+.PP
+Definition at line 1898 of file BigInteger\&.cs\&.
+.SS "static int Renci\&.SshNet\&.Common\&.BigInteger\&.Compare (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Compares two System\&.Numerics\&.BigInteger values and returns an integer that indicates whether the first value is less than, equal to, or greater than the second value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A signed integer that indicates the relative values of left and right, as shown in the following table\&.ValueConditionLess than zeroleft is less than right\&.Zeroleft equals right\&.Greater than zeroleft is greater than right\&.
+.RE
+.PP
+
+.PP
+Definition at line 2745 of file BigInteger\&.cs\&.
+.SS "int Renci\&.SshNet\&.Common\&.BigInteger\&.CompareTo (objectobj)"
+
+.PP
+Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP An object to compare with this instance\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A value that indicates the relative order of the objects being compared\&. The return value has these meanings: Value Meaning Less than zero This instance is less than \fIobj\fP \&. Zero This instance is equal to \fIobj\fP \&. Greater than zero This instance is greater than \fIobj\fP \&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentException\fP \fIobj\fP  is not the same type as this instance\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1912 of file BigInteger\&.cs\&.
+.SS "int Renci\&.SshNet\&.Common\&.BigInteger\&.CompareTo (\fBBigInteger\fPother)"
+
+.PP
+Compares this instance to a second System\&.Numerics\&.BigInteger and returns an integer that indicates whether the value of this instance is less than, equal to, or greater than the value of the specified object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP The object to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A signed integer value that indicates the relationship of this instance to other, as shown in the following table\&.Return valueDescriptionLess than zeroThe current instance is less than other\&.ZeroThe current instance equals other\&.Greater than zeroThe current instance is greater than other\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1935 of file BigInteger\&.cs\&.
+.SS "int Renci\&.SshNet\&.Common\&.BigInteger\&.CompareTo (ulongother)"
+
+.PP
+Compares this instance to an unsigned 64-bit integer and returns an integer that indicates whether the value of this instance is less than, equal to, or greater than the value of the unsigned 64-bit integer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP The unsigned 64-bit integer to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A signed integer that indicates the relative value of this instance and other, as shown in the following table\&.Return valueDescriptionLess than zeroThe current instance is less than other\&.ZeroThe current instance equals other\&.Greater than zeroThe current instance is greater than other\&.
+.RE
+.PP
+
+.PP
+Definition at line 1950 of file BigInteger\&.cs\&.
+.SS "int Renci\&.SshNet\&.Common\&.BigInteger\&.CompareTo (longother)"
+
+.PP
+Compares this instance to a signed 64-bit integer and returns an integer that indicates whether the value of this instance is less than, equal to, or greater than the value of the signed 64-bit integer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP The signed 64-bit integer to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A signed integer value that indicates the relationship of this instance to other, as shown in the following table\&.Return valueDescriptionLess than zeroThe current instance is less than other\&.ZeroThe current instance equals other\&.Greater than zero\&.The current instance is greater than other\&.
+.RE
+.PP
+
+.PP
+Definition at line 2710 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.Divide (\fBBigInteger\fPdividend, \fBBigInteger\fPdivisor)\fC [static]\fP"
+
+.PP
+Divides one System\&.Numerics\&.BigInteger value by another and returns the result\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdividend\fP The value to be divided\&.
+.br
+\fIdivisor\fP The value to divide by\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The quotient of the division\&.
+.RE
+.PP
+
+.PP
+Definition at line 1985 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.DivRem (\fBBigInteger\fPdividend, \fBBigInteger\fPdivisor, out \fBBigInteger\fPremainder)\fC [static]\fP"
+
+.PP
+Divides one System\&.Numerics\&.BigInteger value by another, returns the result, and returns the remainder in an output parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdividend\fP The value to be divided\&.
+.br
+\fIdivisor\fP The value to divide by\&.
+.br
+\fIremainder\fP When this method returns, contains a System\&.Numerics\&.BigInteger value that represents the remainder from the division\&. This parameter is passed uninitialized\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The quotient of the division\&.
+.RE
+.PP
+
+.PP
+Definition at line 1998 of file BigInteger\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Common\&.BigInteger\&.Equals (\fBBigInteger\fPother)"
+
+.PP
+Returns a value that indicates whether the current instance and a specified System\&.Numerics\&.BigInteger object have the same value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP The object to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if this System\&.Numerics\&.BigInteger object and other have the same value; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 2043 of file BigInteger\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Common\&.BigInteger\&.Equals (longother)"
+
+.PP
+Returns a value that indicates whether the current instance and a signed 64-bit integer have the same value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP The signed 64-bit integer value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the signed 64-bit integer and the current instance have the same value; otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 2062 of file BigInteger\&.cs\&.
+.SS "override bool Renci\&.SshNet\&.Common\&.BigInteger\&.Equals (objectobj)"
+
+.PP
+Returns a value that indicates whether the current instance and a specified object have the same value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP The object to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the obj parameter is a System\&.Numerics\&.BigInteger object or a type capable of implicit conversion to a System\&.Numerics\&.BigInteger value, and its value is equal to the value of the current System\&.Numerics\&.BigInteger object; otherwise, \fCfalse\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 2077 of file BigInteger\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Common\&.BigInteger\&.Equals (ulongother)"
+
+.PP
+Returns a value that indicates whether the current instance and an unsigned 64-bit integer have the same value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP The unsigned 64-bit integer to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the current instance and the unsigned 64-bit integer have the same value; otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 2089 of file BigInteger\&.cs\&.
+.SS "override int Renci\&.SshNet\&.Common\&.BigInteger\&.GetHashCode ()"
+
+.PP
+Returns the hash code for the current System\&.Numerics\&.BigInteger object\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A 32-bit signed integer hash code\&. 
+.RE
+.PP
+
+.PP
+Definition at line 2100 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.GreatestCommonDivisor (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Finds the greatest common divisor of two System\&.Numerics\&.BigInteger values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value\&.
+.br
+\fIright\fP The second value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The greatest common divisor of left and right\&.
+.RE
+.PP
+
+.PP
+Definition at line 2115 of file BigInteger\&.cs\&.
+.SS "static double Renci\&.SshNet\&.Common\&.BigInteger\&.Log (\fBBigInteger\fPvalue, DoublebaseValue)\fC [static]\fP"
+
+.PP
+Returns the logarithm of a specified number in a specified base\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP A number whose logarithm is to be found\&.
+.br
+\fIbaseValue\fP The base of the logarithm\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The base baseValue logarithm of value, as shown in the table in the Remarks section\&.
+.RE
+.PP
+
+.PP
+Definition at line 2175 of file BigInteger\&.cs\&.
+.SS "static double Renci\&.SshNet\&.Common\&.BigInteger\&.Log (\fBBigInteger\fPvalue)\fC [static]\fP"
+
+.PP
+Returns the natural (base e) logarithm of a specified number\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The number whose logarithm is to be found\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The natural (base e) logarithm of value, as shown in the table in the Remarks section\&.
+.RE
+.PP
+
+.PP
+Definition at line 2228 of file BigInteger\&.cs\&.
+.SS "static double Renci\&.SshNet\&.Common\&.BigInteger\&.Log10 (\fBBigInteger\fPvalue)\fC [static]\fP"
+
+.PP
+Returns the base 10 logarithm of a specified number\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP A number whose logarithm is to be found\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The base 10 logarithm of value, as shown in the table in the Remarks section\&.
+.RE
+.PP
+
+.PP
+Definition at line 2238 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.Max (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns the larger of two System\&.Numerics\&.BigInteger values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The left or right parameter, whichever is larger\&.
+.RE
+.PP
+
+.PP
+Definition at line 2249 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.Min (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns the smaller of two System\&.Numerics\&.BigInteger values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The left or right parameter, whichever is smaller\&.
+.RE
+.PP
+
+.PP
+Definition at line 2274 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.ModInverse (\fBBigInteger\fPbi, \fBBigInteger\fPmodulus)\fC [static]\fP"
+
+.PP
+Mods the inverse\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbi\fP The bi\&.
+.br
+\fImodulus\fP The modulus\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Modulus inverted number\&.
+.RE
+.PP
+
+.PP
+Definition at line 2332 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.ModPow (\fBBigInteger\fPvalue, \fBBigInteger\fPexponent, \fBBigInteger\fPmodulus)\fC [static]\fP"
+
+.PP
+Performs modulus division on a number raised to the power of another number\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The number to raise to the exponent power\&.
+.br
+\fIexponent\fP The exponent to raise value by\&.
+.br
+\fImodulus\fP The value to divide valueexponent by\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The remainder after dividing valueexponent by modulus\&.
+.RE
+.PP
+
+.PP
+Definition at line 2300 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.Multiply (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns the product of two System\&.Numerics\&.BigInteger values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first number to multiply\&.
+.br
+\fIright\fP The second number to multiply\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The product of the left and right parameters\&.
+.RE
+.PP
+
+.PP
+Definition at line 2381 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.Negate (\fBBigInteger\fPvalue)\fC [static]\fP"
+
+.PP
+Negates a specified System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to negate\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the value parameter multiplied by negative one (-1)\&.
+.RE
+.PP
+
+.PP
+Definition at line 2391 of file BigInteger\&.cs\&.
+.SS "static implicit Renci\&.SshNet\&.Common\&.BigInteger\&.operator \fBBigInteger\fP (intvalue)\fC [static]\fP"
+
+.PP
+Defines an implicit conversion of a signed 32-bit integer to a System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a System\&.Numerics\&.BigInteger\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 631 of file BigInteger\&.cs\&.
+.SS "static implicit Renci\&.SshNet\&.Common\&.BigInteger\&.operator \fBBigInteger\fP (uintvalue)\fC [static]\fP"
+
+.PP
+Defines an implicit conversion of a 32-bit unsigned integer to a System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a System\&.Numerics\&.BigInteger\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 643 of file BigInteger\&.cs\&.
+.SS "static implicit Renci\&.SshNet\&.Common\&.BigInteger\&.operator \fBBigInteger\fP (shortvalue)\fC [static]\fP"
+
+.PP
+Defines an implicit conversion of a signed 16-bit integer to a System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a System\&.Numerics\&.BigInteger\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 655 of file BigInteger\&.cs\&.
+.SS "static implicit Renci\&.SshNet\&.Common\&.BigInteger\&.operator \fBBigInteger\fP (ushortvalue)\fC [static]\fP"
+
+.PP
+Defines an implicit conversion of a 16-bit unsigned integer to a System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a System\&.Numerics\&.BigInteger\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 667 of file BigInteger\&.cs\&.
+.SS "static implicit Renci\&.SshNet\&.Common\&.BigInteger\&.operator \fBBigInteger\fP (bytevalue)\fC [static]\fP"
+
+.PP
+Defines an implicit conversion of an unsigned byte to a System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a System\&.Numerics\&.BigInteger\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 679 of file BigInteger\&.cs\&.
+.SS "static implicit Renci\&.SshNet\&.Common\&.BigInteger\&.operator \fBBigInteger\fP (sbytevalue)\fC [static]\fP"
+
+.PP
+Defines an implicit conversion of an 8-bit signed integer to a System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a System\&.Numerics\&.BigInteger\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 691 of file BigInteger\&.cs\&.
+.SS "static implicit Renci\&.SshNet\&.Common\&.BigInteger\&.operator \fBBigInteger\fP (longvalue)\fC [static]\fP"
+
+.PP
+Defines an implicit conversion of a signed 64-bit integer to a System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a System\&.Numerics\&.BigInteger\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 703 of file BigInteger\&.cs\&.
+.SS "static implicit Renci\&.SshNet\&.Common\&.BigInteger\&.operator \fBBigInteger\fP (ulongvalue)\fC [static]\fP"
+
+.PP
+Defines an implicit conversion of a 64-bit unsigned integer to a System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a System\&.Numerics\&.BigInteger\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 715 of file BigInteger\&.cs\&.
+.SS "static Renci\&.SshNet\&.Common\&.BigInteger\&.operator \fBBigInteger\fP (doublevalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Defines an explicit conversion of a System\&.Double value to a System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a System\&.Numerics\&.BigInteger\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 727 of file BigInteger\&.cs\&.
+.SS "static Renci\&.SshNet\&.Common\&.BigInteger\&.operator \fBBigInteger\fP (floatvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Defines an explicit conversion of a System\&.Single object to a System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a System\&.Numerics\&.BigInteger\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 739 of file BigInteger\&.cs\&.
+.SS "static Renci\&.SshNet\&.Common\&.BigInteger\&.operator \fBBigInteger\fP (decimalvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Defines an explicit conversion of a System\&.Decimal object to a System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a System\&.Numerics\&.BigInteger\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 751 of file BigInteger\&.cs\&.
+.SS "static Renci\&.SshNet\&.Common\&.BigInteger\&.operator byte (\fBBigInteger\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Defines an explicit conversion of a System\&.Numerics\&.BigInteger object to an unsigned byte value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a System\&.Byte\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 472 of file BigInteger\&.cs\&.
+.SS "static Renci\&.SshNet\&.Common\&.BigInteger\&.operator decimal (\fBBigInteger\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Defines an explicit conversion of a System\&.Numerics\&.BigInteger object to a System\&.Decimal value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a System\&.Decimal\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 604 of file BigInteger\&.cs\&.
+.SS "static Renci\&.SshNet\&.Common\&.BigInteger\&.operator double (\fBBigInteger\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Defines an explicit conversion of a System\&.Numerics\&.BigInteger object to a System\&.Double value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a System\&.Double\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 562 of file BigInteger\&.cs\&.
+.SS "static Renci\&.SshNet\&.Common\&.BigInteger\&.operator float (\fBBigInteger\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Defines an explicit conversion of a System\&.Numerics\&.BigInteger object to a single-precision floating-point value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a single-precision floating-point value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the closest possible representation of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 583 of file BigInteger\&.cs\&.
+.SS "static Renci\&.SshNet\&.Common\&.BigInteger\&.operator int (\fBBigInteger\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Defines an explicit conversion of a System\&.Numerics\&.BigInteger object to a 32-bit signed integer value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a 32-bit signed integer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 413 of file BigInteger\&.cs\&.
+.SS "static Renci\&.SshNet\&.Common\&.BigInteger\&.operator long (\fBBigInteger\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Defines an explicit conversion of a System\&.Numerics\&.BigInteger object to a 64-bit signed integer value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a 64-bit signed integer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 502 of file BigInteger\&.cs\&.
+.SS "static Renci\&.SshNet\&.Common\&.BigInteger\&.operator sbyte (\fBBigInteger\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Defines an explicit conversion of a System\&.Numerics\&.BigInteger object to a signed 8-bit value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a signed 8-bit value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 487 of file BigInteger\&.cs\&.
+.SS "static Renci\&.SshNet\&.Common\&.BigInteger\&.operator short (\fBBigInteger\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Defines an explicit conversion of a System\&.Numerics\&.BigInteger object to a 16-bit signed integer value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to a 16-bit signed integer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 442 of file BigInteger\&.cs\&.
+.SS "static Renci\&.SshNet\&.Common\&.BigInteger\&.operator uint (\fBBigInteger\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Defines an explicit conversion of a System\&.Numerics\&.BigInteger object to an unsigned 32-bit integer value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to an unsigned 32-bit integer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 428 of file BigInteger\&.cs\&.
+.SS "static Renci\&.SshNet\&.Common\&.BigInteger\&.operator ulong (\fBBigInteger\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Defines an explicit conversion of a System\&.Numerics\&.BigInteger object to an unsigned 64-bit integer value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to an unsigned 64-bit integer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 542 of file BigInteger\&.cs\&.
+.SS "static Renci\&.SshNet\&.Common\&.BigInteger\&.operator ushort (\fBBigInteger\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Defines an explicit conversion of a System\&.Numerics\&.BigInteger object to an unsigned 16-bit integer value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to convert to an unsigned 16-bit integer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object that contains the value of the value parameter 
+.RE
+.PP
+
+.PP
+Definition at line 457 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator!= (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether two \fBBigInteger\fP objects have different values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left and right are not equal; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1730 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator!= (\fBBigInteger\fPleft, longright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a \fBBigInteger\fP value and a 64-bit signed integer are not equal\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left and right are not equal; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1743 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator!= (longleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a 64-bit signed integer and a \fBBigInteger\fP value are not equal\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left and right are not equal; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1756 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator!= (\fBBigInteger\fPleft, ulongright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a \fBBigInteger\fP value and a 64-bit unsigned integer are not equal\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left and right are not equal; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1769 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator!= (ulongleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a 64-bit unsigned integer and a \fBBigInteger\fP value are not equal\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left and right are not equal; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1782 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.operator% (\fBBigInteger\fPdividend, \fBBigInteger\fPdivisor)\fC [static]\fP"
+
+.PP
+Returns the remainder that results from division with two specified \fBBigInteger\fP values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdividend\fP The value to be divided\&.
+.br
+\fIdivisor\fP The value to divide by\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The remainder that results from the division\&. 
+.RE
+.PP
+
+.PP
+Definition at line 916 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.operator& (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Performs a bitwise And operation on two \fBBigInteger\fP values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value\&.
+.br
+\fIright\fP The second value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the bitwise And operation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1027 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.operator* (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Multiplies two specified \fBBigInteger\fP values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to multiply\&.
+.br
+\fIright\fP The second value to multiply\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The product of left and right\&. 
+.RE
+.PP
+
+.PP
+Definition at line 824 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.operator+ (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Adds the values of two specified \fBBigInteger\fP objects\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to add\&.
+.br
+\fIright\fP The second value to add\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sum of left and right\&. 
+.RE
+.PP
+
+.PP
+Definition at line 764 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.operator+ (\fBBigInteger\fPvalue)\fC [static]\fP"
+
+.PP
+Returns the value of the \fBBigInteger\fP operand\&. (The sign of the operand is unchanged\&.) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP An integer value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value of the value operand\&. 
+.RE
+.PP
+
+.PP
+Definition at line 960 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.operator++ (\fBBigInteger\fPvalue)\fC [static]\fP"
+
+.PP
+Increments a \fBBigInteger\fP value by 1\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to increment\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value of the value parameter incremented by 1\&. 
+.RE
+.PP
+
+.PP
+Definition at line 972 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.operator- (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Subtracts a \fBBigInteger\fP value from another \fBBigInteger\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The value to subtract from (the minuend)\&.
+.br
+\fIright\fP The value to subtract (the subtrahend)\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of subtracting right from left\&. 
+.RE
+.PP
+
+.PP
+Definition at line 793 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.operator- (\fBBigInteger\fPvalue)\fC [static]\fP"
+
+.PP
+Negates a specified \fBBigInteger\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to negate\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the value parameter multiplied by negative one (-1)\&. 
+.RE
+.PP
+
+.PP
+Definition at line 946 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.operator-- (\fBBigInteger\fPvalue)\fC [static]\fP"
+
+.PP
+Decrements a \fBBigInteger\fP value by 1\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to decrement\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value of the value parameter decremented by 1\&. 
+.RE
+.PP
+
+.PP
+Definition at line 999 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.operator/ (\fBBigInteger\fPdividend, \fBBigInteger\fPdivisor)\fC [static]\fP"
+
+.PP
+Divides a specified \fBBigInteger\fP value by another specified \fBBigInteger\fP value by using integer division\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdividend\fP The value to be divided\&.
+.br
+\fIdivisor\fP The value to divide by\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The integral result of the division\&. 
+.RE
+.PP
+
+.PP
+Definition at line 885 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator< (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a \fBBigInteger\fP value is less than another \fBBigInteger\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is less than right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1405 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator< (\fBBigInteger\fPleft, longright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a \fBBigInteger\fP value is less than a 64-bit signed integer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is less than right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1418 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator< (longleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a 64-bit signed integer is less than a \fBBigInteger\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is less than right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1431 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator< (\fBBigInteger\fPleft, ulongright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a \fBBigInteger\fP value is less than a 64-bit unsigned integer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is less than right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1444 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator< (ulongleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a 64-bit unsigned integer is less than a \fBBigInteger\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is less than right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1457 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.operator<< (\fBBigInteger\fPvalue, intshift)\fC [static]\fP"
+
+.PP
+Shifts a \fBBigInteger\fP value a specified number of bits to the left\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value whose bits are to be shifted\&.
+.br
+\fIshift\fP The number of bits to shift value to the left\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A value that has been shifted to the left by the specified number of bits\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1297 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator<= (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a System\&.Numerics\&.BigInteger value is less than or equal to another System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is less than or equal to right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1470 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator<= (\fBBigInteger\fPleft, longright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a System\&.Numerics\&.BigInteger value is less than or equal to a 64-bit signed integer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is less than or equal to right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1483 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator<= (longleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a 64-bit signed integer is less than or equal to a System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is less than or equal to right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1496 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator<= (\fBBigInteger\fPleft, ulongright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a System\&.Numerics\&.BigInteger value is less than or equal to a 64-bit unsigned integer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is less than or equal to right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1509 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator<= (ulongleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a 64-bit unsigned integer is less than or equal to a System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is less than or equal to right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1522 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator== (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether the values of two System\&.Numerics\&.BigInteger objects are equal\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the left and right parameters have the same value; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1665 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator== (\fBBigInteger\fPleft, longright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a System\&.Numerics\&.BigInteger value and a signed long integer value are equal\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the left and right parameters have the same value; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1678 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator== (longleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a signed long integer value and a System\&.Numerics\&.BigInteger value are equal\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the left and right parameters have the same value; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1691 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator== (\fBBigInteger\fPleft, ulongright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a System\&.Numerics\&.BigInteger value and an unsigned long integer value are equal\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the left and right parameters have the same value; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1704 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator== (ulongleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether an unsigned long integer value and a System\&.Numerics\&.BigInteger value are equal\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the left and right parameters have the same value; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1717 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator> (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a System\&.Numerics\&.BigInteger value is greater than another System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is greater than right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1535 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator> (\fBBigInteger\fPleft, longright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a System\&.Numerics\&.BigInteger is greater than a 64-bit signed integer value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is greater than right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1548 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator> (longleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a 64-bit signed integer is greater than a System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is greater than right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1561 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator> (\fBBigInteger\fPleft, ulongright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a System\&.Numerics\&.BigInteger value is greater than a 64-bit unsigned integer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is greater than right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1574 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator> (ulongleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a System\&.Numerics\&.BigInteger value is greater than a 64-bit unsigned integer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is greater than right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1587 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator>= (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a System\&.Numerics\&.BigInteger value is greater than or equal to another System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is greater than or equal right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1600 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator>= (\fBBigInteger\fPleft, longright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a System\&.Numerics\&.BigInteger value is greater than or equal to a 64-bit signed integer value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is greater than or equal right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1613 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator>= (longleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a 64-bit signed integer is greater than or equal to a System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is greater than or equal right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1626 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator>= (\fBBigInteger\fPleft, ulongright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a System\&.Numerics\&.BigInteger value is greater than or equal to a 64-bit unsigned integer value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is greater than or equal right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1639 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.operator>= (ulongleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Returns a value that indicates whether a 64-bit unsigned integer is greater than or equal to a System\&.Numerics\&.BigInteger value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value to compare\&.
+.br
+\fIright\fP The second value to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if left is greater than or equal right; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1652 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.operator>> (\fBBigInteger\fPvalue, intshift)\fC [static]\fP"
+
+.PP
+Shifts a System\&.Numerics\&.BigInteger value a specified number of bits to the right\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value whose bits are to be shifted\&.
+.br
+\fIshift\fP The number of bits to shift value to the right\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A value that has been shifted to the right by the specified number of bits\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1336 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.operator^ (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Performs a bitwise exclusive Or (XOr) operation on two \fBBigInteger\fP values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value\&.
+.br
+\fIright\fP The second value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the bitwise Or operation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1171 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.operator| (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Performs a bitwise Or operation on two \fBBigInteger\fP values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The first value\&.
+.br
+\fIright\fP The second value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the bitwise Or operation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1099 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.operator~ (\fBBigInteger\fPvalue)\fC [static]\fP"
+
+.PP
+Returns the bitwise one's complement of a \fBBigInteger\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP An integer value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The bitwise one's complement of value\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1242 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.Parse (stringvalue, System\&.Globalization\&.NumberStylesstyle, IFormatProviderprovider)\fC [static]\fP"
+
+.PP
+Converts the string representation of a number in a specified style and culture-specific format to its \fBBigInteger\fP equivalent\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP A string that contains a number to convert\&.
+.br
+\fIstyle\fP A bitwise combination of the enumeration values that specify the permitted format of value\&.
+.br
+\fIprovider\fP An object that provides culture-specific formatting information about value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Parsed \fBBigInteger\fP number
+.RE
+.PP
+
+.PP
+Definition at line 2403 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.Parse (stringvalue, IFormatProviderprovider)\fC [static]\fP"
+
+.PP
+Converts the string representation of a number in a specified culture-specific format to its System\&.Numerics\&.BigInteger equivalent\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP A string that contains a number to convert\&.
+.br
+\fIprovider\fP An object that provides culture-specific formatting information about value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A value that is equivalent to the number specified in the value parameter\&.
+.RE
+.PP
+
+.PP
+Definition at line 2419 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.Parse (stringvalue, NumberStylesstyle)\fC [static]\fP"
+
+.PP
+Converts the string representation of a number in a specified style to its System\&.Numerics\&.BigInteger equivalent\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP A string that contains a number to convert\&.
+.br
+\fIstyle\fP A bitwise combination of the enumeration values that specify the permitted format of value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A value that is equivalent to the number specified in the value parameter\&.
+.RE
+.PP
+
+.PP
+Definition at line 2430 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.PositiveMod (\fBBigInteger\fPdividend, \fBBigInteger\fPdivisor)\fC [static]\fP"
+
+.PP
+Returns positive remainder that results from division with two specified \fBBigInteger\fP values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdividend\fP The value to be divided\&.
+.br
+\fIdivisor\fP The value to divide by\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Positive remainder that results from the division\&. 
+.RE
+.PP
+
+.PP
+Definition at line 2366 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.Pow (\fBBigInteger\fPvalue, intexponent)\fC [static]\fP"
+
+.PP
+Raises a System\&.Numerics\&.BigInteger value to the power of a specified value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The number to raise to the exponent power\&.
+.br
+\fIexponent\fP The exponent to raise value by\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of raising value to the exponent power\&.
+.RE
+.PP
+
+.PP
+Definition at line 2441 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.Random (intbitLength)\fC [static]\fP"
+
+.PP
+Generates random \fBBigInteger\fP number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbitLength\fP Length of random number in bits\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Big random number\&.
+.RE
+.PP
+
+.PP
+Definition at line 1971 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.Remainder (\fBBigInteger\fPdividend, \fBBigInteger\fPdivisor)\fC [static]\fP"
+
+.PP
+Performs integer division on two System\&.Numerics\&.BigInteger values and returns the remainder\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdividend\fP The value to be divided\&.
+.br
+\fIdivisor\fP The value to divide by\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The remainder after dividing dividend by divisor\&.
+.RE
+.PP
+
+.PP
+Definition at line 2470 of file BigInteger\&.cs\&.
+.SS "static \fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.Subtract (\fBBigInteger\fPleft, \fBBigInteger\fPright)\fC [static]\fP"
+
+.PP
+Subtracts one System\&.Numerics\&.BigInteger value from another and returns the result\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIleft\fP The value to subtract from (the minuend)\&.
+.br
+\fIright\fP The value to subtract (the subtrahend)\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of subtracting right from left\&.
+.RE
+.PP
+
+.PP
+Definition at line 2481 of file BigInteger\&.cs\&.
+.SS "byte [] Renci\&.SshNet\&.Common\&.BigInteger\&.ToByteArray ()"
+
+.PP
+Converts a System\&.Numerics\&.BigInteger value to a byte array\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The value of the current System\&.Numerics\&.BigInteger object converted to an array of bytes\&.
+.RE
+.PP
+
+.PP
+Definition at line 2490 of file BigInteger\&.cs\&.
+.SS "override string Renci\&.SshNet\&.Common\&.BigInteger\&.ToString ()"
+
+.PP
+Converts the numeric value of the current System\&.Numerics\&.BigInteger object to its equivalent string representation\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The string representation of the current System\&.Numerics\&.BigInteger value\&. 
+.RE
+.PP
+
+.PP
+Definition at line 2597 of file BigInteger\&.cs\&.
+.SS "string Renci\&.SshNet\&.Common\&.BigInteger\&.ToString (IFormatProviderprovider)"
+
+.PP
+Converts the numeric value of the current System\&.Numerics\&.BigInteger object to its equivalent string representation by using the specified culture-specific formatting information\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprovider\fP An object that supplies culture-specific formatting information\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The string representation of the current System\&.Numerics\&.BigInteger value in the format specified by the provider parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 2612 of file BigInteger\&.cs\&.
+.SS "string Renci\&.SshNet\&.Common\&.BigInteger\&.ToString (stringformat)"
+
+.PP
+Converts the numeric value of the current System\&.Numerics\&.BigInteger object to its equivalent string representation by using the specified format\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A standard or custom numeric format string\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The string representation of the current System\&.Numerics\&.BigInteger value in the format specified by the format parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 2626 of file BigInteger\&.cs\&.
+.SS "string Renci\&.SshNet\&.Common\&.BigInteger\&.ToString (stringformat, IFormatProviderprovider)"
+
+.PP
+Converts the numeric value of the current System\&.Numerics\&.BigInteger object to its equivalent string representation by using the specified format and culture-specific format information\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A standard or custom numeric format string\&.
+.br
+\fIprovider\fP An object that supplies culture-specific formatting information\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The string representation of the current System\&.Numerics\&.BigInteger value as specified by the format and provider parameters\&. 
+.RE
+.PP
+
+.PP
+Definition at line 2642 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.TryParse (stringvalue, System\&.Globalization\&.NumberStylesstyle, CultureInfocultureInfo, out \fBBigInteger\fPresult)\fC [static]\fP"
+
+.PP
+Tries to convert the string representation of a number in a specified style and culture-specific format to its System\&.Numerics\&.BigInteger equivalent, and returns a value that indicates whether the conversion succeeded\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The string representation of a number\&. The string is interpreted using the style specified by style\&.
+.br
+\fIstyle\fP A bitwise combination of enumeration values that indicates the style elements that can be present in value\&. A typical value to specify is System\&.Globalization\&.NumberStyles\&.Integer\&.
+.br
+\fIcultureInfo\fP An object that supplies culture-specific formatting information about value\&.
+.br
+\fIresult\fP When this method returns, contains the System\&.Numerics\&.BigInteger equivalent to the number that is contained in value, or System\&.Numerics\&.BigInteger\&.Zero if the conversion failed\&. The conversion fails if the value parameter is null or is not in a format that is compliant with style\&. This parameter is passed uninitialized\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the value parameter was converted successfully; otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 2679 of file BigInteger\&.cs\&.
+.SS "static bool Renci\&.SshNet\&.Common\&.BigInteger\&.TryParse (stringvalue, out \fBBigInteger\fPresult)\fC [static]\fP"
+
+.PP
+Tries to convert the string representation of a number to its System\&.Numerics\&.BigInteger equivalent, and returns a value that indicates whether the conversion succeeded\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The string representation of a number\&.
+.br
+\fIresult\fP When this method returns, contains the System\&.Numerics\&.BigInteger equivalent to the number that is contained in value, or zero (0) if the conversion fails\&. The conversion fails if the value parameter is null or is not of the correct format\&. This parameter is passed uninitialized\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if value was converted successfully; otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 2695 of file BigInteger\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int Renci\&.SshNet\&.Common\&.BigInteger\&.BitLength\fC [get]\fP"
+
+.PP
+Gets number of bits used by the number\&. The number of the bit used\&. 
+.PP
+Definition at line 93 of file BigInteger\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Common\&.BigInteger\&.IsEven\fC [get]\fP"
+
+.PP
+Indicates whether the value of the current System\&.Numerics\&.BigInteger object is an even number\&. \fCtrue\fP if the value of the System\&.Numerics\&.BigInteger object is an even number; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 1796 of file BigInteger\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Common\&.BigInteger\&.IsOne\fC [get]\fP"
+
+.PP
+Indicates whether the value of the current System\&.Numerics\&.BigInteger object is System\&.Numerics\&.BigInteger\&.One\&. \fCtrue\fP if the value of the System\&.Numerics\&.BigInteger object is System\&.Numerics\&.BigInteger\&.One; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 1807 of file BigInteger\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Common\&.BigInteger\&.IsPowerOfTwo\fC [get]\fP"
+
+.PP
+Indicates whether the value of the current System\&.Numerics\&.BigInteger object is a power of two\&. \fCtrue\fP if the value of the System\&.Numerics\&.BigInteger object is a power of two; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 1818 of file BigInteger\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Common\&.BigInteger\&.IsZero\fC [get]\fP"
+
+.PP
+Indicates whether the value of the current System\&.Numerics\&.BigInteger object is System\&.Numerics\&.BigInteger\&.Zero\&. \fCtrue\fP if the value of the System\&.Numerics\&.BigInteger object is System\&.Numerics\&.BigInteger\&.Zero; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 1846 of file BigInteger\&.cs\&.
+.SS "\fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.MinusOne\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Gets a value that represents the number negative one (-1)\&. 
+.PP
+Definition at line 1854 of file BigInteger\&.cs\&.
+.SS "\fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.One\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Gets a value that represents the number one (1)\&. 
+.PP
+Definition at line 1862 of file BigInteger\&.cs\&.
+.SS "int Renci\&.SshNet\&.Common\&.BigInteger\&.Sign\fC [get]\fP"
+
+.PP
+Gets a number that indicates the sign (negative, positive, or zero) of the current System\&.Numerics\&.BigInteger object\&. 
+.PP
+Definition at line 1870 of file BigInteger\&.cs\&.
+.SS "\fBBigInteger\fP Renci\&.SshNet\&.Common\&.BigInteger\&.Zero\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Gets a value that represents the number 0 (zero)\&. 
+.PP
+Definition at line 1878 of file BigInteger\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,7 @@
+var namespace_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h2825 =
+[
+    [ "Child", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h2825_1_1_child.html", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h2825_1_1_child" ],
+    [ "Fixture", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h2825_1_1_fixture.html", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h2825_1_1_fixture" ],
+    [ "FixtureByCode", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h2825_1_1_fixture_by_code.html", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h2825_1_1_fixture_by_code" ],
+    [ "Parent", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h2825_1_1_parent.html", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h2825_1_1_parent" ]
+];

@@ -1,0 +1,418 @@
+.TH "NHibernate.Dialect.Oracle8iDialect" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.Oracle8iDialect \- 
+.PP
+A dialect for Oracle 8i\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.Oracle9iDialect\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override \fBJoinFragment\fP \fBCreateOuterJoinFragment\fP ()"
+.br
+.RI "\fISupport for the oracle proprietary join syntax\&.\&.\&. \fP"
+.ti -1c
+.RI "override \fBCaseFragment\fP \fBCreateCaseFragment\fP ()"
+.br
+.RI "\fIMap case support to the Oracle DECODE function\&. Oracle did not add support for CASE until 9i\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBGetLimitString\fP (\fBSqlString\fP sql, \fBSqlString\fP offset, \fBSqlString\fP limit)"
+.br
+.RI "\fIAttempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetBasicSelectClauseNullString\fP (\fBSqlType\fP sqlType)"
+.br
+.RI "\fIAllows access to the basic \fBDialect\&.GetSelectClauseNullString\fP implementation\&.\&.\&. \fP"
+.ti -1c
+.RI "override string \fBGetSelectClauseNullString\fP (\fBSqlType\fP sqlType)"
+.br
+.RI "\fIGiven a DbType type code, determine an appropriate null value to use in a select clause\&. \fP"
+.ti -1c
+.RI "override string \fBGetSequenceNextValString\fP (string sequenceName)"
+.br
+.RI "\fIGenerate the appropriate select statement to to retreive the next value of a sequence\&. \fP"
+.ti -1c
+.RI "override string \fBGetSelectSequenceNextValString\fP (string sequenceName)"
+.br
+.RI "\fIGenerate the select expression fragment that will retrieve the next value of a sequence as part of another (typically DML) statement\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBAddIdentifierOutParameterToInsert\fP (\fBSqlString\fP insertString, string identifierColumnName, string parameterName)"
+.br
+.ti -1c
+.RI "override string \fBGetCreateSequenceString\fP (string sequenceName)"
+.br
+.RI "\fITypically dialects which support sequences can create a sequence with a single command\&. \fP"
+.ti -1c
+.RI "override string \fBGetDropSequenceString\fP (string sequenceName)"
+.br
+.RI "\fITypically dialects which support sequences can drop a sequence with a single command\&. \fP"
+.ti -1c
+.RI "override string \fBGetForUpdateString\fP (string aliases)"
+.br
+.RI "\fIGet the \fCFOR UPDATE OF column_list\fP fragment appropriate for this dialect given the aliases of the columns to be write locked\&. \fP"
+.ti -1c
+.RI "override string \fBGetForUpdateNowaitString\fP (string aliases)"
+.br
+.RI "\fIGet the \fCFOR UPDATE OF column_list NOWAIT\fP fragment appropriate for this dialect given the aliases of the columns to be write locked\&. \fP"
+.ti -1c
+.RI "override string \fBGenerateTemporaryTableName\fP (String baseTableName)"
+.br
+.ti -1c
+.RI "override bool \fBDropTemporaryTableAfterUse\fP ()"
+.br
+.RI "\fIDo we need to drop the temporary table after use? \fP"
+.ti -1c
+.RI "override \fBIDataBaseSchema\fP \fBGetDataBaseSchema\fP (DbConnection connection)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBRegisterGuidTypeMapping\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterCharacterTypeMappings\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterNumericTypeMappings\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterDateTimeTypeMappings\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterLargeObjectTypeMappings\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterReverseHibernateTypeMappings\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterFunctions\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBCurrentTimestampSelectString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBCurrentTimestampSQLFunctionName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBAddColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBCascadeConstraintsString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBQuerySequencesString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBSelectGUIDString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBCreateTemporaryTableString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBCreateTemporaryTablePostfix\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsCurrentTimestampSelectStringCallable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBDropConstraints\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBForUpdateNowaitString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsSequences\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsPooledSequences\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsLimit\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBUseMaxForLimit\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBForUpdateOfColumns\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsUnionAll\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsCommentOn\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsTemporaryTables\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsCurrentTimestampSelection\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsEmptyInList\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsExistsInSelect\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A dialect for Oracle 8i\&. 
+
+
+.PP
+Definition at line 20 of file Oracle8iDialect\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBCaseFragment\fP NHibernate\&.Dialect\&.Oracle8iDialect\&.CreateCaseFragment ()\fC [virtual]\fP"
+
+.PP
+Map case support to the Oracle DECODE function\&. Oracle did not add support for CASE until 9i\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The oracle CASE -> DECODE fragment 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.Oracle9iDialect\fP\&.
+.PP
+Definition at line 255 of file Oracle8iDialect\&.cs\&.
+.SS "override \fBJoinFragment\fP NHibernate\&.Dialect\&.Oracle8iDialect\&.CreateOuterJoinFragment ()\fC [virtual]\fP"
+
+.PP
+Support for the oracle proprietary join syntax\&.\&.\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The orqacle join fragment 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 245 of file Oracle8iDialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.Oracle8iDialect\&.DropTemporaryTableAfterUse ()\fC [virtual]\fP"
+
+.PP
+Do we need to drop the temporary table after use? 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 436 of file Oracle8iDialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Oracle8iDialect\&.GetBasicSelectClauseNullString (\fBSqlType\fPsqlType)\fC [virtual]\fP"
+
+.PP
+Allows access to the basic \fBDialect\&.GetSelectClauseNullString\fP implementation\&.\&.\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlType\fP The SqlType mapping type
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate select cluse fragment 
+.RE
+.PP
+
+.PP
+Definition at line 320 of file Oracle8iDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.Oracle8iDialect\&.GetCreateSequenceString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+Typically dialects which support sequences can create a sequence with a single command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP The name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sequence creation command 
+.RE
+.PP
+.PP
+This is convenience form of \fBGetCreateSequenceStrings(string,int,int)\fP to help facilitate that\&. Dialects which support sequences and can create a sequence in a single command need \fIonly\fP override this method\&. Dialects which support sequences but require multiple commands to create a sequence should instead override \fBGetCreateSequenceStrings(string,int,int)\fP\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.OracleLiteDialect\fP\&.
+.PP
+Definition at line 360 of file Oracle8iDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.Oracle8iDialect\&.GetDropSequenceString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+Typically dialects which support sequences can drop a sequence with a single command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP The name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sequence drop commands 
+.RE
+.PP
+.PP
+This is convenience form of \fBGetDropSequenceStrings\fP to help facilitate that\&.
+.PP
+Dialects which support sequences and can drop a sequence in a single command need \fIonly\fP override this method\&. Dialects which support sequences but require multiple commands to drop a sequence should instead override \fBGetDropSequenceStrings\fP\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 365 of file Oracle8iDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.Oracle8iDialect\&.GetForUpdateNowaitString (stringaliases)\fC [virtual]\fP"
+
+.PP
+Get the \fCFOR UPDATE OF column_list NOWAIT\fP fragment appropriate for this dialect given the aliases of the columns to be write locked\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaliases\fP The columns to be write locked\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate \fCFOR UPDATE colunm_list NOWAIT\fP clause string\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 400 of file Oracle8iDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.Oracle8iDialect\&.GetForUpdateString (stringaliases)\fC [virtual]\fP"
+
+.PP
+Get the \fCFOR UPDATE OF column_list\fP fragment appropriate for this dialect given the aliases of the columns to be write locked\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaliases\fP The columns to be write locked\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate \fCFOR UPDATE OF column_list\fP clause string\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 395 of file Oracle8iDialect\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Dialect\&.Oracle8iDialect\&.GetLimitString (\fBSqlString\fPqueryString, \fBSqlString\fPoffset, \fBSqlString\fPlimit)\fC [virtual]\fP"
+
+.PP
+Attempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryString\fP The SqlString to base the limit query off\&.
+.br
+\fIoffset\fP Offset of the first row to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no limit is requested\&. This should have already been adjusted to account for OffsetStartsAtOne\&.
+.br
+\fIlimit\fP Maximum number of rows to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no offset is requested\&. This should have already been adjusted to account for UseMaxForLimit\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new SqlString that contains the \fCLIMIT\fP clause\&. Returns \fCnull\fP if \fIqueryString\fP  represents a SQL statement to which a limit clause cannot be added, for example when the query string is custom SQL invoking a stored procedure\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 260 of file Oracle8iDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.Oracle8iDialect\&.GetSelectClauseNullString (\fBSqlType\fPsqlType)\fC [virtual]\fP"
+
+.PP
+Given a DbType type code, determine an appropriate null value to use in a select clause\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlType\fP The DbType type code\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate select clause value fragment\&. 
+.RE
+.PP
+.PP
+One thing to consider here is that certain databases might require proper casting for the nulls here since the select here will be part of a UNION/UNION ALL\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.Oracle9iDialect\fP\&.
+.PP
+Definition at line 325 of file Oracle8iDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.Oracle8iDialect\&.GetSelectSequenceNextValString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+Generate the select expression fragment that will retrieve the next value of a sequence as part of another (typically DML) statement\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP the name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The 'nextval' fragment\&. 
+.RE
+.PP
+.PP
+This differs from \fBGetSequenceNextValString\fP in that this should return an expression usable within another statement\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 350 of file Oracle8iDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.Oracle8iDialect\&.GetSequenceNextValString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+Generate the appropriate select statement to to retreive the next value of a sequence\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP the name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+String The 'nextval' select string\&. 
+.RE
+.PP
+.PP
+This should be a 'stand alone' select statement\&.
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 345 of file Oracle8iDialect\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

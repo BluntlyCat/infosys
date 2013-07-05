@@ -1,0 +1,432 @@
+.TH "log4net.Repository.Hierarchy.Hierarchy" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Repository.Hierarchy.Hierarchy \- 
+.PP
+Hierarchical organization of loggers  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Repository\&.LoggerRepositorySkeleton\fP, \fBlog4net\&.Repository\&.IBasicRepositoryConfigurator\fP, and \fBlog4net\&.Repository\&.IXmlRepositoryConfigurator\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBLevelEntry\fP"
+.br
+.RI "\fIA class to hold the value, name and display name for a level \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBHierarchy\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.ti -1c
+.RI "\fBHierarchy\fP (\fBPropertiesDictionary\fP properties)"
+.br
+.RI "\fIConstruct with properties \fP"
+.ti -1c
+.RI "\fBHierarchy\fP (\fBILoggerFactory\fP loggerFactory)"
+.br
+.RI "\fIConstruct with a logger factory \fP"
+.ti -1c
+.RI "\fBHierarchy\fP (\fBPropertiesDictionary\fP properties, \fBILoggerFactory\fP loggerFactory)"
+.br
+.RI "\fIConstruct with properties and a logger factory \fP"
+.ti -1c
+.RI "override \fBILogger\fP \fBExists\fP (string name)"
+.br
+.RI "\fITest if a logger exists \fP"
+.ti -1c
+.RI "override \fBILogger\fP[] \fBGetCurrentLoggers\fP ()"
+.br
+.RI "\fIReturns all the currently defined loggers in the hierarchy as an Array \fP"
+.ti -1c
+.RI "override \fBILogger\fP \fBGetLogger\fP (string name)"
+.br
+.RI "\fIReturn a new logger instance named as the first parameter using the default factory\&. \fP"
+.ti -1c
+.RI "override void \fBShutdown\fP ()"
+.br
+.RI "\fIShutting down a hierarchy will \fIsafely\fP close and remove all appenders in all loggers including the root logger\&. \fP"
+.ti -1c
+.RI "override void \fBResetConfiguration\fP ()"
+.br
+.RI "\fIReset all values contained in this hierarchy instance to their default\&. \fP"
+.ti -1c
+.RI "override void \fBLog\fP (\fBLoggingEvent\fP logEvent)"
+.br
+.RI "\fILog the logEvent through this hierarchy\&. \fP"
+.ti -1c
+.RI "override \fBAppender\&.IAppender\fP[] \fBGetAppenders\fP ()"
+.br
+.RI "\fIReturns all the Appenders that are currently configured \fP"
+.ti -1c
+.RI "bool \fBIsDisabled\fP (\fBLevel\fP level)"
+.br
+.RI "\fITest if this hierarchy is disabled for the specified Level\&. \fP"
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.RI "\fIClear all logger definitions from the internal hashtable \fP"
+.ti -1c
+.RI "\fBLogger\fP \fBGetLogger\fP (string name, \fBILoggerFactory\fP factory)"
+.br
+.RI "\fIReturn a new logger instance named as the first parameter using \fIfactory\fP \&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBBasicRepositoryConfigure\fP (params \fBIAppender\fP[] appenders)"
+.br
+.RI "\fIInitialize the \fBlog4net\fP system using the specified appenders \fP"
+.ti -1c
+.RI "void \fBXmlRepositoryConfigure\fP (System\&.Xml\&.XmlElement element)"
+.br
+.RI "\fIInitialize the \fBlog4net\fP system using the specified config \fP"
+.ti -1c
+.RI "virtual void \fBOnLoggerCreationEvent\fP (\fBLogger\fP logger)"
+.br
+.RI "\fISends a logger creation event to all registered listeners \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBLoggerCreationEventHandler\fP \fBLoggerCreatedEvent\fP"
+.br
+.RI "\fIEvent used to notify that a logger has been created\&. \fP"
+.ti -1c
+.RI "bool \fBEmittedNoAppenderWarning\fP\fC [get, set]\fP"
+.br
+.RI "\fIHas no appender warning been emitted \fP"
+.ti -1c
+.RI "\fBLogger\fP \fBRoot\fP\fC [get]\fP"
+.br
+.RI "\fIGet the root of this hierarchy \fP"
+.ti -1c
+.RI "\fBILoggerFactory\fP \fBLoggerFactory\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the default \fBILoggerFactory\fP instance\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Hierarchical organization of loggers 
+
+\fIThe casual user should not have to deal with this class directly\&.\fP 
+.PP
+This class is specialized in retrieving loggers by name and also maintaining the logger hierarchy\&. Implements the \fBILoggerRepository\fP interface\&. 
+.PP
+The structure of the logger hierarchy is maintained by the \fBGetLogger(string)\fP method\&. The hierarchy is such that children link to their parent but parents do not have any references to their children\&. Moreover, loggers can be instantiated in any order, in particular descendant before ancestor\&. 
+.PP
+In case a descendant is created before a particular ancestor, then it creates a provision node for the ancestor and adds itself to the provision node\&. Other descendants of the same ancestor add themselves to the previously created provision node\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 122 of file Hierarchy\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.Hierarchy ()"
+
+.PP
+Default constructor Initializes a new instance of the \fBHierarchy\fP class\&. 
+.PP
+Definition at line 152 of file Hierarchy\&.cs\&.
+.SS "log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.Hierarchy (\fBPropertiesDictionary\fPproperties)"
+
+.PP
+Construct with properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproperties\fP The properties to pass to this repository\&.
+.RE
+.PP
+.PP
+Initializes a new instance of the \fBHierarchy\fP class\&. 
+.PP
+Definition at line 165 of file Hierarchy\&.cs\&.
+.SS "log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.Hierarchy (\fBILoggerFactory\fPloggerFactory)"
+
+.PP
+Construct with a logger factory 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggerFactory\fP The factory to use to create new logger instances\&.
+.RE
+.PP
+.PP
+Initializes a new instance of the \fBHierarchy\fP class with the specified \fBILoggerFactory\fP\&. 
+.PP
+Definition at line 179 of file Hierarchy\&.cs\&.
+.SS "log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.Hierarchy (\fBPropertiesDictionary\fPproperties, \fBILoggerFactory\fPloggerFactory)"
+
+.PP
+Construct with properties and a logger factory 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproperties\fP The properties to pass to this repository\&.
+.br
+\fIloggerFactory\fP The factory to use to create new logger instances\&.
+.RE
+.PP
+.PP
+Initializes a new instance of the \fBHierarchy\fP class with the specified \fBILoggerFactory\fP\&. 
+.PP
+Definition at line 194 of file Hierarchy\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.BasicRepositoryConfigure (params \fBIAppender\fP[]appenders)\fC [protected]\fP"
+
+.PP
+Initialize the \fBlog4net\fP system using the specified appenders 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIappenders\fP the appenders to use to log all logging events
+.RE
+.PP
+.PP
+This method provides the same functionality as the IBasicRepositoryConfigurator\&.Configure(IAppender) method implemented on this object, but it is protected and therefore can be called by subclasses\&. 
+.PP
+Definition at line 575 of file Hierarchy\&.cs\&.
+.SS "void log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.Clear ()"
+
+.PP
+Clear all logger definitions from the internal hashtable This call will clear all logger definitions from the internal hashtable\&. Invoking this method will irrevocably mess up the logger hierarchy\&. 
+.PP
+You should \fBreally\fP know what you are doing before invoking this method\&. 
+.PP
+Definition at line 695 of file Hierarchy\&.cs\&.
+.SS "override \fBILogger\fP log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.Exists (stringname)\fC [virtual]\fP"
+
+.PP
+Test if a logger exists 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the logger to lookup
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBLogger\fP object with the name specified
+.RE
+.PP
+.PP
+Check if the named logger exists in the hierarchy\&. If so return its reference, otherwise returns \fCnull\fP\&. 
+.PP
+Implements \fBlog4net\&.Repository\&.LoggerRepositorySkeleton\fP\&.
+.PP
+Definition at line 293 of file Hierarchy\&.cs\&.
+.SS "override \fBAppender\&.IAppender\fP [] log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.GetAppenders ()\fC [virtual]\fP"
+
+.PP
+Returns all the Appenders that are currently configured 
+.PP
+\fBReturns:\fP
+.RS 4
+An array containing all the currently configured appenders
+.RE
+.PP
+.PP
+Returns all the \fBlog4net\&.Appender\&.IAppender\fP instances that are currently configured\&. All the loggers are searched for appenders\&. The appenders may also be containers for appenders and these are also searched for additional loggers\&. 
+.PP
+The list returned is unordered but does not contain duplicates\&. 
+.PP
+Implements \fBlog4net\&.Repository\&.LoggerRepositorySkeleton\fP\&.
+.PP
+Definition at line 491 of file Hierarchy\&.cs\&.
+.SS "override \fBILogger\fP [] log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.GetCurrentLoggers ()\fC [virtual]\fP"
+
+.PP
+Returns all the currently defined loggers in the hierarchy as an Array 
+.PP
+\fBReturns:\fP
+.RS 4
+All the defined loggers
+.RE
+.PP
+.PP
+Returns all the currently defined loggers in the hierarchy as an Array\&. The root logger is \fBnot\fP included in the returned enumeration\&. 
+.PP
+Implements \fBlog4net\&.Repository\&.LoggerRepositorySkeleton\fP\&.
+.PP
+Definition at line 314 of file Hierarchy\&.cs\&.
+.SS "override \fBILogger\fP log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.GetLogger (stringname)\fC [virtual]\fP"
+
+.PP
+Return a new logger instance named as the first parameter using the default factory\&. Return a new logger instance named as the first parameter using the default factory\&. 
+.PP
+If a logger of that name already exists, then it will be returned\&. Otherwise, a new logger will be instantiated and then linked with its existing ancestors as well as children\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the logger to retrieve
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The logger object with the name specified
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.Repository\&.LoggerRepositorySkeleton\fP\&.
+.PP
+Definition at line 349 of file Hierarchy\&.cs\&.
+.SS "\fBLogger\fP log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.GetLogger (stringname, \fBILoggerFactory\fPfactory)"
+
+.PP
+Return a new logger instance named as the first parameter using \fIfactory\fP \&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the logger to retrieve
+.br
+\fIfactory\fP The factory that will make the new logger instance
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The logger object with the name specified
+.RE
+.PP
+.PP
+If a logger of that name already exists, then it will be returned\&. Otherwise, a new logger will be instantiated by the \fIfactory\fP  parameter and linked with its existing ancestors as well as children\&. 
+.PP
+Definition at line 715 of file Hierarchy\&.cs\&.
+.SS "bool log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.IsDisabled (\fBLevel\fPlevel)"
+
+.PP
+Test if this hierarchy is disabled for the specified Level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlevel\fP The level to check against\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the repository is disabled for the level argument, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+.PP
+If this hierarchy has not been configured then this method will always return \fCtrue\fP\&. 
+.PP
+This method will return \fCtrue\fP if this repository is disabled for \fClevel\fP object passed as parameter and \fCfalse\fP otherwise\&. 
+.PP
+See also the \fBILoggerRepository\&.Threshold\fP property\&. 
+.PP
+Definition at line 662 of file Hierarchy\&.cs\&.
+.SS "override void log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.Log (\fBLoggingEvent\fPlogEvent)\fC [virtual]\fP"
+
+.PP
+Log the logEvent through this hierarchy\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlogEvent\fP the event to log
+.RE
+.PP
+.PP
+This method should not normally be used to log\&. The \fBILog\fP interface should be used for routine logging\&. This interface can be obtained using the \fBlog4net\&.LogManager\&.GetLogger(string)\fP method\&. 
+.PP
+The \fClogEvent\fP is delivered to the appropriate logger and that logger is then responsible for logging the event\&. 
+.PP
+Implements \fBlog4net\&.Repository\&.LoggerRepositorySkeleton\fP\&.
+.PP
+Definition at line 467 of file Hierarchy\&.cs\&.
+.SS "virtual void log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.OnLoggerCreationEvent (\fBLogger\fPlogger)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Sends a logger creation event to all registered listeners 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlogger\fP The newly created logger
+.RE
+.PP
+.PP
+Raises the logger creation event\&. 
+.PP
+Definition at line 781 of file Hierarchy\&.cs\&.
+.SS "override void log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.ResetConfiguration ()\fC [virtual]\fP"
+
+.PP
+Reset all values contained in this hierarchy instance to their default\&. Reset all values contained in this hierarchy instance to their default\&. This removes all appenders from all loggers, sets the level of all non-root loggers to \fCnull\fP, sets their additivity flag to \fCtrue\fP and sets the level of the root logger to Level\&.Debug\&. Moreover, message disabling is set its default 'off' value\&. 
+.PP
+Existing loggers are not removed\&. They are just reset\&. 
+.PP
+This method should be used sparingly and with care as it will block all logging until it is completed\&. 
+.PP
+Reimplemented from \fBlog4net\&.Repository\&.LoggerRepositorySkeleton\fP\&.
+.PP
+Definition at line 428 of file Hierarchy\&.cs\&.
+.SS "override void log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.Shutdown ()\fC [virtual]\fP"
+
+.PP
+Shutting down a hierarchy will \fIsafely\fP close and remove all appenders in all loggers including the root logger\&. Shutting down a hierarchy will \fIsafely\fP close and remove all appenders in all loggers including the root logger\&. 
+.PP
+Some appenders need to be closed before the application exists\&. Otherwise, pending logging events might be lost\&. 
+.PP
+The \fCShutdown\fP method is careful to close nested appenders before closing regular appenders\&. This is allows configurations where a regular appender is attached to a logger and again to a nested appender\&. 
+.PP
+Reimplemented from \fBlog4net\&.Repository\&.LoggerRepositorySkeleton\fP\&.
+.PP
+Definition at line 380 of file Hierarchy\&.cs\&.
+.SS "void log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.XmlRepositoryConfigure (System\&.Xml\&.XmlElementelement)\fC [protected]\fP"
+
+.PP
+Initialize the \fBlog4net\fP system using the specified config 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIelement\fP the element containing the root of the config
+.RE
+.PP
+.PP
+This method provides the same functionality as the IBasicRepositoryConfigurator\&.Configure(IAppender) method implemented on this object, but it is protected and therefore can be called by subclasses\&. 
+.PP
+Definition at line 619 of file Hierarchy\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.EmittedNoAppenderWarning\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Has no appender warning been emitted Flag to indicate if we have already issued a warning about not having an appender warning\&. 
+.PP
+Definition at line 220 of file Hierarchy\&.cs\&.
+.SS "\fBLoggerCreationEventHandler\fP log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.LoggerCreatedEvent\fC [add]\fP, \fC [remove]\fP"
+
+.PP
+Event used to notify that a logger has been created\&. Event raised when a logger is created\&. 
+.PP
+Definition at line 135 of file Hierarchy\&.cs\&.
+.SS "\fBILoggerFactory\fP log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.LoggerFactory\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the default \fBILoggerFactory\fP instance\&. The default \fBILoggerFactory\fP
+.PP
+The logger factory is used to create logger instances\&. 
+.PP
+Definition at line 266 of file Hierarchy\&.cs\&.
+.SS "\fBLogger\fP log4net\&.Repository\&.Hierarchy\&.Hierarchy\&.Root\fC [get]\fP"
+
+.PP
+Get the root of this hierarchy Get the root of this hierarchy\&. 
+.PP
+Definition at line 234 of file Hierarchy\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

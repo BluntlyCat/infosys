@@ -1,0 +1,106 @@
+.TH "NHibernate.Cache.NoCacheProvider" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cache.NoCacheProvider \- 
+.PP
+A cache provider placeholder used when caching is disabled\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Cache\&.ICacheProvider\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBICache\fP \fBBuildCache\fP (string regionName, IDictionary< string, string > properties)"
+.br
+.RI "\fIConfigure the cache \fP"
+.ti -1c
+.RI "long \fBNextTimestamp\fP ()"
+.br
+.RI "\fIGenerate a timestamp \fP"
+.ti -1c
+.RI "void \fBStart\fP (IDictionary< string, string > properties)"
+.br
+.RI "\fICallback to perform any necessary initialization of the underlying cache implementation during SessionFactory construction\&. \fP"
+.ti -1c
+.RI "void \fBStop\fP ()"
+.br
+.RI "\fICallback to perform any necessary cleanup of the underlying cache implementation during SessionFactory\&.close()\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBWarnMessage\fP = 'Second-level cache is enabled in a class, but no cache provider was selected\&. Fake cache used\&.'"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A cache provider placeholder used when caching is disabled\&. 
+
+
+.PP
+Definition at line 10 of file NoCacheProvider\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBICache\fP NHibernate\&.Cache\&.NoCacheProvider\&.BuildCache (stringregionName, IDictionary< string, string >properties)"
+
+.PP
+Configure the cache 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIregionName\fP the name of the cache region
+.br
+\fIproperties\fP configuration settings
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBCacheException\fP\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheProvider\fP\&.
+.PP
+Definition at line 22 of file NoCacheProvider\&.cs\&.
+.SS "long NHibernate\&.Cache\&.NoCacheProvider\&.NextTimestamp ()"
+
+.PP
+Generate a timestamp 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheProvider\fP\&.
+.PP
+Definition at line 32 of file NoCacheProvider\&.cs\&.
+.SS "void NHibernate\&.Cache\&.NoCacheProvider\&.Start (IDictionary< string, string >properties)"
+
+.PP
+Callback to perform any necessary initialization of the underlying cache implementation during SessionFactory construction\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproperties\fP current configuration settings\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheProvider\fP\&.
+.PP
+Definition at line 45 of file NoCacheProvider\&.cs\&.
+.SS "void NHibernate\&.Cache\&.NoCacheProvider\&.Stop ()"
+
+.PP
+Callback to perform any necessary cleanup of the underlying cache implementation during SessionFactory\&.close()\&. 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheProvider\fP\&.
+.PP
+Definition at line 54 of file NoCacheProvider\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

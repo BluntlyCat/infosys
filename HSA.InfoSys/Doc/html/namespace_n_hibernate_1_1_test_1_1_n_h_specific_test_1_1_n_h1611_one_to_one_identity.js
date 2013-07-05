@@ -1,0 +1,6 @@
+var namespace_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1611_one_to_one_identity =
+[
+    [ "Adjunct", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1611_one_to_one_identity_1_1_adjunct.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1611_one_to_one_identity_1_1_adjunct" ],
+    [ "NH1611OneToOneIdentityFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1611_one_to_one_identity_1_1_n_h1611_one_to_one_identity_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1611_one_to_one_identity_1_1_n_h1611_one_to_one_identity_fixture" ],
+    [ "Primary", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1611_one_to_one_identity_1_1_primary.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1611_one_to_one_identity_1_1_primary" ]
+];

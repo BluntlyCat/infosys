@@ -1,0 +1,164 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Tree.FromReferenceNode" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Tree.FromReferenceNode \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.AbstractSelectExpression\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IResolvableNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IDisplayableNode\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IPathNode\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.DotNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IdentNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IndexNode\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SelectExpressionImpl\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBGetDisplayText\fP ()"
+.br
+.RI "\fIReturns additional display text for the AST node\&. \fP"
+.ti -1c
+.RI "abstract void \fBResolve\fP (bool generateJoin, bool implicitJoin, string classAlias, \fBIASTNode\fP parent)"
+.br
+.RI "\fIDoes the work of resolving an identifier or a dot \fP"
+.ti -1c
+.RI "void \fBResolve\fP (bool generateJoin, bool implicitJoin, string classAlias)"
+.br
+.RI "\fIDoes the work of resolving an identifier or a dot, but without a parent node \fP"
+.ti -1c
+.RI "void \fBResolve\fP (bool generateJoin, bool implicitJoin)"
+.br
+.RI "\fIDoes the work of resolving an identifier or a dot, but without a parent node or alias \fP"
+.ti -1c
+.RI "virtual void \fBResolveInFunctionCall\fP (bool generateJoin, bool implicitJoin)"
+.br
+.RI "\fIDoes the work of resolving inside of the scope of a function call \fP"
+.ti -1c
+.RI "abstract void \fBResolveIndex\fP (\fBIASTNode\fP parent)"
+.br
+.RI "\fIDoes the work of resolving an an index []\&. \fP"
+.ti -1c
+.RI "void \fBRecursiveResolve\fP (int level, bool impliedAtRoot, string classAlias, \fBIASTNode\fP parent)"
+.br
+.ti -1c
+.RI "virtual \fBFromElement\fP \fBGetImpliedJoin\fP ()"
+.br
+.RI "\fISub-classes can override this method if they produce implied joins (e\&.g\&. \fBDotNode\fP)\&. \fP"
+.ti -1c
+.RI "virtual void \fBPrepareForDot\fP (string propertyName)"
+.br
+.ti -1c
+.RI "virtual void \fBResolveFirstChild\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBRootLevel\fP = 0"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFromReferenceNode\fP (IToken token)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBIsReturnableEntity\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBFromElement\fP \fBFromElement\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsResolved\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBPath\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 9 of file FromReferenceNode\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromReferenceNode\&.GetDisplayText ()"
+
+.PP
+Returns additional display text for the AST node\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The additional display text\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IDisplayableNode\fP\&.
+.PP
+Definition at line 45 of file FromReferenceNode\&.cs\&.
+.SS "virtual \fBFromElement\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromReferenceNode\&.GetImpliedJoin ()\fC [virtual]\fP"
+
+.PP
+Sub-classes can override this method if they produce implied joins (e\&.g\&. \fBDotNode\fP)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an implied join created by this from reference\&.
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.DotNode\fP\&.
+.PP
+Definition at line 97 of file FromReferenceNode\&.cs\&.
+.SS "abstract void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromReferenceNode\&.Resolve (boolgenerateJoin, boolimplicitJoin, stringclassAlias, \fBIASTNode\fPparent)\fC [pure virtual]\fP"
+
+.PP
+Does the work of resolving an identifier or a dot 
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IResolvableNode\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.DotNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IdentNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IndexNode\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SelectExpressionImpl\fP\&.
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromReferenceNode\&.Resolve (boolgenerateJoin, boolimplicitJoin, stringclassAlias)"
+
+.PP
+Does the work of resolving an identifier or a dot, but without a parent node 
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IResolvableNode\fP\&.
+.PP
+Definition at line 55 of file FromReferenceNode\&.cs\&.
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromReferenceNode\&.Resolve (boolgenerateJoin, boolimplicitJoin)"
+
+.PP
+Does the work of resolving an identifier or a dot, but without a parent node or alias 
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IResolvableNode\fP\&.
+.PP
+Definition at line 60 of file FromReferenceNode\&.cs\&.
+.SS "abstract void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromReferenceNode\&.ResolveIndex (\fBIASTNode\fPparent)\fC [pure virtual]\fP"
+
+.PP
+Does the work of resolving an an index []\&. 
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IResolvableNode\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.DotNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IdentNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IndexNode\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SelectExpressionImpl\fP\&.
+.SS "virtual void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromReferenceNode\&.ResolveInFunctionCall (boolgenerateJoin, boolimplicitJoin)\fC [virtual]\fP"
+
+.PP
+Does the work of resolving inside of the scope of a function call 
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IResolvableNode\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.DotNode\fP\&.
+.PP
+Definition at line 65 of file FromReferenceNode\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

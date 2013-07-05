@@ -1,0 +1,289 @@
+.TH "NHibernate.SqlCommand.SqlUpdateBuilder" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.SqlCommand.SqlUpdateBuilder \- 
+.PP
+A class that builds an \fCUPDATE\fP sql statement\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.SqlCommand\&.SqlBaseBuilder\fP, and \fBNHibernate\&.SqlCommand\&.ISqlStringBuilder\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlUpdateBuilder\fP (\fBDialect\&.Dialect\fP dialect, \fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "\fBSqlUpdateBuilder\fP \fBSetTableName\fP (string tableName)"
+.br
+.ti -1c
+.RI "\fBSqlUpdateBuilder\fP \fBSetComment\fP (string comment)"
+.br
+.ti -1c
+.RI "\fBSqlUpdateBuilder\fP \fBAddColumn\fP (string columnName, object val, \fBILiteralType\fP literalType)"
+.br
+.RI "\fIAdd a column with a specific value to the UPDATE sql \fP"
+.ti -1c
+.RI "\fBSqlUpdateBuilder\fP \fBAddColumn\fP (string columnName, string val)"
+.br
+.RI "\fIAdd a column with a specific value to the UPDATE sql \fP"
+.ti -1c
+.RI "\fBSqlUpdateBuilder\fP \fBAddColumns\fP (string[] columnsName, string val)"
+.br
+.RI "\fIAdds columns with a specific value to the UPDATE sql \fP"
+.ti -1c
+.RI "virtual \fBSqlUpdateBuilder\fP \fBAddColumn\fP (string columnName, \fBIType\fP propertyType)"
+.br
+.ti -1c
+.RI "\fBSqlUpdateBuilder\fP \fBAddColumns\fP (string[] columnNames, \fBIType\fP propertyType)"
+.br
+.RI "\fIAdds the Property's columns to the UPDATE sql \fP"
+.ti -1c
+.RI "\fBSqlUpdateBuilder\fP \fBAddColumns\fP (string[] columnNames, bool[] updateable, \fBIType\fP propertyType)"
+.br
+.RI "\fIAdds the Property's updatable columns to the UPDATE sql \fP"
+.ti -1c
+.RI "\fBSqlUpdateBuilder\fP \fBAppendAssignmentFragment\fP (\fBSqlString\fP fragment)"
+.br
+.ti -1c
+.RI "\fBSqlUpdateBuilder\fP \fBSetWhere\fP (string whereSql)"
+.br
+.ti -1c
+.RI "\fBSqlUpdateBuilder\fP \fBSetIdentityColumn\fP (string[] columnNames, \fBIType\fP identityType)"
+.br
+.RI "\fISets the IdentityColumn for the \fCUPDATE\fP sql to use\&. \fP"
+.ti -1c
+.RI "\fBSqlUpdateBuilder\fP \fBSetVersionColumn\fP (string[] columnNames, \fBIVersionType\fP versionType)"
+.br
+.RI "\fISets the VersionColumn for the \fCUPDATE\fP sql to use\&. \fP"
+.ti -1c
+.RI "\fBSqlUpdateBuilder\fP \fBAddWhereFragment\fP (string[] columnNames, \fBIType\fP type, string op)"
+.br
+.RI "\fIAdds the columns for the \fBType\fP to the WhereFragment \fP"
+.ti -1c
+.RI "\fBSqlUpdateBuilder\fP \fBAddWhereFragment\fP (string[] columnNames, \fBSqlType\fP[] types, string op)"
+.br
+.ti -1c
+.RI "\fBSqlUpdateBuilder\fP \fBAddWhereFragment\fP (string columnName, \fBSqlType\fP type, string op)"
+.br
+.ti -1c
+.RI "\fBSqlUpdateBuilder\fP \fBAddWhereFragment\fP (string whereSql)"
+.br
+.RI "\fIAdds a string to the WhereFragment \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBToSqlString\fP ()"
+.br
+.ti -1c
+.RI "\fBSqlCommandInfo\fP \fBToSqlCommandInfo\fP ()"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A class that builds an \fCUPDATE\fP sql statement\&. 
+
+
+.PP
+Definition at line 13 of file SqlUpdateBuilder\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSqlUpdateBuilder\fP NHibernate\&.SqlCommand\&.SqlUpdateBuilder\&.AddColumn (stringcolumnName, objectval, \fBILiteralType\fPliteralType)"
+
+.PP
+Add a column with a specific value to the UPDATE sql 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnName\fP The name of the Column to add\&.
+.br
+\fIval\fP The value to set for the column\&.
+.br
+\fIliteralType\fP The NHibernateType to use to convert the value to a sql string\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlUpdateBuilder\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 49 of file SqlUpdateBuilder\&.cs\&.
+.SS "\fBSqlUpdateBuilder\fP NHibernate\&.SqlCommand\&.SqlUpdateBuilder\&.AddColumn (stringcolumnName, stringval)"
+
+.PP
+Add a column with a specific value to the UPDATE sql 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnName\fP The name of the Column to add\&.
+.br
+\fIval\fP A valid sql string to set as the value of the column\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlUpdateBuilder\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 61 of file SqlUpdateBuilder\&.cs\&.
+.SS "\fBSqlUpdateBuilder\fP NHibernate\&.SqlCommand\&.SqlUpdateBuilder\&.AddColumns (string[]columnsName, stringval)"
+
+.PP
+Adds columns with a specific value to the UPDATE sql 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnsName\fP The names of the Columns to add\&.
+.br
+\fIval\fP A valid sql string to set as the value of the column\&. This value is assigned to each column\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlUpdateBuilder\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 73 of file SqlUpdateBuilder\&.cs\&.
+.SS "\fBSqlUpdateBuilder\fP NHibernate\&.SqlCommand\&.SqlUpdateBuilder\&.AddColumns (string[]columnNames, \fBIType\fPpropertyType)"
+
+.PP
+Adds the Property's columns to the UPDATE sql 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnNames\fP An array of the column names for the Property
+.br
+\fIpropertyType\fP The IType of the property\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlUpdateBuilder\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 96 of file SqlUpdateBuilder\&.cs\&.
+.SS "\fBSqlUpdateBuilder\fP NHibernate\&.SqlCommand\&.SqlUpdateBuilder\&.AddColumns (string[]columnNames, bool[]updateable, \fBIType\fPpropertyType)"
+
+.PP
+Adds the Property's updatable columns to the UPDATE sql 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnNames\fP An array of the column names for the Property
+.br
+\fIupdateable\fP An array of updatable column flags\&. If this array is \fCnull\fP, all supplied columns are considered updatable\&.
+.br
+\fIpropertyType\fP The IType of the property\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlUpdateBuilder\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 108 of file SqlUpdateBuilder\&.cs\&.
+.SS "\fBSqlUpdateBuilder\fP NHibernate\&.SqlCommand\&.SqlUpdateBuilder\&.AddWhereFragment (string[]columnNames, \fBIType\fPtype, stringop)"
+
+.PP
+Adds the columns for the \fBType\fP to the WhereFragment 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnNames\fP The names of the columns to add\&.
+.br
+\fItype\fP The IType of the property\&.
+.br
+\fIop\fP The operator to put between the column name and value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlUpdateBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 173 of file SqlUpdateBuilder\&.cs\&.
+.SS "\fBSqlUpdateBuilder\fP NHibernate\&.SqlCommand\&.SqlUpdateBuilder\&.AddWhereFragment (stringwhereSql)"
+
+.PP
+Adds a string to the WhereFragment 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwhereSql\fP A well formed sql string with no parameters\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlUpdateBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 211 of file SqlUpdateBuilder\&.cs\&.
+.SS "\fBSqlUpdateBuilder\fP NHibernate\&.SqlCommand\&.SqlUpdateBuilder\&.SetIdentityColumn (string[]columnNames, \fBIType\fPidentityType)"
+
+.PP
+Sets the IdentityColumn for the \fCUPDATE\fP sql to use\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnNames\fP An array of the column names for the Property
+.br
+\fIidentityType\fP The IType of the Identity Property\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlUpdateBuilder\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 146 of file SqlUpdateBuilder\&.cs\&.
+.SS "\fBSqlUpdateBuilder\fP NHibernate\&.SqlCommand\&.SqlUpdateBuilder\&.SetVersionColumn (string[]columnNames, \fBIVersionType\fPversionType)"
+
+.PP
+Sets the VersionColumn for the \fCUPDATE\fP sql to use\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnNames\fP An array of the column names for the Property
+.br
+\fIversionType\fP The IVersionType of the Version Property\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlUpdateBuilder\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 159 of file SqlUpdateBuilder\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.SqlCommand\&.SqlUpdateBuilder\&.ToSqlString ()"
+
+.PP
+
+.PP
+Implements \fBNHibernate\&.SqlCommand\&.ISqlStringBuilder\fP\&.
+.PP
+Definition at line 224 of file SqlUpdateBuilder\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

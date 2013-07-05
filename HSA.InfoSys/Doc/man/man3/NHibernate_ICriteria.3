@@ -1,0 +1,896 @@
+.TH "NHibernate.ICriteria" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.ICriteria \- 
+.PP
+Criteria is a simplified API for retrieving entities by composing Expression objects\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits ICloneable\&.
+.PP
+Inherited by \fBNHibernate\&.Impl\&.CriteriaImpl\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBICriteria\fP \fBSetProjection\fP (params \fBIProjection\fP[] projection)"
+.br
+.RI "\fIUsed to specify that the query results will be a projection (scalar in nature)\&. Implicitly specifies the projection result transformer\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBAdd\fP (\fBICriterion\fP expression)"
+.br
+.RI "\fIAdd an Expression to constrain the results to be retrieved\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBAddOrder\fP (\fBOrder\fP order)"
+.br
+.RI "\fIAn an Order to the result set \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBSetFetchMode\fP (string associationPath, \fBFetchMode\fP mode)"
+.br
+.RI "\fISpecify an association fetching strategy\&. Currently, only one-to-many and one-to-one associations are supported\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBSetLockMode\fP (\fBLockMode\fP lockMode)"
+.br
+.RI "\fISet the lock mode of the current entity \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBSetLockMode\fP (string alias, \fBLockMode\fP lockMode)"
+.br
+.RI "\fISet the lock mode of the aliased entity \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateAlias\fP (string associationPath, string alias)"
+.br
+.RI "\fIJoin an association, assigning an alias to the joined entity \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateAlias\fP (string associationPath, string alias, \fBJoinType\fP joinType)"
+.br
+.RI "\fIJoin an association using the specified join-type, assigning an alias to the joined association \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateAlias\fP (string associationPath, string alias, \fBJoinType\fP joinType, \fBICriterion\fP withClause)"
+.br
+.RI "\fIJoin an association using the specified join-type, assigning an alias to the joined association \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateCriteria\fP (string associationPath)"
+.br
+.RI "\fICreate a new \fBICriteria\fP, 'rooted' at the associated entity \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateCriteria\fP (string associationPath, \fBJoinType\fP joinType)"
+.br
+.RI "\fICreate a new \fBICriteria\fP, 'rooted' at the associated entity, using the specified join type\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateCriteria\fP (string associationPath, string alias)"
+.br
+.RI "\fICreate a new \fBICriteria\fP, 'rooted' at the associated entity, assigning the given alias \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateCriteria\fP (string associationPath, string alias, \fBJoinType\fP joinType)"
+.br
+.RI "\fICreate a new \fBICriteria\fP, 'rooted' at the associated entity, assigning the given alias and using the specified join type\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateCriteria\fP (string associationPath, string alias, \fBJoinType\fP joinType, \fBICriterion\fP withClause)"
+.br
+.RI "\fICreate a new \fBICriteria\fP, 'rooted' at the associated entity, assigning the given alias and using the specified join type\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBSetResultTransformer\fP (\fBIResultTransformer\fP resultTransformer)"
+.br
+.RI "\fISet a strategy for handling the query results\&. This determines the 'shape' of the query result set\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+CriteriaSpecification\&.RootEntity, CriteriaSpecification\&.DistinctRootEntity, CriteriaSpecification\&.AliasToEntityMap
+.PP
+.RE
+.PP
+\fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBSetMaxResults\fP (int maxResults)"
+.br
+.RI "\fISet a limit upon the number of objects to be retrieved \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBSetFirstResult\fP (int firstResult)"
+.br
+.RI "\fISet the first result to be retrieved \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBSetFetchSize\fP (int fetchSize)"
+.br
+.RI "\fISet a fetch size for the underlying ADO query\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBSetTimeout\fP (int timeout)"
+.br
+.RI "\fISet a timeout for the underlying ADO\&.NET query \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBSetCacheable\fP (bool cacheable)"
+.br
+.RI "\fIEnable caching of this query result set \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBSetCacheRegion\fP (string cacheRegion)"
+.br
+.RI "\fISet the name of the cache region\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBSetComment\fP (string comment)"
+.br
+.RI "\fIAdd a comment to the generated SQL\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBSetFlushMode\fP (\fBFlushMode\fP flushMode)"
+.br
+.RI "\fIOverride the flush mode for this particular query\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBSetCacheMode\fP (\fBCacheMode\fP cacheMode)"
+.br
+.RI "\fIOverride the cache mode for this particular query\&. \fP"
+.ti -1c
+.RI "IList \fBList\fP ()"
+.br
+.RI "\fIGet the results \fP"
+.ti -1c
+.RI "object \fBUniqueResult\fP ()"
+.br
+.RI "\fIConvenience method to return a single instance that matches the query, or null if the query returns no results\&. \fP"
+.ti -1c
+.RI "IEnumerable< T > \fBFuture< T >\fP ()"
+.br
+.RI "\fIGet a enumerable that when enumerated will execute a batch of queries in a single database roundtrip \fP"
+.ti -1c
+.RI "IFutureValue< T > \fBFutureValue< T >\fP ()"
+.br
+.RI "\fIGet an IFutureValue instance, whose value can be retrieved through its Value property\&. The query is not executed until the Value property is retrieved, which will execute other Future queries as well in a single roundtrip \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBSetReadOnly\fP (bool readOnly)"
+.br
+.RI "\fISet the read-only mode for entities (and proxies) loaded by this Criteria\&. This setting overrides the default for the session (see \fBISession\&.DefaultReadOnly\fP)\&. \fP"
+.ti -1c
+.RI "void \fBList\fP (IList results)"
+.br
+.RI "\fIGet the results and fill the IList \fP"
+.ti -1c
+.RI "IList< T > \fBList< T >\fP ()"
+.br
+.RI "\fIStrongly-typed version of \fBList()\fP\&. \fP"
+.ti -1c
+.RI "T \fBUniqueResult< T >\fP ()"
+.br
+.RI "\fIStrongly-typed version of \fBUniqueResult()\fP\&. \fP"
+.ti -1c
+.RI "void \fBClearOrders\fP ()"
+.br
+.RI "\fIClear all orders from criteria\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBGetCriteriaByPath\fP (string path)"
+.br
+.RI "\fIAllows to get a sub criteria by path\&. Will return null if the criteria does not exists\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBGetCriteriaByAlias\fP (string alias)"
+.br
+.RI "\fIAlows to get a sub criteria by alias\&. Will return null if the criteria does not exists \fP"
+.ti -1c
+.RI "System\&.Type \fBGetRootEntityTypeIfAvailable\fP ()"
+.br
+.RI "\fIGets the root entity type if available, throws otherwise \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBAlias\fP\fC [get]\fP"
+.br
+.RI "\fIGet the alias of the entity encapsulated by this criteria instance\&. \fP"
+.ti -1c
+.RI "bool \fBIsReadOnlyInitialized\fP\fC [get]\fP"
+.br
+.RI "\fIWas the read-only mode explicitly initialized? \fP"
+.ti -1c
+.RI "bool \fBIsReadOnly\fP\fC [get]\fP"
+.br
+.RI "\fIWill entities (and proxies) loaded by this Criteria be put in read-only mode? \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Criteria is a simplified API for retrieving entities by composing Expression objects\&. 
+
+Using criteria is a very convenient approach for functionality like 'search' screens where there is a variable number of conditions to be placed upon the result set\&. 
+.PP
+The Session is a factory for \fBICriteria\fP\&. Expression instances are usually obtained via the factory methods on Expression\&. eg: 
+.PP
+.PP
+.nf
+IList cats = session\&.CreateCriteria(typeof(Cat))
+    \&.Add(Expression\&.Like("name", "Iz%"))
+    \&.Add(Expression\&.Gt("weight", minWeight))
+    \&.AddOrder(Order\&.Asc("age"))
+    \&.List();
+.fi
+.PP
+ You may navigate associations using \fBCreateAlias(string, string)\fP or \fBCreateCriteria(string)\fP\&. eg: 
+.PP
+.nf
+IList&lt;Cat&gt; cats = session\&.CreateCriteria&lt;Cat&gt;
+    \&.CreateCriteria("kittens")
+    \&.Add(Expression\&.like("name", "Iz%"))
+    \&.List&lt;Cat&gt;();
+
+.fi
+.PP
+ 
+.PP
+You may specify projection and aggregation using \fCProjection\fP instances obtained via the factory methods on \fCProjections\fP\&. eg: 
+.PP
+.nf
+IList&lt;Cat&gt; cats = session\&.CreateCriteria&lt;Cat&gt;
+    \&.SetProjection(
+        Projections\&.ProjectionList()
+            \&.Add(Projections\&.RowCount())
+            \&.Add(Projections\&.Avg("weight"))
+            \&.Add(Projections\&.Max("weight"))
+            \&.Add(Projections\&.Min("weight"))
+            \&.Add(Projections\&.GroupProperty("color")))
+    \&.AddOrder(Order\&.Asc("color"))
+    \&.List&lt;Cat&gt;();
+
+.fi
+.PP
+ 
+.PP
+Definition at line 55 of file ICriteria\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.Add (\fBICriterion\fPexpression)"
+
+.PP
+Add an Expression to constrain the results to be retrieved\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.AddOrder (\fBOrder\fPorder)"
+
+.PP
+An an Order to the result set 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIorder\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "void NHibernate\&.ICriteria\&.ClearOrders ()"
+
+.PP
+Clear all orders from criteria\&. 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.CreateAlias (stringassociationPath, stringalias)"
+
+.PP
+Join an association, assigning an alias to the joined entity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassociationPath\fP 
+.br
+\fIalias\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.CreateAlias (stringassociationPath, stringalias, \fBJoinType\fPjoinType)"
+
+.PP
+Join an association using the specified join-type, assigning an alias to the joined association 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassociationPath\fP 
+.br
+\fIalias\fP 
+.br
+\fIjoinType\fP The type of join to use\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+this (for method chaining)
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.CreateAlias (stringassociationPath, stringalias, \fBJoinType\fPjoinType, \fBICriterion\fPwithClause)"
+
+.PP
+Join an association using the specified join-type, assigning an alias to the joined association 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassociationPath\fP 
+.br
+\fIalias\fP 
+.br
+\fIjoinType\fP The type of join to use\&.
+.br
+\fIwithClause\fP The criteria to be added to the join condition (ON clause)
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+this (for method chaining)
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.CreateCriteria (stringassociationPath)"
+
+.PP
+Create a new \fBICriteria\fP, 'rooted' at the associated entity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassociationPath\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.CreateCriteria (stringassociationPath, \fBJoinType\fPjoinType)"
+
+.PP
+Create a new \fBICriteria\fP, 'rooted' at the associated entity, using the specified join type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassociationPath\fP A dot-separated property path
+.br
+\fIjoinType\fP The type of join to use
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.CreateCriteria (stringassociationPath, stringalias)"
+
+.PP
+Create a new \fBICriteria\fP, 'rooted' at the associated entity, assigning the given alias 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassociationPath\fP 
+.br
+\fIalias\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.CreateCriteria (stringassociationPath, stringalias, \fBJoinType\fPjoinType)"
+
+.PP
+Create a new \fBICriteria\fP, 'rooted' at the associated entity, assigning the given alias and using the specified join type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassociationPath\fP A dot-separated property path
+.br
+\fIalias\fP The alias to assign to the joined association (for later reference)\&.
+.br
+\fIjoinType\fP The type of join to use\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.CreateCriteria (stringassociationPath, stringalias, \fBJoinType\fPjoinType, \fBICriterion\fPwithClause)"
+
+.PP
+Create a new \fBICriteria\fP, 'rooted' at the associated entity, assigning the given alias and using the specified join type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassociationPath\fP A dot-separated property path
+.br
+\fIalias\fP The alias to assign to the joined association (for later reference)\&.
+.br
+\fIjoinType\fP The type of join to use\&.
+.br
+\fIwithClause\fP The criteria to be added to the join condition (ON clause)
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The created 'sub criteria'
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "IEnumerable<T> NHibernate\&.ICriteria\&.Future< T > ()"
+
+.PP
+Get a enumerable that when enumerated will execute a batch of queries in a single database roundtrip 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "IFutureValue<T> NHibernate\&.ICriteria\&.FutureValue< T > ()"
+
+.PP
+Get an IFutureValue instance, whose value can be retrieved through its Value property\&. The query is not executed until the Value property is retrieved, which will execute other Future queries as well in a single roundtrip 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.GetCriteriaByAlias (stringalias)"
+
+.PP
+Alows to get a sub criteria by alias\&. Will return null if the criteria does not exists 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP The alias\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.GetCriteriaByPath (stringpath)"
+
+.PP
+Allows to get a sub criteria by path\&. Will return null if the criteria does not exists\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "System\&.Type NHibernate\&.ICriteria\&.GetRootEntityTypeIfAvailable ()"
+
+.PP
+Gets the root entity type if available, throws otherwise This is an \fBNHibernate\fP specific method, used by several dependent frameworks for advance integration with \fBNHibernate\fP\&. 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP\&.
+.SS "IList NHibernate\&.ICriteria\&.List ()"
+
+.PP
+Get the results 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "void NHibernate\&.ICriteria\&.List (IListresults)"
+
+.PP
+Get the results and fill the IList 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIresults\fP The list to fill with the results\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "IList<T> \fBNHibernate\&.ICriteria\&.List\fP< T > ()"
+
+.PP
+Strongly-typed version of \fBList()\fP\&. 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.SetCacheable (boolcacheable)"
+
+.PP
+Enable caching of this query result set 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcacheable\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.SetCacheMode (\fBCacheMode\fPcacheMode)"
+
+.PP
+Override the cache mode for this particular query\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcacheMode\fP The cache mode to use\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+this (for method chaining) 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.SetCacheRegion (stringcacheRegion)"
+
+.PP
+Set the name of the cache region\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcacheRegion\fP the name of a query cache region, or  for the default query cache
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.SetComment (stringcomment)"
+
+.PP
+Add a comment to the generated SQL\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomment\fP a human-readable string 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+this (for method chaining) 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.SetFetchMode (stringassociationPath, \fBFetchMode\fPmode)"
+
+.PP
+Specify an association fetching strategy\&. Currently, only one-to-many and one-to-one associations are supported\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassociationPath\fP A dot separated property path\&.
+.br
+\fImode\fP The Fetch mode\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.SetFetchSize (intfetchSize)"
+
+.PP
+Set a fetch size for the underlying ADO query\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfetchSize\fP the fetch size 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+this (for method chaining) 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.SetFirstResult (intfirstResult)"
+
+.PP
+Set the first result to be retrieved 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirstResult\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.SetFlushMode (\fBFlushMode\fPflushMode)"
+
+.PP
+Override the flush mode for this particular query\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIflushMode\fP The flush mode to use\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+this (for method chaining) 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.SetLockMode (\fBLockMode\fPlockMode)"
+
+.PP
+Set the lock mode of the current entity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlockMode\fP the lock mode
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.SetLockMode (stringalias, \fBLockMode\fPlockMode)"
+
+.PP
+Set the lock mode of the aliased entity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP an alias
+.br
+\fIlockMode\fP the lock mode
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.SetMaxResults (intmaxResults)"
+
+.PP
+Set a limit upon the number of objects to be retrieved 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxResults\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.SetProjection (params \fBIProjection\fP[]projection)"
+
+.PP
+Used to specify that the query results will be a projection (scalar in nature)\&. Implicitly specifies the projection result transformer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection representing the overall 'shape' of the query results\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This instance (for method chaining)
+.RE
+.PP
+.PP
+The individual components contained within the given IProjection determines the overall 'shape' of the query result\&. 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.SetReadOnly (boolreadOnly)"
+
+.PP
+Set the read-only mode for entities (and proxies) loaded by this Criteria\&. This setting overrides the default for the session (see \fBISession\&.DefaultReadOnly\fP)\&. To set the \fIdefault\fP read-only setting for entities and proxies that are loaded into the session, see \fBISession\&.DefaultReadOnly\fP\&. 
+.PP
+Read-only entities can be modified, but changes are not persisted\&. They are not dirty-checked and snapshots of persistent state are not maintained\&. 
+.PP
+When a proxy is initialized, the loaded entity will have the same read-only setting as the uninitialized proxy has, regardless of the session's current setting\&. 
+.PP
+The read-only setting has no impact on entities or proxies returned by the criteria that existed in the session before the criteria was executed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreadOnly\fP If \fCtrue\fP, entities (and proxies) loaded by the criteria will be read-only\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCthis\fP (for method chaining)
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBICriteria\&.IsReadOnly\fP, \fBICriteria\&.IsReadOnlyInitialized\fP
+.PP
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.SetResultTransformer (\fBIResultTransformer\fPresultTransformer)"
+
+.PP
+Set a strategy for handling the query results\&. This determines the 'shape' of the query result set\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+CriteriaSpecification\&.RootEntity, CriteriaSpecification\&.DistinctRootEntity, CriteriaSpecification\&.AliasToEntityMap
+.PP
+.RE
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIresultTransformer\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "\fBICriteria\fP NHibernate\&.ICriteria\&.SetTimeout (inttimeout)"
+
+.PP
+Set a timeout for the underlying ADO\&.NET query 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItimeout\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "object NHibernate\&.ICriteria\&.UniqueResult ()"
+
+.PP
+Convenience method to return a single instance that matches the query, or null if the query returns no results\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the single result or 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP If there is more than one matching result 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SS "T \fBNHibernate\&.ICriteria\&.UniqueResult\fP< T > ()"
+
+.PP
+Strongly-typed version of \fBUniqueResult()\fP\&. 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.CriteriaImpl\&.Subcriteria\fP, and \fBNHibernate\&.Impl\&.CriteriaImpl\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "string NHibernate\&.ICriteria\&.Alias\fC [get]\fP"
+
+.PP
+Get the alias of the entity encapsulated by this criteria instance\&. The alias for the encapsulated entity\&.
+.PP
+Definition at line 61 of file ICriteria\&.cs\&.
+.SS "bool NHibernate\&.ICriteria\&.IsReadOnly\fC [get]\fP"
+
+.PP
+Will entities (and proxies) loaded by this Criteria be put in read-only mode? If the read-only setting was not initialized, then the value of the session's \fBISession\&.DefaultReadOnly\fP property is returned instead\&. 
+.PP
+The read-only setting has no impact on entities or proxies returned by the Criteria that existed in the session before the Criteria was executed\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if entities and proxies loaded by the criteria will be put in read-only mode, otherwise \fCfalse\fP\&. 
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBICriteria\&.SetReadOnly(bool)\fP, \fBICriteria\&.IsReadOnlyInitialized\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 90 of file ICriteria\&.cs\&.
+.SS "bool NHibernate\&.ICriteria\&.IsReadOnlyInitialized\fC [get]\fP"
+
+.PP
+Was the read-only mode explicitly initialized? 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the read-only mode was explicitly initialized, otherwise \fCfalse\fP\&.
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBICriteria\&.SetReadOnly(bool)\fP, \fBICriteria\&.IsReadOnly\fP
+.PP
+.RE
+.PP
+/// 
+.PP
+Definition at line 69 of file ICriteria\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

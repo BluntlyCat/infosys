@@ -1,0 +1,9 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_n_h1274_export_exclude_fixture =
+[
+    [ "SchemaExport_Drop_CreatesDropScript", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_n_h1274_export_exclude_fixture.html#ae47d59402761fefc0e90f77af9faf2f5", null ],
+    [ "SchemaExport_Export_CreatesExportScript", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_n_h1274_export_exclude_fixture.html#ab65ed04ea7481c5783346b9f5694e3b2", null ],
+    [ "SchemaExport_Update_CreatesUpdateScript", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_n_h1274_export_exclude_fixture.html#a58d1892829073d3c98411aacae4f830f", null ],
+    [ "SchemaExport_Validate_CausesValidateException", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_n_h1274_export_exclude_fixture.html#a4e7f972845fd29c24fa738d0666b8d2f", null ],
+    [ "BugNumber", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_n_h1274_export_exclude_fixture.html#a4670c69629a6a4ee8fed7a399aa6d591", null ],
+    [ "Mappings", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_n_h1274_export_exclude_fixture.html#afc05152fc75fdacccc6efaa16ecf1789", null ]
+];

@@ -1,0 +1,137 @@
+.TH "Renci.SshNet.PrivateKeyAuthenticationMethod" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.PrivateKeyAuthenticationMethod \- 
+.PP
+Provides functionality to perform private key authentication\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.AuthenticationMethod\fP, and IDisposable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPrivateKeyAuthenticationMethod\fP (string username, params \fBPrivateKeyFile\fP[] keyFiles)"
+.br
+.RI "\fIInitializes a new instance of the \fBPrivateKeyAuthenticationMethod\fP class\&. \fP"
+.ti -1c
+.RI "override \fBAuthenticationResult\fP \fBAuthenticate\fP (\fBSession\fP session)"
+.br
+.RI "\fIAuthenticates the specified session\&. \fP"
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "\fIPerforms application-defined tasks associated with freeing, releasing, or resetting unmanaged resources\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIReleases unmanaged and - optionally - managed resources \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.RI "\fIGets authentication method name \fP"
+.ti -1c
+.RI "ICollection< \fBPrivateKeyFile\fP > \fBKeyFiles\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the key files used for authentication\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Provides functionality to perform private key authentication\&. 
+
+
+.PP
+Definition at line 15 of file PrivateKeyAuthenticationMethod\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.PrivateKeyAuthenticationMethod\&.PrivateKeyAuthenticationMethod (stringusername, params \fBPrivateKeyFile\fP[]keyFiles)"
+
+.PP
+Initializes a new instance of the \fBPrivateKeyAuthenticationMethod\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIusername\fP The username\&.
+.br
+\fIkeyFiles\fP The key files\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP \fIusername\fP  is whitespace or null\&.
+.RE
+.PP
+
+.PP
+Definition at line 42 of file PrivateKeyAuthenticationMethod\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBAuthenticationResult\fP Renci\&.SshNet\&.PrivateKeyAuthenticationMethod\&.Authenticate (\fBSession\fPsession)\fC [virtual]\fP"
+
+.PP
+Authenticates the specified session\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session to authenticate\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Result of authentication process\&. 
+.RE
+.PP
+
+.PP
+Implements \fBRenci\&.SshNet\&.AuthenticationMethod\fP\&.
+.PP
+Definition at line 58 of file PrivateKeyAuthenticationMethod\&.cs\&.
+.SS "void Renci\&.SshNet\&.PrivateKeyAuthenticationMethod\&.Dispose ()"
+
+.PP
+Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources\&. 
+.PP
+Definition at line 154 of file PrivateKeyAuthenticationMethod\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.PrivateKeyAuthenticationMethod\&.Dispose (booldisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Releases unmanaged and - optionally - managed resources 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP \fCtrue\fP to release both managed and unmanaged resources; \fCfalse\fP to release only unmanaged resources\&.
+.RE
+.PP
+
+.PP
+Definition at line 165 of file PrivateKeyAuthenticationMethod\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "ICollection<\fBPrivateKeyFile\fP> Renci\&.SshNet\&.PrivateKeyAuthenticationMethod\&.KeyFiles\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the key files used for authentication\&. 
+.PP
+Definition at line 34 of file PrivateKeyAuthenticationMethod\&.cs\&.
+.SS "override string Renci\&.SshNet\&.PrivateKeyAuthenticationMethod\&.Name\fC [get]\fP"
+
+.PP
+Gets authentication method name 
+.PP
+Definition at line 27 of file PrivateKeyAuthenticationMethod\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

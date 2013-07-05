@@ -1,0 +1,47 @@
+var classlog4net_1_1_appender_1_1_remote_syslog_appender =
+[
+    [ "LevelSeverity", "classlog4net_1_1_appender_1_1_remote_syslog_appender_1_1_level_severity.html", "classlog4net_1_1_appender_1_1_remote_syslog_appender_1_1_level_severity" ],
+    [ "SyslogFacility", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fc", [
+      [ "Kernel", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fca6ff9f4444ac481652f4412b5e1623846", null ],
+      [ "User", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fca8f9bfe9d1345237cb3b2b205864da075", null ],
+      [ "Mail", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fca4dfbb099eafd3c82e033bf92946d3ce6", null ],
+      [ "Daemons", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fca36c9b6cce67c2bf131cee6590caf5998", null ],
+      [ "Authorization", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fca9cd8a2455b1839ff98ef70c05b9b5983", null ],
+      [ "Syslog", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fca6da6e44dc9987246944fdf9de3d4e794", null ],
+      [ "Printer", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fca37fe93164a9c7b7622bab12c349b98c8", null ],
+      [ "News", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fcadd1ba1872df91985ed1ca4cde2dfe669", null ],
+      [ "Uucp", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fcafc6a09d7d9e5244f60862d7ee4105bc5", null ],
+      [ "Clock", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fca98a892aea3359481ae30e7b66c44d7a8", null ],
+      [ "Authorization2", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fca0e19083c1934a08ab1653e192f9ab98a", null ],
+      [ "Ftp", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fcad0fd87c447cf407eb99b635393f4dacb", null ],
+      [ "Ntp", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fca2e0b74d59e5b0a7453b8dad925edaa87", null ],
+      [ "Audit", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fcaeda63b570db82e05c2fd7b5f0c3bb20f", null ],
+      [ "Alert", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fcab92071d61c88498171928745ca53078b", null ],
+      [ "Clock2", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fcad6a5eba0ddb5664932a1a5343d028175", null ],
+      [ "Local0", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fcab5d34c9c7ff4cf1f6d583f96a89d82b3", null ],
+      [ "Local1", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fca24939810a8a0a00ed1e4915353abed34", null ],
+      [ "Local2", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fcabf7113189b9969731e3ae0492a639f64", null ],
+      [ "Local3", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fcaba2eb2afd3484d2e9e318c9cbbd255ab", null ],
+      [ "Local4", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fcaf124b28ffd57154b1efd653ec3241ffb", null ],
+      [ "Local5", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fcacd1dec7dc03cae8f1de2be9abc5443d2", null ],
+      [ "Local6", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fca96855fc81e42c5652db114f001461eed", null ],
+      [ "Local7", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a23067b83e4653bd695ba78da767b08fcabb6ef5faa324b5fbe368392424b3491f", null ]
+    ] ],
+    [ "SyslogSeverity", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a93e910d6ce08e9770ee97be12dd7ba80", [
+      [ "Emergency", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a93e910d6ce08e9770ee97be12dd7ba80aa3fa706f20bc0b7858b7ae6932261940", null ],
+      [ "Alert", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a93e910d6ce08e9770ee97be12dd7ba80ab92071d61c88498171928745ca53078b", null ],
+      [ "Critical", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a93e910d6ce08e9770ee97be12dd7ba80a278d01e5af56273bae1bb99a98b370cd", null ],
+      [ "Error", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a93e910d6ce08e9770ee97be12dd7ba80a902b0d55fddef6f8d651fe1035b7d4bd", null ],
+      [ "Warning", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a93e910d6ce08e9770ee97be12dd7ba80a0eaadb4fcb48a0a0ed7bc9868be9fbaa", null ],
+      [ "Notice", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a93e910d6ce08e9770ee97be12dd7ba80a24efa7ee4511563b16144f39706d594f", null ],
+      [ "Informational", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a93e910d6ce08e9770ee97be12dd7ba80a5391f9a882a54c787b206138ed6d28b0", null ],
+      [ "Debug", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a93e910d6ce08e9770ee97be12dd7ba80aa603905470e2a5b8c13e96b579ef0dba", null ]
+    ] ],
+    [ "RemoteSyslogAppender", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a53a2bf63e93789dc5576b70af0b9a7df", null ],
+    [ "ActivateOptions", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a60d57b6818e8e61777266b77c7aa7226", null ],
+    [ "AddMapping", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a74b4a604ab0b64c36775dcae1a44dc9a", null ],
+    [ "Append", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a7d95a9f2d54c604f3d5cdc167e5987dd", null ],
+    [ "GetSeverity", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#aeae82830339c42096278a80eba06fb7d", null ],
+    [ "Facility", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#ac0a0344dec8505dffed32bb51db06e31", null ],
+    [ "Identity", "classlog4net_1_1_appender_1_1_remote_syslog_appender.html#a3ba29c992369a235079285905f6ad03c", null ]
+];

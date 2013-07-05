@@ -1,0 +1,117 @@
+.TH "Newtonsoft.Json.Serialization.MemoryTraceWriter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.Serialization.MemoryTraceWriter \- 
+.PP
+Represents a trace writer that writes to memory\&. When the trace message limit is reached then old trace messages will be removed as new messages are added\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNewtonsoft\&.Json\&.Serialization\&.ITraceWriter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMemoryTraceWriter\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBMemoryTraceWriter\fP class\&. \fP"
+.ti -1c
+.RI "void \fBTrace\fP (TraceLevel level, string message, Exception ex)"
+.br
+.RI "\fIWrites the specified trace level, message and optional exception\&. \fP"
+.ti -1c
+.RI "IEnumerable< string > \fBGetTraceMessages\fP ()"
+.br
+.RI "\fIReturns an enumeration of the most recent trace messages\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIReturns a String of the most recent trace messages\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "TraceLevel \fBLevelFilter\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the TraceLevel that will be used to filter the trace messages passed to the writer\&. For example a filter level of \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a trace writer that writes to memory\&. When the trace message limit is reached then old trace messages will be removed as new messages are added\&. 
+
+
+.PP
+Definition at line 13 of file MemoryTraceWriter\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Newtonsoft\&.Json\&.Serialization\&.MemoryTraceWriter\&.MemoryTraceWriter ()"
+
+.PP
+Initializes a new instance of the \fBMemoryTraceWriter\fP class\&. 
+.PP
+Definition at line 30 of file MemoryTraceWriter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "IEnumerable<string> Newtonsoft\&.Json\&.Serialization\&.MemoryTraceWriter\&.GetTraceMessages ()"
+
+.PP
+Returns an enumeration of the most recent trace messages\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An enumeration of the most recent trace messages\&.
+.RE
+.PP
+
+.PP
+Definition at line 56 of file MemoryTraceWriter\&.cs\&.
+.SS "override string Newtonsoft\&.Json\&.Serialization\&.MemoryTraceWriter\&.ToString ()"
+
+.PP
+Returns a String of the most recent trace messages\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A String of the most recent trace messages\&. 
+.RE
+.PP
+
+.PP
+Definition at line 67 of file MemoryTraceWriter\&.cs\&.
+.SS "void Newtonsoft\&.Json\&.Serialization\&.MemoryTraceWriter\&.Trace (TraceLevellevel, stringmessage, Exceptionex)"
+
+.PP
+Writes the specified trace level, message and optional exception\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlevel\fP The TraceLevel at which to write this trace\&.
+.br
+\fImessage\fP The trace message\&.
+.br
+\fIex\fP The trace exception\&. This parameter is optional\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.Serialization\&.ITraceWriter\fP\&.
+.PP
+Definition at line 42 of file MemoryTraceWriter\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "TraceLevel Newtonsoft\&.Json\&.Serialization\&.MemoryTraceWriter\&.LevelFilter\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the TraceLevel that will be used to filter the trace messages passed to the writer\&. For example a filter level of \fCInfo\fP will exclude \fCVerbose\fP messages and include \fCInfo\fP, \fCWarning\fP and \fCError\fP messages\&. 
+.PP
+The TraceLevel that will be used to filter the trace messages passed to the writer\&. 
+.PP
+Definition at line 25 of file MemoryTraceWriter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

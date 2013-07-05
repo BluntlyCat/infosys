@@ -1,0 +1,98 @@
+.TH "NHibernate.Event.Default.DefaultFlushEntityEventListener" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.Default.DefaultFlushEntityEventListener \- 
+.PP
+An event that occurs for each entity instance at flush time  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Event\&.IFlushEntityEventListener\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBOnFlushEntity\fP (\fBFlushEntityEvent\fP @event)"
+.br
+.RI "\fIFlushes a single entity's state to the database, by scheduling an update action, if necessary \fP"
+.ti -1c
+.RI "virtual void \fBCheckId\fP (object obj, \fBIEntityPersister\fP persister, object id, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fImake sure user didn't mangle the id \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBValidate\fP (object entity, \fBIEntityPersister\fP persister, \fBStatus\fP status, \fBEntityMode\fP entityMode)"
+.br
+.ti -1c
+.RI "virtual bool \fBHandleInterception\fP (\fBFlushEntityEvent\fP @event)"
+.br
+.ti -1c
+.RI "virtual bool \fBInvokeInterceptor\fP (\fBISessionImplementor\fP session, object entity, \fBEntityEntry\fP entry, object[] values, \fBIEntityPersister\fP persister)"
+.br
+.ti -1c
+.RI "bool \fBIsUpdateNecessary\fP (\fBFlushEntityEvent\fP @event)"
+.br
+.RI "\fIPerforms all necessary checking to determine if an entity needs an SQL update to synchronize its state to the database\&. Modifies the event by side-effect! Note: this method is quite slow, avoid calling if possible! \fP"
+.ti -1c
+.RI "virtual void \fBDirtyCheck\fP (\fBFlushEntityEvent\fP @event)"
+.br
+.RI "\fIPerform a dirty check, and attach the results to the event\fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An event that occurs for each entity instance at flush time 
+
+
+.PP
+Definition at line 17 of file DefaultFlushEntityEventListener\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Event\&.Default\&.DefaultFlushEntityEventListener\&.CheckId (objectobj, \fBIEntityPersister\fPpersister, objectid, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+make sure user didn't mangle the id 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP The obj\&.
+.br
+\fIpersister\fP The persister\&.
+.br
+\fIid\fP The id\&.
+.br
+\fIentityMode\fP The entity mode\&.
+.RE
+.PP
+
+.PP
+Definition at line 98 of file DefaultFlushEntityEventListener\&.cs\&.
+.SS "virtual void NHibernate\&.Event\&.Default\&.DefaultFlushEntityEventListener\&.DirtyCheck (\fBFlushEntityEvent\fP @event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Perform a dirty check, and attach the results to the event
+.PP
+Definition at line 430 of file DefaultFlushEntityEventListener\&.cs\&.
+.SS "bool NHibernate\&.Event\&.Default\&.DefaultFlushEntityEventListener\&.IsUpdateNecessary (\fBFlushEntityEvent\fP @event)\fC [protected]\fP"
+
+.PP
+Performs all necessary checking to determine if an entity needs an SQL update to synchronize its state to the database\&. Modifies the event by side-effect! Note: this method is quite slow, avoid calling if possible! 
+.PP
+Definition at line 384 of file DefaultFlushEntityEventListener\&.cs\&.
+.SS "virtual void NHibernate\&.Event\&.Default\&.DefaultFlushEntityEventListener\&.OnFlushEntity (\fBFlushEntityEvent\fP @event)\fC [virtual]\fP"
+
+.PP
+Flushes a single entity's state to the database, by scheduling an update action, if necessary 
+.PP
+Implements \fBNHibernate\&.Event\&.IFlushEntityEventListener\fP\&.
+.PP
+Definition at line 24 of file DefaultFlushEntityEventListener\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

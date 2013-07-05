@@ -1,0 +1,128 @@
+.TH "NHibernate.Test.Events.Collections.AbstractCollectionEventFixture" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.Events.Collections.AbstractCollectionEventFixture \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Test\&.TestCase\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Test\&.Events\&.Collections\&.Association\&.AbstractAssociationCollectionEventFixture\fP, and \fBNHibernate\&.Test\&.Events\&.Collections\&.Values\&.ValuesBagCollectionEventFixture\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract \fBIParentWithCollection\fP \fBCreateParent\fP (string name)"
+.br
+.ti -1c
+.RI "abstract ICollection< \fBIChild\fP > \fBCreateCollection\fP ()"
+.br
+.ti -1c
+.RI "void \fBSaveParentEmptyChildren\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBSaveParentOneChild\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdateParentNullToOneChild\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdateParentNoneToOneChild\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdateParentOneToTwoChildren\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBUpdateParentOneToTwoSameChildren\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdateParentNullToOneChildDiffCollection\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdateParentNoneToOneChildDiffCollection\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdateParentOneChildDiffCollectionSameChild\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdateParentOneChildDiffCollectionDiffChild\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdateParentOneChildToNoneByRemove\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdateParentOneChildToNoneByClear\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdateParentTwoChildrenToOne\fP ()"
+.br
+.ti -1c
+.RI "void \fBDeleteParentWithNullChildren\fP ()"
+.br
+.ti -1c
+.RI "void \fBDeleteParentWithNoChildren\fP ()"
+.br
+.ti -1c
+.RI "void \fBDeleteParentAndChild\fP ()"
+.br
+.ti -1c
+.RI "void \fBMoveChildToDifferentParent\fP ()"
+.br
+.ti -1c
+.RI "void \fBMoveAllChildrenToDifferentParent\fP ()"
+.br
+.ti -1c
+.RI "void \fBMoveCollectionToDifferentParent\fP ()"
+.br
+.ti -1c
+.RI "void \fBMoveCollectionToDifferentParentFlushMoveToDifferentParent\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBOnTearDown\fP ()"
+.br
+.ti -1c
+.RI "\fBIChild\fP \fBGetFirstChild\fP (ICollection< \fBIChild\fP > children)"
+.br
+.ti -1c
+.RI "\fBIParentWithCollection\fP \fBCreateParentWithNullChildren\fP (string parentName)"
+.br
+.ti -1c
+.RI "\fBIParentWithCollection\fP \fBCreateParentWithNoChildren\fP (string parentName)"
+.br
+.ti -1c
+.RI "\fBIParentWithCollection\fP \fBCreateParentWithOneChild\fP (string parentName, string ChildName)"
+.br
+.ti -1c
+.RI "void \fBCheckResult\fP (\fBCollectionListeners\fP listeners, \fBCollectionListeners\&.IListener\fP listenerExpected, \fBIParentWithCollection\fP parent, int index)"
+.br
+.ti -1c
+.RI "void \fBCheckResult\fP (\fBCollectionListeners\fP listeners, \fBCollectionListeners\&.IListener\fP listenerExpected, \fBIEntity\fP ownerExpected, object collExpected, int index)"
+.br
+.ti -1c
+.RI "void \fBCheckNumberOfResults\fP (\fBCollectionListeners\fP listeners, int nEventsExpected)"
+.br
+.ti -1c
+.RI "void \fBCheckResult\fP (\fBCollectionListeners\fP listeners, \fBCollectionListeners\&.IListener\fP listenerExpected, \fBChildWithBidirectionalManyToMany\fP child, int index)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBMappingsAssembly\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 11 of file AbstractCollectionEventFixture\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

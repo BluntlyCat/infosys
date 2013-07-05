@@ -1,0 +1,82 @@
+.TH "Newtonsoft.Json.Serialization.DefaultSerializationBinder" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.Serialization.DefaultSerializationBinder \- 
+.PP
+The default serialization binder used when resolving and loading classes from type names\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits SerializationBinder\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBTypeNameKey\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override Type \fBBindToType\fP (string assemblyName, string typeName)"
+.br
+.RI "\fIWhen overridden in a derived class, controls the binding of a serialized object to a type\&. \fP"
+.ti -1c
+.RI "override void \fBBindToName\fP (Type serializedType, out string assemblyName, out string typeName)"
+.br
+.RI "\fIWhen overridden in a derived class, controls the binding of a serialized object to a type\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The default serialization binder used when resolving and loading classes from type names\&. 
+
+
+.PP
+Definition at line 37 of file DefaultSerializationBinder\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void Newtonsoft\&.Json\&.Serialization\&.DefaultSerializationBinder\&.BindToName (TypeserializedType, out stringassemblyName, out stringtypeName)"
+
+.PP
+When overridden in a derived class, controls the binding of a serialized object to a type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIserializedType\fP The type of the object the formatter creates a new instance of\&.
+.br
+\fIassemblyName\fP Specifies the T:System\&.Reflection\&.Assembly name of the serialized object\&. 
+.br
+\fItypeName\fP Specifies the T:System\&.Type name of the serialized object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 145 of file DefaultSerializationBinder\&.cs\&.
+.SS "override Type Newtonsoft\&.Json\&.Serialization\&.DefaultSerializationBinder\&.BindToType (stringassemblyName, stringtypeName)"
+
+.PP
+When overridden in a derived class, controls the binding of a serialized object to a type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassemblyName\fP Specifies the T:System\&.Reflection\&.Assembly name of the serialized object\&.
+.br
+\fItypeName\fP Specifies the T:System\&.Type name of the serialized object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The type of the object the formatter creates a new instance of\&. 
+.RE
+.PP
+
+.PP
+Definition at line 133 of file DefaultSerializationBinder\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

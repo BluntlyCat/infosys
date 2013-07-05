@@ -1,0 +1,848 @@
+.TH "NHibernate.Mapping.PersistentClass" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.PersistentClass \- 
+.PP
+Base class for the \fBRootClazz\fP mapped by \fC<class>\fP and a \fBSubclass\fP that is mapped by \fC<subclass>\fP or \fC<joined-subclass>\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.IFilterable\fP, \fBNHibernate\&.Mapping\&.IMetaAttributable\fP, and \fBNHibernate\&.Mapping\&.ISqlCustomizable\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Mapping\&.RootClass\fP, and \fBNHibernate\&.Mapping\&.Subclass\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBAddSubclass\fP (\fBSubclass\fP subclass)"
+.br
+.RI "\fIAdds a \fBSubclass\fP to the class hierarchy\&. \fP"
+.ti -1c
+.RI "virtual void \fBAddProperty\fP (\fBProperty\fP p)"
+.br
+.RI "\fIChange the property definition or add a new property definition \fP"
+.ti -1c
+.RI "virtual void \fBAddSubclassProperty\fP (\fBProperty\fP p)"
+.br
+.RI "\fIAdds a \fBProperty\fP that is implemented by a subclass\&. \fP"
+.ti -1c
+.RI "virtual void \fBAddSubclassJoin\fP (\fBJoin\fP join)"
+.br
+.ti -1c
+.RI "virtual void \fBAddSubclassTable\fP (\fBTable\fP table)"
+.br
+.RI "\fIAdds a \fBTable\fP that a subclass is stored in\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsClassOrSuperclassJoin\fP (\fBJoin\fP join)"
+.br
+.ti -1c
+.RI "virtual bool \fBIsClassOrSuperclassTable\fP (\fBTable\fP closureTable)"
+.br
+.ti -1c
+.RI "virtual void \fBCreatePrimaryKey\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fICreates the \fBPrimaryKey\fP for the \fBTable\fP this type is persisted in\&. \fP"
+.ti -1c
+.RI "\fBProperty\fP \fBGetReferencedProperty\fP (string propertyPath)"
+.br
+.RI "\fIGiven a property path, locate the appropriate referenceable property reference\&. \fP"
+.ti -1c
+.RI "\fBProperty\fP \fBGetRecursiveProperty\fP (string propertyPath)"
+.br
+.ti -1c
+.RI "\fBProperty\fP \fBGetProperty\fP (string propertyName)"
+.br
+.ti -1c
+.RI "virtual void \fBValidate\fP (\fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "\fBMetaAttribute\fP \fBGetMetaAttribute\fP (string attributeName)"
+.br
+.RI "\fIRetrieve the \fBMetaAttribute\fP \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBAddJoin\fP (\fBJoin\fP join)"
+.br
+.ti -1c
+.RI "virtual int \fBGetJoinNumber\fP (\fBProperty\fP prop)"
+.br
+.ti -1c
+.RI "void \fBSetCustomSQLInsert\fP (string sql, bool callable, \fBExecuteUpdateResultCheckStyle\fP checkStyle)"
+.br
+.ti -1c
+.RI "void \fBSetCustomSQLUpdate\fP (string sql, bool callable, \fBExecuteUpdateResultCheckStyle\fP checkStyle)"
+.br
+.ti -1c
+.RI "void \fBSetCustomSQLDelete\fP (string sql, bool callable, \fBExecuteUpdateResultCheckStyle\fP checkStyle)"
+.br
+.ti -1c
+.RI "void \fBAddFilter\fP (string name, string condition)"
+.br
+.ti -1c
+.RI "void \fBAddSynchronizedTable\fP (string table)"
+.br
+.ti -1c
+.RI "abstract object \fBAccept\fP (\fBIPersistentClassVisitor\fP mv)"
+.br
+.ti -1c
+.RI "void \fBPrepareTemporaryTables\fP (\fBIMapping\fP mapping, \fBDialect\&.Dialect\fP dialect)"
+.br
+.ti -1c
+.RI "void \fBAddTuplizer\fP (\fBEntityMode\fP entityMode, string implClass)"
+.br
+.ti -1c
+.RI "virtual string \fBGetTuplizerImplClassName\fP (\fBEntityMode\fP mode)"
+.br
+.ti -1c
+.RI "bool \fBHasNaturalId\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBNullDiscriminatorMapping\fP = 'null'"
+.br
+.ti -1c
+.RI "const string \fBNotNullDiscriminatorMapping\fP = 'not null'"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBClassName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBProxyInterfaceName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual System\&.Type \fBMappedClass\fP\fC [get]\fP"
+.br
+.RI "\fIGets the System\&.Type that is being mapped\&. \fP"
+.ti -1c
+.RI "virtual System\&.Type \fBProxyInterface\fP\fC [get]\fP"
+.br
+.RI "\fIGets or sets the System\&.Type to use as a \fBProxy\fP\&. \fP"
+.ti -1c
+.RI "abstract int \fBSubclassId\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBDynamicInsert\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or Sets if the Insert Sql is built dynamically\&. \fP"
+.ti -1c
+.RI "virtual bool \fBDynamicUpdate\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or Sets if the Update Sql is built dynamically\&. \fP"
+.ti -1c
+.RI "virtual string \fBDiscriminatorValue\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or Sets the value to use as the discriminator for the Class\&. \fP"
+.ti -1c
+.RI "virtual int \fBSubclassSpan\fP\fC [get]\fP"
+.br
+.RI "\fIGets the number of subclasses that inherit either directly or indirectly\&. \fP"
+.ti -1c
+.RI "virtual IEnumerable< \fBSubclass\fP > \fBSubclassIterator\fP\fC [get]\fP"
+.br
+.RI "\fIIterate over subclasses in a special 'order', most derived subclasses first\&. \fP"
+.ti -1c
+.RI "virtual IEnumerable
+.br
+< \fBPersistentClass\fP > \fBSubclassClosureIterator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBTable\fP \fBIdentityTable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual IEnumerable< \fBSubclass\fP > \fBDirectSubclasses\fP\fC [get]\fP"
+.br
+.RI "\fIGets an IEnumerable of \fBSubclass\fP objects that directly inherit from this \fBPersistentClass\fP\&. \fP"
+.ti -1c
+.RI "virtual string \fBEntityName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "abstract bool \fBIsInherited\fP\fC [get]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets a boolean indicating if this mapped class is inherited from another\&. \fP"
+.ti -1c
+.RI "abstract bool \fBIsVersioned\fP\fC [get]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets a boolean indicating if the mapped class has a version property\&. \fP"
+.ti -1c
+.RI "abstract IEnumerable< \fBProperty\fP > \fBPropertyClosureIterator\fP\fC [get]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets an IEnumerable of \fBProperty\fP objects that this mapped class contains\&. \fP"
+.ti -1c
+.RI "abstract IEnumerable< \fBTable\fP > \fBTableClosureIterator\fP\fC [get]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets an IEnumerable of \fBTable\fP objects that this mapped class reads from and writes to\&. \fP"
+.ti -1c
+.RI "abstract IEnumerable< \fBIKeyValue\fP > \fBKeyClosureIterator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual IEnumerable< \fBProperty\fP > \fBSubclassPropertyClosureIterator\fP\fC [get]\fP"
+.br
+.RI "\fIGets an IEnumerable of \fBProperty\fP objects that this mapped class contains and that all of its subclasses contain\&. \fP"
+.ti -1c
+.RI "virtual IEnumerable< \fBJoin\fP > \fBSubclassJoinClosureIterator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual IEnumerable< \fBTable\fP > \fBSubclassTableClosureIterator\fP\fC [get]\fP"
+.br
+.RI "\fIGets an IEnumerable of all of the \fBTable\fP objects that the subclass finds its information in\&. \fP"
+.ti -1c
+.RI "bool \fBIsLazy\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "abstract System\&.Type \fBEntityPersisterClass\fP\fC [get, set]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets or sets the System\&.Type of the \fBPersister\fP\&. \fP"
+.ti -1c
+.RI "abstract \fBTable\fP \fBRootTable\fP\fC [get]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets the \fBTable\fP of the class that is mapped in the \fCclass\fP element\&. \fP"
+.ti -1c
+.RI "int \fBBatchSize\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBSelectBeforeUpdate\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual IEnumerable< \fBProperty\fP > \fBReferenceablePropertyIterator\fP\fC [get]\fP"
+.br
+.RI "\fIBuild a collection of properties which are 'referenceable'\&. \fP"
+.ti -1c
+.RI "bool \fBIsDiscriminatorValueNotNull\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsDiscriminatorValueNull\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, 
+.br
+\fBMetaAttribute\fP > \fBMetaAttributes\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual IEnumerable< \fBJoin\fP > \fBJoinIterator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual IEnumerable< \fBJoin\fP > \fBJoinClosureIterator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBJoinClosureSpan\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBPropertyClosureSpan\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual IEnumerable< \fBProperty\fP > \fBPropertyIterator\fP\fC [get]\fP"
+.br
+.RI "\fIBuild an iterator over the properties defined on this class\&. The returned iterator only accounts for 'normal' properties (i\&.e\&. non-identifier properties)\&. \fP"
+.ti -1c
+.RI "virtual IEnumerable< \fBProperty\fP > \fBUnjoinedPropertyIterator\fP\fC [get]\fP"
+.br
+.RI "\fIBuild an enumerable over the properties defined on this class \fBwhich are not defined as part of a join\fP\&. As with \fBPropertyIterator\fP the returned iterator only accounts for non-identifier properties\&. \fP"
+.ti -1c
+.RI "bool \fBIsCustomInsertCallable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBExecuteUpdateResultCheckStyle\fP \fBCustomSQLInsertCheckStyle\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsCustomUpdateCallable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBExecuteUpdateResultCheckStyle\fP \fBCustomSQLUpdateCheckStyle\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsCustomDeleteCallable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBExecuteUpdateResultCheckStyle\fP \fBCustomSQLDeleteCheckStyle\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual IDictionary< string, 
+.br
+string > \fBFilterMap\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract bool \fBIsJoinedSubclass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBLoaderName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual ISet< string > \fBSynchronizedTables\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBNodeName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasSubselectLoadableCollections\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBTemporaryIdTableName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBTemporaryIdTableDDL\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual IDictionary
+.br
+< \fBEntityMode\fP, string > \fBTuplizerMap\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasSubclasses\fP\fC [get]\fP"
+.br
+.RI "\fIGets a boolean indicating if this \fBPersistentClass\fP has any subclasses\&. \fP"
+.ti -1c
+.RI "abstract \fBTable\fP \fBTable\fP\fC [get]\fP"
+.br
+.RI "\fIGets or Sets the \fBTable\fP that this class is stored in\&. \fP"
+.ti -1c
+.RI "abstract bool \fBIsMutable\fP\fC [get, set]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets or set a boolean indicating if the mapped class has properties that can be changed\&. \fP"
+.ti -1c
+.RI "abstract bool \fBHasIdentifierProperty\fP\fC [get]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets a boolean indicating if the mapped class has a \fBProperty\fP for the \fCid\fP\&. \fP"
+.ti -1c
+.RI "abstract \fBProperty\fP \fBIdentifierProperty\fP\fC [get, set]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets or sets the \fBProperty\fP that is used as the \fCid\fP\&. \fP"
+.ti -1c
+.RI "abstract \fBIKeyValue\fP \fBIdentifier\fP\fC [get, set]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets or sets the \fBSimpleValue\fP that contains information about the identifier\&. \fP"
+.ti -1c
+.RI "abstract \fBProperty\fP \fBVersion\fP\fC [get, set]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets or sets the \fBProperty\fP that is used as the version\&. \fP"
+.ti -1c
+.RI "abstract \fBIValue\fP \fBDiscriminator\fP\fC [get, set]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets or sets the \fBSimpleValue\fP that contains information about the discriminator\&. \fP"
+.ti -1c
+.RI "abstract bool \fBIsPolymorphic\fP\fC [get, set]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets or sets if the mapped class has subclasses or is a subclass\&. \fP"
+.ti -1c
+.RI "abstract string \fBCacheConcurrencyStrategy\fP\fC [get, set]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets or sets the CacheConcurrencyStrategy to use to read/write instances of the persistent class to the \fBCache\fP\&. \fP"
+.ti -1c
+.RI "abstract \fBPersistentClass\fP \fBSuperclass\fP\fC [get, set]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets or sets the \fBPersistentClass\fP that this mapped class is extending\&. \fP"
+.ti -1c
+.RI "abstract bool \fBIsExplicitPolymorphism\fP\fC [get, set]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets or sets a boolean indicating if explicit polymorphism should be used in Queries\&. \fP"
+.ti -1c
+.RI "abstract bool \fBIsDiscriminatorInsertable\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "abstract bool \fBHasEmbeddedIdentifier\fP\fC [get, set]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets or sets a boolean indicating if the identifier is embedded in the class\&. \fP"
+.ti -1c
+.RI "abstract \fBRootClass\fP \fBRootClazz\fP\fC [get]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets the \fBMapping\&.RootClass\fP of the class that is mapped in the \fCclass\fP element\&. \fP"
+.ti -1c
+.RI "abstract \fBIKeyValue\fP \fBKey\fP\fC [get, set]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets or sets the \fBSimpleValue\fP that contains information about the Key\&. \fP"
+.ti -1c
+.RI "abstract string \fBWhere\fP\fC [get, set]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets or sets the sql string that should be a part of the where clause\&. \fP"
+.ti -1c
+.RI "virtual Versioning\&.OptimisticLock \fBOptimisticLockMode\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBCustomSQLInsert\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBCustomSQLUpdate\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBCustomSQLDelete\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsForceDiscriminator\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean indicating if only values in the discriminator column that are mapped will be included in the sql\&. \fP"
+.ti -1c
+.RI "bool \fBIsAbstract\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasPocoRepresentation\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBComponent\fP \fBIdentifierMapper\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasIdentifierMapper\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract bool \fBIsLazyPropertiesCacheable\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for the \fBRootClazz\fP mapped by \fC<class>\fP and a \fBSubclass\fP that is mapped by \fC<subclass>\fP or \fC<joined-subclass>\fP\&. 
+
+
+.PP
+Definition at line 16 of file PersistentClass\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Mapping\&.PersistentClass\&.AddProperty (\fBProperty\fPp)\fC [virtual]\fP"
+
+.PP
+Change the property definition or add a new property definition 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIp\fP The \fBProperty\fP to add\&.
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Mapping\&.Subclass\fP\&.
+.PP
+Definition at line 617 of file PersistentClass\&.cs\&.
+.SS "virtual void NHibernate\&.Mapping\&.PersistentClass\&.AddSubclass (\fBSubclass\fPsubclass)\fC [virtual]\fP"
+
+.PP
+Adds a \fBSubclass\fP to the class hierarchy\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsubclass\fP The \fBSubclass\fP to add to the hierarchy\&.
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Mapping\&.RootClass\fP\&.
+.PP
+Definition at line 587 of file PersistentClass\&.cs\&.
+.SS "virtual void NHibernate\&.Mapping\&.PersistentClass\&.AddSubclassProperty (\fBProperty\fPp)\fC [virtual]\fP"
+
+.PP
+Adds a \fBProperty\fP that is implemented by a subclass\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIp\fP The \fBProperty\fP implemented by a subclass\&.
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Mapping\&.Subclass\fP\&.
+.PP
+Definition at line 725 of file PersistentClass\&.cs\&.
+.SS "virtual void NHibernate\&.Mapping\&.PersistentClass\&.AddSubclassTable (\fBTable\fPtable)\fC [virtual]\fP"
+
+.PP
+Adds a \fBTable\fP that a subclass is stored in\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItable\fP The \fBTable\fP the subclass is stored in\&.
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Mapping\&.Subclass\fP\&.
+.PP
+Definition at line 739 of file PersistentClass\&.cs\&.
+.SS "virtual void NHibernate\&.Mapping\&.PersistentClass\&.CreatePrimaryKey (\fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+Creates the \fBPrimaryKey\fP for the \fBTable\fP this type is persisted in\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP that is used to Alias columns\&.
+.RE
+.PP
+
+.PP
+Definition at line 787 of file PersistentClass\&.cs\&.
+.SS "\fBMetaAttribute\fP NHibernate\&.Mapping\&.PersistentClass\&.GetMetaAttribute (stringattributeName)"
+
+.PP
+Retrieve the \fBMetaAttribute\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIattributeName\fP The attribute name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBMetaAttribute\fP if exists; null otherwise
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Mapping\&.IMetaAttributable\fP\&.
+.PP
+Definition at line 976 of file PersistentClass\&.cs\&.
+.SS "\fBProperty\fP NHibernate\&.Mapping\&.PersistentClass\&.GetReferencedProperty (stringpropertyPath)"
+
+.PP
+Given a property path, locate the appropriate referenceable property reference\&. A referenceable property is a property which can be a target of a foreign-key mapping (an identifier or explicitly named in a property-ref)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyPath\fP The property path to resolve into a property reference\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The property reference (never null)\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBMappingException\fP\fP If the property could not be found\&.
+.RE
+.PP
+
+.PP
+Definition at line 821 of file PersistentClass\&.cs\&.
+.SS "virtual void NHibernate\&.Mapping\&.PersistentClass\&.Validate (\fBIMapping\fPmapping)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fImapping\fP 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Mapping\&.RootClass\fP, and \fBNHibernate\&.Mapping\&.JoinedSubclass\fP\&.
+.PP
+Definition at line 951 of file PersistentClass\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const string NHibernate\&.Mapping\&.PersistentClass\&.NotNullDiscriminatorMapping = 'not null'"
+
+.PP
+
+.PP
+Definition at line 24 of file PersistentClass\&.cs\&.
+.SS "const string NHibernate\&.Mapping\&.PersistentClass\&.NullDiscriminatorMapping = 'null'"
+
+.PP
+
+.PP
+Definition at line 21 of file PersistentClass\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int NHibernate\&.Mapping\&.PersistentClass\&.BatchSize\fC [get]\fP, \fC [set]\fP"
+
+.PP
+
+.PP
+Definition at line 375 of file PersistentClass\&.cs\&.
+.SS "abstract string NHibernate\&.Mapping\&.PersistentClass\&.CacheConcurrencyStrategy\fC [get]\fP, \fC [set]\fP"
+
+.PP
+When implemented by a class, gets or sets the CacheConcurrencyStrategy to use to read/write instances of the persistent class to the \fBCache\fP\&. The CacheConcurrencyStrategy used with the \fBCache\fP\&.
+.PP
+Definition at line 693 of file PersistentClass\&.cs\&.
+.SS "virtual IEnumerable<\fBSubclass\fP> NHibernate\&.Mapping\&.PersistentClass\&.DirectSubclasses\fC [get]\fP"
+
+.PP
+Gets an IEnumerable of \fBSubclass\fP objects that directly inherit from this \fBPersistentClass\fP\&. An IEnumerable of \fBSubclass\fP objects that directly inherit from this \fBPersistentClass\fP\&. 
+.PP
+Definition at line 255 of file PersistentClass\&.cs\&.
+.SS "abstract \fBIValue\fP NHibernate\&.Mapping\&.PersistentClass\&.Discriminator\fC [get]\fP, \fC [set]\fP"
+
+.PP
+When implemented by a class, gets or sets the \fBSimpleValue\fP that contains information about the discriminator\&. The \fBSimpleValue\fP that contains information about the discriminator\&.
+.PP
+Definition at line 677 of file PersistentClass\&.cs\&.
+.SS "virtual string NHibernate\&.Mapping\&.PersistentClass\&.DiscriminatorValue\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or Sets the value to use as the discriminator for the Class\&. A value that distinguishes this subclass in the database\&. 
+.PP
+The value of this is set by the \fCdiscriminator-value\fP attribute\&. Each \fC<subclass>\fP in a hierarchy must define a unique \fCdiscriminator-value\fP\&. The default value is the class name if no value is supplied\&. 
+.PP
+Definition at line 185 of file PersistentClass\&.cs\&.
+.SS "virtual bool NHibernate\&.Mapping\&.PersistentClass\&.DynamicInsert\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or Sets if the Insert Sql is built dynamically\&. if the Sql is built at runtime\&.
+.PP
+The value of this is set by the \fCdynamic-insert\fP attribute\&. 
+.PP
+Definition at line 155 of file PersistentClass\&.cs\&.
+.SS "virtual bool NHibernate\&.Mapping\&.PersistentClass\&.DynamicUpdate\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or Sets if the Update Sql is built dynamically\&. if the Sql is built at runtime\&.
+.PP
+The value of this is set by the \fCdynamic-update\fP attribute\&. 
+.PP
+Definition at line 168 of file PersistentClass\&.cs\&.
+.SS "abstract System\&.Type NHibernate\&.Mapping\&.PersistentClass\&.EntityPersisterClass\fC [get]\fP, \fC [set]\fP"
+
+.PP
+When implemented by a class, gets or sets the System\&.Type of the \fBPersister\fP\&. 
+.PP
+Definition at line 360 of file PersistentClass\&.cs\&.
+.SS "abstract bool NHibernate\&.Mapping\&.PersistentClass\&.HasEmbeddedIdentifier\fC [get]\fP, \fC [set]\fP"
+
+.PP
+When implemented by a class, gets or sets a boolean indicating if the identifier is embedded in the class\&. if the class identifies itself\&.
+.PP
+An embedded identifier is true when using a \fCcomposite-id\fP specifying properties of the class as the \fCkey-property\fP instead of using a class as the \fCcomposite-id\fP\&. 
+.PP
+Definition at line 764 of file PersistentClass\&.cs\&.
+.SS "abstract bool NHibernate\&.Mapping\&.PersistentClass\&.HasIdentifierProperty\fC [get]\fP"
+
+.PP
+When implemented by a class, gets a boolean indicating if the mapped class has a \fBProperty\fP for the \fCid\fP\&. if there is a \fBProperty\fP for the \fCid\fP\&.
+.PP
+Definition at line 647 of file PersistentClass\&.cs\&.
+.SS "virtual bool NHibernate\&.Mapping\&.PersistentClass\&.HasSubclasses\fC [get]\fP"
+
+.PP
+Gets a boolean indicating if this \fBPersistentClass\fP has any subclasses\&. if this PeristentClass has any subclasses\&.
+.PP
+Definition at line 609 of file PersistentClass\&.cs\&.
+.SS "abstract \fBIKeyValue\fP NHibernate\&.Mapping\&.PersistentClass\&.Identifier\fC [get]\fP, \fC [set]\fP"
+
+.PP
+When implemented by a class, gets or sets the \fBSimpleValue\fP that contains information about the identifier\&. The \fBSimpleValue\fP that contains information about the identifier\&.
+.PP
+Definition at line 663 of file PersistentClass\&.cs\&.
+.SS "abstract \fBProperty\fP NHibernate\&.Mapping\&.PersistentClass\&.IdentifierProperty\fC [get]\fP, \fC [set]\fP"
+
+.PP
+When implemented by a class, gets or sets the \fBProperty\fP that is used as the \fCid\fP\&. The \fBProperty\fP that is used as the \fCid\fP\&. 
+.PP
+Definition at line 656 of file PersistentClass\&.cs\&.
+.SS "abstract bool NHibernate\&.Mapping\&.PersistentClass\&.IsDiscriminatorInsertable\fC [get]\fP, \fC [set]\fP"
+
+.PP
+
+.PP
+Definition at line 719 of file PersistentClass\&.cs\&.
+.SS "bool NHibernate\&.Mapping\&.PersistentClass\&.IsDiscriminatorValueNotNull\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 404 of file PersistentClass\&.cs\&.
+.SS "bool NHibernate\&.Mapping\&.PersistentClass\&.IsDiscriminatorValueNull\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 412 of file PersistentClass\&.cs\&.
+.SS "abstract bool NHibernate\&.Mapping\&.PersistentClass\&.IsExplicitPolymorphism\fC [get]\fP, \fC [set]\fP"
+
+.PP
+When implemented by a class, gets or sets a boolean indicating if explicit polymorphism should be used in Queries\&. if only classes queried on should be returned,  if any class in the heirarchy should implicitly be returned\&.
+.PP
+The value of this is set by the \fCpolymorphism\fP attribute\&. 
+.PP
+Definition at line 714 of file PersistentClass\&.cs\&.
+.SS "virtual bool NHibernate\&.Mapping\&.PersistentClass\&.IsForceDiscriminator\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean indicating if only values in the discriminator column that are mapped will be included in the sql\&. if the mapped discriminator values should be forced\&.
+.PP
+The value of this is set by the \fCforce\fP attribute on the \fCdiscriminator\fP element\&. 
+.PP
+Definition at line 1058 of file PersistentClass\&.cs\&.
+.SS "abstract bool NHibernate\&.Mapping\&.PersistentClass\&.IsInherited\fC [get]\fP"
+
+.PP
+When implemented by a class, gets a boolean indicating if this mapped class is inherited from another\&. if this class is a \fCsubclass\fP or \fCjoined-subclass\fP that inherited from another \fCclass\fP\&. 
+.PP
+Definition at line 273 of file PersistentClass\&.cs\&.
+.SS "abstract bool NHibernate\&.Mapping\&.PersistentClass\&.IsJoinedSubclass\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 525 of file PersistentClass\&.cs\&.
+.SS "abstract bool NHibernate\&.Mapping\&.PersistentClass\&.IsMutable\fC [get]\fP, \fC [set]\fP"
+
+.PP
+When implemented by a class, gets or set a boolean indicating if the mapped class has properties that can be changed\&. if the object is mutable\&.
+.PP
+The value of this is set by the \fCmutable\fP attribute\&. 
+.PP
+Definition at line 640 of file PersistentClass\&.cs\&.
+.SS "abstract bool NHibernate\&.Mapping\&.PersistentClass\&.IsPolymorphic\fC [get]\fP, \fC [set]\fP"
+
+.PP
+When implemented by a class, gets or sets if the mapped class has subclasses or is a subclass\&. if the mapped class has subclasses or is a subclass\&. 
+.PP
+Definition at line 686 of file PersistentClass\&.cs\&.
+.SS "abstract bool NHibernate\&.Mapping\&.PersistentClass\&.IsVersioned\fC [get]\fP"
+
+.PP
+When implemented by a class, gets a boolean indicating if the mapped class has a version property\&. if there is a \fC<version>\fP property\&.
+.PP
+Definition at line 280 of file PersistentClass\&.cs\&.
+.SS "abstract \fBIKeyValue\fP NHibernate\&.Mapping\&.PersistentClass\&.Key\fC [get]\fP, \fC [set]\fP"
+
+.PP
+When implemented by a class, gets or sets the \fBSimpleValue\fP that contains information about the Key\&. The \fBSimpleValue\fP that contains information about the Key\&.
+.PP
+Definition at line 780 of file PersistentClass\&.cs\&.
+.SS "virtual System\&.Type NHibernate\&.Mapping\&.PersistentClass\&.MappedClass\fC [get]\fP"
+
+.PP
+Gets the System\&.Type that is being mapped\&. The System\&.Type that is being mapped\&.
+.PP
+The value of this is set by the \fCname\fP attribute on the \fC<class>\fP element\&. 
+.PP
+Definition at line 97 of file PersistentClass\&.cs\&.
+.SS "abstract IEnumerable<\fBProperty\fP> NHibernate\&.Mapping\&.PersistentClass\&.PropertyClosureIterator\fC [get]\fP"
+
+.PP
+When implemented by a class, gets an IEnumerable of \fBProperty\fP objects that this mapped class contains\&. An IEnumerable of \fBProperty\fP objects that this mapped class contains\&. 
+.PP
+This is all of the properties of this mapped class and each mapped class that it is inheriting from\&. 
+.PP
+Definition at line 294 of file PersistentClass\&.cs\&.
+.SS "virtual IEnumerable<\fBProperty\fP> NHibernate\&.Mapping\&.PersistentClass\&.PropertyIterator\fC [get]\fP"
+
+.PP
+Build an iterator over the properties defined on this class\&. The returned iterator only accounts for 'normal' properties (i\&.e\&. non-identifier properties)\&. An IEnumerable of \fBProperty\fP objects\&. 
+.PP
+Differs from \fBUnjoinedPropertyIterator\fP in that the iterator we return here will include properties defined as part of a join\&. 
+.PP
+Definition at line 463 of file PersistentClass\&.cs\&.
+.SS "virtual System\&.Type NHibernate\&.Mapping\&.PersistentClass\&.ProxyInterface\fC [get]\fP"
+
+.PP
+Gets or sets the System\&.Type to use as a \fBProxy\fP\&. The System\&.Type to use as a \fBProxy\fP\&.
+.PP
+The value of this is set by the \fCproxy\fP attribute\&. 
+.PP
+Definition at line 125 of file PersistentClass\&.cs\&.
+.SS "virtual IEnumerable<\fBProperty\fP> NHibernate\&.Mapping\&.PersistentClass\&.ReferenceablePropertyIterator\fC [get]\fP"
+
+.PP
+Build a collection of properties which are 'referenceable'\&. See \fBGetReferencedProperty\fP for a discussion of 'referenceable'\&. 
+.PP
+Definition at line 396 of file PersistentClass\&.cs\&.
+.SS "abstract \fBRootClass\fP NHibernate\&.Mapping\&.PersistentClass\&.RootClazz\fC [get]\fP"
+
+.PP
+When implemented by a class, gets the \fBMapping\&.RootClass\fP of the class that is mapped in the \fCclass\fP element\&. The \fBMapping\&.RootClass\fP of the class that is mapped in the \fCclass\fP element\&. 
+.PP
+Definition at line 773 of file PersistentClass\&.cs\&.
+.SS "abstract \fBTable\fP NHibernate\&.Mapping\&.PersistentClass\&.RootTable\fC [get]\fP"
+
+.PP
+When implemented by a class, gets the \fBTable\fP of the class that is mapped in the \fCclass\fP element\&. The \fBTable\fP of the class that is mapped in the \fCclass\fP element\&. 
+.PP
+Definition at line 369 of file PersistentClass\&.cs\&.
+.SS "bool NHibernate\&.Mapping\&.PersistentClass\&.SelectBeforeUpdate\fC [get]\fP, \fC [set]\fP"
+
+.PP
+
+.PP
+Definition at line 384 of file PersistentClass\&.cs\&.
+.SS "virtual IEnumerable<\fBSubclass\fP> NHibernate\&.Mapping\&.PersistentClass\&.SubclassIterator\fC [get]\fP"
+
+.PP
+Iterate over subclasses in a special 'order', most derived subclasses first\&. It will recursively go through Subclasses so that if a SubclassType has Subclasses it will pick those up also\&. 
+.PP
+Definition at line 214 of file PersistentClass\&.cs\&.
+.SS "virtual IEnumerable<\fBProperty\fP> NHibernate\&.Mapping\&.PersistentClass\&.SubclassPropertyClosureIterator\fC [get]\fP"
+
+.PP
+Gets an IEnumerable of \fBProperty\fP objects that this mapped class contains and that all of its subclasses contain\&. An IEnumerable of \fBProperty\fP objects that this mapped class contains and that all of its subclasses contain\&. 
+.PP
+Definition at line 322 of file PersistentClass\&.cs\&.
+.SS "virtual int NHibernate\&.Mapping\&.PersistentClass\&.SubclassSpan\fC [get]\fP"
+
+.PP
+Gets the number of subclasses that inherit either directly or indirectly\&. The number of subclasses that inherit from this \fBPersistentClass\fP\&.
+.PP
+Definition at line 195 of file PersistentClass\&.cs\&.
+.SS "virtual IEnumerable<\fBTable\fP> NHibernate\&.Mapping\&.PersistentClass\&.SubclassTableClosureIterator\fC [get]\fP"
+
+.PP
+Gets an IEnumerable of all of the \fBTable\fP objects that the subclass finds its information in\&. An IEnumerable of \fBTable\fP objects\&.
+.PP
+It adds the TableClosureIterator and the subclassTables into the IEnumerable\&.
+.PP
+Definition at line 347 of file PersistentClass\&.cs\&.
+.SS "abstract \fBPersistentClass\fP NHibernate\&.Mapping\&.PersistentClass\&.Superclass\fC [get]\fP, \fC [set]\fP"
+
+.PP
+When implemented by a class, gets or sets the \fBPersistentClass\fP that this mapped class is extending\&. The \fBPersistentClass\fP that this mapped class is extending\&. 
+.PP
+Definition at line 702 of file PersistentClass\&.cs\&.
+.SS "abstract \fBTable\fP NHibernate\&.Mapping\&.PersistentClass\&.Table\fC [get]\fP"
+
+.PP
+Gets or Sets the \fBTable\fP that this class is stored in\&. The \fBTable\fP this class is stored in\&.
+.PP
+The value of this is set by the \fCtable\fP attribute\&. 
+.PP
+Definition at line 630 of file PersistentClass\&.cs\&.
+.SS "abstract IEnumerable<\fBTable\fP> NHibernate\&.Mapping\&.PersistentClass\&.TableClosureIterator\fC [get]\fP"
+
+.PP
+When implemented by a class, gets an IEnumerable of \fBTable\fP objects that this mapped class reads from and writes to\&. An IEnumerable of \fBTable\fP objects that this mapped class reads from and writes to\&. 
+.PP
+This is all of the tables of this mapped class and each mapped class that it is inheriting from\&. 
+.PP
+Definition at line 309 of file PersistentClass\&.cs\&.
+.SS "virtual IEnumerable<\fBProperty\fP> NHibernate\&.Mapping\&.PersistentClass\&.UnjoinedPropertyIterator\fC [get]\fP"
+
+.PP
+Build an enumerable over the properties defined on this class \fBwhich are not defined as part of a join\fP\&. As with \fBPropertyIterator\fP the returned iterator only accounts for non-identifier properties\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An enumerable over the non-joined 'normal' properties\&.
+.RE
+.PP
+
+.PP
+Definition at line 483 of file PersistentClass\&.cs\&.
+.SS "abstract \fBProperty\fP NHibernate\&.Mapping\&.PersistentClass\&.Version\fC [get]\fP, \fC [set]\fP"
+
+.PP
+When implemented by a class, gets or sets the \fBProperty\fP that is used as the version\&. The \fBProperty\fP that is used as the version\&.
+.PP
+Definition at line 670 of file PersistentClass\&.cs\&.
+.SS "abstract string NHibernate\&.Mapping\&.PersistentClass\&.Where\fC [get]\fP, \fC [set]\fP"
+
+.PP
+When implemented by a class, gets or sets the sql string that should be a part of the where clause\&. The sql string that should be a part of the where clause\&. 
+.PP
+The value of this is set by the \fCwhere\fP attribute\&. 
+.PP
+Definition at line 809 of file PersistentClass\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

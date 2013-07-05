@@ -1,0 +1,164 @@
+.TH "log4net.Layout.XmlLayoutBase" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Layout.XmlLayoutBase \- 
+.PP
+\fBLayout\fP that formats the log events as XML elements\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Layout\&.LayoutSkeleton\fP\&.
+.PP
+Inherited by \fBlog4net\&.Layout\&.XmlLayout\fP, and \fBlog4net\&.Layout\&.XmlLayoutSchemaLog4j\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBActivateOptions\fP ()"
+.br
+.RI "\fIInitialize layout options \fP"
+.ti -1c
+.RI "override void \fBFormat\fP (TextWriter writer, \fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIProduces a formatted string\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBXmlLayoutBase\fP ()"
+.br
+.RI "\fIProtected constructor to support subclasses \fP"
+.ti -1c
+.RI "\fBXmlLayoutBase\fP (bool locationInfo)"
+.br
+.RI "\fIProtected constructor to support subclasses \fP"
+.ti -1c
+.RI "abstract void \fBFormatXml\fP (XmlWriter writer, \fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIDoes the actual writing of the XML\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBLocationInfo\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets a value indicating whether to include location information in the XML events\&. \fP"
+.ti -1c
+.RI "string \fBInvalidCharReplacement\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe string to replace characters that can not be expressed in XML with\&. \fP"
+.ti -1c
+.RI "override string \fBContentType\fP\fC [get]\fP"
+.br
+.RI "\fIGets the content type output by this layout\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBLayout\fP that formats the log events as XML elements\&. 
+
+This is an abstract class that must be subclassed by an implementation to conform to a specific schema\&. 
+.PP
+Deriving classes must implement the \fBFormatXml\fP method\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 44 of file XMLLayoutBase\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Layout\&.XmlLayoutBase\&.XmlLayoutBase ()\fC [protected]\fP"
+
+.PP
+Protected constructor to support subclasses Initializes a new instance of the \fBXmlLayoutBase\fP class with no location info\&. 
+.PP
+Definition at line 57 of file XMLLayoutBase\&.cs\&.
+.SS "log4net\&.Layout\&.XmlLayoutBase\&.XmlLayoutBase (boollocationInfo)\fC [protected]\fP"
+
+.PP
+Protected constructor to support subclasses The \fIlocationInfo\fP  parameter determines whether location information will be output by the layout\&. If \fIlocationInfo\fP  is set to \fCtrue\fP, then the file name and line number of the statement at the origin of the log statement will be output\&. 
+.PP
+If you are embedding this layout within an SMTPAppender then make sure to set the \fBLocationInfo\fP option of that appender as well\&. 
+.PP
+Definition at line 79 of file XMLLayoutBase\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Layout\&.XmlLayoutBase\&.ActivateOptions ()\fC [virtual]\fP"
+
+.PP
+Initialize layout options This is part of the IOptionHandler delayed object activation scheme\&. The \fBActivateOptions\fP method must be called on this object after the configuration properties have been set\&. Until \fBActivateOptions\fP is called this object is in an undefined state and must not be used\&. 
+.PP
+If any of the configuration properties are modified then \fBActivateOptions\fP must be called again\&. 
+.PP
+Implements \fBlog4net\&.Layout\&.LayoutSkeleton\fP\&.
+.PP
+Definition at line 152 of file XMLLayoutBase\&.cs\&.
+.SS "override void log4net\&.Layout\&.XmlLayoutBase\&.Format (TextWriterwriter, \fBLoggingEvent\fPloggingEvent)\fC [virtual]\fP"
+
+.PP
+Produces a formatted string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP The event being logged\&.
+.br
+\fIwriter\fP The TextWriter to write the formatted event to
+.RE
+.PP
+.PP
+Format the LoggingEvent and write it to the TextWriter\&. 
+.PP
+This method creates an XmlTextWriter that writes to the \fIwriter\fP \&. The XmlTextWriter is passed to the \fBFormatXml\fP method\&. Subclasses should override the \fBFormatXml\fP method rather than this method\&. 
+.PP
+Implements \fBlog4net\&.Layout\&.LayoutSkeleton\fP\&.
+.PP
+Definition at line 193 of file XMLLayoutBase\&.cs\&.
+.SS "abstract void log4net\&.Layout\&.XmlLayoutBase\&.FormatXml (XmlWriterwriter, \fBLoggingEvent\fPloggingEvent)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Does the actual writing of the XML\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP The writer to use to output the event to\&.
+.br
+\fIloggingEvent\fP The event to write\&.
+.RE
+.PP
+.PP
+Subclasses should override this method to format the LoggingEvent as XML\&. 
+.PP
+Implemented in \fBlog4net\&.Layout\&.XmlLayout\fP, and \fBlog4net\&.Layout\&.XmlLayoutSchemaLog4j\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string log4net\&.Layout\&.XmlLayoutBase\&.ContentType\fC [get]\fP"
+
+.PP
+Gets the content type output by this layout\&. As this is the XML layout, the value is always \fC'text/xml'\fP\&. 
+.PP
+As this is the XML layout, the value is always \fC'text/xml'\fP\&. 
+.PP
+Definition at line 173 of file XMLLayoutBase\&.cs\&.
+.SS "string log4net\&.Layout\&.XmlLayoutBase\&.InvalidCharReplacement\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The string to replace characters that can not be expressed in XML with\&. Not all characters may be expressed in XML\&. This property contains the string to replace those that can not with\&. This defaults to a ?\&. Set it to the empty string to simply remove offending characters\&. For more details on the allowed character ranges see http://www.w3.org/TR/REC-xml/#charsets Character replacement will occur in the log message, the property names and the property values\&. 
+.PP
+Definition at line 128 of file XMLLayoutBase\&.cs\&.
+.SS "bool log4net\&.Layout\&.XmlLayoutBase\&.LocationInfo\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets a value indicating whether to include location information in the XML events\&. \fCtrue\fP if location information should be included in the XML events; otherwise, \fCfalse\fP\&. 
+.PP
+If \fBLocationInfo\fP is set to \fCtrue\fP, then the file name and line number of the statement at the origin of the log statement will be output\&. 
+.PP
+If you are embedding this layout within an \fCSMTPAppender\fP then make sure to set the \fBLocationInfo\fP option of that appender as well\&. 
+.PP
+Definition at line 110 of file XMLLayoutBase\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,72 @@
+.TH "NHibernate.Event.PreDeleteEvent" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.PreDeleteEvent \- 
+.PP
+Represents a \fCpre-delete\fP event, which occurs just prior to performing the deletion of an entity from the database\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Event\&.AbstractPreDatabaseOperationEvent\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPreDeleteEvent\fP (object entity, object id, object[] deletedState, \fBIEntityPersister\fP persister, \fBIEventSource\fP source)"
+.br
+.RI "\fIConstructs an event containing the pertinent information\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "object[] \fBDeletedState\fP\fC [get, set]\fP"
+.br
+.RI "\fIThis is the entity state at the time of deletion (useful for optomistic locking and such)\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Represents a \fCpre-delete\fP event, which occurs just prior to performing the deletion of an entity from the database\&. 
+
+
+.PP
+Definition at line 9 of file PreDeleteEvent\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Event\&.PreDeleteEvent\&.PreDeleteEvent (objectentity, objectid, object[]deletedState, \fBIEntityPersister\fPpersister, \fBIEventSource\fPsource)"
+
+.PP
+Constructs an event containing the pertinent information\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity to be deleted\&. 
+.br
+\fIid\fP The id to use in the deletion\&. 
+.br
+\fIdeletedState\fP The entity's state at deletion time\&. 
+.br
+\fIpersister\fP The entity's persister\&. 
+.br
+\fIsource\fP The session from which the event originated\&. 
+.RE
+.PP
+
+.PP
+Definition at line 19 of file PreDeleteEvent\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "object [] NHibernate\&.Event\&.PreDeleteEvent\&.DeletedState\fC [get]\fP, \fC [set]\fP"
+
+.PP
+This is the entity state at the time of deletion (useful for optomistic locking and such)\&. 
+.PP
+Definition at line 29 of file PreDeleteEvent\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

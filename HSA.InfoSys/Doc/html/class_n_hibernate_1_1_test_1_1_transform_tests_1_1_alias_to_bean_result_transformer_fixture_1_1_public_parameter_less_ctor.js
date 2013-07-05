@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_transform_tests_1_1_alias_to_bean_result_transformer_fixture_1_1_public_parameter_less_ctor =
+[
+    [ "Something", "class_n_hibernate_1_1_test_1_1_transform_tests_1_1_alias_to_bean_result_transformer_fixture_1_1_public_parameter_less_ctor.html#a7f8be89a5facd92ffea7a24918e86978", null ]
+];

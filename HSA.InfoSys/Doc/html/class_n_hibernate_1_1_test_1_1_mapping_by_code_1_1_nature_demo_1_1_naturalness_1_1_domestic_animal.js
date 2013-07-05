@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_nature_demo_1_1_naturalness_1_1_domestic_animal =
+[
+    [ "Owner", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_nature_demo_1_1_naturalness_1_1_domestic_animal.html#a26de03687f13ddb751056e74b63483ce", null ]
+];

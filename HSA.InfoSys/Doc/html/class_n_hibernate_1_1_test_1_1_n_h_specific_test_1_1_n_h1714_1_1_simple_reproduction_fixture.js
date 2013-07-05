@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1714_1_1_simple_reproduction_fixture =
+[
+    [ "AppliesTo", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1714_1_1_simple_reproduction_fixture.html#aa389bd593268bdc9c3173975fbea9dd7", null ],
+    [ "DbCommandsFromEventListenerShouldBeEnlistedInRunningTransaction", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1714_1_1_simple_reproduction_fixture.html#adb4ec60d87d93f167cafdcdff9000f39", null ]
+];

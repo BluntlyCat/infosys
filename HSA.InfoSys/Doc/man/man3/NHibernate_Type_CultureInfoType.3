@@ -1,0 +1,195 @@
+.TH "NHibernate.Type.CultureInfoType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.CultureInfoType \- 
+.PP
+Maps a System\&.Globalization\&.CultureInfo Property to a DbType\&.String column\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.ImmutableType\fP, and \fBNHibernate\&.Type\&.ILiteralType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, int index)"
+.br
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, string name)"
+.br
+.ti -1c
+.RI "override void \fBSet\fP (IDbCommand cmd, object value, int index)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP (object value)"
+.br
+.ti -1c
+.RI "override object \fBFromStringValue\fP (string xml)"
+.br
+.ti -1c
+.RI "string \fBObjectToSQLString\fP (object value, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIWhen implemented by a class, return a string representation of the value, suitable for embedding in an SQL statement \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Maps a System\&.Globalization\&.CultureInfo Property to a DbType\&.String column\&. 
+
+\fBCultureInfoType\fP stores the culture name (not the Culture ID) of the System\&.Globalization\&.CultureInfo in the DB\&. 
+.PP
+Definition at line 17 of file CultureInfoType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.CultureInfoType\&.FromStringValue (stringxml)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 80 of file CultureInfoType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.CultureInfoType\&.Get (IDataReaderrs, intindex)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP 
+.br
+\fIindex\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 30 of file CultureInfoType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.CultureInfoType\&.Get (IDataReaderrs, stringname)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP 
+.br
+\fIname\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 49 of file CultureInfoType\&.cs\&.
+.SS "string NHibernate\&.Type\&.CultureInfoType\&.ObjectToSQLString (objectvalue, \fBDialect\&.Dialect\fPdialect)"
+
+.PP
+When implemented by a class, return a string representation of the value, suitable for embedding in an SQL statement 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The object to convert to a string for the SQL statement\&.
+.br
+\fIdialect\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that contains a well formed SQL Statement\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.ILiteralType\fP\&.
+.PP
+Definition at line 97 of file CultureInfoType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.CultureInfoType\&.Set (IDbCommandcmd, objectvalue, intindex)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP 
+.br
+\fIvalue\fP 
+.br
+\fIindex\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 60 of file CultureInfoType\&.cs\&.
+.SS "override string NHibernate\&.Type\&.CultureInfoType\&.ToString (objectvalue)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 70 of file CultureInfoType\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.Type\&.CultureInfoType\&.Name\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 93 of file CultureInfoType\&.cs\&.
+.SS "override System\&.Type NHibernate\&.Type\&.CultureInfoType\&.ReturnedClass\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 87 of file CultureInfoType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,172 @@
+.TH "NHibernate.Mapping.SimpleValue" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.SimpleValue \- 
+.PP
+\fBAny\fP value that maps to columns\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.IKeyValue\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Mapping\&.Any\fP, \fBNHibernate\&.Mapping\&.Component\fP, \fBNHibernate\&.Mapping\&.DependantValue\fP, and \fBNHibernate\&.Mapping\&.ToOne\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSimpleValue\fP (\fBTable\fP table)"
+.br
+.ti -1c
+.RI "void \fBCreateForeignKeyOfEntity\fP (string entityName)"
+.br
+.ti -1c
+.RI "bool \fBIsIdentityColumn\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.ti -1c
+.RI "\fBIIdentifierGenerator\fP \fBCreateIdentifierGenerator\fP (\fBDialect\&.Dialect\fP dialect, string defaultCatalog, string defaultSchema, \fBRootClass\fP rootClass)"
+.br
+.ti -1c
+.RI "virtual bool \fBIsValid\fP (\fBIMapping\fP mapping)"
+.br
+.RI "\fIDetermines if the Value is part of a valid mapping\&. \fP"
+.ti -1c
+.RI "virtual void \fBCreateForeignKey\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBSetTypeUsingReflection\fP (string className, string propertyName, string accesorName)"
+.br
+.ti -1c
+.RI "virtual object \fBAccept\fP (\fBIValueVisitor\fP visitor)"
+.br
+.ti -1c
+.RI "virtual void \fBAddColumn\fP (\fBColumn\fP column)"
+.br
+.ti -1c
+.RI "virtual void \fBAddFormula\fP (\fBFormula\fP formula)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual IEnumerable< \fBColumn\fP > \fBConstraintColumns\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBForeignKeyName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBTable\fP \fBTable\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, string > \fBIdentifierGeneratorProperties\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBIdentifierGeneratorStrategy\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsComposite\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsCascadeDeleteEnabled\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBNullValue\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsUpdateable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsTypeSpecified\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, string > \fBTypeParameters\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBTypeName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBColumnSpan\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual IEnumerable< \fBISelectable\fP > \fBColumnIterator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBIType\fP \fBType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasFormula\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsNullable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool[] \fBColumnUpdateability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool[] \fBColumnInsertability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSimpleValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBFetchMode\fP \fBFetchMode\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsAlternateUniqueKey\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBAny\fP value that maps to columns\&. 
+
+
+.PP
+Definition at line 16 of file SimpleValue\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Mapping\&.SimpleValue\&.CreateForeignKey ()\fC [virtual]\fP"
+
+.PP
+
+.PP
+Implements \fBNHibernate\&.Mapping\&.IValue\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Mapping\&.ToOne\fP, \fBNHibernate\&.Mapping\&.OneToOne\fP, and \fBNHibernate\&.Mapping\&.ManyToOne\fP\&.
+.PP
+Definition at line 328 of file SimpleValue\&.cs\&.
+.SS "virtual bool NHibernate\&.Mapping\&.SimpleValue\&.IsValid (\fBIMapping\fPmapping)\fC [virtual]\fP"
+
+.PP
+Determines if the Value is part of a valid mapping\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImapping\fP The IMapping to validate\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+if the Value is part of a valid mapping,  otherwise\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBMappingException\fP\fP 
+.RE
+.PP
+.PP
+Mainly used to make sure that Value maps to the correct number of columns\&. 
+.PP
+Implements \fBNHibernate\&.Mapping\&.IValue\fP\&.
+.PP
+Definition at line 323 of file SimpleValue\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

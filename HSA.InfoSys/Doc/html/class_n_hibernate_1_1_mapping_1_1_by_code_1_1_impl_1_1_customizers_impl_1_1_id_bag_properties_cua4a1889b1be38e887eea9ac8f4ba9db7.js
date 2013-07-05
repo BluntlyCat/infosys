@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_mapping_1_1_by_code_1_1_impl_1_1_customizers_impl_1_1_id_bag_properties_cua4a1889b1be38e887eea9ac8f4ba9db7 =
+[
+    [ "IdBagPropertiesCustomizer", "class_n_hibernate_1_1_mapping_1_1_by_code_1_1_impl_1_1_customizers_impl_1_1_id_bag_properties_cua4a1889b1be38e887eea9ac8f4ba9db7.html#a6faff38523eb562b5d1d2a94c9f5f608", null ],
+    [ "Id", "class_n_hibernate_1_1_mapping_1_1_by_code_1_1_impl_1_1_customizers_impl_1_1_id_bag_properties_cua4a1889b1be38e887eea9ac8f4ba9db7.html#a7ae3d052d7edf2e95ae8dce817944c8e", null ]
+];

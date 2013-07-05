@@ -1,0 +1,714 @@
+.TH "NHibernate.Type.AbstractType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.AbstractType \- 
+.PP
+The base implementation of the \fBIType\fP interface\&. \fBMapping\fP of the built in \fBType\fP hierarchy\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Type\&.AnyType\fP, \fBNHibernate\&.Type\&.ClassMetaType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.CompositeCustomType\fP, \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.EntityType\fP, \fBNHibernate\&.Type\&.MetaType\fP, and \fBNHibernate\&.Type\&.NullableType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual object \fBDisassemble\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIDisassembles the object into a cacheable representation\&. \fP"
+.ti -1c
+.RI "virtual object \fBAssemble\fP (object cached, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIReconstructs the object from its cached 'disassembled' state\&. \fP"
+.ti -1c
+.RI "virtual void \fBBeforeAssemble\fP (object cached, \fBISessionImplementor\fP session)"
+.br
+.RI "\fICalled before assembling a query result set from the query cache, to allow batch fetching of entities missing from the second-level cache\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsDirty\fP (object old, object current, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIShould the parent be considered dirty, given both the old and current field or element value? \fP"
+.ti -1c
+.RI "virtual object \fBHydrate\fP (IDataReader rs, string[] names, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIRetrives an instance of the mapped class, or the identifier of an entity or collection from a IDataReader\&. \fP"
+.ti -1c
+.RI "virtual object \fBResolveIdentifier\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIMaps identifiers to Entities or Collections\&. \fP"
+.ti -1c
+.RI "virtual object \fBSemiResolve\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIGiven a hydrated, but unresolved value, return a value that may be used to reconstruct property-ref associations\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsModified\fP (object old, object current, bool[] checkable, \fBISessionImplementor\fP session)"
+.br
+.RI "\fISays whether the value has been modified \fP"
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.in -1c
+.PP
+.RI "\fB='M:IType\&.DeepCopy']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "abstract object \fBDeepCopy\fP (object val, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.SqlTypes']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "abstract \fBSqlType\fP[] \fBSqlTypes\fP (\fBIMapping\fP mapping)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.NullSafeGet(IDataReader, string[], ISessionImplementor, object)']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "abstract object \fBNullSafeGet\fP (IDataReader rs, string[] names, \fBISessionImplementor\fP session, object owner)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.NullSafeGet(IDataReader, string, ISessionImplementor, object)']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "abstract object \fBNullSafeGet\fP (IDataReader rs, string name, \fBISessionImplementor\fP session, Object owner)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.NullSafeSet(settable)']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "abstract void \fBNullSafeSet\fP (IDbCommand st, object value, int index, bool[] settable, \fBISessionImplementor\fP session)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.NullSafeSet']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "abstract void \fBNullSafeSet\fP (IDbCommand st, object value, int index, \fBISessionImplementor\fP session)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.ToString']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "abstract string \fBToLoggableString\fP (object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "abstract bool \fBIsDirty\fP (object old, object current, bool[] checkable, \fBISessionImplementor\fP session)"
+.br
+.in -1c
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBIsAssociationType\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating if the \fBAbstractType\fP is an \fBIAssociationType\fP\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsXMLElement\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsCollectionType\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating if the \fBAbstractType\fP is a \fBCollectionType\fP\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsComponentType\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating if the \fBAbstractType\fP is an \fBIAbstractComponentType\fP\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsEntityType\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating if the \fBAbstractType\fP is a \fBEntityType\fP\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsAnyType\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating if the implementation is an 'object' type \fP"
+.in -1c
+.PP
+.RI "\fB='P:IType\&.IsMutable']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "abstract bool \fBIsMutable\fP\fC [get]\fP"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='P:IType\&.Name']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "abstract string \fBName\fP\fC [get]\fP"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='P:IType\&.ReturnedClass']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "abstract System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.in -1c
+.in -1c
+.SS "='M:IType\&.GetColumnSpan']/*'"
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.in +1c
+.ti -1c
+.RI "abstract int \fBGetColumnSpan\fP (\fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "virtual object \fBReplace\fP (object original, object target, \fBISessionImplementor\fP session, object owner, IDictionary copyCache, \fBForeignKeyDirection\fP foreignKeyDirection)"
+.br
+.RI "\fIDuring merge, replace the existing (target) value in the entity we are merging to with a new (original) value from the detached entity we are merging\&. For immutable objects, or null values, it is safe to simply return the first parameter\&. For mutable objects, it is safe to return a copy of the first parameter\&. For objects with component values, it might make sense to recursively replace component values\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsSame\fP (object x, object y, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fICompare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state - taking a shortcut for entity references\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsEqual\fP (object x, object y, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fICompare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsEqual\fP (object x, object y, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fICompare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. \fP"
+.ti -1c
+.RI "virtual int \fBGetHashCode\fP (object x, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet a hashcode, consistent with persistence 'equality'\fP"
+.ti -1c
+.RI "virtual int \fBGetHashCode\fP (object x, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIGet a hashcode, consistent with persistence 'equality'\fP"
+.ti -1c
+.RI "virtual int \fBCompare\fP (object x, object y, \fBEntityMode\fP?entityMode)"
+.br
+.RI "\fIcompare two instances of the type\fP"
+.ti -1c
+.RI "virtual \fBIType\fP \fBGetSemiResolvedType\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIGet the type of a semi-resolved value\&.\fP"
+.ti -1c
+.RI "abstract object \fBReplace\fP (object original, object current, \fBISessionImplementor\fP session, object owner, IDictionary copiedAlready)"
+.br
+.ti -1c
+.RI "abstract void \fBSetToXMLNode\fP (XmlNode node, object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIA representation of the value to be embedded in an XML element\&. \fP"
+.ti -1c
+.RI "abstract object \fBFromXMLNode\fP (XmlNode xml, \fBIMapping\fP factory)"
+.br
+.RI "\fIParse the XML representation of an instance\&.\fP"
+.ti -1c
+.RI "abstract bool[] \fBToColumnNullness\fP (object value, \fBIMapping\fP mapping)"
+.br
+.RI "\fIGiven an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The base implementation of the \fBIType\fP interface\&. \fBMapping\fP of the built in \fBType\fP hierarchy\&. 
+
+
+.PP
+Definition at line 16 of file AbstractType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual object NHibernate\&.Type\&.AbstractType\&.Assemble (objectcached, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Reconstructs the object from its cached 'disassembled' state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcached\fP The disassembled state from the cache
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP The parent Entity object is not used by this method
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The assembled object\&.
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.ICacheAssembler\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.PersistentEnumType\fP, \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.EnumStringType\fP, \fBNHibernate\&.Type\&.AnyType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.SerializableType\fP, \fBNHibernate\&.Type\&.ManyToOneType\fP, \fBNHibernate\&.Type\&.EnumCharType< T >\fP, \fBNHibernate\&.Type\&.OneToOneType\fP, and \fBNHibernate\&.Type\&.CompositeCustomType\fP\&.
+.PP
+Definition at line 87 of file AbstractType\&.cs\&.
+.SS "virtual void NHibernate\&.Type\&.AbstractType\&.BeforeAssemble (objectcached, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Called before assembling a query result set from the query cache, to allow batch fetching of entities missing from the second-level cache\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.ICacheAssembler\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.ManyToOneType\fP\&.
+.PP
+Definition at line 95 of file AbstractType\&.cs\&.
+.SS "virtual int NHibernate\&.Type\&.AbstractType\&.Compare (objectx, objecty, \fBEntityMode\fP?entityMode)\fC [virtual]\fP"
+
+.PP
+compare two instances of the type
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.EntityType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.AnyType\fP, and \fBNHibernate\&.Type\&.AbstractBinaryType\fP\&.
+.PP
+Definition at line 241 of file AbstractType\&.cs\&.
+.SS "virtual object NHibernate\&.Type\&.AbstractType\&.Disassemble (objectvalue, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Disassembles the object into a cacheable representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to disassemble\&.
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP optional parent entity object (needed for collections) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The disassembled, deep cloned state of the object
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.ICacheAssembler\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.PersistentEnumType\fP, \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.EnumStringType\fP, \fBNHibernate\&.Type\&.AnyType\fP, \fBNHibernate\&.Type\&.SerializableType\fP, \fBNHibernate\&.Type\&.EnumCharType< T >\fP, \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.CompositeCustomType\fP, \fBNHibernate\&.Type\&.OneToOneType\fP, and \fBNHibernate\&.Type\&.ManyToOneType\fP\&.
+.PP
+Definition at line 69 of file AbstractType\&.cs\&.
+.SS "abstract object NHibernate\&.Type\&.AbstractType\&.FromXMLNode (XmlNodexml, \fBIMapping\fPfactory)\fC [pure virtual]\fP"
+
+.PP
+Parse the XML representation of an instance\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an instance of the type 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.NullableType\fP, \fBNHibernate\&.Type\&.CompositeCustomType\fP, \fBNHibernate\&.Type\&.EntityType\fP, \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.AnyType\fP, \fBNHibernate\&.Type\&.ClassMetaType\fP, and \fBNHibernate\&.Type\&.MetaType\fP\&.
+.SS "virtual int NHibernate\&.Type\&.AbstractType\&.GetHashCode (objectx, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Get a hashcode, consistent with persistence 'equality'
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.DateTimeType\fP, \fBNHibernate\&.Type\&.AbstractBinaryType\fP, \fBNHibernate\&.Type\&.TimeType\fP, \fBNHibernate\&.Type\&.DateType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, and \fBNHibernate\&.Type\&.AbstractDateTimeSpecificKindType\fP\&.
+.PP
+Definition at line 231 of file AbstractType\&.cs\&.
+.SS "virtual int NHibernate\&.Type\&.AbstractType\&.GetHashCode (objectx, \fBEntityMode\fPentityMode, \fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+Get a hashcode, consistent with persistence 'equality'
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIentityMode\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.EntityType\fP, and \fBNHibernate\&.Type\&.ComponentType\fP\&.
+.PP
+Definition at line 236 of file AbstractType\&.cs\&.
+.SS "virtual \fBIType\fP NHibernate\&.Type\&.AbstractType\&.GetSemiResolvedType (\fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+Get the type of a semi-resolved value\&.
+.PP
+Implements \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.EntityType\fP\&.
+.PP
+Definition at line 254 of file AbstractType\&.cs\&.
+.SS "virtual object NHibernate\&.Type\&.AbstractType\&.Hydrate (IDataReaderrs, string[]names, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Retrives an instance of the mapped class, or the identifier of an entity or collection from a IDataReader\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the values\&.
+.br
+\fInames\fP The names of the columns in the IDataReader that contain the value to populate the \fBIType\fP with\&. 
+.br
+\fIsession\fP the session
+.br
+\fIowner\fP The parent Entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An identifier or actual object mapped by this \fBIType\fP\&.
+.RE
+.PP
+.PP
+This method uses the \fCIType\&.NullSafeGet(IDataReader, string[], ISessionImplementor, object)\fP method to Hydrate this \fBAbstractType\fP\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.EntityType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.AnyType\fP, \fBNHibernate\&.Type\&.OneToOneType\fP, and \fBNHibernate\&.Type\&.ManyToOneType\fP\&.
+.PP
+Definition at line 129 of file AbstractType\&.cs\&.
+.SS "virtual bool NHibernate\&.Type\&.AbstractType\&.IsDirty (objectold, objectcurrent, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Should the parent be considered dirty, given both the old and current field or element value? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIold\fP The old value
+.br
+\fIcurrent\fP The current value
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the field is dirty
+.RE
+.PP
+.PP
+This method uses \fCIType\&.Equals(object, object)\fP to determine the value of IsDirty\&.
+.PP
+Implements \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.ManyToOneType\fP, \fBNHibernate\&.Type\&.ComponentType\fP, and \fBNHibernate\&.Type\&.OneToOneType\fP\&.
+.PP
+Definition at line 108 of file AbstractType\&.cs\&.
+.SS "virtual bool NHibernate\&.Type\&.AbstractType\&.IsEqual (objectx, objecty, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Compare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+boolean 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.NullableType\fP, \fBNHibernate\&.Type\&.CompositeCustomType\fP, \fBNHibernate\&.Type\&.CustomType\fP, and \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.PP
+Definition at line 221 of file AbstractType\&.cs\&.
+.SS "virtual bool NHibernate\&.Type\&.AbstractType\&.IsEqual (objectx, objecty, \fBEntityMode\fPentityMode, \fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+Compare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+boolean 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.ComponentType\fP, and \fBNHibernate\&.Type\&.EntityType\fP\&.
+.PP
+Definition at line 226 of file AbstractType\&.cs\&.
+.SS "virtual bool NHibernate\&.Type\&.AbstractType\&.IsModified (objectold, objectcurrent, bool[]checkable, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Says whether the value has been modified 
+.PP
+Implements \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.AnyType\fP, \fBNHibernate\&.Type\&.ManyToOneType\fP, and \fBNHibernate\&.Type\&.OneToOneType\fP\&.
+.PP
+Definition at line 166 of file AbstractType\&.cs\&.
+.SS "virtual bool NHibernate\&.Type\&.AbstractType\&.IsSame (objectx, objecty, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Compare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state - taking a shortcut for entity references\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+boolean 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.AnyType\fP, and \fBNHibernate\&.Type\&.EntityType\fP\&.
+.PP
+Definition at line 216 of file AbstractType\&.cs\&.
+.SS "virtual object NHibernate\&.Type\&.AbstractType\&.Replace (objectoriginal, objecttarget, \fBISessionImplementor\fPsession, objectowner, IDictionarycopyCache, \fBForeignKeyDirection\fPforeignKeyDirection)\fC [virtual]\fP"
+
+.PP
+During merge, replace the existing (target) value in the entity we are merging to with a new (original) value from the detached entity we are merging\&. For immutable objects, or null values, it is safe to simply return the first parameter\&. For mutable objects, it is safe to return a copy of the first parameter\&. For objects with component values, it might make sense to recursively replace component values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoriginal\fP the value from the detached entity being merged 
+.br
+\fItarget\fP the value in the managed entity 
+.br
+\fIsession\fP 
+.br
+\fIowner\fP 
+.br
+\fIcopyCache\fP 
+.br
+\fIforeignKeyDirection\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the value to be merged 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.ComponentType\fP\&.
+.PP
+Definition at line 200 of file AbstractType\&.cs\&.
+.SS "virtual object NHibernate\&.Type\&.AbstractType\&.ResolveIdentifier (objectvalue, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Maps identifiers to Entities or Collections\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP An identifier or value returned by \fC\fBHydrate()\fP\fP
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP The parent Entity is not used by this method\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value\&.
+.RE
+.PP
+.PP
+There is nothing done in this method other than return the value parameter passed in\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.EntityType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, and \fBNHibernate\&.Type\&.AnyType\fP\&.
+.PP
+Definition at line 144 of file AbstractType\&.cs\&.
+.SS "virtual object NHibernate\&.Type\&.AbstractType\&.SemiResolve (objectvalue, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Given a hydrated, but unresolved value, return a value that may be used to reconstruct property-ref associations\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, and \fBNHibernate\&.Type\&.AnyType\fP\&.
+.PP
+Definition at line 149 of file AbstractType\&.cs\&.
+.SS "abstract void NHibernate\&.Type\&.AbstractType\&.SetToXMLNode (XmlNodenode, objectvalue, \fBISessionFactoryImplementor\fPfactory)\fC [pure virtual]\fP"
+
+.PP
+A representation of the value to be embedded in an XML element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInode\fP 
+.br
+\fIvalue\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.EntityType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.AnyType\fP, \fBNHibernate\&.Type\&.NullableType\fP, \fBNHibernate\&.Type\&.CompositeCustomType\fP, \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.ClassMetaType\fP, and \fBNHibernate\&.Type\&.MetaType\fP\&.
+.SS "abstract bool [] NHibernate\&.Type\&.AbstractType\&.ToColumnNullness (objectvalue, \fBIMapping\fPmapping)\fC [pure virtual]\fP"
+
+.PP
+Given an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP an instance of the type 
+.br
+\fImapping\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.AnyType\fP, \fBNHibernate\&.Type\&.NullableType\fP, \fBNHibernate\&.Type\&.CompositeCustomType\fP, \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.ManyToOneType\fP, \fBNHibernate\&.Type\&.OneToOneType\fP, \fBNHibernate\&.Type\&.ClassMetaType\fP, and \fBNHibernate\&.Type\&.MetaType\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual bool NHibernate\&.Type\&.AbstractType\&.IsAnyType\fC [get]\fP"
+
+.PP
+Gets a value indicating if the implementation is an 'object' type false - by default an \fBAbstractType\fP is not a 'object' type\&.
+.PP
+Definition at line 159 of file AbstractType\&.cs\&.
+.SS "virtual bool NHibernate\&.Type\&.AbstractType\&.IsAssociationType\fC [get]\fP"
+
+.PP
+Gets a value indicating if the \fBAbstractType\fP is an \fBIAssociationType\fP\&. false - by default an \fBAbstractType\fP is not an \fBIAssociationType\fP\&.
+.PP
+Definition at line 23 of file AbstractType\&.cs\&.
+.SS "virtual bool NHibernate\&.Type\&.AbstractType\&.IsCollectionType\fC [get]\fP"
+
+.PP
+Gets a value indicating if the \fBAbstractType\fP is a \fBCollectionType\fP\&. false - by default an \fBAbstractType\fP is not a \fBCollectionType\fP\&.
+.PP
+Definition at line 37 of file AbstractType\&.cs\&.
+.SS "virtual bool NHibernate\&.Type\&.AbstractType\&.IsComponentType\fC [get]\fP"
+
+.PP
+Gets a value indicating if the \fBAbstractType\fP is an \fBIAbstractComponentType\fP\&. false - by default an \fBAbstractType\fP is not an \fBIAbstractComponentType\fP\&.
+.PP
+Definition at line 46 of file AbstractType\&.cs\&.
+.SS "virtual bool NHibernate\&.Type\&.AbstractType\&.IsEntityType\fC [get]\fP"
+
+.PP
+Gets a value indicating if the \fBAbstractType\fP is a \fBEntityType\fP\&. false - by default an \fBAbstractType\fP is not a \fBEntityType\fP\&.
+.PP
+Definition at line 55 of file AbstractType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,61 @@
+.TH "NHibernate.Dialect.Lock.ILockingStrategy" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.Lock.ILockingStrategy \- 
+.PP
+A strategy abstraction for how locks are obtained in the underlying database\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.Lock\&.SelectLockingStrategy\fP, and \fBNHibernate\&.Dialect\&.Lock\&.UpdateLockingStrategy\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBLock\fP (object id, object version, object obj, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIAcquire an appropriate type of lock on the underlying data that will endure until the end of the current transaction\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A strategy abstraction for how locks are obtained in the underlying database\&. 
+
+All locking provided implemenations assume the underlying database supports (and that the connection is in) at least read-committed transaction isolation\&. The most glaring exclusion to this is HSQLDB which only offers support for READ_UNCOMMITTED isolation\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBNHibernate\&.Dialect\&.Dialect\&.GetLockingStrategy\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 15 of file ILockingStrategy\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Dialect\&.Lock\&.ILockingStrategy\&.Lock (objectid, objectversion, objectobj, \fBISessionImplementor\fPsession)"
+
+.PP
+Acquire an appropriate type of lock on the underlying data that will endure until the end of the current transaction\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The id of the row to be locked 
+.br
+\fIversion\fP The current version (or null if not versioned) 
+.br
+\fIobj\fP The object logically being locked (currently not used) 
+.br
+\fIsession\fP The session from which the lock request originated 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Dialect\&.Lock\&.UpdateLockingStrategy\fP, and \fBNHibernate\&.Dialect\&.Lock\&.SelectLockingStrategy\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

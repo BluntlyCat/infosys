@@ -1,0 +1,27 @@
+var class_n_hibernate_1_1_driver_1_1_driver_base =
+[
+    [ "AdjustCommand", "class_n_hibernate_1_1_driver_1_1_driver_base.html#ae9c77f779cb665801f94f7e869afb73c", null ],
+    [ "CloneParameter", "class_n_hibernate_1_1_driver_1_1_driver_base.html#abbce187cd14f077cf41220d499ba5b45", null ],
+    [ "Configure", "class_n_hibernate_1_1_driver_1_1_driver_base.html#a78b4106949ba6371d0641ed7fef14905", null ],
+    [ "CreateCommand", "class_n_hibernate_1_1_driver_1_1_driver_base.html#a95bf1c9f776857a1f1d7691604339b94", null ],
+    [ "CreateConnection", "class_n_hibernate_1_1_driver_1_1_driver_base.html#afad9239910d44c56a5cf8a8fd4f8dd59", null ],
+    [ "ExpandQueryParameters", "class_n_hibernate_1_1_driver_1_1_driver_base.html#a58c7a812766fb3c1534ff4e9bffb0678", null ],
+    [ "FormatNameForParameter", "class_n_hibernate_1_1_driver_1_1_driver_base.html#ade34abefd0c597be6edaecf60d2e2b62", null ],
+    [ "FormatNameForSql", "class_n_hibernate_1_1_driver_1_1_driver_base.html#aee96426d9aa8334e4bf053727e011550", null ],
+    [ "GenerateCommand", "class_n_hibernate_1_1_driver_1_1_driver_base.html#abd7f2ae642244a3d32ad4b89a40d59fb", null ],
+    [ "GenerateOutputParameter", "class_n_hibernate_1_1_driver_1_1_driver_base.html#a0219a18ed345705da0025b53653dfae3", null ],
+    [ "GenerateParameter", "class_n_hibernate_1_1_driver_1_1_driver_base.html#a144f66359d91ec8dc97ddf617c2a73c3", null ],
+    [ "GetResultSetsCommand", "class_n_hibernate_1_1_driver_1_1_driver_base.html#aadbdcd02c75c1be2037312ad8678f170", null ],
+    [ "GetSqlStringFormatter", "class_n_hibernate_1_1_driver_1_1_driver_base.html#abdb9b0061fb6deb095a5cbc000b4ab6d", null ],
+    [ "InitializeParameter", "class_n_hibernate_1_1_driver_1_1_driver_base.html#aea2e051604fba5f9d6a165fea472c9ec", null ],
+    [ "OnBeforePrepare", "class_n_hibernate_1_1_driver_1_1_driver_base.html#ac3ece73037fd75de7d62c9a69b24709b", null ],
+    [ "PrepareCommand", "class_n_hibernate_1_1_driver_1_1_driver_base.html#a7f9e7cf479e5e6cd0c3fda7c6cc98839", null ],
+    [ "RemoveUnusedCommandParameters", "class_n_hibernate_1_1_driver_1_1_driver_base.html#a6594f430d05f7ce3d566dec675ab8aff", null ],
+    [ "IsPrepareSqlEnabled", "class_n_hibernate_1_1_driver_1_1_driver_base.html#aee1b6aebb4237f4c1ef493555507c95c", null ],
+    [ "NamedPrefix", "class_n_hibernate_1_1_driver_1_1_driver_base.html#a73f0230832af516e932f7826de1411aa", null ],
+    [ "SupportsMultipleOpenReaders", "class_n_hibernate_1_1_driver_1_1_driver_base.html#abdc6d0e14cdd3adc6e0245307b784cfe", null ],
+    [ "SupportsMultipleQueries", "class_n_hibernate_1_1_driver_1_1_driver_base.html#aaf13fb92764f1b697971dcf3fdcc320f", null ],
+    [ "SupportsPreparingCommands", "class_n_hibernate_1_1_driver_1_1_driver_base.html#a3345b2b0f8d58da8da8e14b1f8f15891", null ],
+    [ "UseNamedPrefixInParameter", "class_n_hibernate_1_1_driver_1_1_driver_base.html#a867e13291677025bd54b9381d6c0b8d5", null ],
+    [ "UseNamedPrefixInSql", "class_n_hibernate_1_1_driver_1_1_driver_base.html#ae1475ffcf00b4518ee8fe7529802525f", null ]
+];

@@ -1,0 +1,73 @@
+.TH "NHibernate.Linq.Visitors.QueryModelVisitor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Linq.Visitors.QueryModelVisitor \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits QueryModelVisitorBase\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBVisitMainFromClause\fP (MainFromClause fromClause, QueryModel queryModel)"
+.br
+.ti -1c
+.RI "override void \fBVisitAdditionalFromClause\fP (AdditionalFromClause fromClause, QueryModel queryModel, int index)"
+.br
+.ti -1c
+.RI "override void \fBVisitResultOperator\fP (ResultOperatorBase resultOperator, QueryModel queryModel, int index)"
+.br
+.ti -1c
+.RI "override void \fBVisitSelectClause\fP (SelectClause selectClause, QueryModel queryModel)"
+.br
+.ti -1c
+.RI "override void \fBVisitWhereClause\fP (WhereClause whereClause, QueryModel queryModel, int index)"
+.br
+.ti -1c
+.RI "override void \fBVisitOrderByClause\fP (OrderByClause orderByClause, QueryModel queryModel, int index)"
+.br
+.ti -1c
+.RI "override void \fBVisitJoinClause\fP (JoinClause joinClause, QueryModel queryModel, int index)"
+.br
+.ti -1c
+.RI "override void \fBVisitGroupJoinClause\fP (GroupJoinClause groupJoinClause, QueryModel queryModel, int index)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static 
+.br
+\fBExpressionToHqlTranslationResults\fP \fBGenerateHqlQuery\fP (QueryModel queryModel, \fBVisitorParameters\fP parameters, bool root)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBVisitorParameters\fP \fBVisitorParameters\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "IStreamedDataInfo \fBCurrentEvaluationType\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "IStreamedDataInfo \fBPreviousEvaluationType\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "QueryModel \fBModel\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBResultOperatorRewriterResult\fP \fBRewrittenOperatorResult\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 19 of file QueryModelVisitor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

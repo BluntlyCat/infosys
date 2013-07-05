@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2569_1_1_fixture =
+[
+    [ "WhenMapHiloToDifferentSchemaThanClassThenIdHasTheMappedSchema", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2569_1_1_fixture.html#ae3121f790a496e418f7c457551418ee1", null ]
+];

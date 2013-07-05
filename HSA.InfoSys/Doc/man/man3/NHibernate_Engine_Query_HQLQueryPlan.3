@@ -1,0 +1,75 @@
+.TH "NHibernate.Engine.Query.HQLQueryPlan" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.Query.HQLQueryPlan \- 
+.PP
+Defines a query execution plan for an HQL query (or filter)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Engine\&.Query\&.IQueryPlan\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Engine\&.Query\&.QueryExpressionPlan\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBPerformList\fP (\fBQueryParameters\fP queryParameters, \fBISessionImplementor\fP session, IList results)"
+.br
+.ti -1c
+.RI "IEnumerable \fBPerformIterate\fP (\fBQueryParameters\fP queryParameters, \fBIEventSource\fP session)"
+.br
+.ti -1c
+.RI "IEnumerable< T > \fBPerformIterate< T >\fP (\fBQueryParameters\fP queryParameters, \fBIEventSource\fP session)"
+.br
+.ti -1c
+.RI "int \fBPerformExecuteUpdate\fP (\fBQueryParameters\fP queryParameters, \fBISessionImplementor\fP session)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBHQLQueryPlan\fP (string sourceQuery, \fBIQueryTranslator\fP[] translators)"
+.br
+.in -1c
+.SS "Static Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly \fBIInternalLogger\fP \fBLog\fP = LoggerProvider\&.LoggerFor(typeof(\fBHQLQueryPlan\fP))"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "ISet< string > \fBQuerySpaces\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBParameterMetadata\fP \fBParameterMetadata\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBReturnMetadata\fP \fBReturnMetadata\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string[] \fBSqlStrings\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIQueryTranslator\fP[] \fBTranslators\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines a query execution plan for an HQL query (or filter)\&. 
+
+
+.PP
+Definition at line 32 of file HQLQueryPlan\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

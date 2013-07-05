@@ -1,0 +1,344 @@
+.TH "NHibernate.SqlCommand.SqlSelectBuilder" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.SqlCommand.SqlSelectBuilder \- 
+.PP
+Builds a \fCSELECT\fP SQL statement\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.SqlCommand\&.SqlBaseBuilder\fP, and \fBNHibernate\&.SqlCommand\&.ISqlStringBuilder\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlSelectBuilder\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "\fBSqlSelectBuilder\fP \fBSetComment\fP (string comment)"
+.br
+.ti -1c
+.RI "\fBSqlSelectBuilder\fP \fBSetFromClause\fP (string fromClause)"
+.br
+.RI "\fISets the text that should appear after the FROM \fP"
+.ti -1c
+.RI "\fBSqlSelectBuilder\fP \fBSetFromClause\fP (string tableName, string alias)"
+.br
+.RI "\fISets the text that should appear after the FROM \fP"
+.ti -1c
+.RI "\fBSqlSelectBuilder\fP \fBSetFromClause\fP (\fBSqlString\fP fromClause)"
+.br
+.RI "\fISets the text that should appear after the FROM \fP"
+.ti -1c
+.RI "\fBSqlSelectBuilder\fP \fBSetOrderByClause\fP (\fBSqlString\fP orderByClause)"
+.br
+.RI "\fISets the text that should appear after the ORDER BY\&. \fP"
+.ti -1c
+.RI "\fBSqlSelectBuilder\fP \fBSetGroupByClause\fP (string groupByClause)"
+.br
+.RI "\fISets the text that should appear after the GROUP BY\&. \fP"
+.ti -1c
+.RI "\fBSqlSelectBuilder\fP \fBSetOuterJoins\fP (\fBSqlString\fP outerJoinsAfterFrom, \fBSqlString\fP outerJoinsAfterWhere)"
+.br
+.RI "\fISets the \fBSqlString\fP for the OUTER JOINs\&. \fP"
+.ti -1c
+.RI "\fBSqlSelectBuilder\fP \fBSetSelectClause\fP (\fBSqlString\fP selectClause)"
+.br
+.RI "\fISets the text for the SELECT \fP"
+.ti -1c
+.RI "\fBSqlSelectBuilder\fP \fBSetSelectClause\fP (string selectClause)"
+.br
+.RI "\fISets the text for the SELECT \fP"
+.ti -1c
+.RI "\fBSqlSelectBuilder\fP \fBSetWhereClause\fP (string tableAlias, string[] columnNames, \fBIType\fP whereType)"
+.br
+.RI "\fISets the criteria to use for the WHERE\&. It joins all of the columnNames together with an AND\&. \fP"
+.ti -1c
+.RI "\fBSqlSelectBuilder\fP \fBSetWhereClause\fP (\fBSqlString\fP whereSqlString)"
+.br
+.RI "\fISets the prebuilt \fBSqlString\fP to the Where clause \fP"
+.ti -1c
+.RI "\fBSqlSelectBuilder\fP \fBSetHavingClause\fP (string tableAlias, string[] columnNames, \fBIType\fP whereType)"
+.br
+.RI "\fISets the criteria to use for the WHERE\&. It joins all of the columnNames together with an AND\&. \fP"
+.ti -1c
+.RI "\fBSqlSelectBuilder\fP \fBSetHavingClause\fP (\fBSqlString\fP havingSqlString)"
+.br
+.RI "\fISets the prebuilt \fBSqlString\fP to the Having clause \fP"
+.ti -1c
+.RI "\fBSqlSelectBuilder\fP \fBSetLockMode\fP (\fBLockMode\fP lockMode)"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBToStatementString\fP ()"
+.br
+.RI "\fI\fBToSqlString()\fP is named \fBToStatementString()\fP in H3 \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBToSqlString\fP ()"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Builds a \fCSELECT\fP SQL statement\&. 
+
+
+.PP
+Definition at line 11 of file SqlSelectBuilder\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSqlSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSelectBuilder\&.SetFromClause (stringfromClause)"
+
+.PP
+Sets the text that should appear after the FROM 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfromClause\fP The fromClause to set
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlSelectBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 40 of file SqlSelectBuilder\&.cs\&.
+.SS "\fBSqlSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSelectBuilder\&.SetFromClause (stringtableName, stringalias)"
+
+.PP
+Sets the text that should appear after the FROM 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItableName\fP The name of the Table to get the data from
+.br
+\fIalias\fP The \fBAlias\fP to use for the table name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlSelectBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 52 of file SqlSelectBuilder\&.cs\&.
+.SS "\fBSqlSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSelectBuilder\&.SetFromClause (\fBSqlString\fPfromClause)"
+
+.PP
+Sets the text that should appear after the FROM 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfromClause\fP The fromClause in a \fBSqlString\fP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlSelectBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 63 of file SqlSelectBuilder\&.cs\&.
+.SS "\fBSqlSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSelectBuilder\&.SetGroupByClause (stringgroupByClause)"
+
+.PP
+Sets the text that should appear after the GROUP BY\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgroupByClause\fP The groupByClause to set
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlSelectBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 86 of file SqlSelectBuilder\&.cs\&.
+.SS "\fBSqlSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSelectBuilder\&.SetHavingClause (stringtableAlias, string[]columnNames, \fBIType\fPwhereType)"
+
+.PP
+Sets the criteria to use for the WHERE\&. It joins all of the columnNames together with an AND\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItableAlias\fP 
+.br
+\fIcolumnNames\fP The names of the columns
+.br
+\fIwhereType\fP The Hibernate \fBType\fP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlSelectBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 168 of file SqlSelectBuilder\&.cs\&.
+.SS "\fBSqlSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSelectBuilder\&.SetHavingClause (\fBSqlString\fPhavingSqlString)"
+
+.PP
+Sets the prebuilt \fBSqlString\fP to the Having clause 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhavingSqlString\fP The \fBSqlString\fP that contains the sql and parameters to add to the HAVING
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBSqlSelectBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 178 of file SqlSelectBuilder\&.cs\&.
+.SS "\fBSqlSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSelectBuilder\&.SetOrderByClause (\fBSqlString\fPorderByClause)"
+
+.PP
+Sets the text that should appear after the ORDER BY\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIorderByClause\fP The orderByClause to set
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlSelectBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 75 of file SqlSelectBuilder\&.cs\&.
+.SS "\fBSqlSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSelectBuilder\&.SetOuterJoins (\fBSqlString\fPouterJoinsAfterFrom, \fBSqlString\fPouterJoinsAfterWhere)"
+
+.PP
+Sets the \fBSqlString\fP for the OUTER JOINs\&. All of the Sql needs to be included in the SELECT\&. No OUTER JOINS will automatically be added\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIouterJoinsAfterFrom\fP The outerJoinsAfterFrom to set
+.br
+\fIouterJoinsAfterWhere\fP The outerJoinsAfterWhere to set
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlSelectBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 102 of file SqlSelectBuilder\&.cs\&.
+.SS "\fBSqlSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSelectBuilder\&.SetSelectClause (\fBSqlString\fPselectClause)"
+
+.PP
+Sets the text for the SELECT 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIselectClause\fP The selectClause to set
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlSelectBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 121 of file SqlSelectBuilder\&.cs\&.
+.SS "\fBSqlSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSelectBuilder\&.SetSelectClause (stringselectClause)"
+
+.PP
+Sets the text for the SELECT 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIselectClause\fP The selectClause to set
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlSelectBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 132 of file SqlSelectBuilder\&.cs\&.
+.SS "\fBSqlSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSelectBuilder\&.SetWhereClause (stringtableAlias, string[]columnNames, \fBIType\fPwhereType)"
+
+.PP
+Sets the criteria to use for the WHERE\&. It joins all of the columnNames together with an AND\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItableAlias\fP 
+.br
+\fIcolumnNames\fP The names of the columns
+.br
+\fIwhereType\fP The Hibernate \fBType\fP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlSelectBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 145 of file SqlSelectBuilder\&.cs\&.
+.SS "\fBSqlSelectBuilder\fP NHibernate\&.SqlCommand\&.SqlSelectBuilder\&.SetWhereClause (\fBSqlString\fPwhereSqlString)"
+
+.PP
+Sets the prebuilt \fBSqlString\fP to the Where clause 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwhereSqlString\fP The \fBSqlString\fP that contains the sql and parameters to add to the WHERE
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBSqlSelectBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 155 of file SqlSelectBuilder\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.SqlCommand\&.SqlSelectBuilder\&.ToSqlString ()"
+
+.PP
+
+.PP
+Implements \fBNHibernate\&.SqlCommand\&.ISqlStringBuilder\fP\&.
+.PP
+Definition at line 202 of file SqlSelectBuilder\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.SqlCommand\&.SqlSelectBuilder\&.ToStatementString ()"
+
+.PP
+\fBToSqlString()\fP is named \fBToStatementString()\fP in H3 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 196 of file SqlSelectBuilder\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

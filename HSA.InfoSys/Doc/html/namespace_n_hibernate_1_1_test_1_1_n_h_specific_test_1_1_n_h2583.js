@@ -1,0 +1,18 @@
+var namespace_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583 =
+[
+    [ "AbstractMassTestingFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_abstract_mass_testing_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_abstract_mass_testing_fixture" ],
+    [ "MyRef1", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_my_ref1.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_my_ref1" ],
+    [ "MyRef2", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_my_ref2.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_my_ref2" ],
+    [ "MyRef3", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_my_ref3.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_my_ref3" ],
+    [ "MyBO", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_my_b_o.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_my_b_o" ],
+    [ "InnerJoinFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_inner_join_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_inner_join_fixture" ],
+    [ "ManualTestFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_manual_test_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_manual_test_fixture" ],
+    [ "MassTestingMoreOperatorsFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_mass_testing_more_operators_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_mass_testing_more_operators_fixture" ],
+    [ "MassTestingNotAndDeMorganFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_mass_testing_not_and_de_morgan_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_mass_testing_not_and_de_morgan_fixture" ],
+    [ "MassTestingOneOrTreeFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_mass_testing_one_or_tree_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_mass_testing_one_or_tree_fixture" ],
+    [ "MassTestingOrderByFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_mass_testing_order_by_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_mass_testing_order_by_fixture" ],
+    [ "MassTestingSelectFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_mass_testing_select_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_mass_testing_select_fixture" ],
+    [ "MassTestingThreeOrTreesSideBySideFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_mass_testing_three_or_trees_side_by_side_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_mass_testing_three_or_trees_side_by_side_fixture" ],
+    [ "MassTestingTwoOrTreesSideBySideFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_mass_testing_two_or_trees_side_by_side_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_mass_testing_two_or_trees_side_by_side_fixture" ],
+    [ "SelfJoinTestFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_self_join_test_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_self_join_test_fixture" ]
+];

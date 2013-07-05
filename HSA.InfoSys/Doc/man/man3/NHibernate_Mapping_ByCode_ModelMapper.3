@@ -1,0 +1,289 @@
+.TH "NHibernate.Mapping.ByCode.ModelMapper" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.ByCode.ModelMapper \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Mapping\&.ByCode\&.ConventionModelMapper\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "interface \fBICollectionElementRelationMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIMapKeyRelationMapper\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBModelMapper\fP (\fBIModelInspector\fP modelInspector)"
+.br
+.ti -1c
+.RI "\fBModelMapper\fP (\fBIModelInspector\fP modelInspector, \fBICandidatePersistentMembersProvider\fP membersProvider)"
+.br
+.ti -1c
+.RI "\fBModelMapper\fP (\fBIModelInspector\fP modelInspector, \fBIModelExplicitDeclarationsHolder\fP explicitDeclarationsHolder)"
+.br
+.ti -1c
+.RI "\fBModelMapper\fP (\fBIModelInspector\fP modelInspector, \fBIModelExplicitDeclarationsHolder\fP explicitDeclarationsHolder, \fBICustomizersHolder\fP customizerHolder, \fBICandidatePersistentMembersProvider\fP membersProvider)"
+.br
+.ti -1c
+.RI "void \fBClass< TRootEntity >\fP (Action< \fBIClassMapper\fP< TRootEntity >> customizeAction)"
+.br
+.ti -1c
+.RI "void \fBSubclass< TEntity >\fP (Action< \fBISubclassMapper\fP< TEntity >> customizeAction)"
+.br
+.ti -1c
+.RI "void \fBJoinedSubclass< TEntity >\fP (Action< \fBIJoinedSubclassMapper\fP< TEntity >> customizeAction)"
+.br
+.ti -1c
+.RI "void \fBUnionSubclass< TEntity >\fP (Action< \fBIUnionSubclassMapper\fP< TEntity >> customizeAction)"
+.br
+.ti -1c
+.RI "void \fBComponent< TComponent >\fP (Action< \fBIComponentMapper\fP< TComponent >> customizeAction)"
+.br
+.ti -1c
+.RI "void \fBImport< TImportClass >\fP ()"
+.br
+.ti -1c
+.RI "void \fBImport< TImportClass >\fP (string rename)"
+.br
+.ti -1c
+.RI "\fBHbmMapping\fP \fBCompileMappingFor\fP (IEnumerable< System\&.Type > types)"
+.br
+.ti -1c
+.RI "IEnumerable< \fBHbmMapping\fP > \fBCompileMappingForEach\fP (IEnumerable< System\&.Type > types)"
+.br
+.ti -1c
+.RI "void \fBAddMapping< T >\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddMapping\fP (\fBIConformistHoldersProvider\fP mapping)"
+.br
+.ti -1c
+.RI "void \fBAddMapping\fP (System\&.Type type)"
+.br
+.ti -1c
+.RI "void \fBAddMappings\fP (IEnumerable< System\&.Type > types)"
+.br
+.ti -1c
+.RI "\fBHbmMapping\fP \fBCompileMappingForAllExplicitlyAddedEntities\fP ()"
+.br
+.ti -1c
+.RI "IEnumerable< \fBHbmMapping\fP > \fBCompileMappingForEachExplicitlyAddedEntity\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBForEachMemberPath\fP (MemberInfo member, \fBPropertyPath\fP progressivePath, Action< \fBPropertyPath\fP > invoke)"
+.br
+.ti -1c
+.RI "MemberInfo \fBGetComponentParentReferenceProperty\fP (IEnumerable< MemberInfo > persistentProperties, System\&.Type propertiesContainerType)"
+.br
+.ti -1c
+.RI "virtual 
+.br
+\fBICollectionElementRelationMapper\fP \fBDetermineCollectionElementRelationType\fP (MemberInfo property, \fBPropertyPath\fP propertyPath, System\&.Type collectionElementType)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIModelInspector\fP \fBModelInspector\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBICandidatePersistentMembersProvider\fP \fBMembersProvider\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "RootClassMappingHandler \fBBeforeMapClass\fP"
+.br
+.RI "\fIOccurs before apply pattern-appliers on a root class\&. \fP"
+.ti -1c
+.RI "SubclassMappingHandler \fBBeforeMapSubclass\fP"
+.br
+.RI "\fIOccurs before apply pattern-appliers on a subclass\&. \fP"
+.ti -1c
+.RI "JoinedSubclassMappingHandler \fBBeforeMapJoinedSubclass\fP"
+.br
+.RI "\fIOccurs before apply pattern-appliers on a joined-subclass\&. \fP"
+.ti -1c
+.RI "UnionSubclassMappingHandler \fBBeforeMapUnionSubclass\fP"
+.br
+.RI "\fIOccurs before apply pattern-appliers on a union-subclass\&. \fP"
+.ti -1c
+.RI "PropertyMappingHandler \fBBeforeMapProperty\fP"
+.br
+.ti -1c
+.RI "ManyToOneMappingHandler \fBBeforeMapManyToOne\fP"
+.br
+.ti -1c
+.RI "OneToOneMappingHandler \fBBeforeMapOneToOne\fP"
+.br
+.ti -1c
+.RI "AnyMappingHandler \fBBeforeMapAny\fP"
+.br
+.ti -1c
+.RI "ComponentMappingHandler \fBBeforeMapComponent\fP"
+.br
+.ti -1c
+.RI "SetMappingHandler \fBBeforeMapSet\fP"
+.br
+.ti -1c
+.RI "BagMappingHandler \fBBeforeMapBag\fP"
+.br
+.ti -1c
+.RI "IdBagMappingHandler \fBBeforeMapIdBag\fP"
+.br
+.ti -1c
+.RI "ListMappingHandler \fBBeforeMapList\fP"
+.br
+.ti -1c
+.RI "MapMappingHandler \fBBeforeMapMap\fP"
+.br
+.ti -1c
+.RI "ManyToManyMappingHandler \fBBeforeMapManyToMany\fP"
+.br
+.ti -1c
+.RI "ElementMappingHandler \fBBeforeMapElement\fP"
+.br
+.ti -1c
+.RI "OneToManyMappingHandler \fBBeforeMapOneToMany\fP"
+.br
+.ti -1c
+.RI "MapKeyManyToManyMappingHandler \fBBeforeMapMapKeyManyToMany\fP"
+.br
+.ti -1c
+.RI "MapKeyMappingHandler \fBBeforeMapMapKey\fP"
+.br
+.ti -1c
+.RI "RootClassMappingHandler \fBAfterMapClass\fP"
+.br
+.RI "\fIOccurs after apply the last customizer on a root class\&. \fP"
+.ti -1c
+.RI "SubclassMappingHandler \fBAfterMapSubclass\fP"
+.br
+.RI "\fIOccurs after apply the last customizer on a subclass\&. \fP"
+.ti -1c
+.RI "JoinedSubclassMappingHandler \fBAfterMapJoinedSubclass\fP"
+.br
+.RI "\fIOccurs after apply the last customizer on a joined-subclass\&.\&. \fP"
+.ti -1c
+.RI "UnionSubclassMappingHandler \fBAfterMapUnionSubclass\fP"
+.br
+.RI "\fIOccurs after apply the last customizer on a union-subclass\&.\&. \fP"
+.ti -1c
+.RI "PropertyMappingHandler \fBAfterMapProperty\fP"
+.br
+.ti -1c
+.RI "ManyToOneMappingHandler \fBAfterMapManyToOne\fP"
+.br
+.ti -1c
+.RI "OneToOneMappingHandler \fBAfterMapOneToOne\fP"
+.br
+.ti -1c
+.RI "AnyMappingHandler \fBAfterMapAny\fP"
+.br
+.ti -1c
+.RI "ComponentMappingHandler \fBAfterMapComponent\fP"
+.br
+.ti -1c
+.RI "SetMappingHandler \fBAfterMapSet\fP"
+.br
+.ti -1c
+.RI "BagMappingHandler \fBAfterMapBag\fP"
+.br
+.ti -1c
+.RI "IdBagMappingHandler \fBAfterMapIdBag\fP"
+.br
+.ti -1c
+.RI "ListMappingHandler \fBAfterMapList\fP"
+.br
+.ti -1c
+.RI "MapMappingHandler \fBAfterMapMap\fP"
+.br
+.ti -1c
+.RI "ManyToManyMappingHandler \fBAfterMapManyToMany\fP"
+.br
+.ti -1c
+.RI "ElementMappingHandler \fBAfterMapElement\fP"
+.br
+.ti -1c
+.RI "OneToManyMappingHandler \fBAfterMapOneToMany\fP"
+.br
+.ti -1c
+.RI "MapKeyManyToManyMappingHandler \fBAfterMapMapKeyManyToMany\fP"
+.br
+.ti -1c
+.RI "MapKeyMappingHandler \fBAfterMapMapKey\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 11 of file ModelMapper\&.cs\&.
+.SH "Event Documentation"
+.PP 
+.SS "RootClassMappingHandler NHibernate\&.Mapping\&.ByCode\&.ModelMapper\&.AfterMapClass"
+
+.PP
+Occurs after apply the last customizer on a root class\&. 
+.PP
+Definition at line 104 of file ModelMapper\&.cs\&.
+.SS "JoinedSubclassMappingHandler NHibernate\&.Mapping\&.ByCode\&.ModelMapper\&.AfterMapJoinedSubclass"
+
+.PP
+Occurs after apply the last customizer on a joined-subclass\&.\&. 
+.PP
+Definition at line 114 of file ModelMapper\&.cs\&.
+.SS "SubclassMappingHandler NHibernate\&.Mapping\&.ByCode\&.ModelMapper\&.AfterMapSubclass"
+
+.PP
+Occurs after apply the last customizer on a subclass\&. 
+.PP
+Definition at line 109 of file ModelMapper\&.cs\&.
+.SS "UnionSubclassMappingHandler NHibernate\&.Mapping\&.ByCode\&.ModelMapper\&.AfterMapUnionSubclass"
+
+.PP
+Occurs after apply the last customizer on a union-subclass\&.\&. 
+.PP
+Definition at line 119 of file ModelMapper\&.cs\&.
+.SS "RootClassMappingHandler NHibernate\&.Mapping\&.ByCode\&.ModelMapper\&.BeforeMapClass"
+
+.PP
+Occurs before apply pattern-appliers on a root class\&. 
+.PP
+Definition at line 55 of file ModelMapper\&.cs\&.
+.SS "JoinedSubclassMappingHandler NHibernate\&.Mapping\&.ByCode\&.ModelMapper\&.BeforeMapJoinedSubclass"
+
+.PP
+Occurs before apply pattern-appliers on a joined-subclass\&. 
+.PP
+Definition at line 65 of file ModelMapper\&.cs\&.
+.SS "SubclassMappingHandler NHibernate\&.Mapping\&.ByCode\&.ModelMapper\&.BeforeMapSubclass"
+
+.PP
+Occurs before apply pattern-appliers on a subclass\&. 
+.PP
+Definition at line 60 of file ModelMapper\&.cs\&.
+.SS "UnionSubclassMappingHandler NHibernate\&.Mapping\&.ByCode\&.ModelMapper\&.BeforeMapUnionSubclass"
+
+.PP
+Occurs before apply pattern-appliers on a union-subclass\&. 
+.PP
+Definition at line 70 of file ModelMapper\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

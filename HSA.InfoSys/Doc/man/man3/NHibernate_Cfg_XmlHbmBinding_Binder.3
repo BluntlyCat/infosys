@@ -1,0 +1,192 @@
+.TH "NHibernate.Cfg.XmlHbmBinding.Binder" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cfg.XmlHbmBinding.Binder \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.ClassBinder\fP, \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.ClassDiscriminatorBinder\fP, \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.ColumnsBinder\fP, \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.FiltersBinder\fP, \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.IdGeneratorBinder\fP, \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.MappingRootBinder\fP, \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.NamedQueryBinder\fP, \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.NamedSQLQueryBinder\fP, \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.ResultSetMappingBinder\fP, \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.TypeBinder\fP, and \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.ValuePropertyBinder\fP\&.
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static IDictionary< string, 
+.br
+\fBMetaAttribute\fP > \fBGetMetas\fP (\fBIDecoratable\fP decoratable, IDictionary< string, \fBMetaAttribute\fP > inheritedMeta)"
+.br
+.ti -1c
+.RI "static IDictionary< string, 
+.br
+\fBMetaAttribute\fP > \fBGetMetas\fP (\fBIDecoratable\fP decoratable, IDictionary< string, \fBMetaAttribute\fP > inheritedMeta, bool onlyInheritable)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBinder\fP (\fBMappings\fP mappings)"
+.br
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static string \fBFullQualifiedClassName\fP (string className, \fBMappings\fP mappings)"
+.br
+.RI "\fIConverts a partial class name into a fully qualified one \fP"
+.ti -1c
+.RI "static string \fBFullClassName\fP (string className, \fBMappings\fP mappings)"
+.br
+.RI "\fIConverts a partial class name into a fully one \fP"
+.ti -1c
+.RI "static bool \fBNeedQualifiedClassName\fP (string className)"
+.br
+.ti -1c
+.RI "static System\&.Type \fBClassForFullNameChecked\fP (string fullName, string errorMessage)"
+.br
+.RI "\fIAttempts to find a type by its full name\&. Throws a \fBMappingException\fP using the provided \fIerrorMessage\fP  in case of failure\&. \fP"
+.ti -1c
+.RI "static System\&.Type \fBClassForNameChecked\fP (string name, \fBMappings\fP mappings, string errorMessage)"
+.br
+.RI "\fISimilar to \fBClassForFullNameChecked\fP, but handles short class names by calling \fBFullQualifiedClassName\fP\&. \fP"
+.ti -1c
+.RI "static string \fBGetClassName\fP (string unqualifiedName, \fBMappings\fP mappings)"
+.br
+.ti -1c
+.RI "static string \fBGetQualifiedClassName\fP (string unqualifiedName, \fBMappings\fP mappings)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly \fBMappings\fP \fBmappings\fP"
+.br
+.in -1c
+.SS "Static Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly \fBIInternalLogger\fP \fBlog\fP = LoggerProvider\&.LoggerFor(typeof (\fBBinder\fP))"
+.br
+.ti -1c
+.RI "static readonly IDictionary
+.br
+< string, \fBMetaAttribute\fP > \fBEmptyMeta\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBMappings\fP \fBMappings\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 11 of file Binder\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static System\&.Type NHibernate\&.Cfg\&.XmlHbmBinding\&.Binder\&.ClassForFullNameChecked (stringfullName, stringerrorMessage)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Attempts to find a type by its full name\&. Throws a \fBMappingException\fP using the provided \fIerrorMessage\fP  in case of failure\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfullName\fP name of the class to find
+.br
+\fIerrorMessage\fP Error message to use for the \fBMappingException\fP in case of failure\&. Should contain the \fC{0}\fP formatting placeholder\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A System\&.Type instance\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBMappingException\fP\fP Thrown when there is an error loading the class\&. 
+.RE
+.PP
+
+.PP
+Definition at line 95 of file Binder\&.cs\&.
+.SS "static System\&.Type NHibernate\&.Cfg\&.XmlHbmBinding\&.Binder\&.ClassForNameChecked (stringname, \fBMappings\fPmappings, stringerrorMessage)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Similar to \fBClassForFullNameChecked\fP, but handles short class names by calling \fBFullQualifiedClassName\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP 
+.br
+\fImappings\fP 
+.br
+\fIerrorMessage\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 115 of file Binder\&.cs\&.
+.SS "static string NHibernate\&.Cfg\&.XmlHbmBinding\&.Binder\&.FullClassName (stringclassName, \fBMappings\fPmappings)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Converts a partial class name into a fully one 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclassName\fP 
+.br
+\fImappings\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The class FullName (without the assembly)
+.RE
+.PP
+.PP
+The FullName is equivalent to the default entity-name 
+.PP
+Definition at line 57 of file Binder\&.cs\&.
+.SS "static string NHibernate\&.Cfg\&.XmlHbmBinding\&.Binder\&.FullQualifiedClassName (stringclassName, \fBMappings\fPmappings)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Converts a partial class name into a fully qualified one 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclassName\fP 
+.br
+\fImappings\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 39 of file Binder\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly IDictionary<string, \fBMetaAttribute\fP> NHibernate\&.Cfg\&.XmlHbmBinding\&.Binder\&.EmptyMeta\fC [static]\fP, \fC [protected]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+=
+            new CollectionHelper\&.EmptyMapClass<string, MetaAttribute>()
+.fi
+.PP
+Definition at line 15 of file Binder\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

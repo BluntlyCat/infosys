@@ -1,0 +1,120 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Tree.ParameterNode" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Tree.ParameterNode \- 
+.PP
+Implementation of \fBParameterNode\fP\&. Author: Steve Ebersole Ported by: Steve Strong  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.HqlSqlWalkerNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IDisplayableNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IExpectedTypeAwareNode\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ISelectExpression\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBParameterNode\fP (IToken token)"
+.br
+.ti -1c
+.RI "string \fBGetDisplayText\fP ()"
+.br
+.RI "\fIReturns additional display text for the AST node\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBRenderText\fP (\fBISessionFactoryImplementor\fP sessionFactory)"
+.br
+.RI "\fIRetrieve the text to be used for rendering this particular node\&. \fP"
+.ti -1c
+.RI "void \fBSetScalarColumnText\fP (int i)"
+.br
+.RI "\fIAppends AST nodes that represent the columns after the current AST node\&. (e\&.g\&. 'as col0_O_') \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIParameterSpecification\fP \fBHqlParameterSpecification\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP \fBExpectedType\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBFromElement\fP \fBFromElement\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsConstructor\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsReturnableEntity\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsScalar\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBAlias\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Implementation of \fBParameterNode\fP\&. Author: Steve Ebersole Ported by: Steve Strong 
+
+
+.PP
+Definition at line 17 of file ParameterNode\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ParameterNode\&.GetDisplayText ()"
+
+.PP
+Returns additional display text for the AST node\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The additional display text\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IDisplayableNode\fP\&.
+.PP
+Definition at line 32 of file ParameterNode\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ParameterNode\&.RenderText (\fBISessionFactoryImplementor\fPsessionFactory)\fC [virtual]\fP"
+
+.PP
+Retrieve the text to be used for rendering this particular node\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsessionFactory\fP The session factory
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The text to use for rendering
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SqlNode\fP\&.
+.PP
+Definition at line 51 of file ParameterNode\&.cs\&.
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ParameterNode\&.SetScalarColumnText (inti)"
+
+.PP
+Appends AST nodes that represent the columns after the current AST node\&. (e\&.g\&. 'as col0_O_') 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP The index of the select expression in the projection list\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ISelectExpression\fP\&.
+.PP
+Definition at line 75 of file ParameterNode\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

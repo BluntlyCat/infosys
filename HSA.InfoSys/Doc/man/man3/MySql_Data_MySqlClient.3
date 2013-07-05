@@ -1,0 +1,3754 @@
+.TH "MySql.Data.MySqlClient" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MySql.Data.MySqlClient \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "package \fBAuthentication\fP"
+.br
+.ti -1c
+.RI "package \fBProperties\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBMySqlBulkLoader\fP"
+.br
+.ti -1c
+.RI "class \fBCharSetMap\fP"
+.br
+.RI "\fISummary description for CharSetMap\&. \fP"
+.ti -1c
+.RI "class \fBCharacterSet\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlCommand\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlCommandBuilder\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlTokenizer\fP"
+.br
+.ti -1c
+.RI "class \fBCompressedStream\fP"
+.br
+.RI "\fISummary description for CompressedStream\&. \fP"
+.ti -1c
+.RI "class \fBMySqlConnection\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlInfoMessageEventArgs\fP"
+.br
+.RI "\fIProvides data for the InfoMessage event\&. This class cannot be inherited\&. \fP"
+.ti -1c
+.RI "class \fBCommandTimer\fP"
+.br
+.RI "\fIIDisposable wrapper around SetCommandTimeout and ClearCommandTimeout functionality \fP"
+.ti -1c
+.RI "class \fBCrypt\fP"
+.br
+.RI "\fISummary description for Crypt\&. \fP"
+.ti -1c
+.RI "class \fBMySqlDataAdapter\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlRowUpdatingEventArgs\fP"
+.br
+.RI "\fIProvides data for the RowUpdating event\&. This class cannot be inherited\&. \fP"
+.ti -1c
+.RI "class \fBMySqlRowUpdatedEventArgs\fP"
+.br
+.RI "\fIProvides data for the RowUpdated event\&. This class cannot be inherited\&. \fP"
+.ti -1c
+.RI "class \fBMySqlDataReader\fP"
+.br
+.ti -1c
+.RI "class \fBDriver\fP"
+.br
+.RI "\fISummary description for BaseDriver\&. \fP"
+.ti -1c
+.RI "interface \fBIDriver\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlException\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlField\fP"
+.br
+.RI "\fISummary description for Field\&. \fP"
+.ti -1c
+.RI "class \fBCustomInstaller\fP"
+.br
+.RI "\fIWe are adding a custom installer class to our assembly so our installer can make proper changes to the machine\&.config file\&. \fP"
+.ti -1c
+.RI "class \fBBaseCommandInterceptor\fP"
+.br
+.RI "\fI\fBBaseCommandInterceptor\fP is the base class that should be used for all userland command interceptors \fP"
+.ti -1c
+.RI "class \fBCommandInterceptor\fP"
+.br
+.RI "\fICommandInterceptor is the 'manager' class that keeps the list of registered interceptors for the given connection\&. \fP"
+.ti -1c
+.RI "class \fBBaseExceptionInterceptor\fP"
+.br
+.RI "\fI\fBBaseExceptionInterceptor\fP is the base class that should be used for all userland exception interceptors \fP"
+.ti -1c
+.RI "class \fBStandardExceptionInterceptor\fP"
+.br
+.RI "\fIStandardExceptionInterceptor is the standard interceptor that simply throws the exception\&. It is the default action\&. \fP"
+.ti -1c
+.RI "class \fBExceptionInterceptor\fP"
+.br
+.RI "\fIExceptionInterceptor is the 'manager' class that keeps the list of registered interceptors for the given connection\&. \fP"
+.ti -1c
+.RI "class \fBInterceptor\fP"
+.br
+.RI "\fIInterceptor is the base class for the 'manager' classes such as ExceptionInterceptor, CommandInterceptor, etc \fP"
+.ti -1c
+.RI "class \fBISSchemaProvider\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlClientFactory\fP"
+.br
+.RI "\fIDBProviderFactory implementation for MysqlClient\&. \fP"
+.ti -1c
+.RI "class \fBMySqlClientPermission\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlClientPermissionAttribute\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlConfiguration\fP"
+.br
+.ti -1c
+.RI "class \fBAuthenticationPluginConfigurationElement\fP"
+.br
+.ti -1c
+.RI "class \fBInterceptorConfigurationElement\fP"
+.br
+.ti -1c
+.RI "class \fBGenericConfigurationElementCollection< T >\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlConnectionStringBuilder\fP"
+.br
+.ti -1c
+.RI "struct \fBPropertyDefaultValue\fP"
+.br
+.ti -1c
+.RI "class \fBValidKeywordsAttribute\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlConnectAttrs\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlError\fP"
+.br
+.RI "\fICollection of error codes that can be returned by the server \fP"
+.ti -1c
+.RI "class \fBMySqlHelper\fP"
+.br
+.RI "\fIHelper class that makes it easier to work with the provider\&. \fP"
+.ti -1c
+.RI "class \fBMySqlPacket\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlPool\fP"
+.br
+.RI "\fISummary description for MySqlPool\&. \fP"
+.ti -1c
+.RI "class \fBMySqlPoolManager\fP"
+.br
+.RI "\fISummary description for MySqlPoolManager\&. \fP"
+.ti -1c
+.RI "class \fBMySqlTransactionScope\fP"
+.br
+.RI "\fIRepresents a single(not nested) TransactionScope \fP"
+.ti -1c
+.RI "class \fBMySqlPromotableTransaction\fP"
+.br
+.ti -1c
+.RI "class \fBDriverTransactionManager\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlScript\fP"
+.br
+.RI "\fIProvides a class capable of executing a SQL script containing multiple SQL statements including CREATE PROCEDURE statements that require changing the delimiter \fP"
+.ti -1c
+.RI "class \fBMySqlScriptEventArgs\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlScriptErrorEventArgs\fP"
+.br
+.ti -1c
+.RI "struct \fBScriptStatement\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlSecurityPermission\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlStream\fP"
+.br
+.RI "\fISummary description for MySqlStream\&. \fP"
+.ti -1c
+.RI "class \fBMySqlTrace\fP"
+.br
+.ti -1c
+.RI "class \fBNativeDriver\fP"
+.br
+.RI "\fISummary description for Driver\&. \fP"
+.ti -1c
+.RI "class \fBMySqlParameter\fP"
+.br
+.RI "\fIRepresents a parameter to a \fBMySqlCommand\fP, and optionally, its mapping to DataSet columns\&. This class cannot be inherited\&. \fP"
+.ti -1c
+.RI "class \fBMySqlParameterConverter\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlParameterCollection\fP"
+.br
+.ti -1c
+.RI "class \fBPerformanceMonitor\fP"
+.br
+.ti -1c
+.RI "class \fBPreparableStatement\fP"
+.br
+.RI "\fISummary description for PreparedStatement\&. \fP"
+.ti -1c
+.RI "class \fBProcedureCache\fP"
+.br
+.ti -1c
+.RI "class \fBResultSet\fP"
+.br
+.ti -1c
+.RI "class \fBSchemaProvider\fP"
+.br
+.ti -1c
+.RI "class \fBStatement\fP"
+.br
+.ti -1c
+.RI "class \fBStoredProcedure\fP"
+.br
+.RI "\fISummary description for StoredProcedure\&. \fP"
+.ti -1c
+.RI "class \fBTableCache\fP"
+.br
+.ti -1c
+.RI "class \fBBaseTableCache\fP"
+.br
+.ti -1c
+.RI "class \fBTimedStream\fP"
+.br
+.RI "\fIStream that supports timeout of IO operations\&. This class is used is used to support timeouts for SQL command, where a typical operation involves several network reads/writes\&. Timeout here is defined as the accumulated duration of all IO operations\&. \fP"
+.ti -1c
+.RI "class \fBTracingDriver\fP"
+.br
+.ti -1c
+.RI "class \fBMySqlTransaction\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBMySqlBulkLoaderPriority\fP { \fBMySqlBulkLoaderPriority\&.None\fP, \fBMySqlBulkLoaderPriority\&.Low\fP, \fBMySqlBulkLoaderPriority\&.Concurrent\fP }"
+.br
+.ti -1c
+.RI "enum \fBMySqlBulkLoaderConflictOption\fP { \fBMySqlBulkLoaderConflictOption\&.None\fP, \fBMySqlBulkLoaderConflictOption\&.Replace\fP, \fBMySqlBulkLoaderConflictOption\&.Ignore\fP }"
+.br
+.ti -1c
+.RI "enum \fBMySqlDbType\fP { \fBMySqlDbType\&.Decimal\fP = 0, \fBMySqlDbType\&.Byte\fP = 1, \fBMySqlDbType\&.Int16\fP = 2, \fBMySqlDbType\&.Int24\fP = 9, \fBMySqlDbType\&.Int32\fP = 3, \fBMySqlDbType\&.Int64\fP = 8, \fBMySqlDbType\&.Float\fP = 4, \fBMySqlDbType\&.Double\fP = 5, \fBMySqlDbType\&.Timestamp\fP = 7, \fBDate\fP = 10, \fBMySqlDbType\&.Time\fP = 11, \fBMySqlDbType\&.DateTime\fP = 12, \fBDatetime\fP = 12, \fBMySqlDbType\&.Year\fP = 13, \fBMySqlDbType\&.Newdate\fP = 14, \fBMySqlDbType\&.VarString\fP = 15, \fBMySqlDbType\&.Bit\fP = 16, \fBMySqlDbType\&.NewDecimal\fP = 246, \fBMySqlDbType\&.Enum\fP = 247, \fBMySqlDbType\&.Set\fP = 248, \fBMySqlDbType\&.TinyBlob\fP = 249, \fBMySqlDbType\&.MediumBlob\fP = 250, \fBMySqlDbType\&.LongBlob\fP = 251, \fBMySqlDbType\&.Blob\fP = 252, \fBMySqlDbType\&.VarChar\fP = 253, \fBMySqlDbType\&.String\fP = 254, \fBMySqlDbType\&.Geometry\fP = 255, \fBMySqlDbType\&.UByte\fP = 501, \fBMySqlDbType\&.UInt16\fP = 502, \fBMySqlDbType\&.UInt24\fP = 509, \fBMySqlDbType\&.UInt32\fP = 503, \fBMySqlDbType\&.UInt64\fP = 508, \fBMySqlDbType\&.Binary\fP = 600, \fBMySqlDbType\&.VarBinary\fP = 601, \fBMySqlDbType\&.TinyText\fP = 749, \fBMySqlDbType\&.MediumText\fP = 750, \fBMySqlDbType\&.LongText\fP = 751, \fBMySqlDbType\&.Text\fP = 752, \fBMySqlDbType\&.Guid\fP = 800 }"
+.br
+.RI "\fISpecifies MySQL specific data type of a field, property, for use in a MySqlParameter\&. \fP"
+.ti -1c
+.RI "enum \fBMySqlConnectionProtocol\fP { \fBMySqlConnectionProtocol\&.Sockets\fP = 1, \fBSocket\fP = 1, \fBTcp\fP = 1, \fBMySqlConnectionProtocol\&.Pipe\fP = 2, \fBNamedPipe\fP = 2, \fBMySqlConnectionProtocol\&.UnixSocket\fP = 3, \fBUnix\fP = 3, \fBMySqlConnectionProtocol\&.SharedMemory\fP = 4, \fBMemory\fP = 4 }"
+.br
+.RI "\fIAllows the user to specify the type of connection that should be used\&. \fP"
+.ti -1c
+.RI "enum \fBMySqlSslMode\fP { \fBMySqlSslMode\&.None\fP, \fBMySqlSslMode\&.Preferred\fP, \fBPrefered\fP = Preferred, \fBMySqlSslMode\&.Required\fP, \fBMySqlSslMode\&.VerifyCA\fP, \fBMySqlSslMode\&.VerifyFull\fP }"
+.br
+.RI "\fISSL options for connection\&. \fP"
+.ti -1c
+.RI "enum \fBMySqlDriverType\fP { \fBMySqlDriverType\&.Native\fP, \fBMySqlDriverType\&.Client\fP, \fBMySqlDriverType\&.Embedded\fP }"
+.br
+.RI "\fISpecifies the connection types supported \fP"
+.ti -1c
+.RI "enum \fBMySqlCertificateStoreLocation\fP { \fBMySqlCertificateStoreLocation\&.None\fP, \fBMySqlCertificateStoreLocation\&.CurrentUser\fP, \fBMySqlCertificateStoreLocation\&.LocalMachine\fP }"
+.br
+.ti -1c
+.RI "enum \fBMySqlErrorCode\fP { \fBMySqlErrorCode\&.None\fP = 0, \fBMySqlErrorCode\&.HashCheck\fP = 1000, \fBMySqlErrorCode\&.ISAMCheck\fP = 1001, \fBMySqlErrorCode\&.No\fP = 1002, \fBMySqlErrorCode\&.Yes\fP = 1003, \fBMySqlErrorCode\&.CannotCreateFile\fP = 1004, \fBMySqlErrorCode\&.CannotCreateTable\fP = 1005, \fBMySqlErrorCode\&.CannotCreateDatabase\fP = 1006, \fBMySqlErrorCode\&.DatabaseCreateExists\fP = 1007, \fBMySqlErrorCode\&.DatabaseDropExists\fP = 1008, \fBMySqlErrorCode\&.DatabaseDropDelete\fP = 1009, \fBMySqlErrorCode\&.DatabaseDropRemoveDir\fP = 1010, \fBMySqlErrorCode\&.CannotDeleteFile\fP = 1011, \fBMySqlErrorCode\&.CannotFindSystemRecord\fP = 1012, \fBMySqlErrorCode\&.CannotGetStatus\fP = 1013, \fBMySqlErrorCode\&.CannotGetWorkingDirectory\fP = 1014, \fBMySqlErrorCode\&.CannotLock\fP = 1015, \fBMySqlErrorCode\&.CannotOpenFile\fP = 1016, \fBMySqlErrorCode\&.FileNotFound\fP = 1017, \fBMySqlErrorCode\&.CannotReadDirectory\fP = 1018, \fBMySqlErrorCode\&.CannotSetWorkingDirectory\fP = 1019, \fBMySqlErrorCode\&.CheckRead\fP = 1020, \fBDiskFull\fP = 1021, \fBMySqlErrorCode\&.DuplicateKey\fP = 1022, \fBMySqlErrorCode\&.ErrorOnClose\fP = 1023, \fBMySqlErrorCode\&.ErrorOnRead\fP = 1024, \fBMySqlErrorCode\&.ErrorOnRename\fP = 1025, \fBMySqlErrorCode\&.ErrorOnWrite\fP = 1026, \fBMySqlErrorCode\&.FileUsed\fP = 1027, \fBMySqlErrorCode\&.FileSortAborted\fP = 1028, \fBMySqlErrorCode\&.FormNotFound\fP = 1029, \fBMySqlErrorCode\&.GetErrorNumber\fP = 1030, \fBIllegalHA\fP = 1031, \fBMySqlErrorCode\&.KeyNotFound\fP = 1032, \fBMySqlErrorCode\&.NotFormFile\fP = 1033, \fBMySqlErrorCode\&.NotKeyFile\fP = 1034, \fBMySqlErrorCode\&.OldKeyFile\fP = 1035, \fBMySqlErrorCode\&.OpenAsReadOnly\fP = 1036, \fBMySqlErrorCode\&.OutOfMemory\fP = 1037, \fBMySqlErrorCode\&.OutOfSortMemory\fP = 1038, \fBMySqlErrorCode\&.UnexepectedEOF\fP = 1039, \fBMySqlErrorCode\&.ConnectionCountError\fP = 1040, \fBOutOfResources\fP = 1041, \fBMySqlErrorCode\&.UnableToConnectToHost\fP = 1042, \fBMySqlErrorCode\&.HandshakeError\fP = 1043, \fBDatabaseAccessDenied\fP = 1044, \fBMySqlErrorCode\&.AccessDenied\fP = 1045, \fBMySqlErrorCode\&.NoDatabaseSelected\fP = 1046, \fBMySqlErrorCode\&.UnknownCommand\fP = 1047, \fBColumnCannotBeNull\fP = 1048, \fBMySqlErrorCode\&.UnknownDatabase\fP = 1049, \fBMySqlErrorCode\&.TableExists\fP = 1050, \fBMySqlErrorCode\&.BadTable\fP = 1051, \fBMySqlErrorCode\&.NonUnique\fP = 1052, \fBMySqlErrorCode\&.ServerShutdown\fP = 1053, \fBMySqlErrorCode\&.BadFieldError\fP = 1054, \fBMySqlErrorCode\&.WrongFieldWithGroup\fP = 1055, \fBMySqlErrorCode\&.WrongGroupField\fP = 1056, \fBMySqlErrorCode\&.WrongSumSelected\fP = 1057, \fBMySqlErrorCode\&.WrongValueCount\fP = 1058, \fBMySqlErrorCode\&.TooLongIdentifier\fP = 1059, \fBDuplicateFieldName\fP = 1060, \fBMySqlErrorCode\&.DuplicateKeyName\fP = 1061, \fBMySqlErrorCode\&.DuplicateKeyEntry\fP = 1062, \fBMySqlErrorCode\&.WrongFieldSpecifier\fP = 1063, \fBMySqlErrorCode\&.ParseError\fP = 1064, \fBMySqlErrorCode\&.EmptyQuery\fP = 1065, \fBMySqlErrorCode\&.NonUniqueTable\fP = 1066, \fBMySqlErrorCode\&.InvalidDefault\fP = 1067, \fBMySqlErrorCode\&.MultiplePrimaryKey\fP = 1068, \fBMySqlErrorCode\&.TooManyKeys\fP = 1069, \fBMySqlErrorCode\&.TooManyKeysParts\fP = 1070, \fBMySqlErrorCode\&.TooLongKey\fP = 1071, \fBMySqlErrorCode\&.KeyColumnDoesNotExist\fP = 1072, \fBMySqlErrorCode\&.BlobUsedAsKey\fP = 1073, \fBMySqlErrorCode\&.TooBigFieldLength\fP = 1074, \fBMySqlErrorCode\&.WrongAutoKey\fP = 1075, \fBMySqlErrorCode\&.Ready\fP = 1076, \fBMySqlErrorCode\&.NormalShutdown\fP = 1077, \fBMySqlErrorCode\&.GotSignal\fP = 1078, \fBMySqlErrorCode\&.ShutdownComplete\fP = 1079, \fBMySqlErrorCode\&.ForcingClose\fP = 1080, \fBMySqlErrorCode\&.IPSocketError\fP = 1081, \fBMySqlErrorCode\&.NoSuchIndex\fP = 1082, \fBMySqlErrorCode\&.WrongFieldTerminators\fP = 1083, \fBMySqlErrorCode\&.BlobsAndNoTerminated\fP = 1084, \fBMySqlErrorCode\&.TextFileNotReadable\fP = 1085, \fBMySqlErrorCode\&.FileExists\fP = 1086, \fBMySqlErrorCode\&.LoadInfo\fP = 1087, \fBMySqlErrorCode\&.AlterInfo\fP = 1088, \fBMySqlErrorCode\&.WrongSubKey\fP = 1089, \fBMySqlErrorCode\&.CannotRemoveAllFields\fP = 1090, \fBMySqlErrorCode\&.CannotDropFieldOrKey\fP = 1091, \fBMySqlErrorCode\&.InsertInfo\fP = 1092, \fBMySqlErrorCode\&.UpdateTableUsed\fP = 1093, \fBMySqlErrorCode\&.NoSuchThread\fP = 1094, \fBMySqlErrorCode\&.KillDenied\fP = 1095, \fBMySqlErrorCode\&.NoTablesUsed\fP = 1096, \fBMySqlErrorCode\&.TooBigSet\fP = 1097, \fBMySqlErrorCode\&.NoUniqueLogFile\fP = 1098, \fBMySqlErrorCode\&.TableNotLockedForWrite\fP = 1099, \fBMySqlErrorCode\&.TableNotLocked\fP = 1100, \fBMySqlErrorCode\&.BlobCannotHaveDefault\fP = 1101, \fBMySqlErrorCode\&.WrongDatabaseName\fP = 1102, \fBMySqlErrorCode\&.WrongTableName\fP = 1103, \fBMySqlErrorCode\&.TooBigSelect\fP = 1104, \fBMySqlErrorCode\&.UnknownError\fP = 1105, \fBMySqlErrorCode\&.UnknownProcedure\fP = 1106, \fBMySqlErrorCode\&.WrongParameterCountToProcedure\fP = 1107, \fBMySqlErrorCode\&.WrongParametersToProcedure\fP = 1108, \fBMySqlErrorCode\&.UnknownTable\fP = 1109, \fBMySqlErrorCode\&.FieldSpecifiedTwice\fP = 1110, \fBMySqlErrorCode\&.InvalidGroupFunctionUse\fP = 1111, \fBMySqlErrorCode\&.UnsupportedExtenstion\fP = 1112, \fBMySqlErrorCode\&.TableMustHaveColumns\fP = 1113, \fBMySqlErrorCode\&.RecordFileFull\fP = 1114, \fBMySqlErrorCode\&.UnknownCharacterSet\fP = 1115, \fBMySqlErrorCode\&.TooManyTables\fP = 1116, \fBMySqlErrorCode\&.TooManyFields\fP = 1117, \fBMySqlErrorCode\&.TooBigRowSize\fP = 1118, \fBMySqlErrorCode\&.StackOverrun\fP = 1119, \fBMySqlErrorCode\&.WrongOuterJoin\fP = 1120, \fBMySqlErrorCode\&.NullColumnInIndex\fP = 1121, \fBMySqlErrorCode\&.CannotFindUDF\fP = 1122, \fBMySqlErrorCode\&.CannotInitializeUDF\fP = 1123, \fBMySqlErrorCode\&.UDFNoPaths\fP = 1124, \fBMySqlErrorCode\&.UDFExists\fP = 1125, \fBMySqlErrorCode\&.CannotOpenLibrary\fP = 1126, \fBMySqlErrorCode\&.CannotFindDLEntry\fP = 1127, \fBMySqlErrorCode\&.FunctionNotDefined\fP = 1128, \fBHostIsBlocked\fP = 1129, \fBMySqlErrorCode\&.HostNotPrivileged\fP = 1130, \fBMySqlErrorCode\&.AnonymousUser\fP = 1131, \fBMySqlErrorCode\&.PasswordNotAllowed\fP = 1132, \fBMySqlErrorCode\&.PasswordNoMatch\fP = 1133, \fBMySqlErrorCode\&.UpdateInfo\fP = 1134, \fBMySqlErrorCode\&.CannotCreateThread\fP = 1135, \fBMySqlErrorCode\&.WrongValueCountOnRow\fP = 1136, \fBMySqlErrorCode\&.CannotReopenTable\fP = 1137, \fBMySqlErrorCode\&.InvalidUseOfNull\fP = 1138, \fBMySqlErrorCode\&.RegExpError\fP = 1139, \fBMySqlErrorCode\&.MixOfGroupFunctionAndFields\fP = 1140, \fBMySqlErrorCode\&.NonExistingGrant\fP = 1141, \fBMySqlErrorCode\&.TableAccessDenied\fP = 1142, \fBMySqlErrorCode\&.ColumnAccessDenied\fP = 1143, \fBMySqlErrorCode\&.IllegalGrantForTable\fP = 1144, \fBMySqlErrorCode\&.GrantWrongHostOrUser\fP = 1145, \fBMySqlErrorCode\&.NoSuchTable\fP = 1146, \fBMySqlErrorCode\&.NonExistingTableGrant\fP = 1147, \fBMySqlErrorCode\&.NotAllowedCommand\fP = 1148, \fBMySqlErrorCode\&.SyntaxError\fP = 1149, \fBMySqlErrorCode\&.DelayedCannotChangeLock\fP = 1150, \fBMySqlErrorCode\&.TooManyDelayedThreads\fP = 1151, \fBAbortingConnection\fP = 1152, \fBMySqlErrorCode\&.PacketTooLarge\fP = 1153, \fBMySqlErrorCode\&.NetReadErrorFromPipe\fP = 1154, \fBMySqlErrorCode\&.NetFCntlError\fP = 1155, \fBMySqlErrorCode\&.NetPacketsOutOfOrder\fP = 1156, \fBMySqlErrorCode\&.NetUncompressError\fP = 1157, \fBMySqlErrorCode\&.NetReadError\fP = 1158, \fBMySqlErrorCode\&.NetReadInterrupted\fP = 1159, \fBMySqlErrorCode\&.NetErrorOnWrite\fP = 1160, \fBMySqlErrorCode\&.NetWriteInterrupted\fP = 1161, \fBMySqlErrorCode\&.TooLongString\fP = 1162, \fBMySqlErrorCode\&.TableCannotHandleBlob\fP = 1163, \fBMySqlErrorCode\&.TableCannotHandleAutoIncrement\fP = 1164, \fBMySqlErrorCode\&.DelayedInsertTableLocked\fP = 1165, \fBMySqlErrorCode\&.WrongColumnName\fP = 1166, \fBMySqlErrorCode\&.WrongKeyColumn\fP = 1167, \fBMySqlErrorCode\&.WrongMergeTable\fP = 1168, \fBMySqlErrorCode\&.DuplicateUnique\fP = 1169, \fBMySqlErrorCode\&.BlobKeyWithoutLength\fP = 1170, \fBMySqlErrorCode\&.PrimaryCannotHaveNull\fP = 1171, \fBMySqlErrorCode\&.TooManyRows\fP = 1172, \fBMySqlErrorCode\&.RequiresPrimaryKey\fP = 1173, \fBMySqlErrorCode\&.NoRAIDCompiled\fP = 1174, \fBMySqlErrorCode\&.UpdateWithoutKeysInSafeMode\fP = 1175, \fBMySqlErrorCode\&.KeyDoesNotExist\fP = 1176, \fBMySqlErrorCode\&.CheckNoSuchTable\fP = 1177, \fBMySqlErrorCode\&.CheckNotImplemented\fP = 1178, \fBMySqlErrorCode\&.CannotDoThisDuringATransaction\fP = 1179, \fBMySqlErrorCode\&.ErrorDuringCommit\fP = 1180, \fBMySqlErrorCode\&.ErrorDuringRollback\fP = 1181, \fBMySqlErrorCode\&.ErrorDuringFlushLogs\fP = 1182, \fBMySqlErrorCode\&.ErrorDuringCheckpoint\fP = 1183, \fBMySqlErrorCode\&.NewAbortingConnection\fP = 1184, \fBMySqlErrorCode\&.DumpNotImplemented\fP = 1185, \fBMySqlErrorCode\&.FlushMasterBinLogClosed\fP = 1186, \fBMySqlErrorCode\&.IndexRebuild\fP = 1187, \fBMySqlErrorCode\&.MasterError\fP = 1188, \fBMySqlErrorCode\&.MasterNetRead\fP = 1189, \fBMySqlErrorCode\&.MasterNetWrite\fP = 1190, \fBMySqlErrorCode\&.FullTextMatchingKeyNotFound\fP = 1191, \fBMySqlErrorCode\&.LockOrActiveTransaction\fP = 1192, \fBMySqlErrorCode\&.UnknownSystemVariable\fP = 1193, \fBMySqlErrorCode\&.CrashedOnUsage\fP = 1194, \fBMySqlErrorCode\&.CrashedOnRepair\fP = 1195, \fBMySqlErrorCode\&.WarningNotCompleteRollback\fP = 1196, \fBMySqlErrorCode\&.TransactionCacheFull\fP = 1197, \fBMySqlErrorCode\&.SlaveMustStop\fP = 1198, \fBMySqlErrorCode\&.SlaveNotRunning\fP = 1199, \fBMySqlErrorCode\&.BadSlave\fP = 1200, \fBMySqlErrorCode\&.MasterInfo\fP = 1201, \fBMySqlErrorCode\&.SlaveThread\fP = 1202, \fBMySqlErrorCode\&.TooManyUserConnections\fP = 1203, \fBMySqlErrorCode\&.SetConstantsOnly\fP = 1204, \fBMySqlErrorCode\&.LockWaitTimeout\fP = 1205, \fBMySqlErrorCode\&.LockTableFull\fP = 1206, \fBMySqlErrorCode\&.ReadOnlyTransaction\fP = 1207, \fBMySqlErrorCode\&.DropDatabaseWithReadLock\fP = 1208, \fBMySqlErrorCode\&.CreateDatabaseWithReadLock\fP = 1209, \fBMySqlErrorCode\&.WrongArguments\fP = 1210, \fBMySqlErrorCode\&.NoPermissionToCreateUser\fP = 1211, \fBMySqlErrorCode\&.UnionTablesInDifferentDirectory\fP = 1212, \fBMySqlErrorCode\&.LockDeadlock\fP = 1213, \fBMySqlErrorCode\&.TableCannotHandleFullText\fP = 1214, \fBMySqlErrorCode\&.CannotAddForeignConstraint\fP = 1215, \fBMySqlErrorCode\&.NoReferencedRow\fP = 1216, \fBMySqlErrorCode\&.RowIsReferenced\fP = 1217, \fBMySqlErrorCode\&.ConnectToMaster\fP = 1218, \fBMySqlErrorCode\&.QueryOnMaster\fP = 1219, \fBMySqlErrorCode\&.ErrorWhenExecutingCommand\fP = 1220, \fBMySqlErrorCode\&.WrongUsage\fP = 1221, \fBMySqlErrorCode\&.WrongNumberOfColumnsInSelect\fP = 1222, \fBMySqlErrorCode\&.CannotUpdateWithReadLock\fP = 1223, \fBMySqlErrorCode\&.MixingNotAllowed\fP = 1224, \fBMySqlErrorCode\&.DuplicateArgument\fP = 1225, \fBMySqlErrorCode\&.UserLimitReached\fP = 1226, \fBMySqlErrorCode\&.SpecifiedAccessDeniedError\fP = 1227, \fBMySqlErrorCode\&.LocalVariableError\fP = 1228, \fBMySqlErrorCode\&.GlobalVariableError\fP = 1229, \fBMySqlErrorCode\&.NotDefaultError\fP = 1230, \fBMySqlErrorCode\&.WrongValueForVariable\fP = 1231, \fBMySqlErrorCode\&.WrongTypeForVariable\fP = 1232, \fBMySqlErrorCode\&.VariableCannotBeRead\fP = 1233, \fBMySqlErrorCode\&.CannotUseOptionHere\fP = 1234, \fBMySqlErrorCode\&.NotSupportedYet\fP = 1235, \fBMySqlErrorCode\&.MasterFatalErrorReadingBinLog\fP = 1236, \fBMySqlErrorCode\&.SlaveIgnoredTable\fP = 1237, \fBMySqlErrorCode\&.IncorrectGlobalLocalVariable\fP = 1238, \fBMySqlErrorCode\&.WrongForeignKeyDefinition\fP = 1239, \fBMySqlErrorCode\&.KeyReferenceDoesNotMatchTableReference\fP = 1240, \fBMySqlErrorCode\&.OpearnColumnsError\fP = 1241, \fBMySqlErrorCode\&.SubQueryNoOneRow\fP = 1242, \fBMySqlErrorCode\&.UnknownStatementHandler\fP = 1243, \fBMySqlErrorCode\&.CorruptHelpDatabase\fP = 1244, \fBMySqlErrorCode\&.CyclicReference\fP = 1245, \fBMySqlErrorCode\&.AutoConvert\fP = 1246, \fBMySqlErrorCode\&.IllegalReference\fP = 1247, \fBMySqlErrorCode\&.DerivedMustHaveAlias\fP = 1248, \fBMySqlErrorCode\&.SelectReduced\fP = 1249, \fBMySqlErrorCode\&.TableNameNotAllowedHere\fP = 1250, \fBMySqlErrorCode\&.NotSupportedAuthMode\fP = 1251, \fBMySqlErrorCode\&.SpatialCannotHaveNull\fP = 1252, \fBMySqlErrorCode\&.CollationCharsetMismatch\fP = 1253, \fBMySqlErrorCode\&.SlaveWasRunning\fP = 1254, \fBMySqlErrorCode\&.SlaveWasNotRunning\fP = 1255, \fBMySqlErrorCode\&.TooBigForUncompress\fP = 1256, \fBMySqlErrorCode\&.ZipLibMemoryError\fP = 1257, \fBMySqlErrorCode\&.ZipLibBufferError\fP = 1258, \fBMySqlErrorCode\&.ZipLibDataError\fP = 1259, \fBMySqlErrorCode\&.CutValueGroupConcat\fP = 1260, \fBMySqlErrorCode\&.WarningTooFewRecords\fP = 1261, \fBMySqlErrorCode\&.WarningTooManyRecords\fP = 1262, \fBMySqlErrorCode\&.WarningNullToNotNull\fP = 1263, \fBMySqlErrorCode\&.WarningDataOutOfRange\fP = 1264, \fBMySqlErrorCode\&.WaningDataTruncated\fP = 1265, \fBMySqlErrorCode\&.WaningUsingOtherHandler\fP = 1266, \fBMySqlErrorCode\&.CannotAggregateTwoCollations\fP = 1267, \fBMySqlErrorCode\&.DropUserError\fP = 1268, \fBMySqlErrorCode\&.RevokeGrantsError\fP = 1269, \fBMySqlErrorCode\&.CannotAggregateThreeCollations\fP = 1270, \fBMySqlErrorCode\&.CannotAggregateNCollations\fP = 1271, \fBMySqlErrorCode\&.VariableIsNotStructure\fP = 1272, \fBMySqlErrorCode\&.UnknownCollation\fP = 1273, \fBMySqlErrorCode\&.SlaveIgnoreSSLParameters\fP = 1274, \fBMySqlErrorCode\&.ServerIsInSecureAuthMode\fP = 1275, \fBMySqlErrorCode\&.WaningFieldResolved\fP = 1276, \fBMySqlErrorCode\&.BadSlaveUntilCondition\fP = 1277, \fBMySqlErrorCode\&.MissingSkipSlave\fP = 1278, \fBMySqlErrorCode\&.ErrorUntilConditionIgnored\fP = 1279, \fBMySqlErrorCode\&.WrongNameForIndex\fP = 1280, \fBMySqlErrorCode\&.WrongNameForCatalog\fP = 1281, \fBMySqlErrorCode\&.WarningQueryCacheResize\fP = 1282, \fBMySqlErrorCode\&.BadFullTextColumn\fP = 1283, \fBMySqlErrorCode\&.UnknownKeyCache\fP = 1284, \fBMySqlErrorCode\&.WarningHostnameWillNotWork\fP = 1285, \fBMySqlErrorCode\&.UnknownStorageEngine\fP = 1286, \fBMySqlErrorCode\&.WaningDeprecatedSyntax\fP = 1287, \fBMySqlErrorCode\&.NonUpdateableTable\fP = 1288, \fBMySqlErrorCode\&.FeatureDisabled\fP = 1289, \fBMySqlErrorCode\&.OptionPreventsStatement\fP = 1290, \fBMySqlErrorCode\&.DuplicatedValueInType\fP = 1291, \fBMySqlErrorCode\&.TruncatedWrongValue\fP = 1292, \fBMySqlErrorCode\&.TooMuchAutoTimestampColumns\fP = 1293, \fBMySqlErrorCode\&.InvalidOnUpdate\fP = 1294, \fBMySqlErrorCode\&.UnsupportedPreparedStatement\fP = 1295, \fBMySqlErrorCode\&.GetErroMessage\fP = 1296, \fBMySqlErrorCode\&.GetTemporaryErrorMessage\fP = 1297, \fBMySqlErrorCode\&.UnknownTimeZone\fP = 1298, \fBMySqlErrorCode\&.WarningInvalidTimestamp\fP = 1299, \fBMySqlErrorCode\&.InvalidCharacterString\fP = 1300, \fBMySqlErrorCode\&.WarningAllowedPacketOverflowed\fP = 1301, \fBMySqlErrorCode\&.ConflictingDeclarations\fP = 1302, \fBMySqlErrorCode\&.StoredProcedureNoRecursiveCreate\fP = 1303, \fBMySqlErrorCode\&.StoredProcedureAlreadyExists\fP = 1304, \fBMySqlErrorCode\&.StoredProcedureDoesNotExist\fP = 1305, \fBMySqlErrorCode\&.StoredProcedureDropFailed\fP = 1306, \fBMySqlErrorCode\&.StoredProcedureStoreFailed\fP = 1307, \fBMySqlErrorCode\&.StoredProcedureLiLabelMismatch\fP = 1308, \fBMySqlErrorCode\&.StoredProcedureLabelRedefine\fP = 1309, \fBMySqlErrorCode\&.StoredProcedureLabelMismatch\fP = 1310, \fBMySqlErrorCode\&.StoredProcedureUninitializedVariable\fP = 1311, \fBMySqlErrorCode\&.StoredProcedureBadSelect\fP = 1312, \fBMySqlErrorCode\&.StoredProcedureBadReturn\fP = 1313, \fBMySqlErrorCode\&.StoredProcedureBadStatement\fP = 1314, \fBMySqlErrorCode\&.UpdateLogDeprecatedIgnored\fP = 1315, \fBMySqlErrorCode\&.UpdateLogDeprecatedTranslated\fP = 1316, \fBMySqlErrorCode\&.QueryInterrupted\fP = 1317, \fBMySqlErrorCode\&.StoredProcedureNumberOfArguments\fP = 1318, \fBMySqlErrorCode\&.StoredProcedureConditionMismatch\fP = 1319, \fBMySqlErrorCode\&.StoredProcedureNoReturn\fP = 1320, \fBMySqlErrorCode\&.StoredProcedureNoReturnEnd\fP = 1321, \fBMySqlErrorCode\&.StoredProcedureBadCursorQuery\fP = 1322, \fBMySqlErrorCode\&.StoredProcedureBadCursorSelect\fP = 1323, \fBMySqlErrorCode\&.StoredProcedureCursorMismatch\fP = 1324, \fBMySqlErrorCode\&.StoredProcedureAlreadyOpen\fP = 1325, \fBMySqlErrorCode\&.StoredProcedureCursorNotOpen\fP = 1326, \fBMySqlErrorCode\&.StoredProcedureUndeclaredVariabel\fP = 1327, \fBMySqlErrorCode\&.StoredProcedureWrongNumberOfFetchArguments\fP = 1328, \fBMySqlErrorCode\&.StoredProcedureFetchNoData\fP = 1329, \fBMySqlErrorCode\&.StoredProcedureDuplicateParameter\fP = 1330, \fBMySqlErrorCode\&.StoredProcedureDuplicateVariable\fP = 1331, \fBMySqlErrorCode\&.StoredProcedureDuplicateCondition\fP = 1332, \fBMySqlErrorCode\&.StoredProcedureDuplicateCursor\fP = 1333, \fBMySqlErrorCode\&.StoredProcedureCannotAlter\fP = 1334, \fBMySqlErrorCode\&.StoredProcedureSubSelectNYI\fP = 1335, \fBMySqlErrorCode\&.StatementNotAllowedInStoredFunctionOrTrigger\fP = 1336, \fBMySqlErrorCode\&.StoredProcedureVariableConditionAfterCursorHandler\fP = 1337, \fBMySqlErrorCode\&.StoredProcedureCursorAfterHandler\fP = 1338, \fBMySqlErrorCode\&.StoredProcedureCaseNotFound\fP = 1339, \fBMySqlErrorCode\&.FileParserTooBigFile\fP = 1340, \fBMySqlErrorCode\&.FileParserBadHeader\fP = 1341, \fBMySqlErrorCode\&.FileParserEOFInComment\fP = 1342, \fBMySqlErrorCode\&.FileParserErrorInParameter\fP = 1343, \fBMySqlErrorCode\&.FileParserEOFInUnknownParameter\fP = 1344, \fBMySqlErrorCode\&.ViewNoExplain\fP = 1345, \fBMySqlErrorCode\&.FrmUnknownType\fP = 1346, \fBMySqlErrorCode\&.WrongObject\fP = 1347, \fBMySqlErrorCode\&.NonUpdateableColumn\fP = 1348, \fBMySqlErrorCode\&.ViewSelectDerived\fP = 1349, \fBMySqlErrorCode\&.ViewSelectClause\fP = 1350, \fBMySqlErrorCode\&.ViewSelectVariable\fP = 1351, \fBMySqlErrorCode\&.ViewSelectTempTable\fP = 1352, \fBMySqlErrorCode\&.ViewWrongList\fP = 1353, \fBMySqlErrorCode\&.WarningViewMerge\fP = 1354, \fBMySqlErrorCode\&.WarningViewWithoutKey\fP = 1355, \fBMySqlErrorCode\&.ViewInvalid\fP = 1356, \fBMySqlErrorCode\&.StoredProcedureNoDropStoredProcedure\fP = 1357, \fBMySqlErrorCode\&.StoredProcedureGotoInHandler\fP = 1358, \fBMySqlErrorCode\&.TriggerAlreadyExists\fP = 1359, \fBMySqlErrorCode\&.TriggerDoesNotExist\fP = 1360, \fBMySqlErrorCode\&.TriggerOnViewOrTempTable\fP = 1361, \fBMySqlErrorCode\&.TriggerCannotChangeRow\fP = 1362, \fBMySqlErrorCode\&.TriggerNoSuchRowInTrigger\fP = 1363, \fBMySqlErrorCode\&.NoDefaultForField\fP = 1364, \fBMySqlErrorCode\&.DivisionByZero\fP = 1365, \fBMySqlErrorCode\&.TruncatedWrongValueForField\fP = 1366, \fBMySqlErrorCode\&.IllegalValueForType\fP = 1367, \fBMySqlErrorCode\&.ViewNonUpdatableCheck\fP = 1368, \fBMySqlErrorCode\&.ViewCheckFailed\fP = 1369, \fBMySqlErrorCode\&.PrecedureAccessDenied\fP = 1370, \fBMySqlErrorCode\&.RelayLogFail\fP = 1371, \fBMySqlErrorCode\&.PasswordLength\fP = 1372, \fBMySqlErrorCode\&.UnknownTargetBinLog\fP = 1373, \fBMySqlErrorCode\&.IOErrorLogIndexRead\fP = 1374, \fBMySqlErrorCode\&.BinLogPurgeProhibited\fP = 1375, \fBMySqlErrorCode\&.FSeekFail\fP = 1376, \fBMySqlErrorCode\&.BinLogPurgeFatalError\fP = 1377, \fBMySqlErrorCode\&.LogInUse\fP = 1378, \fBMySqlErrorCode\&.LogPurgeUnknownError\fP = 1379, \fBMySqlErrorCode\&.RelayLogInit\fP = 1380, \fBMySqlErrorCode\&.NoBinaryLogging\fP = 1381, \fBMySqlErrorCode\&.ReservedSyntax\fP = 1382, \fBMySqlErrorCode\&.WSAStartupFailed\fP = 1383, \fBMySqlErrorCode\&.DifferentGroupsProcedure\fP = 1384, \fBMySqlErrorCode\&.NoGroupForProcedure\fP = 1385, \fBMySqlErrorCode\&.OrderWithProcedure\fP = 1386, \fBMySqlErrorCode\&.LoggingProhibitsChangingOf\fP = 1387, \fBMySqlErrorCode\&.NoFileMapping\fP = 1388, \fBMySqlErrorCode\&.WrongMagic\fP = 1389, \fBMySqlErrorCode\&.PreparedStatementManyParameters\fP = 1390, \fBMySqlErrorCode\&.KeyPartZero\fP = 1391, \fBMySqlErrorCode\&.ViewChecksum\fP = 1392, \fBMySqlErrorCode\&.ViewMultiUpdate\fP = 1393, \fBMySqlErrorCode\&.ViewNoInsertFieldList\fP = 1394, \fBMySqlErrorCode\&.ViewDeleteMergeView\fP = 1395, \fBMySqlErrorCode\&.CannotUser\fP = 1396, \fBMySqlErrorCode\&.XAERNotA\fP = 1397, \fBMySqlErrorCode\&.XAERInvalid\fP = 1398, \fBMySqlErrorCode\&.XAERRemoveFail\fP = 1399, \fBMySqlErrorCode\&.XAEROutside\fP = 1400, \fBMySqlErrorCode\&.XAERRemoveError\fP = 1401, \fBMySqlErrorCode\&.XARBRollback\fP = 1402, \fBMySqlErrorCode\&.NonExistingProcedureGrant\fP = 1403, \fBMySqlErrorCode\&.ProcedureAutoGrantFail\fP = 1404, \fBMySqlErrorCode\&.ProcedureAutoRevokeFail\fP = 1405, \fBMySqlErrorCode\&.DataTooLong\fP = 1406, \fBMySqlErrorCode\&.StoredProcedureSQLState\fP = 1407, \fBMySqlErrorCode\&.StartupError\fP = 1408, \fBMySqlErrorCode\&.LoadFromFixedSizeRowsToVariable\fP = 1409, \fBMySqlErrorCode\&.CannotCreateUserWithGrant\fP = 1410, \fBMySqlErrorCode\&.WrongValueForType\fP = 1411, \fBMySqlErrorCode\&.TableDefinitionChanged\fP = 1412, \fBMySqlErrorCode\&.StoredProcedureDuplicateHandler\fP = 1413, \fBMySqlErrorCode\&.StoredProcedureNotVariableArgument\fP = 1414, \fBMySqlErrorCode\&.StoredProcedureNoReturnSet\fP = 1415, \fBMySqlErrorCode\&.CannotCreateGeometryObject\fP = 1416, \fBMySqlErrorCode\&.FailedRoutineBreaksBinLog\fP = 1417, \fBMySqlErrorCode\&.BinLogUnsafeRoutine\fP = 1418, \fBMySqlErrorCode\&.BinLogCreateRoutineNeedSuper\fP = 1419, \fBMySqlErrorCode\&.ExecuteStatementWithOpenCursor\fP = 1420, \fBMySqlErrorCode\&.StatementHasNoOpenCursor\fP = 1421, \fBMySqlErrorCode\&.CommitNotAllowedIfStoredFunctionOrTrigger\fP = 1422, \fBMySqlErrorCode\&.NoDefaultForViewField\fP = 1423, \fBMySqlErrorCode\&.StoredProcedureNoRecursion\fP = 1424, \fBMySqlErrorCode\&.TooBigScale\fP = 1425, \fBMySqlErrorCode\&.TooBigPrecision\fP = 1426, \fBMySqlErrorCode\&.MBiggerThanD\fP = 1427, \fBMySqlErrorCode\&.WrongLockOfSystemTable\fP = 1428, \fBMySqlErrorCode\&.ConnectToForeignDataSource\fP = 1429, \fBMySqlErrorCode\&.QueryOnForeignDataSource\fP = 1430, \fBMySqlErrorCode\&.ForeignDataSourceDoesNotExist\fP = 1431, \fBMySqlErrorCode\&.ForeignDataStringInvalidCannotCreate\fP = 1432, \fBMySqlErrorCode\&.ForeignDataStringInvalid\fP = 1433, \fBMySqlErrorCode\&.CannotCreateFederatedTable\fP = 1434, \fBMySqlErrorCode\&.TriggerInWrongSchema\fP = 1435, \fBMySqlErrorCode\&.StackOverrunNeedMore\fP = 1436, \fBMySqlErrorCode\&.TooLongBody\fP = 1437, \fBMySqlErrorCode\&.WarningCannotDropDefaultKeyCache\fP = 1438, \fBMySqlErrorCode\&.TooBigDisplayWidth\fP = 1439, \fBMySqlErrorCode\&.XAERDuplicateID\fP = 1440, \fBMySqlErrorCode\&.DateTimeFunctionOverflow\fP = 1441, \fBMySqlErrorCode\&.CannotUpdateUsedTableInStoredFunctionOrTrigger\fP = 1442, \fBMySqlErrorCode\&.ViewPreventUpdate\fP = 1443, \fBMySqlErrorCode\&.PreparedStatementNoRecursion\fP = 1444, \fBMySqlErrorCode\&.StoredProcedureCannotSetAutoCommit\fP = 1445, \fBMySqlErrorCode\&.MalformedDefiner\fP = 1446, \fBMySqlErrorCode\&.ViewFrmNoUser\fP = 1447, \fBMySqlErrorCode\&.ViewOtherUser\fP = 1448, \fBMySqlErrorCode\&.NoSuchUser\fP = 1449, \fBMySqlErrorCode\&.ForbidSchemaChange\fP = 1450, \fBMySqlErrorCode\&.RowIsReferenced2\fP = 1451, \fBMySqlErrorCode\&.NoReferencedRow2\fP = 1452, \fBMySqlErrorCode\&.StoredProcedureBadVariableShadow\fP = 1453, \fBMySqlErrorCode\&.TriggerNoDefiner\fP = 1454, \fBMySqlErrorCode\&.OldFileFormat\fP = 1455, \fBMySqlErrorCode\&.StoredProcedureRecursionLimit\fP = 1456, \fBMySqlErrorCode\&.StoredProcedureTableCorrupt\fP = 1457, \fBMySqlErrorCode\&.StoredProcedureWrongName\fP = 1458, \fBMySqlErrorCode\&.TableNeedsUpgrade\fP = 1459, \fBMySqlErrorCode\&.StoredProcedureNoAggregate\fP = 1460, \fBMySqlErrorCode\&.MaxPreparedStatementCountReached\fP = 1461, \fBMySqlErrorCode\&.ViewRecursive\fP = 1462, \fBMySqlErrorCode\&.NonGroupingFieldUsed\fP = 1463, \fBMySqlErrorCode\&.TableCannotHandleSpatialKeys\fP = 1464, \fBMySqlErrorCode\&.NoTriggersOnSystemSchema\fP = 1465, \fBMySqlErrorCode\&.RemovedSpaces\fP = 1466, \fBMySqlErrorCode\&.AutoIncrementReadFailed\fP = 1467, \fBMySqlErrorCode\&.UserNameError\fP = 1468, \fBMySqlErrorCode\&.HostNameError\fP = 1469, \fBMySqlErrorCode\&.WrongStringLength\fP = 1470, \fBMySqlErrorCode\&.NonInsertableTable\fP = 1471, \fBMySqlErrorCode\&.AdminWrongMergeTable\fP = 1472, \fBMySqlErrorCode\&.TooHighLevelOfNestingForSelect\fP = 1473, \fBMySqlErrorCode\&.NameBecomesEmpty\fP = 1474, \fBMySqlErrorCode\&.AmbiguousFieldTerm\fP = 1475, \fBMySqlErrorCode\&.ForeignServerExists\fP = 1476, \fBMySqlErrorCode\&.ForeignServerDoesNotExist\fP = 1477, \fBMySqlErrorCode\&.IllegalHACreateOption\fP = 1478, \fBMySqlErrorCode\&.PartitionRequiresValues\fP = 1479, \fBMySqlErrorCode\&.PartitionWrongValues\fP = 1480, \fBMySqlErrorCode\&.PartitionMaxValue\fP = 1481, \fBMySqlErrorCode\&.PartitionSubPartition\fP = 1482, \fBMySqlErrorCode\&.PartitionSubPartMix\fP = 1483, \fBMySqlErrorCode\&.PartitionWrongNoPart\fP = 1484, \fBMySqlErrorCode\&.PartitionWrongNoSubPart\fP = 1485, \fBMySqlErrorCode\&.WrongExpressionInParitionFunction\fP = 1486, \fBMySqlErrorCode\&.NoConstantExpressionInRangeOrListError\fP = 1487, \fBMySqlErrorCode\&.FieldNotFoundPartitionErrror\fP = 1488, \fBMySqlErrorCode\&.ListOfFieldsOnlyInHash\fP = 1489, \fBMySqlErrorCode\&.InconsistentPartitionInfo\fP = 1490, \fBMySqlErrorCode\&.PartitionFunctionNotAllowed\fP = 1491, \fBMySqlErrorCode\&.PartitionsMustBeDefined\fP = 1492, \fBMySqlErrorCode\&.RangeNotIncreasing\fP = 1493, \fBMySqlErrorCode\&.InconsistentTypeOfFunctions\fP = 1494, \fBMySqlErrorCode\&.MultipleDefinitionsConstantInListPartition\fP = 1495, \fBMySqlErrorCode\&.PartitionEntryError\fP = 1496, \fBMySqlErrorCode\&.MixHandlerError\fP = 1497, \fBMySqlErrorCode\&.PartitionNotDefined\fP = 1498, \fBMySqlErrorCode\&.TooManyPartitions\fP = 1499, \fBMySqlErrorCode\&.SubPartitionError\fP = 1500, \fBMySqlErrorCode\&.CannotCreateHandlerFile\fP = 1501, \fBMySqlErrorCode\&.BlobFieldInPartitionFunction\fP = 1502, \fBMySqlErrorCode\&.UniqueKeyNeedAllFieldsInPartitioningFunction\fP = 1503, \fBMySqlErrorCode\&.NoPartitions\fP = 1504, \fBMySqlErrorCode\&.PartitionManagementOnNoPartitioned\fP = 1505, \fBMySqlErrorCode\&.ForeignKeyOnPartitioned\fP = 1506, \fBMySqlErrorCode\&.DropPartitionNonExistent\fP = 1507, \fBMySqlErrorCode\&.DropLastPartition\fP = 1508, \fBMySqlErrorCode\&.CoalesceOnlyOnHashPartition\fP = 1509, \fBMySqlErrorCode\&.ReorganizeHashOnlyOnSameNumber\fP = 1510, \fBMySqlErrorCode\&.ReorganizeNoParameter\fP = 1511, \fBMySqlErrorCode\&.OnlyOnRangeListPartition\fP = 1512, \fBMySqlErrorCode\&.AddPartitionSubPartition\fP = 1513, \fBMySqlErrorCode\&.AddPartitionNoNewPartition\fP = 1514, \fBMySqlErrorCode\&.CoalescePartitionNoPartition\fP = 1515, \fBMySqlErrorCode\&.ReorganizePartitionNotExist\fP = 1516, \fBMySqlErrorCode\&.SameNamePartition\fP = 1517, \fBMySqlErrorCode\&.NoBinLog\fP = 1518, \fBMySqlErrorCode\&.ConsecutiveReorganizePartitions\fP = 1519, \fBMySqlErrorCode\&.ReorganizeOutsideRange\fP = 1520, \fBMySqlErrorCode\&.PartitionFunctionFailure\fP = 1521, \fBMySqlErrorCode\&.PartitionStateError\fP = 1522, \fBMySqlErrorCode\&.LimitedPartitionRange\fP = 1523, \fBMySqlErrorCode\&.PluginIsNotLoaded\fP = 1524, \fBMySqlErrorCode\&.WrongValue\fP = 1525, \fBMySqlErrorCode\&.NoPartitionForGivenValue\fP = 1526, \fBMySqlErrorCode\&.FileGroupOptionOnlyOnce\fP = 1527, \fBMySqlErrorCode\&.CreateFileGroupFailed\fP = 1528, \fBMySqlErrorCode\&.DropFileGroupFailed\fP = 1529, \fBMySqlErrorCode\&.TableSpaceAutoExtend\fP = 1530, \fBMySqlErrorCode\&.WrongSizeNumber\fP = 1531, \fBMySqlErrorCode\&.SizeOverflow\fP = 1532, \fBMySqlErrorCode\&.AlterFileGroupFailed\fP = 1533, \fBMySqlErrorCode\&.BinLogRowLogginFailed\fP = 1534, \fBMySqlErrorCode\&.BinLogRowWrongTableDefinition\fP = 1535, \fBMySqlErrorCode\&.BinLogRowRBRToSBR\fP = 1536, \fBMySqlErrorCode\&.EventAlreadyExists\fP = 1537, \fBMySqlErrorCode\&.EventStoreFailed\fP = 1538, \fBMySqlErrorCode\&.EventDoesNotExist\fP = 1539, \fBMySqlErrorCode\&.EventCannotAlter\fP = 1540, \fBMySqlErrorCode\&.EventDropFailed\fP = 1541, \fBMySqlErrorCode\&.EventIntervalNotPositiveOrTooBig\fP = 1542, \fBMySqlErrorCode\&.EventEndsBeforeStarts\fP = 1543, \fBMySqlErrorCode\&.EventExecTimeInThePast\fP = 1544, \fBMySqlErrorCode\&.EventOpenTableFailed\fP = 1545, \fBMySqlErrorCode\&.EventNeitherMExpresssionNorMAt\fP = 1546, \fBMySqlErrorCode\&.ColumnCountDoesNotMatchCorrupted\fP = 1547, \fBMySqlErrorCode\&.CannotLoadFromTable\fP = 1548, \fBMySqlErrorCode\&.EventCannotDelete\fP = 1549, \fBMySqlErrorCode\&.EventCompileError\fP = 1550, \fBMySqlErrorCode\&.EventSameName\fP = 1551, \fBMySqlErrorCode\&.EventDataTooLong\fP = 1552, \fBMySqlErrorCode\&.DropIndexForeignKey\fP = 1553, \fBMySqlErrorCode\&.WarningDeprecatedSyntaxWithVersion\fP = 1554, \fBMySqlErrorCode\&.CannotWriteLockLogTable\fP = 1555, \fBMySqlErrorCode\&.CannotLockLogTable\fP = 1556, \fBMySqlErrorCode\&.ForeignDuplicateKey\fP = 1557, \fBMySqlErrorCode\&.ColumnCountDoesNotMatchPleaseUpdate\fP = 1558, \fBMySqlErrorCode\&.TemoraryTablePreventSwitchOutOfRBR\fP = 1559, \fBMySqlErrorCode\&.StoredFunctionPreventsSwitchBinLogFormat\fP = 1560, \fBMySqlErrorCode\&.NDBCannotSwitchBinLogFormat\fP = 1561, \fBMySqlErrorCode\&.PartitionNoTemporary\fP = 1562, \fBMySqlErrorCode\&.PartitionConstantDomain\fP = 1563, \fBMySqlErrorCode\&.PartitionFunctionIsNotAllowed\fP = 1564, \fBMySqlErrorCode\&.DDLLogError\fP = 1565, \fBMySqlErrorCode\&.NullInValuesLessThan\fP = 1566, \fBMySqlErrorCode\&.WrongPartitionName\fP = 1567, \fBMySqlErrorCode\&.CannotChangeTransactionIsolation\fP = 1568, \fBMySqlErrorCode\&.DuplicateEntryAutoIncrementCase\fP = 1569, \fBMySqlErrorCode\&.EventModifyQueueError\fP = 1570, \fBMySqlErrorCode\&.EventSetVariableError\fP = 1571, \fBMySqlErrorCode\&.PartitionMergeError\fP = 1572, \fBMySqlErrorCode\&.CannotActivateLog\fP = 1573, \fBMySqlErrorCode\&.RBRNotAvailable\fP = 1574, \fBMySqlErrorCode\&.Base64DecodeError\fP = 1575, \fBMySqlErrorCode\&.EventRecursionForbidden\fP = 1576, \fBMySqlErrorCode\&.EventsDatabaseError\fP = 1577, \fBMySqlErrorCode\&.OnlyIntegersAllowed\fP = 1578, \fBMySqlErrorCode\&.UnsupportedLogEngine\fP = 1579, \fBMySqlErrorCode\&.BadLogStatement\fP = 1580, \fBMySqlErrorCode\&.CannotRenameLogTable\fP = 1581, \fBMySqlErrorCode\&.WrongParameterCountToNativeFCT\fP = 1582, \fBMySqlErrorCode\&.WrongParametersToNativeFCT\fP = 1583, \fBMySqlErrorCode\&.WrongParametersToStoredFCT\fP = 1584, \fBMySqlErrorCode\&.NativeFCTNameCollision\fP = 1585, \fBMySqlErrorCode\&.DuplicateEntryWithKeyName\fP = 1586, \fBMySqlErrorCode\&.BinLogPurgeEMFile\fP = 1587, \fBMySqlErrorCode\&.EventCannotCreateInThePast\fP = 1588, \fBMySqlErrorCode\&.EventCannotAlterInThePast\fP = 1589, \fBMySqlErrorCode\&.SlaveIncident\fP = 1590, \fBMySqlErrorCode\&.NoPartitionForGivenValueSilent\fP = 1591, \fBMySqlErrorCode\&.BinLogUnsafeStatement\fP = 1592, \fBMySqlErrorCode\&.SlaveFatalError\fP = 1593, \fBMySqlErrorCode\&.SlaveRelayLogReadFailure\fP = 1594, \fBMySqlErrorCode\&.SlaveRelayLogWriteFailure\fP = 1595, \fBMySqlErrorCode\&.SlaveCreateEventFailure\fP = 1596, \fBMySqlErrorCode\&.SlaveMasterComFailure\fP = 1597, \fBMySqlErrorCode\&.BinLogLoggingImpossible\fP = 1598, \fBMySqlErrorCode\&.ViewNoCreationContext\fP = 1599, \fBMySqlErrorCode\&.ViewInvalidCreationContext\fP = 1600, \fBMySqlErrorCode\&.StoredRoutineInvalidCreateionContext\fP = 1601, \fBMySqlErrorCode\&.TiggerCorruptedFile\fP = 1602, \fBMySqlErrorCode\&.TriggerNoCreationContext\fP = 1603, \fBMySqlErrorCode\&.TriggerInvalidCreationContext\fP = 1604, \fBMySqlErrorCode\&.EventInvalidCreationContext\fP = 1605, \fBMySqlErrorCode\&.TriggerCannotOpenTable\fP = 1606, \fBMySqlErrorCode\&.CannoCreateSubRoutine\fP = 1607, \fBMySqlErrorCode\&.SlaveAmbiguousExecMode\fP = 1608, \fBMySqlErrorCode\&.NoFormatDescriptionEventBeforeBinLogStatement\fP = 1609, \fBMySqlErrorCode\&.SlaveCorruptEvent\fP = 1610, \fBMySqlErrorCode\&.LoadDataInvalidColumn\fP = 1611, \fBMySqlErrorCode\&.LogPurgeNoFile\fP = 1612, \fBMySqlErrorCode\&.XARBTimeout\fP = 1613, \fBMySqlErrorCode\&.XARBDeadlock\fP = 1614, \fBMySqlErrorCode\&.NeedRePrepare\fP = 1615, \fBMySqlErrorCode\&.DelayedNotSupported\fP = 1616, \fBMySqlErrorCode\&.WarningNoMasterInfo\fP = 1617, \fBMySqlErrorCode\&.WarningOptionIgnored\fP = 1618, \fBMySqlErrorCode\&.WarningPluginDeleteBuiltIn\fP = 1619, \fBMySqlErrorCode\&.WarningPluginBusy\fP = 1620, \fBMySqlErrorCode\&.VariableIsReadonly\fP = 1621, \fBMySqlErrorCode\&.WarningEngineTransactionRollback\fP = 1622, \fBMySqlErrorCode\&.SlaveHeartbeatFailure\fP = 1623, \fBMySqlErrorCode\&.SlaveHeartbeatValueOutOfRange\fP = 1624, \fBMySqlErrorCode\&.NDBReplicationSchemaError\fP = 1625, \fBMySqlErrorCode\&.ConflictFunctionParseError\fP = 1626, \fBMySqlErrorCode\&.ExcepionsWriteError\fP = 1627, \fBMySqlErrorCode\&.TooLongTableComment\fP = 1628, \fBMySqlErrorCode\&.TooLongFieldComment\fP = 1629, \fBMySqlErrorCode\&.FunctionInExistentNameCollision\fP = 1630, \fBMySqlErrorCode\&.DatabaseNameError\fP = 1631, \fBMySqlErrorCode\&.TableNameErrror\fP = 1632, \fBMySqlErrorCode\&.PartitionNameError\fP = 1633, \fBMySqlErrorCode\&.SubPartitionNameError\fP = 1634, \fBMySqlErrorCode\&.TemporaryNameError\fP = 1635, \fBMySqlErrorCode\&.RenamedNameError\fP = 1636, \fBMySqlErrorCode\&.TooManyConcurrentTransactions\fP = 1637, \fBMySqlErrorCode\&.WarningNonASCIISeparatorNotImplemented\fP = 1638, \fBMySqlErrorCode\&.DebugSyncTimeout\fP = 1639, \fBMySqlErrorCode\&.DebugSyncHitLimit\fP = 1640, \fBErrorLast\fP = 1640 }"
+.br
+.RI "\fIProvides a reference to error codes returned by MySQL\&. \fP"
+.ti -1c
+.RI "enum \fBMySqlTraceEventType\fP : int { \fBConnectionOpened\fP = 1, \fBConnectionClosed\fP, \fBQueryOpened\fP, \fBResultOpened\fP, \fBResultClosed\fP, \fBQueryClosed\fP, \fBStatementPrepared\fP, \fBStatementExecuted\fP, \fBStatementClosed\fP, \fBNonQuery\fP, \fBUsageAdvisorWarning\fP, \fBWarning\fP, \fBError\fP, \fBQueryNormalized\fP }"
+.br
+.ti -1c
+.RI "enum \fBUsageAdvisorWarningFlags\fP { \fBNoIndex\fP = 1, \fBBadIndex\fP, \fBSkippedRows\fP, \fBSkippedColumns\fP, \fBFieldConversion\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "delegate void \fBMySqlInfoMessageEventHandler\fP (object sender, \fBMySqlInfoMessageEventArgs\fP args)"
+.br
+.RI "\fIRepresents the method that will handle the \fBMySqlConnection\&.InfoMessage\fP event of a \fBMySqlConnection\fP\&. \fP"
+.ti -1c
+.RI "delegate void \fBMySqlRowUpdatingEventHandler\fP (object sender, \fBMySqlRowUpdatingEventArgs\fP e)"
+.br
+.RI "\fIRepresents the method that will handle the \fBMySqlDataAdapter\&.RowUpdating\fP event of a \fBMySqlDataAdapter\fP\&. \fP"
+.ti -1c
+.RI "delegate void \fBMySqlRowUpdatedEventHandler\fP (object sender, \fBMySqlRowUpdatedEventArgs\fP e)"
+.br
+.RI "\fIRepresents the method that will handle the \fBMySqlDataAdapter\&.RowUpdated\fP event of a \fBMySqlDataAdapter\fP\&. \fP"
+.ti -1c
+.RI "delegate void \fBMySqlStatementExecutedEventHandler\fP (object sender, \fBMySqlScriptEventArgs\fP args)"
+.br
+.ti -1c
+.RI "delegate void \fBMySqlScriptErrorEventHandler\fP (object sender, \fBMySqlScriptErrorEventArgs\fP args)"
+.br
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBMySql\&.Data\&.MySqlClient\&.MySqlBulkLoaderConflictOption\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+This is the default and indicates normal operation\&. In the event of a LOCAL load, this is the same as ignore\&. When the data file is on the server, then a key conflict will cause an error to be thrown and the rest of the data file ignored\&. 
+.TP
+\fB\fIReplace \fP\fP
+Replace column values when a key conflict occurs\&. 
+.TP
+\fB\fIIgnore \fP\fP
+Ignore any rows where the primary key conflicts\&. 
+.PP
+Definition at line 375 of file BulkLoader\&.cs\&.
+.SS "enum \fBMySql\&.Data\&.MySqlClient\&.MySqlBulkLoaderPriority\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+This is the default and indicates normal priority 
+.TP
+\fB\fILow \fP\fP
+Low priority will cause the load operation to wait until all readers of the table have finished\&. This only affects storage engines that use only table-level locking such as MyISAM, Memory, and Merge\&. 
+.TP
+\fB\fIConcurrent \fP\fP
+Concurrent priority is only relevant for MyISAM tables and signals that if the table has no free blocks in the middle that other readers can retrieve data from the table while the load operation is happening\&. 
+.PP
+Definition at line 352 of file BulkLoader\&.cs\&.
+.SS "enum \fBMySql\&.Data\&.MySqlClient\&.MySqlCertificateStoreLocation\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+Do not use certificate store 
+.TP
+\fB\fICurrentUser \fP\fP
+Use certificate store for the current user 
+.TP
+\fB\fILocalMachine \fP\fP
+User certificate store for the machine 
+.PP
+Definition at line 407 of file MysqlDefs\&.cs\&.
+.SS "enum \fBMySql\&.Data\&.MySqlClient\&.MySqlConnectionProtocol\fP"
+
+.PP
+Allows the user to specify the type of connection that should be used\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISockets \fP\fP
+TCP/IP style connection\&. Works everywhere\&. 
+.TP
+\fB\fIPipe \fP\fP
+Named pipe connection\&. Works only on Windows systems\&. 
+.TP
+\fB\fIUnixSocket \fP\fP
+Unix domain socket connection\&. Works only with Unix systems\&. 
+.TP
+\fB\fISharedMemory \fP\fP
+Shared memory connection\&. Currently works only with Windows systems\&. 
+.PP
+Definition at line 334 of file MysqlDefs\&.cs\&.
+.SS "enum \fBMySql\&.Data\&.MySqlClient\&.MySqlDbType\fP"
+
+.PP
+Specifies MySQL specific data type of a field, property, for use in a \fBMySqlParameter\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIDecimal \fP\fP
+\fBDecimal\fP A fixed precision and scale numeric value between -1038 -1 and 10 38 -1\&.
+.TP
+\fB\fIByte \fP\fP
+\fBByte\fP The signed range is -128 to 127\&. The unsigned range is 0 to 255\&.
+.TP
+\fB\fIInt16 \fP\fP
+\fBInt16\fP A 16-bit signed integer\&. The signed range is -32768 to 32767\&. The unsigned range is 0 to 65535
+.TP
+\fB\fIInt24 \fP\fP
+Specifies a 24 (3 byte) signed or unsigned value\&. 
+.TP
+\fB\fIInt32 \fP\fP
+\fBInt32\fP A 32-bit signed integer
+.TP
+\fB\fIInt64 \fP\fP
+\fBInt64\fP A 64-bit signed integer\&.
+.TP
+\fB\fIFloat \fP\fP
+Single A small (single-precision) floating-point number\&. Allowable values are -3\&.402823466E+38 to -1\&.175494351E-38, 0, and 1\&.175494351E-38 to 3\&.402823466E+38\&.
+.TP
+\fB\fIDouble \fP\fP
+\fBDouble\fP A normal-size (double-precision) floating-point number\&. Allowable values are -1\&.7976931348623157E+308 to -2\&.2250738585072014E-308, 0, and 2\&.2250738585072014E-308 to 1\&.7976931348623157E+308\&.
+.TP
+\fB\fITimestamp \fP\fP
+A timestamp\&. The range is '1970-01-01 00:00:00' to sometime in the year 2037 summary> Date The supported range is '1000-01-01' to '9999-12-31'\&. /summary> 
+.TP
+\fB\fITime \fP\fP
+Time The range is '-838:59:59' to '838:59:59'\&.
+.PP
+summary> DateTime The supported range is '1000-01-01 00:00:00' to '9999-12-31 23:59:59'\&. /summary> 
+.TP
+\fB\fIDateTime \fP\fP
+summary> Datetime The supported range is '1000-01-01 00:00:00' to '9999-12-31 23:59:59'\&. /summary> 
+.TP
+\fB\fIYear \fP\fP
+A year in 2- or 4-digit format (default is 4-digit)\&. The allowable values are 1901 to 2155, 0000 in the 4-digit year format, and 1970-2069 if you use the 2-digit format (70-69)\&. 
+.TP
+\fB\fINewdate \fP\fP
+\fBObsolete\fP Use Datetime or Date type 
+.TP
+\fB\fIVarString \fP\fP
+A variable-length string containing 0 to 65535 characters 
+.TP
+\fB\fIBit \fP\fP
+Bit-field data type 
+.TP
+\fB\fINewDecimal \fP\fP
+New Decimal 
+.TP
+\fB\fIEnum \fP\fP
+An enumeration\&. A string object that can have only one value, chosen from the list of values 'value1', 'value2', \&.\&.\&., NULL or the special '' error value\&. An ENUM can have a maximum of 65535 distinct values 
+.TP
+\fB\fISet \fP\fP
+A set\&. A string object that can have zero or more values, each of which must be chosen from the list of values 'value1', 'value2', \&.\&.\&. A SET can have a maximum of 64 members\&. 
+.TP
+\fB\fITinyBlob \fP\fP
+A binary column with a maximum length of 255 (2^8 - 1) characters 
+.TP
+\fB\fIMediumBlob \fP\fP
+A binary column with a maximum length of 16777215 (2^24 - 1) bytes\&. 
+.TP
+\fB\fILongBlob \fP\fP
+A binary column with a maximum length of 4294967295 or 4G (2^32 - 1) bytes\&. 
+.TP
+\fB\fIBlob \fP\fP
+A binary column with a maximum length of 65535 (2^16 - 1) bytes\&. 
+.TP
+\fB\fIVarChar \fP\fP
+A variable-length string containing 0 to 255 bytes\&. 
+.TP
+\fB\fIString \fP\fP
+A fixed-length string\&. 
+.TP
+\fB\fIGeometry \fP\fP
+Geometric (GIS) data type\&. 
+.TP
+\fB\fIUByte \fP\fP
+Unsigned 8-bit value\&. 
+.TP
+\fB\fIUInt16 \fP\fP
+Unsigned 16-bit value\&. 
+.TP
+\fB\fIUInt24 \fP\fP
+Unsigned 24-bit value\&. 
+.TP
+\fB\fIUInt32 \fP\fP
+Unsigned 32-bit value\&. 
+.TP
+\fB\fIUInt64 \fP\fP
+Unsigned 64-bit value\&. 
+.TP
+\fB\fIBinary \fP\fP
+Fixed length binary string\&. 
+.TP
+\fB\fIVarBinary \fP\fP
+Variable length binary string\&. 
+.TP
+\fB\fITinyText \fP\fP
+A text column with a maximum length of 255 (2^8 - 1) characters\&. 
+.TP
+\fB\fIMediumText \fP\fP
+A text column with a maximum length of 16777215 (2^24 - 1) characters\&. 
+.TP
+\fB\fILongText \fP\fP
+A text column with a maximum length of 4294967295 or 4G (2^32 - 1) characters\&. 
+.TP
+\fB\fIText \fP\fP
+A text column with a maximum length of 65535 (2^16 - 1) characters\&. 
+.TP
+\fB\fIGuid \fP\fP
+A guid column 
+.PP
+Definition at line 119 of file MysqlDefs\&.cs\&.
+.SS "enum \fBMySql\&.Data\&.MySqlClient\&.MySqlDriverType\fP"
+
+.PP
+Specifies the connection types supported 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINative \fP\fP
+Use TCP/IP sockets\&. 
+.TP
+\fB\fIClient \fP\fP
+Use client library\&. 
+.TP
+\fB\fIEmbedded \fP\fP
+Use MySQL embedded server\&. 
+.PP
+Definition at line 391 of file MysqlDefs\&.cs\&.
+.SS "enum \fBMySql\&.Data\&.MySqlClient\&.MySqlErrorCode\fP"
+
+.PP
+Provides a reference to error codes returned by MySQL\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+summary>
+.PP
+remarks>ER_HASHCHK
+.TP
+\fB\fIHashCheck \fP\fP
+summary>
+.PP
+remarks>ER_NISAMCHK
+.TP
+\fB\fIISAMCheck \fP\fP
+summary>
+.PP
+remarks>ER_NO
+.TP
+\fB\fINo \fP\fP
+summary>
+.PP
+remarks>ER_YES
+.TP
+\fB\fIYes \fP\fP
+summary>The file couldn't be created\&.
+.PP
+remarks>ER_CANT_CREATE_FILE
+.TP
+\fB\fICannotCreateFile \fP\fP
+summary>The table couldn't be created\&.
+.PP
+remarks>ER_CANT_CREATE_TABLE
+.TP
+\fB\fICannotCreateTable \fP\fP
+summary>The database couldn't be created\&.
+.PP
+remarks>ER_CANT_CREATE_DB
+.TP
+\fB\fICannotCreateDatabase \fP\fP
+summary>The database couldn't be created, it already exists\&.
+.PP
+remarks>ER_DB_CREATE_EXISTS
+.TP
+\fB\fIDatabaseCreateExists \fP\fP
+summary>The database couldn't be dropped, it doesn't exist\&.
+.PP
+remarks>ER_DB_DROP_EXISTS
+.TP
+\fB\fIDatabaseDropExists \fP\fP
+summary>The database couldn't be dropped, the file can't be deleted\&.
+.PP
+remarks>ER_DB_DROP_DELETE
+.TP
+\fB\fIDatabaseDropDelete \fP\fP
+summary>The database couldn't be dropped, the directory can't be deleted\&.
+.PP
+remarks>ER_DB_DROP_RMDIR
+.TP
+\fB\fIDatabaseDropRemoveDir \fP\fP
+summary>The file couldn't be deleted\&.
+.PP
+remarks>ER_CANT_DELETE_FILE
+.TP
+\fB\fICannotDeleteFile \fP\fP
+summary>The record couldn't be read from the system table\&.
+.PP
+remarks>ER_CANT_FIND_SYSTEM_REC
+.TP
+\fB\fICannotFindSystemRecord \fP\fP
+summary>The status couldn't be retrieved\&.
+.PP
+remarks>ER_CANT_GET_STAT
+.TP
+\fB\fICannotGetStatus \fP\fP
+summary>The working directory couldn't be retrieved\&.
+.PP
+remarks>ER_CANT_GET_WD
+.TP
+\fB\fICannotGetWorkingDirectory \fP\fP
+summary>The file couldn't be locked\&.
+.PP
+remarks>ER_CANT_LOCK
+.TP
+\fB\fICannotLock \fP\fP
+summary>The file couldn't be opened\&.
+.PP
+remarks>ER_CANT_OPEN_FILE
+.TP
+\fB\fICannotOpenFile \fP\fP
+summary>The file couldn't be found\&.
+.PP
+remarks>ER_FILE_NOT_FOUND
+.TP
+\fB\fIFileNotFound \fP\fP
+summary>The directory couldn't be read\&.
+.PP
+remarks>ER_CANT_READ_DIR
+.TP
+\fB\fICannotReadDirectory \fP\fP
+summary>The working directory couldn't be entered\&.
+.PP
+remarks>ER_CANT_SET_WD
+.TP
+\fB\fICannotSetWorkingDirectory \fP\fP
+summary>The record changed since it was last read\&.
+.PP
+remarks>ER_CHECKREAD
+.TP
+\fB\fICheckRead \fP\fP
+summary>The disk is full\&.
+.PP
+remarks>ER_DISK_FULL
+.TP
+\fB\fIDuplicateKey \fP\fP
+There is already a key with the given values\&. summary>An error occurred when closing the file\&.
+.PP
+remarks>ER_ERROR_ON_CLOSE
+.TP
+\fB\fIErrorOnClose \fP\fP
+summary>An error occurred when reading from the file\&.
+.PP
+remarks>ER_ERROR_ON_READ
+.TP
+\fB\fIErrorOnRead \fP\fP
+summary>An error occurred when renaming then file\&.
+.PP
+remarks>ER_ERROR_ON_RENAME
+.TP
+\fB\fIErrorOnRename \fP\fP
+summary>An error occurred when writing to the file\&.
+.PP
+remarks>ER_ERROR_ON_WRITE
+.TP
+\fB\fIErrorOnWrite \fP\fP
+summary>The file is in use\&.
+.PP
+remarks>ER_FILE_USED
+.TP
+\fB\fIFileUsed \fP\fP
+summary>Sorting has been aborted\&.
+.PP
+remarks>ER_FILSORT_ABORT
+.TP
+\fB\fIFileSortAborted \fP\fP
+summary>The view doesn't exist\&.
+.PP
+remarks>ER_FORM_NOT_FOUND
+.TP
+\fB\fIFormNotFound \fP\fP
+summary>Got the specified error from the table storage engine\&.
+.PP
+remarks>ER_GET_ERRNO
+.TP
+\fB\fIGetErrorNumber \fP\fP
+summary>The table storage engine doesn't support the specified option\&.
+.PP
+remarks>ER_ILLEGAL_HA
+.TP
+\fB\fIKeyNotFound \fP\fP
+The specified key was not found\&. summary>The file contains incorrect information\&.
+.PP
+remarks>ER_NOT_FORM_FILE
+.TP
+\fB\fINotFormFile \fP\fP
+summary>The key file is incorrect for the table, it should be repaired\&.
+.PP
+remarks>ER_NOT_KEYFILE
+.TP
+\fB\fINotKeyFile \fP\fP
+summary>The key file is old for the table, it should be repaired\&.
+.PP
+remarks>ER_OLD_KEYFILE
+.TP
+\fB\fIOldKeyFile \fP\fP
+summary>The table is read-only
+.PP
+remarks>ER_OPEN_AS_READONLY
+.TP
+\fB\fIOpenAsReadOnly \fP\fP
+summary>The server is out of memory, it should be restarted\&.
+.PP
+remarks>ER_OUTOFMEMORY
+.TP
+\fB\fIOutOfMemory \fP\fP
+summary>The server is out of sort-memory, the sort buffer size should be increased\&.
+.PP
+remarks>ER_OUT_OF_SORTMEMORY
+.TP
+\fB\fIOutOfSortMemory \fP\fP
+summary>An unexpected EOF was found when reading from the file\&.
+.PP
+remarks>ER_UNEXPECTED_EOF
+.TP
+\fB\fIUnexepectedEOF \fP\fP
+summary>Too many connections are open\&.
+.PP
+remarks>ER_CON_COUNT_ERROR
+.TP
+\fB\fIConnectionCountError \fP\fP
+summary>The server is out of resources, check if \fBMySql\fP or some other process is using all available memory\&.
+.PP
+remarks>ER_OUT_OF_RESOURCES
+.TP
+\fB\fIUnableToConnectToHost \fP\fP
+Given when the connection is unable to successfully connect to host\&. summary>The handshake was invalid\&.
+.PP
+remarks>ER_HANDSHAKE_ERROR
+.TP
+\fB\fIHandshakeError \fP\fP
+summary>Access was denied for the specified user using the specified database\&.
+.PP
+remarks>ER_DBACCESS_DENIED_ERROR
+.TP
+\fB\fIAccessDenied \fP\fP
+Normally returned when an incorrect password is given summary>No database has been selected\&.
+.PP
+remarks>ER_NO_DB_ERROR
+.TP
+\fB\fINoDatabaseSelected \fP\fP
+summary>The command is unknown\&.
+.PP
+remarks>ER_UNKNOWN_COM_ERROR
+.TP
+\fB\fIUnknownCommand \fP\fP
+summary>The specified column cannot be NULL\&.
+.PP
+remarks>ER_BAD_NULL_ERROR
+.TP
+\fB\fIUnknownDatabase \fP\fP
+The specified database is not known\&.summary>The specified table already exists\&.
+.PP
+remarks>ER_TABLE_EXISTS_ERROR
+.TP
+\fB\fITableExists \fP\fP
+summary>The specified table is unknown\&.
+.PP
+remarks>ER_BAD_TABLE_ERROR
+.TP
+\fB\fIBadTable \fP\fP
+summary>The specified column is ambiguous\&.
+.PP
+remarks>ER_NON_UNIQ_ERROR
+.TP
+\fB\fINonUnique \fP\fP
+summary>The server is currently being shutdown\&.
+.PP
+remarks>ER_SERVER_SHUTDOWN
+.TP
+\fB\fIServerShutdown \fP\fP
+summary>The specified columns is unknown\&.
+.PP
+remarks>ER_BAD_FIELD_ERROR
+.TP
+\fB\fIBadFieldError \fP\fP
+summary>The specified column isn't in GROUP BY\&.
+.PP
+remarks>ER_WRONG_FIELD_WITH_GROUP
+.TP
+\fB\fIWrongFieldWithGroup \fP\fP
+summary>The specified columns cannot be grouped on\&.
+.PP
+remarks>ER_WRONG_GROUP_FIELD
+.TP
+\fB\fIWrongGroupField \fP\fP
+summary>There are sum functions and columns in the same statement\&.
+.PP
+remarks>ER_WRONG_SUM_SELECT
+.TP
+\fB\fIWrongSumSelected \fP\fP
+summary>The column count doesn't match the value count\&.
+.PP
+remarks>ER_WRONG_VALUE_COUNT
+.TP
+\fB\fIWrongValueCount \fP\fP
+summary>The identifier name is too long\&.
+.PP
+remarks>ER_TOO_LONG_IDENT
+.TP
+\fB\fITooLongIdentifier \fP\fP
+summary>The column name is duplicated\&.
+.PP
+remarks>ER_DUP_FIELDNAME
+.TP
+\fB\fIDuplicateKeyName \fP\fP
+Duplicate Key Name 
+.TP
+\fB\fIDuplicateKeyEntry \fP\fP
+Duplicate Key Entry summary>The column specifier is incorrect\&.
+.PP
+remarks>ER_WRONG_FIELD_SPEC
+.TP
+\fB\fIWrongFieldSpecifier \fP\fP
+summary>An error occurred when parsing the statement\&.
+.PP
+remarks>ER_PARSE_ERROR
+.TP
+\fB\fIParseError \fP\fP
+summary>The statement is empty\&.
+.PP
+remarks>ER_EMPTY_QUERY
+.TP
+\fB\fIEmptyQuery \fP\fP
+summary>The table alias isn't unique\&.
+.PP
+remarks>ER_NONUNIQ_TABLE
+.TP
+\fB\fINonUniqueTable \fP\fP
+summary>The default value is invalid for the specified field\&.
+.PP
+remarks>ER_INVALID_DEFAULT
+.TP
+\fB\fIInvalidDefault \fP\fP
+summary>The table has multiple primary keys defined\&.
+.PP
+remarks>ER_MULTIPLE_PRI_KEY
+.TP
+\fB\fIMultiplePrimaryKey \fP\fP
+summary>Too many keys were defined for the table\&.
+.PP
+remarks>ER_TOO_MANY_KEYS
+.TP
+\fB\fITooManyKeys \fP\fP
+summary>Too many parts to the keys were defined for the table\&.
+.PP
+remarks>ER_TOO_MANY_KEY_PARTS
+.TP
+\fB\fITooManyKeysParts \fP\fP
+summary>The specified key is too long
+.PP
+remarks>ER_TOO_LONG_KEY
+.TP
+\fB\fITooLongKey \fP\fP
+summary>The specified key column doesn't exist in the table\&.
+.PP
+remarks>ER_KEY_COLUMN_DOES_NOT_EXITS
+.TP
+\fB\fIKeyColumnDoesNotExist \fP\fP
+summary>The BLOB column was used as a key, this can't be done\&.
+.PP
+remarks>ER_BLOB_USED_AS_KEY
+.TP
+\fB\fIBlobUsedAsKey \fP\fP
+summary>The column length is too big for the specified column type\&.
+.PP
+remarks>ER_TOO_BIG_FIELDLENGTH
+.TP
+\fB\fITooBigFieldLength \fP\fP
+summary>There can only be one auto-column, and it must be defined as a PK\&.
+.PP
+remarks>ER_WRONG_AUTO_KEY
+.TP
+\fB\fIWrongAutoKey \fP\fP
+summary>The server is ready to accept connections\&.
+.PP
+remarks>ER_READY
+.TP
+\fB\fIReady \fP\fP
+summary>
+.PP
+remarks>ER_NORMAL_SHUTDOWN
+.TP
+\fB\fINormalShutdown \fP\fP
+summary>The server received the specified signal and is aborting\&.
+.PP
+remarks>ER_GOT_SIGNAL
+.TP
+\fB\fIGotSignal \fP\fP
+summary>The server shutdown is complete\&.
+.PP
+remarks>ER_SHUTDOWN_COMPLETE
+.TP
+\fB\fIShutdownComplete \fP\fP
+summary>The server is forcing close of the specified thread\&.
+.PP
+remarks>ER_FORCING_CLOSE
+.TP
+\fB\fIForcingClose \fP\fP
+summary>An error occurred when creating the IP socket\&.
+.PP
+remarks>ER_IPSOCK_ERROR
+.TP
+\fB\fIIPSocketError \fP\fP
+summary>The table has no index like the one used in CREATE INDEX\&.
+.PP
+remarks>ER_NO_SUCH_INDEX
+.TP
+\fB\fINoSuchIndex \fP\fP
+summary>The field separator argument is not what is expected, check the manual\&.
+.PP
+remarks>ER_WRONG_FIELD_TERMINATORS
+.TP
+\fB\fIWrongFieldTerminators \fP\fP
+summary>The BLOB columns must terminated, fixed row lengths cannot be used\&.
+.PP
+remarks>ER_BLOBS_AND_NO_TERMINATED
+.TP
+\fB\fIBlobsAndNoTerminated \fP\fP
+summary>The text file cannot be read\&.
+.PP
+remarks>ER_TEXTFILE_NOT_READABLE
+.TP
+\fB\fITextFileNotReadable \fP\fP
+summary>The specified file already exists\&.
+.PP
+remarks>ER_FILE_EXISTS_ERROR
+.TP
+\fB\fIFileExists \fP\fP
+summary>Information returned by the LOAD statement\&.
+.PP
+remarks>ER_LOAD_INFO
+.TP
+\fB\fILoadInfo \fP\fP
+summary>Information returned by an UPDATE statement\&.
+.PP
+remarks>ER_ALTER_INFO
+.TP
+\fB\fIAlterInfo \fP\fP
+summary>The prefix key is incorrect\&.
+.PP
+remarks>ER_WRONG_SUB_KEY
+.TP
+\fB\fIWrongSubKey \fP\fP
+summary>All columns cannot be removed from a table, use DROP TABLE instead\&.
+.PP
+remarks>ER_CANT_REMOVE_ALL_FIELDS
+.TP
+\fB\fICannotRemoveAllFields \fP\fP
+summary>Cannot DROP, check that the column or key exists\&.
+.PP
+remarks>ER_CANT_DROP_FIELD_OR_KEY
+.TP
+\fB\fICannotDropFieldOrKey \fP\fP
+summary>Information returned by an INSERT statement\&.
+.PP
+remarks>ER_INSERT_INFO
+.TP
+\fB\fIInsertInfo \fP\fP
+summary>The target table cannot be specified for update in FROM clause\&.
+.PP
+remarks>ER_UPDATE_TABLE_USED
+.TP
+\fB\fIUpdateTableUsed \fP\fP
+summary>The specified thread ID is unknown\&.
+.PP
+remarks>ER_NO_SUCH_THREAD
+.TP
+\fB\fINoSuchThread \fP\fP
+summary>The thread cannot be killed, the current user is not the owner\&.
+.PP
+remarks>ER_KILL_DENIED_ERROR
+.TP
+\fB\fIKillDenied \fP\fP
+summary>No tables used in the statement\&.
+.PP
+remarks>ER_NO_TABLES_USED
+.TP
+\fB\fINoTablesUsed \fP\fP
+summary>Too many string have been used for the specified column and SET\&.
+.PP
+remarks>ER_TOO_BIG_SET
+.TP
+\fB\fITooBigSet \fP\fP
+summary>A unique filename couldn't be generated\&.
+.PP
+remarks>ER_NO_UNIQUE_LOGFILE
+.TP
+\fB\fINoUniqueLogFile \fP\fP
+summary>The specified table was locked with a READ lock, and can't be updated\&.
+.PP
+remarks>ER_TABLE_NOT_LOCKED_FOR_WRITE
+.TP
+\fB\fITableNotLockedForWrite \fP\fP
+summary>The specified table was not locked with LOCK TABLES\&.
+.PP
+remarks>ER_TABLE_NOT_LOCKED
+.TP
+\fB\fITableNotLocked \fP\fP
+summary>BLOB and Text columns cannot have a default value\&.
+.PP
+remarks>ER_BLOB_CANT_HAVE_DEFAULT
+.TP
+\fB\fIBlobCannotHaveDefault \fP\fP
+summary>The specified database name is incorrect\&.
+.PP
+remarks>ER_WRONG_DB_NAME
+.TP
+\fB\fIWrongDatabaseName \fP\fP
+summary>The specified table name is incorrect\&.
+.PP
+remarks>ER_WRONG_TABLE_NAME
+.TP
+\fB\fIWrongTableName \fP\fP
+summary>The SELECT command would examine more than MAX_JOIN_SIZE rows, check the WHERE clause and use SET SQL_BIG_SELECTS=1 or SET SQL_MAX_JOIN_SIZE=# if the SELECT is ok\&.
+.PP
+remarks>ER_TOO_BIG_SELECT
+.TP
+\fB\fITooBigSelect \fP\fP
+summary>An unknown error occurred\&.
+.PP
+remarks>ER_UNKNOWN_ERROR
+.TP
+\fB\fIUnknownError \fP\fP
+summary>The specified procedure is unknown\&.
+.PP
+remarks>ER_UNKNOWN_PROCEDURE
+.TP
+\fB\fIUnknownProcedure \fP\fP
+summary>The number of parameters provided for the specified procedure is incorrect\&.
+.PP
+remarks>ER_WRONG_PARAMCOUNT_TO_PROCEDURE
+.TP
+\fB\fIWrongParameterCountToProcedure \fP\fP
+summary>The parameters provided for the specified procedure are incorrect\&.
+.PP
+remarks>ER_WRONG_PARAMETERS_TO_PROCEDURE
+.TP
+\fB\fIWrongParametersToProcedure \fP\fP
+summary>The specified table is unknown\&.
+.PP
+remarks>ER_UNKNOWN_TABLE
+.TP
+\fB\fIUnknownTable \fP\fP
+summary>The specified column has been specified twice\&.
+.PP
+remarks>ER_FIELD_SPECIFIED_TWICE
+.TP
+\fB\fIFieldSpecifiedTwice \fP\fP
+summary>The group function has been incorrectly used\&.
+.PP
+remarks>ER_INVALID_GROUP_FUNC_USE
+.TP
+\fB\fIInvalidGroupFunctionUse \fP\fP
+summary>The specified table uses an extension that doesn't exist in this MySQL version\&.
+.PP
+remarks>ER_UNSUPPORTED_EXTENSION
+.TP
+\fB\fIUnsupportedExtenstion \fP\fP
+summary>The table must have at least one column\&.
+.PP
+remarks>ER_TABLE_MUST_HAVE_COLUMNS
+.TP
+\fB\fITableMustHaveColumns \fP\fP
+summary>The specified table is full\&.
+.PP
+remarks>ER_RECORD_FILE_FULL
+.TP
+\fB\fIRecordFileFull \fP\fP
+summary>The specified character set is unknown\&.
+.PP
+remarks>ER_UNKNOWN_CHARACTER_SET
+.TP
+\fB\fIUnknownCharacterSet \fP\fP
+summary>Too many tables, MySQL can only use the specified number of tables in a JOIN\&.
+.PP
+remarks>ER_TOO_MANY_TABLES
+.TP
+\fB\fITooManyTables \fP\fP
+summary>Too many columns
+.PP
+remarks>ER_TOO_MANY_FIELDS
+.TP
+\fB\fITooManyFields \fP\fP
+summary>The row size is too large, the maximum row size for the used tables (not counting BLOBS) is specified, change some columns or BLOBS\&.
+.PP
+remarks>ER_TOO_BIG_ROWSIZE
+.TP
+\fB\fITooBigRowSize \fP\fP
+summary>A thread stack overrun occurred\&. Stack statistics are specified\&.
+.PP
+remarks>ER_STACK_OVERRUN
+.TP
+\fB\fIStackOverrun \fP\fP
+summary>A cross dependency was found in the OUTER JOIN, examine the ON conditions\&.
+.PP
+remarks>ER_WRONG_OUTER_JOIN
+.TP
+\fB\fIWrongOuterJoin \fP\fP
+summary>The table handler doesn't support NULL in the given index, change specified column to be NOT NULL or use another handler\&.
+.PP
+remarks>ER_NULL_COLUMN_IN_INDEX
+.TP
+\fB\fINullColumnInIndex \fP\fP
+summary>The specified user defined function cannot be loaded\&.
+.PP
+remarks>ER_CANT_FIND_UDF
+.TP
+\fB\fICannotFindUDF \fP\fP
+summary>The specified user defined function cannot be initialised\&.
+.PP
+remarks>ER_CANT_INITIALIZE_UDF
+.TP
+\fB\fICannotInitializeUDF \fP\fP
+summary>No paths are allowed for the shared library\&.
+.PP
+remarks>ER_UDF_NO_PATHS
+.TP
+\fB\fIUDFNoPaths \fP\fP
+summary>The specified user defined function already exists\&.
+.PP
+remarks>ER_UDF_EXISTS
+.TP
+\fB\fIUDFExists \fP\fP
+summary>The specified shared library cannot be opened\&.
+.PP
+remarks>ER_CANT_OPEN_LIBRARY
+.TP
+\fB\fICannotOpenLibrary \fP\fP
+summary>The specified symbol cannot be found in the library\&.
+.PP
+remarks>ER_CANT_FIND_DL_ENTRY
+.TP
+\fB\fICannotFindDLEntry \fP\fP
+summary>The specified function is not defined\&.
+.PP
+remarks>ER_FUNCTION_NOT_DEFINED
+.TP
+\fB\fIFunctionNotDefined \fP\fP
+summary>The specified host is blocked because of too many connection errors, unblock with 'mysqladmin flush-hosts'\&.
+.PP
+remarks>ER_HOST_IS_BLOCKED
+.TP
+\fB\fIHostNotPrivileged \fP\fP
+The given host is not allowed to connect 
+.TP
+\fB\fIAnonymousUser \fP\fP
+The anonymous user is not allowed to connect 
+.TP
+\fB\fIPasswordNotAllowed \fP\fP
+The given password is not allowed 
+.TP
+\fB\fIPasswordNoMatch \fP\fP
+The given password does not match summary>Information returned by an UPDATE statement\&.
+.PP
+remarks>ER_UPDATE_INFO
+.TP
+\fB\fIUpdateInfo \fP\fP
+summary>A new thread couldn't be created\&.
+.PP
+remarks>ER_CANT_CREATE_THREAD
+.TP
+\fB\fICannotCreateThread \fP\fP
+summary>The column count doesn't match the value count\&.
+.PP
+remarks>ER_WRONG_VALUE_COUNT_ON_ROW
+.TP
+\fB\fIWrongValueCountOnRow \fP\fP
+summary>The specified table can't be re-opened\&.
+.PP
+remarks>ER_CANT_REOPEN_TABLE
+.TP
+\fB\fICannotReopenTable \fP\fP
+summary>The NULL value has been used incorrectly\&.
+.PP
+remarks>ER_INVALID_USE_OF_NULL
+.TP
+\fB\fIInvalidUseOfNull \fP\fP
+summary>The regular expression contains an error\&.
+.PP
+remarks>ER_REGEXP_ERROR
+.TP
+\fB\fIRegExpError \fP\fP
+summary>GROUP columns (MIN(), MAX(), COUNT(), \&.\&.\&.) cannot be mixes with no GROUP columns if there is not GROUP BY clause\&.
+.PP
+remarks>ER_MIX_OF_GROUP_FUNC_AND_FIELDS
+.TP
+\fB\fIMixOfGroupFunctionAndFields \fP\fP
+summary>
+.PP
+remarks>ER_NONEXISTING_GRANT
+.TP
+\fB\fINonExistingGrant \fP\fP
+summary>
+.PP
+remarks>ER_TABLEACCESS_DENIED_ERROR
+.TP
+\fB\fITableAccessDenied \fP\fP
+summary>
+.PP
+remarks>ER_COLUMNACCESS_DENIED_ERROR
+.TP
+\fB\fIColumnAccessDenied \fP\fP
+summary>
+.PP
+remarks>ER_ILLEGAL_GRANT_FOR_TABLE
+.TP
+\fB\fIIllegalGrantForTable \fP\fP
+summary>
+.PP
+remarks>ER_GRANT_WRONG_HOST_OR_USER
+.TP
+\fB\fIGrantWrongHostOrUser \fP\fP
+summary>
+.PP
+remarks>ER_NO_SUCH_TABLE
+.TP
+\fB\fINoSuchTable \fP\fP
+summary>
+.PP
+remarks>ER_NONEXISTING_TABLE_GRANT
+.TP
+\fB\fINonExistingTableGrant \fP\fP
+summary>
+.PP
+remarks>ER_NOT_ALLOWED_COMMAND
+.TP
+\fB\fINotAllowedCommand \fP\fP
+summary>
+.PP
+remarks>ER_SYNTAX_ERROR
+.TP
+\fB\fISyntaxError \fP\fP
+summary>
+.PP
+remarks>ER_DELAYED_CANT_CHANGE_LOCK
+.TP
+\fB\fIDelayedCannotChangeLock \fP\fP
+summary>
+.PP
+remarks>ER_TOO_MANY_DELAYED_THREADS
+.TP
+\fB\fITooManyDelayedThreads \fP\fP
+summary>
+.PP
+remarks>ER_ABORTING_CONNECTION
+.TP
+\fB\fIPacketTooLarge \fP\fP
+An attempt was made to send or receive a packet larger than max_allowed_packet_size summary>
+.PP
+remarks>ER_NET_READ_ERROR_FROM_PIPE
+.TP
+\fB\fINetReadErrorFromPipe \fP\fP
+summary>
+.PP
+remarks>ER_NET_FCNTL_ERROR
+.TP
+\fB\fINetFCntlError \fP\fP
+summary>
+.PP
+remarks>ER_NET_PACKETS_OUT_OF_ORDER
+.TP
+\fB\fINetPacketsOutOfOrder \fP\fP
+summary>
+.PP
+remarks>ER_NET_UNCOMPRESS_ERROR
+.TP
+\fB\fINetUncompressError \fP\fP
+summary>
+.PP
+remarks>ER_NET_READ_ERROR
+.TP
+\fB\fINetReadError \fP\fP
+summary>
+.PP
+remarks>ER_NET_READ_INTERRUPTED
+.TP
+\fB\fINetReadInterrupted \fP\fP
+summary>
+.PP
+remarks>ER_NET_ERROR_ON_WRITE
+.TP
+\fB\fINetErrorOnWrite \fP\fP
+summary>
+.PP
+remarks>ER_NET_WRITE_INTERRUPTED
+.TP
+\fB\fINetWriteInterrupted \fP\fP
+summary>
+.PP
+remarks>ER_TOO_LONG_STRING
+.TP
+\fB\fITooLongString \fP\fP
+summary>
+.PP
+remarks>ER_TABLE_CANT_HANDLE_BLOB
+.TP
+\fB\fITableCannotHandleBlob \fP\fP
+summary>
+.PP
+remarks>ER_TABLE_CANT_HANDLE_AUTO_INCREMENT
+.TP
+\fB\fITableCannotHandleAutoIncrement \fP\fP
+summary>
+.PP
+remarks>ER_DELAYED_INSERT_TABLE_LOCKED
+.TP
+\fB\fIDelayedInsertTableLocked \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_COLUMN_NAME
+.TP
+\fB\fIWrongColumnName \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_KEY_COLUMN
+.TP
+\fB\fIWrongKeyColumn \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_MRG_TABLE
+.TP
+\fB\fIWrongMergeTable \fP\fP
+summary>
+.PP
+remarks>ER_DUP_UNIQUE
+.TP
+\fB\fIDuplicateUnique \fP\fP
+summary>
+.PP
+remarks>ER_BLOB_KEY_WITHOUT_LENGTH
+.TP
+\fB\fIBlobKeyWithoutLength \fP\fP
+summary>
+.PP
+remarks>ER_PRIMARY_CANT_HAVE_NULL
+.TP
+\fB\fIPrimaryCannotHaveNull \fP\fP
+summary>
+.PP
+remarks>ER_TOO_MANY_ROWS
+.TP
+\fB\fITooManyRows \fP\fP
+summary>
+.PP
+remarks>ER_REQUIRES_PRIMARY_KEY
+.TP
+\fB\fIRequiresPrimaryKey \fP\fP
+summary>
+.PP
+remarks>ER_NO_RAID_COMPILED
+.TP
+\fB\fINoRAIDCompiled \fP\fP
+summary>
+.PP
+remarks>ER_UPDATE_WITHOUT_KEY_IN_SAFE_MODE
+.TP
+\fB\fIUpdateWithoutKeysInSafeMode \fP\fP
+summary>
+.PP
+remarks>ER_KEY_DOES_NOT_EXITS
+.TP
+\fB\fIKeyDoesNotExist \fP\fP
+summary>
+.PP
+remarks>ER_CHECK_NO_SUCH_TABLE
+.TP
+\fB\fICheckNoSuchTable \fP\fP
+summary>
+.PP
+remarks>ER_CHECK_NOT_IMPLEMENTED
+.TP
+\fB\fICheckNotImplemented \fP\fP
+summary>
+.PP
+remarks>ER_CANT_DO_THIS_DURING_AN_TRANSACTION
+.TP
+\fB\fICannotDoThisDuringATransaction \fP\fP
+summary>
+.PP
+remarks>ER_ERROR_DURING_COMMIT
+.TP
+\fB\fIErrorDuringCommit \fP\fP
+summary>
+.PP
+remarks>ER_ERROR_DURING_ROLLBACK
+.TP
+\fB\fIErrorDuringRollback \fP\fP
+summary>
+.PP
+remarks>ER_ERROR_DURING_FLUSH_LOGS
+.TP
+\fB\fIErrorDuringFlushLogs \fP\fP
+summary>
+.PP
+remarks>ER_ERROR_DURING_CHECKPOINT
+.TP
+\fB\fIErrorDuringCheckpoint \fP\fP
+summary>
+.PP
+remarks>ER_NEW_ABORTING_CONNECTION
+.TP
+\fB\fINewAbortingConnection \fP\fP
+summary>
+.PP
+remarks>ER_DUMP_NOT_IMPLEMENTED
+.TP
+\fB\fIDumpNotImplemented \fP\fP
+summary>
+.PP
+remarks>ER_FLUSH_MASTER_BINLOG_CLOSED
+.TP
+\fB\fIFlushMasterBinLogClosed \fP\fP
+summary>
+.PP
+remarks>ER_INDEX_REBUILD
+.TP
+\fB\fIIndexRebuild \fP\fP
+summary>
+.PP
+remarks>ER_MASTER
+.TP
+\fB\fIMasterError \fP\fP
+summary>
+.PP
+remarks>ER_MASTER_NET_READ
+.TP
+\fB\fIMasterNetRead \fP\fP
+summary>
+.PP
+remarks>ER_MASTER_NET_WRITE
+.TP
+\fB\fIMasterNetWrite \fP\fP
+summary>
+.PP
+remarks>ER_FT_MATCHING_KEY_NOT_FOUND
+.TP
+\fB\fIFullTextMatchingKeyNotFound \fP\fP
+summary>
+.PP
+remarks>ER_LOCK_OR_ACTIVE_TRANSACTION
+.TP
+\fB\fILockOrActiveTransaction \fP\fP
+summary>
+.PP
+remarks>ER_UNKNOWN_SYSTEM_VARIABLE
+.TP
+\fB\fIUnknownSystemVariable \fP\fP
+summary>
+.PP
+remarks>ER_CRASHED_ON_USAGE
+.TP
+\fB\fICrashedOnUsage \fP\fP
+summary>
+.PP
+remarks>ER_CRASHED_ON_REPAIR
+.TP
+\fB\fICrashedOnRepair \fP\fP
+summary>
+.PP
+remarks>ER_WARNING_NOT_COMPLETE_ROLLBACK
+.TP
+\fB\fIWarningNotCompleteRollback \fP\fP
+summary>
+.PP
+remarks>ER_TRANS_CACHE_FULL
+.TP
+\fB\fITransactionCacheFull \fP\fP
+summary>
+.PP
+remarks>ER_SLAVE_MUST_STOP
+.TP
+\fB\fISlaveMustStop \fP\fP
+summary>
+.PP
+remarks>ER_SLAVE_NOT_RUNNING
+.TP
+\fB\fISlaveNotRunning \fP\fP
+summary>
+.PP
+remarks>ER_BAD_SLAVE
+.TP
+\fB\fIBadSlave \fP\fP
+summary>
+.PP
+remarks>ER_MASTER_INFO
+.TP
+\fB\fIMasterInfo \fP\fP
+summary>
+.PP
+remarks>ER_SLAVE_THREAD
+.TP
+\fB\fISlaveThread \fP\fP
+summary>
+.PP
+remarks>ER_TOO_MANY_USER_CONNECTIONS
+.TP
+\fB\fITooManyUserConnections \fP\fP
+summary>
+.PP
+remarks>ER_SET_CONSTANTS_ONLY
+.TP
+\fB\fISetConstantsOnly \fP\fP
+summary>
+.PP
+remarks>ER_LOCK_WAIT_TIMEOUT
+.TP
+\fB\fILockWaitTimeout \fP\fP
+summary>
+.PP
+remarks>ER_LOCK_TABLE_FULL
+.TP
+\fB\fILockTableFull \fP\fP
+summary>
+.PP
+remarks>ER_READ_ONLY_TRANSACTION
+.TP
+\fB\fIReadOnlyTransaction \fP\fP
+summary>
+.PP
+remarks>ER_DROP_DB_WITH_READ_LOCK
+.TP
+\fB\fIDropDatabaseWithReadLock \fP\fP
+summary>
+.PP
+remarks>ER_CREATE_DB_WITH_READ_LOCK
+.TP
+\fB\fICreateDatabaseWithReadLock \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_ARGUMENTS
+.TP
+\fB\fIWrongArguments \fP\fP
+summary>
+.PP
+remarks>ER_NO_PERMISSION_TO_CREATE_USER
+.TP
+\fB\fINoPermissionToCreateUser \fP\fP
+summary>
+.PP
+remarks>ER_UNION_TABLES_IN_DIFFERENT_DIR
+.TP
+\fB\fIUnionTablesInDifferentDirectory \fP\fP
+summary>
+.PP
+remarks>ER_LOCK_DEADLOCK
+.TP
+\fB\fILockDeadlock \fP\fP
+summary>
+.PP
+remarks>ER_TABLE_CANT_HANDLE_FT
+.TP
+\fB\fITableCannotHandleFullText \fP\fP
+summary>
+.PP
+remarks>ER_CANNOT_ADD_FOREIGN
+.TP
+\fB\fICannotAddForeignConstraint \fP\fP
+summary>
+.PP
+remarks>ER_NO_REFERENCED_ROW
+.TP
+\fB\fINoReferencedRow \fP\fP
+summary>
+.PP
+remarks>ER_ROW_IS_REFERENCED
+.TP
+\fB\fIRowIsReferenced \fP\fP
+summary>
+.PP
+remarks>ER_CONNECT_TO_MASTER
+.TP
+\fB\fIConnectToMaster \fP\fP
+summary>
+.PP
+remarks>ER_QUERY_ON_MASTER
+.TP
+\fB\fIQueryOnMaster \fP\fP
+summary>
+.PP
+remarks>ER_ERROR_WHEN_EXECUTING_COMMAND
+.TP
+\fB\fIErrorWhenExecutingCommand \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_USAGE
+.TP
+\fB\fIWrongUsage \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_NUMBER_OF_COLUMNS_IN_SELECT
+.TP
+\fB\fIWrongNumberOfColumnsInSelect \fP\fP
+summary>
+.PP
+remarks>ER_CANT_UPDATE_WITH_READLOCK
+.TP
+\fB\fICannotUpdateWithReadLock \fP\fP
+summary>
+.PP
+remarks>ER_MIXING_NOT_ALLOWED
+.TP
+\fB\fIMixingNotAllowed \fP\fP
+summary>
+.PP
+remarks>ER_DUP_ARGUMENT
+.TP
+\fB\fIDuplicateArgument \fP\fP
+summary>
+.PP
+remarks>ER_USER_LIMIT_REACHED
+.TP
+\fB\fIUserLimitReached \fP\fP
+summary>
+.PP
+remarks>ER_SPECIFIC_ACCESS_DENIED_ERROR
+.TP
+\fB\fISpecifiedAccessDeniedError \fP\fP
+summary>
+.PP
+remarks>ER_LOCAL_VARIABLE
+.TP
+\fB\fILocalVariableError \fP\fP
+summary>
+.PP
+remarks>ER_GLOBAL_VARIABLE
+.TP
+\fB\fIGlobalVariableError \fP\fP
+summary>
+.PP
+remarks>ER_NO_DEFAULT
+.TP
+\fB\fINotDefaultError \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_VALUE_FOR_VAR
+.TP
+\fB\fIWrongValueForVariable \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_TYPE_FOR_VAR
+.TP
+\fB\fIWrongTypeForVariable \fP\fP
+summary>
+.PP
+remarks>ER_VAR_CANT_BE_READ
+.TP
+\fB\fIVariableCannotBeRead \fP\fP
+summary>
+.PP
+remarks>ER_CANT_USE_OPTION_HERE
+.TP
+\fB\fICannotUseOptionHere \fP\fP
+summary>
+.PP
+remarks>ER_NOT_SUPPORTED_YET
+.TP
+\fB\fINotSupportedYet \fP\fP
+summary>
+.PP
+remarks>ER_MASTER_FATAL_ERROR_READING_BINLOG
+.TP
+\fB\fIMasterFatalErrorReadingBinLog \fP\fP
+summary>
+.PP
+remarks>ER_SLAVE_IGNORED_TABLE
+.TP
+\fB\fISlaveIgnoredTable \fP\fP
+summary>
+.PP
+remarks>ER_INCORRECT_GLOBAL_LOCAL_VAR
+.TP
+\fB\fIIncorrectGlobalLocalVariable \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_FK_DEF
+.TP
+\fB\fIWrongForeignKeyDefinition \fP\fP
+summary>
+.PP
+remarks>ER_KEY_REF_DO_NOT_MATCH_TABLE_REF
+.TP
+\fB\fIKeyReferenceDoesNotMatchTableReference \fP\fP
+summary>
+.PP
+remarks>ER_OPERAND_COLUMNS
+.TP
+\fB\fIOpearnColumnsError \fP\fP
+summary>
+.PP
+remarks>ER_SUBQUERY_NO_1_ROW
+.TP
+\fB\fISubQueryNoOneRow \fP\fP
+summary>
+.PP
+remarks>ER_UNKNOWN_STMT_HANDLER
+.TP
+\fB\fIUnknownStatementHandler \fP\fP
+summary>
+.PP
+remarks>ER_CORRUPT_HELP_DB
+.TP
+\fB\fICorruptHelpDatabase \fP\fP
+summary>
+.PP
+remarks>ER_CYCLIC_REFERENCE
+.TP
+\fB\fICyclicReference \fP\fP
+summary>
+.PP
+remarks>ER_AUTO_CONVERT
+.TP
+\fB\fIAutoConvert \fP\fP
+summary>
+.PP
+remarks>ER_ILLEGAL_REFERENCE
+.TP
+\fB\fIIllegalReference \fP\fP
+summary>
+.PP
+remarks>ER_DERIVED_MUST_HAVE_ALIAS
+.TP
+\fB\fIDerivedMustHaveAlias \fP\fP
+summary>
+.PP
+remarks>ER_SELECT_REDUCED
+.TP
+\fB\fISelectReduced \fP\fP
+summary>
+.PP
+remarks>ER_TABLENAME_NOT_ALLOWED_HERE
+.TP
+\fB\fITableNameNotAllowedHere \fP\fP
+summary>
+.PP
+remarks>ER_NOT_SUPPORTED_AUTH_MODE
+.TP
+\fB\fINotSupportedAuthMode \fP\fP
+summary>
+.PP
+remarks>ER_SPATIAL_CANT_HAVE_NULL
+.TP
+\fB\fISpatialCannotHaveNull \fP\fP
+summary>
+.PP
+remarks>ER_COLLATION_CHARSET_MISMATCH
+.TP
+\fB\fICollationCharsetMismatch \fP\fP
+summary>
+.PP
+remarks>ER_SLAVE_WAS_RUNNING
+.TP
+\fB\fISlaveWasRunning \fP\fP
+summary>
+.PP
+remarks>ER_SLAVE_WAS_NOT_RUNNING
+.TP
+\fB\fISlaveWasNotRunning \fP\fP
+summary>
+.PP
+remarks>ER_TOO_BIG_FOR_UNCOMPRESS
+.TP
+\fB\fITooBigForUncompress \fP\fP
+summary>
+.PP
+remarks>ER_ZLIB_Z_MEM_ERROR
+.TP
+\fB\fIZipLibMemoryError \fP\fP
+summary>
+.PP
+remarks>ER_ZLIB_Z_BUF_ERROR
+.TP
+\fB\fIZipLibBufferError \fP\fP
+summary>
+.PP
+remarks>ER_ZLIB_Z_DATA_ERROR
+.TP
+\fB\fIZipLibDataError \fP\fP
+summary>
+.PP
+remarks>ER_CUT_VALUE_GROUP_CONCAT
+.TP
+\fB\fICutValueGroupConcat \fP\fP
+summary>
+.PP
+remarks>ER_WARN_TOO_FEW_RECORDS
+.TP
+\fB\fIWarningTooFewRecords \fP\fP
+summary>
+.PP
+remarks>ER_WARN_TOO_MANY_RECORDS
+.TP
+\fB\fIWarningTooManyRecords \fP\fP
+summary>
+.PP
+remarks>ER_WARN_NULL_TO_NOTNULL
+.TP
+\fB\fIWarningNullToNotNull \fP\fP
+summary>
+.PP
+remarks>ER_WARN_DATA_OUT_OF_RANGE
+.TP
+\fB\fIWarningDataOutOfRange \fP\fP
+summary>
+.PP
+remarks>WARN_DATA_TRUNCATED
+.TP
+\fB\fIWaningDataTruncated \fP\fP
+summary>
+.PP
+remarks>ER_WARN_USING_OTHER_HANDLER
+.TP
+\fB\fIWaningUsingOtherHandler \fP\fP
+summary>
+.PP
+remarks>ER_CANT_AGGREGATE_2COLLATIONS
+.TP
+\fB\fICannotAggregateTwoCollations \fP\fP
+summary>
+.PP
+remarks>ER_DROP_USER
+.TP
+\fB\fIDropUserError \fP\fP
+summary>
+.PP
+remarks>ER_REVOKE_GRANTS
+.TP
+\fB\fIRevokeGrantsError \fP\fP
+summary>
+.PP
+remarks>ER_CANT_AGGREGATE_3COLLATIONS
+.TP
+\fB\fICannotAggregateThreeCollations \fP\fP
+summary>
+.PP
+remarks>ER_CANT_AGGREGATE_NCOLLATIONS
+.TP
+\fB\fICannotAggregateNCollations \fP\fP
+summary>
+.PP
+remarks>ER_VARIABLE_IS_NOT_STRUCT
+.TP
+\fB\fIVariableIsNotStructure \fP\fP
+summary>
+.PP
+remarks>ER_UNKNOWN_COLLATION
+.TP
+\fB\fIUnknownCollation \fP\fP
+summary>
+.PP
+remarks>ER_SLAVE_IGNORED_SSL_PARAMS
+.TP
+\fB\fISlaveIgnoreSSLParameters \fP\fP
+summary>
+.PP
+remarks>ER_SERVER_IS_IN_SECURE_AUTH_MODE
+.TP
+\fB\fIServerIsInSecureAuthMode \fP\fP
+summary>
+.PP
+remarks>ER_WARN_FIELD_RESOLVED
+.TP
+\fB\fIWaningFieldResolved \fP\fP
+summary>
+.PP
+remarks>ER_BAD_SLAVE_UNTIL_COND
+.TP
+\fB\fIBadSlaveUntilCondition \fP\fP
+summary>
+.PP
+remarks>ER_MISSING_SKIP_SLAVE
+.TP
+\fB\fIMissingSkipSlave \fP\fP
+summary>
+.PP
+remarks>ER_UNTIL_COND_IGNORED
+.TP
+\fB\fIErrorUntilConditionIgnored \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_NAME_FOR_INDEX
+.TP
+\fB\fIWrongNameForIndex \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_NAME_FOR_CATALOG
+.TP
+\fB\fIWrongNameForCatalog \fP\fP
+summary>
+.PP
+remarks>ER_WARN_QC_RESIZE
+.TP
+\fB\fIWarningQueryCacheResize \fP\fP
+summary>
+.PP
+remarks>ER_BAD_FT_COLUMN
+.TP
+\fB\fIBadFullTextColumn \fP\fP
+summary>
+.PP
+remarks>ER_UNKNOWN_KEY_CACHE
+.TP
+\fB\fIUnknownKeyCache \fP\fP
+summary>
+.PP
+remarks>ER_WARN_HOSTNAME_WONT_WORK
+.TP
+\fB\fIWarningHostnameWillNotWork \fP\fP
+summary>
+.PP
+remarks>ER_UNKNOWN_STORAGE_ENGINE
+.TP
+\fB\fIUnknownStorageEngine \fP\fP
+summary>
+.PP
+remarks>ER_WARN_DEPRECATED_SYNTAX
+.TP
+\fB\fIWaningDeprecatedSyntax \fP\fP
+summary>
+.PP
+remarks>ER_NON_UPDATABLE_TABLE
+.TP
+\fB\fINonUpdateableTable \fP\fP
+summary>
+.PP
+remarks>ER_FEATURE_DISABLED
+.TP
+\fB\fIFeatureDisabled \fP\fP
+summary>
+.PP
+remarks>ER_OPTION_PREVENTS_STATEMENT
+.TP
+\fB\fIOptionPreventsStatement \fP\fP
+summary>
+.PP
+remarks>ER_DUPLICATED_VALUE_IN_TYPE
+.TP
+\fB\fIDuplicatedValueInType \fP\fP
+summary>
+.PP
+remarks>ER_TRUNCATED_WRONG_VALUE
+.TP
+\fB\fITruncatedWrongValue \fP\fP
+summary>
+.PP
+remarks>ER_TOO_MUCH_AUTO_TIMESTAMP_COLS
+.TP
+\fB\fITooMuchAutoTimestampColumns \fP\fP
+summary>
+.PP
+remarks>ER_INVALID_ON_UPDATE
+.TP
+\fB\fIInvalidOnUpdate \fP\fP
+summary>
+.PP
+remarks>ER_UNSUPPORTED_PS
+.TP
+\fB\fIUnsupportedPreparedStatement \fP\fP
+summary>
+.PP
+remarks>ER_GET_ERRMSG
+.TP
+\fB\fIGetErroMessage \fP\fP
+summary>
+.PP
+remarks>ER_GET_TEMPORARY_ERRMSG
+.TP
+\fB\fIGetTemporaryErrorMessage \fP\fP
+summary>
+.PP
+remarks>ER_UNKNOWN_TIME_ZONE
+.TP
+\fB\fIUnknownTimeZone \fP\fP
+summary>
+.PP
+remarks>ER_WARN_INVALID_TIMESTAMP
+.TP
+\fB\fIWarningInvalidTimestamp \fP\fP
+summary>
+.PP
+remarks>ER_INVALID_CHARACTER_STRING
+.TP
+\fB\fIInvalidCharacterString \fP\fP
+summary>
+.PP
+remarks>ER_WARN_ALLOWED_PACKET_OVERFLOWED
+.TP
+\fB\fIWarningAllowedPacketOverflowed \fP\fP
+summary>
+.PP
+remarks>ER_CONFLICTING_DECLARATIONS
+.TP
+\fB\fIConflictingDeclarations \fP\fP
+summary>
+.PP
+remarks>ER_SP_NO_RECURSIVE_CREATE
+.TP
+\fB\fIStoredProcedureNoRecursiveCreate \fP\fP
+summary>
+.PP
+remarks>ER_SP_ALREADY_EXISTS
+.TP
+\fB\fIStoredProcedureAlreadyExists \fP\fP
+summary>
+.PP
+remarks>ER_SP_DOES_NOT_EXIST
+.TP
+\fB\fIStoredProcedureDoesNotExist \fP\fP
+summary>
+.PP
+remarks>ER_SP_DROP_FAILED
+.TP
+\fB\fIStoredProcedureDropFailed \fP\fP
+summary>
+.PP
+remarks>ER_SP_STORE_FAILED
+.TP
+\fB\fIStoredProcedureStoreFailed \fP\fP
+summary>
+.PP
+remarks>ER_SP_LILABEL_MISMATCH
+.TP
+\fB\fIStoredProcedureLiLabelMismatch \fP\fP
+summary>
+.PP
+remarks>ER_SP_LABEL_REDEFINE
+.TP
+\fB\fIStoredProcedureLabelRedefine \fP\fP
+summary>
+.PP
+remarks>ER_SP_LABEL_MISMATCH
+.TP
+\fB\fIStoredProcedureLabelMismatch \fP\fP
+summary>
+.PP
+remarks>ER_SP_UNINIT_VAR
+.TP
+\fB\fIStoredProcedureUninitializedVariable \fP\fP
+summary>
+.PP
+remarks>ER_SP_BADSELECT
+.TP
+\fB\fIStoredProcedureBadSelect \fP\fP
+summary>
+.PP
+remarks>ER_SP_BADRETURN
+.TP
+\fB\fIStoredProcedureBadReturn \fP\fP
+summary>
+.PP
+remarks>ER_SP_BADSTATEMENT
+.TP
+\fB\fIStoredProcedureBadStatement \fP\fP
+summary>
+.PP
+remarks>ER_UPDATE_LOG_DEPRECATED_IGNORED
+.TP
+\fB\fIUpdateLogDeprecatedIgnored \fP\fP
+summary>
+.PP
+remarks>ER_UPDATE_LOG_DEPRECATED_TRANSLATED
+.TP
+\fB\fIUpdateLogDeprecatedTranslated \fP\fP
+summary>
+.PP
+remarks>ER_QUERY_INTERRUPTED
+.TP
+\fB\fIQueryInterrupted \fP\fP
+summary>
+.PP
+remarks>ER_SP_WRONG_NO_OF_ARGS
+.TP
+\fB\fIStoredProcedureNumberOfArguments \fP\fP
+summary>
+.PP
+remarks>ER_SP_COND_MISMATCH
+.TP
+\fB\fIStoredProcedureConditionMismatch \fP\fP
+summary>
+.PP
+remarks>ER_SP_NORETURN
+.TP
+\fB\fIStoredProcedureNoReturn \fP\fP
+summary>
+.PP
+remarks>ER_SP_NORETURNEND
+.TP
+\fB\fIStoredProcedureNoReturnEnd \fP\fP
+summary>
+.PP
+remarks>ER_SP_BAD_CURSOR_QUERY
+.TP
+\fB\fIStoredProcedureBadCursorQuery \fP\fP
+summary>
+.PP
+remarks>ER_SP_BAD_CURSOR_SELECT
+.TP
+\fB\fIStoredProcedureBadCursorSelect \fP\fP
+summary>
+.PP
+remarks>ER_SP_CURSOR_MISMATCH
+.TP
+\fB\fIStoredProcedureCursorMismatch \fP\fP
+summary>
+.PP
+remarks>ER_SP_CURSOR_ALREADY_OPEN
+.TP
+\fB\fIStoredProcedureAlreadyOpen \fP\fP
+summary>
+.PP
+remarks>ER_SP_CURSOR_NOT_OPEN
+.TP
+\fB\fIStoredProcedureCursorNotOpen \fP\fP
+summary>
+.PP
+remarks>ER_SP_UNDECLARED_VAR
+.TP
+\fB\fIStoredProcedureUndeclaredVariabel \fP\fP
+summary>
+.PP
+remarks>ER_SP_WRONG_NO_OF_FETCH_ARGS
+.TP
+\fB\fIStoredProcedureWrongNumberOfFetchArguments \fP\fP
+summary>
+.PP
+remarks>ER_SP_FETCH_NO_DATA
+.TP
+\fB\fIStoredProcedureFetchNoData \fP\fP
+summary>
+.PP
+remarks>ER_SP_DUP_PARAM
+.TP
+\fB\fIStoredProcedureDuplicateParameter \fP\fP
+summary>
+.PP
+remarks>ER_SP_DUP_VAR
+.TP
+\fB\fIStoredProcedureDuplicateVariable \fP\fP
+summary>
+.PP
+remarks>ER_SP_DUP_COND
+.TP
+\fB\fIStoredProcedureDuplicateCondition \fP\fP
+summary>
+.PP
+remarks>ER_SP_DUP_CURS
+.TP
+\fB\fIStoredProcedureDuplicateCursor \fP\fP
+summary>
+.PP
+remarks>ER_SP_CANT_ALTER
+.TP
+\fB\fIStoredProcedureCannotAlter \fP\fP
+summary>
+.PP
+remarks>ER_SP_SUBSELECT_NYI
+.TP
+\fB\fIStoredProcedureSubSelectNYI \fP\fP
+summary>
+.PP
+remarks>ER_STMT_NOT_ALLOWED_IN_SF_OR_TRG
+.TP
+\fB\fIStatementNotAllowedInStoredFunctionOrTrigger \fP\fP
+summary>
+.PP
+remarks>ER_SP_VARCOND_AFTER_CURSHNDLR
+.TP
+\fB\fIStoredProcedureVariableConditionAfterCursorHandler \fP\fP
+summary>
+.PP
+remarks>ER_SP_CURSOR_AFTER_HANDLER
+.TP
+\fB\fIStoredProcedureCursorAfterHandler \fP\fP
+summary>
+.PP
+remarks>ER_SP_CASE_NOT_FOUND
+.TP
+\fB\fIStoredProcedureCaseNotFound \fP\fP
+summary>
+.PP
+remarks>ER_FPARSER_TOO_BIG_FILE
+.TP
+\fB\fIFileParserTooBigFile \fP\fP
+summary>
+.PP
+remarks>ER_FPARSER_BAD_HEADER
+.TP
+\fB\fIFileParserBadHeader \fP\fP
+summary>
+.PP
+remarks>ER_FPARSER_EOF_IN_COMMENT
+.TP
+\fB\fIFileParserEOFInComment \fP\fP
+summary>
+.PP
+remarks>ER_FPARSER_ERROR_IN_PARAMETER
+.TP
+\fB\fIFileParserErrorInParameter \fP\fP
+summary>
+.PP
+remarks>ER_FPARSER_EOF_IN_UNKNOWN_PARAMETER
+.TP
+\fB\fIFileParserEOFInUnknownParameter \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_NO_EXPLAIN
+.TP
+\fB\fIViewNoExplain \fP\fP
+summary>
+.PP
+remarks>ER_FRM_UNKNOWN_TYPE
+.TP
+\fB\fIFrmUnknownType \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_OBJECT
+.TP
+\fB\fIWrongObject \fP\fP
+summary>
+.PP
+remarks>ER_NONUPDATEABLE_COLUMN
+.TP
+\fB\fINonUpdateableColumn \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_SELECT_DERIVED
+.TP
+\fB\fIViewSelectDerived \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_SELECT_CLAUSE
+.TP
+\fB\fIViewSelectClause \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_SELECT_VARIABLE
+.TP
+\fB\fIViewSelectVariable \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_SELECT_TMPTABLE
+.TP
+\fB\fIViewSelectTempTable \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_WRONG_LIST
+.TP
+\fB\fIViewWrongList \fP\fP
+summary>
+.PP
+remarks>ER_WARN_VIEW_MERGE
+.TP
+\fB\fIWarningViewMerge \fP\fP
+summary>
+.PP
+remarks>ER_WARN_VIEW_WITHOUT_KEY
+.TP
+\fB\fIWarningViewWithoutKey \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_INVALID
+.TP
+\fB\fIViewInvalid \fP\fP
+summary>
+.PP
+remarks>ER_SP_NO_DROP_SP
+.TP
+\fB\fIStoredProcedureNoDropStoredProcedure \fP\fP
+summary>
+.PP
+remarks>ER_SP_GOTO_IN_HNDLR
+.TP
+\fB\fIStoredProcedureGotoInHandler \fP\fP
+summary>
+.PP
+remarks>ER_TRG_ALREADY_EXISTS
+.TP
+\fB\fITriggerAlreadyExists \fP\fP
+summary>
+.PP
+remarks>ER_TRG_DOES_NOT_EXIST
+.TP
+\fB\fITriggerDoesNotExist \fP\fP
+summary>
+.PP
+remarks>ER_TRG_ON_VIEW_OR_TEMP_TABLE
+.TP
+\fB\fITriggerOnViewOrTempTable \fP\fP
+summary>
+.PP
+remarks>ER_TRG_CANT_CHANGE_ROW
+.TP
+\fB\fITriggerCannotChangeRow \fP\fP
+summary>
+.PP
+remarks>ER_TRG_NO_SUCH_ROW_IN_TRG
+.TP
+\fB\fITriggerNoSuchRowInTrigger \fP\fP
+summary>
+.PP
+remarks>ER_NO_DEFAULT_FOR_FIELD
+.TP
+\fB\fINoDefaultForField \fP\fP
+summary>
+.PP
+remarks>ER_DIVISION_BY_ZERO
+.TP
+\fB\fIDivisionByZero \fP\fP
+summary>
+.PP
+remarks>ER_TRUNCATED_WRONG_VALUE_FOR_FIELD
+.TP
+\fB\fITruncatedWrongValueForField \fP\fP
+summary>
+.PP
+remarks>ER_ILLEGAL_VALUE_FOR_TYPE
+.TP
+\fB\fIIllegalValueForType \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_NONUPD_CHECK
+.TP
+\fB\fIViewNonUpdatableCheck \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_CHECK_FAILED
+.TP
+\fB\fIViewCheckFailed \fP\fP
+summary>
+.PP
+remarks>ER_PROCACCESS_DENIED_ERROR
+.TP
+\fB\fIPrecedureAccessDenied \fP\fP
+summary>
+.PP
+remarks>ER_RELAY_LOG_FAIL
+.TP
+\fB\fIRelayLogFail \fP\fP
+summary>
+.PP
+remarks>ER_PASSWD_LENGTH
+.TP
+\fB\fIPasswordLength \fP\fP
+summary>
+.PP
+remarks>ER_UNKNOWN_TARGET_BINLOG
+.TP
+\fB\fIUnknownTargetBinLog \fP\fP
+summary>
+.PP
+remarks>ER_IO_ERR_LOG_INDEX_READ
+.TP
+\fB\fIIOErrorLogIndexRead \fP\fP
+summary>
+.PP
+remarks>ER_BINLOG_PURGE_PROHIBITED
+.TP
+\fB\fIBinLogPurgeProhibited \fP\fP
+summary>
+.PP
+remarks>ER_FSEEK_FAIL
+.TP
+\fB\fIFSeekFail \fP\fP
+summary>
+.PP
+remarks>ER_BINLOG_PURGE_FATAL_ERR
+.TP
+\fB\fIBinLogPurgeFatalError \fP\fP
+summary>
+.PP
+remarks>ER_LOG_IN_USE
+.TP
+\fB\fILogInUse \fP\fP
+summary>
+.PP
+remarks>ER_LOG_PURGE_UNKNOWN_ERR
+.TP
+\fB\fILogPurgeUnknownError \fP\fP
+summary>
+.PP
+remarks>ER_RELAY_LOG_INIT
+.TP
+\fB\fIRelayLogInit \fP\fP
+summary>
+.PP
+remarks>ER_NO_BINARY_LOGGING
+.TP
+\fB\fINoBinaryLogging \fP\fP
+summary>
+.PP
+remarks>ER_RESERVED_SYNTAX
+.TP
+\fB\fIReservedSyntax \fP\fP
+summary>
+.PP
+remarks>ER_WSAS_FAILED
+.TP
+\fB\fIWSAStartupFailed \fP\fP
+summary>
+.PP
+remarks>ER_DIFF_GROUPS_PROC
+.TP
+\fB\fIDifferentGroupsProcedure \fP\fP
+summary>
+.PP
+remarks>ER_NO_GROUP_FOR_PROC
+.TP
+\fB\fINoGroupForProcedure \fP\fP
+summary>
+.PP
+remarks>ER_ORDER_WITH_PROC
+.TP
+\fB\fIOrderWithProcedure \fP\fP
+summary>
+.PP
+remarks>ER_LOGGING_PROHIBIT_CHANGING_OF
+.TP
+\fB\fILoggingProhibitsChangingOf \fP\fP
+summary>
+.PP
+remarks>ER_NO_FILE_MAPPING
+.TP
+\fB\fINoFileMapping \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_MAGIC
+.TP
+\fB\fIWrongMagic \fP\fP
+summary>
+.PP
+remarks>ER_PS_MANY_PARAM
+.TP
+\fB\fIPreparedStatementManyParameters \fP\fP
+summary>
+.PP
+remarks>ER_KEY_PART_0
+.TP
+\fB\fIKeyPartZero \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_CHECKSUM
+.TP
+\fB\fIViewChecksum \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_MULTIUPDATE
+.TP
+\fB\fIViewMultiUpdate \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_NO_INSERT_FIELD_LIST
+.TP
+\fB\fIViewNoInsertFieldList \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_DELETE_MERGE_VIEW
+.TP
+\fB\fIViewDeleteMergeView \fP\fP
+summary>
+.PP
+remarks>ER_CANNOT_USER
+.TP
+\fB\fICannotUser \fP\fP
+summary>
+.PP
+remarks>ER_XAER_NOTA
+.TP
+\fB\fIXAERNotA \fP\fP
+summary>
+.PP
+remarks>ER_XAER_INVAL
+.TP
+\fB\fIXAERInvalid \fP\fP
+summary>
+.PP
+remarks>ER_XAER_RMFAIL
+.TP
+\fB\fIXAERRemoveFail \fP\fP
+summary>
+.PP
+remarks>ER_XAER_OUTSIDE
+.TP
+\fB\fIXAEROutside \fP\fP
+summary>
+.PP
+remarks>ER_XAER_RMERR
+.TP
+\fB\fIXAERRemoveError \fP\fP
+summary>
+.PP
+remarks>ER_XA_RBROLLBACK
+.TP
+\fB\fIXARBRollback \fP\fP
+summary>
+.PP
+remarks>ER_NONEXISTING_PROC_GRANT
+.TP
+\fB\fINonExistingProcedureGrant \fP\fP
+summary>
+.PP
+remarks>ER_PROC_AUTO_GRANT_FAIL
+.TP
+\fB\fIProcedureAutoGrantFail \fP\fP
+summary>
+.PP
+remarks>ER_PROC_AUTO_REVOKE_FAIL
+.TP
+\fB\fIProcedureAutoRevokeFail \fP\fP
+summary>
+.PP
+remarks>ER_DATA_TOO_LONG
+.TP
+\fB\fIDataTooLong \fP\fP
+summary>
+.PP
+remarks>ER_SP_BAD_SQLSTATE
+.TP
+\fB\fIStoredProcedureSQLState \fP\fP
+summary>
+.PP
+remarks>ER_STARTUP
+.TP
+\fB\fIStartupError \fP\fP
+summary>
+.PP
+remarks>ER_LOAD_FROM_FIXED_SIZE_ROWS_TO_VAR
+.TP
+\fB\fILoadFromFixedSizeRowsToVariable \fP\fP
+summary>
+.PP
+remarks>ER_CANT_CREATE_USER_WITH_GRANT
+.TP
+\fB\fICannotCreateUserWithGrant \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_VALUE_FOR_TYPE
+.TP
+\fB\fIWrongValueForType \fP\fP
+summary>
+.PP
+remarks>ER_TABLE_DEF_CHANGED
+.TP
+\fB\fITableDefinitionChanged \fP\fP
+summary>
+.PP
+remarks>ER_SP_DUP_HANDLER
+.TP
+\fB\fIStoredProcedureDuplicateHandler \fP\fP
+summary>
+.PP
+remarks>ER_SP_NOT_VAR_ARG
+.TP
+\fB\fIStoredProcedureNotVariableArgument \fP\fP
+summary>
+.PP
+remarks>ER_SP_NO_RETSET
+.TP
+\fB\fIStoredProcedureNoReturnSet \fP\fP
+summary>
+.PP
+remarks>ER_CANT_CREATE_GEOMETRY_OBJECT
+.TP
+\fB\fICannotCreateGeometryObject \fP\fP
+summary>
+.PP
+remarks>ER_FAILED_ROUTINE_BREAK_BINLOG
+.TP
+\fB\fIFailedRoutineBreaksBinLog \fP\fP
+summary>
+.PP
+remarks>ER_BINLOG_UNSAFE_ROUTINE
+.TP
+\fB\fIBinLogUnsafeRoutine \fP\fP
+summary>
+.PP
+remarks>ER_BINLOG_CREATE_ROUTINE_NEED_SUPER
+.TP
+\fB\fIBinLogCreateRoutineNeedSuper \fP\fP
+summary>
+.PP
+remarks>ER_EXEC_STMT_WITH_OPEN_CURSOR
+.TP
+\fB\fIExecuteStatementWithOpenCursor \fP\fP
+summary>
+.PP
+remarks>ER_STMT_HAS_NO_OPEN_CURSOR
+.TP
+\fB\fIStatementHasNoOpenCursor \fP\fP
+summary>
+.PP
+remarks>ER_COMMIT_NOT_ALLOWED_IN_SF_OR_TRG
+.TP
+\fB\fICommitNotAllowedIfStoredFunctionOrTrigger \fP\fP
+summary>
+.PP
+remarks>ER_NO_DEFAULT_FOR_VIEW_FIELD
+.TP
+\fB\fINoDefaultForViewField \fP\fP
+summary>
+.PP
+remarks>ER_SP_NO_RECURSION
+.TP
+\fB\fIStoredProcedureNoRecursion \fP\fP
+summary>
+.PP
+remarks>ER_TOO_BIG_SCALE
+.TP
+\fB\fITooBigScale \fP\fP
+summary>
+.PP
+remarks>ER_TOO_BIG_PRECISION
+.TP
+\fB\fITooBigPrecision \fP\fP
+summary>
+.PP
+remarks>ER_M_BIGGER_THAN_D
+.TP
+\fB\fIMBiggerThanD \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_LOCK_OF_SYSTEM_TABLE
+.TP
+\fB\fIWrongLockOfSystemTable \fP\fP
+summary>
+.PP
+remarks>ER_CONNECT_TO_FOREIGN_DATA_SOURCE
+.TP
+\fB\fIConnectToForeignDataSource \fP\fP
+summary>
+.PP
+remarks>ER_QUERY_ON_FOREIGN_DATA_SOURCE
+.TP
+\fB\fIQueryOnForeignDataSource \fP\fP
+summary>
+.PP
+remarks>ER_FOREIGN_DATA_SOURCE_DOESNT_EXIST
+.TP
+\fB\fIForeignDataSourceDoesNotExist \fP\fP
+summary>
+.PP
+remarks>ER_FOREIGN_DATA_STRING_INVALID_CANT_CREATE
+.TP
+\fB\fIForeignDataStringInvalidCannotCreate \fP\fP
+summary>
+.PP
+remarks>ER_FOREIGN_DATA_STRING_INVALID
+.TP
+\fB\fIForeignDataStringInvalid \fP\fP
+summary>
+.PP
+remarks>ER_CANT_CREATE_FEDERATED_TABLE
+.TP
+\fB\fICannotCreateFederatedTable \fP\fP
+summary>
+.PP
+remarks>ER_TRG_IN_WRONG_SCHEMA
+.TP
+\fB\fITriggerInWrongSchema \fP\fP
+summary>
+.PP
+remarks>ER_STACK_OVERRUN_NEED_MORE
+.TP
+\fB\fIStackOverrunNeedMore \fP\fP
+summary>
+.PP
+remarks>ER_TOO_LONG_BODY
+.TP
+\fB\fITooLongBody \fP\fP
+summary>
+.PP
+remarks>ER_WARN_CANT_DROP_DEFAULT_KEYCACHE
+.TP
+\fB\fIWarningCannotDropDefaultKeyCache \fP\fP
+summary>
+.PP
+remarks>ER_TOO_BIG_DISPLAYWIDTH
+.TP
+\fB\fITooBigDisplayWidth \fP\fP
+summary>
+.PP
+remarks>ER_XAER_DUPID
+.TP
+\fB\fIXAERDuplicateID \fP\fP
+summary>
+.PP
+remarks>ER_DATETIME_FUNCTION_OVERFLOW
+.TP
+\fB\fIDateTimeFunctionOverflow \fP\fP
+summary>
+.PP
+remarks>ER_CANT_UPDATE_USED_TABLE_IN_SF_OR_TRG
+.TP
+\fB\fICannotUpdateUsedTableInStoredFunctionOrTrigger \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_PREVENT_UPDATE
+.TP
+\fB\fIViewPreventUpdate \fP\fP
+summary>
+.PP
+remarks>ER_PS_NO_RECURSION
+.TP
+\fB\fIPreparedStatementNoRecursion \fP\fP
+summary>
+.PP
+remarks>ER_SP_CANT_SET_AUTOCOMMIT
+.TP
+\fB\fIStoredProcedureCannotSetAutoCommit \fP\fP
+summary>
+.PP
+remarks>ER_MALFORMED_DEFINER
+.TP
+\fB\fIMalformedDefiner \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_FRM_NO_USER
+.TP
+\fB\fIViewFrmNoUser \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_OTHER_USER
+.TP
+\fB\fIViewOtherUser \fP\fP
+summary>
+.PP
+remarks>ER_NO_SUCH_USER
+.TP
+\fB\fINoSuchUser \fP\fP
+summary>
+.PP
+remarks>ER_FORBID_SCHEMA_CHANGE
+.TP
+\fB\fIForbidSchemaChange \fP\fP
+summary>
+.PP
+remarks>ER_ROW_IS_REFERENCED_2
+.TP
+\fB\fIRowIsReferenced2 \fP\fP
+summary>
+.PP
+remarks>ER_NO_REFERENCED_ROW_2
+.TP
+\fB\fINoReferencedRow2 \fP\fP
+summary>
+.PP
+remarks>ER_SP_BAD_VAR_SHADOW
+.TP
+\fB\fIStoredProcedureBadVariableShadow \fP\fP
+summary>
+.PP
+remarks>ER_TRG_NO_DEFINER
+.TP
+\fB\fITriggerNoDefiner \fP\fP
+summary>
+.PP
+remarks>ER_OLD_FILE_FORMAT
+.TP
+\fB\fIOldFileFormat \fP\fP
+summary>
+.PP
+remarks>ER_SP_RECURSION_LIMIT
+.TP
+\fB\fIStoredProcedureRecursionLimit \fP\fP
+summary>
+.PP
+remarks>ER_SP_PROC_TABLE_CORRUPT
+.TP
+\fB\fIStoredProcedureTableCorrupt \fP\fP
+summary>
+.PP
+remarks>ER_SP_WRONG_NAME
+.TP
+\fB\fIStoredProcedureWrongName \fP\fP
+summary>
+.PP
+remarks>ER_TABLE_NEEDS_UPGRADE
+.TP
+\fB\fITableNeedsUpgrade \fP\fP
+summary>
+.PP
+remarks>ER_SP_NO_AGGREGATE
+.TP
+\fB\fIStoredProcedureNoAggregate \fP\fP
+summary>
+.PP
+remarks>ER_MAX_PREPARED_STMT_COUNT_REACHED
+.TP
+\fB\fIMaxPreparedStatementCountReached \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_RECURSIVE
+.TP
+\fB\fIViewRecursive \fP\fP
+summary>
+.PP
+remarks>ER_NON_GROUPING_FIELD_USED
+.TP
+\fB\fINonGroupingFieldUsed \fP\fP
+summary>
+.PP
+remarks>ER_TABLE_CANT_HANDLE_SPKEYS
+.TP
+\fB\fITableCannotHandleSpatialKeys \fP\fP
+summary>
+.PP
+remarks>ER_NO_TRIGGERS_ON_SYSTEM_SCHEMA
+.TP
+\fB\fINoTriggersOnSystemSchema \fP\fP
+summary>
+.PP
+remarks>ER_REMOVED_SPACES
+.TP
+\fB\fIRemovedSpaces \fP\fP
+summary>
+.PP
+remarks>ER_AUTOINC_READ_FAILED
+.TP
+\fB\fIAutoIncrementReadFailed \fP\fP
+summary>
+.PP
+remarks>ER_USERNAME
+.TP
+\fB\fIUserNameError \fP\fP
+summary>
+.PP
+remarks>ER_HOSTNAME
+.TP
+\fB\fIHostNameError \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_STRING_LENGTH
+.TP
+\fB\fIWrongStringLength \fP\fP
+summary>
+.PP
+remarks>ER_NON_INSERTABLE_TABLE
+.TP
+\fB\fINonInsertableTable \fP\fP
+summary>
+.PP
+remarks>ER_ADMIN_WRONG_MRG_TABLE
+.TP
+\fB\fIAdminWrongMergeTable \fP\fP
+summary>
+.PP
+remarks>ER_TOO_HIGH_LEVEL_OF_NESTING_FOR_SELECT
+.TP
+\fB\fITooHighLevelOfNestingForSelect \fP\fP
+summary>
+.PP
+remarks>ER_NAME_BECOMES_EMPTY
+.TP
+\fB\fINameBecomesEmpty \fP\fP
+summary>
+.PP
+remarks>ER_AMBIGUOUS_FIELD_TERM
+.TP
+\fB\fIAmbiguousFieldTerm \fP\fP
+summary>
+.PP
+remarks>ER_FOREIGN_SERVER_EXISTS
+.TP
+\fB\fIForeignServerExists \fP\fP
+summary>
+.PP
+remarks>ER_FOREIGN_SERVER_DOESNT_EXIST
+.TP
+\fB\fIForeignServerDoesNotExist \fP\fP
+summary>
+.PP
+remarks>ER_ILLEGAL_HA_CREATE_OPTION
+.TP
+\fB\fIIllegalHACreateOption \fP\fP
+summary>
+.PP
+remarks>ER_PARTITION_REQUIRES_VALUES_ERROR
+.TP
+\fB\fIPartitionRequiresValues \fP\fP
+summary>
+.PP
+remarks>ER_PARTITION_WRONG_VALUES_ERROR
+.TP
+\fB\fIPartitionWrongValues \fP\fP
+summary>
+.PP
+remarks>ER_PARTITION_MAXVALUE_ERROR
+.TP
+\fB\fIPartitionMaxValue \fP\fP
+summary>
+.PP
+remarks>ER_PARTITION_SUBPARTITION_ERROR
+.TP
+\fB\fIPartitionSubPartition \fP\fP
+summary>
+.PP
+remarks>ER_PARTITION_SUBPART_MIX_ERROR
+.TP
+\fB\fIPartitionSubPartMix \fP\fP
+summary>
+.PP
+remarks>ER_PARTITION_WRONG_NO_PART_ERROR
+.TP
+\fB\fIPartitionWrongNoPart \fP\fP
+summary>
+.PP
+remarks>ER_PARTITION_WRONG_NO_SUBPART_ERROR
+.TP
+\fB\fIPartitionWrongNoSubPart \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_EXPR_IN_PARTITION_FUNC_ERROR
+.TP
+\fB\fIWrongExpressionInParitionFunction \fP\fP
+summary>
+.PP
+remarks>ER_NO_CONST_EXPR_IN_RANGE_OR_LIST_ERROR
+.TP
+\fB\fINoConstantExpressionInRangeOrListError \fP\fP
+summary>
+.PP
+remarks>ER_FIELD_NOT_FOUND_PART_ERROR
+.TP
+\fB\fIFieldNotFoundPartitionErrror \fP\fP
+summary>
+.PP
+remarks>ER_LIST_OF_FIELDS_ONLY_IN_HASH_ERROR
+.TP
+\fB\fIListOfFieldsOnlyInHash \fP\fP
+summary>
+.PP
+remarks>ER_INCONSISTENT_PARTITION_INFO_ERROR
+.TP
+\fB\fIInconsistentPartitionInfo \fP\fP
+summary>
+.PP
+remarks>ER_PARTITION_FUNC_NOT_ALLOWED_ERROR
+.TP
+\fB\fIPartitionFunctionNotAllowed \fP\fP
+summary>
+.PP
+remarks>ER_PARTITIONS_MUST_BE_DEFINED_ERROR
+.TP
+\fB\fIPartitionsMustBeDefined \fP\fP
+summary>
+.PP
+remarks>ER_RANGE_NOT_INCREASING_ERROR
+.TP
+\fB\fIRangeNotIncreasing \fP\fP
+summary>
+.PP
+remarks>ER_INCONSISTENT_TYPE_OF_FUNCTIONS_ERROR
+.TP
+\fB\fIInconsistentTypeOfFunctions \fP\fP
+summary>
+.PP
+remarks>ER_MULTIPLE_DEF_CONST_IN_LIST_PART_ERROR
+.TP
+\fB\fIMultipleDefinitionsConstantInListPartition \fP\fP
+summary>
+.PP
+remarks>ER_PARTITION_ENTRY_ERROR
+.TP
+\fB\fIPartitionEntryError \fP\fP
+summary>
+.PP
+remarks>ER_MIX_HANDLER_ERROR
+.TP
+\fB\fIMixHandlerError \fP\fP
+summary>
+.PP
+remarks>ER_PARTITION_NOT_DEFINED_ERROR
+.TP
+\fB\fIPartitionNotDefined \fP\fP
+summary>
+.PP
+remarks>ER_TOO_MANY_PARTITIONS_ERROR
+.TP
+\fB\fITooManyPartitions \fP\fP
+summary>
+.PP
+remarks>ER_SUBPARTITION_ERROR
+.TP
+\fB\fISubPartitionError \fP\fP
+summary>
+.PP
+remarks>ER_CANT_CREATE_HANDLER_FILE
+.TP
+\fB\fICannotCreateHandlerFile \fP\fP
+summary>
+.PP
+remarks>ER_BLOB_FIELD_IN_PART_FUNC_ERROR
+.TP
+\fB\fIBlobFieldInPartitionFunction \fP\fP
+summary>
+.PP
+remarks>ER_UNIQUE_KEY_NEED_ALL_FIELDS_IN_PF
+.TP
+\fB\fIUniqueKeyNeedAllFieldsInPartitioningFunction \fP\fP
+summary>
+.PP
+remarks>ER_NO_PARTS_ERROR
+.TP
+\fB\fINoPartitions \fP\fP
+summary>
+.PP
+remarks>ER_PARTITION_MGMT_ON_NONPARTITIONED
+.TP
+\fB\fIPartitionManagementOnNoPartitioned \fP\fP
+summary>
+.PP
+remarks>ER_FOREIGN_KEY_ON_PARTITIONED
+.TP
+\fB\fIForeignKeyOnPartitioned \fP\fP
+summary>
+.PP
+remarks>ER_DROP_PARTITION_NON_EXISTENT
+.TP
+\fB\fIDropPartitionNonExistent \fP\fP
+summary>
+.PP
+remarks>ER_DROP_LAST_PARTITION
+.TP
+\fB\fIDropLastPartition \fP\fP
+summary>
+.PP
+remarks>ER_COALESCE_ONLY_ON_HASH_PARTITION
+.TP
+\fB\fICoalesceOnlyOnHashPartition \fP\fP
+summary>
+.PP
+remarks>ER_REORG_HASH_ONLY_ON_SAME_NO
+.TP
+\fB\fIReorganizeHashOnlyOnSameNumber \fP\fP
+summary>
+.PP
+remarks>ER_REORG_NO_PARAM_ERROR
+.TP
+\fB\fIReorganizeNoParameter \fP\fP
+summary>
+.PP
+remarks>ER_ONLY_ON_RANGE_LIST_PARTITION
+.TP
+\fB\fIOnlyOnRangeListPartition \fP\fP
+summary>
+.PP
+remarks>ER_ADD_PARTITION_SUBPART_ERROR
+.TP
+\fB\fIAddPartitionSubPartition \fP\fP
+summary>
+.PP
+remarks>ER_ADD_PARTITION_NO_NEW_PARTITION
+.TP
+\fB\fIAddPartitionNoNewPartition \fP\fP
+summary>
+.PP
+remarks>ER_COALESCE_PARTITION_NO_PARTITION
+.TP
+\fB\fICoalescePartitionNoPartition \fP\fP
+summary>
+.PP
+remarks>ER_REORG_PARTITION_NOT_EXIST
+.TP
+\fB\fIReorganizePartitionNotExist \fP\fP
+summary>
+.PP
+remarks>ER_SAME_NAME_PARTITION
+.TP
+\fB\fISameNamePartition \fP\fP
+summary>
+.PP
+remarks>ER_NO_BINLOG_ERROR
+.TP
+\fB\fINoBinLog \fP\fP
+summary>
+.PP
+remarks>ER_CONSECUTIVE_REORG_PARTITIONS
+.TP
+\fB\fIConsecutiveReorganizePartitions \fP\fP
+summary>
+.PP
+remarks>ER_REORG_OUTSIDE_RANGE
+.TP
+\fB\fIReorganizeOutsideRange \fP\fP
+summary>
+.PP
+remarks>ER_PARTITION_FUNCTION_FAILURE
+.TP
+\fB\fIPartitionFunctionFailure \fP\fP
+summary>
+.PP
+remarks>ER_PART_STATE_ERROR
+.TP
+\fB\fIPartitionStateError \fP\fP
+summary>
+.PP
+remarks>ER_LIMITED_PART_RANGE
+.TP
+\fB\fILimitedPartitionRange \fP\fP
+summary>
+.PP
+remarks>ER_PLUGIN_IS_NOT_LOADED
+.TP
+\fB\fIPluginIsNotLoaded \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_VALUE
+.TP
+\fB\fIWrongValue \fP\fP
+summary>
+.PP
+remarks>ER_NO_PARTITION_FOR_GIVEN_VALUE
+.TP
+\fB\fINoPartitionForGivenValue \fP\fP
+summary>
+.PP
+remarks>ER_FILEGROUP_OPTION_ONLY_ONCE
+.TP
+\fB\fIFileGroupOptionOnlyOnce \fP\fP
+summary>
+.PP
+remarks>ER_CREATE_FILEGROUP_FAILED
+.TP
+\fB\fICreateFileGroupFailed \fP\fP
+summary>
+.PP
+remarks>ER_DROP_FILEGROUP_FAILED
+.TP
+\fB\fIDropFileGroupFailed \fP\fP
+summary>
+.PP
+remarks>ER_TABLESPACE_AUTO_EXTEND_ERROR
+.TP
+\fB\fITableSpaceAutoExtend \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_SIZE_NUMBER
+.TP
+\fB\fIWrongSizeNumber \fP\fP
+summary>
+.PP
+remarks>ER_SIZE_OVERFLOW_ERROR
+.TP
+\fB\fISizeOverflow \fP\fP
+summary>
+.PP
+remarks>ER_ALTER_FILEGROUP_FAILED
+.TP
+\fB\fIAlterFileGroupFailed \fP\fP
+summary>
+.PP
+remarks>ER_BINLOG_ROW_LOGGING_FAILED
+.TP
+\fB\fIBinLogRowLogginFailed \fP\fP
+summary>
+.PP
+remarks>ER_BINLOG_ROW_WRONG_TABLE_DEF
+.TP
+\fB\fIBinLogRowWrongTableDefinition \fP\fP
+summary>
+.PP
+remarks>ER_BINLOG_ROW_RBR_TO_SBR
+.TP
+\fB\fIBinLogRowRBRToSBR \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_ALREADY_EXISTS
+.TP
+\fB\fIEventAlreadyExists \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_STORE_FAILED
+.TP
+\fB\fIEventStoreFailed \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_DOES_NOT_EXIST
+.TP
+\fB\fIEventDoesNotExist \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_CANT_ALTER
+.TP
+\fB\fIEventCannotAlter \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_DROP_FAILED
+.TP
+\fB\fIEventDropFailed \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_INTERVAL_NOT_POSITIVE_OR_TOO_BIG
+.TP
+\fB\fIEventIntervalNotPositiveOrTooBig \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_ENDS_BEFORE_STARTS
+.TP
+\fB\fIEventEndsBeforeStarts \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_EXEC_TIME_IN_THE_PAST
+.TP
+\fB\fIEventExecTimeInThePast \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_OPEN_TABLE_FAILED
+.TP
+\fB\fIEventOpenTableFailed \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_NEITHER_M_EXPR_NOR_M_AT
+.TP
+\fB\fIEventNeitherMExpresssionNorMAt \fP\fP
+summary>
+.PP
+remarks>ER_COL_COUNT_DOESNT_MATCH_CORRUPTED
+.TP
+\fB\fIColumnCountDoesNotMatchCorrupted \fP\fP
+summary>
+.PP
+remarks>ER_CANNOT_LOAD_FROM_TABLE
+.TP
+\fB\fICannotLoadFromTable \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_CANNOT_DELETE
+.TP
+\fB\fIEventCannotDelete \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_COMPILE_ERROR
+.TP
+\fB\fIEventCompileError \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_SAME_NAME
+.TP
+\fB\fIEventSameName \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_DATA_TOO_LONG
+.TP
+\fB\fIEventDataTooLong \fP\fP
+summary>
+.PP
+remarks>ER_DROP_INDEX_FK
+.TP
+\fB\fIDropIndexForeignKey \fP\fP
+summary>
+.PP
+remarks>ER_WARN_DEPRECATED_SYNTAX_WITH_VER
+.TP
+\fB\fIWarningDeprecatedSyntaxWithVersion \fP\fP
+summary>
+.PP
+remarks>ER_CANT_WRITE_LOCK_LOG_TABLE
+.TP
+\fB\fICannotWriteLockLogTable \fP\fP
+summary>
+.PP
+remarks>ER_CANT_LOCK_LOG_TABLE
+.TP
+\fB\fICannotLockLogTable \fP\fP
+summary>
+.PP
+remarks>ER_FOREIGN_DUPLICATE_KEY
+.TP
+\fB\fIForeignDuplicateKey \fP\fP
+summary>
+.PP
+remarks>ER_COL_COUNT_DOESNT_MATCH_PLEASE_UPDATE
+.TP
+\fB\fIColumnCountDoesNotMatchPleaseUpdate \fP\fP
+summary>
+.PP
+remarks>ER_TEMP_TABLE_PREVENTS_SWITCH_OUT_OF_RBR
+.TP
+\fB\fITemoraryTablePreventSwitchOutOfRBR \fP\fP
+summary>
+.PP
+remarks>ER_STORED_FUNCTION_PREVENTS_SWITCH_BINLOG_FORMAT
+.TP
+\fB\fIStoredFunctionPreventsSwitchBinLogFormat \fP\fP
+summary>
+.PP
+remarks>ER_NDB_CANT_SWITCH_BINLOG_FORMAT
+.TP
+\fB\fINDBCannotSwitchBinLogFormat \fP\fP
+summary>
+.PP
+remarks>ER_PARTITION_NO_TEMPORARY
+.TP
+\fB\fIPartitionNoTemporary \fP\fP
+summary>
+.PP
+remarks>ER_PARTITION_CONST_DOMAIN_ERROR
+.TP
+\fB\fIPartitionConstantDomain \fP\fP
+summary>
+.PP
+remarks>ER_PARTITION_FUNCTION_IS_NOT_ALLOWED
+.TP
+\fB\fIPartitionFunctionIsNotAllowed \fP\fP
+summary>
+.PP
+remarks>ER_DDL_LOG_ERROR
+.TP
+\fB\fIDDLLogError \fP\fP
+summary>
+.PP
+remarks>ER_NULL_IN_VALUES_LESS_THAN
+.TP
+\fB\fINullInValuesLessThan \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_PARTITION_NAME
+.TP
+\fB\fIWrongPartitionName \fP\fP
+summary>
+.PP
+remarks>ER_CANT_CHANGE_TX_ISOLATION
+.TP
+\fB\fICannotChangeTransactionIsolation \fP\fP
+summary>
+.PP
+remarks>ER_DUP_ENTRY_AUTOINCREMENT_CASE
+.TP
+\fB\fIDuplicateEntryAutoIncrementCase \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_MODIFY_QUEUE_ERROR
+.TP
+\fB\fIEventModifyQueueError \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_SET_VAR_ERROR
+.TP
+\fB\fIEventSetVariableError \fP\fP
+summary>
+.PP
+remarks>ER_PARTITION_MERGE_ERROR
+.TP
+\fB\fIPartitionMergeError \fP\fP
+summary>
+.PP
+remarks>ER_CANT_ACTIVATE_LOG
+.TP
+\fB\fICannotActivateLog \fP\fP
+summary>
+.PP
+remarks>ER_RBR_NOT_AVAILABLE
+.TP
+\fB\fIRBRNotAvailable \fP\fP
+summary>
+.PP
+remarks>ER_BASE64_DECODE_ERROR
+.TP
+\fB\fIBase64DecodeError \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_RECURSION_FORBIDDEN
+.TP
+\fB\fIEventRecursionForbidden \fP\fP
+summary>
+.PP
+remarks>ER_EVENTS_DB_ERROR
+.TP
+\fB\fIEventsDatabaseError \fP\fP
+summary>
+.PP
+remarks>ER_ONLY_INTEGERS_ALLOWED
+.TP
+\fB\fIOnlyIntegersAllowed \fP\fP
+summary>
+.PP
+remarks>ER_UNSUPORTED_LOG_ENGINE
+.TP
+\fB\fIUnsupportedLogEngine \fP\fP
+summary>
+.PP
+remarks>ER_BAD_LOG_STATEMENT
+.TP
+\fB\fIBadLogStatement \fP\fP
+summary>
+.PP
+remarks>ER_CANT_RENAME_LOG_TABLE
+.TP
+\fB\fICannotRenameLogTable \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_PARAMCOUNT_TO_NATIVE_FCT
+.TP
+\fB\fIWrongParameterCountToNativeFCT \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_PARAMETERS_TO_NATIVE_FCT
+.TP
+\fB\fIWrongParametersToNativeFCT \fP\fP
+summary>
+.PP
+remarks>ER_WRONG_PARAMETERS_TO_STORED_FCT
+.TP
+\fB\fIWrongParametersToStoredFCT \fP\fP
+summary>
+.PP
+remarks>ER_NATIVE_FCT_NAME_COLLISION
+.TP
+\fB\fINativeFCTNameCollision \fP\fP
+summary>
+.PP
+remarks>ER_DUP_ENTRY_WITH_KEY_NAME
+.TP
+\fB\fIDuplicateEntryWithKeyName \fP\fP
+summary>
+.PP
+remarks>ER_BINLOG_PURGE_EMFILE
+.TP
+\fB\fIBinLogPurgeEMFile \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_CANNOT_CREATE_IN_THE_PAST
+.TP
+\fB\fIEventCannotCreateInThePast \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_CANNOT_ALTER_IN_THE_PAST
+.TP
+\fB\fIEventCannotAlterInThePast \fP\fP
+summary>
+.PP
+remarks>ER_SLAVE_INCIDENT
+.TP
+\fB\fISlaveIncident \fP\fP
+summary>
+.PP
+remarks>ER_NO_PARTITION_FOR_GIVEN_VALUE_SILENT
+.TP
+\fB\fINoPartitionForGivenValueSilent \fP\fP
+summary>
+.PP
+remarks>ER_BINLOG_UNSAFE_STATEMENT
+.TP
+\fB\fIBinLogUnsafeStatement \fP\fP
+summary>
+.PP
+remarks>ER_SLAVE_FATAL_ERROR
+.TP
+\fB\fISlaveFatalError \fP\fP
+summary>
+.PP
+remarks>ER_SLAVE_RELAY_LOG_READ_FAILURE
+.TP
+\fB\fISlaveRelayLogReadFailure \fP\fP
+summary>
+.PP
+remarks>ER_SLAVE_RELAY_LOG_WRITE_FAILURE
+.TP
+\fB\fISlaveRelayLogWriteFailure \fP\fP
+summary>
+.PP
+remarks>ER_SLAVE_CREATE_EVENT_FAILURE
+.TP
+\fB\fISlaveCreateEventFailure \fP\fP
+summary>
+.PP
+remarks>ER_SLAVE_MASTER_COM_FAILURE
+.TP
+\fB\fISlaveMasterComFailure \fP\fP
+summary>
+.PP
+remarks>ER_BINLOG_LOGGING_IMPOSSIBLE
+.TP
+\fB\fIBinLogLoggingImpossible \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_NO_CREATION_CTX
+.TP
+\fB\fIViewNoCreationContext \fP\fP
+summary>
+.PP
+remarks>ER_VIEW_INVALID_CREATION_CTX
+.TP
+\fB\fIViewInvalidCreationContext \fP\fP
+summary>
+.PP
+remarks>ER_SR_INVALID_CREATION_CTX
+.TP
+\fB\fIStoredRoutineInvalidCreateionContext \fP\fP
+summary>
+.PP
+remarks>ER_TRG_CORRUPTED_FILE
+.TP
+\fB\fITiggerCorruptedFile \fP\fP
+summary>
+.PP
+remarks>ER_TRG_NO_CREATION_CTX
+.TP
+\fB\fITriggerNoCreationContext \fP\fP
+summary>
+.PP
+remarks>ER_TRG_INVALID_CREATION_CTX
+.TP
+\fB\fITriggerInvalidCreationContext \fP\fP
+summary>
+.PP
+remarks>ER_EVENT_INVALID_CREATION_CTX
+.TP
+\fB\fIEventInvalidCreationContext \fP\fP
+summary>
+.PP
+remarks>ER_TRG_CANT_OPEN_TABLE
+.TP
+\fB\fITriggerCannotOpenTable \fP\fP
+summary>
+.PP
+remarks>ER_CANT_CREATE_SROUTINE
+.TP
+\fB\fICannoCreateSubRoutine \fP\fP
+summary>
+.PP
+remarks>ER_SLAVE_AMBIGOUS_EXEC_MODE
+.TP
+\fB\fISlaveAmbiguousExecMode \fP\fP
+summary>
+.PP
+remarks>ER_NO_FORMAT_DESCRIPTION_EVENT_BEFORE_BINLOG_STATEMENT
+.TP
+\fB\fINoFormatDescriptionEventBeforeBinLogStatement \fP\fP
+summary>
+.PP
+remarks>ER_SLAVE_CORRUPT_EVENT
+.TP
+\fB\fISlaveCorruptEvent \fP\fP
+summary>
+.PP
+remarks>ER_LOAD_DATA_INVALID_COLUMN
+.TP
+\fB\fILoadDataInvalidColumn \fP\fP
+summary>
+.PP
+remarks>ER_LOG_PURGE_NO_FILE
+.TP
+\fB\fILogPurgeNoFile \fP\fP
+summary>
+.PP
+remarks>ER_XA_RBTIMEOUT
+.TP
+\fB\fIXARBTimeout \fP\fP
+summary>
+.PP
+remarks>ER_XA_RBDEADLOCK
+.TP
+\fB\fIXARBDeadlock \fP\fP
+summary>
+.PP
+remarks>ER_NEED_REPREPARE
+.TP
+\fB\fINeedRePrepare \fP\fP
+summary>
+.PP
+remarks>ER_DELAYED_NOT_SUPPORTED
+.TP
+\fB\fIDelayedNotSupported \fP\fP
+summary>
+.PP
+remarks>WARN_NO_MASTER_INFO
+.TP
+\fB\fIWarningNoMasterInfo \fP\fP
+summary>
+.PP
+remarks>WARN_OPTION_IGNORED
+.TP
+\fB\fIWarningOptionIgnored \fP\fP
+summary>
+.PP
+remarks>WARN_PLUGIN_DELETE_BUILTIN
+.TP
+\fB\fIWarningPluginDeleteBuiltIn \fP\fP
+summary>
+.PP
+remarks>WARN_PLUGIN_BUSY
+.TP
+\fB\fIWarningPluginBusy \fP\fP
+summary>
+.PP
+remarks>ER_VARIABLE_IS_READONLY
+.TP
+\fB\fIVariableIsReadonly \fP\fP
+summary>
+.PP
+remarks>ER_WARN_ENGINE_TRANSACTION_ROLLBACK
+.TP
+\fB\fIWarningEngineTransactionRollback \fP\fP
+summary>
+.PP
+remarks>ER_SLAVE_HEARTBEAT_FAILURE
+.TP
+\fB\fISlaveHeartbeatFailure \fP\fP
+summary>
+.PP
+remarks>ER_SLAVE_HEARTBEAT_VALUE_OUT_OF_RANGE
+.TP
+\fB\fISlaveHeartbeatValueOutOfRange \fP\fP
+summary>
+.PP
+remarks>ER_NDB_REPLICATION_SCHEMA_ERROR
+.TP
+\fB\fINDBReplicationSchemaError \fP\fP
+summary>
+.PP
+remarks>ER_CONFLICT_FN_PARSE_ERROR
+.TP
+\fB\fIConflictFunctionParseError \fP\fP
+summary>
+.PP
+remarks>ER_EXCEPTIONS_WRITE_ERROR
+.TP
+\fB\fIExcepionsWriteError \fP\fP
+summary>
+.PP
+remarks>ER_TOO_LONG_TABLE_COMMENT
+.TP
+\fB\fITooLongTableComment \fP\fP
+summary>
+.PP
+remarks>ER_TOO_LONG_FIELD_COMMENT
+.TP
+\fB\fITooLongFieldComment \fP\fP
+summary>
+.PP
+remarks>ER_FUNC_INEXISTENT_NAME_COLLISION
+.TP
+\fB\fIFunctionInExistentNameCollision \fP\fP
+summary>
+.PP
+remarks>ER_DATABASE_NAME
+.TP
+\fB\fIDatabaseNameError \fP\fP
+summary>
+.PP
+remarks>ER_TABLE_NAME
+.TP
+\fB\fITableNameErrror \fP\fP
+summary>
+.PP
+remarks>ER_PARTITION_NAME
+.TP
+\fB\fIPartitionNameError \fP\fP
+summary>
+.PP
+remarks>ER_SUBPARTITION_NAME
+.TP
+\fB\fISubPartitionNameError \fP\fP
+summary>
+.PP
+remarks>ER_TEMPORARY_NAME
+.TP
+\fB\fITemporaryNameError \fP\fP
+summary>
+.PP
+remarks>ER_RENAMED_NAME
+.TP
+\fB\fIRenamedNameError \fP\fP
+summary>
+.PP
+remarks>ER_TOO_MANY_CONCURRENT_TRXS
+.TP
+\fB\fITooManyConcurrentTransactions \fP\fP
+summary>
+.PP
+remarks>WARN_NON_ASCII_SEPARATOR_NOT_IMPLEMENTED
+.TP
+\fB\fIWarningNonASCIISeparatorNotImplemented \fP\fP
+summary>
+.PP
+remarks>ER_DEBUG_SYNC_TIMEOUT
+.TP
+\fB\fIDebugSyncTimeout \fP\fP
+summary>
+.PP
+remarks>ER_DEBUG_SYNC_HIT_LIMIT
+.TP
+\fB\fIDebugSyncHitLimit \fP\fP
+summary>
+.PP
+remarks>ER_ERROR_LAST
+.PP
+Definition at line 73 of file MySqlError\&.cs\&.
+.SS "enum \fBMySql\&.Data\&.MySqlClient\&.MySqlSslMode\fP"
+
+.PP
+SSL options for connection\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+Do not use SSL\&. 
+.TP
+\fB\fIPreferred \fP\fP
+Use SSL, if server supports it\&. 
+.TP
+\fB\fIRequired \fP\fP
+Always use SSL\&. Deny connection if server does not support SSL\&. Do not perform server certificate validation\&. 
+.TP
+\fB\fIVerifyCA \fP\fP
+Always use SSL\&. Validate server SSL certificate, but different host name mismatch\&. 
+.TP
+\fB\fIVerifyFull \fP\fP
+Always use SSL and perform full certificate validation\&. 
+.PP
+Definition at line 362 of file MysqlDefs\&.cs\&.
+.SH "Function Documentation"
+.PP 
+.SS "delegate void MySql\&.Data\&.MySqlClient\&.MySqlInfoMessageEventHandler (objectsender, MySqlInfoMessageEventArgsargs)"
+
+.PP
+Represents the method that will handle the \fBMySqlConnection\&.InfoMessage\fP event of a \fBMySqlConnection\fP\&. 
+.SS "delegate void MySql\&.Data\&.MySqlClient\&.MySqlRowUpdatedEventHandler (objectsender, MySqlRowUpdatedEventArgse)"
+
+.PP
+Represents the method that will handle the \fBMySqlDataAdapter\&.RowUpdated\fP event of a \fBMySqlDataAdapter\fP\&. 
+.SS "delegate void MySql\&.Data\&.MySqlClient\&.MySqlRowUpdatingEventHandler (objectsender, MySqlRowUpdatingEventArgse)"
+
+.PP
+Represents the method that will handle the \fBMySqlDataAdapter\&.RowUpdating\fP event of a \fBMySqlDataAdapter\fP\&. 
+.SS "delegate void MySql\&.Data\&.MySqlClient\&.MySqlScriptErrorEventHandler (objectsender, MySqlScriptErrorEventArgsargs)"
+
+.PP
+
+.SS "delegate void MySql\&.Data\&.MySqlClient\&.MySqlStatementExecutedEventHandler (objectsender, MySqlScriptEventArgsargs)"
+
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

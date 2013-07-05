@@ -1,0 +1,5 @@
+var interface_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_interface_with_equals_gethashcode_tests_1_1_i_my_base_object =
+[
+    [ "Equals", "interface_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_interface_with_equals_gethashcode_tests_1_1_i_my_base_object.html#a7d099d2622063d41f44db534cfd80c65", null ],
+    [ "GetHashCode", "interface_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_interface_with_equals_gethashcode_tests_1_1_i_my_base_object.html#a95ba2e52a50f1b1746494bed6ead6c7c", null ]
+];

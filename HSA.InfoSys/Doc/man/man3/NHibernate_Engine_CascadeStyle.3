@@ -1,0 +1,267 @@
+.TH "NHibernate.Engine.CascadeStyle" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.CascadeStyle \- 
+.PP
+A contract for defining the aspects of cascading various persistence actions\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by NHibernate\&.Engine\&.CascadeStyle\&.AllCascadeStyle, NHibernate\&.Engine\&.CascadeStyle\&.AllDeleteOrphanCascadeStyle, NHibernate\&.Engine\&.CascadeStyle\&.DeleteCascadeStyle, NHibernate\&.Engine\&.CascadeStyle\&.DeleteOrphanCascadeStyle, NHibernate\&.Engine\&.CascadeStyle\&.EvictCascadeStyle, NHibernate\&.Engine\&.CascadeStyle\&.LockCascadeStyle, NHibernate\&.Engine\&.CascadeStyle\&.MergeCascadeStyle, \fBNHibernate\&.Engine\&.CascadeStyle\&.MultipleCascadeStyle\fP, NHibernate\&.Engine\&.CascadeStyle\&.NoneCascadeStyle, NHibernate\&.Engine\&.CascadeStyle\&.PersistCascadeStyle, NHibernate\&.Engine\&.CascadeStyle\&.RefreshCascadeStyle, NHibernate\&.Engine\&.CascadeStyle\&.ReplicateCascadeStyle, and NHibernate\&.Engine\&.CascadeStyle\&.UpdateCascadeStyle\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBMultipleCascadeStyle\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract bool \fBDoCascade\fP (\fBCascadingAction\fP action)"
+.br
+.RI "\fIFor this style, should the given action be cascaded? \fP"
+.ti -1c
+.RI "virtual bool \fBReallyDoCascade\fP (\fBCascadingAction\fP action)"
+.br
+.RI "\fIProbably more aptly named something like doCascadeToCollectionElements(); it is however used from both the collection and to-one logic branches\&.\&.\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBCascadeStyle\fP \fBGetCascadeStyle\fP (string cascade)"
+.br
+.RI "\fIFactory method for obtaining named cascade styles \fP"
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly \fBCascadeStyle\fP \fBAllDeleteOrphan\fP = new AllDeleteOrphanCascadeStyle()"
+.br
+.RI "\fIsave / delete / update / evict / lock / replicate / merge / persist + delete orphans\fP"
+.ti -1c
+.RI "static readonly \fBCascadeStyle\fP \fBAll\fP = new AllCascadeStyle()"
+.br
+.RI "\fIsave / delete / update / evict / lock / replicate / merge / persist\fP"
+.ti -1c
+.RI "static readonly \fBCascadeStyle\fP \fBUpdate\fP = new UpdateCascadeStyle()"
+.br
+.RI "\fIsave / update\fP"
+.ti -1c
+.RI "static readonly \fBCascadeStyle\fP \fBLock\fP = new LockCascadeStyle()"
+.br
+.RI "\fIlock\fP"
+.ti -1c
+.RI "static readonly \fBCascadeStyle\fP \fBRefresh\fP = new RefreshCascadeStyle()"
+.br
+.RI "\fIrefresh\fP"
+.ti -1c
+.RI "static readonly \fBCascadeStyle\fP \fBEvict\fP = new EvictCascadeStyle()"
+.br
+.RI "\fIevict\fP"
+.ti -1c
+.RI "static readonly \fBCascadeStyle\fP \fBReplicate\fP = new ReplicateCascadeStyle()"
+.br
+.RI "\fIreplicate\fP"
+.ti -1c
+.RI "static readonly \fBCascadeStyle\fP \fBMerge\fP = new MergeCascadeStyle()"
+.br
+.RI "\fImerge\fP"
+.ti -1c
+.RI "static readonly \fBCascadeStyle\fP \fBPersist\fP = new PersistCascadeStyle()"
+.br
+.RI "\fIcreate\fP"
+.ti -1c
+.RI "static readonly \fBCascadeStyle\fP \fBDelete\fP = new DeleteCascadeStyle()"
+.br
+.RI "\fIdelete\fP"
+.ti -1c
+.RI "static readonly \fBCascadeStyle\fP \fBDeleteOrphan\fP = new DeleteOrphanCascadeStyle()"
+.br
+.RI "\fIdelete + delete orphans\fP"
+.ti -1c
+.RI "static readonly \fBCascadeStyle\fP \fBNone\fP = new NoneCascadeStyle()"
+.br
+.RI "\fIno cascades\fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBHasOrphanDelete\fP\fC [get]\fP"
+.br
+.RI "\fIDo we need to delete orphaned collection elements? \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A contract for defining the aspects of cascading various persistence actions\&. 
+
+
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBCascadingAction\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 10 of file CascadeStyle\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract bool NHibernate\&.Engine\&.CascadeStyle\&.DoCascade (\fBCascadingAction\fPaction)\fC [pure virtual]\fP"
+
+.PP
+For this style, should the given action be cascaded? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaction\fP The action to be checked for cascade-ability\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the action should be cascaded under this style; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Engine\&.CascadeStyle\&.MultipleCascadeStyle\fP\&.
+.SS "static \fBCascadeStyle\fP NHibernate\&.Engine\&.CascadeStyle\&.GetCascadeStyle (stringcascade)\fC [static]\fP"
+
+.PP
+Factory method for obtaining named cascade styles 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcascade\fP The named cascade style name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate \fBCascadeStyle\fP 
+.RE
+.PP
+
+.PP
+Definition at line 71 of file CascadeStyle\&.cs\&.
+.SS "virtual bool NHibernate\&.Engine\&.CascadeStyle\&.ReallyDoCascade (\fBCascadingAction\fPaction)\fC [virtual]\fP"
+
+.PP
+Probably more aptly named something like doCascadeToCollectionElements(); it is however used from both the collection and to-one logic branches\&.\&.\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaction\fP The action to be checked for cascade-ability\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the action should be really cascaded under this style; false otherwise\&. 
+.RE
+.PP
+.PP
+For this style, should the given action really be cascaded? The default implementation is simply to return \fBdoCascade\fP; for certain styles (currently only delete-orphan), however, we need to be able to control this separately\&. 
+.PP
+Reimplemented in \fBNHibernate\&.Engine\&.CascadeStyle\&.MultipleCascadeStyle\fP\&.
+.PP
+Definition at line 50 of file CascadeStyle\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly \fBCascadeStyle\fP NHibernate\&.Engine\&.CascadeStyle\&.All = new AllCascadeStyle()\fC [static]\fP"
+
+.PP
+save / delete / update / evict / lock / replicate / merge / persist
+.PP
+Definition at line 257 of file CascadeStyle\&.cs\&.
+.SS "readonly \fBCascadeStyle\fP NHibernate\&.Engine\&.CascadeStyle\&.AllDeleteOrphan = new AllDeleteOrphanCascadeStyle()\fC [static]\fP"
+
+.PP
+save / delete / update / evict / lock / replicate / merge / persist + delete orphans
+.PP
+Definition at line 254 of file CascadeStyle\&.cs\&.
+.SS "readonly \fBCascadeStyle\fP NHibernate\&.Engine\&.CascadeStyle\&.Delete = new DeleteCascadeStyle()\fC [static]\fP"
+
+.PP
+delete
+.PP
+Definition at line 281 of file CascadeStyle\&.cs\&.
+.SS "readonly \fBCascadeStyle\fP NHibernate\&.Engine\&.CascadeStyle\&.DeleteOrphan = new DeleteOrphanCascadeStyle()\fC [static]\fP"
+
+.PP
+delete + delete orphans
+.PP
+Definition at line 284 of file CascadeStyle\&.cs\&.
+.SS "readonly \fBCascadeStyle\fP NHibernate\&.Engine\&.CascadeStyle\&.Evict = new EvictCascadeStyle()\fC [static]\fP"
+
+.PP
+evict
+.PP
+Definition at line 269 of file CascadeStyle\&.cs\&.
+.SS "readonly \fBCascadeStyle\fP NHibernate\&.Engine\&.CascadeStyle\&.Lock = new LockCascadeStyle()\fC [static]\fP"
+
+.PP
+lock
+.PP
+Definition at line 263 of file CascadeStyle\&.cs\&.
+.SS "readonly \fBCascadeStyle\fP NHibernate\&.Engine\&.CascadeStyle\&.Merge = new MergeCascadeStyle()\fC [static]\fP"
+
+.PP
+merge
+.PP
+Definition at line 275 of file CascadeStyle\&.cs\&.
+.SS "readonly \fBCascadeStyle\fP NHibernate\&.Engine\&.CascadeStyle\&.None = new NoneCascadeStyle()\fC [static]\fP"
+
+.PP
+no cascades
+.PP
+Definition at line 287 of file CascadeStyle\&.cs\&.
+.SS "readonly \fBCascadeStyle\fP NHibernate\&.Engine\&.CascadeStyle\&.Persist = new PersistCascadeStyle()\fC [static]\fP"
+
+.PP
+create
+.PP
+Definition at line 278 of file CascadeStyle\&.cs\&.
+.SS "readonly \fBCascadeStyle\fP NHibernate\&.Engine\&.CascadeStyle\&.Refresh = new RefreshCascadeStyle()\fC [static]\fP"
+
+.PP
+refresh
+.PP
+Definition at line 266 of file CascadeStyle\&.cs\&.
+.SS "readonly \fBCascadeStyle\fP NHibernate\&.Engine\&.CascadeStyle\&.Replicate = new ReplicateCascadeStyle()\fC [static]\fP"
+
+.PP
+replicate
+.PP
+Definition at line 272 of file CascadeStyle\&.cs\&.
+.SS "readonly \fBCascadeStyle\fP NHibernate\&.Engine\&.CascadeStyle\&.Update = new UpdateCascadeStyle()\fC [static]\fP"
+
+.PP
+save / update
+.PP
+Definition at line 260 of file CascadeStyle\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual bool NHibernate\&.Engine\&.CascadeStyle\&.HasOrphanDelete\fC [get]\fP"
+
+.PP
+Do we need to delete orphaned collection elements? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if this style need to account for orphan delete operations; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 58 of file CascadeStyle\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

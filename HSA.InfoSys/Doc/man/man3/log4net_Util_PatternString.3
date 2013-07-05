@@ -1,0 +1,244 @@
+.TH "log4net.Util.PatternString" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.PatternString \- 
+.PP
+This class implements a patterned string\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Core\&.IOptionHandler\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPatternString\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.ti -1c
+.RI "\fBPatternString\fP (string pattern)"
+.br
+.RI "\fIConstructs a \fBPatternString\fP \fP"
+.ti -1c
+.RI "virtual void \fBActivateOptions\fP ()"
+.br
+.RI "\fIInitialize object options \fP"
+.ti -1c
+.RI "void \fBFormat\fP (TextWriter writer)"
+.br
+.RI "\fIProduces a formatted string as specified by the conversion pattern\&. \fP"
+.ti -1c
+.RI "string \fBFormat\fP ()"
+.br
+.RI "\fIFormat the pattern as a string \fP"
+.ti -1c
+.RI "void \fBAddConverter\fP (\fBConverterInfo\fP converterInfo)"
+.br
+.RI "\fIAdd a converter to this \fBPatternString\fP \fP"
+.ti -1c
+.RI "void \fBAddConverter\fP (string name, Type type)"
+.br
+.RI "\fIAdd a converter to this \fBPatternString\fP \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBConversionPattern\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the pattern formatting string \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class implements a patterned string\&. 
+
+This string has embedded patterns that are resolved and expanded when the string is formatted\&. 
+.PP
+This class functions similarly to the \fBlog4net\&.Layout\&.PatternLayout\fP in that it accepts a pattern and renders it to a string\&. Unlike the \fBlog4net\&.Layout\&.PatternLayout\fP however the \fC\fBPatternString\fP\fP does not render the properties of a specific LoggingEvent but of the process in general\&. 
+.PP
+The recognized conversion pattern names are: 
+.PP
+Conversion Pattern Name Effect  appdomain Used to output the friendly name of the current AppDomain\&. 
+.PP
+date  
+.PP
+Used to output the current date and time in the local time zone\&. To output the date in universal time use the \fCutcdate\fP pattern\&. The date conversion specifier may be followed by a \fIdate format specifier\fP enclosed between braces\&. For example, \fBdate{HH:mm:ss,fff}\fP or \fBdate{dd MMM yyyy HH:mm:ss,fff}\fP\&. If no date format specifier is given then ISO8601 format is assumed (\fBlog4net\&.DateFormatter\&.Iso8601DateFormatter\fP)\&. 
+.PP
+The date format specifier admits the same syntax as the time pattern string of the DateTime\&.ToString(string)\&. 
+.PP
+For better results it is recommended to use the \fBlog4net\fP date formatters\&. These can be specified using one of the strings 'ABSOLUTE', 'DATE' and 'ISO8601' for specifying \fBlog4net\&.DateFormatter\&.AbsoluteTimeDateFormatter\fP, \fBlog4net\&.DateFormatter\&.DateTimeDateFormatter\fP and respectively \fBlog4net\&.DateFormatter\&.Iso8601DateFormatter\fP\&. For example, \fBdate{ISO8601}\fP or \fBdate{ABSOLUTE}\fP\&. 
+.PP
+These dedicated date formatters perform significantly better than DateTime\&.ToString(string)\&. 
+.PP
+env  
+.PP
+Used to output the a specific environment variable\&. The key to lookup must be specified within braces and directly following the pattern specifier, e\&.g\&. \fBenv{COMPUTERNAME}\fP would include the value of the \fCCOMPUTERNAME\fP environment variable\&. 
+.PP
+The \fCenv\fP pattern is not supported on the \&.NET Compact Framework\&. 
+.PP
+identity  
+.PP
+Used to output the user name for the currently active user (Principal\&.Identity\&.Name)\&. 
+.PP
+newline  
+.PP
+Outputs the platform dependent line separator character or characters\&. 
+.PP
+This conversion pattern name offers the same performance as using non-portable line separator strings such as '\\n', or '\\r\\n'\&. Thus, it is the preferred way of specifying a line separator\&. 
+.PP
+processid  
+.PP
+Used to output the system process ID for the current process\&. 
+.PP
+property  
+.PP
+Used to output a specific context property\&. The key to lookup must be specified within braces and directly following the pattern specifier, e\&.g\&. \fBproperty{user}\fP would include the value from the property that is keyed by the string 'user'\&. Each property value that is to be included in the log must be specified separately\&. Properties are stored in logging contexts\&. By default the \fC\fBlog4net\fP:HostName\fP property is set to the name of machine on which the event was originally logged\&. 
+.PP
+If no key is specified, e\&.g\&. \fBproperty\fP then all the keys and their values are printed in a comma separated list\&. 
+.PP
+The properties of an event are combined from a number of different contexts\&. These are listed below in the order in which they are searched\&. 
+.PP
+.PD 0
+.IP "\(bu" 2
+the thread properties  The \fBThreadContext\&.Properties\fP that are set on the current thread\&. These properties are shared by all events logged on this thread\&.   
+.IP "\(bu" 2
+the global properties  The \fBGlobalContext\&.Properties\fP that are set globally\&. These properties are shared by all the threads in the AppDomain\&.   
+.PP
+random  
+.PP
+Used to output a random string of characters\&. The string is made up of uppercase letters and numbers\&. By default the string is 4 characters long\&. The length of the string can be specified within braces directly following the pattern specifier, e\&.g\&. \fBrandom{8}\fP would output an 8 character string\&. 
+.PP
+username  
+.PP
+Used to output the WindowsIdentity for the currently active user\&. 
+.PP
+utcdate  
+.PP
+Used to output the date of the logging event in universal time\&. The date conversion specifier may be followed by a \fIdate format specifier\fP enclosed between braces\&. For example, \fButcdate{HH:mm:ss,fff}\fP or \fButcdate{dd MMM yyyy HH:mm:ss,fff}\fP\&. If no date format specifier is given then ISO8601 format is assumed (\fBlog4net\&.DateFormatter\&.Iso8601DateFormatter\fP)\&. 
+.PP
+The date format specifier admits the same syntax as the time pattern string of the DateTime\&.ToString(string)\&. 
+.PP
+For better results it is recommended to use the \fBlog4net\fP date formatters\&. These can be specified using one of the strings 'ABSOLUTE', 'DATE' and 'ISO8601' for specifying \fBlog4net\&.DateFormatter\&.AbsoluteTimeDateFormatter\fP, \fBlog4net\&.DateFormatter\&.DateTimeDateFormatter\fP and respectively \fBlog4net\&.DateFormatter\&.Iso8601DateFormatter\fP\&. For example, \fButcdate{ISO8601}\fP or \fButcdate{ABSOLUTE}\fP\&. 
+.PP
+These dedicated date formatters perform significantly better than DateTime\&.ToString(string)\&. 
+.PP
+%  
+.PP
+The sequence %% outputs a single percent sign\&. 
+.PP
+Additional pattern converters may be registered with a specific \fBPatternString\fP instance using \fBAddConverter(ConverterInfo)\fP or \fBAddConverter(string, Type)\fP\&. 
+.PP
+See the \fBlog4net\&.Layout\&.PatternLayout\fP for details on the \fIformat modifiers\fP supported by the patterns\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 248 of file PatternString\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Util\&.PatternString\&.PatternString ()"
+
+.PP
+Default constructor Initialize a new instance of \fBPatternString\fP 
+.PP
+Definition at line 318 of file PatternString\&.cs\&.
+.SS "log4net\&.Util\&.PatternString\&.PatternString (stringpattern)"
+
+.PP
+Constructs a \fBPatternString\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpattern\fP The pattern to use with this \fBPatternString\fP
+.RE
+.PP
+.PP
+Initialize a new instance of \fBPatternString\fP with the pattern specified\&. 
+.PP
+Definition at line 331 of file PatternString\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void log4net\&.Util\&.PatternString\&.ActivateOptions ()\fC [virtual]\fP"
+
+.PP
+Initialize object options This is part of the IOptionHandler delayed object activation scheme\&. The \fBActivateOptions\fP method must be called on this object after the configuration properties have been set\&. Until \fBActivateOptions\fP is called this object is in an undefined state and must not be used\&. 
+.PP
+If any of the configuration properties are modified then \fBActivateOptions\fP must be called again\&. 
+.PP
+Implements \fBlog4net\&.Core\&.IOptionHandler\fP\&.
+.PP
+Definition at line 376 of file PatternString\&.cs\&.
+.SS "void log4net\&.Util\&.PatternString\&.AddConverter (\fBConverterInfo\fPconverterInfo)"
+
+.PP
+Add a converter to this \fBPatternString\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconverterInfo\fP the converter info
+.RE
+.PP
+.PP
+This version of the method is used by the configurator\&. Programmatic users should use the alternative \fBAddConverter(string,Type)\fP method\&. 
+.PP
+Definition at line 468 of file PatternString\&.cs\&.
+.SS "void log4net\&.Util\&.PatternString\&.AddConverter (stringname, Typetype)"
+
+.PP
+Add a converter to this \fBPatternString\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP the name of the conversion pattern for this converter
+.br
+\fItype\fP the type of the converter
+.RE
+.PP
+.PP
+Add a converter to this \fBPatternString\fP 
+.PP
+Definition at line 489 of file PatternString\&.cs\&.
+.SS "void log4net\&.Util\&.PatternString\&.Format (TextWriterwriter)"
+
+.PP
+Produces a formatted string as specified by the conversion pattern\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP The TextWriter to write the formatted event to
+.RE
+.PP
+.PP
+Format the pattern to the \fIwriter\fP \&. 
+.PP
+Definition at line 425 of file PatternString\&.cs\&.
+.SS "string log4net\&.Util\&.PatternString\&.Format ()"
+
+.PP
+Format the pattern as a string 
+.PP
+\fBReturns:\fP
+.RS 4
+the pattern formatted as a string
+.RE
+.PP
+.PP
+Format the pattern to a string\&. 
+.PP
+Definition at line 451 of file PatternString\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string log4net\&.Util\&.PatternString\&.ConversionPattern\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the pattern formatting string The pattern formatting string 
+.PP
+The \fBConversionPattern\fP option\&. This is the string which controls formatting and consists of a mix of literal content and conversion specifiers\&. 
+.PP
+Definition at line 353 of file PatternString\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

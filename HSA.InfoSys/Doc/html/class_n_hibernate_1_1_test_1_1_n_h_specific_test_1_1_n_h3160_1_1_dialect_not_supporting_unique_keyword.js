@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3160_1_1_dialect_not_supporting_unique_keyword =
+[
+    [ "SupportsUnique", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3160_1_1_dialect_not_supporting_unique_keyword.html#a4d1b7c72f2189b7ebafe0c286dd16226", null ],
+    [ "SupportsUniqueConstraintInCreateAlterTable", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3160_1_1_dialect_not_supporting_unique_keyword.html#a2acb5246e2e45633efe6128764275293", null ]
+];

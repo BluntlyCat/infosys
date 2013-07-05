@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_dialect_test_1_1_function_tests_1_1_sequence_support_fixture =
+[
+    [ "DialectSupportingSequencesMustFullfillSequenceContract", "class_n_hibernate_1_1_test_1_1_dialect_test_1_1_function_tests_1_1_sequence_support_fixture.html#ad53f4b927138d2feb0aae871ecf9878d", null ]
+];

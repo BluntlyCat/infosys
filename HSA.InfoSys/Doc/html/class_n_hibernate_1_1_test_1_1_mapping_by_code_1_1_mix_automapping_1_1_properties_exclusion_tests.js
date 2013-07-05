@@ -1,0 +1,11 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mix_automapping_1_1_properties_exclusion_tests =
+[
+    [ "MyEntity", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mix_automapping_1_1_properties_exclusion_tests_1_1_my_entity.html", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mix_automapping_1_1_properties_exclusion_tests_1_1_my_entity" ],
+    [ "DoesNotIncludesFieldsByDefault", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mix_automapping_1_1_properties_exclusion_tests.html#a896e8d2195649ccc8b485de965bffa3f", null ],
+    [ "IncludesAutoprop", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mix_automapping_1_1_properties_exclusion_tests.html#aecbcd848b704da80725477d2cebcb9e5", null ],
+    [ "IncludesFieldsWhenExplicitDeclared", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mix_automapping_1_1_properties_exclusion_tests.html#a659a660187a9f04f6807dcacc59fca52", null ],
+    [ "IncludesNoReadOnly", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mix_automapping_1_1_properties_exclusion_tests.html#a38f6807b3bbfbd16fb253c6d9403baee", null ],
+    [ "IncludesReadOnlyWithField", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mix_automapping_1_1_properties_exclusion_tests.html#a3746cdb6c2b92b6a83bf98d5e109c894", null ],
+    [ "WhenReadonlyDeclaredThenIsPersistentProperty", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mix_automapping_1_1_properties_exclusion_tests.html#ac673c999a6fdd8948adb2bcc095eb712", null ],
+    [ "WhenReadonlyNotDeclaredThenIsNotPersistentProperty", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mix_automapping_1_1_properties_exclusion_tests.html#a8f5fb7346a04e7ba8f67b7dbf8132504", null ]
+];

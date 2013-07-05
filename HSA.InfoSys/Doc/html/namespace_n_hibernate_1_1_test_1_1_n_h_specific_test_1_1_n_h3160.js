@@ -1,0 +1,6 @@
+var namespace_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3160 =
+[
+    [ "DialectNotSupportingUniqueKeyword", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3160_1_1_dialect_not_supporting_unique_keyword.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3160_1_1_dialect_not_supporting_unique_keyword" ],
+    [ "Entity", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3160_1_1_entity.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3160_1_1_entity" ],
+    [ "MappingWithUniqueTests", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3160_1_1_mapping_with_unique_tests.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3160_1_1_mapping_with_unique_tests" ]
+];

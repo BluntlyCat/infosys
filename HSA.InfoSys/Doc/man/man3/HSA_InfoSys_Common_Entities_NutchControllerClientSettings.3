@@ -1,0 +1,298 @@
+.TH "HSA.InfoSys.Common.Entities.NutchControllerClientSettings" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HSA.InfoSys.Common.Entities.NutchControllerClientSettings \- 
+.PP
+There we can store settings for nutch controller client  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBHSA\&.InfoSys\&.Common\&.Entities\&.Settings\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIReturns a System\&.String that represents this instance\&. \fP"
+.ti -1c
+.RI "virtual void \fBSetDefaults\fP ()"
+.br
+.RI "\fISets the default values of this setting or if we instanciate a new instance of a setting object because \fBNHibernate\fP needs virtual members but it is better to do not call a virtual member in the constructor if there are other derived classes which inherits from this setting\&. To avoid this problem we simply call this method after instanciating\&. \fP"
+.ti -1c
+.RI "virtual \fBSettings\fP \fBGetDefaults\fP ()"
+.br
+.RI "\fIGets the settings with default values\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsDefault\fP ()"
+.br
+.RI "\fIDetermines whether this settings has default values\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual string \fBHomePath\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the home path of the user we want use to establish a connection over SSH\&. \fP"
+.ti -1c
+.RI "virtual string \fBNutchPath\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the path where nutch is installed on the clients\&. Must be the same on all clients we want use for crawling\&. \fP"
+.ti -1c
+.RI "virtual string \fBNutchCommand\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the nutch command\&. \fP"
+.ti -1c
+.RI "virtual string \fBNutchClients\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the clients addresses on which we want start nutch for crawling\&. \fP"
+.ti -1c
+.RI "virtual string \fBDefaultURLs\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the default URLs\&. There will be a couple of urls we want crawl by default without defining for evry \fBOrgUnit\fP each time\&. This urls will be set by default if an \fBOrgUnit\fP is created\&. \fP"
+.ti -1c
+.RI "virtual int \fBCrawlDepth\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the crawl depth\&. This value defines how deep we want dive into the jungle of links on a webpage recursively\&. \fP"
+.ti -1c
+.RI "virtual int \fBCrawlTopN\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the crawl top N\&. This value means the amount of links on a webpage we take care about on each level for crawling\&. \fP"
+.ti -1c
+.RI "virtual string \fBSolrServer\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the solr server\&. There we want send our results of the latest crawl\&. \fP"
+.ti -1c
+.RI "virtual string \fBJavaHome\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the java home\&. Simply the directory where java is installed\&. \fP"
+.ti -1c
+.RI "virtual string \fBCertificatePath\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the certificate path\&. The place where the certificate for client authentification on our remote hosts is stored\&. \fP"
+.ti -1c
+.RI "virtual string \fBPrefix\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the prefix\&. The prefix defines a regex pattern which will be used by nutch if it crawls on a webpage\&. Nutch should only crawl urls which fits to this pattern\&. \fP"
+.ti -1c
+.RI "virtual string \fBCrawlRequest\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the crawl request\&. This is only a pattern for building the nutch command to execute on the remote clients\&. \fP"
+.ti -1c
+.RI "virtual string \fBSeedFileName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the name of the seed file\&. The file where the urls are stored for crawling\&. Will be different on each client because we split the work if there are more than one client defined\&. \fP"
+.ti -1c
+.RI "virtual string \fBPrefixFileName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the name of the prefix file\&. The file where the prefixes are stored\&. \fP"
+.ti -1c
+.RI "virtual string \fBBaseUrlPath\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the base URL path\&. The path where nutch finds the urls file\&. \fP"
+.ti -1c
+.RI "virtual string \fBBaseCrawlPath\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the base crawl path\&. This is a subfolder in BaseUrlPath where we store the seed\&.txt for nutch\&. Its the lagacy of our first implementation when we called nutch on the local machine but from different users and may can be removed but maybe not, so we kept this property\&. \fP"
+.ti -1c
+.RI "virtual string \fBPathFormatTwo\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the path format two\&. A patern for formatting a string containing two folders\&. \fP"
+.ti -1c
+.RI "virtual string \fBPathFormatThree\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the path format three\&. /// A patern for formatting a string containing three folders\&. \fP"
+.ti -1c
+.RI "virtual string \fBPathFormatFour\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the path format four\&. /// A patern for formatting a string containing four folders\&. \fP"
+.ti -1c
+.RI "virtual string \fBPrefixFormat\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the prefix format\&. A pattern to format the prefix and the given url into one string\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+There we can store settings for nutch controller client 
+
+
+.PP
+Definition at line 16 of file NutchControllerClientSettings\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBSettings\fP HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.GetDefaults ()\fC [virtual]\fP"
+
+.PP
+Gets the settings with default values\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A new settings object with its default values\&.
+.RE
+.PP
+
+.PP
+Definition at line 314 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual bool HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.IsDefault ()\fC [virtual]\fP"
+
+.PP
+Determines whether this settings has default values\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this settings has default values; otherwise, \fCfalse\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 352 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual void HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.SetDefaults ()\fC [virtual]\fP"
+
+.PP
+Sets the default values of this setting or if we instanciate a new instance of a setting object because \fBNHibernate\fP needs virtual members but it is better to do not call a virtual member in the constructor if there are other derived classes which inherits from this setting\&. To avoid this problem we simply call this method after instanciating\&. 
+.PP
+Definition at line 278 of file NutchControllerClientSettings\&.cs\&.
+.SS "override string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.ToString ()"
+
+.PP
+Returns a System\&.String that represents this instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A System\&.String that represents this instance\&. 
+.RE
+.PP
+
+.PP
+Definition at line 241 of file NutchControllerClientSettings\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.BaseCrawlPath\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the base crawl path\&. This is a subfolder in BaseUrlPath where we store the seed\&.txt for nutch\&. Its the lagacy of our first implementation when we called nutch on the local machine but from different users and may can be removed but maybe not, so we kept this property\&. The base crawl path\&. 
+.PP
+Definition at line 191 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.BaseUrlPath\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the base URL path\&. The path where nutch finds the urls file\&. The base URL path\&. 
+.PP
+Definition at line 177 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.CertificatePath\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the certificate path\&. The place where the certificate for client authentification on our remote hosts is stored\&. The certificate path\&. 
+.PP
+Definition at line 121 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual int HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.CrawlDepth\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the crawl depth\&. This value defines how deep we want dive into the jungle of links on a webpage recursively\&. The crawl depth\&. 
+.PP
+Definition at line 79 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.CrawlRequest\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the crawl request\&. This is only a pattern for building the nutch command to execute on the remote clients\&. The crawl request\&. 
+.PP
+Definition at line 145 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual int HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.CrawlTopN\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the crawl top N\&. This value means the amount of links on a webpage we take care about on each level for crawling\&. The crawl top N\&. 
+.PP
+Definition at line 90 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.DefaultURLs\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the default URLs\&. There will be a couple of urls we want crawl by default without defining for evry \fBOrgUnit\fP each time\&. This urls will be set by default if an \fBOrgUnit\fP is created\&. The default URLs\&. 
+.PP
+Definition at line 68 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.HomePath\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the home path of the user we want use to establish a connection over SSH\&. The home path\&. 
+.PP
+Definition at line 26 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.JavaHome\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the java home\&. Simply the directory where java is installed\&. The java home\&. 
+.PP
+Definition at line 110 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.NutchClients\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the clients addresses on which we want start nutch for crawling\&. The nutch clients\&. 
+.PP
+Definition at line 56 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.NutchCommand\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the nutch command\&. The nutch command\&. 
+.PP
+Definition at line 46 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.NutchPath\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the path where nutch is installed on the clients\&. Must be the same on all clients we want use for crawling\&. The nutch path\&. 
+.PP
+Definition at line 37 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.PathFormatFour\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the path format four\&. /// A patern for formatting a string containing four folders\&. The path format four\&. 
+.PP
+Definition at line 221 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.PathFormatThree\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the path format three\&. /// A patern for formatting a string containing three folders\&. The path format three\&. 
+.PP
+Definition at line 211 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.PathFormatTwo\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the path format two\&. A patern for formatting a string containing two folders\&. The path format two\&. 
+.PP
+Definition at line 201 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.Prefix\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the prefix\&. The prefix defines a regex pattern which will be used by nutch if it crawls on a webpage\&. Nutch should only crawl urls which fits to this pattern\&. The prefix\&. 
+.PP
+Definition at line 133 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.PrefixFileName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the name of the prefix file\&. The file where the prefixes are stored\&. The name of the prefix file\&. 
+.PP
+Definition at line 167 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.PrefixFormat\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the prefix format\&. A pattern to format the prefix and the given url into one string\&. The prefix format\&. 
+.PP
+Definition at line 232 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.SeedFileName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the name of the seed file\&. The file where the urls are stored for crawling\&. Will be different on each client because we split the work if there are more than one client defined\&. The name of the seed file\&. 
+.PP
+Definition at line 157 of file NutchControllerClientSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.NutchControllerClientSettings\&.SolrServer\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the solr server\&. There we want send our results of the latest crawl\&. The solr server\&. 
+.PP
+Definition at line 100 of file NutchControllerClientSettings\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

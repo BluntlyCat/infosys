@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2761_1_1_fixture =
+[
+    [ "WhenMultipleConfigurationUseSameMappingsThenConstraintsHasSameNames", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2761_1_1_fixture.html#a590d555cd95a80a8c81241f91771f06e", null ]
+];

@@ -1,0 +1,64 @@
+.TH "NHibernate.Exceptions.ISQLExceptionConverter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Exceptions.ISQLExceptionConverter \- 
+.PP
+Defines a contract for implementations that know how to convert a System\&.Data\&.Common\&.DbException into \fBNHibernate\fP's \fBADOException\fP hierarchy\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by NHibernate\&.Exceptions\&.SQLExceptionConverterFactory\&.MinimalSQLExceptionConverter, \fBNHibernate\&.Exceptions\&.SQLStateConverter\fP, \fBNHibernate\&.Test\&.ExceptionsTest\&.MSSQLExceptionConverterExample\fP, \fBNHibernate\&.Test\&.ExceptionsTest\&.OracleClientExceptionConverterExample\fP, \fBNHibernate\&.Test\&.ExceptionsTest\&.PostgresExceptionConverterExample\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1553\&.MsSQL\&.SQLUpdateConflictToStaleStateExceptionConverter\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.SqlConverterAndMultiQuery\&.SqlConverter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "Exception \fBConvert\fP (\fBAdoExceptionContextInfo\fP adoExceptionContextInfo)"
+.br
+.RI "\fIConvert the given System\&.Data\&.Common\&.DbException into custom Exception\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines a contract for implementations that know how to convert a System\&.Data\&.Common\&.DbException into \fBNHibernate\fP's \fBADOException\fP hierarchy\&. 
+
+Inspired by Spring's SQLExceptionTranslator\&.
+.PP
+Implementations \fBmust\fP have a constructor which takes a \fBIViolatedConstraintNameExtracter\fP parameter\&. 
+.PP
+Implementations may implement \fBIConfigurable\fP if they need to perform configuration steps prior to first use\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+SQLExceptionConverterFactory
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 19 of file ISQLExceptionConverter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "Exception NHibernate\&.Exceptions\&.ISQLExceptionConverter\&.Convert (\fBAdoExceptionContextInfo\fPadoExceptionContextInfo)"
+
+.PP
+Convert the given System\&.Data\&.Common\&.DbException into custom Exception\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIadoExceptionContextInfo\fP Available information during exception throw\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The resulting Exception to throw\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Exceptions\&.SQLStateConverter\fP, \fBNHibernate\&.Test\&.ExceptionsTest\&.MSSQLExceptionConverterExample\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1553\&.MsSQL\&.SQLUpdateConflictToStaleStateExceptionConverter\fP, \fBNHibernate\&.Test\&.ExceptionsTest\&.OracleClientExceptionConverterExample\fP, \fBNHibernate\&.Test\&.ExceptionsTest\&.PostgresExceptionConverterExample\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.SqlConverterAndMultiQuery\&.SqlConverter\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

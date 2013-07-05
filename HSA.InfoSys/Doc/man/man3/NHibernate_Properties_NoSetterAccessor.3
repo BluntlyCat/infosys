@@ -1,0 +1,118 @@
+.TH "NHibernate.Properties.NoSetterAccessor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Properties.NoSetterAccessor \- 
+.PP
+Access the mapped property through a Property \fCget\fP to get the value and go directly to the Field to set the value\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Properties\&.IPropertyAccessor\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNoSetterAccessor\fP (\fBIFieldNamingStrategy\fP namingStrategy)"
+.br
+.RI "\fIInitializes a new instance of \fBNoSetterAccessor\fP\&. \fP"
+.ti -1c
+.RI "\fBIGetter\fP \fBGetGetter\fP (System\&.Type type, string propertyName)"
+.br
+.RI "\fICreates an \fBBasicPropertyAccessor\&.BasicGetter\fP to \fCget\fP the value from the Property\&. \fP"
+.ti -1c
+.RI "\fBISetter\fP \fBGetSetter\fP (System\&.Type type, string propertyName)"
+.br
+.RI "\fICreate a \fBFieldAccessor\&.FieldSetter\fP to \fCset\fP the value of the mapped Property through a \fCField\fP\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBCanAccessThroughReflectionOptimizer\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Access the mapped property through a Property \fCget\fP to get the value and go directly to the Field to set the value\&. 
+
+This is most useful because Classes can provider a get for the Property that is the \fC<id>\fP but tell \fBNHibernate\fP there is no setter for the Property so the value should be written directly to the field\&. 
+.PP
+Definition at line 15 of file NoSetterAccessor\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Properties\&.NoSetterAccessor\&.NoSetterAccessor (\fBIFieldNamingStrategy\fPnamingStrategy)"
+
+.PP
+Initializes a new instance of \fBNoSetterAccessor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInamingStrategy\fP The \fBIFieldNamingStrategy\fP to use\&.
+.RE
+.PP
+
+.PP
+Definition at line 23 of file NoSetterAccessor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIGetter\fP NHibernate\&.Properties\&.NoSetterAccessor\&.GetGetter (System\&.Typetype, stringpropertyName)"
+
+.PP
+Creates an \fBBasicPropertyAccessor\&.BasicGetter\fP to \fCget\fP the value from the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The System\&.Type to find the Property in\&.
+.br
+\fIpropertyName\fP The name of the mapped Property to get\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBBasicPropertyAccessor\&.BasicGetter\fP to use to get the value of the Property from an instance of the System\&.Type\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBPropertyNotFoundException\fP\fP Thrown when a Property specified by the \fCpropertyName\fP could not be found in the System\&.Type\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.IPropertyAccessor\fP\&.
+.PP
+Definition at line 42 of file NoSetterAccessor\&.cs\&.
+.SS "\fBISetter\fP NHibernate\&.Properties\&.NoSetterAccessor\&.GetSetter (System\&.Typetype, stringpropertyName)"
+
+.PP
+Create a \fBFieldAccessor\&.FieldSetter\fP to \fCset\fP the value of the mapped Property through a \fCField\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The System\&.Type to find the mapped Property in\&.
+.br
+\fIpropertyName\fP The name of the mapped Property to set\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBFieldAccessor\&.FieldSetter\fP to use to set the value of the Property on an instance of the System\&.Type\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBPropertyNotFoundException\fP\fP Thrown when a Field for the Property specified by the \fCpropertyName\fP using the \fBIFieldNamingStrategy\fP could not be found in the System\&.Type\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.IPropertyAccessor\fP\&.
+.PP
+Definition at line 66 of file NoSetterAccessor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,82 @@
+.TH "log4net.Util.LogicalThreadContextProperties" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.LogicalThreadContextProperties \- 
+.PP
+Implementation of Properties collection for the \fBlog4net\&.LogicalThreadContext\fP  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Util\&.ContextPropertiesBase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBRemove\fP (string key)"
+.br
+.RI "\fIRemove a property \fP"
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.RI "\fIClear all the context properties \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override object \fBthis[string key]\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the value of a property \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Implementation of Properties collection for the \fBlog4net\&.LogicalThreadContext\fP 
+
+Class implements a collection of properties that is specific to each thread\&. The class is not synchronized as each thread has its own \fBPropertiesDictionary\fP\&. 
+.PP
+This class stores its properties in a slot on the CallContext named \fC\fBlog4net\&.Util\&.LogicalThreadContextProperties\fP\fP\&. 
+.PP
+The CallContext requires a link time System\&.Security\&.Permissions\&.SecurityPermission for the System\&.Security\&.Permissions\&.SecurityPermissionFlag\&.Infrastructure\&. If the calling code does not have this permission then this context will be disabled\&. It will not store any property values set on it\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 50 of file LogicalThreadContextProperties\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Util\&.LogicalThreadContextProperties\&.Clear ()"
+
+.PP
+Clear all the context properties Clear all the context properties 
+.PP
+Definition at line 137 of file LogicalThreadContextProperties\&.cs\&.
+.SS "void log4net\&.Util\&.LogicalThreadContextProperties\&.Remove (stringkey)"
+
+.PP
+Remove a property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP the key for the entry to remove
+.RE
+.PP
+.PP
+Remove the value for the specified \fIkey\fP  from the context\&. 
+.PP
+Definition at line 120 of file LogicalThreadContextProperties\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override object log4net\&.Util\&.LogicalThreadContextProperties\&.this[string key]\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the value of a property The value for the property with the specified key 
+.PP
+Get or set the property value for the \fIkey\fP  specified\&. 
+.PP
+Definition at line 89 of file LogicalThreadContextProperties\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

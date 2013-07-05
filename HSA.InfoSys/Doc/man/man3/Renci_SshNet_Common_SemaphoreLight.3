@@ -1,0 +1,117 @@
+.TH "Renci.SshNet.Common.SemaphoreLight" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Common.SemaphoreLight \- 
+.PP
+Light implementation of SemaphoreSlim\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSemaphoreLight\fP (int initialCount)"
+.br
+.RI "\fIInitializes a new instance of the \fBSemaphoreLight\fP class, specifying the initial number of requests that can be granted concurrently\&. \fP"
+.ti -1c
+.RI "int \fBRelease\fP ()"
+.br
+.RI "\fIExits the \fBSemaphoreLight\fP once\&. \fP"
+.ti -1c
+.RI "int \fBRelease\fP (int releaseCount)"
+.br
+.RI "\fIExits the \fBSemaphoreLight\fP a specified number of times\&. \fP"
+.ti -1c
+.RI "void \fBWait\fP ()"
+.br
+.RI "\fIBlocks the current thread until it can enter the \fBSemaphoreLight\fP\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBCurrentCount\fP\fC [get]\fP"
+.br
+.RI "\fIGets the current count of the \fBSemaphoreLight\fP\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Light implementation of SemaphoreSlim\&. 
+
+
+.PP
+Definition at line 12 of file SemaphoreLight\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Common\&.SemaphoreLight\&.SemaphoreLight (intinitialCount)"
+
+.PP
+Initializes a new instance of the \fBSemaphoreLight\fP class, specifying the initial number of requests that can be granted concurrently\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinitialCount\fP The initial number of requests for the semaphore that can be granted concurrently\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentOutOfRangeException\fP \fIinitialCount\fP  is a negative number\&.
+.RE
+.PP
+
+.PP
+Definition at line 24 of file SemaphoreLight\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int Renci\&.SshNet\&.Common\&.SemaphoreLight\&.Release ()"
+
+.PP
+Exits the \fBSemaphoreLight\fP once\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The previous count of the \fBSemaphoreLight\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 41 of file SemaphoreLight\&.cs\&.
+.SS "int Renci\&.SshNet\&.Common\&.SemaphoreLight\&.Release (intreleaseCount)"
+
+.PP
+Exits the \fBSemaphoreLight\fP a specified number of times\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreleaseCount\fP The number of times to exit the semaphore\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The previous count of the \fBSemaphoreLight\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 51 of file SemaphoreLight\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.SemaphoreLight\&.Wait ()"
+
+.PP
+Blocks the current thread until it can enter the \fBSemaphoreLight\fP\&. 
+.PP
+Definition at line 68 of file SemaphoreLight\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int Renci\&.SshNet\&.Common\&.SemaphoreLight\&.CurrentCount\fC [get]\fP"
+
+.PP
+Gets the current count of the \fBSemaphoreLight\fP\&. 
+.PP
+Definition at line 35 of file SemaphoreLight\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,283 @@
+.TH "NHibernate.Cache.ReadWriteCache" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cache.ReadWriteCache \- 
+.PP
+Caches data that is sometimes updated while maintaining the semantics of 'read committed' isolation level\&. If the database is set to 'repeatable
+read', this concurrency strategy \fIalmost\fP maintains the semantics\&. Repeatable read isolation is compromised in the case of concurrent writes\&. This is an 'asynchronous' concurrency strategy\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "interface \fBILockable\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBGet\fP (\fBCacheKey\fP key, long txTimestamp)"
+.br
+.RI "\fIDo not return an item whose timestamp is later than the current transaction timestamp\&. (Otherwise we might compromise repeatable read unnecessarily\&.) Do not return an item which is soft-locked\&. Always go straight to the database instead\&. \fP"
+.ti -1c
+.RI "\fBISoftLock\fP \fBLock\fP (\fBCacheKey\fP key, object version)"
+.br
+.RI "\fIStop any other transactions reading or writing this item to/from the cache\&. Send them straight to the database instead\&. (The lock does time out eventually\&.) This implementation tracks concurrent locks by transactions which simultaneously attempt to write to an item\&. \fP"
+.ti -1c
+.RI "bool \fBPut\fP (\fBCacheKey\fP key, object value, long txTimestamp, object version, IComparer versionComparator, bool minimalPut)"
+.br
+.RI "\fIDo not add an item to the cache unless the current transaction timestamp is later than the timestamp at which the item was invalidated\&. (Otherwise, a stale item might be re-added if the database is operating in repeatable read isolation mode\&.) \fP"
+.ti -1c
+.RI "void \fBRelease\fP (\fBCacheKey\fP key, \fBISoftLock\fP clientLock)"
+.br
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.RI "\fIEvict all items from the cache immediately\&. \fP"
+.ti -1c
+.RI "void \fBRemove\fP (\fBCacheKey\fP key)"
+.br
+.RI "\fIEvict an item from the cache immediately (without regard for transaction isolation)\&. \fP"
+.ti -1c
+.RI "void \fBDestroy\fP ()"
+.br
+.RI "\fIClean up all resources\&. \fP"
+.ti -1c
+.RI "bool \fBAfterUpdate\fP (\fBCacheKey\fP key, object value, object version, \fBISoftLock\fP clientLock)"
+.br
+.RI "\fIRe-cache the updated state, if and only if there there are no other concurrent soft locks\&. Release our lock\&. \fP"
+.ti -1c
+.RI "bool \fBAfterInsert\fP (\fBCacheKey\fP key, object value, object version)"
+.br
+.RI "\fICalled after an item has been inserted (after the transaction completes), instead of calling release()\&. \fP"
+.ti -1c
+.RI "void \fBEvict\fP (\fBCacheKey\fP key)"
+.br
+.RI "\fICalled after an item has become stale (before the transaction completes)\&. \fP"
+.ti -1c
+.RI "bool \fBInsert\fP (\fBCacheKey\fP key, object value, object currentVersion)"
+.br
+.RI "\fICalled after an item has been inserted (before the transaction completes), instead of calling \fBEvict()\fP\&. \fP"
+.ti -1c
+.RI "bool \fBUpdate\fP (\fBCacheKey\fP key, object value, object currentVersion, object previousVersion)"
+.br
+.RI "\fICalled after an item has been updated (before the transaction completes), instead of calling \fBEvict()\fP\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBRegionName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the cache region name\&. \fP"
+.ti -1c
+.RI "\fBICache\fP \fBCache\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Caches data that is sometimes updated while maintaining the semantics of 'read committed' isolation level\&. If the database is set to 'repeatable
+read', this concurrency strategy \fIalmost\fP maintains the semantics\&. Repeatable read isolation is compromised in the case of concurrent writes\&. This is an 'asynchronous' concurrency strategy\&. 
+
+If this strategy is used in a cluster, the underlying cache implementation must support distributed hard locks (which are held only momentarily)\&. This strategy also assumes that the underlying cache implementation does not do asynchronous replication and that state has been fully replicated as soon as the lock is released\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBNonstrictReadWriteCache\fP, \fBICacheConcurrencyStrategy\fP
+.PP
+.RE
+.PP
+for a faster algorithm  
+.PP
+Definition at line 23 of file ReadWriteCache\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool NHibernate\&.Cache\&.ReadWriteCache\&.AfterInsert (\fBCacheKey\fPkey, objectvalue, objectversion)"
+
+.PP
+Called after an item has been inserted (after the transaction completes), instead of calling release()\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP 
+.br
+\fIvalue\fP 
+.br
+\fIversion\fP 
+.RE
+.PP
+.PP
+This method is used by 'asynchronous' concurrency strategies\&.
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 361 of file ReadWriteCache\&.cs\&.
+.SS "bool NHibernate\&.Cache\&.ReadWriteCache\&.AfterUpdate (\fBCacheKey\fPkey, objectvalue, objectversion, \fBISoftLock\fPclientLock)"
+
+.PP
+Re-cache the updated state, if and only if there there are no other concurrent soft locks\&. Release our lock\&. 
+.PP
+Definition at line 314 of file ReadWriteCache\&.cs\&.
+.SS "void NHibernate\&.Cache\&.ReadWriteCache\&.Clear ()"
+
+.PP
+Evict all items from the cache immediately\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBCacheException\fP\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 288 of file ReadWriteCache\&.cs\&.
+.SS "void NHibernate\&.Cache\&.ReadWriteCache\&.Destroy ()"
+
+.PP
+Clean up all resources\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBCacheException\fP\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 298 of file ReadWriteCache\&.cs\&.
+.SS "void NHibernate\&.Cache\&.ReadWriteCache\&.Evict (\fBCacheKey\fPkey)"
+
+.PP
+Called after an item has become stale (before the transaction completes)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBCacheException\fP\fP 
+.RE
+.PP
+.PP
+This method is used by 'synchronous' concurrency strategies\&.
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 396 of file ReadWriteCache\&.cs\&.
+.SS "object NHibernate\&.Cache\&.ReadWriteCache\&.Get (\fBCacheKey\fPkey, longtxTimestamp)"
+
+.PP
+Do not return an item whose timestamp is later than the current transaction timestamp\&. (Otherwise we might compromise repeatable read unnecessarily\&.) Do not return an item which is soft-locked\&. Always go straight to the database instead\&. Note that since reading an item from that cache does not actually go to the database, it is possible to see a kind of phantom read due to the underlying row being updated after we have read it from the cache\&. This would not be possible in a lock-based implementation of repeatable read isolation\&. It is also possible to overwrite changes made and committed by another transaction after the current transaction read the item from the cache\&. This problem would be caught by the update-time version-checking, if the data is versioned or timestamped\&. 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 89 of file ReadWriteCache\&.cs\&.
+.SS "bool NHibernate\&.Cache\&.ReadWriteCache\&.Insert (\fBCacheKey\fPkey, objectvalue, objectcurrentVersion)"
+
+.PP
+Called after an item has been inserted (before the transaction completes), instead of calling \fBEvict()\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP 
+.br
+\fIvalue\fP 
+.br
+\fIcurrentVersion\fP 
+.RE
+.PP
+.PP
+This method is used by 'synchronous' concurrency strategies\&.
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 401 of file ReadWriteCache\&.cs\&.
+.SS "\fBISoftLock\fP NHibernate\&.Cache\&.ReadWriteCache\&.Lock (\fBCacheKey\fPkey, objectversion)"
+
+.PP
+Stop any other transactions reading or writing this item to/from the cache\&. Send them straight to the database instead\&. (The lock does time out eventually\&.) This implementation tracks concurrent locks by transactions which simultaneously attempt to write to an item\&. 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 146 of file ReadWriteCache\&.cs\&.
+.SS "bool NHibernate\&.Cache\&.ReadWriteCache\&.Put (\fBCacheKey\fPkey, objectvalue, longtxTimestamp, objectversion, IComparerversionComparator, boolminimalPut)"
+
+.PP
+Do not add an item to the cache unless the current transaction timestamp is later than the timestamp at which the item was invalidated\&. (Otherwise, a stale item might be re-added if the database is operating in repeatable read isolation mode\&.) 
+.PP
+\fBReturns:\fP
+.RS 4
+Whether the item was actually put into the cache
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 181 of file ReadWriteCache\&.cs\&.
+.SS "void NHibernate\&.Cache\&.ReadWriteCache\&.Remove (\fBCacheKey\fPkey)"
+
+.PP
+Evict an item from the cache immediately (without regard for transaction isolation)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBCacheException\fP\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 293 of file ReadWriteCache\&.cs\&.
+.SS "bool NHibernate\&.Cache\&.ReadWriteCache\&.Update (\fBCacheKey\fPkey, objectvalue, objectcurrentVersion, objectpreviousVersion)"
+
+.PP
+Called after an item has been updated (before the transaction completes), instead of calling \fBEvict()\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP 
+.br
+\fIvalue\fP 
+.br
+\fIcurrentVersion\fP 
+.br
+\fIpreviousVersion\fP 
+.RE
+.PP
+.PP
+This method is used by 'synchronous' concurrency strategies\&.
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 406 of file ReadWriteCache\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string NHibernate\&.Cache\&.ReadWriteCache\&.RegionName\fC [get]\fP"
+
+.PP
+Gets the cache region name\&. 
+.PP
+Definition at line 47 of file ReadWriteCache\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

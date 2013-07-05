@@ -1,0 +1,214 @@
+.TH "log4net.Appender.BufferingForwardingAppender" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.BufferingForwardingAppender \- 
+.PP
+Buffers events and then forwards them to attached appenders\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.BufferingAppenderSkeleton\fP, and \fBlog4net\&.Core\&.IAppenderAttachable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBufferingForwardingAppender\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBBufferingForwardingAppender\fP class\&. \fP"
+.ti -1c
+.RI "virtual void \fBAddAppender\fP (\fBIAppender\fP newAppender)"
+.br
+.RI "\fIAdds an \fBIAppender\fP to the list of appenders of this instance\&. \fP"
+.ti -1c
+.RI "virtual \fBIAppender\fP \fBGetAppender\fP (string name)"
+.br
+.RI "\fILooks for the appender with the specified name\&. \fP"
+.ti -1c
+.RI "virtual void \fBRemoveAllAppenders\fP ()"
+.br
+.RI "\fIRemoves all previously added appenders from this appender\&. \fP"
+.ti -1c
+.RI "virtual \fBIAppender\fP \fBRemoveAppender\fP (\fBIAppender\fP appender)"
+.br
+.RI "\fIRemoves the specified appender from the list of appenders\&. \fP"
+.ti -1c
+.RI "virtual \fBIAppender\fP \fBRemoveAppender\fP (string name)"
+.br
+.RI "\fIRemoves the appender with the specified name from the list of appenders\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBOnClose\fP ()"
+.br
+.RI "\fICloses the appender and releases resources\&. \fP"
+.ti -1c
+.RI "override void \fBSendBuffer\fP (\fBLoggingEvent\fP[] events)"
+.br
+.RI "\fISend the events\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBAppenderCollection\fP \fBAppenders\fP\fC [get]\fP"
+.br
+.RI "\fIGets the appenders contained in this appender as an System\&.Collections\&.ICollection\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Buffers events and then forwards them to attached appenders\&. 
+
+The events are buffered in this appender until conditions are met to allow the appender to deliver the events to the attached appenders\&. See \fBBufferingAppenderSkeleton\fP for the conditions that cause the buffer to be sent\&. 
+.PP
+The forwarding appender can be used to specify different thresholds and filters for the same appender at different locations within the hierarchy\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 45 of file BufferingForwardingAppender\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.BufferingForwardingAppender\&.BufferingForwardingAppender ()"
+
+.PP
+Initializes a new instance of the \fBBufferingForwardingAppender\fP class\&. Default constructor\&. 
+.PP
+Definition at line 57 of file BufferingForwardingAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void log4net\&.Appender\&.BufferingForwardingAppender\&.AddAppender (\fBIAppender\fPnewAppender)\fC [virtual]\fP"
+
+.PP
+Adds an \fBIAppender\fP to the list of appenders of this instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewAppender\fP The \fBIAppender\fP to add to this appender\&.
+.RE
+.PP
+.PP
+If the specified \fBIAppender\fP is already in the list of appenders, then it won't be added again\&. 
+.PP
+Implements \fBlog4net\&.Core\&.IAppenderAttachable\fP\&.
+.PP
+Definition at line 129 of file BufferingForwardingAppender\&.cs\&.
+.SS "virtual \fBIAppender\fP log4net\&.Appender\&.BufferingForwardingAppender\&.GetAppender (stringname)\fC [virtual]\fP"
+
+.PP
+Looks for the appender with the specified name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the appender to lookup\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appender with the specified name, or \fCnull\fP\&. 
+.RE
+.PP
+.PP
+Get the named appender attached to this buffering appender\&. 
+.PP
+Implements \fBlog4net\&.Core\&.IAppenderAttachable\fP\&.
+.PP
+Definition at line 186 of file BufferingForwardingAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.BufferingForwardingAppender\&.OnClose ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Closes the appender and releases resources\&. Releases any resources allocated within the appender such as file handles, network connections, etc\&. 
+.PP
+It is a programming error to append to a closed appender\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.BufferingAppenderSkeleton\fP\&.
+.PP
+Definition at line 77 of file BufferingForwardingAppender\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.BufferingForwardingAppender\&.RemoveAllAppenders ()\fC [virtual]\fP"
+
+.PP
+Removes all previously added appenders from this appender\&. This is useful when re-reading configuration information\&. 
+.PP
+Implements \fBlog4net\&.Core\&.IAppenderAttachable\fP\&.
+.PP
+Definition at line 207 of file BufferingForwardingAppender\&.cs\&.
+.SS "virtual \fBIAppender\fP log4net\&.Appender\&.BufferingForwardingAppender\&.RemoveAppender (\fBIAppender\fPappender)\fC [virtual]\fP"
+
+.PP
+Removes the specified appender from the list of appenders\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIappender\fP The appender to remove\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appender removed from the list
+.RE
+.PP
+.PP
+The appender removed is not closed\&. If you are discarding the appender you must call \fBIAppender\&.Close\fP on the appender removed\&. 
+.PP
+Implements \fBlog4net\&.Core\&.IAppenderAttachable\fP\&.
+.PP
+Definition at line 229 of file BufferingForwardingAppender\&.cs\&.
+.SS "virtual \fBIAppender\fP log4net\&.Appender\&.BufferingForwardingAppender\&.RemoveAppender (stringname)\fC [virtual]\fP"
+
+.PP
+Removes the appender with the specified name from the list of appenders\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the appender to remove\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appender removed from the list
+.RE
+.PP
+.PP
+The appender removed is not closed\&. If you are discarding the appender you must call \fBIAppender\&.Close\fP on the appender removed\&. 
+.PP
+Implements \fBlog4net\&.Core\&.IAppenderAttachable\fP\&.
+.PP
+Definition at line 251 of file BufferingForwardingAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.BufferingForwardingAppender\&.SendBuffer (\fBLoggingEvent\fP[]events)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Send the events\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevents\fP The events that need to be send\&.
+.RE
+.PP
+.PP
+Forwards the events to the attached appenders\&. 
+.PP
+Implements \fBlog4net\&.Appender\&.BufferingAppenderSkeleton\fP\&.
+.PP
+Definition at line 105 of file BufferingForwardingAppender\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual \fBAppenderCollection\fP log4net\&.Appender\&.BufferingForwardingAppender\&.Appenders\fC [get]\fP"
+
+.PP
+Gets the appenders contained in this appender as an System\&.Collections\&.ICollection\&. If no appenders can be found, then an EmptyCollection is returned\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A collection of the appenders in this appender\&. 
+.RE
+.PP
+
+.PP
+Definition at line 157 of file BufferingForwardingAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

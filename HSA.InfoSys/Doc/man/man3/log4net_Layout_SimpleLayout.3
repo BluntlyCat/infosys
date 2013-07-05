@@ -1,0 +1,88 @@
+.TH "log4net.Layout.SimpleLayout" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Layout.SimpleLayout \- 
+.PP
+A very simple layout  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Layout\&.LayoutSkeleton\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSimpleLayout\fP ()"
+.br
+.RI "\fIConstructs a \fBSimpleLayout\fP \fP"
+.ti -1c
+.RI "override void \fBActivateOptions\fP ()"
+.br
+.RI "\fIInitialize layout options \fP"
+.ti -1c
+.RI "override void \fBFormat\fP (TextWriter writer, \fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIProduces a simple formatted output\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A very simple layout 
+
+\fBSimpleLayout\fP consists of the level of the log statement, followed by ' - ' and then the log message itself\&. For example, 
+.PP
+.nf
+DEBUG - Hello world
+
+.fi
+.PP
+ 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 43 of file SimpleLayout\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Layout\&.SimpleLayout\&.SimpleLayout ()"
+
+.PP
+Constructs a \fBSimpleLayout\fP 
+.PP
+Definition at line 50 of file SimpleLayout\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Layout\&.SimpleLayout\&.ActivateOptions ()\fC [virtual]\fP"
+
+.PP
+Initialize layout options This is part of the IOptionHandler delayed object activation scheme\&. The \fBActivateOptions\fP method must be called on this object after the configuration properties have been set\&. Until \fBActivateOptions\fP is called this object is in an undefined state and must not be used\&. 
+.PP
+If any of the configuration properties are modified then \fBActivateOptions\fP must be called again\&. 
+.PP
+Implements \fBlog4net\&.Layout\&.LayoutSkeleton\fP\&.
+.PP
+Definition at line 75 of file SimpleLayout\&.cs\&.
+.SS "override void log4net\&.Layout\&.SimpleLayout\&.Format (TextWriterwriter, \fBLoggingEvent\fPloggingEvent)\fC [virtual]\fP"
+
+.PP
+Produces a simple formatted output\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP the event being logged
+.br
+\fIwriter\fP The TextWriter to write the formatted event to
+.RE
+.PP
+.PP
+Formats the event as the level of the even, followed by ' - ' and then the log message itself\&. The output is terminated by a newline\&. 
+.PP
+Implements \fBlog4net\&.Layout\&.LayoutSkeleton\fP\&.
+.PP
+Definition at line 96 of file SimpleLayout\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

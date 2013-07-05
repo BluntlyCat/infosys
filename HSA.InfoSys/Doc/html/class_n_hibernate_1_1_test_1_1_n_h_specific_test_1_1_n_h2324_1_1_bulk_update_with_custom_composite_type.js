@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2324_1_1_bulk_update_with_custom_composite_type =
+[
+    [ "Scenario", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2324_1_1_bulk_update_with_custom_composite_type_1_1_scenario.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2324_1_1_bulk_update_with_custom_composite_type_1_1_scenario" ],
+    [ "ShouldAllowBulkupdateWithCompositeUserType", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2324_1_1_bulk_update_with_custom_composite_type.html#a0e204220772d5249db4953a814b8fd8e", null ]
+];

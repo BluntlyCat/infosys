@@ -1,0 +1,134 @@
+.TH "NHibernate.Cache.CachedItem" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cache.CachedItem \- 
+.PP
+An item of cached data, timestamped with the time it was cached, when it was locked, when it was unlocked  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Cache\&.ReadWriteCache\&.ILockable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCachedItem\fP (object value, long currentTimestamp, object version)"
+.br
+.ti -1c
+.RI "\fBCacheLock\fP \fBLock\fP (long timeout, int id)"
+.br
+.RI "\fILock the item \fP"
+.ti -1c
+.RI "bool \fBIsGettable\fP (long txTimestamp)"
+.br
+.RI "\fIIs this item visible to the timestamped transaction? \fP"
+.ti -1c
+.RI "bool \fBIsPuttable\fP (long txTimestamp, object newVersion, IComparer comparator)"
+.br
+.RI "\fIDon't overwrite already cached items \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "long \fBFreshTimestamp\fP\fC [get]\fP"
+.br
+.RI "\fIThe timestamp on the cached data \fP"
+.ti -1c
+.RI "object \fBValue\fP\fC [get]\fP"
+.br
+.RI "\fIThe actual cached data \fP"
+.ti -1c
+.RI "bool \fBIsLock\fP\fC [get]\fP"
+.br
+.RI "\fINot a lock! \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An item of cached data, timestamped with the time it was cached, when it was locked, when it was unlocked 
+
+
+.PP
+Definition at line 11 of file CachedItem\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool NHibernate\&.Cache\&.CachedItem\&.IsGettable (longtxTimestamp)"
+
+.PP
+Is this item visible to the timestamped transaction? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItxTimestamp\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cache\&.ReadWriteCache\&.ILockable\fP\&.
+.PP
+Definition at line 61 of file CachedItem\&.cs\&.
+.SS "bool NHibernate\&.Cache\&.CachedItem\&.IsPuttable (longtxTimestamp, objectnewVersion, IComparercomparator)"
+
+.PP
+Don't overwrite already cached items 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItxTimestamp\fP 
+.br
+\fInewVersion\fP 
+.br
+\fIcomparator\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cache\&.ReadWriteCache\&.ILockable\fP\&.
+.PP
+Definition at line 73 of file CachedItem\&.cs\&.
+.SS "\fBCacheLock\fP NHibernate\&.Cache\&.CachedItem\&.Lock (longtimeout, intid)"
+
+.PP
+Lock the item 
+.PP
+Implements \fBNHibernate\&.Cache\&.ReadWriteCache\&.ILockable\fP\&.
+.PP
+Definition at line 43 of file CachedItem\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "long NHibernate\&.Cache\&.CachedItem\&.FreshTimestamp\fC [get]\fP"
+
+.PP
+The timestamp on the cached data 
+.PP
+Definition at line 28 of file CachedItem\&.cs\&.
+.SS "bool NHibernate\&.Cache\&.CachedItem\&.IsLock\fC [get]\fP"
+
+.PP
+Not a lock! 
+.PP
+Definition at line 52 of file CachedItem\&.cs\&.
+.SS "object NHibernate\&.Cache\&.CachedItem\&.Value\fC [get]\fP"
+
+.PP
+The actual cached data 
+.PP
+Definition at line 36 of file CachedItem\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

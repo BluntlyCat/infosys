@@ -1,0 +1,449 @@
+.TH "log4net.Repository.LoggerRepositorySkeleton" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Repository.LoggerRepositorySkeleton \- 
+.PP
+Base implementation of \fBILoggerRepository\fP  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Repository\&.ILoggerRepository\fP\&.
+.PP
+Inherited by \fBlog4net\&.Repository\&.Hierarchy\&.Hierarchy\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract \fBILogger\fP \fBExists\fP (string name)"
+.br
+.RI "\fITest if logger exists \fP"
+.ti -1c
+.RI "abstract \fBILogger\fP[] \fBGetCurrentLoggers\fP ()"
+.br
+.RI "\fIReturns all the currently defined loggers in the repository \fP"
+.ti -1c
+.RI "abstract \fBILogger\fP \fBGetLogger\fP (string name)"
+.br
+.RI "\fIReturn a new logger instance \fP"
+.ti -1c
+.RI "virtual void \fBShutdown\fP ()"
+.br
+.RI "\fIShutdown the repository \fP"
+.ti -1c
+.RI "virtual void \fBResetConfiguration\fP ()"
+.br
+.RI "\fIReset the repositories configuration to a default state \fP"
+.ti -1c
+.RI "abstract void \fBLog\fP (\fBLoggingEvent\fP logEvent)"
+.br
+.RI "\fILog the logEvent through this repository\&. \fP"
+.ti -1c
+.RI "abstract 
+.br
+\fBlog4net\&.Appender\&.IAppender\fP[] \fBGetAppenders\fP ()"
+.br
+.RI "\fIReturns all the Appenders that are configured as an Array\&. \fP"
+.ti -1c
+.RI "virtual void \fBAddRenderer\fP (Type typeToRender, \fBIObjectRenderer\fP rendererInstance)"
+.br
+.RI "\fIAdds an object renderer for a specific class\&. \fP"
+.ti -1c
+.RI "void \fBRaiseConfigurationChanged\fP (EventArgs e)"
+.br
+.RI "\fIRaise a configuration changed event on this repository \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLoggerRepositorySkeleton\fP ()"
+.br
+.RI "\fIDefault Constructor \fP"
+.ti -1c
+.RI "\fBLoggerRepositorySkeleton\fP (\fBPropertiesDictionary\fP properties)"
+.br
+.RI "\fIConstruct the repository using specific properties \fP"
+.ti -1c
+.RI "virtual void \fBOnShutdown\fP (EventArgs e)"
+.br
+.RI "\fINotify the registered listeners that the repository is shutting down \fP"
+.ti -1c
+.RI "virtual void \fBOnConfigurationReset\fP (EventArgs e)"
+.br
+.RI "\fINotify the registered listeners that the repository has had its configuration reset \fP"
+.ti -1c
+.RI "virtual void \fBOnConfigurationChanged\fP (EventArgs e)"
+.br
+.RI "\fINotify the registered listeners that the repository has had its configuration changed \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual string \fBName\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe name of the repository \fP"
+.ti -1c
+.RI "virtual \fBLevel\fP \fBThreshold\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe threshold for all events in this repository \fP"
+.ti -1c
+.RI "virtual \fBRendererMap\fP \fBRendererMap\fP\fC [get]\fP"
+.br
+.RI "\fIRendererMap accesses the object renderer map for this repository\&. \fP"
+.ti -1c
+.RI "virtual \fBPluginMap\fP \fBPluginMap\fP\fC [get]\fP"
+.br
+.RI "\fIThe plugin map for this repository\&. \fP"
+.ti -1c
+.RI "virtual \fBLevelMap\fP \fBLevelMap\fP\fC [get]\fP"
+.br
+.RI "\fIGet the level map for the \fBRepository\fP\&. \fP"
+.ti -1c
+.RI "virtual bool \fBConfigured\fP\fC [get, set]\fP"
+.br
+.RI "\fIFlag indicates if this repository has been configured\&. \fP"
+.ti -1c
+.RI "virtual ICollection \fBConfigurationMessages\fP\fC [get, set]\fP"
+.br
+.RI "\fIContains a list of internal messages captures during the last configuration\&. \fP"
+.ti -1c
+.RI "\fBLoggerRepositoryShutdownEventHandler\fP \fBShutdownEvent\fP"
+.br
+.RI "\fIEvent to notify that the repository has been shutdown\&. \fP"
+.ti -1c
+.RI "\fBLoggerRepositoryConfigurationResetEventHandler\fP \fBConfigurationReset\fP"
+.br
+.RI "\fIEvent to notify that the repository has had its configuration reset\&. \fP"
+.ti -1c
+.RI "\fBLoggerRepositoryConfigurationChangedEventHandler\fP \fBConfigurationChanged\fP"
+.br
+.RI "\fIEvent to notify that the repository has had its configuration changed\&. \fP"
+.ti -1c
+.RI "\fBPropertiesDictionary\fP \fBProperties\fP\fC [get]\fP"
+.br
+.RI "\fI\fBRepository\fP specific properties \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Base implementation of \fBILoggerRepository\fP 
+
+Default abstract implementation of the \fBILoggerRepository\fP interface\&. 
+.PP
+Skeleton implementation of the \fBILoggerRepository\fP interface\&. All \fBILoggerRepository\fP types can extend this type\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 43 of file LoggerRepositorySkeleton\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Repository\&.LoggerRepositorySkeleton\&.LoggerRepositorySkeleton ()\fC [protected]\fP"
+
+.PP
+Default Constructor Initializes the repository with default (empty) properties\&. 
+.PP
+Definition at line 71 of file LoggerRepositorySkeleton\&.cs\&.
+.SS "log4net\&.Repository\&.LoggerRepositorySkeleton\&.LoggerRepositorySkeleton (\fBPropertiesDictionary\fPproperties)\fC [protected]\fP"
+
+.PP
+Construct the repository using specific properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproperties\fP the properties to set for this repository
+.RE
+.PP
+.PP
+Initializes the repository with specified properties\&. 
+.PP
+Definition at line 84 of file LoggerRepositorySkeleton\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void log4net\&.Repository\&.LoggerRepositorySkeleton\&.AddRenderer (TypetypeToRender, \fBIObjectRenderer\fPrendererInstance)\fC [virtual]\fP"
+
+.PP
+Adds an object renderer for a specific class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItypeToRender\fP The type that will be rendered by the renderer supplied\&.
+.br
+\fIrendererInstance\fP The object renderer used to render the object\&.
+.RE
+.PP
+.PP
+Adds an object renderer for a specific class\&. 
+.PP
+Definition at line 479 of file LoggerRepositorySkeleton\&.cs\&.
+.SS "abstract \fBILogger\fP log4net\&.Repository\&.LoggerRepositorySkeleton\&.Exists (stringname)\fC [pure virtual]\fP"
+
+.PP
+Test if logger exists 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the logger to lookup
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The Logger object with the name specified
+.RE
+.PP
+.PP
+Check if the named logger exists in the repository\&. If so return its reference, otherwise returns \fCnull\fP\&. 
+.PP
+Implements \fBlog4net\&.Repository\&.ILoggerRepository\fP\&.
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Hierarchy\fP\&.
+.SS "abstract \fBlog4net\&.Appender\&.IAppender\fP [] log4net\&.Repository\&.LoggerRepositorySkeleton\&.GetAppenders ()\fC [pure virtual]\fP"
+
+.PP
+Returns all the Appenders that are configured as an Array\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+All the Appenders
+.RE
+.PP
+.PP
+Returns all the Appenders that are configured as an Array\&. 
+.PP
+Implements \fBlog4net\&.Repository\&.ILoggerRepository\fP\&.
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Hierarchy\fP\&.
+.SS "abstract \fBILogger\fP [] log4net\&.Repository\&.LoggerRepositorySkeleton\&.GetCurrentLoggers ()\fC [pure virtual]\fP"
+
+.PP
+Returns all the currently defined loggers in the repository 
+.PP
+\fBReturns:\fP
+.RS 4
+All the defined loggers
+.RE
+.PP
+.PP
+Returns all the currently defined loggers in the repository as an Array\&. 
+.PP
+Implements \fBlog4net\&.Repository\&.ILoggerRepository\fP\&.
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Hierarchy\fP\&.
+.SS "abstract \fBILogger\fP log4net\&.Repository\&.LoggerRepositorySkeleton\&.GetLogger (stringname)\fC [pure virtual]\fP"
+
+.PP
+Return a new logger instance 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the logger to retrieve
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The logger object with the name specified
+.RE
+.PP
+.PP
+Return a new logger instance\&. 
+.PP
+If a logger of that name already exists, then it will be returned\&. Otherwise, a new logger will be instantiated and then linked with its existing ancestors as well as children\&. 
+.PP
+Implements \fBlog4net\&.Repository\&.ILoggerRepository\fP\&.
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Hierarchy\fP\&.
+.SS "abstract void log4net\&.Repository\&.LoggerRepositorySkeleton\&.Log (\fBLoggingEvent\fPlogEvent)\fC [pure virtual]\fP"
+
+.PP
+Log the logEvent through this repository\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlogEvent\fP the event to log
+.RE
+.PP
+.PP
+This method should not normally be used to log\&. The \fBILog\fP interface should be used for routine logging\&. This interface can be obtained using the \fBlog4net\&.LogManager\&.GetLogger(string)\fP method\&. 
+.PP
+The \fClogEvent\fP is delivered to the appropriate logger and that logger is then responsible for logging the event\&. 
+.PP
+Implements \fBlog4net\&.Repository\&.ILoggerRepository\fP\&.
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Hierarchy\fP\&.
+.SS "virtual void log4net\&.Repository\&.LoggerRepositorySkeleton\&.OnConfigurationChanged (EventArgse)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Notify the registered listeners that the repository has had its configuration changed 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIe\fP Empty EventArgs
+.RE
+.PP
+.PP
+Notify any listeners that this repository's configuration has changed\&. 
+.PP
+Definition at line 548 of file LoggerRepositorySkeleton\&.cs\&.
+.SS "virtual void log4net\&.Repository\&.LoggerRepositorySkeleton\&.OnConfigurationReset (EventArgse)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Notify the registered listeners that the repository has had its configuration reset 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIe\fP Empty EventArgs
+.RE
+.PP
+.PP
+Notify any listeners that this repository's configuration has been reset\&. 
+.PP
+Definition at line 525 of file LoggerRepositorySkeleton\&.cs\&.
+.SS "virtual void log4net\&.Repository\&.LoggerRepositorySkeleton\&.OnShutdown (EventArgse)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Notify the registered listeners that the repository is shutting down 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIe\fP Empty EventArgs
+.RE
+.PP
+.PP
+Notify any listeners that this repository is shutting down\&. 
+.PP
+Definition at line 502 of file LoggerRepositorySkeleton\&.cs\&.
+.SS "void log4net\&.Repository\&.LoggerRepositorySkeleton\&.RaiseConfigurationChanged (EventArgse)"
+
+.PP
+Raise a configuration changed event on this repository 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIe\fP EventArgs\&.Empty
+.RE
+.PP
+.PP
+Applications that programmatically change the configuration of the repository should raise this event notification to notify listeners\&. 
+.PP
+Definition at line 572 of file LoggerRepositorySkeleton\&.cs\&.
+.SS "virtual void log4net\&.Repository\&.LoggerRepositorySkeleton\&.ResetConfiguration ()\fC [virtual]\fP"
+
+.PP
+Reset the repositories configuration to a default state Reset all values contained in this instance to their default state\&. 
+.PP
+Existing loggers are not removed\&. They are just reset\&. 
+.PP
+This method should be used sparingly and with care as it will block all logging until it is completed\&. 
+.PP
+Implements \fBlog4net\&.Repository\&.ILoggerRepository\fP\&.
+.PP
+Reimplemented in \fBlog4net\&.Repository\&.Hierarchy\&.Hierarchy\fP\&.
+.PP
+Definition at line 285 of file LoggerRepositorySkeleton\&.cs\&.
+.SS "virtual void log4net\&.Repository\&.LoggerRepositorySkeleton\&.Shutdown ()\fC [virtual]\fP"
+
+.PP
+Shutdown the repository Shutdown the repository\&. Can be overridden in a subclass\&. This base class implementation notifies the \fBShutdownEvent\fP listeners and all attached plugins of the shutdown event\&. 
+.PP
+Implements \fBlog4net\&.Repository\&.ILoggerRepository\fP\&.
+.PP
+Reimplemented in \fBlog4net\&.Repository\&.Hierarchy\&.Hierarchy\fP\&.
+.PP
+Definition at line 257 of file LoggerRepositorySkeleton\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBLoggerRepositoryConfigurationChangedEventHandler\fP log4net\&.Repository\&.LoggerRepositorySkeleton\&.ConfigurationChanged\fC [add]\fP, \fC [remove]\fP"
+
+.PP
+Event to notify that the repository has had its configuration changed\&. Event to notify that the repository has had its configuration changed\&. 
+.PP
+Event raised when the repository's configuration has been changed\&. 
+.PP
+Definition at line 393 of file LoggerRepositorySkeleton\&.cs\&.
+.SS "virtual ICollection log4net\&.Repository\&.LoggerRepositorySkeleton\&.ConfigurationMessages\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Contains a list of internal messages captures during the last configuration\&. 
+.PP
+Definition at line 341 of file LoggerRepositorySkeleton\&.cs\&.
+.SS "\fBLoggerRepositoryConfigurationResetEventHandler\fP log4net\&.Repository\&.LoggerRepositorySkeleton\&.ConfigurationReset\fC [add]\fP, \fC [remove]\fP"
+
+.PP
+Event to notify that the repository has had its configuration reset\&. Event to notify that the repository has had its configuration reset\&. 
+.PP
+Event raised when the repository's configuration has been reset to default\&. 
+.PP
+Definition at line 376 of file LoggerRepositorySkeleton\&.cs\&.
+.SS "virtual bool log4net\&.Repository\&.LoggerRepositorySkeleton\&.Configured\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Flag indicates if this repository has been configured\&. Flag indicates if this repository has been configured\&. 
+.PP
+Flag indicates if this repository has been configured\&. 
+.PP
+Definition at line 331 of file LoggerRepositorySkeleton\&.cs\&.
+.SS "virtual \fBLevelMap\fP log4net\&.Repository\&.LoggerRepositorySkeleton\&.LevelMap\fC [get]\fP"
+
+.PP
+Get the level map for the \fBRepository\fP\&. Get the level map for the \fBRepository\fP\&. 
+.PP
+The level map defines the mappings between level names and Level objects in this repository\&. 
+.PP
+Definition at line 202 of file LoggerRepositorySkeleton\&.cs\&.
+.SS "virtual string log4net\&.Repository\&.LoggerRepositorySkeleton\&.Name\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The name of the repository The string name of the repository 
+.PP
+The name of this repository\&. The name is used to store and lookup the repositories stored by the IRepositorySelector\&. 
+.PP
+Definition at line 117 of file LoggerRepositorySkeleton\&.cs\&.
+.SS "virtual \fBPluginMap\fP log4net\&.Repository\&.LoggerRepositorySkeleton\&.PluginMap\fC [get]\fP"
+
+.PP
+The plugin map for this repository\&. The plugin map for this repository\&. 
+.PP
+The plugin map holds the IPlugin instances that have been attached to this repository\&. 
+.PP
+Definition at line 184 of file LoggerRepositorySkeleton\&.cs\&.
+.SS "\fBPropertiesDictionary\fP log4net\&.Repository\&.LoggerRepositorySkeleton\&.Properties\fC [get]\fP"
+
+.PP
+\fBRepository\fP specific properties \fBRepository\fP specific properties 
+.PP
+These properties can be specified on a repository specific basis 
+.PP
+Definition at line 408 of file LoggerRepositorySkeleton\&.cs\&.
+.SS "virtual \fBRendererMap\fP log4net\&.Repository\&.LoggerRepositorySkeleton\&.RendererMap\fC [get]\fP"
+
+.PP
+RendererMap accesses the object renderer map for this repository\&. RendererMap accesses the object renderer map for this repository\&. 
+.PP
+RendererMap accesses the object renderer map for this repository\&. 
+.PP
+The RendererMap holds a mapping between types and IObjectRenderer objects\&. 
+.PP
+Definition at line 167 of file LoggerRepositorySkeleton\&.cs\&.
+.SS "\fBLoggerRepositoryShutdownEventHandler\fP log4net\&.Repository\&.LoggerRepositorySkeleton\&.ShutdownEvent\fC [add]\fP, \fC [remove]\fP"
+
+.PP
+Event to notify that the repository has been shutdown\&. Event to notify that the repository has been shutdown\&. 
+.PP
+Event raised when the repository has been shutdown\&. 
+.PP
+Definition at line 358 of file LoggerRepositorySkeleton\&.cs\&.
+.SS "virtual \fBLevel\fP log4net\&.Repository\&.LoggerRepositorySkeleton\&.Threshold\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The threshold for all events in this repository The threshold for all events in this repository 
+.PP
+The threshold for all events in this repository 
+.PP
+Definition at line 134 of file LoggerRepositorySkeleton\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

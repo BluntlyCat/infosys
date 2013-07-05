@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3145_1_1_fixture =
+[
+    [ "QueryWithLazyBaseClassShouldNotThrowNoPersisterForError", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3145_1_1_fixture.html#ae3ec7f3f10fdf9cca14f4400287770e2", null ]
+];

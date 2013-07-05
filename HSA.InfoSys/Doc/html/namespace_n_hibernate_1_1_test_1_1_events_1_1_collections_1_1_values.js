@@ -1,0 +1,5 @@
+var namespace_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_values =
+[
+    [ "ParentWithCollectionOfValues", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_values_1_1_parent_with_collection_of_values.html", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_values_1_1_parent_with_collection_of_values" ],
+    [ "ValuesBagCollectionEventFixture", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_values_1_1_values_bag_collection_event_fixture.html", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_values_1_1_values_bag_collection_event_fixture" ]
+];

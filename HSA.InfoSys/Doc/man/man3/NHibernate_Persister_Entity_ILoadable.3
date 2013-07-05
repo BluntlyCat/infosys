@@ -1,0 +1,151 @@
+.TH "NHibernate.Persister.Entity.ILoadable" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Persister.Entity.ILoadable \- 
+.PP
+Implemented by \fCClassPersister\fP that uses \fC\fBLoader\fP\fP\&. There are several optional operations used only by loaders that inherit \fCOuterJoinLoader\fP  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP, \fBNHibernate\&.Persister\&.Entity\&.IQueryable\fP, and \fBNHibernate\&.Persister\&.Entity\&.ISqlLoadable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBGetSubclassForDiscriminatorValue\fP (object value)"
+.br
+.RI "\fIGet the concrete subclass corresponding to the given discriminator value \fP"
+.ti -1c
+.RI "string[] \fBGetIdentifierAliases\fP (string suffix)"
+.br
+.RI "\fIGet the result set aliases used for the identifier columns, given a suffix \fP"
+.ti -1c
+.RI "string[] \fBGetPropertyAliases\fP (string suffix, int i)"
+.br
+.RI "\fIGet the result set aliases used for the property columns, given a suffix (properties of this class, only)\&. \fP"
+.ti -1c
+.RI "string[] \fBGetPropertyColumnNames\fP (int i)"
+.br
+.RI "\fIGet the result set column names mapped for this property (properties of this class, only)\&. \fP"
+.ti -1c
+.RI "string \fBGetDiscriminatorAlias\fP (string suffix)"
+.br
+.RI "\fIGet the alias used for the discriminator column, given a suffix \fP"
+.ti -1c
+.RI "object[] \fBHydrate\fP (IDataReader rs, object id, object obj, \fBILoadable\fP rootLoadable, string[][] suffixedPropertyColumns, bool allProperties, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIRetrieve property values from one row of a result set \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIType\fP \fBDiscriminatorType\fP\fC [get]\fP"
+.br
+.RI "\fIThe discriminator type \fP"
+.ti -1c
+.RI "string[] \fBIdentifierColumnNames\fP\fC [get]\fP"
+.br
+.RI "\fIGet the names of columns used to persist the identifier \fP"
+.ti -1c
+.RI "string \fBDiscriminatorColumnName\fP\fC [get]\fP"
+.br
+.RI "\fIGet the name of the column used as a discriminator \fP"
+.ti -1c
+.RI "bool \fBIsAbstract\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasSubclasses\fP\fC [get]\fP"
+.br
+.RI "\fIDoes the persistent class have subclasses? \fP"
+.ti -1c
+.RI "bool \fBHasRowId\fP\fC [get]\fP"
+.br
+.RI "\fIDoes the result set contain rowids?\fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Implemented by \fCClassPersister\fP that uses \fC\fBLoader\fP\fP\&. There are several optional operations used only by loaders that inherit \fCOuterJoinLoader\fP 
+
+
+.PP
+Definition at line 16 of file ILoadable\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string NHibernate\&.Persister\&.Entity\&.ILoadable\&.GetDiscriminatorAlias (stringsuffix)"
+
+.PP
+Get the alias used for the discriminator column, given a suffix 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.ILoadable\&.GetIdentifierAliases (stringsuffix)"
+
+.PP
+Get the result set aliases used for the identifier columns, given a suffix 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.ILoadable\&.GetPropertyAliases (stringsuffix, inti)"
+
+.PP
+Get the result set aliases used for the property columns, given a suffix (properties of this class, only)\&. 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.ILoadable\&.GetPropertyColumnNames (inti)"
+
+.PP
+Get the result set column names mapped for this property (properties of this class, only)\&. 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.ILoadable\&.GetSubclassForDiscriminatorValue (objectvalue)"
+
+.PP
+Get the concrete subclass corresponding to the given discriminator value 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, \fBNHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\fP, \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\fP\&.
+.SS "object [] NHibernate\&.Persister\&.Entity\&.ILoadable\&.Hydrate (IDataReaderrs, objectid, objectobj, \fBILoadable\fProotLoadable, stringsuffixedPropertyColumns[][], boolallProperties, \fBISessionImplementor\fPsession)"
+
+.PP
+Retrieve property values from one row of a result set 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "string NHibernate\&.Persister\&.Entity\&.ILoadable\&.DiscriminatorColumnName\fC [get]\fP"
+
+.PP
+Get the name of the column used as a discriminator 
+.PP
+Definition at line 31 of file ILoadable\&.cs\&.
+.SS "\fBIType\fP NHibernate\&.Persister\&.Entity\&.ILoadable\&.DiscriminatorType\fC [get]\fP"
+
+.PP
+The discriminator type 
+.PP
+Definition at line 21 of file ILoadable\&.cs\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.ILoadable\&.HasRowId\fC [get]\fP"
+
+.PP
+Does the result set contain rowids?
+.PP
+Definition at line 66 of file ILoadable\&.cs\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.ILoadable\&.HasSubclasses\fC [get]\fP"
+
+.PP
+Does the persistent class have subclasses? 
+.PP
+Definition at line 38 of file ILoadable\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.ILoadable\&.IdentifierColumnNames\fC [get]\fP"
+
+.PP
+Get the names of columns used to persist the identifier 
+.PP
+Definition at line 26 of file ILoadable\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2297_1_1_fixture =
+[
+    [ "InvalidCustomCompositeUserTypeThrowsMeaningfulException", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2297_1_1_fixture.html#ac816baa2a591a1b1b2f153184fe8e87a", null ]
+];

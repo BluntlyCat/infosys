@@ -1,0 +1,1168 @@
+.TH "log4net.Core.LogImpl" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Core.LogImpl \- 
+.PP
+Implementation of \fBILog\fP wrapper interface\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Core\&.LoggerWrapperImpl\fP, and \fBlog4net\&.ILog\fP\&.
+.PP
+Inherited by \fBlog4net\&.Ext\&.EventID\&.EventIDLogImpl\fP, and \fBlog4net\&.Ext\&.Trace\&.TraceLogImpl\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLogImpl\fP (\fBILogger\fP logger)"
+.br
+.RI "\fIConstruct a new wrapper for the specified logger\&. \fP"
+.ti -1c
+.RI "virtual void \fBDebug\fP (object message)"
+.br
+.RI "\fILogs a message object with the \fCDEBUG\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBDebug\fP (object message, \fBException\fP exception)"
+.br
+.RI "\fILogs a message object with the \fCDEBUG\fP level \fP"
+.ti -1c
+.RI "virtual void \fBDebugFormat\fP (string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the \fCDEBUG\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBDebugFormat\fP (string format, object arg0)"
+.br
+.RI "\fILogs a formatted message string with the \fCDEBUG\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBDebugFormat\fP (string format, object arg0, object arg1)"
+.br
+.RI "\fILogs a formatted message string with the \fCDEBUG\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBDebugFormat\fP (string format, object arg0, object arg1, object arg2)"
+.br
+.RI "\fILogs a formatted message string with the \fCDEBUG\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBDebugFormat\fP (IFormatProvider provider, string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the \fCDEBUG\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBInfo\fP (object message)"
+.br
+.RI "\fILogs a message object with the \fCINFO\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBInfo\fP (object message, \fBException\fP exception)"
+.br
+.RI "\fILogs a message object with the \fCINFO\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBInfoFormat\fP (string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the \fCINFO\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBInfoFormat\fP (string format, object arg0)"
+.br
+.RI "\fILogs a formatted message string with the \fCINFO\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBInfoFormat\fP (string format, object arg0, object arg1)"
+.br
+.RI "\fILogs a formatted message string with the \fCINFO\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBInfoFormat\fP (string format, object arg0, object arg1, object arg2)"
+.br
+.RI "\fILogs a formatted message string with the \fCINFO\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBInfoFormat\fP (IFormatProvider provider, string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the \fCINFO\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBWarn\fP (object message)"
+.br
+.RI "\fILogs a message object with the \fCWARN\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBWarn\fP (object message, \fBException\fP exception)"
+.br
+.RI "\fILogs a message object with the \fCWARN\fP level \fP"
+.ti -1c
+.RI "virtual void \fBWarnFormat\fP (string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the \fCWARN\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBWarnFormat\fP (string format, object arg0)"
+.br
+.RI "\fILogs a formatted message string with the \fCWARN\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBWarnFormat\fP (string format, object arg0, object arg1)"
+.br
+.RI "\fILogs a formatted message string with the \fCWARN\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBWarnFormat\fP (string format, object arg0, object arg1, object arg2)"
+.br
+.RI "\fILogs a formatted message string with the \fCWARN\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBWarnFormat\fP (IFormatProvider provider, string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the \fCWARN\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBError\fP (object message)"
+.br
+.RI "\fILogs a message object with the \fCERROR\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBError\fP (object message, \fBException\fP exception)"
+.br
+.RI "\fILogs a message object with the \fCERROR\fP level \fP"
+.ti -1c
+.RI "virtual void \fBErrorFormat\fP (string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the \fCERROR\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBErrorFormat\fP (string format, object arg0)"
+.br
+.RI "\fILogs a formatted message string with the \fCERROR\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBErrorFormat\fP (string format, object arg0, object arg1)"
+.br
+.RI "\fILogs a formatted message string with the \fCERROR\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBErrorFormat\fP (string format, object arg0, object arg1, object arg2)"
+.br
+.RI "\fILogs a formatted message string with the \fCERROR\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBErrorFormat\fP (IFormatProvider provider, string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the \fCERROR\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBFatal\fP (object message)"
+.br
+.RI "\fILogs a message object with the \fCFATAL\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBFatal\fP (object message, \fBException\fP exception)"
+.br
+.RI "\fILogs a message object with the \fCFATAL\fP level \fP"
+.ti -1c
+.RI "virtual void \fBFatalFormat\fP (string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the \fCFATAL\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBFatalFormat\fP (string format, object arg0)"
+.br
+.RI "\fILogs a formatted message string with the \fCFATAL\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBFatalFormat\fP (string format, object arg0, object arg1)"
+.br
+.RI "\fILogs a formatted message string with the \fCFATAL\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBFatalFormat\fP (string format, object arg0, object arg1, object arg2)"
+.br
+.RI "\fILogs a formatted message string with the \fCFATAL\fP level\&. \fP"
+.ti -1c
+.RI "virtual void \fBFatalFormat\fP (IFormatProvider provider, string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the \fCFATAL\fP level\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBReloadLevels\fP (\fBILoggerRepository\fP repository)"
+.br
+.RI "\fIVirtual method called when the configuration of the repository changes \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBIsDebugEnabled\fP\fC [get]\fP"
+.br
+.RI "\fIChecks if this logger is enabled for the \fCDEBUG\fP level\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsInfoEnabled\fP\fC [get]\fP"
+.br
+.RI "\fIChecks if this logger is enabled for the \fCINFO\fP level\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsWarnEnabled\fP\fC [get]\fP"
+.br
+.RI "\fIChecks if this logger is enabled for the \fCWARN\fP level\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsErrorEnabled\fP\fC [get]\fP"
+.br
+.RI "\fIChecks if this logger is enabled for the \fCERROR\fP level\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsFatalEnabled\fP\fC [get]\fP"
+.br
+.RI "\fIChecks if this logger is enabled for the \fCFATAL\fP level\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Implementation of \fBILog\fP wrapper interface\&. 
+
+This implementation of the \fBILog\fP interface forwards to the \fBILogger\fP held by the base class\&. 
+.PP
+This logger has methods to allow the caller to log at the following levels: 
+.PP
+.PD 0
+.IP "\(bu" 2
+DEBUG  The \fBDebug(object)\fP and DebugFormat(string, object[]) methods log messages at the \fCDEBUG\fP level\&. That is the level with that name defined in the repositories ILoggerRepository\&.LevelMap\&. The default value for this level is \fBLevel\&.Debug\fP\&. The \fBIsDebugEnabled\fP property tests if this level is enabled for logging\&.   
+.IP "\(bu" 2
+INFO  The \fBInfo(object)\fP and InfoFormat(string, object[]) methods log messages at the \fCINFO\fP level\&. That is the level with that name defined in the repositories ILoggerRepository\&.LevelMap\&. The default value for this level is \fBLevel\&.Info\fP\&. The \fBIsInfoEnabled\fP property tests if this level is enabled for logging\&.   
+.IP "\(bu" 2
+WARN  The \fBWarn(object)\fP and WarnFormat(string, object[]) methods log messages at the \fCWARN\fP level\&. That is the level with that name defined in the repositories ILoggerRepository\&.LevelMap\&. The default value for this level is \fBLevel\&.Warn\fP\&. The \fBIsWarnEnabled\fP property tests if this level is enabled for logging\&.   
+.IP "\(bu" 2
+ERROR  The \fBError(object)\fP and ErrorFormat(string, object[]) methods log messages at the \fCERROR\fP level\&. That is the level with that name defined in the repositories ILoggerRepository\&.LevelMap\&. The default value for this level is \fBLevel\&.Error\fP\&. The \fBIsErrorEnabled\fP property tests if this level is enabled for logging\&.   
+.IP "\(bu" 2
+FATAL  The \fBFatal(object)\fP and FatalFormat(string, object[]) methods log messages at the \fCFATAL\fP level\&. That is the level with that name defined in the repositories ILoggerRepository\&.LevelMap\&. The default value for this level is \fBLevel\&.Fatal\fP\&. The \fBIsFatalEnabled\fP property tests if this level is enabled for logging\&.   
+.PP
+.PP
+The values for these levels and their semantic meanings can be changed by configuring the ILoggerRepository\&.LevelMap for the repository\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 99 of file LogImpl\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Core\&.LogImpl\&.LogImpl (\fBILogger\fPlogger)"
+
+.PP
+Construct a new wrapper for the specified logger\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlogger\fP The logger to wrap\&.
+.RE
+.PP
+.PP
+Construct a new wrapper for the specified logger\&. 
+.PP
+Definition at line 112 of file LogImpl\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void log4net\&.Core\&.LogImpl\&.Debug (objectmessage)\fC [virtual]\fP"
+
+.PP
+Logs a message object with the \fCDEBUG\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.RE
+.PP
+.PP
+This method first checks if this logger is \fCDEBUG\fP enabled by comparing the level of this logger with the \fCDEBUG\fP level\&. If this logger is \fCDEBUG\fP enabled, then it converts the message object (passed as parameter) to a string by invoking the appropriate \fBlog4net\&.ObjectRenderer\&.IObjectRenderer\fP\&. It then proceeds to call all the registered appenders in this logger and also higher in the hierarchy depending on the value of the additivity flag\&. 
+.PP
+\fBWARNING\fP Note that passing an \fBException\fP to this method will print the name of the \fBException\fP but no stack trace\&. To print a stack trace use the \fBDebug(object,Exception)\fP form instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 168 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.Debug (objectmessage, \fBException\fPexception)\fC [virtual]\fP"
+
+.PP
+Logs a message object with the \fCDEBUG\fP level 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.br
+\fIexception\fP The exception to log, including its stack trace\&.
+.RE
+.PP
+.PP
+Logs a message object with the \fCDEBUG\fP level including the stack trace of the \fBException\fP \fIexception\fP  passed as a parameter\&. 
+.PP
+See the \fBDebug(object)\fP form for more detailed information\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBDebug(object)\fP
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 189 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.DebugFormat (stringformat, params object[]args)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCDEBUG\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the DebugFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBDebug(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 216 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.DebugFormat (stringformat, objectarg0)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCDEBUG\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the DebugFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBDebug(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 246 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.DebugFormat (stringformat, objectarg0, objectarg1)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCDEBUG\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the DebugFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBDebug(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 277 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.DebugFormat (stringformat, objectarg0, objectarg1, objectarg2)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCDEBUG\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.br
+\fIarg2\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the DebugFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBDebug(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 309 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.DebugFormat (IFormatProviderprovider, stringformat, params object[]args)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCDEBUG\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprovider\fP An IFormatProvider that supplies culture-specific formatting information
+.br
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBDebug(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 335 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.Error (objectmessage)\fC [virtual]\fP"
+
+.PP
+Logs a message object with the \fCERROR\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.RE
+.PP
+.PP
+This method first checks if this logger is \fCERROR\fP enabled by comparing the level of this logger with the \fCERROR\fP level\&. If this logger is \fCERROR\fP enabled, then it converts the message object (passed as parameter) to a string by invoking the appropriate \fBlog4net\&.ObjectRenderer\&.IObjectRenderer\fP\&. It then proceeds to call all the registered appenders in this logger and also higher in the hierarchy depending on the value of the additivity flag\&. 
+.PP
+\fBWARNING\fP Note that passing an \fBException\fP to this method will print the name of the \fBException\fP but no stack trace\&. To print a stack trace use the \fBError(object,Exception)\fP form instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 762 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.Error (objectmessage, \fBException\fPexception)\fC [virtual]\fP"
+
+.PP
+Logs a message object with the \fCERROR\fP level 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.br
+\fIexception\fP The exception to log, including its stack trace\&.
+.RE
+.PP
+.PP
+Logs a message object with the \fCERROR\fP level including the stack trace of the \fBException\fP \fIexception\fP  passed as a parameter\&. 
+.PP
+See the \fBError(object)\fP form for more detailed information\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBError(object)\fP
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 783 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.ErrorFormat (stringformat, params object[]args)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCERROR\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the ErrorFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBError(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 810 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.ErrorFormat (stringformat, objectarg0)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCERROR\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the ErrorFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBError(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 840 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.ErrorFormat (stringformat, objectarg0, objectarg1)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCERROR\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the ErrorFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBError(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 871 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.ErrorFormat (stringformat, objectarg0, objectarg1, objectarg2)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCERROR\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.br
+\fIarg2\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the ErrorFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBError(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 903 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.ErrorFormat (IFormatProviderprovider, stringformat, params object[]args)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCERROR\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprovider\fP An IFormatProvider that supplies culture-specific formatting information
+.br
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBError(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 929 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.Fatal (objectmessage)\fC [virtual]\fP"
+
+.PP
+Logs a message object with the \fCFATAL\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.RE
+.PP
+.PP
+This method first checks if this logger is \fCFATAL\fP enabled by comparing the level of this logger with the \fCFATAL\fP level\&. If this logger is \fCFATAL\fP enabled, then it converts the message object (passed as parameter) to a string by invoking the appropriate \fBlog4net\&.ObjectRenderer\&.IObjectRenderer\fP\&. It then proceeds to call all the registered appenders in this logger and also higher in the hierarchy depending on the value of the additivity flag\&. 
+.PP
+\fBWARNING\fP Note that passing an \fBException\fP to this method will print the name of the \fBException\fP but no stack trace\&. To print a stack trace use the \fBFatal(object,Exception)\fP form instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 960 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.Fatal (objectmessage, \fBException\fPexception)\fC [virtual]\fP"
+
+.PP
+Logs a message object with the \fCFATAL\fP level 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.br
+\fIexception\fP The exception to log, including its stack trace\&.
+.RE
+.PP
+.PP
+Logs a message object with the \fCFATAL\fP level including the stack trace of the \fBException\fP \fIexception\fP  passed as a parameter\&. 
+.PP
+See the \fBFatal(object)\fP form for more detailed information\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBFatal(object)\fP
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 981 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.FatalFormat (stringformat, params object[]args)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCFATAL\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the FatalFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBFatal(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 1008 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.FatalFormat (stringformat, objectarg0)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCFATAL\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the FatalFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBFatal(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 1038 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.FatalFormat (stringformat, objectarg0, objectarg1)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCFATAL\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the FatalFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBFatal(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 1069 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.FatalFormat (stringformat, objectarg0, objectarg1, objectarg2)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCFATAL\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.br
+\fIarg2\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the FatalFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBFatal(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 1101 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.FatalFormat (IFormatProviderprovider, stringformat, params object[]args)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCFATAL\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprovider\fP An IFormatProvider that supplies culture-specific formatting information
+.br
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBFatal(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 1127 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.Info (objectmessage)\fC [virtual]\fP"
+
+.PP
+Logs a message object with the \fCINFO\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.RE
+.PP
+.PP
+This method first checks if this logger is \fCINFO\fP enabled by comparing the level of this logger with the \fCINFO\fP level\&. If this logger is \fCINFO\fP enabled, then it converts the message object (passed as parameter) to a string by invoking the appropriate \fBlog4net\&.ObjectRenderer\&.IObjectRenderer\fP\&. It then proceeds to call all the registered appenders in this logger and also higher in the hierarchy depending on the value of the additivity flag\&. 
+.PP
+\fBWARNING\fP Note that passing an \fBException\fP to this method will print the name of the \fBException\fP but no stack trace\&. To print a stack trace use the \fBInfo(object,Exception)\fP form instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 366 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.Info (objectmessage, \fBException\fPexception)\fC [virtual]\fP"
+
+.PP
+Logs a message object with the \fCINFO\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.br
+\fIexception\fP The exception to log, including its stack trace\&.
+.RE
+.PP
+.PP
+Logs a message object with the \fCINFO\fP level including the stack trace of the \fBException\fP \fIexception\fP  passed as a parameter\&. 
+.PP
+See the \fBInfo(object)\fP form for more detailed information\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBInfo(object)\fP
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 387 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.InfoFormat (stringformat, params object[]args)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCINFO\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the InfoFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBInfo(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 414 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.InfoFormat (stringformat, objectarg0)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCINFO\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the InfoFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBInfo(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 444 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.InfoFormat (stringformat, objectarg0, objectarg1)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCINFO\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the InfoFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBInfo(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 475 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.InfoFormat (stringformat, objectarg0, objectarg1, objectarg2)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCINFO\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.br
+\fIarg2\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the InfoFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBInfo(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 507 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.InfoFormat (IFormatProviderprovider, stringformat, params object[]args)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCINFO\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprovider\fP An IFormatProvider that supplies culture-specific formatting information
+.br
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBInfo(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 533 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.ReloadLevels (\fBILoggerRepository\fPrepository)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Virtual method called when the configuration of the repository changes 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP the repository holding the levels
+.RE
+.PP
+.PP
+Virtual method called when the configuration of the repository changes 
+.PP
+Reimplemented in \fBlog4net\&.Ext\&.Trace\&.TraceLogImpl\fP\&.
+.PP
+Definition at line 132 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.Warn (objectmessage)\fC [virtual]\fP"
+
+.PP
+Logs a message object with the \fCWARN\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP the message object to log
+.RE
+.PP
+.PP
+This method first checks if this logger is \fCWARN\fP enabled by comparing the level of this logger with the \fCWARN\fP level\&. If this logger is \fCWARN\fP enabled, then it converts the message object (passed as parameter) to a string by invoking the appropriate \fBlog4net\&.ObjectRenderer\&.IObjectRenderer\fP\&. It then proceeds to call all the registered appenders in this logger and also higher in the hierarchy depending on the value of the additivity flag\&. 
+.PP
+\fBWARNING\fP Note that passing an \fBException\fP to this method will print the name of the \fBException\fP but no stack trace\&. To print a stack trace use the \fBWarn(object,Exception)\fP form instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 564 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.Warn (objectmessage, \fBException\fPexception)\fC [virtual]\fP"
+
+.PP
+Logs a message object with the \fCWARN\fP level 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.br
+\fIexception\fP The exception to log, including its stack trace\&.
+.RE
+.PP
+.PP
+Logs a message object with the \fCWARN\fP level including the stack trace of the \fBException\fP \fIexception\fP  passed as a parameter\&. 
+.PP
+See the \fBWarn(object)\fP form for more detailed information\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBWarn(object)\fP
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 585 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.WarnFormat (stringformat, params object[]args)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCWARN\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the WarnFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBWarn(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 612 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.WarnFormat (stringformat, objectarg0)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCWARN\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the WarnFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBWarn(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 642 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.WarnFormat (stringformat, objectarg0, objectarg1)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCWARN\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the WarnFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBWarn(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 673 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.WarnFormat (stringformat, objectarg0, objectarg1, objectarg2)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCWARN\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.br
+\fIarg2\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+The string is formatted using the CultureInfo\&.InvariantCulture format provider\&. To specify a localized provider use the WarnFormat(IFormatProvider,string,object[]) method\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBWarn(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 705 of file LogImpl\&.cs\&.
+.SS "virtual void log4net\&.Core\&.LogImpl\&.WarnFormat (IFormatProviderprovider, stringformat, params object[]args)\fC [virtual]\fP"
+
+.PP
+Logs a formatted message string with the \fCWARN\fP level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprovider\fP An IFormatProvider that supplies culture-specific formatting information
+.br
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the String\&.Format(IFormatProvider, string, object[]) method\&. See \fCString\&.Format\fP for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an \fBException\fP object to include in the log event\&. To pass an \fBException\fP use one of the \fBWarn(object)\fP methods instead\&. 
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 731 of file LogImpl\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual bool log4net\&.Core\&.LogImpl\&.IsDebugEnabled\fC [get]\fP"
+
+.PP
+Checks if this logger is enabled for the \fCDEBUG\fP level\&. \fCtrue\fP if this logger is enabled for \fCDEBUG\fP events, \fCfalse\fP otherwise\&. 
+.PP
+This function is intended to lessen the computational cost of disabled log debug statements\&. 
+.PP
+For some \fClog\fP Logger object, when you write: 
+.PP
+.PP
+.nf
+log\&.Debug("This is entry number: " + i );
+.fi
+.PP
+ 
+.PP
+You incur the cost constructing the message, concatenation in this case, regardless of whether the message is logged or not\&. 
+.PP
+If you are worried about speed, then you should write: 
+.PP
+.PP
+.nf
+if (log\&.IsDebugEnabled())
+{ 
+ log\&.Debug("This is entry number: " + i );
+}
+.fi
+.PP
+ 
+.PP
+This way you will not incur the cost of parameter construction if debugging is disabled for \fClog\fP\&. On the other hand, if the \fClog\fP is debug enabled, you will incur the cost of evaluating whether the logger is debug enabled twice\&. Once in \fCIsDebugEnabled\fP and once in the \fCDebug\fP\&. This is an insignificant overhead since evaluating a logger takes about 1% of the time it takes to actually log\&. 
+.PP
+Definition at line 1179 of file LogImpl\&.cs\&.
+.SS "virtual bool log4net\&.Core\&.LogImpl\&.IsErrorEnabled\fC [get]\fP"
+
+.PP
+Checks if this logger is enabled for the \fCERROR\fP level\&. \fCtrue\fP if this logger is enabled for \fCERROR\fP events, \fCfalse\fP otherwise\&. 
+.PP
+See \fBIsDebugEnabled\fP for more information and examples of using this method\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBILog\&.IsDebugEnabled\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1235 of file LogImpl\&.cs\&.
+.SS "virtual bool log4net\&.Core\&.LogImpl\&.IsFatalEnabled\fC [get]\fP"
+
+.PP
+Checks if this logger is enabled for the \fCFATAL\fP level\&. \fCtrue\fP if this logger is enabled for \fCFATAL\fP events, \fCfalse\fP otherwise\&. 
+.PP
+See \fBIsDebugEnabled\fP for more information and examples of using this method\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBILog\&.IsDebugEnabled\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1253 of file LogImpl\&.cs\&.
+.SS "virtual bool log4net\&.Core\&.LogImpl\&.IsInfoEnabled\fC [get]\fP"
+
+.PP
+Checks if this logger is enabled for the \fCINFO\fP level\&. \fCtrue\fP if this logger is enabled for \fCINFO\fP events, \fCfalse\fP otherwise\&. 
+.PP
+See \fBIsDebugEnabled\fP for more information and examples of using this method\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBLogImpl\&.IsDebugEnabled\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1198 of file LogImpl\&.cs\&.
+.SS "virtual bool log4net\&.Core\&.LogImpl\&.IsWarnEnabled\fC [get]\fP"
+
+.PP
+Checks if this logger is enabled for the \fCWARN\fP level\&. \fCtrue\fP if this logger is enabled for \fCWARN\fP events, \fCfalse\fP otherwise\&. 
+.PP
+See \fBIsDebugEnabled\fP for more information and examples of using this method\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBILog\&.IsDebugEnabled\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1217 of file LogImpl\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

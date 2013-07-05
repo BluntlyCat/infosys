@@ -1,0 +1,9 @@
+var namespace_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1710 =
+[
+    [ "A", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1710_1_1_a.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1710_1_1_a" ],
+    [ "BaseFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1710_1_1_base_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1710_1_1_base_fixture" ],
+    [ "FixtureWithExplicitDefinedType", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1710_1_1_fixture_with_explicit_defined_type.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1710_1_1_fixture_with_explicit_defined_type" ],
+    [ "FixtureWithHeuristicDefinedType", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1710_1_1_fixture_with_heuristic_defined_type.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1710_1_1_fixture_with_heuristic_defined_type" ],
+    [ "FixtureWithInLineDefinedType", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1710_1_1_fixture_with_in_line_defined_type.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1710_1_1_fixture_with_in_line_defined_type" ],
+    [ "FixtureWithColumnNode", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1710_1_1_fixture_with_column_node.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1710_1_1_fixture_with_column_node" ]
+];

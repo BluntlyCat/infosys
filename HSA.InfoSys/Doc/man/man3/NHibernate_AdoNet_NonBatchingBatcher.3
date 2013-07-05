@@ -1,0 +1,111 @@
+.TH "NHibernate.AdoNet.NonBatchingBatcher" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.AdoNet.NonBatchingBatcher \- 
+.PP
+An implementation of the IBatcher interface that does no batching\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Test\&.Linq\&.QueryTimeoutTests\&.TimeoutCatchingNonBatchingBatcher\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNonBatchingBatcher\fP (\fBConnectionManager\fP connectionManager, \fBIInterceptor\fP interceptor)"
+.br
+.RI "\fIInitializes a new instance of the \fBNonBatchingBatcher\fP class\&. \fP"
+.ti -1c
+.RI "override void \fBAddToBatch\fP (\fBIExpectation\fP expectation)"
+.br
+.RI "\fIExecutes the current IDbCommand and compares the row Count to the \fCexpectedRowCount\fP\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBDoExecuteBatch\fP (IDbCommand ps)"
+.br
+.RI "\fIThis Batcher implementation does not support batching so this is a no-op call\&. The actual execution of the IDbCommand is run in the \fCAddToBatch\fP method\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override int \fBCountOfStatementsInCurrentBatch\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int \fBBatchSize\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An implementation of the IBatcher interface that does no batching\&. 
+
+
+.PP
+Definition at line 12 of file NonBatchingBatcher\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.AdoNet\&.NonBatchingBatcher\&.NonBatchingBatcher (\fBConnectionManager\fPconnectionManager, \fBIInterceptor\fPinterceptor)"
+
+.PP
+Initializes a new instance of the \fBNonBatchingBatcher\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnectionManager\fP The \fBConnectionManager\fP for this batcher\&.
+.br
+\fIinterceptor\fP 
+.RE
+.PP
+
+.PP
+Definition at line 19 of file NonBatchingBatcher\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.AdoNet\&.NonBatchingBatcher\&.AddToBatch (\fBIExpectation\fPexpectation)\fC [virtual]\fP"
+
+.PP
+Executes the current IDbCommand and compares the row Count to the \fCexpectedRowCount\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpectation\fP The expected number of rows affected by the query\&. A value of less than \fC0\fP indicates that the number of rows to expect is unknown or should not be a factor\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP Thrown when there is an expected number of rows to be affected and the actual number of rows is different\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP\&.
+.PP
+Definition at line 36 of file NonBatchingBatcher\&.cs\&.
+.SS "override void NHibernate\&.AdoNet\&.NonBatchingBatcher\&.DoExecuteBatch (IDbCommandps)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+This Batcher implementation does not support batching so this is a no-op call\&. The actual execution of the IDbCommand is run in the \fCAddToBatch\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIps\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP\&.
+.PP
+Definition at line 50 of file NonBatchingBatcher\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

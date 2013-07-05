@@ -1,0 +1,73 @@
+.TH "log4net.Util.NullSecurityContext" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.NullSecurityContext \- 
+.PP
+A SecurityContext used when a SecurityContext is not required  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Core\&.SecurityContext\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override IDisposable \fBImpersonate\fP (object state)"
+.br
+.RI "\fIImpersonate this SecurityContext \fP"
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly \fBNullSecurityContext\fP \fBInstance\fP = new \fBNullSecurityContext\fP()"
+.br
+.RI "\fISingleton instance of \fBNullSecurityContext\fP \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A SecurityContext used when a SecurityContext is not required 
+
+The \fBNullSecurityContext\fP is a no-op implementation of the SecurityContext base class\&. It is used where a SecurityContext is required but one has not been provided\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 37 of file NullSecurityContext\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override IDisposable log4net\&.Util\&.NullSecurityContext\&.Impersonate (objectstate)\fC [virtual]\fP"
+
+.PP
+Impersonate this SecurityContext 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstate\fP State supplied by the caller
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCnull\fP
+.RE
+.PP
+.PP
+No impersonation is done and \fCnull\fP is always returned\&. 
+.PP
+Implements \fBlog4net\&.Core\&.SecurityContext\fP\&.
+.PP
+Definition at line 71 of file NullSecurityContext\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly \fBNullSecurityContext\fP log4net\&.Util\&.NullSecurityContext\&.Instance = new \fBNullSecurityContext\fP()\fC [static]\fP"
+
+.PP
+Singleton instance of \fBNullSecurityContext\fP Singleton instance of \fBNullSecurityContext\fP 
+.PP
+Definition at line 47 of file NullSecurityContext\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

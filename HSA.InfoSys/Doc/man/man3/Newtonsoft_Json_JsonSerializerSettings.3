@@ -1,0 +1,314 @@
+.TH "Newtonsoft.Json.JsonSerializerSettings" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.JsonSerializerSettings \- 
+.PP
+Specifies the settings on a \fBJsonSerializer\fP object\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJsonSerializerSettings\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBJsonSerializerSettings\fP class\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBReferenceLoopHandling\fP \fBReferenceLoopHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets how reference loops (e\&.g\&. a class referencing itself) is handled\&. \fP"
+.ti -1c
+.RI "\fBMissingMemberHandling\fP \fBMissingMemberHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets how missing members (e\&.g\&. JSON contains a property that isn't a member on the object) are handled during deserialization\&. \fP"
+.ti -1c
+.RI "\fBObjectCreationHandling\fP \fBObjectCreationHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets how objects are created during deserialization\&. \fP"
+.ti -1c
+.RI "\fBNullValueHandling\fP \fBNullValueHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets how null values are handled during serialization and deserialization\&. \fP"
+.ti -1c
+.RI "\fBDefaultValueHandling\fP \fBDefaultValueHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets how null default are handled during serialization and deserialization\&. \fP"
+.ti -1c
+.RI "IList< \fBJsonConverter\fP > \fBConverters\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a collection \fBJsonConverter\fP that will be used during serialization\&. \fP"
+.ti -1c
+.RI "\fBPreserveReferencesHandling\fP \fBPreserveReferencesHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets how object references are preserved by the serializer\&. \fP"
+.ti -1c
+.RI "\fBTypeNameHandling\fP \fBTypeNameHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets how type name writing and reading is handled by the serializer\&. \fP"
+.ti -1c
+.RI "FormatterAssemblyStyle \fBTypeNameAssemblyFormat\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets how a type name assembly is written and resolved by the serializer\&. \fP"
+.ti -1c
+.RI "\fBConstructorHandling\fP \fBConstructorHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets how constructors are used during deserialization\&. \fP"
+.ti -1c
+.RI "\fBIContractResolver\fP \fBContractResolver\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the contract resolver used by the serializer when serializing \&.NET objects to JSON and vice versa\&. \fP"
+.ti -1c
+.RI "\fBIReferenceResolver\fP \fBReferenceResolver\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the IReferenceResolver used by the serializer when resolving references\&. \fP"
+.ti -1c
+.RI "\fBITraceWriter\fP \fBTraceWriter\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the ITraceWriter used by the serializer when writing trace messages\&. \fP"
+.ti -1c
+.RI "SerializationBinder \fBBinder\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the SerializationBinder used by the serializer when resolving type names\&. \fP"
+.ti -1c
+.RI "EventHandler< \fBErrorEventArgs\fP > \fBError\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the error handler called during serialization and deserialization\&. \fP"
+.ti -1c
+.RI "StreamingContext \fBContext\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the StreamingContext used by the serializer when invoking serialization callback methods\&. \fP"
+.ti -1c
+.RI "string \fBDateFormatString\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how \fBDateTime\fP and \fBDateTimeOffset\fP values are formatting when writing JSON text\&. \fP"
+.ti -1c
+.RI "int \fBMaxDepth\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the maximum depth allowed when reading JSON\&. Reading past this depth will throw a \fBJsonReaderException\fP\&. \fP"
+.ti -1c
+.RI "\fBFormatting\fP \fBFormatting\fP\fC [get, set]\fP"
+.br
+.RI "\fIIndicates how JSON text output is formatted\&. \fP"
+.ti -1c
+.RI "\fBDateFormatHandling\fP \fBDateFormatHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how dates are written to JSON text\&. \fP"
+.ti -1c
+.RI "\fBDateTimeZoneHandling\fP \fBDateTimeZoneHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how \fBDateTime\fP time zones are handling during serialization and deserialization\&. \fP"
+.ti -1c
+.RI "\fBDateParseHandling\fP \fBDateParseHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how date formatted strings, e\&.g\&. '\\/Date(1198908717056)\\/' and '2012-03-21T05:40Z', are parsed when reading JSON\&. \fP"
+.ti -1c
+.RI "\fBFloatFormatHandling\fP \fBFloatFormatHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how special floating point numbers, e\&.g\&. F:System\&.Double\&.NaN, F:System\&.Double\&.PositiveInfinity and F:System\&.Double\&.NegativeInfinity, are written as JSON\&. \fP"
+.ti -1c
+.RI "\fBFloatParseHandling\fP \fBFloatParseHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how floating point numbers, e\&.g\&. 1\&.0 and 9\&.9, are parsed when reading JSON text\&. \fP"
+.ti -1c
+.RI "\fBStringEscapeHandling\fP \fBStringEscapeHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how strings are escaped when writing JSON text\&. \fP"
+.ti -1c
+.RI "CultureInfo \fBCulture\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the culture used when reading JSON\&. Defaults to CultureInfo\&.InvariantCulture\&. \fP"
+.ti -1c
+.RI "bool \fBCheckAdditionalContent\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets a value indicating whether there will be a check for additional content after deserializing an object\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Specifies the settings on a \fBJsonSerializer\fP object\&. 
+
+
+.PP
+Definition at line 38 of file JsonSerializerSettings\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Newtonsoft\&.Json\&.JsonSerializerSettings\&.JsonSerializerSettings ()"
+
+.PP
+Initializes a new instance of the \fBJsonSerializerSettings\fP class\&. 
+.PP
+Definition at line 348 of file JsonSerializerSettings\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "SerializationBinder Newtonsoft\&.Json\&.JsonSerializerSettings\&.Binder\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the SerializationBinder used by the serializer when resolving type names\&. The binder\&.
+.PP
+Definition at line 206 of file JsonSerializerSettings\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.JsonSerializerSettings\&.CheckAdditionalContent\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets a value indicating whether there will be a check for additional content after deserializing an object\&. \fCtrue\fP if there will be a check for additional content after deserializing an object; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 334 of file JsonSerializerSettings\&.cs\&.
+.SS "\fBConstructorHandling\fP Newtonsoft\&.Json\&.JsonSerializerSettings\&.ConstructorHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets how constructors are used during deserialization\&. The constructor handling\&.
+.PP
+Definition at line 178 of file JsonSerializerSettings\&.cs\&.
+.SS "StreamingContext Newtonsoft\&.Json\&.JsonSerializerSettings\&.Context\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the StreamingContext used by the serializer when invoking serialization callback methods\&. The context\&.
+.PP
+Definition at line 219 of file JsonSerializerSettings\&.cs\&.
+.SS "\fBIContractResolver\fP Newtonsoft\&.Json\&.JsonSerializerSettings\&.ContractResolver\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the contract resolver used by the serializer when serializing \&.NET objects to JSON and vice versa\&. The contract resolver\&.
+.PP
+Definition at line 188 of file JsonSerializerSettings\&.cs\&.
+.SS "IList<\fBJsonConverter\fP> Newtonsoft\&.Json\&.JsonSerializerSettings\&.Converters\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a collection \fBJsonConverter\fP that will be used during serialization\&. The converters\&.
+.PP
+Definition at line 141 of file JsonSerializerSettings\&.cs\&.
+.SS "CultureInfo Newtonsoft\&.Json\&.JsonSerializerSettings\&.Culture\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the culture used when reading JSON\&. Defaults to CultureInfo\&.InvariantCulture\&. 
+.PP
+Definition at line 322 of file JsonSerializerSettings\&.cs\&.
+.SS "\fBDateFormatHandling\fP Newtonsoft\&.Json\&.JsonSerializerSettings\&.DateFormatHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how dates are written to JSON text\&. 
+.PP
+Definition at line 266 of file JsonSerializerSettings\&.cs\&.
+.SS "string Newtonsoft\&.Json\&.JsonSerializerSettings\&.DateFormatString\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how \fBDateTime\fP and \fBDateTimeOffset\fP values are formatting when writing JSON text\&. 
+.PP
+Definition at line 228 of file JsonSerializerSettings\&.cs\&.
+.SS "\fBDateParseHandling\fP Newtonsoft\&.Json\&.JsonSerializerSettings\&.DateParseHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how date formatted strings, e\&.g\&. '\\/Date(1198908717056)\\/' and '2012-03-21T05:40Z', are parsed when reading JSON\&. 
+.PP
+Definition at line 284 of file JsonSerializerSettings\&.cs\&.
+.SS "\fBDateTimeZoneHandling\fP Newtonsoft\&.Json\&.JsonSerializerSettings\&.DateTimeZoneHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how \fBDateTime\fP time zones are handling during serialization and deserialization\&. 
+.PP
+Definition at line 275 of file JsonSerializerSettings\&.cs\&.
+.SS "\fBDefaultValueHandling\fP Newtonsoft\&.Json\&.JsonSerializerSettings\&.DefaultValueHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets how null default are handled during serialization and deserialization\&. The default value handling\&.
+.PP
+Definition at line 132 of file JsonSerializerSettings\&.cs\&.
+.SS "EventHandler<\fBErrorEventArgs\fP> Newtonsoft\&.Json\&.JsonSerializerSettings\&.Error\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the error handler called during serialization and deserialization\&. The error handler called during serialization and deserialization\&.
+.PP
+Definition at line 212 of file JsonSerializerSettings\&.cs\&.
+.SS "\fBFloatFormatHandling\fP Newtonsoft\&.Json\&.JsonSerializerSettings\&.FloatFormatHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how special floating point numbers, e\&.g\&. F:System\&.Double\&.NaN, F:System\&.Double\&.PositiveInfinity and F:System\&.Double\&.NegativeInfinity, are written as JSON\&. 
+.PP
+Definition at line 295 of file JsonSerializerSettings\&.cs\&.
+.SS "\fBFloatParseHandling\fP Newtonsoft\&.Json\&.JsonSerializerSettings\&.FloatParseHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how floating point numbers, e\&.g\&. 1\&.0 and 9\&.9, are parsed when reading JSON text\&. 
+.PP
+Definition at line 304 of file JsonSerializerSettings\&.cs\&.
+.SS "\fBFormatting\fP Newtonsoft\&.Json\&.JsonSerializerSettings\&.Formatting\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Indicates how JSON text output is formatted\&. 
+.PP
+Definition at line 257 of file JsonSerializerSettings\&.cs\&.
+.SS "int Newtonsoft\&.Json\&.JsonSerializerSettings\&.MaxDepth\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the maximum depth allowed when reading JSON\&. Reading past this depth will throw a \fBJsonReaderException\fP\&. 
+.PP
+Definition at line 241 of file JsonSerializerSettings\&.cs\&.
+.SS "\fBMissingMemberHandling\fP Newtonsoft\&.Json\&.JsonSerializerSettings\&.MissingMemberHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets how missing members (e\&.g\&. JSON contains a property that isn't a member on the object) are handled during deserialization\&. Missing member handling\&.
+.PP
+Definition at line 102 of file JsonSerializerSettings\&.cs\&.
+.SS "\fBNullValueHandling\fP Newtonsoft\&.Json\&.JsonSerializerSettings\&.NullValueHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets how null values are handled during serialization and deserialization\&. Null value handling\&.
+.PP
+Definition at line 122 of file JsonSerializerSettings\&.cs\&.
+.SS "\fBObjectCreationHandling\fP Newtonsoft\&.Json\&.JsonSerializerSettings\&.ObjectCreationHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets how objects are created during deserialization\&. The object creation handling\&.
+.PP
+Definition at line 112 of file JsonSerializerSettings\&.cs\&.
+.SS "\fBPreserveReferencesHandling\fP Newtonsoft\&.Json\&.JsonSerializerSettings\&.PreserveReferencesHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets how object references are preserved by the serializer\&. The preserve references handling\&.
+.PP
+Definition at line 148 of file JsonSerializerSettings\&.cs\&.
+.SS "\fBReferenceLoopHandling\fP Newtonsoft\&.Json\&.JsonSerializerSettings\&.ReferenceLoopHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets how reference loops (e\&.g\&. a class referencing itself) is handled\&. Reference loop handling\&.
+.PP
+Definition at line 92 of file JsonSerializerSettings\&.cs\&.
+.SS "\fBIReferenceResolver\fP Newtonsoft\&.Json\&.JsonSerializerSettings\&.ReferenceResolver\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the IReferenceResolver used by the serializer when resolving references\&. The reference resolver\&.
+.PP
+Definition at line 194 of file JsonSerializerSettings\&.cs\&.
+.SS "\fBStringEscapeHandling\fP Newtonsoft\&.Json\&.JsonSerializerSettings\&.StringEscapeHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how strings are escaped when writing JSON text\&. 
+.PP
+Definition at line 313 of file JsonSerializerSettings\&.cs\&.
+.SS "\fBITraceWriter\fP Newtonsoft\&.Json\&.JsonSerializerSettings\&.TraceWriter\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the ITraceWriter used by the serializer when writing trace messages\&. The trace writer\&.
+.PP
+Definition at line 200 of file JsonSerializerSettings\&.cs\&.
+.SS "FormatterAssemblyStyle Newtonsoft\&.Json\&.JsonSerializerSettings\&.TypeNameAssemblyFormat\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets how a type name assembly is written and resolved by the serializer\&. The type name assembly format\&.
+.PP
+Definition at line 168 of file JsonSerializerSettings\&.cs\&.
+.SS "\fBTypeNameHandling\fP Newtonsoft\&.Json\&.JsonSerializerSettings\&.TypeNameHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets how type name writing and reading is handled by the serializer\&. The type name handling\&.
+.PP
+Definition at line 158 of file JsonSerializerSettings\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

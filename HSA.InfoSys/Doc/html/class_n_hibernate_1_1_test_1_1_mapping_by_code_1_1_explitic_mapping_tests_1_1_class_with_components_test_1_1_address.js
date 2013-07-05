@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_class_with_components_test_1_1_address =
+[
+    [ "CivicNumber", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_class_with_components_test_1_1_address.html#af6d93f087165dcd938962d2e55b192d0", null ],
+    [ "Street", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_class_with_components_test_1_1_address.html#a4d2fc0b90907978e8c688730c9a92bfb", null ]
+];

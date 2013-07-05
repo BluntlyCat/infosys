@@ -1,0 +1,117 @@
+.TH "log4net.Util.PropertiesDictionary" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.PropertiesDictionary \- 
+.PP
+String keyed object map\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Util\&.ReadOnlyPropertiesDictionary\fP, ISerializable, and IDictionary\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPropertiesDictionary\fP ()"
+.br
+.RI "\fIConstructor \fP"
+.ti -1c
+.RI "\fBPropertiesDictionary\fP (\fBReadOnlyPropertiesDictionary\fP propertiesDictionary)"
+.br
+.RI "\fIConstructor \fP"
+.ti -1c
+.RI "void \fBRemove\fP (string key)"
+.br
+.RI "\fIRemove the entry with the specified key from this dictionary \fP"
+.ti -1c
+.RI "override void \fBClear\fP ()"
+.br
+.RI "\fIRemove all properties from the properties collection \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override object \fBthis[string key]\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the value of the property with the specified key\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+String keyed object map\&. 
+
+While this collection is serializable only member objects that are serializable will be serialized along with this collection\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 44 of file PropertiesDictionary\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Util\&.PropertiesDictionary\&.PropertiesDictionary ()"
+
+.PP
+Constructor Initializes a new instance of the \fBPropertiesDictionary\fP class\&. 
+.PP
+Definition at line 57 of file PropertiesDictionary\&.cs\&.
+.SS "log4net\&.Util\&.PropertiesDictionary\&.PropertiesDictionary (\fBReadOnlyPropertiesDictionary\fPpropertiesDictionary)"
+
+.PP
+Constructor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertiesDictionary\fP properties to copy
+.RE
+.PP
+.PP
+Initializes a new instance of the \fBPropertiesDictionary\fP class\&. 
+.PP
+Definition at line 70 of file PropertiesDictionary\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Util\&.PropertiesDictionary\&.Clear ()\fC [virtual]\fP"
+
+.PP
+Remove all properties from the properties collection Remove all properties from the properties collection 
+.PP
+Reimplemented from \fBlog4net\&.Util\&.ReadOnlyPropertiesDictionary\fP\&.
+.PP
+Definition at line 192 of file PropertiesDictionary\&.cs\&.
+.SS "void log4net\&.Util\&.PropertiesDictionary\&.Remove (stringkey)"
+
+.PP
+Remove the entry with the specified key from this dictionary 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP the key for the entry to remove
+.RE
+.PP
+.PP
+Remove the entry with the specified key from this dictionary 
+.PP
+Definition at line 132 of file PropertiesDictionary\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override object log4net\&.Util\&.PropertiesDictionary\&.this[string key]\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the value of the property with the specified key\&. The value of the property with the specified key\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key of the property to get or set\&.
+.RE
+.PP
+.PP
+The property value will only be serialized if it is serializable\&. If it cannot be serialized it will be silently ignored if a serialization operation is performed\&. 
+.PP
+Definition at line 114 of file PropertiesDictionary\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

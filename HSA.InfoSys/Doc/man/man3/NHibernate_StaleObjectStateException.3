@@ -1,0 +1,129 @@
+.TH "NHibernate.StaleObjectStateException" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.StaleObjectStateException \- 
+.PP
+Thrown when a version number check failed, indicating that the \fBISession\fP contained stale data (when using long transactions with versioning)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.StaleStateException\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBStaleObjectStateException\fP (string entityName, object identifier)"
+.br
+.RI "\fIInitializes a new instance of the \fBStaleObjectStateException\fP class\&. \fP"
+.ti -1c
+.RI "override void \fBGetObjectData\fP (SerializationInfo info, StreamingContext context)"
+.br
+.RI "\fISets the serialization info for \fBStaleObjectStateException\fP after getting the info from the base Exception\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBStaleObjectStateException\fP (SerializationInfo info, StreamingContext context)"
+.br
+.RI "\fIInitializes a new instance of the \fBStaleObjectStateException\fP class with serialized data\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBEntityName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the EntityName that \fBNHibernate\fP was trying to update in the database\&. \fP"
+.ti -1c
+.RI "object \fBIdentifier\fP\fC [get]\fP"
+.br
+.RI "\fIGets the identifier of the object that is stale\&. \fP"
+.ti -1c
+.RI "override string \fBMessage\fP\fC [get]\fP"
+.br
+.RI "\fIGets a message that describes the current \fBStaleObjectStateException\fP\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Thrown when a version number check failed, indicating that the \fBISession\fP contained stale data (when using long transactions with versioning)\&. 
+
+
+.PP
+Definition at line 15 of file StaleObjectStateException\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.StaleObjectStateException\&.StaleObjectStateException (stringentityName, objectidentifier)"
+
+.PP
+Initializes a new instance of the \fBStaleObjectStateException\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The EntityName that \fBNHibernate\fP was trying to update in the database\&.
+.br
+\fIidentifier\fP The identifier of the object that is stale\&.
+.RE
+.PP
+
+.PP
+Definition at line 25 of file StaleObjectStateException\&.cs\&.
+.SS "NHibernate\&.StaleObjectStateException\&.StaleObjectStateException (SerializationInfoinfo, StreamingContextcontext)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBStaleObjectStateException\fP class with serialized data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinfo\fP The SerializationInfo that holds the serialized object data about the exception being thrown\&. 
+.br
+\fIcontext\fP The StreamingContext that contains contextual information about the source or destination\&. 
+.RE
+.PP
+
+.PP
+Definition at line 73 of file StaleObjectStateException\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.StaleObjectStateException\&.GetObjectData (SerializationInfoinfo, StreamingContextcontext)"
+
+.PP
+Sets the serialization info for \fBStaleObjectStateException\fP after getting the info from the base Exception\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinfo\fP The SerializationInfo that holds the serialized object data about the exception being thrown\&. 
+.br
+\fIcontext\fP The StreamingContext that contains contextual information about the source or destination\&. 
+.RE
+.PP
+
+.PP
+Definition at line 95 of file StaleObjectStateException\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string NHibernate\&.StaleObjectStateException\&.EntityName\fC [get]\fP"
+
+.PP
+Gets the EntityName that \fBNHibernate\fP was trying to update in the database\&. 
+.PP
+Definition at line 36 of file StaleObjectStateException\&.cs\&.
+.SS "object NHibernate\&.StaleObjectStateException\&.Identifier\fC [get]\fP"
+
+.PP
+Gets the identifier of the object that is stale\&. 
+.PP
+Definition at line 44 of file StaleObjectStateException\&.cs\&.
+.SS "override string NHibernate\&.StaleObjectStateException\&.Message\fC [get]\fP"
+
+.PP
+Gets a message that describes the current \fBStaleObjectStateException\fP\&. The error message that explains the reason for this exception\&.
+.PP
+Definition at line 53 of file StaleObjectStateException\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

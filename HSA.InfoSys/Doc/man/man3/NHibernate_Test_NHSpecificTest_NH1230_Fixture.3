@@ -1,0 +1,58 @@
+.TH "NHibernate.Test.NHSpecificTest.NH1230.Fixture" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.NHSpecificTest.NH1230.Fixture \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Test\&.NHSpecificTest\&.BugTestCase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBNoExceptionMustBeThrown1\fP ()"
+.br
+.RI "\fIMust be vetoed without thrown an \fBAssertionFailure\fP exception\&. As no identifier generation has made, the id is null and is not posible create a EntityKey instance to agregate to the PersistenceContext (don't know why registrate a vetoed entity to PC, that's the reason of make the method: void \fP"
+.ti -1c
+.RI "void \fBNoExceptionMustBeThrown2\fP ()"
+.br
+.RI "\fIMust be vetoed without thrown an \fBNonUniqueObjectException\fP exception\&. The second time the entity must be vetoed again, but not registration on PersistenceContext must added\&. The identity map contains the first that has vetoed\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBConfigure\fP (\fBConfiguration\fP cfg)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBBugNumber\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file Fixture\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Test\&.NHSpecificTest\&.NH1230\&.Fixture\&.NoExceptionMustBeThrown1 ()"
+
+.PP
+Must be vetoed without thrown an \fBAssertionFailure\fP exception\&. As no identifier generation has made, the id is null and is not posible create a EntityKey instance to agregate to the PersistenceContext (don't know why registrate a vetoed entity to PC, that's the reason of make the method: void 
+.PP
+Definition at line 26 of file Fixture\&.cs\&.
+.SS "void NHibernate\&.Test\&.NHSpecificTest\&.NH1230\&.Fixture\&.NoExceptionMustBeThrown2 ()"
+
+.PP
+Must be vetoed without thrown an \fBNonUniqueObjectException\fP exception\&. The second time the entity must be vetoed again, but not registration on PersistenceContext must added\&. The identity map contains the first that has vetoed\&. 
+.PP
+Definition at line 47 of file Fixture\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

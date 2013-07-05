@@ -1,0 +1,2507 @@
+.TH "NHibernate.Dialect.Dialect" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.Dialect \- 
+.PP
+Represents a dialect of SQL implemented by a particular RDBMS\&. Subclasses implement \fBNHibernate\fP compatibility with different systems\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.DB2Dialect\fP, \fBNHibernate\&.Dialect\&.FirebirdDialect\fP, \fBNHibernate\&.Dialect\&.GenericDialect\fP, \fBNHibernate\&.Dialect\&.InformixDialect\fP, \fBNHibernate\&.Dialect\&.IngresDialect\fP, \fBNHibernate\&.Dialect\&.MsSql2000Dialect\fP, \fBNHibernate\&.Dialect\&.MsSqlCeDialect\fP, \fBNHibernate\&.Dialect\&.MySQLDialect\fP, \fBNHibernate\&.Dialect\&.Oracle8iDialect\fP, \fBNHibernate\&.Dialect\&.PostgreSQLDialect\fP, \fBNHibernate\&.Dialect\&.SQLiteDialect\fP, \fBNHibernate\&.Dialect\&.SybaseASA9Dialect\fP, \fBNHibernate\&.Dialect\&.SybaseASE15Dialect\fP, \fBNHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\fP, NHibernate\&.Test\&.IdGen\&.Enhanced\&.SequenceStyleConfigUnitFixture\&.SequenceDialect, and NHibernate\&.Test\&.IdGen\&.Enhanced\&.SequenceStyleConfigUnitFixture\&.TableDialect\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBQuotedAndParenthesisStringTokenizer\fP"
+.br
+.RI "\fIThis specialized string tokenizier will break a string to tokens, taking into account single quotes, parenthesis and commas and [ ] Notice that we aren't differenciating between [ ) and ( ] on purpose, it would complicate the code and it is not legal at any rate\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual string \fBGetTypeName\fP (\fBSqlType\fP sqlType)"
+.br
+.RI "\fIGet the name of the database type associated with the given \fBSqlTypes\&.SqlType\fP, \fP"
+.ti -1c
+.RI "virtual string \fBGetTypeName\fP (\fBSqlType\fP sqlType, int length, int precision, int scale)"
+.br
+.RI "\fIGet the name of the database type associated with the given SqlType\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetLongestTypeName\fP (DbType dbType)"
+.br
+.RI "\fIGets the name of the longest registered type for a particular DbType\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetCastTypeName\fP (\fBSqlType\fP sqlType)"
+.br
+.RI "\fIGet the name of the database type appropriate for casting operations (via the CAST() SQL function) for the given SqlType typecode\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetAddForeignKeyConstraintString\fP (string constraintName, string[] foreignKey, string referencedTable, string[] primaryKey, bool referencesPrimaryKey)"
+.br
+.RI "\fIThe syntax used to add a foreign key constraint to a table\&. If SupportsForeignKeyConstraintInAlterTable is false, the returned string will be added to the create table statement instead\&. In this case, extra strings, like 'add', that apply when using alter table should be omitted\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetAddPrimaryKeyConstraintString\fP (string constraintName)"
+.br
+.RI "\fIThe syntax used to add a primary key constraint to a table \fP"
+.ti -1c
+.RI "virtual string \fBGetTableComment\fP (string comment)"
+.br
+.ti -1c
+.RI "virtual string \fBGetColumnComment\fP (string comment)"
+.br
+.ti -1c
+.RI "virtual \fBIDataBaseSchema\fP \fBGetDataBaseSchema\fP (DbConnection connection)"
+.br
+.ti -1c
+.RI "virtual \fBILockingStrategy\fP \fBGetLockingStrategy\fP (\fBILockable\fP lockable, \fBLockMode\fP lockMode)"
+.br
+.RI "\fIGet a strategy instance which knows how to acquire a database-level lock of the specified mode for this dialect\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetForUpdateString\fP (\fBLockMode\fP lockMode)"
+.br
+.RI "\fIGiven a lock mode, determine the appropriate for update fragment to use\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetForUpdateString\fP (string aliases)"
+.br
+.RI "\fIGet the \fCFOR UPDATE OF column_list\fP fragment appropriate for this dialect given the aliases of the columns to be write locked\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetForUpdateNowaitString\fP (string aliases)"
+.br
+.RI "\fIGet the \fCFOR UPDATE OF column_list NOWAIT\fP fragment appropriate for this dialect given the aliases of the columns to be write locked\&. \fP"
+.ti -1c
+.RI "virtual \fBSqlString\fP \fBApplyLocksToSql\fP (\fBSqlString\fP sql, IDictionary< string, \fBLockMode\fP > aliasedLockModes, IDictionary< string, string[]> keyColumnNames)"
+.br
+.RI "\fIModifies the given SQL by applying the appropriate updates for the specified lock modes and key columns\&. \fP"
+.ti -1c
+.RI "virtual string \fBAppendLockHint\fP (\fBLockMode\fP lockMode, string tableName)"
+.br
+.RI "\fISome dialects support an alternative means to \fCSELECT FOR UPDATE\fP, whereby a 'lock hint' is appends to the table name in the from clause\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetDropTableString\fP (string tableName)"
+.br
+.RI "\fIReturn SQL needed to drop the named table\&. May (and should) use some form of 'if exists' clause, and cascade constraints\&. \fP"
+.ti -1c
+.RI "virtual string \fBGenerateTemporaryTableName\fP (string baseTableName)"
+.br
+.RI "\fIGenerate a temporary table name given the bas table\&. \fP"
+.ti -1c
+.RI "virtual bool \fBPerformTemporaryTableDDLInIsolation\fP ()"
+.br
+.RI "\fIDoes the dialect require that temporary table DDL statements occur in isolation from other statements? This would be the case if the creation would cause any current transaction to get committed implicitly\&. \fP"
+.ti -1c
+.RI "virtual bool \fBDropTemporaryTableAfterUse\fP ()"
+.br
+.RI "\fIDo we need to drop the temporary table after use? \fP"
+.ti -1c
+.RI "virtual int \fBRegisterResultSetOutParameter\fP (DbCommand statement, int position)"
+.br
+.RI "\fIRegisters an OUT parameter which will be returing a DbDataReader\&. How this is accomplished varies greatly from DB to DB, hence its inclusion (along with \fBgetResultSet\fP) here\&. \fP"
+.ti -1c
+.RI "virtual DbDataReader \fBGetResultSet\fP (DbCommand statement)"
+.br
+.RI "\fIGiven a callable statement previously processed by \fBRegisterResultSetOutParameter\fP, extract the DbDataReader from the OUT parameter\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetDropForeignKeyConstraintString\fP (string constraintName)"
+.br
+.RI "\fIThe syntax used to drop a foreign key constraint from a table\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetIfNotExistsCreateConstraint\fP (\fBTable\fP table, string name)"
+.br
+.RI "\fIThe syntax that is used to check if a constraint does not exists before creating it \fP"
+.ti -1c
+.RI "virtual string \fBGetIfNotExistsCreateConstraintEnd\fP (\fBTable\fP table, string name)"
+.br
+.RI "\fIThe syntax that is used to close the if for a constraint exists check, used for dialects that requires begin/end for ifs \fP"
+.ti -1c
+.RI "virtual string \fBGetIfExistsDropConstraint\fP (\fBTable\fP table, string name)"
+.br
+.RI "\fIThe syntax that is used to check if a constraint exists before dropping it \fP"
+.ti -1c
+.RI "virtual string \fBGetIfExistsDropConstraintEnd\fP (\fBTable\fP table, string name)"
+.br
+.RI "\fIThe syntax that is used to close the if for a constraint exists check, used for dialects that requires begin/end for ifs \fP"
+.ti -1c
+.RI "virtual string \fBGetDropPrimaryKeyConstraintString\fP (string constraintName)"
+.br
+.RI "\fIThe syntax used to drop a primary key constraint from a table\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetDropIndexConstraintString\fP (string constraintName)"
+.br
+.RI "\fIThe syntax used to drop an index constraint from a table\&. \fP"
+.ti -1c
+.RI "virtual \fBSqlString\fP \fBAppendIdentitySelectToInsert\fP (\fBSqlString\fP insertString)"
+.br
+.RI "\fIProvided we \fBSupportsInsertSelectIdentity\fP, then attch the 'select identity' clause to the insert statement\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetIdentitySelectString\fP (string identityColumn, string tableName, DbType type)"
+.br
+.RI "\fIGet the select command to use to retrieve the last generated IDENTITY value for a particular table \fP"
+.ti -1c
+.RI "virtual string \fBGetIdentityColumnString\fP (DbType type)"
+.br
+.RI "\fIThe syntax used during DDL to define a column as being an IDENTITY of a particular type\&. \fP"
+.ti -1c
+.RI "virtual \fBSqlString\fP \fBAddIdentifierOutParameterToInsert\fP (\fBSqlString\fP insertString, string identifierColumnName, string parameterName)"
+.br
+.ti -1c
+.RI "virtual string \fBGetSequenceNextValString\fP (string sequenceName)"
+.br
+.RI "\fIGenerate the appropriate select statement to to retreive the next value of a sequence\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetDropSequenceString\fP (string sequenceName)"
+.br
+.RI "\fITypically dialects which support sequences can drop a sequence with a single command\&. \fP"
+.ti -1c
+.RI "virtual string[] \fBGetDropSequenceStrings\fP (string sequenceName)"
+.br
+.RI "\fIThe multiline script used to drop a sequence\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetSelectSequenceNextValString\fP (string sequenceName)"
+.br
+.RI "\fIGenerate the select expression fragment that will retrieve the next value of a sequence as part of another (typically DML) statement\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetCreateSequenceString\fP (string sequenceName)"
+.br
+.RI "\fITypically dialects which support sequences can create a sequence with a single command\&. \fP"
+.ti -1c
+.RI "virtual string[] \fBGetCreateSequenceStrings\fP (string sequenceName, int initialValue, int incrementSize)"
+.br
+.RI "\fIAn optional multi-line form for databases which \fBSupportsPooledSequences\fP\&. \fP"
+.ti -1c
+.RI "virtual \fBJoinFragment\fP \fBCreateOuterJoinFragment\fP ()"
+.br
+.RI "\fICreate a JoinFragment strategy responsible for handling this dialect's variations in how joins are handled\&. \fP"
+.ti -1c
+.RI "virtual \fBCaseFragment\fP \fBCreateCaseFragment\fP ()"
+.br
+.RI "\fICreate a CaseFragment strategy responsible for handling this dialect's variations in how CASE statements are handled\&. \fP"
+.ti -1c
+.RI "virtual string \fBToBooleanValueString\fP (bool value)"
+.br
+.RI "\fIThe SQL literal value to which this database maps boolean values\&. \fP"
+.ti -1c
+.RI "virtual \fBSqlString\fP \fBGetLimitString\fP (\fBSqlString\fP queryString, \fBSqlString\fP offset, \fBSqlString\fP limit)"
+.br
+.RI "\fIAttempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBGetLimitString\fP (\fBSqlString\fP queryString, int?offset, int?limit, \fBParameter\fP offsetParameter, \fBParameter\fP limitParameter)"
+.br
+.RI "\fIAttempts to generate a string to limit the result set to a number of maximum results with a specified offset into the results\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. Performs error checking based on the various dialect limit support options\&. If both parameters and fixed valeus are specified, this will use the parameter option if possible\&. Otherwise, it will fall back to a fixed string\&. \fP"
+.ti -1c
+.RI "int \fBGetLimitValue\fP (int offset, int limit)"
+.br
+.RI "\fISome databases require that a limit statement contain the maximum row number instead of the number of rows to retrieve\&. This method adjusts source limit and offset values to account for this\&. \fP"
+.ti -1c
+.RI "int \fBGetOffsetValue\fP (int offset)"
+.br
+.RI "\fISome databases use limit row offsets that start at one instead of zero\&. This method adjusts a desired offset using the OffsetStartsAtOne flag\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsQuoted\fP (string name)"
+.br
+.RI "\fIChecks to see if the name has been quoted\&. \fP"
+.ti -1c
+.RI "virtual string \fBQualify\fP (string catalog, string schema, string table)"
+.br
+.ti -1c
+.RI "virtual string \fBQuoteForAliasName\fP (string aliasName)"
+.br
+.RI "\fIQuotes a name for being used as a aliasname \fP"
+.ti -1c
+.RI "virtual string \fBQuoteForColumnName\fP (string columnName)"
+.br
+.RI "\fIQuotes a name for being used as a columnname \fP"
+.ti -1c
+.RI "virtual string \fBQuoteForTableName\fP (string tableName)"
+.br
+.RI "\fIQuotes a name for being used as a tablename \fP"
+.ti -1c
+.RI "virtual string \fBQuoteForSchemaName\fP (string schemaName)"
+.br
+.RI "\fIQuotes a name for being used as a schemaname \fP"
+.ti -1c
+.RI "virtual string \fBUnQuote\fP (string quoted)"
+.br
+.RI "\fIUnquotes and unescapes an already quoted name \fP"
+.ti -1c
+.RI "virtual string[] \fBUnQuote\fP (string[] quoted)"
+.br
+.RI "\fIUnquotes an array of Quoted Names\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetSelectClauseNullString\fP (\fBSqlType\fP sqlType)"
+.br
+.RI "\fIGiven a DbType type code, determine an appropriate null value to use in a select clause\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsKnownToken\fP (string currentToken, string nextToken)"
+.br
+.ti -1c
+.RI "virtual \fBISQLExceptionConverter\fP \fBBuildSQLExceptionConverter\fP ()"
+.br
+.RI "\fIBuild an instance of the ISQLExceptionConverter preferred by this dialect for converting System\&.Data\&.Common\&.DbException into \fBNHibernate\fP's \fBADOException\fP hierarchy\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBDialect\fP \fBGetDialect\fP ()"
+.br
+.RI "\fIGet an instance of the dialect specified by the current Cfg\&.Environment properties\&. \fP"
+.ti -1c
+.RI "static \fBDialect\fP \fBGetDialect\fP (IDictionary< string, string > props)"
+.br
+.RI "\fIGet \fBDialect\fP from a property bag (prop name Cfg\&.Environment\&.Dialect) \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBPossibleQuoteChars\fP = '`'\\'['"
+.br
+.RI "\fICharacters used for quoting sql identifiers \fP"
+.ti -1c
+.RI "const string \fBPossibleClosedQuoteChars\fP = '`'\\']'"
+.br
+.RI "\fICharacters used for closing quoted sql identifiers \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDialect\fP ()"
+.br
+.RI "\fIThe base constructor for \fBDialect\fP\&. \fP"
+.ti -1c
+.RI "void \fBRegisterColumnType\fP (DbType code, int capacity, string name)"
+.br
+.RI "\fISubclasses register a typename for the given type code and maximum column length\&. \fC$l\fP in the type name will be replaced by the column length (if appropriate) \fP"
+.ti -1c
+.RI "void \fBRegisterColumnType\fP (DbType code, string name)"
+.br
+.RI "\fISubclasses register a typename for the given type code\&. \fC$l\fP in the typename will be replaced by the column length (if appropriate)\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetCreateSequenceString\fP (string sequenceName, int initialValue, int incrementSize)"
+.br
+.RI "\fIOverloaded form of \fBGetCreateSequenceString(string)\fP, additionally taking the initial value and increment size to be applied to the sequence definition\&. \fP"
+.ti -1c
+.RI "virtual string \fBQuote\fP (string name)"
+.br
+.RI "\fIQuotes a name\&. \fP"
+.ti -1c
+.RI "void \fBRegisterKeyword\fP (string word)"
+.br
+.ti -1c
+.RI "void \fBRegisterFunction\fP (string name, \fBISQLFunction\fP function)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBDefaultBatchSize\fP = '15'"
+.br
+.ti -1c
+.RI "const string \fBNoBatch\fP = '0'"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBDropConstraints\fP\fC [get]\fP"
+.br
+.RI "\fIDo we need to drop constraints before dropping tables in the dialect? \fP"
+.ti -1c
+.RI "virtual bool \fBQualifyIndexName\fP\fC [get]\fP"
+.br
+.RI "\fIDo we need to qualify index names with the schema name? \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsUnique\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support the \fCUNIQUE\fP column syntax? \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsUniqueConstraintInCreateAlterTable\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support adding Unique constraints via create and alter table ?\fP"
+.ti -1c
+.RI "virtual bool \fBSupportsForeignKeyConstraintInAlterTable\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support adding foreign key constraints via alter table? If not, it's assumed they can only be added through create table\&. \fP"
+.ti -1c
+.RI "virtual bool \fBHasSelfReferentialForeignKeyBug\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBSupportsCommentOn\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBSupportsIfExistsBeforeTableName\fP\fC [get]\fP"
+.br
+.RI "\fIDoes the dialect support the syntax 'drop table if exists NAME' \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsIfExistsAfterTableName\fP\fC [get]\fP"
+.br
+.RI "\fIDoes the dialect support the syntax 'drop table NAME if exists' \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsColumnCheck\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support column-level check constraints? \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsTableCheck\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support table-level check constraints? \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsCascadeDelete\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBSupportsNotNullUnique\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBForUpdateString\fP\fC [get]\fP"
+.br
+.RI "\fIGet the string to append to SELECT statements to acquire locks for this dialect\&. \fP"
+.ti -1c
+.RI "virtual bool \fBForUpdateOfColumns\fP\fC [get]\fP"
+.br
+.RI "\fIIs \fCFOR UPDATE OF\fP syntax supported? \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsOuterJoinForUpdate\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support \fCFOR UPDATE\fP in conjunction with outer joined rows? \fP"
+.ti -1c
+.RI "virtual string \fBForUpdateNowaitString\fP\fC [get]\fP"
+.br
+.RI "\fIRetrieves the \fCFOR UPDATE NOWAIT\fP syntax specific to this dialect \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsTemporaryTables\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support temporary tables? \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsCurrentTimestampSelection\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support a way to retrieve the database's current timestamp value? \fP"
+.ti -1c
+.RI "virtual long \fBTimestampResolutionInTicks\fP\fC [get]\fP"
+.br
+.RI "\fIGives the best resolution that the database can use for storing date/time values, in ticks\&. \fP"
+.ti -1c
+.RI "virtual string \fBCascadeConstraintsString\fP\fC [get]\fP"
+.br
+.RI "\fICompletely optional cascading drop clause \fP"
+.ti -1c
+.RI "virtual string \fBDisableForeignKeyConstraintsString\fP\fC [get]\fP"
+.br
+.RI "\fIOnly needed if the \fBDialect\fP does not have SupportsForeignKeyConstraintInAlterTable\&. \fP"
+.ti -1c
+.RI "virtual string \fBEnableForeignKeyConstraintsString\fP\fC [get]\fP"
+.br
+.RI "\fIOnly needed if the \fBDialect\fP does not have SupportsForeignKeyConstraintInAlterTable\&. \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsIdentityColumns\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support identity column key generation? \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsInsertSelectIdentity\fP\fC [get]\fP"
+.br
+.RI "\fIDoes the dialect support some form of inserting and selecting the generated IDENTITY value all in the same statement\&. \fP"
+.ti -1c
+.RI "virtual bool \fBHasDataTypeInIdentityColumn\fP\fC [get]\fP"
+.br
+.RI "\fIWhether this dialect has an identity clause added to the data type or a completely separate identity data type\&. \fP"
+.ti -1c
+.RI "virtual string \fBIdentitySelectString\fP\fC [get]\fP"
+.br
+.RI "\fIGet the select command to use to retrieve the last generated IDENTITY value\&. \fP"
+.ti -1c
+.RI "virtual string \fBIdentityColumnString\fP\fC [get]\fP"
+.br
+.RI "\fIThe keyword used to specify an identity column, if native key generation is supported \fP"
+.ti -1c
+.RI "virtual bool \fBGenerateTablePrimaryKeyConstraintForIdentityColumn\fP\fC [get]\fP"
+.br
+.RI "\fISet this to false if no table-level primary key constraint should be generated when an identity column has been specified for the table\&. This is used as a work-around for SQLite so it doesn't tell us we have 'more than one primary key'\&. \fP"
+.ti -1c
+.RI "virtual 
+.br
+\fBInsertGeneratedIdentifierRetrievalMethod\fP \fBInsertGeneratedIdentifierRetrievalMethod\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBIdentityInsertString\fP\fC [get]\fP"
+.br
+.RI "\fIThe keyword used to insert a generated value into an identity column (or null)\&. Need if the dialect does not support inserts that specify no column values\&. \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsSequences\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support sequences? \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsPooledSequences\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support 'pooled' sequences? \fP"
+.ti -1c
+.RI "virtual string \fBQuerySequencesString\fP\fC [get]\fP"
+.br
+.RI "\fIGet the select command used retrieve the names of all sequences\&.\fP"
+.ti -1c
+.RI "virtual System\&.Type \fBIdentityStyleIdentifierGeneratorClass\fP\fC [get]\fP"
+.br
+.RI "\fIThe class (which implements \fBNHibernate\&.Id\&.IIdentifierGenerator\fP) which acts as this dialects identity-style generation strategy\&. \fP"
+.ti -1c
+.RI "virtual System\&.Type \fBNativeIdentifierGeneratorClass\fP\fC [get]\fP"
+.br
+.RI "\fIThe class (which implements \fBNHibernate\&.Id\&.IIdentifierGenerator\fP) which acts as this dialects native generation strategy\&. \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsLimit\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this \fBDialect\fP have some kind of \fCLIMIT\fP syntax? \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsLimitOffset\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this \fBDialect\fP support an offset? \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsVariableLimit\fP\fC [get]\fP"
+.br
+.RI "\fICan parameters be used for a statement containing a LIMIT? \fP"
+.ti -1c
+.RI "virtual bool \fBUseMaxForLimit\fP\fC [get]\fP"
+.br
+.RI "\fIDoes the \fCLIMIT\fP clause take a 'maximum' row number instead of a total number of returned rows? \fP"
+.ti -1c
+.RI "virtual bool \fBOffsetStartsAtOne\fP\fC [get]\fP"
+.br
+.RI "\fIFor limit clauses, indicates whether to use 0 or 1 as the offset that returns the first row\&. Should be true if the first row is at offset 1\&. \fP"
+.ti -1c
+.RI "virtual char \fBOpenQuote\fP\fC [get]\fP"
+.br
+.RI "\fIThe opening quote for a quoted identifier\&. \fP"
+.ti -1c
+.RI "virtual char \fBCloseQuote\fP\fC [get]\fP"
+.br
+.RI "\fIThe closing quote for a quoted identifier\&. \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsUnionAll\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support UNION ALL, which is generally a faster variant of UNION? True if UNION ALL is supported; false otherwise\&. \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsEmptyInList\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support empty IN lists? For example, is [where XYZ in ()] a supported construct? \fP"
+.ti -1c
+.RI "virtual bool \fBAreStringComparisonsCaseInsensitive\fP\fC [get]\fP"
+.br
+.RI "\fIAre string comparisons implicitly case insensitive\&. In other words, does [where 'XYZ' = 'xyz'] resolve to true? \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsRowValueConstructorSyntax\fP\fC [get]\fP"
+.br
+.RI "\fIIs this dialect known to support what ANSI-SQL terms 'row value
+constructor' syntax; sometimes called tuple syntax\&. 
+.PP
+Basically, does it support syntax like '\&.\&.\&. where (FIRST_NAME, LAST_NAME) = ('Steve', 'Ebersole') \&.\&.\&.'\&. \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsRowValueConstructorSyntaxInInList\fP\fC [get]\fP"
+.br
+.RI "\fIIf the dialect supports \fBrow values\fP, does it offer such support in IN lists as well? 
+.PP
+For example, '\&.\&.\&. where (FIRST_NAME, LAST_NAME) IN ( (?, ?), (?, ?) ) \&.\&.\&.' \fP"
+.ti -1c
+.RI "virtual bool \fBUseInputStreamToInsertBlob\fP\fC [get]\fP"
+.br
+.RI "\fIShould LOBs (both BLOB and CLOB) be bound using stream operations (i\&.e\&. \fBjava\&.sql\&.PreparedStatement#setBinaryStream\fP)\&. \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsParametersInInsertSelect\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support parameters within the select clause of INSERT \&.\&.\&. SELECT \&.\&.\&. statements? \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsResultSetPositionQueryMethodsOnForwardOnlyCursor\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support asking the result set its positioning information on forward only cursors\&. Specifically, in the case of scrolling fetches, Hibernate needs to use \fBjava\&.sql\&.ResultSet#isAfterLast\fP and \fBjava\&.sql\&.ResultSet#isBeforeFirst\fP\&. Certain drivers do not allow access to these methods for forward only cursors\&. 
+.PP
+NOTE : this is highly driver dependent! \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsCircularCascadeDeleteConstraints\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support definition of cascade delete constraints which can cause circular chains? \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsSubselectAsInPredicateLHS\fP\fC [get]\fP"
+.br
+.RI "\fIAre subselects supported as the left-hand-side (LHS) of IN-predicates\&. 
+.PP
+In other words, is syntax like '\&.\&.\&. {subquery} IN (1, 2, 3) \&.\&.\&.' supported? \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsExpectedLobUsagePattern\fP\fC [get]\fP"
+.br
+.RI "\fIExpected LOB usage pattern is such that I can perform an insert via prepared statement with a parameter binding for a LOB value without crazy casting to JDBC driver implementation-specific classes\&.\&.\&. 
+.PP
+Part of the trickiness here is the fact that this is largely driver dependent\&. For example, Oracle (which is notoriously bad with LOB support in their drivers historically) actually does a pretty good job with LOB support as of the 10\&.2\&.x versions of their drivers\&.\&.\&. \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsLobValueChangePropogation\fP\fC [get]\fP"
+.br
+.RI "\fIDoes the dialect support propagating changes to LOB values back to the database? Talking about mutating the internal value of the locator as opposed to supplying a new locator instance\&.\&.\&. 
+.PP
+For BLOBs, the internal value might be changed by: \fBjava\&.sql\&.Blob#setBinaryStream\fP, \fBjava\&.sql\&.Blob#setBytes(long, byte[])\fP, \fBjava\&.sql\&.Blob#setBytes(long, byte[], int, int)\fP, or \fBjava\&.sql\&.Blob#truncate(long)\fP\&. 
+.PP
+For CLOBs, the internal value might be changed by: \fBjava\&.sql\&.Clob#setAsciiStream(long)\fP, \fBjava\&.sql\&.Clob#setCharacterStream(long)\fP, \fBjava\&.sql\&.Clob#setString(long, String)\fP, \fBjava\&.sql\&.Clob#setString(long, String, int, int)\fP, or \fBjava\&.sql\&.Clob#truncate(long)\fP\&. 
+.PP
+NOTE : I do not know the correct answer currently for databases which (1) are not part of the cruise control process or (2) do not \fBsupportsExpectedLobUsagePattern\fP\&. \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsUnboundedLobLocatorMaterialization\fP\fC [get]\fP"
+.br
+.RI "\fIIs it supported to materialize a LOB locator outside the transaction in which it was created? 
+.PP
+Again, part of the trickiness here is the fact that this is largely driver dependent\&. 
+.PP
+NOTE: all database I have tested which \fBsupportsExpectedLobUsagePattern()\fP also support the ability to materialize a LOB outside the owning transaction\&.\&.\&. \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsSubqueryOnMutatingTable\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support referencing the table being mutated in a subquery\&. The 'table being mutated' is the table referenced in an UPDATE or a DELETE query\&. And so can that table then be referenced in a subquery of said UPDATE/DELETE query\&. 
+.PP
+For example, would the following two syntaxes be supported: \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsExistsInSelect\fP\fC [get]\fP"
+.br
+.RI "\fIDoes the dialect support an exists statement in the select clause? \fP"
+.ti -1c
+.RI "virtual bool \fBDoesReadCommittedCauseWritersToBlockReaders\fP\fC [get]\fP"
+.br
+.RI "\fIFor the underlying database, is READ_COMMITTED isolation implemented by forcing readers to wait for write locks to be released? \fP"
+.ti -1c
+.RI "virtual bool \fBDoesRepeatableReadCauseReadersToBlockWriters\fP\fC [get]\fP"
+.br
+.RI "\fIFor the underlying database, is REPEATABLE_READ isolation implemented by forcing writers to wait for read locks to be released? \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsBindAsCallableArgument\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support using a JDBC bind parameter as an argument to a function or procedure call? \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsSubSelects\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support subselects? \fP"
+.ti -1c
+.RI "IDictionary< string, string > \fBDefaultProperties\fP\fC [get]\fP"
+.br
+.RI "\fIRetrieve a set of default Hibernate properties for this database\&. \fP"
+.ti -1c
+.RI "virtual IDictionary< string, 
+.br
+\fBISQLFunction\fP > \fBFunctions\fP\fC [get]\fP"
+.br
+.RI "\fIAggregate SQL functions as defined in general\&. This is a case-insensitive hashtable! \fP"
+.ti -1c
+.RI "HashSet< string > \fBKeywords\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBSelectGUIDString\fP\fC [get]\fP"
+.br
+.RI "\fIGet the command used to select a GUID from the underlying database\&. (Optional operation\&.) \fP"
+.ti -1c
+.RI "virtual string \fBCreateTableString\fP\fC [get]\fP"
+.br
+.RI "\fICommand used to create a table\&. \fP"
+.ti -1c
+.RI "virtual string \fBCreateMultisetTableString\fP\fC [get]\fP"
+.br
+.RI "\fISlight variation on \fBCreateTableString\fP\&. The command used to create a multiset table\&. \fP"
+.ti -1c
+.RI "virtual string \fBCreateTemporaryTableString\fP\fC [get]\fP"
+.br
+.RI "\fICommand used to create a temporary table\&. \fP"
+.ti -1c
+.RI "virtual string \fBCreateTemporaryTablePostfix\fP\fC [get]\fP"
+.br
+.RI "\fIGet any fragments needing to be postfixed to the command for temporary table creation\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsCurrentTimestampSelectStringCallable\fP\fC [get]\fP"
+.br
+.RI "\fIShould the value returned by \fBCurrentTimestampSelectString\fP be treated as callable\&. Typically this indicates that JDBC escape sytnax is being used\&.\&.\&. \fP"
+.ti -1c
+.RI "virtual string \fBCurrentTimestampSelectString\fP\fC [get]\fP"
+.br
+.RI "\fIRetrieve the command used to retrieve the current timestammp from the database\&. \fP"
+.ti -1c
+.RI "virtual string \fBCurrentTimestampSQLFunctionName\fP\fC [get]\fP"
+.br
+.RI "\fIThe name of the database-specific SQL function for retrieving the current timestamp\&. \fP"
+.ti -1c
+.RI "virtual 
+.br
+\fBIViolatedConstraintNameExtracter\fP \fBViolatedConstraintNameExtracter\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBNoColumnsInsertString\fP\fC [get]\fP"
+.br
+.RI "\fIThe keyword used to insert a row without specifying any column values \fP"
+.ti -1c
+.RI "virtual string \fBLowercaseFunction\fP\fC [get]\fP"
+.br
+.RI "\fIThe name of the SQL function that transforms a string to lowercase \fP"
+.ti -1c
+.RI "virtual int \fBMaxAliasLength\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBAddColumnString\fP\fC [get]\fP"
+.br
+.RI "\fIThe syntax used to add a column to a table\&. Note this is deprecated \fP"
+.ti -1c
+.RI "virtual string \fBDropForeignKeyString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBTableTypeString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBNullColumnString\fP\fC [get]\fP"
+.br
+.RI "\fIThe keyword used to specify a nullable column \fP"
+.ti -1c
+.RI "virtual string \fBPrimaryKeyString\fP\fC [get]\fP"
+.br
+.RI "\fIThe keyword used to create a primary key constraint \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsSqlBatches\fP\fC [get]\fP"
+.br
+.RI "\fISupports splitting batches using GO T-SQL command \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a dialect of SQL implemented by a particular RDBMS\&. Subclasses implement \fBNHibernate\fP compatibility with different systems\&. 
+
+Subclasses should provide a public default constructor that \fCRegister()\fP a set of type mappings and default Hibernate properties\&. 
+.PP
+Definition at line 30 of file Dialect\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Dialect\&.Dialect\&.Dialect ()\fC [protected]\fP"
+
+.PP
+The base constructor for \fBDialect\fP\&. Every subclass should override this and call Register() with every DbType except DbType\&.Object, DbType\&.SByte, DbType\&.UInt16, DbType\&.UInt32, DbType\&.UInt64, DbType\&.VarNumeric\&.
+.PP
+The Default properties for this \fBDialect\fP should also be set - such as whether or not to use outer-joins and what the batch size should be\&. 
+.PP
+Definition at line 79 of file Dialect\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBSqlString\fP NHibernate\&.Dialect\&.Dialect\&.AppendIdentitySelectToInsert (\fBSqlString\fPinsertString)\fC [virtual]\fP"
+
+.PP
+Provided we \fBSupportsInsertSelectIdentity\fP, then attch the 'select identity' clause to the insert statement\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinsertString\fP The insert command 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The insert command with any necessary identity select clause attached\&. Note, if \fBSupportsInsertSelectIdentity\fP == false then the insert-string should be returned without modification\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\fP, \fBNHibernate\&.Dialect\&.MsSql2000Dialect\fP, \fBNHibernate\&.Dialect\&.SybaseASE15Dialect\fP, \fBNHibernate\&.Dialect\&.SQLiteDialect\fP, and \fBNHibernate\&.Dialect\&.PostgreSQL81Dialect\fP\&.
+.PP
+Definition at line 840 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.AppendLockHint (\fBLockMode\fPlockMode, stringtableName)\fC [virtual]\fP"
+
+.PP
+Some dialects support an alternative means to \fCSELECT FOR UPDATE\fP, whereby a 'lock hint' is appends to the table name in the from clause\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlockMode\fP The lock mode to apply 
+.br
+\fItableName\fP The name of the table to which to apply the lock hint\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The table with any required lock hints\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.MsSql2000Dialect\fP, \fBNHibernate\&.Dialect\&.SybaseASE15Dialect\fP, and \fBNHibernate\&.Dialect\&.MsSql2005Dialect\fP\&.
+.PP
+Definition at line 552 of file Dialect\&.cs\&.
+.SS "virtual \fBSqlString\fP NHibernate\&.Dialect\&.Dialect\&.ApplyLocksToSql (\fBSqlString\fPsql, IDictionary< string, \fBLockMode\fP >aliasedLockModes, IDictionary< string, string[]>keyColumnNames)\fC [virtual]\fP"
+
+.PP
+Modifies the given SQL by applying the appropriate updates for the specified lock modes and key columns\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsql\fP the SQL string to modify 
+.br
+\fIaliasedLockModes\fP a map of lock modes indexed by aliased table names\&. 
+.br
+\fIkeyColumnNames\fP a map of key columns indexed by aliased table names\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the modified SQL string\&. 
+.RE
+.PP
+.PP
+The behavior here is that of an ANSI SQL \fCSELECT FOR UPDATE\fP\&. This method is really intended to allow dialects which do not support \fCSELECT FOR UPDATE\fP to achieve this in their own fashion\&. 
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.MsSql2000Dialect\fP, and \fBNHibernate\&.Dialect\&.SybaseASE15Dialect\fP\&.
+.PP
+Definition at line 540 of file Dialect\&.cs\&.
+.SS "virtual \fBISQLExceptionConverter\fP NHibernate\&.Dialect\&.Dialect\&.BuildSQLExceptionConverter ()\fC [virtual]\fP"
+
+.PP
+Build an instance of the ISQLExceptionConverter preferred by this dialect for converting System\&.Data\&.Common\&.DbException into \fBNHibernate\fP's \fBADOException\fP hierarchy\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBDialect\fP's preferred ISQLExceptionConverter\&. 
+.RE
+.PP
+.PP
+The default \fBDialect\fP implementation simply returns a converter based on X/Open SQLState codes\&. 
+.PP
+It is strongly recommended that specific \fBDialect\fP implementations override this method, since interpretation of a SQL error is much more accurate when based on the ErrorCode rather than the SQLState\&. Unfortunately, the ErrorCode is a vendor-specific approach\&. 
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.InformixDialect\fP\&.
+.PP
+Definition at line 2251 of file Dialect\&.cs\&.
+.SS "virtual \fBCaseFragment\fP NHibernate\&.Dialect\&.Dialect\&.CreateCaseFragment ()\fC [virtual]\fP"
+
+.PP
+Create a CaseFragment strategy responsible for handling this dialect's variations in how CASE statements are handled\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+This dialect's CaseFragment strategy\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.Oracle8iDialect\fP, and \fBNHibernate\&.Dialect\&.Oracle9iDialect\fP\&.
+.PP
+Definition at line 1132 of file Dialect\&.cs\&.
+.SS "virtual \fBJoinFragment\fP NHibernate\&.Dialect\&.Dialect\&.CreateOuterJoinFragment ()\fC [virtual]\fP"
+
+.PP
+Create a JoinFragment strategy responsible for handling this dialect's variations in how joins are handled\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+This dialect's JoinFragment strategy\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.InformixDialect\fP, \fBNHibernate\&.Dialect\&.Oracle8iDialect\fP, \fBNHibernate\&.Dialect\&.InformixDialect0940\fP, and \fBNHibernate\&.Dialect\&.Oracle10gDialect\fP\&.
+.PP
+Definition at line 1121 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.DropTemporaryTableAfterUse ()\fC [virtual]\fP"
+
+.PP
+Do we need to drop the temporary table after use? 
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.Oracle8iDialect\fP, \fBNHibernate\&.Dialect\&.MsSql2000Dialect\fP, \fBNHibernate\&.Dialect\&.SQLiteDialect\fP, and \fBNHibernate\&.Dialect\&.SybaseASE15Dialect\fP\&.
+.PP
+Definition at line 626 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GenerateTemporaryTableName (stringbaseTableName)\fC [virtual]\fP"
+
+.PP
+Generate a temporary table name given the bas table\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbaseTableName\fP The table name from which to base the temp table name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The generated temp table name\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.MsSql2000Dialect\fP, and \fBNHibernate\&.Dialect\&.SybaseASE15Dialect\fP\&.
+.PP
+Definition at line 595 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetAddForeignKeyConstraintString (stringconstraintName, string[]foreignKey, stringreferencedTable, string[]primaryKey, boolreferencesPrimaryKey)\fC [virtual]\fP"
+
+.PP
+The syntax used to add a foreign key constraint to a table\&. If SupportsForeignKeyConstraintInAlterTable is false, the returned string will be added to the create table statement instead\&. In this case, extra strings, like 'add', that apply when using alter table should be omitted\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconstraintName\fP The FK constraint name\&. 
+.br
+\fIforeignKey\fP The names of the columns comprising the FK 
+.br
+\fIreferencedTable\fP The table referenced by the FK 
+.br
+\fIprimaryKey\fP The explicit columns in the referencedTable referenced by this FK\&. 
+.br
+\fIreferencesPrimaryKey\fP if false, constraint should be explicit about which column names the constraint refers to 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the 'add FK' fragment 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.InformixDialect\fP, and \fBNHibernate\&.Dialect\&.MySQLDialect\fP\&.
+.PP
+Definition at line 330 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetAddPrimaryKeyConstraintString (stringconstraintName)\fC [virtual]\fP"
+
+.PP
+The syntax used to add a primary key constraint to a table 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconstraintName\fP 
+.RE
+.PP
+
+.PP
+Definition at line 358 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetCastTypeName (\fBSqlType\fPsqlType)\fC [virtual]\fP"
+
+.PP
+Get the name of the database type appropriate for casting operations (via the CAST() SQL function) for the given SqlType typecode\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlType\fP The SqlType typecode 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The database type name 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.MySQLDialect\fP\&.
+.PP
+Definition at line 248 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetCreateSequenceString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+Typically dialects which support sequences can create a sequence with a single command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP The name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sequence creation command 
+.RE
+.PP
+.PP
+This is convenience form of \fBGetCreateSequenceStrings(string,int,int)\fP to help facilitate that\&. Dialects which support sequences and can create a sequence in a single command need \fIonly\fP override this method\&. Dialects which support sequences but require multiple commands to create a sequence should instead override \fBGetCreateSequenceStrings(string,int,int)\fP\&. 
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.Oracle8iDialect\fP, \fBNHibernate\&.Dialect\&.DB2Dialect\fP, \fBNHibernate\&.Dialect\&.FirebirdDialect\fP, \fBNHibernate\&.Dialect\&.SybaseSQLAnywhere12Dialect\fP, \fBNHibernate\&.Dialect\&.OracleLiteDialect\fP, \fBNHibernate\&.Dialect\&.PostgreSQLDialect\fP, \fBNHibernate\&.Dialect\&.InformixDialect0940\fP, and \fBNHibernate\&.Dialect\&.MsSql2012Dialect\fP\&.
+.PP
+Definition at line 1013 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetCreateSequenceString (stringsequenceName, intinitialValue, intincrementSize)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Overloaded form of \fBGetCreateSequenceString(string)\fP, additionally taking the initial value and increment size to be applied to the sequence definition\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP The name of the sequence 
+.br
+\fIinitialValue\fP The initial value to apply to 'create sequence' statement 
+.br
+\fIincrementSize\fP The increment value to apply to 'create sequence' statement 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sequence creation command 
+.RE
+.PP
+.PP
+The default definition is to suffix \fBGetCreateSequenceString(string,int,int)\fP with the string: ' start with {initialValue} increment by {incrementSize}' where {initialValue} and {incrementSize} are replacement placeholders\&. Generally dialects should only need to override this method if different key phrases are used to apply the allocation information\&. 
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.OracleLiteDialect\fP, and \fBNHibernate\&.Dialect\&.MsSql2012Dialect\fP\&.
+.PP
+Definition at line 1046 of file Dialect\&.cs\&.
+.SS "virtual string [] NHibernate\&.Dialect\&.Dialect\&.GetCreateSequenceStrings (stringsequenceName, intinitialValue, intincrementSize)\fC [virtual]\fP"
+
+.PP
+An optional multi-line form for databases which \fBSupportsPooledSequences\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP The name of the sequence 
+.br
+\fIinitialValue\fP The initial value to apply to 'create sequence' statement 
+.br
+\fIincrementSize\fP The increment value to apply to 'create sequence' statement 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sequence creation commands 
+.RE
+.PP
+
+.PP
+Definition at line 1025 of file Dialect\&.cs\&.
+.SS "static \fBDialect\fP NHibernate\&.Dialect\&.Dialect\&.GetDialect ()\fC [static]\fP"
+
+.PP
+Get an instance of the dialect specified by the current Cfg\&.Environment properties\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The specified \fBDialect\fP 
+.RE
+.PP
+
+.PP
+Definition at line 138 of file Dialect\&.cs\&.
+.SS "static \fBDialect\fP NHibernate\&.Dialect\&.Dialect\&.GetDialect (IDictionary< string, string >props)\fC [static]\fP"
+
+.PP
+Get \fBDialect\fP from a property bag (prop name Cfg\&.Environment\&.Dialect) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprops\fP The property bag\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An instance of \fBDialect\fP\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentNullException\fP When \fIprops\fP  is null\&.
+.br
+\fI\fBHibernateException\fP\fP When the property bag don't contains de property Cfg\&.Environment\&.Dialect\&.
+.RE
+.PP
+
+.PP
+Definition at line 159 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetDropForeignKeyConstraintString (stringconstraintName)\fC [virtual]\fP"
+
+.PP
+The syntax used to drop a foreign key constraint from a table\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconstraintName\fP The name of the foreign key constraint to drop\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The SQL string to drop the foreign key constraint\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.MySQLDialect\fP\&.
+.PP
+Definition at line 703 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetDropIndexConstraintString (stringconstraintName)\fC [virtual]\fP"
+
+.PP
+The syntax used to drop an index constraint from a table\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconstraintName\fP The name of the index constraint to drop\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The SQL string to drop the primary key constraint\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.MySQLDialect\fP\&.
+.PP
+Definition at line 773 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetDropPrimaryKeyConstraintString (stringconstraintName)\fC [virtual]\fP"
+
+.PP
+The syntax used to drop a primary key constraint from a table\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconstraintName\fP The name of the primary key constraint to drop\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The SQL string to drop the primary key constraint\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.MySQLDialect\fP\&.
+.PP
+Definition at line 761 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetDropSequenceString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+Typically dialects which support sequences can drop a sequence with a single command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP The name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sequence drop commands 
+.RE
+.PP
+.PP
+This is convenience form of \fBGetDropSequenceStrings\fP to help facilitate that\&.
+.PP
+Dialects which support sequences and can drop a sequence in a single command need \fIonly\fP override this method\&. Dialects which support sequences but require multiple commands to drop a sequence should instead override \fBGetDropSequenceStrings\fP\&. 
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.Oracle8iDialect\fP, \fBNHibernate\&.Dialect\&.DB2Dialect\fP, \fBNHibernate\&.Dialect\&.FirebirdDialect\fP, \fBNHibernate\&.Dialect\&.SybaseSQLAnywhere12Dialect\fP, \fBNHibernate\&.Dialect\&.PostgreSQLDialect\fP, \fBNHibernate\&.Dialect\&.InformixDialect0940\fP, \fBNHibernate\&.Dialect\&.MsSql2012Dialect\fP, and \fBNHibernate\&.Dialect\&.PostgreSQL82Dialect\fP\&.
+.PP
+Definition at line 970 of file Dialect\&.cs\&.
+.SS "virtual string [] NHibernate\&.Dialect\&.Dialect\&.GetDropSequenceStrings (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+The multiline script used to drop a sequence\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP The name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sequence drop commands 
+.RE
+.PP
+
+.PP
+Definition at line 980 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetDropTableString (stringtableName)\fC [virtual]\fP"
+
+.PP
+Return SQL needed to drop the named table\&. May (and should) use some form of 'if exists' clause, and cascade constraints\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItableName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.MsSql2000Dialect\fP\&.
+.PP
+Definition at line 567 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetForUpdateNowaitString (stringaliases)\fC [virtual]\fP"
+
+.PP
+Get the \fCFOR UPDATE OF column_list NOWAIT\fP fragment appropriate for this dialect given the aliases of the columns to be write locked\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaliases\fP The columns to be write locked\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate \fCFOR UPDATE colunm_list NOWAIT\fP clause string\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.Oracle8iDialect\fP, and \fBNHibernate\&.Dialect\&.PostgreSQL81Dialect\fP\&.
+.PP
+Definition at line 522 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetForUpdateString (\fBLockMode\fPlockMode)\fC [virtual]\fP"
+
+.PP
+Given a lock mode, determine the appropriate for update fragment to use\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlockMode\fP The lock mode to apply\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate for update fragment\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\fP\&.
+.PP
+Definition at line 449 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetForUpdateString (stringaliases)\fC [virtual]\fP"
+
+.PP
+Get the \fCFOR UPDATE OF column_list\fP fragment appropriate for this dialect given the aliases of the columns to be write locked\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaliases\fP The columns to be write locked\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate \fCFOR UPDATE OF column_list\fP clause string\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.Oracle8iDialect\fP, \fBNHibernate\&.Dialect\&.InformixDialect\fP, and \fBNHibernate\&.Dialect\&.PostgreSQLDialect\fP\&.
+.PP
+Definition at line 499 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetIdentityColumnString (DbTypetype)\fC [virtual]\fP"
+
+.PP
+The syntax used during DDL to define a column as being an IDENTITY of a particular type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The DbType type code\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate DDL fragment\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.InformixDialect\fP, and \fBNHibernate\&.Dialect\&.PostgreSQL81Dialect\fP\&.
+.PP
+Definition at line 873 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetIdentitySelectString (stringidentityColumn, stringtableName, DbTypetype)\fC [virtual]\fP"
+
+.PP
+Get the select command to use to retrieve the last generated IDENTITY value for a particular table 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItableName\fP The table into which the insert was done 
+.br
+\fIidentityColumn\fP The PK column\&. 
+.br
+\fItype\fP The DbType type code\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate select command 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.InformixDialect\fP\&.
+.PP
+Definition at line 853 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetIfExistsDropConstraint (\fBTable\fPtable, stringname)\fC [virtual]\fP"
+
+.PP
+The syntax that is used to check if a constraint exists before dropping it 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItable\fP The table\&.
+.br
+\fIname\fP The name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.MsSql2000Dialect\fP\&.
+.PP
+Definition at line 737 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetIfExistsDropConstraintEnd (\fBTable\fPtable, stringname)\fC [virtual]\fP"
+
+.PP
+The syntax that is used to close the if for a constraint exists check, used for dialects that requires begin/end for ifs 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItable\fP The table\&.
+.br
+\fIname\fP The name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 749 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetIfNotExistsCreateConstraint (\fBTable\fPtable, stringname)\fC [virtual]\fP"
+
+.PP
+The syntax that is used to check if a constraint does not exists before creating it 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItable\fP The table\&.
+.br
+\fIname\fP The name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.MsSql2000Dialect\fP\&.
+.PP
+Definition at line 714 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetIfNotExistsCreateConstraintEnd (\fBTable\fPtable, stringname)\fC [virtual]\fP"
+
+.PP
+The syntax that is used to close the if for a constraint exists check, used for dialects that requires begin/end for ifs 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItable\fP The table\&.
+.br
+\fIname\fP The name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 726 of file Dialect\&.cs\&.
+.SS "virtual \fBSqlString\fP NHibernate\&.Dialect\&.Dialect\&.GetLimitString (\fBSqlString\fPqueryString, \fBSqlString\fPoffset, \fBSqlString\fPlimit)\fC [virtual]\fP"
+
+.PP
+Attempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryString\fP The SqlString to base the limit query off\&.
+.br
+\fIoffset\fP Offset of the first row to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no limit is requested\&. This should have already been adjusted to account for OffsetStartsAtOne\&.
+.br
+\fIlimit\fP Maximum number of rows to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no offset is requested\&. This should have already been adjusted to account for UseMaxForLimit\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new SqlString that contains the \fCLIMIT\fP clause\&. Returns \fCnull\fP if \fIqueryString\fP  represents a SQL statement to which a limit clause cannot be added, for example when the query string is custom SQL invoking a stored procedure\&.
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\fP, \fBNHibernate\&.Dialect\&.InformixDialect\fP, \fBNHibernate\&.Dialect\&.MsSql2000Dialect\fP, \fBNHibernate\&.Dialect\&.Oracle8iDialect\fP, \fBNHibernate\&.Dialect\&.SQLiteDialect\fP, \fBNHibernate\&.Dialect\&.DB2Dialect\fP, \fBNHibernate\&.Dialect\&.FirebirdDialect\fP, \fBNHibernate\&.Dialect\&.MySQLDialect\fP, \fBNHibernate\&.Dialect\&.PostgreSQLDialect\fP, \fBNHibernate\&.Dialect\&.MsSqlCeDialect\fP, \fBNHibernate\&.Dialect\&.SybaseASA9Dialect\fP, \fBNHibernate\&.Dialect\&.MsSql2012Dialect\fP, \fBNHibernate\&.Dialect\&.DB2400Dialect\fP, \fBNHibernate\&.Dialect\&.Ingres9Dialect\fP, \fBNHibernate\&.Dialect\&.MsSql2005Dialect\fP, and \fBNHibernate\&.Dialect\&.MsSqlCe40Dialect\fP\&.
+.PP
+Definition at line 1463 of file Dialect\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.Dialect\&.Dialect\&.GetLimitString (\fBSqlString\fPqueryString, int?offset, int?limit, \fBParameter\fPoffsetParameter, \fBParameter\fPlimitParameter)"
+
+.PP
+Attempts to generate a string to limit the result set to a number of maximum results with a specified offset into the results\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. Performs error checking based on the various dialect limit support options\&. If both parameters and fixed valeus are specified, this will use the parameter option if possible\&. Otherwise, it will fall back to a fixed string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryString\fP 
+.br
+\fIoffset\fP 
+.br
+\fIlimit\fP 
+.br
+\fIoffsetParameter\fP 
+.br
+\fIlimitParameter\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 1480 of file Dialect\&.cs\&.
+.SS "int NHibernate\&.Dialect\&.Dialect\&.GetLimitValue (intoffset, intlimit)"
+
+.PP
+Some databases require that a limit statement contain the maximum row number instead of the number of rows to retrieve\&. This method adjusts source limit and offset values to account for this\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoffset\fP 
+.br
+\fIlimit\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 1518 of file Dialect\&.cs\&.
+.SS "virtual \fBILockingStrategy\fP NHibernate\&.Dialect\&.Dialect\&.GetLockingStrategy (\fBILockable\fPlockable, \fBLockMode\fPlockMode)\fC [virtual]\fP"
+
+.PP
+Get a strategy instance which knows how to acquire a database-level lock of the specified mode for this dialect\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlockable\fP The persister for the entity to be locked\&. 
+.br
+\fIlockMode\fP The type of lock to be acquired\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate locking strategy\&. 
+.RE
+.PP
+
+.PP
+Definition at line 439 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetLongestTypeName (DbTypedbType)\fC [virtual]\fP"
+
+.PP
+Gets the name of the longest registered type for a particular DbType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdbType\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 237 of file Dialect\&.cs\&.
+.SS "int NHibernate\&.Dialect\&.Dialect\&.GetOffsetValue (intoffset)"
+
+.PP
+Some databases use limit row offsets that start at one instead of zero\&. This method adjusts a desired offset using the OffsetStartsAtOne flag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoffset\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 1535 of file Dialect\&.cs\&.
+.SS "virtual DbDataReader NHibernate\&.Dialect\&.Dialect\&.GetResultSet (DbCommandstatement)\fC [virtual]\fP"
+
+.PP
+Given a callable statement previously processed by \fBRegisterResultSetOutParameter\fP, extract the DbDataReader from the OUT parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstatement\fP The callable statement\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The extracted result set\&. 
+.RE
+.PP
+<throws> SQLException Indicates problems extracting the result set\&. </throws> 
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\fP, \fBNHibernate\&.Dialect\&.SybaseASE15Dialect\fP, and \fBNHibernate\&.Dialect\&.InformixDialect\fP\&.
+.PP
+Definition at line 657 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetSelectClauseNullString (\fBSqlType\fPsqlType)\fC [virtual]\fP"
+
+.PP
+Given a DbType type code, determine an appropriate null value to use in a select clause\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlType\fP The DbType type code\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate select clause value fragment\&. 
+.RE
+.PP
+.PP
+One thing to consider here is that certain databases might require proper casting for the nulls here since the select here will be part of a UNION/UNION ALL\&. 
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.Oracle8iDialect\fP, \fBNHibernate\&.Dialect\&.PostgreSQLDialect\fP, and \fBNHibernate\&.Dialect\&.Oracle9iDialect\fP\&.
+.PP
+Definition at line 1784 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetSelectSequenceNextValString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+Generate the select expression fragment that will retrieve the next value of a sequence as part of another (typically DML) statement\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP the name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The 'nextval' fragment\&. 
+.RE
+.PP
+.PP
+This differs from \fBGetSequenceNextValString\fP in that this should return an expression usable within another statement\&. 
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.Oracle8iDialect\fP, \fBNHibernate\&.Dialect\&.DB2Dialect\fP, \fBNHibernate\&.Dialect\&.FirebirdDialect\fP, \fBNHibernate\&.Dialect\&.SybaseSQLAnywhere12Dialect\fP, \fBNHibernate\&.Dialect\&.PostgreSQLDialect\fP, \fBNHibernate\&.Dialect\&.InformixDialect0940\fP, and \fBNHibernate\&.Dialect\&.MsSql2012Dialect\fP\&.
+.PP
+Definition at line 995 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetSequenceNextValString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+Generate the appropriate select statement to to retreive the next value of a sequence\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP the name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+String The 'nextval' select string\&. 
+.RE
+.PP
+.PP
+This should be a 'stand alone' select statement\&.
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.Oracle8iDialect\fP, \fBNHibernate\&.Dialect\&.DB2Dialect\fP, \fBNHibernate\&.Dialect\&.FirebirdDialect\fP, \fBNHibernate\&.Dialect\&.SybaseSQLAnywhere12Dialect\fP, \fBNHibernate\&.Dialect\&.PostgreSQLDialect\fP, \fBNHibernate\&.Dialect\&.InformixDialect0940\fP, and \fBNHibernate\&.Dialect\&.MsSql2012Dialect\fP\&.
+.PP
+Definition at line 950 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetTypeName (\fBSqlType\fPsqlType)\fC [virtual]\fP"
+
+.PP
+Get the name of the database type associated with the given \fBSqlTypes\&.SqlType\fP, 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlType\fP The SqlType
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The database type name used by ddl\&.
+.RE
+.PP
+
+.PP
+Definition at line 196 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.GetTypeName (\fBSqlType\fPsqlType, intlength, intprecision, intscale)\fC [virtual]\fP"
+
+.PP
+Get the name of the database type associated with the given SqlType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlType\fP The SqlType 
+.br
+\fIlength\fP The datatype length 
+.br
+\fIprecision\fP The datatype precision 
+.br
+\fIscale\fP The datatype scale 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The database type name used by ddl\&.
+.RE
+.PP
+
+.PP
+Definition at line 222 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.IsQuoted (stringname)\fC [virtual]\fP"
+
+.PP
+Checks to see if the name has been quoted\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name to check if it is quoted
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if name is already quoted\&.
+.RE
+.PP
+.PP
+The default implementation is to compare the first character to \fBDialect\&.OpenQuote\fP and the last char to \fBDialect\&.CloseQuote\fP 
+.PP
+Definition at line 1572 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.PerformTemporaryTableDDLInIsolation ()\fC [virtual]\fP"
+
+.PP
+Does the dialect require that temporary table DDL statements occur in isolation from other statements? This would be the case if the creation would cause any current transaction to get committed implicitly\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+see the result matrix above\&. 
+.RE
+.PP
+.PP
+JDBC defines a standard way to query for this information via the \fBjava\&.sql\&.DatabaseMetaData#dataDefinitionCausesTransactionCommit()\fP method\&. However, that does not distinguish between temporary table DDL and other forms of DDL; MySQL, for example, reports DDL causing a transaction commit via its driver, even though that is not the case for temporary table DDL\&. 
+.PP
+Possible return values and their meanings:
+.PD 0
+
+.IP "\(bu" 2
+\fBBoolean#TRUE\fP - Unequivocally, perform the temporary table DDL in isolation\&. 
+.IP "\(bu" 2
+\fBBoolean#FALSE\fP - Unequivocally, do \fBnot\fP perform the temporary table DDL in isolation\&. 
+.IP "\(bu" 2
+\fInull\fP - defer to the JDBC driver response in regards to \fBjava\&.sql\&.DatabaseMetaData#dataDefinitionCausesTransactionCommit()\fP 
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\fP, and \fBNHibernate\&.Dialect\&.InformixDialect\fP\&.
+.PP
+Definition at line 620 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.Quote (stringname)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Quotes a name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The string that needs to be Quoted\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A QuotedName 
+.RE
+.PP
+.PP
+This method assumes that the name is not already Quoted\&. So if the name passed in is \fC'name</c> then it will return <c>'''name'</c>\&.  It escapes the first char
+- the ' with '' and encloses the escaped string with OpenQuote and CloseQuote\&. \fP
+.PP
+\fC \fP
+.PP
+\fC \fP
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.MsSql2000Dialect\fP\&.
+.PP
+Definition at line 1608 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.QuoteForAliasName (stringaliasName)\fC [virtual]\fP"
+
+.PP
+Quotes a name for being used as a aliasname Original implementation calls \fBQuoteForTableName\fP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaliasName\fP Name of the alias
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A Quoted name in the format of OpenQuote + aliasName + CloseQuote
+.RE
+.PP
+.PP
+If the aliasName is already enclosed in the OpenQuote and CloseQuote then this method will return the aliasName that was passed in without going through any Quoting process\&. So if aliasName is passed in already Quoted make sure that you have escaped all of the chars according to your DataBase's specifications\&. 
+.PP
+Definition at line 1637 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.QuoteForColumnName (stringcolumnName)\fC [virtual]\fP"
+
+.PP
+Quotes a name for being used as a columnname Original implementation calls \fBQuoteForTableName\fP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnName\fP Name of the column
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A Quoted name in the format of OpenQuote + columnName + CloseQuote
+.RE
+.PP
+.PP
+If the columnName is already enclosed in the OpenQuote and CloseQuote then this method will return the columnName that was passed in without going through any Quoting process\&. So if columnName is passed in already Quoted make sure that you have escaped all of the chars according to your DataBase's specifications\&. 
+.PP
+Definition at line 1656 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.QuoteForSchemaName (stringschemaName)\fC [virtual]\fP"
+
+.PP
+Quotes a name for being used as a schemaname 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIschemaName\fP Name of the schema
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A Quoted name in the format of OpenQuote + schemaName + CloseQuote
+.RE
+.PP
+.PP
+If the schemaName is already enclosed in the OpenQuote and CloseQuote then this method will return the schemaName that was passed in without going through any Quoting process\&. So if schemaName is passed in already Quoted make sure that you have escaped all of the chars according to your DataBase's specifications\&. 
+.PP
+Definition at line 1692 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.QuoteForTableName (stringtableName)\fC [virtual]\fP"
+
+.PP
+Quotes a name for being used as a tablename 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItableName\fP Name of the table
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A Quoted name in the format of OpenQuote + tableName + CloseQuote
+.RE
+.PP
+.PP
+If the tableName is already enclosed in the OpenQuote and CloseQuote then this method will return the tableName that was passed in without going through any Quoting process\&. So if tableName is passed in already Quoted make sure that you have escaped all of the chars according to your DataBase's specifications\&. 
+.PP
+Definition at line 1674 of file Dialect\&.cs\&.
+.SS "void NHibernate\&.Dialect\&.Dialect\&.RegisterColumnType (DbTypecode, intcapacity, stringname)\fC [protected]\fP"
+
+.PP
+Subclasses register a typename for the given type code and maximum column length\&. \fC$l\fP in the type name will be replaced by the column length (if appropriate) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcode\fP The typecode
+.br
+\fIcapacity\fP Maximum length of database type
+.br
+\fIname\fP The database type name
+.RE
+.PP
+
+.PP
+Definition at line 261 of file Dialect\&.cs\&.
+.SS "void NHibernate\&.Dialect\&.Dialect\&.RegisterColumnType (DbTypecode, stringname)\fC [protected]\fP"
+
+.PP
+Subclasses register a typename for the given type code\&. \fC$l\fP in the typename will be replaced by the column length (if appropriate)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcode\fP The typecode
+.br
+\fIname\fP The database type name
+.RE
+.PP
+
+.PP
+Definition at line 272 of file Dialect\&.cs\&.
+.SS "virtual int NHibernate\&.Dialect\&.Dialect\&.RegisterResultSetOutParameter (DbCommandstatement, intposition)\fC [virtual]\fP"
+
+.PP
+Registers an OUT parameter which will be returing a DbDataReader\&. How this is accomplished varies greatly from DB to DB, hence its inclusion (along with \fBgetResultSet\fP) here\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstatement\fP The callable statement\&. 
+.br
+\fIposition\fP The bind position at which to register the OUT param\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of (contiguous) bind positions used\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\fP, \fBNHibernate\&.Dialect\&.SybaseASE15Dialect\fP, and \fBNHibernate\&.Dialect\&.InformixDialect\fP\&.
+.PP
+Definition at line 645 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.ToBooleanValueString (boolvalue)\fC [virtual]\fP"
+
+.PP
+The SQL literal value to which this database maps boolean values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The boolean value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate SQL literal\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.InformixDialect\fP, and \fBNHibernate\&.Dialect\&.PostgreSQLDialect\fP\&.
+.PP
+Definition at line 1140 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.UnQuote (stringquoted)\fC [virtual]\fP"
+
+.PP
+Unquotes and unescapes an already quoted name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIquoted\fP Quoted string
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Unquoted string
+.RE
+.PP
+.PP
+This method checks the string \fCquoted\fP to see if it is quoted\&. If the string \fCquoted\fP is already enclosed in the OpenQuote and CloseQuote then those chars are removed\&. 
+.PP
+After the OpenQuote and CloseQuote have been cleaned from the string \fCquoted\fP then any chars in the string \fCquoted\fP that have been escaped by doubling them up are changed back to a single version\&. 
+.PP
+The following quoted values return these results 'quoted' = quoted 'quote''d' = quote'd
+quote''d = quote'd 
+.PP
+If this implementation is not sufficient for your \fBDialect\fP then it needs to be overridden\&. \fBMsSql2000Dialect\fP is an example of where UnQuoting rules are different\&. 
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.MsSql2000Dialect\fP\&.
+.PP
+Definition at line 1724 of file Dialect\&.cs\&.
+.SS "virtual string [] NHibernate\&.Dialect\&.Dialect\&.UnQuote (string[]quoted)\fC [virtual]\fP"
+
+.PP
+Unquotes an array of Quoted Names\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIquoted\fP strings to Unquote
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an array of unquoted strings\&.
+.RE
+.PP
+.PP
+This use \fBUnQuote(string)\fP for each string in the quoted array so it should not need to be overridden - only \fBUnQuote(string)\fP needs to be overridden unless this implementation is not sufficient\&. 
+.PP
+Definition at line 1757 of file Dialect\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const string NHibernate\&.Dialect\&.Dialect\&.PossibleClosedQuoteChars = '`'\\']'"
+
+.PP
+Characters used for closing quoted sql identifiers 
+.PP
+Definition at line 41 of file Dialect\&.cs\&.
+.SS "const string NHibernate\&.Dialect\&.Dialect\&.PossibleQuoteChars = '`'\\'['"
+
+.PP
+Characters used for quoting sql identifiers 
+.PP
+Definition at line 38 of file Dialect\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.AddColumnString\fC [get]\fP"
+
+.PP
+The syntax used to add a column to a table\&. Note this is deprecated 
+.PP
+Definition at line 2173 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.AreStringComparisonsCaseInsensitive\fC [get]\fP"
+
+.PP
+Are string comparisons implicitly case insensitive\&. In other words, does [where 'XYZ' = 'xyz'] resolve to true? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if comparisons are case insensitive\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1818 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.CascadeConstraintsString\fC [get]\fP"
+
+.PP
+Completely optional cascading drop clause 
+.PP
+Definition at line 782 of file Dialect\&.cs\&.
+.SS "virtual char NHibernate\&.Dialect\&.Dialect\&.CloseQuote\fC [get]\fP"
+
+.PP
+The closing quote for a quoted identifier\&. 
+.PP
+Definition at line 1559 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.CreateMultisetTableString\fC [get]\fP"
+
+.PP
+Slight variation on \fBCreateTableString\fP\&. The command used to create a multiset table\&. Here, we have the command used to create a table when there is no primary key and duplicate rows are expected\&. 
+.PP
+Most databases do not care about the distinction; originally added for Teradata support which does care\&. 
+.PP
+Definition at line 2097 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.CreateTableString\fC [get]\fP"
+
+.PP
+Command used to create a table\&. 
+.PP
+Definition at line 2081 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.CreateTemporaryTablePostfix\fC [get]\fP"
+
+.PP
+Get any fragments needing to be postfixed to the command for temporary table creation\&. 
+.PP
+Definition at line 2112 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.CreateTemporaryTableString\fC [get]\fP"
+
+.PP
+Command used to create a temporary table\&. 
+.PP
+Definition at line 2103 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.CurrentTimestampSelectString\fC [get]\fP"
+
+.PP
+Retrieve the command used to retrieve the current timestammp from the database\&. 
+.PP
+Definition at line 2130 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.CurrentTimestampSQLFunctionName\fC [get]\fP"
+
+.PP
+The name of the database-specific SQL function for retrieving the current timestamp\&. 
+.PP
+Definition at line 2139 of file Dialect\&.cs\&.
+.SS "IDictionary<string, string> NHibernate\&.Dialect\&.Dialect\&.DefaultProperties\fC [get]\fP"
+
+.PP
+Retrieve a set of default Hibernate properties for this database\&. 
+.PP
+Definition at line 2047 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.DisableForeignKeyConstraintsString\fC [get]\fP"
+
+.PP
+Only needed if the \fBDialect\fP does not have SupportsForeignKeyConstraintInAlterTable\&. 
+.PP
+Definition at line 788 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.DoesReadCommittedCauseWritersToBlockReaders\fC [get]\fP"
+
+.PP
+For the underlying database, is READ_COMMITTED isolation implemented by forcing readers to wait for write locks to be released? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if writers block readers to achieve READ_COMMITTED; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 2009 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.DoesRepeatableReadCauseReadersToBlockWriters\fC [get]\fP"
+
+.PP
+For the underlying database, is REPEATABLE_READ isolation implemented by forcing writers to wait for read locks to be released? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if readers block writers to achieve REPEATABLE_READ; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 2019 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.DropConstraints\fC [get]\fP"
+
+.PP
+Do we need to drop constraints before dropping tables in the dialect? 
+.PP
+Definition at line 285 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.EnableForeignKeyConstraintsString\fC [get]\fP"
+
+.PP
+Only needed if the \fBDialect\fP does not have SupportsForeignKeyConstraintInAlterTable\&. 
+.PP
+Definition at line 794 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.ForUpdateNowaitString\fC [get]\fP"
+
+.PP
+Retrieves the \fCFOR UPDATE NOWAIT\fP syntax specific to this dialect The appropriate \fCFOR UPDATE NOWAIT\fP clause string\&.
+.PP
+Definition at line 511 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.ForUpdateOfColumns\fC [get]\fP"
+
+.PP
+Is \fCFOR UPDATE OF\fP syntax supported? True if the database supports \fCFOR UPDATE OF\fP syntax; false otherwise\&. 
+.PP
+Definition at line 479 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.ForUpdateString\fC [get]\fP"
+
+.PP
+Get the string to append to SELECT statements to acquire locks for this dialect\&. The appropriate \fCFOR UPDATE\fP clause string\&.
+.PP
+Definition at line 472 of file Dialect\&.cs\&.
+.SS "virtual IDictionary<string, \fBISQLFunction\fP> NHibernate\&.Dialect\&.Dialect\&.Functions\fC [get]\fP"
+
+.PP
+Aggregate SQL functions as defined in general\&. This is a case-insensitive hashtable! The results of this method should be integrated with the specialization's data\&. 
+.PP
+Definition at line 2060 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.GenerateTablePrimaryKeyConstraintForIdentityColumn\fC [get]\fP"
+
+.PP
+Set this to false if no table-level primary key constraint should be generated when an identity column has been specified for the table\&. This is used as a work-around for SQLite so it doesn't tell us we have 'more than one primary key'\&. 
+.PP
+Definition at line 891 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.HasDataTypeInIdentityColumn\fC [get]\fP"
+
+.PP
+Whether this dialect has an identity clause added to the data type or a completely separate identity data type\&. 
+.PP
+Definition at line 826 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.IdentityColumnString\fC [get]\fP"
+
+.PP
+The keyword used to specify an identity column, if native key generation is supported 
+.PP
+Definition at line 882 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.IdentityInsertString\fC [get]\fP"
+
+.PP
+The keyword used to insert a generated value into an identity column (or null)\&. Need if the dialect does not support inserts that specify no column values\&. 
+.PP
+Definition at line 910 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.IdentitySelectString\fC [get]\fP"
+
+.PP
+Get the select command to use to retrieve the last generated IDENTITY value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate select command 
+.RE
+.PP
+
+.PP
+Definition at line 863 of file Dialect\&.cs\&.
+.SS "virtual System\&.Type NHibernate\&.Dialect\&.Dialect\&.IdentityStyleIdentifierGeneratorClass\fC [get]\fP"
+
+.PP
+The class (which implements \fBNHibernate\&.Id\&.IIdentifierGenerator\fP) which acts as this dialects identity-style generation strategy\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The native generator class\&. 
+.RE
+.PP
+.PP
+Comes into play whenever the user specifies the 'identity' generator\&. 
+.PP
+Definition at line 1073 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.IsCurrentTimestampSelectStringCallable\fC [get]\fP"
+
+.PP
+Should the value returned by \fBCurrentTimestampSelectString\fP be treated as callable\&. Typically this indicates that JDBC escape sytnax is being used\&.\&.\&. 
+.PP
+Definition at line 2122 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.LowercaseFunction\fC [get]\fP"
+
+.PP
+The name of the SQL function that transforms a string to lowercase 
+.PP
+Definition at line 2160 of file Dialect\&.cs\&.
+.SS "virtual System\&.Type NHibernate\&.Dialect\&.Dialect\&.NativeIdentifierGeneratorClass\fC [get]\fP"
+
+.PP
+The class (which implements \fBNHibernate\&.Id\&.IIdentifierGenerator\fP) which acts as this dialects native generation strategy\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The native generator class\&. 
+.RE
+.PP
+.PP
+Comes into play whenever the user specifies the native generator\&. 
+.PP
+Definition at line 1097 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.NoColumnsInsertString\fC [get]\fP"
+
+.PP
+The keyword used to insert a row without specifying any column values 
+.PP
+Definition at line 2152 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.NullColumnString\fC [get]\fP"
+
+.PP
+The keyword used to specify a nullable column 
+.PP
+Definition at line 2191 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.OffsetStartsAtOne\fC [get]\fP"
+
+.PP
+For limit clauses, indicates whether to use 0 or 1 as the offset that returns the first row\&. Should be true if the first row is at offset 1\&. 
+.PP
+Definition at line 1449 of file Dialect\&.cs\&.
+.SS "virtual char NHibernate\&.Dialect\&.Dialect\&.OpenQuote\fC [get]\fP"
+
+.PP
+The opening quote for a quoted identifier\&. 
+.PP
+Definition at line 1551 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.PrimaryKeyString\fC [get]\fP"
+
+.PP
+The keyword used to create a primary key constraint 
+.PP
+Definition at line 2199 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.QualifyIndexName\fC [get]\fP"
+
+.PP
+Do we need to qualify index names with the schema name? 
+.PP
+Definition at line 293 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.QuerySequencesString\fC [get]\fP"
+
+.PP
+Get the select command used retrieve the names of all sequences\&.
+.PP
+\fBReturns:\fP
+.RS 4
+The select command; or null if sequences are not supported\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1058 of file Dialect\&.cs\&.
+.SS "virtual string NHibernate\&.Dialect\&.Dialect\&.SelectGUIDString\fC [get]\fP"
+
+.PP
+Get the command used to select a GUID from the underlying database\&. (Optional operation\&.) 
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate command\&. 
+.RE
+.PP
+
+.PP
+Definition at line 2075 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsBindAsCallableArgument\fC [get]\fP"
+
+.PP
+Does this dialect support using a JDBC bind parameter as an argument to a function or procedure call? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if the database supports accepting bind params as args; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 2029 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsCircularCascadeDeleteConstraints\fC [get]\fP"
+
+.PP
+Does this dialect support definition of cascade delete constraints which can cause circular chains? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if circular cascade delete constraints are supported; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1900 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsColumnCheck\fC [get]\fP"
+
+.PP
+Does this dialect support column-level check constraints? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if column-level CHECK constraints are supported; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 402 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsCurrentTimestampSelection\fC [get]\fP"
+
+.PP
+Does this dialect support a way to retrieve the database's current timestamp value? 
+.PP
+Definition at line 668 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsEmptyInList\fC [get]\fP"
+
+.PP
+Does this dialect support empty IN lists? For example, is [where XYZ in ()] a supported construct? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if empty in lists are supported; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1808 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsExistsInSelect\fC [get]\fP"
+
+.PP
+Does the dialect support an exists statement in the select clause? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if exists checks are allowed in the select clause; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1999 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsExpectedLobUsagePattern\fC [get]\fP"
+
+.PP
+Expected LOB usage pattern is such that I can perform an insert via prepared statement with a parameter binding for a LOB value without crazy casting to JDBC driver implementation-specific classes\&.\&.\&. 
+.PP
+Part of the trickiness here is the fact that this is largely driver dependent\&. For example, Oracle (which is notoriously bad with LOB support in their drivers historically) actually does a pretty good job with LOB support as of the 10\&.2\&.x versions of their drivers\&.\&.\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if normal LOB usage patterns can be used with this driver; false if driver-specific hookiness needs to be applied\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1931 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsForeignKeyConstraintInAlterTable\fC [get]\fP"
+
+.PP
+Does this dialect support adding foreign key constraints via alter table? If not, it's assumed they can only be added through create table\&. 
+.PP
+Definition at line 315 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsIdentityColumns\fC [get]\fP"
+
+.PP
+Does this dialect support identity column key generation? 
+.PP
+Definition at line 808 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsIfExistsAfterTableName\fC [get]\fP"
+
+.PP
+Does the dialect support the syntax 'drop table NAME if exists' 
+.PP
+Definition at line 395 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsIfExistsBeforeTableName\fC [get]\fP"
+
+.PP
+Does the dialect support the syntax 'drop table if exists NAME' 
+.PP
+Definition at line 387 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsInsertSelectIdentity\fC [get]\fP"
+
+.PP
+Does the dialect support some form of inserting and selecting the generated IDENTITY value all in the same statement\&. 
+.PP
+Definition at line 817 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsLimit\fC [get]\fP"
+
+.PP
+Does this \fBDialect\fP have some kind of \fCLIMIT\fP syntax? False, unless overridden\&.
+.PP
+Definition at line 1405 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsLimitOffset\fC [get]\fP"
+
+.PP
+Does this \fBDialect\fP support an offset? 
+.PP
+Definition at line 1413 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsLobValueChangePropogation\fC [get]\fP"
+
+.PP
+Does the dialect support propagating changes to LOB values back to the database? Talking about mutating the internal value of the locator as opposed to supplying a new locator instance\&.\&.\&. 
+.PP
+For BLOBs, the internal value might be changed by: \fBjava\&.sql\&.Blob#setBinaryStream\fP, \fBjava\&.sql\&.Blob#setBytes(long, byte[])\fP, \fBjava\&.sql\&.Blob#setBytes(long, byte[], int, int)\fP, or \fBjava\&.sql\&.Blob#truncate(long)\fP\&. 
+.PP
+For CLOBs, the internal value might be changed by: \fBjava\&.sql\&.Clob#setAsciiStream(long)\fP, \fBjava\&.sql\&.Clob#setCharacterStream(long)\fP, \fBjava\&.sql\&.Clob#setString(long, String)\fP, \fBjava\&.sql\&.Clob#setString(long, String, int, int)\fP, or \fBjava\&.sql\&.Clob#truncate(long)\fP\&. 
+.PP
+NOTE : I do not know the correct answer currently for databases which (1) are not part of the cruise control process or (2) do not \fBsupportsExpectedLobUsagePattern\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if the changes are propagated back to the database; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1959 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsOuterJoinForUpdate\fC [get]\fP"
+
+.PP
+Does this dialect support \fCFOR UPDATE\fP in conjunction with outer joined rows? True if outer joined rows can be locked via \fCFOR UPDATE\fP\&. 
+.PP
+Definition at line 489 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsParametersInInsertSelect\fC [get]\fP"
+
+.PP
+Does this dialect support parameters within the select clause of INSERT \&.\&.\&. SELECT \&.\&.\&. statements? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if this is supported; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1870 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsPooledSequences\fC [get]\fP"
+
+.PP
+Does this dialect support 'pooled' sequences? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if such 'pooled' sequences are supported; false otherwise\&. 
+.RE
+.PP
+.PP
+A pooled sequence is one that has a configurable initial size and increment size\&. It enables \fBNHibernate\fP to be allocated a pool/block/range of IDs, which can reduce the frequency of round trips to the database during ID generation\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBGetCreateSequenceStrings(string, int, int)\fP
+.PP
+.RE
+.PP
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBGetCreateSequenceString(string, int, int)\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 939 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsResultSetPositionQueryMethodsOnForwardOnlyCursor\fC [get]\fP"
+
+.PP
+Does this dialect support asking the result set its positioning information on forward only cursors\&. Specifically, in the case of scrolling fetches, Hibernate needs to use \fBjava\&.sql\&.ResultSet#isAfterLast\fP and \fBjava\&.sql\&.ResultSet#isBeforeFirst\fP\&. Certain drivers do not allow access to these methods for forward only cursors\&. 
+.PP
+NOTE : this is highly driver dependent! 
+.PP
+\fBReturns:\fP
+.RS 4
+True if methods like \fBjava\&.sql\&.ResultSet#isAfterLast\fP and \fBjava\&.sql\&.ResultSet#isBeforeFirst\fP are supported for forward only cursors; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1890 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsRowValueConstructorSyntax\fC [get]\fP"
+
+.PP
+Is this dialect known to support what ANSI-SQL terms 'row value
+constructor' syntax; sometimes called tuple syntax\&. 
+.PP
+Basically, does it support syntax like '\&.\&.\&. where (FIRST_NAME, LAST_NAME) = ('Steve', 'Ebersole') \&.\&.\&.'\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if this SQL dialect is known to support 'row value
+constructor' syntax; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1834 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsRowValueConstructorSyntaxInInList\fC [get]\fP"
+
+.PP
+If the dialect supports \fBrow values\fP, does it offer such support in IN lists as well? 
+.PP
+For example, '\&.\&.\&. where (FIRST_NAME, LAST_NAME) IN ( (?, ?), (?, ?) ) \&.\&.\&.' 
+.PP
+\fBReturns:\fP
+.RS 4
+True if this SQL dialect is known to support 'row value
+constructor' syntax in the IN list; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1850 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsSequences\fC [get]\fP"
+
+.PP
+Does this dialect support sequences? 
+.PP
+Definition at line 922 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsSqlBatches\fC [get]\fP"
+
+.PP
+Supports splitting batches using GO T-SQL command Batches http://msdn.microsoft.com/en-us/library/ms175502.aspx 
+.PP
+Definition at line 2210 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsSubqueryOnMutatingTable\fC [get]\fP"
+
+.PP
+Does this dialect support referencing the table being mutated in a subquery\&. The 'table being mutated' is the table referenced in an UPDATE or a DELETE query\&. And so can that table then be referenced in a subquery of said UPDATE/DELETE query\&. 
+.PP
+For example, would the following two syntaxes be supported: 
+.PD 0
+
+.IP "\(bu" 2
+delete from TABLE_A where ID not in ( select ID from TABLE_A ) 
+.IP "\(bu" 2
+update TABLE_A set NON_ID = 'something' where ID in ( select ID from TABLE_A) 
+.PP
+.PP
+\fBReturns:\fP
+.RS 4
+True if this dialect allows references the mutating table from a subquery\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1992 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsSubselectAsInPredicateLHS\fC [get]\fP"
+
+.PP
+Are subselects supported as the left-hand-side (LHS) of IN-predicates\&. 
+.PP
+In other words, is syntax like '\&.\&.\&. {subquery} IN (1, 2, 3) \&.\&.\&.' supported? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if subselects can appear as the LHS of an in-predicate;false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1912 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsSubSelects\fC [get]\fP"
+
+.PP
+Does this dialect support subselects? 
+.PP
+Definition at line 2039 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsTableCheck\fC [get]\fP"
+
+.PP
+Does this dialect support table-level check constraints? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if table-level CHECK constraints are supported; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 409 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsTemporaryTables\fC [get]\fP"
+
+.PP
+Does this dialect support temporary tables? 
+.PP
+Definition at line 588 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsUnboundedLobLocatorMaterialization\fC [get]\fP"
+
+.PP
+Is it supported to materialize a LOB locator outside the transaction in which it was created? 
+.PP
+Again, part of the trickiness here is the fact that this is largely driver dependent\&. 
+.PP
+NOTE: all database I have tested which \fBsupportsExpectedLobUsagePattern()\fP also support the ability to materialize a LOB outside the owning transaction\&.\&.\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if unbounded materialization is supported; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1975 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsUnionAll\fC [get]\fP"
+
+.PP
+Does this dialect support UNION ALL, which is generally a faster variant of UNION? True if UNION ALL is supported; false otherwise\&. 
+.PP
+Definition at line 1794 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsUnique\fC [get]\fP"
+
+.PP
+Does this dialect support the \fCUNIQUE\fP column syntax? 
+.PP
+Definition at line 301 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsUniqueConstraintInCreateAlterTable\fC [get]\fP"
+
+.PP
+Does this dialect support adding Unique constraints via create and alter table ?
+.PP
+Definition at line 307 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.SupportsVariableLimit\fC [get]\fP"
+
+.PP
+Can parameters be used for a statement containing a LIMIT? 
+.PP
+Definition at line 1421 of file Dialect\&.cs\&.
+.SS "virtual long NHibernate\&.Dialect\&.Dialect\&.TimestampResolutionInTicks\fC [get]\fP"
+
+.PP
+Gives the best resolution that the database can use for storing date/time values, in ticks\&. For example, if the database can store values with 100-nanosecond precision, this property is equal to 1L\&. If the database can only store values with 1-millisecond precision, this property is equal to 10000L (number of ticks in a millisecond)\&. 
+.PP
+Used in TimestampType\&. 
+.PP
+Definition at line 688 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.UseInputStreamToInsertBlob\fC [get]\fP"
+
+.PP
+Should LOBs (both BLOB and CLOB) be bound using stream operations (i\&.e\&. \fBjava\&.sql\&.PreparedStatement#setBinaryStream\fP)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if BLOBs and CLOBs should be bound using stream operations\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1860 of file Dialect\&.cs\&.
+.SS "virtual bool NHibernate\&.Dialect\&.Dialect\&.UseMaxForLimit\fC [get]\fP"
+
+.PP
+Does the \fCLIMIT\fP clause take a 'maximum' row number instead of a total number of returned rows? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if limit is relative from offset; false otherwise\&. 
+.RE
+.PP
+.PP
+This is easiest understood via an example\&. Consider you have a table with 20 rows, but you only want to retrieve rows number 11 through 20\&. Generally, a limit with offset would say that the offset = 11 and the limit = 10 (we only want 10 rows at a time); this is specifying the total number of returned rows\&. Some dialects require that we instead specify offset = 11 and limit = 20, where 20 is the 'last' row we want relative to offset (i\&.e\&. total number of rows = 20 - 11 = 9) So essentially, is limit relative from offset? Or is limit absolute? 
+.PP
+Definition at line 1441 of file Dialect\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

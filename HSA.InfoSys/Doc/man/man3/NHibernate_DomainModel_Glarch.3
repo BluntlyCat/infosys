@@ -1,0 +1,246 @@
+.TH "NHibernate.DomainModel.Glarch" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.DomainModel.Glarch \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.DomainModel\&.Super\fP, \fBNHibernate\&.DomainModel\&.GlarchProxy\fP, \fBNHibernate\&.Classic\&.ILifecycle\fP, and \fBNHibernate\&.DomainModel\&.INamed\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLifecycleVeto\fP \fBOnDelete\fP (\fBISession\fP s)"
+.br
+.RI "\fICalled when an entity is deleted \fP"
+.ti -1c
+.RI "void \fBOnLoad\fP (\fBISession\fP s, object id)"
+.br
+.RI "\fICalled after an entity is loaded\&. \fP"
+.ti -1c
+.RI "\fBLifecycleVeto\fP \fBOnSave\fP (\fBISession\fP s)"
+.br
+.RI "\fICalled when an entity is saved \fP"
+.ti -1c
+.RI "\fBLifecycleVeto\fP \fBOnUpdate\fP (\fBISession\fP s)"
+.br
+.RI "\fICalled when an entity is passed to \fBISession\&.Update(object)\fP\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBX\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBVersion\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBGlarchProxy\fP \fBNext\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _next \fP"
+.ti -1c
+.RI "short \fBOrder\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _order \fP"
+.ti -1c
+.RI "IList \fBStrings\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _strings \fP"
+.ti -1c
+.RI "ISet< string > \fBStringSets\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _stringSets \fP"
+.ti -1c
+.RI "IList \fBFooComponents\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _fooComponents \fP"
+.ti -1c
+.RI "\fBGlarchProxy\fP[] \fBProxyArray\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _proxyArray \fP"
+.ti -1c
+.RI "ISet< \fBGlarchProxy\fP > \fBProxySet\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _proxySet \fP"
+.ti -1c
+.RI "IDictionary \fBDynaBean\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBImmutable\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _immutable \fP"
+.ti -1c
+.RI "int \fBDerivedVersion\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _derivedVersion \fP"
+.ti -1c
+.RI "object \fBAny\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _any \fP"
+.ti -1c
+.RI "\fBMultiplicity\fP \fBMultiple\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _multiple \fP"
+.ti -1c
+.RI "new string \fBName\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 9 of file Glarch\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBLifecycleVeto\fP NHibernate\&.DomainModel\&.Glarch\&.OnDelete (\fBISession\fPs)"
+
+.PP
+Called when an entity is deleted 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBA\fP LifecycleVeto value indicating whether the operation should be vetoed or allowed to proceed\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.PP
+Definition at line 114 of file Glarch\&.cs\&.
+.SS "void NHibernate\&.DomainModel\&.Glarch\&.OnLoad (\fBISession\fPs, objectid)"
+
+.PP
+Called after an entity is loaded\&. <note>It is illegal to access the \fBISession\fP from inside this method\&.</note>\&. However, the object may keep a reference to the session for later use 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.br
+\fIid\fP The identifier
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.PP
+Definition at line 119 of file Glarch\&.cs\&.
+.SS "\fBLifecycleVeto\fP NHibernate\&.DomainModel\&.Glarch\&.OnSave (\fBISession\fPs)"
+
+.PP
+Called when an entity is saved 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+If we should veto the save
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.PP
+Definition at line 127 of file Glarch\&.cs\&.
+.SS "\fBLifecycleVeto\fP NHibernate\&.DomainModel\&.Glarch\&.OnUpdate (\fBISession\fPs)"
+
+.PP
+Called when an entity is passed to \fBISession\&.Update(object)\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBA\fP LifecycleVeto value indicating whether the operation should be vetoed or allowed to proceed\&.
+.RE
+.PP
+.PP
+This method is \fInot\fP called every time the object's state is persisted during a flush\&. 
+.PP
+Implements \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.PP
+Definition at line 136 of file Glarch\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "object NHibernate\&.DomainModel\&.Glarch\&.Any\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _any 
+.PP
+Definition at line 171 of file Glarch\&.cs\&.
+.SS "int NHibernate\&.DomainModel\&.Glarch\&.DerivedVersion\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _derivedVersion 
+.PP
+Definition at line 162 of file Glarch\&.cs\&.
+.SS "IList NHibernate\&.DomainModel\&.Glarch\&.FooComponents\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _fooComponents 
+.PP
+Definition at line 87 of file Glarch\&.cs\&.
+.SS "string NHibernate\&.DomainModel\&.Glarch\&.Immutable\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _immutable 
+.PP
+Definition at line 153 of file Glarch\&.cs\&.
+.SS "\fBMultiplicity\fP NHibernate\&.DomainModel\&.Glarch\&.Multiple\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _multiple 
+.PP
+Definition at line 180 of file Glarch\&.cs\&.
+.SS "\fBGlarchProxy\fP NHibernate\&.DomainModel\&.Glarch\&.Next\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _next 
+.PP
+Definition at line 46 of file Glarch\&.cs\&.
+.SS "short NHibernate\&.DomainModel\&.Glarch\&.Order\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _order 
+.PP
+Definition at line 56 of file Glarch\&.cs\&.
+.SS "\fBGlarchProxy\fP [] NHibernate\&.DomainModel\&.Glarch\&.ProxyArray\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _proxyArray 
+.PP
+Definition at line 97 of file Glarch\&.cs\&.
+.SS "ISet<\fBGlarchProxy\fP> NHibernate\&.DomainModel\&.Glarch\&.ProxySet\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _proxySet 
+.PP
+Definition at line 107 of file Glarch\&.cs\&.
+.SS "IList NHibernate\&.DomainModel\&.Glarch\&.Strings\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _strings 
+.PP
+Definition at line 66 of file Glarch\&.cs\&.
+.SS "ISet<string> NHibernate\&.DomainModel\&.Glarch\&.StringSets\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _stringSets 
+.PP
+Definition at line 77 of file Glarch\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

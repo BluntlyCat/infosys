@@ -1,0 +1,9 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_dtc_failures_1_1_dtc_failures_fixture_1_1_f7f4ab28961524a7153d53a16d376102d =
+[
+    [ "ForceEscalationToDistributedTx", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_dtc_failures_1_1_dtc_failures_fixture_1_1_f7f4ab28961524a7153d53a16d376102d.html#a852c268f90e530e7eaab69f8d55b2af7", null ],
+    [ "ForceEscalationToDistributedTx", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_dtc_failures_1_1_dtc_failures_fixture_1_1_f7f4ab28961524a7153d53a16d376102d.html#a1c2f15d4627016428c0e639ad14ae0a4", null ],
+    [ "Commit", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_dtc_failures_1_1_dtc_failures_fixture_1_1_f7f4ab28961524a7153d53a16d376102d.html#ac038cb112ee4eb387997174e8888107c", null ],
+    [ "InDoubt", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_dtc_failures_1_1_dtc_failures_fixture_1_1_f7f4ab28961524a7153d53a16d376102d.html#a3fa17e06dc94209e51fbf05010026f8f", null ],
+    [ "Prepare", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_dtc_failures_1_1_dtc_failures_fixture_1_1_f7f4ab28961524a7153d53a16d376102d.html#a13843ad91561d16fdc3df3ee2705a7a2", null ],
+    [ "Rollback", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_dtc_failures_1_1_dtc_failures_fixture_1_1_f7f4ab28961524a7153d53a16d376102d.html#a71c0e66f56a37e9d8db5b988ef3fdac6", null ]
+];

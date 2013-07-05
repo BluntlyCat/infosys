@@ -1,0 +1,170 @@
+.TH "Renci.SshNet.PrivateKeyFile" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.PrivateKeyFile \- 
+.PP
+Represents private key information  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDisposable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPrivateKeyFile\fP (Stream privateKey)"
+.br
+.RI "\fIInitializes a new instance of the \fBPrivateKeyFile\fP class\&. \fP"
+.ti -1c
+.RI "\fBPrivateKeyFile\fP (string fileName)"
+.br
+.RI "\fIInitializes a new instance of the \fBPrivateKeyFile\fP class\&. \fP"
+.ti -1c
+.RI "\fBPrivateKeyFile\fP (string fileName, string passPhrase)"
+.br
+.RI "\fIInitializes a new instance of the \fBPrivateKeyFile\fP class\&. \fP"
+.ti -1c
+.RI "\fBPrivateKeyFile\fP (Stream privateKey, string passPhrase)"
+.br
+.RI "\fIInitializes a new instance of the \fBPrivateKeyFile\fP class\&. \fP"
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "\fIPerforms application-defined tasks associated with freeing, releasing, or resetting unmanaged ResourceMessages\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIReleases unmanaged and - optionally - managed resources \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBHostAlgorithm\fP \fBHostKey\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the host key\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents private key information 
+
+\fC \fP
+.PP
+\fC \fP
+.PP
+Definition at line 26 of file PrivateKeyFile\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.PrivateKeyFile\&.PrivateKeyFile (StreamprivateKey)"
+
+.PP
+Initializes a new instance of the \fBPrivateKeyFile\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprivateKey\fP The private key\&.
+.RE
+.PP
+
+.PP
+Definition at line 45 of file PrivateKeyFile\&.cs\&.
+.SS "Renci\&.SshNet\&.PrivateKeyFile\&.PrivateKeyFile (stringfileName)"
+
+.PP
+Initializes a new instance of the \fBPrivateKeyFile\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP Name of the file\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIfileName\fP  is null or empty\&.
+.RE
+.PP
+.PP
+This method calls System\&.IO\&.File\&.Open(string, System\&.IO\&.FileMode) internally, this method does not catch exceptions from System\&.IO\&.File\&.Open(string, System\&.IO\&.FileMode)\&.
+.PP
+Definition at line 56 of file PrivateKeyFile\&.cs\&.
+.SS "Renci\&.SshNet\&.PrivateKeyFile\&.PrivateKeyFile (stringfileName, stringpassPhrase)"
+
+.PP
+Initializes a new instance of the \fBPrivateKeyFile\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP Name of the file\&.
+.br
+\fIpassPhrase\fP The pass phrase\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIfileName\fP  is null or empty, or \fIpassPhrase\fP  is null\&.
+.RE
+.PP
+.PP
+This method calls System\&.IO\&.File\&.Open(string, System\&.IO\&.FileMode) internally, this method does not catch exceptions from System\&.IO\&.File\&.Open(string, System\&.IO\&.FileMode)\&.
+.PP
+Definition at line 74 of file PrivateKeyFile\&.cs\&.
+.SS "Renci\&.SshNet\&.PrivateKeyFile\&.PrivateKeyFile (StreamprivateKey, stringpassPhrase)"
+
+.PP
+Initializes a new instance of the \fBPrivateKeyFile\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprivateKey\fP The private key\&.
+.br
+\fIpassPhrase\fP The pass phrase\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIprivateKey\fP  or \fIpassPhrase\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 91 of file PrivateKeyFile\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Renci\&.SshNet\&.PrivateKeyFile\&.Dispose ()"
+
+.PP
+Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged ResourceMessages\&. 
+.PP
+Definition at line 335 of file PrivateKeyFile\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.PrivateKeyFile\&.Dispose (booldisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Releases unmanaged and - optionally - managed resources 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP \fCtrue\fP to release both managed and unmanaged resources; \fCfalse\fP to release only unmanaged ResourceMessages\&.
+.RE
+.PP
+
+.PP
+Definition at line 346 of file PrivateKeyFile\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBHostAlgorithm\fP Renci\&.SshNet\&.PrivateKeyFile\&.HostKey\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the host key\&. 
+.PP
+Definition at line 39 of file PrivateKeyFile\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

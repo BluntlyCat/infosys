@@ -1,0 +1,152 @@
+.TH "NHibernate.Persister.Entity.AbstractPropertyMapping" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Persister.Entity.AbstractPropertyMapping \- 
+.PP
+Base implementation of a PropertyMapping\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Persister\&.Entity\&.IPropertyMapping\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Persister\&.Collection\&.CompositeElementPropertyMapping\fP, and \fBNHibernate\&.Persister\&.Entity\&.BasicEntityPropertyMapping\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIType\fP \fBToType\fP (string propertyName)"
+.br
+.RI "\fIGiven a component path expression, get the type of the property \fP"
+.ti -1c
+.RI "bool \fBTryToType\fP (string propertyName, out \fBIType\fP type)"
+.br
+.RI "\fIGiven a component path expression, get the type of the property\&. \fP"
+.ti -1c
+.RI "virtual string[] \fBToColumns\fP (string alias, string propertyName)"
+.br
+.RI "\fIGiven a query alias and a property path, return the qualified column name \fP"
+.ti -1c
+.RI "virtual string[] \fBToColumns\fP (string propertyName)"
+.br
+.RI "\fIGiven a property path, return the corresponding column name(s)\&.\fP"
+.ti -1c
+.RI "string[] \fBGetColumnNames\fP (string propertyName)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQueryException\fP \fBPropertyException\fP (string propertyName)"
+.br
+.ti -1c
+.RI "void \fBAddPropertyPath\fP (string path, \fBIType\fP type, string[] columns, string[] formulaTemplates)"
+.br
+.ti -1c
+.RI "void \fBInitIdentifierPropertyPaths\fP (string path, \fBEntityType\fP etype, string[] columns, \fBIMapping\fP factory)"
+.br
+.ti -1c
+.RI "void \fBInitComponentPropertyPaths\fP (string path, \fBIAbstractComponentType\fP type, string[] columns, string[] formulaTemplates, \fBIMapping\fP factory)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual string[] \fBIdentifierColumnNames\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract string \fBEntityName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract \fBIType\fP \fBType\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base implementation of a PropertyMapping\&. 
+
+
+.PP
+Definition at line 13 of file AbstractPropertyMapping\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual string [] NHibernate\&.Persister\&.Entity\&.AbstractPropertyMapping\&.ToColumns (stringalias, stringpropertyName)\fC [virtual]\fP"
+
+.PP
+Given a query alias and a property path, return the qualified column name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIpropertyName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IPropertyMapping\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Persister\&.Entity\&.BasicEntityPropertyMapping\fP\&.
+.PP
+Definition at line 47 of file AbstractPropertyMapping\&.cs\&.
+.SS "virtual string [] NHibernate\&.Persister\&.Entity\&.AbstractPropertyMapping\&.ToColumns (stringpropertyName)\fC [virtual]\fP"
+
+.PP
+Given a property path, return the corresponding column name(s)\&.
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IPropertyMapping\fP\&.
+.PP
+Definition at line 74 of file AbstractPropertyMapping\&.cs\&.
+.SS "\fBIType\fP NHibernate\&.Persister\&.Entity\&.AbstractPropertyMapping\&.ToType (stringpropertyName)"
+
+.PP
+Given a component path expression, get the type of the property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IPropertyMapping\fP\&.
+.PP
+Definition at line 33 of file AbstractPropertyMapping\&.cs\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.AbstractPropertyMapping\&.TryToType (stringpropertyName, out \fBIType\fPtype)"
+
+.PP
+Given a component path expression, get the type of the property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP 
+.br
+\fItype\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if a type was found, false if not
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IPropertyMapping\fP\&.
+.PP
+Definition at line 42 of file AbstractPropertyMapping\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

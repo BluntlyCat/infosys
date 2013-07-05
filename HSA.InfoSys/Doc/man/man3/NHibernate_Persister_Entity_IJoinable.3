@@ -1,0 +1,169 @@
+.TH "NHibernate.Persister.Entity.IJoinable" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Persister.Entity.IJoinable \- 
+.PP
+Anything that can be loaded by outer join - namely persisters for classes or collections\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Persister\&.Collection\&.IQueryableCollection\fP, \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP, and \fBNHibernate\&.Persister\&.Entity\&.IQueryable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBSelectFragment\fP (\fBIJoinable\fP rhs, string rhsAlias, string lhsAlias, string currentEntitySuffix, string currentCollectionSuffix, bool includeCollectionColumns)"
+.br
+.RI "\fIAll columns to select, when loading\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBWhereJoinFragment\fP (string alias, bool innerJoin, bool includeSubclasses)"
+.br
+.RI "\fIGet the where clause part of any joins (optional operation) \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBFromJoinFragment\fP (string alias, bool innerJoin, bool includeSubclasses)"
+.br
+.RI "\fIGet the from clause part of any joins (optional operation) \fP"
+.ti -1c
+.RI "string \fBFilterFragment\fP (string alias, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIGet the where clause filter, given a query alias and considering enabled session filters \fP"
+.ti -1c
+.RI "string \fBOneToManyFilterFragment\fP (string alias)"
+.br
+.ti -1c
+.RI "bool \fBConsumesEntityAlias\fP ()"
+.br
+.RI "\fIVery, very, very ugly\&.\&.\&. \fP"
+.ti -1c
+.RI "bool \fBConsumesCollectionAlias\fP ()"
+.br
+.RI "\fIVery, very, very ugly\&.\&.\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBName\fP\fC [get]\fP"
+.br
+.RI "\fIAn identifying name; a class name or collection role name\&. \fP"
+.ti -1c
+.RI "string[] \fBKeyColumnNames\fP\fC [get]\fP"
+.br
+.RI "\fIThe columns to join on\&. \fP"
+.ti -1c
+.RI "bool \fBIsCollection\fP\fC [get]\fP"
+.br
+.RI "\fIIs this instance actually a ICollectionPersister? \fP"
+.ti -1c
+.RI "string \fBTableName\fP\fC [get]\fP"
+.br
+.RI "\fIThe table to join to\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Anything that can be loaded by outer join - namely persisters for classes or collections\&. 
+
+
+.PP
+Definition at line 9 of file IJoinable\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool NHibernate\&.Persister\&.Entity\&.IJoinable\&.ConsumesCollectionAlias ()"
+
+.PP
+Very, very, very ugly\&.\&.\&. Does this persister 'consume' collection column aliases in the result set?
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP, \fBNHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\fP, and \fBNHibernate\&.Persister\&.Collection\&.OneToManyPersister\fP\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.IJoinable\&.ConsumesEntityAlias ()"
+
+.PP
+Very, very, very ugly\&.\&.\&. Does this persister 'consume' entity column aliases in the result set?
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP, \fBNHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\fP, and \fBNHibernate\&.Persister\&.Collection\&.OneToManyPersister\fP\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.IJoinable\&.FilterFragment (stringalias, IDictionary< string, \fBIFilter\fP >enabledFilters)"
+
+.PP
+Get the where clause filter, given a query alias and considering enabled session filters 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, and \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.SS "\fBSqlString\fP NHibernate\&.Persister\&.Entity\&.IJoinable\&.FromJoinFragment (stringalias, boolinnerJoin, boolincludeSubclasses)"
+
+.PP
+Get the from clause part of any joins (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIinnerJoin\fP 
+.br
+\fIincludeSubclasses\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP, \fBNHibernate\&.Persister\&.Collection\&.OneToManyPersister\fP, and \fBNHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\fP\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.IJoinable\&.SelectFragment (\fBIJoinable\fPrhs, stringrhsAlias, stringlhsAlias, stringcurrentEntitySuffix, stringcurrentCollectionSuffix, boolincludeCollectionColumns)"
+
+.PP
+All columns to select, when loading\&. 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP, \fBNHibernate\&.Persister\&.Collection\&.OneToManyPersister\fP, and \fBNHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\fP\&.
+.SS "\fBSqlString\fP NHibernate\&.Persister\&.Entity\&.IJoinable\&.WhereJoinFragment (stringalias, boolinnerJoin, boolincludeSubclasses)"
+
+.PP
+Get the where clause part of any joins (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIinnerJoin\fP 
+.br
+\fIincludeSubclasses\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP, \fBNHibernate\&.Persister\&.Collection\&.OneToManyPersister\fP, and \fBNHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.Persister\&.Entity\&.IJoinable\&.IsCollection\fC [get]\fP"
+
+.PP
+Is this instance actually a ICollectionPersister? 
+.PP
+Definition at line 26 of file IJoinable\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.IJoinable\&.KeyColumnNames\fC [get]\fP"
+
+.PP
+The columns to join on\&. 
+.PP
+Definition at line 21 of file IJoinable\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.IJoinable\&.Name\fC [get]\fP"
+
+.PP
+An identifying name; a class name or collection role name\&. 
+.PP
+Definition at line 16 of file IJoinable\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.IJoinable\&.TableName\fC [get]\fP"
+
+.PP
+The table to join to\&. 
+.PP
+Definition at line 31 of file IJoinable\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

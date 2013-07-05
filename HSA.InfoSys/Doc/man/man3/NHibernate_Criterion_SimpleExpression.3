@@ -1,0 +1,176 @@
+.TH "NHibernate.Criterion.SimpleExpression" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.SimpleExpression \- 
+.PP
+The base class for an \fBICriterion\fP that compares a single \fBProperty\fP to a value\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSimpleExpression\fP (string propertyName, object value, string op)"
+.br
+.RI "\fIInitialize a new instance of the \fBSimpleExpression\fP class for a named \fBProperty\fP and its value\&. \fP"
+.ti -1c
+.RI "\fBSimpleExpression\fP (string propertyName, object value, string op, bool ignoreCase)"
+.br
+.ti -1c
+.RI "\fBSimpleExpression\fP \fBIgnoreCase\fP ()"
+.br
+.ti -1c
+.RI "override \fBSqlString\fP \fBToSqlString\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIConverts the \fBSimpleExpression\fP to a SqlString\&. \fP"
+.ti -1c
+.RI "override \fBTypedValue\fP[] \fBGetTypedValues\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery)"
+.br
+.RI "\fIReturn typed values for all parameters in the rendered SQL fragment \fP"
+.ti -1c
+.RI "\fBTypedValue\fP \fBGetParameterTypedValue\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery)"
+.br
+.ti -1c
+.RI "override \fBIProjection\fP[] \fBGetProjections\fP ()"
+.br
+.RI "\fIReturn all projections used in this criterion \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIGets a string representation of the \fBAbstractCriterion\fP\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBPropertyName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the named \fBProperty\fP for the \fBExpression\fP\&. \fP"
+.ti -1c
+.RI "object \fBValue\fP\fC [get]\fP"
+.br
+.RI "\fIGets the Value for the \fBExpression\fP\&. \fP"
+.ti -1c
+.RI "virtual string \fBOp\fP\fC [get]\fP"
+.br
+.RI "\fIGet the Sql operator to use for the specific subclass of \fBSimpleExpression\fP\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+The base class for an \fBICriterion\fP that compares a single \fBProperty\fP to a value\&. 
+
+
+.PP
+Definition at line 16 of file SimpleExpression\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Criterion\&.SimpleExpression\&.SimpleExpression (stringpropertyName, objectvalue, stringop)"
+
+.PP
+Initialize a new instance of the \fBSimpleExpression\fP class for a named \fBProperty\fP and its value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the \fBProperty\fP in the class\&.
+.br
+\fIvalue\fP The value for the \fBProperty\fP\&.
+.br
+\fIop\fP The SQL operation\&.
+.RE
+.PP
+
+.PP
+Definition at line 38 of file SimpleExpression\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBIProjection\fP [] NHibernate\&.Criterion\&.SimpleExpression\&.GetProjections ()\fC [virtual]\fP"
+
+.PP
+Return all projections used in this criterion 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of \fBIProjection\fP used by the \fBExpression\fP\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 152 of file SimpleExpression\&.cs\&.
+.SS "override \fBTypedValue\fP [] NHibernate\&.Criterion\&.SimpleExpression\&.GetTypedValues (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery)\fC [virtual]\fP"
+
+.PP
+Return typed values for all parameters in the rendered SQL fragment 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of TypedValues for the \fBExpression\fP\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 129 of file SimpleExpression\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Criterion\&.SimpleExpression\&.ToSqlString (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery, IDictionary< string, \fBIFilter\fP >enabledFilters)\fC [virtual]\fP"
+
+.PP
+Converts the \fBSimpleExpression\fP to a SqlString\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A SqlString that contains a valid Sql fragment\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 79 of file SimpleExpression\&.cs\&.
+.SS "override string NHibernate\&.Criterion\&.SimpleExpression\&.ToString ()\fC [virtual]\fP"
+
+.PP
+Gets a string representation of the \fBAbstractCriterion\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A String that shows the contents of the \fBAbstractCriterion\fP\&. 
+.RE
+.PP
+.PP
+This is not a well formed Sql fragment\&. It is useful for logging what the \fBAbstractCriterion\fP looks like\&. 
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 161 of file SimpleExpression\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual string NHibernate\&.Criterion\&.SimpleExpression\&.Op\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Get the Sql operator to use for the specific subclass of \fBSimpleExpression\fP\&. 
+.PP
+Definition at line 171 of file SimpleExpression\&.cs\&.
+.SS "string NHibernate\&.Criterion\&.SimpleExpression\&.PropertyName\fC [get]\fP"
+
+.PP
+Gets the named \fBProperty\fP for the \fBExpression\fP\&. A string that is the name of the \fBProperty\fP\&.
+.PP
+Definition at line 62 of file SimpleExpression\&.cs\&.
+.SS "object NHibernate\&.Criterion\&.SimpleExpression\&.Value\fC [get]\fP"
+
+.PP
+Gets the Value for the \fBExpression\fP\&. An object that is the value for the \fBExpression\fP\&.
+.PP
+Definition at line 71 of file SimpleExpression\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

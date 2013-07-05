@@ -1,0 +1,149 @@
+.TH "Renci.SshNet.Security.Cryptography.Ciphers.CipherMode" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Security.Cryptography.Ciphers.CipherMode \- 
+.PP
+Base class for cipher mode implementations  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Modes\&.CbcCipherMode\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Modes\&.CfbCipherMode\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Modes\&.CtrCipherMode\fP, and \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Modes\&.OfbCipherMode\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract int \fBEncryptBlock\fP (byte[] inputBuffer, int inputOffset, int inputCount, byte[] outputBuffer, int outputOffset)"
+.br
+.RI "\fIEncrypts the specified region of the input byte array and copies the encrypted data to the specified region of the output byte array\&. \fP"
+.ti -1c
+.RI "abstract int \fBDecryptBlock\fP (byte[] inputBuffer, int inputOffset, int inputCount, byte[] outputBuffer, int outputOffset)"
+.br
+.RI "\fIDecrypts the specified region of the input byte array and copies the decrypted data to the specified region of the output byte array\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCipherMode\fP (byte[] iv)"
+.br
+.RI "\fIInitializes a new instance of the \fBCipherMode\fP class\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBBlockCipher\fP \fBCipher\fP"
+.br
+.RI "\fIGets the cipher\&. \fP"
+.ti -1c
+.RI "byte[] \fBIV\fP"
+.br
+.RI "\fIGets the IV vector\&. \fP"
+.ti -1c
+.RI "int \fB_blockSize\fP"
+.br
+.RI "\fIHolds block size of the cipher\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for cipher mode implementations 
+
+
+.PP
+Definition at line 11 of file CipherMode\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.CipherMode\&.CipherMode (byte[]iv)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBCipherMode\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiv\fP The iv\&.
+.RE
+.PP
+
+.PP
+Definition at line 32 of file CipherMode\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract int Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.CipherMode\&.DecryptBlock (byte[]inputBuffer, intinputOffset, intinputCount, byte[]outputBuffer, intoutputOffset)\fC [pure virtual]\fP"
+
+.PP
+Decrypts the specified region of the input byte array and copies the decrypted data to the specified region of the output byte array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinputBuffer\fP The input data to decrypt\&.
+.br
+\fIinputOffset\fP The offset into the input byte array from which to begin using data\&.
+.br
+\fIinputCount\fP The number of bytes in the input byte array to use as data\&.
+.br
+\fIoutputBuffer\fP The output to which to write decrypted data\&.
+.br
+\fIoutputOffset\fP The offset into the output byte array from which to begin writing data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes decrypted\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Modes\&.OfbCipherMode\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Modes\&.CfbCipherMode\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Modes\&.CtrCipherMode\fP, and \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Modes\&.CbcCipherMode\fP\&.
+.SS "abstract int Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.CipherMode\&.EncryptBlock (byte[]inputBuffer, intinputOffset, intinputCount, byte[]outputBuffer, intoutputOffset)\fC [pure virtual]\fP"
+
+.PP
+Encrypts the specified region of the input byte array and copies the encrypted data to the specified region of the output byte array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinputBuffer\fP The input data to encrypt\&.
+.br
+\fIinputOffset\fP The offset into the input byte array from which to begin using data\&.
+.br
+\fIinputCount\fP The number of bytes in the input byte array to use as data\&.
+.br
+\fIoutputBuffer\fP The output to which to write encrypted data\&.
+.br
+\fIoutputOffset\fP The offset into the output byte array from which to begin writing data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes encrypted\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Modes\&.OfbCipherMode\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Modes\&.CfbCipherMode\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Modes\&.CtrCipherMode\fP, and \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Modes\&.CbcCipherMode\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.CipherMode\&._blockSize\fC [protected]\fP"
+
+.PP
+Holds block size of the cipher\&. 
+.PP
+Definition at line 26 of file CipherMode\&.cs\&.
+.SS "\fBBlockCipher\fP Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.CipherMode\&.Cipher\fC [protected]\fP"
+
+.PP
+Gets the cipher\&. 
+.PP
+Definition at line 16 of file CipherMode\&.cs\&.
+.SS "byte [] Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.CipherMode\&.IV\fC [protected]\fP"
+
+.PP
+Gets the IV vector\&. 
+.PP
+Definition at line 21 of file CipherMode\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

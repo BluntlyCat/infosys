@@ -1,0 +1,111 @@
+.TH "NHibernate.Id.SequenceHiLoGenerator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.SequenceHiLoGenerator \- 
+.PP
+An \fBIIdentifierGenerator\fP that combines a hi/lo algorithm with an underlying oracle-style sequence that generates hi values\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Id\&.SequenceGenerator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBConfigure\fP (\fBIType\fP type, IDictionary< string, string > parms, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIConfigures the \fBSequenceHiLoGenerator\fP by reading the value of \fCsequence\fP, \fCmax_lo\fP, and \fCschema\fP from the \fCparms\fP parameter\&. \fP"
+.ti -1c
+.RI "override object \fBGenerate\fP (\fBISessionImplementor\fP session, object obj)"
+.br
+.RI "\fIGenerate an Int16, Int32, or Int64 for the identifier by using a database sequence\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBMaxLo\fP = 'max_lo'"
+.br
+.RI "\fIThe name of the maximum low value parameter\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An \fBIIdentifierGenerator\fP that combines a hi/lo algorithm with an underlying oracle-style sequence that generates hi values\&. 
+
+This id generation strategy is specified in the mapping file as 
+.PP
+.nf
+&lt;generator class="seqhilo"&gt;
+    &lt;param name="sequence"&gt;uid_sequence&lt;/param&gt;
+    &lt;param name="max_lo"&gt;max_lo_value&lt;/param&gt;
+    &lt;param name="schema"&gt;db_schema&lt;/param&gt;
+&lt;/generator&gt;
+
+.fi
+.PP
+ 
+.PP
+The \fCsequence\fP parameter is required, the \fCmax_lo\fP and \fCschema\fP are optional\&. 
+.PP
+The user may specify a \fCmax_lo\fP value to determine how often new hi values are fetched\&. If sequences are not avaliable, \fC\fBTableHiLoGenerator\fP\fP might be an alternative\&. 
+.PP
+Definition at line 36 of file SequenceHiLoGenerator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Id\&.SequenceHiLoGenerator\&.Configure (\fBIType\fPtype, IDictionary< string, string >parms, \fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+Configures the \fBSequenceHiLoGenerator\fP by reading the value of \fCsequence\fP, \fCmax_lo\fP, and \fCschema\fP from the \fCparms\fP parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The IType the identifier should be\&.
+.br
+\fIparms\fP An IDictionary of \fBParam\fP values that are keyed by parameter name\&.
+.br
+\fIdialect\fP The \fBDialect\&.Dialect\fP to help with Configuration\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Id\&.SequenceGenerator\fP\&.
+.PP
+Definition at line 59 of file SequenceHiLoGenerator\&.cs\&.
+.SS "override object NHibernate\&.Id\&.SequenceHiLoGenerator\&.Generate (\fBISessionImplementor\fPsession, objectobj)\fC [virtual]\fP"
+
+.PP
+Generate an Int16, Int32, or Int64 for the identifier by using a database sequence\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The ISessionImplementor this id is being generated in\&.
+.br
+\fIobj\fP The entity for which the id is being generated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new identifier as a Int16, Int32, or Int64\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Id\&.SequenceGenerator\fP\&.
+.PP
+Definition at line 79 of file SequenceHiLoGenerator\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const string NHibernate\&.Id\&.SequenceHiLoGenerator\&.MaxLo = 'max_lo'"
+
+.PP
+The name of the maximum low value parameter\&. 
+.PP
+Definition at line 43 of file SequenceHiLoGenerator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

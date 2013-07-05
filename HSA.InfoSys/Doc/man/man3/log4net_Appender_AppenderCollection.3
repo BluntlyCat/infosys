@@ -1,0 +1,621 @@
+.TH "log4net.Appender.AppenderCollection" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.AppenderCollection \- 
+.PP
+A strongly-typed collection of \fBIAppender\fP objects\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits ICollection, IList, IEnumerable, and ICloneable\&.
+.PP
+Inherited by log4net\&.Appender\&.AppenderCollection\&.ReadOnlyAppenderCollection\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "interface \fBIAppenderCollectionEnumerator\fP"
+.br
+.RI "\fISupports type-safe iteration over a \fBAppenderCollection\fP\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAppenderCollection\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fC\fBAppenderCollection\fP\fP class that is empty and has the default initial capacity\&. \fP"
+.ti -1c
+.RI "\fBAppenderCollection\fP (int capacity)"
+.br
+.RI "\fIInitializes a new instance of the \fC\fBAppenderCollection\fP\fP class that has the specified initial capacity\&. \fP"
+.ti -1c
+.RI "\fBAppenderCollection\fP (\fBAppenderCollection\fP c)"
+.br
+.RI "\fIInitializes a new instance of the \fC\fBAppenderCollection\fP\fP class that contains elements copied from the specified \fC\fBAppenderCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "\fBAppenderCollection\fP (\fBIAppender\fP[] a)"
+.br
+.RI "\fIInitializes a new instance of the \fC\fBAppenderCollection\fP\fP class that contains elements copied from the specified \fBIAppender\fP array\&. \fP"
+.ti -1c
+.RI "\fBAppenderCollection\fP (ICollection col)"
+.br
+.RI "\fIInitializes a new instance of the \fC\fBAppenderCollection\fP\fP class that contains elements copied from the specified \fBIAppender\fP collection\&. \fP"
+.ti -1c
+.RI "virtual void \fBCopyTo\fP (\fBIAppender\fP[] array)"
+.br
+.RI "\fICopies the entire \fC\fBAppenderCollection\fP\fP to a one-dimensional \fBIAppender\fP array\&. \fP"
+.ti -1c
+.RI "virtual void \fBCopyTo\fP (\fBIAppender\fP[] array, int start)"
+.br
+.RI "\fICopies the entire \fC\fBAppenderCollection\fP\fP to a one-dimensional \fBIAppender\fP array, starting at the specified index of the target array\&. \fP"
+.ti -1c
+.RI "virtual int \fBAdd\fP (\fBIAppender\fP item)"
+.br
+.RI "\fIAdds a \fBIAppender\fP to the end of the \fC\fBAppenderCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual void \fBClear\fP ()"
+.br
+.RI "\fIRemoves all elements from the \fC\fBAppenderCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual object \fBClone\fP ()"
+.br
+.RI "\fICreates a shallow copy of the \fBAppenderCollection\fP\&. \fP"
+.ti -1c
+.RI "virtual bool \fBContains\fP (\fBIAppender\fP item)"
+.br
+.RI "\fIDetermines whether a given \fBIAppender\fP is in the \fC\fBAppenderCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual int \fBIndexOf\fP (\fBIAppender\fP item)"
+.br
+.RI "\fIReturns the zero-based index of the first occurrence of a \fBIAppender\fP in the \fC\fBAppenderCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual void \fBInsert\fP (int index, \fBIAppender\fP item)"
+.br
+.RI "\fIInserts an element into the \fC\fBAppenderCollection\fP\fP at the specified index\&. \fP"
+.ti -1c
+.RI "virtual void \fBRemove\fP (\fBIAppender\fP item)"
+.br
+.RI "\fIRemoves the first occurrence of a specific \fBIAppender\fP from the \fC\fBAppenderCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual void \fBRemoveAt\fP (int index)"
+.br
+.RI "\fIRemoves the element at the specified index of the \fC\fBAppenderCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual 
+.br
+\fBIAppenderCollectionEnumerator\fP \fBGetEnumerator\fP ()"
+.br
+.RI "\fIReturns an enumerator that can iterate through the \fC\fBAppenderCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual int \fBAddRange\fP (\fBAppenderCollection\fP x)"
+.br
+.RI "\fIAdds the elements of another \fC\fBAppenderCollection\fP\fP to the current \fC\fBAppenderCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual int \fBAddRange\fP (\fBIAppender\fP[] x)"
+.br
+.RI "\fIAdds the elements of a \fBIAppender\fP array to the current \fC\fBAppenderCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual int \fBAddRange\fP (ICollection col)"
+.br
+.RI "\fIAdds the elements of a \fBIAppender\fP collection to the current \fC\fBAppenderCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual void \fBTrimToSize\fP ()"
+.br
+.RI "\fISets the capacity to the actual number of elements\&. \fP"
+.ti -1c
+.RI "virtual \fBIAppender\fP[] \fBToArray\fP ()"
+.br
+.RI "\fIReturn the collection elements as an array \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBAppenderCollection\fP \fBReadOnly\fP (\fBAppenderCollection\fP list)"
+.br
+.RI "\fICreates a read-only wrapper for a \fC\fBAppenderCollection\fP\fP instance\&. \fP"
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly \fBAppenderCollection\fP \fBEmptyCollection\fP = \fBReadOnly\fP(new \fBAppenderCollection\fP(0))"
+.br
+.RI "\fIAn empty readonly static \fBAppenderCollection\fP \fP"
+.in -1c
+.SS "Protected Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBTag\fP { \fBTag\&.Default\fP }"
+.br
+.RI "\fIType visible only to our subclasses Used to access protected constructor \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAppenderCollection\fP (\fBTag\fP tag)"
+.br
+.RI "\fIAllow subclasses to avoid our default constructors \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual int \fBCount\fP\fC [get]\fP"
+.br
+.RI "\fIGets the number of elements actually contained in the \fC\fBAppenderCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsSynchronized\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether access to the collection is synchronized (thread-safe)\&. \fP"
+.ti -1c
+.RI "virtual object \fBSyncRoot\fP\fC [get]\fP"
+.br
+.RI "\fIGets an object that can be used to synchronize access to the collection\&. \fP"
+.ti -1c
+.RI "virtual \fBIAppender\fP \fBthis[int index]\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBIAppender\fP at the specified index\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsFixedSize\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether the collection has a fixed size\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsReadOnly\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether the IList is read-only\&. \fP"
+.ti -1c
+.RI "virtual int \fBCapacity\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the number of elements the \fC\fBAppenderCollection\fP\fP can contain\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A strongly-typed collection of \fBIAppender\fP objects\&. 
+
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 29 of file AppenderCollection\&.cs\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBlog4net\&.Appender\&.AppenderCollection\&.Tag\fP\fC [protected]\fP"
+
+.PP
+Type visible only to our subclasses Used to access protected constructor <exclude> 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIDefault \fP\fP
+A value 
+.PP
+Definition at line 160 of file AppenderCollection\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.AppenderCollection\&.AppenderCollection ()"
+
+.PP
+Initializes a new instance of the \fC\fBAppenderCollection\fP\fP class that is empty and has the default initial capacity\&. 
+.PP
+Definition at line 105 of file AppenderCollection\&.cs\&.
+.SS "log4net\&.Appender\&.AppenderCollection\&.AppenderCollection (intcapacity)"
+
+.PP
+Initializes a new instance of the \fC\fBAppenderCollection\fP\fP class that has the specified initial capacity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcapacity\fP The number of elements that the new \fC\fBAppenderCollection\fP\fP is initially capable of storing\&. 
+.RE
+.PP
+
+.PP
+Definition at line 117 of file AppenderCollection\&.cs\&.
+.SS "log4net\&.Appender\&.AppenderCollection\&.AppenderCollection (\fBAppenderCollection\fPc)"
+
+.PP
+Initializes a new instance of the \fC\fBAppenderCollection\fP\fP class that contains elements copied from the specified \fC\fBAppenderCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIc\fP The \fC\fBAppenderCollection\fP\fP whose elements are copied to the new collection\&.
+.RE
+.PP
+
+.PP
+Definition at line 127 of file AppenderCollection\&.cs\&.
+.SS "log4net\&.Appender\&.AppenderCollection\&.AppenderCollection (\fBIAppender\fP[]a)"
+
+.PP
+Initializes a new instance of the \fC\fBAppenderCollection\fP\fP class that contains elements copied from the specified \fBIAppender\fP array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP The \fBIAppender\fP array whose elements are copied to the new list\&.
+.RE
+.PP
+
+.PP
+Definition at line 138 of file AppenderCollection\&.cs\&.
+.SS "log4net\&.Appender\&.AppenderCollection\&.AppenderCollection (ICollectioncol)"
+
+.PP
+Initializes a new instance of the \fC\fBAppenderCollection\fP\fP class that contains elements copied from the specified \fBIAppender\fP collection\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcol\fP The \fBIAppender\fP collection whose elements are copied to the new list\&.
+.RE
+.PP
+
+.PP
+Definition at line 149 of file AppenderCollection\&.cs\&.
+.SS "log4net\&.Appender\&.AppenderCollection\&.AppenderCollection (\fBTag\fPtag)\fC [protected]\fP"
+
+.PP
+Allow subclasses to avoid our default constructors 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItag\fP 
+.RE
+.PP
+<exclude> 
+.PP
+Definition at line 173 of file AppenderCollection\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual int log4net\&.Appender\&.AppenderCollection\&.Add (\fBIAppender\fPitem)\fC [virtual]\fP"
+
+.PP
+Adds a \fBIAppender\fP to the end of the \fC\fBAppenderCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The \fBIAppender\fP to be added to the end of the \fC\fBAppenderCollection\fP\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The index at which the value has been added\&.
+.RE
+.PP
+
+.PP
+Definition at line 266 of file AppenderCollection\&.cs\&.
+.SS "virtual int log4net\&.Appender\&.AppenderCollection\&.AddRange (\fBAppenderCollection\fPx)\fC [virtual]\fP"
+
+.PP
+Adds the elements of another \fC\fBAppenderCollection\fP\fP to the current \fC\fBAppenderCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP The \fC\fBAppenderCollection\fP\fP whose elements should be added to the end of the current \fC\fBAppenderCollection\fP\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new \fBAppenderCollection\&.Count\fP of the \fC\fBAppenderCollection\fP\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 489 of file AppenderCollection\&.cs\&.
+.SS "virtual int log4net\&.Appender\&.AppenderCollection\&.AddRange (\fBIAppender\fP[]x)\fC [virtual]\fP"
+
+.PP
+Adds the elements of a \fBIAppender\fP array to the current \fC\fBAppenderCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP The \fBIAppender\fP array whose elements should be added to the end of the \fC\fBAppenderCollection\fP\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new \fBAppenderCollection\&.Count\fP of the \fC\fBAppenderCollection\fP\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 508 of file AppenderCollection\&.cs\&.
+.SS "virtual int log4net\&.Appender\&.AppenderCollection\&.AddRange (ICollectioncol)\fC [virtual]\fP"
+
+.PP
+Adds the elements of a \fBIAppender\fP collection to the current \fC\fBAppenderCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcol\fP The \fBIAppender\fP collection whose elements should be added to the end of the \fC\fBAppenderCollection\fP\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new \fBAppenderCollection\&.Count\fP of the \fC\fBAppenderCollection\fP\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 527 of file AppenderCollection\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.AppenderCollection\&.Clear ()\fC [virtual]\fP"
+
+.PP
+Removes all elements from the \fC\fBAppenderCollection\fP\fP\&. 
+.PP
+Definition at line 282 of file AppenderCollection\&.cs\&.
+.SS "virtual object log4net\&.Appender\&.AppenderCollection\&.Clone ()\fC [virtual]\fP"
+
+.PP
+Creates a shallow copy of the \fBAppenderCollection\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A new \fBAppenderCollection\fP with a shallow copy of the collection data\&.
+.RE
+.PP
+
+.PP
+Definition at line 293 of file AppenderCollection\&.cs\&.
+.SS "virtual bool log4net\&.Appender\&.AppenderCollection\&.Contains (\fBIAppender\fPitem)\fC [virtual]\fP"
+
+.PP
+Determines whether a given \fBIAppender\fP is in the \fC\fBAppenderCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The \fBIAppender\fP to check for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fIitem\fP  is found in the \fC\fBAppenderCollection\fP\fP; otherwise, \fCfalse\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 308 of file AppenderCollection\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.AppenderCollection\&.CopyTo (\fBIAppender\fP[]array)\fC [virtual]\fP"
+
+.PP
+Copies the entire \fC\fBAppenderCollection\fP\fP to a one-dimensional \fBIAppender\fP array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarray\fP The one-dimensional \fBIAppender\fP array to copy to\&.
+.RE
+.PP
+
+.PP
+Definition at line 195 of file AppenderCollection\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.AppenderCollection\&.CopyTo (\fBIAppender\fP[]array, intstart)\fC [virtual]\fP"
+
+.PP
+Copies the entire \fC\fBAppenderCollection\fP\fP to a one-dimensional \fBIAppender\fP array, starting at the specified index of the target array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarray\fP The one-dimensional \fBIAppender\fP array to copy to\&.
+.br
+\fIstart\fP The zero-based index in \fIarray\fP  at which copying begins\&.
+.RE
+.PP
+
+.PP
+Definition at line 206 of file AppenderCollection\&.cs\&.
+.SS "virtual \fBIAppenderCollectionEnumerator\fP log4net\&.Appender\&.AppenderCollection\&.GetEnumerator ()\fC [virtual]\fP"
+
+.PP
+Returns an enumerator that can iterate through the \fC\fBAppenderCollection\fP\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An Enumerator for the entire \fC\fBAppenderCollection\fP\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 443 of file AppenderCollection\&.cs\&.
+.SS "virtual int log4net\&.Appender\&.AppenderCollection\&.IndexOf (\fBIAppender\fPitem)\fC [virtual]\fP"
+
+.PP
+Returns the zero-based index of the first occurrence of a \fBIAppender\fP in the \fC\fBAppenderCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The \fBIAppender\fP to locate in the \fC\fBAppenderCollection\fP\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The zero-based index of the first occurrence of \fIitem\fP  in the entire \fC\fBAppenderCollection\fP\fP, if found; otherwise, -1\&. 
+.RE
+.PP
+
+.PP
+Definition at line 329 of file AppenderCollection\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.AppenderCollection\&.Insert (intindex, \fBIAppender\fPitem)\fC [virtual]\fP"
+
+.PP
+Inserts an element into the \fC\fBAppenderCollection\fP\fP at the specified index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The zero-based index at which \fIitem\fP  should be inserted\&.
+.br
+\fIitem\fP The \fBIAppender\fP to insert\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentOutOfRangeException\fP \fIindex\fP  is less than zero
+.PP
+-or-
+.PP
+\fIindex\fP  is equal to or greater than \fBAppenderCollection\&.Count\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 351 of file AppenderCollection\&.cs\&.
+.SS "static \fBAppenderCollection\fP log4net\&.Appender\&.AppenderCollection\&.ReadOnly (\fBAppenderCollection\fPlist)\fC [static]\fP"
+
+.PP
+Creates a read-only wrapper for a \fC\fBAppenderCollection\fP\fP instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlist\fP list to create a readonly wrapper arround
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fC\fBAppenderCollection\fP\fP wrapper that is read-only\&. 
+.RE
+.PP
+
+.PP
+Definition at line 81 of file AppenderCollection\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.AppenderCollection\&.Remove (\fBIAppender\fPitem)\fC [virtual]\fP"
+
+.PP
+Removes the first occurrence of a specific \fBIAppender\fP from the \fC\fBAppenderCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The \fBIAppender\fP to remove from the \fC\fBAppenderCollection\fP\fP\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP The specified \fBIAppender\fP was not found in the \fC\fBAppenderCollection\fP\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 377 of file AppenderCollection\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.AppenderCollection\&.RemoveAt (intindex)\fC [virtual]\fP"
+
+.PP
+Removes the element at the specified index of the \fC\fBAppenderCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The zero-based index of the element to remove\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentOutOfRangeException\fP \fIindex\fP  is less than zero
+.PP
+-or-
+.PP
+\fIindex\fP  is equal to or greater than \fBAppenderCollection\&.Count\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 398 of file AppenderCollection\&.cs\&.
+.SS "virtual \fBIAppender\fP [] log4net\&.Appender\&.AppenderCollection\&.ToArray ()\fC [virtual]\fP"
+
+.PP
+Return the collection elements as an array 
+.PP
+\fBReturns:\fP
+.RS 4
+the array
+.RE
+.PP
+
+.PP
+Definition at line 554 of file AppenderCollection\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.AppenderCollection\&.TrimToSize ()\fC [virtual]\fP"
+
+.PP
+Sets the capacity to the actual number of elements\&. 
+.PP
+Definition at line 545 of file AppenderCollection\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly \fBAppenderCollection\fP log4net\&.Appender\&.AppenderCollection\&.EmptyCollection = \fBReadOnly\fP(new \fBAppenderCollection\fP(0))\fC [static]\fP"
+
+.PP
+An empty readonly static \fBAppenderCollection\fP 
+.PP
+Definition at line 95 of file AppenderCollection\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual int log4net\&.Appender\&.AppenderCollection\&.Capacity\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the number of elements the \fC\fBAppenderCollection\fP\fP can contain\&. 
+.PP
+Definition at line 456 of file AppenderCollection\&.cs\&.
+.SS "virtual int log4net\&.Appender\&.AppenderCollection\&.Count\fC [get]\fP"
+
+.PP
+Gets the number of elements actually contained in the \fC\fBAppenderCollection\fP\fP\&. 
+.PP
+Definition at line 186 of file AppenderCollection\&.cs\&.
+.SS "virtual bool log4net\&.Appender\&.AppenderCollection\&.IsFixedSize\fC [get]\fP"
+
+.PP
+Gets a value indicating whether the collection has a fixed size\&. true if the collection has a fixed size; otherwise, false\&. The default is false
+.PP
+Definition at line 422 of file AppenderCollection\&.cs\&.
+.SS "virtual bool log4net\&.Appender\&.AppenderCollection\&.IsReadOnly\fC [get]\fP"
+
+.PP
+Gets a value indicating whether the IList is read-only\&. true if the collection is read-only; otherwise, false\&. The default is false
+.PP
+Definition at line 431 of file AppenderCollection\&.cs\&.
+.SS "virtual bool log4net\&.Appender\&.AppenderCollection\&.IsSynchronized\fC [get]\fP"
+
+.PP
+Gets a value indicating whether access to the collection is synchronized (thread-safe)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if access to the ICollection is synchronized (thread-safe); otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 221 of file AppenderCollection\&.cs\&.
+.SS "virtual object log4net\&.Appender\&.AppenderCollection\&.SyncRoot\fC [get]\fP"
+
+.PP
+Gets an object that can be used to synchronize access to the collection\&. 
+.PP
+Definition at line 229 of file AppenderCollection\&.cs\&.
+.SS "virtual \fBIAppender\fP log4net\&.Appender\&.AppenderCollection\&.this[int index]\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBIAppender\fP at the specified index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The zero-based index of the element to get or set\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentOutOfRangeException\fP \fIindex\fP  is less than zero
+.PP
+-or-
+.PP
+\fIindex\fP  is equal to or greater than \fBAppenderCollection\&.Count\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 247 of file AppenderCollection\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,143 @@
+.TH "Renci.SshNet.KeyboardInteractiveAuthenticationMethod" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.KeyboardInteractiveAuthenticationMethod \- 
+.PP
+Provides functionality to perform keyboard interactive authentication\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.AuthenticationMethod\fP, \fBRenci\&.SshNet\&.AuthenticationMethod\fP, and IDisposable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBKeyboardInteractiveAuthenticationMethod\fP (string username)"
+.br
+.RI "\fIInitializes a new instance of the \fBKeyboardInteractiveAuthenticationMethod\fP class\&. \fP"
+.ti -1c
+.RI "override \fBAuthenticationResult\fP \fBAuthenticate\fP (\fBSession\fP session)"
+.br
+.RI "\fIAuthenticates the specified session\&. \fP"
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "\fIPerforms application-defined tasks associated with freeing, releasing, or resetting unmanaged resources\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIReleases unmanaged and - optionally - managed resources \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.RI "\fIGets authentication method name \fP"
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "EventHandler
+.br
+< \fBAuthenticationPromptEventArgs\fP > \fBAuthenticationPrompt\fP"
+.br
+.RI "\fIOccurs when server prompts for more authentication information\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Provides functionality to perform keyboard interactive authentication\&. 
+
+
+.PP
+Definition at line 15 of file KeyboardInteractiveAuthenticationMethod\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.KeyboardInteractiveAuthenticationMethod\&.KeyboardInteractiveAuthenticationMethod (stringusername)"
+
+.PP
+Initializes a new instance of the \fBKeyboardInteractiveAuthenticationMethod\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIusername\fP The username\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP \fIusername\fP  is whitespace or null\&.
+.RE
+.PP
+
+.PP
+Definition at line 45 of file KeyboardInteractiveAuthenticationMethod\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBAuthenticationResult\fP Renci\&.SshNet\&.KeyboardInteractiveAuthenticationMethod\&.Authenticate (\fBSession\fPsession)\fC [virtual]\fP"
+
+.PP
+Authenticates the specified session\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session to authenticate\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Result of authentication process\&.
+.RE
+.PP
+
+.PP
+Implements \fBRenci\&.SshNet\&.AuthenticationMethod\fP\&.
+.PP
+Definition at line 56 of file KeyboardInteractiveAuthenticationMethod\&.cs\&.
+.SS "void Renci\&.SshNet\&.KeyboardInteractiveAuthenticationMethod\&.Dispose ()"
+
+.PP
+Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources\&. 
+.PP
+Definition at line 150 of file KeyboardInteractiveAuthenticationMethod\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.KeyboardInteractiveAuthenticationMethod\&.Dispose (booldisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Releases unmanaged and - optionally - managed resources 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP \fCtrue\fP to release both managed and unmanaged resources; \fCfalse\fP to release only unmanaged resources\&.
+.RE
+.PP
+
+.PP
+Definition at line 161 of file KeyboardInteractiveAuthenticationMethod\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string Renci\&.SshNet\&.KeyboardInteractiveAuthenticationMethod\&.Name\fC [get]\fP"
+
+.PP
+Gets authentication method name 
+.PP
+Definition at line 31 of file KeyboardInteractiveAuthenticationMethod\&.cs\&.
+.SH "Event Documentation"
+.PP 
+.SS "EventHandler<\fBAuthenticationPromptEventArgs\fP> Renci\&.SshNet\&.KeyboardInteractiveAuthenticationMethod\&.AuthenticationPrompt"
+
+.PP
+Occurs when server prompts for more authentication information\&. 
+.PP
+Definition at line 38 of file KeyboardInteractiveAuthenticationMethod\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,61 @@
+.TH "NHibernate.Id.IdentityGenerator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.IdentityGenerator \- 
+.PP
+An \fBIIdentifierGenerator\fP that indicates to the \fBISession\fP that identity (ie\&. identity/autoincrement column) key generation should be used\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Id\&.AbstractPostInsertGenerator\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBBasicDelegate\fP"
+.br
+.RI "\fIDelegate for dealing with IDENTITY columns where the dialect requires an additional command execution to retrieve the generated IDENTITY value \fP"
+.ti -1c
+.RI "class \fBInsertSelectDelegate\fP"
+.br
+.RI "\fIDelegate for dealing with IDENTITY columns where the dialect supports returning the generated IDENTITY value directly from the insert statement\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override 
+.br
+\fBIInsertGeneratedIdentifierDelegate\fP \fBGetInsertGeneratedIdentifierDelegate\fP (\fBIPostInsertIdentityPersister\fP persister, \fBISessionFactoryImplementor\fP factory, bool isGetGeneratedKeysEnabled)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An \fBIIdentifierGenerator\fP that indicates to the \fBISession\fP that identity (ie\&. identity/autoincrement column) key generation should be used\&. 
+
+This id generation strategy is specified in the mapping file as 
+.PP
+.nf
+&lt;generator class="identity" /&gt;
+
+.fi
+.PP
+ or if the database natively supports identity columns 
+.PP
+.nf
+&lt;generator class="native" /&gt;
+
+.fi
+.PP
+ 
+.PP
+This indicates to \fBNHibernate\fP that the database generates the id when the entity is inserted\&. 
+.PP
+Definition at line 25 of file IdentityGenerator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1291_anon_example_1_1_n_h1291_anon_example_fixture_1_1_person_name_anon =
+[
+    [ "PersonNameAnon", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1291_anon_example_1_1_n_h1291_anon_example_fixture_1_1_person_name_anon.html#a80550393139dabfb99fe199c1861ad0f", null ],
+    [ "Name", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1291_anon_example_1_1_n_h1291_anon_example_fixture_1_1_person_name_anon.html#ae76b5f1d1c26e6bc3a14699f047acf92", null ]
+];

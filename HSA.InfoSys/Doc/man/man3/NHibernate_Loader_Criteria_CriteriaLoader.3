@@ -1,0 +1,112 @@
+.TH "NHibernate.Loader.Criteria.CriteriaLoader" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Loader.Criteria.CriteriaLoader \- 
+.PP
+A \fC\fBLoader\fP\fP for \fBICriteria\fP queries\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Loader\&.OuterJoinLoader\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCriteriaLoader\fP (\fBIOuterJoinLoadable\fP persister, \fBISessionFactoryImplementor\fP factory, \fBCriteriaImpl\fP rootCriteria, string rootEntityName, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "IList \fBList\fP (\fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override \fBLockMode\fP[] \fBGetLockModes\fP (IDictionary< string, \fBLockMode\fP > lockModes)"
+.br
+.RI "\fIWhat lock mode does this load entities with? \fP"
+.ti -1c
+.RI "override IList \fBGetResultList\fP (IList results, \fBIResultTransformer\fP customResultTransformer)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override object \fBGetResultColumnOrRow\fP (object[] row, \fBIResultTransformer\fP customResultTransformer, IDataReader rs, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGet the actual object that is returned in the user-visible result list\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBApplyLocks\fP (\fBSqlString\fP sqlSelectString, IDictionary< string, \fBLockMode\fP > lockModes, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIAppend \fCFOR UPDATE OF\fP clause, if necessary\&. This empty superclass implementation merely returns its first argument\&. \fP"
+.ti -1c
+.RI "override IEnumerable
+.br
+< \fBIParameterSpecification\fP > \fBGetParameterSpecifications\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "ISet< string > \fBQuerySpaces\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsSubselectLoadingEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBCriteriaQueryTranslator\fP \fBTranslator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP[] \fBResultTypes\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A \fC\fBLoader\fP\fP for \fBICriteria\fP queries\&. 
+
+Note that criteria queries are more like multi-object \fCLoad()\fPs than like HQL queries\&. 
+.PP
+Definition at line 23 of file CriteriaLoader\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBSqlString\fP NHibernate\&.Loader\&.Criteria\&.CriteriaLoader\&.ApplyLocks (\fBSqlString\fPsql, IDictionary< string, \fBLockMode\fP >lockModes, \fBDialect\&.Dialect\fPdialect)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Append \fCFOR UPDATE OF\fP clause, if necessary\&. This empty superclass implementation merely returns its first argument\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Loader\&.Loader\fP\&.
+.PP
+Definition at line 118 of file CriteriaLoader\&.cs\&.
+.SS "override \fBLockMode\fP [] NHibernate\&.Loader\&.Criteria\&.CriteriaLoader\&.GetLockModes (IDictionary< string, \fBLockMode\fP >lockModes)\fC [virtual]\fP"
+
+.PP
+What lock mode does this load entities with? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlockModes\fP A \fBCollection\fP of lock modes specified dynamically via the Query Interface
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Loader\&.Loader\fP\&.
+.PP
+Definition at line 147 of file CriteriaLoader\&.cs\&.
+.SS "override object NHibernate\&.Loader\&.Criteria\&.CriteriaLoader\&.GetResultColumnOrRow (object[]row, \fBIResultTransformer\fPresultTransformer, IDataReaderrs, \fBISessionImplementor\fPsession)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Get the actual object that is returned in the user-visible result list\&. This empty implementation merely returns its first argument\&. This is overridden by some subclasses\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Loader\&.Loader\fP\&.
+.PP
+Definition at line 78 of file CriteriaLoader\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

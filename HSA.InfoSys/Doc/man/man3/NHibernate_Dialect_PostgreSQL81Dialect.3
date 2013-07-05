@@ -1,0 +1,177 @@
+.TH "NHibernate.Dialect.PostgreSQL81Dialect" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.PostgreSQL81Dialect \- 
+.PP
+An SQL dialect for PostgreSQL 8\&.1 and above\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.PostgreSQLDialect\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.PostgreSQL82Dialect\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBGetForUpdateNowaitString\fP (string aliases)"
+.br
+.RI "\fIGet the \fCFOR UPDATE OF column_list NOWAIT\fP fragment appropriate for this dialect given the aliases of the columns to be write locked\&. \fP"
+.ti -1c
+.RI "override string \fBGetIdentityColumnString\fP (DbType type)"
+.br
+.RI "\fIPostgreSQL supports \fCserial\fP and \fCserial4\fP type for 4 bytes integer auto increment column\&. \fCbigserial\fP or \fCserial8\fP can be used for 8 bytes integer auto increment column\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBAppendIdentitySelectToInsert\fP (\fBSqlString\fP insertSql)"
+.br
+.RI "\fIProvided we SupportsInsertSelectIdentity, then attch the 'select identity' clause to the insert statement\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBForUpdateNowaitString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsIdentityColumns\fP\fC [get]\fP"
+.br
+.RI "\fIPostgreSQL supports Identity column using the 'SERIAL' type\&. \fP"
+.ti -1c
+.RI "override bool \fBHasDataTypeInIdentityColumn\fP\fC [get]\fP"
+.br
+.RI "\fIPostgreSQL doesn't have type in identity column\&. \fP"
+.ti -1c
+.RI "override string \fBNoColumnsInsertString\fP\fC [get]\fP"
+.br
+.RI "\fIThe sql syntax to insert a row without specifying any column in PostgreSQL is \fCINSERT INTO table DEFAULT VALUES;\fP \fP"
+.ti -1c
+.RI "override string \fBIdentitySelectString\fP\fC [get]\fP"
+.br
+.RI "\fIPostgreSQL 8\&.1 and above defined the fuction \fClastval()\fP that returns the value of the last sequence that \fCnextval()\fP was used on in the current session\&. Call \fClastval()\fP if \fCnextval()\fP has not yet been called in the current session throw an exception\&. \fP"
+.ti -1c
+.RI "override bool \fBSupportsInsertSelectIdentity\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An SQL dialect for PostgreSQL 8\&.1 and above\&. 
+
+PostgreSQL 8\&.1 supports \fCFOR UPDATE \&.\&.\&. NOWAIT\fP syntax\&. 
+.PP
+PostgreSQL supports Identity column using the 'SERIAL' type\&. Serial type is a 'virtual' type that will automatically: 
+.PP
+.PD 0
+.IP "\(bu" 2
+Create a sequence named tablename_colname_seq\&. 
+.IP "\(bu" 2
+Set the default value of this column to the next value of the sequence\&. (using function \fCnextval('tablename_colname_seq')\fP) 
+.IP "\(bu" 2
+Add a 'NOT NULL' constraint to this column\&. 
+.IP "\(bu" 2
+Set the sequence as 'owned by' the table\&. 
+.PP
+.PP
+To insert the next value of the sequence into the serial column, exclude the column from the list of columns in the INSERT statement or use the DEFAULT key word\&. 
+.PP
+If the table or the column is dropped, the sequence is dropped too\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBPostgreSQLDialect\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 35 of file PostgreSQL81Dialect\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBSqlString\fP NHibernate\&.Dialect\&.PostgreSQL81Dialect\&.AppendIdentitySelectToInsert (\fBSqlString\fPinsertString)\fC [virtual]\fP"
+
+.PP
+Provided we SupportsInsertSelectIdentity, then attch the 'select identity' clause to the insert statement\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinsertString\fP The insert command 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The insert command with any necessary identity select clause attached\&. Note, if SupportsInsertSelectIdentity == false then the insert-string should be returned without modification\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 99 of file PostgreSQL81Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.PostgreSQL81Dialect\&.GetForUpdateNowaitString (stringaliases)\fC [virtual]\fP"
+
+.PP
+Get the \fCFOR UPDATE OF column_list NOWAIT\fP fragment appropriate for this dialect given the aliases of the columns to be write locked\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaliases\fP The columns to be write locked\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate \fCFOR UPDATE colunm_list NOWAIT\fP clause string\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 42 of file PostgreSQL81Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.PostgreSQL81Dialect\&.GetIdentityColumnString (DbTypetype)\fC [virtual]\fP"
+
+.PP
+PostgreSQL supports \fCserial\fP and \fCserial4\fP type for 4 bytes integer auto increment column\&. \fCbigserial\fP or \fCserial8\fP can be used for 8 bytes integer auto increment column\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCbigserial\fP if \fItype\fP  equal Int64, \fCserial\fP otherwise
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 74 of file PostgreSQL81Dialect\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool NHibernate\&.Dialect\&.PostgreSQL81Dialect\&.HasDataTypeInIdentityColumn\fC [get]\fP"
+
+.PP
+PostgreSQL doesn't have type in identity column\&. To create an identity column it uses the SQL syntax \fCCREATE TABLE tablename (colname SERIAL);\fP or \fCCREATE TABLE tablename (colname BIGSERIAL);\fP 
+.PP
+Definition at line 64 of file PostgreSQL81Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.PostgreSQL81Dialect\&.IdentitySelectString\fC [get]\fP"
+
+.PP
+PostgreSQL 8\&.1 and above defined the fuction \fClastval()\fP that returns the value of the last sequence that \fCnextval()\fP was used on in the current session\&. Call \fClastval()\fP if \fCnextval()\fP has not yet been called in the current session throw an exception\&. 
+.PP
+Definition at line 95 of file PostgreSQL81Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.PostgreSQL81Dialect\&.NoColumnsInsertString\fC [get]\fP"
+
+.PP
+The sql syntax to insert a row without specifying any column in PostgreSQL is \fCINSERT INTO table DEFAULT VALUES;\fP 
+.PP
+Definition at line 84 of file PostgreSQL81Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.PostgreSQL81Dialect\&.SupportsIdentityColumns\fC [get]\fP"
+
+.PP
+PostgreSQL supports Identity column using the 'SERIAL' type\&. 
+.PP
+Definition at line 51 of file PostgreSQL81Dialect\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

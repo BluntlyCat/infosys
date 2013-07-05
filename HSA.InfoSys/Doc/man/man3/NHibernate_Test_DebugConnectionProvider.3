@@ -1,0 +1,84 @@
+.TH "NHibernate.Test.DebugConnectionProvider" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.DebugConnectionProvider \- 
+.PP
+This connection provider keeps a list of all open connections, it is used when testing to check that tests clean up after themselves\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Connection\&.DriverConnectionProvider\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override IDbConnection \fBGetConnection\fP ()"
+.br
+.RI "\fIGets a new open IDbConnection through the \fBNHibernate\&.Driver\&.IDriver\fP\&. \fP"
+.ti -1c
+.RI "override void \fBCloseConnection\fP (IDbConnection conn)"
+.br
+.RI "\fICloses and Disposes of the IDbConnection\&. \fP"
+.ti -1c
+.RI "void \fBCloseAllConnections\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBHasOpenConnections\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+This connection provider keeps a list of all open connections, it is used when testing to check that tests clean up after themselves\&. 
+
+
+.PP
+Definition at line 13 of file DebugConnectionProvider\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Test\&.DebugConnectionProvider\&.CloseConnection (IDbConnectionconn)\fC [virtual]\fP"
+
+.PP
+Closes and Disposes of the IDbConnection\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconn\fP The IDbConnection to clean up\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Connection\&.DriverConnectionProvider\fP\&.
+.PP
+Definition at line 32 of file DebugConnectionProvider\&.cs\&.
+.SS "override IDbConnection NHibernate\&.Test\&.DebugConnectionProvider\&.GetConnection ()\fC [virtual]\fP"
+
+.PP
+Gets a new open IDbConnection through the \fBNHibernate\&.Driver\&.IDriver\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An Open IDbConnection\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIException\fP If there is any problem creating or opening the IDbConnection\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Connection\&.DriverConnectionProvider\fP\&.
+.PP
+Definition at line 17 of file DebugConnectionProvider\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

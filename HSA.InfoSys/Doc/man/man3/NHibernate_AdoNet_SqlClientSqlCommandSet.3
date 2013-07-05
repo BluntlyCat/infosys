@@ -1,0 +1,106 @@
+.TH "NHibernate.AdoNet.SqlClientSqlCommandSet" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.AdoNet.SqlClientSqlCommandSet \- 
+.PP
+Expose the batch functionality in ADO\&.Net 2\&.0 Microsoft in its wisdom decided to make my life hard and mark it internal\&. Through the use of Reflection and some delegates magic, I opened up the functionality\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDisposable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAppend\fP (SqlCommand command)"
+.br
+.RI "\fIAppend a command to the batch \fP"
+.ti -1c
+.RI "int \fBExecuteNonQuery\fP ()"
+.br
+.RI "\fIExecutes the batch \fP"
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "SqlCommand \fBBatchCommand\fP\fC [get]\fP"
+.br
+.RI "\fIReturn the batch command to be executed \fP"
+.ti -1c
+.RI "int \fBCountOfCommands\fP\fC [get]\fP"
+.br
+.RI "\fIThe number of commands batched in this instance \fP"
+.ti -1c
+.RI "SqlConnection \fBConnection\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "SqlTransaction \fBTransaction\fP\fC [set]\fP"
+.br
+.ti -1c
+.RI "int \fBCommandTimeout\fP\fC [set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Expose the batch functionality in ADO\&.Net 2\&.0 Microsoft in its wisdom decided to make my life hard and mark it internal\&. Through the use of Reflection and some delegates magic, I opened up the functionality\&. 
+
+Observable performance benefits are 50%+ when used, so it is really worth it\&. 
+.PP
+Definition at line 18 of file SqlClientSqlCommandSet\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.AdoNet\&.SqlClientSqlCommandSet\&.Append (SqlCommandcommand)"
+
+.PP
+Append a command to the batch 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP 
+.RE
+.PP
+
+.PP
+Definition at line 56 of file SqlClientSqlCommandSet\&.cs\&.
+.SS "int NHibernate\&.AdoNet\&.SqlClientSqlCommandSet\&.ExecuteNonQuery ()"
+
+.PP
+Executes the batch 
+.PP
+\fBReturns:\fP
+.RS 4
+This seems to be returning the total number of affected rows in all queries 
+.RE
+.PP
+
+.PP
+Definition at line 99 of file SqlClientSqlCommandSet\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "SqlCommand NHibernate\&.AdoNet\&.SqlClientSqlCommandSet\&.BatchCommand\fC [get]\fP"
+
+.PP
+Return the batch command to be executed 
+.PP
+Definition at line 81 of file SqlClientSqlCommandSet\&.cs\&.
+.SS "int NHibernate\&.AdoNet\&.SqlClientSqlCommandSet\&.CommandTimeout\fC [set]\fP"
+summary> Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources\&. /summary> filterpriority>2</filterpriority> 
+.PP
+Definition at line 122 of file SqlClientSqlCommandSet\&.cs\&.
+.SS "int NHibernate\&.AdoNet\&.SqlClientSqlCommandSet\&.CountOfCommands\fC [get]\fP"
+
+.PP
+The number of commands batched in this instance 
+.PP
+Definition at line 89 of file SqlClientSqlCommandSet\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

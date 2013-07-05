@@ -1,0 +1,213 @@
+.TH "NHibernate.Driver.SqlClientDriver" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Driver.SqlClientDriver \- 
+.PP
+A \fBNHibernate\fP \fBDriver\fP for using the SqlClient DataProvider  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Driver\&.DriverBase\fP, and \fBNHibernate\&.AdoNet\&.IEmbeddedBatcherFactoryProvider\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Driver\&.Sql2008ClientDriver\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.Futures\&.TestDriverThatDoesntSupportQueryBatching\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3004\&.TestSqlClientDriver\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3202\&.OffsetTestDriver\fP, and \fBNHibernate\&.Test\&.Pagination\&.CustomMsSqlDriver\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override IDbConnection \fBCreateConnection\fP ()"
+.br
+.RI "\fICreates an uninitialized IDbConnection object for the \fBSqlClientDriver\fP\&. \fP"
+.ti -1c
+.RI "override IDbCommand \fBCreateCommand\fP ()"
+.br
+.RI "\fICreates an uninitialized IDbCommand object for the \fBSqlClientDriver\fP\&. \fP"
+.ti -1c
+.RI "override \fBIResultSetsCommand\fP \fBGetResultSetsCommand\fP (\fBISessionImplementor\fP session)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBSetVariableLengthParameterSize\fP (IDbDataParameter dbParam, \fBSqlType\fP sqlType)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBMaxSizeForAnsiClob\fP = 2147483647"
+.br
+.ti -1c
+.RI "const int \fBMaxSizeForClob\fP = 1073741823"
+.br
+.ti -1c
+.RI "const int \fBMaxSizeForBlob\fP = 2147483647"
+.br
+.ti -1c
+.RI "const int \fBMaxSizeForLengthLimitedAnsiString\fP = 8000"
+.br
+.ti -1c
+.RI "const int \fBMaxSizeForLengthLimitedString\fP = 4000"
+.br
+.ti -1c
+.RI "const int \fBMaxSizeForLengthLimitedBinary\fP = 8000"
+.br
+.ti -1c
+.RI "const byte \fBMaxPrecision\fP = 28"
+.br
+.ti -1c
+.RI "const byte \fBMaxScale\fP = 5"
+.br
+.ti -1c
+.RI "const byte \fBMaxDateTime2\fP = 8"
+.br
+.ti -1c
+.RI "const byte \fBMaxDateTimeOffset\fP = 10"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBInitializeParameter\fP (IDbDataParameter dbParam, string name, \fBSqlType\fP sqlType)"
+.br
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBSetDefaultParameterSize\fP (IDbDataParameter dbParam, \fBSqlType\fP sqlType)"
+.br
+.ti -1c
+.RI "static bool \fBIsText\fP (IDbDataParameter dbParam, \fBSqlType\fP sqlType)"
+.br
+.RI "\fIInterprets if a parameter is a Clob (for the purposes of setting its default size) \fP"
+.ti -1c
+.RI "static bool \fBIsBlob\fP (IDbDataParameter dbParam, \fBSqlType\fP sqlType)"
+.br
+.RI "\fIInterprets if a parameter is a Blob (for the purposes of setting its default size) \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBUseNamedPrefixInSql\fP\fC [get]\fP"
+.br
+.RI "\fIMsSql requires the use of a Named Prefix in the SQL statement\&. \fP"
+.ti -1c
+.RI "override bool \fBUseNamedPrefixInParameter\fP\fC [get]\fP"
+.br
+.RI "\fIMsSql requires the use of a Named Prefix in the Parameter\&. \fP"
+.ti -1c
+.RI "override string \fBNamedPrefix\fP\fC [get]\fP"
+.br
+.RI "\fIThe Named Prefix for parameters\&. \fP"
+.ti -1c
+.RI "override bool \fBSupportsMultipleOpenReaders\fP\fC [get]\fP"
+.br
+.RI "\fIThe SqlClient driver does NOT support more than 1 open IDataReader with only 1 IDbConnection\&. \fP"
+.ti -1c
+.RI "override bool \fBSupportsMultipleQueries\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A \fBNHibernate\fP \fBDriver\fP for using the SqlClient DataProvider 
+
+
+.PP
+Definition at line 13 of file SqlClientDriver\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override IDbCommand NHibernate\&.Driver\&.SqlClientDriver\&.CreateCommand ()\fC [virtual]\fP"
+
+.PP
+Creates an uninitialized IDbCommand object for the \fBSqlClientDriver\fP\&. An unitialized System\&.Data\&.SqlClient\&.SqlCommand object\&.
+.PP
+Implements \fBNHibernate\&.Driver\&.DriverBase\fP\&.
+.PP
+Definition at line 41 of file SqlClientDriver\&.cs\&.
+.SS "override IDbConnection NHibernate\&.Driver\&.SqlClientDriver\&.CreateConnection ()\fC [virtual]\fP"
+
+.PP
+Creates an uninitialized IDbConnection object for the \fBSqlClientDriver\fP\&. An unitialized System\&.Data\&.SqlClient\&.SqlConnection object\&.
+.PP
+Implements \fBNHibernate\&.Driver\&.DriverBase\fP\&.
+.PP
+Definition at line 31 of file SqlClientDriver\&.cs\&.
+.SS "static bool NHibernate\&.Driver\&.SqlClientDriver\&.IsBlob (IDbDataParameterdbParam, \fBSqlType\fPsqlType)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Interprets if a parameter is a Blob (for the purposes of setting its default size) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdbParam\fP The parameter
+.br
+\fIsqlType\fP The SqlType of the parameter
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True, if the parameter should be interpreted as a Blob, otherwise False
+.RE
+.PP
+
+.PP
+Definition at line 164 of file SqlClientDriver\&.cs\&.
+.SS "static bool NHibernate\&.Driver\&.SqlClientDriver\&.IsText (IDbDataParameterdbParam, \fBSqlType\fPsqlType)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Interprets if a parameter is a Clob (for the purposes of setting its default size) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdbParam\fP The parameter
+.br
+\fIsqlType\fP The SqlType of the parameter
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True, if the parameter should be interpreted as a Clob, otherwise False
+.RE
+.PP
+
+.PP
+Definition at line 153 of file SqlClientDriver\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.Driver\&.SqlClientDriver\&.NamedPrefix\fC [get]\fP"
+
+.PP
+The Named Prefix for parameters\&. Sql Server uses \fC'@'\fP\&. 
+.PP
+Definition at line 75 of file SqlClientDriver\&.cs\&.
+.SS "override bool NHibernate\&.Driver\&.SqlClientDriver\&.SupportsMultipleOpenReaders\fC [get]\fP"
+
+.PP
+The SqlClient driver does NOT support more than 1 open IDataReader with only 1 IDbConnection\&. - it is not supported\&.
+.PP
+MS SQL Server 2000 (and 7) throws an exception when multiple IDataReaders are attempted to be opened\&. When SQL Server 2005 comes out a new driver will be created for it because SQL Server 2005 is supposed to support it\&. 
+.PP
+Definition at line 90 of file SqlClientDriver\&.cs\&.
+.SS "override bool NHibernate\&.Driver\&.SqlClientDriver\&.UseNamedPrefixInParameter\fC [get]\fP"
+
+.PP
+MsSql requires the use of a Named Prefix in the Parameter\&. because MsSql uses '<c>@</c>'\&. 
+.PP
+Definition at line 64 of file SqlClientDriver\&.cs\&.
+.SS "override bool NHibernate\&.Driver\&.SqlClientDriver\&.UseNamedPrefixInSql\fC [get]\fP"
+
+.PP
+MsSql requires the use of a Named Prefix in the SQL statement\&. because MsSql uses '<c>@</c>'\&. 
+.PP
+Definition at line 53 of file SqlClientDriver\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

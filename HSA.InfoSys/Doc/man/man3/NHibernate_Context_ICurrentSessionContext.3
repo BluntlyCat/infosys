@@ -1,0 +1,67 @@
+.TH "NHibernate.Context.ICurrentSessionContext" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Context.ICurrentSessionContext \- 
+.PP
+Defines the contract for implementations which know how to scope the notion of a \fBcurrent session\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Context\&.CurrentSessionContext\fP, and \fBNHibernate\&.Context\&.ThreadLocalSessionContext\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBISession\fP \fBCurrentSession\fP ()"
+.br
+.RI "\fIRetrieve the current session according to the scoping defined by this implementation\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the contract for implementations which know how to scope the notion of a \fBcurrent session\fP\&. 
+
+Implementations should adhere to the following: 
+.PD 0
+
+.IP "\(bu" 2
+contain a constructor accepting a single argument of type ISessionFactoryImplementor 
+.IP "\(bu" 2
+should be thread safe 
+.IP "\(bu" 2
+should be fully serializable 
+.PP
+.PP
+Implementors should be aware that they are also fully responsible for cleanup of any generated current-sessions\&. 
+.PP
+Note that there will be exactly one instance of the configured \fBICurrentSessionContext\fP implementation per \fBISessionFactory\fP\&. 
+.PP
+It is recommended to inherit from the class \fBCurrentSessionContext\fP whenever possible as it simplifies the implementation and provides single entry point with session binding support\&. 
+.PP
+Definition at line 34 of file ICurrentSessionContext\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBISession\fP NHibernate\&.Context\&.ICurrentSessionContext\&.CurrentSession ()"
+
+.PP
+Retrieve the current session according to the scoping defined by this implementation\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The current session\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP Typically indicates an issue locating or creating the current session\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Context\&.ThreadLocalSessionContext\fP, and \fBNHibernate\&.Context\&.CurrentSessionContext\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

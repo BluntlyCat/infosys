@@ -1,0 +1,295 @@
+.TH "log4net.Appender.ColoredConsoleAppender" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.ColoredConsoleAppender \- 
+.PP
+Appends logging events to the console\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBLevelColors\fP"
+.br
+.RI "\fIA class to act as a mapping between the level that a logging call is made at and the color it should be displayed as\&. \fP"
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBColors\fP : int { \fBColors\&.Blue\fP = 0x0001, \fBColors\&.Green\fP = 0x0002, \fBColors\&.Red\fP = 0x0004, \fBColors\&.White\fP = Blue | Green | Red, \fBColors\&.Yellow\fP = Red | Green, \fBColors\&.Purple\fP = Red | Blue, \fBColors\&.Cyan\fP = Green | Blue, \fBColors\&.HighIntensity\fP = 0x0008 }"
+.br
+.RI "\fIThe enum of possible color values for use with the color mapping method \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBColoredConsoleAppender\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBColoredConsoleAppender\fP class\&. \fP"
+.ti -1c
+.RI "\fBColoredConsoleAppender\fP (\fBILayout\fP layout)"
+.br
+.RI "\fIInitializes a new instance of the \fBColoredConsoleAppender\fP class with the specified layout\&. \fP"
+.ti -1c
+.RI "\fBColoredConsoleAppender\fP (\fBILayout\fP layout, bool writeToErrorStream)"
+.br
+.RI "\fIInitializes a new instance of the \fBColoredConsoleAppender\fP class with the specified layout\&. \fP"
+.ti -1c
+.RI "void \fBAddMapping\fP (\fBLevelColors\fP mapping)"
+.br
+.RI "\fIAdd a mapping of level to color - done by the config file \fP"
+.ti -1c
+.RI "override void \fBActivateOptions\fP ()"
+.br
+.RI "\fIInitialize the options for this appender \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBConsoleOut\fP = 'Console\&.Out'"
+.br
+.RI "\fIThe \fBColoredConsoleAppender\&.Target\fP to use when writing to the Console standard output stream\&. \fP"
+.ti -1c
+.RI "const string \fBConsoleError\fP = 'Console\&.Error'"
+.br
+.RI "\fIThe \fBColoredConsoleAppender\&.Target\fP to use when writing to the Console standard error output stream\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBAppend\fP (\fBlog4net\&.Core\&.LoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIThis method is called by the \fBAppenderSkeleton\&.DoAppend(log4net\&.Core\&.LoggingEvent)\fP method\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual string \fBTarget\fP\fC [get, set]\fP"
+.br
+.RI "\fITarget is the value of the console output stream\&. This is either \fC'Console\&.Out'\fP or \fC'Console\&.Error'\fP\&. \fP"
+.ti -1c
+.RI "override bool \fBRequiresLayout\fP\fC [get]\fP"
+.br
+.RI "\fIThis appender requires a \fBLayout\fP to be set\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Appends logging events to the console\&. 
+
+\fBColoredConsoleAppender\fP appends log events to the standard output stream or the error output stream using a layout specified by the user\&. It also allows the color of a specific type of message to be set\&. 
+.PP
+By default, all output is written to the console's standard output stream\&. The \fBTarget\fP property can be set to direct the output to the error stream\&. 
+.PP
+NOTE: This appender writes directly to the application's attached console not to the \fCSystem\&.Console\&.Out\fP or \fCSystem\&.Console\&.Error\fP \fCTextWriter\fP\&. The \fCSystem\&.Console\&.Out\fP and \fCSystem\&.Console\&.Error\fP streams can be programmatically redirected (for example NUnit does this to capture program output)\&. This appender will ignore these redirections because it needs to use Win32 API calls to colorize the output\&. To respect these redirections the \fBConsoleAppender\fP must be used\&. 
+.PP
+When configuring the colored console appender, mapping should be specified to map a logging level to a color\&. For example: 
+.PP
+.PP
+.nf
+<mapping>
+    <level value="ERROR" />
+    <foreColor value="White" />
+    <backColor value="Red, HighIntensity" />
+</mapping>
+<mapping>
+    <level value="DEBUG" />
+    <backColor value="Green" />
+</mapping>
+.fi
+.PP
+ 
+.PP
+The Level is the standard \fBlog4net\fP logging level and ForeColor and BackColor can be any combination of the following values: 
+.PD 0
+
+.IP "\(bu" 2
+Blue 
+.IP "\(bu" 2
+Green 
+.IP "\(bu" 2
+Red 
+.IP "\(bu" 2
+White 
+.IP "\(bu" 2
+Yellow 
+.IP "\(bu" 2
+Purple 
+.IP "\(bu" 2
+Cyan 
+.IP "\(bu" 2
+HighIntensity 
+.PP
+.PP
+<author>Rick Hobbs</author> <author>Nicko Cadell</author> 
+.PP
+Definition at line 95 of file ColoredConsoleAppender\&.cs\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBlog4net\&.Appender\&.ColoredConsoleAppender\&.Colors\fP : int"
+
+.PP
+The enum of possible color values for use with the color mapping method The following flags can be combined together to form the colors\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBColoredConsoleAppender\fP
+.PP
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIBlue \fP\fP
+color is blue 
+.TP
+\fB\fIGreen \fP\fP
+color is green 
+.TP
+\fB\fIRed \fP\fP
+color is red 
+.TP
+\fB\fIWhite \fP\fP
+color is white 
+.TP
+\fB\fIYellow \fP\fP
+color is yellow 
+.TP
+\fB\fIPurple \fP\fP
+color is purple 
+.TP
+\fB\fICyan \fP\fP
+color is cyan 
+.TP
+\fB\fIHighIntensity \fP\fP
+color is intensified 
+.PP
+Definition at line 110 of file ColoredConsoleAppender\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.ColoredConsoleAppender\&.ColoredConsoleAppender ()"
+
+.PP
+Initializes a new instance of the \fBColoredConsoleAppender\fP class\&. The instance of the \fBColoredConsoleAppender\fP class is set up to write to the standard output stream\&. 
+.PP
+Definition at line 164 of file ColoredConsoleAppender\&.cs\&.
+.SS "log4net\&.Appender\&.ColoredConsoleAppender\&.ColoredConsoleAppender (\fBILayout\fPlayout)"
+
+.PP
+Initializes a new instance of the \fBColoredConsoleAppender\fP class with the specified layout\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlayout\fP the layout to use for this appender
+.RE
+.PP
+.PP
+The instance of the \fBColoredConsoleAppender\fP class is set up to write to the standard output stream\&. 
+.PP
+Definition at line 178 of file ColoredConsoleAppender\&.cs\&.
+.SS "log4net\&.Appender\&.ColoredConsoleAppender\&.ColoredConsoleAppender (\fBILayout\fPlayout, boolwriteToErrorStream)"
+
+.PP
+Initializes a new instance of the \fBColoredConsoleAppender\fP class with the specified layout\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlayout\fP the layout to use for this appender
+.br
+\fIwriteToErrorStream\fP flag set to \fCtrue\fP to write to the console error stream
+.RE
+.PP
+.PP
+When \fIwriteToErrorStream\fP  is set to \fCtrue\fP, output is written to the standard error output stream\&. Otherwise, output is written to the standard output stream\&. 
+.PP
+Definition at line 194 of file ColoredConsoleAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Appender\&.ColoredConsoleAppender\&.ActivateOptions ()\fC [virtual]\fP"
+
+.PP
+Initialize the options for this appender Initialize the level to color mappings set on this appender\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 441 of file ColoredConsoleAppender\&.cs\&.
+.SS "void log4net\&.Appender\&.ColoredConsoleAppender\&.AddMapping (\fBLevelColors\fPmapping)"
+
+.PP
+Add a mapping of level to color - done by the config file 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImapping\fP The mapping to add
+.RE
+.PP
+.PP
+Add a \fBLevelColors\fP mapping to this appender\&. Each mapping defines the foreground and background colors for a level\&. 
+.PP
+Definition at line 247 of file ColoredConsoleAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.ColoredConsoleAppender\&.Append (\fBlog4net\&.Core\&.LoggingEvent\fPloggingEvent)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+This method is called by the \fBAppenderSkeleton\&.DoAppend(log4net\&.Core\&.LoggingEvent)\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP The event to log\&.
+.RE
+.PP
+.PP
+Writes the event to the console\&. 
+.PP
+The format of the output will depend on the appender's layout\&. 
+.PP
+Implements \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 272 of file ColoredConsoleAppender\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const string log4net\&.Appender\&.ColoredConsoleAppender\&.ConsoleError = 'Console\&.Error'"
+
+.PP
+The \fBColoredConsoleAppender\&.Target\fP to use when writing to the Console standard error output stream\&. The \fBColoredConsoleAppender\&.Target\fP to use when writing to the Console standard error output stream\&. 
+.PP
+Definition at line 501 of file ColoredConsoleAppender\&.cs\&.
+.SS "const string log4net\&.Appender\&.ColoredConsoleAppender\&.ConsoleOut = 'Console\&.Out'"
+
+.PP
+The \fBColoredConsoleAppender\&.Target\fP to use when writing to the Console standard output stream\&. The \fBColoredConsoleAppender\&.Target\fP to use when writing to the Console standard output stream\&. 
+.PP
+Definition at line 489 of file ColoredConsoleAppender\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool log4net\&.Appender\&.ColoredConsoleAppender\&.RequiresLayout\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+This appender requires a \fBLayout\fP to be set\&. \fCtrue\fP
+.PP
+This appender requires a \fBLayout\fP to be set\&. 
+.PP
+Definition at line 425 of file ColoredConsoleAppender\&.cs\&.
+.SS "virtual string log4net\&.Appender\&.ColoredConsoleAppender\&.Target\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Target is the value of the console output stream\&. This is either \fC'Console\&.Out'\fP or \fC'Console\&.Error'\fP\&. Target is the value of the console output stream\&. This is either \fC'Console\&.Out'\fP or \fC'Console\&.Error'\fP\&. 
+.PP
+Target is the value of the console output stream\&. This is either \fC'Console\&.Out'\fP or \fC'Console\&.Error'\fP\&. 
+.PP
+Definition at line 219 of file ColoredConsoleAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

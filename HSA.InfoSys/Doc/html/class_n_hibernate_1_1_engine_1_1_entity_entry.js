@@ -1,0 +1,27 @@
+var class_n_hibernate_1_1_engine_1_1_entity_entry =
+[
+    [ "ForceLocked", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#a56f6e6a66d1cad375382cb0d5af74d1d", null ],
+    [ "GetLoadedValue", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#a919da536846d3d8e57fd14039ea900ad", null ],
+    [ "IsModifiableEntity", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#af83a6564756f3633d9990216b588278f", null ],
+    [ "IsNullifiable", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#affaaf704b1e27d10f46f3e960d62f95a", null ],
+    [ "PostDelete", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#ab3bef8144bb28ab63df3f747972aef50", null ],
+    [ "PostInsert", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#a0ba64ddb15aadefd615245e338b06f07", null ],
+    [ "PostUpdate", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#a376cc5b91599951f077b0fa02eea02e1", null ],
+    [ "RequiresDirtyCheck", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#a6277e5ace9fb4dcd364423f287b82da8", null ],
+    [ "SetReadOnly", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#ad9fa0e2944748f3f79321ab53b0f47de", null ],
+    [ "ToString", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#a712fdf90b3595c2e0ec0fbf0e8a8cc31", null ],
+    [ "DeletedState", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#a64a1ff0ce4dcf21bff63f97b59eda721", null ],
+    [ "EntityKey", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#adc265fe432fbcd8aa322c04fbc501185", null ],
+    [ "EntityName", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#ab0395015de26aa20f11bf547dc5974f9", null ],
+    [ "ExistsInDatabase", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#a35feeedbef6947a2979b435595c1f3bb", null ],
+    [ "Id", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#ad238df458a7b764df16e44e24d8834a7", null ],
+    [ "IsBeingReplicated", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#a83ba43003df3a1840d44798ccd9373fd", null ],
+    [ "IsReadOnly", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#aff425fa7efd13f6853e115700d622cb1", null ],
+    [ "LoadedState", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#a0a942394bd72887877da4d207dfd6b85", null ],
+    [ "LoadedWithLazyPropertiesUnfetched", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#a946550cdbe2e60df37cf86f4a071e47e", null ],
+    [ "LockMode", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#aff6abdf3e5fa366afe92c8c8bfc8456b", null ],
+    [ "Persister", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#a2089e84125ec53db36c17a5b3bdb2e68", null ],
+    [ "RowId", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#a84f70812922fde2fe1dc5abf3ac0260f", null ],
+    [ "Status", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#aa43891bc569e56ba38bc0ef880730b14", null ],
+    [ "Version", "class_n_hibernate_1_1_engine_1_1_entity_entry.html#a76a9a8834c23aa707c071b698e9b213a", null ]
+];

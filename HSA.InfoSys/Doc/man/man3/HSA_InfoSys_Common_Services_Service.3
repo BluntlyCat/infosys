@@ -1,0 +1,165 @@
+.TH "HSA.InfoSys.Common.Services.Service" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HSA.InfoSys.Common.Services.Service \- 
+.PP
+This class represents the base functionality of a service\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBHSA\&.InfoSys\&.Common\&.Services\&.IService\fP\&.
+.PP
+Inherited by \fBHSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.Countdown\fP, \fBHSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.CrawlController\fP, \fBHSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.NutchController\fP, \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\fP, \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.Scheduler\fP, \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.SolrController\fP, and \fBHSA\&.InfoSys\&.CrawlerService\&.CrawlerService\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBStartService\fP ()"
+.br
+.RI "\fIStarts this service if not running\&. \fP"
+.ti -1c
+.RI "virtual void \fBRestartService\fP (bool cancel=false)"
+.br
+.RI "\fIRestarts the service if running\&. \fP"
+.ti -1c
+.RI "virtual void \fBStopService\fP (bool cancel=false)"
+.br
+.RI "\fIStops this instance\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBService\fP (Guid serviceGUID)"
+.br
+.RI "\fIInitializes a new instance of the \fBService\fP class\&. \fP"
+.ti -1c
+.RI "abstract void \fBRun\fP ()"
+.br
+.RI "\fIRuns this service\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "Guid \fBServiceGUID\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the service GUID\&. \fP"
+.ti -1c
+.RI "bool \fBRunning\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether this \fBService\fP is running\&. \fP"
+.ti -1c
+.RI "bool \fBCancel\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether this \fBService\fP is canceled\&. \fP"
+.ti -1c
+.RI "Mutex \fBServiceMutex\fP\fC [get]\fP"
+.br
+.RI "\fIGets the service mutex\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class represents the base functionality of a service\&. 
+
+
+.PP
+Definition at line 16 of file Service\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "HSA\&.InfoSys\&.Common\&.Services\&.Service\&.Service (GuidserviceGUID)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBService\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIserviceGUID\fP The service GUID\&.
+.RE
+.PP
+
+.PP
+Definition at line 32 of file Service\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void HSA\&.InfoSys\&.Common\&.Services\&.Service\&.RestartService (boolcancel = \fCfalse\fP)\fC [virtual]\fP"
+
+.PP
+Restarts the service if running\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcancel\fP if set to \fCtrue\fP [cancel]\&.
+.RE
+.PP
+
+.PP
+Reimplemented in \fBHSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.Countdown\fP\&.
+.PP
+Definition at line 107 of file Service\&.cs\&.
+.SS "abstract void HSA\&.InfoSys\&.Common\&.Services\&.Service\&.Run ()\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Runs this service\&. 
+.PP
+Implemented in \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\fP, \fBHSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.NutchController\fP, \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.Scheduler\fP, \fBHSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.Countdown\fP, \fBHSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.CrawlController\fP, \fBHSA\&.InfoSys\&.CrawlerService\&.CrawlerService\fP, and \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.SolrController\fP\&.
+.SS "virtual void HSA\&.InfoSys\&.Common\&.Services\&.Service\&.StartService ()\fC [virtual]\fP"
+
+.PP
+Starts this service if not running\&. 
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.IService\fP\&.
+.PP
+Reimplemented in \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\fP, \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.Scheduler\fP, and \fBHSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.Countdown\fP\&.
+.PP
+Definition at line 86 of file Service\&.cs\&.
+.SS "virtual void HSA\&.InfoSys\&.Common\&.Services\&.Service\&.StopService (boolcancel = \fCfalse\fP)\fC [virtual]\fP"
+
+.PP
+Stops this instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcancel\fP if set to \fCtrue\fP [cancel]\&.
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.IService\fP\&.
+.PP
+Reimplemented in \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.DbManager\fP, \fBHSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.NutchController\fP, \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.Scheduler\fP, and \fBHSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.Countdown\fP\&.
+.PP
+Definition at line 117 of file Service\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool HSA\&.InfoSys\&.Common\&.Services\&.Service\&.Cancel\fC [get]\fP, \fC [set]\fP, \fC [protected]\fP"
+
+.PP
+Gets or sets a value indicating whether this \fBService\fP is canceled\&. Cancel is \fCtrue\fP if cancels; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 67 of file Service\&.cs\&.
+.SS "bool HSA\&.InfoSys\&.Common\&.Services\&.Service\&.Running\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether this \fBService\fP is running\&. \fCtrue\fP if running; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 51 of file Service\&.cs\&.
+.SS "Guid HSA\&.InfoSys\&.Common\&.Services\&.Service\&.ServiceGUID\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the service GUID\&. The GUID for identificate this service\&. 
+.PP
+Definition at line 43 of file Service\&.cs\&.
+.SS "Mutex HSA\&.InfoSys\&.Common\&.Services\&.Service\&.ServiceMutex\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Gets the service mutex\&. The service mutex\&. 
+.PP
+Definition at line 76 of file Service\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

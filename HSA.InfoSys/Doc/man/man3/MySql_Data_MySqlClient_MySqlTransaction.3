@@ -1,0 +1,72 @@
+.TH "MySql.Data.MySqlClient.MySqlTransaction" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MySql.Data.MySqlClient.MySqlTransaction \- 
+.PP
+ 
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits DbTransaction\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBCommit\fP ()"
+.br
+.ti -1c
+.RI "override void \fBRollback\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBDispose\fP (bool disposing)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "new \fBMySqlConnection\fP \fBConnection\fP\fC [get]\fP"
+.br
+.RI "\fIGets the \fBMySqlConnection\fP object associated with the transaction, or a null reference (Nothing in Visual Basic) if the transaction is no longer valid\&. \fP"
+.ti -1c
+.RI "override IsolationLevel \fBIsolationLevel\fP\fC [get]\fP"
+.br
+.RI "\fISpecifies the \fBIsolationLevel\fP for this transaction\&. \fP"
+.ti -1c
+.RI "override DbConnection \fBDbConnection\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+Definition at line 30 of file transaction\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "new \fBMySqlConnection\fP MySql\&.Data\&.MySqlClient\&.MySqlTransaction\&.Connection\fC [get]\fP"
+
+.PP
+Gets the \fBMySqlConnection\fP object associated with the transaction, or a null reference (Nothing in Visual Basic) if the transaction is no longer valid\&. The \fBMySqlConnection\fP object associated with this transaction\&.
+.PP
+A single application may have multiple database connections, each with zero or more transactions\&. This property enables you to determine the connection object associated with a particular transaction created by \fBMySqlConnection\&.BeginTransaction()\fP\&. 
+.PP
+Definition at line 56 of file transaction\&.cs\&.
+.SS "override IsolationLevel MySql\&.Data\&.MySqlClient\&.MySqlTransaction\&.IsolationLevel\fC [get]\fP"
+
+.PP
+Specifies the \fBIsolationLevel\fP for this transaction\&. The \fBIsolationLevel\fP for this transaction\&. The default is \fBReadCommitted\fP\&. 
+.PP
+Parallel transactions are not supported\&. Therefore, the IsolationLevel applies to the entire transaction\&. 
+.PP
+Definition at line 71 of file transaction\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

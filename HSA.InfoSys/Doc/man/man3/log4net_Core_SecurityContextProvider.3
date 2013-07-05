@@ -1,0 +1,102 @@
+.TH "log4net.Core.SecurityContextProvider" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Core.SecurityContextProvider \- 
+.PP
+The \fBSecurityContextProvider\fP providers default \fBSecurityContext\fP instances\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBSecurityContext\fP \fBCreateSecurityContext\fP (object consumer)"
+.br
+.RI "\fICreate a \fBSecurityContext\fP for a consumer \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSecurityContextProvider\fP ()"
+.br
+.RI "\fIProtected default constructor to allow subclassing \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "static \fBSecurityContextProvider\fP \fBDefaultProvider\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the default \fBSecurityContextProvider\fP \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The \fBSecurityContextProvider\fP providers default \fBSecurityContext\fP instances\&. 
+
+A configured component that interacts with potentially protected system resources uses a \fBSecurityContext\fP to provide the elevated privileges required\&. If the \fBSecurityContext\fP object has been not been explicitly provided to the component then the component will request one from this \fBSecurityContextProvider\fP\&. 
+.PP
+By default the \fBSecurityContextProvider\&.DefaultProvider\fP is an instance of \fBSecurityContextProvider\fP which returns only NullSecurityContext objects\&. This is a reasonable default where the privileges required are not know by the system\&. 
+.PP
+This default behavior can be overridden by subclassing the \fBSecurityContextProvider\fP and overriding the \fBCreateSecurityContext\fP method to return the desired \fBSecurityContext\fP objects\&. The default provider can be replaced by programmatically setting the value of the \fBSecurityContextProvider\&.DefaultProvider\fP property\&. 
+.PP
+An alternative is to use the \fC\fBlog4net\&.Config\&.SecurityContextProviderAttribute\fP\fP This attribute can be applied to an assembly in the same way as the \fC\fBlog4net\&.Config\&.XmlConfiguratorAttribute\fP'</c>\&. The attribute takes
+the type to use as the <see cref='\fBSecurityContextProvider\fP"/> as an argument\&. \fP
+.PP
+\fC \fP
+.PP
+\fC <author>Nicko Cadell</author> \fP
+.PP
+Definition at line 58 of file SecurityContextProvider\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Core\&.SecurityContextProvider\&.SecurityContextProvider ()\fC [protected]\fP"
+
+.PP
+Protected default constructor to allow subclassing Protected default constructor to allow subclassing 
+.PP
+Definition at line 101 of file SecurityContextProvider\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBSecurityContext\fP log4net\&.Core\&.SecurityContextProvider\&.CreateSecurityContext (objectconsumer)\fC [virtual]\fP"
+
+.PP
+Create a \fBSecurityContext\fP for a consumer 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconsumer\fP The consumer requesting the \fBSecurityContext\fP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An impersonation context
+.RE
+.PP
+.PP
+The default implementation is to return a NullSecurityContext\&. 
+.PP
+Subclasses should override this method to provide their own behavior\&. 
+.PP
+Definition at line 119 of file SecurityContextProvider\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBSecurityContextProvider\fP log4net\&.Core\&.SecurityContextProvider\&.DefaultProvider\fC [static]\fP, \fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the default \fBSecurityContextProvider\fP The default \fBSecurityContextProvider\fP 
+.PP
+The default provider is used by configured components that require a \fBSecurityContext\fP and have not had one given to them\&. 
+.PP
+By default this is an instance of \fBSecurityContextProvider\fP that returns NullSecurityContext objects\&. 
+.PP
+The default provider can be set programmatically by setting the value of this property to a sub class of \fBSecurityContextProvider\fP that has the desired behavior\&. 
+.PP
+Definition at line 88 of file SecurityContextProvider\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

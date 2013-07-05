@@ -1,0 +1,457 @@
+.TH "NHibernate.Dialect.SybaseSQLAnywhere10Dialect" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.SybaseSQLAnywhere10Dialect \- 
+.PP
+SQL \fBDialect\fP for SQL Anywhere 10 - for the \fBNHibernate\fP 3\&.0\&.0 distribution Copyright (C) 2010 Glenn Paulley Contact: http://iablog.sybase.com/paulley  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.SybaseSQLAnywhere11Dialect\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override \fBSqlString\fP \fBAppendIdentitySelectToInsert\fP (\fBSqlString\fP insertSql)"
+.br
+.RI "\fIProvided we SupportsInsertSelectIdentity, then attch the 'select identity' clause to the insert statement\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBGetLimitString\fP (\fBSqlString\fP sql, \fBSqlString\fP offset, \fBSqlString\fP limit)"
+.br
+.RI "\fIAttempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. \fP"
+.ti -1c
+.RI "override string \fBGetForUpdateString\fP (\fBLockMode\fP lockMode)"
+.br
+.RI "\fISQL Anywhere 10 supports READ, WRITE, and INTENT row locks\&. INTENT locks are sufficient to ensure that other concurrent connections cannot modify a row (though other connections can still read that row)\&. SQL Anywhere also supports 3 modes of snapshot isolation (multi-version concurrency control (MVCC)\&. \fP"
+.ti -1c
+.RI "override bool \fBPerformTemporaryTableDDLInIsolation\fP ()"
+.br
+.RI "\fISQL Anywhere 10 does not perform a COMMIT upon creation of a temporary table\&. However, it does perform an implicit COMMIT when creating an index over a temporary table, or upon ALTERing the definition of temporary table\&. \fP"
+.ti -1c
+.RI "override int \fBRegisterResultSetOutParameter\fP (DbCommand statement, int position)"
+.br
+.RI "\fISQL Anywhere does support OUT parameters with callable stored procedures\&. \fP"
+.ti -1c
+.RI "override DbDataReader \fBGetResultSet\fP (DbCommand statement)"
+.br
+.RI "\fIGiven a callable statement previously processed by \fBRegisterResultSetOutParameter\fP, extract the DbDataReader from the OUT parameter\&. \fP"
+.ti -1c
+.RI "override \fBIDataBaseSchema\fP \fBGetDataBaseSchema\fP (DbConnection connection)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBRegisterCharacterTypeMappings\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterNumericTypeMappings\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterDateTimeTypeMappings\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterReverseNHibernateTypeMappings\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterFunctions\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterMathFunctions\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterXmlFunctions\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterAggregationFunctions\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterBitFunctions\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterDateFunctions\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterStringFunctions\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterSoapFunctions\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterMiscellaneousFunctions\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterKeywords\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBSupportsIdentityColumns\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBIdentitySelectString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBIdentityColumnString\fP\fC [get]\fP"
+.br
+.RI "\fISQL Anywhere uses \fCDEFAULT AUTOINCREMENT\fP to identify an IDENTITY column in a \fCCREATE TABLE\fP statement\&. \fP"
+.ti -1c
+.RI "override bool \fBSupportsInsertSelectIdentity\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsLimit\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsLimitOffset\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsVariableLimit\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBOffsetStartsAtOne\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBForUpdateOfColumns\fP\fC [get]\fP"
+.br
+.RI "\fISQL Anywhere does support \fCFOR UPDATE OF\fP syntax\&. However, in SQL Anywhere one cannot specify both \fCFOR UPDATE OF\fP syntax and \fCFOR UPDATE BY LOCK\fP in the same statement\&. To achieve INTENT locking when using \fCFOR UPDATE OF\fP syntax one must use a table hint in the query's FROM clause, ie\&. \fP"
+.ti -1c
+.RI "override bool \fBSupportsOuterJoinForUpdate\fP\fC [get]\fP"
+.br
+.RI "\fISQL Anywhere supports \fCFOR UPDATE\fP over cursors containing outer joins\&. \fP"
+.ti -1c
+.RI "override string \fBForUpdateString\fP\fC [get]\fP"
+.br
+.RI "\fI\fBLock\fP rows in the cursor explicitly using INTENT row locks\&. \fP"
+.ti -1c
+.RI "string \fBForReadOnlyString\fP\fC [get]\fP"
+.br
+.RI "\fIEnforce the condition that this query is read-only\&. This ensure that certain query rewrite optimizations, such as join elimination, can be used\&. \fP"
+.ti -1c
+.RI "string \fBForUpdateByLockString\fP\fC [get]\fP"
+.br
+.RI "\fI\fBLock\fP rows in the cursor explicitly using INTENT row locks\&. \fP"
+.ti -1c
+.RI "override string \fBForUpdateNowaitString\fP\fC [get]\fP"
+.br
+.RI "\fISQL Anywhere does not support \fCFOR UPDATE NOWAIT\fP\&. However, the intent is to acquire pessimistic locks on the underlying rows; with \fBNHibernate\fP one can accomplish this through setting the BLOCKING connection option\&. Hence, with this API we lock rows in the cursor explicitly using INTENT row locks\&. \fP"
+.ti -1c
+.RI "override bool \fBDoesReadCommittedCauseWritersToBlockReaders\fP\fC [get]\fP"
+.br
+.RI "\fIWe assume that applications using this dialect are NOT using SQL Anywhere's snapshot isolation modes\&. \fP"
+.ti -1c
+.RI "override bool \fBDoesRepeatableReadCauseReadersToBlockWriters\fP\fC [get]\fP"
+.br
+.RI "\fIWe assume that applications using this dialect are NOT using SQL Anywhere's snapshot isolation modes\&. \fP"
+.ti -1c
+.RI "override bool \fBSupportsCurrentTimestampSelection\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBCurrentTimestampSQLFunctionName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsCurrentTimestampSelectStringCallable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBCurrentTimestampSelectString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override char \fBCloseQuote\fP\fC [get]\fP"
+.br
+.RI "\fISQL Anywhere supports both double quotes or '[' (Microsoft syntax) for quoted identifiers\&. \fP"
+.ti -1c
+.RI "override char \fBOpenQuote\fP\fC [get]\fP"
+.br
+.RI "\fISQL Anywhere supports both double quotes or '[' (Microsoft syntax) for quoted identifiers\&. \fP"
+.ti -1c
+.RI "override bool \fBSupportsEmptyInList\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsResultSetPositionQueryMethodsOnForwardOnlyCursor\fP\fC [get]\fP"
+.br
+.RI "\fISQL Anywhere's implementation of KEYSET-DRIVEN cursors does not permit absolute postioning\&. With jConnect as the driver, this support will succeed because jConnect FETCHes the entire result set to the client first; it will fail with the iAnywhere JDBC driver\&. Because the server may decide to use a KEYSET cursor even if the cursor is declared as FORWARD ONLY, this support is disabled\&. \fP"
+.ti -1c
+.RI "override bool \fBSupportsExistsInSelect\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBAreStringComparisonsCaseInsensitive\fP\fC [get]\fP"
+.br
+.RI "\fIBy default, the SQL Anywhere dbinit utility creates a case-insensitive database for the CHAR collation\&. This can be changed through the use of the -c command line switch on dbinit, and the setting may differ for the NCHAR collation for national character sets\&. Whether or not a database supports case-sensitive comparisons can be determined via the DB_Extended_property() function, for example \fP"
+.ti -1c
+.RI "override bool \fBSupportsCommentOn\fP\fC [get]\fP"
+.br
+.RI "\fISQL Anywhere supports \fCCOMMENT ON\fP statements for a wide variety of database objects\&. When the COMMENT statement is executed an implicit \fCCOMMIT\fP is performed\&. However, COMMENT syntax for \fCCREATE TABLE\fP, as expected by \fBNHibernate\fP (see \fBTable\&.cs\fP), is not supported\&. \fP"
+.ti -1c
+.RI "override int \fBMaxAliasLength\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBAddColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBNullColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBQualifyIndexName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBNoColumnsInsertString\fP\fC [get]\fP"
+.br
+.RI "\fISQL Anywhere currently supports only 'VALUES (DEFAULT)', not the ANSI standard 'DEFAULT VALUES'\&. This latter syntax will be supported in the SQL Anywhere 11\&.0\&.1 release\&. For the moment, 'VALUES (DEFAULT)' works only for a single-column table\&. \fP"
+.ti -1c
+.RI "override bool \fBDropConstraints\fP\fC [get]\fP"
+.br
+.RI "\fISQL Anywhere does not require dropping a constraint before dropping a table, and the DROP statement syntax used by Hibernate to drop a constraint is not compatible with SQL Anywhere, so disable it\&. \fP"
+.ti -1c
+.RI "override string \fBDropForeignKeyString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsTemporaryTables\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBCreateTemporaryTableString\fP\fC [get]\fP"
+.br
+.RI "\fIIn SQL Anywhere, the syntax, DECLARE LOCAL TEMPORARY TABLE \&.\&.\&., can also be used, which creates a temporary table with procedure scope, which may be important for stored procedures\&. \fP"
+.ti -1c
+.RI "override string \fBCreateTemporaryTablePostfix\fP\fC [get]\fP"
+.br
+.RI "\fIAssume that temporary table rows should be preserved across COMMITs\&. \fP"
+.ti -1c
+.RI "override string \fBSelectGUIDString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsUnionAll\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+SQL \fBDialect\fP for SQL Anywhere 10 - for the \fBNHibernate\fP 3\&.0\&.0 distribution Copyright (C) 2010 Glenn Paulley Contact: http://iablog.sybase.com/paulley 
+
+This \fBNHibernate\fP dialect should be considered BETA software\&.
+.PP
+This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 2\&.1 of the License, or (at your option) any later version\&.
+.PP
+This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE\&. See the GNU Lesser General Public License for more details\&.
+.PP
+You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc\&., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA 
+.PP
+The dialect defaults the following configuration properties: Property Default Value  connection\&.driver_class \fBNHibernate\&.Driver\&.SybaseSQLAnywhereDriver\fP  prepare_sql 
+.PP
+Definition at line 49 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBSqlString\fP NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.AppendIdentitySelectToInsert (\fBSqlString\fPinsertString)\fC [virtual]\fP"
+
+.PP
+Provided we SupportsInsertSelectIdentity, then attch the 'select identity' clause to the insert statement\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinsertString\fP The insert command 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The insert command with any necessary identity select clause attached\&. Note, if SupportsInsertSelectIdentity == false then the insert-string should be returned without modification\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 382 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.GetForUpdateString (\fBLockMode\fPlockMode)\fC [virtual]\fP"
+
+.PP
+SQL Anywhere 10 supports READ, WRITE, and INTENT row locks\&. INTENT locks are sufficient to ensure that other concurrent connections cannot modify a row (though other connections can still read that row)\&. SQL Anywhere also supports 3 modes of snapshot isolation (multi-version concurrency control (MVCC)\&. SQL Anywhere's \fCFOR UPDATE\fP clause supports \fCFOR UPDATE BY [ LOCK | VALUES ]\fP \fCFOR UPDATE OF ( COLUMN LIST )\fP
+.PP
+though they cannot be specified at the same time\&. \fCBY LOCK\fP is the syntax that acquires INTENT locks\&. \fCFOR UPDATE BY VALUES\fP forces the use of the KEYSET cursor, which returns a warning to the application when a row in the cursor has been subsequently modified by another connection, and an error if the row has been deleted\&.
+.PP
+SQL Anywhere does not support the \fCFOR UPDATE NOWAIT\fP syntax of Oracle on a statement-by-statement basis\&. However, the identical functionality is provided by setting the connection option \fCBLOCKING\fP to 'OFF', or setting an appropriate timeout period through the connection option \fCBLOCKING_TIMEOUT\fP\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 492 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.GetLimitString (\fBSqlString\fPqueryString, \fBSqlString\fPoffset, \fBSqlString\fPlimit)\fC [virtual]\fP"
+
+.PP
+Attempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryString\fP The SqlString to base the limit query off\&.
+.br
+\fIoffset\fP Offset of the first row to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no limit is requested\&. This should have already been adjusted to account for OffsetStartsAtOne\&.
+.br
+\fIlimit\fP Maximum number of rows to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no offset is requested\&. This should have already been adjusted to account for UseMaxForLimit\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new SqlString that contains the \fCLIMIT\fP clause\&. Returns \fCnull\fP if \fIqueryString\fP  represents a SQL statement to which a limit clause cannot be added, for example when the query string is custom SQL invoking a stored procedure\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 430 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override DbDataReader NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.GetResultSet (DbCommandstatement)\fC [virtual]\fP"
+
+.PP
+Given a callable statement previously processed by \fBRegisterResultSetOutParameter\fP, extract the DbDataReader from the OUT parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstatement\fP The callable statement\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The extracted result set\&. 
+.RE
+.PP
+<throws> SQLException Indicates problems extracting the result set\&. </throws> 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 793 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.PerformTemporaryTableDDLInIsolation ()\fC [virtual]\fP"
+
+.PP
+SQL Anywhere 10 does not perform a COMMIT upon creation of a temporary table\&. However, it does perform an implicit COMMIT when creating an index over a temporary table, or upon ALTERing the definition of temporary table\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 776 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override int NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.RegisterResultSetOutParameter (DbCommandstatement, intposition)\fC [virtual]\fP"
+
+.PP
+SQL Anywhere does support OUT parameters with callable stored procedures\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 788 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.AreStringComparisonsCaseInsensitive\fC [get]\fP"
+
+.PP
+By default, the SQL Anywhere dbinit utility creates a case-insensitive database for the CHAR collation\&. This can be changed through the use of the -c command line switch on dbinit, and the setting may differ for the NCHAR collation for national character sets\&. Whether or not a database supports case-sensitive comparisons can be determined via the DB_Extended_property() function, for example SELECT DB_EXTENDED_PROPERTY( 'Collation', 'CaseSensitivity'); 
+.PP
+Definition at line 678 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override char NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.CloseQuote\fC [get]\fP"
+
+.PP
+SQL Anywhere supports both double quotes or '[' (Microsoft syntax) for quoted identifiers\&. Note that quoted identifiers are controlled through the QUOTED_IDENTIFIER connection option\&. 
+.PP
+Definition at line 626 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.CreateTemporaryTablePostfix\fC [get]\fP"
+
+.PP
+Assume that temporary table rows should be preserved across COMMITs\&. 
+.PP
+Definition at line 766 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.CreateTemporaryTableString\fC [get]\fP"
+
+.PP
+In SQL Anywhere, the syntax, DECLARE LOCAL TEMPORARY TABLE \&.\&.\&., can also be used, which creates a temporary table with procedure scope, which may be important for stored procedures\&. 
+.PP
+Definition at line 758 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.DoesReadCommittedCauseWritersToBlockReaders\fC [get]\fP"
+
+.PP
+We assume that applications using this dialect are NOT using SQL Anywhere's snapshot isolation modes\&. 
+.PP
+Definition at line 583 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.DoesRepeatableReadCauseReadersToBlockWriters\fC [get]\fP"
+
+.PP
+We assume that applications using this dialect are NOT using SQL Anywhere's snapshot isolation modes\&. 
+.PP
+Definition at line 592 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.DropConstraints\fC [get]\fP"
+
+.PP
+SQL Anywhere does not require dropping a constraint before dropping a table, and the DROP statement syntax used by Hibernate to drop a constraint is not compatible with SQL Anywhere, so disable it\&. 
+.PP
+Definition at line 734 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "string NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.ForReadOnlyString\fC [get]\fP"
+
+.PP
+Enforce the condition that this query is read-only\&. This ensure that certain query rewrite optimizations, such as join elimination, can be used\&. 
+.PP
+Definition at line 555 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "string NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.ForUpdateByLockString\fC [get]\fP"
+
+.PP
+\fBLock\fP rows in the cursor explicitly using INTENT row locks\&. 
+.PP
+Definition at line 563 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.ForUpdateNowaitString\fC [get]\fP"
+
+.PP
+SQL Anywhere does not support \fCFOR UPDATE NOWAIT\fP\&. However, the intent is to acquire pessimistic locks on the underlying rows; with \fBNHibernate\fP one can accomplish this through setting the BLOCKING connection option\&. Hence, with this API we lock rows in the cursor explicitly using INTENT row locks\&. 
+.PP
+Definition at line 574 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.ForUpdateOfColumns\fC [get]\fP"
+
+.PP
+SQL Anywhere does support \fCFOR UPDATE OF\fP syntax\&. However, in SQL Anywhere one cannot specify both \fCFOR UPDATE OF\fP syntax and \fCFOR UPDATE BY LOCK\fP in the same statement\&. To achieve INTENT locking when using \fCFOR UPDATE OF\fP syntax one must use a table hint in the query's FROM clause, ie\&. SELECT * FROM FOO WITH( UPDLOCK ) FOR UPDATE OF ( column-list )\&.
+.PP
+In this dialect, we avoid this issue by supporting only \fCFOR UPDATE BY LOCK\fP\&. 
+.PP
+Definition at line 529 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.ForUpdateString\fC [get]\fP"
+
+.PP
+\fBLock\fP rows in the cursor explicitly using INTENT row locks\&. 
+.PP
+Definition at line 546 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.IdentityColumnString\fC [get]\fP"
+
+.PP
+SQL Anywhere uses \fCDEFAULT AUTOINCREMENT\fP to identify an IDENTITY column in a \fCCREATE TABLE\fP statement\&. 
+.PP
+Definition at line 378 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.NoColumnsInsertString\fC [get]\fP"
+
+.PP
+SQL Anywhere currently supports only 'VALUES (DEFAULT)', not the ANSI standard 'DEFAULT VALUES'\&. This latter syntax will be supported in the SQL Anywhere 11\&.0\&.1 release\&. For the moment, 'VALUES (DEFAULT)' works only for a single-column table\&. 
+.PP
+Definition at line 724 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override char NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.OpenQuote\fC [get]\fP"
+
+.PP
+SQL Anywhere supports both double quotes or '[' (Microsoft syntax) for quoted identifiers\&. 
+.PP
+Definition at line 635 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.SupportsCommentOn\fC [get]\fP"
+
+.PP
+SQL Anywhere supports \fCCOMMENT ON\fP statements for a wide variety of database objects\&. When the COMMENT statement is executed an implicit \fCCOMMIT\fP is performed\&. However, COMMENT syntax for \fCCREATE TABLE\fP, as expected by \fBNHibernate\fP (see \fBTable\&.cs\fP), is not supported\&. 
+.PP
+Definition at line 693 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.SupportsOuterJoinForUpdate\fC [get]\fP"
+
+.PP
+SQL Anywhere supports \fCFOR UPDATE\fP over cursors containing outer joins\&. 
+.PP
+Definition at line 538 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.SybaseSQLAnywhere10Dialect\&.SupportsResultSetPositionQueryMethodsOnForwardOnlyCursor\fC [get]\fP"
+
+.PP
+SQL Anywhere's implementation of KEYSET-DRIVEN cursors does not permit absolute postioning\&. With jConnect as the driver, this support will succeed because jConnect FETCHes the entire result set to the client first; it will fail with the iAnywhere JDBC driver\&. Because the server may decide to use a KEYSET cursor even if the cursor is declared as FORWARD ONLY, this support is disabled\&. 
+.PP
+Definition at line 657 of file SybaseSQLAnywhere10Dialect\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,64 @@
+.TH "NHibernate.Loader.Collection.OneToManyJoinWalker" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Loader.Collection.OneToManyJoinWalker \- 
+.PP
+Walker for one-to-many associations  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Loader\&.Collection\&.CollectionJoinWalker\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOneToManyJoinWalker\fP (\fBIQueryableCollection\fP oneToManyPersister, int batchSize, \fBSqlString\fP subquery, \fBISessionFactoryImplementor\fP factory, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBIsDuplicateAssociation\fP (string foreignKeyTable, string[] foreignKeyColumns)"
+.br
+.RI "\fIUsed to detect circularities in the joined graph, note that this method is side-effecty \fP"
+.ti -1c
+.RI "override string \fBGenerateAliasForColumn\fP (string rootAlias, string column)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Walker for one-to-many associations 
+
+
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBOneToManyLoader\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 14 of file OneToManyJoinWalker\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override bool NHibernate\&.Loader\&.Collection\&.OneToManyJoinWalker\&.IsDuplicateAssociation (stringforeignKeyTable, string[]foreignKeyColumns)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Used to detect circularities in the joined graph, note that this method is side-effecty 
+.PP
+Reimplemented from \fBNHibernate\&.Loader\&.JoinWalker\fP\&.
+.PP
+Definition at line 19 of file OneToManyJoinWalker\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

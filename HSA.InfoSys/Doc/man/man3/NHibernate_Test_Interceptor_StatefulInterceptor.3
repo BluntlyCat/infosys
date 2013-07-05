@@ -1,0 +1,141 @@
+.TH "NHibernate.Test.Interceptor.StatefulInterceptor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.Interceptor.StatefulInterceptor \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.EmptyInterceptor\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBOnSave\fP (object entity, object id, object[] state, string[] propertyNames, \fBIType\fP[] types)"
+.br
+.RI "\fICalled before an object is saved \fP"
+.ti -1c
+.RI "override bool \fBOnFlushDirty\fP (object entity, object id, object[] currentState, object[] previousState, string[] propertyNames, \fBIType\fP[] types)"
+.br
+.RI "\fICalled when an object is detected to be dirty, during a flush\&. \fP"
+.ti -1c
+.RI "override void \fBPostFlush\fP (ICollection entities)"
+.br
+.RI "\fICalled after a flush that actually ends in execution of the SQL statements required to synchronize in-memory state with the database\&. \fP"
+.ti -1c
+.RI "override void \fBSetSession\fP (\fBISession\fP sessionLocal)"
+.br
+.RI "\fICalled when a session-scoped (and \fBonly\fP session scoped) interceptor is attached to a session \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBISession\fP \fBSession\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 6 of file StatefulInterceptor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override bool NHibernate\&.Test\&.Interceptor\&.StatefulInterceptor\&.OnFlushDirty (objectentity, objectid, object[]currentState, object[]previousState, string[]propertyNames, \fBIType\fP[]types)\fC [virtual]\fP"
+
+.PP
+Called when an object is detected to be dirty, during a flush\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcurrentState\fP 
+.br
+\fIentity\fP 
+.br
+\fIid\fP 
+.br
+\fIpreviousState\fP 
+.br
+\fIpropertyNames\fP 
+.br
+\fItypes\fP 
+.RE
+.PP
+.PP
+The interceptor may modify the detected \fCcurrentState\fP, which will be propagated to both the database and the persistent object\&. Note that all flushes end in an actual synchronization with the database, in which as the new \fCcurrentState\fP will be propagated to the object, but not necessarily (immediately) to the database\&. It is strongly recommended that the interceptor \fBnot\fP modify the \fCpreviousState\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+if the user modified the \fCcurrentState\fP in any way
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.EmptyInterceptor\fP\&.
+.PP
+Definition at line 20 of file StatefulInterceptor\&.cs\&.
+.SS "override bool NHibernate\&.Test\&.Interceptor\&.StatefulInterceptor\&.OnSave (objectentity, objectid, object[]state, string[]propertyNames, \fBIType\fP[]types)\fC [virtual]\fP"
+
+.PP
+Called before an object is saved 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP 
+.br
+\fIid\fP 
+.br
+\fIpropertyNames\fP 
+.br
+\fIstate\fP 
+.br
+\fItypes\fP 
+.RE
+.PP
+.PP
+The interceptor may modify the \fCstate\fP, which will be used for the SQL \fCINSERT\fP and propagated to the persistent object 
+.PP
+\fBReturns:\fP
+.RS 4
+if the user modified the \fCstate\fP in any way
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.EmptyInterceptor\fP\&.
+.PP
+Definition at line 11 of file StatefulInterceptor\&.cs\&.
+.SS "override void NHibernate\&.Test\&.Interceptor\&.StatefulInterceptor\&.PostFlush (ICollectionentities)\fC [virtual]\fP"
+
+.PP
+Called after a flush that actually ends in execution of the SQL statements required to synchronize in-memory state with the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentities\fP The entitites
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.EmptyInterceptor\fP\&.
+.PP
+Definition at line 28 of file StatefulInterceptor\&.cs\&.
+.SS "override void NHibernate\&.Test\&.Interceptor\&.StatefulInterceptor\&.SetSession (\fBISession\fPsession)\fC [virtual]\fP"
+
+.PP
+Called when a session-scoped (and \fBonly\fP session scoped) interceptor is attached to a session session-scoped-interceptor is an instance of the interceptor used only for one session\&. The use of singleton-interceptor may cause problems in multi-thread scenario\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBISessionFactory\&.OpenSession(IInterceptor)\fP, \fBISessionFactory\&.OpenSession(IDbConnection,IInterceptor)\fP
+.PP
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.EmptyInterceptor\fP\&.
+.PP
+Definition at line 41 of file StatefulInterceptor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

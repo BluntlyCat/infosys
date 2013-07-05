@@ -1,0 +1,142 @@
+.TH "HSA.InfoSys.Common.Services.WCFServices.Scheduler" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HSA.InfoSys.Common.Services.WCFServices.Scheduler \- 
+.PP
+This class watches the scheduling objects in database and runs a task when necessary\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBHSA\&.InfoSys\&.Common\&.Services\&.Service\fP, and \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IScheduler\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAddOrgUnitConfig\fP (\fBOrgUnitConfig\fP orgUnitConfig)"
+.br
+.RI "\fIAdds the OrgUnitConfig\&. \fP"
+.ti -1c
+.RI "void \fBRemoveOrgUnitConfig\fP (Guid orgUnitConfigGUID)"
+.br
+.RI "\fIRemoves the OrgUnitConfig\&. \fP"
+.ti -1c
+.RI "override void \fBStartService\fP ()"
+.br
+.RI "\fIStarts this service\&. \fP"
+.ti -1c
+.RI "override void \fBStopService\fP (bool cancel=false)"
+.br
+.RI "\fIStops all jobs and this service\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBScheduler\fP \fBSchedulerFactory\fP (\fBIDbManager\fP dbManager)"
+.br
+.RI "\fIThe scheduler service\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBRun\fP ()"
+.br
+.RI "\fIRuns this service\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+This class watches the scheduling objects in database and runs a task when necessary\&. 
+
+
+.PP
+Definition at line 22 of file Scheduler\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.Scheduler\&.AddOrgUnitConfig (\fBOrgUnitConfig\fPorgUnitConfig)"
+
+.PP
+Adds the OrgUnitConfig\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIorgUnitConfig\fP The OrgUnitConfig\&.
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IScheduler\fP\&.
+.PP
+Definition at line 77 of file Scheduler\&.cs\&.
+.SS "void HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.Scheduler\&.RemoveOrgUnitConfig (GuidorgUnitConfigGUID)"
+
+.PP
+Removes the OrgUnitConfig\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIorgUnitConfigGUID\fP The OrgUnitConfigGUID\&.
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.IScheduler\fP\&.
+.PP
+Definition at line 115 of file Scheduler\&.cs\&.
+.SS "override void HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.Scheduler\&.Run ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Runs this service\&. 
+.PP
+Implements \fBHSA\&.InfoSys\&.Common\&.Services\&.Service\fP\&.
+.PP
+Definition at line 193 of file Scheduler\&.cs\&.
+.SS "static \fBScheduler\fP HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.Scheduler\&.SchedulerFactory (\fBIDbManager\fPdbManager)\fC [static]\fP"
+
+.PP
+The scheduler service\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdbManager\fP The db manager\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An instance of the scheduler service\&. 
+.RE
+.PP
+
+.PP
+Definition at line 68 of file Scheduler\&.cs\&.
+.SS "override void HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.Scheduler\&.StartService ()\fC [virtual]\fP"
+
+.PP
+Starts this service\&. 
+.PP
+Reimplemented from \fBHSA\&.InfoSys\&.Common\&.Services\&.Service\fP\&.
+.PP
+Definition at line 148 of file Scheduler\&.cs\&.
+.SS "override void HSA\&.InfoSys\&.Common\&.Services\&.WCFServices\&.Scheduler\&.StopService (boolcancel = \fCfalse\fP)\fC [virtual]\fP"
+
+.PP
+Stops all jobs and this service\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcancel\fP if set to \fCtrue\fP [cancel]\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBHSA\&.InfoSys\&.Common\&.Services\&.Service\fP\&.
+.PP
+Definition at line 174 of file Scheduler\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

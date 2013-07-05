@@ -1,0 +1,60 @@
+.TH "NHibernate.SqlTypes.StringClobSqlType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.SqlTypes.StringClobSqlType \- 
+.PP
+Describes the details of a DbType\&.String that is stored in a CLOB column with the information required to generate an IDbDataParameter\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.SqlTypes\&.StringSqlType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBStringClobSqlType\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBStringClobSqlType\fP class\&. \fP"
+.ti -1c
+.RI "\fBStringClobSqlType\fP (int length)"
+.br
+.RI "\fIInitializes a new instance of the \fBStringClobSqlType\fP class\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Describes the details of a DbType\&.String that is stored in a CLOB column with the information required to generate an IDbDataParameter\&. 
+
+This can store the length of the binary data that the IDbDataParameter can hold\&. If no value is provided for the length then the \fC\fBDriver\fP\fP is responsible for setting the properties on the IDbDataParameter correctly\&. 
+.PP
+This is only needed by DataProviders (SqlClient) that need to specify a Size for the IDbDataParameter\&. Most DataProvider(Oralce) don't need to set the Size so a \fBStringSqlType\fP would work just fine\&. 
+.PP
+Definition at line 24 of file StringClobSqlType\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.SqlTypes\&.StringClobSqlType\&.StringClobSqlType ()"
+
+.PP
+Initializes a new instance of the \fBStringClobSqlType\fP class\&. 
+.PP
+Definition at line 29 of file StringClobSqlType\&.cs\&.
+.SS "NHibernate\&.SqlTypes\&.StringClobSqlType\&.StringClobSqlType (intlength)"
+
+.PP
+Initializes a new instance of the \fBStringClobSqlType\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlength\fP The length of the string the IDbDataParameter should hold\&.
+.RE
+.PP
+
+.PP
+Definition at line 38 of file StringClobSqlType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

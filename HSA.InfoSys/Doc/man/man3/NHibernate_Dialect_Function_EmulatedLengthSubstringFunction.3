@@ -1,0 +1,69 @@
+.TH "NHibernate.Dialect.Function.EmulatedLengthSubstringFunction" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.Function.EmulatedLengthSubstringFunction \- 
+.PP
+Provides a substring implementation of the form substring(expr, start, length) for SQL dialects where the length argument is mandatory\&. If this is called from HQL with only two arguments, this implementation will generate the length parameter as (len(expr) + 1 - start)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Function\&.StandardSQLFunction\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEmulatedLengthSubstringFunction\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBEmulatedLengthSubstringFunction\fP class\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBRender\fP (IList args, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIRender the function call as SQL\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Provides a substring implementation of the form substring(expr, start, length) for SQL dialects where the length argument is mandatory\&. If this is called from HQL with only two arguments, this implementation will generate the length parameter as (len(expr) + 1 - start)\&. 
+
+
+.PP
+Definition at line 17 of file EmulatedLengthSubstringFunction\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Dialect\&.Function\&.EmulatedLengthSubstringFunction\&.EmulatedLengthSubstringFunction ()"
+
+.PP
+Initializes a new instance of the \fBEmulatedLengthSubstringFunction\fP class\&. 
+.PP
+Definition at line 22 of file EmulatedLengthSubstringFunction\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBSqlString\fP NHibernate\&.Dialect\&.Function\&.EmulatedLengthSubstringFunction\&.Render (IListargs, \fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+Render the function call as SQL\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIargs\fP List of arguments
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+SQL fragment for the fuction\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Function\&.StandardSQLFunction\fP\&.
+.PP
+Definition at line 30 of file EmulatedLengthSubstringFunction\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

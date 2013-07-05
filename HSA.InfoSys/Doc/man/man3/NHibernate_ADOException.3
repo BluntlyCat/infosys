@@ -1,0 +1,87 @@
+.TH "NHibernate.ADOException" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.ADOException \- 
+.PP
+Wraps exceptions that occur during ADO\&.NET calls\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.HibernateException\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Exceptions\&.ADOConnectionException\fP, \fBNHibernate\&.Exceptions\&.ConstraintViolationException\fP, \fBNHibernate\&.Exceptions\&.DataException\fP, \fBNHibernate\&.Exceptions\&.GenericADOException\fP, \fBNHibernate\&.Exceptions\&.LockAcquisitionException\fP, and \fBNHibernate\&.Exceptions\&.SQLGrammarException\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBADOException\fP (string message, Exception innerException)"
+.br
+.RI "\fIInitializes a new instance of the \fBADOException\fP class\&. \fP"
+.ti -1c
+.RI "\fBADOException\fP (string message, Exception innerException, string sql)"
+.br
+.ti -1c
+.RI "override void \fBGetObjectData\fP (SerializationInfo info, StreamingContext context)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBADOException\fP (SerializationInfo info, StreamingContext context)"
+.br
+.RI "\fIInitializes a new instance of the \fBADOException\fP class\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBSqlString\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Wraps exceptions that occur during ADO\&.NET calls\&. 
+
+\fBExceptions\fP thrown by various ADO\&.NET providers are not derived from a common base class (\fCSQLException\fP in Java), so Exception is used instead in \fBNHibernate\fP\&. 
+.PP
+Definition at line 17 of file ADOException\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.ADOException\&.ADOException (stringmessage, ExceptioninnerException)"
+
+.PP
+Initializes a new instance of the \fBADOException\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message that describes the error\&. 
+.br
+\fIinnerException\fP The exception that is the cause of the current exception\&. If the innerException parameter is not a null reference, the current exception is raised in a catch block that handles the inner exception\&. 
+.RE
+.PP
+
+.PP
+Definition at line 34 of file ADOException\&.cs\&.
+.SS "NHibernate\&.ADOException\&.ADOException (SerializationInfoinfo, StreamingContextcontext)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBADOException\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinfo\fP The SerializationInfo that holds the serialized object data about the exception being thrown\&. 
+.br
+\fIcontext\fP The StreamingContext that contains contextual information about the source or destination\&. 
+.RE
+.PP
+
+.PP
+Definition at line 54 of file ADOException\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

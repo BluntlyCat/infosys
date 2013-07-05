@@ -1,0 +1,18 @@
+var class_n_hibernate_1_1_test_1_1_polymorphic_get_and_load_1_1_polymorphic_get_and_load_test =
+[
+    [ "ScenarioWithA", "class_n_hibernate_1_1_test_1_1_polymorphic_get_and_load_1_1_polymorphic_get_and_load_test_1_1_scenario_with_a.html", "class_n_hibernate_1_1_test_1_1_polymorphic_get_and_load_1_1_polymorphic_get_and_load_test_1_1_scenario_with_a" ],
+    [ "ScenarioWithB", "class_n_hibernate_1_1_test_1_1_polymorphic_get_and_load_1_1_polymorphic_get_and_load_test_1_1_scenario_with_b.html", "class_n_hibernate_1_1_test_1_1_polymorphic_get_and_load_1_1_polymorphic_get_and_load_test_1_1_scenario_with_b" ],
+    [ "WhenGetBaseClassUsingInterfaceFromSessionCacheThenNotThrows", "class_n_hibernate_1_1_test_1_1_polymorphic_get_and_load_1_1_polymorphic_get_and_load_test.html#a4a74ddaf3ca1573e46bfb6e5a81ad62b", null ],
+    [ "WhenGetBaseClassUsingInterfaceThenNotThrows", "class_n_hibernate_1_1_test_1_1_polymorphic_get_and_load_1_1_polymorphic_get_and_load_test.html#aba56c0ea134f22ada5c158159b2dda09", null ],
+    [ "WhenGetClassUsingInterfaceOfMultippleHierarchyThenThrows", "class_n_hibernate_1_1_test_1_1_polymorphic_get_and_load_1_1_polymorphic_get_and_load_test.html#a8b65d19322e4e11b3792fa73c1ad837f", null ],
+    [ "WhenGetInheritedClassUsingInterfaceFromSessionCacheThenNotThrows", "class_n_hibernate_1_1_test_1_1_polymorphic_get_and_load_1_1_polymorphic_get_and_load_test.html#af62191064a97e14a4ab62c1679c2a7a3", null ],
+    [ "WhenGetInheritedClassUsingInterfaceThenNotThrows", "class_n_hibernate_1_1_test_1_1_polymorphic_get_and_load_1_1_polymorphic_get_and_load_test.html#a0586523c2fa98f526ae0ca5fdb068682", null ],
+    [ "WhenLoadBaseClassUsingInterfaceThenNotThrows", "class_n_hibernate_1_1_test_1_1_polymorphic_get_and_load_1_1_polymorphic_get_and_load_test.html#aaae04d33006286c59b298c0ef7078ff1", null ],
+    [ "WhenLoadClassUsingInterfaceOfMultippleHierarchyThenThrows", "class_n_hibernate_1_1_test_1_1_polymorphic_get_and_load_1_1_polymorphic_get_and_load_test.html#a98550b8d4aac759665a71c6d439f43a9", null ],
+    [ "WhenLoadInheritedClassUsingInterfaceThenNotThrows", "class_n_hibernate_1_1_test_1_1_polymorphic_get_and_load_1_1_polymorphic_get_and_load_test.html#a0830f27c4de9c641a61994031cce39ec", null ],
+    [ "WhenLoadInheritedClassUsingInterfaceThenShouldAllowNarrowingProxy", "class_n_hibernate_1_1_test_1_1_polymorphic_get_and_load_1_1_polymorphic_get_and_load_test.html#aa801f39868f0155583236df253323f62", null ],
+    [ "WhenLoadInterfaceThenShouldAllowNarrowingProxy", "class_n_hibernate_1_1_test_1_1_polymorphic_get_and_load_1_1_polymorphic_get_and_load_test.html#ac7172159e01ba36a99fecc6114ea75b1", null ],
+    [ "WhenSaveDeleteBaseClassCastedToInterfaceThenNotThrows", "class_n_hibernate_1_1_test_1_1_polymorphic_get_and_load_1_1_polymorphic_get_and_load_test.html#af252e147f38fe06da1703909a16fba7a", null ],
+    [ "Mappings", "class_n_hibernate_1_1_test_1_1_polymorphic_get_and_load_1_1_polymorphic_get_and_load_test.html#a4b61489e0bb07246b2abfa7182c7aae9", null ],
+    [ "MappingsAssembly", "class_n_hibernate_1_1_test_1_1_polymorphic_get_and_load_1_1_polymorphic_get_and_load_test.html#a07a90e5aecb12a5fe56bddf1e60f3013", null ]
+];

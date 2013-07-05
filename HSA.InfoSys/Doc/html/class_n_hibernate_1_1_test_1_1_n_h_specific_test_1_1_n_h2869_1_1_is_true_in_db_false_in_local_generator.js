@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2869_1_1_is_true_in_db_false_in_local_generator =
+[
+    [ "IsTrueInDbFalseInLocalGenerator", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2869_1_1_is_true_in_db_false_in_local_generator.html#ab4399192c267d0d4b8ef13f49645de0d", null ],
+    [ "BuildHql", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2869_1_1_is_true_in_db_false_in_local_generator.html#a09e701d02746daedad2481a168feb510", null ]
+];

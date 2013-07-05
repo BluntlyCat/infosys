@@ -1,0 +1,9 @@
+var class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_one_108a08cac47c0d38eeb1c4d5d5332beb =
+[
+    [ "ParentWithBidirectionalOneToMany", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_one_108a08cac47c0d38eeb1c4d5d5332beb.html#a9f3809ed6ddf23d0cef9c48414af5196", null ],
+    [ "ParentWithBidirectionalOneToMany", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_one_108a08cac47c0d38eeb1c4d5d5332beb.html#a9773a60a04d7f6081cd4bcfd58c13bc6", null ],
+    [ "AddChild", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_one_108a08cac47c0d38eeb1c4d5d5332beb.html#af3e5f6fe958f881907d1a756c3a8bb1a", null ],
+    [ "CreateChild", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_one_108a08cac47c0d38eeb1c4d5d5332beb.html#ae18a61eb61bd4b1d210f25053ab96b7b", null ],
+    [ "NewChildren", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_one_108a08cac47c0d38eeb1c4d5d5332beb.html#a0545559a2aaece4fc4867a06897f8f8b", null ],
+    [ "RemoveChild", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_one_108a08cac47c0d38eeb1c4d5d5332beb.html#a74ae95a2db29bede63b41fc0286fa5d0", null ]
+];

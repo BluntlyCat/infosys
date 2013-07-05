@@ -1,0 +1,82 @@
+.TH "NHibernate.Mapping.ByCode.Impl.DynamicComponentMapper" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.ByCode.Impl.DynamicComponentMapper \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.ByCode\&.IDynamicComponentMapper\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDynamicComponentMapper\fP (\fBHbmDynamicComponent\fP component, MemberInfo declaringTypeMember, \fBHbmMapping\fP mapDoc)"
+.br
+.ti -1c
+.RI "void \fBProperty\fP (MemberInfo property, Action< \fBIPropertyMapper\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBComponent\fP (MemberInfo property, Action< \fBIComponentMapper\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBComponent\fP (MemberInfo property, Action< \fBIDynamicComponentMapper\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBManyToOne\fP (MemberInfo property, Action< \fBIManyToOneMapper\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBAny\fP (MemberInfo property, System\&.Type idTypeOfMetaType, Action< \fBIAnyMapper\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBOneToOne\fP (MemberInfo property, Action< \fBIOneToOneMapper\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBBag\fP (MemberInfo property, Action< \fBIBagPropertiesMapper\fP > collectionMapping, Action< \fBICollectionElementRelation\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBSet\fP (MemberInfo property, Action< \fBISetPropertiesMapper\fP > collectionMapping, Action< \fBICollectionElementRelation\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBList\fP (MemberInfo property, Action< \fBIListPropertiesMapper\fP > collectionMapping, Action< \fBICollectionElementRelation\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBMap\fP (MemberInfo property, Action< \fBIMapPropertiesMapper\fP > collectionMapping, Action< \fBIMapKeyRelation\fP > keyMapping, Action< \fBICollectionElementRelation\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBIdBag\fP (MemberInfo property, Action< \fBIIdBagPropertiesMapper\fP > collectionMapping, Action< \fBICollectionElementRelation\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBAccess\fP (Accessor accessor)"
+.br
+.ti -1c
+.RI "void \fBAccess\fP (System\&.Type accessorType)"
+.br
+.ti -1c
+.RI "void \fBOptimisticLock\fP (bool takeInConsiderationForOptimisticLock)"
+.br
+.ti -1c
+.RI "void \fBUpdate\fP (bool consideredInUpdateQuery)"
+.br
+.ti -1c
+.RI "void \fBInsert\fP (bool consideredInInsertQuery)"
+.br
+.ti -1c
+.RI "void \fBUnique\fP (bool unique)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAddProperty\fP (object property)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file DynamicComponentMapper\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

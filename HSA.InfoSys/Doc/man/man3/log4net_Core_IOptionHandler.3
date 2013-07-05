@@ -1,0 +1,46 @@
+.TH "log4net.Core.IOptionHandler" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Core.IOptionHandler \- 
+.PP
+Interface used to delay activate a configured object\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBlog4net\&.Appender\&.AppenderSkeleton\fP, \fBlog4net\&.Filter\&.IFilter\fP, \fBlog4net\&.Layout\&.LayoutSkeleton\fP, log4net\&.Layout\&.Pattern\&.DatePatternConverter, \fBlog4net\&.Layout\&.Pattern\&.NamedPatternConverter\fP, log4net\&.Layout\&.Pattern\&.StackTracePatternConverter, \fBlog4net\&.Util\&.LevelMapping\fP, \fBlog4net\&.Util\&.LevelMappingEntry\fP, \fBlog4net\&.Util\&.PatternString\fP, log4net\&.Util\&.PatternStringConverters\&.DatePatternConverter, log4net\&.Util\&.PatternStringConverters\&.NewLinePatternConverter, log4net\&.Util\&.PatternStringConverters\&.RandomStringPatternConverter, and \fBlog4net\&.Util\&.WindowsSecurityContext\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBActivateOptions\fP ()"
+.br
+.RI "\fIActivate the options that were previously set with calls to properties\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Interface used to delay activate a configured object\&. 
+
+This allows an object to defer activation of its options until all options have been set\&. This is required for components which have related options that remain ambiguous until all are set\&. 
+.PP
+If a component implements this interface then the \fBActivateOptions\fP method must be called by the container after its all the configured properties have been set and before the component can be used\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 40 of file IOptionHandler\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Core\&.IOptionHandler\&.ActivateOptions ()"
+
+.PP
+Activate the options that were previously set with calls to properties\&. This allows an object to defer activation of its options until all options have been set\&. This is required for components which have related options that remain ambiguous until all are set\&. 
+.PP
+If a component implements this interface then this method must be called after its properties have been set before the component can be used\&. 
+.PP
+Implemented in \fBlog4net\&.Appender\&.RollingFileAppender\fP, \fBlog4net\&.Layout\&.PatternLayout\fP, \fBlog4net\&.Appender\&.FileAppender\fP, \fBlog4net\&.Appender\&.ColoredConsoleAppender\&.LevelColors\fP, \fBlog4net\&.Appender\&.AnsiColorTerminalAppender\&.LevelColors\fP, \fBlog4net\&.Appender\&.ColoredConsoleAppender\fP, \fBlog4net\&.Appender\&.AdoNetAppender\fP, \fBlog4net\&.Appender\&.RemoteSyslogAppender\fP, \fBlog4net\&.Appender\&.AnsiColorTerminalAppender\fP, \fBlog4net\&.Util\&.PatternString\fP, \fBlog4net\&.Appender\&.BufferingAppenderSkeleton\fP, \fBlog4net\&.Appender\&.UdpAppender\fP, \fBlog4net\&.Appender\&.LocalSyslogAppender\fP, \fBlog4net\&.Appender\&.NetSendAppender\fP, \fBlog4net\&.Appender\&.EventLogAppender\fP, \fBlog4net\&.Appender\&.SmtpPickupDirAppender\fP, \fBlog4net\&.Util\&.WindowsSecurityContext\fP, \fBlog4net\&.Appender\&.AppenderSkeleton\fP, \fBlog4net\&.Layout\&.XmlLayout\fP, \fBlog4net\&.Appender\&.TelnetAppender\fP, \fBlog4net\&.Layout\&.XmlLayoutBase\fP, \fBlog4net\&.Appender\&.RemotingAppender\fP, \fBlog4net\&.Layout\&.LayoutSkeleton\fP, \fBlog4net\&.Util\&.LevelMapping\fP, \fBlog4net\&.Filter\&.FilterSkeleton\fP, \fBlog4net\&.Filter\&.StringMatchFilter\fP, \fBlog4net\&.Util\&.LevelMappingEntry\fP, \fBlog4net\&.Layout\&.ExceptionLayout\fP, \fBlog4net\&.Layout\&.SimpleLayout\fP, and \fBlog4net\&.Layout\&.Pattern\&.NamedPatternConverter\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

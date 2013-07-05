@@ -1,0 +1,6 @@
+var namespace_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association =
+[
+    [ "Bidirectional", "namespace_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional.html", "namespace_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional" ],
+    [ "Unidirectional", "namespace_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_unidirectional.html", "namespace_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_unidirectional" ],
+    [ "AbstractAssociationCollectionEventFixture", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_abstract_association_collection_event_fixture.html", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_abstract_association_collection_event_fixture" ]
+];

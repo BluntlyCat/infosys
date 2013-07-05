@@ -1,0 +1,92 @@
+.TH "log4net.Core.IErrorHandler" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Core.IErrorHandler \- 
+.PP
+Appenders may delegate their error handling to an \fBIErrorHandler\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBlog4net\&.Util\&.OnlyOnceErrorHandler\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBError\fP (string message, \fBException\fP e, \fBErrorCode\fP errorCode)"
+.br
+.RI "\fIHandles the error and information about the error condition is passed as a parameter\&. \fP"
+.ti -1c
+.RI "void \fBError\fP (string message, \fBException\fP e)"
+.br
+.RI "\fIPrints the error message passed as a parameter\&. \fP"
+.ti -1c
+.RI "void \fBError\fP (string message)"
+.br
+.RI "\fIPrints the error message passed as a parameter\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Appenders may delegate their error handling to an \fBIErrorHandler\fP\&. 
+
+Error handling is a particularly tedious to get right because by definition errors are hard to predict and to reproduce\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 35 of file IErrorHandler\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Core\&.IErrorHandler\&.Error (stringmessage, \fBException\fPe, \fBErrorCode\fPerrorCode)"
+
+.PP
+Handles the error and information about the error condition is passed as a parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message associated with the error\&.
+.br
+\fIe\fP The \fBException\fP that was thrown when the error occurred\&.
+.br
+\fIerrorCode\fP The error code associated with the error\&.
+.RE
+.PP
+.PP
+Handles the error and information about the error condition is passed as a parameter\&. 
+.PP
+Implemented in \fBlog4net\&.Util\&.OnlyOnceErrorHandler\fP\&.
+.SS "void log4net\&.Core\&.IErrorHandler\&.Error (stringmessage, \fBException\fPe)"
+
+.PP
+Prints the error message passed as a parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message associated with the error\&.
+.br
+\fIe\fP The \fBException\fP that was thrown when the error occurred\&.
+.RE
+.PP
+.PP
+See \fBError(string,Exception,ErrorCode)\fP\&. 
+.PP
+Implemented in \fBlog4net\&.Util\&.OnlyOnceErrorHandler\fP\&.
+.SS "void log4net\&.Core\&.IErrorHandler\&.Error (stringmessage)"
+
+.PP
+Prints the error message passed as a parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message associated with the error\&.
+.RE
+.PP
+.PP
+See \fBError(string,Exception,ErrorCode)\fP\&. 
+.PP
+Implemented in \fBlog4net\&.Util\&.OnlyOnceErrorHandler\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

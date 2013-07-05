@@ -1,0 +1,231 @@
+.TH "NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.QueryTranslatorImpl \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Hql\&.IFilterTranslator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQueryTranslatorImpl\fP (string queryIdentifier, \fBIASTNode\fP parsedQuery, IDictionary< string, \fBIFilter\fP > enabledFilters, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fICreates a new AST-based query translator\&. \fP"
+.ti -1c
+.RI "void \fBCompile\fP (IDictionary< string, string > replacements, bool shallow)"
+.br
+.RI "\fICompile a 'normal' query\&. This method may be called multiple times\&. Subsequent invocations are no-ops\&. \fP"
+.ti -1c
+.RI "void \fBCompile\fP (string collectionRole, IDictionary< string, string > replacements, bool shallow)"
+.br
+.RI "\fICompile a filter\&. This method may be called multiple times\&. Subsequent invocations are no-ops\&. \fP"
+.ti -1c
+.RI "IList \fBList\fP (\fBISessionImplementor\fP session, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIPerform a list operation given the underlying query definition\&. \fP"
+.ti -1c
+.RI "IEnumerable \fBGetEnumerable\fP (\fBQueryParameters\fP queryParameters, \fBIEventSource\fP session)"
+.br
+.ti -1c
+.RI "int \fBExecuteUpdate\fP (\fBQueryParameters\fP queryParameters, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIPerform a bulk update/delete operation given the underlying query defintion\&. \fP"
+.ti -1c
+.RI "\fBParameterMetadata\fP \fBBuildParameterMetadata\fP ()"
+.br
+.ti -1c
+.RI "string[][] \fBGetColumnNames\fP ()"
+.br
+.RI "\fIReturns the column names in the generated SQL\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBNHibernate\&.Loader\&.Loader\fP \fBLoader\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBIType\fP[] \fBActualReturnTypes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "ISet< string > \fBQuerySpaces\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBSQLString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIStatement\fP \fBSqlAST\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IList< \fBIParameterSpecification\fP > \fBCollectedParameterSpecifications\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBSqlString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBQueryIdentifier\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IList< string > \fBCollectSqlStrings\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBQueryString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, \fBIFilter\fP > \fBEnabledFilters\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP[] \fBReturnTypes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBReturnAliases\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBContainsCollectionFetches\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsManipulationStatement\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsShallowQuery\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 24 of file QueryTranslatorImpl\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Hql\&.Ast\&.ANTLR\&.QueryTranslatorImpl\&.QueryTranslatorImpl (stringqueryIdentifier, \fBIASTNode\fPparsedQuery, IDictionary< string, \fBIFilter\fP >enabledFilters, \fBISessionFactoryImplementor\fPfactory)"
+
+.PP
+Creates a new AST-based query translator\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryIdentifier\fP The query-identifier (used in stats collection)
+.br
+\fIparsedQuery\fP The hql query to translate
+.br
+\fIenabledFilters\fP Currently enabled filters
+.br
+\fIfactory\fP The session factory constructing this translator instance\&.
+.RE
+.PP
+
+.PP
+Definition at line 48 of file QueryTranslatorImpl\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.QueryTranslatorImpl\&.Compile (IDictionary< string, string >replacements, boolshallow)"
+
+.PP
+Compile a 'normal' query\&. This method may be called multiple times\&. Subsequent invocations are no-ops\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreplacements\fP Defined query substitutions\&.
+.br
+\fIshallow\fP Does this represent a shallow (scalar or entity-id) select?
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.IQueryTranslator\fP\&.
+.PP
+Definition at line 68 of file QueryTranslatorImpl\&.cs\&.
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.QueryTranslatorImpl\&.Compile (stringcollectionRole, IDictionary< string, string >replacements, boolshallow)"
+
+.PP
+Compile a filter\&. This method may be called multiple times\&. Subsequent invocations are no-ops\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollectionRole\fP the role name of the collection used as the basis for the filter\&.
+.br
+\fIreplacements\fP Defined query substitutions\&.
+.br
+\fIshallow\fP Does this represent a shallow (scalar or entity-id) select?
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.IFilterTranslator\fP\&.
+.PP
+Definition at line 80 of file QueryTranslatorImpl\&.cs\&.
+.SS "int NHibernate\&.Hql\&.Ast\&.ANTLR\&.QueryTranslatorImpl\&.ExecuteUpdate (\fBQueryParameters\fPqueryParameters, \fBISessionImplementor\fPsession)"
+
+.PP
+Perform a bulk update/delete operation given the underlying query defintion\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryParameters\fP The query bind parameters\&.
+.br
+\fIsession\fP The session owning this query\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of entities updated or deleted\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBNHibernate\&.HibernateException\fP\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.IQueryTranslator\fP\&.
+.PP
+Definition at line 159 of file QueryTranslatorImpl\&.cs\&.
+.SS "string [][] NHibernate\&.Hql\&.Ast\&.ANTLR\&.QueryTranslatorImpl\&.GetColumnNames ()"
+
+.PP
+Returns the column names in the generated SQL\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the column names in the generated SQL\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.IQueryTranslator\fP\&.
+.PP
+Definition at line 195 of file QueryTranslatorImpl\&.cs\&.
+.SS "IList NHibernate\&.Hql\&.Ast\&.ANTLR\&.QueryTranslatorImpl\&.List (\fBISessionImplementor\fPsession, \fBQueryParameters\fPqueryParameters)"
+
+.PP
+Perform a list operation given the underlying query definition\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session owning this query\&.
+.br
+\fIqueryParameters\fP The query bind parameters\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The query list results\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBNHibernate\&.HibernateException\fP\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.IQueryTranslator\fP\&.
+.PP
+Definition at line 85 of file QueryTranslatorImpl\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

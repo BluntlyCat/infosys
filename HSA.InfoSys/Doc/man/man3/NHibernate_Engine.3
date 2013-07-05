@@ -1,0 +1,265 @@
+.TH "NHibernate.Engine" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "package \fBLoading\fP"
+.br
+.ti -1c
+.RI "package \fBQuery\fP"
+.br
+.ti -1c
+.RI "package \fBTransaction\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBActionQueue\fP"
+.br
+.RI "\fIResponsible for maintaining the queue of actions related to events\&. \fP"
+.ti -1c
+.RI "class \fBAssociationKey\fP"
+.br
+.RI "\fIIdentifies a named association belonging to a particular entity instance\&. Used to record the fact that an association is null during loading\&. \fP"
+.ti -1c
+.RI "class \fBBatchFetchQueue\fP"
+.br
+.ti -1c
+.RI "class \fBCascade\fP"
+.br
+.RI "\fIDelegate responsible, in conjunction with the various \fBCascadingAction\fP, for implementing cascade processing\&. \fP"
+.ti -1c
+.RI "class \fBCascadeStyle\fP"
+.br
+.RI "\fIA contract for defining the aspects of cascading various persistence actions\&. \fP"
+.ti -1c
+.RI "class \fBCascadingAction\fP"
+.br
+.RI "\fIA session action that may be cascaded from parent entity to its children \fP"
+.ti -1c
+.RI "class \fBCollectionEntry\fP"
+.br
+.RI "\fIWe need an entry to tell us all about the current state of a collection with respect to its persistent state \fP"
+.ti -1c
+.RI "class \fBCollectionKey\fP"
+.br
+.RI "\fIUniquely identifies a collection instance in a particular session\&. \fP"
+.ti -1c
+.RI "class \fBCollections\fP"
+.br
+.ti -1c
+.RI "class \fBEntityEntry\fP"
+.br
+.RI "\fIWe need an entry to tell us all about the current state of an object with respect to its persistent state \fP"
+.ti -1c
+.RI "class \fBEntityKey\fP"
+.br
+.RI "\fIA globally unique identifier of an instance, consisting of the user-visible identifier and the identifier space (eg\&. tablename) \fP"
+.ti -1c
+.RI "class \fBEntityUniqueKey\fP"
+.br
+.RI "\fIUsed to uniquely key an entity instance in relation to a particular session by some unique property reference, as opposed to identifier\&. Uniqueing information consists of the entity-name, the referenced property name, and the referenced property value\&. \fP"
+.ti -1c
+.RI "class \fBExecuteUpdateResultCheckStyle\fP"
+.br
+.ti -1c
+.RI "class \fBFilterDefinition\fP"
+.br
+.RI "\fIA \fBFilterDefinition\fP defines the global attributes of a dynamic filter\&. This information includes its name as well as its defined parameters (name and type)\&. \fP"
+.ti -1c
+.RI "class \fBForeignKeys\fP"
+.br
+.RI "\fIAlgorithms related to foreign key constraint transparency \fP"
+.ti -1c
+.RI "interface \fBIBatcher\fP"
+.br
+.RI "\fIManages IDbCommands and IDataReaders for an \fBISession\fP\&. \fP"
+.ti -1c
+.RI "class \fBIdentifierValue\fP"
+.br
+.RI "\fIA strategy for determining if an identifier value is an identifier of a new transient instance or a previously persistent transient instance\&. The strategy is determined by the \fCUnsaved-Value\fP attribute in the mapping file\&. \fP"
+.ti -1c
+.RI "interface \fBIMapping\fP"
+.br
+.RI "\fIDefines operations common to 'compiled' mappings (ie\&. \fCSessionFactory\fP) and 'uncompiled' mappings (ie \fCConfiguration\fP that are used by implementors of \fCIType\fP \fP"
+.ti -1c
+.RI "interface \fBIPersistenceContext\fP"
+.br
+.RI "\fIHolds the state of the persistence context, including the first-level cache, entries, snapshots, proxies, etc\&. \fP"
+.ti -1c
+.RI "interface \fBISessionFactoryImplementor\fP"
+.br
+.RI "\fIDefines the internal contract between the \fC\fBISessionFactory\fP\fP and other parts of \fBNHibernate\fP such as implementors of \fCIType\fP\&. \fP"
+.ti -1c
+.RI "interface \fBISessionImplementor\fP"
+.br
+.RI "\fIDefines the internal contract between the \fCSession\fP and other parts of \fBNHibernate\fP such as implementors of \fC\fBType\fP\fP or \fCClassPersister\fP \fP"
+.ti -1c
+.RI "class \fBJoinHelper\fP"
+.br
+.ti -1c
+.RI "interface \fBILhsAssociationTypeSqlInfo\fP"
+.br
+.ti -1c
+.RI "class \fBAbstractLhsAssociationTypeSqlInfo\fP"
+.br
+.ti -1c
+.RI "class \fBPropertiesLhsAssociationTypeSqlInfo\fP"
+.br
+.ti -1c
+.RI "class \fBIdPropertiesLhsAssociationTypeSqlInfo\fP"
+.br
+.ti -1c
+.RI "class \fBJoinSequence\fP"
+.br
+.ti -1c
+.RI "class \fBNamedQueryDefinition\fP"
+.br
+.ti -1c
+.RI "class \fBNamedSQLQueryDefinition\fP"
+.br
+.ti -1c
+.RI "class \fBNullability\fP"
+.br
+.RI "\fIImplements the algorithm for validating property values for illegal null values \fP"
+.ti -1c
+.RI "class \fBQueryParameters\fP"
+.br
+.RI "\fIContainer for data that is used during the \fBNHibernate\fP query/load process\&. \fP"
+.ti -1c
+.RI "class \fBResultSetMappingDefinition\fP"
+.br
+.ti -1c
+.RI "class \fBRowSelection\fP"
+.br
+.RI "\fIInformation to determine how to run an IDbCommand and what records to return from the IDataReader\&. \fP"
+.ti -1c
+.RI "class \fBStatefulPersistenceContext\fP"
+.br
+.RI "\fIA \fBIPersistenceContext\fP represents the state of persistent 'stuff' which \fBNHibernate\fP is tracking\&. This includes persistent entities, collections, as well as proxies generated\&. \fP"
+.ti -1c
+.RI "class \fBSubselectFetch\fP"
+.br
+.ti -1c
+.RI "class \fBTransactionHelper\fP"
+.br
+.RI "\fIAllows work to be done outside the current transaction, by suspending it, and performing work in a new transaction \fP"
+.ti -1c
+.RI "class \fBTwoPhaseLoad\fP"
+.br
+.RI "\fIFunctionality relating to Hibernate's two-phase loading process, that may be reused by persisters that do not use the \fBLoader\fP framework \fP"
+.ti -1c
+.RI "class \fBTypedValue\fP"
+.br
+.RI "\fIAn ordered pair of a value and its Hibernate type\&. \fP"
+.ti -1c
+.RI "class \fBUnsavedValueFactory\fP"
+.br
+.ti -1c
+.RI "class \fBVersioning\fP"
+.br
+.RI "\fIUtility methods for managing versions and timestamps \fP"
+.ti -1c
+.RI "class \fBVersionValue\fP"
+.br
+.RI "\fIA strategy for determining if a version value is an version of a new transient instance or a previously persistent transient instance\&. The strategy is determined by the \fCUnsaved-Value\fP attribute in the mapping file\&. \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBCascadePoint\fP { \fBCascadePoint\&.AfterInsertBeforeDelete\fP = 1, \fBCascadePoint\&.BeforeInsertAfterDelete\fP = 2, \fBCascadePoint\&.AfterInsertBeforeDeleteViaCollection\fP = 3, \fBCascadePoint\&.AfterUpdate\fP = 0, \fBCascadePoint\&.BeforeFlush\fP = 0, \fBCascadePoint\&.AfterEvict\fP = 0, \fBCascadePoint\&.BeforeRefresh\fP = 0, \fBCascadePoint\&.AfterLock\fP = 0, \fBCascadePoint\&.BeforeMerge\fP = 0 }"
+.br
+.RI "\fIThe types of children to cascade to \fP"
+.ti -1c
+.RI "enum \fBStatus\fP { \fBStatus\&.Loaded\fP, \fBStatus\&.Deleted\fP, \fBStatus\&.Gone\fP, \fBStatus\&.Loading\fP, \fBStatus\&.Saving\fP, \fBStatus\&.ReadOnly\fP }"
+.br
+.RI "\fIRepresents the status of an entity with respect to this session\&. These statuses are for internal book-keeping only and are not intended to represent any notion that is visible to the \fBapplication\fP\&. \fP"
+.ti -1c
+.RI "enum \fBValueInclusion\fP { \fBNone\fP, \fBPartial\fP, \fBFull\fP }"
+.br
+.RI "\fIAn enum of the different ways a value might be 'included'\&. \fP"
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBNHibernate\&.Engine\&.CascadePoint\fP"
+
+.PP
+The types of children to cascade to 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIAfterInsertBeforeDelete \fP\fP
+A cascade point that occurs just after the insertion of the parent entity and just before deletion 
+.TP
+\fB\fIBeforeInsertAfterDelete \fP\fP
+A cascade point that occurs just before the insertion of the parent entity and just after deletion 
+.TP
+\fB\fIAfterInsertBeforeDeleteViaCollection \fP\fP
+A cascade point that occurs just after the insertion of the parent entity and just before deletion, inside a collection 
+.TP
+\fB\fIAfterUpdate \fP\fP
+A cascade point that occurs just after the update of the parent entity 
+.TP
+\fB\fIBeforeFlush \fP\fP
+A cascade point that occurs just before the session is flushed
+.TP
+\fB\fIAfterEvict \fP\fP
+A cascade point that occurs just after eviction of the parent entity from the session cache 
+.TP
+\fB\fIBeforeRefresh \fP\fP
+A cascade point that occurs just after locking a transient parent entity into the session cache 
+.TP
+\fB\fIAfterLock \fP\fP
+A cascade point that occurs just after locking a transient parent entity into the session cache 
+.TP
+\fB\fIBeforeMerge \fP\fP
+A cascade point that occurs just before merging from a transient parent entity into the object in the session cache 
+.PP
+Definition at line 15 of file Cascade\&.cs\&.
+.SS "enum \fBNHibernate\&.Engine\&.Status\fP"
+
+.PP
+Represents the status of an entity with respect to this session\&. These statuses are for internal book-keeping only and are not intended to represent any notion that is visible to the \fBapplication\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fILoaded \fP\fP
+The Entity is snapshotted in the Session with the same state as the database (called Managed in H3)\&. 
+.TP
+\fB\fIDeleted \fP\fP
+The Entity is in the Session and has been marked for deletion but not deleted from the database yet\&. 
+.TP
+\fB\fIGone \fP\fP
+The Entity has been deleted from database\&. 
+.TP
+\fB\fILoading \fP\fP
+The Entity is in the process of being loaded\&. 
+.TP
+\fB\fISaving \fP\fP
+The Entity is in the process of being saved\&. 
+.TP
+\fB\fIReadOnly \fP\fP
+The entity is read-only\&. 
+.PP
+Definition at line 12 of file Status\&.cs\&.
+.SS "enum \fBNHibernate\&.Engine\&.ValueInclusion\fP"
+
+.PP
+An enum of the different ways a value might be 'included'\&. This is really an expanded true/false notion with Partial being the expansion\&. Partial deals with components in the cases where parts of the referenced component might define inclusion, but the component overall does not\&. 
+.PP
+Definition at line 12 of file ValueInclusion\&.cs\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

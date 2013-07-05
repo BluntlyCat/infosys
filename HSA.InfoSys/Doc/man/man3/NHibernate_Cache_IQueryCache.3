@@ -1,0 +1,50 @@
+.TH "NHibernate.Cache.IQueryCache" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cache.IQueryCache \- 
+.PP
+Defines the contract for caches capable of storing query results\&. These caches should only concern themselves with storing the matching result ids\&. The transactional semantics are necessarily less strict than the semantics of an item cache\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Cache\&.StandardQueryCache\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "bool \fBPut\fP (\fBQueryKey\fP key, \fBICacheAssembler\fP[] returnTypes, IList result, bool isNaturalKeyLookup, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "IList \fBGet\fP (\fBQueryKey\fP key, \fBICacheAssembler\fP[] returnTypes, bool isNaturalKeyLookup, ISet< string > spaces, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "void \fBDestroy\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBICache\fP \fBCache\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBRegionName\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the contract for caches capable of storing query results\&. These caches should only concern themselves with storing the matching result ids\&. The transactional semantics are necessarily less strict than the semantics of an item cache\&. 
+
+
+.PP
+Definition at line 14 of file IQueryCache\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

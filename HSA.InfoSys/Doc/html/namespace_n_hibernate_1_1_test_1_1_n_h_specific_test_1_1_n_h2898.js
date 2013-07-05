@@ -1,0 +1,7 @@
+var namespace_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2898 =
+[
+    [ "BinaryFormatterCache", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2898_1_1_binary_formatter_cache.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2898_1_1_binary_formatter_cache" ],
+    [ "BinaryFormatterCacheProvider", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2898_1_1_binary_formatter_cache_provider.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2898_1_1_binary_formatter_cache_provider" ],
+    [ "Fixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2898_1_1_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2898_1_1_fixture" ],
+    [ "ItemWithLazyProperty", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2898_1_1_item_with_lazy_property.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2898_1_1_item_with_lazy_property" ]
+];

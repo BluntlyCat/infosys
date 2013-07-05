@@ -1,0 +1,100 @@
+.TH "NHibernate.Tuple.PropertyFactory" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Tuple.PropertyFactory \- 
+.PP
+Responsible for generation of runtime metamodel \fBNHibernate\&.Tuple\&.Property\fP representations\&. Makes distinction between identifier, version, and other (standard) properties\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBIdentifierProperty\fP \fBBuildIdentifierProperty\fP (\fBPersistentClass\fP mappedEntity, \fBIIdentifierGenerator\fP generator)"
+.br
+.RI "\fIGenerates an \fBIdentifierProperty\fP representation of the for a given entity mapping\&. \fP"
+.ti -1c
+.RI "static \fBVersionProperty\fP \fBBuildVersionProperty\fP (\fBMapping\&.Property\fP property, bool lazyAvailable)"
+.br
+.RI "\fIGenerates a \fBVersionProperty\fP representation for an entity mapping given its version mapping \fBProperty\fP\&. \fP"
+.ti -1c
+.RI "static \fBStandardProperty\fP \fBBuildStandardProperty\fP (\fBMapping\&.Property\fP property, bool lazyAvailable)"
+.br
+.RI "\fIGenerate a 'standard' (i\&.e\&., non-identifier and non-version) based on the given mapped property\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Responsible for generation of runtime metamodel \fBNHibernate\&.Tuple\&.Property\fP representations\&. Makes distinction between identifier, version, and other (standard) properties\&. 
+
+Author: Steve Ebersole 
+.PP
+Definition at line 19 of file PropertyFactory\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBIdentifierProperty\fP NHibernate\&.Tuple\&.PropertyFactory\&.BuildIdentifierProperty (\fBPersistentClass\fPmappedEntity, \fBIIdentifierGenerator\fPgenerator)\fC [static]\fP"
+
+.PP
+Generates an \fBIdentifierProperty\fP representation of the for a given entity mapping\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImappedEntity\fP The mapping definition of the entity\&.
+.br
+\fIgenerator\fP The identifier value generator to use for this identifier\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate \fBIdentifierProperty\fP definition\&.
+.RE
+.PP
+
+.PP
+Definition at line 27 of file PropertyFactory\&.cs\&.
+.SS "static \fBStandardProperty\fP NHibernate\&.Tuple\&.PropertyFactory\&.BuildStandardProperty (\fBMapping\&.Property\fPproperty, boollazyAvailable)\fC [static]\fP"
+
+.PP
+Generate a 'standard' (i\&.e\&., non-identifier and non-version) based on the given mapped property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproperty\fP The mapped property\&.
+.br
+\fIlazyAvailable\fP Is property lazy loading currently available\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate \fBStandardProperty\fP definition\&.
+.RE
+.PP
+
+.PP
+Definition at line 91 of file PropertyFactory\&.cs\&.
+.SS "static \fBVersionProperty\fP NHibernate\&.Tuple\&.PropertyFactory\&.BuildVersionProperty (\fBMapping\&.Property\fPproperty, boollazyAvailable)\fC [static]\fP"
+
+.PP
+Generates a \fBVersionProperty\fP representation for an entity mapping given its version mapping \fBProperty\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproperty\fP The version mapping \fBProperty\fP\&.
+.br
+\fIlazyAvailable\fP Is property lazy loading currently available\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate \fBVersionProperty\fP definition\&.
+.RE
+.PP
+
+.PP
+Definition at line 54 of file PropertyFactory\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

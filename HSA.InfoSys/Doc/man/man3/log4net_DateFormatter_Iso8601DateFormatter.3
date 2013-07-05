@@ -1,0 +1,73 @@
+.TH "log4net.DateFormatter.Iso8601DateFormatter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.DateFormatter.Iso8601DateFormatter \- 
+.PP
+Formats the DateTime as \fC'yyyy-MM-dd HH:mm:ss,fff'\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.DateFormatter\&.AbsoluteTimeDateFormatter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIso8601DateFormatter\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBFormatDateWithoutMillis\fP (DateTime dateToFormat, StringBuilder buffer)"
+.br
+.RI "\fIFormats the date without the milliseconds part \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Formats the DateTime as \fC'yyyy-MM-dd HH:mm:ss,fff'\fP\&. 
+
+Formats the DateTime specified as a string: \fC'yyyy-MM-dd HH:mm:ss,fff'\fP\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 35 of file Iso8601DateFormatter\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.DateFormatter\&.Iso8601DateFormatter\&.Iso8601DateFormatter ()"
+
+.PP
+Default constructor Initializes a new instance of the \fBIso8601DateFormatter\fP class\&. 
+.PP
+Definition at line 47 of file Iso8601DateFormatter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.DateFormatter\&.Iso8601DateFormatter\&.FormatDateWithoutMillis (DateTimedateToFormat, StringBuilderbuffer)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Formats the date without the milliseconds part 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdateToFormat\fP The date to format\&.
+.br
+\fIbuffer\fP The string builder to write to\&.
+.RE
+.PP
+.PP
+Formats the date specified as a string: \fC'yyyy-MM-dd HH:mm:ss'\fP\&. 
+.PP
+The base class will append the \fC',fff'\fP milliseconds section\&. This method will only be called at most once per second\&. 
+.PP
+Reimplemented from \fBlog4net\&.DateFormatter\&.AbsoluteTimeDateFormatter\fP\&.
+.PP
+Definition at line 69 of file Iso8601DateFormatter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,70 @@
+.TH "NHibernate.Test.NHSpecificTest.NH901.InterceptorStub" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.NHSpecificTest.NH901.InterceptorStub \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.EmptyInterceptor\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBOnFlushDirty\fP (object entity, object id, object[] currentState, object[] previousState, string[] propertyNames, \fBNHibernate\&.Type\&.IType\fP[] types)"
+.br
+.RI "\fICalled when an object is detected to be dirty, during a flush\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "object \fBentityToCheck\fP"
+.br
+.ti -1c
+.RI "bool \fBentityWasDeemedDirty\fP = false"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 102 of file Fixture\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override bool NHibernate\&.Test\&.NHSpecificTest\&.NH901\&.InterceptorStub\&.OnFlushDirty (objectentity, objectid, object[]currentState, object[]previousState, string[]propertyNames, \fBNHibernate\&.Type\&.IType\fP[]types)\fC [virtual]\fP"
+
+.PP
+Called when an object is detected to be dirty, during a flush\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcurrentState\fP 
+.br
+\fIentity\fP 
+.br
+\fIid\fP 
+.br
+\fIpreviousState\fP 
+.br
+\fIpropertyNames\fP 
+.br
+\fItypes\fP 
+.RE
+.PP
+.PP
+The interceptor may modify the detected \fCcurrentState\fP, which will be propagated to both the database and the persistent object\&. Note that all flushes end in an actual synchronization with the database, in which as the new \fCcurrentState\fP will be propagated to the object, but not necessarily (immediately) to the database\&. It is strongly recommended that the interceptor \fBnot\fP modify the \fCpreviousState\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+if the user modified the \fCcurrentState\fP in any way
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.EmptyInterceptor\fP\&.
+.PP
+Definition at line 107 of file Fixture\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

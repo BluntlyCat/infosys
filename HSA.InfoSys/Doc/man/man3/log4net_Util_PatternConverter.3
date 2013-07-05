@@ -1,0 +1,270 @@
+.TH "log4net.Util.PatternConverter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.PatternConverter \- 
+.PP
+Abstract class that provides the formatting functionality that derived classes need\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBlog4net\&.Layout\&.Pattern\&.PatternLayoutConverter\fP, log4net\&.Util\&.PatternStringConverters\&.AppDomainPatternConverter, log4net\&.Util\&.PatternStringConverters\&.DatePatternConverter, log4net\&.Util\&.PatternStringConverters\&.EnvironmentFolderPathPatternConverter, log4net\&.Util\&.PatternStringConverters\&.EnvironmentPatternConverter, log4net\&.Util\&.PatternStringConverters\&.IdentityPatternConverter, log4net\&.Util\&.PatternStringConverters\&.LiteralPatternConverter, log4net\&.Util\&.PatternStringConverters\&.ProcessIdPatternConverter, log4net\&.Util\&.PatternStringConverters\&.PropertyPatternConverter, log4net\&.Util\&.PatternStringConverters\&.RandomStringPatternConverter, and log4net\&.Util\&.PatternStringConverters\&.UserNamePatternConverter\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBPatternConverter\fP \fBSetNext\fP (\fBPatternConverter\fP patternConverter)"
+.br
+.RI "\fISet the next pattern converter in the chains \fP"
+.ti -1c
+.RI "virtual void \fBFormat\fP (TextWriter writer, object state)"
+.br
+.RI "\fIWrite the pattern converter to the writer with appropriate formatting \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPatternConverter\fP ()"
+.br
+.RI "\fIProtected constructor \fP"
+.ti -1c
+.RI "abstract void \fBConvert\fP (TextWriter writer, object state)"
+.br
+.RI "\fIEvaluate this pattern converter and write the output to a writer\&. \fP"
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBSpacePad\fP (TextWriter writer, int length)"
+.br
+.RI "\fIFast space padding method\&. \fP"
+.ti -1c
+.RI "static void \fBWriteDictionary\fP (TextWriter writer, \fBILoggerRepository\fP repository, IDictionary value)"
+.br
+.RI "\fIWrite an dictionary to a TextWriter \fP"
+.ti -1c
+.RI "static void \fBWriteDictionary\fP (TextWriter writer, \fBILoggerRepository\fP repository, IDictionaryEnumerator value)"
+.br
+.RI "\fIWrite an dictionary to a TextWriter \fP"
+.ti -1c
+.RI "static void \fBWriteObject\fP (TextWriter writer, \fBILoggerRepository\fP repository, object value)"
+.br
+.RI "\fIWrite an object to a TextWriter \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBPatternConverter\fP \fBNext\fP\fC [get]\fP"
+.br
+.RI "\fIGet the next pattern converter in the chain \fP"
+.ti -1c
+.RI "virtual \fBFormattingInfo\fP \fBFormattingInfo\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the formatting info for this converter \fP"
+.ti -1c
+.RI "virtual string \fBOption\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the option value for this converter \fP"
+.ti -1c
+.RI "\fBPropertiesDictionary\fP \fBProperties\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Abstract class that provides the formatting functionality that derived classes need\&. 
+
+Conversion specifiers in a conversion patterns are parsed to individual PatternConverters\&. Each of which is responsible for converting a logging event in a converter specific manner\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 42 of file PatternConverter\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Util\&.PatternConverter\&.PatternConverter ()\fC [protected]\fP"
+
+.PP
+Protected constructor Initializes a new instance of the \fBPatternConverter\fP class\&. 
+.PP
+Definition at line 54 of file PatternConverter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract void log4net\&.Util\&.PatternConverter\&.Convert (TextWriterwriter, objectstate)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Evaluate this pattern converter and write the output to a writer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP TextWriter that will receive the formatted result\&.
+.br
+\fIstate\fP The state object on which the pattern converter should be executed\&.
+.RE
+.PP
+.PP
+Derived pattern converters must override this method in order to convert conversion specifiers in the appropriate way\&. 
+.PP
+Implemented in \fBlog4net\&.Layout\&.Pattern\&.PatternLayoutConverter\fP\&.
+.SS "virtual void log4net\&.Util\&.PatternConverter\&.Format (TextWriterwriter, objectstate)\fC [virtual]\fP"
+
+.PP
+Write the pattern converter to the writer with appropriate formatting 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP TextWriter that will receive the formatted result\&.
+.br
+\fIstate\fP The state object on which the pattern converter should be executed\&.
+.RE
+.PP
+.PP
+This method calls \fBConvert\fP to allow the subclass to perform appropriate conversion of the pattern converter\&. If formatting options have been specified via the \fBFormattingInfo\fP then this method will apply those formattings before writing the output\&. 
+.PP
+Definition at line 168 of file PatternConverter\&.cs\&.
+.SS "virtual \fBPatternConverter\fP log4net\&.Util\&.PatternConverter\&.SetNext (\fBPatternConverter\fPpatternConverter)\fC [virtual]\fP"
+
+.PP
+Set the next pattern converter in the chains 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpatternConverter\fP the pattern converter that should follow this converter in the chain
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the next converter
+.RE
+.PP
+.PP
+The \fBPatternConverter\fP can merge with its neighbor during this method (or a sub class)\&. Therefore the return value may or may not be the value of the argument passed in\&. 
+.PP
+Definition at line 149 of file PatternConverter\&.cs\&.
+.SS "static void log4net\&.Util\&.PatternConverter\&.SpacePad (TextWriterwriter, intlength)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Fast space padding method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP TextWriter to which the spaces will be appended\&.
+.br
+\fIlength\fP The number of spaces to be padded\&.
+.RE
+.PP
+.PP
+Fast space padding method\&. 
+.PP
+Definition at line 232 of file PatternConverter\&.cs\&.
+.SS "static void log4net\&.Util\&.PatternConverter\&.WriteDictionary (TextWriterwriter, \fBILoggerRepository\fPrepository, IDictionaryvalue)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Write an dictionary to a TextWriter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP the writer to write to
+.br
+\fIrepository\fP a ILoggerRepository to use for object conversion
+.br
+\fIvalue\fP the value to write to the writer
+.RE
+.PP
+.PP
+Writes the IDictionary to a writer in the form: 
+.PP
+.PP
+.nf
+{key1=value1, key2=value2, key3=value3}
+.fi
+.PP
+ 
+.PP
+If the ILoggerRepository specified is not null then it is used to render the key and value to text, otherwise the object's ToString method is called\&. 
+.PP
+Definition at line 302 of file PatternConverter\&.cs\&.
+.SS "static void log4net\&.Util\&.PatternConverter\&.WriteDictionary (TextWriterwriter, \fBILoggerRepository\fPrepository, IDictionaryEnumeratorvalue)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Write an dictionary to a TextWriter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP the writer to write to
+.br
+\fIrepository\fP a ILoggerRepository to use for object conversion
+.br
+\fIvalue\fP the value to write to the writer
+.RE
+.PP
+.PP
+Writes the IDictionaryEnumerator to a writer in the form: 
+.PP
+.PP
+.nf
+{key1=value1, key2=value2, key3=value3}
+.fi
+.PP
+ 
+.PP
+If the ILoggerRepository specified is not null then it is used to render the key and value to text, otherwise the object's ToString method is called\&. 
+.PP
+Definition at line 326 of file PatternConverter\&.cs\&.
+.SS "static void log4net\&.Util\&.PatternConverter\&.WriteObject (TextWriterwriter, \fBILoggerRepository\fPrepository, objectvalue)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Write an object to a TextWriter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP the writer to write to
+.br
+\fIrepository\fP a ILoggerRepository to use for object conversion
+.br
+\fIvalue\fP the value to write to the writer
+.RE
+.PP
+.PP
+Writes the Object to a writer\&. If the ILoggerRepository specified is not null then it is used to render the object to text, otherwise the object's ToString method is called\&. 
+.PP
+Definition at line 364 of file PatternConverter\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual \fBFormattingInfo\fP log4net\&.Util\&.PatternConverter\&.FormattingInfo\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the formatting info for this converter The formatting info for this converter 
+.PP
+Gets or sets the formatting info for this converter 
+.PP
+Definition at line 90 of file PatternConverter\&.cs\&.
+.SS "virtual \fBPatternConverter\fP log4net\&.Util\&.PatternConverter\&.Next\fC [get]\fP"
+
+.PP
+Get the next pattern converter in the chain the next pattern converter in the chain 
+.PP
+Get the next pattern converter in the chain 
+.PP
+Definition at line 74 of file PatternConverter\&.cs\&.
+.SS "virtual string log4net\&.Util\&.PatternConverter\&.Option\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the option value for this converter The option for this converter 
+.PP
+Gets or sets the option value for this converter 
+.PP
+Definition at line 112 of file PatternConverter\&.cs\&.
+.SS "\fBPropertiesDictionary\fP log4net\&.Util\&.PatternConverter\&.Properties\fC [get]\fP, \fC [set]\fP"
+
+.PP
+
+.PP
+Definition at line 392 of file PatternConverter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,71 @@
+.TH "NHibernate.Engine.Cascade" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.Cascade \- 
+.PP
+Delegate responsible, in conjunction with the various \fBCascadingAction\fP, for implementing cascade processing\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCascade\fP (\fBCascadingAction\fP action, \fBCascadePoint\fP point, \fBIEventSource\fP eventSource)"
+.br
+.ti -1c
+.RI "void \fBCascadeOn\fP (\fBIEntityPersister\fP persister, object parent)"
+.br
+.RI "\fI\fBCascade\fP an action from the parent entity instance to all its children\&. \fP"
+.ti -1c
+.RI "void \fBCascadeOn\fP (\fBIEntityPersister\fP persister, object parent, object anything)"
+.br
+.RI "\fI\fBCascade\fP an action from the parent entity instance to all its children\&. This form is typicaly called from within cascade actions\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Delegate responsible, in conjunction with the various \fBCascadingAction\fP, for implementing cascade processing\&. 
+
+
+.PP
+Definition at line 71 of file Cascade\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Engine\&.Cascade\&.CascadeOn (\fBIEntityPersister\fPpersister, objectparent)"
+
+.PP
+\fBCascade\fP an action from the parent entity instance to all its children\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The parent's entity persister 
+.br
+\fIparent\fP The parent reference\&. 
+.RE
+.PP
+
+.PP
+Definition at line 90 of file Cascade\&.cs\&.
+.SS "void NHibernate\&.Engine\&.Cascade\&.CascadeOn (\fBIEntityPersister\fPpersister, objectparent, objectanything)"
+
+.PP
+\fBCascade\fP an action from the parent entity instance to all its children\&. This form is typicaly called from within cascade actions\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The parent's entity persister 
+.br
+\fIparent\fP The parent reference\&. 
+.br
+\fIanything\fP Typically some form of cascade-local cache which is specific to each \fBCascadingAction\fP type 
+.RE
+.PP
+
+.PP
+Definition at line 105 of file Cascade\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

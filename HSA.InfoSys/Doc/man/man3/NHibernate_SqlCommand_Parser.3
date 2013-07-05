@@ -1,0 +1,88 @@
+.TH "NHibernate.SqlCommand.Parser" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.SqlCommand.Parser \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBMsSqlSelectParser\fP"
+.br
+.RI "\fIRepresents SQL Server SELECT query parser, primarily intended to support generation of limit queries by SQL Server dialects\&. \fP"
+.ti -1c
+.RI "class \fBSqlParserUtils\fP"
+.br
+.ti -1c
+.RI "class \fBSqlToken\fP"
+.br
+.RI "\fIA SQL query token as returned by \fBSqlTokenizer\fP \fP"
+.ti -1c
+.RI "class \fBSqlTokenizer\fP"
+.br
+.RI "\fISplits a \fBSqlString\fP into \fBSqlToken\fPs\&. \fP"
+.ti -1c
+.RI "class \fBSqlTokenizerExtensions\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBSqlTokenType\fP { \fBSqlTokenType\&.Whitespace\fP = 0x1, \fBSqlTokenType\&.Comment\fP = 0x2, \fBSqlTokenType\&.Text\fP = 0x4, \fBSqlTokenType\&.DelimitedText\fP = 0x8, \fBSqlTokenType\&.Parameter\fP = 0x10, \fBSqlTokenType\&.Comma\fP = 0x20, \fBSqlTokenType\&.BracketOpen\fP = 0x40, \fBSqlTokenType\&.BracketClose\fP = 0x80, \fBSqlTokenType\&.AllBrackets\fP = BracketOpen | BracketClose, \fBSqlTokenType\&.AllExceptWhitespaceOrComment\fP = AllExceptWhitespace & ~Comment, \fBSqlTokenType\&.AllExceptWhitespace\fP = All & ~Whitespace, \fBSqlTokenType\&.All\fP = Whitespace | Comment | Text | Comma | BracketOpen | BracketClose | Parameter | DelimitedText }"
+.br
+.RI "\fISqlToken token types\&. \fP"
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBNHibernate\&.SqlCommand\&.Parser\&.SqlTokenType\fP"
+
+.PP
+\fBSqlToken\fP token types\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIWhitespace \fP\fP
+Whitespace 
+.TP
+\fB\fIComment \fP\fP
+Single line comment (preceeded by --) or multi-line comment (terminated by /* and 
+.TP
+\fB\fIText \fP\fP
+Keywords, operators or undelimited identifiers\&. 
+.TP
+\fB\fIDelimitedText \fP\fP
+Delimited identifiers or string literals\&. 
+.TP
+\fB\fIParameter \fP\fP
+A query parameter\&. 
+.TP
+\fB\fIComma \fP\fP
+List separator, the ',' character\&. 
+.TP
+\fB\fIBracketOpen \fP\fP
+Begin of an expression block, consisting of a '(' character\&. 
+.TP
+\fB\fIBracketClose \fP\fP
+End of an expression block, consisting of a ')' character\&. 
+.TP
+\fB\fIAllBrackets \fP\fP
+Tokens for begin or end of expression blocks\&. 
+.TP
+\fB\fIAllExceptWhitespaceOrComment \fP\fP
+Includes all token types except whitespace or comments 
+.TP
+\fB\fIAllExceptWhitespace \fP\fP
+Includes all token types except whitespace 
+.TP
+\fB\fIAll \fP\fP
+Includes all token types 
+.PP
+Definition at line 9 of file SqlTokenType\&.cs\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,140 @@
+.TH "log4net.Config.PluginAttribute" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Config.PluginAttribute \- 
+.PP
+Assembly level attribute that specifies a plugin to attach to the repository\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits Attribute, and \fBlog4net\&.Plugin\&.IPluginFactory\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPluginAttribute\fP (string typeName)"
+.br
+.RI "\fIInitializes a new instance of the \fBPluginAttribute\fP class with the specified type\&. \fP"
+.ti -1c
+.RI "\fBPluginAttribute\fP (\fBType\fP type)"
+.br
+.RI "\fIInitializes a new instance of the \fBPluginAttribute\fP class with the specified type\&. \fP"
+.ti -1c
+.RI "\fBIPlugin\fP \fBCreatePlugin\fP ()"
+.br
+.RI "\fICreates the plugin object defined by this attribute\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIReturns a representation of the properties of this object\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "Type \fBType\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the type for the plugin\&. \fP"
+.ti -1c
+.RI "string \fBTypeName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the type name for the plugin\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Assembly level attribute that specifies a plugin to attach to the repository\&. 
+
+Specifies the type of a plugin to create and attach to the assembly's repository\&. The plugin type must implement the IPlugin interface\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 48 of file PluginAttribute\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Config\&.PluginAttribute\&.PluginAttribute (stringtypeName)"
+
+.PP
+Initializes a new instance of the \fBPluginAttribute\fP class with the specified type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItypeName\fP The type name of plugin to create\&.
+.RE
+.PP
+.PP
+Create the attribute with the plugin type specified\&. 
+.PP
+Where possible use the constructor that takes a System\&.Type\&. 
+.PP
+Definition at line 65 of file PluginAttribute\&.cs\&.
+.SS "log4net\&.Config\&.PluginAttribute\&.PluginAttribute (\fBType\fPtype)"
+
+.PP
+Initializes a new instance of the \fBPluginAttribute\fP class with the specified type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The type of plugin to create\&.
+.RE
+.PP
+.PP
+Create the attribute with the plugin type specified\&. 
+.PP
+Definition at line 80 of file PluginAttribute\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIPlugin\fP log4net\&.Config\&.PluginAttribute\&.CreatePlugin ()"
+
+.PP
+Creates the plugin object defined by this attribute\&. Creates the instance of the IPlugin object as specified by this attribute\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The plugin object\&.
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.Plugin\&.IPluginFactory\fP\&.
+.PP
+Definition at line 140 of file PluginAttribute\&.cs\&.
+.SS "override string log4net\&.Config\&.PluginAttribute\&.ToString ()"
+
+.PP
+Returns a representation of the properties of this object\&. Overrides base class Object\&.ToString() method to return a representation of the properties of this object\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A representation of the properties of this object
+.RE
+.PP
+
+.PP
+Definition at line 175 of file PluginAttribute\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "Type log4net\&.Config\&.PluginAttribute\&.Type\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the type for the plugin\&. The type for the plugin\&. 
+.PP
+The type for the plugin\&. 
+.PP
+Definition at line 101 of file PluginAttribute\&.cs\&.
+.SS "string log4net\&.Config\&.PluginAttribute\&.TypeName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the type name for the plugin\&. The type name for the plugin\&. 
+.PP
+The type name for the plugin\&. 
+.PP
+Where possible use the \fBType\fP property instead\&. 
+.PP
+Definition at line 121 of file PluginAttribute\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

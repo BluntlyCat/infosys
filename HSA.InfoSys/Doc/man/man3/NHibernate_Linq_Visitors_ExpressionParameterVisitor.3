@@ -1,0 +1,52 @@
+.TH "NHibernate.Linq.Visitors.ExpressionParameterVisitor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Linq.Visitors.ExpressionParameterVisitor \- 
+.PP
+Locates constants in the expression tree and generates parameters for each one  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits ExpressionTreeVisitor\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBExpressionParameterVisitor\fP (\fBISessionFactoryImplementor\fP sessionFactory)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static IDictionary
+.br
+< ConstantExpression, 
+.br
+\fBNamedParameter\fP > \fBVisit\fP (Expression expression, \fBISessionFactoryImplementor\fP sessionFactory)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override Expression \fBVisitMethodCallExpression\fP (MethodCallExpression expression)"
+.br
+.ti -1c
+.RI "override Expression \fBVisitConstantExpression\fP (ConstantExpression expression)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Locates constants in the expression tree and generates parameters for each one 
+
+
+.PP
+Definition at line 18 of file ExpressionParameterVisitor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

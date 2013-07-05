@@ -1,0 +1,98 @@
+.TH "log4net.Layout.XmlLayoutSchemaLog4j" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Layout.XmlLayoutSchemaLog4j \- 
+.PP
+\fBLayout\fP that formats the log events as XML elements compatible with the log4j schema  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Layout\&.XmlLayoutBase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBXmlLayoutSchemaLog4j\fP ()"
+.br
+.RI "\fIConstructs an XMLLayoutSchemaLog4j \fP"
+.ti -1c
+.RI "\fBXmlLayoutSchemaLog4j\fP (bool locationInfo)"
+.br
+.RI "\fIConstructs an XMLLayoutSchemaLog4j\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBFormatXml\fP (XmlWriter writer, \fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIActually do the writing of the xml \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBVersion\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe version of the log4j schema to use\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBLayout\fP that formats the log events as XML elements compatible with the log4j schema 
+
+Formats the log events according to the http://logging.apache.org/log4j schema\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 39 of file XmlLayoutSchemaLog4j\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Layout\&.XmlLayoutSchemaLog4j\&.XmlLayoutSchemaLog4j ()"
+
+.PP
+Constructs an XMLLayoutSchemaLog4j 
+.PP
+Definition at line 55 of file XmlLayoutSchemaLog4j\&.cs\&.
+.SS "log4net\&.Layout\&.XmlLayoutSchemaLog4j\&.XmlLayoutSchemaLog4j (boollocationInfo)"
+
+.PP
+Constructs an XMLLayoutSchemaLog4j\&. The \fBLocationInfo\fP option takes a boolean value\&. By default, it is set to false which means there will be no location information output by this layout\&. If the the option is set to true, then the file name and line number of the statement at the origin of the log statement will be output\&. 
+.PP
+If you are embedding this layout within an SMTPAppender then make sure to set the \fBLocationInfo\fP option of that appender as well\&. 
+.PP
+Definition at line 76 of file XmlLayoutSchemaLog4j\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Layout\&.XmlLayoutSchemaLog4j\&.FormatXml (XmlWriterwriter, \fBLoggingEvent\fPloggingEvent)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Actually do the writing of the xml 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP the writer to use
+.br
+\fIloggingEvent\fP the event to write
+.RE
+.PP
+.PP
+Generate XML that is compatible with the log4j schema\&. 
+.PP
+Implements \fBlog4net\&.Layout\&.XmlLayoutBase\fP\&.
+.PP
+Definition at line 139 of file XmlLayoutSchemaLog4j\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string log4net\&.Layout\&.XmlLayoutSchemaLog4j\&.Version\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The version of the log4j schema to use\&. Only version 1\&.2 of the log4j schema is supported\&. 
+.PP
+Definition at line 93 of file XmlLayoutSchemaLog4j\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

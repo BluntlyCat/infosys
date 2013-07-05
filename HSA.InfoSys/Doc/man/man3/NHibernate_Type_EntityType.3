@@ -1,0 +1,563 @@
+.TH "NHibernate.Type.EntityType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.EntityType \- 
+.PP
+A reference to an entity class  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.AbstractType\fP, and \fBNHibernate\&.Type\&.IAssociationType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Type\&.ManyToOneType\fP, and \fBNHibernate\&.Type\&.OneToOneType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBIsEqual\fP (object x, object y, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fICompare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsNull\fP (object owner, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override bool \fBIsSame\fP (object x, object y, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fITwo entities are considered the same when their instances are the same\&. \fP"
+.ti -1c
+.RI "override object \fBNullSafeGet\fP (IDataReader rs, string name, \fBISessionImplementor\fP session, object owner)"
+.br
+.ti -1c
+.RI "override string \fBToLoggableString\fP (object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "override object \fBFromXMLNode\fP (XmlNode xml, \fBIMapping\fP factory)"
+.br
+.RI "\fIParse the XML representation of an instance\&.\fP"
+.ti -1c
+.RI "override object \fBDeepCopy\fP (object value, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "override object \fBReplace\fP (object original, object target, \fBISessionImplementor\fP session, object owner, IDictionary copyCache)"
+.br
+.ti -1c
+.RI "override sealed object \fBNullSafeGet\fP (IDataReader rs, string[] names, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIConverts the id contained in the IDataReader to an object\&. \fP"
+.ti -1c
+.RI "abstract override object \fBHydrate\fP (IDataReader rs, string[] names, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIRetrives an instance of the mapped class, or the identifier of an entity or collection from a IDataReader\&. \fP"
+.ti -1c
+.RI "\fBIJoinable\fP \fBGetAssociatedJoinable\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIRetrieves the \fBJoinable\fP defining the associated entity\&. \fP"
+.ti -1c
+.RI "\fBIType\fP \fBGetIdentifierOrUniqueKeyType\fP (\fBIMapping\fP factory)"
+.br
+.RI "\fIDetermine the type of either (1) the identifier if we reference the associated entity's PK or (2) the unique key to which we refer (i\&.e\&. the property-ref)\&. \fP"
+.ti -1c
+.RI "string \fBGetIdentifierOrUniqueKeyPropertyName\fP (\fBIMapping\fP factory)"
+.br
+.RI "\fIThe name of the property on the associated entity to which our FK refers \fP"
+.ti -1c
+.RI "override object \fBResolveIdentifier\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIResolve an identifier or unique key value \fP"
+.ti -1c
+.RI "virtual string \fBGetAssociatedEntityName\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIThe name of the associated entity\&. \fP"
+.ti -1c
+.RI "string \fBGetAssociatedEntityName\fP ()"
+.br
+.RI "\fIThe name of the associated entity\&. \fP"
+.ti -1c
+.RI "override int \fBGetHashCode\fP (object x, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIGet a hashcode, consistent with persistence 'equality'\fP"
+.ti -1c
+.RI "string \fBGetOnCondition\fP (string alias, \fBISessionFactoryImplementor\fP factory, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIGet the 'filtering' SQL fragment that is applied in the SQL on clause, in addition to the usual join condition\&. \fP"
+.ti -1c
+.RI "override \fBIType\fP \fBGetSemiResolvedType\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIGet the type of a semi-resolved value\&.\fP"
+.ti -1c
+.RI "object \fBLoadByUniqueKey\fP (string entityName, string uniqueKeyPropertyName, object key, \fBISessionImplementor\fP session)"
+.br
+.RI "\fILoad an instance by a unique key that is not the primary key\&. \fP"
+.ti -1c
+.RI "override int \fBCompare\fP (object x, object y, \fBEntityMode\fP?entityMode)"
+.br
+.RI "\fIcompare two instances of the type\fP"
+.ti -1c
+.RI "override void \fBSetToXMLNode\fP (XmlNode node, object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIA representation of the value to be embedded in an XML element\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBResolveIdentifier\fP (object id, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIResolves the identifier to the actual object\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly string \fBuniqueKeyPropertyName\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override sealed bool \fBIsEntityType\fP\fC [get]\fP"
+.br
+.RI "\fIExplicitly, an entity type is an entity type \fP"
+.ti -1c
+.RI "override System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.RI "\fIThis returns the wrong class for an entity with a proxy, or for a named entity\&. Theoretically it should return the proxy class, but it doesn't\&. 
+.PP
+The problem here is that we do not necessarily have a ref to the associated entity persister (nor to the session factory, to look it up) which is really needed to 'do the right thing' here\&.\&.\&. \fP"
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsMutable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract bool \fBIsOneToOne\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsAssociationType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsUniqueKeyReference\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract bool \fBIsNullable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract \fBForeignKeyDirection\fP \fBForeignKeyDirection\fP\fC [get]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets the type of foreign key directionality of this association\&. \fP"
+.ti -1c
+.RI "abstract bool \fBUseLHSPrimaryKey\fP\fC [get]\fP"
+.br
+.RI "\fIIs the foreign key the primary key of the table? \fP"
+.ti -1c
+.RI "string \fBLHSPropertyName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBRHSUniqueKeyPropertyName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBPropertyName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract bool \fBIsAlwaysDirtyChecked\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsReferenceToPrimaryKey\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsEmbeddedInXML\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsXMLElement\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A reference to an entity class 
+
+
+.PP
+Definition at line 19 of file EntityType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override int NHibernate\&.Type\&.EntityType\&.Compare (objectx, objecty, \fBEntityMode\fP?entityMode)\fC [virtual]\fP"
+
+.PP
+compare two instances of the type
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 579 of file EntityType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.EntityType\&.FromXMLNode (XmlNodexml, \fBIMapping\fPfactory)\fC [virtual]\fP"
+
+.PP
+Parse the XML representation of an instance\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an instance of the type 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 227 of file EntityType\&.cs\&.
+.SS "virtual string NHibernate\&.Type\&.EntityType\&.GetAssociatedEntityName (\fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+The name of the associated entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfactory\fP The session factory, for resolution\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The associated entity name\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IAssociationType\fP\&.
+.PP
+Definition at line 447 of file EntityType\&.cs\&.
+.SS "string NHibernate\&.Type\&.EntityType\&.GetAssociatedEntityName ()"
+
+.PP
+The name of the associated entity\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The associated entity name\&.
+.RE
+.PP
+
+.PP
+Definition at line 454 of file EntityType\&.cs\&.
+.SS "\fBIJoinable\fP NHibernate\&.Type\&.EntityType\&.GetAssociatedJoinable (\fBISessionFactoryImplementor\fPfactory)"
+
+.PP
+Retrieves the \fBJoinable\fP defining the associated entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfactory\fP The session factory\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The associated joinable 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IAssociationType\fP\&.
+.PP
+Definition at line 325 of file EntityType\&.cs\&.
+.SS "override int NHibernate\&.Type\&.EntityType\&.GetHashCode (objectx, \fBEntityMode\fPentityMode, \fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+Get a hashcode, consistent with persistence 'equality'
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIentityMode\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 486 of file EntityType\&.cs\&.
+.SS "string NHibernate\&.Type\&.EntityType\&.GetIdentifierOrUniqueKeyPropertyName (\fBIMapping\fPfactory)"
+
+.PP
+The name of the property on the associated entity to which our FK refers 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfactory\fP The mappings\&.\&.\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate property name\&. 
+.RE
+.PP
+
+.PP
+Definition at line 359 of file EntityType\&.cs\&.
+.SS "\fBIType\fP NHibernate\&.Type\&.EntityType\&.GetIdentifierOrUniqueKeyType (\fBIMapping\fPfactory)"
+
+.PP
+Determine the type of either (1) the identifier if we reference the associated entity's PK or (2) the unique key to which we refer (i\&.e\&. the property-ref)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfactory\fP The mappings\&.\&.\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate type\&. 
+.RE
+.PP
+
+.PP
+Definition at line 337 of file EntityType\&.cs\&.
+.SS "string NHibernate\&.Type\&.EntityType\&.GetOnCondition (stringalias, \fBISessionFactoryImplementor\fPfactory, IDictionary< string, \fBIFilter\fP >enabledFilters)"
+
+.PP
+Get the 'filtering' SQL fragment that is applied in the SQL on clause, in addition to the usual join condition\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.IAssociationType\fP\&.
+.PP
+Definition at line 520 of file EntityType\&.cs\&.
+.SS "override \fBIType\fP NHibernate\&.Type\&.EntityType\&.GetSemiResolvedType (\fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+Get the type of a semi-resolved value\&.
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 533 of file EntityType\&.cs\&.
+.SS "abstract override object NHibernate\&.Type\&.EntityType\&.Hydrate (IDataReaderrs, string[]names, \fBISessionImplementor\fPsession, objectowner)\fC [pure virtual]\fP"
+
+.PP
+Retrives an instance of the mapped class, or the identifier of an entity or collection from a IDataReader\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the values\&.
+.br
+\fInames\fP The names of the columns in the IDataReader that contain the value to populate the \fBIType\fP with\&. 
+.br
+\fIsession\fP the session
+.br
+\fIowner\fP The parent Entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An identifier or actual object mapped by this \fBIType\fP\&.
+.RE
+.PP
+.PP
+This method uses the \fCIType\&.NullSafeGet(IDataReader, string[], ISessionImplementor, object)\fP method to Hydrate this \fBAbstractType\fP\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Type\&.OneToOneType\fP, and \fBNHibernate\&.Type\&.ManyToOneType\fP\&.
+.SS "override bool NHibernate\&.Type\&.EntityType\&.IsEqual (objectx, objecty, \fBEntityMode\fPentityMode, \fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+Compare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+boolean 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 57 of file EntityType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.EntityType\&.IsSame (objectx, objecty, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Two entities are considered the same when their instances are the same\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP One entity instance 
+.br
+\fIy\fP Another entity instance 
+.br
+\fIentityMode\fP The entity mode\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if x == y; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 102 of file EntityType\&.cs\&.
+.SS "object NHibernate\&.Type\&.EntityType\&.LoadByUniqueKey (stringentityName, stringuniqueKeyPropertyName, objectkey, \fBISessionImplementor\fPsession)"
+
+.PP
+Load an instance by a unique key that is not the primary key\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The name of the entity to load 
+.br
+\fIuniqueKeyPropertyName\fP The name of the property defining the uniqie key\&. 
+.br
+\fIkey\fP The unique key property value\&. 
+.br
+\fIsession\fP The originating session\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The loaded entity 
+.RE
+.PP
+
+.PP
+Definition at line 546 of file EntityType\&.cs\&.
+.SS "override sealed object NHibernate\&.Type\&.EntityType\&.NullSafeGet (IDataReaderrs, string[]names, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Converts the id contained in the IDataReader to an object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the query results\&.
+.br
+\fInames\fP A string array of column names that contain the id\&.
+.br
+\fIsession\fP The ISessionImplementor this is occurring in\&.
+.br
+\fIowner\fP The object that this Entity will be a part of\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An instance of the object or  if the identifer was null\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 308 of file EntityType\&.cs\&.
+.SS "object NHibernate\&.Type\&.EntityType\&.ResolveIdentifier (objectid, \fBISessionImplementor\fPsession)\fC [protected]\fP"
+
+.PP
+Resolves the identifier to the actual object\&. 
+.PP
+Definition at line 390 of file EntityType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.EntityType\&.ResolveIdentifier (objectvalue, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Resolve an identifier or unique key value 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP 
+.br
+\fIsession\fP 
+.br
+\fIowner\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 415 of file EntityType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.EntityType\&.SetToXMLNode (XmlNodenode, objectvalue, \fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+A representation of the value to be embedded in an XML element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInode\fP 
+.br
+\fIvalue\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 603 of file EntityType\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "abstract \fBForeignKeyDirection\fP NHibernate\&.Type\&.EntityType\&.ForeignKeyDirection\fC [get]\fP"
+
+.PP
+When implemented by a class, gets the type of foreign key directionality of this association\&. The \fBForeignKeyDirection\fP of this association\&.
+.PP
+Definition at line 464 of file EntityType\&.cs\&.
+.SS "override sealed bool NHibernate\&.Type\&.EntityType\&.IsEntityType\fC [get]\fP"
+
+.PP
+Explicitly, an entity type is an entity type True\&. 
+.PP
+Definition at line 53 of file EntityType\&.cs\&.
+.SS "override System\&.Type NHibernate\&.Type\&.EntityType\&.ReturnedClass\fC [get]\fP"
+
+.PP
+This returns the wrong class for an entity with a proxy, or for a named entity\&. Theoretically it should return the proxy class, but it doesn't\&. 
+.PP
+The problem here is that we do not necessarily have a ref to the associated entity persister (nor to the session factory, to look it up) which is really needed to 'do the right thing' here\&.\&.\&. 
+.PP
+Definition at line 121 of file EntityType\&.cs\&.
+.SS "abstract bool NHibernate\&.Type\&.EntityType\&.UseLHSPrimaryKey\fC [get]\fP"
+
+.PP
+Is the foreign key the primary key of the table? 
+.PP
+Definition at line 469 of file EntityType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

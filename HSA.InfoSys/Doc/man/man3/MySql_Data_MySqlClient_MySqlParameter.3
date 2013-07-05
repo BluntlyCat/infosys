@@ -1,0 +1,330 @@
+.TH "MySql.Data.MySqlClient.MySqlParameter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MySql.Data.MySqlClient.MySqlParameter \- 
+.PP
+Represents a parameter to a \fBMySqlCommand\fP, and optionally, its mapping to DataSet columns\&. This class cannot be inherited\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits DbParameter, IDataParameter, IDbDataParameter, and ICloneable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMySqlParameter\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBMySqlParameter\fP class\&. \fP"
+.ti -1c
+.RI "\fBMySqlParameter\fP (string parameterName, object value)"
+.br
+.RI "\fIInitializes a new instance of the \fBMySqlParameter\fP class with the parameter name and a value of the new \fBMySqlParameter\fP\&. \fP"
+.ti -1c
+.RI "\fBMySqlParameter\fP (string parameterName, \fBMySqlDbType\fP dbType)"
+.br
+.RI "\fIInitializes a new instance of the \fBMySqlParameter\fP class with the parameter name and the data type\&. \fP"
+.ti -1c
+.RI "\fBMySqlParameter\fP (string parameterName, \fBMySqlDbType\fP dbType, int size)"
+.br
+.RI "\fIInitializes a new instance of the \fBMySqlParameter\fP class with the parameter name, the \fBMySqlDbType\fP, and the size\&. \fP"
+.ti -1c
+.RI "\fBMySqlParameter\fP (string parameterName, \fBMySqlDbType\fP dbType, int size, string sourceColumn)"
+.br
+.RI "\fIInitializes a new instance of the \fBMySqlParameter\fP class with the parameter name, the \fBMySqlDbType\fP, the size, and the source column name\&. \fP"
+.ti -1c
+.RI "\fBMySqlParameter\fP (string parameterName, \fBMySqlDbType\fP dbType, int size, ParameterDirection direction, bool isNullable, byte precision, byte scale, string sourceColumn, DataRowVersion sourceVersion, object value)"
+.br
+.RI "\fIInitializes a new instance of the \fBMySqlParameter\fP class with the parameter name, the type of the parameter, the size of the parameter, a ParameterDirection, the precision of the parameter, the scale of the parameter, the source column, a DataRowVersion to use, and the value of the parameter\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIOverridden\&. Gets a string containing the \fBParameterName\fP\&. \fP"
+.ti -1c
+.RI "\fBMySqlParameter\fP \fBClone\fP ()"
+.br
+.ti -1c
+.RI "override void \fBResetDbType\fP ()"
+.br
+.RI "\fIResets the \fBDbType\fP property to its original settings\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override DbType \fBDbType\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBDbType\fP of the parameter\&. \fP"
+.ti -1c
+.RI "override ParameterDirection \fBDirection\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether the parameter is input-only, output-only, bidirectional, or a stored procedure return value parameter\&. As of \fBMySql\fP version 4\&.1 and earlier, input-only is the only valid choice\&. \fP"
+.ti -1c
+.RI "override Boolean \fBIsNullable\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether the parameter accepts null values\&. \fP"
+.ti -1c
+.RI "\fBMySqlDbType\fP \fBMySqlDbType\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the MySqlDbType of the parameter\&. \fP"
+.ti -1c
+.RI "override \fBString\fP \fBParameterName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the name of the \fBMySqlParameter\fP\&. \fP"
+.ti -1c
+.RI "byte \fBPrecision\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the maximum number of digits used to represent the \fBValue\fP property\&. \fP"
+.ti -1c
+.RI "byte \fBScale\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the number of decimal places to which \fBValue\fP is resolved\&. \fP"
+.ti -1c
+.RI "override int \fBSize\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the maximum size, in bytes, of the data within the column\&. \fP"
+.ti -1c
+.RI "override \fBString\fP \fBSourceColumn\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the name of the source column that is mapped to the DataSet and used for loading or returning the \fBValue\fP\&. \fP"
+.ti -1c
+.RI "override DataRowVersion \fBSourceVersion\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the DataRowVersion to use when loading \fBValue\fP\&. \fP"
+.ti -1c
+.RI "override object \fBValue\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the value of the parameter\&. \fP"
+.ti -1c
+.RI "IList \fBPossibleValues\fP\fC [get, set]\fP"
+.br
+.RI "\fIReturns the possible values for this parameter if this parameter is of type SET or ENUM\&. Returns null otherwise\&. \fP"
+.ti -1c
+.RI "override bool \fBSourceColumnNullMapping\fP\fC [get, set]\fP"
+.br
+.RI "\fISets or gets a value which indicates whether the source column is nullable\&. This allows DbCommandBuilder to correctly generate Update statements for nullable columns\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a parameter to a \fBMySqlCommand\fP, and optionally, its mapping to DataSet columns\&. This class cannot be inherited\&. 
+
+
+.PP
+Definition at line 44 of file parameter\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.MySqlParameter ()"
+
+.PP
+Initializes a new instance of the \fBMySqlParameter\fP class\&. 
+.PP
+Definition at line 71 of file parameter\&.cs\&.
+.SS "MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.MySqlParameter (stringparameterName, objectvalue)"
+
+.PP
+Initializes a new instance of the \fBMySqlParameter\fP class with the parameter name and a value of the new \fBMySqlParameter\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameterName\fP The name of the parameter to map\&. 
+.br
+\fIvalue\fP An Object that is the value of the \fBMySqlParameter\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 81 of file parameter\&.cs\&.
+.SS "MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.MySqlParameter (stringparameterName, \fBMySqlDbType\fPdbType)"
+
+.PP
+Initializes a new instance of the \fBMySqlParameter\fP class with the parameter name and the data type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameterName\fP The name of the parameter to map\&. 
+.br
+\fIdbType\fP One of the \fBMySqlDbType\fP values\&. 
+.RE
+.PP
+
+.PP
+Definition at line 93 of file parameter\&.cs\&.
+.SS "MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.MySqlParameter (stringparameterName, \fBMySqlDbType\fPdbType, intsize)"
+
+.PP
+Initializes a new instance of the \fBMySqlParameter\fP class with the parameter name, the \fBMySqlDbType\fP, and the size\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameterName\fP The name of the parameter to map\&. 
+.br
+\fIdbType\fP One of the \fBMySqlDbType\fP values\&. 
+.br
+\fIsize\fP The length of the parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 105 of file parameter\&.cs\&.
+.SS "MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.MySqlParameter (stringparameterName, \fBMySqlDbType\fPdbType, intsize, stringsourceColumn)"
+
+.PP
+Initializes a new instance of the \fBMySqlParameter\fP class with the parameter name, the \fBMySqlDbType\fP, the size, and the source column name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameterName\fP The name of the parameter to map\&. 
+.br
+\fIdbType\fP One of the \fBMySqlDbType\fP values\&. 
+.br
+\fIsize\fP The length of the parameter\&. 
+.br
+\fIsourceColumn\fP The name of the source column\&. 
+.RE
+.PP
+
+.PP
+Definition at line 118 of file parameter\&.cs\&.
+.SS "MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.MySqlParameter (stringparameterName, \fBMySqlDbType\fPdbType, intsize, ParameterDirectiondirection, boolisNullable, byteprecision, bytescale, stringsourceColumn, DataRowVersionsourceVersion, objectvalue)"
+
+.PP
+Initializes a new instance of the \fBMySqlParameter\fP class with the parameter name, the type of the parameter, the size of the parameter, a ParameterDirection, the precision of the parameter, the scale of the parameter, the source column, a DataRowVersion to use, and the value of the parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameterName\fP The name of the parameter to map\&. 
+.br
+\fIdbType\fP One of the \fBMySqlDbType\fP values\&. 
+.br
+\fIsize\fP The length of the parameter\&. 
+.br
+\fIdirection\fP One of the ParameterDirection values\&. 
+.br
+\fIisNullable\fP true if the value of the field can be null, otherwise false\&. 
+.br
+\fIprecision\fP The total number of digits to the left and right of the decimal point to which \fBMySqlParameter\&.Value\fP is resolved\&.
+.br
+\fIscale\fP The total number of decimal places to which \fBMySqlParameter\&.Value\fP is resolved\&. 
+.br
+\fIsourceColumn\fP The name of the source column\&. 
+.br
+\fIsourceVersion\fP One of the DataRowVersion values\&. 
+.br
+\fIvalue\fP An Object that is the value of the \fBMySqlParameter\fP\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP 
+.RE
+.PP
+
+.PP
+Definition at line 152 of file parameter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.ResetDbType ()"
+
+.PP
+Resets the \fBDbType\fP property to its original settings\&. 
+.PP
+Definition at line 675 of file parameter\&.cs\&.
+.SS "override string MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.ToString ()"
+
+.PP
+Overridden\&. Gets a string containing the \fBParameterName\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 375 of file parameter\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override DbType MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.DbType\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBDbType\fP of the parameter\&. 
+.PP
+Definition at line 201 of file parameter\&.cs\&.
+.SS "override ParameterDirection MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.Direction\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether the parameter is input-only, output-only, bidirectional, or a stored procedure return value parameter\&. As of \fBMySql\fP version 4\&.1 and earlier, input-only is the only valid choice\&. 
+.PP
+Definition at line 218 of file parameter\&.cs\&.
+.SS "override Boolean MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.IsNullable\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether the parameter accepts null values\&. 
+.PP
+Definition at line 230 of file parameter\&.cs\&.
+.SS "\fBMySqlDbType\fP MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.MySqlDbType\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the MySqlDbType of the parameter\&. 
+.PP
+Definition at line 243 of file parameter\&.cs\&.
+.SS "override \fBString\fP MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.ParameterName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the name of the \fBMySqlParameter\fP\&. 
+.PP
+Definition at line 259 of file parameter\&.cs\&.
+.SS "IList MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.PossibleValues\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Returns the possible values for this parameter if this parameter is of type SET or ENUM\&. Returns null otherwise\&. 
+.PP
+Definition at line 364 of file parameter\&.cs\&.
+.SS "byte MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.Precision\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the maximum number of digits used to represent the \fBValue\fP property\&. 
+.PP
+Definition at line 276 of file parameter\&.cs\&.
+.SS "byte MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.Scale\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the number of decimal places to which \fBValue\fP is resolved\&. 
+.PP
+Definition at line 288 of file parameter\&.cs\&.
+.SS "override int MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.Size\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the maximum size, in bytes, of the data within the column\&. 
+.PP
+Definition at line 300 of file parameter\&.cs\&.
+.SS "override \fBString\fP MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.SourceColumn\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the name of the source column that is mapped to the DataSet and used for loading or returning the \fBValue\fP\&. 
+.PP
+Definition at line 312 of file parameter\&.cs\&.
+.SS "override bool MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.SourceColumnNullMapping\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Sets or gets a value which indicates whether the source column is nullable\&. This allows DbCommandBuilder to correctly generate Update statements for nullable columns\&. 
+.PP
+Definition at line 686 of file parameter\&.cs\&.
+.SS "override DataRowVersion MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.SourceVersion\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the DataRowVersion to use when loading \fBValue\fP\&. 
+.PP
+Definition at line 324 of file parameter\&.cs\&.
+.SS "override object MySql\&.Data\&.MySqlClient\&.MySqlParameter\&.Value\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the value of the parameter\&. 
+.PP
+Definition at line 337 of file parameter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

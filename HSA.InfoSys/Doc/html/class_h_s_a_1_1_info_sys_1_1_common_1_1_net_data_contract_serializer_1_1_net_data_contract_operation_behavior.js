@@ -1,0 +1,6 @@
+var class_h_s_a_1_1_info_sys_1_1_common_1_1_net_data_contract_serializer_1_1_net_data_contract_operation_behavior =
+[
+    [ "NetDataContractOperationBehavior", "class_h_s_a_1_1_info_sys_1_1_common_1_1_net_data_contract_serializer_1_1_net_data_contract_operation_behavior.html#af3ce741536167891dda276766001791e", null ],
+    [ "CreateSerializer", "class_h_s_a_1_1_info_sys_1_1_common_1_1_net_data_contract_serializer_1_1_net_data_contract_operation_behavior.html#ad18facfadc7a3f0d9316c52bb483d1dd", null ],
+    [ "CreateSerializer", "class_h_s_a_1_1_info_sys_1_1_common_1_1_net_data_contract_serializer_1_1_net_data_contract_operation_behavior.html#afdaa5ed8c912b8335f592c4e946abe7f", null ]
+];

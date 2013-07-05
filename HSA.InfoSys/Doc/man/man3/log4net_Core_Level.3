@@ -1,0 +1,605 @@
+.TH "log4net.Core.Level" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Core.Level \- 
+.PP
+Defines the default set of levels recognized by the system\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IComparable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLevel\fP (int level, string levelName, string displayName)"
+.br
+.RI "\fIConstructor \fP"
+.ti -1c
+.RI "\fBLevel\fP (int level, string levelName)"
+.br
+.RI "\fIConstructor \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIReturns the string representation of the current \fBLevel\fP\&. \fP"
+.ti -1c
+.RI "override bool \fBEquals\fP (object o)"
+.br
+.RI "\fICompares levels\&. \fP"
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.RI "\fIReturns a hash code \fP"
+.ti -1c
+.RI "int \fBCompareTo\fP (object r)"
+.br
+.RI "\fICompares this instance to a specified object and returns an indication of their relative values\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBoperator>\fP (\fBLevel\fP l, \fBLevel\fP r)"
+.br
+.RI "\fIReturns a value indicating whether a specified \fBLevel\fP is greater than another specified \fBLevel\fP\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator<\fP (\fBLevel\fP l, \fBLevel\fP r)"
+.br
+.RI "\fIReturns a value indicating whether a specified \fBLevel\fP is less than another specified \fBLevel\fP\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator>=\fP (\fBLevel\fP l, \fBLevel\fP r)"
+.br
+.RI "\fIReturns a value indicating whether a specified \fBLevel\fP is greater than or equal to another specified \fBLevel\fP\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator<=\fP (\fBLevel\fP l, \fBLevel\fP r)"
+.br
+.RI "\fIReturns a value indicating whether a specified \fBLevel\fP is less than or equal to another specified \fBLevel\fP\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator==\fP (\fBLevel\fP l, \fBLevel\fP r)"
+.br
+.RI "\fIReturns a value indicating whether two specified \fBLevel\fP objects have the same value\&. \fP"
+.ti -1c
+.RI "static bool \fBoperator!=\fP (\fBLevel\fP l, \fBLevel\fP r)"
+.br
+.RI "\fIReturns a value indicating whether two specified \fBLevel\fP objects have different values\&. \fP"
+.ti -1c
+.RI "static int \fBCompare\fP (\fBLevel\fP l, \fBLevel\fP r)"
+.br
+.RI "\fICompares two specified \fBLevel\fP instances\&. \fP"
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly \fBLevel\fP \fBOff\fP = new \fBLevel\fP(int\&.MaxValue, 'OFF')"
+.br
+.RI "\fIThe \fBOff\fP level designates a higher level than all the rest\&. \fP"
+.ti -1c
+.RI "static readonly \fBLevel\fP \fBLog4Net_Debug\fP = new \fBLevel\fP(120000, 'log4net:DEBUG')"
+.br
+.RI "\fIThe \fBEmergency\fP level designates very severe error events\&. System unusable, emergencies\&. \fP"
+.ti -1c
+.RI "static readonly \fBLevel\fP \fBEmergency\fP = new \fBLevel\fP(120000, 'EMERGENCY')"
+.br
+.RI "\fIThe \fBEmergency\fP level designates very severe error events\&. System unusable, emergencies\&. \fP"
+.ti -1c
+.RI "static readonly \fBLevel\fP \fBFatal\fP = new \fBLevel\fP(110000, 'FATAL')"
+.br
+.RI "\fIThe \fBFatal\fP level designates very severe error events that will presumably lead the application to abort\&. \fP"
+.ti -1c
+.RI "static readonly \fBLevel\fP \fBAlert\fP = new \fBLevel\fP(100000, 'ALERT')"
+.br
+.RI "\fIThe \fBAlert\fP level designates very severe error events\&. Take immediate action, alerts\&. \fP"
+.ti -1c
+.RI "static readonly \fBLevel\fP \fBCritical\fP = new \fBLevel\fP(90000, 'CRITICAL')"
+.br
+.RI "\fIThe \fBCritical\fP level designates very severe error events\&. Critical condition, critical\&. \fP"
+.ti -1c
+.RI "static readonly \fBLevel\fP \fBSevere\fP = new \fBLevel\fP(80000, 'SEVERE')"
+.br
+.RI "\fIThe \fBSevere\fP level designates very severe error events\&. \fP"
+.ti -1c
+.RI "static readonly \fBLevel\fP \fBError\fP = new \fBLevel\fP(70000, 'ERROR')"
+.br
+.RI "\fIThe \fBError\fP level designates error events that might still allow the application to continue running\&. \fP"
+.ti -1c
+.RI "static readonly \fBLevel\fP \fBWarn\fP = new \fBLevel\fP(60000, 'WARN')"
+.br
+.RI "\fIThe \fBWarn\fP level designates potentially harmful situations\&. \fP"
+.ti -1c
+.RI "static readonly \fBLevel\fP \fBNotice\fP = new \fBLevel\fP(50000, 'NOTICE')"
+.br
+.RI "\fIThe \fBNotice\fP level designates informational messages that highlight the progress of the application at the highest level\&. \fP"
+.ti -1c
+.RI "static readonly \fBLevel\fP \fBInfo\fP = new \fBLevel\fP(40000, 'INFO')"
+.br
+.RI "\fIThe \fBInfo\fP level designates informational messages that highlight the progress of the application at coarse-grained level\&. \fP"
+.ti -1c
+.RI "static readonly \fBLevel\fP \fBDebug\fP = new \fBLevel\fP(30000, 'DEBUG')"
+.br
+.RI "\fIThe \fBDebug\fP level designates fine-grained informational events that are most useful to debug an application\&. \fP"
+.ti -1c
+.RI "static readonly \fBLevel\fP \fBFine\fP = new \fBLevel\fP(30000, 'FINE')"
+.br
+.RI "\fIThe \fBFine\fP level designates fine-grained informational events that are most useful to debug an application\&. \fP"
+.ti -1c
+.RI "static readonly \fBLevel\fP \fBTrace\fP = new \fBLevel\fP(20000, 'TRACE')"
+.br
+.RI "\fIThe \fBTrace\fP level designates fine-grained informational events that are most useful to debug an application\&. \fP"
+.ti -1c
+.RI "static readonly \fBLevel\fP \fBFiner\fP = new \fBLevel\fP(20000, 'FINER')"
+.br
+.RI "\fIThe \fBFiner\fP level designates fine-grained informational events that are most useful to debug an application\&. \fP"
+.ti -1c
+.RI "static readonly \fBLevel\fP \fBVerbose\fP = new \fBLevel\fP(10000, 'VERBOSE')"
+.br
+.RI "\fIThe \fBVerbose\fP level designates fine-grained informational events that are most useful to debug an application\&. \fP"
+.ti -1c
+.RI "static readonly \fBLevel\fP \fBFinest\fP = new \fBLevel\fP(10000, 'FINEST')"
+.br
+.RI "\fIThe \fBFinest\fP level designates fine-grained informational events that are most useful to debug an application\&. \fP"
+.ti -1c
+.RI "static readonly \fBLevel\fP \fBAll\fP = new \fBLevel\fP(int\&.MinValue, 'ALL')"
+.br
+.RI "\fIThe \fBAll\fP level designates the lowest level possible\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the name of this level\&. \fP"
+.ti -1c
+.RI "int \fBValue\fP\fC [get]\fP"
+.br
+.RI "\fIGets the value of this level\&. \fP"
+.ti -1c
+.RI "string \fBDisplayName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the display name of this level\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the default set of levels recognized by the system\&. 
+
+Each \fBLoggingEvent\fP has an associated \fBLevel\fP\&. 
+.PP
+Levels have a numeric \fBLevel\&.Value\fP that defines the relative ordering between levels\&. Two Levels with the same \fBLevel\&.Value\fP are deemed to be equivalent\&. 
+.PP
+The levels that are recognized by \fBlog4net\fP are set for each \fBlog4net\&.Repository\&.ILoggerRepository\fP and each repository can have different levels defined\&. The levels are stored in the \fBlog4net\&.Repository\&.ILoggerRepository\&.LevelMap\fP on the repository\&. Levels are looked up by name from the \fBlog4net\&.Repository\&.ILoggerRepository\&.LevelMap\fP\&. 
+.PP
+When logging at level INFO the actual level used is not \fBLevel\&.Info\fP but the value of \fCLoggerRepository\&.LevelMap['INFO']\fP\&. The default value for this is \fBLevel\&.Info\fP, but this can be changed by reconfiguring the level map\&. 
+.PP
+Each level has a \fBDisplayName\fP in addition to its \fBName\fP\&. The \fBDisplayName\fP is the string that is written into the output log\&. By default the display name is the same as the level name, but this can be used to alias levels or to localize the log output\&. 
+.PP
+Some of the predefined levels recognized by the system are: 
+.PP
+.PD 0
+.IP "\(bu" 2
+\fBOff\fP\&.  
+.IP "\(bu" 2
+\fBFatal\fP\&.  
+.IP "\(bu" 2
+\fBError\fP\&.  
+.IP "\(bu" 2
+\fBWarn\fP\&.  
+.IP "\(bu" 2
+\fBInfo\fP\&.  
+.IP "\(bu" 2
+\fBDebug\fP\&.  
+.IP "\(bu" 2
+\fBAll\fP\&.  
+.PP
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 86 of file Level\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Core\&.Level\&.Level (intlevel, stringlevelName, stringdisplayName)"
+
+.PP
+Constructor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlevel\fP Integer value for this level, higher values represent more severe levels\&.
+.br
+\fIlevelName\fP The string name of this level\&.
+.br
+\fIdisplayName\fP The display name for this level\&. This may be localized or otherwise different from the name
+.RE
+.PP
+.PP
+Initializes a new instance of the \fBLevel\fP class with the specified level name and value\&. 
+.PP
+Definition at line 102 of file Level\&.cs\&.
+.SS "log4net\&.Core\&.Level\&.Level (intlevel, stringlevelName)"
+
+.PP
+Constructor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlevel\fP Integer value for this level, higher values represent more severe levels\&.
+.br
+\fIlevelName\fP The string name of this level\&.
+.RE
+.PP
+.PP
+Initializes a new instance of the \fBLevel\fP class with the specified level name and value\&. 
+.PP
+Definition at line 129 of file Level\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static int log4net\&.Core\&.Level\&.Compare (\fBLevel\fPl, \fBLevel\fPr)\fC [static]\fP"
+
+.PP
+Compares two specified \fBLevel\fP instances\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIl\fP The first \fBLevel\fP to compare\&.
+.br
+\fIr\fP The second \fBLevel\fP to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A 32-bit signed integer that indicates the relative order of the two values compared\&. The return value has these meanings: Value Meaning  Less than zero \fIl\fP  is less than \fIr\fP \&.  Zero \fIl\fP  is equal to \fIr\fP \&.  Greater than zero \fIl\fP  is greater than \fIr\fP \&.  
+.RE
+.PP
+.PP
+Compares two levels\&. 
+.PP
+Definition at line 468 of file Level\&.cs\&.
+.SS "int log4net\&.Core\&.Level\&.CompareTo (objectr)"
+
+.PP
+Compares this instance to a specified object and returns an indication of their relative values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIr\fP A \fBLevel\fP instance or  to compare with this instance\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A 32-bit signed integer that indicates the relative order of the values compared\&. The return value has these meanings: Value Meaning  Less than zero This instance is less than \fIr\fP \&.  Zero This instance is equal to \fIr\fP \&.  Greater than zero This instance is greater than \fIr\fP \&.
+.RE
+.PP
+.PP
+-or-
+.PP
+\fIr\fP  is \&.
+.PP
+\fIr\fP  must be an instance of \fBLevel\fP or ; otherwise, an exception is thrown\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP \fIr\fP  is not a \fBLevel\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 291 of file Level\&.cs\&.
+.SS "override bool log4net\&.Core\&.Level\&.Equals (objecto)"
+
+.PP
+Compares levels\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIo\fP The object to compare against\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the objects are equal\&.
+.RE
+.PP
+.PP
+Compares the levels of \fBLevel\fP instances, and defers to base class if the target object is not a \fBLevel\fP instance\&. 
+.PP
+Definition at line 218 of file Level\&.cs\&.
+.SS "override int log4net\&.Core\&.Level\&.GetHashCode ()"
+
+.PP
+Returns a hash code 
+.PP
+\fBReturns:\fP
+.RS 4
+A hash code for the current \fBLevel\fP\&.
+.RE
+.PP
+.PP
+Returns a hash code suitable for use in hashing algorithms and data structures like a hash table\&. 
+.PP
+Returns the hash code of the level \fBValue\fP\&. 
+.PP
+Definition at line 244 of file Level\&.cs\&.
+.SS "static bool log4net\&.Core\&.Level\&.operator!= (\fBLevel\fPl, \fBLevel\fPr)\fC [static]\fP"
+
+.PP
+Returns a value indicating whether two specified \fBLevel\fP objects have different values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIl\fP A \fBLevel\fP or \&.
+.br
+\fIr\fP A \fBLevel\fP or \&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the value of \fIl\fP  is different from the value of \fIr\fP ; otherwise, \fCfalse\fP\&. 
+.RE
+.PP
+.PP
+Compares two levels\&. 
+.PP
+Definition at line 427 of file Level\&.cs\&.
+.SS "static bool log4net\&.Core\&.Level\&.operator< (\fBLevel\fPl, \fBLevel\fPr)\fC [static]\fP"
+
+.PP
+Returns a value indicating whether a specified \fBLevel\fP is less than another specified \fBLevel\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIl\fP A \fBLevel\fP
+.br
+\fIr\fP A \fBLevel\fP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fIl\fP  is less than \fIr\fP ; otherwise, \fCfalse\fP\&. 
+.RE
+.PP
+.PP
+Compares two levels\&. 
+.PP
+Definition at line 340 of file Level\&.cs\&.
+.SS "static bool log4net\&.Core\&.Level\&.operator<= (\fBLevel\fPl, \fBLevel\fPr)\fC [static]\fP"
+
+.PP
+Returns a value indicating whether a specified \fBLevel\fP is less than or equal to another specified \fBLevel\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIl\fP A \fBLevel\fP
+.br
+\fIr\fP A \fBLevel\fP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fIl\fP  is less than or equal to \fIr\fP ; otherwise, \fCfalse\fP\&. 
+.RE
+.PP
+.PP
+Compares two levels\&. 
+.PP
+Definition at line 380 of file Level\&.cs\&.
+.SS "static bool log4net\&.Core\&.Level\&.operator== (\fBLevel\fPl, \fBLevel\fPr)\fC [static]\fP"
+
+.PP
+Returns a value indicating whether two specified \fBLevel\fP objects have the same value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIl\fP A \fBLevel\fP or \&.
+.br
+\fIr\fP A \fBLevel\fP or \&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the value of \fIl\fP  is the same as the value of \fIr\fP ; otherwise, \fCfalse\fP\&. 
+.RE
+.PP
+.PP
+Compares two levels\&. 
+.PP
+Definition at line 400 of file Level\&.cs\&.
+.SS "static bool log4net\&.Core\&.Level\&.operator> (\fBLevel\fPl, \fBLevel\fPr)\fC [static]\fP"
+
+.PP
+Returns a value indicating whether a specified \fBLevel\fP is greater than another specified \fBLevel\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIl\fP A \fBLevel\fP
+.br
+\fIr\fP A \fBLevel\fP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fIl\fP  is greater than \fIr\fP ; otherwise, \fCfalse\fP\&. 
+.RE
+.PP
+.PP
+Compares two levels\&. 
+.PP
+Definition at line 320 of file Level\&.cs\&.
+.SS "static bool log4net\&.Core\&.Level\&.operator>= (\fBLevel\fPl, \fBLevel\fPr)\fC [static]\fP"
+
+.PP
+Returns a value indicating whether a specified \fBLevel\fP is greater than or equal to another specified \fBLevel\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIl\fP A \fBLevel\fP
+.br
+\fIr\fP A \fBLevel\fP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fIl\fP  is greater than or equal to \fIr\fP ; otherwise, \fCfalse\fP\&. 
+.RE
+.PP
+.PP
+Compares two levels\&. 
+.PP
+Definition at line 360 of file Level\&.cs\&.
+.SS "override string log4net\&.Core\&.Level\&.ToString ()"
+
+.PP
+Returns the string representation of the current \fBLevel\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A string representation of the current \fBLevel\fP\&. 
+.RE
+.PP
+.PP
+Returns the level \fBName\fP\&. 
+.PP
+Definition at line 201 of file Level\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly \fBLevel\fP log4net\&.Core\&.Level\&.Alert = new \fBLevel\fP(100000, 'ALERT')\fC [static]\fP"
+
+.PP
+The \fBAlert\fP level designates very severe error events\&. Take immediate action, alerts\&. 
+.PP
+Definition at line 523 of file Level\&.cs\&.
+.SS "readonly \fBLevel\fP log4net\&.Core\&.Level\&.All = new \fBLevel\fP(int\&.MinValue, 'ALL')\fC [static]\fP"
+
+.PP
+The \fBAll\fP level designates the lowest level possible\&. 
+.PP
+Definition at line 599 of file Level\&.cs\&.
+.SS "readonly \fBLevel\fP log4net\&.Core\&.Level\&.Critical = new \fBLevel\fP(90000, 'CRITICAL')\fC [static]\fP"
+
+.PP
+The \fBCritical\fP level designates very severe error events\&. Critical condition, critical\&. 
+.PP
+Definition at line 529 of file Level\&.cs\&.
+.SS "readonly \fBLevel\fP log4net\&.Core\&.Level\&.Debug = new \fBLevel\fP(30000, 'DEBUG')\fC [static]\fP"
+
+.PP
+The \fBDebug\fP level designates fine-grained informational events that are most useful to debug an application\&. 
+.PP
+Definition at line 564 of file Level\&.cs\&.
+.SS "readonly \fBLevel\fP log4net\&.Core\&.Level\&.Emergency = new \fBLevel\fP(120000, 'EMERGENCY')\fC [static]\fP"
+
+.PP
+The \fBEmergency\fP level designates very severe error events\&. System unusable, emergencies\&. 
+.PP
+Definition at line 511 of file Level\&.cs\&.
+.SS "readonly \fBLevel\fP log4net\&.Core\&.Level\&.Error = new \fBLevel\fP(70000, 'ERROR')\fC [static]\fP"
+
+.PP
+The \fBError\fP level designates error events that might still allow the application to continue running\&. 
+.PP
+Definition at line 540 of file Level\&.cs\&.
+.SS "readonly \fBLevel\fP log4net\&.Core\&.Level\&.Fatal = new \fBLevel\fP(110000, 'FATAL')\fC [static]\fP"
+
+.PP
+The \fBFatal\fP level designates very severe error events that will presumably lead the application to abort\&. 
+.PP
+Definition at line 517 of file Level\&.cs\&.
+.SS "readonly \fBLevel\fP log4net\&.Core\&.Level\&.Fine = new \fBLevel\fP(30000, 'FINE')\fC [static]\fP"
+
+.PP
+The \fBFine\fP level designates fine-grained informational events that are most useful to debug an application\&. 
+.PP
+Definition at line 570 of file Level\&.cs\&.
+.SS "readonly \fBLevel\fP log4net\&.Core\&.Level\&.Finer = new \fBLevel\fP(20000, 'FINER')\fC [static]\fP"
+
+.PP
+The \fBFiner\fP level designates fine-grained informational events that are most useful to debug an application\&. 
+.PP
+Definition at line 582 of file Level\&.cs\&.
+.SS "readonly \fBLevel\fP log4net\&.Core\&.Level\&.Finest = new \fBLevel\fP(10000, 'FINEST')\fC [static]\fP"
+
+.PP
+The \fBFinest\fP level designates fine-grained informational events that are most useful to debug an application\&. 
+.PP
+Definition at line 594 of file Level\&.cs\&.
+.SS "readonly \fBLevel\fP log4net\&.Core\&.Level\&.Info = new \fBLevel\fP(40000, 'INFO')\fC [static]\fP"
+
+.PP
+The \fBInfo\fP level designates informational messages that highlight the progress of the application at coarse-grained level\&. 
+.PP
+Definition at line 558 of file Level\&.cs\&.
+.SS "readonly \fBLevel\fP log4net\&.Core\&.Level\&.Log4Net_Debug = new \fBLevel\fP(120000, 'log4net:DEBUG')\fC [static]\fP"
+
+.PP
+The \fBEmergency\fP level designates very severe error events\&. System unusable, emergencies\&. 
+.PP
+Definition at line 505 of file Level\&.cs\&.
+.SS "readonly \fBLevel\fP log4net\&.Core\&.Level\&.Notice = new \fBLevel\fP(50000, 'NOTICE')\fC [static]\fP"
+
+.PP
+The \fBNotice\fP level designates informational messages that highlight the progress of the application at the highest level\&. 
+.PP
+Definition at line 552 of file Level\&.cs\&.
+.SS "readonly \fBLevel\fP log4net\&.Core\&.Level\&.Off = new \fBLevel\fP(int\&.MaxValue, 'OFF')\fC [static]\fP"
+
+.PP
+The \fBOff\fP level designates a higher level than all the rest\&. 
+.PP
+Definition at line 499 of file Level\&.cs\&.
+.SS "readonly \fBLevel\fP log4net\&.Core\&.Level\&.Severe = new \fBLevel\fP(80000, 'SEVERE')\fC [static]\fP"
+
+.PP
+The \fBSevere\fP level designates very severe error events\&. 
+.PP
+Definition at line 534 of file Level\&.cs\&.
+.SS "readonly \fBLevel\fP log4net\&.Core\&.Level\&.Trace = new \fBLevel\fP(20000, 'TRACE')\fC [static]\fP"
+
+.PP
+The \fBTrace\fP level designates fine-grained informational events that are most useful to debug an application\&. 
+.PP
+Definition at line 576 of file Level\&.cs\&.
+.SS "readonly \fBLevel\fP log4net\&.Core\&.Level\&.Verbose = new \fBLevel\fP(10000, 'VERBOSE')\fC [static]\fP"
+
+.PP
+The \fBVerbose\fP level designates fine-grained informational events that are most useful to debug an application\&. 
+.PP
+Definition at line 588 of file Level\&.cs\&.
+.SS "readonly \fBLevel\fP log4net\&.Core\&.Level\&.Warn = new \fBLevel\fP(60000, 'WARN')\fC [static]\fP"
+
+.PP
+The \fBWarn\fP level designates potentially harmful situations\&. 
+.PP
+Definition at line 546 of file Level\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string log4net\&.Core\&.Level\&.DisplayName\fC [get]\fP"
+
+.PP
+Gets the display name of this level\&. The display name of this level\&. 
+.PP
+Gets the display name of this level\&. 
+.PP
+Definition at line 181 of file Level\&.cs\&.
+.SS "string log4net\&.Core\&.Level\&.Name\fC [get]\fP"
+
+.PP
+Gets the name of this level\&. The name of this level\&. 
+.PP
+Gets the name of this level\&. 
+.PP
+Definition at line 149 of file Level\&.cs\&.
+.SS "int log4net\&.Core\&.Level\&.Value\fC [get]\fP"
+
+.PP
+Gets the value of this level\&. The value of this level\&. 
+.PP
+Gets the value of this level\&. 
+.PP
+Definition at line 165 of file Level\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

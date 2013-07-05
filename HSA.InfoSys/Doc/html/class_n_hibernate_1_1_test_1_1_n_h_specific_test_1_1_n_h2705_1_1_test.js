@@ -1,0 +1,8 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2705_1_1_test =
+[
+    [ "Fetch_OnComponent_ShouldNotThrow", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2705_1_1_test.html#ae21179edca10acca42919138182c88ea", null ],
+    [ "HqlQueryWithFetch_WhenDerivedClassesUseComponentAndEagerFetchManyToOne_DoesNotGenerateInvalidSql", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2705_1_1_test.html#a993dbd5f3a0f1e4cc4b73b109425a086", null ],
+    [ "HqlQueryWithFetch_WhenDerivedClassesUseComponentAndManyToOne_DoesNotGenerateInvalidSql", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2705_1_1_test.html#ad08d981d52d99653cbff94841d9f15ea", null ],
+    [ "LinqQueryWithFetch_WhenDerivedClassesUseComponentAndEagerFetchManyToOne_DoesNotGenerateInvalidSql", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2705_1_1_test.html#ab396f279e070f876ae8c485188bcada8", null ],
+    [ "LinqQueryWithFetch_WhenDerivedClassesUseComponentAndManyToOne_DoesNotGenerateInvalidSql", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2705_1_1_test.html#aa64e72221aa8873957a6abe74a2c6390", null ]
+];

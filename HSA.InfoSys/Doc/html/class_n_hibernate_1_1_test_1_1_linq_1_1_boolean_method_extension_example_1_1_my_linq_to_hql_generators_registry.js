@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_linq_1_1_boolean_method_extension_example_1_1_my_linq_to_hql_generators_registry =
+[
+    [ "MyLinqToHqlGeneratorsRegistry", "class_n_hibernate_1_1_test_1_1_linq_1_1_boolean_method_extension_example_1_1_my_linq_to_hql_generators_registry.html#af19a17af9677af3b9da5fc5fcfbfe194", null ]
+];

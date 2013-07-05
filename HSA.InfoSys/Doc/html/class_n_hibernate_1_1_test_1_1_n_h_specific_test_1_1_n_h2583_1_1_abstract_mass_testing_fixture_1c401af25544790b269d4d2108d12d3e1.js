@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_abstract_mass_testing_fixture_1c401af25544790b269d4d2108d12d3e1 =
+[
+    [ "SetterTuple", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_abstract_mass_testing_fixture_1c401af25544790b269d4d2108d12d3e1.html#a9ace212f98b47524d36901acf1062d7c", null ],
+    [ "Set", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2583_1_1_abstract_mass_testing_fixture_1c401af25544790b269d4d2108d12d3e1.html#a92f992d5431fccf43eebcd3073122c5e", null ]
+];

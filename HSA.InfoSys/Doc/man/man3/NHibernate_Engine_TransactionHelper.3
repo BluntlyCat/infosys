@@ -1,0 +1,57 @@
+.TH "NHibernate.Engine.TransactionHelper" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.TransactionHelper \- 
+.PP
+Allows work to be done outside the current transaction, by suspending it, and performing work in a new transaction  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Id\&.Enhanced\&.TableGenerator\fP, \fBNHibernate\&.Id\&.Enhanced\&.TableStructure\fP, and \fBNHibernate\&.Id\&.TableGenerator\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBWork\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract object \fBDoWorkInCurrentTransaction\fP (\fBISessionImplementor\fP session, IDbConnection conn, IDbTransaction transaction)"
+.br
+.RI "\fIThe work to be done\fP"
+.ti -1c
+.RI "virtual object \fBDoWorkInNewTransaction\fP (\fBISessionImplementor\fP session)"
+.br
+.RI "\fISuspend the current transaction and perform work in a new transaction\fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Allows work to be done outside the current transaction, by suspending it, and performing work in a new transaction 
+
+
+.PP
+Definition at line 12 of file TransactionHelper\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract object NHibernate\&.Engine\&.TransactionHelper\&.DoWorkInCurrentTransaction (\fBISessionImplementor\fPsession, IDbConnectionconn, IDbTransactiontransaction)\fC [pure virtual]\fP"
+
+.PP
+The work to be done
+.PP
+Implemented in \fBNHibernate\&.Id\&.TableGenerator\fP, and \fBNHibernate\&.Id\&.Enhanced\&.TableStructure\fP\&.
+.SS "virtual object NHibernate\&.Engine\&.TransactionHelper\&.DoWorkInNewTransaction (\fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Suspend the current transaction and perform work in a new transaction
+.PP
+Definition at line 47 of file TransactionHelper\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,82 @@
+.TH "NHibernate.Param.IPageableParameterSpecification" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Param.IPageableParameterSpecification \- 
+.PP
+Additional information for potential paging parameters in HQL/LINQ  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Param\&.IExplicitParameterSpecification\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Param\&.AbstractExplicitParameterSpecification\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBIsSkipParameter\fP ()"
+.br
+.RI "\fINotifies the parameter that it is a 'skip' parameter, and should calculate its value using the dialect settings \fP"
+.ti -1c
+.RI "void \fBIsTakeParameterWithSkipParameter\fP (\fBIPageableParameterSpecification\fP skipParameter)"
+.br
+.RI "\fINotifies the parameter that it is a 'take' parameter, and should calculate its value using the dialect settings and the value of the supplied skipParameter\&. \fP"
+.ti -1c
+.RI "int \fBGetSkipValue\fP (\fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIRetrieve the skip/offset value for the query \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Additional information for potential paging parameters in HQL/LINQ 
+
+
+.PP
+Definition at line 8 of file IPageableParameterSpecification\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int NHibernate\&.Param\&.IPageableParameterSpecification\&.GetSkipValue (\fBQueryParameters\fPqueryParameters)"
+
+.PP
+Retrieve the skip/offset value for the query 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryParameters\fP The parameters for the query
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The paging skip/offset value
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Param\&.PositionalParameterSpecification\fP, \fBNHibernate\&.Param\&.NamedParameterSpecification\fP, and \fBNHibernate\&.Param\&.AbstractExplicitParameterSpecification\fP\&.
+.SS "void NHibernate\&.Param\&.IPageableParameterSpecification\&.IsSkipParameter ()"
+
+.PP
+Notifies the parameter that it is a 'skip' parameter, and should calculate its value using the dialect settings 
+.PP
+Implemented in \fBNHibernate\&.Param\&.AbstractExplicitParameterSpecification\fP\&.
+.SS "void NHibernate\&.Param\&.IPageableParameterSpecification\&.IsTakeParameterWithSkipParameter (\fBIPageableParameterSpecification\fPskipParameter)"
+
+.PP
+Notifies the parameter that it is a 'take' parameter, and should calculate its value using the dialect settings and the value of the supplied skipParameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIskipParameter\fP The associated skip parameter (null if there is none)\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Param\&.AbstractExplicitParameterSpecification\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

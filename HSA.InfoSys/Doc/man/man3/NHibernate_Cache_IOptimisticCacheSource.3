@@ -1,0 +1,64 @@
+.TH "NHibernate.Cache.IOptimisticCacheSource" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cache.IOptimisticCacheSource \- 
+.PP
+Contract for sources of optimistically lockable data sent to the second level cache\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsVersioned\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this source represent versioned (i\&.e\&., and thus optimistically lockable) data? \fP"
+.ti -1c
+.RI "IComparer \fBVersionComparator\fP\fC [get]\fP"
+.br
+.RI "\fIGet the comparator used to compare two different version values together\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Contract for sources of optimistically lockable data sent to the second level cache\&. 
+
+Note currently \fBEntityPersisters\fP are the only viable source\&. 
+.PP
+Definition at line 12 of file IOptimisticCacheSource\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.Cache\&.IOptimisticCacheSource\&.IsVersioned\fC [get]\fP"
+
+.PP
+Does this source represent versioned (i\&.e\&., and thus optimistically lockable) data? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if this source represents versioned data; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 18 of file IOptimisticCacheSource\&.cs\&.
+.SS "IComparer NHibernate\&.Cache\&.IOptimisticCacheSource\&.VersionComparator\fC [get]\fP"
+
+.PP
+Get the comparator used to compare two different version values together\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An appropriate comparator\&. 
+.RE
+.PP
+
+.PP
+Definition at line 22 of file IOptimisticCacheSource\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

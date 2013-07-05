@@ -1,0 +1,6 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_columns_naming_convetions =
+[
+    [ "MyClass", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_columns_naming_convetions_1_1_my_class.html", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_columns_naming_convetions_1_1_my_class" ],
+    [ "MapClassWithConventions", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_columns_naming_convetions.html#af5353097930117a03661f32f13574d9c", null ],
+    [ "MapClassWithHardConventions", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_columns_naming_convetions.html#a2cef017d17614c4314343b502f41d8ae", null ]
+];

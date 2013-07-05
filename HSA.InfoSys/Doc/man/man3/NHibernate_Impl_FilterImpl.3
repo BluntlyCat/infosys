@@ -1,0 +1,158 @@
+.TH "NHibernate.Impl.FilterImpl" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Impl.FilterImpl \- 
+.PP
+ 
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.IFilter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAfterDeserialize\fP (\fBFilterDefinition\fP factoryDefinition)"
+.br
+.ti -1c
+.RI "\fBFilterImpl\fP (\fBFilterDefinition\fP configuration)"
+.br
+.ti -1c
+.RI "\fBIFilter\fP \fBSetParameter\fP (string name, object value)"
+.br
+.RI "\fISet the named parameter's value for this filter\&. \fP"
+.ti -1c
+.RI "\fBIFilter\fP \fBSetParameterList\fP (string name, ICollection values)"
+.br
+.RI "\fISet the named parameter's value list for this filter\&. Used in conjunction with IN-style filter criteria\&. \fP"
+.ti -1c
+.RI "\fBIFilter\fP \fBSetParameterList\fP (string name, object[] values)"
+.br
+.RI "\fISet the named parameter's value list for this filter\&. Used in conjunction with IN-style filter criteria\&. \fP"
+.ti -1c
+.RI "object \fBGetParameter\fP (string name)"
+.br
+.ti -1c
+.RI "void \fBValidate\fP ()"
+.br
+.RI "\fIPerform validation of the filter state\&. This is used to verify the state of the filter after its enablement and before its use\&. \fP"
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly string \fBMARKER\fP = '$FILTER_PLACEHOLDER$'"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBFilterDefinition\fP \fBFilterDefinition\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBName\fP\fC [get]\fP"
+.br
+.RI "\fIGet the name of this filter\&. \fP"
+.ti -1c
+.RI "IDictionary< string, object > \fBParameters\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+
+
+.PP
+Definition at line 12 of file FilterImpl\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIFilter\fP NHibernate\&.Impl\&.FilterImpl\&.SetParameter (stringname, objectvalue)"
+
+.PP
+Set the named parameter's value for this filter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The parameter's name\&.
+.br
+\fIvalue\fP The value to be applied\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBFilterImpl\fP instance (for method chaining)\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IFilter\fP\&.
+.PP
+Definition at line 55 of file FilterImpl\&.cs\&.
+.SS "\fBIFilter\fP NHibernate\&.Impl\&.FilterImpl\&.SetParameterList (stringname, ICollectionvalues)"
+
+.PP
+Set the named parameter's value list for this filter\&. Used in conjunction with IN-style filter criteria\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The parameter's name\&.
+.br
+\fIvalues\fP The values to be expanded into an SQL IN list\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBFilterImpl\fP instance (for method chaining)\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IFilter\fP\&.
+.PP
+Definition at line 79 of file FilterImpl\&.cs\&.
+.SS "\fBIFilter\fP NHibernate\&.Impl\&.FilterImpl\&.SetParameterList (stringname, object[]values)"
+
+.PP
+Set the named parameter's value list for this filter\&. Used in conjunction with IN-style filter criteria\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The parameter's name\&.
+.br
+\fIvalues\fP The values to be expanded into an SQL IN list\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBFilterImpl\fP instance (for method chaining)\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IFilter\fP\&.
+.PP
+Definition at line 113 of file FilterImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.FilterImpl\&.Validate ()"
+
+.PP
+Perform validation of the filter state\&. This is used to verify the state of the filter after its enablement and before its use\&. 
+.PP
+Implements \fBNHibernate\&.IFilter\fP\&.
+.PP
+Definition at line 129 of file FilterImpl\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string NHibernate\&.Impl\&.FilterImpl\&.Name\fC [get]\fP"
+
+.PP
+Get the name of this filter\&. 
+.PP
+Definition at line 40 of file FilterImpl\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h645_1_1_hql_function_with_ast_hql_parser =
+[
+    [ "Configure", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h645_1_1_hql_function_with_ast_hql_parser.html#a7238fe22203bff3612688defc6021db9", null ]
+];

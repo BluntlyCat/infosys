@@ -1,0 +1,473 @@
+.TH "NHibernate.Dialect.MsSql2000Dialect" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.MsSql2000Dialect \- 
+.PP
+An SQL dialect compatible with Microsoft SQL Server 2000\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.MsSql2005Dialect\fP, and \fBNHibernate\&.Dialect\&.MsSql7Dialect\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBCountBigQueryFunction\fP"
+.br
+.ti -1c
+.RI "struct \fBLockHintAppender\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBGetDropTableString\fP (string tableName)"
+.br
+.RI "\fIGenerates the string to drop the table using SQL Server syntax\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBAppendIdentitySelectToInsert\fP (\fBSqlString\fP insertSql)"
+.br
+.RI "\fIProvided we SupportsInsertSelectIdentity, then attch the 'select identity' clause to the insert statement\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBGetLimitString\fP (\fBSqlString\fP querySqlString, \fBSqlString\fP offset, \fBSqlString\fP limit)"
+.br
+.RI "\fIAttempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. \fP"
+.ti -1c
+.RI "override string \fBGenerateTemporaryTableName\fP (string baseTableName)"
+.br
+.RI "\fIGenerate a temporary table name given the bas table\&. \fP"
+.ti -1c
+.RI "override bool \fBDropTemporaryTableAfterUse\fP ()"
+.br
+.RI "\fIDo we need to drop the temporary table after use? \fP"
+.ti -1c
+.RI "override string \fBUnQuote\fP (string quoted)"
+.br
+.RI "\fIUnquotes and unescapes an already quoted name \fP"
+.ti -1c
+.RI "override string \fBAppendLockHint\fP (\fBLockMode\fP lockMode, string tableName)"
+.br
+.RI "\fISome dialects support an alternative means to \fCSELECT FOR UPDATE\fP, whereby a 'lock hint' is appends to the table name in the from clause\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBApplyLocksToSql\fP (\fBSqlString\fP sql, IDictionary< string, \fBLockMode\fP > aliasedLockModes, IDictionary< string, string[]> keyColumnNames)"
+.br
+.RI "\fIModifies the given SQL by applying the appropriate updates for the specified lock modes and key columns\&. \fP"
+.ti -1c
+.RI "override string \fBGetIfExistsDropConstraint\fP (\fBTable\fP table, string name)"
+.br
+.RI "\fIThe syntax that is used to check if a constraint exists before dropping it \fP"
+.ti -1c
+.RI "override string \fBGetIfNotExistsCreateConstraint\fP (\fBTable\fP table, string name)"
+.br
+.RI "\fIThe syntax that is used to check if a constraint does not exists before creating it \fP"
+.ti -1c
+.RI "override \fBIDataBaseSchema\fP \fBGetDataBaseSchema\fP (DbConnection connection)"
+.br
+.ti -1c
+.RI "override bool \fBIsKnownToken\fP (string currentToken, string nextToken)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBRegisterDefaultProperties\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterKeywords\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterFunctions\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterGuidTypeMapping\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterLargeObjectTypeMappings\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterDateTimeTypeMappings\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterNumericTypeMappings\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterCharacterTypeMappings\fP ()"
+.br
+.ti -1c
+.RI "override string \fBQuote\fP (string name)"
+.br
+.ti -1c
+.RI "bool \fBNeedsLockHint\fP (\fBLockMode\fP lockMode)"
+.br
+.ti -1c
+.RI "virtual string \fBGetSelectExistingObject\fP (string name, \fBTable\fP table)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBAddColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBNullColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBCurrentTimestampSQLFunctionName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBCurrentTimestampSelectString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsCurrentTimestampSelectStringCallable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsCurrentTimestampSelection\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBQualifyIndexName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBSelectGUIDString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBForUpdateString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsInsertSelectIdentity\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsIdentityColumns\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBIdentitySelectString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBIdentityColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBNoColumnsInsertString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override char \fBCloseQuote\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override char \fBOpenQuote\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsLimit\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this \fBDialect\fP have some kind of \fCLIMIT\fP syntax? \fP"
+.ti -1c
+.RI "override bool \fBSupportsLimitOffset\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this \fBDialect\fP support an offset? \fP"
+.ti -1c
+.RI "override bool \fBSupportsVariableLimit\fP\fC [get]\fP"
+.br
+.RI "\fICan parameters be used for a statement containing a LIMIT? \fP"
+.ti -1c
+.RI "override bool \fBUseMaxForLimit\fP\fC [get]\fP"
+.br
+.RI "\fIDoes the \fCLIMIT\fP clause take a 'maximum' row number instead of a total number of returned rows? \fP"
+.ti -1c
+.RI "override bool \fBSupportsTemporaryTables\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override long \fBTimestampResolutionInTicks\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsCircularCascadeDeleteConstraints\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsUnionAll\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsSqlBatches\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An SQL dialect compatible with Microsoft SQL Server 2000\&. 
+
+The \fBMsSql2000Dialect\fP defaults the following configuration properties: Property Default Value  connection\&.driver_class \fBNHibernate\&.Driver\&.SqlClientDriver\fP  adonet\&.batch_size 10  query\&.substitutions true 1, false 0, yes 'Y', no 'N'  
+.PP
+Definition at line 43 of file MsSql2000Dialect\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBSqlString\fP NHibernate\&.Dialect\&.MsSql2000Dialect\&.AppendIdentitySelectToInsert (\fBSqlString\fPinsertString)\fC [virtual]\fP"
+
+.PP
+Provided we SupportsInsertSelectIdentity, then attch the 'select identity' clause to the insert statement\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinsertString\fP The insert command 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The insert command with any necessary identity select clause attached\&. Note, if SupportsInsertSelectIdentity == false then the insert-string should be returned without modification\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 277 of file MsSql2000Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.MsSql2000Dialect\&.AppendLockHint (\fBLockMode\fPlockMode, stringtableName)\fC [virtual]\fP"
+
+.PP
+Some dialects support an alternative means to \fCSELECT FOR UPDATE\fP, whereby a 'lock hint' is appends to the table name in the from clause\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlockMode\fP The lock mode to apply 
+.br
+\fItableName\fP The name of the table to which to apply the lock hint\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The table with any required lock hints\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.MsSql2005Dialect\fP\&.
+.PP
+Definition at line 403 of file MsSql2000Dialect\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Dialect\&.MsSql2000Dialect\&.ApplyLocksToSql (\fBSqlString\fPsql, IDictionary< string, \fBLockMode\fP >aliasedLockModes, IDictionary< string, string[]>keyColumnNames)\fC [virtual]\fP"
+
+.PP
+Modifies the given SQL by applying the appropriate updates for the specified lock modes and key columns\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsql\fP the SQL string to modify 
+.br
+\fIaliasedLockModes\fP a map of lock modes indexed by aliased table names\&. 
+.br
+\fIkeyColumnNames\fP a map of key columns indexed by aliased table names\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the modified SQL string\&. 
+.RE
+.PP
+.PP
+The behavior here is that of an ANSI SQL \fCSELECT FOR UPDATE\fP\&. This method is really intended to allow dialects which do not support \fCSELECT FOR UPDATE\fP to achieve this in their own fashion\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 413 of file MsSql2000Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.MsSql2000Dialect\&.DropTemporaryTableAfterUse ()\fC [virtual]\fP"
+
+.PP
+Do we need to drop the temporary table after use? 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 371 of file MsSql2000Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.MsSql2000Dialect\&.GenerateTemporaryTableName (stringbaseTableName)\fC [virtual]\fP"
+
+.PP
+Generate a temporary table name given the bas table\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbaseTableName\fP The table name from which to base the temp table name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The generated temp table name\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 366 of file MsSql2000Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.MsSql2000Dialect\&.GetDropTableString (stringtableName)\fC [virtual]\fP"
+
+.PP
+Generates the string to drop the table using SQL Server syntax\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItableName\fP The name of the table to drop\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The SQL with the \fItableName\fP  inserted\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 263 of file MsSql2000Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.MsSql2000Dialect\&.GetIfExistsDropConstraint (\fBTable\fPtable, stringname)\fC [virtual]\fP"
+
+.PP
+The syntax that is used to check if a constraint exists before dropping it 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItable\fP The table\&.
+.br
+\fIname\fP The name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 443 of file MsSql2000Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.MsSql2000Dialect\&.GetIfNotExistsCreateConstraint (\fBTable\fPtable, stringname)\fC [virtual]\fP"
+
+.PP
+The syntax that is used to check if a constraint does not exists before creating it 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItable\fP The table\&.
+.br
+\fIname\fP The name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 456 of file MsSql2000Dialect\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Dialect\&.MsSql2000Dialect\&.GetLimitString (\fBSqlString\fPqueryString, \fBSqlString\fPoffset, \fBSqlString\fPlimit)\fC [virtual]\fP"
+
+.PP
+Attempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryString\fP The SqlString to base the limit query off\&.
+.br
+\fIoffset\fP Offset of the first row to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no limit is requested\&. This should have already been adjusted to account for OffsetStartsAtOne\&.
+.br
+\fIlimit\fP Maximum number of rows to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no offset is requested\&. This should have already been adjusted to account for UseMaxForLimit\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new SqlString that contains the \fCLIMIT\fP clause\&. Returns \fCnull\fP if \fIqueryString\fP  represents a SQL statement to which a limit clause cannot be added, for example when the query string is custom SQL invoking a stored procedure\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.MsSql2012Dialect\fP, and \fBNHibernate\&.Dialect\&.MsSql2005Dialect\fP\&.
+.PP
+Definition at line 342 of file MsSql2000Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.MsSql2000Dialect\&.Quote (stringname)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+.PP
+MsSql does not require the OpenQuote to be escaped as long as the first char is an OpenQuote\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 383 of file MsSql2000Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.MsSql2000Dialect\&.UnQuote (stringquoted)\fC [virtual]\fP"
+
+.PP
+Unquotes and unescapes an already quoted name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIquoted\fP Quoted string
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Unquoted string
+.RE
+.PP
+.PP
+This method checks the string \fCquoted\fP to see if it is quoted\&. If the string \fCquoted\fP is already enclosed in the OpenQuote and CloseQuote then those chars are removed\&. 
+.PP
+After the OpenQuote and CloseQuote have been cleaned from the string \fCquoted\fP then any chars in the string \fCquoted\fP that have been escaped by doubling them up are changed back to a single version\&. 
+.PP
+The following quoted values return these results 'quoted' = quoted 'quote''d' = quote'd
+quote''d = quote'd 
+.PP
+If this implementation is not sufficient for your \fBDialect\fP then it needs to be overridden\&. \fBMsSql2000Dialect\fP is an example of where UnQuoting rules are different\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 388 of file MsSql2000Dialect\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool NHibernate\&.Dialect\&.MsSql2000Dialect\&.SupportsLimit\fC [get]\fP"
+
+.PP
+Does this \fBDialect\fP have some kind of \fCLIMIT\fP syntax? True, we'll use the SELECT TOP nn syntax\&.
+.PP
+Definition at line 322 of file MsSql2000Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.MsSql2000Dialect\&.SupportsLimitOffset\fC [get]\fP"
+
+.PP
+Does this \fBDialect\fP support an offset? 
+.PP
+Definition at line 330 of file MsSql2000Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.MsSql2000Dialect\&.SupportsVariableLimit\fC [get]\fP"
+
+.PP
+Can parameters be used for a statement containing a LIMIT? 
+.PP
+Definition at line 338 of file MsSql2000Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.MsSql2000Dialect\&.UseMaxForLimit\fC [get]\fP"
+
+.PP
+Does the \fCLIMIT\fP clause take a 'maximum' row number instead of a total number of returned rows? 
+.PP
+\fBReturns:\fP
+.RS 4
+false, unless overridden
+.RE
+.PP
+
+.PP
+Definition at line 357 of file MsSql2000Dialect\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,81 @@
+.TH "NHibernate.Id.Insert.IInsertGeneratedIdentifierDelegate" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.Insert.IInsertGeneratedIdentifierDelegate \- 
+.PP
+Responsible for handling delegation relating to variants in how insert-generated-identifier generator strategies dictate processing:  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Id\&.IdentityGenerator\&.BasicDelegate\fP, \fBNHibernate\&.Id\&.IdentityGenerator\&.InsertSelectDelegate\fP, \fBNHibernate\&.Id\&.Insert\&.AbstractReturningDelegate\fP, and \fBNHibernate\&.Id\&.Insert\&.AbstractSelectingDelegate\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIdentifierGeneratingInsert\fP \fBPrepareIdentifierGeneratingInsert\fP ()"
+.br
+.RI "\fIBuild a \fBNHibernate\&.SqlCommand\&.SqlInsertBuilder\fP specific to the delegate's mode of handling generated key values\&. \fP"
+.ti -1c
+.RI "object \fBPerformInsert\fP (\fBSqlCommandInfo\fP insertSQL, \fBISessionImplementor\fP session, \fBIBinder\fP binder)"
+.br
+.RI "\fIPerform the indicated insert SQL statement and determine the identifier value generated\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Responsible for handling delegation relating to variants in how insert-generated-identifier generator strategies dictate processing: 
+
+
+.PD 0
+
+.IP "\(bu" 2
+building the sql insert statement 
+.IP "\(bu" 2
+determination of the generated identifier value 
+.PP
+
+.PP
+Definition at line 14 of file IInsertGeneratedIdentifierDelegate\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.Id\&.Insert\&.IInsertGeneratedIdentifierDelegate\&.PerformInsert (\fBSqlCommandInfo\fPinsertSQL, \fBISessionImplementor\fPsession, \fBIBinder\fPbinder)"
+
+.PP
+Perform the indicated insert SQL statement and determine the identifier value generated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinsertSQL\fP 
+.br
+\fIsession\fP 
+.br
+\fIbinder\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The generated identifier value\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Id\&.Insert\&.AbstractReturningDelegate\fP, and \fBNHibernate\&.Id\&.Insert\&.AbstractSelectingDelegate\fP\&.
+.SS "\fBIdentifierGeneratingInsert\fP NHibernate\&.Id\&.Insert\&.IInsertGeneratedIdentifierDelegate\&.PrepareIdentifierGeneratingInsert ()"
+
+.PP
+Build a \fBNHibernate\&.SqlCommand\&.SqlInsertBuilder\fP specific to the delegate's mode of handling generated key values\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The insert object\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Id\&.IdentityGenerator\&.BasicDelegate\fP, \fBNHibernate\&.Id\&.SelectGenerator\&.SelectGeneratorDelegate\fP, \fBNHibernate\&.Id\&.IdentityGenerator\&.InsertSelectDelegate\fP, \fBNHibernate\&.Id\&.SequenceIdentityGenerator\&.SequenceIdentityDelegate\fP, \fBNHibernate\&.Id\&.Insert\&.OutputParamReturningDelegate\fP, \fBNHibernate\&.Id\&.Insert\&.AbstractReturningDelegate\fP, and \fBNHibernate\&.Id\&.Insert\&.AbstractSelectingDelegate\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

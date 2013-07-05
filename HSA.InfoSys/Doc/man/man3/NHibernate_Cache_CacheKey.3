@@ -1,0 +1,72 @@
+.TH "NHibernate.Cache.CacheKey" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cache.CacheKey \- 
+.PP
+Allows multiple entity classes / collection roles to be stored in the same cache region\&. Also allows for composite keys which do not properly implement equals()/hashCode()\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCacheKey\fP (object id, \fBIType\fP type, string entityOrRoleName, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIConstruct a new key for a collection or entity instance\&. Note that an entity name should always be the root entity name, not a subclass entity name\&. \fP"
+.ti -1c
+.RI "override String \fBToString\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "object \fBKey\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBEntityOrRoleName\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Allows multiple entity classes / collection roles to be stored in the same cache region\&. Also allows for composite keys which do not properly implement equals()/hashCode()\&. 
+
+
+.PP
+Definition at line 13 of file CacheKey\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Cache\&.CacheKey\&.CacheKey (objectid, \fBIType\fPtype, stringentityOrRoleName, \fBEntityMode\fPentityMode, \fBISessionFactoryImplementor\fPfactory)"
+
+.PP
+Construct a new key for a collection or entity instance\&. Note that an entity name should always be the root entity name, not a subclass entity name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The identifier associated with the cached data 
+.br
+\fItype\fP The Hibernate type mapping 
+.br
+\fIentityOrRoleName\fP The entity or collection-role name\&. 
+.br
+\fIentityMode\fP The entiyt mode of the originating session 
+.br
+\fIfactory\fP The session factory for which we are caching 
+.RE
+.PP
+
+.PP
+Definition at line 31 of file CacheKey\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

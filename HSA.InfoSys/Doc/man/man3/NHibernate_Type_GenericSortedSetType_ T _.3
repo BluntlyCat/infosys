@@ -1,0 +1,85 @@
+.TH "NHibernate.Type.GenericSortedSetType< T >" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.GenericSortedSetType< T > \- 
+.PP
+An \fBIType\fP that maps a sorted ISet{T} collection to the database\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.GenericSetType< T >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGenericSortedSetType\fP (string role, string propertyRef, IComparer< T > comparer)"
+.br
+.RI "\fIInitializes a new instance of a GenericSortedSetType{T} class for a specific role\&. \fP"
+.ti -1c
+.RI "override object \fBInstantiate\fP (int anticipatedSize)"
+.br
+.RI "\fIInstantiate an empty instance of the 'underlying' collection (not a wrapper), but with the given anticipated size (i\&.e\&. accounting for initial capacity and perhaps load factor)\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "IComparer< T > \fBComparer\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An \fBIType\fP that maps a sorted ISet{T} collection to the database\&. 
+
+
+.PP
+Definition at line 11 of file GenericSortedSetType\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Type\&.GenericSortedSetType< T >\&.GenericSortedSetType (stringrole, stringpropertyRef, IComparer< T >comparer)"
+
+.PP
+Initializes a new instance of a GenericSortedSetType{T} class for a specific role\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the persistent collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&.
+.br
+\fIcomparer\fP The IComparer{T} to use to compare set elements\&.
+.RE
+.PP
+
+.PP
+Definition at line 25 of file GenericSortedSetType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.GenericSortedSetType< T >\&.Instantiate (intanticipatedSize)\fC [virtual]\fP"
+
+.PP
+Instantiate an empty instance of the 'underlying' collection (not a wrapper), but with the given anticipated size (i\&.e\&. accounting for initial capacity and perhaps load factor)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIanticipatedSize\fP The anticipated size of the instantiated collection after we are done populating it\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A newly instantiated collection to be wrapped\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.GenericSetType< T >\fP\&.
+.PP
+Definition at line 36 of file GenericSortedSetType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,11 @@
+var namespace_n_hibernate_1_1_test_1_1_generated_test =
+[
+    [ "AbstractGeneratedPropertyTest", "class_n_hibernate_1_1_test_1_1_generated_test_1_1_abstract_generated_property_test.html", "class_n_hibernate_1_1_test_1_1_generated_test_1_1_abstract_generated_property_test" ],
+    [ "Component", "class_n_hibernate_1_1_test_1_1_generated_test_1_1_component.html", "class_n_hibernate_1_1_test_1_1_generated_test_1_1_component" ],
+    [ "ComponentOwner", "class_n_hibernate_1_1_test_1_1_generated_test_1_1_component_owner.html", "class_n_hibernate_1_1_test_1_1_generated_test_1_1_component_owner" ],
+    [ "GeneratedPropertyEntity", "class_n_hibernate_1_1_test_1_1_generated_test_1_1_generated_property_entity.html", "class_n_hibernate_1_1_test_1_1_generated_test_1_1_generated_property_entity" ],
+    [ "PartiallyGeneratedComponentTest", "class_n_hibernate_1_1_test_1_1_generated_test_1_1_partially_generated_component_test.html", "class_n_hibernate_1_1_test_1_1_generated_test_1_1_partially_generated_component_test" ],
+    [ "TimestampGeneratedValuesWithCachingTest", "class_n_hibernate_1_1_test_1_1_generated_test_1_1_timestamp_generated_values_with_caching_test.html", "class_n_hibernate_1_1_test_1_1_generated_test_1_1_timestamp_generated_values_with_caching_test" ],
+    [ "TriggerGeneratedValuesWithCachingTest", "class_n_hibernate_1_1_test_1_1_generated_test_1_1_trigger_generated_values_with_caching_test.html", "class_n_hibernate_1_1_test_1_1_generated_test_1_1_trigger_generated_values_with_caching_test" ],
+    [ "TriggerGeneratedValuesWithoutCachingTest", "class_n_hibernate_1_1_test_1_1_generated_test_1_1_trigger_generated_values_without_caching_test.html", "class_n_hibernate_1_1_test_1_1_generated_test_1_1_trigger_generated_values_without_caching_test" ]
+];

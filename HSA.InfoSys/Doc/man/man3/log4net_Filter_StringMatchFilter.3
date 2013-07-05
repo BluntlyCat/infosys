@@ -1,0 +1,173 @@
+.TH "log4net.Filter.StringMatchFilter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Filter.StringMatchFilter \- 
+.PP
+Simple filter to match a string in the rendered message  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Filter\&.FilterSkeleton\fP\&.
+.PP
+Inherited by \fBlog4net\&.Filter\&.PropertyFilter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBStringMatchFilter\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.ti -1c
+.RI "override void \fBActivateOptions\fP ()"
+.br
+.RI "\fIInitialize and precompile the Regex if required \fP"
+.ti -1c
+.RI "override \fBFilterDecision\fP \fBDecide\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fICheck if this filter should allow the event to be logged \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBm_acceptOnMatch\fP = true"
+.br
+.RI "\fIFlag to indicate the behavior when we have a match \fP"
+.ti -1c
+.RI "string \fBm_stringToMatch\fP"
+.br
+.RI "\fIThe string to substring match against the message \fP"
+.ti -1c
+.RI "string \fBm_stringRegexToMatch\fP"
+.br
+.RI "\fIA string regex to match \fP"
+.ti -1c
+.RI "Regex \fBm_regexToMatch\fP"
+.br
+.RI "\fIA regex object to match (generated from m_stringRegexToMatch) \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBAcceptOnMatch\fP\fC [get, set]\fP"
+.br
+.RI "\fIFilterDecision\&.Accept when matching \fBStringToMatch\fP or \fBRegexToMatch\fP \fP"
+.ti -1c
+.RI "string \fBStringToMatch\fP\fC [get, set]\fP"
+.br
+.RI "\fISets the static string to match \fP"
+.ti -1c
+.RI "string \fBRegexToMatch\fP\fC [get, set]\fP"
+.br
+.RI "\fISets the regular expression to match \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Simple filter to match a string in the rendered message 
+
+Simple filter to match a string in the rendered message 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 39 of file StringMatchFilter\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Filter\&.StringMatchFilter\&.StringMatchFilter ()"
+
+.PP
+Default constructor 
+.PP
+Definition at line 70 of file StringMatchFilter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Filter\&.StringMatchFilter\&.ActivateOptions ()\fC [virtual]\fP"
+
+.PP
+Initialize and precompile the Regex if required This is part of the IOptionHandler delayed object activation scheme\&. The \fBActivateOptions\fP method must be called on this object after the configuration properties have been set\&. Until \fBActivateOptions\fP is called this object is in an undefined state and must not be used\&. 
+.PP
+If any of the configuration properties are modified then \fBActivateOptions\fP must be called again\&. 
+.PP
+Reimplemented from \fBlog4net\&.Filter\&.FilterSkeleton\fP\&.
+.PP
+Definition at line 94 of file StringMatchFilter\&.cs\&.
+.SS "override \fBFilterDecision\fP log4net\&.Filter\&.StringMatchFilter\&.Decide (\fBLoggingEvent\fPloggingEvent)\fC [virtual]\fP"
+
+.PP
+Check if this filter should allow the event to be logged 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP the event being logged
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+see remarks
+.RE
+.PP
+.PP
+The rendered message is matched against the \fBStringToMatch\fP\&. If the \fBStringToMatch\fP occurs as a substring within the message then a match will have occurred\&. If no match occurs this function will return FilterDecision\&.Neutral allowing other filters to check the event\&. If a match occurs then the value of \fBAcceptOnMatch\fP is checked\&. If it is true then FilterDecision\&.Accept is returned otherwise FilterDecision\&.Deny is returned\&. 
+.PP
+Implements \fBlog4net\&.Filter\&.FilterSkeleton\fP\&.
+.PP
+Definition at line 185 of file StringMatchFilter\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool log4net\&.Filter\&.StringMatchFilter\&.m_acceptOnMatch = true\fC [protected]\fP"
+
+.PP
+Flag to indicate the behavior when we have a match 
+.PP
+Definition at line 46 of file StringMatchFilter\&.cs\&.
+.SS "Regex log4net\&.Filter\&.StringMatchFilter\&.m_regexToMatch\fC [protected]\fP"
+
+.PP
+A regex object to match (generated from m_stringRegexToMatch) 
+.PP
+Definition at line 61 of file StringMatchFilter\&.cs\&.
+.SS "string log4net\&.Filter\&.StringMatchFilter\&.m_stringRegexToMatch\fC [protected]\fP"
+
+.PP
+A string regex to match 
+.PP
+Definition at line 56 of file StringMatchFilter\&.cs\&.
+.SS "string log4net\&.Filter\&.StringMatchFilter\&.m_stringToMatch\fC [protected]\fP"
+
+.PP
+The string to substring match against the message 
+.PP
+Definition at line 51 of file StringMatchFilter\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool log4net\&.Filter\&.StringMatchFilter\&.AcceptOnMatch\fC [get]\fP, \fC [set]\fP"
+
+.PP
+FilterDecision\&.Accept when matching \fBStringToMatch\fP or \fBRegexToMatch\fP The \fBAcceptOnMatch\fP property is a flag that determines the behavior when a matching Level is found\&. If the flag is set to true then the filter will FilterDecision\&.Accept the logging event, otherwise it will FilterDecision\&.Neutral the event\&. 
+.PP
+The default is \fCtrue\fP i\&.e\&. to FilterDecision\&.Accept the event\&. 
+.PP
+Definition at line 119 of file StringMatchFilter\&.cs\&.
+.SS "string log4net\&.Filter\&.StringMatchFilter\&.RegexToMatch\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Sets the regular expression to match The regular expression pattern that will be matched against the rendered message\&. If the message matches this pattern then the filter will match\&. If a match is found then the result depends on the value of \fBAcceptOnMatch\fP\&. 
+.PP
+One of \fBStringToMatch\fP or \fBRegexToMatch\fP must be specified\&. 
+.PP
+Definition at line 161 of file StringMatchFilter\&.cs\&.
+.SS "string log4net\&.Filter\&.StringMatchFilter\&.StringToMatch\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Sets the static string to match The string that will be substring matched against the rendered message\&. If the message contains this string then the filter will match\&. If a match is found then the result depends on the value of \fBAcceptOnMatch\fP\&. 
+.PP
+One of \fBStringToMatch\fP or \fBRegexToMatch\fP must be specified\&. 
+.PP
+Definition at line 140 of file StringMatchFilter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

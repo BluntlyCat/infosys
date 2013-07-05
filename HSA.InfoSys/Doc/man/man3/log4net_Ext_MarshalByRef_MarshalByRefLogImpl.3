@@ -1,0 +1,1209 @@
+.TH "log4net.Ext.MarshalByRef.MarshalByRefLogImpl" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Ext.MarshalByRef.MarshalByRefLogImpl \- 
+.PP
+Marshal By Reference implementation of \fBILog\fP  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MarshalByRefObject, and \fBlog4net\&.ILog\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMarshalByRefLogImpl\fP (\fBILogger\fP logger)"
+.br
+.ti -1c
+.RI "void \fBDebug\fP (object message)"
+.br
+.RI "\fILog a message object with the Level\&.Debug level\&. \fP"
+.ti -1c
+.RI "void \fBDebug\fP (object message, Exception t)"
+.br
+.RI "\fILog a message object with the Level\&.Debug level including the stack trace of the Exception passed as a parameter\&. \fP"
+.ti -1c
+.RI "void \fBDebugFormat\fP (string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Debug level\&. \fP"
+.ti -1c
+.RI "void \fBDebugFormat\fP (string format, object arg0)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Debug level\&. \fP"
+.ti -1c
+.RI "void \fBDebugFormat\fP (string format, object arg0, object arg1)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Debug level\&. \fP"
+.ti -1c
+.RI "void \fBDebugFormat\fP (string format, object arg0, object arg1, object arg2)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Debug level\&. \fP"
+.ti -1c
+.RI "void \fBDebugFormat\fP (IFormatProvider provider, string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Debug level\&. \fP"
+.ti -1c
+.RI "void \fBInfo\fP (object message)"
+.br
+.RI "\fILogs a message object with the Level\&.Info level\&. \fP"
+.ti -1c
+.RI "void \fBInfo\fP (object message, Exception t)"
+.br
+.RI "\fILogs a message object with the \fCINFO\fP level including the stack trace of the Exception passed as a parameter\&. \fP"
+.ti -1c
+.RI "void \fBInfoFormat\fP (string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Info level\&. \fP"
+.ti -1c
+.RI "void \fBInfoFormat\fP (string format, object arg0)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Info level\&. \fP"
+.ti -1c
+.RI "void \fBInfoFormat\fP (string format, object arg0, object arg1)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Info level\&. \fP"
+.ti -1c
+.RI "void \fBInfoFormat\fP (string format, object arg0, object arg1, object arg2)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Info level\&. \fP"
+.ti -1c
+.RI "void \fBInfoFormat\fP (IFormatProvider provider, string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Info level\&. \fP"
+.ti -1c
+.RI "void \fBWarn\fP (object message)"
+.br
+.RI "\fILog a message object with the Level\&.Warn level\&. \fP"
+.ti -1c
+.RI "void \fBWarn\fP (object message, Exception t)"
+.br
+.RI "\fILog a message object with the Level\&.Warn level including the stack trace of the Exception passed as a parameter\&. \fP"
+.ti -1c
+.RI "void \fBWarnFormat\fP (string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Warn level\&. \fP"
+.ti -1c
+.RI "void \fBWarnFormat\fP (string format, object arg0)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Warn level\&. \fP"
+.ti -1c
+.RI "void \fBWarnFormat\fP (string format, object arg0, object arg1)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Warn level\&. \fP"
+.ti -1c
+.RI "void \fBWarnFormat\fP (string format, object arg0, object arg1, object arg2)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Warn level\&. \fP"
+.ti -1c
+.RI "void \fBWarnFormat\fP (IFormatProvider provider, string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Warn level\&. \fP"
+.ti -1c
+.RI "void \fBError\fP (object message)"
+.br
+.RI "\fILogs a message object with the Level\&.Error level\&. \fP"
+.ti -1c
+.RI "void \fBError\fP (object message, Exception t)"
+.br
+.RI "\fILog a message object with the Level\&.Error level including the stack trace of the Exception passed as a parameter\&. \fP"
+.ti -1c
+.RI "void \fBErrorFormat\fP (string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Error level\&. \fP"
+.ti -1c
+.RI "void \fBErrorFormat\fP (string format, object arg0)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Error level\&. \fP"
+.ti -1c
+.RI "void \fBErrorFormat\fP (string format, object arg0, object arg1)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Error level\&. \fP"
+.ti -1c
+.RI "void \fBErrorFormat\fP (string format, object arg0, object arg1, object arg2)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Error level\&. \fP"
+.ti -1c
+.RI "void \fBErrorFormat\fP (IFormatProvider provider, string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Error level\&. \fP"
+.ti -1c
+.RI "void \fBFatal\fP (object message)"
+.br
+.RI "\fILog a message object with the Level\&.Fatal level\&. \fP"
+.ti -1c
+.RI "void \fBFatal\fP (object message, Exception t)"
+.br
+.RI "\fILog a message object with the Level\&.Fatal level including the stack trace of the Exception passed as a parameter\&. \fP"
+.ti -1c
+.RI "void \fBFatalFormat\fP (string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Fatal level\&. \fP"
+.ti -1c
+.RI "void \fBFatalFormat\fP (string format, object arg0)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Fatal level\&. \fP"
+.ti -1c
+.RI "void \fBFatalFormat\fP (string format, object arg0, object arg1)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Fatal level\&. \fP"
+.ti -1c
+.RI "void \fBFatalFormat\fP (string format, object arg0, object arg1, object arg2)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Fatal level\&. \fP"
+.ti -1c
+.RI "void \fBFatalFormat\fP (IFormatProvider provider, string format, params object[] args)"
+.br
+.RI "\fILogs a formatted message string with the Level\&.Fatal level\&. \fP"
+.ti -1c
+.RI "override object \fBInitializeLifetimeService\fP ()"
+.br
+.RI "\fILive forever \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsDebugEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsInfoEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsWarnEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsErrorEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFatalEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBILogger\fP \fBLogger\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Marshal By Reference implementation of \fBILog\fP 
+
+Logger wrapper that is MarshalByRefObject\&. These objects can be passed by reference across a remoting boundary\&. 
+.PP
+Definition at line 38 of file MarshalByRefLogImpl\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.Debug (objectmessage)"
+
+.PP
+Log a message object with the Level\&.Debug level\&. <overloads>Log a message object with the Level\&.Debug level\&.</overloads>
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.RE
+.PP
+.PP
+This method first checks if this logger is \fCDEBUG\fP enabled by comparing the level of this logger with the Level\&.Debug level\&. If this logger is \fCDEBUG\fP enabled, then it converts the message object (passed as parameter) to a string by invoking the appropriate \fBlog4net\&.ObjectRenderer\&.IObjectRenderer\fP\&. It then proceeds to call all the registered appenders in this logger and also higher in the hierarchy depending on the value of the additivity flag\&. 
+.PP
+\fBWARNING\fP Note that passing an Exception to this method will print the name of the Exception but no stack trace\&. To print a stack trace use the \fBDebug(object,Exception)\fP form instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBDebug(object,Exception)\fP, IsDebugEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 85 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.Debug (objectmessage, Exceptionexception)"
+
+.PP
+Log a message object with the Level\&.Debug level including the stack trace of the Exception passed as a parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.br
+\fIexception\fP The exception to log, including its stack trace\&.
+.RE
+.PP
+.PP
+See the \fBDebug(object)\fP form for more detailed information\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBDebug(object)\fP, IsDebugEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 90 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.DebugFormat (stringformat, params object[]args)"
+
+.PP
+Logs a formatted message string with the Level\&.Debug level\&. <overloads>Log a formatted string with the Level\&.Debug level\&.</overloads>
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBDebug(object,Exception)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBDebug(object)\fP, IsDebugEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 95 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.DebugFormat (stringformat, objectarg0)"
+
+.PP
+Logs a formatted message string with the Level\&.Debug level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBDebug(object,Exception)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBDebug(object)\fP, IsDebugEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 103 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.DebugFormat (stringformat, objectarg0, objectarg1)"
+
+.PP
+Logs a formatted message string with the Level\&.Debug level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBDebug(object,Exception)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBDebug(object)\fP, IsDebugEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 111 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.DebugFormat (stringformat, objectarg0, objectarg1, objectarg2)"
+
+.PP
+Logs a formatted message string with the Level\&.Debug level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.br
+\fIarg2\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBDebug(object,Exception)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBDebug(object)\fP, IsDebugEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 119 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.DebugFormat (IFormatProviderprovider, stringformat, params object[]args)"
+
+.PP
+Logs a formatted message string with the Level\&.Debug level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprovider\fP An IFormatProvider that supplies culture-specific formatting information
+.br
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBDebug(object,Exception)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBDebug(object)\fP, IsDebugEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 127 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.Error (objectmessage)"
+
+.PP
+Logs a message object with the Level\&.Error level\&. <overloads>Log a message object with the Level\&.Error level\&.</overloads>
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.RE
+.PP
+.PP
+This method first checks if this logger is \fCERROR\fP enabled by comparing the level of this logger with the Level\&.Error level\&. If this logger is \fCERROR\fP enabled, then it converts the message object (passed as parameter) to a string by invoking the appropriate \fBlog4net\&.ObjectRenderer\&.IObjectRenderer\fP\&. It then proceeds to call all the registered appenders in this logger and also higher in the hierarchy depending on the value of the additivity flag\&. 
+.PP
+\fBWARNING\fP Note that passing an Exception to this method will print the name of the Exception but no stack trace\&. To print a stack trace use the \fBError(object,Exception)\fP form instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBError(object,Exception)\fP, IsErrorEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 235 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.Error (objectmessage, Exceptionexception)"
+
+.PP
+Log a message object with the Level\&.Error level including the stack trace of the Exception passed as a parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.br
+\fIexception\fP The exception to log, including its stack trace\&.
+.RE
+.PP
+.PP
+See the \fBError(object)\fP form for more detailed information\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBError(object)\fP, IsErrorEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 240 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.ErrorFormat (stringformat, params object[]args)"
+
+.PP
+Logs a formatted message string with the Level\&.Error level\&. <overloads>Log a formatted message string with the Level\&.Error level\&.</overloads>
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBError(object)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBError(object,Exception)\fP, IsErrorEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 245 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.ErrorFormat (stringformat, objectarg0)"
+
+.PP
+Logs a formatted message string with the Level\&.Error level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBError(object,Exception)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBError(object)\fP, IsErrorEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 253 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.ErrorFormat (stringformat, objectarg0, objectarg1)"
+
+.PP
+Logs a formatted message string with the Level\&.Error level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBError(object,Exception)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBError(object)\fP, IsErrorEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 261 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.ErrorFormat (stringformat, objectarg0, objectarg1, objectarg2)"
+
+.PP
+Logs a formatted message string with the Level\&.Error level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.br
+\fIarg2\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBError(object,Exception)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBError(object)\fP, IsErrorEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 269 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.ErrorFormat (IFormatProviderprovider, stringformat, params object[]args)"
+
+.PP
+Logs a formatted message string with the Level\&.Error level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprovider\fP An IFormatProvider that supplies culture-specific formatting information
+.br
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBError(object)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBError(object,Exception)\fP, IsErrorEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 277 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.Fatal (objectmessage)"
+
+.PP
+Log a message object with the Level\&.Fatal level\&. <overloads>Log a message object with the Level\&.Fatal level\&.</overloads>
+.PP
+This method first checks if this logger is \fCFATAL\fP enabled by comparing the level of this logger with the Level\&.Fatal level\&. If this logger is \fCFATAL\fP enabled, then it converts the message object (passed as parameter) to a string by invoking the appropriate \fBlog4net\&.ObjectRenderer\&.IObjectRenderer\fP\&. It then proceeds to call all the registered appenders in this logger and also higher in the hierarchy depending on the value of the additivity flag\&. 
+.PP
+\fBWARNING\fP Note that passing an Exception to this method will print the name of the Exception but no stack trace\&. To print a stack trace use the \fBFatal(object,Exception)\fP form instead\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBFatal(object,Exception)\fP, IsFatalEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 285 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.Fatal (objectmessage, Exceptionexception)"
+
+.PP
+Log a message object with the Level\&.Fatal level including the stack trace of the Exception passed as a parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.br
+\fIexception\fP The exception to log, including its stack trace\&.
+.RE
+.PP
+.PP
+See the \fBFatal(object)\fP form for more detailed information\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBFatal(object)\fP, IsFatalEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 290 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.FatalFormat (stringformat, params object[]args)"
+
+.PP
+Logs a formatted message string with the Level\&.Fatal level\&. <overloads>Log a formatted message string with the Level\&.Fatal level\&.</overloads>
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBFatal(object)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBFatal(object,Exception)\fP, IsFatalEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 295 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.FatalFormat (stringformat, objectarg0)"
+
+.PP
+Logs a formatted message string with the Level\&.Fatal level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBFatal(object,Exception)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBFatal(object)\fP, IsFatalEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 303 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.FatalFormat (stringformat, objectarg0, objectarg1)"
+
+.PP
+Logs a formatted message string with the Level\&.Fatal level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBFatal(object,Exception)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBFatal(object)\fP, IsFatalEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 311 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.FatalFormat (stringformat, objectarg0, objectarg1, objectarg2)"
+
+.PP
+Logs a formatted message string with the Level\&.Fatal level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.br
+\fIarg2\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBFatal(object,Exception)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBFatal(object)\fP, IsFatalEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 319 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.FatalFormat (IFormatProviderprovider, stringformat, params object[]args)"
+
+.PP
+Logs a formatted message string with the Level\&.Fatal level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprovider\fP An IFormatProvider that supplies culture-specific formatting information
+.br
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBFatal(object)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBFatal(object,Exception)\fP, IsFatalEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 327 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.Info (objectmessage)"
+
+.PP
+Logs a message object with the Level\&.Info level\&. <overloads>Log a message object with the Level\&.Info level\&.</overloads>
+.PP
+This method first checks if this logger is \fCINFO\fP enabled by comparing the level of this logger with the Level\&.Info level\&. If this logger is \fCINFO\fP enabled, then it converts the message object (passed as parameter) to a string by invoking the appropriate \fBlog4net\&.ObjectRenderer\&.IObjectRenderer\fP\&. It then proceeds to call all the registered appenders in this logger and also higher in the hierarchy depending on the value of the additivity flag\&. 
+.PP
+\fBWARNING\fP Note that passing an Exception to this method will print the name of the Exception but no stack trace\&. To print a stack trace use the \fBInfo(object,Exception)\fP form instead\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBInfo(object,Exception)\fP, IsInfoEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 135 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.Info (objectmessage, Exceptionexception)"
+
+.PP
+Logs a message object with the \fCINFO\fP level including the stack trace of the Exception passed as a parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.br
+\fIexception\fP The exception to log, including its stack trace\&.
+.RE
+.PP
+.PP
+See the \fBInfo(object)\fP form for more detailed information\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBInfo(object)\fP, IsInfoEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 140 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.InfoFormat (stringformat, params object[]args)"
+
+.PP
+Logs a formatted message string with the Level\&.Info level\&. <overloads>Log a formatted message string with the Level\&.Info level\&.</overloads>
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBInfo(object)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBInfo(object,Exception)\fP, IsInfoEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 145 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.InfoFormat (stringformat, objectarg0)"
+
+.PP
+Logs a formatted message string with the Level\&.Info level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBInfo(object,Exception)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBInfo(object)\fP, IsInfoEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 153 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.InfoFormat (stringformat, objectarg0, objectarg1)"
+
+.PP
+Logs a formatted message string with the Level\&.Info level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBInfo(object,Exception)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBInfo(object)\fP, IsInfoEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 161 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.InfoFormat (stringformat, objectarg0, objectarg1, objectarg2)"
+
+.PP
+Logs a formatted message string with the Level\&.Info level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.br
+\fIarg2\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBInfo(object,Exception)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBInfo(object)\fP, IsInfoEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 169 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.InfoFormat (IFormatProviderprovider, stringformat, params object[]args)"
+
+.PP
+Logs a formatted message string with the Level\&.Info level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprovider\fP An IFormatProvider that supplies culture-specific formatting information
+.br
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBInfo(object)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBInfo(object,Exception)\fP, IsInfoEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 177 of file MarshalByRefLogImpl\&.cs\&.
+.SS "override object log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.InitializeLifetimeService ()"
+
+.PP
+Live forever 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCnull\fP
+.RE
+.PP
+
+.PP
+Definition at line 375 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.Warn (objectmessage)"
+
+.PP
+Log a message object with the Level\&.Warn level\&. <overloads>Log a message object with the Level\&.Warn level\&.</overloads>
+.PP
+This method first checks if this logger is \fCWARN\fP enabled by comparing the level of this logger with the Level\&.Warn level\&. If this logger is \fCWARN\fP enabled, then it converts the message object (passed as parameter) to a string by invoking the appropriate \fBlog4net\&.ObjectRenderer\&.IObjectRenderer\fP\&. It then proceeds to call all the registered appenders in this logger and also higher in the hierarchy depending on the value of the additivity flag\&. 
+.PP
+\fBWARNING\fP Note that passing an Exception to this method will print the name of the Exception but no stack trace\&. To print a stack trace use the \fBWarn(object,Exception)\fP form instead\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBWarn(object,Exception)\fP, IsWarnEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 185 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.Warn (objectmessage, Exceptionexception)"
+
+.PP
+Log a message object with the Level\&.Warn level including the stack trace of the Exception passed as a parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message object to log\&.
+.br
+\fIexception\fP The exception to log, including its stack trace\&.
+.RE
+.PP
+.PP
+See the \fBWarn(object)\fP form for more detailed information\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBWarn(object)\fP, IsWarnEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 190 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.WarnFormat (stringformat, params object[]args)"
+
+.PP
+Logs a formatted message string with the Level\&.Warn level\&. <overloads>Log a formatted message string with the Level\&.Warn level\&.</overloads>
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBWarn(object)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBWarn(object,Exception)\fP, IsWarnEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 195 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.WarnFormat (stringformat, objectarg0)"
+
+.PP
+Logs a formatted message string with the Level\&.Warn level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBWarn(object,Exception)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBWarn(object)\fP, IsWarnEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 203 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.WarnFormat (stringformat, objectarg0, objectarg1)"
+
+.PP
+Logs a formatted message string with the Level\&.Warn level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBWarn(object,Exception)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBWarn(object)\fP, IsWarnEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 211 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.WarnFormat (stringformat, objectarg0, objectarg1, objectarg2)"
+
+.PP
+Logs a formatted message string with the Level\&.Warn level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP A String containing zero or more format items
+.br
+\fIarg0\fP An Object to format
+.br
+\fIarg1\fP An Object to format
+.br
+\fIarg2\fP An Object to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBWarn(object,Exception)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBWarn(object)\fP, IsWarnEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 219 of file MarshalByRefLogImpl\&.cs\&.
+.SS "void log4net\&.Ext\&.MarshalByRef\&.MarshalByRefLogImpl\&.WarnFormat (IFormatProviderprovider, stringformat, params object[]args)"
+
+.PP
+Logs a formatted message string with the Level\&.Warn level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprovider\fP An IFormatProvider that supplies culture-specific formatting information
+.br
+\fIformat\fP A String containing zero or more format items
+.br
+\fIargs\fP An Object array containing zero or more objects to format
+.RE
+.PP
+.PP
+The message is formatted using the \fCString\&.Format\fP method\&. See String\&.Format(string, object[]) for details of the syntax of the format string and the behavior of the formatting\&. 
+.PP
+This method does not take an Exception object to include in the log event\&. To pass an Exception use one of the \fBWarn(object)\fP methods instead\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBWarn(object,Exception)\fP, IsWarnEnabled
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.ILog\fP\&.
+.PP
+Definition at line 227 of file MarshalByRefLogImpl\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

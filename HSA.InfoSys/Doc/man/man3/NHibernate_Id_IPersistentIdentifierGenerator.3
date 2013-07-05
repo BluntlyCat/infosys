@@ -1,0 +1,94 @@
+.TH "NHibernate.Id.IPersistentIdentifierGenerator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.IPersistentIdentifierGenerator \- 
+.PP
+An \fBIIdentifierGenerator\fP that requires creation of database objects All \fBIPersistentIdentifierGenerator\fPs that also implement An \fBIConfigurable\fP have access to a special mapping parameter: schema  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Id\&.IIdentifierGenerator\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Id\&.Enhanced\&.SequenceStyleGenerator\fP, \fBNHibernate\&.Id\&.Enhanced\&.TableGenerator\fP, \fBNHibernate\&.Id\&.SequenceGenerator\fP, and \fBNHibernate\&.Id\&.TableGenerator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string[] \fBSqlCreateStrings\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIThe SQL required to create the underlying database objects \fP"
+.ti -1c
+.RI "string[] \fBSqlDropString\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIThe SQL required to remove the underlying database objects \fP"
+.ti -1c
+.RI "string \fBGeneratorKey\fP ()"
+.br
+.RI "\fIReturn a key unique to the underlying database objects\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An \fBIIdentifierGenerator\fP that requires creation of database objects All \fBIPersistentIdentifierGenerator\fPs that also implement An \fBIConfigurable\fP have access to a special mapping parameter: schema 
+
+
+.PP
+Definition at line 45 of file IPersistentIdentifierGenerator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string NHibernate\&.Id\&.IPersistentIdentifierGenerator\&.GeneratorKey ()"
+
+.PP
+Return a key unique to the underlying database objects\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A key unique to the underlying database objects\&. 
+.RE
+.PP
+.PP
+Prevents us from trying to create/remove them multiple times 
+.PP
+Implemented in \fBNHibernate\&.Id\&.Enhanced\&.SequenceStyleGenerator\fP, \fBNHibernate\&.Id\&.TableGenerator\fP, \fBNHibernate\&.Id\&.Enhanced\&.TableGenerator\fP, and \fBNHibernate\&.Id\&.SequenceGenerator\fP\&.
+.SS "string [] NHibernate\&.Id\&.IPersistentIdentifierGenerator\&.SqlCreateStrings (\fBDialect\&.Dialect\fPdialect)"
+
+.PP
+The SQL required to create the underlying database objects 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP to help with creating the sql\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An array of String objects that contain the sql to create the necessary database objects\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Id\&.Enhanced\&.TableGenerator\fP, \fBNHibernate\&.Id\&.Enhanced\&.SequenceStyleGenerator\fP, and \fBNHibernate\&.Id\&.SequenceGenerator\fP\&.
+.SS "string [] NHibernate\&.Id\&.IPersistentIdentifierGenerator\&.SqlDropString (\fBDialect\&.Dialect\fPdialect)"
+
+.PP
+The SQL required to remove the underlying database objects 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP to help with creating the sql\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A String that will drop the database objects\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Id\&.Enhanced\&.TableGenerator\fP, \fBNHibernate\&.Id\&.Enhanced\&.SequenceStyleGenerator\fP, and \fBNHibernate\&.Id\&.SequenceGenerator\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

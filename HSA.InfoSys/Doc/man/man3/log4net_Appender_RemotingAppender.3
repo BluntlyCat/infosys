@@ -1,0 +1,137 @@
+.TH "log4net.Appender.RemotingAppender" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.RemotingAppender \- 
+.PP
+Delivers logging events to a remote logging sink\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.BufferingAppenderSkeleton\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "interface \fBIRemoteLoggingSink\fP"
+.br
+.RI "\fIInterface used to deliver LoggingEvent objects to a remote sink\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRemotingAppender\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBRemotingAppender\fP class\&. \fP"
+.ti -1c
+.RI "override void \fBActivateOptions\fP ()"
+.br
+.RI "\fIInitialize the appender based on the options set \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBSendBuffer\fP (\fBLoggingEvent\fP[] events)"
+.br
+.RI "\fISend the contents of the buffer to the remote sink\&. \fP"
+.ti -1c
+.RI "override void \fBOnClose\fP ()"
+.br
+.RI "\fIOverride base class close\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBSink\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the URL of the well-known object that will accept the logging events\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Delivers logging events to a remote logging sink\&. 
+
+This \fBAppender\fP is designed to deliver events to a remote sink\&. That is any object that implements the \fBIRemoteLoggingSink\fP interface\&. It delivers the events using \&.NET remoting\&. The object to deliver events to is specified by setting the appenders \fBRemotingAppender\&.Sink\fP property\&.
+.PP
+The \fBRemotingAppender\fP buffers events before sending them\&. This allows it to make more efficient use of the remoting infrastructure\&.
+.PP
+Once the buffer is full the events are still not sent immediately\&. They are scheduled to be sent using a pool thread\&. The effect is that the send occurs asynchronously\&. This is very important for a number of non obvious reasons\&. The remoting infrastructure will flow thread local variables (stored in the CallContext), if they are marked as ILogicalThreadAffinative, across the remoting boundary\&. If the server is not contactable then the remoting infrastructure will clear the ILogicalThreadAffinative objects from the CallContext\&. To prevent a logging failure from having side effects on the calling application the remoting call must be made from a separate thread to the one used by the application\&. A ThreadPool thread is used for this\&. If no ThreadPool thread is available then the events will block in the thread pool manager until a thread is available\&.
+.PP
+Because the events are sent asynchronously using pool threads it is possible to close this appender before all the queued events have been sent\&. When closing the appender attempts to wait until all the queued events have been sent, but this will timeout after 30 seconds regardless\&.
+.PP
+If this appender is being closed because the AppDomain\&.ProcessExit event has fired it may not be possible to send all the queued events\&. During process exit the runtime limits the time that a AppDomain\&.ProcessExit event handler is allowed to run for\&. If the runtime terminates the threads before the queued events have been sent then they will be lost\&. To ensure that all events are sent the appender must be closed before the application exits\&. See \fBlog4net\&.Core\&.LoggerManager\&.Shutdown\fP for details on how to shutdown \fBlog4net\fP programmatically\&.
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBIRemoteLoggingSink\fP
+.PP
+.RE
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> <author>Daniel Cazzulino</author> 
+.PP
+Definition at line 81 of file RemotingAppender\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.RemotingAppender\&.RemotingAppender ()"
+
+.PP
+Initializes a new instance of the \fBRemotingAppender\fP class\&. Default constructor\&. 
+.PP
+Definition at line 93 of file RemotingAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Appender\&.RemotingAppender\&.ActivateOptions ()\fC [virtual]\fP"
+
+.PP
+Initialize the appender based on the options set This is part of the IOptionHandler delayed object activation scheme\&. The \fBActivateOptions\fP method must be called on this object after the configuration properties have been set\&. Until \fBActivateOptions\fP is called this object is in an undefined state and must not be used\&. 
+.PP
+If any of the configuration properties are modified then \fBActivateOptions\fP must be called again\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.BufferingAppenderSkeleton\fP\&.
+.PP
+Definition at line 144 of file RemotingAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.RemotingAppender\&.OnClose ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Override base class close\&. This method waits while there are queued work items\&. The events are sent asynchronously using ThreadPool work items\&. These items will be sent once a thread pool thread is available to send them, therefore it is possible to close the appender before all the queued events have been sent\&.
+.PP
+This method attempts to wait until all the queued events have been sent, but this method will timeout after 30 seconds regardless\&.
+.PP
+If the appender is being closed because the AppDomain\&.ProcessExit event has fired it may not be possible to send all the queued events\&. During process exit the runtime limits the time that a AppDomain\&.ProcessExit event handler is allowed to run for\&.
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.BufferingAppenderSkeleton\fP\&.
+.PP
+Definition at line 210 of file RemotingAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.RemotingAppender\&.SendBuffer (\fBLoggingEvent\fP[]events)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Send the contents of the buffer to the remote sink\&. The events are not sent immediately\&. They are scheduled to be sent using a pool thread\&. The effect is that the send occurs asynchronously\&. This is very important for a number of non obvious reasons\&. The remoting infrastructure will flow thread local variables (stored in the CallContext), if they are marked as ILogicalThreadAffinative, across the remoting boundary\&. If the server is not contactable then the remoting infrastructure will clear the ILogicalThreadAffinative objects from the CallContext\&. To prevent a logging failure from having side effects on the calling application the remoting call must be made from a separate thread to the one used by the application\&. A ThreadPool thread is used for this\&. If no ThreadPool thread is available then the events will block in the thread pool manager until a thread is available\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevents\fP The events to send\&.
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.Appender\&.BufferingAppenderSkeleton\fP\&.
+.PP
+Definition at line 176 of file RemotingAppender\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string log4net\&.Appender\&.RemotingAppender\&.Sink\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the URL of the well-known object that will accept the logging events\&. The well-known URL of the remote sink\&. 
+.PP
+The URL of the remoting sink that will accept logging events\&. The sink must implement the \fBIRemoteLoggingSink\fP interface\&. 
+.PP
+Definition at line 116 of file RemotingAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

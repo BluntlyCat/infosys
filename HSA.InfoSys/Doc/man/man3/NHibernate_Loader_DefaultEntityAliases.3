@@ -1,0 +1,91 @@
+.TH "NHibernate.Loader.DefaultEntityAliases" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Loader.DefaultEntityAliases \- 
+.PP
+EntityAliases which handles the logic of selecting user provided aliases (via return-property), before using the default aliases\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Loader\&.IEntityAliases\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Loader\&.Custom\&.ColumnEntityAliases\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDefaultEntityAliases\fP (\fBILoadable\fP persister, string suffix)"
+.br
+.ti -1c
+.RI "\fBDefaultEntityAliases\fP (IDictionary< string, string[]> userProvidedAliases, \fBILoadable\fP persister, string suffix)"
+.br
+.RI "\fICalculate and cache select-clause suffixes\&. \fP"
+.ti -1c
+.RI "string[][] \fBGetSuffixedPropertyAliases\fP (\fBILoadable\fP persister)"
+.br
+.RI "\fIThe result set column aliases for the property columns of a subclass \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual string \fBGetDiscriminatorAlias\fP (\fBILoadable\fP persister, string suffix)"
+.br
+.ti -1c
+.RI "virtual string[] \fBGetIdentifierAliases\fP (\fBILoadable\fP persister, string suffix)"
+.br
+.ti -1c
+.RI "virtual string[] \fBGetPropertyAliases\fP (\fBILoadable\fP persister, int j)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string[] \fBSuffixedVersionAliases\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[][] \fBSuffixedPropertyAliases\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBSuffixedDiscriminatorAlias\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBSuffixedKeyAliases\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBRowIdAlias\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+EntityAliases which handles the logic of selecting user provided aliases (via return-property), before using the default aliases\&. 
+
+
+.PP
+Definition at line 11 of file DefaultEntityAliases\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Loader\&.DefaultEntityAliases\&.DefaultEntityAliases (IDictionary< string, string[]>userProvidedAliases, \fBILoadable\fPpersister, stringsuffix)"
+
+.PP
+Calculate and cache select-clause suffixes\&. 
+.PP
+Definition at line 27 of file DefaultEntityAliases\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string [][] NHibernate\&.Loader\&.DefaultEntityAliases\&.GetSuffixedPropertyAliases (\fBILoadable\fPpersister)"
+
+.PP
+The result set column aliases for the property columns of a subclass 
+.PP
+Implements \fBNHibernate\&.Loader\&.IEntityAliases\fP\&.
+.PP
+Definition at line 105 of file DefaultEntityAliases\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

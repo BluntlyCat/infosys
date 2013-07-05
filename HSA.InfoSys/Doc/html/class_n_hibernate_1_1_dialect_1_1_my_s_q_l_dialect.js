@@ -1,0 +1,26 @@
+var class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect =
+[
+    [ "MySQLDialect", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#a5574ef6897f99475385879503b10de2b", null ],
+    [ "GetAddForeignKeyConstraintString", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#ace177567269c27f622fed78fa0f18d8d", null ],
+    [ "GetCastTypeName", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#a26e75d04d4496fa7d024216e52f687fe", null ],
+    [ "GetDataBaseSchema", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#a603733f73cc805234d66914f3752a07a", null ],
+    [ "GetDropForeignKeyConstraintString", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#a9c7470c05fe3d53728dd827f387d962d", null ],
+    [ "GetDropIndexConstraintString", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#af4dc56fd83965ebf32006211b0da4368", null ],
+    [ "GetDropPrimaryKeyConstraintString", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#a7f8c27813544586e428e2bcb08141c15", null ],
+    [ "GetLimitString", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#a3e6b551b4c9d4c7bb18b1bf79dfdaf5c", null ],
+    [ "RegisterCastType", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#a66df283f11682b60d8f5b6b25a0efa81", null ],
+    [ "RegisterCastType", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#abd2527773d4c23b1bde16df708f6d6f1", null ],
+    [ "RegisterCastTypes", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#ad8bb7b3ca0ad3e3ec7507deb3709fc91", null ],
+    [ "AddColumnString", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#ae410b7fc1aa1fc0d3fbb5befb3ca7597", null ],
+    [ "CloseQuote", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#afcf8f2cb1c9efac68ebe77f965f73ba3", null ],
+    [ "CreateTemporaryTableString", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#af9df3b8c162d11336b6b697e0d30808f", null ],
+    [ "IdentityColumnString", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#a6588fc7041ec2e838cb33e8e5b4030dd", null ],
+    [ "IdentitySelectString", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#add2fd67e23b8387150e307f550d5b14f", null ],
+    [ "OpenQuote", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#a832646808593d3b01f1bec3635327dd5", null ],
+    [ "QualifyIndexName", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#a9b7e87256ab28423d981c9ec557b6bb5", null ],
+    [ "SupportsIdentityColumns", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#ab46718ab488ddb5f13f8c6dd2cd06382", null ],
+    [ "SupportsIfExistsBeforeTableName", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#a88fabfee91073f82c2cc9c38ae039f09", null ],
+    [ "SupportsLimit", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#a46a0013203403cb3dd025ed86ee662a9", null ],
+    [ "SupportsSubSelects", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#a2b1b7fd22c6d40e31147112d4e2d106c", null ],
+    [ "SupportsTemporaryTables", "class_n_hibernate_1_1_dialect_1_1_my_s_q_l_dialect.html#a682a8c3f9f20b0cd9a4ca1f82230b6e0", null ]
+];

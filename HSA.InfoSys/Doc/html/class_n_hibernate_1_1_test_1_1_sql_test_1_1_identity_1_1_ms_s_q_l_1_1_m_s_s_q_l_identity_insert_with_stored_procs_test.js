@@ -1,0 +1,6 @@
+var class_n_hibernate_1_1_test_1_1_sql_test_1_1_identity_1_1_ms_s_q_l_1_1_m_s_s_q_l_identity_insert_with_stored_procs_test =
+[
+    [ "AppliesTo", "class_n_hibernate_1_1_test_1_1_sql_test_1_1_identity_1_1_ms_s_q_l_1_1_m_s_s_q_l_identity_insert_with_stored_procs_test.html#a4ac8df5bb754667d12b0d59f59b36dda", null ],
+    [ "GetExpectedInsertOrgLogStatement", "class_n_hibernate_1_1_test_1_1_sql_test_1_1_identity_1_1_ms_s_q_l_1_1_m_s_s_q_l_identity_insert_with_stored_procs_test.html#ae3d893d8f6af46b178cce70c4173f3de", null ],
+    [ "Mappings", "class_n_hibernate_1_1_test_1_1_sql_test_1_1_identity_1_1_ms_s_q_l_1_1_m_s_s_q_l_identity_insert_with_stored_procs_test.html#a21a15fcf6699da7d868d00edc7e99ebd", null ]
+];

@@ -1,0 +1,117 @@
+.TH "NHibernate.Intercept.AbstractFieldInterceptor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Intercept.AbstractFieldInterceptor \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Intercept\&.IFieldInterceptor\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Intercept\&.DefaultFieldInterceptor\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsInitializedField\fP (string field)"
+.br
+.RI "\fIThe the given field initialized for the entity to which we are bound? \fP"
+.ti -1c
+.RI "void \fBMarkDirty\fP ()"
+.br
+.RI "\fIForcefully mark the entity as being dirty\&.\fP"
+.ti -1c
+.RI "void \fBClearDirty\fP ()"
+.br
+.RI "\fIClear the internal dirty flag\&.\fP"
+.ti -1c
+.RI "object \fBIntercept\fP (object target, string fieldName, object value)"
+.br
+.RI "\fI\fBIntercept\fP field set/get \fP"
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly object \fBInvokeImplementation\fP = new object()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsDirty\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBISessionImplementor\fP \fBSession\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsInitialized\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBEntityName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "System\&.Type \fBMappedClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "ISet< string > \fBUninitializedFields\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBInitializing\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 9 of file AbstractFieldInterceptor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Intercept\&.AbstractFieldInterceptor\&.ClearDirty ()"
+
+.PP
+Clear the internal dirty flag\&.
+.PP
+Implements \fBNHibernate\&.Intercept\&.IFieldInterceptor\fP\&.
+.PP
+Definition at line 62 of file AbstractFieldInterceptor\&.cs\&.
+.SS "object NHibernate\&.Intercept\&.AbstractFieldInterceptor\&.Intercept (objecttarget, stringfieldName, objectvalue)"
+
+.PP
+\fBIntercept\fP field set/get 
+.PP
+Implements \fBNHibernate\&.Intercept\&.IFieldInterceptor\fP\&.
+.PP
+Definition at line 89 of file AbstractFieldInterceptor\&.cs\&.
+.SS "bool NHibernate\&.Intercept\&.AbstractFieldInterceptor\&.IsInitializedField (stringfield)"
+
+.PP
+The the given field initialized for the entity to which we are bound? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfield\fP The name of the field to check 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the given field is initialized; otherwise false\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Intercept\&.IFieldInterceptor\fP\&.
+.PP
+Definition at line 52 of file AbstractFieldInterceptor\&.cs\&.
+.SS "void NHibernate\&.Intercept\&.AbstractFieldInterceptor\&.MarkDirty ()"
+
+.PP
+Forcefully mark the entity as being dirty\&.
+.PP
+Implements \fBNHibernate\&.Intercept\&.IFieldInterceptor\fP\&.
+.PP
+Definition at line 57 of file AbstractFieldInterceptor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,198 @@
+.TH "NHibernate.Criterion.Property" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.Property \- 
+.PP
+A factory for property-specific \fBAbstractCriterion\fP and projection instances  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Criterion\&.PropertyProjection\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBBetween\fP (Object min, Object max)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBIn\fP (ICollection values)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBIn\fP (Object[] values)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBLike\fP (Object value)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBLike\fP (String value, \fBMatchMode\fP matchMode)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBEq\fP (Object value)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBGt\fP (Object value)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBLt\fP (Object value)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBLe\fP (Object value)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBGe\fP (Object value)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBEqProperty\fP (\fBProperty\fP other)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBNotEqProperty\fP (\fBProperty\fP other)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBLeProperty\fP (\fBProperty\fP other)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBGeProperty\fP (\fBProperty\fP other)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBLtProperty\fP (\fBProperty\fP other)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBGtProperty\fP (\fBProperty\fP other)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBEqProperty\fP (String other)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBNotEqProperty\fP (String other)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBLeProperty\fP (String other)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBGeProperty\fP (String other)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBLtProperty\fP (String other)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBGtProperty\fP (String other)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBIsNull\fP ()"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBIsNotNull\fP ()"
+.br
+.ti -1c
+.RI "\fBAbstractEmptinessExpression\fP \fBIsEmpty\fP ()"
+.br
+.ti -1c
+.RI "\fBAbstractEmptinessExpression\fP \fBIsNotEmpty\fP ()"
+.br
+.ti -1c
+.RI "\fBCountProjection\fP \fBCount\fP ()"
+.br
+.ti -1c
+.RI "\fBAggregateProjection\fP \fBMax\fP ()"
+.br
+.ti -1c
+.RI "\fBAggregateProjection\fP \fBMin\fP ()"
+.br
+.ti -1c
+.RI "\fBAggregateProjection\fP \fBAvg\fP ()"
+.br
+.ti -1c
+.RI "\fBPropertyProjection\fP \fBGroup\fP ()"
+.br
+.ti -1c
+.RI "\fBOrder\fP \fBAsc\fP ()"
+.br
+.ti -1c
+.RI "\fBOrder\fP \fBDesc\fP ()"
+.br
+.ti -1c
+.RI "\fBProperty\fP \fBGetProperty\fP (String propertyName)"
+.br
+.RI "\fIGet a component attribute of this property \fP"
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBEq\fP (\fBDetachedCriteria\fP subselect)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBNe\fP (\fBDetachedCriteria\fP subselect)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBLt\fP (\fBDetachedCriteria\fP subselect)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBLe\fP (\fBDetachedCriteria\fP subselect)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBBt\fP (\fBDetachedCriteria\fP subselect)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBGe\fP (\fBDetachedCriteria\fP subselect)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBNotIn\fP (\fBDetachedCriteria\fP subselect)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBIn\fP (\fBDetachedCriteria\fP subselect)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBEqAll\fP (\fBDetachedCriteria\fP subselect)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBGtAll\fP (\fBDetachedCriteria\fP subselect)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBLtAll\fP (\fBDetachedCriteria\fP subselect)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBLeAll\fP (\fBDetachedCriteria\fP subselect)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBGeAll\fP (\fBDetachedCriteria\fP subselect)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBGtSome\fP (\fBDetachedCriteria\fP subselect)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBLtSome\fP (\fBDetachedCriteria\fP subselect)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBLeSome\fP (\fBDetachedCriteria\fP subselect)"
+.br
+.ti -1c
+.RI "\fBAbstractCriterion\fP \fBGeSome\fP (\fBDetachedCriteria\fP subselect)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBProperty\fP \fBForName\fP (String propertyName)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A factory for property-specific \fBAbstractCriterion\fP and projection instances 
+
+
+.PP
+Definition at line 10 of file Property\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBProperty\fP NHibernate\&.Criterion\&.Property\&.GetProperty (StringpropertyName)"
+
+.PP
+Get a component attribute of this property 
+.PP
+Definition at line 189 of file Property\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

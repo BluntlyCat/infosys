@@ -1,0 +1,73 @@
+.TH "NHibernate.SqlTypes.SqlType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.SqlTypes.SqlType \- 
+.PP
+This is the base class that adds information to the DbType for the \fBDriver\&.IDriver\fP and \fBDialect\&.Dialect\fP to use\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.SqlTypes\&.AnsiStringFixedLengthSqlType\fP, \fBNHibernate\&.SqlTypes\&.AnsiStringSqlType\fP, \fBNHibernate\&.SqlTypes\&.BinarySqlType\fP, \fBNHibernate\&.SqlTypes\&.StringFixedLengthSqlType\fP, \fBNHibernate\&.SqlTypes\&.StringSqlType\fP, and \fBNHibernate\&.SqlTypes\&.XmlSqlType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlType\fP (DbType dbType)"
+.br
+.ti -1c
+.RI "\fBSqlType\fP (DbType dbType, int length)"
+.br
+.ti -1c
+.RI "\fBSqlType\fP (DbType dbType, byte precision, byte scale)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.ti -1c
+.RI "bool \fBEquals\fP (\fBSqlType\fP rhsSqlType)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "DbType \fBDbType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBLength\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "byte \fBPrecision\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "byte \fBScale\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBLengthDefined\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBPrecisionDefined\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is the base class that adds information to the DbType for the \fBDriver\&.IDriver\fP and \fBDialect\&.Dialect\fP to use\&. 
+
+The \fBDriver\&.IDriver\fP uses the \fBSqlType\fP to get enough information to create an IDbDataParameter\&. 
+.PP
+The \fBDialect\&.Dialect\fP use the \fBSqlType\fP to convert the DbType to the appropriate sql type for SchemaExport\&. 
+.PP
+Definition at line 23 of file SqlType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

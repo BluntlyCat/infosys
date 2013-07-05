@@ -1,0 +1,109 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Tree.ISelectExpression" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Tree.ISelectExpression \- 
+.PP
+Represents an element of a projection list, i\&.e\&. a select expression\&. Author: josh Ported by: Steve Strong  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.AbstractSelectExpression\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.AggregateNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.Case2Node\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.CaseNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ConstructorNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.CountNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IdentNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ParameterNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.QueryNode\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SelectExpressionImpl\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSetScalarColumnText\fP (int i)"
+.br
+.RI "\fIAppends AST nodes that represent the columns after the current AST node\&. (e\&.g\&. 'as col0_O_') \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIType\fP \fBDataType\fP\fC [get]\fP"
+.br
+.RI "\fIReturns the data type of the select expression\&. \fP"
+.ti -1c
+.RI "\fBFromElement\fP \fBFromElement\fP\fC [get]\fP"
+.br
+.RI "\fIReturns the FROM element that this expression refers to\&. \fP"
+.ti -1c
+.RI "bool \fBIsConstructor\fP\fC [get]\fP"
+.br
+.RI "\fIReturns true if the element is a constructor (e\&.g\&. new Foo)\&. \fP"
+.ti -1c
+.RI "bool \fBIsReturnableEntity\fP\fC [get]\fP"
+.br
+.RI "\fIReturns true if this select expression represents an entity that can be returned\&. \fP"
+.ti -1c
+.RI "string \fBText\fP\fC [set]\fP"
+.br
+.RI "\fISets the text of the node\&. \fP"
+.ti -1c
+.RI "bool \fBIsScalar\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBAlias\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents an element of a projection list, i\&.e\&. a select expression\&. Author: josh Ported by: Steve Strong 
+
+
+.PP
+Definition at line 12 of file ISelectExpression\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ISelectExpression\&.SetScalarColumnText (inti)"
+
+.PP
+Appends AST nodes that represent the columns after the current AST node\&. (e\&.g\&. 'as col0_O_') 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP The index of the select expression in the projection list\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.BinaryArithmeticOperatorNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.DotNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ParameterNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.CaseNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.QueryNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IdentNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.MethodNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.AbstractSelectExpression\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ConstructorNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.AggregateNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.CountNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.Case2Node\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IndexNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.UnaryArithmeticNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SelectExpressionImpl\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.LiteralNode\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBIType\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ISelectExpression\&.DataType\fC [get]\fP"
+
+.PP
+Returns the data type of the select expression\&. 
+.PP
+Definition at line 17 of file ISelectExpression\&.cs\&.
+.SS "\fBFromElement\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ISelectExpression\&.FromElement\fC [get]\fP"
+
+.PP
+Returns the FROM element that this expression refers to\&. 
+.PP
+Definition at line 29 of file ISelectExpression\&.cs\&.
+.SS "bool NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ISelectExpression\&.IsConstructor\fC [get]\fP"
+
+.PP
+Returns true if the element is a constructor (e\&.g\&. new Foo)\&. 
+.PP
+Definition at line 34 of file ISelectExpression\&.cs\&.
+.SS "bool NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ISelectExpression\&.IsReturnableEntity\fC [get]\fP"
+
+.PP
+Returns true if this select expression represents an entity that can be returned\&. 
+.PP
+Definition at line 39 of file ISelectExpression\&.cs\&.
+.SS "string NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ISelectExpression\&.Text\fC [set]\fP"
+
+.PP
+Sets the text of the node\&. 
+.PP
+Definition at line 44 of file ISelectExpression\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

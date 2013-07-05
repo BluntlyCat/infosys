@@ -1,0 +1,87 @@
+.TH "NHibernate.Exceptions.SQLStateConverter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Exceptions.SQLStateConverter \- 
+.PP
+A SQLExceptionConverter implementation which performs no conversion of the underlying System\&.Data\&.Common\&.DbException\&. Interpretation of a SQL error based on System\&.Data\&.Common\&.DbException is not possible as using the ErrorCode (which is, however, vendor- specific)\&. Use of a ErrorCode-based converter should be preferred approach for converting/interpreting SQLExceptions\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Exceptions\&.ISQLExceptionConverter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSQLStateConverter\fP (\fBIViolatedConstraintNameExtracter\fP extracter)"
+.br
+.ti -1c
+.RI "Exception \fBConvert\fP (\fBAdoExceptionContextInfo\fP exceptionInfo)"
+.br
+.RI "\fIConvert the given System\&.Data\&.Common\&.DbException into custom Exception\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBADOException\fP \fBHandledNonSpecificException\fP (Exception sqlException, string message, string sql)"
+.br
+.RI "\fIHandle an exception not converted to a specific type based on the SQLState\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A SQLExceptionConverter implementation which performs no conversion of the underlying System\&.Data\&.Common\&.DbException\&. Interpretation of a SQL error based on System\&.Data\&.Common\&.DbException is not possible as using the ErrorCode (which is, however, vendor- specific)\&. Use of a ErrorCode-based converter should be preferred approach for converting/interpreting SQLExceptions\&. 
+
+
+.PP
+Definition at line 13 of file SQLStateConverter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "Exception NHibernate\&.Exceptions\&.SQLStateConverter\&.Convert (\fBAdoExceptionContextInfo\fPadoExceptionContextInfo)"
+
+.PP
+Convert the given System\&.Data\&.Common\&.DbException into custom Exception\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIadoExceptionContextInfo\fP Available information during exception throw\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The resulting Exception to throw\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Exceptions\&.ISQLExceptionConverter\fP\&.
+.PP
+Definition at line 21 of file SQLStateConverter\&.cs\&.
+.SS "static \fBADOException\fP NHibernate\&.Exceptions\&.SQLStateConverter\&.HandledNonSpecificException (ExceptionsqlException, stringmessage, stringsql)\fC [static]\fP"
+
+.PP
+Handle an exception not converted to a specific type based on the SQLState\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlException\fP The exception to be handled\&. 
+.br
+\fImessage\fP An optional message 
+.br
+\fIsql\fP Optionally, the sql being performed when the exception occurred\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The converted exception; should \fBnever\fP be null\&. 
+.RE
+.PP
+
+.PP
+Definition at line 39 of file SQLStateConverter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

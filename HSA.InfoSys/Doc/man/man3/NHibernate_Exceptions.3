@@ -1,0 +1,81 @@
+.TH "NHibernate.Exceptions" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Exceptions \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBADOConnectionException\fP"
+.br
+.RI "\fIImplementation of \fBADOException\fP indicating problems with communicating with the database (can also include incorrect ADO setup)\&. \fP"
+.ti -1c
+.RI "class \fBAdoExceptionContextInfo\fP"
+.br
+.RI "\fICollect data of an \fBADOException\fP to be converted\&. \fP"
+.ti -1c
+.RI "class \fBADOExceptionHelper\fP"
+.br
+.ti -1c
+.RI "class \fBConstraintViolationException\fP"
+.br
+.RI "\fIImplementation of \fBADOException\fP indicating that the requested DML operation resulted in a violation of a defined integrity constraint\&. \fP"
+.ti -1c
+.RI "class \fBDataException\fP"
+.br
+.RI "\fIImplementation of \fBADOException\fP indicating that evaluation of the valid SQL statement against the given data resulted in some illegal operation, mismatched types or incorrect cardinality\&. \fP"
+.ti -1c
+.RI "class \fBGenericADOException\fP"
+.br
+.ti -1c
+.RI "interface \fBIConfigurable\fP"
+.br
+.RI "\fIThe Configurable interface defines the contract for \fBISQLExceptionConverter\fP impls that want to be configured prior to usage given the currently defined Hibernate properties\&. \fP"
+.ti -1c
+.RI "interface \fBISQLExceptionConverter\fP"
+.br
+.RI "\fIDefines a contract for implementations that know how to convert a System\&.Data\&.Common\&.DbException into \fBNHibernate\fP's \fBADOException\fP hierarchy\&. \fP"
+.ti -1c
+.RI "interface \fBIViolatedConstraintNameExtracter\fP"
+.br
+.RI "\fIDefines a contract for implementations that can extract the name of a violated constraint from a SQLException that is the result of that constraint violation\&. \fP"
+.ti -1c
+.RI "class \fBLockAcquisitionException\fP"
+.br
+.RI "\fIImplementation of \fBADOException\fP indicating a problem acquiring lock on the database\&. \fP"
+.ti -1c
+.RI "class \fBNoOpViolatedConstraintNameExtracter\fP"
+.br
+.ti -1c
+.RI "class \fBReflectionBasedSqlStateExtracter\fP"
+.br
+.ti -1c
+.RI "class \fBSQLExceptionConverterFactory\fP"
+.br
+.RI "\fIA factory for building SQLExceptionConverter instances\&. \fP"
+.ti -1c
+.RI "class \fBSQLGrammarException\fP"
+.br
+.RI "\fIImplementation of \fBADOException\fP indicating that the SQL sent to the database server was invalid (syntax error, invalid object references, etc)\&. \fP"
+.ti -1c
+.RI "class \fBSqlParseException\fP"
+.br
+.ti -1c
+.RI "class \fBSQLStateConverter\fP"
+.br
+.RI "\fIA SQLExceptionConverter implementation which performs no conversion of the underlying System\&.Data\&.Common\&.DbException\&. Interpretation of a SQL error based on System\&.Data\&.Common\&.DbException is not possible as using the ErrorCode (which is, however, vendor- specific)\&. Use of a ErrorCode-based converter should be preferred approach for converting/interpreting SQLExceptions\&. \fP"
+.ti -1c
+.RI "class \fBSqlStateExtracter\fP"
+.br
+.ti -1c
+.RI "class \fBTemplatedViolatedConstraintNameExtracter\fP"
+.br
+.RI "\fIKnows how to extract a violated constraint name from an error message based on the fact that the constraint name is templated within the message\&. \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,545 @@
+.TH "log4net.Layout.PatternLayout" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Layout.PatternLayout \- 
+.PP
+A flexible layout configurable with pattern string\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Layout\&.LayoutSkeleton\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPatternLayout\fP ()"
+.br
+.RI "\fIConstructs a \fBPatternLayout\fP using the DefaultConversionPattern \fP"
+.ti -1c
+.RI "\fBPatternLayout\fP (string pattern)"
+.br
+.RI "\fIConstructs a \fBPatternLayout\fP using the supplied conversion pattern \fP"
+.ti -1c
+.RI "override void \fBActivateOptions\fP ()"
+.br
+.RI "\fIInitialize layout options \fP"
+.ti -1c
+.RI "override void \fBFormat\fP (TextWriter writer, \fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIProduces a formatted string as specified by the conversion pattern\&. \fP"
+.ti -1c
+.RI "void \fBAddConverter\fP (\fBConverterInfo\fP converterInfo)"
+.br
+.RI "\fIAdd a converter to this \fBPatternLayout\fP \fP"
+.ti -1c
+.RI "void \fBAddConverter\fP (string name, Type type)"
+.br
+.RI "\fIAdd a converter to this \fBPatternLayout\fP \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBDefaultConversionPattern\fP ='%message%newline'"
+.br
+.RI "\fIDefault pattern string for log output\&. \fP"
+.ti -1c
+.RI "const string \fBDetailConversionPattern\fP = '%timestamp [%thread] %level %logger %ndc - %message%newline'"
+.br
+.RI "\fIA detailed conversion pattern \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBPatternParser\fP \fBCreatePatternParser\fP (string pattern)"
+.br
+.RI "\fICreate the pattern parser instance \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBConversionPattern\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe pattern formatting string \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A flexible layout configurable with pattern string\&. 
+
+The goal of this class is to \fBPatternLayout\&.Format(TextWriter,LoggingEvent)\fP a LoggingEvent as a string\&. The results depend on the \fIconversion pattern\fP\&. 
+.PP
+The conversion pattern is closely related to the conversion pattern of the printf function in C\&. A conversion pattern is composed of literal text and format control expressions called \fIconversion specifiers\fP\&. 
+.PP
+\fIYou are free to insert any literal text within the conversion pattern\&.\fP 
+.PP
+Each conversion specifier starts with a percent sign (%) and is followed by optional \fIformat modifiers\fP and a \fIconversion pattern name\fP\&. The conversion pattern name specifies the type of data, e\&.g\&. logger, level, date, thread name\&. The format modifiers control such things as field width, padding, left and right justification\&. The following is a simple example\&. 
+.PP
+Let the conversion pattern be \fB'%-5level [%thread]: %message%newline'\fP and assume that the \fBlog4net\fP environment was set to use a \fBPatternLayout\fP\&. Then the statements 
+.PP
+.PP
+.nf
+ILog log = LogManager\&.GetLogger(typeof(TestApp));
+log\&.Debug("Message 1");
+log\&.Warn("Message 2");   
+.fi
+.PP
+ 
+.PP
+would yield the output
+.PP
+.PP
+.nf
+DEBUG [main]: Message 1
+WARN  [main]: Message 2  
+.fi
+.PP
+ 
+.PP
+Note that there is no explicit separator between text and conversion specifiers\&. The pattern parser knows when it has reached the end of a conversion specifier when it reads a conversion character\&. In the example above the conversion specifier \fB%-5level\fP means the level of the logging event should be left justified to a width of five characters\&. 
+.PP
+The recognized conversion pattern names are: 
+.PP
+Conversion \fBPattern\fP Name Effect  a Equivalent to \fBappdomain\fP  appdomain Used to output the friendly name of the AppDomain where the logging event was generated\&.   aspnet-cache Used to output all cache items in the case of \fBaspnet-cache\fP or just one named item if used as \fBaspnet-cache{key}\fP 
+.PP
+This pattern is not available for Compact Framework or Client Profile assemblies\&. 
+.PP
+aspnet-context  
+.PP
+Used to output all context items in the case of \fBaspnet-context\fP or just one named item if used as \fBaspnet-context{key}\fP 
+.PP
+This pattern is not available for Compact Framework or Client Profile assemblies\&. 
+.PP
+aspnet-request  
+.PP
+Used to output all request parameters in the case of \fBaspnet-request\fP or just one named param if used as \fBaspnet-request{key}\fP 
+.PP
+This pattern is not available for Compact Framework or Client Profile assemblies\&. 
+.PP
+aspnet-session  
+.PP
+Used to output all session items in the case of \fBaspnet-session\fP or just one named item if used as \fBaspnet-session{key}\fP 
+.PP
+This pattern is not available for Compact Framework or Client Profile assemblies\&. 
+.PP
+c Equivalent to \fBlogger\fP   C Equivalent to \fBtype\fP   class Equivalent to \fBtype\fP   d Equivalent to \fBdate\fP   date  
+.PP
+Used to output the date of the logging event in the local time zone\&. To output the date in universal time use the \fCutcdate\fP pattern\&. The date conversion specifier may be followed by a \fIdate format specifier\fP enclosed between braces\&. For example, \fBdate{HH:mm:ss,fff}\fP or \fBdate{dd MMM yyyy HH:mm:ss,fff}\fP\&. If no date format specifier is given then ISO8601 format is assumed (\fBlog4net\&.DateFormatter\&.Iso8601DateFormatter\fP)\&. 
+.PP
+The date format specifier admits the same syntax as the time pattern string of the DateTime\&.ToString(string)\&. 
+.PP
+For better results it is recommended to use the \fBlog4net\fP date formatters\&. These can be specified using one of the strings 'ABSOLUTE', 'DATE' and 'ISO8601' for specifying \fBlog4net\&.DateFormatter\&.AbsoluteTimeDateFormatter\fP, \fBlog4net\&.DateFormatter\&.DateTimeDateFormatter\fP and respectively \fBlog4net\&.DateFormatter\&.Iso8601DateFormatter\fP\&. For example, \fBdate{ISO8601}\fP or \fBdate{ABSOLUTE}\fP\&. 
+.PP
+These dedicated date formatters perform significantly better than DateTime\&.ToString(string)\&. 
+.PP
+exception  
+.PP
+Used to output the exception passed in with the log message\&. 
+.PP
+If an exception object is stored in the logging event it will be rendered into the pattern output with a trailing newline\&. If there is no exception then nothing will be output and no trailing newline will be appended\&. It is typical to put a newline before the exception and to have the exception as the last data in the pattern\&. 
+.PP
+F Equivalent to \fBfile\fP   file  
+.PP
+Used to output the file name where the logging request was issued\&. 
+.PP
+\fBWARNING\fP Generating caller location information is extremely slow\&. Its use should be avoided unless execution speed is not an issue\&. 
+.PP
+See the note below on the availability of caller location information\&. 
+.PP
+identity  
+.PP
+Used to output the user name for the currently active user (Principal\&.Identity\&.Name)\&. 
+.PP
+\fBWARNING\fP Generating caller information is extremely slow\&. Its use should be avoided unless execution speed is not an issue\&. 
+.PP
+l Equivalent to \fBlocation\fP   L Equivalent to \fBline\fP   location  
+.PP
+Used to output location information of the caller which generated the logging event\&. 
+.PP
+The location information depends on the CLI implementation but usually consists of the fully qualified name of the calling method followed by the callers source the file name and line number between parentheses\&. 
+.PP
+The location information can be very useful\&. However, its generation is \fBextremely\fP slow\&. Its use should be avoided unless execution speed is not an issue\&. 
+.PP
+See the note below on the availability of caller location information\&. 
+.PP
+level  
+.PP
+Used to output the level of the logging event\&. 
+.PP
+line  
+.PP
+Used to output the line number from where the logging request was issued\&. 
+.PP
+\fBWARNING\fP Generating caller location information is extremely slow\&. Its use should be avoided unless execution speed is not an issue\&. 
+.PP
+See the note below on the availability of caller location information\&. 
+.PP
+logger  
+.PP
+Used to output the logger of the logging event\&. The logger conversion specifier can be optionally followed by \fIprecision specifier\fP, that is a decimal constant in brackets\&. 
+.PP
+If a precision specifier is given, then only the corresponding number of right most components of the logger name will be printed\&. By default the logger name is printed in full\&. 
+.PP
+For example, for the logger name 'a\&.b\&.c' the pattern \fBlogger{2}\fP will output 'b\&.c'\&. 
+.PP
+m Equivalent to \fBmessage\fP   M Equivalent to \fBmethod\fP   message  
+.PP
+Used to output the application supplied message associated with the logging event\&. 
+.PP
+mdc  
+.PP
+The \fBMDC\fP (old name for the \fBThreadContext\&.Properties\fP) is now part of the combined event properties\&. This pattern is supported for compatibility but is equivalent to \fBproperty\fP\&. 
+.PP
+method  
+.PP
+Used to output the method name where the logging request was issued\&. 
+.PP
+\fBWARNING\fP Generating caller location information is extremely slow\&. Its use should be avoided unless execution speed is not an issue\&. 
+.PP
+See the note below on the availability of caller location information\&. 
+.PP
+n Equivalent to \fBnewline\fP   newline  
+.PP
+Outputs the platform dependent line separator character or characters\&. 
+.PP
+This conversion pattern offers the same performance as using non-portable line separator strings such as '\\n', or '\\r\\n'\&. Thus, it is the preferred way of specifying a line separator\&. 
+.PP
+ndc  
+.PP
+Used to output the \fBNDC\fP (nested diagnostic context) associated with the thread that generated the logging event\&. 
+.PP
+p Equivalent to \fBlevel\fP   P Equivalent to \fBproperty\fP   properties Equivalent to \fBproperty\fP   property  
+.PP
+Used to output the an event specific property\&. The key to lookup must be specified within braces and directly following the pattern specifier, e\&.g\&. \fBproperty{user}\fP would include the value from the property that is keyed by the string 'user'\&. Each property value that is to be included in the log must be specified separately\&. Properties are added to events by loggers or appenders\&. By default the \fC\fBlog4net\fP:HostName\fP property is set to the name of machine on which the event was originally logged\&. 
+.PP
+If no key is specified, e\&.g\&. \fBproperty\fP then all the keys and their values are printed in a comma separated list\&. 
+.PP
+The properties of an event are combined from a number of different contexts\&. These are listed below in the order in which they are searched\&. 
+.PP
+.PD 0
+.IP "\(bu" 2
+the event properties  The event has LoggingEvent\&.Properties that can be set\&. These properties are specific to this event only\&.   
+.IP "\(bu" 2
+the thread properties  The \fBThreadContext\&.Properties\fP that are set on the current thread\&. These properties are shared by all events logged on this thread\&.   
+.IP "\(bu" 2
+the global properties  The \fBGlobalContext\&.Properties\fP that are set globally\&. These properties are shared by all the threads in the AppDomain\&.   
+.PP
+.PP
+r Equivalent to \fBtimestamp\fP   stacktrace  
+.PP
+Used to output the stack trace of the logging event The stack trace level specifier may be enclosed between braces\&. For example, \fBstacktrace{level}\fP\&. If no stack trace level specifier is given then 1 is assumed 
+.PP
+Output uses the format: type3\&.MethodCall3 > type2\&.MethodCall2 > type1\&.MethodCall1 
+.PP
+This pattern is not available for Compact Framework assemblies\&. 
+.PP
+stacktracedetail  
+.PP
+Used to output the stack trace of the logging event The stack trace level specifier may be enclosed between braces\&. For example, \fBstacktracedetail{level}\fP\&. If no stack trace level specifier is given then 1 is assumed 
+.PP
+Output uses the format: type3\&.MethodCall3(type param,\&.\&.\&.) > type2\&.MethodCall2(type param,\&.\&.\&.) > type1\&.MethodCall1(type param,\&.\&.\&.) 
+.PP
+This pattern is not available for Compact Framework assemblies\&. 
+.PP
+t Equivalent to \fBthread\fP   timestamp  
+.PP
+Used to output the number of milliseconds elapsed since the start of the application until the creation of the logging event\&. 
+.PP
+thread  
+.PP
+Used to output the name of the thread that generated the logging event\&. Uses the thread number if no name is available\&. 
+.PP
+type  
+.PP
+Used to output the fully qualified type name of the caller issuing the logging request\&. This conversion specifier can be optionally followed by \fIprecision specifier\fP, that is a decimal constant in brackets\&. 
+.PP
+If a precision specifier is given, then only the corresponding number of right most components of the class name will be printed\&. By default the class name is output in fully qualified form\&. 
+.PP
+For example, for the class name 'log4net\&.Layout\&.PatternLayout', the pattern \fBtype{1}\fP will output 'PatternLayout'\&. 
+.PP
+\fBWARNING\fP Generating the caller class information is slow\&. Thus, its use should be avoided unless execution speed is not an issue\&. 
+.PP
+See the note below on the availability of caller location information\&. 
+.PP
+u Equivalent to \fBidentity\fP   username  
+.PP
+Used to output the WindowsIdentity for the currently active user\&. 
+.PP
+\fBWARNING\fP Generating caller WindowsIdentity information is extremely slow\&. Its use should be avoided unless execution speed is not an issue\&. 
+.PP
+utcdate  
+.PP
+Used to output the date of the logging event in universal time\&. The date conversion specifier may be followed by a \fIdate format specifier\fP enclosed between braces\&. For example, \fButcdate{HH:mm:ss,fff}\fP or \fButcdate{dd MMM yyyy HH:mm:ss,fff}\fP\&. If no date format specifier is given then ISO8601 format is assumed (\fBlog4net\&.DateFormatter\&.Iso8601DateFormatter\fP)\&. 
+.PP
+The date format specifier admits the same syntax as the time pattern string of the DateTime\&.ToString(string)\&. 
+.PP
+For better results it is recommended to use the \fBlog4net\fP date formatters\&. These can be specified using one of the strings 'ABSOLUTE', 'DATE' and 'ISO8601' for specifying \fBlog4net\&.DateFormatter\&.AbsoluteTimeDateFormatter\fP, \fBlog4net\&.DateFormatter\&.DateTimeDateFormatter\fP and respectively \fBlog4net\&.DateFormatter\&.Iso8601DateFormatter\fP\&. For example, \fButcdate{ISO8601}\fP or \fButcdate{ABSOLUTE}\fP\&. 
+.PP
+These dedicated date formatters perform significantly better than DateTime\&.ToString(string)\&. 
+.PP
+w Equivalent to \fBusername\fP   x Equivalent to \fBndc\fP   X Equivalent to \fBmdc\fP   %  
+.PP
+The sequence %% outputs a single percent sign\&. 
+.PP
+The single letter patterns are deprecated in favor of the longer more descriptive pattern names\&. 
+.PP
+By default the relevant information is output as is\&. However, with the aid of format modifiers it is possible to change the minimum field width, the maximum field width and justification\&. 
+.PP
+The optional format modifier is placed between the percent sign and the conversion pattern name\&. 
+.PP
+The first optional format modifier is the \fIleft justification flag\fP which is just the minus (-) character\&. Then comes the optional \fIminimum field width\fP modifier\&. This is a decimal constant that represents the minimum number of characters to output\&. If the data item requires fewer characters, it is padded on either the left or the right until the minimum width is reached\&. The default is to pad on the left (right justify) but you can specify right padding with the left justification flag\&. The padding character is space\&. If the data item is larger than the minimum field width, the field is expanded to accommodate the data\&. The value is never truncated\&. 
+.PP
+This behavior can be changed using the \fImaximum field width\fP modifier which is designated by a period followed by a decimal constant\&. If the data item is longer than the maximum field, then the extra characters are removed from the \fIbeginning\fP of the data item and not from the end\&. For example, it the maximum field width is eight and the data item is ten characters long, then the first two characters of the data item are dropped\&. This behavior deviates from the printf function in C where truncation is done from the end\&. 
+.PP
+Below are various format modifier examples for the logger conversion specifier\&. 
+.PP
+ Format modifier left justify minimum width maximum width comment  %20logger false 20 none Left pad with spaces if the logger name is less than 20 characters long\&. 
+.PP
+   
+.PP
+ 
+.PP
+%-20logger 
+.PP
+true 
+.PP
+20 
+.PP
+none 
+.PP
+ 
+.PP
+ Right pad with spaces if the logger name is less than 20 characters long\&. 
+.PP
+   
+.PP
+ 
+.PP
+%\&.30logger 
+.PP
+NA 
+.PP
+none 
+.PP
+30 
+.PP
+ 
+.PP
+ Truncate from the beginning if the logger name is longer than 30 characters\&. 
+.PP
+   
+.PP
+ 
+.PP
+<nobr>%20\&.30logger</nobr> 
+.PP
+false 
+.PP
+20 
+.PP
+30 
+.PP
+ 
+.PP
+ Left pad with spaces if the logger name is shorter than 20 characters\&. However, if logger name is longer than 30 characters, then truncate from the beginning\&. 
+.PP
+   
+.PP
+ 
+.PP
+%-20\&.30logger 
+.PP
+true 
+.PP
+20 
+.PP
+30 
+.PP
+ 
+.PP
+ Right pad with spaces if the logger name is shorter than 20 characters\&. However, if logger name is longer than 30 characters, then truncate from the beginning\&. 
+.PP
+   
+.PP
+  
+.PP
+\fBNote about caller location information\&.\fP
+.br
+ The following patterns \fCtype file line method location class C F L l M\fP all generate caller location information\&. Location information uses the \fCSystem\&.Diagnostics\&.StackTrace\fP class to generate a call stack\&. The caller's information is then extracted from this stack\&. 
+.PP
+<note type='caution'> 
+.PP
+The \fCSystem\&.Diagnostics\&.StackTrace\fP class is not supported on the \&.NET Compact Framework 1\&.0 therefore caller location information is not available on that framework\&. 
+.PP
+</note> <note type='caution'> 
+.PP
+The \fCSystem\&.Diagnostics\&.StackTrace\fP class has this to say about Release builds: 
+.PP
+"StackTrace information will be most informative with Debug build configurations\&. By default, Debug builds include debug symbols, while Release builds do not\&. The debug symbols contain most of the file, method name, line number, and column information used in constructing StackFrame and StackTrace objects\&. StackTrace might not report as many method calls as expected, due to code transformations that occur during optimization\&." 
+.PP
+This means that in a Release build the caller information may be incomplete or may not exist at all! Therefore caller location information cannot be relied upon in a Release build\&. 
+.PP
+</note> 
+.PP
+Additional pattern converters may be registered with a specific \fBPatternLayout\fP instance using the \fBAddConverter(string, Type)\fP method\&. 
+.PP
+This is a more detailed pattern\&. 
+.PP
+.nf
+<b>%timestamp [%thread] %level %logger %ndc - %message%newline</b>
+
+.fi
+.PP
+ 
+.PP
+A similar pattern except that the relative time is right padded if less than 6 digits, thread name is right padded if less than 15 characters and truncated if longer and the logger name is left padded if shorter than 30 characters and truncated if longer\&. 
+.PP
+.nf
+<b>%-6timestamp [%15\&.15thread] %-5level %30\&.30logger %ndc - %message%newline</b>
+
+.fi
+.PP
+ 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> <author>Douglas de la Torre</author> <author>Daniel Cazzulino</author> 
+.PP
+Definition at line 782 of file PatternLayout\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Layout\&.PatternLayout\&.PatternLayout ()"
+
+.PP
+Constructs a \fBPatternLayout\fP using the DefaultConversionPattern The default pattern just produces the application supplied message\&. 
+.PP
+Note to Inheritors: This constructor calls the virtual method \fBCreatePatternParser\fP\&. If you override this method be aware that it will be called before your is called constructor\&. 
+.PP
+As per the IOptionHandler contract the \fBActivateOptions\fP method must be called after the properties on this object have been configured\&. 
+.PP
+Definition at line 960 of file PatternLayout\&.cs\&.
+.SS "log4net\&.Layout\&.PatternLayout\&.PatternLayout (stringpattern)"
+
+.PP
+Constructs a \fBPatternLayout\fP using the supplied conversion pattern 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpattern\fP the pattern to use
+.RE
+.PP
+.PP
+Note to Inheritors: This constructor calls the virtual method \fBCreatePatternParser\fP\&. If you override this method be aware that it will be called before your is called constructor\&. 
+.PP
+When using this constructor the \fBActivateOptions\fP method need not be called\&. This may not be the case when using a subclass\&. 
+.PP
+Definition at line 979 of file PatternLayout\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Layout\&.PatternLayout\&.ActivateOptions ()\fC [virtual]\fP"
+
+.PP
+Initialize layout options This is part of the IOptionHandler delayed object activation scheme\&. The \fBActivateOptions\fP method must be called on this object after the configuration properties have been set\&. Until \fBActivateOptions\fP is called this object is in an undefined state and must not be used\&. 
+.PP
+If any of the configuration properties are modified then \fBActivateOptions\fP must be called again\&. 
+.PP
+Implements \fBlog4net\&.Layout\&.LayoutSkeleton\fP\&.
+.PP
+Definition at line 1061 of file PatternLayout\&.cs\&.
+.SS "void log4net\&.Layout\&.PatternLayout\&.AddConverter (\fBConverterInfo\fPconverterInfo)"
+
+.PP
+Add a converter to this \fBPatternLayout\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconverterInfo\fP the converter info
+.RE
+.PP
+.PP
+This version of the method is used by the configurator\&. Programmatic users should use the alternative \fBAddConverter(string,Type)\fP method\&. 
+.PP
+Definition at line 1131 of file PatternLayout\&.cs\&.
+.SS "void log4net\&.Layout\&.PatternLayout\&.AddConverter (stringname, Typetype)"
+
+.PP
+Add a converter to this \fBPatternLayout\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP the name of the conversion pattern for this converter
+.br
+\fItype\fP the type of the converter
+.RE
+.PP
+.PP
+Add a named pattern converter to this instance\&. This converter will be used in the formatting of the event\&. This method must be called before \fBActivateOptions\fP\&. 
+.PP
+The \fItype\fP  specified must extend the PatternConverter type\&. 
+.PP
+Definition at line 1158 of file PatternLayout\&.cs\&.
+.SS "virtual \fBPatternParser\fP log4net\&.Layout\&.PatternLayout\&.CreatePatternParser (stringpattern)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Create the pattern parser instance 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpattern\fP the pattern to parse
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The PatternParser that will format the event
+.RE
+.PP
+.PP
+Creates the PatternParser used to parse the conversion string\&. Sets the global and instance rules on the PatternParser\&. 
+.PP
+Definition at line 1022 of file PatternLayout\&.cs\&.
+.SS "override void log4net\&.Layout\&.PatternLayout\&.Format (TextWriterwriter, \fBLoggingEvent\fPloggingEvent)\fC [virtual]\fP"
+
+.PP
+Produces a formatted string as specified by the conversion pattern\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP the event being logged
+.br
+\fIwriter\fP The TextWriter to write the formatted event to
+.RE
+.PP
+.PP
+Parse the LoggingEvent using the patter format specified in the \fBConversionPattern\fP property\&. 
+.PP
+Implements \fBlog4net\&.Layout\&.LayoutSkeleton\fP\&.
+.PP
+Definition at line 1098 of file PatternLayout\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const string log4net\&.Layout\&.PatternLayout\&.DefaultConversionPattern ='%message%newline'"
+
+.PP
+Default pattern string for log output\&. Default pattern string for log output\&. Currently set to the string \fB'%message%newline'\fP which just prints the application supplied message\&. 
+.PP
+Definition at line 796 of file PatternLayout\&.cs\&.
+.SS "const string log4net\&.Layout\&.PatternLayout\&.DetailConversionPattern = '%timestamp [%thread] %level %logger %ndc - %message%newline'"
+
+.PP
+A detailed conversion pattern A conversion pattern which includes Time, Thread, Logger, and Nested Context\&. Current value is \fBtimestamp [thread] level logger ndc - messagenewline\fP\&. 
+.PP
+Definition at line 807 of file PatternLayout\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string log4net\&.Layout\&.PatternLayout\&.ConversionPattern\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The pattern formatting string The \fBConversionPattern\fP option\&. This is the string which controls formatting and consists of a mix of literal content and conversion specifiers\&. 
+.PP
+Definition at line 1006 of file PatternLayout\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

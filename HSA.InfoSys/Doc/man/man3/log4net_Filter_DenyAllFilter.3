@@ -1,0 +1,70 @@
+.TH "log4net.Filter.DenyAllFilter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Filter.DenyAllFilter \- 
+.PP
+This filter drops all LoggingEvent\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Filter\&.FilterSkeleton\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDenyAllFilter\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.ti -1c
+.RI "override \fBFilterDecision\fP \fBDecide\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIAlways returns the integer constant FilterDecision\&.Deny \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+This filter drops all LoggingEvent\&. 
+
+You can add this filter to the end of a filter chain to switch from the default 'accept all unless instructed otherwise' filtering behavior to a 'deny all unless instructed otherwise' behavior\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 39 of file DenyAllFilter\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Filter\&.DenyAllFilter\&.DenyAllFilter ()"
+
+.PP
+Default constructor 
+.PP
+Definition at line 46 of file DenyAllFilter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBFilterDecision\fP log4net\&.Filter\&.DenyAllFilter\&.Decide (\fBLoggingEvent\fPloggingEvent)\fC [virtual]\fP"
+
+.PP
+Always returns the integer constant FilterDecision\&.Deny 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP the LoggingEvent to filter
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Always returns FilterDecision\&.Deny
+.RE
+.PP
+.PP
+Ignores the event being logged and just returns FilterDecision\&.Deny\&. This can be used to change the default filter chain behavior from FilterDecision\&.Accept to FilterDecision\&.Deny\&. This filter should only be used as the last filter in the chain as any further filters will be ignored! 
+.PP
+Implements \fBlog4net\&.Filter\&.FilterSkeleton\fP\&.
+.PP
+Definition at line 68 of file DenyAllFilter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

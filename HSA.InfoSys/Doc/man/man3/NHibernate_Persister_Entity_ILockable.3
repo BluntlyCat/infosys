@@ -1,0 +1,100 @@
+.TH "NHibernate.Persister.Entity.ILockable" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Persister.Entity.ILockable \- 
+.PP
+Contract for things that can be locked via a \fBNHibernate\&.Dialect\&.Lock\&.ILockingStrategy\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBGetRootTableAlias\fP (string drivingAlias)"
+.br
+.RI "\fIGet the SQL alias this persister would use for the root table given the passed driving alias\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBRootTableName\fP\fC [get]\fP"
+.br
+.RI "\fILocks are always applied to the 'root table'\&. \fP"
+.ti -1c
+.RI "string[] \fBRootTableIdentifierColumnNames\fP\fC [get]\fP"
+.br
+.RI "\fIGet the names of columns on the root table used to persist the identifier\&. \fP"
+.ti -1c
+.RI "string \fBVersionColumnName\fP\fC [get]\fP"
+.br
+.RI "\fIFor versioned entities, get the name of the column (again, expected on the root table) used to store the version values\&. \fP"
+.ti -1c
+.RI "\fBSqlType\fP[] \fBIdAndVersionSqlTypes\fP\fC [get]\fP"
+.br
+.RI "\fITo build the SQL command in pessimistic lock \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Contract for things that can be locked via a \fBNHibernate\&.Dialect\&.Lock\&.ILockingStrategy\fP\&. 
+
+Currently only the root table gets locked, except for the case of HQL and Criteria queries against dialects which do not support either (1) FOR UPDATE OF or (2) support hint locking (in which case \fIall\fP queried tables would be locked)\&. 
+.PP
+Definition at line 13 of file ILockable\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string NHibernate\&.Persister\&.Entity\&.ILockable\&.GetRootTableAlias (stringdrivingAlias)"
+
+.PP
+Get the SQL alias this persister would use for the root table given the passed driving alias\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdrivingAlias\fP The driving alias; or the alias for the table mapped by this persister in the hierarchy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The root table alias\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBSqlType\fP [] NHibernate\&.Persister\&.Entity\&.ILockable\&.IdAndVersionSqlTypes\fC [get]\fP"
+
+.PP
+To build the SQL command in pessimistic lock 
+.PP
+Definition at line 45 of file ILockable\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.ILockable\&.RootTableIdentifierColumnNames\fC [get]\fP"
+
+.PP
+Get the names of columns on the root table used to persist the identifier\&. 
+.PP
+Definition at line 23 of file ILockable\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.ILockable\&.RootTableName\fC [get]\fP"
+
+.PP
+Locks are always applied to the 'root table'\&. 
+.PP
+Definition at line 18 of file ILockable\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.ILockable\&.VersionColumnName\fC [get]\fP"
+
+.PP
+For versioned entities, get the name of the column (again, expected on the root table) used to store the version values\&. 
+.PP
+Definition at line 29 of file ILockable\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

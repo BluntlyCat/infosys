@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_non_inverse_1_1_4104581489a55127b0fafdfa73d6b781 =
+[
+    [ "Mappings", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_non_inverse_1_1_4104581489a55127b0fafdfa73d6b781.html#ae043e983a6ef8d9b4ce12d468b5f7490", null ]
+];

@@ -1,0 +1,13 @@
+var namespace_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection =
+[
+    [ "Inverse", "namespace_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_inverse.html", "namespace_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_inverse" ],
+    [ "NonInverse", "namespace_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_non_inverse.html", "namespace_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_non_inverse" ],
+    [ "AbstractEntityWithManyToManyTest", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_abstract_entity_with_many_to_many_test.html", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_abstract_entity_with_many_to_many_test" ],
+    [ "AbstractEntityWithOneToManyTest", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_abstract_entity_with_one_to_many_test.html", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_abstract_entity_with_one_to_many_test" ],
+    [ "Contract", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_contract.html", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_contract" ],
+    [ "ContractVariation", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_contract_variation.html", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_contract_variation" ],
+    [ "Info", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_info.html", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_info" ],
+    [ "Owner", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_owner.html", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_owner" ],
+    [ "Party", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_party.html", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_party" ],
+    [ "Plan", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_plan.html", "class_n_hibernate_1_1_test_1_1_immutable_1_1_entity_with_mutable_collection_1_1_plan" ]
+];

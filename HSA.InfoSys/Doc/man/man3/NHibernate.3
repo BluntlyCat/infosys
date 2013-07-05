@@ -1,0 +1,473 @@
+.TH "NHibernate" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "package \fBAction\fP"
+.br
+.ti -1c
+.RI "package \fBAdoNet\fP"
+.br
+.ti -1c
+.RI "package \fBBytecode\fP"
+.br
+.ti -1c
+.RI "package \fBCache\fP"
+.br
+.ti -1c
+.RI "package \fBCfg\fP"
+.br
+.ti -1c
+.RI "package \fBClassic\fP"
+.br
+.ti -1c
+.RI "package \fBCollection\fP"
+.br
+.ti -1c
+.RI "package \fBConnection\fP"
+.br
+.ti -1c
+.RI "package \fBContext\fP"
+.br
+.ti -1c
+.RI "package \fBCriterion\fP"
+.br
+.ti -1c
+.RI "package \fBDebugHelpers\fP"
+.br
+.ti -1c
+.RI "package \fBDialect\fP"
+.br
+.ti -1c
+.RI "package \fBDomainModel\fP"
+.br
+.ti -1c
+.RI "package \fBDriver\fP"
+.br
+.ti -1c
+.RI "package \fBEngine\fP"
+.br
+.ti -1c
+.RI "package \fBEvent\fP"
+.br
+.ti -1c
+.RI "package \fBExample\fP"
+.br
+.ti -1c
+.RI "package \fBExceptions\fP"
+.br
+.ti -1c
+.RI "package \fBHql\fP"
+.br
+.ti -1c
+.RI "package \fBId\fP"
+.br
+.ti -1c
+.RI "package \fBImpl\fP"
+.br
+.ti -1c
+.RI "package \fBIntercept\fP"
+.br
+.ti -1c
+.RI "package \fBLinq\fP"
+.br
+.ti -1c
+.RI "package \fBLoader\fP"
+.br
+.ti -1c
+.RI "package \fBMapping\fP"
+.br
+.ti -1c
+.RI "package \fBMetadata\fP"
+.br
+.ti -1c
+.RI "package \fBParam\fP"
+.br
+.ti -1c
+.RI "package \fBPersister\fP"
+.br
+.ti -1c
+.RI "package \fBProperties\fP"
+.br
+.ti -1c
+.RI "package \fBProxy\fP"
+.br
+.ti -1c
+.RI "package \fBSqlCommand\fP"
+.br
+.ti -1c
+.RI "package \fBSqlTypes\fP"
+.br
+.ti -1c
+.RI "package \fBStat\fP"
+.br
+.ti -1c
+.RI "package \fBTest\fP"
+.br
+.ti -1c
+.RI "package \fBTestDatabaseSetup\fP"
+.br
+.ti -1c
+.RI "package \fBTool\fP"
+.br
+.ti -1c
+.RI "package \fBTransaction\fP"
+.br
+.ti -1c
+.RI "package \fBTransform\fP"
+.br
+.ti -1c
+.RI "package \fBTuple\fP"
+.br
+.ti -1c
+.RI "package \fBType\fP"
+.br
+.ti -1c
+.RI "package \fBUnitTesting\fP"
+.br
+.ti -1c
+.RI "package \fBUserTypes\fP"
+.br
+.ti -1c
+.RI "package \fBUtil\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBADOException\fP"
+.br
+.RI "\fIWraps exceptions that occur during ADO\&.NET calls\&. \fP"
+.ti -1c
+.RI "class \fBAssertionFailure\fP"
+.br
+.RI "\fIIndicates failure of an assertion: a possible bug in \fBNHibernate\fP \fP"
+.ti -1c
+.RI "class \fBCallbackException\fP"
+.br
+.ti -1c
+.RI "class \fBConnectionReleaseModeParser\fP"
+.br
+.ti -1c
+.RI "class \fBCriteriaTransformer\fP"
+.br
+.RI "\fITransforms Criteria queries \fP"
+.ti -1c
+.RI "class \fBDuplicateMappingException\fP"
+.br
+.ti -1c
+.RI "class \fBEmptyInterceptor\fP"
+.br
+.ti -1c
+.RI "class \fBEntityModeHelper\fP"
+.br
+.ti -1c
+.RI "class \fBEntityModeEqualityComparer\fP"
+.br
+.ti -1c
+.RI "class \fBFKUnmatchingColumnsException\fP"
+.br
+.RI "\fIIndicates that an expected getter or setter method could not be found on a class \fP"
+.ti -1c
+.RI "class \fBHibernateException\fP"
+.br
+.RI "\fIAny exception that occurs in the O-R persistence layer\&. \fP"
+.ti -1c
+.RI "interface \fBICriteria\fP"
+.br
+.RI "\fICriteria is a simplified API for retrieving entities by composing Expression objects\&. \fP"
+.ti -1c
+.RI "interface \fBIDatabinder\fP"
+.br
+.RI "\fIProvides XML marshalling for classes registered with a \fCSessionFactory\fP \fP"
+.ti -1c
+.RI "class \fBIdentityEqualityComparer\fP"
+.br
+.ti -1c
+.RI "interface \fBIDetachedQuery\fP"
+.br
+.RI "\fIInterface to create queries in 'detached mode' where the \fBNHibernate\fP session is not available\&. All methods have the same semantics as the corresponding methods of the \fBIQuery\fP interface\&. \fP"
+.ti -1c
+.RI "interface \fBIFilter\fP"
+.br
+.RI "\fI\fBType\fP definition of Filter\&. Filter defines the user's view into enabled dynamic filters, allowing them to set filter parameter values\&. \fP"
+.ti -1c
+.RI "interface \fBIFutureValue< T >\fP"
+.br
+.ti -1c
+.RI "interface \fBIInterceptor\fP"
+.br
+.RI "\fIAllows user code to inspect and/or change property values before they are written and after they are read from the database \fP"
+.ti -1c
+.RI "interface \fBIMultiCriteria\fP"
+.br
+.RI "\fICombines several queries into a single DB call \fP"
+.ti -1c
+.RI "interface \fBIMultiQuery\fP"
+.br
+.RI "\fICombines sevaral queries into a single database call \fP"
+.ti -1c
+.RI "class \fBInstantiationException\fP"
+.br
+.RI "\fIThrown if Hibernate can't instantiate an entity or component class at runtime\&. \fP"
+.ti -1c
+.RI "class \fBInvalidProxyTypeException\fP"
+.br
+.RI "\fIThrown when an invalid type is specified as a proxy for a class\&. The exception is also thrown when a class is specified as lazy, but cannot be used as a proxy for itself\&. \fP"
+.ti -1c
+.RI "interface \fBIQuery\fP"
+.br
+.RI "\fIAn object-oriented representation of a \fBNHibernate\fP query\&. \fP"
+.ti -1c
+.RI "interface \fBIQueryExpression\fP"
+.br
+.ti -1c
+.RI "interface \fBIQueryOver\fP"
+.br
+.ti -1c
+.RI "interface \fBIQueryOver< TRoot >\fP"
+.br
+.RI "\fIQueryOver<TRoot> is an API for retrieving entities by composing \fBCriterion\&.Expression\fP objects expressed using Lambda expression syntax\&. \fP"
+.ti -1c
+.RI "interface \fBIQueryOver< TRoot, TSubType >\fP"
+.br
+.RI "\fIQueryOver<TRoot,TSubType> is an API for retrieving entities by composing \fBCriterion\&.Expression\fP objects expressed using Lambda expression syntax\&. \fP"
+.ti -1c
+.RI "interface \fBISession\fP"
+.br
+.RI "\fIThe main runtime interface between a \&.NET application and \fBNHibernate\fP\&. This is the central API class abstracting the notion of a persistence service\&. \fP"
+.ti -1c
+.RI "interface \fBISessionFactory\fP"
+.br
+.RI "\fICreates \fC\fBISession\fP\fPs\&. \fP"
+.ti -1c
+.RI "interface \fBISQLQuery\fP"
+.br
+.ti -1c
+.RI "interface \fBIStatelessSession\fP"
+.br
+.RI "\fIA command-oriented API for performing bulk operations against a database\&. \fP"
+.ti -1c
+.RI "interface \fBITransaction\fP"
+.br
+.RI "\fIAllows the application to define units of work, while maintaining abstraction from the underlying transaction implementation \fP"
+.ti -1c
+.RI "class \fBLazyInitializationException\fP"
+.br
+.RI "\fIA problem occurred trying to lazily initialize a collection or proxy (for example the session was closed) or iterate query results\&. \fP"
+.ti -1c
+.RI "class \fBLockMode\fP"
+.br
+.RI "\fIInstances represent a lock mode for a row of a relational database table\&. \fP"
+.ti -1c
+.RI "interface \fBIInternalLogger\fP"
+.br
+.ti -1c
+.RI "interface \fBILoggerFactory\fP"
+.br
+.ti -1c
+.RI "class \fBLoggerProvider\fP"
+.br
+.ti -1c
+.RI "class \fBNoLoggingLoggerFactory\fP"
+.br
+.ti -1c
+.RI "class \fBNoLoggingInternalLogger\fP"
+.br
+.ti -1c
+.RI "class \fBLog4NetLoggerFactory\fP"
+.br
+.ti -1c
+.RI "class \fBLog4NetLogger\fP"
+.br
+.ti -1c
+.RI "class \fBMappingException\fP"
+.br
+.RI "\fIAn exception that usually occurs at configuration time, rather than runtime, as a result of something screwy in the O-R mappings \fP"
+.ti -1c
+.RI "class \fBNHibernateUtil\fP"
+.br
+.RI "\fIProvides access to the full range of \fBNHibernate\fP built-in types\&. IType instances may be used to bind values to query parameters\&. Also a factory for new Blobs and Clobs\&. \fP"
+.ti -1c
+.RI "class \fBNonUniqueObjectException\fP"
+.br
+.RI "\fIThis exception is thrown when an operation would break session-scoped identity\&. This occurs if the user tries to associate two different instances of the same class with a particular identifier, in the scope of a single \fBISession\fP\&. \fP"
+.ti -1c
+.RI "class \fBNonUniqueResultException\fP"
+.br
+.RI "\fIThrown when the application calls \fBIQuery\&.UniqueResult()\fP and the query returned more than one result\&. Unlike all other \fBNHibernate\fP exceptions, this one is recoverable! \fP"
+.ti -1c
+.RI "class \fBObjectDeletedException\fP"
+.br
+.RI "\fIThrown when the user tries to pass a deleted object to the \fC\fBISession\fP\fP\&. \fP"
+.ti -1c
+.RI "class \fBObjectNotFoundException\fP"
+.br
+.RI "\fIThrown when \fC\fBISession\&.Load()\fP\fP fails to select a row with the given primary key (identifier value)\&. This exception might not be thrown when \fCLoad()\fP is called, even if there was no row on the database, because \fCLoad()\fP returns a proxy if possible\&. Applications should use \fC\fBISession\&.Get()\fP\fP to test if a row exists in the database\&. \fP"
+.ti -1c
+.RI "class \fBPersistentObjectException\fP"
+.br
+.RI "\fIThrown when the user passes a persistent instance to a \fC\fBISession\fP\fP method that expects a transient instance \fP"
+.ti -1c
+.RI "class \fBPropertyAccessException\fP"
+.br
+.RI "\fIA problem occurred accessing a property of an instance of a persistent class by reflection \fP"
+.ti -1c
+.RI "class \fBPropertyNotFoundException\fP"
+.br
+.RI "\fIIndicates that an expected getter or setter method could not be found on a class \fP"
+.ti -1c
+.RI "class \fBPropertyValueException\fP"
+.br
+.ti -1c
+.RI "class \fBQueryException\fP"
+.br
+.RI "\fIA problem occurred translating a Hibernate query to SQL due to invalid query syntax, etc\&. \fP"
+.ti -1c
+.RI "class \fBQueryParameterException\fP"
+.br
+.ti -1c
+.RI "class \fBReplicationMode\fP"
+.br
+.RI "\fIRepresents a replication strategy\&. \fP"
+.ti -1c
+.RI "class \fBSessionException\fP"
+.br
+.ti -1c
+.RI "class \fBStaleObjectStateException\fP"
+.br
+.RI "\fIThrown when a version number check failed, indicating that the \fBISession\fP contained stale data (when using long transactions with versioning)\&. \fP"
+.ti -1c
+.RI "class \fBStaleStateException\fP"
+.br
+.ti -1c
+.RI "class \fBTransactionException\fP"
+.br
+.RI "\fIIndicated that a transaction could not be begun, committed, or rolled back \fP"
+.ti -1c
+.RI "class \fBTransientObjectException\fP"
+.br
+.RI "\fIThrow when the user passes a transient instance to a \fC\fBISession\fP\fP method that expects a persistent instance \fP"
+.ti -1c
+.RI "class \fBTypeMismatchException\fP"
+.br
+.RI "\fIUsed when a user provided type does not match the expected one \fP"
+.ti -1c
+.RI "class \fBUnresolvableObjectException\fP"
+.br
+.RI "\fIThrown when Hibernate could not resolve an object by id, especially when loading an association\&. \fP"
+.ti -1c
+.RI "class \fBWrongClassException\fP"
+.br
+.RI "\fIThrown when \fC\fBISession\&.Load()\fP\fP selects a row with the given primary key (identifier value) but the row's discriminator value specifies a different subclass from the one requested \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBCacheMode\fP { \fBCacheMode\&.Ignore\fP = 0, \fBCacheMode\&.Put\fP = 1, \fBCacheMode\&.Get\fP = 2, \fBCacheMode\&.Normal\fP = Put | Get, \fBCacheMode\&.Refresh\fP = Put | 4 }"
+.br
+.RI "\fIControls how the session interacts with the second-level cache and query cache\&. \fP"
+.ti -1c
+.RI "enum \fBConnectionReleaseMode\fP { \fBAfterStatement\fP, \fBAfterTransaction\fP, \fBOnClose\fP }"
+.br
+.ti -1c
+.RI "enum \fBEntityMode\fP { \fBPoco\fP, \fBMap\fP, \fBXml\fP }"
+.br
+.RI "\fIDefines the representation modes available for entities\&. \fP"
+.ti -1c
+.RI "enum \fBFetchMode\fP { \fBFetchMode\&.Default\fP = 0, \fBFetchMode\&.Select\fP = 1, \fBFetchMode\&.Join\fP = 2, \fBLazy\fP = Select, \fBEager\fP = Join }"
+.br
+.RI "\fIRepresents a fetching strategy\&. \fP"
+.ti -1c
+.RI "enum \fBFlushMode\fP { \fBFlushMode\&.Unspecified\fP = -1, \fBFlushMode\&.Never\fP = 0, \fBFlushMode\&.Commit\fP = 5, \fBFlushMode\&.Auto\fP = 10, \fBFlushMode\&.Always\fP = 20 }"
+.br
+.RI "\fIRepresents a flushing strategy\&. \fP"
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBNHibernate\&.CacheMode\fP"
+
+.PP
+Controls how the session interacts with the second-level cache and query cache\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIIgnore \fP\fP
+The session will never interact with the cache, except to invalidate cache items when updates occur 
+.TP
+\fB\fIPut \fP\fP
+The session will never read items from the cache, but will add items to the cache as it reads them from the database\&. 
+.TP
+\fB\fIGet \fP\fP
+The session may read items from the cache, but will not add items, except to invalidate items when updates occur 
+.TP
+\fB\fINormal \fP\fP
+The session may read items from the cache, and add items to the cache
+.TP
+\fB\fIRefresh \fP\fP
+The session will never read items from the cache, but will add items to the cache as it reads them from the database\&. In this mode, the effect of \fChibernate\&.cache\&.use_minimal_puts\fP is bypassed, in order to \fIforce\fP a cache refresh 
+.PP
+Definition at line 10 of file CacheMode\&.cs\&.
+.SS "enum \fBNHibernate\&.EntityMode\fP"
+
+.PP
+Defines the representation modes available for entities\&. 
+.PP
+Definition at line 4 of file EntityMode\&.cs\&.
+.SS "enum \fBNHibernate\&.FetchMode\fP"
+
+.PP
+Represents a fetching strategy\&. This is used together with the \fBICriteria\fP API to specify runtime fetching strategies\&. 
+.PP
+For \fBHql\fP queries, use the \fCFETCH\fP keyword instead\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIDefault \fP\fP
+Default to the setting configured in the mapping file\&. 
+.TP
+\fB\fISelect \fP\fP
+Fetch eagerly, using a separate select\&. Equivalent to \fCfetch='select'\fP (and \fCouter-join='false'\fP) 
+.TP
+\fB\fIJoin \fP\fP
+Fetch using an outer join\&. Equivalent to \fCfetch='join'\fP (and \fCouter-join='true'\fP) 
+.PP
+Definition at line 16 of file FetchMode\&.cs\&.
+.SS "enum \fBNHibernate\&.FlushMode\fP"
+
+.PP
+Represents a flushing strategy\&. The flush process synchronizes database state with session state by detecting state changes and executing SQL statements 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIUnspecified \fP\fP
+Special value for unspecified flush mode (like  in Java)\&. 
+.TP
+\fB\fINever \fP\fP
+The \fC\fBISession\fP\fP is never flushed unless \fCFlush()\fP is explicitly called by the application\&. This mode is very efficient for read only transactions 
+.TP
+\fB\fICommit \fP\fP
+The \fC\fBISession\fP\fP is flushed when \fCTransaction\&.Commit()\fP is called 
+.TP
+\fB\fIAuto \fP\fP
+The \fC\fBISession\fP\fP is sometimes flushed before query execution in order to ensure that queries never return stale state\&. This is the default flush mode\&. 
+.TP
+\fB\fIAlways \fP\fP
+The \fBISession\fP is flushed before every query\&. This is almost always unnecessary and inefficient\&. 
+.PP
+Definition at line 13 of file FlushMode\&.cs\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

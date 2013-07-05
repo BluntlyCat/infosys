@@ -1,0 +1,101 @@
+.TH "NHibernate.Dialect.Function.SQLFunctionTemplate" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.Function.SQLFunctionTemplate \- 
+.PP
+Represents HQL functions that can have different representations in different SQL dialects\&. E\&.g\&. in HQL we can define function  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Function\&.ISQLFunction\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.Function\&.AnsiExtractFunction\fP, and \fBNHibernate\&.Dialect\&.Function\&.AnsiTrimFunction\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSQLFunctionTemplate\fP (\fBIType\fP type, string template)"
+.br
+.ti -1c
+.RI "\fBSQLFunctionTemplate\fP (\fBIType\fP type, string template, bool hasParenthesesIfNoArgs)"
+.br
+.ti -1c
+.RI "\fBIType\fP \fBReturnType\fP (\fBIType\fP columnType, \fBIMapping\fP mapping)"
+.br
+.RI "\fIThe function return type \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBRender\fP (IList args, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIApplies the template to passed in arguments\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBHasArguments\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasParenthesesIfNoArguments\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents HQL functions that can have different representations in different SQL dialects\&. E\&.g\&. in HQL we can define function 
+
+\fCconcat(?1, ?2)\fP to concatenate two strings p1 and p2\&. Target SQL function will be dialect-specific, e\&.g\&. \fC(?1 || ?2)\fP for Oracle, \fCconcat(?1, ?2)\fP for \fBMySql\fP, \fC(?1 + ?2)\fP for MS SQL\&. Each dialect will define a template as a string (exactly like above) marking function parameters with '?' followed by parameter's index (first index is 1)\&. 
+.PP
+Definition at line 21 of file SQLFunctionTemplate\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSqlString\fP NHibernate\&.Dialect\&.Function\&.SQLFunctionTemplate\&.Render (IListargs, \fBISessionFactoryImplementor\fPfactory)"
+
+.PP
+Applies the template to passed in arguments\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIargs\fP args function arguments
+.br
+\fIfactory\fP generated SQL function call
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Dialect\&.Function\&.ISQLFunction\fP\&.
+.PP
+Definition at line 104 of file SQLFunctionTemplate\&.cs\&.
+.SS "\fBIType\fP NHibernate\&.Dialect\&.Function\&.SQLFunctionTemplate\&.ReturnType (\fBIType\fPcolumnType, \fBIMapping\fPmapping)"
+
+.PP
+The function return type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnType\fP The type of the first argument
+.br
+\fImapping\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Dialect\&.Function\&.ISQLFunction\fP\&.
+.PP
+Definition at line 83 of file SQLFunctionTemplate\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

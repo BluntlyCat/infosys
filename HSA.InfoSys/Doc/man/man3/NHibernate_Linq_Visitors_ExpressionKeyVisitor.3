@@ -1,0 +1,75 @@
+.TH "NHibernate.Linq.Visitors.ExpressionKeyVisitor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Linq.Visitors.ExpressionKeyVisitor \- 
+.PP
+Performs the equivalent of a ToString() on an expression\&. Swaps out constants for parameters so that, for example: from c in Customers where c\&.City = 'London' generate the same key as from c in Customers where c\&.City = 'Madrid'  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits ExpressionTreeVisitor\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static string \fBVisit\fP (Expression expression, IDictionary< ConstantExpression, \fBNamedParameter\fP > parameters)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override Expression \fBVisitBinaryExpression\fP (BinaryExpression expression)"
+.br
+.ti -1c
+.RI "override Expression \fBVisitConditionalExpression\fP (ConditionalExpression expression)"
+.br
+.ti -1c
+.RI "override Expression \fBVisitConstantExpression\fP (ConstantExpression expression)"
+.br
+.ti -1c
+.RI "override Expression \fBVisitLambdaExpression\fP (LambdaExpression expression)"
+.br
+.ti -1c
+.RI "override Expression \fBVisitMemberExpression\fP (MemberExpression expression)"
+.br
+.ti -1c
+.RI "override Expression \fBVisitMethodCallExpression\fP (MethodCallExpression expression)"
+.br
+.ti -1c
+.RI "override Expression \fBVisitNewExpression\fP (NewExpression expression)"
+.br
+.ti -1c
+.RI "override Expression \fBVisitParameterExpression\fP (ParameterExpression expression)"
+.br
+.ti -1c
+.RI "override Expression \fBVisitTypeBinaryExpression\fP (TypeBinaryExpression expression)"
+.br
+.ti -1c
+.RI "override Expression \fBVisitUnaryExpression\fP (UnaryExpression expression)"
+.br
+.ti -1c
+.RI "override Expression \fBVisitQuerySourceReferenceExpression\fP (Remotion\&.Linq\&.Clauses\&.Expressions\&.QuerySourceReferenceExpression expression)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Performs the equivalent of a ToString() on an expression\&. Swaps out constants for parameters so that, for example: from c in Customers where c\&.City = 'London' generate the same key as from c in Customers where c\&.City = 'Madrid' 
+
+
+.PP
+Definition at line 19 of file ExpressionKeyVisitor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

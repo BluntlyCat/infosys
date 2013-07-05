@@ -1,0 +1,153 @@
+.TH "NHibernate.Loader.Hql.QueryLoader" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Loader.Hql.QueryLoader \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Loader\&.BasicLoader\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQueryLoader\fP (\fBQueryTranslatorImpl\fP queryTranslator, \fBISessionFactoryImplementor\fP factory, \fBSelectClause\fP selectClause)"
+.br
+.ti -1c
+.RI "override \fBLockMode\fP[] \fBGetLockModes\fP (IDictionary< string, \fBLockMode\fP > lockModes)"
+.br
+.ti -1c
+.RI "IList \fBList\fP (\fBISessionImplementor\fP session, \fBQueryParameters\fP queryParameters)"
+.br
+.ti -1c
+.RI "override IList \fBGetResultList\fP (IList results, \fBIResultTransformer\fP resultTransformer)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override \fBSqlString\fP \fBApplyLocks\fP (\fBSqlString\fP sql, IDictionary< string, \fBLockMode\fP > lockModes, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIAppend \fCFOR UPDATE OF\fP clause, if necessary\&. This empty superclass implementation merely returns its first argument\&. \fP"
+.ti -1c
+.RI "override bool \fBUpgradeLocks\fP ()"
+.br
+.RI "\fIDoes this query return objects that might be already cached by the session, whose lock mode may need upgrading\&. \fP"
+.ti -1c
+.RI "override object \fBGetResultColumnOrRow\fP (object[] row, \fBIResultTransformer\fP resultTransformer, IDataReader rs, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGet the actual object that is returned in the user-visible result list\&. \fP"
+.ti -1c
+.RI "override void \fBResetEffectiveExpectedType\fP (IEnumerable< \fBIParameterSpecification\fP > parameterSpecs, \fBQueryParameters\fP queryParameters)"
+.br
+.ti -1c
+.RI "override IEnumerable
+.br
+< \fBIParameterSpecification\fP > \fBGetParameterSpecifications\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBIsSubselectLoadingEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string[] \fBAliases\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int[] \fBCollectionOwners\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool[] \fBEntityEagerPropertyFetches\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBEntityType\fP[] \fBOwnerAssociationTypes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int[] \fBOwners\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBQueryIdentifier\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBSqlString\fP \fBSqlString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBILoadable\fP[] \fBEntityPersisters\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string[] \fBSuffixes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string[] \fBCollectionSuffixes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBICollectionPersister\fP[] \fBCollectionPersisters\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP[] \fBReturnTypes\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 24 of file QueryLoader\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBSqlString\fP NHibernate\&.Loader\&.Hql\&.QueryLoader\&.ApplyLocks (\fBSqlString\fPsql, IDictionary< string, \fBLockMode\fP >lockModes, \fBDialect\&.Dialect\fPdialect)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Append \fCFOR UPDATE OF\fP clause, if necessary\&. This empty superclass implementation merely returns its first argument\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Loader\&.Loader\fP\&.
+.PP
+Definition at line 62 of file QueryLoader\&.cs\&.
+.SS "override \fBLockMode\fP [] NHibernate\&.Loader\&.Hql\&.QueryLoader\&.GetLockModes (IDictionary< string, \fBLockMode\fP >lockModes)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlockModes\fP a collection of lock modes specified dynamically via the Query interface
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Loader\&.Loader\fP\&.
+.PP
+Definition at line 145 of file QueryLoader\&.cs\&.
+.SS "override object NHibernate\&.Loader\&.Hql\&.QueryLoader\&.GetResultColumnOrRow (object[]row, \fBIResultTransformer\fPresultTransformer, IDataReaderrs, \fBISessionImplementor\fPsession)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Get the actual object that is returned in the user-visible result list\&. This empty implementation merely returns its first argument\&. This is overridden by some subclasses\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Loader\&.Loader\fP\&.
+.PP
+Definition at line 322 of file QueryLoader\&.cs\&.
+.SS "override bool NHibernate\&.Loader\&.Hql\&.QueryLoader\&.UpgradeLocks ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Does this query return objects that might be already cached by the session, whose lock mode may need upgrading\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Loader\&.Loader\fP\&.
+.PP
+Definition at line 135 of file QueryLoader\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

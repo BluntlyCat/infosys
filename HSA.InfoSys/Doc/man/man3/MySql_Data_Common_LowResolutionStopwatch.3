@@ -1,0 +1,65 @@
+.TH "MySql.Data.Common.LowResolutionStopwatch" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MySql.Data.Common.LowResolutionStopwatch \- 
+.PP
+This class is modeled after \&.NET Stopwatch\&. It provides better performance (no system calls)\&.It is however less precise than \&.NET Stopwatch, measuring in milliseconds\&. It is adequate to use when high-precision is not required (e\&.g for measuring IO timeouts), but not for other tasks\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBStart\fP ()"
+.br
+.ti -1c
+.RI "void \fBStop\fP ()"
+.br
+.ti -1c
+.RI "void \fBReset\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBLowResolutionStopwatch\fP \fBStartNew\fP ()"
+.br
+.ti -1c
+.RI "static long \fBGetTimestamp\fP ()"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly long \fBFrequency\fP = 1000"
+.br
+.ti -1c
+.RI "static readonly bool \fBisHighResolution\fP = false"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "long \fBElapsedMilliseconds\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "TimeSpan \fBElapsed\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class is modeled after \&.NET Stopwatch\&. It provides better performance (no system calls)\&.It is however less precise than \&.NET Stopwatch, measuring in milliseconds\&. It is adequate to use when high-precision is not required (e\&.g for measuring IO timeouts), but not for other tasks\&. 
+
+
+.PP
+Definition at line 34 of file LowResolutionStopwatch\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

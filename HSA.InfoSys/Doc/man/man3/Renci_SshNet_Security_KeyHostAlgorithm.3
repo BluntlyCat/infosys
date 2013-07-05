@@ -1,0 +1,148 @@
+.TH "Renci.SshNet.Security.KeyHostAlgorithm" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Security.KeyHostAlgorithm \- 
+.PP
+Implements key support for host algorithm\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.Security\&.HostAlgorithm\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBKeyHostAlgorithm\fP (string name, \fBKey\fP key)"
+.br
+.RI "\fIInitializes a new instance of the \fBKeyHostAlgorithm\fP class\&. \fP"
+.ti -1c
+.RI "\fBKeyHostAlgorithm\fP (string name, \fBKey\fP key, byte[] data)"
+.br
+.RI "\fIInitializes a new instance of the \fBHostAlgorithm\fP class\&. \fP"
+.ti -1c
+.RI "override byte[] \fBSign\fP (byte[] data)"
+.br
+.RI "\fISigns the specified data\&. \fP"
+.ti -1c
+.RI "override bool \fBVerifySignature\fP (byte[] data, byte[] signature)"
+.br
+.RI "\fIVerifies the signature\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBKey\fP \fBKey\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the key\&. \fP"
+.ti -1c
+.RI "override byte[] \fBData\fP\fC [get]\fP"
+.br
+.RI "\fIGets the public key data\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Implements key support for host algorithm\&. 
+
+
+.PP
+Definition at line 13 of file KeyHostAlgorithm\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Security\&.KeyHostAlgorithm\&.KeyHostAlgorithm (stringname, \fBKey\fPkey)"
+
+.PP
+Initializes a new instance of the \fBKeyHostAlgorithm\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP Host key name\&.
+.br
+\fIkey\fP Host key\&.
+.RE
+.PP
+
+.PP
+Definition at line 37 of file KeyHostAlgorithm\&.cs\&.
+.SS "Renci\&.SshNet\&.Security\&.KeyHostAlgorithm\&.KeyHostAlgorithm (stringname, \fBKey\fPkey, byte[]data)"
+
+.PP
+Initializes a new instance of the \fBHostAlgorithm\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP Host key name\&.
+.br
+\fIkey\fP Host key\&.
+.br
+\fIdata\fP Host key encoded data\&.
+.RE
+.PP
+
+.PP
+Definition at line 49 of file KeyHostAlgorithm\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override byte [] Renci\&.SshNet\&.Security\&.KeyHostAlgorithm\&.Sign (byte[]data)\fC [virtual]\fP"
+
+.PP
+Signs the specified data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Signed data\&. 
+.RE
+.PP
+
+.PP
+Implements \fBRenci\&.SshNet\&.Security\&.HostAlgorithm\fP\&.
+.PP
+Definition at line 66 of file KeyHostAlgorithm\&.cs\&.
+.SS "override bool Renci\&.SshNet\&.Security\&.KeyHostAlgorithm\&.VerifySignature (byte[]data, byte[]signature)\fC [virtual]\fP"
+
+.PP
+Verifies the signature\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The data\&.
+.br
+\fIsignature\fP The signature\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCTrue\fP is signature was successfully verifies; otherwise \fCfalse\fP\&. 
+.RE
+.PP
+
+.PP
+Implements \fBRenci\&.SshNet\&.Security\&.HostAlgorithm\fP\&.
+.PP
+Definition at line 79 of file KeyHostAlgorithm\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override byte [] Renci\&.SshNet\&.Security\&.KeyHostAlgorithm\&.Data\fC [get]\fP"
+
+.PP
+Gets the public key data\&. 
+.PP
+Definition at line 25 of file KeyHostAlgorithm\&.cs\&.
+.SS "\fBKey\fP Renci\&.SshNet\&.Security\&.KeyHostAlgorithm\&.Key\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the key\&. 
+.PP
+Definition at line 19 of file KeyHostAlgorithm\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

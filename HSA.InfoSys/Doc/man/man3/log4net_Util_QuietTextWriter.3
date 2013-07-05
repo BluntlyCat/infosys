@@ -1,0 +1,155 @@
+.TH "log4net.Util.QuietTextWriter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.QuietTextWriter \- 
+.PP
+TextWriter that does not leak exceptions  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Util\&.TextWriterAdapter\fP\&.
+.PP
+Inherited by \fBlog4net\&.Util\&.CountingQuietTextWriter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQuietTextWriter\fP (TextWriter writer, \fBIErrorHandler\fP errorHandler)"
+.br
+.RI "\fIConstructor \fP"
+.ti -1c
+.RI "override void \fBWrite\fP (char value)"
+.br
+.RI "\fIWrites a character to the underlying writer \fP"
+.ti -1c
+.RI "override void \fBWrite\fP (char[] buffer, int index, int count)"
+.br
+.RI "\fIWrites a buffer to the underlying writer \fP"
+.ti -1c
+.RI "override void \fBWrite\fP (string value)"
+.br
+.RI "\fIWrites a string to the output\&. \fP"
+.ti -1c
+.RI "override void \fBClose\fP ()"
+.br
+.RI "\fICloses the underlying output writer\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIErrorHandler\fP \fBErrorHandler\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the error handler that all errors are passed to\&. \fP"
+.ti -1c
+.RI "bool \fBClosed\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether this writer is closed\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+TextWriter that does not leak exceptions 
+
+\fBQuietTextWriter\fP does not throw exceptions when things go wrong\&. Instead, it delegates error handling to its IErrorHandler\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 38 of file QuietTextWriter\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Util\&.QuietTextWriter\&.QuietTextWriter (TextWriterwriter, \fBIErrorHandler\fPerrorHandler)"
+
+.PP
+Constructor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP the writer to actually write to
+.br
+\fIerrorHandler\fP the error handler to report error to
+.RE
+.PP
+.PP
+Create a new \fBQuietTextWriter\fP using a writer and error handler 
+.PP
+Definition at line 52 of file QuietTextWriter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Util\&.QuietTextWriter\&.Close ()"
+
+.PP
+Closes the underlying output writer\&. Closes the underlying output writer\&. 
+.PP
+Definition at line 183 of file QuietTextWriter\&.cs\&.
+.SS "override void log4net\&.Util\&.QuietTextWriter\&.Write (charvalue)"
+
+.PP
+Writes a character to the underlying writer 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP the char to write
+.RE
+.PP
+.PP
+Writes a character to the underlying writer 
+.PP
+Definition at line 119 of file QuietTextWriter\&.cs\&.
+.SS "override void log4net\&.Util\&.QuietTextWriter\&.Write (char[]buffer, intindex, intcount)"
+
+.PP
+Writes a buffer to the underlying writer 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP the buffer to write
+.br
+\fIindex\fP the start index to write from
+.br
+\fIcount\fP the number of characters to write
+.RE
+.PP
+.PP
+Writes a buffer to the underlying writer 
+.PP
+Definition at line 142 of file QuietTextWriter\&.cs\&.
+.SS "override void log4net\&.Util\&.QuietTextWriter\&.Write (stringvalue)"
+
+.PP
+Writes a string to the output\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The string data to write to the output\&.
+.RE
+.PP
+.PP
+Writes a string to the output\&. 
+.PP
+Definition at line 163 of file QuietTextWriter\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool log4net\&.Util\&.QuietTextWriter\&.Closed\fC [get]\fP"
+
+.PP
+Gets a value indicating whether this writer is closed\&. \fCtrue\fP if this writer is closed, otherwise \fCfalse\fP\&. 
+.PP
+Gets a value indicating whether this writer is closed\&. 
+.PP
+Definition at line 102 of file QuietTextWriter\&.cs\&.
+.SS "\fBIErrorHandler\fP log4net\&.Util\&.QuietTextWriter\&.ErrorHandler\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the error handler that all errors are passed to\&. The error handler that all errors are passed to\&. 
+.PP
+Gets or sets the error handler that all errors are passed to\&. 
+.PP
+Definition at line 77 of file QuietTextWriter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,289 @@
+.TH "log4net.Repository.Hierarchy.XmlHierarchyConfigurator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Repository.Hierarchy.XmlHierarchyConfigurator \- 
+.PP
+Initializes the \fBlog4net\fP environment using an XML DOM\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBXmlHierarchyConfigurator\fP (\fBHierarchy\fP hierarchy)"
+.br
+.RI "\fIConstruct the configurator for a hierarchy \fP"
+.ti -1c
+.RI "void \fBConfigure\fP (XmlElement element)"
+.br
+.RI "\fIConfigure the hierarchy by parsing a DOM tree of XML elements\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIAppender\fP \fBFindAppenderByReference\fP (XmlElement appenderRef)"
+.br
+.RI "\fIParse appenders by IDREF\&. \fP"
+.ti -1c
+.RI "\fBIAppender\fP \fBParseAppender\fP (XmlElement appenderElement)"
+.br
+.RI "\fIParses an appender element\&. \fP"
+.ti -1c
+.RI "void \fBParseLogger\fP (XmlElement loggerElement)"
+.br
+.RI "\fIParses a logger element\&. \fP"
+.ti -1c
+.RI "void \fBParseRoot\fP (XmlElement rootElement)"
+.br
+.RI "\fIParses the root logger element\&. \fP"
+.ti -1c
+.RI "void \fBParseChildrenOfLoggerElement\fP (XmlElement catElement, \fBLogger\fP log, bool isRoot)"
+.br
+.RI "\fIParses the children of a logger element\&. \fP"
+.ti -1c
+.RI "void \fBParseRenderer\fP (XmlElement element)"
+.br
+.RI "\fIParses an object renderer\&. \fP"
+.ti -1c
+.RI "void \fBParseLevel\fP (XmlElement element, \fBLogger\fP log, bool isRoot)"
+.br
+.RI "\fIParses a level element\&. \fP"
+.ti -1c
+.RI "void \fBSetParameter\fP (XmlElement element, object target)"
+.br
+.RI "\fISets a parameter on an object\&. \fP"
+.ti -1c
+.RI "object \fBConvertStringTo\fP (Type type, string value)"
+.br
+.RI "\fIConverts a string value to a target type\&. \fP"
+.ti -1c
+.RI "object \fBCreateObjectFromXml\fP (XmlElement element, Type defaultTargetType, Type typeConstraint)"
+.br
+.RI "\fICreates an object as specified in XML\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Initializes the \fBlog4net\fP environment using an XML DOM\&. 
+
+Configures a \fBHierarchy\fP using an XML DOM\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 43 of file XmlHierarchyConfigurator\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Repository\&.Hierarchy\&.XmlHierarchyConfigurator\&.XmlHierarchyConfigurator (\fBHierarchy\fPhierarchy)"
+
+.PP
+Construct the configurator for a hierarchy 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhierarchy\fP The hierarchy to build\&.
+.RE
+.PP
+.PP
+Initializes a new instance of the \fBXmlHierarchyConfigurator\fP class with the specified \fBHierarchy\fP\&. 
+.PP
+Definition at line 63 of file XmlHierarchyConfigurator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Repository\&.Hierarchy\&.XmlHierarchyConfigurator\&.Configure (XmlElementelement)"
+
+.PP
+Configure the hierarchy by parsing a DOM tree of XML elements\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIelement\fP The root element to parse\&.
+.RE
+.PP
+.PP
+Configure the hierarchy by parsing a DOM tree of XML elements\&. 
+.PP
+Definition at line 82 of file XmlHierarchyConfigurator\&.cs\&.
+.SS "object log4net\&.Repository\&.Hierarchy\&.XmlHierarchyConfigurator\&.ConvertStringTo (Typetype, stringvalue)\fC [protected]\fP"
+
+.PP
+Converts a string value to a target type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The type of object to convert the string to\&.
+.br
+\fIvalue\fP The string value to use as the value of the object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object of type \fItype\fP  with value \fIvalue\fP  or \fCnull\fP when the conversion could not be performed\&. 
+.RE
+.PP
+
+.PP
+Definition at line 893 of file XmlHierarchyConfigurator\&.cs\&.
+.SS "object log4net\&.Repository\&.Hierarchy\&.XmlHierarchyConfigurator\&.CreateObjectFromXml (XmlElementelement, TypedefaultTargetType, TypetypeConstraint)\fC [protected]\fP"
+
+.PP
+Creates an object as specified in XML\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIelement\fP The XML element that contains the definition of the object\&.
+.br
+\fIdefaultTargetType\fP The object type to use if not explicitly specified\&.
+.br
+\fItypeConstraint\fP The type that the returned object must be or must inherit from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The object or \fCnull\fP
+.RE
+.PP
+.PP
+Parse an XML element and create an object instance based on the configuration data\&. 
+.PP
+The type of the instance may be specified in the XML\&. If not specified then the \fIdefaultTargetType\fP  is used as the type\&. However the type is specified it must support the \fItypeConstraint\fP  type\&. 
+.PP
+Definition at line 930 of file XmlHierarchyConfigurator\&.cs\&.
+.SS "\fBIAppender\fP log4net\&.Repository\&.Hierarchy\&.XmlHierarchyConfigurator\&.FindAppenderByReference (XmlElementappenderRef)\fC [protected]\fP"
+
+.PP
+Parse appenders by IDREF\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIappenderRef\fP The appender ref element\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance of the appender that the ref refers to\&.
+.RE
+.PP
+.PP
+Parse an XML element that represents an appender and return the appender\&. 
+.PP
+Definition at line 241 of file XmlHierarchyConfigurator\&.cs\&.
+.SS "\fBIAppender\fP log4net\&.Repository\&.Hierarchy\&.XmlHierarchyConfigurator\&.ParseAppender (XmlElementappenderElement)\fC [protected]\fP"
+
+.PP
+Parses an appender element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIappenderElement\fP The appender element\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appender instance or \fCnull\fP when parsing failed\&.
+.RE
+.PP
+.PP
+Parse an XML element that represents an appender and return the appender instance\&. 
+.PP
+Definition at line 295 of file XmlHierarchyConfigurator\&.cs\&.
+.SS "void log4net\&.Repository\&.Hierarchy\&.XmlHierarchyConfigurator\&.ParseChildrenOfLoggerElement (XmlElementcatElement, \fBLogger\fPlog, boolisRoot)\fC [protected]\fP"
+
+.PP
+Parses the children of a logger element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcatElement\fP The category element\&.
+.br
+\fIlog\fP The logger instance\&.
+.br
+\fIisRoot\fP Flag to indicate if the logger is the root logger\&.
+.RE
+.PP
+.PP
+Parse the child elements of a <logger> element\&. 
+.PP
+Definition at line 420 of file XmlHierarchyConfigurator\&.cs\&.
+.SS "void log4net\&.Repository\&.Hierarchy\&.XmlHierarchyConfigurator\&.ParseLevel (XmlElementelement, \fBLogger\fPlog, boolisRoot)\fC [protected]\fP"
+
+.PP
+Parses a level element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIelement\fP The level element\&.
+.br
+\fIlog\fP The logger object to set the level on\&.
+.br
+\fIisRoot\fP Flag to indicate if the logger is the root logger\&.
+.RE
+.PP
+.PP
+Parse an XML element that represents a level\&. 
+.PP
+Definition at line 509 of file XmlHierarchyConfigurator\&.cs\&.
+.SS "void log4net\&.Repository\&.Hierarchy\&.XmlHierarchyConfigurator\&.ParseLogger (XmlElementloggerElement)\fC [protected]\fP"
+
+.PP
+Parses a logger element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggerElement\fP The logger element\&.
+.RE
+.PP
+.PP
+Parse an XML element that represents a logger\&. 
+.PP
+Definition at line 369 of file XmlHierarchyConfigurator\&.cs\&.
+.SS "void log4net\&.Repository\&.Hierarchy\&.XmlHierarchyConfigurator\&.ParseRenderer (XmlElementelement)\fC [protected]\fP"
+
+.PP
+Parses an object renderer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIelement\fP The renderer element\&.
+.RE
+.PP
+.PP
+Parse an XML element that represents a renderer\&. 
+.PP
+Definition at line 473 of file XmlHierarchyConfigurator\&.cs\&.
+.SS "void log4net\&.Repository\&.Hierarchy\&.XmlHierarchyConfigurator\&.ParseRoot (XmlElementrootElement)\fC [protected]\fP"
+
+.PP
+Parses the root logger element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrootElement\fP The root element\&.
+.RE
+.PP
+.PP
+Parse an XML element that represents the root logger\&. 
+.PP
+Definition at line 399 of file XmlHierarchyConfigurator\&.cs\&.
+.SS "void log4net\&.Repository\&.Hierarchy\&.XmlHierarchyConfigurator\&.SetParameter (XmlElementelement, objecttarget)\fC [protected]\fP"
+
+.PP
+Sets a parameter on an object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIelement\fP The parameter element\&.
+.br
+\fItarget\fP The object to set the parameter on\&.
+.RE
+.PP
+.PP
+The parameter name must correspond to a writable property on the object\&. The value of the parameter is a string, therefore this function will attempt to set a string property first\&. If unable to set a string property it will inspect the property and its argument type\&. It will attempt to call a static method called \fCParse\fP on the type of the property\&. This method will take a single string argument and return a value that can be used to set the property\&. 
+.PP
+Definition at line 562 of file XmlHierarchyConfigurator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

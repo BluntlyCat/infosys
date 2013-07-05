@@ -1,0 +1,503 @@
+.TH "NHibernate.Type.CustomType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.CustomType \- 
+.PP
+Adapts IUserType to the generic \fBIType\fP interface\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+IUserType
+.PP
+.RE
+.PP
+ 
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.AbstractType\fP, \fBNHibernate\&.Type\&.IDiscriminatorType\fP, and \fBNHibernate\&.Type\&.IVersionType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCustomType\fP (System\&.Type userTypeClass, IDictionary< string, string > parameters)"
+.br
+.ti -1c
+.RI "override \fBSqlType\fP[] \fBSqlTypes\fP (\fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "override int \fBGetColumnSpan\fP (\fBIMapping\fP session)"
+.br
+.ti -1c
+.RI "override object \fBNullSafeGet\fP (IDataReader rs, string[] names, \fBISessionImplementor\fP session, object owner)"
+.br
+.ti -1c
+.RI "override object \fBNullSafeGet\fP (IDataReader rs, string name, \fBISessionImplementor\fP session, object owner)"
+.br
+.ti -1c
+.RI "override void \fBNullSafeSet\fP (IDbCommand st, object value, int index, bool[] settable, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override void \fBNullSafeSet\fP (IDbCommand cmd, object value, int index, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override string \fBToLoggableString\fP (object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "override object \fBDeepCopy\fP (object value, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP (object x, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet a hashcode, consistent with persistence 'equality'\fP"
+.ti -1c
+.RI "override bool \fBIsDirty\fP (object old, object current, bool[] checkable, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "object \fBStringToObject\fP (string xml)"
+.br
+.RI "\fIWhen implemented by a class, converts the xml string from the mapping file to the \&.NET object\&. \fP"
+.ti -1c
+.RI "object \fBFromStringValue\fP (string xml)"
+.br
+.ti -1c
+.RI "virtual string \fBObjectToSQLString\fP (object value, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIWhen implemented by a class, return a string representation of the value, suitable for embedding in an SQL statement \fP"
+.ti -1c
+.RI "object \fBNext\fP (object current, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIWhen implemented by a class, increments the version\&. \fP"
+.ti -1c
+.RI "object \fBSeed\fP (\fBISessionImplementor\fP session)"
+.br
+.RI "\fIWhen implemented by a class, gets an initial version\&. \fP"
+.ti -1c
+.RI "override object \fBReplace\fP (object original, object current, \fBISessionImplementor\fP session, object owner, IDictionary copiedAlready)"
+.br
+.ti -1c
+.RI "override object \fBAssemble\fP (object cached, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIReconstructs the object from its cached 'disassembled' state\&. \fP"
+.ti -1c
+.RI "override object \fBDisassemble\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIDisassembles the object into a cacheable representation\&. \fP"
+.ti -1c
+.RI "override object \fBFromXMLNode\fP (XmlNode xml, \fBIMapping\fP factory)"
+.br
+.RI "\fIParse the XML representation of an instance\&.\fP"
+.ti -1c
+.RI "virtual object \fBFromXMLString\fP (string xml, \fBIMapping\fP factory)"
+.br
+.ti -1c
+.RI "virtual bool \fBIsEqual\fP (object x, object y)"
+.br
+.RI "\fIAre the two version values considered equal? \fP"
+.ti -1c
+.RI "override bool \fBIsEqual\fP (object x, object y, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fICompare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. \fP"
+.ti -1c
+.RI "override void \fBSetToXMLNode\fP (XmlNode node, object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIA representation of the value to be embedded in an XML element\&. \fP"
+.ti -1c
+.RI "override bool[] \fBToColumnNullness\fP (object value, \fBIMapping\fP mapping)"
+.br
+.RI "\fIGiven an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. \fP"
+.ti -1c
+.RI "virtual string \fBToXMLString\fP (object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIUserType\fP \fBUserType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsMutable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IComparer \fBComparator\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Adapts IUserType to the generic \fBIType\fP interface\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+IUserType
+.PP
+.RE
+.PP
+
+
+
+.PP
+Definition at line 20 of file CustomType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.CustomType\&.Assemble (objectcached, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Reconstructs the object from its cached 'disassembled' state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcached\fP The disassembled state from the cache
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP The parent Entity object is not used by this method
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The assembled object\&.
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 216 of file CustomType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.CustomType\&.Disassemble (objectvalue, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Disassembles the object into a cacheable representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to disassemble\&.
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP optional parent entity object (needed for collections) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The disassembled, deep cloned state of the object
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 221 of file CustomType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.CustomType\&.FromXMLNode (XmlNodexml, \fBIMapping\fPfactory)\fC [virtual]\fP"
+
+.PP
+Parse the XML representation of an instance\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an instance of the type 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 226 of file CustomType\&.cs\&.
+.SS "override int NHibernate\&.Type\&.CustomType\&.GetColumnSpan (\fBIMapping\fPsession)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 88 of file CustomType\&.cs\&.
+.SS "override int NHibernate\&.Type\&.CustomType\&.GetHashCode (objectx, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Get a hashcode, consistent with persistence 'equality'
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 170 of file CustomType\&.cs\&.
+.SS "virtual bool NHibernate\&.Type\&.CustomType\&.IsEqual (objectx, objecty)\fC [virtual]\fP"
+
+.PP
+Are the two version values considered equal? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP One value to check\&. 
+.br
+\fIy\fP The other value to check\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the values are equal, false otherwise\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IVersionType\fP\&.
+.PP
+Definition at line 236 of file CustomType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.CustomType\&.IsEqual (objectx, objecty, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Compare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+boolean 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 241 of file CustomType\&.cs\&.
+.SS "object NHibernate\&.Type\&.CustomType\&.Next (objectcurrent, \fBISessionImplementor\fPsession)"
+
+.PP
+When implemented by a class, increments the version\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcurrent\fP The current version
+.br
+\fIsession\fP The current session, if available\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an instance of the \fBIType\fP that has been incremented\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IVersionType\fP\&.
+.PP
+Definition at line 195 of file CustomType\&.cs\&.
+.SS "virtual string NHibernate\&.Type\&.CustomType\&.ObjectToSQLString (objectvalue, \fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, return a string representation of the value, suitable for embedding in an SQL statement 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The object to convert to a string for the SQL statement\&.
+.br
+\fIdialect\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that contains a well formed SQL Statement\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.ILiteralType\fP\&.
+.PP
+Definition at line 190 of file CustomType\&.cs\&.
+.SS "object NHibernate\&.Type\&.CustomType\&.Seed (\fBISessionImplementor\fPsession)"
+
+.PP
+When implemented by a class, gets an initial version\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The current session, if available\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An instance of the type\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IVersionType\fP\&.
+.PP
+Definition at line 200 of file CustomType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.CustomType\&.SetToXMLNode (XmlNodenode, objectvalue, \fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+A representation of the value to be embedded in an XML element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInode\fP 
+.br
+\fIvalue\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 246 of file CustomType\&.cs\&.
+.SS "override \fBSqlType\fP [] NHibernate\&.Type\&.CustomType\&.SqlTypes (\fBIMapping\fPmapping)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fImapping\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 78 of file CustomType\&.cs\&.
+.SS "object NHibernate\&.Type\&.CustomType\&.StringToObject (stringxml)"
+
+.PP
+When implemented by a class, converts the xml string from the mapping file to the \&.NET object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP The value of \fCdiscriminator-value\fP or \fCunsaved-value\fP attribute\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The string converted to the object\&.
+.RE
+.PP
+.PP
+This method needs to be able to handle any string\&. It should not just call System\&.Type\&.Parse without verifying that it is a parsable value for the System\&.Type\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.IIdentifierType\fP\&.
+.PP
+Definition at line 180 of file CustomType\&.cs\&.
+.SS "override bool [] NHibernate\&.Type\&.CustomType\&.ToColumnNullness (objectvalue, \fBIMapping\fPmapping)\fC [virtual]\fP"
+
+.PP
+Given an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP an instance of the type 
+.br
+\fImapping\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 251 of file CustomType\&.cs\&.
+.SS "override string NHibernate\&.Type\&.CustomType\&.ToLoggableString (objectvalue, \fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 126 of file CustomType\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool NHibernate\&.Type\&.CustomType\&.IsMutable\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 151 of file CustomType\&.cs\&.
+.SS "override string NHibernate\&.Type\&.CustomType\&.Name\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 140 of file CustomType\&.cs\&.
+.SS "override System\&.Type NHibernate\&.Type\&.CustomType\&.ReturnedClass\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 95 of file CustomType\&.cs\&.
+.SS "\fBIUserType\fP NHibernate\&.Type\&.CustomType\&.UserType\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 28 of file CustomType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

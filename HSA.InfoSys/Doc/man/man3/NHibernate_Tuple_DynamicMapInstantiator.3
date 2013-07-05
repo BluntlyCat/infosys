@@ -1,0 +1,108 @@
+.TH "NHibernate.Tuple.DynamicMapInstantiator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Tuple.DynamicMapInstantiator \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Tuple\&.IInstantiator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDynamicMapInstantiator\fP (\fBPersistentClass\fP mappingInfo)"
+.br
+.ti -1c
+.RI "object \fBInstantiate\fP (object id)"
+.br
+.RI "\fIPerform the requested entity instantiation\&. \fP"
+.ti -1c
+.RI "object \fBInstantiate\fP ()"
+.br
+.RI "\fIPerform the requested instantiation\&. \fP"
+.ti -1c
+.RI "bool \fBIsInstance\fP (object obj)"
+.br
+.RI "\fIPerforms check to see if the given object is an instance of the entity or component which this Instantiator instantiates\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBKEY\fP = '$type$'"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual IDictionary \fBGenerateMap\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 9 of file DynamicMapInstantiator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.Tuple\&.DynamicMapInstantiator\&.Instantiate (objectid)"
+
+.PP
+Perform the requested entity instantiation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The id of the entity to be instantiated\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An appropriately instantiated entity\&. 
+.RE
+.PP
+.PP
+This form is never called for component instantiation, only entity instantiation\&.
+.PP
+Implements \fBNHibernate\&.Tuple\&.IInstantiator\fP\&.
+.PP
+Definition at line 34 of file DynamicMapInstantiator\&.cs\&.
+.SS "object NHibernate\&.Tuple\&.DynamicMapInstantiator\&.Instantiate ()"
+
+.PP
+Perform the requested instantiation\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The instantiated data structure\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Tuple\&.IInstantiator\fP\&.
+.PP
+Definition at line 39 of file DynamicMapInstantiator\&.cs\&.
+.SS "bool NHibernate\&.Tuple\&.DynamicMapInstantiator\&.IsInstance (objectobj)"
+
+.PP
+Performs check to see if the given object is an instance of the entity or component which this Instantiator instantiates\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP The object to be checked\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True is the object does represent an instance of the underlying entity/component\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Tuple\&.IInstantiator\fP\&.
+.PP
+Definition at line 54 of file DynamicMapInstantiator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

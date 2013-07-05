@@ -1,0 +1,81 @@
+.TH "NHibernate.Type.MutableType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.MutableType \- 
+.PP
+Superclass for mutable nullable types\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Type\&.AbstractBinaryType\fP, \fBNHibernate\&.Type\&.SerializableType\fP, \fBNHibernate\&.Type\&.XDocType\fP, and \fBNHibernate\&.Type\&.XmlDocType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override object \fBReplace\fP (object original, object target, \fBISessionImplementor\fP session, object owner, IDictionary copiedAlready)"
+.br
+.ti -1c
+.RI "abstract object \fBDeepCopyNotNull\fP (object value)"
+.br
+.ti -1c
+.RI "override object \fBDeepCopy\fP (object value, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMutableType\fP (\fBSqlType\fP sqlType)"
+.br
+.RI "\fIInitialize a new instance of the \fBMutableType\fP class using a \fBSqlType\fP\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override sealed bool \fBIsMutable\fP\fC [get]\fP"
+.br
+.RI "\fIGets the value indicating if this \fBIType\fP is mutable\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Superclass for mutable nullable types\&. 
+
+
+.PP
+Definition at line 12 of file MutableType\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Type\&.MutableType\&.MutableType (\fBSqlType\fPsqlType)\fC [protected]\fP"
+
+.PP
+Initialize a new instance of the \fBMutableType\fP class using a \fBSqlType\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlType\fP The underlying \fBSqlType\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 19 of file MutableType\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override sealed bool NHibernate\&.Type\&.MutableType\&.IsMutable\fC [get]\fP"
+
+.PP
+Gets the value indicating if this \fBIType\fP is mutable\&. true - a \fBMutableType\fP is mutable\&.
+.PP
+This has been 'sealed' because any subclasses are expected to be mutable\&. If the type is immutable then they should inherit from \fBImmutableType\fP\&. 
+.PP
+Definition at line 32 of file MutableType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

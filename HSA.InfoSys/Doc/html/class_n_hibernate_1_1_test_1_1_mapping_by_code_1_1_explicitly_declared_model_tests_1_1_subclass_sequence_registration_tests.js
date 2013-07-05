@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explicitly_declared_model_tests_1_1_subclass_sequence_registration_tests =
+[
+    [ "WhenRegisterSubclassBeforeRootThenIsRegistered", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explicitly_declared_model_tests_1_1_subclass_sequence_registration_tests.html#acaa6f7a25c349a619fd7d104840cda91", null ],
+    [ "WhenRegisterSubclassWithNoRootThenThrows", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explicitly_declared_model_tests_1_1_subclass_sequence_registration_tests.html#a78985cdf9f0a49bc7ca11426ca03d09e", null ]
+];

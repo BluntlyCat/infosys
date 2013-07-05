@@ -1,0 +1,119 @@
+.TH "NHibernate.Driver.ReflectionBasedDriver" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Driver.ReflectionBasedDriver \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Driver\&.DriverBase\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Driver\&.CsharpSqliteDriver\fP, \fBNHibernate\&.Driver\&.DB2400Driver\fP, \fBNHibernate\&.Driver\&.DB2Driver\fP, \fBNHibernate\&.Driver\&.DotConnectMySqlDriver\fP, \fBNHibernate\&.Driver\&.FirebirdClientDriver\fP, \fBNHibernate\&.Driver\&.IfxDriver\fP, \fBNHibernate\&.Driver\&.IngresDriver\fP, \fBNHibernate\&.Driver\&.MySqlDataDriver\fP, \fBNHibernate\&.Driver\&.NpgsqlDriver\fP, \fBNHibernate\&.Driver\&.OracleClientDriver\fP, \fBNHibernate\&.Driver\&.OracleDataClientDriver\fP, \fBNHibernate\&.Driver\&.OracleLiteDataClientDriver\fP, \fBNHibernate\&.Driver\&.OracleManagedDataClientDriver\fP, \fBNHibernate\&.Driver\&.SQLite20Driver\fP, \fBNHibernate\&.Driver\&.SqlServerCeDriver\fP, \fBNHibernate\&.Driver\&.SybaseAsaClientDriver\fP, \fBNHibernate\&.Driver\&.SybaseAseClientDriver\fP, \fBNHibernate\&.Driver\&.SybaseSQLAnywhereDotNet4Driver\fP, \fBNHibernate\&.Driver\&.SybaseSQLAnywhereDriver\fP, NHibernate\&.Test\&.DriverTest\&.ReflectionBasedDriverTest\&.MyDriverWithNoDbProviderFactory, and NHibernate\&.Test\&.DriverTest\&.ReflectionBasedDriverTest\&.MyDriverWithWrongClassesAndGoodDbProviderFactory\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override IDbConnection \fBCreateConnection\fP ()"
+.br
+.RI "\fICreates an uninitialized IDbConnection object for the specific \fBDriver\fP \fP"
+.ti -1c
+.RI "override IDbCommand \fBCreateCommand\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBReflectionBasedDriver\fP (string driverAssemblyName, string connectionTypeName, string commandTypeName)"
+.br
+.RI "\fIInitializes a new instance of \fBReflectionBasedDriver\fP with type names that are loaded from the specified assembly\&. \fP"
+.ti -1c
+.RI "\fBReflectionBasedDriver\fP (string providerInvariantName, string driverAssemblyName, string connectionTypeName, string commandTypeName)"
+.br
+.RI "\fIInitializes a new instance of \fBReflectionBasedDriver\fP with type names that are loaded from the specified assembly\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBReflectionTypedProviderExceptionMessageTemplate\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 7 of file ReflectionBasedDriver\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Driver\&.ReflectionBasedDriver\&.ReflectionBasedDriver (stringdriverAssemblyName, stringconnectionTypeName, stringcommandTypeName)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of \fBReflectionBasedDriver\fP with type names that are loaded from the specified assembly\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdriverAssemblyName\fP Assembly to load the types from\&.
+.br
+\fIconnectionTypeName\fP \fBConnection\fP type name\&.
+.br
+\fIcommandTypeName\fP Command type name\&.
+.RE
+.PP
+
+.PP
+Definition at line 23 of file ReflectionBasedDriver\&.cs\&.
+.SS "NHibernate\&.Driver\&.ReflectionBasedDriver\&.ReflectionBasedDriver (stringproviderInvariantName, stringdriverAssemblyName, stringconnectionTypeName, stringcommandTypeName)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of \fBReflectionBasedDriver\fP with type names that are loaded from the specified assembly\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproviderInvariantName\fP The Invariant name of a provider\&.
+.br
+\fIdriverAssemblyName\fP Assembly to load the types from\&.
+.br
+\fIconnectionTypeName\fP \fBConnection\fP type name\&.
+.br
+\fIcommandTypeName\fP Command type name\&.
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+DbProviderFactories\&.GetFactory(string)
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 37 of file ReflectionBasedDriver\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override IDbConnection NHibernate\&.Driver\&.ReflectionBasedDriver\&.CreateConnection ()\fC [virtual]\fP"
+
+.PP
+Creates an uninitialized IDbConnection object for the specific \fBDriver\fP 
+.PP
+Implements \fBNHibernate\&.Driver\&.DriverBase\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Driver\&.SQLite20Driver\fP\&.
+.PP
+Definition at line 58 of file ReflectionBasedDriver\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const string NHibernate\&.Driver\&.ReflectionBasedDriver\&.ReflectionTypedProviderExceptionMessageTemplate\fC [protected]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+= "The IDbCommand and IDbConnection implementation in the assembly {0} could not be found\&. "
+                                                                               + "Ensure that the assembly {0} is located in the application directory or in the Global "
+                                                                               + "Assembly Cache\&. If the assembly is in the GAC, use <qualifyAssembly/> element in the "
+                                                                               + "application configuration file to specify the full name of the assembly\&."
+.fi
+.PP
+Definition at line 9 of file ReflectionBasedDriver\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

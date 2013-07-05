@@ -1,0 +1,543 @@
+.TH "log4net.Plugin.PluginCollection" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Plugin.PluginCollection \- 
+.PP
+A strongly-typed collection of \fBIPlugin\fP objects\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits ICollection, IList, IEnumerable, and ICloneable\&.
+.PP
+Inherited by log4net\&.Plugin\&.PluginCollection\&.ReadOnlyPluginCollection\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "interface \fBIPluginCollectionEnumerator\fP"
+.br
+.RI "\fISupports type-safe iteration over a \fBPluginCollection\fP\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPluginCollection\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fC\fBPluginCollection\fP\fP class that is empty and has the default initial capacity\&. \fP"
+.ti -1c
+.RI "\fBPluginCollection\fP (int capacity)"
+.br
+.RI "\fIInitializes a new instance of the \fC\fBPluginCollection\fP\fP class that has the specified initial capacity\&. \fP"
+.ti -1c
+.RI "\fBPluginCollection\fP (\fBPluginCollection\fP c)"
+.br
+.RI "\fIInitializes a new instance of the \fC\fBPluginCollection\fP\fP class that contains elements copied from the specified \fC\fBPluginCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "\fBPluginCollection\fP (\fBIPlugin\fP[] a)"
+.br
+.RI "\fIInitializes a new instance of the \fC\fBPluginCollection\fP\fP class that contains elements copied from the specified \fBIPlugin\fP array\&. \fP"
+.ti -1c
+.RI "\fBPluginCollection\fP (ICollection col)"
+.br
+.RI "\fIInitializes a new instance of the \fC\fBPluginCollection\fP\fP class that contains elements copied from the specified \fBIPlugin\fP collection\&. \fP"
+.ti -1c
+.RI "virtual void \fBCopyTo\fP (\fBIPlugin\fP[] array)"
+.br
+.RI "\fICopies the entire \fC\fBPluginCollection\fP\fP to a one-dimensional \fBIPlugin\fP array\&. \fP"
+.ti -1c
+.RI "virtual void \fBCopyTo\fP (\fBIPlugin\fP[] array, int start)"
+.br
+.RI "\fICopies the entire \fC\fBPluginCollection\fP\fP to a one-dimensional \fBIPlugin\fP array, starting at the specified index of the target array\&. \fP"
+.ti -1c
+.RI "virtual int \fBAdd\fP (\fBIPlugin\fP item)"
+.br
+.RI "\fIAdds a \fBIPlugin\fP to the end of the \fC\fBPluginCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual void \fBClear\fP ()"
+.br
+.RI "\fIRemoves all elements from the \fC\fBPluginCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual object \fBClone\fP ()"
+.br
+.RI "\fICreates a shallow copy of the \fBPluginCollection\fP\&. \fP"
+.ti -1c
+.RI "virtual bool \fBContains\fP (\fBIPlugin\fP item)"
+.br
+.RI "\fIDetermines whether a given \fBIPlugin\fP is in the \fC\fBPluginCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual int \fBIndexOf\fP (\fBIPlugin\fP item)"
+.br
+.RI "\fIReturns the zero-based index of the first occurrence of a \fBIPlugin\fP in the \fC\fBPluginCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual void \fBInsert\fP (int index, \fBIPlugin\fP item)"
+.br
+.RI "\fIInserts an element into the \fC\fBPluginCollection\fP\fP at the specified index\&. \fP"
+.ti -1c
+.RI "virtual void \fBRemove\fP (\fBIPlugin\fP item)"
+.br
+.RI "\fIRemoves the first occurrence of a specific \fBIPlugin\fP from the \fC\fBPluginCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual void \fBRemoveAt\fP (int index)"
+.br
+.RI "\fIRemoves the element at the specified index of the \fC\fBPluginCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual \fBIPluginCollectionEnumerator\fP \fBGetEnumerator\fP ()"
+.br
+.RI "\fIReturns an enumerator that can iterate through the \fC\fBPluginCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual int \fBAddRange\fP (\fBPluginCollection\fP x)"
+.br
+.RI "\fIAdds the elements of another \fC\fBPluginCollection\fP\fP to the current \fC\fBPluginCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual int \fBAddRange\fP (\fBIPlugin\fP[] x)"
+.br
+.RI "\fIAdds the elements of a \fBIPlugin\fP array to the current \fC\fBPluginCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual int \fBAddRange\fP (ICollection col)"
+.br
+.RI "\fIAdds the elements of a \fBIPlugin\fP collection to the current \fC\fBPluginCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual void \fBTrimToSize\fP ()"
+.br
+.RI "\fISets the capacity to the actual number of elements\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBPluginCollection\fP \fBReadOnly\fP (\fBPluginCollection\fP list)"
+.br
+.RI "\fICreates a read-only wrapper for a \fC\fBPluginCollection\fP\fP instance\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual int \fBCount\fP\fC [get]\fP"
+.br
+.RI "\fIGets the number of elements actually contained in the \fC\fBPluginCollection\fP\fP\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsSynchronized\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether access to the collection is synchronized (thread-safe)\&. \fP"
+.ti -1c
+.RI "virtual object \fBSyncRoot\fP\fC [get]\fP"
+.br
+.RI "\fIGets an object that can be used to synchronize access to the collection\&. \fP"
+.ti -1c
+.RI "virtual \fBIPlugin\fP \fBthis[int index]\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBIPlugin\fP at the specified index\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsFixedSize\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether the collection has a fixed size\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsReadOnly\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether the IList is read-only\&. \fP"
+.ti -1c
+.RI "virtual int \fBCapacity\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the number of elements the \fC\fBPluginCollection\fP\fP can contain\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A strongly-typed collection of \fBIPlugin\fP objects\&. 
+
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 29 of file PluginCollection\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Plugin\&.PluginCollection\&.PluginCollection ()"
+
+.PP
+Initializes a new instance of the \fC\fBPluginCollection\fP\fP class that is empty and has the default initial capacity\&. 
+.PP
+Definition at line 98 of file PluginCollection\&.cs\&.
+.SS "log4net\&.Plugin\&.PluginCollection\&.PluginCollection (intcapacity)"
+
+.PP
+Initializes a new instance of the \fC\fBPluginCollection\fP\fP class that has the specified initial capacity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcapacity\fP The number of elements that the new \fC\fBPluginCollection\fP\fP is initially capable of storing\&. 
+.RE
+.PP
+
+.PP
+Definition at line 110 of file PluginCollection\&.cs\&.
+.SS "log4net\&.Plugin\&.PluginCollection\&.PluginCollection (\fBPluginCollection\fPc)"
+
+.PP
+Initializes a new instance of the \fC\fBPluginCollection\fP\fP class that contains elements copied from the specified \fC\fBPluginCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIc\fP The \fC\fBPluginCollection\fP\fP whose elements are copied to the new collection\&.
+.RE
+.PP
+
+.PP
+Definition at line 120 of file PluginCollection\&.cs\&.
+.SS "log4net\&.Plugin\&.PluginCollection\&.PluginCollection (\fBIPlugin\fP[]a)"
+
+.PP
+Initializes a new instance of the \fC\fBPluginCollection\fP\fP class that contains elements copied from the specified \fBIPlugin\fP array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIa\fP The \fBIPlugin\fP array whose elements are copied to the new list\&.
+.RE
+.PP
+
+.PP
+Definition at line 131 of file PluginCollection\&.cs\&.
+.SS "log4net\&.Plugin\&.PluginCollection\&.PluginCollection (ICollectioncol)"
+
+.PP
+Initializes a new instance of the \fC\fBPluginCollection\fP\fP class that contains elements copied from the specified \fBIPlugin\fP collection\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcol\fP The \fBIPlugin\fP collection whose elements are copied to the new list\&.
+.RE
+.PP
+
+.PP
+Definition at line 142 of file PluginCollection\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual int log4net\&.Plugin\&.PluginCollection\&.Add (\fBIPlugin\fPitem)\fC [virtual]\fP"
+
+.PP
+Adds a \fBIPlugin\fP to the end of the \fC\fBPluginCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The \fBIPlugin\fP to be added to the end of the \fC\fBPluginCollection\fP\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The index at which the value has been added\&.
+.RE
+.PP
+
+.PP
+Definition at line 265 of file PluginCollection\&.cs\&.
+.SS "virtual int log4net\&.Plugin\&.PluginCollection\&.AddRange (\fBPluginCollection\fPx)\fC [virtual]\fP"
+
+.PP
+Adds the elements of another \fC\fBPluginCollection\fP\fP to the current \fC\fBPluginCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP The \fC\fBPluginCollection\fP\fP whose elements should be added to the end of the current \fC\fBPluginCollection\fP\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new \fBPluginCollection\&.Count\fP of the \fC\fBPluginCollection\fP\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 490 of file PluginCollection\&.cs\&.
+.SS "virtual int log4net\&.Plugin\&.PluginCollection\&.AddRange (\fBIPlugin\fP[]x)\fC [virtual]\fP"
+
+.PP
+Adds the elements of a \fBIPlugin\fP array to the current \fC\fBPluginCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP The \fBIPlugin\fP array whose elements should be added to the end of the \fC\fBPluginCollection\fP\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new \fBPluginCollection\&.Count\fP of the \fC\fBPluginCollection\fP\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 509 of file PluginCollection\&.cs\&.
+.SS "virtual int log4net\&.Plugin\&.PluginCollection\&.AddRange (ICollectioncol)\fC [virtual]\fP"
+
+.PP
+Adds the elements of a \fBIPlugin\fP collection to the current \fC\fBPluginCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcol\fP The \fBIPlugin\fP collection whose elements should be added to the end of the \fC\fBPluginCollection\fP\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new \fBPluginCollection\&.Count\fP of the \fC\fBPluginCollection\fP\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 528 of file PluginCollection\&.cs\&.
+.SS "virtual void log4net\&.Plugin\&.PluginCollection\&.Clear ()\fC [virtual]\fP"
+
+.PP
+Removes all elements from the \fC\fBPluginCollection\fP\fP\&. 
+.PP
+Definition at line 281 of file PluginCollection\&.cs\&.
+.SS "virtual object log4net\&.Plugin\&.PluginCollection\&.Clone ()\fC [virtual]\fP"
+
+.PP
+Creates a shallow copy of the \fBPluginCollection\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A new \fBPluginCollection\fP with a shallow copy of the collection data\&.
+.RE
+.PP
+
+.PP
+Definition at line 292 of file PluginCollection\&.cs\&.
+.SS "virtual bool log4net\&.Plugin\&.PluginCollection\&.Contains (\fBIPlugin\fPitem)\fC [virtual]\fP"
+
+.PP
+Determines whether a given \fBIPlugin\fP is in the \fC\fBPluginCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The \fBIPlugin\fP to check for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fIitem\fP  is found in the \fC\fBPluginCollection\fP\fP; otherwise, \fCfalse\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 307 of file PluginCollection\&.cs\&.
+.SS "virtual void log4net\&.Plugin\&.PluginCollection\&.CopyTo (\fBIPlugin\fP[]array)\fC [virtual]\fP"
+
+.PP
+Copies the entire \fC\fBPluginCollection\fP\fP to a one-dimensional \fBIPlugin\fP array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarray\fP The one-dimensional \fBIPlugin\fP array to copy to\&.
+.RE
+.PP
+
+.PP
+Definition at line 188 of file PluginCollection\&.cs\&.
+.SS "virtual void log4net\&.Plugin\&.PluginCollection\&.CopyTo (\fBIPlugin\fP[]array, intstart)\fC [virtual]\fP"
+
+.PP
+Copies the entire \fC\fBPluginCollection\fP\fP to a one-dimensional \fBIPlugin\fP array, starting at the specified index of the target array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarray\fP The one-dimensional \fBIPlugin\fP array to copy to\&.
+.br
+\fIstart\fP The zero-based index in \fIarray\fP  at which copying begins\&.
+.RE
+.PP
+
+.PP
+Definition at line 199 of file PluginCollection\&.cs\&.
+.SS "virtual \fBIPluginCollectionEnumerator\fP log4net\&.Plugin\&.PluginCollection\&.GetEnumerator ()\fC [virtual]\fP"
+
+.PP
+Returns an enumerator that can iterate through the \fC\fBPluginCollection\fP\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An Enumerator for the entire \fC\fBPluginCollection\fP\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 441 of file PluginCollection\&.cs\&.
+.SS "virtual int log4net\&.Plugin\&.PluginCollection\&.IndexOf (\fBIPlugin\fPitem)\fC [virtual]\fP"
+
+.PP
+Returns the zero-based index of the first occurrence of a \fBIPlugin\fP in the \fC\fBPluginCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The \fBIPlugin\fP to locate in the \fC\fBPluginCollection\fP\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The zero-based index of the first occurrence of \fIitem\fP  in the entire \fC\fBPluginCollection\fP\fP, if found; otherwise, -1\&. 
+.RE
+.PP
+
+.PP
+Definition at line 328 of file PluginCollection\&.cs\&.
+.SS "virtual void log4net\&.Plugin\&.PluginCollection\&.Insert (intindex, \fBIPlugin\fPitem)\fC [virtual]\fP"
+
+.PP
+Inserts an element into the \fC\fBPluginCollection\fP\fP at the specified index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The zero-based index at which \fIitem\fP  should be inserted\&.
+.br
+\fIitem\fP The \fBIPlugin\fP to insert\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentOutOfRangeException\fP \fIindex\fP  is less than zero
+.PP
+-or-
+.PP
+\fIindex\fP  is equal to or greater than \fBPluginCollection\&.Count\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 350 of file PluginCollection\&.cs\&.
+.SS "static \fBPluginCollection\fP log4net\&.Plugin\&.PluginCollection\&.ReadOnly (\fBPluginCollection\fPlist)\fC [static]\fP"
+
+.PP
+Creates a read-only wrapper for a \fC\fBPluginCollection\fP\fP instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlist\fP list to create a readonly wrapper arround
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fC\fBPluginCollection\fP\fP wrapper that is read-only\&. 
+.RE
+.PP
+
+.PP
+Definition at line 83 of file PluginCollection\&.cs\&.
+.SS "virtual void log4net\&.Plugin\&.PluginCollection\&.Remove (\fBIPlugin\fPitem)\fC [virtual]\fP"
+
+.PP
+Removes the first occurrence of a specific \fBIPlugin\fP from the \fC\fBPluginCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The \fBIPlugin\fP to remove from the \fC\fBPluginCollection\fP\fP\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP The specified \fBIPlugin\fP was not found in the \fC\fBPluginCollection\fP\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 376 of file PluginCollection\&.cs\&.
+.SS "virtual void log4net\&.Plugin\&.PluginCollection\&.RemoveAt (intindex)\fC [virtual]\fP"
+
+.PP
+Removes the element at the specified index of the \fC\fBPluginCollection\fP\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The zero-based index of the element to remove\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentOutOfRangeException\fP \fIindex\fP  is less than zero\&.
+.PP
+-or-
+.PP
+\fIindex\fP  is equal to or greater than \fBPluginCollection\&.Count\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 396 of file PluginCollection\&.cs\&.
+.SS "virtual void log4net\&.Plugin\&.PluginCollection\&.TrimToSize ()\fC [virtual]\fP"
+
+.PP
+Sets the capacity to the actual number of elements\&. 
+.PP
+Definition at line 546 of file PluginCollection\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual int log4net\&.Plugin\&.PluginCollection\&.Capacity\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the number of elements the \fC\fBPluginCollection\fP\fP can contain\&. The number of elements the \fC\fBPluginCollection\fP\fP can contain\&. 
+.PP
+Definition at line 457 of file PluginCollection\&.cs\&.
+.SS "virtual int log4net\&.Plugin\&.PluginCollection\&.Count\fC [get]\fP"
+
+.PP
+Gets the number of elements actually contained in the \fC\fBPluginCollection\fP\fP\&. 
+.PP
+Definition at line 179 of file PluginCollection\&.cs\&.
+.SS "virtual bool log4net\&.Plugin\&.PluginCollection\&.IsFixedSize\fC [get]\fP"
+
+.PP
+Gets a value indicating whether the collection has a fixed size\&. \fCtrue\fP if the collection has a fixed size; otherwise, \fCfalse\fP\&. The default is \fCfalse\fP\&.
+.PP
+Definition at line 420 of file PluginCollection\&.cs\&.
+.SS "virtual bool log4net\&.Plugin\&.PluginCollection\&.IsReadOnly\fC [get]\fP"
+
+.PP
+Gets a value indicating whether the IList is read-only\&. \fCtrue\fP if the collection is read-only; otherwise, \fCfalse\fP\&. The default is \fCfalse\fP\&.
+.PP
+Definition at line 429 of file PluginCollection\&.cs\&.
+.SS "virtual bool log4net\&.Plugin\&.PluginCollection\&.IsSynchronized\fC [get]\fP"
+
+.PP
+Gets a value indicating whether access to the collection is synchronized (thread-safe)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if access to the ICollection is synchronized (thread-safe); otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 214 of file PluginCollection\&.cs\&.
+.SS "virtual object log4net\&.Plugin\&.PluginCollection\&.SyncRoot\fC [get]\fP"
+
+.PP
+Gets an object that can be used to synchronize access to the collection\&. An object that can be used to synchronize access to the collection\&. 
+.PP
+Definition at line 225 of file PluginCollection\&.cs\&.
+.SS "virtual \fBIPlugin\fP log4net\&.Plugin\&.PluginCollection\&.this[int index]\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBIPlugin\fP at the specified index\&. The \fBIPlugin\fP at the specified index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The zero-based index of the element to get or set\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentOutOfRangeException\fP \fIindex\fP  is less than zero\&.
+.PP
+-or-
+.PP
+\fIindex\fP  is equal to or greater than \fBPluginCollection\&.Count\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 246 of file PluginCollection\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

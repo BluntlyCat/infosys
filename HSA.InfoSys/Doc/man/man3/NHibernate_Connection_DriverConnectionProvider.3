@@ -1,0 +1,80 @@
+.TH "NHibernate.Connection.DriverConnectionProvider" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Connection.DriverConnectionProvider \- 
+.PP
+A \fBConnectionProvider\fP that uses an IDriver to create connections\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Connection\&.ConnectionProvider\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Test\&.DebugConnectionProvider\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBCloseConnection\fP (IDbConnection conn)"
+.br
+.RI "\fICloses and Disposes of the IDbConnection\&. \fP"
+.ti -1c
+.RI "override IDbConnection \fBGetConnection\fP ()"
+.br
+.RI "\fIGets a new open IDbConnection through the \fBNHibernate\&.Driver\&.IDriver\fP\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A \fBConnectionProvider\fP that uses an IDriver to create connections\&. 
+
+
+.PP
+Definition at line 10 of file DriverConnectionProvider\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Connection\&.DriverConnectionProvider\&.CloseConnection (IDbConnectionconn)\fC [virtual]\fP"
+
+.PP
+Closes and Disposes of the IDbConnection\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconn\fP The IDbConnection to clean up\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Connection\&.ConnectionProvider\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Test\&.DebugConnectionProvider\fP\&.
+.PP
+Definition at line 18 of file DriverConnectionProvider\&.cs\&.
+.SS "override IDbConnection NHibernate\&.Connection\&.DriverConnectionProvider\&.GetConnection ()\fC [virtual]\fP"
+
+.PP
+Gets a new open IDbConnection through the \fBNHibernate\&.Driver\&.IDriver\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An Open IDbConnection\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIException\fP If there is any problem creating or opening the IDbConnection\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Connection\&.ConnectionProvider\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Test\&.DebugConnectionProvider\fP\&.
+.PP
+Definition at line 34 of file DriverConnectionProvider\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

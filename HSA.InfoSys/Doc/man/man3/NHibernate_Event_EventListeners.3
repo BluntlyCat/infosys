@@ -1,0 +1,161 @@
+.TH "NHibernate.Event.EventListeners" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.EventListeners \- 
+.PP
+A convience holder for all defined session event listeners\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "System\&.Type \fBGetListenerClassFor\fP (\fBListenerType\fP type)"
+.br
+.ti -1c
+.RI "virtual void \fBInitializeListeners\fP (\fBConfiguration\fP cfg)"
+.br
+.RI "\fICall IInitializable\&.Initialize(Configuration) on any listeners that implement \fBIInitializable\fP\&. \fP"
+.ti -1c
+.RI "\fBEventListeners\fP \fBShallowCopy\fP ()"
+.br
+.ti -1c
+.RI "void \fBDestroyListeners\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBILoadEventListener\fP[] \fBLoadEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBISaveOrUpdateEventListener\fP[] \fBSaveOrUpdateEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIMergeEventListener\fP[] \fBMergeEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPersistEventListener\fP[] \fBPersistEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPersistEventListener\fP[] \fBPersistOnFlushEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIReplicateEventListener\fP[] \fBReplicateEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIDeleteEventListener\fP[] \fBDeleteEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIAutoFlushEventListener\fP[] \fBAutoFlushEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIDirtyCheckEventListener\fP[] \fBDirtyCheckEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIFlushEventListener\fP[] \fBFlushEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIEvictEventListener\fP[] \fBEvictEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBILockEventListener\fP[] \fBLockEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIRefreshEventListener\fP[] \fBRefreshEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIFlushEntityEventListener\fP[] \fBFlushEntityEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIInitializeCollectionEventListener\fP[] \fBInitializeCollectionEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPostLoadEventListener\fP[] \fBPostLoadEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPreLoadEventListener\fP[] \fBPreLoadEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPreDeleteEventListener\fP[] \fBPreDeleteEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPreUpdateEventListener\fP[] \fBPreUpdateEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPreInsertEventListener\fP[] \fBPreInsertEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPostDeleteEventListener\fP[] \fBPostDeleteEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPostUpdateEventListener\fP[] \fBPostUpdateEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPostInsertEventListener\fP[] \fBPostInsertEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPostDeleteEventListener\fP[] \fBPostCommitDeleteEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPostUpdateEventListener\fP[] \fBPostCommitUpdateEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPostInsertEventListener\fP[] \fBPostCommitInsertEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBISaveOrUpdateEventListener\fP[] \fBSaveEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBISaveOrUpdateEventListener\fP[] \fBUpdateEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPreCollectionRecreateEventListener\fP[] \fBPreCollectionRecreateEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPostCollectionRecreateEventListener\fP[] \fBPostCollectionRecreateEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPreCollectionRemoveEventListener\fP[] \fBPreCollectionRemoveEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPostCollectionRemoveEventListener\fP[] \fBPostCollectionRemoveEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPreCollectionUpdateEventListener\fP[] \fBPreCollectionUpdateEventListeners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIPostCollectionUpdateEventListener\fP[] \fBPostCollectionUpdateEventListeners\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A convience holder for all defined session event listeners\&. 
+
+
+.PP
+Definition at line 13 of file EventListeners\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Event\&.EventListeners\&.InitializeListeners (\fBConfiguration\fPcfg)\fC [virtual]\fP"
+
+.PP
+Call IInitializable\&.Initialize(Configuration) on any listeners that implement \fBIInitializable\fP\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBIInitializable\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 554 of file EventListeners\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

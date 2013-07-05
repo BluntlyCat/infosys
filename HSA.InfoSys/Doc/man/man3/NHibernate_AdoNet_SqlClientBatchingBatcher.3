@@ -1,0 +1,68 @@
+.TH "NHibernate.AdoNet.SqlClientBatchingBatcher" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.AdoNet.SqlClientBatchingBatcher \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Test\&.Insertordering\&.InsertOrderingFixture\&.StatsBatcher\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlClientBatchingBatcher\fP (\fBConnectionManager\fP connectionManager, \fBIInterceptor\fP interceptor)"
+.br
+.ti -1c
+.RI "override void \fBAddToBatch\fP (\fBIExpectation\fP expectation)"
+.br
+.RI "\fIAdds the expected row count into the batch\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBDoExecuteBatch\fP (IDbCommand ps)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override int \fBBatchSize\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override int \fBCountOfStatementsInCurrentBatch\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 11 of file SqlClientBatchingBatcher\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.AdoNet\&.SqlClientBatchingBatcher\&.AddToBatch (\fBIExpectation\fPexpectation)\fC [virtual]\fP"
+
+.PP
+Adds the expected row count into the batch\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpectation\fP The number of rows expected to be affected by the query\&.
+.RE
+.PP
+.PP
+If Batching is not supported, then this is when the Command should be executed\&. If Batching is supported then it should hold of on executing the batch until explicitly told to\&. 
+.PP
+Implements \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Test\&.Insertordering\&.InsertOrderingFixture\&.StatsBatcher\fP\&.
+.PP
+Definition at line 44 of file SqlClientBatchingBatcher\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,906 @@
+.TH "Renci.SshNet.Compression" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Compression \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBCompressor\fP"
+.br
+.RI "\fIRepresents base class for compression algorithm implementation \fP"
+.ti -1c
+.RI "class \fBZlib\fP"
+.br
+.RI "\fIRepresents 'zlib' compression implementation \fP"
+.ti -1c
+.RI "class \fBZlibOpenSsh\fP"
+.br
+.RI "\fIRepresents 'zlib@openssh\&.org' compression implementation \fP"
+.ti -1c
+.RI "class \fBZlibStream\fP"
+.br
+.RI "\fIImplements Zlib compression algorithm\&. \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBCompressionMode\fP { \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1 }"
+.br
+.RI "\fISpecifies compression modes \fP"
+.ti -1c
+.RI "enum \fBCompressionMode\fP { \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1 }"
+.br
+.RI "\fISpecifies compression modes \fP"
+.ti -1c
+.RI "enum \fBCompressionMode\fP { \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1 }"
+.br
+.RI "\fISpecifies compression modes \fP"
+.ti -1c
+.RI "enum \fBCompressionMode\fP { \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1 }"
+.br
+.RI "\fISpecifies compression modes \fP"
+.ti -1c
+.RI "enum \fBCompressionMode\fP { \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1 }"
+.br
+.RI "\fISpecifies compression modes \fP"
+.ti -1c
+.RI "enum \fBCompressionMode\fP { \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1 }"
+.br
+.RI "\fISpecifies compression modes \fP"
+.ti -1c
+.RI "enum \fBCompressionMode\fP { \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1 }"
+.br
+.RI "\fISpecifies compression modes \fP"
+.ti -1c
+.RI "enum \fBCompressionMode\fP { \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1 }"
+.br
+.RI "\fISpecifies compression modes \fP"
+.ti -1c
+.RI "enum \fBCompressionMode\fP { \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1 }"
+.br
+.RI "\fISpecifies compression modes \fP"
+.ti -1c
+.RI "enum \fBCompressionMode\fP { \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1 }"
+.br
+.RI "\fISpecifies compression modes \fP"
+.ti -1c
+.RI "enum \fBCompressionMode\fP { \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1, \fBCompressionMode\&.Compress\fP = 0, \fBCompressionMode\&.Decompress\fP = 1 }"
+.br
+.RI "\fISpecifies compression modes \fP"
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBRenci\&.SshNet\&.Compression\&.CompressionMode\fP"
+
+.PP
+Specifies compression modes 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.PP
+Definition at line 6 of file CompressionMode\&.cs\&.
+.SS "enum \fBRenci\&.SshNet\&.Compression\&.CompressionMode\fP"
+
+.PP
+Specifies compression modes 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.PP
+Definition at line 6 of file CompressionMode\&.cs\&.
+.SS "enum \fBRenci\&.SshNet\&.Compression\&.CompressionMode\fP"
+
+.PP
+Specifies compression modes 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.PP
+Definition at line 6 of file CompressionMode\&.cs\&.
+.SS "enum \fBRenci\&.SshNet\&.Compression\&.CompressionMode\fP"
+
+.PP
+Specifies compression modes 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.PP
+Definition at line 6 of file CompressionMode\&.cs\&.
+.SS "enum \fBRenci\&.SshNet\&.Compression\&.CompressionMode\fP"
+
+.PP
+Specifies compression modes 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.PP
+Definition at line 6 of file CompressionMode\&.cs\&.
+.SS "enum \fBRenci\&.SshNet\&.Compression\&.CompressionMode\fP"
+
+.PP
+Specifies compression modes 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.PP
+Definition at line 6 of file CompressionMode\&.cs\&.
+.SS "enum \fBRenci\&.SshNet\&.Compression\&.CompressionMode\fP"
+
+.PP
+Specifies compression modes 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.PP
+Definition at line 6 of file CompressionMode\&.cs\&.
+.SS "enum \fBRenci\&.SshNet\&.Compression\&.CompressionMode\fP"
+
+.PP
+Specifies compression modes 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.PP
+Definition at line 6 of file CompressionMode\&.cs\&.
+.SS "enum \fBRenci\&.SshNet\&.Compression\&.CompressionMode\fP"
+
+.PP
+Specifies compression modes 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.PP
+Definition at line 6 of file CompressionMode\&.cs\&.
+.SS "enum \fBRenci\&.SshNet\&.Compression\&.CompressionMode\fP"
+
+.PP
+Specifies compression modes 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.PP
+Definition at line 6 of file CompressionMode\&.cs\&.
+.SS "enum \fBRenci\&.SshNet\&.Compression\&.CompressionMode\fP"
+
+.PP
+Specifies compression modes 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.TP
+\fB\fICompress \fP\fP
+Specifies that content should be compressed\&. 
+.TP
+\fB\fIDecompress \fP\fP
+Specifies that content should be decompressed\&. 
+.PP
+Definition at line 6 of file CompressionMode\&.cs\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

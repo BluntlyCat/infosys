@@ -1,0 +1,78 @@
+.TH "NHibernate.SqlCommand.JoinFragment" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.SqlCommand.JoinFragment \- 
+.PP
+Represents a SQL \fCJOIN\fP  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.SqlCommand\&.ANSIJoinFragment\fP, \fBNHibernate\&.SqlCommand\&.InformixJoinFragment\fP, \fBNHibernate\&.SqlCommand\&.OracleJoinFragment\fP, and \fBNHibernate\&.SqlCommand\&.QueryJoinFragment\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract void \fBAddJoin\fP (string tableName, string alias, string[] fkColumns, string[] pkColumns, \fBJoinType\fP joinType)"
+.br
+.ti -1c
+.RI "abstract void \fBAddJoin\fP (string tableName, string alias, string[] fkColumns, string[] pkColumns, \fBJoinType\fP joinType, \fBSqlString\fP on)"
+.br
+.ti -1c
+.RI "abstract void \fBAddCrossJoin\fP (string tableName, string alias)"
+.br
+.ti -1c
+.RI "abstract void \fBAddJoins\fP (\fBSqlString\fP fromFragment, \fBSqlString\fP whereFragment)"
+.br
+.ti -1c
+.RI "abstract bool \fBAddCondition\fP (string condition)"
+.br
+.ti -1c
+.RI "abstract bool \fBAddCondition\fP (\fBSqlString\fP condition)"
+.br
+.ti -1c
+.RI "abstract void \fBAddFromFragmentString\fP (\fBSqlString\fP fromFragmentString)"
+.br
+.ti -1c
+.RI "virtual void \fBAddFragment\fP (\fBJoinFragment\fP ojf)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBAddCondition\fP (\fBSqlStringBuilder\fP buffer, string on)"
+.br
+.ti -1c
+.RI "bool \fBAddCondition\fP (\fBSqlStringBuilder\fP buffer, \fBSqlString\fP on)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "abstract \fBSqlString\fP \fBToFromFragmentString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract \fBSqlString\fP \fBToWhereFragmentString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasFilterCondition\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasThetaJoins\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a SQL \fCJOIN\fP 
+
+
+.PP
+Definition at line 18 of file JoinFragment\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

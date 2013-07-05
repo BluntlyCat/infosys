@@ -1,0 +1,443 @@
+.TH "NHibernate.Bytecode.ICollectionTypeFactory" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Bytecode.ICollectionTypeFactory \- 
+.PP
+\fBType\fP factory for collections types\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Type\&.DefaultCollectionTypeFactory\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCollectionType\fP \fBArray\fP (string role, string propertyRef, bool embedded, System\&.Type elementClass)"
+.br
+.RI "\fICreates a new CollectionType for an System\&.Array\&. \fP"
+.ti -1c
+.RI "\fBCollectionType\fP \fBBag\fP (string role, string propertyRef, bool embedded)"
+.br
+.RI "\fICreates a new CollectionType for an IList with bag semantics\&. \fP"
+.ti -1c
+.RI "\fBCollectionType\fP \fBBag< T >\fP (string role, string propertyRef, bool embedded)"
+.br
+.RI "\fICreates a new CollectionType for an System\&.Collections\&.Generic\&.IList{T} with bag semantics\&. \fP"
+.ti -1c
+.RI "\fBCollectionType\fP \fBList\fP (string role, string propertyRef, bool embedded)"
+.br
+.RI "\fICreates a new CollectionType for an IList\&. \fP"
+.ti -1c
+.RI "\fBCollectionType\fP \fBList< T >\fP (string role, string propertyRef, bool embedded)"
+.br
+.RI "\fICreates a new CollectionType for an System\&.Collections\&.Generic\&.IList&lt;T&gt; with list semantics\&. \fP"
+.ti -1c
+.RI "\fBCollectionType\fP \fBIdBag\fP (string role, string propertyRef, bool embedded)"
+.br
+.RI "\fICreates a new CollectionType for an IList with id-bag semantics\&. \fP"
+.ti -1c
+.RI "\fBCollectionType\fP \fBIdBag< T >\fP (string role, string propertyRef, bool embedded)"
+.br
+.RI "\fICreates a new CollectionType for an System\&.Collections\&.Generic\&.IList{T} with identifier bag semantics\&. \fP"
+.ti -1c
+.RI "\fBCollectionType\fP \fBSet< T >\fP (string role, string propertyRef, bool embedded)"
+.br
+.RI "\fICreates a new CollectionType for an ISet{T}\&. \fP"
+.ti -1c
+.RI "\fBCollectionType\fP \fBSortedSet< T >\fP (string role, string propertyRef, bool embedded, IComparer< T > comparer)"
+.br
+.RI "\fICreates a new CollectionType for a sorted ISet{T}\&. \fP"
+.ti -1c
+.RI "\fBCollectionType\fP \fBOrderedSet< T >\fP (string role, string propertyRef, bool embedded)"
+.br
+.RI "\fICreates a new CollectionType for an ordered ISet{T}\&. \fP"
+.ti -1c
+.RI "\fBCollectionType\fP \fBMap\fP (string role, string propertyRef, bool embedded)"
+.br
+.RI "\fICreates a new CollectionType for an IDictionary\&. \fP"
+.ti -1c
+.RI "\fBCollectionType\fP \fBOrderedMap\fP (string role, string propertyRef, bool embedded)"
+.br
+.RI "\fICreates a new CollectionType for an IDictionary that maintains insertion order of elements\&. \fP"
+.ti -1c
+.RI "\fBCollectionType\fP \fBSortedMap\fP (string role, string propertyRef, bool embedded, IComparer comparer)"
+.br
+.RI "\fICreates a new CollectionType for an IDictionary that is sorted by an IComparer\&. \fP"
+.ti -1c
+.RI "\fBCollectionType\fP \fBMap< TKey, TValue >\fP (string role, string propertyRef, bool embedded)"
+.br
+.RI "\fICreates a new CollectionType for an System\&.Collections\&.Generic\&.IDictionary&lt;TKey,TValue&gt;\&. \fP"
+.ti -1c
+.RI "\fBCollectionType\fP \fBSortedDictionary< TKey, TValue >\fP (string role, string propertyRef, bool embedded, IComparer< TKey > comparer)"
+.br
+.ti -1c
+.RI "\fBCollectionType\fP \fBSortedList< TKey, TValue >\fP (string role, string propertyRef, bool embedded, IComparer< TKey > comparer)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBType\fP factory for collections types\&. 
+
+
+.PP
+Definition at line 10 of file ICollectionTypeFactory\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBCollectionType\fP NHibernate\&.Bytecode\&.ICollectionTypeFactory\&.Array (stringrole, stringpropertyRef, boolembedded, System\&.TypeelementClass)"
+
+.PP
+Creates a new CollectionType for an System\&.Array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&.
+.br
+\fIelementClass\fP The System\&.Type to use to create the array\&.
+.br
+\fIembedded\fP Is embedded in XML (not supported yet)
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An ArrayType for the specified role\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.DefaultCollectionTypeFactory\fP\&.
+.SS "\fBCollectionType\fP NHibernate\&.Bytecode\&.ICollectionTypeFactory\&.Bag (stringrole, stringpropertyRef, boolembedded)"
+
+.PP
+Creates a new CollectionType for an IList with bag semantics\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&.
+.br
+\fIembedded\fP Is embedded in XML (not supported yet)
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A BagType for the specified role\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.DefaultCollectionTypeFactory\fP\&.
+.SS "\fBCollectionType\fP \fBNHibernate\&.Bytecode\&.ICollectionTypeFactory\&.Bag\fP< T > (stringrole, stringpropertyRef, boolembedded)"
+
+.PP
+Creates a new CollectionType for an System\&.Collections\&.Generic\&.IList{T} with bag semantics\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The type of elements in the list\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&. 
+.br
+\fIembedded\fP Is embedded in XML (not supported yet)
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A GenericBagType{T} for the specified role\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.DefaultCollectionTypeFactory\fP\&.
+.SS "\fBCollectionType\fP NHibernate\&.Bytecode\&.ICollectionTypeFactory\&.IdBag (stringrole, stringpropertyRef, boolembedded)"
+
+.PP
+Creates a new CollectionType for an IList with id-bag semantics\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&.
+.br
+\fIembedded\fP Is embedded in XML (not supported yet)
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A IdentifierBagType for the specified role\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.DefaultCollectionTypeFactory\fP\&.
+.SS "\fBCollectionType\fP \fBNHibernate\&.Bytecode\&.ICollectionTypeFactory\&.IdBag\fP< T > (stringrole, stringpropertyRef, boolembedded)"
+
+.PP
+Creates a new CollectionType for an System\&.Collections\&.Generic\&.IList{T} with identifier bag semantics\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The type of elements in the list\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&. 
+.br
+\fIembedded\fP Is embedded in XML (not supported yet)
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A GenericIdentifierBagType{T} for the specified role\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.DefaultCollectionTypeFactory\fP\&.
+.SS "\fBCollectionType\fP NHibernate\&.Bytecode\&.ICollectionTypeFactory\&.List (stringrole, stringpropertyRef, boolembedded)"
+
+.PP
+Creates a new CollectionType for an IList\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&.
+.br
+\fIembedded\fP Is embedded in XML (not supported yet)
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A ListType for the specified role\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.DefaultCollectionTypeFactory\fP\&.
+.SS "\fBCollectionType\fP \fBNHibernate\&.Bytecode\&.ICollectionTypeFactory\&.List\fP< T > (stringrole, stringpropertyRef, boolembedded)"
+
+.PP
+Creates a new CollectionType for an System\&.Collections\&.Generic\&.IList&lt;T&gt; with list semantics\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The type of elements in the list\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&. 
+.br
+\fIembedded\fP Is embedded in XML (not supported yet)
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A ListType for the specified role\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.DefaultCollectionTypeFactory\fP\&.
+.SS "\fBCollectionType\fP NHibernate\&.Bytecode\&.ICollectionTypeFactory\&.Map (stringrole, stringpropertyRef, boolembedded)"
+
+.PP
+Creates a new CollectionType for an IDictionary\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&.
+.br
+\fIembedded\fP Is embedded in XML (not supported yet)
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A MapType for the specified role\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.DefaultCollectionTypeFactory\fP\&.
+.SS "\fBCollectionType\fP \fBNHibernate\&.Bytecode\&.ICollectionTypeFactory\&.Map\fP< TKey, TValue > (stringrole, stringpropertyRef, boolembedded)"
+
+.PP
+Creates a new CollectionType for an System\&.Collections\&.Generic\&.IDictionary&lt;TKey,TValue&gt;\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITKey\fP The type of keys in the dictionary\&.
+.br
+\fITValue\fP The type of values in the dictionary\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&. 
+.br
+\fIembedded\fP Is embedded in XML (not supported yet)
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A MapType for the specified role\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.DefaultCollectionTypeFactory\fP\&.
+.SS "\fBCollectionType\fP NHibernate\&.Bytecode\&.ICollectionTypeFactory\&.OrderedMap (stringrole, stringpropertyRef, boolembedded)"
+
+.PP
+Creates a new CollectionType for an IDictionary that maintains insertion order of elements\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&.
+.br
+\fIembedded\fP Is embedded in XML (not supported yet)
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A OrderedMapType for the specified role\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.DefaultCollectionTypeFactory\fP\&.
+.SS "\fBCollectionType\fP NHibernate\&.Bytecode\&.ICollectionTypeFactory\&.OrderedSet< T > (stringrole, stringpropertyRef, boolembedded)"
+
+.PP
+Creates a new CollectionType for an ordered ISet{T}\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The type of elements in the collection\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&. 
+.br
+\fIembedded\fP Is embedded in XML (not supported yet)
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A GenericSetType{T} for the specified role\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.DefaultCollectionTypeFactory\fP\&.
+.SS "\fBCollectionType\fP NHibernate\&.Bytecode\&.ICollectionTypeFactory\&.Set< T > (stringrole, stringpropertyRef, boolembedded)"
+
+.PP
+Creates a new CollectionType for an ISet{T}\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The type of elements in the collection\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&.
+.br
+\fIembedded\fP Is embedded in XML (not supported yet)
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A GenericSetType{T} for the specified role\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.DefaultCollectionTypeFactory\fP\&.
+.SS "\fBCollectionType\fP NHibernate\&.Bytecode\&.ICollectionTypeFactory\&.SortedMap (stringrole, stringpropertyRef, boolembedded, IComparercomparer)"
+
+.PP
+Creates a new CollectionType for an IDictionary that is sorted by an IComparer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&.
+.br
+\fIcomparer\fP The IComparer that does the sorting\&.
+.br
+\fIembedded\fP Is embedded in XML (not supported yet)
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A SortedMapType for the specified role\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.DefaultCollectionTypeFactory\fP\&.
+.SS "\fBCollectionType\fP NHibernate\&.Bytecode\&.ICollectionTypeFactory\&.SortedSet< T > (stringrole, stringpropertyRef, boolembedded, IComparer< T >comparer)"
+
+.PP
+Creates a new CollectionType for a sorted ISet{T}\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The type of elements in the collection\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&.
+.br
+\fIembedded\fP Is embedded in XML (not supported yet)
+.br
+\fIcomparer\fP The System\&.Collections\&.Generic\&.IComparer{T} to use for the set\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A GenericSetType{T} for the specified role\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.DefaultCollectionTypeFactory\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

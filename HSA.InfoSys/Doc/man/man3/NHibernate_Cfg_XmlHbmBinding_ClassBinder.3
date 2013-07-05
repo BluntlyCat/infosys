@@ -1,0 +1,103 @@
+.TH "NHibernate.Cfg.XmlHbmBinding.ClassBinder" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cfg.XmlHbmBinding.ClassBinder \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.Binder\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.ClassCompositeIdBinder\fP, \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.ClassIdBinder\fP, \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.CollectionBinder\fP, \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.JoinedSubclassBinder\fP, \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.PropertiesBinder\fP, \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.RootClassBinder\fP, \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.SubclassBinder\fP, and \fBNHibernate\&.Cfg\&.XmlHbmBinding\&.UnionSubclassBinder\fP\&.
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBClassBinder\fP (\fBMappings\fP mappings, \fBDialect\&.Dialect\fP dialect)"
+.br
+.ti -1c
+.RI "\fBClassBinder\fP (\fBClassBinder\fP parent)"
+.br
+.ti -1c
+.RI "void \fBBindClass\fP (\fBIEntityMapping\fP classMapping, \fBPersistentClass\fP model, IDictionary< string, \fBMetaAttribute\fP > inheritedMetas)"
+.br
+.ti -1c
+.RI "void \fBBindUnionSubclasses\fP (IEnumerable< \fBHbmUnionSubclass\fP > unionSubclasses, \fBPersistentClass\fP persistentClass, IDictionary< string, \fBMetaAttribute\fP > inheritedMetas)"
+.br
+.ti -1c
+.RI "void \fBBindJoinedSubclasses\fP (IEnumerable< \fBHbmJoinedSubclass\fP > joinedSubclasses, \fBPersistentClass\fP persistentClass, IDictionary< string, \fBMetaAttribute\fP > inheritedMetas)"
+.br
+.ti -1c
+.RI "void \fBBindSubclasses\fP (IEnumerable< \fBHbmSubclass\fP > subclasses, \fBPersistentClass\fP persistentClass, IDictionary< string, \fBMetaAttribute\fP > inheritedMetas)"
+.br
+.ti -1c
+.RI "void \fBBindJoins\fP (IEnumerable< \fBHbmJoin\fP > joins, \fBPersistentClass\fP persistentClass, IDictionary< string, \fBMetaAttribute\fP > inheritedMetas)"
+.br
+.ti -1c
+.RI "\fBPersistentClass\fP \fBGetSuperclass\fP (string extendsName)"
+.br
+.ti -1c
+.RI "string \fBGetClassTableName\fP (\fBPersistentClass\fP model, string mappedTableName)"
+.br
+.ti -1c
+.RI "void \fBBindComponent\fP (\fBIComponentMapping\fP componentMapping, \fBComponent\fP model, System\&.Type reflectedClass, string className, string path, bool isNullable, IDictionary< string, \fBMetaAttribute\fP > inheritedMetas)"
+.br
+.ti -1c
+.RI "void \fBBindForeignKey\fP (string foreignKey, \fBSimpleValue\fP value)"
+.br
+.ti -1c
+.RI "void \fBBindAny\fP (\fBHbmAny\fP node, \fBAny\fP model, bool isNullable)"
+.br
+.ti -1c
+.RI "void \fBBindAnyMeta\fP (\fBIAnyMapping\fP anyMapping, \fBAny\fP model)"
+.br
+.ti -1c
+.RI "void \fBBindOneToOne\fP (\fBHbmOneToOne\fP oneToOneMapping, \fBOneToOne\fP model)"
+.br
+.ti -1c
+.RI "void \fBInitOuterJoinFetchSetting\fP (\fBHbmManyToMany\fP manyToMany, \fBIFetchable\fP model)"
+.br
+.ti -1c
+.RI "\fBFetchMode\fP \fBGetFetchStyle\fP (\fBHbmFetchMode\fP fetchModeMapping)"
+.br
+.ti -1c
+.RI "\fBFetchMode\fP \fBGetFetchStyle\fP (\fBHbmOuterJoinStrategy\fP outerJoinStrategyMapping)"
+.br
+.ti -1c
+.RI "void \fBInitOuterJoinFetchSetting\fP (\fBHbmOneToOne\fP oneToOne, \fBOneToOne\fP model)"
+.br
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static 
+.br
+\fBExecuteUpdateResultCheckStyle\fP \fBGetResultCheckStyle\fP (\fBHbmCustomSQL\fP customSQL)"
+.br
+.ti -1c
+.RI "static void \fBInitLaziness\fP (\fBHbmRestrictedLaziness\fP?restrictedLaziness, \fBToOne\fP fetchable, bool defaultLazy)"
+.br
+.ti -1c
+.RI "static void \fBInitLaziness\fP (\fBHbmLaziness\fP?laziness, \fBToOne\fP fetchable, bool defaultLazy)"
+.br
+.ti -1c
+.RI "static string \fBGetEntityName\fP (\fBIRelationship\fP relationship, \fBMappings\fP mappings)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly \fBDialect\&.Dialect\fP \fBdialect\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 12 of file ClassBinder\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

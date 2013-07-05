@@ -1,0 +1,99 @@
+.TH "log4net.Appender.FileAppender.MinimalLock" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.FileAppender.MinimalLock \- 
+.PP
+Acquires the file lock for each write  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.FileAppender\&.LockingModelBase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBOpenFile\fP (string filename, bool append, \fBEncoding\fP encoding)"
+.br
+.RI "\fIPrepares to open the file when the first message is logged\&. \fP"
+.ti -1c
+.RI "override void \fBCloseFile\fP ()"
+.br
+.RI "\fIClose the file \fP"
+.ti -1c
+.RI "override Stream \fBAcquireLock\fP ()"
+.br
+.RI "\fIAcquire the lock on the file \fP"
+.ti -1c
+.RI "override void \fBReleaseLock\fP ()"
+.br
+.RI "\fIRelease the lock on the file \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Acquires the file lock for each write 
+
+Opens the file once for each \fBAcquireLock\fP/\fBReleaseLock\fP cycle, thus holding the lock for the minimal amount of time\&. This method of locking is considerably slower than \fBFileAppender\&.ExclusiveLock\fP but allows other processes to move/delete the log file whilst logging continues\&. 
+.PP
+Definition at line 558 of file FileAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override Stream log4net\&.Appender\&.FileAppender\&.MinimalLock\&.AcquireLock ()\fC [virtual]\fP"
+
+.PP
+Acquire the lock on the file 
+.PP
+\fBReturns:\fP
+.RS 4
+A stream that is ready to be written to\&.
+.RE
+.PP
+.PP
+Acquire the lock on the file in preparation for writing to it\&. Return a stream pointing to the file\&. \fBReleaseLock\fP must be called to release the lock on the output file\&. 
+.PP
+Implements \fBlog4net\&.Appender\&.FileAppender\&.LockingModelBase\fP\&.
+.PP
+Definition at line 608 of file FileAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.FileAppender\&.MinimalLock\&.CloseFile ()\fC [virtual]\fP"
+
+.PP
+Close the file Close the file\&. No further writes will be made\&. 
+.PP
+Implements \fBlog4net\&.Appender\&.FileAppender\&.LockingModelBase\fP\&.
+.PP
+Definition at line 592 of file FileAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.FileAppender\&.MinimalLock\&.OpenFile (stringfilename, boolappend, \fBEncoding\fPencoding)\fC [virtual]\fP"
+
+.PP
+Prepares to open the file when the first message is logged\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP The filename to use
+.br
+\fIappend\fP Whether to append to the file, or overwrite
+.br
+\fIencoding\fP The encoding to use
+.RE
+.PP
+.PP
+Open the file specified and prepare for logging\&. No writes will be made until \fBAcquireLock\fP is called\&. Must be called before any calls to \fBAcquireLock\fP, \fBReleaseLock\fP and \fBCloseFile\fP\&. 
+.PP
+Implements \fBlog4net\&.Appender\&.FileAppender\&.LockingModelBase\fP\&.
+.PP
+Definition at line 578 of file FileAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.FileAppender\&.MinimalLock\&.ReleaseLock ()\fC [virtual]\fP"
+
+.PP
+Release the lock on the file Release the lock on the file\&. No further writes will be made to the stream until \fBAcquireLock\fP is called again\&. 
+.PP
+Implements \fBlog4net\&.Appender\&.FileAppender\&.LockingModelBase\fP\&.
+.PP
+Definition at line 634 of file FileAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,452 @@
+.TH "NHibernate.Loader.Loader" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Loader.Loader \- 
+.PP
+Abstract superclass of object loading (and querying) strategies\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Loader\&.BasicLoader\fP, and \fBNHibernate\&.Loader\&.Custom\&.CustomLoader\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract \fBLockMode\fP[] \fBGetLockModes\fP (IDictionary< string, \fBLockMode\fP > lockModes)"
+.br
+.RI "\fIWhat lock mode does this load entities with? \fP"
+.ti -1c
+.RI "virtual IList \fBGetResultList\fP (IList results, \fBIResultTransformer\fP resultTransformer)"
+.br
+.ti -1c
+.RI "void \fBLoadCollection\fP (\fBISessionImplementor\fP session, object id, \fBIType\fP type)"
+.br
+.RI "\fICalled by subclasses that load collections \fP"
+.ti -1c
+.RI "void \fBLoadCollectionBatch\fP (\fBISessionImplementor\fP session, object[] ids, \fBIType\fP type)"
+.br
+.RI "\fICalled by wrappers that batch initialize collections \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "virtual \fBISqlCommand\fP \fBCreateSqlCommand\fP (\fBQueryParameters\fP queryParameters, \fBISessionImplementor\fP session)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLoader\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "virtual \fBSqlString\fP \fBApplyLocks\fP (\fBSqlString\fP sql, IDictionary< string, \fBLockMode\fP > lockModes, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIAppend \fCFOR UPDATE OF\fP clause, if necessary\&. This empty superclass implementation merely returns its first argument\&. \fP"
+.ti -1c
+.RI "virtual bool \fBUpgradeLocks\fP ()"
+.br
+.RI "\fIDoes this query return objects that might be already cached by the session, whose lock mode may need upgrading\&. \fP"
+.ti -1c
+.RI "virtual \fBSqlString\fP \fBPreprocessSQL\fP (\fBSqlString\fP sql, \fBQueryParameters\fP parameters, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIModify the SQL, adding lock hints and comments, if necessary \fP"
+.ti -1c
+.RI "object \fBLoadSingleRow\fP (IDataReader resultSet, \fBISessionImplementor\fP session, \fBQueryParameters\fP queryParameters, bool returnProxies)"
+.br
+.RI "\fILoads a single row from the result set\&. This is the processing used from the ScrollableResults where no collection fetches were encountered\&. \fP"
+.ti -1c
+.RI "bool \fBHasSubselectLoadableCollections\fP ()"
+.br
+.ti -1c
+.RI "virtual object \fBGetResultColumnOrRow\fP (object[] row, \fBIResultTransformer\fP resultTransformer, IDataReader rs, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGet the actual object that is returned in the user-visible result list\&. \fP"
+.ti -1c
+.RI "IDataReader \fBGetResultSet\fP (IDbCommand st, bool autoDiscoverTypes, bool callable, \fBRowSelection\fP selection, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIFetch a \fCIDbCommand\fP, call \fCSetMaxRows\fP and then execute it, advance to the first result and return an SQL \fCIDataReader\fP \fP"
+.ti -1c
+.RI "virtual void \fBAutoDiscoverTypes\fP (IDataReader rs)"
+.br
+.ti -1c
+.RI "IList \fBLoadEntity\fP (\fBISessionImplementor\fP session, object id, \fBIType\fP identifierType, object optionalObject, string optionalEntityName, object optionalIdentifier, \fBIEntityPersister\fP persister)"
+.br
+.RI "\fICalled by subclasses that load entities \fP"
+.ti -1c
+.RI "IList \fBLoadEntity\fP (\fBISessionImplementor\fP session, object key, object index, \fBIType\fP keyType, \fBIType\fP indexType, \fBIEntityPersister\fP persister)"
+.br
+.ti -1c
+.RI "void \fBLoadCollectionSubselect\fP (\fBISessionImplementor\fP session, object[] ids, object[] parameterValues, \fBIType\fP[] parameterTypes, IDictionary< string, \fBTypedValue\fP > namedParameters, \fBIType\fP type)"
+.br
+.RI "\fICalled by subclasses that batch initialize collections \fP"
+.ti -1c
+.RI "IList \fBList\fP (\fBISessionImplementor\fP session, \fBQueryParameters\fP queryParameters, ISet< string > querySpaces, \fBIType\fP[] resultTypes)"
+.br
+.RI "\fIReturn the query results, using the query cache, called by subclasses that implement cacheable queries \fP"
+.ti -1c
+.RI "IList \fBDoList\fP (\fBISessionImplementor\fP session, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIActually execute a query, ignoring the query cache \fP"
+.ti -1c
+.RI "virtual void \fBPostInstantiate\fP ()"
+.br
+.RI "\fICalculate and cache select-clause suffixes\&. Must be called by subclasses after instantiation\&. \fP"
+.ti -1c
+.RI "virtual void \fBResetEffectiveExpectedType\fP (IEnumerable< \fBIParameterSpecification\fP > parameterSpecs, \fBQueryParameters\fP queryParameters)"
+.br
+.ti -1c
+.RI "abstract IEnumerable
+.br
+< \fBIParameterSpecification\fP > \fBGetParameterSpecifications\fP ()"
+.br
+.ti -1c
+.RI "void \fBAdjustQueryParametersForSubSelectFetching\fP (\fBSqlString\fP filteredSqlString, IEnumerable< \fBIParameterSpecification\fP > parameterSpecsWithFilters, \fBQueryParameters\fP queryParameters)"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBExpandDynamicFilterParameters\fP (\fBSqlString\fP sqlString, ICollection< \fBIParameterSpecification\fP > parameterSpecs, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBAddLimitsParametersIfNeeded\fP (\fBSqlString\fP sqlString, ICollection< \fBIParameterSpecification\fP > parameterSpecs, \fBQueryParameters\fP queryParameters, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "bool \fBTryGetLimitString\fP (\fBDialect\&.Dialect\fP dialect, \fBSqlString\fP queryString, int?offset, int?limit, \fBParameter\fP offsetParameter, \fBParameter\fP limitParameter, out \fBSqlString\fP result)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBSessionFactoryHelper\fP \fBHelper\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool[] \fBEntityEagerPropertyFetches\fP\fC [get]\fP"
+.br
+.RI "\fIAn array indicating whether the entities have eager property fetching enabled\&. \fP"
+.ti -1c
+.RI "virtual int[] \fBOwners\fP\fC [get]\fP"
+.br
+.RI "\fIAn array of indexes of the entity that owns a one-to-one association to the entity at the given index (-1 if there is no 'owner') \fP"
+.ti -1c
+.RI "virtual \fBEntityType\fP[] \fBOwnerAssociationTypes\fP\fC [get]\fP"
+.br
+.RI "\fIAn array of the owner types corresponding to the \fBOwners\fP returns\&. Indices indicating no owner would be null here\&. \fP"
+.ti -1c
+.RI "virtual int[] \fBCollectionOwners\fP\fC [get]\fP"
+.br
+.RI "\fIGet the index of the entity that owns the collection, or -1 if there is no owner in the query results (i\&.e\&. in the case of a collection initializer) or no collection\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsSingleRowLoader\fP\fC [get]\fP"
+.br
+.RI "\fIReturn false is this loader is a batch entity loader \fP"
+.ti -1c
+.RI "virtual bool \fBIsSubselectLoadingEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract \fBIEntityAliases\fP[] \fBEntityAliases\fP\fC [get]\fP"
+.br
+.RI "\fIGet the result set descriptor \fP"
+.ti -1c
+.RI "abstract \fBICollectionAliases\fP[] \fBCollectionAliases\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBISessionFactoryImplementor\fP \fBFactory\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract \fBSqlString\fP \fBSqlString\fP\fC [get]\fP"
+.br
+.RI "\fIThe SqlString to be called; implemented by all subclasses \fP"
+.ti -1c
+.RI "abstract \fBILoadable\fP[] \fBEntityPersisters\fP\fC [get]\fP"
+.br
+.RI "\fIAn array of persisters of entity classes contained in each row of results; implemented by all subclasses \fP"
+.ti -1c
+.RI "virtual \fBICollectionPersister\fP[] \fBCollectionPersisters\fP\fC [get]\fP"
+.br
+.RI "\fIAn (optional) persister for a collection to be initialized; only collection loaders return a non-null value \fP"
+.ti -1c
+.RI "virtual string[] \fBAliases\fP\fC [get]\fP"
+.br
+.RI "\fIGet the SQL table aliases of entities whose associations are subselect-loadable, returning null if this loader does not support subselect loading \fP"
+.ti -1c
+.RI "virtual string \fBQueryIdentifier\fP\fC [get]\fP"
+.br
+.RI "\fIIdentifies the query for statistics reporting, if null, no statistics will be reported \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Abstract superclass of object loading (and querying) strategies\&. 
+
+This class implements useful common functionality that concrete loaders would delegate to\&. It is not intended that this functionality would be directly accessed by client code (Hence, all methods of this class are declared \fCprotected\fP or \fCprivate\fP\&.) This class relies heavily upon the ILoadable interface, which is the contract between this class and IEntityPersisters that may be loaded by it\&. 
+.PP
+The present implementation is able to load any number of columns of entities and at most one collection role per query\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBNHibernate\&.Persister\&.Entity\&.ILoadable\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 46 of file Loader\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBSqlString\fP NHibernate\&.Loader\&.Loader\&.ApplyLocks (\fBSqlString\fPsql, IDictionary< string, \fBLockMode\fP >lockModes, \fBDialect\&.Dialect\fPdialect)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Append \fCFOR UPDATE OF\fP clause, if necessary\&. This empty superclass implementation merely returns its first argument\&. 
+.PP
+Reimplemented in \fBNHibernate\&.Loader\&.Criteria\&.CriteriaLoader\fP, and \fBNHibernate\&.Loader\&.Hql\&.QueryLoader\fP\&.
+.PP
+Definition at line 175 of file Loader\&.cs\&.
+.SS "IList NHibernate\&.Loader\&.Loader\&.DoList (\fBISessionImplementor\fPsession, \fBQueryParameters\fPqueryParameters)\fC [protected]\fP"
+
+.PP
+Actually execute a query, ignoring the query cache 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP 
+.br
+\fIqueryParameters\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 1552 of file Loader\&.cs\&.
+.SS "abstract \fBLockMode\fP [] NHibernate\&.Loader\&.Loader\&.GetLockModes (IDictionary< string, \fBLockMode\fP >lockModes)\fC [pure virtual]\fP"
+
+.PP
+What lock mode does this load entities with? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlockModes\fP A \fBCollection\fP of lock modes specified dynamically via the Query Interface
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Loader\&.Custom\&.CustomLoader\fP, \fBNHibernate\&.Loader\&.Criteria\&.CriteriaLoader\fP, \fBNHibernate\&.Loader\&.Hql\&.QueryLoader\fP, and \fBNHibernate\&.Loader\&.OuterJoinLoader\fP\&.
+.SS "virtual object NHibernate\&.Loader\&.Loader\&.GetResultColumnOrRow (object[]row, \fBIResultTransformer\fPresultTransformer, IDataReaderrs, \fBISessionImplementor\fPsession)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Get the actual object that is returned in the user-visible result list\&. This empty implementation merely returns its first argument\&. This is overridden by some subclasses\&. 
+.PP
+Reimplemented in \fBNHibernate\&.Loader\&.Hql\&.QueryLoader\fP, \fBNHibernate\&.Loader\&.Custom\&.CustomLoader\fP, \fBNHibernate\&.Loader\&.Entity\&.CollectionElementLoader\fP, \fBNHibernate\&.Loader\&.Criteria\&.CriteriaLoader\fP, and \fBNHibernate\&.Loader\&.Entity\&.AbstractEntityLoader\fP\&.
+.PP
+Definition at line 642 of file Loader\&.cs\&.
+.SS "IDataReader NHibernate\&.Loader\&.Loader\&.GetResultSet (IDbCommandst, boolautoDiscoverTypes, boolcallable, \fBRowSelection\fPselection, \fBISessionImplementor\fPsession)\fC [protected]\fP"
+
+.PP
+Fetch a \fCIDbCommand\fP, call \fCSetMaxRows\fP and then execute it, advance to the first result and return an SQL \fCIDataReader\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIst\fP The IDbCommand to execute\&.
+.br
+\fIselection\fP The RowSelection to apply to the IDbCommand and IDataReader\&.
+.br
+\fIautoDiscoverTypes\fP true if result types need to be auto-discovered by the loader; false otherwise\&.
+.br
+\fIsession\fP The \fBISession\fP to load in\&.
+.br
+\fIcallable\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IDataReader advanced to the first record in RowSelection\&.
+.RE
+.PP
+
+.PP
+Definition at line 1193 of file Loader\&.cs\&.
+.SS "IList NHibernate\&.Loader\&.Loader\&.List (\fBISessionImplementor\fPsession, \fBQueryParameters\fPqueryParameters, ISet< string >querySpaces, \fBIType\fP[]resultTypes)\fC [protected]\fP"
+
+.PP
+Return the query results, using the query cache, called by subclasses that implement cacheable queries 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP 
+.br
+\fIqueryParameters\fP 
+.br
+\fIquerySpaces\fP 
+.br
+\fIresultTypes\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 1459 of file Loader\&.cs\&.
+.SS "void NHibernate\&.Loader\&.Loader\&.LoadCollection (\fBISessionImplementor\fPsession, objectid, \fBIType\fPtype)"
+
+.PP
+Called by subclasses that load collections 
+.PP
+Definition at line 1365 of file Loader\&.cs\&.
+.SS "void NHibernate\&.Loader\&.Loader\&.LoadCollectionBatch (\fBISessionImplementor\fPsession, object[]ids, \fBIType\fPtype)"
+
+.PP
+Called by wrappers that batch initialize collections 
+.PP
+Definition at line 1395 of file Loader\&.cs\&.
+.SS "void NHibernate\&.Loader\&.Loader\&.LoadCollectionSubselect (\fBISessionImplementor\fPsession, object[]ids, object[]parameterValues, \fBIType\fP[]parameterTypes, IDictionary< string, \fBTypedValue\fP >namedParameters, \fBIType\fPtype)\fC [protected]\fP"
+
+.PP
+Called by subclasses that batch initialize collections 
+.PP
+Definition at line 1426 of file Loader\&.cs\&.
+.SS "IList NHibernate\&.Loader\&.Loader\&.LoadEntity (\fBISessionImplementor\fPsession, objectid, \fBIType\fPidentifierType, objectoptionalObject, stringoptionalEntityName, objectoptionalIdentifier, \fBIEntityPersister\fPpersister)\fC [protected]\fP"
+
+.PP
+Called by subclasses that load entities 
+.PP
+Definition at line 1264 of file Loader\&.cs\&.
+.SS "object NHibernate\&.Loader\&.Loader\&.LoadSingleRow (IDataReaderresultSet, \fBISessionImplementor\fPsession, \fBQueryParameters\fPqueryParameters, boolreturnProxies)\fC [protected]\fP"
+
+.PP
+Loads a single row from the result set\&. This is the processing used from the ScrollableResults where no collection fetches were encountered\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIresultSet\fP The result set from which to do the load\&.
+.br
+\fIsession\fP The session from which the request originated\&.
+.br
+\fIqueryParameters\fP The query parameters specified by the user\&.
+.br
+\fIreturnProxies\fP Should proxies be generated
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The loaded 'row'\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP 
+.RE
+.PP
+
+.PP
+Definition at line 271 of file Loader\&.cs\&.
+.SS "virtual void NHibernate\&.Loader\&.Loader\&.PostInstantiate ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Calculate and cache select-clause suffixes\&. Must be called by subclasses after instantiation\&. 
+.PP
+Reimplemented in \fBNHibernate\&.Loader\&.BasicLoader\fP\&.
+.PP
+Definition at line 1588 of file Loader\&.cs\&.
+.SS "virtual \fBSqlString\fP NHibernate\&.Loader\&.Loader\&.PreprocessSQL (\fBSqlString\fPsql, \fBQueryParameters\fPparameters, \fBDialect\&.Dialect\fPdialect)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Modify the SQL, adding lock hints and comments, if necessary 
+.PP
+Definition at line 204 of file Loader\&.cs\&.
+.SS "virtual bool NHibernate\&.Loader\&.Loader\&.UpgradeLocks ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Does this query return objects that might be already cached by the session, whose lock mode may need upgrading\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Loader\&.Hql\&.QueryLoader\fP\&.
+.PP
+Definition at line 185 of file Loader\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual string [] NHibernate\&.Loader\&.Loader\&.Aliases\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Get the SQL table aliases of entities whose associations are subselect-loadable, returning null if this loader does not support subselect loading 
+.PP
+Definition at line 197 of file Loader\&.cs\&.
+.SS "virtual int [] NHibernate\&.Loader\&.Loader\&.CollectionOwners\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Get the index of the entity that owns the collection, or -1 if there is no owner in the query results (i\&.e\&. in the case of a collection initializer) or no collection\&. 
+.PP
+Definition at line 110 of file Loader\&.cs\&.
+.SS "virtual \fBICollectionPersister\fP [] NHibernate\&.Loader\&.Loader\&.CollectionPersisters\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+An (optional) persister for a collection to be initialized; only collection loaders return a non-null value 
+.PP
+Definition at line 159 of file Loader\&.cs\&.
+.SS "abstract \fBIEntityAliases\fP [] NHibernate\&.Loader\&.Loader\&.EntityAliases\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Get the result set descriptor 
+.PP
+Definition at line 130 of file Loader\&.cs\&.
+.SS "virtual bool [] NHibernate\&.Loader\&.Loader\&.EntityEagerPropertyFetches\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+An array indicating whether the entities have eager property fetching enabled\&. Eager property fetching indicators\&. 
+.PP
+Definition at line 79 of file Loader\&.cs\&.
+.SS "abstract \fBILoadable\fP [] NHibernate\&.Loader\&.Loader\&.EntityPersisters\fC [get]\fP"
+
+.PP
+An array of persisters of entity classes contained in each row of results; implemented by all subclasses The \fCsetter\fP was added so that classes inheriting from \fBLoader\fP could write a value using the Property instead of directly to the field\&. 
+.PP
+Definition at line 152 of file Loader\&.cs\&.
+.SS "virtual bool NHibernate\&.Loader\&.Loader\&.IsSingleRowLoader\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Return false is this loader is a batch entity loader 
+.PP
+Definition at line 118 of file Loader\&.cs\&.
+.SS "virtual \fBEntityType\fP [] NHibernate\&.Loader\&.Loader\&.OwnerAssociationTypes\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+An array of the owner types corresponding to the \fBOwners\fP returns\&. Indices indicating no owner would be null here\&. 
+.PP
+Definition at line 100 of file Loader\&.cs\&.
+.SS "virtual int [] NHibernate\&.Loader\&.Loader\&.Owners\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+An array of indexes of the entity that owns a one-to-one association to the entity at the given index (-1 if there is no 'owner') The indexes contained here are relative to the result of \fBEntityPersisters\fP\&. 
+.PP
+Definition at line 91 of file Loader\&.cs\&.
+.SS "virtual string NHibernate\&.Loader\&.Loader\&.QueryIdentifier\fC [get]\fP"
+
+.PP
+Identifies the query for statistics reporting, if null, no statistics will be reported 
+.PP
+Definition at line 1595 of file Loader\&.cs\&.
+.SS "abstract \fBSqlString\fP NHibernate\&.Loader\&.Loader\&.SqlString\fC [get]\fP"
+
+.PP
+The SqlString to be called; implemented by all subclasses 
+.PP
+Definition at line 142 of file Loader\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

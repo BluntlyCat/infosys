@@ -1,0 +1,295 @@
+.TH "NHibernate.Impl.SqlQueryImpl" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Impl.SqlQueryImpl \- 
+.PP
+Implements SQL query passthrough  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Impl\&.AbstractQueryImpl\fP, and \fBNHibernate\&.ISQLQuery\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override IList \fBList\fP ()"
+.br
+.RI "\fIReturn the query results as an IList\&. If the query contains multiple results per row, the results are returned in an instance of \fCobject[]\fP\&. \fP"
+.ti -1c
+.RI "override void \fBList\fP (IList results)"
+.br
+.RI "\fIReturn the query results an place them into the IList\&. \fP"
+.ti -1c
+.RI "override IList< T > \fBList< T >\fP ()"
+.br
+.RI "\fIStrongly-typed version of \fBList()\fP\&. \fP"
+.ti -1c
+.RI "\fBNativeSQLQuerySpecification\fP \fBGenerateQuerySpecification\fP (IDictionary< string, \fBTypedValue\fP > parameters)"
+.br
+.ti -1c
+.RI "override \fBQueryParameters\fP \fBGetQueryParameters\fP (IDictionary< string, \fBTypedValue\fP > namedParams)"
+.br
+.ti -1c
+.RI "override IEnumerable \fBEnumerable\fP ()"
+.br
+.RI "\fIReturn the query results as an IEnumerable\&. If the query contains multiple results per row, the results are returned in an instance of \fCobject[]\fP\&. \fP"
+.ti -1c
+.RI "override IEnumerable< T > \fBEnumerable< T >\fP ()"
+.br
+.RI "\fIStrongly-typed version of \fBEnumerable()\fP\&. \fP"
+.ti -1c
+.RI "\fBISQLQuery\fP \fBAddScalar\fP (string columnAlias, \fBIType\fP type)"
+.br
+.RI "\fIDeclare a scalar query result \fP"
+.ti -1c
+.RI "\fBISQLQuery\fP \fBAddJoin\fP (string alias, string path)"
+.br
+.RI "\fIDeclare a 'joined' entity \fP"
+.ti -1c
+.RI "\fBISQLQuery\fP \fBAddEntity\fP (System\&.Type entityClass)"
+.br
+.RI "\fIDeclare a 'root' entity, without specifying an alias \fP"
+.ti -1c
+.RI "\fBISQLQuery\fP \fBAddEntity\fP (string entityName)"
+.br
+.RI "\fIDeclare a 'root' entity, without specifying an alias \fP"
+.ti -1c
+.RI "\fBISQLQuery\fP \fBAddEntity\fP (string alias, string entityName)"
+.br
+.RI "\fIDeclare a 'root' entity \fP"
+.ti -1c
+.RI "\fBISQLQuery\fP \fBAddEntity\fP (string alias, System\&.Type entityClass)"
+.br
+.RI "\fIDeclare a 'root' entity \fP"
+.ti -1c
+.RI "\fBISQLQuery\fP \fBAddJoin\fP (string alias, string path, \fBLockMode\fP lockMode)"
+.br
+.RI "\fIDeclare a 'joined' entity, specifying a lock mode \fP"
+.ti -1c
+.RI "\fBISQLQuery\fP \fBAddEntity\fP (string alias, string entityName, \fBLockMode\fP lockMode)"
+.br
+.RI "\fIDeclare a 'root' entity, specifying a lock mode \fP"
+.ti -1c
+.RI "\fBISQLQuery\fP \fBAddEntity\fP (string alias, System\&.Type entityClass, \fBLockMode\fP lockMode)"
+.br
+.RI "\fIDeclare a 'root' entity, specifying a lock mode \fP"
+.ti -1c
+.RI "\fBISQLQuery\fP \fBSetResultSetMapping\fP (string name)"
+.br
+.RI "\fIUse a predefined named ResultSetMapping \fP"
+.ti -1c
+.RI "override \fBIQuery\fP \fBSetLockMode\fP (string alias, \fBLockMode\fP lockMode)"
+.br
+.RI "\fISet the lockmode for the objects idententified by the given alias that appears in the \fCFROM\fP clause\&. \fP"
+.ti -1c
+.RI "override int \fBExecuteUpdate\fP ()"
+.br
+.RI "\fIExecute the update or delete statement\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string[] \fBReturnAliases\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBIType\fP[] \fBReturnTypes\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Implements SQL query passthrough 
+
+An example mapping is: \fC <sql-query-name name='mySqlQuery'> <return alias='person' class='eg\&.Person' /> SELECT {person}\&.NAME AS {person\&.name}, {person}\&.AGE AS {person\&.age}, {person}\&.SEX AS {person\&.sex} FROM PERSON {person} WHERE {person}\&.NAME LIKE 'Hiber' </sql-query-name> \fP 
+.PP
+Definition at line 25 of file SqlQueryImpl\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBISQLQuery\fP NHibernate\&.Impl\&.SqlQueryImpl\&.AddEntity (System\&.TypeentityClass)"
+
+.PP
+Declare a 'root' entity, without specifying an alias 
+.PP
+Implements \fBNHibernate\&.ISQLQuery\fP\&.
+.PP
+Definition at line 209 of file SqlQueryImpl\&.cs\&.
+.SS "\fBISQLQuery\fP NHibernate\&.Impl\&.SqlQueryImpl\&.AddEntity (stringentityName)"
+
+.PP
+Declare a 'root' entity, without specifying an alias 
+.PP
+Implements \fBNHibernate\&.ISQLQuery\fP\&.
+.PP
+Definition at line 214 of file SqlQueryImpl\&.cs\&.
+.SS "\fBISQLQuery\fP NHibernate\&.Impl\&.SqlQueryImpl\&.AddEntity (stringalias, stringentityName)"
+
+.PP
+Declare a 'root' entity 
+.PP
+Implements \fBNHibernate\&.ISQLQuery\fP\&.
+.PP
+Definition at line 219 of file SqlQueryImpl\&.cs\&.
+.SS "\fBISQLQuery\fP NHibernate\&.Impl\&.SqlQueryImpl\&.AddEntity (stringalias, System\&.TypeentityClass)"
+
+.PP
+Declare a 'root' entity 
+.PP
+Implements \fBNHibernate\&.ISQLQuery\fP\&.
+.PP
+Definition at line 224 of file SqlQueryImpl\&.cs\&.
+.SS "\fBISQLQuery\fP NHibernate\&.Impl\&.SqlQueryImpl\&.AddEntity (stringalias, stringentityName, \fBLockMode\fPlockMode)"
+
+.PP
+Declare a 'root' entity, specifying a lock mode 
+.PP
+Implements \fBNHibernate\&.ISQLQuery\fP\&.
+.PP
+Definition at line 243 of file SqlQueryImpl\&.cs\&.
+.SS "\fBISQLQuery\fP NHibernate\&.Impl\&.SqlQueryImpl\&.AddEntity (stringalias, System\&.TypeentityClass, \fBLockMode\fPlockMode)"
+
+.PP
+Declare a 'root' entity, specifying a lock mode 
+.PP
+Implements \fBNHibernate\&.ISQLQuery\fP\&.
+.PP
+Definition at line 249 of file SqlQueryImpl\&.cs\&.
+.SS "\fBISQLQuery\fP NHibernate\&.Impl\&.SqlQueryImpl\&.AddJoin (stringalias, stringpath)"
+
+.PP
+Declare a 'joined' entity 
+.PP
+Implements \fBNHibernate\&.ISQLQuery\fP\&.
+.PP
+Definition at line 204 of file SqlQueryImpl\&.cs\&.
+.SS "\fBISQLQuery\fP NHibernate\&.Impl\&.SqlQueryImpl\&.AddJoin (stringalias, stringpath, \fBLockMode\fPlockMode)"
+
+.PP
+Declare a 'joined' entity, specifying a lock mode 
+.PP
+Implements \fBNHibernate\&.ISQLQuery\fP\&.
+.PP
+Definition at line 229 of file SqlQueryImpl\&.cs\&.
+.SS "\fBISQLQuery\fP NHibernate\&.Impl\&.SqlQueryImpl\&.AddScalar (stringcolumnAlias, \fBIType\fPtype)"
+
+.PP
+Declare a scalar query result 
+.PP
+Implements \fBNHibernate\&.ISQLQuery\fP\&.
+.PP
+Definition at line 197 of file SqlQueryImpl\&.cs\&.
+.SS "override IEnumerable NHibernate\&.Impl\&.SqlQueryImpl\&.Enumerable ()\fC [virtual]\fP"
+
+.PP
+Return the query results as an IEnumerable\&. If the query contains multiple results per row, the results are returned in an instance of \fCobject[]\fP\&. Entities returned as results are initialized on demand\&. The first SQL query returns identifiers only\&. 
+.PP
+This is a good strategy to use if you expect a high number of the objects returned to be already loaded in the \fBISession\fP or in the 2nd level cache\&. 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractQueryImpl\fP\&.
+.PP
+Definition at line 187 of file SqlQueryImpl\&.cs\&.
+.SS "override IEnumerable<T> \fBNHibernate\&.Impl\&.SqlQueryImpl\&.Enumerable\fP< T > ()\fC [virtual]\fP"
+
+.PP
+Strongly-typed version of \fBEnumerable()\fP\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractQueryImpl\fP\&.
+.PP
+Definition at line 192 of file SqlQueryImpl\&.cs\&.
+.SS "override int NHibernate\&.Impl\&.SqlQueryImpl\&.ExecuteUpdate ()\fC [virtual]\fP"
+
+.PP
+Execute the update or delete statement\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The number of entities updated or deleted\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractQueryImpl\fP\&.
+.PP
+Definition at line 301 of file SqlQueryImpl\&.cs\&.
+.SS "override IList NHibernate\&.Impl\&.SqlQueryImpl\&.List ()\fC [virtual]\fP"
+
+.PP
+Return the query results as an IList\&. If the query contains multiple results per row, the results are returned in an instance of \fCobject[]\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The IList filled with the results\&.
+.RE
+.PP
+.PP
+This is a good strategy to use if you expect few of the objects being returned are already loaded or if you want to fill the 2nd level cache\&. 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractQueryImpl\fP\&.
+.PP
+Definition at line 117 of file SqlQueryImpl\&.cs\&.
+.SS "override void NHibernate\&.Impl\&.SqlQueryImpl\&.List (IListresults)\fC [virtual]\fP"
+
+.PP
+Return the query results an place them into the IList\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIresults\fP The IList to place the results in\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractQueryImpl\fP\&.
+.PP
+Definition at line 135 of file SqlQueryImpl\&.cs\&.
+.SS "override IList<T> \fBNHibernate\&.Impl\&.SqlQueryImpl\&.List\fP< T > ()\fC [virtual]\fP"
+
+.PP
+Strongly-typed version of \fBList()\fP\&. 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractQueryImpl\fP\&.
+.PP
+Definition at line 153 of file SqlQueryImpl\&.cs\&.
+.SS "override \fBIQuery\fP NHibernate\&.Impl\&.SqlQueryImpl\&.SetLockMode (stringalias, \fBLockMode\fPlockMode)\fC [virtual]\fP"
+
+.PP
+Set the lockmode for the objects idententified by the given alias that appears in the \fCFROM\fP clause\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP alias a query alias, or \fCthis\fP for a collection filter
+.br
+\fIlockMode\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractQueryImpl\fP\&.
+.PP
+Definition at line 296 of file SqlQueryImpl\&.cs\&.
+.SS "\fBISQLQuery\fP NHibernate\&.Impl\&.SqlQueryImpl\&.SetResultSetMapping (stringname)"
+
+.PP
+Use a predefined named ResultSetMapping 
+.PP
+Implements \fBNHibernate\&.ISQLQuery\fP\&.
+.PP
+Definition at line 254 of file SqlQueryImpl\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

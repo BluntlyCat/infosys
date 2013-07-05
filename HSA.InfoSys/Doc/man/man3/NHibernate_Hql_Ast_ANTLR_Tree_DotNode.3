@@ -1,0 +1,162 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Tree.DotNode" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Tree.DotNode \- 
+.PP
+Represents a reference to a property or alias expression\&. This should duplicate the relevant behaviors in PathExpressionParser\&. Author: Joshua Davis Ported by: Steve Strong  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromReferenceNode\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDotNode\fP (IToken token)"
+.br
+.ti -1c
+.RI "override \fBFromElement\fP \fBGetImpliedJoin\fP ()"
+.br
+.RI "\fISub-classes can override this method if they produce implied joins (e\&.g\&. \fBDotNode\fP)\&. \fP"
+.ti -1c
+.RI "override void \fBSetScalarColumnText\fP (int i)"
+.br
+.RI "\fIAppends AST nodes that represent the columns after the current AST node\&. (e\&.g\&. 'as col0_O_') \fP"
+.ti -1c
+.RI "override void \fBResolveIndex\fP (\fBIASTNode\fP parent)"
+.br
+.RI "\fIDoes the work of resolving an an index []\&. \fP"
+.ti -1c
+.RI "override void \fBResolveFirstChild\fP ()"
+.br
+.ti -1c
+.RI "override void \fBResolveInFunctionCall\fP (bool generateJoin, bool implicitJoin)"
+.br
+.RI "\fIDoes the work of resolving inside of the scope of a function call \fP"
+.ti -1c
+.RI "override void \fBResolve\fP (bool generateJoin, bool implicitJoin, string classAlias, \fBIASTNode\fP parent)"
+.br
+.RI "\fIDoes the work of resolving an identifier or a dot \fP"
+.ti -1c
+.RI "\fBFromReferenceNode\fP \fBGetLhs\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetResolvedConstant\fP (string text)"
+.br
+.ti -1c
+.RI "void \fBResolveSelectExpression\fP ()"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBUseThetaStyleImplicitJoins\fP"
+.br
+.ti -1c
+.RI "static bool \fBREGRESSION_STYLE_JOIN_SUPPRESSION\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBJoinType\fP \fBJoinType\fP\fC [set]\fP"
+.br
+.RI "\fISets the join type for this '\&.' node structure\&. \fP"
+.ti -1c
+.RI "bool \fBFetch\fP\fC [set]\fP"
+.br
+.ti -1c
+.RI "override string \fBPath\fP\fC [get]\fP"
+.br
+.RI "\fIReturns the full path of the node\&. \fP"
+.ti -1c
+.RI "string \fBPropertyPath\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Represents a reference to a property or alias expression\&. This should duplicate the relevant behaviors in PathExpressionParser\&. Author: Joshua Davis Ported by: Steve Strong 
+
+
+.PP
+Definition at line 21 of file DotNode\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBFromElement\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.DotNode\&.GetImpliedJoin ()\fC [virtual]\fP"
+
+.PP
+Sub-classes can override this method if they produce implied joins (e\&.g\&. \fBDotNode\fP)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+an implied join created by this from reference\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromReferenceNode\fP\&.
+.PP
+Definition at line 90 of file DotNode\&.cs\&.
+.SS "override void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.DotNode\&.Resolve (boolgenerateJoin, boolimplicitJoin, stringclassAlias, \fBIASTNode\fPparent)\fC [virtual]\fP"
+
+.PP
+Does the work of resolving an identifier or a dot 
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromReferenceNode\fP\&.
+.PP
+Definition at line 188 of file DotNode\&.cs\&.
+.SS "override void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.DotNode\&.ResolveIndex (\fBIASTNode\fPparent)\fC [virtual]\fP"
+
+.PP
+Does the work of resolving an an index []\&. 
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromReferenceNode\fP\&.
+.PP
+Definition at line 132 of file DotNode\&.cs\&.
+.SS "override void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.DotNode\&.ResolveInFunctionCall (boolgenerateJoin, boolimplicitJoin)\fC [virtual]\fP"
+
+.PP
+Does the work of resolving inside of the scope of a function call 
+.PP
+Reimplemented from \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromReferenceNode\fP\&.
+.PP
+Definition at line 168 of file DotNode\&.cs\&.
+.SS "override void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.DotNode\&.SetScalarColumnText (inti)\fC [virtual]\fP"
+
+.PP
+Appends AST nodes that represent the columns after the current AST node\&. (e\&.g\&. 'as col0_O_') 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP The index of the select expression in the projection list\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.AbstractSelectExpression\fP\&.
+.PP
+Definition at line 126 of file DotNode\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBJoinType\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.DotNode\&.JoinType\fC [set]\fP"
+
+.PP
+Sets the join type for this '\&.' node structure\&. 
+.PP
+Definition at line 81 of file DotNode\&.cs\&.
+.SS "override string NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.DotNode\&.Path\fC [get]\fP"
+
+.PP
+Returns the full path of the node\&. 
+.PP
+Definition at line 99 of file DotNode\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

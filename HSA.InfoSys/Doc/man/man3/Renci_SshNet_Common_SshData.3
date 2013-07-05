@@ -1,0 +1,657 @@
+.TH "Renci.SshNet.Common.SshData" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Common.SshData \- 
+.PP
+Base ssh data serialization type  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelOpenInfo\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.RequestInfo\fP, \fBRenci\&.SshNet\&.Messages\&.Message\fP, Renci\&.SshNet\&.PrivateKeyAuthenticationMethod\&.SignatureData, Renci\&.SshNet\&.PrivateKeyFile\&.SshDataReader, Renci\&.SshNet\&.Security\&.KeyExchange\&._SessionKeyAdjustment, Renci\&.SshNet\&.Security\&.KeyExchange\&._SessionKeyGeneration, Renci\&.SshNet\&.Security\&.KeyExchangeDiffieHellmanGroupExchangeSha1\&._ExchangeHashData, Renci\&.SshNet\&.Security\&.KeyExchangeDiffieHellmanGroupExchangeSha256\&._ExchangeHashData, Renci\&.SshNet\&.Security\&.KeyExchangeDiffieHellmanGroupSha1\&._ExchangeHashData, Renci\&.SshNet\&.Security\&.KeyExchangeEllipticCurveDiffieHellman\&._ExchangeHashData, Renci\&.SshNet\&.Security\&.KeyHostAlgorithm\&.SignatureKeyData, Renci\&.SshNet\&.Security\&.KeyHostAlgorithm\&.SshKeyData, Renci\&.SshNet\&.Sftp\&.Responses\&.ExtendedReplyInfo, and Renci\&.SshNet\&.Sftp\&.SftpMessage\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual byte[] \fBGetBytes\fP ()"
+.br
+.RI "\fIGets data bytes array \fP"
+.ti -1c
+.RI "void \fBLoad\fP (byte[] value)"
+.br
+.RI "\fILoads data from specified bytes\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract void \fBLoadData\fP ()"
+.br
+.RI "\fICalled when type specific data need to be loaded\&. \fP"
+.ti -1c
+.RI "abstract void \fBSaveData\fP ()"
+.br
+.RI "\fICalled when type specific data need to be saved\&. \fP"
+.ti -1c
+.RI "void \fBLoadBytes\fP (byte[] bytes)"
+.br
+.RI "\fILoads data bytes into internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBResetReader\fP ()"
+.br
+.RI "\fIResets internal data reader index\&. \fP"
+.ti -1c
+.RI "byte[] \fBReadBytes\fP ()"
+.br
+.RI "\fIReads all data left in internal buffer at current position\&. \fP"
+.ti -1c
+.RI "byte[] \fBReadBytes\fP (int length)"
+.br
+.RI "\fIReads next specified number of bytes data type from internal buffer\&. \fP"
+.ti -1c
+.RI "byte \fBReadByte\fP ()"
+.br
+.RI "\fIReads next byte data type from internal buffer\&. \fP"
+.ti -1c
+.RI "bool \fBReadBoolean\fP ()"
+.br
+.RI "\fIReads next boolean data type from internal buffer\&. \fP"
+.ti -1c
+.RI "UInt16 \fBReadUInt16\fP ()"
+.br
+.RI "\fIReads next uint16 data type from internal buffer\&. \fP"
+.ti -1c
+.RI "UInt32 \fBReadUInt32\fP ()"
+.br
+.RI "\fIReads next uint32 data type from internal buffer\&. \fP"
+.ti -1c
+.RI "UInt64 \fBReadUInt64\fP ()"
+.br
+.RI "\fIReads next uint64 data type from internal buffer\&. \fP"
+.ti -1c
+.RI "Int64 \fBReadInt64\fP ()"
+.br
+.RI "\fIReads next int64 data type from internal buffer\&. \fP"
+.ti -1c
+.RI "string \fBReadAsciiString\fP ()"
+.br
+.RI "\fIReads next string data type from internal buffer\&. \fP"
+.ti -1c
+.RI "string \fBReadString\fP ()"
+.br
+.RI "\fIReads next string data type from internal buffer\&. \fP"
+.ti -1c
+.RI "string \fBReadString\fP (Encoding encoding)"
+.br
+.RI "\fIReads next string data type from internal buffer\&. \fP"
+.ti -1c
+.RI "byte[] \fBReadBinaryString\fP ()"
+.br
+.RI "\fIReads next string data type from internal buffer\&. \fP"
+.ti -1c
+.RI "\fBBigInteger\fP \fBReadBigInt\fP ()"
+.br
+.RI "\fIReads next mpint data type from internal buffer\&. \fP"
+.ti -1c
+.RI "string[] \fBReadNamesList\fP ()"
+.br
+.RI "\fIReads next name-list data type from internal buffer\&. \fP"
+.ti -1c
+.RI "IDictionary< string, string > \fBReadExtensionPair\fP ()"
+.br
+.RI "\fIReads next extension-pair data type from internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (IEnumerable< byte > data)"
+.br
+.RI "\fIWrites bytes array data into internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (byte data)"
+.br
+.RI "\fIWrites byte data into internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (bool data)"
+.br
+.RI "\fIWrites boolean data into internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (UInt16 data)"
+.br
+.RI "\fIWrites uint16 data into internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (UInt32 data)"
+.br
+.RI "\fIWrites uint32 data into internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (UInt64 data)"
+.br
+.RI "\fIWrites uint64 data into internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (Int64 data)"
+.br
+.RI "\fIWrites int64 data into internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBWriteAscii\fP (string data)"
+.br
+.RI "\fIWrites string data into internal buffer as ASCII\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (string data)"
+.br
+.RI "\fIWrites string data into internal buffer using default encoding\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (string data, Encoding encoding)"
+.br
+.ti -1c
+.RI "void \fBWriteBinaryString\fP (byte[] data)"
+.br
+.RI "\fIWrites string data into internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (\fBBigInteger\fP data)"
+.br
+.RI "\fIWrites mpint data into internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (string[] data)"
+.br
+.RI "\fIWrites name-list data into internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (IDictionary< string, string > data)"
+.br
+.RI "\fIWrites extension-pair data into internal buffer\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsEndOfData\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether all data from the buffer has been read\&. \fP"
+.ti -1c
+.RI "virtual int \fBZeroReaderIndex\fP\fC [get]\fP"
+.br
+.RI "\fIGets the index that represents zero in current data type\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base ssh data serialization type 
+
+
+.PP
+Definition at line 12 of file SshData\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual byte [] Renci\&.SshNet\&.Common\&.SshData\&.GetBytes ()\fC [virtual]\fP"
+
+.PP
+Gets data bytes array 
+.PP
+\fBReturns:\fP
+.RS 4
+Byte array representation of data structure\&.
+.RE
+.PP
+
+.PP
+Reimplemented in \fBRenci\&.SshNet\&.Messages\&.Message\fP\&.
+.PP
+Definition at line 63 of file SshData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.SshData\&.Load (byte[]value)"
+
+.PP
+Loads data from specified bytes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Bytes array\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIvalue\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 85 of file SshData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.SshData\&.LoadBytes (byte[]bytes)\fC [protected]\fP"
+
+.PP
+Loads data bytes into internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbytes\fP The bytes\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIbytes\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 109 of file SshData\&.cs\&.
+.SS "abstract void Renci\&.SshNet\&.Common\&.SshData\&.LoadData ()\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Called when type specific data need to be loaded\&. 
+.PP
+Implemented in \fBRenci\&.SshNet\&.Messages\&.Transport\&.KeyExchangeInitMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.GlobalRequestMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelOpenMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelOpenConfirmationMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelOpenFailureMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelRequestMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Transport\&.DisconnectMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Authentication\&.RequestMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelExtendedDataMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelDataMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Authentication\&.FailureMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelWindowAdjustMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.RequestSuccessMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Transport\&.IgnoreMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Transport\&.KeyExchangeDhGroupExchangeGroup\fP, \fBRenci\&.SshNet\&.Messages\&.Transport\&.KeyExchangeDhReplyMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Transport\&.KeyExchangeEcdhReplyMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Transport\&.DebugMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Transport\&.ServiceRequestMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.RequestInfo\fP, \fBRenci\&.SshNet\&.Messages\&.Authentication\&.BannerMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Transport\&.ServiceAcceptMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelOpenInfo\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.RequestFailureMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Authentication\&.SuccessMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Transport\&.NewKeysMessage\fP, and \fBRenci\&.SshNet\&.Messages\&.Transport\&.UnimplementedMessage\fP\&.
+.SS "string Renci\&.SshNet\&.Common\&.SshData\&.ReadAsciiString ()\fC [protected]\fP"
+
+.PP
+Reads next string data type from internal buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+string read
+.RE
+.PP
+
+.PP
+Definition at line 222 of file SshData\&.cs\&.
+.SS "\fBBigInteger\fP Renci\&.SshNet\&.Common\&.SshData\&.ReadBigInt ()\fC [protected]\fP"
+
+.PP
+Reads next mpint data type from internal buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+mpint read\&.
+.RE
+.PP
+
+.PP
+Definition at line 278 of file SshData\&.cs\&.
+.SS "byte [] Renci\&.SshNet\&.Common\&.SshData\&.ReadBinaryString ()\fC [protected]\fP"
+
+.PP
+Reads next string data type from internal buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+string read
+.RE
+.PP
+
+.PP
+Definition at line 262 of file SshData\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Common\&.SshData\&.ReadBoolean ()\fC [protected]\fP"
+
+.PP
+Reads next boolean data type from internal buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean read\&.
+.RE
+.PP
+
+.PP
+Definition at line 173 of file SshData\&.cs\&.
+.SS "byte Renci\&.SshNet\&.Common\&.SshData\&.ReadByte ()\fC [protected]\fP"
+
+.PP
+Reads next byte data type from internal buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Byte read\&.
+.RE
+.PP
+
+.PP
+Definition at line 164 of file SshData\&.cs\&.
+.SS "byte [] Renci\&.SshNet\&.Common\&.SshData\&.ReadBytes ()\fC [protected]\fP"
+
+.PP
+Reads all data left in internal buffer at current position\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of bytes containing the remaining data in the internal buffer\&.
+.RE
+.PP
+
+.PP
+Definition at line 133 of file SshData\&.cs\&.
+.SS "byte [] Renci\&.SshNet\&.Common\&.SshData\&.ReadBytes (intlength)\fC [protected]\fP"
+
+.PP
+Reads next specified number of bytes data type from internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlength\fP Number of bytes to read\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An array of bytes that was read from the internal buffer\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentOutOfRangeException\fP \fIlength\fP  is greater than the internal buffer size\&.
+.RE
+.PP
+
+.PP
+Definition at line 146 of file SshData\&.cs\&.
+.SS "IDictionary<string, string> Renci\&.SshNet\&.Common\&.SshData\&.ReadExtensionPair ()\fC [protected]\fP"
+
+.PP
+Reads next extension-pair data type from internal buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Extensions pair dictionary\&.
+.RE
+.PP
+
+.PP
+Definition at line 301 of file SshData\&.cs\&.
+.SS "Int64 Renci\&.SshNet\&.Common\&.SshData\&.ReadInt64 ()\fC [protected]\fP"
+
+.PP
+Reads next int64 data type from internal buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+int64 read
+.RE
+.PP
+
+.PP
+Definition at line 212 of file SshData\&.cs\&.
+.SS "string [] Renci\&.SshNet\&.Common\&.SshData\&.ReadNamesList ()\fC [protected]\fP"
+
+.PP
+Reads next name-list data type from internal buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+String array or read data\&.\&.
+.RE
+.PP
+
+.PP
+Definition at line 291 of file SshData\&.cs\&.
+.SS "string Renci\&.SshNet\&.Common\&.SshData\&.ReadString ()\fC [protected]\fP"
+
+.PP
+Reads next string data type from internal buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+string read
+.RE
+.PP
+
+.PP
+Definition at line 237 of file SshData\&.cs\&.
+.SS "string Renci\&.SshNet\&.Common\&.SshData\&.ReadString (Encodingencoding)\fC [protected]\fP"
+
+.PP
+Reads next string data type from internal buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+string read
+.RE
+.PP
+
+.PP
+Definition at line 246 of file SshData\&.cs\&.
+.SS "UInt16 Renci\&.SshNet\&.Common\&.SshData\&.ReadUInt16 ()\fC [protected]\fP"
+
+.PP
+Reads next uint16 data type from internal buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+uint16 read
+.RE
+.PP
+
+.PP
+Definition at line 182 of file SshData\&.cs\&.
+.SS "UInt32 Renci\&.SshNet\&.Common\&.SshData\&.ReadUInt32 ()\fC [protected]\fP"
+
+.PP
+Reads next uint32 data type from internal buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+uint32 read
+.RE
+.PP
+
+.PP
+Definition at line 192 of file SshData\&.cs\&.
+.SS "UInt64 Renci\&.SshNet\&.Common\&.SshData\&.ReadUInt64 ()\fC [protected]\fP"
+
+.PP
+Reads next uint64 data type from internal buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+uint64 read
+.RE
+.PP
+
+.PP
+Definition at line 202 of file SshData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.SshData\&.ResetReader ()\fC [protected]\fP"
+
+.PP
+Resets internal data reader index\&. 
+.PP
+Definition at line 124 of file SshData\&.cs\&.
+.SS "abstract void Renci\&.SshNet\&.Common\&.SshData\&.SaveData ()\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Called when type specific data need to be saved\&. 
+.PP
+Implemented in \fBRenci\&.SshNet\&.Messages\&.Transport\&.KeyExchangeInitMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelOpenMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.GlobalRequestMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Authentication\&.RequestMessagePublicKey\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelOpenConfirmationMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelOpenFailureMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelRequestMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Transport\&.DisconnectMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Authentication\&.RequestMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelExtendedDataMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Authentication\&.FailureMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelDataMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelWindowAdjustMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.RequestSuccessMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Transport\&.KeyExchangeDhGroupExchangeGroup\fP, \fBRenci\&.SshNet\&.Messages\&.Transport\&.KeyExchangeDhReplyMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Transport\&.KeyExchangeEcdhReplyMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Transport\&.IgnoreMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Transport\&.DebugMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Transport\&.ServiceAcceptMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Transport\&.ServiceRequestMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.RequestInfo\fP, \fBRenci\&.SshNet\&.Messages\&.Authentication\&.BannerMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.ChannelOpenInfo\fP, \fBRenci\&.SshNet\&.Messages\&.Connection\&.RequestFailureMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Authentication\&.SuccessMessage\fP, \fBRenci\&.SshNet\&.Messages\&.Transport\&.NewKeysMessage\fP, and \fBRenci\&.SshNet\&.Messages\&.Transport\&.UnimplementedMessage\fP\&.
+.SS "void Renci\&.SshNet\&.Common\&.SshData\&.Write (IEnumerable< byte >data)\fC [protected]\fP"
+
+.PP
+Writes bytes array data into internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Byte array data to write\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIdata\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 318 of file SshData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.SshData\&.Write (bytedata)\fC [protected]\fP"
+
+.PP
+Writes byte data into internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Byte data to write\&.
+.RE
+.PP
+
+.PP
+Definition at line 327 of file SshData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.SshData\&.Write (booldata)\fC [protected]\fP"
+
+.PP
+Writes boolean data into internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP Boolean data to write\&.
+.RE
+.PP
+
+.PP
+Definition at line 336 of file SshData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.SshData\&.Write (UInt16data)\fC [protected]\fP"
+
+.PP
+Writes uint16 data into internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP uint16 data to write\&.
+.RE
+.PP
+
+.PP
+Definition at line 352 of file SshData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.SshData\&.Write (UInt32data)\fC [protected]\fP"
+
+.PP
+Writes uint32 data into internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP uint32 data to write\&.
+.RE
+.PP
+
+.PP
+Definition at line 361 of file SshData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.SshData\&.Write (UInt64data)\fC [protected]\fP"
+
+.PP
+Writes uint64 data into internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP uint64 data to write\&.
+.RE
+.PP
+
+.PP
+Definition at line 370 of file SshData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.SshData\&.Write (Int64data)\fC [protected]\fP"
+
+.PP
+Writes int64 data into internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP int64 data to write\&.
+.RE
+.PP
+
+.PP
+Definition at line 379 of file SshData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.SshData\&.Write (stringdata)\fC [protected]\fP"
+
+.PP
+Writes string data into internal buffer using default encoding\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP string data to write\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIdata\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 399 of file SshData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.SshData\&.Write (\fBBigInteger\fPdata)\fC [protected]\fP"
+
+.PP
+Writes mpint data into internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP mpint data to write\&.
+.RE
+.PP
+
+.PP
+Definition at line 432 of file SshData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.SshData\&.Write (string[]data)\fC [protected]\fP"
+
+.PP
+Writes name-list data into internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP name-list data to write\&.
+.RE
+.PP
+
+.PP
+Definition at line 443 of file SshData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.SshData\&.Write (IDictionary< string, string >data)\fC [protected]\fP"
+
+.PP
+Writes extension-pair data into internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP extension-pair data to write\&.
+.RE
+.PP
+
+.PP
+Definition at line 453 of file SshData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.SshData\&.WriteAscii (stringdata)\fC [protected]\fP"
+
+.PP
+Writes string data into internal buffer as ASCII\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP string data to write\&.
+.RE
+.PP
+
+.PP
+Definition at line 389 of file SshData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.SshData\&.WriteBinaryString (byte[]data)\fC [protected]\fP"
+
+.PP
+Writes string data into internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP string data to write\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIdata\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 419 of file SshData\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool Renci\&.SshNet\&.Common\&.SshData\&.IsEndOfData\fC [get]\fP"
+
+.PP
+Gets a value indicating whether all data from the buffer has been read\&. \fCtrue\fP if this instance is end of data; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 36 of file SshData\&.cs\&.
+.SS "virtual int Renci\&.SshNet\&.Common\&.SshData\&.ZeroReaderIndex\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Gets the index that represents zero in current data type\&. The index of the zero reader\&. 
+.PP
+Definition at line 52 of file SshData\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

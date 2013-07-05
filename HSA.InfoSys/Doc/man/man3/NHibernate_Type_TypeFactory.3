@@ -1,0 +1,298 @@
+.TH "NHibernate.Type.TypeFactory" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.TypeFactory \- 
+.PP
+Used internally to obtain instances of \fBIType\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBIType\fP \fBBasic\fP (string name)"
+.br
+.RI "\fIGiven the name of a Hibernate type such as Decimal, Decimal(19,0) , Int32, or even \fBNHibernate\&.Type\&.DecimalType\fP, NHibernate\&.Type\&.DecimalType(19,0), \fBNHibernate\&.Type\&.Int32Type\fP, then return an instance of \fBNHibernate\&.Type\&.IType\fP \fP"
+.ti -1c
+.RI "static \fBIType\fP \fBHeuristicType\fP (string typeName)"
+.br
+.RI "\fIUses heuristics to deduce a \fBNHibernate\fP type given a string naming the type\&. \fP"
+.ti -1c
+.RI "static \fBIType\fP \fBHeuristicType\fP (string typeName, IDictionary< string, string > parameters)"
+.br
+.RI "\fIUses heuristics to deduce a \fBNHibernate\fP type given a string naming the type\&. \fP"
+.ti -1c
+.RI "static \fBIType\fP \fBHeuristicType\fP (string typeName, IDictionary< string, string > parameters, int?length)"
+.br
+.RI "\fIUses heuristics to deduce a \fBNHibernate\fP type given a string naming the type\&. \fP"
+.ti -1c
+.RI "static \fBNullableType\fP \fBGetAnsiStringType\fP (int length)"
+.br
+.ti -1c
+.RI "static \fBNullableType\fP \fBGetBinaryType\fP (int length)"
+.br
+.RI "\fIGets the \fBBinaryType\fP with the specified length\&. \fP"
+.ti -1c
+.RI "static \fBNullableType\fP \fBGetSerializableType\fP (System\&.Type serializableType)"
+.br
+.RI "\fIGets the \fBSerializableType\fP for the specified \fBType\fP \fP"
+.ti -1c
+.RI "static \fBNullableType\fP \fBGetSerializableType\fP (System\&.Type serializableType, int length)"
+.br
+.ti -1c
+.RI "static \fBNullableType\fP \fBGetSerializableType\fP (int length)"
+.br
+.ti -1c
+.RI "static \fBNullableType\fP \fBGetStringType\fP (int length)"
+.br
+.ti -1c
+.RI "static \fBNullableType\fP \fBGetTypeType\fP (int length)"
+.br
+.ti -1c
+.RI "static \fBEntityType\fP \fBOneToOne\fP (string persistentClass, \fBForeignKeyDirection\fP foreignKeyType, string uniqueKeyPropertyName, bool lazy, bool unwrapProxy, bool isEmbeddedInXML, string entityName, string propertyName)"
+.br
+.RI "\fIA one-to-one association type for the given class and cascade style\&. \fP"
+.ti -1c
+.RI "static \fBEntityType\fP \fBManyToOne\fP (string persistentClass)"
+.br
+.RI "\fIA many-to-one association type for the given class and cascade style\&. \fP"
+.ti -1c
+.RI "static \fBEntityType\fP \fBManyToOne\fP (string persistentClass, bool lazy)"
+.br
+.RI "\fIA many-to-one association type for the given class and cascade style\&. \fP"
+.ti -1c
+.RI "static \fBEntityType\fP \fBManyToOne\fP (string persistentClass, string uniqueKeyPropertyName, bool lazy, bool unwrapProxy, bool isEmbeddedInXML, bool ignoreNotFound)"
+.br
+.RI "\fIA many-to-one association type for the given class and cascade style\&. \fP"
+.ti -1c
+.RI "static \fBCollectionType\fP \fBArray\fP (string role, string propertyRef, bool embedded, System\&.Type elementClass)"
+.br
+.ti -1c
+.RI "static \fBCollectionType\fP \fBList\fP (string role, string propertyRef, bool embedded)"
+.br
+.ti -1c
+.RI "static \fBCollectionType\fP \fBBag\fP (string role, string propertyRef, bool embedded)"
+.br
+.ti -1c
+.RI "static \fBCollectionType\fP \fBIdBag\fP (string role, string propertyRef, bool embedded)"
+.br
+.ti -1c
+.RI "static \fBCollectionType\fP \fBMap\fP (string role, string propertyRef, bool embedded)"
+.br
+.ti -1c
+.RI "static \fBCollectionType\fP \fBSortedMap\fP (string role, string propertyRef, bool embedded, IComparer comparer)"
+.br
+.ti -1c
+.RI "static \fBCollectionType\fP \fBOrderedMap\fP (string role, string propertyRef, bool embedded)"
+.br
+.ti -1c
+.RI "static \fBCollectionType\fP \fBGenericBag\fP (string role, string propertyRef, System\&.Type elementClass)"
+.br
+.ti -1c
+.RI "static \fBCollectionType\fP \fBGenericIdBag\fP (string role, string propertyRef, System\&.Type elementClass)"
+.br
+.ti -1c
+.RI "static \fBCollectionType\fP \fBGenericList\fP (string role, string propertyRef, System\&.Type elementClass)"
+.br
+.ti -1c
+.RI "static \fBCollectionType\fP \fBGenericMap\fP (string role, string propertyRef, System\&.Type indexClass, System\&.Type elementClass)"
+.br
+.ti -1c
+.RI "static \fBCollectionType\fP \fBGenericSortedList\fP (string role, string propertyRef, object comparer, System\&.Type indexClass, System\&.Type elementClass)"
+.br
+.ti -1c
+.RI "static \fBCollectionType\fP \fBGenericSortedDictionary\fP (string role, string propertyRef, object comparer, System\&.Type indexClass, System\&.Type elementClass)"
+.br
+.ti -1c
+.RI "static \fBCollectionType\fP \fBGenericSet\fP (string role, string propertyRef, System\&.Type elementClass)"
+.br
+.ti -1c
+.RI "static \fBCollectionType\fP \fBGenericSortedSet\fP (string role, string propertyRef, object comparer, System\&.Type elementClass)"
+.br
+.ti -1c
+.RI "static \fBCollectionType\fP \fBGenericOrderedSet\fP (string role, string propertyRef, System\&.Type elementClass)"
+.br
+.ti -1c
+.RI "static \fBCollectionType\fP \fBCustomCollection\fP (string typeName, IDictionary< string, string > typeParameters, string role, string propertyRef, bool embedded)"
+.br
+.ti -1c
+.RI "static void \fBInjectParameters\fP (Object type, IDictionary< string, string > parameters)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBICollectionTypeFactory\fP \fBCollectionTypeFactory\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Used internally to obtain instances of \fBIType\fP\&. 
+
+Applications should use static methods and constants on NHibernate\&.NHibernateUtil if the default \fBIType\fP is good enough\&. For example, the \fBTypeFactory\fP should only be used when the String needs to have a length of 300 instead of 255\&. At this point NHibernateUtil\&.String does not get you the correct \fBIType\fP\&. Instead use TypeFactory\&.GetString(300) and keep a local variable that holds a reference to the \fBIType\fP\&. 
+.PP
+Definition at line 28 of file TypeFactory\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBIType\fP NHibernate\&.Type\&.TypeFactory\&.Basic (stringname)\fC [static]\fP"
+
+.PP
+Given the name of a Hibernate type such as Decimal, Decimal(19,0) , Int32, or even \fBNHibernate\&.Type\&.DecimalType\fP, NHibernate\&.Type\&.DecimalType(19,0), \fBNHibernate\&.Type\&.Int32Type\fP, then return an instance of \fBNHibernate\&.Type\&.IType\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the type\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance of the \fBIType\fP that the string represents\&.
+.RE
+.PP
+.PP
+This method will return null if the name is not found in the basicNameMap\&. 
+.PP
+Definition at line 328 of file TypeFactory\&.cs\&.
+.SS "static \fBNullableType\fP NHibernate\&.Type\&.TypeFactory\&.GetBinaryType (intlength)\fC [static]\fP"
+
+.PP
+Gets the \fBBinaryType\fP with the specified length\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlength\fP The length of the data to store in the database\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBBinaryType\fP
+.RE
+.PP
+.PP
+In addition to returning the \fBBinaryType\fP it will also ensure that it has been added to the basicNameMap with the keys \fCByte[](length)\fP and \fCNHibernate\&.Type\&.BinaryType(length)\fP\&. 
+.PP
+Definition at line 571 of file TypeFactory\&.cs\&.
+.SS "static \fBNullableType\fP NHibernate\&.Type\&.TypeFactory\&.GetSerializableType (System\&.TypeserializableType)\fC [static]\fP"
+
+.PP
+Gets the \fBSerializableType\fP for the specified \fBType\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIserializableType\fP The \fBType\fP that will be Serialized to the database\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBSerializableType\fP
+.RE
+.PP
+.PP
+In addition to returning the \fBSerializableType\fP it will also ensure that it has been added to the basicNameMap with the keys \fCType\&.FullName\fP (the result of \fCIType\&.Name\fP and \fCType\&.AssemblyQualifiedName\fP\&. This is different from the other items put in the basicNameMap because it is uses the AQN and the FQN as opposed to the short name used in the maps and the FQN\&. 
+.PP
+Since this method calls the method \fBGetSerializableType(System\&.Type, Int32)\fP with the default length, those keys will also be added\&. 
+.PP
+Definition at line 638 of file TypeFactory\&.cs\&.
+.SS "static \fBIType\fP NHibernate\&.Type\&.TypeFactory\&.HeuristicType (stringtypeName)\fC [static]\fP"
+
+.PP
+Uses heuristics to deduce a \fBNHibernate\fP type given a string naming the type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItypeName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An instance of \fC\fBNHibernate\&.Type\&.IType\fP\fP
+.RE
+.PP
+.PP
+When looking for the \fBNHibernate\fP type it will look in the cache of the Basic types first\&. If it doesn't find it in the cache then it uses the typeName to get a reference to the Class (\fBType\fP in \&.NET)\&. Once we get the reference to the \&.NET class we check to see if it implements \fBIType\fP, ICompositeUserType, IUserType, ILifecycle (Association), or IPersistentEnum\&. If none of those are implemented then we will serialize the \fBType\fP to the database using NHibernate\&.Type\&.SerializableType(typeName) 
+.PP
+Definition at line 443 of file TypeFactory\&.cs\&.
+.SS "static \fBIType\fP NHibernate\&.Type\&.TypeFactory\&.HeuristicType (stringtypeName, IDictionary< string, string >parameters)\fC [static]\fP"
+
+.PP
+Uses heuristics to deduce a \fBNHibernate\fP type given a string naming the type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItypeName\fP the type name
+.br
+\fIparameters\fP parameters for the type
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An instance of \fC\fBNHibernate\&.Type\&.IType\fP\fP
+.RE
+.PP
+
+.PP
+Definition at line 454 of file TypeFactory\&.cs\&.
+.SS "static \fBIType\fP NHibernate\&.Type\&.TypeFactory\&.HeuristicType (stringtypeName, IDictionary< string, string >parameters, int?length)\fC [static]\fP"
+
+.PP
+Uses heuristics to deduce a \fBNHibernate\fP type given a string naming the type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItypeName\fP the type name
+.br
+\fIparameters\fP parameters for the type
+.br
+\fIlength\fP optionally, the size of the type
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 466 of file TypeFactory\&.cs\&.
+.SS "static \fBEntityType\fP NHibernate\&.Type\&.TypeFactory\&.ManyToOne (stringpersistentClass)\fC [static]\fP"
+
+.PP
+A many-to-one association type for the given class and cascade style\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersistentClass\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 730 of file TypeFactory\&.cs\&.
+.SS "static \fBEntityType\fP NHibernate\&.Type\&.TypeFactory\&.ManyToOne (stringpersistentClass, boollazy)\fC [static]\fP"
+
+.PP
+A many-to-one association type for the given class and cascade style\&. 
+.PP
+Definition at line 738 of file TypeFactory\&.cs\&.
+.SS "static \fBEntityType\fP NHibernate\&.Type\&.TypeFactory\&.ManyToOne (stringpersistentClass, stringuniqueKeyPropertyName, boollazy, boolunwrapProxy, boolisEmbeddedInXML, boolignoreNotFound)\fC [static]\fP"
+
+.PP
+A many-to-one association type for the given class and cascade style\&. 
+.PP
+Definition at line 746 of file TypeFactory\&.cs\&.
+.SS "static \fBEntityType\fP NHibernate\&.Type\&.TypeFactory\&.OneToOne (stringpersistentClass, \fBForeignKeyDirection\fPforeignKeyType, stringuniqueKeyPropertyName, boollazy, boolunwrapProxy, boolisEmbeddedInXML, stringentityName, stringpropertyName)\fC [static]\fP"
+
+.PP
+A one-to-one association type for the given class and cascade style\&. 
+.PP
+Definition at line 717 of file TypeFactory\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

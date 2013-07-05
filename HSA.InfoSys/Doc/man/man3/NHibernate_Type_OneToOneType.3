@@ -1,0 +1,236 @@
+.TH "NHibernate.Type.OneToOneType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.OneToOneType \- 
+.PP
+A one-to-one association to an entity  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.EntityType\fP, and \fBNHibernate\&.Type\&.IAssociationType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Type\&.SpecialOneToOneType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override int \fBGetColumnSpan\fP (\fBIMapping\fP session)"
+.br
+.ti -1c
+.RI "override \fBSqlType\fP[] \fBSqlTypes\fP (\fBIMapping\fP session)"
+.br
+.ti -1c
+.RI "\fBOneToOneType\fP (string referencedEntityName, \fBForeignKeyDirection\fP foreignKeyType, string uniqueKeyPropertyName, bool lazy, bool unwrapProxy, bool isEmbeddedInXML, string entityName, string propertyName)"
+.br
+.ti -1c
+.RI "override void \fBNullSafeSet\fP (IDbCommand st, object value, int index, bool[] settable, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override void \fBNullSafeSet\fP (IDbCommand cmd, object value, int index, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override bool \fBIsDirty\fP (object old, object current, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIShould the parent be considered dirty, given both the old and current field or element value? \fP"
+.ti -1c
+.RI "override bool \fBIsDirty\fP (object old, object current, bool[] checkable, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override bool \fBIsModified\fP (object old, object current, bool[] checkable, \fBISessionImplementor\fP session)"
+.br
+.RI "\fISays whether the value has been modified \fP"
+.ti -1c
+.RI "override bool \fBIsNull\fP (object owner, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override object \fBHydrate\fP (IDataReader rs, string[] names, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIRetrives an instance of the mapped class, or the identifier of an entity or collection from a IDataReader\&. \fP"
+.ti -1c
+.RI "override object \fBDisassemble\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIDisassembles the object into a cacheable representation\&. \fP"
+.ti -1c
+.RI "override object \fBAssemble\fP (object cached, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIReconstructs the object from its cached 'disassembled' state\&. \fP"
+.ti -1c
+.RI "override bool[] \fBToColumnNullness\fP (object value, \fBIMapping\fP mapping)"
+.br
+.RI "\fIGiven an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBIsOneToOne\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBForeignKeyDirection\fP \fBForeignKeyDirection\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsNullable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBUseLHSPrimaryKey\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsAlwaysDirtyChecked\fP\fC [get]\fP"
+.br
+.RI "\fIWe don't need to dirty check one-to-one because of how assemble/disassemble is implemented and because a one-to-one association is never dirty \fP"
+.ti -1c
+.RI "override string \fBPropertyName\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A one-to-one association to an entity 
+
+
+.PP
+Definition at line 14 of file OneToOneType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.OneToOneType\&.Assemble (objectcached, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Reconstructs the object from its cached 'disassembled' state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcached\fP The disassembled state from the cache
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP The parent Entity object is not used by this method
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The assembled object\&.
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 129 of file OneToOneType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.OneToOneType\&.Disassemble (objectvalue, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Disassembles the object into a cacheable representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to disassemble\&.
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP optional parent entity object (needed for collections) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The disassembled, deep cloned state of the object
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 124 of file OneToOneType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.OneToOneType\&.Hydrate (IDataReaderrs, string[]names, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Retrives an instance of the mapped class, or the identifier of an entity or collection from a IDataReader\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the values\&.
+.br
+\fInames\fP The names of the columns in the IDataReader that contain the value to populate the \fBIType\fP with\&. 
+.br
+\fIsession\fP the session
+.br
+\fIowner\fP The parent Entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An identifier or actual object mapped by this \fBIType\fP\&.
+.RE
+.PP
+.PP
+This method uses the \fCIType\&.NullSafeGet(IDataReader, string[], ISessionImplementor, object)\fP method to Hydrate this \fBAbstractType\fP\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.EntityType\fP\&.
+.PP
+Definition at line 92 of file OneToOneType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.OneToOneType\&.IsDirty (objectold, objectcurrent, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Should the parent be considered dirty, given both the old and current field or element value? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIold\fP The old value
+.br
+\fIcurrent\fP The current value
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the field is dirty
+.RE
+.PP
+.PP
+This method uses \fCIType\&.Equals(object, object)\fP to determine the value of IsDirty\&.
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 55 of file OneToOneType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.OneToOneType\&.IsModified (objectold, objectcurrent, bool[]checkable, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Says whether the value has been modified 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 65 of file OneToOneType\&.cs\&.
+.SS "override bool [] NHibernate\&.Type\&.OneToOneType\&.ToColumnNullness (objectvalue, \fBIMapping\fPmapping)\fC [virtual]\fP"
+
+.PP
+Given an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP an instance of the type 
+.br
+\fImapping\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 152 of file OneToOneType\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool NHibernate\&.Type\&.OneToOneType\&.IsAlwaysDirtyChecked\fC [get]\fP"
+
+.PP
+We don't need to dirty check one-to-one because of how assemble/disassemble is implemented and because a one-to-one association is never dirty 
+.PP
+Definition at line 143 of file OneToOneType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

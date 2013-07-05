@@ -1,0 +1,101 @@
+.TH "log4net.Config.ConfiguratorAttribute" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Config.ConfiguratorAttribute \- 
+.PP
+Base class for all \fBlog4net\fP configuration attributes\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits Attribute, and IComparable\&.
+.PP
+Inherited by \fBlog4net\&.Config\&.SecurityContextProviderAttribute\fP, and \fBlog4net\&.Config\&.XmlConfiguratorAttribute\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract void \fBConfigure\fP (Assembly sourceAssembly, \fBILoggerRepository\fP targetRepository)"
+.br
+.RI "\fIConfigures the ILoggerRepository for the specified assembly\&. \fP"
+.ti -1c
+.RI "int \fBCompareTo\fP (object obj)"
+.br
+.RI "\fICompare this instance to another \fBConfiguratorAttribute\fP \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBConfiguratorAttribute\fP (int priority)"
+.br
+.RI "\fIConstructor used by subclasses\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for all \fBlog4net\fP configuration attributes\&. 
+
+This is an abstract class that must be extended by specific configurators\&. This attribute allows the configurator to be parameterized by an assembly level attribute\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 42 of file ConfiguratorAttribute\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Config\&.ConfiguratorAttribute\&.ConfiguratorAttribute (intpriority)\fC [protected]\fP"
+
+.PP
+Constructor used by subclasses\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpriority\fP the ordering priority for this configurator
+.RE
+.PP
+.PP
+The \fIpriority\fP  is used to order the configurator attributes before they are invoked\&. Higher priority configurators are executed before lower priority ones\&. 
+.PP
+Definition at line 57 of file ConfiguratorAttribute\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int log4net\&.Config\&.ConfiguratorAttribute\&.CompareTo (objectobj)"
+
+.PP
+Compare this instance to another \fBConfiguratorAttribute\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP the object to compare to
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+see IComparable\&.CompareTo
+.RE
+.PP
+.PP
+Compares the priorities of the two \fBConfiguratorAttribute\fP instances\&. Sorts by priority in descending order\&. Objects with the same priority are randomly ordered\&. 
+.PP
+Definition at line 87 of file ConfiguratorAttribute\&.cs\&.
+.SS "abstract void log4net\&.Config\&.ConfiguratorAttribute\&.Configure (AssemblysourceAssembly, \fBILoggerRepository\fPtargetRepository)\fC [pure virtual]\fP"
+
+.PP
+Configures the ILoggerRepository for the specified assembly\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsourceAssembly\fP The assembly that this attribute was defined on\&.
+.br
+\fItargetRepository\fP The repository to configure\&.
+.RE
+.PP
+.PP
+Abstract method implemented by a subclass\&. When this method is called the subclass should configure the \fItargetRepository\fP \&. 
+.PP
+Implemented in \fBlog4net\&.Config\&.XmlConfiguratorAttribute\fP, and \fBlog4net\&.Config\&.SecurityContextProviderAttribute\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

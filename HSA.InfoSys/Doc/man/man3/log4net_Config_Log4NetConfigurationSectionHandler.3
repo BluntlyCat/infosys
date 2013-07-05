@@ -1,0 +1,87 @@
+.TH "log4net.Config.Log4NetConfigurationSectionHandler" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Config.Log4NetConfigurationSectionHandler \- 
+.PP
+Class to register for the \fBlog4net\fP section of the configuration file  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IConfigurationSectionHandler\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLog4NetConfigurationSectionHandler\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBLog4NetConfigurationSectionHandler\fP class\&. \fP"
+.ti -1c
+.RI "object \fBCreate\fP (object parent, object configContext, XmlNode section)"
+.br
+.RI "\fIParses the configuration section\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class to register for the \fBlog4net\fP section of the configuration file 
+
+The \fBlog4net\fP section of the configuration file needs to have a section handler registered\&. This is the section handler used\&. It simply returns the XML element that is the root of the section\&. 
+.PP
+Example of registering the \fBlog4net\fP section handler : 
+.PP
+.nf
+<configuration>
+    <configSections>
+        <section name="log4net" type="log4net\&.Config\&.Log4NetConfigurationSectionHandler, log4net" />
+    </configSections>
+    <log4net>
+        log4net configuration XML goes here
+    </log4net>
+</configuration>
+
+.fi
+.PP
+ 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 51 of file Log4NetConfigurationSectionHandler\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Config\&.Log4NetConfigurationSectionHandler\&.Log4NetConfigurationSectionHandler ()"
+
+.PP
+Initializes a new instance of the \fBLog4NetConfigurationSectionHandler\fP class\&. Default constructor\&. 
+.PP
+Definition at line 63 of file Log4NetConfigurationSectionHandler\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object log4net\&.Config\&.Log4NetConfigurationSectionHandler\&.Create (objectparent, objectconfigContext, XmlNodesection)"
+
+.PP
+Parses the configuration section\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparent\fP The configuration settings in a corresponding parent configuration section\&.
+.br
+\fIconfigContext\fP The configuration context when called from the ASP\&.NET configuration system\&. Otherwise, this parameter is reserved and is a null reference\&.
+.br
+\fIsection\fP The XmlNode for the \fBlog4net\fP section\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The XmlNode for the \fBlog4net\fP section\&.
+.RE
+.PP
+.PP
+Returns the XmlNode containing the configuration data, 
+.PP
+Definition at line 83 of file Log4NetConfigurationSectionHandler\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

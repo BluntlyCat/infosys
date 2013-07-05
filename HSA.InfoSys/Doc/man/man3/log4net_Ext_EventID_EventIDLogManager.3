@@ -1,0 +1,304 @@
+.TH "log4net.Ext.EventID.EventIDLogManager" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Ext.EventID.EventIDLogManager \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBIEventIDLog\fP \fBExists\fP (string name)"
+.br
+.RI "\fIReturns the named logger if it exists \fP"
+.ti -1c
+.RI "static \fBIEventIDLog\fP \fBExists\fP (string domain, string name)"
+.br
+.RI "\fIReturns the named logger if it exists \fP"
+.ti -1c
+.RI "static \fBIEventIDLog\fP \fBExists\fP (Assembly assembly, string name)"
+.br
+.RI "\fIReturns the named logger if it exists \fP"
+.ti -1c
+.RI "static \fBIEventIDLog\fP[] \fBGetCurrentLoggers\fP ()"
+.br
+.RI "\fIReturns all the currently defined loggers in the default domain\&. \fP"
+.ti -1c
+.RI "static \fBIEventIDLog\fP[] \fBGetCurrentLoggers\fP (string domain)"
+.br
+.RI "\fIReturns all the currently defined loggers in the specified domain\&. \fP"
+.ti -1c
+.RI "static \fBIEventIDLog\fP[] \fBGetCurrentLoggers\fP (Assembly assembly)"
+.br
+.RI "\fIReturns all the currently defined loggers in the specified assembly's domain\&. \fP"
+.ti -1c
+.RI "static \fBIEventIDLog\fP \fBGetLogger\fP (string name)"
+.br
+.RI "\fIRetrieve or create a named logger\&. \fP"
+.ti -1c
+.RI "static \fBIEventIDLog\fP \fBGetLogger\fP (string domain, string name)"
+.br
+.RI "\fIRetrieve or create a named logger\&. \fP"
+.ti -1c
+.RI "static \fBIEventIDLog\fP \fBGetLogger\fP (Assembly assembly, string name)"
+.br
+.RI "\fIRetrieve or create a named logger\&. \fP"
+.ti -1c
+.RI "static \fBIEventIDLog\fP \fBGetLogger\fP (Type type)"
+.br
+.RI "\fIShorthand for \fBLogManager\&.GetLogger(string)\fP\&. \fP"
+.ti -1c
+.RI "static \fBIEventIDLog\fP \fBGetLogger\fP (string domain, Type type)"
+.br
+.RI "\fIShorthand for \fBLogManager\&.GetLogger(string)\fP\&. \fP"
+.ti -1c
+.RI "static \fBIEventIDLog\fP \fBGetLogger\fP (Assembly assembly, Type type)"
+.br
+.RI "\fIShorthand for \fBLogManager\&.GetLogger(string)\fP\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 34 of file EventIDLogManager\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBIEventIDLog\fP log4net\&.Ext\&.EventID\&.EventIDLogManager\&.Exists (stringname)\fC [static]\fP"
+
+.PP
+Returns the named logger if it exists If the named logger exists (in the default hierarchy) then it returns a reference to the logger, otherwise it returns \fCnull\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The fully qualified logger name to look for
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The logger found, or null
+.RE
+.PP
+
+.PP
+Definition at line 66 of file EventIDLogManager\&.cs\&.
+.SS "static \fBIEventIDLog\fP log4net\&.Ext\&.EventID\&.EventIDLogManager\&.Exists (stringdomain, stringname)\fC [static]\fP"
+
+.PP
+Returns the named logger if it exists If the named logger exists (in the specified domain) then it returns a reference to the logger, otherwise it returns \fCnull\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdomain\fP the domain to lookup in
+.br
+\fIname\fP The fully qualified logger name to look for
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The logger found, or null
+.RE
+.PP
+
+.PP
+Definition at line 82 of file EventIDLogManager\&.cs\&.
+.SS "static \fBIEventIDLog\fP log4net\&.Ext\&.EventID\&.EventIDLogManager\&.Exists (Assemblyassembly, stringname)\fC [static]\fP"
+
+.PP
+Returns the named logger if it exists If the named logger exists (in the specified assembly's domain) then it returns a reference to the logger, otherwise it returns \fCnull\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassembly\fP the assembly to use to lookup the domain
+.br
+\fIname\fP The fully qualified logger name to look for
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The logger found, or null
+.RE
+.PP
+
+.PP
+Definition at line 98 of file EventIDLogManager\&.cs\&.
+.SS "static \fBIEventIDLog\fP [] log4net\&.Ext\&.EventID\&.EventIDLogManager\&.GetCurrentLoggers ()\fC [static]\fP"
+
+.PP
+Returns all the currently defined loggers in the default domain\&. The root logger is \fBnot\fP included in the returned array\&.
+.PP
+\fBReturns:\fP
+.RS 4
+All the defined loggers
+.RE
+.PP
+
+.PP
+Definition at line 110 of file EventIDLogManager\&.cs\&.
+.SS "static \fBIEventIDLog\fP [] log4net\&.Ext\&.EventID\&.EventIDLogManager\&.GetCurrentLoggers (stringdomain)\fC [static]\fP"
+
+.PP
+Returns all the currently defined loggers in the specified domain\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdomain\fP the domain to lookup in
+.RE
+.PP
+.PP
+The root logger is \fBnot\fP included in the returned array\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+All the defined loggers
+.RE
+.PP
+
+.PP
+Definition at line 123 of file EventIDLogManager\&.cs\&.
+.SS "static \fBIEventIDLog\fP [] log4net\&.Ext\&.EventID\&.EventIDLogManager\&.GetCurrentLoggers (Assemblyassembly)\fC [static]\fP"
+
+.PP
+Returns all the currently defined loggers in the specified assembly's domain\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassembly\fP the assembly to use to lookup the domain
+.RE
+.PP
+.PP
+The root logger is \fBnot\fP included in the returned array\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+All the defined loggers
+.RE
+.PP
+
+.PP
+Definition at line 136 of file EventIDLogManager\&.cs\&.
+.SS "static \fBIEventIDLog\fP log4net\&.Ext\&.EventID\&.EventIDLogManager\&.GetLogger (stringname)\fC [static]\fP"
+
+.PP
+Retrieve or create a named logger\&. Retrieve a logger named as the \fIname\fP  parameter\&. If the named logger already exists, then the existing instance will be returned\&. Otherwise, a new instance is created\&.
+.PP
+By default, loggers do not have a set level but inherit it from the hierarchy\&. This is one of the central features of \fBlog4net\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the logger to retrieve\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the logger with the name specified
+.RE
+.PP
+
+.PP
+Definition at line 156 of file EventIDLogManager\&.cs\&.
+.SS "static \fBIEventIDLog\fP log4net\&.Ext\&.EventID\&.EventIDLogManager\&.GetLogger (stringdomain, stringname)\fC [static]\fP"
+
+.PP
+Retrieve or create a named logger\&. Retrieve a logger named as the \fIname\fP  parameter\&. If the named logger already exists, then the existing instance will be returned\&. Otherwise, a new instance is created\&.
+.PP
+By default, loggers do not have a set level but inherit it from the hierarchy\&. This is one of the central features of \fBlog4net\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdomain\fP the domain to lookup in
+.br
+\fIname\fP The name of the logger to retrieve\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the logger with the name specified
+.RE
+.PP
+
+.PP
+Definition at line 177 of file EventIDLogManager\&.cs\&.
+.SS "static \fBIEventIDLog\fP log4net\&.Ext\&.EventID\&.EventIDLogManager\&.GetLogger (Assemblyassembly, stringname)\fC [static]\fP"
+
+.PP
+Retrieve or create a named logger\&. Retrieve a logger named as the \fIname\fP  parameter\&. If the named logger already exists, then the existing instance will be returned\&. Otherwise, a new instance is created\&.
+.PP
+By default, loggers do not have a set level but inherit it from the hierarchy\&. This is one of the central features of \fBlog4net\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassembly\fP the assembly to use to lookup the domain
+.br
+\fIname\fP The name of the logger to retrieve\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the logger with the name specified
+.RE
+.PP
+
+.PP
+Definition at line 198 of file EventIDLogManager\&.cs\&.
+.SS "static \fBIEventIDLog\fP log4net\&.Ext\&.EventID\&.EventIDLogManager\&.GetLogger (Typetype)\fC [static]\fP"
+
+.PP
+Shorthand for \fBLogManager\&.GetLogger(string)\fP\&. Get the logger for the fully qualified name of the type specified\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The full name of \fItype\fP  will be used as the name of the logger to retrieve\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the logger with the name specified
+.RE
+.PP
+
+.PP
+Definition at line 212 of file EventIDLogManager\&.cs\&.
+.SS "static \fBIEventIDLog\fP log4net\&.Ext\&.EventID\&.EventIDLogManager\&.GetLogger (stringdomain, Typetype)\fC [static]\fP"
+
+.PP
+Shorthand for \fBLogManager\&.GetLogger(string)\fP\&. Get the logger for the fully qualified name of the type specified\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdomain\fP the domain to lookup in
+.br
+\fItype\fP The full name of \fItype\fP  will be used as the name of the logger to retrieve\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the logger with the name specified
+.RE
+.PP
+
+.PP
+Definition at line 227 of file EventIDLogManager\&.cs\&.
+.SS "static \fBIEventIDLog\fP log4net\&.Ext\&.EventID\&.EventIDLogManager\&.GetLogger (Assemblyassembly, Typetype)\fC [static]\fP"
+
+.PP
+Shorthand for \fBLogManager\&.GetLogger(string)\fP\&. Get the logger for the fully qualified name of the type specified\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassembly\fP the assembly to use to lookup the domain
+.br
+\fItype\fP The full name of \fItype\fP  will be used as the name of the logger to retrieve\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the logger with the name specified
+.RE
+.PP
+
+.PP
+Definition at line 242 of file EventIDLogManager\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

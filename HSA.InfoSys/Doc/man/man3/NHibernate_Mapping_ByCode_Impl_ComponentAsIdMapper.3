@@ -1,0 +1,72 @@
+.TH "NHibernate.Mapping.ByCode.Impl.ComponentAsIdMapper" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.ByCode.Impl.ComponentAsIdMapper \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.ByCode\&.IComponentAsIdMapper\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBComponentAsIdMapper\fP (System\&.Type componentType, MemberInfo declaringTypeMember, \fBHbmCompositeId\fP id, \fBHbmMapping\fP mapDoc)"
+.br
+.ti -1c
+.RI "void \fBAccess\fP (Accessor accessor)"
+.br
+.ti -1c
+.RI "void \fBAccess\fP (System\&.Type accessorType)"
+.br
+.ti -1c
+.RI "void \fBClass\fP (System\&.Type componentType)"
+.br
+.RI "\fIForce the component to a different type than the one of the property\&. \fP"
+.ti -1c
+.RI "void \fBProperty\fP (MemberInfo property, Action< \fBIPropertyMapper\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBManyToOne\fP (MemberInfo property, Action< \fBIManyToOneMapper\fP > mapping)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAddProperty\fP (object property)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBHbmCompositeId\fP \fBCompositeId\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file ComponentAsIdMapper\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Mapping\&.ByCode\&.Impl\&.ComponentAsIdMapper\&.Class (System\&.TypecomponentType)"
+
+.PP
+Force the component to a different type than the one of the property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomponentType\fP Mapped component type\&.
+.RE
+.PP
+.PP
+Useful when the property is an interface and you need the mapping to a concrete class mapped as component\&. 
+.PP
+Implements \fBNHibernate\&.Mapping\&.ByCode\&.IComponentAsIdAttributesMapper\fP\&.
+.PP
+Definition at line 38 of file ComponentAsIdMapper\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,401 @@
+.TH "Renci.SshNet.ScpClient" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.ScpClient \- 
+.PP
+Provides SCP client functionality\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.BaseClient\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBScpClient\fP (\fBConnectionInfo\fP connectionInfo)"
+.br
+.RI "\fIInitializes a new instance of the \fBSftpClient\fP class\&. \fP"
+.ti -1c
+.RI "\fBScpClient\fP (string host, int port, string username, string password)"
+.br
+.RI "\fIInitializes a new instance of the \fBSftpClient\fP class\&. \fP"
+.ti -1c
+.RI "\fBScpClient\fP (string host, string username, string password)"
+.br
+.RI "\fIInitializes a new instance of the \fBSftpClient\fP class\&. \fP"
+.ti -1c
+.RI "\fBScpClient\fP (string host, int port, string username, params \fBPrivateKeyFile\fP[] keyFiles)"
+.br
+.RI "\fIInitializes a new instance of the \fBSftpClient\fP class\&. \fP"
+.ti -1c
+.RI "\fBScpClient\fP (string host, string username, params \fBPrivateKeyFile\fP[] keyFiles)"
+.br
+.RI "\fIInitializes a new instance of the \fBSftpClient\fP class\&. \fP"
+.ti -1c
+.RI "void \fBUpload\fP (Stream source, string path)"
+.br
+.RI "\fIUploads the specified stream to the remote host\&. \fP"
+.ti -1c
+.RI "void \fBDownload\fP (string filename, Stream destination)"
+.br
+.RI "\fIDownloads the specified file from the remote host to the stream\&. \fP"
+.ti -1c
+.RI "void \fBUpload\fP (FileInfo fileInfo, string path)"
+.br
+.RI "\fIUploads the specified file to the remote host\&. \fP"
+.ti -1c
+.RI "void \fBUpload\fP (DirectoryInfo directoryInfo, string path)"
+.br
+.RI "\fIUploads the specified directory to the remote host\&. \fP"
+.ti -1c
+.RI "void \fBDownload\fP (string filename, FileInfo fileInfo)"
+.br
+.RI "\fIDownloads the specified file from the remote host to local file\&. \fP"
+.ti -1c
+.RI "void \fBDownload\fP (string directoryName, DirectoryInfo directoryInfo)"
+.br
+.RI "\fIDownloads the specified directory from the remote host to local directory\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIReleases unmanaged and - optionally - managed resources \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "TimeSpan \fBOperationTimeout\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the operation timeout\&. \fP"
+.ti -1c
+.RI "uint \fBBufferSize\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the size of the buffer\&. \fP"
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "EventHandler
+.br
+< \fBScpDownloadEventArgs\fP > \fBDownloading\fP"
+.br
+.RI "\fIOccurs when downloading file\&. \fP"
+.ti -1c
+.RI "EventHandler< \fBScpUploadEventArgs\fP > \fBUploading\fP"
+.br
+.RI "\fIOccurs when uploading file\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Provides SCP client functionality\&. 
+
+
+.PP
+Definition at line 19 of file ScpClient\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.ScpClient\&.ScpClient (\fBConnectionInfo\fPconnectionInfo)"
+
+.PP
+Initializes a new instance of the \fBSftpClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnectionInfo\fP The connection info\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIconnectionInfo\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 60 of file ScpClient\&.cs\&.
+.SS "Renci\&.SshNet\&.ScpClient\&.ScpClient (stringhost, intport, stringusername, stringpassword)"
+
+.PP
+Initializes a new instance of the \fBSftpClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP Connection host\&.
+.br
+\fIport\fP Connection port\&.
+.br
+\fIusername\fP Authentication username\&.
+.br
+\fIpassword\fP Authentication password\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpassword\fP  is null\&.
+.br
+\fIArgumentException\fP \fIhost\fP  is invalid, or \fIusername\fP  is null or contains whitespace characters\&.
+.br
+\fIArgumentOutOfRangeException\fP \fIport\fP  is not within F:System\&.Net\&.IPEndPoint\&.MinPort and System\&.Net\&.IPEndPoint\&.MaxPort\&.
+.RE
+.PP
+
+.PP
+Definition at line 89 of file ScpClient\&.cs\&.
+.SS "Renci\&.SshNet\&.ScpClient\&.ScpClient (stringhost, stringusername, stringpassword)"
+
+.PP
+Initializes a new instance of the \fBSftpClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP Connection host\&.
+.br
+\fIusername\fP Authentication username\&.
+.br
+\fIpassword\fP Authentication password\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpassword\fP  is null\&.
+.br
+\fIArgumentException\fP \fIhost\fP  is invalid, or \fIusername\fP  is null or contains whitespace characters\&.
+.RE
+.PP
+
+.PP
+Definition at line 103 of file ScpClient\&.cs\&.
+.SS "Renci\&.SshNet\&.ScpClient\&.ScpClient (stringhost, intport, stringusername, params \fBPrivateKeyFile\fP[]keyFiles)"
+
+.PP
+Initializes a new instance of the \fBSftpClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP Connection host\&.
+.br
+\fIport\fP Connection port\&.
+.br
+\fIusername\fP Authentication username\&.
+.br
+\fIkeyFiles\fP Authentication private key file(s) \&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIkeyFiles\fP  is null\&.
+.br
+\fIArgumentException\fP \fIhost\fP  is invalid, -or- \fIusername\fP  is null or contains whitespace characters\&.
+.br
+\fIArgumentOutOfRangeException\fP \fIport\fP  is not within F:System\&.Net\&.IPEndPoint\&.MinPort and System\&.Net\&.IPEndPoint\&.MaxPort\&.
+.RE
+.PP
+
+.PP
+Definition at line 119 of file ScpClient\&.cs\&.
+.SS "Renci\&.SshNet\&.ScpClient\&.ScpClient (stringhost, stringusername, params \fBPrivateKeyFile\fP[]keyFiles)"
+
+.PP
+Initializes a new instance of the \fBSftpClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP Connection host\&.
+.br
+\fIusername\fP Authentication username\&.
+.br
+\fIkeyFiles\fP Authentication private key file(s) \&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIkeyFiles\fP  is null\&.
+.br
+\fIArgumentException\fP \fIhost\fP  is invalid, -or- \fIusername\fP  is null or contains whitespace characters\&.
+.RE
+.PP
+
+.PP
+Definition at line 133 of file ScpClient\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void Renci\&.SshNet\&.ScpClient\&.Dispose (booldisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Releases unmanaged and - optionally - managed resources 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP \fCtrue\fP to release both managed and unmanaged resources; \fCfalse\fP to release only unmanaged ResourceMessages\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBRenci\&.SshNet\&.BaseClient\fP\&.
+.PP
+Definition at line 413 of file ScpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.ScpClient\&.Download (stringfilename, FileInfofileInfo)"
+
+.PP
+Downloads the specified file from the remote host to local file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP Remote host file name\&.
+.br
+\fIfileInfo\fP Local file information\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIfileInfo\fP  or \fIfilename\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 109 of file ScpClient\&.NET\&.cs\&.
+.SS "void Renci\&.SshNet\&.ScpClient\&.Download (stringdirectoryName, DirectoryInfodirectoryInfo)"
+
+.PP
+Downloads the specified directory from the remote host to local directory\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdirectoryName\fP Remote host directory name\&.
+.br
+\fIdirectoryInfo\fP Local directory information\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIdirectoryInfo\fP  or \fIdirectoryName\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 144 of file ScpClient\&.NET\&.cs\&.
+.SS "void Renci\&.SshNet\&.ScpClient\&.Download (stringfilename, Streamdestination)"
+
+.PP
+Downloads the specified file from the remote host to the stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP Remote host file name\&.
+.br
+\fIdestination\fP The stream where to download remote file\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP \fIfilename\fP  is null or contains whitespace characters\&.
+.br
+\fIArgumentNullException\fP \fIdestination\fP  is null\&.
+.RE
+.PP
+.PP
+Method calls made by this method to \fIdestination\fP , may under certain conditions result in exceptions thrown by the stream\&.
+.PP
+Definition at line 193 of file ScpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.ScpClient\&.Upload (FileInfofileInfo, stringpath)"
+
+.PP
+Uploads the specified file to the remote host\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileInfo\fP The file system info\&.
+.br
+\fIpath\fP The path\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentNullException\fP fileSystemInfo
+.br
+\fISystem\&.ArgumentException\fP path
+.br
+\fISystem\&.NotSupportedException\fP 
+.br
+\fIArgumentNullException\fP \fIfileInfo\fP  or \fIfilename\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 31 of file ScpClient\&.NET\&.cs\&.
+.SS "void Renci\&.SshNet\&.ScpClient\&.Upload (DirectoryInfodirectoryInfo, stringpath)"
+
+.PP
+Uploads the specified directory to the remote host\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdirectoryInfo\fP The directory info\&.
+.br
+\fIpath\fP The path\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentNullException\fP fileSystemInfo
+.br
+\fISystem\&.ArgumentException\fP path
+.RE
+.PP
+
+.PP
+Definition at line 67 of file ScpClient\&.NET\&.cs\&.
+.SS "void Renci\&.SshNet\&.ScpClient\&.Upload (Streamsource, stringpath)"
+
+.PP
+Uploads the specified stream to the remote host\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP Stream to upload\&.
+.br
+\fIfilename\fP Remote host file name\&.
+.RE
+.PP
+
+.PP
+Definition at line 145 of file ScpClient\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "uint Renci\&.SshNet\&.ScpClient\&.BufferSize\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the size of the buffer\&. The size of the buffer\&.
+.PP
+Definition at line 41 of file ScpClient\&.cs\&.
+.SS "TimeSpan Renci\&.SshNet\&.ScpClient\&.OperationTimeout\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the operation timeout\&. The operation timeout\&.
+.PP
+Definition at line 35 of file ScpClient\&.cs\&.
+.SH "Event Documentation"
+.PP 
+.SS "EventHandler<\fBScpDownloadEventArgs\fP> Renci\&.SshNet\&.ScpClient\&.Downloading"
+
+.PP
+Occurs when downloading file\&. 
+.PP
+Definition at line 46 of file ScpClient\&.cs\&.
+.SS "EventHandler<\fBScpUploadEventArgs\fP> Renci\&.SshNet\&.ScpClient\&.Uploading"
+
+.PP
+Occurs when uploading file\&. 
+.PP
+Definition at line 51 of file ScpClient\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

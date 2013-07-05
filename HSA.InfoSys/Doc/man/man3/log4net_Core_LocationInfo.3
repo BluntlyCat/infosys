@@ -1,0 +1,156 @@
+.TH "log4net.Core.LocationInfo" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Core.LocationInfo \- 
+.PP
+The internal representation of caller location information\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLocationInfo\fP (Type callerStackBoundaryDeclaringType)"
+.br
+.RI "\fIConstructor \fP"
+.ti -1c
+.RI "\fBLocationInfo\fP (string className, string methodName, string fileName, string lineNumber)"
+.br
+.RI "\fIConstructor \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBClassName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the fully qualified class name of the caller making the logging request\&. \fP"
+.ti -1c
+.RI "string \fBFileName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the file name of the caller\&. \fP"
+.ti -1c
+.RI "string \fBLineNumber\fP\fC [get]\fP"
+.br
+.RI "\fIGets the line number of the caller\&. \fP"
+.ti -1c
+.RI "string \fBMethodName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the method name of the caller\&. \fP"
+.ti -1c
+.RI "string \fBFullInfo\fP\fC [get]\fP"
+.br
+.RI "\fIGets all available caller information \fP"
+.ti -1c
+.RI "StackFrame[] \fBStackFrames\fP\fC [get]\fP"
+.br
+.RI "\fIGets the stack frames from the stack trace of the caller making the log request \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The internal representation of caller location information\&. 
+
+This class uses the \fCSystem\&.Diagnostics\&.StackTrace\fP class to generate a call stack\&. The caller's information is then extracted from this stack\&. 
+.PP
+The \fCSystem\&.Diagnostics\&.StackTrace\fP class is not supported on the \&.NET Compact Framework 1\&.0 therefore caller location information is not available on that framework\&. 
+.PP
+The \fCSystem\&.Diagnostics\&.StackTrace\fP class has this to say about Release builds: 
+.PP
+"StackTrace information will be most informative with Debug build configurations\&. By default, Debug builds include debug symbols, while Release builds do not\&. The debug symbols contain most of the file, method name, line number, and column information used in constructing StackFrame and StackTrace objects\&. StackTrace might not report as many method calls as expected, due to code transformations that occur during optimization\&." 
+.PP
+This means that in a Release build the caller information may be incomplete or may not exist at all! Therefore caller location information cannot be relied upon in a Release build\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 62 of file LocationInfo\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Core\&.LocationInfo\&.LocationInfo (TypecallerStackBoundaryDeclaringType)"
+
+.PP
+Constructor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcallerStackBoundaryDeclaringType\fP The declaring type of the method that is the stack boundary into the logging system for this call\&.
+.RE
+.PP
+.PP
+Initializes a new instance of the \fBLocationInfo\fP class based on the current thread\&. 
+.PP
+Definition at line 77 of file LocationInfo\&.cs\&.
+.SS "log4net\&.Core\&.LocationInfo\&.LocationInfo (stringclassName, stringmethodName, stringfileName, stringlineNumber)"
+
+.PP
+Constructor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclassName\fP The fully qualified class name\&.
+.br
+\fImethodName\fP The method name\&.
+.br
+\fIfileName\fP The file name\&.
+.br
+\fIlineNumber\fP The line number of the method within the file\&.
+.RE
+.PP
+.PP
+Initializes a new instance of the \fBLocationInfo\fP class with the specified data\&. 
+.PP
+Definition at line 175 of file LocationInfo\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string log4net\&.Core\&.LocationInfo\&.ClassName\fC [get]\fP"
+
+.PP
+Gets the fully qualified class name of the caller making the logging request\&. The fully qualified class name of the caller making the logging request\&. 
+.PP
+Gets the fully qualified class name of the caller making the logging request\&. 
+.PP
+Definition at line 204 of file LocationInfo\&.cs\&.
+.SS "string log4net\&.Core\&.LocationInfo\&.FileName\fC [get]\fP"
+
+.PP
+Gets the file name of the caller\&. The file name of the caller\&. 
+.PP
+Gets the file name of the caller\&. 
+.PP
+Definition at line 220 of file LocationInfo\&.cs\&.
+.SS "string log4net\&.Core\&.LocationInfo\&.FullInfo\fC [get]\fP"
+
+.PP
+Gets all available caller information All available caller information, in the format \fCfully\&.qualified\&.classname\&.of\&.caller\&.methodName(Filename:line)\fP 
+.PP
+Gets all available caller information, in the format \fCfully\&.qualified\&.classname\&.of\&.caller\&.methodName(Filename:line)\fP 
+.PP
+Definition at line 270 of file LocationInfo\&.cs\&.
+.SS "string log4net\&.Core\&.LocationInfo\&.LineNumber\fC [get]\fP"
+
+.PP
+Gets the line number of the caller\&. The line number of the caller\&. 
+.PP
+Gets the line number of the caller\&. 
+.PP
+Definition at line 236 of file LocationInfo\&.cs\&.
+.SS "string log4net\&.Core\&.LocationInfo\&.MethodName\fC [get]\fP"
+
+.PP
+Gets the method name of the caller\&. The method name of the caller\&. 
+.PP
+Gets the method name of the caller\&. 
+.PP
+Definition at line 252 of file LocationInfo\&.cs\&.
+.SS "StackFrame [] log4net\&.Core\&.LocationInfo\&.StackFrames\fC [get]\fP"
+
+.PP
+Gets the stack frames from the stack trace of the caller making the log request 
+.PP
+Definition at line 279 of file LocationInfo\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

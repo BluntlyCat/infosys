@@ -1,0 +1,95 @@
+.TH "NHibernate.Id.ForeignGenerator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.ForeignGenerator \- 
+.PP
+An \fBIIdentifierGenerator\fP that uses the value of the id property of an associated object  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Id\&.IIdentifierGenerator\fP, and \fBNHibernate\&.Id\&.IConfigurable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBGenerate\fP (\fBISessionImplementor\fP sessionImplementor, object obj)"
+.br
+.RI "\fIGenerates an identifer from the value of a Property\&. \fP"
+.ti -1c
+.RI "void \fBConfigure\fP (\fBIType\fP type, IDictionary< string, string > parms, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIConfigures the \fBForeignGenerator\fP by reading the value of \fCproperty\fP from the \fCparms\fP parameter\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An \fBIIdentifierGenerator\fP that uses the value of the id property of an associated object 
+
+This id generation strategy is specified in the mapping file as 
+.PP
+.nf
+&lt;generator class="foreign"&gt;
+    &lt;param name="property"&gt;AssociatedObject&lt;/param&gt;
+&lt;/generator&gt;
+
+.fi
+.PP
+ 
+.PP
+The mapping parameter \fCproperty\fP is required\&. 
+.PP
+Definition at line 23 of file ForeignGenerator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Id\&.ForeignGenerator\&.Configure (\fBIType\fPtype, IDictionary< string, string >parms, \fBDialect\&.Dialect\fPdialect)"
+
+.PP
+Configures the \fBForeignGenerator\fP by reading the value of \fCproperty\fP from the \fCparms\fP parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The IType the identifier should be\&.
+.br
+\fIparms\fP An IDictionary of \fBParam\fP values that are keyed by parameter name\&.
+.br
+\fIdialect\fP The \fBDialect\&.Dialect\fP to help with Configuration\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBMappingException\fP\fP Thrown if the key \fCproperty\fP is not found in the \fCparms\fP parameter\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IConfigurable\fP\&.
+.PP
+Definition at line 100 of file ForeignGenerator\&.cs\&.
+.SS "object NHibernate\&.Id\&.ForeignGenerator\&.Generate (\fBISessionImplementor\fPsessionImplementor, objectobj)"
+
+.PP
+Generates an identifer from the value of a Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsessionImplementor\fP The ISessionImplementor this id is being generated in\&.
+.br
+\fIobj\fP The entity for which the id is being generated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The identifier value from the associated object or \fBIdentifierGeneratorFactory\&.ShortCircuitIndicator\fP if the \fCsession\fP already contains \fCobj\fP\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IIdentifierGenerator\fP\&.
+.PP
+Definition at line 40 of file ForeignGenerator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

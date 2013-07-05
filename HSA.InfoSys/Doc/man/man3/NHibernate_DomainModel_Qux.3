@@ -1,0 +1,238 @@
+.TH "NHibernate.DomainModel.Qux" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.DomainModel.Qux \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQux\fP (String s)"
+.br
+.ti -1c
+.RI "virtual \fBLifecycleVeto\fP \fBOnSave\fP (\fBISession\fP session)"
+.br
+.RI "\fICalled when an entity is saved \fP"
+.ti -1c
+.RI "virtual \fBLifecycleVeto\fP \fBOnDelete\fP (\fBISession\fP session)"
+.br
+.RI "\fICalled when an entity is deleted \fP"
+.ti -1c
+.RI "virtual void \fBOnLoad\fP (\fBISession\fP session, object id)"
+.br
+.RI "\fICalled after an entity is loaded\&. \fP"
+.ti -1c
+.RI "virtual \fBLifecycleVeto\fP \fBOnUpdate\fP (\fBISession\fP s)"
+.br
+.RI "\fICalled when an entity is passed to \fBISession\&.Update(object)\fP\&. \fP"
+.ti -1c
+.RI "virtual void \fBStore\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBFooProxy\fP \fBFoo\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _foo \fP"
+.ti -1c
+.RI "virtual bool \fBCreated\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _created \fP"
+.ti -1c
+.RI "virtual bool \fBDeleted\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _deleted \fP"
+.ti -1c
+.RI "virtual bool \fBLoaded\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _loaded \fP"
+.ti -1c
+.RI "virtual bool \fBStored\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _stored \fP"
+.ti -1c
+.RI "virtual long \fBKey\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _key \fP"
+.ti -1c
+.RI "virtual long \fBTheKey\fP\fC [set]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBStuff\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _stuff \fP"
+.ti -1c
+.RI "virtual ISet< \fBFum\fP > \fBFums\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _fums (<set>) \fP"
+.ti -1c
+.RI "virtual IList \fBMoreFums\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _moreFums \fP"
+.ti -1c
+.RI "virtual \fBQux\fP \fBChild\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual long \fBChildKey\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the _childKey \fP"
+.ti -1c
+.RI "virtual \fBHolder\fP \fBHolder\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 9 of file Qux\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBLifecycleVeto\fP NHibernate\&.DomainModel\&.Qux\&.OnDelete (\fBISession\fPs)\fC [virtual]\fP"
+
+.PP
+Called when an entity is deleted 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBA\fP LifecycleVeto value indicating whether the operation should be vetoed or allowed to proceed\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.PP
+Definition at line 53 of file Qux\&.cs\&.
+.SS "virtual void NHibernate\&.DomainModel\&.Qux\&.OnLoad (\fBISession\fPs, objectid)\fC [virtual]\fP"
+
+.PP
+Called after an entity is loaded\&. <note>It is illegal to access the \fBISession\fP from inside this method\&.</note>\&. However, the object may keep a reference to the session for later use 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.br
+\fIid\fP The identifier
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.PP
+Definition at line 68 of file Qux\&.cs\&.
+.SS "virtual \fBLifecycleVeto\fP NHibernate\&.DomainModel\&.Qux\&.OnSave (\fBISession\fPs)\fC [virtual]\fP"
+
+.PP
+Called when an entity is saved 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+If we should veto the save
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.PP
+Definition at line 37 of file Qux\&.cs\&.
+.SS "virtual \fBLifecycleVeto\fP NHibernate\&.DomainModel\&.Qux\&.OnUpdate (\fBISession\fPs)\fC [virtual]\fP"
+
+.PP
+Called when an entity is passed to \fBISession\&.Update(object)\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBA\fP LifecycleVeto value indicating whether the operation should be vetoed or allowed to proceed\&.
+.RE
+.PP
+.PP
+This method is \fInot\fP called every time the object's state is persisted during a flush\&. 
+.PP
+Implements \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.PP
+Definition at line 74 of file Qux\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual long NHibernate\&.DomainModel\&.Qux\&.ChildKey\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _childKey 
+.PP
+Definition at line 187 of file Qux\&.cs\&.
+.SS "virtual bool NHibernate\&.DomainModel\&.Qux\&.Created\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _created 
+.PP
+Definition at line 98 of file Qux\&.cs\&.
+.SS "virtual bool NHibernate\&.DomainModel\&.Qux\&.Deleted\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _deleted 
+.PP
+Definition at line 107 of file Qux\&.cs\&.
+.SS "virtual \fBFooProxy\fP NHibernate\&.DomainModel\&.Qux\&.Foo\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _foo 
+.PP
+Definition at line 89 of file Qux\&.cs\&.
+.SS "virtual ISet<\fBFum\fP> NHibernate\&.DomainModel\&.Qux\&.Fums\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _fums (<set>) 
+.PP
+Definition at line 157 of file Qux\&.cs\&.
+.SS "virtual long NHibernate\&.DomainModel\&.Qux\&.Key\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _key 
+.PP
+Definition at line 134 of file Qux\&.cs\&.
+.SS "virtual bool NHibernate\&.DomainModel\&.Qux\&.Loaded\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _loaded 
+.PP
+Definition at line 116 of file Qux\&.cs\&.
+.SS "virtual IList NHibernate\&.DomainModel\&.Qux\&.MoreFums\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _moreFums 
+.PP
+Definition at line 166 of file Qux\&.cs\&.
+.SS "virtual bool NHibernate\&.DomainModel\&.Qux\&.Stored\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _stored 
+.PP
+Definition at line 125 of file Qux\&.cs\&.
+.SS "virtual string NHibernate\&.DomainModel\&.Qux\&.Stuff\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the _stuff 
+.PP
+Definition at line 148 of file Qux\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

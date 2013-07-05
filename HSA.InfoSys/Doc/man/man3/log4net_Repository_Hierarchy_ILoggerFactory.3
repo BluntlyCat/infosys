@@ -1,0 +1,63 @@
+.TH "log4net.Repository.Hierarchy.ILoggerFactory" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Repository.Hierarchy.ILoggerFactory \- 
+.PP
+Interface abstracts creation of \fBLogger\fP instances  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by log4net\&.Repository\&.Hierarchy\&.DefaultLoggerFactory\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLogger\fP \fBCreateLogger\fP (\fBILoggerRepository\fP repository, string name)"
+.br
+.RI "\fICreate a new \fBLogger\fP instance \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Interface abstracts creation of \fBLogger\fP instances 
+
+This interface is used by the \fBHierarchy\fP to create new \fBLogger\fP objects\&. 
+.PP
+The \fBCreateLogger\fP method is called to create a named \fBLogger\fP\&. 
+.PP
+Implement this interface to create new subclasses of \fBLogger\fP\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 40 of file ILoggerFactory\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBLogger\fP log4net\&.Repository\&.Hierarchy\&.ILoggerFactory\&.CreateLogger (\fBILoggerRepository\fPrepository, stringname)"
+
+.PP
+Create a new \fBLogger\fP instance 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The \fBILoggerRepository\fP that will own the \fBLogger\fP\&.
+.br
+\fIname\fP The name of the \fBLogger\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBLogger\fP instance for the specified name\&.
+.RE
+.PP
+.PP
+Create a new \fBLogger\fP instance with the specified name\&. 
+.PP
+Called by the \fBHierarchy\fP to create new named \fBLogger\fP instances\&. 
+.PP
+If the \fIname\fP  is \fCnull\fP then the root logger must be returned\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

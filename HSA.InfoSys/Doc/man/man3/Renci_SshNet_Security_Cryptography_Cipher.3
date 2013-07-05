@@ -1,0 +1,438 @@
+.TH "Renci.SshNet.Security.Cryptography.Cipher" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Security.Cryptography.Cipher \- 
+.PP
+Base class for cipher implementation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBRenci\&.SshNet\&.Security\&.Cryptography\&.AsymmetricCipher\fP, and \fBRenci\&.SshNet\&.Security\&.Cryptography\&.SymmetricCipher\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract byte[] \fBEncrypt\fP (byte[] input)"
+.br
+.RI "\fIEncrypts the specified input\&. \fP"
+.ti -1c
+.RI "abstract byte[] \fBDecrypt\fP (byte[] input)"
+.br
+.RI "\fIDecrypts the specified input\&. \fP"
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBUInt32ToBigEndian\fP (uint number, byte[] buffer)"
+.br
+.RI "\fIPopulates buffer with big endian number representation\&. \fP"
+.ti -1c
+.RI "static void \fBUInt32ToBigEndian\fP (uint number, byte[] buffer, int offset)"
+.br
+.RI "\fIPopulates buffer with big endian number representation\&. \fP"
+.ti -1c
+.RI "static uint \fBBigEndianToUInt32\fP (byte[] buffer)"
+.br
+.RI "\fIConverts big endian bytes into number\&. \fP"
+.ti -1c
+.RI "static uint \fBBigEndianToUInt32\fP (byte[] buffer, int offset)"
+.br
+.RI "\fIConverts big endian bytes into number\&. \fP"
+.ti -1c
+.RI "static ulong \fBBigEndianToUInt64\fP (byte[] buffer)"
+.br
+.RI "\fIConverts big endian bytes into number\&. \fP"
+.ti -1c
+.RI "static ulong \fBBigEndianToUInt64\fP (byte[] buffer, int offset)"
+.br
+.RI "\fIConverts big endian bytes into number\&. \fP"
+.ti -1c
+.RI "static void \fBUInt64ToBigEndian\fP (ulong number, byte[] buffer)"
+.br
+.RI "\fIPopulates buffer with big endian number representation\&. \fP"
+.ti -1c
+.RI "static void \fBUInt64ToBigEndian\fP (ulong number, byte[] buffer, int offset)"
+.br
+.RI "\fIPopulates buffer with big endian number representation\&. \fP"
+.ti -1c
+.RI "static void \fBUInt32ToLittleEndian\fP (uint number, byte[] buffer)"
+.br
+.RI "\fIPopulates buffer with little endian number representation\&. \fP"
+.ti -1c
+.RI "static void \fBUInt32ToLittleEndian\fP (uint number, byte[] buffer, int offset)"
+.br
+.RI "\fIPopulates buffer with little endian number representation\&. \fP"
+.ti -1c
+.RI "static uint \fBLittleEndianToUInt32\fP (byte[] buffer)"
+.br
+.RI "\fIConverts little endian bytes into number\&. \fP"
+.ti -1c
+.RI "static uint \fBLittleEndianToUInt32\fP (byte[] buffer, int offset)"
+.br
+.RI "\fIConverts little endian bytes into number\&. \fP"
+.ti -1c
+.RI "static ulong \fBLittleEndianToUInt64\fP (byte[] buffer)"
+.br
+.RI "\fIConverts little endian bytes into number\&. \fP"
+.ti -1c
+.RI "static ulong \fBLittleEndianToUInt64\fP (byte[] buffer, int offset)"
+.br
+.RI "\fIConverts little endian bytes into number\&. \fP"
+.ti -1c
+.RI "static void \fBUInt64ToLittleEndian\fP (ulong number, byte[] buffer)"
+.br
+.RI "\fIPopulates buffer with little endian number representation\&. \fP"
+.ti -1c
+.RI "static void \fBUInt64ToLittleEndian\fP (ulong number, byte[] buffer, int offset)"
+.br
+.RI "\fIPopulates buffer with little endian number representation\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "abstract byte \fBMinimumSize\fP\fC [get]\fP"
+.br
+.RI "\fIGets the minimum data size\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for cipher implementation\&. 
+
+
+.PP
+Definition at line 11 of file Cipher\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static uint Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.BigEndianToUInt32 (byte[]buffer)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Converts big endian bytes into number\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP The buffer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Converted Int32\&.
+.RE
+.PP
+
+.PP
+Definition at line 69 of file Cipher\&.cs\&.
+.SS "static uint Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.BigEndianToUInt32 (byte[]buffer, intoffset)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Converts big endian bytes into number\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP The buffer\&.
+.br
+\fIoffset\fP The buffer offset\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Converted UInt32\&.
+.RE
+.PP
+
+.PP
+Definition at line 84 of file Cipher\&.cs\&.
+.SS "static ulong Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.BigEndianToUInt64 (byte[]buffer)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Converts big endian bytes into number\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP The buffer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Converted UInt64\&.
+.RE
+.PP
+
+.PP
+Definition at line 98 of file Cipher\&.cs\&.
+.SS "static ulong Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.BigEndianToUInt64 (byte[]buffer, intoffset)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Converts big endian bytes into number\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP The buffer\&.
+.br
+\fIoffset\fP The buffer offset\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Converted UInt64\&.
+.RE
+.PP
+
+.PP
+Definition at line 111 of file Cipher\&.cs\&.
+.SS "abstract byte [] Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.Decrypt (byte[]input)\fC [pure virtual]\fP"
+
+.PP
+Decrypts the specified input\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP The input\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Decrypted data\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBRenci\&.SshNet\&.Security\&.Cryptography\&.BlockCipher\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Arc4Cipher\fP, and \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.RsaCipher\fP\&.
+.SS "abstract byte [] Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.Encrypt (byte[]input)\fC [pure virtual]\fP"
+
+.PP
+Encrypts the specified input\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP The input\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Encrypted data\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Arc4Cipher\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.BlockCipher\fP, and \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.RsaCipher\fP\&.
+.SS "static uint Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.LittleEndianToUInt32 (byte[]buffer)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Converts little endian bytes into number\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP The buffer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Converted UInt32\&.
+.RE
+.PP
+
+.PP
+Definition at line 173 of file Cipher\&.cs\&.
+.SS "static uint Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.LittleEndianToUInt32 (byte[]buffer, intoffset)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Converts little endian bytes into number\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP The buffer\&.
+.br
+\fIoffset\fP The buffer offset\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Converted Int32\&.
+.RE
+.PP
+
+.PP
+Definition at line 188 of file Cipher\&.cs\&.
+.SS "static ulong Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.LittleEndianToUInt64 (byte[]buffer)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Converts little endian bytes into number\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP The buffer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Converted UInt64\&.
+.RE
+.PP
+
+.PP
+Definition at line 202 of file Cipher\&.cs\&.
+.SS "static ulong Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.LittleEndianToUInt64 (byte[]buffer, intoffset)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Converts little endian bytes into number\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP The buffer\&.
+.br
+\fIoffset\fP The buffer offset\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Converted UInt64\&.
+.RE
+.PP
+
+.PP
+Definition at line 215 of file Cipher\&.cs\&.
+.SS "static void Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.UInt32ToBigEndian (uintnumber, byte[]buffer)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Populates buffer with big endian number representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP The number to convert\&.
+.br
+\fIbuffer\fP The buffer\&.
+.RE
+.PP
+
+.PP
+Definition at line 42 of file Cipher\&.cs\&.
+.SS "static void Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.UInt32ToBigEndian (uintnumber, byte[]buffer, intoffset)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Populates buffer with big endian number representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP The number to convert\&.
+.br
+\fIbuffer\fP The buffer\&.
+.br
+\fIoffset\fP The buffer offset\&.
+.RE
+.PP
+
+.PP
+Definition at line 56 of file Cipher\&.cs\&.
+.SS "static void Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.UInt32ToLittleEndian (uintnumber, byte[]buffer)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Populates buffer with little endian number representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP The number to convert\&.
+.br
+\fIbuffer\fP The buffer\&.
+.RE
+.PP
+
+.PP
+Definition at line 146 of file Cipher\&.cs\&.
+.SS "static void Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.UInt32ToLittleEndian (uintnumber, byte[]buffer, intoffset)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Populates buffer with little endian number representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP The number to convert\&.
+.br
+\fIbuffer\fP The buffer\&.
+.br
+\fIoffset\fP The buffer offset\&.
+.RE
+.PP
+
+.PP
+Definition at line 160 of file Cipher\&.cs\&.
+.SS "static void Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.UInt64ToBigEndian (ulongnumber, byte[]buffer)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Populates buffer with big endian number representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP The number to convert\&.
+.br
+\fIbuffer\fP The buffer\&.
+.RE
+.PP
+
+.PP
+Definition at line 123 of file Cipher\&.cs\&.
+.SS "static void Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.UInt64ToBigEndian (ulongnumber, byte[]buffer, intoffset)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Populates buffer with big endian number representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP The number to convert\&.
+.br
+\fIbuffer\fP The buffer\&.
+.br
+\fIoffset\fP The buffer offset\&.
+.RE
+.PP
+
+.PP
+Definition at line 135 of file Cipher\&.cs\&.
+.SS "static void Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.UInt64ToLittleEndian (ulongnumber, byte[]buffer)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Populates buffer with little endian number representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP The number to convert\&.
+.br
+\fIbuffer\fP The buffer\&.
+.RE
+.PP
+
+.PP
+Definition at line 227 of file Cipher\&.cs\&.
+.SS "static void Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.UInt64ToLittleEndian (ulongnumber, byte[]buffer, intoffset)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Populates buffer with little endian number representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP The number to convert\&.
+.br
+\fIbuffer\fP The buffer\&.
+.br
+\fIoffset\fP The buffer offset\&.
+.RE
+.PP
+
+.PP
+Definition at line 239 of file Cipher\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "abstract byte Renci\&.SshNet\&.Security\&.Cryptography\&.Cipher\&.MinimumSize\fC [get]\fP"
+
+.PP
+Gets the minimum data size\&. The minimum data size\&. 
+.PP
+Definition at line 19 of file Cipher\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

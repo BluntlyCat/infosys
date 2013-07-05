@@ -1,0 +1,103 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Tree.QueryNode" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Tree.QueryNode \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.AbstractRestrictableStatement\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ISelectExpression\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQueryNode\fP (IToken token)"
+.br
+.ti -1c
+.RI "void \fBSetScalarColumnText\fP (int i)"
+.br
+.RI "\fIAppends AST nodes that represent the columns after the current AST node\&. (e\&.g\&. 'as col0_O_') \fP"
+.ti -1c
+.RI "\fBOrderByClause\fP \fBGetOrderByClause\fP ()"
+.br
+.ti -1c
+.RI "\fBSelectClause\fP \fBGetSelectClause\fP ()"
+.br
+.RI "\fILocate the select clause that is part of this select statement\&. Note, that this might return null as derived select clauses (i\&.e\&., no select clause at the HQL-level) get generated much later than when we get created; thus it depends upon lifecycle\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override \fBIInternalLogger\fP \fBGetLog\fP ()"
+.br
+.ti -1c
+.RI "override int \fBGetWhereClauseParentTokenType\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBNeedsExecutor\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int \fBStatementType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBIType\fP \fBDataType\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBFromElement\fP \fBFromElement\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsConstructor\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsReturnableEntity\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsScalar\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBAlias\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 10 of file QueryNode\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSelectClause\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.QueryNode\&.GetSelectClause ()"
+
+.PP
+Locate the select clause that is part of this select statement\&. Note, that this might return null as derived select clauses (i\&.e\&., no select clause at the HQL-level) get generated much later than when we get created; thus it depends upon lifecycle\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Our select clause, or null\&.
+.RE
+.PP
+
+.PP
+Definition at line 113 of file QueryNode\&.cs\&.
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.QueryNode\&.SetScalarColumnText (inti)"
+
+.PP
+Appends AST nodes that represent the columns after the current AST node\&. (e\&.g\&. 'as col0_O_') 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP The index of the select expression in the projection list\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ISelectExpression\fP\&.
+.PP
+Definition at line 52 of file QueryNode\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

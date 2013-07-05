@@ -1,0 +1,69 @@
+.TH "NHibernate.Transform.AliasToBeanResultTransformer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Transform.AliasToBeanResultTransformer \- 
+.PP
+Result transformer that allows to transform a result to a user specified class which will be populated via setter methods or fields matching the alias names\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Transform\&.IResultTransformer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAliasToBeanResultTransformer\fP (System\&.Type resultClass)"
+.br
+.ti -1c
+.RI "object \fBTransformTuple\fP (object[] tuple, String[] aliases)"
+.br
+.ti -1c
+.RI "IList \fBTransformList\fP (IList collection)"
+.br
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.ti -1c
+.RI "bool \fBEquals\fP (\fBAliasToBeanResultTransformer\fP other)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Result transformer that allows to transform a result to a user specified class which will be populated via setter methods or fields matching the alias names\&. 
+
+\fC IList resultWithAliasedBean = s\&.CreateCriteria(typeof(Enrollment)) \&.CreateAlias('Student', 'st') \&.CreateAlias('Course', 'co') \&.SetProjection( Projections\&.ProjectionList() \&.Add( Projections\&.Property('co\&.Description'), 'CourseDescription' ) ) \&.SetResultTransformer( new \fBAliasToBeanResultTransformer\fP(typeof(StudentDTO)) ) \&.List();\fP
+.PP
+\fCStudentDTO dto = (StudentDTO)resultWithAliasedBean[0]; \fP 
+.PP
+Definition at line 28 of file AliasToBeanResultTransformer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "IList NHibernate\&.Transform\&.AliasToBeanResultTransformer\&.TransformList (IListcollection)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Transform\&.IResultTransformer\fP\&.
+.PP
+Definition at line 110 of file AliasToBeanResultTransformer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

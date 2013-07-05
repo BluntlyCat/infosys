@@ -1,0 +1,9 @@
+var namespace_n_hibernate_1_1_test_1_1_user_collection_1_1_parameterized =
+[
+    [ "DefaultableListImpl", "class_n_hibernate_1_1_test_1_1_user_collection_1_1_parameterized_1_1_defaultable_list_impl.html", "class_n_hibernate_1_1_test_1_1_user_collection_1_1_parameterized_1_1_defaultable_list_impl" ],
+    [ "DefaultableListType", "class_n_hibernate_1_1_test_1_1_user_collection_1_1_parameterized_1_1_defaultable_list_type.html", "class_n_hibernate_1_1_test_1_1_user_collection_1_1_parameterized_1_1_defaultable_list_type" ],
+    [ "Entity", "class_n_hibernate_1_1_test_1_1_user_collection_1_1_parameterized_1_1_entity.html", "class_n_hibernate_1_1_test_1_1_user_collection_1_1_parameterized_1_1_entity" ],
+    [ "IDefaultableList", "interface_n_hibernate_1_1_test_1_1_user_collection_1_1_parameterized_1_1_i_defaultable_list.html", "interface_n_hibernate_1_1_test_1_1_user_collection_1_1_parameterized_1_1_i_defaultable_list" ],
+    [ "ParameterizedUserCollectionTypeFixture", "class_n_hibernate_1_1_test_1_1_user_collection_1_1_parameterized_1_1_parameterized_user_collection_type_fixture.html", "class_n_hibernate_1_1_test_1_1_user_collection_1_1_parameterized_1_1_parameterized_user_collection_type_fixture" ],
+    [ "PersistentDefaultableList", "class_n_hibernate_1_1_test_1_1_user_collection_1_1_parameterized_1_1_persistent_defaultable_list.html", "class_n_hibernate_1_1_test_1_1_user_collection_1_1_parameterized_1_1_persistent_defaultable_list" ]
+];

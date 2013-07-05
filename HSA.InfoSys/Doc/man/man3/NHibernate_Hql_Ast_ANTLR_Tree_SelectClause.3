@@ -1,0 +1,151 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Tree.SelectClause" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Tree.SelectClause \- 
+.PP
+Represents the list of expressions in a SELECT clause\&. Author: josh Ported by: Steve Strong  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SelectExpressionList\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSelectClause\fP (IToken token)"
+.br
+.ti -1c
+.RI "void \fBInitializeDerivedSelectClause\fP (\fBFromClause\fP fromClause)"
+.br
+.RI "\fIPrepares a derived (i\&.e\&., not explicitly defined in the query) select clause\&. \fP"
+.ti -1c
+.RI "void \fBInitializeExplicitSelectClause\fP (\fBFromClause\fP fromClause)"
+.br
+.RI "\fIPrepares an explicitly defined select clause\&. \fP"
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBVERSION2_SQL\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "IList< \fBFromElement\fP > \fBFromElementsForLoad\fP\fC [get]\fP"
+.br
+.RI "\fIFromElements which need to be accounted for in the load phase (either for return or for fetch)\&. \fP"
+.ti -1c
+.RI "bool \fBIsScalarSelect\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsDistinct\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[][] \fBColumnNames\fP\fC [get]\fP"
+.br
+.RI "\fIThe column alias names being used in the generated SQL\&. \fP"
+.ti -1c
+.RI "ConstructorInfo \fBConstructor\fP\fC [get]\fP"
+.br
+.RI "\fIThe constructor to use for dynamic instantiation queries\&. \fP"
+.ti -1c
+.RI "bool \fBIsMap\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsList\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBQueryReturnAliases\fP\fC [get]\fP"
+.br
+.RI "\fIThe HQL aliases, or generated aliases \fP"
+.ti -1c
+.RI "IList< \fBFromElement\fP > \fBCollectionFromElements\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP[] \fBQueryReturnTypes\fP\fC [get]\fP"
+.br
+.RI "\fIThe types actually being returned from this query at the 'object level'\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Represents the list of expressions in a SELECT clause\&. Author: josh Ported by: Steve Strong 
+
+
+.PP
+Definition at line 17 of file SelectClause\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SelectClause\&.InitializeDerivedSelectClause (\fBFromClause\fPfromClause)"
+
+.PP
+Prepares a derived (i\&.e\&., not explicitly defined in the query) select clause\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfromClause\fP The from clause to which this select clause is linked\&.
+.RE
+.PP
+
+.PP
+Definition at line 41 of file SelectClause\&.cs\&.
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SelectClause\&.InitializeExplicitSelectClause (\fBFromClause\fPfromClause)"
+
+.PP
+Prepares an explicitly defined select clause\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfromClause\fP The from clause linked to this select clause\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBSemanticException\fP\fP 
+.RE
+.PP
+
+.PP
+Definition at line 115 of file SelectClause\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string [][] NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SelectClause\&.ColumnNames\fC [get]\fP"
+
+.PP
+The column alias names being used in the generated SQL\&. 
+.PP
+Definition at line 290 of file SelectClause\&.cs\&.
+.SS "ConstructorInfo NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SelectClause\&.Constructor\fC [get]\fP"
+
+.PP
+The constructor to use for dynamic instantiation queries\&. 
+.PP
+Definition at line 298 of file SelectClause\&.cs\&.
+.SS "IList<\fBFromElement\fP> NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SelectClause\&.FromElementsForLoad\fC [get]\fP"
+
+.PP
+FromElements which need to be accounted for in the load phase (either for return or for fetch)\&. 
+.PP
+Definition at line 272 of file SelectClause\&.cs\&.
+.SS "string [] NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SelectClause\&.QueryReturnAliases\fC [get]\fP"
+
+.PP
+The HQL aliases, or generated aliases 
+.PP
+Definition at line 316 of file SelectClause\&.cs\&.
+.SS "\fBIType\fP [] NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SelectClause\&.QueryReturnTypes\fC [get]\fP"
+
+.PP
+The types actually being returned from this query at the 'object level'\&. 
+.PP
+Definition at line 329 of file SelectClause\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

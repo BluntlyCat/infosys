@@ -1,0 +1,100 @@
+.TH "NHibernate.Id.Enhanced.OptimizerFactory.OptimizerSupport" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.Enhanced.OptimizerFactory.OptimizerSupport \- 
+.PP
+Common support for optimizer implementations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Id\&.Enhanced\&.IOptimizer\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.HiLoOptimizer\fP, \fBNHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.NoopOptimizer\fP, \fBNHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.PooledLoOptimizer\fP, and \fBNHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.PooledOptimizer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract object \fBGenerate\fP (\fBIAccessCallback\fP param)"
+.br
+.RI "\fIGenerate an identifier value accounting for this specific optimization\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOptimizerSupport\fP (System\&.Type returnClass, int incrementSize)"
+.br
+.RI "\fIConstruct an optimizer \fP"
+.ti -1c
+.RI "virtual object \fBMake\fP (long value)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "System\&.Type \fBReturnClass\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBIncrementSize\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "abstract long \fBLastSourceValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract bool \fBApplyIncrementSizeToSourceValues\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Common support for optimizer implementations\&. 
+
+
+.PP
+Definition at line 213 of file OptimizerFactory\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.OptimizerSupport\&.OptimizerSupport (System\&.TypereturnClass, intincrementSize)\fC [protected]\fP"
+
+.PP
+Construct an optimizer 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreturnClass\fP The expected id class\&.
+.br
+\fIincrementSize\fP The increment size\&.
+.RE
+.PP
+
+.PP
+Definition at line 220 of file OptimizerFactory\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract object NHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.OptimizerSupport\&.Generate (\fBIAccessCallback\fPcallback)\fC [pure virtual]\fP"
+
+.PP
+Generate an identifier value accounting for this specific optimization\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcallback\fP Callback to access the underlying value source\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The generated identifier value\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.Enhanced\&.IOptimizer\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.PooledLoOptimizer\fP, \fBNHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.PooledOptimizer\fP, \fBNHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.NoopOptimizer\fP, and \fBNHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.HiLoOptimizer\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

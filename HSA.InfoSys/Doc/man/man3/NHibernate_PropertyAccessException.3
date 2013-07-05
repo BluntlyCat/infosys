@@ -1,0 +1,128 @@
+.TH "NHibernate.PropertyAccessException" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.PropertyAccessException \- 
+.PP
+A problem occurred accessing a property of an instance of a persistent class by reflection  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.HibernateException\fP, and ISerializable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPropertyAccessException\fP (Exception innerException, string message, bool wasSetter, System\&.Type persistentType, string propertyName)"
+.br
+.RI "\fIInitializes a new instance of the \fBPropertyAccessException\fP class\&. \fP"
+.ti -1c
+.RI "\fBPropertyAccessException\fP (Exception innerException, string message, bool wasSetter, System\&.Type persistentType)"
+.br
+.ti -1c
+.RI "override void \fBGetObjectData\fP (SerializationInfo info, StreamingContext context)"
+.br
+.RI "\fISets the serialization info for \fBPropertyAccessException\fP after getting the info from the base Exception\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPropertyAccessException\fP (SerializationInfo info, StreamingContext context)"
+.br
+.RI "\fIInitializes a new instance of the \fBPropertyAccessException\fP class with serialized data\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "System\&.Type \fBPersistentType\fP\fC [get]\fP"
+.br
+.RI "\fIGets the System\&.Type that \fBNHibernate\fP was trying find the Property or Field in\&. \fP"
+.ti -1c
+.RI "override string \fBMessage\fP\fC [get]\fP"
+.br
+.RI "\fIGets a message that describes the current \fBPropertyAccessException\fP\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A problem occurred accessing a property of an instance of a persistent class by reflection 
+
+
+.PP
+Definition at line 12 of file PropertyAccessException\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.PropertyAccessException\&.PropertyAccessException (ExceptioninnerException, stringmessage, boolwasSetter, System\&.TypepersistentType, stringpropertyName)"
+
+.PP
+Initializes a new instance of the \fBPropertyAccessException\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message that describes the error\&. 
+.br
+\fIinnerException\fP The exception that is the cause of the current exception\&. If the innerException parameter is not a null reference, the current exception is raised in a catch block that handles the inner exception\&. 
+.br
+\fIwasSetter\fP A Boolean indicating if this was a 'setter' operation\&.
+.br
+\fIpersistentType\fP The System\&.Type that \fBNHibernate\fP was trying find the Property or Field in\&.
+.br
+\fIpropertyName\fP The mapped property name that was trying to be accessed\&.
+.RE
+.PP
+
+.PP
+Definition at line 30 of file PropertyAccessException\&.cs\&.
+.SS "NHibernate\&.PropertyAccessException\&.PropertyAccessException (SerializationInfoinfo, StreamingContextcontext)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBPropertyAccessException\fP class with serialized data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinfo\fP The SerializationInfo that holds the serialized object data about the exception being thrown\&. 
+.br
+\fIcontext\fP The StreamingContext that contains contextual information about the source or destination\&. 
+.RE
+.PP
+
+.PP
+Definition at line 84 of file PropertyAccessException\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.PropertyAccessException\&.GetObjectData (SerializationInfoinfo, StreamingContextcontext)"
+
+.PP
+Sets the serialization info for \fBPropertyAccessException\fP after getting the info from the base Exception\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinfo\fP The SerializationInfo that holds the serialized object data about the exception being thrown\&. 
+.br
+\fIcontext\fP The StreamingContext that contains contextual information about the source or destination\&. 
+.RE
+.PP
+
+.PP
+Definition at line 107 of file PropertyAccessException\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.PropertyAccessException\&.Message\fC [get]\fP"
+
+.PP
+Gets a message that describes the current \fBPropertyAccessException\fP\&. The error message that explains the reason for this exception and information about the mapped property and its usage\&. 
+.PP
+Definition at line 62 of file PropertyAccessException\&.cs\&.
+.SS "System\&.Type NHibernate\&.PropertyAccessException\&.PersistentType\fC [get]\fP"
+
+.PP
+Gets the System\&.Type that \fBNHibernate\fP was trying find the Property or Field in\&. 
+.PP
+Definition at line 50 of file PropertyAccessException\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

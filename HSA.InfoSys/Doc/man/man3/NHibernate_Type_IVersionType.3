@@ -1,0 +1,121 @@
+.TH "NHibernate.Type.IVersionType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.IVersionType \- 
+.PP
+An \fBIType\fP that may be used to version data\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Type\&.AbstractBinaryType\fP, \fBNHibernate\&.Type\&.ByteType\fP, \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.DateTimeOffsetType\fP, \fBNHibernate\&.Type\&.DateTimeType\fP, \fBNHibernate\&.Type\&.DbTimestampType\fP, \fBNHibernate\&.Type\&.Int16Type\fP, \fBNHibernate\&.Type\&.Int32Type\fP, \fBNHibernate\&.Type\&.Int64Type\fP, \fBNHibernate\&.Type\&.TicksType\fP, \fBNHibernate\&.Type\&.TimeAsTimeSpanType\fP, \fBNHibernate\&.Type\&.TimeSpanType\fP, \fBNHibernate\&.Type\&.TimestampType\fP, \fBNHibernate\&.Type\&.UInt16Type\fP, \fBNHibernate\&.Type\&.UInt32Type\fP, and \fBNHibernate\&.Type\&.UInt64Type\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBNext\fP (object current, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIWhen implemented by a class, increments the version\&. \fP"
+.ti -1c
+.RI "object \fBSeed\fP (\fBISessionImplementor\fP session)"
+.br
+.RI "\fIWhen implemented by a class, gets an initial version\&. \fP"
+.ti -1c
+.RI "bool \fBIsEqual\fP (object x, object y)"
+.br
+.RI "\fIAre the two version values considered equal? \fP"
+.ti -1c
+.RI "object \fBFromStringValue\fP (string xml)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "IComparer \fBComparator\fP\fC [get]\fP"
+.br
+.RI "\fIGet a comparator for the version numbers \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An \fBIType\fP that may be used to version data\&. 
+
+
+.PP
+Definition at line 9 of file IVersionType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool NHibernate\&.Type\&.IVersionType\&.IsEqual (objectx, objecty)"
+
+.PP
+Are the two version values considered equal? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP One value to check\&. 
+.br
+\fIy\fP The other value to check\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the values are equal, false otherwise\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.DateTimeOffsetType\fP, \fBNHibernate\&.Type\&.DateTimeType\fP, \fBNHibernate\&.Type\&.AbstractBinaryType\fP, \fBNHibernate\&.Type\&.DateTime2Type\fP, and \fBNHibernate\&.Type\&.AbstractDateTimeSpecificKindType\fP\&.
+.SS "object NHibernate\&.Type\&.IVersionType\&.Next (objectcurrent, \fBISessionImplementor\fPsession)"
+
+.PP
+When implemented by a class, increments the version\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcurrent\fP The current version
+.br
+\fIsession\fP The current session, if available\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an instance of the \fBIType\fP that has been incremented\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.TimestampType\fP, \fBNHibernate\&.Type\&.TicksType\fP, \fBNHibernate\&.Type\&.TimeAsTimeSpanType\fP, \fBNHibernate\&.Type\&.TimeSpanType\fP, \fBNHibernate\&.Type\&.Int16Type\fP, \fBNHibernate\&.Type\&.Int32Type\fP, \fBNHibernate\&.Type\&.Int64Type\fP, \fBNHibernate\&.Type\&.UInt16Type\fP, \fBNHibernate\&.Type\&.UInt32Type\fP, \fBNHibernate\&.Type\&.UInt64Type\fP, \fBNHibernate\&.Type\&.DateTimeOffsetType\fP, \fBNHibernate\&.Type\&.DateTimeType\fP, \fBNHibernate\&.Type\&.ByteType\fP, and \fBNHibernate\&.Type\&.AbstractBinaryType\fP\&.
+.SS "object NHibernate\&.Type\&.IVersionType\&.Seed (\fBISessionImplementor\fPsession)"
+
+.PP
+When implemented by a class, gets an initial version\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The current session, if available\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An instance of the type\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.TimestampType\fP, \fBNHibernate\&.Type\&.TicksType\fP, \fBNHibernate\&.Type\&.TimeAsTimeSpanType\fP, \fBNHibernate\&.Type\&.TimeSpanType\fP, \fBNHibernate\&.Type\&.Int16Type\fP, \fBNHibernate\&.Type\&.Int32Type\fP, \fBNHibernate\&.Type\&.Int64Type\fP, \fBNHibernate\&.Type\&.UInt16Type\fP, \fBNHibernate\&.Type\&.UInt32Type\fP, \fBNHibernate\&.Type\&.UInt64Type\fP, \fBNHibernate\&.Type\&.DateTimeOffsetType\fP, \fBNHibernate\&.Type\&.DateTimeType\fP, \fBNHibernate\&.Type\&.ByteType\fP, \fBNHibernate\&.Type\&.AbstractBinaryType\fP, and \fBNHibernate\&.Type\&.DbTimestampType\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "IComparer NHibernate\&.Type\&.IVersionType\&.Comparator\fC [get]\fP"
+
+.PP
+Get a comparator for the version numbers 
+.PP
+Definition at line 37 of file IVersionType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

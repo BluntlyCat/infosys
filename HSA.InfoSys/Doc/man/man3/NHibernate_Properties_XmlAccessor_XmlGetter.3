@@ -1,0 +1,135 @@
+.TH "NHibernate.Properties.XmlAccessor.XmlGetter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Properties.XmlAccessor.XmlGetter \- 
+.PP
+Defines the strategy for getting property values out of a dom4j Node\&. 
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Properties\&.IGetter\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Properties\&.XmlAccessor\&.AttributeGetter\fP, \fBNHibernate\&.Properties\&.XmlAccessor\&.ElementAttributeGetter\fP, \fBNHibernate\&.Properties\&.XmlAccessor\&.ElementGetter\fP, and \fBNHibernate\&.Properties\&.XmlAccessor\&.TextGetter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual object \fBGetForInsert\fP (object owner, IDictionary mergeMap, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGet the property value from the given owner instance\&. \fP"
+.ti -1c
+.RI "abstract object \fBGet\fP (object target)"
+.br
+.RI "\fIWhen implemented by a class, gets the value of the Property/Field from the object\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBISessionFactoryImplementor\fP \fBfactory\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP \fBpropertyType\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual System\&.Type \fBReturnType\fP\fC [get]\fP"
+.br
+.RI "\fIGet the declared type\fP"
+.ti -1c
+.RI "virtual string \fBPropertyName\fP\fC [get]\fP"
+.br
+.RI "\fIOptional operation (return null)\fP"
+.ti -1c
+.RI "virtual MethodInfo \fBMethod\fP\fC [get]\fP"
+.br
+.RI "\fIOptional operation (return null)\fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the strategy for getting property values out of a dom4j Node\&.
+
+
+.PP
+Definition at line 350 of file XmlAccessor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract object NHibernate\&.Properties\&.XmlAccessor\&.XmlGetter\&.Get (objecttarget)\fC [pure virtual]\fP"
+
+.PP
+When implemented by a class, gets the value of the Property/Field from the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItarget\fP The object to get the Property/Field value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value of the Property for the target\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBPropertyAccessException\fP\fP Thrown when there is a problem getting the value from the target\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.IGetter\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Properties\&.XmlAccessor\&.TextGetter\fP, \fBNHibernate\&.Properties\&.XmlAccessor\&.ElementGetter\fP, \fBNHibernate\&.Properties\&.XmlAccessor\&.ElementAttributeGetter\fP, and \fBNHibernate\&.Properties\&.XmlAccessor\&.AttributeGetter\fP\&.
+.SS "virtual object NHibernate\&.Properties\&.XmlAccessor\&.XmlGetter\&.GetForInsert (objectowner, IDictionarymergeMap, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Get the property value from the given owner instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIowner\fP The instance containing the value to be retrieved\&. 
+.br
+\fImergeMap\fP a map of merged persistent instances to detached instances 
+.br
+\fIsession\fP The session from which this request originated\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The extracted value\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.IGetter\fP\&.
+.PP
+Definition at line 381 of file XmlAccessor\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual MethodInfo NHibernate\&.Properties\&.XmlAccessor\&.XmlGetter\&.Method\fC [get]\fP"
+
+.PP
+Optional operation (return null)
+.PP
+Definition at line 377 of file XmlAccessor\&.cs\&.
+.SS "virtual string NHibernate\&.Properties\&.XmlAccessor\&.XmlGetter\&.PropertyName\fC [get]\fP"
+
+.PP
+Optional operation (return null)
+.PP
+Definition at line 371 of file XmlAccessor\&.cs\&.
+.SS "virtual System\&.Type NHibernate\&.Properties\&.XmlAccessor\&.XmlGetter\&.ReturnType\fC [get]\fP"
+
+.PP
+Get the declared type
+.PP
+Definition at line 365 of file XmlAccessor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

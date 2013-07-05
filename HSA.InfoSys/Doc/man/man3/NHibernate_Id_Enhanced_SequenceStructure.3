@@ -1,0 +1,137 @@
+.TH "NHibernate.Id.Enhanced.SequenceStructure" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.Enhanced.SequenceStructure \- 
+.PP
+Describes a sequence\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Id\&.Enhanced\&.IDatabaseStructure\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSequenceStructure\fP (\fBDialect\&.Dialect\fP dialect, string sequenceName, int initialValue, int incrementSize)"
+.br
+.ti -1c
+.RI "\fBIAccessCallback\fP \fBBuildCallback\fP (\fBISessionImplementor\fP session)"
+.br
+.RI "\fIA callback to be able to get the next value from the underlying structure as needed\&. \fP"
+.ti -1c
+.RI "void \fBPrepare\fP (\fBIOptimizer\fP optimizer)"
+.br
+.RI "\fIPrepare this structure for use\&. Called sometime after instantiation, but before first use\&. \fP"
+.ti -1c
+.RI "string[] \fBSqlCreateStrings\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fICommands needed to create the underlying structures\&.\fP"
+.ti -1c
+.RI "string[] \fBSqlDropStrings\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fICommands needed to drop the underlying structures\&.\fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBIncrementSize\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBTimesAccessed\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Describes a sequence\&. 
+
+
+.PP
+Definition at line 15 of file SequenceStructure\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIAccessCallback\fP NHibernate\&.Id\&.Enhanced\&.SequenceStructure\&.BuildCallback (\fBISessionImplementor\fPsession)"
+
+.PP
+A callback to be able to get the next value from the underlying structure as needed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The next value\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.Enhanced\&.IDatabaseStructure\fP\&.
+.PP
+Definition at line 46 of file SequenceStructure\&.cs\&.
+.SS "void NHibernate\&.Id\&.Enhanced\&.SequenceStructure\&.Prepare (\fBIOptimizer\fPoptimizer)"
+
+.PP
+Prepare this structure for use\&. Called sometime after instantiation, but before first use\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoptimizer\fP The optimizer being applied to the generator\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.Enhanced\&.IDatabaseStructure\fP\&.
+.PP
+Definition at line 51 of file SequenceStructure\&.cs\&.
+.SS "string [] NHibernate\&.Id\&.Enhanced\&.SequenceStructure\&.SqlCreateStrings (\fBDialect\&.Dialect\fPdialect)"
+
+.PP
+Commands needed to create the underlying structures\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The database dialect being used\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The creation commands\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.Enhanced\&.IDatabaseStructure\fP\&.
+.PP
+Definition at line 56 of file SequenceStructure\&.cs\&.
+.SS "string [] NHibernate\&.Id\&.Enhanced\&.SequenceStructure\&.SqlDropStrings (\fBDialect\&.Dialect\fPdialect)"
+
+.PP
+Commands needed to drop the underlying structures\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The database dialect being used\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The drop commands\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.Enhanced\&.IDatabaseStructure\fP\&.
+.PP
+Definition at line 69 of file SequenceStructure\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

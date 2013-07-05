@@ -1,0 +1,353 @@
+.TH "Renci.SshNet.NetConfClient" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.NetConfClient \- 
+.PP
+Contains operation for working with \fBNetConf\fP server\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.BaseClient\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNetConfClient\fP (\fBConnectionInfo\fP connectionInfo)"
+.br
+.RI "\fIInitializes a new instance of the \fBSftpClient\fP class\&. \fP"
+.ti -1c
+.RI "\fBNetConfClient\fP (string host, int port, string username, string password)"
+.br
+.RI "\fIInitializes a new instance of the \fBSftpClient\fP class\&. \fP"
+.ti -1c
+.RI "\fBNetConfClient\fP (string host, string username, string password)"
+.br
+.RI "\fIInitializes a new instance of the \fBSftpClient\fP class\&. \fP"
+.ti -1c
+.RI "\fBNetConfClient\fP (string host, int port, string username, params \fBPrivateKeyFile\fP[] keyFiles)"
+.br
+.RI "\fIInitializes a new instance of the \fBSftpClient\fP class\&. \fP"
+.ti -1c
+.RI "\fBNetConfClient\fP (string host, string username, params \fBPrivateKeyFile\fP[] keyFiles)"
+.br
+.RI "\fIInitializes a new instance of the \fBSftpClient\fP class\&. \fP"
+.ti -1c
+.RI "XmlDocument \fBSendReceiveRpc\fP (XmlDocument rpc)"
+.br
+.RI "\fISends the receive RPC\&. \fP"
+.ti -1c
+.RI "XmlDocument \fBSendReceiveRpc\fP (string xml)"
+.br
+.RI "\fISends the receive RPC\&. \fP"
+.ti -1c
+.RI "XmlDocument \fBSendCloseRpc\fP ()"
+.br
+.RI "\fISends the close RPC\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBOnConnected\fP ()"
+.br
+.RI "\fICalled when client is connected to the server\&. \fP"
+.ti -1c
+.RI "override void \fBOnDisconnecting\fP ()"
+.br
+.RI "\fICalled when client is disconnecting from the server\&. \fP"
+.ti -1c
+.RI "override void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIReleases unmanaged and - optionally - managed resources \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "TimeSpan \fBOperationTimeout\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the operation timeout\&. \fP"
+.ti -1c
+.RI "XmlDocument \fBServerCapabilities\fP\fC [get]\fP"
+.br
+.RI "\fIGets \fBNetConf\fP server capabilities\&. \fP"
+.ti -1c
+.RI "XmlDocument \fBClientCapabilities\fP\fC [get]\fP"
+.br
+.RI "\fIGets \fBNetConf\fP client capabilities\&. \fP"
+.ti -1c
+.RI "bool \fBAutomaticMessageIdHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether [automatic message id handling]\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Contains operation for working with \fBNetConf\fP server\&. 
+
+
+.PP
+Definition at line 20 of file NetConfClient\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.NetConfClient\&.NetConfClient (\fBConnectionInfo\fPconnectionInfo)"
+
+.PP
+Initializes a new instance of the \fBSftpClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnectionInfo\fP The connection info\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIconnectionInfo\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 42 of file NetConfClient\&.cs\&.
+.SS "Renci\&.SshNet\&.NetConfClient\&.NetConfClient (stringhost, intport, stringusername, stringpassword)"
+
+.PP
+Initializes a new instance of the \fBSftpClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP Connection host\&.
+.br
+\fIport\fP Connection port\&.
+.br
+\fIusername\fP Authentication username\&.
+.br
+\fIpassword\fP Authentication password\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpassword\fP  is null\&.
+.br
+\fIArgumentException\fP \fIhost\fP  is invalid, or \fIusername\fP  is null or contains whitespace characters\&.
+.br
+\fIArgumentOutOfRangeException\fP \fIport\fP  is not within F:System\&.Net\&.IPEndPoint\&.MinPort and System\&.Net\&.IPEndPoint\&.MaxPort\&.
+.RE
+.PP
+
+.PP
+Definition at line 60 of file NetConfClient\&.cs\&.
+.SS "Renci\&.SshNet\&.NetConfClient\&.NetConfClient (stringhost, stringusername, stringpassword)"
+
+.PP
+Initializes a new instance of the \fBSftpClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP Connection host\&.
+.br
+\fIusername\fP Authentication username\&.
+.br
+\fIpassword\fP Authentication password\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpassword\fP  is null\&.
+.br
+\fIArgumentException\fP \fIhost\fP  is invalid, or \fIusername\fP  is null or contains whitespace characters\&.
+.RE
+.PP
+
+.PP
+Definition at line 74 of file NetConfClient\&.cs\&.
+.SS "Renci\&.SshNet\&.NetConfClient\&.NetConfClient (stringhost, intport, stringusername, params \fBPrivateKeyFile\fP[]keyFiles)"
+
+.PP
+Initializes a new instance of the \fBSftpClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP Connection host\&.
+.br
+\fIport\fP Connection port\&.
+.br
+\fIusername\fP Authentication username\&.
+.br
+\fIkeyFiles\fP Authentication private key file(s) \&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIkeyFiles\fP  is null\&.
+.br
+\fIArgumentException\fP \fIhost\fP  is invalid, -or- \fIusername\fP  is null or contains whitespace characters\&.
+.br
+\fIArgumentOutOfRangeException\fP \fIport\fP  is not within F:System\&.Net\&.IPEndPoint\&.MinPort and System\&.Net\&.IPEndPoint\&.MaxPort\&.
+.RE
+.PP
+
+.PP
+Definition at line 90 of file NetConfClient\&.cs\&.
+.SS "Renci\&.SshNet\&.NetConfClient\&.NetConfClient (stringhost, stringusername, params \fBPrivateKeyFile\fP[]keyFiles)"
+
+.PP
+Initializes a new instance of the \fBSftpClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP Connection host\&.
+.br
+\fIusername\fP Authentication username\&.
+.br
+\fIkeyFiles\fP Authentication private key file(s) \&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIkeyFiles\fP  is null\&.
+.br
+\fIArgumentException\fP \fIhost\fP  is invalid, -or- \fIusername\fP  is null or contains whitespace characters\&.
+.RE
+.PP
+
+.PP
+Definition at line 104 of file NetConfClient\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void Renci\&.SshNet\&.NetConfClient\&.Dispose (booldisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Releases unmanaged and - optionally - managed resources 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP \fCtrue\fP to release both managed and unmanaged resources; \fCfalse\fP to release only unmanaged ResourceMessages\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBRenci\&.SshNet\&.BaseClient\fP\&.
+.PP
+Definition at line 206 of file NetConfClient\&.cs\&.
+.SS "override void Renci\&.SshNet\&.NetConfClient\&.OnConnected ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when client is connected to the server\&. 
+.PP
+Reimplemented from \fBRenci\&.SshNet\&.BaseClient\fP\&.
+.PP
+Definition at line 183 of file NetConfClient\&.cs\&.
+.SS "override void Renci\&.SshNet\&.NetConfClient\&.OnDisconnecting ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when client is disconnecting from the server\&. 
+.PP
+Reimplemented from \fBRenci\&.SshNet\&.BaseClient\fP\&.
+.PP
+Definition at line 195 of file NetConfClient\&.cs\&.
+.SS "XmlDocument Renci\&.SshNet\&.NetConfClient\&.SendCloseRpc ()"
+
+.PP
+Sends the close RPC\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Reply message to closing RPC request
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISshConnectionException\fP Client is not connected\&.
+.RE
+.PP
+
+.PP
+Definition at line 171 of file NetConfClient\&.cs\&.
+.SS "XmlDocument Renci\&.SshNet\&.NetConfClient\&.SendReceiveRpc (XmlDocumentrpc)"
+
+.PP
+Sends the receive RPC\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrpc\fP The RPC\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reply message to RPC request
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISshConnectionException\fP Client is not connected\&.
+.RE
+.PP
+
+.PP
+Definition at line 149 of file NetConfClient\&.cs\&.
+.SS "XmlDocument Renci\&.SshNet\&.NetConfClient\&.SendReceiveRpc (stringxml)"
+
+.PP
+Sends the receive RPC\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP The XML\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reply message to RPC request
+.RE
+.PP
+
+.PP
+Definition at line 159 of file NetConfClient\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool Renci\&.SshNet\&.NetConfClient\&.AutomaticMessageIdHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether [automatic message id handling]\&. \fCtrue\fP if [automatic message id handling]; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 141 of file NetConfClient\&.cs\&.
+.SS "XmlDocument Renci\&.SshNet\&.NetConfClient\&.ClientCapabilities\fC [get]\fP"
+
+.PP
+Gets \fBNetConf\fP client capabilities\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISshConnectionException\fP Client is not connected\&.
+.RE
+.PP
+
+.PP
+Definition at line 128 of file NetConfClient\&.cs\&.
+.SS "TimeSpan Renci\&.SshNet\&.NetConfClient\&.OperationTimeout\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the operation timeout\&. The operation timeout\&.
+.PP
+Definition at line 33 of file NetConfClient\&.cs\&.
+.SS "XmlDocument Renci\&.SshNet\&.NetConfClient\&.ServerCapabilities\fC [get]\fP"
+
+.PP
+Gets \fBNetConf\fP server capabilities\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISshConnectionException\fP Client is not connected\&.
+.RE
+.PP
+
+.PP
+Definition at line 116 of file NetConfClient\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

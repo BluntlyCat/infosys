@@ -1,0 +1,79 @@
+.TH "log4net.Util.Transform" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.Transform \- 
+.PP
+Utility class for transforming strings\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBWriteEscapedXmlString\fP (XmlWriter writer, string textData, string invalidCharReplacement)"
+.br
+.RI "\fIWrite a string to an XmlWriter \fP"
+.ti -1c
+.RI "static string \fBMaskXmlInvalidCharacters\fP (string textData, string mask)"
+.br
+.RI "\fIReplace invalid XML characters in text string \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Utility class for transforming strings\&. 
+
+Utility class for transforming strings\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 37 of file Transform\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static string log4net\&.Util\&.Transform\&.MaskXmlInvalidCharacters (stringtextData, stringmask)\fC [static]\fP"
+
+.PP
+Replace invalid XML characters in text string 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItextData\fP the XML text input string
+.br
+\fImask\fP the string to use in place of invalid characters
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that does not contain invalid XML characters\&.
+.RE
+.PP
+.PP
+Certain Unicode code points are not allowed in the XML InfoSet, for details see: \fChttp://www\&.w3\&.org/TR/REC-xml/#charsets\fP\&. 
+.PP
+This method replaces any illegal characters in the input string with the mask string specified\&. 
+.PP
+Definition at line 136 of file Transform\&.cs\&.
+.SS "static void log4net\&.Util\&.Transform\&.WriteEscapedXmlString (XmlWriterwriter, stringtextData, stringinvalidCharReplacement)\fC [static]\fP"
+
+.PP
+Write a string to an XmlWriter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP the writer to write to
+.br
+\fItextData\fP the string to write
+.br
+\fIinvalidCharReplacement\fP The string to replace non XML compliant chars with
+.RE
+.PP
+.PP
+The test is escaped either using XML escape entities or using CDATA sections\&. 
+.PP
+Definition at line 69 of file Transform\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

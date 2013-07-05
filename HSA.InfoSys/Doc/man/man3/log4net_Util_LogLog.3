@@ -1,0 +1,410 @@
+.TH "log4net.Util.LogLog" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.LogLog \- 
+.PP
+Outputs log statements from within the \fBlog4net\fP assembly\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBLogReceivedAdapter\fP"
+.br
+.RI "\fISubscribes to the \fBLogLog\&.LogReceived\fP event and stores messages to the supplied IList instance\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIFormats Prefix, Source, and Message in the same format as the value sent to Console\&.Out and Trace\&.Write\&. \fP"
+.ti -1c
+.RI "\fBLogLog\fP (Type source, string prefix, string message, \fBException\fP exception)"
+.br
+.RI "\fIInitializes a new instance of the \fBLogLog\fP class\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBOnLogReceived\fP (Type source, string prefix, string message, \fBException\fP exception)"
+.br
+.RI "\fIRaises the LogReceived event when an internal messages is received\&. \fP"
+.ti -1c
+.RI "static void \fBDebug\fP (Type source, string message)"
+.br
+.RI "\fIWrites \fBlog4net\fP internal debug messages to the standard output stream\&. \fP"
+.ti -1c
+.RI "static void \fBDebug\fP (Type source, string message, \fBException\fP exception)"
+.br
+.RI "\fIWrites \fBlog4net\fP internal debug messages to the standard output stream\&. \fP"
+.ti -1c
+.RI "static void \fBWarn\fP (Type source, string message)"
+.br
+.RI "\fIWrites \fBlog4net\fP internal warning messages to the standard error stream\&. \fP"
+.ti -1c
+.RI "static void \fBWarn\fP (Type source, string message, \fBException\fP exception)"
+.br
+.RI "\fIWrites \fBlog4net\fP internal warning messages to the standard error stream\&. \fP"
+.ti -1c
+.RI "static void \fBError\fP (Type source, string message)"
+.br
+.RI "\fIWrites \fBlog4net\fP internal error messages to the standard error stream\&. \fP"
+.ti -1c
+.RI "static void \fBError\fP (Type source, string message, \fBException\fP exception)"
+.br
+.RI "\fIWrites \fBlog4net\fP internal error messages to the standard error stream\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "Type \fBSource\fP\fC [get]\fP"
+.br
+.RI "\fIThe Type that generated the internal message\&. \fP"
+.ti -1c
+.RI "DateTime \fBTimeStamp\fP\fC [get]\fP"
+.br
+.RI "\fIThe DateTime stamp of when the internal message was received\&. \fP"
+.ti -1c
+.RI "string \fBPrefix\fP\fC [get]\fP"
+.br
+.RI "\fIA string indicating the severity of the internal message\&. \fP"
+.ti -1c
+.RI "string \fBMessage\fP\fC [get]\fP"
+.br
+.RI "\fIThe internal log message\&. \fP"
+.ti -1c
+.RI "Exception \fBException\fP\fC [get]\fP"
+.br
+.RI "\fIThe Exception related to the message\&. \fP"
+.ti -1c
+.RI "static bool \fBInternalDebugging\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether \fBlog4net\fP internal logging is enabled or disabled\&. \fP"
+.ti -1c
+.RI "static bool \fBQuietMode\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether \fBlog4net\fP should generate no output from internal logging, not even for errors\&. \fP"
+.ti -1c
+.RI "static bool \fBEmitInternalMessages\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "static bool \fBIsDebugEnabled\fP\fC [get]\fP"
+.br
+.RI "\fITest if \fBLogLog\&.Debug\fP is enabled for output\&. \fP"
+.ti -1c
+.RI "static bool \fBIsWarnEnabled\fP\fC [get]\fP"
+.br
+.RI "\fITest if \fBLogLog\&.Warn\fP is enabled for output\&. \fP"
+.ti -1c
+.RI "static bool \fBIsErrorEnabled\fP\fC [get]\fP"
+.br
+.RI "\fITest if \fBLogLog\&.Error\fP is enabled for output\&. \fP"
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "static \fBLogReceivedEventHandler\fP \fBLogReceived\fP"
+.br
+.RI "\fIThe event raised when an internal message has been received\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Outputs log statements from within the \fBlog4net\fP assembly\&. 
+
+Log4net components cannot make \fBlog4net\fP logging calls\&. However, it is sometimes useful for the user to learn about what \fBlog4net\fP is doing\&. 
+.PP
+All \fBlog4net\fP internal debug calls go to the standard output stream whereas internal error messages are sent to the standard error output stream\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 51 of file LogLog\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Util\&.LogLog\&.LogLog (Typesource, stringprefix, stringmessage, \fBException\fPexception)"
+
+.PP
+Initializes a new instance of the \fBLogLog\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP 
+.br
+\fIprefix\fP 
+.br
+\fImessage\fP 
+.br
+\fIexception\fP 
+.RE
+.PP
+
+.PP
+Definition at line 131 of file LogLog\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static void log4net\&.Util\&.LogLog\&.Debug (Typesource, stringmessage)\fC [static]\fP"
+
+.PP
+Writes \fBlog4net\fP internal debug messages to the standard output stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP 
+.br
+\fImessage\fP The message to log\&.
+.RE
+.PP
+.PP
+All internal debug messages are prepended with the string 'log4net: '\&. 
+.PP
+Definition at line 324 of file LogLog\&.cs\&.
+.SS "static void log4net\&.Util\&.LogLog\&.Debug (Typesource, stringmessage, \fBException\fPexception)\fC [static]\fP"
+
+.PP
+Writes \fBlog4net\fP internal debug messages to the standard output stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP The Type that generated this message\&.
+.br
+\fImessage\fP The message to log\&.
+.br
+\fIexception\fP An exception to log\&.
+.RE
+.PP
+.PP
+All internal debug messages are prepended with the string 'log4net: '\&. 
+.PP
+Definition at line 350 of file LogLog\&.cs\&.
+.SS "static void log4net\&.Util\&.LogLog\&.Error (Typesource, stringmessage)\fC [static]\fP"
+
+.PP
+Writes \fBlog4net\fP internal error messages to the standard error stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP The Type that generated this message\&.
+.br
+\fImessage\fP The message to log\&.
+.RE
+.PP
+.PP
+All internal error messages are prepended with the string 'log4net:ERROR '\&. 
+.PP
+Definition at line 466 of file LogLog\&.cs\&.
+.SS "static void log4net\&.Util\&.LogLog\&.Error (Typesource, stringmessage, \fBException\fPexception)\fC [static]\fP"
+
+.PP
+Writes \fBlog4net\fP internal error messages to the standard error stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP The Type that generated this message\&.
+.br
+\fImessage\fP The message to log\&.
+.br
+\fIexception\fP An exception to log\&.
+.RE
+.PP
+.PP
+All internal debug messages are prepended with the string 'log4net:ERROR '\&. 
+.PP
+Definition at line 492 of file LogLog\&.cs\&.
+.SS "static void log4net\&.Util\&.LogLog\&.OnLogReceived (Typesource, stringprefix, stringmessage, \fBException\fPexception)\fC [static]\fP"
+
+.PP
+Raises the LogReceived event when an internal messages is received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP 
+.br
+\fIprefix\fP 
+.br
+\fImessage\fP 
+.br
+\fIexception\fP 
+.RE
+.PP
+
+.PP
+Definition at line 288 of file LogLog\&.cs\&.
+.SS "override string log4net\&.Util\&.LogLog\&.ToString ()"
+
+.PP
+Formats Prefix, Source, and Message in the same format as the value sent to Console\&.Out and Trace\&.Write\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 117 of file LogLog\&.cs\&.
+.SS "static void log4net\&.Util\&.LogLog\&.Warn (Typesource, stringmessage)\fC [static]\fP"
+
+.PP
+Writes \fBlog4net\fP internal warning messages to the standard error stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP The Type that generated this message\&.
+.br
+\fImessage\fP The message to log\&.
+.RE
+.PP
+.PP
+All internal warning messages are prepended with the string 'log4net:WARN '\&. 
+.PP
+Definition at line 395 of file LogLog\&.cs\&.
+.SS "static void log4net\&.Util\&.LogLog\&.Warn (Typesource, stringmessage, \fBException\fPexception)\fC [static]\fP"
+
+.PP
+Writes \fBlog4net\fP internal warning messages to the standard error stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP The Type that generated this message\&.
+.br
+\fImessage\fP The message to log\&.
+.br
+\fIexception\fP An exception to log\&.
+.RE
+.PP
+.PP
+All internal warning messages are prepended with the string 'log4net:WARN '\&. 
+.PP
+Definition at line 421 of file LogLog\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool log4net\&.Util\&.LogLog\&.EmitInternalMessages\fC [static]\fP, \fC [get]\fP, \fC [set]\fP"
+
+.PP
+
+.PP
+Definition at line 272 of file LogLog\&.cs\&.
+.SS "Exception log4net\&.Util\&.LogLog\&.Exception\fC [get]\fP"
+
+.PP
+The Exception related to the message\&. Optional\&. Will be null if no Exception was passed\&. 
+.PP
+Definition at line 108 of file LogLog\&.cs\&.
+.SS "bool log4net\&.Util\&.LogLog\&.InternalDebugging\fC [static]\fP, \fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether \fBlog4net\fP internal logging is enabled or disabled\&. \fCtrue\fP if \fBlog4net\fP internal logging is enabled, otherwise \fCfalse\fP\&. 
+.PP
+When set to \fCtrue\fP, internal debug level logging will be displayed\&. 
+.PP
+This value can be set by setting the application setting \fClog4net\&.Internal\&.Debug\fP in the application configuration file\&. 
+.PP
+The default value is \fCfalse\fP, i\&.e\&. debugging is disabled\&. 
+.PP
+The following example enables internal debugging using the application configuration file : 
+.PP
+.PP
+.nf
+<configuration>
+    <appSettings>
+        <add key="log4net\&.Internal\&.Debug" value="true" />
+    </appSettings>
+</configuration>
+.fi
+.PP
+ 
+.PP
+Definition at line 223 of file LogLog\&.cs\&.
+.SS "bool log4net\&.Util\&.LogLog\&.IsDebugEnabled\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Test if \fBLogLog\&.Debug\fP is enabled for output\&. \fCtrue\fP if Debug is enabled 
+.PP
+Test if \fBLogLog\&.Debug\fP is enabled for output\&. 
+.PP
+Definition at line 308 of file LogLog\&.cs\&.
+.SS "bool log4net\&.Util\&.LogLog\&.IsErrorEnabled\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Test if \fBLogLog\&.Error\fP is enabled for output\&. \fCtrue\fP if Error is enabled 
+.PP
+Test if \fBLogLog\&.Error\fP is enabled for output\&. 
+.PP
+Definition at line 450 of file LogLog\&.cs\&.
+.SS "bool log4net\&.Util\&.LogLog\&.IsWarnEnabled\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Test if \fBLogLog\&.Warn\fP is enabled for output\&. \fCtrue\fP if Warn is enabled 
+.PP
+Test if \fBLogLog\&.Warn\fP is enabled for output\&. 
+.PP
+Definition at line 379 of file LogLog\&.cs\&.
+.SS "string log4net\&.Util\&.LogLog\&.Message\fC [get]\fP"
+
+.PP
+The internal log message\&. 
+.PP
+Definition at line 97 of file LogLog\&.cs\&.
+.SS "string log4net\&.Util\&.LogLog\&.Prefix\fC [get]\fP"
+
+.PP
+A string indicating the severity of the internal message\&. 'log4net: ', 'log4net:ERROR ', 'log4net:WARN ' 
+.PP
+Definition at line 89 of file LogLog\&.cs\&.
+.SS "bool log4net\&.Util\&.LogLog\&.QuietMode\fC [static]\fP, \fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether \fBlog4net\fP should generate no output from internal logging, not even for errors\&. \fCtrue\fP if \fBlog4net\fP should generate no output at all from internal logging, otherwise \fCfalse\fP\&. 
+.PP
+When set to \fCtrue\fP will cause internal logging at all levels to be suppressed\&. This means that no warning or error reports will be logged\&. This option overrides the \fBInternalDebugging\fP setting and disables all debug also\&. 
+.PP
+This value can be set by setting the application setting \fClog4net\&.Internal\&.Quiet\fP in the application configuration file\&. 
+.PP
+The default value is \fCfalse\fP, i\&.e\&. internal logging is not disabled\&. 
+.PP
+The following example disables internal logging using the application configuration file : 
+.PP
+.nf
+<configuration>
+    <appSettings>
+        <add key="log4net\&.Internal\&.Quiet" value="true" />
+    </appSettings>
+</configuration>
+
+.fi
+.PP
+ 
+.PP
+Definition at line 263 of file LogLog\&.cs\&.
+.SS "Type log4net\&.Util\&.LogLog\&.Source\fC [get]\fP"
+
+.PP
+The Type that generated the internal message\&. 
+.PP
+Definition at line 68 of file LogLog\&.cs\&.
+.SS "DateTime log4net\&.Util\&.LogLog\&.TimeStamp\fC [get]\fP"
+
+.PP
+The DateTime stamp of when the internal message was received\&. 
+.PP
+Definition at line 76 of file LogLog\&.cs\&.
+.SH "Event Documentation"
+.PP 
+.SS "\fBLogReceivedEventHandler\fP log4net\&.Util\&.LogLog\&.LogReceived\fC [static]\fP"
+
+.PP
+The event raised when an internal message has been received\&. 
+.PP
+Definition at line 56 of file LogLog\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

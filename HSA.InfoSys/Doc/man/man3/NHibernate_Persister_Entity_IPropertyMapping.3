@@ -1,0 +1,124 @@
+.TH "NHibernate.Persister.Entity.IPropertyMapping" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Persister.Entity.IPropertyMapping \- 
+.PP
+Abstraction of all mappings that define properties: entities, collection elements\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ComponentJoin\&.ComponentFromElementType\&.ComponentPropertyMapping, \fBNHibernate\&.Persister\&.Collection\&.CollectionPropertyMapping\fP, \fBNHibernate\&.Persister\&.Collection\&.ElementPropertyMapping\fP, \fBNHibernate\&.Persister\&.Collection\&.IQueryableCollection\fP, \fBNHibernate\&.Persister\&.Entity\&.AbstractPropertyMapping\fP, and \fBNHibernate\&.Persister\&.Entity\&.IQueryable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIType\fP \fBToType\fP (string propertyName)"
+.br
+.RI "\fIGiven a component path expression, get the type of the property \fP"
+.ti -1c
+.RI "bool \fBTryToType\fP (string propertyName, out \fBIType\fP type)"
+.br
+.RI "\fIGiven a component path expression, get the type of the property\&. \fP"
+.ti -1c
+.RI "string[] \fBToColumns\fP (string alias, string propertyName)"
+.br
+.RI "\fIGiven a query alias and a property path, return the qualified column name \fP"
+.ti -1c
+.RI "string[] \fBToColumns\fP (string propertyName)"
+.br
+.RI "\fIGiven a property path, return the corresponding column name(s)\&.\fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIType\fP \fBType\fP\fC [get]\fP"
+.br
+.RI "\fIGet the type of the thing containing the properties \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Abstraction of all mappings that define properties: entities, collection elements\&. 
+
+
+.PP
+Definition at line 8 of file IPropertyMapping\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string [] NHibernate\&.Persister\&.Entity\&.IPropertyMapping\&.ToColumns (stringalias, stringpropertyName)"
+
+.PP
+Given a query alias and a property path, return the qualified column name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIpropertyName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP, \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP, \fBNHibernate\&.Persister\&.Collection\&.CollectionPropertyMapping\fP, \fBNHibernate\&.Persister\&.Collection\&.ElementPropertyMapping\fP, \fBNHibernate\&.Persister\&.Entity\&.AbstractPropertyMapping\fP, and \fBNHibernate\&.Persister\&.Entity\&.BasicEntityPropertyMapping\fP\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.IPropertyMapping\&.ToColumns (stringpropertyName)"
+
+.PP
+Given a property path, return the corresponding column name(s)\&.
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP, \fBNHibernate\&.Persister\&.Collection\&.CollectionPropertyMapping\fP, \fBNHibernate\&.Persister\&.Entity\&.AbstractPropertyMapping\fP, and \fBNHibernate\&.Persister\&.Collection\&.ElementPropertyMapping\fP\&.
+.SS "\fBIType\fP NHibernate\&.Persister\&.Entity\&.IPropertyMapping\&.ToType (stringpropertyName)"
+
+.PP
+Given a component path expression, get the type of the property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP, \fBNHibernate\&.Persister\&.Entity\&.AbstractPropertyMapping\fP, \fBNHibernate\&.Persister\&.Collection\&.ElementPropertyMapping\fP, and \fBNHibernate\&.Persister\&.Collection\&.CollectionPropertyMapping\fP\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.IPropertyMapping\&.TryToType (stringpropertyName, out \fBIType\fPtype)"
+
+.PP
+Given a component path expression, get the type of the property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP 
+.br
+\fItype\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if a type was found, false if not
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP, \fBNHibernate\&.Persister\&.Collection\&.CollectionPropertyMapping\fP, \fBNHibernate\&.Persister\&.Entity\&.AbstractPropertyMapping\fP, and \fBNHibernate\&.Persister\&.Collection\&.ElementPropertyMapping\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBIType\fP NHibernate\&.Persister\&.Entity\&.IPropertyMapping\&.Type\fC [get]\fP"
+
+.PP
+Get the type of the thing containing the properties 
+.PP
+Definition at line 15 of file IPropertyMapping\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

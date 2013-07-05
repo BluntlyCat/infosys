@@ -1,0 +1,26 @@
+var class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests =
+[
+    [ "GroupByAndAll", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#a25db0aa0f8e8ecedefbb6a30a98e1dab", null ],
+    [ "GroupByAndAny", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#a48c115a1673a32573a16861d36369cf2", null ],
+    [ "GroupByAndTake", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#a75efa2b8cf3d39e4cabdfdb0c2a3d664", null ],
+    [ "GroupByAndTake2", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#a6c96d2e84ed0d1c43732baf79837f47c", null ],
+    [ "GroupBySelectKeyShouldUseServerSideGrouping", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#ab97685f8956b7df9eda8deb627276b89", null ],
+    [ "GroupByTwoFieldsWhereOneOfThemIsTooDeep", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#a9f4dcc8e735cd39b46ad291571e8bb9c", null ],
+    [ "GroupByWithAndAlsoContainsInWhereClause", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#a8ffbd7de2d8dadc7d81b41acab5a5d93", null ],
+    [ "GroupByWithContainsInWhereClause", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#adc00dccda8c20c37bad4caff5631b2eb", null ],
+    [ "MultipleKeyGroupAndCount", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#a0f64273434381614a3c30a28d656a0ab", null ],
+    [ "MultipleKeyGrouping", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#a9d1689e0810bb0fc1c75c8f06b194823", null ],
+    [ "SelectFirstElementFromProductsGroupedByUnitPrice", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#a06053706b3692558384347f0259c0a4a", null ],
+    [ "SelectFirstOrDefaultElementFromProductsGroupedByUnitPrice", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#a56c977bb91fd9146395ca16d01220bca", null ],
+    [ "SelectSingleElementFromProductsGroupedByUnitPrice", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#a3b2486391f588f859570863bd23d0a0a", null ],
+    [ "SelectSingleOrDefaultElementFromProductsGroupedByUnitPrice", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#a5ff3a601cb0841692637d5a2530f6b9d", null ],
+    [ "SingleKeyGroupAndCount", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#a2324bf3f1db0a7e28884c6340432562b", null ],
+    [ "SingleKeyGroupAndOrderByKey", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#afcc49ad4db62458e6eb4eb2b983be4f4", null ],
+    [ "SingleKeyGroupAndOrderByKeyAggregateProjection", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#aa6e00d20673f95c7ef8687bb838a829e", null ],
+    [ "SingleKeyGroupAndOrderByKeyProjection", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#a644a38b100d3da91ae7a39fd4524b3b5", null ],
+    [ "SingleKeyGroupAndOrderByNonKeyAggregateProjection", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#aa392a237dcdf9ffeafec5fc5de186923", null ],
+    [ "SingleKeyGrouping", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#a16b9532f75c48d987dc430f3b25a69e2", null ],
+    [ "SingleKeyPropertyGroupAndOrderByCountBeforeProjection", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#a5a85a4d5a2700db3ffda5330acd49dde", null ],
+    [ "SingleKeyPropertyGroupAndOrderByProjectedCount", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#ad1d20fbad1d7ca123f319147ea0d1633", null ],
+    [ "SingleKeyPropertyGroupByEntityAndSelectEntity", "class_n_hibernate_1_1_test_1_1_linq_1_1_by_method_1_1_group_by_tests.html#a1a7b23eb0d4d9f1a2d3e400511ff90cd", null ]
+];

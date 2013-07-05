@@ -1,0 +1,2159 @@
+.TH "NHibernate.Persister.Entity.AbstractEntityPersister" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Persister.Entity.AbstractEntityPersister \- 
+.PP
+Superclass for built-in mapping strategies\&. Implements functionalty common to both mapping strategies  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP, \fBNHibernate\&.Persister\&.Entity\&.IQueryable\fP, \fBNHibernate\&.Metadata\&.IClassMetadata\fP, \fBNHibernate\&.Persister\&.Entity\&.IUniqueKeyLoadable\fP, \fBNHibernate\&.Persister\&.Entity\&.ISqlLoadable\fP, \fBNHibernate\&.Intercept\&.ILazyPropertyInitializer\fP, \fBNHibernate\&.Id\&.IPostInsertIdentityPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.ILockable\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP, \fBNHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "interface \fBIInclusionChecker\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract string \fBGetSubclassTableName\fP (int j)"
+.br
+.RI "\fIGet the name of the table with the given index from the internal array\&. \fP"
+.ti -1c
+.RI "abstract string \fBFilterFragment\fP (string alias)"
+.br
+.ti -1c
+.RI "virtual bool \fBIsSubclassEntityName\fP (string entityName)"
+.br
+.RI "\fIDetermine whether the given name represents a subclass entity (or this entity itself) of the entity mapped by this persister\&. \fP"
+.ti -1c
+.RI "virtual object \fBInitializeLazyProperty\fP (string fieldName, object entity, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIInitialize the property, and return its new value\fP"
+.ti -1c
+.RI "string \fBSelectFragment\fP (string alias, string suffix)"
+.br
+.RI "\fIGenerate a list of collection index and element columns \fP"
+.ti -1c
+.RI "string[] \fBGetIdentifierAliases\fP (string suffix)"
+.br
+.RI "\fIGet the result set aliases used for the identifier columns, given a suffix \fP"
+.ti -1c
+.RI "string[] \fBGetPropertyAliases\fP (string suffix, int i)"
+.br
+.RI "\fIGet the result set aliases used for the property columns, given a suffix (properties of this class, only)\&. \fP"
+.ti -1c
+.RI "string \fBGetDiscriminatorAlias\fP (string suffix)"
+.br
+.RI "\fIGet the alias used for the discriminator column, given a suffix \fP"
+.ti -1c
+.RI "virtual string \fBIdentifierSelectFragment\fP (string name, string suffix)"
+.br
+.RI "\fIGiven a query alias and an identifying suffix, render the identifier select fragment\&. \fP"
+.ti -1c
+.RI "string \fBPropertySelectFragment\fP (string name, string suffix, bool allProperties)"
+.br
+.RI "\fIGiven a query alias and an identifying suffix, render the property select fragment\&. \fP"
+.ti -1c
+.RI "object[] \fBGetDatabaseSnapshot\fP (object id, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGet the current database state of the object, in a 'hydrated' form, without resolving identifiers \fP"
+.ti -1c
+.RI "object \fBForceVersionIncrement\fP (object id, object currentVersion, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "object \fBGetCurrentVersion\fP (object id, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIRetrieve the version number \fP"
+.ti -1c
+.RI "virtual void \fBLock\fP (object id, object version, object obj, \fBLockMode\fP lockMode, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIDo a version check (optional operation) \fP"
+.ti -1c
+.RI "virtual string \fBGetRootTableAlias\fP (string drivingAlias)"
+.br
+.RI "\fIGet the SQL alias this persister would use for the root table given the passed driving alias\&. \fP"
+.ti -1c
+.RI "virtual string[] \fBToColumns\fP (string alias, string propertyName)"
+.br
+.RI "\fIGiven a query alias and a property path, return the qualified column name \fP"
+.ti -1c
+.RI "string[] \fBToColumns\fP (string propertyName)"
+.br
+.RI "\fIGiven a property path, return the corresponding column name(s)\&.\fP"
+.ti -1c
+.RI "\fBIType\fP \fBToType\fP (string propertyName)"
+.br
+.RI "\fIGiven a component path expression, get the type of the property \fP"
+.ti -1c
+.RI "bool \fBTryToType\fP (string propertyName, out \fBIType\fP type)"
+.br
+.RI "\fIGiven a component path expression, get the type of the property\&. \fP"
+.ti -1c
+.RI "string[] \fBGetPropertyColumnNames\fP (string propertyName)"
+.br
+.RI "\fIGet the column names for the given property path \fP"
+.ti -1c
+.RI "virtual int \fBGetSubclassPropertyTableNumber\fP (string propertyPath)"
+.br
+.ti -1c
+.RI "virtual Declarer \fBGetSubclassPropertyDeclarer\fP (string propertyPath)"
+.br
+.RI "\fIDetermine whether the given property is declared by our mapped class, our super class, or one of our subclasses\&.\&.\&. 
+.PP
+Note: the method is called 'subclass property\&.\&.\&.' simply for consistency sake (e\&.g\&. \fBgetSubclassPropertyTableNumber\fP \fP"
+.ti -1c
+.RI "virtual string \fBGenerateTableAliasForColumn\fP (string rootAlias, string column)"
+.br
+.RI "\fIGet the table alias used for the supplied column \fP"
+.ti -1c
+.RI "string \fBGenerateTableAlias\fP (string rootAlias, int tableNumber)"
+.br
+.ti -1c
+.RI "string[] \fBToColumns\fP (string name, int i)"
+.br
+.RI "\fIGiven the number of a property of a subclass, and a table alias, return the aliased column names (optional operation) \fP"
+.ti -1c
+.RI "string[] \fBToIdentifierColumns\fP (string name)"
+.br
+.RI "\fIReturn the alised identifier column names \fP"
+.ti -1c
+.RI "string[] \fBGetPropertyColumnNames\fP (int i)"
+.br
+.RI "\fIGet the column names for the numbered property of \fIthis\fP class \fP"
+.ti -1c
+.RI "\fBFetchMode\fP \fBGetFetchMode\fP (int i)"
+.br
+.RI "\fIMay this property be fetched using an SQL outerjoin? \fP"
+.ti -1c
+.RI "\fBCascadeStyle\fP \fBGetCascadeStyle\fP (int i)"
+.br
+.RI "\fIGet the cascade style of this (subclass closure) property \fP"
+.ti -1c
+.RI "\fBIType\fP \fBGetSubclassPropertyType\fP (int i)"
+.br
+.RI "\fIGet an array of the types of all properties of all subclasses (optional operation) \fP"
+.ti -1c
+.RI "string \fBGetSubclassPropertyName\fP (int i)"
+.br
+.RI "\fIGet the name of the numbered property of the class or a subclass (optional operation) \fP"
+.ti -1c
+.RI "int \fBCountSubclassProperties\fP ()"
+.br
+.RI "\fIHow many properties are there, for this class and all subclasses? (optional operation) \fP"
+.ti -1c
+.RI "string[] \fBGetSubclassPropertyColumnNames\fP (int i)"
+.br
+.RI "\fIReturn the column names used to persist all properties of all sublasses of the persistent class (optional operation) \fP"
+.ti -1c
+.RI "bool \fBIsDefinedOnSubclass\fP (int i)"
+.br
+.RI "\fIIs this property defined on a subclass of the mapped class? \fP"
+.ti -1c
+.RI "string[] \fBGetSubclassPropertyColumnAliases\fP (string propertyName, string suffix)"
+.br
+.RI "\fIReturns the column alias names used to persist/query the numbered property of the class or a subclass (optional operation)\&. \fP"
+.ti -1c
+.RI "string[] \fBGetSubclassPropertyColumnNames\fP (string propertyName)"
+.br
+.RI "\fIReturn the column names used to persist/query the named property of the class or a subclass (optional operation)\&. \fP"
+.ti -1c
+.RI "object \fBLoadByUniqueKey\fP (string propertyName, object uniqueKey, \fBISessionImplementor\fP session)"
+.br
+.RI "\fILoad an instance of the persistent class, by a unique key other than the primary key\&. \fP"
+.ti -1c
+.RI "int \fBGetPropertyIndex\fP (string propertyName)"
+.br
+.RI "\fIGet the property number of the unique key property \fP"
+.ti -1c
+.RI "object[] \fBHydrate\fP (IDataReader rs, object id, object obj, \fBILoadable\fP rootLoadable, string[][] suffixedPropertyColumns, bool allProperties, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIUnmarshall the fields of a persistent instance from a result set, without resolving associations or collections \fP"
+.ti -1c
+.RI "virtual \fBSqlString\fP \fBGetSelectByUniqueKeyString\fP (string propertyName)"
+.br
+.RI "\fIGet a SQL select string that performs a select based on a unique key determined by the given property name)\&. \fP"
+.ti -1c
+.RI "void \fBDelete\fP (object id, object version, int j, object obj, \fBSqlCommandInfo\fP sql, \fBISessionImplementor\fP session, object[] loadedState)"
+.br
+.RI "\fIPerform an SQL DELETE \fP"
+.ti -1c
+.RI "void \fBUpdate\fP (object id, object[] fields, int[] dirtyFields, bool hasDirtyCollection, object[] oldFields, object oldVersion, object obj, object rowId, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIUpdate a persistent instance \fP"
+.ti -1c
+.RI "object \fBInsert\fP (object[] fields, object obj, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIPersist an instance, using a natively generated identifier (optional operation) \fP"
+.ti -1c
+.RI "void \fBInsert\fP (object id, object[] fields, object obj, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIPersist an instance \fP"
+.ti -1c
+.RI "void \fBDelete\fP (object id, object version, object obj, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIDelete a persistent instance \fP"
+.ti -1c
+.RI "virtual string \fBFilterFragment\fP (string alias, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIGet the where clause filter, given a query alias and considering enabled session filters \fP"
+.ti -1c
+.RI "virtual string \fBGenerateFilterConditionAlias\fP (string rootAlias)"
+.br
+.RI "\fIThe alias used for any filter conditions (mapped where-fragments or enabled-filters)\&. \fP"
+.ti -1c
+.RI "virtual string \fBOneToManyFilterFragment\fP (string alias)"
+.br
+.ti -1c
+.RI "virtual \fBSqlString\fP \fBFromJoinFragment\fP (string alias, bool innerJoin, bool includeSubclasses)"
+.br
+.RI "\fIGet the from clause part of any joins (optional operation) \fP"
+.ti -1c
+.RI "virtual \fBSqlString\fP \fBWhereJoinFragment\fP (string alias, bool innerJoin, bool includeSubclasses)"
+.br
+.RI "\fIGet the where clause part of any joins (optional operation) \fP"
+.ti -1c
+.RI "virtual void \fBPostInstantiate\fP ()"
+.br
+.RI "\fIFinish the initialization of this object, once all \fCClassPersisters\fP have been instantiated\&. Called only once, before any other method\&. \fP"
+.ti -1c
+.RI "object \fBLoad\fP (object id, object optionalObject, \fBLockMode\fP lockMode, \fBISessionImplementor\fP session)"
+.br
+.RI "\fILoad an instance using the appropriate loader (as determined by GetAppropriateLoader \fP"
+.ti -1c
+.RI "bool \fBIsSubclassPropertyNullable\fP (int i)"
+.br
+.RI "\fIIs the numbered property of the class of subclass nullable? \fP"
+.ti -1c
+.RI "virtual int[] \fBFindDirty\fP (object[] currentState, object[] previousState, object entity, \fBISessionImplementor\fP session)"
+.br
+.RI "\fILocate the property-indices of all properties considered to be dirty\&. \fP"
+.ti -1c
+.RI "virtual int[] \fBFindModified\fP (object[] old, object[] current, object entity, \fBISessionImplementor\fP session)"
+.br
+.RI "\fILocate the property-indices of all properties considered to be dirty\&. \fP"
+.ti -1c
+.RI "virtual void \fBAfterReassociate\fP (object entity, \fBISessionImplementor\fP session)"
+.br
+.RI "\fICalled just after the entity has been reassociated with the session\fP"
+.ti -1c
+.RI "virtual bool \fBIsTransient\fP (object entity, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIIs this a new transient instance?\fP"
+.ti -1c
+.RI "virtual bool \fBIsModifiableEntity\fP (\fBEntityEntry\fP entry)"
+.br
+.ti -1c
+.RI "bool \fBConsumesEntityAlias\fP ()"
+.br
+.RI "\fIVery, very, very ugly\&.\&.\&. \fP"
+.ti -1c
+.RI "bool \fBConsumesCollectionAlias\fP ()"
+.br
+.RI "\fIVery, very, very ugly\&.\&.\&. \fP"
+.ti -1c
+.RI "virtual \fBIType\fP \fBGetPropertyType\fP (string path)"
+.br
+.RI "\fIGet the type of a particular (named) property \fP"
+.ti -1c
+.RI "object \fBCreateProxy\fP (object id, \fBISessionImplementor\fP session)"
+.br
+.RI "\fICreate a new proxy instance \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "string \fBSelectFragment\fP (\fBIJoinable\fP rhs, string rhsAlias, string lhsAlias, string entitySuffix, string collectionSuffix, bool includeCollectionColumns)"
+.br
+.RI "\fIAll columns to select, when loading\&. \fP"
+.ti -1c
+.RI "bool \fBIsInstrumented\fP (\fBEntityMode\fP entityMode)"
+.br
+.RI "\fIHas the class actually been bytecode instrumented?\fP"
+.ti -1c
+.RI "void \fBAfterInitialize\fP (object entity, bool lazyPropertiesAreUnfetched, \fBISessionImplementor\fP session)"
+.br
+.RI "\fICalled just after the entities properties have been initialized\fP"
+.ti -1c
+.RI "System\&.Type \fBGetMappedClass\fP (\fBEntityMode\fP entityMode)"
+.br
+.RI "\fIThe persistent class \fP"
+.ti -1c
+.RI "bool \fBImplementsLifecycle\fP (\fBEntityMode\fP entityMode)"
+.br
+.RI "\fIDoes the class implement the \fBClassic\&.ILifecycle\fP interface?\fP"
+.ti -1c
+.RI "bool \fBImplementsValidatable\fP (\fBEntityMode\fP entityMode)"
+.br
+.RI "\fIDoes the class implement the \fBClassic\&.IValidatable\fP interface?\fP"
+.ti -1c
+.RI "System\&.Type \fBGetConcreteProxyClass\fP (\fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet the proxy interface that instances of \fCthis\fP concrete class will be cast to \fP"
+.ti -1c
+.RI "void \fBSetPropertyValues\fP (object obj, object[] values, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fISet the given values to the mapped properties of the given object \fP"
+.ti -1c
+.RI "void \fBSetPropertyValue\fP (object obj, int i, object value, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fISet the value of a particular property \fP"
+.ti -1c
+.RI "object[] \fBGetPropertyValues\fP (object obj, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIExtract the property values from the given entity\&. \fP"
+.ti -1c
+.RI "object \fBGetPropertyValue\fP (object obj, int i, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet the value of a particular property \fP"
+.ti -1c
+.RI "object \fBGetPropertyValue\fP (object obj, string propertyName, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet the value of a particular (named) property \fP"
+.ti -1c
+.RI "virtual object \fBGetIdentifier\fP (object obj, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet the identifier of an instance (throw an exception if no identifier property) \fP"
+.ti -1c
+.RI "virtual void \fBSetIdentifier\fP (object obj, object id, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fISet the identifier of an instance (or do nothing if no identifier property) \fP"
+.ti -1c
+.RI "virtual object \fBGetVersion\fP (object obj, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet the version number (or timestamp) from the object's version property (or return null if not versioned) \fP"
+.ti -1c
+.RI "virtual object \fBInstantiate\fP (object id, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fICreate a class instance initialized with the given identifier \fP"
+.ti -1c
+.RI "bool \fBIsInstance\fP (object entity, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIDetermines whether the specified entity is an instance of the class managed by this persister\&. \fP"
+.ti -1c
+.RI "virtual bool \fBHasUninitializedLazyProperties\fP (object obj, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIDoes the given instance have any uninitialized lazy properties?\fP"
+.ti -1c
+.RI "virtual void \fBResetIdentifier\fP (object entity, object currentId, object currentVersion, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fISet the identifier and version of the given instance back to its 'unsaved' value, returning the id \fP"
+.ti -1c
+.RI "\fBIEntityPersister\fP \fBGetSubclassEntityPersister\fP (object instance, \fBISessionFactoryImplementor\fP factory, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet the persister for an instance of this class or a subclass\fP"
+.ti -1c
+.RI "virtual \fBEntityMode\fP \fBGuessEntityMode\fP (object obj)"
+.br
+.RI "\fITry to discover the entity mode from the entity instance\fP"
+.ti -1c
+.RI "virtual object[] \fBGetPropertyValuesToInsert\fP (object obj, IDictionary mergeMap, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIReturn the values of the mapped properties of the object\fP"
+.ti -1c
+.RI "void \fBProcessInsertGeneratedProperties\fP (object id, object entity, object[] state, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIPerform a select to retrieve the values of any generated properties back from the database, injecting these generated values into the given entity as well as writing this state to the persistence context\&. \fP"
+.ti -1c
+.RI "void \fBProcessUpdateGeneratedProperties\fP (object id, object entity, object[] state, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIPerform a select to retrieve the values of any generated properties back from the database, injecting these generated values into the given entity as well as writing this state to the persistence context\&. \fP"
+.ti -1c
+.RI "virtual object[] \fBGetNaturalIdentifierSnapshot\fP (object id, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIRetrieve the current state of the natural-id properties from the database\&. \fP"
+.ti -1c
+.RI "virtual void \fBSetPropertyValue\fP (object obj, string propertyName, object value, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fISet the value of a particular (named) property \fP"
+.ti -1c
+.RI "abstract string \fBGetPropertyTableName\fP (string propertyName)"
+.br
+.RI "\fIGet the table name for the given property path \fP"
+.ti -1c
+.RI "abstract string \fBFromTableFragment\fP (string alias)"
+.br
+.RI "\fIGet the main from table fragment, given a query alias (optional operation) \fP"
+.ti -1c
+.RI "abstract string \fBGetSubclassForDiscriminatorValue\fP (object value)"
+.br
+.RI "\fIGet the concrete subclass corresponding to the given discriminator value \fP"
+.ti -1c
+.RI "abstract string \fBGetSubclassPropertyTableName\fP (int i)"
+.br
+.RI "\fIReturn the table name used to persist the numbered property of the class or a subclass (optional operation) \fP"
+.ti -1c
+.RI "bool \fBIsUnsavedVersion\fP (object version)"
+.br
+.RI "\fICheck the version value trough VersionValue\&. \fP"
+.ti -1c
+.RI "string \fBGetInfoString\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBEntityClass\fP = 'class'"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractEntityPersister\fP (\fBPersistentClass\fP persistentClass, \fBICacheConcurrencyStrategy\fP cache, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "virtual void \fBAddDiscriminatorToInsert\fP (\fBSqlInsertBuilder\fP insert)"
+.br
+.ti -1c
+.RI "virtual void \fBAddDiscriminatorToSelect\fP (\fBSelectFragment\fP select, string name, string suffix)"
+.br
+.ti -1c
+.RI "abstract string[] \fBGetSubclassTableKeyColumns\fP (int j)"
+.br
+.ti -1c
+.RI "abstract bool \fBIsClassOrSuperclassTable\fP (int j)"
+.br
+.ti -1c
+.RI "abstract bool \fBIsTableCascadeDeleteEnabled\fP (int j)"
+.br
+.ti -1c
+.RI "abstract string \fBGetTableName\fP (int table)"
+.br
+.ti -1c
+.RI "abstract string[] \fBGetKeyColumns\fP (int table)"
+.br
+.ti -1c
+.RI "abstract bool \fBIsPropertyOfTable\fP (int property, int table)"
+.br
+.ti -1c
+.RI "abstract int \fBGetSubclassPropertyTableNumber\fP (int i)"
+.br
+.ti -1c
+.RI "virtual bool \fBIsInverseTable\fP (int j)"
+.br
+.ti -1c
+.RI "virtual bool \fBIsNullableTable\fP (int j)"
+.br
+.ti -1c
+.RI "virtual bool \fBIsNullableSubclassTable\fP (int j)"
+.br
+.ti -1c
+.RI "virtual bool \fBIsInverseSubclassTable\fP (int j)"
+.br
+.ti -1c
+.RI "bool \fBIsInsertCallable\fP (int j)"
+.br
+.ti -1c
+.RI "bool \fBIsUpdateCallable\fP (int j)"
+.br
+.ti -1c
+.RI "bool \fBIsDeleteCallable\fP (int j)"
+.br
+.ti -1c
+.RI "virtual bool \fBIsSubclassPropertyDeferred\fP (string propertyName, string entityName)"
+.br
+.ti -1c
+.RI "virtual bool \fBIsSubclassTableSequentialSelect\fP (int table)"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBGenerateSelectVersionString\fP ()"
+.br
+.RI "\fIGenerate the SQL that selects the version number by id \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBGenerateInsertGeneratedValuesSelectString\fP ()"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBGenerateUpdateGeneratedValuesSelectString\fP ()"
+.br
+.ti -1c
+.RI "string \fBConcretePropertySelectFragment\fP (string alias, \fBValueInclusion\fP[] inclusions)"
+.br
+.ti -1c
+.RI "string \fBConcretePropertySelectFragment\fP (string alias, bool[] includeProperty)"
+.br
+.ti -1c
+.RI "string \fBConcretePropertySelectFragment\fP (string alias, IInclusionChecker inclusionChecker)"
+.br
+.ti -1c
+.RI "virtual \fBSqlString\fP \fBGenerateSnapshotSelectString\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetPropertyColumnSpan\fP (int i)"
+.br
+.ti -1c
+.RI "void \fBInitSubclassPropertyAliasesMap\fP (\fBPersistentClass\fP model)"
+.br
+.RI "\fIMust be called by subclasses, at the end of their constructors \fP"
+.ti -1c
+.RI "void \fBCreateUniqueKeyLoaders\fP ()"
+.br
+.ti -1c
+.RI "string \fBGetSQLWhereString\fP (string alias)"
+.br
+.ti -1c
+.RI "\fBIUniqueEntityLoader\fP \fBCreateEntityLoader\fP (\fBLockMode\fP lockMode, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "\fBIUniqueEntityLoader\fP \fBCreateEntityLoader\fP (\fBLockMode\fP lockMode)"
+.br
+.ti -1c
+.RI "bool \fBCheck\fP (int rows, object id, int tableNumber, \fBIExpectation\fP expectation, IDbCommand statement)"
+.br
+.ti -1c
+.RI "virtual \fBSqlCommandInfo\fP \fBGenerateUpdateString\fP (bool[] includeProperty, int j, bool useRowId)"
+.br
+.ti -1c
+.RI "\fBSqlCommandInfo\fP \fBGenerateInsertString\fP (bool[] includeProperty, int j)"
+.br
+.ti -1c
+.RI "\fBSqlCommandInfo\fP \fBGenerateInsertString\fP (bool identityInsert, bool[] includeProperty)"
+.br
+.ti -1c
+.RI "virtual \fBSqlCommandInfo\fP \fBGenerateInsertString\fP (bool identityInsert, bool[] includeProperty, int j)"
+.br
+.RI "\fIGenerate the SQL that inserts a row\fP"
+.ti -1c
+.RI "virtual \fBSqlCommandInfo\fP \fBGenerateIdentityInsertString\fP (bool[] includeProperty)"
+.br
+.ti -1c
+.RI "virtual \fBSqlCommandInfo\fP \fBGenerateDeleteString\fP (int j)"
+.br
+.ti -1c
+.RI "int \fBDehydrate\fP (object id, object[] fields, bool[] includeProperty, bool[][] includeColumns, int j, IDbCommand st, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "int \fBDehydrate\fP (object id, object[] fields, object rowId, bool[] includeProperty, bool[][] includeColumns, int table, IDbCommand statement, \fBISessionImplementor\fP session, int index)"
+.br
+.RI "\fIMarshall the fields of a persistent instance to a prepared statement\fP"
+.ti -1c
+.RI "bool \fBUseInsertSelectIdentity\fP ()"
+.br
+.ti -1c
+.RI "bool \fBUseGetGeneratedKeys\fP ()"
+.br
+.ti -1c
+.RI "virtual \fBSqlString\fP \fBGetSequentialSelect\fP (string entityName)"
+.br
+.ti -1c
+.RI "object \fBInsert\fP (object[] fields, bool[] notNull, \fBSqlCommandInfo\fP sql, object obj, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIPerform an SQL INSERT, and then retrieve a generated identifier\&. \fP"
+.ti -1c
+.RI "void \fBInsert\fP (object id, object[] fields, bool[] notNull, int j, \fBSqlCommandInfo\fP sql, object obj, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIPerform an SQL INSERT\&. \fP"
+.ti -1c
+.RI "bool \fBUpdate\fP (object id, object[] fields, object[] oldFields, object rowId, bool[] includeProperty, int j, object oldVersion, object obj, \fBSqlCommandInfo\fP sql, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "\fBSqlCommandInfo\fP[] \fBGenerateSQLDeleteStrings\fP (object[] loadedState)"
+.br
+.ti -1c
+.RI "void \fBLogStaticSQL\fP ()"
+.br
+.ti -1c
+.RI "\fBSelectFragment\fP \fBCreateSelect\fP (int[] subclassColumnNumbers, int[] subclassFormulaNumbers)"
+.br
+.ti -1c
+.RI "string \fBCreateFrom\fP (int tableNumber, String alias)"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBCreateWhereByKey\fP (int tableNumber, string alias)"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBRenderSelect\fP (int[] tableNumbers, int[] columnNumbers, int[] formulaNumbers)"
+.br
+.ti -1c
+.RI "void \fBPostConstruct\fP (\fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "void \fBCreateQueryLoader\fP ()"
+.br
+.ti -1c
+.RI "bool[] \fBGetPropertiesToUpdate\fP (int[] dirtyProperties, bool hasDirtyCollection)"
+.br
+.RI "\fI\fBTransform\fP the array of property indexes to an array of booleans, true when the property is dirty \fP"
+.ti -1c
+.RI "bool[] \fBGetPropertiesToInsert\fP (object[] fields)"
+.br
+.ti -1c
+.RI "bool[] \fBGetPropertyUpdateability\fP (object entity, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIWhich properties appear in the SQL update? (Initialized, updateable ones!) \fP"
+.ti -1c
+.RI "string \fBConcretePropertySelectFragmentSansLeadingComma\fP (string alias, bool[] include)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBDiscriminator_Alias\fP = 'clazz_'"
+.br
+.ti -1c
+.RI "bool[] \fBpropertyDefinedOnSubclass\fP"
+.br
+.ti -1c
+.RI "readonly \fBBasicEntityPropertyMapping\fP \fBpropertyMapping\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "abstract int[] \fBSubclassColumnTableNumberClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract int[] \fBSubclassFormulaTableNumberClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBDiscriminatorColumnName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBDiscriminatorFormulaTemplate\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBRootTableKeyColumnNames\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBSQLSnapshotSelectString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBSQLLazySelectString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSqlCommandInfo\fP[] \fBSqlDeleteStrings\fP\fC [get]\fP"
+.br
+.RI "\fIThe queries that delete rows by id (and version) \fP"
+.ti -1c
+.RI "\fBSqlCommandInfo\fP[] \fBSqlInsertStrings\fP\fC [get]\fP"
+.br
+.RI "\fIThe queries that insert rows with a given id \fP"
+.ti -1c
+.RI "\fBSqlCommandInfo\fP[] \fBSqlUpdateStrings\fP\fC [get]\fP"
+.br
+.RI "\fIThe queries that update rows by id (and version) \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBVersionSelectString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsBatchable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string[] \fBQuerySpaces\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsBatchLoadable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string[] \fBIdentifierColumnNames\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBIdentifierColumnSpan\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBVersionColumnName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsCacheInvalidationRequired\fP\fC [get]\fP"
+.br
+.RI "\fIWe can't immediately add to the cache if we have formulas which must be evaluated, or if we have the possibility of two concurrent updates to the same item being merged on the database\&. This can happen if (a) the item is not versioned and either (b) we have dynamic update enabled or (c) we have multiple tables holding the state of the item\&. \fP"
+.ti -1c
+.RI "bool \fBIsLazyPropertiesCacheable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBRootTableName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string[] \fBRootTableIdentifierColumnNames\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[][] \fBSubclassPropertyFormulaTemplateClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP[] \fBSubclassPropertyTypeClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[][] \fBSubclassPropertyColumnNameClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBSubclassPropertyNameClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBSubclassPropertySubclassNameClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBSubclassColumnClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBSubclassColumnAliasClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBSubclassFormulaClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBSubclassFormulaTemplateClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBSubclassFormulaAliasClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBIdentitySelectString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBISessionFactoryImplementor\fP \fBFactory\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBEntityMetamodel\fP \fBEntityMetamodel\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBICacheConcurrencyStrategy\fP \fBCache\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBICacheEntryStructure\fP \fBCacheEntryStructure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IComparer \fBVersionComparator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBEntityName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBEntityType\fP \fBEntityType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsPolymorphic\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsInherited\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBIVersionType\fP \fBVersionType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual int \fBVersionProperty\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsVersioned\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsIdentifierAssignedByInsert\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsMutable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsAbstract\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBIIdentifierGenerator\fP \fBIdentifierGenerator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBRootEntityName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBIClassMetadata\fP \fBClassMetadata\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBMappedSuperclass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsExplicitPolymorphism\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBKeyColumnNames\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsCollection\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP \fBType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSelectBeforeUpdateRequired\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsVersionPropertyGenerated\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBVersionPropertyInsertable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string[] \fBPropertyNames\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBIType\fP[] \fBPropertyTypes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBPropertyLaziness\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool[] \fBPropertyCheckability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBNonLazyPropertyUpdateability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool[] \fBPropertyInsertability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBValueInclusion\fP[] \fBPropertyInsertGenerationInclusions\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBValueInclusion\fP[] \fBPropertyUpdateGenerationInclusions\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool[] \fBPropertyNullability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool[] \fBPropertyVersionability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBCascadeStyle\fP[] \fBPropertyCascadeStyles\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsMultiTable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBTemporaryIdTableName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBTemporaryIdTableDDL\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBPropertySpan\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBIdentifierPropertyName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBIType\fP \fBIdentifierType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int[] \fBNaturalIdentifierProperties\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract string[][] \fBContraintOrderedTableKeyColumnClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract \fBIType\fP \fBDiscriminatorType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract string[] \fBConstraintOrderedTableNameClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract string \fBDiscriminatorSQLValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract object \fBDiscriminatorValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract string[] \fBPropertySpaces\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract int \fBSubclassTableSpan\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract int \fBTableSpan\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBTableHasColumns\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasSequentialSelect\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasRowId\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBIdentifierAliases\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasFormulaProperties\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasWhere\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasCache\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasCascades\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasIdentifierProperty\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasLazyProperties\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasCollections\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasMutableProperties\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasSubclasses\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasProxy\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBUseDynamicUpdate\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBUseDynamicInsert\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasEmbeddedCompositeIdentifier\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBCanExtractIdOutOfEntity\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "Versioning\&.OptimisticLock \fBOptimisticLockMode\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasInsertGeneratedProperties\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasUpdateGeneratedProperties\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool[] \fBPropertyUpdateability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasSubselectLoadableCollections\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasNaturalIdentifier\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract string \fBTableName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBSqlType\fP[] \fBIdAndVersionSqlTypes\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Superclass for built-in mapping strategies\&. Implements functionalty common to both mapping strategies 
+
+May be considered an immutable view of the mapping object 
+.PP
+Definition at line 41 of file AbstractEntityPersister\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.AfterInitialize (objectentity, boollazyPropertiesAreUnfetched, \fBISessionImplementor\fPsession)"
+
+.PP
+Called just after the entities properties have been initialized
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3830 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual void NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.AfterReassociate (objectentity, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Called just after the entity has been reassociated with the session
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3652 of file AbstractEntityPersister\&.cs\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.ConsumesCollectionAlias ()"
+
+.PP
+Very, very, very ugly\&.\&.\&. Does this persister 'consume' collection column aliases in the result set?
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IJoinable\fP\&.
+.PP
+Definition at line 3783 of file AbstractEntityPersister\&.cs\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.ConsumesEntityAlias ()"
+
+.PP
+Very, very, very ugly\&.\&.\&. Does this persister 'consume' entity column aliases in the result set?
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IJoinable\fP\&.
+.PP
+Definition at line 3778 of file AbstractEntityPersister\&.cs\&.
+.SS "int NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.CountSubclassProperties ()"
+
+.PP
+How many properties are there, for this class and all subclasses? (optional operation) 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP\&.
+.PP
+Definition at line 1921 of file AbstractEntityPersister\&.cs\&.
+.SS "object NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.CreateProxy (objectid, \fBISessionImplementor\fPsession)"
+
+.PP
+Create a new proxy instance 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP 
+.br
+\fIsession\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3798 of file AbstractEntityPersister\&.cs\&.
+.SS "int NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.Dehydrate (objectid, object[]fields, objectrowId, bool[]includeProperty, boolincludeColumns[][], inttable, IDbCommandstatement, \fBISessionImplementor\fPsession, intindex)\fC [protected]\fP"
+
+.PP
+Marshall the fields of a persistent instance to a prepared statement
+.PP
+Definition at line 2390 of file AbstractEntityPersister\&.cs\&.
+.SS "void NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.Delete (objectid, objectversion, intj, objectobj, \fBSqlCommandInfo\fPsql, \fBISessionImplementor\fPsession, object[]loadedState)"
+
+.PP
+Perform an SQL DELETE 
+.PP
+Definition at line 2824 of file AbstractEntityPersister\&.cs\&.
+.SS "void NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.Delete (objectid, objectversion, objectobj, \fBISessionImplementor\fPsession)"
+
+.PP
+Delete a persistent instance 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3065 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual string NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.FilterFragment (stringalias, IDictionary< string, \fBIFilter\fP >enabledFilters)\fC [virtual]\fP"
+
+.PP
+Get the where clause filter, given a query alias and considering enabled session filters 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IJoinable\fP\&.
+.PP
+Definition at line 3199 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual int [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.FindDirty (object[]currentState, object[]previousState, objectentity, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Locate the property-indices of all properties considered to be dirty\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcurrentState\fP The current state of the entity (the state to be checked)\&. 
+.br
+\fIpreviousState\fP The previous state of the entity (the state to be checked against)\&. 
+.br
+\fIentity\fP The entity for which we are checking state dirtiness\&. 
+.br
+\fIsession\fP The session in which the check is ccurring\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+or the indices of the dirty properties 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3561 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual int [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.FindModified (object[]old, object[]current, objectentity, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Locate the property-indices of all properties considered to be dirty\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIold\fP The old state of the entity\&.
+.br
+\fIcurrent\fP The current state of the entity\&. 
+.br
+\fIentity\fP The entity for which we are checking state modification\&. 
+.br
+\fIsession\fP The session in which the check is ccurring\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+return  or the indicies of the modified properties
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3577 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual \fBSqlString\fP NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.FromJoinFragment (stringalias, boolinnerJoin, boolincludeSubclasses)\fC [virtual]\fP"
+
+.PP
+Get the from clause part of any joins (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIinnerJoin\fP 
+.br
+\fIincludeSubclasses\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IJoinable\fP\&.
+.PP
+Definition at line 3217 of file AbstractEntityPersister\&.cs\&.
+.SS "abstract string NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.FromTableFragment (stringalias)\fC [pure virtual]\fP"
+
+.PP
+Get the main from table fragment, given a query alias (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\fP, \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\fP\&.
+.SS "virtual string NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GenerateFilterConditionAlias (stringrootAlias)\fC [virtual]\fP"
+
+.PP
+The alias used for any filter conditions (mapped where-fragments or enabled-filters)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrootAlias\fP The root alias 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The alias used for 'filter conditions' within the where clause\&. 
+.RE
+.PP
+.PP
+This may or may not be different from the root alias depending upon the inheritance mapping strategy\&. 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IQueryable\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP\&.
+.PP
+Definition at line 3207 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual \fBSqlCommandInfo\fP NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GenerateInsertString (boolidentityInsert, bool[]includeProperty, intj)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Generate the SQL that inserts a row
+.PP
+Definition at line 2289 of file AbstractEntityPersister\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GenerateSelectVersionString ()\fC [protected]\fP"
+
+.PP
+Generate the SQL that selects the version number by id 
+.PP
+Definition at line 1461 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual string NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GenerateTableAliasForColumn (stringrootAlias, stringcolumn)\fC [virtual]\fP"
+
+.PP
+Get the table alias used for the supplied column 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP\&.
+.PP
+Definition at line 1819 of file AbstractEntityPersister\&.cs\&.
+.SS "\fBCascadeStyle\fP NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetCascadeStyle (inti)"
+
+.PP
+Get the cascade style of this (subclass closure) property 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP\&.
+.PP
+Definition at line 1906 of file AbstractEntityPersister\&.cs\&.
+.SS "System\&.Type NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetConcreteProxyClass (\fBEntityMode\fPentityMode)"
+
+.PP
+Get the proxy interface that instances of \fCthis\fP concrete class will be cast to 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3856 of file AbstractEntityPersister\&.cs\&.
+.SS "object NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetCurrentVersion (objectid, \fBISessionImplementor\fPsession)"
+
+.PP
+Retrieve the version number 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 1659 of file AbstractEntityPersister\&.cs\&.
+.SS "object [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetDatabaseSnapshot (objectid, \fBISessionImplementor\fPsession)"
+
+.PP
+Get the current database state of the object, in a 'hydrated' form, without resolving identifiers 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP 
+.br
+\fIsession\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+if select-before-update is not enabled or not supported
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 1403 of file AbstractEntityPersister\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetDiscriminatorAlias (stringsuffix)"
+
+.PP
+Get the alias used for the discriminator column, given a suffix 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.ILoadable\fP\&.
+.PP
+Definition at line 1342 of file AbstractEntityPersister\&.cs\&.
+.SS "\fBFetchMode\fP NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetFetchMode (inti)"
+
+.PP
+May this property be fetched using an SQL outerjoin? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP\&.
+.PP
+Definition at line 1901 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual object NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetIdentifier (objectentity, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Get the identifier of an instance (throw an exception if no identifier property) 
+.PP
+Implements \fBNHibernate\&.Metadata\&.IClassMetadata\fP\&.
+.PP
+Definition at line 3886 of file AbstractEntityPersister\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetIdentifierAliases (stringsuffix)"
+
+.PP
+Get the result set aliases used for the identifier columns, given a suffix 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.ILoadable\fP\&.
+.PP
+Definition at line 1328 of file AbstractEntityPersister\&.cs\&.
+.SS "System\&.Type NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetMappedClass (\fBEntityMode\fPentityMode)"
+
+.PP
+The persistent class 
+.PP
+Implements \fBNHibernate\&.Metadata\&.IClassMetadata\fP\&.
+.PP
+Definition at line 3840 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual object [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetNaturalIdentifierSnapshot (objectid, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Retrieve the current state of the natural-id properties from the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The identifier of the entity for which to retrieve the naturak-id values\&. 
+.br
+\fIsession\fP The session from which the request originated\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The natural-id snapshot\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 4034 of file AbstractEntityPersister\&.cs\&.
+.SS "bool [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetPropertiesToUpdate (int[]dirtyProperties, boolhasDirtyCollection)\fC [protected]\fP"
+
+.PP
+\fBTransform\fP the array of property indexes to an array of booleans, true when the property is dirty 
+.PP
+Definition at line 3526 of file AbstractEntityPersister\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetPropertyAliases (stringsuffix, inti)"
+
+.PP
+Get the result set aliases used for the property columns, given a suffix (properties of this class, only)\&. 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.ILoadable\fP\&.
+.PP
+Definition at line 1336 of file AbstractEntityPersister\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetPropertyColumnNames (stringpropertyPath)"
+
+.PP
+Get the column names for the given property path 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP\&.
+.PP
+Definition at line 1758 of file AbstractEntityPersister\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetPropertyColumnNames (inti)"
+
+.PP
+Get the column names for the numbered property of \fIthis\fP class 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.ILoadable\fP\&.
+.PP
+Definition at line 1886 of file AbstractEntityPersister\&.cs\&.
+.SS "int NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetPropertyIndex (stringpropertyName)"
+
+.PP
+Get the property number of the unique key property 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IUniqueKeyLoadable\fP\&.
+.PP
+Definition at line 2064 of file AbstractEntityPersister\&.cs\&.
+.SS "abstract string NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetPropertyTableName (stringpropertyName)\fC [pure virtual]\fP"
+
+.PP
+Get the table name for the given property path 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\fP, \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\fP\&.
+.SS "virtual \fBIType\fP NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetPropertyType (stringpropertyName)\fC [virtual]\fP"
+
+.PP
+Get the type of a particular (named) property 
+.PP
+Implements \fBNHibernate\&.Metadata\&.IClassMetadata\fP\&.
+.PP
+Definition at line 3788 of file AbstractEntityPersister\&.cs\&.
+.SS "bool [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetPropertyUpdateability (objectentity, \fBEntityMode\fPentityMode)\fC [protected]\fP"
+
+.PP
+Which properties appear in the SQL update? (Initialized, updateable ones!) 
+.PP
+Definition at line 3593 of file AbstractEntityPersister\&.cs\&.
+.SS "object NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetPropertyValue (objectobj, inti, \fBEntityMode\fPentityMode)"
+
+.PP
+Get the value of a particular property 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3876 of file AbstractEntityPersister\&.cs\&.
+.SS "object NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetPropertyValue (objectobj, stringpropertyName, \fBEntityMode\fPentityMode)"
+
+.PP
+Get the value of a particular (named) property 
+.PP
+Implements \fBNHibernate\&.Metadata\&.IClassMetadata\fP\&.
+.PP
+Definition at line 3881 of file AbstractEntityPersister\&.cs\&.
+.SS "object [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetPropertyValues (objectentity, \fBEntityMode\fPentityMode)"
+
+.PP
+Extract the property values from the given entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity from which to extract the property values\&. 
+.br
+\fIentityMode\fP The entity-mode of the given entity 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The property values\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Metadata\&.IClassMetadata\fP\&.
+.PP
+Definition at line 3871 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual object [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetPropertyValuesToInsert (objectentity, IDictionarymergeMap, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Return the values of the mapped properties of the object
+.PP
+Implements \fBNHibernate\&.Metadata\&.IClassMetadata\fP\&.
+.PP
+Definition at line 3957 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual string NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetRootTableAlias (stringdrivingAlias)\fC [virtual]\fP"
+
+.PP
+Get the SQL alias this persister would use for the root table given the passed driving alias\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdrivingAlias\fP The driving alias; or the alias for the table mapped by this persister in the hierarchy\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The root table alias\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.ILockable\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP\&.
+.PP
+Definition at line 1733 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual \fBSqlString\fP NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetSelectByUniqueKeyString (stringpropertyName)\fC [virtual]\fP"
+
+.PP
+Get a SQL select string that performs a select based on a unique key determined by the given property name)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the property which maps to the column(s) to use in the select statement restriction\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The SQL select string 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IPostInsertIdentityPersister\fP\&.
+.PP
+Definition at line 2576 of file AbstractEntityPersister\&.cs\&.
+.SS "\fBIEntityPersister\fP NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetSubclassEntityPersister (objectinstance, \fBISessionFactoryImplementor\fPfactory, \fBEntityMode\fPentityMode)"
+
+.PP
+Get the persister for an instance of this class or a subclass
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3930 of file AbstractEntityPersister\&.cs\&.
+.SS "abstract string NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetSubclassForDiscriminatorValue (objectvalue)\fC [pure virtual]\fP"
+
+.PP
+Get the concrete subclass corresponding to the given discriminator value 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.ILoadable\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\fP, \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\fP\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetSubclassPropertyColumnAliases (stringpropertyName, stringsuffix)"
+
+.PP
+Returns the column alias names used to persist/query the numbered property of the class or a subclass (optional operation)\&. 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.ISqlLoadable\fP\&.
+.PP
+Definition at line 1936 of file AbstractEntityPersister\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetSubclassPropertyColumnNames (inti)"
+
+.PP
+Return the column names used to persist all properties of all sublasses of the persistent class (optional operation) 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP\&.
+.PP
+Definition at line 1926 of file AbstractEntityPersister\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetSubclassPropertyColumnNames (stringpropertyName)"
+
+.PP
+Return the column names used to persist/query the named property of the class or a subclass (optional operation)\&. 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.ISqlLoadable\fP\&.
+.PP
+Definition at line 1950 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual Declarer NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetSubclassPropertyDeclarer (stringpropertyPath)\fC [virtual]\fP"
+
+.PP
+Determine whether the given property is declared by our mapped class, our super class, or one of our subclasses\&.\&.\&. 
+.PP
+Note: the method is called 'subclass property\&.\&.\&.' simply for consistency sake (e\&.g\&. \fBgetSubclassPropertyTableNumber\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyPath\fP The property name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The property declarer 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IQueryable\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP\&.
+.PP
+Definition at line 1802 of file AbstractEntityPersister\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetSubclassPropertyName (inti)"
+
+.PP
+Get the name of the numbered property of the class or a subclass (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP\&.
+.PP
+Definition at line 1916 of file AbstractEntityPersister\&.cs\&.
+.SS "abstract string NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetSubclassPropertyTableName (inti)\fC [pure virtual]\fP"
+
+.PP
+Return the table name used to persist the numbered property of the class or a subclass (optional operation) 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\fP, \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\fP\&.
+.SS "virtual int NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetSubclassPropertyTableNumber (stringpropertyPath)\fC [virtual]\fP"
+Warning: When there are duplicated property names in the subclasses of the class, this method may return the wrong table number for the duplicated subclass property (note that \fBSingleTableEntityPersister\fP defines an overloaded form which takes the entity name\&. 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IQueryable\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\fP\&.
+.PP
+Definition at line 1771 of file AbstractEntityPersister\&.cs\&.
+.SS "\fBIType\fP NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetSubclassPropertyType (inti)"
+
+.PP
+Get an array of the types of all properties of all subclasses (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP\&.
+.PP
+Definition at line 1911 of file AbstractEntityPersister\&.cs\&.
+.SS "abstract string NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetSubclassTableName (intnumber)\fC [pure virtual]\fP"
+
+.PP
+Get the name of the table with the given index from the internal array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP The index into the internal array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IQueryable\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\fP, \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\fP\&.
+.SS "virtual object NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GetVersion (objectobj, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Get the version number (or timestamp) from the object's version property (or return null if not versioned) 
+.PP
+Implements \fBNHibernate\&.Metadata\&.IClassMetadata\fP\&.
+.PP
+Definition at line 3896 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual \fBEntityMode\fP NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.GuessEntityMode (objectobj)\fC [virtual]\fP"
+
+.PP
+Try to discover the entity mode from the entity instance
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3952 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual bool NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.HasUninitializedLazyProperties (objectobj, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Does the given instance have any uninitialized lazy properties?
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3920 of file AbstractEntityPersister\&.cs\&.
+.SS "object [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.Hydrate (IDataReaderrs, objectid, objectobj, \fBILoadable\fProotLoadable, stringsuffixedPropertyColumns[][], boolallProperties, \fBISessionImplementor\fPsession)"
+
+.PP
+Unmarshall the fields of a persistent instance from a result set, without resolving associations or collections 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.ILoadable\fP\&.
+.PP
+Definition at line 2437 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual string NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.IdentifierSelectFragment (stringname, stringsuffix)\fC [virtual]\fP"
+
+.PP
+Given a query alias and an identifying suffix, render the identifier select fragment\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP 
+.br
+\fIsuffix\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IQueryable\fP\&.
+.PP
+Definition at line 1350 of file AbstractEntityPersister\&.cs\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.ImplementsLifecycle (\fBEntityMode\fPentityMode)"
+
+.PP
+Does the class implement the \fBClassic\&.ILifecycle\fP interface?
+.PP
+Implements \fBNHibernate\&.Metadata\&.IClassMetadata\fP\&.
+.PP
+Definition at line 3846 of file AbstractEntityPersister\&.cs\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.ImplementsValidatable (\fBEntityMode\fPentityMode)"
+
+.PP
+Does the class implement the \fBClassic\&.IValidatable\fP interface?
+.PP
+Implements \fBNHibernate\&.Metadata\&.IClassMetadata\fP\&.
+.PP
+Definition at line 3851 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual object NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.InitializeLazyProperty (stringfieldName, objectentity, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Initialize the property, and return its new value
+.PP
+Implements \fBNHibernate\&.Intercept\&.ILazyPropertyInitializer\fP\&.
+.PP
+Definition at line 1193 of file AbstractEntityPersister\&.cs\&.
+.SS "void NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.InitSubclassPropertyAliasesMap (\fBPersistentClass\fPmodel)\fC [protected]\fP"
+
+.PP
+Must be called by subclasses, at the end of their constructors 
+.PP
+Definition at line 1961 of file AbstractEntityPersister\&.cs\&.
+.SS "object NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.Insert (object[]fields, bool[]notNull, \fBSqlCommandInfo\fPsql, objectobj, \fBISessionImplementor\fPsession)\fC [protected]\fP"
+
+.PP
+Perform an SQL INSERT, and then retrieve a generated identifier\&. This form is used for PostInsertIdentifierGenerator-style ids (IDENTITY, select, etc)\&. 
+.PP
+Definition at line 2562 of file AbstractEntityPersister\&.cs\&.
+.SS "void NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.Insert (objectid, object[]fields, bool[]notNull, intj, \fBSqlCommandInfo\fPsql, objectobj, \fBISessionImplementor\fPsession)\fC [protected]\fP"
+
+.PP
+Perform an SQL INSERT\&. This for is used for all non-root tables as well as the root table in cases where the identifier value is known before the insert occurs\&. 
+.PP
+Definition at line 2591 of file AbstractEntityPersister\&.cs\&.
+.SS "object NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.Insert (object[]fields, objectobj, \fBISessionImplementor\fPsession)"
+
+.PP
+Persist an instance, using a natively generated identifier (optional operation) 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3015 of file AbstractEntityPersister\&.cs\&.
+.SS "void NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.Insert (objectid, object[]fields, objectobj, \fBISessionImplementor\fPsession)"
+
+.PP
+Persist an instance 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3043 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual object NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.Instantiate (objectid, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Create a class instance initialized with the given identifier 
+.PP
+Implements \fBNHibernate\&.Metadata\&.IClassMetadata\fP\&.
+.PP
+Definition at line 3901 of file AbstractEntityPersister\&.cs\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.IsDefinedOnSubclass (inti)"
+
+.PP
+Is this property defined on a subclass of the mapped class? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP\&.
+.PP
+Definition at line 1931 of file AbstractEntityPersister\&.cs\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.IsInstance (objectentity, \fBEntityMode\fPentityMode)"
+
+.PP
+Determines whether the specified entity is an instance of the class managed by this persister\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity\&.
+.br
+\fIentityMode\fP The entity mode\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+if the specified entity is an instance; otherwise, \&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3915 of file AbstractEntityPersister\&.cs\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.IsInstrumented (\fBEntityMode\fPentityMode)"
+
+.PP
+Has the class actually been bytecode instrumented?
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3814 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual bool NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.IsSubclassEntityName (stringentityName)\fC [virtual]\fP"
+
+.PP
+Determine whether the given name represents a subclass entity (or this entity itself) of the entity mapped by this persister\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The entity name to be checked\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the given entity name represents either the entity mapped by this persister or one of its subclass entities; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 1059 of file AbstractEntityPersister\&.cs\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.IsSubclassPropertyNullable (inti)"
+
+.PP
+Is the numbered property of the class of subclass nullable? 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP\&.
+.PP
+Definition at line 3518 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual bool NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.IsTransient (objectobj, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Is this a new transient instance?
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3669 of file AbstractEntityPersister\&.cs\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.IsUnsavedVersion (objectversion)"
+
+.PP
+Check the version value trough VersionValue\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIversion\fP The snapshot entity state
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of VersionValue\&.IsUnsaved\&.
+.RE
+.PP
+.PP
+NHibernate-specific feature, not present in H3\&.2
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 4149 of file AbstractEntityPersister\&.cs\&.
+.SS "object NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.Load (objectid, objectoptionalObject, \fBLockMode\fPlockMode, \fBISessionImplementor\fPsession)"
+
+.PP
+Load an instance using the appropriate loader (as determined by GetAppropriateLoader 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3473 of file AbstractEntityPersister\&.cs\&.
+.SS "object NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.LoadByUniqueKey (stringpropertyName, objectuniqueKey, \fBISessionImplementor\fPsession)"
+
+.PP
+Load an instance of the persistent class, by a unique key other than the primary key\&. 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IUniqueKeyLoadable\fP\&.
+.PP
+Definition at line 2046 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual void NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.Lock (objectid, objectversion, objectobj, \fBLockMode\fPlockMode, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Do a version check (optional operation) 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 1728 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual void NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.PostInstantiate ()\fC [virtual]\fP"
+
+.PP
+Finish the initialization of this object, once all \fCClassPersisters\fP have been instantiated\&. Called only once, before any other method\&. 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\fP\&.
+.PP
+Definition at line 3369 of file AbstractEntityPersister\&.cs\&.
+.SS "void NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.ProcessInsertGeneratedProperties (objectid, objectentity, object[]state, \fBISessionImplementor\fPsession)"
+
+.PP
+Perform a select to retrieve the values of any generated properties back from the database, injecting these generated values into the given entity as well as writing this state to the persistence context\&. Note, that because we update the persistence context here, callers need to take care that they have already written the initial snapshot to the persistence context before calling this method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The entity's id value\&.
+.br
+\fIentity\fP The entity for which to get the state\&.
+.br
+\fIstate\fP The entity state (at the time of Save)\&.
+.br
+\fIsession\fP The session\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3962 of file AbstractEntityPersister\&.cs\&.
+.SS "void NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.ProcessUpdateGeneratedProperties (objectid, objectentity, object[]state, \fBISessionImplementor\fPsession)"
+
+.PP
+Perform a select to retrieve the values of any generated properties back from the database, injecting these generated values into the given entity as well as writing this state to the persistence context\&. Note, that because we update the persistence context here, callers need to take care that they have already written the initial snapshot to the persistence context before calling this method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The entity's id value\&.
+.br
+\fIentity\fP The entity for which to get the state\&.
+.br
+\fIstate\fP The entity state (at the time of Save)\&.
+.br
+\fIsession\fP The session\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3971 of file AbstractEntityPersister\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.PropertySelectFragment (stringalias, stringsuffix, boolallProperties)"
+
+.PP
+Given a query alias and an identifying suffix, render the property select fragment\&. 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IQueryable\fP\&.
+.PP
+Definition at line 1358 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual void NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.ResetIdentifier (objectentity, objectcurrentId, objectcurrentVersion, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Set the identifier and version of the given instance back to its 'unsaved' value, returning the id 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3925 of file AbstractEntityPersister\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.SelectFragment (stringalias, stringsuffix)"
+
+.PP
+Generate a list of collection index and element columns 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIsuffix\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP\&.
+.PP
+Definition at line 1323 of file AbstractEntityPersister\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.SelectFragment (\fBIJoinable\fPrhs, stringrhsAlias, stringlhsAlias, stringcurrentEntitySuffix, stringcurrentCollectionSuffix, boolincludeCollectionColumns)"
+
+.PP
+All columns to select, when loading\&. 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IJoinable\fP\&.
+.PP
+Definition at line 3808 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual void NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.SetIdentifier (objectentity, objectid, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Set the identifier of an instance (or do nothing if no identifier property) 
+.PP
+Implements \fBNHibernate\&.Metadata\&.IClassMetadata\fP\&.
+.PP
+Definition at line 3891 of file AbstractEntityPersister\&.cs\&.
+.SS "void NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.SetPropertyValue (objectobj, inti, objectvalue, \fBEntityMode\fPentityMode)"
+
+.PP
+Set the value of a particular property 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 3866 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual void NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.SetPropertyValue (objectobj, stringpropertyName, objectvalue, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Set the value of a particular (named) property 
+.PP
+Implements \fBNHibernate\&.Metadata\&.IClassMetadata\fP\&.
+.PP
+Definition at line 4136 of file AbstractEntityPersister\&.cs\&.
+.SS "void NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.SetPropertyValues (objectentity, object[]values, \fBEntityMode\fPentityMode)"
+
+.PP
+Set the given values to the mapped properties of the given object 
+.PP
+Implements \fBNHibernate\&.Metadata\&.IClassMetadata\fP\&.
+.PP
+Definition at line 3861 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual string [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.ToColumns (stringalias, stringpropertyName)\fC [virtual]\fP"
+
+.PP
+Given a query alias and a property path, return the qualified column name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIpropertyName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IPropertyMapping\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP\&.
+.PP
+Definition at line 1738 of file AbstractEntityPersister\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.ToColumns (stringpropertyName)"
+
+.PP
+Given a property path, return the corresponding column name(s)\&.
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IPropertyMapping\fP\&.
+.PP
+Definition at line 1743 of file AbstractEntityPersister\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.ToColumns (stringname, inti)"
+
+.PP
+Given the number of a property of a subclass, and a table alias, return the aliased column names (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP 
+.br
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP\&.
+.PP
+Definition at line 1845 of file AbstractEntityPersister\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.ToIdentifierColumns (stringalias)"
+
+.PP
+Return the alised identifier column names 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IOuterJoinLoadable\fP\&.
+.PP
+Definition at line 1866 of file AbstractEntityPersister\&.cs\&.
+.SS "\fBIType\fP NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.ToType (stringpropertyName)"
+
+.PP
+Given a component path expression, get the type of the property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IPropertyMapping\fP\&.
+.PP
+Definition at line 1748 of file AbstractEntityPersister\&.cs\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.TryToType (stringpropertyName, out \fBIType\fPtype)"
+
+.PP
+Given a component path expression, get the type of the property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP 
+.br
+\fItype\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if a type was found, false if not
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IPropertyMapping\fP\&.
+.PP
+Definition at line 1753 of file AbstractEntityPersister\&.cs\&.
+.SS "void NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.Update (objectid, object[]fields, int[]dirtyFields, boolhasDirtyCollection, object[]oldFields, objectoldVersion, objectobj, objectrowId, \fBISessionImplementor\fPsession)"
+
+.PP
+Update a persistent instance 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The id\&.
+.br
+\fIfields\fP The fields\&.
+.br
+\fIdirtyFields\fP The dirty fields\&.
+.br
+\fIhasDirtyCollection\fP if set to  [has dirty collection]\&.
+.br
+\fIoldFields\fP The old fields\&.
+.br
+\fIoldVersion\fP The old version\&.
+.br
+\fIobj\fP The obj\&.
+.br
+\fIrowId\fP The rowId
+.br
+\fIsession\fP The session\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 2949 of file AbstractEntityPersister\&.cs\&.
+.SS "virtual \fBSqlString\fP NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.WhereJoinFragment (stringalias, boolinnerJoin, boolincludeSubclasses)\fC [virtual]\fP"
+
+.PP
+Get the where clause part of any joins (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIinnerJoin\fP 
+.br
+\fIincludeSubclasses\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IJoinable\fP\&.
+.PP
+Definition at line 3224 of file AbstractEntityPersister\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.IsCacheInvalidationRequired\fC [get]\fP"
+
+.PP
+We can't immediately add to the cache if we have formulas which must be evaluated, or if we have the possibility of two concurrent updates to the same item being merged on the database\&. This can happen if (a) the item is not versioned and either (b) we have dynamic update enabled or (c) we have multiple tables holding the state of the item\&. 
+.PP
+Definition at line 685 of file AbstractEntityPersister\&.cs\&.
+.SS "\fBSqlCommandInfo\fP [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.SqlDeleteStrings\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+The queries that delete rows by id (and version) 
+.PP
+Definition at line 580 of file AbstractEntityPersister\&.cs\&.
+.SS "\fBSqlCommandInfo\fP [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.SqlInsertStrings\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+The queries that insert rows with a given id 
+.PP
+Definition at line 588 of file AbstractEntityPersister\&.cs\&.
+.SS "\fBSqlCommandInfo\fP [] NHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\&.SqlUpdateStrings\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+The queries that update rows by id (and version) 
+.PP
+Definition at line 596 of file AbstractEntityPersister\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

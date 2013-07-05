@@ -1,0 +1,82 @@
+.TH "log4net.Layout.RawLayoutConverter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Layout.RawLayoutConverter \- 
+.PP
+Type converter for the \fBIRawLayout\fP interface  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Util\&.TypeConverters\&.IConvertFrom\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBCanConvertFrom\fP (Type sourceType)"
+.br
+.RI "\fICan the sourceType be converted to an \fBIRawLayout\fP \fP"
+.ti -1c
+.RI "object \fBConvertFrom\fP (object source)"
+.br
+.RI "\fIConvert the value to a \fBIRawLayout\fP object \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Type converter for the \fBIRawLayout\fP interface 
+
+Used to convert objects to the \fBIRawLayout\fP interface\&. Supports converting from the \fBILayout\fP interface to the \fBIRawLayout\fP interface using the \fBLayout2RawLayoutAdapter\fP\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 40 of file RawLayoutConverter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool log4net\&.Layout\&.RawLayoutConverter\&.CanConvertFrom (TypesourceType)"
+
+.PP
+Can the sourceType be converted to an \fBIRawLayout\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsourceType\fP the source to be to be converted
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the source type can be converted to \fBIRawLayout\fP
+.RE
+.PP
+.PP
+Test if the \fIsourceType\fP  can be converted to a \fBIRawLayout\fP\&. Only \fBILayout\fP is supported as the \fIsourceType\fP \&. 
+.PP
+Implements \fBlog4net\&.Util\&.TypeConverters\&.IConvertFrom\fP\&.
+.PP
+Definition at line 56 of file RawLayoutConverter\&.cs\&.
+.SS "object log4net\&.Layout\&.RawLayoutConverter\&.ConvertFrom (objectsource)"
+
+.PP
+Convert the value to a \fBIRawLayout\fP object 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP the value to convert
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the \fBIRawLayout\fP object
+.RE
+.PP
+.PP
+Convert the \fIsource\fP  object to a \fBIRawLayout\fP object\&. If the \fIsource\fP  object is a \fBILayout\fP then the \fBLayout2RawLayoutAdapter\fP is used to adapt between the two interfaces, otherwise an exception is thrown\&. 
+.PP
+Implements \fBlog4net\&.Util\&.TypeConverters\&.IConvertFrom\fP\&.
+.PP
+Definition at line 76 of file RawLayoutConverter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

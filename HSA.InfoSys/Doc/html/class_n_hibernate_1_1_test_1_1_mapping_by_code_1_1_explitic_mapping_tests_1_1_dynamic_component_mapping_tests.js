@@ -1,0 +1,6 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_dynamic_component_mapping_tests =
+[
+    [ "WhenMapDynCompoAttributesThenMapAttributes", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_dynamic_component_mapping_tests.html#ac59016a71b5a5a486b27aa29e1a0f7df", null ],
+    [ "WhenMapDynCompoPropertiesThenShouldAssignPropertyType", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_dynamic_component_mapping_tests.html#a38194c129dfd6da0446534ccb17759ea", null ],
+    [ "WhenMapDynCompoThenMapItAndItsProperties", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_dynamic_component_mapping_tests.html#af07be2c32596479e3c7dbd132f5ddb0e", null ]
+];

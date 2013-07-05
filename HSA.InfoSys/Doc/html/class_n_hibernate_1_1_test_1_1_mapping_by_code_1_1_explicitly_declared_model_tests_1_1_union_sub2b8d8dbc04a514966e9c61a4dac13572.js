@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explicitly_declared_model_tests_1_1_union_sub2b8d8dbc04a514966e9c61a4dac13572 =
+[
+    [ "WhenRegisterUnionSubclassBeforeRootThenIsRegistered", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explicitly_declared_model_tests_1_1_union_sub2b8d8dbc04a514966e9c61a4dac13572.html#a5830b0df0e24f70bd92128d282121857", null ],
+    [ "WhenRegisterUnionSubclassWithNoRootThenThrows", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explicitly_declared_model_tests_1_1_union_sub2b8d8dbc04a514966e9c61a4dac13572.html#a50dedc29e8477fe315e05d55981d6912", null ]
+];

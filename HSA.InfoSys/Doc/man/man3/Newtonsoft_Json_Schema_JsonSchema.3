@@ -1,0 +1,525 @@
+.TH "Newtonsoft.Json.Schema.JsonSchema" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.Schema.JsonSchema \- 
+.PP
+An in-memory representation of a JSON \fBSchema\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJsonSchema\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBJsonSchema\fP class\&. \fP"
+.ti -1c
+.RI "void \fBWriteTo\fP (\fBJsonWriter\fP writer)"
+.br
+.RI "\fIWrites this schema to a \fBJsonWriter\fP\&. \fP"
+.ti -1c
+.RI "void \fBWriteTo\fP (\fBJsonWriter\fP writer, \fBJsonSchemaResolver\fP resolver)"
+.br
+.RI "\fIWrites this schema to a \fBJsonWriter\fP using the specified \fBJsonSchemaResolver\fP\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIReturns a T:System\&.String that represents the current T:System\&.Object\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBJsonSchema\fP \fBRead\fP (\fBJsonReader\fP reader)"
+.br
+.RI "\fIReads a \fBJsonSchema\fP from the specified \fBJsonReader\fP\&. \fP"
+.ti -1c
+.RI "static \fBJsonSchema\fP \fBRead\fP (\fBJsonReader\fP reader, \fBJsonSchemaResolver\fP resolver)"
+.br
+.RI "\fIReads a \fBJsonSchema\fP from the specified \fBJsonReader\fP\&. \fP"
+.ti -1c
+.RI "static \fBJsonSchema\fP \fBParse\fP (string json)"
+.br
+.RI "\fILoad a \fBJsonSchema\fP from a string that contains schema JSON\&. \fP"
+.ti -1c
+.RI "static \fBJsonSchema\fP \fBParse\fP (string json, \fBJsonSchemaResolver\fP resolver)"
+.br
+.RI "\fIParses the specified json\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBId\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the id\&. \fP"
+.ti -1c
+.RI "string \fBTitle\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the title\&. \fP"
+.ti -1c
+.RI "bool \fBRequired\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets whether the object is required\&. \fP"
+.ti -1c
+.RI "bool \fBReadOnly\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets whether the object is read only\&. \fP"
+.ti -1c
+.RI "bool \fBHidden\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets whether the object is visible to users\&. \fP"
+.ti -1c
+.RI "bool \fBTransient\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets whether the object is transient\&. \fP"
+.ti -1c
+.RI "string \fBDescription\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the description of the object\&. \fP"
+.ti -1c
+.RI "\fBJsonSchemaType\fP \fBType\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the types of values allowed by the object\&. \fP"
+.ti -1c
+.RI "string \fBPattern\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the pattern\&. \fP"
+.ti -1c
+.RI "int \fBMinimumLength\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the minimum length\&. \fP"
+.ti -1c
+.RI "int \fBMaximumLength\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the maximum length\&. \fP"
+.ti -1c
+.RI "double \fBDivisibleBy\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a number that the value should be divisble by\&. \fP"
+.ti -1c
+.RI "double \fBMinimum\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the minimum\&. \fP"
+.ti -1c
+.RI "double \fBMaximum\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the maximum\&. \fP"
+.ti -1c
+.RI "bool \fBExclusiveMinimum\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a flag indicating whether the value can not equal the number defined by the 'minimum' attribute\&. \fP"
+.ti -1c
+.RI "bool \fBExclusiveMaximum\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a flag indicating whether the value can not equal the number defined by the 'maximum' attribute\&. \fP"
+.ti -1c
+.RI "int \fBMinimumItems\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the minimum number of items\&. \fP"
+.ti -1c
+.RI "int \fBMaximumItems\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the maximum number of items\&. \fP"
+.ti -1c
+.RI "IList< \fBJsonSchema\fP > \fBItems\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBJsonSchema\fP of items\&. \fP"
+.ti -1c
+.RI "bool \fBPositionalItemsValidation\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether items in an array are validated using the \fBJsonSchema\fP instance at their array position from \fBJsonSchema\&.Items\fP\&. \fP"
+.ti -1c
+.RI "\fBJsonSchema\fP \fBAdditionalItems\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBJsonSchema\fP of additional items\&. \fP"
+.ti -1c
+.RI "bool \fBAllowAdditionalItems\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether additional items are allowed\&. \fP"
+.ti -1c
+.RI "bool \fBUniqueItems\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets whether the array items must be unique\&. \fP"
+.ti -1c
+.RI "IDictionary< string, \fBJsonSchema\fP > \fBProperties\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBJsonSchema\fP of properties\&. \fP"
+.ti -1c
+.RI "\fBJsonSchema\fP \fBAdditionalProperties\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBJsonSchema\fP of additional properties\&. \fP"
+.ti -1c
+.RI "IDictionary< string, \fBJsonSchema\fP > \fBPatternProperties\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the pattern properties\&. \fP"
+.ti -1c
+.RI "bool \fBAllowAdditionalProperties\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether additional properties are allowed\&. \fP"
+.ti -1c
+.RI "string \fBRequires\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the required property if this property is present\&. \fP"
+.ti -1c
+.RI "IList< \fBJToken\fP > \fBEnum\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the a collection of valid enum values allowed\&. \fP"
+.ti -1c
+.RI "\fBJsonSchemaType\fP \fBDisallow\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets disallowed types\&. \fP"
+.ti -1c
+.RI "\fBJToken\fP \fBDefault\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the default value\&. \fP"
+.ti -1c
+.RI "IList< \fBJsonSchema\fP > \fBExtends\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the collection of \fBJsonSchema\fP that this schema extends\&. \fP"
+.ti -1c
+.RI "string \fBFormat\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the format\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An in-memory representation of a JSON \fBSchema\fP\&. 
+
+
+.PP
+Definition at line 38 of file JsonSchema\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.JsonSchema ()"
+
+.PP
+Initializes a new instance of the \fBJsonSchema\fP class\&. 
+.PP
+Definition at line 221 of file JsonSchema\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBJsonSchema\fP Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Parse (stringjson)\fC [static]\fP"
+
+.PP
+Load a \fBJsonSchema\fP from a string that contains schema JSON\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIjson\fP A \fBString\fP that contains JSON\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJsonSchema\fP populated from the string that contains JSON\&.
+.RE
+.PP
+
+.PP
+Definition at line 257 of file JsonSchema\&.cs\&.
+.SS "static \fBJsonSchema\fP Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Parse (stringjson, \fBJsonSchemaResolver\fPresolver)\fC [static]\fP"
+
+.PP
+Parses the specified json\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIjson\fP The json\&.
+.br
+\fIresolver\fP The resolver\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJsonSchema\fP populated from the string that contains JSON\&.
+.RE
+.PP
+
+.PP
+Definition at line 268 of file JsonSchema\&.cs\&.
+.SS "static \fBJsonSchema\fP Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Read (\fBJsonReader\fPreader)\fC [static]\fP"
+
+.PP
+Reads a \fBJsonSchema\fP from the specified \fBJsonReader\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The \fBJsonReader\fP containing the JSON \fBSchema\fP to read\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJsonSchema\fP object representing the JSON \fBSchema\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 232 of file JsonSchema\&.cs\&.
+.SS "static \fBJsonSchema\fP Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Read (\fBJsonReader\fPreader, \fBJsonSchemaResolver\fPresolver)\fC [static]\fP"
+
+.PP
+Reads a \fBJsonSchema\fP from the specified \fBJsonReader\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The \fBJsonReader\fP containing the JSON \fBSchema\fP to read\&.
+.br
+\fIresolver\fP The \fBJsonSchemaResolver\fP to use when resolving schema references\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJsonSchema\fP object representing the JSON \fBSchema\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 243 of file JsonSchema\&.cs\&.
+.SS "override string Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.ToString ()"
+
+.PP
+Returns a T:System\&.String that represents the current T:System\&.Object\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A T:System\&.String that represents the current T:System\&.Object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 306 of file JsonSchema\&.cs\&.
+.SS "void Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.WriteTo (\fBJsonWriter\fPwriter)"
+
+.PP
+Writes this schema to a \fBJsonWriter\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP A \fBJsonWriter\fP into which this method will write\&.
+.RE
+.PP
+
+.PP
+Definition at line 281 of file JsonSchema\&.cs\&.
+.SS "void Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.WriteTo (\fBJsonWriter\fPwriter, \fBJsonSchemaResolver\fPresolver)"
+
+.PP
+Writes this schema to a \fBJsonWriter\fP using the specified \fBJsonSchemaResolver\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP A \fBJsonWriter\fP into which this method will write\&.
+.br
+\fIresolver\fP The resolver used\&.
+.RE
+.PP
+
+.PP
+Definition at line 291 of file JsonSchema\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBJsonSchema\fP Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.AdditionalItems\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBJsonSchema\fP of additional items\&. The \fBJsonSchema\fP of additional items\&.
+.PP
+Definition at line 139 of file JsonSchema\&.cs\&.
+.SS "\fBJsonSchema\fP Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.AdditionalProperties\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBJsonSchema\fP of additional properties\&. The \fBJsonSchema\fP of additional properties\&.
+.PP
+Definition at line 160 of file JsonSchema\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.AllowAdditionalItems\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether additional items are allowed\&. \fCtrue\fP if additional items are allowed; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 146 of file JsonSchema\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.AllowAdditionalProperties\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether additional properties are allowed\&. \fCtrue\fP if additional properties are allowed; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 172 of file JsonSchema\&.cs\&.
+.SS "\fBJToken\fP Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Default\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the default value\&. The default value\&.
+.PP
+Definition at line 192 of file JsonSchema\&.cs\&.
+.SS "string Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Description\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the description of the object\&. 
+.PP
+Definition at line 67 of file JsonSchema\&.cs\&.
+.SS "\fBJsonSchemaType\fP Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Disallow\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets disallowed types\&. The disallow types\&.
+.PP
+Definition at line 187 of file JsonSchema\&.cs\&.
+.SS "double Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.DivisibleBy\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a number that the value should be divisble by\&. A number that the value should be divisble by\&.
+.PP
+Definition at line 92 of file JsonSchema\&.cs\&.
+.SS "IList<\fBJToken\fP> Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Enum\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the a collection of valid enum values allowed\&. A collection of valid enum values allowed\&.
+.PP
+Definition at line 182 of file JsonSchema\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.ExclusiveMaximum\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a flag indicating whether the value can not equal the number defined by the 'maximum' attribute\&. A flag indicating whether the value can not equal the number defined by the 'maximum' attribute\&.
+.PP
+Definition at line 112 of file JsonSchema\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.ExclusiveMinimum\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a flag indicating whether the value can not equal the number defined by the 'minimum' attribute\&. A flag indicating whether the value can not equal the number defined by the 'minimum' attribute\&.
+.PP
+Definition at line 107 of file JsonSchema\&.cs\&.
+.SS "IList<\fBJsonSchema\fP> Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Extends\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the collection of \fBJsonSchema\fP that this schema extends\&. The collection of \fBJsonSchema\fP that this schema extends\&.
+.PP
+Definition at line 197 of file JsonSchema\&.cs\&.
+.SS "string Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Format\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the format\&. The format\&.
+.PP
+Definition at line 202 of file JsonSchema\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Hidden\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets whether the object is visible to users\&. 
+.PP
+Definition at line 59 of file JsonSchema\&.cs\&.
+.SS "string Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Id\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the id\&. 
+.PP
+Definition at line 43 of file JsonSchema\&.cs\&.
+.SS "IList<\fBJsonSchema\fP> Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Items\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBJsonSchema\fP of items\&. The \fBJsonSchema\fP of items\&.
+.PP
+Definition at line 127 of file JsonSchema\&.cs\&.
+.SS "double Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Maximum\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the maximum\&. The maximum\&.
+.PP
+Definition at line 102 of file JsonSchema\&.cs\&.
+.SS "int Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.MaximumItems\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the maximum number of items\&. The maximum number of items\&.
+.PP
+Definition at line 122 of file JsonSchema\&.cs\&.
+.SS "int Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.MaximumLength\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the maximum length\&. The maximum length\&.
+.PP
+Definition at line 87 of file JsonSchema\&.cs\&.
+.SS "double Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Minimum\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the minimum\&. The minimum\&.
+.PP
+Definition at line 97 of file JsonSchema\&.cs\&.
+.SS "int Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.MinimumItems\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the minimum number of items\&. The minimum number of items\&.
+.PP
+Definition at line 117 of file JsonSchema\&.cs\&.
+.SS "int Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.MinimumLength\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the minimum length\&. The minimum length\&.
+.PP
+Definition at line 82 of file JsonSchema\&.cs\&.
+.SS "string Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Pattern\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the pattern\&. The pattern\&.
+.PP
+Definition at line 77 of file JsonSchema\&.cs\&.
+.SS "IDictionary<string, \fBJsonSchema\fP> Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.PatternProperties\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the pattern properties\&. The pattern properties\&.
+.PP
+Definition at line 165 of file JsonSchema\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.PositionalItemsValidation\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether items in an array are validated using the \fBJsonSchema\fP instance at their array position from \fBJsonSchema\&.Items\fP\&. \fCtrue\fP if items are validated using their array position; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 134 of file JsonSchema\&.cs\&.
+.SS "IDictionary<string, \fBJsonSchema\fP> Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Properties\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBJsonSchema\fP of properties\&. The \fBJsonSchema\fP of properties\&.
+.PP
+Definition at line 155 of file JsonSchema\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.ReadOnly\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets whether the object is read only\&. 
+.PP
+Definition at line 55 of file JsonSchema\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Required\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets whether the object is required\&. 
+.PP
+Definition at line 51 of file JsonSchema\&.cs\&.
+.SS "string Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Requires\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the required property if this property is present\&. The required property if this property is present\&.
+.PP
+Definition at line 177 of file JsonSchema\&.cs\&.
+.SS "string Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Title\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the title\&. 
+.PP
+Definition at line 47 of file JsonSchema\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Transient\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets whether the object is transient\&. 
+.PP
+Definition at line 63 of file JsonSchema\&.cs\&.
+.SS "\fBJsonSchemaType\fP Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.Type\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the types of values allowed by the object\&. The type\&.
+.PP
+Definition at line 72 of file JsonSchema\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Schema\&.JsonSchema\&.UniqueItems\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets whether the array items must be unique\&. 
+.PP
+Definition at line 150 of file JsonSchema\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

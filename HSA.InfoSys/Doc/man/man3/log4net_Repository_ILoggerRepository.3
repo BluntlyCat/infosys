@@ -1,0 +1,310 @@
+.TH "log4net.Repository.ILoggerRepository" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Repository.ILoggerRepository \- 
+.PP
+Interface implemented by logger repositories\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBlog4net\&.Repository\&.LoggerRepositorySkeleton\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBILogger\fP \fBExists\fP (string name)"
+.br
+.RI "\fICheck if the named logger exists in the repository\&. If so return its reference, otherwise returns \fCnull\fP\&. \fP"
+.ti -1c
+.RI "\fBILogger\fP[] \fBGetCurrentLoggers\fP ()"
+.br
+.RI "\fIReturns all the currently defined loggers as an Array\&. \fP"
+.ti -1c
+.RI "\fBILogger\fP \fBGetLogger\fP (string name)"
+.br
+.RI "\fIReturns a named logger instance \fP"
+.ti -1c
+.RI "void \fBShutdown\fP ()"
+.br
+.RI "\fIShutdown the repository\fP"
+.ti -1c
+.RI "void \fBResetConfiguration\fP ()"
+.br
+.RI "\fIReset the repositories configuration to a default state \fP"
+.ti -1c
+.RI "void \fBLog\fP (\fBLoggingEvent\fP logEvent)"
+.br
+.RI "\fILog the LoggingEvent through this repository\&. \fP"
+.ti -1c
+.RI "\fBlog4net\&.Appender\&.IAppender\fP[] \fBGetAppenders\fP ()"
+.br
+.RI "\fIReturns all the Appenders that are configured as an Array\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBName\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe name of the repository \fP"
+.ti -1c
+.RI "\fBRendererMap\fP \fBRendererMap\fP\fC [get]\fP"
+.br
+.RI "\fIRendererMap accesses the object renderer map for this repository\&. \fP"
+.ti -1c
+.RI "\fBPluginMap\fP \fBPluginMap\fP\fC [get]\fP"
+.br
+.RI "\fIThe plugin map for this repository\&. \fP"
+.ti -1c
+.RI "\fBLevelMap\fP \fBLevelMap\fP\fC [get]\fP"
+.br
+.RI "\fIGet the level map for the \fBRepository\fP\&. \fP"
+.ti -1c
+.RI "\fBLevel\fP \fBThreshold\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe threshold for all events in this repository \fP"
+.ti -1c
+.RI "bool \fBConfigured\fP\fC [get, set]\fP"
+.br
+.RI "\fIFlag indicates if this repository has been configured\&. \fP"
+.ti -1c
+.RI "ICollection \fBConfigurationMessages\fP\fC [get, set]\fP"
+.br
+.RI "\fICollection of internal messages captured during the most recent configuration process\&. \fP"
+.ti -1c
+.RI "\fBPropertiesDictionary\fP \fBProperties\fP\fC [get]\fP"
+.br
+.RI "\fI\fBRepository\fP specific properties \fP"
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "\fBLoggerRepositoryShutdownEventHandler\fP \fBShutdownEvent\fP"
+.br
+.RI "\fIEvent to notify that the repository has been shutdown\&. \fP"
+.ti -1c
+.RI "\fBLoggerRepositoryConfigurationResetEventHandler\fP \fBConfigurationReset\fP"
+.br
+.RI "\fIEvent to notify that the repository has had its configuration reset\&. \fP"
+.ti -1c
+.RI "\fBLoggerRepositoryConfigurationChangedEventHandler\fP \fBConfigurationChanged\fP"
+.br
+.RI "\fIEvent to notify that the repository has had its configuration changed\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Interface implemented by logger repositories\&. 
+
+This interface is implemented by logger repositories\&. e\&.g\&. \fBHierarchy\fP\&. 
+.PP
+This interface is used by the \fBLogManager\fP to obtain \fBILog\fP interfaces\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 94 of file ILoggerRepository\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBILogger\fP log4net\&.Repository\&.ILoggerRepository\&.Exists (stringname)"
+
+.PP
+Check if the named logger exists in the repository\&. If so return its reference, otherwise returns \fCnull\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the logger to lookup
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The Logger object with the name specified
+.RE
+.PP
+.PP
+If the names logger exists it is returned, otherwise \fCnull\fP is returned\&. 
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Hierarchy\fP, and \fBlog4net\&.Repository\&.LoggerRepositorySkeleton\fP\&.
+.SS "\fBlog4net\&.Appender\&.IAppender\fP [] log4net\&.Repository\&.ILoggerRepository\&.GetAppenders ()"
+
+.PP
+Returns all the Appenders that are configured as an Array\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+All the Appenders
+.RE
+.PP
+.PP
+Returns all the Appenders that are configured as an Array\&. 
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Hierarchy\fP, and \fBlog4net\&.Repository\&.LoggerRepositorySkeleton\fP\&.
+.SS "\fBILogger\fP [] log4net\&.Repository\&.ILoggerRepository\&.GetCurrentLoggers ()"
+
+.PP
+Returns all the currently defined loggers as an Array\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+All the defined loggers
+.RE
+.PP
+.PP
+Returns all the currently defined loggers as an Array\&. 
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Hierarchy\fP, and \fBlog4net\&.Repository\&.LoggerRepositorySkeleton\fP\&.
+.SS "\fBILogger\fP log4net\&.Repository\&.ILoggerRepository\&.GetLogger (stringname)"
+
+.PP
+Returns a named logger instance 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the logger to retrieve
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The logger object with the name specified
+.RE
+.PP
+.PP
+Returns a named logger instance\&. 
+.PP
+If a logger of that name already exists, then it will be returned\&. Otherwise, a new logger will be instantiated and then linked with its existing ancestors as well as children\&. 
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Hierarchy\fP, and \fBlog4net\&.Repository\&.LoggerRepositorySkeleton\fP\&.
+.SS "void log4net\&.Repository\&.ILoggerRepository\&.Log (\fBLoggingEvent\fPlogEvent)"
+
+.PP
+Log the LoggingEvent through this repository\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlogEvent\fP the event to log
+.RE
+.PP
+.PP
+This method should not normally be used to log\&. The \fBILog\fP interface should be used for routine logging\&. This interface can be obtained using the \fBlog4net\&.LogManager\&.GetLogger(string)\fP method\&. 
+.PP
+The \fClogEvent\fP is delivered to the appropriate logger and that logger is then responsible for logging the event\&. 
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Hierarchy\fP, and \fBlog4net\&.Repository\&.LoggerRepositorySkeleton\fP\&.
+.SS "void log4net\&.Repository\&.ILoggerRepository\&.ResetConfiguration ()"
+
+.PP
+Reset the repositories configuration to a default state Reset all values contained in this instance to their default state\&. 
+.PP
+Existing loggers are not removed\&. They are just reset\&. 
+.PP
+This method should be used sparingly and with care as it will block all logging until it is completed\&. 
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Hierarchy\fP, and \fBlog4net\&.Repository\&.LoggerRepositorySkeleton\fP\&.
+.SS "void log4net\&.Repository\&.ILoggerRepository\&.Shutdown ()"
+
+.PP
+Shutdown the repositoryShutting down a repository will \fIsafely\fP close and remove all appenders in all loggers including the root logger\&. 
+.PP
+Some appenders need to be closed before the application exists\&. Otherwise, pending logging events might be lost\&. 
+.PP
+The \fBShutdown()\fP method is careful to close nested appenders before closing regular appenders\&. This is allows configurations where a regular appender is attached to a logger and again to a nested appender\&. 
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Hierarchy\fP, and \fBlog4net\&.Repository\&.LoggerRepositorySkeleton\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "ICollection log4net\&.Repository\&.ILoggerRepository\&.ConfigurationMessages\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Collection of internal messages captured during the most recent configuration process\&. 
+.PP
+Definition at line 283 of file ILoggerRepository\&.cs\&.
+.SS "bool log4net\&.Repository\&.ILoggerRepository\&.Configured\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Flag indicates if this repository has been configured\&. Flag indicates if this repository has been configured\&. 
+.PP
+Flag indicates if this repository has been configured\&. 
+.PP
+Definition at line 277 of file ILoggerRepository\&.cs\&.
+.SS "\fBLevelMap\fP log4net\&.Repository\&.ILoggerRepository\&.LevelMap\fC [get]\fP"
+
+.PP
+Get the level map for the \fBRepository\fP\&. Get the level map for the \fBRepository\fP\&. 
+.PP
+The level map defines the mappings between level names and Level objects in this repository\&. 
+.PP
+Definition at line 153 of file ILoggerRepository\&.cs\&.
+.SS "string log4net\&.Repository\&.ILoggerRepository\&.Name\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The name of the repository The name of the repository 
+.PP
+The name of the repository\&. 
+.PP
+Definition at line 107 of file ILoggerRepository\&.cs\&.
+.SS "\fBPluginMap\fP log4net\&.Repository\&.ILoggerRepository\&.PluginMap\fC [get]\fP"
+
+.PP
+The plugin map for this repository\&. The plugin map for this repository\&. 
+.PP
+The plugin map holds the IPlugin instances that have been attached to this repository\&. 
+.PP
+Definition at line 138 of file ILoggerRepository\&.cs\&.
+.SS "\fBPropertiesDictionary\fP log4net\&.Repository\&.ILoggerRepository\&.Properties\fC [get]\fP"
+
+.PP
+\fBRepository\fP specific properties \fBRepository\fP specific properties 
+.PP
+These properties can be specified on a repository specific basis\&. 
+.PP
+Definition at line 336 of file ILoggerRepository\&.cs\&.
+.SS "\fBRendererMap\fP log4net\&.Repository\&.ILoggerRepository\&.RendererMap\fC [get]\fP"
+
+.PP
+RendererMap accesses the object renderer map for this repository\&. RendererMap accesses the object renderer map for this repository\&. 
+.PP
+RendererMap accesses the object renderer map for this repository\&. 
+.PP
+The RendererMap holds a mapping between types and IObjectRenderer objects\&. 
+.PP
+Definition at line 124 of file ILoggerRepository\&.cs\&.
+.SS "\fBLevel\fP log4net\&.Repository\&.ILoggerRepository\&.Threshold\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The threshold for all events in this repository The threshold for all events in this repository 
+.PP
+The threshold for all events in this repository\&. 
+.PP
+Definition at line 166 of file ILoggerRepository\&.cs\&.
+.SH "Event Documentation"
+.PP 
+.SS "\fBLoggerRepositoryConfigurationChangedEventHandler\fP log4net\&.Repository\&.ILoggerRepository\&.ConfigurationChanged"
+
+.PP
+Event to notify that the repository has had its configuration changed\&. Event to notify that the repository has had its configuration changed\&. 
+.PP
+Event raised when the repository's configuration has been changed\&. 
+.PP
+Definition at line 323 of file ILoggerRepository\&.cs\&.
+.SS "\fBLoggerRepositoryConfigurationResetEventHandler\fP log4net\&.Repository\&.ILoggerRepository\&.ConfigurationReset"
+
+.PP
+Event to notify that the repository has had its configuration reset\&. Event to notify that the repository has had its configuration reset\&. 
+.PP
+Event raised when the repository's configuration has been reset to default\&. 
+.PP
+Definition at line 310 of file ILoggerRepository\&.cs\&.
+.SS "\fBLoggerRepositoryShutdownEventHandler\fP log4net\&.Repository\&.ILoggerRepository\&.ShutdownEvent"
+
+.PP
+Event to notify that the repository has been shutdown\&. Event to notify that the repository has been shutdown\&. 
+.PP
+Event raised when the repository has been shutdown\&. 
+.PP
+Definition at line 296 of file ILoggerRepository\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

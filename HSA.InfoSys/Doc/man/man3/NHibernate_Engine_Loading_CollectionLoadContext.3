@@ -1,0 +1,112 @@
+.TH "NHibernate.Engine.Loading.CollectionLoadContext" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.Loading.CollectionLoadContext \- 
+.PP
+Represents state associated with the processing of a given IDataReader in regards to loading collections\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCollectionLoadContext\fP (\fBLoadContexts\fP loadContexts, IDataReader resultSet)"
+.br
+.RI "\fICreates a collection load context for the given result set\&. \fP"
+.ti -1c
+.RI "\fBIPersistentCollection\fP \fBGetLoadingCollection\fP (\fBICollectionPersister\fP persister, object key)"
+.br
+.RI "\fIRetrieve the collection that is being loaded as part of processing this result set\&. \fP"
+.ti -1c
+.RI "void \fBEndLoadingCollections\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fIFinish the process of collection-loading for this bound result set\&. Mainly this involves cleaning up resources and notifying the collections that loading is complete\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBLoadContexts\fP \fBLoadContext\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDataReader \fBResultSet\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents state associated with the processing of a given IDataReader in regards to loading collections\&. 
+
+Another implementation option to consider is to not expose \fBResultSets\fP directly (in the JDBC redesign) but to always 'wrap' them and apply a [series of] context[s] to that wrapper\&. 
+.PP
+Definition at line 22 of file CollectionLoadContext\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Engine\&.Loading\&.CollectionLoadContext\&.CollectionLoadContext (\fBLoadContexts\fPloadContexts, IDataReaderresultSet)"
+
+.PP
+Creates a collection load context for the given result set\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloadContexts\fP Callback to other collection load contexts\&. 
+.br
+\fIresultSet\fP The result set this is 'wrapping'\&.
+.RE
+.PP
+
+.PP
+Definition at line 34 of file CollectionLoadContext\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Engine\&.Loading\&.CollectionLoadContext\&.EndLoadingCollections (\fBICollectionPersister\fPpersister)"
+
+.PP
+Finish the process of collection-loading for this bound result set\&. Mainly this involves cleaning up resources and notifying the collections that loading is complete\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The persister for which to complete loading\&. 
+.RE
+.PP
+
+.PP
+Definition at line 147 of file CollectionLoadContext\&.cs\&.
+.SS "\fBIPersistentCollection\fP NHibernate\&.Engine\&.Loading\&.CollectionLoadContext\&.GetLoadingCollection (\fBICollectionPersister\fPpersister, objectkey)"
+
+.PP
+Retrieve the collection that is being loaded as part of processing this result set\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The persister for the collection being requested\&. 
+.br
+\fIkey\fP The key of the collection being requested\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The loading collection (see discussion above)\&. 
+.RE
+.PP
+.PP
+Basically, there are two valid return values from this method:
+.PD 0
+
+.IP "\(bu" 2
+an instance of \fBPersistentCollection\fP which indicates to continue loading the result set row data into that returned collection instance; this may be either an instance already associated and in the midst of being loaded, or a newly instantiated instance as a matching associated collection was not found\&. 
+.IP "\(bu" 2
+\fInull\fP indicates to ignore the corresponding result set row data relating to the requested collection; this indicates that either the collection was found to already be associated with the persistence context in a fully loaded state, or it was found in a loading state associated with another result set processing context\&. 
+.PP
+
+.PP
+Definition at line 70 of file CollectionLoadContext\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

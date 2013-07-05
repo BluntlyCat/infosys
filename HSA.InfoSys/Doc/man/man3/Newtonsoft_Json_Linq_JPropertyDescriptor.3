@@ -1,0 +1,227 @@
+.TH "Newtonsoft.Json.Linq.JPropertyDescriptor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.Linq.JPropertyDescriptor \- 
+.PP
+Represents a view of a \fBJProperty\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits PropertyDescriptor\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJPropertyDescriptor\fP (string name, Type propertyType)"
+.br
+.RI "\fIInitializes a new instance of the \fBJPropertyDescriptor\fP class\&. \fP"
+.ti -1c
+.RI "override bool \fBCanResetValue\fP (object component)"
+.br
+.RI "\fIWhen overridden in a derived class, returns whether resetting an object changes its value\&. \fP"
+.ti -1c
+.RI "override object \fBGetValue\fP (object component)"
+.br
+.RI "\fIWhen overridden in a derived class, gets the current value of the property on a component\&. \fP"
+.ti -1c
+.RI "override void \fBResetValue\fP (object component)"
+.br
+.RI "\fIWhen overridden in a derived class, resets the value for this property of the component to the default value\&. \fP"
+.ti -1c
+.RI "override void \fBSetValue\fP (object component, object value)"
+.br
+.RI "\fIWhen overridden in a derived class, sets the value of the component to a different value\&. \fP"
+.ti -1c
+.RI "override bool \fBShouldSerializeValue\fP (object component)"
+.br
+.RI "\fIWhen overridden in a derived class, determines a value indicating whether the value of this property needs to be persisted\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override Type \fBComponentType\fP\fC [get]\fP"
+.br
+.RI "\fIWhen overridden in a derived class, gets the type of the component this property is bound to\&. \fP"
+.ti -1c
+.RI "override bool \fBIsReadOnly\fP\fC [get]\fP"
+.br
+.RI "\fIWhen overridden in a derived class, gets a value indicating whether this property is read-only\&. \fP"
+.ti -1c
+.RI "override Type \fBPropertyType\fP\fC [get]\fP"
+.br
+.RI "\fIWhen overridden in a derived class, gets the type of the property\&. \fP"
+.ti -1c
+.RI "override int \fBNameHashCode\fP\fC [get]\fP"
+.br
+.RI "\fIGets the hash code for the name of the member\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a view of a \fBJProperty\fP\&. 
+
+
+.PP
+Definition at line 36 of file JPropertyDescriptor\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Newtonsoft\&.Json\&.Linq\&.JPropertyDescriptor\&.JPropertyDescriptor (stringname, TypepropertyType)"
+
+.PP
+Initializes a new instance of the \fBJPropertyDescriptor\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name\&.
+.br
+\fIpropertyType\fP Type of the property\&.
+.RE
+.PP
+
+.PP
+Definition at line 45 of file JPropertyDescriptor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override bool Newtonsoft\&.Json\&.Linq\&.JPropertyDescriptor\&.CanResetValue (objectcomponent)"
+
+.PP
+When overridden in a derived class, returns whether resetting an object changes its value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if resetting the component changes its value; otherwise, false\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomponent\fP The component to test for reset capability\&. 
+.RE
+.PP
+
+.PP
+Definition at line 67 of file JPropertyDescriptor\&.cs\&.
+.SS "override object Newtonsoft\&.Json\&.Linq\&.JPropertyDescriptor\&.GetValue (objectcomponent)"
+
+.PP
+When overridden in a derived class, gets the current value of the property on a component\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The value of a property for a given component\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomponent\fP The component with the property for which to retrieve the value\&. 
+.RE
+.PP
+
+.PP
+Definition at line 80 of file JPropertyDescriptor\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JPropertyDescriptor\&.ResetValue (objectcomponent)"
+
+.PP
+When overridden in a derived class, resets the value for this property of the component to the default value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomponent\fP The component with the property value that is to be reset to the default value\&. 
+.RE
+.PP
+
+.PP
+Definition at line 92 of file JPropertyDescriptor\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JPropertyDescriptor\&.SetValue (objectcomponent, objectvalue)"
+
+.PP
+When overridden in a derived class, sets the value of the component to a different value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomponent\fP The component with the property value that is to be set\&. 
+.br
+\fIvalue\fP The new value\&. 
+.RE
+.PP
+
+.PP
+Definition at line 102 of file JPropertyDescriptor\&.cs\&.
+.SS "override bool Newtonsoft\&.Json\&.Linq\&.JPropertyDescriptor\&.ShouldSerializeValue (objectcomponent)"
+
+.PP
+When overridden in a derived class, determines a value indicating whether the value of this property needs to be persisted\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the property should be persisted; otherwise, false\&. 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomponent\fP The component with the property to be examined for persistence\&. 
+.RE
+.PP
+
+.PP
+Definition at line 117 of file JPropertyDescriptor\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override Type Newtonsoft\&.Json\&.Linq\&.JPropertyDescriptor\&.ComponentType\fC [get]\fP"
+
+.PP
+When overridden in a derived class, gets the type of the component this property is bound to\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A T:System\&.Type that represents the type of component this property is bound to\&. When the M:System\&.ComponentModel\&.PropertyDescriptor\&.GetValue(System\&.Object) or M:System\&.ComponentModel\&.PropertyDescriptor\&.SetValue(System\&.Object,System\&.Object) methods are invoked, the object specified might be an instance of this type\&. 
+.RE
+.PP
+
+.PP
+Definition at line 129 of file JPropertyDescriptor\&.cs\&.
+.SS "override bool Newtonsoft\&.Json\&.Linq\&.JPropertyDescriptor\&.IsReadOnly\fC [get]\fP"
+
+.PP
+When overridden in a derived class, gets a value indicating whether this property is read-only\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the property is read-only; otherwise, false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 140 of file JPropertyDescriptor\&.cs\&.
+.SS "override int Newtonsoft\&.Json\&.Linq\&.JPropertyDescriptor\&.NameHashCode\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Gets the hash code for the name of the member\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The hash code for the name of the member\&. 
+.RE
+.PP
+
+.PP
+Definition at line 163 of file JPropertyDescriptor\&.cs\&.
+.SS "override Type Newtonsoft\&.Json\&.Linq\&.JPropertyDescriptor\&.PropertyType\fC [get]\fP"
+
+.PP
+When overridden in a derived class, gets the type of the property\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A T:System\&.Type that represents the type of the property\&. 
+.RE
+.PP
+
+.PP
+Definition at line 151 of file JPropertyDescriptor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,558 @@
+.TH "Newtonsoft.Json.Linq.JObject" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.Linq.JObject \- 
+.PP
+Represents a JSON object\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNewtonsoft\&.Json\&.Linq\&.JContainer\fP, IDictionary< string, JToken >, INotifyPropertyChanged, ICustomTypeDescriptor, and INotifyPropertyChanging\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJObject\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBJObject\fP class\&. \fP"
+.ti -1c
+.RI "\fBJObject\fP (\fBJObject\fP other)"
+.br
+.RI "\fIInitializes a new instance of the \fBJObject\fP class from another \fBJObject\fP object\&. \fP"
+.ti -1c
+.RI "\fBJObject\fP (params object[] content)"
+.br
+.RI "\fIInitializes a new instance of the \fBJObject\fP class with the specified content\&. \fP"
+.ti -1c
+.RI "\fBJObject\fP (object content)"
+.br
+.RI "\fIInitializes a new instance of the \fBJObject\fP class with the specified content\&. \fP"
+.ti -1c
+.RI "IEnumerable< \fBJProperty\fP > \fBProperties\fP ()"
+.br
+.RI "\fIGets an IEnumerable{JProperty} of this object's properties\&. \fP"
+.ti -1c
+.RI "\fBJProperty\fP \fBProperty\fP (string name)"
+.br
+.RI "\fIGets a \fBJProperty\fP the specified name\&. \fP"
+.ti -1c
+.RI "JEnumerable< \fBJToken\fP > \fBPropertyValues\fP ()"
+.br
+.RI "\fIGets an JEnumerable{JToken} of this object's property values\&. \fP"
+.ti -1c
+.RI "override void \fBWriteTo\fP (\fBJsonWriter\fP writer, params \fBJsonConverter\fP[] converters)"
+.br
+.RI "\fIWrites this token to a \fBJsonWriter\fP\&. \fP"
+.ti -1c
+.RI "\fBJToken\fP \fBGetValue\fP (string propertyName)"
+.br
+.RI "\fIGets the \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP with the specified property name\&. \fP"
+.ti -1c
+.RI "\fBJToken\fP \fBGetValue\fP (string propertyName, StringComparison comparison)"
+.br
+.RI "\fIGets the \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP with the specified property name\&. The exact property name will be searched for first and if no matching property is found then the StringComparison will be used to match a property\&. \fP"
+.ti -1c
+.RI "bool \fBTryGetValue\fP (string propertyName, StringComparison comparison, out \fBJToken\fP value)"
+.br
+.RI "\fITries to get the \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP with the specified property name\&. The exact property name will be searched for first and if no matching property is found then the StringComparison will be used to match a property\&. \fP"
+.ti -1c
+.RI "void \fBAdd\fP (string propertyName, \fBJToken\fP value)"
+.br
+.RI "\fIAdds the specified property name\&. \fP"
+.ti -1c
+.RI "bool \fBRemove\fP (string propertyName)"
+.br
+.RI "\fIRemoves the property with the specified name\&. \fP"
+.ti -1c
+.RI "bool \fBTryGetValue\fP (string propertyName, out \fBJToken\fP value)"
+.br
+.RI "\fITries the get value\&. \fP"
+.ti -1c
+.RI "IEnumerator< KeyValuePair
+.br
+< string, \fBJToken\fP > > \fBGetEnumerator\fP ()"
+.br
+.RI "\fIReturns an enumerator that iterates through the collection\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static new \fBJObject\fP \fBLoad\fP (\fBJsonReader\fP reader)"
+.br
+.RI "\fILoads an \fBJObject\fP from a \fBJsonReader\fP\&. \fP"
+.ti -1c
+.RI "static new \fBJObject\fP \fBParse\fP (string json)"
+.br
+.RI "\fILoad a \fBJObject\fP from a string that contains JSON\&. \fP"
+.ti -1c
+.RI "static new \fBJObject\fP \fBFromObject\fP (object o)"
+.br
+.RI "\fICreates a \fBJObject\fP from an object\&. \fP"
+.ti -1c
+.RI "static new \fBJObject\fP \fBFromObject\fP (object o, \fBJsonSerializer\fP jsonSerializer)"
+.br
+.RI "\fICreates a \fBJArray\fP from an object\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBOnPropertyChanged\fP (string propertyName)"
+.br
+.RI "\fIRaises the \fBPropertyChanged\fP event with the provided arguments\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnPropertyChanging\fP (string propertyName)"
+.br
+.RI "\fIRaises the \fBPropertyChanging\fP event with the provided arguments\&. \fP"
+.ti -1c
+.RI "override DynamicMetaObject \fBGetMetaObject\fP (Expression parameter)"
+.br
+.RI "\fIReturns the T:System\&.Dynamic\&.DynamicMetaObject responsible for binding operations performed on this object\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override IList< \fBJToken\fP > \fBChildrenTokens\fP\fC [get]\fP"
+.br
+.RI "\fIGets the container's children tokens\&. \fP"
+.ti -1c
+.RI "override \fBJTokenType\fP \fBType\fP\fC [get]\fP"
+.br
+.RI "\fIGets the node type for this \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "override \fBJToken\fP \fBthis[object key]\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the \fBJToken\fP with the specified key\&. \fP"
+.ti -1c
+.RI "\fBJToken\fP \fBthis[string propertyName]\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP with the specified property name\&. \fP"
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "PropertyChangedEventHandler \fBPropertyChanged\fP"
+.br
+.RI "\fIOccurs when a property value changes\&. \fP"
+.ti -1c
+.RI "PropertyChangingEventHandler \fBPropertyChanging\fP"
+.br
+.RI "\fIOccurs when a property value is changing\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a JSON object\&. 
+
+\fC \fP
+.PP
+\fC \fP
+.PP
+Definition at line 54 of file JObject\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Newtonsoft\&.Json\&.Linq\&.JObject\&.JObject ()"
+
+.PP
+Initializes a new instance of the \fBJObject\fP class\&. 
+.PP
+Definition at line 88 of file JObject\&.cs\&.
+.SS "Newtonsoft\&.Json\&.Linq\&.JObject\&.JObject (\fBJObject\fPother)"
+
+.PP
+Initializes a new instance of the \fBJObject\fP class from another \fBJObject\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP A \fBJObject\fP object to copy from\&.
+.RE
+.PP
+
+.PP
+Definition at line 96 of file JObject\&.cs\&.
+.SS "Newtonsoft\&.Json\&.Linq\&.JObject\&.JObject (params object[]content)"
+
+.PP
+Initializes a new instance of the \fBJObject\fP class with the specified content\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontent\fP The contents of the object\&.
+.RE
+.PP
+
+.PP
+Definition at line 105 of file JObject\&.cs\&.
+.SS "Newtonsoft\&.Json\&.Linq\&.JObject\&.JObject (objectcontent)"
+
+.PP
+Initializes a new instance of the \fBJObject\fP class with the specified content\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontent\fP The contents of the object\&.
+.RE
+.PP
+
+.PP
+Definition at line 114 of file JObject\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Newtonsoft\&.Json\&.Linq\&.JObject\&.Add (stringpropertyName, \fBJToken\fPvalue)"
+
+.PP
+Adds the specified property name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP Name of the property\&.
+.br
+\fIvalue\fP The value\&.
+.RE
+.PP
+
+.PP
+Definition at line 443 of file JObject\&.cs\&.
+.SS "static new \fBJObject\fP Newtonsoft\&.Json\&.Linq\&.JObject\&.FromObject (objecto)\fC [static]\fP"
+
+.PP
+Creates a \fBJObject\fP from an object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIo\fP The object that will be used to create \fBJObject\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJObject\fP with the values of the specified object
+.RE
+.PP
+
+.PP
+Definition at line 343 of file JObject\&.cs\&.
+.SS "static new \fBJObject\fP Newtonsoft\&.Json\&.Linq\&.JObject\&.FromObject (objecto, \fBJsonSerializer\fPjsonSerializer)\fC [static]\fP"
+
+.PP
+Creates a \fBJArray\fP from an object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIo\fP The object that will be used to create \fBJArray\fP\&.
+.br
+\fIjsonSerializer\fP The \fBJsonSerializer\fP that will be used to read the object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJArray\fP with the values of the specified object
+.RE
+.PP
+
+.PP
+Definition at line 354 of file JObject\&.cs\&.
+.SS "IEnumerator<KeyValuePair<string, \fBJToken\fP> > Newtonsoft\&.Json\&.Linq\&.JObject\&.GetEnumerator ()"
+
+.PP
+Returns an enumerator that iterates through the collection\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A T:System\&.Collections\&.Generic\&.IEnumerator`1 that can be used to iterate through the collection\&. 
+.RE
+.PP
+
+.PP
+Definition at line 571 of file JObject\&.cs\&.
+.SS "override DynamicMetaObject Newtonsoft\&.Json\&.Linq\&.JObject\&.GetMetaObject (Expressionparameter)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Returns the T:System\&.Dynamic\&.DynamicMetaObject responsible for binding operations performed on this object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameter\fP The expression tree representation of the runtime value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The T:System\&.Dynamic\&.DynamicMetaObject to bind this object\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP\&.
+.PP
+Definition at line 768 of file JObject\&.cs\&.
+.SS "\fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JObject\&.GetValue (stringpropertyName)"
+
+.PP
+Gets the \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP with the specified property name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP Name of the property\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP with the specified property name\&.
+.RE
+.PP
+
+.PP
+Definition at line 386 of file JObject\&.cs\&.
+.SS "\fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JObject\&.GetValue (stringpropertyName, StringComparisoncomparison)"
+
+.PP
+Gets the \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP with the specified property name\&. The exact property name will be searched for first and if no matching property is found then the StringComparison will be used to match a property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP Name of the property\&.
+.br
+\fIcomparison\fP One of the enumeration values that specifies how the strings will be compared\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP with the specified property name\&.
+.RE
+.PP
+
+.PP
+Definition at line 399 of file JObject\&.cs\&.
+.SS "static new \fBJObject\fP Newtonsoft\&.Json\&.Linq\&.JObject\&.Load (\fBJsonReader\fPreader)\fC [static]\fP"
+
+.PP
+Loads an \fBJObject\fP from a \fBJsonReader\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP A \fBJsonReader\fP that will be read for the content of the \fBJObject\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJObject\fP that contains the JSON that was read from the specified \fBJsonReader\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 290 of file JObject\&.cs\&.
+.SS "virtual void Newtonsoft\&.Json\&.Linq\&.JObject\&.OnPropertyChanged (stringpropertyName)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Raises the \fBPropertyChanged\fP event with the provided arguments\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP Name of the property\&.
+.RE
+.PP
+
+.PP
+Definition at line 583 of file JObject\&.cs\&.
+.SS "virtual void Newtonsoft\&.Json\&.Linq\&.JObject\&.OnPropertyChanging (stringpropertyName)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Raises the \fBPropertyChanging\fP event with the provided arguments\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP Name of the property\&.
+.RE
+.PP
+
+.PP
+Definition at line 594 of file JObject\&.cs\&.
+.SS "static new \fBJObject\fP Newtonsoft\&.Json\&.Linq\&.JObject\&.Parse (stringjson)\fC [static]\fP"
+
+.PP
+Load a \fBJObject\fP from a string that contains JSON\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIjson\fP A \fBString\fP that contains JSON\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJObject\fP populated from the string that contains JSON\&.
+.RE
+.PP
+\fC \fP
+.PP
+\fC \fP
+.PP
+Definition at line 326 of file JObject\&.cs\&.
+.SS "IEnumerable<\fBJProperty\fP> Newtonsoft\&.Json\&.Linq\&.JObject\&.Properties ()"
+
+.PP
+Gets an IEnumerable{JProperty} of this object's properties\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An IEnumerable{JProperty} of this object's properties\&.
+.RE
+.PP
+
+.PP
+Definition at line 196 of file JObject\&.cs\&.
+.SS "\fBJProperty\fP Newtonsoft\&.Json\&.Linq\&.JObject\&.Property (stringname)"
+
+.PP
+Gets a \fBJProperty\fP the specified name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The property name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJProperty\fP with the specified name or null\&.
+.RE
+.PP
+
+.PP
+Definition at line 206 of file JObject\&.cs\&.
+.SS "JEnumerable<\fBJToken\fP> Newtonsoft\&.Json\&.Linq\&.JObject\&.PropertyValues ()"
+
+.PP
+Gets an JEnumerable{JToken} of this object's property values\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An JEnumerable{JToken} of this object's property values\&.
+.RE
+.PP
+
+.PP
+Definition at line 220 of file JObject\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Linq\&.JObject\&.Remove (stringpropertyName)"
+
+.PP
+Removes the property with the specified name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP Name of the property\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if item was successfully removed; otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 464 of file JObject\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Linq\&.JObject\&.TryGetValue (stringpropertyName, StringComparisoncomparison, out \fBJToken\fPvalue)"
+
+.PP
+Tries to get the \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP with the specified property name\&. The exact property name will be searched for first and if no matching property is found then the StringComparison will be used to match a property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP Name of the property\&.
+.br
+\fIvalue\fP The value\&.
+.br
+\fIcomparison\fP One of the enumeration values that specifies how the strings will be compared\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if a value was successfully retrieved; otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 431 of file JObject\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Linq\&.JObject\&.TryGetValue (stringpropertyName, out \fBJToken\fPvalue)"
+
+.PP
+Tries the get value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP Name of the property\&.
+.br
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if a value was successfully retrieved; otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 480 of file JObject\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JObject\&.WriteTo (\fBJsonWriter\fPwriter, params \fBJsonConverter\fP[]converters)\fC [virtual]\fP"
+
+.PP
+Writes this token to a \fBJsonWriter\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP A \fBJsonWriter\fP into which this method will write\&.
+.br
+\fIconverters\fP A collection of \fBJsonConverter\fP which will be used when writing the token\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP\&.
+.PP
+Definition at line 369 of file JObject\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override IList<\fBJToken\fP> Newtonsoft\&.Json\&.Linq\&.JObject\&.ChildrenTokens\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Gets the container's children tokens\&. The container's children tokens\&.
+.PP
+Definition at line 69 of file JObject\&.cs\&.
+.SS "override \fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JObject\&.this[object key]\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the \fBJToken\fP with the specified key\&. The \fBJToken\fP with the specified key\&.
+.PP
+Definition at line 230 of file JObject\&.cs\&.
+.SS "\fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JObject\&.this[string propertyName]\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP with the specified property name\&. 
+.PP
+Definition at line 258 of file JObject\&.cs\&.
+.SS "override \fBJTokenType\fP Newtonsoft\&.Json\&.Linq\&.JObject\&.Type\fC [get]\fP"
+
+.PP
+Gets the node type for this \fBJToken\fP\&. The type\&.
+.PP
+Definition at line 188 of file JObject\&.cs\&.
+.SH "Event Documentation"
+.PP 
+.SS "PropertyChangedEventHandler Newtonsoft\&.Json\&.Linq\&.JObject\&.PropertyChanged"
+
+.PP
+Occurs when a property value changes\&. 
+.PP
+Definition at line 76 of file JObject\&.cs\&.
+.SS "PropertyChangingEventHandler Newtonsoft\&.Json\&.Linq\&.JObject\&.PropertyChanging"
+
+.PP
+Occurs when a property value is changing\&. 
+.PP
+Definition at line 82 of file JObject\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

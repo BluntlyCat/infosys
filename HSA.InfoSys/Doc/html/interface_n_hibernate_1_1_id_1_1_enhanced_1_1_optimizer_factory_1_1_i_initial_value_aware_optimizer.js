@@ -1,0 +1,4 @@
+var interface_n_hibernate_1_1_id_1_1_enhanced_1_1_optimizer_factory_1_1_i_initial_value_aware_optimizer =
+[
+    [ "InjectInitialValue", "interface_n_hibernate_1_1_id_1_1_enhanced_1_1_optimizer_factory_1_1_i_initial_value_aware_optimizer.html#aa853a98d843aef31ba7c65b82d16a9ed", null ]
+];

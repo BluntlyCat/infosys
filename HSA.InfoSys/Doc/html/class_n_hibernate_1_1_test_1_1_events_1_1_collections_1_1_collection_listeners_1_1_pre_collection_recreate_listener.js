@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_collection_listeners_1_1_pre_collection_recreate_listener =
+[
+    [ "PreCollectionRecreateListener", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_collection_listeners_1_1_pre_collection_recreate_listener.html#a071d3a6c8b6fd8fbabf8ba2aefcf0dea", null ],
+    [ "OnPreRecreateCollection", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_collection_listeners_1_1_pre_collection_recreate_listener.html#ab5135c25f0c16a22ea942c1758168e80", null ]
+];

@@ -1,0 +1,247 @@
+.TH "NHibernate.Persister.Entity.SingleTableEntityPersister" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Persister.Entity.SingleTableEntityPersister \- 
+.PP
+Default implementation of the \fCClassPersister\fP interface\&. Implements the 'table-per-class hierarchy' mapping strategy for an entity class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.IQueryable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSingleTableEntityPersister\fP (\fBPersistentClass\fP persistentClass, \fBICacheConcurrencyStrategy\fP cache, \fBISessionFactoryImplementor\fP factory, \fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "override string \fBGetSubclassForDiscriminatorValue\fP (object value)"
+.br
+.RI "\fIGet the concrete subclass corresponding to the given discriminator value \fP"
+.ti -1c
+.RI "override string \fBFromTableFragment\fP (string name)"
+.br
+.RI "\fIGet the main from table fragment, given a query alias (optional operation) \fP"
+.ti -1c
+.RI "override string \fBFilterFragment\fP (string alias)"
+.br
+.ti -1c
+.RI "override string \fBOneToManyFilterFragment\fP (string alias)"
+.br
+.ti -1c
+.RI "override string \fBGetSubclassPropertyTableName\fP (int i)"
+.br
+.RI "\fIReturn the table name used to persist the numbered property of the class or a subclass (optional operation) \fP"
+.ti -1c
+.RI "int \fBGetSubclassPropertyTableNumber\fP (string propertyName, string entityName)"
+.br
+.ti -1c
+.RI "override string \fBGetSubclassTableName\fP (int j)"
+.br
+.RI "\fIGet the name of the table with the given index from the internal array\&. \fP"
+.ti -1c
+.RI "override string \fBGetPropertyTableName\fP (string propertyName)"
+.br
+.RI "\fIGet the table name for the given property path \fP"
+.ti -1c
+.RI "override void \fBPostInstantiate\fP ()"
+.br
+.RI "\fIFinish the initialization of this object, once all \fCClassPersisters\fP have been instantiated\&. Called only once, before any other method\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBIsInverseTable\fP (int j)"
+.br
+.ti -1c
+.RI "override bool \fBIsInverseSubclassTable\fP (int j)"
+.br
+.ti -1c
+.RI "override string \fBGetTableName\fP (int table)"
+.br
+.ti -1c
+.RI "override string[] \fBGetKeyColumns\fP (int table)"
+.br
+.ti -1c
+.RI "override bool \fBIsTableCascadeDeleteEnabled\fP (int j)"
+.br
+.ti -1c
+.RI "override bool \fBIsPropertyOfTable\fP (int property, int table)"
+.br
+.ti -1c
+.RI "override bool \fBIsSubclassTableSequentialSelect\fP (int table)"
+.br
+.ti -1c
+.RI "override void \fBAddDiscriminatorToSelect\fP (\fBSelectFragment\fP select, string name, string suffix)"
+.br
+.ti -1c
+.RI "override int \fBGetSubclassPropertyTableNumber\fP (int i)"
+.br
+.ti -1c
+.RI "override void \fBAddDiscriminatorToInsert\fP (\fBSqlInsertBuilder\fP insert)"
+.br
+.ti -1c
+.RI "override bool \fBIsSubclassPropertyDeferred\fP (string propertyName, string entityName)"
+.br
+.ti -1c
+.RI "override \fBSqlString\fP \fBGetSequentialSelect\fP (string entityName)"
+.br
+.ti -1c
+.RI "override string[] \fBGetSubclassTableKeyColumns\fP (int j)"
+.br
+.ti -1c
+.RI "override bool \fBIsClassOrSuperclassTable\fP (int j)"
+.br
+.ti -1c
+.RI "override bool \fBIsNullableTable\fP (int j)"
+.br
+.ti -1c
+.RI "override bool \fBIsNullableSubclassTable\fP (int j)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBDiscriminatorColumnName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBDiscriminatorFormulaTemplate\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBIType\fP \fBDiscriminatorType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBDiscriminatorSQLValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override object \fBDiscriminatorValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string[] \fBSubclassClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string[] \fBPropertySpaces\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int[] \fBSubclassColumnTableNumberClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int[] \fBSubclassFormulaTableNumberClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsMultiTable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string[] \fBConstraintOrderedTableNameClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string[][] \fBContraintOrderedTableKeyColumnClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBTableName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsDiscriminatorFormula\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBDiscriminatorFormula\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int \fBTableSpan\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBHasSequentialSelect\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int \fBSubclassTableSpan\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Default implementation of the \fCClassPersister\fP interface\&. Implements the 'table-per-class hierarchy' mapping strategy for an entity class\&. 
+
+
+.PP
+Definition at line 18 of file SingleTableEntityPersister\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override string NHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\&.FromTableFragment (stringalias)\fC [virtual]\fP"
+
+.PP
+Get the main from table fragment, given a query alias (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 500 of file SingleTableEntityPersister\&.cs\&.
+.SS "override string NHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\&.GetPropertyTableName (stringpropertyName)\fC [virtual]\fP"
+
+.PP
+Get the table name for the given property path 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 709 of file SingleTableEntityPersister\&.cs\&.
+.SS "override string NHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\&.GetSubclassForDiscriminatorValue (objectvalue)\fC [virtual]\fP"
+
+.PP
+Get the concrete subclass corresponding to the given discriminator value 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 450 of file SingleTableEntityPersister\&.cs\&.
+.SS "override string NHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\&.GetSubclassPropertyTableName (inti)\fC [virtual]\fP"
+
+.PP
+Return the table name used to persist the numbered property of the class or a subclass (optional operation) 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 570 of file SingleTableEntityPersister\&.cs\&.
+.SS "override string NHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\&.GetSubclassTableName (intnumber)\fC [virtual]\fP"
+
+.PP
+Get the name of the table with the given index from the internal array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP The index into the internal array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 679 of file SingleTableEntityPersister\&.cs\&.
+.SS "override void NHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\&.PostInstantiate ()\fC [virtual]\fP"
+
+.PP
+Finish the initialization of this object, once all \fCClassPersisters\fP have been instantiated\&. Called only once, before any other method\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 716 of file SingleTableEntityPersister\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,82 @@
+.TH "log4net.Appender.IAppender" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.IAppender \- 
+.PP
+Implement this interface for your own strategies for printing log statements\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBlog4net\&.Appender\&.AppenderSkeleton\fP, and \fBlog4net\&.Appender\&.IBulkAppender\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBClose\fP ()"
+.br
+.RI "\fICloses the appender and releases resources\&. \fP"
+.ti -1c
+.RI "void \fBDoAppend\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fILog the logging event in \fBAppender\fP specific way\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the name of this appender\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Implement this interface for your own strategies for printing log statements\&. 
+
+Implementors should consider extending the \fBAppenderSkeleton\fP class which provides a default implementation of this interface\&. 
+.PP
+Appenders can also implement the IOptionHandler interface\&. Therefore they would require that the IOptionHandler\&.ActivateOptions() method be called after the appenders properties have been configured\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 42 of file IAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Appender\&.IAppender\&.Close ()"
+
+.PP
+Closes the appender and releases resources\&. Releases any resources allocated within the appender such as file handles, network connections, etc\&. 
+.PP
+It is a programming error to append to a closed appender\&. 
+.PP
+Implemented in \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.SS "void log4net\&.Appender\&.IAppender\&.DoAppend (\fBLoggingEvent\fPloggingEvent)"
+
+.PP
+Log the logging event in \fBAppender\fP specific way\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP The event to log
+.RE
+.PP
+.PP
+This method is called to log a message into this appender\&. 
+.PP
+Implemented in \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "string log4net\&.Appender\&.IAppender\&.Name\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the name of this appender\&. The name of the appender\&.
+.PP
+The name uniquely identifies the appender\&.
+.PP
+Definition at line 76 of file IAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,59 @@
+.TH "NHibernate.Bytecode.Lightweight.BytecodeProviderImpl" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Bytecode.Lightweight.BytecodeProviderImpl \- 
+.PP
+Factory that generate object based on \fBIReflectionOptimizer\fP needed to replace the use of reflection\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Bytecode\&.AbstractBytecodeProvider\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override \fBIReflectionOptimizer\fP \fBGetReflectionOptimizer\fP (System\&.Type mappedClass, \fBIGetter\fP[] getters, \fBISetter\fP[] setters)"
+.br
+.RI "\fIGenerate the \fBIReflectionOptimizer\fP object \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Factory that generate object based on \fBIReflectionOptimizer\fP needed to replace the use of reflection\&. 
+
+Used in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP and \fBNHibernate\&.Type\&.ComponentType\fP 
+.PP
+Definition at line 13 of file BytecodeProviderImpl\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBIReflectionOptimizer\fP NHibernate\&.Bytecode\&.Lightweight\&.BytecodeProviderImpl\&.GetReflectionOptimizer (System\&.TypemappedClass, \fBIGetter\fP[]getters, \fBISetter\fP[]setters)\fC [virtual]\fP"
+
+.PP
+Generate the \fBIReflectionOptimizer\fP object 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImappedClass\fP The target class
+.br
+\fIsetters\fP Array of setters
+.br
+\fIgetters\fP Array of getters
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+if the generation fails
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Bytecode\&.AbstractBytecodeProvider\fP\&.
+.PP
+Definition at line 25 of file BytecodeProviderImpl\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,6 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_mapping_of_private_members_on_root_entity =
+[
+    [ "MyClass", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_mapping_of_private0788ce2052546d7303a3d83145f62ee1.html", null ],
+    [ "MapClassWithIdAndProperty", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_mapping_of_private_members_on_root_entity.html#ab06028d19712c565658500cf748516c6", null ],
+    [ "WhenPrivateMemberDoesNotExistsThenThrow", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_mapping_of_private_members_on_root_entity.html#ae59c6c5e4ecdebf7a5e49f583ab18461", null ]
+];

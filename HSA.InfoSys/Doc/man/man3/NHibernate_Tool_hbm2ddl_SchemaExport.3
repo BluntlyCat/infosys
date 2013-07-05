@@ -1,0 +1,207 @@
+.TH "NHibernate.Tool.hbm2ddl.SchemaExport" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Tool.hbm2ddl.SchemaExport \- 
+.PP
+Generates ddl to export table schema for a configured \fCConfiguration\fP to the database  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSchemaExport\fP (\fBConfiguration\fP cfg)"
+.br
+.RI "\fICreate a schema exported for a given Configuration \fP"
+.ti -1c
+.RI "\fBSchemaExport\fP (\fBConfiguration\fP cfg, IDictionary< string, string > configProperties)"
+.br
+.RI "\fICreate a schema exporter for the given Configuration, with the given database connection properties \fP"
+.ti -1c
+.RI "\fBSchemaExport\fP \fBSetOutputFile\fP (string filename)"
+.br
+.RI "\fISet the output filename\&. The generated script will be written to this file \fP"
+.ti -1c
+.RI "\fBSchemaExport\fP \fBSetDelimiter\fP (string delimiter)"
+.br
+.RI "\fISet the end of statement delimiter \fP"
+.ti -1c
+.RI "void \fBCreate\fP (bool script, bool export)"
+.br
+.RI "\fIRun the schema creation script \fP"
+.ti -1c
+.RI "void \fBCreate\fP (Action< string > scriptAction, bool export)"
+.br
+.ti -1c
+.RI "void \fBDrop\fP (bool script, bool export)"
+.br
+.RI "\fIRun the drop schema script \fP"
+.ti -1c
+.RI "void \fBExecute\fP (bool script, bool export, bool justDrop, IDbConnection connection, TextWriter exportOutput)"
+.br
+.RI "\fIExecutes the Export of the \fBSchema\fP in the given connection \fP"
+.ti -1c
+.RI "void \fBExecute\fP (Action< string > scriptAction, bool export, bool justDrop, IDbConnection connection, TextWriter exportOutput)"
+.br
+.ti -1c
+.RI "void \fBExecute\fP (bool script, bool export, bool justDrop)"
+.br
+.RI "\fIExecutes the Export of the \fBSchema\fP\&. \fP"
+.ti -1c
+.RI "void \fBExecute\fP (Action< string > scriptAction, bool export, bool justDrop)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Generates ddl to export table schema for a configured \fCConfiguration\fP to the database 
+
+This Class can be used directly or the command line wrapper NHibernate\&.Tool\&.hbm2ddl\&.exe can be used when a dll can not be directly used\&. 
+.PP
+Definition at line 21 of file SchemaExport\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Tool\&.hbm2ddl\&.SchemaExport\&.SchemaExport (\fBConfiguration\fPcfg)"
+
+.PP
+Create a schema exported for a given Configuration 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcfg\fP The \fBNHibernate\fP Configuration to generate the schema from\&.
+.RE
+.PP
+
+.PP
+Definition at line 38 of file SchemaExport\&.cs\&.
+.SS "NHibernate\&.Tool\&.hbm2ddl\&.SchemaExport\&.SchemaExport (\fBConfiguration\fPcfg, IDictionary< string, string >configProperties)"
+
+.PP
+Create a schema exporter for the given Configuration, with the given database connection properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcfg\fP The \fBNHibernate\fP Configuration to generate the schema from\&.
+.br
+\fIconfigProperties\fP The \fBProperties\fP to use when connecting to the Database\&.
+.RE
+.PP
+
+.PP
+Definition at line 46 of file SchemaExport\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Tool\&.hbm2ddl\&.SchemaExport\&.Create (boolscript, boolexport)"
+
+.PP
+Run the schema creation script 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscript\fP if the ddl should be outputted in the Console\&.
+.br
+\fIexport\fP if the ddl should be executed against the Database\&.
+.RE
+.PP
+.PP
+This is a convenience method that calls \fBExecute(bool, bool, bool)\fP and sets the justDrop parameter to false\&. 
+.PP
+Definition at line 103 of file SchemaExport\&.cs\&.
+.SS "void NHibernate\&.Tool\&.hbm2ddl\&.SchemaExport\&.Drop (boolscript, boolexport)"
+
+.PP
+Run the drop schema script 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscript\fP if the ddl should be outputted in the Console\&.
+.br
+\fIexport\fP if the ddl should be executed against the Database\&.
+.RE
+.PP
+.PP
+This is a convenience method that calls \fBExecute(bool, bool, bool)\fP and sets the justDrop parameter to true\&. 
+.PP
+Definition at line 122 of file SchemaExport\&.cs\&.
+.SS "void NHibernate\&.Tool\&.hbm2ddl\&.SchemaExport\&.Execute (boolscript, boolexport, booljustDrop, IDbConnectionconnection, TextWriterexportOutput)"
+
+.PP
+Executes the Export of the \fBSchema\fP in the given connection 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscript\fP if the ddl should be outputted in the Console\&.
+.br
+\fIexport\fP if the ddl should be executed against the Database\&.
+.br
+\fIjustDrop\fP if only the ddl to drop the Database objects should be executed\&.
+.br
+\fIconnection\fP The connection to use when executing the commands when export is \&. Must be an opened connection\&. The method doesn't close the connection\&. 
+.br
+\fIexportOutput\fP The writer used to output the generated schema
+.RE
+.PP
+.PP
+This method allows for both the drop and create ddl script to be executed\&. This overload is provided mainly to enable use of in memory databases\&. It does NOT close the given connection! 
+.PP
+Definition at line 203 of file SchemaExport\&.cs\&.
+.SS "void NHibernate\&.Tool\&.hbm2ddl\&.SchemaExport\&.Execute (boolscript, boolexport, booljustDrop)"
+
+.PP
+Executes the Export of the \fBSchema\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIscript\fP if the ddl should be outputted in the Console\&.
+.br
+\fIexport\fP if the ddl should be executed against the Database\&.
+.br
+\fIjustDrop\fP if only the ddl to drop the Database objects should be executed\&.
+.RE
+.PP
+.PP
+This method allows for both the drop and create ddl script to be executed\&. 
+.PP
+Definition at line 282 of file SchemaExport\&.cs\&.
+.SS "\fBSchemaExport\fP NHibernate\&.Tool\&.hbm2ddl\&.SchemaExport\&.SetDelimiter (stringdelimiter)"
+
+.PP
+Set the end of statement delimiter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdelimiter\fP The end of statement delimiter\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSchemaExport\fP object\&.
+.RE
+.PP
+
+.PP
+Definition at line 88 of file SchemaExport\&.cs\&.
+.SS "\fBSchemaExport\fP NHibernate\&.Tool\&.hbm2ddl\&.SchemaExport\&.SetOutputFile (stringfilename)"
+
+.PP
+Set the output filename\&. The generated script will be written to this file 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP The name of the file to output the ddl to\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSchemaExport\fP object\&.
+.RE
+.PP
+
+.PP
+Definition at line 77 of file SchemaExport\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

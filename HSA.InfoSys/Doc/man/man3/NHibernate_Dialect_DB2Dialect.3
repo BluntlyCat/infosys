@@ -1,0 +1,220 @@
+.TH "NHibernate.Dialect.DB2Dialect" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.DB2Dialect \- 
+.PP
+An SQL dialect for DB2\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.DB2400Dialect\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDB2Dialect\fP ()"
+.br
+.ti -1c
+.RI "override string \fBGetSelectSequenceNextValString\fP (string sequenceName)"
+.br
+.RI "\fIGenerate the select expression fragment that will retrieve the next value of a sequence as part of another (typically DML) statement\&. \fP"
+.ti -1c
+.RI "override string \fBGetSequenceNextValString\fP (string sequenceName)"
+.br
+.ti -1c
+.RI "override string \fBGetCreateSequenceString\fP (string sequenceName)"
+.br
+.ti -1c
+.RI "override string \fBGetDropSequenceString\fP (string sequenceName)"
+.br
+.ti -1c
+.RI "override \fBSqlString\fP \fBGetLimitString\fP (\fBSqlString\fP querySqlString, \fBSqlString\fP offset, \fBSqlString\fP limit)"
+.br
+.RI "\fIAttempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBAddColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBDropConstraints\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsIdentityColumns\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBIdentitySelectString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBIdentityColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBIdentityInsertString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsSequences\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsLimit\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBUseMaxForLimit\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBForUpdateString\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An SQL dialect for DB2\&. 
+
+The \fBDB2Dialect\fP defaults the following configuration properties: Property Default Value  connection\&.driver_class \fBNHibernate\&.Driver\&.DB2Driver\fP  
+.PP
+Definition at line 25 of file DB2Dialect\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Dialect\&.DB2Dialect\&.DB2Dialect ()"
+
+.PP
+
+.PP
+Definition at line 28 of file DB2Dialect\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override string NHibernate\&.Dialect\&.DB2Dialect\&.GetCreateSequenceString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 182 of file DB2Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.DB2Dialect\&.GetDropSequenceString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 188 of file DB2Dialect\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Dialect\&.DB2Dialect\&.GetLimitString (\fBSqlString\fPqueryString, \fBSqlString\fPoffset, \fBSqlString\fPlimit)\fC [virtual]\fP"
+
+.PP
+Attempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryString\fP The SqlString to base the limit query off\&.
+.br
+\fIoffset\fP Offset of the first row to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no limit is requested\&. This should have already been adjusted to account for OffsetStartsAtOne\&.
+.br
+\fIlimit\fP Maximum number of rows to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no offset is requested\&. This should have already been adjusted to account for UseMaxForLimit\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new SqlString that contains the \fCLIMIT\fP clause\&. Returns \fCnull\fP if \fIqueryString\fP  represents a SQL statement to which a limit clause cannot be added, for example when the query string is custom SQL invoking a stored procedure\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 211 of file DB2Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.DB2Dialect\&.GetSelectSequenceNextValString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+Generate the select expression fragment that will retrieve the next value of a sequence as part of another (typically DML) statement\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP the name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The 'nextval' fragment\&. 
+.RE
+.PP
+.PP
+This differs from \fBGetSequenceNextValString\fP in that this should return an expression usable within another statement\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 170 of file DB2Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.DB2Dialect\&.GetSequenceNextValString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 176 of file DB2Dialect\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.Dialect\&.DB2Dialect\&.AddColumnString\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 135 of file DB2Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.DB2Dialect\&.DropConstraints\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 141 of file DB2Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.DB2Dialect\&.IdentityColumnString\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 159 of file DB2Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.DB2Dialect\&.IdentityInsertString\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 165 of file DB2Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.DB2Dialect\&.IdentitySelectString\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 153 of file DB2Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.DB2Dialect\&.SupportsIdentityColumns\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 147 of file DB2Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.DB2Dialect\&.SupportsLimit\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 201 of file DB2Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.DB2Dialect\&.SupportsSequences\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 195 of file DB2Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.DB2Dialect\&.UseMaxForLimit\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 207 of file DB2Dialect\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

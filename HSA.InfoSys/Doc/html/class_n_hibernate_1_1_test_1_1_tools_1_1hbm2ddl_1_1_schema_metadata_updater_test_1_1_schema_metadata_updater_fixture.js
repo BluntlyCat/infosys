@@ -1,0 +1,10 @@
+var class_n_hibernate_1_1_test_1_1_tools_1_1hbm2ddl_1_1_schema_metadata_updater_test_1_1_schema_metadata_updater_fixture =
+[
+    [ "AutoQuoteTableAndColumnsAtStratup", "class_n_hibernate_1_1_test_1_1_tools_1_1hbm2ddl_1_1_schema_metadata_updater_test_1_1_schema_metadata_updater_fixture.html#aecbf1499c56c821a34d17ca7f6ce94c3", null ],
+    [ "AutoQuoteTableAndColumnsAtStratupIncludeKeyWordsImport", "class_n_hibernate_1_1_test_1_1_tools_1_1hbm2ddl_1_1_schema_metadata_updater_test_1_1_schema_metadata_updater_fixture.html#ac15d7d9186010fd7b4daff619379cd39", null ],
+    [ "CanRetrieveReservedWords", "class_n_hibernate_1_1_test_1_1_tools_1_1hbm2ddl_1_1_schema_metadata_updater_test_1_1_schema_metadata_updater_fixture.html#a129da40573128f03b2273da4a01e8f01", null ],
+    [ "CanWorkWithAutoQuoteTableAndColumnsAtStratup", "class_n_hibernate_1_1_test_1_1_tools_1_1hbm2ddl_1_1_schema_metadata_updater_test_1_1_schema_metadata_updater_fixture.html#a756d29d82ffb8d4f4613dd7cb88edf94", null ],
+    [ "ExplicitAutoQuote", "class_n_hibernate_1_1_test_1_1_tools_1_1hbm2ddl_1_1_schema_metadata_updater_test_1_1_schema_metadata_updater_fixture.html#ab97e3748de24d7cc7eb20599c9754dca", null ],
+    [ "UpdateReservedWordsInDialect", "class_n_hibernate_1_1_test_1_1_tools_1_1hbm2ddl_1_1_schema_metadata_updater_test_1_1_schema_metadata_updater_fixture.html#a2f7b81397c0ea92eb2f172c7f7b02072", null ],
+    [ "WhenConfiguredOnlyExplicitAutoQuote", "class_n_hibernate_1_1_test_1_1_tools_1_1hbm2ddl_1_1_schema_metadata_updater_test_1_1_schema_metadata_updater_fixture.html#ac27bd27baf54291d251917bd78285070", null ]
+];

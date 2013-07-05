@@ -1,0 +1,114 @@
+.TH "NHibernate.UnresolvableObjectException" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.UnresolvableObjectException \- 
+.PP
+Thrown when Hibernate could not resolve an object by id, especially when loading an association\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.HibernateException\fP\&.
+.PP
+Inherited by \fBNHibernate\&.ObjectDeletedException\fP, and \fBNHibernate\&.ObjectNotFoundException\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUnresolvableObjectException\fP (object identifier, System\&.Type clazz)"
+.br
+.RI "\fIInitializes a new instance of the \fBUnresolvableObjectException\fP class\&. \fP"
+.ti -1c
+.RI "\fBUnresolvableObjectException\fP (object identifier, string entityName)"
+.br
+.ti -1c
+.RI "\fBUnresolvableObjectException\fP (string message, object identifier, System\&.Type clazz)"
+.br
+.RI "\fIInitializes a new instance of the \fBUnresolvableObjectException\fP class\&. \fP"
+.ti -1c
+.RI "\fBUnresolvableObjectException\fP (string message, object identifier, string entityName)"
+.br
+.ti -1c
+.RI "override void \fBGetObjectData\fP (SerializationInfo info, StreamingContext context)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBThrowIfNull\fP (object o, object id, System\&.Type clazz)"
+.br
+.ti -1c
+.RI "static void \fBThrowIfNull\fP (object o, object id, string entityName)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUnresolvableObjectException\fP (SerializationInfo info, StreamingContext context)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "object \fBIdentifier\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBMessage\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "System\&.Type \fBPersistentClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBEntityName\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Thrown when Hibernate could not resolve an object by id, especially when loading an association\&. 
+
+
+.PP
+Definition at line 14 of file UnresolvableObjectException\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.UnresolvableObjectException\&.UnresolvableObjectException (objectidentifier, System\&.Typeclazz)"
+
+.PP
+Initializes a new instance of the \fBUnresolvableObjectException\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidentifier\fP The identifier of the object that caused the exception\&.
+.br
+\fIclazz\fP The System\&.Type of the object attempted to be loaded\&.
+.RE
+.PP
+
+.PP
+Definition at line 25 of file UnresolvableObjectException\&.cs\&.
+.SS "NHibernate\&.UnresolvableObjectException\&.UnresolvableObjectException (stringmessage, objectidentifier, System\&.Typeclazz)"
+
+.PP
+Initializes a new instance of the \fBUnresolvableObjectException\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message that describes the error\&.
+.br
+\fIidentifier\fP The identifier of the object that caused the exception\&.
+.br
+\fIclazz\fP The System\&.Type of the object attempted to be loaded\&.
+.RE
+.PP
+
+.PP
+Definition at line 39 of file UnresolvableObjectException\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

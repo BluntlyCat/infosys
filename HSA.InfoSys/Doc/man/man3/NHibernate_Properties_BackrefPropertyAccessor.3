@@ -1,0 +1,109 @@
+.TH "NHibernate.Properties.BackrefPropertyAccessor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Properties.BackrefPropertyAccessor \- 
+.PP
+Represents a 'back-reference' to the id of a collection owner\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Properties\&.IPropertyAccessor\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBackrefPropertyAccessor\fP (string collectionRole, string entityName)"
+.br
+.ti -1c
+.RI "\fBIGetter\fP \fBGetGetter\fP (System\&.Type theClass, string propertyName)"
+.br
+.RI "\fIWhen implemented by a class, create a 'getter' for the mapped property\&. \fP"
+.ti -1c
+.RI "\fBISetter\fP \fBGetSetter\fP (System\&.Type theClass, string propertyName)"
+.br
+.RI "\fIWhen implemented by a class, create a 'setter' for the mapped property\&. \fP"
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly object \fBUnknown\fP = new \fBUnknownBackrefProperty\fP()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBCanAccessThroughReflectionOptimizer\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a 'back-reference' to the id of a collection owner\&. 
+
+
+.PP
+Definition at line 15 of file BackrefPropertyAccessor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIGetter\fP NHibernate\&.Properties\&.BackrefPropertyAccessor\&.GetGetter (System\&.TypetheClass, stringpropertyName)"
+
+.PP
+When implemented by a class, create a 'getter' for the mapped property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItheClass\fP The System\&.Type to find the Property in\&.
+.br
+\fIpropertyName\fP The name of the mapped Property to get\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBIGetter\fP to use to get the value of the Property from an instance of the System\&.Type\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBPropertyNotFoundException\fP\fP Thrown when a Property specified by the \fCpropertyName\fP could not be found in the System\&.Type\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.IPropertyAccessor\fP\&.
+.PP
+Definition at line 29 of file BackrefPropertyAccessor\&.cs\&.
+.SS "\fBISetter\fP NHibernate\&.Properties\&.BackrefPropertyAccessor\&.GetSetter (System\&.TypetheClass, stringpropertyName)"
+
+.PP
+When implemented by a class, create a 'setter' for the mapped property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItheClass\fP The System\&.Type to find the Property in\&.
+.br
+\fIpropertyName\fP The name of the mapped Property to set\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBISetter\fP to use to set the value of the Property on an instance of the System\&.Type\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBPropertyNotFoundException\fP\fP Thrown when a Property specified by the \fCpropertyName\fP could not be found in the System\&.Type\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.IPropertyAccessor\fP\&.
+.PP
+Definition at line 34 of file BackrefPropertyAccessor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

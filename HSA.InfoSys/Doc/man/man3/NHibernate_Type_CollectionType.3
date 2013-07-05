@@ -1,0 +1,693 @@
+.TH "NHibernate.Type.CollectionType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.CollectionType \- 
+.PP
+The base class for an \fBIType\fP that maps collections to the database\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.AbstractType\fP, and \fBNHibernate\&.Type\&.IAssociationType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Type\&.ArrayType\fP, \fBNHibernate\&.Type\&.BagType\fP, \fBNHibernate\&.Type\&.CustomCollectionType\fP, \fBNHibernate\&.Type\&.GenericSetType< T >\fP, \fBNHibernate\&.Type\&.IdentifierBagType\fP, \fBNHibernate\&.Type\&.ListType\fP, and \fBNHibernate\&.Type\&.MapType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBIsEqual\fP (object x, object y, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fICompare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. \fP"
+.ti -1c
+.RI "override int \fBGetHashCode\fP (object x, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet a hashcode, consistent with persistence 'equality'\fP"
+.ti -1c
+.RI "abstract \fBIPersistentCollection\fP \fBInstantiate\fP (\fBISessionImplementor\fP session, \fBICollectionPersister\fP persister, object key)"
+.br
+.RI "\fIInstantiate an uninitialized collection wrapper or holder\&. Callers MUST add the holder to the persistence context! \fP"
+.ti -1c
+.RI "override object \fBNullSafeGet\fP (IDataReader rs, string name, \fBISessionImplementor\fP session, object owner)"
+.br
+.ti -1c
+.RI "override object \fBNullSafeGet\fP (IDataReader rs, string[] name, \fBISessionImplementor\fP session, object owner)"
+.br
+.ti -1c
+.RI "override void \fBNullSafeSet\fP (IDbCommand st, object value, int index, bool[] settable, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override void \fBNullSafeSet\fP (IDbCommand cmd, object value, int index, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override \fBSqlType\fP[] \fBSqlTypes\fP (\fBIMapping\fP session)"
+.br
+.ti -1c
+.RI "override int \fBGetColumnSpan\fP (\fBIMapping\fP session)"
+.br
+.ti -1c
+.RI "override string \fBToLoggableString\fP (object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "override object \fBDeepCopy\fP (object value, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "override object \fBDisassemble\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIDisassembles the object into a cacheable representation\&. \fP"
+.ti -1c
+.RI "override object \fBAssemble\fP (object cached, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIReconstructs the object from its cached 'disassembled' state\&. \fP"
+.ti -1c
+.RI "override bool \fBIsDirty\fP (object old, object current, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIShould the parent be considered dirty, given both the old and current field or element value? \fP"
+.ti -1c
+.RI "abstract \fBIPersistentCollection\fP \fBWrap\fP (\fBISessionImplementor\fP session, object collection)"
+.br
+.RI "\fIWrap the naked collection instance in a wrapper, or instantiate a holder\&. Callers \fBMUST\fP add the holder to the persistence context! \fP"
+.ti -1c
+.RI "override object \fBHydrate\fP (IDataReader rs, string[] name, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIRetrives an instance of the mapped class, or the identifier of an entity or collection from a IDataReader\&. \fP"
+.ti -1c
+.RI "override object \fBResolveIdentifier\fP (object key, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIMaps identifiers to Entities or Collections\&. \fP"
+.ti -1c
+.RI "object \fBGetCollection\fP (object key, \fBISessionImplementor\fP session, object owner)"
+.br
+.ti -1c
+.RI "override object \fBSemiResolve\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIGiven a hydrated, but unresolved value, return a value that may be used to reconstruct property-ref associations\&. \fP"
+.ti -1c
+.RI "\fBIJoinable\fP \fBGetAssociatedJoinable\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIGet the 'persister' for this association - a class or collection persister \fP"
+.ti -1c
+.RI "string[] \fBGetReferencedColumns\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "string \fBGetAssociatedEntityName\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIGet the entity name of the associated entity\fP"
+.ti -1c
+.RI "virtual object \fBInstantiateResult\fP (object original)"
+.br
+.ti -1c
+.RI "override object \fBReplace\fP (object original, object target, \fBISessionImplementor\fP session, object owner, IDictionary copyCache)"
+.br
+.ti -1c
+.RI "virtual object \fBReplaceElements\fP (object original, object target, object owner, IDictionary copyCache, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "\fBIType\fP \fBGetElementType\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBIsDirty\fP (object old, object current, bool[] checkable, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override bool \fBIsModified\fP (object oldHydratedState, object currentState, bool[] checkable, \fBISessionImplementor\fP session)"
+.br
+.RI "\fISays whether the value has been modified \fP"
+.ti -1c
+.RI "object \fBGetKeyOfOwner\fP (object owner, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGet the key value from the owning entity instance, usually the identifier, but might be some other unique key, in the case of property-ref \fP"
+.ti -1c
+.RI "virtual object \fBGetIdOfOwnerOrNull\fP (object key, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGet the id value from the owning entity key, usually the same as the key, but might be some other property, in the case of property-ref \fP"
+.ti -1c
+.RI "abstract object \fBInstantiate\fP (int anticipatedSize)"
+.br
+.RI "\fIInstantiate an empty instance of the 'underlying' collection (not a wrapper), but with the given anticipated size (i\&.e\&. accounting for initial capacity and perhaps load factor)\&. \fP"
+.ti -1c
+.RI "string \fBGetOnCondition\fP (string alias, \fBISessionFactoryImplementor\fP factory, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIGet the 'filtering' SQL fragment that is applied in the SQL on clause, in addition to the usual join condition\&. \fP"
+.ti -1c
+.RI "override object \fBFromXMLNode\fP (XmlNode xml, \fBIMapping\fP factory)"
+.br
+.RI "\fIParse the XML representation of an instance\&.\fP"
+.ti -1c
+.RI "override void \fBSetToXMLNode\fP (XmlNode node, object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIA representation of the value to be embedded in an XML element\&. \fP"
+.ti -1c
+.RI "override bool[] \fBToColumnNullness\fP (object value, \fBIMapping\fP mapping)"
+.br
+.RI "\fIGiven an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. \fP"
+.ti -1c
+.RI "override int \fBCompare\fP (object x, object y, \fBEntityMode\fP?entityMode)"
+.br
+.RI "\fIcompare two instances of the type\fP"
+.ti -1c
+.RI "virtual bool \fBContains\fP (object collection, object childObject, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "virtual IEnumerable \fBGetElementsIterator\fP (object collection, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGet an iterator over the element set of the collection, which may not yet be wrapped \fP"
+.ti -1c
+.RI "virtual IEnumerable \fBGetElementsIterator\fP (object collection)"
+.br
+.RI "\fIGet an iterator over the element set of the collection in POCO mode \fP"
+.ti -1c
+.RI "virtual bool \fBHasHolder\fP (\fBEntityMode\fP entityMode)"
+.br
+.ti -1c
+.RI "virtual object \fBIndexOf\fP (object collection, object element)"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly object \fBUnfetchedCollection\fP = new object()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCollectionType\fP (string role, string foreignKeyPropertyName, bool isEmbeddedInXML)"
+.br
+.RI "\fIInitializes a new instance of a \fBCollectionType\fP class for a specific role\&. \fP"
+.ti -1c
+.RI "virtual void \fBClear\fP (object collection)"
+.br
+.ti -1c
+.RI "virtual void \fBAdd\fP (object collection, object element)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual string \fBRole\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsCollectionType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsMutable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsAssociationType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBForeignKeyDirection\fP \fBForeignKeyDirection\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsArrayType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBUseLHSPrimaryKey\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBLHSPropertyName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBRHSUniqueKeyPropertyName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsAlwaysDirtyChecked\fP\fC [get]\fP"
+.br
+.RI "\fIWe always need to dirty check the collection because we sometimes need to increment version number of owner and also because of how assemble/disassemble is implemented for uks \fP"
+.ti -1c
+.RI "bool \fBIsEmbeddedInXML\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+The base class for an \fBIType\fP that maps collections to the database\&. 
+
+
+.PP
+Definition at line 21 of file CollectionType\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Type\&.CollectionType\&.CollectionType (stringrole, stringforeignKeyPropertyName, boolisEmbeddedInXML)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of a \fBCollectionType\fP class for a specific role\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the persistent collection is in\&.
+.br
+\fIforeignKeyPropertyName\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&. 
+.br
+\fIisEmbeddedInXML\fP 
+.RE
+.PP
+
+.PP
+Definition at line 43 of file CollectionType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.CollectionType\&.Assemble (objectcached, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Reconstructs the object from its cached 'disassembled' state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcached\fP The disassembled state from the cache
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP The parent Entity object is not used by this method
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The assembled object\&.
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 161 of file CollectionType\&.cs\&.
+.SS "override int NHibernate\&.Type\&.CollectionType\&.Compare (objectx, objecty, \fBEntityMode\fP?entityMode)\fC [virtual]\fP"
+
+.PP
+compare two instances of the type
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 572 of file CollectionType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.CollectionType\&.Disassemble (objectvalue, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Disassembles the object into a cacheable representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to disassemble\&.
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP optional parent entity object (needed for collections) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The disassembled, deep cloned state of the object
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 142 of file CollectionType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.CollectionType\&.FromXMLNode (XmlNodexml, \fBIMapping\fPfactory)\fC [virtual]\fP"
+
+.PP
+Parse the XML representation of an instance\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an instance of the type 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 556 of file CollectionType\&.cs\&.
+.SS "string NHibernate\&.Type\&.CollectionType\&.GetAssociatedEntityName (\fBISessionFactoryImplementor\fPfactory)"
+
+.PP
+Get the entity name of the associated entity
+.PP
+Implements \fBNHibernate\&.Type\&.IAssociationType\fP\&.
+.PP
+Definition at line 307 of file CollectionType\&.cs\&.
+.SS "\fBIJoinable\fP NHibernate\&.Type\&.CollectionType\&.GetAssociatedJoinable (\fBISessionFactoryImplementor\fPfactory)"
+
+.PP
+Get the 'persister' for this association - a class or collection persister 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IAssociationType\fP\&.
+.PP
+Definition at line 295 of file CollectionType\&.cs\&.
+.SS "virtual IEnumerable NHibernate\&.Type\&.CollectionType\&.GetElementsIterator (objectcollection, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Get an iterator over the element set of the collection, which may not yet be wrapped 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP The collection to be iterated 
+.br
+\fIsession\fP The session from which the request is originating\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The iterator\&. 
+.RE
+.PP
+
+.PP
+Definition at line 608 of file CollectionType\&.cs\&.
+.SS "virtual IEnumerable NHibernate\&.Type\&.CollectionType\&.GetElementsIterator (objectcollection)\fC [virtual]\fP"
+
+.PP
+Get an iterator over the element set of the collection in POCO mode 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP The collection to be iterated 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The iterator\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.CustomCollectionType\fP, \fBNHibernate\&.Type\&.ArrayType\fP, and \fBNHibernate\&.Type\&.MapType\fP\&.
+.PP
+Definition at line 618 of file CollectionType\&.cs\&.
+.SS "override int NHibernate\&.Type\&.CollectionType\&.GetHashCode (objectx, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Get a hashcode, consistent with persistence 'equality'
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 67 of file CollectionType\&.cs\&.
+.SS "virtual object NHibernate\&.Type\&.CollectionType\&.GetIdOfOwnerOrNull (objectkey, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Get the id value from the owning entity key, usually the same as the key, but might be some other property, in the case of property-ref 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The collection owner key 
+.br
+\fIsession\fP The session from which the request is originating\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The collection owner's id, if it can be obtained from the key; otherwise, null is returned 
+.RE
+.PP
+
+.PP
+Definition at line 514 of file CollectionType\&.cs\&.
+.SS "object NHibernate\&.Type\&.CollectionType\&.GetKeyOfOwner (objectowner, \fBISessionImplementor\fPsession)"
+
+.PP
+Get the key value from the owning entity instance, usually the identifier, but might be some other unique key, in the case of property-ref 
+.PP
+Definition at line 465 of file CollectionType\&.cs\&.
+.SS "string NHibernate\&.Type\&.CollectionType\&.GetOnCondition (stringalias, \fBISessionFactoryImplementor\fPfactory, IDictionary< string, \fBIFilter\fP >enabledFilters)"
+
+.PP
+Get the 'filtering' SQL fragment that is applied in the SQL on clause, in addition to the usual join condition\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.IAssociationType\fP\&.
+.PP
+Definition at line 551 of file CollectionType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.CollectionType\&.Hydrate (IDataReaderrs, string[]names, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Retrives an instance of the mapped class, or the identifier of an entity or collection from a IDataReader\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the values\&.
+.br
+\fInames\fP The names of the columns in the IDataReader that contain the value to populate the \fBIType\fP with\&. 
+.br
+\fIsession\fP the session
+.br
+\fIowner\fP The parent Entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An identifier or actual object mapped by this \fBIType\fP\&.
+.RE
+.PP
+.PP
+This method uses the \fCIType\&.NullSafeGet(IDataReader, string[], ISessionImplementor, object)\fP method to Hydrate this \fBAbstractType\fP\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 218 of file CollectionType\&.cs\&.
+.SS "abstract \fBIPersistentCollection\fP NHibernate\&.Type\&.CollectionType\&.Instantiate (\fBISessionImplementor\fPsession, \fBICollectionPersister\fPpersister, objectkey)\fC [pure virtual]\fP"
+
+.PP
+Instantiate an uninitialized collection wrapper or holder\&. Callers MUST add the holder to the persistence context! 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session from which the request is originating\&. 
+.br
+\fIpersister\fP The underlying collection persister (metadata) 
+.br
+\fIkey\fP The owner key\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instantiated collection\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.ArrayType\fP, \fBNHibernate\&.Type\&.CustomCollectionType\fP, \fBNHibernate\&.Type\&.BagType\fP, \fBNHibernate\&.Type\&.GenericMapType< TKey, TValue >\fP, \fBNHibernate\&.Type\&.ListType\fP, \fBNHibernate\&.Type\&.MapType\fP, \fBNHibernate\&.Type\&.GenericBagType< T >\fP, \fBNHibernate\&.Type\&.GenericListType< T >\fP, \fBNHibernate\&.Type\&.IdentifierBagType\fP, \fBNHibernate\&.Type\&.GenericSetType< T >\fP, and \fBNHibernate\&.Type\&.GenericIdentifierBagType< T >\fP\&.
+.SS "abstract object NHibernate\&.Type\&.CollectionType\&.Instantiate (intanticipatedSize)\fC [pure virtual]\fP"
+
+.PP
+Instantiate an empty instance of the 'underlying' collection (not a wrapper), but with the given anticipated size (i\&.e\&. accounting for initial capacity and perhaps load factor)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIanticipatedSize\fP The anticipated size of the instantiated collection after we are done populating it\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A newly instantiated collection to be wrapped\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.MapType\fP, \fBNHibernate\&.Type\&.ArrayType\fP, \fBNHibernate\&.Type\&.GenericMapType< TKey, TValue >\fP, \fBNHibernate\&.Type\&.GenericSetType< T >\fP, \fBNHibernate\&.Type\&.BagType\fP, \fBNHibernate\&.Type\&.ListType\fP, \fBNHibernate\&.Type\&.IdentifierBagType\fP, \fBNHibernate\&.Type\&.GenericBagType< T >\fP, \fBNHibernate\&.Type\&.GenericListType< T >\fP, \fBNHibernate\&.Type\&.CustomCollectionType\fP, \fBNHibernate\&.Type\&.GenericSortedSetType< T >\fP, \fBNHibernate\&.Type\&.SortedMapType\fP, \fBNHibernate\&.Type\&.GenericIdentifierBagType< T >\fP, \fBNHibernate\&.Type\&.GenericOrderedSetType< T >\fP, \fBNHibernate\&.Type\&.OrderedMapType\fP, \fBNHibernate\&.Type\&.GenericSortedDictionaryType< TKey, TValue >\fP, and \fBNHibernate\&.Type\&.GenericSortedListType< TKey, TValue >\fP\&.
+.SS "override bool NHibernate\&.Type\&.CollectionType\&.IsDirty (objectold, objectcurrent, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Should the parent be considered dirty, given both the old and current field or element value? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIold\fP The old value
+.br
+\fIcurrent\fP The current value
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the field is dirty
+.RE
+.PP
+.PP
+This method uses \fCIType\&.Equals(object, object)\fP to determine the value of IsDirty\&.
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 187 of file CollectionType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.CollectionType\&.IsEqual (objectx, objecty, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Compare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+boolean 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 60 of file CollectionType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.CollectionType\&.IsModified (objectold, objectcurrent, bool[]checkable, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Says whether the value has been modified 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 455 of file CollectionType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.CollectionType\&.ResolveIdentifier (objectvalue, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Maps identifiers to Entities or Collections\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP An identifier or value returned by \fC\fBHydrate()\fP\fP
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP The parent Entity is not used by this method\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value\&.
+.RE
+.PP
+.PP
+There is nothing done in this method other than return the value parameter passed in\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 225 of file CollectionType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.CollectionType\&.SemiResolve (objectvalue, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Given a hydrated, but unresolved value, return a value that may be used to reconstruct property-ref associations\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 280 of file CollectionType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.CollectionType\&.SetToXMLNode (XmlNodenode, objectvalue, \fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+A representation of the value to be embedded in an XML element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInode\fP 
+.br
+\fIvalue\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 561 of file CollectionType\&.cs\&.
+.SS "override bool [] NHibernate\&.Type\&.CollectionType\&.ToColumnNullness (objectvalue, \fBIMapping\fPmapping)\fC [virtual]\fP"
+
+.PP
+Given an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP an instance of the type 
+.br
+\fImapping\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 567 of file CollectionType\&.cs\&.
+.SS "abstract \fBIPersistentCollection\fP NHibernate\&.Type\&.CollectionType\&.Wrap (\fBISessionImplementor\fPsession, objectcollection)\fC [pure virtual]\fP"
+
+.PP
+Wrap the naked collection instance in a wrapper, or instantiate a holder\&. Callers \fBMUST\fP add the holder to the persistence context! 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session from which the request is originating\&. 
+.br
+\fIcollection\fP The bare collection to be wrapped\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A subclass of IPersistentCollection that wraps the non \fBNHibernate\fP collection\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.ArrayType\fP, \fBNHibernate\&.Type\&.MapType\fP, \fBNHibernate\&.Type\&.BagType\fP, \fBNHibernate\&.Type\&.GenericMapType< TKey, TValue >\fP, \fBNHibernate\&.Type\&.ListType\fP, \fBNHibernate\&.Type\&.IdentifierBagType\fP, \fBNHibernate\&.Type\&.GenericBagType< T >\fP, \fBNHibernate\&.Type\&.GenericListType< T >\fP, \fBNHibernate\&.Type\&.CustomCollectionType\fP, \fBNHibernate\&.Type\&.GenericSetType< T >\fP, and \fBNHibernate\&.Type\&.GenericIdentifierBagType< T >\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.Type\&.CollectionType\&.IsAlwaysDirtyChecked\fC [get]\fP"
+
+.PP
+We always need to dirty check the collection because we sometimes need to increment version number of owner and also because of how assemble/disassemble is implemented for uks 
+.PP
+Definition at line 441 of file CollectionType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

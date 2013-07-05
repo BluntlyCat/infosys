@@ -1,0 +1,59 @@
+.TH "NHibernate.Driver.OracleClientDriver" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Driver.OracleClientDriver \- 
+.PP
+A \fBNHibernate\fP \fBDriver\fP for using the Oracle DataProvider\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Driver\&.ReflectionBasedDriver\fP\&.
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBInitializeParameter\fP (IDbDataParameter dbParam, string name, \fBSqlType\fP sqlType)"
+.br
+.ti -1c
+.RI "override void \fBOnBeforePrepare\fP (IDbCommand command)"
+.br
+.RI "\fIOverride to make any adjustments to the IDbCommand object\&. (e\&.g\&., Oracle custom OUT parameter) Parameters have been bound by this point, so their order can be adjusted too\&. This is analagous to the RegisterResultSetOutParameter() function in Hibernate\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBUseNamedPrefixInSql\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBUseNamedPrefixInParameter\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBNamedPrefix\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A \fBNHibernate\fP \fBDriver\fP for using the Oracle DataProvider\&. 
+
+
+.PP
+Definition at line 10 of file OracleClientDriver\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Driver\&.OracleClientDriver\&.OnBeforePrepare (IDbCommandcommand)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Override to make any adjustments to the IDbCommand object\&. (e\&.g\&., Oracle custom OUT parameter) Parameters have been bound by this point, so their order can be adjusted too\&. This is analagous to the RegisterResultSetOutParameter() function in Hibernate\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Driver\&.DriverBase\fP\&.
+.PP
+Definition at line 48 of file OracleClientDriver\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

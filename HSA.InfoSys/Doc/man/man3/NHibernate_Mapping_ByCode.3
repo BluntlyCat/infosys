@@ -1,0 +1,462 @@
+.TH "NHibernate.Mapping.ByCode" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.ByCode \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "package \fBConformist\fP"
+.br
+.ti -1c
+.RI "package \fBImpl\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAbstractExplicitlyDeclaredModel\fP"
+.br
+.ti -1c
+.RI "class \fBCacheInclude\fP"
+.br
+.ti -1c
+.RI "class \fBCacheUsage\fP"
+.br
+.ti -1c
+.RI "class \fBCascadeExtensions\fP"
+.br
+.ti -1c
+.RI "class \fBCollectionFetchMode\fP"
+.br
+.ti -1c
+.RI "class \fBConventionModelMapper\fP"
+.br
+.ti -1c
+.RI "class \fBExplicitlyDeclaredModel\fP"
+.br
+.ti -1c
+.RI "class \fBFakeModelExplicitDeclarationsHolder\fP"
+.br
+.ti -1c
+.RI "class \fBFetchKind\fP"
+.br
+.ti -1c
+.RI "class \fBForClass< T >\fP"
+.br
+.ti -1c
+.RI "class \fBGenerators\fP"
+.br
+.ti -1c
+.RI "class \fBAssignedGeneratorDef\fP"
+.br
+.ti -1c
+.RI "class \fBForeignGeneratorDef\fP"
+.br
+.ti -1c
+.RI "class \fBNativeGeneratorDef\fP"
+.br
+.ti -1c
+.RI "class \fBHighLowGeneratorDef\fP"
+.br
+.ti -1c
+.RI "class \fBGuidGeneratorDef\fP"
+.br
+.ti -1c
+.RI "class \fBGuidCombGeneratorDef\fP"
+.br
+.ti -1c
+.RI "class \fBSequenceGeneratorDef\fP"
+.br
+.ti -1c
+.RI "class \fBIdentityGeneratorDef\fP"
+.br
+.ti -1c
+.RI "interface \fBIAccessorPropertyMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIAnyMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIBagPropertiesMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIBagPropertiesMapper< TEntity, TElement >\fP"
+.br
+.ti -1c
+.RI "interface \fBICacheMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIClassAttributesMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIClassMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIClassAttributesMapper< TEntity >\fP"
+.br
+.ti -1c
+.RI "interface \fBIClassMapper< TEntity >\fP"
+.br
+.ti -1c
+.RI "interface \fBICollectionElementRelation\fP"
+.br
+.ti -1c
+.RI "interface \fBICollectionElementRelation< TElement >\fP"
+.br
+.ti -1c
+.RI "interface \fBICollectionIdMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBICollectionPropertiesMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBICollectionPropertiesMapper< TEntity, TElement >\fP"
+.br
+.ti -1c
+.RI "interface \fBICollectionSqlsMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIColumnMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIColumnsMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIComponentElementMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIComponentElementMapper< TComponent >\fP"
+.br
+.ti -1c
+.RI "interface \fBIComponentMapKeyMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIComponentMapKeyMapper< TComponent >\fP"
+.br
+.ti -1c
+.RI "interface \fBIComponentAttributesMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIComponentMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIComponentAttributesMapper< TComponent >\fP"
+.br
+.ti -1c
+.RI "interface \fBIComponentMapper< TComponent >\fP"
+.br
+.ti -1c
+.RI "interface \fBIComponentParentMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIComposedIdMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIComponentAsIdAttributesMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIComponentAsIdMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIComposedIdMapper< TEntity >\fP"
+.br
+.ti -1c
+.RI "interface \fBIComponentAsIdAttributesMapper< TComponent >\fP"
+.br
+.ti -1c
+.RI "interface \fBIComponentAsIdMapper< TComponent >\fP"
+.br
+.ti -1c
+.RI "interface \fBIConformistHoldersProvider\fP"
+.br
+.ti -1c
+.RI "interface \fBIDiscriminatorMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIDynamicComponentAttributesMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIDynamicComponentMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIDynamicComponentAttributesMapper< TComponent >\fP"
+.br
+.ti -1c
+.RI "interface \fBIDynamicComponentMapper< TComponent >\fP"
+.br
+.ti -1c
+.RI "interface \fBIElementMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIEntityAttributesMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIEntityPropertyMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIEntitySqlsMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIFilterMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIGenerator\fP"
+.br
+.ti -1c
+.RI "interface \fBIGeneratorDef\fP"
+.br
+.ti -1c
+.RI "interface \fBIGeneratorMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIIdBagPropertiesMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIIdBagPropertiesMapper< TEntity, TElement >\fP"
+.br
+.ti -1c
+.RI "interface \fBIIdMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIJoinedSubclassAttributesMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIJoinedSubclassMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIJoinedSubclassAttributesMapper< TEntity >\fP"
+.br
+.ti -1c
+.RI "interface \fBIJoinedSubclassMapper< TEntity >\fP"
+.br
+.ti -1c
+.RI "interface \fBIJoinAttributesMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIJoinMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIJoinAttributesMapper< TEntity >\fP"
+.br
+.ti -1c
+.RI "interface \fBIJoinMapper< TEntity >\fP"
+.br
+.ti -1c
+.RI "interface \fBIKeyMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIKeyMapper< TEntity >\fP"
+.br
+.ti -1c
+.RI "interface \fBIListIndexMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIListPropertiesMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIListPropertiesMapper< TEntity, TElement >\fP"
+.br
+.ti -1c
+.RI "interface \fBIManyToAnyMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIManyToManyMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIManyToOneMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIMapKeyManyToManyMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIMapKeyMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIMapKeyRelation\fP"
+.br
+.ti -1c
+.RI "interface \fBIMapKeyRelation< TKey >\fP"
+.br
+.ti -1c
+.RI "interface \fBIMapPropertiesMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIMapPropertiesMapper< TEntity, TKey, TElement >\fP"
+.br
+.ti -1c
+.RI "class \fBSplitDefinition\fP"
+.br
+.ti -1c
+.RI "interface \fBIModelExplicitDeclarationsHolder\fP"
+.br
+.ti -1c
+.RI "interface \fBIModelInspector\fP"
+.br
+.ti -1c
+.RI "class \fBImport\fP"
+.br
+.ti -1c
+.RI "interface \fBINaturalIdAttributesMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBINaturalIdMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIOneToManyMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIOneToOneMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIMinimalPlainPropertyContainerMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIBasePlainPropertyContainerMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIPlainPropertyContainerMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIMinimalPlainPropertyContainerMapper< TContainer >\fP"
+.br
+.ti -1c
+.RI "interface \fBIBasePlainPropertyContainerMapper< TContainer >\fP"
+.br
+.ti -1c
+.RI "interface \fBIPlainPropertyContainerMapper< TContainer >\fP"
+.br
+.ti -1c
+.RI "interface \fBICollectionPropertiesContainerMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIPropertyContainerMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBICollectionPropertiesContainerMapper< TEntity >\fP"
+.br
+.ti -1c
+.RI "interface \fBIPropertyContainerMapper< TEntity >\fP"
+.br
+.ti -1c
+.RI "interface \fBIPropertyMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBISetPropertiesMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBISetPropertiesMapper< TEntity, TElement >\fP"
+.br
+.ti -1c
+.RI "interface \fBISubclassAttributesMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBISubclassMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBISubclassAttributesMapper< TEntity >\fP"
+.br
+.ti -1c
+.RI "interface \fBISubclassMapper< TEntity >\fP"
+.br
+.ti -1c
+.RI "interface \fBIUnionSubclassAttributesMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIUnionSubclassMapper\fP"
+.br
+.ti -1c
+.RI "interface \fBIUnionSubclassAttributesMapper< TEntity >\fP"
+.br
+.ti -1c
+.RI "interface \fBIUnionSubclassMapper< TEntity >\fP"
+.br
+.ti -1c
+.RI "interface \fBIVersionMapper\fP"
+.br
+.ti -1c
+.RI "class \fBLazyRelation\fP"
+.br
+.ti -1c
+.RI "class \fBMappingsExtensions\fP"
+.br
+.RI "\fI\fBUtil\fP extensions to use in your test or where you need to see the XML mappings \fP"
+.ti -1c
+.RI "class \fBModelExplicitDeclarationsHolderExtensions\fP"
+.br
+.ti -1c
+.RI "class \fBModelMapper\fP"
+.br
+.ti -1c
+.RI "class \fBNotFoundMode\fP"
+.br
+.ti -1c
+.RI "class \fBPropertyGeneration\fP"
+.br
+.ti -1c
+.RI "class \fBPropertyPath\fP"
+.br
+.ti -1c
+.RI "class \fBPropertyPathExtensions\fP"
+.br
+.ti -1c
+.RI "class \fBPropertyToField\fP"
+.br
+.ti -1c
+.RI "class \fBSchemaActionConverter\fP"
+.br
+.ti -1c
+.RI "class \fBSimpleModelInspector\fP"
+.br
+.RI "\fIA \fBIModelInspector\fP which allows customization of conditions with explicitly declared members\&. \fP"
+.ti -1c
+.RI "class \fBTypeExtensions\fP"
+.br
+.ti -1c
+.RI "class \fBVersionGeneration\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBCascade\fP { \fBNone\fP = 0, \fBPersist\fP = 2, \fBRefresh\fP = 4, \fBMerge\fP = 8, \fBRemove\fP = 16, \fBDetach\fP = 32, \fBReAttach\fP = 64, \fBDeleteOrphans\fP = 128, \fBAll\fP = 256 }"
+.br
+.RI "\fIDefines behavior of soft-cascade actions\&. \fP"
+.ti -1c
+.RI "enum \fBCollectionLazy\fP { \fBLazy\fP, \fBNoLazy\fP, \fBExtra\fP }"
+.br
+.ti -1c
+.RI "enum \fBAccessor\fP { \fBProperty\fP, \fBField\fP, \fBNoSetter\fP, \fBReadOnly\fP, \fBNone\fP }"
+.br
+.ti -1c
+.RI "enum \fBOnDeleteAction\fP { \fBNoAction\fP, \fBCascade\fP }"
+.br
+.ti -1c
+.RI "enum \fBSchemaAction\fP { \fBNone\fP = 0, \fBDrop\fP = 1, \fBUpdate\fP = 2, \fBExport\fP = 4, \fBValidate\fP = 8, \fBAll\fP = Drop | Update | Export | Validate }"
+.br
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBNHibernate\&.Mapping\&.ByCode\&.Cascade\fP"
+
+.PP
+Defines behavior of soft-cascade actions\&. To check the content or to include/exclude values, from cascade, is strongly recommanded the usage of extensions methods defined in CascadeExtensions 
+.PP
+\fBSee Also:\fP
+.RS 4
+CascadeExtensions\&.Has, CascadeExtensions\&.Include, CascadeExtensions\&.Exclude
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 15 of file Cascade\&.cs\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

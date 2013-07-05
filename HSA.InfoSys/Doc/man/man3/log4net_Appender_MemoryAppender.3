@@ -1,0 +1,156 @@
+.TH "log4net.Appender.MemoryAppender" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.MemoryAppender \- 
+.PP
+Stores logging events in an array\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMemoryAppender\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBMemoryAppender\fP class\&. \fP"
+.ti -1c
+.RI "virtual \fBLoggingEvent\fP[] \fBGetEvents\fP ()"
+.br
+.RI "\fIGets the events that have been logged\&. \fP"
+.ti -1c
+.RI "virtual void \fBClear\fP ()"
+.br
+.RI "\fIClear the list of events \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBAppend\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIThis method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent)\fP method\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "ArrayList \fBm_eventsList\fP"
+.br
+.RI "\fIThe list of events that have been appended\&. \fP"
+.ti -1c
+.RI "\fBFixFlags\fP \fBm_fixFlags\fP = FixFlags\&.All"
+.br
+.RI "\fIValue indicating which fields in the event should be fixed \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBOnlyFixPartialEventData\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether only part of the logging event data should be fixed\&. \fP"
+.ti -1c
+.RI "virtual \fBFixFlags\fP \fBFix\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the fields that will be fixed in the event \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Stores logging events in an array\&. 
+
+The memory appender stores all the logging events that are appended in an in-memory array\&. 
+.PP
+Use the \fBGetEvents\fP method to get the current list of events that have been appended\&. 
+.PP
+Use the \fBClear()\fP method to clear the current list of events\&. 
+.PP
+<author>Julian Biddle</author> <author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 47 of file MemoryAppender\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.MemoryAppender\&.MemoryAppender ()"
+
+.PP
+Initializes a new instance of the \fBMemoryAppender\fP class\&. Default constructor\&. 
+.PP
+Definition at line 59 of file MemoryAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Appender\&.MemoryAppender\&.Append (\fBLoggingEvent\fPloggingEvent)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+This method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent)\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP the event to log
+.RE
+.PP
+.PP
+Stores the \fIloggingEvent\fP  in the events list\&.
+.PP
+Implements \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 146 of file MemoryAppender\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.MemoryAppender\&.Clear ()\fC [virtual]\fP"
+
+.PP
+Clear the list of events Clear the list of events 
+.PP
+Definition at line 169 of file MemoryAppender\&.cs\&.
+.SS "virtual \fBLoggingEvent\fP [] log4net\&.Appender\&.MemoryAppender\&.GetEvents ()\fC [virtual]\fP"
+
+.PP
+Gets the events that have been logged\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The events that have been logged
+.RE
+.PP
+.PP
+Gets the events that have been logged\&. 
+.PP
+Definition at line 77 of file MemoryAppender\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "ArrayList log4net\&.Appender\&.MemoryAppender\&.m_eventsList\fC [protected]\fP"
+
+.PP
+The list of events that have been appended\&. 
+.PP
+Definition at line 184 of file MemoryAppender\&.cs\&.
+.SS "\fBFixFlags\fP log4net\&.Appender\&.MemoryAppender\&.m_fixFlags = FixFlags\&.All\fC [protected]\fP"
+
+.PP
+Value indicating which fields in the event should be fixed By default all fields are fixed 
+.PP
+Definition at line 192 of file MemoryAppender\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual \fBFixFlags\fP log4net\&.Appender\&.MemoryAppender\&.Fix\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the fields that will be fixed in the event The logging event needs to have certain thread specific values captured before it can be buffered\&. See LoggingEvent\&.Fix for details\&. 
+.PP
+Definition at line 130 of file MemoryAppender\&.cs\&.
+.SS "virtual bool log4net\&.Appender\&.MemoryAppender\&.OnlyFixPartialEventData\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether only part of the logging event data should be fixed\&. \fCtrue\fP if the appender should only fix part of the logging event data, otherwise \fCfalse\fP\&. The default is \fCfalse\fP\&. 
+.PP
+Setting this property to \fCtrue\fP will cause only part of the event data to be fixed and stored in the appender, hereby improving performance\&. 
+.PP
+See LoggingEvent\&.FixVolatileData(bool) for more information\&. 
+.PP
+Definition at line 104 of file MemoryAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

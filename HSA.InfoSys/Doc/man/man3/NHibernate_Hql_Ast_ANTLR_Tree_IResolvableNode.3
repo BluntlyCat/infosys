@@ -1,0 +1,80 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Tree.IResolvableNode" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Tree.IResolvableNode \- 
+.PP
+The contract for expression sub-trees that can resolve themselves\&. Author: josh Ported by: Steve Strong  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromReferenceNode\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBResolve\fP (bool generateJoin, bool implicitJoin, string classAlias, \fBIASTNode\fP parent)"
+.br
+.RI "\fIDoes the work of resolving an identifier or a dot \fP"
+.ti -1c
+.RI "void \fBResolve\fP (bool generateJoin, bool implicitJoin, string classAlias)"
+.br
+.RI "\fIDoes the work of resolving an identifier or a dot, but without a parent node \fP"
+.ti -1c
+.RI "void \fBResolve\fP (bool generateJoin, bool implicitJoin)"
+.br
+.RI "\fIDoes the work of resolving an identifier or a dot, but without a parent node or alias \fP"
+.ti -1c
+.RI "void \fBResolveInFunctionCall\fP (bool generateJoin, bool implicitJoin)"
+.br
+.RI "\fIDoes the work of resolving inside of the scope of a function call \fP"
+.ti -1c
+.RI "void \fBResolveIndex\fP (\fBIASTNode\fP parent)"
+.br
+.RI "\fIDoes the work of resolving an an index []\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The contract for expression sub-trees that can resolve themselves\&. Author: josh Ported by: Steve Strong 
+
+
+.PP
+Definition at line 11 of file IResolvableNode\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IResolvableNode\&.Resolve (boolgenerateJoin, boolimplicitJoin, stringclassAlias, \fBIASTNode\fPparent)"
+
+.PP
+Does the work of resolving an identifier or a dot 
+.PP
+Implemented in \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.DotNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IdentNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromReferenceNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IndexNode\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SelectExpressionImpl\fP\&.
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IResolvableNode\&.Resolve (boolgenerateJoin, boolimplicitJoin, stringclassAlias)"
+
+.PP
+Does the work of resolving an identifier or a dot, but without a parent node 
+.PP
+Implemented in \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromReferenceNode\fP\&.
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IResolvableNode\&.Resolve (boolgenerateJoin, boolimplicitJoin)"
+
+.PP
+Does the work of resolving an identifier or a dot, but without a parent node or alias 
+.PP
+Implemented in \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromReferenceNode\fP\&.
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IResolvableNode\&.ResolveIndex (\fBIASTNode\fPparent)"
+
+.PP
+Does the work of resolving an an index []\&. 
+.PP
+Implemented in \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.DotNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromReferenceNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IdentNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IndexNode\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SelectExpressionImpl\fP\&.
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IResolvableNode\&.ResolveInFunctionCall (boolgenerateJoin, boolimplicitJoin)"
+
+.PP
+Does the work of resolving inside of the scope of a function call 
+.PP
+Implemented in \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.DotNode\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromReferenceNode\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

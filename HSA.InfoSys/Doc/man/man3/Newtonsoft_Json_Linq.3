@@ -1,0 +1,154 @@
+.TH "Newtonsoft.Json.Linq" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.Linq \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBExtensions\fP"
+.br
+.RI "\fIContains the LINQ to JSON extension methods\&. \fP"
+.ti -1c
+.RI "interface \fBIJEnumerable< out T >\fP"
+.br
+.RI "\fIRepresents a collection of \fBJToken\fP objects\&. \fP"
+.ti -1c
+.RI "class \fBJArray\fP"
+.br
+.RI "\fIRepresents a JSON array\&. \fP"
+.ti -1c
+.RI "class \fBJConstructor\fP"
+.br
+.RI "\fIRepresents a JSON constructor\&. \fP"
+.ti -1c
+.RI "class \fBJContainer\fP"
+.br
+.RI "\fIRepresents a token that can contain other tokens\&. \fP"
+.ti -1c
+.RI "struct \fBJEnumerable< T >\fP"
+.br
+.RI "\fIRepresents a collection of \fBJToken\fP objects\&. \fP"
+.ti -1c
+.RI "class \fBJObject\fP"
+.br
+.RI "\fIRepresents a JSON object\&. \fP"
+.ti -1c
+.RI "class \fBJPath\fP"
+.br
+.ti -1c
+.RI "class \fBJProperty\fP"
+.br
+.RI "\fIRepresents a JSON property\&. \fP"
+.ti -1c
+.RI "class \fBJPropertyDescriptor\fP"
+.br
+.RI "\fIRepresents a view of a \fBJProperty\fP\&. \fP"
+.ti -1c
+.RI "class \fBJPropertyKeyedCollection\fP"
+.br
+.ti -1c
+.RI "class \fBJRaw\fP"
+.br
+.RI "\fIRepresents a raw JSON string\&. \fP"
+.ti -1c
+.RI "class \fBJToken\fP"
+.br
+.RI "\fIRepresents an abstract JSON token\&. \fP"
+.ti -1c
+.RI "class \fBJTokenEqualityComparer\fP"
+.br
+.RI "\fICompares tokens to determine whether they are equal\&. \fP"
+.ti -1c
+.RI "class \fBJTokenReader\fP"
+.br
+.RI "\fIRepresents a reader that provides fast, non-cached, forward-only access to serialized \fBJson\fP data\&. \fP"
+.ti -1c
+.RI "class \fBJTokenWriter\fP"
+.br
+.RI "\fIRepresents a writer that provides a fast, non-cached, forward-only way of generating \fBJson\fP data\&. \fP"
+.ti -1c
+.RI "class \fBJValue\fP"
+.br
+.RI "\fIRepresents a value in JSON (string, integer, date, etc)\&. \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBJTokenType\fP { \fBJTokenType\&.None\fP, \fBJTokenType\&.Object\fP, \fBJTokenType\&.Array\fP, \fBJTokenType\&.Constructor\fP, \fBJTokenType\&.Property\fP, \fBJTokenType\&.Comment\fP, \fBJTokenType\&.Integer\fP, \fBJTokenType\&.Float\fP, \fBJTokenType\&.String\fP, \fBJTokenType\&.Boolean\fP, \fBJTokenType\&.Null\fP, \fBJTokenType\&.Undefined\fP, \fBJTokenType\&.Date\fP, \fBJTokenType\&.Raw\fP, \fBJTokenType\&.Bytes\fP, \fBJTokenType\&.Guid\fP, \fBJTokenType\&.Uri\fP, \fBJTokenType\&.TimeSpan\fP }"
+.br
+.RI "\fISpecifies the type of token\&. \fP"
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBNewtonsoft\&.Json\&.Linq\&.JTokenType\fP"
+
+.PP
+Specifies the type of token\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+No token type has been set\&. 
+.TP
+\fB\fIObject \fP\fP
+A JSON object\&. 
+.TP
+\fB\fIArray \fP\fP
+A JSON array\&. 
+.TP
+\fB\fIConstructor \fP\fP
+A JSON constructor\&. 
+.TP
+\fB\fIProperty \fP\fP
+A JSON object property\&. 
+.TP
+\fB\fIComment \fP\fP
+A comment\&. 
+.TP
+\fB\fIInteger \fP\fP
+An integer value\&. 
+.TP
+\fB\fIFloat \fP\fP
+A float value\&. 
+.TP
+\fB\fIString \fP\fP
+A string value\&. 
+.TP
+\fB\fIBoolean \fP\fP
+A boolean value\&. 
+.TP
+\fB\fINull \fP\fP
+A null value\&. 
+.TP
+\fB\fIUndefined \fP\fP
+An undefined value\&. 
+.TP
+\fB\fIDate \fP\fP
+A date value\&. 
+.TP
+\fB\fIRaw \fP\fP
+A raw JSON value\&. 
+.TP
+\fB\fIBytes \fP\fP
+A collection of bytes value\&. 
+.TP
+\fB\fIGuid \fP\fP
+A Guid value\&. 
+.TP
+\fB\fIUri \fP\fP
+A Uri value\&. 
+.TP
+\fB\fITimeSpan \fP\fP
+A TimeSpan value\&. 
+.PP
+Definition at line 31 of file JTokenType\&.cs\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,128 @@
+.TH "NHibernate.Id" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "package \fBEnhanced\fP"
+.br
+.ti -1c
+.RI "package \fBInsert\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAbstractPostInsertGenerator\fP"
+.br
+.ti -1c
+.RI "class \fBAssigned\fP"
+.br
+.RI "\fIAn \fBIIdentifierGenerator\fP that returns the current identifier assigned to an instance\&. \fP"
+.ti -1c
+.RI "class \fBCounterGenerator\fP"
+.br
+.RI "\fIAn \fBIIdentifierGenerator\fP that returns a \fCInt64\fP constructed from the system time and a counter value\&. Not safe for use in a clustser! \fP"
+.ti -1c
+.RI "class \fBForeignGenerator\fP"
+.br
+.RI "\fIAn \fBIIdentifierGenerator\fP that uses the value of the id property of an associated object \fP"
+.ti -1c
+.RI "class \fBGuidCombGenerator\fP"
+.br
+.RI "\fIAn \fBIIdentifierGenerator\fP that generates System\&.Guid values using a strategy suggested Jimmy Nilsson's \fCarticle\fP on \fCinformit\&.com\fP\&. \fP"
+.ti -1c
+.RI "class \fBGuidGenerator\fP"
+.br
+.RI "\fIAn \fBIIdentifierGenerator\fP that generates Guid values using \fBGuid\&.NewGuid()\fP\&. \fP"
+.ti -1c
+.RI "interface \fBIConfigurable\fP"
+.br
+.RI "\fIAn \fCIdentiferGenerator\fP that supports 'configuration'\&. \fP"
+.ti -1c
+.RI "class \fBIdentifierGenerationException\fP"
+.br
+.RI "\fIThrown by \fBIIdentifierGenerator\fP implementation class when ID generation fails \fP"
+.ti -1c
+.RI "class \fBIdentifierGeneratorFactory\fP"
+.br
+.RI "\fIFactory methods for \fCIdentifierGenerator\fP framework\&. \fP"
+.ti -1c
+.RI "class \fBIdentityGenerator\fP"
+.br
+.RI "\fIAn \fBIIdentifierGenerator\fP that indicates to the \fBISession\fP that identity (ie\&. identity/autoincrement column) key generation should be used\&. \fP"
+.ti -1c
+.RI "struct \fBIdGeneratorParmsNames\fP"
+.br
+.ti -1c
+.RI "interface \fBIIdentifierGenerator\fP"
+.br
+.RI "\fIThe general contract between a class that generates unique identifiers and the \fBISession\fP\&. \fP"
+.ti -1c
+.RI "class \fBIncrementGenerator\fP"
+.br
+.RI "\fIAn \fC\fBIIdentifierGenerator\fP\fP that returns a \fCInt64\fP, constructed by counting from the maximum primary key value at startup\&. Not safe for use in a cluster! \fP"
+.ti -1c
+.RI "struct \fBPersistentIdGeneratorParmsNames\fP"
+.br
+.ti -1c
+.RI "interface \fBIPersistentIdentifierGenerator\fP"
+.br
+.RI "\fIAn \fBIIdentifierGenerator\fP that requires creation of database objects All \fBIPersistentIdentifierGenerator\fPs that also implement An \fBIConfigurable\fP have access to a special mapping parameter: schema \fP"
+.ti -1c
+.RI "interface \fBIPostInsertIdentifierGenerator\fP"
+.br
+.ti -1c
+.RI "interface \fBIPostInsertIdentityPersister\fP"
+.br
+.RI "\fIA persister that may have an identity assigned by execution of a SQL \fCINSERT\fP\&. \fP"
+.ti -1c
+.RI "class \fBNativeGuidGenerator\fP"
+.br
+.RI "\fIGenerates Guid values using the server side Guid function\&. \fP"
+.ti -1c
+.RI "class \fBSelectGenerator\fP"
+.br
+.RI "\fIA generator that selects the just inserted row to determine the identifier value assigned by the database\&. The correct row is located using a unique key\&. \fP"
+.ti -1c
+.RI "class \fBSequenceGenerator\fP"
+.br
+.RI "\fIAn \fBIIdentifierGenerator\fP that generates \fCInt64\fP values using an oracle-style sequence\&. A higher performance algorithm is \fBSequenceHiLoGenerator\fP\&. \fP"
+.ti -1c
+.RI "class \fBSequenceHiLoGenerator\fP"
+.br
+.RI "\fIAn \fBIIdentifierGenerator\fP that combines a hi/lo algorithm with an underlying oracle-style sequence that generates hi values\&. \fP"
+.ti -1c
+.RI "class \fBSequenceIdentityGenerator\fP"
+.br
+.RI "\fIA generator which combines sequence generation with immediate retrieval by attaching a output parameter to the SQL command In this respect it works much like ANSI-SQL IDENTITY generation\&. \fP"
+.ti -1c
+.RI "class \fBTableGenerator\fP"
+.br
+.RI "\fIAn \fBIIdentifierGenerator\fP that uses a database table to store the last generated value\&. \fP"
+.ti -1c
+.RI "class \fBTableHiLoGenerator\fP"
+.br
+.RI "\fIAn \fBIIdentifierGenerator\fP that returns an \fCInt64\fP, constructed using a hi/lo algorithm\&. \fP"
+.ti -1c
+.RI "class \fBTriggerIdentityGenerator\fP"
+.br
+.ti -1c
+.RI "class \fBUUIDHexGenerator\fP"
+.br
+.RI "\fIAn \fBIIdentifierGenerator\fP that returns a string of length 32, 36, or 38 depending on the configuration\&. \fP"
+.ti -1c
+.RI "class \fBUUIDStringGenerator\fP"
+.br
+.RI "\fIAn \fBIIdentifierGenerator\fP that returns a string of length \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

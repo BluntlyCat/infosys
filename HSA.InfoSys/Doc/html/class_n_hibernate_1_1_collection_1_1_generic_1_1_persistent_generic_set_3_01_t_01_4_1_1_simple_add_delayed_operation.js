@@ -1,0 +1,7 @@
+var class_n_hibernate_1_1_collection_1_1_generic_1_1_persistent_generic_set_3_01_t_01_4_1_1_simple_add_delayed_operation =
+[
+    [ "SimpleAddDelayedOperation", "class_n_hibernate_1_1_collection_1_1_generic_1_1_persistent_generic_set_3_01_t_01_4_1_1_simple_add_delayed_operation.html#a03896cdd1122faba45e872dcc87389af", null ],
+    [ "Operate", "class_n_hibernate_1_1_collection_1_1_generic_1_1_persistent_generic_set_3_01_t_01_4_1_1_simple_add_delayed_operation.html#ac5f6d11d10847685db99857e3ff09c92", null ],
+    [ "AddedInstance", "class_n_hibernate_1_1_collection_1_1_generic_1_1_persistent_generic_set_3_01_t_01_4_1_1_simple_add_delayed_operation.html#a70d7b58c79df0a3504fd91f9bcc91bd4", null ],
+    [ "Orphan", "class_n_hibernate_1_1_collection_1_1_generic_1_1_persistent_generic_set_3_01_t_01_4_1_1_simple_add_delayed_operation.html#a49e1bfb8c202b62d6570b8bbae606106", null ]
+];

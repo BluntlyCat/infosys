@@ -1,0 +1,838 @@
+.TH "log4net.LogManager" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.LogManager \- 
+.PP
+This class is used by client applications to request logger instances\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBILog\fP \fBExists\fP (string name)"
+.br
+.RI "\fIReturns the named logger if it exists\&. \fP"
+.ti -1c
+.RI "static \fBILog\fP \fBExists\fP (string repository, string name)"
+.br
+.RI "\fIReturns the named logger if it exists\&. \fP"
+.ti -1c
+.RI "static \fBILog\fP \fBExists\fP (Assembly repositoryAssembly, string name)"
+.br
+.RI "\fIReturns the named logger if it exists\&. \fP"
+.ti -1c
+.RI "static \fBILog\fP[] \fBGetCurrentLoggers\fP ()"
+.br
+.RI "\fIReturns all the currently defined loggers in the default repository\&. \fP"
+.ti -1c
+.RI "static \fBILog\fP[] \fBGetCurrentLoggers\fP (string repository)"
+.br
+.RI "\fIReturns all the currently defined loggers in the specified repository\&. \fP"
+.ti -1c
+.RI "static \fBILog\fP[] \fBGetCurrentLoggers\fP (Assembly repositoryAssembly)"
+.br
+.RI "\fIReturns all the currently defined loggers in the specified assembly's repository\&. \fP"
+.ti -1c
+.RI "static \fBILog\fP \fBGetLogger\fP (string name)"
+.br
+.RI "\fIRetrieves or creates a named logger\&. \fP"
+.ti -1c
+.RI "static \fBILog\fP \fBGetLogger\fP (string repository, string name)"
+.br
+.RI "\fIRetrieves or creates a named logger\&. \fP"
+.ti -1c
+.RI "static \fBILog\fP \fBGetLogger\fP (Assembly repositoryAssembly, string name)"
+.br
+.RI "\fIRetrieves or creates a named logger\&. \fP"
+.ti -1c
+.RI "static \fBILog\fP \fBGetLogger\fP (Type type)"
+.br
+.RI "\fIShorthand for \fBLogManager\&.GetLogger(string)\fP\&. \fP"
+.ti -1c
+.RI "static \fBILog\fP \fBGetLogger\fP (string repository, Type type)"
+.br
+.RI "\fIShorthand for \fBLogManager\&.GetLogger(string)\fP\&. \fP"
+.ti -1c
+.RI "static \fBILog\fP \fBGetLogger\fP (Assembly repositoryAssembly, Type type)"
+.br
+.RI "\fIShorthand for \fBLogManager\&.GetLogger(string)\fP\&. \fP"
+.ti -1c
+.RI "static void \fBShutdown\fP ()"
+.br
+.RI "\fIShuts down the \fBlog4net\fP system\&. \fP"
+.ti -1c
+.RI "static void \fBShutdownRepository\fP ()"
+.br
+.RI "\fIShuts down the default repository\&. \fP"
+.ti -1c
+.RI "static void \fBShutdownRepository\fP (string repository)"
+.br
+.RI "\fIShuts down the repository for the repository specified\&. \fP"
+.ti -1c
+.RI "static void \fBShutdownRepository\fP (Assembly repositoryAssembly)"
+.br
+.RI "\fIShuts down the repository specified\&. \fP"
+.ti -1c
+.RI "static void \fBResetConfiguration\fP ()"
+.br
+.RI "\fIResets all values contained in this repository instance to their defaults\&. \fP"
+.ti -1c
+.RI "static void \fBResetConfiguration\fP (string repository)"
+.br
+.RI "\fIResets all values contained in this repository instance to their defaults\&. \fP"
+.ti -1c
+.RI "static void \fBResetConfiguration\fP (Assembly repositoryAssembly)"
+.br
+.RI "\fIResets all values contained in this repository instance to their defaults\&. \fP"
+.ti -1c
+.RI "static \fBILoggerRepository\fP \fBGetLoggerRepository\fP ()"
+.br
+.RI "\fIReturns the default ILoggerRepository instance\&. \fP"
+.ti -1c
+.RI "static \fBILoggerRepository\fP \fBGetLoggerRepository\fP (string repository)"
+.br
+.RI "\fIReturns the default ILoggerRepository instance\&. \fP"
+.ti -1c
+.RI "static \fBILoggerRepository\fP \fBGetLoggerRepository\fP (Assembly repositoryAssembly)"
+.br
+.RI "\fIReturns the default ILoggerRepository instance\&. \fP"
+.ti -1c
+.RI "static \fBILoggerRepository\fP \fBGetRepository\fP ()"
+.br
+.RI "\fIReturns the default ILoggerRepository instance\&. \fP"
+.ti -1c
+.RI "static \fBILoggerRepository\fP \fBGetRepository\fP (string repository)"
+.br
+.RI "\fIReturns the default ILoggerRepository instance\&. \fP"
+.ti -1c
+.RI "static \fBILoggerRepository\fP \fBGetRepository\fP (Assembly repositoryAssembly)"
+.br
+.RI "\fIReturns the default ILoggerRepository instance\&. \fP"
+.ti -1c
+.RI "static \fBILoggerRepository\fP \fBCreateDomain\fP (Type repositoryType)"
+.br
+.RI "\fICreates a repository with the specified repository type\&. \fP"
+.ti -1c
+.RI "static \fBILoggerRepository\fP \fBCreateRepository\fP (Type repositoryType)"
+.br
+.RI "\fICreates a repository with the specified repository type\&. \fP"
+.ti -1c
+.RI "static \fBILoggerRepository\fP \fBCreateDomain\fP (string repository)"
+.br
+.RI "\fICreates a repository with the specified name\&. \fP"
+.ti -1c
+.RI "static \fBILoggerRepository\fP \fBCreateRepository\fP (string repository)"
+.br
+.RI "\fICreates a repository with the specified name\&. \fP"
+.ti -1c
+.RI "static \fBILoggerRepository\fP \fBCreateDomain\fP (string repository, Type repositoryType)"
+.br
+.RI "\fICreates a repository with the specified name and repository type\&. \fP"
+.ti -1c
+.RI "static \fBILoggerRepository\fP \fBCreateRepository\fP (string repository, Type repositoryType)"
+.br
+.RI "\fICreates a repository with the specified name and repository type\&. \fP"
+.ti -1c
+.RI "static \fBILoggerRepository\fP \fBCreateDomain\fP (Assembly repositoryAssembly, Type repositoryType)"
+.br
+.RI "\fICreates a repository for the specified assembly and repository type\&. \fP"
+.ti -1c
+.RI "static \fBILoggerRepository\fP \fBCreateRepository\fP (Assembly repositoryAssembly, Type repositoryType)"
+.br
+.RI "\fICreates a repository for the specified assembly and repository type\&. \fP"
+.ti -1c
+.RI "static \fBILoggerRepository\fP[] \fBGetAllRepositories\fP ()"
+.br
+.RI "\fIGets the list of currently defined repositories\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class is used by client applications to request logger instances\&. 
+
+This class has static methods that are used by a client to request a logger instance\&. The \fBGetLogger(string)\fP method is used to retrieve a logger\&. 
+.PP
+See the \fBILog\fP interface for more details\&. 
+.PP
+Simple example of logging messages 
+.PP
+.nf
+ILog log = LogManager\&.GetLogger("application-log");
+
+log\&.Info("Application Start");
+log\&.Debug("This is a debug message");
+
+if (log\&.IsDebugEnabled)
+{
+    log\&.Debug("This is another debug message");
+}
+
+.fi
+.PP
+ 
+.PP
+<threadsafety static='true' instance='true'> 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBILog\fP
+.PP
+.RE
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 58 of file LogManager\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBILoggerRepository\fP log4net\&.LogManager\&.CreateDomain (TyperepositoryType)\fC [static]\fP"
+
+.PP
+Creates a repository with the specified repository type\&. <overloads>Create a domain</overloads>
+.PP
+\fBCreateDomain is obsolete\&. Use CreateRepository instead of CreateDomain\&.\fP 
+.PP
+The ILoggerRepository created will be associated with the repository specified such that a call to \fBGetRepository()\fP will return the same repository instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepositoryType\fP A Type that implements ILoggerRepository and has a no arg constructor\&. An instance of this type will be created to act as the ILoggerRepository for the repository specified\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The ILoggerRepository created for the repository\&.
+.RE
+.PP
+
+.PP
+Definition at line 565 of file LogManager\&.cs\&.
+.SS "static \fBILoggerRepository\fP log4net\&.LogManager\&.CreateDomain (stringrepository)\fC [static]\fP"
+
+.PP
+Creates a repository with the specified name\&. \fBCreateDomain is obsolete\&. Use CreateRepository instead of CreateDomain\&.\fP 
+.PP
+Creates the default type of ILoggerRepository which is a \fBlog4net\&.Repository\&.Hierarchy\&.Hierarchy\fP object\&. 
+.PP
+The \fIrepository\fP  name must be unique\&. Repositories cannot be redefined\&. An Exception will be thrown if the repository already exists\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The name of the repository, this must be unique amongst repositories\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The ILoggerRepository created for the repository\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fILogException\fP The specified repository already exists\&.
+.RE
+.PP
+
+.PP
+Definition at line 610 of file LogManager\&.cs\&.
+.SS "static \fBILoggerRepository\fP log4net\&.LogManager\&.CreateDomain (stringrepository, TyperepositoryType)\fC [static]\fP"
+
+.PP
+Creates a repository with the specified name and repository type\&. \fBCreateDomain is obsolete\&. Use CreateRepository instead of CreateDomain\&.\fP 
+.PP
+The \fIrepository\fP  name must be unique\&. Repositories cannot be redefined\&. An Exception will be thrown if the repository already exists\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The name of the repository, this must be unique to the repository\&.
+.br
+\fIrepositoryType\fP A Type that implements ILoggerRepository and has a no arg constructor\&. An instance of this type will be created to act as the ILoggerRepository for the repository specified\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The ILoggerRepository created for the repository\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fILogException\fP The specified repository already exists\&.
+.RE
+.PP
+
+.PP
+Definition at line 655 of file LogManager\&.cs\&.
+.SS "static \fBILoggerRepository\fP log4net\&.LogManager\&.CreateDomain (AssemblyrepositoryAssembly, TyperepositoryType)\fC [static]\fP"
+
+.PP
+Creates a repository for the specified assembly and repository type\&. \fBCreateDomain is obsolete\&. Use CreateRepository instead of CreateDomain\&.\fP 
+.PP
+The ILoggerRepository created will be associated with the repository specified such that a call to \fBGetRepository(Assembly)\fP with the same assembly specified will return the same repository instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepositoryAssembly\fP The assembly to use to get the name of the repository\&.
+.br
+\fIrepositoryType\fP A Type that implements ILoggerRepository and has a no arg constructor\&. An instance of this type will be created to act as the ILoggerRepository for the repository specified\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The ILoggerRepository created for the repository\&.
+.RE
+.PP
+
+.PP
+Definition at line 699 of file LogManager\&.cs\&.
+.SS "static \fBILoggerRepository\fP log4net\&.LogManager\&.CreateRepository (TyperepositoryType)\fC [static]\fP"
+
+.PP
+Creates a repository with the specified repository type\&. <overloads>Create a logger repository\&.</overloads>
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepositoryType\fP A Type that implements ILoggerRepository and has a no arg constructor\&. An instance of this type will be created to act as the ILoggerRepository for the repository specified\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The ILoggerRepository created for the repository\&.
+.RE
+.PP
+.PP
+The ILoggerRepository created will be associated with the repository specified such that a call to \fBGetRepository()\fP will return the same repository instance\&. 
+.PP
+Definition at line 585 of file LogManager\&.cs\&.
+.SS "static \fBILoggerRepository\fP log4net\&.LogManager\&.CreateRepository (stringrepository)\fC [static]\fP"
+
+.PP
+Creates a repository with the specified name\&. Creates the default type of ILoggerRepository which is a \fBlog4net\&.Repository\&.Hierarchy\&.Hierarchy\fP object\&. 
+.PP
+The \fIrepository\fP  name must be unique\&. Repositories cannot be redefined\&. An Exception will be thrown if the repository already exists\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The name of the repository, this must be unique amongst repositories\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The ILoggerRepository created for the repository\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fILogException\fP The specified repository already exists\&.
+.RE
+.PP
+
+.PP
+Definition at line 631 of file LogManager\&.cs\&.
+.SS "static \fBILoggerRepository\fP log4net\&.LogManager\&.CreateRepository (stringrepository, TyperepositoryType)\fC [static]\fP"
+
+.PP
+Creates a repository with the specified name and repository type\&. The \fIrepository\fP  name must be unique\&. Repositories cannot be redefined\&. An Exception will be thrown if the repository already exists\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The name of the repository, this must be unique to the repository\&.
+.br
+\fIrepositoryType\fP A Type that implements ILoggerRepository and has a no arg constructor\&. An instance of this type will be created to act as the ILoggerRepository for the repository specified\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The ILoggerRepository created for the repository\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fILogException\fP The specified repository already exists\&.
+.RE
+.PP
+
+.PP
+Definition at line 675 of file LogManager\&.cs\&.
+.SS "static \fBILoggerRepository\fP log4net\&.LogManager\&.CreateRepository (AssemblyrepositoryAssembly, TyperepositoryType)\fC [static]\fP"
+
+.PP
+Creates a repository for the specified assembly and repository type\&. The ILoggerRepository created will be associated with the repository specified such that a call to \fBGetRepository(Assembly)\fP with the same assembly specified will return the same repository instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepositoryAssembly\fP The assembly to use to get the name of the repository\&.
+.br
+\fIrepositoryType\fP A Type that implements ILoggerRepository and has a no arg constructor\&. An instance of this type will be created to act as the ILoggerRepository for the repository specified\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The ILoggerRepository created for the repository\&.
+.RE
+.PP
+
+.PP
+Definition at line 719 of file LogManager\&.cs\&.
+.SS "static \fBILog\fP log4net\&.LogManager\&.Exists (stringname)\fC [static]\fP"
+
+.PP
+Returns the named logger if it exists\&. <overloads>Returns the named logger if it exists\&.</overloads>
+.PP
+If the named logger exists (in the default repository) then it returns a reference to the logger, otherwise it returns \fCnull\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The fully qualified logger name to look for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The logger found, or \fCnull\fP if no logger could be found\&.
+.RE
+.PP
+
+.PP
+Definition at line 88 of file LogManager\&.cs\&.
+.SS "static \fBILog\fP log4net\&.LogManager\&.Exists (stringrepository, stringname)\fC [static]\fP"
+
+.PP
+Returns the named logger if it exists\&. If the named logger exists (in the specified repository) then it returns a reference to the logger, otherwise it returns \fCnull\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The repository to lookup in\&.
+.br
+\fIname\fP The fully qualified logger name to look for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The logger found, or \fCnull\fP if the logger doesn't exist in the specified repository\&. 
+.RE
+.PP
+
+.PP
+Definition at line 109 of file LogManager\&.cs\&.
+.SS "static \fBILog\fP log4net\&.LogManager\&.Exists (AssemblyrepositoryAssembly, stringname)\fC [static]\fP"
+
+.PP
+Returns the named logger if it exists\&. If the named logger exists (in the repository for the specified assembly) then it returns a reference to the logger, otherwise it returns \fCnull\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepositoryAssembly\fP The assembly to use to lookup the repository\&.
+.br
+\fIname\fP The fully qualified logger name to look for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The logger, or \fCnull\fP if the logger doesn't exist in the specified assembly's repository\&. 
+.RE
+.PP
+
+.PP
+Definition at line 130 of file LogManager\&.cs\&.
+.SS "static \fBILoggerRepository\fP [] log4net\&.LogManager\&.GetAllRepositories ()\fC [static]\fP"
+
+.PP
+Gets the list of currently defined repositories\&. Get an array of all the ILoggerRepository objects that have been created\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of all the known ILoggerRepository objects\&.
+.RE
+.PP
+
+.PP
+Definition at line 733 of file LogManager\&.cs\&.
+.SS "static \fBILog\fP [] log4net\&.LogManager\&.GetCurrentLoggers ()\fC [static]\fP"
+
+.PP
+Returns all the currently defined loggers in the default repository\&. <overloads>Get the currently defined loggers\&.</overloads>
+.PP
+The root logger is \fBnot\fP included in the returned array\&.
+.PP
+\fBReturns:\fP
+.RS 4
+All the defined loggers\&.
+.RE
+.PP
+
+.PP
+Definition at line 143 of file LogManager\&.cs\&.
+.SS "static \fBILog\fP [] log4net\&.LogManager\&.GetCurrentLoggers (stringrepository)\fC [static]\fP"
+
+.PP
+Returns all the currently defined loggers in the specified repository\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The repository to lookup in\&.
+.RE
+.PP
+.PP
+The root logger is \fBnot\fP included in the returned array\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+All the defined loggers\&.
+.RE
+.PP
+
+.PP
+Definition at line 156 of file LogManager\&.cs\&.
+.SS "static \fBILog\fP [] log4net\&.LogManager\&.GetCurrentLoggers (AssemblyrepositoryAssembly)\fC [static]\fP"
+
+.PP
+Returns all the currently defined loggers in the specified assembly's repository\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepositoryAssembly\fP The assembly to use to lookup the repository\&.
+.RE
+.PP
+.PP
+The root logger is \fBnot\fP included in the returned array\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+All the defined loggers\&.
+.RE
+.PP
+
+.PP
+Definition at line 169 of file LogManager\&.cs\&.
+.SS "static \fBILog\fP log4net\&.LogManager\&.GetLogger (stringname)\fC [static]\fP"
+
+.PP
+Retrieves or creates a named logger\&. <overloads>Get or create a logger\&.</overloads>
+.PP
+Retrieves a logger named as the \fIname\fP  parameter\&. If the named logger already exists, then the existing instance will be returned\&. Otherwise, a new instance is created\&. 
+.PP
+By default, loggers do not have a set level but inherit it from the hierarchy\&. This is one of the central features of \fBlog4net\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the logger to retrieve\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The logger with the name specified\&.
+.RE
+.PP
+
+.PP
+Definition at line 192 of file LogManager\&.cs\&.
+.SS "static \fBILog\fP log4net\&.LogManager\&.GetLogger (stringrepository, stringname)\fC [static]\fP"
+
+.PP
+Retrieves or creates a named logger\&. Retrieve a logger named as the \fIname\fP  parameter\&. If the named logger already exists, then the existing instance will be returned\&. Otherwise, a new instance is created\&. 
+.PP
+By default, loggers do not have a set level but inherit it from the hierarchy\&. This is one of the central features of \fBlog4net\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The repository to lookup in\&.
+.br
+\fIname\fP The name of the logger to retrieve\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The logger with the name specified\&.
+.RE
+.PP
+
+.PP
+Definition at line 216 of file LogManager\&.cs\&.
+.SS "static \fBILog\fP log4net\&.LogManager\&.GetLogger (AssemblyrepositoryAssembly, stringname)\fC [static]\fP"
+
+.PP
+Retrieves or creates a named logger\&. Retrieve a logger named as the \fIname\fP  parameter\&. If the named logger already exists, then the existing instance will be returned\&. Otherwise, a new instance is created\&. 
+.PP
+By default, loggers do not have a set level but inherit it from the hierarchy\&. This is one of the central features of \fBlog4net\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepositoryAssembly\fP The assembly to use to lookup the repository\&.
+.br
+\fIname\fP The name of the logger to retrieve\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The logger with the name specified\&.
+.RE
+.PP
+
+.PP
+Definition at line 240 of file LogManager\&.cs\&.
+.SS "static \fBILog\fP log4net\&.LogManager\&.GetLogger (Typetype)\fC [static]\fP"
+
+.PP
+Shorthand for \fBLogManager\&.GetLogger(string)\fP\&. Get the logger for the fully qualified name of the type specified\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The full name of \fItype\fP  will be used as the name of the logger to retrieve\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The logger with the name specified\&.
+.RE
+.PP
+
+.PP
+Definition at line 253 of file LogManager\&.cs\&.
+.SS "static \fBILog\fP log4net\&.LogManager\&.GetLogger (stringrepository, Typetype)\fC [static]\fP"
+
+.PP
+Shorthand for \fBLogManager\&.GetLogger(string)\fP\&. Gets the logger for the fully qualified name of the type specified\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The repository to lookup in\&.
+.br
+\fItype\fP The full name of \fItype\fP  will be used as the name of the logger to retrieve\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The logger with the name specified\&.
+.RE
+.PP
+
+.PP
+Definition at line 267 of file LogManager\&.cs\&.
+.SS "static \fBILog\fP log4net\&.LogManager\&.GetLogger (AssemblyrepositoryAssembly, Typetype)\fC [static]\fP"
+
+.PP
+Shorthand for \fBLogManager\&.GetLogger(string)\fP\&. Gets the logger for the fully qualified name of the type specified\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepositoryAssembly\fP The assembly to use to lookup the repository\&.
+.br
+\fItype\fP The full name of \fItype\fP  will be used as the name of the logger to retrieve\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The logger with the name specified\&.
+.RE
+.PP
+
+.PP
+Definition at line 281 of file LogManager\&.cs\&.
+.SS "static \fBILoggerRepository\fP log4net\&.LogManager\&.GetLoggerRepository ()\fC [static]\fP"
+
+.PP
+Returns the default ILoggerRepository instance\&. <overloads>Get the logger repository\&.</overloads>
+.PP
+Gets the ILoggerRepository for the repository specified by the callers assembly (Assembly\&.GetCallingAssembly())\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The ILoggerRepository instance for the default repository\&.
+.RE
+.PP
+
+.PP
+Definition at line 459 of file LogManager\&.cs\&.
+.SS "static \fBILoggerRepository\fP log4net\&.LogManager\&.GetLoggerRepository (stringrepository)\fC [static]\fP"
+
+.PP
+Returns the default ILoggerRepository instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The default ILoggerRepository instance\&.
+.RE
+.PP
+.PP
+Gets the ILoggerRepository for the repository specified by the \fIrepository\fP  argument\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The repository to lookup in\&.
+.RE
+.PP
+
+.PP
+Definition at line 476 of file LogManager\&.cs\&.
+.SS "static \fBILoggerRepository\fP log4net\&.LogManager\&.GetLoggerRepository (AssemblyrepositoryAssembly)\fC [static]\fP"
+
+.PP
+Returns the default ILoggerRepository instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The default ILoggerRepository instance\&.
+.RE
+.PP
+.PP
+Gets the ILoggerRepository for the repository specified by the \fIrepositoryAssembly\fP  argument\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepositoryAssembly\fP The assembly to use to lookup the repository\&.
+.RE
+.PP
+
+.PP
+Definition at line 493 of file LogManager\&.cs\&.
+.SS "static \fBILoggerRepository\fP log4net\&.LogManager\&.GetRepository ()\fC [static]\fP"
+
+.PP
+Returns the default ILoggerRepository instance\&. <overloads>Get a logger repository\&.</overloads>
+.PP
+Gets the ILoggerRepository for the repository specified by the callers assembly (Assembly\&.GetCallingAssembly())\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The ILoggerRepository instance for the default repository\&.
+.RE
+.PP
+
+.PP
+Definition at line 509 of file LogManager\&.cs\&.
+.SS "static \fBILoggerRepository\fP log4net\&.LogManager\&.GetRepository (stringrepository)\fC [static]\fP"
+
+.PP
+Returns the default ILoggerRepository instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The default ILoggerRepository instance\&.
+.RE
+.PP
+.PP
+Gets the ILoggerRepository for the repository specified by the \fIrepository\fP  argument\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The repository to lookup in\&.
+.RE
+.PP
+
+.PP
+Definition at line 525 of file LogManager\&.cs\&.
+.SS "static \fBILoggerRepository\fP log4net\&.LogManager\&.GetRepository (AssemblyrepositoryAssembly)\fC [static]\fP"
+
+.PP
+Returns the default ILoggerRepository instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The default ILoggerRepository instance\&.
+.RE
+.PP
+.PP
+Gets the ILoggerRepository for the repository specified by the \fIrepositoryAssembly\fP  argument\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepositoryAssembly\fP The assembly to use to lookup the repository\&.
+.RE
+.PP
+
+.PP
+Definition at line 541 of file LogManager\&.cs\&.
+.SS "static void log4net\&.LogManager\&.ResetConfiguration ()\fC [static]\fP"
+
+.PP
+Resets all values contained in this repository instance to their defaults\&. <overloads>Reset the configuration of a repository</overloads>
+.PP
+Resets all values contained in the repository instance to their defaults\&. This removes all appenders from all loggers, sets the level of all non-root loggers to \fCnull\fP, sets their additivity flag to \fCtrue\fP and sets the level of the root logger to Level\&.Debug\&. Moreover, message disabling is set to its default 'off' value\&. 
+.PP
+Definition at line 404 of file LogManager\&.cs\&.
+.SS "static void log4net\&.LogManager\&.ResetConfiguration (stringrepository)\fC [static]\fP"
+
+.PP
+Resets all values contained in this repository instance to their defaults\&. Reset all values contained in the repository instance to their defaults\&. This removes all appenders from all loggers, sets the level of all non-root loggers to \fCnull\fP, sets their additivity flag to \fCtrue\fP and sets the level of the root logger to Level\&.Debug\&. Moreover, message disabling is set to its default 'off' value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The repository to reset\&.
+.RE
+.PP
+
+.PP
+Definition at line 423 of file LogManager\&.cs\&.
+.SS "static void log4net\&.LogManager\&.ResetConfiguration (AssemblyrepositoryAssembly)\fC [static]\fP"
+
+.PP
+Resets all values contained in this repository instance to their defaults\&. Reset all values contained in the repository instance to their defaults\&. This removes all appenders from all loggers, sets the level of all non-root loggers to \fCnull\fP, sets their additivity flag to \fCtrue\fP and sets the level of the root logger to Level\&.Debug\&. Moreover, message disabling is set to its default 'off' value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepositoryAssembly\fP The assembly to use to lookup the repository to reset\&.
+.RE
+.PP
+
+.PP
+Definition at line 442 of file LogManager\&.cs\&.
+.SS "static void log4net\&.LogManager\&.Shutdown ()\fC [static]\fP"
+
+.PP
+Shuts down the \fBlog4net\fP system\&. Calling this method will \fBsafely\fP close and remove all appenders in all the loggers including root contained in all the default repositories\&. 
+.PP
+Some appenders need to be closed before the application exists\&. Otherwise, pending logging events might be lost\&. 
+.PP
+The \fCshutdown\fP method is careful to close nested appenders before closing regular appenders\&. This is allows configurations where a regular appender is attached to a logger and again to a nested appender\&. 
+.PP
+Definition at line 309 of file LogManager\&.cs\&.
+.SS "static void log4net\&.LogManager\&.ShutdownRepository ()\fC [static]\fP"
+
+.PP
+Shuts down the default repository\&. <overloads>Shutdown a logger repository\&.</overloads>
+.PP
+Calling this method will \fBsafely\fP close and remove all appenders in all the loggers including root contained in the default repository\&. 
+.PP
+Some appenders need to be closed before the application exists\&. Otherwise, pending logging events might be lost\&. 
+.PP
+The \fCshutdown\fP method is careful to close nested appenders before closing regular appenders\&. This is allows configurations where a regular appender is attached to a logger and again to a nested appender\&. 
+.PP
+Definition at line 333 of file LogManager\&.cs\&.
+.SS "static void log4net\&.LogManager\&.ShutdownRepository (stringrepository)\fC [static]\fP"
+
+.PP
+Shuts down the repository for the repository specified\&. Calling this method will \fBsafely\fP close and remove all appenders in all the loggers including root contained in the \fIrepository\fP  specified\&. 
+.PP
+Some appenders need to be closed before the application exists\&. Otherwise, pending logging events might be lost\&. 
+.PP
+The \fCshutdown\fP method is careful to close nested appenders before closing regular appenders\&. This is allows configurations where a regular appender is attached to a logger and again to a nested appender\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The repository to shutdown\&.
+.RE
+.PP
+
+.PP
+Definition at line 358 of file LogManager\&.cs\&.
+.SS "static void log4net\&.LogManager\&.ShutdownRepository (AssemblyrepositoryAssembly)\fC [static]\fP"
+
+.PP
+Shuts down the repository specified\&. Calling this method will \fBsafely\fP close and remove all appenders in all the loggers including root contained in the repository\&. The repository is looked up using the \fIrepositoryAssembly\fP  specified\&. 
+.PP
+Some appenders need to be closed before the application exists\&. Otherwise, pending logging events might be lost\&. 
+.PP
+The \fCshutdown\fP method is careful to close nested appenders before closing regular appenders\&. This is allows configurations where a regular appender is attached to a logger and again to a nested appender\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepositoryAssembly\fP The assembly to use to lookup the repository\&.
+.RE
+.PP
+
+.PP
+Definition at line 385 of file LogManager\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,98 @@
+.TH "log4net.Util.TypeConverters.TypeConverterAttribute" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.TypeConverters.TypeConverterAttribute \- 
+.PP
+Attribute used to associate a type converter  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits Attribute\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTypeConverterAttribute\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.ti -1c
+.RI "\fBTypeConverterAttribute\fP (string typeName)"
+.br
+.RI "\fICreate a new type converter attribute for the specified type name \fP"
+.ti -1c
+.RI "\fBTypeConverterAttribute\fP (Type converterType)"
+.br
+.RI "\fICreate a new type converter attribute for the specified type \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBConverterTypeName\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe string type name of the type converter \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Attribute used to associate a type converter 
+
+Class and Interface level attribute that specifies a type converter to use with the associated type\&. 
+.PP
+To associate a type converter with a target type apply a \fC\fBTypeConverterAttribute\fP\fP to the target type\&. Specify the type of the type converter on the attribute\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 41 of file TypeConverterAttribute\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Util\&.TypeConverters\&.TypeConverterAttribute\&.TypeConverterAttribute ()"
+
+.PP
+Default constructor Default constructor 
+.PP
+Definition at line 62 of file TypeConverterAttribute\&.cs\&.
+.SS "log4net\&.Util\&.TypeConverters\&.TypeConverterAttribute\&.TypeConverterAttribute (stringtypeName)"
+
+.PP
+Create a new type converter attribute for the specified type name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItypeName\fP The string type name of the type converter
+.RE
+.PP
+.PP
+The type specified must implement the \fBIConvertFrom\fP or the \fBIConvertTo\fP interfaces\&. 
+.PP
+Definition at line 76 of file TypeConverterAttribute\&.cs\&.
+.SS "log4net\&.Util\&.TypeConverters\&.TypeConverterAttribute\&.TypeConverterAttribute (TypeconverterType)"
+
+.PP
+Create a new type converter attribute for the specified type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconverterType\fP The type of the type converter
+.RE
+.PP
+.PP
+The type specified must implement the \fBIConvertFrom\fP or the \fBIConvertTo\fP interfaces\&. 
+.PP
+Definition at line 91 of file TypeConverterAttribute\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string log4net\&.Util\&.TypeConverters\&.TypeConverterAttribute\&.ConverterTypeName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The string type name of the type converter The string type name of the type converter 
+.PP
+The type specified must implement the \fBIConvertFrom\fP or the \fBIConvertTo\fP interfaces\&. 
+.PP
+Definition at line 111 of file TypeConverterAttribute\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

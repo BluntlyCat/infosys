@@ -1,0 +1,87 @@
+.TH "log4net.LogicalThreadContext" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.LogicalThreadContext \- 
+.PP
+The \fBlog4net\fP Logical Thread Context\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "static 
+.br
+\fBLogicalThreadContextProperties\fP \fBProperties\fP\fC [get]\fP"
+.br
+.RI "\fIThe thread properties map \fP"
+.ti -1c
+.RI "static \fBThreadContextStacks\fP \fBStacks\fP\fC [get]\fP"
+.br
+.RI "\fIThe thread stacks \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The \fBlog4net\fP Logical Thread Context\&. 
+
+The \fC\fBLogicalThreadContext\fP\fP provides a location for System\&.Runtime\&.Remoting\&.Messaging\&.CallContext specific debugging information to be stored\&. The \fC\fBLogicalThreadContext\fP\fP properties override any \fBThreadContext\fP or \fBGlobalContext\fP properties with the same name\&. 
+.PP
+The Logical Thread Context has a properties map and a stack\&. The properties and stack can be included in the output of log messages\&. The \fBlog4net\&.Layout\&.PatternLayout\fP supports selecting and outputting these properties\&. 
+.PP
+The Logical Thread Context provides a diagnostic context for the current call context\&. This is an instrument for distinguishing interleaved log output from different sources\&. Log output is typically interleaved when a server handles multiple clients near-simultaneously\&. 
+.PP
+The Logical Thread Context is managed on a per System\&.Runtime\&.Remoting\&.Messaging\&.CallContext basis\&. 
+.PP
+The System\&.Runtime\&.Remoting\&.Messaging\&.CallContext requires a link time System\&.Security\&.Permissions\&.SecurityPermission for the System\&.Security\&.Permissions\&.SecurityPermissionFlag\&.Infrastructure\&. If the calling code does not have this permission then this context will be disabled\&. It will not store any property values set on it\&. 
+.PP
+Example of using the thread context properties to store a username\&. 
+.PP
+.nf
+LogicalThreadContext\&.Properties["user"] = userName;
+log\&.Info("This log message has a LogicalThreadContext Property called 'user'");
+
+.fi
+.PP
+ 
+.PP
+Example of how to push a message into the context stack 
+.PP
+.nf
+using(LogicalThreadContext\&.Stacks["LDC"]\&.Push("my context message"))
+{
+    log\&.Info("This log message has a LogicalThreadContext Stack message that includes 'my context message'");
+
+} // at the end of the using block the message is automatically popped 
+
+.fi
+.PP
+ 
+.PP
+<threadsafety static='true' instance='true'> <author>Nicko Cadell</author> 
+.PP
+Definition at line 80 of file LogicalThreadContext\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBLogicalThreadContextProperties\fP log4net\&.LogicalThreadContext\&.Properties\fC [static]\fP, \fC [get]\fP"
+
+.PP
+The thread properties map The thread properties map 
+.PP
+The \fC\fBLogicalThreadContext\fP\fP properties override any \fBThreadContext\fP or \fBGlobalContext\fP properties with the same name\&. 
+.PP
+Definition at line 113 of file LogicalThreadContext\&.cs\&.
+.SS "\fBThreadContextStacks\fP log4net\&.LogicalThreadContext\&.Stacks\fC [static]\fP, \fC [get]\fP"
+
+.PP
+The thread stacks stack map 
+.PP
+The logical thread stacks\&. 
+.PP
+Definition at line 129 of file LogicalThreadContext\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

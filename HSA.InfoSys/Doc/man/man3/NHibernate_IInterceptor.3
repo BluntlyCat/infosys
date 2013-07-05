@@ -1,0 +1,436 @@
+.TH "NHibernate.IInterceptor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.IInterceptor \- 
+.PP
+Allows user code to inspect and/or change property values before they are written and after they are read from the database  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.EmptyInterceptor\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBOnLoad\fP (object entity, object id, object[] state, string[] propertyNames, \fBIType\fP[] types)"
+.br
+.RI "\fICalled just before an object is initialized \fP"
+.ti -1c
+.RI "bool \fBOnFlushDirty\fP (object entity, object id, object[] currentState, object[] previousState, string[] propertyNames, \fBIType\fP[] types)"
+.br
+.RI "\fICalled when an object is detected to be dirty, during a flush\&. \fP"
+.ti -1c
+.RI "bool \fBOnSave\fP (object entity, object id, object[] state, string[] propertyNames, \fBIType\fP[] types)"
+.br
+.RI "\fICalled before an object is saved \fP"
+.ti -1c
+.RI "void \fBOnDelete\fP (object entity, object id, object[] state, string[] propertyNames, \fBIType\fP[] types)"
+.br
+.RI "\fICalled before an object is deleted \fP"
+.ti -1c
+.RI "void \fBOnCollectionRecreate\fP (object collection, object key)"
+.br
+.RI "\fICalled before a collection is (re)created\&.\fP"
+.ti -1c
+.RI "void \fBOnCollectionRemove\fP (object collection, object key)"
+.br
+.RI "\fICalled before a collection is deleted\&.\fP"
+.ti -1c
+.RI "void \fBOnCollectionUpdate\fP (object collection, object key)"
+.br
+.RI "\fICalled before a collection is updated\&.\fP"
+.ti -1c
+.RI "void \fBPreFlush\fP (ICollection entities)"
+.br
+.RI "\fICalled before a flush \fP"
+.ti -1c
+.RI "void \fBPostFlush\fP (ICollection entities)"
+.br
+.RI "\fICalled after a flush that actually ends in execution of the SQL statements required to synchronize in-memory state with the database\&. \fP"
+.ti -1c
+.RI "bool \fBIsTransient\fP (object entity)"
+.br
+.RI "\fICalled when a transient entity is passed to \fCSaveOrUpdate\fP\&. \fP"
+.ti -1c
+.RI "int[] \fBFindDirty\fP (object entity, object id, object[] currentState, object[] previousState, string[] propertyNames, \fBIType\fP[] types)"
+.br
+.RI "\fICalled from \fCFlush()\fP\&. The return value determines whether the entity is updated \fP"
+.ti -1c
+.RI "object \fBInstantiate\fP (System\&.String entityName, \fBEntityMode\fP entityMode, object id)"
+.br
+.RI "\fIInstantiate the entity class\&. Return  to indicate that Hibernate should use the default constructor of the class \fP"
+.ti -1c
+.RI "string \fBGetEntityName\fP (object entity)"
+.br
+.RI "\fIGet the entity name for a persistent or transient instance\fP"
+.ti -1c
+.RI "object \fBGetEntity\fP (string entityName, object id)"
+.br
+.RI "\fIGet a fully loaded entity instance that is cached externally\fP"
+.ti -1c
+.RI "void \fBAfterTransactionBegin\fP (\fBITransaction\fP tx)"
+.br
+.RI "\fICalled when a \fBNHibernate\fP transaction is begun via the \fBNHibernate\fP \fBITransaction\fP API\&. Will not be called if transactions are being controlled via some other mechanism\&. \fP"
+.ti -1c
+.RI "void \fBBeforeTransactionCompletion\fP (\fBITransaction\fP tx)"
+.br
+.RI "\fICalled before a transaction is committed (but not before rollback)\&. \fP"
+.ti -1c
+.RI "void \fBAfterTransactionCompletion\fP (\fBITransaction\fP tx)"
+.br
+.RI "\fICalled after a transaction is committed or rolled back\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBOnPrepareStatement\fP (\fBSqlString\fP sql)"
+.br
+.RI "\fICalled when sql string is being prepared\&. \fP"
+.ti -1c
+.RI "void \fBSetSession\fP (\fBISession\fP session)"
+.br
+.RI "\fICalled when a session-scoped (and \fBonly\fP session scoped) interceptor is attached to a session \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Allows user code to inspect and/or change property values before they are written and after they are read from the database 
+
+There might be a single instance of \fC\fBIInterceptor\fP\fP for a \fCSessionFactory\fP, or a new instance might be specified for each \fC\fBISession\fP\fP\&. Whichever approach is used, the interceptor must be serializable if the \fC\fBISession\fP\fP is to be serializable\&. This means that \fCSessionFactory\fP -scoped interceptors should implement \fCReadResolve()\fP\&. 
+.PP
+The \fC\fBISession\fP\fP may not be invoked from a callback (nor may a callback cause a collection or proxy to be lazily initialized)\&. 
+.PP
+Definition at line 24 of file IInterceptor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.IInterceptor\&.AfterTransactionBegin (\fBITransaction\fPtx)"
+
+.PP
+Called when a \fBNHibernate\fP transaction is begun via the \fBNHibernate\fP \fBITransaction\fP API\&. Will not be called if transactions are being controlled via some other mechanism\&. 
+.PP
+Implemented in \fBNHibernate\&.EmptyInterceptor\fP, \fBNHibernate\&.Test\&.SystemTransactions\&.TransactionNotificationFixture\&.RecordingInterceptor\fP, and \fBNHibernate\&.Test\&.TransactionTest\&.TransactionNotificationFixture\&.RecordingInterceptor\fP\&.
+.SS "void NHibernate\&.IInterceptor\&.AfterTransactionCompletion (\fBITransaction\fPtx)"
+
+.PP
+Called after a transaction is committed or rolled back\&. 
+.PP
+Implemented in \fBNHibernate\&.EmptyInterceptor\fP, \fBNHibernate\&.Test\&.SystemTransactions\&.TransactionNotificationFixture\&.RecordingInterceptor\fP, and \fBNHibernate\&.Test\&.TransactionTest\&.TransactionNotificationFixture\&.RecordingInterceptor\fP\&.
+.SS "void NHibernate\&.IInterceptor\&.BeforeTransactionCompletion (\fBITransaction\fPtx)"
+
+.PP
+Called before a transaction is committed (but not before rollback)\&. 
+.PP
+Implemented in \fBNHibernate\&.EmptyInterceptor\fP, \fBNHibernate\&.Test\&.SystemTransactions\&.TransactionNotificationFixture\&.RecordingInterceptor\fP, and \fBNHibernate\&.Test\&.TransactionTest\&.TransactionNotificationFixture\&.RecordingInterceptor\fP\&.
+.SS "int [] NHibernate\&.IInterceptor\&.FindDirty (objectentity, objectid, object[]currentState, object[]previousState, string[]propertyNames, \fBIType\fP[]types)"
+
+.PP
+Called from \fCFlush()\fP\&. The return value determines whether the entity is updated 
+.PD 0
+
+.IP "\(bu" 2
+an array of property indicies - the entity is dirty 
+.IP "\(bu" 2
+an empty array - the entity is not dirty 
+.IP "\(bu" 2
+- use Hibernate's default dirty-checking algorithm 
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP A persistent entity
+.br
+\fIcurrentState\fP 
+.br
+\fIid\fP 
+.br
+\fIpreviousState\fP 
+.br
+\fIpropertyNames\fP 
+.br
+\fItypes\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An array of dirty property indicies or  to choose default behavior
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.EmptyInterceptor\fP\&.
+.SS "object NHibernate\&.IInterceptor\&.GetEntity (stringentityName, objectid)"
+
+.PP
+Get a fully loaded entity instance that is cached externally
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP the name of the entity 
+.br
+\fIid\fP the instance identifier 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a fully initialized entity 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.EmptyInterceptor\fP\&.
+.SS "string NHibernate\&.IInterceptor\&.GetEntityName (objectentity)"
+
+.PP
+Get the entity name for a persistent or transient instance
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP an entity instance 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the name of the entity 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.EmptyInterceptor\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2043\&.Fixture\&.Namer\fP, \fBNHibernate\&.Test\&.DynamicEntity\&.Interceptor\&.ProxyInterceptor\fP, and \fBNHibernate\&.Test\&.DynamicEntity\&.Tuplizer\&.EntityNameInterceptor\fP\&.
+.SS "object NHibernate\&.IInterceptor\&.Instantiate (System\&.StringentityName, \fBEntityMode\fPentityMode, objectid)"
+
+.PP
+Instantiate the entity class\&. Return  to indicate that Hibernate should use the default constructor of the class 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP the name of the entity 
+.br
+\fIentityMode\fP The type of entity instance to be returned\&. 
+.br
+\fIid\fP the identifier of the new instance 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An instance of the class, or  to choose default behaviour
+.RE
+.PP
+.PP
+The identifier property of the returned instance should be initialized with the given identifier\&. 
+.SS "bool NHibernate\&.IInterceptor\&.IsTransient (objectentity)"
+
+.PP
+Called when a transient entity is passed to \fCSaveOrUpdate\fP\&. The return value determines if the object is saved 
+.PD 0
+
+.IP "\(bu" 2
+- the entity is passed to \fCSave()\fP, resulting in an \fCINSERT\fP 
+.IP "\(bu" 2
+- the entity is passed to \fCUpdate()\fP, resulting in an \fCUPDATE\fP 
+.IP "\(bu" 2
+- Hibernate uses the \fCunsaved-value\fP mapping to determine if the object is unsaved 
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP A transient entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Boolean or  to choose default behaviour
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.EmptyInterceptor\fP\&.
+.SS "void NHibernate\&.IInterceptor\&.OnCollectionRecreate (objectcollection, objectkey)"
+
+.PP
+Called before a collection is (re)created\&.
+.PP
+Implemented in \fBNHibernate\&.EmptyInterceptor\fP\&.
+.SS "void NHibernate\&.IInterceptor\&.OnCollectionRemove (objectcollection, objectkey)"
+
+.PP
+Called before a collection is deleted\&.
+.PP
+Implemented in \fBNHibernate\&.EmptyInterceptor\fP\&.
+.SS "void NHibernate\&.IInterceptor\&.OnCollectionUpdate (objectcollection, objectkey)"
+
+.PP
+Called before a collection is updated\&.
+.PP
+Implemented in \fBNHibernate\&.EmptyInterceptor\fP\&.
+.SS "void NHibernate\&.IInterceptor\&.OnDelete (objectentity, objectid, object[]state, string[]propertyNames, \fBIType\fP[]types)"
+
+.PP
+Called before an object is deleted 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP 
+.br
+\fIid\fP 
+.br
+\fIpropertyNames\fP 
+.br
+\fIstate\fP 
+.br
+\fItypes\fP 
+.RE
+.PP
+.PP
+It is not recommended that the interceptor modify the \fCstate\fP\&. 
+.PP
+Implemented in \fBNHibernate\&.EmptyInterceptor\fP\&.
+.SS "bool NHibernate\&.IInterceptor\&.OnFlushDirty (objectentity, objectid, object[]currentState, object[]previousState, string[]propertyNames, \fBIType\fP[]types)"
+
+.PP
+Called when an object is detected to be dirty, during a flush\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcurrentState\fP 
+.br
+\fIentity\fP 
+.br
+\fIid\fP 
+.br
+\fIpreviousState\fP 
+.br
+\fIpropertyNames\fP 
+.br
+\fItypes\fP 
+.RE
+.PP
+.PP
+The interceptor may modify the detected \fCcurrentState\fP, which will be propagated to both the database and the persistent object\&. Note that all flushes end in an actual synchronization with the database, in which as the new \fCcurrentState\fP will be propagated to the object, but not necessarily (immediately) to the database\&. It is strongly recommended that the interceptor \fBnot\fP modify the \fCpreviousState\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+if the user modified the \fCcurrentState\fP in any way
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.NHSpecificTest\&.NH901\&.InterceptorStub\fP, \fBNHibernate\&.EmptyInterceptor\fP, \fBNHibernate\&.Test\&.Interceptor\&.StatefulInterceptor\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1159\&.HibernateInterceptor\fP, \fBNHibernate\&.Test\&.Interceptor\&.PropertyInterceptor\fP, and \fBNHibernate\&.Test\&.Interceptor\&.CollectionInterceptor\fP\&.
+.SS "bool NHibernate\&.IInterceptor\&.OnLoad (objectentity, objectid, object[]state, string[]propertyNames, \fBIType\fP[]types)"
+
+.PP
+Called just before an object is initialized 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP 
+.br
+\fIid\fP 
+.br
+\fIpropertyNames\fP 
+.br
+\fIstate\fP 
+.br
+\fItypes\fP 
+.RE
+.PP
+.PP
+The interceptor may change the \fCstate\fP, which will be propagated to the persistent object\&. Note that when this method is called, \fCentity\fP will be an empty uninitialized instance of the class\&.
+.PP
+\fBReturns:\fP
+.RS 4
+if the user modified the \fCstate\fP in any way
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.EmptyInterceptor\fP\&.
+.SS "\fBSqlString\fP NHibernate\&.IInterceptor\&.OnPrepareStatement (\fBSqlString\fPsql)"
+
+.PP
+Called when sql string is being prepared\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsql\fP sql to be prepared 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+original or modified sql 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.EmptyInterceptor\fP\&.
+.SS "bool NHibernate\&.IInterceptor\&.OnSave (objectentity, objectid, object[]state, string[]propertyNames, \fBIType\fP[]types)"
+
+.PP
+Called before an object is saved 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP 
+.br
+\fIid\fP 
+.br
+\fIpropertyNames\fP 
+.br
+\fIstate\fP 
+.br
+\fItypes\fP 
+.RE
+.PP
+.PP
+The interceptor may modify the \fCstate\fP, which will be used for the SQL \fCINSERT\fP and propagated to the persistent object 
+.PP
+\fBReturns:\fP
+.RS 4
+if the user modified the \fCstate\fP in any way
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.EmptyInterceptor\fP, \fBNHibernate\&.Test\&.Interceptor\&.PropertyInterceptor\fP, \fBNHibernate\&.Test\&.Interceptor\&.CollectionInterceptor\fP, and \fBNHibernate\&.Test\&.Interceptor\&.StatefulInterceptor\fP\&.
+.SS "void NHibernate\&.IInterceptor\&.PostFlush (ICollectionentities)"
+
+.PP
+Called after a flush that actually ends in execution of the SQL statements required to synchronize in-memory state with the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentities\fP The entitites
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.EmptyInterceptor\fP, and \fBNHibernate\&.Test\&.Interceptor\&.StatefulInterceptor\fP\&.
+.SS "void NHibernate\&.IInterceptor\&.PreFlush (ICollectionentities)"
+
+.PP
+Called before a flush 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentities\fP The entities
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.EmptyInterceptor\fP\&.
+.SS "void NHibernate\&.IInterceptor\&.SetSession (\fBISession\fPsession)"
+
+.PP
+Called when a session-scoped (and \fBonly\fP session scoped) interceptor is attached to a session session-scoped-interceptor is an instance of the interceptor used only for one session\&. The use of singleton-interceptor may cause problems in multi-thread scenario\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBISessionFactory\&.OpenSession(IInterceptor)\fP, \fBISessionFactory\&.OpenSession(IDbConnection,IInterceptor)\fP
+.PP
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.EmptyInterceptor\fP, and \fBNHibernate\&.Test\&.Interceptor\&.StatefulInterceptor\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

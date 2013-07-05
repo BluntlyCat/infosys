@@ -1,0 +1,116 @@
+.TH "NHibernate.SqlCommand.SqlCommandImpl" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.SqlCommand.SqlCommandImpl \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.SqlCommand\&.ISqlCommand\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlCommandImpl\fP (\fBSqlString\fP query, ICollection< \fBIParameterSpecification\fP > specifications, \fBQueryParameters\fP queryParameters, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "void \fBResetParametersIndexesForTheCommand\fP (int singleSqlParametersOffset)"
+.br
+.RI "\fIre-set the index of each parameter in the final \fBcommand\fP\&. \fP"
+.ti -1c
+.RI "void \fBBind\fP (IDbCommand command, IList< \fBParameter\fP > commandQueryParametersList, int singleSqlParametersOffset, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIBind the appropriate value into the given command\&. \fP"
+.ti -1c
+.RI "void \fBBind\fP (IDbCommand command, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIBind the appropriate value into the given command\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "List< \fBParameter\fP > \fBSqlQueryParametersList\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSqlType\fP[] \fBParameterTypes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBQuery\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable
+.br
+< \fBIParameterSpecification\fP > \fBSpecifications\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBQueryParameters\fP \fBQueryParameters\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 56 of file SqlCommandImpl\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.SqlCommand\&.SqlCommandImpl\&.Bind (IDbCommandcommand, IList< \fBParameter\fP >commandQueryParametersList, intsingleSqlParametersOffset, \fBISessionImplementor\fPsession)"
+
+.PP
+Bind the appropriate value into the given command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP The command into which the value should be bound\&.
+.br
+\fIcommandQueryParametersList\fP The parameter-list of the whole query of the command\&.
+.br
+\fIsingleSqlParametersOffset\fP The offset from where start the list of IDataParameter, in the given \fIcommand\fP , for the this \fBSqlCommandImpl\fP\&. 
+.br
+\fIsession\fP The session against which the current execution is occuring\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.SqlCommand\&.ISqlCommand\fP\&.
+.PP
+Definition at line 134 of file SqlCommandImpl\&.cs\&.
+.SS "void NHibernate\&.SqlCommand\&.SqlCommandImpl\&.Bind (IDbCommandcommand, \fBISessionImplementor\fPsession)"
+
+.PP
+Bind the appropriate value into the given command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP The command into which the value should be bound\&.
+.br
+\fIsession\fP The session against which the current execution is occuring\&.
+.RE
+.PP
+.PP
+Use this method when the \fIcommand\fP  contains just 'this' instance of \fBISqlCommand\fP\&. Use the overload Bind(IDbCommand, IList{Parameter}, int, ISessionImplementor) when the \fIcommand\fP  contains more instances of \fBISqlCommand\fP\&. 
+.PP
+Implements \fBNHibernate\&.SqlCommand\&.ISqlCommand\fP\&.
+.PP
+Definition at line 151 of file SqlCommandImpl\&.cs\&.
+.SS "void NHibernate\&.SqlCommand\&.SqlCommandImpl\&.ResetParametersIndexesForTheCommand (intsingleSqlParametersOffset)"
+
+.PP
+re-set the index of each parameter in the final \fBcommand\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsingleSqlParametersOffset\fP The offset from where start the list of IDataParameter, in the given command, for the this \fBSqlCommandImpl\fP\&. 
+.RE
+.PP
+.PP
+Suppose the final \fBcommand\fP is composed by two queries\&. The \fIsingleSqlParametersOffset\fP  for the first query is zero\&. If the first query command has 12 parameters (size of its SqlType array) the offset to bind all IParameterSpecifications, of the second query in the command, is 12 (for the first query we are using from 0 to 11)\&. 
+.PP
+This method should be called before call IBatcher\&.PrepareCommand\&. 
+.PP
+Implements \fBNHibernate\&.SqlCommand\&.ISqlCommand\fP\&.
+.PP
+Definition at line 98 of file SqlCommandImpl\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

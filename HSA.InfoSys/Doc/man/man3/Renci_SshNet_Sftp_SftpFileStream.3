@@ -1,0 +1,675 @@
+.TH "Renci.SshNet.Sftp.SftpFileStream" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Sftp.SftpFileStream \- 
+.PP
+Exposes a System\&.IO\&.Stream around a remote SFTP file, supporting both synchronous and asynchronous read and write operations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits Stream\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override IAsyncResult \fBBeginRead\fP (byte[] buffer, int offset, int count, AsyncCallback callback, Object state)"
+.br
+.RI "\fIBegins an asynchronous read operation\&. \fP"
+.ti -1c
+.RI "override int \fBEndRead\fP (IAsyncResult asyncResult)"
+.br
+.RI "\fIWaits for the pending asynchronous read to complete\&. \fP"
+.ti -1c
+.RI "override IAsyncResult \fBBeginWrite\fP (byte[] buffer, int offset, int count, AsyncCallback callback, Object state)"
+.br
+.RI "\fIBegins an asynchronous write operation\&. \fP"
+.ti -1c
+.RI "override void \fBEndWrite\fP (IAsyncResult asyncResult)"
+.br
+.RI "\fIEnds an asynchronous write operation\&. \fP"
+.ti -1c
+.RI "override void \fBClose\fP ()"
+.br
+.RI "\fICloses the current stream and releases any resources (such as sockets and file handles) associated with the current stream\&. \fP"
+.ti -1c
+.RI "override void \fBFlush\fP ()"
+.br
+.RI "\fIClears all buffers for this stream and causes any buffered data to be written to the file\&. \fP"
+.ti -1c
+.RI "override int \fBRead\fP (byte[] buffer, int offset, int count)"
+.br
+.RI "\fIReads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read\&. \fP"
+.ti -1c
+.RI "override int \fBReadByte\fP ()"
+.br
+.RI "\fIReads a byte from the stream and advances the position within the stream by one byte, or returns -1 if at the end of the stream\&. \fP"
+.ti -1c
+.RI "override long \fBSeek\fP (long offset, SeekOrigin origin)"
+.br
+.RI "\fISets the position within the current stream\&. \fP"
+.ti -1c
+.RI "override void \fBSetLength\fP (long value)"
+.br
+.RI "\fIWhen overridden in a derived class, sets the length of the current stream\&. \fP"
+.ti -1c
+.RI "override void \fBWrite\fP (byte[] buffer, int offset, int count)"
+.br
+.RI "\fIWrites a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written\&. \fP"
+.ti -1c
+.RI "override void \fBWriteByte\fP (byte value)"
+.br
+.RI "\fIWrites a byte to the current position in the stream and advances the position within the stream by one byte\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIReleases the unmanaged resources used by the T:System\&.IO\&.Stream and optionally releases the managed resources\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBCanRead\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether the current stream supports reading\&. \fP"
+.ti -1c
+.RI "override bool \fBCanSeek\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether the current stream supports seeking\&. \fP"
+.ti -1c
+.RI "override bool \fBCanWrite\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether the current stream supports writing\&. \fP"
+.ti -1c
+.RI "override long \fBLength\fP\fC [get]\fP"
+.br
+.RI "\fIGets the length in bytes of the stream\&. \fP"
+.ti -1c
+.RI "override long \fBPosition\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the position within the current stream\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsAsync\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether the FileStream was opened asynchronously or synchronously\&. \fP"
+.ti -1c
+.RI "string \fBName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the name of the FileStream that was passed to the constructor\&. \fP"
+.ti -1c
+.RI "virtual byte[] \fBHandle\fP\fC [get]\fP"
+.br
+.RI "\fIGets the operating system file handle for the file that the current \fBSftpFileStream\fP object encapsulates\&. \fP"
+.ti -1c
+.RI "TimeSpan \fBTimeout\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the operation timeout\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Exposes a System\&.IO\&.Stream around a remote SFTP file, supporting both synchronous and asynchronous read and write operations\&. 
+
+
+.PP
+Definition at line 15 of file SftpFileStream\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override IAsyncResult Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.BeginRead (byte[]buffer, intoffset, intcount, AsyncCallbackcallback, Objectstate)"
+
+.PP
+Begins an asynchronous read operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP The buffer to read the data into\&.
+.br
+\fIoffset\fP The byte offset in \fIbuffer\fP  at which to begin writing data read from the stream\&.
+.br
+\fIcount\fP The maximum number of bytes to read\&.
+.br
+\fIcallback\fP An optional asynchronous callback, to be called when the read is complete\&.
+.br
+\fIstate\fP A user-provided object that distinguishes this particular asynchronous read request from other requests\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An T:System\&.IAsyncResult that represents the asynchronous read, which could still be pending\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.IO\&.IOException\fP Attempted an asynchronous read past the end of the stream, or a disk error occurs\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentException\fP One or more of the arguments is invalid\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ObjectDisposedException\fP Methods were called after the stream was closed\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.NotSupportedException\fP The current Stream implementation does not support the read operation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 339 of file SftpFileStream\&.cs\&.
+.SS "override IAsyncResult Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.BeginWrite (byte[]buffer, intoffset, intcount, AsyncCallbackcallback, Objectstate)"
+
+.PP
+Begins an asynchronous write operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP The buffer to write data from\&.
+.br
+\fIoffset\fP The byte offset in \fIbuffer\fP  from which to begin writing\&.
+.br
+\fIcount\fP The maximum number of bytes to write\&.
+.br
+\fIcallback\fP An optional asynchronous callback, to be called when the write is complete\&.
+.br
+\fIstate\fP A user-provided object that distinguishes this particular asynchronous write request from other requests\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult that represents the asynchronous write, which could still be pending\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.IO\&.IOException\fP Attempted an asynchronous write past the end of the stream, or a disk error occurs\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentException\fP One or more of the arguments is invalid\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ObjectDisposedException\fP Methods were called after the stream was closed\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.NotSupportedException\fP The current Stream implementation does not support the write operation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 381 of file SftpFileStream\&.cs\&.
+.SS "override void Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.Close ()"
+
+.PP
+Closes the current stream and releases any resources (such as sockets and file handles) associated with the current stream\&. 
+.PP
+Definition at line 405 of file SftpFileStream\&.cs\&.
+.SS "override void Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.Dispose (booldisposing)\fC [protected]\fP"
+
+.PP
+Releases the unmanaged resources used by the T:System\&.IO\&.Stream and optionally releases the managed resources\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP true to release both managed and unmanaged resources; false to release only unmanaged resources\&.
+.RE
+.PP
+
+.PP
+Definition at line 916 of file SftpFileStream\&.cs\&.
+.SS "override int Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.EndRead (IAsyncResultasyncResult)"
+
+.PP
+Waits for the pending asynchronous read to complete\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIasyncResult\fP The reference to the pending asynchronous request to finish\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes read from the stream, between zero (0) and the number of bytes you requested\&. Streams return zero (0) only at the end of the stream, otherwise, they should block until at least one byte is available\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentNullException\fP \fIasyncResult\fP  is null\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentException\fP \fIasyncResult\fP  did not originate from a M:System\&.IO\&.Stream\&.BeginRead(System\&.Byte[],System\&.Int32,System\&.Int32,System\&.AsyncCallback,System\&.Object) method on the current stream\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.IO\&.IOException\fP The stream is closed or an internal error has occurred\&.
+.RE
+.PP
+
+.PP
+Definition at line 358 of file SftpFileStream\&.cs\&.
+.SS "override void Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.EndWrite (IAsyncResultasyncResult)"
+
+.PP
+Ends an asynchronous write operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIasyncResult\fP A reference to the outstanding asynchronous I/O request\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentNullException\fP \fIasyncResult\fP  is null\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentException\fP \fIasyncResult\fP  did not originate from a M:System\&.IO\&.Stream\&.BeginWrite(System\&.Byte[],System\&.Int32,System\&.Int32,System\&.AsyncCallback,System\&.Object) method on the current stream\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.IO\&.IOException\fP The stream is closed or an internal error has occurred\&.
+.RE
+.PP
+
+.PP
+Definition at line 397 of file SftpFileStream\&.cs\&.
+.SS "override void Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.Flush ()"
+
+.PP
+Clears all buffers for this stream and causes any buffered data to be written to the file\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.IO\&.IOException\fP An I/O error occurs\&. 
+.br
+\fIObjectDisposedException\fP Stream is closed\&.
+.RE
+.PP
+
+.PP
+Definition at line 416 of file SftpFileStream\&.cs\&.
+.SS "override int Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.Read (byte[]buffer, intoffset, intcount)"
+
+.PP
+Reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP An array of bytes\&. When this method returns, the buffer contains the specified byte array with the values between \fIoffset\fP  and (\fIoffset\fP  + \fIcount\fP  - 1) replaced by the bytes read from the current source\&.
+.br
+\fIoffset\fP The zero-based byte offset in \fIbuffer\fP  at which to begin storing the data read from the current stream\&.
+.br
+\fIcount\fP The maximum number of bytes to be read from the current stream\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The total number of bytes read into the buffer\&. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentException\fP The sum of \fIoffset\fP  and \fIcount\fP  is larger than the buffer length\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentNullException\fP \fIbuffer\fP  is null\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentOutOfRangeException\fP \fIoffset\fP  or \fIcount\fP  is negative\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.IO\&.IOException\fP An I/O error occurs\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.NotSupportedException\fP The stream does not support reading\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ObjectDisposedException\fP Methods were called after the stream was closed\&. 
+.RE
+.PP
+
+.PP
+Definition at line 460 of file SftpFileStream\&.cs\&.
+.SS "override int Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.ReadByte ()"
+
+.PP
+Reads a byte from the stream and advances the position within the stream by one byte, or returns -1 if at the end of the stream\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The unsigned byte cast to an Int32, or -1 if at the end of the stream\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.NotSupportedException\fP The stream does not support reading\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ObjectDisposedException\fP Methods were called after the stream was closed\&. 
+.br
+\fISystem\&.IO\&.IOException\fP Read operation failed\&.
+.RE
+.PP
+
+.PP
+Definition at line 552 of file SftpFileStream\&.cs\&.
+.SS "override long Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.Seek (longoffset, SeekOriginorigin)"
+
+.PP
+Sets the position within the current stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoffset\fP A byte offset relative to the \fIorigin\fP  parameter\&.
+.br
+\fIorigin\fP A value of type T:System\&.IO\&.SeekOrigin indicating the reference point used to obtain the new position\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new position within the current stream\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.IO\&.IOException\fP An I/O error occurs\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.NotSupportedException\fP The stream does not support seeking, such as if the stream is constructed from a pipe or console output\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ObjectDisposedException\fP Methods were called after the stream was closed\&. 
+.RE
+.PP
+
+.PP
+Definition at line 603 of file SftpFileStream\&.cs\&.
+.SS "override void Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.SetLength (longvalue)"
+
+.PP
+When overridden in a derived class, sets the length of the current stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The desired length of the current stream in bytes\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.IO\&.IOException\fP An I/O error occurs\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.NotSupportedException\fP The stream does not support both writing and seeking, such as if the stream is constructed from a pipe or console output\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ObjectDisposedException\fP Methods were called after the stream was closed\&. 
+.br
+\fIArgumentOutOfRangeException\fP \fIvalue\fP  must be greater than zero\&.
+.RE
+.PP
+
+.PP
+Definition at line 731 of file SftpFileStream\&.cs\&.
+.SS "override void Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.Write (byte[]buffer, intoffset, intcount)"
+
+.PP
+Writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP An array of bytes\&. This method copies \fIcount\fP  bytes from \fIbuffer\fP  to the current stream\&.
+.br
+\fIoffset\fP The zero-based byte offset in \fIbuffer\fP  at which to begin copying bytes to the current stream\&.
+.br
+\fIcount\fP The number of bytes to be written to the current stream\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentException\fP The sum of \fIoffset\fP  and \fIcount\fP  is greater than the buffer length\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentNullException\fP \fIbuffer\fP  is null\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentOutOfRangeException\fP \fIoffset\fP  or \fIcount\fP  is negative\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.IO\&.IOException\fP An I/O error occurs\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.NotSupportedException\fP The stream does not support writing\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ObjectDisposedException\fP Methods were called after the stream was closed\&. 
+.RE
+.PP
+
+.PP
+Definition at line 774 of file SftpFileStream\&.cs\&.
+.SS "override void Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.WriteByte (bytevalue)"
+
+.PP
+Writes a byte to the current position in the stream and advances the position within the stream by one byte\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The byte to write to the stream\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.IO\&.IOException\fP An I/O error occurs\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.NotSupportedException\fP The stream does not support writing, or the stream is already closed\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ObjectDisposedException\fP Methods were called after the stream was closed\&. 
+.RE
+.PP
+
+.PP
+Definition at line 882 of file SftpFileStream\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.CanRead\fC [get]\fP"
+
+.PP
+Gets a value indicating whether the current stream supports reading\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the stream supports reading; otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 45 of file SftpFileStream\&.cs\&.
+.SS "override bool Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.CanSeek\fC [get]\fP"
+
+.PP
+Gets a value indicating whether the current stream supports seeking\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the stream supports seeking; otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 57 of file SftpFileStream\&.cs\&.
+.SS "override bool Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.CanWrite\fC [get]\fP"
+
+.PP
+Gets a value indicating whether the current stream supports writing\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the stream supports writing; otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 69 of file SftpFileStream\&.cs\&.
+.SS "virtual byte [] Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.Handle\fC [get]\fP"
+
+.PP
+Gets the operating system file handle for the file that the current \fBSftpFileStream\fP object encapsulates\&. 
+.PP
+Definition at line 175 of file SftpFileStream\&.cs\&.
+.SS "virtual bool Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.IsAsync\fC [get]\fP"
+
+.PP
+Gets a value indicating whether the FileStream was opened asynchronously or synchronously\&. \fCtrue\fP if this instance is async; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 159 of file SftpFileStream\&.cs\&.
+.SS "override long Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.Length\fC [get]\fP"
+
+.PP
+Gets the length in bytes of the stream\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A long value representing the length of the stream in bytes\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.NotSupportedException\fP A class derived from Stream does not support seeking\&. 
+.br
+\fIT:System\&.ObjectDisposedException\fP Methods were called after the stream was closed\&. 
+.br
+\fIT:System\&.IO\&.IOException\fP IO operation failed\&. 
+.RE
+.PP
+
+.PP
+Definition at line 85 of file SftpFileStream\&.cs\&.
+.SS "string Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.Name\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the name of the FileStream that was passed to the constructor\&. 
+.PP
+Definition at line 169 of file SftpFileStream\&.cs\&.
+.SS "override long Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.Position\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the position within the current stream\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The current position within the stream\&.
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.IO\&.IOException\fP An I/O error occurs\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.NotSupportedException\fP The stream does not support seeking\&. 
+.RE
+.PP
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ObjectDisposedException\fP Methods were called after the stream was closed\&. 
+.RE
+.PP
+
+.PP
+Definition at line 137 of file SftpFileStream\&.cs\&.
+.SS "TimeSpan Renci\&.SshNet\&.Sftp\&.SftpFileStream\&.Timeout\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the operation timeout\&. The timeout\&. 
+.PP
+Definition at line 189 of file SftpFileStream\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

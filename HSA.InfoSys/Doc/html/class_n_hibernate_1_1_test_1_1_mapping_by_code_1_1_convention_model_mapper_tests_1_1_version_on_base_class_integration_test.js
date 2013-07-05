@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_convention_model_mapper_tests_1_1_version_on_base_class_integration_test =
+[
+    [ "WhenPropertyVersionFromBaseEntityThenFindItAsVersion", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_convention_model_mapper_tests_1_1_version_on_base_class_integration_test.html#a68d2ff5bcd708d2cee049728384cd03f", null ],
+    [ "WhenVersionFromBaseEntityThenShouldntMapVersionAsProperty", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_convention_model_mapper_tests_1_1_version_on_base_class_integration_test.html#abf273b0dcfe7a4e60bb0e626b8061c01", null ]
+];

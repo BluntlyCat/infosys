@@ -1,0 +1,87 @@
+.TH "NHibernate.Test.TestDialect" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.TestDialect \- 
+.PP
+Like \fBNHibernate\fP's \fBDialect\fP class, but for differences only important during testing\&. Defaults to true for all support\&. Users of different dialects can turn support off if the unit tests fail\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Test\&.TestDialects\&.MsSql2008TestDialect\fP, \fBNHibernate\&.Test\&.TestDialects\&.PostgreSQL82TestDialect\fP, and \fBNHibernate\&.Test\&.TestDialects\&.SQLiteTestDialect\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTestDialect\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.ti -1c
+.RI "bool \fBSupportsSqlType\fP (\fBSqlType\fP sqlType)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBTestDialect\fP \fBGetTestDialect\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBSupportsOperatorAll\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBSupportsOperatorSome\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBSupportsLocate\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBSupportsDistributedTransactions\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBSupportsConcurrentTransactions\fP\fC [get]\fP"
+.br
+.RI "\fIWhether two transactions can be run at the same time\&. For example, with SQLite the database is locked when one transaction is run, so running a second transaction will cause a 'database is locked' error message\&. \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsFullJoin\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBHasBrokenDecimalType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBSupportsNullCharactersInUtfStrings\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBSupportsSelectForUpdateOnOuterJoin\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBSupportsHavingWithoutGroupBy\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIgnoresTrailingWhitespace\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Like \fBNHibernate\fP's \fBDialect\fP class, but for differences only important during testing\&. Defaults to true for all support\&. Users of different dialects can turn support off if the unit tests fail\&. 
+
+
+.PP
+Definition at line 15 of file TestDialect\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual bool NHibernate\&.Test\&.TestDialect\&.SupportsConcurrentTransactions\fC [get]\fP"
+
+.PP
+Whether two transactions can be run at the same time\&. For example, with SQLite the database is locked when one transaction is run, so running a second transaction will cause a 'database is locked' error message\&. 
+.PP
+Definition at line 44 of file TestDialect\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

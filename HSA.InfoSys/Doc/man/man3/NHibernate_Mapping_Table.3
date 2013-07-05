@@ -1,0 +1,613 @@
+.TH "NHibernate.Mapping.Table" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.Table \- 
+.PP
+Represents a \fBTable\fP in a database that an object gets mapped against\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.IRelationalModel\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Mapping\&.DenormalizedTable\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBForeignKeyKey\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTable\fP ()"
+.br
+.RI "\fIInitializes a new instance of \fBTable\fP\&. \fP"
+.ti -1c
+.RI "\fBTable\fP (string name)"
+.br
+.ti -1c
+.RI "string \fBSqlCreateString\fP (\fBDialect\&.Dialect\fP dialect, \fBIMapping\fP p, string defaultCatalog, string defaultSchema)"
+.br
+.RI "\fIGenerates the SQL string to create this \fBTable\fP in the database\&. \fP"
+.ti -1c
+.RI "string \fBSqlDropString\fP (\fBDialect\&.Dialect\fP dialect, string defaultCatalog, string defaultSchema)"
+.br
+.RI "\fIGenerates the SQL string to drop this \fBTable\fP in the database\&. \fP"
+.ti -1c
+.RI "string \fBGetQualifiedName\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIGets the schema qualified name of the \fBTable\fP\&. \fP"
+.ti -1c
+.RI "virtual string \fBGetQualifiedName\fP (\fBDialect\&.Dialect\fP dialect, string defaultCatalog, string defaultSchema)"
+.br
+.RI "\fIGets the schema qualified name of the \fBTable\fP using the specified qualifier \fP"
+.ti -1c
+.RI "string \fBGetQuotedName\fP ()"
+.br
+.RI "\fIreturns quoted name as it would be in the mapping file\&.\fP"
+.ti -1c
+.RI "string \fBGetQuotedName\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIGets the name of this \fBTable\fP in quoted form if it is necessary\&. \fP"
+.ti -1c
+.RI "string \fBGetQuotedSchema\fP ()"
+.br
+.RI "\fIreturns quoted name as it is in the mapping file\&.\fP"
+.ti -1c
+.RI "string \fBGetQuotedSchema\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.ti -1c
+.RI "string \fBGetQuotedSchemaName\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIGets the schema for this table in quoted form if it is necessary\&. \fP"
+.ti -1c
+.RI "\fBColumn\fP \fBGetColumn\fP (int n)"
+.br
+.RI "\fIGets the \fBColumn\fP at the specified index\&. \fP"
+.ti -1c
+.RI "void \fBAddColumn\fP (\fBColumn\fP column)"
+.br
+.RI "\fIAdds the \fBColumn\fP to the ICollection of Columns that are part of the \fBTable\fP\&. \fP"
+.ti -1c
+.RI "string[] \fBSqlAlterStrings\fP (\fBDialect\&.Dialect\fP dialect, \fBIMapping\fP p, \fBITableMetadata\fP tableInfo, string defaultCatalog, string defaultSchema)"
+.br
+.ti -1c
+.RI "\fBIndex\fP \fBGetIndex\fP (string indexName)"
+.br
+.ti -1c
+.RI "\fBIndex\fP \fBAddIndex\fP (\fBIndex\fP index)"
+.br
+.ti -1c
+.RI "\fBIndex\fP \fBGetOrCreateIndex\fP (string indexName)"
+.br
+.RI "\fIGets the \fBIndex\fP identified by the name\&. \fP"
+.ti -1c
+.RI "\fBUniqueKey\fP \fBGetUniqueKey\fP (string keyName)"
+.br
+.ti -1c
+.RI "\fBUniqueKey\fP \fBAddUniqueKey\fP (\fBUniqueKey\fP uniqueKey)"
+.br
+.ti -1c
+.RI "\fBUniqueKey\fP \fBGetOrCreateUniqueKey\fP (string keyName)"
+.br
+.RI "\fIGets the \fBUniqueKey\fP identified by the name\&. \fP"
+.ti -1c
+.RI "virtual void \fBCreateForeignKeys\fP ()"
+.br
+.ti -1c
+.RI "virtual \fBForeignKey\fP \fBCreateForeignKey\fP (string keyName, IEnumerable< \fBColumn\fP > keyColumns, string referencedEntityName)"
+.br
+.ti -1c
+.RI "virtual \fBForeignKey\fP \fBCreateForeignKey\fP (string keyName, IEnumerable< \fBColumn\fP > keyColumns, string referencedEntityName, IEnumerable< \fBColumn\fP > referencedColumns)"
+.br
+.RI "\fICreate a \fBForeignKey\fP for the columns in the \fBTable\fP\&. \fP"
+.ti -1c
+.RI "virtual \fBUniqueKey\fP \fBCreateUniqueKey\fP (IList< \fBColumn\fP > keyColumns)"
+.br
+.ti -1c
+.RI "string \fBUniqueColumnString\fP (IEnumerable uniqueColumns)"
+.br
+.RI "\fIGenerates a unique string for an ICollection of \fBColumn\fP objects\&. \fP"
+.ti -1c
+.RI "string \fBUniqueColumnString\fP (IEnumerable iterator, string referencedEntityName)"
+.br
+.ti -1c
+.RI "void \fBSetIdentifierValue\fP (\fBSimpleValue\fP identifierValue)"
+.br
+.RI "\fISets the Identifier of the \fBTable\fP\&. \fP"
+.ti -1c
+.RI "void \fBAddCheckConstraint\fP (string constraint)"
+.br
+.ti -1c
+.RI "virtual bool \fBContainsColumn\fP (\fBColumn\fP column)"
+.br
+.ti -1c
+.RI "virtual \fBColumn\fP \fBGetColumn\fP (\fBColumn\fP column)"
+.br
+.RI "\fIReturn the column which is identified by column provided as argument\&. \fP"
+.ti -1c
+.RI "virtual string[] \fBSqlCommentStrings\fP (\fBDialect\&.Dialect\fP dialect, string defaultCatalog, string defaultSchema)"
+.br
+.ti -1c
+.RI "virtual string \fBSqlTemporaryTableCreateString\fP (\fBDialect\&.Dialect\fP dialect, \fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "void \fBValidateColumns\fP (\fBDialect\&.Dialect\fP dialect, \fBIMapping\fP mapping, \fBITableMetadata\fP tableInfo)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the name of the \fBTable\fP in the database\&. \fP"
+.ti -1c
+.RI "int \fBColumnSpan\fP\fC [get]\fP"
+.br
+.RI "\fIGets the number of columns that this \fBTable\fP contains\&. \fP"
+.ti -1c
+.RI "virtual IEnumerable< \fBColumn\fP > \fBColumnIterator\fP\fC [get]\fP"
+.br
+.RI "\fIGets an IEnumerable of \fBColumn\fP objects that are part of the \fBTable\fP\&. \fP"
+.ti -1c
+.RI "virtual IEnumerable< \fBIndex\fP > \fBIndexIterator\fP\fC [get]\fP"
+.br
+.RI "\fIGets an ICollection of \fBIndex\fP objects that are part of the \fBTable\fP\&. \fP"
+.ti -1c
+.RI "IEnumerable< \fBForeignKey\fP > \fBForeignKeyIterator\fP\fC [get]\fP"
+.br
+.RI "\fIGets an IEnumerable of \fBForeignKey\fP objects that are part of the \fBTable\fP\&. \fP"
+.ti -1c
+.RI "virtual IEnumerable< \fBUniqueKey\fP > \fBUniqueKeyIterator\fP\fC [get]\fP"
+.br
+.RI "\fIGets an IEnumerable of \fBUniqueKey\fP objects that are part of the \fBTable\fP\&. \fP"
+.ti -1c
+.RI "virtual \fBPrimaryKey\fP \fBPrimaryKey\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBPrimaryKey\fP of the \fBTable\fP\&. \fP"
+.ti -1c
+.RI "string \fBSchema\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the schema the table is in\&. \fP"
+.ti -1c
+.RI "int \fBUniqueInteger\fP\fC [get]\fP"
+.br
+.RI "\fIGets the unique number of the \fBTable\fP\&. \fP"
+.ti -1c
+.RI "bool \fBIsQuoted\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets if the column needs to be quoted in SQL statements\&. \fP"
+.ti -1c
+.RI "IEnumerable< string > \fBCheckConstraintsIterator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsAbstractUnionTable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasDenormalizedTables\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsAbstract\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasPrimaryKey\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBCatalog\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBComment\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBSubselect\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIKeyValue\fP \fBIdentifierValue\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSubselect\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsPhysicalTable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "SchemaAction \fBSchemaActions\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBRowId\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSchemaQuoted\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a \fBTable\fP in a database that an object gets mapped against\&. 
+
+
+.PP
+Definition at line 26 of file Table\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Mapping\&.Table\&.Table ()"
+
+.PP
+Initializes a new instance of \fBTable\fP\&. 
+.PP
+Definition at line 50 of file Table\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Mapping\&.Table\&.AddCheckConstraint (stringconstraint)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconstraint\fP 
+.RE
+.PP
+
+.PP
+Definition at line 845 of file Table\&.cs\&.
+.SS "void NHibernate\&.Mapping\&.Table\&.AddColumn (\fBColumn\fPcolumn)"
+
+.PP
+Adds the \fBColumn\fP to the ICollection of Columns that are part of the \fBTable\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumn\fP The \fBColumn\fP to include in the \fBTable\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 578 of file Table\&.cs\&.
+.SS "virtual \fBForeignKey\fP NHibernate\&.Mapping\&.Table\&.CreateForeignKey (stringkeyName, IEnumerable< \fBColumn\fP >keyColumns, stringreferencedEntityName, IEnumerable< \fBColumn\fP >referencedColumns)\fC [virtual]\fP"
+
+.PP
+Create a \fBForeignKey\fP for the columns in the \fBTable\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkeyName\fP 
+.br
+\fIkeyColumns\fP An IList of \fBColumn\fP objects\&.
+.br
+\fIreferencedEntityName\fP 
+.br
+\fIreferencedColumns\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBForeignKey\fP for the columns in the \fBTable\fP\&. 
+.RE
+.PP
+.PP
+This does not necessarily create a \fBForeignKey\fP, if one already exists for the columns then it will return an existing \fBForeignKey\fP\&. 
+.PP
+Definition at line 754 of file Table\&.cs\&.
+.SS "\fBColumn\fP NHibernate\&.Mapping\&.Table\&.GetColumn (intn)"
+
+.PP
+Gets the \fBColumn\fP at the specified index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIn\fP The index of the \fBColumn\fP to get\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBColumn\fP at the specified index\&. 
+.RE
+.PP
+
+.PP
+Definition at line 563 of file Table\&.cs\&.
+.SS "virtual \fBColumn\fP NHibernate\&.Mapping\&.Table\&.GetColumn (\fBColumn\fPcolumn)\fC [virtual]\fP"
+
+.PP
+Return the column which is identified by column provided as argument\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumn\fP column with atleast a name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The underlying column or null if not inside this table\&. Note: the instance \fIcan\fP be different than the input parameter, but the name will be the same\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Mapping\&.DenormalizedTable\fP\&.
+.PP
+Definition at line 869 of file Table\&.cs\&.
+.SS "\fBIndex\fP NHibernate\&.Mapping\&.Table\&.GetOrCreateIndex (stringindexName)"
+
+.PP
+Gets the \fBIndex\fP identified by the name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindexName\fP The name of the \fBIndex\fP to get\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBIndex\fP identified by the name\&. If the \fBIndex\fP identified by the name does not exist then it is created\&. 
+.RE
+.PP
+
+.PP
+Definition at line 679 of file Table\&.cs\&.
+.SS "\fBUniqueKey\fP NHibernate\&.Mapping\&.Table\&.GetOrCreateUniqueKey (stringkeyName)"
+
+.PP
+Gets the \fBUniqueKey\fP identified by the name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkeyName\fP The name of the \fBUniqueKey\fP to get\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBUniqueKey\fP identified by the name\&. If the \fBUniqueKey\fP identified by the name does not exist then it is created\&. 
+.RE
+.PP
+
+.PP
+Definition at line 718 of file Table\&.cs\&.
+.SS "string NHibernate\&.Mapping\&.Table\&.GetQualifiedName (\fBDialect\&.Dialect\fPdialect)"
+
+.PP
+Gets the schema qualified name of the \fBTable\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\fP that knows how to Quote the \fBTable\fP name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The name of the table qualified with the schema if one is specified\&.
+.RE
+.PP
+
+.PP
+Definition at line 474 of file Table\&.cs\&.
+.SS "virtual string NHibernate\&.Mapping\&.Table\&.GetQualifiedName (\fBDialect\&.Dialect\fPdialect, stringdefaultCatalog, stringdefaultSchema)\fC [virtual]\fP"
+
+.PP
+Gets the schema qualified name of the \fBTable\fP using the specified qualifier 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\fP that knows how to Quote the \fBTable\fP name\&.
+.br
+\fIdefaultCatalog\fP The catalog name\&.
+.br
+\fIdefaultSchema\fP The schema name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A String representing the Qualified name\&.
+.RE
+.PP
+.PP
+If this were used with MSSQL it would return a dbo\&.table_name\&.
+.PP
+Definition at line 487 of file Table\&.cs\&.
+.SS "string NHibernate\&.Mapping\&.Table\&.GetQuotedName ()"
+
+.PP
+returns quoted name as it would be in the mapping file\&.
+.PP
+Definition at line 500 of file Table\&.cs\&.
+.SS "string NHibernate\&.Mapping\&.Table\&.GetQuotedName (\fBDialect\&.Dialect\fPdialect)"
+
+.PP
+Gets the name of this \fBTable\fP in quoted form if it is necessary\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP that knows how to quote the \fBTable\fP name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBTable\fP name in a form that is safe to use inside of a SQL statement\&. Quoted if it needs to be, not quoted if it does not need to be\&. 
+.RE
+.PP
+
+.PP
+Definition at line 515 of file Table\&.cs\&.
+.SS "string NHibernate\&.Mapping\&.Table\&.GetQuotedSchema ()"
+
+.PP
+returns quoted name as it is in the mapping file\&.
+.PP
+Definition at line 521 of file Table\&.cs\&.
+.SS "string NHibernate\&.Mapping\&.Table\&.GetQuotedSchemaName (\fBDialect\&.Dialect\fPdialect)"
+
+.PP
+Gets the schema for this table in quoted form if it is necessary\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP that knows how to quote the table name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The schema name for this table in a form that is safe to use inside of a SQL statement\&. Quoted if it needs to be, not quoted if it does not need to be\&. 
+.RE
+.PP
+
+.PP
+Definition at line 541 of file Table\&.cs\&.
+.SS "void NHibernate\&.Mapping\&.Table\&.SetIdentifierValue (\fBSimpleValue\fPidentifierValue)"
+
+.PP
+Sets the Identifier of the \fBTable\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidentifierValue\fP The \fBSimpleValue\fP that represents the Identifier\&.
+.RE
+.PP
+
+.PP
+Definition at line 836 of file Table\&.cs\&.
+.SS "string NHibernate\&.Mapping\&.Table\&.SqlCreateString (\fBDialect\&.Dialect\fPdialect, \fBIMapping\fPp, stringdefaultCatalog, stringdefaultSchema)"
+
+.PP
+Generates the SQL string to create this \fBTable\fP in the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\fP to use for SQL rules\&.
+.br
+\fIp\fP 
+.br
+\fIdefaultCatalog\fP 
+.br
+\fIdefaultSchema\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that contains the SQL to create this \fBTable\fP, Primary Key Constraints , and Unique Key Constraints\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Mapping\&.IRelationalModel\fP\&.
+.PP
+Definition at line 331 of file Table\&.cs\&.
+.SS "string NHibernate\&.Mapping\&.Table\&.SqlDropString (\fBDialect\&.Dialect\fPdialect, stringdefaultCatalog, stringdefaultSchema)"
+
+.PP
+Generates the SQL string to drop this \fBTable\fP in the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\fP to use for SQL rules\&.
+.br
+\fIdefaultCatalog\fP 
+.br
+\fIdefaultSchema\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that contains the SQL to drop this \fBTable\fP and to cascade the drop to the constraints if the database supports it\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Mapping\&.IRelationalModel\fP\&.
+.PP
+Definition at line 462 of file Table\&.cs\&.
+.SS "string NHibernate\&.Mapping\&.Table\&.UniqueColumnString (IEnumerableuniqueColumns)"
+
+.PP
+Generates a unique string for an ICollection of \fBColumn\fP objects\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIuniqueColumns\fP An ICollection of \fBColumn\fP objects\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An unique string for the \fBColumn\fP objects\&. 
+.RE
+.PP
+
+.PP
+Definition at line 811 of file Table\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual IEnumerable<\fBColumn\fP> NHibernate\&.Mapping\&.Table\&.ColumnIterator\fC [get]\fP"
+
+.PP
+Gets an IEnumerable of \fBColumn\fP objects that are part of the \fBTable\fP\&. An IEnumerable of \fBColumn\fP objects that are part of the \fBTable\fP\&. 
+.PP
+Definition at line 115 of file Table\&.cs\&.
+.SS "int NHibernate\&.Mapping\&.Table\&.ColumnSpan\fC [get]\fP"
+
+.PP
+Gets the number of columns that this \fBTable\fP contains\&. The number of columns that this \fBTable\fP contains\&. 
+.PP
+Definition at line 102 of file Table\&.cs\&.
+.SS "IEnumerable<\fBForeignKey\fP> NHibernate\&.Mapping\&.Table\&.ForeignKeyIterator\fC [get]\fP"
+
+.PP
+Gets an IEnumerable of \fBForeignKey\fP objects that are part of the \fBTable\fP\&. An IEnumerable of \fBForeignKey\fP objects that are part of the \fBTable\fP\&. 
+.PP
+Definition at line 141 of file Table\&.cs\&.
+.SS "virtual IEnumerable<\fBIndex\fP> NHibernate\&.Mapping\&.Table\&.IndexIterator\fC [get]\fP"
+
+.PP
+Gets an ICollection of \fBIndex\fP objects that are part of the \fBTable\fP\&. An ICollection of \fBIndex\fP objects that are part of the \fBTable\fP\&. 
+.PP
+Definition at line 128 of file Table\&.cs\&.
+.SS "bool NHibernate\&.Mapping\&.Table\&.IsQuoted\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets if the column needs to be quoted in SQL statements\&. if the column is quoted\&.
+.PP
+Definition at line 201 of file Table\&.cs\&.
+.SS "string NHibernate\&.Mapping\&.Table\&.Name\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the name of the \fBTable\fP in the database\&. The name of the \fBTable\fP in the database\&. The get does not return a Quoted \fBTable\fP name\&. 
+.PP
+If a value is passed in that is wrapped by \fC`\fP then \fBNHibernate\fP will Quote the \fBTable\fP whenever SQL is generated for it\&. How the \fBTable\fP is quoted depends on the \fBDialect\fP\&. 
+.PP
+The value returned by the getter is not Quoted\&. To get the column name in quoted form use GetQuotedName(Dialect\&.Dialect)\&. 
+.PP
+Definition at line 79 of file Table\&.cs\&.
+.SS "virtual \fBPrimaryKey\fP NHibernate\&.Mapping\&.Table\&.PrimaryKey\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBPrimaryKey\fP of the \fBTable\fP\&. The \fBPrimaryKey\fP of the \fBTable\fP\&.
+.PP
+Definition at line 162 of file Table\&.cs\&.
+.SS "string NHibernate\&.Mapping\&.Table\&.Schema\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the schema the table is in\&. The schema the table is in or  if no schema is specified\&. 
+.PP
+Definition at line 171 of file Table\&.cs\&.
+.SS "int NHibernate\&.Mapping\&.Table\&.UniqueInteger\fC [get]\fP"
+
+.PP
+Gets the unique number of the \fBTable\fP\&. The unique number of the \fBTable\fP\&.
+.PP
+Definition at line 192 of file Table\&.cs\&.
+.SS "virtual IEnumerable<\fBUniqueKey\fP> NHibernate\&.Mapping\&.Table\&.UniqueKeyIterator\fC [get]\fP"
+
+.PP
+Gets an IEnumerable of \fBUniqueKey\fP objects that are part of the \fBTable\fP\&. An IEnumerable of \fBUniqueKey\fP objects that are part of the \fBTable\fP\&. 
+.PP
+Definition at line 154 of file Table\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

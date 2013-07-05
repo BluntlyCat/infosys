@@ -1,0 +1,97 @@
+.TH "NHibernate.Cfg.MappingSchema.MappingDocumentAggregator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cfg.MappingSchema.MappingDocumentAggregator \- 
+.PP
+Responsible for building a list of \fBHbmMapping\fP objects from a range of acceptable sources\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMappingDocumentAggregator\fP ()"
+.br
+.RI "\fICalls the greedy constructor, passing it new instances of \fBMappingDocumentParser\fP and \fBEndsWithHbmXmlFilter\fP\&. \fP"
+.ti -1c
+.RI "\fBMappingDocumentAggregator\fP (\fBIMappingDocumentParser\fP parser, \fBIAssemblyResourceFilter\fP defaultFilter)"
+.br
+.ti -1c
+.RI "void \fBAdd\fP (\fBHbmMapping\fP document)"
+.br
+.ti -1c
+.RI "void \fBAdd\fP (Stream stream)"
+.br
+.ti -1c
+.RI "void \fBAdd\fP (Assembly assembly, string resourceName)"
+.br
+.ti -1c
+.RI "void \fBAdd\fP (Assembly assembly, \fBIAssemblyResourceFilter\fP filter)"
+.br
+.RI "\fIAdds any embedded resource streams which pass the \fIfilter\fP \&.\fP"
+.ti -1c
+.RI "void \fBAdd\fP (Assembly assembly)"
+.br
+.RI "\fIAdds any embedded resource streams which pass the default filter\&.\fP"
+.ti -1c
+.RI "void \fBAdd\fP (FileInfo file)"
+.br
+.ti -1c
+.RI "void \fBAdd\fP (string fileName)"
+.br
+.ti -1c
+.RI "IList< \fBHbmMapping\fP > \fBList\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Responsible for building a list of \fBHbmMapping\fP objects from a range of acceptable sources\&. 
+
+
+.PP
+Definition at line 12 of file MappingDocumentAggregator\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Cfg\&.MappingSchema\&.MappingDocumentAggregator\&.MappingDocumentAggregator ()"
+
+.PP
+Calls the greedy constructor, passing it new instances of \fBMappingDocumentParser\fP and \fBEndsWithHbmXmlFilter\fP\&. 
+.PP
+Definition at line 22 of file MappingDocumentAggregator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Cfg\&.MappingSchema\&.MappingDocumentAggregator\&.Add (Assemblyassembly, \fBIAssemblyResourceFilter\fPfilter)"
+
+.PP
+Adds any embedded resource streams which pass the \fIfilter\fP \&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassembly\fP An assembly containing embedded mapping documents\&.
+.br
+\fIfilter\fP A custom filter\&.
+.RE
+.PP
+
+.PP
+Definition at line 65 of file MappingDocumentAggregator\&.cs\&.
+.SS "void NHibernate\&.Cfg\&.MappingSchema\&.MappingDocumentAggregator\&.Add (Assemblyassembly)"
+
+.PP
+Adds any embedded resource streams which pass the default filter\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassembly\fP An assembly containing embedded mapping documents\&.
+.RE
+.PP
+
+.PP
+Definition at line 80 of file MappingDocumentAggregator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

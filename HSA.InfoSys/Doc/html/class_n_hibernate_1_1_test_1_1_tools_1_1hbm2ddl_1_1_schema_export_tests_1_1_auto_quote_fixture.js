@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_tools_1_1hbm2ddl_1_1_schema_export_tests_1_1_auto_quote_fixture =
+[
+    [ "WhenCalledExplicitlyThenTakeInAccountHbm2DdlKeyWordsSetting", "class_n_hibernate_1_1_test_1_1_tools_1_1hbm2ddl_1_1_schema_export_tests_1_1_auto_quote_fixture.html#a2665a6fefb0a3e5ecb6815f66fb4cd76", null ],
+    [ "WhenUpdateCalledExplicitlyThenTakeInAccountHbm2DdlKeyWordsSetting", "class_n_hibernate_1_1_test_1_1_tools_1_1hbm2ddl_1_1_schema_export_tests_1_1_auto_quote_fixture.html#a82b7311afb321fd1cbf50f3638c1c25c", null ]
+];

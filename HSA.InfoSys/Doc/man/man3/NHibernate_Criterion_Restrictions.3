@@ -1,0 +1,1571 @@
+.TH "NHibernate.Criterion.Restrictions" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.Restrictions \- 
+.PP
+The \fBNHibernate\&.Criterion\fP namespace may be used by applications as a framework for building new kinds of \fBICriterion\fP\&. However, it is intended that most applications will simply use the built-in criterion types via the static factory methods of this class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Criterion\&.Expression\fP\&.
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBIdEq\fP (object value)"
+.br
+.RI "\fIApply an 'equal' constraint to the identifier property \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBIdEq\fP (\fBIProjection\fP projection)"
+.br
+.RI "\fIApply an 'equal' constraint from the projection to the identifier property \fP"
+.ti -1c
+.RI "static \fBSimpleExpression\fP \fBEq\fP (string propertyName, object value)"
+.br
+.RI "\fIApply an 'equal' constraint to the named property \fP"
+.ti -1c
+.RI "static \fBSimpleExpression\fP \fBEq\fP (\fBIProjection\fP projection, object value)"
+.br
+.RI "\fIApply an 'equal' constraint to the projection \fP"
+.ti -1c
+.RI "static \fBSimpleExpression\fP \fBLike\fP (string propertyName, object value)"
+.br
+.RI "\fIApply a 'like' constraint to the named property \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBLike\fP (string propertyName, string value, \fBMatchMode\fP matchMode, char?escapeChar)"
+.br
+.ti -1c
+.RI "static \fBSimpleExpression\fP \fBLike\fP (\fBIProjection\fP projection, object value)"
+.br
+.RI "\fIApply a 'like' constraint to the project \fP"
+.ti -1c
+.RI "static \fBSimpleExpression\fP \fBLike\fP (\fBIProjection\fP projection, string value, \fBMatchMode\fP matchMode)"
+.br
+.RI "\fIApply a 'like' constraint to the project \fP"
+.ti -1c
+.RI "static \fBSimpleExpression\fP \fBLike\fP (string propertyName, string value, \fBMatchMode\fP matchMode)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBInsensitiveLike\fP (string propertyName, string value, \fBMatchMode\fP matchMode)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBInsensitiveLike\fP (\fBIProjection\fP projection, string value, \fBMatchMode\fP matchMode)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBInsensitiveLike\fP (string propertyName, object value)"
+.br
+.RI "\fIA case-insensitive 'like', similar to Postgres 'ilike' operator \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBInsensitiveLike\fP (\fBIProjection\fP projection, object value)"
+.br
+.RI "\fIA case-insensitive 'like', similar to Postgres 'ilike' operator \fP"
+.ti -1c
+.RI "static \fBSimpleExpression\fP \fBGt\fP (string propertyName, object value)"
+.br
+.RI "\fIApply a 'greater than' constraint to the named property \fP"
+.ti -1c
+.RI "static \fBSimpleExpression\fP \fBGt\fP (\fBIProjection\fP projection, object value)"
+.br
+.RI "\fIApply a 'greater than' constraint to the projection \fP"
+.ti -1c
+.RI "static \fBSimpleExpression\fP \fBLt\fP (string propertyName, object value)"
+.br
+.RI "\fIApply a 'less than' constraint to the named property \fP"
+.ti -1c
+.RI "static \fBSimpleExpression\fP \fBLt\fP (\fBIProjection\fP projection, object value)"
+.br
+.RI "\fIApply a 'less than' constraint to the projection \fP"
+.ti -1c
+.RI "static \fBSimpleExpression\fP \fBLe\fP (string propertyName, object value)"
+.br
+.RI "\fIApply a 'less than or equal' constraint to the named property \fP"
+.ti -1c
+.RI "static \fBSimpleExpression\fP \fBLe\fP (\fBIProjection\fP projection, object value)"
+.br
+.RI "\fIApply a 'less than or equal' constraint to the projection \fP"
+.ti -1c
+.RI "static \fBSimpleExpression\fP \fBGe\fP (string propertyName, object value)"
+.br
+.RI "\fIApply a 'greater than or equal' constraint to the named property \fP"
+.ti -1c
+.RI "static \fBSimpleExpression\fP \fBGe\fP (\fBIProjection\fP projection, object value)"
+.br
+.RI "\fIApply a 'greater than or equal' constraint to the projection \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBBetween\fP (string propertyName, object lo, object hi)"
+.br
+.RI "\fIApply a 'between' constraint to the named property \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBBetween\fP (\fBIProjection\fP projection, object lo, object hi)"
+.br
+.RI "\fIApply a 'between' constraint to the projection \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBIn\fP (string propertyName, object[] values)"
+.br
+.RI "\fIApply an 'in' constraint to the named property \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBIn\fP (\fBIProjection\fP projection, object[] values)"
+.br
+.RI "\fIApply an 'in' constraint to the projection \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBIn\fP (\fBIProjection\fP projection, ICollection values)"
+.br
+.RI "\fIApply an 'in' constraint to the projection \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBIn\fP (string propertyName, ICollection values)"
+.br
+.RI "\fIApply an 'in' constraint to the named property \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBInG< T >\fP (string propertyName, IEnumerable< T > values)"
+.br
+.RI "\fIApply an 'in' constraint to the named property\&. This is the generic equivalent of \fBIn(string, ICollection)\fP, renamed to avoid ambiguity\&. \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBInG< T >\fP (\fBIProjection\fP projection, IEnumerable< T > values)"
+.br
+.RI "\fIApply an 'in' constraint to the projection\&. This is the generic equivalent of \fBIn(string, ICollection)\fP, renamed to avoid ambiguity\&. \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBIsNull\fP (string propertyName)"
+.br
+.RI "\fIApply an 'is null' constraint to the named property \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBIsNull\fP (\fBIProjection\fP projection)"
+.br
+.RI "\fIApply an 'is null' constraint to the projection \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBEqProperty\fP (string propertyName, string otherPropertyName)"
+.br
+.RI "\fIApply an 'equal' constraint to two properties \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBEqProperty\fP (\fBIProjection\fP projection, string otherPropertyName)"
+.br
+.RI "\fIApply an 'equal' constraint to projection and property \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBEqProperty\fP (\fBIProjection\fP lshProjection, \fBIProjection\fP rshProjection)"
+.br
+.RI "\fIApply an 'equal' constraint to lshProjection and rshProjection \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBEqProperty\fP (string propertyName, \fBIProjection\fP rshProjection)"
+.br
+.RI "\fIApply an 'equal' constraint to the property and rshProjection \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBNotEqProperty\fP (string propertyName, string otherPropertyName)"
+.br
+.RI "\fIApply an 'not equal' constraint to two properties \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBNotEqProperty\fP (\fBIProjection\fP projection, string otherPropertyName)"
+.br
+.RI "\fIApply an 'not equal' constraint to projection and property \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBNotEqProperty\fP (\fBIProjection\fP lhsProjection, \fBIProjection\fP rhsProjection)"
+.br
+.RI "\fIApply an 'not equal' constraint to the projections \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBNotEqProperty\fP (string propertyName, \fBIProjection\fP rhsProjection)"
+.br
+.RI "\fIApply an 'not equal' constraint to the projections \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBGtProperty\fP (string propertyName, string otherPropertyName)"
+.br
+.RI "\fIApply a 'greater than' constraint to two properties \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBGtProperty\fP (\fBIProjection\fP projection, string otherPropertyName)"
+.br
+.RI "\fIApply a 'greater than' constraint to two properties \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBGtProperty\fP (string propertyName, \fBIProjection\fP projection)"
+.br
+.RI "\fIApply a 'greater than' constraint to two properties \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBGtProperty\fP (\fBIProjection\fP lhsProjection, \fBIProjection\fP rhsProjection)"
+.br
+.RI "\fIApply a 'greater than' constraint to two properties \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBGeProperty\fP (string propertyName, string otherPropertyName)"
+.br
+.RI "\fIApply a 'greater than or equal' constraint to two properties \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBGeProperty\fP (\fBIProjection\fP lhsProjection, \fBIProjection\fP rhsProjection)"
+.br
+.RI "\fIApply a 'greater than or equal' constraint to two properties \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBGeProperty\fP (\fBIProjection\fP projection, string otherPropertyName)"
+.br
+.RI "\fIApply a 'greater than or equal' constraint to two properties \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBGeProperty\fP (string propertyName, \fBIProjection\fP projection)"
+.br
+.RI "\fIApply a 'greater than or equal' constraint to two properties \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBLtProperty\fP (string propertyName, string otherPropertyName)"
+.br
+.RI "\fIApply a 'less than' constraint to two properties \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBLtProperty\fP (\fBIProjection\fP projection, string otherPropertyName)"
+.br
+.RI "\fIApply a 'less than' constraint to two properties \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBLtProperty\fP (string propertyName, \fBIProjection\fP projection)"
+.br
+.RI "\fIApply a 'less than' constraint to two properties \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBLtProperty\fP (\fBIProjection\fP lhsProjection, \fBIProjection\fP rhsProjection)"
+.br
+.RI "\fIApply a 'less than' constraint to two properties \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBLeProperty\fP (string propertyName, string otherPropertyName)"
+.br
+.RI "\fIApply a 'less than or equal' constraint to two properties \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBLeProperty\fP (\fBIProjection\fP projection, string otherPropertyName)"
+.br
+.RI "\fIApply a 'less than or equal' constraint to two properties \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBLeProperty\fP (string propertyName, \fBIProjection\fP projection)"
+.br
+.RI "\fIApply a 'less than or equal' constraint to two properties \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBLeProperty\fP (\fBIProjection\fP lhsProjection, \fBIProjection\fP rhsProjection)"
+.br
+.RI "\fIApply a 'less than or equal' constraint to two properties \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBIsNotNull\fP (string propertyName)"
+.br
+.RI "\fIApply an 'is not null' constraint to the named property \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBIsNotNull\fP (\fBIProjection\fP projection)"
+.br
+.RI "\fIApply an 'is not null' constraint to the named property \fP"
+.ti -1c
+.RI "static \fBAbstractEmptinessExpression\fP \fBIsNotEmpty\fP (string propertyName)"
+.br
+.RI "\fIApply an 'is not empty' constraint to the named property \fP"
+.ti -1c
+.RI "static \fBAbstractEmptinessExpression\fP \fBIsEmpty\fP (string propertyName)"
+.br
+.RI "\fIApply an 'is not empty' constraint to the named property \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBAnd\fP (\fBICriterion\fP lhs, \fBICriterion\fP rhs)"
+.br
+.RI "\fIReturn the conjunction of two expressions \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBOr\fP (\fBICriterion\fP lhs, \fBICriterion\fP rhs)"
+.br
+.RI "\fIReturn the disjuction of two expressions \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBNot\fP (\fBICriterion\fP expression)"
+.br
+.RI "\fIReturn the negation of an expression \fP"
+.ti -1c
+.RI "static \fBConjunction\fP \fBConjunction\fP ()"
+.br
+.RI "\fIGroup expressions together in a single conjunction (A and B and C\&.\&.\&.) \fP"
+.ti -1c
+.RI "static \fBDisjunction\fP \fBDisjunction\fP ()"
+.br
+.RI "\fIGroup expressions together in a single disjunction (A or B or C\&.\&.\&.) \fP"
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBAllEq\fP (IDictionary propertyNameValues)"
+.br
+.RI "\fIApply an 'equals' constraint to each property in the key set of a IDictionary \fP"
+.ti -1c
+.RI "static \fBNaturalIdentifier\fP \fBNaturalId\fP ()"
+.br
+.ti -1c
+.RI "static \fBICriterion\fP \fBWhere< T >\fP (\fBExpression\fP< Func< T, bool >> expression)"
+.br
+.RI "\fICreate an \fBICriterion\fP for the supplied LambdaExpression \fP"
+.ti -1c
+.RI "static \fBICriterion\fP \fBWhere\fP (\fBExpression\fP< Func< bool >> expression)"
+.br
+.RI "\fICreate an \fBICriterion\fP for the supplied LambdaExpression \fP"
+.ti -1c
+.RI "static \fBICriterion\fP \fBWhereNot< T >\fP (\fBExpression\fP< Func< T, bool >> expression)"
+.br
+.RI "\fICreate an \fBICriterion\fP for the negation of the supplied LambdaExpression \fP"
+.ti -1c
+.RI "static \fBICriterion\fP \fBWhereNot\fP (\fBExpression\fP< Func< bool >> expression)"
+.br
+.RI "\fICreate an \fBICriterion\fP for the negation of the supplied LambdaExpression \fP"
+.ti -1c
+.RI "static \fBLambdaRestrictionBuilder\fP \fBOn< T >\fP (\fBExpression\fP< Func< T, object >> expression)"
+.br
+.RI "\fIBuild an \fBICriterion\fP for the given property \fP"
+.ti -1c
+.RI "static \fBLambdaRestrictionBuilder\fP \fBOn\fP (\fBExpression\fP< Func< object >> expression)"
+.br
+.RI "\fIBuild an \fBICriterion\fP for the given property \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The \fBNHibernate\&.Criterion\fP namespace may be used by applications as a framework for building new kinds of \fBICriterion\fP\&. However, it is intended that most applications will simply use the built-in criterion types via the static factory methods of this class\&. 
+
+
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBICriteria\fP, Projections
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 19 of file Restrictions\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.AllEq (IDictionarypropertyNameValues)\fC [static]\fP"
+
+.PP
+Apply an 'equals' constraint to each property in the key set of a IDictionary 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyNameValues\fP a dictionary from property names to values
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 723 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.And (\fBICriterion\fPlhs, \fBICriterion\fPrhs)\fC [static]\fP"
+
+.PP
+Return the conjunction of two expressions 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP The \fBExpression\fP to use as the Left Hand Side\&.
+.br
+\fIrhs\fP The \fBExpression\fP to use as the Right Hand Side\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBAndExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 676 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.Between (stringpropertyName, objectlo, objecthi)\fC [static]\fP"
+
+.PP
+Apply a 'between' constraint to the named property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the \fBProperty\fP in the class\&.
+.br
+\fIlo\fP The low value for the \fBProperty\fP\&.
+.br
+\fIhi\fP The high value for the \fBProperty\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBBetweenExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 233 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.Between (\fBIProjection\fPprojection, objectlo, objecthi)\fC [static]\fP"
+
+.PP
+Apply a 'between' constraint to the projection 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIlo\fP The low value for the \fBProperty\fP\&.
+.br
+\fIhi\fP The high value for the \fBProperty\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBBetweenExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 245 of file Restrictions\&.cs\&.
+.SS "static \fBConjunction\fP NHibernate\&.Criterion\&.Restrictions\&.Conjunction ()\fC [static]\fP"
+
+.PP
+Group expressions together in a single conjunction (A and B and C\&.\&.\&.) 
+.PP
+Definition at line 705 of file Restrictions\&.cs\&.
+.SS "static \fBDisjunction\fP NHibernate\&.Criterion\&.Restrictions\&.Disjunction ()\fC [static]\fP"
+
+.PP
+Group expressions together in a single disjunction (A or B or C\&.\&.\&.) 
+.PP
+Definition at line 713 of file Restrictions\&.cs\&.
+.SS "static \fBSimpleExpression\fP NHibernate\&.Criterion\&.Restrictions\&.Eq (stringpropertyName, objectvalue)\fC [static]\fP"
+
+.PP
+Apply an 'equal' constraint to the named property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the \fBProperty\fP in the class\&.
+.br
+\fIvalue\fP The value for the \fBProperty\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 51 of file Restrictions\&.cs\&.
+.SS "static \fBSimpleExpression\fP NHibernate\&.Criterion\&.Restrictions\&.Eq (\fBIProjection\fPprojection, objectvalue)\fC [static]\fP"
+
+.PP
+Apply an 'equal' constraint to the projection 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIvalue\fP The value for the \fBProperty\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 61 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.EqProperty (stringpropertyName, stringotherPropertyName)\fC [static]\fP"
+
+.PP
+Apply an 'equal' constraint to two properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The lhs \fBProperty\fP Name
+.br
+\fIotherPropertyName\fP The rhs \fBProperty\fP Name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBEqPropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 365 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.EqProperty (\fBIProjection\fPprojection, stringotherPropertyName)\fC [static]\fP"
+
+.PP
+Apply an 'equal' constraint to projection and property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIotherPropertyName\fP The rhs \fBProperty\fP Name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBEqPropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 376 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.EqProperty (\fBIProjection\fPlshProjection, \fBIProjection\fPrshProjection)\fC [static]\fP"
+
+.PP
+Apply an 'equal' constraint to lshProjection and rshProjection 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlshProjection\fP The LHS projection\&.
+.br
+\fIrshProjection\fP The RSH projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBEqPropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 388 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.EqProperty (stringpropertyName, \fBIProjection\fPrshProjection)\fC [static]\fP"
+
+.PP
+Apply an 'equal' constraint to the property and rshProjection 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP Name of the property\&.
+.br
+\fIrshProjection\fP The RSH projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBEqPropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 400 of file Restrictions\&.cs\&.
+.SS "static \fBSimpleExpression\fP NHibernate\&.Criterion\&.Restrictions\&.Ge (stringpropertyName, objectvalue)\fC [static]\fP"
+
+.PP
+Apply a 'greater than or equal' constraint to the named property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the \fBProperty\fP in the class\&.
+.br
+\fIvalue\fP The value for the \fBProperty\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 210 of file Restrictions\&.cs\&.
+.SS "static \fBSimpleExpression\fP NHibernate\&.Criterion\&.Restrictions\&.Ge (\fBIProjection\fPprojection, objectvalue)\fC [static]\fP"
+
+.PP
+Apply a 'greater than or equal' constraint to the projection 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIvalue\fP The value for the \fBProperty\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 220 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.GeProperty (stringpropertyName, stringotherPropertyName)\fC [static]\fP"
+
+.PP
+Apply a 'greater than or equal' constraint to two properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The lhs \fBProperty\fP Name
+.br
+\fIotherPropertyName\fP The rhs \fBProperty\fP Name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLePropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 499 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.GeProperty (\fBIProjection\fPlhsProjection, \fBIProjection\fPrhsProjection)\fC [static]\fP"
+
+.PP
+Apply a 'greater than or equal' constraint to two properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhsProjection\fP The LHS projection\&.
+.br
+\fIrhsProjection\fP The RHS projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLePropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 510 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.GeProperty (\fBIProjection\fPprojection, stringotherPropertyName)\fC [static]\fP"
+
+.PP
+Apply a 'greater than or equal' constraint to two properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIotherPropertyName\fP The rhs \fBProperty\fP Name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLePropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 521 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.GeProperty (stringpropertyName, \fBIProjection\fPprojection)\fC [static]\fP"
+
+.PP
+Apply a 'greater than or equal' constraint to two properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The lhs \fBProperty\fP Name
+.br
+\fIprojection\fP The projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLePropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 533 of file Restrictions\&.cs\&.
+.SS "static \fBSimpleExpression\fP NHibernate\&.Criterion\&.Restrictions\&.Gt (stringpropertyName, objectvalue)\fC [static]\fP"
+
+.PP
+Apply a 'greater than' constraint to the named property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the \fBProperty\fP in the class\&.
+.br
+\fIvalue\fP The value for the \fBProperty\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 149 of file Restrictions\&.cs\&.
+.SS "static \fBSimpleExpression\fP NHibernate\&.Criterion\&.Restrictions\&.Gt (\fBIProjection\fPprojection, objectvalue)\fC [static]\fP"
+
+.PP
+Apply a 'greater than' constraint to the projection 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIvalue\fP The value for the \fBProperty\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 159 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.GtProperty (stringpropertyName, stringotherPropertyName)\fC [static]\fP"
+
+.PP
+Apply a 'greater than' constraint to two properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The lhs \fBProperty\fP Name
+.br
+\fIotherPropertyName\fP The rhs \fBProperty\fP Name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLtPropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 455 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.GtProperty (\fBIProjection\fPprojection, stringotherPropertyName)\fC [static]\fP"
+
+.PP
+Apply a 'greater than' constraint to two properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIotherPropertyName\fP The rhs \fBProperty\fP Name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLtPropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 466 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.GtProperty (stringpropertyName, \fBIProjection\fPprojection)\fC [static]\fP"
+
+.PP
+Apply a 'greater than' constraint to two properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP Name of the property\&.
+.br
+\fIprojection\fP The projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLtPropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 477 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.GtProperty (\fBIProjection\fPlhsProjection, \fBIProjection\fPrhsProjection)\fC [static]\fP"
+
+.PP
+Apply a 'greater than' constraint to two properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhsProjection\fP The LHS projection\&.
+.br
+\fIrhsProjection\fP The RHS projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLtPropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 488 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.IdEq (objectvalue)\fC [static]\fP"
+
+.PP
+Apply an 'equal' constraint to the identifier property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBICriterion\fP
+.RE
+.PP
+
+.PP
+Definition at line 31 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.IdEq (\fBIProjection\fPprojection)\fC [static]\fP"
+
+.PP
+Apply an 'equal' constraint from the projection to the identifier property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBICriterion\fP
+.RE
+.PP
+
+.PP
+Definition at line 41 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.In (stringpropertyName, object[]values)\fC [static]\fP"
+
+.PP
+Apply an 'in' constraint to the named property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the \fBProperty\fP in the class\&.
+.br
+\fIvalues\fP An array of values\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBInExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 256 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.In (\fBIProjection\fPprojection, object[]values)\fC [static]\fP"
+
+.PP
+Apply an 'in' constraint to the projection 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIvalues\fP An array of values\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBInExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 267 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.In (\fBIProjection\fPprojection, ICollectionvalues)\fC [static]\fP"
+
+.PP
+Apply an 'in' constraint to the projection 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIvalues\fP An ICollection of values\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBInExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 278 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.In (stringpropertyName, ICollectionvalues)\fC [static]\fP"
+
+.PP
+Apply an 'in' constraint to the named property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the \fBProperty\fP in the class\&.
+.br
+\fIvalues\fP An ICollection of values\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBInExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 291 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.InG< T > (stringpropertyName, IEnumerable< T >values)\fC [static]\fP"
+
+.PP
+Apply an 'in' constraint to the named property\&. This is the generic equivalent of \fBIn(string, ICollection)\fP, renamed to avoid ambiguity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the \fBProperty\fP in the class\&.
+.br
+\fIvalues\fP An System\&.Collections\&.Generic\&.IEnumerable{T} of values\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBInExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 306 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.InG< T > (\fBIProjection\fPprojection, IEnumerable< T >values)\fC [static]\fP"
+
+.PP
+Apply an 'in' constraint to the projection\&. This is the generic equivalent of \fBIn(string, ICollection)\fP, renamed to avoid ambiguity\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIvalues\fP An System\&.Collections\&.Generic\&.IEnumerable{T} of values\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBInExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 327 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.InsensitiveLike (stringpropertyName, objectvalue)\fC [static]\fP"
+
+.PP
+A case-insensitive 'like', similar to Postgres 'ilike' operator 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the \fBProperty\fP in the class\&.
+.br
+\fIvalue\fP The value for the \fBProperty\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBInsensitiveLikeExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 126 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.InsensitiveLike (\fBIProjection\fPprojection, objectvalue)\fC [static]\fP"
+
+.PP
+A case-insensitive 'like', similar to Postgres 'ilike' operator 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIvalue\fP The value for the \fBProperty\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBInsensitiveLikeExpression\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 139 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractEmptinessExpression\fP NHibernate\&.Criterion\&.Restrictions\&.IsEmpty (stringpropertyName)\fC [static]\fP"
+
+.PP
+Apply an 'is not empty' constraint to the named property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the \fBProperty\fP in the class\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBIsEmptyExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 665 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractEmptinessExpression\fP NHibernate\&.Criterion\&.Restrictions\&.IsNotEmpty (stringpropertyName)\fC [static]\fP"
+
+.PP
+Apply an 'is not empty' constraint to the named property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the \fBProperty\fP in the class\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBIsNotEmptyExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 655 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.IsNotNull (stringpropertyName)\fC [static]\fP"
+
+.PP
+Apply an 'is not null' constraint to the named property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the \fBProperty\fP in the class\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBNotNullExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 635 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.IsNotNull (\fBIProjection\fPprojection)\fC [static]\fP"
+
+.PP
+Apply an 'is not null' constraint to the named property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBNotNullExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 645 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.IsNull (stringpropertyName)\fC [static]\fP"
+
+.PP
+Apply an 'is null' constraint to the named property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the \fBProperty\fP in the class\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBNullExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 344 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.IsNull (\fBIProjection\fPprojection)\fC [static]\fP"
+
+.PP
+Apply an 'is null' constraint to the projection 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBNullExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 354 of file Restrictions\&.cs\&.
+.SS "static \fBSimpleExpression\fP NHibernate\&.Criterion\&.Restrictions\&.Le (stringpropertyName, objectvalue)\fC [static]\fP"
+
+.PP
+Apply a 'less than or equal' constraint to the named property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the \fBProperty\fP in the class\&.
+.br
+\fIvalue\fP The value for the \fBProperty\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 190 of file Restrictions\&.cs\&.
+.SS "static \fBSimpleExpression\fP NHibernate\&.Criterion\&.Restrictions\&.Le (\fBIProjection\fPprojection, objectvalue)\fC [static]\fP"
+
+.PP
+Apply a 'less than or equal' constraint to the projection 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIvalue\fP The value for the \fBProperty\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 200 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.LeProperty (stringpropertyName, stringotherPropertyName)\fC [static]\fP"
+
+.PP
+Apply a 'less than or equal' constraint to two properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The lhs \fBProperty\fP Name
+.br
+\fIotherPropertyName\fP The rhs \fBProperty\fP Name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLePropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 588 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.LeProperty (\fBIProjection\fPprojection, stringotherPropertyName)\fC [static]\fP"
+
+.PP
+Apply a 'less than or equal' constraint to two properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIotherPropertyName\fP The rhs \fBProperty\fP Name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLePropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 600 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.LeProperty (stringpropertyName, \fBIProjection\fPprojection)\fC [static]\fP"
+
+.PP
+Apply a 'less than or equal' constraint to two properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The lhs \fBProperty\fP Name
+.br
+\fIprojection\fP The projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLePropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 612 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.LeProperty (\fBIProjection\fPlhsProjection, \fBIProjection\fPrhsProjection)\fC [static]\fP"
+
+.PP
+Apply a 'less than or equal' constraint to two properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhsProjection\fP The LHS projection\&.
+.br
+\fIrhsProjection\fP The RHS projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLePropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 624 of file Restrictions\&.cs\&.
+.SS "static \fBSimpleExpression\fP NHibernate\&.Criterion\&.Restrictions\&.Like (stringpropertyName, objectvalue)\fC [static]\fP"
+
+.PP
+Apply a 'like' constraint to the named property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the \fBProperty\fP in the class\&.
+.br
+\fIvalue\fP The value for the \fBProperty\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLikeExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 72 of file Restrictions\&.cs\&.
+.SS "static \fBSimpleExpression\fP NHibernate\&.Criterion\&.Restrictions\&.Like (\fBIProjection\fPprojection, objectvalue)\fC [static]\fP"
+
+.PP
+Apply a 'like' constraint to the project 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIvalue\fP The value for the \fBProperty\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLikeExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 88 of file Restrictions\&.cs\&.
+.SS "static \fBSimpleExpression\fP NHibernate\&.Criterion\&.Restrictions\&.Like (\fBIProjection\fPprojection, stringvalue, \fBMatchMode\fPmatchMode)\fC [static]\fP"
+
+.PP
+Apply a 'like' constraint to the project 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIvalue\fP The value for the \fBProperty\fP\&.
+.br
+\fImatchMode\fP The match mode\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLikeExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 100 of file Restrictions\&.cs\&.
+.SS "static \fBSimpleExpression\fP NHibernate\&.Criterion\&.Restrictions\&.Lt (stringpropertyName, objectvalue)\fC [static]\fP"
+
+.PP
+Apply a 'less than' constraint to the named property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the \fBProperty\fP in the class\&.
+.br
+\fIvalue\fP The value for the \fBProperty\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 169 of file Restrictions\&.cs\&.
+.SS "static \fBSimpleExpression\fP NHibernate\&.Criterion\&.Restrictions\&.Lt (\fBIProjection\fPprojection, objectvalue)\fC [static]\fP"
+
+.PP
+Apply a 'less than' constraint to the projection 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIvalue\fP The value for the \fBProperty\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 180 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.LtProperty (stringpropertyName, stringotherPropertyName)\fC [static]\fP"
+
+.PP
+Apply a 'less than' constraint to two properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The lhs \fBProperty\fP Name
+.br
+\fIotherPropertyName\fP The rhs \fBProperty\fP Name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLtPropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 544 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.LtProperty (\fBIProjection\fPprojection, stringotherPropertyName)\fC [static]\fP"
+
+.PP
+Apply a 'less than' constraint to two properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIotherPropertyName\fP The rhs \fBProperty\fP Name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLtPropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 555 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.LtProperty (stringpropertyName, \fBIProjection\fPprojection)\fC [static]\fP"
+
+.PP
+Apply a 'less than' constraint to two properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The lhs \fBProperty\fP Name
+.br
+\fIprojection\fP The projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLtPropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 566 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.LtProperty (\fBIProjection\fPlhsProjection, \fBIProjection\fPrhsProjection)\fC [static]\fP"
+
+.PP
+Apply a 'less than' constraint to two properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhsProjection\fP The LHS projection\&.
+.br
+\fIrhsProjection\fP The RHS projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBLtPropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 577 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.Not (\fBICriterion\fPexpression)\fC [static]\fP"
+
+.PP
+Return the negation of an expression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP The \fBExpression\fP to negate\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBNotExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 697 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.NotEqProperty (stringpropertyName, stringotherPropertyName)\fC [static]\fP"
+
+.PP
+Apply an 'not equal' constraint to two properties 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The lhs \fBProperty\fP Name
+.br
+\fIotherPropertyName\fP The rhs \fBProperty\fP Name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBEqPropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 411 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.NotEqProperty (\fBIProjection\fPprojection, stringotherPropertyName)\fC [static]\fP"
+
+.PP
+Apply an 'not equal' constraint to projection and property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIotherPropertyName\fP The rhs \fBProperty\fP Name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBEqPropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 422 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.NotEqProperty (\fBIProjection\fPlhsProjection, \fBIProjection\fPrhsProjection)\fC [static]\fP"
+
+.PP
+Apply an 'not equal' constraint to the projections 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhsProjection\fP The LHS projection\&.
+.br
+\fIrhsProjection\fP The RHS projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBEqPropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 433 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.NotEqProperty (stringpropertyName, \fBIProjection\fPrhsProjection)\fC [static]\fP"
+
+.PP
+Apply an 'not equal' constraint to the projections 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP Name of the property\&.
+.br
+\fIrhsProjection\fP The RHS projection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBEqPropertyExpression\fP \&.
+.RE
+.PP
+
+.PP
+Definition at line 444 of file Restrictions\&.cs\&.
+.SS "static \fBLambdaRestrictionBuilder\fP NHibernate\&.Criterion\&.Restrictions\&.On (\fBExpression\fP< Func< object >>expression)\fC [static]\fP"
+
+.PP
+Build an \fBICriterion\fP for the given property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP lambda expression identifying property
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+returns LambdaRestrictionBuilder
+.RE
+.PP
+
+.PP
+Definition at line 802 of file Restrictions\&.cs\&.
+.SS "static \fBLambdaRestrictionBuilder\fP \fBNHibernate\&.Criterion\&.Restrictions\&.On\fP< T > (\fBExpression\fP< Func< T, object >>expression)\fC [static]\fP"
+
+.PP
+Build an \fBICriterion\fP for the given property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP lambda expression identifying property
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+returns LambdaRestrictionBuilder
+.RE
+.PP
+
+.PP
+Definition at line 791 of file Restrictions\&.cs\&.
+.SS "static \fBAbstractCriterion\fP NHibernate\&.Criterion\&.Restrictions\&.Or (\fBICriterion\fPlhs, \fBICriterion\fPrhs)\fC [static]\fP"
+
+.PP
+Return the disjuction of two expressions 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhs\fP The \fBExpression\fP to use as the Left Hand Side\&.
+.br
+\fIrhs\fP The \fBExpression\fP to use as the Right Hand Side\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBOrExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 687 of file Restrictions\&.cs\&.
+.SS "static \fBICriterion\fP NHibernate\&.Criterion\&.Restrictions\&.Where (\fBExpression\fP< Func< bool >>expression)\fC [static]\fP"
+
+.PP
+Create an \fBICriterion\fP for the supplied LambdaExpression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP lambda expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+return \fBNHibernate\&.Criterion\&.ICriterion\fP
+.RE
+.PP
+
+.PP
+Definition at line 757 of file Restrictions\&.cs\&.
+.SS "static \fBICriterion\fP \fBNHibernate\&.Criterion\&.Restrictions\&.Where\fP< T > (\fBExpression\fP< Func< T, bool >>expression)\fC [static]\fP"
+
+.PP
+Create an \fBICriterion\fP for the supplied LambdaExpression 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP generic type
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP lambda expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+return \fBNHibernate\&.Criterion\&.ICriterion\fP
+.RE
+.PP
+
+.PP
+Definition at line 746 of file Restrictions\&.cs\&.
+.SS "static \fBICriterion\fP NHibernate\&.Criterion\&.Restrictions\&.WhereNot (\fBExpression\fP< Func< bool >>expression)\fC [static]\fP"
+
+.PP
+Create an \fBICriterion\fP for the negation of the supplied LambdaExpression 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP lambda expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+return \fBNHibernate\&.Criterion\&.ICriterion\fP
+.RE
+.PP
+
+.PP
+Definition at line 780 of file Restrictions\&.cs\&.
+.SS "static \fBICriterion\fP \fBNHibernate\&.Criterion\&.Restrictions\&.WhereNot\fP< T > (\fBExpression\fP< Func< T, bool >>expression)\fC [static]\fP"
+
+.PP
+Create an \fBICriterion\fP for the negation of the supplied LambdaExpression 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP generic type
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpression\fP lambda expression
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+return \fBNHibernate\&.Criterion\&.ICriterion\fP
+.RE
+.PP
+
+.PP
+Definition at line 769 of file Restrictions\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

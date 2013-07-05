@@ -1,0 +1,28 @@
+var interface_n_hibernate_1_1_domain_model_1_1_foo_proxy =
+[
+    [ "Disconnect", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#aa2ff37192d76e89846d9c7fe712b199b", null ],
+    [ "EqualsFoo", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#afcd6a83d7605249a509420c040fa4b77", null ],
+    [ "Bool", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#a084333fbff5196d819eb1e6233b4f1b1", null ],
+    [ "Boolean", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#a81e9c0ad17b15ebee1d27c81d01a3891", null ],
+    [ "Byte", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#afd84f81887136a3cebf63b677ac6b948", null ],
+    [ "Bytes", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#a51f76ea180c13ee14e4182facb9b2001", null ],
+    [ "Char", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#aeee45eeb7f61aeeeb8ada33e8719633b", null ],
+    [ "Component", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#a082e95d89fa99d68d07c79921106420a", null ],
+    [ "Custom", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#ab45371c23a9916d0e97d198b3068286a", null ],
+    [ "Date", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#a50ce0b3b367ee6682aa8a9c317099638", null ],
+    [ "Dependent", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#ad12fb3b6298d98294230bc4ef7a29558", null ],
+    [ "Float", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#a7a270f4bdc03587303843d5bfa1adbcb", null ],
+    [ "Int", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#ae96477efa5c48a57aaeb788ae5bab448", null ],
+    [ "Integer", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#a6e7c8c9e08437a8a588c06de2564135e", null ],
+    [ "Key", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#a733c9febd8929e89369ed9bb61cd79d4", null ],
+    [ "Long", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#a9499e712eda67081bb613946080feb66", null ],
+    [ "Null", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#a4d8572763bb439df37b3619d95a6bd0f", null ],
+    [ "NullComponent", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#a102e0a4a8f2e6c8e3782a027b479344d", null ],
+    [ "Short", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#a39dd570d354641546c54a1cbbed2859b", null ],
+    [ "Status", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#aff35e64e4b94d9419c31a7d58b2d4057", null ],
+    [ "String", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#a29fba87ce44cc1253fe53fcb54fe0e56", null ],
+    [ "TheFoo", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#aad13589fafa2628bc393345057741dcc", null ],
+    [ "Timestamp", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#af185ab9d698ad735293cb8e09a530dc6", null ],
+    [ "YesNo", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#ad9178cf288e0a954b940006241850130", null ],
+    [ "Zero", "interface_n_hibernate_1_1_domain_model_1_1_foo_proxy.html#a2ef00085911ec198304f7b42c6aaf72e", null ]
+];

@@ -1,0 +1,162 @@
+.TH "NHibernate.Cfg" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cfg \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "package \fBConfigurationSchema\fP"
+.br
+.ti -1c
+.RI "package \fBLoquacious\fP"
+.br
+.ti -1c
+.RI "package \fBMappingSchema\fP"
+.br
+.ti -1c
+.RI "package \fBXmlHbmBinding\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBBindMappingEventArgs\fP"
+.br
+.ti -1c
+.RI "class \fBClassExtractor\fP"
+.br
+.RI "\fIExtracts the names of classes mapped in a given file, and the names of the classes they extend\&. \fP"
+.ti -1c
+.RI "class \fBConfiguration\fP"
+.br
+.RI "\fIAllows the application to specify properties and mapping documents to be used when creating a \fBISessionFactory\fP\&. \fP"
+.ti -1c
+.RI "class \fBConfigurationExtensions\fP"
+.br
+.ti -1c
+.RI "class \fBConfigurationSectionHandler\fP"
+.br
+.RI "\fISummary description for \fBConfigurationSectionHandler\fP\&. \fP"
+.ti -1c
+.RI "class \fBDefaultNamingStrategy\fP"
+.br
+.RI "\fIThe default <cref name='INamingStrategy'> \fP"
+.ti -1c
+.RI "class \fBEntityCacheUsageParser\fP"
+.br
+.RI "\fIHelper to parse \fBEntityCacheUsage\fP to and from XML string value\&. \fP"
+.ti -1c
+.RI "class \fBEnvironment\fP"
+.br
+.RI "\fIProvides access to configuration information\&. \fP"
+.ti -1c
+.RI "class \fBExtendsQueueEntry\fP"
+.br
+.RI "\fIRepresents a mapping queued for delayed processing to await processing of an extends entity upon which it depends\&. \fP"
+.ti -1c
+.RI "class \fBFilterSecondPassArgs\fP"
+.br
+.ti -1c
+.RI "class \fBHbm2DDLKeyWords\fP"
+.br
+.ti -1c
+.RI "class \fBHbmConstants\fP"
+.br
+.ti -1c
+.RI "class \fBHibernateConfigException\fP"
+.br
+.RI "\fIAn exception that occurs at configuration time, rather than runtime, as a result of something screwy in the hibernate\&.cfg\&.xml\&. \fP"
+.ti -1c
+.RI "interface \fBIHibernateConfiguration\fP"
+.br
+.ti -1c
+.RI "class \fBImprovedNamingStrategy\fP"
+.br
+.RI "\fISummary description for \fBImprovedNamingStrategy\fP\&. \fP"
+.ti -1c
+.RI "interface \fBINamingStrategy\fP"
+.br
+.RI "\fIA set of rules for determining the physical column and table names given the information in the mapping document\&. May be used to implement project-scoped naming standards for database objects\&. \fP"
+.ti -1c
+.RI "interface \fBISessionFactoryConfiguration\fP"
+.br
+.ti -1c
+.RI "class \fBMappings\fP"
+.br
+.RI "\fIA collection of mappings from classes and collections to relational database tables\&. \fP"
+.ti -1c
+.RI "class \fBMappingsQueue\fP"
+.br
+.RI "\fIQueues mapping files according to their dependency order\&. \fP"
+.ti -1c
+.RI "class \fBMappingsQueueEntry\fP"
+.br
+.RI "\fIHolds information about mapped classes found in an embedded resource \fP"
+.ti -1c
+.RI "class \fBNamedXmlDocument\fP"
+.br
+.ti -1c
+.RI "class \fBSchemaAutoAction\fP"
+.br
+.ti -1c
+.RI "class \fBSessionFactoryConfigurationBase\fP"
+.br
+.ti -1c
+.RI "class \fBSettings\fP"
+.br
+.RI "\fI\fBSettings\fP that affect the behavior of \fBNHibernate\fP at runtime\&. \fP"
+.ti -1c
+.RI "class \fBSettingsFactory\fP"
+.br
+.RI "\fIReads configuration properties and configures a \fBSettings\fP instance\&. \fP"
+.ti -1c
+.RI "class \fBXmlSchemas\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBEntityCacheUsage\fP { \fBEntityCacheUsage\&.Readonly\fP, \fBEntityCacheUsage\&.ReadWrite\fP, \fBEntityCacheUsage\&.NonStrictReadWrite\fP, \fBEntityCacheUsage\&.Transactional\fP }"
+.br
+.RI "\fIValues for class-cache and collection-cache strategy\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "delegate void \fBSecondPassCommand\fP (IDictionary< string, \fBPersistentClass\fP > persistentClasses)"
+.br
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBNHibernate\&.Cfg\&.EntityCacheUsage\fP"
+
+.PP
+Values for class-cache and collection-cache strategy\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIReadonly \fP\fP
+Xml value: read-only
+.TP
+\fB\fIReadWrite \fP\fP
+Xml value: read-write
+.TP
+\fB\fINonStrictReadWrite \fP\fP
+Xml value: nonstrict-read-write
+.TP
+\fB\fITransactional \fP\fP
+Xml value: transactional
+.PP
+Definition at line 6 of file EntityCacheUsage\&.cs\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

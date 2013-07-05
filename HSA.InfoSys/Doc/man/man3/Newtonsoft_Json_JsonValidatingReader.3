@@ -1,0 +1,285 @@
+.TH "Newtonsoft.Json.JsonValidatingReader" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.JsonValidatingReader \- 
+.PP
+Represents a reader that provides JsonSchema validation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNewtonsoft\&.Json\&.JsonReader\fP, and \fBNewtonsoft\&.Json\&.IJsonLineInfo\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJsonValidatingReader\fP (\fBJsonReader\fP reader)"
+.br
+.RI "\fIInitializes a new instance of the \fBJsonValidatingReader\fP class that validates the content returned from the given \fBJsonReader\fP\&. \fP"
+.ti -1c
+.RI "override int \fBReadAsInt32\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{Int32}\&. \fP"
+.ti -1c
+.RI "override byte[] \fBReadAsBytes\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a T:Byte[]\&. \fP"
+.ti -1c
+.RI "override decimal \fBReadAsDecimal\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{Decimal}\&. \fP"
+.ti -1c
+.RI "override string \fBReadAsString\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a \fBString\fP\&. \fP"
+.ti -1c
+.RI "override \fBDateTime\fP \fBReadAsDateTime\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{DateTime}\&. \fP"
+.ti -1c
+.RI "override \fBDateTimeOffset\fP \fBReadAsDateTimeOffset\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{DateTimeOffset}\&. \fP"
+.ti -1c
+.RI "override bool \fBRead\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override object \fBValue\fP\fC [get]\fP"
+.br
+.RI "\fIGets the text value of the current JSON token\&. \fP"
+.ti -1c
+.RI "override int \fBDepth\fP\fC [get]\fP"
+.br
+.RI "\fIGets the depth of the current token in the JSON document\&. \fP"
+.ti -1c
+.RI "override string \fBPath\fP\fC [get]\fP"
+.br
+.RI "\fIGets the path of the current JSON token\&. \fP"
+.ti -1c
+.RI "override char \fBQuoteChar\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the quotation mark character used to enclose the value of a string\&. \fP"
+.ti -1c
+.RI "override \fBJsonToken\fP \fBTokenType\fP\fC [get]\fP"
+.br
+.RI "\fIGets the type of the current JSON token\&. \fP"
+.ti -1c
+.RI "override Type \fBValueType\fP\fC [get]\fP"
+.br
+.RI "\fIGets the Common Language Runtime (CLR) type for the current JSON token\&. \fP"
+.ti -1c
+.RI "\fBJsonSchema\fP \fBSchema\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the schema\&. \fP"
+.ti -1c
+.RI "\fBJsonReader\fP \fBReader\fP\fC [get]\fP"
+.br
+.RI "\fIGets the \fBJsonReader\fP used to construct this \fBJsonValidatingReader\fP\&. \fP"
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "ValidationEventHandler \fBValidationEventHandler\fP"
+.br
+.RI "\fISets an event handler for receiving schema validation errors\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Represents a reader that provides JsonSchema validation\&. 
+
+
+.PP
+Definition at line 48 of file JsonValidatingReader\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Newtonsoft\&.Json\&.JsonValidatingReader\&.JsonValidatingReader (\fBJsonReader\fPreader)"
+
+.PP
+Initializes a new instance of the \fBJsonValidatingReader\fP class that validates the content returned from the given \fBJsonReader\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The \fBJsonReader\fP to read from while validating\&.
+.RE
+.PP
+
+.PP
+Definition at line 294 of file JsonValidatingReader\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override bool Newtonsoft\&.Json\&.JsonValidatingReader\&.Read ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the next token was read successfully; false if there are no more tokens to read\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 445 of file JsonValidatingReader\&.cs\&.
+.SS "override byte [] Newtonsoft\&.Json\&.JsonValidatingReader\&.ReadAsBytes ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a T:Byte[]\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A T:Byte[] or a null reference if the next JSON token is null\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 381 of file JsonValidatingReader\&.cs\&.
+.SS "override \fBDateTime\fP Newtonsoft\&.Json\&.JsonValidatingReader\&.ReadAsDateTime ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{DateTime}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBString\fP\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 417 of file JsonValidatingReader\&.cs\&.
+.SS "override \fBDateTimeOffset\fP Newtonsoft\&.Json\&.JsonValidatingReader\&.ReadAsDateTimeOffset ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{DateTimeOffset}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A Nullable{DateTimeOffset}\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 430 of file JsonValidatingReader\&.cs\&.
+.SS "override decimal Newtonsoft\&.Json\&.JsonValidatingReader\&.ReadAsDecimal ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{Decimal}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A Nullable{Decimal}\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 393 of file JsonValidatingReader\&.cs\&.
+.SS "override int Newtonsoft\&.Json\&.JsonValidatingReader\&.ReadAsInt32 ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{Int32}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A Nullable{Int32}\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 367 of file JsonValidatingReader\&.cs\&.
+.SS "override string Newtonsoft\&.Json\&.JsonValidatingReader\&.ReadAsString ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a \fBString\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBString\fP\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 405 of file JsonValidatingReader\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override int Newtonsoft\&.Json\&.JsonValidatingReader\&.Depth\fC [get]\fP"
+
+.PP
+Gets the depth of the current token in the JSON document\&. The depth of the current token in the JSON document\&.
+.PP
+Definition at line 127 of file JsonValidatingReader\&.cs\&.
+.SS "override string Newtonsoft\&.Json\&.JsonValidatingReader\&.Path\fC [get]\fP"
+
+.PP
+Gets the path of the current JSON token\&. 
+.PP
+Definition at line 135 of file JsonValidatingReader\&.cs\&.
+.SS "override char Newtonsoft\&.Json\&.JsonValidatingReader\&.QuoteChar\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the quotation mark character used to enclose the value of a string\&. 
+.PP
+Definition at line 144 of file JsonValidatingReader\&.cs\&.
+.SS "\fBJsonReader\fP Newtonsoft\&.Json\&.JsonValidatingReader\&.Reader\fC [get]\fP"
+
+.PP
+Gets the \fBJsonReader\fP used to construct this \fBJsonValidatingReader\fP\&. The \fBJsonReader\fP specified in the constructor\&.
+.PP
+Definition at line 323 of file JsonValidatingReader\&.cs\&.
+.SS "\fBJsonSchema\fP Newtonsoft\&.Json\&.JsonValidatingReader\&.Schema\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the schema\&. The schema\&.
+.PP
+Definition at line 306 of file JsonValidatingReader\&.cs\&.
+.SS "override \fBJsonToken\fP Newtonsoft\&.Json\&.JsonValidatingReader\&.TokenType\fC [get]\fP"
+
+.PP
+Gets the type of the current JSON token\&. 
+.PP
+Definition at line 154 of file JsonValidatingReader\&.cs\&.
+.SS "override object Newtonsoft\&.Json\&.JsonValidatingReader\&.Value\fC [get]\fP"
+
+.PP
+Gets the text value of the current JSON token\&. 
+.PP
+Definition at line 118 of file JsonValidatingReader\&.cs\&.
+.SS "override Type Newtonsoft\&.Json\&.JsonValidatingReader\&.ValueType\fC [get]\fP"
+
+.PP
+Gets the Common Language Runtime (CLR) type for the current JSON token\&. 
+.PP
+Definition at line 163 of file JsonValidatingReader\&.cs\&.
+.SH "Event Documentation"
+.PP 
+.SS "ValidationEventHandler Newtonsoft\&.Json\&.JsonValidatingReader\&.ValidationEventHandler"
+
+.PP
+Sets an event handler for receiving schema validation errors\&. 
+.PP
+Definition at line 111 of file JsonValidatingReader\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

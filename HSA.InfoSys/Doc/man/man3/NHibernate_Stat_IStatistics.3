@@ -1,0 +1,494 @@
+.TH "NHibernate.Stat.IStatistics" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Stat.IStatistics \- 
+.PP
+Statistics for a particular \fBISessionFactory\fP\&. Beware of metrics, they are dependent of the Stopwatch precision:  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Stat\&.StatisticsImpl\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.RI "\fIReset all statistics\fP"
+.ti -1c
+.RI "\fBEntityStatistics\fP \fBGetEntityStatistics\fP (string entityName)"
+.br
+.RI "\fIFind entity statistics per name \fP"
+.ti -1c
+.RI "\fBCollectionStatistics\fP \fBGetCollectionStatistics\fP (string role)"
+.br
+.RI "\fIGet collection statistics per role \fP"
+.ti -1c
+.RI "\fBSecondLevelCacheStatistics\fP \fBGetSecondLevelCacheStatistics\fP (string regionName)"
+.br
+.RI "\fISecond level cache statistics per region \fP"
+.ti -1c
+.RI "\fBQueryStatistics\fP \fBGetQueryStatistics\fP (string queryString)"
+.br
+.RI "\fIQuery statistics from query string (HQL or SQL) \fP"
+.ti -1c
+.RI "void \fBLogSummary\fP ()"
+.br
+.RI "\fIlog in info level the main statistics\fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "long \fBEntityDeleteCount\fP\fC [get]\fP"
+.br
+.RI "\fIGlobal number of entity deletes\fP"
+.ti -1c
+.RI "long \fBEntityInsertCount\fP\fC [get]\fP"
+.br
+.RI "\fIGlobal number of entity inserts\fP"
+.ti -1c
+.RI "long \fBEntityLoadCount\fP\fC [get]\fP"
+.br
+.RI "\fIGlobal number of entity loads\fP"
+.ti -1c
+.RI "long \fBEntityFetchCount\fP\fC [get]\fP"
+.br
+.RI "\fIGlobal number of entity fetchs\fP"
+.ti -1c
+.RI "long \fBEntityUpdateCount\fP\fC [get]\fP"
+.br
+.RI "\fIGlobal number of entity updates\fP"
+.ti -1c
+.RI "long \fBQueryExecutionCount\fP\fC [get]\fP"
+.br
+.RI "\fIGlobal number of executed queries\fP"
+.ti -1c
+.RI "TimeSpan \fBQueryExecutionMaxTime\fP\fC [get]\fP"
+.br
+.RI "\fIThe TimeSpan of the slowest query\&.\fP"
+.ti -1c
+.RI "string \fBQueryExecutionMaxTimeQueryString\fP\fC [get]\fP"
+.br
+.RI "\fIThe query string for the slowest query\&.\fP"
+.ti -1c
+.RI "long \fBQueryCacheHitCount\fP\fC [get]\fP"
+.br
+.RI "\fIThe global number of cached queries successfully retrieved from cache\fP"
+.ti -1c
+.RI "long \fBQueryCacheMissCount\fP\fC [get]\fP"
+.br
+.RI "\fIThe global number of cached queries \fInot\fP found in cache\fP"
+.ti -1c
+.RI "long \fBQueryCachePutCount\fP\fC [get]\fP"
+.br
+.RI "\fIThe global number of cacheable queries put in cache\fP"
+.ti -1c
+.RI "long \fBFlushCount\fP\fC [get]\fP"
+.br
+.RI "\fIGet the global number of flush executed by sessions (either implicit or explicit)\fP"
+.ti -1c
+.RI "long \fBConnectCount\fP\fC [get]\fP"
+.br
+.RI "\fIGet the global number of connections asked by the sessions (the actual number of connections used may be much smaller depending whether you use a connection pool or not) \fP"
+.ti -1c
+.RI "long \fBSecondLevelCacheHitCount\fP\fC [get]\fP"
+.br
+.RI "\fIGlobal number of cacheable entities/collections successfully retrieved from the cache\fP"
+.ti -1c
+.RI "long \fBSecondLevelCacheMissCount\fP\fC [get]\fP"
+.br
+.RI "\fIGlobal number of cacheable entities/collections not found in the cache and loaded from the database\&.\fP"
+.ti -1c
+.RI "long \fBSecondLevelCachePutCount\fP\fC [get]\fP"
+.br
+.RI "\fIGlobal number of cacheable entities/collections put in the cache\fP"
+.ti -1c
+.RI "long \fBSessionCloseCount\fP\fC [get]\fP"
+.br
+.RI "\fIGlobal number of sessions closed\fP"
+.ti -1c
+.RI "long \fBSessionOpenCount\fP\fC [get]\fP"
+.br
+.RI "\fIGlobal number of sessions opened\fP"
+.ti -1c
+.RI "long \fBCollectionLoadCount\fP\fC [get]\fP"
+.br
+.RI "\fIGlobal number of collections loaded\fP"
+.ti -1c
+.RI "long \fBCollectionFetchCount\fP\fC [get]\fP"
+.br
+.RI "\fIGlobal number of collections fetched\fP"
+.ti -1c
+.RI "long \fBCollectionUpdateCount\fP\fC [get]\fP"
+.br
+.RI "\fIGlobal number of collections updated\fP"
+.ti -1c
+.RI "long \fBCollectionRemoveCount\fP\fC [get]\fP"
+.br
+.RI "\fIGlobal number of collections removed\fP"
+.ti -1c
+.RI "long \fBCollectionRecreateCount\fP\fC [get]\fP"
+.br
+.RI "\fIGlobal number of collections recreated\fP"
+.ti -1c
+.RI "DateTime \fBStartTime\fP\fC [get]\fP"
+.br
+.RI "\fIStart time \fP"
+.ti -1c
+.RI "bool \fBIsStatisticsEnabled\fP\fC [get, set]\fP"
+.br
+.RI "\fIEnable/Disable statistics logs (this is a dynamic parameter)\fP"
+.ti -1c
+.RI "string[] \fBQueries\fP\fC [get]\fP"
+.br
+.RI "\fIAll executed query strings\fP"
+.ti -1c
+.RI "string[] \fBEntityNames\fP\fC [get]\fP"
+.br
+.RI "\fIThe names of all entities\fP"
+.ti -1c
+.RI "string[] \fBCollectionRoleNames\fP\fC [get]\fP"
+.br
+.RI "\fIThe names of all collection roles\fP"
+.ti -1c
+.RI "string[] \fBSecondLevelCacheRegionNames\fP\fC [get]\fP"
+.br
+.RI "\fIGet all second-level cache region names\fP"
+.ti -1c
+.RI "long \fBSuccessfulTransactionCount\fP\fC [get]\fP"
+.br
+.RI "\fIThe number of transactions we know to have been successful\fP"
+.ti -1c
+.RI "long \fBTransactionCount\fP\fC [get]\fP"
+.br
+.RI "\fIThe number of transactions we know to have completed\fP"
+.ti -1c
+.RI "long \fBPrepareStatementCount\fP\fC [get]\fP"
+.br
+.RI "\fIThe number of prepared statements that were acquired\fP"
+.ti -1c
+.RI "long \fBCloseStatementCount\fP\fC [get]\fP"
+.br
+.RI "\fIThe number of prepared statements that were released\fP"
+.ti -1c
+.RI "long \fBOptimisticFailureCount\fP\fC [get]\fP"
+.br
+.RI "\fIThe number of \fC\fBStaleObjectStateException\fP\fPs that occurred \fP"
+.ti -1c
+.RI "TimeSpan \fBOperationThreshold\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe OperationThreshold to a value greater than TimeSpan\&.MinValue to enable logging of long running operations\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Statistics for a particular \fBISessionFactory\fP\&. Beware of metrics, they are dependent of the Stopwatch precision: 
+
+
+.PP
+Definition at line 10 of file IStatistics\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Stat\&.IStatistics\&.Clear ()"
+
+.PP
+Reset all statistics
+.PP
+Implemented in \fBNHibernate\&.Stat\&.StatisticsImpl\fP\&.
+.SS "\fBCollectionStatistics\fP NHibernate\&.Stat\&.IStatistics\&.GetCollectionStatistics (stringrole)"
+
+.PP
+Get collection statistics per role 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP collection role 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBCollectionStatistics\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Stat\&.StatisticsImpl\fP\&.
+.SS "\fBEntityStatistics\fP NHibernate\&.Stat\&.IStatistics\&.GetEntityStatistics (stringentityName)"
+
+.PP
+Find entity statistics per name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP entity name 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBEntityStatistics\fP object 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Stat\&.StatisticsImpl\fP\&.
+.SS "\fBQueryStatistics\fP NHibernate\&.Stat\&.IStatistics\&.GetQueryStatistics (stringqueryString)"
+
+.PP
+Query statistics from query string (HQL or SQL) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryString\fP query string 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBQueryStatistics\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Stat\&.StatisticsImpl\fP\&.
+.SS "\fBSecondLevelCacheStatistics\fP NHibernate\&.Stat\&.IStatistics\&.GetSecondLevelCacheStatistics (stringregionName)"
+
+.PP
+Second level cache statistics per region 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIregionName\fP region name 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBSecondLevelCacheStatistics\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Stat\&.StatisticsImpl\fP\&.
+.SS "void NHibernate\&.Stat\&.IStatistics\&.LogSummary ()"
+
+.PP
+log in info level the main statistics
+.PP
+Implemented in \fBNHibernate\&.Stat\&.StatisticsImpl\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "long NHibernate\&.Stat\&.IStatistics\&.CloseStatementCount\fC [get]\fP"
+
+.PP
+The number of prepared statements that were released
+.PP
+Definition at line 113 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.CollectionFetchCount\fC [get]\fP"
+
+.PP
+Global number of collections fetched
+.PP
+Definition at line 74 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.CollectionLoadCount\fC [get]\fP"
+
+.PP
+Global number of collections loaded
+.PP
+Definition at line 71 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.CollectionRecreateCount\fC [get]\fP"
+
+.PP
+Global number of collections recreated
+.PP
+Definition at line 83 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.CollectionRemoveCount\fC [get]\fP"
+
+.PP
+Global number of collections removed
+.PP
+Definition at line 80 of file IStatistics\&.cs\&.
+.SS "string [] NHibernate\&.Stat\&.IStatistics\&.CollectionRoleNames\fC [get]\fP"
+
+.PP
+The names of all collection roles
+.PP
+Definition at line 98 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.CollectionUpdateCount\fC [get]\fP"
+
+.PP
+Global number of collections updated
+.PP
+Definition at line 77 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.ConnectCount\fC [get]\fP"
+
+.PP
+Get the global number of connections asked by the sessions (the actual number of connections used may be much smaller depending whether you use a connection pool or not) 
+.PP
+Definition at line 53 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.EntityDeleteCount\fC [get]\fP"
+
+.PP
+Global number of entity deletes
+.PP
+Definition at line 13 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.EntityFetchCount\fC [get]\fP"
+
+.PP
+Global number of entity fetchs
+.PP
+Definition at line 22 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.EntityInsertCount\fC [get]\fP"
+
+.PP
+Global number of entity inserts
+.PP
+Definition at line 16 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.EntityLoadCount\fC [get]\fP"
+
+.PP
+Global number of entity loads
+.PP
+Definition at line 19 of file IStatistics\&.cs\&.
+.SS "string [] NHibernate\&.Stat\&.IStatistics\&.EntityNames\fC [get]\fP"
+
+.PP
+The names of all entities
+.PP
+Definition at line 95 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.EntityUpdateCount\fC [get]\fP"
+
+.PP
+Global number of entity updates
+.PP
+Definition at line 25 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.FlushCount\fC [get]\fP"
+
+.PP
+Get the global number of flush executed by sessions (either implicit or explicit)
+.PP
+Definition at line 46 of file IStatistics\&.cs\&.
+.SS "bool NHibernate\&.Stat\&.IStatistics\&.IsStatisticsEnabled\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Enable/Disable statistics logs (this is a dynamic parameter)
+.PP
+Definition at line 89 of file IStatistics\&.cs\&.
+.SS "TimeSpan NHibernate\&.Stat\&.IStatistics\&.OperationThreshold\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The OperationThreshold to a value greater than TimeSpan\&.MinValue to enable logging of long running operations\&. Operations that exceed the level will be logged\&.
+.PP
+Definition at line 148 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.OptimisticFailureCount\fC [get]\fP"
+
+.PP
+The number of \fC\fBStaleObjectStateException\fP\fPs that occurred 
+.PP
+Definition at line 116 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.PrepareStatementCount\fC [get]\fP"
+
+.PP
+The number of prepared statements that were acquired
+.PP
+Definition at line 110 of file IStatistics\&.cs\&.
+.SS "string [] NHibernate\&.Stat\&.IStatistics\&.Queries\fC [get]\fP"
+
+.PP
+All executed query strings
+.PP
+Definition at line 92 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.QueryCacheHitCount\fC [get]\fP"
+
+.PP
+The global number of cached queries successfully retrieved from cache
+.PP
+Definition at line 37 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.QueryCacheMissCount\fC [get]\fP"
+
+.PP
+The global number of cached queries \fInot\fP found in cache
+.PP
+Definition at line 40 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.QueryCachePutCount\fC [get]\fP"
+
+.PP
+The global number of cacheable queries put in cache
+.PP
+Definition at line 43 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.QueryExecutionCount\fC [get]\fP"
+
+.PP
+Global number of executed queries
+.PP
+Definition at line 28 of file IStatistics\&.cs\&.
+.SS "TimeSpan NHibernate\&.Stat\&.IStatistics\&.QueryExecutionMaxTime\fC [get]\fP"
+
+.PP
+The TimeSpan of the slowest query\&.
+.PP
+Definition at line 31 of file IStatistics\&.cs\&.
+.SS "string NHibernate\&.Stat\&.IStatistics\&.QueryExecutionMaxTimeQueryString\fC [get]\fP"
+
+.PP
+The query string for the slowest query\&.
+.PP
+Definition at line 34 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.SecondLevelCacheHitCount\fC [get]\fP"
+
+.PP
+Global number of cacheable entities/collections successfully retrieved from the cache
+.PP
+Definition at line 56 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.SecondLevelCacheMissCount\fC [get]\fP"
+
+.PP
+Global number of cacheable entities/collections not found in the cache and loaded from the database\&.
+.PP
+Definition at line 59 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.SecondLevelCachePutCount\fC [get]\fP"
+
+.PP
+Global number of cacheable entities/collections put in the cache
+.PP
+Definition at line 62 of file IStatistics\&.cs\&.
+.SS "string [] NHibernate\&.Stat\&.IStatistics\&.SecondLevelCacheRegionNames\fC [get]\fP"
+
+.PP
+Get all second-level cache region names
+.PP
+Definition at line 101 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.SessionCloseCount\fC [get]\fP"
+
+.PP
+Global number of sessions closed
+.PP
+Definition at line 65 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.SessionOpenCount\fC [get]\fP"
+
+.PP
+Global number of sessions opened
+.PP
+Definition at line 68 of file IStatistics\&.cs\&.
+.SS "DateTime NHibernate\&.Stat\&.IStatistics\&.StartTime\fC [get]\fP"
+
+.PP
+Start time 
+.PP
+Definition at line 86 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.SuccessfulTransactionCount\fC [get]\fP"
+
+.PP
+The number of transactions we know to have been successful
+.PP
+Definition at line 104 of file IStatistics\&.cs\&.
+.SS "long NHibernate\&.Stat\&.IStatistics\&.TransactionCount\fC [get]\fP"
+
+.PP
+The number of transactions we know to have completed
+.PP
+Definition at line 107 of file IStatistics\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

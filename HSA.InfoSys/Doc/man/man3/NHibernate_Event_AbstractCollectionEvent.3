@@ -1,0 +1,128 @@
+.TH "NHibernate.Event.AbstractCollectionEvent" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.AbstractCollectionEvent \- 
+.PP
+Defines a base class for events involving collections\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Event\&.AbstractEvent\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Event\&.InitializeCollectionEvent\fP, \fBNHibernate\&.Event\&.PostCollectionRecreateEvent\fP, \fBNHibernate\&.Event\&.PostCollectionRemoveEvent\fP, \fBNHibernate\&.Event\&.PostCollectionUpdateEvent\fP, \fBNHibernate\&.Event\&.PreCollectionRecreateEvent\fP, \fBNHibernate\&.Event\&.PreCollectionRemoveEvent\fP, and \fBNHibernate\&.Event\&.PreCollectionUpdateEvent\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual string \fBGetAffectedOwnerEntityName\fP ()"
+.br
+.RI "\fIGet the entity name for the collection owner entity that is affected by this event\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractCollectionEvent\fP (\fBICollectionPersister\fP collectionPersister, \fBIPersistentCollection\fP collection, \fBIEventSource\fP source, object affectedOwner, object affectedOwnerId)"
+.br
+.RI "\fIConstructs an \fBAbstractCollectionEvent\fP object\&. \fP"
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBICollectionPersister\fP \fBGetLoadedCollectionPersister\fP (\fBIPersistentCollection\fP collection, \fBIEventSource\fP source)"
+.br
+.ti -1c
+.RI "static object \fBGetLoadedOwnerOrNull\fP (\fBIPersistentCollection\fP collection, \fBIEventSource\fP source)"
+.br
+.ti -1c
+.RI "static object \fBGetLoadedOwnerIdOrNull\fP (\fBIPersistentCollection\fP collection, \fBIEventSource\fP source)"
+.br
+.ti -1c
+.RI "static object \fBGetOwnerIdOrNull\fP (object owner, \fBIEventSource\fP source)"
+.br
+.ti -1c
+.RI "static string \fBGetAffectedOwnerEntityName\fP (\fBICollectionPersister\fP collectionPersister, object affectedOwner, \fBIEventSource\fP source)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIPersistentCollection\fP \fBCollection\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "object \fBAffectedOwnerOrNull\fP\fC [get]\fP"
+.br
+.RI "\fIThe collection owner entity that is affected by this event\&. \fP"
+.ti -1c
+.RI "object \fBAffectedOwnerIdOrNull\fP\fC [get]\fP"
+.br
+.RI "\fIGet the ID for the collection owner entity that is affected by this event\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines a base class for events involving collections\&. 
+
+
+.PP
+Definition at line 10 of file AbstractCollectionEvent\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Event\&.AbstractCollectionEvent\&.AbstractCollectionEvent (\fBICollectionPersister\fPcollectionPersister, \fBIPersistentCollection\fPcollection, \fBIEventSource\fPsource, objectaffectedOwner, objectaffectedOwnerId)\fC [protected]\fP"
+
+.PP
+Constructs an \fBAbstractCollectionEvent\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollectionPersister\fP The collection persister\&.
+.br
+\fIcollection\fP The collection 
+.br
+\fIsource\fP The Session source 
+.br
+\fIaffectedOwner\fP The owner that is affected by this event; can be null if unavailable 
+.br
+\fIaffectedOwnerId\fP The ID for the owner that is affected by this event; can be null if unavailable that is affected by this event; can be null if unavailable 
+.RE
+.PP
+
+.PP
+Definition at line 26 of file AbstractCollectionEvent\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual string NHibernate\&.Event\&.AbstractCollectionEvent\&.GetAffectedOwnerEntityName ()\fC [virtual]\fP"
+
+.PP
+Get the entity name for the collection owner entity that is affected by this event\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The entity name; if the owner is not in the PersistenceContext, the returned value may be a superclass name, instead of the actual class name 
+.RE
+.PP
+
+.PP
+Definition at line 106 of file AbstractCollectionEvent\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "object NHibernate\&.Event\&.AbstractCollectionEvent\&.AffectedOwnerIdOrNull\fC [get]\fP"
+
+.PP
+Get the ID for the collection owner entity that is affected by this event\&. Returns null if the ID cannot be obtained from the collection's loaded key (e\&.g\&., a property-ref is used for the collection and does not include the entity's ID) 
+.PP
+Definition at line 57 of file AbstractCollectionEvent\&.cs\&.
+.SS "object NHibernate\&.Event\&.AbstractCollectionEvent\&.AffectedOwnerOrNull\fC [get]\fP"
+
+.PP
+The collection owner entity that is affected by this event\&. Returns null if the entity is not in the persistence context (e\&.g\&., because the collection from a detached entity was moved to a new owner) 
+.PP
+Definition at line 46 of file AbstractCollectionEvent\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

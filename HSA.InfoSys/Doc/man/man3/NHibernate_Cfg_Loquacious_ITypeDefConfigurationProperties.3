@@ -1,0 +1,69 @@
+.TH "NHibernate.Cfg.Loquacious.ITypeDefConfigurationProperties" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cfg.Loquacious.ITypeDefConfigurationProperties \- 
+.PP
+\fBProperties\fP of TypeDef configuration\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by NHibernate\&.Cfg\&.Loquacious\&.TypeDefConfigurationProperties< T >\&.
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBAlias\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe key to use the type-definition inside not strongly typed mappings (XML mapping)\&. \fP"
+.ti -1c
+.RI "object \fBProperties\fP\fC [get, set]\fP"
+.br
+.RI "\fIAn object which public properties are used as type-definition pareneters or null where type-definition does not need parameters or you want use default values\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBProperties\fP of TypeDef configuration\&. 
+
+
+.PP
+\fBSee Also:\fP
+.RS 4
+ConfigurationExtensions\&.TypeDefinition{TDef}
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 7 of file ITypeDefConfiguration\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string NHibernate\&.Cfg\&.Loquacious\&.ITypeDefConfigurationProperties\&.Alias\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The key to use the type-definition inside not strongly typed mappings (XML mapping)\&. 
+.PP
+Definition at line 12 of file ITypeDefConfiguration\&.cs\&.
+.SS "object NHibernate\&.Cfg\&.Loquacious\&.ITypeDefConfigurationProperties\&.Properties\fC [get]\fP, \fC [set]\fP"
+
+.PP
+An object which public properties are used as type-definition pareneters or null where type-definition does not need parameters or you want use default values\&. As \fIvalue\fP  an anonimous object can be used: 
+.PP
+.nf
+configure\&.TypeDefinition&lt;TableHiLoGenerator&gt;(c=>
+                                                {
+                                                    c\&.Alias = "HighLow";
+                                                    c\&.Properties = new {max_lo = 99};
+                                                });
+
+.fi
+.PP
+ 
+.PP
+Definition at line 30 of file ITypeDefConfiguration\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,178 @@
+.TH "NHibernate.Test.UtilityTest.IdentityMapFixture" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.UtilityTest.IdentityMapFixture \- 
+.PP
+\fBTest\fP for the IdentityMap\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Test\&.UtilityTest\&.IdentityMapSequencedFixture\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSetUp\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddNoHashCode\fP ()"
+.br
+.RI "\fIVerify that the object being added as the Key does not have it's GetHashCode method called\&. \fP"
+.ti -1c
+.RI "void \fBConcurrentEntries\fP ()"
+.br
+.RI "\fIVerify that ConcurrentEntities returns an ICollection that contains the same Keys/Values as originally added into the IdentityMap\&. \fP"
+.ti -1c
+.RI "void \fBConcurrentEntitiesModification\fP ()"
+.br
+.RI "\fITests that it is safe to modify the IdentityMap while iterating through the ConcurrentEntities\&. \fP"
+.ti -1c
+.RI "void \fBAddValueTypeException\fP ()"
+.br
+.RI "\fIAn IdentityMap can not use a ValueType as the Key because of the boxing/unboxing that occurs with them\&. This verifies that an Exception is thrown if a ValueType is used as the key\&. \fP"
+.ti -1c
+.RI "void \fBCount\fP ()"
+.br
+.ti -1c
+.RI "void \fBContainsSameObjectByRef\fP ()"
+.br
+.RI "\fI\fBTest\fP that two different references to the same object passed to the Contains method both return true\&. \fP"
+.ti -1c
+.RI "void \fBContainsSameObjectWithDiffEquals\fP ()"
+.br
+.RI "\fI\fBTest\fP that even though the HashCode and Equals of the same reference have been changed that the Contains still recognizes it by the Identity of the object - not the values\&. \fP"
+.ti -1c
+.RI "void \fBContainsDiffObjectWithEquals\fP ()"
+.br
+.RI "\fI\fBTest\fP to make sure that two objects that are equal by the Equals definition of the class \fBMutableHashCode\fP do not get translated to the same key because they are different objects\&. \fP"
+.ti -1c
+.RI "void \fBSetItemChangedHashCodeTwice\fP ()"
+.br
+.RI "\fIAdd the same \fBMutableHashCode\fP class twice and ensure there is only one item in the IdentityMap\&. \fP"
+.ti -1c
+.RI "void \fBSetItemsEqualHashCodeDiffIdentity\fP ()"
+.br
+.RI "\fIAdds two different objects that are Equal() to each other to verify that it does not use the objects Equal() but instead the IdentityMap\&. \fP"
+.ti -1c
+.RI "void \fBKeys\fP ()"
+.br
+.RI "\fIVerify the Keys returns the object passed as the key, not the IdentityKey that the object was converted to\&. \fP"
+.ti -1c
+.RI "void \fBMethodMissingException\fP ()"
+.br
+.RI "\fIWhenever I run the test in the NUnit Gui two times it throws an error because it can't find the method System\&.Runtime\&.CompilerServices\&.RuntimeHelpers\&.GetHashCode(object)\&. I have isolated it to not be a problem with IdentityMap\&.IdentityKey and need to figure out if I have misconfigured NUnit on my machine or if NUnit is falling back to the \&.NET 1\&.0 Framework\&. The only reason I think it might be falling back is because that method was added in the \&.NET 1\&.1 Framework\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual IDictionary \fBGetIdentityMap\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBMutableHashCode\fP \fBitem1\fP = null"
+.br
+.ti -1c
+.RI "\fBMutableHashCode\fP \fBitem2\fP = null"
+.br
+.ti -1c
+.RI "IDictionary \fBexpectedMap\fP = null"
+.br
+.ti -1c
+.RI "\fBNoHashCode\fP \fBnoHashCode1\fP = null"
+.br
+.ti -1c
+.RI "\fBNoHashCode\fP \fBnoHashCode2\fP = null"
+.br
+.ti -1c
+.RI "object \fBvalue1\fP = null"
+.br
+.ti -1c
+.RI "object \fBvalue2\fP = null"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBTest\fP for the IdentityMap\&. 
+
+
+.PP
+Definition at line 13 of file IdentityMapFixture\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Test\&.UtilityTest\&.IdentityMapFixture\&.AddNoHashCode ()"
+
+.PP
+Verify that the object being added as the Key does not have it's GetHashCode method called\&. 
+.PP
+Definition at line 52 of file IdentityMapFixture\&.cs\&.
+.SS "void NHibernate\&.Test\&.UtilityTest\&.IdentityMapFixture\&.AddValueTypeException ()"
+
+.PP
+An IdentityMap can not use a ValueType as the Key because of the boxing/unboxing that occurs with them\&. This verifies that an Exception is thrown if a ValueType is used as the key\&. 
+.PP
+Definition at line 124 of file IdentityMapFixture\&.cs\&.
+.SS "void NHibernate\&.Test\&.UtilityTest\&.IdentityMapFixture\&.ConcurrentEntitiesModification ()"
+
+.PP
+Tests that it is safe to modify the IdentityMap while iterating through the ConcurrentEntities\&. 
+.PP
+Definition at line 93 of file IdentityMapFixture\&.cs\&.
+.SS "void NHibernate\&.Test\&.UtilityTest\&.IdentityMapFixture\&.ConcurrentEntries ()"
+
+.PP
+Verify that ConcurrentEntities returns an ICollection that contains the same Keys/Values as originally added into the IdentityMap\&. 
+.PP
+Definition at line 65 of file IdentityMapFixture\&.cs\&.
+.SS "void NHibernate\&.Test\&.UtilityTest\&.IdentityMapFixture\&.ContainsDiffObjectWithEquals ()"
+
+.PP
+\fBTest\fP to make sure that two objects that are equal by the Equals definition of the class \fBMutableHashCode\fP do not get translated to the same key because they are different objects\&. 
+.PP
+Definition at line 182 of file IdentityMapFixture\&.cs\&.
+.SS "void NHibernate\&.Test\&.UtilityTest\&.IdentityMapFixture\&.ContainsSameObjectByRef ()"
+
+.PP
+\fBTest\fP that two different references to the same object passed to the Contains method both return true\&. 
+.PP
+Definition at line 147 of file IdentityMapFixture\&.cs\&.
+.SS "void NHibernate\&.Test\&.UtilityTest\&.IdentityMapFixture\&.ContainsSameObjectWithDiffEquals ()"
+
+.PP
+\fBTest\fP that even though the HashCode and Equals of the same reference have been changed that the Contains still recognizes it by the Identity of the object - not the values\&. 
+.PP
+Definition at line 165 of file IdentityMapFixture\&.cs\&.
+.SS "void NHibernate\&.Test\&.UtilityTest\&.IdentityMapFixture\&.Keys ()"
+
+.PP
+Verify the Keys returns the object passed as the key, not the IdentityKey that the object was converted to\&. 
+.PP
+Definition at line 244 of file IdentityMapFixture\&.cs\&.
+.SS "void NHibernate\&.Test\&.UtilityTest\&.IdentityMapFixture\&.MethodMissingException ()"
+
+.PP
+Whenever I run the test in the NUnit Gui two times it throws an error because it can't find the method System\&.Runtime\&.CompilerServices\&.RuntimeHelpers\&.GetHashCode(object)\&. I have isolated it to not be a problem with IdentityMap\&.IdentityKey and need to figure out if I have misconfigured NUnit on my machine or if NUnit is falling back to the \&.NET 1\&.0 Framework\&. The only reason I think it might be falling back is because that method was added in the \&.NET 1\&.1 Framework\&. This is actually a problem with NUnit settings\&. To resolve this go to Tools-Options and make sure that Reload before each test run is NOT checked\&. 
+.PP
+Definition at line 270 of file IdentityMapFixture\&.cs\&.
+.SS "void NHibernate\&.Test\&.UtilityTest\&.IdentityMapFixture\&.SetItemChangedHashCodeTwice ()"
+
+.PP
+Add the same \fBMutableHashCode\fP class twice and ensure there is only one item in the IdentityMap\&. 
+.PP
+Definition at line 200 of file IdentityMapFixture\&.cs\&.
+.SS "void NHibernate\&.Test\&.UtilityTest\&.IdentityMapFixture\&.SetItemsEqualHashCodeDiffIdentity ()"
+
+.PP
+Adds two different objects that are Equal() to each other to verify that it does not use the objects Equal() but instead the IdentityMap\&. 
+.PP
+Definition at line 217 of file IdentityMapFixture\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

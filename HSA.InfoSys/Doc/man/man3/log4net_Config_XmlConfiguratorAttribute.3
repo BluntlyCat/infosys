@@ -1,0 +1,142 @@
+.TH "log4net.Config.XmlConfiguratorAttribute" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Config.XmlConfiguratorAttribute \- 
+.PP
+Assembly level attribute to configure the \fBXmlConfigurator\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Config\&.ConfiguratorAttribute\fP\&.
+.PP
+Inherited by \fBlog4net\&.Config\&.DOMConfiguratorAttribute\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBXmlConfiguratorAttribute\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.ti -1c
+.RI "override void \fBConfigure\fP (Assembly sourceAssembly, \fBILoggerRepository\fP targetRepository)"
+.br
+.RI "\fIConfigures the ILoggerRepository for the specified assembly\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBConfigFile\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the filename of the configuration file\&. \fP"
+.ti -1c
+.RI "string \fBConfigFileExtension\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the extension of the configuration file\&. \fP"
+.ti -1c
+.RI "bool \fBWatch\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether to watch the configuration file\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Assembly level attribute to configure the \fBXmlConfigurator\fP\&. 
+
+This attribute may only be used at the assembly scope and can only be used once per assembly\&. 
+.PP
+Use this attribute to configure the \fBXmlConfigurator\fP without calling one of the \fBXmlConfigurator\&.Configure()\fP methods\&. 
+.PP
+If neither of the \fBConfigFile\fP or \fBConfigFileExtension\fP properties are set the configuration is loaded from the application's \&.config file\&. If set the \fBConfigFile\fP property takes priority over the \fBConfigFileExtension\fP property\&. The \fBConfigFile\fP property specifies a path to a file to load the config from\&. The path is relative to the application's base directory; AppDomain\&.BaseDirectory\&. The \fBConfigFileExtension\fP property is used as a postfix to the assembly file name\&. The config file must be located in the application's base directory; AppDomain\&.BaseDirectory\&. For example in a console application setting the \fBConfigFileExtension\fP to \fCconfig\fP has the same effect as not specifying the \fBConfigFile\fP or \fBConfigFileExtension\fP properties\&. 
+.PP
+The \fBWatch\fP property can be set to cause the \fBXmlConfigurator\fP to watch the configuration file for changes\&. 
+.PP
+<note> 
+.PP
+Log4net will only look for assembly level configuration attributes once\&. When using the \fBlog4net\fP assembly level attributes to control the configuration of \fBlog4net\fP you must ensure that the first call to any of the \fBlog4net\&.Core\&.LoggerManager\fP methods is made from the assembly with the configuration attributes\&. 
+.PP
+If you cannot guarantee the order in which \fBlog4net\fP calls will be made from different assemblies you must use programmatic configuration instead, i\&.e\&. call the \fBXmlConfigurator\&.Configure()\fP method directly\&. 
+.PP
+</note> 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 83 of file XmlConfiguratorAttribute\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Config\&.XmlConfiguratorAttribute\&.XmlConfiguratorAttribute ()"
+
+.PP
+Default constructor Default constructor 
+.PP
+Definition at line 97 of file XmlConfiguratorAttribute\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Config\&.XmlConfiguratorAttribute\&.Configure (AssemblysourceAssembly, \fBILoggerRepository\fPtargetRepository)\fC [virtual]\fP"
+
+.PP
+Configures the ILoggerRepository for the specified assembly\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsourceAssembly\fP The assembly that this attribute was defined on\&.
+.br
+\fItargetRepository\fP The repository to configure\&.
+.RE
+.PP
+.PP
+Configure the repository using the \fBXmlConfigurator\fP\&. The \fItargetRepository\fP  specified must extend the Hierarchy class otherwise the \fBXmlConfigurator\fP will not be able to configure it\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentOutOfRangeException\fP The \fItargetRepository\fP  does not extend Hierarchy\&.
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.Config\&.ConfiguratorAttribute\fP\&.
+.PP
+Definition at line 199 of file XmlConfiguratorAttribute\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string log4net\&.Config\&.XmlConfiguratorAttribute\&.ConfigFile\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the filename of the configuration file\&. The filename of the configuration file\&. 
+.PP
+If specified, this is the name of the configuration file to use with the \fBXmlConfigurator\fP\&. This file path is relative to the \fBapplication base\fP directory (AppDomain\&.BaseDirectory)\&. 
+.PP
+The \fBConfigFile\fP takes priority over the \fBConfigFileExtension\fP\&. 
+.PP
+Definition at line 120 of file XmlConfiguratorAttribute\&.cs\&.
+.SS "string log4net\&.Config\&.XmlConfiguratorAttribute\&.ConfigFileExtension\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the extension of the configuration file\&. The extension of the configuration file\&. 
+.PP
+If specified this is the extension for the configuration file\&. The path to the config file is built by using the \fBapplication base\fP directory (AppDomain\&.BaseDirectory), the \fBassembly file name\fP and the config file extension\&. 
+.PP
+If the \fBConfigFileExtension\fP is set to \fCMyExt\fP then possible config file names would be: \fCMyConsoleApp\&.exe\&.MyExt\fP or \fCMyClassLibrary\&.dll\&.MyExt\fP\&. 
+.PP
+The \fBConfigFile\fP takes priority over the \fBConfigFileExtension\fP\&. 
+.PP
+Definition at line 148 of file XmlConfiguratorAttribute\&.cs\&.
+.SS "bool log4net\&.Config\&.XmlConfiguratorAttribute\&.Watch\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether to watch the configuration file\&. \fCtrue\fP if the configuration should be watched, \fCfalse\fP otherwise\&. 
+.PP
+If this flag is specified and set to \fCtrue\fP then the framework will watch the configuration file and will reload the config each time the file is modified\&. 
+.PP
+The config file can only be watched if it is loaded from local disk\&. In a No-Touch (Smart Client) deployment where the application is downloaded from a web server the config file may not reside on the local disk and therefore it may not be able to watch it\&. 
+.PP
+<note> Watching configuration is not supported on the SSCLI\&. </note> 
+.PP
+Definition at line 176 of file XmlConfiguratorAttribute\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

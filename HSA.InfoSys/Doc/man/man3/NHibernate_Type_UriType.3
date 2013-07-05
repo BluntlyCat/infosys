@@ -1,0 +1,212 @@
+.TH "NHibernate.Type.UriType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.UriType \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.ImmutableType\fP, and \fBNHibernate\&.Type\&.IDiscriminatorType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUriType\fP (\fBSqlType\fP sqlType)"
+.br
+.ti -1c
+.RI "object \fBStringToObject\fP (string xml)"
+.br
+.RI "\fIWhen implemented by a class, converts the xml string from the mapping file to the \&.NET object\&. \fP"
+.ti -1c
+.RI "override void \fBSet\fP (IDbCommand cmd, object value, int index)"
+.br
+.RI "\fIWhen implemented by a class, put the value from the mapped Property into to the IDbCommand\&. \fP"
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, int index)"
+.br
+.RI "\fIWhen implemented by a class, gets the object in the IDataReader for the Property\&. \fP"
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, string name)"
+.br
+.RI "\fIWhen implemented by a class, gets the object in the IDataReader for the Property\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP (object val)"
+.br
+.RI "\fIA representation of the value to be embedded in an XML element \fP"
+.ti -1c
+.RI "override object \fBFromStringValue\fP (string xml)"
+.br
+.RI "\fIParse the XML representation of an instance \fP"
+.ti -1c
+.RI "string \fBObjectToSQLString\fP (object value, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIWhen implemented by a class, return a string representation of the value, suitable for embedding in an SQL statement \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file UriType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.UriType\&.FromStringValue (stringxml)\fC [virtual]\fP"
+
+.PP
+Parse the XML representation of an instance 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP XML string to parse, guaranteed to be non-empty
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 54 of file UriType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.UriType\&.Get (IDataReaderrs, intindex)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, gets the object in the IDataReader for the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the value\&.
+.br
+\fIindex\fP The index of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object with the value from the database\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 39 of file UriType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.UriType\&.Get (IDataReaderrs, stringname)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, gets the object in the IDataReader for the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the value\&.
+.br
+\fIname\fP The name of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object with the value from the database\&.
+.RE
+.PP
+.PP
+Most implementors just call the \fBGet(IDataReader, int)\fP overload of this method\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 44 of file UriType\&.cs\&.
+.SS "string NHibernate\&.Type\&.UriType\&.ObjectToSQLString (objectvalue, \fBDialect\&.Dialect\fPdialect)"
+
+.PP
+When implemented by a class, return a string representation of the value, suitable for embedding in an SQL statement 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The object to convert to a string for the SQL statement\&.
+.br
+\fIdialect\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that contains a well formed SQL Statement\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.ILiteralType\fP\&.
+.PP
+Definition at line 59 of file UriType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.UriType\&.Set (IDbCommandcmd, objectvalue, intindex)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, put the value from the mapped Property into to the IDbCommand\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP The IDbCommand to put the value into\&.
+.br
+\fIvalue\fP The object that contains the value\&.
+.br
+\fIindex\fP The index of the IDbDataParameter to start writing the values to\&.
+.RE
+.PP
+.PP
+Implementors do not need to handle possibility of null values because this will only be called from \fBNullSafeSet(IDbCommand, object, int)\fP after it has checked for nulls\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 34 of file UriType\&.cs\&.
+.SS "object NHibernate\&.Type\&.UriType\&.StringToObject (stringxml)"
+
+.PP
+When implemented by a class, converts the xml string from the mapping file to the \&.NET object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP The value of \fCdiscriminator-value\fP or \fCunsaved-value\fP attribute\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The string converted to the object\&.
+.RE
+.PP
+.PP
+This method needs to be able to handle any string\&. It should not just call System\&.Type\&.Parse without verifying that it is a parsable value for the System\&.Type\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.IIdentifierType\fP\&.
+.PP
+Definition at line 29 of file UriType\&.cs\&.
+.SS "override string NHibernate\&.Type\&.UriType\&.ToString (objectval)\fC [virtual]\fP"
+
+.PP
+A representation of the value to be embedded in an XML element 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP The object that contains the values\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An Xml formatted string\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 49 of file UriType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

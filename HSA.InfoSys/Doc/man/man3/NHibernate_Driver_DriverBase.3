@@ -1,0 +1,328 @@
+.TH "NHibernate.Driver.DriverBase" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Driver.DriverBase \- 
+.PP
+Base class for the implementation of \fBIDriver\fP  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Driver\&.IDriver\fP, and \fBNHibernate\&.Driver\&.ISqlParameterFormatter\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Driver\&.OdbcDriver\fP, \fBNHibernate\&.Driver\&.OleDbDriver\fP, \fBNHibernate\&.Driver\&.ReflectionBasedDriver\fP, and \fBNHibernate\&.Driver\&.SqlClientDriver\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBConfigure\fP (IDictionary< string, string > settings)"
+.br
+.RI "\fIConfigure the driver using \fIsettings\fP \&. \fP"
+.ti -1c
+.RI "abstract IDbConnection \fBCreateConnection\fP ()"
+.br
+.RI "\fICreates an uninitialized IDbConnection object for the specific \fBDriver\fP \fP"
+.ti -1c
+.RI "abstract IDbCommand \fBCreateCommand\fP ()"
+.br
+.ti -1c
+.RI "string \fBFormatNameForSql\fP (string parameterName)"
+.br
+.RI "\fIChange the parameterName into the correct format IDbCommand\&.CommandText for the ConnectionProvider \fP"
+.ti -1c
+.RI "string \fBFormatNameForParameter\fP (string parameterName)"
+.br
+.RI "\fIChanges the parameterName into the correct format for an IDbParameter for the \fBDriver\fP\&. \fP"
+.ti -1c
+.RI "virtual IDbCommand \fBGenerateCommand\fP (CommandType type, \fBSqlString\fP sqlString, \fBSqlType\fP[] parameterTypes)"
+.br
+.RI "\fIGenerates an IDbCommand from the SqlString according to the requirements of the DataProvider\&. \fP"
+.ti -1c
+.RI "IDbDataParameter \fBGenerateParameter\fP (IDbCommand command, string name, \fBSqlType\fP sqlType)"
+.br
+.RI "\fIGenerates an IDbDataParameter for the IDbCommand\&. It does not add the IDbDataParameter to the IDbCommand's Parameter collection\&. \fP"
+.ti -1c
+.RI "void \fBRemoveUnusedCommandParameters\fP (IDbCommand cmd, \fBSqlString\fP sqlString)"
+.br
+.RI "\fIRemove 'extra' parameters from the IDbCommand \fP"
+.ti -1c
+.RI "virtual void \fBExpandQueryParameters\fP (IDbCommand cmd, \fBSqlString\fP sqlString)"
+.br
+.RI "\fIExpand the parameters of the cmd to have a single parameter for each parameter in the sql string \fP"
+.ti -1c
+.RI "virtual \fBIResultSetsCommand\fP \fBGetResultSetsCommand\fP (\fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "void \fBPrepareCommand\fP (IDbCommand command)"
+.br
+.RI "\fIPrepare the \fIcommand\fP  by calling IDbCommand\&.Prepare()\&. May be a no-op if the driver does not support preparing commands, or for any other reason\&. \fP"
+.ti -1c
+.RI "virtual void \fBAdjustCommand\fP (IDbCommand command)"
+.br
+.RI "\fIOverride to make any adjustments to each IDbCommand object before it added to the batcher\&. \fP"
+.ti -1c
+.RI "IDbDataParameter \fBGenerateOutputParameter\fP (IDbCommand command)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBSqlStringFormatter\fP \fBGetSqlStringFormatter\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBInitializeParameter\fP (IDbDataParameter dbParam, string name, \fBSqlType\fP sqlType)"
+.br
+.ti -1c
+.RI "virtual IDbDataParameter \fBCloneParameter\fP (IDbCommand cmd, IDbDataParameter originalParameter)"
+.br
+.ti -1c
+.RI "virtual void \fBOnBeforePrepare\fP (IDbCommand command)"
+.br
+.RI "\fIOverride to make any adjustments to the IDbCommand object\&. (e\&.g\&., Oracle custom OUT parameter) Parameters have been bound by this point, so their order can be adjusted too\&. This is analagous to the RegisterResultSetOutParameter() function in Hibernate\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsPrepareSqlEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract bool \fBUseNamedPrefixInSql\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this \fBDriver\fP require the use of a Named Prefix in the SQL statement\&. \fP"
+.ti -1c
+.RI "abstract bool \fBUseNamedPrefixInParameter\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this \fBDriver\fP require the use of the Named Prefix when trying to reference the Parameter in the Command's Parameter collection\&. \fP"
+.ti -1c
+.RI "abstract string \fBNamedPrefix\fP\fC [get]\fP"
+.br
+.RI "\fIThe Named Prefix for parameters\&. \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsMultipleOpenReaders\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBSupportsPreparingCommands\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this \fBDriver\fP support IDbCommand\&.Prepare()\&. \fP"
+.ti -1c
+.RI "virtual bool \fBSupportsMultipleQueries\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for the implementation of \fBIDriver\fP 
+
+
+.PP
+Definition at line 16 of file DriverBase\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Driver\&.DriverBase\&.AdjustCommand (IDbCommandcommand)\fC [virtual]\fP"
+
+.PP
+Override to make any adjustments to each IDbCommand object before it added to the batcher\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP The command\&.
+.RE
+.PP
+.PP
+This method is similar to the \fBOnBeforePrepare\fP but, instead be called just before execute the command (that can be a batch) is executed before add each single command to the batcher and before \fBOnBeforePrepare\fP \&. If you have to adjust parameters values/type (when the command is full filled) this is a good place where do it\&. 
+.PP
+Implements \fBNHibernate\&.Driver\&.IDriver\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Driver\&.Sql2008ClientDriver\fP\&.
+.PP
+Definition at line 303 of file DriverBase\&.cs\&.
+.SS "virtual void NHibernate\&.Driver\&.DriverBase\&.Configure (IDictionary< string, string >settings)\fC [virtual]\fP"
+
+.PP
+Configure the driver using \fIsettings\fP \&. 
+.PP
+Implements \fBNHibernate\&.Driver\&.IDriver\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Driver\&.SqlServerCeDriver\fP\&.
+.PP
+Definition at line 23 of file DriverBase\&.cs\&.
+.SS "abstract IDbConnection NHibernate\&.Driver\&.DriverBase\&.CreateConnection ()\fC [pure virtual]\fP"
+
+.PP
+Creates an uninitialized IDbConnection object for the specific \fBDriver\fP 
+.PP
+Implements \fBNHibernate\&.Driver\&.IDriver\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Driver\&.ReflectionBasedDriver\fP, \fBNHibernate\&.Driver\&.SQLite20Driver\fP, \fBNHibernate\&.Driver\&.SqlClientDriver\fP, \fBNHibernate\&.Driver\&.OleDbDriver\fP, and \fBNHibernate\&.Driver\&.OdbcDriver\fP\&.
+.SS "virtual void NHibernate\&.Driver\&.DriverBase\&.ExpandQueryParameters (IDbCommandcmd, \fBSqlString\fPsqlString)\fC [virtual]\fP"
+
+.PP
+Expand the parameters of the cmd to have a single parameter for each parameter in the sql string This is for databases that do not support named parameters\&. So, instead of a single parameter for 'select \&.\&.\&. from MyTable t where t\&.Col1 =  and t\&.Col2 = ' we can issue 'select \&.\&.\&. from MyTable t where t\&.Col1 = ? and t\&.Col2 = ?' 
+.PP
+Implements \fBNHibernate\&.Driver\&.IDriver\fP\&.
+.PP
+Definition at line 234 of file DriverBase\&.cs\&.
+.SS "string NHibernate\&.Driver\&.DriverBase\&.FormatNameForParameter (stringparameterName)"
+
+.PP
+Changes the parameterName into the correct format for an IDbParameter for the \fBDriver\fP\&. For SqlServerConnectionProvider it will change \fCid\fP to \fC\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameterName\fP The unformatted name of the parameter
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A parameter formatted for an IDbParameter\&.
+.RE
+.PP
+
+.PP
+Definition at line 99 of file DriverBase\&.cs\&.
+.SS "string NHibernate\&.Driver\&.DriverBase\&.FormatNameForSql (stringparameterName)"
+
+.PP
+Change the parameterName into the correct format IDbCommand\&.CommandText for the ConnectionProvider 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameterName\fP The unformatted name of the parameter
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A parameter formatted for an IDbCommand\&.CommandText
+.RE
+.PP
+
+.PP
+Definition at line 85 of file DriverBase\&.cs\&.
+.SS "virtual IDbCommand NHibernate\&.Driver\&.DriverBase\&.GenerateCommand (CommandTypetype, \fBSqlString\fPsqlString, \fBSqlType\fP[]parameterTypes)\fC [virtual]\fP"
+
+.PP
+Generates an IDbCommand from the SqlString according to the requirements of the DataProvider\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The CommandType of the command to generate\&.
+.br
+\fIsqlString\fP The SqlString that contains the SQL\&.
+.br
+\fIparameterTypes\fP The types of the parameters to generate for the command\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IDbCommand with the CommandText and Parameters fully set\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Driver\&.IDriver\fP\&.
+.PP
+Definition at line 128 of file DriverBase\&.cs\&.
+.SS "IDbDataParameter NHibernate\&.Driver\&.DriverBase\&.GenerateParameter (IDbCommandcommand, stringname, \fBSqlType\fPsqlType)"
+
+.PP
+Generates an IDbDataParameter for the IDbCommand\&. It does not add the IDbDataParameter to the IDbCommand's Parameter collection\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP The IDbCommand to use to create the IDbDataParameter\&.
+.br
+\fIname\fP The name to set for IDbDataParameter\&.Name
+.br
+\fIsqlType\fP The SqlType to set for IDbDataParameter\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IDbDataParameter ready to be added to an IDbCommand\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Driver\&.IDriver\fP\&.
+.PP
+Definition at line 209 of file DriverBase\&.cs\&.
+.SS "virtual void NHibernate\&.Driver\&.DriverBase\&.OnBeforePrepare (IDbCommandcommand)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Override to make any adjustments to the IDbCommand object\&. (e\&.g\&., Oracle custom OUT parameter) Parameters have been bound by this point, so their order can be adjusted too\&. This is analagous to the RegisterResultSetOutParameter() function in Hibernate\&. 
+.PP
+Reimplemented in \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3202\&.OffsetTestDriver\fP, \fBNHibernate\&.Driver\&.OracleDataClientDriver\fP, \fBNHibernate\&.Driver\&.OracleManagedDataClientDriver\fP, \fBNHibernate\&.Driver\&.OracleClientDriver\fP, and \fBNHibernate\&.Test\&.Pagination\&.CustomMsSqlDriver\fP\&.
+.PP
+Definition at line 290 of file DriverBase\&.cs\&.
+.SS "void NHibernate\&.Driver\&.DriverBase\&.PrepareCommand (IDbCommandcommand)"
+
+.PP
+Prepare the \fIcommand\fP  by calling IDbCommand\&.Prepare()\&. May be a no-op if the driver does not support preparing commands, or for any other reason\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP The command\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Driver\&.IDriver\fP\&.
+.PP
+Definition at line 274 of file DriverBase\&.cs\&.
+.SS "void NHibernate\&.Driver\&.DriverBase\&.RemoveUnusedCommandParameters (IDbCommandcmd, \fBSqlString\fPsqlString)"
+
+.PP
+Remove 'extra' parameters from the IDbCommand We sometimes create more parameters than necessary (see NH-2792 & also comments in SqlStringFormatter\&.ISqlStringVisitor\&.Parameter) 
+.PP
+Implements \fBNHibernate\&.Driver\&.IDriver\fP\&.
+.PP
+Definition at line 217 of file DriverBase\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "abstract string NHibernate\&.Driver\&.DriverBase\&.NamedPrefix\fC [get]\fP"
+
+.PP
+The Named Prefix for parameters\&. Sql Server uses \fC'@'\fP and Oracle uses \fC':'\fP\&. 
+.PP
+Definition at line 77 of file DriverBase\&.cs\&.
+.SS "virtual bool NHibernate\&.Driver\&.DriverBase\&.SupportsPreparingCommands\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Does this \fBDriver\fP support IDbCommand\&.Prepare()\&. A value of  indicates that an exception would be thrown or the company that produces the \fBDriver\fP we are wrapping does not recommend using IDbCommand\&.Prepare()\&. 
+.PP
+A value of  indicates that calling IDbCommand\&.Prepare() will function fine on this \fBDriver\fP\&. 
+.PP
+Definition at line 124 of file DriverBase\&.cs\&.
+.SS "abstract bool NHibernate\&.Driver\&.DriverBase\&.UseNamedPrefixInParameter\fC [get]\fP"
+
+.PP
+Does this \fBDriver\fP require the use of the Named Prefix when trying to reference the Parameter in the Command's Parameter collection\&. This is really only useful when the UseNamedPrefixInSql == true\&. When this is true the code will look like: 
+.PP
+.nf
+IDbParameter param = cmd\&.Parameters["@paramName"]
+
+.fi
+.PP
+ if this is false the code will be 
+.PP
+.nf
+IDbParameter param = cmd\&.Parameters["paramName"]
+
+.fi
+.PP
+\&. 
+.PP
+Definition at line 69 of file DriverBase\&.cs\&.
+.SS "abstract bool NHibernate\&.Driver\&.DriverBase\&.UseNamedPrefixInSql\fC [get]\fP"
+
+.PP
+Does this \fBDriver\fP require the use of a Named Prefix in the SQL statement\&. For example, SqlClient requires \fCselect * from simple where simple_id = \fP If this is false, like with the OleDb provider, then it is assumed that the \fC?\fP can be a placeholder for the parameter in the SQL statement\&. 
+.PP
+Definition at line 56 of file DriverBase\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

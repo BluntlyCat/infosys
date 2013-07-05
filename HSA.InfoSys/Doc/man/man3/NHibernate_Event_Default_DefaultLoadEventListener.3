@@ -1,0 +1,236 @@
+.TH "NHibernate.Event.Default.DefaultLoadEventListener" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.Default.DefaultLoadEventListener \- 
+.PP
+Defines the default load event listeners used by \fBNHibernate\fP for loading entities in response to generated load events\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Event\&.Default\&.AbstractLockUpgradeEventListener\fP, and \fBNHibernate\&.Event\&.ILoadEventListener\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBOnLoad\fP (\fBLoadEvent\fP @event, \fBLoadType\fP loadType)"
+.br
+.RI "\fIHandle the given load event\&. \fP"
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly object \fBRemovedEntityMarker\fP = new object()"
+.br
+.ti -1c
+.RI "static readonly object \fBInconsistentRTNClassMarker\fP = new object()"
+.br
+.ti -1c
+.RI "static readonly \fBLockMode\fP \fBDefaultLockMode\fP = \fBLockMode\&.None\fP"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual object \fBLoad\fP (\fBLoadEvent\fP @event, \fBIEntityPersister\fP persister, \fBEntityKey\fP keyToLoad, \fBLoadType\fP options)"
+.br
+.RI "\fIPerfoms the load of an entity\&. \fP"
+.ti -1c
+.RI "virtual object \fBProxyOrLoad\fP (\fBLoadEvent\fP @event, \fBIEntityPersister\fP persister, \fBEntityKey\fP keyToLoad, \fBLoadType\fP options)"
+.br
+.RI "\fIBased on configured options, will either return a pre-existing proxy, generate a new proxy, or perform an actual load\&. \fP"
+.ti -1c
+.RI "virtual object \fBLockAndLoad\fP (\fBLoadEvent\fP @event, \fBIEntityPersister\fP persister, \fBEntityKey\fP keyToLoad, \fBLoadType\fP options, \fBISessionImplementor\fP source)"
+.br
+.RI "\fIIf the class to be loaded has been configured with a cache, then lock given id in that cache and then perform the load\&. \fP"
+.ti -1c
+.RI "virtual object \fBDoLoad\fP (\fBLoadEvent\fP @event, \fBIEntityPersister\fP persister, \fBEntityKey\fP keyToLoad, \fBLoadType\fP options)"
+.br
+.RI "\fICoordinates the efforts to load a given entity\&. First, an attempt is made to load the entity from the session-level cache\&. If not found there, an attempt is made to locate it in second-level cache\&. Lastly, an attempt is made to load it directly from the datasource\&. \fP"
+.ti -1c
+.RI "virtual object \fBLoadFromDatasource\fP (\fBLoadEvent\fP @event, \fBIEntityPersister\fP persister, \fBEntityKey\fP keyToLoad, \fBLoadType\fP options)"
+.br
+.RI "\fIPerforms the process of loading an entity from the configured underlying datasource\&. \fP"
+.ti -1c
+.RI "virtual object \fBLoadFromSessionCache\fP (\fBLoadEvent\fP @event, \fBEntityKey\fP keyToLoad, \fBLoadType\fP options)"
+.br
+.RI "\fIAttempts to locate the entity in the session-level cache\&. \fP"
+.ti -1c
+.RI "virtual object \fBLoadFromSecondLevelCache\fP (\fBLoadEvent\fP @event, \fBIEntityPersister\fP persister, \fBLoadType\fP options)"
+.br
+.RI "\fIAttempts to load the entity from the second-level cache\&. \fP"
+.ti -1c
+.RI "virtual \fBIEntityPersister\fP \fBGetEntityPersister\fP (\fBISessionFactoryImplementor\fP factory, string entityName)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the default load event listeners used by \fBNHibernate\fP for loading entities in response to generated load events\&. 
+
+
+.PP
+Definition at line 20 of file DefaultLoadEventListener\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual object NHibernate\&.Event\&.Default\&.DefaultLoadEventListener\&.DoLoad (\fBLoadEvent\fP @event, \fBIEntityPersister\fPpersister, \fBEntityKey\fPkeyToLoad, \fBLoadType\fPoptions)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Coordinates the efforts to load a given entity\&. First, an attempt is made to load the entity from the session-level cache\&. If not found there, an attempt is made to locate it in second-level cache\&. Lastly, an attempt is made to load it directly from the datasource\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The load event 
+.br
+\fIpersister\fP The persister for the entity being requested for load 
+.br
+\fIkeyToLoad\fP The EntityKey representing the entity to be loaded\&. 
+.br
+\fIoptions\fP The load options\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The loaded entity, or null\&. 
+.RE
+.PP
+
+.PP
+Definition at line 287 of file DefaultLoadEventListener\&.cs\&.
+.SS "virtual object NHibernate\&.Event\&.Default\&.DefaultLoadEventListener\&.Load (\fBLoadEvent\fP @event, \fBIEntityPersister\fPpersister, \fBEntityKey\fPkeyToLoad, \fBLoadType\fPoptions)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Perfoms the load of an entity\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The loaded entity\&. 
+.RE
+.PP
+
+.PP
+Definition at line 99 of file DefaultLoadEventListener\&.cs\&.
+.SS "virtual object NHibernate\&.Event\&.Default\&.DefaultLoadEventListener\&.LoadFromDatasource (\fBLoadEvent\fP @event, \fBIEntityPersister\fPpersister, \fBEntityKey\fPkeyToLoad, \fBLoadType\fPoptions)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Performs the process of loading an entity from the configured underlying datasource\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The load event 
+.br
+\fIpersister\fP The persister for the entity being requested for load 
+.br
+\fIkeyToLoad\fP The EntityKey representing the entity to be loaded\&. 
+.br
+\fIoptions\fP The load options\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The object loaded from the datasource, or null if not found\&. 
+.RE
+.PP
+
+.PP
+Definition at line 340 of file DefaultLoadEventListener\&.cs\&.
+.SS "virtual object NHibernate\&.Event\&.Default\&.DefaultLoadEventListener\&.LoadFromSecondLevelCache (\fBLoadEvent\fP @event, \fBIEntityPersister\fPpersister, \fBLoadType\fPoptions)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Attempts to load the entity from the second-level cache\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The load event 
+.br
+\fIpersister\fP The persister for the entity being requested for load 
+.br
+\fIoptions\fP The load options\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The entity from the second-level cache, or null\&. 
+.RE
+.PP
+
+.PP
+Definition at line 413 of file DefaultLoadEventListener\&.cs\&.
+.SS "virtual object NHibernate\&.Event\&.Default\&.DefaultLoadEventListener\&.LoadFromSessionCache (\fBLoadEvent\fP @event, \fBEntityKey\fPkeyToLoad, \fBLoadType\fPoptions)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Attempts to locate the entity in the session-level cache\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The load event 
+.br
+\fIkeyToLoad\fP The EntityKey representing the entity to be loaded\&. 
+.br
+\fIoptions\fP The load options\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The entity from the session-level cache, or null\&. 
+.RE
+.PP
+.PP
+If allowed to return nulls, then if the entity happens to be found in the session cache, we check the entity type for proper handling of entity hierarchies\&. If checkDeleted was set to true, then if the entity is found in the session-level cache, it's current status within the session cache is checked to see if it has previously been scheduled for deletion\&. 
+.PP
+Definition at line 377 of file DefaultLoadEventListener\&.cs\&.
+.SS "virtual object NHibernate\&.Event\&.Default\&.DefaultLoadEventListener\&.LockAndLoad (\fBLoadEvent\fP @event, \fBIEntityPersister\fPpersister, \fBEntityKey\fPkeyToLoad, \fBLoadType\fPoptions, \fBISessionImplementor\fPsource)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+If the class to be loaded has been configured with a cache, then lock given id in that cache and then perform the load\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The loaded entity 
+.RE
+.PP
+
+.PP
+Definition at line 245 of file DefaultLoadEventListener\&.cs\&.
+.SS "virtual void NHibernate\&.Event\&.Default\&.DefaultLoadEventListener\&.OnLoad (\fBLoadEvent\fP @event, \fBLoadType\fPloadType)\fC [virtual]\fP"
+
+.PP
+Handle the given load event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The load event to be handled\&. 
+.br
+\fIloadType\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result (i\&.e\&., the loaded entity)\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Event\&.ILoadEventListener\fP\&.
+.PP
+Definition at line 27 of file DefaultLoadEventListener\&.cs\&.
+.SS "virtual object NHibernate\&.Event\&.Default\&.DefaultLoadEventListener\&.ProxyOrLoad (\fBLoadEvent\fP @event, \fBIEntityPersister\fPpersister, \fBEntityKey\fPkeyToLoad, \fBLoadType\fPoptions)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Based on configured options, will either return a pre-existing proxy, generate a new proxy, or perform an actual load\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the proxy/load operation\&.
+.RE
+.PP
+
+.PP
+Definition at line 135 of file DefaultLoadEventListener\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

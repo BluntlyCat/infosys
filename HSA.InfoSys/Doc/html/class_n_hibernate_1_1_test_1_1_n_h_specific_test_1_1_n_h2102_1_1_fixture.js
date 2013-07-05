@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2102_1_1_fixture =
+[
+    [ "EntityWithConstrainedLazyLoadedOneToOneShouldNotGenerateFieldInterceptingProxy", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2102_1_1_fixture.html#a16d79e2455b78f2978518bbfa3eb6723", null ]
+];

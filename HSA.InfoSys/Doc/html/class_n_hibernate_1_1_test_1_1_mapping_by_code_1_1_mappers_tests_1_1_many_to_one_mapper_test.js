@@ -1,0 +1,26 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test =
+[
+    [ "AfterSetMultiColumnsCantSetSimpleColumn", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#a2f002435639fec32ab8161ca437a6be3", null ],
+    [ "AssignCascadeStyle", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#a49ac1228bc6d9813a7e62e45b0c7233e", null ],
+    [ "AutoCleanUnsupportedCascadeStyle", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#a7792dd05c66a37b0d917802d9ecf3887", null ],
+    [ "CanForceClassRelation", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#a9a216308379354e60244b06b2f7d1915", null ],
+    [ "CanSetAccessor", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#aa00cc6ad93827859549623d1524b3d5b", null ],
+    [ "CanSetFk", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#a77f1380f70ee4f76e131756483eb4209", null ],
+    [ "CanSetInsert", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#abe39b930f56d18a2755ca39de15becac", null ],
+    [ "CanSetLazyness", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#ab296370c8edbbc3179ed397569dd0be3", null ],
+    [ "CanSetNotFoundWithExceptionMode", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#a91e25cea4b9d2f24172c9b251fea4d82", null ],
+    [ "CanSetNotFoundWithIgnoreMode", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#ab6c579202f695ae60441842d0e3d4345", null ],
+    [ "CanSetPropertyRefName", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#a7c3477250a9195a0f786ceef8ab3f17a", null ],
+    [ "CanSetUpdate", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#a12ae4f4a97a61cb786772a3cfdf2c347", null ],
+    [ "WhenForceClassRelationToIncompatibleTypeThenThrows", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#aba691797c4d9435f8937d5611d5909fa", null ],
+    [ "WhenSetBasicColumnValuesMoreThanOnesThenMergeColumn", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#a212631b8b809e0c9c1315dafa84ec426", null ],
+    [ "WhenSetBasicColumnValuesThenSetPlainValues", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#af0817890d25c41a58b8d650c73bc24e5", null ],
+    [ "WhenSetBasicColumnValuesThroughShortCutThenMergeColumn", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#a08c4735044ff1d738e6c0dbcdba0ec03", null ],
+    [ "WhenSetColumnValuesThenAddColumnTag", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#a544d0546d4c0747384cce385172cd086", null ],
+    [ "WhenSetDefaultColumnNameThenDoesNotSetTheName", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#a40b7e9572947fa5b56758375cc1e6f29", null ],
+    [ "WhenSetDifferentColumnNameThenSetTheName", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#a04bffe007fed39d51f4fa53faaad763e", null ],
+    [ "WhenSetFetchModeToJoinThenSetFetch", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#a43bb3439f47df2b255e454330c499ac0", null ],
+    [ "WhenSetFetchModeToSelectThenResetFetch", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#a672690748f0a1ec702cecb4d8f0acf19", null ],
+    [ "WhenSetMultiColumnsValuesThenAddColumns", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#afee9f05bbf73badbd1d333d41f91d5ba", null ],
+    [ "WhenSetMultiColumnsValuesThenAutoassignColumnNames", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_many_to_one_mapper_test.html#a1f67b5a9950d8c870a2f9d1242b53a9d", null ]
+];

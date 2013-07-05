@@ -1,0 +1,252 @@
+.TH "NHibernate.Type.TicksType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.TicksType \- 
+.PP
+Maps a System\&.DateTime Property to an DbType\&.Int64 column that stores the DateTime using the Ticks property\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.PrimitiveType\fP, \fBNHibernate\&.Type\&.IVersionType\fP, and \fBNHibernate\&.Type\&.ILiteralType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTicksType\fP ()"
+.br
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, int index)"
+.br
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, string name)"
+.br
+.ti -1c
+.RI "override void \fBSet\fP (IDbCommand st, object value, int index)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP (object val)"
+.br
+.RI "\fIA representation of the value to be embedded in an XML element \fP"
+.ti -1c
+.RI "override object \fBFromStringValue\fP (string xml)"
+.br
+.ti -1c
+.RI "object \fBNext\fP (object current, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIWhen implemented by a class, increments the version\&. \fP"
+.ti -1c
+.RI "virtual object \fBSeed\fP (\fBISessionImplementor\fP session)"
+.br
+.RI "\fIWhen implemented by a class, gets an initial version\&. \fP"
+.ti -1c
+.RI "object \fBStringToObject\fP (string xml)"
+.br
+.ti -1c
+.RI "override string \fBObjectToSQLString\fP (object value, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIWhen implemented by a class, return a string representation of the value, suitable for embedding in an SQL statement \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IComparer \fBComparator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override System\&.Type \fBPrimitiveClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override object \fBDefaultValue\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Maps a System\&.DateTime Property to an DbType\&.Int64 column that stores the DateTime using the Ticks property\&. 
+
+This is the recommended way to 'timestamp' a column\&. The System\&.DateTime\&.Ticks is accurate to 100-nanosecond intervals\&. 
+.PP
+Definition at line 19 of file TicksType\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Type\&.TicksType\&.TicksType ()"
+
+.PP
+
+.PP
+Definition at line 22 of file TicksType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.TicksType\&.Get (IDataReaderrs, intindex)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP 
+.br
+\fIindex\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 31 of file TicksType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.TicksType\&.Get (IDataReaderrs, stringname)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP 
+.br
+\fIname\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 42 of file TicksType\&.cs\&.
+.SS "object NHibernate\&.Type\&.TicksType\&.Next (objectcurrent, \fBISessionImplementor\fPsession)"
+
+.PP
+When implemented by a class, increments the version\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcurrent\fP The current version
+.br
+\fIsession\fP The current session, if available\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an instance of the \fBIType\fP that has been incremented\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IVersionType\fP\&.
+.PP
+Definition at line 82 of file TicksType\&.cs\&.
+.SS "override string NHibernate\&.Type\&.TicksType\&.ObjectToSQLString (objectvalue, \fBDialect\&.Dialect\fPdialect)"
+
+.PP
+When implemented by a class, return a string representation of the value, suitable for embedding in an SQL statement 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The object to convert to a string for the SQL statement\&.
+.br
+\fIdialect\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that contains a well formed SQL Statement\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.ILiteralType\fP\&.
+.PP
+Definition at line 114 of file TicksType\&.cs\&.
+.SS "virtual object NHibernate\&.Type\&.TicksType\&.Seed (\fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, gets an initial version\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The current session, if available\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An instance of the type\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IVersionType\fP\&.
+.PP
+Definition at line 87 of file TicksType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.TicksType\&.Set (IDbCommandst, objectvalue, intindex)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIst\fP 
+.br
+\fIvalue\fP 
+.br
+\fIindex\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 59 of file TicksType\&.cs\&.
+.SS "override string NHibernate\&.Type\&.TicksType\&.ToString (objectval)\fC [virtual]\fP"
+
+.PP
+A representation of the value to be embedded in an XML element 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP The object that contains the values\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An Xml formatted string\&.
+.RE
+.PP
+.PP
+This just calls Object\&.ToString so if there is a possibility of this \fBPrimitiveType\fP having any characters that need to be encoded then this method should be overridden\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.PrimitiveType\fP\&.
+.PP
+Definition at line 70 of file TicksType\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.Type\&.TicksType\&.Name\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 66 of file TicksType\&.cs\&.
+.SS "override System\&.Type NHibernate\&.Type\&.TicksType\&.ReturnedClass\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 49 of file TicksType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

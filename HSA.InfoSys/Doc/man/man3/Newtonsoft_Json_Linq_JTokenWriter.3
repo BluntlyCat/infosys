@@ -1,0 +1,646 @@
+.TH "Newtonsoft.Json.Linq.JTokenWriter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.Linq.JTokenWriter \- 
+.PP
+Represents a writer that provides a fast, non-cached, forward-only way of generating \fBJson\fP data\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJTokenWriter\fP (\fBJContainer\fP container)"
+.br
+.RI "\fIInitializes a new instance of the \fBJTokenWriter\fP class writing to the given \fBJContainer\fP\&. \fP"
+.ti -1c
+.RI "\fBJTokenWriter\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBJTokenWriter\fP class\&. \fP"
+.ti -1c
+.RI "override void \fBFlush\fP ()"
+.br
+.RI "\fIFlushes whatever is in the buffer to the underlying streams and also flushes the underlying stream\&. \fP"
+.ti -1c
+.RI "override void \fBClose\fP ()"
+.br
+.RI "\fICloses this stream and the underlying stream\&. \fP"
+.ti -1c
+.RI "override void \fBWriteStartObject\fP ()"
+.br
+.RI "\fIWrites the beginning of a \fBJson\fP object\&. \fP"
+.ti -1c
+.RI "override void \fBWriteStartArray\fP ()"
+.br
+.RI "\fIWrites the beginning of a \fBJson\fP array\&. \fP"
+.ti -1c
+.RI "override void \fBWriteStartConstructor\fP (string name)"
+.br
+.RI "\fIWrites the start of a constructor with the given name\&. \fP"
+.ti -1c
+.RI "override void \fBWritePropertyName\fP (string name)"
+.br
+.RI "\fIWrites the property name of a name/value pair on a \fBJson\fP object\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (object value)"
+.br
+.RI "\fIWrites a Object value\&. An error will raised if the value cannot be written as a single JSON token\&. \fP"
+.ti -1c
+.RI "override void \fBWriteNull\fP ()"
+.br
+.RI "\fIWrites a null value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteUndefined\fP ()"
+.br
+.RI "\fIWrites an undefined value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteRaw\fP (string json)"
+.br
+.RI "\fIWrites raw JSON\&. \fP"
+.ti -1c
+.RI "</code > containing the 
+.br
+specified text\&.*</summary > *
+.br
+< paramname='text'> Text to 
+.br
+place inside the comment\&.
+.br
+</param > *override void \fBWriteComment\fP (string text)"
+.br
+.RI "\fIWrites out a comment \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (string value)"
+.br
+.RI "\fIWrites a \fBString\fP value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (int value)"
+.br
+.RI "\fIWrites a Int32 value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (uint value)"
+.br
+.RI "\fIWrites a UInt32 value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (long value)"
+.br
+.RI "\fIWrites a Int64 value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (ulong value)"
+.br
+.RI "\fIWrites a UInt64 value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (float value)"
+.br
+.RI "\fIWrites a Single value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (double value)"
+.br
+.RI "\fIWrites a \fBDouble\fP value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (bool value)"
+.br
+.RI "\fIWrites a \fBBoolean\fP value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (short value)"
+.br
+.RI "\fIWrites a Int16 value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (ushort value)"
+.br
+.RI "\fIWrites a UInt16 value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (char value)"
+.br
+.RI "\fIWrites a Char value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (byte value)"
+.br
+.RI "\fIWrites a Byte value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (sbyte value)"
+.br
+.RI "\fIWrites a SByte value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (decimal value)"
+.br
+.RI "\fIWrites a \fBDecimal\fP value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (\fBDateTime\fP value)"
+.br
+.RI "\fIWrites a \fBDateTime\fP value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (\fBDateTimeOffset\fP value)"
+.br
+.RI "\fIWrites a \fBDateTimeOffset\fP value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (byte[] value)"
+.br
+.RI "\fIWrites a T:Byte[] value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (\fBTimeSpan\fP value)"
+.br
+.RI "\fIWrites a \fBTimeSpan\fP value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (\fBGuid\fP value)"
+.br
+.RI "\fIWrites a \fBGuid\fP value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (\fBUri\fP value)"
+.br
+.RI "\fIWrites a \fBUri\fP value\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBWriteEnd\fP (\fBJsonToken\fP token)"
+.br
+.RI "\fIWrites the end\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBJToken\fP \fBToken\fP\fC [get]\fP"
+.br
+.RI "\fIGets the token being writen\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a writer that provides a fast, non-cached, forward-only way of generating \fBJson\fP data\&. 
+
+
+.PP
+Definition at line 38 of file JTokenWriter\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.JTokenWriter (\fBJContainer\fPcontainer)"
+
+.PP
+Initializes a new instance of the \fBJTokenWriter\fP class writing to the given \fBJContainer\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontainer\fP The container being written to\&.
+.RE
+.PP
+
+.PP
+Definition at line 64 of file JTokenWriter\&.cs\&.
+.SS "Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.JTokenWriter ()"
+
+.PP
+Initializes a new instance of the \fBJTokenWriter\fP class\&. 
+.PP
+Definition at line 75 of file JTokenWriter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.Close ()\fC [virtual]\fP"
+
+.PP
+Closes this stream and the underlying stream\&. 
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 89 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.Flush ()\fC [virtual]\fP"
+
+.PP
+Flushes whatever is in the buffer to the underlying streams and also flushes the underlying stream\&. 
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 82 of file JTokenWriter\&.cs\&.
+.SS "</code> containing the specified text\&.*</summary> *<paramname='text'> Text to place inside the comment\&.</param> * override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteComment (stringtext)\fC [virtual]\fP"
+
+.PP
+Writes out a comment \fC/*\&.\&.\&. \fP
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 236 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteEnd (\fBJsonToken\fPtoken)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Writes the end\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItoken\fP The token\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 147 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteNull ()\fC [virtual]\fP"
+
+.PP
+Writes a null value\&. 
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 207 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WritePropertyName (stringname)\fC [virtual]\fP"
+
+.PP
+Writes the property name of a name/value pair on a \fBJson\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the property\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 156 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteRaw (stringjson)\fC [virtual]\fP"
+
+.PP
+Writes raw JSON\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIjson\fP The raw JSON to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 226 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteStartArray ()\fC [virtual]\fP"
+
+.PP
+Writes the beginning of a \fBJson\fP array\&. 
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 125 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteStartConstructor (stringname)\fC [virtual]\fP"
+
+.PP
+Writes the start of a constructor with the given name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the constructor\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 136 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteStartObject ()\fC [virtual]\fP"
+
+.PP
+Writes the beginning of a \fBJson\fP object\&. 
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 97 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteUndefined ()\fC [virtual]\fP"
+
+.PP
+Writes an undefined value\&. 
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 216 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (objectvalue)\fC [virtual]\fP"
+
+.PP
+Writes a Object value\&. An error will raised if the value cannot be written as a single JSON token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The Object value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 189 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (stringvalue)\fC [virtual]\fP"
+
+.PP
+Writes a \fBString\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The \fBString\fP value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 246 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (intvalue)\fC [virtual]\fP"
+
+.PP
+Writes a Int32 value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The Int32 value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 256 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (uintvalue)\fC [virtual]\fP"
+
+.PP
+Writes a UInt32 value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The UInt32 value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 267 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (longvalue)\fC [virtual]\fP"
+
+.PP
+Writes a Int64 value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The Int64 value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 277 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (ulongvalue)\fC [virtual]\fP"
+
+.PP
+Writes a UInt64 value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The UInt64 value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 288 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (floatvalue)\fC [virtual]\fP"
+
+.PP
+Writes a Single value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The Single value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 298 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (doublevalue)\fC [virtual]\fP"
+
+.PP
+Writes a \fBDouble\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The \fBDouble\fP value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 308 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (boolvalue)\fC [virtual]\fP"
+
+.PP
+Writes a \fBBoolean\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The \fBBoolean\fP value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 318 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (shortvalue)\fC [virtual]\fP"
+
+.PP
+Writes a Int16 value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The Int16 value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 328 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (ushortvalue)\fC [virtual]\fP"
+
+.PP
+Writes a UInt16 value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The UInt16 value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 339 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (charvalue)\fC [virtual]\fP"
+
+.PP
+Writes a Char value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The Char value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 349 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (bytevalue)\fC [virtual]\fP"
+
+.PP
+Writes a Byte value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The Byte value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 365 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (sbytevalue)\fC [virtual]\fP"
+
+.PP
+Writes a SByte value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The SByte value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 376 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (decimalvalue)\fC [virtual]\fP"
+
+.PP
+Writes a \fBDecimal\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The \fBDecimal\fP value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 386 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (\fBDateTime\fPvalue)\fC [virtual]\fP"
+
+.PP
+Writes a \fBDateTime\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The \fBDateTime\fP value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 396 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (\fBDateTimeOffset\fPvalue)\fC [virtual]\fP"
+
+.PP
+Writes a \fBDateTimeOffset\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The \fBDateTimeOffset\fP value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 408 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (byte[]value)\fC [virtual]\fP"
+
+.PP
+Writes a T:Byte[] value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The T:Byte[] value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 419 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (\fBTimeSpan\fPvalue)\fC [virtual]\fP"
+
+.PP
+Writes a \fBTimeSpan\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The \fBTimeSpan\fP value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 429 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (\fBGuid\fPvalue)\fC [virtual]\fP"
+
+.PP
+Writes a \fBGuid\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The \fBGuid\fP value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 439 of file JTokenWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.WriteValue (\fBUri\fPvalue)\fC [virtual]\fP"
+
+.PP
+Writes a \fBUri\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The \fBUri\fP value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 449 of file JTokenWriter\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JTokenWriter\&.Token\fC [get]\fP"
+
+.PP
+Gets the token being writen\&. The token being writen\&.
+.PP
+Definition at line 50 of file JTokenWriter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

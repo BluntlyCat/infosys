@@ -1,0 +1,654 @@
+.TH "MySql.Data.MySqlClient.MySqlDataReader" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MySql.Data.MySqlClient.MySqlDataReader \- 
+.PP
+ 
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits DbDataReader, IDataReader, and IDataRecord\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBClose\fP ()"
+.br
+.RI "\fICloses the \fBMySqlDataReader\fP object\&. \fP"
+.ti -1c
+.RI "bool \fBGetBoolean\fP (string name)"
+.br
+.RI "\fIGets the value of the specified column as a Boolean\&. \fP"
+.ti -1c
+.RI "override bool \fBGetBoolean\fP (int i)"
+.br
+.RI "\fIGets the value of the specified column as a Boolean\&. \fP"
+.ti -1c
+.RI "byte \fBGetByte\fP (string name)"
+.br
+.RI "\fIGets the value of the specified column as a byte\&. \fP"
+.ti -1c
+.RI "override byte \fBGetByte\fP (int i)"
+.br
+.RI "\fIGets the value of the specified column as a byte\&. \fP"
+.ti -1c
+.RI "sbyte \fBGetSByte\fP (string name)"
+.br
+.RI "\fIGets the value of the specified column as a sbyte\&. \fP"
+.ti -1c
+.RI "sbyte \fBGetSByte\fP (int i)"
+.br
+.RI "\fIGets the value of the specified column as a sbyte\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override int \fBDepth\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating the depth of nesting for the current row\&. This method is not supported currently and always returns 0\&. \fP"
+.ti -1c
+.RI "override int \fBFieldCount\fP\fC [get]\fP"
+.br
+.RI "\fIGets the number of columns in the current row\&. \fP"
+.ti -1c
+.RI "override bool \fBHasRows\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether the \fBMySqlDataReader\fP contains one or more rows\&. \fP"
+.ti -1c
+.RI "override bool \fBIsClosed\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether the data reader is closed\&. \fP"
+.ti -1c
+.RI "override int \fBRecordsAffected\fP\fC [get]\fP"
+.br
+.RI "\fIGets the number of rows changed, inserted, or deleted by execution of the SQL statement\&. \fP"
+.ti -1c
+.RI "override object \fBthis[int i]\fP\fC [get]\fP"
+.br
+.RI "\fIOverloaded\&. Gets the value of a column in its native format\&. In C#, this property is the indexer for the \fBMySqlDataReader\fP class\&. \fP"
+.ti -1c
+.RI "override object \fBthis[String name]\fP\fC [get]\fP"
+.br
+.RI "\fIGets the value of a column in its native format\&. [C#] In C#, this property is the indexer for the \fBMySqlDataReader\fP class\&. \fP"
+.in -1c
+.SS "='GetBytes']/*'/>"
+
+.PP
+Reads a stream of bytes from the specified column offset into the buffer an array starting at the given buffer offset\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP The zero-based column ordinal\&. 
+.br
+\fIfieldOffset\fP The index within the field from which to begin the read operation\&. 
+.br
+\fIbuffer\fP The buffer into which to read the stream of bytes\&. 
+.br
+\fIbufferoffset\fP The index for buffer to begin the read operation\&. 
+.br
+\fIlength\fP The maximum length to copy into the buffer\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The actual number of bytes read\&.
+.RE
+.PP
+<include file='docs/MySqlDataReader\&.xml' path='MyDocs/MyMembers[ 
+.in +1c
+.ti -1c
+.RI "override long \fBGetBytes\fP (int i, long fieldOffset, byte[] buffer, int bufferoffset, int length)"
+.br
+.ti -1c
+.RI "char \fBGetChar\fP (string name)"
+.br
+.RI "\fIGets the value of the specified column as a single character\&. \fP"
+.ti -1c
+.RI "override char \fBGetChar\fP (int i)"
+.br
+.RI "\fIGets the value of the specified column as a single character\&. \fP"
+.ti -1c
+.RI "override long \fBGetChars\fP (int i, long fieldoffset, char[] buffer, int bufferoffset, int length)"
+.br
+.RI "\fIReads a stream of characters from the specified column offset into the buffer as an array starting at the given buffer offset\&. \fP"
+.ti -1c
+.RI "override \fBString\fP \fBGetDataTypeName\fP (int i)"
+.br
+.RI "\fIGets the name of the source data type\&. \fP"
+.ti -1c
+.RI "\fBMySqlDateTime\fP \fBGetMySqlDateTime\fP (string column)"
+.br
+.ti -1c
+.RI "\fBMySqlDateTime\fP \fBGetMySqlDateTime\fP (int column)"
+.br
+.ti -1c
+.RI "\fBDateTime\fP \fBGetDateTime\fP (string column)"
+.br
+.ti -1c
+.RI "override \fBDateTime\fP \fBGetDateTime\fP (int i)"
+.br
+.ti -1c
+.RI "\fBMySqlDecimal\fP \fBGetMySqlDecimal\fP (string column)"
+.br
+.ti -1c
+.RI "\fBMySqlDecimal\fP \fBGetMySqlDecimal\fP (int i)"
+.br
+.ti -1c
+.RI "\fBDecimal\fP \fBGetDecimal\fP (string column)"
+.br
+.ti -1c
+.RI "override \fBDecimal\fP \fBGetDecimal\fP (int i)"
+.br
+.ti -1c
+.RI "double \fBGetDouble\fP (string column)"
+.br
+.ti -1c
+.RI "override double \fBGetDouble\fP (int i)"
+.br
+.ti -1c
+.RI "\fBMySqlGeometry\fP \fBGetMySqlGeometry\fP (int i)"
+.br
+.ti -1c
+.RI "\fBMySqlGeometry\fP \fBGetMySqlGeometry\fP (string column)"
+.br
+.ti -1c
+.RI "Type \fBGetFieldType\fP (string column)"
+.br
+.ti -1c
+.RI "override Type \fBGetFieldType\fP (int i)"
+.br
+.RI "\fIGets the Type that is the data type of the object\&. \fP"
+.ti -1c
+.RI "float \fBGetFloat\fP (string column)"
+.br
+.ti -1c
+.RI "override float \fBGetFloat\fP (int i)"
+.br
+.ti -1c
+.RI "\fBGuid\fP \fBGetGuid\fP (string column)"
+.br
+.ti -1c
+.RI "override \fBGuid\fP \fBGetGuid\fP (int i)"
+.br
+.ti -1c
+.RI "\fBInt16\fP \fBGetInt16\fP (string column)"
+.br
+.ti -1c
+.RI "override \fBInt16\fP \fBGetInt16\fP (int i)"
+.br
+.ti -1c
+.RI "\fBInt32\fP \fBGetInt32\fP (string column)"
+.br
+.ti -1c
+.RI "override \fBInt32\fP \fBGetInt32\fP (int i)"
+.br
+.ti -1c
+.RI "\fBInt64\fP \fBGetInt64\fP (string column)"
+.br
+.ti -1c
+.RI "override \fBInt64\fP \fBGetInt64\fP (int i)"
+.br
+.ti -1c
+.RI "override \fBString\fP \fBGetName\fP (int i)"
+.br
+.RI "\fIGets the name of the specified column\&. \fP"
+.ti -1c
+.RI "override int \fBGetOrdinal\fP (string name)"
+.br
+.RI "\fIGets the column ordinal, given the name of the column\&. \fP"
+.ti -1c
+.RI "override DataTable \fBGetSchemaTable\fP ()"
+.br
+.RI "\fIReturns a DataTable that describes the column metadata of the \fBMySqlDataReader\fP\&. \fP"
+.ti -1c
+.RI "string \fBGetString\fP (string column)"
+.br
+.ti -1c
+.RI "override \fBString\fP \fBGetString\fP (int i)"
+.br
+.ti -1c
+.RI "TimeSpan \fBGetTimeSpan\fP (string column)"
+.br
+.ti -1c
+.RI "TimeSpan \fBGetTimeSpan\fP (int column)"
+.br
+.ti -1c
+.RI "override object \fBGetValue\fP (int i)"
+.br
+.RI "\fIGets the value of the specified column in its native format\&. \fP"
+.ti -1c
+.RI "override int \fBGetValues\fP (object[] values)"
+.br
+.RI "\fIGets all attribute columns in the collection for the current row\&. \fP"
+.ti -1c
+.RI "\fBUInt16\fP \fBGetUInt16\fP (string column)"
+.br
+.ti -1c
+.RI "\fBUInt16\fP \fBGetUInt16\fP (int column)"
+.br
+.ti -1c
+.RI "\fBUInt32\fP \fBGetUInt32\fP (string column)"
+.br
+.ti -1c
+.RI "\fBUInt32\fP \fBGetUInt32\fP (int column)"
+.br
+.ti -1c
+.RI "\fBUInt64\fP \fBGetUInt64\fP (string column)"
+.br
+.ti -1c
+.RI "\fBUInt64\fP \fBGetUInt64\fP (int column)"
+.br
+.ti -1c
+.RI "override bool \fBIsDBNull\fP (int i)"
+.br
+.RI "\fIGets a value indicating whether the column contains non-existent or missing values\&. \fP"
+.ti -1c
+.RI "override bool \fBNextResult\fP ()"
+.br
+.RI "\fIAdvances the data reader to the next result, when reading the results of batch SQL statements\&. \fP"
+.ti -1c
+.RI "override bool \fBRead\fP ()"
+.br
+.RI "\fIAdvances the \fBMySqlDataReader\fP to the next record\&. \fP"
+.ti -1c
+.RI "override IEnumerator \fBGetEnumerator\fP ()"
+.br
+.RI "\fIReturns an IEnumerator that iterates through the \fBMySqlDataReader\fP\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+Definition at line 37 of file datareader\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.Close ()"
+
+.PP
+Closes the \fBMySqlDataReader\fP object\&. 
+.PP
+Definition at line 186 of file datareader\&.cs\&.
+.SS "bool MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.GetBoolean (stringname)"
+
+.PP
+Gets the value of the specified column as a Boolean\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 267 of file datareader\&.cs\&.
+.SS "override bool MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.GetBoolean (inti)"
+
+.PP
+Gets the value of the specified column as a Boolean\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 277 of file datareader\&.cs\&.
+.SS "byte MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.GetByte (stringname)"
+
+.PP
+Gets the value of the specified column as a byte\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 287 of file datareader\&.cs\&.
+.SS "override byte MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.GetByte (inti)"
+
+.PP
+Gets the value of the specified column as a byte\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 297 of file datareader\&.cs\&.
+.SS "char MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.GetChar (stringname)"
+
+.PP
+Gets the value of the specified column as a single character\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 391 of file datareader\&.cs\&.
+.SS "override char MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.GetChar (inti)"
+
+.PP
+Gets the value of the specified column as a single character\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 401 of file datareader\&.cs\&.
+.SS "override long MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.GetChars (inti, longfieldoffset, char[]buffer, intbufferoffset, intlength)"
+
+.PP
+Reads a stream of characters from the specified column offset into the buffer as an array starting at the given buffer offset\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.br
+\fIfieldoffset\fP 
+.br
+\fIbuffer\fP 
+.br
+\fIbufferoffset\fP 
+.br
+\fIlength\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 416 of file datareader\&.cs\&.
+.SS "override \fBString\fP MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.GetDataTypeName (inti)"
+
+.PP
+Gets the name of the source data type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 443 of file datareader\&.cs\&.
+.SS "override IEnumerator MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.GetEnumerator ()"
+
+.PP
+Returns an IEnumerator that iterates through the \fBMySqlDataReader\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 1138 of file datareader\&.cs\&.
+.SS "override Type MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.GetFieldType (inti)"
+
+.PP
+Gets the Type that is the data type of the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 566 of file datareader\&.cs\&.
+.SS "override \fBString\fP MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.GetName (inti)"
+
+.PP
+Gets the name of the specified column\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 677 of file datareader\&.cs\&.
+.SS "override int MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.GetOrdinal (stringname)"
+
+.PP
+Gets the column ordinal, given the name of the column\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 692 of file datareader\&.cs\&.
+.SS "sbyte MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.GetSByte (stringname)"
+
+.PP
+Gets the value of the specified column as a sbyte\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 311 of file datareader\&.cs\&.
+.SS "sbyte MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.GetSByte (inti)"
+
+.PP
+Gets the value of the specified column as a sbyte\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 321 of file datareader\&.cs\&.
+.SS "override DataTable MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.GetSchemaTable ()"
+
+.PP
+Returns a DataTable that describes the column metadata of the \fBMySqlDataReader\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 704 of file datareader\&.cs\&.
+.SS "override object MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.GetValue (inti)"
+
+.PP
+Gets the value of the specified column in its native format\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 812 of file datareader\&.cs\&.
+.SS "override int MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.GetValues (object[]values)"
+
+.PP
+Gets all attribute columns in the collection for the current row\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 853 of file datareader\&.cs\&.
+.SS "override bool MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.IsDBNull (inti)"
+
+.PP
+Gets a value indicating whether the column contains non-existent or missing values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 922 of file datareader\&.cs\&.
+.SS "override bool MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.NextResult ()"
+
+.PP
+Advances the data reader to the next result, when reading the results of batch SQL statements\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 931 of file datareader\&.cs\&.
+.SS "override bool MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.Read ()"
+
+.PP
+Advances the \fBMySqlDataReader\fP to the next record\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 1011 of file datareader\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override int MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.Depth\fC [get]\fP"
+
+.PP
+Gets a value indicating the depth of nesting for the current row\&. This method is not supported currently and always returns 0\&. 
+.PP
+Definition at line 108 of file datareader\&.cs\&.
+.SS "override int MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.FieldCount\fC [get]\fP"
+
+.PP
+Gets the number of columns in the current row\&. 
+.PP
+Definition at line 116 of file datareader\&.cs\&.
+.SS "override bool MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.HasRows\fC [get]\fP"
+
+.PP
+Gets a value indicating whether the \fBMySqlDataReader\fP contains one or more rows\&. 
+.PP
+Definition at line 124 of file datareader\&.cs\&.
+.SS "override bool MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.IsClosed\fC [get]\fP"
+
+.PP
+Gets a value indicating whether the data reader is closed\&. 
+.PP
+Definition at line 132 of file datareader\&.cs\&.
+.SS "override int MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.RecordsAffected\fC [get]\fP"
+
+.PP
+Gets the number of rows changed, inserted, or deleted by execution of the SQL statement\&. 
+.PP
+Definition at line 140 of file datareader\&.cs\&.
+.SS "override object MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.this[int i]\fC [get]\fP"
+
+.PP
+Overloaded\&. Gets the value of a column in its native format\&. In C#, this property is the indexer for the \fBMySqlDataReader\fP class\&. 
+.PP
+Definition at line 166 of file datareader\&.cs\&.
+.SS "override object MySql\&.Data\&.MySqlClient\&.MySqlDataReader\&.this[\fBString\fP name]\fC [get]\fP"
+
+.PP
+Gets the value of a column in its native format\&. [C#] In C#, this property is the indexer for the \fBMySqlDataReader\fP class\&. 
+.PP
+Definition at line 175 of file datareader\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

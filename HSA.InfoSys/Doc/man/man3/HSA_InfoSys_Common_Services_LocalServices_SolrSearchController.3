@@ -1,0 +1,64 @@
+.TH "HSA.InfoSys.Common.Services.LocalServices.SolrSearchController" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HSA.InfoSys.Common.Services.LocalServices.SolrSearchController \- 
+.PP
+The solr search controller handles a search request for one OrgUnit and instanciates a new client for each component\&. There will be one controller for each OrgUnit we want search\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSolrSearchController\fP (\fBIDbManager\fP dbManager)"
+.br
+.RI "\fIInitializes a new instance of the \fBSolrSearchController\fP class\&. \fP"
+.ti -1c
+.RI "void \fBStartSearch\fP (Guid orgUnitGuid)"
+.br
+.RI "\fIStarts the search on each client but first updates the settings and fetches all components of the OrgUnit for which this controller is responsible\&. This method also contains the callback method the clients calls when finished\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The solr search controller handles a search request for one OrgUnit and instanciates a new client for each component\&. There will be one controller for each OrgUnit we want search\&. 
+
+
+.PP
+Definition at line 23 of file SolrSearchController\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.SolrSearchController\&.SolrSearchController (\fBIDbManager\fPdbManager)"
+
+.PP
+Initializes a new instance of the \fBSolrSearchController\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdbManager\fP The db dbmanager\&.
+.RE
+.PP
+
+.PP
+Definition at line 52 of file SolrSearchController\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void HSA\&.InfoSys\&.Common\&.Services\&.LocalServices\&.SolrSearchController\&.StartSearch (GuidorgUnitGuid)"
+
+.PP
+Starts the search on each client but first updates the settings and fetches all components of the OrgUnit for which this controller is responsible\&. This method also contains the callback method the clients calls when finished\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIorgUnitGuid\fP The org unit GUID\&.
+.RE
+.PP
+
+.PP
+Definition at line 78 of file SolrSearchController\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

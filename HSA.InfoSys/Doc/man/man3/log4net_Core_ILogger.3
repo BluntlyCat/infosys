@@ -1,0 +1,129 @@
+.TH "log4net.Core.ILogger" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Core.ILogger \- 
+.PP
+Interface that all loggers implement  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBlog4net\&.Repository\&.Hierarchy\&.Logger\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBLog\fP (Type callerStackBoundaryDeclaringType, \fBLevel\fP level, object message, \fBException\fP exception)"
+.br
+.RI "\fIThis generic form is intended to be used by wrappers\&. \fP"
+.ti -1c
+.RI "void \fBLog\fP (\fBLoggingEvent\fP logEvent)"
+.br
+.RI "\fIThis is the most generic printing method that is intended to be used by wrappers\&. \fP"
+.ti -1c
+.RI "bool \fBIsEnabledFor\fP (\fBLevel\fP level)"
+.br
+.RI "\fIChecks if this logger is enabled for a given \fBLevel\fP passed as parameter\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the name of the logger\&. \fP"
+.ti -1c
+.RI "\fBILoggerRepository\fP \fBRepository\fP\fC [get]\fP"
+.br
+.RI "\fIGets the ILoggerRepository where this \fCLogger\fP instance is attached to\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Interface that all loggers implement 
+
+This interface supports logging events and testing if a level is enabled for logging\&. 
+.PP
+These methods will not throw exceptions\&. Note to implementor, ensure that the implementation of these methods cannot allow an exception to be thrown to the caller\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 43 of file ILogger\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool log4net\&.Core\&.ILogger\&.IsEnabledFor (\fBLevel\fPlevel)"
+
+.PP
+Checks if this logger is enabled for a given \fBLevel\fP passed as parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlevel\fP The level to check\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this logger is enabled for \fClevel\fP, otherwise \fCfalse\fP\&. 
+.RE
+.PP
+.PP
+Test if this logger is going to log events of the specified \fIlevel\fP \&. 
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Logger\fP\&.
+.SS "void log4net\&.Core\&.ILogger\&.Log (TypecallerStackBoundaryDeclaringType, \fBLevel\fPlevel, objectmessage, \fBException\fPexception)"
+
+.PP
+This generic form is intended to be used by wrappers\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcallerStackBoundaryDeclaringType\fP The declaring type of the method that is the stack boundary into the logging system for this call\&.
+.br
+\fIlevel\fP The level of the message to be logged\&.
+.br
+\fImessage\fP The message object to log\&.
+.br
+\fIexception\fP the exception to log, including its stack trace\&. Pass \fCnull\fP to not log an exception\&.
+.RE
+.PP
+.PP
+Generates a logging event for the specified \fIlevel\fP  using the \fImessage\fP  and \fIexception\fP \&. 
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Logger\fP\&.
+.SS "void log4net\&.Core\&.ILogger\&.Log (\fBLoggingEvent\fPlogEvent)"
+
+.PP
+This is the most generic printing method that is intended to be used by wrappers\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlogEvent\fP The event being logged\&.
+.RE
+.PP
+.PP
+Logs the specified logging event through this logger\&. 
+.PP
+Implemented in \fBlog4net\&.Repository\&.Hierarchy\&.Logger\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "string log4net\&.Core\&.ILogger\&.Name\fC [get]\fP"
+
+.PP
+Gets the name of the logger\&. The name of the logger\&. 
+.PP
+The name of this logger 
+.PP
+Definition at line 56 of file ILogger\&.cs\&.
+.SS "\fBILoggerRepository\fP log4net\&.Core\&.ILogger\&.Repository\fC [get]\fP"
+
+.PP
+Gets the ILoggerRepository where this \fCLogger\fP instance is attached to\&. The ILoggerRepository that this logger belongs to\&. 
+.PP
+Gets the ILoggerRepository where this \fCLogger\fP instance is attached to\&. 
+.PP
+Definition at line 113 of file ILogger\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

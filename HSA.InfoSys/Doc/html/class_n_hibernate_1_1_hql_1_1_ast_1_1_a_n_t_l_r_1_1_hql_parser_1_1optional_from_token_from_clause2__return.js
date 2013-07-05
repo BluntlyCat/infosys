@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_hql_1_1_ast_1_1_a_n_t_l_r_1_1_hql_parser_1_1optional_from_token_from_clause2__return =
+[
+    [ "Tree", "class_n_hibernate_1_1_hql_1_1_ast_1_1_a_n_t_l_r_1_1_hql_parser_1_1optional_from_token_from_clause2__return.html#a8d714d6f8ff3e25c7cab49570e7ed5d1", null ]
+];

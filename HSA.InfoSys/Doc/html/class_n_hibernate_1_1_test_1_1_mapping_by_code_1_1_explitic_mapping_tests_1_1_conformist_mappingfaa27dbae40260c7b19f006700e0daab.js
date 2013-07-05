@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_conformist_mappingfaa27dbae40260c7b19f006700e0daab =
+[
+    [ "First", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_conformist_mappingfaa27dbae40260c7b19f006700e0daab.html#aea5e7d19b0df3cd56852f9ef9a986174", null ],
+    [ "Last", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_conformist_mappingfaa27dbae40260c7b19f006700e0daab.html#a72275958b5f3dfa72d89899a552ab536", null ]
+];

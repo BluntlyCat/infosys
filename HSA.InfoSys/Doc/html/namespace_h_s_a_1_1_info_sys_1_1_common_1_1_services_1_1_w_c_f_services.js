@@ -1,0 +1,10 @@
+var namespace_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_w_c_f_services =
+[
+    [ "DbManager", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_w_c_f_services_1_1_db_manager.html", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_w_c_f_services_1_1_db_manager" ],
+    [ "ICrawlerService", "interface_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_w_c_f_services_1_1_i_crawler_service.html", "interface_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_w_c_f_services_1_1_i_crawler_service" ],
+    [ "IDbManager", "interface_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_w_c_f_services_1_1_i_db_manager.html", "interface_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_w_c_f_services_1_1_i_db_manager" ],
+    [ "IScheduler", "interface_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_w_c_f_services_1_1_i_scheduler.html", "interface_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_w_c_f_services_1_1_i_scheduler" ],
+    [ "ISolrController", "interface_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_w_c_f_services_1_1_i_solr_controller.html", "interface_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_w_c_f_services_1_1_i_solr_controller" ],
+    [ "Scheduler", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_w_c_f_services_1_1_scheduler.html", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_w_c_f_services_1_1_scheduler" ],
+    [ "SolrController", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_w_c_f_services_1_1_solr_controller.html", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_w_c_f_services_1_1_solr_controller" ]
+];

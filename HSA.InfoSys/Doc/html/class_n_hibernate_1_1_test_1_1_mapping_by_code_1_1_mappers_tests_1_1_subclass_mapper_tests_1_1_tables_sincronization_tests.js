@@ -1,0 +1,8 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_subclass_mapper_tests_1_1_tables_sincronization_tests =
+[
+    [ "WhenSetMoreSyncThenAddAll", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_subclass_mapper_tests_1_1_tables_sincronization_tests.html#aceb3a1d5b30cc2b81af39880ddda080e", null ],
+    [ "WhenSetMoreThenOnceThenAddAll", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_subclass_mapper_tests_1_1_tables_sincronization_tests.html#afd898e366d8e470cd35f14d6ff502926", null ],
+    [ "WhenSetMoreThenOnceThenDoesNotDuplicate", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_subclass_mapper_tests_1_1_tables_sincronization_tests.html#afc38bc2a3e99482c4f2c3b03ac1cff77", null ],
+    [ "WhenSetSyncMixedWithNullAndEmptyThenAddOnlyValid", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_subclass_mapper_tests_1_1_tables_sincronization_tests.html#ad97c11c9708c4234ab9494798d0d40a6", null ],
+    [ "WhenSetSyncWithNullThenDoesNotThrows", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_subclass_mapper_tests_1_1_tables_sincronization_tests.html#a5c884261ddfb191312f0813eed96fd49", null ]
+];

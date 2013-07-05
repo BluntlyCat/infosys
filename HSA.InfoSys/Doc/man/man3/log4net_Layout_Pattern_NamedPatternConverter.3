@@ -1,0 +1,100 @@
+.TH "log4net.Layout.Pattern.NamedPatternConverter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Layout.Pattern.NamedPatternConverter \- 
+.PP
+Converter to output and truncate \fC'\&.'\fP separated strings  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Layout\&.Pattern\&.PatternLayoutConverter\fP, and \fBlog4net\&.Core\&.IOptionHandler\fP\&.
+.PP
+Inherited by log4net\&.Layout\&.Pattern\&.LoggerPatternConverter, and log4net\&.Layout\&.Pattern\&.TypeNamePatternConverter\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBActivateOptions\fP ()"
+.br
+.RI "\fIInitialize the converter \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract string \fBGetFullyQualifiedName\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIGet the fully qualified string data \fP"
+.ti -1c
+.RI "sealed override void \fBConvert\fP (TextWriter writer, \fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIConvert the pattern to the rendered message \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Converter to output and truncate \fC'\&.'\fP separated strings 
+
+This abstract class supports truncating a \fC'\&.'\fP separated string to show a specified number of elements from the right hand side\&. This is used to truncate class names that are fully qualified\&. 
+.PP
+Subclasses should override the \fBGetFullyQualifiedName\fP method to return the fully qualified string\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 45 of file NamedPatternConverter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Layout\&.Pattern\&.NamedPatternConverter\&.ActivateOptions ()"
+
+.PP
+Initialize the converter This is part of the IOptionHandler delayed object activation scheme\&. The \fBActivateOptions\fP method must be called on this object after the configuration properties have been set\&. Until \fBActivateOptions\fP is called this object is in an undefined state and must not be used\&. 
+.PP
+If any of the configuration properties are modified then \fBActivateOptions\fP must be called again\&. 
+.PP
+Implements \fBlog4net\&.Core\&.IOptionHandler\fP\&.
+.PP
+Definition at line 67 of file NamedPatternConverter\&.cs\&.
+.SS "sealed override void log4net\&.Layout\&.Pattern\&.NamedPatternConverter\&.Convert (TextWriterwriter, \fBLoggingEvent\fPloggingEvent)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Convert the pattern to the rendered message 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP TextWriter that will receive the formatted result\&.
+.br
+\fIloggingEvent\fP the event being logged
+.RE
+.PP
+.PP
+Render the \fBGetFullyQualifiedName\fP to the precision specified by the PatternConverter\&.Option property\&. 
+.PP
+Implements \fBlog4net\&.Layout\&.Pattern\&.PatternLayoutConverter\fP\&.
+.PP
+Definition at line 123 of file NamedPatternConverter\&.cs\&.
+.SS "abstract string log4net\&.Layout\&.Pattern\&.NamedPatternConverter\&.GetFullyQualifiedName (\fBLoggingEvent\fPloggingEvent)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Get the fully qualified string data 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP the event being logged
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the fully qualified name
+.RE
+.PP
+.PP
+Overridden by subclasses to get the fully qualified name before the precision is applied to it\&. 
+.PP
+Return the fully qualified \fC'\&.'\fP (dot/period) separated string\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

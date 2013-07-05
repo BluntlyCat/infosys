@@ -1,0 +1,153 @@
+.TH "NHibernate.Properties.FieldAccessor.FieldGetter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Properties.FieldAccessor.FieldGetter \- 
+.PP
+An \fBIGetter\fP that uses a Field instead of the Property \fCget\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Properties\&.IGetter\fP, and \fBNHibernate\&.Properties\&.IOptimizableGetter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFieldGetter\fP (FieldInfo field, System\&.Type clazz, string name)"
+.br
+.RI "\fIInitializes a new instance of \fBFieldGetter\fP\&. \fP"
+.ti -1c
+.RI "object \fBGet\fP (object target)"
+.br
+.RI "\fIGets the value of the Field from the object\&. \fP"
+.ti -1c
+.RI "object \fBGetForInsert\fP (object owner, IDictionary mergeMap, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGet the property value from the given owner instance\&. \fP"
+.ti -1c
+.RI "void \fBEmit\fP (ILGenerator il)"
+.br
+.RI "\fIEmit IL to get the property value from the object on top of the stack\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "System\&.Type \fBReturnType\fP\fC [get]\fP"
+.br
+.RI "\fIGets the System\&.Type that the Field returns\&. \fP"
+.ti -1c
+.RI "string \fBPropertyName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the name of the Property\&. \fP"
+.ti -1c
+.RI "MethodInfo \fBMethod\fP\fC [get]\fP"
+.br
+.RI "\fIGets the PropertyInfo for the Property\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An \fBIGetter\fP that uses a Field instead of the Property \fCget\fP\&. 
+
+
+.PP
+Definition at line 161 of file FieldAccessor\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Properties\&.FieldAccessor\&.FieldGetter\&.FieldGetter (FieldInfofield, System\&.Typeclazz, stringname)"
+
+.PP
+Initializes a new instance of \fBFieldGetter\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclazz\fP The System\&.Type that contains the field to use for the Property \fCget\fP\&.
+.br
+\fIfield\fP The FieldInfo for reflection\&.
+.br
+\fIname\fP The name of the Field\&.
+.RE
+.PP
+
+.PP
+Definition at line 173 of file FieldAccessor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Properties\&.FieldAccessor\&.FieldGetter\&.Emit (ILGeneratoril)"
+
+.PP
+Emit IL to get the property value from the object on top of the stack\&. 
+.PP
+Implements \fBNHibernate\&.Properties\&.IOptimizableGetter\fP\&.
+.PP
+Definition at line 235 of file FieldAccessor\&.cs\&.
+.SS "object NHibernate\&.Properties\&.FieldAccessor\&.FieldGetter\&.Get (objecttarget)"
+
+.PP
+Gets the value of the Field from the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItarget\fP The object to get the Field value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value of the Field for the target\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.IGetter\fP\&.
+.PP
+Definition at line 189 of file FieldAccessor\&.cs\&.
+.SS "object NHibernate\&.Properties\&.FieldAccessor\&.FieldGetter\&.GetForInsert (objectowner, IDictionarymergeMap, \fBISessionImplementor\fPsession)"
+
+.PP
+Get the property value from the given owner instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIowner\fP The instance containing the value to be retrieved\&. 
+.br
+\fImergeMap\fP a map of merged persistent instances to detached instances 
+.br
+\fIsession\fP The session from which this request originated\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The extracted value\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.IGetter\fP\&.
+.PP
+Definition at line 228 of file FieldAccessor\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "MethodInfo NHibernate\&.Properties\&.FieldAccessor\&.FieldGetter\&.Method\fC [get]\fP"
+
+.PP
+Gets the PropertyInfo for the Property\&. since this is a Field - not a Property\&.
+.PP
+Definition at line 224 of file FieldAccessor\&.cs\&.
+.SS "string NHibernate\&.Properties\&.FieldAccessor\&.FieldGetter\&.PropertyName\fC [get]\fP"
+
+.PP
+Gets the name of the Property\&. since this is a Field - not a Property\&.
+.PP
+Definition at line 215 of file FieldAccessor\&.cs\&.
+.SS "System\&.Type NHibernate\&.Properties\&.FieldAccessor\&.FieldGetter\&.ReturnType\fC [get]\fP"
+
+.PP
+Gets the System\&.Type that the Field returns\&. The System\&.Type that the Field returns\&.
+.PP
+Definition at line 206 of file FieldAccessor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

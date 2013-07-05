@@ -1,0 +1,60 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Tree.IStatement" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Tree.IStatement \- 
+.PP
+Common interface modeling the different HQL statements (i\&.e\&., INSERT, UPDATE, DELETE, SELECT)\&. Author: Steve Ebersole Ported by: Steve Strong  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.AbstractStatement\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IRestrictableStatement\fP\&.
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBHqlSqlWalker\fP \fBWalker\fP\fC [get]\fP"
+.br
+.RI "\fIThe 'phase 2' walker which generated this statement tree\&. \fP"
+.ti -1c
+.RI "int \fBStatementType\fP\fC [get]\fP"
+.br
+.RI "\fIThe main token type representing the type of this statement\&. \fP"
+.ti -1c
+.RI "bool \fBNeedsExecutor\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this statement require the StatementExecutor? Essentially, at the JDBC level, does this require an executeUpdate()? \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Common interface modeling the different HQL statements (i\&.e\&., INSERT, UPDATE, DELETE, SELECT)\&. Author: Steve Ebersole Ported by: Steve Strong 
+
+
+.PP
+Definition at line 11 of file IStatement\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IStatement\&.NeedsExecutor\fC [get]\fP"
+
+.PP
+Does this statement require the StatementExecutor? Essentially, at the JDBC level, does this require an executeUpdate()? 
+.PP
+Definition at line 27 of file IStatement\&.cs\&.
+.SS "int NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IStatement\&.StatementType\fC [get]\fP"
+
+.PP
+The main token type representing the type of this statement\&. 
+.PP
+Definition at line 21 of file IStatement\&.cs\&.
+.SS "\fBHqlSqlWalker\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IStatement\&.Walker\fC [get]\fP"
+
+.PP
+The 'phase 2' walker which generated this statement tree\&. 
+.PP
+Definition at line 16 of file IStatement\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

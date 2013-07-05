@@ -1,0 +1,72 @@
+.TH "NHibernate.Impl.FutureBatch< TQueryApproach, TMultiApproach >" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Impl.FutureBatch< TQueryApproach, TMultiApproach > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Impl\&.FutureCriteriaBatch\fP, and \fBNHibernate\&.Impl\&.FutureQueryBatch\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAdd< TResult >\fP (TQueryApproach query)"
+.br
+.ti -1c
+.RI "void \fBAdd\fP (TQueryApproach query)"
+.br
+.ti -1c
+.RI "IFutureValue< TResult > \fBGetFutureValue< TResult >\fP ()"
+.br
+.ti -1c
+.RI "IEnumerable< TResult > \fBGetEnumerator< TResult >\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFutureBatch\fP (\fBSessionImpl\fP session)"
+.br
+.ti -1c
+.RI "abstract TMultiApproach \fBCreateMultiApproach\fP (bool isCacheable, string cacheRegion)"
+.br
+.ti -1c
+.RI "abstract void \fBAddTo\fP (TMultiApproach multiApproach, TQueryApproach query, System\&.Type resultType)"
+.br
+.ti -1c
+.RI "abstract IList \fBGetResultsFrom\fP (TMultiApproach multiApproach)"
+.br
+.ti -1c
+.RI "abstract void \fBClearCurrentFutureBatch\fP ()"
+.br
+.ti -1c
+.RI "abstract bool \fBIsQueryCacheable\fP (TQueryApproach query)"
+.br
+.ti -1c
+.RI "abstract string \fBCacheRegion\fP (TQueryApproach query)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly \fBSessionImpl\fP \fBsession\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "IList \fBResults\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 7 of file FutureBatch\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

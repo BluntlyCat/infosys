@@ -1,0 +1,95 @@
+.TH "NHibernate.Test.Insertordering.InsertOrderingFixture.StatsBatcher" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.Insertordering.InsertOrderingFixture.StatsBatcher \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.AdoNet\&.SqlClientBatchingBatcher\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBStatsBatcher\fP (\fBConnectionManager\fP connectionManager, \fBIInterceptor\fP interceptor)"
+.br
+.ti -1c
+.RI "override IDbCommand \fBPrepareBatchCommand\fP (CommandType type, \fBSqlString\fP sql, \fBSqlType\fP[] parameterTypes)"
+.br
+.RI "\fIGet a batchable IDbCommand to use for inserting / deleting / updating (might be called many times before a single call to \fC\fBExecuteBatch()\fP\fP \fP"
+.ti -1c
+.RI "override void \fBAddToBatch\fP (\fBIExpectation\fP expectation)"
+.br
+.RI "\fIAdds the expected row count into the batch\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBReset\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBDoExecuteBatch\fP (IDbCommand ps)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "static IList< int > \fBBatchSizes\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 82 of file InsertOrderingFixture\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Test\&.Insertordering\&.InsertOrderingFixture\&.StatsBatcher\&.AddToBatch (\fBIExpectation\fPexpectation)\fC [virtual]\fP"
+
+.PP
+Adds the expected row count into the batch\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpectation\fP The number of rows expected to be affected by the query\&.
+.RE
+.PP
+.PP
+If Batching is not supported, then this is when the Command should be executed\&. If Batching is supported then it should hold of on executing the batch until explicitly told to\&. 
+.PP
+Reimplemented from \fBNHibernate\&.AdoNet\&.SqlClientBatchingBatcher\fP\&.
+.PP
+Definition at line 118 of file InsertOrderingFixture\&.cs\&.
+.SS "override IDbCommand NHibernate\&.Test\&.Insertordering\&.InsertOrderingFixture\&.StatsBatcher\&.PrepareBatchCommand (CommandTypecommandType, \fBSqlString\fPsql, \fBSqlType\fP[]parameterTypes)\fC [virtual]\fP"
+
+.PP
+Get a batchable IDbCommand to use for inserting / deleting / updating (might be called many times before a single call to \fC\fBExecuteBatch()\fP\fP After setting parameters, call \fC\fBAddToBatch()\fP\fP - do not execute the statement explicitly\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsql\fP The SqlString to convert to an IDbCommand\&.
+.br
+\fIcommandType\fP The CommandType of the command\&.
+.br
+\fIparameterTypes\fP The \fBSqlTypes\fP of parameters in \fIsql\fP \&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.AdoNet\&.AbstractBatcher\fP\&.
+.PP
+Definition at line 103 of file InsertOrderingFixture\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

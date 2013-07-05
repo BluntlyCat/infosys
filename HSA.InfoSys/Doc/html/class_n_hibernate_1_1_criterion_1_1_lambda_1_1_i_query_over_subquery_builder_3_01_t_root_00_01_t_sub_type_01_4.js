@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_criterion_1_1_lambda_1_1_i_query_over_subquery_builder_3_01_t_root_00_01_t_sub_type_01_4 =
+[
+    [ "IQueryOverSubqueryBuilder", "class_n_hibernate_1_1_criterion_1_1_lambda_1_1_i_query_over_subquery_builder_3_01_t_root_00_01_t_sub_type_01_4.html#a2141bb3137b4dde9d5d369f2b30d5a47", null ]
+];

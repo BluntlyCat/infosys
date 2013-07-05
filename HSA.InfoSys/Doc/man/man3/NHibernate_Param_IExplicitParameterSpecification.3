@@ -1,0 +1,76 @@
+.TH "NHibernate.Param.IExplicitParameterSpecification" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Param.IExplicitParameterSpecification \- 
+.PP
+An additional contract for parameters which originate from parameters explicitly encountered in the source statement (HQL or native-SQL)\&. Author: Steve Ebersole Ported by: Steve Strong  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Param\&.IParameterSpecification\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Param\&.IPageableParameterSpecification\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSetEffectiveType\fP (\fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIExplicit parameters may have no set the \fBIParameterSpecification\&.ExpectedType\fP during query parse\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBSourceLine\fP\fC [get]\fP"
+.br
+.RI "\fIRetrieves the line number on which this parameter occurs in the source query\&. \fP"
+.ti -1c
+.RI "int \fBSourceColumn\fP\fC [get]\fP"
+.br
+.RI "\fIRetrieves the column number (within the \fBgetSourceLine()\fP) where this parameter occurs\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An additional contract for parameters which originate from parameters explicitly encountered in the source statement (HQL or native-SQL)\&. Author: Steve Ebersole Ported by: Steve Strong 
+
+
+.PP
+Definition at line 11 of file IExplicitParameterSpecification\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Param\&.IExplicitParameterSpecification\&.SetEffectiveType (\fBQueryParameters\fPqueryParameters)"
+
+.PP
+Explicit parameters may have no set the \fBIParameterSpecification\&.ExpectedType\fP during query parse\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryParameters\fP The defined values for the current query execution\&.
+.RE
+.PP
+.PP
+This method should be removed when the parameter type is inferred during the parse\&. 
+.PP
+Implemented in \fBNHibernate\&.Param\&.PositionalParameterSpecification\fP, \fBNHibernate\&.Param\&.NamedParameterSpecification\fP, and \fBNHibernate\&.Param\&.AbstractExplicitParameterSpecification\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "int NHibernate\&.Param\&.IExplicitParameterSpecification\&.SourceColumn\fC [get]\fP"
+
+.PP
+Retrieves the column number (within the \fBgetSourceLine()\fP) where this parameter occurs\&. 
+.PP
+Definition at line 21 of file IExplicitParameterSpecification\&.cs\&.
+.SS "int NHibernate\&.Param\&.IExplicitParameterSpecification\&.SourceLine\fC [get]\fP"
+
+.PP
+Retrieves the line number on which this parameter occurs in the source query\&. 
+.PP
+Definition at line 16 of file IExplicitParameterSpecification\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

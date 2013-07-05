@@ -1,0 +1,301 @@
+.TH "NHibernate.Persister.Entity.IQueryable" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Persister.Entity.IQueryable \- 
+.PP
+Extends the generic \fC\fBILoadable\fP\fP contract to add operations required by HQL  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Persister\&.Entity\&.ILoadable\fP, \fBNHibernate\&.Persister\&.Entity\&.IPropertyMapping\fP, and \fBNHibernate\&.Persister\&.Entity\&.IJoinable\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBIdentifierSelectFragment\fP (string name, string suffix)"
+.br
+.RI "\fIGiven a query alias and an identifying suffix, render the identifier select fragment\&. \fP"
+.ti -1c
+.RI "string \fBPropertySelectFragment\fP (string alias, string suffix, bool allProperties)"
+.br
+.RI "\fIGiven a query alias and an identifying suffix, render the property select fragment\&. \fP"
+.ti -1c
+.RI "int \fBGetSubclassPropertyTableNumber\fP (string propertyPath)"
+.br
+.RI "\fIGiven a property name, determine the number of the table which contains the column to which this property is mapped\&. \fP"
+.ti -1c
+.RI "Declarer \fBGetSubclassPropertyDeclarer\fP (string propertyPath)"
+.br
+.RI "\fIDetermine whether the given property is declared by our mapped class, our super class, or one of our subclasses\&.\&.\&. 
+.PP
+Note: the method is called 'subclass property\&.\&.\&.' simply for consistency sake (e\&.g\&. \fBgetSubclassPropertyTableNumber\fP \fP"
+.ti -1c
+.RI "string \fBGetSubclassTableName\fP (int number)"
+.br
+.RI "\fIGet the name of the table with the given index from the internal array\&. \fP"
+.ti -1c
+.RI "string \fBGenerateFilterConditionAlias\fP (string rootAlias)"
+.br
+.RI "\fIThe alias used for any filter conditions (mapped where-fragments or enabled-filters)\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsExplicitPolymorphism\fP\fC [get]\fP"
+.br
+.RI "\fIIs this class explicit polymorphism only? \fP"
+.ti -1c
+.RI "string \fBMappedSuperclass\fP\fC [get]\fP"
+.br
+.RI "\fIThe class that this class is mapped as a subclass of - not necessarily the direct superclass \fP"
+.ti -1c
+.RI "string \fBDiscriminatorSQLValue\fP\fC [get]\fP"
+.br
+.RI "\fIThe discriminator value for this particular concrete subclass, as a string that may be embedded in a select statement \fP"
+.ti -1c
+.RI "object \fBDiscriminatorValue\fP\fC [get]\fP"
+.br
+.RI "\fIThe discriminator value for this particular concrete subclass \fP"
+.ti -1c
+.RI "bool \fBIsMultiTable\fP\fC [get]\fP"
+.br
+.RI "\fIIs the inheritance hierarchy described by this persister contained across multiple tables? \fP"
+.ti -1c
+.RI "string[] \fBConstraintOrderedTableNameClosure\fP\fC [get]\fP"
+.br
+.RI "\fIGet the names of all tables used in the hierarchy (up and down) ordered such that deletes in the given order would not cause constraint violations\&. \fP"
+.ti -1c
+.RI "string[][] \fBContraintOrderedTableKeyColumnClosure\fP\fC [get]\fP"
+.br
+.RI "\fIFor each table specified in \fBConstraintOrderedTableNameClosure\fP, get the columns that define the key between the various hierarchy classes\&. \fP"
+.ti -1c
+.RI "string \fBTemporaryIdTableName\fP\fC [get]\fP"
+.br
+.RI "\fIGet the name of the temporary table to be used to (potentially) store id values when performing bulk update/deletes\&. \fP"
+.ti -1c
+.RI "string \fBTemporaryIdTableDDL\fP\fC [get]\fP"
+.br
+.RI "\fIGet the appropriate DDL command for generating the temporary table to be used to (potentially) store id values when performing bulk update/deletes\&. \fP"
+.ti -1c
+.RI "bool \fBVersionPropertyInsertable\fP\fC [get]\fP"
+.br
+.RI "\fIIs the version property included in insert statements?\fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Extends the generic \fC\fBILoadable\fP\fP contract to add operations required by HQL 
+
+
+.PP
+Definition at line 13 of file IQueryable\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string NHibernate\&.Persister\&.Entity\&.IQueryable\&.GenerateFilterConditionAlias (stringrootAlias)"
+
+.PP
+The alias used for any filter conditions (mapped where-fragments or enabled-filters)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrootAlias\fP The root alias 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The alias used for 'filter conditions' within the where clause\&. 
+.RE
+.PP
+.PP
+This may or may not be different from the root alias depending upon the inheritance mapping strategy\&. 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP\&.
+.SS "Declarer NHibernate\&.Persister\&.Entity\&.IQueryable\&.GetSubclassPropertyDeclarer (stringpropertyPath)"
+
+.PP
+Determine whether the given property is declared by our mapped class, our super class, or one of our subclasses\&.\&.\&. 
+.PP
+Note: the method is called 'subclass property\&.\&.\&.' simply for consistency sake (e\&.g\&. \fBgetSubclassPropertyTableNumber\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyPath\fP The property name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The property declarer 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP\&.
+.SS "int NHibernate\&.Persister\&.Entity\&.IQueryable\&.GetSubclassPropertyTableNumber (stringpropertyPath)"
+
+.PP
+Given a property name, determine the number of the table which contains the column to which this property is mapped\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyPath\fP The name of the property\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of the table to which the property is mapped\&. 
+.RE
+.PP
+.PP
+Note that this is \fBnot\fP relative to the results from \fBgetConstraintOrderedTableNameClosure()\fP\&. It is relative to the subclass table name closure maintained internal to the persister (yick!)\&. It is also relative to the indexing used to resolve \fBgetSubclassTableName\fP\&.\&.\&. 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\fP\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.IQueryable\&.GetSubclassTableName (intnumber)"
+
+.PP
+Get the name of the table with the given index from the internal array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP The index into the internal array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, \fBNHibernate\&.Persister\&.Entity\&.SingleTableEntityPersister\fP, \fBNHibernate\&.Persister\&.Entity\&.JoinedSubclassEntityPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\fP\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.IQueryable\&.IdentifierSelectFragment (stringname, stringsuffix)"
+
+.PP
+Given a query alias and an identifying suffix, render the identifier select fragment\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP 
+.br
+\fIsuffix\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.IQueryable\&.PropertySelectFragment (stringalias, stringsuffix, boolallProperties)"
+
+.PP
+Given a query alias and an identifying suffix, render the property select fragment\&. 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "string [] NHibernate\&.Persister\&.Entity\&.IQueryable\&.ConstraintOrderedTableNameClosure\fC [get]\fP"
+
+.PP
+Get the names of all tables used in the hierarchy (up and down) ordered such that deletes in the given order would not cause constraint violations\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The ordered array of table names\&. 
+.RE
+.PP
+
+.PP
+Definition at line 49 of file IQueryable\&.cs\&.
+.SS "string [][] NHibernate\&.Persister\&.Entity\&.IQueryable\&.ContraintOrderedTableKeyColumnClosure\fC [get]\fP"
+
+.PP
+For each table specified in \fBConstraintOrderedTableNameClosure\fP, get the columns that define the key between the various hierarchy classes\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The first dimension here corresponds to the table indexes returned in \fBConstraintOrderedTableNameClosure\fP\&. 
+.PP
+The second dimension should have the same length across all the elements in the first dimension\&. If not, that'd be a problem ;) 
+.RE
+.PP
+
+.PP
+Definition at line 62 of file IQueryable\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.IQueryable\&.DiscriminatorSQLValue\fC [get]\fP"
+
+.PP
+The discriminator value for this particular concrete subclass, as a string that may be embedded in a select statement 
+.PP
+Definition at line 29 of file IQueryable\&.cs\&.
+.SS "object NHibernate\&.Persister\&.Entity\&.IQueryable\&.DiscriminatorValue\fC [get]\fP"
+
+.PP
+The discriminator value for this particular concrete subclass The DiscriminatorValue is specific of NH since we are using strongly typed parameters for SQL query\&.
+.PP
+Definition at line 35 of file IQueryable\&.cs\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.IQueryable\&.IsExplicitPolymorphism\fC [get]\fP"
+
+.PP
+Is this class explicit polymorphism only? 
+.PP
+Definition at line 18 of file IQueryable\&.cs\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.IQueryable\&.IsMultiTable\fC [get]\fP"
+
+.PP
+Is the inheritance hierarchy described by this persister contained across multiple tables? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if the inheritance hierarchy is spread across multiple tables; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 42 of file IQueryable\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.IQueryable\&.MappedSuperclass\fC [get]\fP"
+
+.PP
+The class that this class is mapped as a subclass of - not necessarily the direct superclass 
+.PP
+Definition at line 23 of file IQueryable\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.IQueryable\&.TemporaryIdTableDDL\fC [get]\fP"
+
+.PP
+Get the appropriate DDL command for generating the temporary table to be used to (potentially) store id values when performing bulk update/deletes\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate temporary table creation command\&. 
+.RE
+.PP
+
+.PP
+Definition at line 76 of file IQueryable\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Entity\&.IQueryable\&.TemporaryIdTableName\fC [get]\fP"
+
+.PP
+Get the name of the temporary table to be used to (potentially) store id values when performing bulk update/deletes\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate temporary table name\&. 
+.RE
+.PP
+
+.PP
+Definition at line 69 of file IQueryable\&.cs\&.
+.SS "bool NHibernate\&.Persister\&.Entity\&.IQueryable\&.VersionPropertyInsertable\fC [get]\fP"
+
+.PP
+Is the version property included in insert statements?
+.PP
+Definition at line 79 of file IQueryable\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

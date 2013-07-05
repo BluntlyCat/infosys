@@ -1,0 +1,876 @@
+.TH "NHibernate.DomainModel.CustomPersister" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.DomainModel.CustomPersister \- 
+.PP
+Summary description for \fBCustomPersister\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCustomPersister\fP (\fBPersistentClass\fP model, \fBICacheConcurrencyStrategy\fP cache, \fBISessionFactoryImplementor\fP factory, \fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "void \fBPostInstantiate\fP ()"
+.br
+.RI "\fIFinish the initialization of this object, once all \fCClassPersisters\fP have been instantiated\&. Called only once, before any other method\&. \fP"
+.ti -1c
+.RI "bool \fBIsSubclassEntityName\fP (string entityName)"
+.br
+.RI "\fIDetermine whether the given name represents a subclass entity (or this entity itself) of the entity mapped by this persister\&. \fP"
+.ti -1c
+.RI "\fBIType\fP \fBGetPropertyType\fP (string propertyName)"
+.br
+.RI "\fIGet the type of a particular property \fP"
+.ti -1c
+.RI "int[] \fBFindDirty\fP (object[] currentState, object[] previousState, object entity, \fBISessionImplementor\fP session)"
+.br
+.RI "\fILocate the property-indices of all properties considered to be dirty\&. \fP"
+.ti -1c
+.RI "int[] \fBFindModified\fP (object[] old, object[] current, object entity, \fBISessionImplementor\fP session)"
+.br
+.RI "\fILocate the property-indices of all properties considered to be dirty\&. \fP"
+.ti -1c
+.RI "object[] \fBGetNaturalIdentifierSnapshot\fP (object id, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIRetrieve the current state of the natural-id properties from the database\&. \fP"
+.ti -1c
+.RI "object \fBLoad\fP (object id, object optionalObject, \fBLockMode\fP lockMode, \fBISessionImplementor\fP session)"
+.br
+.RI "\fILoad an instance of the persistent class\&. \fP"
+.ti -1c
+.RI "void \fBLock\fP (object id, object version, object obj, \fBLockMode\fP lockMode, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIDo a version check (optional operation) \fP"
+.ti -1c
+.RI "void \fBInsert\fP (object id, object[] fields, object obj, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIPersist an instance \fP"
+.ti -1c
+.RI "object \fBInsert\fP (object[] fields, object obj, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIPersist an instance, using a natively generated identifier (optional operation) \fP"
+.ti -1c
+.RI "void \fBDelete\fP (object id, object version, object obj, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIDelete a persistent instance \fP"
+.ti -1c
+.RI "void \fBUpdate\fP (object id, object[] fields, int[] dirtyFields, bool hasDirtyCollection, object[] oldFields, object oldVersion, object obj, object rowId, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIUpdate a persistent instance \fP"
+.ti -1c
+.RI "object[] \fBGetDatabaseSnapshot\fP (object id, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGet the current database state of the object, in a 'hydrated' form, without resolving identifiers \fP"
+.ti -1c
+.RI "object \fBGetCurrentVersion\fP (object id, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGet the current version of the object, or return null if there is no row for the given identifier\&. In the case of unversioned data, return any object if the row exists\&. \fP"
+.ti -1c
+.RI "object \fBForceVersionIncrement\fP (object id, object currentVersion, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "\fBEntityMode\fP \fBGuessEntityMode\fP (object obj)"
+.br
+.RI "\fITry to discover the entity mode from the entity instance\fP"
+.ti -1c
+.RI "bool \fBIsInstrumented\fP (\fBEntityMode\fP entityMode)"
+.br
+.RI "\fIHas the class actually been bytecode instrumented?\fP"
+.ti -1c
+.RI "void \fBAfterInitialize\fP (object entity, bool lazyPropertiesAreUnfetched, \fBISessionImplementor\fP session)"
+.br
+.RI "\fICalled just after the entities properties have been initialized\fP"
+.ti -1c
+.RI "void \fBAfterReassociate\fP (object entity, \fBISessionImplementor\fP session)"
+.br
+.RI "\fICalled just after the entity has been reassociated with the session\fP"
+.ti -1c
+.RI "object \fBCreateProxy\fP (object id, \fBISessionImplementor\fP session)"
+.br
+.RI "\fICreate a new proxy instance \fP"
+.ti -1c
+.RI "bool \fBIsTransient\fP (object obj, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIIs this a new transient instance?\fP"
+.ti -1c
+.RI "object[] \fBGetPropertyValuesToInsert\fP (object obj, IDictionary mergeMap, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIReturn the values of the insertable properties of the object (including backrefs)\fP"
+.ti -1c
+.RI "void \fBProcessInsertGeneratedProperties\fP (object id, object entity, object[] state, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIPerform a select to retrieve the values of any generated properties back from the database, injecting these generated values into the given entity as well as writing this state to the persistence context\&. \fP"
+.ti -1c
+.RI "void \fBProcessUpdateGeneratedProperties\fP (object id, object entity, object[] state, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIPerform a select to retrieve the values of any generated properties back from the database, injecting these generated values into the given entity as well as writing this state to the persistence context\&. \fP"
+.ti -1c
+.RI "System\&.Type \fBGetMappedClass\fP (\fBEntityMode\fP entityMode)"
+.br
+.RI "\fIThe persistent class, or null \fP"
+.ti -1c
+.RI "bool \fBImplementsLifecycle\fP (\fBEntityMode\fP entityMode)"
+.br
+.RI "\fIDoes the class implement the \fCILifecycle\fP inteface? \fP"
+.ti -1c
+.RI "bool \fBImplementsValidatable\fP (\fBEntityMode\fP entityMode)"
+.br
+.RI "\fIDoes the class implement the \fCIValidatable\fP interface? \fP"
+.ti -1c
+.RI "System\&.Type \fBGetConcreteProxyClass\fP (\fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet the proxy interface that instances of \fCthis\fP concrete class will be cast to \fP"
+.ti -1c
+.RI "void \fBSetPropertyValues\fP (object obj, object[] values, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fISet the given values to the mapped properties of the given object \fP"
+.ti -1c
+.RI "void \fBSetPropertyValue\fP (object obj, int i, object value, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fISet the value of a particular property \fP"
+.ti -1c
+.RI "object[] \fBGetPropertyValues\fP (object obj, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIReturn the values of the mapped properties of the object \fP"
+.ti -1c
+.RI "object \fBGetPropertyValue\fP (object obj, int i, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet the value of a particular property \fP"
+.ti -1c
+.RI "object \fBGetPropertyValue\fP (object obj, string name, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet the value of a particular property \fP"
+.ti -1c
+.RI "object \fBGetIdentifier\fP (object obj, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet the identifier of an instance ( throw an exception if no identifier property) \fP"
+.ti -1c
+.RI "void \fBSetIdentifier\fP (object obj, object id, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fISet the identifier of an instance (or do nothing if no identifier property) \fP"
+.ti -1c
+.RI "object \fBGetVersion\fP (object obj, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet the version number (or timestamp) from the object's version property (or return null if not versioned) \fP"
+.ti -1c
+.RI "object \fBInstantiate\fP (object id, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fICreate a class instance initialized with the given identifier \fP"
+.ti -1c
+.RI "bool \fBIsInstance\fP (object entity, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIDetermines whether the specified entity is an instance of the class managed by this persister\&. \fP"
+.ti -1c
+.RI "bool \fBHasUninitializedLazyProperties\fP (object obj, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIDoes the given instance have any uninitialized lazy properties?\fP"
+.ti -1c
+.RI "void \fBResetIdentifier\fP (object entity, object currentId, object currentVersion, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fISet the identifier and version of the given instance back to its 'unsaved' value, returning the id \fP"
+.ti -1c
+.RI "\fBIEntityPersister\fP \fBGetSubclassEntityPersister\fP (object instance, \fBISessionFactoryImplementor\fP factory, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet the persister for an instance of this class or a subclass\fP"
+.ti -1c
+.RI "bool \fBIsUnsavedVersion\fP (object version)"
+.br
+.RI "\fICheck the version value trough VersionValue\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBISessionFactoryImplementor\fP \fBFactory\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBRootEntityName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBEntityName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBEntityMetamodel\fP \fBEntityMetamodel\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBPropertySpaces\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBQuerySpaces\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsMutable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsInherited\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsIdentifierAssignedByInsert\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsVersioned\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIVersionType\fP \fBVersionType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBVersionProperty\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int[] \fBNaturalIdentifierProperties\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIIdentifierGenerator\fP \fBIdentifierGenerator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP[] \fBPropertyTypes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBPropertyNames\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBPropertyInsertability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBValueInclusion\fP[] \fBPropertyInsertGenerationInclusions\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBValueInclusion\fP[] \fBPropertyUpdateGenerationInclusions\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBPropertyCheckability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBPropertyNullability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBPropertyVersionability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBPropertyLaziness\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBCascadeStyle\fP[] \fBPropertyCascadeStyles\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP \fBIdentifierType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBIdentifierPropertyName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsCacheInvalidationRequired\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsLazyPropertiesCacheable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBICacheConcurrencyStrategy\fP \fBCache\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBICacheEntryStructure\fP \fBCacheEntryStructure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIClassMetadata\fP \fBClassMetadata\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsBatchLoadable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSelectBeforeUpdateRequired\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsVersionPropertyGenerated\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasProxy\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasCollections\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasMutableProperties\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasSubselectLoadableCollections\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasCascades\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasIdentifierProperty\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBCanExtractIdOutOfEntity\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasNaturalIdentifier\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasLazyProperties\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBPropertyUpdateability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasCache\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasInsertGeneratedProperties\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasUpdateGeneratedProperties\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IComparer \fBVersionComparator\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Summary description for \fBCustomPersister\fP\&. 
+
+
+.PP
+Definition at line 20 of file CustomPersister\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.DomainModel\&.CustomPersister\&.AfterInitialize (objectentity, boollazyPropertiesAreUnfetched, \fBISessionImplementor\fPsession)"
+
+.PP
+Called just after the entities properties have been initialized
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 407 of file CustomPersister\&.cs\&.
+.SS "void NHibernate\&.DomainModel\&.CustomPersister\&.AfterReassociate (objectentity, \fBISessionImplementor\fPsession)"
+
+.PP
+Called just after the entity has been reassociated with the session
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 411 of file CustomPersister\&.cs\&.
+.SS "object NHibernate\&.DomainModel\&.CustomPersister\&.CreateProxy (objectid, \fBISessionImplementor\fPsession)"
+
+.PP
+Create a new proxy instance 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP 
+.br
+\fIsession\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 415 of file CustomPersister\&.cs\&.
+.SS "void NHibernate\&.DomainModel\&.CustomPersister\&.Delete (objectid, objectversion, objectobj, \fBISessionImplementor\fPsession)"
+
+.PP
+Delete a persistent instance 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 344 of file CustomPersister\&.cs\&.
+.SS "int [] NHibernate\&.DomainModel\&.CustomPersister\&.FindDirty (object[]currentState, object[]previousState, objectentity, \fBISessionImplementor\fPsession)"
+
+.PP
+Locate the property-indices of all properties considered to be dirty\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcurrentState\fP The current state of the entity (the state to be checked)\&. 
+.br
+\fIpreviousState\fP The previous state of the entity (the state to be checked against)\&. 
+.br
+\fIentity\fP The entity for which we are checking state dirtiness\&. 
+.br
+\fIsession\fP The session in which the check is ccurring\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+or the indices of the dirty properties 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 263 of file CustomPersister\&.cs\&.
+.SS "int [] NHibernate\&.DomainModel\&.CustomPersister\&.FindModified (object[]old, object[]current, objectentity, \fBISessionImplementor\fPsession)"
+
+.PP
+Locate the property-indices of all properties considered to be dirty\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIold\fP The old state of the entity\&.
+.br
+\fIcurrent\fP The current state of the entity\&. 
+.br
+\fIentity\fP The entity for which we are checking state modification\&. 
+.br
+\fIsession\fP The session in which the check is ccurring\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+return  or the indicies of the modified properties
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 275 of file CustomPersister\&.cs\&.
+.SS "System\&.Type NHibernate\&.DomainModel\&.CustomPersister\&.GetConcreteProxyClass (\fBEntityMode\fPentityMode)"
+
+.PP
+Get the proxy interface that instances of \fCthis\fP concrete class will be cast to 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 456 of file CustomPersister\&.cs\&.
+.SS "object NHibernate\&.DomainModel\&.CustomPersister\&.GetCurrentVersion (objectid, \fBISessionImplementor\fPsession)"
+
+.PP
+Get the current version of the object, or return null if there is no row for the given identifier\&. In the case of unversioned data, return any object if the row exists\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP 
+.br
+\fIsession\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 370 of file CustomPersister\&.cs\&.
+.SS "object [] NHibernate\&.DomainModel\&.CustomPersister\&.GetDatabaseSnapshot (objectid, \fBISessionImplementor\fPsession)"
+
+.PP
+Get the current database state of the object, in a 'hydrated' form, without resolving identifiers 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP 
+.br
+\fIsession\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+if select-before-update is not enabled or not supported
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 365 of file CustomPersister\&.cs\&.
+.SS "object NHibernate\&.DomainModel\&.CustomPersister\&.GetIdentifier (objectobj, \fBEntityMode\fPentityMode)"
+
+.PP
+Get the identifier of an instance ( throw an exception if no identifier property) 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 493 of file CustomPersister\&.cs\&.
+.SS "System\&.Type NHibernate\&.DomainModel\&.CustomPersister\&.GetMappedClass (\fBEntityMode\fPentityMode)"
+
+.PP
+The persistent class, or null 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 438 of file CustomPersister\&.cs\&.
+.SS "object [] NHibernate\&.DomainModel\&.CustomPersister\&.GetNaturalIdentifierSnapshot (objectid, \fBISessionImplementor\fPsession)"
+
+.PP
+Retrieve the current state of the natural-id properties from the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The identifier of the entity for which to retrieve the naturak-id values\&. 
+.br
+\fIsession\fP The session from which the request originated\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The natural-id snapshot\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 302 of file CustomPersister\&.cs\&.
+.SS "\fBIType\fP NHibernate\&.DomainModel\&.CustomPersister\&.GetPropertyType (stringpropertyName)"
+
+.PP
+Get the type of a particular property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 258 of file CustomPersister\&.cs\&.
+.SS "object NHibernate\&.DomainModel\&.CustomPersister\&.GetPropertyValue (objectobj, inti, \fBEntityMode\fPentityMode)"
+
+.PP
+Get the value of a particular property 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 481 of file CustomPersister\&.cs\&.
+.SS "object NHibernate\&.DomainModel\&.CustomPersister\&.GetPropertyValue (objectobj, stringname, \fBEntityMode\fPentityMode)"
+
+.PP
+Get the value of a particular property 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 487 of file CustomPersister\&.cs\&.
+.SS "object [] NHibernate\&.DomainModel\&.CustomPersister\&.GetPropertyValues (objectobj, \fBEntityMode\fPentityMode)"
+
+.PP
+Return the values of the mapped properties of the object 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 474 of file CustomPersister\&.cs\&.
+.SS "object [] NHibernate\&.DomainModel\&.CustomPersister\&.GetPropertyValuesToInsert (objectobj, IDictionarymergeMap, \fBISessionImplementor\fPsession)"
+
+.PP
+Return the values of the insertable properties of the object (including backrefs)
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 425 of file CustomPersister\&.cs\&.
+.SS "\fBIEntityPersister\fP NHibernate\&.DomainModel\&.CustomPersister\&.GetSubclassEntityPersister (objectinstance, \fBISessionFactoryImplementor\fPfactory, \fBEntityMode\fPentityMode)"
+
+.PP
+Get the persister for an instance of this class or a subclass
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 537 of file CustomPersister\&.cs\&.
+.SS "object NHibernate\&.DomainModel\&.CustomPersister\&.GetVersion (objectobj, \fBEntityMode\fPentityMode)"
+
+.PP
+Get the version number (or timestamp) from the object's version property (or return null if not versioned) 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 505 of file CustomPersister\&.cs\&.
+.SS "\fBEntityMode\fP NHibernate\&.DomainModel\&.CustomPersister\&.GuessEntityMode (objectobj)"
+
+.PP
+Try to discover the entity mode from the entity instance
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 380 of file CustomPersister\&.cs\&.
+.SS "bool NHibernate\&.DomainModel\&.CustomPersister\&.HasUninitializedLazyProperties (objectobj, \fBEntityMode\fPentityMode)"
+
+.PP
+Does the given instance have any uninitialized lazy properties?
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 525 of file CustomPersister\&.cs\&.
+.SS "bool NHibernate\&.DomainModel\&.CustomPersister\&.ImplementsLifecycle (\fBEntityMode\fPentityMode)"
+
+.PP
+Does the class implement the \fCILifecycle\fP inteface? 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 444 of file CustomPersister\&.cs\&.
+.SS "bool NHibernate\&.DomainModel\&.CustomPersister\&.ImplementsValidatable (\fBEntityMode\fPentityMode)"
+
+.PP
+Does the class implement the \fCIValidatable\fP interface? 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 450 of file CustomPersister\&.cs\&.
+.SS "void NHibernate\&.DomainModel\&.CustomPersister\&.Insert (objectid, object[]fields, objectobj, \fBISessionImplementor\fPsession)"
+
+.PP
+Persist an instance 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 334 of file CustomPersister\&.cs\&.
+.SS "object NHibernate\&.DomainModel\&.CustomPersister\&.Insert (object[]fields, objectobj, \fBISessionImplementor\fPsession)"
+
+.PP
+Persist an instance, using a natively generated identifier (optional operation) 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 339 of file CustomPersister\&.cs\&.
+.SS "object NHibernate\&.DomainModel\&.CustomPersister\&.Instantiate (objectid, \fBEntityMode\fPentityMode)"
+
+.PP
+Create a class instance initialized with the given identifier 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 511 of file CustomPersister\&.cs\&.
+.SS "bool NHibernate\&.DomainModel\&.CustomPersister\&.IsInstance (objectentity, \fBEntityMode\fPentityMode)"
+
+.PP
+Determines whether the specified entity is an instance of the class managed by this persister\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity\&.
+.br
+\fIentityMode\fP The EntityMode
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+if the specified entity is an instance; otherwise, \&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 519 of file CustomPersister\&.cs\&.
+.SS "bool NHibernate\&.DomainModel\&.CustomPersister\&.IsInstrumented (\fBEntityMode\fPentityMode)"
+
+.PP
+Has the class actually been bytecode instrumented?
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 392 of file CustomPersister\&.cs\&.
+.SS "bool NHibernate\&.DomainModel\&.CustomPersister\&.IsSubclassEntityName (stringentityName)"
+
+.PP
+Determine whether the given name represents a subclass entity (or this entity itself) of the entity mapped by this persister\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The entity name to be checked\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the given entity name represents either the entity mapped by this persister or one of its subclass entities; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 228 of file CustomPersister\&.cs\&.
+.SS "bool NHibernate\&.DomainModel\&.CustomPersister\&.IsTransient (objectobj, \fBISessionImplementor\fPsession)"
+
+.PP
+Is this a new transient instance?
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 420 of file CustomPersister\&.cs\&.
+.SS "bool NHibernate\&.DomainModel\&.CustomPersister\&.IsUnsavedVersion (objectversion)"
+
+.PP
+Check the version value trough VersionValue\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIversion\fP The snapshot entity state
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of VersionValue\&.IsUnsaved\&.
+.RE
+.PP
+.PP
+NHibernate-specific feature, not present in H3\&.2
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 544 of file CustomPersister\&.cs\&.
+.SS "object NHibernate\&.DomainModel\&.CustomPersister\&.Load (objectid, objectoptionalObject, \fBLockMode\fPlockMode, \fBISessionImplementor\fPsession)"
+
+.PP
+Load an instance of the persistent class\&. 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 312 of file CustomPersister\&.cs\&.
+.SS "void NHibernate\&.DomainModel\&.CustomPersister\&.Lock (objectid, objectversion, objectobj, \fBLockMode\fPlockMode, \fBISessionImplementor\fPsession)"
+
+.PP
+Do a version check (optional operation) 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 329 of file CustomPersister\&.cs\&.
+.SS "void NHibernate\&.DomainModel\&.CustomPersister\&.PostInstantiate ()"
+
+.PP
+Finish the initialization of this object, once all \fCClassPersisters\fP have been instantiated\&. Called only once, before any other method\&. 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 224 of file CustomPersister\&.cs\&.
+.SS "void NHibernate\&.DomainModel\&.CustomPersister\&.ProcessInsertGeneratedProperties (objectid, objectentity, object[]state, \fBISessionImplementor\fPsession)"
+
+.PP
+Perform a select to retrieve the values of any generated properties back from the database, injecting these generated values into the given entity as well as writing this state to the persistence context\&. Note, that because we update the persistence context here, callers need to take care that they have already written the initial snapshot to the persistence context before calling this method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The entity's id value\&.
+.br
+\fIentity\fP The entity for which to get the state\&.
+.br
+\fIstate\fP The entity state (at the time of Save)\&.
+.br
+\fIsession\fP The session\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 430 of file CustomPersister\&.cs\&.
+.SS "void NHibernate\&.DomainModel\&.CustomPersister\&.ProcessUpdateGeneratedProperties (objectid, objectentity, object[]state, \fBISessionImplementor\fPsession)"
+
+.PP
+Perform a select to retrieve the values of any generated properties back from the database, injecting these generated values into the given entity as well as writing this state to the persistence context\&. Note, that because we update the persistence context here, callers need to take care that they have already written the initial snapshot to the persistence context before calling this method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The entity's id value\&.
+.br
+\fIentity\fP The entity for which to get the state\&.
+.br
+\fIstate\fP The entity state (at the time of Save)\&.
+.br
+\fIsession\fP The session\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 434 of file CustomPersister\&.cs\&.
+.SS "void NHibernate\&.DomainModel\&.CustomPersister\&.ResetIdentifier (objectentity, objectcurrentId, objectcurrentVersion, \fBEntityMode\fPentityMode)"
+
+.PP
+Set the identifier and version of the given instance back to its 'unsaved' value, returning the id 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 531 of file CustomPersister\&.cs\&.
+.SS "void NHibernate\&.DomainModel\&.CustomPersister\&.SetIdentifier (objectobj, objectid, \fBEntityMode\fPentityMode)"
+
+.PP
+Set the identifier of an instance (or do nothing if no identifier property) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP The object to set the \fBId\fP property on\&.
+.br
+\fIid\fP The value to set the \fBId\fP property to\&.
+.br
+\fIentityMode\fP The EntityMode
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 499 of file CustomPersister\&.cs\&.
+.SS "void NHibernate\&.DomainModel\&.CustomPersister\&.SetPropertyValue (objectobj, inti, objectvalue, \fBEntityMode\fPentityMode)"
+
+.PP
+Set the value of a particular property 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 468 of file CustomPersister\&.cs\&.
+.SS "void NHibernate\&.DomainModel\&.CustomPersister\&.SetPropertyValues (objectobj, object[]values, \fBEntityMode\fPentityMode)"
+
+.PP
+Set the given values to the mapped properties of the given object 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 462 of file CustomPersister\&.cs\&.
+.SS "void NHibernate\&.DomainModel\&.CustomPersister\&.Update (objectid, object[]fields, int[]dirtyFields, boolhasDirtyCollection, object[]oldFields, objectoldVersion, objectobj, objectrowId, \fBISessionImplementor\fPsession)"
+
+.PP
+Update a persistent instance 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The id\&.
+.br
+\fIfields\fP The fields\&.
+.br
+\fIdirtyFields\fP The dirty fields\&.
+.br
+\fIhasDirtyCollection\fP if set to  [has dirty collection]\&.
+.br
+\fIoldFields\fP The old fields\&.
+.br
+\fIoldVersion\fP The old version\&.
+.br
+\fIobj\fP The obj\&.
+.br
+\fIrowId\fP The rowId
+.br
+\fIsession\fP The session\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP\&.
+.PP
+Definition at line 349 of file CustomPersister\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

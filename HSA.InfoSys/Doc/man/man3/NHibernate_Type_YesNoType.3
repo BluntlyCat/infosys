@@ -1,0 +1,77 @@
+.TH "NHibernate.Type.YesNoType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.YesNoType \- 
+.PP
+Maps a System\&.Boolean to a 1 char System\&.Data\&.DbType\&.AnsiStringFixedLength column that stores a  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.CharBooleanType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBYesNoType\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override sealed string \fBTrueString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override sealed string \fBFalseString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Maps a System\&.Boolean to a 1 char System\&.Data\&.DbType\&.AnsiStringFixedLength column that stores a 
+
+\fC'Y'/'N'\fP to indicate \fCtrue/false\fP\&. 
+.PP
+If you are using schema-export to generate your tables then you need to set the column attributes: \fClength=1\fP or \fCsql-type='char(1)'\fP\&.
+.PP
+This needs to be done because in Java's JDBC there is a type for CHAR and in ADO\&.NET there is not one specifically for char, so you need to tell schema export to create a char(1) column\&. 
+.PP
+Definition at line 19 of file YesNoType\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Type\&.YesNoType\&.YesNoType ()"
+
+.PP
+
+.PP
+Definition at line 22 of file YesNoType\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override sealed string NHibernate\&.Type\&.YesNoType\&.FalseString\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+
+.PP
+Definition at line 34 of file YesNoType\&.cs\&.
+.SS "override string NHibernate\&.Type\&.YesNoType\&.Name\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 40 of file YesNoType\&.cs\&.
+.SS "override sealed string NHibernate\&.Type\&.YesNoType\&.TrueString\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+
+.PP
+Definition at line 28 of file YesNoType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,255 @@
+.TH "NHibernate.UserTypes.IUserType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.UserTypes.IUserType \- 
+.PP
+The interface to be implemented by user-defined types\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.DomainModel\&.NHSpecific\&.NullInt32UserType\fP, \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.DataReaderWrapperTest\&.TheUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1907\&.SimpleCustomType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2234\&.SimpleCustomType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3237\&.DateTimeOffsetUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3237\&.EnumUserType\fP, \fBNHibernate\&.Test\&.SqlTest\&.MonetaryAmountUserType\fP, \fBNHibernate\&.Test\&.SqlTest\&.NullDateUserType\fP, \fBNHibernate\&.Test\&.TypeParameters\&.DefaultValueIntegerType\fP, \fBNHibernate\&.UserTypes\&.IEnhancedUserType\fP, and \fBNHibernate\&.UserTypes\&.IUserVersionType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBEquals\fP (object x, object y)"
+.br
+.RI "\fICompare two instances of the class mapped by this type for persistent 'equality' ie\&. equality of persistent state \fP"
+.ti -1c
+.RI "int \fBGetHashCode\fP (object x)"
+.br
+.RI "\fIGet a hashcode for the instance, consistent with persistence 'equality' \fP"
+.ti -1c
+.RI "object \fBNullSafeGet\fP (IDataReader rs, string[] names, object owner)"
+.br
+.RI "\fIRetrieve an instance of the mapped class from a JDBC resultset\&. Implementors should handle possibility of null values\&. \fP"
+.ti -1c
+.RI "void \fBNullSafeSet\fP (IDbCommand cmd, object value, int index)"
+.br
+.RI "\fIWrite an instance of the mapped class to a prepared statement\&. Implementors should handle possibility of null values\&. A multi-column type should be written to parameters starting from index\&. \fP"
+.ti -1c
+.RI "object \fBDeepCopy\fP (object value)"
+.br
+.RI "\fIReturn a deep copy of the persistent state, stopping at entities and at collections\&. \fP"
+.ti -1c
+.RI "object \fBReplace\fP (object original, object target, object owner)"
+.br
+.RI "\fIDuring merge, replace the existing (\fItarget\fP ) value in the entity we are merging to with a new (\fIoriginal\fP ) value from the detached entity we are merging\&. For immutable objects, or null values, it is safe to simply return the first parameter\&. For mutable objects, it is safe to return a copy of the first parameter\&. For objects with component values, it might make sense to recursively replace component values\&. \fP"
+.ti -1c
+.RI "object \fBAssemble\fP (object cached, object owner)"
+.br
+.RI "\fIReconstruct an object from the cacheable representation\&. At the very least this method should perform a deep copy if the type is mutable\&. (optional operation) \fP"
+.ti -1c
+.RI "object \fBDisassemble\fP (object value)"
+.br
+.RI "\fI\fBTransform\fP the object into its cacheable representation\&. At the very least this method should perform a deep copy if the type is mutable\&. That may not be enough for some implementations, however; for example, associations must be cached as identifier values\&. (optional operation) \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlType\fP[] \fBSqlTypes\fP\fC [get]\fP"
+.br
+.RI "\fIThe SQL types for the columns mapped by this type\&. \fP"
+.ti -1c
+.RI "System\&.Type \fBReturnedType\fP\fC [get]\fP"
+.br
+.RI "\fIThe type returned by \fC\fBNullSafeGet()\fP\fP \fP"
+.ti -1c
+.RI "bool \fBIsMutable\fP\fC [get]\fP"
+.br
+.RI "\fIAre objects of this type mutable? \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The interface to be implemented by user-defined types\&. 
+
+The interface abstracts user code from future changes to the \fBType\&.IType\fP interface, simplifies the implementation of custom types and hides certain "internal interfaces from user code\&. 
+.PP
+Implementers must be immutable and must declare a public default constructor\&. 
+.PP
+The actual class mapped by a \fC\fBIUserType\fP\fP may be just about anything\&. However, if it is to be cacheble by a persistent cache, it must be serializable\&. 
+.PP
+Alternatively, custom types could implement \fBType\&.IType\fP directly or extend one of the abstract classes in \fC\fBNHibernate\&.Type\fP\fP\&. This approach risks future incompatible changes to classes or interfaces in the package\&. 
+.PP
+Definition at line 28 of file IUserType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.UserTypes\&.IUserType\&.Assemble (objectcached, objectowner)"
+
+.PP
+Reconstruct an object from the cacheable representation\&. At the very least this method should perform a deep copy if the type is mutable\&. (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcached\fP the object to be cached
+.br
+\fIowner\fP the owner of the cached object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a reconstructed object from the cachable representation
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH732\&.CaseInsensitiveStringType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2234\&.SimpleCustomType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1907\&.SimpleCustomType\fP, \fBNHibernate\&.Test\&.TypeParameters\&.DefaultValueIntegerType\fP, \fBNHibernate\&.DomainModel\&.NHSpecific\&.NullInt32UserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3237\&.DateTimeOffsetUserType\fP, \fBNHibernate\&.Test\&.SqlTest\&.NullDateUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3237\&.EnumUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.DataReaderWrapperTest\&.TheUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1355\&.UserTypeTimestamp\fP, and \fBNHibernate\&.Test\&.VersionTest\&.Db\&.MsSQL\&.BinaryTimestamp\fP\&.
+.SS "object NHibernate\&.UserTypes\&.IUserType\&.DeepCopy (objectvalue)"
+
+.PP
+Return a deep copy of the persistent state, stopping at entities and at collections\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP generally a collection element or entity field
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a copy
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH732\&.CaseInsensitiveStringType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3237\&.DateTimeOffsetUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2234\&.SimpleCustomType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3237\&.EnumUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1907\&.SimpleCustomType\fP, \fBNHibernate\&.Test\&.SqlTest\&.NullDateUserType\fP, \fBNHibernate\&.DomainModel\&.NHSpecific\&.NullInt32UserType\fP, \fBNHibernate\&.Test\&.TypeParameters\&.DefaultValueIntegerType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.DataReaderWrapperTest\&.TheUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1355\&.UserTypeTimestamp\fP, \fBNHibernate\&.Test\&.SqlTest\&.MonetaryAmountUserType\fP, and \fBNHibernate\&.Test\&.VersionTest\&.Db\&.MsSQL\&.BinaryTimestamp\fP\&.
+.SS "object NHibernate\&.UserTypes\&.IUserType\&.Disassemble (objectvalue)"
+
+.PP
+\fBTransform\fP the object into its cacheable representation\&. At the very least this method should perform a deep copy if the type is mutable\&. That may not be enough for some implementations, however; for example, associations must be cached as identifier values\&. (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP the object to be cached
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a cacheable representation of the object
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH732\&.CaseInsensitiveStringType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2234\&.SimpleCustomType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1907\&.SimpleCustomType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3237\&.DateTimeOffsetUserType\fP, \fBNHibernate\&.Test\&.TypeParameters\&.DefaultValueIntegerType\fP, \fBNHibernate\&.DomainModel\&.NHSpecific\&.NullInt32UserType\fP, \fBNHibernate\&.Test\&.SqlTest\&.NullDateUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3237\&.EnumUserType\fP, \fBNHibernate\&.Test\&.SqlTest\&.MonetaryAmountUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.DataReaderWrapperTest\&.TheUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1355\&.UserTypeTimestamp\fP, and \fBNHibernate\&.Test\&.VersionTest\&.Db\&.MsSQL\&.BinaryTimestamp\fP\&.
+.SS "bool NHibernate\&.UserTypes\&.IUserType\&.Equals (objectx, objecty)"
+
+.PP
+Compare two instances of the class mapped by this type for persistent 'equality' ie\&. equality of persistent state 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3237\&.DateTimeOffsetUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3237\&.EnumUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH732\&.CaseInsensitiveStringType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2234\&.SimpleCustomType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1907\&.SimpleCustomType\fP, \fBNHibernate\&.Test\&.SqlTest\&.MonetaryAmountUserType\fP, \fBNHibernate\&.DomainModel\&.NHSpecific\&.NullInt32UserType\fP, \fBNHibernate\&.Test\&.SqlTest\&.NullDateUserType\fP, \fBNHibernate\&.Test\&.TypeParameters\&.DefaultValueIntegerType\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.DataReaderWrapperTest\&.TheUserType\fP\&.
+.SS "int NHibernate\&.UserTypes\&.IUserType\&.GetHashCode (objectx)"
+
+.PP
+Get a hashcode for the instance, consistent with persistence 'equality' 
+.PP
+Implemented in \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3237\&.DateTimeOffsetUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3237\&.EnumUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH732\&.CaseInsensitiveStringType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2234\&.SimpleCustomType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1907\&.SimpleCustomType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1355\&.UserTypeTimestamp\fP, \fBNHibernate\&.Test\&.VersionTest\&.Db\&.MsSQL\&.BinaryTimestamp\fP, \fBNHibernate\&.DomainModel\&.NHSpecific\&.NullInt32UserType\fP, \fBNHibernate\&.Test\&.TypeParameters\&.DefaultValueIntegerType\fP, \fBNHibernate\&.Test\&.SqlTest\&.NullDateUserType\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.DataReaderWrapperTest\&.TheUserType\fP\&.
+.SS "object NHibernate\&.UserTypes\&.IUserType\&.NullSafeGet (IDataReaderrs, string[]names, objectowner)"
+
+.PP
+Retrieve an instance of the mapped class from a JDBC resultset\&. Implementors should handle possibility of null values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP a IDataReader
+.br
+\fInames\fP column names
+.br
+\fIowner\fP the containing entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP \fBHibernateException\fP
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2234\&.SimpleCustomType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH732\&.CaseInsensitiveStringType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1907\&.SimpleCustomType\fP, \fBNHibernate\&.DomainModel\&.NHSpecific\&.NullInt32UserType\fP, \fBNHibernate\&.Test\&.TypeParameters\&.DefaultValueIntegerType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1355\&.UserTypeTimestamp\fP, \fBNHibernate\&.Test\&.VersionTest\&.Db\&.MsSQL\&.BinaryTimestamp\fP, \fBNHibernate\&.Test\&.SqlTest\&.MonetaryAmountUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3237\&.DateTimeOffsetUserType\fP, \fBNHibernate\&.Test\&.SqlTest\&.NullDateUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.DataReaderWrapperTest\&.TheUserType\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3237\&.EnumUserType\fP\&.
+.SS "void NHibernate\&.UserTypes\&.IUserType\&.NullSafeSet (IDbCommandcmd, objectvalue, intindex)"
+
+.PP
+Write an instance of the mapped class to a prepared statement\&. Implementors should handle possibility of null values\&. A multi-column type should be written to parameters starting from index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP a IDbCommand
+.br
+\fIvalue\fP the object to write
+.br
+\fIindex\fP command parameter index
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP \fBHibernateException\fP
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH732\&.CaseInsensitiveStringType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2234\&.SimpleCustomType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3237\&.DateTimeOffsetUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1907\&.SimpleCustomType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1355\&.UserTypeTimestamp\fP, \fBNHibernate\&.Test\&.SqlTest\&.MonetaryAmountUserType\fP, \fBNHibernate\&.Test\&.VersionTest\&.Db\&.MsSQL\&.BinaryTimestamp\fP, \fBNHibernate\&.DomainModel\&.NHSpecific\&.NullInt32UserType\fP, \fBNHibernate\&.Test\&.TypeParameters\&.DefaultValueIntegerType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3237\&.EnumUserType\fP, \fBNHibernate\&.Test\&.SqlTest\&.NullDateUserType\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.DataReaderWrapperTest\&.TheUserType\fP\&.
+.SS "object NHibernate\&.UserTypes\&.IUserType\&.Replace (objectoriginal, objecttarget, objectowner)"
+
+.PP
+During merge, replace the existing (\fItarget\fP ) value in the entity we are merging to with a new (\fIoriginal\fP ) value from the detached entity we are merging\&. For immutable objects, or null values, it is safe to simply return the first parameter\&. For mutable objects, it is safe to return a copy of the first parameter\&. For objects with component values, it might make sense to recursively replace component values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoriginal\fP the value from the detached entity being merged
+.br
+\fItarget\fP the value in the managed entity
+.br
+\fIowner\fP the managed entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the value to be merged
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH732\&.CaseInsensitiveStringType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3237\&.DateTimeOffsetUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2234\&.SimpleCustomType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3237\&.EnumUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1907\&.SimpleCustomType\fP, \fBNHibernate\&.Test\&.SqlTest\&.MonetaryAmountUserType\fP, \fBNHibernate\&.Test\&.TypeParameters\&.DefaultValueIntegerType\fP, \fBNHibernate\&.DomainModel\&.NHSpecific\&.NullInt32UserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1355\&.UserTypeTimestamp\fP, \fBNHibernate\&.Test\&.SqlTest\&.NullDateUserType\fP, \fBNHibernate\&.Test\&.VersionTest\&.Db\&.MsSQL\&.BinaryTimestamp\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.DataReaderWrapperTest\&.TheUserType\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.UserTypes\&.IUserType\&.IsMutable\fC [get]\fP"
+
+.PP
+Are objects of this type mutable? 
+.PP
+Definition at line 88 of file IUserType\&.cs\&.
+.SS "System\&.Type NHibernate\&.UserTypes\&.IUserType\&.ReturnedType\fC [get]\fP"
+
+.PP
+The type returned by \fC\fBNullSafeGet()\fP\fP 
+.PP
+Definition at line 38 of file IUserType\&.cs\&.
+.SS "\fBSqlType\fP [] NHibernate\&.UserTypes\&.IUserType\&.SqlTypes\fC [get]\fP"
+
+.PP
+The SQL types for the columns mapped by this type\&. 
+.PP
+Definition at line 33 of file IUserType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

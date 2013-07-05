@@ -1,0 +1,142 @@
+.TH "Newtonsoft.Json.Schema" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.Schema \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBExtensions\fP"
+.br
+.RI "\fIContains the JSON schema extension methods\&. \fP"
+.ti -1c
+.RI "class \fBJsonSchema\fP"
+.br
+.RI "\fIAn in-memory representation of a JSON \fBSchema\fP\&. \fP"
+.ti -1c
+.RI "class \fBJsonSchemaBuilder\fP"
+.br
+.ti -1c
+.RI "class \fBJsonSchemaConstants\fP"
+.br
+.ti -1c
+.RI "class \fBJsonSchemaException\fP"
+.br
+.RI "\fIReturns detailed information about the schema exception\&. \fP"
+.ti -1c
+.RI "class \fBJsonSchemaGenerator\fP"
+.br
+.RI "\fIGenerates a \fBJsonSchema\fP from a specified Type\&. \fP"
+.ti -1c
+.RI "class \fBJsonSchemaModel\fP"
+.br
+.ti -1c
+.RI "class \fBJsonSchemaModelBuilder\fP"
+.br
+.ti -1c
+.RI "class \fBJsonSchemaNode\fP"
+.br
+.ti -1c
+.RI "class \fBJsonSchemaNodeCollection\fP"
+.br
+.ti -1c
+.RI "class \fBJsonSchemaResolver\fP"
+.br
+.RI "\fIResolves \fBJsonSchema\fP from an id\&. \fP"
+.ti -1c
+.RI "class \fBJsonSchemaWriter\fP"
+.br
+.ti -1c
+.RI "class \fBValidationEventArgs\fP"
+.br
+.RI "\fIReturns detailed information related to the \fBValidationEventHandler\fP\&. \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBJsonSchemaType\fP { \fBJsonSchemaType\&.None\fP = 0, \fBJsonSchemaType\&.String\fP = 1, \fBJsonSchemaType\&.Float\fP = 2, \fBJsonSchemaType\&.Integer\fP = 4, \fBJsonSchemaType\&.Boolean\fP = 8, \fBJsonSchemaType\&.Object\fP = 16, \fBJsonSchemaType\&.Array\fP = 32, \fBJsonSchemaType\&.Null\fP = 64, \fBJsonSchemaType\&.Any\fP = String | Float | Integer | Boolean | Object | Array | Null }"
+.br
+.RI "\fIThe value types allowed by the JsonSchema\&. \fP"
+.ti -1c
+.RI "enum \fBUndefinedSchemaIdHandling\fP { \fBUndefinedSchemaIdHandling\&.None\fP = 0, \fBUndefinedSchemaIdHandling\&.UseTypeName\fP = 1, \fBUndefinedSchemaIdHandling\&.UseAssemblyQualifiedName\fP = 2 }"
+.br
+.RI "\fISpecifies undefined schema Id handling options for the JsonSchemaGenerator\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "delegate void \fBValidationEventHandler\fP (object sender, \fBValidationEventArgs\fP e)"
+.br
+.RI "\fIRepresents the callback method that will handle JSON schema validation events and the \fBValidationEventArgs\fP\&. \fP"
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBNewtonsoft\&.Json\&.Schema\&.JsonSchemaType\fP"
+
+.PP
+The value types allowed by the \fBJsonSchema\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+No type specified\&. 
+.TP
+\fB\fIString \fP\fP
+String type\&. 
+.TP
+\fB\fIFloat \fP\fP
+Float type\&. 
+.TP
+\fB\fIInteger \fP\fP
+Integer type\&. 
+.TP
+\fB\fIBoolean \fP\fP
+Boolean type\&. 
+.TP
+\fB\fIObject \fP\fP
+Object type\&. 
+.TP
+\fB\fIArray \fP\fP
+Array type\&. 
+.TP
+\fB\fINull \fP\fP
+Null type\&. 
+.TP
+\fB\fIAny \fP\fP
+Any type\&. 
+.PP
+Definition at line 34 of file JsonSchemaType\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.Schema\&.UndefinedSchemaIdHandling\fP"
+
+.PP
+Specifies undefined schema Id handling options for the \fBJsonSchemaGenerator\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+Do not infer a schema Id\&. 
+.TP
+\fB\fIUseTypeName \fP\fP
+Use the \&.NET type name as the schema Id\&. 
+.TP
+\fB\fIUseAssemblyQualifiedName \fP\fP
+Use the assembly qualified \&.NET type name as the schema Id\&. 
+.PP
+Definition at line 31 of file UndefinedSchemaIdHandling\&.cs\&.
+.SH "Function Documentation"
+.PP 
+.SS "delegate void Newtonsoft\&.Json\&.Schema\&.ValidationEventHandler (objectsender, ValidationEventArgse)"
+
+.PP
+Represents the callback method that will handle JSON schema validation events and the \fBValidationEventArgs\fP\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

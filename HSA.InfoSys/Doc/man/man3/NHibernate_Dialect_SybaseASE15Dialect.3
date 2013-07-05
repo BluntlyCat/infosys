@@ -1,0 +1,291 @@
+.TH "NHibernate.Dialect.SybaseASE15Dialect" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.SybaseASE15Dialect \- 
+.PP
+An SQL dialect targeting Sybase Adaptive Server Enterprise (ASE) 15 and higher\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBGenerateTemporaryTableName\fP (string baseTableName)"
+.br
+.RI "\fIGenerate a temporary table name given the bas table\&. \fP"
+.ti -1c
+.RI "override bool \fBDropTemporaryTableAfterUse\fP ()"
+.br
+.RI "\fIDo we need to drop the temporary table after use? \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBAppendIdentitySelectToInsert\fP (\fBSqlString\fP insertString)"
+.br
+.RI "\fIProvided we SupportsInsertSelectIdentity, then attch the 'select identity' clause to the insert statement\&. \fP"
+.ti -1c
+.RI "override string \fBAppendLockHint\fP (\fBLockMode\fP lockMode, string tableName)"
+.br
+.RI "\fISome dialects support an alternative means to \fCSELECT FOR UPDATE\fP, whereby a 'lock hint' is appends to the table name in the from clause\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBApplyLocksToSql\fP (\fBSqlString\fP sql, IDictionary< string, \fBLockMode\fP > aliasedLockModes, IDictionary< string, string[]> keyColumnNames)"
+.br
+.RI "\fIModifies the given SQL by applying the appropriate updates for the specified lock modes and key columns\&. \fP"
+.ti -1c
+.RI "override int \fBRegisterResultSetOutParameter\fP (DbCommand statement, int position)"
+.br
+.RI "\fIRegisters an OUT parameter which will be returing a DbDataReader\&. How this is accomplished varies greatly from DB to DB, hence its inclusion (along with \fBgetResultSet\fP) here\&. \fP"
+.ti -1c
+.RI "override DbDataReader \fBGetResultSet\fP (DbCommand statement)"
+.br
+.RI "\fIGiven a callable statement previously processed by \fBRegisterResultSetOutParameter\fP, extract the DbDataReader from the OUT parameter\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBAddColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBNullColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBQualifyIndexName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsIdentityColumns\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBIdentitySelectString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBIdentityColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsInsertSelectIdentity\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsCurrentTimestampSelection\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsCurrentTimestampSelectStringCallable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBCurrentTimestampSelectString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsTemporaryTables\fP\fC [get]\fP"
+.br
+.RI "\fISybase ASE 15 temporary tables are not supported \fP"
+.ti -1c
+.RI "override string \fBSelectGUIDString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsEmptyInList\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsUnionAll\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsExistsInSelect\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBDoesReadCommittedCauseWritersToBlockReaders\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBDoesRepeatableReadCauseReadersToBlockWriters\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsCascadeDelete\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int \fBMaxAliasLength\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBAreStringComparisonsCaseInsensitive\fP\fC [get]\fP"
+.br
+.RI "\fIThis is false only by default\&. The database can be configured to be case-insensitive\&. \fP"
+.ti -1c
+.RI "override string \fBCurrentTimestampSQLFunctionName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsExpectedLobUsagePattern\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override char \fBOpenQuote\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override char \fBCloseQuote\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBForUpdateString\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An SQL dialect targeting Sybase Adaptive Server Enterprise (ASE) 15 and higher\&. 
+
+The dialect defaults the following configuration properties: Property Default Value  connection\&.driver_class \fBNHibernate\&.Driver\&.SybaseAseClientDriver\fP  
+.PP
+Definition at line 28 of file SybaseASE15Dialect\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBSqlString\fP NHibernate\&.Dialect\&.SybaseASE15Dialect\&.AppendIdentitySelectToInsert (\fBSqlString\fPinsertString)\fC [virtual]\fP"
+
+.PP
+Provided we SupportsInsertSelectIdentity, then attch the 'select identity' clause to the insert statement\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinsertString\fP The insert command 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The insert command with any necessary identity select clause attached\&. Note, if SupportsInsertSelectIdentity == false then the insert-string should be returned without modification\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 262 of file SybaseASE15Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.SybaseASE15Dialect\&.AppendLockHint (\fBLockMode\fPlockMode, stringtableName)\fC [virtual]\fP"
+
+.PP
+Some dialects support an alternative means to \fCSELECT FOR UPDATE\fP, whereby a 'lock hint' is appends to the table name in the from clause\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlockMode\fP The lock mode to apply 
+.br
+\fItableName\fP The name of the table to which to apply the lock hint\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The table with any required lock hints\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 267 of file SybaseASE15Dialect\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Dialect\&.SybaseASE15Dialect\&.ApplyLocksToSql (\fBSqlString\fPsql, IDictionary< string, \fBLockMode\fP >aliasedLockModes, IDictionary< string, string[]>keyColumnNames)\fC [virtual]\fP"
+
+.PP
+Modifies the given SQL by applying the appropriate updates for the specified lock modes and key columns\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsql\fP the SQL string to modify 
+.br
+\fIaliasedLockModes\fP a map of lock modes indexed by aliased table names\&. 
+.br
+\fIkeyColumnNames\fP a map of key columns indexed by aliased table names\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the modified SQL string\&. 
+.RE
+.PP
+.PP
+The behavior here is that of an ANSI SQL \fCSELECT FOR UPDATE\fP\&. This method is really intended to allow dialects which do not support \fCSELECT FOR UPDATE\fP to achieve this in their own fashion\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 275 of file SybaseASE15Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.SybaseASE15Dialect\&.DropTemporaryTableAfterUse ()\fC [virtual]\fP"
+
+.PP
+Do we need to drop the temporary table after use? 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 257 of file SybaseASE15Dialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.SybaseASE15Dialect\&.GenerateTemporaryTableName (stringbaseTableName)\fC [virtual]\fP"
+
+.PP
+Generate a temporary table name given the bas table\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbaseTableName\fP The table name from which to base the temp table name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The generated temp table name\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 252 of file SybaseASE15Dialect\&.cs\&.
+.SS "override DbDataReader NHibernate\&.Dialect\&.SybaseASE15Dialect\&.GetResultSet (DbCommandstatement)\fC [virtual]\fP"
+
+.PP
+Given a callable statement previously processed by \fBRegisterResultSetOutParameter\fP, extract the DbDataReader from the OUT parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstatement\fP The callable statement\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The extracted result set\&. 
+.RE
+.PP
+<throws> SQLException Indicates problems extracting the result set\&. </throws> 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 328 of file SybaseASE15Dialect\&.cs\&.
+.SS "override int NHibernate\&.Dialect\&.SybaseASE15Dialect\&.RegisterResultSetOutParameter (DbCommandstatement, intposition)\fC [virtual]\fP"
+
+.PP
+Registers an OUT parameter which will be returing a DbDataReader\&. How this is accomplished varies greatly from DB to DB, hence its inclusion (along with \fBgetResultSet\fP) here\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstatement\fP The callable statement\&. 
+.br
+\fIposition\fP The bind position at which to register the OUT param\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of (contiguous) bind positions used\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 323 of file SybaseASE15Dialect\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool NHibernate\&.Dialect\&.SybaseASE15Dialect\&.AreStringComparisonsCaseInsensitive\fC [get]\fP"
+
+.PP
+This is false only by default\&. The database can be configured to be case-insensitive\&. 
+.PP
+Definition at line 223 of file SybaseASE15Dialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.SybaseASE15Dialect\&.SupportsTemporaryTables\fC [get]\fP"
+
+.PP
+Sybase ASE 15 temporary tables are not supported By default, temporary tables in Sybase ASE 15 can only be created outside a transaction\&. This is not supported by \fBNHibernate\fP\&. Temporary tables (and other DDL) statements can only be run in a transaction if the 'ddl in tran' database option on tempdb is set to 'true'\&. However, Sybase does not recommend this setting due to the performance impact arising from locking and contention on tempdb system tables\&. 
+.PP
+Definition at line 174 of file SybaseASE15Dialect\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

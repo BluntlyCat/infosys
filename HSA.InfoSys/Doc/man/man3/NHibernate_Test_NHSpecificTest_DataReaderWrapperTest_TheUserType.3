@@ -1,0 +1,235 @@
+.TH "NHibernate.Test.NHSpecificTest.DataReaderWrapperTest.TheUserType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.NHSpecificTest.DataReaderWrapperTest.TheUserType \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.UserTypes\&.IUserType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBEquals\fP (object x, object y)"
+.br
+.RI "\fICompare two instances of the class mapped by this type for persistent 'equality' ie\&. equality of persistent state \fP"
+.ti -1c
+.RI "int \fBGetHashCode\fP (object x)"
+.br
+.RI "\fIGet a hashcode for the instance, consistent with persistence 'equality' \fP"
+.ti -1c
+.RI "object \fBNullSafeGet\fP (IDataReader rs, string[] names, object owner)"
+.br
+.RI "\fIRetrieve an instance of the mapped class from a JDBC resultset\&. Implementors should handle possibility of null values\&. \fP"
+.ti -1c
+.RI "void \fBNullSafeSet\fP (IDbCommand cmd, object value, int index)"
+.br
+.RI "\fIWrite an instance of the mapped class to a prepared statement\&. Implementors should handle possibility of null values\&. A multi-column type should be written to parameters starting from index\&. \fP"
+.ti -1c
+.RI "object \fBDeepCopy\fP (object value)"
+.br
+.RI "\fIReturn a deep copy of the persistent state, stopping at entities and at collections\&. \fP"
+.ti -1c
+.RI "object \fBReplace\fP (object original, object target, object owner)"
+.br
+.RI "\fIDuring merge, replace the existing (\fItarget\fP ) value in the entity we are merging to with a new (\fIoriginal\fP ) value from the detached entity we are merging\&. For immutable objects, or null values, it is safe to simply return the first parameter\&. For mutable objects, it is safe to return a copy of the first parameter\&. For objects with component values, it might make sense to recursively replace component values\&. \fP"
+.ti -1c
+.RI "object \fBAssemble\fP (object cached, object owner)"
+.br
+.RI "\fIReconstruct an object from the cacheable representation\&. At the very least this method should perform a deep copy if the type is mutable\&. (optional operation) \fP"
+.ti -1c
+.RI "object \fBDisassemble\fP (object value)"
+.br
+.RI "\fI\fBTransform\fP the object into its cacheable representation\&. At the very least this method should perform a deep copy if the type is mutable\&. That may not be enough for some implementations, however; for example, associations must be cached as identifier values\&. (optional operation) \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlType\fP[] \fBSqlTypes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "System\&.Type \fBReturnedType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsMutable\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file TheUserType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.Test\&.NHSpecificTest\&.DataReaderWrapperTest\&.TheUserType\&.Assemble (objectcached, objectowner)"
+
+.PP
+Reconstruct an object from the cacheable representation\&. At the very least this method should perform a deep copy if the type is mutable\&. (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcached\fP the object to be cached
+.br
+\fIowner\fP the owner of the cached object
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a reconstructed object from the cachable representation
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.UserTypes\&.IUserType\fP\&.
+.PP
+Definition at line 55 of file TheUserType\&.cs\&.
+.SS "object NHibernate\&.Test\&.NHSpecificTest\&.DataReaderWrapperTest\&.TheUserType\&.DeepCopy (objectvalue)"
+
+.PP
+Return a deep copy of the persistent state, stopping at entities and at collections\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP generally a collection element or entity field
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a copy
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.UserTypes\&.IUserType\fP\&.
+.PP
+Definition at line 40 of file TheUserType\&.cs\&.
+.SS "object NHibernate\&.Test\&.NHSpecificTest\&.DataReaderWrapperTest\&.TheUserType\&.Disassemble (objectvalue)"
+
+.PP
+\fBTransform\fP the object into its cacheable representation\&. At the very least this method should perform a deep copy if the type is mutable\&. That may not be enough for some implementations, however; for example, associations must be cached as identifier values\&. (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP the object to be cached
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a cacheable representation of the object
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.UserTypes\&.IUserType\fP\&.
+.PP
+Definition at line 60 of file TheUserType\&.cs\&.
+.SS "bool NHibernate\&.Test\&.NHSpecificTest\&.DataReaderWrapperTest\&.TheUserType\&.Equals (objectx, objecty)"
+
+.PP
+Compare two instances of the class mapped by this type for persistent 'equality' ie\&. equality of persistent state 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.UserTypes\&.IUserType\fP\&.
+.PP
+Definition at line 20 of file TheUserType\&.cs\&.
+.SS "int NHibernate\&.Test\&.NHSpecificTest\&.DataReaderWrapperTest\&.TheUserType\&.GetHashCode (objectx)"
+
+.PP
+Get a hashcode for the instance, consistent with persistence 'equality' 
+.PP
+Implements \fBNHibernate\&.UserTypes\&.IUserType\fP\&.
+.PP
+Definition at line 25 of file TheUserType\&.cs\&.
+.SS "object NHibernate\&.Test\&.NHSpecificTest\&.DataReaderWrapperTest\&.TheUserType\&.NullSafeGet (IDataReaderrs, string[]names, objectowner)"
+
+.PP
+Retrieve an instance of the mapped class from a JDBC resultset\&. Implementors should handle possibility of null values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP a IDataReader
+.br
+\fInames\fP column names
+.br
+\fIowner\fP the containing entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP \fBHibernateException\fP
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.UserTypes\&.IUserType\fP\&.
+.PP
+Definition at line 30 of file TheUserType\&.cs\&.
+.SS "void NHibernate\&.Test\&.NHSpecificTest\&.DataReaderWrapperTest\&.TheUserType\&.NullSafeSet (IDbCommandcmd, objectvalue, intindex)"
+
+.PP
+Write an instance of the mapped class to a prepared statement\&. Implementors should handle possibility of null values\&. A multi-column type should be written to parameters starting from index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP a IDbCommand
+.br
+\fIvalue\fP the object to write
+.br
+\fIindex\fP command parameter index
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP \fBHibernateException\fP
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.UserTypes\&.IUserType\fP\&.
+.PP
+Definition at line 35 of file TheUserType\&.cs\&.
+.SS "object NHibernate\&.Test\&.NHSpecificTest\&.DataReaderWrapperTest\&.TheUserType\&.Replace (objectoriginal, objecttarget, objectowner)"
+
+.PP
+During merge, replace the existing (\fItarget\fP ) value in the entity we are merging to with a new (\fIoriginal\fP ) value from the detached entity we are merging\&. For immutable objects, or null values, it is safe to simply return the first parameter\&. For mutable objects, it is safe to return a copy of the first parameter\&. For objects with component values, it might make sense to recursively replace component values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoriginal\fP the value from the detached entity being merged
+.br
+\fItarget\fP the value in the managed entity
+.br
+\fIowner\fP the managed entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the value to be merged
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.UserTypes\&.IUserType\fP\&.
+.PP
+Definition at line 50 of file TheUserType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

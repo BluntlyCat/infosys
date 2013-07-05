@@ -1,0 +1,316 @@
+.TH "NHibernate.Type.PersistentEnumType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.PersistentEnumType \- 
+.PP
+\fBPersistentEnumType\fP  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.AbstractEnumType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Type\&.EnumType< T >\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "interface \fBIEnumConverter\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPersistentEnumType\fP (System\&.Type enumClass)"
+.br
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, int index)"
+.br
+.RI "\fIWhen implemented by a class, gets the object in the IDataReader for the Property\&. \fP"
+.ti -1c
+.RI "virtual object \fBGetInstance\fP (object code)"
+.br
+.RI "\fIGets an instance of the Enum \fP"
+.ti -1c
+.RI "virtual object \fBGetValue\fP (object code)"
+.br
+.RI "\fIGets the correct value for the Enum\&. \fP"
+.ti -1c
+.RI "override void \fBSet\fP (IDbCommand cmd, object value, int index)"
+.br
+.RI "\fIWhen implemented by a class, put the value from the mapped Property into to the IDbCommand\&. \fP"
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, string name)"
+.br
+.RI "\fIWhen implemented by a class, gets the object in the IDataReader for the Property\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP (object value)"
+.br
+.RI "\fIA representation of the value to be embedded in an XML element \fP"
+.ti -1c
+.RI "override object \fBFromStringValue\fP (string xml)"
+.br
+.RI "\fIParse the XML representation of an instance \fP"
+.ti -1c
+.RI "override object \fBAssemble\fP (object cached, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIReconstructs the object from its cached 'disassembled' state\&. \fP"
+.ti -1c
+.RI "override object \fBDisassemble\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIDisassembles the object into a cacheable representation\&. \fP"
+.ti -1c
+.RI "override string \fBObjectToSQLString\fP (object value, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIWhen implemented by a class, return a String representation of the value, suitable for embedding in an SQL statement \fP"
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBIEnumConverter\fP \fBGetEnumCoverter\fP (System\&.Type enumClass)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBPersistentEnumType\fP 
+
+
+.PP
+Definition at line 15 of file PersistentEnumType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.PersistentEnumType\&.Assemble (objectcached, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Reconstructs the object from its cached 'disassembled' state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcached\fP The disassembled state from the cache
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP The parent Entity object is not used by this method
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The assembled object\&.
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 253 of file PersistentEnumType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.PersistentEnumType\&.Disassemble (objectvalue, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Disassembles the object into a cacheable representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to disassemble\&.
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP optional parent entity object (needed for collections) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The disassembled, deep cloned state of the object
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 258 of file PersistentEnumType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.PersistentEnumType\&.FromStringValue (stringxml)\fC [virtual]\fP"
+
+.PP
+Parse the XML representation of an instance 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP XML string to parse, guaranteed to be non-empty
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractEnumType\fP\&.
+.PP
+Definition at line 248 of file PersistentEnumType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.PersistentEnumType\&.Get (IDataReaderrs, intindex)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, gets the object in the IDataReader for the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the value\&.
+.br
+\fIindex\fP The index of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object with the value from the database\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 182 of file PersistentEnumType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.PersistentEnumType\&.Get (IDataReaderrs, stringname)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, gets the object in the IDataReader for the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the value\&.
+.br
+\fIname\fP The name of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object with the value from the database\&.
+.RE
+.PP
+.PP
+Most implementors just call the \fBGet(IDataReader, int)\fP overload of this method\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 233 of file PersistentEnumType\&.cs\&.
+.SS "virtual object NHibernate\&.Type\&.PersistentEnumType\&.GetInstance (objectcode)\fC [virtual]\fP"
+
+.PP
+Gets an instance of the Enum 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcode\fP The underlying value of an item in the Enum\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An instance of the Enum set to the \fCcode\fP value\&. 
+.RE
+.PP
+
+.PP
+Definition at line 199 of file PersistentEnumType\&.cs\&.
+.SS "virtual object NHibernate\&.Type\&.PersistentEnumType\&.GetValue (objectcode)\fC [virtual]\fP"
+
+.PP
+Gets the correct value for the Enum\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcode\fP The value to convert (an enum instance)\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A boxed version of the code, converted to the correct type\&.
+.RE
+.PP
+.PP
+This handles situations where the DataProvider returns the value of the Enum from the db in the wrong underlying type\&. It uses Convert to convert it to the correct type\&. 
+.PP
+Definition at line 221 of file PersistentEnumType\&.cs\&.
+.SS "override string NHibernate\&.Type\&.PersistentEnumType\&.ObjectToSQLString (objectvalue, \fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, return a String representation of the value, suitable for embedding in an SQL statement 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The object to convert to a string for the SQL statement\&.
+.br
+\fIdialect\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that containts a well formed SQL Statement\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.PrimitiveType\fP\&.
+.PP
+Definition at line 263 of file PersistentEnumType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.PersistentEnumType\&.Set (IDbCommandcmd, objectvalue, intindex)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, put the value from the mapped Property into to the IDbCommand\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP The IDbCommand to put the value into\&.
+.br
+\fIvalue\fP The object that contains the value\&.
+.br
+\fIindex\fP The index of the IDbDataParameter to start writing the values to\&.
+.RE
+.PP
+.PP
+Implementors do not need to handle possibility of null values because this will only be called from \fBNullSafeSet(IDbCommand, object, int)\fP after it has checked for nulls\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 227 of file PersistentEnumType\&.cs\&.
+.SS "override string NHibernate\&.Type\&.PersistentEnumType\&.ToString (objectval)\fC [virtual]\fP"
+
+.PP
+A representation of the value to be embedded in an XML element 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP The object that contains the values\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An Xml formatted string\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 243 of file PersistentEnumType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

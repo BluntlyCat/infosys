@@ -1,0 +1,6 @@
+var class_n_hibernate_1_1_test_1_1_user_collection_1_1_parameterized_1_1_parameterized_user_collection_type_fixture =
+[
+    [ "BasicOperation", "class_n_hibernate_1_1_test_1_1_user_collection_1_1_parameterized_1_1_parameterized_user_collection_type_fixture.html#a047d7844c35f67ae68b3b366ffcc7563", null ],
+    [ "Mappings", "class_n_hibernate_1_1_test_1_1_user_collection_1_1_parameterized_1_1_parameterized_user_collection_type_fixture.html#a6c643c6636f2e99c6f7d8b58bcc582d6", null ],
+    [ "MappingsAssembly", "class_n_hibernate_1_1_test_1_1_user_collection_1_1_parameterized_1_1_parameterized_user_collection_type_fixture.html#aabce61fe2c422e7979f2c77bbb33a04e", null ]
+];

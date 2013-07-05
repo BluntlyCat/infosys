@@ -1,0 +1,103 @@
+.TH "NHibernate.Loader.OuterJoinLoader" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Loader.OuterJoinLoader \- 
+.PP
+Implements logic for walking a tree of associated classes\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Loader\&.BasicLoader\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Loader\&.Collection\&.CollectionLoader\fP, \fBNHibernate\&.Loader\&.Criteria\&.CriteriaLoader\fP, \fBNHibernate\&.Loader\&.Entity\&.AbstractEntityLoader\fP, and \fBNHibernate\&.Loader\&.Entity\&.CollectionElementLoader\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override \fBLockMode\fP[] \fBGetLockModes\fP (IDictionary< string, \fBLockMode\fP > lockModes)"
+.br
+.RI "\fIWhat lock mode does this load entities with? \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOuterJoinLoader\fP (\fBISessionFactoryImplementor\fP factory, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "void \fBInitFromWalker\fP (\fBJoinWalker\fP walker)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBDialect\&.Dialect\fP \fBDialect\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int[] \fBOwners\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBEntityType\fP[] \fBOwnerAssociationTypes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, \fBIFilter\fP > \fBEnabledFilters\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int[] \fBCollectionOwners\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string[] \fBSuffixes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string[] \fBCollectionSuffixes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBSqlString\fP \fBSqlString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBILoadable\fP[] \fBEntityPersisters\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string[] \fBAliases\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBICollectionPersister\fP[] \fBCollectionPersisters\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Implements logic for walking a tree of associated classes\&. 
+
+Generates an SQL select string containing all properties of those classes\&. Tablse are joined using an ANSI-style left outer join\&. 
+.PP
+Definition at line 17 of file OuterJoinLoader\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBLockMode\fP [] NHibernate\&.Loader\&.OuterJoinLoader\&.GetLockModes (IDictionary< string, \fBLockMode\fP >lockModes)\fC [virtual]\fP"
+
+.PP
+What lock mode does this load entities with? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlockModes\fP A \fBCollection\fP of lock modes specified dynamically via the Query Interface
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Loader\&.Loader\fP\&.
+.PP
+Definition at line 86 of file OuterJoinLoader\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

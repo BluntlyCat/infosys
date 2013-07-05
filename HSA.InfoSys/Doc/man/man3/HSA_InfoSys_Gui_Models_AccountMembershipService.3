@@ -1,0 +1,191 @@
+.TH "HSA.InfoSys.Gui.Models.AccountMembershipService" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HSA.InfoSys.Gui.Models.AccountMembershipService \- 
+.PP
+This class provides services for membership control\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBHSA\&.InfoSys\&.Gui\&.Models\&.IMembershipService\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAccountMembershipService\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBAccountMembershipService\fP class\&. \fP"
+.ti -1c
+.RI "\fBAccountMembershipService\fP (MembershipProvider provider)"
+.br
+.RI "\fIInitializes a new instance of the \fBAccountMembershipService\fP class\&. \fP"
+.ti -1c
+.RI "bool \fBValidateUser\fP (string userName, string password)"
+.br
+.RI "\fIValidates the user\&. \fP"
+.ti -1c
+.RI "MembershipCreateStatus \fBCreateUser\fP (string userName, string password, string email)"
+.br
+.RI "\fICreates the user\&. \fP"
+.ti -1c
+.RI "bool \fBChangePassword\fP (string userName, string oldPassword, string newPassword)"
+.br
+.RI "\fIChanges the password\&. \fP"
+.ti -1c
+.RI "void \fBSendConfirmationEmail\fP (string userName)"
+.br
+.RI "\fISends the confirmation email\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBMinPasswordLength\fP\fC [get]\fP"
+.br
+.RI "\fIGets the length of the min password\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class provides services for membership control\&. 
+
+
+.PP
+Definition at line 21 of file AccountMembershipService\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "HSA\&.InfoSys\&.Gui\&.Models\&.AccountMembershipService\&.AccountMembershipService ()"
+
+.PP
+Initializes a new instance of the \fBAccountMembershipService\fP class\&. 
+.PP
+Definition at line 31 of file AccountMembershipService\&.cs\&.
+.SS "HSA\&.InfoSys\&.Gui\&.Models\&.AccountMembershipService\&.AccountMembershipService (MembershipProviderprovider)"
+
+.PP
+Initializes a new instance of the \fBAccountMembershipService\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprovider\fP The provider\&.
+.RE
+.PP
+
+.PP
+Definition at line 39 of file AccountMembershipService\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool HSA\&.InfoSys\&.Gui\&.Models\&.AccountMembershipService\&.ChangePassword (stringuserName, stringoldPassword, stringnewPassword)"
+
+.PP
+Changes the password\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIuserName\fP Name of the user\&.
+.br
+\fIoldPassword\fP The old password\&.
+.br
+\fInewPassword\fP The new password\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if password is changed\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentException\fP The value must not be empty\&.;userName or The value must not be empty\&.;oldPassword or The value must not be empty\&.;newPassword
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Gui\&.Models\&.IMembershipService\fP\&.
+.PP
+Definition at line 141 of file AccountMembershipService\&.cs\&.
+.SS "MembershipCreateStatus HSA\&.InfoSys\&.Gui\&.Models\&.AccountMembershipService\&.CreateUser (stringuserName, stringpassword, stringemail)"
+
+.PP
+Creates the user\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIuserName\fP Name of the user\&.
+.br
+\fIpassword\fP The password\&.
+.br
+\fIemail\fP The email\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The status of the creation process\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentException\fP The value must not be empty\&.;userName or The value must not be empty\&.;password
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Gui\&.Models\&.IMembershipService\fP\&.
+.PP
+Definition at line 98 of file AccountMembershipService\&.cs\&.
+.SS "void HSA\&.InfoSys\&.Gui\&.Models\&.AccountMembershipService\&.SendConfirmationEmail (stringuserName)"
+
+.PP
+Sends the confirmation email\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIuserName\fP Name of the user\&.
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Gui\&.Models\&.IMembershipService\fP\&.
+.PP
+Definition at line 185 of file AccountMembershipService\&.cs\&.
+.SS "bool HSA\&.InfoSys\&.Gui\&.Models\&.AccountMembershipService\&.ValidateUser (stringuserName, stringpassword)"
+
+.PP
+Validates the user\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIuserName\fP Name of the user\&.
+.br
+\fIpassword\fP The password\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if validated\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentException\fP The value must not be empty\&.;userName or The value must not be empty\&.;password
+.RE
+.PP
+
+.PP
+Implements \fBHSA\&.InfoSys\&.Gui\&.Models\&.IMembershipService\fP\&.
+.PP
+Definition at line 69 of file AccountMembershipService\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int HSA\&.InfoSys\&.Gui\&.Models\&.AccountMembershipService\&.MinPasswordLength\fC [get]\fP"
+
+.PP
+Gets the length of the min password\&. The length of the min password\&. 
+.PP
+Definition at line 51 of file AccountMembershipService\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

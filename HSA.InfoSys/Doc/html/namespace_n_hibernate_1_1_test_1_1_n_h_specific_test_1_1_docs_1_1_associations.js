@@ -1,0 +1,4 @@
+var namespace_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_docs_1_1_associations =
+[
+    [ "BiM21", "namespace_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_docs_1_1_associations_1_1_bi_m21.html", "namespace_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_docs_1_1_associations_1_1_bi_m21" ]
+];

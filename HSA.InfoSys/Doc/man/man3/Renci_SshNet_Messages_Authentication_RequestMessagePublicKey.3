@@ -1,0 +1,142 @@
+.TH "Renci.SshNet.Messages.Authentication.RequestMessagePublicKey" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Messages.Authentication.RequestMessagePublicKey \- 
+.PP
+Represents 'publickey' SSH_MSG_USERAUTH_REQUEST message\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.Messages\&.Authentication\&.RequestMessage\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRequestMessagePublicKey\fP (\fBServiceName\fP serviceName, string username, string keyAlgorithmName, byte[] keyData)"
+.br
+.RI "\fIInitializes a new instance of the \fBRequestMessagePublicKey\fP class\&. \fP"
+.ti -1c
+.RI "\fBRequestMessagePublicKey\fP (\fBServiceName\fP serviceName, string username, string keyAlgorithmName, byte[] keyData, byte[] signature)"
+.br
+.RI "\fIInitializes a new instance of the \fBRequestMessagePublicKey\fP class\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBSaveData\fP ()"
+.br
+.RI "\fICalled when type specific data need to be saved\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBMethodName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the name of the authentication method\&. \fP"
+.ti -1c
+.RI "string \fBPublicKeyAlgorithmName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the name of the public key algorithm\&. \fP"
+.ti -1c
+.RI "byte[] \fBPublicKeyData\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the public key data\&. \fP"
+.ti -1c
+.RI "byte[] \fBSignature\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets public key signature\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents 'publickey' SSH_MSG_USERAUTH_REQUEST message\&. 
+
+
+.PP
+Definition at line 8 of file RequestMessagePublicKey\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Messages\&.Authentication\&.RequestMessagePublicKey\&.RequestMessagePublicKey (\fBServiceName\fPserviceName, stringusername, stringkeyAlgorithmName, byte[]keyData)"
+
+.PP
+Initializes a new instance of the \fBRequestMessagePublicKey\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIserviceName\fP Name of the service\&.
+.br
+\fIusername\fP \fBAuthentication\fP username\&.
+.br
+\fIkeyAlgorithmName\fP Name of private key algorithm\&.
+.br
+\fIkeyData\fP Private key data\&.
+.RE
+.PP
+
+.PP
+Definition at line 52 of file RequestMessagePublicKey\&.cs\&.
+.SS "Renci\&.SshNet\&.Messages\&.Authentication\&.RequestMessagePublicKey\&.RequestMessagePublicKey (\fBServiceName\fPserviceName, stringusername, stringkeyAlgorithmName, byte[]keyData, byte[]signature)"
+
+.PP
+Initializes a new instance of the \fBRequestMessagePublicKey\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIserviceName\fP Name of the service\&.
+.br
+\fIusername\fP \fBAuthentication\fP username\&.
+.br
+\fIkeyAlgorithmName\fP Name of private key algorithm\&.
+.br
+\fIkeyData\fP Private key data\&.
+.br
+\fIsignature\fP Private key signature\&.
+.RE
+.PP
+
+.PP
+Definition at line 67 of file RequestMessagePublicKey\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void Renci\&.SshNet\&.Messages\&.Authentication\&.RequestMessagePublicKey\&.SaveData ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when type specific data need to be saved\&. 
+.PP
+Reimplemented from \fBRenci\&.SshNet\&.Messages\&.Authentication\&.RequestMessage\fP\&.
+.PP
+Definition at line 76 of file RequestMessagePublicKey\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string Renci\&.SshNet\&.Messages\&.Authentication\&.RequestMessagePublicKey\&.MethodName\fC [get]\fP"
+
+.PP
+Gets the name of the authentication method\&. The name of the method\&. 
+.PP
+Definition at line 17 of file RequestMessagePublicKey\&.cs\&.
+.SS "string Renci\&.SshNet\&.Messages\&.Authentication\&.RequestMessagePublicKey\&.PublicKeyAlgorithmName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the name of the public key algorithm\&. The name of the public key algorithm\&. 
+.PP
+Definition at line 30 of file RequestMessagePublicKey\&.cs\&.
+.SS "byte [] Renci\&.SshNet\&.Messages\&.Authentication\&.RequestMessagePublicKey\&.PublicKeyData\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the public key data\&. 
+.PP
+Definition at line 35 of file RequestMessagePublicKey\&.cs\&.
+.SS "byte [] Renci\&.SshNet\&.Messages\&.Authentication\&.RequestMessagePublicKey\&.Signature\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets public key signature\&. The signature\&. 
+.PP
+Definition at line 43 of file RequestMessagePublicKey\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,160 @@
+.TH "log4net.Appender.FileAppender.LockingModelBase" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.FileAppender.LockingModelBase \- 
+.PP
+Locking model base class  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBlog4net\&.Appender\&.FileAppender\&.ExclusiveLock\fP, \fBlog4net\&.Appender\&.FileAppender\&.InterProcessLock\fP, and \fBlog4net\&.Appender\&.FileAppender\&.MinimalLock\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract void \fBOpenFile\fP (string filename, bool append, \fBEncoding\fP encoding)"
+.br
+.RI "\fIOpen the output file \fP"
+.ti -1c
+.RI "abstract void \fBCloseFile\fP ()"
+.br
+.RI "\fIClose the file \fP"
+.ti -1c
+.RI "abstract Stream \fBAcquireLock\fP ()"
+.br
+.RI "\fIAcquire the lock on the file \fP"
+.ti -1c
+.RI "abstract void \fBReleaseLock\fP ()"
+.br
+.RI "\fIRelease the lock on the file \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "Stream \fBCreateStream\fP (string filename, bool append, FileShare fileShare)"
+.br
+.RI "\fIHelper method that creates a FileStream under CurrentAppender's SecurityContext\&. \fP"
+.ti -1c
+.RI "void \fBCloseStream\fP (Stream stream)"
+.br
+.RI "\fIHelper method to close \fIstream\fP  under CurrentAppender's SecurityContext\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBFileAppender\fP \fBCurrentAppender\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBFileAppender\fP for this LockingModel \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Locking model base class 
+
+Base class for the locking models available to the \fBFileAppender\fP derived loggers\&. 
+.PP
+Definition at line 336 of file FileAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract Stream log4net\&.Appender\&.FileAppender\&.LockingModelBase\&.AcquireLock ()\fC [pure virtual]\fP"
+
+.PP
+Acquire the lock on the file 
+.PP
+\fBReturns:\fP
+.RS 4
+A stream that is ready to be written to\&.
+.RE
+.PP
+.PP
+Acquire the lock on the file in preparation for writing to it\&. Return a stream pointing to the file\&. \fBReleaseLock\fP must be called to release the lock on the output file\&. 
+.PP
+Implemented in \fBlog4net\&.Appender\&.FileAppender\&.InterProcessLock\fP, \fBlog4net\&.Appender\&.FileAppender\&.MinimalLock\fP, and \fBlog4net\&.Appender\&.FileAppender\&.ExclusiveLock\fP\&.
+.SS "abstract void log4net\&.Appender\&.FileAppender\&.LockingModelBase\&.CloseFile ()\fC [pure virtual]\fP"
+
+.PP
+Close the file Close the file\&. No further writes will be made\&. 
+.PP
+Implemented in \fBlog4net\&.Appender\&.FileAppender\&.InterProcessLock\fP, \fBlog4net\&.Appender\&.FileAppender\&.MinimalLock\fP, and \fBlog4net\&.Appender\&.FileAppender\&.ExclusiveLock\fP\&.
+.SS "void log4net\&.Appender\&.FileAppender\&.LockingModelBase\&.CloseStream (Streamstream)\fC [protected]\fP"
+
+.PP
+Helper method to close \fIstream\fP  under CurrentAppender's SecurityContext\&. Does not set \fIstream\fP  to null\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstream\fP 
+.RE
+.PP
+
+.PP
+Definition at line 457 of file FileAppender\&.cs\&.
+.SS "Stream log4net\&.Appender\&.FileAppender\&.LockingModelBase\&.CreateStream (stringfilename, boolappend, FileSharefileShare)\fC [protected]\fP"
+
+.PP
+Helper method that creates a FileStream under CurrentAppender's SecurityContext\&. Typically called during OpenFile or AcquireLock\&. 
+.PP
+If the directory portion of the \fIfilename\fP  does not exist, it is created via Directory\&.CreateDirecctory\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP 
+.br
+\fIappend\fP 
+.br
+\fIfileShare\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 431 of file FileAppender\&.cs\&.
+.SS "abstract void log4net\&.Appender\&.FileAppender\&.LockingModelBase\&.OpenFile (stringfilename, boolappend, \fBEncoding\fPencoding)\fC [pure virtual]\fP"
+
+.PP
+Open the output file 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP The filename to use
+.br
+\fIappend\fP Whether to append to the file, or overwrite
+.br
+\fIencoding\fP The encoding to use
+.RE
+.PP
+.PP
+Open the file specified and prepare for logging\&. No writes will be made until \fBAcquireLock\fP is called\&. Must be called before any calls to \fBAcquireLock\fP, \fBReleaseLock\fP and \fBCloseFile\fP\&. 
+.PP
+Implemented in \fBlog4net\&.Appender\&.FileAppender\&.InterProcessLock\fP, \fBlog4net\&.Appender\&.FileAppender\&.MinimalLock\fP, and \fBlog4net\&.Appender\&.FileAppender\&.ExclusiveLock\fP\&.
+.SS "abstract void log4net\&.Appender\&.FileAppender\&.LockingModelBase\&.ReleaseLock ()\fC [pure virtual]\fP"
+
+.PP
+Release the lock on the file Release the lock on the file\&. No further writes will be made to the stream until \fBAcquireLock\fP is called again\&. 
+.PP
+Implemented in \fBlog4net\&.Appender\&.FileAppender\&.InterProcessLock\fP, \fBlog4net\&.Appender\&.FileAppender\&.MinimalLock\fP, and \fBlog4net\&.Appender\&.FileAppender\&.ExclusiveLock\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBFileAppender\fP log4net\&.Appender\&.FileAppender\&.LockingModelBase\&.CurrentAppender\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBFileAppender\fP for this LockingModel The \fBFileAppender\fP for this LockingModel 
+.PP
+The file appender this locking model is attached to and working on behalf of\&. 
+.PP
+The file appender is used to locate the security context and the error handler to use\&. 
+.PP
+The value of this property will be set before \fBOpenFile\fP is called\&. 
+.PP
+Definition at line 410 of file FileAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,138 @@
+.TH "NHibernate.Intercept.IFieldInterceptor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Intercept.IFieldInterceptor \- 
+.PP
+Contract for field interception handlers\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Intercept\&.AbstractFieldInterceptor\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsInitializedField\fP (string field)"
+.br
+.RI "\fIThe the given field initialized for the entity to which we are bound? \fP"
+.ti -1c
+.RI "void \fBMarkDirty\fP ()"
+.br
+.RI "\fIForcefully mark the entity as being dirty\&.\fP"
+.ti -1c
+.RI "void \fBClearDirty\fP ()"
+.br
+.RI "\fIClear the internal dirty flag\&.\fP"
+.ti -1c
+.RI "object \fBIntercept\fP (object target, string fieldName, object value)"
+.br
+.RI "\fI\fBIntercept\fP field set/get \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsDirty\fP\fC [get]\fP"
+.br
+.RI "\fIIs the entity considered dirty? \fP"
+.ti -1c
+.RI "\fBISessionImplementor\fP \fBSession\fP\fC [get, set]\fP"
+.br
+.RI "\fIUse to associate the entity to which we are bound to the given session\&. \fP"
+.ti -1c
+.RI "bool \fBIsInitialized\fP\fC [get]\fP"
+.br
+.RI "\fIIs the entity to which we are bound completely initialized? \fP"
+.ti -1c
+.RI "string \fBEntityName\fP\fC [get]\fP"
+.br
+.RI "\fIGet the entity-name of the field DeclaringType\&.\fP"
+.ti -1c
+.RI "System\&.Type \fBMappedClass\fP\fC [get]\fP"
+.br
+.RI "\fIGet the MappedClass (field container)\&.\fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Contract for field interception handlers\&. 
+
+
+.PP
+Definition at line 6 of file IFieldInterceptor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Intercept\&.IFieldInterceptor\&.ClearDirty ()"
+
+.PP
+Clear the internal dirty flag\&.
+.PP
+Implemented in \fBNHibernate\&.Intercept\&.AbstractFieldInterceptor\fP\&.
+.SS "object NHibernate\&.Intercept\&.IFieldInterceptor\&.Intercept (objecttarget, stringfieldName, objectvalue)"
+
+.PP
+\fBIntercept\fP field set/get 
+.PP
+Implemented in \fBNHibernate\&.Intercept\&.AbstractFieldInterceptor\fP\&.
+.SS "bool NHibernate\&.Intercept\&.IFieldInterceptor\&.IsInitializedField (stringfield)"
+
+.PP
+The the given field initialized for the entity to which we are bound? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfield\fP The name of the field to check 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the given field is initialized; otherwise false\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Intercept\&.AbstractFieldInterceptor\fP\&.
+.SS "void NHibernate\&.Intercept\&.IFieldInterceptor\&.MarkDirty ()"
+
+.PP
+Forcefully mark the entity as being dirty\&.
+.PP
+Implemented in \fBNHibernate\&.Intercept\&.AbstractFieldInterceptor\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "string NHibernate\&.Intercept\&.IFieldInterceptor\&.EntityName\fC [get]\fP"
+
+.PP
+Get the entity-name of the field DeclaringType\&.
+.PP
+Definition at line 33 of file IFieldInterceptor\&.cs\&.
+.SS "bool NHibernate\&.Intercept\&.IFieldInterceptor\&.IsDirty\fC [get]\fP"
+
+.PP
+Is the entity considered dirty? True if the entity is dirty; otherwise false\&. 
+.PP
+Definition at line 10 of file IFieldInterceptor\&.cs\&.
+.SS "bool NHibernate\&.Intercept\&.IFieldInterceptor\&.IsInitialized\fC [get]\fP"
+
+.PP
+Is the entity to which we are bound completely initialized? 
+.PP
+Definition at line 16 of file IFieldInterceptor\&.cs\&.
+.SS "System\&.Type NHibernate\&.Intercept\&.IFieldInterceptor\&.MappedClass\fC [get]\fP"
+
+.PP
+Get the MappedClass (field container)\&.
+.PP
+Definition at line 36 of file IFieldInterceptor\&.cs\&.
+.SS "\fBISessionImplementor\fP NHibernate\&.Intercept\&.IFieldInterceptor\&.Session\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Use to associate the entity to which we are bound to the given session\&. 
+.PP
+Definition at line 13 of file IFieldInterceptor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

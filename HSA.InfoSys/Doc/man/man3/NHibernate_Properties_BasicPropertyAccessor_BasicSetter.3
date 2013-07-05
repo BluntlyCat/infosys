@@ -1,0 +1,120 @@
+.TH "NHibernate.Properties.BasicPropertyAccessor.BasicSetter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Properties.BasicPropertyAccessor.BasicSetter \- 
+.PP
+An \fBISetter\fP for a Property \fCset\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Properties\&.ISetter\fP, and \fBNHibernate\&.Properties\&.IOptimizableSetter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBasicSetter\fP (System\&.Type clazz, PropertyInfo property, string propertyName)"
+.br
+.RI "\fIInitializes a new instance of \fBBasicSetter\fP\&. \fP"
+.ti -1c
+.RI "void \fBSet\fP (object target, object value)"
+.br
+.RI "\fISets the value of the Property on the object\&. \fP"
+.ti -1c
+.RI "void \fBEmit\fP (ILGenerator il)"
+.br
+.RI "\fIEmit IL to set the property of an object to the value\&. The object is loaded onto the stack first, then the value, then this method is called\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "PropertyInfo \fBProperty\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBPropertyName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the name of the mapped Property\&. \fP"
+.ti -1c
+.RI "MethodInfo \fBMethod\fP\fC [get]\fP"
+.br
+.RI "\fIGets the PropertyInfo for the mapped Property\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An \fBISetter\fP for a Property \fCset\fP\&. 
+
+
+.PP
+Definition at line 266 of file BasicPropertyAccessor\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Properties\&.BasicPropertyAccessor\&.BasicSetter\&.BasicSetter (System\&.Typeclazz, PropertyInfoproperty, stringpropertyName)"
+
+.PP
+Initializes a new instance of \fBBasicSetter\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclazz\fP The System\&.Type that contains the Property \fCset\fP\&.
+.br
+\fIproperty\fP The PropertyInfo for reflection\&.
+.br
+\fIpropertyName\fP The name of the mapped Property\&.
+.RE
+.PP
+
+.PP
+Definition at line 278 of file BasicPropertyAccessor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Properties\&.BasicPropertyAccessor\&.BasicSetter\&.Emit (ILGeneratoril)"
+
+.PP
+Emit IL to set the property of an object to the value\&. The object is loaded onto the stack first, then the value, then this method is called\&. 
+.PP
+Implements \fBNHibernate\&.Properties\&.IOptimizableSetter\fP\&.
+.PP
+Definition at line 351 of file BasicPropertyAccessor\&.cs\&.
+.SS "void NHibernate\&.Properties\&.BasicPropertyAccessor\&.BasicSetter\&.Set (objecttarget, objectvalue)"
+
+.PP
+Sets the value of the Property on the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItarget\fP The object to set the Property value in\&.
+.br
+\fIvalue\fP The value to set the Property to\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBPropertyAccessException\fP\fP Thrown when there is a problem setting the value in the target\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.ISetter\fP\&.
+.PP
+Definition at line 300 of file BasicPropertyAccessor\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "MethodInfo NHibernate\&.Properties\&.BasicPropertyAccessor\&.BasicSetter\&.Method\fC [get]\fP"
+
+.PP
+Gets the PropertyInfo for the mapped Property\&. The PropertyInfo for the mapped Property\&.
+.PP
+Definition at line 345 of file BasicPropertyAccessor\&.cs\&.
+.SS "string NHibernate\&.Properties\&.BasicPropertyAccessor\&.BasicSetter\&.PropertyName\fC [get]\fP"
+
+.PP
+Gets the name of the mapped Property\&. The name of the mapped Property or \&.
+.PP
+Definition at line 336 of file BasicPropertyAccessor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

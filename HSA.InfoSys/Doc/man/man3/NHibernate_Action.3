@@ -1,0 +1,86 @@
+.TH "NHibernate.Action" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Action \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBBulkOperationCleanupAction\fP"
+.br
+.RI "\fIImplementation of \fBBulkOperationCleanupAction\fP\&. \fP"
+.ti -1c
+.RI "class \fBCollectionAction\fP"
+.br
+.RI "\fIAny action relating to insert/update/delete of a collection \fP"
+.ti -1c
+.RI "class \fBCollectionRecreateAction\fP"
+.br
+.ti -1c
+.RI "class \fBCollectionRemoveAction\fP"
+.br
+.ti -1c
+.RI "class \fBCollectionUpdateAction\fP"
+.br
+.ti -1c
+.RI "class \fBDelayedPostInsertIdentifier\fP"
+.br
+.RI "\fIActs as a stand-in for an entity identifier which is supposed to be generated on insert (like an IDENTITY column) where the insert needed to be delayed because we were outside a transaction when the persist occurred (save currently still performs the insert)\&. \fP"
+.ti -1c
+.RI "class \fBEntityAction\fP"
+.br
+.RI "\fIBase class for actions relating to insert/update/delete of an entity instance\&. \fP"
+.ti -1c
+.RI "class \fBEntityDeleteAction\fP"
+.br
+.ti -1c
+.RI "class \fBEntityIdentityInsertAction\fP"
+.br
+.ti -1c
+.RI "class \fBEntityInsertAction\fP"
+.br
+.ti -1c
+.RI "class \fBEntityUpdateAction\fP"
+.br
+.ti -1c
+.RI "interface \fBIExecutable\fP"
+.br
+.RI "\fIAn operation which may be scheduled for later execution\&. Usually, the operation is a database insert/update/delete, together with required second-level cache management\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "delegate void \fBBeforeTransactionCompletionProcessDelegate\fP ()"
+.br
+.RI "\fIDelegate representing some process that needs to occur before transaction completion\&. \fP"
+.ti -1c
+.RI "delegate void \fBAfterTransactionCompletionProcessDelegate\fP (bool success)"
+.br
+.RI "\fIDelegate representing some process that needs to occur after transaction completion\&. \fP"
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "delegate void NHibernate\&.Action\&.AfterTransactionCompletionProcessDelegate (boolsuccess)"
+
+.PP
+Delegate representing some process that needs to occur after transaction completion\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsuccess\fP Did the transaction complete successfully? True means it did\&.
+.RE
+.PP
+.PP
+NH specific: C# does not support dynamic interface proxies so a delegate is used in place of the Hibernate interface (see Action/AfterTransactionCompletionProcess)\&. The delegate omits the ISessionImplementor parameter as it is not used\&. 
+.SS "delegate void NHibernate\&.Action\&.BeforeTransactionCompletionProcessDelegate ()"
+
+.PP
+Delegate representing some process that needs to occur before transaction completion\&. NH specific: C# does not support dynamic interface proxies so a delegate is used in place of the Hibernate interface (see Action/BeforeTransactionCompletionProcess)\&. The delegate omits the ISessionImplementor parameter as it is not used\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

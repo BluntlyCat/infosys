@@ -1,0 +1,120 @@
+.TH "NHibernate.Type.DateTime2Type" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.DateTime2Type \- 
+.PP
+Maps a System\&.DateTime Property to a DbType\&.DateTime  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.DateTimeType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, int index)"
+.br
+.RI "\fIWhen implemented by a class, gets the object in the IDataReader for the Property\&. \fP"
+.ti -1c
+.RI "override void \fBSet\fP (IDbCommand st, object value, int index)"
+.br
+.RI "\fIWhen implemented by a class, put the value from the mapped Property into to the IDbCommand\&. \fP"
+.ti -1c
+.RI "override bool \fBIsEqual\fP (object x, object y)"
+.br
+.RI "\fIAre the two version values considered equal? \fP"
+.ti -1c
+.RI "override object \fBNext\fP (object current, \fBEngine\&.ISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override object \fBSeed\fP (\fBEngine\&.ISessionImplementor\fP session)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Maps a System\&.DateTime Property to a DbType\&.DateTime 
+
+
+.PP
+Definition at line 11 of file DateTime2Type\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.DateTime2Type\&.Get (IDataReaderrs, intindex)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, gets the object in the IDataReader for the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the value\&.
+.br
+\fIindex\fP The index of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object with the value from the database\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 23 of file DateTime2Type\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.DateTime2Type\&.IsEqual (objectx, objecty)"
+
+.PP
+Are the two version values considered equal? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP One value to check\&. 
+.br
+\fIy\fP The other value to check\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the values are equal, false otherwise\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IVersionType\fP\&.
+.PP
+Definition at line 40 of file DateTime2Type\&.cs\&.
+.SS "override void NHibernate\&.Type\&.DateTime2Type\&.Set (IDbCommandcmd, objectvalue, intindex)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, put the value from the mapped Property into to the IDbCommand\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP The IDbCommand to put the value into\&.
+.br
+\fIvalue\fP The object that contains the value\&.
+.br
+\fIindex\fP The index of the IDbDataParameter to start writing the values to\&.
+.RE
+.PP
+.PP
+Implementors do not need to handle possibility of null values because this will only be called from \fBNullSafeSet(IDbCommand, object, int)\fP after it has checked for nulls\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 35 of file DateTime2Type\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

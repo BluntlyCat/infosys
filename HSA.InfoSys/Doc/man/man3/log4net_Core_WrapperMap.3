@@ -1,0 +1,135 @@
+.TH "log4net.Core.WrapperMap" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Core.WrapperMap \- 
+.PP
+Maps between logger objects and wrapper objects\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBWrapperMap\fP (\fBWrapperCreationHandler\fP createWrapperHandler)"
+.br
+.RI "\fIInitializes a new instance of the \fBWrapperMap\fP \fP"
+.ti -1c
+.RI "virtual \fBILoggerWrapper\fP \fBGetWrapper\fP (\fBILogger\fP logger)"
+.br
+.RI "\fIGets the wrapper object for the specified logger\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBILoggerWrapper\fP \fBCreateNewWrapperObject\fP (\fBILogger\fP logger)"
+.br
+.RI "\fICreates the wrapper object for the specified logger\&. \fP"
+.ti -1c
+.RI "virtual void \fBRepositoryShutdown\fP (\fBILoggerRepository\fP repository)"
+.br
+.RI "\fICalled when a monitored repository shutdown event is received\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "Hashtable \fBRepositories\fP\fC [get]\fP"
+.br
+.RI "\fIGets the map of logger repositories\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Maps between logger objects and wrapper objects\&. 
+
+This class maintains a mapping between \fBILogger\fP objects and \fBILoggerWrapper\fP objects\&. Use the \fBGetWrapper\fP method to lookup the \fBILoggerWrapper\fP for the specified \fBILogger\fP\&. 
+.PP
+New wrapper instances are created by the \fBCreateNewWrapperObject\fP method\&. The default behavior is for this method to delegate construction of the wrapper to the \fBWrapperCreationHandler\fP delegate supplied to the constructor\&. This allows specialization of the behavior without requiring subclassing of this type\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 67 of file WrapperMap\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Core\&.WrapperMap\&.WrapperMap (\fBWrapperCreationHandler\fPcreateWrapperHandler)"
+
+.PP
+Initializes a new instance of the \fBWrapperMap\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcreateWrapperHandler\fP The handler to use to create the wrapper objects\&.
+.RE
+.PP
+.PP
+Initializes a new instance of the \fBWrapperMap\fP class with the specified handler to create the wrapper objects\&. 
+.PP
+Definition at line 81 of file WrapperMap\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBILoggerWrapper\fP log4net\&.Core\&.WrapperMap\&.CreateNewWrapperObject (\fBILogger\fPlogger)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Creates the wrapper object for the specified logger\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlogger\fP The logger to wrap in a wrapper\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The wrapper object for the logger\&.
+.RE
+.PP
+.PP
+This implementation uses the \fBWrapperCreationHandler\fP passed to the constructor to create the wrapper\&. This method can be overridden in a subclass\&. 
+.PP
+Definition at line 189 of file WrapperMap\&.cs\&.
+.SS "virtual \fBILoggerWrapper\fP log4net\&.Core\&.WrapperMap\&.GetWrapper (\fBILogger\fPlogger)\fC [virtual]\fP"
+
+.PP
+Gets the wrapper object for the specified logger\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The wrapper object for the specified logger
+.RE
+.PP
+.PP
+If the logger is null then the corresponding wrapper is null\&. 
+.PP
+Looks up the wrapper it it has previously been requested and returns it\&. If the wrapper has never been requested before then the \fBCreateNewWrapperObject\fP virtual method is called\&. 
+.PP
+Definition at line 108 of file WrapperMap\&.cs\&.
+.SS "virtual void log4net\&.Core\&.WrapperMap\&.RepositoryShutdown (\fBILoggerRepository\fPrepository)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when a monitored repository shutdown event is received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The ILoggerRepository that is shutting down
+.RE
+.PP
+.PP
+This method is called when a ILoggerRepository that this \fBWrapperMap\fP is holding loggers for has signaled its shutdown event ILoggerRepository\&.ShutdownEvent\&. The default behavior of this method is to release the references to the loggers and their wrappers generated for this repository\&. 
+.PP
+Definition at line 211 of file WrapperMap\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "Hashtable log4net\&.Core\&.WrapperMap\&.Repositories\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Gets the map of logger repositories\&. Map of logger repositories\&. 
+.PP
+Gets the hashtable that is keyed on ILoggerRepository\&. The values are hashtables keyed on \fBILogger\fP with the value being the corresponding \fBILoggerWrapper\fP\&. 
+.PP
+Definition at line 169 of file WrapperMap\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

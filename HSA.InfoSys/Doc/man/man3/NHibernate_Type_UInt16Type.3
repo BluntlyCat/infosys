@@ -1,0 +1,250 @@
+.TH "NHibernate.Type.UInt16Type" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.UInt16Type \- 
+.PP
+Maps a System\&.UInt16 Property to a DbType\&.UInt16 column\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.PrimitiveType\fP, \fBNHibernate\&.Type\&.IDiscriminatorType\fP, and \fBNHibernate\&.Type\&.IVersionType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUInt16Type\fP ()"
+.br
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, int index)"
+.br
+.RI "\fIWhen implemented by a class, gets the object in the IDataReader for the Property\&. \fP"
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, string name)"
+.br
+.RI "\fIWhen implemented by a class, gets the object in the IDataReader for the Property\&. \fP"
+.ti -1c
+.RI "override void \fBSet\fP (IDbCommand rs, object value, int index)"
+.br
+.RI "\fIWhen implemented by a class, put the value from the mapped Property into to the IDbCommand\&. \fP"
+.ti -1c
+.RI "object \fBStringToObject\fP (string xml)"
+.br
+.RI "\fIWhen implemented by a class, converts the xml string from the mapping file to the \&.NET object\&. \fP"
+.ti -1c
+.RI "override object \fBFromStringValue\fP (string xml)"
+.br
+.ti -1c
+.RI "virtual object \fBNext\fP (object current, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIWhen implemented by a class, increments the version\&. \fP"
+.ti -1c
+.RI "virtual object \fBSeed\fP (\fBISessionImplementor\fP session)"
+.br
+.RI "\fIWhen implemented by a class, gets an initial version\&. \fP"
+.ti -1c
+.RI "override string \fBObjectToSQLString\fP (object value, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIWhen implemented by a class, return a String representation of the value, suitable for embedding in an SQL statement \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IComparer \fBComparator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override System\&.Type \fBPrimitiveClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override object \fBDefaultValue\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Maps a System\&.UInt16 Property to a DbType\&.UInt16 column\&. 
+
+
+.PP
+Definition at line 15 of file UInt16Type\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Type\&.UInt16Type\&.UInt16Type ()"
+
+.PP
+
+.PP
+Definition at line 18 of file UInt16Type\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.UInt16Type\&.Get (IDataReaderrs, intindex)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, gets the object in the IDataReader for the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the value\&.
+.br
+\fIindex\fP The index of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object with the value from the database\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 29 of file UInt16Type\&.cs\&.
+.SS "override object NHibernate\&.Type\&.UInt16Type\&.Get (IDataReaderrs, stringname)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, gets the object in the IDataReader for the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the value\&.
+.br
+\fIname\fP The name of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object with the value from the database\&.
+.RE
+.PP
+.PP
+Most implementors just call the \fBGet(IDataReader, int)\fP overload of this method\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 41 of file UInt16Type\&.cs\&.
+.SS "virtual object NHibernate\&.Type\&.UInt16Type\&.Next (objectcurrent, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, increments the version\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcurrent\fP The current version
+.br
+\fIsession\fP The current session, if available\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an instance of the \fBIType\fP that has been incremented\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IVersionType\fP\&.
+.PP
+Definition at line 75 of file UInt16Type\&.cs\&.
+.SS "override string NHibernate\&.Type\&.UInt16Type\&.ObjectToSQLString (objectvalue, \fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, return a String representation of the value, suitable for embedding in an SQL statement 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The object to convert to a string for the SQL statement\&.
+.br
+\fIdialect\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that containts a well formed SQL Statement\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.PrimitiveType\fP\&.
+.PP
+Definition at line 102 of file UInt16Type\&.cs\&.
+.SS "virtual object NHibernate\&.Type\&.UInt16Type\&.Seed (\fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, gets an initial version\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The current session, if available\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An instance of the type\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IVersionType\fP\&.
+.PP
+Definition at line 80 of file UInt16Type\&.cs\&.
+.SS "override void NHibernate\&.Type\&.UInt16Type\&.Set (IDbCommandcmd, objectvalue, intindex)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, put the value from the mapped Property into to the IDbCommand\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP The IDbCommand to put the value into\&.
+.br
+\fIvalue\fP The object that contains the value\&.
+.br
+\fIindex\fP The index of the IDbDataParameter to start writing the values to\&.
+.RE
+.PP
+.PP
+Implementors do not need to handle possibility of null values because this will only be called from \fBNullSafeSet(IDbCommand, object, int)\fP after it has checked for nulls\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 58 of file UInt16Type\&.cs\&.
+.SS "object NHibernate\&.Type\&.UInt16Type\&.StringToObject (stringxml)"
+
+.PP
+When implemented by a class, converts the xml string from the mapping file to the \&.NET object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP The value of \fCdiscriminator-value\fP or \fCunsaved-value\fP attribute\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The string converted to the object\&.
+.RE
+.PP
+.PP
+This method needs to be able to handle any string\&. It should not just call System\&.Type\&.Parse without verifying that it is a parsable value for the System\&.Type\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.IIdentifierType\fP\&.
+.PP
+Definition at line 63 of file UInt16Type\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.Type\&.UInt16Type\&.Name\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 24 of file UInt16Type\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

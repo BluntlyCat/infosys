@@ -1,0 +1,197 @@
+.TH "NHibernate.Mapping.Constraint" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.Constraint \- 
+.PP
+Base class for relational constraints in the database\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.IRelationalModel\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Mapping\&.ForeignKey\fP, \fBNHibernate\&.Mapping\&.PrimaryKey\fP, and \fBNHibernate\&.Mapping\&.UniqueKey\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAddColumn\fP (\fBColumn\fP column)"
+.br
+.RI "\fIAdds the \fBColumn\fP to the ICollection of Columns that are part of the constraint\&. \fP"
+.ti -1c
+.RI "void \fBAddColumns\fP (IEnumerable< \fBColumn\fP > columnIterator)"
+.br
+.ti -1c
+.RI "virtual string \fBSqlDropString\fP (\fBDialect\&.Dialect\fP dialect, string defaultCatalog, string defaultSchema)"
+.br
+.RI "\fIGenerates the SQL string to drop this \fBConstraint\fP in the database\&. \fP"
+.ti -1c
+.RI "virtual string \fBSqlCreateString\fP (\fBDialect\&.Dialect\fP dialect, \fBIMapping\fP p, string defaultCatalog, string defaultSchema)"
+.br
+.RI "\fIGenerates the SQL string to create this \fBConstraint\fP in the database\&. \fP"
+.ti -1c
+.RI "abstract string \fBSqlConstraintString\fP (\fBDialect\&.Dialect\fP d, string constraintName, string defaultCatalog, string defaultSchema)"
+.br
+.RI "\fIWhen implemented by a class, generates the SQL string to create the named \fBConstraint\fP in the database\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsGenerated\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.ti -1c
+.RI "override String \fBToString\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the Name used to identify the constraint in the database\&. \fP"
+.ti -1c
+.RI "IEnumerable< \fBColumn\fP > \fBColumnIterator\fP\fC [get]\fP"
+.br
+.RI "\fIGets an IEnumerable{Column} of \fBColumn\fP objects that are part of the constraint\&. \fP"
+.ti -1c
+.RI "int \fBColumnSpan\fP\fC [get]\fP"
+.br
+.RI "\fIGets the number of columns that this \fBConstraint\fP contains\&. \fP"
+.ti -1c
+.RI "IList< \fBColumn\fP > \fBColumns\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBTable\fP \fBTable\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBTable\fP this \fBConstraint\fP is in\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for relational constraints in the database\&. 
+
+
+.PP
+Definition at line 14 of file Constraint\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Mapping\&.Constraint\&.AddColumn (\fBColumn\fPcolumn)"
+
+.PP
+Adds the \fBColumn\fP to the ICollection of Columns that are part of the constraint\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumn\fP The \fBColumn\fP to include in the \fBConstraint\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 46 of file Constraint\&.cs\&.
+.SS "abstract string NHibernate\&.Mapping\&.Constraint\&.SqlConstraintString (\fBDialect\&.Dialect\fPd, stringconstraintName, stringdefaultCatalog, stringdefaultSchema)\fC [pure virtual]\fP"
+
+.PP
+When implemented by a class, generates the SQL string to create the named \fBConstraint\fP in the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fId\fP The \fBDialect\&.Dialect\fP to use for SQL rules\&.
+.br
+\fIconstraintName\fP The name to use as the identifier of the constraint in the database\&.
+.br
+\fIdefaultSchema\fP 
+.br
+\fIdefaultCatalog\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that contains the SQL to create the named \fBConstraint\fP\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Mapping\&.UniqueKey\fP, \fBNHibernate\&.Mapping\&.PrimaryKey\fP, and \fBNHibernate\&.Mapping\&.ForeignKey\fP\&.
+.SS "virtual string NHibernate\&.Mapping\&.Constraint\&.SqlCreateString (\fBDialect\&.Dialect\fPdialect, \fBIMapping\fPp, stringdefaultCatalog, stringdefaultSchema)\fC [virtual]\fP"
+
+.PP
+Generates the SQL string to create this \fBConstraint\fP in the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP to use for SQL rules\&.
+.br
+\fIp\fP 
+.br
+\fIdefaultSchema\fP 
+.br
+\fIdefaultCatalog\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that contains the SQL to create this \fBConstraint\fP\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Mapping\&.IRelationalModel\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Mapping\&.UniqueKey\fP\&.
+.PP
+Definition at line 127 of file Constraint\&.cs\&.
+.SS "virtual string NHibernate\&.Mapping\&.Constraint\&.SqlDropString (\fBDialect\&.Dialect\fPdialect, stringdefaultCatalog, stringdefaultSchema)\fC [virtual]\fP"
+
+.PP
+Generates the SQL string to drop this \fBConstraint\fP in the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP to use for SQL rules\&.
+.br
+\fIdefaultSchema\fP 
+.br
+\fIdefaultCatalog\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that contains the SQL to drop this \fBConstraint\fP\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Mapping\&.IRelationalModel\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Mapping\&.UniqueKey\fP, \fBNHibernate\&.Mapping\&.ForeignKey\fP, and \fBNHibernate\&.Mapping\&.PrimaryKey\fP\&.
+.PP
+Definition at line 100 of file Constraint\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "IEnumerable<\fBColumn\fP> NHibernate\&.Mapping\&.Constraint\&.ColumnIterator\fC [get]\fP"
+
+.PP
+Gets an IEnumerable{Column} of \fBColumn\fP objects that are part of the constraint\&. An IEnumerable{Column} of \fBColumn\fP objects that are part of the constraint\&. 
+.PP
+Definition at line 37 of file Constraint\&.cs\&.
+.SS "int NHibernate\&.Mapping\&.Constraint\&.ColumnSpan\fC [get]\fP"
+
+.PP
+Gets the number of columns that this \fBConstraint\fP contains\&. The number of columns that this \fBConstraint\fP contains\&. 
+.PP
+Definition at line 68 of file Constraint\&.cs\&.
+.SS "string NHibernate\&.Mapping\&.Constraint\&.Name\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the Name used to identify the constraint in the database\&. The Name used to identify the constraint in the database\&.
+.PP
+Definition at line 25 of file Constraint\&.cs\&.
+.SS "\fBTable\fP NHibernate\&.Mapping\&.Constraint\&.Table\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBTable\fP this \fBConstraint\fP is in\&. The \fBTable\fP this \fBConstraint\fP is in\&. 
+.PP
+Definition at line 84 of file Constraint\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

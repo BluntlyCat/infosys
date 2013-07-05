@@ -1,0 +1,452 @@
+.TH "MySql.Data.MySqlClient.MySqlHelper" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MySql.Data.MySqlClient.MySqlHelper \- 
+.PP
+Helper class that makes it easier to work with the provider\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static int \fBExecuteNonQuery\fP (\fBMySqlConnection\fP connection, string commandText, params \fBMySqlParameter\fP[] commandParameters)"
+.br
+.RI "\fIExecutes a single command against a MySQL database\&. The \fBMySqlConnection\fP is assumed to be open when the method is called and remains open after the method completes\&. \fP"
+.ti -1c
+.RI "static int \fBExecuteNonQuery\fP (string connectionString, string commandText, params \fBMySqlParameter\fP[] parms)"
+.br
+.RI "\fIExecutes a single command against a MySQL database\&. A new \fBMySqlConnection\fP is created using the \fBMySqlConnection\&.ConnectionString\fP given\&. \fP"
+.ti -1c
+.RI "static DataRow \fBExecuteDataRow\fP (string connectionString, string commandText, params \fBMySqlParameter\fP[] parms)"
+.br
+.RI "\fIExecutes a single SQL command and returns the first row of the resultset\&. A new \fBMySqlConnection\fP object is created, opened, and closed during this method\&. \fP"
+.ti -1c
+.RI "static DataSet \fBExecuteDataset\fP (string connectionString, string commandText)"
+.br
+.RI "\fIExecutes a single SQL command and returns the resultset in a DataSet\&. A new \fBMySqlConnection\fP object is created, opened, and closed during this method\&. \fP"
+.ti -1c
+.RI "static DataSet \fBExecuteDataset\fP (string connectionString, string commandText, params \fBMySqlParameter\fP[] commandParameters)"
+.br
+.RI "\fIExecutes a single SQL command and returns the resultset in a DataSet\&. A new \fBMySqlConnection\fP object is created, opened, and closed during this method\&. \fP"
+.ti -1c
+.RI "static DataSet \fBExecuteDataset\fP (\fBMySqlConnection\fP connection, string commandText)"
+.br
+.RI "\fIExecutes a single SQL command and returns the resultset in a DataSet\&. The state of the \fBMySqlConnection\fP object remains unchanged after execution of this method\&. \fP"
+.ti -1c
+.RI "static DataSet \fBExecuteDataset\fP (\fBMySqlConnection\fP connection, string commandText, params \fBMySqlParameter\fP[] commandParameters)"
+.br
+.RI "\fIExecutes a single SQL command and returns the resultset in a DataSet\&. The state of the \fBMySqlConnection\fP object remains unchanged after execution of this method\&. \fP"
+.ti -1c
+.RI "static void \fBUpdateDataSet\fP (string connectionString, string commandText, DataSet ds, string tablename)"
+.br
+.RI "\fIUpdates the given table with data from the given DataSet \fP"
+.ti -1c
+.RI "static \fBMySqlDataReader\fP \fBExecuteReader\fP (string connectionString, string commandText)"
+.br
+.RI "\fIExecutes a single command against a MySQL database\&. \fP"
+.ti -1c
+.RI "static \fBMySqlDataReader\fP \fBExecuteReader\fP (\fBMySqlConnection\fP connection, string commandText)"
+.br
+.RI "\fIExecutes a single command against a MySQL database\&. \fP"
+.ti -1c
+.RI "static \fBMySqlDataReader\fP \fBExecuteReader\fP (string connectionString, string commandText, params \fBMySqlParameter\fP[] commandParameters)"
+.br
+.RI "\fIExecutes a single command against a MySQL database\&. \fP"
+.ti -1c
+.RI "static \fBMySqlDataReader\fP \fBExecuteReader\fP (\fBMySqlConnection\fP connection, string commandText, params \fBMySqlParameter\fP[] commandParameters)"
+.br
+.RI "\fIExecutes a single command against a MySQL database\&. \fP"
+.ti -1c
+.RI "static object \fBExecuteScalar\fP (string connectionString, string commandText)"
+.br
+.RI "\fIExecute a single command against a MySQL database\&. \fP"
+.ti -1c
+.RI "static object \fBExecuteScalar\fP (string connectionString, string commandText, params \fBMySqlParameter\fP[] commandParameters)"
+.br
+.RI "\fIExecute a single command against a MySQL database\&. \fP"
+.ti -1c
+.RI "static object \fBExecuteScalar\fP (\fBMySqlConnection\fP connection, string commandText)"
+.br
+.RI "\fIExecute a single command against a MySQL database\&. \fP"
+.ti -1c
+.RI "static object \fBExecuteScalar\fP (\fBMySqlConnection\fP connection, string commandText, params \fBMySqlParameter\fP[] commandParameters)"
+.br
+.RI "\fIExecute a single command against a MySQL database\&. \fP"
+.ti -1c
+.RI "static string \fBEscapeString\fP (string value)"
+.br
+.RI "\fIEscapes the string\&. \fP"
+.ti -1c
+.RI "static string \fBDoubleQuoteString\fP (string value)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Helper class that makes it easier to work with the provider\&. 
+
+
+.PP
+Definition at line 32 of file MySqlHelper\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static string MySql\&.Data\&.MySqlClient\&.MySqlHelper\&.EscapeString (stringvalue)\fC [static]\fP"
+
+.PP
+Escapes the string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The string to escape
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The string with all quotes escaped\&.
+.RE
+.PP
+
+.PP
+Definition at line 430 of file MySqlHelper\&.cs\&.
+.SS "static DataRow MySql\&.Data\&.MySqlClient\&.MySqlHelper\&.ExecuteDataRow (stringconnectionString, stringcommandText, params \fBMySqlParameter\fP[]parms)\fC [static]\fP"
+
+.PP
+Executes a single SQL command and returns the first row of the resultset\&. A new \fBMySqlConnection\fP object is created, opened, and closed during this method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnectionString\fP Settings to be used for the connection
+.br
+\fIcommandText\fP Command to execute
+.br
+\fIparms\fP Parameters to use for the command
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+DataRow containing the first row of the resultset
+.RE
+.PP
+
+.PP
+Definition at line 111 of file MySqlHelper\&.cs\&.
+.SS "static DataSet MySql\&.Data\&.MySqlClient\&.MySqlHelper\&.ExecuteDataset (stringconnectionString, stringcommandText)\fC [static]\fP"
+
+.PP
+Executes a single SQL command and returns the resultset in a DataSet\&. A new \fBMySqlConnection\fP object is created, opened, and closed during this method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnectionString\fP Settings to be used for the connection
+.br
+\fIcommandText\fP Command to execute
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+DataSet containing the resultset
+.RE
+.PP
+
+.PP
+Definition at line 127 of file MySqlHelper\&.cs\&.
+.SS "static DataSet MySql\&.Data\&.MySqlClient\&.MySqlHelper\&.ExecuteDataset (stringconnectionString, stringcommandText, params \fBMySqlParameter\fP[]commandParameters)\fC [static]\fP"
+
+.PP
+Executes a single SQL command and returns the resultset in a DataSet\&. A new \fBMySqlConnection\fP object is created, opened, and closed during this method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnectionString\fP Settings to be used for the connection
+.br
+\fIcommandText\fP Command to execute
+.br
+\fIcommandParameters\fP Parameters to use for the command
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+DataSet containing the resultset
+.RE
+.PP
+
+.PP
+Definition at line 141 of file MySqlHelper\&.cs\&.
+.SS "static DataSet MySql\&.Data\&.MySqlClient\&.MySqlHelper\&.ExecuteDataset (\fBMySqlConnection\fPconnection, stringcommandText)\fC [static]\fP"
+
+.PP
+Executes a single SQL command and returns the resultset in a DataSet\&. The state of the \fBMySqlConnection\fP object remains unchanged after execution of this method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnection\fP \fBMySqlConnection\fP object to use
+.br
+\fIcommandText\fP Command to execute
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+DataSet containing the resultset
+.RE
+.PP
+
+.PP
+Definition at line 161 of file MySqlHelper\&.cs\&.
+.SS "static DataSet MySql\&.Data\&.MySqlClient\&.MySqlHelper\&.ExecuteDataset (\fBMySqlConnection\fPconnection, stringcommandText, params \fBMySqlParameter\fP[]commandParameters)\fC [static]\fP"
+
+.PP
+Executes a single SQL command and returns the resultset in a DataSet\&. The state of the \fBMySqlConnection\fP object remains unchanged after execution of this method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnection\fP \fBMySqlConnection\fP object to use
+.br
+\fIcommandText\fP Command to execute
+.br
+\fIcommandParameters\fP Parameters to use for the command
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+DataSet containing the resultset
+.RE
+.PP
+
+.PP
+Definition at line 176 of file MySqlHelper\&.cs\&.
+.SS "static int MySql\&.Data\&.MySqlClient\&.MySqlHelper\&.ExecuteNonQuery (\fBMySqlConnection\fPconnection, stringcommandText, params \fBMySqlParameter\fP[]commandParameters)\fC [static]\fP"
+
+.PP
+Executes a single command against a MySQL database\&. The \fBMySqlConnection\fP is assumed to be open when the method is called and remains open after the method completes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnection\fP \fBMySqlConnection\fP object to use
+.br
+\fIcommandText\fP SQL command to be executed
+.br
+\fIcommandParameters\fP Array of \fBMySqlParameter\fP objects to use with the command\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 62 of file MySqlHelper\&.cs\&.
+.SS "static int MySql\&.Data\&.MySqlClient\&.MySqlHelper\&.ExecuteNonQuery (stringconnectionString, stringcommandText, params \fBMySqlParameter\fP[]parms)\fC [static]\fP"
+
+.PP
+Executes a single command against a MySQL database\&. A new \fBMySqlConnection\fP is created using the \fBMySqlConnection\&.ConnectionString\fP given\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnectionString\fP \fBMySqlConnection\&.ConnectionString\fP to use
+.br
+\fIcommandText\fP SQL command to be executed
+.br
+\fIparms\fP Array of \fBMySqlParameter\fP objects to use with the command\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 88 of file MySqlHelper\&.cs\&.
+.SS "static \fBMySqlDataReader\fP MySql\&.Data\&.MySqlClient\&.MySqlHelper\&.ExecuteReader (stringconnectionString, stringcommandText)\fC [static]\fP"
+
+.PP
+Executes a single command against a MySQL database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnectionString\fP Settings to use for this command
+.br
+\fIcommandText\fP Command text to use
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBMySqlDataReader\fP object ready to read the results of the command
+.RE
+.PP
+
+.PP
+Definition at line 271 of file MySqlHelper\&.cs\&.
+.SS "static \fBMySqlDataReader\fP MySql\&.Data\&.MySqlClient\&.MySqlHelper\&.ExecuteReader (\fBMySqlConnection\fPconnection, stringcommandText)\fC [static]\fP"
+
+.PP
+Executes a single command against a MySQL database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnection\fP \fBMySqlConnection\fP object to use for the command
+.br
+\fIcommandText\fP Command text to use
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBMySqlDataReader\fP object ready to read the results of the command
+.RE
+.PP
+
+.PP
+Definition at line 283 of file MySqlHelper\&.cs\&.
+.SS "static \fBMySqlDataReader\fP MySql\&.Data\&.MySqlClient\&.MySqlHelper\&.ExecuteReader (stringconnectionString, stringcommandText, params \fBMySqlParameter\fP[]commandParameters)\fC [static]\fP"
+
+.PP
+Executes a single command against a MySQL database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnectionString\fP Settings to use for this command
+.br
+\fIcommandText\fP Command text to use
+.br
+\fIcommandParameters\fP Array of \fBMySqlParameter\fP objects to use with the command
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBMySqlDataReader\fP object ready to read the results of the command
+.RE
+.PP
+
+.PP
+Definition at line 296 of file MySqlHelper\&.cs\&.
+.SS "static \fBMySqlDataReader\fP MySql\&.Data\&.MySqlClient\&.MySqlHelper\&.ExecuteReader (\fBMySqlConnection\fPconnection, stringcommandText, params \fBMySqlParameter\fP[]commandParameters)\fC [static]\fP"
+
+.PP
+Executes a single command against a MySQL database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnection\fP Connection to use for the command
+.br
+\fIcommandText\fP Command text to use
+.br
+\fIcommandParameters\fP Array of \fBMySqlParameter\fP objects to use with the command
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBMySqlDataReader\fP object ready to read the results of the command
+.RE
+.PP
+
+.PP
+Definition at line 313 of file MySqlHelper\&.cs\&.
+.SS "static object MySql\&.Data\&.MySqlClient\&.MySqlHelper\&.ExecuteScalar (stringconnectionString, stringcommandText)\fC [static]\fP"
+
+.PP
+Execute a single command against a MySQL database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnectionString\fP Settings to use for the update
+.br
+\fIcommandText\fP Command text to use for the update
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The first column of the first row in the result set, or a null reference if the result set is empty\&.
+.RE
+.PP
+
+.PP
+Definition at line 330 of file MySqlHelper\&.cs\&.
+.SS "static object MySql\&.Data\&.MySqlClient\&.MySqlHelper\&.ExecuteScalar (stringconnectionString, stringcommandText, params \fBMySqlParameter\fP[]commandParameters)\fC [static]\fP"
+
+.PP
+Execute a single command against a MySQL database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnectionString\fP Settings to use for the command
+.br
+\fIcommandText\fP Command text to use for the command
+.br
+\fIcommandParameters\fP Parameters to use for the command
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The first column of the first row in the result set, or a null reference if the result set is empty\&.
+.RE
+.PP
+
+.PP
+Definition at line 343 of file MySqlHelper\&.cs\&.
+.SS "static object MySql\&.Data\&.MySqlClient\&.MySqlHelper\&.ExecuteScalar (\fBMySqlConnection\fPconnection, stringcommandText)\fC [static]\fP"
+
+.PP
+Execute a single command against a MySQL database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnection\fP \fBMySqlConnection\fP object to use
+.br
+\fIcommandText\fP Command text to use for the command
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The first column of the first row in the result set, or a null reference if the result set is empty\&.
+.RE
+.PP
+
+.PP
+Definition at line 361 of file MySqlHelper\&.cs\&.
+.SS "static object MySql\&.Data\&.MySqlClient\&.MySqlHelper\&.ExecuteScalar (\fBMySqlConnection\fPconnection, stringcommandText, params \fBMySqlParameter\fP[]commandParameters)\fC [static]\fP"
+
+.PP
+Execute a single command against a MySQL database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnection\fP \fBMySqlConnection\fP object to use
+.br
+\fIcommandText\fP Command text to use for the command
+.br
+\fIcommandParameters\fP Parameters to use for the command
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The first column of the first row in the result set, or a null reference if the result set is empty\&.
+.RE
+.PP
+
+.PP
+Definition at line 374 of file MySqlHelper\&.cs\&.
+.SS "static void MySql\&.Data\&.MySqlClient\&.MySqlHelper\&.UpdateDataSet (stringconnectionString, stringcommandText, DataSetds, stringtablename)\fC [static]\fP"
+
+.PP
+Updates the given table with data from the given DataSet 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnectionString\fP Settings to use for the update
+.br
+\fIcommandText\fP Command text to use for the update
+.br
+\fIds\fP DataSet containing the new data to use in the update
+.br
+\fItablename\fP Tablename in the dataset to update
+.RE
+.PP
+
+.PP
+Definition at line 209 of file MySqlHelper\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

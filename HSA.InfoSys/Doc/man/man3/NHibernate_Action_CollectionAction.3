@@ -1,0 +1,120 @@
+.TH "NHibernate.Action.CollectionAction" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Action.CollectionAction \- 
+.PP
+Any action relating to insert/update/delete of a collection  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Action\&.IExecutable\fP, IComparable< CollectionAction >, and IDeserializationCallback\&.
+.PP
+Inherited by \fBNHibernate\&.Action\&.CollectionRecreateAction\fP, \fBNHibernate\&.Action\&.CollectionRemoveAction\fP, and \fBNHibernate\&.Action\&.CollectionUpdateAction\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBBeforeExecutions\fP ()"
+.br
+.RI "\fICalled before executing any actions\fP"
+.ti -1c
+.RI "abstract void \fBExecute\fP ()"
+.br
+.RI "\fIExecute this action\fP"
+.ti -1c
+.RI "virtual int \fBCompareTo\fP (\fBCollectionAction\fP other)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCollectionAction\fP (\fBICollectionPersister\fP persister, \fBIPersistentCollection\fP collection, object key, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIInitializes a new instance of \fBCollectionAction\fP\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string[] \fBPropertySpaces\fP\fC [get]\fP"
+.br
+.RI "\fIWhat spaces (tables) are affected by this action? \fP"
+.ti -1c
+.RI "virtual 
+.br
+\fBBeforeTransactionCompletionProcessDelegate\fP \fBBeforeTransactionCompletionProcess\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual 
+.br
+\fBAfterTransactionCompletionProcessDelegate\fP \fBAfterTransactionCompletionProcess\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBISoftLock\fP \fBLock\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Any action relating to insert/update/delete of a collection 
+
+
+.PP
+Definition at line 17 of file CollectionAction\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Action\&.CollectionAction\&.CollectionAction (\fBICollectionPersister\fPpersister, \fBIPersistentCollection\fPcollection, objectkey, \fBISessionImplementor\fPsession)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of \fBCollectionAction\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The ICollectionPersister that is responsible for the persisting the \fBCollection\fP\&.
+.br
+\fIcollection\fP The Persistent collection\&.
+.br
+\fIkey\fP The identifier of the \fBCollection\fP\&.
+.br
+\fIsession\fP The ISessionImplementor that the \fBAction\fP is occurring in\&.
+.RE
+.PP
+
+.PP
+Definition at line 34 of file CollectionAction\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Action\&.CollectionAction\&.BeforeExecutions ()\fC [virtual]\fP"
+
+.PP
+Called before executing any actions
+.PP
+Implements \fBNHibernate\&.Action\&.IExecutable\fP\&.
+.PP
+Definition at line 89 of file CollectionAction\&.cs\&.
+.SS "abstract void NHibernate\&.Action\&.CollectionAction\&.Execute ()\fC [pure virtual]\fP"
+
+.PP
+Execute this action
+.PP
+Implements \fBNHibernate\&.Action\&.IExecutable\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Action\&.CollectionRemoveAction\fP, \fBNHibernate\&.Action\&.CollectionUpdateAction\fP, and \fBNHibernate\&.Action\&.CollectionRecreateAction\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "string [] NHibernate\&.Action\&.CollectionAction\&.PropertySpaces\fC [get]\fP"
+
+.PP
+What spaces (tables) are affected by this action? 
+.PP
+Definition at line 84 of file CollectionAction\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

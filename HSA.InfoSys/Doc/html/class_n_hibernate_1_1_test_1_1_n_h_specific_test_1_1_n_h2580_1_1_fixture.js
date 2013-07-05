@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2580_1_1_fixture =
+[
+    [ "WhenPersisterNotFoundShouldThrowAMoreExplicitException", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2580_1_1_fixture.html#a0bd78ba50448ac577e4a9b133e035c0a", null ]
+];

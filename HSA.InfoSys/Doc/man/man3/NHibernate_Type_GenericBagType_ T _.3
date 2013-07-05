@@ -1,0 +1,142 @@
+.TH "NHibernate.Type.GenericBagType< T >" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.GenericBagType< T > \- 
+.PP
+An \fBIType\fP that maps an IList{T} collection to the database using bag semantics\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.BagType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGenericBagType\fP (string role, string propertyRef)"
+.br
+.RI "\fIInitializes a new instance of a GenericBagType{T} class for a specific role\&. \fP"
+.ti -1c
+.RI "override \fBIPersistentCollection\fP \fBInstantiate\fP (\fBISessionImplementor\fP session, \fBICollectionPersister\fP persister, object key)"
+.br
+.RI "\fIInstantiates a new IPersistentCollection for the bag\&. \fP"
+.ti -1c
+.RI "override \fBIPersistentCollection\fP \fBWrap\fP (\fBISessionImplementor\fP session, object collection)"
+.br
+.RI "\fIWraps an IList{T} in a PersistentGenericBag{T}\&. \fP"
+.ti -1c
+.RI "override object \fBInstantiate\fP (int anticipatedSize)"
+.br
+.RI "\fIInstantiate an empty instance of the 'underlying' collection (not a wrapper), but with the given anticipated size (i\&.e\&. accounting for initial capacity and perhaps load factor)\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBAdd\fP (object collection, object element)"
+.br
+.ti -1c
+.RI "override void \fBClear\fP (object collection)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An \fBIType\fP that maps an IList{T} collection to the database using bag semantics\&. 
+
+
+.PP
+Definition at line 15 of file GenericBagType\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Type\&.GenericBagType< T >\&.GenericBagType (stringrole, stringpropertyRef)"
+
+.PP
+Initializes a new instance of a GenericBagType{T} class for a specific role\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the persistent collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&.
+.RE
+.PP
+
+.PP
+Definition at line 25 of file GenericBagType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBIPersistentCollection\fP NHibernate\&.Type\&.GenericBagType< T >\&.Instantiate (\fBISessionImplementor\fPsession, \fBICollectionPersister\fPpersister, objectkey)\fC [virtual]\fP"
+
+.PP
+Instantiates a new IPersistentCollection for the bag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The current ISessionImplementor for the bag\&.
+.br
+\fIpersister\fP The current ICollectionPersister for the bag\&.
+.br
+\fIkey\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.BagType\fP\&.
+.PP
+Definition at line 36 of file GenericBagType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.GenericBagType< T >\&.Instantiate (intanticipatedSize)\fC [virtual]\fP"
+
+.PP
+Instantiate an empty instance of the 'underlying' collection (not a wrapper), but with the given anticipated size (i\&.e\&. accounting for initial capacity and perhaps load factor)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIanticipatedSize\fP The anticipated size of the instantiated collection after we are done populating it\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A newly instantiated collection to be wrapped\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.BagType\fP\&.
+.PP
+Definition at line 69 of file GenericBagType\&.cs\&.
+.SS "override \fBIPersistentCollection\fP NHibernate\&.Type\&.GenericBagType< T >\&.Wrap (\fBISessionImplementor\fPsession, objectcollection)\fC [virtual]\fP"
+
+.PP
+Wraps an IList{T} in a PersistentGenericBag{T}\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The ISessionImplementor for the collection to be a part of\&.
+.br
+\fIcollection\fP The unwrapped IList&lt;T&gt;\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An PersistentGenericBag&lt;T&gt; that wraps the non \fBNHibernate\fP IList&lt;T&gt;\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.BagType\fP\&.
+.PP
+Definition at line 54 of file GenericBagType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

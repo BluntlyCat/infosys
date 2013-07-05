@@ -1,0 +1,72 @@
+.TH "NHibernate.Test.TransactionTest.TransactionNotificationFixture.RecordingInterceptor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.TransactionTest.TransactionNotificationFixture.RecordingInterceptor \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.EmptyInterceptor\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBAfterTransactionBegin\fP (\fBITransaction\fP tx)"
+.br
+.RI "\fICalled when a \fBNHibernate\fP transaction is begun via the \fBNHibernate\fP \fBITransaction\fP API\&. Will not be called if transactions are being controlled via some other mechanism\&. \fP"
+.ti -1c
+.RI "override void \fBAfterTransactionCompletion\fP (\fBITransaction\fP tx)"
+.br
+.RI "\fICalled after a transaction is committed or rolled back\&. \fP"
+.ti -1c
+.RI "override void \fBBeforeTransactionCompletion\fP (\fBITransaction\fP tx)"
+.br
+.RI "\fICalled before a transaction is committed (but not before rollback)\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBafterTransactionBeginCalled\fP"
+.br
+.ti -1c
+.RI "bool \fBafterTransactionCompletionCalled\fP"
+.br
+.ti -1c
+.RI "bool \fBbeforeTransactionCompletionCalled\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 15 of file TransactionNotificationFixture\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Test\&.TransactionTest\&.TransactionNotificationFixture\&.RecordingInterceptor\&.AfterTransactionBegin (\fBITransaction\fPtx)\fC [virtual]\fP"
+
+.PP
+Called when a \fBNHibernate\fP transaction is begun via the \fBNHibernate\fP \fBITransaction\fP API\&. Will not be called if transactions are being controlled via some other mechanism\&. 
+.PP
+Reimplemented from \fBNHibernate\&.EmptyInterceptor\fP\&.
+.PP
+Definition at line 21 of file TransactionNotificationFixture\&.cs\&.
+.SS "override void NHibernate\&.Test\&.TransactionTest\&.TransactionNotificationFixture\&.RecordingInterceptor\&.AfterTransactionCompletion (\fBITransaction\fPtx)\fC [virtual]\fP"
+
+.PP
+Called after a transaction is committed or rolled back\&. 
+.PP
+Reimplemented from \fBNHibernate\&.EmptyInterceptor\fP\&.
+.PP
+Definition at line 26 of file TransactionNotificationFixture\&.cs\&.
+.SS "override void NHibernate\&.Test\&.TransactionTest\&.TransactionNotificationFixture\&.RecordingInterceptor\&.BeforeTransactionCompletion (\fBITransaction\fPtx)\fC [virtual]\fP"
+
+.PP
+Called before a transaction is committed (but not before rollback)\&. 
+.PP
+Reimplemented from \fBNHibernate\&.EmptyInterceptor\fP\&.
+.PP
+Definition at line 31 of file TransactionNotificationFixture\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

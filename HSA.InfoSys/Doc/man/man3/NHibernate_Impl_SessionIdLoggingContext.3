@@ -1,0 +1,43 @@
+.TH "NHibernate.Impl.SessionIdLoggingContext" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Impl.SessionIdLoggingContext \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDisposable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSessionIdLoggingContext\fP (Guid id)"
+.br
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "static Guid \fBSessionId\fP\fC [get, set]\fP"
+.br
+.RI "\fIWe always set the result to use a thread static variable, on the face of it, it looks like it is not a valid choice, since ASP\&.Net and WCF may decide to switch threads on us\&. But, since \fBSessionIdLoggingContext\fP is only used inside NH calls, and since NH calls are never async, this isn't an issue for us\&. In addition to that, attempting to match to the current context has proven to be performance hit\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 5 of file SessionIdLoggingContext\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "Guid NHibernate\&.Impl\&.SessionIdLoggingContext\&.SessionId\fC [static]\fP, \fC [get]\fP, \fC [set]\fP"
+
+.PP
+We always set the result to use a thread static variable, on the face of it, it looks like it is not a valid choice, since ASP\&.Net and WCF may decide to switch threads on us\&. But, since \fBSessionIdLoggingContext\fP is only used inside NH calls, and since NH calls are never async, this isn't an issue for us\&. In addition to that, attempting to match to the current context has proven to be performance hit\&. 
+.PP
+Definition at line 26 of file SessionIdLoggingContext\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

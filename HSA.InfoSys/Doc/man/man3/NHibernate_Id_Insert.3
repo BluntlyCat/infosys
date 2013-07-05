@@ -1,0 +1,50 @@
+.TH "NHibernate.Id.Insert" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.Insert \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAbstractReturningDelegate\fP"
+.br
+.RI "\fIAbstract InsertGeneratedIdentifierDelegate implementation where the underlying strategy causes the generated identitifer to be returned as an effect of performing the insert statement\&. Thus, there is no need for an additional sql statement to determine the generated identitifer\&. \fP"
+.ti -1c
+.RI "class \fBAbstractSelectingDelegate\fP"
+.br
+.RI "\fIAbstract InsertGeneratedIdentifierDelegate implementation where the underlying strategy requires an subsequent select after the insert to determine the generated identifier\&. \fP"
+.ti -1c
+.RI "interface \fBIBinder\fP"
+.br
+.ti -1c
+.RI "class \fBIdentifierGeneratingInsert\fP"
+.br
+.RI "\fINothing more than a distinguishing subclass of \fBInsert\fP used to indicate intent\&. Some subclasses of this also provided some additional functionality or semantic to the genernated SQL statement string\&. \fP"
+.ti -1c
+.RI "interface \fBIInsertGeneratedIdentifierDelegate\fP"
+.br
+.RI "\fIResponsible for handling delegation relating to variants in how insert-generated-identifier generator strategies dictate processing: \fP"
+.ti -1c
+.RI "class \fBInsertSelectIdentityInsert\fP"
+.br
+.RI "\fISpecialized \fBIdentifierGeneratingInsert\fP which appends the database specific clause which signifies to return generated IDENTITY values to the end of the insert statement\&. \fP"
+.ti -1c
+.RI "class \fBNoCommentsInsert\fP"
+.br
+.RI "\fIDisable comments on insert\&. \fP"
+.ti -1c
+.RI "class \fBOutputParamReturningDelegate\fP"
+.br
+.RI "\fI\fBIInsertGeneratedIdentifierDelegate\fP implementation where the underlying strategy causes the generated identitifer to be returned, as an effect of performing the insert statement, in a Output parameter\&. Thus, there is no need for an additional sql statement to determine the generated identitifer\&. \fP"
+.ti -1c
+.RI "class \fBReturningIdentifierInsert\fP"
+.br
+.RI "\fISpecialized \fBIdentifierGeneratingInsert\fP which appends the database specific clause which signifies to return generated identifier values to the end of the insert statement\&. \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

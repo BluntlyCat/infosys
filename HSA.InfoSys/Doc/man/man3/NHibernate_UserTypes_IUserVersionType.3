@@ -1,0 +1,79 @@
+.TH "NHibernate.UserTypes.IUserVersionType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.UserTypes.IUserVersionType \- 
+.PP
+A user type that may be used for a version property\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.UserTypes\&.IUserType\fP, and IComparer\&.
+.PP
+Inherited by \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1355\&.UserTypeTimestamp\fP, and \fBNHibernate\&.Test\&.VersionTest\&.Db\&.MsSQL\&.BinaryTimestamp\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBSeed\fP (\fBISessionImplementor\fP session)"
+.br
+.RI "\fIGenerate an initial version\&. \fP"
+.ti -1c
+.RI "object \fBNext\fP (object current, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIIncrement the version\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A user type that may be used for a version property\&. 
+
+
+.PP
+Definition at line 10 of file IUserVersionType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.UserTypes\&.IUserVersionType\&.Next (objectcurrent, \fBISessionImplementor\fPsession)"
+
+.PP
+Increment the version\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcurrent\fP The session from which this request originates\&.
+.br
+\fIsession\fP the current version
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an instance of the type
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1355\&.UserTypeTimestamp\fP, and \fBNHibernate\&.Test\&.VersionTest\&.Db\&.MsSQL\&.BinaryTimestamp\fP\&.
+.SS "object NHibernate\&.UserTypes\&.IUserVersionType\&.Seed (\fBISessionImplementor\fPsession)"
+
+.PP
+Generate an initial version\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session from which this request originates\&. May be null; currently this only happens during startup when trying to determine the 'unsaved value' of entities\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an instance of the type
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1355\&.UserTypeTimestamp\fP, and \fBNHibernate\&.Test\&.VersionTest\&.Db\&.MsSQL\&.BinaryTimestamp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

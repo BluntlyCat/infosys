@@ -1,0 +1,126 @@
+.TH "log4net.Util.TypeConverters.ConverterRegistry" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.TypeConverters.ConverterRegistry \- 
+.PP
+Register of type converters for specific types\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBAddConverter\fP (Type destinationType, object converter)"
+.br
+.RI "\fIAdds a converter for a specific type\&. \fP"
+.ti -1c
+.RI "static void \fBAddConverter\fP (Type destinationType, Type converterType)"
+.br
+.RI "\fIAdds a converter for a specific type\&. \fP"
+.ti -1c
+.RI "static \fBIConvertTo\fP \fBGetConvertTo\fP (Type sourceType, Type destinationType)"
+.br
+.RI "\fIGets the type converter to use to convert values to the destination type\&. \fP"
+.ti -1c
+.RI "static \fBIConvertFrom\fP \fBGetConvertFrom\fP (Type destinationType)"
+.br
+.RI "\fIGets the type converter to use to convert values to the destination type\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Register of type converters for specific types\&. 
+
+Maintains a registry of type converters used to convert between types\&. 
+.PP
+Use the \fBAddConverter(Type, object)\fP and \fBAddConverter(Type, Type)\fP methods to register new converters\&. The \fBGetConvertTo\fP and \fBGetConvertFrom\fP methods lookup appropriate converters to use\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBIConvertFrom\fP, \fBIConvertTo\fP
+.PP
+.RE
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 46 of file ConverterRegistry\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static void log4net\&.Util\&.TypeConverters\&.ConverterRegistry\&.AddConverter (TypedestinationType, objectconverter)\fC [static]\fP"
+
+.PP
+Adds a converter for a specific type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestinationType\fP The type being converted to\&.
+.br
+\fIconverter\fP The type converter to use to convert to the destination type\&.
+.RE
+.PP
+.PP
+Adds a converter instance for a specific type\&. 
+.PP
+Definition at line 97 of file ConverterRegistry\&.cs\&.
+.SS "static void log4net\&.Util\&.TypeConverters\&.ConverterRegistry\&.AddConverter (TypedestinationType, TypeconverterType)\fC [static]\fP"
+
+.PP
+Adds a converter for a specific type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestinationType\fP The type being converted to\&.
+.br
+\fIconverterType\fP The type of the type converter to use to convert to the destination type\&.
+.RE
+.PP
+.PP
+Adds a converter Type for a specific type\&. 
+.PP
+Definition at line 118 of file ConverterRegistry\&.cs\&.
+.SS "static \fBIConvertFrom\fP log4net\&.Util\&.TypeConverters\&.ConverterRegistry\&.GetConvertFrom (TypedestinationType)\fC [static]\fP"
+
+.PP
+Gets the type converter to use to convert values to the destination type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestinationType\fP The type being converted to\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The type converter instance to use for type conversions or \fCnull\fP if no type converter is found\&. 
+.RE
+.PP
+.PP
+Gets the type converter to use to convert values to the destination type\&. 
+.PP
+Definition at line 178 of file ConverterRegistry\&.cs\&.
+.SS "static \fBIConvertTo\fP log4net\&.Util\&.TypeConverters\&.ConverterRegistry\&.GetConvertTo (TypesourceType, TypedestinationType)\fC [static]\fP"
+
+.PP
+Gets the type converter to use to convert values to the destination type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsourceType\fP The type being converted from\&.
+.br
+\fIdestinationType\fP The type being converted to\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The type converter instance to use for type conversions or \fCnull\fP if no type converter is found\&. 
+.RE
+.PP
+.PP
+Gets the type converter to use to convert values to the destination type\&. 
+.PP
+Definition at line 137 of file ConverterRegistry\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

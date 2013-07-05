@@ -1,0 +1,60 @@
+.TH "NHibernate.Id.IIdentifierGenerator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.IIdentifierGenerator \- 
+.PP
+The general contract between a class that generates unique identifiers and the \fBISession\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Id\&.Assigned\fP, \fBNHibernate\&.Id\&.CounterGenerator\fP, \fBNHibernate\&.Id\&.ForeignGenerator\fP, \fBNHibernate\&.Id\&.GuidCombGenerator\fP, \fBNHibernate\&.Id\&.GuidGenerator\fP, \fBNHibernate\&.Id\&.IncrementGenerator\fP, \fBNHibernate\&.Id\&.IPersistentIdentifierGenerator\fP, \fBNHibernate\&.Id\&.IPostInsertIdentifierGenerator\fP, \fBNHibernate\&.Id\&.NativeGuidGenerator\fP, \fBNHibernate\&.Id\&.UUIDHexGenerator\fP, and \fBNHibernate\&.Id\&.UUIDStringGenerator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBGenerate\fP (\fBISessionImplementor\fP session, object obj)"
+.br
+.RI "\fIGenerate a new identifier \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The general contract between a class that generates unique identifiers and the \fBISession\fP\&. 
+
+It is not intended that this interface ever be exposed to the application\&. It \fBis\fP intended that users implement this interface to provide custom identifier generation strategies\&. 
+.PP
+Implementors should provide a public default constructor\&. 
+.PP
+Implementations that accept configuration parameters should also implement \fBIConfigurable\fP\&. 
+.PP
+Implementors \fBmust\fP be threadsafe\&. 
+.PP
+Definition at line 33 of file IIdentifierGenerator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.Id\&.IIdentifierGenerator\&.Generate (\fBISessionImplementor\fPsession, objectobj)"
+
+.PP
+Generate a new identifier 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The ISessionImplementor this id is being generated in\&.
+.br
+\fIobj\fP The entity for which the id is being generated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new identifier
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Id\&.Enhanced\&.TableGenerator\fP, \fBNHibernate\&.Id\&.Enhanced\&.SequenceStyleGenerator\fP, \fBNHibernate\&.Id\&.TableGenerator\fP, \fBNHibernate\&.Id\&.SequenceGenerator\fP, \fBNHibernate\&.Id\&.IncrementGenerator\fP, \fBNHibernate\&.Id\&.TableHiLoGenerator\fP, \fBNHibernate\&.Id\&.SequenceHiLoGenerator\fP, \fBNHibernate\&.Id\&.UUIDHexGenerator\fP, \fBNHibernate\&.Id\&.ForeignGenerator\fP, \fBNHibernate\&.Id\&.Assigned\fP, \fBNHibernate\&.Id\&.GuidCombGenerator\fP, \fBNHibernate\&.Id\&.UUIDStringGenerator\fP, \fBNHibernate\&.Id\&.CounterGenerator\fP, \fBNHibernate\&.Id\&.GuidGenerator\fP, \fBNHibernate\&.Id\&.NativeGuidGenerator\fP, \fBNHibernate\&.Id\&.AbstractPostInsertGenerator\fP, and \fBNHibernate\&.Id\&.SequenceIdentityGenerator\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

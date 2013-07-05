@@ -1,0 +1,183 @@
+.TH "Newtonsoft.Json.Linq.JTokenReader" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.Linq.JTokenReader \- 
+.PP
+Represents a reader that provides fast, non-cached, forward-only access to serialized \fBJson\fP data\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNewtonsoft\&.Json\&.JsonReader\fP, and \fBNewtonsoft\&.Json\&.IJsonLineInfo\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJTokenReader\fP (\fBJToken\fP token)"
+.br
+.RI "\fIInitializes a new instance of the \fBJTokenReader\fP class\&. \fP"
+.ti -1c
+.RI "override byte[] \fBReadAsBytes\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a T:Byte[]\&. \fP"
+.ti -1c
+.RI "override decimal \fBReadAsDecimal\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{Decimal}\&. \fP"
+.ti -1c
+.RI "override int \fBReadAsInt32\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{Int32}\&. \fP"
+.ti -1c
+.RI "override string \fBReadAsString\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a \fBString\fP\&. \fP"
+.ti -1c
+.RI "override \fBDateTime\fP \fBReadAsDateTime\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{DateTime}\&. \fP"
+.ti -1c
+.RI "override \fBDateTimeOffset\fP \fBReadAsDateTimeOffset\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream as a Nullable{DateTimeOffset}\&. \fP"
+.ti -1c
+.RI "override bool \fBRead\fP ()"
+.br
+.RI "\fIReads the next JSON token from the stream\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Represents a reader that provides fast, non-cached, forward-only access to serialized \fBJson\fP data\&. 
+
+
+.PP
+Definition at line 34 of file JTokenReader\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Newtonsoft\&.Json\&.Linq\&.JTokenReader\&.JTokenReader (\fBJToken\fPtoken)"
+
+.PP
+Initializes a new instance of the \fBJTokenReader\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItoken\fP The token to read from\&.
+.RE
+.PP
+
+.PP
+Definition at line 44 of file JTokenReader\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override bool Newtonsoft\&.Json\&.Linq\&.JTokenReader\&.Read ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the next token was read successfully; false if there are no more tokens to read\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 131 of file JTokenReader\&.cs\&.
+.SS "override byte [] Newtonsoft\&.Json\&.Linq\&.JTokenReader\&.ReadAsBytes ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a T:Byte[]\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A T:Byte[] or a null reference if the next JSON token is null\&. This method will return \fCnull\fP at the end of an array\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 58 of file JTokenReader\&.cs\&.
+.SS "override \fBDateTime\fP Newtonsoft\&.Json\&.Linq\&.JTokenReader\&.ReadAsDateTime ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{DateTime}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBString\fP\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 94 of file JTokenReader\&.cs\&.
+.SS "override \fBDateTimeOffset\fP Newtonsoft\&.Json\&.Linq\&.JTokenReader\&.ReadAsDateTimeOffset ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{DateTimeOffset}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A Nullable{DateTimeOffset}\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 104 of file JTokenReader\&.cs\&.
+.SS "override decimal Newtonsoft\&.Json\&.Linq\&.JTokenReader\&.ReadAsDecimal ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{Decimal}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A Nullable{Decimal}\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 67 of file JTokenReader\&.cs\&.
+.SS "override int Newtonsoft\&.Json\&.Linq\&.JTokenReader\&.ReadAsInt32 ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a Nullable{Int32}\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A Nullable{Int32}\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 76 of file JTokenReader\&.cs\&.
+.SS "override string Newtonsoft\&.Json\&.Linq\&.JTokenReader\&.ReadAsString ()\fC [virtual]\fP"
+
+.PP
+Reads the next JSON token from the stream as a \fBString\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBString\fP\&. This method will return \fCnull\fP at the end of an array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonReader\fP\&.
+.PP
+Definition at line 85 of file JTokenReader\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

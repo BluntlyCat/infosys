@@ -1,0 +1,106 @@
+.TH "NHibernate.Dialect.Function" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.Function \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAnsiExtractFunction\fP"
+.br
+.ti -1c
+.RI "class \fBAnsiSubstringFunction\fP"
+.br
+.RI "\fIANSI-SQL substring Documented in: ANSI X3\&.135-1992 American National Standard for Information Systems - Database Language - SQL \fP"
+.ti -1c
+.RI "class \fBAnsiTrimEmulationFunction\fP"
+.br
+.RI "\fIA SQLFunction implementation that emulates the ANSI SQL trim function on dialects which do not support the full definition\&. However, this function definition does assume the availability of ltrim, rtrim, and replace functions which it uses in various combinations to emulate the desired ANSI trim() functionality\&. \fP"
+.ti -1c
+.RI "class \fBAnsiTrimFunction\fP"
+.br
+.ti -1c
+.RI "class \fBAvgQueryFunctionInfo\fP"
+.br
+.ti -1c
+.RI "class \fBCastFunction\fP"
+.br
+.RI "\fIANSI-SQL style cast(foo as type) where the type is a \fBNHibernate\fP type \fP"
+.ti -1c
+.RI "class \fBCharIndexFunction\fP"
+.br
+.RI "\fIEmulation of locate() on Sybase \fP"
+.ti -1c
+.RI "class \fBClassicAggregateFunction\fP"
+.br
+.ti -1c
+.RI "class \fBClassicAvgFunction\fP"
+.br
+.RI "\fI\fBClassic\fP AVG sqlfunction that return types as it was done in Hibernate 3\&.1 \fP"
+.ti -1c
+.RI "class \fBClassicCountFunction\fP"
+.br
+.RI "\fI\fBClassic\fP COUNT sqlfunction that return types as it was done in Hibernate 3\&.1 \fP"
+.ti -1c
+.RI "class \fBClassicSumFunction\fP"
+.br
+.RI "\fI\fBClassic\fP SUM sqlfunction that return types as it was done in Hibernate 3\&.1 \fP"
+.ti -1c
+.RI "class \fBCommonGrammar\fP"
+.br
+.ti -1c
+.RI "class \fBCountQueryFunctionInfo\fP"
+.br
+.ti -1c
+.RI "class \fBEmulatedLengthSubstringFunction\fP"
+.br
+.RI "\fIProvides a substring implementation of the form substring(expr, start, length) for SQL dialects where the length argument is mandatory\&. If this is called from HQL with only two arguments, this implementation will generate the length parameter as (len(expr) + 1 - start)\&. \fP"
+.ti -1c
+.RI "interface \fBIFunctionGrammar\fP"
+.br
+.ti -1c
+.RI "interface \fBISQLFunction\fP"
+.br
+.RI "\fIProvides support routines for the HQL functions as used in the various SQL Dialects \fP"
+.ti -1c
+.RI "class \fBNoArgSQLFunction\fP"
+.br
+.RI "\fISummary description for \fBNoArgSQLFunction\fP\&. \fP"
+.ti -1c
+.RI "class \fBNvlFunction\fP"
+.br
+.RI "\fIEmulation of coalesce() on Oracle, using multiple nvl() calls \fP"
+.ti -1c
+.RI "class \fBPositionSubstringFunction\fP"
+.br
+.RI "\fIEmulation of locate() on PostgreSQL \fP"
+.ti -1c
+.RI "class \fBSQLFunctionRegistry\fP"
+.br
+.ti -1c
+.RI "class \fBSQLFunctionTemplate\fP"
+.br
+.RI "\fIRepresents HQL functions that can have different representations in different SQL dialects\&. E\&.g\&. in HQL we can define function \fP"
+.ti -1c
+.RI "class \fBStandardSafeSQLFunction\fP"
+.br
+.RI "\fIProvides a standard implementation that supports the majority of the HQL functions that are translated to SQL\&. \fP"
+.ti -1c
+.RI "class \fBStandardSQLFunction\fP"
+.br
+.RI "\fIProvides a standard implementation that supports the majority of the HQL functions that are translated to SQL\&. \fP"
+.ti -1c
+.RI "class \fBSumQueryFunctionInfo\fP"
+.br
+.ti -1c
+.RI "class \fBVarArgsSQLFunction\fP"
+.br
+.RI "\fISupport for slightly more general templating than \fBStandardSQLFunction\fP, with an unlimited number of arguments\&. \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

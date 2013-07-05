@@ -1,0 +1,86 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Util.LiteralProcessor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Util.LiteralProcessor \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLiteralProcessor\fP (\fBHqlSqlWalker\fP walker)"
+.br
+.ti -1c
+.RI "void \fBLookupConstant\fP (\fBDotNode\fP node)"
+.br
+.ti -1c
+.RI "void \fBProcessNumericLiteral\fP (\fBSqlNode\fP literal)"
+.br
+.ti -1c
+.RI "void \fBProcessBoolean\fP (\fBIASTNode\fP constant)"
+.br
+.ti -1c
+.RI "void \fBProcessConstant\fP (\fBSqlNode\fP constant, bool resolveIdent)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBErrorCannotFetchWithIterate\fP = 'fetch may not be used with scroll() or iterate()'"
+.br
+.ti -1c
+.RI "const string \fBErrorNamedParameterDoesNotAppear\fP = 'Named parameter does not appear in Query: '"
+.br
+.ti -1c
+.RI "const string \fBErrorCannotDetermineType\fP = 'Could not determine type of: '"
+.br
+.ti -1c
+.RI "const string \fBErrorCannotFormatLiteral\fP = 'Could not format constant value to SQL literal: '"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly int \fBEXACT\fP = 0"
+.br
+.RI "\fIIndicates that Float and Double literal values should be treated using the SQL 'exact' format (i\&.e\&., '\&.001') \fP"
+.ti -1c
+.RI "static readonly int \fBAPPROXIMATE\fP = 1"
+.br
+.RI "\fIIndicates that Float and Double literal values should be treated using the SQL 'approximate' format (i\&.e\&., '1E-3') \fP"
+.ti -1c
+.RI "static readonly int \fBDECIMAL_LITERAL_FORMAT\fP = \fBEXACT\fP"
+.br
+.RI "\fIIn what format should Float and Double literal values be sent to the database? See \fBEXACT\fP, \fBAPPROXIMATE\fP \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 13 of file LiteralProcessor\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly int NHibernate\&.Hql\&.Ast\&.ANTLR\&.Util\&.LiteralProcessor\&.APPROXIMATE = 1\fC [static]\fP"
+
+.PP
+Indicates that Float and Double literal values should be treated using the SQL 'approximate' format (i\&.e\&., '1E-3') 
+.PP
+Definition at line 38 of file LiteralProcessor\&.cs\&.
+.SS "readonly int NHibernate\&.Hql\&.Ast\&.ANTLR\&.Util\&.LiteralProcessor\&.DECIMAL_LITERAL_FORMAT = \fBEXACT\fP\fC [static]\fP"
+
+.PP
+In what format should Float and Double literal values be sent to the database? See \fBEXACT\fP, \fBAPPROXIMATE\fP 
+.PP
+Definition at line 45 of file LiteralProcessor\&.cs\&.
+.SS "readonly int NHibernate\&.Hql\&.Ast\&.ANTLR\&.Util\&.LiteralProcessor\&.EXACT = 0\fC [static]\fP"
+
+.PP
+Indicates that Float and Double literal values should be treated using the SQL 'exact' format (i\&.e\&., '\&.001') 
+.PP
+Definition at line 32 of file LiteralProcessor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

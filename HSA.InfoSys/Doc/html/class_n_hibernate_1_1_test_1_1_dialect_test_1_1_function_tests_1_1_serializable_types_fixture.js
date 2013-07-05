@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_dialect_test_1_1_function_tests_1_1_serializable_types_fixture =
+[
+    [ "AllEmbeddedTypesAreMarkedSerializable", "class_n_hibernate_1_1_test_1_1_dialect_test_1_1_function_tests_1_1_serializable_types_fixture.html#ad5a719cb9f1190e9a50964edc06cc5a1", null ]
+];

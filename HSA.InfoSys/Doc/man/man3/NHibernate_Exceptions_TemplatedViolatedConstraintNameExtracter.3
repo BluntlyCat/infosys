@@ -1,0 +1,86 @@
+.TH "NHibernate.Exceptions.TemplatedViolatedConstraintNameExtracter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Exceptions.TemplatedViolatedConstraintNameExtracter \- 
+.PP
+Knows how to extract a violated constraint name from an error message based on the fact that the constraint name is templated within the message\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Exceptions\&.IViolatedConstraintNameExtracter\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.IfxViolatedConstraintExtracter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract string \fBExtractConstraintName\fP (DbException sqle)"
+.br
+.RI "\fIExtract the name of the violated constraint from the given SQLException\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBExtractUsingTemplate\fP (string templateStart, string templateEnd, string message)"
+.br
+.RI "\fIExtracts the constraint name based on a template (i\&.e\&., \fItemplateStart\fP\fBconstraintName\fP\fItemplateEnd\fP)\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Knows how to extract a violated constraint name from an error message based on the fact that the constraint name is templated within the message\&. 
+
+
+.PP
+Definition at line 9 of file TemplatedViolatedConstraintNameExtracter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract string NHibernate\&.Exceptions\&.TemplatedViolatedConstraintNameExtracter\&.ExtractConstraintName (DbExceptionsqle)\fC [pure virtual]\fP"
+
+.PP
+Extract the name of the violated constraint from the given SQLException\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqle\fP The exception that was the result of the constraint violation\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The extracted constraint name\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Exceptions\&.IViolatedConstraintNameExtracter\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Dialect\&.IfxViolatedConstraintExtracter\fP\&.
+.SS "string NHibernate\&.Exceptions\&.TemplatedViolatedConstraintNameExtracter\&.ExtractUsingTemplate (stringtemplateStart, stringtemplateEnd, stringmessage)\fC [protected]\fP"
+
+.PP
+Extracts the constraint name based on a template (i\&.e\&., \fItemplateStart\fP\fBconstraintName\fP\fItemplateEnd\fP)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItemplateStart\fP The pattern denoting the start of the constraint name within the message\&.
+.br
+\fItemplateEnd\fP The pattern denoting the end of the constraint name within the message\&.
+.br
+\fImessage\fP The templated error message containing the constraint name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The found constraint name, or null\&.
+.RE
+.PP
+
+.PP
+Definition at line 19 of file TemplatedViolatedConstraintNameExtracter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

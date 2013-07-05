@@ -1,0 +1,139 @@
+.TH "NHibernate.Criterion.InExpression" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.InExpression \- 
+.PP
+An \fBICriterion\fP that constrains the property to a specified list of values\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBInExpression\fP (\fBIProjection\fP projection, object[] values)"
+.br
+.RI "\fIInitializes a new instance of the \fBInExpression\fP class\&. \fP"
+.ti -1c
+.RI "\fBInExpression\fP (string propertyName, object[] values)"
+.br
+.ti -1c
+.RI "override \fBIProjection\fP[] \fBGetProjections\fP ()"
+.br
+.RI "\fIReturn all projections used in this criterion \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBToSqlString\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIRender a SqlString for the expression\&. \fP"
+.ti -1c
+.RI "override \fBTypedValue\fP[] \fBGetTypedValues\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery)"
+.br
+.RI "\fIReturn typed values for all parameters in the rendered SQL fragment \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIGets a string representation of the \fBAbstractCriterion\fP\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "object[] \fBValues\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An \fBICriterion\fP that constrains the property to a specified list of values\&. 
+
+\fBInExpression\fP - should only be used with a Single Value column - no multicolumn properties\&.\&.\&. 
+.PP
+Definition at line 20 of file InExpression\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Criterion\&.InExpression\&.InExpression (\fBIProjection\fPprojection, object[]values)"
+
+.PP
+Initializes a new instance of the \fBInExpression\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The projection\&.
+.br
+\fIvalues\fP The _values\&.
+.RE
+.PP
+
+.PP
+Definition at line 31 of file InExpression\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBIProjection\fP [] NHibernate\&.Criterion\&.InExpression\&.GetProjections ()\fC [virtual]\fP"
+
+.PP
+Return all projections used in this criterion 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of \fBIProjection\fP used by the \fBExpression\fP\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 43 of file InExpression\&.cs\&.
+.SS "override \fBTypedValue\fP [] NHibernate\&.Criterion\&.InExpression\&.GetTypedValues (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery)\fC [virtual]\fP"
+
+.PP
+Return typed values for all parameters in the rendered SQL fragment 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of TypedValues for the \fBExpression\fP\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 111 of file InExpression\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Criterion\&.InExpression\&.ToSqlString (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery, IDictionary< string, \fBIFilter\fP >enabledFilters)\fC [virtual]\fP"
+
+.PP
+Render a SqlString for the expression\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A SqlString that contains a valid Sql fragment\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 52 of file InExpression\&.cs\&.
+.SS "override string NHibernate\&.Criterion\&.InExpression\&.ToString ()\fC [virtual]\fP"
+
+.PP
+Gets a string representation of the \fBAbstractCriterion\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A String that shows the contents of the \fBAbstractCriterion\fP\&. 
+.RE
+.PP
+.PP
+This is not a well formed Sql fragment\&. It is useful for logging what the \fBAbstractCriterion\fP looks like\&. 
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 171 of file InExpression\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

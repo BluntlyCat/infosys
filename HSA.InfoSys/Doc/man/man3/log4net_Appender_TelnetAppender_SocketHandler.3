@@ -1,0 +1,104 @@
+.TH "log4net.Appender.TelnetAppender.SocketHandler" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.TelnetAppender.SocketHandler \- 
+.PP
+Helper class to manage connected clients  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDisposable\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBSocketClient\fP"
+.br
+.RI "\fIClass that represents a client connected to this handler \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSocketHandler\fP (int port)"
+.br
+.RI "\fIOpens a new server port on  \fP"
+.ti -1c
+.RI "void \fBSend\fP (String message)"
+.br
+.RI "\fISends a string message to each of the connected clients \fP"
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "\fIClose all network connections \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBHasConnections\fP\fC [get]\fP"
+.br
+.RI "\fITest if this handler has active connections \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Helper class to manage connected clients 
+
+The \fBSocketHandler\fP class is used to accept connections from clients\&. It is threaded so that clients can connect/disconnect asynchronously\&. 
+.PP
+Definition at line 223 of file TelnetAppender\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.TelnetAppender\&.SocketHandler\&.SocketHandler (intport)"
+
+.PP
+Opens a new server port on  
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP the local port to listen on for connections
+.RE
+.PP
+.PP
+Creates a socket handler on the specified local server port\&. 
+.PP
+Definition at line 334 of file TelnetAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Appender\&.TelnetAppender\&.SocketHandler\&.Dispose ()"
+
+.PP
+Close all network connections Make sure we close all network connections 
+.PP
+Definition at line 483 of file TelnetAppender\&.cs\&.
+.SS "void log4net\&.Appender\&.TelnetAppender\&.SocketHandler\&.Send (Stringmessage)"
+
+.PP
+Sends a string message to each of the connected clients 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP the text to send
+.RE
+.PP
+.PP
+Sends a string message to each of the connected clients 
+.PP
+Definition at line 352 of file TelnetAppender\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool log4net\&.Appender\&.TelnetAppender\&.SocketHandler\&.HasConnections\fC [get]\fP"
+
+.PP
+Test if this handler has active connections \fCtrue\fP if this handler has active connections 
+.PP
+This property will be \fCtrue\fP while this handler has active connections, that is at least one connection that the handler will attempt to send a message to\&. 
+.PP
+Definition at line 413 of file TelnetAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,111 @@
+.TH "NHibernate.Engine.VersionValue" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.VersionValue \- 
+.PP
+A strategy for determining if a version value is an version of a new transient instance or a previously persistent transient instance\&. The strategy is determined by the \fCUnsaved-Value\fP attribute in the mapping file\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by NHibernate\&.Engine\&.VersionValue\&.VersionNegativeClass, NHibernate\&.Engine\&.VersionValue\&.VersionSaveNullClass, and NHibernate\&.Engine\&.VersionValue\&.VersionUndefinedClass\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVersionValue\fP (object value)"
+.br
+.RI "\fIAssume the transient instance is newly instantiated if its version is null or equal to \fCValue\fP \fP"
+.ti -1c
+.RI "virtual bool \fBIsUnsaved\fP (object version)"
+.br
+.RI "\fIDoes the given identifier belong to a new instance \fP"
+.ti -1c
+.RI "virtual object \fBGetDefaultValue\fP (object currentValue)"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static \fBVersionValue\fP \fBVersionSaveNull\fP = new VersionSaveNullClass()"
+.br
+.RI "\fIAssume the transient instance is newly instantiated if the version is null, otherwise assume it is a detached instance\&. \fP"
+.ti -1c
+.RI "static \fBVersionValue\fP \fBVersionUndefined\fP = new VersionUndefinedClass()"
+.br
+.RI "\fIAssume the transient instance is newly instantiated if the version is null, otherwise defer to the identifier unsaved-value\&. \fP"
+.ti -1c
+.RI "static \fBVersionValue\fP \fBVersionNegative\fP = new VersionNegativeClass()"
+.br
+.RI "\fIAssume the transient instance is newly instantiated if the identifier is null\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVersionValue\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A strategy for determining if a version value is an version of a new transient instance or a previously persistent transient instance\&. The strategy is determined by the \fCUnsaved-Value\fP attribute in the mapping file\&. 
+
+
+.PP
+Definition at line 12 of file VersionValue\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Engine\&.VersionValue\&.VersionValue ()\fC [protected]\fP"
+
+.PP
+
+.PP
+Definition at line 19 of file VersionValue\&.cs\&.
+.SS "NHibernate\&.Engine\&.VersionValue\&.VersionValue (objectvalue)"
+
+.PP
+Assume the transient instance is newly instantiated if its version is null or equal to \fCValue\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP 
+.RE
+.PP
+
+.PP
+Definition at line 29 of file VersionValue\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual bool NHibernate\&.Engine\&.VersionValue\&.IsUnsaved (objectversion)\fC [virtual]\fP"
+
+.PP
+Does the given identifier belong to a new instance 
+.PP
+Definition at line 37 of file VersionValue\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBVersionValue\fP NHibernate\&.Engine\&.VersionValue\&.VersionNegative = new VersionNegativeClass()\fC [static]\fP"
+
+.PP
+Assume the transient instance is newly instantiated if the identifier is null\&. 
+.PP
+Definition at line 98 of file VersionValue\&.cs\&.
+.SS "\fBVersionValue\fP NHibernate\&.Engine\&.VersionValue\&.VersionSaveNull = new VersionSaveNullClass()\fC [static]\fP"
+
+.PP
+Assume the transient instance is newly instantiated if the version is null, otherwise assume it is a detached instance\&. 
+.PP
+Definition at line 55 of file VersionValue\&.cs\&.
+.SS "\fBVersionValue\fP NHibernate\&.Engine\&.VersionValue\&.VersionUndefined = new VersionUndefinedClass()\fC [static]\fP"
+
+.PP
+Assume the transient instance is newly instantiated if the version is null, otherwise defer to the identifier unsaved-value\&. 
+.PP
+Definition at line 75 of file VersionValue\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

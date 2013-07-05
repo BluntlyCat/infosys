@@ -1,0 +1,202 @@
+.TH "NHibernate.Tuple.Component.AbstractComponentTuplizer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Tuple.Component.AbstractComponentTuplizer \- 
+.PP
+Support for tuplizers relating to components\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Tuple\&.Component\&.IComponentTuplizer\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Tuple\&.Component\&.DynamicMapComponentTuplizer\fP, and \fBNHibernate\&.Tuple\&.Component\&.PocoComponentTuplizer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual object \fBGetParent\fP (object component)"
+.br
+.RI "\fIRetrieve the current value of the parent property\&. \fP"
+.ti -1c
+.RI "virtual void \fBSetParent\fP (object component, object parent, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fISet the value of the parent property\&. \fP"
+.ti -1c
+.RI "virtual object[] \fBGetPropertyValues\fP (object component)"
+.br
+.RI "\fIExtract the current values contained on the given entity\&. \fP"
+.ti -1c
+.RI "virtual void \fBSetPropertyValues\fP (object component, object[] values)"
+.br
+.RI "\fIInject the given values into the given entity\&. \fP"
+.ti -1c
+.RI "virtual object \fBGetPropertyValue\fP (object component, int i)"
+.br
+.RI "\fIExtract the value of a particular property from the given entity\&. \fP"
+.ti -1c
+.RI "virtual object \fBInstantiate\fP ()"
+.br
+.RI "\fIThis method does not populate the component parent\fP"
+.ti -1c
+.RI "virtual bool \fBIsInstance\fP (object obj)"
+.br
+.RI "\fIIs the given object considered an instance of the the entity (acconting for entity-mode) managed by this tuplizer\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBHasParentProperty\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract System\&.Type \fBMappedClass\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Support for tuplizers relating to components\&. 
+
+
+.PP
+Definition at line 10 of file AbstractComponentTuplizer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual object NHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\&.GetParent (objectcomponent)\fC [virtual]\fP"
+
+.PP
+Retrieve the current value of the parent property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomponent\fP The component instance from which to extract the parent property value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The current value of the parent property\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Tuple\&.Component\&.IComponentTuplizer\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Tuple\&.Component\&.PocoComponentTuplizer\fP\&.
+.PP
+Definition at line 61 of file AbstractComponentTuplizer\&.cs\&.
+.SS "virtual object NHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\&.GetPropertyValue (objectentity, inti)\fC [virtual]\fP"
+
+.PP
+Extract the value of a particular property from the given entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity from which to extract the property value\&. 
+.br
+\fIi\fP The index of the property for which to extract the value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The current value of the given property on the given entity\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Tuple\&.ITuplizer\fP\&.
+.PP
+Definition at line 101 of file AbstractComponentTuplizer\&.cs\&.
+.SS "virtual object [] NHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\&.GetPropertyValues (objectentity)\fC [virtual]\fP"
+
+.PP
+Extract the current values contained on the given entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity from which to extract values\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The current property values\&. 
+.RE
+.PP
+<throws> \fBHibernateException\fP </throws> 
+.PP
+Implements \fBNHibernate\&.Tuple\&.ITuplizer\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Tuple\&.Component\&.PocoComponentTuplizer\fP\&.
+.PP
+Definition at line 82 of file AbstractComponentTuplizer\&.cs\&.
+.SS "virtual object NHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\&.Instantiate ()\fC [virtual]\fP"
+
+.PP
+This method does not populate the component parent
+.PP
+Implements \fBNHibernate\&.Tuple\&.ITuplizer\fP\&.
+.PP
+Definition at line 107 of file AbstractComponentTuplizer\&.cs\&.
+.SS "virtual bool NHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\&.IsInstance (objectobj)\fC [virtual]\fP"
+
+.PP
+Is the given object considered an instance of the the entity (acconting for entity-mode) managed by this tuplizer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP The object to be checked\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the object is considered as an instance of this entity within the given mode\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Tuple\&.ITuplizer\fP\&.
+.PP
+Definition at line 112 of file AbstractComponentTuplizer\&.cs\&.
+.SS "virtual void NHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\&.SetParent (objectcomponent, objectparent, \fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+Set the value of the parent property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomponent\fP The component instance on which to set the parent\&. 
+.br
+\fIparent\fP The parent to be set on the component\&. 
+.br
+\fIfactory\fP The current session factory\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Tuple\&.Component\&.IComponentTuplizer\fP\&.
+.PP
+Definition at line 66 of file AbstractComponentTuplizer\&.cs\&.
+.SS "virtual void NHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\&.SetPropertyValues (objectentity, object[]values)\fC [virtual]\fP"
+
+.PP
+Inject the given values into the given entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity\&. 
+.br
+\fIvalues\fP The values to be injected\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Tuple\&.ITuplizer\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Tuple\&.Component\&.PocoComponentTuplizer\fP\&.
+.PP
+Definition at line 93 of file AbstractComponentTuplizer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

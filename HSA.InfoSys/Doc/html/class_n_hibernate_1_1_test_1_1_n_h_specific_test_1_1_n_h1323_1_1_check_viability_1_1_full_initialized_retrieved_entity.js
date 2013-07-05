@@ -1,0 +1,6 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1323_1_1_check_viability_1_1_full_initialized_retrieved_entity =
+[
+    [ "FullInitializedRetrievedEntity", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1323_1_1_check_viability_1_1_full_initialized_retrieved_entity.html#ae79f2ecda7b1056974b4e857a6cf481b", null ],
+    [ "Dispose", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1323_1_1_check_viability_1_1_full_initialized_retrieved_entity.html#a383d6f66a9af43a861e7641b6a033b63", null ],
+    [ "Entity", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1323_1_1_check_viability_1_1_full_initialized_retrieved_entity.html#a632ec01e67d75ad958534935bcfb0209", null ]
+];

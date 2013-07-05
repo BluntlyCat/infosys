@@ -1,0 +1,1076 @@
+.TH "NHibernate.Persister.Collection.AbstractCollectionPersister" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Persister.Collection.AbstractCollectionPersister \- 
+.PP
+Summary description for \fBAbstractCollectionPersister\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Metadata\&.ICollectionMetadata\fP, \fBNHibernate\&.Persister\&.Collection\&.ISqlLoadableCollection\fP, and \fBNHibernate\&.Id\&.IPostInsertIdentityPersister\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\fP, and \fBNHibernate\&.Persister\&.Collection\&.OneToManyPersister\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBGeneratedIdentifierBinder\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractCollectionPersister\fP (\fBMapping\&.Collection\fP collection, \fBICacheConcurrencyStrategy\fP cache, \fBConfiguration\fP cfg, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "void \fBPostInstantiate\fP ()"
+.br
+.ti -1c
+.RI "void \fBInitialize\fP (object key, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIInitialize the given collection with the given key \fP"
+.ti -1c
+.RI "string \fBGetSQLWhereString\fP (string alias)"
+.br
+.RI "\fIGet the extra where clause filter SQL \fP"
+.ti -1c
+.RI "string \fBGetSQLOrderByString\fP (string alias)"
+.br
+.RI "\fIGet the order by SQL \fP"
+.ti -1c
+.RI "string \fBGetManyToManyOrderByString\fP (string alias)"
+.br
+.RI "\fIGet the order-by to be applied at the target table of a many to many \fP"
+.ti -1c
+.RI "object \fBReadElement\fP (IDataReader rs, object owner, string[] aliases, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIReads the Element from the IDataReader\&. The IDataReader will probably only contain the id of the Element\&. \fP"
+.ti -1c
+.RI "object \fBReadIndex\fP (IDataReader rs, string[] aliases, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIRead the index from a row of the IDataReader \fP"
+.ti -1c
+.RI "object \fBDecrementIndexByBase\fP (object index)"
+.br
+.ti -1c
+.RI "object \fBReadIdentifier\fP (IDataReader rs, string alias, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIRead the identifier from a row of the IDataReader \fP"
+.ti -1c
+.RI "object \fBReadKey\fP (IDataReader dr, string[] aliases, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIRead the key from a row of the IDataReader \fP"
+.ti -1c
+.RI "string[] \fBGetKeyColumnAliases\fP (string suffix)"
+.br
+.RI "\fIGenerates the collection's key column aliases, based on the given suffix\&. \fP"
+.ti -1c
+.RI "string[] \fBGetElementColumnAliases\fP (string suffix)"
+.br
+.RI "\fIGenerates the collection's element column aliases, based on the given suffix\&. \fP"
+.ti -1c
+.RI "string[] \fBGetIndexColumnAliases\fP (string suffix)"
+.br
+.RI "\fIGenerates the collection's index column aliases, based on the given suffix\&. \fP"
+.ti -1c
+.RI "string \fBGetIdentifierColumnAlias\fP (string suffix)"
+.br
+.RI "\fIGenerates the collection's identifier column aliases, based on the given suffix\&. \fP"
+.ti -1c
+.RI "string \fBSelectFragment\fP (string alias, string columnSuffix)"
+.br
+.RI "\fIGenerate a list of collection index and element columns \fP"
+.ti -1c
+.RI "string[] \fBGetIndexColumnNames\fP (string alias)"
+.br
+.RI "\fIGet the names of the collection index columns if this is an indexed collection (optional operation), aliased by the given table alias \fP"
+.ti -1c
+.RI "string[] \fBGetElementColumnNames\fP (string alias)"
+.br
+.RI "\fIGet the names of the collection element columns (or the primary key columns in the case of a one-to-many association), aliased by the given table alias \fP"
+.ti -1c
+.RI "void \fBRemove\fP (object id, \fBISessionImplementor\fP session)"
+.br
+.RI "\fICompletely remove the persistent state of the collection \fP"
+.ti -1c
+.RI "void \fBRecreate\fP (\fBIPersistentCollection\fP collection, object id, \fBISessionImplementor\fP session)"
+.br
+.RI "\fI(Re)create the collection's persistent state \fP"
+.ti -1c
+.RI "void \fBDeleteRows\fP (\fBIPersistentCollection\fP collection, object id, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIDelete the persistent state of any elements that were removed from the collection \fP"
+.ti -1c
+.RI "void \fBInsertRows\fP (\fBIPersistentCollection\fP collection, object id, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIInsert the persistent state of any new collection elements \fP"
+.ti -1c
+.RI "\fBIType\fP \fBToType\fP (string propertyName)"
+.br
+.RI "\fIGiven a component path expression, get the type of the property \fP"
+.ti -1c
+.RI "bool \fBTryToType\fP (string propertyName, out \fBIType\fP type)"
+.br
+.RI "\fIGiven a component path expression, get the type of the property\&. \fP"
+.ti -1c
+.RI "string \fBGetManyToManyFilterFragment\fP (string alias, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "string[] \fBToColumns\fP (string alias, string propertyName)"
+.br
+.RI "\fIGiven a query alias and a property path, return the qualified column name \fP"
+.ti -1c
+.RI "string[] \fBToColumns\fP (string propertyName)"
+.br
+.RI "\fIGiven a property path, return the corresponding column name(s)\&.\fP"
+.ti -1c
+.RI "void \fBUpdateRows\fP (\fBIPersistentCollection\fP collection, object id, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIUpdate the persistent state of any elements that were modified \fP"
+.ti -1c
+.RI "virtual string \fBFilterFragment\fP (string alias, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIGet the where clause filter, given a query alias and considering enabled session filters \fP"
+.ti -1c
+.RI "string \fBOneToManyFilterFragment\fP (string alias)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsAffectedByEnabledFilters\fP (\fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "string[] \fBGetCollectionPropertyColumnAliases\fP (string propertyName, string suffix)"
+.br
+.ti -1c
+.RI "void \fBInitCollectionPropertyMap\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetSize\fP (object key, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "bool \fBIndexExists\fP (object key, object index, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "bool \fBElementExists\fP (object key, object element, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "virtual object \fBGetElementByIndex\fP (object key, object index, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fITry to find an element by a given index\&. \fP"
+.ti -1c
+.RI "abstract bool \fBConsumesEntityAlias\fP ()"
+.br
+.RI "\fIVery, very, very ugly\&.\&.\&. \fP"
+.ti -1c
+.RI "abstract \fBSqlString\fP \fBFromJoinFragment\fP (string alias, bool innerJoin, bool includeSubclasses)"
+.br
+.RI "\fIGet the from clause part of any joins (optional operation) \fP"
+.ti -1c
+.RI "abstract \fBSqlString\fP \fBWhereJoinFragment\fP (string alias, bool innerJoin, bool includeSubclasses)"
+.br
+.RI "\fIGet the where clause part of any joins (optional operation) \fP"
+.ti -1c
+.RI "abstract string \fBSelectFragment\fP (\fBIJoinable\fP rhs, string rhsAlias, string lhsAlias, string currentEntitySuffix, string currentCollectionSuffix, bool includeCollectionColumns)"
+.br
+.RI "\fIAll columns to select, when loading\&. \fP"
+.ti -1c
+.RI "abstract bool \fBConsumesCollectionAlias\fP ()"
+.br
+.RI "\fIVery, very, very ugly\&.\&.\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBGetSelectByUniqueKeyString\fP (string propertyName)"
+.br
+.RI "\fIGet a SQL select string that performs a select based on a unique key determined by the given property name)\&. \fP"
+.ti -1c
+.RI "string \fBGetInfoString\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBLogStaticSQL\fP ()"
+.br
+.ti -1c
+.RI "\fBICollectionInitializer\fP \fBGetAppropriateInitializer\fP (object key, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "abstract \fBICollectionInitializer\fP \fBCreateSubselectInitializer\fP (\fBSubselectFetch\fP subselect, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "abstract \fBICollectionInitializer\fP \fBCreateCollectionInitializer\fP (IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "int \fBWriteKey\fP (IDbCommand st, object id, int i, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "int \fBWriteElement\fP (IDbCommand st, object elt, int i, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "int \fBWriteIndex\fP (IDbCommand st, object idx, int i, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "object \fBIncrementIndexByBase\fP (object index)"
+.br
+.ti -1c
+.RI "int \fBWriteElementToWhere\fP (IDbCommand st, object elt, int i, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "int \fBWriteIndexToWhere\fP (IDbCommand st, object index, int i, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "int \fBWriteIdentifier\fP (IDbCommand st, object idx, int i, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "virtual string \fBGetCountSqlSelectClause\fP ()"
+.br
+.ti -1c
+.RI "virtual \fBSelectFragment\fP \fBGenerateSelectFragment\fP (string alias, string columnSuffix)"
+.br
+.ti -1c
+.RI "virtual void \fBAppendElementColumns\fP (\fBSelectFragment\fP frag, string elemAlias)"
+.br
+.ti -1c
+.RI "virtual void \fBAppendIndexColumns\fP (\fBSelectFragment\fP frag, string alias)"
+.br
+.ti -1c
+.RI "virtual void \fBAppendIdentifierColumns\fP (\fBSelectFragment\fP frag, string alias)"
+.br
+.ti -1c
+.RI "abstract \fBSqlCommandInfo\fP \fBGenerateDeleteString\fP ()"
+.br
+.ti -1c
+.RI "abstract \fBSqlCommandInfo\fP \fBGenerateDeleteRowString\fP ()"
+.br
+.ti -1c
+.RI "abstract \fBSqlCommandInfo\fP \fBGenerateUpdateRowString\fP ()"
+.br
+.ti -1c
+.RI "abstract \fBSqlCommandInfo\fP \fBGenerateInsertRowString\fP ()"
+.br
+.ti -1c
+.RI "abstract \fBSqlCommandInfo\fP \fBGenerateIdentityInsertRowString\fP ()"
+.br
+.ti -1c
+.RI "abstract int \fBDoUpdateRows\fP (object key, \fBIPersistentCollection\fP collection, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "virtual string \fBFilterFragment\fP (string alias)"
+.br
+.ti -1c
+.RI "object \fBPerformInsert\fP (object ownerId, \fBIPersistentCollection\fP collection, \fBIExpectation\fP expectation, object entry, int index, bool useBatch, bool callable, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "bool \fBUseInsertSelectIdentity\fP ()"
+.br
+.ti -1c
+.RI "bool \fBUseGetGeneratedKeys\fP ()"
+.br
+.ti -1c
+.RI "object \fBPerformInsert\fP (object ownerId, \fBIPersistentCollection\fP collection, object entry, int index, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIPerform an SQL INSERT, and then retrieve a generated identifier\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly string \fBsqlWhereString\fP"
+.br
+.ti -1c
+.RI "readonly string[] \fBindexFormulaTemplates\fP"
+.br
+.ti -1c
+.RI "readonly bool[] \fBindexColumnIsSettable\fP"
+.br
+.ti -1c
+.RI "readonly string[] \fBelementFormulaTemplates\fP"
+.br
+.ti -1c
+.RI "readonly string[] \fBelementFormulas\fP"
+.br
+.ti -1c
+.RI "readonly bool[] \fBelementColumnIsSettable\fP"
+.br
+.ti -1c
+.RI "readonly bool[] \fBelementColumnIsInPrimaryKey\fP"
+.br
+.ti -1c
+.RI "readonly string[] \fBelementColumnAliases\fP"
+.br
+.ti -1c
+.RI "readonly string \fBqualifiedTableName\fP"
+.br
+.ti -1c
+.RI "readonly bool \fBhasIdentifier\fP"
+.br
+.ti -1c
+.RI "readonly 
+.br
+\fBIInsertGeneratedIdentifierDelegate\fP \fBidentityDelegate\fP"
+.br
+.ti -1c
+.RI "readonly int \fBbatchSize\fP"
+.br
+.in -1c
+.SS "Static Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly object \fBNotFoundPlaceHolder\fP = new object()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBHasCache\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasOrdering\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasManyToManyOrdering\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasWhere\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBIndexColumnNames\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBElementColumnNames\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasIndex\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBTableName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasOrphanDelete\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "object \fBNotFoundObject\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBICacheConcurrencyStrategy\fP \fBCache\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBCollectionType\fP \fBCollectionType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBFetchMode\fP \fBFetchMode\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSqlCommandInfo\fP \fBSqlDeleteString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSqlCommandInfo\fP \fBSqlInsertRowString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSqlCommandInfo\fP \fBSqlUpdateRowString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSqlCommandInfo\fP \fBSqlDeleteRowString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP \fBKeyType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP \fBIndexType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP \fBElementType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "System\&.Type \fBElementClass\fP\fC [get]\fP"
+.br
+.RI "\fIReturn the element class of an array, or null otherwise \fP"
+.ti -1c
+.RI "bool \fBIsPrimitiveArray\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsArray\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBIdentifierColumnName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBIndexFormulas\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBKeyColumnNames\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBKeyColumnAliases\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsLazy\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsInverse\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBRowDeleteEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBRowInsertEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBRole\fP\fC [get]\fP"
+.br
+.RI "\fIGet the name of this collection role (the fully qualified class name, extended by a 'property path') \fP"
+.ti -1c
+.RI "virtual string \fBOwnerEntityName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIEntityPersister\fP \fBOwnerEntityPersister\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIIdentifierGenerator\fP \fBIdentifierGenerator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP \fBIdentifierType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract bool \fBIsManyToMany\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP \fBType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIEntityPersister\fP \fBElementPersister\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsCollection\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBCollectionSpaces\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBICollectionMetadata\fP \fBCollectionMetadata\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBISessionFactoryImplementor\fP \fBFactory\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBInsertCallable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBExecuteUpdateResultCheckStyle\fP \fBInsertCheckStyle\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBUpdateCallable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBExecuteUpdateResultCheckStyle\fP \fBUpdateCheckStyle\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBDeleteCallable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBExecuteUpdateResultCheckStyle\fP \fBDeleteCheckStyle\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBDeleteAllCallable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBExecuteUpdateResultCheckStyle\fP \fBDeleteAllCheckStyle\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsVersioned\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBNodeName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBElementNodeName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBIndexNodeName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBISQLExceptionConverter\fP \fBSQLExceptionConverter\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBICacheEntryStructure\fP \fBCacheEntryStructure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSubselectLoadable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsMutable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsExtraLazy\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBDialect\&.Dialect\fP \fBDialect\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract bool \fBCascadeDeleteEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract bool \fBIsOneToMany\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsIdentifierAssignedByInsert\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBIdentitySelectString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBRootTableKeyColumnNames\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Summary description for \fBAbstractCollectionPersister\fP\&. 
+
+
+.PP
+Definition at line 33 of file AbstractCollectionPersister\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract bool NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.ConsumesCollectionAlias ()\fC [pure virtual]\fP"
+
+.PP
+Very, very, very ugly\&.\&.\&. Does this persister 'consume' collection column aliases in the result set?
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IJoinable\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\fP, and \fBNHibernate\&.Persister\&.Collection\&.OneToManyPersister\fP\&.
+.SS "abstract bool NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.ConsumesEntityAlias ()\fC [pure virtual]\fP"
+
+.PP
+Very, very, very ugly\&.\&.\&. Does this persister 'consume' entity column aliases in the result set?
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IJoinable\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\fP, and \fBNHibernate\&.Persister\&.Collection\&.OneToManyPersister\fP\&.
+.SS "void NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.DeleteRows (\fBIPersistentCollection\fPcollection, objectkey, \fBISessionImplementor\fPsession)"
+
+.PP
+Delete the persistent state of any elements that were removed from the collection 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP 
+.br
+\fIkey\fP 
+.br
+\fIsession\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.ICollectionPersister\fP\&.
+.PP
+Definition at line 1136 of file AbstractCollectionPersister\&.cs\&.
+.SS "virtual string NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.FilterFragment (stringalias, IDictionary< string, \fBIFilter\fP >enabledFilters)\fC [virtual]\fP"
+
+.PP
+Get the where clause filter, given a query alias and considering enabled session filters 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IJoinable\fP\&.
+.PP
+Definition at line 1400 of file AbstractCollectionPersister\&.cs\&.
+.SS "abstract \fBSqlString\fP NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.FromJoinFragment (stringalias, boolinnerJoin, boolincludeSubclasses)\fC [pure virtual]\fP"
+
+.PP
+Get the from clause part of any joins (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIinnerJoin\fP 
+.br
+\fIincludeSubclasses\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IJoinable\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Collection\&.OneToManyPersister\fP, and \fBNHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\fP\&.
+.SS "virtual object NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.GetElementByIndex (objectkey, objectindex, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Try to find an element by a given index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key of the collection (collection-owner identifier)
+.br
+\fIindex\fP The given index\&.
+.br
+\fIsession\fP The active \fBISession\fP\&.
+.br
+\fIowner\fP The owner of the collection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value of the element where available; otherwise NotFoundObject\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.ICollectionPersister\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Persister\&.Collection\&.OneToManyPersister\fP\&.
+.PP
+Definition at line 1593 of file AbstractCollectionPersister\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.GetElementColumnAliases (stringsuffix)"
+
+.PP
+Generates the collection's element column aliases, based on the given suffix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsuffix\fP The suffix to use in the element column alias generation\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The element column aliases\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.ICollectionPersister\fP\&.
+.PP
+Definition at line 796 of file AbstractCollectionPersister\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.GetElementColumnNames (stringalias)"
+
+.PP
+Get the names of the collection element columns (or the primary key columns in the case of a one-to-many association), aliased by the given table alias 
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.IQueryableCollection\fP\&.
+.PP
+Definition at line 970 of file AbstractCollectionPersister\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.GetIdentifierColumnAlias (stringsuffix)"
+
+.PP
+Generates the collection's identifier column aliases, based on the given suffix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsuffix\fP The suffix to use in the identifier column alias generation\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The identifier column aliases\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.ICollectionPersister\fP\&.
+.PP
+Definition at line 813 of file AbstractCollectionPersister\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.GetIndexColumnAliases (stringsuffix)"
+
+.PP
+Generates the collection's index column aliases, based on the given suffix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsuffix\fP The suffix to use in the index column alias generation\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The index column aliases, or null if not indexed\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.ICollectionPersister\fP\&.
+.PP
+Definition at line 801 of file AbstractCollectionPersister\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.GetIndexColumnNames (stringalias)"
+
+.PP
+Get the names of the collection index columns if this is an indexed collection (optional operation), aliased by the given table alias 
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.IQueryableCollection\fP\&.
+.PP
+Definition at line 965 of file AbstractCollectionPersister\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.GetKeyColumnAliases (stringsuffix)"
+
+.PP
+Generates the collection's key column aliases, based on the given suffix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsuffix\fP The suffix to use in the key column alias generation\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The key column aliases\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.ICollectionPersister\fP\&.
+.PP
+Definition at line 791 of file AbstractCollectionPersister\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.GetManyToManyOrderByString (stringalias)"
+
+.PP
+Get the order-by to be applied at the target table of a many to many 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP The alias for the many-to-many target table
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Appropriate order-by fragment or empty string\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.IQueryableCollection\fP\&.
+.PP
+Definition at line 656 of file AbstractCollectionPersister\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.GetSelectByUniqueKeyString (stringpropertyName)"
+
+.PP
+Get a SQL select string that performs a select based on a unique key determined by the given property name)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the property which maps to the column(s) to use in the select statement restriction\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The SQL select string 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IPostInsertIdentityPersister\fP\&.
+.PP
+Definition at line 2051 of file AbstractCollectionPersister\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.GetSQLOrderByString (stringalias)"
+
+.PP
+Get the order by SQL 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.IQueryableCollection\fP\&.
+.PP
+Definition at line 651 of file AbstractCollectionPersister\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.GetSQLWhereString (stringalias)"
+
+.PP
+Get the extra where clause filter SQL 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.IQueryableCollection\fP\&.
+.PP
+Definition at line 646 of file AbstractCollectionPersister\&.cs\&.
+.SS "void NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.Initialize (objectkey, \fBISessionImplementor\fPsession)"
+
+.PP
+Initialize the given collection with the given key 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP 
+.br
+\fIsession\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.ICollectionPersister\fP\&.
+.PP
+Definition at line 576 of file AbstractCollectionPersister\&.cs\&.
+.SS "void NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.InsertRows (\fBIPersistentCollection\fPcollection, objectkey, \fBISessionImplementor\fPsession)"
+
+.PP
+Insert the persistent state of any new collection elements 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP 
+.br
+\fIkey\fP 
+.br
+\fIsession\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.ICollectionPersister\fP\&.
+.PP
+Definition at line 1245 of file AbstractCollectionPersister\&.cs\&.
+.SS "object NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.PerformInsert (objectownerId, \fBIPersistentCollection\fPcollection, objectentry, intindex, \fBISessionImplementor\fPsession)\fC [protected]\fP"
+
+.PP
+Perform an SQL INSERT, and then retrieve a generated identifier\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the id of the collection entry 
+.RE
+.PP
+.PP
+This form is used for PostInsertIdentifierGenerator-style ids (IDENTITY, select, etc)\&. 
+.PP
+Definition at line 2071 of file AbstractCollectionPersister\&.cs\&.
+.SS "object NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.ReadElement (IDataReaderrs, objectowner, string[]aliases, \fBISessionImplementor\fPsession)"
+
+.PP
+Reads the Element from the IDataReader\&. The IDataReader will probably only contain the id of the Element\&. See ReadElementIdentifier for an explanation of why this method will be depreciated\&.
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.ICollectionPersister\fP\&.
+.PP
+Definition at line 688 of file AbstractCollectionPersister\&.cs\&.
+.SS "object NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.ReadIdentifier (IDataReaderrs, stringcolumnAlias, \fBISessionImplementor\fPsession)"
+
+.PP
+Read the identifier from a row of the IDataReader 
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.ICollectionPersister\fP\&.
+.PP
+Definition at line 714 of file AbstractCollectionPersister\&.cs\&.
+.SS "object NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.ReadIndex (IDataReaderrs, string[]columnAliases, \fBISessionImplementor\fPsession)"
+
+.PP
+Read the index from a row of the IDataReader 
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.ICollectionPersister\fP\&.
+.PP
+Definition at line 693 of file AbstractCollectionPersister\&.cs\&.
+.SS "object NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.ReadKey (IDataReaderrs, string[]keyAliases, \fBISessionImplementor\fPsession)"
+
+.PP
+Read the key from a row of the IDataReader 
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.ICollectionPersister\fP\&.
+.PP
+Definition at line 725 of file AbstractCollectionPersister\&.cs\&.
+.SS "void NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.Recreate (\fBIPersistentCollection\fPcollection, objectkey, \fBISessionImplementor\fPsession)"
+
+.PP
+(Re)create the collection's persistent state 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP 
+.br
+\fIkey\fP 
+.br
+\fIsession\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.ICollectionPersister\fP\&.
+.PP
+Definition at line 1072 of file AbstractCollectionPersister\&.cs\&.
+.SS "void NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.Remove (objectid, \fBISessionImplementor\fPsession)"
+
+.PP
+Completely remove the persistent state of the collection 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP 
+.br
+\fIsession\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.ICollectionPersister\fP\&.
+.PP
+Definition at line 1008 of file AbstractCollectionPersister\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.SelectFragment (stringalias, stringcolumnSuffix)"
+
+.PP
+Generate a list of collection index and element columns 
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.IQueryableCollection\fP\&.
+.PP
+Definition at line 825 of file AbstractCollectionPersister\&.cs\&.
+.SS "abstract string NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.SelectFragment (\fBIJoinable\fPrhs, stringrhsAlias, stringlhsAlias, stringcurrentEntitySuffix, stringcurrentCollectionSuffix, boolincludeCollectionColumns)\fC [pure virtual]\fP"
+
+.PP
+All columns to select, when loading\&. 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IJoinable\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Collection\&.OneToManyPersister\fP, and \fBNHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\fP\&.
+.SS "string [] NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.ToColumns (stringalias, stringpropertyName)"
+
+.PP
+Given a query alias and a property path, return the qualified column name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIpropertyName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IPropertyMapping\fP\&.
+.PP
+Definition at line 1339 of file AbstractCollectionPersister\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.ToColumns (stringpropertyName)"
+
+.PP
+Given a property path, return the corresponding column name(s)\&.
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IPropertyMapping\fP\&.
+.PP
+Definition at line 1353 of file AbstractCollectionPersister\&.cs\&.
+.SS "\fBIType\fP NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.ToType (stringpropertyName)"
+
+.PP
+Given a component path expression, get the type of the property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IPropertyMapping\fP\&.
+.PP
+Definition at line 1303 of file AbstractCollectionPersister\&.cs\&.
+.SS "bool NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.TryToType (stringpropertyName, out \fBIType\fPtype)"
+
+.PP
+Given a component path expression, get the type of the property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP 
+.br
+\fItype\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if a type was found, false if not
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IPropertyMapping\fP\&.
+.PP
+Definition at line 1313 of file AbstractCollectionPersister\&.cs\&.
+.SS "void NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.UpdateRows (\fBIPersistentCollection\fPcollection, objectkey, \fBISessionImplementor\fPsession)"
+
+.PP
+Update the persistent state of any elements that were modified 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP 
+.br
+\fIkey\fP 
+.br
+\fIsession\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.ICollectionPersister\fP\&.
+.PP
+Definition at line 1374 of file AbstractCollectionPersister\&.cs\&.
+.SS "abstract \fBSqlString\fP NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.WhereJoinFragment (stringalias, boolinnerJoin, boolincludeSubclasses)\fC [pure virtual]\fP"
+
+.PP
+Get the where clause part of any joins (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIinnerJoin\fP 
+.br
+\fIincludeSubclasses\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.IJoinable\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Collection\&.OneToManyPersister\fP, and \fBNHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "System\&.Type NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.ElementClass\fC [get]\fP"
+
+.PP
+Return the element class of an array, or null otherwise 
+.PP
+Definition at line 1727 of file AbstractCollectionPersister\&.cs\&.
+.SS "string NHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\&.Role\fC [get]\fP"
+
+.PP
+Get the name of this collection role (the fully qualified class name, extended by a 'property path') 
+.PP
+Definition at line 1797 of file AbstractCollectionPersister\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

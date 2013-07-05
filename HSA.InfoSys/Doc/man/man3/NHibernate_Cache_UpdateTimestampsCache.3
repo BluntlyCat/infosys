@@ -1,0 +1,52 @@
+.TH "NHibernate.Cache.UpdateTimestampsCache" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cache.UpdateTimestampsCache \- 
+.PP
+Tracks the timestamps of the most recent updates to particular tables\&. It is important that the cache timeout of the underlying cache implementation be set to a higher value than the timeouts of any of the query caches\&. In fact, we recommend that the the underlying cache not be configured for expiry at all\&. Note, in particular, that an LRU cache expiry policy is never appropriate\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "\fBUpdateTimestampsCache\fP (\fBSettings\fP settings, IDictionary< string, string > props)"
+.br
+.ti -1c
+.RI "void \fBPreInvalidate\fP (object[] spaces)"
+.br
+.ti -1c
+.RI "void \fBInvalidate\fP (object[] spaces)"
+.br
+.ti -1c
+.RI "bool \fBIsUpToDate\fP (ISet< string > spaces, long timestamp)"
+.br
+.ti -1c
+.RI "void \fBDestroy\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Tracks the timestamps of the most recent updates to particular tables\&. It is important that the cache timeout of the underlying cache implementation be set to a higher value than the timeouts of any of the query caches\&. In fact, we recommend that the the underlying cache not be configured for expiry at all\&. Note, in particular, that an LRU cache expiry policy is never appropriate\&. 
+
+
+.PP
+Definition at line 16 of file UpdateTimestampsCache\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Cache\&.UpdateTimestampsCache\&.Invalidate (object[]spaces)"
+
+.PP
+
+.PP
+Definition at line 50 of file UpdateTimestampsCache\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

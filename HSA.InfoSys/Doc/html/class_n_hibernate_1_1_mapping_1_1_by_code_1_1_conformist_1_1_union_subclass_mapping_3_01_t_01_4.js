@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_mapping_1_1_by_code_1_1_conformist_1_1_union_subclass_mapping_3_01_t_01_4 =
+[
+    [ "UnionSubclassMapping", "class_n_hibernate_1_1_mapping_1_1_by_code_1_1_conformist_1_1_union_subclass_mapping_3_01_t_01_4.html#a264e5020549ed340d01d74b5029a0804", null ]
+];

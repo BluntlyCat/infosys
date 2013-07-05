@@ -1,0 +1,55 @@
+.TH "log4net.Core.SecurityContext" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Core.SecurityContext \- 
+.PP
+A \fBSecurityContext\fP used by \fBlog4net\fP when interacting with protected resources  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBlog4net\&.Util\&.NullSecurityContext\fP, and \fBlog4net\&.Util\&.WindowsSecurityContext\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract IDisposable \fBImpersonate\fP (object state)"
+.br
+.RI "\fIImpersonate this \fBSecurityContext\fP \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A \fBSecurityContext\fP used by \fBlog4net\fP when interacting with protected resources 
+
+A \fBSecurityContext\fP used by \fBlog4net\fP when interacting with protected resources for example with operating system services\&. This can be used to impersonate a principal that has been granted privileges on the system resources\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 35 of file SecurityContext\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract IDisposable log4net\&.Core\&.SecurityContext\&.Impersonate (objectstate)\fC [pure virtual]\fP"
+
+.PP
+Impersonate this \fBSecurityContext\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstate\fP State supplied by the caller
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IDisposable instance that will revoke the impersonation of this \fBSecurityContext\fP, or \fCnull\fP
+.RE
+.PP
+.PP
+Impersonate this security context\&. Further calls on the current thread should now be made in the security context provided by this object\&. When the IDisposable result IDisposable\&.Dispose method is called the security context of the thread should be reverted to the state it was in before \fBImpersonate\fP was called\&. 
+.PP
+Implemented in \fBlog4net\&.Util\&.WindowsSecurityContext\fP, and \fBlog4net\&.Util\&.NullSecurityContext\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,172 @@
+.TH "log4net.Layout.LayoutSkeleton" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Layout.LayoutSkeleton \- 
+.PP
+Extend this abstract class to create your own log layout format\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Layout\&.ILayout\fP, and \fBlog4net\&.Core\&.IOptionHandler\fP\&.
+.PP
+Inherited by \fBlog4net\&.Layout\&.ExceptionLayout\fP, \fBlog4net\&.Layout\&.PatternLayout\fP, \fBlog4net\&.Layout\&.SimpleLayout\fP, and \fBlog4net\&.Layout\&.XmlLayoutBase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract void \fBActivateOptions\fP ()"
+.br
+.RI "\fIActivate component options \fP"
+.ti -1c
+.RI "abstract void \fBFormat\fP (TextWriter writer, \fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIImplement this method to create your own layout format\&. \fP"
+.ti -1c
+.RI "string \fBFormat\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIConvenience method for easily formatting the logging event into a string variable\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLayoutSkeleton\fP ()"
+.br
+.RI "\fIEmpty default constructor \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual string \fBContentType\fP\fC [get]\fP"
+.br
+.RI "\fIThe content type output by this layout\&. \fP"
+.ti -1c
+.RI "virtual string \fBHeader\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe header for the layout format\&. \fP"
+.ti -1c
+.RI "virtual string \fBFooter\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe footer for the layout format\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIgnoresException\fP\fC [get, set]\fP"
+.br
+.RI "\fIFlag indicating if this layout handles exceptions \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Extend this abstract class to create your own log layout format\&. 
+
+This is the base implementation of the \fBILayout\fP interface\&. Most layout objects should extend this class\&. 
+.PP
+<note type='inheritinfo'> 
+.PP
+Subclasses must implement the \fBFormat(TextWriter,LoggingEvent)\fP method\&. 
+.PP
+Subclasses should set the \fBIgnoresException\fP in their default constructor\&. 
+.PP
+</note> 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 51 of file LayoutSkeleton\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Layout\&.LayoutSkeleton\&.LayoutSkeleton ()\fC [protected]\fP"
+
+.PP
+Empty default constructor Empty default constructor 
+.PP
+Definition at line 97 of file LayoutSkeleton\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract void log4net\&.Layout\&.LayoutSkeleton\&.ActivateOptions ()\fC [pure virtual]\fP"
+
+.PP
+Activate component options This is part of the IOptionHandler delayed object activation scheme\&. The \fBActivateOptions\fP method must be called on this object after the configuration properties have been set\&. Until \fBActivateOptions\fP is called this object is in an undefined state and must not be used\&. 
+.PP
+If any of the configuration properties are modified then \fBActivateOptions\fP must be called again\&. 
+.PP
+This method must be implemented by the subclass\&. 
+.PP
+Implements \fBlog4net\&.Core\&.IOptionHandler\fP\&.
+.PP
+Implemented in \fBlog4net\&.Layout\&.PatternLayout\fP, \fBlog4net\&.Layout\&.XmlLayout\fP, \fBlog4net\&.Layout\&.XmlLayoutBase\fP, \fBlog4net\&.Layout\&.ExceptionLayout\fP, and \fBlog4net\&.Layout\&.SimpleLayout\fP\&.
+.SS "abstract void log4net\&.Layout\&.LayoutSkeleton\&.Format (TextWriterwriter, \fBLoggingEvent\fPloggingEvent)\fC [pure virtual]\fP"
+
+.PP
+Implement this method to create your own layout format\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP The TextWriter to write the formatted event to
+.br
+\fIloggingEvent\fP The event to format
+.RE
+.PP
+.PP
+This method is called by an appender to format the \fIloggingEvent\fP  as text\&. 
+.PP
+Implements \fBlog4net\&.Layout\&.ILayout\fP\&.
+.PP
+Implemented in \fBlog4net\&.Layout\&.PatternLayout\fP, \fBlog4net\&.Layout\&.XmlLayoutBase\fP, \fBlog4net\&.Layout\&.ExceptionLayout\fP, and \fBlog4net\&.Layout\&.SimpleLayout\fP\&.
+.SS "string log4net\&.Layout\&.LayoutSkeleton\&.Format (\fBLoggingEvent\fPloggingEvent)"
+
+.PP
+Convenience method for easily formatting the logging event into a string variable\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP 
+.RE
+.PP
+.PP
+Creates a new StringWriter instance to store the formatted logging event\&. 
+.PP
+Definition at line 150 of file LayoutSkeleton\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual string log4net\&.Layout\&.LayoutSkeleton\&.ContentType\fC [get]\fP"
+
+.PP
+The content type output by this layout\&. The content type is \fC'text/plain'\fP
+.PP
+The content type output by this layout\&. 
+.PP
+This base class uses the value \fC'text/plain'\fP\&. To change this value a subclass must override this property\&. 
+.PP
+Definition at line 172 of file LayoutSkeleton\&.cs\&.
+.SS "virtual string log4net\&.Layout\&.LayoutSkeleton\&.Footer\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The footer for the layout format\&. the layout footer
+.PP
+The Footer text will be appended after all the logging events have been formatted and appended\&. 
+.PP
+Definition at line 203 of file LayoutSkeleton\&.cs\&.
+.SS "virtual string log4net\&.Layout\&.LayoutSkeleton\&.Header\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The header for the layout format\&. the layout header
+.PP
+The Header text will be appended before any logging events are formatted and appended\&. 
+.PP
+Definition at line 187 of file LayoutSkeleton\&.cs\&.
+.SS "virtual bool log4net\&.Layout\&.LayoutSkeleton\&.IgnoresException\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Flag indicating if this layout handles exceptions \fCfalse\fP if this layout handles exceptions
+.PP
+If this layout handles the exception object contained within LoggingEvent, then the layout should return \fCfalse\fP\&. Otherwise, if the layout ignores the exception object, then the layout should return \fCtrue\fP\&. 
+.PP
+Set this value to override a this default setting\&. The default value is \fCtrue\fP, this layout does not handle the exception\&. 
+.PP
+Definition at line 225 of file LayoutSkeleton\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

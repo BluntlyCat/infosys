@@ -1,0 +1,192 @@
+.TH "NHibernate.Persister.Collection.IQueryableCollection" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Persister.Collection.IQueryableCollection \- 
+.PP
+A collection role that may be queried or loaded by outer join\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Persister\&.Entity\&.IPropertyMapping\fP, \fBNHibernate\&.Persister\&.Entity\&.IJoinable\fP, and \fBNHibernate\&.Persister\&.Collection\&.ICollectionPersister\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Persister\&.Collection\&.ISqlLoadableCollection\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBSelectFragment\fP (string alias, string columnSuffix)"
+.br
+.RI "\fIGenerate a list of collection index and element columns \fP"
+.ti -1c
+.RI "string[] \fBGetIndexColumnNames\fP (string alias)"
+.br
+.RI "\fIGet the names of the collection index columns if this is an indexed collection (optional operation), aliased by the given table alias \fP"
+.ti -1c
+.RI "string[] \fBGetElementColumnNames\fP (string alias)"
+.br
+.RI "\fIGet the names of the collection element columns (or the primary key columns in the case of a one-to-many association), aliased by the given table alias \fP"
+.ti -1c
+.RI "string \fBGetSQLWhereString\fP (string alias)"
+.br
+.RI "\fIGet the extra where clause filter SQL \fP"
+.ti -1c
+.RI "string \fBGetSQLOrderByString\fP (string alias)"
+.br
+.RI "\fIGet the order by SQL \fP"
+.ti -1c
+.RI "string \fBGetManyToManyOrderByString\fP (string alias)"
+.br
+.RI "\fIGet the order-by to be applied at the target table of a many to many \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string[] \fBIndexFormulas\fP\fC [get]\fP"
+.br
+.RI "\fIGet the index formulas if this is an indexed collection (optional operation) \fP"
+.ti -1c
+.RI "\fBIEntityPersister\fP \fBElementPersister\fP\fC [get]\fP"
+.br
+.RI "\fIGet the persister of the element class, if this is a collection of entities (optional operation)\&. Note that for a one-to-many association, the returned persister must be \fCOuterJoinLoadable\fP\&. \fP"
+.ti -1c
+.RI "\fBFetchMode\fP \fBFetchMode\fP\fC [get]\fP"
+.br
+.RI "\fIShould we load this collection role by outer joining? \fP"
+.ti -1c
+.RI "string[] \fBIndexColumnNames\fP\fC [get]\fP"
+.br
+.RI "\fIGet the names of the collection index columns if this is an indexed collection (optional operation) \fP"
+.ti -1c
+.RI "string[] \fBElementColumnNames\fP\fC [get]\fP"
+.br
+.RI "\fIGet the names of the collection element columns (or the primary key columns in the case of a one-to-many association) \fP"
+.ti -1c
+.RI "bool \fBHasWhere\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this collection role have a where clause filter? \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A collection role that may be queried or loaded by outer join\&. 
+
+
+.PP
+Definition at line 8 of file IQueryableCollection\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string [] NHibernate\&.Persister\&.Collection\&.IQueryableCollection\&.GetElementColumnNames (stringalias)"
+
+.PP
+Get the names of the collection element columns (or the primary key columns in the case of a one-to-many association), aliased by the given table alias 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.SS "string [] NHibernate\&.Persister\&.Collection\&.IQueryableCollection\&.GetIndexColumnNames (stringalias)"
+
+.PP
+Get the names of the collection index columns if this is an indexed collection (optional operation), aliased by the given table alias 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.SS "string NHibernate\&.Persister\&.Collection\&.IQueryableCollection\&.GetManyToManyOrderByString (stringalias)"
+
+.PP
+Get the order-by to be applied at the target table of a many to many 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP The alias for the many-to-many target table
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Appropriate order-by fragment or empty string\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.SS "string NHibernate\&.Persister\&.Collection\&.IQueryableCollection\&.GetSQLOrderByString (stringalias)"
+
+.PP
+Get the order by SQL 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.SS "string NHibernate\&.Persister\&.Collection\&.IQueryableCollection\&.GetSQLWhereString (stringalias)"
+
+.PP
+Get the extra where clause filter SQL 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.SS "string NHibernate\&.Persister\&.Collection\&.IQueryableCollection\&.SelectFragment (stringalias, stringcolumnSuffix)"
+
+.PP
+Generate a list of collection index and element columns 
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "string [] NHibernate\&.Persister\&.Collection\&.IQueryableCollection\&.ElementColumnNames\fC [get]\fP"
+
+.PP
+Get the names of the collection element columns (or the primary key columns in the case of a one-to-many association) 
+.PP
+Definition at line 37 of file IQueryableCollection\&.cs\&.
+.SS "\fBIEntityPersister\fP NHibernate\&.Persister\&.Collection\&.IQueryableCollection\&.ElementPersister\fC [get]\fP"
+
+.PP
+Get the persister of the element class, if this is a collection of entities (optional operation)\&. Note that for a one-to-many association, the returned persister must be \fCOuterJoinLoadable\fP\&. 
+.PP
+Definition at line 22 of file IQueryableCollection\&.cs\&.
+.SS "\fBFetchMode\fP NHibernate\&.Persister\&.Collection\&.IQueryableCollection\&.FetchMode\fC [get]\fP"
+
+.PP
+Should we load this collection role by outer joining? 
+.PP
+Definition at line 27 of file IQueryableCollection\&.cs\&.
+.SS "bool NHibernate\&.Persister\&.Collection\&.IQueryableCollection\&.HasWhere\fC [get]\fP"
+
+.PP
+Does this collection role have a where clause filter? 
+.PP
+Definition at line 42 of file IQueryableCollection\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Collection\&.IQueryableCollection\&.IndexColumnNames\fC [get]\fP"
+
+.PP
+Get the names of the collection index columns if this is an indexed collection (optional operation) 
+.PP
+Definition at line 32 of file IQueryableCollection\&.cs\&.
+.SS "string [] NHibernate\&.Persister\&.Collection\&.IQueryableCollection\&.IndexFormulas\fC [get]\fP"
+
+.PP
+Get the index formulas if this is an indexed collection (optional operation) 
+.PP
+Definition at line 14 of file IQueryableCollection\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,65 @@
+.TH "NHibernate.Dialect.PostgreSQL82Dialect" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.PostgreSQL82Dialect \- 
+.PP
+An SQL dialect for PostgreSQL 8\&.2 and above\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.PostgreSQL81Dialect\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBGetDropSequenceString\fP (string sequenceName)"
+.br
+.RI "\fITypically dialects which support sequences can drop a sequence with a single command\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBSupportsIfExistsBeforeTableName\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An SQL dialect for PostgreSQL 8\&.2 and above\&. 
+
+PostgreSQL 8\&.2 supports \fCDROP TABLE IF EXISTS tablename\fP and \fCDROP SEQUENCE IF EXISTS sequencename\fP syntax\&. See \fBPostgreSQLDialect\fP for more information\&. 
+.PP
+Definition at line 14 of file PostgreSQL82Dialect\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override string NHibernate\&.Dialect\&.PostgreSQL82Dialect\&.GetDropSequenceString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+Typically dialects which support sequences can drop a sequence with a single command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP The name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sequence drop commands 
+.RE
+.PP
+.PP
+This is convenience form of \fBGetDropSequenceStrings\fP to help facilitate that\&.
+.PP
+Dialects which support sequences and can drop a sequence in a single command need \fIonly\fP override this method\&. Dialects which support sequences but require multiple commands to drop a sequence should instead override \fBGetDropSequenceStrings\fP\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 26 of file PostgreSQL82Dialect\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_collection_listeners_1_1_pre_collection_update_listener =
+[
+    [ "PreCollectionUpdateListener", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_collection_listeners_1_1_pre_collection_update_listener.html#a98c3f1a028c0305055da36b540a57f61", null ],
+    [ "OnPreUpdateCollection", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_collection_listeners_1_1_pre_collection_update_listener.html#a4ca8c1654497adc8f9d04bcee72b9d4f", null ]
+];

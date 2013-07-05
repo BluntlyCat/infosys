@@ -1,0 +1,170 @@
+.TH "NHibernate.Impl" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Impl \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAbstractDetachedQuery\fP"
+.br
+.RI "\fIBase class to create queries in 'detached mode' where the \fBNHibernate\fP session is not available\&. \fP"
+.ti -1c
+.RI "class \fBAbstractQueryImpl\fP"
+.br
+.RI "\fIAbstract implementation of the \fBIQuery\fP interface\&. \fP"
+.ti -1c
+.RI "class \fBAbstractQueryImpl2\fP"
+.br
+.ti -1c
+.RI "class \fBAbstractSessionImpl\fP"
+.br
+.RI "\fIFunctionality common to stateless and stateful sessions \fP"
+.ti -1c
+.RI "class \fBCollectionFilterImpl\fP"
+.br
+.RI "\fIImplementation of the \fBIQuery\fP interface for collection filters\&. \fP"
+.ti -1c
+.RI "class \fBCriteriaImpl\fP"
+.br
+.RI "\fIImplementation of the \fBICriteria\fP interface \fP"
+.ti -1c
+.RI "class \fBDelayedEnumerator< T >\fP"
+.br
+.ti -1c
+.RI "interface \fBIDelayedValue\fP"
+.br
+.ti -1c
+.RI "class \fBDetachedNamedQuery\fP"
+.br
+.RI "\fINamed query in 'detached mode' where the \fBNHibernate\fP session is not available\&. \fP"
+.ti -1c
+.RI "class \fBDetachedQuery\fP"
+.br
+.RI "\fIQuery in 'detached mode' where the \fBNHibernate\fP session is not available\&. \fP"
+.ti -1c
+.RI "class \fBEnumerableImpl\fP"
+.br
+.RI "\fIProvides an IEnumerable wrapper over the results of an \fBIQuery\fP\&. \fP"
+.ti -1c
+.RI "class \fBExpressionProcessor\fP"
+.br
+.RI "\fIConverts lambda expressions to \fBNHibernate\fP criterion/order \fP"
+.ti -1c
+.RI "class \fBExpressionQueryImpl\fP"
+.br
+.ti -1c
+.RI "class \fBExpandedQueryExpression\fP"
+.br
+.ti -1c
+.RI "class \fBParameterExpander\fP"
+.br
+.ti -1c
+.RI "class \fBParameterDetector\fP"
+.br
+.ti -1c
+.RI "class \fBFilterImpl\fP"
+.br
+.ti -1c
+.RI "class \fBFutureBatch< TQueryApproach, TMultiApproach >\fP"
+.br
+.ti -1c
+.RI "class \fBFutureCriteriaBatch\fP"
+.br
+.ti -1c
+.RI "class \fBFutureQueryBatch\fP"
+.br
+.ti -1c
+.RI "class \fBFutureValue< T >\fP"
+.br
+.ti -1c
+.RI "interface \fBIDetachedQueryImplementor\fP"
+.br
+.RI "\fIInterface for \fBDetachedQuery\fP implementors\&. \fP"
+.ti -1c
+.RI "class \fBMessageHelper\fP"
+.br
+.RI "\fIHelper methods for rendering log messages and exception messages \fP"
+.ti -1c
+.RI "class \fBMultiCriteriaImpl\fP"
+.br
+.ti -1c
+.RI "class \fBMultipleQueriesCacheAssembler\fP"
+.br
+.ti -1c
+.RI "class \fBMultiQueryImpl\fP"
+.br
+.ti -1c
+.RI "interface \fBITranslator\fP"
+.br
+.ti -1c
+.RI "class \fBHqlTranslatorWrapper\fP"
+.br
+.ti -1c
+.RI "class \fBSqlTranslator\fP"
+.br
+.ti -1c
+.RI "class \fBPrinter\fP"
+.br
+.ti -1c
+.RI "class \fBQueryImpl\fP"
+.br
+.RI "\fIDefault implementation of the \fBIQuery\fP, for 'ordinary' HQL queries (not collection filters) \fP"
+.ti -1c
+.RI "class \fBSessionFactoryImpl\fP"
+.br
+.RI "\fIConcrete implementation of a SessionFactory\&. \fP"
+.ti -1c
+.RI "class \fBSessionFactoryObjectFactory\fP"
+.br
+.RI "\fIResolves \fBISessionFactory\fP lookups and deserialization\&. \fP"
+.ti -1c
+.RI "class \fBSessionIdLoggingContext\fP"
+.br
+.ti -1c
+.RI "class \fBSessionImpl\fP"
+.br
+.RI "\fIConcrete implementation of an \fBNHibernate\&.ISession\fP, also the central, organizing component of \fBNHibernate\fP's internal implementation\&. \fP"
+.ti -1c
+.RI "class \fBSqlQueryImpl\fP"
+.br
+.RI "\fIImplements SQL query passthrough \fP"
+.ti -1c
+.RI "class \fBStatelessSessionImpl\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBLambdaSubqueryType\fP { \fBLambdaSubqueryType\&.Exact\fP = 1, \fBLambdaSubqueryType\&.All\fP = 2, \fBLambdaSubqueryType\&.Some\fP = 3 }"
+.br
+.RI "\fISubquery type enumeration \fP"
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBNHibernate\&.Impl\&.LambdaSubqueryType\fP"
+
+.PP
+Subquery type enumeration 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIExact \fP\fP
+exact
+.TP
+\fB\fIAll \fP\fP
+all
+.TP
+\fB\fISome \fP\fP
+some
+.PP
+Definition at line 18 of file ExpressionProcessor\&.cs\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,106 @@
+.TH "NHibernate.Context.CurrentSessionContext" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Context.CurrentSessionContext \- 
+.PP
+Extends the contract defined by \fBICurrentSessionContext\fP by providing methods to bind and unbind sessions to the current context\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Context\&.ICurrentSessionContext\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Context\&.MapBasedSessionContext\fP, and \fBNHibernate\&.Context\&.ThreadStaticSessionContext\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBISession\fP \fBCurrentSession\fP ()"
+.br
+.RI "\fIRetrieve the current session according to the scoping defined by this implementation\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBBind\fP (\fBISession\fP session)"
+.br
+.RI "\fIBinds the specified session to the current context\&. \fP"
+.ti -1c
+.RI "static bool \fBHasBind\fP (\fBISessionFactory\fP factory)"
+.br
+.RI "\fIReturns whether there is a session bound to the current context\&. \fP"
+.ti -1c
+.RI "static \fBISession\fP \fBUnbind\fP (\fBISessionFactory\fP factory)"
+.br
+.RI "\fIUnbinds and returns the current session\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "abstract \fBISession\fP \fBSession\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the currently bound session\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Extends the contract defined by \fBICurrentSessionContext\fP by providing methods to bind and unbind sessions to the current context\&. 
+
+The notion of a contextual session is managed by some external entity (generally some form of interceptor like the HttpModule)\&. This external manager is responsible for scoping these contextual sessions appropriately binding/unbinding them here for exposure to the application through \fBISessionFactory\&.GetCurrentSession()\fP calls\&. 
+.PP
+Definition at line 19 of file CurrentSessionContext\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static void NHibernate\&.Context\&.CurrentSessionContext\&.Bind (\fBISession\fPsession)\fC [static]\fP"
+
+.PP
+Binds the specified session to the current context\&. 
+.PP
+Definition at line 43 of file CurrentSessionContext\&.cs\&.
+.SS "virtual \fBISession\fP NHibernate\&.Context\&.CurrentSessionContext\&.CurrentSession ()\fC [virtual]\fP"
+
+.PP
+Retrieve the current session according to the scoping defined by this implementation\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The current session\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP Indicates an issue locating the current session\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Context\&.ICurrentSessionContext\fP\&.
+.PP
+Definition at line 31 of file CurrentSessionContext\&.cs\&.
+.SS "static bool NHibernate\&.Context\&.CurrentSessionContext\&.HasBind (\fBISessionFactory\fPfactory)\fC [static]\fP"
+
+.PP
+Returns whether there is a session bound to the current context\&. 
+.PP
+Definition at line 51 of file CurrentSessionContext\&.cs\&.
+.SS "static \fBISession\fP NHibernate\&.Context\&.CurrentSessionContext\&.Unbind (\fBISessionFactory\fPfactory)\fC [static]\fP"
+
+.PP
+Unbinds and returns the current session\&. 
+.PP
+Definition at line 59 of file CurrentSessionContext\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "abstract \fBISession\fP NHibernate\&.Context\&.CurrentSessionContext\&.Session\fC [get]\fP, \fC [set]\fP, \fC [protected]\fP"
+
+.PP
+Gets or sets the currently bound session\&. 
+.PP
+Definition at line 22 of file CurrentSessionContext\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

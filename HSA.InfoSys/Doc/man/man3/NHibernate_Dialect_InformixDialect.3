@@ -1,0 +1,544 @@
+.TH "NHibernate.Dialect.InformixDialect" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.InformixDialect \- 
+.PP
+Summary description for \fBInformixDialect\fP\&. This dialect is intended to work with IDS version 7\&.31 However I can test only version 10\&.00 as I have only this version at work  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.InformixDialect0940\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBInformixDialect\fP ()"
+.br
+.ti -1c
+.RI "override string \fBGetForUpdateString\fP (string aliases)"
+.br
+.RI "\fIGet the \fCFOR UPDATE OF column_list\fP fragment appropriate for this dialect given the aliases of the columns to be write locked\&. \fP"
+.ti -1c
+.RI "override bool \fBPerformTemporaryTableDDLInIsolation\fP ()"
+.br
+.RI "\fIDoes the dialect require that temporary table DDL statements occur in isolation from other statements? This would be the case if the creation would cause any current transaction to get committed implicitly\&. \fP"
+.ti -1c
+.RI "override int \fBRegisterResultSetOutParameter\fP (DbCommand statement, int position)"
+.br
+.RI "\fIRegisters an OUT parameter which will be returing a DbDataReader\&. How this is accomplished varies greatly from DB to DB, hence its inclusion (along with \fBgetResultSet\fP) here\&. \fP"
+.ti -1c
+.RI "override DbDataReader \fBGetResultSet\fP (DbCommand statement)"
+.br
+.RI "\fIGiven a callable statement previously processed by \fBRegisterResultSetOutParameter\fP, extract the DbDataReader from the OUT parameter\&. \fP"
+.ti -1c
+.RI "override string \fBGetIdentitySelectString\fP (string identityColumn, string tableName, DbType type)"
+.br
+.RI "\fIGet the select command to use to retrieve the last generated IDENTITY value for a particular table \fP"
+.ti -1c
+.RI "override string \fBGetIdentityColumnString\fP (DbType type)"
+.br
+.RI "\fIThe syntax used during DDL to define a column as being an IDENTITY of a particular type\&. \fP"
+.ti -1c
+.RI "override \fBJoinFragment\fP \fBCreateOuterJoinFragment\fP ()"
+.br
+.RI "\fICreate a JoinFragment strategy responsible for handling this dialect's variations in how joins are handled\&. \fP"
+.ti -1c
+.RI "override string \fBToBooleanValueString\fP (bool value)"
+.br
+.RI "\fIThe SQL literal value to which this database maps boolean values\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBGetLimitString\fP (\fBSqlString\fP queryString, \fBSqlString\fP offset, \fBSqlString\fP limit)"
+.br
+.RI "\fIAttempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. \fP"
+.ti -1c
+.RI "override \fBISQLExceptionConverter\fP \fBBuildSQLExceptionConverter\fP ()"
+.br
+.RI "\fIBuild an instance of the ISQLExceptionConverter preferred by this dialect for converting System\&.Data\&.Common\&.DbException into \fBNHibernate\fP's \fBADOException\fP hierarchy\&. \fP"
+.ti -1c
+.RI "override string \fBGetAddForeignKeyConstraintString\fP (string constraintName, string[] foreignKey, string referencedTable, string[] primaryKey, bool referencesPrimaryKey)"
+.br
+.RI "\fIThe syntax used to add a foreign key constraint to a table\&. If SupportsForeignKeyConstraintInAlterTable is false, the returned string will be added to the create table statement instead\&. In this case, extra strings, like 'add', that apply when using alter table should be omitted\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBIdentityInsertString\fP\fC [get]\fP"
+.br
+.RI "\fIThe keyword used to insert a generated value into an identity column (or null)\&. Need if the dialect does not support inserts that specify no column values\&. \fP"
+.ti -1c
+.RI "override string \fBCreateTemporaryTableString\fP\fC [get]\fP"
+.br
+.RI "\fICommand used to create a temporary table\&. \fP"
+.ti -1c
+.RI "override string \fBCreateTemporaryTablePostfix\fP\fC [get]\fP"
+.br
+.RI "\fIGet any fragments needing to be postfixed to the command for temporary table creation\&. \fP"
+.ti -1c
+.RI "override bool \fBIsCurrentTimestampSelectStringCallable\fP\fC [get]\fP"
+.br
+.RI "\fIShould the value returned by \fBCurrentTimestampSelectString\fP be treated as callable\&. Typically this indicates that JDBC escape sytnax is being used\&.\&.\&. \fP"
+.ti -1c
+.RI "override string \fBCurrentTimestampSelectString\fP\fC [get]\fP"
+.br
+.RI "\fIRetrieve the command used to retrieve the current timestammp from the database\&. \fP"
+.ti -1c
+.RI "override string \fBCurrentTimestampSQLFunctionName\fP\fC [get]\fP"
+.br
+.RI "\fIThe name of the database-specific SQL function for retrieving the current timestamp\&. \fP"
+.ti -1c
+.RI "override 
+.br
+\fBIViolatedConstraintNameExtracter\fP \fBViolatedConstraintNameExtracter\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBAddColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBForUpdateOfColumns\fP\fC [get]\fP"
+.br
+.RI "\fIIs \fCFOR UPDATE OF\fP syntax supported? \fP"
+.ti -1c
+.RI "override bool \fBSupportsOuterJoinForUpdate\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support \fCFOR UPDATE\fP in conjunction with outer joined rows? \fP"
+.ti -1c
+.RI "override bool \fBSupportsTemporaryTables\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support temporary tables? \fP"
+.ti -1c
+.RI "override bool \fBSupportsCurrentTimestampSelection\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support a way to retrieve the database's current timestamp value? \fP"
+.ti -1c
+.RI "override long \fBTimestampResolutionInTicks\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsIdentityColumns\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBHasDataTypeInIdentityColumn\fP\fC [get]\fP"
+.br
+.RI "\fIWhether this dialect have an Identity clause added to the data type or a completely separate identity data type \fP"
+.ti -1c
+.RI "override string \fBIdentitySelectString\fP\fC [get]\fP"
+.br
+.RI "\fIThe syntax that returns the identity value of the last insert, if native key generation is supported \fP"
+.ti -1c
+.RI "override string \fBIdentityColumnString\fP\fC [get]\fP"
+.br
+.RI "\fIThe keyword used to specify an identity column, if native key generation is supported \fP"
+.ti -1c
+.RI "override bool \fBSupportsSequences\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support sequences? \fP"
+.ti -1c
+.RI "override bool \fBSupportsLimit\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this \fBDialect\fP have some kind of \fCLIMIT\fP syntax? \fP"
+.ti -1c
+.RI "override bool \fBSupportsLimitOffset\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this \fBDialect\fP support an offset? \fP"
+.ti -1c
+.RI "override bool \fBSupportsVariableLimit\fP\fC [get]\fP"
+.br
+.RI "\fICan parameters be used for a statement containing a LIMIT? \fP"
+.ti -1c
+.RI "override bool \fBSupportsUnionAll\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support UNION ALL, which is generally a faster variant of UNION? True if UNION ALL is supported; false otherwise\&. \fP"
+.ti -1c
+.RI "override bool \fBSupportsEmptyInList\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsResultSetPositionQueryMethodsOnForwardOnlyCursor\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBDoesRepeatableReadCauseReadersToBlockWriters\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Summary description for \fBInformixDialect\fP\&. This dialect is intended to work with IDS version 7\&.31 However I can test only version 10\&.00 as I have only this version at work 
+
+The \fBInformixDialect\fP defaults the following configuration properties: ConnectionDriver \fBNHibernate\&.Driver\&.OdbcDriver\fP PrepareSql true  connection\&.driver_class \fBNHibernate\&.Driver\&.OdbcDriver\fP  
+.PP
+Definition at line 34 of file InformixDialect\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Dialect\&.InformixDialect\&.InformixDialect ()"
+
+.PP
+
+.PP
+Definition at line 37 of file InformixDialect\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBISQLExceptionConverter\fP NHibernate\&.Dialect\&.InformixDialect\&.BuildSQLExceptionConverter ()\fC [virtual]\fP"
+
+.PP
+Build an instance of the ISQLExceptionConverter preferred by this dialect for converting System\&.Data\&.Common\&.DbException into \fBNHibernate\fP's \fBADOException\fP hierarchy\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBDialect\fP's preferred ISQLExceptionConverter\&. 
+.RE
+.PP
+.PP
+The default \fBDialect\fP implementation simply returns a converter based on X/Open SQLState codes\&. 
+.PP
+It is strongly recommended that specific \fBDialect\fP implementations override this method, since interpretation of a SQL error is much more accurate when based on the ErrorCode rather than the SQLState\&. Unfortunately, the ErrorCode is a vendor-specific approach\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 417 of file InformixDialect\&.cs\&.
+.SS "override \fBJoinFragment\fP NHibernate\&.Dialect\&.InformixDialect\&.CreateOuterJoinFragment ()\fC [virtual]\fP"
+
+.PP
+Create a JoinFragment strategy responsible for handling this dialect's variations in how joins are handled\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+This dialect's JoinFragment strategy\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.InformixDialect0940\fP\&.
+.PP
+Definition at line 327 of file InformixDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.InformixDialect\&.GetAddForeignKeyConstraintString (stringconstraintName, string[]foreignKey, stringreferencedTable, string[]primaryKey, boolreferencesPrimaryKey)\fC [virtual]\fP"
+
+.PP
+The syntax used to add a foreign key constraint to a table\&. If SupportsForeignKeyConstraintInAlterTable is false, the returned string will be added to the create table statement instead\&. In this case, extra strings, like 'add', that apply when using alter table should be omitted\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconstraintName\fP The FK constraint name\&. 
+.br
+\fIforeignKey\fP The names of the columns comprising the FK 
+.br
+\fIreferencedTable\fP The table referenced by the FK 
+.br
+\fIprimaryKey\fP The explicit columns in the referencedTable referenced by this FK\&. 
+.br
+\fIreferencesPrimaryKey\fP if false, constraint should be explicit about which column names the constraint refers to 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the 'add FK' fragment 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 435 of file InformixDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.InformixDialect\&.GetForUpdateString (stringaliases)\fC [virtual]\fP"
+
+.PP
+Get the \fCFOR UPDATE OF column_list\fP fragment appropriate for this dialect given the aliases of the columns to be write locked\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaliases\fP The columns to be write locked\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate \fCFOR UPDATE OF column_list\fP clause string\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 197 of file InformixDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.InformixDialect\&.GetIdentityColumnString (DbTypetype)\fC [virtual]\fP"
+
+.PP
+The syntax used during DDL to define a column as being an IDENTITY of a particular type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The DbType type code\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate DDL fragment\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 301 of file InformixDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.InformixDialect\&.GetIdentitySelectString (stringidentityColumn, stringtableName, DbTypetype)\fC [virtual]\fP"
+
+.PP
+Get the select command to use to retrieve the last generated IDENTITY value for a particular table 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItableName\fP The table into which the insert was done 
+.br
+\fIidentityColumn\fP The PK column\&. 
+.br
+\fItype\fP The DbType type code\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate select command 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 276 of file InformixDialect\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Dialect\&.InformixDialect\&.GetLimitString (\fBSqlString\fPqueryString, \fBSqlString\fPoffset, \fBSqlString\fPlimit)\fC [virtual]\fP"
+
+.PP
+Attempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryString\fP The SqlString to base the limit query off\&.
+.br
+\fIoffset\fP Offset of the first row to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no limit is requested\&. This should have already been adjusted to account for OffsetStartsAtOne\&.
+.br
+\fIlimit\fP Maximum number of rows to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no offset is requested\&. This should have already been adjusted to account for UseMaxForLimit\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new SqlString that contains the \fCLIMIT\fP clause\&. Returns \fCnull\fP if \fIqueryString\fP  represents a SQL statement to which a limit clause cannot be added, for example when the query string is custom SQL invoking a stored procedure\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 368 of file InformixDialect\&.cs\&.
+.SS "override DbDataReader NHibernate\&.Dialect\&.InformixDialect\&.GetResultSet (DbCommandstatement)\fC [virtual]\fP"
+
+.PP
+Given a callable statement previously processed by \fBRegisterResultSetOutParameter\fP, extract the DbDataReader from the OUT parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstatement\fP The callable statement\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The extracted result set\&. 
+.RE
+.PP
+<throws> SQLException Indicates problems extracting the result set\&. </throws> 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 238 of file InformixDialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.InformixDialect\&.PerformTemporaryTableDDLInIsolation ()\fC [virtual]\fP"
+
+.PP
+Does the dialect require that temporary table DDL statements occur in isolation from other statements? This would be the case if the creation would cause any current transaction to get committed implicitly\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+see the result matrix above\&. 
+.RE
+.PP
+.PP
+JDBC defines a standard way to query for this information via the \fBjava\&.sql\&.DatabaseMetaData#dataDefinitionCausesTransactionCommit()\fP method\&. However, that does not distinguish between temporary table DDL and other forms of DDL; MySQL, for example, reports DDL causing a transaction commit via its driver, even though that is not the case for temporary table DDL\&. 
+.PP
+Possible return values and their meanings:
+.PD 0
+
+.IP "\(bu" 2
+\fBBoolean#TRUE\fP - Unequivocally, perform the temporary table DDL in isolation\&. 
+.IP "\(bu" 2
+\fBBoolean#FALSE\fP - Unequivocally, do \fBnot\fP perform the temporary table DDL in isolation\&. 
+.IP "\(bu" 2
+\fInull\fP - defer to the JDBC driver response in regards to \fBjava\&.sql\&.DatabaseMetaData#dataDefinitionCausesTransactionCommit()\fP 
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 228 of file InformixDialect\&.cs\&.
+.SS "override int NHibernate\&.Dialect\&.InformixDialect\&.RegisterResultSetOutParameter (DbCommandstatement, intposition)\fC [virtual]\fP"
+
+.PP
+Registers an OUT parameter which will be returing a DbDataReader\&. How this is accomplished varies greatly from DB to DB, hence its inclusion (along with \fBgetResultSet\fP) here\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstatement\fP The callable statement\&. 
+.br
+\fIposition\fP The bind position at which to register the OUT param\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of (contiguous) bind positions used\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 233 of file InformixDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.InformixDialect\&.ToBooleanValueString (boolvalue)\fC [virtual]\fP"
+
+.PP
+The SQL literal value to which this database maps boolean values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The boolean value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate SQL literal\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 335 of file InformixDialect\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.Dialect\&.InformixDialect\&.AddColumnString\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 153 of file InformixDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.InformixDialect\&.CreateTemporaryTablePostfix\fC [get]\fP"
+
+.PP
+Get any fragments needing to be postfixed to the command for temporary table creation\&. 
+.PP
+Definition at line 115 of file InformixDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.InformixDialect\&.CreateTemporaryTableString\fC [get]\fP"
+
+.PP
+Command used to create a temporary table\&. 
+.PP
+Definition at line 106 of file InformixDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.InformixDialect\&.CurrentTimestampSelectString\fC [get]\fP"
+
+.PP
+Retrieve the command used to retrieve the current timestammp from the database\&. 
+.PP
+Definition at line 133 of file InformixDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.InformixDialect\&.CurrentTimestampSQLFunctionName\fC [get]\fP"
+
+.PP
+The name of the database-specific SQL function for retrieving the current timestamp\&. 
+.PP
+Definition at line 142 of file InformixDialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.InformixDialect\&.ForUpdateOfColumns\fC [get]\fP"
+
+.PP
+Is \fCFOR UPDATE OF\fP syntax supported? True if the database supports \fCFOR UPDATE OF\fP syntax; false otherwise\&. 
+.PP
+Definition at line 178 of file InformixDialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.InformixDialect\&.HasDataTypeInIdentityColumn\fC [get]\fP"
+
+.PP
+Whether this dialect have an Identity clause added to the data type or a completely separate identity data type 
+.PP
+Definition at line 264 of file InformixDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.InformixDialect\&.IdentityColumnString\fC [get]\fP"
+
+.PP
+The keyword used to specify an identity column, if native key generation is supported 
+.PP
+Definition at line 310 of file InformixDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.InformixDialect\&.IdentityInsertString\fC [get]\fP"
+
+.PP
+The keyword used to insert a generated value into an identity column (or null)\&. Need if the dialect does not support inserts that specify no column values\&. 
+.PP
+Definition at line 100 of file InformixDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.InformixDialect\&.IdentitySelectString\fC [get]\fP"
+
+.PP
+The syntax that returns the identity value of the last insert, if native key generation is supported 
+.PP
+Definition at line 288 of file InformixDialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.InformixDialect\&.IsCurrentTimestampSelectStringCallable\fC [get]\fP"
+
+.PP
+Should the value returned by \fBCurrentTimestampSelectString\fP be treated as callable\&. Typically this indicates that JDBC escape sytnax is being used\&.\&.\&. 
+.PP
+Definition at line 125 of file InformixDialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.InformixDialect\&.SupportsCurrentTimestampSelection\fC [get]\fP"
+
+.PP
+Does this dialect support a way to retrieve the database's current timestamp value? 
+.PP
+Definition at line 245 of file InformixDialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.InformixDialect\&.SupportsLimit\fC [get]\fP"
+
+.PP
+Does this \fBDialect\fP have some kind of \fCLIMIT\fP syntax? False, unless overridden\&.
+.PP
+Definition at line 345 of file InformixDialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.InformixDialect\&.SupportsLimitOffset\fC [get]\fP"
+
+.PP
+Does this \fBDialect\fP support an offset? 
+.PP
+Definition at line 356 of file InformixDialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.InformixDialect\&.SupportsOuterJoinForUpdate\fC [get]\fP"
+
+.PP
+Does this dialect support \fCFOR UPDATE\fP in conjunction with outer joined rows? True if outer joined rows can be locked via \fCFOR UPDATE\fP\&. 
+.PP
+Definition at line 187 of file InformixDialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.InformixDialect\&.SupportsSequences\fC [get]\fP"
+
+.PP
+Does this dialect support sequences? 
+.PP
+Definition at line 318 of file InformixDialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.InformixDialect\&.SupportsTemporaryTables\fC [get]\fP"
+
+.PP
+Does this dialect support temporary tables? 
+.PP
+Definition at line 204 of file InformixDialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.InformixDialect\&.SupportsUnionAll\fC [get]\fP"
+
+.PP
+Does this dialect support UNION ALL, which is generally a faster variant of UNION? True if UNION ALL is supported; false otherwise\&. 
+.PP
+Definition at line 398 of file InformixDialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.InformixDialect\&.SupportsVariableLimit\fC [get]\fP"
+
+.PP
+Can parameters be used for a statement containing a LIMIT? 
+.PP
+Definition at line 364 of file InformixDialect\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

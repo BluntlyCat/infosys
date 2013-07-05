@@ -1,0 +1,73 @@
+.TH "NHibernate.Collection.Generic.PersistentGenericBag< T >" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Collection.Generic.PersistentGenericBag< T > \- 
+.PP
+An unordered, unkeyed collection that can contain the same element multiple times\&. The \&.NET collections API, has no \fCBag\fP\&. Most developers seem to use IList{T} to represent bag semantics, so \fBNHibernate\fP follows this practice\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Collection\&.PersistentBag\fP, and IList< T >\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPersistentGenericBag\fP (\fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "\fBPersistentGenericBag\fP (\fBISessionImplementor\fP session, IEnumerable< T > coll)"
+.br
+.ti -1c
+.RI "override void \fBBeforeInitialize\fP (\fBICollectionPersister\fP persister, int anticipatedSize)"
+.br
+.RI "\fICalled before any elements are read into the collection, allowing appropriate initializations to occur\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "IList< T > \fBInternalBag\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An unordered, unkeyed collection that can contain the same element multiple times\&. The \&.NET collections API, has no \fCBag\fP\&. Most developers seem to use IList{T} to represent bag semantics, so \fBNHibernate\fP follows this practice\&. 
+
+
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The type of the element the bag should hold\&.
+.RE
+.PP
+.PP
+The underlying collection used is an List{T}
+.PP
+Definition at line 21 of file PersistentGenericBag\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Collection\&.Generic\&.PersistentGenericBag< T >\&.BeforeInitialize (\fBICollectionPersister\fPpersister, intanticipatedSize)\fC [virtual]\fP"
+
+.PP
+Called before any elements are read into the collection, allowing appropriate initializations to occur\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The underlying collection persister\&. 
+.br
+\fIanticipatedSize\fP The anticipated size of the collection after initilization is complete\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 61 of file PersistentGenericBag\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

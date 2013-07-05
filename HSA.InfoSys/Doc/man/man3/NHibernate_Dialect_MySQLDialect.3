@@ -1,0 +1,338 @@
+.TH "NHibernate.Dialect.MySQLDialect" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.MySQLDialect \- 
+.PP
+A SQL dialect for MySQL  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.MySQL5Dialect\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMySQLDialect\fP ()"
+.br
+.ti -1c
+.RI "override \fBIDataBaseSchema\fP \fBGetDataBaseSchema\fP (DbConnection connection)"
+.br
+.ti -1c
+.RI "override \fBSqlString\fP \fBGetLimitString\fP (\fBSqlString\fP queryString, \fBSqlString\fP offset, \fBSqlString\fP limit)"
+.br
+.RI "\fIAttempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. \fP"
+.ti -1c
+.RI "override string \fBGetAddForeignKeyConstraintString\fP (string constraintName, string[] foreignKey, string referencedTable, string[] primaryKey, bool referencesPrimaryKey)"
+.br
+.RI "\fIThe syntax used to add a foreign key constraint to a table\&. If SupportsForeignKeyConstraintInAlterTable is false, the returned string will be added to the create table statement instead\&. In this case, extra strings, like 'add', that apply when using alter table should be omitted\&. \fP"
+.ti -1c
+.RI "override string \fBGetDropForeignKeyConstraintString\fP (string constraintName)"
+.br
+.RI "\fICreate the SQL string to drop a foreign key constraint\&. \fP"
+.ti -1c
+.RI "override string \fBGetDropPrimaryKeyConstraintString\fP (string constraintName)"
+.br
+.RI "\fICreate the SQL string to drop a primary key constraint\&. \fP"
+.ti -1c
+.RI "override string \fBGetDropIndexConstraintString\fP (string constraintName)"
+.br
+.RI "\fICreate the SQL string to drop an index\&. \fP"
+.ti -1c
+.RI "override string \fBGetCastTypeName\fP (\fBSqlType\fP sqlType)"
+.br
+.RI "\fIGet the name of the database type appropriate for casting operations (via the CAST() SQL function) for the given SqlType typecode\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBRegisterCastTypes\fP ()"
+.br
+.ti -1c
+.RI "void \fBRegisterCastType\fP (DbType code, string name)"
+.br
+.RI "\fISubclasses register a typename for the given type code, to be used in CAST() statements\&. \fP"
+.ti -1c
+.RI "void \fBRegisterCastType\fP (DbType code, int capacity, string name)"
+.br
+.RI "\fISubclasses register a typename for the given type code, to be used in CAST() statements\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBAddColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBQualifyIndexName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsIdentityColumns\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBIdentitySelectString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBIdentityColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override char \fBCloseQuote\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override char \fBOpenQuote\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsIfExistsBeforeTableName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsLimit\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsSubSelects\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsTemporaryTables\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBCreateTemporaryTableString\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A SQL dialect for MySQL 
+
+The \fBMySQLDialect\fP defaults the following configuration properties: Property Default Value  connection\&.driver_class \fBNHibernate\&.Driver\&.MySqlDataDriver\fP  
+.PP
+Definition at line 31 of file MySQLDialect\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Dialect\&.MySQLDialect\&.MySQLDialect ()"
+!! 
+.PP
+Definition at line 35 of file MySQLDialect\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override string NHibernate\&.Dialect\&.MySQLDialect\&.GetAddForeignKeyConstraintString (stringconstraintName, string[]foreignKey, stringreferencedTable, string[]primaryKey, boolreferencesPrimaryKey)\fC [virtual]\fP"
+
+.PP
+The syntax used to add a foreign key constraint to a table\&. If SupportsForeignKeyConstraintInAlterTable is false, the returned string will be added to the create table statement instead\&. In this case, extra strings, like 'add', that apply when using alter table should be omitted\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconstraintName\fP The FK constraint name\&. 
+.br
+\fIforeignKey\fP The names of the columns comprising the FK 
+.br
+\fIreferencedTable\fP The table referenced by the FK 
+.br
+\fIprimaryKey\fP The explicit columns in the referencedTable referenced by this FK\&. 
+.br
+\fIreferencesPrimaryKey\fP if false, constraint should be explicit about which column names the constraint refers to 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the 'add FK' fragment 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 199 of file MySQLDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.MySQLDialect\&.GetCastTypeName (\fBSqlType\fPsqlType)\fC [virtual]\fP"
+
+.PP
+Get the name of the database type appropriate for casting operations (via the CAST() SQL function) for the given SqlType typecode\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlType\fP The SqlType typecode 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The database type name 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 304 of file MySQLDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.MySQLDialect\&.GetDropForeignKeyConstraintString (stringconstraintName)\fC [virtual]\fP"
+
+.PP
+Create the SQL string to drop a foreign key constraint\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconstraintName\fP The name of the foreign key to drop\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The SQL string to drop the foreign key constraint\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 215 of file MySQLDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.MySQLDialect\&.GetDropIndexConstraintString (stringconstraintName)\fC [virtual]\fP"
+
+.PP
+Create the SQL string to drop an index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconstraintName\fP The name of the index to drop\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The SQL string to drop the index constraint\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 235 of file MySQLDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.MySQLDialect\&.GetDropPrimaryKeyConstraintString (stringconstraintName)\fC [virtual]\fP"
+
+.PP
+Create the SQL string to drop a primary key constraint\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconstraintName\fP The name of the primary key to drop\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The SQL string to drop the primary key constraint\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 225 of file MySQLDialect\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Dialect\&.MySQLDialect\&.GetLimitString (\fBSqlString\fPqueryString, \fBSqlString\fPoffset, \fBSqlString\fPlimit)\fC [virtual]\fP"
+
+.PP
+Attempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryString\fP The SqlString to base the limit query off\&.
+.br
+\fIoffset\fP Offset of the first row to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no limit is requested\&. This should have already been adjusted to account for OffsetStartsAtOne\&.
+.br
+\fIlimit\fP Maximum number of rows to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no offset is requested\&. This should have already been adjusted to account for UseMaxForLimit\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new SqlString that contains the \fCLIMIT\fP clause\&. Returns \fCnull\fP if \fIqueryString\fP  represents a SQL statement to which a limit clause cannot be added, for example when the query string is custom SQL invoking a stored procedure\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 180 of file MySQLDialect\&.cs\&.
+.SS "void NHibernate\&.Dialect\&.MySQLDialect\&.RegisterCastType (DbTypecode, stringname)\fC [protected]\fP"
+
+.PP
+Subclasses register a typename for the given type code, to be used in CAST() statements\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcode\fP The typecode
+.br
+\fIname\fP The database type name
+.RE
+.PP
+
+.PP
+Definition at line 281 of file MySQLDialect\&.cs\&.
+.SS "void NHibernate\&.Dialect\&.MySQLDialect\&.RegisterCastType (DbTypecode, intcapacity, stringname)\fC [protected]\fP"
+
+.PP
+Subclasses register a typename for the given type code, to be used in CAST() statements\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcode\fP The typecode
+.br
+\fIcapacity\fP 
+.br
+\fIname\fP The database type name
+.RE
+.PP
+
+.PP
+Definition at line 293 of file MySQLDialect\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.Dialect\&.MySQLDialect\&.AddColumnString\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 119 of file MySQLDialect\&.cs\&.
+.SS "override char NHibernate\&.Dialect\&.MySQLDialect\&.CloseQuote\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 149 of file MySQLDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.MySQLDialect\&.IdentityColumnString\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 143 of file MySQLDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.MySQLDialect\&.IdentitySelectString\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 137 of file MySQLDialect\&.cs\&.
+.SS "override char NHibernate\&.Dialect\&.MySQLDialect\&.OpenQuote\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 155 of file MySQLDialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.MySQLDialect\&.QualifyIndexName\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 125 of file MySQLDialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.MySQLDialect\&.SupportsIdentityColumns\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 131 of file MySQLDialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.MySQLDialect\&.SupportsLimit\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 166 of file MySQLDialect\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

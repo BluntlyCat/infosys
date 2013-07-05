@@ -1,0 +1,63 @@
+.TH "NHibernate.Bytecode.EmitUtil" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Bytecode.EmitUtil \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBEmitFastInt\fP (ILGenerator il, int value)"
+.br
+.RI "\fIEmits an \fCldc\&.i4\fP opcode using the fastest available opcode choice\&. \fP"
+.ti -1c
+.RI "static void \fBEmitBoxIfNeeded\fP (ILGenerator il, System\&.Type type)"
+.br
+.ti -1c
+.RI "static void \fBPreparePropertyForSet\fP (ILGenerator il, System\&.Type propertyType)"
+.br
+.RI "\fIEmits IL to unbox a value type and if null, create a new instance of the value type\&. \fP"
+.ti -1c
+.RI "static System\&.Type \fBDefineDelegateType\fP (string fullTypeName, ModuleBuilder moduleBuilder, System\&.Type returnType, System\&.Type[] parameterTypes)"
+.br
+.RI "\fIDefines a new delegate type\&. \fP"
+.ti -1c
+.RI "static void \fBEmitLoadType\fP (ILGenerator il, System\&.Type type)"
+.br
+.ti -1c
+.RI "static void \fBEmitLoadMethodInfo\fP (ILGenerator il, MethodInfo methodInfo)"
+.br
+.ti -1c
+.RI "static void \fBEmitCreateDelegateInstance\fP (ILGenerator il, System\&.Type delegateType, MethodInfo methodInfo)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file EmitUtil\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static System\&.Type NHibernate\&.Bytecode\&.EmitUtil\&.DefineDelegateType (stringfullTypeName, ModuleBuildermoduleBuilder, System\&.TypereturnType, System\&.Type[]parameterTypes)\fC [static]\fP"
+
+.PP
+Defines a new delegate type\&. 
+.PP
+Definition at line 151 of file EmitUtil\&.cs\&.
+.SS "static void NHibernate\&.Bytecode\&.EmitUtil\&.EmitFastInt (ILGeneratoril, intvalue)\fC [static]\fP"
+
+.PP
+Emits an \fCldc\&.i4\fP opcode using the fastest available opcode choice\&. 
+.PP
+Definition at line 17 of file EmitUtil\&.cs\&.
+.SS "static void NHibernate\&.Bytecode\&.EmitUtil\&.PreparePropertyForSet (ILGeneratoril, System\&.TypepropertyType)\fC [static]\fP"
+
+.PP
+Emits IL to unbox a value type and if null, create a new instance of the value type\&. This does not work if the value type doesn't have a default constructor - we delegate that to the ISetter\&. 
+.PP
+Definition at line 103 of file EmitUtil\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

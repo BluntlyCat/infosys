@@ -1,0 +1,28 @@
+var namespace_n_hibernate_1_1_cache =
+[
+    [ "Access", "namespace_n_hibernate_1_1_cache_1_1_access.html", "namespace_n_hibernate_1_1_cache_1_1_access" ],
+    [ "Entry", "namespace_n_hibernate_1_1_cache_1_1_entry.html", "namespace_n_hibernate_1_1_cache_1_1_entry" ],
+    [ "CachedItem", "class_n_hibernate_1_1_cache_1_1_cached_item.html", "class_n_hibernate_1_1_cache_1_1_cached_item" ],
+    [ "CacheException", "class_n_hibernate_1_1_cache_1_1_cache_exception.html", "class_n_hibernate_1_1_cache_1_1_cache_exception" ],
+    [ "CacheKey", "class_n_hibernate_1_1_cache_1_1_cache_key.html", "class_n_hibernate_1_1_cache_1_1_cache_key" ],
+    [ "CacheLock", "class_n_hibernate_1_1_cache_1_1_cache_lock.html", "class_n_hibernate_1_1_cache_1_1_cache_lock" ],
+    [ "FakeCache", "class_n_hibernate_1_1_cache_1_1_fake_cache.html", "class_n_hibernate_1_1_cache_1_1_fake_cache" ],
+    [ "FilterKey", "class_n_hibernate_1_1_cache_1_1_filter_key.html", "class_n_hibernate_1_1_cache_1_1_filter_key" ],
+    [ "HashtableCache", "class_n_hibernate_1_1_cache_1_1_hashtable_cache.html", "class_n_hibernate_1_1_cache_1_1_hashtable_cache" ],
+    [ "HashtableCacheProvider", "class_n_hibernate_1_1_cache_1_1_hashtable_cache_provider.html", "class_n_hibernate_1_1_cache_1_1_hashtable_cache_provider" ],
+    [ "ICache", "interface_n_hibernate_1_1_cache_1_1_i_cache.html", "interface_n_hibernate_1_1_cache_1_1_i_cache" ],
+    [ "ICacheConcurrencyStrategy", "interface_n_hibernate_1_1_cache_1_1_i_cache_concurrency_strategy.html", "interface_n_hibernate_1_1_cache_1_1_i_cache_concurrency_strategy" ],
+    [ "ICacheProvider", "interface_n_hibernate_1_1_cache_1_1_i_cache_provider.html", "interface_n_hibernate_1_1_cache_1_1_i_cache_provider" ],
+    [ "IOptimisticCacheSource", "interface_n_hibernate_1_1_cache_1_1_i_optimistic_cache_source.html", "interface_n_hibernate_1_1_cache_1_1_i_optimistic_cache_source" ],
+    [ "IQueryCache", "interface_n_hibernate_1_1_cache_1_1_i_query_cache.html", "interface_n_hibernate_1_1_cache_1_1_i_query_cache" ],
+    [ "IQueryCacheFactory", "interface_n_hibernate_1_1_cache_1_1_i_query_cache_factory.html", "interface_n_hibernate_1_1_cache_1_1_i_query_cache_factory" ],
+    [ "NoCacheProvider", "class_n_hibernate_1_1_cache_1_1_no_cache_provider.html", "class_n_hibernate_1_1_cache_1_1_no_cache_provider" ],
+    [ "NonstrictReadWriteCache", "class_n_hibernate_1_1_cache_1_1_nonstrict_read_write_cache.html", "class_n_hibernate_1_1_cache_1_1_nonstrict_read_write_cache" ],
+    [ "QueryKey", "class_n_hibernate_1_1_cache_1_1_query_key.html", "class_n_hibernate_1_1_cache_1_1_query_key" ],
+    [ "ReadOnlyCache", "class_n_hibernate_1_1_cache_1_1_read_only_cache.html", "class_n_hibernate_1_1_cache_1_1_read_only_cache" ],
+    [ "ReadWriteCache", "class_n_hibernate_1_1_cache_1_1_read_write_cache.html", "class_n_hibernate_1_1_cache_1_1_read_write_cache" ],
+    [ "StandardQueryCache", "class_n_hibernate_1_1_cache_1_1_standard_query_cache.html", "class_n_hibernate_1_1_cache_1_1_standard_query_cache" ],
+    [ "StandardQueryCacheFactory", "class_n_hibernate_1_1_cache_1_1_standard_query_cache_factory.html", "class_n_hibernate_1_1_cache_1_1_standard_query_cache_factory" ],
+    [ "Timestamper", "class_n_hibernate_1_1_cache_1_1_timestamper.html", "class_n_hibernate_1_1_cache_1_1_timestamper" ],
+    [ "UpdateTimestampsCache", "class_n_hibernate_1_1_cache_1_1_update_timestamps_cache.html", "class_n_hibernate_1_1_cache_1_1_update_timestamps_cache" ]
+];

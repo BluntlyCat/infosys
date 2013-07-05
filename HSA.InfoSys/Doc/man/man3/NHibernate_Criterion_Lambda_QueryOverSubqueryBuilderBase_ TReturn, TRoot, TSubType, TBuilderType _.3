@@ -1,0 +1,138 @@
+.TH "NHibernate.Criterion.Lambda.QueryOverSubqueryBuilderBase< TReturn, TRoot, TSubType, TBuilderType >" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.Lambda.QueryOverSubqueryBuilderBase< TReturn, TRoot, TSubType, TBuilderType > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Criterion\&.Lambda\&.IQueryOverSubqueryBuilder< TRoot, TSubType >\fP, and \fBNHibernate\&.Criterion\&.Lambda\&.QueryOverSubqueryBuilder< TRoot, TSubType >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "TReturn \fBWhereExists< U >\fP (\fBQueryOver\fP< U > detachedQuery)"
+.br
+.RI "\fIAdd an Exists subquery criterion \fP"
+.ti -1c
+.RI "TReturn \fBWhereNotExists< U >\fP (\fBQueryOver\fP< U > detachedQuery)"
+.br
+.RI "\fIAdd a NotExists subquery criterion \fP"
+.ti -1c
+.RI "TReturn \fBWhere\fP (\fBExpression\fP< Func< TSubType, bool >> expression)"
+.br
+.RI "\fISubquery expression in the format \&.Where(t => t\&.Property [==, !=, >, etc\&.] detachedQueryOver\&.As<propertyType>()) \fP"
+.ti -1c
+.RI "TReturn \fBWhere\fP (\fBExpression\fP< Func< bool >> expression)"
+.br
+.RI "\fISubquery expression in the format \&.Where(() => alias\&.Property [==, !=, >, etc\&.] detachedQueryOver\&.As<propertyType>()) \fP"
+.ti -1c
+.RI "TReturn \fBWhereAll\fP (\fBExpression\fP< Func< TSubType, bool >> expression)"
+.br
+.RI "\fISubquery expression in the format \&.WhereAll(t => t\&.Property [==, !=, >, etc\&.] detachedQueryOver\&.As<propertyType>()) \fP"
+.ti -1c
+.RI "TReturn \fBWhereAll\fP (\fBExpression\fP< Func< bool >> expression)"
+.br
+.RI "\fISubquery expression in the format \&.WhereAll(() => alias\&.Property [==, !=, >, etc\&.] detachedQueryOver\&.As<propertyType>()) \fP"
+.ti -1c
+.RI "TReturn \fBWhereSome\fP (\fBExpression\fP< Func< TSubType, bool >> expression)"
+.br
+.RI "\fISubquery expression in the format \&.WhereSome(t => t\&.Property [==, !=, >, etc\&.] detachedQueryOver\&.As<propertyType>()) \fP"
+.ti -1c
+.RI "TReturn \fBWhereSome\fP (\fBExpression\fP< Func< bool >> expression)"
+.br
+.RI "\fISubquery expression in the format \&.WhereSome(() => alias\&.Property [==, !=, >, etc\&.] detachedQueryOver\&.As<propertyType>()) \fP"
+.ti -1c
+.RI "TBuilderType \fBWhereProperty\fP (\fBExpression\fP< Func< TSubType, object >> expression)"
+.br
+.ti -1c
+.RI "TBuilderType \fBWhereProperty\fP (\fBExpression\fP< Func< object >> expression)"
+.br
+.ti -1c
+.RI "TBuilderType \fBWhereValue\fP (object value)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQueryOverSubqueryBuilderBase\fP (TReturn root)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "TReturn \fBroot\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBType Constraints\fP
+.TP
+\fITReturn\fP : \fI\fBIQueryOver\fP\fP
+.TP
+\fITReturn\fP : \fITRoot\fP
+.TP
+\fITReturn\fP : \fITSubType\fP
+.TP
+\fITBuilderType\fP : \fI\fBQueryOverSubqueryPropertyBuilderBase\fP\fP
+.TP
+\fITBuilderType\fP : \fInew()\fP
+.PP
+Definition at line 28 of file QueryOverSubqueryBuilder\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "TReturn NHibernate\&.Criterion\&.Lambda\&.QueryOverSubqueryBuilderBase< TReturn, TRoot, TSubType, TBuilderType >\&.Where (\fBExpression\fP< Func< TSubType, bool >>expression)"
+
+.PP
+Subquery expression in the format \&.Where(t => t\&.Property [==, !=, >, etc\&.] detachedQueryOver\&.As<propertyType>()) 
+.PP
+Definition at line 62 of file QueryOverSubqueryBuilder\&.cs\&.
+.SS "TReturn NHibernate\&.Criterion\&.Lambda\&.QueryOverSubqueryBuilderBase< TReturn, TRoot, TSubType, TBuilderType >\&.Where (\fBExpression\fP< Func< bool >>expression)"
+
+.PP
+Subquery expression in the format \&.Where(() => alias\&.Property [==, !=, >, etc\&.] detachedQueryOver\&.As<propertyType>()) 
+.PP
+Definition at line 73 of file QueryOverSubqueryBuilder\&.cs\&.
+.SS "TReturn NHibernate\&.Criterion\&.Lambda\&.QueryOverSubqueryBuilderBase< TReturn, TRoot, TSubType, TBuilderType >\&.WhereAll (\fBExpression\fP< Func< TSubType, bool >>expression)"
+
+.PP
+Subquery expression in the format \&.WhereAll(t => t\&.Property [==, !=, >, etc\&.] detachedQueryOver\&.As<propertyType>()) 
+.PP
+Definition at line 84 of file QueryOverSubqueryBuilder\&.cs\&.
+.SS "TReturn NHibernate\&.Criterion\&.Lambda\&.QueryOverSubqueryBuilderBase< TReturn, TRoot, TSubType, TBuilderType >\&.WhereAll (\fBExpression\fP< Func< bool >>expression)"
+
+.PP
+Subquery expression in the format \&.WhereAll(() => alias\&.Property [==, !=, >, etc\&.] detachedQueryOver\&.As<propertyType>()) 
+.PP
+Definition at line 95 of file QueryOverSubqueryBuilder\&.cs\&.
+.SS "TReturn NHibernate\&.Criterion\&.Lambda\&.QueryOverSubqueryBuilderBase< TReturn, TRoot, TSubType, TBuilderType >\&.WhereExists< U > (\fBQueryOver\fP< U >detachedQuery)"
+
+.PP
+Add an Exists subquery criterion 
+.PP
+Definition at line 43 of file QueryOverSubqueryBuilder\&.cs\&.
+.SS "TReturn NHibernate\&.Criterion\&.Lambda\&.QueryOverSubqueryBuilderBase< TReturn, TRoot, TSubType, TBuilderType >\&.WhereNotExists< U > (\fBQueryOver\fP< U >detachedQuery)"
+
+.PP
+Add a NotExists subquery criterion 
+.PP
+Definition at line 52 of file QueryOverSubqueryBuilder\&.cs\&.
+.SS "TReturn NHibernate\&.Criterion\&.Lambda\&.QueryOverSubqueryBuilderBase< TReturn, TRoot, TSubType, TBuilderType >\&.WhereSome (\fBExpression\fP< Func< TSubType, bool >>expression)"
+
+.PP
+Subquery expression in the format \&.WhereSome(t => t\&.Property [==, !=, >, etc\&.] detachedQueryOver\&.As<propertyType>()) 
+.PP
+Definition at line 106 of file QueryOverSubqueryBuilder\&.cs\&.
+.SS "TReturn NHibernate\&.Criterion\&.Lambda\&.QueryOverSubqueryBuilderBase< TReturn, TRoot, TSubType, TBuilderType >\&.WhereSome (\fBExpression\fP< Func< bool >>expression)"
+
+.PP
+Subquery expression in the format \&.WhereSome(() => alias\&.Property [==, !=, >, etc\&.] detachedQueryOver\&.As<propertyType>()) 
+.PP
+Definition at line 117 of file QueryOverSubqueryBuilder\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

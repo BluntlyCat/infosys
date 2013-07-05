@@ -1,0 +1,76 @@
+.TH "NHibernate.Proxy.IProxyValidator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Proxy.IProxyValidator \- 
+.PP
+Proxeability validator\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Proxy\&.DynProxyTypeValidator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "ICollection< string > \fBValidateType\fP (System\&.Type type)"
+.br
+.RI "\fIValidates whether \fItype\fP  can be specified as the base class (or an interface) for a dynamically-generated proxy\&. \fP"
+.ti -1c
+.RI "bool \fBIsProxeable\fP (MethodInfo method)"
+.br
+.RI "\fIValidate if a single method can be intercepted by proxy\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Proxeability validator\&. 
+
+
+.PP
+Definition at line 9 of file IProxyValidator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool NHibernate\&.Proxy\&.IProxyValidator\&.IsProxeable (MethodInfomethod)"
+
+.PP
+Validate if a single method can be intercepted by proxy\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImethod\fP The given method to check\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+if the method can be intercepted by proxy\&.  otherwise\&. 
+.RE
+.PP
+.PP
+This method can be used internally by the \fBValidateType\fP and is used by \fBNHibernate\&.Tuple\&.Entity\&.PocoEntityTuplizer\fP to log errors when a property accessor can't be intercepted by proxy\&. The validation of property accessors is fairly enough if you ecampsulate each property\&. 
+.PP
+Implemented in \fBNHibernate\&.Proxy\&.DynProxyTypeValidator\fP\&.
+.SS "ICollection<string> NHibernate\&.Proxy\&.IProxyValidator\&.ValidateType (System\&.Typetype)"
+
+.PP
+Validates whether \fItype\fP  can be specified as the base class (or an interface) for a dynamically-generated proxy\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The type to validate\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A collection of errors messages, if any, or  if none were found\&. 
+.RE
+.PP
+.PP
+When the configuration property 'use_proxy_validator' is set to true(default), the result of this method is used to throw a detailed exception about the proxeability of the given \fItype\fP \&. 
+.PP
+Implemented in \fBNHibernate\&.Proxy\&.DynProxyTypeValidator\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

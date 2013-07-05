@@ -1,0 +1,143 @@
+.TH "log4net.Appender.TelnetAppender" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.TelnetAppender \- 
+.PP
+\fBAppender\fP that allows clients to connect via Telnet to receive log messages  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBSocketHandler\fP"
+.br
+.RI "\fIHelper class to manage connected clients \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTelnetAppender\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.ti -1c
+.RI "override void \fBActivateOptions\fP ()"
+.br
+.RI "\fIInitialize the appender based on the options set\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBOnClose\fP ()"
+.br
+.RI "\fIOverrides the parent method to close the socket handler \fP"
+.ti -1c
+.RI "override void \fBAppend\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIWrites the logging event to each connected client\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBPort\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the TCP port number on which this \fBTelnetAppender\fP will listen for connections\&. \fP"
+.ti -1c
+.RI "override bool \fBRequiresLayout\fP\fC [get]\fP"
+.br
+.RI "\fIThis appender requires a \fBLayout\fP to be set\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBAppender\fP that allows clients to connect via Telnet to receive log messages 
+
+The \fBTelnetAppender\fP accepts socket connections and streams logging messages back to the client\&. The output is provided in a telnet-friendly way so that a log can be monitored over a TCP/IP socket\&. This allows simple remote monitoring of application logging\&. 
+.PP
+The default \fBPort\fP is 23 (the telnet port)\&. 
+.PP
+<author>Keith Long</author> <author>Nicko Cadell</author> 
+.PP
+Definition at line 52 of file TelnetAppender\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.TelnetAppender\&.TelnetAppender ()"
+
+.PP
+Default constructor Default constructor 
+.PP
+Definition at line 67 of file TelnetAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Appender\&.TelnetAppender\&.ActivateOptions ()\fC [virtual]\fP"
+
+.PP
+Initialize the appender based on the options set\&. This is part of the IOptionHandler delayed object activation scheme\&. The \fBActivateOptions\fP method must be called on this object after the configuration properties have been set\&. Until \fBActivateOptions\fP is called this object is in an undefined state and must not be used\&. 
+.PP
+If any of the configuration properties are modified then \fBActivateOptions\fP must be called again\&. 
+.PP
+Create the socket handler and wait for connections 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 177 of file TelnetAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.TelnetAppender\&.Append (\fBLoggingEvent\fPloggingEvent)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Writes the logging event to each connected client\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP The event to log\&.
+.RE
+.PP
+.PP
+Writes the logging event to each connected client\&. 
+.PP
+Implements \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 201 of file TelnetAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.TelnetAppender\&.OnClose ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Overrides the parent method to close the socket handler Closes all the outstanding connections\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 133 of file TelnetAppender\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int log4net\&.Appender\&.TelnetAppender\&.Port\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the TCP port number on which this \fBTelnetAppender\fP will listen for connections\&. An integer value in the range IPEndPoint\&.MinPort to IPEndPoint\&.MaxPort indicating the TCP port number on which this \fBTelnetAppender\fP will listen for connections\&. 
+.PP
+The default value is 23 (the telnet port)\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentOutOfRangeException\fP The value specified is less than IPEndPoint\&.MinPort or greater than IPEndPoint\&.MaxPort\&.
+.RE
+.PP
+
+.PP
+Definition at line 101 of file TelnetAppender\&.cs\&.
+.SS "override bool log4net\&.Appender\&.TelnetAppender\&.RequiresLayout\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+This appender requires a \fBLayout\fP to be set\&. \fCtrue\fP
+.PP
+This appender requires a \fBLayout\fP to be set\&. 
+.PP
+Definition at line 154 of file TelnetAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

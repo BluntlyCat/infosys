@@ -1,0 +1,96 @@
+.TH "NHibernate.Tuple.EntityModeToTuplizerMapping" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Tuple.EntityModeToTuplizerMapping \- 
+.PP
+Centralizes handling of \fBEntityMode\fP to \fBITuplizer\fP mappings\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by NHibernate\&.Test\&.NHSpecificTest\&.EntityModeToTuplizerPerf\&.Fixture\&.TargetClazz, \fBNHibernate\&.Tuple\&.Component\&.ComponentEntityModeToTuplizerMapping\fP, and \fBNHibernate\&.Tuple\&.Entity\&.EntityEntityModeToTuplizerMapping\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBEntityMode\fP \fBGuessEntityMode\fP (object obj)"
+.br
+.RI "\fIGiven a supposed instance of an entity/component, guess its entity mode\&. \fP"
+.ti -1c
+.RI "virtual \fBITuplizer\fP \fBGetTuplizerOrNull\fP (\fBEntityMode\fP entityMode)"
+.br
+.RI "\fILocate the contained tuplizer responsible for the given entity-mode\&. If no such tuplizer is defined on this mapping, then return null\&. \fP"
+.ti -1c
+.RI "virtual \fBITuplizer\fP \fBGetTuplizer\fP (\fBEntityMode\fP entityMode)"
+.br
+.RI "\fILocate the tuplizer contained within this mapping which is responsible for the given entity-mode\&. If no such tuplizer is defined on this mapping, then an exception is thrown\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Centralizes handling of \fBEntityMode\fP to \fBITuplizer\fP mappings\&. 
+
+
+.PP
+Definition at line 9 of file EntityModeToTuplizerMapping\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBITuplizer\fP NHibernate\&.Tuple\&.EntityModeToTuplizerMapping\&.GetTuplizer (\fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Locate the tuplizer contained within this mapping which is responsible for the given entity-mode\&. If no such tuplizer is defined on this mapping, then an exception is thrown\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityMode\fP The entity-mode for which the caller wants a tuplizer\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The tuplizer\&. 
+.RE
+.PP
+<throws> \fBHibernateException\fP Unable to locate the requested tuplizer\&. </throws> 
+.PP
+Definition at line 59 of file EntityModeToTuplizerMapping\&.cs\&.
+.SS "virtual \fBITuplizer\fP NHibernate\&.Tuple\&.EntityModeToTuplizerMapping\&.GetTuplizerOrNull (\fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Locate the contained tuplizer responsible for the given entity-mode\&. If no such tuplizer is defined on this mapping, then return null\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityMode\fP The entity-mode for which the caller wants a tuplizer\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The tuplizer, or null if not found\&. 
+.RE
+.PP
+
+.PP
+Definition at line 42 of file EntityModeToTuplizerMapping\&.cs\&.
+.SS "virtual \fBEntityMode\fP NHibernate\&.Tuple\&.EntityModeToTuplizerMapping\&.GuessEntityMode (objectobj)\fC [virtual]\fP"
+
+.PP
+Given a supposed instance of an entity/component, guess its entity mode\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP The supposed instance of the entity/component\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The guessed entity mode\&. 
+.RE
+.PP
+
+.PP
+Definition at line 23 of file EntityModeToTuplizerMapping\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

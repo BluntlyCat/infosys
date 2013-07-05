@@ -1,0 +1,286 @@
+.TH "NHibernate.Engine.CascadingAction" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.CascadingAction \- 
+.PP
+A session action that may be cascaded from parent entity to its children  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by NHibernate\&.Engine\&.CascadingAction\&.DeleteCascadingAction, NHibernate\&.Engine\&.CascadingAction\&.EvictCascadingAction, NHibernate\&.Engine\&.CascadingAction\&.LockCascadingAction, NHibernate\&.Engine\&.CascadingAction\&.MergeCascadingAction, NHibernate\&.Engine\&.CascadingAction\&.PersistCascadingAction, NHibernate\&.Engine\&.CascadingAction\&.PersistOnFlushCascadingAction, NHibernate\&.Engine\&.CascadingAction\&.RefreshCascadingAction, NHibernate\&.Engine\&.CascadingAction\&.ReplicateCascadingAction, and NHibernate\&.Engine\&.CascadingAction\&.SaveUpdateCascadingAction\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract void \fBCascade\fP (\fBIEventSource\fP session, object child, string entityName, object anything, bool isCascadeDeleteEnabled)"
+.br
+.RI "\fI\fBCascade\fP the action to the child object\&. \fP"
+.ti -1c
+.RI "abstract IEnumerable \fBGetCascadableChildrenIterator\fP (\fBIEventSource\fP session, \fBCollectionType\fP collectionType, object collection)"
+.br
+.RI "\fIGiven a collection, get an iterator of the children upon which the current cascading action should be visited\&. \fP"
+.ti -1c
+.RI "virtual void \fBNoCascade\fP (\fBIEventSource\fP session, object child, object parent, \fBIEntityPersister\fP persister, int propertyIndex)"
+.br
+.RI "\fICalled (in the case of \fBRequiresNoCascadeChecking\fP returning true) to validate that no cascade on the given property is considered a valid semantic\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static IEnumerable \fBGetLoadedElementsIterator\fP (\fBISessionImplementor\fP session, \fBCollectionType\fP collectionType, object collection)"
+.br
+.RI "\fIIterate just the elements of the collection that are already there\&. Don't load any new elements from the database\&. \fP"
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly \fBCascadingAction\fP \fBDelete\fP = new DeleteCascadingAction()"
+.br
+.RI "\fI
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBISession\&.Delete(object)\fP
+.PP
+.RE
+.PP
+\fP"
+.ti -1c
+.RI "static readonly \fBCascadingAction\fP \fBLock\fP = new LockCascadingAction()"
+.br
+.RI "\fI
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBISession\&.Lock(object, LockMode)\fP
+.PP
+.RE
+.PP
+\fP"
+.ti -1c
+.RI "static readonly \fBCascadingAction\fP \fBRefresh\fP = new RefreshCascadingAction()"
+.br
+.RI "\fI
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBISession\&.Refresh(object)\fP
+.PP
+.RE
+.PP
+\fP"
+.ti -1c
+.RI "static readonly \fBCascadingAction\fP \fBEvict\fP = new EvictCascadingAction()"
+.br
+.RI "\fI
+.PP
+\fBSee Also:\fP
+.RS 4
+ISession\&.Evict(object)
+.PP
+.RE
+.PP
+\fP"
+.ti -1c
+.RI "static readonly \fBCascadingAction\fP \fBSaveUpdate\fP = new SaveUpdateCascadingAction()"
+.br
+.RI "\fI
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBISession\&.SaveOrUpdate(object)\fP
+.PP
+.RE
+.PP
+\fP"
+.ti -1c
+.RI "static readonly \fBCascadingAction\fP \fBMerge\fP = new MergeCascadingAction()"
+.br
+.RI "\fI
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBISession\&.Merge(object)\fP
+.PP
+.RE
+.PP
+\fP"
+.ti -1c
+.RI "static readonly \fBCascadingAction\fP \fBPersist\fP = new PersistCascadingAction()"
+.br
+.RI "\fI
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBISession\&.Persist(object)\fP
+.PP
+.RE
+.PP
+\fP"
+.ti -1c
+.RI "static readonly \fBCascadingAction\fP \fBPersistOnFlush\fP = new PersistOnFlushCascadingAction()"
+.br
+.RI "\fIExecute persist during flush time \fP"
+.ti -1c
+.RI "static readonly \fBCascadingAction\fP \fBReplicate\fP = new ReplicateCascadingAction()"
+.br
+.RI "\fI
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBISession\&.Replicate(object, ReplicationMode)\fP
+.PP
+.RE
+.PP
+\fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "abstract bool \fBDeleteOrphans\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this action potentially extrapolate to orphan deletes? \fP"
+.ti -1c
+.RI "virtual bool \fBRequiresNoCascadeChecking\fP\fC [get]\fP"
+.br
+.RI "\fIDoes the specified cascading action require verification of no cascade validity? \fP"
+.ti -1c
+.RI "virtual bool \fBPerformOnLazyProperty\fP\fC [get]\fP"
+.br
+.RI "\fIShould this action be performed (or noCascade consulted) in the case of lazy properties\&.\fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A session action that may be cascaded from parent entity to its children 
+
+
+.PP
+Definition at line 15 of file CascadingAction\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract void NHibernate\&.Engine\&.CascadingAction\&.Cascade (\fBIEventSource\fPsession, objectchild, stringentityName, objectanything, boolisCascadeDeleteEnabled)\fC [pure virtual]\fP"
+
+.PP
+\fBCascade\fP the action to the child object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session within which the cascade is occurring\&. 
+.br
+\fIchild\fP The child to which cascading should be performed\&. 
+.br
+\fIentityName\fP The child's entity name 
+.br
+\fIanything\fP Typically some form of cascade-local cache which is specific to each \fBCascadingAction\fP type 
+.br
+\fIisCascadeDeleteEnabled\fP Are cascading deletes enabled\&. 
+.RE
+.PP
+
+.SS "abstract IEnumerable NHibernate\&.Engine\&.CascadingAction\&.GetCascadableChildrenIterator (\fBIEventSource\fPsession, \fBCollectionType\fPcollectionType, objectcollection)\fC [pure virtual]\fP"
+
+.PP
+Given a collection, get an iterator of the children upon which the current cascading action should be visited\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session within which the cascade is occurring\&. 
+.br
+\fIcollectionType\fP The mapping type of the collection\&. 
+.br
+\fIcollection\fP The collection instance\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The children iterator\&. 
+.RE
+.PP
+
+.SS "static IEnumerable NHibernate\&.Engine\&.CascadingAction\&.GetLoadedElementsIterator (\fBISessionImplementor\fPsession, \fBCollectionType\fPcollectionType, objectcollection)\fC [static]\fP"
+
+.PP
+Iterate just the elements of the collection that are already there\&. Don't load any new elements from the database\&. 
+.PP
+Definition at line 91 of file CascadingAction\&.cs\&.
+.SS "virtual void NHibernate\&.Engine\&.CascadingAction\&.NoCascade (\fBIEventSource\fPsession, objectchild, objectparent, \fBIEntityPersister\fPpersister, intpropertyIndex)\fC [virtual]\fP"
+
+.PP
+Called (in the case of \fBRequiresNoCascadeChecking\fP returning true) to validate that no cascade on the given property is considered a valid semantic\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session within which the cascade is occurring\&. 
+.br
+\fIchild\fP The property value 
+.br
+\fIparent\fP The property value owner 
+.br
+\fIpersister\fP The entity persister for the owner 
+.br
+\fIpropertyIndex\fP The index of the property within the owner\&. 
+.RE
+.PP
+
+.PP
+Definition at line 60 of file CascadingAction\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly \fBCascadingAction\fP NHibernate\&.Engine\&.CascadingAction\&.PersistOnFlush = new PersistOnFlushCascadingAction()\fC [static]\fP"
+
+.PP
+Execute persist during flush time 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBISession\&.Persist(object)\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 139 of file CascadingAction\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "abstract bool NHibernate\&.Engine\&.CascadingAction\&.DeleteOrphans\fC [get]\fP"
+
+.PP
+Does this action potentially extrapolate to orphan deletes? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if this action can lead to deletions of orphans\&. 
+.RE
+.PP
+
+.PP
+Definition at line 41 of file CascadingAction\&.cs\&.
+.SS "virtual bool NHibernate\&.Engine\&.CascadingAction\&.PerformOnLazyProperty\fC [get]\fP"
+
+.PP
+Should this action be performed (or noCascade consulted) in the case of lazy properties\&.
+.PP
+Definition at line 66 of file CascadingAction\&.cs\&.
+.SS "virtual bool NHibernate\&.Engine\&.CascadingAction\&.RequiresNoCascadeChecking\fC [get]\fP"
+
+.PP
+Does the specified cascading action require verification of no cascade validity? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if this action requires no-cascade verification; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 47 of file CascadingAction\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

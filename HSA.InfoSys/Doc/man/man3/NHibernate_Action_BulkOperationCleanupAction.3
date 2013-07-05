@@ -1,0 +1,85 @@
+.TH "NHibernate.Action.BulkOperationCleanupAction" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Action.BulkOperationCleanupAction \- 
+.PP
+Implementation of \fBBulkOperationCleanupAction\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Action\&.IExecutable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBulkOperationCleanupAction\fP (\fBISessionImplementor\fP session, \fBIQueryable\fP[] affectedQueryables)"
+.br
+.ti -1c
+.RI "\fBBulkOperationCleanupAction\fP (\fBISessionImplementor\fP session, ISet< string > querySpaces)"
+.br
+.RI "\fICreate an action that will evict collection and entity regions based on queryspaces (table names)\&. \fP"
+.ti -1c
+.RI "void \fBBeforeExecutions\fP ()"
+.br
+.RI "\fICalled before executing any actions\fP"
+.ti -1c
+.RI "void \fBExecute\fP ()"
+.br
+.RI "\fIExecute this action\fP"
+.ti -1c
+.RI "virtual void \fBInit\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string[] \fBPropertySpaces\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBBeforeTransactionCompletionProcessDelegate\fP \fBBeforeTransactionCompletionProcess\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBAfterTransactionCompletionProcessDelegate\fP \fBAfterTransactionCompletionProcess\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Implementation of \fBBulkOperationCleanupAction\fP\&. 
+
+
+.PP
+Definition at line 13 of file BulkOperationCleanupAction\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Action\&.BulkOperationCleanupAction\&.BulkOperationCleanupAction (\fBISessionImplementor\fPsession, ISet< string >querySpaces)"
+
+.PP
+Create an action that will evict collection and entity regions based on queryspaces (table names)\&. 
+.PP
+Definition at line 46 of file BulkOperationCleanupAction\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Action\&.BulkOperationCleanupAction\&.BeforeExecutions ()"
+
+.PP
+Called before executing any actions
+.PP
+Implements \fBNHibernate\&.Action\&.IExecutable\fP\&.
+.PP
+Definition at line 104 of file BulkOperationCleanupAction\&.cs\&.
+.SS "void NHibernate\&.Action\&.BulkOperationCleanupAction\&.Execute ()"
+
+.PP
+Execute this action
+.PP
+Implements \fBNHibernate\&.Action\&.IExecutable\fP\&.
+.PP
+Definition at line 109 of file BulkOperationCleanupAction\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

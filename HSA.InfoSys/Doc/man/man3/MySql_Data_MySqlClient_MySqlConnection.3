@@ -1,0 +1,256 @@
+.TH "MySql.Data.MySqlClient.MySqlConnection" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MySql.Data.MySqlClient.MySqlConnection \- 
+.PP
+ 
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits DbConnection, and ICloneable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMySqlConnection\fP ()"
+.br
+.ti -1c
+.RI "\fBMySqlConnection\fP (string connectionString)"
+.br
+.ti -1c
+.RI "override void \fBEnlistTransaction\fP (Transaction transaction)"
+.br
+.RI "\fIEnlists in the specified transaction\&. \fP"
+.ti -1c
+.RI "new \fBMySqlTransaction\fP \fBBeginTransaction\fP ()"
+.br
+.ti -1c
+.RI "new \fBMySqlTransaction\fP \fBBeginTransaction\fP (IsolationLevel iso)"
+.br
+.ti -1c
+.RI "override void \fBChangeDatabase\fP (string databaseName)"
+.br
+.ti -1c
+.RI "bool \fBPing\fP ()"
+.br
+.RI "\fIPing \fP"
+.ti -1c
+.RI "override void \fBOpen\fP ()"
+.br
+.ti -1c
+.RI "new \fBMySqlCommand\fP \fBCreateCommand\fP ()"
+.br
+.ti -1c
+.RI "\fBMySqlConnection\fP \fBClone\fP ()"
+.br
+.RI "\fICreates a new \fBMySqlConnection\fP object with the exact same ConnectionString value \fP"
+.ti -1c
+.RI "override void \fBClose\fP ()"
+.br
+.ti -1c
+.RI "void \fBCancelQuery\fP (int timeout)"
+.br
+.ti -1c
+.RI "override DataTable \fBGetSchema\fP ()"
+.br
+.RI "\fIReturns schema information for the data source of this DbConnection\&. \fP"
+.ti -1c
+.RI "override DataTable \fBGetSchema\fP (string collectionName)"
+.br
+.RI "\fIReturns schema information for the data source of this DbConnection using the specified string for the schema name\&. \fP"
+.ti -1c
+.RI "override DataTable \fBGetSchema\fP (string collectionName, string[] restrictionValues)"
+.br
+.RI "\fIReturns schema information for the data source of this DbConnection using the specified string for the schema name and the specified string array for the restriction values\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBClearPool\fP (\fBMySqlConnection\fP connection)"
+.br
+.ti -1c
+.RI "static void \fBClearAllPools\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBDispose\fP (bool disposing)"
+.br
+.ti -1c
+.RI "override DbTransaction \fBBeginDbTransaction\fP (IsolationLevel isolationLevel)"
+.br
+.ti -1c
+.RI "override DbCommand \fBCreateDbCommand\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBServerThread\fP\fC [get]\fP"
+.br
+.RI "\fIReturns the id of the server thread this connection is executing on \fP"
+.ti -1c
+.RI "override string \fBDataSource\fP\fC [get]\fP"
+.br
+.RI "\fIGets the name of the MySQL server to which to connect\&. \fP"
+.ti -1c
+.RI "override int \fBConnectionTimeout\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBDatabase\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBUseCompression\fP\fC [get]\fP"
+.br
+.RI "\fIIndicates if this connection should use compression when communicating with the server\&. \fP"
+.ti -1c
+.RI "override ConnectionState \fBState\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBServerVersion\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBConnectionString\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override DbProviderFactory \fBDbProviderFactory\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsPasswordExpired\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "\fBMySqlInfoMessageEventHandler\fP \fBInfoMessage\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+Definition at line 46 of file Connection\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBMySqlConnection\fP MySql\&.Data\&.MySqlClient\&.MySqlConnection\&.Clone ()"
+
+.PP
+Creates a new \fBMySqlConnection\fP object with the exact same ConnectionString value 
+.PP
+\fBReturns:\fP
+.RS 4
+A cloned \fBMySqlConnection\fP object
+.RE
+.PP
+
+.PP
+Definition at line 567 of file Connection\&.cs\&.
+.SS "override void MySql\&.Data\&.MySqlClient\&.MySqlConnection\&.EnlistTransaction (Transactiontransaction)"
+
+.PP
+Enlists in the specified transaction\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItransaction\fP A reference to an existing System\&.Transactions\&.Transaction in which to enlist\&. 
+.RE
+.PP
+
+.PP
+Definition at line 294 of file Connection\&.cs\&.
+.SS "override DataTable MySql\&.Data\&.MySqlClient\&.MySqlConnection\&.GetSchema ()"
+
+.PP
+Returns schema information for the data source of this DbConnection\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A DataTable that contains schema information\&. 
+.RE
+.PP
+
+.PP
+Definition at line 818 of file Connection\&.cs\&.
+.SS "override DataTable MySql\&.Data\&.MySqlClient\&.MySqlConnection\&.GetSchema (stringcollectionName)"
+
+.PP
+Returns schema information for the data source of this DbConnection using the specified string for the schema name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollectionName\fP Specifies the name of the schema to return\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A DataTable that contains schema information\&. 
+.RE
+.PP
+
+.PP
+Definition at line 829 of file Connection\&.cs\&.
+.SS "override DataTable MySql\&.Data\&.MySqlClient\&.MySqlConnection\&.GetSchema (stringcollectionName, string[]restrictionValues)"
+
+.PP
+Returns schema information for the data source of this DbConnection using the specified string for the schema name and the specified string array for the restriction values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollectionName\fP Specifies the name of the schema to return\&.
+.br
+\fIrestrictionValues\fP Specifies a set of restriction values for the requested schema\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A DataTable that contains schema information\&.
+.RE
+.PP
+
+.PP
+Definition at line 845 of file Connection\&.cs\&.
+.SS "bool MySql\&.Data\&.MySqlClient\&.MySqlConnection\&.Ping ()"
+
+.PP
+Ping 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 442 of file Connection\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string MySql\&.Data\&.MySqlClient\&.MySqlConnection\&.DataSource\fC [get]\fP"
+
+.PP
+Gets the name of the MySQL server to which to connect\&. 
+.PP
+Definition at line 170 of file Connection\&.cs\&.
+.SS "int MySql\&.Data\&.MySqlClient\&.MySqlConnection\&.ServerThread\fC [get]\fP"
+
+.PP
+Returns the id of the server thread this connection is executing on 
+.PP
+Definition at line 159 of file Connection\&.cs\&.
+.SS "bool MySql\&.Data\&.MySqlClient\&.MySqlConnection\&.UseCompression\fC [get]\fP"
+
+.PP
+Indicates if this connection should use compression when communicating with the server\&. 
+.PP
+Definition at line 199 of file Connection\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

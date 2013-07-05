@@ -1,0 +1,10 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1553_1_1_ms_s_q_l_1_1_snapshot_isolation_update_conflict_test =
+[
+    [ "AppliesTo", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1553_1_1_ms_s_q_l_1_1_snapshot_isolation_update_conflict_test.html#abff43336de309dde1610e7c8b10d6fe4", null ],
+    [ "Configure", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1553_1_1_ms_s_q_l_1_1_snapshot_isolation_update_conflict_test.html#a3223ae2a85b615bc6d5da6a48aaf69ef", null ],
+    [ "OnSetUp", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1553_1_1_ms_s_q_l_1_1_snapshot_isolation_update_conflict_test.html#a95016c4507d6fb4c894e062938f58463", null ],
+    [ "OnTearDown", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1553_1_1_ms_s_q_l_1_1_snapshot_isolation_update_conflict_test.html#ad67eb4a328a9508ce8b1bc267b24025f", null ],
+    [ "UpdateConflictDetectedByNH", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1553_1_1_ms_s_q_l_1_1_snapshot_isolation_update_conflict_test.html#a2ea3eae5a657f4762857ea7b0659bf2d", null ],
+    [ "UpdateConflictDetectedBySQLServer", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1553_1_1_ms_s_q_l_1_1_snapshot_isolation_update_conflict_test.html#aed6cd80db068246df7c06ed8a059ba14", null ],
+    [ "BugNumber", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1553_1_1_ms_s_q_l_1_1_snapshot_isolation_update_conflict_test.html#a0ddf3be8fc76235a5228117ad884fd49", null ]
+];

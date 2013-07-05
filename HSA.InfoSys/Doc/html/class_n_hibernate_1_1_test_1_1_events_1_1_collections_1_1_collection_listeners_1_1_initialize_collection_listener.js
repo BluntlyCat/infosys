@@ -1,0 +1,6 @@
+var class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_collection_listeners_1_1_initialize_collection_listener =
+[
+    [ "InitializeCollectionListener", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_collection_listeners_1_1_initialize_collection_listener.html#a146e95a7670941d1a06262b020a29ddb", null ],
+    [ "AddEvent", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_collection_listeners_1_1_initialize_collection_listener.html#a41e3a70e7360c5a6f43bf9d3d6211353", null ],
+    [ "OnInitializeCollection", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_collection_listeners_1_1_initialize_collection_listener.html#a6b9ee29fcf79bfe316e0430975361cea", null ]
+];

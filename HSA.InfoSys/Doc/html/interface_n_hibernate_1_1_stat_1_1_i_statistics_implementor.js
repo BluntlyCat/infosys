@@ -1,0 +1,28 @@
+var interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor =
+[
+    [ "CloseSession", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#abb6377ec99e14758e05ba12243bbae3b", null ],
+    [ "CloseStatement", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#a92f7580dd2c1be1ae40b655fa30b5135", null ],
+    [ "Connect", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#a997ff34024148d921447f3286801c921", null ],
+    [ "DeleteEntity", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#a1963f329af90b6f6466af1c1bf759d97", null ],
+    [ "EndTransaction", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#ab41f313625bf2fec429be5e5af19886c", null ],
+    [ "FetchCollection", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#a0d0ac27bef3d191965a6eac8a48251c7", null ],
+    [ "FetchEntity", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#ad8eb781c0a8b2b9b352160a0bc86cc60", null ],
+    [ "Flush", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#a145dfb459f2f208211de237a61b9b31e", null ],
+    [ "InsertEntity", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#a7d94f95c186a9b059be01f2ec04a88ef", null ],
+    [ "LoadCollection", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#ad4d06793ec4a5c5a6bdaa9d438d49dd9", null ],
+    [ "LoadEntity", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#a3c7ab1f87158affa7334b1c267dbafaa", null ],
+    [ "OpenSession", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#a01bf030e1e554a39abaf06600e6ab83c", null ],
+    [ "OptimisticFailure", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#acdd435089e11a18cceec56551550b3cb", null ],
+    [ "PrepareStatement", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#affb5cd89f5626f0ce4c637d9e8f050a3", null ],
+    [ "QueryCacheHit", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#a180c7621e41465dad3aad0a633004aca", null ],
+    [ "QueryCacheMiss", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#a455facb91ee83813174dfae29d734d82", null ],
+    [ "QueryCachePut", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#a39c0f751938720223e982f13491d3d38", null ],
+    [ "QueryExecuted", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#adf10c022f5de9c2b9b55761972408a34", null ],
+    [ "RecreateCollection", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#a4098418110eef54083cd3fce010e64d2", null ],
+    [ "RemoveCollection", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#a669b7fabed190c6c3c6f2f4322e25ee7", null ],
+    [ "SecondLevelCacheHit", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#ac80577bbb899d700e14ce46c013c53d6", null ],
+    [ "SecondLevelCacheMiss", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#a17e97272e11bebc020773275898abf50", null ],
+    [ "SecondLevelCachePut", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#a32175fafcf53d792268b0bcb11977942", null ],
+    [ "UpdateCollection", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#a765ec81b4a4362c3bf02204df5acb4ec", null ],
+    [ "UpdateEntity", "interface_n_hibernate_1_1_stat_1_1_i_statistics_implementor.html#a92f74b45ed7504d1077d9c6446ab1091", null ]
+];

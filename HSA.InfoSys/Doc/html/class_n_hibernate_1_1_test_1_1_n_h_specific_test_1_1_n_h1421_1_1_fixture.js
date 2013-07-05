@@ -1,0 +1,8 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1421_1_1_fixture =
+[
+    [ "WhenParameterListIsEmptyArrayUsingQueryThenDoesNotTrowsNullReferenceException", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1421_1_1_fixture.html#a29fd9139815e2f1df428857e9994825e", null ],
+    [ "WhenParameterListIsEmptyCollectionUsingQueryThenTrowsArgumentException", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1421_1_1_fixture.html#a5738bf384117760356bfe9fa7f3e4789", null ],
+    [ "WhenParameterListIsEmptyGenericCollectionUsingQueryThenDoesNotTrowsNullReferenceException", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1421_1_1_fixture.html#a270091ab7aecbdaac2a49e3cc3870868", null ],
+    [ "WhenParameterListIsEmptyUsingQueryThenDoesNotTrowsNullReferenceException", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1421_1_1_fixture.html#a0c64a9f9a006222be121f872510729ca", null ],
+    [ "WhenParameterListIsNullUsingQueryThenTrowsArgumentException", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1421_1_1_fixture.html#aa0403539303dd63d225d873584bde4a7", null ]
+];

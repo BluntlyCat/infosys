@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_criteria_query_on_component_collection_1_1_managed_employee =
+[
+    [ "Employee", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_criteria_query_on_component_collection_1_1_managed_employee.html#afb3e431a4ce019228ced9bd59d9f4e0d", null ],
+    [ "Position", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_criteria_query_on_component_collection_1_1_managed_employee.html#a6cb483f64cc891acb17b33487c3d00fa", null ]
+];

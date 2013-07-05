@@ -1,0 +1,132 @@
+.TH "NHibernate.Linq.Visitors.PossibleValueSet" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Linq.Visitors.PossibleValueSet \- 
+.PP
+Represents a possible set of values for a computation\&. For example, an expression may be null, it may be a non-null value, or we may even have a constant value that is known precisely\&. This class contains operators that know how to combine these values with each other\&. This class is intended to be used to provide static analysis of expressions before we hit the database\&. As an example for future improvement, we could handle ranges of numeric values\&. We can also improve this by handling operators such as the comparison operators and arithmetic operators\&. They are currently handled by naive null checks\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBContains\fP (object obj)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBAdd\fP (\fBPossibleValueSet\fP pvs, System\&.Type resultType)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBDivide\fP (\fBPossibleValueSet\fP pvs, System\&.Type resultType)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBModulo\fP (\fBPossibleValueSet\fP pvs, System\&.Type resultType)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBMultiply\fP (\fBPossibleValueSet\fP pvs, System\&.Type resultType)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBPower\fP (\fBPossibleValueSet\fP pvs, System\&.Type resultType)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBSubtract\fP (\fBPossibleValueSet\fP pvs, System\&.Type resultType)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBAnd\fP (\fBPossibleValueSet\fP pvs, System\&.Type resultType)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBOr\fP (\fBPossibleValueSet\fP pvs, System\&.Type resultType)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBExclusiveOr\fP (\fBPossibleValueSet\fP pvs, System\&.Type resultType)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBLeftShift\fP (\fBPossibleValueSet\fP pvs, System\&.Type resultType)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBRightShift\fP (\fBPossibleValueSet\fP pvs, System\&.Type resultType)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBAndAlso\fP (\fBPossibleValueSet\fP pvs)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBOrElse\fP (\fBPossibleValueSet\fP pvs)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBEqual\fP (\fBPossibleValueSet\fP pvs)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBNotEqual\fP (\fBPossibleValueSet\fP pvs)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBGreaterThanOrEqual\fP (\fBPossibleValueSet\fP pvs)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBGreaterThan\fP (\fBPossibleValueSet\fP pvs)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBLessThan\fP (\fBPossibleValueSet\fP pvs)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBLessThanOrEqual\fP (\fBPossibleValueSet\fP pvs)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBCoalesce\fP (\fBPossibleValueSet\fP pvs)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBNot\fP ()"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBBitwiseNot\fP (System\&.Type resultType)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBArrayLength\fP (System\&.Type resultType)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBConvert\fP (System\&.Type resultType)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBNegate\fP (System\&.Type resultType)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBUnaryPlus\fP (System\&.Type resultType)"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBIsNull\fP ()"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBIsNotNull\fP ()"
+.br
+.ti -1c
+.RI "\fBPossibleValueSet\fP \fBMemberAccess\fP (System\&.Type resultType)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBPossibleValueSet\fP \fBCreateNull\fP (System\&.Type expressionType)"
+.br
+.ti -1c
+.RI "static \fBPossibleValueSet\fP \fBCreateAllNonNullValues\fP (System\&.Type expressionType)"
+.br
+.ti -1c
+.RI "static \fBPossibleValueSet\fP \fBCreateAllValues\fP (System\&.Type expressionType)"
+.br
+.ti -1c
+.RI "static \fBPossibleValueSet\fP \fBCreate\fP (System\&.Type expressionType, params object[] values)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a possible set of values for a computation\&. For example, an expression may be null, it may be a non-null value, or we may even have a constant value that is known precisely\&. This class contains operators that know how to combine these values with each other\&. This class is intended to be used to provide static analysis of expressions before we hit the database\&. As an example for future improvement, we could handle ranges of numeric values\&. We can also improve this by handling operators such as the comparison operators and arithmetic operators\&. They are currently handled by naive null checks\&. 
+
+
+.PP
+Definition at line 18 of file PossibleValueSet\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

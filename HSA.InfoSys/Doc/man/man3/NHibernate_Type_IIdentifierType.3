@@ -1,0 +1,56 @@
+.TH "NHibernate.Type.IIdentifierType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.IIdentifierType \- 
+.PP
+An \fBIType\fP that may be used as an identifier\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Type\&.DateTimeOffsetType\fP, \fBNHibernate\&.Type\&.DateTimeType\fP, \fBNHibernate\&.Type\&.DateType\fP, \fBNHibernate\&.Type\&.DecimalType\fP, \fBNHibernate\&.Type\&.IDiscriminatorType\fP, and \fBNHibernate\&.Type\&.TimeType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBStringToObject\fP (string xml)"
+.br
+.RI "\fIWhen implemented by a class, converts the xml string from the mapping file to the \&.NET object\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An \fBIType\fP that may be used as an identifier\&. 
+
+
+.PP
+Definition at line 6 of file IIdentifierType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.Type\&.IIdentifierType\&.StringToObject (stringxml)"
+
+.PP
+When implemented by a class, converts the xml string from the mapping file to the \&.NET object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP The value of \fCdiscriminator-value\fP or \fCunsaved-value\fP attribute\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The string converted to the object\&.
+.RE
+.PP
+.PP
+This method needs to be able to handle any string\&. It should not just call System\&.Type\&.Parse without verifying that it is a parsable value for the System\&.Type\&. 
+.PP
+Implemented in \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.DateTimeType\fP, \fBNHibernate\&.Type\&.DateType\fP, \fBNHibernate\&.Type\&.TimeType\fP, \fBNHibernate\&.Type\&.DateTimeOffsetType\fP, \fBNHibernate\&.Type\&.BooleanType\fP, \fBNHibernate\&.Type\&.GuidType\fP, \fBNHibernate\&.Type\&.DecimalType\fP, \fBNHibernate\&.Type\&.Int16Type\fP, \fBNHibernate\&.Type\&.Int32Type\fP, \fBNHibernate\&.Type\&.Int64Type\fP, \fBNHibernate\&.Type\&.SByteType\fP, \fBNHibernate\&.Type\&.UInt16Type\fP, \fBNHibernate\&.Type\&.UInt32Type\fP, \fBNHibernate\&.Type\&.UInt64Type\fP, \fBNHibernate\&.Type\&.ByteType\fP, \fBNHibernate\&.Type\&.AbstractCharType\fP, \fBNHibernate\&.Type\&.AbstractStringType\fP, \fBNHibernate\&.Type\&.AbstractEnumType\fP, and \fBNHibernate\&.Type\&.UriType\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

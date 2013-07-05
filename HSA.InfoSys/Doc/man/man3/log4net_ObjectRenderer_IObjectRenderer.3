@@ -1,0 +1,56 @@
+.TH "log4net.ObjectRenderer.IObjectRenderer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.ObjectRenderer.IObjectRenderer \- 
+.PP
+Implement this interface in order to render objects as strings  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBlog4net\&.ObjectRenderer\&.DefaultRenderer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBRenderObject\fP (\fBRendererMap\fP rendererMap, object obj, TextWriter writer)"
+.br
+.RI "\fIRender the object \fIobj\fP  to a string \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Implement this interface in order to render objects as strings 
+
+Certain types require special case conversion to string form\&. This conversion is done by an object renderer\&. Object renderers implement the \fBIObjectRenderer\fP interface\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 38 of file IObjectRenderer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.ObjectRenderer\&.IObjectRenderer\&.RenderObject (\fBRendererMap\fPrendererMap, objectobj, TextWriterwriter)"
+
+.PP
+Render the object \fIobj\fP  to a string 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrendererMap\fP The map used to lookup renderers
+.br
+\fIobj\fP The object to render
+.br
+\fIwriter\fP The writer to render to
+.RE
+.PP
+.PP
+Render the object \fIobj\fP  to a string\&. 
+.PP
+The \fIrendererMap\fP  parameter is provided to lookup and render other objects\&. This is very useful where \fIobj\fP  contains nested objects of unknown type\&. The \fBRendererMap\&.FindAndRender(object, TextWriter)\fP method can be used to render these objects\&. 
+.PP
+Implemented in \fBlog4net\&.ObjectRenderer\&.DefaultRenderer\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,217 @@
+.TH "Renci.SshNet" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "package \fBChannels\fP"
+.br
+.ti -1c
+.RI "package \fBCommon\fP"
+.br
+.ti -1c
+.RI "package \fBCompression\fP"
+.br
+.ti -1c
+.RI "package \fBMessages\fP"
+.br
+.ti -1c
+.RI "package \fBNetConf\fP"
+.br
+.ti -1c
+.RI "package \fBSecurity\fP"
+.br
+.ti -1c
+.RI "package \fBSftp\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAuthenticationMethod\fP"
+.br
+.RI "\fIBase class for all supported authentication methods \fP"
+.ti -1c
+.RI "class \fBBaseClient\fP"
+.br
+.RI "\fIServes as base class for client implementations, provides common client functionality\&. \fP"
+.ti -1c
+.RI "class \fBCommandAsyncResult\fP"
+.br
+.RI "\fIProvides additional information for asynchronous command execution \fP"
+.ti -1c
+.RI "class \fBCipherInfo\fP"
+.br
+.RI "\fIHolds information about key size and cipher to use \fP"
+.ti -1c
+.RI "class \fBExtensions\fP"
+.br
+.RI "\fICollection of different extension method \fP"
+.ti -1c
+.RI "class \fBConnectionInfo\fP"
+.br
+.RI "\fIRepresents remote connection information class\&. \fP"
+.ti -1c
+.RI "class \fBExpectAction\fP"
+.br
+.RI "\fISpecifies behavior for expected expression \fP"
+.ti -1c
+.RI "class \fBExpectAsyncResult\fP"
+.br
+.RI "\fIProvides additional information for asynchronous command execution \fP"
+.ti -1c
+.RI "class \fBForwardedPort\fP"
+.br
+.RI "\fIBase class for port forwarding functionality\&. \fP"
+.ti -1c
+.RI "class \fBForwardedPortDynamic\fP"
+.br
+.RI "\fIProvides functionality for dynamic port forwarding \fP"
+.ti -1c
+.RI "class \fBForwardedPortLocal\fP"
+.br
+.RI "\fIProvides functionality for local port forwarding \fP"
+.ti -1c
+.RI "class \fBForwardedPortRemote\fP"
+.br
+.RI "\fIProvides functionality for remote port forwarding \fP"
+.ti -1c
+.RI "class \fBHashInfo\fP"
+.br
+.RI "\fIHolds information about key size and cipher to use \fP"
+.ti -1c
+.RI "class \fBKeyboardInteractiveAuthenticationMethod\fP"
+.br
+.RI "\fIProvides functionality to perform keyboard interactive authentication\&. \fP"
+.ti -1c
+.RI "class \fBKeyboardInteractiveConnectionInfo\fP"
+.br
+.RI "\fIProvides connection information when keyboard interactive authentication method is used \fP"
+.ti -1c
+.RI "class \fBMessageEventArgs< T >\fP"
+.br
+.RI "\fIProvides data for message events\&. \fP"
+.ti -1c
+.RI "class \fBNetConfClient\fP"
+.br
+.RI "\fIContains operation for working with \fBNetConf\fP server\&. \fP"
+.ti -1c
+.RI "class \fBNoneAuthenticationMethod\fP"
+.br
+.RI "\fIProvides functionality for 'none' authentication method \fP"
+.ti -1c
+.RI "class \fBNoneConnectionInfo\fP"
+.br
+.RI "\fIProvides connection information when password authentication method is used \fP"
+.ti -1c
+.RI "class \fBPasswordAuthenticationMethod\fP"
+.br
+.RI "\fIProvides functionality to perform password authentication\&. \fP"
+.ti -1c
+.RI "class \fBPasswordConnectionInfo\fP"
+.br
+.RI "\fIProvides connection information when password authentication method is used \fP"
+.ti -1c
+.RI "class \fBPrivateKeyAuthenticationMethod\fP"
+.br
+.RI "\fIProvides functionality to perform private key authentication\&. \fP"
+.ti -1c
+.RI "class \fBPrivateKeyConnectionInfo\fP"
+.br
+.RI "\fIProvides connection information when private key authentication method is used \fP"
+.ti -1c
+.RI "class \fBPrivateKeyFile\fP"
+.br
+.RI "\fIRepresents private key information \fP"
+.ti -1c
+.RI "class \fBScpClient\fP"
+.br
+.RI "\fIProvides SCP client functionality\&. \fP"
+.ti -1c
+.RI "class \fBSession\fP"
+.br
+.RI "\fIProvides functionality to connect and interact with SSH server\&. \fP"
+.ti -1c
+.RI "class \fBSftpClient\fP"
+.br
+.RI "\fIImplementation of the SSH File Transfer Protocol (SFTP) over SSH\&. \fP"
+.ti -1c
+.RI "class \fBShell\fP"
+.br
+.RI "\fIRepresents instance of the SSH shell object \fP"
+.ti -1c
+.RI "class \fBShellStream\fP"
+.br
+.RI "\fIContains operation for working with SSH \fBShell\fP\&. \fP"
+.ti -1c
+.RI "class \fBSshClient\fP"
+.br
+.RI "\fIProvides client connection to SSH server\&. \fP"
+.ti -1c
+.RI "class \fBSshCommand\fP"
+.br
+.RI "\fIRepresents SSH command that can be executed\&. \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBAuthenticationResult\fP { \fBAuthenticationResult\&.Success\fP, \fBAuthenticationResult\&.PartialSuccess\fP, \fBAuthenticationResult\&.Failure\fP }"
+.br
+.RI "\fIRepresents possible authentication methods results \fP"
+.ti -1c
+.RI "enum \fBProxyTypes\fP { \fBProxyTypes\&.None\fP, \fBProxyTypes\&.Socks4\fP, \fBProxyTypes\&.Socks5\fP, \fBProxyTypes\&.Http\fP }"
+.br
+.RI "\fISpecifies the type of proxy client will use to connect to server\&. \fP"
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBRenci\&.SshNet\&.AuthenticationResult\fP"
+
+.PP
+Represents possible authentication methods results 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISuccess \fP\fP
+Authentication was successful\&. 
+.TP
+\fB\fIPartialSuccess \fP\fP
+Authentication completed with partial success\&. 
+.TP
+\fB\fIFailure \fP\fP
+Authentication failed\&. 
+.PP
+Definition at line 11 of file AuthenticationResult\&.cs\&.
+.SS "enum \fBRenci\&.SshNet\&.ProxyTypes\fP"
+
+.PP
+Specifies the type of proxy client will use to connect to server\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+No proxy server\&.
+.TP
+\fB\fISocks4 \fP\fP
+A SOCKS4 proxy server\&.
+.TP
+\fB\fISocks5 \fP\fP
+A SOCKS5 proxy server\&.
+.TP
+\fB\fIHttp \fP\fP
+A HTTP proxy server\&.
+.PP
+Definition at line 11 of file ProxyTypes\&.cs\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

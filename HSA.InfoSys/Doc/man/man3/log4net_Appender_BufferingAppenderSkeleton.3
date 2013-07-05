@@ -1,0 +1,305 @@
+.TH "log4net.Appender.BufferingAppenderSkeleton" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.BufferingAppenderSkeleton \- 
+.PP
+Abstract base class implementation of \fBIAppender\fP that buffers events in a fixed size buffer\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Inherited by \fBlog4net\&.Appender\&.AdoNetAppender\fP, \fBlog4net\&.Appender\&.BufferingForwardingAppender\fP, \fBlog4net\&.Appender\&.RemotingAppender\fP, \fBlog4net\&.Appender\&.SmtpAppender\fP, and \fBlog4net\&.Appender\&.SmtpPickupDirAppender\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBFlush\fP ()"
+.br
+.RI "\fIFlush the currently buffered events \fP"
+.ti -1c
+.RI "virtual void \fBFlush\fP (bool flushLossyBuffer)"
+.br
+.RI "\fIFlush the currently buffered events \fP"
+.ti -1c
+.RI "override void \fBActivateOptions\fP ()"
+.br
+.RI "\fIInitialize the appender based on the options set \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBufferingAppenderSkeleton\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBBufferingAppenderSkeleton\fP class\&. \fP"
+.ti -1c
+.RI "\fBBufferingAppenderSkeleton\fP (bool eventMustBeFixed)"
+.br
+.RI "\fIInitializes a new instance of the \fBBufferingAppenderSkeleton\fP class\&. \fP"
+.ti -1c
+.RI "override void \fBOnClose\fP ()"
+.br
+.RI "\fIClose this appender instance\&. \fP"
+.ti -1c
+.RI "override void \fBAppend\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIThis method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent)\fP method\&. \fP"
+.ti -1c
+.RI "virtual void \fBSendFromBuffer\fP (\fBLoggingEvent\fP firstLoggingEvent, \fBCyclicBuffer\fP buffer)"
+.br
+.RI "\fISends the contents of the buffer\&. \fP"
+.ti -1c
+.RI "abstract void \fBSendBuffer\fP (\fBLoggingEvent\fP[] events)"
+.br
+.RI "\fISends the events\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBLossy\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value that indicates whether the appender is lossy\&. \fP"
+.ti -1c
+.RI "int \fBBufferSize\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the size of the cyclic buffer used to hold the logging events\&. \fP"
+.ti -1c
+.RI "\fBITriggeringEventEvaluator\fP \fBEvaluator\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the ITriggeringEventEvaluator that causes the buffer to be sent immediately\&. \fP"
+.ti -1c
+.RI "\fBITriggeringEventEvaluator\fP \fBLossyEvaluator\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the value of the ITriggeringEventEvaluator to use\&. \fP"
+.ti -1c
+.RI "virtual bool \fBOnlyFixPartialEventData\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating if only part of the logging event data should be fixed\&. \fP"
+.ti -1c
+.RI "virtual \fBFixFlags\fP \fBFix\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a the fields that will be fixed in the event \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Abstract base class implementation of \fBIAppender\fP that buffers events in a fixed size buffer\&. 
+
+This base class should be used by appenders that need to buffer a number of events before logging them\&. For example the \fBAdoNetAppender\fP buffers events and then submits the entire contents of the buffer to the underlying database in one go\&. 
+.PP
+Subclasses should override the \fBSendBuffer(LoggingEvent[])\fP method to deliver the buffered events\&. 
+.PP
+The \fBBufferingAppenderSkeleton\fP maintains a fixed size cyclic buffer of events\&. The size of the buffer is set using the \fBBufferSize\fP property\&. 
+.PP
+A ITriggeringEventEvaluator is used to inspect each event as it arrives in the appender\&. If the \fBEvaluator\fP triggers, then the current buffer is sent immediately (see \fBSendBuffer(LoggingEvent[])\fP)\&. Otherwise the event is stored in the buffer\&. For example, an evaluator can be used to deliver the events immediately when an ERROR event arrives\&. 
+.PP
+The buffering appender can be configured in a \fBLossy\fP mode\&. By default the appender is NOT lossy\&. When the buffer is full all the buffered events are sent with \fBSendBuffer(LoggingEvent[])\fP\&. If the \fBLossy\fP property is set to \fCtrue\fP then the buffer will not be sent when it is full, and new events arriving in the appender will overwrite the oldest event in the buffer\&. In lossy mode the buffer will only be sent when the \fBEvaluator\fP triggers\&. This can be useful behavior when you need to know about ERROR events but not about events with a lower level, configure an evaluator that will trigger when an ERROR event arrives, the whole buffer will be sent which gives a history of events leading up to the ERROR event\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 71 of file BufferingAppenderSkeleton\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.BufferingAppenderSkeleton\&.BufferingAppenderSkeleton ()\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBBufferingAppenderSkeleton\fP class\&. Protected default constructor to allow subclassing\&. 
+.PP
+Definition at line 83 of file BufferingAppenderSkeleton\&.cs\&.
+.SS "log4net\&.Appender\&.BufferingAppenderSkeleton\&.BufferingAppenderSkeleton (booleventMustBeFixed)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBBufferingAppenderSkeleton\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIeventMustBeFixed\fP the events passed through this appender must be fixed by the time that they arrive in the derived class' \fCSendBuffer\fP method\&.
+.RE
+.PP
+.PP
+Protected constructor to allow subclassing\&. 
+.PP
+The \fIeventMustBeFixed\fP  should be set if the subclass expects the events delivered to be fixed even if the \fBBufferSize\fP is set to zero, i\&.e\&. when no buffering occurs\&. 
+.PP
+Definition at line 102 of file BufferingAppenderSkeleton\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Appender\&.BufferingAppenderSkeleton\&.ActivateOptions ()\fC [virtual]\fP"
+
+.PP
+Initialize the appender based on the options set This is part of the IOptionHandler delayed object activation scheme\&. The \fBActivateOptions\fP method must be called on this object after the configuration properties have been set\&. Until \fBActivateOptions\fP is called this object is in an undefined state and must not be used\&. 
+.PP
+If any of the configuration properties are modified then \fBActivateOptions\fP must be called again\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Reimplemented in \fBlog4net\&.Appender\&.SmtpPickupDirAppender\fP, and \fBlog4net\&.Appender\&.RemotingAppender\fP\&.
+.PP
+Definition at line 372 of file BufferingAppenderSkeleton\&.cs\&.
+.SS "override void log4net\&.Appender\&.BufferingAppenderSkeleton\&.Append (\fBLoggingEvent\fPloggingEvent)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+This method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent)\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP the event to log
+.RE
+.PP
+.PP
+Stores the \fIloggingEvent\fP  in the cyclic buffer\&. 
+.PP
+The buffer will be sent (i\&.e\&. passed to the \fBSendBuffer\fP method) if one of the following conditions is met: 
+.PP
+.PD 0
+.IP "\(bu" 2
+The cyclic buffer is full and this appender is marked as not lossy (see \fBLossy\fP)  
+.IP "\(bu" 2
+An \fBEvaluator\fP is set and it is triggered for the \fIloggingEvent\fP  specified\&.  
+.PP
+.PP
+Before the event is stored in the buffer it is fixed (see LoggingEvent\&.FixVolatileData(FixFlags)) to ensure that any data referenced by the event will be valid when the buffer is processed\&. 
+.PP
+Implements \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 444 of file BufferingAppenderSkeleton\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.BufferingAppenderSkeleton\&.Flush ()\fC [virtual]\fP"
+
+.PP
+Flush the currently buffered events Flushes any events that have been buffered\&. 
+.PP
+If the appender is buffering in \fBLossy\fP mode then the contents of the buffer will NOT be flushed to the appender\&. 
+.PP
+Definition at line 276 of file BufferingAppenderSkeleton\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.BufferingAppenderSkeleton\&.Flush (boolflushLossyBuffer)\fC [virtual]\fP"
+
+.PP
+Flush the currently buffered events 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIflushLossyBuffer\fP set to \fCtrue\fP to flush the buffer of lossy events
+.RE
+.PP
+.PP
+Flushes events that have been buffered\&. If \fIflushLossyBuffer\fP  is \fCfalse\fP then events will only be flushed if this buffer is non-lossy mode\&. 
+.PP
+If the appender is buffering in \fBLossy\fP mode then the contents of the buffer will only be flushed if \fIflushLossyBuffer\fP  is \fCtrue\fP\&. In this case the contents of the buffer will be tested against the \fBLossyEvaluator\fP and if triggering will be output\&. All other buffered events will be discarded\&. 
+.PP
+If \fIflushLossyBuffer\fP  is \fCtrue\fP then the buffer will always be emptied by calling this method\&. 
+.PP
+Definition at line 302 of file BufferingAppenderSkeleton\&.cs\&.
+.SS "override void log4net\&.Appender\&.BufferingAppenderSkeleton\&.OnClose ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Close this appender instance\&. Close this appender instance\&. If this appender is marked as not \fBLossy\fP then the remaining events in the buffer must be sent when the appender is closed\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Reimplemented in \fBlog4net\&.Appender\&.RemotingAppender\fP, and \fBlog4net\&.Appender\&.BufferingForwardingAppender\fP\&.
+.PP
+Definition at line 408 of file BufferingAppenderSkeleton\&.cs\&.
+.SS "abstract void log4net\&.Appender\&.BufferingAppenderSkeleton\&.SendBuffer (\fBLoggingEvent\fP[]events)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Sends the events\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevents\fP The events that need to be send\&.
+.RE
+.PP
+.PP
+The subclass must override this method to process the buffered events\&. 
+.PP
+Implemented in \fBlog4net\&.Appender\&.AdoNetAppender\fP, \fBlog4net\&.Appender\&.SmtpAppender\fP, \fBlog4net\&.Appender\&.RemotingAppender\fP, \fBlog4net\&.Appender\&.SmtpPickupDirAppender\fP, and \fBlog4net\&.Appender\&.BufferingForwardingAppender\fP\&.
+.SS "virtual void log4net\&.Appender\&.BufferingAppenderSkeleton\&.SendFromBuffer (\fBLoggingEvent\fPfirstLoggingEvent, \fBCyclicBuffer\fPbuffer)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Sends the contents of the buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirstLoggingEvent\fP The first logging event\&.
+.br
+\fIbuffer\fP The buffer containing the events that need to be send\&.
+.RE
+.PP
+.PP
+The subclass must override \fBSendBuffer(LoggingEvent[])\fP\&. 
+.PP
+Definition at line 533 of file BufferingAppenderSkeleton\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int log4net\&.Appender\&.BufferingAppenderSkeleton\&.BufferSize\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the size of the cyclic buffer used to hold the logging events\&. The size of the cyclic buffer used to hold the logging events\&. 
+.PP
+The \fBBufferSize\fP option takes a positive integer representing the maximum number of logging events to collect in a cyclic buffer\&. When the \fBBufferSize\fP is reached, oldest events are deleted as new events are added to the buffer\&. By default the size of the cyclic buffer is 512 events\&. 
+.PP
+If the \fBBufferSize\fP is set to a value less than or equal to 1 then no buffering will occur\&. The logging event will be delivered synchronously (depending on the \fBLossy\fP and \fBEvaluator\fP properties)\&. Otherwise the event will be buffered\&. 
+.PP
+Definition at line 159 of file BufferingAppenderSkeleton\&.cs\&.
+.SS "\fBITriggeringEventEvaluator\fP log4net\&.Appender\&.BufferingAppenderSkeleton\&.Evaluator\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the ITriggeringEventEvaluator that causes the buffer to be sent immediately\&. The ITriggeringEventEvaluator that causes the buffer to be sent immediately\&. 
+.PP
+The evaluator will be called for each event that is appended to this appender\&. If the evaluator triggers then the current buffer will immediately be sent (see \fBSendBuffer(LoggingEvent[])\fP)\&. 
+.PP
+If \fBLossy\fP is set to \fCtrue\fP then an \fBEvaluator\fP must be specified\&.
+.PP
+Definition at line 182 of file BufferingAppenderSkeleton\&.cs\&.
+.SS "virtual \fBFixFlags\fP log4net\&.Appender\&.BufferingAppenderSkeleton\&.Fix\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a the fields that will be fixed in the event The event fields that will be fixed before the event is buffered 
+.PP
+The logging event needs to have certain thread specific values captured before it can be buffered\&. See LoggingEvent\&.Fix for details\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+LoggingEvent\&.Fix
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 255 of file BufferingAppenderSkeleton\&.cs\&.
+.SS "bool log4net\&.Appender\&.BufferingAppenderSkeleton\&.Lossy\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value that indicates whether the appender is lossy\&. \fCtrue\fP if the appender is lossy, otherwise \fCfalse\fP\&. The default is \fCfalse\fP\&. 
+.PP
+This appender uses a buffer to store logging events before delivering them\&. A triggering event causes the whole buffer to be send to the remote sink\&. If the buffer overruns before a triggering event then logging events could be lost\&. Set \fBLossy\fP to \fCfalse\fP to prevent logging events from being lost\&. 
+.PP
+If \fBLossy\fP is set to \fCtrue\fP then an \fBEvaluator\fP must be specified\&.
+.PP
+Definition at line 130 of file BufferingAppenderSkeleton\&.cs\&.
+.SS "\fBITriggeringEventEvaluator\fP log4net\&.Appender\&.BufferingAppenderSkeleton\&.LossyEvaluator\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the value of the ITriggeringEventEvaluator to use\&. The value of the ITriggeringEventEvaluator to use\&. 
+.PP
+The evaluator will be called for each event that is discarded from this appender\&. If the evaluator triggers then the current buffer will immediately be sent (see \fBSendBuffer(LoggingEvent[])\fP)\&. 
+.PP
+Definition at line 201 of file BufferingAppenderSkeleton\&.cs\&.
+.SS "virtual bool log4net\&.Appender\&.BufferingAppenderSkeleton\&.OnlyFixPartialEventData\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating if only part of the logging event data should be fixed\&. \fCtrue\fP if the appender should only fix part of the logging event data, otherwise \fCfalse\fP\&. The default is \fCfalse\fP\&. 
+.PP
+Setting this property to \fCtrue\fP will cause only part of the event data to be fixed and serialized\&. This will improve performance\&. 
+.PP
+See LoggingEvent\&.FixVolatileData(FixFlags) for more information\&. 
+.PP
+Definition at line 225 of file BufferingAppenderSkeleton\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

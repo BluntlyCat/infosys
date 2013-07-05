@@ -1,0 +1,211 @@
+.TH "NHibernate.Engine.ActionQueue" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.ActionQueue \- 
+.PP
+Responsible for maintaining the queue of actions related to events\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBActionQueue\fP (\fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "virtual void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddAction\fP (\fBEntityInsertAction\fP action)"
+.br
+.ti -1c
+.RI "void \fBAddAction\fP (\fBEntityDeleteAction\fP action)"
+.br
+.ti -1c
+.RI "void \fBAddAction\fP (\fBEntityUpdateAction\fP action)"
+.br
+.ti -1c
+.RI "void \fBAddAction\fP (\fBCollectionRecreateAction\fP action)"
+.br
+.ti -1c
+.RI "void \fBAddAction\fP (\fBCollectionRemoveAction\fP action)"
+.br
+.ti -1c
+.RI "void \fBAddAction\fP (\fBCollectionUpdateAction\fP action)"
+.br
+.ti -1c
+.RI "void \fBAddAction\fP (\fBEntityIdentityInsertAction\fP insert)"
+.br
+.ti -1c
+.RI "void \fBAddAction\fP (\fBBulkOperationCleanupAction\fP cleanupAction)"
+.br
+.ti -1c
+.RI "void \fBRegisterProcess\fP (AfterTransactionCompletionProcessDelegate process)"
+.br
+.ti -1c
+.RI "void \fBRegisterProcess\fP (BeforeTransactionCompletionProcessDelegate process)"
+.br
+.ti -1c
+.RI "void \fBExecute\fP (\fBIExecutable\fP executable)"
+.br
+.ti -1c
+.RI "void \fBExecuteInserts\fP ()"
+.br
+.RI "\fIPerform all currently queued entity-insertion actions\&. \fP"
+.ti -1c
+.RI "void \fBExecuteActions\fP ()"
+.br
+.RI "\fIPerform all currently queued actions\&. \fP"
+.ti -1c
+.RI "void \fBPrepareActions\fP ()"
+.br
+.RI "\fIPrepares the internal action queues for execution\&. \fP"
+.ti -1c
+.RI "void \fBBeforeTransactionCompletion\fP ()"
+.br
+.RI "\fIExecute any registered BeforeTransactionCompletionProcessDelegate \fP"
+.ti -1c
+.RI "void \fBAfterTransactionCompletion\fP (bool success)"
+.br
+.RI "\fIPerforms cleanup of any held cache softlocks\&. \fP"
+.ti -1c
+.RI "virtual bool \fBAreTablesToBeUpdated\fP (ISet< string > tables)"
+.br
+.RI "\fICheck whether the given tables/query-spaces are to be executed against given the currently queued actions\&. \fP"
+.ti -1c
+.RI "void \fBSortCollectionActions\fP ()"
+.br
+.ti -1c
+.RI "void \fBSortActions\fP ()"
+.br
+.ti -1c
+.RI "IList< \fBEntityDeleteAction\fP > \fBCloneDeletions\fP ()"
+.br
+.ti -1c
+.RI "void \fBClearFromFlushNeededCheck\fP (int previousCollectionRemovalSize)"
+.br
+.ti -1c
+.RI "bool \fBHasBeforeTransactionActions\fP ()"
+.br
+.ti -1c
+.RI "bool \fBHasAfterTransactionActions\fP ()"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBAreInsertionsOrDeletionsQueued\fP\fC [get]\fP"
+.br
+.RI "\fICheck whether any insertion or deletion actions are currently queued\&. \fP"
+.ti -1c
+.RI "int \fBCollectionRemovalsCount\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBCollectionUpdatesCount\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBCollectionCreationsCount\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBDeletionsCount\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBUpdatesCount\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBInsertionsCount\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasAnyQueuedActions\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Responsible for maintaining the queue of actions related to events\&. 
+
+The \fBActionQueue\fP holds the DML operations queued as part of a session's transactional-write-behind semantics\&. DML operations are queued here until a flush forces them to be executed against the database\&. 
+.PP
+Definition at line 21 of file ActionQueue\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Engine\&.ActionQueue\&.AfterTransactionCompletion (boolsuccess)"
+
+.PP
+Performs cleanup of any held cache softlocks\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsuccess\fP Was the transaction successful\&.
+.RE
+.PP
+
+.PP
+Definition at line 204 of file ActionQueue\&.cs\&.
+.SS "virtual bool NHibernate\&.Engine\&.ActionQueue\&.AreTablesToBeUpdated (ISet< string >tables)\fC [virtual]\fP"
+
+.PP
+Check whether the given tables/query-spaces are to be executed against given the currently queued actions\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItables\fP The table/query-spaces to check\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if we contain pending actions against any of the given tables; false otherwise\&.
+.RE
+.PP
+
+.PP
+Definition at line 215 of file ActionQueue\&.cs\&.
+.SS "void NHibernate\&.Engine\&.ActionQueue\&.BeforeTransactionCompletion ()"
+
+.PP
+Execute any registered BeforeTransactionCompletionProcessDelegate 
+.PP
+Definition at line 195 of file ActionQueue\&.cs\&.
+.SS "void NHibernate\&.Engine\&.ActionQueue\&.ExecuteActions ()"
+
+.PP
+Perform all currently queued actions\&. 
+.PP
+Definition at line 166 of file ActionQueue\&.cs\&.
+.SS "void NHibernate\&.Engine\&.ActionQueue\&.ExecuteInserts ()"
+
+.PP
+Perform all currently queued entity-insertion actions\&. 
+.PP
+Definition at line 158 of file ActionQueue\&.cs\&.
+.SS "void NHibernate\&.Engine\&.ActionQueue\&.PrepareActions ()"
+
+.PP
+Prepares the internal action queues for execution\&. 
+.PP
+Definition at line 185 of file ActionQueue\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.Engine\&.ActionQueue\&.AreInsertionsOrDeletionsQueued\fC [get]\fP"
+
+.PP
+Check whether any insertion or deletion actions are currently queued\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if insertions or deletions are currently queued; false otherwise\&.
+.RE
+.PP
+
+.PP
+Definition at line 231 of file ActionQueue\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

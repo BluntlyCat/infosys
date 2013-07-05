@@ -1,0 +1,668 @@
+.TH "NHibernate.Driver.NHybridDataReader" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Driver.NHybridDataReader \- 
+.PP
+An implementation of IDataReader that will work with either an IDataReader returned by Execute or with an IDataReader whose contents have been read into a \fBNDataReader\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDataReader\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNHybridDataReader\fP (IDataReader reader)"
+.br
+.RI "\fIInitializes a new instance of the \fBNHybridDataReader\fP class\&. \fP"
+.ti -1c
+.RI "\fBNHybridDataReader\fP (IDataReader reader, bool inMemory)"
+.br
+.RI "\fIInitializes a new instance of the \fBNHybridDataReader\fP class\&. \fP"
+.ti -1c
+.RI "void \fBReadIntoMemory\fP ()"
+.br
+.RI "\fIReads all of the contents into memory because another IDataReader needs to be opened\&. \fP"
+.ti -1c
+.RI "bool \fBNextResult\fP ()"
+.br
+.ti -1c
+.RI "void \fBClose\fP ()"
+.br
+.ti -1c
+.RI "bool \fBRead\fP ()"
+.br
+.ti -1c
+.RI "DataTable \fBGetSchemaTable\fP ()"
+.br
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "\fITakes care of freeing the managed and unmanaged resources that this class is responsible for\&. \fP"
+.ti -1c
+.RI "int \fBGetInt32\fP (int i)"
+.br
+.ti -1c
+.RI "object \fBGetValue\fP (int i)"
+.br
+.ti -1c
+.RI "bool \fBIsDBNull\fP (int i)"
+.br
+.ti -1c
+.RI "long \fBGetBytes\fP (int i, long fieldOffset, byte[] buffer, int bufferoffset, int length)"
+.br
+.ti -1c
+.RI "byte \fBGetByte\fP (int i)"
+.br
+.ti -1c
+.RI "System\&.Type \fBGetFieldType\fP (int i)"
+.br
+.ti -1c
+.RI "decimal \fBGetDecimal\fP (int i)"
+.br
+.ti -1c
+.RI "int \fBGetValues\fP (object[] values)"
+.br
+.ti -1c
+.RI "string \fBGetName\fP (int i)"
+.br
+.ti -1c
+.RI "long \fBGetInt64\fP (int i)"
+.br
+.ti -1c
+.RI "double \fBGetDouble\fP (int i)"
+.br
+.ti -1c
+.RI "bool \fBGetBoolean\fP (int i)"
+.br
+.ti -1c
+.RI "Guid \fBGetGuid\fP (int i)"
+.br
+.ti -1c
+.RI "DateTime \fBGetDateTime\fP (int i)"
+.br
+.ti -1c
+.RI "int \fBGetOrdinal\fP (string name)"
+.br
+.ti -1c
+.RI "string \fBGetDataTypeName\fP (int i)"
+.br
+.ti -1c
+.RI "float \fBGetFloat\fP (int i)"
+.br
+.ti -1c
+.RI "IDataReader \fBGetData\fP (int i)"
+.br
+.ti -1c
+.RI "long \fBGetChars\fP (int i, long fieldoffset, char[] buffer, int bufferoffset, int length)"
+.br
+.ti -1c
+.RI "string \fBGetString\fP (int i)"
+.br
+.ti -1c
+.RI "char \fBGetChar\fP (int i)"
+.br
+.ti -1c
+.RI "short \fBGetInt16\fP (int i)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBDispose\fP (bool isDisposing)"
+.br
+.RI "\fITakes care of freeing the managed and unmanaged resources that this class is responsible for\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "IDataReader \fBTarget\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsMidstream\fP\fC [get]\fP"
+.br
+.RI "\fIGets if the object is in the middle of reading a Result\&. \fP"
+.ti -1c
+.RI "int \fBRecordsAffected\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsClosed\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBDepth\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "object \fBthis[string name]\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBFieldCount\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An implementation of IDataReader that will work with either an IDataReader returned by Execute or with an IDataReader whose contents have been read into a \fBNDataReader\fP\&. 
+
+This allows \fBNHibernate\fP to use the underlying IDataReader for as long as possible without the need to read everything into the \fBNDataReader\fP\&. 
+.PP
+The consumer of the IDataReader returned from \fBEngine\&.IBatcher\fP does not need to know the underlying reader and can use it the same even if it switches from an IDataReader to \fBNDataReader\fP in the middle of its use\&. 
+.PP
+Definition at line 23 of file NHybridDataReader\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Driver\&.NHybridDataReader\&.NHybridDataReader (IDataReaderreader)"
+
+.PP
+Initializes a new instance of the \fBNHybridDataReader\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The underlying IDataReader to use\&.
+.RE
+.PP
+
+.PP
+Definition at line 36 of file NHybridDataReader\&.cs\&.
+.SS "NHibernate\&.Driver\&.NHybridDataReader\&.NHybridDataReader (IDataReaderreader, boolinMemory)"
+
+.PP
+Initializes a new instance of the \fBNHybridDataReader\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The underlying IDataReader to use\&.
+.br
+\fIinMemory\fP if the contents of the IDataReader should be read into memory right away\&.
+.RE
+.PP
+
+.PP
+Definition at line 45 of file NHybridDataReader\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Driver\&.NHybridDataReader\&.Close ()"
+
+.PP
+
+.PP
+Definition at line 108 of file NHybridDataReader\&.cs\&.
+.SS "void NHibernate\&.Driver\&.NHybridDataReader\&.Dispose ()"
+
+.PP
+Takes care of freeing the managed and unmanaged resources that this class is responsible for\&. 
+.PP
+Definition at line 153 of file NHybridDataReader\&.cs\&.
+.SS "virtual void NHibernate\&.Driver\&.NHybridDataReader\&.Dispose (boolisDisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Takes care of freeing the managed and unmanaged resources that this class is responsible for\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIisDisposing\fP Indicates if this \fBNHybridDataReader\fP is being Disposed of or Finalized\&.
+.RE
+.PP
+.PP
+If this \fBNHybridDataReader\fP is being Finalized (\fCisDisposing==false\fP) then make sure not to call any methods that could potentially bring this \fBNHybridDataReader\fP back to life\&. 
+.PP
+Definition at line 168 of file NHybridDataReader\&.cs\&.
+.SS "bool NHibernate\&.Driver\&.NHybridDataReader\&.GetBoolean (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 331 of file NHybridDataReader\&.cs\&.
+.SS "byte NHibernate\&.Driver\&.NHybridDataReader\&.GetByte (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 255 of file NHybridDataReader\&.cs\&.
+.SS "long NHibernate\&.Driver\&.NHybridDataReader\&.GetBytes (inti, longfieldOffset, byte[]buffer, intbufferoffset, intlength)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.br
+\fIfieldOffset\fP 
+.br
+\fIbuffer\fP 
+.br
+\fIbufferoffset\fP 
+.br
+\fIlength\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 245 of file NHybridDataReader\&.cs\&.
+.SS "char NHibernate\&.Driver\&.NHybridDataReader\&.GetChar (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 425 of file NHybridDataReader\&.cs\&.
+.SS "long NHibernate\&.Driver\&.NHybridDataReader\&.GetChars (inti, longfieldoffset, char[]buffer, intbufferoffset, intlength)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.br
+\fIfieldoffset\fP 
+.br
+\fIbuffer\fP 
+.br
+\fIbufferoffset\fP 
+.br
+\fIlength\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 405 of file NHybridDataReader\&.cs\&.
+.SS "IDataReader NHibernate\&.Driver\&.NHybridDataReader\&.GetData (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 391 of file NHybridDataReader\&.cs\&.
+.SS "string NHibernate\&.Driver\&.NHybridDataReader\&.GetDataTypeName (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 371 of file NHybridDataReader\&.cs\&.
+.SS "DateTime NHibernate\&.Driver\&.NHybridDataReader\&.GetDateTime (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 351 of file NHybridDataReader\&.cs\&.
+.SS "decimal NHibernate\&.Driver\&.NHybridDataReader\&.GetDecimal (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 275 of file NHybridDataReader\&.cs\&.
+.SS "double NHibernate\&.Driver\&.NHybridDataReader\&.GetDouble (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 321 of file NHybridDataReader\&.cs\&.
+.SS "System\&.Type NHibernate\&.Driver\&.NHybridDataReader\&.GetFieldType (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 265 of file NHybridDataReader\&.cs\&.
+.SS "float NHibernate\&.Driver\&.NHybridDataReader\&.GetFloat (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 381 of file NHybridDataReader\&.cs\&.
+.SS "Guid NHibernate\&.Driver\&.NHybridDataReader\&.GetGuid (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 341 of file NHybridDataReader\&.cs\&.
+.SS "short NHibernate\&.Driver\&.NHybridDataReader\&.GetInt16 (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 435 of file NHybridDataReader\&.cs\&.
+.SS "int NHibernate\&.Driver\&.NHybridDataReader\&.GetInt32 (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 199 of file NHybridDataReader\&.cs\&.
+.SS "long NHibernate\&.Driver\&.NHybridDataReader\&.GetInt64 (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 311 of file NHybridDataReader\&.cs\&.
+.SS "string NHibernate\&.Driver\&.NHybridDataReader\&.GetName (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 295 of file NHybridDataReader\&.cs\&.
+.SS "int NHibernate\&.Driver\&.NHybridDataReader\&.GetOrdinal (stringname)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 361 of file NHybridDataReader\&.cs\&.
+.SS "DataTable NHibernate\&.Driver\&.NHybridDataReader\&.GetSchemaTable ()"
+
+.PP
+
+.PP
+Definition at line 127 of file NHybridDataReader\&.cs\&.
+.SS "string NHibernate\&.Driver\&.NHybridDataReader\&.GetString (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 415 of file NHybridDataReader\&.cs\&.
+.SS "object NHibernate\&.Driver\&.NHybridDataReader\&.GetValue (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 221 of file NHybridDataReader\&.cs\&.
+.SS "int NHibernate\&.Driver\&.NHybridDataReader\&.GetValues (object[]values)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalues\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 285 of file NHybridDataReader\&.cs\&.
+.SS "bool NHibernate\&.Driver\&.NHybridDataReader\&.IsDBNull (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 231 of file NHybridDataReader\&.cs\&.
+.SS "bool NHibernate\&.Driver\&.NHybridDataReader\&.NextResult ()"
+
+.PP
+
+.PP
+Definition at line 100 of file NHybridDataReader\&.cs\&.
+.SS "bool NHibernate\&.Driver\&.NHybridDataReader\&.Read ()"
+
+.PP
+
+.PP
+Definition at line 114 of file NHybridDataReader\&.cs\&.
+.SS "void NHibernate\&.Driver\&.NHybridDataReader\&.ReadIntoMemory ()"
+
+.PP
+Reads all of the contents into memory because another IDataReader needs to be opened\&. This will result in a no op if the reader is closed or is already in memory\&. 
+.PP
+Definition at line 64 of file NHybridDataReader\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int NHibernate\&.Driver\&.NHybridDataReader\&.Depth\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 122 of file NHybridDataReader\&.cs\&.
+.SS "int NHibernate\&.Driver\&.NHybridDataReader\&.FieldCount\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 302 of file NHybridDataReader\&.cs\&.
+.SS "bool NHibernate\&.Driver\&.NHybridDataReader\&.IsClosed\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 95 of file NHybridDataReader\&.cs\&.
+.SS "bool NHibernate\&.Driver\&.NHybridDataReader\&.IsMidstream\fC [get]\fP"
+
+.PP
+Gets if the object is in the middle of reading a Result\&. if NextResult and Read have been called on the IDataReader\&.
+.PP
+Definition at line 81 of file NHybridDataReader\&.cs\&.
+.SS "int NHibernate\&.Driver\&.NHybridDataReader\&.RecordsAffected\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 89 of file NHybridDataReader\&.cs\&.
+.SS "object NHibernate\&.Driver\&.NHybridDataReader\&.this[string name]\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 206 of file NHybridDataReader\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

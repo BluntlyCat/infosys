@@ -1,0 +1,67 @@
+.TH "NHibernate.Id.SequenceIdentityGenerator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.SequenceIdentityGenerator \- 
+.PP
+A generator which combines sequence generation with immediate retrieval by attaching a output parameter to the SQL command In this respect it works much like ANSI-SQL IDENTITY generation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Id\&.SequenceGenerator\fP, and \fBNHibernate\&.Id\&.IPostInsertIdentifierGenerator\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBSequenceIdentityDelegate\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override object \fBGenerate\fP (\fBISessionImplementor\fP session, object obj)"
+.br
+.RI "\fIGenerate an Int16, Int32, or Int64 for the identifier by using a database sequence\&. \fP"
+.ti -1c
+.RI "\fBIInsertGeneratedIdentifierDelegate\fP \fBGetInsertGeneratedIdentifierDelegate\fP (\fBIPostInsertIdentityPersister\fP persister, \fBISessionFactoryImplementor\fP factory, bool isGetGeneratedKeysEnabled)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A generator which combines sequence generation with immediate retrieval by attaching a output parameter to the SQL command In this respect it works much like ANSI-SQL IDENTITY generation\&. 
+
+
+.PP
+Definition at line 11 of file SequenceIdentityGenerator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Id\&.SequenceIdentityGenerator\&.Generate (\fBISessionImplementor\fPsession, objectobj)\fC [virtual]\fP"
+
+.PP
+Generate an Int16, Int32, or Int64 for the identifier by using a database sequence\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The ISessionImplementor this id is being generated in\&.
+.br
+\fIobj\fP The entity for which the id is being generated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new identifier as a Int16, Int32, or Int64\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Id\&.SequenceGenerator\fP\&.
+.PP
+Definition at line 15 of file SequenceIdentityGenerator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

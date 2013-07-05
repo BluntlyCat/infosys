@@ -1,0 +1,305 @@
+.TH "log4net.Appender.TextWriterAppender" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.TextWriterAppender \- 
+.PP
+Sends logging events to a TextWriter\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Inherited by \fBlog4net\&.Appender\&.FileAppender\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTextWriterAppender\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBTextWriterAppender\fP class\&. \fP"
+.ti -1c
+.RI "\fBTextWriterAppender\fP (\fBILayout\fP layout, Stream os)"
+.br
+.RI "\fIInitializes a new instance of the \fBTextWriterAppender\fP class and sets the output destination to a new StreamWriter initialized with the specified Stream\&. \fP"
+.ti -1c
+.RI "\fBTextWriterAppender\fP (\fBILayout\fP layout, TextWriter writer)"
+.br
+.RI "\fIInitializes a new instance of the \fBTextWriterAppender\fP class and sets the output destination to the specified StreamWriter\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBPreAppendCheck\fP ()"
+.br
+.RI "\fIThis method determines if there is a sense in attempting to append\&. \fP"
+.ti -1c
+.RI "override void \fBAppend\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIThis method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent)\fP method\&. \fP"
+.ti -1c
+.RI "override void \fBAppend\fP (\fBLoggingEvent\fP[] loggingEvents)"
+.br
+.RI "\fIThis method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent[])\fP method\&. \fP"
+.ti -1c
+.RI "override void \fBOnClose\fP ()"
+.br
+.RI "\fIClose this appender instance\&. The underlying stream or writer is also closed\&. \fP"
+.ti -1c
+.RI "virtual void \fBWriteFooterAndCloseWriter\fP ()"
+.br
+.RI "\fIWrites the footer and closes the underlying TextWriter\&. \fP"
+.ti -1c
+.RI "virtual void \fBCloseWriter\fP ()"
+.br
+.RI "\fICloses the underlying TextWriter\&. \fP"
+.ti -1c
+.RI "virtual void \fBReset\fP ()"
+.br
+.RI "\fIClears internal references to the underlying TextWriter and other variables\&. \fP"
+.ti -1c
+.RI "virtual void \fBWriteFooter\fP ()"
+.br
+.RI "\fIWrites a footer as produced by the embedded layout's ILayout\&.Footer property\&. \fP"
+.ti -1c
+.RI "virtual void \fBWriteHeader\fP ()"
+.br
+.RI "\fIWrites a header produced by the embedded layout's ILayout\&.Header property\&. \fP"
+.ti -1c
+.RI "virtual void \fBPrepareWriter\fP ()"
+.br
+.RI "\fICalled to allow a subclass to lazily initialize the writer \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBImmediateFlush\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or set whether the appender will flush at the end of each append operation\&. \fP"
+.ti -1c
+.RI "virtual TextWriter \fBWriter\fP\fC [get, set]\fP"
+.br
+.RI "\fISets the TextWriter where the log output will go\&. \fP"
+.ti -1c
+.RI "override \fBIErrorHandler\fP \fBErrorHandler\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or set the IErrorHandler and the underlying QuietTextWriter, if any, for this appender\&. \fP"
+.ti -1c
+.RI "override bool \fBRequiresLayout\fP\fC [get]\fP"
+.br
+.RI "\fIThis appender requires a \fBLayout\fP to be set\&. \fP"
+.ti -1c
+.RI "\fBQuietTextWriter\fP \fBQuietWriter\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBlog4net\&.Util\&.QuietTextWriter\fP where logging events will be written to\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Sends logging events to a TextWriter\&. 
+
+An \fBAppender\fP that writes to a TextWriter\&. 
+.PP
+This appender may be used stand alone if initialized with an appropriate writer, however it is typically used as a base class for an appender that can open a TextWriter to write to\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> <author>Douglas de la Torre</author> 
+.PP
+Definition at line 45 of file TextWriterAppender\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.TextWriterAppender\&.TextWriterAppender ()"
+
+.PP
+Initializes a new instance of the \fBTextWriterAppender\fP class\&. Default constructor\&. 
+.PP
+Definition at line 57 of file TextWriterAppender\&.cs\&.
+.SS "log4net\&.Appender\&.TextWriterAppender\&.TextWriterAppender (\fBILayout\fPlayout, Streamos)"
+
+.PP
+Initializes a new instance of the \fBTextWriterAppender\fP class and sets the output destination to a new StreamWriter initialized with the specified Stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlayout\fP The layout to use with this appender\&.
+.br
+\fIos\fP The Stream to output to\&.
+.RE
+.PP
+.PP
+Obsolete constructor\&. 
+.PP
+Definition at line 74 of file TextWriterAppender\&.cs\&.
+.SS "log4net\&.Appender\&.TextWriterAppender\&.TextWriterAppender (\fBILayout\fPlayout, TextWriterwriter)"
+
+.PP
+Initializes a new instance of the \fBTextWriterAppender\fP class and sets the output destination to the specified StreamWriter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlayout\fP The layout to use with this appender
+.br
+\fIwriter\fP The TextWriter to output to
+.RE
+.PP
+.PP
+The TextWriter must have been previously opened\&. 
+.PP
+Obsolete constructor\&. 
+.PP
+Definition at line 93 of file TextWriterAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Appender\&.TextWriterAppender\&.Append (\fBLoggingEvent\fPloggingEvent)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+This method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent)\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP The event to log\&.
+.RE
+.PP
+.PP
+Writes a log statement to the output stream if the output stream exists and is writable\&. 
+.PP
+The format of the output will depend on the appender's layout\&. 
+.PP
+Implements \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 219 of file TextWriterAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.TextWriterAppender\&.Append (\fBLoggingEvent\fP[]loggingEvents)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+This method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent[])\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvents\fP The array of events to log\&.
+.RE
+.PP
+.PP
+This method writes all the bulk logged events to the output writer before flushing the stream\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 240 of file TextWriterAppender\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.TextWriterAppender\&.CloseWriter ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Closes the underlying TextWriter\&. Closes the underlying TextWriter\&. 
+.PP
+Reimplemented in \fBlog4net\&.Appender\&.FileAppender\fP\&.
+.PP
+Definition at line 337 of file TextWriterAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.TextWriterAppender\&.OnClose ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Close this appender instance\&. The underlying stream or writer is also closed\&. Closed appenders cannot be reused\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 259 of file TextWriterAppender\&.cs\&.
+.SS "override bool log4net\&.Appender\&.TextWriterAppender\&.PreAppendCheck ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+This method determines if there is a sense in attempting to append\&. This method checks if an output target has been set and if a layout has been set\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCfalse\fP if any of the preconditions fail\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 178 of file TextWriterAppender\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.TextWriterAppender\&.PrepareWriter ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called to allow a subclass to lazily initialize the writer This method is called when an event is logged and the \fBWriter\fP or \fBQuietWriter\fP have not been set\&. This allows a subclass to attempt to initialize the writer multiple times\&. 
+.PP
+Reimplemented in \fBlog4net\&.Appender\&.FileAppender\fP\&.
+.PP
+Definition at line 419 of file TextWriterAppender\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.TextWriterAppender\&.Reset ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Clears internal references to the underlying TextWriter and other variables\&. Subclasses can override this method for an alternate closing behavior\&. 
+.PP
+Reimplemented in \fBlog4net\&.Appender\&.FileAppender\fP\&.
+.PP
+Definition at line 363 of file TextWriterAppender\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.TextWriterAppender\&.WriteFooter ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Writes a footer as produced by the embedded layout's ILayout\&.Footer property\&. Writes a footer as produced by the embedded layout's ILayout\&.Footer property\&. 
+.PP
+Reimplemented in \fBlog4net\&.Appender\&.FileAppender\fP\&.
+.PP
+Definition at line 377 of file TextWriterAppender\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.TextWriterAppender\&.WriteFooterAndCloseWriter ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Writes the footer and closes the underlying TextWriter\&. Writes the footer and closes the underlying TextWriter\&. 
+.PP
+Definition at line 323 of file TextWriterAppender\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.TextWriterAppender\&.WriteHeader ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Writes a header produced by the embedded layout's ILayout\&.Header property\&. Writes a header produced by the embedded layout's ILayout\&.Header property\&. 
+.PP
+Reimplemented in \fBlog4net\&.Appender\&.FileAppender\fP\&.
+.PP
+Definition at line 397 of file TextWriterAppender\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override \fBIErrorHandler\fP log4net\&.Appender\&.TextWriterAppender\&.ErrorHandler\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or set the IErrorHandler and the underlying QuietTextWriter, if any, for this appender\&. The IErrorHandler for this appender\&. 
+.PP
+Definition at line 275 of file TextWriterAppender\&.cs\&.
+.SS "bool log4net\&.Appender\&.TextWriterAppender\&.ImmediateFlush\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or set whether the appender will flush at the end of each append operation\&. The default behavior is to flush at the end of each append operation\&. 
+.PP
+If this option is set to \fCfalse\fP, then the underlying stream can defer persisting the logging event to a later time\&. 
+.PP
+Avoiding the flush operation at the end of each append results in a performance gain of 10 to 20 percent\&. However, there is safety trade-off involved in skipping flushing\&. Indeed, when flushing is skipped, then it is likely that the last few log events will not be recorded on disk when the application exits\&. This is a high price to pay even for a 20% performance gain\&. 
+.PP
+Definition at line 127 of file TextWriterAppender\&.cs\&.
+.SS "\fBQuietTextWriter\fP log4net\&.Appender\&.TextWriterAppender\&.QuietWriter\fC [get]\fP, \fC [set]\fP, \fC [protected]\fP"
+
+.PP
+Gets or sets the \fBlog4net\&.Util\&.QuietTextWriter\fP where logging events will be written to\&. The \fBlog4net\&.Util\&.QuietTextWriter\fP where logging events are written\&. 
+.PP
+This is the \fBlog4net\&.Util\&.QuietTextWriter\fP where logging events will be written to\&. 
+.PP
+Definition at line 437 of file TextWriterAppender\&.cs\&.
+.SS "override bool log4net\&.Appender\&.TextWriterAppender\&.RequiresLayout\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+This appender requires a \fBLayout\fP to be set\&. \fCtrue\fP
+.PP
+This appender requires a \fBLayout\fP to be set\&. 
+.PP
+Definition at line 307 of file TextWriterAppender\&.cs\&.
+.SS "virtual TextWriter log4net\&.Appender\&.TextWriterAppender\&.Writer\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Sets the TextWriter where the log output will go\&. The specified TextWriter must be open and writable\&. 
+.PP
+The TextWriter will be closed when the appender instance is closed\&. 
+.PP
+\fBNote:\fP Logging to an unopened TextWriter will fail\&. 
+.PP
+Definition at line 148 of file TextWriterAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

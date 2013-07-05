@@ -1,0 +1,322 @@
+.TH "HSA.InfoSys.Gui.Controllers.AccountController" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HSA.InfoSys.Gui.Controllers.AccountController \- 
+.PP
+The controller for authentication\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits Controller\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "ActionResult \fBLogOn\fP ()"
+.br
+.RI "\fIUser log in\&. \fP"
+.ti -1c
+.RI "ActionResult \fBLogOn\fP (\fBLogOnModel\fP model, string returnUrl)"
+.br
+.RI "\fIUser log on\&. \fP"
+.ti -1c
+.RI "ActionResult \fBLogOff\fP ()"
+.br
+.RI "\fIUser log off\&. \fP"
+.ti -1c
+.RI "ActionResult \fBRegister\fP ()"
+.br
+.RI "\fIUser registration\&. \fP"
+.ti -1c
+.RI "ActionResult \fBRegister\fP (\fBRegisterModel\fP model, bool captchaValid)"
+.br
+.RI "\fIThe registration process\&. \fP"
+.ti -1c
+.RI "ActionResult \fBChangePassword\fP ()"
+.br
+.RI "\fIChanges the password\&. \fP"
+.ti -1c
+.RI "ActionResult \fBChangePassword\fP (\fBChangePasswordModel\fP model)"
+.br
+.RI "\fIChanges the password\&. \fP"
+.ti -1c
+.RI "ActionResult \fBChangePasswordSuccess\fP ()"
+.br
+.RI "\fIChanges the password success\&. \fP"
+.ti -1c
+.RI "ActionResult \fBConfirmation\fP ()"
+.br
+.RI "\fIShow the confirmation page\&. \fP"
+.ti -1c
+.RI "ActionResult \fBVerify\fP (string id)"
+.br
+.RI "\fIVerifies the specified ID\&. \fP"
+.ti -1c
+.RI "ActionResult \fBUserControl\fP ()"
+.br
+.RI "\fIreturns the user control view \fP"
+.ti -1c
+.RI "ActionResult \fBDeleteUser\fP ()"
+.br
+.RI "\fIDeletes the user\&. \fP"
+.ti -1c
+.RI "ActionResult \fBActivateUser\fP ()"
+.br
+.RI "\fIActivates or deactivates the user\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBInitialize\fP (RequestContext requestContext)"
+.br
+.RI "\fIInitializes data which may will be no available while the constructor is called\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIFormsAuthenticationService\fP \fBFormsService\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the forms service\&. \fP"
+.ti -1c
+.RI "\fBIMembershipService\fP \fBMembershipService\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the membership service\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The controller for authentication\&. 
+
+
+.PP
+Definition at line 18 of file AccountController\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "ActionResult HSA\&.InfoSys\&.Gui\&.Controllers\&.AccountController\&.ActivateUser ()"
+
+.PP
+Activates or deactivates the user\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Returns to the defined action\&.
+.RE
+.PP
+
+.PP
+Definition at line 301 of file AccountController\&.cs\&.
+.SS "ActionResult HSA\&.InfoSys\&.Gui\&.Controllers\&.AccountController\&.ChangePassword ()"
+
+.PP
+Changes the password\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the password change process\&.
+.RE
+.PP
+
+.PP
+Definition at line 177 of file AccountController\&.cs\&.
+.SS "ActionResult HSA\&.InfoSys\&.Gui\&.Controllers\&.AccountController\&.ChangePassword (\fBChangePasswordModel\fPmodel)"
+
+.PP
+Changes the password\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImodel\fP The model\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the change password process\&.
+.RE
+.PP
+
+.PP
+Definition at line 192 of file AccountController\&.cs\&.
+.SS "ActionResult HSA\&.InfoSys\&.Gui\&.Controllers\&.AccountController\&.ChangePasswordSuccess ()"
+
+.PP
+Changes the password success\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the password changing process on success\&.
+.RE
+.PP
+
+.PP
+Definition at line 224 of file AccountController\&.cs\&.
+.SS "ActionResult HSA\&.InfoSys\&.Gui\&.Controllers\&.AccountController\&.Confirmation ()"
+
+.PP
+Show the confirmation page\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the confirmation process\&.
+.RE
+.PP
+
+.PP
+Definition at line 233 of file AccountController\&.cs\&.
+.SS "ActionResult HSA\&.InfoSys\&.Gui\&.Controllers\&.AccountController\&.DeleteUser ()"
+
+.PP
+Deletes the user\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Returns to the defined action\&.
+.RE
+.PP
+
+.PP
+Definition at line 288 of file AccountController\&.cs\&.
+.SS "override void HSA\&.InfoSys\&.Gui\&.Controllers\&.AccountController\&.Initialize (RequestContextrequestContext)\fC [protected]\fP"
+
+.PP
+Initializes data which may will be no available while the constructor is called\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrequestContext\fP The HTTP-context and the route data\&.
+.RE
+.PP
+
+.PP
+Definition at line 325 of file AccountController\&.cs\&.
+.SS "ActionResult HSA\&.InfoSys\&.Gui\&.Controllers\&.AccountController\&.LogOff ()"
+
+.PP
+User log off\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the log off process\&.
+.RE
+.PP
+
+.PP
+Definition at line 101 of file AccountController\&.cs\&.
+.SS "ActionResult HSA\&.InfoSys\&.Gui\&.Controllers\&.AccountController\&.LogOn ()"
+
+.PP
+User log in\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the log in process\&.
+.RE
+.PP
+
+.PP
+Definition at line 44 of file AccountController\&.cs\&.
+.SS "ActionResult HSA\&.InfoSys\&.Gui\&.Controllers\&.AccountController\&.LogOn (\fBLogOnModel\fPmodel, stringreturnUrl)"
+
+.PP
+User log on\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImodel\fP The model\&.
+.br
+\fIreturnUrl\fP The return URL\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the log on process\&.
+.RE
+.PP
+
+.PP
+Definition at line 62 of file AccountController\&.cs\&.
+.SS "ActionResult HSA\&.InfoSys\&.Gui\&.Controllers\&.AccountController\&.Register ()"
+
+.PP
+User registration\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the registration process\&.
+.RE
+.PP
+
+.PP
+Definition at line 116 of file AccountController\&.cs\&.
+.SS "ActionResult HSA\&.InfoSys\&.Gui\&.Controllers\&.AccountController\&.Register (\fBRegisterModel\fPmodel, boolcaptchaValid)"
+
+.PP
+The registration process\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImodel\fP The model\&.
+.br
+\fIcaptchaValid\fP if set to \fCtrue\fP [captcha valid]\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the registration process\&.
+.RE
+.PP
+
+.PP
+Definition at line 131 of file AccountController\&.cs\&.
+.SS "ActionResult HSA\&.InfoSys\&.Gui\&.Controllers\&.AccountController\&.UserControl ()"
+
+.PP
+returns the user control view 
+.PP
+\fBReturns:\fP
+.RS 4
+Returns to this view\&.
+.RE
+.PP
+
+.PP
+Definition at line 277 of file AccountController\&.cs\&.
+.SS "ActionResult HSA\&.InfoSys\&.Gui\&.Controllers\&.AccountController\&.Verify (stringid)"
+
+.PP
+Verifies the specified ID\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The ID\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the verification process\&.
+.RE
+.PP
+
+.PP
+Definition at line 243 of file AccountController\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBIFormsAuthenticationService\fP HSA\&.InfoSys\&.Gui\&.Controllers\&.AccountController\&.FormsService\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the forms service\&. The forms service\&. 
+.PP
+Definition at line 26 of file AccountController\&.cs\&.
+.SS "\fBIMembershipService\fP HSA\&.InfoSys\&.Gui\&.Controllers\&.AccountController\&.MembershipService\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the membership service\&. The membership service\&. 
+.PP
+Definition at line 34 of file AccountController\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

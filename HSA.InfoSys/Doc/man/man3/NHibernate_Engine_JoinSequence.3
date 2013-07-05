@@ -1,0 +1,78 @@
+.TH "NHibernate.Engine.JoinSequence" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.JoinSequence \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "interface \fBISelector\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "\fBJoinSequence\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "\fBJoinSequence\fP \fBGetFromPart\fP ()"
+.br
+.ti -1c
+.RI "\fBJoinSequence\fP \fBCopy\fP ()"
+.br
+.ti -1c
+.RI "\fBJoinSequence\fP \fBAddJoin\fP (\fBIAssociationType\fP associationType, string alias, \fBJoinType\fP joinType, string[] referencingKey)"
+.br
+.ti -1c
+.RI "\fBJoinFragment\fP \fBToJoinFragment\fP ()"
+.br
+.ti -1c
+.RI "\fBJoinFragment\fP \fBToJoinFragment\fP (IDictionary< string, \fBIFilter\fP > enabledFilters, bool includeExtraJoins)"
+.br
+.ti -1c
+.RI "\fBJoinFragment\fP \fBToJoinFragment\fP (IDictionary< string, \fBIFilter\fP > enabledFilters, bool includeExtraJoins, \fBSqlString\fP withClauseFragment, string withClauseJoinAlias)"
+.br
+.ti -1c
+.RI "\fBJoinSequence\fP \fBAddCondition\fP (\fBSqlString\fP condition)"
+.br
+.ti -1c
+.RI "\fBJoinSequence\fP \fBAddCondition\fP (string alias, string[] columns, string condition, bool appendParameter)"
+.br
+.ti -1c
+.RI "\fBJoinSequence\fP \fBSetRoot\fP (\fBIJoinable\fP joinable, string alias)"
+.br
+.ti -1c
+.RI "\fBJoinSequence\fP \fBSetNext\fP (\fBJoinSequence\fP next)"
+.br
+.ti -1c
+.RI "\fBJoinSequence\fP \fBSetSelector\fP (\fBISelector\fP s)"
+.br
+.ti -1c
+.RI "\fBJoinSequence\fP \fBSetUseThetaStyle\fP (bool useThetaStyle)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsThetaStyle\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBJoinCount\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 12 of file JoinSequence\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,620 @@
+.TH "Newtonsoft.Json" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "package \fBBson\fP"
+.br
+.ti -1c
+.RI "package \fBConverters\fP"
+.br
+.ti -1c
+.RI "package \fBLinq\fP"
+.br
+.ti -1c
+.RI "package \fBSchema\fP"
+.br
+.ti -1c
+.RI "package \fBSerialization\fP"
+.br
+.ti -1c
+.RI "package \fBUtilities\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "interface \fBIJsonLineInfo\fP"
+.br
+.RI "\fIProvides an interface to enable a class to return line and position information\&. \fP"
+.ti -1c
+.RI "class \fBJsonArrayAttribute\fP"
+.br
+.RI "\fIInstructs the \fBJsonSerializer\fP how to serialize the collection\&. \fP"
+.ti -1c
+.RI "class \fBJsonConstructorAttribute\fP"
+.br
+.RI "\fIInstructs the \fBJsonSerializer\fP to use the specified constructor when deserializing that object\&. \fP"
+.ti -1c
+.RI "class \fBJsonContainerAttribute\fP"
+.br
+.RI "\fIInstructs the \fBJsonSerializer\fP how to serialize the object\&. \fP"
+.ti -1c
+.RI "class \fBJsonConvert\fP"
+.br
+.RI "\fIProvides methods for converting between common language runtime types and JSON types\&. \fP"
+.ti -1c
+.RI "class \fBJsonConverter\fP"
+.br
+.RI "\fIConverts an object to and from JSON\&. \fP"
+.ti -1c
+.RI "class \fBJsonConverterAttribute\fP"
+.br
+.RI "\fIInstructs the \fBJsonSerializer\fP to use the specified \fBJsonConverter\fP when serializing the member or class\&. \fP"
+.ti -1c
+.RI "class \fBJsonConverterCollection\fP"
+.br
+.RI "\fIRepresents a collection of \fBJsonConverter\fP\&. \fP"
+.ti -1c
+.RI "class \fBJsonDictionaryAttribute\fP"
+.br
+.RI "\fIInstructs the \fBJsonSerializer\fP how to serialize the collection\&. \fP"
+.ti -1c
+.RI "class \fBJsonException\fP"
+.br
+.RI "\fIThe exception thrown when an error occurs during \fBJson\fP serialization or deserialization\&. \fP"
+.ti -1c
+.RI "class \fBJsonExtensionDataAttribute\fP"
+.br
+.RI "\fIInstructs the \fBJsonSerializer\fP to populate properties with no matching class member onto the specified collection\&. \fP"
+.ti -1c
+.RI "class \fBJsonIgnoreAttribute\fP"
+.br
+.RI "\fIInstructs the \fBJsonSerializer\fP not to serialize the public field or public read/write property value\&. \fP"
+.ti -1c
+.RI "class \fBJsonObjectAttribute\fP"
+.br
+.RI "\fIInstructs the \fBJsonSerializer\fP how to serialize the object\&. \fP"
+.ti -1c
+.RI "struct \fBJsonPosition\fP"
+.br
+.ti -1c
+.RI "class \fBJsonPropertyAttribute\fP"
+.br
+.RI "\fIInstructs the \fBJsonSerializer\fP to always serialize the member with the specified name\&. \fP"
+.ti -1c
+.RI "class \fBJsonReader\fP"
+.br
+.RI "\fIRepresents a reader that provides fast, non-cached, forward-only access to serialized \fBJson\fP data\&. \fP"
+.ti -1c
+.RI "class \fBJsonReaderException\fP"
+.br
+.RI "\fIThe exception thrown when an error occurs while reading \fBJson\fP text\&. \fP"
+.ti -1c
+.RI "class \fBJsonSerializationException\fP"
+.br
+.RI "\fIThe exception thrown when an error occurs during \fBJson\fP serialization or deserialization\&. \fP"
+.ti -1c
+.RI "class \fBJsonSerializer\fP"
+.br
+.RI "\fISerializes and deserializes objects into and from the JSON format\&. The \fBJsonSerializer\fP enables you to control how objects are encoded into JSON\&. \fP"
+.ti -1c
+.RI "class \fBJsonSerializerSettings\fP"
+.br
+.RI "\fISpecifies the settings on a \fBJsonSerializer\fP object\&. \fP"
+.ti -1c
+.RI "class \fBJsonTextReader\fP"
+.br
+.RI "\fIRepresents a reader that provides fast, non-cached, forward-only access to JSON text data\&. \fP"
+.ti -1c
+.RI "class \fBJsonTextWriter\fP"
+.br
+.RI "\fIRepresents a writer that provides a fast, non-cached, forward-only way of generating \fBJson\fP data\&. \fP"
+.ti -1c
+.RI "class \fBJsonValidatingReader\fP"
+.br
+.RI "\fIRepresents a reader that provides JsonSchema validation\&. \fP"
+.ti -1c
+.RI "class \fBJsonWriter\fP"
+.br
+.RI "\fIRepresents a writer that provides a fast, non-cached, forward-only way of generating \fBJson\fP data\&. \fP"
+.ti -1c
+.RI "class \fBJsonWriterException\fP"
+.br
+.RI "\fIThe exception thrown when an error occurs while reading \fBJson\fP text\&. \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBConstructorHandling\fP { \fBConstructorHandling\&.Default\fP = 0, \fBConstructorHandling\&.AllowNonPublicDefaultConstructor\fP = 1 }"
+.br
+.RI "\fISpecifies how constructors are used when initializing objects during deserialization by the JsonSerializer\&. \fP"
+.ti -1c
+.RI "enum \fBDateFormatHandling\fP { \fBDateFormatHandling\&.IsoDateFormat\fP, \fBDateFormatHandling\&.MicrosoftDateFormat\fP }"
+.br
+.RI "\fISpecifies how dates are formatted when writing JSON text\&. \fP"
+.ti -1c
+.RI "enum \fBDateParseHandling\fP { \fBDateParseHandling\&.None\fP, \fBDateParseHandling\&.DateTime\fP, \fBDateParseHandling\&.DateTimeOffset\fP }"
+.br
+.RI "\fISpecifies how date formatted strings, e\&.g\&. '\\/Date(1198908717056)\\/' and '2012-03-21T05:40Z', are parsed when reading JSON text\&. \fP"
+.ti -1c
+.RI "enum \fBDateTimeZoneHandling\fP { \fBDateTimeZoneHandling\&.Local\fP, \fBDateTimeZoneHandling\&.Utc\fP, \fBDateTimeZoneHandling\&.Unspecified\fP, \fBDateTimeZoneHandling\&.RoundtripKind\fP }"
+.br
+.RI "\fISpecifies how to treat the time value when converting between string and DateTime\&. \fP"
+.ti -1c
+.RI "enum \fBDefaultValueHandling\fP { \fBDefaultValueHandling\&.Include\fP = 0, \fBDefaultValueHandling\&.Ignore\fP = 1, \fBDefaultValueHandling\&.Populate\fP = 2, \fBDefaultValueHandling\&.IgnoreAndPopulate\fP = Ignore | Populate }"
+.br
+.RI "\fISpecifies default value handling options for the JsonSerializer\&. \fP"
+.ti -1c
+.RI "enum \fBFloatFormatHandling\fP { \fBFloatFormatHandling\&.String\fP, \fBFloatFormatHandling\&.Symbol\fP, \fBFloatFormatHandling\&.DefaultValue\fP }"
+.br
+.RI "\fISpecifies float format handling options when writing special floating point numbers, e\&.g\&. F:System\&.Double\&.NaN, F:System\&.Double\&.PositiveInfinity and F:System\&.Double\&.NegativeInfinity with JsonWriter\&. \fP"
+.ti -1c
+.RI "enum \fBFloatParseHandling\fP { \fBFloatParseHandling\&.Double\fP, \fBFloatParseHandling\&.Decimal\fP }"
+.br
+.RI "\fISpecifies how floating point numbers, e\&.g\&. 1\&.0 and 9\&.9, are parsed when reading JSON text\&. \fP"
+.ti -1c
+.RI "enum \fBFormatting\fP { \fBFormatting\&.None\fP, \fBFormatting\&.Indented\fP }"
+.br
+.RI "\fISpecifies formatting options for the JsonTextWriter\&. \fP"
+.ti -1c
+.RI "enum \fBJsonToken\fP { \fBJsonToken\&.None\fP, \fBJsonToken\&.StartObject\fP, \fBJsonToken\&.StartArray\fP, \fBJsonToken\&.StartConstructor\fP, \fBJsonToken\&.PropertyName\fP, \fBJsonToken\&.Comment\fP, \fBJsonToken\&.Raw\fP, \fBJsonToken\&.Integer\fP, \fBJsonToken\&.Float\fP, \fBJsonToken\&.String\fP, \fBJsonToken\&.Boolean\fP, \fBJsonToken\&.Null\fP, \fBJsonToken\&.Undefined\fP, \fBJsonToken\&.EndObject\fP, \fBJsonToken\&.EndArray\fP, \fBJsonToken\&.EndConstructor\fP, \fBJsonToken\&.Date\fP, \fBJsonToken\&.Bytes\fP }"
+.br
+.RI "\fISpecifies the type of Json token\&. \fP"
+.ti -1c
+.RI "enum \fBMemberSerialization\fP { \fBMemberSerialization\&.OptOut\fP, \fBMemberSerialization\&.OptIn\fP, \fBMemberSerialization\&.Fields\fP }"
+.br
+.RI "\fISpecifies the member serialization options for the JsonSerializer\&. \fP"
+.ti -1c
+.RI "enum \fBMissingMemberHandling\fP { \fBMissingMemberHandling\&.Ignore\fP = 0, \fBMissingMemberHandling\&.Error\fP = 1 }"
+.br
+.RI "\fISpecifies missing member handling options for the JsonSerializer\&. \fP"
+.ti -1c
+.RI "enum \fBNullValueHandling\fP { \fBNullValueHandling\&.Include\fP = 0, \fBNullValueHandling\&.Ignore\fP = 1 }"
+.br
+.RI "\fISpecifies null value handling options for the JsonSerializer\&. \fP"
+.ti -1c
+.RI "enum \fBObjectCreationHandling\fP { \fBObjectCreationHandling\&.Auto\fP = 0, \fBObjectCreationHandling\&.Reuse\fP = 1, \fBObjectCreationHandling\&.Replace\fP = 2 }"
+.br
+.RI "\fISpecifies how object creation is handled by the JsonSerializer\&. \fP"
+.ti -1c
+.RI "enum \fBPreserveReferencesHandling\fP { \fBPreserveReferencesHandling\&.None\fP = 0, \fBPreserveReferencesHandling\&.Objects\fP = 1, \fBPreserveReferencesHandling\&.Arrays\fP = 2, \fBPreserveReferencesHandling\&.All\fP = Objects | Arrays }"
+.br
+.RI "\fISpecifies reference handling options for the JsonSerializer\&. Note that references cannot be preserved when a value is set via a non-default constructor such as types that implement ISerializable\&. \fP"
+.ti -1c
+.RI "enum \fBReferenceLoopHandling\fP { \fBReferenceLoopHandling\&.Error\fP = 0, \fBReferenceLoopHandling\&.Ignore\fP = 1, \fBReferenceLoopHandling\&.Serialize\fP = 2 }"
+.br
+.RI "\fISpecifies reference loop handling options for the JsonSerializer\&. \fP"
+.ti -1c
+.RI "enum \fBRequired\fP { \fBRequired\&.Default\fP, \fBRequired\&.AllowNull\fP, \fBRequired\&.Always\fP }"
+.br
+.RI "\fIIndicating whether a property is required\&. \fP"
+.ti -1c
+.RI "enum \fBStringEscapeHandling\fP { \fBStringEscapeHandling\&.Default\fP, \fBStringEscapeHandling\&.EscapeNonAscii\fP, \fBStringEscapeHandling\&.EscapeHtml\fP }"
+.br
+.RI "\fISpecifies how strings are escaped when writing JSON text\&. \fP"
+.ti -1c
+.RI "enum \fBTypeNameHandling\fP { \fBTypeNameHandling\&.None\fP = 0, \fBTypeNameHandling\&.Objects\fP = 1, \fBTypeNameHandling\&.Arrays\fP = 2, \fBTypeNameHandling\&.All\fP = Objects | Arrays, \fBTypeNameHandling\&.Auto\fP = 4 }"
+.br
+.RI "\fISpecifies type name handling options for the JsonSerializer\&. \fP"
+.ti -1c
+.RI "enum \fBWriteState\fP { \fBWriteState\&.Error\fP, \fBWriteState\&.Closed\fP, \fBWriteState\&.Object\fP, \fBWriteState\&.Array\fP, \fBWriteState\&.Constructor\fP, \fBWriteState\&.Property\fP, \fBWriteState\&.Start\fP }"
+.br
+.RI "\fISpecifies the state of the JsonWriter\&. \fP"
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBNewtonsoft\&.Json\&.ConstructorHandling\fP"
+
+.PP
+Specifies how constructors are used when initializing objects during deserialization by the \fBJsonSerializer\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIDefault \fP\fP
+First attempt to use the public default constructor, then fall back to single paramatized constructor, then the non-public default constructor\&. 
+.TP
+\fB\fIAllowNonPublicDefaultConstructor \fP\fP
+Json\&.NET will use a non-public default constructor before falling back to a paramatized constructor\&. 
+.PP
+Definition at line 31 of file ConstructorHandling\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.DateFormatHandling\fP"
+
+.PP
+Specifies how dates are formatted when writing JSON text\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIIsoDateFormat \fP\fP
+Dates are written in the ISO 8601 format, e\&.g\&. '2012-03-21T05:40Z'\&. 
+.TP
+\fB\fIMicrosoftDateFormat \fP\fP
+Dates are written in the Microsoft JSON format, e\&.g\&. '\\/Date(1198908717056)\\/'\&. 
+.PP
+Definition at line 31 of file DateFormatHandling\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.DateParseHandling\fP"
+
+.PP
+Specifies how date formatted strings, e\&.g\&. '\\/Date(1198908717056)\\/' and '2012-03-21T05:40Z', are parsed when reading JSON text\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+Date formatted strings are not parsed to a date type and are read as strings\&. 
+.TP
+\fB\fIDateTime \fP\fP
+Date formatted strings, e\&.g\&. '\\/Date(1198908717056)\\/' and '2012-03-21T05:40Z', are parsed to \fBDateTime\fP\&. 
+.TP
+\fB\fIDateTimeOffset \fP\fP
+Date formatted strings, e\&.g\&. '\\/Date(1198908717056)\\/' and '2012-03-21T05:40Z', are parsed to \fBDateTimeOffset\fP\&. 
+.PP
+Definition at line 31 of file DateParseHandling\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.DateTimeZoneHandling\fP"
+
+.PP
+Specifies how to treat the time value when converting between string and \fBDateTime\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fILocal \fP\fP
+Treat as local time\&. If the \fBDateTime\fP object represents a Coordinated Universal Time (UTC), it is converted to the local time\&. 
+.TP
+\fB\fIUtc \fP\fP
+Treat as a UTC\&. If the \fBDateTime\fP object represents a local time, it is converted to a UTC\&. 
+.TP
+\fB\fIUnspecified \fP\fP
+Treat as a local time if a \fBDateTime\fP is being converted to a string\&. If a string is being converted to \fBDateTime\fP, convert to a local time if a time zone is specified\&. 
+.TP
+\fB\fIRoundtripKind \fP\fP
+Time zone information should be preserved when converting\&. 
+.PP
+Definition at line 33 of file DateTimeZoneHandling\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.DefaultValueHandling\fP"
+
+.PP
+Specifies default value handling options for the \fBJsonSerializer\fP\&. \fC \fC \fP\fP
+.PP
+\fC\fC \fP\fP
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIInclude \fP\fP
+Include members where the member value is the same as the member's default value when serializing objects\&. Included members are written to JSON\&. Has no effect when deserializing\&. 
+.TP
+\fB\fIIgnore \fP\fP
+Ignore members where the member value is the same as the member's default value when serializing objects so that is is not written to JSON\&. This option will ignore all default values (e\&.g\&. \fCnull\fP for objects and nullable typesl; \fC0\fP for integers, decimals and floating point numbers; and \fCfalse\fP for booleans)\&. The default value ignored can be changed by placing the DefaultValueAttribute on the property\&. 
+.TP
+\fB\fIPopulate \fP\fP
+Members with a default value but no JSON will be set to their default value when deserializing\&. 
+.TP
+\fB\fIIgnoreAndPopulate \fP\fP
+Ignore members where the member value is the same as the member's default value when serializing objects and sets members to their default value when deserializing\&. 
+.PP
+Definition at line 39 of file DefaultValueHandling\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.FloatFormatHandling\fP"
+
+.PP
+Specifies float format handling options when writing special floating point numbers, e\&.g\&. F:System\&.Double\&.NaN, F:System\&.Double\&.PositiveInfinity and F:System\&.Double\&.NegativeInfinity with \fBJsonWriter\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIString \fP\fP
+Write special floating point values as strings in JSON, e\&.g\&. 'NaN', 'Infinity', '-Infinity'\&. 
+.TP
+\fB\fISymbol \fP\fP
+Write special floating point values as symbols in JSON, e\&.g\&. NaN, Infinity, -Infinity\&. Note that this will produce non-valid JSON\&. 
+.TP
+\fB\fIDefaultValue \fP\fP
+Write special floating point values as the property's default value in JSON, e\&.g\&. 0\&.0 for a System\&.Double property, null for a System\&.Nullable{Double} property\&. 
+.PP
+Definition at line 32 of file FloatFormatHandling\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.FloatParseHandling\fP"
+
+.PP
+Specifies how floating point numbers, e\&.g\&. 1\&.0 and 9\&.9, are parsed when reading JSON text\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIDouble \fP\fP
+Floating point numbers are parsed to \fBDouble\fP\&. 
+.TP
+\fB\fIDecimal \fP\fP
+Floating point numbers are parsed to \fBDecimal\fP\&. 
+.PP
+Definition at line 31 of file FloatParseHandling\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.Formatting\fP"
+
+.PP
+Specifies formatting options for the \fBJsonTextWriter\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+No special formatting is applied\&. This is the default\&. 
+.TP
+\fB\fIIndented \fP\fP
+Causes child objects to be indented according to the \fBJsonTextWriter\&.Indentation\fP and \fBJsonTextWriter\&.IndentChar\fP settings\&. 
+.PP
+Definition at line 31 of file Formatting\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.JsonToken\fP"
+
+.PP
+Specifies the type of \fBJson\fP token\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+This is returned by the \fBJsonReader\fP if a \fBJsonReader\&.Read\fP method has not been called\&. 
+.TP
+\fB\fIStartObject \fP\fP
+An object start token\&. 
+.TP
+\fB\fIStartArray \fP\fP
+An array start token\&. 
+.TP
+\fB\fIStartConstructor \fP\fP
+A constructor start token\&. 
+.TP
+\fB\fIPropertyName \fP\fP
+An object property name\&. 
+.TP
+\fB\fIComment \fP\fP
+A comment\&. 
+.TP
+\fB\fIRaw \fP\fP
+Raw JSON\&. 
+.TP
+\fB\fIInteger \fP\fP
+An integer\&. 
+.TP
+\fB\fIFloat \fP\fP
+A float\&. 
+.TP
+\fB\fIString \fP\fP
+A string\&. 
+.TP
+\fB\fIBoolean \fP\fP
+A boolean\&. 
+.TP
+\fB\fINull \fP\fP
+A null token\&. 
+.TP
+\fB\fIUndefined \fP\fP
+An undefined token\&. 
+.TP
+\fB\fIEndObject \fP\fP
+An object end token\&. 
+.TP
+\fB\fIEndArray \fP\fP
+An array end token\&. 
+.TP
+\fB\fIEndConstructor \fP\fP
+A constructor end token\&. 
+.TP
+\fB\fIDate \fP\fP
+A Date\&. 
+.TP
+\fB\fIBytes \fP\fP
+Byte data\&. 
+.PP
+Definition at line 35 of file JsonToken\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.MemberSerialization\fP"
+
+.PP
+Specifies the member serialization options for the \fBJsonSerializer\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIOptOut \fP\fP
+All public members are serialized by default\&. Members can be excluded using \fBJsonIgnoreAttribute\fP or NonSerializedAttribute\&. This is the default member serialization mode\&. 
+.TP
+\fB\fIOptIn \fP\fP
+Only members must be marked with \fBJsonPropertyAttribute\fP or DataMemberAttribute are serialized\&. This member serialization mode can also be set by marking the class with DataContractAttribute\&. 
+.TP
+\fB\fIFields \fP\fP
+All public and private fields are serialized\&. Members can be excluded using \fBJsonIgnoreAttribute\fP or NonSerializedAttribute\&. This member serialization mode can also be set by marking the class with SerializableAttribute and setting IgnoreSerializableAttribute on DefaultContractResolver to false\&. 
+.PP
+Definition at line 35 of file MemberSerialization\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.MissingMemberHandling\fP"
+
+.PP
+Specifies missing member handling options for the \fBJsonSerializer\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIIgnore \fP\fP
+Ignore a missing member and do not attempt to deserialize it\&. 
+.TP
+\fB\fIError \fP\fP
+Throw a \fBJsonSerializationException\fP when a missing member is encountered during deserialization\&. 
+.PP
+Definition at line 35 of file MissingMemberHandling\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.NullValueHandling\fP"
+
+.PP
+Specifies null value handling options for the \fBJsonSerializer\fP\&. \fC \fC \fP\fP
+.PP
+\fC\fC \fP\fP
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIInclude \fP\fP
+Include null values when serializing and deserializing objects\&. 
+.TP
+\fB\fIIgnore \fP\fP
+Ignore null values when serializing and deserializing objects\&. 
+.PP
+Definition at line 35 of file NullValueHandling\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.ObjectCreationHandling\fP"
+
+.PP
+Specifies how object creation is handled by the \fBJsonSerializer\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIAuto \fP\fP
+Reuse existing objects, create new objects when needed\&. 
+.TP
+\fB\fIReuse \fP\fP
+Only reuse existing objects\&. 
+.TP
+\fB\fIReplace \fP\fP
+Always create new objects\&. 
+.PP
+Definition at line 31 of file ObjectCreationHandling\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.PreserveReferencesHandling\fP"
+
+.PP
+Specifies reference handling options for the \fBJsonSerializer\fP\&. Note that references cannot be preserved when a value is set via a non-default constructor such as types that implement ISerializable\&. \fC \fP
+.PP
+\fC \fP
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+Do not preserve references when serializing types\&. 
+.TP
+\fB\fIObjects \fP\fP
+Preserve references when serializing into a JSON object structure\&. 
+.TP
+\fB\fIArrays \fP\fP
+Preserve references when serializing into a JSON array structure\&. 
+.TP
+\fB\fIAll \fP\fP
+Preserve references when serializing\&. 
+.PP
+Definition at line 40 of file PreserveReferencesHandling\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.ReferenceLoopHandling\fP"
+
+.PP
+Specifies reference loop handling options for the \fBJsonSerializer\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIError \fP\fP
+Throw a \fBJsonSerializationException\fP when a loop is encountered\&. 
+.TP
+\fB\fIIgnore \fP\fP
+Ignore loop references and do not serialize\&. 
+.TP
+\fB\fISerialize \fP\fP
+Serialize loop references\&. 
+.PP
+Definition at line 35 of file ReferenceLoopHandling\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.Required\fP"
+
+.PP
+Indicating whether a property is required\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIDefault \fP\fP
+The property is not required\&. The default state\&. 
+.TP
+\fB\fIAllowNull \fP\fP
+The property must be defined in JSON but can be a null value\&. 
+.TP
+\fB\fIAlways \fP\fP
+The property must be defined in JSON and cannot be a null value\&. 
+.PP
+Definition at line 31 of file Required\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.StringEscapeHandling\fP"
+
+.PP
+Specifies how strings are escaped when writing JSON text\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIDefault \fP\fP
+Only control characters (e\&.g\&. newline) are escaped\&. 
+.TP
+\fB\fIEscapeNonAscii \fP\fP
+All non-ASCII and control characters (e\&.g\&. newline) are escaped\&. 
+.TP
+\fB\fIEscapeHtml \fP\fP
+HTML (<, >, &, ', ") and control characters (e\&.g\&. newline) are escaped\&. 
+.PP
+Definition at line 31 of file StringEscapeHandling\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.TypeNameHandling\fP"
+
+.PP
+Specifies type name handling options for the \fBJsonSerializer\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+Do not include the \&.NET type name when serializing types\&. 
+.TP
+\fB\fIObjects \fP\fP
+Include the \&.NET type name when serializing into a JSON object structure\&. 
+.TP
+\fB\fIArrays \fP\fP
+Include the \&.NET type name when serializing into a JSON array structure\&. 
+.TP
+\fB\fIAll \fP\fP
+Always include the \&.NET type name when serializing\&. 
+.TP
+\fB\fIAuto \fP\fP
+Include the \&.NET type name when the type of the object being serialized is not the same as its declared type\&. 
+.PP
+Definition at line 34 of file TypeNameHandling\&.cs\&.
+.SS "enum \fBNewtonsoft\&.Json\&.WriteState\fP"
+
+.PP
+Specifies the state of the \fBJsonWriter\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIError \fP\fP
+An exception has been thrown, which has left the \fBJsonWriter\fP in an invalid state\&. You may call the \fBJsonWriter\&.Close\fP method to put the \fBJsonWriter\fP in the \fCClosed\fP state\&. Any other \fBJsonWriter\fP method calls results in an InvalidOperationException being thrown\&. 
+.TP
+\fB\fIClosed \fP\fP
+The \fBJsonWriter\&.Close\fP method has been called\&. 
+.TP
+\fB\fIObject \fP\fP
+An object is being written\&. 
+.TP
+\fB\fIArray \fP\fP
+A array is being written\&. 
+.TP
+\fB\fIConstructor \fP\fP
+A constructor is being written\&. 
+.TP
+\fB\fIProperty \fP\fP
+A property is being written\&. 
+.TP
+\fB\fIStart \fP\fP
+A write method has not been called\&. 
+.PP
+Definition at line 33 of file WriteState\&.cs\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,65 @@
+.TH "NHibernate.Cfg.MappingsQueue" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cfg.MappingsQueue \- 
+.PP
+Queues mapping files according to their dependency order\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAddDocument\fP (\fBNamedXmlDocument\fP document)"
+.br
+.RI "\fIAdds the specified document to the queue\&. \fP"
+.ti -1c
+.RI "\fBNamedXmlDocument\fP \fBGetNextAvailableResource\fP ()"
+.br
+.RI "\fIGets a \fBNamedXmlDocument\fP that can now be processed (i\&.e\&. that doesn't depend on classes not yet processed)\&. \fP"
+.ti -1c
+.RI "void \fBCheckNoUnavailableEntries\fP ()"
+.br
+.RI "\fIChecks that no unprocessed documents remain in the queue\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Queues mapping files according to their dependency order\&. 
+
+
+.PP
+Definition at line 11 of file MappingsQueue\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Cfg\&.MappingsQueue\&.AddDocument (\fBNamedXmlDocument\fPdocument)"
+
+.PP
+Adds the specified document to the queue\&. 
+.PP
+Definition at line 21 of file MappingsQueue\&.cs\&.
+.SS "void NHibernate\&.Cfg\&.MappingsQueue\&.CheckNoUnavailableEntries ()"
+
+.PP
+Checks that no unprocessed documents remain in the queue\&. 
+.PP
+Definition at line 47 of file MappingsQueue\&.cs\&.
+.SS "\fBNamedXmlDocument\fP NHibernate\&.Cfg\&.MappingsQueue\&.GetNextAvailableResource ()"
+
+.PP
+Gets a \fBNamedXmlDocument\fP that can now be processed (i\&.e\&. that doesn't depend on classes not yet processed)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 32 of file MappingsQueue\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

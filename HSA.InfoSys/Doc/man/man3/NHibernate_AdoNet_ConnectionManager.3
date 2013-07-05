@@ -1,0 +1,114 @@
+.TH "NHibernate.AdoNet.ConnectionManager" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.AdoNet.ConnectionManager \- 
+.PP
+Manages the database connection and transaction for an \fBISession\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits ISerializable, and IDeserializationCallback\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "interface \fBCallback\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBConnectionManager\fP (\fBISessionImplementor\fP session, IDbConnection suppliedConnection, ConnectionReleaseMode connectionReleaseMode, \fBIInterceptor\fP interceptor)"
+.br
+.ti -1c
+.RI "void \fBReconnect\fP ()"
+.br
+.ti -1c
+.RI "void \fBReconnect\fP (IDbConnection suppliedConnection)"
+.br
+.ti -1c
+.RI "IDbConnection \fBClose\fP ()"
+.br
+.ti -1c
+.RI "IDbConnection \fBDisconnect\fP ()"
+.br
+.ti -1c
+.RI "IDbConnection \fBGetConnection\fP ()"
+.br
+.ti -1c
+.RI "void \fBAfterTransaction\fP ()"
+.br
+.ti -1c
+.RI "void \fBAfterStatement\fP ()"
+.br
+.ti -1c
+.RI "void \fBFlushBeginning\fP ()"
+.br
+.ti -1c
+.RI "void \fBFlushEnding\fP ()"
+.br
+.ti -1c
+.RI "void \fBGetObjectData\fP (SerializationInfo info, StreamingContext context)"
+.br
+.ti -1c
+.RI "\fBITransaction\fP \fBBeginTransaction\fP (IsolationLevel isolationLevel)"
+.br
+.ti -1c
+.RI "\fBITransaction\fP \fBBeginTransaction\fP ()"
+.br
+.ti -1c
+.RI "void \fBAfterNonTransactionalQuery\fP (bool success)"
+.br
+.ti -1c
+.RI "IDbCommand \fBCreateCommand\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsInActiveTransaction\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsConnected\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBITransaction\fP \fBTransaction\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBISessionFactoryImplementor\fP \fBFactory\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsReadyForSerialization\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIBatcher\fP \fBBatcher\fP\fC [get]\fP"
+.br
+.RI "\fIThe batcher managed by this \fBConnectionManager\fP\&. \fP"
+.ti -1c
+.RI "IDisposable \fBFlushingFromDtcTransaction\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Manages the database connection and transaction for an \fBISession\fP\&. 
+
+This class corresponds to \fBConnectionManager\fP and JDBCContext in Hibernate, combined\&. 
+.PP
+Definition at line 19 of file ConnectionManager\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBIBatcher\fP NHibernate\&.AdoNet\&.ConnectionManager\&.Batcher\fC [get]\fP"
+
+.PP
+The batcher managed by this \fBConnectionManager\fP\&. 
+.PP
+Definition at line 394 of file ConnectionManager\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,28 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test =
+[
+    [ "MergeShouldMergeAnyMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a6148d2245998df0c4f30c03ee55009fb", null ],
+    [ "MergeShouldMergeBagPropertiesMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a2ac8387cc25a7b3c3113b6cedb11b23b", null ],
+    [ "MergeShouldMergeClassMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a476fa112b70d6472b5b3f014f67c4f1b", null ],
+    [ "MergeShouldMergeCollectionPropertiesMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a4edfdd1901f013ca9d2936fbac44f3e5", null ],
+    [ "MergeShouldMergeComponentAsIdAttributesMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a59904d507a88111279b117312b73eb0e", null ],
+    [ "MergeShouldMergeComponentAttributesMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a2ba2158160ad75bdb41b47a8b182840a", null ],
+    [ "MergeShouldMergeComponentAttributesMapperOnProperty", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#aac513b7798e00fd21a14c549c05b667a", null ],
+    [ "MergeShouldMergeDynamicComponentAttributesMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a9667dee1b58c92b52c375ec8a2651435", null ],
+    [ "MergeShouldMergeElementMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a022aa22b5a6ae69cc5f32e7df85b5aaf", null ],
+    [ "MergeShouldMergeIdBagPropertiesMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a6b702bccf64e4dff7d9e24a30ba3be7d", null ],
+    [ "MergeShouldMergeJoinAttributesMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a8116598232c61234a76574d13e9abbd3", null ],
+    [ "MergeShouldMergeJoinedSubclassAttributesMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a719cc7547f7e0caf4510d17b60d328fd", null ],
+    [ "MergeShouldMergeListPropertiesMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a66b10a71adf19d13c492168e95526aef", null ],
+    [ "MergeShouldMergeManyToManyMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#acf417530e5668966a16ac57f5ae2e988", null ],
+    [ "MergeShouldMergeManyToOneMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a16aa7b508bc2a7405958ce9e78796173", null ],
+    [ "MergeShouldMergeMapKeyManyToManyMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a827472b5242f8ce19cf7f1e108cb82d5", null ],
+    [ "MergeShouldMergeMapKeyMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a88f4e7af831ed2fcb9629c3e5dd2bed4", null ],
+    [ "MergeShouldMergeMapPropertiesMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a810ac188d68ce3419588c9b0383f2f02", null ],
+    [ "MergeShouldMergeOneToManyMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#aa9cffe8f8633e4332970d1c787c6af11", null ],
+    [ "MergeShouldMergeOneToOneMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#ae230819d2eed21d4c314d01bea917b47", null ],
+    [ "MergeShouldMergePropertyMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#adfa4e39e42c9177c035145146cf9c11a", null ],
+    [ "MergeShouldMergeSetPropertiesMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a35cad3ede4de547222d4b4282b9a1593", null ],
+    [ "MergeShouldMergeSubclassMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a1b2e5945b0ef4e71a1cd9e0a417d7fe6", null ],
+    [ "MergeShouldMergeUnionSubclassAttributesMapper", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#a6be29841a1354fc8aa52b0213ca3ac40", null ],
+    [ "WhenMergeWithNullThenNotThrow", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_customizer_holder_merge_test.html#abbe20ead862e31aa04cbf4b9f0ca3110", null ]
+];

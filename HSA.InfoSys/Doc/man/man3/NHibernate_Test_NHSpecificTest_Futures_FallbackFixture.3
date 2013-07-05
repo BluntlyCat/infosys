@@ -1,0 +1,66 @@
+.TH "NHibernate.Test.NHSpecificTest.Futures.FallbackFixture" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.NHSpecificTest.Futures.FallbackFixture \- 
+.PP
+I'm using a \fBDriver\fP which derives from SqlClientDriver to return false for the SupportsMultipleQueries property\&. This is purely to test the way \fBNHibernate\fP will behave when the driver that's being used does not support multiple queries\&.\&.\&. so even though the test is using MsSql, it's only relevant for databases that don't support multiple queries but this way it's just much easier to test this  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Test\&.NHSpecificTest\&.Futures\&.FutureFixture\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBFutureOfCriteriaFallsBackToListImplementationWhenQueryBatchingIsNotSupported\fP ()"
+.br
+.ti -1c
+.RI "void \fBFutureValueOfCriteriaCanGetSingleEntityWhenQueryBatchingIsNotSupported\fP ()"
+.br
+.ti -1c
+.RI "void \fBFutureValueOfCriteriaCanGetScalarValueWhenQueryBatchingIsNotSupported\fP ()"
+.br
+.ti -1c
+.RI "void \fBFutureOfQueryFallsBackToListImplementationWhenQueryBatchingIsNotSupported\fP ()"
+.br
+.ti -1c
+.RI "void \fBFutureValueOfQueryCanGetSingleEntityWhenQueryBatchingIsNotSupported\fP ()"
+.br
+.ti -1c
+.RI "void \fBFutureValueOfQueryCanGetScalarValueWhenQueryBatchingIsNotSupported\fP ()"
+.br
+.ti -1c
+.RI "void \fBFutureOfLinqFallsBackToListImplementationWhenQueryBatchingIsNotSupported\fP ()"
+.br
+.ti -1c
+.RI "void \fBFutureValueOfLinqCanGetSingleEntityWhenQueryBatchingIsNotSupported\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBAppliesTo\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.ti -1c
+.RI "override void \fBConfigure\fP (\fBConfiguration\fP configuration)"
+.br
+.ti -1c
+.RI "override void \fBOnTearDown\fP ()"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+I'm using a \fBDriver\fP which derives from SqlClientDriver to return false for the SupportsMultipleQueries property\&. This is purely to test the way \fBNHibernate\fP will behave when the driver that's being used does not support multiple queries\&.\&.\&. so even though the test is using MsSql, it's only relevant for databases that don't support multiple queries but this way it's just much easier to test this 
+
+
+.PP
+Definition at line 30 of file FallbackFixture\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

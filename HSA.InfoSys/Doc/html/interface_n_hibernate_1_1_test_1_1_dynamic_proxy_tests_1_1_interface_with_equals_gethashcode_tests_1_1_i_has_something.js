@@ -1,0 +1,4 @@
+var interface_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_interface_with_equals_gethashcode_tests_1_1_i_has_something =
+[
+    [ "Something", "interface_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_interface_with_equals_gethashcode_tests_1_1_i_has_something.html#a87755fd9c2dfcc252a99045be584f684", null ]
+];

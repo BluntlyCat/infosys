@@ -1,0 +1,72 @@
+.TH "NHibernate.Driver.BasicResultSetsCommand" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Driver.BasicResultSetsCommand \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Driver\&.IResultSetsCommand\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBasicResultSetsCommand\fP (\fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "virtual void \fBAppend\fP (\fBISqlCommand\fP command)"
+.br
+.ti -1c
+.RI "virtual IDataReader \fBGetReader\fP (int?commandTimeout)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBBindParameters\fP (IDbCommand command)"
+.br
+.ti -1c
+.RI "void \fBForEachSqlCommand\fP (Action< \fBISqlCommand\fP, int > actionToDo)"
+.br
+.RI "\fIExecute the given \fIactionToDo\fP  for each command of the resultset\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "List< \fBISqlCommand\fP > \fBCommands\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBISessionImplementor\fP \fBSession\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasQueries\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBSqlString\fP \fBSql\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 11 of file BasicResultSetsCommand\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Driver\&.BasicResultSetsCommand\&.ForEachSqlCommand (Action< \fBISqlCommand\fP, int >actionToDo)\fC [protected]\fP"
+
+.PP
+Execute the given \fIactionToDo\fP  for each command of the resultset\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIactionToDo\fP The action to perform where the first parameter is the ISqlCommand and the second parameter is the parameters offset of the ISqlCommand\&.
+.RE
+.PP
+
+.PP
+Definition at line 67 of file BasicResultSetsCommand\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

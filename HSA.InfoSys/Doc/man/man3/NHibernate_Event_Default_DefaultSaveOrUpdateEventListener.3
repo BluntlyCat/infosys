@@ -1,0 +1,170 @@
+.TH "NHibernate.Event.Default.DefaultSaveOrUpdateEventListener" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.Default.DefaultSaveOrUpdateEventListener \- 
+.PP
+Defines the default listener used by Hibernate for handling save-update events\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Event\&.Default\&.AbstractSaveEventListener\fP, and \fBNHibernate\&.Event\&.ISaveOrUpdateEventListener\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Event\&.Default\&.DefaultSaveEventListener\fP, and \fBNHibernate\&.Event\&.Default\&.DefaultUpdateEventListener\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBOnSaveOrUpdate\fP (\fBSaveOrUpdateEvent\fP @event)"
+.br
+.RI "\fIHandle the given update event\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBReassociateIfUninitializedProxy\fP (object obj, \fBISessionImplementor\fP source)"
+.br
+.ti -1c
+.RI "virtual object \fBPerformSaveOrUpdate\fP (\fBSaveOrUpdateEvent\fP @event)"
+.br
+.ti -1c
+.RI "virtual object \fBEntityIsPersistent\fP (\fBSaveOrUpdateEvent\fP @event)"
+.br
+.ti -1c
+.RI "virtual object \fBEntityIsTransient\fP (\fBSaveOrUpdateEvent\fP @event)"
+.br
+.RI "\fIThe given save-update event named a transient entity\&. Here, we will perform the save processing\&. \fP"
+.ti -1c
+.RI "virtual object \fBSaveWithGeneratedOrRequestedId\fP (\fBSaveOrUpdateEvent\fP @event)"
+.br
+.RI "\fISave the transient instance, assigning the right identifier \fP"
+.ti -1c
+.RI "virtual void \fBEntityIsDetached\fP (\fBSaveOrUpdateEvent\fP @event)"
+.br
+.RI "\fIThe given save-update event named a detached entity\&. Here, we will perform the update processing\&. \fP"
+.ti -1c
+.RI "virtual object \fBGetUpdateId\fP (object entity, \fBIEntityPersister\fP persister, object requestedId, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIDetermine the id to use for updating\&. \fP"
+.ti -1c
+.RI "virtual void \fBPerformUpdate\fP (\fBSaveOrUpdateEvent\fP @event, object entity, \fBIEntityPersister\fP persister)"
+.br
+.ti -1c
+.RI "virtual bool \fBInvokeUpdateLifecycle\fP (object entity, \fBIEntityPersister\fP persister, \fBIEventSource\fP source)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override \fBCascadingAction\fP \fBCascadeAction\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the default listener used by Hibernate for handling save-update events\&. 
+
+
+.PP
+Definition at line 15 of file DefaultSaveOrUpdateEventListener\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Event\&.Default\&.DefaultSaveOrUpdateEventListener\&.EntityIsDetached (\fBSaveOrUpdateEvent\fP @event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+The given save-update event named a detached entity\&. Here, we will perform the update processing\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The update event to be handled\&. 
+.RE
+.PP
+
+.PP
+Definition at line 177 of file DefaultSaveOrUpdateEventListener\&.cs\&.
+.SS "virtual object NHibernate\&.Event\&.Default\&.DefaultSaveOrUpdateEventListener\&.EntityIsTransient (\fBSaveOrUpdateEvent\fP @event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+The given save-update event named a transient entity\&. Here, we will perform the save processing\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The save event to be handled\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The entity's identifier after saving\&. 
+.RE
+.PP
+
+.PP
+Definition at line 130 of file DefaultSaveOrUpdateEventListener\&.cs\&.
+.SS "virtual object NHibernate\&.Event\&.Default\&.DefaultSaveOrUpdateEventListener\&.GetUpdateId (objectentity, \fBIEntityPersister\fPpersister, objectrequestedId, \fBEntityMode\fPentityMode)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Determine the id to use for updating\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity\&. 
+.br
+\fIpersister\fP The entity persister 
+.br
+\fIrequestedId\fP The requested identifier 
+.br
+\fIentityMode\fP The entity mode\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The id\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Event\&.Default\&.DefaultUpdateEventListener\fP\&.
+.PP
+Definition at line 202 of file DefaultSaveOrUpdateEventListener\&.cs\&.
+.SS "virtual void NHibernate\&.Event\&.Default\&.DefaultSaveOrUpdateEventListener\&.OnSaveOrUpdate (\fBSaveOrUpdateEvent\fP @event)\fC [virtual]\fP"
+
+.PP
+Handle the given update event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The update event to be handled\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Event\&.ISaveOrUpdateEventListener\fP\&.
+.PP
+Definition at line 24 of file DefaultSaveOrUpdateEventListener\&.cs\&.
+.SS "virtual object NHibernate\&.Event\&.Default\&.DefaultSaveOrUpdateEventListener\&.SaveWithGeneratedOrRequestedId (\fBSaveOrUpdateEvent\fP @event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Save the transient instance, assigning the right identifier 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The initiating event\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The entity's identifier value after saving\&.
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNHibernate\&.Event\&.Default\&.DefaultUpdateEventListener\fP\&.
+.PP
+Definition at line 160 of file DefaultSaveOrUpdateEventListener\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

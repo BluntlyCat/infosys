@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h2738_1_1_fixture =
+[
+    [ "WhenMapEmptyEnumThenThrowsExplicitException", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h2738_1_1_fixture.html#aabdede51369c38ac907bf0b6553a6db5", null ]
+];

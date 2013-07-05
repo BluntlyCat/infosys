@@ -1,0 +1,233 @@
+.TH "Renci.SshNet.Sftp.SubsystemSession" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Sftp.SubsystemSession \- 
+.PP
+Base class for SSH subsystem implementations  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDisposable\&.
+.PP
+Inherited by Renci\&.SshNet\&.NetConf\&.NetConfSession, and Renci\&.SshNet\&.Sftp\&.SftpSession\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSubsystemSession\fP (\fBSession\fP session, string subsystemName, TimeSpan operationTimeout, Encoding encoding)"
+.br
+.RI "\fIInitializes a new instance of the \fBSubsystemSession\fP class\&. \fP"
+.ti -1c
+.RI "void \fBConnect\fP ()"
+.br
+.RI "\fIConnects subsystem on SSH channel\&. \fP"
+.ti -1c
+.RI "void \fBDisconnect\fP ()"
+.br
+.RI "\fIDisconnects subsystem channel\&. \fP"
+.ti -1c
+.RI "void \fBSendData\fP (byte[] data)"
+.br
+.RI "\fISends data to the subsystem\&. \fP"
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "\fIPerforms application-defined tasks associated with freeing, releasing, or resetting unmanaged resources\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract void \fBOnChannelOpen\fP ()"
+.br
+.RI "\fICalled when channel is open\&. \fP"
+.ti -1c
+.RI "abstract void \fBOnDataReceived\fP (uint dataTypeCode, byte[] data)"
+.br
+.RI "\fICalled when data is received\&. \fP"
+.ti -1c
+.RI "void \fBRaiseError\fP (Exception error)"
+.br
+.RI "\fIRaises the error\&. \fP"
+.ti -1c
+.RI "virtual void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIReleases unmanaged and - optionally - managed resources \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "TimeSpan \fB_operationTimeout\fP"
+.br
+.RI "\fISpecifies a timeout to wait for operation to complete \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "uint \fBChannelNumber\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the channel number\&. \fP"
+.ti -1c
+.RI "Encoding \fBEncoding\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "EventHandler< \fBExceptionEventArgs\fP > \fBErrorOccurred\fP"
+.br
+.RI "\fIOccurs when an error occurred\&. \fP"
+.ti -1c
+.RI "EventHandler< EventArgs > \fBDisconnected\fP"
+.br
+.RI "\fIOccurs when session has been disconnected form the server\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for SSH subsystem implementations 
+
+
+.PP
+Definition at line 20 of file SubsystemSession\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Sftp\&.SubsystemSession\&.SubsystemSession (\fBSession\fPsession, stringsubsystemName, TimeSpanoperationTimeout, Encodingencoding)"
+
+.PP
+Initializes a new instance of the \fBSubsystemSession\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session\&.
+.br
+\fIsubsystemName\fP Name of the subsystem\&.
+.br
+\fIoperationTimeout\fP The operation timeout\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentNullException\fP session
+.br
+\fIArgumentNullException\fP \fIsession\fP  or \fIsubsystemName\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 64 of file SubsystemSession\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Renci\&.SshNet\&.Sftp\&.SubsystemSession\&.Connect ()"
+
+.PP
+Connects subsystem on SSH channel\&. 
+.PP
+Definition at line 81 of file SubsystemSession\&.cs\&.
+.SS "void Renci\&.SshNet\&.Sftp\&.SubsystemSession\&.Disconnect ()"
+
+.PP
+Disconnects subsystem channel\&. 
+.PP
+Definition at line 102 of file SubsystemSession\&.cs\&.
+.SS "void Renci\&.SshNet\&.Sftp\&.SubsystemSession\&.Dispose ()"
+
+.PP
+Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources\&. 
+.PP
+Definition at line 200 of file SubsystemSession\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Sftp\&.SubsystemSession\&.Dispose (booldisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Releases unmanaged and - optionally - managed resources 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP \fCtrue\fP to release both managed and unmanaged resources; \fCfalse\fP to release only unmanaged resources\&.
+.RE
+.PP
+
+.PP
+Definition at line 211 of file SubsystemSession\&.cs\&.
+.SS "abstract void Renci\&.SshNet\&.Sftp\&.SubsystemSession\&.OnChannelOpen ()\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Called when channel is open\&. 
+.SS "abstract void Renci\&.SshNet\&.Sftp\&.SubsystemSession\&.OnDataReceived (uintdataTypeCode, byte[]data)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Called when data is received\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdataTypeCode\fP The data type code\&.
+.br
+\fIdata\fP The data\&.
+.RE
+.PP
+
+.SS "void Renci\&.SshNet\&.Sftp\&.SubsystemSession\&.RaiseError (Exceptionerror)\fC [protected]\fP"
+
+.PP
+Raises the error\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIerror\fP The error\&.
+.RE
+.PP
+
+.PP
+Definition at line 134 of file SubsystemSession\&.cs\&.
+.SS "void Renci\&.SshNet\&.Sftp\&.SubsystemSession\&.SendData (byte[]data)"
+
+.PP
+Sends data to the subsystem\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The data to be sent\&.
+.RE
+.PP
+
+.PP
+Definition at line 113 of file SubsystemSession\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "TimeSpan Renci\&.SshNet\&.Sftp\&.SubsystemSession\&._operationTimeout\fC [protected]\fP"
+
+.PP
+Specifies a timeout to wait for operation to complete 
+.PP
+Definition at line 37 of file SubsystemSession\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "uint Renci\&.SshNet\&.Sftp\&.SubsystemSession\&.ChannelNumber\fC [get]\fP, \fC [set]\fP, \fC [protected]\fP"
+
+.PP
+Gets the channel number\&. 
+.PP
+Definition at line 52 of file SubsystemSession\&.cs\&.
+.SH "Event Documentation"
+.PP 
+.SS "EventHandler<EventArgs> Renci\&.SshNet\&.Sftp\&.SubsystemSession\&.Disconnected"
+
+.PP
+Occurs when session has been disconnected form the server\&. 
+.PP
+Definition at line 47 of file SubsystemSession\&.cs\&.
+.SS "EventHandler<\fBExceptionEventArgs\fP> Renci\&.SshNet\&.Sftp\&.SubsystemSession\&.ErrorOccurred"
+
+.PP
+Occurs when an error occurred\&. 
+.PP
+Definition at line 42 of file SubsystemSession\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_convention_model_mapper_tests_1_1_componets_accessor_tests =
+[
+    [ "WhenMapComoponetWithNestBidirectionalComponentThenMapParentAccessor", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_convention_model_mapper_tests_1_1_componets_accessor_tests.html#a9e02bb858d1b96d6382660d114603f75", null ]
+];

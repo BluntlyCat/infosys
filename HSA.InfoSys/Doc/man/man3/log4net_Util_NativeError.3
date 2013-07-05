@@ -1,0 +1,146 @@
+.TH "log4net.Util.NativeError" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.NativeError \- 
+.PP
+Represents a native error code and message\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIReturn error information string \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBNativeError\fP \fBGetLastError\fP ()"
+.br
+.RI "\fICreate a new instance of the \fBNativeError\fP class for the last Windows error\&. \fP"
+.ti -1c
+.RI "static \fBNativeError\fP \fBGetError\fP (int number)"
+.br
+.RI "\fICreate a new instance of the \fBNativeError\fP class\&. \fP"
+.ti -1c
+.RI "static string \fBGetErrorMessage\fP (int messageId)"
+.br
+.RI "\fIRetrieves the message corresponding with a Win32 message identifier\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBNumber\fP\fC [get]\fP"
+.br
+.RI "\fIGets the number of the native error\&. \fP"
+.ti -1c
+.RI "string \fBMessage\fP\fC [get]\fP"
+.br
+.RI "\fIGets the message of the native error\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a native error code and message\&. 
+
+Represents a Win32 platform native error\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 43 of file NativeError\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBNativeError\fP log4net\&.Util\&.NativeError\&.GetError (intnumber)\fC [static]\fP"
+
+.PP
+Create a new instance of the \fBNativeError\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP the error number for the native error
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An instance of the \fBNativeError\fP class for the specified error number\&. 
+.RE
+.PP
+.PP
+The message for the specified error number is lookup up using the native Win32 \fCFormatMessage\fP function\&. 
+.PP
+Definition at line 142 of file NativeError\&.cs\&.
+.SS "static string log4net\&.Util\&.NativeError\&.GetErrorMessage (intmessageId)\fC [static]\fP"
+
+.PP
+Retrieves the message corresponding with a Win32 message identifier\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessageId\fP Message identifier for the requested message\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The message corresponding with the specified message identifier\&. 
+.RE
+.PP
+.PP
+The message will be searched for in system message-table resource(s) using the native \fCFormatMessage\fP function\&. 
+.PP
+Definition at line 165 of file NativeError\&.cs\&.
+.SS "static \fBNativeError\fP log4net\&.Util\&.NativeError\&.GetLastError ()\fC [static]\fP"
+
+.PP
+Create a new instance of the \fBNativeError\fP class for the last Windows error\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An instance of the \fBNativeError\fP class for the last windows error\&. 
+.RE
+.PP
+.PP
+The message for the Marshal\&.GetLastWin32Error error number is lookup up using the native Win32 \fCFormatMessage\fP function\&. 
+.PP
+Definition at line 122 of file NativeError\&.cs\&.
+.SS "override string log4net\&.Util\&.NativeError\&.ToString ()"
+
+.PP
+Return error information string 
+.PP
+\fBReturns:\fP
+.RS 4
+error information string
+.RE
+.PP
+.PP
+Return error information string 
+.PP
+Definition at line 220 of file NativeError\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string log4net\&.Util\&.NativeError\&.Message\fC [get]\fP"
+
+.PP
+Gets the message of the native error\&. The message of the native error\&. 
+.PP
+Gets the message of the native error\&. 
+.PP
+Definition at line 97 of file NativeError\&.cs\&.
+.SS "int log4net\&.Util\&.NativeError\&.Number\fC [get]\fP"
+
+.PP
+Gets the number of the native error\&. The number of the native error\&. 
+.PP
+Gets the number of the native error\&. 
+.PP
+Definition at line 81 of file NativeError\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,2490 @@
+.TH "Renci.SshNet.SftpClient" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.SftpClient \- 
+.PP
+Implementation of the SSH File Transfer Protocol (SFTP) over SSH\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.BaseClient\fP, and \fBRenci\&.SshNet\&.BaseClient\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSftpClient\fP (\fBConnectionInfo\fP connectionInfo)"
+.br
+.RI "\fIInitializes a new instance of the \fBSftpClient\fP class\&. \fP"
+.ti -1c
+.RI "\fBSftpClient\fP (string host, int port, string username, string password)"
+.br
+.RI "\fIInitializes a new instance of the \fBSftpClient\fP class\&. \fP"
+.ti -1c
+.RI "\fBSftpClient\fP (string host, string username, string password)"
+.br
+.RI "\fIInitializes a new instance of the \fBSftpClient\fP class\&. \fP"
+.ti -1c
+.RI "\fBSftpClient\fP (string host, int port, string username, params \fBPrivateKeyFile\fP[] keyFiles)"
+.br
+.RI "\fIInitializes a new instance of the \fBSftpClient\fP class\&. \fP"
+.ti -1c
+.RI "\fBSftpClient\fP (string host, string username, params \fBPrivateKeyFile\fP[] keyFiles)"
+.br
+.RI "\fIInitializes a new instance of the \fBSftpClient\fP class\&. \fP"
+.ti -1c
+.RI "void \fBChangeDirectory\fP (string path)"
+.br
+.RI "\fIChanges remote directory to path\&. \fP"
+.ti -1c
+.RI "void \fBChangePermissions\fP (string path, short mode)"
+.br
+.RI "\fIChanges permissions of file(s) to specified mode\&. \fP"
+.ti -1c
+.RI "void \fBCreateDirectory\fP (string path)"
+.br
+.RI "\fICreates remote directory specified by path\&. \fP"
+.ti -1c
+.RI "void \fBDeleteDirectory\fP (string path)"
+.br
+.RI "\fIDeletes remote directory specified by path\&. \fP"
+.ti -1c
+.RI "void \fBDeleteFile\fP (string path)"
+.br
+.RI "\fIDeletes remote file specified by path\&. \fP"
+.ti -1c
+.RI "void \fBRenameFile\fP (string oldPath, string newPath)"
+.br
+.RI "\fIRenames remote file from old path to new path\&. \fP"
+.ti -1c
+.RI "void \fBRenameFile\fP (string oldPath, string newPath, bool isPosix)"
+.br
+.RI "\fIRenames remote file from old path to new path\&. \fP"
+.ti -1c
+.RI "void \fBSymbolicLink\fP (string path, string linkPath)"
+.br
+.RI "\fICreates a symbolic link from old path to new path\&. \fP"
+.ti -1c
+.RI "IEnumerable< \fBSftpFile\fP > \fBListDirectory\fP (string path, Action< int > listCallback=null)"
+.br
+.RI "\fIRetrieves list of files in remote directory\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginListDirectory\fP (string path, AsyncCallback asyncCallback, object state, Action< int > listCallback=null)"
+.br
+.RI "\fIBegins an asynchronous operation of retrieving list of files in remote directory\&. \fP"
+.ti -1c
+.RI "IEnumerable< \fBSftpFile\fP > \fBEndListDirectory\fP (IAsyncResult asyncResult)"
+.br
+.RI "\fIEnds an asynchronous operation of retrieving list of files in remote directory\&. \fP"
+.ti -1c
+.RI "\fBSftpFile\fP \fBGet\fP (string path)"
+.br
+.RI "\fIGets reference to remote file or directory\&. \fP"
+.ti -1c
+.RI "bool \fBExists\fP (string path)"
+.br
+.RI "\fIChecks whether file pr directory exists; \fP"
+.ti -1c
+.RI "void \fBDownloadFile\fP (string path, Stream output, Action< ulong > downloadCallback=null)"
+.br
+.RI "\fIDownloads remote file specified by the path into the stream\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginDownloadFile\fP (string path, Stream output)"
+.br
+.RI "\fIBegins an asynchronous file downloading into the stream\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginDownloadFile\fP (string path, Stream output, AsyncCallback asyncCallback)"
+.br
+.RI "\fIBegins an asynchronous file downloading into the stream\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginDownloadFile\fP (string path, Stream output, AsyncCallback asyncCallback, object state, Action< ulong > downloadCallback=null)"
+.br
+.RI "\fIBegins an asynchronous file downloading into the stream\&. \fP"
+.ti -1c
+.RI "void \fBEndDownloadFile\fP (IAsyncResult asyncResult)"
+.br
+.RI "\fIEnds an asynchronous file downloading into the stream\&. \fP"
+.ti -1c
+.RI "void \fBUploadFile\fP (Stream input, string path, Action< ulong > uploadCallback=null)"
+.br
+.RI "\fIUploads stream into remote file\&.\&. \fP"
+.ti -1c
+.RI "void \fBUploadFile\fP (Stream input, string path, bool canOverride, Action< ulong > uploadCallback=null)"
+.br
+.RI "\fIUploads stream into remote file\&.\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginUploadFile\fP (Stream input, string path)"
+.br
+.RI "\fIBegins an asynchronous uploading the steam into remote file\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginUploadFile\fP (Stream input, string path, AsyncCallback asyncCallback)"
+.br
+.RI "\fIBegins an asynchronous uploading the steam into remote file\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginUploadFile\fP (Stream input, string path, AsyncCallback asyncCallback, object state, Action< ulong > uploadCallback=null)"
+.br
+.RI "\fIBegins an asynchronous uploading the steam into remote file\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginUploadFile\fP (Stream input, string path, bool canOverride, AsyncCallback asyncCallback, object state, Action< ulong > uploadCallback=null)"
+.br
+.RI "\fIBegins an asynchronous uploading the steam into remote file\&. \fP"
+.ti -1c
+.RI "void \fBEndUploadFile\fP (IAsyncResult asyncResult)"
+.br
+.RI "\fIEnds an asynchronous uploading the steam into remote file\&. \fP"
+.ti -1c
+.RI "\fBSftpFileSytemInformation\fP \fBGetStatus\fP (string path)"
+.br
+.RI "\fIGets status using statvfs@openssh.com request\&. \fP"
+.ti -1c
+.RI "void \fBAppendAllLines\fP (string path, IEnumerable< string > contents)"
+.br
+.RI "\fIAppends lines to a file, and then closes the file\&. \fP"
+.ti -1c
+.RI "void \fBAppendAllLines\fP (string path, IEnumerable< string > contents, Encoding encoding)"
+.br
+.RI "\fIAppends lines to a file by using a specified encoding, and then closes the file\&. \fP"
+.ti -1c
+.RI "void \fBAppendAllText\fP (string path, string contents)"
+.br
+.RI "\fIOpens a file, appends the specified string to the file, and then closes the file\&. If the file does not exist, this method creates a file, writes the specified string to the file, then closes the file\&. \fP"
+.ti -1c
+.RI "void \fBAppendAllText\fP (string path, string contents, Encoding encoding)"
+.br
+.RI "\fIOpens a file, appends the specified string to the file, and then closes the file\&. If the file does not exist, this method creates a file, writes the specified string to the file, then closes the file\&. \fP"
+.ti -1c
+.RI "StreamWriter \fBAppendText\fP (string path)"
+.br
+.RI "\fICreates a System\&.IO\&.StreamWriter that appends UTF-8 encoded text to an existing file\&. \fP"
+.ti -1c
+.RI "StreamWriter \fBAppendText\fP (string path, Encoding encoding)"
+.br
+.RI "\fICreates a System\&.IO\&.StreamWriter that appends UTF-8 encoded text to an existing file\&. \fP"
+.ti -1c
+.RI "\fBSftpFileStream\fP \fBCreate\fP (string path)"
+.br
+.RI "\fICreates or overwrites a file in the specified path\&. \fP"
+.ti -1c
+.RI "\fBSftpFileStream\fP \fBCreate\fP (string path, int bufferSize)"
+.br
+.RI "\fICreates or overwrites the specified file\&. \fP"
+.ti -1c
+.RI "StreamWriter \fBCreateText\fP (string path)"
+.br
+.RI "\fICreates or opens a file for writing UTF-8 encoded text\&. \fP"
+.ti -1c
+.RI "StreamWriter \fBCreateText\fP (string path, Encoding encoding)"
+.br
+.RI "\fICreates or opens a file for writing UTF-8 encoded text\&. \fP"
+.ti -1c
+.RI "void \fBDelete\fP (string path)"
+.br
+.RI "\fIDeletes the specified file or directory\&. An exception is not thrown if the specified file does not exist\&. \fP"
+.ti -1c
+.RI "DateTime \fBGetLastAccessTime\fP (string path)"
+.br
+.RI "\fIReturns the date and time the specified file or directory was last accessed\&. \fP"
+.ti -1c
+.RI "DateTime \fBGetLastAccessTimeUtc\fP (string path)"
+.br
+.RI "\fIReturns the date and time, in coordinated universal time (UTC), that the specified file or directory was last accessed\&. \fP"
+.ti -1c
+.RI "DateTime \fBGetLastWriteTime\fP (string path)"
+.br
+.RI "\fIReturns the date and time the specified file or directory was last written to\&. \fP"
+.ti -1c
+.RI "DateTime \fBGetLastWriteTimeUtc\fP (string path)"
+.br
+.RI "\fIReturns the date and time, in coordinated universal time (UTC), that the specified file or directory was last written to\&. \fP"
+.ti -1c
+.RI "\fBSftpFileStream\fP \fBOpen\fP (string path, FileMode mode)"
+.br
+.RI "\fIOpens a SftpFileStream on the specified path with read/write access\&. \fP"
+.ti -1c
+.RI "\fBSftpFileStream\fP \fBOpen\fP (string path, FileMode mode, FileAccess access)"
+.br
+.RI "\fIOpens a SftpFileStream on the specified path, with the specified mode and access\&. \fP"
+.ti -1c
+.RI "\fBSftpFileStream\fP \fBOpenRead\fP (string path)"
+.br
+.RI "\fIOpens an existing file for reading\&. \fP"
+.ti -1c
+.RI "StreamReader \fBOpenText\fP (string path)"
+.br
+.RI "\fIOpens an existing UTF-8 encoded text file for reading\&. \fP"
+.ti -1c
+.RI "\fBSftpFileStream\fP \fBOpenWrite\fP (string path)"
+.br
+.RI "\fIOpens an existing file for writing\&. \fP"
+.ti -1c
+.RI "byte[] \fBReadAllBytes\fP (string path)"
+.br
+.RI "\fIOpens a binary file, reads the contents of the file into a byte array, and then closes the file\&. \fP"
+.ti -1c
+.RI "string[] \fBReadAllLines\fP (string path)"
+.br
+.RI "\fIOpens a text file, reads all lines of the file, and then closes the file\&. \fP"
+.ti -1c
+.RI "string[] \fBReadAllLines\fP (string path, Encoding encoding)"
+.br
+.RI "\fIOpens a file, reads all lines of the file with the specified encoding, and then closes the file\&. \fP"
+.ti -1c
+.RI "string \fBReadAllText\fP (string path)"
+.br
+.RI "\fIOpens a text file, reads all lines of the file, and then closes the file\&. \fP"
+.ti -1c
+.RI "string \fBReadAllText\fP (string path, Encoding encoding)"
+.br
+.RI "\fIOpens a file, reads all lines of the file with the specified encoding, and then closes the file\&. \fP"
+.ti -1c
+.RI "IEnumerable< string > \fBReadLines\fP (string path)"
+.br
+.RI "\fIReads the lines of a file\&. \fP"
+.ti -1c
+.RI "IEnumerable< string > \fBReadLines\fP (string path, Encoding encoding)"
+.br
+.RI "\fIRead the lines of a file that has a specified encoding\&. \fP"
+.ti -1c
+.RI "void \fBSetLastAccessTime\fP (string path, DateTime lastAccessTime)"
+.br
+.RI "\fISets the date and time the specified file was last accessed\&. \fP"
+.ti -1c
+.RI "void \fBSetLastAccessTimeUtc\fP (string path, DateTime lastAccessTimeUtc)"
+.br
+.RI "\fISets the date and time, in coordinated universal time (UTC), that the specified file was last accessed\&. \fP"
+.ti -1c
+.RI "void \fBSetLastWriteTime\fP (string path, DateTime lastWriteTime)"
+.br
+.RI "\fISets the date and time that the specified file was last written to\&. \fP"
+.ti -1c
+.RI "void \fBSetLastWriteTimeUtc\fP (string path, DateTime lastWriteTimeUtc)"
+.br
+.RI "\fISets the date and time, in coordinated universal time (UTC), that the specified file was last written to\&. \fP"
+.ti -1c
+.RI "void \fBWriteAllBytes\fP (string path, byte[] bytes)"
+.br
+.RI "\fICreates a new file, writes the specified byte array to the file, and then closes the file\&. If the target file already exists, it is overwritten\&. \fP"
+.ti -1c
+.RI "void \fBWriteAllLines\fP (string path, IEnumerable< string > contents)"
+.br
+.RI "\fICreates a new file, writes a collection of strings to the file, and then closes the file\&. \fP"
+.ti -1c
+.RI "void \fBWriteAllLines\fP (string path, string[] contents)"
+.br
+.RI "\fICreates a new file, write the specified string array to the file, and then closes the file\&. \fP"
+.ti -1c
+.RI "void \fBWriteAllLines\fP (string path, IEnumerable< string > contents, Encoding encoding)"
+.br
+.RI "\fICreates a new file by using the specified encoding, writes a collection of strings to the file, and then closes the file\&. \fP"
+.ti -1c
+.RI "void \fBWriteAllLines\fP (string path, string[] contents, Encoding encoding)"
+.br
+.RI "\fICreates a new file, writes the specified string array to the file by using the specified encoding, and then closes the file\&. \fP"
+.ti -1c
+.RI "void \fBWriteAllText\fP (string path, string contents)"
+.br
+.RI "\fICreates a new file, writes the specified string to the file, and then closes the file\&. If the target file already exists, it is overwritten\&. \fP"
+.ti -1c
+.RI "void \fBWriteAllText\fP (string path, string contents, Encoding encoding)"
+.br
+.RI "\fICreates a new file, writes the specified string to the file using the specified encoding, and then closes the file\&. If the target file already exists, it is overwritten\&. \fP"
+.ti -1c
+.RI "\fBSftpFileAttributes\fP \fBGetAttributes\fP (string path)"
+.br
+.RI "\fIGets the SftpFileAttributes of the file on the path\&. \fP"
+.ti -1c
+.RI "void \fBSetAttributes\fP (string path, \fBSftpFileAttributes\fP fileAttributes)"
+.br
+.RI "\fISets the specified SftpFileAttributes of the file on the specified path\&. \fP"
+.ti -1c
+.RI "IEnumerable< FileInfo > \fBSynchronizeDirectories\fP (string sourcePath, string destinationPath, string searchPattern)"
+.br
+.RI "\fISynchronizes the directories\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginSynchronizeDirectories\fP (string sourcePath, string destinationPath, string searchPattern, AsyncCallback asyncCallback, object state)"
+.br
+.RI "\fIBegins the synchronize directories\&. \fP"
+.ti -1c
+.RI "IEnumerable< FileInfo > \fBEndSynchronizeDirectories\fP (IAsyncResult asyncResult)"
+.br
+.RI "\fIEnds the synchronize directories\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBOnConnected\fP ()"
+.br
+.RI "\fICalled when client is connected to the server\&. \fP"
+.ti -1c
+.RI "override void \fBOnDisconnecting\fP ()"
+.br
+.RI "\fICalled when client is disconnecting from the server\&. \fP"
+.ti -1c
+.RI "override void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIReleases unmanaged and - optionally - managed resources \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "TimeSpan \fBOperationTimeout\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the operation timeout\&. \fP"
+.ti -1c
+.RI "uint \fBBufferSize\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the size of the buffer\&. \fP"
+.ti -1c
+.RI "string \fBWorkingDirectory\fP\fC [get]\fP"
+.br
+.RI "\fIGets remote working directory\&. \fP"
+.ti -1c
+.RI "int \fBProtocolVersion\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets sftp protocol version\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Implementation of the SSH File Transfer Protocol (SFTP) over SSH\&. 
+
+
+.PP
+Definition at line 17 of file SftpClient\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.SftpClient\&.SftpClient (\fBConnectionInfo\fPconnectionInfo)"
+
+.PP
+Initializes a new instance of the \fBSftpClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnectionInfo\fP The connection info\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIconnectionInfo\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 63 of file SftpClient\&.cs\&.
+.SS "Renci\&.SshNet\&.SftpClient\&.SftpClient (stringhost, intport, stringusername, stringpassword)"
+
+.PP
+Initializes a new instance of the \fBSftpClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP Connection host\&.
+.br
+\fIport\fP Connection port\&.
+.br
+\fIusername\fP Authentication username\&.
+.br
+\fIpassword\fP Authentication password\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpassword\fP  is \fBnull\fP\&.
+.br
+\fIArgumentException\fP \fIhost\fP  is invalid\&. 
+.RE
+.PP
+-or-
+.PP
+\fIusername\fP  is \fBnull\fP or contains whitespace characters\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentOutOfRangeException\fP \fIport\fP  is not within F:System\&.Net\&.IPEndPoint\&.MinPort and System\&.Net\&.IPEndPoint\&.MaxPort\&.
+.RE
+.PP
+
+.PP
+Definition at line 81 of file SftpClient\&.cs\&.
+.SS "Renci\&.SshNet\&.SftpClient\&.SftpClient (stringhost, stringusername, stringpassword)"
+
+.PP
+Initializes a new instance of the \fBSftpClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP Connection host\&.
+.br
+\fIusername\fP Authentication username\&.
+.br
+\fIpassword\fP Authentication password\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpassword\fP  is \fBnull\fP\&.
+.br
+\fIArgumentException\fP \fIhost\fP  is invalid\&. 
+.RE
+.PP
+-or-
+.PP
+\fIusername\fP  is \fBnull\fP contains whitespace characters\&.
+.PP
+Definition at line 95 of file SftpClient\&.cs\&.
+.SS "Renci\&.SshNet\&.SftpClient\&.SftpClient (stringhost, intport, stringusername, params \fBPrivateKeyFile\fP[]keyFiles)"
+
+.PP
+Initializes a new instance of the \fBSftpClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP Connection host\&.
+.br
+\fIport\fP Connection port\&.
+.br
+\fIusername\fP Authentication username\&.
+.br
+\fIkeyFiles\fP Authentication private key file(s) \&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIkeyFiles\fP  is \fBnull\fP\&.
+.br
+\fIArgumentException\fP \fIhost\fP  is invalid\&. 
+.RE
+.PP
+-or-
+.PP
+\fIusername\fP  is nu\fBnull\fPll or contains whitespace characters\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentOutOfRangeException\fP \fIport\fP  is not within F:System\&.Net\&.IPEndPoint\&.MinPort and System\&.Net\&.IPEndPoint\&.MaxPort\&.
+.RE
+.PP
+
+.PP
+Definition at line 111 of file SftpClient\&.cs\&.
+.SS "Renci\&.SshNet\&.SftpClient\&.SftpClient (stringhost, stringusername, params \fBPrivateKeyFile\fP[]keyFiles)"
+
+.PP
+Initializes a new instance of the \fBSftpClient\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP Connection host\&.
+.br
+\fIusername\fP Authentication username\&.
+.br
+\fIkeyFiles\fP Authentication private key file(s) \&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIkeyFiles\fP  is \fBnull\fP\&.
+.br
+\fIArgumentException\fP \fIhost\fP  is invalid\&. 
+.RE
+.PP
+-or-
+.PP
+\fIusername\fP  is \fBnull\fP or contains whitespace characters\&.
+.PP
+Definition at line 125 of file SftpClient\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Renci\&.SshNet\&.SftpClient\&.AppendAllLines (stringpath, IEnumerable< string >contents)"
+
+.PP
+Appends lines to a file, and then closes the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to append the lines to\&. The file is created if it does not already exist\&.
+.br
+\fIcontents\fP The lines to append to the file\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is\fBnull\fP 
+.RE
+.PP
+-or-
+.PP
+\fIcontents\fP  is \fBnull\fP\&.
+.PP
+Definition at line 798 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.AppendAllLines (stringpath, IEnumerable< string >contents, Encodingencoding)"
+
+.PP
+Appends lines to a file by using a specified encoding, and then closes the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to append the lines to\&. The file is created if it does not already exist\&.
+.br
+\fIcontents\fP The lines to append to the file\&.
+.br
+\fIencoding\fP The character encoding to use\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&. 
+.RE
+.PP
+-or-
+.PP
+\fIcontents\fP  is \fBnull\fP\&. 
+.PP
+-or-
+.PP
+\fIencoding\fP  is \fBnull\fP\&.
+.PP
+Definition at line 819 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.AppendAllText (stringpath, stringcontents)"
+
+.PP
+Opens a file, appends the specified string to the file, and then closes the file\&. If the file does not exist, this method creates a file, writes the specified string to the file, then closes the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to append the specified string to\&.
+.br
+\fIcontents\fP The string to append to the file\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&. 
+.RE
+.PP
+-or-
+.PP
+\fIcontents\fP  is \fBnull\fP\&.
+.PP
+Definition at line 840 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.AppendAllText (stringpath, stringcontents, Encodingencoding)"
+
+.PP
+Opens a file, appends the specified string to the file, and then closes the file\&. If the file does not exist, this method creates a file, writes the specified string to the file, then closes the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to append the specified string to\&.
+.br
+\fIcontents\fP The string to append to the file\&.
+.br
+\fIencoding\fP The character encoding to use\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&. 
+.RE
+.PP
+-or-
+.PP
+\fIcontents\fP  is \fBnull\fP\&. 
+.PP
+-or-
+.PP
+\fIencoding\fP  is \fBnull\fP\&.
+.PP
+Definition at line 856 of file SftpClient\&.cs\&.
+.SS "StreamWriter Renci\&.SshNet\&.SftpClient\&.AppendText (stringpath)"
+
+.PP
+Creates a System\&.IO\&.StreamWriter that appends UTF-8 encoded text to an existing file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path to the file to append to\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A StreamWriter that appends UTF-8 encoded text to an existing file\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 870 of file SftpClient\&.cs\&.
+.SS "StreamWriter Renci\&.SshNet\&.SftpClient\&.AppendText (stringpath, Encodingencoding)"
+
+.PP
+Creates a System\&.IO\&.StreamWriter that appends UTF-8 encoded text to an existing file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path to the file to append to\&.
+.br
+\fIencoding\fP The character encoding to use\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A StreamWriter that appends UTF-8 encoded text to an existing file\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&. 
+.RE
+.PP
+-or-
+.PP
+\fIencoding\fP  is \fBnull\fP\&.
+.PP
+Definition at line 884 of file SftpClient\&.cs\&.
+.SS "IAsyncResult Renci\&.SshNet\&.SftpClient\&.BeginDownloadFile (stringpath, Streamoutput)"
+
+.PP
+Begins an asynchronous file downloading into the stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path\&.
+.br
+\fIoutput\fP The output\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult that references the asynchronous operation\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentException\fP path
+.br
+\fISystem\&.ArgumentNullException\fP output
+.br
+\fIArgumentNullException\fP \fIoutput\fP  is \fBnull\fP\&.
+.br
+\fIArgumentException\fP \fIpath\fP  is \fBnull\fP or contains whitespace characters\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SftpPermissionDeniedException\fP\fP Permission to perform the operation was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+.PP
+Method calls made by this method to \fIoutput\fP , may under certain conditions result in exceptions thrown by the stream\&. 
+.PP
+Definition at line 473 of file SftpClient\&.cs\&.
+.SS "IAsyncResult Renci\&.SshNet\&.SftpClient\&.BeginDownloadFile (stringpath, Streamoutput, AsyncCallbackasyncCallback)"
+
+.PP
+Begins an asynchronous file downloading into the stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path\&.
+.br
+\fIoutput\fP The output\&.
+.br
+\fIasyncCallback\fP The method to be called when the asynchronous write operation is completed\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult that references the asynchronous operation\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentException\fP path
+.br
+\fISystem\&.ArgumentNullException\fP output
+.br
+\fIArgumentNullException\fP \fIoutput\fP  is \fBnull\fP\&.
+.br
+\fIArgumentException\fP \fIpath\fP  is \fBnull\fP or contains whitespace characters\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SftpPermissionDeniedException\fP\fP Permission to perform the operation was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+.PP
+Method calls made by this method to \fIoutput\fP , may under certain conditions result in exceptions thrown by the stream\&. 
+.PP
+Definition at line 497 of file SftpClient\&.cs\&.
+.SS "IAsyncResult Renci\&.SshNet\&.SftpClient\&.BeginDownloadFile (stringpath, Streamoutput, AsyncCallbackasyncCallback, objectstate, Action< ulong >downloadCallback = \fCnull\fP)"
+
+.PP
+Begins an asynchronous file downloading into the stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path\&.
+.br
+\fIoutput\fP The output\&.
+.br
+\fIasyncCallback\fP The method to be called when the asynchronous write operation is completed\&.
+.br
+\fIstate\fP A user-provided object that distinguishes this particular asynchronous write request from other requests\&.
+.br
+\fIdownloadCallback\fP The download callback\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult that references the asynchronous operation\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentException\fP path
+.br
+\fISystem\&.ArgumentNullException\fP output
+.br
+\fIArgumentNullException\fP \fIoutput\fP  is \fBnull\fP\&.
+.br
+\fIArgumentException\fP \fIpath\fP  is \fBnull\fP or contains whitespace characters\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SftpPermissionDeniedException\fP\fP Permission to perform the operation was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+.PP
+Method calls made by this method to \fIoutput\fP , may under certain conditions result in exceptions thrown by the stream\&. 
+.PP
+Definition at line 523 of file SftpClient\&.cs\&.
+.SS "IAsyncResult Renci\&.SshNet\&.SftpClient\&.BeginListDirectory (stringpath, AsyncCallbackasyncCallback, objectstate, Action< int >listCallback = \fCnull\fP)"
+
+.PP
+Begins an asynchronous operation of retrieving list of files in remote directory\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path\&.
+.br
+\fIasyncCallback\fP The method to be called when the asynchronous write operation is completed\&.
+.br
+\fIstate\fP A user-provided object that distinguishes this particular asynchronous write request from other requests\&.
+.br
+\fIlistCallback\fP The list callback\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult that references the asynchronous operation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 336 of file SftpClient\&.cs\&.
+.SS "IAsyncResult Renci\&.SshNet\&.SftpClient\&.BeginSynchronizeDirectories (stringsourcePath, stringdestinationPath, stringsearchPattern, AsyncCallbackasyncCallback, objectstate)"
+
+.PP
+Begins the synchronize directories\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsourcePath\fP The source path\&.
+.br
+\fIdestinationPath\fP The destination path\&.
+.br
+\fIsearchPattern\fP The search pattern\&.
+.br
+\fIasyncCallback\fP The async callback\&.
+.br
+\fIstate\fP The state\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An System\&.IAsyncResult that represents the asynchronous directory synchronization\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentNullException\fP sourceDir
+.br
+\fISystem\&.ArgumentException\fP destDir
+.RE
+.PP
+
+.PP
+Definition at line 46 of file SftpClient\&.NET\&.cs\&.
+.SS "IAsyncResult Renci\&.SshNet\&.SftpClient\&.BeginUploadFile (Streaminput, stringpath)"
+
+.PP
+Begins an asynchronous uploading the steam into remote file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP Data input stream\&.
+.br
+\fIpath\fP Remote file path\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult that references the asynchronous operation\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIinput\fP  is \fBnull\fP\&.
+.br
+\fIArgumentException\fP \fIpath\fP  is \fBnull\fP or contains whitespace characters\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SftpPermissionDeniedException\fP\fP Permission to list the contents of the directory was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+.PP
+Method calls made by this method to \fIinput\fP , may under certain conditions result in exceptions thrown by the stream\&. 
+.PP
+Definition at line 636 of file SftpClient\&.cs\&.
+.SS "IAsyncResult Renci\&.SshNet\&.SftpClient\&.BeginUploadFile (Streaminput, stringpath, AsyncCallbackasyncCallback)"
+
+.PP
+Begins an asynchronous uploading the steam into remote file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP Data input stream\&.
+.br
+\fIpath\fP Remote file path\&.
+.br
+\fIasyncCallback\fP The method to be called when the asynchronous write operation is completed\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult that references the asynchronous operation\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIinput\fP  is \fBnull\fP\&.
+.br
+\fIArgumentException\fP \fIpath\fP  is \fBnull\fP or contains whitespace characters\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SftpPermissionDeniedException\fP\fP Permission to list the contents of the directory was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+.PP
+Method calls made by this method to \fIinput\fP , may under certain conditions result in exceptions thrown by the stream\&. 
+.PP
+Definition at line 658 of file SftpClient\&.cs\&.
+.SS "IAsyncResult Renci\&.SshNet\&.SftpClient\&.BeginUploadFile (Streaminput, stringpath, AsyncCallbackasyncCallback, objectstate, Action< ulong >uploadCallback = \fCnull\fP)"
+
+.PP
+Begins an asynchronous uploading the steam into remote file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP Data input stream\&.
+.br
+\fIpath\fP Remote file path\&.
+.br
+\fIasyncCallback\fP The method to be called when the asynchronous write operation is completed\&.
+.br
+\fIstate\fP A user-provided object that distinguishes this particular asynchronous write request from other requests\&.
+.br
+\fIuploadCallback\fP The upload callback\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult that references the asynchronous operation\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIinput\fP  is \fBnull\fP\&.
+.br
+\fIArgumentException\fP \fIpath\fP  is \fBnull\fP or contains whitespace characters\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SftpPermissionDeniedException\fP\fP Permission to list the contents of the directory was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+.PP
+Method calls made by this method to \fIinput\fP , may under certain conditions result in exceptions thrown by the stream\&. 
+.PP
+Definition at line 682 of file SftpClient\&.cs\&.
+.SS "IAsyncResult Renci\&.SshNet\&.SftpClient\&.BeginUploadFile (Streaminput, stringpath, boolcanOverride, AsyncCallbackasyncCallback, objectstate, Action< ulong >uploadCallback = \fCnull\fP)"
+
+.PP
+Begins an asynchronous uploading the steam into remote file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP Data input stream\&.
+.br
+\fIpath\fP Remote file path\&.
+.br
+\fIcanOverride\fP if set to \fCtrue\fP then existing file will be overwritten\&.
+.br
+\fIasyncCallback\fP The method to be called when the asynchronous write operation is completed\&.
+.br
+\fIstate\fP A user-provided object that distinguishes this particular asynchronous write request from other requests\&.
+.br
+\fIuploadCallback\fP The upload callback\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult that references the asynchronous operation\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentNullException\fP input
+.br
+\fISystem\&.ArgumentException\fP path
+.br
+\fIArgumentNullException\fP \fIinput\fP  is \fBnull\fP\&.
+.br
+\fIArgumentException\fP \fIpath\fP  is \fBnull\fP or contains whitespace characters\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SftpPermissionDeniedException\fP\fP Permission to list the contents of the directory was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+.PP
+Method calls made by this method to \fIinput\fP , may under certain conditions result in exceptions thrown by the stream\&. 
+.PP
+Definition at line 709 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.ChangeDirectory (stringpath)"
+
+.PP
+Changes remote directory to path\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP New directory path\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fISftpPermissionDeniedException\fP Permission to change directory denied by remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISftpPathNotFoundException\fP The path in \fIpath\fP  was not found on the remote host\&.
+.br
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+
+.PP
+Definition at line 141 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.ChangePermissions (stringpath, shortmode)"
+
+.PP
+Changes permissions of file(s) to specified mode\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP File(s) path, may match multiple files\&.
+.br
+\fImode\fP The mode\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fISftpPermissionDeniedException\fP Permission to change permission on the path(s) was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISftpPathNotFoundException\fP The path in \fIpath\fP  was not found on the remote host\&.
+.br
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+
+.PP
+Definition at line 162 of file SftpClient\&.cs\&.
+.SS "\fBSftpFileStream\fP Renci\&.SshNet\&.SftpClient\&.Create (stringpath)"
+
+.PP
+Creates or overwrites a file in the specified path\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path and name of the file to create\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A SftpFileStream that provides read/write access to the file specified in path
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 898 of file SftpClient\&.cs\&.
+.SS "\fBSftpFileStream\fP Renci\&.SshNet\&.SftpClient\&.Create (stringpath, intbufferSize)"
+
+.PP
+Creates or overwrites the specified file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path and name of the file to create\&.
+.br
+\fIbufferSize\fP The number of bytes buffered for reads and writes to the file\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A SftpFileStream that provides read/write access to the file specified in path
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 910 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.CreateDirectory (stringpath)"
+
+.PP
+Creates remote directory specified by path\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP Directory path to create\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP \fIpath\fP  is \fBnull\fP or contains whitespace characters\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SftpPermissionDeniedException\fP\fP Permission to create the directory was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+
+.PP
+Definition at line 177 of file SftpClient\&.cs\&.
+.SS "StreamWriter Renci\&.SshNet\&.SftpClient\&.CreateText (stringpath)"
+
+.PP
+Creates or opens a file for writing UTF-8 encoded text\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to be opened for writing\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A System\&.IO\&.StreamWriter that writes to the specified file using UTF-8 encoding\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 921 of file SftpClient\&.cs\&.
+.SS "StreamWriter Renci\&.SshNet\&.SftpClient\&.CreateText (stringpath, Encodingencoding)"
+
+.PP
+Creates or opens a file for writing UTF-8 encoded text\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to be opened for writing\&.
+.br
+\fIencoding\fP The character encoding to use\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A System\&.IO\&.StreamWriter that writes to the specified file using UTF-8 encoding\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 933 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.Delete (stringpath)"
+
+.PP
+Deletes the specified file or directory\&. An exception is not thrown if the specified file does not exist\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The name of the file or directory to be deleted\&. Wildcard characters are not supported\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.RE
+.PP
+
+.PP
+Definition at line 944 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.DeleteDirectory (stringpath)"
+
+.PP
+Deletes remote directory specified by path\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP Directory to be deleted path\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP \fIpath\fP  is \fBnull\fP or contains whitespace characters\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SftpPermissionDeniedException\fP\fP Permission to delete the directory was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+
+.PP
+Definition at line 198 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.DeleteFile (stringpath)"
+
+.PP
+Deletes remote file specified by path\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP File to be deleted path\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP \fIpath\fP  is \fBnull\fP or contains whitespace characters\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SftpPermissionDeniedException\fP\fP Permission to delete the file was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+
+.PP
+Definition at line 219 of file SftpClient\&.cs\&.
+.SS "override void Renci\&.SshNet\&.SftpClient\&.Dispose (booldisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Releases unmanaged and - optionally - managed resources 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP \fCtrue\fP to release both managed and unmanaged resources; \fCfalse\fP to release only unmanaged ResourceMessages\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBRenci\&.SshNet\&.BaseClient\fP\&.
+.PP
+Definition at line 1570 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.DownloadFile (stringpath, Streamoutput, Action< ulong >downloadCallback = \fCnull\fP)"
+
+.PP
+Downloads remote file specified by the path into the stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP File to download\&.
+.br
+\fIoutput\fP Stream to write the file into\&.
+.br
+\fIdownloadCallback\fP The download callback\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIoutput\fP  is \fBnull\fP\&.
+.br
+\fIArgumentException\fP \fIpath\fP  is \fBnull\fP or contains whitespace characters\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SftpPermissionDeniedException\fP\fP Permission to perform the operation was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+.PP
+Method calls made by this method to \fIoutput\fP , may under certain conditions result in exceptions thrown by the stream\&. 
+.PP
+Definition at line 450 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.EndDownloadFile (IAsyncResultasyncResult)"
+
+.PP
+Ends an asynchronous file downloading into the stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIasyncResult\fP The pending asynchronous SFTP request\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP The IAsyncResult object (\fIasyncResult\fP ) did not come from the corresponding async method on this type\&. 
+.RE
+.PP
+-or-
+.PP
+EndExecute was called multiple times with the same IAsyncResult\&.
+.PP
+Definition at line 563 of file SftpClient\&.cs\&.
+.SS "IEnumerable<\fBSftpFile\fP> Renci\&.SshNet\&.SftpClient\&.EndListDirectory (IAsyncResultasyncResult)"
+
+.PP
+Ends an asynchronous operation of retrieving list of files in remote directory\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIasyncResult\fP The pending asynchronous SFTP request\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+List of files 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP The IAsyncResult object (\fIasyncResult\fP ) did not come from the corresponding async method on this type\&. 
+.RE
+.PP
+-or-
+.PP
+EndExecute was called multiple times with the same IAsyncResult\&.
+.PP
+Definition at line 373 of file SftpClient\&.cs\&.
+.SS "IEnumerable<FileInfo> Renci\&.SshNet\&.SftpClient\&.EndSynchronizeDirectories (IAsyncResultasyncResult)"
+
+.PP
+Ends the synchronize directories\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIasyncResult\fP The async result\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+List of uploaded files\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentException\fP Either the IAsyncResult object did not come from the corresponding async method on this type, or EndExecute was called multiple times with the same IAsyncResult\&.
+.RE
+.PP
+
+.PP
+Definition at line 79 of file SftpClient\&.NET\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.EndUploadFile (IAsyncResultasyncResult)"
+
+.PP
+Ends an asynchronous uploading the steam into remote file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIasyncResult\fP The pending asynchronous SFTP request\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentException\fP Either the IAsyncResult object did not come from the corresponding async method on this type, or EndExecute was called multiple times with the same IAsyncResult\&.
+.br
+\fIArgumentException\fP The IAsyncResult object (\fIasyncResult\fP ) did not come from the corresponding async method on this type\&. 
+.RE
+.PP
+-or-
+.PP
+EndExecute was called multiple times with the same IAsyncResult\&.
+.PP
+Definition at line 758 of file SftpClient\&.cs\&.
+.SS "bool Renci\&.SshNet\&.SftpClient\&.Exists (stringpath)"
+
+.PP
+Checks whether file pr directory exists; 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if directory or file exists; otherwise \fCfalse\fP\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP \fIpath\fP  is \fBnull\fP or contains whitespace characters\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SftpPermissionDeniedException\fP\fP Permission to perform the operation was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+
+.PP
+Definition at line 416 of file SftpClient\&.cs\&.
+.SS "\fBSftpFile\fP Renci\&.SshNet\&.SftpClient\&.Get (stringpath)"
+
+.PP
+Gets reference to remote file or directory\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to \fBRenci\&.SshNet\&.Sftp\&.SftpFile\fP file object\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentNullException\fP path
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 392 of file SftpClient\&.cs\&.
+.SS "\fBSftpFileAttributes\fP Renci\&.SshNet\&.SftpClient\&.GetAttributes (stringpath)"
+
+.PP
+Gets the SftpFileAttributes of the file on the path\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path to the file\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The SftpFileAttributes of the file on the path\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1313 of file SftpClient\&.cs\&.
+.SS "DateTime Renci\&.SshNet\&.SftpClient\&.GetLastAccessTime (stringpath)"
+
+.PP
+Returns the date and time the specified file or directory was last accessed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file or directory for which to obtain access date and time information\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A System\&.DateTime structure set to the date and time that the specified file or directory was last accessed\&. This value is expressed in local time\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.RE
+.PP
+
+.PP
+Definition at line 958 of file SftpClient\&.cs\&.
+.SS "DateTime Renci\&.SshNet\&.SftpClient\&.GetLastAccessTimeUtc (stringpath)"
+
+.PP
+Returns the date and time, in coordinated universal time (UTC), that the specified file or directory was last accessed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file or directory for which to obtain access date and time information\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A System\&.DateTime structure set to the date and time that the specified file or directory was last accessed\&. This value is expressed in UTC time\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.RE
+.PP
+
+.PP
+Definition at line 972 of file SftpClient\&.cs\&.
+.SS "DateTime Renci\&.SshNet\&.SftpClient\&.GetLastWriteTime (stringpath)"
+
+.PP
+Returns the date and time the specified file or directory was last written to\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file or directory for which to obtain write date and time information\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A System\&.DateTime structure set to the date and time that the specified file or directory was last written to\&. This value is expressed in local time\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.RE
+.PP
+
+.PP
+Definition at line 986 of file SftpClient\&.cs\&.
+.SS "DateTime Renci\&.SshNet\&.SftpClient\&.GetLastWriteTimeUtc (stringpath)"
+
+.PP
+Returns the date and time, in coordinated universal time (UTC), that the specified file or directory was last written to\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file or directory for which to obtain write date and time information\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A System\&.DateTime structure set to the date and time that the specified file or directory was last written to\&. This value is expressed in UTC time\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.RE
+.PP
+
+.PP
+Definition at line 1000 of file SftpClient\&.cs\&.
+.SS "\fBSftpFileSytemInformation\fP Renci\&.SshNet\&.SftpClient\&.GetStatus (stringpath)"
+
+.PP
+Gets status using statvfs@openssh.com request\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to \fBRenci\&.SshNet\&.Sftp\&.SftpFileSytemInformation\fP object that contains file status information\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentNullException\fP path
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 777 of file SftpClient\&.cs\&.
+.SS "IEnumerable<\fBSftpFile\fP> Renci\&.SshNet\&.SftpClient\&.ListDirectory (stringpath, Action< int >listCallback = \fCnull\fP)"
+
+.PP
+Retrieves list of files in remote directory\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path\&.
+.br
+\fIlistCallback\fP The list callback\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+List of directory entries 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SftpPermissionDeniedException\fP\fP Permission to list the contents of the directory was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+
+.PP
+Definition at line 321 of file SftpClient\&.cs\&.
+.SS "override void Renci\&.SshNet\&.SftpClient\&.OnConnected ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when client is connected to the server\&. 
+.PP
+Reimplemented from \fBRenci\&.SshNet\&.BaseClient\fP\&.
+.PP
+Definition at line 1544 of file SftpClient\&.cs\&.
+.SS "override void Renci\&.SshNet\&.SftpClient\&.OnDisconnecting ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when client is disconnecting from the server\&. 
+.PP
+Reimplemented from \fBRenci\&.SshNet\&.BaseClient\fP\&.
+.PP
+Definition at line 1559 of file SftpClient\&.cs\&.
+.SS "\fBSftpFileStream\fP Renci\&.SshNet\&.SftpClient\&.Open (stringpath, FileModemode)"
+
+.PP
+Opens a SftpFileStream on the specified path with read/write access\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to open\&.
+.br
+\fImode\fP A System\&.IO\&.FileMode value that specifies whether a file is created if one does not exist, and determines whether the contents of existing files are retained or overwritten\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An unshared SftpFileStream that provides access to the specified file, with the specified mode and access\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1014 of file SftpClient\&.cs\&.
+.SS "\fBSftpFileStream\fP Renci\&.SshNet\&.SftpClient\&.Open (stringpath, FileModemode, FileAccessaccess)"
+
+.PP
+Opens a SftpFileStream on the specified path, with the specified mode and access\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to open\&.
+.br
+\fImode\fP A System\&.IO\&.FileMode value that specifies whether a file is created if one does not exist, and determines whether the contents of existing files are retained or overwritten\&.
+.br
+\fIaccess\fP A System\&.IO\&.FileAccess value that specifies the operations that can be performed on the file\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An unshared SftpFileStream that provides access to the specified file, with the specified mode and access\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1027 of file SftpClient\&.cs\&.
+.SS "\fBSftpFileStream\fP Renci\&.SshNet\&.SftpClient\&.OpenRead (stringpath)"
+
+.PP
+Opens an existing file for reading\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to be opened for reading\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A read-only System\&.IO\&.FileStream on the specified path\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1038 of file SftpClient\&.cs\&.
+.SS "StreamReader Renci\&.SshNet\&.SftpClient\&.OpenText (stringpath)"
+
+.PP
+Opens an existing UTF-8 encoded text file for reading\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to be opened for reading\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A System\&.IO\&.StreamReader on the specified path\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1049 of file SftpClient\&.cs\&.
+.SS "\fBSftpFileStream\fP Renci\&.SshNet\&.SftpClient\&.OpenWrite (stringpath)"
+
+.PP
+Opens an existing file for writing\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to be opened for writing\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An unshared SftpFileStream object on the specified path with System\&.IO\&.FileAccess\&.Write access\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1060 of file SftpClient\&.cs\&.
+.SS "byte [] Renci\&.SshNet\&.SftpClient\&.ReadAllBytes (stringpath)"
+
+.PP
+Opens a binary file, reads the contents of the file into a byte array, and then closes the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to open for reading\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A byte array containing the contents of the file\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1071 of file SftpClient\&.cs\&.
+.SS "string [] Renci\&.SshNet\&.SftpClient\&.ReadAllLines (stringpath)"
+
+.PP
+Opens a text file, reads all lines of the file, and then closes the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to open for reading\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string array containing all lines of the file\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1087 of file SftpClient\&.cs\&.
+.SS "string [] Renci\&.SshNet\&.SftpClient\&.ReadAllLines (stringpath, Encodingencoding)"
+
+.PP
+Opens a file, reads all lines of the file with the specified encoding, and then closes the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to open for reading\&.
+.br
+\fIencoding\fP The encoding applied to the contents of the file\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string array containing all lines of the file\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1099 of file SftpClient\&.cs\&.
+.SS "string Renci\&.SshNet\&.SftpClient\&.ReadAllText (stringpath)"
+
+.PP
+Opens a text file, reads all lines of the file, and then closes the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to open for reading\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string containing all lines of the file\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1118 of file SftpClient\&.cs\&.
+.SS "string Renci\&.SshNet\&.SftpClient\&.ReadAllText (stringpath, Encodingencoding)"
+
+.PP
+Opens a file, reads all lines of the file with the specified encoding, and then closes the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to open for reading\&.
+.br
+\fIencoding\fP The encoding applied to the contents of the file\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string containing all lines of the file\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1130 of file SftpClient\&.cs\&.
+.SS "IEnumerable<string> Renci\&.SshNet\&.SftpClient\&.ReadLines (stringpath)"
+
+.PP
+Reads the lines of a file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to read\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The lines of the file\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1145 of file SftpClient\&.cs\&.
+.SS "IEnumerable<string> Renci\&.SshNet\&.SftpClient\&.ReadLines (stringpath, Encodingencoding)"
+
+.PP
+Read the lines of a file that has a specified encoding\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to read\&.
+.br
+\fIencoding\fP The encoding that is applied to the contents of the file\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The lines of the file\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1157 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.RenameFile (stringoldPath, stringnewPath)"
+
+.PP
+Renames remote file from old path to new path\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoldPath\fP Path to the old file location\&.
+.br
+\fInewPath\fP Path to the new file location\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIoldPath\fP  is \fBnull\fP\&. 
+.RE
+.PP
+-or-
+.PP
+or \fInewPath\fP  is \fBnull\fP\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SftpPermissionDeniedException\fP\fP Permission to rename the file was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+
+.PP
+Definition at line 241 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.RenameFile (stringoldPath, stringnewPath, boolisPosix)"
+
+.PP
+Renames remote file from old path to new path\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoldPath\fP Path to the old file location\&.
+.br
+\fInewPath\fP Path to the new file location\&.
+.br
+\fIisPosix\fP if set to \fCtrue\fP then perform a posix rename\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentNullException\fP oldPath
+.br
+\fIArgumentNullException\fP \fIoldPath\fP  is \fBnull\fP\&. 
+.RE
+.PP
+-or-
+.PP
+or \fInewPath\fP  is \fBnull\fP\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SftpPermissionDeniedException\fP\fP Permission to rename the file was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+
+.PP
+Definition at line 257 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.SetAttributes (stringpath, \fBSftpFileAttributes\fPfileAttributes)"
+
+.PP
+Sets the specified SftpFileAttributes of the file on the specified path\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path to the file\&.
+.br
+\fIfileAttributes\fP The desired SftpFileAttributes\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1329 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.SetLastAccessTime (stringpath, DateTimelastAccessTime)"
+
+.PP
+Sets the date and time the specified file was last accessed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file for which to set the access date and time information\&.
+.br
+\fIlastAccessTime\fP A System\&.DateTime containing the value to set for the last access date and time of path\&. This value is expressed in local time\&.
+.RE
+.PP
+
+.PP
+Definition at line 1168 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.SetLastAccessTimeUtc (stringpath, DateTimelastAccessTimeUtc)"
+
+.PP
+Sets the date and time, in coordinated universal time (UTC), that the specified file was last accessed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file for which to set the access date and time information\&.
+.br
+\fIlastAccessTimeUtc\fP A System\&.DateTime containing the value to set for the last access date and time of path\&. This value is expressed in UTC time\&.
+.RE
+.PP
+
+.PP
+Definition at line 1179 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.SetLastWriteTime (stringpath, DateTimelastWriteTime)"
+
+.PP
+Sets the date and time that the specified file was last written to\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file for which to set the date and time information\&.
+.br
+\fIlastWriteTime\fP A System\&.DateTime containing the value to set for the last write date and time of path\&. This value is expressed in local time\&.
+.RE
+.PP
+
+.PP
+Definition at line 1190 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.SetLastWriteTimeUtc (stringpath, DateTimelastWriteTimeUtc)"
+
+.PP
+Sets the date and time, in coordinated universal time (UTC), that the specified file was last written to\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file for which to set the date and time information\&.
+.br
+\fIlastWriteTimeUtc\fP A System\&.DateTime containing the value to set for the last write date and time of path\&. This value is expressed in UTC time\&.
+.RE
+.PP
+
+.PP
+Definition at line 1201 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.SymbolicLink (stringpath, stringlinkPath)"
+
+.PP
+Creates a symbolic link from old path to new path\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The old path\&.
+.br
+\fIlinkPath\fP The new path\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP \fIpath\fP  is \fBnull\fP\&. 
+.RE
+.PP
+-or-
+.PP
+\fIlinkPath\fP  is \fBnull\fP or contains whitespace characters\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SftpPermissionDeniedException\fP\fP Permission to create the symbolic link was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+
+.PP
+Definition at line 291 of file SftpClient\&.cs\&.
+.SS "IEnumerable<FileInfo> Renci\&.SshNet\&.SftpClient\&.SynchronizeDirectories (stringsourcePath, stringdestinationPath, stringsearchPattern)"
+
+.PP
+Synchronizes the directories\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsourcePath\fP The source path\&.
+.br
+\fIdestinationPath\fP The destination path\&.
+.br
+\fIsearchPattern\fP The search pattern\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+List of uploaded files\&.
+.RE
+.PP
+
+.PP
+Definition at line 28 of file SftpClient\&.NET\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.UploadFile (Streaminput, stringpath, Action< ulong >uploadCallback = \fCnull\fP)"
+
+.PP
+Uploads stream into remote file\&.\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP Data input stream\&.
+.br
+\fIpath\fP Remote file path\&.
+.br
+\fIuploadCallback\fP The upload callback\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIinput\fP  is \fBnull\fP\&.
+.br
+\fIArgumentException\fP \fIpath\fP  is \fBnull\fP or contains whitespace characters\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SftpPermissionDeniedException\fP\fP Permission to upload the file was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+.PP
+Method calls made by this method to \fIinput\fP , may under certain conditions result in exceptions thrown by the stream\&. 
+.PP
+Definition at line 588 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.UploadFile (Streaminput, stringpath, boolcanOverride, Action< ulong >uploadCallback = \fCnull\fP)"
+
+.PP
+Uploads stream into remote file\&.\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP Data input stream\&.
+.br
+\fIpath\fP Remote file path\&.
+.br
+\fIcanOverride\fP if set to \fCtrue\fP then existing file will be overwritten\&.
+.br
+\fIuploadCallback\fP The upload callback\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIinput\fP  is \fBnull\fP\&.
+.br
+\fIArgumentException\fP \fIpath\fP  is \fBnull\fP or contains whitespace characters\&.
+.br
+\fISshConnectionException\fP Client is not connected\&.
+.br
+\fI\fBRenci\&.SshNet\&.Common\&.SftpPermissionDeniedException\fP\fP Permission to upload the file was denied by the remote host\&. 
+.RE
+.PP
+-or-
+.PP
+A SSH command was denied by the server\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:Renci\&.SshNet\&.Common\&.SshException\fP A SSH error where P:System\&.Exception\&.Message is the message from the remote host\&.
+.RE
+.PP
+.PP
+Method calls made by this method to \fIinput\fP , may under certain conditions result in exceptions thrown by the stream\&. 
+.PP
+Definition at line 608 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.WriteAllBytes (stringpath, byte[]bytes)"
+
+.PP
+Creates a new file, writes the specified byte array to the file, and then closes the file\&. If the target file already exists, it is overwritten\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to write to\&.
+.br
+\fIbytes\fP The bytes to write to the file\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1212 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.WriteAllLines (stringpath, IEnumerable< string >contents)"
+
+.PP
+Creates a new file, writes a collection of strings to the file, and then closes the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to write to\&.
+.br
+\fIcontents\fP The lines to write to the file\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1226 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.WriteAllLines (stringpath, string[]contents)"
+
+.PP
+Creates a new file, write the specified string array to the file, and then closes the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to write to\&.
+.br
+\fIcontents\fP The string array to write to the file\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1237 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.WriteAllLines (stringpath, IEnumerable< string >contents, Encodingencoding)"
+
+.PP
+Creates a new file by using the specified encoding, writes a collection of strings to the file, and then closes the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to write to\&.
+.br
+\fIcontents\fP The lines to write to the file\&.
+.br
+\fIencoding\fP The character encoding to use\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1249 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.WriteAllLines (stringpath, string[]contents, Encodingencoding)"
+
+.PP
+Creates a new file, writes the specified string array to the file by using the specified encoding, and then closes the file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to write to\&.
+.br
+\fIcontents\fP The string array to write to the file\&.
+.br
+\fIencoding\fP An System\&.Text\&.Encoding object that represents the character encoding applied to the string array\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1267 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.WriteAllText (stringpath, stringcontents)"
+
+.PP
+Creates a new file, writes the specified string to the file, and then closes the file\&. If the target file already exists, it is overwritten\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to write to\&.
+.br
+\fIcontents\fP The string to write to the file\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1284 of file SftpClient\&.cs\&.
+.SS "void Renci\&.SshNet\&.SftpClient\&.WriteAllText (stringpath, stringcontents, Encodingencoding)"
+
+.PP
+Creates a new file, writes the specified string to the file using the specified encoding, and then closes the file\&. If the target file already exists, it is overwritten\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The file to write to\&.
+.br
+\fIcontents\fP The string to write to the file\&.
+.br
+\fIencoding\fP The encoding to apply to the string\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIpath\fP  is \fBnull\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1299 of file SftpClient\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "uint Renci\&.SshNet\&.SftpClient\&.BufferSize\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the size of the buffer\&. The size of the buffer\&.
+.PP
+Definition at line 36 of file SftpClient\&.cs\&.
+.SS "TimeSpan Renci\&.SshNet\&.SftpClient\&.OperationTimeout\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the operation timeout\&. The operation timeout\&.
+.PP
+Definition at line 30 of file SftpClient\&.cs\&.
+.SS "int Renci\&.SshNet\&.SftpClient\&.ProtocolVersion\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets sftp protocol version\&. 
+.PP
+Definition at line 54 of file SftpClient\&.cs\&.
+.SS "string Renci\&.SshNet\&.SftpClient\&.WorkingDirectory\fC [get]\fP"
+
+.PP
+Gets remote working directory\&. 
+.PP
+Definition at line 42 of file SftpClient\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,222 @@
+.TH "NHibernate.Collection.Generic.PersistentGenericMap< TKey, TValue >" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Collection.Generic.PersistentGenericMap< TKey, TValue > \- 
+.PP
+A persistent wrapper for a IDictionary{TKey,TValue}\&. Underlying collection is a Dictionary{TKey,TValue}  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Collection\&.PersistentMap\fP, and IDictionary< TKey, TValue >\&.
+.PP
+Inherited by \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1136\&.PersistentMilestoneCollection< TKey, TValue >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPersistentGenericMap\fP (\fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "\fBPersistentGenericMap\fP (\fBISessionImplementor\fP session, IDictionary< TKey, TValue > map)"
+.br
+.ti -1c
+.RI "override object \fBGetSnapshot\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fIReturn a new snapshot of the current state of the collection \fP"
+.ti -1c
+.RI "override void \fBBeforeInitialize\fP (\fBICollectionPersister\fP persister, int anticipatedSize)"
+.br
+.RI "\fICalled before any elements are read into the collection, allowing appropriate initializations to occur\&. \fP"
+.ti -1c
+.RI "override IEnumerable \fBGetDeletes\fP (\fBICollectionPersister\fP persister, bool indexIsFormula)"
+.br
+.RI "\fIGet all the elements that need deleting \fP"
+.ti -1c
+.RI "override bool \fBNeedsInserting\fP (object entry, int i, \fBIType\fP elemType)"
+.br
+.RI "\fIDo we need to insert this element? \fP"
+.ti -1c
+.RI "override bool \fBNeedsUpdating\fP (object entry, int i, \fBIType\fP elemType)"
+.br
+.RI "\fIDo we need to update this element? \fP"
+.ti -1c
+.RI "override object \fBGetIndex\fP (object entry, int i, \fBICollectionPersister\fP persister)"
+.br
+.RI "\fIGet the index of the given collection entry \fP"
+.ti -1c
+.RI "override object \fBGetElement\fP (object entry)"
+.br
+.RI "\fIGet the value of the given collection entry \fP"
+.ti -1c
+.RI "override object \fBGetSnapshotElement\fP (object entry, int i)"
+.br
+.RI "\fIGet the snapshot value of the given collection entry \fP"
+.ti -1c
+.RI "override bool \fBEntryExists\fP (object entry, int i)"
+.br
+.RI "\fIDoes an element exist at this entry in the collection? \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBAddDuringInitialize\fP (object index, object element)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "IDictionary< TKey, TValue > \fBgmap\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A persistent wrapper for a IDictionary{TKey,TValue}\&. Underlying collection is a Dictionary{TKey,TValue} 
+
+
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fITKey\fP The type of the keys in the IDictionary\&.
+.br
+\fITValue\fP The type of the elements in the IDictionary\&.
+.RE
+.PP
+
+.PP
+Definition at line 20 of file PersistentGenericMap\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Collection\&.Generic\&.PersistentGenericMap< TKey, TValue >\&.BeforeInitialize (\fBICollectionPersister\fPpersister, intanticipatedSize)\fC [virtual]\fP"
+
+.PP
+Called before any elements are read into the collection, allowing appropriate initializations to occur\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The underlying collection persister\&. 
+.br
+\fIanticipatedSize\fP The anticipated size of the collection after initilization is complete\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 45 of file PersistentGenericMap\&.cs\&.
+.SS "override bool NHibernate\&.Collection\&.Generic\&.PersistentGenericMap< TKey, TValue >\&.EntryExists (objectentry, inti)\fC [virtual]\fP"
+
+.PP
+Does an element exist at this entry in the collection? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentry\fP 
+.br
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 99 of file PersistentGenericMap\&.cs\&.
+.SS "override IEnumerable NHibernate\&.Collection\&.Generic\&.PersistentGenericMap< TKey, TValue >\&.GetDeletes (\fBICollectionPersister\fPpersister, boolindexIsFormula)\fC [virtual]\fP"
+
+.PP
+Get all the elements that need deleting 
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 51 of file PersistentGenericMap\&.cs\&.
+.SS "override object NHibernate\&.Collection\&.Generic\&.PersistentGenericMap< TKey, TValue >\&.GetElement (objectentry)\fC [virtual]\fP"
+
+.PP
+Get the value of the given collection entry 
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 88 of file PersistentGenericMap\&.cs\&.
+.SS "override object NHibernate\&.Collection\&.Generic\&.PersistentGenericMap< TKey, TValue >\&.GetIndex (objectentry, inti, \fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Get the index of the given collection entry 
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 83 of file PersistentGenericMap\&.cs\&.
+.SS "override object NHibernate\&.Collection\&.Generic\&.PersistentGenericMap< TKey, TValue >\&.GetSnapshot (\fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Return a new snapshot of the current state of the collection 
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 33 of file PersistentGenericMap\&.cs\&.
+.SS "override object NHibernate\&.Collection\&.Generic\&.PersistentGenericMap< TKey, TValue >\&.GetSnapshotElement (objectentry, inti)\fC [virtual]\fP"
+
+.PP
+Get the snapshot value of the given collection entry 
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 93 of file PersistentGenericMap\&.cs\&.
+.SS "override bool NHibernate\&.Collection\&.Generic\&.PersistentGenericMap< TKey, TValue >\&.NeedsInserting (objectentry, inti, \fBIType\fPelemType)\fC [virtual]\fP"
+
+.PP
+Do we need to insert this element? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentry\fP 
+.br
+\fIi\fP 
+.br
+\fIelemType\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 66 of file PersistentGenericMap\&.cs\&.
+.SS "override bool NHibernate\&.Collection\&.Generic\&.PersistentGenericMap< TKey, TValue >\&.NeedsUpdating (objectentry, inti, \fBIType\fPelemType)\fC [virtual]\fP"
+
+.PP
+Do we need to update this element? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentry\fP 
+.br
+\fIi\fP 
+.br
+\fIelemType\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 73 of file PersistentGenericMap\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

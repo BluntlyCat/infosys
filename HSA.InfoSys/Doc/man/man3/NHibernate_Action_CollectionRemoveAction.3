@@ -1,0 +1,93 @@
+.TH "NHibernate.Action.CollectionRemoveAction" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Action.CollectionRemoveAction \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Action\&.CollectionAction\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCollectionRemoveAction\fP (\fBIPersistentCollection\fP collection, \fBICollectionPersister\fP persister, object id, bool emptySnapshot, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIRemoves a persistent collection from its loaded owner\&. \fP"
+.ti -1c
+.RI "\fBCollectionRemoveAction\fP (object affectedOwner, \fBICollectionPersister\fP persister, object id, bool emptySnapshot, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIRemoves a persistent collection from a specified owner\&. \fP"
+.ti -1c
+.RI "override void \fBExecute\fP ()"
+.br
+.RI "\fIExecute this action\fP"
+.ti -1c
+.RI "override int \fBCompareTo\fP (\fBCollectionAction\fP other)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 11 of file CollectionRemoveAction\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Action\&.CollectionRemoveAction\&.CollectionRemoveAction (\fBIPersistentCollection\fPcollection, \fBICollectionPersister\fPpersister, objectid, boolemptySnapshot, \fBISessionImplementor\fPsession)"
+
+.PP
+Removes a persistent collection from its loaded owner\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP The collection to to remove; must be non-null 
+.br
+\fIpersister\fP The collection's persister 
+.br
+\fIid\fP The collection key 
+.br
+\fIemptySnapshot\fP Indicates if the snapshot is empty 
+.br
+\fIsession\fP The session 
+.RE
+.PP
+.PP
+Use this constructor when the collection is non-null\&.
+.PP
+Definition at line 25 of file CollectionRemoveAction\&.cs\&.
+.SS "NHibernate\&.Action\&.CollectionRemoveAction\&.CollectionRemoveAction (objectaffectedOwner, \fBICollectionPersister\fPpersister, objectid, boolemptySnapshot, \fBISessionImplementor\fPsession)"
+
+.PP
+Removes a persistent collection from a specified owner\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaffectedOwner\fP The collection's owner; must be non-null 
+.br
+\fIpersister\fP The collection's persister 
+.br
+\fIid\fP The collection key 
+.br
+\fIemptySnapshot\fP Indicates if the snapshot is empty 
+.br
+\fIsession\fP The session 
+.RE
+.PP
+.PP
+Use this constructor when the collection to be removed has not been loaded\&. 
+.PP
+Definition at line 47 of file CollectionRemoveAction\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Action\&.CollectionRemoveAction\&.Execute ()\fC [virtual]\fP"
+
+.PP
+Execute this action
+.PP
+Implements \fBNHibernate\&.Action\&.CollectionAction\fP\&.
+.PP
+Definition at line 58 of file CollectionRemoveAction\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,238 @@
+.TH "NHibernate.Persister.Collection.BasicCollectionPersister" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Persister.Collection.BasicCollectionPersister \- 
+.PP
+\fBCollection\fP persister for collections of values and many-to-many associations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBasicCollectionPersister\fP (\fBMapping\&.Collection\fP collection, \fBICacheConcurrencyStrategy\fP cache, \fBConfiguration\fP cfg, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "override bool \fBConsumesEntityAlias\fP ()"
+.br
+.RI "\fIVery, very, very ugly\&.\&.\&. \fP"
+.ti -1c
+.RI "override bool \fBConsumesCollectionAlias\fP ()"
+.br
+.RI "\fIVery, very, very ugly\&.\&.\&. \fP"
+.ti -1c
+.RI "override string \fBSelectFragment\fP (\fBIJoinable\fP rhs, string rhsAlias, string lhsAlias, string entitySuffix, string collectionSuffix, bool includeCollectionColumns)"
+.br
+.RI "\fIAll columns to select, when loading\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBFromJoinFragment\fP (string alias, bool innerJoin, bool includeSubclasses)"
+.br
+.RI "\fIGet the from clause part of any joins (optional operation) \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBWhereJoinFragment\fP (string alias, bool innerJoin, bool includeSubclasses)"
+.br
+.RI "\fIGet the where clause part of any joins (optional operation) \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override \fBSqlCommandInfo\fP \fBGenerateDeleteString\fP ()"
+.br
+.RI "\fIGenerate the SQL DELETE that deletes all rows \fP"
+.ti -1c
+.RI "override \fBSqlCommandInfo\fP \fBGenerateInsertRowString\fP ()"
+.br
+.RI "\fIGenerate the SQL INSERT that creates a new row \fP"
+.ti -1c
+.RI "override \fBSqlCommandInfo\fP \fBGenerateUpdateRowString\fP ()"
+.br
+.RI "\fIGenerate the SQL UPDATE that updates a row \fP"
+.ti -1c
+.RI "override \fBSqlCommandInfo\fP \fBGenerateDeleteRowString\fP ()"
+.br
+.RI "\fIGenerate the SQL DELETE that deletes a particular row \fP"
+.ti -1c
+.RI "override int \fBDoUpdateRows\fP (object id, \fBIPersistentCollection\fP collection, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override \fBICollectionInitializer\fP \fBCreateCollectionInitializer\fP (IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fICreate the CollectionLoader \fP"
+.ti -1c
+.RI "override \fBICollectionInitializer\fP \fBCreateSubselectInitializer\fP (\fBSubselectFetch\fP subselect, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override \fBSqlCommandInfo\fP \fBGenerateIdentityInsertRowString\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBCascadeDeleteEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsOneToMany\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsManyToMany\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBCollection\fP persister for collections of values and many-to-many associations\&. 
+
+
+.PP
+Definition at line 25 of file BasicCollectionPersister\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override bool NHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\&.ConsumesCollectionAlias ()\fC [virtual]\fP"
+
+.PP
+Very, very, very ugly\&.\&.\&. Does this persister 'consume' collection column aliases in the result set?
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 154 of file BasicCollectionPersister\&.cs\&.
+.SS "override bool NHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\&.ConsumesEntityAlias ()\fC [virtual]\fP"
+
+.PP
+Very, very, very ugly\&.\&.\&. Does this persister 'consume' entity column aliases in the result set?
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 149 of file BasicCollectionPersister\&.cs\&.
+.SS "override \fBICollectionInitializer\fP NHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\&.CreateCollectionInitializer (IDictionary< string, \fBIFilter\fP >enabledFilters)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Create the CollectionLoader 
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 284 of file BasicCollectionPersister\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\&.FromJoinFragment (stringalias, boolinnerJoin, boolincludeSubclasses)\fC [virtual]\fP"
+
+.PP
+Get the from clause part of any joins (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIinnerJoin\fP 
+.br
+\fIincludeSubclasses\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 289 of file BasicCollectionPersister\&.cs\&.
+.SS "override \fBSqlCommandInfo\fP NHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\&.GenerateDeleteRowString ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Generate the SQL DELETE that deletes a particular row 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 122 of file BasicCollectionPersister\&.cs\&.
+.SS "override \fBSqlCommandInfo\fP NHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\&.GenerateDeleteString ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Generate the SQL DELETE that deletes all rows 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 49 of file BasicCollectionPersister\&.cs\&.
+.SS "override \fBSqlCommandInfo\fP NHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\&.GenerateInsertRowString ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Generate the SQL INSERT that creates a new row 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 67 of file BasicCollectionPersister\&.cs\&.
+.SS "override \fBSqlCommandInfo\fP NHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\&.GenerateUpdateRowString ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Generate the SQL UPDATE that updates a row 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 91 of file BasicCollectionPersister\&.cs\&.
+.SS "override string NHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\&.SelectFragment (\fBIJoinable\fPrhs, stringrhsAlias, stringlhsAlias, stringcurrentEntitySuffix, stringcurrentCollectionSuffix, boolincludeCollectionColumns)\fC [virtual]\fP"
+
+.PP
+All columns to select, when loading\&. 
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 253 of file BasicCollectionPersister\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Persister\&.Collection\&.BasicCollectionPersister\&.WhereJoinFragment (stringalias, boolinnerJoin, boolincludeSubclasses)\fC [virtual]\fP"
+
+.PP
+Get the where clause part of any joins (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIinnerJoin\fP 
+.br
+\fIincludeSubclasses\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 294 of file BasicCollectionPersister\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,102 @@
+.TH "NHibernate.Id.Enhanced.IOptimizer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.Enhanced.IOptimizer \- 
+.PP
+Performs optimization on an optimizable identifier generator\&. Typically this optimization takes the form of trying to ensure we do not have to hit the database on each and every request to get an identifier value\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.OptimizerSupport\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBGenerate\fP (\fBIAccessCallback\fP callback)"
+.br
+.RI "\fIGenerate an identifier value accounting for this specific optimization\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "long \fBLastSourceValue\fP\fC [get]\fP"
+.br
+.RI "\fIA common means to access the last value obtained from the underlying source\&. This is intended for testing purposes, since accessing the unerlying database source directly is much more difficult\&. \fP"
+.ti -1c
+.RI "int \fBIncrementSize\fP\fC [get]\fP"
+.br
+.RI "\fIDefined increment size\&. \fP"
+.ti -1c
+.RI "bool \fBApplyIncrementSizeToSourceValues\fP\fC [get]\fP"
+.br
+.RI "\fIAre increments to be applied to the values stored in the underlying value source? \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Performs optimization on an optimizable identifier generator\&. Typically this optimization takes the form of trying to ensure we do not have to hit the database on each and every request to get an identifier value\&. 
+
+Optimizers work on constructor injection\&. They should provide a constructor with the following arguments\&. 
+.PP
+.IP "\(bu" 2
+System\&.Type The return type for the generated values\&.
+.IP "\(bu" 2
+<langword>int</langword> The increment size\&. 
+.PP
+
+.PP
+Definition at line 16 of file IOptimizer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.Id\&.Enhanced\&.IOptimizer\&.Generate (\fBIAccessCallback\fPcallback)"
+
+.PP
+Generate an identifier value accounting for this specific optimization\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcallback\fP Callback to access the underlying value source\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The generated identifier value\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.PooledLoOptimizer\fP, \fBNHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.PooledOptimizer\fP, \fBNHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.OptimizerSupport\fP, \fBNHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.NoopOptimizer\fP, and \fBNHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.HiLoOptimizer\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.Id\&.Enhanced\&.IOptimizer\&.ApplyIncrementSizeToSourceValues\fC [get]\fP"
+
+.PP
+Are increments to be applied to the values stored in the underlying value source? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if the values in the source are to be incremented according to the defined increment size; false otherwise, in which case the increment is totally an in memory construct\&. 
+.RE
+.PP
+
+.PP
+Definition at line 50 of file IOptimizer\&.cs\&.
+.SS "int NHibernate\&.Id\&.Enhanced\&.IOptimizer\&.IncrementSize\fC [get]\fP"
+
+.PP
+Defined increment size\&. The increment size\&.
+.PP
+Definition at line 32 of file IOptimizer\&.cs\&.
+.SS "long NHibernate\&.Id\&.Enhanced\&.IOptimizer\&.LastSourceValue\fC [get]\fP"
+
+.PP
+A common means to access the last value obtained from the underlying source\&. This is intended for testing purposes, since accessing the unerlying database source directly is much more difficult\&. The last value we obtained from the underlying source; -1 indicates we have not yet consulted with the source\&. 
+.PP
+Definition at line 26 of file IOptimizer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

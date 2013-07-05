@@ -1,0 +1,338 @@
+.TH "Renci.SshNet.Common" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Common \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBASCIIEncoding\fP"
+.br
+.RI "\fIImplementation of ASCII Encoding \fP"
+.ti -1c
+.RI "class \fBAsyncResult\fP"
+.br
+.RI "\fIBase class to encapsulates the results of an asynchronous operation\&. \fP"
+.ti -1c
+.RI "class \fBAsyncResult< TResult >\fP"
+.br
+.RI "\fIBase class to encapsulates the results of an asynchronous operation that returns result\&. \fP"
+.ti -1c
+.RI "class \fBAuthenticationBannerEventArgs\fP"
+.br
+.RI "\fIProvides data for \fBRenci\&.SshNet\&.ConnectionInfo\&.AuthenticationBanner\fP event\&. \fP"
+.ti -1c
+.RI "class \fBAuthenticationEventArgs\fP"
+.br
+.RI "\fIBase class for authentication events\&. \fP"
+.ti -1c
+.RI "class \fBAuthenticationPasswordChangeEventArgs\fP"
+.br
+.RI "\fIProvides data for \fBRenci\&.SshNet\&.PasswordConnectionInfo\&.PasswordExpired\fP event\&. \fP"
+.ti -1c
+.RI "class \fBAuthenticationPrompt\fP"
+.br
+.RI "\fIProvides prompt information when \fBRenci\&.SshNet\&.KeyboardInteractiveConnectionInfo\&.AuthenticationPrompt\fP is raised \fP"
+.ti -1c
+.RI "class \fBAuthenticationPromptEventArgs\fP"
+.br
+.RI "\fIProvides data for \fBRenci\&.SshNet\&.KeyboardInteractiveConnectionInfo\&.AuthenticationPrompt\fP event\&. \fP"
+.ti -1c
+.RI "struct \fBBigInteger\fP"
+.br
+.RI "\fIRepresents an arbitrarily large signed integer\&. \fP"
+.ti -1c
+.RI "class \fBChannelDataEventArgs\fP"
+.br
+.RI "\fIProvides data for Renci\&.SshNet\&.Channels\&.Channel\&.DataReceived event and Renci\&.SshNet\&.Channels\&.Channel\&.ExtendedDataReceived events\&. \fP"
+.ti -1c
+.RI "class \fBChannelEventArgs\fP"
+.br
+.RI "\fIBase class for all channel related events\&. \fP"
+.ti -1c
+.RI "class \fBChannelOpenFailedEventArgs\fP"
+.br
+.RI "\fIProvides data for Renci\&.SshNet\&.Channels\&.Channel\&.OpenFailed event\&. \fP"
+.ti -1c
+.RI "class \fBChannelRequestEventArgs\fP"
+.br
+.RI "\fIProvides data for Renci\&.SshNet\&.Channels\&.Channel\&.RequestReceived event\&. \fP"
+.ti -1c
+.RI "class \fBDerData\fP"
+.br
+.RI "\fIBase class for DER encoded data\&. \fP"
+.ti -1c
+.RI "class \fBExceptionEventArgs\fP"
+.br
+.RI "\fIProvides data for the ErrorOccured events\&. \fP"
+.ti -1c
+.RI "class \fBHostKeyEventArgs\fP"
+.br
+.RI "\fIProvides data for the HostKeyReceived event\&. \fP"
+.ti -1c
+.RI "class \fBNetConfServerException\fP"
+.br
+.RI "\fIThe exception that is thrown when there is something wrong with the server capabilities\&. \fP"
+.ti -1c
+.RI "struct \fBObjectIdentifier\fP"
+.br
+.RI "\fIDescribes object identifier for DER encoding \fP"
+.ti -1c
+.RI "class \fBPipeStream\fP"
+.br
+.RI "\fI\fBPipeStream\fP is a thread-safe read/write data stream for use between two threads in a single-producer/single-consumer type problem\&. \fP"
+.ti -1c
+.RI "class \fBPortForwardEventArgs\fP"
+.br
+.RI "\fIProvides data for \fBRenci\&.SshNet\&.ForwardedPort\&.RequestReceived\fP event\&. \fP"
+.ti -1c
+.RI "class \fBProxyException\fP"
+.br
+.RI "\fIThe exception that is thrown when SCP error occurred\&. \fP"
+.ti -1c
+.RI "class \fBScpDownloadEventArgs\fP"
+.br
+.RI "\fIProvides data for the Downloading event\&. \fP"
+.ti -1c
+.RI "class \fBScpException\fP"
+.br
+.RI "\fIThe exception that is thrown when SCP error occurred\&. \fP"
+.ti -1c
+.RI "class \fBScpUploadEventArgs\fP"
+.br
+.RI "\fIProvides data for the Uploading event\&. \fP"
+.ti -1c
+.RI "class \fBSemaphoreLight\fP"
+.br
+.RI "\fILight implementation of SemaphoreSlim\&. \fP"
+.ti -1c
+.RI "class \fBSftpPathNotFoundException\fP"
+.br
+.RI "\fIThe exception that is thrown when file or directory is not found\&. \fP"
+.ti -1c
+.RI "class \fBSftpPermissionDeniedException\fP"
+.br
+.RI "\fIThe exception that is thrown when operation permission is denied\&. \fP"
+.ti -1c
+.RI "class \fBShellDataEventArgs\fP"
+.br
+.RI "\fIProvides data for \fBShell\fP DataReceived event \fP"
+.ti -1c
+.RI "class \fBSshAuthenticationException\fP"
+.br
+.RI "\fIThe exception that is thrown when authentication failed\&. \fP"
+.ti -1c
+.RI "class \fBSshConnectionException\fP"
+.br
+.RI "\fIThe exception that is thrown when connection was terminated\&. \fP"
+.ti -1c
+.RI "class \fBSshData\fP"
+.br
+.RI "\fIBase ssh data serialization type \fP"
+.ti -1c
+.RI "class \fBSshException\fP"
+.br
+.RI "\fIThe exception that is thrown when SSH exception occurs\&. \fP"
+.ti -1c
+.RI "class \fBSshOperationTimeoutException\fP"
+.br
+.RI "\fIThe exception that is thrown when operation is timed out\&. \fP"
+.ti -1c
+.RI "class \fBSshPassPhraseNullOrEmptyException\fP"
+.br
+.RI "\fIThe exception that is thrown when pass phrase for key file is empty or null \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBTerminalModes\fP : byte { \fBTerminalModes\&.TTY_OP_END\fP = 0, \fBTerminalModes\&.VINTR\fP = 1, \fBTerminalModes\&.VQUIT\fP = 2, \fBTerminalModes\&.VERASE\fP = 3, \fBTerminalModes\&.VKILL\fP = 4, \fBTerminalModes\&.VEOF\fP = 5, \fBTerminalModes\&.VEOL\fP = 6, \fBTerminalModes\&.VEOL2\fP = 7, \fBTerminalModes\&.VSTART\fP = 8, \fBTerminalModes\&.VSTOP\fP = 9, \fBTerminalModes\&.VSUSP\fP = 10, \fBTerminalModes\&.VDSUSP\fP = 11, \fBTerminalModes\&.VREPRINT\fP = 12, \fBTerminalModes\&.VWERASE\fP = 13, \fBTerminalModes\&.VLNEXT\fP = 14, \fBTerminalModes\&.VFLUSH\fP = 15, \fBTerminalModes\&.VSWTCH\fP = 16, \fBTerminalModes\&.VSTATUS\fP = 17, \fBTerminalModes\&.VDISCARD\fP = 18, \fBTerminalModes\&.IGNPAR\fP = 30, \fBTerminalModes\&.PARMRK\fP = 31, \fBTerminalModes\&.INPCK\fP = 32, \fBTerminalModes\&.ISTRIP\fP = 33, \fBTerminalModes\&.INLCR\fP = 34, \fBTerminalModes\&.IGNCR\fP = 35, \fBTerminalModes\&.ICRNL\fP = 36, \fBTerminalModes\&.IUCLC\fP = 37, \fBTerminalModes\&.IXON\fP = 38, \fBTerminalModes\&.IXANY\fP = 39, \fBTerminalModes\&.IXOFF\fP = 40, \fBTerminalModes\&.IMAXBEL\fP = 41, \fBTerminalModes\&.ISIG\fP = 50, \fBTerminalModes\&.ICANON\fP = 51, \fBTerminalModes\&.XCASE\fP = 52, \fBTerminalModes\&.ECHO\fP = 53, \fBTerminalModes\&.ECHOE\fP = 54, \fBTerminalModes\&.ECHOK\fP = 55, \fBTerminalModes\&.ECHONL\fP = 56, \fBTerminalModes\&.NOFLSH\fP = 57, \fBTerminalModes\&.TOSTOP\fP = 58, \fBTerminalModes\&.IEXTEN\fP = 59, \fBTerminalModes\&.ECHOCTL\fP = 60, \fBTerminalModes\&.ECHOKE\fP = 61, \fBTerminalModes\&.PENDIN\fP = 62, \fBTerminalModes\&.OPOST\fP = 70, \fBTerminalModes\&.OLCUC\fP = 71, \fBTerminalModes\&.ONLCR\fP = 72, \fBTerminalModes\&.OCRNL\fP = 73, \fBTerminalModes\&.ONOCR\fP = 74, \fBTerminalModes\&.ONLRET\fP = 75, \fBTerminalModes\&.CS7\fP = 90, \fBTerminalModes\&.CS8\fP = 91, \fBTerminalModes\&.PARENB\fP = 92, \fBTerminalModes\&.PARODD\fP = 93, \fBTerminalModes\&.TTY_OP_ISPEED\fP = 128, \fBTerminalModes\&.TTY_OP_OSPEED\fP = 129 }"
+.br
+.RI "\fISpecifies the initial assignments of the opcode values that are used in the 'encoded terminal modes' valu \fP"
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBRenci\&.SshNet\&.Common\&.TerminalModes\fP : byte"
+
+.PP
+Specifies the initial assignments of the opcode values that are used in the 'encoded terminal modes' valu 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fITTY_OP_END \fP\fP
+Indicates end of options\&. 
+.TP
+\fB\fIVINTR \fP\fP
+Interrupt character; 255 if none\&. Similarly for the other characters\&. Not all of these characters are supported on all systems\&. 
+.TP
+\fB\fIVQUIT \fP\fP
+The quit character (sends SIGQUIT signal on POSIX systems)\&. 
+.TP
+\fB\fIVERASE \fP\fP
+Erase the character to left of the cursor\&. 
+.TP
+\fB\fIVKILL \fP\fP
+Kill the current input line\&. 
+.TP
+\fB\fIVEOF \fP\fP
+End-of-file character (sends EOF from the terminal)\&. 
+.TP
+\fB\fIVEOL \fP\fP
+End-of-line character in addition to carriage return and/or linefeed\&. 
+.TP
+\fB\fIVEOL2 \fP\fP
+Additional end-of-line character\&. 
+.TP
+\fB\fIVSTART \fP\fP
+Continues paused output (normally control-Q)\&. 
+.TP
+\fB\fIVSTOP \fP\fP
+Pauses output (normally control-S)\&. 
+.TP
+\fB\fIVSUSP \fP\fP
+Suspends the current program\&. 
+.TP
+\fB\fIVDSUSP \fP\fP
+Another suspend character\&. 
+.TP
+\fB\fIVREPRINT \fP\fP
+Reprints the current input line\&. 
+.TP
+\fB\fIVWERASE \fP\fP
+Erases a word left of cursor\&. 
+.TP
+\fB\fIVLNEXT \fP\fP
+Enter the next character typed literally, even if it is a special character 
+.TP
+\fB\fIVFLUSH \fP\fP
+Character to flush output\&. 
+.TP
+\fB\fIVSWTCH \fP\fP
+Switch to a different shell layer\&. 
+.TP
+\fB\fIVSTATUS \fP\fP
+Prints system status line (load, command, pid, etc)\&. 
+.TP
+\fB\fIVDISCARD \fP\fP
+Toggles the flushing of terminal output\&. 
+.TP
+\fB\fIIGNPAR \fP\fP
+The ignore parity flag\&. The parameter SHOULD be 0 if this flag is FALSE, and 1 if it is TRUE\&. 
+.TP
+\fB\fIPARMRK \fP\fP
+Mark parity and framing errors\&. 
+.TP
+\fB\fIINPCK \fP\fP
+Enable checking of parity errors\&. 
+.TP
+\fB\fIISTRIP \fP\fP
+Strip 8th bit off characters\&. 
+.TP
+\fB\fIINLCR \fP\fP
+Map NL into CR on input\&. 
+.TP
+\fB\fIIGNCR \fP\fP
+Ignore CR on input\&. 
+.TP
+\fB\fIICRNL \fP\fP
+Map CR to NL on input\&. 
+.TP
+\fB\fIIUCLC \fP\fP
+Translate uppercase characters to lowercase\&. 
+.TP
+\fB\fIIXON \fP\fP
+Enable output flow control\&. 
+.TP
+\fB\fIIXANY \fP\fP
+Any char will restart after stop\&. 
+.TP
+\fB\fIIXOFF \fP\fP
+Enable input flow control\&. 
+.TP
+\fB\fIIMAXBEL \fP\fP
+Ring bell on input queue full\&. 
+.TP
+\fB\fIISIG \fP\fP
+Enable signals INTR, QUIT, [D]SUSP\&. 
+.TP
+\fB\fIICANON \fP\fP
+Canonicalize input lines\&. 
+.TP
+\fB\fIXCASE \fP\fP
+Enable input and output of uppercase characters by preceding their lowercase equivalents with '\\'\&. 
+.TP
+\fB\fIECHO \fP\fP
+Enable echoing\&. 
+.TP
+\fB\fIECHOE \fP\fP
+Visually erase chars\&. 
+.TP
+\fB\fIECHOK \fP\fP
+Kill character discards current line\&. 
+.TP
+\fB\fIECHONL \fP\fP
+Echo NL even if ECHO is off\&. 
+.TP
+\fB\fINOFLSH \fP\fP
+Don't flush after interrupt\&. 
+.TP
+\fB\fITOSTOP \fP\fP
+Stop background jobs from output\&. 
+.TP
+\fB\fIIEXTEN \fP\fP
+Enable extensions\&. 
+.TP
+\fB\fIECHOCTL \fP\fP
+Echo control characters as ^(Char)\&. 
+.TP
+\fB\fIECHOKE \fP\fP
+Visual erase for line kill\&. 
+.TP
+\fB\fIPENDIN \fP\fP
+Retype pending input\&. 
+.TP
+\fB\fIOPOST \fP\fP
+Enable output processing\&. 
+.TP
+\fB\fIOLCUC \fP\fP
+Convert lowercase to uppercase\&. 
+.TP
+\fB\fIONLCR \fP\fP
+Map NL to CR-NL\&. 
+.TP
+\fB\fIOCRNL \fP\fP
+Translate carriage return to newline (output)\&. 
+.TP
+\fB\fIONOCR \fP\fP
+Translate newline to carriage return-newline (output)\&. 
+.TP
+\fB\fIONLRET \fP\fP
+Newline performs a carriage return (output)\&. 
+.TP
+\fB\fICS7 \fP\fP
+7 bit mode\&. 
+.TP
+\fB\fICS8 \fP\fP
+8 bit mode\&. 
+.TP
+\fB\fIPARENB \fP\fP
+Parity enable\&. 
+.TP
+\fB\fIPARODD \fP\fP
+Odd parity, else even\&. 
+.TP
+\fB\fITTY_OP_ISPEED \fP\fP
+Specifies the input baud rate in bits per second\&. 
+.TP
+\fB\fITTY_OP_OSPEED \fP\fP
+Specifies the output baud rate in bits per second\&. 
+.PP
+Definition at line 11 of file TerminalModes\&.cs\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,65 @@
+.TH "NHibernate.ReplicationMode" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.ReplicationMode \- 
+.PP
+Represents a replication strategy\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by NHibernate\&.ReplicationMode\&.ExceptionReplicationMode, NHibernate\&.ReplicationMode\&.IgnoreReplicationMode, NHibernate\&.ReplicationMode\&.LatestVersionReplicationMode, and NHibernate\&.ReplicationMode\&.OverwriteReplicationMode\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "abstract bool \fBShouldOverwriteCurrentVersion\fP (object entity, object currentVersion, object newVersion, \fBIVersionType\fP versionType)"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly \fBReplicationMode\fP \fBException\fP = new ExceptionReplicationMode('EXCEPTION')"
+.br
+.ti -1c
+.RI "static readonly \fBReplicationMode\fP \fBIgnore\fP = new IgnoreReplicationMode('IGNORE')"
+.br
+.ti -1c
+.RI "static readonly \fBReplicationMode\fP \fBLatestVersion\fP = new LatestVersionReplicationMode('LATEST_VERSION')"
+.br
+.ti -1c
+.RI "static readonly \fBReplicationMode\fP \fBOverwrite\fP = new OverwriteReplicationMode('OVERWRITE')"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBReplicationMode\fP (string name)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a replication strategy\&. 
+
+
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBISession\&.Replicate(object, ReplicationMode)\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 9 of file ReplicationMode\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,67 @@
+.TH "NHibernate.Dialect.Lock.SelectLockingStrategy" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.Lock.SelectLockingStrategy \- 
+.PP
+A locking strategy where the locks are obtained through select statements\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Lock\&.ILockingStrategy\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSelectLockingStrategy\fP (\fBILockable\fP lockable, \fBLockMode\fP lockMode)"
+.br
+.ti -1c
+.RI "void \fBLock\fP (object id, object version, object obj, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIAcquire an appropriate type of lock on the underlying data that will endure until the end of the current transaction\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A locking strategy where the locks are obtained through select statements\&. 
+
+
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBNHibernate\&.Dialect\&.Dialect\&.GetForUpdateString(NHibernate\&.LockMode)\fP, \fBNHibernate\&.Dialect\&.Dialect\&.AppendLockHint(NHibernate\&.LockMode, string)\fP
+.PP
+.RE
+.PP
+.PP
+For non-read locks, this is achieved through the \fBDialect\fP's specific SELECT \&.\&.\&. FOR UPDATE syntax\&. 
+.PP
+Definition at line 20 of file SelectLockingStrategy\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Dialect\&.Lock\&.SelectLockingStrategy\&.Lock (objectid, objectversion, objectobj, \fBISessionImplementor\fPsession)"
+
+.PP
+Acquire an appropriate type of lock on the underlying data that will endure until the end of the current transaction\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The id of the row to be locked 
+.br
+\fIversion\fP The current version (or null if not versioned) 
+.br
+\fIobj\fP The object logically being locked (currently not used) 
+.br
+\fIsession\fP The session from which the lock request originated 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Dialect\&.Lock\&.ILockingStrategy\fP\&.
+.PP
+Definition at line 54 of file SelectLockingStrategy\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

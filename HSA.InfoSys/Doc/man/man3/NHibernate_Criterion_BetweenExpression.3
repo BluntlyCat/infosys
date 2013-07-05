@@ -1,0 +1,152 @@
+.TH "NHibernate.Criterion.BetweenExpression" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.BetweenExpression \- 
+.PP
+An \fBICriterion\fP that represents a 'between' constraint\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBetweenExpression\fP (\fBIProjection\fP projection, object lo, object hi)"
+.br
+.RI "\fIInitializes a new instance of the \fBBetweenExpression\fP class\&. \fP"
+.ti -1c
+.RI "\fBBetweenExpression\fP (string propertyName, object lo, object hi)"
+.br
+.RI "\fIInitialize a new instance of the \fBBetweenExpression\fP class for the named \fBProperty\fP\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBToSqlString\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIRender a SqlString for the expression\&. \fP"
+.ti -1c
+.RI "override \fBTypedValue\fP[] \fBGetTypedValues\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery)"
+.br
+.RI "\fIReturn typed values for all parameters in the rendered SQL fragment \fP"
+.ti -1c
+.RI "override \fBIProjection\fP[] \fBGetProjections\fP ()"
+.br
+.RI "\fIReturn all projections used in this criterion \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIGets a string representation of the \fBAbstractCriterion\fP\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An \fBICriterion\fP that represents a 'between' constraint\&. 
+
+
+.PP
+Definition at line 14 of file BetweenExpression\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Criterion\&.BetweenExpression\&.BetweenExpression (\fBIProjection\fPprojection, objectlo, objecthi)"
+
+.PP
+Initializes a new instance of the \fBBetweenExpression\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprojection\fP The _projection\&.
+.br
+\fIlo\fP The _lo\&.
+.br
+\fIhi\fP The _hi\&.
+.RE
+.PP
+
+.PP
+Definition at line 28 of file BetweenExpression\&.cs\&.
+.SS "NHibernate\&.Criterion\&.BetweenExpression\&.BetweenExpression (stringpropertyName, objectlo, objecthi)"
+
+.PP
+Initialize a new instance of the \fBBetweenExpression\fP class for the named \fBProperty\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the \fBProperty\fP of the Class\&.
+.br
+\fIlo\fP The low value for the \fBBetweenExpression\fP\&.
+.br
+\fIhi\fP The high value for the \fBBetweenExpression\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 42 of file BetweenExpression\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBIProjection\fP [] NHibernate\&.Criterion\&.BetweenExpression\&.GetProjections ()\fC [virtual]\fP"
+
+.PP
+Return all projections used in this criterion 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of \fBIProjection\fP used by the \fBExpression\fP\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 105 of file BetweenExpression\&.cs\&.
+.SS "override \fBTypedValue\fP [] NHibernate\&.Criterion\&.BetweenExpression\&.GetTypedValues (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery)\fC [virtual]\fP"
+
+.PP
+Return typed values for all parameters in the rendered SQL fragment 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of TypedValues for the \fBExpression\fP\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 100 of file BetweenExpression\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Criterion\&.BetweenExpression\&.ToSqlString (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery, IDictionary< string, \fBIFilter\fP >enabledFilters)\fC [virtual]\fP"
+
+.PP
+Render a SqlString for the expression\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A SqlString that contains a valid Sql fragment\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 49 of file BetweenExpression\&.cs\&.
+.SS "override string NHibernate\&.Criterion\&.BetweenExpression\&.ToString ()\fC [virtual]\fP"
+
+.PP
+Gets a string representation of the \fBAbstractCriterion\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A String that shows the contents of the \fBAbstractCriterion\fP\&. 
+.RE
+.PP
+.PP
+This is not a well formed Sql fragment\&. It is useful for logging what the \fBAbstractCriterion\fP looks like\&. 
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 114 of file BetweenExpression\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

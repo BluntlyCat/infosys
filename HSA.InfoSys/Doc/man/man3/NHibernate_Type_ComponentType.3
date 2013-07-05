@@ -1,0 +1,702 @@
+.TH "NHibernate.Type.ComponentType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.ComponentType \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.AbstractType\fP, and \fBNHibernate\&.Type\&.IAbstractComponentType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Type\&.EmbeddedComponentType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override \fBSqlType\fP[] \fBSqlTypes\fP (\fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "override int \fBGetColumnSpan\fP (\fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "\fBComponentType\fP (\fBComponentMetamodel\fP metamodel)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP (object x, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIGet a hashcode, consistent with persistence 'equality'\fP"
+.ti -1c
+.RI "override int \fBGetHashCode\fP (object x, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIGet a hashcode, consistent with persistence 'equality'\fP"
+.ti -1c
+.RI "override bool \fBIsDirty\fP (object x, object y, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIShould the parent be considered dirty, given both the old and current field or element value? \fP"
+.ti -1c
+.RI "override bool \fBIsDirty\fP (object x, object y, bool[] checkable, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override object \fBNullSafeGet\fP (IDataReader rs, string[] names, \fBISessionImplementor\fP session, object owner)"
+.br
+.ti -1c
+.RI "override void \fBNullSafeSet\fP (IDbCommand st, object value, int begin, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override void \fBNullSafeSet\fP (IDbCommand st, object value, int begin, bool[] settable, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override object \fBNullSafeGet\fP (IDataReader rs, string name, \fBISessionImplementor\fP session, object owner)"
+.br
+.ti -1c
+.RI "object \fBGetPropertyValue\fP (object component, int i, \fBEntityMode\fP entityMode)"
+.br
+.ti -1c
+.RI "object \fBGetPropertyValue\fP (object component, int i, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "object[] \fBGetPropertyValues\fP (object component, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIOptional Operation \fP"
+.ti -1c
+.RI "object[] \fBGetPropertyValues\fP (object component, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGet the values of the component properties of a component instance \fP"
+.ti -1c
+.RI "virtual void \fBSetPropertyValues\fP (object component, object[] values, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIOptional operation \fP"
+.ti -1c
+.RI "override string \fBToLoggableString\fP (object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "override object \fBDeepCopy\fP (object component, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "override object \fBReplace\fP (object original, object target, \fBISessionImplementor\fP session, object owner, IDictionary copiedAlready)"
+.br
+.ti -1c
+.RI "override object \fBReplace\fP (object original, object target, \fBISessionImplementor\fP session, object owner, IDictionary copyCache, \fBForeignKeyDirection\fP foreignKeyDirection)"
+.br
+.RI "\fIDuring merge, replace the existing (target) value in the entity we are merging to with a new (original) value from the detached entity we are merging\&. For immutable objects, or null values, it is safe to simply return the first parameter\&. For mutable objects, it is safe to return a copy of the first parameter\&. For objects with component values, it might make sense to recursively replace component values\&. \fP"
+.ti -1c
+.RI "object \fBInstantiate\fP (\fBEntityMode\fP entityMode)"
+.br
+.RI "\fIThis method does not populate the component parent\fP"
+.ti -1c
+.RI "virtual object \fBInstantiate\fP (object parent, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "\fBCascadeStyle\fP \fBGetCascadeStyle\fP (int i)"
+.br
+.ti -1c
+.RI "override object \fBDisassemble\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIDisassembles the object into a cacheable representation\&. \fP"
+.ti -1c
+.RI "override object \fBAssemble\fP (object obj, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIReconstructs the object from its cached 'disassembled' state\&. \fP"
+.ti -1c
+.RI "\fBFetchMode\fP \fBGetFetchMode\fP (int i)"
+.br
+.ti -1c
+.RI "override object \fBHydrate\fP (IDataReader rs, string[] names, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIRetrives an instance of the mapped class, or the identifier of an entity or collection from a IDataReader\&. \fP"
+.ti -1c
+.RI "override object \fBResolveIdentifier\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIMaps identifiers to Entities or Collections\&. \fP"
+.ti -1c
+.RI "override object \fBSemiResolve\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIGiven a hydrated, but unresolved value, return a value that may be used to reconstruct property-ref associations\&. \fP"
+.ti -1c
+.RI "override bool \fBIsModified\fP (object old, object current, bool[] checkable, \fBISessionImplementor\fP session)"
+.br
+.RI "\fISays whether the value has been modified \fP"
+.ti -1c
+.RI "override int \fBCompare\fP (object x, object y, \fBEntityMode\fP?entityMode)"
+.br
+.RI "\fIcompare two instances of the type\fP"
+.ti -1c
+.RI "override object \fBFromXMLNode\fP (XmlNode xml, \fBIMapping\fP factory)"
+.br
+.RI "\fIParse the XML representation of an instance\&.\fP"
+.ti -1c
+.RI "override bool \fBIsEqual\fP (object x, object y, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fICompare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. \fP"
+.ti -1c
+.RI "override bool \fBIsEqual\fP (object x, object y, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fICompare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsMethodOf\fP (MethodBase method)"
+.br
+.ti -1c
+.RI "override bool \fBIsSame\fP (object x, object y, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fICompare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state - taking a shortcut for entity references\&. \fP"
+.ti -1c
+.RI "override void \fBSetToXMLNode\fP (XmlNode node, object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIA representation of the value to be embedded in an XML element\&. \fP"
+.ti -1c
+.RI "override bool[] \fBToColumnNullness\fP (object value, \fBIMapping\fP mapping)"
+.br
+.RI "\fIGiven an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. \fP"
+.ti -1c
+.RI "int \fBGetPropertyIndex\fP (string name)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBIsCollectionType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsComponentType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsEntityType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP[] \fBSubtypes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBPropertyNames\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsMutable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsEmbedded\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBPropertyNullability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsXMLElement\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 16 of file ComponentType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.ComponentType\&.Assemble (objectcached, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Reconstructs the object from its cached 'disassembled' state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcached\fP The disassembled state from the cache
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP The parent Entity object is not used by this method
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The assembled object\&.
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 451 of file ComponentType\&.cs\&.
+.SS "override int NHibernate\&.Type\&.ComponentType\&.Compare (objectx, objecty, \fBEntityMode\fP?entityMode)\fC [virtual]\fP"
+
+.PP
+compare two instances of the type
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 571 of file ComponentType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.ComponentType\&.Disassemble (objectvalue, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Disassembles the object into a cacheable representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to disassemble\&.
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP optional parent entity object (needed for collections) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The disassembled, deep cloned state of the object
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 434 of file ComponentType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.ComponentType\&.FromXMLNode (XmlNodexml, \fBIMapping\fPfactory)\fC [virtual]\fP"
+
+.PP
+Parse the XML representation of an instance\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an instance of the type 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 588 of file ComponentType\&.cs\&.
+.SS "\fBCascadeStyle\fP NHibernate\&.Type\&.ComponentType\&.GetCascadeStyle (inti)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.IAbstractComponentType\fP\&.
+.PP
+Definition at line 423 of file ComponentType\&.cs\&.
+.SS "override int NHibernate\&.Type\&.ComponentType\&.GetHashCode (objectx, \fBEntityMode\fPentityMode, \fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+Get a hashcode, consistent with persistence 'equality'
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIentityMode\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 107 of file ComponentType\&.cs\&.
+.SS "override int NHibernate\&.Type\&.ComponentType\&.GetHashCode (objectx, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Get a hashcode, consistent with persistence 'equality'
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 114 of file ComponentType\&.cs\&.
+.SS "object [] NHibernate\&.Type\&.ComponentType\&.GetPropertyValues (objectcomponent, \fBEntityMode\fPentityMode)"
+
+.PP
+Optional Operation 
+.PP
+Implements \fBNHibernate\&.Type\&.IAbstractComponentType\fP\&.
+.PP
+Definition at line 284 of file ComponentType\&.cs\&.
+.SS "object [] NHibernate\&.Type\&.ComponentType\&.GetPropertyValues (objectcomponent, \fBISessionImplementor\fPsession)"
+
+.PP
+Get the values of the component properties of a component instance 
+.PP
+Implements \fBNHibernate\&.Type\&.IAbstractComponentType\fP\&.
+.PP
+Definition at line 289 of file ComponentType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.ComponentType\&.Hydrate (IDataReaderrs, string[]names, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Retrives an instance of the mapped class, or the identifier of an entity or collection from a IDataReader\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the values\&.
+.br
+\fInames\fP The names of the columns in the IDataReader that contain the value to populate the \fBIType\fP with\&. 
+.br
+\fIsession\fP the session
+.br
+\fIowner\fP The parent Entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An identifier or actual object mapped by this \fBIType\fP\&.
+.RE
+.PP
+.PP
+This method uses the \fCIType\&.NullSafeGet(IDataReader, string[], ISessionImplementor, object)\fP method to Hydrate this \fBAbstractType\fP\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 481 of file ComponentType\&.cs\&.
+.SS "object NHibernate\&.Type\&.ComponentType\&.Instantiate (\fBEntityMode\fPentityMode)"
+
+.PP
+This method does not populate the component parent
+.PP
+Definition at line 400 of file ComponentType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.ComponentType\&.IsDirty (objectold, objectcurrent, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Should the parent be considered dirty, given both the old and current field or element value? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIold\fP The old value
+.br
+\fIcurrent\fP The current value
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the field is dirty
+.RE
+.PP
+.PP
+This method uses \fCIType\&.Equals(object, object)\fP to determine the value of IsDirty\&.
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 131 of file ComponentType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.ComponentType\&.IsEqual (objectx, objecty, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Compare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+boolean 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 593 of file ComponentType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.ComponentType\&.IsEqual (objectx, objecty, \fBEntityMode\fPentityMode, \fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+Compare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+boolean 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 615 of file ComponentType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.ComponentType\&.IsModified (objectold, objectcurrent, bool[]checkable, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Says whether the value has been modified 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 539 of file ComponentType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.ComponentType\&.IsSame (objectx, objecty, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Compare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state - taking a shortcut for entity references\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+boolean 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 642 of file ComponentType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.ComponentType\&.NullSafeSet (IDbCommandst, objectvalue, intbegin, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIst\fP 
+.br
+\fIvalue\fP 
+.br
+\fIbegin\fP 
+.br
+\fIsession\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 215 of file ComponentType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.ComponentType\&.Replace (objectoriginal, objecttarget, \fBISessionImplementor\fPsession, objectowner, IDictionarycopyCache, \fBForeignKeyDirection\fPforeignKeyDirection)\fC [virtual]\fP"
+
+.PP
+During merge, replace the existing (target) value in the entity we are merging to with a new (original) value from the detached entity we are merging\&. For immutable objects, or null values, it is safe to simply return the first parameter\&. For mutable objects, it is safe to return a copy of the first parameter\&. For objects with component values, it might make sense to recursively replace component values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoriginal\fP the value from the detached entity being merged 
+.br
+\fItarget\fP the value in the managed entity 
+.br
+\fIsession\fP 
+.br
+\fIowner\fP 
+.br
+\fIcopyCache\fP 
+.br
+\fIforeignKeyDirection\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the value to be merged 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 385 of file ComponentType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.ComponentType\&.ResolveIdentifier (objectvalue, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Maps identifiers to Entities or Collections\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP An identifier or value returned by \fC\fBHydrate()\fP\fP
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP The parent Entity is not used by this method\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value\&.
+.RE
+.PP
+.PP
+There is nothing done in this method other than return the value parameter passed in\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 512 of file ComponentType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.ComponentType\&.SemiResolve (objectvalue, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Given a hydrated, but unresolved value, return a value that may be used to reconstruct property-ref associations\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 532 of file ComponentType\&.cs\&.
+.SS "virtual void NHibernate\&.Type\&.ComponentType\&.SetPropertyValues (objectcomponent, object[]values, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Optional operation 
+.PP
+Implements \fBNHibernate\&.Type\&.IAbstractComponentType\fP\&.
+.PP
+Definition at line 294 of file ComponentType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.ComponentType\&.SetToXMLNode (XmlNodenode, objectvalue, \fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+A representation of the value to be embedded in an XML element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInode\fP 
+.br
+\fIvalue\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 664 of file ComponentType\&.cs\&.
+.SS "override bool [] NHibernate\&.Type\&.ComponentType\&.ToColumnNullness (objectvalue, \fBIMapping\fPmapping)\fC [virtual]\fP"
+
+.PP
+Given an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP an instance of the type 
+.br
+\fImapping\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 669 of file ComponentType\&.cs\&.
+.SS "override string NHibernate\&.Type\&.ComponentType\&.ToLoggableString (objectvalue, \fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 317 of file ComponentType\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool NHibernate\&.Type\&.ComponentType\&.IsCollectionType\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 85 of file ComponentType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.ComponentType\&.IsComponentType\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 91 of file ComponentType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.ComponentType\&.IsEntityType\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 97 of file ComponentType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.ComponentType\&.IsMutable\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 430 of file ComponentType\&.cs\&.
+.SS "override string NHibernate\&.Type\&.ComponentType\&.Name\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 307 of file ComponentType\&.cs\&.
+.SS "string [] NHibernate\&.Type\&.ComponentType\&.PropertyNames\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 339 of file ComponentType\&.cs\&.
+.SS "override System\&.Type NHibernate\&.Type\&.ComponentType\&.ReturnedClass\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 103 of file ComponentType\&.cs\&.
+.SS "\fBIType\fP [] NHibernate\&.Type\&.ComponentType\&.Subtypes\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 301 of file ComponentType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

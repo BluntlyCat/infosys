@@ -1,0 +1,158 @@
+.TH "NHibernate.Type.IdentifierBagType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.IdentifierBagType \- 
+.PP
+An \fBIType\fP that maps an IList collection using bag semantics with an identifier to the database\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Type\&.GenericIdentifierBagType< T >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIdentifierBagType\fP (string role, string propertyRef, bool isEmbeddedInXML)"
+.br
+.RI "\fIInitializes a new instance of a \fBIdentifierBagType\fP class for a specific role\&. \fP"
+.ti -1c
+.RI "override \fBIPersistentCollection\fP \fBInstantiate\fP (\fBISessionImplementor\fP session, \fBICollectionPersister\fP persister, object key)"
+.br
+.RI "\fIInstantiates a new IPersistentCollection for the identifier bag\&. \fP"
+.ti -1c
+.RI "override \fBIPersistentCollection\fP \fBWrap\fP (\fBISessionImplementor\fP session, object collection)"
+.br
+.RI "\fIWraps an IList in a PersistentIdentifierBag\&. \fP"
+.ti -1c
+.RI "override object \fBInstantiate\fP (int anticipatedSize)"
+.br
+.RI "\fIInstantiate an empty instance of the 'underlying' collection (not a wrapper), but with the given anticipated size (i\&.e\&. accounting for initial capacity and perhaps load factor)\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBClear\fP (object collection)"
+.br
+.ti -1c
+.RI "override void \fBAdd\fP (object collection, object element)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An \fBIType\fP that maps an IList collection using bag semantics with an identifier to the database\&. 
+
+
+.PP
+Definition at line 15 of file IdentifierBagType\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Type\&.IdentifierBagType\&.IdentifierBagType (stringrole, stringpropertyRef, boolisEmbeddedInXML)"
+
+.PP
+Initializes a new instance of a \fBIdentifierBagType\fP class for a specific role\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The role the persistent collection is in\&.
+.br
+\fIpropertyRef\fP The name of the property in the owner object containing the collection ID, or  if it is the primary key\&.
+.br
+\fIisEmbeddedInXML\fP 
+.RE
+.PP
+
+.PP
+Definition at line 26 of file IdentifierBagType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBIPersistentCollection\fP NHibernate\&.Type\&.IdentifierBagType\&.Instantiate (\fBISessionImplementor\fPsession, \fBICollectionPersister\fPpersister, objectkey)\fC [virtual]\fP"
+
+.PP
+Instantiates a new IPersistentCollection for the identifier bag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The current ISessionImplementor for the identifier bag\&.
+.br
+\fIpersister\fP 
+.br
+\fIkey\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.PP
+Definition at line 36 of file IdentifierBagType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.IdentifierBagType\&.Instantiate (intanticipatedSize)\fC [virtual]\fP"
+
+.PP
+Instantiate an empty instance of the 'underlying' collection (not a wrapper), but with the given anticipated size (i\&.e\&. accounting for initial capacity and perhaps load factor)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIanticipatedSize\fP The anticipated size of the instantiated collection after we are done populating it\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A newly instantiated collection to be wrapped\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.PP
+Definition at line 70 of file IdentifierBagType\&.cs\&.
+.SS "override \fBIPersistentCollection\fP NHibernate\&.Type\&.IdentifierBagType\&.Wrap (\fBISessionImplementor\fPsession, objectcollection)\fC [virtual]\fP"
+
+.PP
+Wraps an IList in a PersistentIdentifierBag\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The ISessionImplementor for the collection to be a part of\&.
+.br
+\fIcollection\fP The unwrapped IList\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An PersistentIdentifierBag that wraps the non \fBNHibernate\fP IList\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.PP
+Definition at line 55 of file IdentifierBagType\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override System\&.Type NHibernate\&.Type\&.IdentifierBagType\&.ReturnedClass\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 43 of file IdentifierBagType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

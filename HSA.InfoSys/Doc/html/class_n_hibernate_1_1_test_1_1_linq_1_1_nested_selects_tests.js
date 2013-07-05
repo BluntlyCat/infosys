@@ -1,0 +1,25 @@
+var class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests =
+[
+    [ "EmployeesIdAndWithSubordinatesId", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#a073e7ee88f6d6557a2b8b07656c91f46", null ],
+    [ "OrdersIdAndDateWithOrderLinesIdAndDiscount", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#a4c3c6062c551366cdcf656d9bad43e4f", null ],
+    [ "OrdersIdWithOrderLinesId", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#adc25fb02eb2382afe65fbbe4192d929b", null ],
+    [ "OrdersIdWithOrderLinesIdAndDiscount", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#affaf211042fd1952698a8def76498936", null ],
+    [ "OrdersIdWithOrderLinesIdShouldBeNotLazy", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#a024a3e0b8f810ee22b476df1d566089d", null ],
+    [ "OrdersIdWithOrderLinesIdToArray", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#a70e3a3a0a80dcd22554c8bbd75af8e79", null ],
+    [ "OrdersIdWithOrderLinesNestedWhereId", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#af4a9445d41747badba774da8703a42a0", null ],
+    [ "OrdersOrderLinesId", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#a58f6333c85796c2995de5b450654de0e", null ],
+    [ "TimesheetAndUsers", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#ac9034f53d9c688c76944759160a3cb23", null ],
+    [ "TimesheetAndUsersAndEntries", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#a55941b975fee704edf87fab29912128a", null ],
+    [ "TimesheetAndUsersAndEntriesTransparentProjection", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#a2118f4d4e3d6b083930a91b4233dfd68", null ],
+    [ "TimesheetAndUsersTransparentProjection", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#a00efa1030c0453ade169dae68353f889", null ],
+    [ "TimesheetIdAndUserLastLoginDates", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#a8d36588589b3efdb9761cb23bf92274d", null ],
+    [ "TimesheetIdAndUserLastLoginDatesAndEntriesIds", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#a203dc675065ab10ebecf9a7466a5fc20", null ],
+    [ "TimesheetIdAndUsers", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#a96525db3f02d45b509c2f8949d0687ad", null ],
+    [ "TimesheetIdAndUsersAndEntries", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#a8ff0cc688ac5184e63f0a68f9a45e0ef", null ],
+    [ "TimesheetIdAndUsersAndEntriesTransparentProjection", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#a424625fadb29f8801b975a328a174b6f", null ],
+    [ "TimesheetIdAndUsersTransparentProjection", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#a3bc1237d45aec665556aef349eed6b2f", null ],
+    [ "TimesheetUsers", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#a6eebe7815f9d31652cd3d6ccbebee12f", null ],
+    [ "TimesheetUsersAndEntries", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#af3e0d8fdf91516b2ad3ddda42e5996d6", null ],
+    [ "TimesheetUsersAndEntriesTransparentProjection", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#a62dddf7f129fc51a63d3af294a0a3eb2", null ],
+    [ "TimesheetUsersTransparentProjection", "class_n_hibernate_1_1_test_1_1_linq_1_1_nested_selects_tests.html#aa88ea77460342a99048caf4ebdf3f583", null ]
+];

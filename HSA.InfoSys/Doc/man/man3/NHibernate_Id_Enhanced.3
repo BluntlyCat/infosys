@@ -1,0 +1,46 @@
+.TH "NHibernate.Id.Enhanced" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.Enhanced \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "interface \fBIAccessCallback\fP"
+.br
+.RI "\fIContract for providing callback access to an \fBIDatabaseStructure\fP, typically from the \fBIOptimizer\fP\&. \fP"
+.ti -1c
+.RI "interface \fBIDatabaseStructure\fP"
+.br
+.RI "\fIEncapsulates definition of the underlying data structure backing a sequence-style generator\&. \fP"
+.ti -1c
+.RI "interface \fBIOptimizer\fP"
+.br
+.RI "\fIPerforms optimization on an optimizable identifier generator\&. Typically this optimization takes the form of trying to ensure we do not have to hit the database on each and every request to get an identifier value\&. \fP"
+.ti -1c
+.RI "class \fBOptimizerFactory\fP"
+.br
+.ti -1c
+.RI "class \fBSequenceStructure\fP"
+.br
+.RI "\fIDescribes a sequence\&. \fP"
+.ti -1c
+.RI "class \fBSequenceStyleGenerator\fP"
+.br
+.RI "\fIGenerates identifier values based on an sequence-style database structure\&. Variations range from actually using a sequence to using a table to mimic a sequence\&. These variations are encapsulated by the \fBIDatabaseStructure\fP interface internally\&. \fP"
+.ti -1c
+.RI "class \fBTableGenerator\fP"
+.br
+.RI "\fIAn enhanced version of table-based id generation\&. \fP"
+.ti -1c
+.RI "class \fBTableStructure\fP"
+.br
+.RI "\fIDescribes a table used to mimic sequence behavior \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

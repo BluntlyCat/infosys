@@ -1,0 +1,7 @@
+var namespace_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2568 =
+[
+    [ "MyEntity", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2568_1_1_my_entity.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2568_1_1_my_entity" ],
+    [ "MyRelated", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2568_1_1_my_related.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2568_1_1_my_related" ],
+    [ "UsageOfCustomCollectionPersisterTests", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2568_1_1_usage_of_custom_collection_persister_tests.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2568_1_1_usage_of_custom_collection_persister_tests" ],
+    [ "MyCollectionPersister", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2568_1_1_my_collection_persister.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2568_1_1_my_collection_persister" ]
+];

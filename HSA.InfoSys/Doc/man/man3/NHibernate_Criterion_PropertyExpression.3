@@ -1,0 +1,199 @@
+.TH "NHibernate.Criterion.PropertyExpression" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.PropertyExpression \- 
+.PP
+Superclass for an \fBICriterion\fP that represents a constraint between two properties (with SQL binary operators)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Criterion\&.EqPropertyExpression\fP, \fBNHibernate\&.Criterion\&.GePropertyExpression\fP, \fBNHibernate\&.Criterion\&.GtPropertyExpression\fP, \fBNHibernate\&.Criterion\&.LePropertyExpression\fP, and \fBNHibernate\&.Criterion\&.LtPropertyExpression\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override \fBSqlString\fP \fBToSqlString\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIRender a SqlString for the expression\&. \fP"
+.ti -1c
+.RI "override \fBTypedValue\fP[] \fBGetTypedValues\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery)"
+.br
+.RI "\fIReturn typed values for all parameters in the rendered SQL fragment \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "override \fBIProjection\fP[] \fBGetProjections\fP ()"
+.br
+.RI "\fIReturn all projections used in this criterion \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPropertyExpression\fP (\fBIProjection\fP lhsProjection, string rhsPropertyName)"
+.br
+.RI "\fIInitializes a new instance of the \fBPropertyExpression\fP class\&. \fP"
+.ti -1c
+.RI "\fBPropertyExpression\fP (\fBIProjection\fP lhsProjection, \fBIProjection\fP rhsProjection)"
+.br
+.RI "\fIInitializes a new instance of the \fBPropertyExpression\fP class\&. \fP"
+.ti -1c
+.RI "\fBPropertyExpression\fP (string lhsPropertyName, string rhsPropertyName)"
+.br
+.RI "\fIInitializes a new instance of the \fBPropertyExpression\fP class\&. \fP"
+.ti -1c
+.RI "\fBPropertyExpression\fP (string lhsPropertyName, \fBIProjection\fP rhsProjection)"
+.br
+.RI "\fIInitializes a new instance of the \fBPropertyExpression\fP class\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "abstract string \fBOp\fP\fC [get]\fP"
+.br
+.RI "\fIGet the Sql operator to use for the property expression\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Superclass for an \fBICriterion\fP that represents a constraint between two properties (with SQL binary operators)\&. 
+
+
+.PP
+Definition at line 14 of file PropertyExpression\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Criterion\&.PropertyExpression\&.PropertyExpression (\fBIProjection\fPlhsProjection, stringrhsPropertyName)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBPropertyExpression\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhsProjection\fP The projection\&.
+.br
+\fIrhsPropertyName\fP Name of the RHS property\&.
+.RE
+.PP
+
+.PP
+Definition at line 27 of file PropertyExpression\&.cs\&.
+.SS "NHibernate\&.Criterion\&.PropertyExpression\&.PropertyExpression (\fBIProjection\fPlhsProjection, \fBIProjection\fPrhsProjection)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBPropertyExpression\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhsProjection\fP The LHS projection\&.
+.br
+\fIrhsProjection\fP The RHS projection\&.
+.RE
+.PP
+
+.PP
+Definition at line 38 of file PropertyExpression\&.cs\&.
+.SS "NHibernate\&.Criterion\&.PropertyExpression\&.PropertyExpression (stringlhsPropertyName, stringrhsPropertyName)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBPropertyExpression\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhsPropertyName\fP Name of the LHS property\&.
+.br
+\fIrhsPropertyName\fP Name of the RHS property\&.
+.RE
+.PP
+
+.PP
+Definition at line 49 of file PropertyExpression\&.cs\&.
+.SS "NHibernate\&.Criterion\&.PropertyExpression\&.PropertyExpression (stringlhsPropertyName, \fBIProjection\fPrhsProjection)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBPropertyExpression\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlhsPropertyName\fP Name of the LHS property\&.
+.br
+\fIrhsProjection\fP The RHS projection\&.
+.RE
+.PP
+
+.PP
+Definition at line 60 of file PropertyExpression\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBIProjection\fP [] NHibernate\&.Criterion\&.PropertyExpression\&.GetProjections ()\fC [virtual]\fP"
+
+.PP
+Return all projections used in this criterion 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of \fBIProjection\fP used by the \fBExpression\fP\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 130 of file PropertyExpression\&.cs\&.
+.SS "override \fBTypedValue\fP [] NHibernate\&.Criterion\&.PropertyExpression\&.GetTypedValues (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery)\fC [virtual]\fP"
+
+.PP
+Return typed values for all parameters in the rendered SQL fragment 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of TypedValues for the \fBExpression\fP\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 103 of file PropertyExpression\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Criterion\&.PropertyExpression\&.ToSqlString (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery, IDictionary< string, \fBIFilter\fP >enabledFilters)\fC [virtual]\fP"
+
+.PP
+Render a SqlString for the expression\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A SqlString that contains a valid Sql fragment\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 71 of file PropertyExpression\&.cs\&.
+.SS "override string NHibernate\&.Criterion\&.PropertyExpression\&.ToString ()\fC [virtual]\fP"
+
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.AbstractCriterion\fP\&.
+.PP
+Definition at line 125 of file PropertyExpression\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "abstract string NHibernate\&.Criterion\&.PropertyExpression\&.Op\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Get the Sql operator to use for the property expression\&. 
+.PP
+Definition at line 69 of file PropertyExpression\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,191 @@
+.TH "log4net.Core.IRepositorySelector" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Core.IRepositorySelector \- 
+.PP
+Interface used by the \fBLogManager\fP to select the ILoggerRepository\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBlog4net\&.Core\&.CompactRepositorySelector\fP, and \fBlog4net\&.Core\&.DefaultRepositorySelector\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBILoggerRepository\fP \fBGetRepository\fP (Assembly assembly)"
+.br
+.RI "\fIGets the ILoggerRepository for the specified assembly\&. \fP"
+.ti -1c
+.RI "\fBILoggerRepository\fP \fBGetRepository\fP (string repositoryName)"
+.br
+.RI "\fIGets the named ILoggerRepository\&. \fP"
+.ti -1c
+.RI "\fBILoggerRepository\fP \fBCreateRepository\fP (Assembly assembly, Type repositoryType)"
+.br
+.RI "\fICreates a new repository for the assembly specified\&. \fP"
+.ti -1c
+.RI "\fBILoggerRepository\fP \fBCreateRepository\fP (string repositoryName, Type repositoryType)"
+.br
+.RI "\fICreates a new repository with the name specified\&. \fP"
+.ti -1c
+.RI "bool \fBExistsRepository\fP (string repositoryName)"
+.br
+.RI "\fITest if a named repository exists \fP"
+.ti -1c
+.RI "\fBILoggerRepository\fP[] \fBGetAllRepositories\fP ()"
+.br
+.RI "\fIGets an array of all currently defined repositories\&. \fP"
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "\fBLoggerRepositoryCreationEventHandler\fP \fBLoggerRepositoryCreatedEvent\fP"
+.br
+.RI "\fIEvent to notify that a logger repository has been created\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Interface used by the \fBLogManager\fP to select the ILoggerRepository\&. 
+
+The \fBLogManager\fP uses a \fBIRepositorySelector\fP to specify the policy for selecting the correct ILoggerRepository to return to the caller\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 103 of file IRepositorySelector\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBILoggerRepository\fP log4net\&.Core\&.IRepositorySelector\&.CreateRepository (Assemblyassembly, TyperepositoryType)"
+
+.PP
+Creates a new repository for the assembly specified\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassembly\fP The assembly to use to create the domain to associate with the ILoggerRepository\&.
+.br
+\fIrepositoryType\fP The type of repository to create, must implement ILoggerRepository\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The repository created\&.
+.RE
+.PP
+.PP
+The ILoggerRepository created will be associated with the domain specified such that a call to \fBGetRepository(Assembly)\fP with the same assembly specified will return the same repository instance\&. 
+.PP
+How the association between Assembly and ILoggerRepository is made is not defined\&. The implementation may choose any method for this association\&. 
+.PP
+Implemented in \fBlog4net\&.Core\&.DefaultRepositorySelector\fP, and \fBlog4net\&.Core\&.CompactRepositorySelector\fP\&.
+.SS "\fBILoggerRepository\fP log4net\&.Core\&.IRepositorySelector\&.CreateRepository (stringrepositoryName, TyperepositoryType)"
+
+.PP
+Creates a new repository with the name specified\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepositoryName\fP The name to associate with the ILoggerRepository\&.
+.br
+\fIrepositoryType\fP The type of repository to create, must implement ILoggerRepository\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The repository created\&.
+.RE
+.PP
+.PP
+The ILoggerRepository created will be associated with the name specified such that a call to \fBGetRepository(string)\fP with the same name will return the same repository instance\&. 
+.PP
+Implemented in \fBlog4net\&.Core\&.DefaultRepositorySelector\fP, and \fBlog4net\&.Core\&.CompactRepositorySelector\fP\&.
+.SS "bool log4net\&.Core\&.IRepositorySelector\&.ExistsRepository (stringrepositoryName)"
+
+.PP
+Test if a named repository exists 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepositoryName\fP the named repository to check
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the repository exists
+.RE
+.PP
+.PP
+Test if a named repository exists\&. Use \fBCreateRepository(Assembly, Type)\fP to create a new repository and \fBGetRepository(Assembly)\fP to retrieve a repository\&. 
+.PP
+Implemented in \fBlog4net\&.Core\&.DefaultRepositorySelector\fP, and \fBlog4net\&.Core\&.CompactRepositorySelector\fP\&.
+.SS "\fBILoggerRepository\fP [] log4net\&.Core\&.IRepositorySelector\&.GetAllRepositories ()"
+
+.PP
+Gets an array of all currently defined repositories\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of the ILoggerRepository instances created by this \fBIRepositorySelector\fP\&.
+.RE
+.PP
+.PP
+Gets an array of all of the repositories created by this selector\&. 
+.PP
+Implemented in \fBlog4net\&.Core\&.DefaultRepositorySelector\fP, and \fBlog4net\&.Core\&.CompactRepositorySelector\fP\&.
+.SS "\fBILoggerRepository\fP log4net\&.Core\&.IRepositorySelector\&.GetRepository (Assemblyassembly)"
+
+.PP
+Gets the ILoggerRepository for the specified assembly\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassembly\fP The assembly to use to lookup to the ILoggerRepository
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The ILoggerRepository for the assembly\&.
+.RE
+.PP
+.PP
+Gets the ILoggerRepository for the specified assembly\&. 
+.PP
+How the association between Assembly and ILoggerRepository is made is not defined\&. The implementation may choose any method for this association\&. The results of this method must be repeatable, i\&.e\&. when called again with the same arguments the result must be the save value\&. 
+.PP
+Implemented in \fBlog4net\&.Core\&.DefaultRepositorySelector\fP, and \fBlog4net\&.Core\&.CompactRepositorySelector\fP\&.
+.SS "\fBILoggerRepository\fP log4net\&.Core\&.IRepositorySelector\&.GetRepository (stringrepositoryName)"
+
+.PP
+Gets the named ILoggerRepository\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepositoryName\fP The name to use to lookup to the ILoggerRepository\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The named ILoggerRepository
+.RE
+.PP
+.PP
+Lookup a named ILoggerRepository\&. This is the repository created by calling \fBCreateRepository(string,Type)\fP\&. 
+.PP
+Implemented in \fBlog4net\&.Core\&.DefaultRepositorySelector\fP, and \fBlog4net\&.Core\&.CompactRepositorySelector\fP\&.
+.SH "Event Documentation"
+.PP 
+.SS "\fBLoggerRepositoryCreationEventHandler\fP log4net\&.Core\&.IRepositorySelector\&.LoggerRepositoryCreatedEvent"
+
+.PP
+Event to notify that a logger repository has been created\&. Event to notify that a logger repository has been created\&. 
+.PP
+Event raised when a new repository is created\&. The event source will be this selector\&. The event args will be a \fBLoggerRepositoryCreationEventArgs\fP which holds the newly created ILoggerRepository\&. 
+.PP
+Definition at line 211 of file IRepositorySelector\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

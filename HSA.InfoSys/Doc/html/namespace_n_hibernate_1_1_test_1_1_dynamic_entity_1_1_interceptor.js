@@ -1,0 +1,5 @@
+var namespace_n_hibernate_1_1_test_1_1_dynamic_entity_1_1_interceptor =
+[
+    [ "InterceptorDynamicEntity", "class_n_hibernate_1_1_test_1_1_dynamic_entity_1_1_interceptor_1_1_interceptor_dynamic_entity.html", "class_n_hibernate_1_1_test_1_1_dynamic_entity_1_1_interceptor_1_1_interceptor_dynamic_entity" ],
+    [ "ProxyInterceptor", "class_n_hibernate_1_1_test_1_1_dynamic_entity_1_1_interceptor_1_1_proxy_interceptor.html", "class_n_hibernate_1_1_test_1_1_dynamic_entity_1_1_interceptor_1_1_proxy_interceptor" ]
+];

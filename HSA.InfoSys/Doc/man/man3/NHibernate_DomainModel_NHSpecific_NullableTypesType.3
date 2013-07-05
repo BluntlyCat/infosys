@@ -1,0 +1,129 @@
+.TH "NHibernate.DomainModel.NHSpecific.NullableTypesType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.DomainModel.NHSpecific.NullableTypesType \- 
+.PP
+\fBAbstract\fP type used for implementing \fBNHibernate\fP ITypes for the Nullables library\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.ImmutableType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.DomainModel\&.NHSpecific\&.NullableInt32Type\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNullableTypesType\fP (\fBSqlType\fP type)"
+.br
+.ti -1c
+.RI "override object \fBNullSafeGet\fP (IDataReader rs, string name)"
+.br
+.RI "\fIGets the value of the field from the IDataReader\&. \fP"
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, string name)"
+.br
+.RI "\fIWhen implemented by a class, gets the object in the IDataReader for the Property\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP (object value)"
+.br
+.RI "\fI\fBA\fP representation of the value to be embedded in an XML element \fP"
+.ti -1c
+.RI "override bool \fBIsEqual\fP (object x, object y)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract object \fBNullValue\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBAbstract\fP type used for implementing \fBNHibernate\fP ITypes for the Nullables library\&. 
+
+
+.PP
+Definition at line 14 of file NullableTypesType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.DomainModel\&.NHSpecific\&.NullableTypesType\&.Get (IDataReaderrs, stringname)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, gets the object in the IDataReader for the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the value\&.
+.br
+\fIname\fP The name of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object with the value from the database\&.
+.RE
+.PP
+.PP
+Most implementors just call the \fBGet(IDataReader, int)\fP overload of this method\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 33 of file NullableTypesType\&.cs\&.
+.SS "override object NHibernate\&.DomainModel\&.NHSpecific\&.NullableTypesType\&.NullSafeGet (IDataReaderrs, stringname)\fC [virtual]\fP"
+
+.PP
+Gets the value of the field from the IDataReader\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader positioned on the correct record\&.
+.br
+\fIname\fP The name of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value of the field\&.
+.RE
+.PP
+.PP
+This method checks to see if value is null, if it is then the null is returned from this method\&. 
+.PP
+If the value is not null, then the method Get(IDataReader, Int32) is called and that method is responsible for retrieving the value\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 20 of file NullableTypesType\&.cs\&.
+.SS "override string NHibernate\&.DomainModel\&.NHSpecific\&.NullableTypesType\&.ToString (objectval)\fC [virtual]\fP"
+
+.PP
+\fBA\fP representation of the value to be embedded in an XML element 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP The object that contains the values\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An Xml formatted string\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 38 of file NullableTypesType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

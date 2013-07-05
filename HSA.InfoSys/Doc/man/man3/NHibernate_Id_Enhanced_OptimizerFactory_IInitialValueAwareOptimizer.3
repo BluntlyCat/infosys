@@ -1,0 +1,62 @@
+.TH "NHibernate.Id.Enhanced.OptimizerFactory.IInitialValueAwareOptimizer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.Enhanced.OptimizerFactory.IInitialValueAwareOptimizer \- 
+.PP
+Marker interface for an optimizer that wishes to know the user-specified initial value\&. 
+.PP
+Used instead of constructor injection since that is already a public understanding and because not all optimizers care\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.PooledOptimizer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBInjectInitialValue\fP (long initialValue)"
+.br
+.RI "\fIReports the user-specified initial value to the optimizer\&. 
+.PP
+\fC-1\fP is used to indicate that the user did not specify\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinitialValue\fP The initial value specified by the user, or \fC-1\fP to indicate that the user did not specify\&.
+.RE
+.PP
+\fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Marker interface for an optimizer that wishes to know the user-specified initial value\&. 
+.PP
+Used instead of constructor injection since that is already a public understanding and because not all optimizers care\&. 
+
+
+.PP
+Definition at line 25 of file OptimizerFactory\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.IInitialValueAwareOptimizer\&.InjectInitialValue (longinitialValue)"
+
+.PP
+Reports the user-specified initial value to the optimizer\&. 
+.PP
+\fC-1\fP is used to indicate that the user did not specify\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinitialValue\fP The initial value specified by the user, or \fC-1\fP to indicate that the user did not specify\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Id\&.Enhanced\&.OptimizerFactory\&.PooledOptimizer\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

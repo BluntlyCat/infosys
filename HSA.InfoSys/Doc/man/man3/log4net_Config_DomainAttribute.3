@@ -1,0 +1,65 @@
+.TH "log4net.Config.DomainAttribute" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Config.DomainAttribute \- 
+.PP
+Assembly level attribute that specifies the logging domain for the assembly\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Config\&.RepositoryAttribute\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDomainAttribute\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBDomainAttribute\fP class\&. \fP"
+.ti -1c
+.RI "\fBDomainAttribute\fP (string name)"
+.br
+.RI "\fIInitialize a new instance of the \fBDomainAttribute\fP class with the name of the domain\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Assembly level attribute that specifies the logging domain for the assembly\&. 
+
+\fB\fBDomainAttribute\fP is obsolete\&. Use \fBRepositoryAttribute\fP instead of \fBDomainAttribute\fP\&.\fP 
+.PP
+Assemblies are mapped to logging domains\&. Each domain has its own logging repository\&. This attribute specified on the assembly controls the configuration of the domain\&. The \fBRepositoryAttribute\&.Name\fP property specifies the name of the domain that this assembly is a part of\&. The \fBRepositoryAttribute\&.RepositoryType\fP specifies the type of the repository objects to create for the domain\&. If this attribute is not specified and a \fBRepositoryAttribute\&.Name\fP is not specified then the assembly will be part of the default shared logging domain\&. 
+.PP
+This attribute can only be specified on the assembly and may only be used once per assembly\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 53 of file DomainAttribute\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Config\&.DomainAttribute\&.DomainAttribute ()"
+
+.PP
+Initializes a new instance of the \fBDomainAttribute\fP class\&. Obsolete\&. Use \fBRepositoryAttribute\fP instead of \fBDomainAttribute\fP\&. 
+.PP
+Definition at line 65 of file DomainAttribute\&.cs\&.
+.SS "log4net\&.Config\&.DomainAttribute\&.DomainAttribute (stringname)"
+
+.PP
+Initialize a new instance of the \fBDomainAttribute\fP class with the name of the domain\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the domain\&.
+.RE
+.PP
+.PP
+Obsolete\&. Use \fBRepositoryAttribute\fP instead of \fBDomainAttribute\fP\&. 
+.PP
+Definition at line 79 of file DomainAttribute\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

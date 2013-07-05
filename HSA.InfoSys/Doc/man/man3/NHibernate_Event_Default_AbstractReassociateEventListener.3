@@ -1,0 +1,58 @@
+.TH "NHibernate.Event.Default.AbstractReassociateEventListener" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.Default.AbstractReassociateEventListener \- 
+.PP
+A convenience base class for listeners that respond to requests to reassociate an entity to a session ( such as through lock() or update() )\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Event\&.Default\&.AbstractLockUpgradeEventListener\fP, and \fBNHibernate\&.Event\&.Default\&.AbstractSaveEventListener\fP\&.
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEntityEntry\fP \fBReassociate\fP (\fBAbstractEvent\fP @event, object entity, object id, \fBIEntityPersister\fP persister)"
+.br
+.RI "\fIAssociates a given entity (either transient or associated with another session) to the given session\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A convenience base class for listeners that respond to requests to reassociate an entity to a session ( such as through lock() or update() )\&. 
+
+
+.PP
+Definition at line 16 of file AbstractReassociateEventListener\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBEntityEntry\fP NHibernate\&.Event\&.Default\&.AbstractReassociateEventListener\&.Reassociate (\fBAbstractEvent\fP @event, objectentity, objectid, \fBIEntityPersister\fPpersister)\fC [protected]\fP"
+
+.PP
+Associates a given entity (either transient or associated with another session) to the given session\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The event triggering the re-association 
+.br
+\fIentity\fP The entity to be associated 
+.br
+\fIid\fP The id of the entity\&. 
+.br
+\fIpersister\fP The entity's persister instance\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An EntityEntry representing the entity within this session\&. 
+.RE
+.PP
+
+.PP
+Definition at line 28 of file AbstractReassociateEventListener\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,370 @@
+.TH "NHibernate.Hql.Ast.ANTLR.SessionFactoryHelperExtensions" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.SessionFactoryHelperExtensions \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSessionFactoryHelperExtensions\fP (\fBISessionFactoryImplementor\fP sfi)"
+.br
+.RI "\fIConstruct a new \fBSessionFactoryHelperExtensions\fP instance\&. \fP"
+.ti -1c
+.RI "\fBISQLFunction\fP \fBFindSQLFunction\fP (string functionName)"
+.br
+.RI "\fILocate a registered sql function by name\&. \fP"
+.ti -1c
+.RI "\fBIType\fP \fBFindFunctionReturnType\fP (String functionName, \fBIASTNode\fP first)"
+.br
+.RI "\fIFind the function return type given the function name and the first argument expression node\&. \fP"
+.ti -1c
+.RI "string \fBGetImportedClassName\fP (string className)"
+.br
+.RI "\fIGiven a (potentially unqualified) class name, locate its imported qualified name\&. \fP"
+.ti -1c
+.RI "bool \fBHasPhysicalDiscriminatorColumn\fP (\fBIQueryable\fP persister)"
+.br
+.RI "\fIDoes the given persister define a physical discriminator column for the purpose of inheritence discrimination? \fP"
+.ti -1c
+.RI "\fBIQueryableCollection\fP \fBGetCollectionPersister\fP (string collectionFilterRole)"
+.br
+.RI "\fILocate the collection persister by the collection role\&. \fP"
+.ti -1c
+.RI "string \fBGetIdentifierOrUniqueKeyPropertyName\fP (\fBEntityType\fP entityType)"
+.br
+.RI "\fIDetermine the name of the property for the entity encapsulated by the given type which represents the id or unique-key\&. \fP"
+.ti -1c
+.RI "string[] \fBGetCollectionElementColumns\fP (string role, string roleAlias)"
+.br
+.RI "\fIRetrieves the column names corresponding to the collection elements for the given collection role\&. \fP"
+.ti -1c
+.RI "\fBIAssociationType\fP \fBGetElementAssociationType\fP (\fBCollectionType\fP collectionType)"
+.br
+.RI "\fIEssentially the same as GetElementType, but requiring that the element type be an association type\&. \fP"
+.ti -1c
+.RI "\fBIQueryableCollection\fP \fBRequireQueryableCollection\fP (string role)"
+.br
+.RI "\fILocate the collection persister by the collection role, requiring that such a persister exist\&. \fP"
+.ti -1c
+.RI "\fBIEntityPersister\fP \fBRequireClassPersister\fP (string name)"
+.br
+.RI "\fILocate the persister by class or entity name, requiring that such a persister exist\&. \fP"
+.ti -1c
+.RI "\fBIQueryable\fP \fBFindQueryableUsingImports\fP (string className)"
+.br
+.RI "\fIGiven a (potentially unqualified) class name, locate its persister\&. \fP"
+.ti -1c
+.RI "\fBJoinSequence\fP \fBCreateCollectionJoinSequence\fP (\fBIQueryableCollection\fP collPersister, String collectionName)"
+.br
+.RI "\fICreate a join sequence rooted at the given collection\&. \fP"
+.ti -1c
+.RI "\fBJoinSequence\fP \fBCreateJoinSequence\fP ()"
+.br
+.RI "\fIGenerate an empty join sequence instance\&. \fP"
+.ti -1c
+.RI "\fBJoinSequence\fP \fBCreateJoinSequence\fP (bool implicitJoin, \fBIAssociationType\fP associationType, string tableAlias, \fBJoinType\fP joinType, string[] columns)"
+.br
+.RI "\fIGenerate a join sequence representing the given association type\&. \fP"
+.ti -1c
+.RI "String[][] \fBGenerateColumnNames\fP (\fBIType\fP[] sqlResultTypes)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBISessionFactoryImplementor\fP \fBFactory\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsStrictJPAQLComplianceEnabled\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 16 of file SessionFactoryHelperExtensions\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Hql\&.Ast\&.ANTLR\&.SessionFactoryHelperExtensions\&.SessionFactoryHelperExtensions (\fBISessionFactoryImplementor\fPsfi)"
+
+.PP
+Construct a new \fBSessionFactoryHelperExtensions\fP instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsfi\fP The SessionFactory impl to be encapsulated\&.
+.RE
+.PP
+
+.PP
+Definition at line 26 of file SessionFactoryHelperExtensions\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBJoinSequence\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.SessionFactoryHelperExtensions\&.CreateCollectionJoinSequence (\fBIQueryableCollection\fPcollPersister, StringcollectionName)"
+
+.PP
+Create a join sequence rooted at the given collection\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollPersister\fP The persister for the collection at which the join should be rooted\&.
+.br
+\fIcollectionName\fP The alias to use for qualifying column references\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The generated join sequence\&.
+.RE
+.PP
+
+.PP
+Definition at line 275 of file SessionFactoryHelperExtensions\&.cs\&.
+.SS "\fBJoinSequence\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.SessionFactoryHelperExtensions\&.CreateJoinSequence ()"
+
+.PP
+Generate an empty join sequence instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The generated join sequence\&.
+.RE
+.PP
+
+.PP
+Definition at line 292 of file SessionFactoryHelperExtensions\&.cs\&.
+.SS "\fBJoinSequence\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.SessionFactoryHelperExtensions\&.CreateJoinSequence (boolimplicitJoin, \fBIAssociationType\fPassociationType, stringtableAlias, \fBJoinType\fPjoinType, string[]columns)"
+
+.PP
+Generate a join sequence representing the given association type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIimplicitJoin\fP Should implicit joins (theta-style) or explicit joins (ANSI-style) be rendered
+.br
+\fIassociationType\fP The type representing the thing to be joined into\&.
+.br
+\fItableAlias\fP The table alias to use in qualifing the join conditions
+.br
+\fIjoinType\fP The type of join to render (inner, outer, etc)
+.br
+\fIcolumns\fP The columns making up the condition of the join\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The generated join sequence\&.
+.RE
+.PP
+
+.PP
+Definition at line 306 of file SessionFactoryHelperExtensions\&.cs\&.
+.SS "\fBIType\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.SessionFactoryHelperExtensions\&.FindFunctionReturnType (StringfunctionName, \fBIASTNode\fPfirst)"
+
+.PP
+Find the function return type given the function name and the first argument expression node\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfunctionName\fP The function name\&.
+.br
+\fIfirst\fP The first argument expression\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the function return type given the function name and the first argument expression node\&.
+.RE
+.PP
+
+.PP
+Definition at line 70 of file SessionFactoryHelperExtensions\&.cs\&.
+.SS "\fBIQueryable\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.SessionFactoryHelperExtensions\&.FindQueryableUsingImports (stringclassName)"
+
+.PP
+Given a (potentially unqualified) class name, locate its persister\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclassName\fP The (potentially unqualified) class name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The defined persister for this class, or null if none found\&.
+.RE
+.PP
+
+.PP
+Definition at line 243 of file SessionFactoryHelperExtensions\&.cs\&.
+.SS "\fBISQLFunction\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.SessionFactoryHelperExtensions\&.FindSQLFunction (stringfunctionName)"
+
+.PP
+Locate a registered sql function by name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfunctionName\fP The name of the function to locate
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sql function, or null if not found\&.
+.RE
+.PP
+
+.PP
+Definition at line 43 of file SessionFactoryHelperExtensions\&.cs\&.
+.SS "string [] NHibernate\&.Hql\&.Ast\&.ANTLR\&.SessionFactoryHelperExtensions\&.GetCollectionElementColumns (stringrole, stringroleAlias)"
+
+.PP
+Retrieves the column names corresponding to the collection elements for the given collection role\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The collection role
+.br
+\fIroleAlias\fP The sql column-qualification alias (i\&.e\&., the table alias)
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the collection element columns
+.RE
+.PP
+
+.PP
+Definition at line 170 of file SessionFactoryHelperExtensions\&.cs\&.
+.SS "\fBIQueryableCollection\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.SessionFactoryHelperExtensions\&.GetCollectionPersister (stringcollectionFilterRole)"
+
+.PP
+Locate the collection persister by the collection role\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollectionFilterRole\fP The collection role name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The defined CollectionPersister for this collection role, or null\&.
+.RE
+.PP
+
+.PP
+Definition at line 129 of file SessionFactoryHelperExtensions\&.cs\&.
+.SS "\fBIAssociationType\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.SessionFactoryHelperExtensions\&.GetElementAssociationType (\fBCollectionType\fPcollectionType)"
+
+.PP
+Essentially the same as GetElementType, but requiring that the element type be an association type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollectionType\fP The collection type to be checked\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The AssociationType of the elements of the collection\&.
+.RE
+.PP
+
+.PP
+Definition at line 182 of file SessionFactoryHelperExtensions\&.cs\&.
+.SS "string NHibernate\&.Hql\&.Ast\&.ANTLR\&.SessionFactoryHelperExtensions\&.GetIdentifierOrUniqueKeyPropertyName (\fBEntityType\fPentityType)"
+
+.PP
+Determine the name of the property for the entity encapsulated by the given type which represents the id or unique-key\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityType\fP The type representing the entity\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The corresponding property name
+.RE
+.PP
+
+.PP
+Definition at line 151 of file SessionFactoryHelperExtensions\&.cs\&.
+.SS "string NHibernate\&.Hql\&.Ast\&.ANTLR\&.SessionFactoryHelperExtensions\&.GetImportedClassName (stringclassName)"
+
+.PP
+Given a (potentially unqualified) class name, locate its imported qualified name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclassName\fP The potentially unqualified class name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The qualified class name\&.
+.RE
+.PP
+
+.PP
+Definition at line 98 of file SessionFactoryHelperExtensions\&.cs\&.
+.SS "bool NHibernate\&.Hql\&.Ast\&.ANTLR\&.SessionFactoryHelperExtensions\&.HasPhysicalDiscriminatorColumn (\fBIQueryable\fPpersister)"
+
+.PP
+Does the given persister define a physical discriminator column for the purpose of inheritence discrimination? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The persister to be checked\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the persister does define an actual discriminator column\&.
+.RE
+.PP
+
+.PP
+Definition at line 109 of file SessionFactoryHelperExtensions\&.cs\&.
+.SS "\fBIEntityPersister\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.SessionFactoryHelperExtensions\&.RequireClassPersister (stringname)"
+
+.PP
+Locate the persister by class or entity name, requiring that such a persister exist\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The class or entity name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The defined persister for this entity
+.RE
+.PP
+
+.PP
+Definition at line 220 of file SessionFactoryHelperExtensions\&.cs\&.
+.SS "\fBIQueryableCollection\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.SessionFactoryHelperExtensions\&.RequireQueryableCollection (stringrole)"
+
+.PP
+Locate the collection persister by the collection role, requiring that such a persister exist\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The collection role name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The defined CollectionPersister for this collection role\&.
+.RE
+.PP
+
+.PP
+Definition at line 193 of file SessionFactoryHelperExtensions\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

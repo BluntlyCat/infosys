@@ -1,0 +1,347 @@
+.TH "Renci.SshNet.Security.KeyExchange" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Security.KeyExchange \- 
+.PP
+Represents base class for different key exchange algorithm implementations  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.Security\&.Algorithm\fP, and IDisposable\&.
+.PP
+Inherited by \fBRenci\&.SshNet\&.Security\&.KeyExchangeDiffieHellman\fP, and \fBRenci\&.SshNet\&.Security\&.KeyExchangeEllipticCurveDiffieHellman\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBStart\fP (\fBSession\fP session, \fBKeyExchangeInitMessage\fP message)"
+.br
+.RI "\fIStarts key exchange algorithm \fP"
+.ti -1c
+.RI "virtual void \fBFinish\fP ()"
+.br
+.RI "\fIFinishes key exchange algorithm\&. \fP"
+.ti -1c
+.RI "\fBCipher\fP \fBCreateServerCipher\fP ()"
+.br
+.RI "\fICreates the server side cipher to use\&. \fP"
+.ti -1c
+.RI "\fBCipher\fP \fBCreateClientCipher\fP ()"
+.br
+.RI "\fICreates the client side cipher to use\&. \fP"
+.ti -1c
+.RI "HashAlgorithm \fBCreateServerHash\fP ()"
+.br
+.RI "\fICreates the server side hash algorithm to use\&. \fP"
+.ti -1c
+.RI "HashAlgorithm \fBCreateClientHash\fP ()"
+.br
+.RI "\fICreates the client side hash algorithm to use\&. \fP"
+.ti -1c
+.RI "\fBCompressor\fP \fBCreateCompressor\fP ()"
+.br
+.RI "\fICreates the compression algorithm to use to deflate data\&. \fP"
+.ti -1c
+.RI "\fBCompressor\fP \fBCreateDecompressor\fP ()"
+.br
+.RI "\fICreates the compression algorithm to use to inflate data\&. \fP"
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "\fIPerforms application-defined tasks associated with freeing, releasing, or resetting unmanaged ResourceMessages\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBCanTrustHostKey\fP (\fBKeyHostAlgorithm\fP host)"
+.br
+.RI "\fIDetermines whether the specified host key can be trusted\&. \fP"
+.ti -1c
+.RI "abstract bool \fBValidateExchangeHash\fP ()"
+.br
+.RI "\fIValidates the exchange hash\&. \fP"
+.ti -1c
+.RI "abstract byte[] \fBCalculateHash\fP ()"
+.br
+.RI "\fICalculates key exchange hash value\&. \fP"
+.ti -1c
+.RI "virtual byte[] \fBHash\fP (byte[] hashData)"
+.br
+.RI "\fIHashes the specified data bytes\&. \fP"
+.ti -1c
+.RI "void \fBSendMessage\fP (\fBMessage\fP message)"
+.br
+.RI "\fISends SSH message to the server \fP"
+.ti -1c
+.RI "virtual void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIReleases unmanaged and - optionally - managed resources \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBSession\fP \fBSession\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the session\&. \fP"
+.ti -1c
+.RI "\fBBigInteger\fP \fBSharedKey\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets key exchange shared key\&. \fP"
+.ti -1c
+.RI "byte[] \fBExchangeHash\fP\fC [get]\fP"
+.br
+.RI "\fIGets the exchange hash\&. \fP"
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "EventHandler< \fBHostKeyEventArgs\fP > \fBHostKeyReceived\fP"
+.br
+.RI "\fIOccurs when host key received\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents base class for different key exchange algorithm implementations 
+
+
+.PP
+Definition at line 17 of file KeyExchange\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract byte [] Renci\&.SshNet\&.Security\&.KeyExchange\&.CalculateHash ()\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Calculates key exchange hash value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBKey\fP exchange hash\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBRenci\&.SshNet\&.Security\&.KeyExchangeEllipticCurveDiffieHellman\fP, \fBRenci\&.SshNet\&.Security\&.KeyExchangeDiffieHellmanGroupExchangeSha256\fP, and \fBRenci\&.SshNet\&.Security\&.KeyExchangeDiffieHellmanGroupSha1\fP\&.
+.SS "bool Renci\&.SshNet\&.Security\&.KeyExchange\&.CanTrustHostKey (\fBKeyHostAlgorithm\fPhost)\fC [protected]\fP"
+
+.PP
+Determines whether the specified host key can be trusted\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP The host algorithm\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the specified host can be trusted; otherwise, \fCfalse\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 292 of file KeyExchange\&.cs\&.
+.SS "\fBCipher\fP Renci\&.SshNet\&.Security\&.KeyExchange\&.CreateClientCipher ()"
+
+.PP
+Creates the client side cipher to use\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Client cipher\&.
+.RE
+.PP
+
+.PP
+Definition at line 202 of file KeyExchange\&.cs\&.
+.SS "HashAlgorithm Renci\&.SshNet\&.Security\&.KeyExchange\&.CreateClientHash ()"
+
+.PP
+Creates the client side hash algorithm to use\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Hash algorithm
+.RE
+.PP
+
+.PP
+Definition at line 240 of file KeyExchange\&.cs\&.
+.SS "\fBCompressor\fP Renci\&.SshNet\&.Security\&.KeyExchange\&.CreateCompressor ()"
+
+.PP
+Creates the compression algorithm to use to deflate data\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBCompression\fP method\&.
+.RE
+.PP
+
+.PP
+Definition at line 257 of file KeyExchange\&.cs\&.
+.SS "\fBCompressor\fP Renci\&.SshNet\&.Security\&.KeyExchange\&.CreateDecompressor ()"
+
+.PP
+Creates the compression algorithm to use to inflate data\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBCompression\fP method\&.
+.RE
+.PP
+
+.PP
+Definition at line 273 of file KeyExchange\&.cs\&.
+.SS "\fBCipher\fP Renci\&.SshNet\&.Security\&.KeyExchange\&.CreateServerCipher ()"
+
+.PP
+Creates the server side cipher to use\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Server cipher\&.
+.RE
+.PP
+
+.PP
+Definition at line 181 of file KeyExchange\&.cs\&.
+.SS "HashAlgorithm Renci\&.SshNet\&.Security\&.KeyExchange\&.CreateServerHash ()"
+
+.PP
+Creates the server side hash algorithm to use\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Hash algorithm
+.RE
+.PP
+
+.PP
+Definition at line 223 of file KeyExchange\&.cs\&.
+.SS "void Renci\&.SshNet\&.Security\&.KeyExchange\&.Dispose ()"
+
+.PP
+Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged ResourceMessages\&. 
+.PP
+Definition at line 428 of file KeyExchange\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Security\&.KeyExchange\&.Dispose (booldisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Releases unmanaged and - optionally - managed resources 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP \fCtrue\fP to release both managed and unmanaged resources; \fCfalse\fP to release only unmanaged ResourceMessages\&.
+.RE
+.PP
+
+.PP
+Definition at line 439 of file KeyExchange\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Security\&.KeyExchange\&.Finish ()\fC [virtual]\fP"
+
+.PP
+Finishes key exchange algorithm\&. 
+.PP
+Reimplemented in \fBRenci\&.SshNet\&.Security\&.KeyExchangeDiffieHellmanGroupSha1\fP, and \fBRenci\&.SshNet\&.Security\&.KeyExchangeDiffieHellmanGroupExchangeSha256\fP\&.
+.PP
+Definition at line 164 of file KeyExchange\&.cs\&.
+.SS "virtual byte [] Renci\&.SshNet\&.Security\&.KeyExchange\&.Hash (byte[]hashData)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Hashes the specified data bytes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhashData\fP The hash data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Hashed bytes 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBRenci\&.SshNet\&.Security\&.KeyExchangeDiffieHellmanGroupExchangeSha256\fP\&.
+.PP
+Definition at line 323 of file KeyExchange\&.cs\&.
+.SS "void Renci\&.SshNet\&.Security\&.KeyExchange\&.SendMessage (\fBMessage\fPmessage)\fC [protected]\fP"
+
+.PP
+Sends SSH message to the server 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message\&.
+.RE
+.PP
+
+.PP
+Definition at line 335 of file KeyExchange\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Security\&.KeyExchange\&.Start (\fBSession\fPsession, \fBKeyExchangeInitMessage\fPmessage)\fC [virtual]\fP"
+
+.PP
+Starts key exchange algorithm 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session\&.
+.br
+\fImessage\fP \fBKey\fP exchange init message\&.
+.RE
+.PP
+
+.PP
+Reimplemented in \fBRenci\&.SshNet\&.Security\&.KeyExchangeDiffieHellman\fP, \fBRenci\&.SshNet\&.Security\&.KeyExchangeEllipticCurveDiffieHellman\fP, \fBRenci\&.SshNet\&.Security\&.KeyExchangeDiffieHellmanGroupSha1\fP, and \fBRenci\&.SshNet\&.Security\&.KeyExchangeDiffieHellmanGroupExchangeSha256\fP\&.
+.PP
+Definition at line 74 of file KeyExchange\&.cs\&.
+.SS "abstract bool Renci\&.SshNet\&.Security\&.KeyExchange\&.ValidateExchangeHash ()\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Validates the exchange hash\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if exchange hash is valid; otherwise false\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBRenci\&.SshNet\&.Security\&.KeyExchangeEllipticCurveDiffieHellman\fP, and \fBRenci\&.SshNet\&.Security\&.KeyExchangeDiffieHellman\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "byte [] Renci\&.SshNet\&.Security\&.KeyExchange\&.ExchangeHash\fC [get]\fP"
+
+.PP
+Gets the exchange hash\&. The exchange hash\&.
+.PP
+Definition at line 53 of file KeyExchange\&.cs\&.
+.SS "\fBSession\fP Renci\&.SshNet\&.Security\&.KeyExchange\&.Session\fC [get]\fP, \fC [set]\fP, \fC [protected]\fP"
+
+.PP
+Gets or sets the session\&. The session\&. 
+.PP
+Definition at line 37 of file KeyExchange\&.cs\&.
+.SS "\fBBigInteger\fP Renci\&.SshNet\&.Security\&.KeyExchange\&.SharedKey\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets key exchange shared key\&. The shared key\&. 
+.PP
+Definition at line 45 of file KeyExchange\&.cs\&.
+.SH "Event Documentation"
+.PP 
+.SS "EventHandler<\fBHostKeyEventArgs\fP> Renci\&.SshNet\&.Security\&.KeyExchange\&.HostKeyReceived"
+
+.PP
+Occurs when host key received\&. 
+.PP
+Definition at line 67 of file KeyExchange\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,236 @@
+.TH "Renci.SshNet.Common.DerData" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Common.DerData \- 
+.PP
+Base class for DER encoded data\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDerData\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBDerData\fP class\&. \fP"
+.ti -1c
+.RI "\fBDerData\fP (byte[] data)"
+.br
+.RI "\fIInitializes a new instance of the \fBDerData\fP class\&. \fP"
+.ti -1c
+.RI "byte[] \fBEncode\fP ()"
+.br
+.RI "\fIEncodes written data as DER byte array\&. \fP"
+.ti -1c
+.RI "\fBBigInteger\fP \fBReadBigInteger\fP ()"
+.br
+.RI "\fIReads next mpint data type from internal buffer\&. \fP"
+.ti -1c
+.RI "int \fBReadInteger\fP ()"
+.br
+.RI "\fIReads next int data type from internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (bool data)"
+.br
+.RI "\fIWrites BOOLEAN data into internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (UInt32 data)"
+.br
+.RI "\fIWrites UInt32 data into internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (\fBBigInteger\fP data)"
+.br
+.RI "\fIWrites INTEGER data into internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (byte[] data)"
+.br
+.RI "\fIWrites OCTETSTRING data into internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (\fBObjectIdentifier\fP identifier)"
+.br
+.RI "\fIWrites OBJECTIDENTIFIER data into internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBWriteNull\fP ()"
+.br
+.RI "\fIWrites NULL data into internal buffer\&. \fP"
+.ti -1c
+.RI "void \fBWrite\fP (\fBDerData\fP data)"
+.br
+.RI "\fIWrites \fBDerData\fP data into internal buffer\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsEndOfData\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether end of data is reached\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for DER encoded data\&. 
+
+
+.PP
+Definition at line 11 of file DerData\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Common\&.DerData\&.DerData ()"
+
+.PP
+Initializes a new instance of the \fBDerData\fP class\&. 
+.PP
+Definition at line 66 of file DerData\&.cs\&.
+.SS "Renci\&.SshNet\&.Common\&.DerData\&.DerData (byte[]data)"
+
+.PP
+Initializes a new instance of the \fBDerData\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP DER encoded data\&.
+.RE
+.PP
+
+.PP
+Definition at line 75 of file DerData\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "byte [] Renci\&.SshNet\&.Common\&.DerData\&.Encode ()"
+
+.PP
+Encodes written data as DER byte array\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+DER Encoded array\&.
+.RE
+.PP
+
+.PP
+Definition at line 87 of file DerData\&.cs\&.
+.SS "\fBBigInteger\fP Renci\&.SshNet\&.Common\&.DerData\&.ReadBigInteger ()"
+
+.PP
+Reads next mpint data type from internal buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+mpint read\&.
+.RE
+.PP
+
+.PP
+Definition at line 102 of file DerData\&.cs\&.
+.SS "int Renci\&.SshNet\&.Common\&.DerData\&.ReadInteger ()"
+
+.PP
+Reads next int data type from internal buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+int read\&.
+.RE
+.PP
+
+.PP
+Definition at line 119 of file DerData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.DerData\&.Write (booldata)"
+
+.PP
+Writes BOOLEAN data into internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP UInt32 data to write\&.
+.RE
+.PP
+
+.PP
+Definition at line 149 of file DerData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.DerData\&.Write (UInt32data)"
+
+.PP
+Writes UInt32 data into internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP UInt32 data to write\&.
+.RE
+.PP
+
+.PP
+Definition at line 160 of file DerData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.DerData\&.Write (\fBBigInteger\fPdata)"
+
+.PP
+Writes INTEGER data into internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP \fBBigInteger\fP data to write\&.
+.RE
+.PP
+
+.PP
+Definition at line 173 of file DerData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.DerData\&.Write (byte[]data)"
+
+.PP
+Writes OCTETSTRING data into internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The data\&.
+.RE
+.PP
+
+.PP
+Definition at line 186 of file DerData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.DerData\&.Write (\fBObjectIdentifier\fPidentifier)"
+
+.PP
+Writes OBJECTIDENTIFIER data into internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidentifier\fP The identifier\&.
+.RE
+.PP
+
+.PP
+Definition at line 198 of file DerData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.DerData\&.Write (\fBDerData\fPdata)"
+
+.PP
+Writes \fBDerData\fP data into internal buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP \fBDerData\fP data to write\&.
+.RE
+.PP
+
+.PP
+Definition at line 248 of file DerData\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.DerData\&.WriteNull ()"
+
+.PP
+Writes NULL data into internal buffer\&. 
+.PP
+Definition at line 238 of file DerData\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool Renci\&.SshNet\&.Common\&.DerData\&.IsEndOfData\fC [get]\fP"
+
+.PP
+Gets a value indicating whether end of data is reached\&. \fCtrue\fP if end of data is reached; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 56 of file DerData\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,192 @@
+.TH "log4net.Core.LevelMap" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Core.LevelMap \- 
+.PP
+Mapping between string name and \fBLevel\fP object  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLevelMap\fP ()"
+.br
+.RI "\fIConstruct the level map \fP"
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.RI "\fIClear the internal maps of all levels \fP"
+.ti -1c
+.RI "void \fBAdd\fP (string name, int value)"
+.br
+.RI "\fICreate a new \fBLevel\fP and add it to the map \fP"
+.ti -1c
+.RI "void \fBAdd\fP (string name, int value, string displayName)"
+.br
+.RI "\fICreate a new \fBLevel\fP and add it to the map \fP"
+.ti -1c
+.RI "void \fBAdd\fP (\fBLevel\fP level)"
+.br
+.RI "\fIAdd a \fBLevel\fP to the map \fP"
+.ti -1c
+.RI "\fBLevel\fP \fBLookupWithDefault\fP (\fBLevel\fP defaultLevel)"
+.br
+.RI "\fILookup a named level from the map \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBLevel\fP \fBthis[string name]\fP\fC [get]\fP"
+.br
+.RI "\fILookup a \fBLevel\fP by name \fP"
+.ti -1c
+.RI "\fBLevelCollection\fP \fBAllLevels\fP\fC [get]\fP"
+.br
+.RI "\fIReturn all possible levels as a list of \fBLevel\fP objects\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Mapping between string name and \fBLevel\fP object 
+
+Mapping between string name and \fBLevel\fP object\&. This mapping is held separately for each \fBlog4net\&.Repository\&.ILoggerRepository\fP\&. The level name is case insensitive\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 39 of file LevelMap\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Core\&.LevelMap\&.LevelMap ()"
+
+.PP
+Construct the level map Construct the level map\&. 
+.PP
+Definition at line 59 of file LevelMap\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Core\&.LevelMap\&.Add (stringname, intvalue)"
+
+.PP
+Create a new \fBLevel\fP and add it to the map 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP the string to display for the \fBLevel\fP
+.br
+\fIvalue\fP the level value to give to the \fBLevel\fP
+.RE
+.PP
+.PP
+Create a new \fBLevel\fP and add it to the map 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBAdd(string,int,string)\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 116 of file LevelMap\&.cs\&.
+.SS "void log4net\&.Core\&.LevelMap\&.Add (stringname, intvalue, stringdisplayName)"
+
+.PP
+Create a new \fBLevel\fP and add it to the map 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP the string to display for the \fBLevel\fP
+.br
+\fIvalue\fP the level value to give to the \fBLevel\fP
+.br
+\fIdisplayName\fP the display name to give to the \fBLevel\fP
+.RE
+.PP
+.PP
+Create a new \fBLevel\fP and add it to the map 
+.PP
+Definition at line 132 of file LevelMap\&.cs\&.
+.SS "void log4net\&.Core\&.LevelMap\&.Add (\fBLevel\fPlevel)"
+
+.PP
+Add a \fBLevel\fP to the map 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlevel\fP the \fBLevel\fP to add
+.RE
+.PP
+.PP
+Add a \fBLevel\fP to the map 
+.PP
+Definition at line 160 of file LevelMap\&.cs\&.
+.SS "void log4net\&.Core\&.LevelMap\&.Clear ()"
+
+.PP
+Clear the internal maps of all levels Clear the internal maps of all levels 
+.PP
+Definition at line 71 of file LevelMap\&.cs\&.
+.SS "\fBLevel\fP log4net\&.Core\&.LevelMap\&.LookupWithDefault (\fBLevel\fPdefaultLevel)"
+
+.PP
+Lookup a named level from the map 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdefaultLevel\fP the name of the level to lookup is taken from this level\&. If the level is not set on the map then this level is added
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the level in the map with the name specified
+.RE
+.PP
+.PP
+Lookup a named level from the map\&. The name of the level to lookup is taken from the \fBLevel\&.Name\fP property of the \fIdefaultLevel\fP  argument\&. 
+.PP
+If no level with the specified name is found then the \fIdefaultLevel\fP  argument is added to the level map and returned\&. 
+.PP
+Definition at line 210 of file LevelMap\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBLevelCollection\fP log4net\&.Core\&.LevelMap\&.AllLevels\fC [get]\fP"
+
+.PP
+Return all possible levels as a list of \fBLevel\fP objects\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+all possible levels as a list of \fBLevel\fP objects
+.RE
+.PP
+.PP
+Return all possible levels as a list of \fBLevel\fP objects\&. 
+.PP
+Definition at line 182 of file LevelMap\&.cs\&.
+.SS "\fBLevel\fP log4net\&.Core\&.LevelMap\&.this[string name]\fC [get]\fP"
+
+.PP
+Lookup a \fBLevel\fP by name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the \fBLevel\fP to lookup
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+a \fBLevel\fP from the map with the name specified
+.RE
+.PP
+.PP
+Returns the \fBLevel\fP from the map with the name specified\&. If the no level is found then \fCnull\fP is returned\&. 
+.PP
+Definition at line 90 of file LevelMap\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

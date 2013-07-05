@@ -1,0 +1,6 @@
+var namespace_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_interface_proxy_serialization_tests =
+[
+    [ "IMyProxy", "interface_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_interface_proxy_serialization_tests_1_1_i_my_proxy.html", "interface_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_interface_proxy_serialization_tests_1_1_i_my_proxy" ],
+    [ "MyProxyImpl", "class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_interface_proxy_serialization_tests_1_1_my_proxy_impl.html", "class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_interface_proxy_serialization_tests_1_1_my_proxy_impl" ],
+    [ "ProxyFixture", "class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_interface_proxy_serialization_tests_1_1_proxy_fixture.html", "class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_interface_proxy_serialization_tests_1_1_proxy_fixture" ]
+];

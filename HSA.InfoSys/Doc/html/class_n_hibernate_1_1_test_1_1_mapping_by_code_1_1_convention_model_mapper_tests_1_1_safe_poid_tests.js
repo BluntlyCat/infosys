@@ -1,0 +1,6 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_convention_model_mapper_tests_1_1_safe_poid_tests =
+[
+    [ "WhenClassWithoutPoidNorGeeneratorThenApplyGuid", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_convention_model_mapper_tests_1_1_safe_poid_tests.html#a1e90fb43053e4fc41e38ff4a55663fa9", null ],
+    [ "WhenClassWithoutPoidWithGeneratorThenApplyDefinedGenerator", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_convention_model_mapper_tests_1_1_safe_poid_tests.html#a4e7e352ed71d0b47b5fe6fc48ed6e39a", null ],
+    [ "WhenPoidNoSetterThenApplyNosetter", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_convention_model_mapper_tests_1_1_safe_poid_tests.html#a42dfa880ffdda2011e6c6ac9022fd5c2", null ]
+];

@@ -1,0 +1,65 @@
+.TH "NHibernate.Loader.Custom.ICustomQuery" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Loader.Custom.ICustomQuery \- 
+.PP
+Extension point allowing any SQL query with named and positional parameters to be executed by Hibernate, returning managed entities, collections and simple scalar values\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Loader\&.Custom\&.Sql\&.SQLCustomQuery\fP\&.
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlString\fP \fBSQL\fP\fC [get]\fP"
+.br
+.RI "\fIThe SQL query string to be performed\&. \fP"
+.ti -1c
+.RI "ISet< string > \fBQuerySpaces\fP\fC [get]\fP"
+.br
+.RI "\fIAny query spaces to apply to the query execution\&. Query spaces are used in Hibernate's auto-flushing mechanism to determine which entities need to be checked for pending changes\&. \fP"
+.ti -1c
+.RI "IList< \fBIReturn\fP > \fBCustomQueryReturns\fP\fC [get]\fP"
+.br
+.RI "\fIA collection of \fBIReturn\fP descriptors describing the ADO result set to be expected and how to map this result set\&. \fP"
+.ti -1c
+.RI "IEnumerable
+.br
+< \fBIParameterSpecification\fP > \fBCollectedParametersSpecifications\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Extension point allowing any SQL query with named and positional parameters to be executed by Hibernate, returning managed entities, collections and simple scalar values\&. 
+
+
+.PP
+Definition at line 12 of file ICustomQuery\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "IList<\fBIReturn\fP> NHibernate\&.Loader\&.Custom\&.ICustomQuery\&.CustomQueryReturns\fC [get]\fP"
+
+.PP
+A collection of \fBIReturn\fP descriptors describing the ADO result set to be expected and how to map this result set\&. 
+.PP
+Definition at line 28 of file ICustomQuery\&.cs\&.
+.SS "ISet<string> NHibernate\&.Loader\&.Custom\&.ICustomQuery\&.QuerySpaces\fC [get]\fP"
+
+.PP
+Any query spaces to apply to the query execution\&. Query spaces are used in Hibernate's auto-flushing mechanism to determine which entities need to be checked for pending changes\&. 
+.PP
+Definition at line 22 of file ICustomQuery\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.Loader\&.Custom\&.ICustomQuery\&.SQL\fC [get]\fP"
+
+.PP
+The SQL query string to be performed\&. 
+.PP
+Definition at line 15 of file ICustomQuery\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

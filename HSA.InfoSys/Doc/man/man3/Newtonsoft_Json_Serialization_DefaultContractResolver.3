@@ -1,0 +1,532 @@
+.TH "Newtonsoft.Json.Serialization.DefaultContractResolver" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.Serialization.DefaultContractResolver \- 
+.PP
+Used by \fBJsonSerializer\fP to resolves a \fBJsonContract\fP for a given Type\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNewtonsoft\&.Json\&.Serialization\&.IContractResolver\fP\&.
+.PP
+Inherited by \fBNewtonsoft\&.Json\&.Serialization\&.CamelCasePropertyNamesContractResolver\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDefaultContractResolver\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBDefaultContractResolver\fP class\&. \fP"
+.ti -1c
+.RI "\fBDefaultContractResolver\fP (bool shareCache)"
+.br
+.RI "\fIInitializes a new instance of the \fBDefaultContractResolver\fP class\&. \fP"
+.ti -1c
+.RI "virtual \fBJsonContract\fP \fBResolveContract\fP (Type type)"
+.br
+.RI "\fIResolves the contract for a given type\&. \fP"
+.ti -1c
+.RI "string \fBGetResolvedPropertyName\fP (string propertyName)"
+.br
+.RI "\fIGets the resolved name of the property\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual List< MemberInfo > \fBGetSerializableMembers\fP (Type objectType)"
+.br
+.RI "\fIGets the serializable members for the type\&. \fP"
+.ti -1c
+.RI "virtual \fBJsonObjectContract\fP \fBCreateObjectContract\fP (Type objectType)"
+.br
+.RI "\fICreates a \fBJsonObjectContract\fP for the given type\&. \fP"
+.ti -1c
+.RI "virtual IList< \fBJsonProperty\fP > \fBCreateConstructorParameters\fP (ConstructorInfo constructor, \fBJsonPropertyCollection\fP memberProperties)"
+.br
+.RI "\fICreates the constructor parameters\&. \fP"
+.ti -1c
+.RI "virtual \fBJsonProperty\fP \fBCreatePropertyFromConstructorParameter\fP (\fBJsonProperty\fP matchingMemberProperty, ParameterInfo parameterInfo)"
+.br
+.RI "\fICreates a \fBJsonProperty\fP for the given ParameterInfo\&. \fP"
+.ti -1c
+.RI "virtual \fBJsonConverter\fP \fBResolveContractConverter\fP (Type objectType)"
+.br
+.RI "\fIResolves the default \fBJsonConverter\fP for the contract\&. \fP"
+.ti -1c
+.RI "virtual \fBJsonDictionaryContract\fP \fBCreateDictionaryContract\fP (Type objectType)"
+.br
+.RI "\fICreates a \fBJsonDictionaryContract\fP for the given type\&. \fP"
+.ti -1c
+.RI "virtual \fBJsonArrayContract\fP \fBCreateArrayContract\fP (Type objectType)"
+.br
+.RI "\fICreates a \fBJsonArrayContract\fP for the given type\&. \fP"
+.ti -1c
+.RI "virtual \fBJsonPrimitiveContract\fP \fBCreatePrimitiveContract\fP (Type objectType)"
+.br
+.RI "\fICreates a \fBJsonPrimitiveContract\fP for the given type\&. \fP"
+.ti -1c
+.RI "virtual \fBJsonLinqContract\fP \fBCreateLinqContract\fP (Type objectType)"
+.br
+.RI "\fICreates a \fBJsonLinqContract\fP for the given type\&. \fP"
+.ti -1c
+.RI "virtual \fBJsonISerializableContract\fP \fBCreateISerializableContract\fP (Type objectType)"
+.br
+.RI "\fICreates a \fBJsonISerializableContract\fP for the given type\&. \fP"
+.ti -1c
+.RI "virtual \fBJsonDynamicContract\fP \fBCreateDynamicContract\fP (Type objectType)"
+.br
+.RI "\fICreates a \fBJsonDynamicContract\fP for the given type\&. \fP"
+.ti -1c
+.RI "virtual \fBJsonStringContract\fP \fBCreateStringContract\fP (Type objectType)"
+.br
+.RI "\fICreates a \fBJsonStringContract\fP for the given type\&. \fP"
+.ti -1c
+.RI "virtual \fBJsonContract\fP \fBCreateContract\fP (Type objectType)"
+.br
+.RI "\fIDetermines which contract type is created for the given type\&. \fP"
+.ti -1c
+.RI "virtual IList< \fBJsonProperty\fP > \fBCreateProperties\fP (Type type, \fBMemberSerialization\fP memberSerialization)"
+.br
+.RI "\fICreates properties for the given \fBJsonContract\fP\&. \fP"
+.ti -1c
+.RI "virtual \fBIValueProvider\fP \fBCreateMemberValueProvider\fP (MemberInfo member)"
+.br
+.RI "\fICreates the \fBIValueProvider\fP used by the serializer to get and set values from a member\&. \fP"
+.ti -1c
+.RI "virtual \fBJsonProperty\fP \fBCreateProperty\fP (MemberInfo member, \fBMemberSerialization\fP memberSerialization)"
+.br
+.RI "\fICreates a \fBJsonProperty\fP for the given MemberInfo\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBDynamicCodeGeneration\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether members are being get and set using dynamic code generation\&. This value is determined by the runtime permissions available\&. \fP"
+.ti -1c
+.RI "BindingFlags \fBDefaultMembersSearchFlags\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the default members search flags\&. \fP"
+.ti -1c
+.RI "bool \fBSerializeCompilerGeneratedMembers\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether compiler generated members should be serialized\&. \fP"
+.ti -1c
+.RI "bool \fBIgnoreSerializableInterface\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether to ignore the ISerializable interface when serializing and deserializing types\&. \fP"
+.ti -1c
+.RI "bool \fBIgnoreSerializableAttribute\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether to ignore the SerializableAttribute attribute when serializing and deserializing types\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Used by \fBJsonSerializer\fP to resolves a \fBJsonContract\fP for a given Type\&. 
+
+
+.PP
+Definition at line 88 of file DefaultContractResolver\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.DefaultContractResolver ()"
+
+.PP
+Initializes a new instance of the \fBDefaultContractResolver\fP class\&. 
+.PP
+Definition at line 176 of file DefaultContractResolver\&.cs\&.
+.SS "Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.DefaultContractResolver (boolshareCache)"
+
+.PP
+Initializes a new instance of the \fBDefaultContractResolver\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIshareCache\fP If set to \fCtrue\fP the \fBDefaultContractResolver\fP will use a cached shared with other resolvers of the same type\&. Sharing the cache will significantly performance because expensive reflection will only happen once but could cause unexpected behavior if different instances of the resolver are suppose to produce different results\&. When set to false it is highly recommended to reuse \fBDefaultContractResolver\fP instances with the \fBJsonSerializer\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 190 of file DefaultContractResolver\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBJsonArrayContract\fP Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.CreateArrayContract (TypeobjectType)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Creates a \fBJsonArrayContract\fP for the given type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobjectType\fP Type of the object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJsonArrayContract\fP for the given type\&.
+.RE
+.PP
+
+.PP
+Definition at line 750 of file DefaultContractResolver\&.cs\&.
+.SS "virtual IList<\fBJsonProperty\fP> Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.CreateConstructorParameters (ConstructorInfoconstructor, \fBJsonPropertyCollection\fPmemberProperties)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Creates the constructor parameters\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconstructor\fP The constructor to create properties for\&.
+.br
+\fImemberProperties\fP The type's member properties\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Properties for the given ConstructorInfo\&.
+.RE
+.PP
+
+.PP
+Definition at line 494 of file DefaultContractResolver\&.cs\&.
+.SS "virtual \fBJsonContract\fP Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.CreateContract (TypeobjectType)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Determines which contract type is created for the given type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobjectType\fP Type of the object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJsonContract\fP for the given type\&.
+.RE
+.PP
+
+.PP
+Definition at line 843 of file DefaultContractResolver\&.cs\&.
+.SS "virtual \fBJsonDictionaryContract\fP Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.CreateDictionaryContract (TypeobjectType)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Creates a \fBJsonDictionaryContract\fP for the given type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobjectType\fP Type of the object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJsonDictionaryContract\fP for the given type\&.
+.RE
+.PP
+
+.PP
+Definition at line 735 of file DefaultContractResolver\&.cs\&.
+.SS "virtual \fBJsonDynamicContract\fP Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.CreateDynamicContract (TypeobjectType)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Creates a \fBJsonDynamicContract\fP for the given type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobjectType\fP Type of the object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJsonDynamicContract\fP for the given type\&.
+.RE
+.PP
+
+.PP
+Definition at line 813 of file DefaultContractResolver\&.cs\&.
+.SS "virtual \fBJsonISerializableContract\fP Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.CreateISerializableContract (TypeobjectType)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Creates a \fBJsonISerializableContract\fP for the given type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobjectType\fP Type of the object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJsonISerializableContract\fP for the given type\&.
+.RE
+.PP
+
+.PP
+Definition at line 790 of file DefaultContractResolver\&.cs\&.
+.SS "virtual \fBJsonLinqContract\fP Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.CreateLinqContract (TypeobjectType)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Creates a \fBJsonLinqContract\fP for the given type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobjectType\fP Type of the object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJsonLinqContract\fP for the given type\&.
+.RE
+.PP
+
+.PP
+Definition at line 776 of file DefaultContractResolver\&.cs\&.
+.SS "virtual \fBIValueProvider\fP Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.CreateMemberValueProvider (MemberInfomember)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Creates the \fBIValueProvider\fP used by the serializer to get and set values from a member\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImember\fP The member\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBIValueProvider\fP used by the serializer to get and set values from a member\&.
+.RE
+.PP
+
+.PP
+Definition at line 1011 of file DefaultContractResolver\&.cs\&.
+.SS "virtual \fBJsonObjectContract\fP Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.CreateObjectContract (TypeobjectType)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Creates a \fBJsonObjectContract\fP for the given type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobjectType\fP Type of the object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJsonObjectContract\fP for the given type\&.
+.RE
+.PP
+
+.PP
+Definition at line 348 of file DefaultContractResolver\&.cs\&.
+.SS "virtual \fBJsonPrimitiveContract\fP Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.CreatePrimitiveContract (TypeobjectType)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Creates a \fBJsonPrimitiveContract\fP for the given type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobjectType\fP Type of the object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJsonPrimitiveContract\fP for the given type\&.
+.RE
+.PP
+
+.PP
+Definition at line 763 of file DefaultContractResolver\&.cs\&.
+.SS "virtual IList<\fBJsonProperty\fP> Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.CreateProperties (Typetype, \fBMemberSerialization\fPmemberSerialization)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Creates properties for the given \fBJsonContract\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The type to create properties for\&.
+.RE
+.PP
+/// 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImemberSerialization\fP The member serialization mode for the type\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Properties for the given \fBJsonContract\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 986 of file DefaultContractResolver\&.cs\&.
+.SS "virtual \fBJsonProperty\fP Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.CreateProperty (MemberInfomember, \fBMemberSerialization\fPmemberSerialization)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Creates a \fBJsonProperty\fP for the given MemberInfo\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImemberSerialization\fP The member's parent \fBMemberSerialization\fP\&.
+.br
+\fImember\fP The member to create a \fBJsonProperty\fP for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A created \fBJsonProperty\fP for the given MemberInfo\&.
+.RE
+.PP
+
+.PP
+Definition at line 1036 of file DefaultContractResolver\&.cs\&.
+.SS "virtual \fBJsonProperty\fP Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.CreatePropertyFromConstructorParameter (\fBJsonProperty\fPmatchingMemberProperty, ParameterInfoparameterInfo)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Creates a \fBJsonProperty\fP for the given ParameterInfo\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatchingMemberProperty\fP The matching member property\&.
+.br
+\fIparameterInfo\fP The constructor parameter\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A created \fBJsonProperty\fP for the given ParameterInfo\&.
+.RE
+.PP
+
+.PP
+Definition at line 527 of file DefaultContractResolver\&.cs\&.
+.SS "virtual \fBJsonStringContract\fP Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.CreateStringContract (TypeobjectType)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Creates a \fBJsonStringContract\fP for the given type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobjectType\fP Type of the object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJsonStringContract\fP for the given type\&.
+.RE
+.PP
+
+.PP
+Definition at line 830 of file DefaultContractResolver\&.cs\&.
+.SS "string Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.GetResolvedPropertyName (stringpropertyName)"
+
+.PP
+Gets the resolved name of the property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP Name of the property\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Name of the property\&.
+.RE
+.PP
+
+.PP
+Definition at line 1226 of file DefaultContractResolver\&.cs\&.
+.SS "virtual List<MemberInfo> Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.GetSerializableMembers (TypeobjectType)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Gets the serializable members for the type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobjectType\fP The type to get serializable members for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The serializable members for the type\&.
+.RE
+.PP
+
+.PP
+Definition at line 257 of file DefaultContractResolver\&.cs\&.
+.SS "virtual \fBJsonContract\fP Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.ResolveContract (Typetype)\fC [virtual]\fP"
+
+.PP
+Resolves the contract for a given type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The type to resolve a contract for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The contract for a given type\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.Serialization\&.IContractResolver\fP\&.
+.PP
+Definition at line 223 of file DefaultContractResolver\&.cs\&.
+.SS "virtual \fBJsonConverter\fP Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.ResolveContractConverter (TypeobjectType)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Resolves the default \fBJsonConverter\fP for the contract\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobjectType\fP Type of the object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The contract's default \fBJsonConverter\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 565 of file DefaultContractResolver\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "BindingFlags Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.DefaultMembersSearchFlags\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the default members search flags\&. The default members search flags\&.
+.PP
+Definition at line 142 of file DefaultContractResolver\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.DynamicCodeGeneration\fC [get]\fP"
+
+.PP
+Gets a value indicating whether members are being get and set using dynamic code generation\&. This value is determined by the runtime permissions available\&. \fCtrue\fP if using dynamic code generation; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 133 of file DefaultContractResolver\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.IgnoreSerializableAttribute\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether to ignore the SerializableAttribute attribute when serializing and deserializing types\&. \fCtrue\fP if the SerializableAttribute attribute will be ignored when serializing and deserializing types; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 170 of file DefaultContractResolver\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.IgnoreSerializableInterface\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether to ignore the ISerializable interface when serializing and deserializing types\&. \fCtrue\fP if the ISerializable interface will be ignored when serializing and deserializing types; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 162 of file DefaultContractResolver\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.Serialization\&.DefaultContractResolver\&.SerializeCompilerGeneratedMembers\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether compiler generated members should be serialized\&. \fCtrue\fP if serialized compiler generated members; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 153 of file DefaultContractResolver\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

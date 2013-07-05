@@ -1,0 +1,371 @@
+.TH "log4net.Config.XmlConfigurator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Config.XmlConfigurator \- 
+.PP
+Use this class to initialize the \fBlog4net\fP environment using an Xml tree\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static ICollection \fBConfigure\fP ()"
+.br
+.RI "\fIAutomatically configures the \fBlog4net\fP system based on the application's configuration settings\&. \fP"
+.ti -1c
+.RI "static ICollection \fBConfigure\fP (\fBILoggerRepository\fP repository)"
+.br
+.RI "\fIAutomatically configures the ILoggerRepository using settings stored in the application's configuration file\&. \fP"
+.ti -1c
+.RI "static ICollection \fBConfigure\fP (XmlElement element)"
+.br
+.RI "\fIConfigures \fBlog4net\fP using a \fC\fBlog4net\fP\fP element \fP"
+.ti -1c
+.RI "static ICollection \fBConfigure\fP (\fBILoggerRepository\fP repository, XmlElement element)"
+.br
+.RI "\fIConfigures the ILoggerRepository using the specified XML element\&. \fP"
+.ti -1c
+.RI "static ICollection \fBConfigure\fP (FileInfo configFile)"
+.br
+.RI "\fIConfigures \fBlog4net\fP using the specified configuration file\&. \fP"
+.ti -1c
+.RI "static ICollection \fBConfigure\fP (Uri configUri)"
+.br
+.RI "\fIConfigures \fBlog4net\fP using the specified configuration URI\&. \fP"
+.ti -1c
+.RI "static ICollection \fBConfigure\fP (Stream configStream)"
+.br
+.RI "\fIConfigures \fBlog4net\fP using the specified configuration data stream\&. \fP"
+.ti -1c
+.RI "static ICollection \fBConfigure\fP (\fBILoggerRepository\fP repository, FileInfo configFile)"
+.br
+.RI "\fIConfigures the ILoggerRepository using the specified configuration file\&. \fP"
+.ti -1c
+.RI "static ICollection \fBConfigure\fP (\fBILoggerRepository\fP repository, Uri configUri)"
+.br
+.RI "\fIConfigures the ILoggerRepository using the specified configuration URI\&. \fP"
+.ti -1c
+.RI "static ICollection \fBConfigure\fP (\fBILoggerRepository\fP repository, Stream configStream)"
+.br
+.RI "\fIConfigures the ILoggerRepository using the specified configuration file\&. \fP"
+.ti -1c
+.RI "static ICollection \fBConfigureAndWatch\fP (FileInfo configFile)"
+.br
+.RI "\fIConfigures \fBlog4net\fP using the file specified, monitors the file for changes and reloads the configuration if a change is detected\&. \fP"
+.ti -1c
+.RI "static ICollection \fBConfigureAndWatch\fP (\fBILoggerRepository\fP repository, FileInfo configFile)"
+.br
+.RI "\fIConfigures the ILoggerRepository using the file specified, monitors the file for changes and reloads the configuration if a change is detected\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Use this class to initialize the \fBlog4net\fP environment using an Xml tree\&. 
+
+Configures a ILoggerRepository using an Xml tree\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 44 of file XmlConfigurator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static ICollection log4net\&.Config\&.XmlConfigurator\&.Configure ()\fC [static]\fP"
+
+.PP
+Automatically configures the \fBlog4net\fP system based on the application's configuration settings\&. Each application has a configuration file\&. This has the same name as the application with '\&.config' appended\&. This file is XML and calling this function prompts the configurator to look in that file for a section called \fC\fBlog4net\fP\fP that contains the configuration data\&. 
+.PP
+To use this method to configure \fBlog4net\fP you must specify the \fBLog4NetConfigurationSectionHandler\fP section handler for the \fC\fBlog4net\fP\fP configuration section\&. See the \fBLog4NetConfigurationSectionHandler\fP for an example\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBLog4NetConfigurationSectionHandler\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 95 of file XmlConfigurator\&.cs\&.
+.SS "static ICollection log4net\&.Config\&.XmlConfigurator\&.Configure (\fBILoggerRepository\fPrepository)\fC [static]\fP"
+
+.PP
+Automatically configures the ILoggerRepository using settings stored in the application's configuration file\&. Each application has a configuration file\&. This has the same name as the application with '\&.config' appended\&. This file is XML and calling this function prompts the configurator to look in that file for a section called \fC\fBlog4net\fP\fP that contains the configuration data\&. 
+.PP
+To use this method to configure \fBlog4net\fP you must specify the \fBLog4NetConfigurationSectionHandler\fP section handler for the \fC\fBlog4net\fP\fP configuration section\&. See the \fBLog4NetConfigurationSectionHandler\fP for an example\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The repository to configure\&.
+.RE
+.PP
+
+.PP
+Definition at line 137 of file XmlConfigurator\&.cs\&.
+.SS "static ICollection log4net\&.Config\&.XmlConfigurator\&.Configure (XmlElementelement)\fC [static]\fP"
+
+.PP
+Configures \fBlog4net\fP using a \fC\fBlog4net\fP\fP element Loads the \fBlog4net\fP configuration from the XML element supplied as \fIelement\fP \&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIelement\fP The element to parse\&.
+.RE
+.PP
+
+.PP
+Definition at line 215 of file XmlConfigurator\&.cs\&.
+.SS "static ICollection log4net\&.Config\&.XmlConfigurator\&.Configure (\fBILoggerRepository\fPrepository, XmlElementelement)\fC [static]\fP"
+
+.PP
+Configures the ILoggerRepository using the specified XML element\&. Loads the \fBlog4net\fP configuration from the XML element supplied as \fIelement\fP \&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The repository to configure\&.
+.br
+\fIelement\fP The element to parse\&.
+.RE
+.PP
+
+.PP
+Definition at line 241 of file XmlConfigurator\&.cs\&.
+.SS "static ICollection log4net\&.Config\&.XmlConfigurator\&.Configure (FileInfoconfigFile)\fC [static]\fP"
+
+.PP
+Configures \fBlog4net\fP using the specified configuration file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconfigFile\fP The XML file to load the configuration from\&.
+.RE
+.PP
+.PP
+The configuration file must be valid XML\&. It must contain at least one element called \fC\fBlog4net\fP\fP that holds the \fBlog4net\fP configuration data\&. 
+.PP
+The \fBlog4net\fP configuration file can possible be specified in the application's configuration file (either \fCMyAppName\&.exe\&.config\fP for a normal application on \fCWeb\&.config\fP for an ASP\&.NET application)\&. 
+.PP
+The first element matching \fC<configuration>\fP will be read as the configuration\&. If this file is also a \&.NET \&.config file then you must specify a configuration section for the \fC\fBlog4net\fP\fP element otherwise \&.NET will complain\&. Set the type for the section handler to System\&.Configuration\&.IgnoreSectionHandler, for example: 
+.PP
+.nf
+<configSections>
+    <section name="log4net" type="System\&.Configuration\&.IgnoreSectionHandler" />
+</configSections>
+
+.fi
+.PP
+ 
+.PP
+The following example configures \fBlog4net\fP using a configuration file, of which the location is stored in the application's configuration file : 
+.PP
+.PP
+.nf
+using log4net\&.Config;
+using System\&.IO;
+using System\&.Configuration;
+
+\&.\&.\&.
+
+XmlConfigurator\&.Configure(new FileInfo(ConfigurationSettings\&.AppSettings["log4net-config-file"]));
+.fi
+.PP
+ 
+.PP
+In the \fC\&.config\fP file, the path to the \fBlog4net\fP can be specified like this : 
+.PP
+.PP
+.nf
+<configuration>
+    <appSettings>
+        <add key="log4net-config-file" value="log\&.config"/>
+    </appSettings>
+</configuration>
+.fi
+.PP
+ 
+.PP
+Definition at line 344 of file XmlConfigurator\&.cs\&.
+.SS "static ICollection log4net\&.Config\&.XmlConfigurator\&.Configure (UriconfigUri)\fC [static]\fP"
+
+.PP
+Configures \fBlog4net\fP using the specified configuration URI\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconfigUri\fP A URI to load the XML configuration from\&.
+.RE
+.PP
+.PP
+The configuration data must be valid XML\&. It must contain at least one element called \fC\fBlog4net\fP\fP that holds the \fBlog4net\fP configuration data\&. 
+.PP
+The System\&.Net\&.WebRequest must support the URI scheme specified\&. 
+.PP
+Definition at line 370 of file XmlConfigurator\&.cs\&.
+.SS "static ICollection log4net\&.Config\&.XmlConfigurator\&.Configure (StreamconfigStream)\fC [static]\fP"
+
+.PP
+Configures \fBlog4net\fP using the specified configuration data stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconfigStream\fP A stream to load the XML configuration from\&.
+.RE
+.PP
+.PP
+The configuration data must be valid XML\&. It must contain at least one element called \fC\fBlog4net\fP\fP that holds the \fBlog4net\fP configuration data\&. 
+.PP
+Note that this method will NOT close the stream parameter\&. 
+.PP
+Definition at line 400 of file XmlConfigurator\&.cs\&.
+.SS "static ICollection log4net\&.Config\&.XmlConfigurator\&.Configure (\fBILoggerRepository\fPrepository, FileInfoconfigFile)\fC [static]\fP"
+
+.PP
+Configures the ILoggerRepository using the specified configuration file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The repository to configure\&.
+.br
+\fIconfigFile\fP The XML file to load the configuration from\&.
+.RE
+.PP
+.PP
+The configuration file must be valid XML\&. It must contain at least one element called \fC\fBlog4net\fP\fP that holds the configuration data\&. 
+.PP
+The \fBlog4net\fP configuration file can possible be specified in the application's configuration file (either \fCMyAppName\&.exe\&.config\fP for a normal application on \fCWeb\&.config\fP for an ASP\&.NET application)\&. 
+.PP
+The first element matching \fC<configuration>\fP will be read as the configuration\&. If this file is also a \&.NET \&.config file then you must specify a configuration section for the \fC\fBlog4net\fP\fP element otherwise \&.NET will complain\&. Set the type for the section handler to System\&.Configuration\&.IgnoreSectionHandler, for example: 
+.PP
+.nf
+<configSections>
+    <section name="log4net" type="System\&.Configuration\&.IgnoreSectionHandler" />
+</configSections>
+
+.fi
+.PP
+ 
+.PP
+The following example configures \fBlog4net\fP using a configuration file, of which the location is stored in the application's configuration file : 
+.PP
+.PP
+.nf
+using log4net\&.Config;
+using System\&.IO;
+using System\&.Configuration;
+
+\&.\&.\&.
+
+XmlConfigurator\&.Configure(new FileInfo(ConfigurationSettings\&.AppSettings["log4net-config-file"]));
+.fi
+.PP
+ 
+.PP
+In the \fC\&.config\fP file, the path to the \fBlog4net\fP can be specified like this : 
+.PP
+.PP
+.nf
+<configuration>
+    <appSettings>
+        <add key="log4net-config-file" value="log\&.config"/>
+    </appSettings>
+</configuration>
+.fi
+.PP
+ 
+.PP
+Definition at line 508 of file XmlConfigurator\&.cs\&.
+.SS "static ICollection log4net\&.Config\&.XmlConfigurator\&.Configure (\fBILoggerRepository\fPrepository, UriconfigUri)\fC [static]\fP"
+
+.PP
+Configures the ILoggerRepository using the specified configuration URI\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The repository to configure\&.
+.br
+\fIconfigUri\fP A URI to load the XML configuration from\&.
+.RE
+.PP
+.PP
+The configuration data must be valid XML\&. It must contain at least one element called \fC\fBlog4net\fP\fP that holds the configuration data\&. 
+.PP
+The System\&.Net\&.WebRequest must support the URI scheme specified\&. 
+.PP
+Definition at line 597 of file XmlConfigurator\&.cs\&.
+.SS "static ICollection log4net\&.Config\&.XmlConfigurator\&.Configure (\fBILoggerRepository\fPrepository, StreamconfigStream)\fC [static]\fP"
+
+.PP
+Configures the ILoggerRepository using the specified configuration file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The repository to configure\&.
+.br
+\fIconfigStream\fP The stream to load the XML configuration from\&.
+.RE
+.PP
+.PP
+The configuration data must be valid XML\&. It must contain at least one element called \fC\fBlog4net\fP\fP that holds the configuration data\&. 
+.PP
+Note that this method will NOT close the stream parameter\&. 
+.PP
+Definition at line 697 of file XmlConfigurator\&.cs\&.
+.SS "static ICollection log4net\&.Config\&.XmlConfigurator\&.ConfigureAndWatch (FileInfoconfigFile)\fC [static]\fP"
+
+.PP
+Configures \fBlog4net\fP using the file specified, monitors the file for changes and reloads the configuration if a change is detected\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconfigFile\fP The XML file to load the configuration from\&.
+.RE
+.PP
+.PP
+The configuration file must be valid XML\&. It must contain at least one element called \fC\fBlog4net\fP\fP that holds the configuration data\&. 
+.PP
+The configuration file will be monitored using a FileSystemWatcher and depends on the behavior of that class\&. 
+.PP
+For more information on how to configure \fBlog4net\fP using a separate configuration file, see \fBConfigure(FileInfo)\fP\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBConfigure(FileInfo)\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 811 of file XmlConfigurator\&.cs\&.
+.SS "static ICollection log4net\&.Config\&.XmlConfigurator\&.ConfigureAndWatch (\fBILoggerRepository\fPrepository, FileInfoconfigFile)\fC [static]\fP"
+
+.PP
+Configures the ILoggerRepository using the file specified, monitors the file for changes and reloads the configuration if a change is detected\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The repository to configure\&.
+.br
+\fIconfigFile\fP The XML file to load the configuration from\&.
+.RE
+.PP
+.PP
+The configuration file must be valid XML\&. It must contain at least one element called \fC\fBlog4net\fP\fP that holds the configuration data\&. 
+.PP
+The configuration file will be monitored using a FileSystemWatcher and depends on the behavior of that class\&. 
+.PP
+For more information on how to configure \fBlog4net\fP using a separate configuration file, see \fBConfigure(FileInfo)\fP\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBConfigure(FileInfo)\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 850 of file XmlConfigurator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

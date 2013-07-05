@@ -1,0 +1,4 @@
+var struct_n_hibernate_1_1_test_1_1_transform_tests_1_1_alias_to_bean_result_transformer_fixture_1_1_test_struct =
+[
+    [ "Something", "struct_n_hibernate_1_1_test_1_1_transform_tests_1_1_alias_to_bean_result_transformer_fixture_1_1_test_struct.html#a18b0a2e12db93dbe9815ce7196407d5c", null ]
+];

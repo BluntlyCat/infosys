@@ -1,0 +1,465 @@
+.TH "log4net.Appender.AppenderSkeleton" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.AppenderSkeleton \- 
+.PP
+Abstract base class implementation of \fBIAppender\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.IAppender\fP, \fBlog4net\&.Appender\&.IBulkAppender\fP, and \fBlog4net\&.Core\&.IOptionHandler\fP\&.
+.PP
+Inherited by \fBlog4net\&.Appender\&.AnsiColorTerminalAppender\fP, \fBlog4net\&.Appender\&.AspNetTraceAppender\fP, \fBlog4net\&.Appender\&.BufferingAppenderSkeleton\fP, \fBlog4net\&.Appender\&.ColoredConsoleAppender\fP, \fBlog4net\&.Appender\&.ConsoleAppender\fP, \fBlog4net\&.Appender\&.DebugAppender\fP, \fBlog4net\&.Appender\&.EventLogAppender\fP, \fBlog4net\&.Appender\&.ForwardingAppender\fP, \fBlog4net\&.Appender\&.LocalSyslogAppender\fP, \fBlog4net\&.Appender\&.MemoryAppender\fP, \fBlog4net\&.Appender\&.NetSendAppender\fP, \fBlog4net\&.Appender\&.OutputDebugStringAppender\fP, \fBlog4net\&.Appender\&.TelnetAppender\fP, \fBlog4net\&.Appender\&.TextWriterAppender\fP, \fBlog4net\&.Appender\&.TraceAppender\fP, and \fBlog4net\&.Appender\&.UdpAppender\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBActivateOptions\fP ()"
+.br
+.RI "\fIInitialize the appender based on the options set \fP"
+.ti -1c
+.RI "void \fBClose\fP ()"
+.br
+.RI "\fICloses the appender and release resources\&. \fP"
+.ti -1c
+.RI "void \fBDoAppend\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIPerforms threshold checks and invokes filters before delegating actual logging to the subclasses specific \fBAppend(LoggingEvent)\fP method\&. \fP"
+.ti -1c
+.RI "void \fBDoAppend\fP (\fBLoggingEvent\fP[] loggingEvents)"
+.br
+.RI "\fIPerforms threshold checks and invokes filters before delegating actual logging to the subclasses specific \fBAppend(LoggingEvent[])\fP method\&. \fP"
+.ti -1c
+.RI "virtual void \fBAddFilter\fP (\fBIFilter\fP filter)"
+.br
+.RI "\fIAdds a filter to the end of the filter chain\&. \fP"
+.ti -1c
+.RI "virtual void \fBClearFilters\fP ()"
+.br
+.RI "\fIClears the filter list for this appender\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAppenderSkeleton\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.ti -1c
+.RI "virtual bool \fBFilterEvent\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fITest if the logging event should we output by this appender \fP"
+.ti -1c
+.RI "virtual bool \fBIsAsSevereAsThreshold\fP (\fBLevel\fP level)"
+.br
+.RI "\fIChecks if the message level is below this appender's threshold\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnClose\fP ()"
+.br
+.RI "\fIIs called when the appender is closed\&. Derived classes should override this method if resources need to be released\&. \fP"
+.ti -1c
+.RI "abstract void \fBAppend\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fISubclasses of \fBAppenderSkeleton\fP should implement this method to perform actual logging\&. \fP"
+.ti -1c
+.RI "virtual void \fBAppend\fP (\fBLoggingEvent\fP[] loggingEvents)"
+.br
+.RI "\fIAppend a bulk array of logging events\&. \fP"
+.ti -1c
+.RI "virtual bool \fBPreAppendCheck\fP ()"
+.br
+.RI "\fICalled before \fBAppend(LoggingEvent)\fP as a precondition\&. \fP"
+.ti -1c
+.RI "string \fBRenderLoggingEvent\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIRenders the LoggingEvent to a string\&. \fP"
+.ti -1c
+.RI "void \fBRenderLoggingEvent\fP (TextWriter writer, \fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIRenders the LoggingEvent to a string\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBLevel\fP \fBThreshold\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the threshold Level of this appender\&. \fP"
+.ti -1c
+.RI "virtual \fBIErrorHandler\fP \fBErrorHandler\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the IErrorHandler for this appender\&. \fP"
+.ti -1c
+.RI "virtual \fBIFilter\fP \fBFilterHead\fP\fC [get]\fP"
+.br
+.RI "\fIThe filter chain\&. \fP"
+.ti -1c
+.RI "virtual \fBILayout\fP \fBLayout\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the ILayout for this appender\&. \fP"
+.ti -1c
+.RI "string \fBName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the name of this appender\&. \fP"
+.ti -1c
+.RI "virtual bool \fBRequiresLayout\fP\fC [get]\fP"
+.br
+.RI "\fITests if this appender requires a \fBLayout\fP to be set\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Abstract base class implementation of \fBIAppender\fP\&. 
+
+This class provides the code for common functionality, such as support for threshold filtering and support for general filters\&. 
+.PP
+Appenders can also implement the IOptionHandler interface\&. Therefore they would require that the IOptionHandler\&.ActivateOptions() method be called after the appenders properties have been configured\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 47 of file AppenderSkeleton\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.AppenderSkeleton\&.AppenderSkeleton ()\fC [protected]\fP"
+
+.PP
+Default constructor Empty default constructor
+.PP
+Definition at line 57 of file AppenderSkeleton\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void log4net\&.Appender\&.AppenderSkeleton\&.ActivateOptions ()\fC [virtual]\fP"
+
+.PP
+Initialize the appender based on the options set This is part of the IOptionHandler delayed object activation scheme\&. The \fBActivateOptions\fP method must be called on this object after the configuration properties have been set\&. Until \fBActivateOptions\fP is called this object is in an undefined state and must not be used\&. 
+.PP
+If any of the configuration properties are modified then \fBActivateOptions\fP must be called again\&. 
+.PP
+Implements \fBlog4net\&.Core\&.IOptionHandler\fP\&.
+.PP
+Reimplemented in \fBlog4net\&.Appender\&.RollingFileAppender\fP, \fBlog4net\&.Appender\&.FileAppender\fP, \fBlog4net\&.Appender\&.ColoredConsoleAppender\fP, \fBlog4net\&.Appender\&.AdoNetAppender\fP, \fBlog4net\&.Appender\&.RemoteSyslogAppender\fP, \fBlog4net\&.Appender\&.AnsiColorTerminalAppender\fP, \fBlog4net\&.Appender\&.BufferingAppenderSkeleton\fP, \fBlog4net\&.Appender\&.UdpAppender\fP, \fBlog4net\&.Appender\&.LocalSyslogAppender\fP, \fBlog4net\&.Appender\&.NetSendAppender\fP, \fBlog4net\&.Appender\&.EventLogAppender\fP, \fBlog4net\&.Appender\&.SmtpPickupDirAppender\fP, \fBlog4net\&.Appender\&.TelnetAppender\fP, and \fBlog4net\&.Appender\&.RemotingAppender\fP\&.
+.PP
+Definition at line 196 of file AppenderSkeleton\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.AppenderSkeleton\&.AddFilter (\fBIFilter\fPfilter)\fC [virtual]\fP"
+
+.PP
+Adds a filter to the end of the filter chain\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilter\fP the filter to add to this appender
+.RE
+.PP
+.PP
+The Filters are organized in a linked list\&. 
+.PP
+Setting this property causes the new filter to be pushed onto the back of the filter chain\&. 
+.PP
+Definition at line 526 of file AppenderSkeleton\&.cs\&.
+.SS "abstract void log4net\&.Appender\&.AppenderSkeleton\&.Append (\fBLoggingEvent\fPloggingEvent)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Subclasses of \fBAppenderSkeleton\fP should implement this method to perform actual logging\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP The event to append\&.
+.RE
+.PP
+.PP
+A subclass must implement this method to perform logging of the \fIloggingEvent\fP \&. 
+.PP
+This method will be called by \fBDoAppend(LoggingEvent)\fP if all the conditions listed for that method are met\&. 
+.PP
+To restrict the logging of events in the appender override the \fBPreAppendCheck()\fP method\&. 
+.PP
+Implemented in \fBlog4net\&.Appender\&.FileAppender\fP, \fBlog4net\&.Appender\&.RollingFileAppender\fP, \fBlog4net\&.Appender\&.BufferingAppenderSkeleton\fP, \fBlog4net\&.Appender\&.UdpAppender\fP, \fBlog4net\&.Appender\&.LocalSyslogAppender\fP, \fBlog4net\&.Appender\&.EventLogAppender\fP, \fBlog4net\&.Appender\&.RemoteSyslogAppender\fP, \fBlog4net\&.Appender\&.NetSendAppender\fP, \fBlog4net\&.Appender\&.ColoredConsoleAppender\fP, \fBlog4net\&.Appender\&.TextWriterAppender\fP, \fBlog4net\&.Appender\&.TelnetAppender\fP, \fBlog4net\&.Appender\&.ConsoleAppender\fP, \fBlog4net\&.Appender\&.MemoryAppender\fP, \fBlog4net\&.Appender\&.TraceAppender\fP, \fBlog4net\&.Appender\&.DebugAppender\fP, \fBlog4net\&.Appender\&.ForwardingAppender\fP, \fBlog4net\&.Appender\&.AspNetTraceAppender\fP, and \fBlog4net\&.Appender\&.OutputDebugStringAppender\fP\&.
+.SS "virtual void log4net\&.Appender\&.AppenderSkeleton\&.Append (\fBLoggingEvent\fP[]loggingEvents)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Append a bulk array of logging events\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvents\fP the array of logging events
+.RE
+.PP
+.PP
+This base class implementation calls the \fBAppend(LoggingEvent)\fP method for each element in the bulk array\&. 
+.PP
+A sub class that can better process a bulk array of events should override this method in addition to \fBAppend(LoggingEvent)\fP\&. 
+.PP
+Reimplemented in \fBlog4net\&.Appender\&.FileAppender\fP, \fBlog4net\&.Appender\&.RollingFileAppender\fP, \fBlog4net\&.Appender\&.TextWriterAppender\fP, and \fBlog4net\&.Appender\&.ForwardingAppender\fP\&.
+.PP
+Definition at line 631 of file AppenderSkeleton\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.AppenderSkeleton\&.ClearFilters ()\fC [virtual]\fP"
+
+.PP
+Clears the filter list for this appender\&. Clears the filter list for this appender\&. 
+.PP
+Definition at line 552 of file AppenderSkeleton\&.cs\&.
+.SS "void log4net\&.Appender\&.AppenderSkeleton\&.Close ()"
+
+.PP
+Closes the appender and release resources\&. Release any resources allocated within the appender such as file handles, network connections, etc\&. 
+.PP
+It is a programming error to append to a closed appender\&. 
+.PP
+This method cannot be overridden by subclasses\&. This method delegates the closing of the appender to the \fBOnClose\fP method which must be overridden in the subclass\&. 
+.PP
+Implements \fBlog4net\&.Appender\&.IAppender\fP\&.
+.PP
+Definition at line 236 of file AppenderSkeleton\&.cs\&.
+.SS "void log4net\&.Appender\&.AppenderSkeleton\&.DoAppend (\fBLoggingEvent\fPloggingEvent)"
+
+.PP
+Performs threshold checks and invokes filters before delegating actual logging to the subclasses specific \fBAppend(LoggingEvent)\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP The event to log\&.
+.RE
+.PP
+.PP
+This method cannot be overridden by derived classes\&. A derived class should override the \fBAppend(LoggingEvent)\fP method which is called by this method\&. 
+.PP
+The implementation of this method is as follows: 
+.PP
+.PD 0
+.IP "\(bu" 2
+Checks that the severity of the \fIloggingEvent\fP  is greater than or equal to the \fBThreshold\fP of this appender\&.  
+.IP "\(bu" 2
+Checks that the IFilter chain accepts the \fIloggingEvent\fP \&.   
+.IP "\(bu" 2
+Calls \fBPreAppendCheck()\fP and checks that it returns \fCtrue\fP\&.  
+.PP
+.PP
+If all of the above steps succeed then the \fIloggingEvent\fP  will be passed to the abstract \fBAppend(LoggingEvent)\fP method\&. 
+.PP
+Implements \fBlog4net\&.Appender\&.IAppender\fP\&.
+.PP
+Definition at line 290 of file AppenderSkeleton\&.cs\&.
+.SS "void log4net\&.Appender\&.AppenderSkeleton\&.DoAppend (\fBLoggingEvent\fP[]loggingEvents)"
+
+.PP
+Performs threshold checks and invokes filters before delegating actual logging to the subclasses specific \fBAppend(LoggingEvent[])\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvents\fP The array of events to log\&.
+.RE
+.PP
+.PP
+This method cannot be overridden by derived classes\&. A derived class should override the \fBAppend(LoggingEvent[])\fP method which is called by this method\&. 
+.PP
+The implementation of this method is as follows: 
+.PP
+.PD 0
+.IP "\(bu" 2
+Checks that the severity of the \fIloggingEvents\fP  is greater than or equal to the \fBThreshold\fP of this appender\&.  
+.IP "\(bu" 2
+Checks that the IFilter chain accepts the \fIloggingEvents\fP \&.   
+.IP "\(bu" 2
+Calls \fBPreAppendCheck()\fP and checks that it returns \fCtrue\fP\&.  
+.PP
+.PP
+If all of the above steps succeed then the \fIloggingEvents\fP  will be passed to the \fBAppend(LoggingEvent[])\fP method\&. 
+.PP
+Implements \fBlog4net\&.Appender\&.IBulkAppender\fP\&.
+.PP
+Definition at line 387 of file AppenderSkeleton\&.cs\&.
+.SS "virtual bool log4net\&.Appender\&.AppenderSkeleton\&.FilterEvent (\fBLoggingEvent\fPloggingEvent)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Test if the logging event should we output by this appender 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP the event to test
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the event should be output, \fCfalse\fP if the event should be ignored
+.RE
+.PP
+.PP
+This method checks the logging event against the threshold level set on this appender and also against the filters specified on this appender\&. 
+.PP
+The implementation of this method is as follows: 
+.PP
+.PD 0
+.IP "\(bu" 2
+Checks that the severity of the \fIloggingEvent\fP  is greater than or equal to the \fBThreshold\fP of this appender\&.  
+.IP "\(bu" 2
+Checks that the IFilter chain accepts the \fIloggingEvent\fP \&.   
+.PP
+
+.PP
+Definition at line 482 of file AppenderSkeleton\&.cs\&.
+.SS "virtual bool log4net\&.Appender\&.AppenderSkeleton\&.IsAsSevereAsThreshold (\fBLevel\fPlevel)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Checks if the message level is below this appender's threshold\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlevel\fP Level to test against\&.
+.RE
+.PP
+.PP
+If there is no threshold set, then the return value is always \fCtrue\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the \fIlevel\fP  meets the \fBThreshold\fP requirements of this appender\&. 
+.RE
+.PP
+
+.PP
+Definition at line 574 of file AppenderSkeleton\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.AppenderSkeleton\&.OnClose ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Is called when the appender is closed\&. Derived classes should override this method if resources need to be released\&. Releases any resources allocated within the appender such as file handles, network connections, etc\&. 
+.PP
+It is a programming error to append to a closed appender\&. 
+.PP
+Reimplemented in \fBlog4net\&.Appender\&.UdpAppender\fP, \fBlog4net\&.Appender\&.AdoNetAppender\fP, \fBlog4net\&.Appender\&.BufferingAppenderSkeleton\fP, \fBlog4net\&.Appender\&.LocalSyslogAppender\fP, \fBlog4net\&.Appender\&.TextWriterAppender\fP, \fBlog4net\&.Appender\&.RemotingAppender\fP, \fBlog4net\&.Appender\&.TelnetAppender\fP, \fBlog4net\&.Appender\&.BufferingForwardingAppender\fP, and \fBlog4net\&.Appender\&.ForwardingAppender\fP\&.
+.PP
+Definition at line 592 of file AppenderSkeleton\&.cs\&.
+.SS "virtual bool log4net\&.Appender\&.AppenderSkeleton\&.PreAppendCheck ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called before \fBAppend(LoggingEvent)\fP as a precondition\&. This method is called by \fBDoAppend(LoggingEvent)\fP before the call to the abstract \fBAppend(LoggingEvent)\fP method\&. 
+.PP
+This method can be overridden in a subclass to extend the checks made before the event is passed to the \fBAppend(LoggingEvent)\fP method\&. 
+.PP
+A subclass should ensure that they delegate this call to this base class if it is overridden\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the call to \fBAppend(LoggingEvent)\fP should proceed\&.
+.RE
+.PP
+
+.PP
+Reimplemented in \fBlog4net\&.Appender\&.TextWriterAppender\fP\&.
+.PP
+Definition at line 657 of file AppenderSkeleton\&.cs\&.
+.SS "string log4net\&.Appender\&.AppenderSkeleton\&.RenderLoggingEvent (\fBLoggingEvent\fPloggingEvent)\fC [protected]\fP"
+
+.PP
+Renders the LoggingEvent to a string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP The event to render\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The event rendered as a string\&.
+.RE
+.PP
+.PP
+Helper method to render a LoggingEvent to a string\&. This appender must have a \fBLayout\fP set to render the \fIloggingEvent\fP  to a string\&. 
+.PP
+If there is exception data in the logging event and the layout does not process the exception, this method will append the exception text to the rendered string\&. 
+.PP
+Where possible use the alternative version of this method \fBRenderLoggingEvent(TextWriter,LoggingEvent)\fP\&. That method streams the rendering onto an existing Writer which can give better performance if the caller already has a TextWriter open and ready for writing\&. 
+.PP
+Definition at line 692 of file AppenderSkeleton\&.cs\&.
+.SS "void log4net\&.Appender\&.AppenderSkeleton\&.RenderLoggingEvent (TextWriterwriter, \fBLoggingEvent\fPloggingEvent)\fC [protected]\fP"
+
+.PP
+Renders the LoggingEvent to a string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP The event to render\&.
+.br
+\fIwriter\fP The TextWriter to write the formatted event to
+.RE
+.PP
+.PP
+Helper method to render a LoggingEvent to a string\&. This appender must have a \fBLayout\fP set to render the \fIloggingEvent\fP  to a string\&. 
+.PP
+If there is exception data in the logging event and the layout does not process the exception, this method will append the exception text to the rendered string\&. 
+.PP
+Use this method in preference to \fBRenderLoggingEvent(LoggingEvent)\fP where possible\&. If, however, the caller needs to render the event to a string then \fBRenderLoggingEvent(LoggingEvent)\fP does provide an efficient mechanism for doing so\&. 
+.PP
+Definition at line 733 of file AppenderSkeleton\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual \fBIErrorHandler\fP log4net\&.Appender\&.AppenderSkeleton\&.ErrorHandler\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the IErrorHandler for this appender\&. The IErrorHandler of the appender
+.PP
+The \fBAppenderSkeleton\fP provides a default implementation for the \fBErrorHandler\fP property\&. 
+.PP
+Definition at line 125 of file AppenderSkeleton\&.cs\&.
+.SS "virtual \fBIFilter\fP log4net\&.Appender\&.AppenderSkeleton\&.FilterHead\fC [get]\fP"
+
+.PP
+The filter chain\&. The head of the filter chain filter chain\&.
+.PP
+Returns the head \fBFilter\fP\&. The Filters are organized in a linked list and so all Filters on this \fBAppender\fP are available through the result\&. 
+.PP
+Definition at line 156 of file AppenderSkeleton\&.cs\&.
+.SS "virtual \fBILayout\fP log4net\&.Appender\&.AppenderSkeleton\&.Layout\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the ILayout for this appender\&. The layout of the appender\&.
+.PP
+See \fBRequiresLayout\fP for more information\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBRequiresLayout\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 171 of file AppenderSkeleton\&.cs\&.
+.SS "string log4net\&.Appender\&.AppenderSkeleton\&.Name\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the name of this appender\&. The name of the appender\&.
+.PP
+The name uniquely identifies the appender\&. 
+.PP
+Definition at line 214 of file AppenderSkeleton\&.cs\&.
+.SS "virtual bool log4net\&.Appender\&.AppenderSkeleton\&.RequiresLayout\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Tests if this appender requires a \fBLayout\fP to be set\&. In the rather exceptional case, where the appender implementation admits a layout but can also work without it, then the appender should return \fCtrue\fP\&. 
+.PP
+This default implementation always returns \fCfalse\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the appender requires a layout object, otherwise \fCfalse\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 779 of file AppenderSkeleton\&.cs\&.
+.SS "\fBLevel\fP log4net\&.Appender\&.AppenderSkeleton\&.Threshold\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the threshold Level of this appender\&. The threshold Level of the appender\&. 
+.PP
+All log events with lower level than the threshold level are ignored by the appender\&. 
+.PP
+In configuration files this option is specified by setting the value of the \fBThreshold\fP option to a level string, such as 'DEBUG', 'INFO' and so on\&. 
+.PP
+Definition at line 109 of file AppenderSkeleton\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

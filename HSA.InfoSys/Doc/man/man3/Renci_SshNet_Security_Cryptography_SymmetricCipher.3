@@ -1,0 +1,137 @@
+.TH "Renci.SshNet.Security.Cryptography.SymmetricCipher" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Security.Cryptography.SymmetricCipher \- 
+.PP
+Base class for symmetric cipher implementations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Cipher\fP\&.
+.PP
+Inherited by \fBRenci\&.SshNet\&.Security\&.Cryptography\&.BlockCipher\fP, and \fBRenci\&.SshNet\&.Security\&.Cryptography\&.StreamCipher\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract int \fBEncryptBlock\fP (byte[] inputBuffer, int inputOffset, int inputCount, byte[] outputBuffer, int outputOffset)"
+.br
+.RI "\fIEncrypts the specified region of the input byte array and copies the encrypted data to the specified region of the output byte array\&. \fP"
+.ti -1c
+.RI "abstract int \fBDecryptBlock\fP (byte[] inputBuffer, int inputOffset, int inputCount, byte[] outputBuffer, int outputOffset)"
+.br
+.RI "\fIDecrypts the specified region of the input byte array and copies the decrypted data to the specified region of the output byte array\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSymmetricCipher\fP (byte[] key)"
+.br
+.RI "\fIInitializes a new instance of the \fBSymmetricCipher\fP class\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "byte[] \fBKey\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the key\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Base class for symmetric cipher implementations\&. 
+
+
+.PP
+Definition at line 11 of file SymmetricCipher\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Security\&.Cryptography\&.SymmetricCipher\&.SymmetricCipher (byte[]key)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBSymmetricCipher\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIkey\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 23 of file SymmetricCipher\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract int Renci\&.SshNet\&.Security\&.Cryptography\&.SymmetricCipher\&.DecryptBlock (byte[]inputBuffer, intinputOffset, intinputCount, byte[]outputBuffer, intoutputOffset)\fC [pure virtual]\fP"
+
+.PP
+Decrypts the specified region of the input byte array and copies the decrypted data to the specified region of the output byte array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinputBuffer\fP The input data to decrypt\&.
+.br
+\fIinputOffset\fP The offset into the input byte array from which to begin using data\&.
+.br
+\fIinputCount\fP The number of bytes in the input byte array to use as data\&.
+.br
+\fIoutputBuffer\fP The output to which to write decrypted data\&.
+.br
+\fIoutputOffset\fP The offset into the output byte array from which to begin writing data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes decrypted\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.AesCipher\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.BlowfishCipher\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.DesCipher\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.TwofishCipher\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.SerpentCipher\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.TripleDesCipher\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.CastCipher\fP, and \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Arc4Cipher\fP\&.
+.SS "abstract int Renci\&.SshNet\&.Security\&.Cryptography\&.SymmetricCipher\&.EncryptBlock (byte[]inputBuffer, intinputOffset, intinputCount, byte[]outputBuffer, intoutputOffset)\fC [pure virtual]\fP"
+
+.PP
+Encrypts the specified region of the input byte array and copies the encrypted data to the specified region of the output byte array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinputBuffer\fP The input data to encrypt\&.
+.br
+\fIinputOffset\fP The offset into the input byte array from which to begin using data\&.
+.br
+\fIinputCount\fP The number of bytes in the input byte array to use as data\&.
+.br
+\fIoutputBuffer\fP The output to which to write encrypted data\&.
+.br
+\fIoutputOffset\fP The offset into the output byte array from which to begin writing data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes encrypted\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.AesCipher\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.BlowfishCipher\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.DesCipher\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.TwofishCipher\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.Arc4Cipher\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.CastCipher\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.SerpentCipher\fP, and \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.TripleDesCipher\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "byte [] Renci\&.SshNet\&.Security\&.Cryptography\&.SymmetricCipher\&.Key\fC [get]\fP, \fC [set]\fP, \fC [protected]\fP"
+
+.PP
+Gets the key\&. 
+.PP
+Definition at line 16 of file SymmetricCipher\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

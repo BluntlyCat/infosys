@@ -1,0 +1,79 @@
+.TH "NHibernate.Dialect.Schema.AbstractTableMetadata" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.Schema.AbstractTableMetadata \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Schema\&.ITableMetadata\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.Schema\&.FirebirdTableMetadata\fP, \fBNHibernate\&.Dialect\&.Schema\&.MsSqlCeTableMetadata\fP, \fBNHibernate\&.Dialect\&.Schema\&.MsSqlTableMetadata\fP, \fBNHibernate\&.Dialect\&.Schema\&.MySQLTableMetadata\fP, \fBNHibernate\&.Dialect\&.Schema\&.OracleTableMetadata\fP, \fBNHibernate\&.Dialect\&.Schema\&.PostgreSQLTableMetadata\fP, \fBNHibernate\&.Dialect\&.Schema\&.SQLiteTableMetaData\fP, and \fBNHibernate\&.Dialect\&.Schema\&.SybaseAnywhereTableMetaData\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractTableMetadata\fP (DataRow rs, \fBIDataBaseSchema\fP meta, bool extras)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "\fBIColumnMetadata\fP \fBGetColumnMetadata\fP (string columnName)"
+.br
+.ti -1c
+.RI "\fBIForeignKeyMetadata\fP \fBGetForeignKeyMetadata\fP (string keyName)"
+.br
+.ti -1c
+.RI "\fBIIndexMetadata\fP \fBGetIndexMetadata\fP (string indexName)"
+.br
+.ti -1c
+.RI "virtual bool \fBNeedPhysicalConstraintCreation\fP (string fkName)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract void \fBParseTableInfo\fP (DataRow rs)"
+.br
+.ti -1c
+.RI "abstract string \fBGetConstraintName\fP (DataRow rs)"
+.br
+.ti -1c
+.RI "abstract string \fBGetColumnName\fP (DataRow rs)"
+.br
+.ti -1c
+.RI "abstract string \fBGetIndexName\fP (DataRow rs)"
+.br
+.ti -1c
+.RI "abstract \fBIColumnMetadata\fP \fBGetColumnMetadata\fP (DataRow rs)"
+.br
+.ti -1c
+.RI "abstract \fBIForeignKeyMetadata\fP \fBGetForeignKeyMetadata\fP (DataRow rs)"
+.br
+.ti -1c
+.RI "abstract \fBIIndexMetadata\fP \fBGetIndexMetadata\fP (DataRow rs)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBCatalog\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBSchema\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file AbstractTableMetadata\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

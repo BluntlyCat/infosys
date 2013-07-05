@@ -1,0 +1,151 @@
+.TH "NHibernate.Impl.EnumerableImpl" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Impl.EnumerableImpl \- 
+.PP
+Provides an IEnumerable wrapper over the results of an \fBIQuery\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IEnumerable, IEnumerator, and IDisposable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEnumerableImpl\fP (IDataReader reader, IDbCommand cmd, \fBIEventSource\fP session, bool readOnly, \fBIType\fP[] types, string[][] columnNames, \fBRowSelection\fP selection, \fBHolderInstantiator\fP holderInstantiator)"
+.br
+.RI "\fICreate an IEnumerable wrapper over an IDataReader\&. \fP"
+.ti -1c
+.RI "IEnumerator \fBGetEnumerator\fP ()"
+.br
+.RI "\fIReturns an enumerator that can iterate through the query results\&. \fP"
+.ti -1c
+.RI "bool \fBMoveNext\fP ()"
+.br
+.RI "\fIAdvances the enumerator to the next element of the query results\&. \fP"
+.ti -1c
+.RI "void \fBReset\fP ()"
+.br
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "\fITakes care of freeing the managed and unmanaged resources that this class is responsible for\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBDispose\fP (bool isDisposing)"
+.br
+.RI "\fITakes care of freeing the managed and unmanaged resources that this class is responsible for\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "object \fBCurrent\fP\fC [get]\fP"
+.br
+.RI "\fIGets the current element in the query results\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Provides an IEnumerable wrapper over the results of an \fBIQuery\fP\&. 
+
+This is the IteratorImpl in H2\&.0\&.3 
+.PP
+Definition at line 21 of file EnumerableImpl\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Impl\&.EnumerableImpl\&.EnumerableImpl (IDataReaderreader, IDbCommandcmd, \fBIEventSource\fPsession, boolreadOnly, \fBIType\fP[]types, stringcolumnNames[][], \fBRowSelection\fPselection, \fBHolderInstantiator\fPholderInstantiator)"
+
+.PP
+Create an IEnumerable wrapper over an IDataReader\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The IDataReader to enumerate over\&.
+.br
+\fIcmd\fP The IDbCommand used to create the IDataReader\&.
+.br
+\fIsession\fP The \fBISession\fP to use to load objects\&.
+.br
+\fIreadOnly\fP 
+.br
+\fItypes\fP The ITypes contained in the IDataReader\&.
+.br
+\fIcolumnNames\fP The names of the columns in the IDataReader\&.
+.br
+\fIselection\fP The RowSelection that should be applied to the IDataReader\&.
+.br
+\fIholderInstantiator\fP Instantiator of the result holder (used for 'select new SomeClass(\&.\&.\&.)' queries)\&.
+.RE
+.PP
+.PP
+The IDataReader should already be positioned on the first record in RowSelection\&. 
+.PP
+Definition at line 56 of file EnumerableImpl\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Impl\&.EnumerableImpl\&.Dispose ()"
+
+.PP
+Takes care of freeing the managed and unmanaged resources that this class is responsible for\&. 
+.PP
+Definition at line 241 of file EnumerableImpl\&.cs\&.
+.SS "virtual void NHibernate\&.Impl\&.EnumerableImpl\&.Dispose (boolisDisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Takes care of freeing the managed and unmanaged resources that this class is responsible for\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIisDisposing\fP Indicates if this \fBEnumerableImpl\fP is being Disposed of or Finalized\&.
+.RE
+.PP
+.PP
+The command is closed and the reader is disposed\&. This allows other ADO\&.NET related actions to occur without needing to move all the way through the \fBEnumerableImpl\fP\&. 
+.PP
+Definition at line 257 of file EnumerableImpl\&.cs\&.
+.SS "IEnumerator NHibernate\&.Impl\&.EnumerableImpl\&.GetEnumerator ()"
+
+.PP
+Returns an enumerator that can iterate through the query results\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An IEnumerator that can be used to iterate through the query results\&. 
+.RE
+.PP
+
+.PP
+Definition at line 83 of file EnumerableImpl\&.cs\&.
+.SS "bool NHibernate\&.Impl\&.EnumerableImpl\&.MoveNext ()"
+
+.PP
+Advances the enumerator to the next element of the query results\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+if the enumerator was successfully advanced to the next query results ;  if the enumerator has passed the end of the query results\&. /returns> 
+.RE
+.PP
+
+.PP
+Definition at line 113 of file EnumerableImpl\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "object NHibernate\&.Impl\&.EnumerableImpl\&.Current\fC [get]\fP"
+
+.PP
+Gets the current element in the query results\&. The current element in the query results which is either an object or an object array\&. 
+.PP
+If the \fBIQuery\fP only returns one type of Entity then an object will be returned\&. If this is a multi-column resultset then an object array will be returned\&. 
+.PP
+Definition at line 102 of file EnumerableImpl\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,6 @@
+var namespace_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h645 =
+[
+    [ "HqlFunctionWithAstHqlParser", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h645_1_1_hql_function_with_ast_hql_parser.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h645_1_1_hql_function_with_ast_hql_parser" ],
+    [ "HQLFunctionFixtureBase", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h645_1_1_h_q_l_function_fixture_base.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h645_1_1_h_q_l_function_fixture_base" ],
+    [ "CustomDialect", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h645_1_1_custom_dialect.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h645_1_1_custom_dialect" ]
+];

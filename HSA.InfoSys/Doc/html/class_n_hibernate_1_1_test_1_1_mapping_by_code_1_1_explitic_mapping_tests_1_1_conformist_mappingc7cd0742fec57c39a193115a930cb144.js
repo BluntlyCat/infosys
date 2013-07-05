@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_conformist_mappingc7cd0742fec57c39a193115a930cb144 =
+[
+    [ "WithOutPublicParameterLessCtor", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_conformist_mappingc7cd0742fec57c39a193115a930cb144.html#a9acb321a3065a95a5926deb507632057", null ]
+];

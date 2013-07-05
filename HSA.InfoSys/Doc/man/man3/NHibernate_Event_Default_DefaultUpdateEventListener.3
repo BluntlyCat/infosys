@@ -1,0 +1,70 @@
+.TH "NHibernate.Event.Default.DefaultUpdateEventListener" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.Default.DefaultUpdateEventListener \- 
+.PP
+An event handler for update() events 
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Event\&.Default\&.DefaultSaveOrUpdateEventListener\fP\&.
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override object \fBPerformSaveOrUpdate\fP (\fBSaveOrUpdateEvent\fP @event)"
+.br
+.ti -1c
+.RI "override object \fBSaveWithGeneratedOrRequestedId\fP (\fBSaveOrUpdateEvent\fP @event)"
+.br
+.RI "\fISave the transient instance, assigning the right identifier \fP"
+.ti -1c
+.RI "override object \fBGetUpdateId\fP (object entity, \fBIEntityPersister\fP persister, object requestedId, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fIIf the user specified an id, assign it to the instance and use that, otherwise use the id already assigned to the instance \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An event handler for update() events
+
+
+.PP
+Definition at line 9 of file DefaultUpdateEventListener\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Event\&.Default\&.DefaultUpdateEventListener\&.GetUpdateId (objectentity, \fBIEntityPersister\fPpersister, objectrequestedId, \fBEntityMode\fPentityMode)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+If the user specified an id, assign it to the instance and use that, otherwise use the id already assigned to the instance 
+.PP
+Reimplemented from \fBNHibernate\&.Event\&.Default\&.DefaultSaveOrUpdateEventListener\fP\&.
+.PP
+Definition at line 43 of file DefaultUpdateEventListener\&.cs\&.
+.SS "override object NHibernate\&.Event\&.Default\&.DefaultUpdateEventListener\&.SaveWithGeneratedOrRequestedId (\fBSaveOrUpdateEvent\fP @event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Save the transient instance, assigning the right identifier 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The initiating event\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The entity's identifier value after saving\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Event\&.Default\&.DefaultSaveOrUpdateEventListener\fP\&.
+.PP
+Definition at line 34 of file DefaultUpdateEventListener\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

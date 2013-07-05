@@ -1,0 +1,6 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_dynamic_component_mapper_te66712a9d0bd6448b5ee7af320e4380bd =
+[
+    [ "WhenAddThenHas", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_dynamic_component_mapper_te66712a9d0bd6448b5ee7af320e4380bd.html#a3d42f37a0d97c307449c4b1306d64909", null ],
+    [ "WhenCustomizeAccessorThenIgnore", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_dynamic_component_mapper_te66712a9d0bd6448b5ee7af320e4380bd.html#a40c3ccbc6b0f32fa106f1d29973f8289", null ],
+    [ "WhenCustomizeThenCallCustomizer", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_dynamic_component_mapper_te66712a9d0bd6448b5ee7af320e4380bd.html#a702aa5478a53f6b3d9d5a7503bd0c443", null ]
+];

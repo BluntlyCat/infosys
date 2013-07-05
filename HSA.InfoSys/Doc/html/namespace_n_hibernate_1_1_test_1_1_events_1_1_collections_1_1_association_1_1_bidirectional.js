@@ -1,0 +1,5 @@
+var namespace_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional =
+[
+    [ "ManyToMany", "namespace_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_many_to_many.html", "namespace_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_many_to_many" ],
+    [ "OneToMany", "namespace_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_one_to_many.html", "namespace_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_one_to_many" ]
+];

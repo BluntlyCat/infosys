@@ -1,0 +1,12 @@
+var class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_many439c96cdff51f9cbc386340cfdd60157 =
+[
+    [ "ParentWithBidirectionalManyToMany", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_many439c96cdff51f9cbc386340cfdd60157.html#a1bc9b64a49086106901f652dc73f676d", null ],
+    [ "ParentWithBidirectionalManyToMany", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_many439c96cdff51f9cbc386340cfdd60157.html#a71eaae4f89f5ec7e07e4c5a949c52130", null ],
+    [ "AddAllChildren", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_many439c96cdff51f9cbc386340cfdd60157.html#aa9d78fda9bd18076c8f1f8a302bfa7f9", null ],
+    [ "AddChild", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_many439c96cdff51f9cbc386340cfdd60157.html#ad197bf39adf0d1164e23ab4a175dfa21", null ],
+    [ "ClearChildren", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_many439c96cdff51f9cbc386340cfdd60157.html#aa770320625176df73e1546480e61bb9d", null ],
+    [ "CreateChild", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_many439c96cdff51f9cbc386340cfdd60157.html#a3e79fcc0b581e3b9efd9b8b363b6f6ae", null ],
+    [ "NewChildren", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_many439c96cdff51f9cbc386340cfdd60157.html#a7a59b21057b2241c53cddbba5551d3d0", null ],
+    [ "RemoveAllChildren", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_many439c96cdff51f9cbc386340cfdd60157.html#a8728670a46ea7a95ae17c1360df3ef65", null ],
+    [ "RemoveChild", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_many439c96cdff51f9cbc386340cfdd60157.html#a4b42a2d13215e6524a807634775fed8e", null ]
+];

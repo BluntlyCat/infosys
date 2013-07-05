@@ -1,0 +1,178 @@
+.TH "NHibernate.Id.IdentifierGeneratorFactory" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.IdentifierGeneratorFactory \- 
+.PP
+Factory methods for \fCIdentifierGenerator\fP framework\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static object \fBGetGeneratedIdentity\fP (IDataReader rs, \fBIType\fP type, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGet the generated identifier when using identity columns\fP"
+.ti -1c
+.RI "static object \fBGet\fP (IDataReader rs, \fBIType\fP type, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGets the value of the identifier from the IDataReader and ensures it is the correct System\&.Type\&. \fP"
+.ti -1c
+.RI "static \fBIIdentifierGenerator\fP \fBCreate\fP (string strategy, \fBIType\fP type, IDictionary< string, string > parms, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fICreates an \fBIIdentifierGenerator\fP from the named strategy\&. \fP"
+.ti -1c
+.RI "static object \fBCreateNumber\fP (long value, System\&.Type type)"
+.br
+.RI "\fICreate the correct boxed System\&.Type for the identifier\&. \fP"
+.ti -1c
+.RI "static System\&.Type \fBGetIdentifierGeneratorClass\fP (string strategy, \fBDialect\&.Dialect\fP dialect)"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly object \fBShortCircuitIndicator\fP = new object()"
+.br
+.RI "\fIWhen this is returned by \fCGenerate()\fP it indicates that the object has already been saved\&. \fP"
+.ti -1c
+.RI "static readonly object \fBPostInsertIndicator\fP = new object()"
+.br
+.RI "\fIWhen this is return \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Factory methods for \fCIdentifierGenerator\fP framework\&. 
+
+The built in strategies for identifier generation in \fBNHibernate\fP are:
+.PP
+strategy Implementation of strategy  assigned \fBAssigned\fP  counter \fBCounterGenerator\fP  foreign \fBForeignGenerator\fP  guid \fBGuidGenerator\fP  guid\&.comb \fBGuidCombGenerator\fP  guid\&.native \fBNativeGuidGenerator\fP  hilo \fBTableHiLoGenerator\fP  identity \fBIdentityGenerator\fP  native Chooses between \fBIdentityGenerator\fP, \fBSequenceGenerator\fP , and \fBTableHiLoGenerator\fP based on the \fBDialect\&.Dialect\fP's capabilities\&.   seqhilo \fBSequenceHiLoGenerator\fP  sequence \fBSequenceGenerator\fP  enhanced-sequence SequenceStyleGenerator  uuid\&.hex \fBUUIDHexGenerator\fP  uuid\&.string \fBUUIDStringGenerator\fP  
+.PP
+Definition at line 85 of file IdentifierGeneratorFactory\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBIIdentifierGenerator\fP NHibernate\&.Id\&.IdentifierGeneratorFactory\&.Create (stringstrategy, \fBIType\fPtype, IDictionary< string, string >parms, \fBDialect\&.Dialect\fPdialect)\fC [static]\fP"
+
+.PP
+Creates an \fBIIdentifierGenerator\fP from the named strategy\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstrategy\fP The name of the generator to create\&. This can be one of the \fBNHibernate\fP abbreviations (ie - \fCnative\fP, \fCsequence\fP, \fCguid\&.comb\fP, etc\&.\&.\&.), a full class name if the \fBType\fP is in the \fBNHibernate\fP assembly, or a full type name if the strategy is in an external assembly\&. 
+.br
+\fItype\fP The IType that the retured identifier should be\&.
+.br
+\fIparms\fP An IDictionary of \fC<param>\fP values from the mapping\&.
+.br
+\fIdialect\fP The \fBDialect\&.Dialect\fP to help with Configuration\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An instantiated and configured \fBIIdentifierGenerator\fP\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBMappingException\fP\fP Thrown if there are any exceptions while creating the \fBIIdentifierGenerator\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 205 of file IdentifierGeneratorFactory\&.cs\&.
+.SS "static object NHibernate\&.Id\&.IdentifierGeneratorFactory\&.CreateNumber (longvalue, System\&.Typetype)\fC [static]\fP"
+
+.PP
+Create the correct boxed System\&.Type for the identifier\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value of the new identifier\&.
+.br
+\fItype\fP The IType the identifier should be\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The identifier value converted to the System\&.Type\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBIdentifierGenerationException\fP\fP The \fCtype\fP parameter must be an short, int, or long\&. 
+.RE
+.PP
+
+.PP
+Definition at line 241 of file IdentifierGeneratorFactory\&.cs\&.
+.SS "static object NHibernate\&.Id\&.IdentifierGeneratorFactory\&.Get (IDataReaderrs, \fBIType\fPtype, \fBISessionImplementor\fPsession)\fC [static]\fP"
+
+.PP
+Gets the value of the identifier from the IDataReader and ensures it is the correct System\&.Type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader to read the identifier value from\&.
+.br
+\fItype\fP The IIdentifierType the value should be converted to\&.
+.br
+\fIsession\fP The ISessionImplementor the value is retrieved in\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value for the identifier\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBIdentifierGenerationException\fP\fP Thrown if there is any problem getting the value from the IDataReader or with converting it to the System\&.Type\&. 
+.RE
+.PP
+
+.PP
+Definition at line 123 of file IdentifierGeneratorFactory\&.cs\&.
+.SS "static object NHibernate\&.Id\&.IdentifierGeneratorFactory\&.GetGeneratedIdentity (IDataReaderrs, \fBIType\fPtype, \fBISessionImplementor\fPsession)\fC [static]\fP"
+
+.PP
+Get the generated identifier when using identity columns
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader to read the identifier value from\&.
+.br
+\fItype\fP The IIdentifierType the value should be converted to\&.
+.br
+\fIsession\fP The ISessionImplementor the value is retrieved in\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value for the identifier\&. 
+.RE
+.PP
+
+.PP
+Definition at line 94 of file IdentifierGeneratorFactory\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly object NHibernate\&.Id\&.IdentifierGeneratorFactory\&.PostInsertIndicator = new object()\fC [static]\fP"
+
+.PP
+When this is return 
+.PP
+Definition at line 156 of file IdentifierGeneratorFactory\&.cs\&.
+.SS "readonly object NHibernate\&.Id\&.IdentifierGeneratorFactory\&.ShortCircuitIndicator = new object()\fC [static]\fP"
+
+.PP
+When this is returned by \fCGenerate()\fP it indicates that the object has already been saved\&. \fBString\&.Empty\fP 
+.PP
+Definition at line 151 of file IdentifierGeneratorFactory\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,431 @@
+.TH "NHibernate.Collection.PersistentArrayHolder" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Collection.PersistentArrayHolder \- 
+.PP
+A persistent wrapper for an array\&. lazy initialization is NOT supported  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP, and ICollection\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPersistentArrayHolder\fP (\fBISessionImplementor\fP session, object array)"
+.br
+.ti -1c
+.RI "\fBPersistentArrayHolder\fP (\fBISessionImplementor\fP session, \fBICollectionPersister\fP persister)"
+.br
+.ti -1c
+.RI "override object \fBGetValue\fP ()"
+.br
+.RI "\fIReturns the user-visible portion of the \fBNHibernate\fP \fBPersistentArrayHolder\fP\&. \fP"
+.ti -1c
+.RI "override object \fBGetSnapshot\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fIReturn a new snapshot of the current state of the collection \fP"
+.ti -1c
+.RI "override bool \fBIsSnapshotEmpty\fP (object snapshot)"
+.br
+.RI "\fIIs the snapshot empty?\fP"
+.ti -1c
+.RI "override ICollection \fBGetOrphans\fP (object snapshot, string entityName)"
+.br
+.RI "\fIGet all 'orphaned' elements \fP"
+.ti -1c
+.RI "override bool \fBIsWrapper\fP (object collection)"
+.br
+.RI "\fIIs this the wrapper for the given underlying collection instance? \fP"
+.ti -1c
+.RI "override bool \fBEqualsSnapshot\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fIDoes the current state exactly match the snapshot? \fP"
+.ti -1c
+.RI "ICollection \fBElements\fP ()"
+.br
+.ti -1c
+.RI "override object \fBReadFrom\fP (IDataReader rs, \fBICollectionPersister\fP role, \fBICollectionAliases\fP descriptor, object owner)"
+.br
+.RI "\fIReads the row from the IDataReader\&. \fP"
+.ti -1c
+.RI "override IEnumerable \fBEntries\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fIIterate all collection entries, during update of the database \fP"
+.ti -1c
+.RI "override void \fBBeginRead\fP ()"
+.br
+.RI "\fIBefore \fBReadFrom\fP is called the \fBPersistentArrayHolder\fP needs to setup a temporary list to hold the objects\&. \fP"
+.ti -1c
+.RI "override bool \fBEndRead\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fITakes the contents stored in the temporary list created during \fBBeginRead\fP that was populated during \fBReadFrom\fP and write it to the underlying array\&. \fP"
+.ti -1c
+.RI "override void \fBBeforeInitialize\fP (\fBICollectionPersister\fP persister, int anticipatedSize)"
+.br
+.RI "\fICalled before any elements are read into the collection, allowing appropriate initializations to occur\&. \fP"
+.ti -1c
+.RI "override void \fBInitializeFromCache\fP (\fBICollectionPersister\fP persister, object disassembled, object owner)"
+.br
+.RI "\fIInitializes this array holder from the cached values\&. \fP"
+.ti -1c
+.RI "override object \fBDisassemble\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fIDisassemble the collection, ready for the cache \fP"
+.ti -1c
+.RI "override IEnumerable \fBGetDeletes\fP (\fBICollectionPersister\fP persister, bool indexIsFormula)"
+.br
+.RI "\fIGet all the elements that need deleting \fP"
+.ti -1c
+.RI "override bool \fBNeedsInserting\fP (object entry, int i, \fBIType\fP elemType)"
+.br
+.RI "\fIDo we need to insert this element? \fP"
+.ti -1c
+.RI "override bool \fBNeedsUpdating\fP (object entry, int i, \fBIType\fP elemType)"
+.br
+.RI "\fIDo we need to update this element? \fP"
+.ti -1c
+.RI "override object \fBGetIndex\fP (object entry, int i, \fBICollectionPersister\fP persister)"
+.br
+.RI "\fIGet the index of the given collection entry \fP"
+.ti -1c
+.RI "override object \fBGetElement\fP (object entry)"
+.br
+.RI "\fIGet the value of the given collection entry \fP"
+.ti -1c
+.RI "override object \fBGetSnapshotElement\fP (object entry, int i)"
+.br
+.RI "\fIGet the snapshot value of the given collection entry \fP"
+.ti -1c
+.RI "override bool \fBEntryExists\fP (object entry, int i)"
+.br
+.RI "\fIDoes an element exist at this entry in the collection? \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "object \fBArray\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the array\&. \fP"
+.ti -1c
+.RI "override bool \fBEmpty\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsDirectlyAccessible\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A persistent wrapper for an array\&. lazy initialization is NOT supported 
+
+Use of Hibernate arrays is not really recommended\&. 
+.PP
+Definition at line 21 of file PersistentArrayHolder\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Collection\&.PersistentArrayHolder\&.BeforeInitialize (\fBICollectionPersister\fPpersister, intanticipatedSize)\fC [virtual]\fP"
+
+.PP
+Called before any elements are read into the collection, allowing appropriate initializations to occur\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The underlying collection persister\&. 
+.br
+\fIanticipatedSize\fP The anticipated size of the collection after initilization is complete\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 189 of file PersistentArrayHolder\&.cs\&.
+.SS "override void NHibernate\&.Collection\&.PersistentArrayHolder\&.BeginRead ()\fC [virtual]\fP"
+
+.PP
+Before \fBReadFrom\fP is called the \fBPersistentArrayHolder\fP needs to setup a temporary list to hold the objects\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 166 of file PersistentArrayHolder\&.cs\&.
+.SS "override object NHibernate\&.Collection\&.PersistentArrayHolder\&.Disassemble (\fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Disassemble the collection, ready for the cache 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 214 of file PersistentArrayHolder\&.cs\&.
+.SS "override bool NHibernate\&.Collection\&.PersistentArrayHolder\&.EndRead (\fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Takes the contents stored in the temporary list created during \fBBeginRead\fP that was populated during \fBReadFrom\fP and write it to the underlying array\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 177 of file PersistentArrayHolder\&.cs\&.
+.SS "override IEnumerable NHibernate\&.Collection\&.PersistentArrayHolder\&.Entries (\fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Iterate all collection entries, during update of the database 
+.PP
+\fBReturns:\fP
+.RS 4
+An IEnumerable that gives access to all entries in the collection\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 157 of file PersistentArrayHolder\&.cs\&.
+.SS "override bool NHibernate\&.Collection\&.PersistentArrayHolder\&.EntryExists (objectentry, inti)\fC [virtual]\fP"
+
+.PP
+Does an element exist at this entry in the collection? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentry\fP 
+.br
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 284 of file PersistentArrayHolder\&.cs\&.
+.SS "override bool NHibernate\&.Collection\&.PersistentArrayHolder\&.EqualsSnapshot (\fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Does the current state exactly match the snapshot? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The ICollectionPersister to compare the elements of the \fBCollection\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+if the wrapped collection is different than the snapshot of the collection or if one of the elements in the collection is dirty\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 114 of file PersistentArrayHolder\&.cs\&.
+.SS "override IEnumerable NHibernate\&.Collection\&.PersistentArrayHolder\&.GetDeletes (\fBICollectionPersister\fPpersister, boolindexIsFormula)\fC [virtual]\fP"
+
+.PP
+Get all the elements that need deleting 
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 225 of file PersistentArrayHolder\&.cs\&.
+.SS "override object NHibernate\&.Collection\&.PersistentArrayHolder\&.GetElement (objectentry)\fC [virtual]\fP"
+
+.PP
+Get the value of the given collection entry 
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 273 of file PersistentArrayHolder\&.cs\&.
+.SS "override object NHibernate\&.Collection\&.PersistentArrayHolder\&.GetIndex (objectentry, inti, \fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Get the index of the given collection entry 
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 268 of file PersistentArrayHolder\&.cs\&.
+.SS "override ICollection NHibernate\&.Collection\&.PersistentArrayHolder\&.GetOrphans (objectsnapshot, stringentityName)\fC [virtual]\fP"
+
+.PP
+Get all 'orphaned' elements 
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 97 of file PersistentArrayHolder\&.cs\&.
+.SS "override object NHibernate\&.Collection\&.PersistentArrayHolder\&.GetSnapshot (\fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Return a new snapshot of the current state of the collection 
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 70 of file PersistentArrayHolder\&.cs\&.
+.SS "override object NHibernate\&.Collection\&.PersistentArrayHolder\&.GetSnapshotElement (objectentry, inti)\fC [virtual]\fP"
+
+.PP
+Get the snapshot value of the given collection entry 
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 278 of file PersistentArrayHolder\&.cs\&.
+.SS "override object NHibernate\&.Collection\&.PersistentArrayHolder\&.GetValue ()\fC [virtual]\fP"
+
+.PP
+Returns the user-visible portion of the \fBNHibernate\fP \fBPersistentArrayHolder\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The array that contains the data, not the \fBNHibernate\fP wrapper\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 65 of file PersistentArrayHolder\&.cs\&.
+.SS "override void NHibernate\&.Collection\&.PersistentArrayHolder\&.InitializeFromCache (\fBICollectionPersister\fPpersister, objectdisassembled, objectowner)\fC [virtual]\fP"
+
+.PP
+Initializes this array holder from the cached values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The CollectionPersister to use to reassemble the Array\&.
+.br
+\fIdisassembled\fP The disassembled Array\&.
+.br
+\fIowner\fP The owner object\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 202 of file PersistentArrayHolder\&.cs\&.
+.SS "override bool NHibernate\&.Collection\&.PersistentArrayHolder\&.IsSnapshotEmpty (objectsnapshot)\fC [virtual]\fP"
+
+.PP
+Is the snapshot empty?
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 92 of file PersistentArrayHolder\&.cs\&.
+.SS "override bool NHibernate\&.Collection\&.PersistentArrayHolder\&.IsWrapper (objectcollection)\fC [virtual]\fP"
+
+.PP
+Is this the wrapper for the given underlying collection instance? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 109 of file PersistentArrayHolder\&.cs\&.
+.SS "override bool NHibernate\&.Collection\&.PersistentArrayHolder\&.NeedsInserting (objectentry, inti, \fBIType\fPelemType)\fC [virtual]\fP"
+
+.PP
+Do we need to insert this element? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentry\fP 
+.br
+\fIi\fP 
+.br
+\fIelemType\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 254 of file PersistentArrayHolder\&.cs\&.
+.SS "override bool NHibernate\&.Collection\&.PersistentArrayHolder\&.NeedsUpdating (objectentry, inti, \fBIType\fPelemType)\fC [virtual]\fP"
+
+.PP
+Do we need to update this element? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentry\fP 
+.br
+\fIi\fP 
+.br
+\fIelemType\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 260 of file PersistentArrayHolder\&.cs\&.
+.SS "override object NHibernate\&.Collection\&.PersistentArrayHolder\&.ReadFrom (IDataReaderreader, \fBICollectionPersister\fProle, \fBICollectionAliases\fPdescriptor, objectowner)\fC [virtual]\fP"
+
+.PP
+Reads the row from the IDataReader\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The IDataReader that contains the value of the Identifier
+.br
+\fIrole\fP The persister for this \fBCollection\fP\&.
+.br
+\fIdescriptor\fP The descriptor providing result set column names
+.br
+\fIowner\fP The owner of this \fBCollection\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The object that was contained in the row\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 145 of file PersistentArrayHolder\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "object NHibernate\&.Collection\&.PersistentArrayHolder\&.Array\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the array\&. The array\&.
+.PP
+Definition at line 51 of file PersistentArrayHolder\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

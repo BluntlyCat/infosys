@@ -1,0 +1,7 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h3280_1_1_one_to_one_to_inherited_property =
+[
+    [ "GetMappings", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h3280_1_1_one_to_one_to_inherited_property.html#a99f1202796bfdbe0d9a1e385d0142e18", null ],
+    [ "OnSetUp", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h3280_1_1_one_to_one_to_inherited_property.html#ac3c8f8986985709146f15d8b46752723", null ],
+    [ "OnTearDown", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h3280_1_1_one_to_one_to_inherited_property.html#accbdc4882cf7bb32a07d108c7be0807d", null ],
+    [ "ShouldConfigureSessionCorrectly", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h3280_1_1_one_to_one_to_inherited_property.html#afb88dbe3a7cdc2944c1fceb7f8032bd2", null ]
+];

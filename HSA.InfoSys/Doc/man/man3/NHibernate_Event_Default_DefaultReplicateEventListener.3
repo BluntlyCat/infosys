@@ -1,0 +1,98 @@
+.TH "NHibernate.Event.Default.DefaultReplicateEventListener" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.Default.DefaultReplicateEventListener \- 
+.PP
+Defines the default replicate event listener used by Hibernate to replicate entities in response to generated replicate events\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Event\&.Default\&.AbstractSaveEventListener\fP, and \fBNHibernate\&.Event\&.IReplicateEventListener\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBOnReplicate\fP (\fBReplicateEvent\fP @event)"
+.br
+.RI "\fIHandle the given replicate event\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBSubstituteValuesIfNecessary\fP (object entity, object id, object[] values, \fBIEntityPersister\fP persister, \fBISessionImplementor\fP source)"
+.br
+.RI "\fIPerform any property value substitution that is necessary (interceptor callback, version initialization\&.\&.\&.) \fP"
+.ti -1c
+.RI "override bool \fBVisitCollectionsBeforeSave\fP (object entity, object id, object[] values, \fBType\&.IType\fP[] types, \fBIEventSource\fP source)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBVersionIncrementDisabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBCascadingAction\fP \fBCascadeAction\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the default replicate event listener used by Hibernate to replicate entities in response to generated replicate events\&. 
+
+
+.PP
+Definition at line 14 of file DefaultReplicateEventListener\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Event\&.Default\&.DefaultReplicateEventListener\&.OnReplicate (\fBReplicateEvent\fP @event)\fC [virtual]\fP"
+
+.PP
+Handle the given replicate event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The replicate event to be handled\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Event\&.IReplicateEventListener\fP\&.
+.PP
+Definition at line 18 of file DefaultReplicateEventListener\&.cs\&.
+.SS "override bool NHibernate\&.Event\&.Default\&.DefaultReplicateEventListener\&.SubstituteValuesIfNecessary (objectentity, objectid, object[]values, \fBIEntityPersister\fPpersister, \fBISessionImplementor\fPsource)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Perform any property value substitution that is necessary (interceptor callback, version initialization\&.\&.\&.) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity 
+.br
+\fIid\fP The entity identifier 
+.br
+\fIvalues\fP The snapshot entity state 
+.br
+\fIpersister\fP The entity persister 
+.br
+\fIsource\fP The originating session 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the snapshot state changed such that reinjection of the values into the entity is required\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Event\&.Default\&.AbstractSaveEventListener\fP\&.
+.PP
+Definition at line 151 of file DefaultReplicateEventListener\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,107 @@
+.TH "log4net.Filter.LevelRangeFilter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Filter.LevelRangeFilter \- 
+.PP
+This is a simple filter based on Level matching\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Filter\&.FilterSkeleton\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLevelRangeFilter\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.ti -1c
+.RI "override \fBFilterDecision\fP \fBDecide\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fICheck if the event should be logged\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBAcceptOnMatch\fP\fC [get, set]\fP"
+.br
+.RI "\fIFilterDecision\&.Accept when matching \fBLevelMin\fP and \fBLevelMax\fP \fP"
+.ti -1c
+.RI "\fBLevel\fP \fBLevelMin\fP\fC [get, set]\fP"
+.br
+.RI "\fISet the minimum matched Level \fP"
+.ti -1c
+.RI "\fBLevel\fP \fBLevelMax\fP\fC [get, set]\fP"
+.br
+.RI "\fISets the maximum matched Level \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is a simple filter based on Level matching\&. 
+
+The filter admits three options \fBLevelMin\fP and \fBLevelMax\fP that determine the range of priorities that are matched, and \fBAcceptOnMatch\fP\&. If there is a match between the range of priorities and the Level of the LoggingEvent, then the \fBDecide\fP method returns FilterDecision\&.Accept in case the \fBAcceptOnMatch\fP option value is set to \fCtrue\fP, if it is \fCfalse\fP then FilterDecision\&.Deny is returned\&. If there is no match, FilterDecision\&.Deny is returned\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 44 of file LevelRangeFilter\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Filter\&.LevelRangeFilter\&.LevelRangeFilter ()"
+
+.PP
+Default constructor 
+.PP
+Definition at line 70 of file LevelRangeFilter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBFilterDecision\fP log4net\&.Filter\&.LevelRangeFilter\&.Decide (\fBLoggingEvent\fPloggingEvent)\fC [virtual]\fP"
+
+.PP
+Check if the event should be logged\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP the logging event to check
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+see remarks
+.RE
+.PP
+.PP
+If the Level of the logging event is outside the range matched by this filter then FilterDecision\&.Deny is returned\&. If the Level is matched then the value of \fBAcceptOnMatch\fP is checked\&. If it is true then FilterDecision\&.Accept is returned, otherwise FilterDecision\&.Neutral is returned\&. 
+.PP
+Implements \fBlog4net\&.Filter\&.FilterSkeleton\fP\&.
+.PP
+Definition at line 145 of file LevelRangeFilter\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool log4net\&.Filter\&.LevelRangeFilter\&.AcceptOnMatch\fC [get]\fP, \fC [set]\fP"
+
+.PP
+FilterDecision\&.Accept when matching \fBLevelMin\fP and \fBLevelMax\fP The \fBAcceptOnMatch\fP property is a flag that determines the behavior when a matching Level is found\&. If the flag is set to true then the filter will FilterDecision\&.Accept the logging event, otherwise it will FilterDecision\&.Neutral the event\&. 
+.PP
+The default is \fCtrue\fP i\&.e\&. to FilterDecision\&.Accept the event\&. 
+.PP
+Definition at line 91 of file LevelRangeFilter\&.cs\&.
+.SS "\fBLevel\fP log4net\&.Filter\&.LevelRangeFilter\&.LevelMax\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Sets the maximum matched Level The maximum level that this filter will attempt to match against the LoggingEvent level\&. If a match is found then the result depends on the value of \fBAcceptOnMatch\fP\&. 
+.PP
+Definition at line 123 of file LevelRangeFilter\&.cs\&.
+.SS "\fBLevel\fP log4net\&.Filter\&.LevelRangeFilter\&.LevelMin\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Set the minimum matched Level The minimum level that this filter will attempt to match against the LoggingEvent level\&. If a match is found then the result depends on the value of \fBAcceptOnMatch\fP\&. 
+.PP
+Definition at line 107 of file LevelRangeFilter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

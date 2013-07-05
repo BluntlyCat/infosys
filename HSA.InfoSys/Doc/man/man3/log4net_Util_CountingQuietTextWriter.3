@@ -1,0 +1,131 @@
+.TH "log4net.Util.CountingQuietTextWriter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.CountingQuietTextWriter \- 
+.PP
+Subclass of \fBQuietTextWriter\fP that maintains a count of the number of bytes written\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Util\&.QuietTextWriter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCountingQuietTextWriter\fP (TextWriter writer, \fBIErrorHandler\fP errorHandler)"
+.br
+.RI "\fIConstructor \fP"
+.ti -1c
+.RI "override void \fBWrite\fP (char value)"
+.br
+.RI "\fIWrites a character to the underlying writer and counts the number of bytes written\&. \fP"
+.ti -1c
+.RI "override void \fBWrite\fP (char[] buffer, int index, int count)"
+.br
+.RI "\fIWrites a buffer to the underlying writer and counts the number of bytes written\&. \fP"
+.ti -1c
+.RI "override void \fBWrite\fP (string str)"
+.br
+.RI "\fIWrites a string to the output and counts the number of bytes written\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "long \fBCount\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the total number of bytes written\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Subclass of \fBQuietTextWriter\fP that maintains a count of the number of bytes written\&. 
+
+This writer counts the number of bytes written\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 38 of file CountingQuietTextWriter\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Util\&.CountingQuietTextWriter\&.CountingQuietTextWriter (TextWriterwriter, \fBIErrorHandler\fPerrorHandler)"
+
+.PP
+Constructor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP The TextWriter to actually write to\&.
+.br
+\fIerrorHandler\fP The IErrorHandler to report errors to\&.
+.RE
+.PP
+.PP
+Creates a new instance of the \fBCountingQuietTextWriter\fP class with the specified TextWriter and IErrorHandler\&. 
+.PP
+Definition at line 53 of file CountingQuietTextWriter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Util\&.CountingQuietTextWriter\&.Write (charvalue)"
+
+.PP
+Writes a character to the underlying writer and counts the number of bytes written\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP the char to write
+.RE
+.PP
+.PP
+Overrides implementation of \fBQuietTextWriter\fP\&. Counts the number of bytes written\&. 
+.PP
+Definition at line 72 of file CountingQuietTextWriter\&.cs\&.
+.SS "override void log4net\&.Util\&.CountingQuietTextWriter\&.Write (char[]buffer, intindex, intcount)"
+
+.PP
+Writes a buffer to the underlying writer and counts the number of bytes written\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP the buffer to write
+.br
+\fIindex\fP the start index to write from
+.br
+\fIcount\fP the number of characters to write
+.RE
+.PP
+.PP
+Overrides implementation of \fBQuietTextWriter\fP\&. Counts the number of bytes written\&. 
+.PP
+Definition at line 100 of file CountingQuietTextWriter\&.cs\&.
+.SS "override void log4net\&.Util\&.CountingQuietTextWriter\&.Write (stringstr)"
+
+.PP
+Writes a string to the output and counts the number of bytes written\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP The string data to write to the output\&.
+.RE
+.PP
+.PP
+Overrides implementation of \fBQuietTextWriter\fP\&. Counts the number of bytes written\&. 
+.PP
+Definition at line 129 of file CountingQuietTextWriter\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "long log4net\&.Util\&.CountingQuietTextWriter\&.Count\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the total number of bytes written\&. The total number of bytes written\&. 
+.PP
+Gets or sets the total number of bytes written\&. 
+.PP
+Definition at line 164 of file CountingQuietTextWriter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

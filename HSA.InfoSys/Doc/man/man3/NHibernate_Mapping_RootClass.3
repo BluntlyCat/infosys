@@ -1,0 +1,363 @@
+.TH "NHibernate.Mapping.RootClass" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.RootClass \- 
+.PP
+Declaration of a System\&.Type mapped with the \fC<class>\fP element that is the root class of a table-per-subclass, or table-per-concrete-class inheritance heirarchy\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.PersistentClass\fP, and \fBNHibernate\&.Mapping\&.ITableOwner\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBAddSubclass\fP (\fBSubclass\fP subclass)"
+.br
+.RI "\fIAdds a \fBSubclass\fP to the class hierarchy\&. \fP"
+.ti -1c
+.RI "override void \fBValidate\fP (\fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "void \fBSetLazyPropertiesCacheable\fP (bool isLazyPropertiesCacheable)"
+.br
+.ti -1c
+.RI "override object \fBAccept\fP (\fBIPersistentClassVisitor\fP mv)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBDefaultIdentifierColumnName\fP = 'id'"
+.br
+.RI "\fIThe default name of the column for the Identifier \fP"
+.ti -1c
+.RI "const string \fBDefaultDiscriminatorColumnName\fP = 'class'"
+.br
+.RI "\fIThe default name of the column for the Discriminator \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override int \fBSubclassId\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsInherited\fP\fC [get]\fP"
+.br
+.RI "\fIGets a boolean indicating if this mapped class is inherited from another\&. \fP"
+.ti -1c
+.RI "override IEnumerable< \fBProperty\fP > \fBPropertyClosureIterator\fP\fC [get]\fP"
+.br
+.RI "\fIGets an ICollection of \fBProperty\fP objects that this mapped class contains\&. \fP"
+.ti -1c
+.RI "override IEnumerable< \fBTable\fP > \fBTableClosureIterator\fP\fC [get]\fP"
+.br
+.RI "\fIGets an ICollection of \fBTable\fP objects that this mapped class reads from and writes to\&. \fP"
+.ti -1c
+.RI "override IEnumerable< \fBIKeyValue\fP > \fBKeyClosureIterator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsVersioned\fP\fC [get]\fP"
+.br
+.RI "\fIGets a boolean indicating if the mapped class has a version property\&. \fP"
+.ti -1c
+.RI "override System\&.Type \fBEntityPersisterClass\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override \fBTable\fP \fBRootTable\fP\fC [get]\fP"
+.br
+.RI "\fIGets the \fBTable\fP of the class that is mapped in the \fCclass\fP element\&. \fP"
+.ti -1c
+.RI "override bool \fBHasEmbeddedIdentifier\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean indicating if the identifier is embedded in the class\&. \fP"
+.ti -1c
+.RI "string \fBCacheRegionName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the cache region name\&. \fP"
+.ti -1c
+.RI "override bool \fBIsJoinedSubclass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual ISet< \fBTable\fP > \fBIdentityTables\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBTable\fP \fBTable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBProperty\fP \fBIdentifierProperty\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBProperty\fP that is used as the \fCid\fP\&. \fP"
+.ti -1c
+.RI "override \fBIKeyValue\fP \fBIdentifier\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBSimpleValue\fP that contains information about the identifier\&. \fP"
+.ti -1c
+.RI "override bool \fBHasIdentifierProperty\fP\fC [get]\fP"
+.br
+.RI "\fIGets a boolean indicating if the mapped class has a \fBProperty\fP for the \fCid\fP\&. \fP"
+.ti -1c
+.RI "override \fBIValue\fP \fBDiscriminator\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBSimpleValue\fP that contains information about the discriminator\&. \fP"
+.ti -1c
+.RI "override bool \fBIsPolymorphic\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets if the mapped class has subclasses\&. \fP"
+.ti -1c
+.RI "override \fBRootClass\fP \fBRootClazz\fP\fC [get]\fP"
+.br
+.RI "\fIGets the \fBRootClazz\fP of the class that is mapped in the \fCclass\fP element\&. \fP"
+.ti -1c
+.RI "override bool \fBIsExplicitPolymorphism\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean indicating if explicit polymorphism should be used in Queries\&. \fP"
+.ti -1c
+.RI "override \fBProperty\fP \fBVersion\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBProperty\fP that is used as the version\&. \fP"
+.ti -1c
+.RI "override bool \fBIsMutable\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or set a boolean indicating if the mapped class has properties that can be changed\&. \fP"
+.ti -1c
+.RI "override \fBPersistentClass\fP \fBSuperclass\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBPersistentClass\fP that this mapped class is extending\&. \fP"
+.ti -1c
+.RI "override \fBIKeyValue\fP \fBKey\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBSimpleValue\fP that contains information about the Key\&. \fP"
+.ti -1c
+.RI "override bool \fBIsDiscriminatorInsertable\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsForceDiscriminator\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean indicating if only values in the discriminator column that are mapped will be included in the sql\&. \fP"
+.ti -1c
+.RI "override string \fBWhere\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the sql string that should be a part of the where clause\&. \fP"
+.ti -1c
+.RI "override string \fBCacheConcurrencyStrategy\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the CacheConcurrencyStrategy to use to read/write instances of the persistent class to the \fBCache\fP\&. \fP"
+.ti -1c
+.RI "override bool \fBIsLazyPropertiesCacheable\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Declaration of a System\&.Type mapped with the \fC<class>\fP element that is the root class of a table-per-subclass, or table-per-concrete-class inheritance heirarchy\&. 
+
+
+.PP
+Definition at line 16 of file RootClass\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Mapping\&.RootClass\&.AddSubclass (\fBSubclass\fPsubclass)\fC [virtual]\fP"
+
+.PP
+Adds a \fBSubclass\fP to the class hierarchy\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsubclass\fP The \fBSubclass\fP to add to the hierarchy\&.
+.RE
+.PP
+.PP
+When a \fBSubclass\fP is added this mapped class has the property \fBIsPolymorphic\fP set to \&. 
+.PP
+Reimplemented from \fBNHibernate\&.Mapping\&.PersistentClass\fP\&.
+.PP
+Definition at line 267 of file RootClass\&.cs\&.
+.SS "override void NHibernate\&.Mapping\&.RootClass\&.Validate (\fBIMapping\fPmapping)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fImapping\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Mapping\&.PersistentClass\fP\&.
+.PP
+Definition at line 368 of file RootClass\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const string NHibernate\&.Mapping\&.RootClass\&.DefaultDiscriminatorColumnName = 'class'"
+
+.PP
+The default name of the column for the Discriminator \fCclass\fP is the default column name for the Discriminator\&.
+.PP
+Definition at line 30 of file RootClass\&.cs\&.
+.SS "const string NHibernate\&.Mapping\&.RootClass\&.DefaultIdentifierColumnName = 'id'"
+
+.PP
+The default name of the column for the Identifier \fCid\fP is the default column name for the Identifier\&.
+.PP
+Definition at line 24 of file RootClass\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.Mapping\&.RootClass\&.CacheConcurrencyStrategy\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the CacheConcurrencyStrategy to use to read/write instances of the persistent class to the \fBCache\fP\&. The CacheConcurrencyStrategy used with the \fBCache\fP\&.
+.PP
+Definition at line 411 of file RootClass\&.cs\&.
+.SS "string NHibernate\&.Mapping\&.RootClass\&.CacheRegionName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the cache region name\&. The region name used with the \fBCache\fP\&.
+.PP
+Definition at line 148 of file RootClass\&.cs\&.
+.SS "override \fBIValue\fP NHibernate\&.Mapping\&.RootClass\&.Discriminator\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBSimpleValue\fP that contains information about the discriminator\&. The \fBSimpleValue\fP that contains information about the discriminator\&.
+.PP
+Definition at line 231 of file RootClass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.RootClass\&.HasEmbeddedIdentifier\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean indicating if the identifier is embedded in the class\&. if the class identifies itself\&.
+.PP
+An embedded identifier is true when using a \fCcomposite-id\fP specifying properties of the class as the \fCkey-property\fP instead of using a class as the \fCcomposite-id\fP\&. 
+.PP
+Definition at line 138 of file RootClass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.RootClass\&.HasIdentifierProperty\fC [get]\fP"
+
+.PP
+Gets a boolean indicating if the mapped class has a \fBProperty\fP for the \fCid\fP\&. if there is a \fBProperty\fP for the \fCid\fP\&.
+.PP
+Definition at line 222 of file RootClass\&.cs\&.
+.SS "override \fBIKeyValue\fP NHibernate\&.Mapping\&.RootClass\&.Identifier\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBSimpleValue\fP that contains information about the identifier\&. The \fBSimpleValue\fP that contains information about the identifier\&.
+.PP
+Definition at line 212 of file RootClass\&.cs\&.
+.SS "override \fBProperty\fP NHibernate\&.Mapping\&.RootClass\&.IdentifierProperty\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBProperty\fP that is used as the \fCid\fP\&. The \fBProperty\fP that is used as the \fCid\fP\&. 
+.PP
+Definition at line 198 of file RootClass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.RootClass\&.IsDiscriminatorInsertable\fC [get]\fP, \fC [set]\fP"
+
+.PP
+
+.PP
+Definition at line 336 of file RootClass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.RootClass\&.IsExplicitPolymorphism\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean indicating if explicit polymorphism should be used in Queries\&. if only classes queried on should be returned,  if any class in the hierarchy should implicitly be returned\&. 
+.PP
+Definition at line 281 of file RootClass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.RootClass\&.IsForceDiscriminator\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean indicating if only values in the discriminator column that are mapped will be included in the sql\&. if the mapped discriminator values should be forced\&.
+.PP
+Definition at line 347 of file RootClass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.RootClass\&.IsInherited\fC [get]\fP"
+
+.PP
+Gets a boolean indicating if this mapped class is inherited from another\&. because this is the root mapped class\&. 
+.PP
+Definition at line 62 of file RootClass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.RootClass\&.IsJoinedSubclass\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 157 of file RootClass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.RootClass\&.IsMutable\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or set a boolean indicating if the mapped class has properties that can be changed\&. if the object is mutable\&.
+.PP
+Definition at line 301 of file RootClass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.RootClass\&.IsPolymorphic\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets if the mapped class has subclasses\&. if the mapped class has subclasses\&. 
+.PP
+Definition at line 243 of file RootClass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.RootClass\&.IsVersioned\fC [get]\fP"
+
+.PP
+Gets a boolean indicating if the mapped class has a version property\&. if there is a \fBProperty\fP for a \fCversion\fP\&.
+.PP
+Definition at line 105 of file RootClass\&.cs\&.
+.SS "override \fBIKeyValue\fP NHibernate\&.Mapping\&.RootClass\&.Key\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBSimpleValue\fP that contains information about the Key\&. The \fBSimpleValue\fP that contains information about the Key\&.
+.PP
+Definition at line 327 of file RootClass\&.cs\&.
+.SS "override IEnumerable<\fBProperty\fP> NHibernate\&.Mapping\&.RootClass\&.PropertyClosureIterator\fC [get]\fP"
+
+.PP
+Gets an ICollection of \fBProperty\fP objects that this mapped class contains\&. An ICollection of \fBProperty\fP objects that this mapped class contains\&. 
+.PP
+Definition at line 74 of file RootClass\&.cs\&.
+.SS "override \fBRootClass\fP NHibernate\&.Mapping\&.RootClass\&.RootClazz\fC [get]\fP"
+
+.PP
+Gets the \fBRootClazz\fP of the class that is mapped in the \fCclass\fP element\&. \fCthis\fP since this is the root mapped class\&. 
+.PP
+Definition at line 255 of file RootClass\&.cs\&.
+.SS "override \fBTable\fP NHibernate\&.Mapping\&.RootClass\&.RootTable\fC [get]\fP"
+
+.PP
+Gets the \fBTable\fP of the class that is mapped in the \fCclass\fP element\&. The \fBTable\fP of the class this mapped class\&. 
+.PP
+Definition at line 123 of file RootClass\&.cs\&.
+.SS "override \fBPersistentClass\fP NHibernate\&.Mapping\&.RootClass\&.Superclass\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBPersistentClass\fP that this mapped class is extending\&. since this is the root class\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInvalidOperationException\fP Thrown when the setter is called\&. The Superclass can not be set on the \fBRootClass\fP, only the SubclassType can have a Superclass set\&. 
+.RE
+.PP
+
+.PP
+Definition at line 317 of file RootClass\&.cs\&.
+.SS "override IEnumerable<\fBTable\fP> NHibernate\&.Mapping\&.RootClass\&.TableClosureIterator\fC [get]\fP"
+
+.PP
+Gets an ICollection of \fBTable\fP objects that this mapped class reads from and writes to\&. An ICollection of \fBTable\fP objects that this mapped class reads from and writes to\&. 
+.PP
+There is only one \fBTable\fP in the ICollection since this is the root class\&. 
+.PP
+Definition at line 91 of file RootClass\&.cs\&.
+.SS "override \fBProperty\fP NHibernate\&.Mapping\&.RootClass\&.Version\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBProperty\fP that is used as the version\&. The \fBProperty\fP that is used as the version\&.
+.PP
+Definition at line 291 of file RootClass\&.cs\&.
+.SS "override string NHibernate\&.Mapping\&.RootClass\&.Where\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the sql string that should be a part of the where clause\&. The sql string that should be a part of the where clause\&. 
+.PP
+Definition at line 359 of file RootClass\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

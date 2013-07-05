@@ -1,0 +1,218 @@
+.TH "NHibernate.Type.GuidType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.GuidType \- 
+.PP
+Maps a System\&.Guid Property to a DbType\&.Guid column\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.PrimitiveType\fP, and \fBNHibernate\&.Type\&.IDiscriminatorType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGuidType\fP ()"
+.br
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, int index)"
+.br
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, string name)"
+.br
+.ti -1c
+.RI "override void \fBSet\fP (IDbCommand cmd, object value, int index)"
+.br
+.RI "\fIWhen implemented by a class, put the value from the mapped Property into to the IDbCommand\&. \fP"
+.ti -1c
+.RI "override object \fBFromStringValue\fP (string xml)"
+.br
+.RI "\fIParse the XML representation of an instance \fP"
+.ti -1c
+.RI "object \fBStringToObject\fP (string xml)"
+.br
+.RI "\fIWhen implemented by a class, converts the xml string from the mapping file to the \&.NET object\&. \fP"
+.ti -1c
+.RI "override string \fBObjectToSQLString\fP (object value, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIWhen implemented by a class, return a String representation of the value, suitable for embedding in an SQL statement \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override System\&.Type \fBPrimitiveClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override object \fBDefaultValue\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Maps a System\&.Guid Property to a DbType\&.Guid column\&. 
+
+
+.PP
+Definition at line 12 of file GuidType\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Type\&.GuidType\&.GuidType ()"
+
+.PP
+
+.PP
+Definition at line 15 of file GuidType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.GuidType\&.FromStringValue (stringxml)\fC [virtual]\fP"
+
+.PP
+Parse the XML representation of an instance 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP XML string to parse, guaranteed to be non-empty
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 70 of file GuidType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.GuidType\&.Get (IDataReaderrs, intindex)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP 
+.br
+\fIindex\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 25 of file GuidType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.GuidType\&.Get (IDataReaderrs, stringname)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP 
+.br
+\fIname\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 46 of file GuidType\&.cs\&.
+.SS "override string NHibernate\&.Type\&.GuidType\&.ObjectToSQLString (objectvalue, \fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, return a String representation of the value, suitable for embedding in an SQL statement 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The object to convert to a string for the SQL statement\&.
+.br
+\fIdialect\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that containts a well formed SQL Statement\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.PrimitiveType\fP\&.
+.PP
+Definition at line 90 of file GuidType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.GuidType\&.Set (IDbCommandcmd, objectvalue, intindex)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, put the value from the mapped Property into to the IDbCommand\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP The IDbCommand to put the value into\&.
+.br
+\fIvalue\fP The object that contains the value\&.
+.br
+\fIindex\fP The index of the IDbDataParameter to start writing the values to\&.
+.RE
+.PP
+.PP
+Implementors do not need to handle possibility of null values because this will only be called from \fBNullSafeSet(IDbCommand, object, int)\fP after it has checked for nulls\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 57 of file GuidType\&.cs\&.
+.SS "object NHibernate\&.Type\&.GuidType\&.StringToObject (stringxml)"
+
+.PP
+When implemented by a class, converts the xml string from the mapping file to the \&.NET object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP The value of \fCdiscriminator-value\fP or \fCunsaved-value\fP attribute\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The string converted to the object\&.
+.RE
+.PP
+.PP
+This method needs to be able to handle any string\&. It should not just call System\&.Type\&.Parse without verifying that it is a parsable value for the System\&.Type\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.IIdentifierType\fP\&.
+.PP
+Definition at line 75 of file GuidType\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.Type\&.GuidType\&.Name\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 66 of file GuidType\&.cs\&.
+.SS "override System\&.Type NHibernate\&.Type\&.GuidType\&.ReturnedClass\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 53 of file GuidType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

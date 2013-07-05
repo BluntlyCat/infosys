@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1549_1_1_product_with_inherited_id =
+[
+    [ "CategoryWithInheritedId", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1549_1_1_product_with_inherited_id.html#aaf0055076d29a6e46e5e0253b60d4f32", null ]
+];

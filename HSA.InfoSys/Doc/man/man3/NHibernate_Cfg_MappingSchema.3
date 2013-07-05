@@ -1,0 +1,856 @@
+.TH "NHibernate.Cfg.MappingSchema" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cfg.MappingSchema \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAbstractDecoratable\fP"
+.br
+.ti -1c
+.RI "class \fBEndsWithHbmXmlFilter\fP"
+.br
+.RI "\fIResponsible for checking that a resource name matches the default pattern of '*\&.hbm\&.xml'\&. This is the default filter for \fBMappingDocumentAggregator\fP\&. \fP"
+.ti -1c
+.RI "class \fBHbmAny\fP"
+.br
+.ti -1c
+.RI "class \fBHbmMeta\fP"
+.br
+.ti -1c
+.RI "class \fBHbmMetaValue\fP"
+.br
+.ti -1c
+.RI "class \fBHbmColumn\fP"
+.br
+.ti -1c
+.RI "class \fBHbmComment\fP"
+.br
+.ti -1c
+.RI "class \fBHbmArray\fP"
+.br
+.ti -1c
+.RI "class \fBHbmSubselect\fP"
+.br
+.ti -1c
+.RI "class \fBHbmCache\fP"
+.br
+.ti -1c
+.RI "class \fBHbmSynchronize\fP"
+.br
+.ti -1c
+.RI "class \fBHbmKey\fP"
+.br
+.ti -1c
+.RI "class \fBHbmIndex\fP"
+.br
+.ti -1c
+.RI "class \fBHbmListIndex\fP"
+.br
+.ti -1c
+.RI "class \fBHbmCompositeElement\fP"
+.br
+.ti -1c
+.RI "class \fBHbmParent\fP"
+.br
+.ti -1c
+.RI "class \fBHbmManyToOne\fP"
+.br
+.ti -1c
+.RI "class \fBHbmFormula\fP"
+.br
+.ti -1c
+.RI "class \fBHbmNestedCompositeElement\fP"
+.br
+.ti -1c
+.RI "class \fBHbmProperty\fP"
+.br
+.ti -1c
+.RI "class \fBHbmType\fP"
+.br
+.ti -1c
+.RI "class \fBHbmParam\fP"
+.br
+.ti -1c
+.RI "class \fBHbmElement\fP"
+.br
+.ti -1c
+.RI "class \fBHbmManyToAny\fP"
+.br
+.ti -1c
+.RI "class \fBHbmManyToMany\fP"
+.br
+.ti -1c
+.RI "class \fBHbmFilter\fP"
+.br
+.ti -1c
+.RI "class \fBHbmOneToMany\fP"
+.br
+.ti -1c
+.RI "class \fBHbmLoader\fP"
+.br
+.ti -1c
+.RI "class \fBHbmCustomSQL\fP"
+.br
+.ti -1c
+.RI "class \fBHbmBag\fP"
+.br
+.ti -1c
+.RI "class \fBHbmClass\fP"
+.br
+.ti -1c
+.RI "class \fBHbmTuplizer\fP"
+.br
+.ti -1c
+.RI "class \fBHbmCompositeId\fP"
+.br
+.ti -1c
+.RI "class \fBHbmKeyManyToOne\fP"
+.br
+.ti -1c
+.RI "class \fBHbmKeyProperty\fP"
+.br
+.ti -1c
+.RI "class \fBHbmId\fP"
+.br
+.ti -1c
+.RI "class \fBHbmGenerator\fP"
+.br
+.ti -1c
+.RI "class \fBHbmDiscriminator\fP"
+.br
+.ti -1c
+.RI "class \fBHbmNaturalId\fP"
+.br
+.ti -1c
+.RI "class \fBHbmComponent\fP"
+.br
+.ti -1c
+.RI "class \fBHbmDynamicComponent\fP"
+.br
+.ti -1c
+.RI "class \fBHbmList\fP"
+.br
+.ti -1c
+.RI "class \fBHbmMap\fP"
+.br
+.ti -1c
+.RI "class \fBHbmCompositeIndex\fP"
+.br
+.ti -1c
+.RI "class \fBHbmCompositeMapKey\fP"
+.br
+.ti -1c
+.RI "class \fBHbmIndexManyToAny\fP"
+.br
+.ti -1c
+.RI "class \fBHbmIndexManyToMany\fP"
+.br
+.ti -1c
+.RI "class \fBHbmMapKey\fP"
+.br
+.ti -1c
+.RI "class \fBHbmMapKeyManyToMany\fP"
+.br
+.ti -1c
+.RI "class \fBHbmOneToOne\fP"
+.br
+.ti -1c
+.RI "class \fBHbmPrimitiveArray\fP"
+.br
+.ti -1c
+.RI "class \fBHbmSet\fP"
+.br
+.ti -1c
+.RI "class \fBHbmIdbag\fP"
+.br
+.ti -1c
+.RI "class \fBHbmCollectionId\fP"
+.br
+.ti -1c
+.RI "class \fBHbmTimestamp\fP"
+.br
+.ti -1c
+.RI "class \fBHbmVersion\fP"
+.br
+.ti -1c
+.RI "class \fBHbmProperties\fP"
+.br
+.ti -1c
+.RI "class \fBHbmJoin\fP"
+.br
+.ti -1c
+.RI "class \fBHbmJoinedSubclass\fP"
+.br
+.ti -1c
+.RI "class \fBHbmResultSet\fP"
+.br
+.ti -1c
+.RI "class \fBHbmLoadCollection\fP"
+.br
+.ti -1c
+.RI "class \fBHbmReturnProperty\fP"
+.br
+.ti -1c
+.RI "class \fBHbmReturnColumn\fP"
+.br
+.ti -1c
+.RI "class \fBHbmReturn\fP"
+.br
+.ti -1c
+.RI "class \fBHbmReturnDiscriminator\fP"
+.br
+.ti -1c
+.RI "class \fBHbmReturnJoin\fP"
+.br
+.ti -1c
+.RI "class \fBHbmReturnScalar\fP"
+.br
+.ti -1c
+.RI "class \fBHbmQuery\fP"
+.br
+.ti -1c
+.RI "class \fBHbmQueryParam\fP"
+.br
+.ti -1c
+.RI "class \fBHbmSqlQuery\fP"
+.br
+.ti -1c
+.RI "class \fBHbmSubclass\fP"
+.br
+.ti -1c
+.RI "class \fBHbmUnionSubclass\fP"
+.br
+.ti -1c
+.RI "class \fBHbmCreate\fP"
+.br
+.ti -1c
+.RI "class \fBHbmDatabaseObject\fP"
+.br
+.ti -1c
+.RI "class \fBHbmDefinition\fP"
+.br
+.ti -1c
+.RI "class \fBHbmDrop\fP"
+.br
+.ti -1c
+.RI "class \fBHbmDialectScope\fP"
+.br
+.ti -1c
+.RI "class \fBHbmFilterDef\fP"
+.br
+.ti -1c
+.RI "class \fBHbmFilterParam\fP"
+.br
+.ti -1c
+.RI "class \fBHbmMapping\fP"
+.br
+.ti -1c
+.RI "class \fBHbmTypedef\fP"
+.br
+.ti -1c
+.RI "class \fBHbmImport\fP"
+.br
+.ti -1c
+.RI "class \fBHbmBase\fP"
+.br
+.RI "\fIA base class for HBM schema classes that provides helper methods\&.\fP"
+.ti -1c
+.RI "class \fBHbmExtensions\fP"
+.br
+.ti -1c
+.RI "interface \fBIAnyMapping\fP"
+.br
+.ti -1c
+.RI "interface \fBIAssemblyResourceFilter\fP"
+.br
+.RI "\fIResponsible for determining whether an embedded resource should be parsed for HBM XML data while iterating through an Assembly\&. \fP"
+.ti -1c
+.RI "interface \fBICollectionPropertiesMapping\fP"
+.br
+.ti -1c
+.RI "interface \fBICollectionSqlsMapping\fP"
+.br
+.ti -1c
+.RI "interface \fBIColumnsMapping\fP"
+.br
+.RI "\fIImplemented by any mapping elemes supports simple and/or multicolumn mapping\&. \fP"
+.ti -1c
+.RI "interface \fBIComponentMapping\fP"
+.br
+.ti -1c
+.RI "interface \fBIDecoratable\fP"
+.br
+.ti -1c
+.RI "interface \fBIEntityDiscriminableMapping\fP"
+.br
+.ti -1c
+.RI "interface \fBIEntityMapping\fP"
+.br
+.ti -1c
+.RI "interface \fBIEntityPropertyMapping\fP"
+.br
+.ti -1c
+.RI "interface \fBIEntitySqlsMapping\fP"
+.br
+.ti -1c
+.RI "interface \fBIFormulasMapping\fP"
+.br
+.ti -1c
+.RI "interface \fBIIndexedCollectionMapping\fP"
+.br
+.ti -1c
+.RI "interface \fBIMappingDocumentParser\fP"
+.br
+.RI "\fIResponsible for converting a Stream of HBM XML into an instance of \fBHbmMapping\fP\&. \fP"
+.ti -1c
+.RI "interface \fBIPropertiesContainerMapping\fP"
+.br
+.ti -1c
+.RI "interface \fBIReferencePropertyMapping\fP"
+.br
+.ti -1c
+.RI "interface \fBIRelationship\fP"
+.br
+.ti -1c
+.RI "interface \fBITypeMapping\fP"
+.br
+.ti -1c
+.RI "class \fBMappingDocumentAggregator\fP"
+.br
+.RI "\fIResponsible for building a list of \fBHbmMapping\fP objects from a range of acceptable sources\&. \fP"
+.ti -1c
+.RI "class \fBMappingDocumentParser\fP"
+.br
+.RI "\fIResponsible for converting a Stream of HBM XML into an instance of \fBHbmMapping\fP\&. \fP"
+.ti -1c
+.RI "class \fBMappingExtensions\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBHbmCacheUsage\fP { \fBHbmCacheUsage::ReadOnly\fP, \fBHbmCacheUsage::ReadWrite\fP, \fBHbmCacheUsage::NonstrictReadWrite\fP, \fBHbmCacheUsage::Transactional\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmCacheInclude\fP { \fBHbmCacheInclude::All\fP, \fBHbmCacheInclude::NonLazy\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmOndelete\fP { \fBHbmOndelete::Cascade\fP, \fBHbmOndelete::Noaction\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmOuterJoinStrategy\fP { \fBHbmOuterJoinStrategy::Auto\fP, \fBHbmOuterJoinStrategy::True\fP, \fBHbmOuterJoinStrategy::False\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmFetchMode\fP { \fBHbmFetchMode::Select\fP, \fBHbmFetchMode::Join\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmLaziness\fP { \fBHbmLaziness::False\fP, \fBHbmLaziness::Proxy\fP, \fBHbmLaziness::NoProxy\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmNotFoundMode\fP { \fBHbmNotFoundMode::Ignore\fP, \fBHbmNotFoundMode::Exception\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmPropertyGeneration\fP { \fBHbmPropertyGeneration::Never\fP, \fBHbmPropertyGeneration::Insert\fP, \fBHbmPropertyGeneration::Always\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmRestrictedLaziness\fP { \fBHbmRestrictedLaziness::False\fP, \fBHbmRestrictedLaziness::Proxy\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmCustomSQLCheck\fP { \fBHbmCustomSQLCheck::None\fP, \fBHbmCustomSQLCheck::Rowcount\fP, \fBHbmCustomSQLCheck::Param\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmCollectionFetchMode\fP { \fBHbmCollectionFetchMode::Select\fP, \fBHbmCollectionFetchMode::Join\fP, \fBHbmCollectionFetchMode::Subselect\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmCollectionLazy\fP { \fBHbmCollectionLazy::True\fP, \fBHbmCollectionLazy::False\fP, \fBHbmCollectionLazy::Extra\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmTuplizerEntitymode\fP { \fBHbmTuplizerEntitymode::Poco\fP, \fBHbmTuplizerEntitymode::Xml\fP, \fBHbmTuplizerEntitymode::DynamicMap\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmUnsavedValueType\fP { \fBHbmUnsavedValueType::Undefined\fP, \fBHbmUnsavedValueType::Any\fP, \fBHbmUnsavedValueType::None\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmPrimitivearrayOuterjoin\fP { \fBHbmPrimitivearrayOuterjoin::True\fP, \fBHbmPrimitivearrayOuterjoin::False\fP, \fBHbmPrimitivearrayOuterjoin::Auto\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmPrimitivearrayFetch\fP { \fBHbmPrimitivearrayFetch::Join\fP, \fBHbmPrimitivearrayFetch::Select\fP, \fBHbmPrimitivearrayFetch::Subselect\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmTimestampUnsavedvalue\fP { \fBHbmTimestampUnsavedvalue::Null\fP, \fBHbmTimestampUnsavedvalue::Undefined\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmTimestampSource\fP { \fBHbmTimestampSource::Vm\fP, \fBHbmTimestampSource::Db\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmVersionGeneration\fP { \fBHbmVersionGeneration::Never\fP, \fBHbmVersionGeneration::Always\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmJoinFetch\fP { \fBHbmJoinFetch::Join\fP, \fBHbmJoinFetch::Select\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmLockMode\fP { \fBHbmLockMode::None\fP, \fBHbmLockMode::Read\fP, \fBHbmLockMode::Upgrade\fP, \fBHbmLockMode::UpgradeNowait\fP, \fBHbmLockMode::Write\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmFlushMode\fP { \fBHbmFlushMode::Auto\fP, \fBHbmFlushMode::Never\fP, \fBHbmFlushMode::Always\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmCacheMode\fP { \fBHbmCacheMode::Get\fP, \fBHbmCacheMode::Ignore\fP, \fBHbmCacheMode::Normal\fP, \fBHbmCacheMode::Put\fP, \fBHbmCacheMode::Refresh\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmPolymorphismType\fP { \fBHbmPolymorphismType::Implicit\fP, \fBHbmPolymorphismType::Explicit\fP }"
+.br
+.ti -1c
+.RI "enum \fBHbmOptimisticLockMode\fP { \fBHbmOptimisticLockMode::None\fP, \fBHbmOptimisticLockMode::Version\fP, \fBHbmOptimisticLockMode::Dirty\fP, \fBHbmOptimisticLockMode::All\fP }"
+.br
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmCacheInclude\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIAll \fP\fP
+
+.TP
+\fB\fINonLazy \fP\fP
+
+.PP
+Definition at line 442 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmCacheMode\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIGet \fP\fP
+
+.TP
+\fB\fIIgnore \fP\fP
+
+.TP
+\fB\fINormal \fP\fP
+
+.TP
+\fB\fIPut \fP\fP
+
+.TP
+\fB\fIRefresh \fP\fP
+
+.PP
+Definition at line 4377 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmCacheUsage\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIReadOnly \fP\fP
+
+.TP
+\fB\fIReadWrite \fP\fP
+
+.TP
+\fB\fINonstrictReadWrite \fP\fP
+
+.TP
+\fB\fITransactional \fP\fP
+
+.PP
+Definition at line 419 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmCollectionFetchMode\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISelect \fP\fP
+
+.TP
+\fB\fIJoin \fP\fP
+
+.TP
+\fB\fISubselect \fP\fP
+
+.PP
+Definition at line 1402 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmCollectionLazy\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fITrue \fP\fP
+
+.TP
+\fB\fIFalse \fP\fP
+
+.TP
+\fB\fIExtra \fP\fP
+
+.PP
+Definition at line 1601 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmCustomSQLCheck\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+
+.TP
+\fB\fIRowcount \fP\fP
+
+.TP
+\fB\fIParam \fP\fP
+
+.PP
+Definition at line 1383 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmFetchMode\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISelect \fP\fP
+
+.TP
+\fB\fIJoin \fP\fP
+
+.PP
+Definition at line 813 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmFlushMode\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIAuto \fP\fP
+
+.TP
+\fB\fINever \fP\fP
+
+.TP
+\fB\fIAlways \fP\fP
+
+.PP
+Definition at line 4358 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmJoinFetch\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIJoin \fP\fP
+
+.TP
+\fB\fISelect \fP\fP
+
+.PP
+Definition at line 3868 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmLaziness\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIFalse \fP\fP
+
+.TP
+\fB\fIProxy \fP\fP
+
+.TP
+\fB\fINoProxy \fP\fP
+
+.PP
+Definition at line 828 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmLockMode\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+
+.TP
+\fB\fIRead \fP\fP
+
+.TP
+\fB\fIUpgrade \fP\fP
+
+.TP
+\fB\fIUpgradeNowait \fP\fP
+
+.TP
+\fB\fIWrite \fP\fP
+
+.PP
+Definition at line 4136 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmNotFoundMode\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIIgnore \fP\fP
+
+.TP
+\fB\fIException \fP\fP
+
+.PP
+Definition at line 847 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmOndelete\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICascade \fP\fP
+
+.TP
+\fB\fINoaction \fP\fP
+
+.PP
+Definition at line 530 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmOptimisticLockMode\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+
+.TP
+\fB\fIVersion \fP\fP
+
+.TP
+\fB\fIDirty \fP\fP
+
+.TP
+\fB\fIAll \fP\fP
+
+.PP
+Definition at line 4807 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmOuterJoinStrategy\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIAuto \fP\fP
+
+.TP
+\fB\fITrue \fP\fP
+
+.TP
+\fB\fIFalse \fP\fP
+
+.PP
+Definition at line 794 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmPolymorphismType\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIImplicit \fP\fP
+
+.TP
+\fB\fIExplicit \fP\fP
+
+.PP
+Definition at line 4792 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmPrimitivearrayFetch\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIJoin \fP\fP
+
+.TP
+\fB\fISelect \fP\fP
+
+.TP
+\fB\fISubselect \fP\fP
+
+.PP
+Definition at line 3155 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmPrimitivearrayOuterjoin\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fITrue \fP\fP
+
+.TP
+\fB\fIFalse \fP\fP
+
+.TP
+\fB\fIAuto \fP\fP
+
+.PP
+Definition at line 3136 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmPropertyGeneration\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINever \fP\fP
+
+.TP
+\fB\fIInsert \fP\fP
+
+.TP
+\fB\fIAlways \fP\fP
+
+.PP
+Definition at line 1051 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmRestrictedLaziness\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIFalse \fP\fP
+
+.TP
+\fB\fIProxy \fP\fP
+
+.PP
+Definition at line 1287 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmTimestampSource\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIVm \fP\fP
+
+.TP
+\fB\fIDb \fP\fP
+
+.PP
+Definition at line 3642 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmTimestampUnsavedvalue\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINull \fP\fP
+
+.TP
+\fB\fIUndefined \fP\fP
+
+.PP
+Definition at line 3627 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmTuplizerEntitymode\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIPoco \fP\fP
+
+.TP
+\fB\fIXml \fP\fP
+
+.TP
+\fB\fIDynamicMap \fP\fP
+
+.PP
+Definition at line 1861 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmUnsavedValueType\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIUndefined \fP\fP
+
+.TP
+\fB\fIAny \fP\fP
+
+.TP
+\fB\fINone \fP\fP
+
+.PP
+Definition at line 2034 of file Hbm\&.generated\&.cs\&.
+.SS "enum \fBNHibernate\&.Cfg\&.MappingSchema\&.HbmVersionGeneration\fP"
+
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINever \fP\fP
+
+.TP
+\fB\fIAlways \fP\fP
+
+.PP
+Definition at line 3657 of file Hbm\&.generated\&.cs\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

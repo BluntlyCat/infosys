@@ -1,0 +1,173 @@
+.TH "NHibernate.Test.TestCase" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.TestCase \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Test\&.Ado\&.BatcherFixture\fP, \fBNHibernate\&.Test\&.Any\&.AnyTypeTest\fP, \fBNHibernate\&.Test\&.BulkManipulation\&.BaseFixture\fP, \fBNHibernate\&.Test\&.BulkManipulation\&.NativeSQLBulkOperations\fP, \fBNHibernate\&.Test\&.CacheTest\&.FilterKeyFixture\fP, \fBNHibernate\&.Test\&.CacheTest\&.QueryCacheFixture\fP, \fBNHibernate\&.Test\&.CacheTest\&.QueryKeyFixture\fP, \fBNHibernate\&.Test\&.Cascade\&.Circle\&.CascadeMergeToChildBeforeParentTest\fP, \fBNHibernate\&.Test\&.Cascade\&.Circle\&.MultiPathCircleCascadeTest\fP, \fBNHibernate\&.Test\&.Cascade\&.MultiPathCascadeTest\fP, \fBNHibernate\&.Test\&.Cascade\&.RefreshFixture\fP, \fBNHibernate\&.Test\&.Classic\&.LifecycleFixture\fP, \fBNHibernate\&.Test\&.Classic\&.ValidatableFixture\fP, \fBNHibernate\&.Test\&.CollectionTest\&.IdBagFixture\fP, \fBNHibernate\&.Test\&.CollectionTest\&.NullableValueTypeElementMapFixture\fP, \fBNHibernate\&.Test\&.Component\&.Basic\&.ComponentTest\fP, \fBNHibernate\&.Test\&.CompositeId\&.ClassWithCompositeIdFixture\fP, \fBNHibernate\&.Test\&.CompositeId\&.CompositeIdFixture\fP, \fBNHibernate\&.Test\&.ConnectionTest\&.ConnectionManagementTestCase\fP, \fBNHibernate\&.Test\&.Criteria\&.CriteriaQueryTest\fP, \fBNHibernate\&.Test\&.Criteria\&.DetachedCriteriaSerializable\fP, \fBNHibernate\&.Test\&.Criteria\&.Lambda\&.IntegrationFixture\fP, \fBNHibernate\&.Test\&.Criteria\&.ProjectionsTest\fP, \fBNHibernate\&.Test\&.Deletetransient\&.DeleteTransientEntityTest\fP, \fBNHibernate\&.Test\&.DriverTest\&.NullReferenceFixture\fP, \fBNHibernate\&.Test\&.DriverTest\&.Sql2008DateTime2Test\fP, \fBNHibernate\&.Test\&.DriverTest\&.SqlClientDriverFixture\fP, \fBNHibernate\&.Test\&.DriverTest\&.SqlServerCeDriverFixture\fP, \fBNHibernate\&.Test\&.DynamicEntity\&.Interceptor\&.InterceptorDynamicEntity\fP, \fBNHibernate\&.Test\&.DynamicEntity\&.Tuplizer\&.TuplizerDynamicEntity\fP, \fBNHibernate\&.Test\&.DynamicProxyTests\&.InterfaceProxySerializationTests\&.ProxyFixture\fP, \fBNHibernate\&.Test\&.EntityModeTest\&.Map\&.Basic\&.DynamicClassFixture\fP, \fBNHibernate\&.Test\&.EntityModeTest\&.Multi\&.MultiRepresentationFixture\fP, \fBNHibernate\&.Test\&.EntityModeTest\&.Xml\&.Basic\&.XmlFixture\fP, \fBNHibernate\&.Test\&.EntityModeTest\&.Xml\&.Many2One\&.XmlManyToOneFixture\fP, \fBNHibernate\&.Test\&.Events\&.Collections\&.AbstractCollectionEventFixture\fP, \fBNHibernate\&.Test\&.Events\&.PostEvents\&.PostUpdateFixture\fP, \fBNHibernate\&.Test\&.ExceptionsTest\&.NullQueryTest\fP, \fBNHibernate\&.Test\&.ExceptionsTest\&.SQLExceptionConversionTest\fP, \fBNHibernate\&.Test\&.ExpressionTest\&.DetachedCriteriaFixture\fP, \fBNHibernate\&.Test\&.ExpressionTest\&.Projection\&.ProjectionSqlFixture\fP, \fBNHibernate\&.Test\&.ExpressionTest\&.QueryByExampleTest\fP, \fBNHibernate\&.Test\&.ExpressionTest\&.SubQueries\&.SubQueriesSqlFixture\fP, \fBNHibernate\&.Test\&.Extralazy\&.ExtraLazyFixture\fP, \fBNHibernate\&.Test\&.FilterTest\&.DynamicFilterTest\fP, \fBNHibernate\&.Test\&.FilterTest\&.FilterBinaryParameterTest\fP, \fBNHibernate\&.Test\&.Generatedkeys\&.ByTrigger\&.GeneratedIdentityFixture\fP, \fBNHibernate\&.Test\&.Generatedkeys\&.Identity\&.IdentityGeneratedKeysTest\fP, \fBNHibernate\&.Test\&.Generatedkeys\&.Identity\&.SimpleIdentityGeneratedFixture\fP, \fBNHibernate\&.Test\&.Generatedkeys\&.Select\&.SelectGeneratorTest\fP, \fBNHibernate\&.Test\&.Generatedkeys\&.Seqidentity\&.SequenceIdentityFixture\fP, \fBNHibernate\&.Test\&.GeneratedTest\&.AbstractGeneratedPropertyTest\fP, \fBNHibernate\&.Test\&.GeneratedTest\&.PartiallyGeneratedComponentTest\fP, \fBNHibernate\&.Test\&.GenericTest\&.BagGeneric\&.BagGenericFixture\fP, \fBNHibernate\&.Test\&.GenericTest\&.EnumGeneric\&.EnumGenericFixture\fP, \fBNHibernate\&.Test\&.GenericTest\&.IdBagGeneric\&.IdBagGenericFixture\fP, \fBNHibernate\&.Test\&.GenericTest\&.ListGeneric\&.ListGenericFixture\fP, \fBNHibernate\&.Test\&.GenericTest\&.MapGeneric\&.MapGenericFixture\fP, \fBNHibernate\&.Test\&.GenericTest\&.Methods\&.Fixture\fP, \fBNHibernate\&.Test\&.GenericTest\&.OrderedSetGeneric\&.OrderedSetFixture\fP, \fBNHibernate\&.Test\&.GenericTest\&.Overall\&.Fixture\fP, \fBNHibernate\&.Test\&.GenericTest\&.SetGeneric\&.SetGenericFixture\fP, \fBNHibernate\&.Test\&.GhostProperty\&.GhostPropertyFixture\fP, \fBNHibernate\&.Test\&.Hql\&.Ast\&.BaseFixture\fP, \fBNHibernate\&.Test\&.Hql\&.HQLFunctions\fP, \fBNHibernate\&.Test\&.Hql\&.SqlCommentsFixture\fP, \fBNHibernate\&.Test\&.IdGen\&.Enhanced\&.Forcedtable\&.BasicForcedTableSequenceTest\fP, \fBNHibernate\&.Test\&.IdGen\&.Enhanced\&.Forcedtable\&.HiLoForcedTableSequenceTest\fP, \fBNHibernate\&.Test\&.IdGen\&.Enhanced\&.Forcedtable\&.PooledForcedTableSequenceTest\fP, \fBNHibernate\&.Test\&.IdGen\&.Enhanced\&.Sequence\&.BasicSequenceTest\fP, \fBNHibernate\&.Test\&.IdGen\&.Enhanced\&.Sequence\&.DefaultOptimizedSequenceTest\fP, \fBNHibernate\&.Test\&.IdGen\&.Enhanced\&.Sequence\&.HiLoSequenceTest\fP, \fBNHibernate\&.Test\&.IdGen\&.Enhanced\&.Sequence\&.PooledSequenceTest\fP, \fBNHibernate\&.Test\&.IdGen\&.Enhanced\&.Table\&.BasicTableTest\fP, \fBNHibernate\&.Test\&.IdGen\&.Enhanced\&.Table\&.HiLoTableTest\fP, \fBNHibernate\&.Test\&.IdGen\&.Enhanced\&.Table\&.PooledLoTableTest\fP, \fBNHibernate\&.Test\&.IdGen\&.Enhanced\&.Table\&.PooledTableTest\fP, \fBNHibernate\&.Test\&.IdGen\&.NativeGuid\&.NativeGuidFixture\fP, \fBNHibernate\&.Test\&.IdTest\&.IdFixtureBase\fP, \fBNHibernate\&.Test\&.IdTest\&.MultipleHiLoPerTableGeneratorTest\fP, \fBNHibernate\&.Test\&.IdTest\&.UseIdentifierRollbackTest\fP, \fBNHibernate\&.Test\&.Immutable\&.EntityWithMutableCollection\&.AbstractEntityWithManyToManyTest\fP, \fBNHibernate\&.Test\&.Immutable\&.EntityWithMutableCollection\&.AbstractEntityWithOneToManyTest\fP, \fBNHibernate\&.Test\&.Immutable\&.ImmutableTest\fP, \fBNHibernate\&.Test\&.Insertordering\&.InsertOrderingFixture\fP, \fBNHibernate\&.Test\&.Interceptor\&.InterceptorFixture\fP, \fBNHibernate\&.Test\&.Join\&.JoinCompositeKeyTest\fP, \fBNHibernate\&.Test\&.Join\&.JoinTest\fP, \fBNHibernate\&.Test\&.Join\&.NH1059Fixture\fP, \fBNHibernate\&.Test\&.JoinedSubclass\&.JoinedSubclassFixture\fP, \fBNHibernate\&.Test\&.LazyOneToOne\&.LazyOneToOneTest\fP, \fBNHibernate\&.Test\&.LazyProperty\&.LazyPropertyFixture\fP, \fBNHibernate\&.Test\&.Legacy\&.ABCProxyTest\fP, \fBNHibernate\&.Test\&.Legacy\&.ABCTest\fP, \fBNHibernate\&.Test\&.Legacy\&.CriteriaTest\fP, \fBNHibernate\&.Test\&.Legacy\&.FooBarTest\fP, \fBNHibernate\&.Test\&.Legacy\&.FumTest\fP, \fBNHibernate\&.Test\&.Legacy\&.MasterDetailTest\fP, \fBNHibernate\&.Test\&.Legacy\&.MultiTableTest\fP, \fBNHibernate\&.Test\&.Legacy\&.ParentChildTest\fP, \fBNHibernate\&.Test\&.Legacy\&.SimpleTest\fP, \fBNHibernate\&.Test\&.Legacy\&.SQLFunctionsTest\fP, \fBNHibernate\&.Test\&.Legacy\&.SQLLoaderTest\fP, \fBNHibernate\&.Test\&.Linq\&.ReadonlyTestCase\fP, \fBNHibernate\&.Test\&.ListIndex\&.ListIndexFixture\fP, \fBNHibernate\&.Test\&.ListIndex\&.SimpleOneToManyTest\fP, \fBNHibernate\&.Test\&.MappingByCode\&.IntegrationTests\&.NH2825\&.Fixture\fP, \fBNHibernate\&.Test\&.MultipleCollectionFetchTest\&.AbstractMultipleCollectionFetchFixture\fP, \fBNHibernate\&.Test\&.Naturalid\&.Immutable\&.ImmutableNaturalIdFixture\fP, \fBNHibernate\&.Test\&.Naturalid\&.Mutable\&.MutableNaturalIdFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.BasicClassFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.BasicObjectFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.BasicSerializableFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.BasicTimeFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.BugTestCase\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.CollectionFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.CriteriaFromHql\&.Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.CriteriaQueryOnComponentCollection\&.Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.Dates\&.FixtureBase\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.Docs\&.Associations\&.BiM21\&.Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.Docs\&.ExampleParentChild\&.UpdateFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.DtcFailures\&.DtcFailuresFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.ElementsEnums\&.AbstractIntEnumsBagFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.EmptyMappingsFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.FileStreamSql2008\&.Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.Futures\&.FutureFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.GetSetHelperFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.GetTest\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.LazyLoadBugTest\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.ListsWithHoles\&.Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.LoadingNullEntityInSet\&.Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.Logs\&.LogsFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.MapFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1264\&.Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1891\&.Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2166\&.Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2664\&.Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH266\&.Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH266\&.UserFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH276\&.Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH276\&.JoinedSubclass\&.Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH280\&.Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH295\&.SubclassFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH309\&.Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH3139\&.Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH317\&.Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH318\&.Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH47Fixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH645\&.HQLFunctionFixtureBase\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NodeFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.OptimisticConcurrencyFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.SetFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.SimpleComponentFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.UnsavedValueFixture\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.UserTypeFixture\fP, \fBNHibernate\&.Test\&.Ondelete\&.JoinedSubclassFixture\fP, \fBNHibernate\&.Test\&.Ondelete\&.OnDeleteFixture\fP, \fBNHibernate\&.Test\&.Ondelete\&.ParentChildFixture\fP, \fBNHibernate\&.Test\&.Operations\&.AbstractOperationTestCase\fP, \fBNHibernate\&.Test\&.Pagination\&.CustomDialectFixture\fP, \fBNHibernate\&.Test\&.Pagination\&.PaginationFixture\fP, \fBNHibernate\&.Test\&.PolymorphicGetAndLoad\&.PolymorphicGetAndLoadTest\fP, \fBNHibernate\&.Test\&.ProjectionFixtures\&.Fixture\fP, \fBNHibernate\&.Test\&.PropertyRef\&.KeyPropertyRefFixture\fP, \fBNHibernate\&.Test\&.ProxyTest\&.NHibernateProxyHelperFixture\fP, \fBNHibernate\&.Test\&.QueryTest\&.AggregateReturnTypesFixture\fP, \fBNHibernate\&.Test\&.QueryTest\&.DetachedQueryFixture\fP, \fBNHibernate\&.Test\&.QueryTest\&.MultiCriteriaFixture\fP, \fBNHibernate\&.Test\&.QueryTest\&.MultipleMixedQueriesFixture\fP, \fBNHibernate\&.Test\&.QueryTest\&.MultipleQueriesFixture\fP, \fBNHibernate\&.Test\&.QueryTest\&.NamedParametersFixture\fP, \fBNHibernate\&.Test\&.QueryTest\&.PositionalParametersFixture\fP, \fBNHibernate\&.Test\&.ReadOnly\&.AbstractReadOnlyTest\fP, \fBNHibernate\&.Test\&.ReadOnly\&.ReadOnlySessionTest\fP, \fBNHibernate\&.Test\&.SecondLevelCacheTests\&.ScalarQueryFixture\fP, \fBNHibernate\&.Test\&.SecondLevelCacheTests\&.SecondLevelCacheTest\fP, \fBNHibernate\&.Test\&.SessionCacheTest\fP, \fBNHibernate\&.Test\&.SqlTest\&.Custom\&.CustomSQLSupportTest\fP, \fBNHibernate\&.Test\&.SqlTest\&.Identity\&.IdentityInsertWithStoredProcsTest\fP, \fBNHibernate\&.Test\&.SqlTest\&.Query\&.GeneralTest\fP, \fBNHibernate\&.Test\&.SqlTest\&.Query\&.SelfReferencingCollectionLoadTest\fP, \fBNHibernate\&.Test\&.Stateless\&.Fetching\&.StatelessSessionFetchingTest\fP, \fBNHibernate\&.Test\&.Stateless\&.StatelessSessionFixture\fP, \fBNHibernate\&.Test\&.Stateless\&.StatelessSessionQueryFixture\fP, \fBNHibernate\&.Test\&.Stateless\&.StatelessWithRelationsFixture\fP, \fBNHibernate\&.Test\&.Stats\&.SessionStatsFixture\fP, \fBNHibernate\&.Test\&.Stats\&.StatsFixture\fP, \fBNHibernate\&.Test\&.Subclass\&.EnumDiscriminator\&.EnumDiscriminatorFixture\fP, \fBNHibernate\&.Test\&.Subclass\&.SubclassFixture\fP, \fBNHibernate\&.Test\&.SubclassFilterTest\&.DiscrimSubclassFilterTest\fP, \fBNHibernate\&.Test\&.SubclassFilterTest\&.JoinedSubclassFilterTest\fP, \fBNHibernate\&.Test\&.Subselect\&.ClassSubselectFixture\fP, \fBNHibernate\&.Test\&.SubselectFetchTest\&.SubselectFetchFixture\fP, \fBNHibernate\&.Test\&.SystemTransactions\&.TransactionFixture\fP, \fBNHibernate\&.Test\&.SystemTransactions\&.TransactionNotificationFixture\fP, \fBNHibernate\&.Test\&.TestCaseMappingByCode\fP, \fBNHibernate\&.Test\&.TestTestCase\fP, \fBNHibernate\&.Test\&.TransactionTest\&.TransactionFixture\fP, \fBNHibernate\&.Test\&.TransactionTest\&.TransactionNotificationFixture\fP, \fBNHibernate\&.Test\&.TransformTests\&.AliasToBeanResultTransformerFixture\fP, \fBNHibernate\&.Test\&.TypedManyToOne\&.TypedManyToOneTest\fP, \fBNHibernate\&.Test\&.TypeParameters\&.DefinedTypeForIdFixture\fP, \fBNHibernate\&.Test\&.TypeParameters\&.TypeParameterTest\fP, \fBNHibernate\&.Test\&.TypesTest\&.Int64TypeFixture\fP, \fBNHibernate\&.Test\&.TypesTest\&.TypeFixtureBase\fP, \fBNHibernate\&.Test\&.Unconstrained\&.SimplyManyToOneIgnoreTest\fP, \fBNHibernate\&.Test\&.Unconstrained\&.UnconstrainedNoLazyTest\fP, \fBNHibernate\&.Test\&.Unionsubclass2\&.UnionSubclassFixture\fP, \fBNHibernate\&.Test\&.Unionsubclass\&.UnionSubclassFixture\fP, \fBNHibernate\&.Test\&.UserCollection\&.Parameterized\&.ParameterizedUserCollectionTypeFixture\fP, \fBNHibernate\&.Test\&.UserCollection\&.UserCollectionTypeTest\fP, \fBNHibernate\&.Test\&.VersionTest\&.Db\&.DbVersionFixture\fP, \fBNHibernate\&.Test\&.VersionTest\&.Db\&.MsSQL\&.ComplexDomainFixture\fP, \fBNHibernate\&.Test\&.VersionTest\&.Db\&.MsSQL\&.GeneratedBinaryVersionFixture\fP, and \fBNHibernate\&.Test\&.VersionTest\&.VersionFixture\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBTestFixtureSetUp\fP ()"
+.br
+.RI "\fICreates the tables used in this \fBTestCase\fP \fP"
+.ti -1c
+.RI "void \fBTestFixtureTearDown\fP ()"
+.br
+.RI "\fIRemoves the tables used in this \fBTestCase\fP\&. \fP"
+.ti -1c
+.RI "void \fBSetUp\fP ()"
+.br
+.RI "\fISet up the test\&. This method is not overridable, but it calls OnSetUp which is\&. \fP"
+.ti -1c
+.RI "void \fBTearDown\fP ()"
+.br
+.RI "\fIChecks that the test case cleans up after itself\&. This method is not overridable, but it calls OnTearDown which is\&. \fP"
+.ti -1c
+.RI "int \fBExecuteStatement\fP (string sql)"
+.br
+.ti -1c
+.RI "int \fBExecuteStatement\fP (\fBISession\fP session, \fBITransaction\fP transaction, string sql)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBOnSetUp\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnTearDown\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBCheckDatabaseWasCleaned\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBAddMappings\fP (\fBConfiguration\fP configuration)"
+.br
+.ti -1c
+.RI "virtual void \fBCreateSchema\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBDropSchema\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBBuildSessionFactory\fP ()"
+.br
+.ti -1c
+.RI "virtual \fBISession\fP \fBOpenSession\fP ()"
+.br
+.ti -1c
+.RI "virtual \fBISession\fP \fBOpenSession\fP (\fBIInterceptor\fP sessionLocalInterceptor)"
+.br
+.ti -1c
+.RI "virtual void \fBApplyCacheSettings\fP (\fBConfiguration\fP configuration)"
+.br
+.ti -1c
+.RI "virtual bool \fBAppliesTo\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.ti -1c
+.RI "virtual bool \fBAppliesTo\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "virtual void \fBConfigure\fP (\fBConfiguration\fP configuration)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBConfiguration\fP \fBcfg\fP"
+.br
+.ti -1c
+.RI "\fBISessionFactoryImplementor\fP \fBsessions\fP"
+.br
+.ti -1c
+.RI "\fBISession\fP \fBlastOpenedSession\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBDialect\&.Dialect\fP \fBDialect\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBTestDialect\fP \fBTestDialect\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsAntlrParser\fP\fC [get]\fP"
+.br
+.RI "\fITo use in in-line test \fP"
+.ti -1c
+.RI "abstract IList \fBMappings\fP\fC [get]\fP"
+.br
+.RI "\fI\fBMapping\fP files used in the \fBTestCase\fP \fP"
+.ti -1c
+.RI "virtual string \fBMappingsAssembly\fP\fC [get]\fP"
+.br
+.RI "\fIAssembly to load mapping files from (default is \fBNHibernate\&.DomainModel\fP)\&. \fP"
+.ti -1c
+.RI "\fBISessionFactoryImplementor\fP \fBSfi\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBCacheConcurrencyStrategy\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 18 of file TestCase\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Test\&.TestCase\&.SetUp ()"
+
+.PP
+Set up the test\&. This method is not overridable, but it calls OnSetUp which is\&. 
+.PP
+Definition at line 140 of file TestCase\&.cs\&.
+.SS "void NHibernate\&.Test\&.TestCase\&.TearDown ()"
+
+.PP
+Checks that the test case cleans up after itself\&. This method is not overridable, but it calls OnTearDown which is\&. 
+.PP
+Definition at line 154 of file TestCase\&.cs\&.
+.SS "void NHibernate\&.Test\&.TestCase\&.TestFixtureSetUp ()"
+
+.PP
+Creates the tables used in this \fBTestCase\fP 
+.PP
+Definition at line 73 of file TestCase\&.cs\&.
+.SS "void NHibernate\&.Test\&.TestCase\&.TestFixtureTearDown ()"
+
+.PP
+Removes the tables used in this \fBTestCase\fP\&. If the tables are not cleaned up sometimes SchemaExport runs into Sql errors because it can't drop tables because of the FKs\&. This will occur if the \fBTestCase\fP does not have the same hbm\&.xml files included as a previous one\&. 
+.PP
+Definition at line 116 of file TestCase\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.Test\&.TestCase\&.IsAntlrParser\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+To use in in-line test 
+.PP
+Definition at line 40 of file TestCase\&.cs\&.
+.SS "abstract IList NHibernate\&.Test\&.TestCase\&.Mappings\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+\fBMapping\fP files used in the \fBTestCase\fP 
+.PP
+Definition at line 53 of file TestCase\&.cs\&.
+.SS "virtual string NHibernate\&.Test\&.TestCase\&.MappingsAssembly\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Assembly to load mapping files from (default is \fBNHibernate\&.DomainModel\fP)\&. 
+.PP
+Definition at line 59 of file TestCase\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

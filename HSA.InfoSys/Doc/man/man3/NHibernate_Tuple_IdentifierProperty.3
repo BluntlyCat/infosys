@@ -1,0 +1,105 @@
+.TH "NHibernate.Tuple.IdentifierProperty" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Tuple.IdentifierProperty \- 
+.PP
+Represents a defined entity identifier property within the Hibernate runtime-metamodel\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Tuple\&.Property\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIdentifierProperty\fP (String name, String node, \fBIType\fP type, bool embedded, \fBIdentifierValue\fP unsavedValue, \fBIIdentifierGenerator\fP identifierGenerator)"
+.br
+.RI "\fIConstruct a non-virtual identifier property\&. \fP"
+.ti -1c
+.RI "\fBIdentifierProperty\fP (\fBIType\fP type, bool embedded, bool hasIdentifierMapper, \fBIdentifierValue\fP unsavedValue, \fBIIdentifierGenerator\fP identifierGenerator)"
+.br
+.RI "\fIConstruct a virtual \fBIdentifierProperty\fP\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsVirtual\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsEmbedded\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIdentifierValue\fP \fBUnsavedValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIIdentifierGenerator\fP \fBIdentifierGenerator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsIdentifierAssignedByInsert\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasIdentifierMapper\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Represents a defined entity identifier property within the Hibernate runtime-metamodel\&. 
+
+Author: Steve Ebersole 
+.PP
+Definition at line 16 of file IdentifierProperty\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Tuple\&.IdentifierProperty\&.IdentifierProperty (Stringname, Stringnode, \fBIType\fPtype, boolembedded, \fBIdentifierValue\fPunsavedValue, \fBIIdentifierGenerator\fPidentifierGenerator)"
+
+.PP
+Construct a non-virtual identifier property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the property representing the identifier within its owning entity\&.
+.br
+\fInode\fP The node name to use for XML-based representation of this property\&.
+.br
+\fItype\fP The Hibernate \fBType\fP for the identifier property\&.
+.br
+\fIembedded\fP Is this an embedded identifier\&.
+.br
+\fIunsavedValue\fP The value which, if found as the value on the identifier property, represents new (i\&.e\&., un-saved) instances of the owning entity\&.
+.br
+\fIidentifierGenerator\fP The generator to use for id value generation\&.
+.RE
+.PP
+
+.PP
+Definition at line 38 of file IdentifierProperty\&.cs\&.
+.SS "NHibernate\&.Tuple\&.IdentifierProperty\&.IdentifierProperty (\fBIType\fPtype, boolembedded, boolhasIdentifierMapper, \fBIdentifierValue\fPunsavedValue, \fBIIdentifierGenerator\fPidentifierGenerator)"
+
+.PP
+Construct a virtual \fBIdentifierProperty\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The Hibernate \fBType\fP for the identifier property\&.
+.br
+\fIembedded\fP Is this an embedded identifier\&.
+.br
+\fIunsavedValue\fP The value which, if found as the value on the identifier property, represents new (i\&.e\&., un-saved) instances of the owning entity\&.
+.br
+\fIidentifierGenerator\fP The generator to use for id value generation\&.
+.br
+\fIhasIdentifierMapper\fP 
+.RE
+.PP
+
+.PP
+Definition at line 64 of file IdentifierProperty\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

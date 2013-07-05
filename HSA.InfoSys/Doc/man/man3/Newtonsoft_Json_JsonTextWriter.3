@@ -1,0 +1,780 @@
+.TH "Newtonsoft.Json.JsonTextWriter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.JsonTextWriter \- 
+.PP
+Represents a writer that provides a fast, non-cached, forward-only way of generating \fBJson\fP data\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJsonTextWriter\fP (TextWriter textWriter)"
+.br
+.RI "\fICreates an instance of the \fC\fBJsonWriter\fP\fP class using the specified TextWriter\&. \fP"
+.ti -1c
+.RI "override void \fBFlush\fP ()"
+.br
+.RI "\fIFlushes whatever is in the buffer to the underlying streams and also flushes the underlying stream\&. \fP"
+.ti -1c
+.RI "override void \fBClose\fP ()"
+.br
+.RI "\fICloses this stream and the underlying stream\&. \fP"
+.ti -1c
+.RI "override void \fBWriteStartObject\fP ()"
+.br
+.RI "\fIWrites the beginning of a \fBJson\fP object\&. \fP"
+.ti -1c
+.RI "override void \fBWriteStartArray\fP ()"
+.br
+.RI "\fIWrites the beginning of a \fBJson\fP array\&. \fP"
+.ti -1c
+.RI "override void \fBWriteStartConstructor\fP (string name)"
+.br
+.RI "\fIWrites the start of a constructor with the given name\&. \fP"
+.ti -1c
+.RI "override void \fBWritePropertyName\fP (string name)"
+.br
+.RI "\fIWrites the property name of a name/value pair on a \fBJson\fP object\&. \fP"
+.ti -1c
+.RI "override void \fBWritePropertyName\fP (string name, bool escape)"
+.br
+.RI "\fIWrites the property name of a name/value pair on a JSON object\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (object value)"
+.br
+.RI "\fIWrites a Object value\&. An error will raised if the value cannot be written as a single JSON token\&. \fP"
+.ti -1c
+.RI "override void \fBWriteNull\fP ()"
+.br
+.RI "\fIWrites a null value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteUndefined\fP ()"
+.br
+.RI "\fIWrites an undefined value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteRaw\fP (string json)"
+.br
+.RI "\fIWrites raw JSON\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (string value)"
+.br
+.RI "\fIWrites a \fBString\fP value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (int value)"
+.br
+.RI "\fIWrites a Int32 value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (uint value)"
+.br
+.RI "\fIWrites a UInt32 value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (long value)"
+.br
+.RI "\fIWrites a Int64 value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (ulong value)"
+.br
+.RI "\fIWrites a UInt64 value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (float value)"
+.br
+.RI "\fIWrites a Single value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (float?value)"
+.br
+.RI "\fIWrites a Nullable{Single} value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (double value)"
+.br
+.RI "\fIWrites a \fBDouble\fP value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (double?value)"
+.br
+.RI "\fIWrites a Nullable{Double} value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (bool value)"
+.br
+.RI "\fIWrites a \fBBoolean\fP value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (short value)"
+.br
+.RI "\fIWrites a Int16 value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (ushort value)"
+.br
+.RI "\fIWrites a UInt16 value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (char value)"
+.br
+.RI "\fIWrites a Char value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (byte value)"
+.br
+.RI "\fIWrites a Byte value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (sbyte value)"
+.br
+.RI "\fIWrites a SByte value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (decimal value)"
+.br
+.RI "\fIWrites a \fBDecimal\fP value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (\fBDateTime\fP value)"
+.br
+.RI "\fIWrites a \fBDateTime\fP value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (byte[] value)"
+.br
+.RI "\fIWrites a T:Byte[] value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (\fBDateTimeOffset\fP value)"
+.br
+.RI "\fIWrites a \fBDateTimeOffset\fP value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (Guid value)"
+.br
+.RI "\fIWrites a Guid value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (TimeSpan value)"
+.br
+.RI "\fIWrites a TimeSpan value\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValue\fP (Uri value)"
+.br
+.RI "\fIWrites a Uri value\&. \fP"
+.ti -1c
+.RI "</code > containing the 
+.br
+specified text\&.*</summary > *
+.br
+< paramname='text'> Text to 
+.br
+place inside the comment\&.
+.br
+</param > *override void \fBWriteComment\fP (string text)"
+.br
+.RI "\fIWrites out a comment \fP"
+.ti -1c
+.RI "override void \fBWriteWhitespace\fP (string ws)"
+.br
+.RI "\fIWrites out the given white space\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBWriteEnd\fP (\fBJsonToken\fP token)"
+.br
+.RI "\fIWrites the specified end token\&. \fP"
+.ti -1c
+.RI "override void \fBWriteIndent\fP ()"
+.br
+.RI "\fIWrites indent characters\&. \fP"
+.ti -1c
+.RI "override void \fBWriteValueDelimiter\fP ()"
+.br
+.RI "\fIWrites the JSON value delimiter\&. \fP"
+.ti -1c
+.RI "override void \fBWriteIndentSpace\fP ()"
+.br
+.RI "\fIWrites an indent space\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBIndentation\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets how many IndentChars to write for each level in the hierarchy when \fBFormatting\fP is set to \fCFormatting\&.Indented\fP\&. \fP"
+.ti -1c
+.RI "char \fBQuoteChar\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets which character to use to quote attribute values\&. \fP"
+.ti -1c
+.RI "char \fBIndentChar\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets which character to use for indenting when \fBFormatting\fP is set to \fCFormatting\&.Indented\fP\&. \fP"
+.ti -1c
+.RI "bool \fBQuoteName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether object names will be surrounded with quotes\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a writer that provides a fast, non-cached, forward-only way of generating \fBJson\fP data\&. 
+
+
+.PP
+Definition at line 42 of file JsonTextWriter\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Newtonsoft\&.Json\&.JsonTextWriter\&.JsonTextWriter (TextWritertextWriter)"
+
+.PP
+Creates an instance of the \fC\fBJsonWriter\fP\fP class using the specified TextWriter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItextWriter\fP The \fCTextWriter\fP to write to\&.
+.RE
+.PP
+
+.PP
+Definition at line 117 of file JsonTextWriter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.Close ()\fC [virtual]\fP"
+
+.PP
+Closes this stream and the underlying stream\&. 
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 142 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.Flush ()\fC [virtual]\fP"
+
+.PP
+Flushes whatever is in the buffer to the underlying streams and also flushes the underlying stream\&. 
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 134 of file JsonTextWriter\&.cs\&.
+.SS "</code> containing the specified text\&.*</summary> *<paramname='text'> Text to place inside the comment\&.</param> * override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteComment (stringtext)\fC [virtual]\fP"
+
+.PP
+Writes out a comment \fC/*\&.\&.\&. \fP
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 663 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteEnd (\fBJsonToken\fPtoken)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Writes the specified end token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItoken\fP The end token to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 191 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteIndent ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Writes indent characters\&. 
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 267 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteIndentSpace ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Writes an indent space\&. 
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 296 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteNull ()\fC [virtual]\fP"
+
+.PP
+Writes a null value\&. 
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 330 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WritePropertyName (stringname)\fC [virtual]\fP"
+
+.PP
+Writes the property name of a name/value pair on a \fBJson\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the property\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 213 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WritePropertyName (stringname, boolescape)\fC [virtual]\fP"
+
+.PP
+Writes the property name of a name/value pair on a JSON object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the property\&.
+.br
+\fIescape\fP A flag to indicate whether the text should be escaped when it is written as a JSON property name\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 227 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteRaw (stringjson)\fC [virtual]\fP"
+
+.PP
+Writes raw JSON\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIjson\fP The raw JSON to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 349 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteStartArray ()\fC [virtual]\fP"
+
+.PP
+Writes the beginning of a \fBJson\fP array\&. 
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 167 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteStartConstructor (stringname)\fC [virtual]\fP"
+
+.PP
+Writes the start of a constructor with the given name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the constructor\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 178 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteStartObject ()\fC [virtual]\fP"
+
+.PP
+Writes the beginning of a \fBJson\fP object\&. 
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 157 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteUndefined ()\fC [virtual]\fP"
+
+.PP
+Writes an undefined value\&. 
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 339 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (objectvalue)\fC [virtual]\fP"
+
+.PP
+Writes a Object value\&. An error will raised if the value cannot be written as a single JSON token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The Object value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 312 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (stringvalue)\fC [virtual]\fP"
+
+.PP
+Writes a \fBString\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The \fBString\fP value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 360 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (intvalue)\fC [virtual]\fP"
+
+.PP
+Writes a Int32 value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The Int32 value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 380 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (uintvalue)\fC [virtual]\fP"
+
+.PP
+Writes a UInt32 value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The UInt32 value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 391 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (longvalue)\fC [virtual]\fP"
+
+.PP
+Writes a Int64 value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The Int64 value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 401 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (ulongvalue)\fC [virtual]\fP"
+
+.PP
+Writes a UInt64 value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The UInt64 value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 412 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (floatvalue)\fC [virtual]\fP"
+
+.PP
+Writes a Single value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The Single value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 422 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (float?value)\fC [virtual]\fP"
+
+.PP
+Writes a Nullable{Single} value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The Nullable{Single} value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 432 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (doublevalue)\fC [virtual]\fP"
+
+.PP
+Writes a \fBDouble\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The \fBDouble\fP value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 449 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (double?value)\fC [virtual]\fP"
+
+.PP
+Writes a Nullable{Double} value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The Nullable{Double} value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 459 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (boolvalue)\fC [virtual]\fP"
+
+.PP
+Writes a \fBBoolean\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The \fBBoolean\fP value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 476 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (shortvalue)\fC [virtual]\fP"
+
+.PP
+Writes a Int16 value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The Int16 value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 486 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (ushortvalue)\fC [virtual]\fP"
+
+.PP
+Writes a UInt16 value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The UInt16 value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 497 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (charvalue)\fC [virtual]\fP"
+
+.PP
+Writes a Char value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The Char value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 507 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (bytevalue)\fC [virtual]\fP"
+
+.PP
+Writes a Byte value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The Byte value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 517 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (sbytevalue)\fC [virtual]\fP"
+
+.PP
+Writes a SByte value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The SByte value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 528 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (decimalvalue)\fC [virtual]\fP"
+
+.PP
+Writes a \fBDecimal\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The \fBDecimal\fP value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 538 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (\fBDateTime\fPvalue)\fC [virtual]\fP"
+
+.PP
+Writes a \fBDateTime\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The \fBDateTime\fP value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 548 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (byte[]value)\fC [virtual]\fP"
+
+.PP
+Writes a T:Byte[] value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The T:Byte[] value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 576 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (\fBDateTimeOffset\fPvalue)\fC [virtual]\fP"
+
+.PP
+Writes a \fBDateTimeOffset\fP value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The \fBDateTimeOffset\fP value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 597 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (Guidvalue)\fC [virtual]\fP"
+
+.PP
+Writes a Guid value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The Guid value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 625 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (TimeSpanvalue)\fC [virtual]\fP"
+
+.PP
+Writes a TimeSpan value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The TimeSpan value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 635 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValue (Urivalue)\fC [virtual]\fP"
+
+.PP
+Writes a Uri value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The Uri value to write\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 645 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteValueDelimiter ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Writes the JSON value delimiter\&. 
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 288 of file JsonTextWriter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.JsonTextWriter\&.WriteWhitespace (stringws)\fC [virtual]\fP"
+
+.PP
+Writes out the given white space\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIws\fP The string of white space characters\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNewtonsoft\&.Json\&.JsonWriter\fP\&.
+.PP
+Definition at line 676 of file JsonTextWriter\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int Newtonsoft\&.Json\&.JsonTextWriter\&.Indentation\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets how many IndentChars to write for each level in the hierarchy when \fBFormatting\fP is set to \fCFormatting\&.Indented\fP\&. 
+.PP
+Definition at line 68 of file JsonTextWriter\&.cs\&.
+.SS "char Newtonsoft\&.Json\&.JsonTextWriter\&.IndentChar\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets which character to use for indenting when \fBFormatting\fP is set to \fCFormatting\&.Indented\fP\&. 
+.PP
+Definition at line 99 of file JsonTextWriter\&.cs\&.
+.SS "char Newtonsoft\&.Json\&.JsonTextWriter\&.QuoteChar\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets which character to use to quote attribute values\&. 
+.PP
+Definition at line 83 of file JsonTextWriter\&.cs\&.
+.SS "bool Newtonsoft\&.Json\&.JsonTextWriter\&.QuoteName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether object names will be surrounded with quotes\&. 
+.PP
+Definition at line 108 of file JsonTextWriter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

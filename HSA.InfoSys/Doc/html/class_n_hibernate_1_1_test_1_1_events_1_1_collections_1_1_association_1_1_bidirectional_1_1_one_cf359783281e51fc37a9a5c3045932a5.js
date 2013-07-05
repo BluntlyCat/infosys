@@ -1,0 +1,6 @@
+var class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_one_cf359783281e51fc37a9a5c3045932a5 =
+[
+    [ "CreateCollection", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_one_cf359783281e51fc37a9a5c3045932a5.html#a2e3d06e08d4ea29e2198370a8d2e793a", null ],
+    [ "CreateParent", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_one_cf359783281e51fc37a9a5c3045932a5.html#a1c984a589fc8d2057e4e7208bcd16a09", null ],
+    [ "Mappings", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_association_1_1_bidirectional_1_1_one_cf359783281e51fc37a9a5c3045932a5.html#a8cccbae7e9a1fc68fb8b24f7f00594aa", null ]
+];

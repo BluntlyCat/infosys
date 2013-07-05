@@ -1,0 +1,423 @@
+.TH "NHibernate.IMultiCriteria" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.IMultiCriteria \- 
+.PP
+Combines several queries into a single DB call  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "IList \fBList\fP ()"
+.br
+.RI "\fIGet all the results \fP"
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBAdd\fP (System\&.Type resultGenericListType, \fBICriteria\fP criteria)"
+.br
+.RI "\fIAdds the specified criteria to the query\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} \fP"
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBAdd< T >\fP (\fBICriteria\fP criteria)"
+.br
+.RI "\fIAdds the specified criteria to the query\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} \fP"
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBAdd< T >\fP (string key, \fBICriteria\fP criteria)"
+.br
+.RI "\fIAdds the specified criteria to the query, and associates it with the given key\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} \fP"
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBAdd< T >\fP (\fBDetachedCriteria\fP detachedCriteria)"
+.br
+.RI "\fIAdds the specified detached criteria\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} \fP"
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBAdd< T >\fP (string key, \fBDetachedCriteria\fP detachedCriteria)"
+.br
+.RI "\fIAdds the specified detached criteria, and associates it with the given key\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} \fP"
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBAdd\fP (\fBICriteria\fP criteria)"
+.br
+.RI "\fIAdds the specified criteria to the query \fP"
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBAdd\fP (string key, \fBICriteria\fP criteria)"
+.br
+.RI "\fIAdds the specified criteria to the query, and associates it with the given key \fP"
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBAdd\fP (\fBDetachedCriteria\fP detachedCriteria)"
+.br
+.RI "\fIAdds the specified detached criteria\&. \fP"
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBAdd\fP (string key, \fBDetachedCriteria\fP detachedCriteria)"
+.br
+.RI "\fIAdds the specified detached criteria, and associates it with the given key \fP"
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBAdd\fP (System\&.Type resultGenericListType, \fBIQueryOver\fP queryOver)"
+.br
+.RI "\fIAdds the specified \fBIQueryOver\fP to the query\&. The result will be contained in a System\&.Collections\&.Generic\&.List{resultGenericListType} \fP"
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBAdd< T >\fP (\fBIQueryOver\fP< T > queryOver)"
+.br
+.RI "\fIAdds the specified \fBIQueryOver\fP to the query\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} \fP"
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBAdd< U >\fP (\fBIQueryOver\fP queryOver)"
+.br
+.RI "\fIAdds the specified \fBIQueryOver\fP to the query\&. The result will be contained in a System\&.Collections\&.Generic\&.List{U} \fP"
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBAdd< T >\fP (string key, \fBIQueryOver\fP< T > queryOver)"
+.br
+.RI "\fIAdds the specified \fBIQueryOver\fP to the query, and associates it with the given key\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} \fP"
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBAdd< U >\fP (string key, \fBIQueryOver\fP queryOver)"
+.br
+.RI "\fIAdds the specified \fBIQueryOver\fP to the query, and associates it with the given key\&. The result will be contained in a System\&.Collections\&.Generic\&.List{U} \fP"
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBSetCacheable\fP (bool cachable)"
+.br
+.RI "\fISets whatevert this criteria is cacheable\&. \fP"
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBSetCacheRegion\fP (string region)"
+.br
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBForceCacheRefresh\fP (bool forceRefresh)"
+.br
+.ti -1c
+.RI "\fBIMultiCriteria\fP \fBSetResultTransformer\fP (\fBIResultTransformer\fP resultTransformer)"
+.br
+.RI "\fISets the result transformer for all the results in this mutli criteria instance \fP"
+.ti -1c
+.RI "object \fBGetResult\fP (string key)"
+.br
+.RI "\fIReturns the result of one of the Criteria based on the key \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Combines several queries into a single DB call 
+
+
+.PP
+Definition at line 10 of file IMultiCriteria\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIMultiCriteria\fP NHibernate\&.IMultiCriteria\&.Add (System\&.TyperesultGenericListType, \fBICriteria\fPcriteria)"
+
+.PP
+Adds the specified criteria to the query\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIresultGenericListType\fP Return results in a System\&.Collections\&.Generic\&.List{resultGenericListType}
+.br
+\fIcriteria\fP The criteria\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "\fBIMultiCriteria\fP NHibernate\&.IMultiCriteria\&.Add (\fBICriteria\fPcriteria)"
+
+.PP
+Adds the specified criteria to the query 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcriteria\fP The criteria\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "\fBIMultiCriteria\fP NHibernate\&.IMultiCriteria\&.Add (stringkey, \fBICriteria\fPcriteria)"
+
+.PP
+Adds the specified criteria to the query, and associates it with the given key 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key
+.br
+\fIcriteria\fP The criteria
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "\fBIMultiCriteria\fP NHibernate\&.IMultiCriteria\&.Add (\fBDetachedCriteria\fPdetachedCriteria)"
+
+.PP
+Adds the specified detached criteria\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdetachedCriteria\fP The detached criteria\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "\fBIMultiCriteria\fP NHibernate\&.IMultiCriteria\&.Add (stringkey, \fBDetachedCriteria\fPdetachedCriteria)"
+
+.PP
+Adds the specified detached criteria, and associates it with the given key 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key
+.br
+\fIdetachedCriteria\fP The detached criteria
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "\fBIMultiCriteria\fP NHibernate\&.IMultiCriteria\&.Add (System\&.TyperesultGenericListType, \fBIQueryOver\fPqueryOver)"
+
+.PP
+Adds the specified \fBIQueryOver\fP to the query\&. The result will be contained in a System\&.Collections\&.Generic\&.List{resultGenericListType} 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIresultGenericListType\fP Return results in a System\&.Collections\&.Generic\&.List{resultGenericListType}
+.br
+\fIqueryOver\fP The \fBIQueryOver\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "\fBIMultiCriteria\fP \fBNHibernate\&.IMultiCriteria\&.Add\fP< T > (\fBICriteria\fPcriteria)"
+
+.PP
+Adds the specified criteria to the query\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcriteria\fP The criteria\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "\fBIMultiCriteria\fP \fBNHibernate\&.IMultiCriteria\&.Add\fP< T > (stringkey, \fBICriteria\fPcriteria)"
+
+.PP
+Adds the specified criteria to the query, and associates it with the given key\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key
+.br
+\fIcriteria\fP The criteria
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "\fBIMultiCriteria\fP \fBNHibernate\&.IMultiCriteria\&.Add\fP< T > (\fBDetachedCriteria\fPdetachedCriteria)"
+
+.PP
+Adds the specified detached criteria\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdetachedCriteria\fP The detached criteria\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "\fBIMultiCriteria\fP \fBNHibernate\&.IMultiCriteria\&.Add\fP< T > (stringkey, \fBDetachedCriteria\fPdetachedCriteria)"
+
+.PP
+Adds the specified detached criteria, and associates it with the given key\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key
+.br
+\fIdetachedCriteria\fP The detached criteria
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "\fBIMultiCriteria\fP \fBNHibernate\&.IMultiCriteria\&.Add\fP< T > (\fBIQueryOver\fP< T >queryOver)"
+
+.PP
+Adds the specified \fBIQueryOver\fP to the query\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryOver\fP The \fBIQueryOver\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "\fBIMultiCriteria\fP \fBNHibernate\&.IMultiCriteria\&.Add\fP< T > (stringkey, \fBIQueryOver\fP< T >queryOver)"
+
+.PP
+Adds the specified \fBIQueryOver\fP to the query, and associates it with the given key\&. The result will be contained in a System\&.Collections\&.Generic\&.List{T} 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key
+.br
+\fIqueryOver\fP The \fBIQueryOver\fP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "\fBIMultiCriteria\fP \fBNHibernate\&.IMultiCriteria\&.Add\fP< U > (\fBIQueryOver\fPqueryOver)"
+
+.PP
+Adds the specified \fBIQueryOver\fP to the query\&. The result will be contained in a System\&.Collections\&.Generic\&.List{U} 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryOver\fP The \fBIQueryOver\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "\fBIMultiCriteria\fP \fBNHibernate\&.IMultiCriteria\&.Add\fP< U > (stringkey, \fBIQueryOver\fPqueryOver)"
+
+.PP
+Adds the specified \fBIQueryOver\fP to the query, and associates it with the given key\&. The result will be contained in a System\&.Collections\&.Generic\&.List{U} 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key
+.br
+\fIqueryOver\fP The \fBIQueryOver\fP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "object NHibernate\&.IMultiCriteria\&.GetResult (stringkey)"
+
+.PP
+Returns the result of one of the Criteria based on the key 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "IList NHibernate\&.IMultiCriteria\&.List ()"
+
+.PP
+Get all the results 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "\fBIMultiCriteria\fP NHibernate\&.IMultiCriteria\&.SetCacheable (boolcachable)"
+
+.PP
+Sets whatevert this criteria is cacheable\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcachable\fP if set to \fCtrue\fP [cachable]\&.
+.RE
+.PP
+summary> Set the cache region for thie criteria /summary> param name='region'>The region
+.PP
+returns>
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "\fBIMultiCriteria\fP NHibernate\&.IMultiCriteria\&.SetCacheRegion (stringregion)"
+summary> Force a cache refresh /summary> param name='forceRefresh'>
+.PP
+returns>
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+.SS "\fBIMultiCriteria\fP NHibernate\&.IMultiCriteria\&.SetResultTransformer (\fBIResultTransformer\fPresultTransformer)"
+
+.PP
+Sets the result transformer for all the results in this mutli criteria instance 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIresultTransformer\fP The result transformer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Impl\&.MultiCriteriaImpl\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

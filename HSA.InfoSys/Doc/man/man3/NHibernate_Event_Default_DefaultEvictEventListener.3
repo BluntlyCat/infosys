@@ -1,0 +1,56 @@
+.TH "NHibernate.Event.Default.DefaultEvictEventListener" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.Default.DefaultEvictEventListener \- 
+.PP
+Defines the default evict event listener used by hibernate for evicting entities in response to generated flush events\&. In particular, this implementation will remove any hard references to the entity that are held by the infrastructure (references held by application or other persistent instances are okay)  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Event\&.IEvictEventListener\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBOnEvict\fP (\fBEvictEvent\fP @event)"
+.br
+.RI "\fIHandle the given evict event\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBDoEvict\fP (object obj, \fBEntityKey\fP key, \fBIEntityPersister\fP persister, \fBIEventSource\fP session)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the default evict event listener used by hibernate for evicting entities in response to generated flush events\&. In particular, this implementation will remove any hard references to the entity that are held by the infrastructure (references held by application or other persistent instances are okay) 
+
+
+.PP
+Definition at line 17 of file DefaultEvictEventListener\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Event\&.Default\&.DefaultEvictEventListener\&.OnEvict (\fBEvictEvent\fP @event)\fC [virtual]\fP"
+
+.PP
+Handle the given evict event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The evict event to be handled\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Event\&.IEvictEventListener\fP\&.
+.PP
+Definition at line 21 of file DefaultEvictEventListener\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

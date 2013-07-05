@@ -1,0 +1,127 @@
+.TH "NHibernate.Event.Default.AbstractFlushingEventListener" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.Default.AbstractFlushingEventListener \- 
+.PP
+A convenience base class for listeners whose functionality results in flushing\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Event\&.Default\&.DefaultAutoFlushEventListener\fP, \fBNHibernate\&.Event\&.Default\&.DefaultDirtyCheckEventListener\fP, and \fBNHibernate\&.Event\&.Default\&.DefaultFlushEventListener\fP\&.
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBFlushEverythingToExecutions\fP (\fBFlushEvent\fP @event)"
+.br
+.RI "\fICoordinates the processing necessary to get things ready for executions as db calls by preparing the session caches and moving the appropriate entities and collections to their respective execution queues\&. \fP"
+.ti -1c
+.RI "virtual void \fBFlushCollections\fP (\fBIEventSource\fP session)"
+.br
+.ti -1c
+.RI "virtual void \fBFlushEntities\fP (\fBFlushEvent\fP @event)"
+.br
+.ti -1c
+.RI "virtual void \fBPrepareCollectionFlushes\fP (\fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "virtual void \fBPrepareEntityFlushes\fP (\fBIEventSource\fP session)"
+.br
+.ti -1c
+.RI "virtual void \fBCascadeOnFlush\fP (\fBIEventSource\fP session, \fBIEntityPersister\fP persister, object key, object anything)"
+.br
+.ti -1c
+.RI "virtual void \fBPerformExecutions\fP (\fBIEventSource\fP session)"
+.br
+.RI "\fIExecute all SQL and second-level cache updates, in a special order so that foreign-key constraints cannot be violated: 
+.PD 0
+
+.IP "\(bu" 2
+Inserts, in the order they were performed  
+.IP "\(bu" 2
+Updates  
+.IP "\(bu" 2
+Deletion of collection elements  
+.IP "\(bu" 2
+Insertion of collection elements  
+.IP "\(bu" 2
+Deletes, in the order they were performed  
+.PP
+\fP"
+.ti -1c
+.RI "virtual void \fBPostFlush\fP (\fBISessionImplementor\fP session)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual object \fBAnything\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBCascadingAction\fP \fBCascadingAction\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A convenience base class for listeners whose functionality results in flushing\&. 
+
+
+.PP
+Definition at line 19 of file AbstractFlushingEventListener\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Event\&.Default\&.AbstractFlushingEventListener\&.FlushEverythingToExecutions (\fBFlushEvent\fP @event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Coordinates the processing necessary to get things ready for executions as db calls by preparing the session caches and moving the appropriate entities and collections to their respective execution queues\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The flush event\&.
+.RE
+.PP
+
+.PP
+Definition at line 39 of file AbstractFlushingEventListener\&.cs\&.
+.SS "virtual void NHibernate\&.Event\&.Default\&.AbstractFlushingEventListener\&.PerformExecutions (\fBIEventSource\fPsession)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Execute all SQL and second-level cache updates, in a special order so that foreign-key constraints cannot be violated: 
+.PD 0
+
+.IP "\(bu" 2
+Inserts, in the order they were performed  
+.IP "\(bu" 2
+Updates  
+.IP "\(bu" 2
+Deletion of collection elements  
+.IP "\(bu" 2
+Insertion of collection elements  
+.IP "\(bu" 2
+Deletes, in the order they were performed  
+.PP
+
+.PP
+Definition at line 227 of file AbstractFlushingEventListener\&.cs\&.
+.SS "virtual void NHibernate\&.Event\&.Default\&.AbstractFlushingEventListener\&.PostFlush (\fBISessionImplementor\fPsession)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+
+.IP "1." 4
+Recreate the collection key -> collection map
+.IP "2." 4
+rebuild the collection entries
+.IP "3." 4
+call Interceptor\&.postFlush() 
+.PP
+
+.PP
+Definition at line 262 of file AbstractFlushingEventListener\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

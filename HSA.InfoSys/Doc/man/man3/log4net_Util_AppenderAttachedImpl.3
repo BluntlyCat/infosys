@@ -1,0 +1,221 @@
+.TH "log4net.Util.AppenderAttachedImpl" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.AppenderAttachedImpl \- 
+.PP
+A straightforward implementation of the IAppenderAttachable interface\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Core\&.IAppenderAttachable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAppenderAttachedImpl\fP ()"
+.br
+.RI "\fIConstructor \fP"
+.ti -1c
+.RI "int \fBAppendLoopOnAppenders\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIAppend on on all attached appenders\&. \fP"
+.ti -1c
+.RI "int \fBAppendLoopOnAppenders\fP (\fBLoggingEvent\fP[] loggingEvents)"
+.br
+.RI "\fIAppend on on all attached appenders\&. \fP"
+.ti -1c
+.RI "void \fBAddAppender\fP (\fBIAppender\fP newAppender)"
+.br
+.RI "\fIAttaches an appender\&. \fP"
+.ti -1c
+.RI "\fBIAppender\fP \fBGetAppender\fP (string name)"
+.br
+.RI "\fIGets an attached appender with the specified name\&. \fP"
+.ti -1c
+.RI "void \fBRemoveAllAppenders\fP ()"
+.br
+.RI "\fIRemoves all attached appenders\&. \fP"
+.ti -1c
+.RI "\fBIAppender\fP \fBRemoveAppender\fP (\fBIAppender\fP appender)"
+.br
+.RI "\fIRemoves the specified appender from the list of attached appenders\&. \fP"
+.ti -1c
+.RI "\fBIAppender\fP \fBRemoveAppender\fP (string name)"
+.br
+.RI "\fIRemoves the appender with the specified name from the list of appenders\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBAppenderCollection\fP \fBAppenders\fP\fC [get]\fP"
+.br
+.RI "\fIGets all attached appenders\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A straightforward implementation of the IAppenderAttachable interface\&. 
+
+This is the default implementation of the IAppenderAttachable interface\&. Implementors of the IAppenderAttachable interface should aggregate an instance of this type\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 39 of file AppenderAttachedImpl\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Util\&.AppenderAttachedImpl\&.AppenderAttachedImpl ()"
+
+.PP
+Constructor Initializes a new instance of the \fBAppenderAttachedImpl\fP class\&. 
+.PP
+Definition at line 51 of file AppenderAttachedImpl\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Util\&.AppenderAttachedImpl\&.AddAppender (\fBIAppender\fPnewAppender)"
+
+.PP
+Attaches an appender\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewAppender\fP The appender to add\&.
+.RE
+.PP
+.PP
+If the appender is already in the list it won't be added again\&. 
+.PP
+Implements \fBlog4net\&.Core\&.IAppenderAttachable\fP\&.
+.PP
+Definition at line 201 of file AppenderAttachedImpl\&.cs\&.
+.SS "int log4net\&.Util\&.AppenderAttachedImpl\&.AppendLoopOnAppenders (\fBLoggingEvent\fPloggingEvent)"
+
+.PP
+Append on on all attached appenders\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP The event being logged\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of appenders called\&.
+.RE
+.PP
+.PP
+Calls the IAppender\&.DoAppend method on all attached appenders\&. 
+.PP
+Definition at line 70 of file AppenderAttachedImpl\&.cs\&.
+.SS "int log4net\&.Util\&.AppenderAttachedImpl\&.AppendLoopOnAppenders (\fBLoggingEvent\fP[]loggingEvents)"
+
+.PP
+Append on on all attached appenders\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvents\fP The array of events being logged\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of appenders called\&.
+.RE
+.PP
+.PP
+Calls the IAppender\&.DoAppend method on all attached appenders\&. 
+.PP
+Definition at line 113 of file AppenderAttachedImpl\&.cs\&.
+.SS "\fBIAppender\fP log4net\&.Util\&.AppenderAttachedImpl\&.GetAppender (stringname)"
+
+.PP
+Gets an attached appender with the specified name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the appender to get\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appender with the name specified, or \fCnull\fP if no appender with the specified name is found\&. 
+.RE
+.PP
+.PP
+Lookup an attached appender by name\&. 
+.PP
+Implements \fBlog4net\&.Core\&.IAppenderAttachable\fP\&.
+.PP
+Definition at line 261 of file AppenderAttachedImpl\&.cs\&.
+.SS "void log4net\&.Util\&.AppenderAttachedImpl\&.RemoveAllAppenders ()"
+
+.PP
+Removes all attached appenders\&. Removes and closes all attached appenders 
+.PP
+Implements \fBlog4net\&.Core\&.IAppenderAttachable\fP\&.
+.PP
+Definition at line 284 of file AppenderAttachedImpl\&.cs\&.
+.SS "\fBIAppender\fP log4net\&.Util\&.AppenderAttachedImpl\&.RemoveAppender (\fBIAppender\fPappender)"
+
+.PP
+Removes the specified appender from the list of attached appenders\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIappender\fP The appender to remove\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appender removed from the list
+.RE
+.PP
+.PP
+The appender removed is not closed\&. If you are discarding the appender you must call IAppender\&.Close on the appender removed\&. 
+.PP
+Implements \fBlog4net\&.Core\&.IAppenderAttachable\fP\&.
+.PP
+Definition at line 316 of file AppenderAttachedImpl\&.cs\&.
+.SS "\fBIAppender\fP log4net\&.Util\&.AppenderAttachedImpl\&.RemoveAppender (stringname)"
+
+.PP
+Removes the appender with the specified name from the list of appenders\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the appender to remove\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appender removed from the list
+.RE
+.PP
+.PP
+The appender removed is not closed\&. If you are discarding the appender you must call IAppender\&.Close on the appender removed\&. 
+.PP
+Implements \fBlog4net\&.Core\&.IAppenderAttachable\fP\&.
+.PP
+Definition at line 342 of file AppenderAttachedImpl\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBAppenderCollection\fP log4net\&.Util\&.AppenderAttachedImpl\&.Appenders\fC [get]\fP"
+
+.PP
+Gets all attached appenders\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A collection of attached appenders, or \fCnull\fP if there are no attached appenders\&. 
+.RE
+.PP
+.PP
+The read only collection of all currently attached appenders\&. 
+.PP
+Definition at line 233 of file AppenderAttachedImpl\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

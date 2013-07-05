@@ -1,0 +1,6 @@
+var namespace_n_hibernate_1_1_test_1_1_dialect_test_1_1_function_tests =
+[
+    [ "SequenceSupportFixture", "class_n_hibernate_1_1_test_1_1_dialect_test_1_1_function_tests_1_1_sequence_support_fixture.html", "class_n_hibernate_1_1_test_1_1_dialect_test_1_1_function_tests_1_1_sequence_support_fixture" ],
+    [ "SerializableTypesFixture", "class_n_hibernate_1_1_test_1_1_dialect_test_1_1_function_tests_1_1_serializable_types_fixture.html", "class_n_hibernate_1_1_test_1_1_dialect_test_1_1_function_tests_1_1_serializable_types_fixture" ],
+    [ "SubstringSupportFixture", "class_n_hibernate_1_1_test_1_1_dialect_test_1_1_function_tests_1_1_substring_support_fixture.html", "class_n_hibernate_1_1_test_1_1_dialect_test_1_1_function_tests_1_1_substring_support_fixture" ]
+];

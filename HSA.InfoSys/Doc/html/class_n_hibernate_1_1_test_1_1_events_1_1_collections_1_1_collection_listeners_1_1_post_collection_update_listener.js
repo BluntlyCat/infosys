@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_collection_listeners_1_1_post_collection_update_listener =
+[
+    [ "PostCollectionUpdateListener", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_collection_listeners_1_1_post_collection_update_listener.html#a94517ae56393fca70beb26e62063f94b", null ],
+    [ "OnPostUpdateCollection", "class_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_collection_listeners_1_1_post_collection_update_listener.html#a60e65d122742e349330e040da03a89f6", null ]
+];

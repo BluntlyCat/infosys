@@ -1,0 +1,71 @@
+.TH "NHibernate.SqlCommand.SubselectClauseExtractor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.SqlCommand.SubselectClauseExtractor \- 
+.PP
+Given an SQL SELECT statement, parse it to extract clauses starting with \fCFROM\fP, up to and not including \fCORDER BY\fP (known collectively as a subselect clause)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSubselectClauseExtractor\fP (\fBSqlString\fP sql)"
+.br
+.RI "\fIInitializes a new instance of the \fBSubselectClauseExtractor\fP class\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBGetSqlString\fP ()"
+.br
+.RI "\fIReturns the subselect clause of the statement being processed\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBHasOrderBy\fP (\fBSqlString\fP subselect)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Given an SQL SELECT statement, parse it to extract clauses starting with \fCFROM\fP, up to and not including \fCORDER BY\fP (known collectively as a subselect clause)\&. 
+
+
+.PP
+Definition at line 12 of file SubselectClauseExtractor\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.SqlCommand\&.SubselectClauseExtractor\&.SubselectClauseExtractor (\fBSqlString\fPsql)"
+
+.PP
+Initializes a new instance of the \fBSubselectClauseExtractor\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsql\fP The \fBSqlString\fP to extract the subselect clause from\&.
+.RE
+.PP
+
+.PP
+Definition at line 36 of file SubselectClauseExtractor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSqlString\fP NHibernate\&.SqlCommand\&.SubselectClauseExtractor\&.GetSqlString ()"
+
+.PP
+Returns the subselect clause of the statement being processed\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBSqlString\fP containing the subselect clause of the original \fCSELECT\fP statement\&.
+.RE
+.PP
+
+.PP
+Definition at line 77 of file SubselectClauseExtractor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

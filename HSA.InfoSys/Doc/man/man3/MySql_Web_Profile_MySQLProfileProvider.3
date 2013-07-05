@@ -1,0 +1,344 @@
+.TH "MySql.Web.Profile.MySQLProfileProvider" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MySql.Web.Profile.MySQLProfileProvider \- 
+.PP
+ 
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits ProfileProvider\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBInitialize\fP (string name, NameValueCollection config)"
+.br
+.RI "\fIInitializes the provider\&. \fP"
+.ti -1c
+.RI "override int \fBDeleteInactiveProfiles\fP (ProfileAuthenticationOption authenticationOption, DateTime userInactiveSinceDate)"
+.br
+.RI "\fIWhen overridden in a derived class, deletes all user-profile data for profiles in which the last activity date occurred before the specified date\&. \fP"
+.ti -1c
+.RI "override int \fBDeleteProfiles\fP (string[] usernames)"
+.br
+.RI "\fIWhen overridden in a derived class, deletes profile properties and information for profiles that match the supplied list of user names\&. \fP"
+.ti -1c
+.RI "override int \fBDeleteProfiles\fP (ProfileInfoCollection profiles)"
+.br
+.RI "\fIWhen overridden in a derived class, deletes profile properties and information for the supplied list of profiles\&. \fP"
+.ti -1c
+.RI "override ProfileInfoCollection \fBFindInactiveProfilesByUserName\fP (ProfileAuthenticationOption authenticationOption, string usernameToMatch, DateTime userInactiveSinceDate, int pageIndex, int pageSize, out int totalRecords)"
+.br
+.RI "\fIWhen overridden in a derived class, retrieves profile information for profiles in which the last activity date occurred on or before the specified date and the user name matches the specified user name\&. \fP"
+.ti -1c
+.RI "override ProfileInfoCollection \fBFindProfilesByUserName\fP (ProfileAuthenticationOption authenticationOption, string usernameToMatch, int pageIndex, int pageSize, out int totalRecords)"
+.br
+.RI "\fIWhen overridden in a derived class, retrieves profile information for profiles in which the user name matches the specified user names\&. \fP"
+.ti -1c
+.RI "override ProfileInfoCollection \fBGetAllInactiveProfiles\fP (ProfileAuthenticationOption authenticationOption, DateTime userInactiveSinceDate, int pageIndex, int pageSize, out int totalRecords)"
+.br
+.RI "\fIWhen overridden in a derived class, retrieves user-profile data from the data source for profiles in which the last activity date occurred on or before the specified date\&. \fP"
+.ti -1c
+.RI "override ProfileInfoCollection \fBGetAllProfiles\fP (ProfileAuthenticationOption authenticationOption, int pageIndex, int pageSize, out int totalRecords)"
+.br
+.RI "\fIWhen overridden in a derived class, retrieves user profile data for all profiles in the data source\&. \fP"
+.ti -1c
+.RI "override int \fBGetNumberOfInactiveProfiles\fP (ProfileAuthenticationOption authenticationOption, DateTime userInactiveSinceDate)"
+.br
+.RI "\fIWhen overridden in a derived class, returns the number of profiles in which the last activity date occurred on or before the specified date\&. \fP"
+.ti -1c
+.RI "override 
+.br
+SettingsPropertyValueCollection \fBGetPropertyValues\fP (SettingsContext context, SettingsPropertyCollection collection)"
+.br
+.RI "\fIReturns the collection of settings property values for the specified application instance and settings property group\&. \fP"
+.ti -1c
+.RI "override void \fBSetPropertyValues\fP (SettingsContext context, SettingsPropertyValueCollection collection)"
+.br
+.RI "\fISets the values of the specified group of property settings\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBApplicationName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the name of the currently running application\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+
+
+.PP
+Definition at line 50 of file ProfileProvider\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override int MySql\&.Web\&.Profile\&.MySQLProfileProvider\&.DeleteInactiveProfiles (ProfileAuthenticationOptionauthenticationOption, DateTimeuserInactiveSinceDate)"
+
+.PP
+When overridden in a derived class, deletes all user-profile data for profiles in which the last activity date occurred before the specified date\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIauthenticationOption\fP One of the T:System\&.Web\&.Profile\&.ProfileAuthenticationOption values, specifying whether anonymous, authenticated, or both types of profiles are deleted\&.
+.br
+\fIuserInactiveSinceDate\fP A T:System\&.DateTime that identifies which user profiles are considered inactive\&. If the P:System\&.Web\&.Profile\&.ProfileInfo\&.LastActivityDate value of a user profile occurs on or before this date and time, the profile is considered inactive\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of profiles deleted from the data source\&. 
+.RE
+.PP
+
+.PP
+Definition at line 120 of file ProfileProvider\&.cs\&.
+.SS "override int MySql\&.Web\&.Profile\&.MySQLProfileProvider\&.DeleteProfiles (string[]usernames)"
+
+.PP
+When overridden in a derived class, deletes profile properties and information for profiles that match the supplied list of user names\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIusernames\fP A string array of user names for profiles to be deleted\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of profiles deleted from the data source\&. 
+.RE
+.PP
+
+.PP
+Definition at line 170 of file ProfileProvider\&.cs\&.
+.SS "override int MySql\&.Web\&.Profile\&.MySQLProfileProvider\&.DeleteProfiles (ProfileInfoCollectionprofiles)"
+
+.PP
+When overridden in a derived class, deletes profile properties and information for the supplied list of profiles\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprofiles\fP A T:System\&.Web\&.Profile\&.ProfileInfoCollection of information about profiles that are to be deleted\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of profiles deleted from the data source\&. 
+.RE
+.PP
+
+.PP
+Definition at line 209 of file ProfileProvider\&.cs\&.
+.SS "override ProfileInfoCollection MySql\&.Web\&.Profile\&.MySQLProfileProvider\&.FindInactiveProfilesByUserName (ProfileAuthenticationOptionauthenticationOption, stringusernameToMatch, DateTimeuserInactiveSinceDate, intpageIndex, intpageSize, out inttotalRecords)"
+
+.PP
+When overridden in a derived class, retrieves profile information for profiles in which the last activity date occurred on or before the specified date and the user name matches the specified user name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIauthenticationOption\fP One of the T:System\&.Web\&.Profile\&.ProfileAuthenticationOption values, specifying whether anonymous, authenticated, or both types of profiles are returned\&.
+.br
+\fIusernameToMatch\fP The user name to search for\&.
+.br
+\fIuserInactiveSinceDate\fP A T:System\&.DateTime that identifies which user profiles are considered inactive\&. If the P:System\&.Web\&.Profile\&.ProfileInfo\&.LastActivityDate value of a user profile occurs on or before this date and time, the profile is considered inactive\&.
+.br
+\fIpageIndex\fP The index of the page of results to return\&.
+.br
+\fIpageSize\fP The size of the page of results to return\&.
+.br
+\fItotalRecords\fP When this method returns, contains the total number of profiles\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A T:System\&.Web\&.Profile\&.ProfileInfoCollection containing user profile information for inactive profiles where the user name matches the supplied \fIusernameToMatch\fP  parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 243 of file ProfileProvider\&.cs\&.
+.SS "override ProfileInfoCollection MySql\&.Web\&.Profile\&.MySQLProfileProvider\&.FindProfilesByUserName (ProfileAuthenticationOptionauthenticationOption, stringusernameToMatch, intpageIndex, intpageSize, out inttotalRecords)"
+
+.PP
+When overridden in a derived class, retrieves profile information for profiles in which the user name matches the specified user names\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIauthenticationOption\fP One of the T:System\&.Web\&.Profile\&.ProfileAuthenticationOption values, specifying whether anonymous, authenticated, or both types of profiles are returned\&.
+.br
+\fIusernameToMatch\fP The user name to search for\&.
+.br
+\fIpageIndex\fP The index of the page of results to return\&.
+.br
+\fIpageSize\fP The size of the page of results to return\&.
+.br
+\fItotalRecords\fP When this method returns, contains the total number of profiles\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A T:System\&.Web\&.Profile\&.ProfileInfoCollection containing user-profile information for profiles where the user name matches the supplied \fIusernameToMatch\fP  parameter\&. 
+.RE
+.PP
+
+.PP
+Definition at line 270 of file ProfileProvider\&.cs\&.
+.SS "override ProfileInfoCollection MySql\&.Web\&.Profile\&.MySQLProfileProvider\&.GetAllInactiveProfiles (ProfileAuthenticationOptionauthenticationOption, DateTimeuserInactiveSinceDate, intpageIndex, intpageSize, out inttotalRecords)"
+
+.PP
+When overridden in a derived class, retrieves user-profile data from the data source for profiles in which the last activity date occurred on or before the specified date\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIauthenticationOption\fP One of the T:System\&.Web\&.Profile\&.ProfileAuthenticationOption values, specifying whether anonymous, authenticated, or both types of profiles are returned\&.
+.br
+\fIuserInactiveSinceDate\fP A T:System\&.DateTime that identifies which user profiles are considered inactive\&. If the P:System\&.Web\&.Profile\&.ProfileInfo\&.LastActivityDate of a user profile occurs on or before this date and time, the profile is considered inactive\&.
+.br
+\fIpageIndex\fP The index of the page of results to return\&.
+.br
+\fIpageSize\fP The size of the page of results to return\&.
+.br
+\fItotalRecords\fP When this method returns, contains the total number of profiles\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A T:System\&.Web\&.Profile\&.ProfileInfoCollection containing user-profile information about the inactive profiles\&. 
+.RE
+.PP
+
+.PP
+Definition at line 300 of file ProfileProvider\&.cs\&.
+.SS "override ProfileInfoCollection MySql\&.Web\&.Profile\&.MySQLProfileProvider\&.GetAllProfiles (ProfileAuthenticationOptionauthenticationOption, intpageIndex, intpageSize, out inttotalRecords)"
+
+.PP
+When overridden in a derived class, retrieves user profile data for all profiles in the data source\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIauthenticationOption\fP One of the T:System\&.Web\&.Profile\&.ProfileAuthenticationOption values, specifying whether anonymous, authenticated, or both types of profiles are returned\&.
+.br
+\fIpageIndex\fP The index of the page of results to return\&.
+.br
+\fIpageSize\fP The size of the page of results to return\&.
+.br
+\fItotalRecords\fP When this method returns, contains the total number of profiles\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A T:System\&.Web\&.Profile\&.ProfileInfoCollection containing user-profile information for all profiles in the data source\&. 
+.RE
+.PP
+
+.PP
+Definition at line 325 of file ProfileProvider\&.cs\&.
+.SS "override int MySql\&.Web\&.Profile\&.MySQLProfileProvider\&.GetNumberOfInactiveProfiles (ProfileAuthenticationOptionauthenticationOption, DateTimeuserInactiveSinceDate)"
+
+.PP
+When overridden in a derived class, returns the number of profiles in which the last activity date occurred on or before the specified date\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIauthenticationOption\fP One of the T:System\&.Web\&.Profile\&.ProfileAuthenticationOption values, specifying whether anonymous, authenticated, or both types of profiles are returned\&.
+.br
+\fIuserInactiveSinceDate\fP A T:System\&.DateTime that identifies which user profiles are considered inactive\&. If the P:System\&.Web\&.Profile\&.ProfileInfo\&.LastActivityDate of a user profile occurs on or before this date and time, the profile is considered inactive\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of profiles in which the last activity date occurred on or before the specified date\&. 
+.RE
+.PP
+
+.PP
+Definition at line 351 of file ProfileProvider\&.cs\&.
+.SS "override SettingsPropertyValueCollection MySql\&.Web\&.Profile\&.MySQLProfileProvider\&.GetPropertyValues (SettingsContextcontext, SettingsPropertyCollectioncollection)"
+
+.PP
+Returns the collection of settings property values for the specified application instance and settings property group\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontext\fP A T:System\&.Configuration\&.SettingsContext describing the current application use\&.
+.br
+\fIcollection\fP A T:System\&.Configuration\&.SettingsPropertyCollection containing the settings property group whose values are to be retrieved\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A T:System\&.Configuration\&.SettingsPropertyValueCollection containing the values for the specified settings property group\&. 
+.RE
+.PP
+
+.PP
+Definition at line 393 of file ProfileProvider\&.cs\&.
+.SS "override void MySql\&.Web\&.Profile\&.MySQLProfileProvider\&.Initialize (stringname, NameValueCollectionconfig)"
+
+.PP
+Initializes the provider\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The friendly name of the provider\&.
+.br
+\fIconfig\fP A collection of the name/value pairs representing the provider-specific attributes specified in the configuration for this provider\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIT:System\&.ArgumentNullException\fP The name of the provider is null\&.
+.br
+\fIT:System\&.ArgumentException\fP The name of the provider has a length of zero\&.
+.br
+\fIT:System\&.InvalidOperationException\fP An attempt is made to call M:System\&.Configuration\&.Provider\&.ProviderBase\&.Initialize(System\&.String,System\&.Collections\&.Specialized\&.NameValueCollection) on a provider after the provider has already been initialized\&.
+.RE
+.PP
+
+.PP
+Definition at line 65 of file ProfileProvider\&.cs\&.
+.SS "override void MySql\&.Web\&.Profile\&.MySQLProfileProvider\&.SetPropertyValues (SettingsContextcontext, SettingsPropertyValueCollectioncollection)"
+
+.PP
+Sets the values of the specified group of property settings\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontext\fP A T:System\&.Configuration\&.SettingsContext describing the current application usage\&.
+.br
+\fIcollection\fP A T:System\&.Configuration\&.SettingsPropertyValueCollection representing the group of property settings to set\&.
+.RE
+.PP
+
+.PP
+Definition at line 448 of file ProfileProvider\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string MySql\&.Web\&.Profile\&.MySQLProfileProvider\&.ApplicationName\fC [get]\fP, \fC [set]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+SELECT COUNT(*) FROM my_aspnet_users
+                    WHERE applicationId = @appId AND 
+                    lastActivityDate < @lastActivityDate"
+.fi
+.PP
+Gets or sets the name of the currently running application\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A T:System\&.String that contains the application's shortened name, which does not contain a full path or extension, for example, SimpleAppSettings\&.
+.RE
+.PP
+
+.PP
+Definition at line 380 of file ProfileProvider\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

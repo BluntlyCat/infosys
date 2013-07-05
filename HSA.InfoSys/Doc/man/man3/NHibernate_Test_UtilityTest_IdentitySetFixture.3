@@ -1,0 +1,136 @@
+.TH "NHibernate.Test.UtilityTest.IdentitySetFixture" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.UtilityTest.IdentitySetFixture \- 
+.PP
+\fBTest\fP for the IdentityMap\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSetUp\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddNoHashCode\fP ()"
+.br
+.RI "\fIVerify that the object being added as the Key does not have it's GetHashCode method called\&. \fP"
+.ti -1c
+.RI "void \fBAddValueTypeException\fP ()"
+.br
+.RI "\fIAn IdentityMap can not use a ValueType as the Key because of the boxing/unboxing that occurs with them\&. This verifies that an Exception is thrown if a ValueType is used as the key\&. \fP"
+.ti -1c
+.RI "void \fBCount\fP ()"
+.br
+.ti -1c
+.RI "void \fBContainsSameObjectByRef\fP ()"
+.br
+.RI "\fI\fBTest\fP that two different references to the same object passed to the Contains method both return true\&. \fP"
+.ti -1c
+.RI "void \fBContainsSameObjectWithDiffEquals\fP ()"
+.br
+.RI "\fI\fBTest\fP that even though the HashCode and Equals of the same reference have been changed that the Contains still recognizes it by the Identity of the object - not the values\&. \fP"
+.ti -1c
+.RI "void \fBContainsDiffObjectWithEquals\fP ()"
+.br
+.RI "\fI\fBTest\fP to make sure that two objects that are equal by the Equals definition of the class \fBMutableHashCode\fP do not get translated to the same key because they are different objects\&. \fP"
+.ti -1c
+.RI "void \fBSetItemChangedHashCodeTwice\fP ()"
+.br
+.RI "\fIAdd the same \fBMutableHashCode\fP class twice and ensure there is only one item in the IdentitySet\&. \fP"
+.ti -1c
+.RI "void \fBSetItemsEqualHashCodeDiffIdentity\fP ()"
+.br
+.RI "\fIAdds two different objects that are Equal() to each other to verify that it does not use the objects Equal() but instead the IdentitySet\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBIdentitySet\fP \fBGetIdentitySet\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBMutableHashCode\fP \fBitem1\fP = null"
+.br
+.ti -1c
+.RI "\fBMutableHashCode\fP \fBitem2\fP = null"
+.br
+.ti -1c
+.RI "IDictionary \fBexpectedMap\fP = null"
+.br
+.ti -1c
+.RI "\fBNoHashCode\fP \fBnoHashCode1\fP = null"
+.br
+.ti -1c
+.RI "\fBNoHashCode\fP \fBnoHashCode2\fP = null"
+.br
+.ti -1c
+.RI "object \fBvalue1\fP = null"
+.br
+.ti -1c
+.RI "object \fBvalue2\fP = null"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBTest\fP for the IdentityMap\&. 
+
+
+.PP
+Definition at line 14 of file IdentitySetFixture\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Test\&.UtilityTest\&.IdentitySetFixture\&.AddNoHashCode ()"
+
+.PP
+Verify that the object being added as the Key does not have it's GetHashCode method called\&. 
+.PP
+Definition at line 53 of file IdentitySetFixture\&.cs\&.
+.SS "void NHibernate\&.Test\&.UtilityTest\&.IdentitySetFixture\&.AddValueTypeException ()"
+
+.PP
+An IdentityMap can not use a ValueType as the Key because of the boxing/unboxing that occurs with them\&. This verifies that an Exception is thrown if a ValueType is used as the key\&. 
+.PP
+Definition at line 68 of file IdentitySetFixture\&.cs\&.
+.SS "void NHibernate\&.Test\&.UtilityTest\&.IdentitySetFixture\&.ContainsDiffObjectWithEquals ()"
+
+.PP
+\fBTest\fP to make sure that two objects that are equal by the Equals definition of the class \fBMutableHashCode\fP do not get translated to the same key because they are different objects\&. 
+.PP
+Definition at line 125 of file IdentitySetFixture\&.cs\&.
+.SS "void NHibernate\&.Test\&.UtilityTest\&.IdentitySetFixture\&.ContainsSameObjectByRef ()"
+
+.PP
+\fBTest\fP that two different references to the same object passed to the Contains method both return true\&. 
+.PP
+Definition at line 90 of file IdentitySetFixture\&.cs\&.
+.SS "void NHibernate\&.Test\&.UtilityTest\&.IdentitySetFixture\&.ContainsSameObjectWithDiffEquals ()"
+
+.PP
+\fBTest\fP that even though the HashCode and Equals of the same reference have been changed that the Contains still recognizes it by the Identity of the object - not the values\&. 
+.PP
+Definition at line 108 of file IdentitySetFixture\&.cs\&.
+.SS "void NHibernate\&.Test\&.UtilityTest\&.IdentitySetFixture\&.SetItemChangedHashCodeTwice ()"
+
+.PP
+Add the same \fBMutableHashCode\fP class twice and ensure there is only one item in the IdentitySet\&. 
+.PP
+Definition at line 143 of file IdentitySetFixture\&.cs\&.
+.SS "void NHibernate\&.Test\&.UtilityTest\&.IdentitySetFixture\&.SetItemsEqualHashCodeDiffIdentity ()"
+
+.PP
+Adds two different objects that are Equal() to each other to verify that it does not use the objects Equal() but instead the IdentitySet\&. 
+.PP
+Definition at line 160 of file IdentitySetFixture\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

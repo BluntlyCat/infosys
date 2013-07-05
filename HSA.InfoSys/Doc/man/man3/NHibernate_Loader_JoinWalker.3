@@ -1,0 +1,321 @@
+.TH "NHibernate.Loader.JoinWalker" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Loader.JoinWalker \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Loader\&.AbstractEntityJoinWalker\fP, and \fBNHibernate\&.Loader\&.Collection\&.CollectionJoinWalker\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAssociationKey\fP"
+.br
+.RI "\fIUniquely identifier a foreign key, so that we don't join it more than once, and create circularities \fP"
+.ti -1c
+.RI "class \fBDependentAlias\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBSelectString\fP (IList< \fBOuterJoinableAssociation\fP > associations)"
+.br
+.RI "\fIGenerate a select list of columns containing all properties of the entity classes \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJoinWalker\fP (\fBISessionFactoryImplementor\fP factory, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "virtual \fBSqlString\fP \fBGetWithClause\fP (string path)"
+.br
+.ti -1c
+.RI "void \fBWalkEntityTree\fP (\fBIOuterJoinLoadable\fP persister, string alias)"
+.br
+.RI "\fIFor an entity class, return a list of associations to be fetched by outerjoin \fP"
+.ti -1c
+.RI "void \fBWalkCollectionTree\fP (\fBIQueryableCollection\fP persister, string alias)"
+.br
+.RI "\fIFor a collection role, return a list of associations to be fetched by outerjoin \fP"
+.ti -1c
+.RI "virtual void \fBWalkEntityTree\fP (\fBIOuterJoinLoadable\fP persister, string alias, string path, int currentDepth)"
+.br
+.RI "\fIFor an entity class, add to a list of associations to be fetched by outerjoin \fP"
+.ti -1c
+.RI "void \fBWalkComponentTree\fP (\fBIAbstractComponentType\fP componentType, int begin, string alias, string path, int currentDepth, \fBILhsAssociationTypeSqlInfo\fP associationTypeSQLInfo)"
+.br
+.RI "\fIFor a component, add to a list of associations to be fetched by outerjoin \fP"
+.ti -1c
+.RI "virtual \fBJoinType\fP \fBGetJoinType\fP (\fBIAssociationType\fP type, \fBFetchMode\fP config, string path, string lhsTable, string[] lhsColumns, bool nullable, int currentDepth, \fBCascadeStyle\fP cascadeStyle)"
+.br
+.RI "\fIGet the join type (inner, outer, etc) or -1 if the association should not be joined\&. Override on subclasses\&. \fP"
+.ti -1c
+.RI "\fBJoinType\fP \fBGetJoinType\fP (bool nullable, int currentDepth)"
+.br
+.RI "\fIUse an inner join if it is a non-null association and this is the 'first' join in a series \fP"
+.ti -1c
+.RI "virtual bool \fBIsTooDeep\fP (int currentDepth)"
+.br
+.ti -1c
+.RI "bool \fBIsJoinedFetchEnabledInMapping\fP (\fBFetchMode\fP config, \fBIAssociationType\fP type)"
+.br
+.RI "\fIDoes the mapping, and Hibernate default semantics, specify that this association should be fetched by outer joining \fP"
+.ti -1c
+.RI "virtual bool \fBIsJoinedFetchEnabled\fP (\fBIAssociationType\fP type, \fBFetchMode\fP config, \fBCascadeStyle\fP cascadeStyle)"
+.br
+.RI "\fIOverride on subclasses to enable or suppress joining of certain association types \fP"
+.ti -1c
+.RI "virtual string \fBGenerateTableAlias\fP (int n, string path, \fBIJoinable\fP joinable)"
+.br
+.ti -1c
+.RI "virtual string \fBGenerateRootAlias\fP (string description)"
+.br
+.ti -1c
+.RI "virtual bool \fBIsDuplicateAssociation\fP (string foreignKeyTable, string[] foreignKeyColumns)"
+.br
+.RI "\fIUsed to detect circularities in the joined graph, note that this method is side-effecty \fP"
+.ti -1c
+.RI "virtual bool \fBIsDuplicateAssociation\fP (string lhsTable, string[] lhsColumnNames, \fBIAssociationType\fP type)"
+.br
+.RI "\fIUsed to detect circularities in the joined graph, note that this method is side-effecty \fP"
+.ti -1c
+.RI "bool \fBIsJoinable\fP (\fBJoinType\fP joinType, ISet< \fBAssociationKey\fP > visitedAssociationKeys, string lhsTable, string[] lhsColumnNames, \fBIAssociationType\fP type, int depth)"
+.br
+.RI "\fIShould we join this association? \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBOrderBy\fP (IList< \fBOuterJoinableAssociation\fP > associations, \fBSqlString\fP orderBy)"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBOrderBy\fP (IList< \fBOuterJoinableAssociation\fP > associations, string orderBy)"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBMergeOrderings\fP (\fBSqlString\fP ass, \fBSqlString\fP orderBy)"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBMergeOrderings\fP (string ass, \fBSqlString\fP orderBy)"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBMergeOrderings\fP (string ass, string orderBy)"
+.br
+.ti -1c
+.RI "\fBJoinFragment\fP \fBMergeOuterJoins\fP (IList< \fBOuterJoinableAssociation\fP > associations)"
+.br
+.RI "\fIGenerate a sequence of \fCLEFT OUTER JOIN\fP clauses for the given associations\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBOrderBy\fP (IList< \fBOuterJoinableAssociation\fP > associations)"
+.br
+.RI "\fIGet the order by string required for collection fetching \fP"
+.ti -1c
+.RI "virtual string \fBGenerateAliasForColumn\fP (string rootAlias, string column)"
+.br
+.ti -1c
+.RI "\fBSqlStringBuilder\fP \fBWhereString\fP (string alias, string[] columnNames, int batchSize)"
+.br
+.RI "\fIRender the where condition for a (batch) load by identifier / collection key \fP"
+.ti -1c
+.RI "void \fBInitPersisters\fP (IList< \fBOuterJoinableAssociation\fP > associations, \fBLockMode\fP lockMode)"
+.br
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static string \fBSubPath\fP (string path, string property)"
+.br
+.RI "\fIExtend the path by the given property name \fP"
+.ti -1c
+.RI "static int \fBCountEntityPersisters\fP (IList< \fBOuterJoinableAssociation\fP > associations)"
+.br
+.RI "\fICount the number of instances of IJoinable which are actually also instances of ILoadable, or are one-to-many associations \fP"
+.ti -1c
+.RI "static int \fBCountCollectionPersisters\fP (IList< \fBOuterJoinableAssociation\fP > associations)"
+.br
+.RI "\fICount the number of instances of IJoinable which are actually also instances of IPersistentCollection which are being fetched by outer join \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly IList
+.br
+< \fBOuterJoinableAssociation\fP > \fBassociations\fP = new List<\fBOuterJoinableAssociation\fP>()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string[] \fBCollectionSuffixes\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBLockMode\fP[] \fBLockModeArray\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string[] \fBSuffixes\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string[] \fBAliases\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int[] \fBCollectionOwners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBICollectionPersister\fP[] \fBCollectionPersisters\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBEntityType\fP[] \fBOwnerAssociationTypes\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int[] \fBOwners\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBILoadable\fP[] \fBPersisters\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBSqlString\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBISessionFactoryImplementor\fP \fBFactory\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBDialect\&.Dialect\fP \fBDialect\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, \fBIFilter\fP > \fBEnabledFilters\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsTooManyCollections\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 14 of file JoinWalker\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static int NHibernate\&.Loader\&.JoinWalker\&.CountCollectionPersisters (IList< \fBOuterJoinableAssociation\fP >associations)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Count the number of instances of IJoinable which are actually also instances of IPersistentCollection which are being fetched by outer join 
+.PP
+Definition at line 693 of file JoinWalker\&.cs\&.
+.SS "static int NHibernate\&.Loader\&.JoinWalker\&.CountEntityPersisters (IList< \fBOuterJoinableAssociation\fP >associations)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Count the number of instances of IJoinable which are actually also instances of ILoadable, or are one-to-many associations 
+.PP
+Definition at line 676 of file JoinWalker\&.cs\&.
+.SS "virtual \fBJoinType\fP NHibernate\&.Loader\&.JoinWalker\&.GetJoinType (\fBIAssociationType\fPtype, \fBFetchMode\fPconfig, stringpath, stringlhsTable, string[]lhsColumns, boolnullable, intcurrentDepth, \fBCascadeStyle\fPcascadeStyle)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Get the join type (inner, outer, etc) or -1 if the association should not be joined\&. Override on subclasses\&. 
+.PP
+Reimplemented in \fBNHibernate\&.Loader\&.Criteria\&.CriteriaJoinWalker\fP\&.
+.PP
+Definition at line 427 of file JoinWalker\&.cs\&.
+.SS "\fBJoinType\fP NHibernate\&.Loader\&.JoinWalker\&.GetJoinType (boolnullable, intcurrentDepth)\fC [protected]\fP"
+
+.PP
+Use an inner join if it is a non-null association and this is the 'first' join in a series 
+.PP
+Definition at line 447 of file JoinWalker\&.cs\&.
+.SS "virtual bool NHibernate\&.Loader\&.JoinWalker\&.IsDuplicateAssociation (stringforeignKeyTable, string[]foreignKeyColumns)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Used to detect circularities in the joined graph, note that this method is side-effecty 
+.PP
+Reimplemented in \fBNHibernate\&.Loader\&.Collection\&.OneToManyJoinWalker\fP\&.
+.PP
+Definition at line 524 of file JoinWalker\&.cs\&.
+.SS "virtual bool NHibernate\&.Loader\&.JoinWalker\&.IsDuplicateAssociation (stringlhsTable, string[]lhsColumnNames, \fBIAssociationType\fPtype)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Used to detect circularities in the joined graph, note that this method is side-effecty 
+.PP
+Definition at line 534 of file JoinWalker\&.cs\&.
+.SS "bool NHibernate\&.Loader\&.JoinWalker\&.IsJoinable (\fBJoinType\fPjoinType, ISet< \fBAssociationKey\fP >visitedAssociationKeys, stringlhsTable, string[]lhsColumnNames, \fBIAssociationType\fPtype, intdepth)\fC [protected]\fP"
+
+.PP
+Should we join this association? 
+.PP
+Definition at line 588 of file JoinWalker\&.cs\&.
+.SS "virtual bool NHibernate\&.Loader\&.JoinWalker\&.IsJoinedFetchEnabled (\fBIAssociationType\fPtype, \fBFetchMode\fPconfig, \fBCascadeStyle\fPcascadeStyle)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Override on subclasses to enable or suppress joining of certain association types 
+.PP
+Reimplemented in \fBNHibernate\&.Loader\&.AbstractEntityJoinWalker\fP, \fBNHibernate\&.Loader\&.Entity\&.EntityJoinWalker\fP, and \fBNHibernate\&.Loader\&.Entity\&.CascadeEntityJoinWalker\fP\&.
+.PP
+Definition at line 504 of file JoinWalker\&.cs\&.
+.SS "bool NHibernate\&.Loader\&.JoinWalker\&.IsJoinedFetchEnabledInMapping (\fBFetchMode\fPconfig, \fBIAssociationType\fPtype)\fC [protected]\fP"
+
+.PP
+Does the mapping, and Hibernate default semantics, specify that this association should be fetched by outer joining 
+.PP
+Definition at line 464 of file JoinWalker\&.cs\&.
+.SS "\fBJoinFragment\fP NHibernate\&.Loader\&.JoinWalker\&.MergeOuterJoins (IList< \fBOuterJoinableAssociation\fP >associations)\fC [protected]\fP"
+
+.PP
+Generate a sequence of \fCLEFT OUTER JOIN\fP clauses for the given associations\&. 
+.PP
+Definition at line 631 of file JoinWalker\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.Loader\&.JoinWalker\&.OrderBy (IList< \fBOuterJoinableAssociation\fP >associations)\fC [protected]\fP"
+
+.PP
+Get the order by string required for collection fetching 
+.PP
+Definition at line 708 of file JoinWalker\&.cs\&.
+.SS "string NHibernate\&.Loader\&.JoinWalker\&.SelectString (IList< \fBOuterJoinableAssociation\fP >associations)"
+
+.PP
+Generate a select list of columns containing all properties of the entity classes 
+.PP
+Definition at line 866 of file JoinWalker\&.cs\&.
+.SS "static string NHibernate\&.Loader\&.JoinWalker\&.SubPath (stringpath, stringproperty)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Extend the path by the given property name 
+.PP
+Definition at line 415 of file JoinWalker\&.cs\&.
+.SS "void NHibernate\&.Loader\&.JoinWalker\&.WalkCollectionTree (\fBIQueryableCollection\fPpersister, stringalias)\fC [protected]\fP"
+
+.PP
+For a collection role, return a list of associations to be fetched by outerjoin 
+.PP
+Definition at line 250 of file JoinWalker\&.cs\&.
+.SS "void NHibernate\&.Loader\&.JoinWalker\&.WalkComponentTree (\fBIAbstractComponentType\fPcomponentType, intbegin, stringalias, stringpath, intcurrentDepth, \fBILhsAssociationTypeSqlInfo\fPassociationTypeSQLInfo)\fC [protected]\fP"
+
+.PP
+For a component, add to a list of associations to be fetched by outerjoin 
+.PP
+Definition at line 339 of file JoinWalker\&.cs\&.
+.SS "void NHibernate\&.Loader\&.JoinWalker\&.WalkEntityTree (\fBIOuterJoinLoadable\fPpersister, stringalias)\fC [protected]\fP"
+
+.PP
+For an entity class, return a list of associations to be fetched by outerjoin 
+.PP
+Definition at line 242 of file JoinWalker\&.cs\&.
+.SS "virtual void NHibernate\&.Loader\&.JoinWalker\&.WalkEntityTree (\fBIOuterJoinLoadable\fPpersister, stringalias, stringpath, intcurrentDepth)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+For an entity class, add to a list of associations to be fetched by outerjoin 
+.PP
+Reimplemented in \fBNHibernate\&.Loader\&.Criteria\&.CriteriaJoinWalker\fP\&.
+.PP
+Definition at line 316 of file JoinWalker\&.cs\&.
+.SS "\fBSqlStringBuilder\fP NHibernate\&.Loader\&.JoinWalker\&.WhereString (stringalias, string[]columnNames, intbatchSize)\fC [protected]\fP"
+
+.PP
+Render the where condition for a (batch) load by identifier / collection key 
+.PP
+Definition at line 762 of file JoinWalker\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

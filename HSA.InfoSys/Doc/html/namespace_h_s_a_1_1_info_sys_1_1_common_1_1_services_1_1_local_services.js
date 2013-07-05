@@ -1,0 +1,14 @@
+var namespace_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services =
+[
+    [ "Countdown", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_countdown.html", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_countdown" ],
+    [ "CountdownTime", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_countdown_time.html", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_countdown_time" ],
+    [ "CrawlController", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_crawl_controller.html", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_crawl_controller" ],
+    [ "EmailNotifier", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_email_notifier.html", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_email_notifier" ],
+    [ "ICrawlController", "interface_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_i_crawl_controller.html", "interface_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_i_crawl_controller" ],
+    [ "NutchController", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_nutch_controller.html", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_nutch_controller" ],
+    [ "NutchControllerClient", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_nutch_controller_client.html", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_nutch_controller_client" ],
+    [ "SolrResultPot", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_solr_result_pot.html", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_solr_result_pot" ],
+    [ "SolrSearchClient", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_solr_search_client.html", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_solr_search_client" ],
+    [ "SolrSearchController", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_solr_search_controller.html", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_solr_search_controller" ],
+    [ "WCFControllerHost", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_w_c_f_controller_host.html", "class_h_s_a_1_1_info_sys_1_1_common_1_1_services_1_1_local_services_1_1_w_c_f_controller_host" ]
+];

@@ -1,0 +1,83 @@
+.TH "log4net.Filter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Filter \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBDenyAllFilter\fP"
+.br
+.RI "\fIThis filter drops all LoggingEvent\&. \fP"
+.ti -1c
+.RI "class \fBFilterSkeleton\fP"
+.br
+.RI "\fISubclass this type to implement customized logging event filtering \fP"
+.ti -1c
+.RI "interface \fBIFilter\fP"
+.br
+.RI "\fIImplement this interface to provide customized logging event filtering \fP"
+.ti -1c
+.RI "class \fBLevelMatchFilter\fP"
+.br
+.RI "\fIThis is a very simple filter based on Level matching\&. \fP"
+.ti -1c
+.RI "class \fBLevelRangeFilter\fP"
+.br
+.RI "\fIThis is a simple filter based on Level matching\&. \fP"
+.ti -1c
+.RI "class \fBLoggerMatchFilter\fP"
+.br
+.RI "\fISimple filter to match a string in the event's logger name\&. \fP"
+.ti -1c
+.RI "class \fBMdcFilter\fP"
+.br
+.RI "\fISimple filter to match a keyed string in the \fBMDC\fP \fP"
+.ti -1c
+.RI "class \fBNdcFilter\fP"
+.br
+.RI "\fISimple filter to match a string in the \fBNDC\fP \fP"
+.ti -1c
+.RI "class \fBPropertyFilter\fP"
+.br
+.RI "\fISimple filter to match a string an event property \fP"
+.ti -1c
+.RI "class \fBStringMatchFilter\fP"
+.br
+.RI "\fISimple filter to match a string in the rendered message \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBFilterDecision\fP : int { \fBFilterDecision\&.Deny\fP = -1, \fBFilterDecision\&.Neutral\fP = 0, \fBFilterDecision\&.Accept\fP = 1 }"
+.br
+.RI "\fIThe return result from IFilter\&.Decide \fP"
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBlog4net\&.Filter\&.FilterDecision\fP : int"
+
+.PP
+The return result from \fBIFilter\&.Decide\fP The return result from \fBIFilter\&.Decide\fP 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIDeny \fP\fP
+The log event must be dropped immediately without consulting with the remaining filters, if any, in the chain\&. 
+.TP
+\fB\fINeutral \fP\fP
+This filter is neutral with respect to the log event\&. The remaining filters, if any, should be consulted for a final decision\&. 
+.TP
+\fB\fIAccept \fP\fP
+The log event must be logged immediately without consulting with the remaining filters, if any, in the chain\&. 
+.PP
+Definition at line 34 of file FilterDecision\&.cs\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

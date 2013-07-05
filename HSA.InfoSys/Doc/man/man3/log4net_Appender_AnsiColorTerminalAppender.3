@@ -1,0 +1,319 @@
+.TH "log4net.Appender.AnsiColorTerminalAppender" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.AnsiColorTerminalAppender \- 
+.PP
+Appends logging events to the terminal using ANSI color escape sequences\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBLevelColors\fP"
+.br
+.RI "\fIA class to act as a mapping between the level that a logging call is made at and the color it should be displayed as\&. \fP"
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBAnsiAttributes\fP : int { \fBAnsiAttributes\&.Bright\fP = 1, \fBAnsiAttributes\&.Dim\fP = 2, \fBAnsiAttributes\&.Underscore\fP = 4, \fBAnsiAttributes\&.Blink\fP = 8, \fBAnsiAttributes\&.Reverse\fP = 16, \fBAnsiAttributes\&.Hidden\fP = 32, \fBAnsiAttributes\&.Strikethrough\fP = 64 }"
+.br
+.RI "\fIThe enum of possible display attributes \fP"
+.ti -1c
+.RI "enum \fBAnsiColor\fP : int { \fBAnsiColor\&.Black\fP = 0, \fBAnsiColor\&.Red\fP = 1, \fBAnsiColor\&.Green\fP = 2, \fBAnsiColor\&.Yellow\fP = 3, \fBAnsiColor\&.Blue\fP = 4, \fBAnsiColor\&.Magenta\fP = 5, \fBAnsiColor\&.Cyan\fP = 6, \fBAnsiColor\&.White\fP = 7 }"
+.br
+.RI "\fIThe enum of possible foreground or background color values for use with the color mapping method \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAnsiColorTerminalAppender\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBAnsiColorTerminalAppender\fP class\&. \fP"
+.ti -1c
+.RI "void \fBAddMapping\fP (\fBLevelColors\fP mapping)"
+.br
+.RI "\fIAdd a mapping of level to color \fP"
+.ti -1c
+.RI "override void \fBActivateOptions\fP ()"
+.br
+.RI "\fIInitialize the options for this appender \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBConsoleOut\fP = 'Console\&.Out'"
+.br
+.RI "\fIThe \fBAnsiColorTerminalAppender\&.Target\fP to use when writing to the Console standard output stream\&. \fP"
+.ti -1c
+.RI "const string \fBConsoleError\fP = 'Console\&.Error'"
+.br
+.RI "\fIThe \fBAnsiColorTerminalAppender\&.Target\fP to use when writing to the Console standard error output stream\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBAppend\fP (\fBlog4net\&.Core\&.LoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIThis method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent)\fP method\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual string \fBTarget\fP\fC [get, set]\fP"
+.br
+.RI "\fITarget is the value of the console output stream\&. \fP"
+.ti -1c
+.RI "override bool \fBRequiresLayout\fP\fC [get]\fP"
+.br
+.RI "\fIThis appender requires a \fBLayout\fP to be set\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Appends logging events to the terminal using ANSI color escape sequences\&. 
+
+\fBAnsiColorTerminalAppender\fP appends log events to the standard output stream or the error output stream using a layout specified by the user\&. It also allows the color of a specific level of message to be set\&. 
+.PP
+<note> This appender expects the terminal to understand the VT100 control set in order to interpret the color codes\&. If the terminal or console does not understand the control codes the behavior is not defined\&. </note> 
+.PP
+By default, all output is written to the console's standard output stream\&. The \fBTarget\fP property can be set to direct the output to the error stream\&. 
+.PP
+NOTE: This appender writes each message to the \fCSystem\&.Console\&.Out\fP or \fCSystem\&.Console\&.Error\fP that is set at the time the event is appended\&. Therefore it is possible to programmatically redirect the output of this appender (for example NUnit does this to capture program output)\&. While this is the desired behavior of this appender it may have security implications in your application\&. 
+.PP
+When configuring the ANSI colored terminal appender, a mapping should be specified to map a logging level to a color\&. For example: 
+.PP
+.PP
+.nf
+<mapping>
+    <level value="ERROR" />
+    <foreColor value="White" />
+    <backColor value="Red" />
+    <attributes value="Bright,Underscore" />
+</mapping>
+<mapping>
+    <level value="DEBUG" />
+    <backColor value="Green" />
+</mapping>
+.fi
+.PP
+ 
+.PP
+The Level is the standard \fBlog4net\fP logging level and ForeColor and BackColor can be any of the following values: 
+.PD 0
+
+.IP "\(bu" 2
+Blue 
+.IP "\(bu" 2
+Green 
+.IP "\(bu" 2
+Red 
+.IP "\(bu" 2
+White 
+.IP "\(bu" 2
+Yellow 
+.IP "\(bu" 2
+Purple 
+.IP "\(bu" 2
+Cyan 
+.PP
+These color values cannot be combined together to make new colors\&. 
+.PP
+The attributes can be any combination of the following: 
+.PD 0
+
+.IP "\(bu" 2
+Brightforeground is brighter 
+.IP "\(bu" 2
+Dimforeground is dimmer 
+.IP "\(bu" 2
+Underscoremessage is underlined 
+.IP "\(bu" 2
+Blinkforeground is blinking (does not work on all terminals) 
+.IP "\(bu" 2
+Reverseforeground and background are reversed 
+.IP "\(bu" 2
+Hiddenoutput is hidden 
+.IP "\(bu" 2
+Strikethroughmessage has a line through it 
+.PP
+While any of these attributes may be combined together not all combinations work well together, for example setting both \fIBright\fP and \fIDim\fP attributes makes no sense\&. 
+.PP
+<author>Patrick Wagstrom</author> <author>Nicko Cadell</author> 
+.PP
+Definition at line 104 of file AnsiColorTerminalAppender\&.cs\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBlog4net\&.Appender\&.AnsiColorTerminalAppender\&.AnsiAttributes\fP : int"
+
+.PP
+The enum of possible display attributes The following flags can be combined together to form the ANSI color attributes\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBAnsiColorTerminalAppender\fP
+.PP
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIBright \fP\fP
+text is bright 
+.TP
+\fB\fIDim \fP\fP
+text is dim 
+.TP
+\fB\fIUnderscore \fP\fP
+text is underlined 
+.TP
+\fB\fIBlink \fP\fP
+text is blinking Not all terminals support this attribute 
+.TP
+\fB\fIReverse \fP\fP
+text and background colors are reversed 
+.TP
+\fB\fIHidden \fP\fP
+text is hidden 
+.TP
+\fB\fIStrikethrough \fP\fP
+text is displayed with a strikethrough 
+.PP
+Definition at line 119 of file AnsiColorTerminalAppender\&.cs\&.
+.SS "enum \fBlog4net\&.Appender\&.AnsiColorTerminalAppender\&.AnsiColor\fP : int"
+
+.PP
+The enum of possible foreground or background color values for use with the color mapping method The output can be in one for the following ANSI colors\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBAnsiColorTerminalAppender\fP
+.PP
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIBlack \fP\fP
+color is black 
+.TP
+\fB\fIRed \fP\fP
+color is red 
+.TP
+\fB\fIGreen \fP\fP
+color is green 
+.TP
+\fB\fIYellow \fP\fP
+color is yellow 
+.TP
+\fB\fIBlue \fP\fP
+color is blue 
+.TP
+\fB\fIMagenta \fP\fP
+color is magenta 
+.TP
+\fB\fICyan \fP\fP
+color is cyan 
+.TP
+\fB\fIWhite \fP\fP
+color is white 
+.PP
+Definition at line 169 of file AnsiColorTerminalAppender\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.AnsiColorTerminalAppender\&.AnsiColorTerminalAppender ()"
+
+.PP
+Initializes a new instance of the \fBAnsiColorTerminalAppender\fP class\&. The instance of the \fBAnsiColorTerminalAppender\fP class is set up to write to the standard output stream\&. 
+.PP
+Definition at line 223 of file AnsiColorTerminalAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Appender\&.AnsiColorTerminalAppender\&.ActivateOptions ()\fC [virtual]\fP"
+
+.PP
+Initialize the options for this appender Initialize the level to color mappings set on this appender\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 377 of file AnsiColorTerminalAppender\&.cs\&.
+.SS "void log4net\&.Appender\&.AnsiColorTerminalAppender\&.AddMapping (\fBLevelColors\fPmapping)"
+
+.PP
+Add a mapping of level to color 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImapping\fP The mapping to add
+.RE
+.PP
+.PP
+Add a \fBLevelColors\fP mapping to this appender\&. Each mapping defines the foreground and background colours for a level\&. 
+.PP
+Definition at line 273 of file AnsiColorTerminalAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.AnsiColorTerminalAppender\&.Append (\fBlog4net\&.Core\&.LoggingEvent\fPloggingEvent)\fC [protected]\fP"
+
+.PP
+This method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent)\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP The event to log\&.
+.RE
+.PP
+.PP
+Writes the event to the console\&. 
+.PP
+The format of the output will depend on the appender's layout\&. 
+.PP
+Definition at line 294 of file AnsiColorTerminalAppender\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const string log4net\&.Appender\&.AnsiColorTerminalAppender\&.ConsoleError = 'Console\&.Error'"
+
+.PP
+The \fBAnsiColorTerminalAppender\&.Target\fP to use when writing to the Console standard error output stream\&. The \fBAnsiColorTerminalAppender\&.Target\fP to use when writing to the Console standard error output stream\&. 
+.PP
+Definition at line 409 of file AnsiColorTerminalAppender\&.cs\&.
+.SS "const string log4net\&.Appender\&.AnsiColorTerminalAppender\&.ConsoleOut = 'Console\&.Out'"
+
+.PP
+The \fBAnsiColorTerminalAppender\&.Target\fP to use when writing to the Console standard output stream\&. The \fBAnsiColorTerminalAppender\&.Target\fP to use when writing to the Console standard output stream\&. 
+.PP
+Definition at line 397 of file AnsiColorTerminalAppender\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool log4net\&.Appender\&.AnsiColorTerminalAppender\&.RequiresLayout\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+This appender requires a \fBLayout\fP to be set\&. \fCtrue\fP
+.PP
+This appender requires a \fBLayout\fP to be set\&. 
+.PP
+Definition at line 365 of file AnsiColorTerminalAppender\&.cs\&.
+.SS "virtual string log4net\&.Appender\&.AnsiColorTerminalAppender\&.Target\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Target is the value of the console output stream\&. Target is the value of the console output stream\&. This is either \fC'Console\&.Out'\fP or \fC'Console\&.Error'\fP\&. 
+.PP
+Target is the value of the console output stream\&. This is either \fC'Console\&.Out'\fP or \fC'Console\&.Error'\fP\&. 
+.PP
+Definition at line 245 of file AnsiColorTerminalAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

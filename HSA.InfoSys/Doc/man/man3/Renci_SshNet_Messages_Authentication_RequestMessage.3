@@ -1,0 +1,119 @@
+.TH "Renci.SshNet.Messages.Authentication.RequestMessage" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Messages.Authentication.RequestMessage \- 
+.PP
+Represents SSH_MSG_USERAUTH_REQUEST message\&. Server as a base message for other user authentication requests\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.Messages\&.Message\fP\&.
+.PP
+Inherited by Renci\&.SshNet\&.Messages\&.Authentication\&.RequestMessageHost, Renci\&.SshNet\&.Messages\&.Authentication\&.RequestMessageKeyboardInteractive, Renci\&.SshNet\&.Messages\&.Authentication\&.RequestMessageNone, Renci\&.SshNet\&.Messages\&.Authentication\&.RequestMessagePassword, and \fBRenci\&.SshNet\&.Messages\&.Authentication\&.RequestMessagePublicKey\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRequestMessage\fP (\fBServiceName\fP serviceName, string username)"
+.br
+.RI "\fIInitializes a new instance of the \fBRequestMessage\fP class\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBLoadData\fP ()"
+.br
+.RI "\fICalled when type specific data need to be loaded\&. \fP"
+.ti -1c
+.RI "override void \fBSaveData\fP ()"
+.br
+.RI "\fICalled when type specific data need to be saved\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBUsername\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets authentication username\&. \fP"
+.ti -1c
+.RI "\fBServiceName\fP \fBServiceName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the name of the service\&. \fP"
+.ti -1c
+.RI "virtual string \fBMethodName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the name of the authentication method\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents SSH_MSG_USERAUTH_REQUEST message\&. Server as a base message for other user authentication requests\&. 
+
+
+.PP
+Definition at line 10 of file RequestMessage\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Messages\&.Authentication\&.RequestMessage\&.RequestMessage (\fBServiceName\fPserviceName, stringusername)"
+
+.PP
+Initializes a new instance of the \fBRequestMessage\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIserviceName\fP Name of the service\&.
+.br
+\fIusername\fP \fBAuthentication\fP username\&.
+.RE
+.PP
+
+.PP
+Definition at line 38 of file RequestMessage\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void Renci\&.SshNet\&.Messages\&.Authentication\&.RequestMessage\&.LoadData ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when type specific data need to be loaded\&. 
+.PP
+Implements \fBRenci\&.SshNet\&.Common\&.SshData\fP\&.
+.PP
+Definition at line 47 of file RequestMessage\&.cs\&.
+.SS "override void Renci\&.SshNet\&.Messages\&.Authentication\&.RequestMessage\&.SaveData ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when type specific data need to be saved\&. 
+.PP
+Implements \fBRenci\&.SshNet\&.Common\&.SshData\fP\&.
+.PP
+Reimplemented in \fBRenci\&.SshNet\&.Messages\&.Authentication\&.RequestMessagePublicKey\fP\&.
+.PP
+Definition at line 55 of file RequestMessage\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual string Renci\&.SshNet\&.Messages\&.Authentication\&.RequestMessage\&.MethodName\fC [get]\fP"
+
+.PP
+Gets the name of the authentication method\&. The name of the method\&. 
+.PP
+Definition at line 31 of file RequestMessage\&.cs\&.
+.SS "\fBServiceName\fP Renci\&.SshNet\&.Messages\&.Authentication\&.RequestMessage\&.ServiceName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the name of the service\&. The name of the service\&. 
+.PP
+Definition at line 23 of file RequestMessage\&.cs\&.
+.SS "string Renci\&.SshNet\&.Messages\&.Authentication\&.RequestMessage\&.Username\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets authentication username\&. 
+.PP
+Definition at line 15 of file RequestMessage\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

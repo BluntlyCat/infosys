@@ -1,0 +1,81 @@
+.TH "NHibernate.Criterion.ICriterion" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.ICriterion \- 
+.PP
+An object-oriented representation of a query criterion that may be used as a constraint in a \fBICriteria\fP query\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Criterion\&.AbstractCriterion\fP, and \fBNHibernate\&.Criterion\&.NaturalIdentifier\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlString\fP \fBToSqlString\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIRender a SqlString fragment for the expression\&. \fP"
+.ti -1c
+.RI "\fBTypedValue\fP[] \fBGetTypedValues\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery)"
+.br
+.RI "\fIReturn typed values for all parameters in the rendered SQL fragment \fP"
+.ti -1c
+.RI "\fBIProjection\fP[] \fBGetProjections\fP ()"
+.br
+.RI "\fIReturn all projections used in this criterion \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An object-oriented representation of a query criterion that may be used as a constraint in a \fBICriteria\fP query\&. 
+
+Built-in criterion types are provided by the \fC\fBExpression\fP\fP factory class\&. This interface might be implemented by application classes but, more commonly, application criterion types would extend \fC\fBAbstractCriterion\fP\fP\&. 
+.PP
+Definition at line 16 of file ICriterion\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIProjection\fP [] NHibernate\&.Criterion\&.ICriterion\&.GetProjections ()"
+
+.PP
+Return all projections used in this criterion 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of \fBIProjection\fP used by the \fBExpression\fP\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.Example\fP, \fBNHibernate\&.Criterion\&.SimpleExpression\fP, \fBNHibernate\&.Criterion\&.PropertyExpression\fP, \fBNHibernate\&.Criterion\&.InsensitiveLikeExpression\fP, \fBNHibernate\&.Criterion\&.SubqueryExpression\fP, \fBNHibernate\&.Criterion\&.Junction\fP, \fBNHibernate\&.Criterion\&.BetweenExpression\fP, \fBNHibernate\&.Criterion\&.LikeExpression\fP, \fBNHibernate\&.Criterion\&.IdentifierEqExpression\fP, \fBNHibernate\&.Criterion\&.NotNullExpression\fP, \fBNHibernate\&.Criterion\&.NullExpression\fP, \fBNHibernate\&.Criterion\&.LogicalExpression\fP, \fBNHibernate\&.Criterion\&.SQLCriterion\fP, \fBNHibernate\&.Criterion\&.NotExpression\fP, \fBNHibernate\&.Criterion\&.AbstractCriterion\fP, \fBNHibernate\&.Criterion\&.InExpression\fP, \fBNHibernate\&.Criterion\&.NaturalIdentifier\fP, \fBNHibernate\&.Criterion\&.IsEmptyExpression\fP, and \fBNHibernate\&.Criterion\&.IsNotEmptyExpression\fP\&.
+.SS "\fBTypedValue\fP [] NHibernate\&.Criterion\&.ICriterion\&.GetTypedValues (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery)"
+
+.PP
+Return typed values for all parameters in the rendered SQL fragment 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of TypedValues for the \fBExpression\fP\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.Example\fP, \fBNHibernate\&.Criterion\&.SimpleExpression\fP, \fBNHibernate\&.Criterion\&.InExpression\fP, \fBNHibernate\&.Criterion\&.SubqueryExpression\fP, \fBNHibernate\&.Criterion\&.PropertyExpression\fP, \fBNHibernate\&.Criterion\&.BetweenExpression\fP, \fBNHibernate\&.Criterion\&.LikeExpression\fP, \fBNHibernate\&.Criterion\&.InsensitiveLikeExpression\fP, \fBNHibernate\&.Criterion\&.IdentifierEqExpression\fP, \fBNHibernate\&.Criterion\&.NotNullExpression\fP, \fBNHibernate\&.Criterion\&.NullExpression\fP, \fBNHibernate\&.Criterion\&.Junction\fP, \fBNHibernate\&.Criterion\&.LogicalExpression\fP, \fBNHibernate\&.Criterion\&.SQLCriterion\fP, \fBNHibernate\&.Criterion\&.AbstractCriterion\fP, \fBNHibernate\&.Criterion\&.NotExpression\fP, \fBNHibernate\&.Criterion\&.AbstractEmptinessExpression\fP, \fBNHibernate\&.Criterion\&.SimpleSubqueryExpression\fP, and \fBNHibernate\&.Criterion\&.NaturalIdentifier\fP\&.
+.SS "\fBSqlString\fP NHibernate\&.Criterion\&.ICriterion\&.ToSqlString (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery, IDictionary< string, \fBIFilter\fP >enabledFilters)"
+
+.PP
+Render a SqlString fragment for the expression\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A SqlString that contains a valid Sql fragment\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.Example\fP, \fBNHibernate\&.Criterion\&.Junction\fP, \fBNHibernate\&.Criterion\&.SimpleExpression\fP, \fBNHibernate\&.Criterion\&.LogicalExpression\fP, \fBNHibernate\&.Criterion\&.PropertyExpression\fP, \fBNHibernate\&.Criterion\&.InsensitiveLikeExpression\fP, \fBNHibernate\&.Criterion\&.LikeExpression\fP, \fBNHibernate\&.Criterion\&.InExpression\fP, \fBNHibernate\&.Criterion\&.BetweenExpression\fP, \fBNHibernate\&.Criterion\&.SubqueryExpression\fP, \fBNHibernate\&.Criterion\&.NotNullExpression\fP, \fBNHibernate\&.Criterion\&.NullExpression\fP, \fBNHibernate\&.Criterion\&.AbstractEmptinessExpression\fP, \fBNHibernate\&.Criterion\&.SQLCriterion\fP, \fBNHibernate\&.Criterion\&.IdentifierEqExpression\fP, \fBNHibernate\&.Criterion\&.AbstractCriterion\fP, \fBNHibernate\&.Criterion\&.NotExpression\fP, and \fBNHibernate\&.Criterion\&.NaturalIdentifier\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

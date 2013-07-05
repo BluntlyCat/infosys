@@ -1,0 +1,109 @@
+.TH "NHibernate.Hql.Util.SessionFactoryHelper" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Util.SessionFactoryHelper \- 
+.PP
+Wraps SessionFactoryImpl, adding more lookup behaviors and encapsulating some of the error handling\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSessionFactoryHelper\fP (\fBISessionFactoryImplementor\fP sfi)"
+.br
+.ti -1c
+.RI "\fBIQueryable\fP \fBFindQueryableUsingImports\fP (string className)"
+.br
+.ti -1c
+.RI "\fBIEntityPersister\fP \fBFindEntityPersisterUsingImports\fP (string className)"
+.br
+.ti -1c
+.RI "\fBIQueryableCollection\fP \fBGetCollectionPersister\fP (String role)"
+.br
+.RI "\fILocate the collection persister by the collection role\&. \fP"
+.ti -1c
+.RI "\fBIEntityPersister\fP \fBRequireClassPersister\fP (String name)"
+.br
+.RI "\fILocate the persister by class or entity name, requiring that such a persister exists \fP"
+.ti -1c
+.RI "System\&.Type \fBGetImportedClass\fP (string className)"
+.br
+.ti -1c
+.RI "\fBIPropertyMapping\fP \fBGetCollectionPropertyMapping\fP (String role)"
+.br
+.RI "\fIRetreive a PropertyMapping describing the given collection role\&. \fP"
+.ti -1c
+.RI "\fBIQueryableCollection\fP \fBRequireQueryableCollection\fP (String role)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Wraps SessionFactoryImpl, adding more lookup behaviors and encapsulating some of the error handling\&. 
+
+
+.PP
+Definition at line 14 of file SessionFactoryHelper\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIQueryableCollection\fP NHibernate\&.Hql\&.Util\&.SessionFactoryHelper\&.GetCollectionPersister (Stringrole)"
+
+.PP
+Locate the collection persister by the collection role\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The collection role name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The defined CollectionPersister for this collection role, or null\&.
+.RE
+.PP
+
+.PP
+Definition at line 84 of file SessionFactoryHelper\&.cs\&.
+.SS "\fBIPropertyMapping\fP NHibernate\&.Hql\&.Util\&.SessionFactoryHelper\&.GetCollectionPropertyMapping (Stringrole)"
+
+.PP
+Retreive a PropertyMapping describing the given collection role\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP The collection role for whcih to retrieve the property mapping\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The property mapping\&.
+.RE
+.PP
+
+.PP
+Definition at line 163 of file SessionFactoryHelper\&.cs\&.
+.SS "\fBIEntityPersister\fP NHibernate\&.Hql\&.Util\&.SessionFactoryHelper\&.RequireClassPersister (Stringname)"
+
+.PP
+Locate the persister by class or entity name, requiring that such a persister exists 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The class or entity name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The defined persister for this entity
+.RE
+.PP
+
+.PP
+Definition at line 106 of file SessionFactoryHelper\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

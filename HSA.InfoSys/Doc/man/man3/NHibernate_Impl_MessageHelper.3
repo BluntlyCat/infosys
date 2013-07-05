@@ -1,0 +1,255 @@
+.TH "NHibernate.Impl.MessageHelper" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Impl.MessageHelper \- 
+.PP
+Helper methods for rendering log messages and exception messages  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static string \fBInfoString\fP (System\&.Type clazz, object id)"
+.br
+.RI "\fIGenerate small message that can be used in traces and exception messages\&. \fP"
+.ti -1c
+.RI "static string \fBInfoString\fP (\fBIEntityPersister\fP persister, object id, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIGenerate small message that can be used in traces and exception messages\&. \fP"
+.ti -1c
+.RI "static string \fBInfoString\fP (\fBIEntityPersister\fP persister, object id, \fBIType\fP identifierType, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIGenerate small message that can be used in traces and exception messages\&. \fP"
+.ti -1c
+.RI "static string \fBInfoString\fP (\fBIEntityPersister\fP persister, object[] ids, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "static string \fBInfoString\fP (\fBIEntityPersister\fP persister, object id)"
+.br
+.RI "\fIGenerate small message that can be used in traces and exception messages\&. \fP"
+.ti -1c
+.RI "static String \fBInfoString\fP (\fBIEntityPersister\fP persister)"
+.br
+.RI "\fIGenerate small message that can be used in traces and exception messages\&. \fP"
+.ti -1c
+.RI "static String \fBInfoString\fP (\fBICollectionPersister\fP persister, object id)"
+.br
+.RI "\fIGenerate small message that can be used in traces and exception messages\&. \fP"
+.ti -1c
+.RI "static string \fBInfoString\fP (string entityName, string propertyName, object key)"
+.br
+.RI "\fIGenerate an info message string relating to a given property value for an entity\&. \fP"
+.ti -1c
+.RI "static string \fBInfoString\fP (\fBICollectionPersister\fP persister, object id, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIGenerate an info message string relating to a particular managed collection\&. \fP"
+.ti -1c
+.RI "static string \fBInfoString\fP (string entityName, object id)"
+.br
+.RI "\fIGenerate an info message string relating to a particular entity, based on the given entityName and id\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Helper methods for rendering log messages and exception messages 
+
+
+.PP
+Definition at line 14 of file MessageHelper\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static string NHibernate\&.Impl\&.MessageHelper\&.InfoString (System\&.Typeclazz, objectid)\fC [static]\fP"
+
+.PP
+Generate small message that can be used in traces and exception messages\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclazz\fP The System\&.Type to create the string from\&.
+.br
+\fIid\fP The identifier of the object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A descriptive String in the format of \fC[classname::id]\fP
+.RE
+.PP
+
+.PP
+Definition at line 27 of file MessageHelper\&.cs\&.
+.SS "static string NHibernate\&.Impl\&.MessageHelper\&.InfoString (\fBIEntityPersister\fPpersister, objectid, \fBISessionFactoryImplementor\fPfactory)\fC [static]\fP"
+
+.PP
+Generate small message that can be used in traces and exception messages\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The IEntityPersister for the class in question\&.
+.br
+\fIid\fP The identifier of the object\&.
+.br
+\fIfactory\fP The \fBISessionFactory\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A descriptive String in the format of \fC[classname::id]\fP
+.RE
+.PP
+
+.PP
+Definition at line 61 of file MessageHelper\&.cs\&.
+.SS "static string NHibernate\&.Impl\&.MessageHelper\&.InfoString (\fBIEntityPersister\fPpersister, objectid, \fBIType\fPidentifierType, \fBISessionFactoryImplementor\fPfactory)\fC [static]\fP"
+
+.PP
+Generate small message that can be used in traces and exception messages\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The IEntityPersister for the class in question\&.
+.br
+\fIid\fP The identifier of the object\&.
+.br
+\fIfactory\fP The \fBISessionFactory\fP\&.
+.br
+\fIidentifierType\fP The \fBNHibernate\fP type of the identifier\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A descriptive String in the format of \fC[classname::id]\fP
+.RE
+.PP
+
+.PP
+Definition at line 96 of file MessageHelper\&.cs\&.
+.SS "static string NHibernate\&.Impl\&.MessageHelper\&.InfoString (\fBIEntityPersister\fPpersister, objectid)\fC [static]\fP"
+
+.PP
+Generate small message that can be used in traces and exception messages\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The IEntityPersister for the class in question
+.br
+\fIid\fP The id
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A descriptive String in the form \fC[FooBar::id]\fP
+.RE
+.PP
+
+.PP
+Definition at line 162 of file MessageHelper\&.cs\&.
+.SS "static String NHibernate\&.Impl\&.MessageHelper\&.InfoString (\fBIEntityPersister\fPpersister)\fC [static]\fP"
+
+.PP
+Generate small message that can be used in traces and exception messages\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The IEntityPersister for the class in question
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A descriptive String in the form \fC[FooBar]\fP
+.RE
+.PP
+
+.PP
+Definition at line 194 of file MessageHelper\&.cs\&.
+.SS "static String NHibernate\&.Impl\&.MessageHelper\&.InfoString (\fBICollectionPersister\fPpersister, objectid)\fC [static]\fP"
+
+.PP
+Generate small message that can be used in traces and exception messages\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The ICollectionPersister for the class in question
+.br
+\fIid\fP The id
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A descriptive String in the form \fC[collectionrole::id]\fP
+.RE
+.PP
+
+.PP
+Definition at line 216 of file MessageHelper\&.cs\&.
+.SS "static string NHibernate\&.Impl\&.MessageHelper\&.InfoString (stringentityName, stringpropertyName, objectkey)\fC [static]\fP"
+
+.PP
+Generate an info message string relating to a given property value for an entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The entity name 
+.br
+\fIpropertyName\fP The name of the property 
+.br
+\fIkey\fP The property value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An info string, in the form [Foo\&.bars#1] 
+.RE
+.PP
+
+.PP
+Definition at line 251 of file MessageHelper\&.cs\&.
+.SS "static string NHibernate\&.Impl\&.MessageHelper\&.InfoString (\fBICollectionPersister\fPpersister, objectid, \fBISessionFactoryImplementor\fPfactory)\fC [static]\fP"
+
+.PP
+Generate an info message string relating to a particular managed collection\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The persister for the collection 
+.br
+\fIid\fP The id value of the owner 
+.br
+\fIfactory\fP The session factory 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An info string, in the form [Foo\&.bars#1] 
+.RE
+.PP
+
+.PP
+Definition at line 273 of file MessageHelper\&.cs\&.
+.SS "static string NHibernate\&.Impl\&.MessageHelper\&.InfoString (stringentityName, objectid)\fC [static]\fP"
+
+.PP
+Generate an info message string relating to a particular entity, based on the given entityName and id\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The defined entity name\&. 
+.br
+\fIid\fP The entity id value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An info string, in the form [FooBar#1]\&. 
+.RE
+.PP
+
+.PP
+Definition at line 311 of file MessageHelper\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

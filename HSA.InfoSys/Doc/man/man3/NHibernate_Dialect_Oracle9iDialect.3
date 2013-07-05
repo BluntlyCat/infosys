@@ -1,0 +1,90 @@
+.TH "NHibernate.Dialect.Oracle9iDialect" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.Oracle9iDialect \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Oracle8iDialect\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.Oracle10gDialect\fP, and \fBNHibernate\&.Dialect\&.OracleLiteDialect\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBGetSelectClauseNullString\fP (\fBSqlType\fP sqlType)"
+.br
+.RI "\fIGiven a DbType type code, determine an appropriate null value to use in a select clause\&. \fP"
+.ti -1c
+.RI "override \fBCaseFragment\fP \fBCreateCaseFragment\fP ()"
+.br
+.RI "\fIMap case support to the Oracle DECODE function\&. Oracle did not add support for CASE until 9i\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBRegisterDateTimeTypeMappings\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBCurrentTimestampSelectString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBCurrentTimestampSQLFunctionName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override long \fBTimestampResolutionInTicks\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 7 of file Oracle9iDialect\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBCaseFragment\fP NHibernate\&.Dialect\&.Oracle9iDialect\&.CreateCaseFragment ()\fC [virtual]\fP"
+
+.PP
+Map case support to the Oracle DECODE function\&. Oracle did not add support for CASE until 9i\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The oracle CASE -> DECODE fragment 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Oracle8iDialect\fP\&.
+.PP
+Definition at line 41 of file Oracle9iDialect\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.Oracle9iDialect\&.GetSelectClauseNullString (\fBSqlType\fPsqlType)\fC [virtual]\fP"
+
+.PP
+Given a DbType type code, determine an appropriate null value to use in a select clause\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlType\fP The DbType type code\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The appropriate select clause value fragment\&. 
+.RE
+.PP
+.PP
+One thing to consider here is that certain databases might require proper casting for the nulls here since the select here will be part of a UNION/UNION ALL\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Oracle8iDialect\fP\&.
+.PP
+Definition at line 36 of file Oracle9iDialect\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

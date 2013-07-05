@@ -1,0 +1,128 @@
+.TH "log4net.Plugin.PluginSkeleton" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Plugin.PluginSkeleton \- 
+.PP
+Base implementation of \fBIPlugin\fP  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Plugin\&.IPlugin\fP\&.
+.PP
+Inherited by \fBlog4net\&.Plugin\&.RemoteLoggingServerPlugin\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBAttach\fP (\fBILoggerRepository\fP repository)"
+.br
+.RI "\fIAttaches this plugin to a ILoggerRepository\&. \fP"
+.ti -1c
+.RI "virtual void \fBShutdown\fP ()"
+.br
+.RI "\fIIs called when the plugin is to shutdown\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPluginSkeleton\fP (string name)"
+.br
+.RI "\fIConstructor \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual string \fBName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the name of the plugin\&. \fP"
+.ti -1c
+.RI "virtual \fBILoggerRepository\fP \fBLoggerRepository\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe repository for this plugin \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base implementation of \fBIPlugin\fP 
+
+Default abstract implementation of the \fBIPlugin\fP interface\&. This base class can be used by implementors of the \fBIPlugin\fP interface\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 36 of file PluginSkeleton\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Plugin\&.PluginSkeleton\&.PluginSkeleton (stringname)\fC [protected]\fP"
+
+.PP
+Constructor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP the name of the plugin
+.RE
+.PP
+.PP
+Initializes a new \fBPlugin\fP with the specified name\&. 
+.PP
+Definition at line 47 of file PluginSkeleton\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void log4net\&.Plugin\&.PluginSkeleton\&.Attach (\fBILoggerRepository\fPrepository)\fC [virtual]\fP"
+
+.PP
+Attaches this plugin to a ILoggerRepository\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The ILoggerRepository that this plugin should be attached to\&.
+.RE
+.PP
+.PP
+A plugin may only be attached to a single repository\&. 
+.PP
+This method is called when the plugin is attached to the repository\&. 
+.PP
+Implements \fBlog4net\&.Plugin\&.IPlugin\fP\&.
+.PP
+Reimplemented in \fBlog4net\&.Plugin\&.RemoteLoggingServerPlugin\fP\&.
+.PP
+Definition at line 91 of file PluginSkeleton\&.cs\&.
+.SS "virtual void log4net\&.Plugin\&.PluginSkeleton\&.Shutdown ()\fC [virtual]\fP"
+
+.PP
+Is called when the plugin is to shutdown\&. This method is called to notify the plugin that it should stop operating and should detach from the repository\&. 
+.PP
+Implements \fBlog4net\&.Plugin\&.IPlugin\fP\&.
+.PP
+Reimplemented in \fBlog4net\&.Plugin\&.RemoteLoggingServerPlugin\fP\&.
+.PP
+Definition at line 106 of file PluginSkeleton\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual \fBILoggerRepository\fP log4net\&.Plugin\&.PluginSkeleton\&.LoggerRepository\fC [get]\fP, \fC [set]\fP, \fC [protected]\fP"
+
+.PP
+The repository for this plugin The ILoggerRepository that this plugin is attached to\&. 
+.PP
+Gets or sets the ILoggerRepository that this plugin is attached to\&. 
+.PP
+Definition at line 127 of file PluginSkeleton\&.cs\&.
+.SS "virtual string log4net\&.Plugin\&.PluginSkeleton\&.Name\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the name of the plugin\&. The name of the plugin\&. 
+.PP
+Plugins are stored in the \fBPluginMap\fP keyed by name\&. Each plugin instance attached to a repository must be a unique name\&. 
+.PP
+The name of the plugin must not change one the plugin has been attached to a repository\&. 
+.PP
+Definition at line 74 of file PluginSkeleton\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

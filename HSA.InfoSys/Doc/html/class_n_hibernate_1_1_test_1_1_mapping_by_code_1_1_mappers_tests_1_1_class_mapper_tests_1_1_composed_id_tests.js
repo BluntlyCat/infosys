@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_class_mapper_tests_1_1_composed_id_tests =
+[
+    [ "WhenClassWithComposedIdThenTheIdIsConpositeId", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_class_mapper_tests_1_1_composed_id_tests.html#a787c3ce51b760c74c05ca071758e8275", null ],
+    [ "WhenComposedIdCustomizedMoreThanOnceThenMerge", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_class_mapper_tests_1_1_composed_id_tests.html#a52009b61676d730a9c9cd2ffe29181e8", null ]
+];

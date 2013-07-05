@@ -1,0 +1,198 @@
+.TH "NHibernate.Persister.Entity.UnionSubclassEntityPersister" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Persister.Entity.UnionSubclassEntityPersister \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUnionSubclassEntityPersister\fP (\fBPersistentClass\fP persistentClass, \fBICacheConcurrencyStrategy\fP cache, \fBISessionFactoryImplementor\fP factory, \fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "override string \fBGetSubclassForDiscriminatorValue\fP (object value)"
+.br
+.RI "\fIGet the concrete subclass corresponding to the given discriminator value \fP"
+.ti -1c
+.RI "override string \fBFromTableFragment\fP (string name)"
+.br
+.RI "\fIGet the main from table fragment, given a query alias (optional operation) \fP"
+.ti -1c
+.RI "override string \fBFilterFragment\fP (string alias)"
+.br
+.ti -1c
+.RI "override string \fBGetSubclassPropertyTableName\fP (int i)"
+.br
+.RI "\fIReturn the table name used to persist the numbered property of the class or a subclass (optional operation) \fP"
+.ti -1c
+.RI "override int \fBGetSubclassPropertyTableNumber\fP (string propertyName)"
+.br
+.ti -1c
+.RI "override string \fBGetSubclassTableName\fP (int j)"
+.br
+.RI "\fIGet the name of the table with the given index from the internal array\&. \fP"
+.ti -1c
+.RI "override string \fBGetPropertyTableName\fP (string propertyName)"
+.br
+.RI "\fIGet the table name for the given property path \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override string \fBGetTableName\fP (int table)"
+.br
+.ti -1c
+.RI "override string[] \fBGetKeyColumns\fP (int table)"
+.br
+.ti -1c
+.RI "override bool \fBIsTableCascadeDeleteEnabled\fP (int j)"
+.br
+.ti -1c
+.RI "override bool \fBIsPropertyOfTable\fP (int property, int j)"
+.br
+.ti -1c
+.RI "override void \fBAddDiscriminatorToSelect\fP (\fBSelectFragment\fP select, string name, string suffix)"
+.br
+.ti -1c
+.RI "override int \fBGetSubclassPropertyTableNumber\fP (int i)"
+.br
+.ti -1c
+.RI "string \fBGenerateSubquery\fP (\fBPersistentClass\fP model, \fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "override string[] \fBGetSubclassTableKeyColumns\fP (int j)"
+.br
+.ti -1c
+.RI "override bool \fBIsClassOrSuperclassTable\fP (int j)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string[] \fBQuerySpaces\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBType\&.IType\fP \fBDiscriminatorType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBDiscriminatorSQLValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override object \fBDiscriminatorValue\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBSubclassClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string[] \fBPropertySpaces\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsMultiTable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int[] \fBSubclassColumnTableNumberClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int[] \fBSubclassFormulaTableNumberClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string[] \fBConstraintOrderedTableNameClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string[][] \fBContraintOrderedTableKeyColumnClosure\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBTableName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int \fBTableSpan\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int \fBSubclassTableSpan\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 15 of file UnionSubclassEntityPersister\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override string NHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\&.FromTableFragment (stringalias)\fC [virtual]\fP"
+
+.PP
+Get the main from table fragment, given a query alias (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 270 of file UnionSubclassEntityPersister\&.cs\&.
+.SS "override string NHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\&.GetPropertyTableName (stringpropertyName)\fC [virtual]\fP"
+
+.PP
+Get the table name for the given property path 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 388 of file UnionSubclassEntityPersister\&.cs\&.
+.SS "override string NHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\&.GetSubclassForDiscriminatorValue (objectvalue)\fC [virtual]\fP"
+
+.PP
+Get the concrete subclass corresponding to the given discriminator value 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 243 of file UnionSubclassEntityPersister\&.cs\&.
+.SS "override string NHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\&.GetSubclassPropertyTableName (inti)\fC [virtual]\fP"
+
+.PP
+Return the table name used to persist the numbered property of the class or a subclass (optional operation) 
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 280 of file UnionSubclassEntityPersister\&.cs\&.
+.SS "override int NHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\&.GetSubclassPropertyTableNumber (stringpropertyPath)\fC [virtual]\fP"
+Warning: When there are duplicated property names in the subclasses of the class, this method may return the wrong table number for the duplicated subclass property (note that \fBSingleTableEntityPersister\fP defines an overloaded form which takes the entity name\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 295 of file UnionSubclassEntityPersister\&.cs\&.
+.SS "override string NHibernate\&.Persister\&.Entity\&.UnionSubclassEntityPersister\&.GetSubclassTableName (intnumber)\fC [virtual]\fP"
+
+.PP
+Get the name of the table with the given index from the internal array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumber\fP The index into the internal array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.PP
+Definition at line 369 of file UnionSubclassEntityPersister\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,151 @@
+.TH "Renci.SshNet.Security.Cryptography.CipherDigitalSignature" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Security.Cryptography.CipherDigitalSignature \- 
+.PP
+Implements digital signature where where asymmetric cipher is used,  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.Security\&.Cryptography\&.DigitalSignature\fP\&.
+.PP
+Inherited by \fBRenci\&.SshNet\&.Security\&.Cryptography\&.RsaDigitalSignature\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCipherDigitalSignature\fP (\fBObjectIdentifier\fP oid, \fBAsymmetricCipher\fP cipher)"
+.br
+.RI "\fIInitializes a new instance of the \fBCipherDigitalSignature\fP class\&. \fP"
+.ti -1c
+.RI "override bool \fBVerify\fP (byte[] input, byte[] signature)"
+.br
+.RI "\fIVerifies the signature\&. \fP"
+.ti -1c
+.RI "override byte[] \fBSign\fP (byte[] input)"
+.br
+.RI "\fICreates the signature\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract byte[] \fBHash\fP (byte[] input)"
+.br
+.RI "\fIHashes the specified input\&. \fP"
+.ti -1c
+.RI "byte[] \fBDerEncode\fP (byte[] hashData)"
+.br
+.RI "\fIEncodes hash using DER\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Implements digital signature where where asymmetric cipher is used, 
+
+
+.PP
+Definition at line 13 of file CipherDigitalSignature\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Security\&.Cryptography\&.CipherDigitalSignature\&.CipherDigitalSignature (\fBObjectIdentifier\fPoid, \fBAsymmetricCipher\fPcipher)"
+
+.PP
+Initializes a new instance of the \fBCipherDigitalSignature\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoid\fP The object identifier\&.
+.br
+\fIcipher\fP The cipher\&.
+.RE
+.PP
+
+.PP
+Definition at line 24 of file CipherDigitalSignature\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "byte [] Renci\&.SshNet\&.Security\&.Cryptography\&.CipherDigitalSignature\&.DerEncode (byte[]hashData)\fC [protected]\fP"
+
+.PP
+Encodes hash using DER\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhashData\fP The hash data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+DER Encoded byte array
+.RE
+.PP
+
+.PP
+Definition at line 85 of file CipherDigitalSignature\&.cs\&.
+.SS "abstract byte [] Renci\&.SshNet\&.Security\&.Cryptography\&.CipherDigitalSignature\&.Hash (byte[]input)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Hashes the specified input\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP The input\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Hashed data\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBRenci\&.SshNet\&.Security\&.Cryptography\&.RsaDigitalSignature\fP\&.
+.SS "override byte [] Renci\&.SshNet\&.Security\&.Cryptography\&.CipherDigitalSignature\&.Sign (byte[]input)\fC [virtual]\fP"
+
+.PP
+Creates the signature\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP The input\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Signed input data\&. 
+.RE
+.PP
+
+.PP
+Implements \fBRenci\&.SshNet\&.Security\&.Cryptography\&.DigitalSignature\fP\&.
+.PP
+Definition at line 62 of file CipherDigitalSignature\&.cs\&.
+.SS "override bool Renci\&.SshNet\&.Security\&.Cryptography\&.CipherDigitalSignature\&.Verify (byte[]input, byte[]signature)\fC [virtual]\fP"
+
+.PP
+Verifies the signature\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinput\fP The input\&.
+.br
+\fIsignature\fP The signature\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCTrue\fP if signature was successfully verified; otherwise \fCfalse\fP\&. 
+.RE
+.PP
+
+.PP
+Implements \fBRenci\&.SshNet\&.Security\&.Cryptography\&.DigitalSignature\fP\&.
+.PP
+Definition at line 41 of file CipherDigitalSignature\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

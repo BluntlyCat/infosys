@@ -1,0 +1,6 @@
+var namespace_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_docs_1_1_example_parent_child =
+[
+    [ "Child", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_docs_1_1_example_parent_child_1_1_child.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_docs_1_1_example_parent_child_1_1_child" ],
+    [ "Parent", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_docs_1_1_example_parent_child_1_1_parent.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_docs_1_1_example_parent_child_1_1_parent" ],
+    [ "UpdateFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_docs_1_1_example_parent_child_1_1_update_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_docs_1_1_example_parent_child_1_1_update_fixture" ]
+];

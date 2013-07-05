@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_mapping_1_1_by_code_1_1_impl_1_1_customizers_impl_1_1_set_properties_custo70daa38aa3b64fed226277982a925fcd =
+[
+    [ "SetPropertiesCustomizer", "class_n_hibernate_1_1_mapping_1_1_by_code_1_1_impl_1_1_customizers_impl_1_1_set_properties_custo70daa38aa3b64fed226277982a925fcd.html#aaa9301811155a611bb6f2f2f6765f26a", null ]
+];

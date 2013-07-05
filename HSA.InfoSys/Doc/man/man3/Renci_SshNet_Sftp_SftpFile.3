@@ -1,0 +1,380 @@
+.TH "Renci.SshNet.Sftp.SftpFile" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Sftp.SftpFile \- 
+.PP
+Represents SFTP file information  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSetPermissions\fP (short mode)"
+.br
+.RI "\fISets file permissions\&. \fP"
+.ti -1c
+.RI "void \fBDelete\fP ()"
+.br
+.RI "\fIPermanently deletes a file on remote machine\&. \fP"
+.ti -1c
+.RI "void \fBMoveTo\fP (string destFileName)"
+.br
+.RI "\fIMoves a specified file to a new location on remote machine, providing the option to specify a new file name\&. \fP"
+.ti -1c
+.RI "void \fBUpdateStatus\fP ()"
+.br
+.RI "\fIUpdates file status on the server\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIReturns a System\&.String that represents this instance\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBSftpFileAttributes\fP \fBAttributes\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the file attributes\&. \fP"
+.ti -1c
+.RI "string \fBFullName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the full path of the directory or file\&. \fP"
+.ti -1c
+.RI "string \fBName\fP\fC [get, set]\fP"
+.br
+.RI "\fIFor files, gets the name of the file\&. For directories, gets the name of the last directory in the hierarchy if a hierarchy exists\&. Otherwise, the Name property gets the name of the directory\&. \fP"
+.ti -1c
+.RI "DateTime \fBLastAccessTime\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the time the current file or directory was last accessed\&. \fP"
+.ti -1c
+.RI "DateTime \fBLastWriteTime\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the time when the current file or directory was last written to\&. \fP"
+.ti -1c
+.RI "DateTime \fBLastAccessTimeUtc\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the time, in coordinated universal time (UTC), the current file or directory was last accessed\&. \fP"
+.ti -1c
+.RI "DateTime \fBLastWriteTimeUtc\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the time, in coordinated universal time (UTC), when the current file or directory was last written to\&. \fP"
+.ti -1c
+.RI "long \fBLength\fP\fC [get]\fP"
+.br
+.RI "\fIGets or sets the size, in bytes, of the current file\&. \fP"
+.ti -1c
+.RI "int \fBUserId\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets file user id\&. \fP"
+.ti -1c
+.RI "int \fBGroupId\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets file group id\&. \fP"
+.ti -1c
+.RI "bool \fBIsSocket\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether file represents a socket\&. \fP"
+.ti -1c
+.RI "bool \fBIsSymbolicLink\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether file represents a symbolic link\&. \fP"
+.ti -1c
+.RI "bool \fBIsRegularFile\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether file represents a regular file\&. \fP"
+.ti -1c
+.RI "bool \fBIsBlockDevice\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether file represents a block device\&. \fP"
+.ti -1c
+.RI "bool \fBIsDirectory\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether file represents a directory\&. \fP"
+.ti -1c
+.RI "bool \fBIsCharacterDevice\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether file represents a character device\&. \fP"
+.ti -1c
+.RI "bool \fBIsNamedPipe\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether file represents a named pipe\&. \fP"
+.ti -1c
+.RI "bool \fBOwnerCanRead\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether the owner can read from this file\&. \fP"
+.ti -1c
+.RI "bool \fBOwnerCanWrite\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether the owner can write into this file\&. \fP"
+.ti -1c
+.RI "bool \fBOwnerCanExecute\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether the owner can execute this file\&. \fP"
+.ti -1c
+.RI "bool \fBGroupCanRead\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether the group members can read from this file\&. \fP"
+.ti -1c
+.RI "bool \fBGroupCanWrite\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether the group members can write into this file\&. \fP"
+.ti -1c
+.RI "bool \fBGroupCanExecute\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether the group members can execute this file\&. \fP"
+.ti -1c
+.RI "bool \fBOthersCanRead\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether the others can read from this file\&. \fP"
+.ti -1c
+.RI "bool \fBOthersCanWrite\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether the others can write into this file\&. \fP"
+.ti -1c
+.RI "bool \fBOthersCanExecute\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether the others can execute this file\&. \fP"
+.ti -1c
+.RI "IDictionary< string, string > \fBExtensions\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the extension part of the file\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents SFTP file information 
+
+
+.PP
+Definition at line 13 of file SftpFile\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Renci\&.SshNet\&.Sftp\&.SftpFile\&.Delete ()"
+
+.PP
+Permanently deletes a file on remote machine\&. 
+.PP
+Definition at line 463 of file SftpFile\&.cs\&.
+.SS "void Renci\&.SshNet\&.Sftp\&.SftpFile\&.MoveTo (stringdestFileName)"
+
+.PP
+Moves a specified file to a new location on remote machine, providing the option to specify a new file name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestFileName\fP The path to move the file to, which can specify a different file name\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIdestFileName\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 480 of file SftpFile\&.cs\&.
+.SS "void Renci\&.SshNet\&.Sftp\&.SftpFile\&.SetPermissions (shortmode)"
+
+.PP
+Sets file permissions\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImode\fP The mode\&.
+.RE
+.PP
+
+.PP
+Definition at line 453 of file SftpFile\&.cs\&.
+.SS "override string Renci\&.SshNet\&.Sftp\&.SftpFile\&.ToString ()"
+
+.PP
+Returns a System\&.String that represents this instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A System\&.String that represents this instance\&. 
+.RE
+.PP
+
+.PP
+Definition at line 507 of file SftpFile\&.cs\&.
+.SS "void Renci\&.SshNet\&.Sftp\&.SftpFile\&.UpdateStatus ()"
+
+.PP
+Updates file status on the server\&. 
+.PP
+Definition at line 496 of file SftpFile\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBSftpFileAttributes\fP Renci\&.SshNet\&.Sftp\&.SftpFile\&.Attributes\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the file attributes\&. 
+.PP
+Definition at line 20 of file SftpFile\&.cs\&.
+.SS "IDictionary<string, string> Renci\&.SshNet\&.Sftp\&.SftpFile\&.Extensions\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the extension part of the file\&. File extensions\&. 
+.PP
+Definition at line 447 of file SftpFile\&.cs\&.
+.SS "string Renci\&.SshNet\&.Sftp\&.SftpFile\&.FullName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the full path of the directory or file\&. 
+.PP
+Definition at line 51 of file SftpFile\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Sftp\&.SftpFile\&.GroupCanExecute\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether the group members can execute this file\&. \fCtrue\fP if group members can execute this file; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 376 of file SftpFile\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Sftp\&.SftpFile\&.GroupCanRead\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether the group members can read from this file\&. \fCtrue\fP if group members can read from this file; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 340 of file SftpFile\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Sftp\&.SftpFile\&.GroupCanWrite\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether the group members can write into this file\&. \fCtrue\fP if group members can write into this file; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 358 of file SftpFile\&.cs\&.
+.SS "int Renci\&.SshNet\&.Sftp\&.SftpFile\&.GroupId\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets file group id\&. File group id\&. 
+.PP
+Definition at line 170 of file SftpFile\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Sftp\&.SftpFile\&.IsBlockDevice\fC [get]\fP"
+
+.PP
+Gets a value indicating whether file represents a block device\&. \fCtrue\fP if file represents a block device; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 230 of file SftpFile\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Sftp\&.SftpFile\&.IsCharacterDevice\fC [get]\fP"
+
+.PP
+Gets a value indicating whether file represents a character device\&. \fCtrue\fP if file represents a character device; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 258 of file SftpFile\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Sftp\&.SftpFile\&.IsDirectory\fC [get]\fP"
+
+.PP
+Gets a value indicating whether file represents a directory\&. \fCtrue\fP if file represents a directory; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 244 of file SftpFile\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Sftp\&.SftpFile\&.IsNamedPipe\fC [get]\fP"
+
+.PP
+Gets a value indicating whether file represents a named pipe\&. \fCtrue\fP if file represents a named pipe; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 272 of file SftpFile\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Sftp\&.SftpFile\&.IsRegularFile\fC [get]\fP"
+
+.PP
+Gets a value indicating whether file represents a regular file\&. \fCtrue\fP if file represents a regular file; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 216 of file SftpFile\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Sftp\&.SftpFile\&.IsSocket\fC [get]\fP"
+
+.PP
+Gets a value indicating whether file represents a socket\&. \fCtrue\fP if file represents a socket; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 188 of file SftpFile\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Sftp\&.SftpFile\&.IsSymbolicLink\fC [get]\fP"
+
+.PP
+Gets a value indicating whether file represents a symbolic link\&. \fCtrue\fP if file represents a symbolic link; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 202 of file SftpFile\&.cs\&.
+.SS "DateTime Renci\&.SshNet\&.Sftp\&.SftpFile\&.LastAccessTime\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the time the current file or directory was last accessed\&. The time that the current file or directory was last accessed\&. 
+.PP
+Definition at line 66 of file SftpFile\&.cs\&.
+.SS "DateTime Renci\&.SshNet\&.Sftp\&.SftpFile\&.LastAccessTimeUtc\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the time, in coordinated universal time (UTC), the current file or directory was last accessed\&. The time that the current file or directory was last accessed\&. 
+.PP
+Definition at line 102 of file SftpFile\&.cs\&.
+.SS "DateTime Renci\&.SshNet\&.Sftp\&.SftpFile\&.LastWriteTime\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the time when the current file or directory was last written to\&. The time the current file was last written\&. 
+.PP
+Definition at line 84 of file SftpFile\&.cs\&.
+.SS "DateTime Renci\&.SshNet\&.Sftp\&.SftpFile\&.LastWriteTimeUtc\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the time, in coordinated universal time (UTC), when the current file or directory was last written to\&. The time the current file was last written\&. 
+.PP
+Definition at line 120 of file SftpFile\&.cs\&.
+.SS "long Renci\&.SshNet\&.Sftp\&.SftpFile\&.Length\fC [get]\fP"
+
+.PP
+Gets or sets the size, in bytes, of the current file\&. The size of the current file in bytes\&. 
+.PP
+Definition at line 138 of file SftpFile\&.cs\&.
+.SS "string Renci\&.SshNet\&.Sftp\&.SftpFile\&.Name\fC [get]\fP, \fC [set]\fP"
+
+.PP
+For files, gets the name of the file\&. For directories, gets the name of the last directory in the hierarchy if a hierarchy exists\&. Otherwise, the Name property gets the name of the directory\&. 
+.PP
+Definition at line 57 of file SftpFile\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Sftp\&.SftpFile\&.OthersCanExecute\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether the others can execute this file\&. \fCtrue\fP if others can execute this file; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 430 of file SftpFile\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Sftp\&.SftpFile\&.OthersCanRead\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether the others can read from this file\&. \fCtrue\fP if others can read from this file; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 394 of file SftpFile\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Sftp\&.SftpFile\&.OthersCanWrite\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether the others can write into this file\&. \fCtrue\fP if others can write into this file; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 412 of file SftpFile\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Sftp\&.SftpFile\&.OwnerCanExecute\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether the owner can execute this file\&. \fCtrue\fP if owner can execute this file; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 322 of file SftpFile\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Sftp\&.SftpFile\&.OwnerCanRead\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether the owner can read from this file\&. \fCtrue\fP if owner can read from this file; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 286 of file SftpFile\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Sftp\&.SftpFile\&.OwnerCanWrite\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether the owner can write into this file\&. \fCtrue\fP if owner can write into this file; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 304 of file SftpFile\&.cs\&.
+.SS "int Renci\&.SshNet\&.Sftp\&.SftpFile\&.UserId\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets file user id\&. File user id\&. 
+.PP
+Definition at line 152 of file SftpFile\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

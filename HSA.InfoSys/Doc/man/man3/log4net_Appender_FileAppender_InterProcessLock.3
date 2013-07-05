@@ -1,0 +1,98 @@
+.TH "log4net.Appender.FileAppender.InterProcessLock" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.FileAppender.InterProcessLock \- 
+.PP
+Provides cross-process file locking\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.FileAppender\&.LockingModelBase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBOpenFile\fP (string filename, bool append, \fBEncoding\fP encoding)"
+.br
+.RI "\fIOpen the file specified and prepare for logging\&. \fP"
+.ti -1c
+.RI "override void \fBCloseFile\fP ()"
+.br
+.RI "\fIClose the file \fP"
+.ti -1c
+.RI "override Stream \fBAcquireLock\fP ()"
+.br
+.RI "\fIAcquire the lock on the file \fP"
+.ti -1c
+.RI "override void \fBReleaseLock\fP ()"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Provides cross-process file locking\&. 
+
+<author>Ron Grabowski</author> <author>Steve Wranovsky</author> 
+.PP
+Definition at line 647 of file FileAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override Stream log4net\&.Appender\&.FileAppender\&.InterProcessLock\&.AcquireLock ()\fC [virtual]\fP"
+
+.PP
+Acquire the lock on the file 
+.PP
+\fBReturns:\fP
+.RS 4
+A stream that is ready to be written to\&.
+.RE
+.PP
+.PP
+Does nothing\&. The lock is already taken 
+.PP
+Implements \fBlog4net\&.Appender\&.FileAppender\&.LockingModelBase\fP\&.
+.PP
+Definition at line 719 of file FileAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.FileAppender\&.InterProcessLock\&.CloseFile ()\fC [virtual]\fP"
+
+.PP
+Close the file Close the file\&. No further writes will be made\&. 
+.PP
+Implements \fBlog4net\&.Appender\&.FileAppender\&.LockingModelBase\fP\&.
+.PP
+Definition at line 697 of file FileAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.FileAppender\&.InterProcessLock\&.OpenFile (stringfilename, boolappend, \fBEncoding\fPencoding)\fC [virtual]\fP"
+
+.PP
+Open the file specified and prepare for logging\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP The filename to use
+.br
+\fIappend\fP Whether to append to the file, or overwrite
+.br
+\fIencoding\fP The encoding to use
+.RE
+.PP
+.PP
+Open the file specified and prepare for logging\&. No writes will be made until \fBAcquireLock\fP is called\&. Must be called before any calls to \fBAcquireLock\fP, -\fBReleaseLock\fP and \fBCloseFile\fP\&. 
+.PP
+Implements \fBlog4net\&.Appender\&.FileAppender\&.LockingModelBase\fP\&.
+.PP
+Definition at line 670 of file FileAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.FileAppender\&.InterProcessLock\&.ReleaseLock ()\fC [virtual]\fP"
+
+.PP
+
+.PP
+Implements \fBlog4net\&.Appender\&.FileAppender\&.LockingModelBase\fP\&.
+.PP
+Definition at line 737 of file FileAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,80 @@
+.TH "NHibernate.Proxy.Poco.BasicLazyInitializer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Proxy.Poco.BasicLazyInitializer \- 
+.PP
+Lazy initializer for POCOs 
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Proxy\&.AbstractLazyInitializer\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Proxy\&.DefaultLazyInitializer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual object \fBInvoke\fP (MethodInfo method, object[] args, object proxy)"
+.br
+.RI "\fIInvokes the method if this is something that the LazyInitializer can handle without the underlying proxied object being instantiated\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBAddSerializationInfo\fP (SerializationInfo info, StreamingContext context)"
+.br
+.RI "\fIAdds all of the information into the SerializationInfo that is needed to reconstruct the proxy during deserialization or to replace the proxy with the instantiated target\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override System\&.Type \fBPersistentClass\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Lazy initializer for POCOs
+
+
+.PP
+Definition at line 13 of file BasicLazyInitializer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Proxy\&.Poco\&.BasicLazyInitializer\&.AddSerializationInfo (SerializationInfoinfo, StreamingContextcontext)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Adds all of the information into the SerializationInfo that is needed to reconstruct the proxy during deserialization or to replace the proxy with the instantiated target\&. This will only be called if the Dynamic \fBProxy\fP generator does not handle serialization itself or delegates calls to the method GetObjectData to the LazyInitializer\&. 
+.PP
+Definition at line 44 of file BasicLazyInitializer\&.cs\&.
+.SS "virtual object NHibernate\&.Proxy\&.Poco\&.BasicLazyInitializer\&.Invoke (MethodInfomethod, object[]args, objectproxy)\fC [virtual]\fP"
+
+.PP
+Invokes the method if this is something that the LazyInitializer can handle without the underlying proxied object being instantiated\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImethod\fP The name of the method/property to Invoke\&.
+.br
+\fIargs\fP The arguments to pass the method/property\&.
+.br
+\fIproxy\fP The proxy object that the method is being invoked on\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the Invoke if the underlying proxied object is not needed\&. If the underlying proxied object is needed then it returns the result \fBAbstractLazyInitializer\&.InvokeImplementation\fP which indicates that the \fBProxy\fP will need to forward to the real implementation\&. 
+.RE
+.PP
+
+.PP
+Definition at line 65 of file BasicLazyInitializer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

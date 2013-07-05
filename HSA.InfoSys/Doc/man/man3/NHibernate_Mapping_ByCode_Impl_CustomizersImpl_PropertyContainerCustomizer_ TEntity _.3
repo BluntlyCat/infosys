@@ -1,0 +1,219 @@
+.TH "NHibernate.Mapping.ByCode.Impl.CustomizersImpl.PropertyContainerCustomizer< TEntity >" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.ByCode.Impl.CustomizersImpl.PropertyContainerCustomizer< TEntity > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Mapping\&.ByCode\&.Impl\&.CustomizersImpl\&.ClassCustomizer< TEntity >\fP, \fBNHibernate\&.Mapping\&.ByCode\&.Impl\&.CustomizersImpl\&.ComponentAsIdCustomizer< TComponent >\fP, \fBNHibernate\&.Mapping\&.ByCode\&.Impl\&.CustomizersImpl\&.ComponentCustomizer< TComponent >\fP, \fBNHibernate\&.Mapping\&.ByCode\&.Impl\&.CustomizersImpl\&.ComposedIdCustomizer< TEntity >\fP, \fBNHibernate\&.Mapping\&.ByCode\&.Impl\&.CustomizersImpl\&.DynamicComponentCustomizer< TComponent >\fP, \fBNHibernate\&.Mapping\&.ByCode\&.Impl\&.CustomizersImpl\&.JoinCustomizer< TEntity >\fP, \fBNHibernate\&.Mapping\&.ByCode\&.Impl\&.CustomizersImpl\&.JoinedSubclassCustomizer< TEntity >\fP, \fBNHibernate\&.Mapping\&.ByCode\&.Impl\&.CustomizersImpl\&.NaturalIdCustomizer< TEntity >\fP, \fBNHibernate\&.Mapping\&.ByCode\&.Impl\&.CustomizersImpl\&.SubclassCustomizer< TEntity >\fP, and \fBNHibernate\&.Mapping\&.ByCode\&.Impl\&.CustomizersImpl\&.UnionSubclassCustomizer< TEntity >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPropertyContainerCustomizer\fP (\fBIModelExplicitDeclarationsHolder\fP explicitDeclarationsHolder, \fBICustomizersHolder\fP customizersHolder, \fBPropertyPath\fP propertyPath)"
+.br
+.ti -1c
+.RI "void \fBProperty< TProperty >\fP (Expression< Func< TEntity, TProperty >> property)"
+.br
+.ti -1c
+.RI "void \fBProperty< TProperty >\fP (Expression< Func< TEntity, TProperty >> property, Action< \fBIPropertyMapper\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBProperty\fP (string notVisiblePropertyOrFieldName, Action< \fBIPropertyMapper\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBComponent< TComponent >\fP (Expression< Func< TEntity, TComponent >> property, Action< \fBIComponentMapper\fP< TComponent >> mapping)"
+.br
+.ti -1c
+.RI "void \fBComponent< TComponent >\fP (Expression< Func< TEntity, TComponent >> property)"
+.br
+.ti -1c
+.RI "void \fBComponent< TComponent >\fP (Expression< Func< TEntity, IDictionary >> property, TComponent dynamicComponentTemplate, Action< \fBIDynamicComponentMapper\fP< TComponent >> mapping)"
+.br
+.ti -1c
+.RI "void \fBManyToOne< TProperty >\fP (Expression< Func< TEntity, TProperty >> property, Action< \fBIManyToOneMapper\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBManyToOne< TProperty >\fP (Expression< Func< TEntity, TProperty >> property)"
+.br
+.ti -1c
+.RI "void \fBOneToOne< TProperty >\fP (Expression< Func< TEntity, TProperty >> property, Action< \fBIOneToOneMapper\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBAny< TProperty >\fP (Expression< Func< TEntity, TProperty >> property, System\&.Type idTypeOfMetaType, Action< \fBIAnyMapper\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBSet< TElement >\fP (Expression< Func< TEntity, IEnumerable< TElement >>> property, Action< \fBISetPropertiesMapper\fP< TEntity, TElement >> collectionMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping)"
+.br
+.ti -1c
+.RI "void \fBSet< TElement >\fP (Expression< Func< TEntity, IEnumerable< TElement >>> property, Action< \fBISetPropertiesMapper\fP< TEntity, TElement >> collectionMapping)"
+.br
+.ti -1c
+.RI "void \fBBag< TElement >\fP (Expression< Func< TEntity, IEnumerable< TElement >>> property, Action< \fBIBagPropertiesMapper\fP< TEntity, TElement >> collectionMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping)"
+.br
+.ti -1c
+.RI "void \fBBag< TElement >\fP (Expression< Func< TEntity, IEnumerable< TElement >>> property, Action< \fBIBagPropertiesMapper\fP< TEntity, TElement >> collectionMapping)"
+.br
+.ti -1c
+.RI "void \fBList< TElement >\fP (Expression< Func< TEntity, IEnumerable< TElement >>> property, Action< \fBIListPropertiesMapper\fP< TEntity, TElement >> collectionMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping)"
+.br
+.ti -1c
+.RI "void \fBList< TElement >\fP (Expression< Func< TEntity, IEnumerable< TElement >>> property, Action< \fBIListPropertiesMapper\fP< TEntity, TElement >> collectionMapping)"
+.br
+.ti -1c
+.RI "void \fBMap< TKey, TElement >\fP (Expression< Func< TEntity, IDictionary< TKey, TElement >>> property, Action< \fBIMapPropertiesMapper\fP< TEntity, TKey, TElement >> collectionMapping, Action< \fBIMapKeyRelation\fP< TKey >> keyMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping)"
+.br
+.ti -1c
+.RI "void \fBMap< TKey, TElement >\fP (Expression< Func< TEntity, IDictionary< TKey, TElement >>> property, Action< \fBIMapPropertiesMapper\fP< TEntity, TKey, TElement >> collectionMapping)"
+.br
+.ti -1c
+.RI "void \fBMap< TKey, TElement >\fP (Expression< Func< TEntity, IDictionary< TKey, TElement >>> property, Action< \fBIMapPropertiesMapper\fP< TEntity, TKey, TElement >> collectionMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping)"
+.br
+.ti -1c
+.RI "void \fBIdBag< TElement >\fP (Expression< Func< TEntity, IEnumerable< TElement >>> property, Action< \fBIIdBagPropertiesMapper\fP< TEntity, TElement >> collectionMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping)"
+.br
+.ti -1c
+.RI "void \fBIdBag< TElement >\fP (Expression< Func< TEntity, IEnumerable< TElement >>> property, Action< \fBIIdBagPropertiesMapper\fP< TEntity, TElement >> collectionMapping)"
+.br
+.ti -1c
+.RI "void \fBSet< TElement >\fP (string notVisiblePropertyOrFieldName, Action< \fBISetPropertiesMapper\fP< TEntity, TElement >> collectionMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping)"
+.br
+.ti -1c
+.RI "void \fBSet< TElement >\fP (string notVisiblePropertyOrFieldName, Action< \fBISetPropertiesMapper\fP< TEntity, TElement >> collectionMapping)"
+.br
+.ti -1c
+.RI "void \fBBag< TElement >\fP (string notVisiblePropertyOrFieldName, Action< \fBIBagPropertiesMapper\fP< TEntity, TElement >> collectionMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping)"
+.br
+.ti -1c
+.RI "void \fBBag< TElement >\fP (string notVisiblePropertyOrFieldName, Action< \fBIBagPropertiesMapper\fP< TEntity, TElement >> collectionMapping)"
+.br
+.ti -1c
+.RI "void \fBList< TElement >\fP (string notVisiblePropertyOrFieldName, Action< \fBIListPropertiesMapper\fP< TEntity, TElement >> collectionMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping)"
+.br
+.ti -1c
+.RI "void \fBList< TElement >\fP (string notVisiblePropertyOrFieldName, Action< \fBIListPropertiesMapper\fP< TEntity, TElement >> collectionMapping)"
+.br
+.ti -1c
+.RI "void \fBMap< TKey, TElement >\fP (string notVisiblePropertyOrFieldName, Action< \fBIMapPropertiesMapper\fP< TEntity, TKey, TElement >> collectionMapping, Action< \fBIMapKeyRelation\fP< TKey >> keyMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping)"
+.br
+.ti -1c
+.RI "void \fBMap< TKey, TElement >\fP (string notVisiblePropertyOrFieldName, Action< \fBIMapPropertiesMapper\fP< TEntity, TKey, TElement >> collectionMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping)"
+.br
+.ti -1c
+.RI "void \fBMap< TKey, TElement >\fP (string notVisiblePropertyOrFieldName, Action< \fBIMapPropertiesMapper\fP< TEntity, TKey, TElement >> collectionMapping)"
+.br
+.ti -1c
+.RI "void \fBIdBag< TElement >\fP (string notVisiblePropertyOrFieldName, Action< \fBIIdBagPropertiesMapper\fP< TEntity, TElement >> collectionMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping)"
+.br
+.ti -1c
+.RI "void \fBIdBag< TElement >\fP (string notVisiblePropertyOrFieldName, Action< \fBIIdBagPropertiesMapper\fP< TEntity, TElement >> collectionMapping)"
+.br
+.ti -1c
+.RI "void \fBManyToOne< TProperty >\fP (string notVisiblePropertyOrFieldName, Action< \fBIManyToOneMapper\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBComponent< TComponent >\fP (string notVisiblePropertyOrFieldName, Action< \fBIComponentMapper\fP< TComponent >> mapping)"
+.br
+.ti -1c
+.RI "void \fBComponent< TComponent >\fP (string notVisiblePropertyOrFieldName)"
+.br
+.ti -1c
+.RI "void \fBComponent< TComponent >\fP (string notVisiblePropertyOrFieldName, TComponent dynamicComponentTemplate, Action< \fBIDynamicComponentMapper\fP< TComponent >> mapping)"
+.br
+.ti -1c
+.RI "void \fBAny< TProperty >\fP (string notVisiblePropertyOrFieldName, System\&.Type idTypeOfMetaType, Action< \fBIAnyMapper\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBOneToOne< TProperty >\fP (string notVisiblePropertyOrFieldName, Action< \fBIOneToOneMapper\fP > mapping)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static MemberInfo \fBGetPropertyOrFieldMatchingNameOrThrow\fP (string memberName)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBRegisterPropertyMapping< TProperty >\fP (Expression< Func< TEntity, TProperty >> property, Action< \fBIPropertyMapper\fP > mapping)"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterNoVisiblePropertyMapping\fP (string notVisiblePropertyOrFieldName, Action< \fBIPropertyMapper\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBRegistePropertyMapping\fP (Action< \fBIPropertyMapper\fP > mapping, params MemberInfo[] members)"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterComponentMapping< TComponent >\fP (Expression< Func< TEntity, TComponent >> property, Action< \fBIComponentMapper\fP< TComponent >> mapping)"
+.br
+.ti -1c
+.RI "void \fBRegisterComponentMapping< TComponent >\fP (Action< \fBIComponentMapper\fP< TComponent >> mapping, params MemberInfo[] members)"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterDynamicComponentMapping< TComponent >\fP (Expression< Func< TEntity, IDictionary >> property, Action< \fBIDynamicComponentMapper\fP< TComponent >> mapping)"
+.br
+.ti -1c
+.RI "void \fBRegisterDynamicComponentMapping< TComponent >\fP (Action< \fBIDynamicComponentMapper\fP< TComponent >> mapping, params MemberInfo[] members)"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterManyToOneMapping< TProperty >\fP (Expression< Func< TEntity, TProperty >> property, Action< \fBIManyToOneMapper\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBRegisterManyToOneMapping< TProperty >\fP (Action< \fBIManyToOneMapper\fP > mapping, params MemberInfo[] members)"
+.br
+.ti -1c
+.RI "void \fBRegisterOneToOneMapping< TProperty >\fP (Action< \fBIOneToOneMapper\fP > mapping, params MemberInfo[] members)"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterAnyMapping< TProperty >\fP (Expression< Func< TEntity, TProperty >> property, System\&.Type idTypeOfMetaType, Action< \fBIAnyMapper\fP > mapping)"
+.br
+.ti -1c
+.RI "void \fBRegisterAnyMapping< TProperty >\fP (Action< \fBIAnyMapper\fP > mapping, System\&.Type idTypeOfMetaType, params MemberInfo[] members)"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterSetMapping< TElement >\fP (Expression< Func< TEntity, IEnumerable< TElement >>> property, Action< \fBISetPropertiesMapper\fP< TEntity, TElement >> collectionMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping)"
+.br
+.ti -1c
+.RI "void \fBRegisterSetMapping< TElement >\fP (Action< \fBISetPropertiesMapper\fP< TEntity, TElement >> collectionMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping, params MemberInfo[] members)"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterBagMapping< TElement >\fP (Expression< Func< TEntity, IEnumerable< TElement >>> property, Action< \fBIBagPropertiesMapper\fP< TEntity, TElement >> collectionMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping)"
+.br
+.ti -1c
+.RI "void \fBRegisterBagMapping< TElement >\fP (Action< \fBIBagPropertiesMapper\fP< TEntity, TElement >> collectionMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping, params MemberInfo[] members)"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterListMapping< TElement >\fP (Expression< Func< TEntity, IEnumerable< TElement >>> property, Action< \fBIListPropertiesMapper\fP< TEntity, TElement >> collectionMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping)"
+.br
+.ti -1c
+.RI "void \fBRegisterListMapping< TElement >\fP (Action< \fBIListPropertiesMapper\fP< TEntity, TElement >> collectionMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping, params MemberInfo[] members)"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterMapMapping< TKey, TElement >\fP (Expression< Func< TEntity, IDictionary< TKey, TElement >>> property, Action< \fBIMapPropertiesMapper\fP< TEntity, TKey, TElement >> collectionMapping, Action< \fBIMapKeyRelation\fP< TKey >> keyMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping)"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterMapMapping< TKey, TElement >\fP (Action< \fBIMapPropertiesMapper\fP< TEntity, TKey, TElement >> collectionMapping, Action< \fBIMapKeyRelation\fP< TKey >> keyMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping, params MemberInfo[] members)"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterIdBagMapping< TElement >\fP (Expression< Func< TEntity, IEnumerable< TElement >>> property, Action< \fBIIdBagPropertiesMapper\fP< TEntity, TElement >> collectionMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping)"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterIdBagMapping< TElement >\fP (Action< \fBIIdBagPropertiesMapper\fP< TEntity, TElement >> collectionMapping, Action< \fBICollectionElementRelation\fP< TElement >> mapping, params MemberInfo[] members)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBType Constraints\fP
+.TP
+\fITEntity\fP : \fIclass\fP
+.PP
+Definition at line 9 of file PropertyContainerCustomizer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

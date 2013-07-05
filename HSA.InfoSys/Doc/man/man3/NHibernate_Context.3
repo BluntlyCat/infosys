@@ -1,0 +1,55 @@
+.TH "NHibernate.Context" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Context \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBCallSessionContext\fP"
+.br
+.RI "\fIProvides a \fBcurrent session\fP for each System\&.Runtime\&.Remoting\&.Messaging\&.CallContext\&. Not recommended for \&.NET 2\&.0 web applications\&. \fP"
+.ti -1c
+.RI "class \fBCurrentSessionContext\fP"
+.br
+.RI "\fIExtends the contract defined by \fBICurrentSessionContext\fP by providing methods to bind and unbind sessions to the current context\&. \fP"
+.ti -1c
+.RI "interface \fBICurrentSessionContext\fP"
+.br
+.RI "\fIDefines the contract for implementations which know how to scope the notion of a \fBcurrent session\fP\&. \fP"
+.ti -1c
+.RI "class \fBMapBasedSessionContext\fP"
+.br
+.ti -1c
+.RI "class \fBReflectiveHttpContext\fP"
+.br
+.RI "\fIThis class allows access to the HttpContext without referring to HttpContext at compile time\&. The accessors are cached as delegates for performance\&. \fP"
+.ti -1c
+.RI "class \fBThreadLocalSessionContext\fP"
+.br
+.RI "\fIA \fBICurrentSessionContext\fP impl which scopes the notion of current session by the current thread of execution\&. Threads do not give us a nice hook to perform any type of cleanup making it questionable for this impl to actually generate Session instances\&. In the interest of usability, it was decided to have this default impl actually generate a session upon first request and then clean it up after the \fBITransaction\fP associated with that session is committed/rolled-back\&. In order for ensuring that happens, the sessions generated here are unusable until after \fBSession#beginTransaction()\fP has been called\&. If \fCClose()\fP is called on a session managed by this class, it will be automatically unbound\&. 
+.PP
+Additionally, the static Bind and \fBUnbind\fP methods are provided to allow application code to explicitly control opening and closing of these sessions\&. This, with some from of interception, is the preferred approach\&. It also allows easy framework integration and one possible approach for implementing long-sessions\&. \fP"
+.ti -1c
+.RI "class \fBThreadStaticSessionContext\fP"
+.br
+.RI "\fIProvides a \fBcurrent session\fP for each thread using the [ThreadStaticAttribute]\&. To avoid if there are two session factories in the same thread\&. \fP"
+.ti -1c
+.RI "class \fBWcfOperationSessionContext\fP"
+.br
+.RI "\fIProvides a \fBcurrent session\fP for the current OperationContext in WCF\&. Works only during the lifetime of a WCF operation\&. \fP"
+.ti -1c
+.RI "class \fBWcfStateExtension\fP"
+.br
+.ti -1c
+.RI "class \fBWebSessionContext\fP"
+.br
+.RI "\fIProvides a \fBcurrent session\fP for each System\&.Web\&.HttpContext\&. Works only with web applications\&. \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

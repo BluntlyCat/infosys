@@ -1,0 +1,162 @@
+.TH "NHibernate.Mapping.AbstractAuxiliaryDatabaseObject" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.AbstractAuxiliaryDatabaseObject \- 
+.PP
+Convenience base class for \fBAuxiliaryDatabaseObjects\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.IAuxiliaryDatabaseObject\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Mapping\&.SimpleAuxiliaryDatabaseObject\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1290\&.AuxType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1939\&.AuxType\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2055\&.AuxType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAddDialectScope\fP (string dialectName)"
+.br
+.RI "\fIAdd the given dialect name to the scope of dialects to which this database object applies\&. \fP"
+.ti -1c
+.RI "bool \fBAppliesToDialect\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIDoes this database object apply to the given dialect? \fP"
+.ti -1c
+.RI "abstract string \fBSqlCreateString\fP (\fBDialect\&.Dialect\fP dialect, \fBIMapping\fP p, string defaultCatalog, string defaultSchema)"
+.br
+.RI "\fIWhen implemented by a class, generates the SQL string to create the mapping element in the database\&. \fP"
+.ti -1c
+.RI "abstract string \fBSqlDropString\fP (\fBDialect\&.Dialect\fP dialect, string defaultCatalog, string defaultSchema)"
+.br
+.RI "\fIWhen implemented by a class, generates the SQL string to drop the mapping element from the database\&. \fP"
+.ti -1c
+.RI "void \fBSetParameterValues\fP (IDictionary< string, string > parameters)"
+.br
+.RI "\fIGets called by \fBNHibernate\fP to pass the configured type parameters to the implementation\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractAuxiliaryDatabaseObject\fP (HashSet< string > dialectScopes)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "HashSet< string > \fBDialectScopes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, string > \fBParameters\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Convenience base class for \fBAuxiliaryDatabaseObjects\fP\&. 
+
+This implementation performs dialect scoping checks strictly based on dialect name comparisons\&. Custom implementations might want to do instanceof-type checks\&. 
+.PP
+Definition at line 16 of file AbstractAuxiliaryDatabaseObject\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Mapping\&.AbstractAuxiliaryDatabaseObject\&.AddDialectScope (stringdialectName)"
+
+.PP
+Add the given dialect name to the scope of dialects to which this database object applies\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialectName\fP The name of a dialect\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Mapping\&.IAuxiliaryDatabaseObject\fP\&.
+.PP
+Definition at line 31 of file AbstractAuxiliaryDatabaseObject\&.cs\&.
+.SS "bool NHibernate\&.Mapping\&.AbstractAuxiliaryDatabaseObject\&.AppliesToDialect (\fBDialect\&.Dialect\fPdialect)"
+
+.PP
+Does this database object apply to the given dialect? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The dialect to check against\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if this database object does apply to the given dialect\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Mapping\&.IAuxiliaryDatabaseObject\fP\&.
+.PP
+Definition at line 46 of file AbstractAuxiliaryDatabaseObject\&.cs\&.
+.SS "void NHibernate\&.Mapping\&.AbstractAuxiliaryDatabaseObject\&.SetParameterValues (IDictionary< string, string >parameters)"
+
+.PP
+Gets called by \fBNHibernate\fP to pass the configured type parameters to the implementation\&. 
+.PP
+Implements \fBNHibernate\&.Mapping\&.IAuxiliaryDatabaseObject\fP\&.
+.PP
+Definition at line 55 of file AbstractAuxiliaryDatabaseObject\&.cs\&.
+.SS "abstract string NHibernate\&.Mapping\&.AbstractAuxiliaryDatabaseObject\&.SqlCreateString (\fBDialect\&.Dialect\fPdialect, \fBIMapping\fPp, stringdefaultCatalog, stringdefaultSchema)\fC [pure virtual]\fP"
+
+.PP
+When implemented by a class, generates the SQL string to create the mapping element in the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP to use for SQL rules\&.
+.br
+\fIp\fP 
+.br
+\fIdefaultSchema\fP 
+.br
+\fIdefaultCatalog\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that contains the SQL to create an object\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Mapping\&.IRelationalModel\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Mapping\&.SimpleAuxiliaryDatabaseObject\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1939\&.AuxType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2055\&.AuxType\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1290\&.AuxType\fP\&.
+.SS "abstract string NHibernate\&.Mapping\&.AbstractAuxiliaryDatabaseObject\&.SqlDropString (\fBDialect\&.Dialect\fPdialect, stringdefaultCatalog, stringdefaultSchema)\fC [pure virtual]\fP"
+
+.PP
+When implemented by a class, generates the SQL string to drop the mapping element from the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP to use for SQL rules\&.
+.br
+\fIdefaultCatalog\fP 
+.br
+\fIdefaultSchema\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that contains the SQL to drop an object\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Mapping\&.IRelationalModel\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Mapping\&.SimpleAuxiliaryDatabaseObject\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1939\&.AuxType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2055\&.AuxType\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1290\&.AuxType\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

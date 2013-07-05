@@ -1,0 +1,197 @@
+.TH "NHibernate.Event.Default.DefaultMergeEventListener" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.Default.DefaultMergeEventListener \- 
+.PP
+Defines the default event listener for handling of merge events generated from a session\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Event\&.Default\&.AbstractSaveEventListener\fP, and \fBNHibernate\&.Event\&.IMergeEventListener\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBOnMerge\fP (\fBMergeEvent\fP @event)"
+.br
+.RI "\fIHandle the given merge event\&. \fP"
+.ti -1c
+.RI "virtual void \fBOnMerge\fP (\fBMergeEvent\fP @event, IDictionary copiedAlready)"
+.br
+.RI "\fIHandle the given merge event\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override IDictionary \fBGetMergeMap\fP (object anything)"
+.br
+.ti -1c
+.RI "virtual void \fBEntityIsPersistent\fP (\fBMergeEvent\fP @event, IDictionary copyCache)"
+.br
+.ti -1c
+.RI "virtual void \fBEntityIsTransient\fP (\fBMergeEvent\fP @event, IDictionary copyCache)"
+.br
+.ti -1c
+.RI "virtual void \fBEntityIsDetached\fP (\fBMergeEvent\fP @event, IDictionary copyCache)"
+.br
+.ti -1c
+.RI "virtual bool \fBInvokeUpdateLifecycle\fP (object entity, \fBIEntityPersister\fP persister, \fBIEventSource\fP source)"
+.br
+.ti -1c
+.RI "virtual void \fBCopyValues\fP (\fBIEntityPersister\fP persister, object entity, object target, \fBISessionImplementor\fP source, IDictionary copyCache)"
+.br
+.ti -1c
+.RI "virtual void \fBCopyValues\fP (\fBIEntityPersister\fP persister, object entity, object target, \fBISessionImplementor\fP source, IDictionary copyCache, \fBForeignKeyDirection\fP foreignKeyDirection)"
+.br
+.ti -1c
+.RI "virtual void \fBCascadeOnMerge\fP (\fBIEventSource\fP source, \fBIEntityPersister\fP persister, object entity, IDictionary copyCache)"
+.br
+.RI "\fIPerform any cascades needed as part of this copy event\&. \fP"
+.ti -1c
+.RI "\fBEventCache\fP \fBGetTransientCopyCache\fP (\fBMergeEvent\fP @event, \fBEventCache\fP copyCache)"
+.br
+.RI "\fIDetermine which merged entities in the copyCache are transient\&. \fP"
+.ti -1c
+.RI "void \fBRetryMergeTransientEntities\fP (\fBMergeEvent\fP @event, IDictionary transientCopyCache, \fBEventCache\fP copyCache)"
+.br
+.RI "\fIRetry merging transient entities \fP"
+.ti -1c
+.RI "override void \fBCascadeAfterSave\fP (\fBIEventSource\fP source, \fBIEntityPersister\fP persister, object entity, object anything)"
+.br
+.RI "\fICascade behavior is redefined by this subclass, disable superclass behavior\fP"
+.ti -1c
+.RI "override void \fBCascadeBeforeSave\fP (\fBIEventSource\fP source, \fBIEntityPersister\fP persister, object entity, object anything)"
+.br
+.RI "\fICascade behavior is redefined by this subclass, disable superclass behavior\fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override \fBCascadingAction\fP \fBCascadeAction\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBAssumedUnsaved\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the default event listener for handling of merge events generated from a session\&. 
+
+
+.PP
+Definition at line 18 of file DefaultMergeEventListener\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Event\&.Default\&.DefaultMergeEventListener\&.CascadeAfterSave (\fBIEventSource\fPsource, \fBIEntityPersister\fPpersister, objectentity, objectanything)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Cascade behavior is redefined by this subclass, disable superclass behavior
+.PP
+Reimplemented from \fBNHibernate\&.Event\&.Default\&.AbstractSaveEventListener\fP\&.
+.PP
+Definition at line 599 of file DefaultMergeEventListener\&.cs\&.
+.SS "override void NHibernate\&.Event\&.Default\&.DefaultMergeEventListener\&.CascadeBeforeSave (\fBIEventSource\fPsource, \fBIEntityPersister\fPpersister, objectentity, objectanything)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Cascade behavior is redefined by this subclass, disable superclass behavior
+.PP
+Reimplemented from \fBNHibernate\&.Event\&.Default\&.AbstractSaveEventListener\fP\&.
+.PP
+Definition at line 604 of file DefaultMergeEventListener\&.cs\&.
+.SS "virtual void NHibernate\&.Event\&.Default\&.DefaultMergeEventListener\&.CascadeOnMerge (\fBIEventSource\fPsource, \fBIEntityPersister\fPpersister, objectentity, IDictionarycopyCache)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Perform any cascades needed as part of this copy event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP The merge event being processed\&. 
+.br
+\fIpersister\fP The persister of the entity being copied\&. 
+.br
+\fIentity\fP The entity being copied\&. 
+.br
+\fIcopyCache\fP A cache of already copied instance\&. 
+.RE
+.PP
+
+.PP
+Definition at line 499 of file DefaultMergeEventListener\&.cs\&.
+.SS "\fBEventCache\fP NHibernate\&.Event\&.Default\&.DefaultMergeEventListener\&.GetTransientCopyCache (\fBMergeEvent\fP @event, \fBEventCache\fPcopyCache)\fC [protected]\fP"
+
+.PP
+Determine which merged entities in the copyCache are transient\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP 
+.br
+\fIcopyCache\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+.PP
+Should this method be on the \fBEventCache\fP class?
+.PP
+Definition at line 519 of file DefaultMergeEventListener\&.cs\&.
+.SS "virtual void NHibernate\&.Event\&.Default\&.DefaultMergeEventListener\&.OnMerge (\fBMergeEvent\fP @event)\fC [virtual]\fP"
+
+.PP
+Handle the given merge event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The merge event to be handled\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Event\&.IMergeEventListener\fP\&.
+.PP
+Definition at line 37 of file DefaultMergeEventListener\&.cs\&.
+.SS "virtual void NHibernate\&.Event\&.Default\&.DefaultMergeEventListener\&.OnMerge (\fBMergeEvent\fP @event, IDictionarycopiedAlready)\fC [virtual]\fP"
+
+.PP
+Handle the given merge event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The merge event to be handled\&. 
+.br
+\fIcopiedAlready\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Event\&.IMergeEventListener\fP\&.
+.PP
+Definition at line 83 of file DefaultMergeEventListener\&.cs\&.
+.SS "void NHibernate\&.Event\&.Default\&.DefaultMergeEventListener\&.RetryMergeTransientEntities (\fBMergeEvent\fP @event, IDictionarytransientCopyCache, \fBEventCache\fPcopyCache)\fC [protected]\fP"
+
+.PP
+Retry merging transient entities 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP 
+.br
+\fItransientCopyCache\fP 
+.br
+\fIcopyCache\fP 
+.RE
+.PP
+
+.PP
+Definition at line 576 of file DefaultMergeEventListener\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

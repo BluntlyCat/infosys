@@ -1,0 +1,9 @@
+var class_n_hibernate_1_1_test_1_1_system_transactions_1_1_transaction_notification_fixture_1_1_recording_interceptor =
+[
+    [ "AfterTransactionBegin", "class_n_hibernate_1_1_test_1_1_system_transactions_1_1_transaction_notification_fixture_1_1_recording_interceptor.html#a3cd7b6a4ad39c5c82390f2eef41bdddf", null ],
+    [ "AfterTransactionCompletion", "class_n_hibernate_1_1_test_1_1_system_transactions_1_1_transaction_notification_fixture_1_1_recording_interceptor.html#af48f37bd0f2e41d8bc0995282efc92ca", null ],
+    [ "BeforeTransactionCompletion", "class_n_hibernate_1_1_test_1_1_system_transactions_1_1_transaction_notification_fixture_1_1_recording_interceptor.html#a5af537899e116906bc5e2578c8b187af", null ],
+    [ "afterTransactionBeginCalled", "class_n_hibernate_1_1_test_1_1_system_transactions_1_1_transaction_notification_fixture_1_1_recording_interceptor.html#a967fab8e4da859df22af8e146d64f526", null ],
+    [ "afterTransactionCompletionCalled", "class_n_hibernate_1_1_test_1_1_system_transactions_1_1_transaction_notification_fixture_1_1_recording_interceptor.html#a535d1b0969cdd77be49550c2dc6c7427", null ],
+    [ "beforeTransactionCompletionCalled", "class_n_hibernate_1_1_test_1_1_system_transactions_1_1_transaction_notification_fixture_1_1_recording_interceptor.html#a32b94db4a8da4806f5f2fe6aee531d34", null ]
+];

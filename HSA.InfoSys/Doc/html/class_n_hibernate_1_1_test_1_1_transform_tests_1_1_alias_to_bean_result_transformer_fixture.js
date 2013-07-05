@@ -1,0 +1,11 @@
+var class_n_hibernate_1_1_test_1_1_transform_tests_1_1_alias_to_bean_result_transformer_fixture =
+[
+    [ "PublicParameterLessCtor", "class_n_hibernate_1_1_test_1_1_transform_tests_1_1_alias_to_bean_result_transformer_fixture_1_1_public_parameter_less_ctor.html", "class_n_hibernate_1_1_test_1_1_transform_tests_1_1_alias_to_bean_result_transformer_fixture_1_1_public_parameter_less_ctor" ],
+    [ "TestStruct", "struct_n_hibernate_1_1_test_1_1_transform_tests_1_1_alias_to_bean_result_transformer_fixture_1_1_test_struct.html", "struct_n_hibernate_1_1_test_1_1_transform_tests_1_1_alias_to_bean_result_transformer_fixture_1_1_test_struct" ],
+    [ "WithOutPublicParameterLessCtor", "class_n_hibernate_1_1_test_1_1_transform_tests_1_1_alias_to_bean_result_transformer_fixture_1_1_c0c23bc5fe7b0cc33cb0c37f7e4d592a.html", "class_n_hibernate_1_1_test_1_1_transform_tests_1_1_alias_to_bean_result_transformer_fixture_1_1_c0c23bc5fe7b0cc33cb0c37f7e4d592a" ],
+    [ "WorksWithStruct", "class_n_hibernate_1_1_test_1_1_transform_tests_1_1_alias_to_bean_result_transformer_fixture.html#afa96fd09820c4f641f7b309ffa8375f3", null ],
+    [ "WorkWithOutPublicParameterLessCtor", "class_n_hibernate_1_1_test_1_1_transform_tests_1_1_alias_to_bean_result_transformer_fixture.html#abe6259c7dad07fe44abba51fe9d48133", null ],
+    [ "WorkWithPublicParameterLessCtor", "class_n_hibernate_1_1_test_1_1_transform_tests_1_1_alias_to_bean_result_transformer_fixture.html#a4035304ce2f1530560391e350f575368", null ],
+    [ "Mappings", "class_n_hibernate_1_1_test_1_1_transform_tests_1_1_alias_to_bean_result_transformer_fixture.html#ada971a4a0ee31df78b4a65b98699cad7", null ],
+    [ "MappingsAssembly", "class_n_hibernate_1_1_test_1_1_transform_tests_1_1_alias_to_bean_result_transformer_fixture.html#a7a2be1a0f41e99c79e40f3c98e19ee41", null ]
+];

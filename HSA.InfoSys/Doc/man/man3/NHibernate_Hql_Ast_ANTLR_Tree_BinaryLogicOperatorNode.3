@@ -1,0 +1,138 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Tree.BinaryLogicOperatorNode" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Tree.BinaryLogicOperatorNode \- 
+.PP
+Contract for nodes representing binary operators\&. Author: Steve Ebersole Ported by: Steve Strong  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.HqlSqlWalkerNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IBinaryOperatorNode\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IParameterContainer\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.InLogicOperatorNode\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBinaryLogicOperatorNode\fP (IToken token)"
+.br
+.ti -1c
+.RI "virtual void \fBInitialize\fP ()"
+.br
+.RI "\fIPerforms the operator node initialization by seeking out any parameter nodes and setting their expected type, if possible\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBRenderText\fP (\fBISessionFactoryImplementor\fP sessionFactory)"
+.br
+.RI "\fIRetrieve the text to be used for rendering this particular node\&. \fP"
+.ti -1c
+.RI "void \fBAddEmbeddedParameter\fP (\fBIParameterSpecification\fP specification)"
+.br
+.RI "\fIAdds a parameter specification for a parameter encountered within this node\&. We use the term 'embedded' here because of the fact that the parameter was simply encountered as part of the node's text; it does not exist as part of a subtree as it might in a true AST\&. \fP"
+.ti -1c
+.RI "\fBIParameterSpecification\fP[] \fBGetEmbeddedParameters\fP ()"
+.br
+.RI "\fIRetrieve all embedded parameter specifications\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBMutateRowValueConstructorSyntaxesIfNecessary\fP (\fBIType\fP lhsType, \fBIType\fP rhsType)"
+.br
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBIType\fP \fBExtractDataType\fP (\fBIASTNode\fP operand)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIASTNode\fP \fBLeftHandOperand\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIASTNode\fP \fBRightHandOperand\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasEmbeddedParameters\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Contract for nodes representing binary operators\&. Author: Steve Ebersole Ported by: Steve Strong 
+
+
+.PP
+Definition at line 19 of file BinaryLogicOperatorNode\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.BinaryLogicOperatorNode\&.AddEmbeddedParameter (\fBIParameterSpecification\fPspecification)"
+
+.PP
+Adds a parameter specification for a parameter encountered within this node\&. We use the term 'embedded' here because of the fact that the parameter was simply encountered as part of the node's text; it does not exist as part of a subtree as it might in a true AST\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspecification\fP The generated specification\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IParameterContainer\fP\&.
+.PP
+Definition at line 183 of file BinaryLogicOperatorNode\&.cs\&.
+.SS "\fBIParameterSpecification\fP [] NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.BinaryLogicOperatorNode\&.GetEmbeddedParameters ()"
+
+.PP
+Retrieve all embedded parameter specifications\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+All embedded parameter specifications; may return null\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IParameterContainer\fP\&.
+.PP
+Definition at line 197 of file BinaryLogicOperatorNode\&.cs\&.
+.SS "virtual void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.BinaryLogicOperatorNode\&.Initialize ()\fC [virtual]\fP"
+
+.PP
+Performs the operator node initialization by seeking out any parameter nodes and setting their expected type, if possible\&. 
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IOperatorNode\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.InLogicOperatorNode\fP\&.
+.PP
+Definition at line 42 of file BinaryLogicOperatorNode\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.BinaryLogicOperatorNode\&.RenderText (\fBISessionFactoryImplementor\fPsessionFactory)\fC [virtual]\fP"
+
+.PP
+Retrieve the text to be used for rendering this particular node\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsessionFactory\fP The session factory
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The text to use for rendering
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SqlNode\fP\&.
+.PP
+Definition at line 161 of file BinaryLogicOperatorNode\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

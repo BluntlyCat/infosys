@@ -1,0 +1,393 @@
+.TH "NHibernate.SqlCommand.SqlStringBuilder" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.SqlCommand.SqlStringBuilder \- 
+.PP
+The \fBSqlStringBuilder\fP is used to construct a \fBSqlString\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.SqlCommand\&.ISqlStringBuilder\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlStringBuilder\fP ()"
+.br
+.RI "\fICreate an empty StringBuilder with the default capacity\&. \fP"
+.ti -1c
+.RI "\fBSqlStringBuilder\fP (int partsCapacity)"
+.br
+.RI "\fICreate a StringBuilder with a specific capacity\&. \fP"
+.ti -1c
+.RI "\fBSqlStringBuilder\fP (\fBSqlString\fP sqlString)"
+.br
+.RI "\fICreate a StringBuilder to modify the \fBSqlString\fP \fP"
+.ti -1c
+.RI "\fBSqlStringBuilder\fP \fBAdd\fP (string sql)"
+.br
+.RI "\fIAdds the preformatted sql to the \fBSqlString\fP that is being built\&. \fP"
+.ti -1c
+.RI "\fBSqlStringBuilder\fP \fBAdd\fP (\fBParameter\fP parameter)"
+.br
+.RI "\fIAdds the \fBParameter\fP to the \fBSqlString\fP that is being built\&. The correct operator should be added before the \fBAdd(Parameter)\fP is called because there will be no operator ( such as '=' ) placed between the last Add call and this Add call\&. \fP"
+.ti -1c
+.RI "\fBSqlStringBuilder\fP \fBAddParameter\fP ()"
+.br
+.ti -1c
+.RI "\fBSqlStringBuilder\fP \fBAddObject\fP (object part)"
+.br
+.RI "\fIAttempts to discover what type of object this is and calls the appropriate method\&. \fP"
+.ti -1c
+.RI "\fBSqlStringBuilder\fP \fBAdd\fP (\fBSqlString\fP sqlString)"
+.br
+.RI "\fIAdds an existing \fBSqlString\fP to this \fBSqlStringBuilder\fP\&. It does NOT add any prefix, postfix, operator, or wrap around this\&. It is equivalent to just adding a string\&. \fP"
+.ti -1c
+.RI "\fBSqlStringBuilder\fP \fBAdd\fP (\fBSqlString\fP sqlString, string prefix, string op, string postfix)"
+.br
+.RI "\fIAdds an existing \fBSqlString\fP to this \fBSqlStringBuilder\fP \fP"
+.ti -1c
+.RI "\fBSqlStringBuilder\fP \fBAdd\fP (\fBSqlString\fP[] sqlStrings, string prefix, string op, string postfix)"
+.br
+.RI "\fIAdds existing SqlStrings to this \fBSqlStringBuilder\fP \fP"
+.ti -1c
+.RI "\fBSqlStringBuilder\fP \fBAdd\fP (\fBSqlString\fP[] sqlStrings, string prefix, string op, string postfix, bool wrapStatement)"
+.br
+.RI "\fIAdds existing SqlStrings to this \fBSqlStringBuilder\fP \fP"
+.ti -1c
+.RI "\fBSqlStringBuilder\fP \fBInsert\fP (int index, string sql)"
+.br
+.RI "\fIInsert a string containing sql into the \fBSqlStringBuilder\fP at the specified index\&. \fP"
+.ti -1c
+.RI "\fBSqlStringBuilder\fP \fBInsert\fP (int index, \fBParameter\fP param)"
+.br
+.RI "\fIInsert a \fBParameter\fP into the \fBSqlStringBuilder\fP at the specified index\&. \fP"
+.ti -1c
+.RI "\fBSqlStringBuilder\fP \fBRemoveAt\fP (int index)"
+.br
+.RI "\fIRemoves the string or \fBParameter\fP at the specified index\&. \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBToSqlString\fP ()"
+.br
+.RI "\fIConverts the mutable \fBSqlStringBuilder\fP into the immutable \fBSqlString\fP\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBCount\fP\fC [get]\fP"
+.br
+.RI "\fIGets the number of SqlParts in this \fBSqlStringBuilder\fP\&. \fP"
+.ti -1c
+.RI "object \fBthis[int index]\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or Sets the element at the index \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The \fBSqlStringBuilder\fP is used to construct a \fBSqlString\fP\&. 
+
+The \fBSqlString\fP is a nonmutable class so it can't have sql parts added to it\&. Instead this class should be used to generate a new \fBSqlString\fP\&. The \fBSqlStringBuilder\fP is to \fBSqlString\fP what the StringBuilder is to a String\&. 
+.PP
+This is different from the original version of \fBSqlString\fP because this does not hold the sql string in the form of 'column1=@column1' instead it uses an array to build the sql statement such that object[0] = 'column1=' object[1] = ref to column1 parameter 
+.PP
+What this allows us to do is to delay the generating of the parameter for the sql until the very end - making testing dialect indifferent\&. Right now all of our test to make sure the correct sql is getting built are specific to MsSql2000Dialect\&. 
+.PP
+Definition at line 32 of file SqlStringBuilder\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.SqlCommand\&.SqlStringBuilder\&.SqlStringBuilder ()"
+
+.PP
+Create an empty StringBuilder with the default capacity\&. 
+.PP
+Definition at line 54 of file SqlStringBuilder\&.cs\&.
+.SS "NHibernate\&.SqlCommand\&.SqlStringBuilder\&.SqlStringBuilder (intpartsCapacity)"
+
+.PP
+Create a StringBuilder with a specific capacity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpartsCapacity\fP The number of parts expected\&.
+.RE
+.PP
+
+.PP
+Definition at line 62 of file SqlStringBuilder\&.cs\&.
+.SS "NHibernate\&.SqlCommand\&.SqlStringBuilder\&.SqlStringBuilder (\fBSqlString\fPsqlString)"
+
+.PP
+Create a StringBuilder to modify the \fBSqlString\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlString\fP The \fBSqlString\fP to modify\&.
+.RE
+.PP
+
+.PP
+Definition at line 71 of file SqlStringBuilder\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSqlStringBuilder\fP NHibernate\&.SqlCommand\&.SqlStringBuilder\&.Add (stringsql)"
+
+.PP
+Adds the preformatted sql to the \fBSqlString\fP that is being built\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsql\fP The string to add\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBSqlStringBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 82 of file SqlStringBuilder\&.cs\&.
+.SS "\fBSqlStringBuilder\fP NHibernate\&.SqlCommand\&.SqlStringBuilder\&.Add (\fBParameter\fPparameter)"
+
+.PP
+Adds the \fBParameter\fP to the \fBSqlString\fP that is being built\&. The correct operator should be added before the \fBAdd(Parameter)\fP is called because there will be no operator ( such as '=' ) placed between the last Add call and this Add call\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameter\fP The \fBParameter\fP to add\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBSqlStringBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 99 of file SqlStringBuilder\&.cs\&.
+.SS "\fBSqlStringBuilder\fP NHibernate\&.SqlCommand\&.SqlStringBuilder\&.Add (\fBSqlString\fPsqlString)"
+
+.PP
+Adds an existing \fBSqlString\fP to this \fBSqlStringBuilder\fP\&. It does NOT add any prefix, postfix, operator, or wrap around this\&. It is equivalent to just adding a string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlString\fP The \fBSqlString\fP to add to this \fBSqlStringBuilder\fP
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBSqlStringBuilder\fP
+.RE
+.PP
+.PP
+This calls the overloaded Add(sqlString, null, null, null, false)
+.PP
+Definition at line 162 of file SqlStringBuilder\&.cs\&.
+.SS "\fBSqlStringBuilder\fP NHibernate\&.SqlCommand\&.SqlStringBuilder\&.Add (\fBSqlString\fPsqlString, stringprefix, stringop, stringpostfix)"
+
+.PP
+Adds an existing \fBSqlString\fP to this \fBSqlStringBuilder\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlString\fP The \fBSqlString\fP to add to this \fBSqlStringBuilder\fP
+.br
+\fIprefix\fP String to put at the beginning of the combined \fBSqlString\fP\&.
+.br
+\fIop\fP How these Statements should be junctioned 'AND' or 'OR'
+.br
+\fIpostfix\fP String to put at the end of the combined \fBSqlString\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBSqlStringBuilder\fP
+.RE
+.PP
+.PP
+This calls the overloaded Add method with an array of SqlStrings and wrapStatment=false so it will not be wrapped with a '(' and ')' 
+.PP
+Definition at line 181 of file SqlStringBuilder\&.cs\&.
+.SS "\fBSqlStringBuilder\fP NHibernate\&.SqlCommand\&.SqlStringBuilder\&.Add (\fBSqlString\fP[]sqlStrings, stringprefix, stringop, stringpostfix)"
+
+.PP
+Adds existing SqlStrings to this \fBSqlStringBuilder\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlStrings\fP The SqlStrings to combine\&.
+.br
+\fIprefix\fP String to put at the beginning of the combined \fBSqlString\fP\&.
+.br
+\fIop\fP How these SqlStrings should be junctioned 'AND' or 'OR'
+.br
+\fIpostfix\fP String to put at the end of the combined SqlStrings\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBSqlStringBuilder\fP
+.RE
+.PP
+.PP
+This calls the overloaded Add method with wrapStatement=true
+.PP
+Definition at line 195 of file SqlStringBuilder\&.cs\&.
+.SS "\fBSqlStringBuilder\fP NHibernate\&.SqlCommand\&.SqlStringBuilder\&.Add (\fBSqlString\fP[]sqlStrings, stringprefix, stringop, stringpostfix, boolwrapStatement)"
+
+.PP
+Adds existing SqlStrings to this \fBSqlStringBuilder\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlStrings\fP The SqlStrings to combine\&.
+.br
+\fIprefix\fP String to put at the beginning of the combined SqlStrings\&.
+.br
+\fIop\fP How these SqlStrings should be junctioned 'AND' or 'OR'
+.br
+\fIpostfix\fP String to put at the end of the combined SqlStrings\&.
+.br
+\fIwrapStatement\fP Wrap each SqlStrings with '(' and ')'
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBSqlStringBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 209 of file SqlStringBuilder\&.cs\&.
+.SS "\fBSqlStringBuilder\fP NHibernate\&.SqlCommand\&.SqlStringBuilder\&.AddObject (objectpart)"
+
+.PP
+Attempts to discover what type of object this is and calls the appropriate method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpart\fP The part to add when it is not known if it is a \fBParameter\fP, String, or \fBSqlString\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBSqlStringBuilder\fP\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP Thrown when the part is not a \fBParameter\fP, String, or \fBSqlString\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 120 of file SqlStringBuilder\&.cs\&.
+.SS "\fBSqlStringBuilder\fP NHibernate\&.SqlCommand\&.SqlStringBuilder\&.Insert (intindex, stringsql)"
+
+.PP
+Insert a string containing sql into the \fBSqlStringBuilder\fP at the specified index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The zero-based index at which the sql should be inserted\&.
+.br
+\fIsql\fP The string containing sql to insert\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBSqlStringBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 281 of file SqlStringBuilder\&.cs\&.
+.SS "\fBSqlStringBuilder\fP NHibernate\&.SqlCommand\&.SqlStringBuilder\&.Insert (intindex, \fBParameter\fPparam)"
+
+.PP
+Insert a \fBParameter\fP into the \fBSqlStringBuilder\fP at the specified index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The zero-based index at which the \fBParameter\fP should be inserted\&.
+.br
+\fIparam\fP The \fBParameter\fP to insert\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBSqlStringBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 293 of file SqlStringBuilder\&.cs\&.
+.SS "\fBSqlStringBuilder\fP NHibernate\&.SqlCommand\&.SqlStringBuilder\&.RemoveAt (intindex)"
+
+.PP
+Removes the string or \fBParameter\fP at the specified index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The zero-based index of the item to remove\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBSqlStringBuilder\fP
+.RE
+.PP
+
+.PP
+Definition at line 304 of file SqlStringBuilder\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.SqlCommand\&.SqlStringBuilder\&.ToSqlString ()"
+
+.PP
+Converts the mutable \fBSqlStringBuilder\fP into the immutable \fBSqlString\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBSqlString\fP that was built\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.SqlCommand\&.ISqlStringBuilder\fP\&.
+.PP
+Definition at line 314 of file SqlStringBuilder\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int NHibernate\&.SqlCommand\&.SqlStringBuilder\&.Count\fC [get]\fP"
+
+.PP
+Gets the number of SqlParts in this \fBSqlStringBuilder\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The number of SqlParts in this \fBSqlStringBuilder\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 260 of file SqlStringBuilder\&.cs\&.
+.SS "object NHibernate\&.SqlCommand\&.SqlStringBuilder\&.this[int index]\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or Sets the element at the index Returns a string or \fBParameter\fP\&.
+.PP
+Definition at line 270 of file SqlStringBuilder\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

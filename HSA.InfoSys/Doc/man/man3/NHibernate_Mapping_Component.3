@@ -1,0 +1,251 @@
+.TH "NHibernate.Mapping.Component" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.Component \- 
+.PP
+The mapping for a component, composite element, composite identifier, etc\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.SimpleValue\fP, and \fBNHibernate\&.Mapping\&.IMetaAttributable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAddProperty\fP (\fBProperty\fP p)"
+.br
+.ti -1c
+.RI "override void \fBAddColumn\fP (\fBColumn\fP column)"
+.br
+.ti -1c
+.RI "\fBComponent\fP (\fBPersistentClass\fP owner)"
+.br
+.ti -1c
+.RI "\fBComponent\fP (\fBTable\fP table, \fBPersistentClass\fP owner)"
+.br
+.ti -1c
+.RI "\fBComponent\fP (\fBCollection\fP collection)"
+.br
+.ti -1c
+.RI "\fBComponent\fP (\fBComponent\fP component)"
+.br
+.ti -1c
+.RI "override void \fBSetTypeUsingReflection\fP (string className, string propertyName, string accesorName)"
+.br
+.ti -1c
+.RI "\fBProperty\fP \fBGetProperty\fP (string propertyName)"
+.br
+.ti -1c
+.RI "virtual void \fBAddTuplizer\fP (\fBEntityMode\fP entityMode, string implClassName)"
+.br
+.ti -1c
+.RI "virtual string \fBGetTuplizerImplClassName\fP (\fBEntityMode\fP mode)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "\fBMetaAttribute\fP \fBGetMetaAttribute\fP (string attributeName)"
+.br
+.RI "\fIRetrieve the \fBMetaAttribute\fP \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBPropertySpan\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< \fBProperty\fP > \fBPropertyIterator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int \fBColumnSpan\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override IEnumerable< \fBISelectable\fP > \fBColumnIterator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsEmbedded\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsDynamic\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "System\&.Type \fBComponentClass\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBPersistentClass\fP \fBOwner\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBProperty\fP \fBParentProperty\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override bool[] \fBColumnInsertability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool[] \fBColumnUpdateability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBComponentClassName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsKey\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBNodeName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBRoleName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual IDictionary
+.br
+< \fBEntityMode\fP, string > \fBTuplizerMap\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasPocoRepresentation\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBIType\fP \fBType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, 
+.br
+\fBMetaAttribute\fP > \fBMetaAttributes\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The mapping for a component, composite element, composite identifier, etc\&. 
+
+
+.PP
+Definition at line 14 of file Component\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Mapping\&.Component\&.Component (\fBPersistentClass\fPowner)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIowner\fP 
+.RE
+.PP
+
+.PP
+Definition at line 89 of file Component\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Mapping\&.Component\&.AddColumn (\fBColumn\fPcolumn)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumn\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Mapping\&.SimpleValue\fP\&.
+.PP
+Definition at line 53 of file Component\&.cs\&.
+.SS "void NHibernate\&.Mapping\&.Component\&.AddProperty (\fBProperty\fPp)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIp\fP 
+.RE
+.PP
+
+.PP
+Definition at line 44 of file Component\&.cs\&.
+.SS "\fBMetaAttribute\fP NHibernate\&.Mapping\&.Component\&.GetMetaAttribute (stringattributeName)"
+
+.PP
+Retrieve the \fBMetaAttribute\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIattributeName\fP The attribute name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBMetaAttribute\fP if exists; null otherwise
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Mapping\&.IMetaAttributable\fP\&.
+.PP
+Definition at line 324 of file Component\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override IEnumerable<\fBISelectable\fP> NHibernate\&.Mapping\&.Component\&.ColumnIterator\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 73 of file Component\&.cs\&.
+.SS "override int NHibernate\&.Mapping\&.Component\&.ColumnSpan\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 60 of file Component\&.cs\&.
+.SS "System\&.Type NHibernate\&.Mapping\&.Component\&.ComponentClass\fC [get]\fP, \fC [set]\fP"
+
+.PP
+
+.PP
+Definition at line 133 of file Component\&.cs\&.
+.SS "bool NHibernate\&.Mapping\&.Component\&.IsDynamic\fC [get]\fP, \fC [set]\fP"
+
+.PP
+
+.PP
+Definition at line 126 of file Component\&.cs\&.
+.SS "bool NHibernate\&.Mapping\&.Component\&.IsEmbedded\fC [get]\fP, \fC [set]\fP"
+
+.PP
+
+.PP
+Definition at line 119 of file Component\&.cs\&.
+.SS "\fBPersistentClass\fP NHibernate\&.Mapping\&.Component\&.Owner\fC [get]\fP, \fC [set]\fP"
+
+.PP
+
+.PP
+Definition at line 162 of file Component\&.cs\&.
+.SS "\fBProperty\fP NHibernate\&.Mapping\&.Component\&.ParentProperty\fC [get]\fP, \fC [set]\fP"
+
+.PP
+
+.PP
+Definition at line 169 of file Component\&.cs\&.
+.SS "IEnumerable<\fBProperty\fP> NHibernate\&.Mapping\&.Component\&.PropertyIterator\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 36 of file Component\&.cs\&.
+.SS "int NHibernate\&.Mapping\&.Component\&.PropertySpan\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 30 of file Component\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

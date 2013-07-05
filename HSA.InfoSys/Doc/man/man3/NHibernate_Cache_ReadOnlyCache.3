@@ -1,0 +1,265 @@
+.TH "NHibernate.Cache.ReadOnlyCache" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cache.ReadOnlyCache \- 
+.PP
+Caches data that is never updated  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBGet\fP (\fBCacheKey\fP key, long timestamp)"
+.br
+.RI "\fIAttempt to retrieve an object from the \fBCache\fP \fP"
+.ti -1c
+.RI "\fBISoftLock\fP \fBLock\fP (\fBCacheKey\fP key, object version)"
+.br
+.RI "\fIUnsupported! \fP"
+.ti -1c
+.RI "bool \fBPut\fP (\fBCacheKey\fP key, object value, long timestamp, object version, IComparer versionComparator, bool minimalPut)"
+.br
+.RI "\fIAttempt to cache an object, after loading from the database \fP"
+.ti -1c
+.RI "void \fBRelease\fP (\fBCacheKey\fP key, \fBISoftLock\fP @lock)"
+.br
+.RI "\fIUnsupported! \fP"
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.RI "\fIEvict all items from the cache immediately\&. \fP"
+.ti -1c
+.RI "void \fBRemove\fP (\fBCacheKey\fP key)"
+.br
+.RI "\fIEvict an item from the cache immediately (without regard for transaction isolation)\&. \fP"
+.ti -1c
+.RI "void \fBDestroy\fP ()"
+.br
+.RI "\fIClean up all resources\&. \fP"
+.ti -1c
+.RI "bool \fBAfterUpdate\fP (\fBCacheKey\fP key, object value, object version, \fBISoftLock\fP @lock)"
+.br
+.RI "\fIUnsupported! \fP"
+.ti -1c
+.RI "bool \fBAfterInsert\fP (\fBCacheKey\fP key, object value, object version)"
+.br
+.RI "\fIDo nothing\&. \fP"
+.ti -1c
+.RI "void \fBEvict\fP (\fBCacheKey\fP key)"
+.br
+.RI "\fIDo nothing\&. \fP"
+.ti -1c
+.RI "bool \fBInsert\fP (\fBCacheKey\fP key, object value, object currentVersion)"
+.br
+.RI "\fIDo nothing\&. \fP"
+.ti -1c
+.RI "bool \fBUpdate\fP (\fBCacheKey\fP key, object value, object currentVersion, object previousVersion)"
+.br
+.RI "\fIUnsupported! \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBRegionName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the cache region name\&. \fP"
+.ti -1c
+.RI "\fBICache\fP \fBCache\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Caches data that is never updated 
+
+
+.PP
+Definition at line 10 of file ReadOnlyCache\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool NHibernate\&.Cache\&.ReadOnlyCache\&.AfterInsert (\fBCacheKey\fPkey, objectvalue, objectversion)"
+
+.PP
+Do nothing\&. 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 115 of file ReadOnlyCache\&.cs\&.
+.SS "bool NHibernate\&.Cache\&.ReadOnlyCache\&.AfterUpdate (\fBCacheKey\fPkey, objectvalue, objectversion, \fBISoftLock\fP @lock)"
+
+.PP
+Unsupported! 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 106 of file ReadOnlyCache\&.cs\&.
+.SS "void NHibernate\&.Cache\&.ReadOnlyCache\&.Clear ()"
+
+.PP
+Evict all items from the cache immediately\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBCacheException\fP\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 81 of file ReadOnlyCache\&.cs\&.
+.SS "void NHibernate\&.Cache\&.ReadOnlyCache\&.Destroy ()"
+
+.PP
+Clean up all resources\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBCacheException\fP\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 91 of file ReadOnlyCache\&.cs\&.
+.SS "void NHibernate\&.Cache\&.ReadOnlyCache\&.Evict (\fBCacheKey\fPkey)"
+
+.PP
+Do nothing\&. 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 124 of file ReadOnlyCache\&.cs\&.
+.SS "object NHibernate\&.Cache\&.ReadOnlyCache\&.Get (\fBCacheKey\fPkey, longtxTimestamp)"
+
+.PP
+Attempt to retrieve an object from the \fBCache\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key (id) of the object to get out of the \fBCache\fP\&.
+.br
+\fItxTimestamp\fP A timestamp prior to the transaction start time
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The cached object or 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBCacheException\fP\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 29 of file ReadOnlyCache\&.cs\&.
+.SS "bool NHibernate\&.Cache\&.ReadOnlyCache\&.Insert (\fBCacheKey\fPkey, objectvalue, objectcurrentVersion)"
+
+.PP
+Do nothing\&. 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 132 of file ReadOnlyCache\&.cs\&.
+.SS "\fBISoftLock\fP NHibernate\&.Cache\&.ReadOnlyCache\&.Lock (\fBCacheKey\fPkey, objectversion)"
+
+.PP
+Unsupported! 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 42 of file ReadOnlyCache\&.cs\&.
+.SS "bool NHibernate\&.Cache\&.ReadOnlyCache\&.Put (\fBCacheKey\fPkey, objectvalue, longtxTimestamp, objectversion, IComparerversionComparer, boolminimalPut)"
+
+.PP
+Attempt to cache an object, after loading from the database 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key (id) of the object to put in the \fBCache\fP\&.
+.br
+\fIvalue\fP The value
+.br
+\fItxTimestamp\fP A timestamp prior to the transaction start time
+.br
+\fIversion\fP the version number of the object we are putting
+.br
+\fIversionComparer\fP a Comparer to be used to compare version numbers
+.br
+\fIminimalPut\fP indicates that the cache should avoid a put if the item is already cached
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+if the object was successfully cached
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBCacheException\fP\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 48 of file ReadOnlyCache\&.cs\&.
+.SS "void NHibernate\&.Cache\&.ReadOnlyCache\&.Release (\fBCacheKey\fPkey, \fBISoftLock\fP @lock)"
+
+.PP
+Unsupported! 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 76 of file ReadOnlyCache\&.cs\&.
+.SS "void NHibernate\&.Cache\&.ReadOnlyCache\&.Remove (\fBCacheKey\fPkey)"
+
+.PP
+Evict an item from the cache immediately (without regard for transaction isolation)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBCacheException\fP\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 86 of file ReadOnlyCache\&.cs\&.
+.SS "bool NHibernate\&.Cache\&.ReadOnlyCache\&.Update (\fBCacheKey\fPkey, objectvalue, objectcurrentVersion, objectpreviousVersion)"
+
+.PP
+Unsupported! 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 140 of file ReadOnlyCache\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string NHibernate\&.Cache\&.ReadOnlyCache\&.RegionName\fC [get]\fP"
+
+.PP
+Gets the cache region name\&. 
+.PP
+Definition at line 19 of file ReadOnlyCache\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

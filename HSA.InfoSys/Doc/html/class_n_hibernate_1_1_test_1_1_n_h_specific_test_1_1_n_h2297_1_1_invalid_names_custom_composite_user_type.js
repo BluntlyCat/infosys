@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2297_1_1_invalid_names_custom_composite_user_type =
+[
+    [ "PropertyNames", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2297_1_1_invalid_names_custom_composite_user_type.html#a3db3ceb54c689546c817641e4d44f89f", null ]
+];

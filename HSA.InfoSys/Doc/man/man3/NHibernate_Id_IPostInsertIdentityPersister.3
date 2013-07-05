@@ -1,0 +1,98 @@
+.TH "NHibernate.Id.IPostInsertIdentityPersister" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.IPostInsertIdentityPersister \- 
+.PP
+A persister that may have an identity assigned by execution of a SQL \fCINSERT\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP, and \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlString\fP \fBGetSelectByUniqueKeyString\fP (string propertyName)"
+.br
+.RI "\fIGet a SQL select string that performs a select based on a unique key determined by the given property name)\&. \fP"
+.ti -1c
+.RI "string \fBGetInfoString\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBIdentitySelectString\fP\fC [get]\fP"
+.br
+.RI "\fIGet the database-specific SQL command to retrieve the last generated IDENTITY value\&. \fP"
+.ti -1c
+.RI "string[] \fBRootTableKeyColumnNames\fP\fC [get]\fP"
+.br
+.RI "\fIThe names of the primary key columns in the root table\&. \fP"
+.ti -1c
+.RI "\fBIType\fP \fBIdentifierType\fP\fC [get]\fP"
+.br
+.RI "\fIGet the identifier type \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A persister that may have an identity assigned by execution of a SQL \fCINSERT\fP\&. 
+
+
+.PP
+Definition at line 9 of file IPostInsertIdentityPersister\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSqlString\fP NHibernate\&.Id\&.IPostInsertIdentityPersister\&.GetSelectByUniqueKeyString (stringpropertyName)"
+
+.PP
+Get a SQL select string that performs a select based on a unique key determined by the given property name)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpropertyName\fP The name of the property which maps to the column(s) to use in the select statement restriction\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The SQL select string 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Persister\&.Entity\&.AbstractEntityPersister\fP, and \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBIType\fP NHibernate\&.Id\&.IPostInsertIdentityPersister\&.IdentifierType\fC [get]\fP"
+
+.PP
+Get the identifier type 
+.PP
+Definition at line 40 of file IPostInsertIdentityPersister\&.cs\&.
+.SS "string NHibernate\&.Id\&.IPostInsertIdentityPersister\&.IdentitySelectString\fC [get]\fP"
+
+.PP
+Get the database-specific SQL command to retrieve the last generated IDENTITY value\&. 
+.PP
+Definition at line 19 of file IPostInsertIdentityPersister\&.cs\&.
+.SS "string [] NHibernate\&.Id\&.IPostInsertIdentityPersister\&.RootTableKeyColumnNames\fC [get]\fP"
+
+.PP
+The names of the primary key columns in the root table\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The primary key column names\&. 
+.RE
+.PP
+
+.PP
+Definition at line 23 of file IPostInsertIdentityPersister\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

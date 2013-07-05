@@ -1,0 +1,146 @@
+.TH "NHibernate.Criterion.AbstractCriterion" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.AbstractCriterion \- 
+.PP
+Base class for \fBICriterion\fP implementations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Criterion\&.ICriterion\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Criterion\&.AbstractEmptinessExpression\fP, \fBNHibernate\&.Criterion\&.BetweenExpression\fP, \fBNHibernate\&.Criterion\&.Example\fP, \fBNHibernate\&.Criterion\&.IdentifierEqExpression\fP, \fBNHibernate\&.Criterion\&.InExpression\fP, \fBNHibernate\&.Criterion\&.InsensitiveLikeExpression\fP, \fBNHibernate\&.Criterion\&.Junction\fP, \fBNHibernate\&.Criterion\&.LikeExpression\fP, \fBNHibernate\&.Criterion\&.LogicalExpression\fP, \fBNHibernate\&.Criterion\&.NotExpression\fP, \fBNHibernate\&.Criterion\&.NotNullExpression\fP, \fBNHibernate\&.Criterion\&.NullExpression\fP, \fBNHibernate\&.Criterion\&.PropertyExpression\fP, \fBNHibernate\&.Criterion\&.SimpleExpression\fP, \fBNHibernate\&.Criterion\&.SQLCriterion\fP, and \fBNHibernate\&.Criterion\&.SubqueryExpression\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract override string \fBToString\fP ()"
+.br
+.RI "\fIGets a string representation of the \fBAbstractCriterion\fP\&. \fP"
+.ti -1c
+.RI "abstract \fBSqlString\fP \fBToSqlString\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIRender a SqlString for the expression\&. \fP"
+.ti -1c
+.RI "abstract \fBTypedValue\fP[] \fBGetTypedValues\fP (\fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery)"
+.br
+.RI "\fIReturn typed values for all parameters in the rendered SQL fragment \fP"
+.ti -1c
+.RI "abstract \fBIProjection\fP[] \fBGetProjections\fP ()"
+.br
+.RI "\fIReturn all projections used in this criterion \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBoperator&\fP (\fBAbstractCriterion\fP lhs, \fBAbstractCriterion\fP rhs)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBoperator|\fP (\fBAbstractCriterion\fP lhs, \fBAbstractCriterion\fP rhs)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBoperator&\fP (\fBAbstractCriterion\fP lhs, \fBAbstractEmptinessExpression\fP rhs)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBoperator|\fP (\fBAbstractCriterion\fP lhs, \fBAbstractEmptinessExpression\fP rhs)"
+.br
+.ti -1c
+.RI "static \fBAbstractCriterion\fP \fBoperator!\fP (\fBAbstractCriterion\fP crit)"
+.br
+.ti -1c
+.RI "static bool \fBoperator false\fP (\fBAbstractCriterion\fP criteria)"
+.br
+.RI "\fISee here for details: http://steve.emxsoftware.com/NET/Overloading+the++and++operators \fP"
+.ti -1c
+.RI "static bool \fBoperator true\fP (\fBAbstractCriterion\fP criteria)"
+.br
+.RI "\fISee here for details: http://steve.emxsoftware.com/NET/Overloading+the++and++operators \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for \fBICriterion\fP implementations\&. 
+
+
+.PP
+Definition at line 12 of file AbstractCriterion\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract \fBIProjection\fP [] NHibernate\&.Criterion\&.AbstractCriterion\&.GetProjections ()\fC [pure virtual]\fP"
+
+.PP
+Return all projections used in this criterion 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of \fBIProjection\fP used by the \fBExpression\fP\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.ICriterion\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.Example\fP, \fBNHibernate\&.Criterion\&.SimpleExpression\fP, \fBNHibernate\&.Criterion\&.PropertyExpression\fP, \fBNHibernate\&.Criterion\&.InsensitiveLikeExpression\fP, \fBNHibernate\&.Criterion\&.SubqueryExpression\fP, \fBNHibernate\&.Criterion\&.Junction\fP, \fBNHibernate\&.Criterion\&.BetweenExpression\fP, \fBNHibernate\&.Criterion\&.LikeExpression\fP, \fBNHibernate\&.Criterion\&.IdentifierEqExpression\fP, \fBNHibernate\&.Criterion\&.NotNullExpression\fP, \fBNHibernate\&.Criterion\&.NullExpression\fP, \fBNHibernate\&.Criterion\&.LogicalExpression\fP, \fBNHibernate\&.Criterion\&.SQLCriterion\fP, \fBNHibernate\&.Criterion\&.NotExpression\fP, \fBNHibernate\&.Criterion\&.InExpression\fP, \fBNHibernate\&.Criterion\&.IsEmptyExpression\fP, and \fBNHibernate\&.Criterion\&.IsNotEmptyExpression\fP\&.
+.SS "abstract \fBTypedValue\fP [] NHibernate\&.Criterion\&.AbstractCriterion\&.GetTypedValues (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery)\fC [pure virtual]\fP"
+
+.PP
+Return typed values for all parameters in the rendered SQL fragment 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of TypedValues for the \fBExpression\fP\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.ICriterion\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.Example\fP, \fBNHibernate\&.Criterion\&.SimpleExpression\fP, \fBNHibernate\&.Criterion\&.InExpression\fP, \fBNHibernate\&.Criterion\&.SubqueryExpression\fP, \fBNHibernate\&.Criterion\&.PropertyExpression\fP, \fBNHibernate\&.Criterion\&.BetweenExpression\fP, \fBNHibernate\&.Criterion\&.LikeExpression\fP, \fBNHibernate\&.Criterion\&.InsensitiveLikeExpression\fP, \fBNHibernate\&.Criterion\&.IdentifierEqExpression\fP, \fBNHibernate\&.Criterion\&.NotNullExpression\fP, \fBNHibernate\&.Criterion\&.NullExpression\fP, \fBNHibernate\&.Criterion\&.Junction\fP, \fBNHibernate\&.Criterion\&.LogicalExpression\fP, \fBNHibernate\&.Criterion\&.SQLCriterion\fP, \fBNHibernate\&.Criterion\&.NotExpression\fP, \fBNHibernate\&.Criterion\&.AbstractEmptinessExpression\fP, and \fBNHibernate\&.Criterion\&.SimpleSubqueryExpression\fP\&.
+.SS "static bool NHibernate\&.Criterion\&.AbstractCriterion\&.operator false (\fBAbstractCriterion\fPcriteria)\fC [static]\fP"
+
+.PP
+See here for details: http://steve.emxsoftware.com/NET/Overloading+the++and++operators 
+.PP
+Definition at line 82 of file AbstractCriterion\&.cs\&.
+.SS "static bool NHibernate\&.Criterion\&.AbstractCriterion\&.operator true (\fBAbstractCriterion\fPcriteria)\fC [static]\fP"
+
+.PP
+See here for details: http://steve.emxsoftware.com/NET/Overloading+the++and++operators 
+.PP
+Definition at line 91 of file AbstractCriterion\&.cs\&.
+.SS "abstract \fBSqlString\fP NHibernate\&.Criterion\&.AbstractCriterion\&.ToSqlString (\fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery, IDictionary< string, \fBIFilter\fP >enabledFilters)\fC [pure virtual]\fP"
+
+.PP
+Render a SqlString for the expression\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A SqlString that contains a valid Sql fragment\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Criterion\&.ICriterion\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.Example\fP, \fBNHibernate\&.Criterion\&.Junction\fP, \fBNHibernate\&.Criterion\&.SimpleExpression\fP, \fBNHibernate\&.Criterion\&.LogicalExpression\fP, \fBNHibernate\&.Criterion\&.PropertyExpression\fP, \fBNHibernate\&.Criterion\&.InsensitiveLikeExpression\fP, \fBNHibernate\&.Criterion\&.LikeExpression\fP, \fBNHibernate\&.Criterion\&.InExpression\fP, \fBNHibernate\&.Criterion\&.BetweenExpression\fP, \fBNHibernate\&.Criterion\&.SubqueryExpression\fP, \fBNHibernate\&.Criterion\&.NotNullExpression\fP, \fBNHibernate\&.Criterion\&.NullExpression\fP, \fBNHibernate\&.Criterion\&.AbstractEmptinessExpression\fP, \fBNHibernate\&.Criterion\&.SQLCriterion\fP, \fBNHibernate\&.Criterion\&.IdentifierEqExpression\fP, and \fBNHibernate\&.Criterion\&.NotExpression\fP\&.
+.SS "abstract override string NHibernate\&.Criterion\&.AbstractCriterion\&.ToString ()\fC [pure virtual]\fP"
+
+.PP
+Gets a string representation of the \fBAbstractCriterion\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A String that shows the contents of the \fBAbstractCriterion\fP\&. 
+.RE
+.PP
+.PP
+This is not a well formed Sql fragment\&. It is useful for logging what the \fBAbstractCriterion\fP looks like\&. 
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.Example\fP, \fBNHibernate\&.Criterion\&.InExpression\fP, \fBNHibernate\&.Criterion\&.SimpleExpression\fP, \fBNHibernate\&.Criterion\&.InsensitiveLikeExpression\fP, \fBNHibernate\&.Criterion\&.PropertyExpression\fP, \fBNHibernate\&.Criterion\&.BetweenExpression\fP, \fBNHibernate\&.Criterion\&.LikeExpression\fP, \fBNHibernate\&.Criterion\&.Junction\fP, \fBNHibernate\&.Criterion\&.LogicalExpression\fP, \fBNHibernate\&.Criterion\&.SubqueryExpression\fP, \fBNHibernate\&.Criterion\&.IdentifierEqExpression\fP, \fBNHibernate\&.Criterion\&.NotNullExpression\fP, \fBNHibernate\&.Criterion\&.NullExpression\fP, \fBNHibernate\&.Criterion\&.SQLCriterion\fP, \fBNHibernate\&.Criterion\&.NotExpression\fP, and \fBNHibernate\&.Criterion\&.AbstractEmptinessExpression\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,194 @@
+.TH "NHibernate.Tuple.Entity.EntityMetamodel" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Tuple.Entity.EntityMetamodel \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEntityMetamodel\fP (\fBPersistentClass\fP persistentClass, \fBISessionFactoryImplementor\fP sessionFactory)"
+.br
+.ti -1c
+.RI "int \fBGetPropertyIndex\fP (string propertyName)"
+.br
+.ti -1c
+.RI "int \fBGetPropertyIndexOrNull\fP (string propertyName)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "\fBIEntityTuplizer\fP \fBGetTuplizer\fP (\fBEntityMode\fP entityMode)"
+.br
+.ti -1c
+.RI "\fBIEntityTuplizer\fP \fBGetTuplizerOrNull\fP (\fBEntityMode\fP entityMode)"
+.br
+.ti -1c
+.RI "\fBEntityMode\fP \fBGuessEntityMode\fP (object obj)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBHasPocoRepresentation\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ISet< string > \fBSubclassEntityNames\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBISessionFactoryImplementor\fP \fBSessionFactory\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "System\&.Type \fBType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "System\&.Type \fBRootType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBRootTypeAssemblyQualifiedName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBRootName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBEntityType\fP \fBEntityType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIdentifierProperty\fP \fBIdentifierProperty\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBPropertySpan\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBVersionPropertyIndex\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBVersionProperty\fP \fBVersionProperty\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBStandardProperty\fP[] \fBProperties\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasCollections\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasMutableProperties\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasLazyProperties\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasCascades\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsMutable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSelectBeforeUpdate\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsDynamicUpdate\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsDynamicInsert\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "Versioning\&.OptimisticLock \fBOptimisticLockMode\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsPolymorphic\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBSuperclass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "System\&.Type \fBSuperclassType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsExplicitPolymorphism\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsInherited\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasSubclasses\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsLazy\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsVersioned\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsAbstract\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBPropertyNames\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP[] \fBPropertyTypes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBPropertyLaziness\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBPropertyUpdateability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBPropertyCheckability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBNonlazyPropertyUpdateability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBPropertyInsertability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBPropertyNullability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool[] \fBPropertyVersionability\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBCascadeStyle\fP[] \fBCascadeStyles\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBValueInclusion\fP[] \fBPropertyInsertGenerationInclusions\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBValueInclusion\fP[] \fBPropertyUpdateGenerationInclusions\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasInsertGeneratedValues\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasUpdateGeneratedValues\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasNaturalIdentifier\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasUnwrapProxyForProperties\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasNonIdentifierPropertyNamedId\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int[] \fBNaturalIdentifierProperties\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 15 of file EntityMetamodel\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

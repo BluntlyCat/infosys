@@ -1,0 +1,70 @@
+.TH "NHibernate.Engine.Transaction.Isolater" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.Transaction.Isolater \- 
+.PP
+Class which provides the isolation semantics required by an \fBIIsolatedWork\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBDoIsolatedWork\fP (\fBIIsolatedWork\fP work, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIEnsures that all processing actually performed by the given work will occur on a separate transaction\&. \fP"
+.ti -1c
+.RI "static void \fBDoNonTransactedWork\fP (\fBIIsolatedWork\fP work, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIEnsures that all processing actually performed by the given work will occur outside of a transaction\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class which provides the isolation semantics required by an \fBIIsolatedWork\fP\&. 
+
+
+.PD 0
+
+.PP
+Processing comes in two flavors:   \fBDoIsolatedWork\fP  makes sure the work to be done is performed in a separate, distinct transaction   \fBDoNonTransactedWork\fP  makes sure the work to be done is performed outside the scope of any transaction  
+.PP
+Definition at line 29 of file Isolater\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static void NHibernate\&.Engine\&.Transaction\&.Isolater\&.DoIsolatedWork (\fBIIsolatedWork\fPwork, \fBISessionImplementor\fPsession)\fC [static]\fP"
+
+.PP
+Ensures that all processing actually performed by the given work will occur on a separate transaction\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwork\fP The work to be performed\&. 
+.br
+\fIsession\fP The session from which this request is originating\&. 
+.RE
+.PP
+
+.PP
+Definition at line 39 of file Isolater\&.cs\&.
+.SS "static void NHibernate\&.Engine\&.Transaction\&.Isolater\&.DoNonTransactedWork (\fBIIsolatedWork\fPwork, \fBISessionImplementor\fPsession)\fC [static]\fP"
+
+.PP
+Ensures that all processing actually performed by the given work will occur outside of a transaction\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwork\fP The work to be performed\&. 
+.br
+\fIsession\fP The session from which this request is originating\&. 
+.RE
+.PP
+
+.PP
+Definition at line 50 of file Isolater\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

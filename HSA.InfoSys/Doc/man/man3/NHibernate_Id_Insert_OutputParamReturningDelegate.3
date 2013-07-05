@@ -1,0 +1,60 @@
+.TH "NHibernate.Id.Insert.OutputParamReturningDelegate" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.Insert.OutputParamReturningDelegate \- 
+.PP
+\fBIInsertGeneratedIdentifierDelegate\fP implementation where the underlying strategy causes the generated identitifer to be returned, as an effect of performing the insert statement, in a Output parameter\&. Thus, there is no need for an additional sql statement to determine the generated identitifer\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Id\&.Insert\&.AbstractReturningDelegate\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Id\&.SequenceIdentityGenerator\&.SequenceIdentityDelegate\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOutputParamReturningDelegate\fP (\fBIPostInsertIdentityPersister\fP persister, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "override \fBIdentifierGeneratingInsert\fP \fBPrepareIdentifierGeneratingInsert\fP ()"
+.br
+.RI "\fIBuild a \fBNHibernate\&.SqlCommand\&.SqlInsertBuilder\fP specific to the delegate's mode of handling generated key values\&. \fP"
+.ti -1c
+.RI "override object \fBExecuteAndExtract\fP (IDbCommand insert, \fBISessionImplementor\fP session)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBIInsertGeneratedIdentifierDelegate\fP implementation where the underlying strategy causes the generated identitifer to be returned, as an effect of performing the insert statement, in a Output parameter\&. Thus, there is no need for an additional sql statement to determine the generated identitifer\&. 
+
+
+.PP
+Definition at line 15 of file OutputParamReturningDelegate\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBIdentifierGeneratingInsert\fP NHibernate\&.Id\&.Insert\&.OutputParamReturningDelegate\&.PrepareIdentifierGeneratingInsert ()\fC [virtual]\fP"
+
+.PP
+Build a \fBNHibernate\&.SqlCommand\&.SqlInsertBuilder\fP specific to the delegate's mode of handling generated key values\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The insert object\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.Insert\&.AbstractReturningDelegate\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Id\&.SequenceIdentityGenerator\&.SequenceIdentityDelegate\fP\&.
+.PP
+Definition at line 37 of file OutputParamReturningDelegate\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

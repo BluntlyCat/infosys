@@ -1,0 +1,232 @@
+.TH "NHibernate.Mapping.ByCode.AbstractExplicitlyDeclaredModel" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.ByCode.AbstractExplicitlyDeclaredModel \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.ByCode\&.IModelExplicitDeclarationsHolder\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Mapping\&.ByCode\&.ExplicitlyDeclaredModel\fP, and NHibernate\&.Mapping\&.ByCode\&.SimpleModelInspector\&.MixinDeclaredModel\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "IEnumerable< string > \fBGetSplitGroupsFor\fP (System\&.Type type)"
+.br
+.ti -1c
+.RI "string \fBGetSplitGroupFor\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsRootEntity\fP (System\&.Type type)"
+.br
+.ti -1c
+.RI "abstract bool \fBIsComponent\fP (System\&.Type type)"
+.br
+.ti -1c
+.RI "void \fBAddAsComponent\fP (System\&.Type type)"
+.br
+.ti -1c
+.RI "void \fBAddAsTablePerClassEntity\fP (System\&.Type type)"
+.br
+.ti -1c
+.RI "void \fBAddAsTablePerClassHierarchyEntity\fP (System\&.Type type)"
+.br
+.ti -1c
+.RI "void \fBAddAsTablePerConcreteClassEntity\fP (System\&.Type type)"
+.br
+.ti -1c
+.RI "void \fBAddAsOneToOneRelation\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsManyToOneRelation\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsManyToManyRelation\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsOneToManyRelation\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsManyToAnyRelation\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsAny\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsPoid\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsPartOfComposedId\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsVersionProperty\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsNaturalId\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsSet\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsBag\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsIdBag\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsList\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsArray\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsMap\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsProperty\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsPersistentMember\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "void \fBAddAsPropertySplit\fP (\fBSplitDefinition\fP definition)"
+.br
+.ti -1c
+.RI "void \fBAddAsDynamicComponent\fP (MemberInfo member, System\&.Type componentTemplate)"
+.br
+.ti -1c
+.RI "virtual System\&.Type \fBGetDynamicComponentTemplate\fP (MemberInfo member)"
+.br
+.ti -1c
+.RI "abstract bool \fBIsRootEntity\fP (System\&.Type entityType)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBAddAsTablePerClassEntity\fP (System\&.Type type, bool rootEntityMustExists)"
+.br
+.ti -1c
+.RI "virtual void \fBAddAsTablePerClassHierarchyEntity\fP (System\&.Type type, bool rootEntityMustExists)"
+.br
+.ti -1c
+.RI "virtual void \fBAddAsTablePerConcreteClassEntity\fP (System\&.Type type, bool rootEntityMustExists)"
+.br
+.ti -1c
+.RI "System\&.Type \fBGetSingleRootEntityOrNull\fP (System\&.Type entityType)"
+.br
+.ti -1c
+.RI "IEnumerable< System\&.Type > \fBGetRootEntitiesOf\fP (System\&.Type entityType)"
+.br
+.ti -1c
+.RI "bool \fBIsMappedForTablePerClassEntities\fP (System\&.Type type)"
+.br
+.ti -1c
+.RI "bool \fBIsMappedForTablePerClassHierarchyEntities\fP (System\&.Type type)"
+.br
+.ti -1c
+.RI "bool \fBIsMappedForTablePerConcreteClassEntities\fP (System\&.Type type)"
+.br
+.ti -1c
+.RI "void \fBEnlistTypeRegistration\fP (System\&.Type type, Action< System\&.Type > registration)"
+.br
+.ti -1c
+.RI "void \fBExecuteDelayedTypeRegistration\fP (System\&.Type type)"
+.br
+.ti -1c
+.RI "void \fBExecuteDelayedRootEntitiesRegistrations\fP ()"
+.br
+.ti -1c
+.RI "bool \fBHasDelayedEntityRegistration\fP (System\&.Type type)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "IEnumerable< System\&.Type > \fBRootEntities\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< System\&.Type > \fBComponents\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< System\&.Type > \fBTablePerClassEntities\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< System\&.Type > \fBTablePerClassHierarchyEntities\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< System\&.Type > \fBTablePerConcreteClassEntities\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBOneToOneRelations\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBManyToOneRelations\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBManyToManyRelations\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBOneToManyRelations\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBManyToAnyRelations\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBAny\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBPoids\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBComposedIds\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBVersionProperties\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBNaturalIds\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBSets\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBBags\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBIdBags\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBLists\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBArrays\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBDictionaries\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBProperties\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBDynamicComponents\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< MemberInfo > \fBPersistentMembers\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< \fBSplitDefinition\fP > \fBSplitDefinitions\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 9 of file AbstractExplicitlyDeclaredModel\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

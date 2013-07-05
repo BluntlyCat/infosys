@@ -1,0 +1,166 @@
+.TH "Renci.SshNet.Common.AsyncResult" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Common.AsyncResult \- 
+.PP
+Base class to encapsulates the results of an asynchronous operation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IAsyncResult\&.
+.PP
+Inherited by \fBRenci\&.SshNet\&.Common\&.AsyncResult< TResult >\fP, \fBRenci\&.SshNet\&.Sftp\&.SftpDownloadAsyncResult\fP, and \fBRenci\&.SshNet\&.Sftp\&.SftpUploadAsyncResult\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAsyncResult\fP (AsyncCallback asyncCallback, Object state)"
+.br
+.RI "\fIInitializes a new instance of the \fBAsyncResult\fP class\&. \fP"
+.ti -1c
+.RI "void \fBSetAsCompleted\fP (Exception exception, Boolean completedSynchronously)"
+.br
+.RI "\fIMarks asynchronous operation as completed\&. \fP"
+.ti -1c
+.RI "void \fBEndInvoke\fP ()"
+.br
+.RI "\fIWaits until the asynchronous operation completes, and then returns\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBEndInvokeCalled\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether EndInvoke has been called on the current \fBAsyncResult\fP\&. \fP"
+.ti -1c
+.RI "Object \fBAsyncState\fP\fC [get]\fP"
+.br
+.RI "\fIGets a user-defined object that qualifies or contains information about an asynchronous operation\&. \fP"
+.ti -1c
+.RI "Boolean \fBCompletedSynchronously\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value that indicates whether the asynchronous operation completed synchronously\&. \fP"
+.ti -1c
+.RI "WaitHandle \fBAsyncWaitHandle\fP\fC [get]\fP"
+.br
+.RI "\fIGets a T:System\&.Threading\&.WaitHandle that is used to wait for an asynchronous operation to complete\&. \fP"
+.ti -1c
+.RI "Boolean \fBIsCompleted\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value that indicates whether the asynchronous operation has completed\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class to encapsulates the results of an asynchronous operation\&. 
+
+
+.PP
+Definition at line 9 of file AsyncResult\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Common\&.AsyncResult\&.AsyncResult (AsyncCallbackasyncCallback, Objectstate)"
+
+.PP
+Initializes a new instance of the \fBAsyncResult\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIasyncCallback\fP The async callback\&.
+.br
+\fIstate\fP The state\&.
+.RE
+.PP
+
+.PP
+Definition at line 44 of file AsyncResult\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Renci\&.SshNet\&.Common\&.AsyncResult\&.EndInvoke ()"
+
+.PP
+Waits until the asynchronous operation completes, and then returns\&. 
+.PP
+Definition at line 78 of file AsyncResult\&.cs\&.
+.SS "void Renci\&.SshNet\&.Common\&.AsyncResult\&.SetAsCompleted (Exceptionexception, BooleancompletedSynchronously)"
+
+.PP
+Marks asynchronous operation as completed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexception\fP The exception\&.
+.br
+\fIcompletedSynchronously\fP if set to \fCtrue\fP [completed synchronously]\&.
+.RE
+.PP
+
+.PP
+Definition at line 55 of file AsyncResult\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "Object Renci\&.SshNet\&.Common\&.AsyncResult\&.AsyncState\fC [get]\fP"
+
+.PP
+Gets a user-defined object that qualifies or contains information about an asynchronous operation\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A user-defined object that qualifies or contains information about an asynchronous operation\&.
+.RE
+.PP
+
+.PP
+Definition at line 102 of file AsyncResult\&.cs\&.
+.SS "WaitHandle Renci\&.SshNet\&.Common\&.AsyncResult\&.AsyncWaitHandle\fC [get]\fP"
+
+.PP
+Gets a T:System\&.Threading\&.WaitHandle that is used to wait for an asynchronous operation to complete\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A T:System\&.Threading\&.WaitHandle that is used to wait for an asynchronous operation to complete\&.
+.RE
+.PP
+
+.PP
+Definition at line 118 of file AsyncResult\&.cs\&.
+.SS "Boolean Renci\&.SshNet\&.Common\&.AsyncResult\&.CompletedSynchronously\fC [get]\fP"
+
+.PP
+Gets a value that indicates whether the asynchronous operation completed synchronously\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the asynchronous operation completed synchronously; otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 109 of file AsyncResult\&.cs\&.
+.SS "bool Renci\&.SshNet\&.Common\&.AsyncResult\&.EndInvokeCalled\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether EndInvoke has been called on the current \fBAsyncResult\fP\&. \fCtrue\fP if EndInvoke has been called on the current \fBAsyncResult\fP; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 37 of file AsyncResult\&.cs\&.
+.SS "Boolean Renci\&.SshNet\&.Common\&.AsyncResult\&.IsCompleted\fC [get]\fP"
+
+.PP
+Gets a value that indicates whether the asynchronous operation has completed\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the operation is complete; otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 149 of file AsyncResult\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

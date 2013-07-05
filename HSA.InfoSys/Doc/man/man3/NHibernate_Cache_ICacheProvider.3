@@ -1,0 +1,97 @@
+.TH "NHibernate.Cache.ICacheProvider" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cache.ICacheProvider \- 
+.PP
+Support for pluggable caches  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Cache\&.HashtableCacheProvider\fP, \fBNHibernate\&.Cache\&.NoCacheProvider\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2898\&.BinaryFormatterCacheProvider\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH720\&.FooCacheProvider\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBICache\fP \fBBuildCache\fP (string regionName, IDictionary< string, string > properties)"
+.br
+.RI "\fIConfigure the cache \fP"
+.ti -1c
+.RI "long \fBNextTimestamp\fP ()"
+.br
+.RI "\fIgenerate a timestamp \fP"
+.ti -1c
+.RI "void \fBStart\fP (IDictionary< string, string > properties)"
+.br
+.RI "\fICallback to perform any necessary initialization of the underlying cache implementation during \fBISessionFactory\fP construction\&. \fP"
+.ti -1c
+.RI "void \fBStop\fP ()"
+.br
+.RI "\fICallback to perform any necessary cleanup of the underlying cache implementation during \fBISessionFactory\&.Close\fP\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Support for pluggable caches 
+
+
+.PP
+Definition at line 8 of file ICacheProvider\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBICache\fP NHibernate\&.Cache\&.ICacheProvider\&.BuildCache (stringregionName, IDictionary< string, string >properties)"
+
+.PP
+Configure the cache 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIregionName\fP the name of the cache region
+.br
+\fIproperties\fP configuration settings
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.NHSpecificTest\&.NH720\&.FooCacheProvider\fP, \fBNHibernate\&.Cache\&.NoCacheProvider\fP, \fBNHibernate\&.Cache\&.HashtableCacheProvider\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2898\&.BinaryFormatterCacheProvider\fP\&.
+.SS "long NHibernate\&.Cache\&.ICacheProvider\&.NextTimestamp ()"
+
+.PP
+generate a timestamp 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.NHSpecificTest\&.NH720\&.FooCacheProvider\fP, \fBNHibernate\&.Cache\&.NoCacheProvider\fP, \fBNHibernate\&.Cache\&.HashtableCacheProvider\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2898\&.BinaryFormatterCacheProvider\fP\&.
+.SS "void NHibernate\&.Cache\&.ICacheProvider\&.Start (IDictionary< string, string >properties)"
+
+.PP
+Callback to perform any necessary initialization of the underlying cache implementation during \fBISessionFactory\fP construction\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIproperties\fP current configuration settings
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.NHSpecificTest\&.NH720\&.FooCacheProvider\fP, \fBNHibernate\&.Cache\&.NoCacheProvider\fP, \fBNHibernate\&.Cache\&.HashtableCacheProvider\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2898\&.BinaryFormatterCacheProvider\fP\&.
+.SS "void NHibernate\&.Cache\&.ICacheProvider\&.Stop ()"
+
+.PP
+Callback to perform any necessary cleanup of the underlying cache implementation during \fBISessionFactory\&.Close\fP\&. 
+.PP
+Implemented in \fBNHibernate\&.Test\&.NHSpecificTest\&.NH720\&.FooCacheProvider\fP, \fBNHibernate\&.Cache\&.NoCacheProvider\fP, \fBNHibernate\&.Cache\&.HashtableCacheProvider\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2898\&.BinaryFormatterCacheProvider\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

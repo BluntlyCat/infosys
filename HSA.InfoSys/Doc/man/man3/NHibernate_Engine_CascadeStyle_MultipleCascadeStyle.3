@@ -1,0 +1,86 @@
+.TH "NHibernate.Engine.CascadeStyle.MultipleCascadeStyle" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.CascadeStyle.MultipleCascadeStyle \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Engine\&.CascadeStyle\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMultipleCascadeStyle\fP (\fBCascadeStyle\fP[] styles)"
+.br
+.ti -1c
+.RI "override bool \fBDoCascade\fP (\fBCascadingAction\fP action)"
+.br
+.RI "\fIFor this style, should the given action be cascaded? \fP"
+.ti -1c
+.RI "override bool \fBReallyDoCascade\fP (\fBCascadingAction\fP action)"
+.br
+.RI "\fIProbably more aptly named something like doCascadeToCollectionElements(); it is however used from both the collection and to-one logic branches\&.\&.\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBHasOrphanDelete\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 207 of file CascadeStyle\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override bool NHibernate\&.Engine\&.CascadeStyle\&.MultipleCascadeStyle\&.DoCascade (\fBCascadingAction\fPaction)\fC [virtual]\fP"
+
+.PP
+For this style, should the given action be cascaded? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaction\fP The action to be checked for cascade-ability\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the action should be cascaded under this style; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Engine\&.CascadeStyle\fP\&.
+.PP
+Definition at line 215 of file CascadeStyle\&.cs\&.
+.SS "override bool NHibernate\&.Engine\&.CascadeStyle\&.MultipleCascadeStyle\&.ReallyDoCascade (\fBCascadingAction\fPaction)\fC [virtual]\fP"
+
+.PP
+Probably more aptly named something like doCascadeToCollectionElements(); it is however used from both the collection and to-one logic branches\&.\&.\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaction\fP The action to be checked for cascade-ability\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if the action should be really cascaded under this style; false otherwise\&. 
+.RE
+.PP
+.PP
+For this style, should the given action really be cascaded? The default implementation is simply to return \fBdoCascade\fP; for certain styles (currently only delete-orphan), however, we need to be able to control this separately\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Engine\&.CascadeStyle\fP\&.
+.PP
+Definition at line 225 of file CascadeStyle\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

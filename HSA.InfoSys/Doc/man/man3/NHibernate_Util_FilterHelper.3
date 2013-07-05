@@ -1,0 +1,68 @@
+.TH "NHibernate.Util.FilterHelper" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Util.FilterHelper \- 
+.PP
+ 
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFilterHelper\fP (IDictionary< string, string > filters, \fBDialect\&.Dialect\fP dialect, \fBSQLFunctionRegistry\fP sqlFunctionRegistry)"
+.br
+.ti -1c
+.RI "bool \fBIsAffectedBy\fP (IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "string \fBRender\fP (String alias, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "void \fBRender\fP (StringBuilder buffer, string alias, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static IDictionary< string, 
+.br
+\fBIFilter\fP > \fBGetEnabledForManyToOne\fP (IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIGet only filters enabled for many-to-one association\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+
+
+.PP
+Definition at line 11 of file FilterHelper\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static IDictionary<string, \fBIFilter\fP> NHibernate\&.Util\&.FilterHelper\&.GetEnabledForManyToOne (IDictionary< string, \fBIFilter\fP >enabledFilters)\fC [static]\fP"
+
+.PP
+Get only filters enabled for many-to-one association\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIenabledFilters\fP All enabled filters
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new IDictionary{TKey,TValue} for filters enabled for many to one\&.
+.RE
+.PP
+
+.PP
+Definition at line 76 of file FilterHelper\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

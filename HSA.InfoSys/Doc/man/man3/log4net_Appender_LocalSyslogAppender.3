@@ -1,0 +1,319 @@
+.TH "log4net.Appender.LocalSyslogAppender" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.LocalSyslogAppender \- 
+.PP
+Logs events to a local syslog service\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBLevelSeverity\fP"
+.br
+.RI "\fIA class to act as a mapping between the level that a logging call is made at and the syslog severity that is should be logged at\&. \fP"
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBSyslogSeverity\fP { \fBSyslogSeverity\&.Emergency\fP = 0, \fBSyslogSeverity\&.Alert\fP = 1, \fBSyslogSeverity\&.Critical\fP = 2, \fBSyslogSeverity\&.Error\fP = 3, \fBSyslogSeverity\&.Warning\fP = 4, \fBSyslogSeverity\&.Notice\fP = 5, \fBSyslogSeverity\&.Informational\fP = 6, \fBSyslogSeverity\&.Debug\fP = 7 }"
+.br
+.RI "\fIsyslog severities \fP"
+.ti -1c
+.RI "enum \fBSyslogFacility\fP { \fBSyslogFacility\&.Kernel\fP = 0, \fBSyslogFacility\&.User\fP = 1, \fBSyslogFacility\&.Mail\fP = 2, \fBSyslogFacility\&.Daemons\fP = 3, \fBSyslogFacility\&.Authorization\fP = 4, \fBSyslogFacility\&.Syslog\fP = 5, \fBSyslogFacility\&.Printer\fP = 6, \fBSyslogFacility\&.News\fP = 7, \fBSyslogFacility\&.Uucp\fP = 8, \fBSyslogFacility\&.Clock\fP = 9, \fBSyslogFacility\&.Authorization2\fP = 10, \fBSyslogFacility\&.Ftp\fP = 11, \fBSyslogFacility\&.Ntp\fP = 12, \fBSyslogFacility\&.Audit\fP = 13, \fBSyslogFacility\&.Alert\fP = 14, \fBSyslogFacility\&.Clock2\fP = 15, \fBSyslogFacility\&.Local0\fP = 16, \fBSyslogFacility\&.Local1\fP = 17, \fBSyslogFacility\&.Local2\fP = 18, \fBSyslogFacility\&.Local3\fP = 19, \fBSyslogFacility\&.Local4\fP = 20, \fBSyslogFacility\&.Local5\fP = 21, \fBSyslogFacility\&.Local6\fP = 22, \fBSyslogFacility\&.Local7\fP = 23 }"
+.br
+.RI "\fIsyslog facilities \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLocalSyslogAppender\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBLocalSyslogAppender\fP class\&. \fP"
+.ti -1c
+.RI "void \fBAddMapping\fP (\fBLevelSeverity\fP mapping)"
+.br
+.RI "\fIAdd a mapping of level to severity \fP"
+.ti -1c
+.RI "override void \fBActivateOptions\fP ()"
+.br
+.RI "\fIInitialize the appender based on the options set\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBAppend\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIThis method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent)\fP method\&. \fP"
+.ti -1c
+.RI "override void \fBOnClose\fP ()"
+.br
+.RI "\fIClose the syslog when the appender is closed \fP"
+.ti -1c
+.RI "virtual \fBSyslogSeverity\fP \fBGetSeverity\fP (\fBLevel\fP level)"
+.br
+.RI "\fITranslates a \fBlog4net\fP level to a syslog severity\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBIdentity\fP\fC [get, set]\fP"
+.br
+.RI "\fIMessage identity \fP"
+.ti -1c
+.RI "\fBSyslogFacility\fP \fBFacility\fP\fC [get, set]\fP"
+.br
+.RI "\fISyslog facility \fP"
+.ti -1c
+.RI "override bool \fBRequiresLayout\fP\fC [get]\fP"
+.br
+.RI "\fIThis appender requires a \fBAppenderSkeleton\&.Layout\fP to be set\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Logs events to a local syslog service\&. 
+
+<note> This appender uses the POSIX libc library functions \fCopenlog\fP, \fCsyslog\fP, and \fCcloselog\fP\&. If these functions are not available on the local system then this appender will not work! </note> 
+.PP
+The functions \fCopenlog\fP, \fCsyslog\fP, and \fCcloselog\fP are specified in SUSv2 and POSIX 1003\&.1-2001 standards\&. These are used to log messages to the local syslog service\&. 
+.PP
+This appender talks to a local syslog service\&. If you need to log to a remote syslog daemon and you cannot configure your local syslog service to do this you may be able to use the \fBRemoteSyslogAppender\fP to log via UDP\&. 
+.PP
+Syslog messages must have a facility and and a severity\&. The severity is derived from the Level of the logging event\&. The facility must be chosen from the set of defined syslog \fBSyslogFacility\fP values\&. The facilities list is predefined and cannot be extended\&. 
+.PP
+An identifier is specified with each log message\&. This can be specified by setting the \fBIdentity\fP property\&. The identity (also know as the tag) must not contain white space\&. The default value for the identity is the application name (from SystemInfo\&.ApplicationFriendlyName)\&. 
+.PP
+<author>Rob Lyon</author> <author>Nicko Cadell</author> 
+.PP
+Definition at line 67 of file LocalSyslogAppender\&.cs\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBlog4net\&.Appender\&.LocalSyslogAppender\&.SyslogFacility\fP"
+
+.PP
+syslog facilities The syslog facility defines which subsystem the logging comes from\&. This is set on the \fBFacility\fP property\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIKernel \fP\fP
+kernel messages 
+.TP
+\fB\fIUser \fP\fP
+random user-level messages 
+.TP
+\fB\fIMail \fP\fP
+mail system 
+.TP
+\fB\fIDaemons \fP\fP
+system daemons 
+.TP
+\fB\fIAuthorization \fP\fP
+security/authorization messages 
+.TP
+\fB\fISyslog \fP\fP
+messages generated internally by syslogd 
+.TP
+\fB\fIPrinter \fP\fP
+line printer subsystem 
+.TP
+\fB\fINews \fP\fP
+network news subsystem 
+.TP
+\fB\fIUucp \fP\fP
+UUCP subsystem 
+.TP
+\fB\fIClock \fP\fP
+clock (cron/at) daemon 
+.TP
+\fB\fIAuthorization2 \fP\fP
+security/authorization messages (private) 
+.TP
+\fB\fIFtp \fP\fP
+ftp daemon 
+.TP
+\fB\fINtp \fP\fP
+NTP subsystem 
+.TP
+\fB\fIAudit \fP\fP
+log audit 
+.TP
+\fB\fIAlert \fP\fP
+log alert 
+.TP
+\fB\fIClock2 \fP\fP
+clock daemon 
+.TP
+\fB\fILocal0 \fP\fP
+reserved for local use 
+.TP
+\fB\fILocal1 \fP\fP
+reserved for local use 
+.TP
+\fB\fILocal2 \fP\fP
+reserved for local use 
+.TP
+\fB\fILocal3 \fP\fP
+reserved for local use 
+.TP
+\fB\fILocal4 \fP\fP
+reserved for local use 
+.TP
+\fB\fILocal5 \fP\fP
+reserved for local use 
+.TP
+\fB\fILocal6 \fP\fP
+reserved for local use 
+.TP
+\fB\fILocal7 \fP\fP
+reserved for local use 
+.PP
+Definition at line 133 of file LocalSyslogAppender\&.cs\&.
+.SS "enum \fBlog4net\&.Appender\&.LocalSyslogAppender\&.SyslogSeverity\fP"
+
+.PP
+syslog severities The \fBlog4net\fP Level maps to a syslog severity using the \fBLocalSyslogAppender\&.AddMapping\fP method and the \fBLevelSeverity\fP class\&. The severity is set on \fBLevelSeverity\&.Severity\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIEmergency \fP\fP
+system is unusable 
+.TP
+\fB\fIAlert \fP\fP
+action must be taken immediately 
+.TP
+\fB\fICritical \fP\fP
+critical conditions 
+.TP
+\fB\fIError \fP\fP
+error conditions 
+.TP
+\fB\fIWarning \fP\fP
+warning conditions 
+.TP
+\fB\fINotice \fP\fP
+normal but significant condition 
+.TP
+\fB\fIInformational \fP\fP
+informational 
+.TP
+\fB\fIDebug \fP\fP
+debug-level messages 
+.PP
+Definition at line 81 of file LocalSyslogAppender\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.LocalSyslogAppender\&.LocalSyslogAppender ()"
+
+.PP
+Initializes a new instance of the \fBLocalSyslogAppender\fP class\&. This instance of the \fBLocalSyslogAppender\fP class is set up to write to a local syslog service\&. 
+.PP
+Definition at line 267 of file LocalSyslogAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Appender\&.LocalSyslogAppender\&.ActivateOptions ()\fC [virtual]\fP"
+
+.PP
+Initialize the appender based on the options set\&. This is part of the IOptionHandler delayed object activation scheme\&. The \fBActivateOptions\fP method must be called on this object after the configuration properties have been set\&. Until \fBActivateOptions\fP is called this object is in an undefined state and must not be used\&. 
+.PP
+If any of the configuration properties are modified then \fBActivateOptions\fP must be called again\&. 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 343 of file LocalSyslogAppender\&.cs\&.
+.SS "void log4net\&.Appender\&.LocalSyslogAppender\&.AddMapping (\fBLevelSeverity\fPmapping)"
+
+.PP
+Add a mapping of level to severity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImapping\fP The mapping to add
+.RE
+.PP
+.PP
+Adds a \fBLevelSeverity\fP to this appender\&. 
+.PP
+Definition at line 317 of file LocalSyslogAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.LocalSyslogAppender\&.Append (\fBLoggingEvent\fPloggingEvent)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+This method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent)\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP The event to log\&.
+.RE
+.PP
+.PP
+Writes the event to a remote syslog daemon\&. 
+.PP
+The format of the output will depend on the appender's layout\&. 
+.PP
+Implements \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 385 of file LocalSyslogAppender\&.cs\&.
+.SS "virtual \fBSyslogSeverity\fP log4net\&.Appender\&.LocalSyslogAppender\&.GetSeverity (\fBLevel\fPlevel)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Translates a \fBlog4net\fP level to a syslog severity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlevel\fP A \fBlog4net\fP level\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A syslog severity\&.
+.RE
+.PP
+.PP
+Translates a \fBlog4net\fP level to a syslog severity\&. 
+.PP
+Definition at line 455 of file LocalSyslogAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.LocalSyslogAppender\&.OnClose ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Close the syslog when the appender is closed Close the syslog when the appender is closed 
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 406 of file LocalSyslogAppender\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBSyslogFacility\fP log4net\&.Appender\&.LocalSyslogAppender\&.Facility\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Syslog facility Set to one of the \fBSyslogFacility\fP values\&. The list of facilities is predefined and cannot be extended\&. The default value is SyslogFacility\&.User\&. 
+.PP
+Definition at line 301 of file LocalSyslogAppender\&.cs\&.
+.SS "string log4net\&.Appender\&.LocalSyslogAppender\&.Identity\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Message identity An identifier is specified with each log message\&. This can be specified by setting the \fBIdentity\fP property\&. The identity (also know as the tag) must not contain white space\&. The default value for the identity is the application name (from SystemInfo\&.ApplicationFriendlyName)\&. 
+.PP
+Definition at line 287 of file LocalSyslogAppender\&.cs\&.
+.SS "override bool log4net\&.Appender\&.LocalSyslogAppender\&.RequiresLayout\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+This appender requires a \fBAppenderSkeleton\&.Layout\fP to be set\&. \fCtrue\fP
+.PP
+This appender requires a \fBAppenderSkeleton\&.Layout\fP to be set\&. 
+.PP
+Definition at line 437 of file LocalSyslogAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

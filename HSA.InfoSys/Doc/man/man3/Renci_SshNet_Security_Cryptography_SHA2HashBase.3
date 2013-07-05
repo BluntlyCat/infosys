@@ -1,0 +1,124 @@
+.TH "Renci.SshNet.Security.Cryptography.SHA2HashBase" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Security.Cryptography.SHA2HashBase \- 
+.PP
+SHA256 algorithm implementation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits HashAlgorithm\&.
+.PP
+Inherited by \fBRenci\&.SshNet\&.Security\&.Cryptography\&.SHA384Hash\fP, and \fBRenci\&.SshNet\&.Security\&.Cryptography\&.SHA512Hash\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSHA2HashBase\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBSHA512Hash\fP class\&. \fP"
+.ti -1c
+.RI "override void \fBInitialize\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBHashCore\fP (byte[] array, int ibStart, int cbSize)"
+.br
+.ti -1c
+.RI "void \fBFinish\fP ()"
+.br
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBUInt32_To_BE\fP (uint n, byte[] bs, int off)"
+.br
+.ti -1c
+.RI "static void \fBUInt64_To_BE\fP (ulong n, byte[] bs, int off)"
+.br
+.ti -1c
+.RI "static ulong \fBBE_To_UInt64\fP (byte[] bs)"
+.br
+.ti -1c
+.RI "static ulong \fBBE_To_UInt64\fP (byte[] bs, int off)"
+.br
+.ti -1c
+.RI "static uint \fBBE_To_UInt32\fP (byte[] bs, int off)"
+.br
+.ti -1c
+.RI "static uint \fBBE_To_UInt32\fP (byte[] bs)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "ulong \fBH1\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBCanReuseTransform\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether the current transform can be reused\&. \fP"
+.ti -1c
+.RI "override bool \fBCanTransformMultipleBlocks\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether multiple blocks can be transformed\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+SHA256 algorithm implementation\&. 
+
+
+.PP
+Definition at line 12 of file SHA2HashBase\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Security\&.Cryptography\&.SHA2HashBase\&.SHA2HashBase ()"
+
+.PP
+Initializes a new instance of the \fBSHA512Hash\fP class\&. 
+.PP
+Definition at line 55 of file SHA2HashBase\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool Renci\&.SshNet\&.Security\&.Cryptography\&.SHA2HashBase\&.CanReuseTransform\fC [get]\fP"
+
+.PP
+Gets a value indicating whether the current transform can be reused\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Always true\&.
+.RE
+.PP
+
+.PP
+Definition at line 33 of file SHA2HashBase\&.cs\&.
+.SS "override bool Renci\&.SshNet\&.Security\&.Cryptography\&.SHA2HashBase\&.CanTransformMultipleBlocks\fC [get]\fP"
+
+.PP
+Gets a value indicating whether multiple blocks can be transformed\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if multiple blocks can be transformed; otherwise, false\&.
+.RE
+.PP
+
+.PP
+Definition at line 45 of file SHA2HashBase\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

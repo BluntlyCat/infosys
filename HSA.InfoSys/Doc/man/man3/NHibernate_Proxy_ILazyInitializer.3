@@ -1,0 +1,206 @@
+.TH "NHibernate.Proxy.ILazyInitializer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Proxy.ILazyInitializer \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Proxy\&.AbstractLazyInitializer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBInitialize\fP ()"
+.br
+.RI "\fIPerform an ImmediateLoad of the actual object for the \fBProxy\fP\&. \fP"
+.ti -1c
+.RI "object \fBGetImplementation\fP ()"
+.br
+.RI "\fIReturn the underlying persistent object, initializing if necessary\&. \fP"
+.ti -1c
+.RI "object \fBGetImplementation\fP (\fBISessionImplementor\fP s)"
+.br
+.RI "\fIReturn the underlying persistent object in a given \fBISession\fP, or null\&. \fP"
+.ti -1c
+.RI "void \fBSetImplementation\fP (object target)"
+.br
+.RI "\fIInitialize the proxy manually by injecting its target\&. \fP"
+.ti -1c
+.RI "void \fBSetSession\fP (\fBISessionImplementor\fP s)"
+.br
+.RI "\fIAssociate the proxy with the given session\&. \fP"
+.ti -1c
+.RI "void \fBUnsetSession\fP ()"
+.br
+.RI "\fIUnset this initializer's reference to session\&. It is assumed that the caller is also taking care or cleaning up the owning proxy's reference in the persistence context\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "object \fBIdentifier\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe identifier value for the entity our owning proxy represents\&. \fP"
+.ti -1c
+.RI "string \fBEntityName\fP\fC [get]\fP"
+.br
+.RI "\fIThe entity-name of the entity our owning proxy represents\&. \fP"
+.ti -1c
+.RI "System\&.Type \fBPersistentClass\fP\fC [get]\fP"
+.br
+.RI "\fIGet the actual class of the entity\&. Generally, \fBEntityName\fP should be used instead\&. \fP"
+.ti -1c
+.RI "bool \fBIsUninitialized\fP\fC [get]\fP"
+.br
+.RI "\fIIs the proxy uninitialzed? \fP"
+.ti -1c
+.RI "bool \fBUnwrap\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBISessionImplementor\fP \fBSession\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet the session to which this proxy is associated, or null if it is not attached\&. \fP"
+.ti -1c
+.RI "bool \fBIsReadOnlySettingAvailable\fP\fC [get]\fP"
+.br
+.RI "\fIIs the read-only setting available? \fP"
+.ti -1c
+.RI "bool \fBReadOnly\fP\fC [get, set]\fP"
+.br
+.RI "\fIRead-only status \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 5 of file ILazyInitializer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.Proxy\&.ILazyInitializer\&.GetImplementation ()"
+
+.PP
+Return the underlying persistent object, initializing if necessary\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The persistent object this proxy is proxying\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Proxy\&.AbstractLazyInitializer\fP\&.
+.SS "object NHibernate\&.Proxy\&.ILazyInitializer\&.GetImplementation (\fBISessionImplementor\fPs)"
+
+.PP
+Return the underlying persistent object in a given \fBISession\fP, or null\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session to get the object from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The persistent object this proxy is proxying, or \&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Proxy\&.AbstractLazyInitializer\fP\&.
+.SS "void NHibernate\&.Proxy\&.ILazyInitializer\&.Initialize ()"
+
+.PP
+Perform an ImmediateLoad of the actual object for the \fBProxy\fP\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP Thrown when the \fBProxy\fP has no Session or the Session is closed or disconnected\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Proxy\&.AbstractLazyInitializer\fP\&.
+.SS "void NHibernate\&.Proxy\&.ILazyInitializer\&.SetImplementation (objecttarget)"
+
+.PP
+Initialize the proxy manually by injecting its target\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItarget\fP The proxy target (the actual entity being proxied)\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Proxy\&.AbstractLazyInitializer\fP\&.
+.SS "void NHibernate\&.Proxy\&.ILazyInitializer\&.SetSession (\fBISessionImplementor\fPs)"
+
+.PP
+Associate the proxy with the given session\&. Care should be given to make certain that the proxy is added to the session's persistence context as well to maintain the symmetry of the association\&. That must be done separately as this method simply sets an internal reference\&. We do also check that if there is already an associated session that the proxy reference was removed from that previous session's persistence context\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Proxy\&.AbstractLazyInitializer\fP\&.
+.SS "void NHibernate\&.Proxy\&.ILazyInitializer\&.UnsetSession ()"
+
+.PP
+Unset this initializer's reference to session\&. It is assumed that the caller is also taking care or cleaning up the owning proxy's reference in the persistence context\&. Generally speaking this is intended to be called only during \fBNHibernate\&.ISession\&.Evict\fP and \fBNHibernate\&.ISession\&.Clear()\fP processing; most other use-cases should call \fBSetSession(ISessionImplementor)\fP instead\&. 
+.PP
+Implemented in \fBNHibernate\&.Proxy\&.AbstractLazyInitializer\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "string NHibernate\&.Proxy\&.ILazyInitializer\&.EntityName\fC [get]\fP"
+
+.PP
+The entity-name of the entity our owning proxy represents\&. 
+.PP
+Definition at line 23 of file ILazyInitializer\&.cs\&.
+.SS "object NHibernate\&.Proxy\&.ILazyInitializer\&.Identifier\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The identifier value for the entity our owning proxy represents\&. 
+.PP
+Definition at line 18 of file ILazyInitializer\&.cs\&.
+.SS "bool NHibernate\&.Proxy\&.ILazyInitializer\&.IsReadOnlySettingAvailable\fC [get]\fP"
+
+.PP
+Is the read-only setting available? 
+.PP
+Definition at line 45 of file ILazyInitializer\&.cs\&.
+.SS "bool NHibernate\&.Proxy\&.ILazyInitializer\&.IsUninitialized\fC [get]\fP"
+
+.PP
+Is the proxy uninitialzed? 
+.PP
+Definition at line 33 of file ILazyInitializer\&.cs\&.
+.SS "System\&.Type NHibernate\&.Proxy\&.ILazyInitializer\&.PersistentClass\fC [get]\fP"
+
+.PP
+Get the actual class of the entity\&. Generally, \fBEntityName\fP should be used instead\&. 
+.PP
+Definition at line 28 of file ILazyInitializer\&.cs\&.
+.SS "bool NHibernate\&.Proxy\&.ILazyInitializer\&.ReadOnly\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Read-only status Not available when the proxy is detached or its associated session is closed\&. 
+.PP
+To check if the read-only setting is available, use \fBIsReadOnlySettingAvailable\fP 
+.PP
+The read-only status of the entity will be made to match the read-only status of the proxy upon initialization\&. 
+.PP
+Definition at line 62 of file ILazyInitializer\&.cs\&.
+.SS "\fBISessionImplementor\fP NHibernate\&.Proxy\&.ILazyInitializer\&.Session\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get the session to which this proxy is associated, or null if it is not attached\&. 
+.PP
+Definition at line 40 of file ILazyInitializer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,74 @@
+.TH "NHibernate.Test.NHSpecificTest.NH1553.MsSQL.SnapshotIsolationUpdateConflictTest" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.NHSpecificTest.NH1553.MsSQL.SnapshotIsolationUpdateConflictTest \- 
+.PP
+\fBTest\fP fixture for \fBNH1553\fP, which checks update conflict detection together with snapshot isolation transaction isolation level\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Test\&.NHSpecificTest\&.BugTestCase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBUpdateConflictDetectedByNH\fP ()"
+.br
+.RI "\fITests, that \fBNHibernate\fP detects the update conflict and returns a \fBStaleObjectStateException\fP as expected\&. This behaviour is part of the standard \fBNHibernate\fP feature set\&. \fP"
+.ti -1c
+.RI "void \fBUpdateConflictDetectedBySQLServer\fP ()"
+.br
+.RI "\fITests, that the extension provided wraps the returned SQL Exception inside a \fBStaleObjectStateException\fP, if the SQL Server detects an update conflict in snapshot isolation\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBAppliesTo\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.ti -1c
+.RI "override void \fBOnSetUp\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnTearDown\fP ()"
+.br
+.ti -1c
+.RI "override void \fBConfigure\fP (\fBConfiguration\fP configuration)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBBugNumber\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBTest\fP fixture for \fBNH1553\fP, which checks update conflict detection together with snapshot isolation transaction isolation level\&. 
+
+
+.PP
+Definition at line 12 of file SnapshotIsolationUpdateConflictTest\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Test\&.NHSpecificTest\&.NH1553\&.MsSQL\&.SnapshotIsolationUpdateConflictTest\&.UpdateConflictDetectedByNH ()"
+
+.PP
+Tests, that \fBNHibernate\fP detects the update conflict and returns a \fBStaleObjectStateException\fP as expected\&. This behaviour is part of the standard \fBNHibernate\fP feature set\&. 
+.PP
+Definition at line 57 of file SnapshotIsolationUpdateConflictTest\&.cs\&.
+.SS "void NHibernate\&.Test\&.NHSpecificTest\&.NH1553\&.MsSQL\&.SnapshotIsolationUpdateConflictTest\&.UpdateConflictDetectedBySQLServer ()"
+
+.PP
+Tests, that the extension provided wraps the returned SQL Exception inside a \fBStaleObjectStateException\fP, if the SQL Server detects an update conflict in snapshot isolation\&. 
+.PP
+Definition at line 85 of file SnapshotIsolationUpdateConflictTest\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

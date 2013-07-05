@@ -1,0 +1,362 @@
+.TH "NHibernate.Type.EnumStringType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.EnumStringType \- 
+.PP
+Maps a System\&.Enum to a \fBDbType\&.String\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.AbstractEnumType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.DomainModel\&.Northwind\&.Entities\&.EnumStoredAsStringType\fP, \fBNHibernate\&.Test\&.TypesTest\&.SampleEnumType\fP, and \fBNHibernate\&.Type\&.EnumStringType< T >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual object \fBGetInstance\fP (object code)"
+.br
+.ti -1c
+.RI "virtual object \fBGetValue\fP (object code)"
+.br
+.ti -1c
+.RI "override void \fBSet\fP (IDbCommand cmd, object value, int index)"
+.br
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, int index)"
+.br
+.ti -1c
+.RI "override object \fBGet\fP (IDataReader rs, string name)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP (object value)"
+.br
+.ti -1c
+.RI "override object \fBAssemble\fP (object cached, \fBISessionImplementor\fP session, object owner)"
+.br
+.ti -1c
+.RI "override object \fBDisassemble\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIDisassembles the object into a cacheable representation\&. \fP"
+.ti -1c
+.RI "override string \fBObjectToSQLString\fP (object value, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIWhen implemented by a class, return a String representation of the value, suitable for embedding in an SQL statement \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBMaxLengthForEnumString\fP = 255"
+.br
+.RI "\fIHardcoding of \fC255\fP for the maximum length of the Enum name that will be saved to the db\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEnumStringType\fP (System\&.Type enumClass)"
+.br
+.RI "\fIInitializes a new instance of \fBEnumStringType\fP\&. \fP"
+.ti -1c
+.RI "\fBEnumStringType\fP (System\&.Type enumClass, int length)"
+.br
+.RI "\fIInitializes a new instance of \fBEnumStringType\fP\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBName\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Maps a System\&.Enum to a \fBDbType\&.String\fP\&. 
+
+If your database should store the System\&.Enum using the named values in the enum instead of the underlying values then subclass this \fBIType\fP\&.
+.PP
+All that needs to be done is to provide a default constructor that \fBNHibernate\fP can use to create the specific type\&. For example, if you had an enum defined as\&. 
+.PP
+.PP
+.nf
+public enum MyEnum 
+{
+    On,
+    Off,
+    Dimmed
+}
+.fi
+.PP
+.PP
+all that needs to be written for your enum string type is: 
+.PP
+.PP
+.nf
+public class MyEnumStringType : NHibernate\&.Type\&.EnumStringType
+{
+    public MyEnumStringType()
+        : base( typeof( MyEnum ) )
+    {
+    }
+}
+.fi
+.PP
+.PP
+The mapping would look like: 
+.PP
+.PP
+.nf
+\&.\&.\&.
+    &lt;property name="Status" type="MyEnumStringType, AssemblyContaining" /&gt;
+\&.\&.\&.
+.fi
+.PP
+.PP
+The TestFixture that shows the working code can be seen in \fCNHibernate\&.Test\&.TypesTest\&.EnumStringTypeFixture\&.cs\fP , \fCNHibernate\&.Test\&.TypesTest\&.EnumStringClass\&.cs\fP , and \fCNHibernate\&.Test\&.TypesTest\&.EnumStringClass\&.hbm\&.xml\fP 
+.PP
+Definition at line 64 of file EnumStringType\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Type\&.EnumStringType\&.EnumStringType (System\&.TypeenumClass)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of \fBEnumStringType\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIenumClass\fP The System\&.Type of the Enum\&.
+.RE
+.PP
+
+.PP
+Definition at line 80 of file EnumStringType\&.cs\&.
+.SS "NHibernate\&.Type\&.EnumStringType\&.EnumStringType (System\&.TypeenumClass, intlength)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of \fBEnumStringType\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIenumClass\fP The System\&.Type of the Enum\&.
+.br
+\fIlength\fP The length of the string that can be written to the column\&.
+.RE
+.PP
+
+.PP
+Definition at line 87 of file EnumStringType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.EnumStringType\&.Assemble (objectcached, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcached\fP 
+.br
+\fIsession\fP 
+.br
+\fIowner\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 198 of file EnumStringType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.EnumStringType\&.Disassemble (objectvalue, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Disassembles the object into a cacheable representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to disassemble\&.
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP optional parent entity object (needed for collections) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The disassembled, deep cloned state of the object
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 210 of file EnumStringType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.EnumStringType\&.Get (IDataReaderrs, intindex)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP 
+.br
+\fIindex\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.DomainModel\&.Northwind\&.Entities\&.EnumStoredAsStringType\fP\&.
+.PP
+Definition at line 157 of file EnumStringType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.EnumStringType\&.Get (IDataReaderrs, stringname)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP 
+.br
+\fIname\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 176 of file EnumStringType\&.cs\&.
+.SS "virtual object NHibernate\&.Type\&.EnumStringType\&.GetInstance (objectcode)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 108 of file EnumStringType\&.cs\&.
+.SS "virtual object NHibernate\&.Type\&.EnumStringType\&.GetValue (objectcode)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 126 of file EnumStringType\&.cs\&.
+.SS "override string NHibernate\&.Type\&.EnumStringType\&.ObjectToSQLString (objectvalue, \fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, return a String representation of the value, suitable for embedding in an SQL statement 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The object to convert to a string for the SQL statement\&.
+.br
+\fIdialect\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that containts a well formed SQL Statement\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.PrimitiveType\fP\&.
+.PP
+Definition at line 215 of file EnumStringType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.EnumStringType\&.Set (IDbCommandcmd, objectvalue, intindex)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP 
+.br
+\fIvalue\fP 
+.br
+\fIindex\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.DomainModel\&.Northwind\&.Entities\&.EnumStoredAsStringType\fP\&.
+.PP
+Definition at line 138 of file EnumStringType\&.cs\&.
+.SS "override string NHibernate\&.Type\&.EnumStringType\&.ToString (objectvalue)\fC [virtual]\fP"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Definition at line 186 of file EnumStringType\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const int NHibernate\&.Type\&.EnumStringType\&.MaxLengthForEnumString = 255"
+
+.PP
+Hardcoding of \fC255\fP for the maximum length of the Enum name that will be saved to the db\&. \fC255\fP because that matches the default length that hbm2ddl will use to create the column\&. 
+.PP
+Definition at line 74 of file EnumStringType\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.Type\&.EnumStringType\&.Name\fC [get]\fP"
+
+.PP
+This appends \fCenumstring - \fP to the beginning of the underlying enums name so that System\&.Enum could still be stored using the underlying value through the \fBPersistentEnumType\fP also\&. 
+.PP
+Definition at line 99 of file EnumStringType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

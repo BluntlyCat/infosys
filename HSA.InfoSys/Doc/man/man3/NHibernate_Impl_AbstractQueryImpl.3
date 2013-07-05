@@ -1,0 +1,1510 @@
+.TH "NHibernate.Impl.AbstractQueryImpl" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Impl.AbstractQueryImpl \- 
+.PP
+Abstract implementation of the \fBIQuery\fP interface\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.IQuery\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Impl\&.AbstractQueryImpl2\fP, and \fBNHibernate\&.Impl\&.SqlQueryImpl\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIQuery\fP \fBSetParameter\fP (int position, object val, \fBIType\fP type)"
+.br
+.RI "\fIBind a value to an indexed parameter\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetParameter\fP (string name, object val, \fBIType\fP type)"
+.br
+.RI "\fIBind a value to a named query parameter \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetParameter< T >\fP (int position, T val)"
+.br
+.RI "\fIBind a value to an indexed parameter\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetParameter< T >\fP (string name, T val)"
+.br
+.RI "\fIBind a value to a named query parameter \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetParameter\fP (string name, object val)"
+.br
+.RI "\fIBind a value to a named query parameter, guessing the \fBNHibernate\fP IType from the class of the given object\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetParameter\fP (int position, object val)"
+.br
+.RI "\fIBind a value to an indexed parameter, guessing the \fBNHibernate\fP type from the class of the given object\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetAnsiString\fP (int position, string val)"
+.br
+.RI "\fIBind an instance of a String to an indexed parameter using an \fBNHibernate\fP AnsiStringType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetString\fP (int position, string val)"
+.br
+.RI "\fIBind an instance of a String to an indexed parameter using an \fBNHibernate\fP StringType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetCharacter\fP (int position, char val)"
+.br
+.RI "\fIBind an instance of a Char to an indexed parameter using an \fBNHibernate\fP CharType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetBoolean\fP (int position, bool val)"
+.br
+.RI "\fIBind an instance of a Boolean to an indexed parameter using an \fBNHibernate\fP BooleanType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetByte\fP (int position, byte val)"
+.br
+.RI "\fIBind an instance of a Byte to an indexed parameter using an \fBNHibernate\fP ByteType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetInt16\fP (int position, short val)"
+.br
+.RI "\fIBind an instance of a Int16 to an indexed parameter using an \fBNHibernate\fP Int16Type\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetInt32\fP (int position, int val)"
+.br
+.RI "\fIBind an instance of a Int32 to an indexed parameter using an \fBNHibernate\fP Int32Type\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetInt64\fP (int position, long val)"
+.br
+.RI "\fIBind an instance of a Int64 to an indexed parameter using an \fBNHibernate\fP Int64Type\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetSingle\fP (int position, float val)"
+.br
+.RI "\fIBind an instance of a Single to an indexed parameter using an \fBNHibernate\fP SingleType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetDouble\fP (int position, double val)"
+.br
+.RI "\fIBind an instance of a Double to an indexed parameter using an \fBNHibernate\fP DoubleType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetBinary\fP (int position, byte[] val)"
+.br
+.RI "\fIBind an instance of a Byte array to an indexed parameter using an \fBNHibernate\fP BinaryType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetDateTimeOffset\fP (string name, DateTimeOffset val)"
+.br
+.ti -1c
+.RI "\fBIQuery\fP \fBSetDecimal\fP (int position, decimal val)"
+.br
+.RI "\fIBind an instance of a Decimal to an indexed parameter using an \fBNHibernate\fP DecimalType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetDateTime\fP (int position, DateTime val)"
+.br
+.RI "\fIBind an instance of a DateTime to an indexed parameter using an \fBNHibernate\fP DateTimeType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetTime\fP (int position, DateTime val)"
+.br
+.RI "\fIBind an instance of a DateTime to an indexed parameter using an \fBNHibernate\fP DateTimeType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetTimestamp\fP (int position, DateTime val)"
+.br
+.RI "\fIBind an instance of a DateTime to an indexed parameter using an \fBNHibernate\fP TimestampType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetEntity\fP (int position, object val)"
+.br
+.RI "\fIBind an instance of a mapped persistent class to an indexed parameter\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetEnum\fP (int position, Enum val)"
+.br
+.RI "\fIBind an instance of a persistent enumeration class to an indexed parameter using an \fBNHibernate\fP PersistentEnumType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetAnsiString\fP (string name, string val)"
+.br
+.RI "\fIBind an instance of a String to a named parameter using an \fBNHibernate\fP AnsiStringType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetString\fP (string name, string val)"
+.br
+.RI "\fIBind an instance of a String to a named parameter using an \fBNHibernate\fP StringType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetCharacter\fP (string name, char val)"
+.br
+.RI "\fIBind an instance of a Char to a named parameter using an \fBNHibernate\fP CharType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetBoolean\fP (string name, bool val)"
+.br
+.RI "\fIBind an instance of a Boolean to a named parameter using an \fBNHibernate\fP BooleanType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetByte\fP (string name, byte val)"
+.br
+.RI "\fIBind an instance of a Byte to a named parameter using an \fBNHibernate\fP ByteType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetInt16\fP (string name, short val)"
+.br
+.RI "\fIBind an instance of a Int16 to a named parameter using an \fBNHibernate\fP Int16Type\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetInt32\fP (string name, int val)"
+.br
+.RI "\fIBind an instance of a Int32 to a named parameter using an \fBNHibernate\fP Int32Type\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetInt64\fP (string name, long val)"
+.br
+.RI "\fIBind an instance of a Int64 to a named parameter using an \fBNHibernate\fP Int64Type\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetSingle\fP (string name, float val)"
+.br
+.RI "\fIBind an instance of a Single to a named parameter using an \fBNHibernate\fP SingleType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetDouble\fP (string name, double val)"
+.br
+.RI "\fIBind an instance of a Double to a named parameter using an \fBNHibernate\fP DoubleType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetBinary\fP (string name, byte[] val)"
+.br
+.RI "\fIBind an instance of a Byte array to a named parameter using an \fBNHibernate\fP BinaryType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetDecimal\fP (string name, decimal val)"
+.br
+.RI "\fIBind an instance of a Decimal to a named parameter using an \fBNHibernate\fP DecimalType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetDateTime\fP (string name, DateTime val)"
+.br
+.RI "\fIBind an instance of a DateTime to a named parameter using an \fBNHibernate\fP DateTimeType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetDateTime2\fP (int position, DateTime val)"
+.br
+.ti -1c
+.RI "\fBIQuery\fP \fBSetDateTime2\fP (string name, DateTime val)"
+.br
+.ti -1c
+.RI "\fBIQuery\fP \fBSetTimeSpan\fP (int position, TimeSpan val)"
+.br
+.ti -1c
+.RI "\fBIQuery\fP \fBSetTimeSpan\fP (string name, TimeSpan val)"
+.br
+.ti -1c
+.RI "\fBIQuery\fP \fBSetTimeAsTimeSpan\fP (int position, TimeSpan val)"
+.br
+.ti -1c
+.RI "\fBIQuery\fP \fBSetTimeAsTimeSpan\fP (string name, TimeSpan val)"
+.br
+.ti -1c
+.RI "\fBIQuery\fP \fBSetDateTimeOffset\fP (int position, DateTimeOffset val)"
+.br
+.ti -1c
+.RI "\fBIQuery\fP \fBSetTime\fP (string name, DateTime val)"
+.br
+.RI "\fIBind an instance of a DateTime to a named parameter using an \fBNHibernate\fP DateTimeType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetTimestamp\fP (string name, DateTime val)"
+.br
+.RI "\fIBind an instance of a DateTime to a named parameter using an \fBNHibernate\fP TimestampType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetGuid\fP (string name, Guid val)"
+.br
+.RI "\fIBind an instance of a Guid to a named parameter using an \fBNHibernate\fP GuidType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetGuid\fP (int position, Guid val)"
+.br
+.RI "\fIBind an instance of a Guid to a named parameter using an \fBNHibernate\fP GuidType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetEntity\fP (string name, object val)"
+.br
+.RI "\fIBind an instance of a mapped persistent class to a named parameter\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetEnum\fP (string name, Enum val)"
+.br
+.RI "\fIBind an instance of a persistent enumeration class to a named parameter using an \fBNHibernate\fP PersistentEnumType\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetProperties\fP (IDictionary map)"
+.br
+.ti -1c
+.RI "\fBIQuery\fP \fBSetProperties\fP (object bean)"
+.br
+.RI "\fIBind the property values of the given object to named parameters of the query, matching property names with parameter names and mapping property types to \fBNHibernate\fP types using heuristics\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetParameterList\fP (string name, IEnumerable vals, \fBIType\fP type)"
+.br
+.RI "\fIBind multiple values to a named query parameter\&. This is useful for binding a list of values to an expression such as \fCfoo\&.bar in (:value_list)\fP \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetParameterList\fP (string name, IEnumerable vals)"
+.br
+.RI "\fIBind multiple values to a named query parameter, guessing the \fBNHibernate\fP type from the class of the first object in the collection\&. This is useful for binding a list of values to an expression such as \fCfoo\&.bar in (:value_list)\fP \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetMaxResults\fP (int maxResults)"
+.br
+.RI "\fISet the maximum number of rows to retrieve\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetTimeout\fP (int timeout)"
+.br
+.RI "\fIThe timeout for the underlying ADO query \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetFetchSize\fP (int fetchSize)"
+.br
+.RI "\fISet a fetch size for the underlying ADO query\&.\fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetFirstResult\fP (int firstResult)"
+.br
+.RI "\fISets the first row to retrieve\&. \fP"
+.ti -1c
+.RI "abstract \fBIQuery\fP \fBSetLockMode\fP (string alias, \fBLockMode\fP lockMode)"
+.br
+.RI "\fISet the lockmode for the objects idententified by the given alias that appears in the \fCFROM\fP clause\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetComment\fP (string comment)"
+.br
+.RI "\fIAdd a comment to the generated SQL\&.\fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetCacheable\fP (bool cacheable)"
+.br
+.RI "\fIEnable caching of this query result set\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetCacheRegion\fP (string cacheRegion)"
+.br
+.ti -1c
+.RI "\fBIQuery\fP \fBSetReadOnly\fP (bool readOnly)"
+.br
+.RI "\fISet the read-only mode for entities (and proxies) loaded by this query\&. This setting overrides the default setting for the session (see \fBISession\&.DefaultReadOnly\fP)\&. 
+.PP
+Read-only entities can be modified, but changes are not persisted\&. They are not dirty-checked and snapshots of persistent state are not maintained\&.  \fP"
+.ti -1c
+.RI "void \fBSetOptionalId\fP (object optionalId)"
+.br
+.ti -1c
+.RI "void \fBSetOptionalObject\fP (object optionalObject)"
+.br
+.ti -1c
+.RI "void \fBSetOptionalEntityName\fP (string optionalEntityName)"
+.br
+.ti -1c
+.RI "\fBIQuery\fP \fBSetFlushMode\fP (\fBFlushMode\fP flushMode)"
+.br
+.RI "\fIOverride the current session flush mode, just for this query\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetCollectionKey\fP (object collectionKey)"
+.br
+.ti -1c
+.RI "\fBIQuery\fP \fBSetResultTransformer\fP (\fBIResultTransformer\fP transformer)"
+.br
+.RI "\fISet a strategy for handling the query results\&. This can be used to change 'shape' of the query result\&. \fP"
+.ti -1c
+.RI "IEnumerable< T > \fBFuture< T >\fP ()"
+.br
+.RI "\fIGet a enumerable that when enumerated will execute a batch of queries in a single database roundtrip \fP"
+.ti -1c
+.RI "IFutureValue< T > \fBFutureValue< T >\fP ()"
+.br
+.RI "\fIGet an IFutureValue instance, whose value can be retrieved through its Value property\&. The query is not executed until the Value property is retrieved, which will execute other Future queries as well in a single roundtrip \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetCacheMode\fP (\fBCacheMode\fP cacheMode)"
+.br
+.RI "\fIOverride the current session cache mode, just for this query\&. \fP"
+.ti -1c
+.RI "\fBIQuery\fP \fBSetIgnoreUknownNamedParameters\fP (bool ignoredUnknownNamedParameters)"
+.br
+.ti -1c
+.RI "abstract int \fBExecuteUpdate\fP ()"
+.br
+.RI "\fIExecute the update or delete statement\&. \fP"
+.ti -1c
+.RI "abstract IEnumerable \fBEnumerable\fP ()"
+.br
+.RI "\fIReturn the query results as an IEnumerable\&. If the query contains multiple results per row, the results are returned in an instance of \fCobject[]\fP\&. \fP"
+.ti -1c
+.RI "abstract IEnumerable< T > \fBEnumerable< T >\fP ()"
+.br
+.RI "\fIStrongly-typed version of \fBEnumerable()\fP\&. \fP"
+.ti -1c
+.RI "abstract IList \fBList\fP ()"
+.br
+.RI "\fIReturn the query results as an IList\&. If the query contains multiple results per row, the results are returned in an instance of \fCobject[]\fP\&. \fP"
+.ti -1c
+.RI "abstract void \fBList\fP (IList results)"
+.br
+.RI "\fIReturn the query results an place them into the IList\&. \fP"
+.ti -1c
+.RI "abstract IList< T > \fBList< T >\fP ()"
+.br
+.RI "\fIStrongly-typed version of \fBList()\fP\&. \fP"
+.ti -1c
+.RI "T \fBUniqueResult< T >\fP ()"
+.br
+.RI "\fIStrongly-typed version of \fBUniqueResult()\fP\&. \fP"
+.ti -1c
+.RI "object \fBUniqueResult\fP ()"
+.br
+.RI "\fIConvenience method to return a single instance that matches the query, or null if the query returns no results\&. \fP"
+.ti -1c
+.RI "virtual \fBIType\fP[] \fBTypeArray\fP ()"
+.br
+.ti -1c
+.RI "virtual object[] \fBValueArray\fP ()"
+.br
+.ti -1c
+.RI "virtual \fBQueryParameters\fP \fBGetQueryParameters\fP ()"
+.br
+.ti -1c
+.RI "virtual \fBQueryParameters\fP \fBGetQueryParameters\fP (IDictionary< string, \fBTypedValue\fP > namedParams)"
+.br
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractQueryImpl\fP (string queryString, \fBFlushMode\fP flushMode, \fBISessionImplementor\fP session, \fBParameterMetadata\fP parameterMetadata)"
+.br
+.ti -1c
+.RI "void \fBBefore\fP ()"
+.br
+.ti -1c
+.RI "void \fBAfter\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly Dictionary< string, 
+.br
+\fBTypedValue\fP > \fBnamedParameterLists\fP = new Dictionary<string, \fBTypedValue\fP>(4)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBCacheable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBCacheRegion\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasNamedParameters\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBQueryString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDictionary \fBNamedParameterLists\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IList \fBValues\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IList< \fBIType\fP > \fBTypes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual \fBIType\fP[] \fBReturnTypes\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string[] \fBReturnAliases\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBRowSelection\fP \fBSelection\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string[] \fBNamedParameters\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBISessionImplementor\fP \fBSession\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBRowSelection\fP \fBRowSelection\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsReadOnly\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Abstract implementation of the \fBIQuery\fP interface\&. 
+
+
+.PP
+Definition at line 19 of file AbstractQueryImpl\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract IEnumerable NHibernate\&.Impl\&.AbstractQueryImpl\&.Enumerable ()\fC [pure virtual]\fP"
+
+.PP
+Return the query results as an IEnumerable\&. If the query contains multiple results per row, the results are returned in an instance of \fCobject[]\fP\&. Entities returned as results are initialized on demand\&. The first SQL query returns identifiers only\&. 
+.PP
+This is a good strategy to use if you expect a high number of the objects returned to be already loaded in the \fBISession\fP or in the 2nd level cache\&. 
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SqlQueryImpl\fP, \fBNHibernate\&.Impl\&.AbstractQueryImpl2\fP, and \fBNHibernate\&.Impl\&.CollectionFilterImpl\fP\&.
+.SS "abstract IEnumerable<T> \fBNHibernate\&.Impl\&.AbstractQueryImpl\&.Enumerable\fP< T > ()\fC [pure virtual]\fP"
+
+.PP
+Strongly-typed version of \fBEnumerable()\fP\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SqlQueryImpl\fP, \fBNHibernate\&.Impl\&.AbstractQueryImpl2\fP, and \fBNHibernate\&.Impl\&.CollectionFilterImpl\fP\&.
+.SS "abstract int NHibernate\&.Impl\&.AbstractQueryImpl\&.ExecuteUpdate ()\fC [pure virtual]\fP"
+
+.PP
+Execute the update or delete statement\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The number of entities updated or deleted\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SqlQueryImpl\fP, and \fBNHibernate\&.Impl\&.AbstractQueryImpl2\fP\&.
+.SS "IEnumerable<T> NHibernate\&.Impl\&.AbstractQueryImpl\&.Future< T > ()"
+
+.PP
+Get a enumerable that when enumerated will execute a batch of queries in a single database roundtrip 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 885 of file AbstractQueryImpl\&.cs\&.
+.SS "IFutureValue<T> NHibernate\&.Impl\&.AbstractQueryImpl\&.FutureValue< T > ()"
+
+.PP
+Get an IFutureValue instance, whose value can be retrieved through its Value property\&. The query is not executed until the Value property is retrieved, which will execute other Future queries as well in a single roundtrip 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 896 of file AbstractQueryImpl\&.cs\&.
+.SS "abstract IList NHibernate\&.Impl\&.AbstractQueryImpl\&.List ()\fC [pure virtual]\fP"
+
+.PP
+Return the query results as an IList\&. If the query contains multiple results per row, the results are returned in an instance of \fCobject[]\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The IList filled with the results\&.
+.RE
+.PP
+.PP
+This is a good strategy to use if you expect few of the objects being returned are already loaded or if you want to fill the 2nd level cache\&. 
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SqlQueryImpl\fP, \fBNHibernate\&.Impl\&.AbstractQueryImpl2\fP, and \fBNHibernate\&.Impl\&.CollectionFilterImpl\fP\&.
+.SS "abstract void NHibernate\&.Impl\&.AbstractQueryImpl\&.List (IListresults)\fC [pure virtual]\fP"
+
+.PP
+Return the query results an place them into the IList\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIresults\fP The IList to place the results in\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SqlQueryImpl\fP, and \fBNHibernate\&.Impl\&.AbstractQueryImpl2\fP\&.
+.SS "abstract IList<T> \fBNHibernate\&.Impl\&.AbstractQueryImpl\&.List\fP< T > ()\fC [pure virtual]\fP"
+
+.PP
+Strongly-typed version of \fBList()\fP\&. 
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SqlQueryImpl\fP, \fBNHibernate\&.Impl\&.AbstractQueryImpl2\fP, and \fBNHibernate\&.Impl\&.CollectionFilterImpl\fP\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetAnsiString (intposition, stringval)"
+
+.PP
+Bind an instance of a String to an indexed parameter using an \fBNHibernate\fP AnsiStringType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a String\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 374 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetAnsiString (stringname, stringval)"
+
+.PP
+Bind an instance of a String to a named parameter using an \fBNHibernate\fP AnsiStringType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a String\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 482 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetBinary (intposition, byte[]val)"
+
+.PP
+Bind an instance of a Byte array to an indexed parameter using an \fBNHibernate\fP BinaryType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a Byte array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 434 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetBinary (stringname, byte[]val)"
+
+.PP
+Bind an instance of a Byte array to a named parameter using an \fBNHibernate\fP BinaryType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Byte array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 542 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetBoolean (intposition, boolval)"
+
+.PP
+Bind an instance of a Boolean to an indexed parameter using an \fBNHibernate\fP BooleanType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a Boolean\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 392 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetBoolean (stringname, boolval)"
+
+.PP
+Bind an instance of a Boolean to a named parameter using an \fBNHibernate\fP BooleanType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Boolean\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 500 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetByte (intposition, byteval)"
+
+.PP
+Bind an instance of a Byte to an indexed parameter using an \fBNHibernate\fP ByteType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a Byte\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 398 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetByte (stringname, byteval)"
+
+.PP
+Bind an instance of a Byte to a named parameter using an \fBNHibernate\fP ByteType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Byte\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 506 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetCacheable (boolcacheable)"
+
+.PP
+Enable caching of this query result set\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcacheable\fP Should the query results be cacheable?
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 826 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetCacheMode (\fBCacheMode\fPcacheMode)"
+
+.PP
+Override the current session cache mode, just for this query\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcacheMode\fP The cache mode to use\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+this (for method chaining) 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 911 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetCacheRegion (stringcacheRegion)"
+Set the name of the cache region\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcacheRegion\fP The name of a query cache region, or  for the default query cache
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 832 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetCharacter (intposition, charval)"
+
+.PP
+Bind an instance of a Char to an indexed parameter using an \fBNHibernate\fP CharType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a Char\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 386 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetCharacter (stringname, charval)"
+
+.PP
+Bind an instance of a Char to a named parameter using an \fBNHibernate\fP CharType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Char\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 494 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetComment (stringcomment)"
+
+.PP
+Add a comment to the generated SQL\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomment\fP a human-readable string 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 810 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetDateTime (intposition, DateTimeval)"
+
+.PP
+Bind an instance of a DateTime to an indexed parameter using an \fBNHibernate\fP DateTimeType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a DateTime\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 452 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetDateTime (stringname, DateTimeval)"
+
+.PP
+Bind an instance of a DateTime to a named parameter using an \fBNHibernate\fP DateTimeType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP A non-null instance of a DateTime\&.
+.br
+\fIname\fP The name of the parameter
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 554 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetDecimal (intposition, decimalval)"
+
+.PP
+Bind an instance of a Decimal to an indexed parameter using an \fBNHibernate\fP DecimalType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a Decimal\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 446 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetDecimal (stringname, decimalval)"
+
+.PP
+Bind an instance of a Decimal to a named parameter using an \fBNHibernate\fP DecimalType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Decimal\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 548 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetDouble (intposition, doubleval)"
+
+.PP
+Bind an instance of a Double to an indexed parameter using an \fBNHibernate\fP DoubleType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a Double\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 428 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetDouble (stringname, doubleval)"
+
+.PP
+Bind an instance of a Double to a named parameter using an \fBNHibernate\fP DoubleType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Double\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 536 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetEntity (intposition, objectval)"
+
+.PP
+Bind an instance of a mapped persistent class to an indexed parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP Position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a persistent class
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 470 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetEntity (stringname, objectval)"
+
+.PP
+Bind an instance of a mapped persistent class to a named parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a persistent class
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 626 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetEnum (intposition, Enumval)"
+
+.PP
+Bind an instance of a persistent enumeration class to an indexed parameter using an \fBNHibernate\fP PersistentEnumType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a persistent enumeration
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 476 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetEnum (stringname, Enumval)"
+
+.PP
+Bind an instance of a persistent enumeration class to a named parameter using an \fBNHibernate\fP PersistentEnumType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a persistent enumeration
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 632 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetFetchSize (intfetchSize)"
+
+.PP
+Set a fetch size for the underlying ADO query\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfetchSize\fP the fetch size 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 788 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetFirstResult (intfirstResult)"
+
+.PP
+Sets the first row to retrieve\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirstResult\fP The first row to retreive\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 794 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetFlushMode (\fBFlushMode\fPflushMode)"
+
+.PP
+Override the current session flush mode, just for this query\&. 
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 867 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetGuid (stringname, Guidval)"
+
+.PP
+Bind an instance of a Guid to a named parameter using an \fBNHibernate\fP GuidType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP An instance of a Guid\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 614 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetGuid (intposition, Guidval)"
+
+.PP
+Bind an instance of a Guid to a named parameter using an \fBNHibernate\fP GuidType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP An instance of a Guid\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 620 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetInt16 (intposition, shortval)"
+
+.PP
+Bind an instance of a Int16 to an indexed parameter using an \fBNHibernate\fP Int16Type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a Int16\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 404 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetInt16 (stringname, shortval)"
+
+.PP
+Bind an instance of a Int16 to a named parameter using an \fBNHibernate\fP Int16Type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Int16\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 512 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetInt32 (intposition, intval)"
+
+.PP
+Bind an instance of a Int32 to an indexed parameter using an \fBNHibernate\fP Int32Type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a Int32\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 410 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetInt32 (stringname, intval)"
+
+.PP
+Bind an instance of a Int32 to a named parameter using an \fBNHibernate\fP Int32Type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Int32\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 518 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetInt64 (intposition, longval)"
+
+.PP
+Bind an instance of a Int64 to an indexed parameter using an \fBNHibernate\fP Int64Type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a Int64\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 416 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetInt64 (stringname, longval)"
+
+.PP
+Bind an instance of a Int64 to a named parameter using an \fBNHibernate\fP Int64Type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Int64\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 524 of file AbstractQueryImpl\&.cs\&.
+.SS "abstract \fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetLockMode (stringalias, \fBLockMode\fPlockMode)\fC [pure virtual]\fP"
+
+.PP
+Set the lockmode for the objects idententified by the given alias that appears in the \fCFROM\fP clause\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP alias a query alias, or \fCthis\fP for a collection filter
+.br
+\fIlockMode\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SqlQueryImpl\fP, and \fBNHibernate\&.Impl\&.AbstractQueryImpl2\fP\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetMaxResults (intmaxResults)"
+
+.PP
+Set the maximum number of rows to retrieve\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxResults\fP The maximum number of rows to retreive\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 776 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetParameter (intposition, objectval, \fBIType\fPtype)"
+
+.PP
+Bind a value to an indexed parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP Position of the parameter in the query, numbered from \fC0\fP
+.br
+\fIval\fP The possibly null parameter value
+.br
+\fItype\fP The \fBNHibernate\fP type
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 271 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetParameter (stringname, objectval, \fBIType\fPtype)"
+
+.PP
+Bind a value to a named query parameter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP The possibly null parameter value
+.br
+\fItype\fP The \fBNHibernate\fP IType\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 294 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetParameter (stringname, objectval)"
+
+.PP
+Bind a value to a named query parameter, guessing the \fBNHibernate\fP IType from the class of the given object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP The non-null parameter value
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 333 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetParameter (intposition, objectval)"
+
+.PP
+Bind a value to an indexed parameter, guessing the \fBNHibernate\fP type from the class of the given object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query, numbered from \fC0\fP
+.br
+\fIval\fP The non-null parameter value
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 360 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP \fBNHibernate\&.Impl\&.AbstractQueryImpl\&.SetParameter\fP< T > (intposition, Tval)"
+
+.PP
+Bind a value to an indexed parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP Position of the parameter in the query, numbered from \fC0\fP
+.br
+\fIval\fP The possibly null parameter value
+.RE
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The parameter's \fBType\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 309 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP \fBNHibernate\&.Impl\&.AbstractQueryImpl\&.SetParameter\fP< T > (stringname, Tval)"
+
+.PP
+Bind a value to a named query parameter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP The possibly null parameter value
+.RE
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The parameter's \fBType\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 328 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetParameterList (stringname, IEnumerablevals, \fBIType\fPtype)"
+
+.PP
+Bind multiple values to a named query parameter\&. This is useful for binding a list of values to an expression such as \fCfoo\&.bar in (:value_list)\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIvals\fP A collection of values to list
+.br
+\fItype\fP The \fBNHibernate\fP type of the values
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 690 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetParameterList (stringname, IEnumerablevals)"
+
+.PP
+Bind multiple values to a named query parameter, guessing the \fBNHibernate\fP type from the class of the first object in the collection\&. This is useful for binding a list of values to an expression such as \fCfoo\&.bar in (:value_list)\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIvals\fP A collection of values to list
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 711 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetProperties (objectobj)"
+
+.PP
+Bind the property values of the given object to named parameters of the query, matching property names with parameter names and mapping property types to \fBNHibernate\fP types using heuristics\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP Any PONO
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 661 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetResultTransformer (\fBIResultTransformer\fPresultTransformer)"
+
+.PP
+Set a strategy for handling the query results\&. This can be used to change 'shape' of the query result\&. 
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 879 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetSingle (intposition, floatval)"
+
+.PP
+Bind an instance of a Single to an indexed parameter using an \fBNHibernate\fP SingleType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a Single\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 422 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetSingle (stringname, floatval)"
+
+.PP
+Bind an instance of a Single to a named parameter using an \fBNHibernate\fP SingleType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Single\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 530 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetString (intposition, stringval)"
+
+.PP
+Bind an instance of a String to an indexed parameter using an \fBNHibernate\fP StringType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a String\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 380 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetString (stringname, stringval)"
+
+.PP
+Bind an instance of a String to a named parameter using an \fBNHibernate\fP StringType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a String\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 488 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetTime (intposition, DateTimeval)"
+
+.PP
+Bind an instance of a DateTime to an indexed parameter using an \fBNHibernate\fP DateTimeType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a DateTime\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 458 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetTime (stringname, DateTimeval)"
+
+.PP
+Bind an instance of a DateTime to a named parameter using an \fBNHibernate\fP DateTimeType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a DateTime\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 602 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetTimeout (inttimeout)"
+
+.PP
+The timeout for the underlying ADO query 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItimeout\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 782 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetTimestamp (intposition, DateTimeval)"
+
+.PP
+Bind an instance of a DateTime to an indexed parameter using an \fBNHibernate\fP TimestampType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a DateTime\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 464 of file AbstractQueryImpl\&.cs\&.
+.SS "\fBIQuery\fP NHibernate\&.Impl\&.AbstractQueryImpl\&.SetTimestamp (stringname, DateTimeval)"
+
+.PP
+Bind an instance of a DateTime to a named parameter using an \fBNHibernate\fP TimestampType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a DateTime\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 608 of file AbstractQueryImpl\&.cs\&.
+.SS "object NHibernate\&.Impl\&.AbstractQueryImpl\&.UniqueResult ()"
+
+.PP
+Convenience method to return a single instance that matches the query, or null if the query returns no results\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the single result or 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP Thrown when there is more than one matching result\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 949 of file AbstractQueryImpl\&.cs\&.
+.SS "T \fBNHibernate\&.Impl\&.AbstractQueryImpl\&.UniqueResult\fP< T > ()"
+
+.PP
+Strongly-typed version of \fBUniqueResult()\fP\&. 
+.PP
+Implements \fBNHibernate\&.IQuery\fP\&.
+.PP
+Definition at line 936 of file AbstractQueryImpl\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

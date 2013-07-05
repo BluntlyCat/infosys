@@ -1,0 +1,130 @@
+.TH "HSA.InfoSys.Common.Entities.Entity" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HSA.InfoSys.Common.Entities.Entity \- 
+.PP
+This is the base class for all data base objects It holds the unique id for each entity\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBHSA\&.InfoSys\&.Common\&.Entities\&.Component\fP, \fBHSA\&.InfoSys\&.Common\&.Entities\&.OrgUnit\fP, \fBHSA\&.InfoSys\&.Common\&.Entities\&.OrgUnitConfig\fP, \fBHSA\&.InfoSys\&.Common\&.Entities\&.Result\fP, and \fBHSA\&.InfoSys\&.Common\&.Entities\&.Settings\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBEntity\fP \fBUnproxy\fP (string[] types=null)"
+.br
+.RI "\fILoads this instance from \fBNHibernate\fP\&. \fBNHibernate\fP supports lazy loading, so we need some functionality to load a reference to a foreign table too\&. \fP"
+.ti -1c
+.RI "virtual long \fBSizeOf\fP ()"
+.br
+.RI "\fISize of an entity is calculated by serializing the instance\&. The length of the stream is the size of this entity\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIReturns a System\&.String that represents this instance\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEntity\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBEntity\fP class and sets the type name depending on the initializing type\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual Guid \fBEntityId\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the entity GUID\&. \fP"
+.ti -1c
+.RI "virtual string \fBType\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the type name\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is the base class for all data base objects It holds the unique id for each entity\&. 
+
+
+.PP
+Definition at line 30 of file Entity\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "HSA\&.InfoSys\&.Common\&.Entities\&.Entity\&.Entity ()\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBEntity\fP class and sets the type name depending on the initializing type\&. 
+.PP
+Definition at line 46 of file Entity\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual long HSA\&.InfoSys\&.Common\&.Entities\&.Entity\&.SizeOf ()\fC [virtual]\fP"
+
+.PP
+Size of an entity is calculated by serializing the instance\&. The length of the stream is the size of this entity\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The size of this instance\&.
+.RE
+.PP
+
+.PP
+Definition at line 100 of file Entity\&.cs\&.
+.SS "override string HSA\&.InfoSys\&.Common\&.Entities\&.Entity\&.ToString ()"
+
+.PP
+Returns a System\&.String that represents this instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A System\&.String that represents this instance\&. 
+.RE
+.PP
+
+.PP
+Definition at line 132 of file Entity\&.cs\&.
+.SS "virtual \fBEntity\fP HSA\&.InfoSys\&.Common\&.Entities\&.Entity\&.Unproxy (string[]types = \fCnull\fP)\fC [virtual]\fP"
+
+.PP
+Loads this instance from \fBNHibernate\fP\&. \fBNHibernate\fP supports lazy loading, so we need some functionality to load a reference to a foreign table too\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItypes\fP The types you want load eager\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The entity behind the \fBNHibernate\fP proxy\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBHSA\&.InfoSys\&.Common\&.Entities\&.OrgUnit\fP\&.
+.PP
+Definition at line 89 of file Entity\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual Guid HSA\&.InfoSys\&.Common\&.Entities\&.Entity\&.EntityId\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the entity GUID\&. The entity GUID\&. 
+.PP
+Definition at line 58 of file Entity\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.Entity\&.Type\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the type name\&. The type name of this instance\&. 
+.PP
+Definition at line 68 of file Entity\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

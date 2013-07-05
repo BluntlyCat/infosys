@@ -1,0 +1,76 @@
+.TH "log4net.Util.TypeConverters.IConvertTo" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.TypeConverters.IConvertTo \- 
+.PP
+Interface supported by type converters  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by log4net\&.Util\&.TypeConverters\&.PatternStringConverter\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBCanConvertTo\fP (Type targetType)"
+.br
+.RI "\fIReturns whether this converter can convert the object to the specified type \fP"
+.ti -1c
+.RI "object \fBConvertTo\fP (object source, Type targetType)"
+.br
+.RI "\fIConverts the given value object to the specified type, using the arguments \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Interface supported by type converters 
+
+This interface supports conversion from a single type to arbitrary types\&. See \fBTypeConverterAttribute\fP\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 34 of file IConvertTo\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool log4net\&.Util\&.TypeConverters\&.IConvertTo\&.CanConvertTo (TypetargetType)"
+
+.PP
+Returns whether this converter can convert the object to the specified type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItargetType\fP A Type that represents the type you want to convert to
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the conversion is possible
+.RE
+.PP
+.PP
+Test if the type supported by this converter can be converted to the \fItargetType\fP \&. 
+.SS "object log4net\&.Util\&.TypeConverters\&.IConvertTo\&.ConvertTo (objectsource, TypetargetType)"
+
+.PP
+Converts the given value object to the specified type, using the arguments 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP the object to convert
+.br
+\fItargetType\fP The Type to convert the value parameter to
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the converted object
+.RE
+.PP
+.PP
+Converts the \fIsource\fP  (which must be of the type supported by this converter) to the \fItargetType\fP  specified\&.\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

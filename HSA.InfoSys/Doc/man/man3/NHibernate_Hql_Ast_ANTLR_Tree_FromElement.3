@@ -1,0 +1,371 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Tree.FromElement" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Tree.FromElement \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.HqlSqlWalkerNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IDisplayableNode\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IParameterContainer\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ComponentJoin\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ImpliedFromElement\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFromElement\fP (IToken token)"
+.br
+.ti -1c
+.RI "void \fBSetAllPropertyFetch\fP (bool fetch)"
+.br
+.ti -1c
+.RI "void \fBSetWithClauseFragment\fP (String withClauseJoinAlias, \fBSqlString\fP withClauseFragment)"
+.br
+.ti -1c
+.RI "\fBIParameterSpecification\fP[] \fBGetEmbeddedParameters\fP ()"
+.br
+.RI "\fIRetrieve all embedded parameter specifications\&. \fP"
+.ti -1c
+.RI "void \fBSetRole\fP (string role)"
+.br
+.ti -1c
+.RI "string \fBRenderIdentifierSelect\fP (int size, int k)"
+.br
+.RI "\fIReturns the identifier select SQL fragment\&. \fP"
+.ti -1c
+.RI "string \fBRenderPropertySelect\fP (int size, int k)"
+.br
+.RI "\fIReturns the property select SQL fragment\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBRenderText\fP (\fBEngine\&.ISessionFactoryImplementor\fP sessionFactory)"
+.br
+.ti -1c
+.RI "string \fBRenderCollectionSelectFragment\fP (int size, int k)"
+.br
+.ti -1c
+.RI "string \fBRenderValueCollectionSelectFragment\fP (int size, int k)"
+.br
+.ti -1c
+.RI "void \fBSetIndexCollectionSelectorParamSpec\fP (\fBIParameterSpecification\fP indexCollectionSelectorParamSpec)"
+.br
+.ti -1c
+.RI "virtual void \fBSetImpliedInFromClause\fP (bool flag)"
+.br
+.ti -1c
+.RI "string \fBRenderScalarIdentifierSelect\fP (int i)"
+.br
+.RI "\fIRender the identifier select, but in a 'scalar' context (i\&.e\&. generate the column alias)\&. \fP"
+.ti -1c
+.RI "string[] \fBToColumns\fP (string tableAlias, string path, bool inSelect)"
+.br
+.ti -1c
+.RI "string[] \fBToColumns\fP (string tableAlias, string path, bool inSelect, bool forceAlias)"
+.br
+.ti -1c
+.RI "\fBIPropertyMapping\fP \fBGetPropertyMapping\fP (string propertyName)"
+.br
+.ti -1c
+.RI "\fBIType\fP \fBGetPropertyType\fP (string propertyName, string propertyPath)"
+.br
+.ti -1c
+.RI "virtual string \fBGetIdentityColumn\fP ()"
+.br
+.ti -1c
+.RI "void \fBHandlePropertyBeingDereferenced\fP (\fBIType\fP propertySource, string propertyName)"
+.br
+.ti -1c
+.RI "void \fBSetOrigin\fP (\fBFromElement\fP origin, bool manyToMany)"
+.br
+.ti -1c
+.RI "void \fBSetIncludeSubclasses\fP (bool includeSubclasses)"
+.br
+.ti -1c
+.RI "virtual string \fBGetDisplayText\fP ()"
+.br
+.RI "\fIReturns additional display text for the AST node\&. \fP"
+.ti -1c
+.RI "void \fBInitializeCollection\fP (\fBFromClause\fP fromClause, string classAlias, string tableAlias)"
+.br
+.ti -1c
+.RI "void \fBInitializeEntity\fP (\fBFromClause\fP fromClause, string className, \fBIEntityPersister\fP persister, \fBEntityType\fP type, string classAlias, string tableAlias)"
+.br
+.ti -1c
+.RI "void \fBCheckInitialized\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddEmbeddedParameter\fP (\fBIParameterSpecification\fP specification)"
+.br
+.RI "\fIAdds a parameter specification for a parameter encountered within this node\&. We use the term 'embedded' here because of the fact that the parameter was simply encountered as part of the node's text; it does not exist as part of a subtree as it might in a true AST\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFromElement\fP (\fBFromClause\fP fromClause, \fBFromElement\fP origin, string alias)"
+.br
+.RI "\fIConstructor form used to initialize \fBComponentJoin\fP\&. \fP"
+.ti -1c
+.RI "void \fBInitializeComponentJoin\fP (\fBFromElementType\fP elementType)"
+.br
+.ti -1c
+.RI "void \fBAppendDisplayText\fP (StringBuilder buf)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBEngine\&.JoinSequence\fP \fBJoinSequence\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string[] \fBColumns\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsEntity\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFromOrJoinFragment\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsAllPropertyFetch\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsImpliedInFromClause\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFetch\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBFilter\fP\fC [set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFilter\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBHasEmbeddedParameters\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIParameterSpecification\fP \fBIndexCollectionSelectorParamSpec\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIsImplied\fP\fC [get]\fP"
+.br
+.RI "\fIReturns true if this \fBFromElement\fP was implied by a path, or false if this FROM element is explicitly declared in the FROM clause\&. \fP"
+.ti -1c
+.RI "bool \fBIsDereferencedBySuperclassOrSubclassProperty\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsDereferencedBySubclassProperty\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIEntityPersister\fP \fBEntityPersister\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBIType\fP \fBDataType\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBTableAlias\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBClassAlias\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBClassName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBFromClause\fP \fBFromClause\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIQueryable\fP \fBQueryable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIQueryableCollection\fP \fBQueryableCollection\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBCollectionTableAlias\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBCollectionJoin\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBCollectionSuffix\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP \fBSelectType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsCollectionOfValuesOrComponents\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsCollectionJoin\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBFromElement\fP \fBOrigin\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBFromElement\fP \fBRealOrigin\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBWithClauseFragment\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBWithClauseJoinAlias\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBIncludeSubclasses\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBInProjectionList\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBFetch\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBUseFromFragment\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBUseWhereFragment\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 19 of file FromElement\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromElement\&.FromElement (\fBFromClause\fPfromClause, \fBFromElement\fPorigin, stringalias)\fC [protected]\fP"
+
+.PP
+Constructor form used to initialize \fBComponentJoin\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfromClause\fP The FROM clause to which this element belongs\&.
+.br
+\fIorigin\fP The origin (LHS) of this element\&.
+.br
+\fIalias\fP The alias applied to this element\&.
+.RE
+.PP
+
+.PP
+Definition at line 57 of file FromElement\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromElement\&.AddEmbeddedParameter (\fBIParameterSpecification\fPspecification)"
+
+.PP
+Adds a parameter specification for a parameter encountered within this node\&. We use the term 'embedded' here because of the fact that the parameter was simply encountered as part of the node's text; it does not exist as part of a subtree as it might in a true AST\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspecification\fP The generated specification\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IParameterContainer\fP\&.
+.PP
+Definition at line 697 of file FromElement\&.cs\&.
+.SS "virtual string NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromElement\&.GetDisplayText ()\fC [virtual]\fP"
+
+.PP
+Returns additional display text for the AST node\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The additional display text\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IDisplayableNode\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ImpliedFromElement\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.ComponentJoin\fP\&.
+.PP
+Definition at line 602 of file FromElement\&.cs\&.
+.SS "\fBIParameterSpecification\fP [] NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromElement\&.GetEmbeddedParameters ()"
+
+.PP
+Retrieve all embedded parameter specifications\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+All embedded parameter specifications; may return null\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IParameterContainer\fP\&.
+.PP
+Definition at line 132 of file FromElement\&.cs\&.
+.SS "string NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromElement\&.RenderIdentifierSelect (intsize, intk)"
+
+.PP
+Returns the identifier select SQL fragment\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsize\fP The total number of returned types\&.
+.br
+\fIk\fP The sequence of the current returned type\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the identifier select SQL fragment\&.
+.RE
+.PP
+
+.PP
+Definition at line 317 of file FromElement\&.cs\&.
+.SS "string NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromElement\&.RenderPropertySelect (intsize, intk)"
+
+.PP
+Returns the property select SQL fragment\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsize\fP The total number of returned types\&.
+.br
+\fIk\fP The sequence of the current returned type\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the property select SQL fragment\&.
+.RE
+.PP
+
+.PP
+Definition at line 328 of file FromElement\&.cs\&.
+.SS "string NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromElement\&.RenderScalarIdentifierSelect (inti)"
+
+.PP
+Render the identifier select, but in a 'scalar' context (i\&.e\&. generate the column alias)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP the sequence of the returned type
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the identifier select with the column alias\&.
+.RE
+.PP
+
+.PP
+Definition at line 430 of file FromElement\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual bool NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromElement\&.IsImplied\fC [get]\fP"
+
+.PP
+Returns true if this \fBFromElement\fP was implied by a path, or false if this FROM element is explicitly declared in the FROM clause\&. 
+.PP
+Definition at line 168 of file FromElement\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,94 @@
+.TH "NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory \- 
+.PP
+Generates translators which uses the Antlr-based parser to perform the translation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Hql\&.IQueryTranslatorFactory\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIQueryTranslator\fP[] \fBCreateQueryTranslators\fP (string queryString, string collectionRole, bool shallow, IDictionary< string, \fBIFilter\fP > filters, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIConstruct a \fBNHibernate\&.Hql\&.IQueryTranslator\fP instance capable of translating an HQL query string\&. \fP"
+.ti -1c
+.RI "\fBIQueryTranslator\fP[] \fBCreateQueryTranslators\fP (\fBIQueryExpression\fP queryExpression, string collectionRole, bool shallow, IDictionary< string, \fBIFilter\fP > filters, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIConstruct a \fBNHibernate\&.Hql\&.IQueryTranslator\fP instance capable of translating a \fBLinq\fP expression\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Generates translators which uses the Antlr-based parser to perform the translation\&. 
+
+Author: Gavin King Ported by: Steve Strong 
+.PP
+Definition at line 15 of file ASTQueryTranslatorFactory\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIQueryTranslator\fP [] NHibernate\&.Hql\&.Ast\&.ANTLR\&.ASTQueryTranslatorFactory\&.CreateQueryTranslators (stringqueryString, stringcollectionRole, boolshallow, IDictionary< string, \fBIFilter\fP >filters, \fBISessionFactoryImplementor\fPfactory)"
+
+.PP
+Construct a \fBNHibernate\&.Hql\&.IQueryTranslator\fP instance capable of translating an HQL query string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryString\fP The query string to be translated
+.br
+\fIcollectionRole\fP 
+.br
+\fIshallow\fP 
+.br
+\fIfilters\fP Currently enabled filters
+.br
+\fIfactory\fP The session factory
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An appropriate translator\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.IQueryTranslatorFactory\fP\&.
+.PP
+Definition at line 17 of file ASTQueryTranslatorFactory\&.cs\&.
+.SS "\fBIQueryTranslator\fP [] NHibernate\&.Hql\&.Ast\&.ANTLR\&.ASTQueryTranslatorFactory\&.CreateQueryTranslators (\fBIQueryExpression\fPqueryExpression, stringcollectionRole, boolshallow, IDictionary< string, \fBIFilter\fP >filters, \fBISessionFactoryImplementor\fPfactory)"
+
+.PP
+Construct a \fBNHibernate\&.Hql\&.IQueryTranslator\fP instance capable of translating a \fBLinq\fP expression\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryExpression\fP The query expression to be translated
+.br
+\fIcollectionRole\fP 
+.br
+\fIshallow\fP 
+.br
+\fIfilters\fP Currently enabled filters
+.br
+\fIfactory\fP The session factory
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An appropriate translator\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.IQueryTranslatorFactory\fP\&.
+.PP
+Definition at line 22 of file ASTQueryTranslatorFactory\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

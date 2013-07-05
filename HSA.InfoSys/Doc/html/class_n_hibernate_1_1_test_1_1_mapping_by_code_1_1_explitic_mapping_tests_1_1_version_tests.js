@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_version_tests =
+[
+    [ "WhenPropertyUsedAsVersionThenRegister", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_version_tests.html#a394f426ede3aef53af15037884f19b64", null ],
+    [ "WhenPropertyVersionFromBaseEntityThenFindItAsVersion", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_version_tests.html#af76f83d1e84c84b6dfbe285ffb2df0de", null ]
+];

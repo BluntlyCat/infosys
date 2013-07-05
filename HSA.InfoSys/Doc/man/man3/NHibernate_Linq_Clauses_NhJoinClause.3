@@ -1,0 +1,55 @@
+.TH "NHibernate.Linq.Clauses.NhJoinClause" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Linq.Clauses.NhJoinClause \- 
+.PP
+All joins are created as outer joins\&. An optimization in WhereJoinDetector finds joins that may be inner joined and calls MakeInner on them\&. QueryModelVisitor's QueryModelVisitor\&.VisitAdditionalFromClause will then emit the correct HQL join\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits AdditionalFromClause\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNhJoinClause\fP (string itemName, System\&.Type itemType, Expression fromExpression)"
+.br
+.ti -1c
+.RI "\fBNhJoinClause\fP (string itemName, System\&.Type itemType, Expression fromExpression, IEnumerable< \fBNhWithClause\fP > restrictions)"
+.br
+.ti -1c
+.RI "override AdditionalFromClause \fBClone\fP (CloneContext cloneContext)"
+.br
+.ti -1c
+.RI "void \fBMakeInner\fP ()"
+.br
+.ti -1c
+.RI "override void \fBTransformExpressions\fP (Func< Expression, Expression > transformation)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "ObservableCollection
+.br
+< \fBNhWithClause\fP > \fBRestrictions\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsInner\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+All joins are created as outer joins\&. An optimization in WhereJoinDetector finds joins that may be inner joined and calls MakeInner on them\&. QueryModelVisitor's QueryModelVisitor\&.VisitAdditionalFromClause will then emit the correct HQL join\&. 
+
+
+.PP
+Definition at line 17 of file NhJoinClause\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

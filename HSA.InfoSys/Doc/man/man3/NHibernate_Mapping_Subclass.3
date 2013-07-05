@@ -1,0 +1,432 @@
+.TH "NHibernate.Mapping.Subclass" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.Subclass \- 
+.PP
+Declaration of a System\&.Type mapped with the \fC<subclass>\fP or \fC<joined-subclass>\fP element\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.PersistentClass\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Mapping\&.JoinedSubclass\fP, \fBNHibernate\&.Mapping\&.SingleTableSubclass\fP, and \fBNHibernate\&.Mapping\&.UnionSubclass\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSubclass\fP (\fBPersistentClass\fP superclass)"
+.br
+.RI "\fIInitializes a new instance of the \fBSubclass\fP class\&. \fP"
+.ti -1c
+.RI "override void \fBAddProperty\fP (\fBProperty\fP p)"
+.br
+.RI "\fIAdd the \fBProperty\fP to this \fBPersistentClass\fP\&. \fP"
+.ti -1c
+.RI "override void \fBAddJoin\fP (\fBJoin\fP join)"
+.br
+.ti -1c
+.RI "override void \fBAddSubclassProperty\fP (\fBProperty\fP p)"
+.br
+.RI "\fIAdds a \fBProperty\fP that is implemented by a subclass\&. \fP"
+.ti -1c
+.RI "override void \fBAddSubclassJoin\fP (\fBJoin\fP join)"
+.br
+.ti -1c
+.RI "override void \fBAddSubclassTable\fP (\fBTable\fP table)"
+.br
+.RI "\fIAdds a \fBTable\fP that a subclass is stored in\&. \fP"
+.ti -1c
+.RI "void \fBCreateForeignKey\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBIsClassOrSuperclassJoin\fP (\fBJoin\fP join)"
+.br
+.ti -1c
+.RI "override bool \fBIsClassOrSuperclassTable\fP (\fBTable\fP closureTable)"
+.br
+.ti -1c
+.RI "override object \fBAccept\fP (\fBIPersistentClassVisitor\fP mv)"
+.br
+.ti -1c
+.RI "override string \fBGetTuplizerImplClassName\fP (\fBEntityMode\fP mode)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override int \fBSubclassId\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsInherited\fP\fC [get]\fP"
+.br
+.RI "\fIGets a boolean indicating if this mapped class is inherited from another\&. \fP"
+.ti -1c
+.RI "override IEnumerable< \fBProperty\fP > \fBPropertyClosureIterator\fP\fC [get]\fP"
+.br
+.RI "\fIGets an ICollection of \fBProperty\fP objects that this mapped class contains\&. \fP"
+.ti -1c
+.RI "override IEnumerable< \fBTable\fP > \fBTableClosureIterator\fP\fC [get]\fP"
+.br
+.RI "\fIGets an ICollection of \fBTable\fP objects that this mapped class reads from and writes to\&. \fP"
+.ti -1c
+.RI "override IEnumerable< \fBIKeyValue\fP > \fBKeyClosureIterator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsVersioned\fP\fC [get]\fP"
+.br
+.RI "\fIGets a boolean indicating if the mapped class has a version property\&. \fP"
+.ti -1c
+.RI "override System\&.Type \fBEntityPersisterClass\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override \fBTable\fP \fBRootTable\fP\fC [get]\fP"
+.br
+.RI "\fIGets the \fBTable\fP of the class that is mapped in the \fCclass\fP element\&. \fP"
+.ti -1c
+.RI "override bool \fBIsJoinedSubclass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int \fBJoinClosureSpan\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int \fBPropertyClosureSpan\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override IEnumerable< \fBJoin\fP > \fBJoinClosureIterator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override ISet< string > \fBSynchronizedTables\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override IDictionary< string, 
+.br
+string > \fBFilterMap\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override IDictionary
+.br
+< \fBEntityMode\fP, string > \fBTuplizerMap\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBCacheConcurrencyStrategy\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the CacheConcurrencyStrategy to use to read/write instances of the persistent class to the \fBCache\fP\&. \fP"
+.ti -1c
+.RI "override \fBRootClass\fP \fBRootClazz\fP\fC [get]\fP"
+.br
+.RI "\fIGets the \fBRootClazz\fP of the class that is mapped in the \fCclass\fP element\&. \fP"
+.ti -1c
+.RI "override \fBPersistentClass\fP \fBSuperclass\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBPersistentClass\fP that this mapped class is extending\&. \fP"
+.ti -1c
+.RI "override \fBProperty\fP \fBIdentifierProperty\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBProperty\fP that is used as the \fCid\fP\&. \fP"
+.ti -1c
+.RI "override \fBIKeyValue\fP \fBIdentifier\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBSimpleValue\fP that contains information about the identifier\&. \fP"
+.ti -1c
+.RI "override bool \fBHasIdentifierProperty\fP\fC [get]\fP"
+.br
+.RI "\fIGets a boolean indicating if the mapped class has a \fBProperty\fP for the \fCid\fP\&. \fP"
+.ti -1c
+.RI "override \fBIValue\fP \fBDiscriminator\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBSimpleValue\fP that contains information about the discriminator\&. \fP"
+.ti -1c
+.RI "override bool \fBIsMutable\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or set a boolean indicating if the mapped class has properties that can be changed\&. \fP"
+.ti -1c
+.RI "override bool \fBIsPolymorphic\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets if the mapped class is a subclass\&. \fP"
+.ti -1c
+.RI "override \fBProperty\fP \fBVersion\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBProperty\fP that is used as the version\&. \fP"
+.ti -1c
+.RI "override bool \fBHasEmbeddedIdentifier\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean indicating if the identifier is embedded in the class\&. \fP"
+.ti -1c
+.RI "override \fBIKeyValue\fP \fBKey\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBSimpleValue\fP that contains information about the Key\&. \fP"
+.ti -1c
+.RI "override bool \fBIsExplicitPolymorphism\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean indicating if explicit polymorphism should be used in Queries\&. \fP"
+.ti -1c
+.RI "override string \fBWhere\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the sql string that should be a part of the where clause\&. \fP"
+.ti -1c
+.RI "override bool \fBIsLazyPropertiesCacheable\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBTable\fP \fBTable\fP\fC [get]\fP"
+.br
+.RI "\fIGets or Sets the \fBTable\fP that this class is stored in\&. \fP"
+.ti -1c
+.RI "override bool \fBIsForceDiscriminator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsDiscriminatorInsertable\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override bool \fBHasSubselectLoadableCollections\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override \fBComponent\fP \fBIdentifierMapper\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override Versioning\&.OptimisticLock \fBOptimisticLockMode\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Declaration of a System\&.Type mapped with the \fC<subclass>\fP or \fC<joined-subclass>\fP element\&. 
+
+
+.PP
+Definition at line 14 of file Subclass\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Mapping\&.Subclass\&.Subclass (\fBPersistentClass\fPsuperclass)"
+
+.PP
+Initializes a new instance of the \fBSubclass\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsuperclass\fP The \fBPersistentClass\fP that is the superclass\&.
+.RE
+.PP
+
+.PP
+Definition at line 24 of file Subclass\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Mapping\&.Subclass\&.AddProperty (\fBProperty\fPp)\fC [virtual]\fP"
+
+.PP
+Add the \fBProperty\fP to this \fBPersistentClass\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIp\fP The \fBProperty\fP to add\&.
+.RE
+.PP
+.PP
+This also adds the \fBProperty\fP to the Superclass' collection of SubclassType \fBProperties\fP\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Mapping\&.PersistentClass\fP\&.
+.PP
+Definition at line 302 of file Subclass\&.cs\&.
+.SS "override void NHibernate\&.Mapping\&.Subclass\&.AddSubclassProperty (\fBProperty\fPp)\fC [virtual]\fP"
+
+.PP
+Adds a \fBProperty\fP that is implemented by a subclass\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIp\fP The \fBProperty\fP implemented by a subclass\&.
+.RE
+.PP
+.PP
+This also adds the \fBProperty\fP to the Superclass' collection of SubclassType \fBProperties\fP\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Mapping\&.PersistentClass\fP\&.
+.PP
+Definition at line 322 of file Subclass\&.cs\&.
+.SS "override void NHibernate\&.Mapping\&.Subclass\&.AddSubclassTable (\fBTable\fPtable)\fC [virtual]\fP"
+
+.PP
+Adds a \fBTable\fP that a subclass is stored in\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItable\fP The \fBTable\fP the subclass is stored in\&.
+.RE
+.PP
+.PP
+This also adds the \fBTable\fP to the Superclass' collection of SubclassType Tables\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Mapping\&.PersistentClass\fP\&.
+.PP
+Definition at line 342 of file Subclass\&.cs\&.
+.SS "void NHibernate\&.Mapping\&.Subclass\&.CreateForeignKey ()"
+
+.PP
+
+.PP
+Definition at line 415 of file Subclass\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.Mapping\&.Subclass\&.CacheConcurrencyStrategy\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the CacheConcurrencyStrategy to use to read/write instances of the persistent class to the \fBCache\fP\&. The CacheConcurrencyStrategy used with the \fBCache\fP\&.
+.PP
+Definition at line 200 of file Subclass\&.cs\&.
+.SS "override \fBIValue\fP NHibernate\&.Mapping\&.Subclass\&.Discriminator\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBSimpleValue\fP that contains information about the discriminator\&. The \fBSimpleValue\fP from the Superclass that contains information about the discriminator\&.
+.PP
+Definition at line 264 of file Subclass\&.cs\&.
+.SS "override System\&.Type NHibernate\&.Mapping\&.Subclass\&.EntityPersisterClass\fC [get]\fP, \fC [set]\fP"
+
+.PP
+
+.PP
+Definition at line 97 of file Subclass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.Subclass\&.HasEmbeddedIdentifier\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean indicating if the identifier is embedded in the class\&. if the Superclass has an embedded identifier\&.
+.PP
+An embedded identifier is true when using a \fCcomposite-id\fP specifying properties of the class as the \fCkey-property\fP instead of using a class as the \fCcomposite-id\fP\&. 
+.PP
+Definition at line 369 of file Subclass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.Subclass\&.HasIdentifierProperty\fC [get]\fP"
+
+.PP
+Gets a boolean indicating if the mapped class has a \fBProperty\fP for the \fCid\fP\&. if in the Superclass there is a \fBProperty\fP for the \fCid\fP\&.
+.PP
+Definition at line 255 of file Subclass\&.cs\&.
+.SS "override \fBIKeyValue\fP NHibernate\&.Mapping\&.Subclass\&.Identifier\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBSimpleValue\fP that contains information about the identifier\&. The \fBSimpleValue\fP from the Superclass that contains information about the identifier\&.
+.PP
+Definition at line 245 of file Subclass\&.cs\&.
+.SS "override \fBProperty\fP NHibernate\&.Mapping\&.Subclass\&.IdentifierProperty\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBProperty\fP that is used as the \fCid\fP\&. The \fBProperty\fP from the Superclass that is used as the \fCid\fP\&. 
+.PP
+Definition at line 235 of file Subclass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.Subclass\&.IsDiscriminatorInsertable\fC [get]\fP, \fC [set]\fP"
+
+.PP
+
+.PP
+Definition at line 462 of file Subclass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.Subclass\&.IsExplicitPolymorphism\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean indicating if explicit polymorphism should be used in Queries\&. The value of the Superclasses \fCIsExplicitPolymorphism\fP property\&. 
+.PP
+Definition at line 391 of file Subclass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.Subclass\&.IsInherited\fC [get]\fP"
+
+.PP
+Gets a boolean indicating if this mapped class is inherited from another\&. because this is a SubclassType\&. 
+.PP
+Definition at line 42 of file Subclass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.Subclass\&.IsJoinedSubclass\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 128 of file Subclass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.Subclass\&.IsMutable\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or set a boolean indicating if the mapped class has properties that can be changed\&. if the Superclass is mutable\&.
+.PP
+Definition at line 274 of file Subclass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.Subclass\&.IsPolymorphic\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets if the mapped class is a subclass\&. since this mapped class is a subclass\&. 
+.PP
+The setter should not be used to set the value to anything but \&. 
+.PP
+Definition at line 289 of file Subclass\&.cs\&.
+.SS "override bool NHibernate\&.Mapping\&.Subclass\&.IsVersioned\fC [get]\fP"
+
+.PP
+Gets a boolean indicating if the mapped class has a version property\&. if for the Superclass there is a \fBProperty\fP for a \fCversion\fP\&.
+.PP
+Definition at line 89 of file Subclass\&.cs\&.
+.SS "override \fBIKeyValue\fP NHibernate\&.Mapping\&.Subclass\&.Key\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBSimpleValue\fP that contains information about the Key\&. The \fBSimpleValue\fP that contains information about the Key\&.
+.PP
+Definition at line 379 of file Subclass\&.cs\&.
+.SS "override IEnumerable<\fBProperty\fP> NHibernate\&.Mapping\&.Subclass\&.PropertyClosureIterator\fC [get]\fP"
+
+.PP
+Gets an ICollection of \fBProperty\fP objects that this mapped class contains\&. An ICollection of \fBProperty\fP objects that this mapped class contains\&. 
+.PP
+This is all of the properties of this mapped class and each mapped class that it is inheriting from\&. 
+.PP
+Definition at line 58 of file Subclass\&.cs\&.
+.SS "override \fBRootClass\fP NHibernate\&.Mapping\&.Subclass\&.RootClazz\fC [get]\fP"
+
+.PP
+Gets the \fBRootClazz\fP of the class that is mapped in the \fCclass\fP element\&. The \fBRootClazz\fP of the Superclass that is mapped in the \fCclass\fP element\&. 
+.PP
+Definition at line 212 of file Subclass\&.cs\&.
+.SS "override \fBTable\fP NHibernate\&.Mapping\&.Subclass\&.RootTable\fC [get]\fP"
+
+.PP
+Gets the \fBTable\fP of the class that is mapped in the \fCclass\fP element\&. The \fBTable\fP of the Superclass that is mapped in the \fCclass\fP element\&. 
+.PP
+Definition at line 120 of file Subclass\&.cs\&.
+.SS "override \fBPersistentClass\fP NHibernate\&.Mapping\&.Subclass\&.Superclass\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBPersistentClass\fP that this mapped class is extending\&. The \fBPersistentClass\fP that this mapped class is extending\&. 
+.PP
+Definition at line 223 of file Subclass\&.cs\&.
+.SS "override \fBTable\fP NHibernate\&.Mapping\&.Subclass\&.Table\fC [get]\fP"
+
+.PP
+Gets or Sets the \fBTable\fP that this class is stored in\&. The \fBTable\fP this class is stored in\&.
+.PP
+This also adds the \fBTable\fP to the Superclass' collection of SubclassType Tables\&. 
+.PP
+Definition at line 449 of file Subclass\&.cs\&.
+.SS "override IEnumerable<\fBTable\fP> NHibernate\&.Mapping\&.Subclass\&.TableClosureIterator\fC [get]\fP"
+
+.PP
+Gets an ICollection of \fBTable\fP objects that this mapped class reads from and writes to\&. An ICollection of \fBTable\fP objects that this mapped class reads from and writes to\&. 
+.PP
+This is all of the tables of this mapped class and each mapped class that it is inheriting from\&. 
+.PP
+Definition at line 75 of file Subclass\&.cs\&.
+.SS "override \fBProperty\fP NHibernate\&.Mapping\&.Subclass\&.Version\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBProperty\fP that is used as the version\&. The \fBProperty\fP from the Superclass that is used as the version\&.
+.PP
+Definition at line 353 of file Subclass\&.cs\&.
+.SS "override string NHibernate\&.Mapping\&.Subclass\&.Where\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the sql string that should be a part of the where clause\&. The sql string that should be a part of the where clause\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInvalidOperationException\fP Thrown when the setter is called\&. The where clause can not be set on the SubclassType, only the \fBRootClass\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 407 of file Subclass\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,120 @@
+.TH "NHibernate.Context.ThreadLocalSessionContext" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Context.ThreadLocalSessionContext \- 
+.PP
+A \fBICurrentSessionContext\fP impl which scopes the notion of current session by the current thread of execution\&. Threads do not give us a nice hook to perform any type of cleanup making it questionable for this impl to actually generate Session instances\&. In the interest of usability, it was decided to have this default impl actually generate a session upon first request and then clean it up after the \fBITransaction\fP associated with that session is committed/rolled-back\&. In order for ensuring that happens, the sessions generated here are unusable until after \fBSession#beginTransaction()\fP has been called\&. If \fCClose()\fP is called on a session managed by this class, it will be automatically unbound\&. 
+.PP
+Additionally, the static Bind and \fBUnbind\fP methods are provided to allow application code to explicitly control opening and closing of these sessions\&. This, with some from of interception, is the preferred approach\&. It also allows easy framework integration and one possible approach for implementing long-sessions\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Context\&.ICurrentSessionContext\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Test\&.ConnectionTest\&.TestableThreadLocalContext\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBThreadLocalSessionContext\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "\fBISession\fP \fBCurrentSession\fP ()"
+.br
+.RI "\fIRetrieve the current session according to the scoping defined by this implementation\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBBind\fP (\fBISession\fP session)"
+.br
+.ti -1c
+.RI "static \fBISession\fP \fBUnbind\fP (\fBISessionFactory\fP factory)"
+.br
+.RI "\fIUnassociate a previously bound session from the current thread of execution\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBISession\fP \fBBuildOrObtainSession\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBIsAutoCloseEnabled\fP ()"
+.br
+.ti -1c
+.RI "virtual bool \fBIsAutoFlushEnabled\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly \fBISessionFactoryImplementor\fP \fBfactory\fP"
+.br
+.in -1c
+.SS "Static Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "static IDictionary
+.br
+< \fBISessionFactory\fP, \fBISession\fP > \fBcontext\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A \fBICurrentSessionContext\fP impl which scopes the notion of current session by the current thread of execution\&. Threads do not give us a nice hook to perform any type of cleanup making it questionable for this impl to actually generate Session instances\&. In the interest of usability, it was decided to have this default impl actually generate a session upon first request and then clean it up after the \fBITransaction\fP associated with that session is committed/rolled-back\&. In order for ensuring that happens, the sessions generated here are unusable until after \fBSession#beginTransaction()\fP has been called\&. If \fCClose()\fP is called on a session managed by this class, it will be automatically unbound\&. 
+.PP
+Additionally, the static Bind and \fBUnbind\fP methods are provided to allow application code to explicitly control opening and closing of these sessions\&. This, with some from of interception, is the preferred approach\&. It also allows easy framework integration and one possible approach for implementing long-sessions\&. 
+
+
+.PP
+Definition at line 31 of file ThreadLocalSessionContext\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBISession\fP NHibernate\&.Context\&.ThreadLocalSessionContext\&.CurrentSession ()"
+
+.PP
+Retrieve the current session according to the scoping defined by this implementation\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The current session\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP Typically indicates an issue locating or creating the current session\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Context\&.ICurrentSessionContext\fP\&.
+.PP
+Definition at line 48 of file ThreadLocalSessionContext\&.cs\&.
+.SS "static \fBISession\fP NHibernate\&.Context\&.ThreadLocalSessionContext\&.Unbind (\fBISessionFactory\fPfactory)\fC [static]\fP"
+
+.PP
+Unassociate a previously bound session from the current thread of execution\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 110 of file ThreadLocalSessionContext\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

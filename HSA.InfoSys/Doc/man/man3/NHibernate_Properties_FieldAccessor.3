@@ -1,0 +1,152 @@
+.TH "NHibernate.Properties.FieldAccessor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Properties.FieldAccessor \- 
+.PP
+Access the mapped property by using a Field to \fCget\fP and \fCset\fP the value\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Properties\&.IPropertyAccessor\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBFieldGetter\fP"
+.br
+.RI "\fIAn \fBIGetter\fP that uses a Field instead of the Property \fCget\fP\&. \fP"
+.ti -1c
+.RI "class \fBFieldSetter\fP"
+.br
+.RI "\fIAn \fBIGetter\fP that uses a Field instead of the Property \fCset\fP\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFieldAccessor\fP ()"
+.br
+.RI "\fIInitializes a new instance of \fBFieldAccessor\fP\&. \fP"
+.ti -1c
+.RI "\fBFieldAccessor\fP (\fBIFieldNamingStrategy\fP namingStrategy)"
+.br
+.RI "\fIInitializes a new instance of \fBFieldAccessor\fP\&. \fP"
+.ti -1c
+.RI "\fBIGetter\fP \fBGetGetter\fP (System\&.Type theClass, string propertyName)"
+.br
+.RI "\fICreate a \fBFieldGetter\fP to \fCget\fP the value of the mapped Property through a \fCField\fP\&. \fP"
+.ti -1c
+.RI "\fBISetter\fP \fBGetSetter\fP (System\&.Type theClass, string propertyName)"
+.br
+.RI "\fICreate a \fBFieldSetter\fP to \fCset\fP the value of the mapped Property through a \fCField\fP\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIFieldNamingStrategy\fP \fBNamingStrategy\fP\fC [get]\fP"
+.br
+.RI "\fIGets the \fBIFieldNamingStrategy\fP used to convert the name of the mapped Property in the hbm\&.xml file to the name of the field in the class\&. \fP"
+.ti -1c
+.RI "bool \fBCanAccessThroughReflectionOptimizer\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Access the mapped property by using a Field to \fCget\fP and \fCset\fP the value\&. 
+
+The \fBFieldAccessor\fP is useful when you expose \fCgetter\fP and \fCsetters\fP for a Property, but they have extra code in them that shouldn't be executed when \fBNHibernate\fP is setting or getting the values for loads or saves\&. 
+.PP
+Definition at line 19 of file FieldAccessor\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Properties\&.FieldAccessor\&.FieldAccessor ()"
+
+.PP
+Initializes a new instance of \fBFieldAccessor\fP\&. 
+.PP
+Definition at line 26 of file FieldAccessor\&.cs\&.
+.SS "NHibernate\&.Properties\&.FieldAccessor\&.FieldAccessor (\fBIFieldNamingStrategy\fPnamingStrategy)"
+
+.PP
+Initializes a new instance of \fBFieldAccessor\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInamingStrategy\fP The \fBIFieldNamingStrategy\fP to use\&.
+.RE
+.PP
+
+.PP
+Definition at line 34 of file FieldAccessor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIGetter\fP NHibernate\&.Properties\&.FieldAccessor\&.GetGetter (System\&.TypetheClass, stringpropertyName)"
+
+.PP
+Create a \fBFieldGetter\fP to \fCget\fP the value of the mapped Property through a \fCField\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItheClass\fP The System\&.Type to find the Property in\&.
+.br
+\fIpropertyName\fP The name of the mapped Property to get\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBFieldGetter\fP to use to get the value of the Property from an instance of the System\&.Type\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBPropertyNotFoundException\fP\fP Thrown when a Field specified by the \fCpropertyName\fP could not be found in the System\&.Type\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.IPropertyAccessor\fP\&.
+.PP
+Definition at line 64 of file FieldAccessor\&.cs\&.
+.SS "\fBISetter\fP NHibernate\&.Properties\&.FieldAccessor\&.GetSetter (System\&.TypetheClass, stringpropertyName)"
+
+.PP
+Create a \fBFieldSetter\fP to \fCset\fP the value of the mapped Property through a \fCField\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItheClass\fP The System\&.Type to find the mapped Property in\&.
+.br
+\fIpropertyName\fP The name of the mapped Property to set\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBFieldSetter\fP to use to set the value of the Property on an instance of the System\&.Type\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBPropertyNotFoundException\fP\fP Thrown when a Field for the Property specified by the \fCpropertyName\fP using the \fBIFieldNamingStrategy\fP could not be found in the System\&.Type\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.IPropertyAccessor\fP\&.
+.PP
+Definition at line 89 of file FieldAccessor\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBIFieldNamingStrategy\fP NHibernate\&.Properties\&.FieldAccessor\&.NamingStrategy\fC [get]\fP"
+
+.PP
+Gets the \fBIFieldNamingStrategy\fP used to convert the name of the mapped Property in the hbm\&.xml file to the name of the field in the class\&. The \fBIFieldNamingStrategy\fP or \&.
+.PP
+Definition at line 45 of file FieldAccessor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

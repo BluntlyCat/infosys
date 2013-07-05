@@ -1,0 +1,183 @@
+.TH "log4net.ObjectRenderer.RendererMap" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.ObjectRenderer.RendererMap \- 
+.PP
+Map class objects to an \fBIObjectRenderer\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRendererMap\fP ()"
+.br
+.RI "\fIDefault Constructor \fP"
+.ti -1c
+.RI "string \fBFindAndRender\fP (object obj)"
+.br
+.RI "\fIRender \fIobj\fP  using the appropriate renderer\&. \fP"
+.ti -1c
+.RI "void \fBFindAndRender\fP (object obj, TextWriter writer)"
+.br
+.RI "\fIRender \fIobj\fP  using the appropriate renderer\&. \fP"
+.ti -1c
+.RI "\fBIObjectRenderer\fP \fBGet\fP (Object obj)"
+.br
+.RI "\fIGets the renderer for the specified object type \fP"
+.ti -1c
+.RI "\fBIObjectRenderer\fP \fBGet\fP (Type type)"
+.br
+.RI "\fIGets the renderer for the specified type \fP"
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.RI "\fIClear the map of renderers \fP"
+.ti -1c
+.RI "void \fBPut\fP (Type typeToRender, \fBIObjectRenderer\fP renderer)"
+.br
+.RI "\fIRegister an \fBIObjectRenderer\fP for \fItypeToRender\fP \&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIObjectRenderer\fP \fBDefaultRenderer\fP\fC [get]\fP"
+.br
+.RI "\fIGet the default renderer instance \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Map class objects to an \fBIObjectRenderer\fP\&. 
+
+Maintains a mapping between types that require special rendering and the \fBIObjectRenderer\fP that is used to render them\&. 
+.PP
+The \fBFindAndRender(object)\fP method is used to render an \fCobject\fP using the appropriate renderers defined in this map\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 42 of file RendererMap\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.ObjectRenderer\&.RendererMap\&.RendererMap ()"
+
+.PP
+Default Constructor Default constructor\&. 
+.PP
+Definition at line 65 of file RendererMap\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.ObjectRenderer\&.RendererMap\&.Clear ()"
+
+.PP
+Clear the map of renderers Clear the custom renderers defined by using \fBPut\fP\&. The \fBDefaultRenderer\fP cannot be removed\&. 
+.PP
+Definition at line 292 of file RendererMap\&.cs\&.
+.SS "string log4net\&.ObjectRenderer\&.RendererMap\&.FindAndRender (objectobj)"
+
+.PP
+Render \fIobj\fP  using the appropriate renderer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP the object to render to a string
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the object rendered as a string
+.RE
+.PP
+.PP
+This is a convenience method used to render an object to a string\&. The alternative method \fBFindAndRender(object,TextWriter)\fP should be used when streaming output to a TextWriter\&. 
+.PP
+Definition at line 84 of file RendererMap\&.cs\&.
+.SS "void log4net\&.ObjectRenderer\&.RendererMap\&.FindAndRender (objectobj, TextWriterwriter)"
+
+.PP
+Render \fIobj\fP  using the appropriate renderer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP the object to render to a string
+.br
+\fIwriter\fP The writer to render to
+.RE
+.PP
+.PP
+Find the appropriate renderer for the type of the \fIobj\fP  parameter\&. This is accomplished by calling the \fBGet(Type)\fP method\&. Once a renderer is found, it is applied on the object \fIobj\fP  and the result is returned as a string\&. 
+.PP
+Definition at line 112 of file RendererMap\&.cs\&.
+.SS "\fBIObjectRenderer\fP log4net\&.ObjectRenderer\&.RendererMap\&.Get (Objectobj)"
+
+.PP
+Gets the renderer for the specified object type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP the object to lookup the renderer for
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the renderer for \fIobj\fP 
+.RE
+.PP
+.PP
+Gets the renderer for the specified object type\&. 
+.PP
+Syntactic sugar method that calls \fBGet(Type)\fP with the type of the object parameter\&. 
+.PP
+Definition at line 181 of file RendererMap\&.cs\&.
+.SS "\fBIObjectRenderer\fP log4net\&.ObjectRenderer\&.RendererMap\&.Get (Typetype)"
+
+.PP
+Gets the renderer for the specified type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP the type to lookup the renderer for
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the renderer for the specified type
+.RE
+.PP
+.PP
+Returns the renderer for the specified type\&. If no specific renderer has been defined the \fBDefaultRenderer\fP will be returned\&. 
+.PP
+Definition at line 205 of file RendererMap\&.cs\&.
+.SS "void log4net\&.ObjectRenderer\&.RendererMap\&.Put (TypetypeToRender, \fBIObjectRenderer\fPrenderer)"
+
+.PP
+Register an \fBIObjectRenderer\fP for \fItypeToRender\fP \&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItypeToRender\fP the type that will be rendered by \fIrenderer\fP 
+.br
+\fIrenderer\fP the renderer for \fItypeToRender\fP 
+.RE
+.PP
+.PP
+Register an object renderer for a specific source type\&. This renderer will be returned from a call to \fBGet(Type)\fP specifying the same \fItypeToRender\fP  as an argument\&. 
+.PP
+Definition at line 310 of file RendererMap\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBIObjectRenderer\fP log4net\&.ObjectRenderer\&.RendererMap\&.DefaultRenderer\fC [get]\fP"
+
+.PP
+Get the default renderer instance the default renderer
+.PP
+Get the default renderer 
+.PP
+Definition at line 278 of file RendererMap\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

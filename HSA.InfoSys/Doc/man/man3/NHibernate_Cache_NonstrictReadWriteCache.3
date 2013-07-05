@@ -1,0 +1,235 @@
+.TH "NHibernate.Cache.NonstrictReadWriteCache" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cache.NonstrictReadWriteCache \- 
+.PP
+Caches data that is sometimes updated without ever locking the cache\&. If concurrent access to an item is possible, this concurrency strategy makes no guarantee that the item returned from the cache is the latest version available in the database\&. Configure your cache timeout accordingly! This is an 'asynchronous' concurrency strategy\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBReadWriteCache\fP
+.PP
+.RE
+.PP
+for a much stricter algorithm  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBGet\fP (\fBCacheKey\fP key, long txTimestamp)"
+.br
+.RI "\fIGet the most recent version, if available\&. \fP"
+.ti -1c
+.RI "bool \fBPut\fP (\fBCacheKey\fP key, object value, long txTimestamp, object version, IComparer versionComparator, bool minimalPut)"
+.br
+.RI "\fIAdd an item to the cache \fP"
+.ti -1c
+.RI "\fBISoftLock\fP \fBLock\fP (\fBCacheKey\fP key, object version)"
+.br
+.RI "\fIDo nothing \fP"
+.ti -1c
+.RI "void \fBRemove\fP (\fBCacheKey\fP key)"
+.br
+.RI "\fIEvict an item from the cache immediately (without regard for transaction isolation)\&. \fP"
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.RI "\fIEvict all items from the cache immediately\&. \fP"
+.ti -1c
+.RI "void \fBDestroy\fP ()"
+.br
+.RI "\fIClean up all resources\&. \fP"
+.ti -1c
+.RI "void \fBEvict\fP (\fBCacheKey\fP key)"
+.br
+.RI "\fIInvalidate the item \fP"
+.ti -1c
+.RI "bool \fBUpdate\fP (\fBCacheKey\fP key, object value, object currentVersion, object previousVersion)"
+.br
+.RI "\fIInvalidate the item \fP"
+.ti -1c
+.RI "bool \fBInsert\fP (\fBCacheKey\fP key, object value, object currentVersion)"
+.br
+.RI "\fIDo nothing \fP"
+.ti -1c
+.RI "void \fBRelease\fP (\fBCacheKey\fP key, \fBISoftLock\fP @lock)"
+.br
+.RI "\fIInvalidate the item (again, for safety)\&. \fP"
+.ti -1c
+.RI "bool \fBAfterUpdate\fP (\fBCacheKey\fP key, object value, object version, \fBISoftLock\fP @lock)"
+.br
+.RI "\fIInvalidate the item (again, for safety)\&. \fP"
+.ti -1c
+.RI "bool \fBAfterInsert\fP (\fBCacheKey\fP key, object value, object version)"
+.br
+.RI "\fIDo nothing \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBRegionName\fP\fC [get]\fP"
+.br
+.RI "\fIGets the cache region name\&. \fP"
+.ti -1c
+.RI "\fBICache\fP \fBCache\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Caches data that is sometimes updated without ever locking the cache\&. If concurrent access to an item is possible, this concurrency strategy makes no guarantee that the item returned from the cache is the latest version available in the database\&. Configure your cache timeout accordingly! This is an 'asynchronous' concurrency strategy\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBReadWriteCache\fP
+.PP
+.RE
+.PP
+for a much stricter algorithm 
+
+
+.PP
+Definition at line 15 of file NonstrictReadWriteCache\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool NHibernate\&.Cache\&.NonstrictReadWriteCache\&.AfterInsert (\fBCacheKey\fPkey, objectvalue, objectversion)"
+
+.PP
+Do nothing 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 177 of file NonstrictReadWriteCache\&.cs\&.
+.SS "bool NHibernate\&.Cache\&.NonstrictReadWriteCache\&.AfterUpdate (\fBCacheKey\fPkey, objectvalue, objectversion, \fBISoftLock\fP @lock)"
+
+.PP
+Invalidate the item (again, for safety)\&. 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 168 of file NonstrictReadWriteCache\&.cs\&.
+.SS "void NHibernate\&.Cache\&.NonstrictReadWriteCache\&.Clear ()"
+
+.PP
+Evict all items from the cache immediately\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBCacheException\fP\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 102 of file NonstrictReadWriteCache\&.cs\&.
+.SS "void NHibernate\&.Cache\&.NonstrictReadWriteCache\&.Destroy ()"
+
+.PP
+Clean up all resources\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBCacheException\fP\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 111 of file NonstrictReadWriteCache\&.cs\&.
+.SS "void NHibernate\&.Cache\&.NonstrictReadWriteCache\&.Evict (\fBCacheKey\fPkey)"
+
+.PP
+Invalidate the item 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 126 of file NonstrictReadWriteCache\&.cs\&.
+.SS "object NHibernate\&.Cache\&.NonstrictReadWriteCache\&.Get (\fBCacheKey\fPkey, longtxTimestamp)"
+
+.PP
+Get the most recent version, if available\&. 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 38 of file NonstrictReadWriteCache\&.cs\&.
+.SS "bool NHibernate\&.Cache\&.NonstrictReadWriteCache\&.Insert (\fBCacheKey\fPkey, objectvalue, objectcurrentVersion)"
+
+.PP
+Do nothing 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 147 of file NonstrictReadWriteCache\&.cs\&.
+.SS "\fBISoftLock\fP NHibernate\&.Cache\&.NonstrictReadWriteCache\&.Lock (\fBCacheKey\fPkey, objectversion)"
+
+.PP
+Do nothing 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 88 of file NonstrictReadWriteCache\&.cs\&.
+.SS "bool NHibernate\&.Cache\&.NonstrictReadWriteCache\&.Put (\fBCacheKey\fPkey, objectvalue, longtxTimestamp, objectversion, IComparerversionComparator, boolminimalPut)"
+
+.PP
+Add an item to the cache 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 60 of file NonstrictReadWriteCache\&.cs\&.
+.SS "void NHibernate\&.Cache\&.NonstrictReadWriteCache\&.Release (\fBCacheKey\fPkey, \fBISoftLock\fP @lock)"
+
+.PP
+Invalidate the item (again, for safety)\&. 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 155 of file NonstrictReadWriteCache\&.cs\&.
+.SS "void NHibernate\&.Cache\&.NonstrictReadWriteCache\&.Remove (\fBCacheKey\fPkey)"
+
+.PP
+Evict an item from the cache immediately (without regard for transaction isolation)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBCacheException\fP\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 93 of file NonstrictReadWriteCache\&.cs\&.
+.SS "bool NHibernate\&.Cache\&.NonstrictReadWriteCache\&.Update (\fBCacheKey\fPkey, objectvalue, objectcurrentVersion, objectpreviousVersion)"
+
+.PP
+Invalidate the item 
+.PP
+Implements \fBNHibernate\&.Cache\&.ICacheConcurrencyStrategy\fP\&.
+.PP
+Definition at line 138 of file NonstrictReadWriteCache\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string NHibernate\&.Cache\&.NonstrictReadWriteCache\&.RegionName\fC [get]\fP"
+
+.PP
+Gets the cache region name\&. 
+.PP
+Definition at line 25 of file NonstrictReadWriteCache\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

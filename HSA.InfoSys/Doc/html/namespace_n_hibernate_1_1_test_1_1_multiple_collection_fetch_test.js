@@ -1,0 +1,8 @@
+var namespace_n_hibernate_1_1_test_1_1_multiple_collection_fetch_test =
+[
+    [ "AbstractMultipleCollectionFetchFixture", "class_n_hibernate_1_1_test_1_1_multiple_collection_fetch_test_1_1_abstract_multiple_collection_fetch_fixture.html", "class_n_hibernate_1_1_test_1_1_multiple_collection_fetch_test_1_1_abstract_multiple_collection_fetch_fixture" ],
+    [ "MultipleBagFetchFixture", "class_n_hibernate_1_1_test_1_1_multiple_collection_fetch_test_1_1_multiple_bag_fetch_fixture.html", "class_n_hibernate_1_1_test_1_1_multiple_collection_fetch_test_1_1_multiple_bag_fetch_fixture" ],
+    [ "MultipleListFetchFixture", "class_n_hibernate_1_1_test_1_1_multiple_collection_fetch_test_1_1_multiple_list_fetch_fixture.html", "class_n_hibernate_1_1_test_1_1_multiple_collection_fetch_test_1_1_multiple_list_fetch_fixture" ],
+    [ "MultipleSetFetchFixture", "class_n_hibernate_1_1_test_1_1_multiple_collection_fetch_test_1_1_multiple_set_fetch_fixture.html", "class_n_hibernate_1_1_test_1_1_multiple_collection_fetch_test_1_1_multiple_set_fetch_fixture" ],
+    [ "Person", "class_n_hibernate_1_1_test_1_1_multiple_collection_fetch_test_1_1_person.html", "class_n_hibernate_1_1_test_1_1_multiple_collection_fetch_test_1_1_person" ]
+];

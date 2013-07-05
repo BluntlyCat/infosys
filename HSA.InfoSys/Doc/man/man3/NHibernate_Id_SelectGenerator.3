@@ -1,0 +1,66 @@
+.TH "NHibernate.Id.SelectGenerator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.SelectGenerator \- 
+.PP
+A generator that selects the just inserted row to determine the identifier value assigned by the database\&. The correct row is located using a unique key\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Id\&.AbstractPostInsertGenerator\fP, and \fBNHibernate\&.Id\&.IConfigurable\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBSelectGeneratorDelegate\fP"
+.br
+.RI "\fIThe delegate for the select generation strategy\&.\fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override 
+.br
+\fBIInsertGeneratedIdentifierDelegate\fP \fBGetInsertGeneratedIdentifierDelegate\fP (\fBIPostInsertIdentityPersister\fP persister, \fBISessionFactoryImplementor\fP factory, bool isGetGeneratedKeysEnabled)"
+.br
+.ti -1c
+.RI "void \fBConfigure\fP (\fBIType\fP type, IDictionary< string, string > parms, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIConfigure this instance, given the values of parameters specified by the user as \fC<param>\fP elements\&. This method is called just once, followed by instantiation\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A generator that selects the just inserted row to determine the identifier value assigned by the database\&. The correct row is located using a unique key\&. 
+
+One mapping parameter is required: key (unless a natural-id is defined in the mapping)\&.
+.PP
+Definition at line 17 of file SelectGenerator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Id\&.SelectGenerator\&.Configure (\fBIType\fPtype, IDictionary< string, string >parms, \fBDialect\&.Dialect\fPdialect)"
+
+.PP
+Configure this instance, given the values of parameters specified by the user as \fC<param>\fP elements\&. This method is called just once, followed by instantiation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The IType the identifier should be\&.
+.br
+\fIparms\fP An IDictionary of \fBParam\fP values that are keyed by parameter name\&.
+.br
+\fIdialect\fP The \fBDialect\&.Dialect\fP to help with Configuration\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IConfigurable\fP\&.
+.PP
+Definition at line 33 of file SelectGenerator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

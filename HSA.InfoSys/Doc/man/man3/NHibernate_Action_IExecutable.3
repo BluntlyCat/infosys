@@ -1,0 +1,86 @@
+.TH "NHibernate.Action.IExecutable" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Action.IExecutable \- 
+.PP
+An operation which may be scheduled for later execution\&. Usually, the operation is a database insert/update/delete, together with required second-level cache management\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Action\&.BulkOperationCleanupAction\fP, \fBNHibernate\&.Action\&.CollectionAction\fP, and \fBNHibernate\&.Action\&.EntityAction\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBBeforeExecutions\fP ()"
+.br
+.RI "\fICalled before executing any actions\fP"
+.ti -1c
+.RI "void \fBExecute\fP ()"
+.br
+.RI "\fIExecute this action\fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string[] \fBPropertySpaces\fP\fC [get]\fP"
+.br
+.RI "\fIWhat spaces (tables) are affected by this action? \fP"
+.ti -1c
+.RI "\fBBeforeTransactionCompletionProcessDelegate\fP \fBBeforeTransactionCompletionProcess\fP\fC [get]\fP"
+.br
+.RI "\fIGet the before-transaction-completion process, if any, for this action\&. \fP"
+.ti -1c
+.RI "\fBAfterTransactionCompletionProcessDelegate\fP \fBAfterTransactionCompletionProcess\fP\fC [get]\fP"
+.br
+.RI "\fIGet the after-transaction-completion process, if any, for this action\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An operation which may be scheduled for later execution\&. Usually, the operation is a database insert/update/delete, together with required second-level cache management\&. 
+
+
+.PP
+Definition at line 31 of file IExecutable\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Action\&.IExecutable\&.BeforeExecutions ()"
+
+.PP
+Called before executing any actions
+.PP
+Implemented in \fBNHibernate\&.Action\&.BulkOperationCleanupAction\fP, \fBNHibernate\&.Action\&.EntityAction\fP, and \fBNHibernate\&.Action\&.CollectionAction\fP\&.
+.SS "void NHibernate\&.Action\&.IExecutable\&.Execute ()"
+
+.PP
+Execute this action
+.PP
+Implemented in \fBNHibernate\&.Action\&.BulkOperationCleanupAction\fP, \fBNHibernate\&.Action\&.CollectionAction\fP, \fBNHibernate\&.Action\&.EntityAction\fP, \fBNHibernate\&.Action\&.CollectionRemoveAction\fP, \fBNHibernate\&.Action\&.EntityIdentityInsertAction\fP, \fBNHibernate\&.Action\&.EntityUpdateAction\fP, \fBNHibernate\&.Action\&.EntityInsertAction\fP, \fBNHibernate\&.Action\&.EntityDeleteAction\fP, \fBNHibernate\&.Action\&.CollectionUpdateAction\fP, and \fBNHibernate\&.Action\&.CollectionRecreateAction\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBAfterTransactionCompletionProcessDelegate\fP NHibernate\&.Action\&.IExecutable\&.AfterTransactionCompletionProcess\fC [get]\fP"
+
+.PP
+Get the after-transaction-completion process, if any, for this action\&. 
+.PP
+Definition at line 52 of file IExecutable\&.cs\&.
+.SS "\fBBeforeTransactionCompletionProcessDelegate\fP NHibernate\&.Action\&.IExecutable\&.BeforeTransactionCompletionProcess\fC [get]\fP"
+
+.PP
+Get the before-transaction-completion process, if any, for this action\&. 
+.PP
+Definition at line 47 of file IExecutable\&.cs\&.
+.SS "string [] NHibernate\&.Action\&.IExecutable\&.PropertySpaces\fC [get]\fP"
+
+.PP
+What spaces (tables) are affected by this action? 
+.PP
+Definition at line 36 of file IExecutable\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,76 @@
+.TH "NHibernate.ObjectNotFoundException" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.ObjectNotFoundException \- 
+.PP
+Thrown when \fC\fBISession\&.Load()\fP\fP fails to select a row with the given primary key (identifier value)\&. This exception might not be thrown when \fCLoad()\fP is called, even if there was no row on the database, because \fCLoad()\fP returns a proxy if possible\&. Applications should use \fC\fBISession\&.Get()\fP\fP to test if a row exists in the database\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.UnresolvableObjectException\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBObjectNotFoundException\fP (object identifier, System\&.Type type)"
+.br
+.RI "\fIInitializes a new instance of the \fBObjectNotFoundException\fP class\&. \fP"
+.ti -1c
+.RI "\fBObjectNotFoundException\fP (object identifier, string entityName)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBObjectNotFoundException\fP (SerializationInfo info, StreamingContext context)"
+.br
+.RI "\fIInitializes a new instance of the \fBObjectNotFoundException\fP class with serialized data\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Thrown when \fC\fBISession\&.Load()\fP\fP fails to select a row with the given primary key (identifier value)\&. This exception might not be thrown when \fCLoad()\fP is called, even if there was no row on the database, because \fCLoad()\fP returns a proxy if possible\&. Applications should use \fC\fBISession\&.Get()\fP\fP to test if a row exists in the database\&. 
+
+
+.PP
+Definition at line 15 of file ObjectNotFoundException\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.ObjectNotFoundException\&.ObjectNotFoundException (objectidentifier, System\&.Typetype)"
+
+.PP
+Initializes a new instance of the \fBObjectNotFoundException\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidentifier\fP The identifier of the object that was attempting to be loaded\&.
+.br
+\fItype\fP The System\&.Type that \fBNHibernate\fP was trying to find a row for in the database\&.
+.RE
+.PP
+
+.PP
+Definition at line 22 of file ObjectNotFoundException\&.cs\&.
+.SS "NHibernate\&.ObjectNotFoundException\&.ObjectNotFoundException (SerializationInfoinfo, StreamingContextcontext)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBObjectNotFoundException\fP class with serialized data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinfo\fP The SerializationInfo that holds the serialized object data about the exception being thrown\&. 
+.br
+\fIcontext\fP The StreamingContext that contains contextual information about the source or destination\&. 
+.RE
+.PP
+
+.PP
+Definition at line 41 of file ObjectNotFoundException\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

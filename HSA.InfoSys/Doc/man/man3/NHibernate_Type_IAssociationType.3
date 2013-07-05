@@ -1,0 +1,132 @@
+.TH "NHibernate.Type.IAssociationType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.IAssociationType \- 
+.PP
+An \fBIType\fP that represents some kind of association between entities\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.IType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Type\&.AnyType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.EntityType\fP, and \fBNHibernate\&.Type\&.OneToOneType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIJoinable\fP \fBGetAssociatedJoinable\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIGet the 'persister' for this association - a class or collection persister \fP"
+.ti -1c
+.RI "string \fBGetAssociatedEntityName\fP (\fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIGet the entity name of the associated entity\fP"
+.ti -1c
+.RI "string \fBGetOnCondition\fP (string alias, \fBISessionFactoryImplementor\fP factory, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fIGet the 'filtering' SQL fragment that is applied in the SQL on clause, in addition to the usual join condition\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBForeignKeyDirection\fP \fBForeignKeyDirection\fP\fC [get]\fP"
+.br
+.RI "\fIWhen implemented by a class, gets the type of foreign key directionality of this association\&. \fP"
+.ti -1c
+.RI "bool \fBUseLHSPrimaryKey\fP\fC [get]\fP"
+.br
+.RI "\fIIs the primary key of the owning entity table to be used in the join? \fP"
+.ti -1c
+.RI "string \fBLHSPropertyName\fP\fC [get]\fP"
+.br
+.RI "\fIGet the name of the property in the owning entity that provides the join key (null if the identifier) \fP"
+.ti -1c
+.RI "string \fBRHSUniqueKeyPropertyName\fP\fC [get]\fP"
+.br
+.RI "\fIThe name of a unique property of the associated entity that provides the join key (null if the identifier of an entity, or key of a collection) \fP"
+.ti -1c
+.RI "bool \fBIsAlwaysDirtyChecked\fP\fC [get]\fP"
+.br
+.RI "\fIDo we dirty check this association, even when there are no columns to be updated\&. \fP"
+.ti -1c
+.RI "bool \fBIsEmbeddedInXML\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An \fBIType\fP that represents some kind of association between entities\&. 
+
+
+.PP
+Definition at line 10 of file IAssociationType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string NHibernate\&.Type\&.IAssociationType\&.GetAssociatedEntityName (\fBISessionFactoryImplementor\fPfactory)"
+
+.PP
+Get the entity name of the associated entity
+.PP
+Implemented in \fBNHibernate\&.Type\&.EntityType\fP, \fBNHibernate\&.Type\&.AnyType\fP, and \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.SS "\fBIJoinable\fP NHibernate\&.Type\&.IAssociationType\&.GetAssociatedJoinable (\fBISessionFactoryImplementor\fPfactory)"
+
+.PP
+Get the 'persister' for this association - a class or collection persister 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.EntityType\fP, \fBNHibernate\&.Type\&.AnyType\fP, and \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.SS "string NHibernate\&.Type\&.IAssociationType\&.GetOnCondition (stringalias, \fBISessionFactoryImplementor\fPfactory, IDictionary< string, \fBIFilter\fP >enabledFilters)"
+
+.PP
+Get the 'filtering' SQL fragment that is applied in the SQL on clause, in addition to the usual join condition\&. 
+.PP
+Implemented in \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.EntityType\fP, and \fBNHibernate\&.Type\&.AnyType\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBForeignKeyDirection\fP NHibernate\&.Type\&.IAssociationType\&.ForeignKeyDirection\fC [get]\fP"
+
+.PP
+When implemented by a class, gets the type of foreign key directionality of this association\&. The \fBForeignKeyDirection\fP of this association\&.
+.PP
+Definition at line 17 of file IAssociationType\&.cs\&.
+.SS "bool NHibernate\&.Type\&.IAssociationType\&.IsAlwaysDirtyChecked\fC [get]\fP"
+
+.PP
+Do we dirty check this association, even when there are no columns to be updated\&. 
+.PP
+Definition at line 52 of file IAssociationType\&.cs\&.
+.SS "string NHibernate\&.Type\&.IAssociationType\&.LHSPropertyName\fC [get]\fP"
+
+.PP
+Get the name of the property in the owning entity that provides the join key (null if the identifier) 
+.PP
+Definition at line 29 of file IAssociationType\&.cs\&.
+.SS "string NHibernate\&.Type\&.IAssociationType\&.RHSUniqueKeyPropertyName\fC [get]\fP"
+
+.PP
+The name of a unique property of the associated entity that provides the join key (null if the identifier of an entity, or key of a collection) 
+.PP
+Definition at line 36 of file IAssociationType\&.cs\&.
+.SS "bool NHibernate\&.Type\&.IAssociationType\&.UseLHSPrimaryKey\fC [get]\fP"
+
+.PP
+Is the primary key of the owning entity table to be used in the join? 
+.PP
+Definition at line 23 of file IAssociationType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

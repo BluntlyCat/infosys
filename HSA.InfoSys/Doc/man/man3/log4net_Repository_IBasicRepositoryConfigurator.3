@@ -1,0 +1,66 @@
+.TH "log4net.Repository.IBasicRepositoryConfigurator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Repository.IBasicRepositoryConfigurator \- 
+.PP
+Basic Configurator interface for repositories  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBlog4net\&.Repository\&.Hierarchy\&.Hierarchy\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBConfigure\fP (\fBAppender\&.IAppender\fP appender)"
+.br
+.RI "\fIInitialize the repository using the specified appender \fP"
+.ti -1c
+.RI "void \fBConfigure\fP (params \fBAppender\&.IAppender\fP[] appenders)"
+.br
+.RI "\fIInitialize the repository using the specified appenders \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Basic Configurator interface for repositories 
+
+Interface used by basic configurator to configure a \fBILoggerRepository\fP with a default \fBlog4net\&.Appender\&.IAppender\fP\&. 
+.PP
+A \fBILoggerRepository\fP should implement this interface to support configuration by the \fBlog4net\&.Config\&.BasicConfigurator\fP\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 37 of file IBasicRepositoryConfigurator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Repository\&.IBasicRepositoryConfigurator\&.Configure (\fBAppender\&.IAppender\fPappender)"
+
+.PP
+Initialize the repository using the specified appender 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIappender\fP the appender to use to log all logging events
+.RE
+.PP
+.PP
+Configure the repository to route all logging events to the specified appender\&. 
+.SS "void log4net\&.Repository\&.IBasicRepositoryConfigurator\&.Configure (params \fBAppender\&.IAppender\fP[]appenders)"
+
+.PP
+Initialize the repository using the specified appenders 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIappenders\fP the appenders to use to log all logging events
+.RE
+.PP
+.PP
+Configure the repository to route all logging events to the specified appenders\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

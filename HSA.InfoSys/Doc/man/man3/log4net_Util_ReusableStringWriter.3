@@ -1,0 +1,94 @@
+.TH "log4net.Util.ReusableStringWriter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.ReusableStringWriter \- 
+.PP
+A StringWriter that can be \fBReset\fP and reused  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits StringWriter\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBReusableStringWriter\fP (IFormatProvider formatProvider)"
+.br
+.RI "\fICreate an instance of \fBReusableStringWriter\fP \fP"
+.ti -1c
+.RI "void \fBReset\fP (int maxCapacity, int defaultSize)"
+.br
+.RI "\fIReset this string writer so that it can be reused\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIOverride Dispose to prevent closing of writer \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A StringWriter that can be \fBReset\fP and reused 
+
+A StringWriter that can be \fBReset\fP and reused\&. This uses a single buffer for string operations\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 36 of file ReusableStringWriter\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Util\&.ReusableStringWriter\&.ReusableStringWriter (IFormatProviderformatProvider)"
+
+.PP
+Create an instance of \fBReusableStringWriter\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformatProvider\fP the format provider to use
+.RE
+.PP
+.PP
+Create an instance of \fBReusableStringWriter\fP 
+.PP
+Definition at line 49 of file ReusableStringWriter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Util\&.ReusableStringWriter\&.Dispose (booldisposing)\fC [protected]\fP"
+
+.PP
+Override Dispose to prevent closing of writer 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP flag
+.RE
+.PP
+.PP
+Override Dispose to prevent closing of writer 
+.PP
+Definition at line 64 of file ReusableStringWriter\&.cs\&.
+.SS "void log4net\&.Util\&.ReusableStringWriter\&.Reset (intmaxCapacity, intdefaultSize)"
+
+.PP
+Reset this string writer so that it can be reused\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxCapacity\fP the maximum buffer capacity before it is trimmed
+.br
+\fIdefaultSize\fP the default size to make the buffer
+.RE
+.PP
+.PP
+Reset this string writer so that it can be reused\&. The internal buffers are cleared and reset\&. 
+.PP
+Definition at line 80 of file ReusableStringWriter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

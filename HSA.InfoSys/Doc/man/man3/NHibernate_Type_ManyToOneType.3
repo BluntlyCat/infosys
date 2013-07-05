@@ -1,0 +1,236 @@
+.TH "NHibernate.Type.ManyToOneType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.ManyToOneType \- 
+.PP
+A many-to-one association to an entity  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.EntityType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBManyToOneType\fP (string className)"
+.br
+.ti -1c
+.RI "\fBManyToOneType\fP (string className, bool lazy)"
+.br
+.ti -1c
+.RI "\fBManyToOneType\fP (string entityName, string uniqueKeyPropertyName, bool lazy, bool unwrapProxy, bool isEmbeddedInXML, bool ignoreNotFound)"
+.br
+.ti -1c
+.RI "override int \fBGetColumnSpan\fP (\fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "override \fBSqlType\fP[] \fBSqlTypes\fP (\fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "override void \fBNullSafeSet\fP (IDbCommand st, object value, int index, bool[] settable, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override void \fBNullSafeSet\fP (IDbCommand cmd, object value, int index, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override object \fBHydrate\fP (IDataReader rs, string[] names, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIHydrates the Identifier from IDataReader\&. \fP"
+.ti -1c
+.RI "override bool \fBIsModified\fP (object old, object current, bool[] checkable, \fBISessionImplementor\fP session)"
+.br
+.RI "\fISays whether the value has been modified \fP"
+.ti -1c
+.RI "override object \fBDisassemble\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIDisassembles the object into a cacheable representation\&. \fP"
+.ti -1c
+.RI "override object \fBAssemble\fP (object oid, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIReconstructs the object from its cached 'disassembled' state\&. \fP"
+.ti -1c
+.RI "override void \fBBeforeAssemble\fP (object oid, \fBISessionImplementor\fP session)"
+.br
+.RI "\fICalled before assembling a query result set from the query cache, to allow batch fetching of entities missing from the second-level cache\&. \fP"
+.ti -1c
+.RI "override bool \fBIsDirty\fP (object old, object current, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIShould the parent be considered dirty, given both the old and current field or element value? \fP"
+.ti -1c
+.RI "override bool \fBIsDirty\fP (object old, object current, bool[] checkable, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override bool[] \fBToColumnNullness\fP (object value, \fBIMapping\fP mapping)"
+.br
+.RI "\fIGiven an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBIsOneToOne\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBForeignKeyDirection\fP \fBForeignKeyDirection\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBUseLHSPrimaryKey\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsAlwaysDirtyChecked\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsNullable\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A many-to-one association to an entity 
+
+
+.PP
+Definition at line 14 of file ManyToOneType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Type\&.ManyToOneType\&.Assemble (objectcached, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Reconstructs the object from its cached 'disassembled' state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcached\fP The disassembled state from the cache
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP The parent Entity object is not used by this method
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The assembled object\&.
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 146 of file ManyToOneType\&.cs\&.
+.SS "override void NHibernate\&.Type\&.ManyToOneType\&.BeforeAssemble (objectcached, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Called before assembling a query result set from the query cache, to allow batch fetching of entities missing from the second-level cache\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 168 of file ManyToOneType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.ManyToOneType\&.Disassemble (objectvalue, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Disassembles the object into a cacheable representation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to disassemble\&.
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.br
+\fIowner\fP optional parent entity object (needed for collections) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The disassembled, deep cloned state of the object
+.RE
+.PP
+.PP
+This method calls DeepCopy if the value is not null\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 122 of file ManyToOneType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.ManyToOneType\&.Hydrate (IDataReaderrs, string[]names, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Hydrates the Identifier from IDataReader\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the query results\&.
+.br
+\fInames\fP A string array of column names to read from\&.
+.br
+\fIsession\fP The ISessionImplementor this is occurring in\&.
+.br
+\fIowner\fP The object that this Entity will be a part of\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An instantiated object that used as the identifier of the type\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.EntityType\fP\&.
+.PP
+Definition at line 78 of file ManyToOneType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.ManyToOneType\&.IsDirty (objectold, objectcurrent, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Should the parent be considered dirty, given both the old and current field or element value? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIold\fP The old value
+.br
+\fIcurrent\fP The current value
+.br
+\fIsession\fP The ISessionImplementor is not used by this method\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the field is dirty
+.RE
+.PP
+.PP
+This method uses \fCIType\&.Equals(object, object)\fP to determine the value of IsDirty\&.
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 184 of file ManyToOneType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.ManyToOneType\&.IsModified (objectold, objectcurrent, bool[]checkable, \fBISessionImplementor\fPsession)\fC [virtual]\fP"
+
+.PP
+Says whether the value has been modified 
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 108 of file ManyToOneType\&.cs\&.
+.SS "override bool [] NHibernate\&.Type\&.ManyToOneType\&.ToColumnNullness (objectvalue, \fBIMapping\fPmapping)\fC [virtual]\fP"
+
+.PP
+Given an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP an instance of the type 
+.br
+\fImapping\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 220 of file ManyToOneType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

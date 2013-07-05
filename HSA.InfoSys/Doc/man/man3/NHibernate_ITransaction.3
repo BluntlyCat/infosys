@@ -1,0 +1,150 @@
+.TH "NHibernate.ITransaction" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.ITransaction \- 
+.PP
+Allows the application to define units of work, while maintaining abstraction from the underlying transaction implementation  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDisposable\&.
+.PP
+Inherited by \fBNHibernate\&.Transaction\&.AdoTransaction\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBBegin\fP ()"
+.br
+.RI "\fIBegin the transaction with the default isolation level\&. \fP"
+.ti -1c
+.RI "void \fBBegin\fP (IsolationLevel isolationLevel)"
+.br
+.RI "\fIBegin the transaction with the specified isolation level\&. \fP"
+.ti -1c
+.RI "void \fBCommit\fP ()"
+.br
+.RI "\fIFlush the associated \fC\fBISession\fP\fP and end the unit of work\&. \fP"
+.ti -1c
+.RI "void \fBRollback\fP ()"
+.br
+.RI "\fIForce the underlying transaction to roll back\&. \fP"
+.ti -1c
+.RI "void \fBEnlist\fP (IDbCommand command)"
+.br
+.RI "\fIEnlist the IDbCommand in the current \fBTransaction\fP\&. \fP"
+.ti -1c
+.RI "void \fBRegisterSynchronization\fP (\fBISynchronization\fP synchronization)"
+.br
+.RI "\fIRegister a user synchronization callback for this transaction\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsActive\fP\fC [get]\fP"
+.br
+.RI "\fIIs the transaction in progress \fP"
+.ti -1c
+.RI "bool \fBWasRolledBack\fP\fC [get]\fP"
+.br
+.RI "\fIWas the transaction rolled back or set to rollback only? \fP"
+.ti -1c
+.RI "bool \fBWasCommitted\fP\fC [get]\fP"
+.br
+.RI "\fIWas the transaction successfully committed? \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Allows the application to define units of work, while maintaining abstraction from the underlying transaction implementation 
+
+A transaction is associated with a \fC\fBISession\fP\fP and is usually instanciated by a call to \fC\fBISession\&.BeginTransaction()\fP\fP\&. A single session might span multiple transactions since the notion of a session (a conversation between the application and the datastore) is of coarser granularity than the notion of a transaction\&. However, it is intended that there be at most one uncommitted \fC\fBITransaction\fP\fP associated with a particular \fC\fBISession\fP\fP at a time\&. Implementors are not intended to be threadsafe\&. 
+.PP
+Definition at line 19 of file ITransaction\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.ITransaction\&.Begin ()"
+
+.PP
+Begin the transaction with the default isolation level\&. 
+.PP
+Implemented in \fBNHibernate\&.Transaction\&.AdoTransaction\fP\&.
+.SS "void NHibernate\&.ITransaction\&.Begin (IsolationLevelisolationLevel)"
+
+.PP
+Begin the transaction with the specified isolation level\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIisolationLevel\fP Isolation level of the transaction
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Transaction\&.AdoTransaction\fP\&.
+.SS "void NHibernate\&.ITransaction\&.Commit ()"
+
+.PP
+Flush the associated \fC\fBISession\fP\fP and end the unit of work\&. This method will commit the underlying transaction if and only if the transaction was initiated by this object\&. 
+.PP
+Implemented in \fBNHibernate\&.Transaction\&.AdoTransaction\fP\&.
+.SS "void NHibernate\&.ITransaction\&.Enlist (IDbCommandcommand)"
+
+.PP
+Enlist the IDbCommand in the current \fBTransaction\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP The IDbCommand to enlist\&.
+.RE
+.PP
+.PP
+It is okay for this to be a no op implementation\&. 
+.PP
+Implemented in \fBNHibernate\&.Transaction\&.AdoTransaction\fP\&.
+.SS "void NHibernate\&.ITransaction\&.RegisterSynchronization (\fBISynchronization\fPsynchronization)"
+
+.PP
+Register a user synchronization callback for this transaction\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsynchronization\fP The ISynchronization callback to register\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Transaction\&.AdoTransaction\fP\&.
+.SS "void NHibernate\&.ITransaction\&.Rollback ()"
+
+.PP
+Force the underlying transaction to roll back\&. 
+.PP
+Implemented in \fBNHibernate\&.Transaction\&.AdoTransaction\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.ITransaction\&.IsActive\fC [get]\fP"
+
+.PP
+Is the transaction in progress 
+.PP
+Definition at line 49 of file ITransaction\&.cs\&.
+.SS "bool NHibernate\&.ITransaction\&.WasCommitted\fC [get]\fP"
+
+.PP
+Was the transaction successfully committed? This method could return  even after successful invocation of \fC\fBCommit()\fP\fP 
+.PP
+Definition at line 62 of file ITransaction\&.cs\&.
+.SS "bool NHibernate\&.ITransaction\&.WasRolledBack\fC [get]\fP"
+
+.PP
+Was the transaction rolled back or set to rollback only? 
+.PP
+Definition at line 54 of file ITransaction\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

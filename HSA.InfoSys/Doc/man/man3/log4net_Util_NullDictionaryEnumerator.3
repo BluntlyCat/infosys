@@ -1,0 +1,162 @@
+.TH "log4net.Util.NullDictionaryEnumerator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.NullDictionaryEnumerator \- 
+.PP
+An always empty IDictionaryEnumerator\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDictionaryEnumerator\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBMoveNext\fP ()"
+.br
+.RI "\fITest if the enumerator can advance, if so advance\&. \fP"
+.ti -1c
+.RI "void \fBReset\fP ()"
+.br
+.RI "\fIResets the enumerator back to the start\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "static \fBNullDictionaryEnumerator\fP \fBInstance\fP\fC [get]\fP"
+.br
+.RI "\fIGets the singleton instance of the \fBNullDictionaryEnumerator\fP\&. \fP"
+.ti -1c
+.RI "object \fBCurrent\fP\fC [get]\fP"
+.br
+.RI "\fIGets the current object from the enumerator\&. \fP"
+.ti -1c
+.RI "object \fBKey\fP\fC [get]\fP"
+.br
+.RI "\fIGets the current key from the enumerator\&. \fP"
+.ti -1c
+.RI "object \fBValue\fP\fC [get]\fP"
+.br
+.RI "\fIGets the current value from the enumerator\&. \fP"
+.ti -1c
+.RI "DictionaryEntry \fBEntry\fP\fC [get]\fP"
+.br
+.RI "\fIGets the current entry from the enumerator\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An always empty IDictionaryEnumerator\&. 
+
+A singleton implementation of the IDictionaryEnumerator over a collection that is empty and not modifiable\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 36 of file NullDictionaryEnumerator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool log4net\&.Util\&.NullDictionaryEnumerator\&.MoveNext ()"
+
+.PP
+Test if the enumerator can advance, if so advance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCfalse\fP as the \fBNullDictionaryEnumerator\fP cannot advance\&.
+.RE
+.PP
+.PP
+As the enumerator is over an empty collection its \fBCurrent\fP value cannot be moved over a valid position, therefore \fBMoveNext\fP will always return \fCfalse\fP\&. 
+.PP
+Definition at line 106 of file NullDictionaryEnumerator\&.cs\&.
+.SS "void log4net\&.Util\&.NullDictionaryEnumerator\&.Reset ()"
+
+.PP
+Resets the enumerator back to the start\&. As the enumerator is over an empty collection \fBReset\fP does nothing\&. 
+.PP
+Definition at line 119 of file NullDictionaryEnumerator\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "object log4net\&.Util\&.NullDictionaryEnumerator\&.Current\fC [get]\fP"
+
+.PP
+Gets the current object from the enumerator\&. Throws an InvalidOperationException because the \fBNullDictionaryEnumerator\fP never has a current value\&. 
+.PP
+As the enumerator is over an empty collection its \fBCurrent\fP value cannot be moved over a valid position, therefore \fBCurrent\fP will throw an InvalidOperationException\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInvalidOperationException\fP The collection is empty and \fBCurrent\fP cannot be positioned over a valid location\&.
+.RE
+.PP
+
+.PP
+Definition at line 91 of file NullDictionaryEnumerator\&.cs\&.
+.SS "DictionaryEntry log4net\&.Util\&.NullDictionaryEnumerator\&.Entry\fC [get]\fP"
+
+.PP
+Gets the current entry from the enumerator\&. Throws an InvalidOperationException because the \fBNullDictionaryEnumerator\fP never has a current entry\&. 
+.PP
+As the enumerator is over an empty collection its \fBCurrent\fP value cannot be moved over a valid position, therefore \fBEntry\fP will throw an InvalidOperationException\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInvalidOperationException\fP The collection is empty and \fBCurrent\fP cannot be positioned over a valid location\&.
+.RE
+.PP
+
+.PP
+Definition at line 187 of file NullDictionaryEnumerator\&.cs\&.
+.SS "\fBNullDictionaryEnumerator\fP log4net\&.Util\&.NullDictionaryEnumerator\&.Instance\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Gets the singleton instance of the \fBNullDictionaryEnumerator\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The singleton instance of the \fBNullDictionaryEnumerator\fP\&.
+.RE
+.PP
+.PP
+Gets the singleton instance of the \fBNullDictionaryEnumerator\fP\&. 
+.PP
+Definition at line 66 of file NullDictionaryEnumerator\&.cs\&.
+.SS "object log4net\&.Util\&.NullDictionaryEnumerator\&.Key\fC [get]\fP"
+
+.PP
+Gets the current key from the enumerator\&. Throws an exception because the \fBNullDictionaryEnumerator\fP never has a current value\&. 
+.PP
+As the enumerator is over an empty collection its \fBCurrent\fP value cannot be moved over a valid position, therefore \fBKey\fP will throw an InvalidOperationException\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInvalidOperationException\fP The collection is empty and \fBCurrent\fP cannot be positioned over a valid location\&.
+.RE
+.PP
+
+.PP
+Definition at line 144 of file NullDictionaryEnumerator\&.cs\&.
+.SS "object log4net\&.Util\&.NullDictionaryEnumerator\&.Value\fC [get]\fP"
+
+.PP
+Gets the current value from the enumerator\&. The current value from the enumerator\&.
+.PP
+Throws an InvalidOperationException because the \fBNullDictionaryEnumerator\fP never has a current value\&. 
+.PP
+As the enumerator is over an empty collection its \fBCurrent\fP value cannot be moved over a valid position, therefore \fBValue\fP will throw an InvalidOperationException\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInvalidOperationException\fP The collection is empty and \fBCurrent\fP cannot be positioned over a valid location\&.
+.RE
+.PP
+
+.PP
+Definition at line 166 of file NullDictionaryEnumerator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,78 @@
+.TH "NHibernate.Id.IncrementGenerator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.IncrementGenerator \- 
+.PP
+An \fC\fBIIdentifierGenerator\fP\fP that returns a \fCInt64\fP, constructed by counting from the maximum primary key value at startup\&. Not safe for use in a cluster!  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Id\&.IIdentifierGenerator\fP, and \fBNHibernate\&.Id\&.IConfigurable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBConfigure\fP (\fBIType\fP type, IDictionary< string, string > parms, \fBDialect\&.Dialect\fP dialect)"
+.br
+.ti -1c
+.RI "object \fBGenerate\fP (\fBISessionImplementor\fP session, object obj)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An \fC\fBIIdentifierGenerator\fP\fP that returns a \fCInt64\fP, constructed by counting from the maximum primary key value at startup\&. Not safe for use in a cluster! 
+
+java author Gavin King, \&.NET port Mark Holden 
+.PP
+\fBMapping\fP parameters supported, but not usually needed: table, column\&. 
+.PP
+Definition at line 28 of file IncrementGenerator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Id\&.IncrementGenerator\&.Configure (\fBIType\fPtype, IDictionary< string, string >parms, \fBDialect\&.Dialect\fPdialect)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP 
+.br
+\fIparms\fP 
+.br
+\fIdialect\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IConfigurable\fP\&.
+.PP
+Definition at line 42 of file IncrementGenerator\&.cs\&.
+.SS "object NHibernate\&.Id\&.IncrementGenerator\&.Generate (\fBISessionImplementor\fPsession, objectobj)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP 
+.br
+\fIobj\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IIdentifierGenerator\fP\&.
+.PP
+Definition at line 85 of file IncrementGenerator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

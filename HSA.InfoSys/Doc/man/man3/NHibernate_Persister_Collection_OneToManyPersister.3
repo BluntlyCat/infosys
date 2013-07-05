@@ -1,0 +1,278 @@
+.TH "NHibernate.Persister.Collection.OneToManyPersister" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Persister.Collection.OneToManyPersister \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2568\&.MyCollectionPersister\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOneToManyPersister\fP (\fBMapping\&.Collection\fP collection, \fBICacheConcurrencyStrategy\fP cache, \fBConfiguration\fP cfg, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "override bool \fBConsumesEntityAlias\fP ()"
+.br
+.RI "\fIVery, very, very ugly\&.\&.\&. \fP"
+.ti -1c
+.RI "override bool \fBConsumesCollectionAlias\fP ()"
+.br
+.RI "\fIVery, very, very ugly\&.\&.\&. \fP"
+.ti -1c
+.RI "override string \fBSelectFragment\fP (\fBIJoinable\fP rhs, string rhsAlias, string lhsAlias, string entitySuffix, string collectionSuffix, bool includeCollectionColumns)"
+.br
+.RI "\fIAll columns to select, when loading\&. \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBFromJoinFragment\fP (string alias, bool innerJoin, bool includeSubclasses)"
+.br
+.RI "\fIGet the from clause part of any joins (optional operation) \fP"
+.ti -1c
+.RI "override \fBSqlString\fP \fBWhereJoinFragment\fP (string alias, bool innerJoin, bool includeSubclasses)"
+.br
+.RI "\fIGet the where clause part of any joins (optional operation) \fP"
+.ti -1c
+.RI "override object \fBGetElementByIndex\fP (object key, object index, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fITry to find an element by a given index\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override \fBSqlCommandInfo\fP \fBGenerateDeleteString\fP ()"
+.br
+.RI "\fIGenerate the SQL UPDATE that updates all the foreign keys to null \fP"
+.ti -1c
+.RI "override \fBSqlCommandInfo\fP \fBGenerateInsertRowString\fP ()"
+.br
+.RI "\fIGenerate the SQL UPDATE that updates a foreign key to a value \fP"
+.ti -1c
+.RI "override \fBSqlCommandInfo\fP \fBGenerateUpdateRowString\fP ()"
+.br
+.RI "\fINot needed for one-to-many association \fP"
+.ti -1c
+.RI "override \fBSqlCommandInfo\fP \fBGenerateDeleteRowString\fP ()"
+.br
+.RI "\fIGenerate the SQL UPDATE that updates a particular row's foreign key to null \fP"
+.ti -1c
+.RI "override int \fBDoUpdateRows\fP (object id, \fBIPersistentCollection\fP collection, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override \fBSelectFragment\fP \fBGenerateSelectFragment\fP (string alias, string columnSuffix)"
+.br
+.ti -1c
+.RI "override \fBICollectionInitializer\fP \fBCreateCollectionInitializer\fP (IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.RI "\fICreate the OneToManyLoader \fP"
+.ti -1c
+.RI "override string \fBFilterFragment\fP (string alias)"
+.br
+.ti -1c
+.RI "override \fBICollectionInitializer\fP \fBCreateSubselectInitializer\fP (\fBSubselectFetch\fP subselect, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override \fBSqlCommandInfo\fP \fBGenerateIdentityInsertRowString\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBRowDeleteEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBRowInsertEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBCascadeDeleteEnabled\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsOneToMany\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsManyToMany\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBTableName\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 22 of file OneToManyPersister\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override bool NHibernate\&.Persister\&.Collection\&.OneToManyPersister\&.ConsumesCollectionAlias ()\fC [virtual]\fP"
+
+.PP
+Very, very, very ugly\&.\&.\&. Does this persister 'consume' collection column aliases in the result set?
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 148 of file OneToManyPersister\&.cs\&.
+.SS "override bool NHibernate\&.Persister\&.Collection\&.OneToManyPersister\&.ConsumesEntityAlias ()\fC [virtual]\fP"
+
+.PP
+Very, very, very ugly\&.\&.\&. Does this persister 'consume' entity column aliases in the result set?
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 143 of file OneToManyPersister\&.cs\&.
+.SS "override \fBICollectionInitializer\fP NHibernate\&.Persister\&.Collection\&.OneToManyPersister\&.CreateCollectionInitializer (IDictionary< string, \fBIFilter\fP >enabledFilters)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Create the OneToManyLoader 
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 339 of file OneToManyPersister\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Persister\&.Collection\&.OneToManyPersister\&.FromJoinFragment (stringalias, boolinnerJoin, boolincludeSubclasses)\fC [virtual]\fP"
+
+.PP
+Get the from clause part of any joins (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIinnerJoin\fP 
+.br
+\fIincludeSubclasses\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 344 of file OneToManyPersister\&.cs\&.
+.SS "override \fBSqlCommandInfo\fP NHibernate\&.Persister\&.Collection\&.OneToManyPersister\&.GenerateDeleteRowString ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Generate the SQL UPDATE that updates a particular row's foreign key to null 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 121 of file OneToManyPersister\&.cs\&.
+.SS "override \fBSqlCommandInfo\fP NHibernate\&.Persister\&.Collection\&.OneToManyPersister\&.GenerateDeleteString ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Generate the SQL UPDATE that updates all the foreign keys to null 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 65 of file OneToManyPersister\&.cs\&.
+.SS "override \fBSqlCommandInfo\fP NHibernate\&.Persister\&.Collection\&.OneToManyPersister\&.GenerateInsertRowString ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Generate the SQL UPDATE that updates a foreign key to a value 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 88 of file OneToManyPersister\&.cs\&.
+.SS "override \fBSqlCommandInfo\fP NHibernate\&.Persister\&.Collection\&.OneToManyPersister\&.GenerateUpdateRowString ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Not needed for one-to-many association 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 111 of file OneToManyPersister\&.cs\&.
+.SS "override object NHibernate\&.Persister\&.Collection\&.OneToManyPersister\&.GetElementByIndex (objectkey, objectindex, \fBISessionImplementor\fPsession, objectowner)\fC [virtual]\fP"
+
+.PP
+Try to find an element by a given index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key of the collection (collection-owner identifier)
+.br
+\fIindex\fP The given index\&.
+.br
+\fIsession\fP The active \fBISession\fP\&.
+.br
+\fIowner\fP The owner of the collection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value of the element where available; otherwise NotFoundObject\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 378 of file OneToManyPersister\&.cs\&.
+.SS "override string NHibernate\&.Persister\&.Collection\&.OneToManyPersister\&.SelectFragment (\fBIJoinable\fPrhs, stringrhsAlias, stringlhsAlias, stringcurrentEntitySuffix, stringcurrentCollectionSuffix, boolincludeCollectionColumns)\fC [virtual]\fP"
+
+.PP
+All columns to select, when loading\&. 
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 301 of file OneToManyPersister\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Persister\&.Collection\&.OneToManyPersister\&.WhereJoinFragment (stringalias, boolinnerJoin, boolincludeSubclasses)\fC [virtual]\fP"
+
+.PP
+Get the where clause part of any joins (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP 
+.br
+\fIinnerJoin\fP 
+.br
+\fIincludeSubclasses\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Persister\&.Collection\&.AbstractCollectionPersister\fP\&.
+.PP
+Definition at line 349 of file OneToManyPersister\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

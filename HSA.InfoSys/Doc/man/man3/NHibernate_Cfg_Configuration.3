@@ -1,0 +1,1257 @@
+.TH "NHibernate.Cfg.Configuration" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cfg.Configuration \- 
+.PP
+Allows the application to specify properties and mapping documents to be used when creating a \fBISessionFactory\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits ISerializable\&.
+.PP
+Inherited by NHibernate\&.Test\&.FilterTest\&.ConfigFixture\&.ConfigurationStub, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2188\&.AppDomainWithMultipleSearchPath\&.MyNhConfiguration\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBConfiguration\fP (SerializationInfo info, StreamingContext context)"
+.br
+.ti -1c
+.RI "void \fBGetObjectData\fP (SerializationInfo info, StreamingContext context)"
+.br
+.ti -1c
+.RI "virtual \fBIMapping\fP \fBBuildMapping\fP ()"
+.br
+.ti -1c
+.RI "\fBConfiguration\fP ()"
+.br
+.RI "\fICreate a new \fBConfiguration\fP object\&. \fP"
+.ti -1c
+.RI "\fBPersistentClass\fP \fBGetClassMapping\fP (System\&.Type persistentClass)"
+.br
+.RI "\fIGet the mapping for a particular class \fP"
+.ti -1c
+.RI "\fBPersistentClass\fP \fBGetClassMapping\fP (string entityName)"
+.br
+.RI "\fIGet the mapping for a particular entity \fP"
+.ti -1c
+.RI "\fBNHibernate\&.Mapping\&.Collection\fP \fBGetCollectionMapping\fP (string role)"
+.br
+.RI "\fIGet the mapping for a particular collection role \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddFile\fP (string xmlFile)"
+.br
+.RI "\fIRead mappings from a particular XML file\&. This method is equivalent to \fBAddXmlFile(string)\fP\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddFile\fP (FileInfo xmlFile)"
+.br
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddXmlFile\fP (string xmlFile)"
+.br
+.RI "\fIRead mappings from a particular XML file\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddXml\fP (string xml)"
+.br
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddXml\fP (string xml, string name)"
+.br
+.RI "\fIRead mappings from a string\&. This method is equivalent to \fBAddXmlString(string)\fP\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddXmlString\fP (string xml)"
+.br
+.RI "\fIRead mappings from a string\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddUrl\fP (string url)"
+.br
+.RI "\fIRead mappings from a URL\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddUrl\fP (Uri url)"
+.br
+.RI "\fIRead mappings from a URL\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddDocument\fP (XmlDocument doc)"
+.br
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddDocument\fP (XmlDocument doc, string name)"
+.br
+.RI "\fIRead mappings from an XmlDocument\&. \fP"
+.ti -1c
+.RI "void \fBAddDeserializedMapping\fP (\fBHbmMapping\fP mappingDocument, string documentFileName)"
+.br
+.RI "\fIAdd mapping data using deserialized class\&. \fP"
+.ti -1c
+.RI "void \fBAddMapping\fP (\fBHbmMapping\fP mappingDocument)"
+.br
+.ti -1c
+.RI "\fBMappings\fP \fBCreateMappings\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fICreate a new \fBMappings\fP to add classes and collection mappings to\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddInputStream\fP (Stream xmlInputStream)"
+.br
+.RI "\fIRead mappings from a Stream\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddInputStream\fP (Stream xmlInputStream, string name)"
+.br
+.RI "\fIRead mappings from a Stream\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddResource\fP (string path, Assembly assembly)"
+.br
+.RI "\fIAdds the mappings in the resource of the assembly\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddResources\fP (IEnumerable< string > paths, Assembly assembly)"
+.br
+.RI "\fIAdds the mappings from embedded resources of the assembly\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddClass\fP (System\&.Type persistentClass)"
+.br
+.RI "\fIRead a mapping from an embedded resource, using a convention\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddAssembly\fP (string assemblyName)"
+.br
+.RI "\fIAdds all of the assembly's embedded resources whose names end with \fC\&.hbm\&.xml\fP\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddAssembly\fP (Assembly assembly)"
+.br
+.RI "\fIAdds all of the assembly's embedded resources whose names end with \fC\&.hbm\&.xml\fP\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddDirectory\fP (DirectoryInfo dir)"
+.br
+.RI "\fIRead all mapping documents from a directory tree\&. Assume that any file named \fC*\&.hbm\&.xml\fP is a mapping document\&. \fP"
+.ti -1c
+.RI "string[] \fBGenerateDropSchemaScript\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIGenerate DDL for dropping tables \fP"
+.ti -1c
+.RI "string[] \fBGenerateSchemaCreationScript\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIGenerate DDL for creating tables \fP"
+.ti -1c
+.RI "virtual void \fBBuildMappings\fP ()"
+.br
+.RI "\fICall this to ensure the mappings are fully compiled/built\&. Usefull to ensure getting access to all information in the metamodel when calling e\&.g\&. getClassMappings()\&. \fP"
+.ti -1c
+.RI "\fBISessionFactory\fP \fBBuildSessionFactory\fP ()"
+.br
+.RI "\fIInstantiate a new \fBISessionFactory\fP, using the properties and mappings in this configuration\&. The \fBISessionFactory\fP will be immutable, so changes made to the configuration after building the \fBISessionFactory\fP will not affect it\&. \fP"
+.ti -1c
+.RI "IDictionary< string, string > \fBGetDerivedProperties\fP ()"
+.br
+.RI "\fIReturns the set of properties computed from the default properties in the dialect combined with the other properties in the configuration\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBSetDefaultAssembly\fP (string newDefaultAssembly)"
+.br
+.RI "\fISet the default assembly to use for the mappings added to the configuration afterwards\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBSetDefaultNamespace\fP (string newDefaultNamespace)"
+.br
+.RI "\fISet the default namespace to use for the mappings added to the configuration afterwards\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBSetInterceptor\fP (\fBIInterceptor\fP newInterceptor)"
+.br
+.RI "\fISets the default interceptor for use by all sessions\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBSetProperties\fP (IDictionary< string, string > newProperties)"
+.br
+.RI "\fISpecify a completely new set of properties \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddProperties\fP (IDictionary< string, string > additionalProperties)"
+.br
+.RI "\fIAdds an IDictionary of configuration properties\&. The Key is the name of the Property and the Value is the String value of the Property\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBSetProperty\fP (string name, string value)"
+.br
+.RI "\fISets the value of the configuration property\&. \fP"
+.ti -1c
+.RI "string \fBGetProperty\fP (string name)"
+.br
+.RI "\fIGets the value of the configuration property\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBConfigure\fP ()"
+.br
+.RI "\fIConfigure \fBNHibernate\fP using the \fC<hibernate-configuration>\fP section from the application config file, if found, or the file \fChibernate\&.cfg\&.xml\fP if the \fC<hibernate-configuration>\fP section not include the session-factory configuration\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBConfigure\fP (string fileName)"
+.br
+.RI "\fIConfigure \fBNHibernate\fP using the file specified\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBConfigure\fP (Assembly assembly, string resourceName)"
+.br
+.RI "\fIConfigure \fBNHibernate\fP using a resource contained in an Assembly\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBConfigure\fP (XmlReader textReader)"
+.br
+.RI "\fIConfigure \fBNHibernate\fP using the specified XmlReader\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBSetCacheConcurrencyStrategy\fP (String clazz, String concurrencyStrategy)"
+.br
+.RI "\fISet up a cache for an entity class \fP"
+.ti -1c
+.RI "void \fBSetCacheConcurrencyStrategy\fP (String clazz, String concurrencyStrategy, String region)"
+.br
+.ti -1c
+.RI "\fBConfiguration\fP \fBSetCollectionCacheConcurrencyStrategy\fP (string collectionRole, string concurrencyStrategy)"
+.br
+.RI "\fISet up a cache for a collection role \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBSetNamingStrategy\fP (\fBINamingStrategy\fP newNamingStrategy)"
+.br
+.RI "\fISet a custom naming strategy \fP"
+.ti -1c
+.RI "void \fBAddFilterDefinition\fP (\fBFilterDefinition\fP definition)"
+.br
+.ti -1c
+.RI "void \fBAddAuxiliaryDatabaseObject\fP (\fBIAuxiliaryDatabaseObject\fP obj)"
+.br
+.ti -1c
+.RI "void \fBAddSqlFunction\fP (string functionName, \fBISQLFunction\fP sqlFunction)"
+.br
+.ti -1c
+.RI "\fBNamedXmlDocument\fP \fBLoadMappingDocument\fP (XmlReader hbmReader, string name)"
+.br
+.RI "\fILoad and validate the mappings in the XmlReader against the nhibernate-mapping-2\&.2 schema, without adding them to the configuration\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddXmlReader\fP (XmlReader hbmReader)"
+.br
+.RI "\fIAdds the \fBMappings\fP in the XmlReader after validating it against the nhibernate-mapping-2\&.2 schema\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP \fBAddXmlReader\fP (XmlReader hbmReader, string name)"
+.br
+.RI "\fIAdds the \fBMappings\fP in the XmlReader after validating it against the nhibernate-mapping-2\&.2 schema\&. \fP"
+.ti -1c
+.RI "void \fBSetListeners\fP (\fBListenerType\fP type, string[] listenerClasses)"
+.br
+.RI "\fISet or clear listener for a given ListenerType\&. \fP"
+.ti -1c
+.RI "void \fBSetListener\fP (\fBListenerType\fP type, object listener)"
+.br
+.RI "\fISet or clear listener for a given ListenerType\&. \fP"
+.ti -1c
+.RI "void \fBSetListeners\fP (\fBListenerType\fP type, object[] listeners)"
+.br
+.RI "\fISet or clear listeners for a given ListenerType\&. \fP"
+.ti -1c
+.RI "void \fBAppendListeners\fP (\fBListenerType\fP type, object[] listeners)"
+.br
+.RI "\fIAppend the listeners to the end of the currently configured listeners \fP"
+.ti -1c
+.RI "string[] \fBGenerateSchemaUpdateScript\fP (\fBDialect\&.Dialect\fP dialect, \fBDatabaseMetadata\fP databaseMetadata)"
+.br
+.ti -1c
+.RI "void \fBValidateSchema\fP (\fBDialect\&.Dialect\fP dialect, \fBDatabaseMetadata\fP databaseMetadata)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBIncludeAction\fP (SchemaAction actionsSource, SchemaAction includedAction)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBDefaultHibernateCfgFileName\fP = 'hibernate\&.cfg\&.xml'"
+.br
+.RI "\fIDefault name for hibernate configuration file\&.\fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBReset\fP ()"
+.br
+.RI "\fIClear the internal state of the \fBConfiguration\fP object\&. \fP"
+.ti -1c
+.RI "\fBConfiguration\fP (\fBSettingsFactory\fP settingsFactory)"
+.br
+.ti -1c
+.RI "virtual void \fBConfigureProxyFactoryFactory\fP ()"
+.br
+.ti -1c
+.RI "\fBConfiguration\fP \fBDoConfigure\fP (\fBISessionFactoryConfiguration\fP factoryConfiguration)"
+.br
+.ti -1c
+.RI "virtual string \fBGetDefaultConfigurationFilePath\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "IDictionary< string, 
+.br
+\fBPersistentClass\fP > \fBclasses\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, 
+.br
+\fBNHibernate\&.Mapping\&.Collection\fP > \fBcollections\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, \fBTable\fP > \fBtables\fP"
+.br
+.ti -1c
+.RI "IList< SecondPassCommand > \fBsecondPasses\fP"
+.br
+.ti -1c
+.RI "Queue< \fBFilterSecondPassArgs\fP > \fBfiltersSecondPasses\fP"
+.br
+.ti -1c
+.RI "IList< \fBMappings\&.PropertyReference\fP > \fBpropertyReferences\fP"
+.br
+.ti -1c
+.RI "IList< \fBIAuxiliaryDatabaseObject\fP > \fBauxiliaryDatabaseObjects\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, \fBTypeDef\fP > \fBtypeDefs\fP"
+.br
+.ti -1c
+.RI "ISet< \fBExtendsQueueEntry\fP > \fBextendsQueue\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, 
+.br
+\fBMappings\&.TableDescription\fP > \fBtableNameBinding\fP"
+.br
+.ti -1c
+.RI "IDictionary< \fBTable\fP, 
+.br
+\fBMappings\&.ColumnNames\fP > \fBcolumnNameBindingPerTable\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "ICollection< \fBPersistentClass\fP > \fBClassMappings\fP\fC [get]\fP"
+.br
+.RI "\fIThe class mappings \fP"
+.ti -1c
+.RI "ICollection
+.br
+< \fBNHibernate\&.Mapping\&.Collection\fP > \fBCollectionMappings\fP\fC [get]\fP"
+.br
+.RI "\fIThe collection mappings \fP"
+.ti -1c
+.RI "IDictionary< string, 
+.br
+\fBNamedQueryDefinition\fP > \fBNamedQueries\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe named queries \fP"
+.ti -1c
+.RI "\fBIEntityNotFoundDelegate\fP \fBEntityNotFoundDelegate\fP\fC [get, set]\fP"
+.br
+.RI "\fIRetrieve the user-supplied delegate to handle non-existent entity scenarios\&. \fP"
+.ti -1c
+.RI "\fBEventListeners\fP \fBEventListeners\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIInterceptor\fP \fBInterceptor\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBIInterceptor\fP to use\&. \fP"
+.ti -1c
+.RI "IDictionary< string, string > \fBProperties\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the IDictionary that contains the configuration properties and their values\&. \fP"
+.ti -1c
+.RI "IDictionary< string, string > \fBImports\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet the query language imports (entityName/className -> AssemblyQualifiedName) \fP"
+.ti -1c
+.RI "IDictionary< string, 
+.br
+\fBNamedSQLQueryDefinition\fP > \fBNamedSQLQueries\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe named SQL queries \fP"
+.ti -1c
+.RI "\fBINamingStrategy\fP \fBNamingStrategy\fP\fC [get]\fP"
+.br
+.RI "\fINaming strategy for tables and columns \fP"
+.ti -1c
+.RI "IDictionary< string, 
+.br
+\fBResultSetMappingDefinition\fP > \fBSqlResultSetMappings\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, 
+.br
+\fBFilterDefinition\fP > \fBFilterDefinitions\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, \fBISQLFunction\fP > \fBSqlFunctions\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "EventHandler
+.br
+< \fBBindMappingEventArgs\fP > \fBBeforeBindMapping\fP"
+.br
+.ti -1c
+.RI "EventHandler
+.br
+< \fBBindMappingEventArgs\fP > \fBAfterBindMapping\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Allows the application to specify properties and mapping documents to be used when creating a \fBISessionFactory\fP\&. 
+
+Usually an application will create a single \fBConfiguration\fP, build a single instance of \fBISessionFactory\fP, and then instantiate \fBISession\fP objects in threads servicing client requests\&. 
+.PP
+The \fBConfiguration\fP is meant only as an initialization-time object\&. \fBISessionFactory\fP is immutable and does not retain any association back to the \fBConfiguration\fP 
+.PP
+Definition at line 52 of file Configuration\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Cfg\&.Configuration\&.Configuration ()"
+
+.PP
+Create a new \fBConfiguration\fP object\&. 
+.PP
+Definition at line 266 of file Configuration\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.AddAssembly (stringassemblyName)"
+
+.PP
+Adds all of the assembly's embedded resources whose names end with \fC\&.hbm\&.xml\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassemblyName\fP The name of the assembly to load\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This configuration object\&.
+.RE
+.PP
+.PP
+The assembly must be loadable using Assembly\&.Load(string)\&. If this condition is not satisfied, load the assembly manually and call \fBAddAssembly(Assembly)\fP instead\&. 
+.PP
+Definition at line 742 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.AddAssembly (Assemblyassembly)"
+
+.PP
+Adds all of the assembly's embedded resources whose names end with \fC\&.hbm\&.xml\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassembly\fP The assembly\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This configuration object\&.
+.RE
+.PP
+
+.PP
+Definition at line 764 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.AddClass (System\&.TypepersistentClass)"
+
+.PP
+Read a mapping from an embedded resource, using a convention\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersistentClass\fP The type to map\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This configuration object\&.
+.RE
+.PP
+.PP
+The convention is for class \fCFoo\&.Bar\&.Foo\fP to be mapped by the resource named \fCFoo\&.Bar\&.Foo\&.hbm\&.xml\fP, embedded in the class' assembly\&. If the mappings and classes are defined in different assemblies or don't follow the naming convention, this method cannot be used\&. 
+.PP
+Definition at line 727 of file Configuration\&.cs\&.
+.SS "void NHibernate\&.Cfg\&.Configuration\&.AddDeserializedMapping (\fBHbmMapping\fPmappingDocument, stringdocumentFileName)"
+
+.PP
+Add mapping data using deserialized class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImappingDocument\fP \fBMapping\fP metadata\&.
+.br
+\fIdocumentFileName\fP XML file's name where available; otherwise null\&.
+.RE
+.PP
+
+.PP
+Definition at line 514 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.AddDirectory (DirectoryInfodir)"
+
+.PP
+Read all mapping documents from a directory tree\&. Assume that any file named \fC*\&.hbm\&.xml\fP is a mapping document\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdir\fP a directory
+.RE
+.PP
+
+.PP
+Definition at line 798 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.AddDocument (XmlDocumentdoc, stringname)"
+
+.PP
+Read mappings from an XmlDocument\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdoc\fP A loaded XmlDocument that contains the mappings\&.
+.br
+\fIname\fP The name of the document, for error reporting purposes\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This configuration object\&.
+.RE
+.PP
+
+.PP
+Definition at line 468 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.AddFile (stringxmlFile)"
+
+.PP
+Read mappings from a particular XML file\&. This method is equivalent to \fBAddXmlFile(string)\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxmlFile\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 329 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.AddInputStream (StreamxmlInputStream)"
+
+.PP
+Read mappings from a Stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxmlInputStream\fP The stream containing XML
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBConfiguration\fP object\&.
+.RE
+.PP
+.PP
+The Stream passed in through the parameter \fIxmlInputStream\fP  is not \fIguaranteed\fP to be cleaned up by this method\&. It is the caller's responsiblity to ensure that \fIxmlInputStream\fP  is properly handled when this method completes\&. 
+.PP
+Definition at line 614 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.AddInputStream (StreamxmlInputStream, stringname)"
+
+.PP
+Read mappings from a Stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxmlInputStream\fP The stream containing XML
+.br
+\fIname\fP The name of the stream to use in error reporting\&. May be \&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBConfiguration\fP object\&.
+.RE
+.PP
+.PP
+The Stream passed in through the parameter \fIxmlInputStream\fP  is not \fIguaranteed\fP to be cleaned up by this method\&. It is the caller's responsiblity to ensure that \fIxmlInputStream\fP  is properly handled when this method completes\&. 
+.PP
+Definition at line 631 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.AddProperties (IDictionary< string, string >additionalProperties)"
+
+.PP
+Adds an IDictionary of configuration properties\&. The Key is the name of the Property and the Value is the String value of the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIadditionalProperties\fP An IDictionary of configuration properties\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBConfiguration\fP object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1371 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.AddResource (stringpath, Assemblyassembly)"
+
+.PP
+Adds the mappings in the resource of the assembly\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path to the resource file in the assembly\&.
+.br
+\fIassembly\fP The assembly that contains the resource file\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This configuration object\&.
+.RE
+.PP
+
+.PP
+Definition at line 664 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.AddResources (IEnumerable< string >paths, Assemblyassembly)"
+
+.PP
+Adds the mappings from embedded resources of the assembly\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpaths\fP Paths to the resource files in the assembly\&.
+.br
+\fIassembly\fP The assembly that contains the resource files\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This configuration object\&.
+.RE
+.PP
+
+.PP
+Definition at line 702 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.AddUrl (stringurl)"
+
+.PP
+Read mappings from a URL\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIurl\fP a URL
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This configuration object\&.
+.RE
+.PP
+
+.PP
+Definition at line 441 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.AddUrl (Uriurl)"
+
+.PP
+Read mappings from a URL\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIurl\fP a Uri to read the mappings from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This configuration object\&.
+.RE
+.PP
+
+.PP
+Definition at line 452 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.AddXml (stringxml, stringname)"
+
+.PP
+Read mappings from a string\&. This method is equivalent to \fBAddXmlString(string)\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP an XML string
+.br
+\fIname\fP The name to use in error reporting\&. May be \&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This configuration object\&.
+.RE
+.PP
+
+.PP
+Definition at line 393 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.AddXmlFile (stringxmlFile)"
+
+.PP
+Read mappings from a particular XML file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxmlFile\fP a path to a file
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This configuration object\&.
+.RE
+.PP
+
+.PP
+Definition at line 354 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.AddXmlReader (XmlReaderhbmReader)"
+
+.PP
+Adds the \fBMappings\fP in the XmlReader after validating it against the nhibernate-mapping-2\&.2 schema\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhbmReader\fP The XmlReader that contains the mapping\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBConfiguration\fP object\&.
+.RE
+.PP
+
+.PP
+Definition at line 1838 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.AddXmlReader (XmlReaderhbmReader, stringname)"
+
+.PP
+Adds the \fBMappings\fP in the XmlReader after validating it against the nhibernate-mapping-2\&.2 schema\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhbmReader\fP The XmlReader that contains the mapping\&.
+.br
+\fIname\fP The name of the document to use for error reporting\&. May be \&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This \fBConfiguration\fP object\&.
+.RE
+.PP
+
+.PP
+Definition at line 1850 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.AddXmlString (stringxml)"
+
+.PP
+Read mappings from a string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP an XML string
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This configuration object\&.
+.RE
+.PP
+
+.PP
+Definition at line 431 of file Configuration\&.cs\&.
+.SS "void NHibernate\&.Cfg\&.Configuration\&.AppendListeners (\fBListenerType\fPtype, object[]listeners)"
+
+.PP
+Append the listeners to the end of the currently configured listeners 
+.PP
+Definition at line 2201 of file Configuration\&.cs\&.
+.SS "virtual void NHibernate\&.Cfg\&.Configuration\&.BuildMappings ()\fC [virtual]\fP"
+
+.PP
+Call this to ensure the mappings are fully compiled/built\&. Usefull to ensure getting access to all information in the metamodel when calling e\&.g\&. getClassMappings()\&. 
+.PP
+Definition at line 1081 of file Configuration\&.cs\&.
+.SS "\fBISessionFactory\fP NHibernate\&.Cfg\&.Configuration\&.BuildSessionFactory ()"
+
+.PP
+Instantiate a new \fBISessionFactory\fP, using the properties and mappings in this configuration\&. The \fBISessionFactory\fP will be immutable, so changes made to the configuration after building the \fBISessionFactory\fP will not affect it\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBISessionFactory\fP instance\&.
+.RE
+.PP
+
+.PP
+Definition at line 1250 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.Configure ()"
+
+.PP
+Configure \fBNHibernate\fP using the \fC<hibernate-configuration>\fP section from the application config file, if found, or the file \fChibernate\&.cfg\&.xml\fP if the \fC<hibernate-configuration>\fP section not include the session-factory configuration\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A configuration object initialized with the file\&.
+.RE
+.PP
+.PP
+To configure \fBNHibernate\fP explicitly using \fChibernate\&.cfg\&.xml\fP, appling merge/override of the application configuration file, use this code: 
+.PP
+.nf
+configuration\&.Configure("path/to/hibernate\&.cfg\&.xml");
+
+.fi
+.PP
+ 
+.PP
+Definition at line 1432 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.Configure (stringfileName)"
+
+.PP
+Configure \fBNHibernate\fP using the file specified\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfileName\fP The location of the XML file to use to configure \fBNHibernate\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBConfiguration\fP object initialized with the file\&.
+.RE
+.PP
+.PP
+Calling \fBConfigure(string)\fP will override/merge the values set in app\&.config or web\&.config 
+.PP
+Definition at line 1453 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.Configure (Assemblyassembly, stringresourceName)"
+
+.PP
+Configure \fBNHibernate\fP using a resource contained in an Assembly\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIassembly\fP The Assembly that contains the resource\&.
+.br
+\fIresourceName\fP The name of the manifest resource being requested\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBConfiguration\fP object initialized from the manifest resource\&.
+.RE
+.PP
+.PP
+Calling \fBConfigure(Assembly, string)\fP will overwrite the values set in app\&.config or web\&.config 
+.PP
+Definition at line 1490 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.Configure (XmlReadertextReader)"
+
+.PP
+Configure \fBNHibernate\fP using the specified XmlReader\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItextReader\fP The XmlReader that contains the Xml to configure \fBNHibernate\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBConfiguration\fP object initialized with the file\&.
+.RE
+.PP
+.PP
+Calling \fBConfigure(XmlReader)\fP will overwrite the values set in app\&.config or web\&.config 
+.PP
+Definition at line 1532 of file Configuration\&.cs\&.
+.SS "\fBMappings\fP NHibernate\&.Cfg\&.Configuration\&.CreateMappings (\fBDialect\&.Dialect\fPdialect)"
+
+.PP
+Create a new \fBMappings\fP to add classes and collection mappings to\&. 
+.PP
+Definition at line 565 of file Configuration\&.cs\&.
+.SS "string [] NHibernate\&.Cfg\&.Configuration\&.GenerateDropSchemaScript (\fBDialect\&.Dialect\fPdialect)"
+
+.PP
+Generate DDL for dropping tables 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBNHibernate\&.Tool\&.hbm2ddl\&.SchemaExport\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 817 of file Configuration\&.cs\&.
+.SS "string [] NHibernate\&.Cfg\&.Configuration\&.GenerateSchemaCreationScript (\fBDialect\&.Dialect\fPdialect)"
+
+.PP
+Generate DDL for creating tables 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP 
+.RE
+.PP
+
+.PP
+Definition at line 892 of file Configuration\&.cs\&.
+.SS "\fBPersistentClass\fP NHibernate\&.Cfg\&.Configuration\&.GetClassMapping (System\&.TypepersistentClass)"
+
+.PP
+Get the mapping for a particular class 
+.PP
+Definition at line 295 of file Configuration\&.cs\&.
+.SS "\fBPersistentClass\fP NHibernate\&.Cfg\&.Configuration\&.GetClassMapping (stringentityName)"
+
+.PP
+Get the mapping for a particular entity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP An entity name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the entity mapping information 
+.RE
+.PP
+
+.PP
+Definition at line 304 of file Configuration\&.cs\&.
+.SS "\fBNHibernate\&.Mapping\&.Collection\fP NHibernate\&.Cfg\&.Configuration\&.GetCollectionMapping (stringrole)"
+
+.PP
+Get the mapping for a particular collection role 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP a collection role
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBNHibernate\&.Mapping\&.Collection\fP
+.RE
+.PP
+
+.PP
+Definition at line 316 of file Configuration\&.cs\&.
+.SS "IDictionary<string, string> NHibernate\&.Cfg\&.Configuration\&.GetDerivedProperties ()"
+
+.PP
+Returns the set of properties computed from the default properties in the dialect combined with the other properties in the configuration\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 1293 of file Configuration\&.cs\&.
+.SS "string NHibernate\&.Cfg\&.Configuration\&.GetProperty (stringname)"
+
+.PP
+Gets the value of the configuration property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the property\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The configured value of the property, or  if the property was not specified\&.
+.RE
+.PP
+
+.PP
+Definition at line 1399 of file Configuration\&.cs\&.
+.SS "\fBNamedXmlDocument\fP NHibernate\&.Cfg\&.Configuration\&.LoadMappingDocument (XmlReaderhbmReader, stringname)"
+
+.PP
+Load and validate the mappings in the XmlReader against the nhibernate-mapping-2\&.2 schema, without adding them to the configuration\&. This method is made public to be usable from the unit tests\&. It is not intended to be called by end users\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhbmReader\fP The XmlReader that contains the mapping\&.
+.br
+\fIname\fP The name of the document, for error reporting purposes\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBNamedXmlDocument\fP containing the validated XmlDocument built from the XmlReader\&.
+.RE
+.PP
+
+.PP
+Definition at line 1799 of file Configuration\&.cs\&.
+.SS "void NHibernate\&.Cfg\&.Configuration\&.Reset ()\fC [protected]\fP"
+
+.PP
+Clear the internal state of the \fBConfiguration\fP object\&. 
+.PP
+Definition at line 167 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.SetCacheConcurrencyStrategy (Stringclazz, StringconcurrencyStrategy)"
+
+.PP
+Set up a cache for an entity class 
+.PP
+Definition at line 1675 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.SetCollectionCacheConcurrencyStrategy (stringcollectionRole, stringconcurrencyStrategy)"
+
+.PP
+Set up a cache for a collection role 
+.PP
+Definition at line 1701 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.SetDefaultAssembly (stringnewDefaultAssembly)"
+
+.PP
+Set the default assembly to use for the mappings added to the configuration afterwards\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewDefaultAssembly\fP The default assembly name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This configuration instance\&.
+.RE
+.PP
+.PP
+This setting can be overridden for a mapping file by setting \fCdefault-assembly\fP attribute of \fC<hibernate-mapping>\fP element\&. 
+.PP
+Definition at line 1320 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.SetDefaultNamespace (stringnewDefaultNamespace)"
+
+.PP
+Set the default namespace to use for the mappings added to the configuration afterwards\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewDefaultNamespace\fP The default namespace\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This configuration instance\&.
+.RE
+.PP
+.PP
+This setting can be overridden for a mapping file by setting \fCdefault-namespace\fP attribute of \fC<hibernate-mapping>\fP element\&. 
+.PP
+Definition at line 1336 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.SetInterceptor (\fBIInterceptor\fPnewInterceptor)"
+
+.PP
+Sets the default interceptor for use by all sessions\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewInterceptor\fP The default interceptor\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This configuration instance\&.
+.RE
+.PP
+
+.PP
+Definition at line 1347 of file Configuration\&.cs\&.
+.SS "void NHibernate\&.Cfg\&.Configuration\&.SetListener (\fBListenerType\fPtype, objectlistener)"
+
+.PP
+Set or clear listener for a given ListenerType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The ListenerType\&.
+.br
+\fIlistener\fP The listener for \fItype\fP  or null to clear\&.
+.RE
+.PP
+.PP
+\fIlistener\fP  must implements the interface related with \fItype\fP \&.
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBNHibernate\&.Event\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1947 of file Configuration\&.cs\&.
+.SS "void NHibernate\&.Cfg\&.Configuration\&.SetListeners (\fBListenerType\fPtype, string[]listenerClasses)"
+
+.PP
+Set or clear listener for a given ListenerType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The ListenerType\&.
+.br
+\fIlistenerClasses\fP The array of AssemblyQualifiedName of each listener for \fItype\fP \&.
+.RE
+.PP
+.PP
+\fIlistenerClasses\fP  must implements the interface related with \fItype\fP \&. All listeners of the given ListenerType will be cleared if the \fIlistenerClasses\fP  is null or empty\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBMappingException\fP\fP when an element of \fIlistenerClasses\fP  have an invalid value or cant be instantiated\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1915 of file Configuration\&.cs\&.
+.SS "void NHibernate\&.Cfg\&.Configuration\&.SetListeners (\fBListenerType\fPtype, object[]listeners)"
+
+.PP
+Set or clear listeners for a given ListenerType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The ListenerType\&.
+.br
+\fIlisteners\fP The listener for \fItype\fP  or null to clear\&.
+.RE
+.PP
+.PP
+Listeners of \fIlisteners\fP  must implements one of the interface of event listenesr\&.
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBNHibernate\&.Event\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 2080 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.SetNamingStrategy (\fBINamingStrategy\fPnewNamingStrategy)"
+
+.PP
+Set a custom naming strategy 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewNamingStrategy\fP the NamingStrategy to set
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 1755 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.SetProperties (IDictionary< string, string >newProperties)"
+
+.PP
+Specify a completely new set of properties 
+.PP
+Definition at line 1356 of file Configuration\&.cs\&.
+.SS "\fBConfiguration\fP NHibernate\&.Cfg\&.Configuration\&.SetProperty (stringname, stringvalue)"
+
+.PP
+Sets the value of the configuration property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the property\&.
+.br
+\fIvalue\fP The value of the property\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+This configuration object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1388 of file Configuration\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const string NHibernate\&.Cfg\&.Configuration\&.DefaultHibernateCfgFileName = 'hibernate\&.cfg\&.xml'"
+
+.PP
+Default name for hibernate configuration file\&.
+.PP
+Definition at line 55 of file Configuration\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "ICollection<\fBPersistentClass\fP> NHibernate\&.Cfg\&.Configuration\&.ClassMappings\fC [get]\fP"
+
+.PP
+The class mappings 
+.PP
+Definition at line 272 of file Configuration\&.cs\&.
+.SS "ICollection<\fBNHibernate\&.Mapping\&.Collection\fP> NHibernate\&.Cfg\&.Configuration\&.CollectionMappings\fC [get]\fP"
+
+.PP
+The collection mappings 
+.PP
+Definition at line 280 of file Configuration\&.cs\&.
+.SS "\fBIEntityNotFoundDelegate\fP NHibernate\&.Cfg\&.Configuration\&.EntityNotFoundDelegate\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Retrieve the user-supplied delegate to handle non-existent entity scenarios\&. Specify a user-supplied delegate to be used to handle scenarios where an entity could not be located by specified id\&. This is mainly intended for EJB3 implementations to be able to control how proxy initialization errors should be handled\&.\&.\&. 
+.PP
+Definition at line 1217 of file Configuration\&.cs\&.
+.SS "IDictionary<string, string> NHibernate\&.Cfg\&.Configuration\&.Imports\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get the query language imports (entityName/className -> AssemblyQualifiedName) 
+.PP
+Definition at line 1717 of file Configuration\&.cs\&.
+.SS "\fBIInterceptor\fP NHibernate\&.Cfg\&.Configuration\&.Interceptor\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBIInterceptor\fP to use\&. The \fBIInterceptor\fP to use\&.
+.PP
+Definition at line 1270 of file Configuration\&.cs\&.
+.SS "IDictionary<string, \fBNamedQueryDefinition\fP> NHibernate\&.Cfg\&.Configuration\&.NamedQueries\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The named queries 
+.PP
+Definition at line 1200 of file Configuration\&.cs\&.
+.SS "IDictionary<string, \fBNamedSQLQueryDefinition\fP> NHibernate\&.Cfg\&.Configuration\&.NamedSQLQueries\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The named SQL queries 
+.PP
+Definition at line 1737 of file Configuration\&.cs\&.
+.SS "\fBINamingStrategy\fP NHibernate\&.Cfg\&.Configuration\&.NamingStrategy\fC [get]\fP"
+
+.PP
+Naming strategy for tables and columns 
+.PP
+Definition at line 1746 of file Configuration\&.cs\&.
+.SS "IDictionary<string, string> NHibernate\&.Cfg\&.Configuration\&.Properties\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the IDictionary that contains the configuration properties and their values\&. The IDictionary that contains the configuration properties and their values\&. 
+.PP
+Definition at line 1284 of file Configuration\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

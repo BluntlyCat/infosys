@@ -1,0 +1,208 @@
+.TH "log4net.Util.TextWriterAdapter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Util.TextWriterAdapter \- 
+.PP
+Adapter that extends TextWriter and forwards all messages to an instance of TextWriter\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits TextWriter\&.
+.PP
+Inherited by \fBlog4net\&.Util\&.ProtectCloseTextWriter\fP, and \fBlog4net\&.Util\&.QuietTextWriter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBClose\fP ()"
+.br
+.RI "\fICloses the writer and releases any system resources associated with the writer \fP"
+.ti -1c
+.RI "override void \fBFlush\fP ()"
+.br
+.RI "\fIFlushes any buffered output \fP"
+.ti -1c
+.RI "override void \fBWrite\fP (char value)"
+.br
+.RI "\fIWrites a character to the wrapped TextWriter \fP"
+.ti -1c
+.RI "override void \fBWrite\fP (char[] buffer, int index, int count)"
+.br
+.RI "\fIWrites a character buffer to the wrapped TextWriter \fP"
+.ti -1c
+.RI "override void \fBWrite\fP (String value)"
+.br
+.RI "\fIWrites a string to the wrapped TextWriter \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTextWriterAdapter\fP (TextWriter writer)"
+.br
+.RI "\fICreate an instance of \fBTextWriterAdapter\fP that forwards all messages to a TextWriter\&. \fP"
+.ti -1c
+.RI "override void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIDispose this writer \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "TextWriter \fBWriter\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the underlying TextWriter\&. \fP"
+.ti -1c
+.RI "override Encoding \fBEncoding\fP\fC [get]\fP"
+.br
+.RI "\fIThe Encoding in which the output is written \fP"
+.ti -1c
+.RI "override IFormatProvider \fBFormatProvider\fP\fC [get]\fP"
+.br
+.RI "\fIGets an object that controls formatting \fP"
+.ti -1c
+.RI "override String \fBNewLine\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the line terminator string used by the TextWriter \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Adapter that extends TextWriter and forwards all messages to an instance of TextWriter\&. 
+
+Adapter that extends TextWriter and forwards all messages to an instance of TextWriter\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 38 of file TextWriterAdapter\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Util\&.TextWriterAdapter\&.TextWriterAdapter (TextWriterwriter)\fC [protected]\fP"
+
+.PP
+Create an instance of \fBTextWriterAdapter\fP that forwards all messages to a TextWriter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP The TextWriter to forward to
+.RE
+.PP
+.PP
+Create an instance of \fBTextWriterAdapter\fP that forwards all messages to a TextWriter\&. 
+.PP
+Definition at line 62 of file TextWriterAdapter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Util\&.TextWriterAdapter\&.Close ()"
+
+.PP
+Closes the writer and releases any system resources associated with the writer 
+.PP
+Definition at line 152 of file TextWriterAdapter\&.cs\&.
+.SS "override void log4net\&.Util\&.TextWriterAdapter\&.Dispose (booldisposing)\fC [protected]\fP"
+
+.PP
+Dispose this writer 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP flag indicating if we are being disposed
+.RE
+.PP
+.PP
+Dispose this writer 
+.PP
+Definition at line 166 of file TextWriterAdapter\&.cs\&.
+.SS "override void log4net\&.Util\&.TextWriterAdapter\&.Flush ()"
+
+.PP
+Flushes any buffered output Clears all buffers for the writer and causes any buffered data to be written to the underlying device 
+.PP
+Definition at line 183 of file TextWriterAdapter\&.cs\&.
+.SS "override void log4net\&.Util\&.TextWriterAdapter\&.Write (charvalue)"
+
+.PP
+Writes a character to the wrapped TextWriter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP the value to write to the TextWriter
+.RE
+.PP
+.PP
+Writes a character to the wrapped TextWriter 
+.PP
+Definition at line 197 of file TextWriterAdapter\&.cs\&.
+.SS "override void log4net\&.Util\&.TextWriterAdapter\&.Write (char[]buffer, intindex, intcount)"
+
+.PP
+Writes a character buffer to the wrapped TextWriter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP the data buffer
+.br
+\fIindex\fP the start index
+.br
+\fIcount\fP the number of characters to write
+.RE
+.PP
+.PP
+Writes a character buffer to the wrapped TextWriter 
+.PP
+Definition at line 213 of file TextWriterAdapter\&.cs\&.
+.SS "override void log4net\&.Util\&.TextWriterAdapter\&.Write (Stringvalue)"
+
+.PP
+Writes a string to the wrapped TextWriter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP the value to write to the TextWriter
+.RE
+.PP
+.PP
+Writes a string to the wrapped TextWriter 
+.PP
+Definition at line 227 of file TextWriterAdapter\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override Encoding log4net\&.Util\&.TextWriterAdapter\&.Encoding\fC [get]\fP"
+
+.PP
+The Encoding in which the output is written The \fBEncoding\fP 
+.PP
+The Encoding in which the output is written 
+.PP
+Definition at line 104 of file TextWriterAdapter\&.cs\&.
+.SS "override IFormatProvider log4net\&.Util\&.TextWriterAdapter\&.FormatProvider\fC [get]\fP"
+
+.PP
+Gets an object that controls formatting The format provider 
+.PP
+Gets an object that controls formatting 
+.PP
+Definition at line 120 of file TextWriterAdapter\&.cs\&.
+.SS "override String log4net\&.Util\&.TextWriterAdapter\&.NewLine\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the line terminator string used by the TextWriter The line terminator to use 
+.PP
+Gets or sets the line terminator string used by the TextWriter 
+.PP
+Definition at line 136 of file TextWriterAdapter\&.cs\&.
+.SS "TextWriter log4net\&.Util\&.TextWriterAdapter\&.Writer\fC [get]\fP, \fC [set]\fP, \fC [protected]\fP"
+
+.PP
+Gets or sets the underlying TextWriter\&. The underlying TextWriter\&. 
+.PP
+Gets or sets the underlying TextWriter\&. 
+.PP
+Definition at line 83 of file TextWriterAdapter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

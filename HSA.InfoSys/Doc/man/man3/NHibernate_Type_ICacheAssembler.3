@@ -1,0 +1,85 @@
+.TH "NHibernate.Type.ICacheAssembler" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.ICacheAssembler \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by NHibernate\&.Impl\&.MultipleQueriesCacheAssembler, and \fBNHibernate\&.Type\&.IType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBDisassemble\fP (object value, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIReturn a cacheable 'disassembled' representation of the object\&.\fP"
+.ti -1c
+.RI "object \fBAssemble\fP (object cached, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIReconstruct the object from its cached 'disassembled' state\&.\fP"
+.ti -1c
+.RI "void \fBBeforeAssemble\fP (object cached, \fBISessionImplementor\fP session)"
+.br
+.RI "\fICalled before assembling a query result set from the query cache, to allow batch fetching of entities missing from the second-level cache\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 5 of file ICacheAssembler\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.Type\&.ICacheAssembler\&.Assemble (objectcached, \fBISessionImplementor\fPsession, objectowner)"
+
+.PP
+Reconstruct the object from its cached 'disassembled' state\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcached\fP the disassembled state from the cache 
+.br
+\fIsession\fP the session 
+.br
+\fIowner\fP the parent entity object 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the the object 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.PersistentEnumType\fP, \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.EnumStringType\fP, \fBNHibernate\&.Type\&.AnyType\fP, \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.SerializableType\fP, \fBNHibernate\&.Type\&.ManyToOneType\fP, \fBNHibernate\&.Type\&.EnumCharType< T >\fP, \fBNHibernate\&.Type\&.OneToOneType\fP, \fBNHibernate\&.Type\&.CompositeCustomType\fP, and \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.SS "void NHibernate\&.Type\&.ICacheAssembler\&.BeforeAssemble (objectcached, \fBISessionImplementor\fPsession)"
+
+.PP
+Called before assembling a query result set from the query cache, to allow batch fetching of entities missing from the second-level cache\&. 
+.PP
+Implemented in \fBNHibernate\&.Type\&.ManyToOneType\fP, and \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.SS "object NHibernate\&.Type\&.ICacheAssembler\&.Disassemble (objectvalue, \fBISessionImplementor\fPsession, objectowner)"
+
+.PP
+Return a cacheable 'disassembled' representation of the object\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP the value to cache 
+.br
+\fIsession\fP the session 
+.br
+\fIowner\fP optional parent entity object (needed for collections) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the disassembled, deep cloned state 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.ComponentType\fP, \fBNHibernate\&.Type\&.PersistentEnumType\fP, \fBNHibernate\&.Type\&.CustomType\fP, \fBNHibernate\&.Type\&.EnumStringType\fP, \fBNHibernate\&.Type\&.AnyType\fP, \fBNHibernate\&.Type\&.SerializableType\fP, \fBNHibernate\&.Type\&.EnumCharType< T >\fP, \fBNHibernate\&.Type\&.CollectionType\fP, \fBNHibernate\&.Type\&.CompositeCustomType\fP, \fBNHibernate\&.Type\&.OneToOneType\fP, \fBNHibernate\&.Type\&.ManyToOneType\fP, and \fBNHibernate\&.Type\&.AbstractType\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

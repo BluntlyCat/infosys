@@ -1,0 +1,1098 @@
+.TH "NHibernate.Impl.StatelessSessionImpl" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Impl.StatelessSessionImpl \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP, and \fBNHibernate\&.IStatelessSession\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBInitializeCollection\fP (\fBIPersistentCollection\fP collection, bool writing)"
+.br
+.RI "\fIInitialize the collection (if not already initialized) \fP"
+.ti -1c
+.RI "override object \fBInternalLoad\fP (string entityName, object id, bool eager, bool isNullable)"
+.br
+.RI "\fILoad an instance without checking if it was deleted\&. If it does not exist and isn't nullable, throw an exception\&. This method may create a new proxy or return an existing proxy\&. \fP"
+.ti -1c
+.RI "override object \fBImmediateLoad\fP (string entityName, object id)"
+.br
+.RI "\fILoad an instance immediately\&. Do not return a proxy\&. \fP"
+.ti -1c
+.RI "override void \fBCloseSessionFromDistributedTransaction\fP ()"
+.br
+.ti -1c
+.RI "override void \fBList\fP (\fBIQueryExpression\fP queryExpression, \fBQueryParameters\fP queryParameters, IList results)"
+.br
+.ti -1c
+.RI "override void \fBList\fP (\fBCriteriaImpl\fP criteria, IList results)"
+.br
+.ti -1c
+.RI "override IEnumerable \fBEnumerable\fP (\fBIQueryExpression\fP queryExpression, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIExecute an \fCIterate()\fP query \fP"
+.ti -1c
+.RI "override IEnumerable< T > \fBEnumerable< T >\fP (\fBIQueryExpression\fP queryExpression, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIStrongly-typed version of \fBEnumerable(IQueryExpression, QueryParameters)\fP \fP"
+.ti -1c
+.RI "override IList \fBListFilter\fP (object collection, string filter, \fBQueryParameters\fP parameters)"
+.br
+.RI "\fIExecute a filter \fP"
+.ti -1c
+.RI "override IList< T > \fBListFilter< T >\fP (object collection, string filter, \fBQueryParameters\fP parameters)"
+.br
+.RI "\fIExecute a filter (strongly-typed version)\&. \fP"
+.ti -1c
+.RI "override IEnumerable \fBEnumerableFilter\fP (object collection, string filter, \fBQueryParameters\fP parameters)"
+.br
+.RI "\fI\fBCollection\fP from a filter \fP"
+.ti -1c
+.RI "override IEnumerable< T > \fBEnumerableFilter< T >\fP (object collection, string filter, \fBQueryParameters\fP parameters)"
+.br
+.RI "\fIStrongly-typed version of \fBEnumerableFilter(object, string, QueryParameters)\fP \fP"
+.ti -1c
+.RI "override void \fBAfterTransactionBegin\fP (\fBITransaction\fP tx)"
+.br
+.RI "\fINotify the session that an \fBNHibernate\fP transaction has begun\&. \fP"
+.ti -1c
+.RI "override void \fBBeforeTransactionCompletion\fP (\fBITransaction\fP tx)"
+.br
+.RI "\fINotify the session that the transaction is about to complete \fP"
+.ti -1c
+.RI "override void \fBAfterTransactionCompletion\fP (bool successful, \fBITransaction\fP tx)"
+.br
+.RI "\fINotify the session that the transaction completed, so we no longer own the old locks\&. (Also we should release cache softlocks)\&. May be called multiple times during the transaction completion process\&. \fP"
+.ti -1c
+.RI "override object \fBGetContextEntityIdentifier\fP (object obj)"
+.br
+.RI "\fIReturn the identifier of the persistent object, or null if transient \fP"
+.ti -1c
+.RI "override object \fBInstantiate\fP (string clazz, object id)"
+.br
+.RI "\fIInstantiate the entity class, initializing with the given identifier \fP"
+.ti -1c
+.RI "override void \fBListCustomQuery\fP (\fBICustomQuery\fP customQuery, \fBQueryParameters\fP queryParameters, IList results)"
+.br
+.RI "\fIExecute an SQL Query\fP"
+.ti -1c
+.RI "override object \fBGetFilterParameterValue\fP (string filterParameterName)"
+.br
+.RI "\fIRetrieve the currently set value for a filter parameter\&. \fP"
+.ti -1c
+.RI "override \fBIType\fP \fBGetFilterParameterType\fP (string filterParameterName)"
+.br
+.RI "\fIRetrieve the type for a given filter parameter\&. \fP"
+.ti -1c
+.RI "override \fBIQueryTranslator\fP[] \fBGetQueries\fP (\fBIQueryExpression\fP query, bool scalar)"
+.br
+.ti -1c
+.RI "override object \fBGetEntityUsingInterceptor\fP (\fBEntityKey\fP key)"
+.br
+.RI "\fIGet the entity instance associated with the given \fCKey\fP, calling the Interceptor if necessary \fP"
+.ti -1c
+.RI "override string \fBBestGuessEntityName\fP (object entity)"
+.br
+.RI "\fIThe best guess entity name for an entity not in an association\fP"
+.ti -1c
+.RI "override string \fBGuessEntityName\fP (object entity)"
+.br
+.RI "\fIThe guessed entity name for an entity not in an association\fP"
+.ti -1c
+.RI "\fBIStatelessSession\fP \fBSetBatchSize\fP (int batchSize)"
+.br
+.RI "\fISets the batch size of the session \fP"
+.ti -1c
+.RI "override void \fBFlush\fP ()"
+.br
+.ti -1c
+.RI "void \fBManagedFlush\fP ()"
+.br
+.ti -1c
+.RI "\fBISessionImplementor\fP \fBGetSessionImplementation\fP ()"
+.br
+.RI "\fIGets the stateless session implementation\&. \fP"
+.ti -1c
+.RI "void \fBClose\fP ()"
+.br
+.RI "\fIClose the stateless session and release the ADO\&.NET connection\&.\fP"
+.ti -1c
+.RI "void \fBManagedClose\fP ()"
+.br
+.ti -1c
+.RI "object \fBInsert\fP (object entity)"
+.br
+.RI "\fIInsert a entity\&.\fP"
+.ti -1c
+.RI "object \fBInsert\fP (string entityName, object entity)"
+.br
+.RI "\fIInsert a row\&. \fP"
+.ti -1c
+.RI "void \fBUpdate\fP (object entity)"
+.br
+.RI "\fIUpdate a entity\&.\fP"
+.ti -1c
+.RI "void \fBUpdate\fP (string entityName, object entity)"
+.br
+.RI "\fIUpdate a entity\&.\fP"
+.ti -1c
+.RI "void \fBDelete\fP (object entity)"
+.br
+.RI "\fIDelete a entity\&. \fP"
+.ti -1c
+.RI "void \fBDelete\fP (string entityName, object entity)"
+.br
+.RI "\fIDelete a entity\&. \fP"
+.ti -1c
+.RI "object \fBGet\fP (string entityName, object id)"
+.br
+.RI "\fIRetrieve a entity\&. \fP"
+.ti -1c
+.RI "T \fBGet< T >\fP (object id)"
+.br
+.RI "\fIRetrieve a entity\&. \fP"
+.ti -1c
+.RI "object \fBGet\fP (string entityName, object id, \fBLockMode\fP lockMode)"
+.br
+.RI "\fIRetrieve a entity, obtaining the specified lock mode\&. \fP"
+.ti -1c
+.RI "T \fBGet< T >\fP (object id, \fBLockMode\fP lockMode)"
+.br
+.RI "\fIRetrieve a entity, obtaining the specified lock mode\&. \fP"
+.ti -1c
+.RI "void \fBRefresh\fP (object entity)"
+.br
+.RI "\fIRefresh the entity instance state from the database\&. \fP"
+.ti -1c
+.RI "void \fBRefresh\fP (string entityName, object entity)"
+.br
+.RI "\fIRefresh the entity instance state from the database\&. \fP"
+.ti -1c
+.RI "void \fBRefresh\fP (object entity, \fBLockMode\fP lockMode)"
+.br
+.RI "\fIRefresh the entity instance state from the database\&. \fP"
+.ti -1c
+.RI "void \fBRefresh\fP (string entityName, object entity, \fBLockMode\fP lockMode)"
+.br
+.RI "\fIRefresh the entity instance state from the database\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateCriteria< T >\fP ()"
+.br
+.RI "\fICreate a new \fBICriteria\fP instance, for the given entity class, or a superclass of an entity class\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateCriteria< T >\fP (string alias)"
+.br
+.RI "\fICreate a new \fBICriteria\fP instance, for the given entity class, or a superclass of an entity class, with the given alias\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateCriteria\fP (System\&.Type entityType)"
+.br
+.RI "\fICreate a new \fBICriteria \fP instance, for the given entity class, or a superclass of an entity class\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateCriteria\fP (System\&.Type entityType, string alias)"
+.br
+.RI "\fICreate a new \fBICriteria \fP instance, for the given entity class, or a superclass of an entity class, with the given alias\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateCriteria\fP (string entityName)"
+.br
+.RI "\fICreate a new \fBICriteria\fP instance, for the given entity name\&. \fP"
+.ti -1c
+.RI "\fBICriteria\fP \fBCreateCriteria\fP (string entityName, string alias)"
+.br
+.RI "\fICreate a new \fBICriteria\fP instance, for the given entity name, with the given alias\&. \fP"
+.ti -1c
+.RI "\fBIQueryOver\fP< T, T > \fBQueryOver< T >\fP ()"
+.br
+.RI "\fICreates a new \fC\fBIQueryOver\fP<T>\fP for the entity class\&. \fP"
+.ti -1c
+.RI "\fBIQueryOver\fP< T, T > \fBQueryOver< T >\fP (\fBExpression\fP< Func< T >> alias)"
+.br
+.ti -1c
+.RI "\fBITransaction\fP \fBBeginTransaction\fP ()"
+.br
+.RI "\fIBegin a \fBNHibernate\fP transaction \fP"
+.ti -1c
+.RI "\fBITransaction\fP \fBBeginTransaction\fP (IsolationLevel isolationLevel)"
+.br
+.RI "\fIBegin a \fBNHibernate\fP transaction with the specified isolation level \fP"
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.ti -1c
+.RI "override int \fBExecuteNativeUpdate\fP (\fBNativeSQLQuerySpecification\fP nativeSQLQuerySpecification, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIExecute a native SQL update or delete query\fP"
+.ti -1c
+.RI "override int \fBExecuteUpdate\fP (\fBIQueryExpression\fP queryExpression, \fBQueryParameters\fP queryParameters)"
+.br
+.RI "\fIExecute a HQL update or delete query\fP"
+.ti -1c
+.RI "override \fBIEntityPersister\fP \fBGetEntityPersister\fP (string entityName, object obj)"
+.br
+.RI "\fIGet the IEntityPersister for any instance\fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBDispose\fP (bool isDisposing)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override long \fBTimestamp\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBIBatcher\fP \fBBatcher\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override IDictionary< string, 
+.br
+\fBIFilter\fP > \fBEnabledFilters\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBIInterceptor\fP \fBInterceptor\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBEventListeners\fP \fBListeners\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override int \fBDontFlushFromFind\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBConnectionManager\fP \fBConnectionManager\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsEventSource\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBIPersistenceContext\fP \fBPersistenceContext\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsOpen\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBIsConnected\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBFlushMode\fP \fBFlushMode\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override IDbConnection \fBConnection\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBTransactionInProgress\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBITransaction\fP \fBTransaction\fP\fC [get]\fP"
+.br
+.RI "\fIGet the current Hibernate transaction\&.\fP"
+.ti -1c
+.RI "override \fBCacheMode\fP \fBCacheMode\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override \fBEntityMode\fP \fBEntityMode\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBFetchProfile\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override \fBFutureCriteriaBatch\fP \fBFutureCriteriaBatch\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override \fBFutureQueryBatch\fP \fBFutureQueryBatch\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 27 of file StatelessSessionImpl\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Impl\&.StatelessSessionImpl\&.AfterTransactionBegin (\fBITransaction\fPtx)\fC [virtual]\fP"
+
+.PP
+Notify the session that an \fBNHibernate\fP transaction has begun\&. 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 213 of file StatelessSessionImpl\&.cs\&.
+.SS "override void NHibernate\&.Impl\&.StatelessSessionImpl\&.AfterTransactionCompletion (boolsuccessful, \fBITransaction\fPtx)\fC [virtual]\fP"
+
+.PP
+Notify the session that the transaction completed, so we no longer own the old locks\&. (Also we should release cache softlocks)\&. May be called multiple times during the transaction completion process\&. 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 221 of file StatelessSessionImpl\&.cs\&.
+.SS "override void NHibernate\&.Impl\&.StatelessSessionImpl\&.BeforeTransactionCompletion (\fBITransaction\fPtx)\fC [virtual]\fP"
+
+.PP
+Notify the session that the transaction is about to complete 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 217 of file StatelessSessionImpl\&.cs\&.
+.SS "\fBITransaction\fP NHibernate\&.Impl\&.StatelessSessionImpl\&.BeginTransaction ()"
+
+.PP
+Begin a \fBNHibernate\fP transaction 
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBNHibernate\fP transaction
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 818 of file StatelessSessionImpl\&.cs\&.
+.SS "\fBITransaction\fP NHibernate\&.Impl\&.StatelessSessionImpl\&.BeginTransaction (IsolationLevelisolationLevel)"
+
+.PP
+Begin a \fBNHibernate\fP transaction with the specified isolation level 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIisolationLevel\fP The isolation level
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBNHibernate\fP transaction
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 828 of file StatelessSessionImpl\&.cs\&.
+.SS "override string NHibernate\&.Impl\&.StatelessSessionImpl\&.BestGuessEntityName (objectentity)\fC [virtual]\fP"
+
+.PP
+The best guess entity name for an entity not in an association
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 343 of file StatelessSessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.StatelessSessionImpl\&.Close ()"
+
+.PP
+Close the stateless session and release the ADO\&.NET connection\&.
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 436 of file StatelessSessionImpl\&.cs\&.
+.SS "\fBICriteria\fP NHibernate\&.Impl\&.StatelessSessionImpl\&.CreateCriteria (System\&.TypeentityType)"
+
+.PP
+Create a new \fBICriteria \fP instance, for the given entity class, or a superclass of an entity class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityType\fP A class, which is persistent, or has persistent subclasses
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBICriteria \fP\&.
+.RE
+.PP
+.PP
+Entities returned by the query are detached\&.
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 745 of file StatelessSessionImpl\&.cs\&.
+.SS "\fBICriteria\fP NHibernate\&.Impl\&.StatelessSessionImpl\&.CreateCriteria (System\&.TypeentityType, stringalias)"
+
+.PP
+Create a new \fBICriteria \fP instance, for the given entity class, or a superclass of an entity class, with the given alias\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityType\fP A class, which is persistent, or has persistent subclasses
+.br
+\fIalias\fP The alias of the entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBICriteria \fP\&.
+.RE
+.PP
+.PP
+Entities returned by the query are detached\&.
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 754 of file StatelessSessionImpl\&.cs\&.
+.SS "\fBICriteria\fP NHibernate\&.Impl\&.StatelessSessionImpl\&.CreateCriteria (stringentityName)"
+
+.PP
+Create a new \fBICriteria\fP instance, for the given entity name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The entity name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBICriteria\fP\&. 
+.RE
+.PP
+.PP
+Entities returned by the query are detached\&.
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 769 of file StatelessSessionImpl\&.cs\&.
+.SS "\fBICriteria\fP NHibernate\&.Impl\&.StatelessSessionImpl\&.CreateCriteria (stringentityName, stringalias)"
+
+.PP
+Create a new \fBICriteria\fP instance, for the given entity name, with the given alias\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The entity name\&. 
+.br
+\fIalias\fP The alias of the entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBICriteria\fP\&. 
+.RE
+.PP
+.PP
+Entities returned by the query are detached\&.
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 786 of file StatelessSessionImpl\&.cs\&.
+.SS "\fBICriteria\fP \fBNHibernate\&.Impl\&.StatelessSessionImpl\&.CreateCriteria\fP< T > ()"
+
+.PP
+Create a new \fBICriteria\fP instance, for the given entity class, or a superclass of an entity class\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP A class, which is persistent, or has persistent subclasses
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBICriteria\fP\&. 
+.RE
+.PP
+.PP
+Entities returned by the query are detached\&.
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fIclass\fP
+.PP
+Definition at line 721 of file StatelessSessionImpl\&.cs\&.
+.SS "\fBICriteria\fP \fBNHibernate\&.Impl\&.StatelessSessionImpl\&.CreateCriteria\fP< T > (stringalias)"
+
+.PP
+Create a new \fBICriteria\fP instance, for the given entity class, or a superclass of an entity class, with the given alias\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP A class, which is persistent, or has persistent subclasses
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP The alias of the entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBICriteria\fP\&. 
+.RE
+.PP
+.PP
+Entities returned by the query are detached\&.
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fIclass\fP
+.PP
+Definition at line 737 of file StatelessSessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.StatelessSessionImpl\&.Delete (objectentity)"
+
+.PP
+Delete a entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP a detached entity instance 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 544 of file StatelessSessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.StatelessSessionImpl\&.Delete (stringentityName, objectentity)"
+
+.PP
+Delete a entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The entityName for the entity to be deleted 
+.br
+\fIentity\fP a detached entity instance 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 556 of file StatelessSessionImpl\&.cs\&.
+.SS "override IEnumerable NHibernate\&.Impl\&.StatelessSessionImpl\&.Enumerable (\fBIQueryExpression\fPquery, \fBQueryParameters\fPparameters)\fC [virtual]\fP"
+
+.PP
+Execute an \fCIterate()\fP query 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIquery\fP 
+.br
+\fIparameters\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 183 of file StatelessSessionImpl\&.cs\&.
+.SS "override IEnumerable<T> \fBNHibernate\&.Impl\&.StatelessSessionImpl\&.Enumerable\fP< T > (\fBIQueryExpression\fPquery, \fBQueryParameters\fPqueryParameters)\fC [virtual]\fP"
+
+.PP
+Strongly-typed version of \fBEnumerable(IQueryExpression, QueryParameters)\fP 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 188 of file StatelessSessionImpl\&.cs\&.
+.SS "override IEnumerable NHibernate\&.Impl\&.StatelessSessionImpl\&.EnumerableFilter (objectcollection, stringfilter, \fBQueryParameters\fPparameters)\fC [virtual]\fP"
+
+.PP
+\fBCollection\fP from a filter 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 203 of file StatelessSessionImpl\&.cs\&.
+.SS "override IEnumerable<T> \fBNHibernate\&.Impl\&.StatelessSessionImpl\&.EnumerableFilter\fP< T > (objectcollection, stringfilter, \fBQueryParameters\fPparameters)\fC [virtual]\fP"
+
+.PP
+Strongly-typed version of \fBEnumerableFilter(object, string, QueryParameters)\fP 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 208 of file StatelessSessionImpl\&.cs\&.
+.SS "override int NHibernate\&.Impl\&.StatelessSessionImpl\&.ExecuteNativeUpdate (\fBNativeSQLQuerySpecification\fPspecification, \fBQueryParameters\fPqueryParameters)\fC [virtual]\fP"
+
+.PP
+Execute a native SQL update or delete query
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 895 of file StatelessSessionImpl\&.cs\&.
+.SS "override int NHibernate\&.Impl\&.StatelessSessionImpl\&.ExecuteUpdate (\fBIQueryExpression\fPquery, \fBQueryParameters\fPqueryParameters)\fC [virtual]\fP"
+
+.PP
+Execute a HQL update or delete query
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 919 of file StatelessSessionImpl\&.cs\&.
+.SS "object NHibernate\&.Impl\&.StatelessSessionImpl\&.Get (stringentityName, objectid)"
+
+.PP
+Retrieve a entity\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a detached entity instance 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 570 of file StatelessSessionImpl\&.cs\&.
+.SS "object NHibernate\&.Impl\&.StatelessSessionImpl\&.Get (stringentityName, objectid, \fBLockMode\fPlockMode)"
+
+.PP
+Retrieve a entity, obtaining the specified lock mode\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a detached entity instance 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 603 of file StatelessSessionImpl\&.cs\&.
+.SS "T \fBNHibernate\&.Impl\&.StatelessSessionImpl\&.Get\fP< T > (objectid)"
+
+.PP
+Retrieve a entity\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a detached entity instance 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 583 of file StatelessSessionImpl\&.cs\&.
+.SS "T \fBNHibernate\&.Impl\&.StatelessSessionImpl\&.Get\fP< T > (objectid, \fBLockMode\fPlockMode)"
+
+.PP
+Retrieve a entity, obtaining the specified lock mode\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+a detached entity instance 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 621 of file StatelessSessionImpl\&.cs\&.
+.SS "override object NHibernate\&.Impl\&.StatelessSessionImpl\&.GetContextEntityIdentifier (objectobj)\fC [virtual]\fP"
+
+.PP
+Return the identifier of the persistent object, or null if transient 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 229 of file StatelessSessionImpl\&.cs\&.
+.SS "override \fBIEntityPersister\fP NHibernate\&.Impl\&.StatelessSessionImpl\&.GetEntityPersister (stringentityName, objectobj)\fC [virtual]\fP"
+
+.PP
+Get the IEntityPersister for any instance
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP optional entity name 
+.br
+\fIobj\fP the entity instance 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 954 of file StatelessSessionImpl\&.cs\&.
+.SS "override object NHibernate\&.Impl\&.StatelessSessionImpl\&.GetEntityUsingInterceptor (\fBEntityKey\fPkey)\fC [virtual]\fP"
+
+.PP
+Get the entity instance associated with the given \fCKey\fP, calling the Interceptor if necessary 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 316 of file StatelessSessionImpl\&.cs\&.
+.SS "override \fBIType\fP NHibernate\&.Impl\&.StatelessSessionImpl\&.GetFilterParameterType (stringfilterParameterName)\fC [virtual]\fP"
+
+.PP
+Retrieve the type for a given filter parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilterParameterName\fP The filter parameter name in the format {FILTER_NAME\&.PARAMETER_NAME}\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The filter parameter type\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 271 of file StatelessSessionImpl\&.cs\&.
+.SS "override object NHibernate\&.Impl\&.StatelessSessionImpl\&.GetFilterParameterValue (stringfilterParameterName)\fC [virtual]\fP"
+
+.PP
+Retrieve the currently set value for a filter parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilterParameterName\fP The filter parameter name in the format {FILTER_NAME\&.PARAMETER_NAME}\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The filter parameter value\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 266 of file StatelessSessionImpl\&.cs\&.
+.SS "\fBISessionImplementor\fP NHibernate\&.Impl\&.StatelessSessionImpl\&.GetSessionImplementation ()"
+
+.PP
+Gets the stateless session implementation\&. This method is provided in order to get the \fB\fBNHibernate\fP\fP implementation of the session from wrapper implementations\&. Implementors of the 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBIStatelessSession\fP
+.PP
+.RE
+.PP
+interface should return the \fBNHibernate\fP implementation of this method\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBNHibernate\fP implementation of the 
+.PP
+\fBSee Also:\fP
+.RS 4
+ISessionImplementor
+.PP
+.RE
+.PP
+interface 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 430 of file StatelessSessionImpl\&.cs\&.
+.SS "override string NHibernate\&.Impl\&.StatelessSessionImpl\&.GuessEntityName (objectentity)\fC [virtual]\fP"
+
+.PP
+The guessed entity name for an entity not in an association
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 356 of file StatelessSessionImpl\&.cs\&.
+.SS "override object NHibernate\&.Impl\&.StatelessSessionImpl\&.ImmediateLoad (stringentityName, objectid)\fC [virtual]\fP"
+
+.PP
+Load an instance immediately\&. Do not return a proxy\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP 
+.br
+\fIid\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 87 of file StatelessSessionImpl\&.cs\&.
+.SS "override void NHibernate\&.Impl\&.StatelessSessionImpl\&.InitializeCollection (\fBIPersistentCollection\fPcollection, boolwriting)\fC [virtual]\fP"
+
+.PP
+Initialize the collection (if not already initialized) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP 
+.br
+\fIwriting\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 54 of file StatelessSessionImpl\&.cs\&.
+.SS "object NHibernate\&.Impl\&.StatelessSessionImpl\&.Insert (objectentity)"
+
+.PP
+Insert a entity\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP A new transient instance 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the identifier of the instance 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 460 of file StatelessSessionImpl\&.cs\&.
+.SS "object NHibernate\&.Impl\&.StatelessSessionImpl\&.Insert (stringentityName, objectentity)"
+
+.PP
+Insert a row\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The entityName for the entity to be inserted 
+.br
+\fIentity\fP a new transient instance 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the identifier of the instance 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 473 of file StatelessSessionImpl\&.cs\&.
+.SS "override object NHibernate\&.Impl\&.StatelessSessionImpl\&.Instantiate (stringentityName, objectid)\fC [virtual]\fP"
+
+.PP
+Instantiate the entity class, initializing with the given identifier 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 235 of file StatelessSessionImpl\&.cs\&.
+.SS "override object NHibernate\&.Impl\&.StatelessSessionImpl\&.InternalLoad (stringentityName, objectid, booleager, boolisNullable)\fC [virtual]\fP"
+
+.PP
+Load an instance without checking if it was deleted\&. If it does not exist and isn't nullable, throw an exception\&. This method may create a new proxy or return an existing proxy\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The entityName (or class full name) to load\&.
+.br
+\fIid\fP The identifier of the object in the database\&.
+.br
+\fIisNullable\fP Allow null instance
+.br
+\fIeager\fP When enabled, the object is eagerly fetched\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A proxy of the object or an instance of the object if the \fCpersistentClass\fP does not have a proxy\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBObjectNotFoundException\fP\fP No object could be found with that \fCid\fP\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 67 of file StatelessSessionImpl\&.cs\&.
+.SS "override void NHibernate\&.Impl\&.StatelessSessionImpl\&.ListCustomQuery (\fBICustomQuery\fPcustomQuery, \fBQueryParameters\fPqueryParameters, IListresults)\fC [virtual]\fP"
+
+.PP
+Execute an SQL Query
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 244 of file StatelessSessionImpl\&.cs\&.
+.SS "override IList NHibernate\&.Impl\&.StatelessSessionImpl\&.ListFilter (objectcollection, stringfilter, \fBQueryParameters\fPparameters)\fC [virtual]\fP"
+
+.PP
+Execute a filter 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 193 of file StatelessSessionImpl\&.cs\&.
+.SS "override IList<T> \fBNHibernate\&.Impl\&.StatelessSessionImpl\&.ListFilter\fP< T > (objectcollection, stringfilter, \fBQueryParameters\fPparameters)\fC [virtual]\fP"
+
+.PP
+Execute a filter (strongly-typed version)\&. 
+.PP
+Implements \fBNHibernate\&.Impl\&.AbstractSessionImpl\fP\&.
+.PP
+Definition at line 198 of file StatelessSessionImpl\&.cs\&.
+.SS "\fBIQueryOver\fP<T, T> NHibernate\&.Impl\&.StatelessSessionImpl\&.QueryOver< T > ()"
+
+.PP
+Creates a new \fC\fBIQueryOver\fP<T>\fP for the entity class\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The entity class
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBICriteria\fP<T> object
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fIclass\fP
+.PP
+Definition at line 795 of file StatelessSessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.StatelessSessionImpl\&.Refresh (objectentity)"
+
+.PP
+Refresh the entity instance state from the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity to be refreshed\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 633 of file StatelessSessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.StatelessSessionImpl\&.Refresh (stringentityName, objectentity)"
+
+.PP
+Refresh the entity instance state from the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The entityName for the entity to be refreshed\&. 
+.br
+\fIentity\fP The entity to be refreshed\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 646 of file StatelessSessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.StatelessSessionImpl\&.Refresh (objectentity, \fBLockMode\fPlockMode)"
+
+.PP
+Refresh the entity instance state from the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity to be refreshed\&. 
+.br
+\fIlockMode\fP The \fBLockMode\fP to be applied\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 659 of file StatelessSessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.StatelessSessionImpl\&.Refresh (stringentityName, objectentity, \fBLockMode\fPlockMode)"
+
+.PP
+Refresh the entity instance state from the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The entityName for the entity to be refreshed\&. 
+.br
+\fIentity\fP The entity to be refreshed\&. 
+.br
+\fIlockMode\fP The \fBLockMode\fP to be applied\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 673 of file StatelessSessionImpl\&.cs\&.
+.SS "\fBIStatelessSession\fP NHibernate\&.Impl\&.StatelessSessionImpl\&.SetBatchSize (intbatchSize)"
+
+.PP
+Sets the batch size of the session 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbatchSize\fP The batch size\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The same instance of the session for methods chain\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 367 of file StatelessSessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.StatelessSessionImpl\&.Update (objectentity)"
+
+.PP
+Update a entity\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP a detached entity instance 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 506 of file StatelessSessionImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.StatelessSessionImpl\&.Update (stringentityName, objectentity)"
+
+.PP
+Update a entity\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The entityName for the entity to be updated 
+.br
+\fIentity\fP a detached entity instance 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IStatelessSession\fP\&.
+.PP
+Definition at line 518 of file StatelessSessionImpl\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBITransaction\fP NHibernate\&.Impl\&.StatelessSessionImpl\&.Transaction\fC [get]\fP"
+
+.PP
+Get the current Hibernate transaction\&.
+.PP
+Definition at line 399 of file StatelessSessionImpl\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

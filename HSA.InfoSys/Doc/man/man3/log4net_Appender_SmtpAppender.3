@@ -1,0 +1,290 @@
+.TH "log4net.Appender.SmtpAppender" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.SmtpAppender \- 
+.PP
+Send an e-mail when a specific logging event occurs, typically on errors or fatal errors\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.BufferingAppenderSkeleton\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBSmtpAuthentication\fP { \fBSmtpAuthentication\&.None\fP, \fBSmtpAuthentication\&.Basic\fP, \fBSmtpAuthentication\&.Ntlm\fP }"
+.br
+.RI "\fIValues for the \fBSmtpAppender\&.Authentication\fP property\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSmtpAppender\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBSendBuffer\fP (\fBLoggingEvent\fP[] events)"
+.br
+.RI "\fISends the contents of the cyclic buffer as an e-mail message\&. \fP"
+.ti -1c
+.RI "virtual void \fBSendEmail\fP (string messageBody)"
+.br
+.RI "\fISend the email message \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBTo\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a comma- or semicolon-delimited list of recipient e-mail addresses (use semicolon on \&.NET 1\&.1 and comma for later versions)\&. \fP"
+.ti -1c
+.RI "string \fBCc\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a comma- or semicolon-delimited list of recipient e-mail addresses that will be carbon copied (use semicolon on \&.NET 1\&.1 and comma for later versions)\&. \fP"
+.ti -1c
+.RI "string \fBBcc\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a semicolon-delimited list of recipient e-mail addresses that will be blind carbon copied\&. \fP"
+.ti -1c
+.RI "string \fBFrom\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the e-mail address of the sender\&. \fP"
+.ti -1c
+.RI "string \fBSubject\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the subject line of the e-mail message\&. \fP"
+.ti -1c
+.RI "string \fBSmtpHost\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the name of the SMTP relay mail server to use to send the e-mail messages\&. \fP"
+.ti -1c
+.RI "bool \fBLocationInfo\fP\fC [get, set]\fP"
+.br
+.RI "\fIObsolete \fP"
+.ti -1c
+.RI "\fBSmtpAuthentication\fP \fBAuthentication\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe mode to use to authentication with the SMTP server \fP"
+.ti -1c
+.RI "string \fBUsername\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe username to use to authenticate with the SMTP server \fP"
+.ti -1c
+.RI "string \fBPassword\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe password to use to authenticate with the SMTP server \fP"
+.ti -1c
+.RI "int \fBPort\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe port on which the SMTP server is listening \fP"
+.ti -1c
+.RI "MailPriority \fBPriority\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the priority of the e-mail message \fP"
+.ti -1c
+.RI "override bool \fBRequiresLayout\fP\fC [get]\fP"
+.br
+.RI "\fIThis appender requires a \fBLayout\fP to be set\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Send an e-mail when a specific logging event occurs, typically on errors or fatal errors\&. 
+
+The number of logging events delivered in this e-mail depend on the value of \fBBufferingAppenderSkeleton\&.BufferSize\fP option\&. The \fBSmtpAppender\fP keeps only the last \fBBufferingAppenderSkeleton\&.BufferSize\fP logging events in its cyclic buffer\&. This keeps memory requirements at a reasonable level while still delivering useful application context\&. 
+.PP
+<note type='caution'> Authentication and setting the server Port are only available on the MS \&.NET 1\&.1 runtime\&. For these features to be enabled you need to ensure that you are using a version of the \fBlog4net\fP assembly that is built against the MS \&.NET 1\&.1 framework and that you are running the your application on the MS \&.NET 1\&.1 runtime\&. On all other platforms only sending unauthenticated messages to a server listening on port 25 (the default) is supported\&. </note> 
+.PP
+Authentication is supported by setting the \fBAuthentication\fP property to either SmtpAuthentication\&.Basic or SmtpAuthentication\&.Ntlm\&. If using SmtpAuthentication\&.Basic authentication then the \fBUsername\fP and \fBPassword\fP properties must also be set\&. 
+.PP
+To set the SMTP server port use the \fBPort\fP property\&. The default port is 25\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 71 of file SmtpAppender\&.cs\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBlog4net\&.Appender\&.SmtpAppender\&.SmtpAuthentication\fP"
+
+.PP
+Values for the \fBSmtpAppender\&.Authentication\fP property\&. SMTP authentication modes\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+No authentication 
+.TP
+\fB\fIBasic \fP\fP
+Basic authentication\&. Requires a username and password to be supplied 
+.TP
+\fB\fINtlm \fP\fP
+Integrated authentication Uses the Windows credentials from the current thread or process to authenticate\&. 
+.PP
+Definition at line 591 of file SmtpAppender\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.SmtpAppender\&.SmtpAppender ()"
+
+.PP
+Default constructor Default constructor 
+.PP
+Definition at line 83 of file SmtpAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Appender\&.SmtpAppender\&.SendBuffer (\fBLoggingEvent\fP[]events)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Sends the contents of the cyclic buffer as an e-mail message\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevents\fP The logging events to send\&.
+.RE
+.PP
+
+.PP
+Implements \fBlog4net\&.Appender\&.BufferingAppenderSkeleton\fP\&.
+.PP
+Definition at line 360 of file SmtpAppender\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.SmtpAppender\&.SendEmail (stringmessageBody)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Send the email message 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessageBody\fP the body text to include in the mail
+.RE
+.PP
+
+.PP
+Definition at line 420 of file SmtpAppender\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBSmtpAuthentication\fP log4net\&.Appender\&.SmtpAppender\&.Authentication\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The mode to use to authentication with the SMTP server <note type='caution'>Authentication is only available on the MS \&.NET 1\&.1 runtime\&.</note> 
+.PP
+Valid Authentication mode values are: SmtpAuthentication\&.None, SmtpAuthentication\&.Basic, and SmtpAuthentication\&.Ntlm\&. The default value is SmtpAuthentication\&.None\&. When using SmtpAuthentication\&.Basic you must specify the \fBUsername\fP and \fBPassword\fP to use to authenticate\&. When using SmtpAuthentication\&.Ntlm the Windows credentials for the current thread, if impersonating, or the process will be used to authenticate\&. 
+.PP
+Definition at line 248 of file SmtpAppender\&.cs\&.
+.SS "string log4net\&.Appender\&.SmtpAppender\&.Bcc\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a semicolon-delimited list of recipient e-mail addresses that will be blind carbon copied\&. A semicolon-delimited list of e-mail addresses\&. 
+.PP
+A semicolon-delimited list of recipient e-mail addresses\&. 
+.PP
+Definition at line 155 of file SmtpAppender\&.cs\&.
+.SS "string log4net\&.Appender\&.SmtpAppender\&.Cc\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a comma- or semicolon-delimited list of recipient e-mail addresses that will be carbon copied (use semicolon on \&.NET 1\&.1 and comma for later versions)\&. For \&.NET 1\&.1 (System\&.Web\&.Mail): A semicolon-delimited list of e-mail addresses\&. 
+.PP
+For \&.NET 2\&.0 (System\&.Net\&.Mail): A comma-delimited list of e-mail addresses\&. 
+.PP
+For \&.NET 1\&.1 (System\&.Web\&.Mail): A semicolon-delimited list of e-mail addresses\&. 
+.PP
+For \&.NET 2\&.0 (System\&.Net\&.Mail): A comma-delimited list of e-mail addresses\&. 
+.PP
+Definition at line 137 of file SmtpAppender\&.cs\&.
+.SS "string log4net\&.Appender\&.SmtpAppender\&.From\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the e-mail address of the sender\&. The e-mail address of the sender\&. 
+.PP
+The e-mail address of the sender\&. 
+.PP
+Definition at line 172 of file SmtpAppender\&.cs\&.
+.SS "bool log4net\&.Appender\&.SmtpAppender\&.LocationInfo\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Obsolete Use the \fBBufferingAppenderSkeleton\fP Fix methods instead 
+.PP
+Obsolete property\&. 
+.PP
+Definition at line 227 of file SmtpAppender\&.cs\&.
+.SS "string log4net\&.Appender\&.SmtpAppender\&.Password\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The password to use to authenticate with the SMTP server <note type='caution'>Authentication is only available on the MS \&.NET 1\&.1 runtime\&.</note> 
+.PP
+A \fBUsername\fP and \fBPassword\fP must be specified when \fBAuthentication\fP is set to SmtpAuthentication\&.Basic, otherwise the password will be ignored\&. 
+.PP
+Definition at line 282 of file SmtpAppender\&.cs\&.
+.SS "int log4net\&.Appender\&.SmtpAppender\&.Port\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The port on which the SMTP server is listening <note type='caution'>Server Port is only available on the MS \&.NET 1\&.1 runtime\&.</note> 
+.PP
+The port on which the SMTP server is listening\&. The default port is \fC25\fP\&. The Port can only be changed when running on the MS \&.NET 1\&.1 runtime\&. 
+.PP
+Definition at line 299 of file SmtpAppender\&.cs\&.
+.SS "MailPriority log4net\&.Appender\&.SmtpAppender\&.Priority\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the priority of the e-mail message One of the MailPriority values\&. 
+.PP
+Sets the priority of the e-mails generated by this appender\&. The default priority is MailPriority\&.Normal\&. 
+.PP
+If you are using this appender to report errors then you may want to set the priority to MailPriority\&.High\&. 
+.PP
+Definition at line 321 of file SmtpAppender\&.cs\&.
+.SS "override bool log4net\&.Appender\&.SmtpAppender\&.RequiresLayout\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+This appender requires a \fBLayout\fP to be set\&. \fCtrue\fP
+.PP
+This appender requires a \fBLayout\fP to be set\&. 
+.PP
+Definition at line 408 of file SmtpAppender\&.cs\&.
+.SS "string log4net\&.Appender\&.SmtpAppender\&.SmtpHost\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the name of the SMTP relay mail server to use to send the e-mail messages\&. The name of the e-mail relay server\&. If SmtpServer is not set, the name of the local SMTP server is used\&. 
+.PP
+The name of the e-mail relay server\&. If SmtpServer is not set, the name of the local SMTP server is used\&. 
+.PP
+Definition at line 209 of file SmtpAppender\&.cs\&.
+.SS "string log4net\&.Appender\&.SmtpAppender\&.Subject\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the subject line of the e-mail message\&. The subject line of the e-mail message\&. 
+.PP
+The subject line of the e-mail message\&. 
+.PP
+Definition at line 189 of file SmtpAppender\&.cs\&.
+.SS "string log4net\&.Appender\&.SmtpAppender\&.To\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a comma- or semicolon-delimited list of recipient e-mail addresses (use semicolon on \&.NET 1\&.1 and comma for later versions)\&. For \&.NET 1\&.1 (System\&.Web\&.Mail): A semicolon-delimited list of e-mail addresses\&. 
+.PP
+For \&.NET 2\&.0 (System\&.Net\&.Mail): A comma-delimited list of e-mail addresses\&. 
+.PP
+For \&.NET 1\&.1 (System\&.Web\&.Mail): A semicolon-delimited list of e-mail addresses\&. 
+.PP
+For \&.NET 2\&.0 (System\&.Net\&.Mail): A comma-delimited list of e-mail addresses\&. 
+.PP
+Definition at line 111 of file SmtpAppender\&.cs\&.
+.SS "string log4net\&.Appender\&.SmtpAppender\&.Username\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The username to use to authenticate with the SMTP server <note type='caution'>Authentication is only available on the MS \&.NET 1\&.1 runtime\&.</note> 
+.PP
+A \fBUsername\fP and \fBPassword\fP must be specified when \fBAuthentication\fP is set to SmtpAuthentication\&.Basic, otherwise the username will be ignored\&. 
+.PP
+Definition at line 265 of file SmtpAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

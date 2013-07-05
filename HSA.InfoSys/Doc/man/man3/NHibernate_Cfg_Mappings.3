@@ -1,0 +1,275 @@
+.TH "NHibernate.Cfg.Mappings" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Cfg.Mappings \- 
+.PP
+A collection of mappings from classes and collections to relational database tables\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBColumnNames\fP"
+.br
+.ti -1c
+.RI "class \fBPropertyReference\fP"
+.br
+.ti -1c
+.RI "class \fBTableDescription\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAddClass\fP (\fBPersistentClass\fP persistentClass)"
+.br
+.ti -1c
+.RI "void \fBAddCollection\fP (\fBMapping\&.Collection\fP collection)"
+.br
+.ti -1c
+.RI "void \fBAddUniquePropertyReference\fP (string referencedClass, string propertyName)"
+.br
+.ti -1c
+.RI "void \fBAddPropertyReference\fP (string referencedClass, string propertyName)"
+.br
+.ti -1c
+.RI "\fBPersistentClass\fP \fBGetClass\fP (string className)"
+.br
+.ti -1c
+.RI "\fBMapping\&.Collection\fP \fBGetCollection\fP (string role)"
+.br
+.ti -1c
+.RI "void \fBAddImport\fP (string className, string rename)"
+.br
+.RI "\fIAdds an import to allow for the full class name \fCNamespace\&.Entity (AssemblyQualifiedName)\fP to be referenced as \fCEntity\fP or some other name in HQL\&. \fP"
+.ti -1c
+.RI "\fBTable\fP \fBAddTable\fP (string schema, string catalog, string name, string subselect, bool isAbstract, string schemaAction)"
+.br
+.ti -1c
+.RI "\fBTable\fP \fBAddDenormalizedTable\fP (string schema, string catalog, string name, bool isAbstract, string subselect, \fBTable\fP includedTable)"
+.br
+.ti -1c
+.RI "void \fBAddTableBinding\fP (string schema, string catalog, string logicalName, string physicalName, \fBTable\fP denormalizedSuperTable)"
+.br
+.ti -1c
+.RI "\fBTable\fP \fBGetTable\fP (string schema, string catalog, string name)"
+.br
+.ti -1c
+.RI "void \fBAddQuery\fP (string name, \fBNamedQueryDefinition\fP query)"
+.br
+.ti -1c
+.RI "void \fBAddSQLQuery\fP (string name, \fBNamedSQLQueryDefinition\fP query)"
+.br
+.ti -1c
+.RI "\fBNamedQueryDefinition\fP \fBGetQuery\fP (string name)"
+.br
+.ti -1c
+.RI "void \fBAddSecondPass\fP (SecondPassCommand command)"
+.br
+.ti -1c
+.RI "void \fBAddSecondPass\fP (SecondPassCommand command, bool onTopOfTheQueue)"
+.br
+.ti -1c
+.RI "void \fBAddFilterDefinition\fP (\fBFilterDefinition\fP definition)"
+.br
+.ti -1c
+.RI "\fBFilterDefinition\fP \fBGetFilterDefinition\fP (string name)"
+.br
+.ti -1c
+.RI "void \fBAddAuxiliaryDatabaseObject\fP (\fBIAuxiliaryDatabaseObject\fP auxiliaryDatabaseObject)"
+.br
+.ti -1c
+.RI "void \fBAddResultSetMapping\fP (\fBResultSetMappingDefinition\fP sqlResultSetMapping)"
+.br
+.ti -1c
+.RI "void \fBAddToExtendsQueue\fP (\fBExtendsQueueEntry\fP entry)"
+.br
+.ti -1c
+.RI "void \fBAddTypeDef\fP (string typeName, string typeClass, IDictionary< string, string > paramMap)"
+.br
+.ti -1c
+.RI "\fBTypeDef\fP \fBGetTypeDef\fP (string typeName)"
+.br
+.ti -1c
+.RI "void \fBAddColumnBinding\fP (string logicalName, \fBColumn\fP finalColumn, \fBTable\fP table)"
+.br
+.ti -1c
+.RI "string \fBGetLogicalColumnName\fP (string physicalName, \fBTable\fP table)"
+.br
+.ti -1c
+.RI "string \fBGetPhysicalColumnName\fP (string logicalName, \fBTable\fP table)"
+.br
+.ti -1c
+.RI "string \fBGetLogicalTableName\fP (\fBTable\fP table)"
+.br
+.ti -1c
+.RI "\fBResultSetMappingDefinition\fP \fBGetResultSetMapping\fP (string name)"
+.br
+.ti -1c
+.RI "\fBPersistentClass\fP \fBLocatePersistentClassByEntityName\fP (string entityName)"
+.br
+.ti -1c
+.RI "void \fBExpectedFilterDefinition\fP (\fBIFilterable\fP filterable, string filterName, string condition)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBDialect\&.Dialect\fP \fBDialect\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBINamingStrategy\fP \fBNamingStrategy\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBDefaultNamespace\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe default namespace for persistent classes \fP"
+.ti -1c
+.RI "string \fBDefaultAssembly\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe default assembly for persistent classes \fP"
+.ti -1c
+.RI "string \fBDefaultCatalog\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBDefaultSchema\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBPreferPooledValuesLo\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBSchemaName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBCatalogName\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBDefaultCascade\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBDefaultAccess\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsAutoImport\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean indicating if the Fully Qualified \fBType\fP name should automatically have an import added as the class name\&. \fP"
+.ti -1c
+.RI "bool \fBDefaultLazy\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, 
+.br
+\fBFilterDefinition\fP > \fBFilterDefinitions\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< \fBMapping\&.Collection\fP > \fBIterateCollections\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IEnumerable< \fBTable\fP > \fBIterateTables\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A collection of mappings from classes and collections to relational database tables\&. 
+
+Represents a single \fC<hibernate-mapping>\fP element\&.
+.PP
+Definition at line 15 of file Mappings\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Cfg\&.Mappings\&.AddClass (\fBPersistentClass\fPpersistentClass)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersistentClass\fP 
+.RE
+.PP
+
+.PP
+Definition at line 146 of file Mappings\&.cs\&.
+.SS "void NHibernate\&.Cfg\&.Mappings\&.AddCollection (\fBMapping\&.Collection\fPcollection)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP 
+.RE
+.PP
+
+.PP
+Definition at line 158 of file Mappings\&.cs\&.
+.SS "void NHibernate\&.Cfg\&.Mappings\&.AddImport (stringclassName, stringrename)"
+
+.PP
+Adds an import to allow for the full class name \fCNamespace\&.Entity (AssemblyQualifiedName)\fP to be referenced as \fCEntity\fP or some other name in HQL\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclassName\fP The name of the type that is being renamed\&.
+.br
+\fIrename\fP The new name to use in HQL for the type\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBMappingException\fP\fP Thrown when the rename already identifies another type\&.
+.RE
+.PP
+
+.PP
+Definition at line 233 of file Mappings\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string NHibernate\&.Cfg\&.Mappings\&.DefaultAccess\fC [get]\fP, \fC [set]\fP"
+
+.PP
+
+.PP
+Definition at line 395 of file Mappings\&.cs\&.
+.SS "string NHibernate\&.Cfg\&.Mappings\&.DefaultAssembly\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The default assembly for persistent classes 
+.PP
+Definition at line 212 of file Mappings\&.cs\&.
+.SS "string NHibernate\&.Cfg\&.Mappings\&.DefaultCascade\fC [get]\fP, \fC [set]\fP"
+
+.PP
+
+.PP
+Definition at line 388 of file Mappings\&.cs\&.
+.SS "string NHibernate\&.Cfg\&.Mappings\&.DefaultNamespace\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The default namespace for persistent classes 
+.PP
+Definition at line 203 of file Mappings\&.cs\&.
+.SS "bool NHibernate\&.Cfg\&.Mappings\&.IsAutoImport\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean indicating if the Fully Qualified \fBType\fP name should automatically have an import added as the class name\&. if the class name should be used as an import\&.
+.PP
+Auto-import is used to shorten the string used to refer to types to just their unqualified name\&. So if the type \fCMyAssembly\&.MyNamespace\&.MyClass, MyAssembly\fP has \fCauto-import='false'\fP then all use of it in HQL would need to be the fully qualified version \fCMyAssembly\&.MyNamespace\&.MyClass\fP\&. If \fCauto-import='true'\fP, the type could be referred to in HQL as just \fCMyClass\fP\&. 
+.PP
+Definition at line 451 of file Mappings\&.cs\&.
+.SS "\fBINamingStrategy\fP NHibernate\&.Cfg\&.Mappings\&.NamingStrategy\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 195 of file Mappings\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

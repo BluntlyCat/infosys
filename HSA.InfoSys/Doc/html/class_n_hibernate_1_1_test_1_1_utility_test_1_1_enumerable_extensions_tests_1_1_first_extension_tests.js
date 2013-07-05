@@ -1,0 +1,6 @@
+var class_n_hibernate_1_1_test_1_1_utility_test_1_1_enumerable_extensions_tests_1_1_first_extension_tests =
+[
+    [ "WhenEmptyThenThrowsInvalidOperation", "class_n_hibernate_1_1_test_1_1_utility_test_1_1_enumerable_extensions_tests_1_1_first_extension_tests.html#a26e74adaa24bf9070a0fe366219e7ac7", null ],
+    [ "WhenHasElementsThenReturnFirst", "class_n_hibernate_1_1_test_1_1_utility_test_1_1_enumerable_extensions_tests_1_1_first_extension_tests.html#ab7b48ce5c04cf16758ab61e603ffa8ba", null ],
+    [ "WhenNullThenThenThrows", "class_n_hibernate_1_1_test_1_1_utility_test_1_1_enumerable_extensions_tests_1_1_first_extension_tests.html#a7234c1ef252def130f12e8245dc936b5", null ]
+];

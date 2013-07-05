@@ -1,0 +1,1369 @@
+.TH "NHibernate.Impl.AbstractDetachedQuery" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Impl.AbstractDetachedQuery \- 
+.PP
+Base class to create queries in 'detached mode' where the \fBNHibernate\fP session is not available\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.IDetachedQuery\fP, and \fBNHibernate\&.Impl\&.IDetachedQueryImplementor\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Impl\&.DetachedNamedQuery\fP, \fBNHibernate\&.Impl\&.DetachedQuery\fP, and NHibernate\&.Test\&.QueryTest\&.DetachedQueryFixture\&.TestDetachedQuery\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract \fBIQuery\fP \fBGetExecutableQuery\fP (\fBISession\fP session)"
+.br
+.RI "\fIGet an executable instance of \fBIQuery\fP, to actually run the query\&.\fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetMaxResults\fP (int maxResults)"
+.br
+.RI "\fISet the maximum number of rows to retrieve\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetFirstResult\fP (int firstResult)"
+.br
+.RI "\fISets the first row to retrieve\&. \fP"
+.ti -1c
+.RI "virtual \fBIDetachedQuery\fP \fBSetComment\fP (string comment)"
+.br
+.RI "\fIAdd a comment to the generated SQL\&.\fP"
+.ti -1c
+.RI "virtual \fBIDetachedQuery\fP \fBSetCacheable\fP (bool cacheable)"
+.br
+.RI "\fIEnable caching of this query result set\&. \fP"
+.ti -1c
+.RI "virtual \fBIDetachedQuery\fP \fBSetCacheRegion\fP (string cacheRegion)"
+.br
+.ti -1c
+.RI "virtual \fBIDetachedQuery\fP \fBSetReadOnly\fP (bool readOnly)"
+.br
+.RI "\fIEntities retrieved by this query will be loaded in a read-only mode where Hibernate will never dirty-check them or make changes persistent\&. \fP"
+.ti -1c
+.RI "virtual \fBIDetachedQuery\fP \fBSetTimeout\fP (int timeout)"
+.br
+.RI "\fIThe timeout for the underlying ADO query \fP"
+.ti -1c
+.RI "virtual \fBIDetachedQuery\fP \fBSetFetchSize\fP (int fetchSize)"
+.br
+.RI "\fISet a fetch size for the underlying ADO query\&.\fP"
+.ti -1c
+.RI "void \fBSetLockMode\fP (string alias, \fBLockMode\fP lockMode)"
+.br
+.RI "\fISet the lockmode for the objects idententified by the given alias that appears in the \fCFROM\fP clause\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetParameter\fP (int position, object val, \fBIType\fP type)"
+.br
+.RI "\fIBind a value to an indexed parameter\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetParameter\fP (string name, object val, \fBIType\fP type)"
+.br
+.RI "\fIBind a value to a named query parameter \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetParameter\fP (int position, object val)"
+.br
+.RI "\fIBind a value to an indexed parameter, guessing the Hibernate type from the class of the given object\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetParameter\fP (string name, object val)"
+.br
+.RI "\fIBind a value to a named query parameter, guessing the \fBNHibernate\fP IType from the class of the given object\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetParameterList\fP (string name, IEnumerable vals, \fBIType\fP type)"
+.br
+.RI "\fIBind multiple values to a named query parameter\&. This is useful for binding a list of values to an expression such as \fCfoo\&.bar in (:value_list)\fP \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetParameterList\fP (string name, IEnumerable vals)"
+.br
+.RI "\fIBind multiple values to a named query parameter, guessing the Hibernate type from the class of the first object in the collection\&. This is useful for binding a list of values to an expression such as \fCfoo\&.bar in (:value_list)\fP \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetProperties\fP (object obj)"
+.br
+.RI "\fIBind the property values of the given object to named parameters of the query, matching property names with parameter names and mapping property types to Hibernate types using heuristics\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetAnsiString\fP (int position, string val)"
+.br
+.RI "\fIBind an instance of a string to an indexed parameter using an \fBNHibernate\fP AnsiStringType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetAnsiString\fP (string name, string val)"
+.br
+.RI "\fIBind an instance of a string to a named parameter using an \fBNHibernate\fP AnsiStringType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetBinary\fP (int position, byte[] val)"
+.br
+.RI "\fIBind an instance of a byte array to an indexed parameter using an \fBNHibernate\fP BinaryType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetBinary\fP (string name, byte[] val)"
+.br
+.RI "\fIBind an instance of a byte array to a named parameter using an \fBNHibernate\fP BinaryType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetBoolean\fP (int position, bool val)"
+.br
+.RI "\fIBind an instance of a bool to an indexed parameter using an \fBNHibernate\fP BooleanType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetBoolean\fP (string name, bool val)"
+.br
+.RI "\fIBind an instance of a bool to a named parameter using an \fBNHibernate\fP BooleanType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetByte\fP (int position, byte val)"
+.br
+.RI "\fIBind an instance of a byte to an indexed parameter using an \fBNHibernate\fP ByteType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetByte\fP (string name, byte val)"
+.br
+.RI "\fIBind an instance of a byte to a named parameter using an \fBNHibernate\fP ByteType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetCharacter\fP (int position, char val)"
+.br
+.RI "\fIBind an instance of a char to an indexed parameter using an \fBNHibernate\fP CharType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetCharacter\fP (string name, char val)"
+.br
+.RI "\fIBind an instance of a char to a named parameter using an \fBNHibernate\fP CharType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetDateTime\fP (int position, DateTime val)"
+.br
+.RI "\fIBind an instance of a DateTime to an indexed parameter using an \fBNHibernate\fP DateTimeType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetDateTime\fP (string name, DateTime val)"
+.br
+.RI "\fIBind an instance of a DateTime to a named parameter using an \fBNHibernate\fP DateTimeType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetDecimal\fP (int position, decimal val)"
+.br
+.RI "\fIBind an instance of a Decimal to an indexed parameter using an \fBNHibernate\fP DecimalType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetDecimal\fP (string name, decimal val)"
+.br
+.RI "\fIBind an instance of a Decimal to a named parameter using an \fBNHibernate\fP DecimalType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetDouble\fP (int position, double val)"
+.br
+.RI "\fIBind an instance of a Double to an indexed parameter using an \fBNHibernate\fP DoubleType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetDouble\fP (string name, double val)"
+.br
+.RI "\fIBind an instance of a Double to a named parameter using an \fBNHibernate\fP DoubleType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetEntity\fP (int position, object val)"
+.br
+.RI "\fIBind an instance of a mapped persistent class to an indexed parameter\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetEntity\fP (string name, object val)"
+.br
+.RI "\fIBind an instance of a mapped persistent class to a named parameter\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetEnum\fP (int position, Enum val)"
+.br
+.RI "\fIBind an instance of a persistent enumeration class to an indexed parameter using an \fBNHibernate\fP PersistentEnumType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetEnum\fP (string name, Enum val)"
+.br
+.RI "\fIBind an instance of a persistent enumeration class to a named parameter using an \fBNHibernate\fP PersistentEnumType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetInt16\fP (int position, short val)"
+.br
+.RI "\fIBind an instance of a Int16 to an indexed parameter using an \fBNHibernate\fP Int16Type\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetInt16\fP (string name, short val)"
+.br
+.RI "\fIBind an instance of a Int16 to a named parameter using an \fBNHibernate\fP Int16Type\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetInt32\fP (int position, int val)"
+.br
+.RI "\fIBind an instance of a Int32 to an indexed parameter using an \fBNHibernate\fP Int32Type\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetInt32\fP (string name, int val)"
+.br
+.RI "\fIBind an instance of a Int32 to a named parameter using an \fBNHibernate\fP Int32Type\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetInt64\fP (int position, long val)"
+.br
+.RI "\fIBind an instance of a Int64 to an indexed parameter using an \fBNHibernate\fP Int64Type\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetInt64\fP (string name, long val)"
+.br
+.RI "\fIBind an instance of a Int64 to a named parameter using an \fBNHibernate\fP Int64Type\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetSingle\fP (int position, float val)"
+.br
+.RI "\fIBind an instance of a Single to an indexed parameter using an \fBNHibernate\fP SingleType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetSingle\fP (string name, float val)"
+.br
+.RI "\fIBind an instance of a Single to a named parameter using an \fBNHibernate\fP SingleType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetString\fP (int position, string val)"
+.br
+.RI "\fIBind an instance of a String to an indexed parameter using an \fBNHibernate\fP StringType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetString\fP (string name, string val)"
+.br
+.RI "\fIBind an instance of a String to a named parameter using an \fBNHibernate\fP StringType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetTime\fP (int position, DateTime val)"
+.br
+.RI "\fIBind an instance of a DateTime to an indexed parameter using an \fBNHibernate\fP DateTimeType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetTime\fP (string name, DateTime val)"
+.br
+.RI "\fIBind an instance of a DateTime to a named parameter using an \fBNHibernate\fP DateTimeType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetTimestamp\fP (int position, DateTime val)"
+.br
+.RI "\fIBind an instance of a DateTime to an indexed parameter using an \fBNHibernate\fP TimestampType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetTimestamp\fP (string name, DateTime val)"
+.br
+.RI "\fIBind an instance of a DateTime to a named parameter using an \fBNHibernate\fP TimestampType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetGuid\fP (int position, Guid val)"
+.br
+.RI "\fIBind an instance of a Guid to a named parameter using an \fBNHibernate\fP GuidType\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetGuid\fP (string name, Guid val)"
+.br
+.RI "\fIBind an instance of a Guid to a named parameter using an \fBNHibernate\fP GuidType\&. \fP"
+.ti -1c
+.RI "virtual \fBIDetachedQuery\fP \fBSetFlushMode\fP (\fBFlushMode\fP flushMode)"
+.br
+.RI "\fIOverride the current session flush mode, just for this query\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetResultTransformer\fP (\fBIResultTransformer\fP resultTransformer)"
+.br
+.RI "\fISet a strategy for handling the query results\&. This can be used to change 'shape' of the query result\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBSetIgnoreUknownNamedParameters\fP (bool ignoredUnknownNamedParameters)"
+.br
+.RI "\fISet the value to ignore unknown parameters names\&. \fP"
+.ti -1c
+.RI "virtual \fBIDetachedQuery\fP \fBSetCacheMode\fP (\fBCacheMode\fP cacheMode)"
+.br
+.RI "\fIOverride the current session cache mode, just for this query\&. \fP"
+.ti -1c
+.RI "void \fBCopyTo\fP (\fBIDetachedQuery\fP destination)"
+.br
+.RI "\fICopy all properties to a given \fBIDetachedQuery\fP\&. \fP"
+.ti -1c
+.RI "void \fBSetParametersTo\fP (\fBIDetachedQuery\fP destination)"
+.br
+.RI "\fISet only parameters to a given \fBIDetachedQuery\fP\&. \fP"
+.ti -1c
+.RI "\fBIDetachedQuery\fP \fBCopyParametersFrom\fP (\fBIDetachedQueryImplementor\fP origin)"
+.br
+.RI "\fIClear all existing parameters and copy new parameters from a given origin\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSetQueryProperties\fP (\fBIQuery\fP q)"
+.br
+.RI "\fIFill all \fBIQuery\fP properties\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly Dictionary< int, object > \fBposUntypeParams\fP = new Dictionary<int, object>(4)"
+.br
+.ti -1c
+.RI "readonly Dictionary< string, 
+.br
+object > \fBnamedUntypeParams\fP = new Dictionary<string, object>()"
+.br
+.ti -1c
+.RI "readonly Dictionary< string, 
+.br
+IEnumerable > \fBnamedUntypeListParams\fP = new Dictionary<string, IEnumerable>(2)"
+.br
+.ti -1c
+.RI "readonly IList \fBoptionalUntypeParams\fP = new List<object>(2)"
+.br
+.ti -1c
+.RI "readonly Dictionary< int, 
+.br
+\fBTypedValue\fP > \fBposParams\fP = new Dictionary<int, \fBTypedValue\fP>(4)"
+.br
+.ti -1c
+.RI "readonly Dictionary< string, 
+.br
+\fBTypedValue\fP > \fBnamedParams\fP = new Dictionary<string, \fBTypedValue\fP>()"
+.br
+.ti -1c
+.RI "readonly Dictionary< string, 
+.br
+\fBTypedValue\fP > \fBnamedListParams\fP = new Dictionary<string, \fBTypedValue\fP>(2)"
+.br
+.ti -1c
+.RI "readonly Dictionary< string, 
+.br
+\fBLockMode\fP > \fBlockModes\fP = new Dictionary<string, \fBLockMode\fP>(2)"
+.br
+.ti -1c
+.RI "readonly \fBRowSelection\fP \fBselection\fP = new \fBRowSelection\fP()"
+.br
+.ti -1c
+.RI "bool \fBcacheable\fP"
+.br
+.ti -1c
+.RI "string \fBcacheRegion\fP"
+.br
+.ti -1c
+.RI "bool \fBreadOnly\fP"
+.br
+.ti -1c
+.RI "\fBFlushMode\fP \fBflushMode\fP = FlushMode\&.Unspecified"
+.br
+.ti -1c
+.RI "\fBIResultTransformer\fP \fBresultTransformer\fP"
+.br
+.ti -1c
+.RI "bool \fBshouldIgnoredUnknownNamedParameters\fP"
+.br
+.ti -1c
+.RI "\fBCacheMode\fP \fBcacheMode\fP"
+.br
+.ti -1c
+.RI "string \fBcomment\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class to create queries in 'detached mode' where the \fBNHibernate\fP session is not available\&. 
+
+
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBIDetachedQuery\fP, \fBNHibernate\&.Impl\&.AbstractQueryImpl\fP
+.PP
+.RE
+.PP
+.PP
+The behaviour of each method is basically the same of \fBNHibernate\&.Impl\&.AbstractQueryImpl\fP methods\&. The main difference is on \fBSetProperties(object)\fP: If you mix object with named parameters setter, if same param name are found, the value of the parameter setter override the value read from the POCO\&. 
+.PP
+Definition at line 23 of file AbstractDetachedQuery\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.CopyParametersFrom (\fBIDetachedQueryImplementor\fPorigin)"
+
+.PP
+Clear all existing parameters and copy new parameters from a given origin\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIorigin\fP The origin of parameters\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The current instance
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP If \fIorigin\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 597 of file AbstractDetachedQuery\&.cs\&.
+.SS "void NHibernate\&.Impl\&.AbstractDetachedQuery\&.CopyTo (\fBIDetachedQuery\fPdestination)"
+
+.PP
+Copy all properties to a given \fBIDetachedQuery\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestination\fP The given \fBIDetachedQuery\fP\&.
+.RE
+.PP
+.PP
+The method use \fBIDetachedQuery\fP to set properties of \fIdestination\fP \&. 
+.PP
+Implements \fBNHibernate\&.Impl\&.IDetachedQueryImplementor\fP\&.
+.PP
+Definition at line 516 of file AbstractDetachedQuery\&.cs\&.
+.SS "abstract \fBIQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.GetExecutableQuery (\fBISession\fPsession)\fC [pure virtual]\fP"
+
+.PP
+Get an executable instance of \fBIQuery\fP, to actually run the query\&.
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Impl\&.DetachedNamedQuery\fP, \fBNHibernate\&.Impl\&.DetachedQuery\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1741\&.Fixture\&.DetachedNamedQueryCrack\fP\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetAnsiString (intposition, stringval)"
+
+.PP
+Bind an instance of a string to an indexed parameter using an \fBNHibernate\fP AnsiStringType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a string\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 168 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetAnsiString (stringname, stringval)"
+
+.PP
+Bind an instance of a string to a named parameter using an \fBNHibernate\fP AnsiStringType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a string\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 174 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetBinary (intposition, byte[]val)"
+
+.PP
+Bind an instance of a byte array to an indexed parameter using an \fBNHibernate\fP BinaryType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a byte array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 180 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetBinary (stringname, byte[]val)"
+
+.PP
+Bind an instance of a byte array to a named parameter using an \fBNHibernate\fP BinaryType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a byte array\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 186 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetBoolean (intposition, boolval)"
+
+.PP
+Bind an instance of a bool to an indexed parameter using an \fBNHibernate\fP BooleanType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a bool\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 192 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetBoolean (stringname, boolval)"
+
+.PP
+Bind an instance of a bool to a named parameter using an \fBNHibernate\fP BooleanType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a bool\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 198 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetByte (intposition, byteval)"
+
+.PP
+Bind an instance of a byte to an indexed parameter using an \fBNHibernate\fP ByteType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a byte\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 204 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetByte (stringname, byteval)"
+
+.PP
+Bind an instance of a byte to a named parameter using an \fBNHibernate\fP ByteType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a byte\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 210 of file AbstractDetachedQuery\&.cs\&.
+.SS "virtual \fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetCacheable (boolcacheable)\fC [virtual]\fP"
+
+.PP
+Enable caching of this query result set\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcacheable\fP Should the query results be cacheable?
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Impl\&.DetachedNamedQuery\fP\&.
+.PP
+Definition at line 78 of file AbstractDetachedQuery\&.cs\&.
+.SS "virtual \fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetCacheMode (\fBCacheMode\fPcacheMode)\fC [virtual]\fP"
+
+.PP
+Override the current session cache mode, just for this query\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcacheMode\fP The cache mode to use\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+this (for method chaining) 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Impl\&.DetachedNamedQuery\fP\&.
+.PP
+Definition at line 405 of file AbstractDetachedQuery\&.cs\&.
+.SS "virtual \fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetCacheRegion (stringcacheRegion)\fC [virtual]\fP"
+Set the name of the cache region\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcacheRegion\fP The name of a query cache region, or  for the default query cache
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Impl\&.DetachedNamedQuery\fP\&.
+.PP
+Definition at line 84 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetCharacter (intposition, charval)"
+
+.PP
+Bind an instance of a char to an indexed parameter using an \fBNHibernate\fP CharType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a char\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 216 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetCharacter (stringname, charval)"
+
+.PP
+Bind an instance of a char to a named parameter using an \fBNHibernate\fP CharType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a char\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 222 of file AbstractDetachedQuery\&.cs\&.
+.SS "virtual \fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetComment (stringcomment)\fC [virtual]\fP"
+
+.PP
+Add a comment to the generated SQL\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomment\fP a human-readable string 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Impl\&.DetachedNamedQuery\fP\&.
+.PP
+Definition at line 72 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetDateTime (intposition, DateTimeval)"
+
+.PP
+Bind an instance of a DateTime to an indexed parameter using an \fBNHibernate\fP DateTimeType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a DateTime\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 228 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetDateTime (stringname, DateTimeval)"
+
+.PP
+Bind an instance of a DateTime to a named parameter using an \fBNHibernate\fP DateTimeType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP A non-null instance of a DateTime\&.
+.br
+\fIname\fP The name of the parameter
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 234 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetDecimal (intposition, decimalval)"
+
+.PP
+Bind an instance of a Decimal to an indexed parameter using an \fBNHibernate\fP DecimalType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a Decimal\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 240 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetDecimal (stringname, decimalval)"
+
+.PP
+Bind an instance of a Decimal to a named parameter using an \fBNHibernate\fP DecimalType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Decimal\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 246 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetDouble (intposition, doubleval)"
+
+.PP
+Bind an instance of a Double to an indexed parameter using an \fBNHibernate\fP DoubleType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a Double\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 252 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetDouble (stringname, doubleval)"
+
+.PP
+Bind an instance of a Double to a named parameter using an \fBNHibernate\fP DoubleType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Double\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 258 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetEntity (intposition, objectval)"
+
+.PP
+Bind an instance of a mapped persistent class to an indexed parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP Position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a persistent class
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 264 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetEntity (stringname, objectval)"
+
+.PP
+Bind an instance of a mapped persistent class to a named parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a persistent class
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 270 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetEnum (intposition, Enumval)"
+
+.PP
+Bind an instance of a persistent enumeration class to an indexed parameter using an \fBNHibernate\fP PersistentEnumType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a persistent enumeration
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 276 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetEnum (stringname, Enumval)"
+
+.PP
+Bind an instance of a persistent enumeration class to a named parameter using an \fBNHibernate\fP PersistentEnumType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a persistent enumeration
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 282 of file AbstractDetachedQuery\&.cs\&.
+.SS "virtual \fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetFetchSize (intfetchSize)\fC [virtual]\fP"
+
+.PP
+Set a fetch size for the underlying ADO query\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfetchSize\fP the fetch size 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Impl\&.DetachedNamedQuery\fP\&.
+.PP
+Definition at line 102 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetFirstResult (intfirstResult)"
+
+.PP
+Sets the first row to retrieve\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirstResult\fP The first row to retreive\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 66 of file AbstractDetachedQuery\&.cs\&.
+.SS "virtual \fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetFlushMode (\fBFlushMode\fPflushMode)\fC [virtual]\fP"
+
+.PP
+Override the current session flush mode, just for this query\&. 
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Impl\&.DetachedNamedQuery\fP\&.
+.PP
+Definition at line 384 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetGuid (intposition, Guidval)"
+
+.PP
+Bind an instance of a Guid to a named parameter using an \fBNHibernate\fP GuidType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP An instance of a Guid\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 372 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetGuid (stringname, Guidval)"
+
+.PP
+Bind an instance of a Guid to a named parameter using an \fBNHibernate\fP GuidType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP An instance of a Guid\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 378 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetIgnoreUknownNamedParameters (boolignoredUnknownNamedParameters)"
+
+.PP
+Set the value to ignore unknown parameters names\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIignoredUnknownNamedParameters\fP True to ignore unknown parameters names\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 396 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetInt16 (intposition, shortval)"
+
+.PP
+Bind an instance of a Int16 to an indexed parameter using an \fBNHibernate\fP Int16Type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a Int16\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 288 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetInt16 (stringname, shortval)"
+
+.PP
+Bind an instance of a Int16 to a named parameter using an \fBNHibernate\fP Int16Type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Int16\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 294 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetInt32 (intposition, intval)"
+
+.PP
+Bind an instance of a Int32 to an indexed parameter using an \fBNHibernate\fP Int32Type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a Int32\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 300 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetInt32 (stringname, intval)"
+
+.PP
+Bind an instance of a Int32 to a named parameter using an \fBNHibernate\fP Int32Type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Int32\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 306 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetInt64 (intposition, longval)"
+
+.PP
+Bind an instance of a Int64 to an indexed parameter using an \fBNHibernate\fP Int64Type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a Int64\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 312 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetInt64 (stringname, longval)"
+
+.PP
+Bind an instance of a Int64 to a named parameter using an \fBNHibernate\fP Int64Type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Int64\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 318 of file AbstractDetachedQuery\&.cs\&.
+.SS "void NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetLockMode (stringalias, \fBLockMode\fPlockMode)"
+
+.PP
+Set the lockmode for the objects idententified by the given alias that appears in the \fCFROM\fP clause\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP alias a query alias, or \fCthis\fP for a collection filter
+.br
+\fIlockMode\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 108 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetMaxResults (intmaxResults)"
+
+.PP
+Set the maximum number of rows to retrieve\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxResults\fP The maximum number of rows to retreive\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 60 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetParameter (intposition, objectval, \fBIType\fPtype)"
+
+.PP
+Bind a value to an indexed parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP Position of the parameter in the query, numbered from \fC0\fP
+.br
+\fIval\fP The possibly null parameter value
+.br
+\fItype\fP The Hibernate type
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 116 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetParameter (stringname, objectval, \fBIType\fPtype)"
+
+.PP
+Bind a value to a named query parameter 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP The possibly null parameter value
+.br
+\fItype\fP The \fBNHibernate\fP IType\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 122 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetParameter (intposition, objectval)"
+
+.PP
+Bind a value to an indexed parameter, guessing the Hibernate type from the class of the given object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query, numbered from \fC0\fP
+.br
+\fIval\fP The non-null parameter value
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 130 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetParameter (stringname, objectval)"
+
+.PP
+Bind a value to a named query parameter, guessing the \fBNHibernate\fP IType from the class of the given object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP The non-null parameter value
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 136 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetParameterList (stringname, IEnumerablevals, \fBIType\fPtype)"
+
+.PP
+Bind multiple values to a named query parameter\&. This is useful for binding a list of values to an expression such as \fCfoo\&.bar in (:value_list)\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIvals\fP A collection of values to list
+.br
+\fItype\fP The Hibernate type of the values
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 144 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetParameterList (stringname, IEnumerablevals)"
+
+.PP
+Bind multiple values to a named query parameter, guessing the Hibernate type from the class of the first object in the collection\&. This is useful for binding a list of values to an expression such as \fCfoo\&.bar in (:value_list)\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIvals\fP A collection of values to list
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 152 of file AbstractDetachedQuery\&.cs\&.
+.SS "void NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetParametersTo (\fBIDetachedQuery\fPdestination)"
+
+.PP
+Set only parameters to a given \fBIDetachedQuery\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestination\fP The given \fBIDetachedQuery\fP\&.
+.RE
+.PP
+.PP
+The method use \fBIDetachedQuery\fP to set properties of \fIdestination\fP \&. Existing parameters in \fIdestination\fP  are merged/overriden\&. 
+.PP
+Implements \fBNHibernate\&.Impl\&.IDetachedQueryImplementor\fP\&.
+.PP
+Definition at line 547 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetProperties (objectobj)"
+
+.PP
+Bind the property values of the given object to named parameters of the query, matching property names with parameter names and mapping property types to Hibernate types using heuristics\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP Any POCO
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 160 of file AbstractDetachedQuery\&.cs\&.
+.SS "void NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetQueryProperties (\fBIQuery\fPq)\fC [protected]\fP"
+
+.PP
+Fill all \fBIQuery\fP properties\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIq\fP The \fBIQuery\fP\&.
+.RE
+.PP
+.PP
+Query properties are overriden/merged\&. 
+.PP
+Definition at line 420 of file AbstractDetachedQuery\&.cs\&.
+.SS "virtual \fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetReadOnly (boolreadOnly)\fC [virtual]\fP"
+
+.PP
+Entities retrieved by this query will be loaded in a read-only mode where Hibernate will never dirty-check them or make changes persistent\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreadOnly\fP Enable/Disable read -only mode
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Impl\&.DetachedNamedQuery\fP\&.
+.PP
+Definition at line 90 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetResultTransformer (\fBIResultTransformer\fPresultTransformer)"
+
+.PP
+Set a strategy for handling the query results\&. This can be used to change 'shape' of the query result\&. 
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 390 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetSingle (intposition, floatval)"
+
+.PP
+Bind an instance of a Single to an indexed parameter using an \fBNHibernate\fP SingleType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a Single\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 324 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetSingle (stringname, floatval)"
+
+.PP
+Bind an instance of a Single to a named parameter using an \fBNHibernate\fP SingleType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a Single\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 330 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetString (intposition, stringval)"
+
+.PP
+Bind an instance of a String to an indexed parameter using an \fBNHibernate\fP StringType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a String\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 336 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetString (stringname, stringval)"
+
+.PP
+Bind an instance of a String to a named parameter using an \fBNHibernate\fP StringType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a String\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 342 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetTime (intposition, DateTimeval)"
+
+.PP
+Bind an instance of a DateTime to an indexed parameter using an \fBNHibernate\fP DateTimeType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a DateTime\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 348 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetTime (stringname, DateTimeval)"
+
+.PP
+Bind an instance of a DateTime to a named parameter using an \fBNHibernate\fP DateTimeType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a DateTime\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 354 of file AbstractDetachedQuery\&.cs\&.
+.SS "virtual \fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetTimeout (inttimeout)\fC [virtual]\fP"
+
+.PP
+The timeout for the underlying ADO query 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItimeout\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Impl\&.DetachedNamedQuery\fP\&.
+.PP
+Definition at line 96 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetTimestamp (intposition, DateTimeval)"
+
+.PP
+Bind an instance of a DateTime to an indexed parameter using an \fBNHibernate\fP TimestampType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP The position of the parameter in the query string, numbered from \fC0\fP
+.br
+\fIval\fP A non-null instance of a DateTime\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 360 of file AbstractDetachedQuery\&.cs\&.
+.SS "\fBIDetachedQuery\fP NHibernate\&.Impl\&.AbstractDetachedQuery\&.SetTimestamp (stringname, DateTimeval)"
+
+.PP
+Bind an instance of a DateTime to a named parameter using an \fBNHibernate\fP TimestampType\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the parameter
+.br
+\fIval\fP A non-null instance of a DateTime\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.IDetachedQuery\fP\&.
+.PP
+Definition at line 366 of file AbstractDetachedQuery\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

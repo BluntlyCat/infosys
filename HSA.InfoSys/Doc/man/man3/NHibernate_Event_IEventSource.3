@@ -1,0 +1,111 @@
+.TH "NHibernate.Event.IEventSource" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.IEventSource \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Engine\&.ISessionImplementor\fP, and \fBNHibernate\&.ISession\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Impl\&.SessionImpl\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBInstantiate\fP (\fBIEntityPersister\fP persister, object id)"
+.br
+.RI "\fIInstantiate an entity instance, using either an interceptor, or the given persister \fP"
+.ti -1c
+.RI "void \fBForceFlush\fP (\fBEntityEntry\fP e)"
+.br
+.RI "\fIForce an immediate flush\fP"
+.ti -1c
+.RI "void \fBMerge\fP (string entityName, object obj, IDictionary copiedAlready)"
+.br
+.RI "\fICascade merge an entity instance\fP"
+.ti -1c
+.RI "void \fBPersist\fP (string entityName, object obj, IDictionary createdAlready)"
+.br
+.RI "\fICascade persist an entity instance\fP"
+.ti -1c
+.RI "void \fBPersistOnFlush\fP (string entityName, object obj, IDictionary copiedAlready)"
+.br
+.RI "\fICascade persist an entity instance during the flush process\fP"
+.ti -1c
+.RI "void \fBRefresh\fP (object obj, IDictionary refreshedAlready)"
+.br
+.RI "\fICascade refresh an entity instance\fP"
+.ti -1c
+.RI "void \fBDelete\fP (string entityName, object child, bool isCascadeDeleteEnabled, ISet< object > transientEntities)"
+.br
+.RI "\fICascade delete an entity instance\fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBActionQueue\fP \fBActionQueue\fP\fC [get]\fP"
+.br
+.RI "\fIGet the ActionQueue for this session\fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 9 of file IEventSource\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Event\&.IEventSource\&.Delete (stringentityName, objectchild, boolisCascadeDeleteEnabled, ISet< object >transientEntities)"
+
+.PP
+Cascade delete an entity instance
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP\&.
+.SS "void NHibernate\&.Event\&.IEventSource\&.ForceFlush (\fBEntityEntry\fPe)"
+
+.PP
+Force an immediate flush
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP\&.
+.SS "object NHibernate\&.Event\&.IEventSource\&.Instantiate (\fBIEntityPersister\fPpersister, objectid)"
+
+.PP
+Instantiate an entity instance, using either an interceptor, or the given persister 
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP\&.
+.SS "void NHibernate\&.Event\&.IEventSource\&.Merge (stringentityName, objectobj, IDictionarycopiedAlready)"
+
+.PP
+Cascade merge an entity instance
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP\&.
+.SS "void NHibernate\&.Event\&.IEventSource\&.Persist (stringentityName, objectobj, IDictionarycreatedAlready)"
+
+.PP
+Cascade persist an entity instance
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP\&.
+.SS "void NHibernate\&.Event\&.IEventSource\&.PersistOnFlush (stringentityName, objectobj, IDictionarycopiedAlready)"
+
+.PP
+Cascade persist an entity instance during the flush process
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP\&.
+.SS "void NHibernate\&.Event\&.IEventSource\&.Refresh (objectobj, IDictionaryrefreshedAlready)"
+
+.PP
+Cascade refresh an entity instance
+.PP
+Implemented in \fBNHibernate\&.Impl\&.SessionImpl\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBActionQueue\fP NHibernate\&.Event\&.IEventSource\&.ActionQueue\fC [get]\fP"
+
+.PP
+Get the ActionQueue for this session
+.PP
+Definition at line 12 of file IEventSource\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

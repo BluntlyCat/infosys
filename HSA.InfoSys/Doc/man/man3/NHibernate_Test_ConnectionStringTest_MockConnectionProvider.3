@@ -1,0 +1,77 @@
+.TH "NHibernate.Test.ConnectionStringTest.MockConnectionProvider" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.ConnectionStringTest.MockConnectionProvider \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Connection\&.ConnectionProvider\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override IDbConnection \fBGetConnection\fP ()"
+.br
+.RI "\fIGet an open IDbConnection\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBConfigureDriver\fP (IDictionary< string, string > settings)"
+.br
+.RI "\fIConfigures the driver for the ConnectionProvider\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBPublicConnectionString\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 47 of file NamedConnectionStringFixture\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Test\&.ConnectionStringTest\&.MockConnectionProvider\&.ConfigureDriver (IDictionary< string, string >settings)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Configures the driver for the ConnectionProvider\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsettings\fP An IDictionary that contains the settings for the \fBDriver\fP\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP Thrown when the Environment\&.ConnectionDriver could not be found in the \fCsettings\fP parameter or there is a problem with creating the IDriver\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Connection\&.ConnectionProvider\fP\&.
+.PP
+Definition at line 67 of file NamedConnectionStringFixture\&.cs\&.
+.SS "override IDbConnection NHibernate\&.Test\&.ConnectionStringTest\&.MockConnectionProvider\&.GetConnection ()\fC [virtual]\fP"
+
+.PP
+Get an open IDbConnection\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An open IDbConnection\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Connection\&.ConnectionProvider\fP\&.
+.PP
+Definition at line 62 of file NamedConnectionStringFixture\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

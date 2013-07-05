@@ -1,0 +1,59 @@
+.TH "NHibernate.Engine.Query.ParameterParser" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.Query.ParameterParser \- 
+.PP
+The single available method \fBParameterParser\&.Parse\fP is responsible for parsing a query string and recognizing tokens in relation to parameters (either named, ejb3-style, or ordinal) and providing callbacks about such recognitions\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "interface \fBIRecognizer\fP"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBParse\fP (string sqlString, \fBIRecognizer\fP recognizer)"
+.br
+.RI "\fIPerforms the actual parsing and tokenizing of the query string making appropriate callbacks to the given recognizer upon recognition of the various tokens\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+The single available method \fBParameterParser\&.Parse\fP is responsible for parsing a query string and recognizing tokens in relation to parameters (either named, ejb3-style, or ordinal) and providing callbacks about such recognitions\&. 
+
+
+.PP
+Definition at line 13 of file ParameterParser\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static void NHibernate\&.Engine\&.Query\&.ParameterParser\&.Parse (stringsqlString, \fBIRecognizer\fPrecognizer)\fC [static]\fP"
+
+.PP
+Performs the actual parsing and tokenizing of the query string making appropriate callbacks to the given recognizer upon recognition of the various tokens\&. Note that currently, this only knows how to deal with a single output parameter (for callable statements)\&. If we later add support for multiple output params, this, obviously, needs to change\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlString\fP The string to be parsed/tokenized\&.
+.br
+\fIrecognizer\fP The thing which handles recognition events\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBQueryException\fP\fP 
+.RE
+.PP
+
+.PP
+Definition at line 44 of file ParameterParser\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

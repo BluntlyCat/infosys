@@ -1,0 +1,121 @@
+.TH "Renci.SshNet.Security.HostAlgorithm" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Security.HostAlgorithm \- 
+.PP
+Base class for SSH host algorithms\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBRenci\&.SshNet\&.Security\&.CertificateHostAlgorithm\fP, and \fBRenci\&.SshNet\&.Security\&.KeyHostAlgorithm\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBHostAlgorithm\fP (string name)"
+.br
+.RI "\fIInitializes a new instance of the \fBHostAlgorithm\fP class\&. \fP"
+.ti -1c
+.RI "abstract byte[] \fBSign\fP (byte[] data)"
+.br
+.RI "\fISigns the specified data\&. \fP"
+.ti -1c
+.RI "abstract bool \fBVerifySignature\fP (byte[] data, byte[] signature)"
+.br
+.RI "\fIVerifies the signature\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the host key name\&. \fP"
+.ti -1c
+.RI "abstract byte[] \fBData\fP\fC [get]\fP"
+.br
+.RI "\fIGets the host key data\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for SSH host algorithms\&. 
+
+
+.PP
+Definition at line 13 of file HostAlgorithm\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Security\&.HostAlgorithm\&.HostAlgorithm (stringname)"
+
+.PP
+Initializes a new instance of the \fBHostAlgorithm\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The host key name\&.
+.RE
+.PP
+
+.PP
+Definition at line 29 of file HostAlgorithm\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract byte [] Renci\&.SshNet\&.Security\&.HostAlgorithm\&.Sign (byte[]data)\fC [pure virtual]\fP"
+
+.PP
+Signs the specified data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Signed data\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBRenci\&.SshNet\&.Security\&.KeyHostAlgorithm\fP, and \fBRenci\&.SshNet\&.Security\&.CertificateHostAlgorithm\fP\&.
+.SS "abstract bool Renci\&.SshNet\&.Security\&.HostAlgorithm\&.VerifySignature (byte[]data, byte[]signature)\fC [pure virtual]\fP"
+
+.PP
+Verifies the signature\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The data\&.
+.br
+\fIsignature\fP The signature\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCTrue\fP is signature was successfully verifies; otherwise \fCfalse\fP\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBRenci\&.SshNet\&.Security\&.KeyHostAlgorithm\fP, and \fBRenci\&.SshNet\&.Security\&.CertificateHostAlgorithm\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "abstract byte [] Renci\&.SshNet\&.Security\&.HostAlgorithm\&.Data\fC [get]\fP"
+
+.PP
+Gets the host key data\&. 
+.PP
+Definition at line 23 of file HostAlgorithm\&.cs\&.
+.SS "string Renci\&.SshNet\&.Security\&.HostAlgorithm\&.Name\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the host key name\&. 
+.PP
+Definition at line 18 of file HostAlgorithm\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

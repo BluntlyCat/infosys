@@ -1,0 +1,279 @@
+.TH "NHibernate.Dialect.Schema.AbstractDataBaseSchema" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.Schema.AbstractDataBaseSchema \- 
+.PP
+Common implementation of schema reader\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.Schema\&.FirebirdDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.MsSqlCeDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.MsSqlDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.MySQLDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.OracleDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\fP, \fBNHibernate\&.Dialect\&.Schema\&.SQLiteDataBaseMetaData\fP, and \fBNHibernate\&.Dialect\&.Schema\&.SybaseAnywhereDataBaseMetaData\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual DataTable \fBGetTables\fP (string catalog, string schemaPattern, string tableNamePattern, string[] types)"
+.br
+.RI "\fIGets a description of the tables available for the catalog \fP"
+.ti -1c
+.RI "abstract \fBITableMetadata\fP \fBGetTableMetadata\fP (DataRow rs, bool extras)"
+.br
+.RI "\fIGet the Table MetaData\&. \fP"
+.ti -1c
+.RI "virtual DataTable \fBGetColumns\fP (string catalog, string schemaPattern, string tableNamePattern, string columnNamePattern)"
+.br
+.RI "\fIGets a description of the table columns available \fP"
+.ti -1c
+.RI "virtual DataTable \fBGetIndexInfo\fP (string catalog, string schemaPattern, string tableName)"
+.br
+.RI "\fIGet a description of the given table's indices and statistics\&. \fP"
+.ti -1c
+.RI "virtual DataTable \fBGetIndexColumns\fP (string catalog, string schemaPattern, string tableName, string indexName)"
+.br
+.RI "\fIGet a description of the given table's indices and statistics\&. \fP"
+.ti -1c
+.RI "virtual DataTable \fBGetForeignKeys\fP (string catalog, string schema, string table)"
+.br
+.RI "\fIGets a description of the foreign keys available \fP"
+.ti -1c
+.RI "virtual ISet< string > \fBGetReservedWords\fP ()"
+.br
+.RI "\fIGet all reserved words \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractDataBaseSchema\fP (DbConnection connection)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "DbConnection \fBConnection\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBStoresMixedCaseQuotedIdentifiers\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBStoresUpperCaseQuotedIdentifiers\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBStoresUpperCaseIdentifiers\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBStoresLowerCaseQuotedIdentifiers\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual bool \fBStoresLowerCaseIdentifiers\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBColumnNameForTableName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "virtual string \fBForeignKeysSchemaName\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Common implementation of schema reader\&. 
+
+This implementation of \fBIDataBaseSchema\fP is based on the new DbConnection of \&.NET 2\&.0\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+DbConnection\&.GetSchema()
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 15 of file AbstractDataBaseSchema\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual DataTable NHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\&.GetColumns (stringcatalog, stringschemaPattern, stringtableNamePattern, stringcolumnNamePattern)\fC [virtual]\fP"
+
+.PP
+Gets a description of the table columns available 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcatalog\fP A catalog, retrieves those without a catalog
+.br
+\fIschemaPattern\fP \fBSchema\fP pattern, retrieves those without the schema
+.br
+\fItableNamePattern\fP A table name pattern
+.br
+\fIcolumnNamePattern\fP a columng name patterm
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A description of the table columns available
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.Schema\&.SybaseAnywhereDataBaseMetaData\fP, \fBNHibernate\&.Dialect\&.Schema\&.OracleDataBaseSchema\fP, and \fBNHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\fP\&.
+.PP
+Definition at line 69 of file AbstractDataBaseSchema\&.cs\&.
+.SS "virtual DataTable NHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\&.GetForeignKeys (stringcatalog, stringschema, stringtable)\fC [virtual]\fP"
+
+.PP
+Gets a description of the foreign keys available 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcatalog\fP A catalog, retrieves those without a catalog
+.br
+\fIschema\fP \fBSchema\fP name, retrieves those without the schema
+.br
+\fItable\fP A table name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A description of the foreign keys available
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\fP, \fBNHibernate\&.Dialect\&.Schema\&.SybaseAnywhereDataBaseMetaData\fP, and \fBNHibernate\&.Dialect\&.Schema\&.OracleDataBaseSchema\fP\&.
+.PP
+Definition at line 88 of file AbstractDataBaseSchema\&.cs\&.
+.SS "virtual DataTable NHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\&.GetIndexColumns (stringcatalog, stringschemaPattern, stringtableName, stringindexName)\fC [virtual]\fP"
+
+.PP
+Get a description of the given table's indices and statistics\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcatalog\fP A catalog, retrieves those without a catalog
+.br
+\fIschemaPattern\fP \fBSchema\fP pattern, retrieves those without the schema
+.br
+\fItableName\fP A table name pattern
+.br
+\fIindexName\fP The name of the index
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A description of the table's indices available
+.RE
+.PP
+.PP
+The result is relative to the schema collections 'IndexColumns'\&.
+.PP
+Implements \fBNHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\fP, \fBNHibernate\&.Dialect\&.Schema\&.SybaseAnywhereDataBaseMetaData\fP, and \fBNHibernate\&.Dialect\&.Schema\&.OracleDataBaseSchema\fP\&.
+.PP
+Definition at line 82 of file AbstractDataBaseSchema\&.cs\&.
+.SS "virtual DataTable NHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\&.GetIndexInfo (stringcatalog, stringschemaPattern, stringtableName)\fC [virtual]\fP"
+
+.PP
+Get a description of the given table's indices and statistics\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcatalog\fP A catalog, retrieves those without a catalog
+.br
+\fIschemaPattern\fP \fBSchema\fP pattern, retrieves those without the schema
+.br
+\fItableName\fP A table name pattern
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A description of the table's indices available
+.RE
+.PP
+.PP
+The result is relative to the schema collections 'Indexes'\&.
+.PP
+Implements \fBNHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\fP, \fBNHibernate\&.Dialect\&.Schema\&.OracleDataBaseSchema\fP, and \fBNHibernate\&.Dialect\&.Schema\&.SybaseAnywhereDataBaseMetaData\fP\&.
+.PP
+Definition at line 76 of file AbstractDataBaseSchema\&.cs\&.
+.SS "virtual ISet<string> NHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\&.GetReservedWords ()\fC [virtual]\fP"
+
+.PP
+Get all reserved words 
+.PP
+\fBReturns:\fP
+.RS 4
+A set of reserved words
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.Schema\&.SybaseAnywhereDataBaseMetaData\fP\&.
+.PP
+Definition at line 94 of file AbstractDataBaseSchema\&.cs\&.
+.SS "abstract \fBITableMetadata\fP NHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\&.GetTableMetadata (DataRowrs, boolextras)\fC [pure virtual]\fP"
+
+.PP
+Get the Table MetaData\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The DataRow resultSet of \fBGetTables\fP\&.
+.br
+\fIextras\fP Include FKs and indexes
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Dialect\&.Schema\&.FirebirdDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.SybaseAnywhereDataBaseMetaData\fP, \fBNHibernate\&.Dialect\&.Schema\&.MySQLDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\fP, \fBNHibernate\&.Dialect\&.Schema\&.MsSqlCeDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.MsSqlDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.OracleDataBaseSchema\fP, and \fBNHibernate\&.Dialect\&.Schema\&.SQLiteDataBaseMetaData\fP\&.
+.SS "virtual DataTable NHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\&.GetTables (stringcatalog, stringschemaPattern, stringtableNamePattern, string[]types)\fC [virtual]\fP"
+
+.PP
+Gets a description of the tables available for the catalog 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcatalog\fP A catalog, retrieves those without a catalog
+.br
+\fIschemaPattern\fP \fBSchema\fP pattern, retrieves those without the schema
+.br
+\fItableNamePattern\fP A table name pattern
+.br
+\fItypes\fP a list of table types to include
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Each row
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\fP, \fBNHibernate\&.Dialect\&.Schema\&.SybaseAnywhereDataBaseMetaData\fP, and \fBNHibernate\&.Dialect\&.Schema\&.OracleDataBaseSchema\fP\&.
+.PP
+Definition at line 56 of file AbstractDataBaseSchema\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

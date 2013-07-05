@@ -1,0 +1,59 @@
+.TH "NHibernate.Id.IdentityGenerator.InsertSelectDelegate" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.IdentityGenerator.InsertSelectDelegate \- 
+.PP
+Delegate for dealing with IDENTITY columns where the dialect supports returning the generated IDENTITY value directly from the insert statement\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Id\&.Insert\&.AbstractReturningDelegate\fP, and \fBNHibernate\&.Id\&.Insert\&.IInsertGeneratedIdentifierDelegate\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBInsertSelectDelegate\fP (\fBIPostInsertIdentityPersister\fP persister, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "override \fBIdentifierGeneratingInsert\fP \fBPrepareIdentifierGeneratingInsert\fP ()"
+.br
+.RI "\fIBuild a \fBNHibernate\&.SqlCommand\&.SqlInsertBuilder\fP specific to the delegate's mode of handling generated key values\&. \fP"
+.ti -1c
+.RI "override object \fBExecuteAndExtract\fP (IDbCommand insert, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "object \fBDetermineGeneratedIdentifier\fP (\fBISessionImplementor\fP session, object entity)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Delegate for dealing with IDENTITY columns where the dialect supports returning the generated IDENTITY value directly from the insert statement\&. 
+
+
+.PP
+Definition at line 48 of file IdentityGenerator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBIdentifierGeneratingInsert\fP NHibernate\&.Id\&.IdentityGenerator\&.InsertSelectDelegate\&.PrepareIdentifierGeneratingInsert ()\fC [virtual]\fP"
+
+.PP
+Build a \fBNHibernate\&.SqlCommand\&.SqlInsertBuilder\fP specific to the delegate's mode of handling generated key values\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The insert object\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.Insert\&.AbstractReturningDelegate\fP\&.
+.PP
+Definition at line 60 of file IdentityGenerator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

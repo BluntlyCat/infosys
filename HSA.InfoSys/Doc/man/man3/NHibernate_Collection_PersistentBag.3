@@ -1,0 +1,483 @@
+.TH "NHibernate.Collection.PersistentBag" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Collection.PersistentBag \- 
+.PP
+An unordered, unkeyed collection that can contain the same element multiple times\&. The \&.NET collections API has no Bag class\&. Most developers seem to use ILists to represent bag semantics, so \fBNHibernate\fP follows this practice\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP, and IList\&.
+.PP
+Inherited by \fBNHibernate\&.Collection\&.Generic\&.PersistentGenericBag< T >\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBClearDelayedOperation\fP"
+.br
+.ti -1c
+.RI "class \fBSimpleAddDelayedOperation\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPersistentBag\fP (\fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "\fBPersistentBag\fP (\fBISessionImplementor\fP session, ICollection coll)"
+.br
+.ti -1c
+.RI "override bool \fBIsWrapper\fP (object collection)"
+.br
+.RI "\fIIs this the wrapper for the given underlying collection instance? \fP"
+.ti -1c
+.RI "override IEnumerable \fBEntries\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fIIterate all collection entries, during update of the database \fP"
+.ti -1c
+.RI "override object \fBReadFrom\fP (IDataReader reader, \fBICollectionPersister\fP role, \fBICollectionAliases\fP descriptor, object owner)"
+.br
+.RI "\fIReads the row from the IDataReader\&. \fP"
+.ti -1c
+.RI "override void \fBBeforeInitialize\fP (\fBICollectionPersister\fP persister, int anticipatedSize)"
+.br
+.RI "\fICalled before any elements are read into the collection, allowing appropriate initializations to occur\&. \fP"
+.ti -1c
+.RI "override bool \fBEqualsSnapshot\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fIDoes the current state exactly match the snapshot? \fP"
+.ti -1c
+.RI "override bool \fBIsSnapshotEmpty\fP (object snapshot)"
+.br
+.RI "\fIIs the snapshot empty?\fP"
+.ti -1c
+.RI "override object \fBGetSnapshot\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fIReturn a new snapshot of the current state of the collection \fP"
+.ti -1c
+.RI "override ICollection \fBGetOrphans\fP (object snapshot, string entityName)"
+.br
+.RI "\fIGet all 'orphaned' elements \fP"
+.ti -1c
+.RI "override object \fBDisassemble\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fIDisassemble the collection, ready for the cache \fP"
+.ti -1c
+.RI "override void \fBInitializeFromCache\fP (\fBICollectionPersister\fP persister, object disassembled, object owner)"
+.br
+.RI "\fIInitializes this \fBPersistentBag\fP from the cached values\&. \fP"
+.ti -1c
+.RI "override bool \fBNeedsRecreate\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fIGets a Boolean indicating if this \fBPersistentBag\fP needs to be recreated in the database\&. \fP"
+.ti -1c
+.RI "override IEnumerable \fBGetDeletes\fP (\fBICollectionPersister\fP persister, bool indexIsFormula)"
+.br
+.RI "\fIGet all the elements that need deleting \fP"
+.ti -1c
+.RI "override bool \fBNeedsInserting\fP (object entry, int i, \fBIType\fP elemType)"
+.br
+.RI "\fIDo we need to insert this element? \fP"
+.ti -1c
+.RI "override bool \fBNeedsUpdating\fP (object entry, int i, \fBIType\fP elemType)"
+.br
+.RI "\fIDo we need to update this element? \fP"
+.ti -1c
+.RI "override object \fBGetIndex\fP (object entry, int i, \fBICollectionPersister\fP persister)"
+.br
+.RI "\fIGet the index of the given collection entry \fP"
+.ti -1c
+.RI "override object \fBGetElement\fP (object entry)"
+.br
+.RI "\fIGet the value of the given collection entry \fP"
+.ti -1c
+.RI "override object \fBGetSnapshotElement\fP (object entry, int i)"
+.br
+.RI "\fIGet the snapshot value of the given collection entry \fP"
+.ti -1c
+.RI "override bool \fBEntryExists\fP (object entry, int i)"
+.br
+.RI "\fIDoes an element exist at this entry in the collection? \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.ti -1c
+.RI "void \fBRemoveAt\fP (int index)"
+.br
+.ti -1c
+.RI "void \fBInsert\fP (int index, object value)"
+.br
+.ti -1c
+.RI "void \fBRemove\fP (object value)"
+.br
+.ti -1c
+.RI "bool \fBContains\fP (object value)"
+.br
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "int \fBIndexOf\fP (object value)"
+.br
+.ti -1c
+.RI "int \fBAdd\fP (object value)"
+.br
+.ti -1c
+.RI "void \fBCopyTo\fP (Array array, int index)"
+.br
+.ti -1c
+.RI "IEnumerator \fBGetEnumerator\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBAfterInitialize\fP (\fBICollectionPersister\fP persister)"
+.br
+.RI "\fICalled after initializing from cache \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "IList \fBbag\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBRowUpdatePossible\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBEmpty\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsReadOnly\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "object \fBthis[int index]\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFixedSize\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSynchronized\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBCount\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "object \fBSyncRoot\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An unordered, unkeyed collection that can contain the same element multiple times\&. The \&.NET collections API has no Bag class\&. Most developers seem to use ILists to represent bag semantics, so \fBNHibernate\fP follows this practice\&. 
+
+
+.PP
+Definition at line 23 of file PersistentBag\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override bool NHibernate\&.Collection\&.PersistentBag\&.AfterInitialize (\fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Called after initializing from cache 
+.PP
+\fBReturns:\fP
+.RS 4
+true if NOT has Queued operations 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 436 of file PersistentBag\&.cs\&.
+.SS "override void NHibernate\&.Collection\&.PersistentBag\&.BeforeInitialize (\fBICollectionPersister\fPpersister, intanticipatedSize)\fC [virtual]\fP"
+
+.PP
+Called before any elements are read into the collection, allowing appropriate initializations to occur\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The underlying collection persister\&. 
+.br
+\fIanticipatedSize\fP The anticipated size of the collection after initilization is complete\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 78 of file PersistentBag\&.cs\&.
+.SS "override object NHibernate\&.Collection\&.PersistentBag\&.Disassemble (\fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Disassemble the collection, ready for the cache 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 152 of file PersistentBag\&.cs\&.
+.SS "override IEnumerable NHibernate\&.Collection\&.PersistentBag\&.Entries (\fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Iterate all collection entries, during update of the database 
+.PP
+\fBReturns:\fP
+.RS 4
+An IEnumerable that gives access to all entries in the collection\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 59 of file PersistentBag\&.cs\&.
+.SS "override bool NHibernate\&.Collection\&.PersistentBag\&.EntryExists (objectentry, inti)\fC [virtual]\fP"
+
+.PP
+Does an element exist at this entry in the collection? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentry\fP 
+.br
+\fIi\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 289 of file PersistentBag\&.cs\&.
+.SS "override bool NHibernate\&.Collection\&.PersistentBag\&.EqualsSnapshot (\fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Does the current state exactly match the snapshot? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The ICollectionPersister to compare the elements of the \fBCollection\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+if the wrapped collection is different than the snapshot of the collection or if one of the elements in the collection is dirty\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 83 of file PersistentBag\&.cs\&.
+.SS "override IEnumerable NHibernate\&.Collection\&.PersistentBag\&.GetDeletes (\fBICollectionPersister\fPpersister, boolindexIsFormula)\fC [virtual]\fP"
+
+.PP
+Get all the elements that need deleting 
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 210 of file PersistentBag\&.cs\&.
+.SS "override object NHibernate\&.Collection\&.PersistentBag\&.GetElement (objectentry)\fC [virtual]\fP"
+
+.PP
+Get the value of the given collection entry 
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 278 of file PersistentBag\&.cs\&.
+.SS "override object NHibernate\&.Collection\&.PersistentBag\&.GetIndex (objectentry, inti, \fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Get the index of the given collection entry 
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 273 of file PersistentBag\&.cs\&.
+.SS "override ICollection NHibernate\&.Collection\&.PersistentBag\&.GetOrphans (objectsnapshot, stringentityName)\fC [virtual]\fP"
+
+.PP
+Get all 'orphaned' elements 
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 146 of file PersistentBag\&.cs\&.
+.SS "override object NHibernate\&.Collection\&.PersistentBag\&.GetSnapshot (\fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Return a new snapshot of the current state of the collection 
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 135 of file PersistentBag\&.cs\&.
+.SS "override object NHibernate\&.Collection\&.PersistentBag\&.GetSnapshotElement (objectentry, inti)\fC [virtual]\fP"
+
+.PP
+Get the snapshot value of the given collection entry 
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 283 of file PersistentBag\&.cs\&.
+.SS "override void NHibernate\&.Collection\&.PersistentBag\&.InitializeFromCache (\fBICollectionPersister\fPpersister, objectdisassembled, objectowner)\fC [virtual]\fP"
+
+.PP
+Initializes this \fBPersistentBag\fP from the cached values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP The CollectionPersister to use to reassemble the \fBPersistentBag\fP\&.
+.br
+\fIdisassembled\fP The disassembled \fBPersistentBag\fP\&.
+.br
+\fIowner\fP The owner object\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 171 of file PersistentBag\&.cs\&.
+.SS "override bool NHibernate\&.Collection\&.PersistentBag\&.IsSnapshotEmpty (objectsnapshot)\fC [virtual]\fP"
+
+.PP
+Is the snapshot empty?
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 105 of file PersistentBag\&.cs\&.
+.SS "override bool NHibernate\&.Collection\&.PersistentBag\&.IsWrapper (objectcollection)\fC [virtual]\fP"
+
+.PP
+Is this the wrapper for the given underlying collection instance? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 49 of file PersistentBag\&.cs\&.
+.SS "override bool NHibernate\&.Collection\&.PersistentBag\&.NeedsInserting (objectentry, inti, \fBIType\fPelemType)\fC [virtual]\fP"
+
+.PP
+Do we need to insert this element? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentry\fP 
+.br
+\fIi\fP 
+.br
+\fIelemType\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 244 of file PersistentBag\&.cs\&.
+.SS "override bool NHibernate\&.Collection\&.PersistentBag\&.NeedsRecreate (\fBICollectionPersister\fPpersister)\fC [virtual]\fP"
+
+.PP
+Gets a Boolean indicating if this \fBPersistentBag\fP needs to be recreated in the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersister\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+if this is a \fCone-to-many\fP Bag,  if this is not a \fCone-to-many\fP Bag\&. Since a Bag is an unordered, unindexed collection that permits duplicates it is not possible to determine what has changed in a \fCmany-to-many\fP so it is just recreated\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 197 of file PersistentBag\&.cs\&.
+.SS "override bool NHibernate\&.Collection\&.PersistentBag\&.NeedsUpdating (objectentry, inti, \fBIType\fPelemType)\fC [virtual]\fP"
+
+.PP
+Do we need to update this element? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentry\fP 
+.br
+\fIi\fP 
+.br
+\fIelemType\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 268 of file PersistentBag\&.cs\&.
+.SS "override object NHibernate\&.Collection\&.PersistentBag\&.ReadFrom (IDataReaderreader, \fBICollectionPersister\fProle, \fBICollectionAliases\fPdescriptor, objectowner)\fC [virtual]\fP"
+
+.PP
+Reads the row from the IDataReader\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The IDataReader that contains the value of the Identifier
+.br
+\fIrole\fP The persister for this \fBCollection\fP\&.
+.br
+\fIdescriptor\fP The descriptor providing result set column names
+.br
+\fIowner\fP The owner of this \fBCollection\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The object that was contained in the row\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Collection\&.AbstractPersistentCollection\fP\&.
+.PP
+Definition at line 64 of file PersistentBag\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

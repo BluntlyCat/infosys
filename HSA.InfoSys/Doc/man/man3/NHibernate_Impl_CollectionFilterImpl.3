@@ -1,0 +1,109 @@
+.TH "NHibernate.Impl.CollectionFilterImpl" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Impl.CollectionFilterImpl \- 
+.PP
+Implementation of the \fBIQuery\fP interface for collection filters\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Impl\&.QueryImpl\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCollectionFilterImpl\fP (string queryString, object collection, \fBISessionImplementor\fP session, \fBParameterMetadata\fP parameterMetadata)"
+.br
+.ti -1c
+.RI "override IEnumerable \fBEnumerable\fP ()"
+.br
+.RI "\fIReturn the query results as an IEnumerable\&. If the query contains multiple results per row, the results are returned in an instance of \fCobject[]\fP\&. \fP"
+.ti -1c
+.RI "override IEnumerable< T > \fBEnumerable< T >\fP ()"
+.br
+.RI "\fIStrongly-typed version of \fBEnumerable()\fP\&. \fP"
+.ti -1c
+.RI "override IList \fBList\fP ()"
+.br
+.RI "\fIReturn the query results as an IList\&. If the query contains multiple results per row, the results are returned in an instance of \fCobject[]\fP\&. \fP"
+.ti -1c
+.RI "override IList< T > \fBList< T >\fP ()"
+.br
+.RI "\fIStrongly-typed version of \fBList()\fP\&. \fP"
+.ti -1c
+.RI "override \fBIType\fP[] \fBTypeArray\fP ()"
+.br
+.ti -1c
+.RI "override object[] \fBValueArray\fP ()"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Implementation of the \fBIQuery\fP interface for collection filters\&. 
+
+
+.PP
+Definition at line 12 of file CollectionFilterImpl\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override IEnumerable NHibernate\&.Impl\&.CollectionFilterImpl\&.Enumerable ()\fC [virtual]\fP"
+
+.PP
+Return the query results as an IEnumerable\&. If the query contains multiple results per row, the results are returned in an instance of \fCobject[]\fP\&. Entities returned as results are initialized on demand\&. The first SQL query returns identifiers only\&. 
+.PP
+This is a good strategy to use if you expect a high number of the objects returned to be already loaded in the \fBISession\fP or in the 2nd level cache\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Impl\&.AbstractQueryImpl2\fP\&.
+.PP
+Definition at line 22 of file CollectionFilterImpl\&.cs\&.
+.SS "override IEnumerable<T> \fBNHibernate\&.Impl\&.CollectionFilterImpl\&.Enumerable\fP< T > ()\fC [virtual]\fP"
+
+.PP
+Strongly-typed version of \fBEnumerable()\fP\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Impl\&.AbstractQueryImpl2\fP\&.
+.PP
+Definition at line 29 of file CollectionFilterImpl\&.cs\&.
+.SS "override IList NHibernate\&.Impl\&.CollectionFilterImpl\&.List ()\fC [virtual]\fP"
+
+.PP
+Return the query results as an IList\&. If the query contains multiple results per row, the results are returned in an instance of \fCobject[]\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The IList filled with the results\&.
+.RE
+.PP
+.PP
+This is a good strategy to use if you expect few of the objects being returned are already loaded or if you want to fill the 2nd level cache\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Impl\&.AbstractQueryImpl2\fP\&.
+.PP
+Definition at line 36 of file CollectionFilterImpl\&.cs\&.
+.SS "override IList<T> \fBNHibernate\&.Impl\&.CollectionFilterImpl\&.List\fP< T > ()\fC [virtual]\fP"
+
+.PP
+Strongly-typed version of \fBList()\fP\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Impl\&.AbstractQueryImpl2\fP\&.
+.PP
+Definition at line 43 of file CollectionFilterImpl\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

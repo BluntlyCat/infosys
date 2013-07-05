@@ -1,0 +1,205 @@
+.TH "NHibernate.Test.NHSpecificTest.NH1914.CustomList< T >" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.NHSpecificTest.NH1914.CustomList< T > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IList< T >, IList, and \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1914\&.ListOfHLUT\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCustomList\fP (IEnumerable< T > theValues)"
+.br
+.ti -1c
+.RI "\fBLifecycleVeto\fP \fBOnDelete\fP (\fBISession\fP s)"
+.br
+.RI "\fICalled when an entity is deleted \fP"
+.ti -1c
+.RI "void \fBOnLoad\fP (\fBISession\fP s, object id)"
+.br
+.RI "\fICalled after an entity is loaded\&. \fP"
+.ti -1c
+.RI "\fBLifecycleVeto\fP \fBOnSave\fP (\fBISession\fP s)"
+.br
+.RI "\fICalled when an entity is saved \fP"
+.ti -1c
+.RI "\fBLifecycleVeto\fP \fBOnUpdate\fP (\fBISession\fP s)"
+.br
+.RI "\fICalled when an entity is passed to \fBISession\&.Update(object)\fP\&. \fP"
+.ti -1c
+.RI "int \fBIndexOf\fP (T item)"
+.br
+.ti -1c
+.RI "void \fBInsert\fP (int index, T item)"
+.br
+.ti -1c
+.RI "void \fBRemoveAt\fP (int index)"
+.br
+.ti -1c
+.RI "void \fBAdd\fP (T item)"
+.br
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "bool \fBContains\fP (T item)"
+.br
+.ti -1c
+.RI "void \fBCopyTo\fP (T[] array, int arrayIndex)"
+.br
+.ti -1c
+.RI "bool \fBRemove\fP (T item)"
+.br
+.ti -1c
+.RI "IEnumerator< T > \fBGetEnumerator\fP ()"
+.br
+.ti -1c
+.RI "int \fBAdd\fP (object value)"
+.br
+.ti -1c
+.RI "bool \fBContains\fP (object value)"
+.br
+.ti -1c
+.RI "int \fBIndexOf\fP (object value)"
+.br
+.ti -1c
+.RI "void \fBInsert\fP (int index, object value)"
+.br
+.ti -1c
+.RI "void \fBRemove\fP (object value)"
+.br
+.ti -1c
+.RI "void \fBCopyTo\fP (Array array, int index)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "IList< T > \fBmyValues\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual String \fBIdentifier\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual long \fBID\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "virtual IList< T > \fBValues\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "T \fBthis[int index]\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBCount\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsReadOnly\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsFixedSize\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsSynchronized\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "object \fBSyncRoot\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 52 of file Model\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBLifecycleVeto\fP NHibernate\&.Test\&.NHSpecificTest\&.NH1914\&.CustomList< T >\&.OnDelete (\fBISession\fPs)"
+
+.PP
+Called when an entity is deleted 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A LifecycleVeto value indicating whether the operation should be vetoed or allowed to proceed\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.PP
+Definition at line 94 of file Model\&.cs\&.
+.SS "void NHibernate\&.Test\&.NHSpecificTest\&.NH1914\&.CustomList< T >\&.OnLoad (\fBISession\fPs, objectid)"
+
+.PP
+Called after an entity is loaded\&. <note>It is illegal to access the \fBISession\fP from inside this method\&.</note>\&. However, the object may keep a reference to the session for later use 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.br
+\fIid\fP The identifier
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.PP
+Definition at line 99 of file Model\&.cs\&.
+.SS "\fBLifecycleVeto\fP NHibernate\&.Test\&.NHSpecificTest\&.NH1914\&.CustomList< T >\&.OnSave (\fBISession\fPs)"
+
+.PP
+Called when an entity is saved 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+If we should veto the save
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.PP
+Definition at line 104 of file Model\&.cs\&.
+.SS "\fBLifecycleVeto\fP NHibernate\&.Test\&.NHSpecificTest\&.NH1914\&.CustomList< T >\&.OnUpdate (\fBISession\fPs)"
+
+.PP
+Called when an entity is passed to \fBISession\&.Update(object)\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIs\fP The session
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A LifecycleVeto value indicating whether the operation should be vetoed or allowed to proceed\&.
+.RE
+.PP
+.PP
+This method is \fInot\fP called every time the object's state is persisted during a flush\&. 
+.PP
+Implements \fBNHibernate\&.Classic\&.ILifecycle\fP\&.
+.PP
+Definition at line 109 of file Model\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

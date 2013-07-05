@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1304_1_1_fixture =
+[
+    [ "WhenNoCustomAccessorIsDefinedThenSholdFindOnlyNoCustom", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1304_1_1_fixture.html#a256ee9dec44ef031eb6d86e33e8cbee0", null ]
+];

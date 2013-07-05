@@ -1,0 +1,112 @@
+.TH "NHibernate.Linq.Visitors" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Linq.Visitors \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "package \fBResultOperatorProcessors\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBNonAggregatingGroupJoinRewriter\fP"
+.br
+.ti -1c
+.RI "class \fBQuerySourceUsageLocator\fP"
+.br
+.ti -1c
+.RI "class \fBEqualityHqlGenerator\fP"
+.br
+.RI "\fIBuilds HQL Equality nodes and used in joins \fP"
+.ti -1c
+.RI "class \fBExpressionKeyVisitor\fP"
+.br
+.RI "\fIPerforms the equivalent of a ToString() on an expression\&. Swaps out constants for parameters so that, for example: from c in Customers where c\&.City = 'London' generate the same key as from c in Customers where c\&.City = 'Madrid' \fP"
+.ti -1c
+.RI "class \fBExpressionParameterVisitor\fP"
+.br
+.RI "\fILocates constants in the expression tree and generates parameters for each one \fP"
+.ti -1c
+.RI "class \fBHqlGeneratorExpressionTreeVisitor\fP"
+.br
+.ti -1c
+.RI "interface \fBIHqlExpressionVisitor\fP"
+.br
+.ti -1c
+.RI "interface \fBIJoiner\fP"
+.br
+.ti -1c
+.RI "class \fBJoiner\fP"
+.br
+.ti -1c
+.RI "class \fBLeftJoinRewriter\fP"
+.br
+.ti -1c
+.RI "class \fBNameGenerator\fP"
+.br
+.ti -1c
+.RI "class \fBNhExpressionTreeVisitor\fP"
+.br
+.ti -1c
+.RI "class \fBNhPartialEvaluatingExpressionTreeVisitor\fP"
+.br
+.ti -1c
+.RI "class \fBPagingRewriterSelectClauseVisitor\fP"
+.br
+.ti -1c
+.RI "class \fBPossibleValueSet\fP"
+.br
+.RI "\fIRepresents a possible set of values for a computation\&. For example, an expression may be null, it may be a non-null value, or we may even have a constant value that is known precisely\&. This class contains operators that know how to combine these values with each other\&. This class is intended to be used to provide static analysis of expressions before we hit the database\&. As an example for future improvement, we could handle ranges of numeric values\&. We can also improve this by handling operators such as the comparison operators and arithmetic operators\&. They are currently handled by naive null checks\&. \fP"
+.ti -1c
+.RI "class \fBQueryModelVisitor\fP"
+.br
+.ti -1c
+.RI "class \fBQuerySourceIdentifier\fP"
+.br
+.RI "\fIIdentifies and names - using \fBQuerySourceNamer\fP - all QueryModel query sources \fP"
+.ti -1c
+.RI "class \fBQuerySourceLocator\fP"
+.br
+.ti -1c
+.RI "class \fBResultOperatorAndOrderByJoinDetector\fP"
+.br
+.ti -1c
+.RI "class \fBSelectClauseHqlNominator\fP"
+.br
+.ti -1c
+.RI "class \fBSelectClauseVisitor\fP"
+.br
+.ti -1c
+.RI "class \fBBooleanToCaseConvertor\fP"
+.br
+.ti -1c
+.RI "class \fBSelectJoinDetector\fP"
+.br
+.ti -1c
+.RI "class \fBSubQueryFromClauseFlattener\fP"
+.br
+.ti -1c
+.RI "class \fBSwapQuerySourceVisitor\fP"
+.br
+.ti -1c
+.RI "class \fBVisitorParameters\fP"
+.br
+.ti -1c
+.RI "class \fBVisitorUtil\fP"
+.br
+.ti -1c
+.RI "class \fBWhereJoinDetector\fP"
+.br
+.RI "\fIThe WhereJoinDetector creates the joins for the where clause, including optimizations for inner joins\&. \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,186 @@
+.TH "NHibernate.Engine.Versioning" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.Versioning \- 
+.PP
+Utility methods for managing versions and timestamps  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBOptimisticLock\fP { \fBNone\fP = -1, \fBVersion\fP = 0, \fBDirty\fP = 1, \fBAll\fP = 2 }"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static object \fBIncrement\fP (object version, \fBIVersionType\fP versionType, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIIncrement the given version number \fP"
+.ti -1c
+.RI "static object \fBSeed\fP (\fBIVersionType\fP versionType, \fBISessionImplementor\fP session)"
+.br
+.RI "\fICreate an initial version number \fP"
+.ti -1c
+.RI "static bool \fBSeedVersion\fP (object[] fields, int versionProperty, \fBIVersionType\fP versionType, bool?force, \fBISessionImplementor\fP session)"
+.br
+.RI "\fISeed the given instance state snapshot with an initial version number \fP"
+.ti -1c
+.RI "static void \fBSetVersion\fP (object[] fields, object version, \fBIEntityPersister\fP persister)"
+.br
+.RI "\fISet the version number of the given instance state snapshot \fP"
+.ti -1c
+.RI "static object \fBGetVersion\fP (object[] fields, \fBIEntityPersister\fP persister)"
+.br
+.RI "\fIGet the version number of the given instance state snapshot \fP"
+.ti -1c
+.RI "static bool \fBIsVersionIncrementRequired\fP (int[] dirtyProperties, bool hasDirtyCollections, bool[] propertyVersionability)"
+.br
+.RI "\fIDo we need to increment the version number, given the dirty properties? \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Utility methods for managing versions and timestamps 
+
+
+.PP
+Definition at line 10 of file Versioning\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static object NHibernate\&.Engine\&.Versioning\&.GetVersion (object[]fields, \fBIEntityPersister\fPpersister)\fC [static]\fP"
+
+.PP
+Get the version number of the given instance state snapshot 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfields\fP An array of objects that contains a snapshot of a persistent object\&.
+.br
+\fIpersister\fP The IEntityPersister that is responsible for persisting the values of the \fCfields\fP parameter\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value of the version contained in the \fCfields\fP parameter or null if the Entity is not versioned\&. 
+.RE
+.PP
+
+.PP
+Definition at line 108 of file Versioning\&.cs\&.
+.SS "static object NHibernate\&.Engine\&.Versioning\&.Increment (objectversion, \fBIVersionType\fPversionType, \fBISessionImplementor\fPsession)\fC [static]\fP"
+
+.PP
+Increment the given version number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIversion\fP The value of the current version\&.
+.br
+\fIversionType\fP The IVersionType of the versioned property\&.
+.br
+\fIsession\fP The current \fBISession\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Returns the next value for the version\&.
+.RE
+.PP
+
+.PP
+Definition at line 29 of file Versioning\&.cs\&.
+.SS "static bool NHibernate\&.Engine\&.Versioning\&.IsVersionIncrementRequired (int[]dirtyProperties, boolhasDirtyCollections, bool[]propertyVersionability)\fC [static]\fP"
+
+.PP
+Do we need to increment the version number, given the dirty properties? 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdirtyProperties\fP The array of property indexes which were deemed dirty 
+.br
+\fIhasDirtyCollections\fP Were any collections found to be dirty (structurally changed) 
+.br
+\fIpropertyVersionability\fP An array indicating versionability of each property\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True if a version increment is required; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 118 of file Versioning\&.cs\&.
+.SS "static object NHibernate\&.Engine\&.Versioning\&.Seed (\fBIVersionType\fPversionType, \fBISessionImplementor\fPsession)\fC [static]\fP"
+
+.PP
+Create an initial version number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIversionType\fP The IVersionType of the versioned property\&.
+.br
+\fIsession\fP The current \fBISession\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A seed value to initialize the versioned property with\&.
+.RE
+.PP
+
+.PP
+Definition at line 47 of file Versioning\&.cs\&.
+.SS "static bool NHibernate\&.Engine\&.Versioning\&.SeedVersion (object[]fields, intversionProperty, \fBIVersionType\fPversionType, bool?force, \fBISessionImplementor\fPsession)\fC [static]\fP"
+
+.PP
+Seed the given instance state snapshot with an initial version number 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfields\fP An array of objects that contains a snapshot of a persistent object\&.
+.br
+\fIversionProperty\fP The index of the version property in the \fCfields\fP parameter\&.
+.br
+\fIversionType\fP The IVersionType of the versioned property\&.
+.br
+\fIforce\fP Force the version to initialize
+.br
+\fIsession\fP The current session, if any\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+if the version property needs to be seeded with an initial value\&.
+.RE
+.PP
+
+.PP
+Definition at line 66 of file Versioning\&.cs\&.
+.SS "static void NHibernate\&.Engine\&.Versioning\&.SetVersion (object[]fields, objectversion, \fBIEntityPersister\fPpersister)\fC [static]\fP"
+
+.PP
+Set the version number of the given instance state snapshot 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfields\fP An array of objects that contains a snapshot of a persistent object\&.
+.br
+\fIversion\fP The value the version should be set to in the \fCfields\fP parameter\&.
+.br
+\fIpersister\fP The IEntityPersister that is responsible for persisting the values of the \fCfields\fP parameter\&.
+.RE
+.PP
+
+.PP
+Definition at line 91 of file Versioning\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

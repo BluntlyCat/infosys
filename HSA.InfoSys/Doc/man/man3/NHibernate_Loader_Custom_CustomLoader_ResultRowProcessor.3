@@ -1,0 +1,63 @@
+.TH "NHibernate.Loader.Custom.CustomLoader.ResultRowProcessor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Loader.Custom.CustomLoader.ResultRowProcessor \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBResultRowProcessor\fP (bool hasScalars, \fBIResultColumnProcessor\fP[] columnProcessors)"
+.br
+.ti -1c
+.RI "object \fBBuildResultRow\fP (object[] data, IDataReader resultSet, bool hasTransformer, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIBuild a logical result row\&. \fP"
+.ti -1c
+.RI "void \fBPrepareForAutoDiscovery\fP (\fBMetaData\fP metadata)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIResultColumnProcessor\fP[] \fBColumnProcessors\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 350 of file CustomLoader\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.Loader\&.Custom\&.CustomLoader\&.ResultRowProcessor\&.BuildResultRow (object[]data, IDataReaderresultSet, boolhasTransformer, \fBISessionImplementor\fPsession)"
+
+.PP
+Build a logical result row\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP \fBEntity\fP data defined as 'root returns' and already handled by the normal \fBLoader\fP mechanism\&. 
+.br
+\fIresultSet\fP The ADO result set (positioned at the row currently being processed)\&. 
+.br
+\fIhasTransformer\fP Does this query have an associated IResultTransformer\&. 
+.br
+\fIsession\fP The session from which the query request originated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The logical result row 
+.RE
+.PP
+.PP
+At this point, \fBLoader\fP has already processed all non-scalar result data\&. We just need to account for scalar result data here\&.\&.\&. 
+.PP
+Definition at line 378 of file CustomLoader\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

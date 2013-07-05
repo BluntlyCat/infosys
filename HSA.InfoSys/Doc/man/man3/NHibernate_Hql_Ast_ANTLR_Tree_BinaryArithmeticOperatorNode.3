@@ -1,0 +1,121 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Tree.BinaryArithmeticOperatorNode" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Tree.BinaryArithmeticOperatorNode \- 
+.PP
+Nodes which represent binary arithmetic operators\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.AbstractSelectExpression\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IBinaryOperatorNode\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IDisplayableNode\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBinaryArithmeticOperatorNode\fP (IToken token)"
+.br
+.ti -1c
+.RI "void \fBInitialize\fP ()"
+.br
+.RI "\fICalled by the tree walker during hql-sql semantic analysis after the operator sub-tree is completely built\&. \fP"
+.ti -1c
+.RI "override void \fBSetScalarColumnText\fP (int i)"
+.br
+.RI "\fIAppends AST nodes that represent the columns after the current AST node\&. (e\&.g\&. 'as col0_O_') \fP"
+.ti -1c
+.RI "string \fBGetDisplayText\fP ()"
+.br
+.RI "\fIReturns additional display text for the AST node\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override \fBIType\fP \fBDataType\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIASTNode\fP \fBLeftHandOperand\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIASTNode\fP \fBRightHandOperand\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Nodes which represent binary arithmetic operators\&. 
+
+
+.PP
+Definition at line 12 of file BinaryArithmeticOperatorNode\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.BinaryArithmeticOperatorNode\&.GetDisplayText ()"
+
+.PP
+Returns additional display text for the AST node\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The additional display text\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IDisplayableNode\fP\&.
+.PP
+Definition at line 228 of file BinaryArithmeticOperatorNode\&.cs\&.
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.BinaryArithmeticOperatorNode\&.Initialize ()"
+
+.PP
+Called by the tree walker during hql-sql semantic analysis after the operator sub-tree is completely built\&. 
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IOperatorNode\fP\&.
+.PP
+Definition at line 19 of file BinaryArithmeticOperatorNode\&.cs\&.
+.SS "override void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.BinaryArithmeticOperatorNode\&.SetScalarColumnText (inti)\fC [virtual]\fP"
+
+.PP
+Appends AST nodes that represent the columns after the current AST node\&. (e\&.g\&. 'as col0_O_') 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP The index of the select expression in the projection list\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.AbstractSelectExpression\fP\&.
+.PP
+Definition at line 203 of file BinaryArithmeticOperatorNode\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBIASTNode\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.BinaryArithmeticOperatorNode\&.LeftHandOperand\fC [get]\fP"
+Retrieves the left-hand operand of the operator\&.
+.PP
+\fBReturns:\fP
+.RS 4
+The left-hand operand 
+.RE
+.PP
+
+.PP
+Definition at line 214 of file BinaryArithmeticOperatorNode\&.cs\&.
+.SS "\fBIASTNode\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.BinaryArithmeticOperatorNode\&.RightHandOperand\fC [get]\fP"
+Retrieves the right-hand operand of the operator\&.
+.PP
+\fBReturns:\fP
+.RS 4
+The right-hand operand 
+.RE
+.PP
+
+.PP
+Definition at line 224 of file BinaryArithmeticOperatorNode\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,202 @@
+.TH "Renci.SshNet.Security.DsaKey" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Security.DsaKey \- 
+.PP
+Contains DSA private and public key  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.Security\&.Key\fP, and IDisposable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDsaKey\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBDsaKey\fP class\&. \fP"
+.ti -1c
+.RI "\fBDsaKey\fP (byte[] data)"
+.br
+.RI "\fIInitializes a new instance of the \fBDsaKey\fP class\&. \fP"
+.ti -1c
+.RI "\fBDsaKey\fP (\fBBigInteger\fP p, \fBBigInteger\fP q, \fBBigInteger\fP g, \fBBigInteger\fP y, \fBBigInteger\fP x)"
+.br
+.RI "\fIInitializes a new instance of the \fBDsaKey\fP class\&. \fP"
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "\fIPerforms application-defined tasks associated with freeing, releasing, or resetting unmanaged ResourceMessages\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIReleases unmanaged and - optionally - managed resources \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBBigInteger\fP \fBP\fP\fC [get]\fP"
+.br
+.RI "\fIGets the P\&. \fP"
+.ti -1c
+.RI "\fBBigInteger\fP \fBQ\fP\fC [get]\fP"
+.br
+.RI "\fIGets the Q\&. \fP"
+.ti -1c
+.RI "\fBBigInteger\fP \fBG\fP\fC [get]\fP"
+.br
+.RI "\fIGets the G\&. \fP"
+.ti -1c
+.RI "\fBBigInteger\fP \fBY\fP\fC [get]\fP"
+.br
+.RI "\fIGets public key Y\&. \fP"
+.ti -1c
+.RI "\fBBigInteger\fP \fBX\fP\fC [get]\fP"
+.br
+.RI "\fIGets private key X\&. \fP"
+.ti -1c
+.RI "override int \fBKeyLength\fP\fC [get]\fP"
+.br
+.RI "\fIGets the length of the key\&. \fP"
+.ti -1c
+.RI "override \fBDigitalSignature\fP \fBDigitalSignature\fP\fC [get]\fP"
+.br
+.RI "\fIGets the digital signature\&. \fP"
+.ti -1c
+.RI "override \fBBigInteger\fP[] \fBPublic\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the public\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Contains DSA private and public key 
+
+
+.PP
+Definition at line 13 of file DsaKey\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Security\&.DsaKey\&.DsaKey ()"
+
+.PP
+Initializes a new instance of the \fBDsaKey\fP class\&. 
+.PP
+Definition at line 124 of file DsaKey\&.cs\&.
+.SS "Renci\&.SshNet\&.Security\&.DsaKey\&.DsaKey (byte[]data)"
+
+.PP
+Initializes a new instance of the \fBDsaKey\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP DER encoded private key data\&.
+.RE
+.PP
+
+.PP
+Definition at line 134 of file DsaKey\&.cs\&.
+.SS "Renci\&.SshNet\&.Security\&.DsaKey\&.DsaKey (\fBBigInteger\fPp, \fBBigInteger\fPq, \fBBigInteger\fPg, \fBBigInteger\fPy, \fBBigInteger\fPx)"
+
+.PP
+Initializes a new instance of the \fBDsaKey\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIp\fP The p\&.
+.br
+\fIq\fP The q\&.
+.br
+\fIg\fP The g\&.
+.br
+\fIy\fP The y\&.
+.br
+\fIx\fP The x\&.
+.RE
+.PP
+
+.PP
+Definition at line 149 of file DsaKey\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Renci\&.SshNet\&.Security\&.DsaKey\&.Dispose ()"
+
+.PP
+Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged ResourceMessages\&. 
+.PP
+Definition at line 166 of file DsaKey\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Security\&.DsaKey\&.Dispose (booldisposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Releases unmanaged and - optionally - managed resources 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP \fCtrue\fP to release both managed and unmanaged resources; \fCfalse\fP to release only unmanaged ResourceMessages\&.
+.RE
+.PP
+
+.PP
+Definition at line 177 of file DsaKey\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override \fBDigitalSignature\fP Renci\&.SshNet\&.Security\&.DsaKey\&.DigitalSignature\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Gets the digital signature\&. 
+.PP
+Definition at line 89 of file DsaKey\&.cs\&.
+.SS "\fBBigInteger\fP Renci\&.SshNet\&.Security\&.DsaKey\&.G\fC [get]\fP"
+
+.PP
+Gets the G\&. 
+.PP
+Definition at line 41 of file DsaKey\&.cs\&.
+.SS "override int Renci\&.SshNet\&.Security\&.DsaKey\&.KeyLength\fC [get]\fP"
+
+.PP
+Gets the length of the key\&. The length of the key\&. 
+.PP
+Definition at line 77 of file DsaKey\&.cs\&.
+.SS "\fBBigInteger\fP Renci\&.SshNet\&.Security\&.DsaKey\&.P\fC [get]\fP"
+
+.PP
+Gets the P\&. 
+.PP
+Definition at line 19 of file DsaKey\&.cs\&.
+.SS "override \fBBigInteger\fP [] Renci\&.SshNet\&.Security\&.DsaKey\&.Public\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the public\&. The public\&. 
+.PP
+Definition at line 107 of file DsaKey\&.cs\&.
+.SS "\fBBigInteger\fP Renci\&.SshNet\&.Security\&.DsaKey\&.Q\fC [get]\fP"
+
+.PP
+Gets the Q\&. 
+.PP
+Definition at line 30 of file DsaKey\&.cs\&.
+.SS "\fBBigInteger\fP Renci\&.SshNet\&.Security\&.DsaKey\&.X\fC [get]\fP"
+
+.PP
+Gets private key X\&. 
+.PP
+Definition at line 63 of file DsaKey\&.cs\&.
+.SS "\fBBigInteger\fP Renci\&.SshNet\&.Security\&.DsaKey\&.Y\fC [get]\fP"
+
+.PP
+Gets public key Y\&. 
+.PP
+Definition at line 52 of file DsaKey\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

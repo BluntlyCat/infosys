@@ -1,0 +1,129 @@
+.TH "log4net.Plugin.PluginMap" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Plugin.PluginMap \- 
+.PP
+Map of repository plugins\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPluginMap\fP (\fBILoggerRepository\fP repository)"
+.br
+.RI "\fIConstructor \fP"
+.ti -1c
+.RI "void \fBAdd\fP (\fBIPlugin\fP plugin)"
+.br
+.RI "\fIAdds a \fBIPlugin\fP to the map\&. \fP"
+.ti -1c
+.RI "void \fBRemove\fP (\fBIPlugin\fP plugin)"
+.br
+.RI "\fIRemoves a \fBIPlugin\fP from the map\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIPlugin\fP \fBthis[string name]\fP\fC [get]\fP"
+.br
+.RI "\fIGets a \fBIPlugin\fP by name\&. \fP"
+.ti -1c
+.RI "\fBPluginCollection\fP \fBAllPlugins\fP\fC [get]\fP"
+.br
+.RI "\fIGets all possible plugins as a list of \fBIPlugin\fP objects\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Map of repository plugins\&. 
+
+This class is a name keyed map of the plugins that are attached to a repository\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 39 of file PluginMap\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Plugin\&.PluginMap\&.PluginMap (\fBILoggerRepository\fPrepository)"
+
+.PP
+Constructor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrepository\fP The repository that the plugins should be attached to\&.
+.RE
+.PP
+.PP
+Initialize a new instance of the \fBPluginMap\fP class with a repository that the plugins should be attached to\&. 
+.PP
+Definition at line 53 of file PluginMap\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void log4net\&.Plugin\&.PluginMap\&.Add (\fBIPlugin\fPplugin)"
+
+.PP
+Adds a \fBIPlugin\fP to the map\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplugin\fP The \fBIPlugin\fP to add to the map\&.
+.RE
+.PP
+.PP
+The \fBIPlugin\fP will be attached to the repository when added\&. 
+.PP
+If there already exists a plugin with the same name attached to the repository then the old plugin will be \fBIPlugin\&.Shutdown\fP and replaced with the new plugin\&. 
+.PP
+Definition at line 131 of file PluginMap\&.cs\&.
+.SS "void log4net\&.Plugin\&.PluginMap\&.Remove (\fBIPlugin\fPplugin)"
+
+.PP
+Removes a \fBIPlugin\fP from the map\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplugin\fP The \fBIPlugin\fP to remove from the map\&.
+.RE
+.PP
+.PP
+Remove a specific plugin from this map\&. 
+.PP
+Definition at line 168 of file PluginMap\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBPluginCollection\fP log4net\&.Plugin\&.PluginMap\&.AllPlugins\fC [get]\fP"
+
+.PP
+Gets all possible plugins as a list of \fBIPlugin\fP objects\&. All possible plugins as a list of \fBIPlugin\fP objects\&.
+.PP
+Get a collection of all the plugins defined in this map\&. 
+.PP
+Definition at line 102 of file PluginMap\&.cs\&.
+.SS "\fBIPlugin\fP log4net\&.Plugin\&.PluginMap\&.this[string name]\fC [get]\fP"
+
+.PP
+Gets a \fBIPlugin\fP by name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the \fBIPlugin\fP to lookup\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBIPlugin\fP from the map with the name specified, or \fCnull\fP if no plugin is found\&. 
+.RE
+.PP
+.PP
+Lookup a plugin by name\&. If the plugin is not found \fCnull\fP will be returned\&. 
+.PP
+Definition at line 77 of file PluginMap\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,119 @@
+.TH "NHibernate.Type.PrimitiveType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.PrimitiveType \- 
+.PP
+Superclass of ValueType types\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.ImmutableType\fP, and \fBNHibernate\&.Type\&.ILiteralType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Type\&.AbstractCharType\fP, \fBNHibernate\&.Type\&.AbstractEnumType\fP, \fBNHibernate\&.Type\&.BooleanType\fP, \fBNHibernate\&.Type\&.ByteType\fP, \fBNHibernate\&.Type\&.DateTimeOffsetType\fP, \fBNHibernate\&.Type\&.DateTimeType\fP, \fBNHibernate\&.Type\&.DateType\fP, \fBNHibernate\&.Type\&.DecimalType\fP, \fBNHibernate\&.Type\&.DoubleType\fP, \fBNHibernate\&.Type\&.GuidType\fP, \fBNHibernate\&.Type\&.Int16Type\fP, \fBNHibernate\&.Type\&.Int32Type\fP, \fBNHibernate\&.Type\&.Int64Type\fP, \fBNHibernate\&.Type\&.SByteType\fP, \fBNHibernate\&.Type\&.SingleType\fP, \fBNHibernate\&.Type\&.TicksType\fP, \fBNHibernate\&.Type\&.TimeAsTimeSpanType\fP, \fBNHibernate\&.Type\&.TimeSpanType\fP, \fBNHibernate\&.Type\&.TimestampType\fP, \fBNHibernate\&.Type\&.TimeType\fP, \fBNHibernate\&.Type\&.UInt16Type\fP, \fBNHibernate\&.Type\&.UInt32Type\fP, and \fBNHibernate\&.Type\&.UInt64Type\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract string \fBObjectToSQLString\fP (object value, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIWhen implemented by a class, return a String representation of the value, suitable for embedding in an SQL statement \fP"
+.ti -1c
+.RI "override string \fBToString\fP (object val)"
+.br
+.RI "\fIA representation of the value to be embedded in an XML element \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPrimitiveType\fP (\fBSqlType\fP sqlType)"
+.br
+.RI "\fIInitialize a new instance of the \fBPrimitiveType\fP class using a \fBSqlType\fP\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "abstract System\&.Type \fBPrimitiveClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "abstract object \fBDefaultValue\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Superclass of ValueType types\&. 
+
+
+.PP
+Definition at line 10 of file PrimitiveType\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Type\&.PrimitiveType\&.PrimitiveType (\fBSqlType\fPsqlType)\fC [protected]\fP"
+
+.PP
+Initialize a new instance of the \fBPrimitiveType\fP class using a \fBSqlType\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlType\fP The underlying \fBSqlType\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 16 of file PrimitiveType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract string NHibernate\&.Type\&.PrimitiveType\&.ObjectToSQLString (objectvalue, \fBDialect\&.Dialect\fPdialect)\fC [pure virtual]\fP"
+
+.PP
+When implemented by a class, return a String representation of the value, suitable for embedding in an SQL statement 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The object to convert to a string for the SQL statement\&.
+.br
+\fIdialect\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that containts a well formed SQL Statement\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.ILiteralType\fP\&.
+.PP
+Implemented in \fBNHibernate\&.Type\&.PersistentEnumType\fP, \fBNHibernate\&.Type\&.EnumStringType\fP, \fBNHibernate\&.Type\&.EnumCharType< T >\fP, \fBNHibernate\&.Type\&.DateTimeType\fP, \fBNHibernate\&.Type\&.TimeType\fP, \fBNHibernate\&.Type\&.DateType\fP, \fBNHibernate\&.Type\&.TimestampType\fP, \fBNHibernate\&.Type\&.TimeAsTimeSpanType\fP, \fBNHibernate\&.Type\&.DateTimeOffsetType\fP, \fBNHibernate\&.Type\&.TicksType\fP, \fBNHibernate\&.Type\&.TimeSpanType\fP, \fBNHibernate\&.Type\&.Int16Type\fP, \fBNHibernate\&.Type\&.Int32Type\fP, \fBNHibernate\&.Type\&.Int64Type\fP, \fBNHibernate\&.Type\&.SByteType\fP, \fBNHibernate\&.Type\&.UInt16Type\fP, \fBNHibernate\&.Type\&.UInt32Type\fP, \fBNHibernate\&.Type\&.UInt64Type\fP, \fBNHibernate\&.Type\&.GuidType\fP, \fBNHibernate\&.Type\&.SingleType\fP, \fBNHibernate\&.Type\&.DoubleType\fP, \fBNHibernate\&.Type\&.CharBooleanType\fP, \fBNHibernate\&.Type\&.BooleanType\fP, \fBNHibernate\&.Type\&.DecimalType\fP, \fBNHibernate\&.Type\&.ByteType\fP, and \fBNHibernate\&.Type\&.AbstractCharType\fP\&.
+.SS "override string NHibernate\&.Type\&.PrimitiveType\&.ToString (objectval)\fC [virtual]\fP"
+
+.PP
+A representation of the value to be embedded in an XML element 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP The object that contains the values\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An Xml formatted string\&.
+.RE
+.PP
+.PP
+This just calls Object\&.ToString so if there is a possibility of this \fBPrimitiveType\fP having any characters that need to be encoded then this method should be overridden\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Type\&.TimeType\fP, \fBNHibernate\&.Type\&.TimeAsTimeSpanType\fP, \fBNHibernate\&.Type\&.TimestampType\fP, \fBNHibernate\&.Type\&.TicksType\fP, and \fBNHibernate\&.Type\&.TimeSpanType\fP\&.
+.PP
+Definition at line 48 of file PrimitiveType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

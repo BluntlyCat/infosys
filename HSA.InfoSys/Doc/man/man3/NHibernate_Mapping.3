@@ -1,0 +1,259 @@
+.TH "NHibernate.Mapping" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "package \fBByCode\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAbstractAuxiliaryDatabaseObject\fP"
+.br
+.RI "\fIConvenience base class for \fBAuxiliaryDatabaseObjects\fP\&. \fP"
+.ti -1c
+.RI "class \fBAny\fP"
+.br
+.RI "\fIA \fBNHibernate\fP \fCany\fP type\&. \fP"
+.ti -1c
+.RI "class \fBArray\fP"
+.br
+.RI "\fIAn array has a primary key consisting of the key columns + index column \fP"
+.ti -1c
+.RI "class \fBBackref\fP"
+.br
+.ti -1c
+.RI "class \fBBag\fP"
+.br
+.RI "\fIA bag permits duplicates, so it has no primary key \fP"
+.ti -1c
+.RI "class \fBCollection\fP"
+.br
+.RI "\fIBase class that stores the mapping information for \fC<array>\fP, \fC<bag>\fP, \fC<id-bag>\fP, \fC<list>\fP, \fC<map>\fP, and \fC<set>\fP collections\&. \fP"
+.ti -1c
+.RI "class \fBColumn\fP"
+.br
+.RI "\fIRepresents the mapping to a column in a database\&. \fP"
+.ti -1c
+.RI "class \fBComponent\fP"
+.br
+.RI "\fIThe mapping for a component, composite element, composite identifier, etc\&. \fP"
+.ti -1c
+.RI "class \fBConstraint\fP"
+.br
+.RI "\fIBase class for relational constraints in the database\&. \fP"
+.ti -1c
+.RI "class \fBDenormalizedTable\fP"
+.br
+.ti -1c
+.RI "class \fBDependantValue\fP"
+.br
+.RI "\fIA value which is 'typed' by reference to some other value (for example, a foreign key is typed by the referenced primary key)\&. \fP"
+.ti -1c
+.RI "class \fBForeignKey\fP"
+.br
+.RI "\fIA Foreign Key constraint in the database\&. \fP"
+.ti -1c
+.RI "class \fBFormula\fP"
+.br
+.RI "\fIA formula is a derived column value\&. \fP"
+.ti -1c
+.RI "interface \fBIAuxiliaryDatabaseObject\fP"
+.br
+.RI "\fIAuxiliary database objects (i\&.e\&., triggers, stored procedures, etc) defined in the mappings\&. Allows Hibernate to manage their lifecycle as part of creating/dropping the schema\&. \fP"
+.ti -1c
+.RI "class \fBIdentifierBag\fP"
+.br
+.RI "\fIAn \fCPersistentIdentifierBag\fP has a primary key consistenting of just the identifier column\&. \fP"
+.ti -1c
+.RI "class \fBIdentifierCollection\fP"
+.br
+.RI "\fIA collection with a synthetic 'identifier' column\&. \fP"
+.ti -1c
+.RI "interface \fBIFetchable\fP"
+.br
+.RI "\fI\fBAny\fP mapping with an outer-join attribute \fP"
+.ti -1c
+.RI "interface \fBIFilterable\fP"
+.br
+.RI "\fIDefines mapping elements to which filters may be applied\&. \fP"
+.ti -1c
+.RI "interface \fBIKeyValue\fP"
+.br
+.RI "\fIRepresents an identifying key of a table: the value for primary key of an entity, or a foreign key of a collection or join table or joined subclass table\&. \fP"
+.ti -1c
+.RI "interface \fBIMetaAttributable\fP"
+.br
+.RI "\fICommon interface for things that can handle meta attributes\&. \fP"
+.ti -1c
+.RI "class \fBIndex\fP"
+.br
+.RI "\fIAn \fBIndex\fP in the database\&. \fP"
+.ti -1c
+.RI "class \fBIndexBackref\fP"
+.br
+.ti -1c
+.RI "class \fBIndexedCollection\fP"
+.br
+.RI "\fIIndexed collections include IList, IDictionary, Arrays and primitive Arrays\&. \fP"
+.ti -1c
+.RI "interface \fBIPersistentClassVisitor\fP"
+.br
+.ti -1c
+.RI "interface \fBIPersistentClassVisitor< T >\fP"
+.br
+.ti -1c
+.RI "interface \fBIRelationalModel\fP"
+.br
+.RI "\fIOperations to create/drop the mapping element in the database\&. \fP"
+.ti -1c
+.RI "interface \fBISelectable\fP"
+.br
+.ti -1c
+.RI "interface \fBISqlCustomizable\fP"
+.br
+.ti -1c
+.RI "interface \fBITableOwner\fP"
+.br
+.ti -1c
+.RI "interface \fBIValue\fP"
+.br
+.RI "\fIA value is anything that is persisted by value, instead of by reference\&. It is essentially a Hibernate IType, together with zero or more columns\&. Values are wrapped by things with higher level semantics, for example properties, collections, classes\&. \fP"
+.ti -1c
+.RI "interface \fBIValueVisitor\fP"
+.br
+.ti -1c
+.RI "interface \fBIValueVisitor< T >\fP"
+.br
+.ti -1c
+.RI "class \fBJoin\fP"
+.br
+.ti -1c
+.RI "class \fBJoinedSubclass\fP"
+.br
+.ti -1c
+.RI "class \fBList\fP"
+.br
+.RI "\fIA list has a primary key consisting of the key columns + index column \fP"
+.ti -1c
+.RI "class \fBManyToOne\fP"
+.br
+.RI "\fIA many-to-one association mapping\fP"
+.ti -1c
+.RI "class \fBMap\fP"
+.br
+.RI "\fIA map has a primary key consisting of the key columns \fP"
+.ti -1c
+.RI "class \fBMetaAttribute\fP"
+.br
+.RI "\fIA meta attribute is a named value or values\&. \fP"
+.ti -1c
+.RI "class \fBOneToMany\fP"
+.br
+.RI "\fIA mapping for a \fCone-to-many\fP association\&. \fP"
+.ti -1c
+.RI "class \fBOneToOne\fP"
+.br
+.RI "\fIA mapping for a \fCone-to-one\fP association\&. \fP"
+.ti -1c
+.RI "class \fBPersistentClass\fP"
+.br
+.RI "\fIBase class for the \fBRootClazz\fP mapped by \fC<class>\fP and a \fBSubclass\fP that is mapped by \fC<subclass>\fP or \fC<joined-subclass>\fP\&. \fP"
+.ti -1c
+.RI "class \fBPrimaryKey\fP"
+.br
+.RI "\fIA Primary Key constraint in the database\&. \fP"
+.ti -1c
+.RI "class \fBPrimitiveArray\fP"
+.br
+.RI "\fIA primitive array has a primary key consisting of the key columns + index column\&. \fP"
+.ti -1c
+.RI "class \fBProperty\fP"
+.br
+.RI "\fI\fBMapping\fP for a property of a \&.NET class (entity or component)\&. \fP"
+.ti -1c
+.RI "class \fBRootClass\fP"
+.br
+.RI "\fIDeclaration of a System\&.Type mapped with the \fC<class>\fP element that is the root class of a table-per-subclass, or table-per-concrete-class inheritance heirarchy\&. \fP"
+.ti -1c
+.RI "class \fBSet\fP"
+.br
+.RI "\fIA \fBSet\fP with no nullable element columns will have a primary key consisting of all table columns (ie - key columns + element columns)\&. \fP"
+.ti -1c
+.RI "class \fBSimpleAuxiliaryDatabaseObject\fP"
+.br
+.RI "\fIA simple implementation of \fBAbstractAuxiliaryDatabaseObject\fP in which the CREATE and DROP strings are provided up front\&. \fP"
+.ti -1c
+.RI "class \fBSimpleValue\fP"
+.br
+.RI "\fI\fBAny\fP value that maps to columns\&. \fP"
+.ti -1c
+.RI "class \fBSingleTableSubclass\fP"
+.br
+.ti -1c
+.RI "class \fBSubclass\fP"
+.br
+.RI "\fIDeclaration of a System\&.Type mapped with the \fC<subclass>\fP or \fC<joined-subclass>\fP element\&. \fP"
+.ti -1c
+.RI "class \fBTable\fP"
+.br
+.RI "\fIRepresents a \fBTable\fP in a database that an object gets mapped against\&. \fP"
+.ti -1c
+.RI "class \fBToOne\fP"
+.br
+.RI "\fIA simple-point association (ie\&. a reference to another entity)\&. \fP"
+.ti -1c
+.RI "class \fBTypeDef\fP"
+.br
+.RI "\fIPlaceholder for typedef information\fP"
+.ti -1c
+.RI "class \fBUnionSubclass\fP"
+.br
+.ti -1c
+.RI "class \fBUniqueKey\fP"
+.br
+.RI "\fIAn Unique Key constraint in the database\&. \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBPropertyGeneration\fP { \fBPropertyGeneration\&.Never\fP, \fBPropertyGeneration\&.Insert\fP, \fBPropertyGeneration\&.Always\fP }"
+.br
+.RI "\fIIndicates whether given properties are generated by the database and, if so, at what time(s) they are generated\&. \fP"
+.ti -1c
+.RI "enum \fBSchemaAction\fP { \fBNone\fP = 0, \fBDrop\fP = 1, \fBUpdate\fP = 2, \fBExport\fP = 4, \fBValidate\fP = 8, \fBAll\fP = Drop | Update | Export | Validate }"
+.br
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBNHibernate\&.Mapping\&.PropertyGeneration\fP"
+
+.PP
+Indicates whether given properties are generated by the database and, if so, at what time(s) they are generated\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINever \fP\fP
+Values for this property are never generated by the database\&. 
+.TP
+\fB\fIInsert \fP\fP
+Values for this property are generated by the database on insert\&. 
+.TP
+\fB\fIAlways \fP\fP
+Values for this property are generated by the database on both insert and update\&. 
+.PP
+Definition at line 9 of file PropertyGeneration\&.cs\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

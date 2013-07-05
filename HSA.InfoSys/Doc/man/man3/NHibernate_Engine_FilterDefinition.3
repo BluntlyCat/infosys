@@ -1,0 +1,131 @@
+.TH "NHibernate.Engine.FilterDefinition" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Engine.FilterDefinition \- 
+.PP
+A \fBFilterDefinition\fP defines the global attributes of a dynamic filter\&. This information includes its name as well as its defined parameters (name and type)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFilterDefinition\fP (string name, string defaultCondition, IDictionary< string, \fBIType\fP > parameterTypes, bool useManyToOne)"
+.br
+.RI "\fISet the named parameter's value list for this filter\&. \fP"
+.ti -1c
+.RI "\fBIType\fP \fBGetParameterType\fP (string parameterName)"
+.br
+.RI "\fIRetreive the type of the named parameter defined for this filter\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBUseInManyToOne\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether to use this filter-def in manytoone refs\&. \fP"
+.ti -1c
+.RI "string \fBFilterName\fP\fC [get]\fP"
+.br
+.RI "\fIGet the name of the filter this configuration defines\&. \fP"
+.ti -1c
+.RI "ICollection< string > \fBParameterNames\fP\fC [get]\fP"
+.br
+.RI "\fIGet a set of the parameters defined by this configuration\&. \fP"
+.ti -1c
+.RI "string \fBDefaultFilterCondition\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "IDictionary< string, \fBIType\fP > \fBParameterTypes\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A \fBFilterDefinition\fP defines the global attributes of a dynamic filter\&. This information includes its name as well as its defined parameters (name and type)\&. 
+
+
+.PP
+Definition at line 12 of file FilterDefinition\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Engine\&.FilterDefinition\&.FilterDefinition (stringname, stringdefaultCondition, IDictionary< string, \fBIType\fP >parameterTypes, booluseManyToOne)"
+
+.PP
+Set the named parameter's value list for this filter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the filter for which this configuration is in effect\&.
+.br
+\fIdefaultCondition\fP The default filter condition\&.
+.br
+\fIparameterTypes\fP A dictionary storing the \fBNHibernate\fP IType type of each parameter under its name\&.
+.br
+\fIuseManyToOne\fP if set to \fCtrue\fP used in many to one rel
+.RE
+.PP
+
+.PP
+Definition at line 27 of file FilterDefinition\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIType\fP NHibernate\&.Engine\&.FilterDefinition\&.GetParameterType (stringparameterName)"
+
+.PP
+Retreive the type of the named parameter defined for this filter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameterName\fP The name of the filter parameter for which to return the type\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The type of the named parameter\&.
+.RE
+.PP
+
+.PP
+Definition at line 68 of file FilterDefinition\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "string NHibernate\&.Engine\&.FilterDefinition\&.FilterName\fC [get]\fP"
+
+.PP
+Get the name of the filter this configuration defines\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The filter name for this configuration\&.
+.RE
+.PP
+
+.PP
+Definition at line 50 of file FilterDefinition\&.cs\&.
+.SS "ICollection<string> NHibernate\&.Engine\&.FilterDefinition\&.ParameterNames\fC [get]\fP"
+
+.PP
+Get a set of the parameters defined by this configuration\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The parameters named by this configuration\&.
+.RE
+.PP
+
+.PP
+Definition at line 59 of file FilterDefinition\&.cs\&.
+.SS "bool NHibernate\&.Engine\&.FilterDefinition\&.UseInManyToOne\fC [get]\fP"
+
+.PP
+Gets a value indicating whether to use this filter-def in manytoone refs\&. \fCtrue\fP if [use in many to one]; otherwise, \fCfalse\fP\&.
+.PP
+Definition at line 41 of file FilterDefinition\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

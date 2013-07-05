@@ -1,0 +1,90 @@
+.TH "NHibernate.Persister.Entity" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Persister.Entity \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAbstractEntityPersister\fP"
+.br
+.RI "\fISuperclass for built-in mapping strategies\&. Implements functionalty common to both mapping strategies \fP"
+.ti -1c
+.RI "class \fBAbstractPropertyMapping\fP"
+.br
+.RI "\fIBase implementation of a PropertyMapping\&. \fP"
+.ti -1c
+.RI "class \fBBasicEntityPropertyMapping\fP"
+.br
+.ti -1c
+.RI "struct \fBEntityPersister\fP"
+.br
+.ti -1c
+.RI "interface \fBIEntityPersister\fP"
+.br
+.RI "\fIConcrete \fC\fBIEntityPersister\fP\fPs implement mapping and persistence logic for a particular class\&. \fP"
+.ti -1c
+.RI "interface \fBIJoinable\fP"
+.br
+.RI "\fIAnything that can be loaded by outer join - namely persisters for classes or collections\&. \fP"
+.ti -1c
+.RI "struct \fBLoadable\fP"
+.br
+.ti -1c
+.RI "interface \fBILoadable\fP"
+.br
+.RI "\fIImplemented by \fCClassPersister\fP that uses \fC\fBLoader\fP\fP\&. There are several optional operations used only by loaders that inherit \fCOuterJoinLoader\fP \fP"
+.ti -1c
+.RI "interface \fBILockable\fP"
+.br
+.RI "\fIContract for things that can be locked via a \fBNHibernate\&.Dialect\&.Lock\&.ILockingStrategy\fP\&. \fP"
+.ti -1c
+.RI "interface \fBIOuterJoinLoadable\fP"
+.br
+.RI "\fIA \fCClassPersister\fP that may be loaded by outer join using the \fCOuterJoinLoader\fP hierarchy and may be an element of a one-to-many association\&. \fP"
+.ti -1c
+.RI "interface \fBIPropertyMapping\fP"
+.br
+.RI "\fIAbstraction of all mappings that define properties: entities, collection elements\&. \fP"
+.ti -1c
+.RI "interface \fBIQueryable\fP"
+.br
+.RI "\fIExtends the generic \fC\fBILoadable\fP\fP contract to add operations required by HQL \fP"
+.ti -1c
+.RI "interface \fBISqlLoadable\fP"
+.br
+.RI "\fIA class persister that supports queries expressed in the platform native SQL dialect\&. \fP"
+.ti -1c
+.RI "interface \fBIUniqueKeyLoadable\fP"
+.br
+.RI "\fIDescribes a class that may be loaded via a unique key\&. \fP"
+.ti -1c
+.RI "class \fBJoinedSubclassEntityPersister\fP"
+.br
+.RI "\fIA \fC\fBIEntityPersister\fP\fP implementing the normalized 'table-per-subclass' mapping strategy \fP"
+.ti -1c
+.RI "class \fBNamedQueryLoader\fP"
+.br
+.RI "\fINot really a \fC\fBLoader\fP\fP, just a wrapper around a named query\&. \fP"
+.ti -1c
+.RI "class \fBSingleTableEntityPersister\fP"
+.br
+.RI "\fIDefault implementation of the \fCClassPersister\fP interface\&. Implements the 'table-per-class hierarchy' mapping strategy for an entity class\&. \fP"
+.ti -1c
+.RI "class \fBUnionSubclassEntityPersister\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBDeclarer\fP { \fBClass\fP, \fBSubClass\fP, \fBSuperClass\fP }"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

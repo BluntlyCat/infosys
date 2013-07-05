@@ -1,0 +1,265 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Tree" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Tree \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAbstractNullnessCheckNode\fP"
+.br
+.RI "\fIBase class for nodes dealing 'is null' and 'is not null' operators\&. todo : a good deal of this is copied from \fBBinaryLogicOperatorNode\fP; look at consolidating these code fragments \fP"
+.ti -1c
+.RI "class \fBAbstractRestrictableStatement\fP"
+.br
+.ti -1c
+.RI "class \fBAbstractSelectExpression\fP"
+.br
+.ti -1c
+.RI "class \fBAbstractStatement\fP"
+.br
+.RI "\fIConvenience implementation of Statement to centralize common functionality\&. Author: Steve Ebersole Ported by: Steve Strong \fP"
+.ti -1c
+.RI "class \fBAggregateNode\fP"
+.br
+.RI "\fIRepresents an aggregate function i\&.e\&. min, max, sum, avg\&. \fP"
+.ti -1c
+.RI "class \fBAssignmentSpecification\fP"
+.br
+.RI "\fIEncapsulates the information relating to an individual assignment within the set clause of an HQL update statement\&. This information is used during execution of the update statements when the updates occur against 'multi-table' stuff\&. \fP"
+.ti -1c
+.RI "class \fBASTErrorNode\fP"
+.br
+.ti -1c
+.RI "class \fBASTFactory\fP"
+.br
+.ti -1c
+.RI "class \fBASTNode\fP"
+.br
+.ti -1c
+.RI "class \fBASTTreeAdaptor\fP"
+.br
+.ti -1c
+.RI "class \fBBetweenOperatorNode\fP"
+.br
+.RI "\fIContract for nodes representing logcial BETWEEN (ternary) operators\&. \fP"
+.ti -1c
+.RI "class \fBBinaryArithmeticOperatorNode\fP"
+.br
+.RI "\fINodes which represent binary arithmetic operators\&. \fP"
+.ti -1c
+.RI "class \fBBinaryLogicOperatorNode\fP"
+.br
+.RI "\fIContract for nodes representing binary operators\&. Author: Steve Ebersole Ported by: Steve Strong \fP"
+.ti -1c
+.RI "class \fBBooleanLiteralNode\fP"
+.br
+.RI "\fIRepresents a boolean literal within a query\&. /summary> \fP"
+.ti -1c
+.RI "class \fBCase2Node\fP"
+.br
+.RI "\fIRepresents a case \&.\&.\&. when \&.\&. then \&.\&.\&. else \&.\&.\&. end expression in a select\&. \fP"
+.ti -1c
+.RI "class \fBCaseNode\fP"
+.br
+.RI "\fIRepresents a case \&.\&.\&. when \&.\&. then \&.\&.\&. else \&.\&.\&. end expression in a select\&. \fP"
+.ti -1c
+.RI "class \fBCollectionFunction\fP"
+.br
+.RI "\fIRepresents 'elements()' or 'indices()'\&. Author: josh Ported by: Steve strong \fP"
+.ti -1c
+.RI "class \fBComponentJoin\fP"
+.br
+.ti -1c
+.RI "class \fBConstructorNode\fP"
+.br
+.ti -1c
+.RI "class \fBCountNode\fP"
+.br
+.RI "\fIRepresents a COUNT expression in a select\&. Author: josh Ported by: Steve Strong \fP"
+.ti -1c
+.RI "class \fBDeleteStatement\fP"
+.br
+.RI "\fIDefines a top-level AST node representing an HQL delete statement\&. \fP"
+.ti -1c
+.RI "class \fBDotNode\fP"
+.br
+.RI "\fIRepresents a reference to a property or alias expression\&. This should duplicate the relevant behaviors in PathExpressionParser\&. Author: Joshua Davis Ported by: Steve Strong \fP"
+.ti -1c
+.RI "class \fBFromClause\fP"
+.br
+.RI "\fIRepresents the 'FROM' part of a query or subquery, containing all mapped class references\&. Author: josh Ported by: Steve Strong \fP"
+.ti -1c
+.RI "class \fBFromElement\fP"
+.br
+.ti -1c
+.RI "class \fBFromElementFactory\fP"
+.br
+.ti -1c
+.RI "class \fBFromElementType\fP"
+.br
+.RI "\fIDelegate that handles the type and join sequence information for a \fBFromElement\fP\&. Author: josh Ported by: Steve Strong \fP"
+.ti -1c
+.RI "class \fBFromReferenceNode\fP"
+.br
+.ti -1c
+.RI "class \fBHqlSqlWalkerNode\fP"
+.br
+.RI "\fIA semantic analysis node, that points back to the main analyzer\&. Authoer: josh Ported by: Steve Strong \fP"
+.ti -1c
+.RI "class \fBHqlSqlWalkerTreeAdaptor\fP"
+.br
+.ti -1c
+.RI "class \fBHqlSqlWalkerTreeNodeStream\fP"
+.br
+.ti -1c
+.RI "interface \fBIASTFactory\fP"
+.br
+.ti -1c
+.RI "interface \fBIASTNode\fP"
+.br
+.ti -1c
+.RI "interface \fBIBinaryOperatorNode\fP"
+.br
+.RI "\fIContract for nodes representing binary operators\&. Author: Steve Ebersole Ported by: Steve Strong \fP"
+.ti -1c
+.RI "class \fBIdentNode\fP"
+.br
+.ti -1c
+.RI "interface \fBIDisplayableNode\fP"
+.br
+.RI "\fIImplementors will return additional display text, which will be used by the ASTPrinter to display information (besides the node type and node text)\&. \fP"
+.ti -1c
+.RI "interface \fBIExpectedTypeAwareNode\fP"
+.br
+.RI "\fIInterface for nodes which wish to be made aware of any determined 'expected
+type' based on the context within they appear in the query\&. Author: Steve Ebersole Ported by: Steve Strong \fP"
+.ti -1c
+.RI "interface \fBIInitializableNode\fP"
+.br
+.RI "\fIAn interface for initializeable AST nodes\&. \fP"
+.ti -1c
+.RI "class \fBImpliedFromElement\fP"
+.br
+.ti -1c
+.RI "class \fBIndexNode\fP"
+.br
+.RI "\fIRepresents the [] operator and provides it's semantics\&. Author: josh Ported by: Steve Strong \fP"
+.ti -1c
+.RI "class \fBInLogicOperatorNode\fP"
+.br
+.RI "\fIAuthor: Steve Ebersole Ported by: Steve Strong \fP"
+.ti -1c
+.RI "class \fBInsertStatement\fP"
+.br
+.RI "\fIDefines a top-level AST node representing an HQL 'insert select' statement\&. \fP"
+.ti -1c
+.RI "class \fBIntoClause\fP"
+.br
+.RI "\fIRepresents an entity referenced in the INTO clause of an HQL INSERT statement\&. \fP"
+.ti -1c
+.RI "interface \fBIOperatorNode\fP"
+.br
+.RI "\fIContract for nodes representing operators (logic or arithmetic)\&. Author: Steve Ebersole Ported by: Steve Strong \fP"
+.ti -1c
+.RI "interface \fBIParameterContainer\fP"
+.br
+.RI "\fICurrently this is needed in order to deal with \fBFromElements\fP which contain 'hidden' JDBC parameters from applying filters\&. Would love for this to go away, but that would require that Hibernate's internal \fBjoin handling\fP be able to either: \fP"
+.ti -1c
+.RI "interface \fBIPathNode\fP"
+.br
+.RI "\fIAn AST node with a path property\&. This path property will be the fully qualified name\&. Author: josh Ported by: Steve Strong \fP"
+.ti -1c
+.RI "interface \fBIResolvableNode\fP"
+.br
+.RI "\fIThe contract for expression sub-trees that can resolve themselves\&. Author: josh Ported by: Steve Strong \fP"
+.ti -1c
+.RI "interface \fBIRestrictableStatement\fP"
+.br
+.RI "\fI\fBType\fP definition for Statements which are restrictable via a where-clause (and thus also having a from-clause)\&. Author: Steve Ebersole Ported by: Steve Strong \fP"
+.ti -1c
+.RI "interface \fBISelectExpression\fP"
+.br
+.RI "\fIRepresents an element of a projection list, i\&.e\&. a select expression\&. Author: josh Ported by: Steve Strong \fP"
+.ti -1c
+.RI "interface \fBISessionFactoryAwareNode\fP"
+.br
+.RI "\fIInterface for nodes which require access to the SessionFactory \fP"
+.ti -1c
+.RI "class \fBIsNotNullLogicOperatorNode\fP"
+.br
+.RI "\fI\fBIsNotNullLogicOperatorNode\fP implementation \fP"
+.ti -1c
+.RI "class \fBIsNullLogicOperatorNode\fP"
+.br
+.RI "\fIRepresents a 'is null' check\&. \fP"
+.ti -1c
+.RI "interface \fBIStatement\fP"
+.br
+.RI "\fICommon interface modeling the different HQL statements (i\&.e\&., INSERT, UPDATE, DELETE, SELECT)\&. Author: Steve Ebersole Ported by: Steve Strong \fP"
+.ti -1c
+.RI "interface \fBIUnaryOperatorNode\fP"
+.br
+.RI "\fIContract for nodes representing unary operators\&. \fP"
+.ti -1c
+.RI "class \fBJavaConstantNode\fP"
+.br
+.RI "\fIA node representing a static Java constant\&. \fP"
+.ti -1c
+.RI "class \fBLiteralNode\fP"
+.br
+.RI "\fIRepresents a literal\&. \fP"
+.ti -1c
+.RI "class \fBMethodNode\fP"
+.br
+.RI "\fIRepresents a method call Author: josh Ported by: Steve Strong \fP"
+.ti -1c
+.RI "class \fBOrderByClause\fP"
+.br
+.RI "\fIImplementation of \fBOrderByClause\fP\&. Author: Steve Ebersole Ported by: Steve Strong \fP"
+.ti -1c
+.RI "class \fBParameterNode\fP"
+.br
+.RI "\fIImplementation of \fBParameterNode\fP\&. Author: Steve Ebersole Ported by: Steve Strong \fP"
+.ti -1c
+.RI "class \fBQueryNode\fP"
+.br
+.ti -1c
+.RI "class \fBSelectClause\fP"
+.br
+.RI "\fIRepresents the list of expressions in a SELECT clause\&. Author: josh Ported by: Steve Strong \fP"
+.ti -1c
+.RI "class \fBSelectExpressionImpl\fP"
+.br
+.RI "\fIA select expression that was generated by a FROM element\&. Author: josh Ported by: Steve Strong \fP"
+.ti -1c
+.RI "class \fBSelectExpressionList\fP"
+.br
+.RI "\fICommon behavior - a node that contains a list of select expressions\&. Author: josh Ported by: Steve Strong \fP"
+.ti -1c
+.RI "class \fBSqlFragment\fP"
+.br
+.RI "\fIRepresents an SQL fragment in the AST\&. Author: josh Ported by: Steve Strong \fP"
+.ti -1c
+.RI "class \fBSqlNode\fP"
+.br
+.RI "\fIA base AST node for the intermediate tree\&. \fP"
+.ti -1c
+.RI "class \fBUnaryArithmeticNode\fP"
+.br
+.ti -1c
+.RI "class \fBUnaryLogicOperatorNode\fP"
+.br
+.RI "\fIRepresents a unary operator node\&. \fP"
+.ti -1c
+.RI "class \fBUpdateStatement\fP"
+.br
+.RI "\fIDefines a top-level AST node representing an HQL update statement\&. \fP"
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,9 @@
+var class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_generic_methods_tests_1_1_generic_method_should_be_proxied =
+[
+    [ "CanProxyBasicGenericMethod", "class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_generic_methods_tests_1_1_generic_method_should_be_proxied.html#acc4a1b17c3b6cb8afe48e561a73ae674", null ],
+    [ "CanProxyGenericMethodWithInterfaceConstraint", "class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_generic_methods_tests_1_1_generic_method_should_be_proxied.html#adc5497075f652cc7b4b7129a5167ca2d", null ],
+    [ "CanProxyGenericMethodWithReferenceTypeAndInterfaceConstraint", "class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_generic_methods_tests_1_1_generic_method_should_be_proxied.html#a0f576ba98fb77d280c23a4d1278514a0", null ],
+    [ "CanProxyMethodWithDefaultConstructorConstraint", "class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_generic_methods_tests_1_1_generic_method_should_be_proxied.html#a808af98bb03025d5c3494247b9543e50", null ],
+    [ "CanProxyMethodWithGenericBaseClassConstraint", "class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_generic_methods_tests_1_1_generic_method_should_be_proxied.html#aeaf0a89ad3a56485d4770056d56b01bf", null ],
+    [ "CanProxySelfCastingMethod", "class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_generic_methods_tests_1_1_generic_method_should_be_proxied.html#abcfd871adb544494ba1f180257846b49", null ]
+];

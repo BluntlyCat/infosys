@@ -1,0 +1,107 @@
+.TH "NHibernate.Tuple.PocoInstantiator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Tuple.PocoInstantiator \- 
+.PP
+Defines a POCO-based instantiator for use from the tuplizers\&. 
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Tuple\&.IInstantiator\fP, and IDeserializationCallback\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPocoInstantiator\fP (\fBMapping\&.Component\fP component, \fBIInstantiationOptimizer\fP optimizer)"
+.br
+.ti -1c
+.RI "\fBPocoInstantiator\fP (\fBPersistentClass\fP persistentClass, \fBIInstantiationOptimizer\fP optimizer, \fBIProxyFactory\fP proxyFactory, bool generateFieldInterceptionProxy)"
+.br
+.ti -1c
+.RI "object \fBInstantiate\fP (object id)"
+.br
+.RI "\fIPerform the requested entity instantiation\&. \fP"
+.ti -1c
+.RI "object \fBInstantiate\fP ()"
+.br
+.RI "\fIPerform the requested instantiation\&. \fP"
+.ti -1c
+.RI "bool \fBIsInstance\fP (object obj)"
+.br
+.RI "\fIPerforms check to see if the given object is an instance of the entity or component which this Instantiator instantiates\&. \fP"
+.ti -1c
+.RI "void \fBOnDeserialization\fP (object sender)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines a POCO-based instantiator for use from the tuplizers\&.
+
+
+.PP
+Definition at line 14 of file PocoInstantiator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.Tuple\&.PocoInstantiator\&.Instantiate (objectid)"
+
+.PP
+Perform the requested entity instantiation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The id of the entity to be instantiated\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An appropriately instantiated entity\&. 
+.RE
+.PP
+.PP
+This form is never called for component instantiation, only entity instantiation\&.
+.PP
+Implements \fBNHibernate\&.Tuple\&.IInstantiator\fP\&.
+.PP
+Definition at line 79 of file PocoInstantiator\&.cs\&.
+.SS "object NHibernate\&.Tuple\&.PocoInstantiator\&.Instantiate ()"
+
+.PP
+Perform the requested instantiation\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The instantiated data structure\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Tuple\&.IInstantiator\fP\&.
+.PP
+Definition at line 85 of file PocoInstantiator\&.cs\&.
+.SS "bool NHibernate\&.Tuple\&.PocoInstantiator\&.IsInstance (objectobj)"
+
+.PP
+Performs check to see if the given object is an instance of the entity or component which this Instantiator instantiates\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP The object to be checked\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True is the object does represent an instance of the underlying entity/component\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Tuple\&.IInstantiator\fP\&.
+.PP
+Definition at line 122 of file PocoInstantiator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

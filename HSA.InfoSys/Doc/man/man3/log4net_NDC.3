@@ -1,0 +1,256 @@
+.TH "log4net.NDC" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.NDC \- 
+.PP
+Implementation of Nested Diagnostic Contexts\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBClear\fP ()"
+.br
+.RI "\fIClears all the contextual information held on the current thread\&. \fP"
+.ti -1c
+.RI "static Stack \fBCloneStack\fP ()"
+.br
+.RI "\fICreates a clone of the stack of context information\&. \fP"
+.ti -1c
+.RI "static void \fBInherit\fP (Stack stack)"
+.br
+.RI "\fIInherits the contextual information from another thread\&. \fP"
+.ti -1c
+.RI "static string \fBPop\fP ()"
+.br
+.RI "\fIRemoves the top context from the stack\&. \fP"
+.ti -1c
+.RI "static IDisposable \fBPush\fP (string message)"
+.br
+.RI "\fIPushes a new context message\&. \fP"
+.ti -1c
+.RI "static void \fBRemove\fP ()"
+.br
+.RI "\fIRemoves the context information for this thread\&. It is not required to call this method\&. \fP"
+.ti -1c
+.RI "static void \fBSetMaxDepth\fP (int maxDepth)"
+.br
+.RI "\fIForces the stack depth to be at most \fImaxDepth\fP \&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "static int \fBDepth\fP\fC [get]\fP"
+.br
+.RI "\fIGets the current context depth\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Implementation of Nested Diagnostic Contexts\&. 
+
+<note> 
+.PP
+The \fBNDC\fP is deprecated and has been replaced by the \fBThreadContext\&.Stacks\fP\&. The current \fBNDC\fP implementation forwards to the \fC\fBThreadContext\&.Stacks\fP['NDC']\fP\&. 
+.PP
+</note> 
+.PP
+A Nested Diagnostic Context, or \fBNDC\fP in short, is an instrument to distinguish interleaved log output from different sources\&. Log output is typically interleaved when a server handles multiple clients near-simultaneously\&. 
+.PP
+Interleaved log output can still be meaningful if each log entry from different contexts had a distinctive stamp\&. This is where NDCs come into play\&. 
+.PP
+Note that NDCs are managed on a per thread basis\&. The \fBNDC\fP class is made up of static methods that operate on the context of the calling thread\&. 
+.PP
+How to push a message into the context 
+.PP
+.nf
+using(NDC\&.Push("my context message"))
+{
+    \&.\&.\&. all log calls will have 'my context message' included \&.\&.\&.
+
+} // at the end of the using block the message is automatically removed 
+
+.fi
+.PP
+ 
+.PP
+<threadsafety static='true' instance='true'> <author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 69 of file NDC\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static void log4net\&.NDC\&.Clear ()\fC [static]\fP"
+
+.PP
+Clears all the contextual information held on the current thread\&. <note> 
+.PP
+The \fBNDC\fP is deprecated and has been replaced by the \fBThreadContext\&.Stacks\fP\&. The current \fBNDC\fP implementation forwards to the \fC\fBThreadContext\&.Stacks\fP['NDC']\fP\&. 
+.PP
+</note> 
+.PP
+Clears the stack of \fBNDC\fP data held on the current thread\&. 
+.PP
+Definition at line 132 of file NDC\&.cs\&.
+.SS "static Stack log4net\&.NDC\&.CloneStack ()\fC [static]\fP"
+
+.PP
+Creates a clone of the stack of context information\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A clone of the context info for this thread\&.
+.RE
+.PP
+.PP
+<note> 
+.PP
+The \fBNDC\fP is deprecated and has been replaced by the \fBThreadContext\&.Stacks\fP\&. The current \fBNDC\fP implementation forwards to the \fC\fBThreadContext\&.Stacks\fP['NDC']\fP\&. 
+.PP
+</note> 
+.PP
+The results of this method can be passed to the \fBInherit\fP method to allow child threads to inherit the context of their parent thread\&. 
+.PP
+Definition at line 155 of file NDC\&.cs\&.
+.SS "static void log4net\&.NDC\&.Inherit (Stackstack)\fC [static]\fP"
+
+.PP
+Inherits the contextual information from another thread\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstack\fP The context stack to inherit\&.
+.RE
+.PP
+.PP
+<note> 
+.PP
+The \fBNDC\fP is deprecated and has been replaced by the \fBThreadContext\&.Stacks\fP\&. The current \fBNDC\fP implementation forwards to the \fC\fBThreadContext\&.Stacks\fP['NDC']\fP\&. 
+.PP
+</note> 
+.PP
+This thread will use the context information from the stack supplied\&. This can be used to initialize child threads with the same contextual information as their parent threads\&. These contexts will \fBNOT\fP be shared\&. Any further contexts that are pushed onto the stack will not be visible to the other\&. Call \fBCloneStack\fP to obtain a stack to pass to this method\&. 
+.PP
+Definition at line 182 of file NDC\&.cs\&.
+.SS "static string log4net\&.NDC\&.Pop ()\fC [static]\fP"
+
+.PP
+Removes the top context from the stack\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The message in the context that was removed from the top of the stack\&. 
+.RE
+.PP
+.PP
+<note> 
+.PP
+The \fBNDC\fP is deprecated and has been replaced by the \fBThreadContext\&.Stacks\fP\&. The current \fBNDC\fP implementation forwards to the \fC\fBThreadContext\&.Stacks\fP['NDC']\fP\&. 
+.PP
+</note> 
+.PP
+Remove the top context from the stack, and return it to the caller\&. If the stack is empty then an empty string (not \fCnull\fP) is returned\&. 
+.PP
+Definition at line 208 of file NDC\&.cs\&.
+.SS "static IDisposable log4net\&.NDC\&.Push (stringmessage)\fC [static]\fP"
+
+.PP
+Pushes a new context message\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The new context message\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IDisposable that can be used to clean up the context stack\&. 
+.RE
+.PP
+.PP
+<note> 
+.PP
+The \fBNDC\fP is deprecated and has been replaced by the \fBThreadContext\&.Stacks\fP\&. The current \fBNDC\fP implementation forwards to the \fC\fBThreadContext\&.Stacks\fP['NDC']\fP\&. 
+.PP
+</note> 
+.PP
+Pushes a new context onto the context stack\&. An IDisposable is returned that can be used to clean up the context stack\&. This can be easily combined with the \fCusing\fP keyword to scope the context\&. 
+.PP
+Simple example of using the \fCPush\fP method with the \fCusing\fP keyword\&. 
+.PP
+.nf
+using(log4net\&.NDC\&.Push("NDC_Message"))
+{
+    log\&.Warn("This should have an NDC message");
+}
+
+.fi
+.PP
+ 
+.PP
+Definition at line 244 of file NDC\&.cs\&.
+.SS "static void log4net\&.NDC\&.Remove ()\fC [static]\fP"
+
+.PP
+Removes the context information for this thread\&. It is not required to call this method\&. <note> 
+.PP
+The \fBNDC\fP is deprecated and has been replaced by the \fBThreadContext\&.Stacks\fP\&. The current \fBNDC\fP implementation forwards to the \fC\fBThreadContext\&.Stacks\fP['NDC']\fP\&. 
+.PP
+</note> 
+.PP
+This method is not implemented\&. 
+.PP
+Definition at line 265 of file NDC\&.cs\&.
+.SS "static void log4net\&.NDC\&.SetMaxDepth (intmaxDepth)\fC [static]\fP"
+
+.PP
+Forces the stack depth to be at most \fImaxDepth\fP \&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxDepth\fP The maximum depth of the stack
+.RE
+.PP
+.PP
+<note> 
+.PP
+The \fBNDC\fP is deprecated and has been replaced by the \fBThreadContext\&.Stacks\fP\&. The current \fBNDC\fP implementation forwards to the \fC\fBThreadContext\&.Stacks\fP['NDC']\fP\&. 
+.PP
+</note> 
+.PP
+Forces the stack depth to be at most \fImaxDepth\fP \&. This may truncate the head of the stack\&. This only affects the stack in the current thread\&. Also it does not prevent it from growing, it only sets the maximum depth at the time of the call\&. This can be used to return to a known context depth\&. 
+.PP
+Definition at line 289 of file NDC\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int log4net\&.NDC\&.Depth\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Gets the current context depth\&. The current context depth\&.
+.PP
+<note> 
+.PP
+The \fBNDC\fP is deprecated and has been replaced by the \fBThreadContext\&.Stacks\fP\&. The current \fBNDC\fP implementation forwards to the \fC\fBThreadContext\&.Stacks\fP['NDC']\fP\&. 
+.PP
+</note> 
+.PP
+The number of context values pushed onto the context stack\&. 
+.PP
+Used to record the current depth of the context\&. This can then be restored using the \fBSetMaxDepth\fP method\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBSetMaxDepth\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 109 of file NDC\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

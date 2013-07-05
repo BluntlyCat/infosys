@@ -1,0 +1,99 @@
+.TH "NHibernate.Loader.Entity.AbstractEntityLoader" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Loader.Entity.AbstractEntityLoader \- 
+.PP
+Abstract superclass for entity loaders that use outer joins  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Loader\&.OuterJoinLoader\fP, and \fBNHibernate\&.Loader\&.Entity\&.IUniqueEntityLoader\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Loader\&.Entity\&.CascadeEntityLoader\fP, and \fBNHibernate\&.Loader\&.Entity\&.EntityLoader\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBLoad\fP (object id, object optionalObject, \fBISessionImplementor\fP session)"
+.br
+.RI "\fILoad an entity instance\&. If \fCOptionalObject\fP is supplied, load the entity state into the given (uninitialized) object \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractEntityLoader\fP (\fBIOuterJoinLoadable\fP persister, \fBIType\fP uniqueKeyType, \fBISessionFactoryImplementor\fP factory, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "virtual object \fBLoad\fP (\fBISessionImplementor\fP session, object id, object optionalObject, object optionalId)"
+.br
+.ti -1c
+.RI "override object \fBGetResultColumnOrRow\fP (object[] row, \fBIResultTransformer\fP resultTransformer, IDataReader rs, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIGet the actual object that is returned in the user-visible result list\&. \fP"
+.ti -1c
+.RI "override IEnumerable
+.br
+< \fBIParameterSpecification\fP > \fBGetParameterSpecifications\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly \fBIOuterJoinLoadable\fP \fBpersister\fP"
+.br
+.ti -1c
+.RI "readonly string \fBentityName\fP"
+.br
+.in -1c
+.SS "Static Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "static readonly \fBIInternalLogger\fP \fBlog\fP = LoggerProvider\&.LoggerFor(typeof (\fBAbstractEntityLoader\fP))"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBIsSingleRowLoader\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP \fBUniqueKeyType\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Abstract superclass for entity loaders that use outer joins 
+
+
+.PP
+Definition at line 17 of file AbstractEntityLoader\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Loader\&.Entity\&.AbstractEntityLoader\&.GetResultColumnOrRow (object[]row, \fBIResultTransformer\fPresultTransformer, IDataReaderrs, \fBISessionImplementor\fPsession)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Get the actual object that is returned in the user-visible result list\&. This empty implementation merely returns its first argument\&. This is overridden by some subclasses\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Loader\&.Loader\fP\&.
+.PP
+Definition at line 69 of file AbstractEntityLoader\&.cs\&.
+.SS "object NHibernate\&.Loader\&.Entity\&.AbstractEntityLoader\&.Load (objectid, objectoptionalObject, \fBISessionImplementor\fPsession)"
+
+.PP
+Load an entity instance\&. If \fCOptionalObject\fP is supplied, load the entity state into the given (uninitialized) object 
+.PP
+Implements \fBNHibernate\&.Loader\&.Entity\&.IUniqueEntityLoader\fP\&.
+.PP
+Definition at line 37 of file AbstractEntityLoader\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

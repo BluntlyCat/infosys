@@ -1,0 +1,60 @@
+.TH "NHibernate.Loader.Entity.BatchingEntityLoader" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Loader.Entity.BatchingEntityLoader \- 
+.PP
+'Batch' loads entities, using multiple primary key values in the SQL \fCwhere\fP clause\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Loader\&.Entity\&.IUniqueEntityLoader\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBatchingEntityLoader\fP (\fBIEntityPersister\fP persister, int[] batchSizes, \fBLoader\fP[] loaders)"
+.br
+.ti -1c
+.RI "object \fBLoad\fP (object id, object optionalObject, \fBISessionImplementor\fP session)"
+.br
+.RI "\fILoad an entity instance\&. If \fCOptionalObject\fP is supplied, load the entity state into the given (uninitialized) object \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBIUniqueEntityLoader\fP \fBCreateBatchingEntityLoader\fP (\fBIOuterJoinLoadable\fP persister, int maxBatchSize, \fBLockMode\fP lockMode, \fBISessionFactoryImplementor\fP factory, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+'Batch' loads entities, using multiple primary key values in the SQL \fCwhere\fP clause\&. 
+
+
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBEntityLoader\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 16 of file BatchingEntityLoader\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.Loader\&.Entity\&.BatchingEntityLoader\&.Load (objectid, objectoptionalObject, \fBISessionImplementor\fPsession)"
+
+.PP
+Load an entity instance\&. If \fCOptionalObject\fP is supplied, load the entity state into the given (uninitialized) object 
+.PP
+Implements \fBNHibernate\&.Loader\&.Entity\&.IUniqueEntityLoader\fP\&.
+.PP
+Definition at line 47 of file BatchingEntityLoader\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

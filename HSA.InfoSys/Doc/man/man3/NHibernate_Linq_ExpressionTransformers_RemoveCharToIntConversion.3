@@ -1,0 +1,45 @@
+.TH "NHibernate.Linq.ExpressionTransformers.RemoveCharToIntConversion" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Linq.ExpressionTransformers.RemoveCharToIntConversion \- 
+.PP
+Remove unwanted char-to-int conversions in binary expressions  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IExpressionTransformer< BinaryExpression >\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "Expression \fBTransform\fP (BinaryExpression expression)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "ExpressionType[] \fBSupportedExpressionTypes\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Remove unwanted char-to-int conversions in binary expressions 
+
+The LINQ expression tree may contain unwanted type conversions that were not in the original expression written by the user\&. For example, \fClist\&.Where(someChar => someChar == 'A')\fP becomes the equivalent of \fClist\&.Where(someChar => (int)someChar == 55)\fP in the expression tree\&. Converting this directly to a HQL/SQL statement would yield 
+.PP
+.nf
+CAST(x AS INT)
+
+.fi
+.PP
+ which does not work in MSSQLSERVER, and possibly other databases\&. 
+.PP
+Definition at line 16 of file RemoveCharToIntConversion\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

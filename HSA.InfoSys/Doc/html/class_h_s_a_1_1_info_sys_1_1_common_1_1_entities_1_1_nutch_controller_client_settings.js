@@ -1,0 +1,27 @@
+var class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings =
+[
+    [ "GetDefaults", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#a998c89a74c8bcb8ad1c718da09e1e7e5", null ],
+    [ "IsDefault", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#a31cb8f5e17b3805c74b2d8c05a9050e7", null ],
+    [ "SetDefaults", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#ac8dc3e2b19b32e3761748ba83f27ce14", null ],
+    [ "ToString", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#af7e0522aa766d0bad38833e45e9dfb35", null ],
+    [ "BaseCrawlPath", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#a00777332cf4b51d044717c1f22cefed2", null ],
+    [ "BaseUrlPath", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#a95bc8d78d828b3b6a01ec8a35349042d", null ],
+    [ "CertificatePath", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#ac87ccd703d8c318c354215d070286dc1", null ],
+    [ "CrawlDepth", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#a7120ed3dffbdbf7882209867a640f796", null ],
+    [ "CrawlRequest", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#a64233d52d05c893874f22f6e2ab68686", null ],
+    [ "CrawlTopN", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#a658d470069ef5bd1e3f05044b7a7910c", null ],
+    [ "DefaultURLs", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#a337ef1f7ed2278089d7edc2048593f05", null ],
+    [ "HomePath", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#a1aeca03ca6f6e4fe8cb20815eab73f10", null ],
+    [ "JavaHome", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#ab0382b9485feb8ba37be18b751646661", null ],
+    [ "NutchClients", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#a13572a620fd775321260f64ccb414011", null ],
+    [ "NutchCommand", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#a0099eba36197db7e39a6099093204bc4", null ],
+    [ "NutchPath", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#a76ec08a348f202e84674e85f9913c32c", null ],
+    [ "PathFormatFour", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#ac459912ccfa7e15ddfdcd04a8035321b", null ],
+    [ "PathFormatThree", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#a0e94be0fdfc646d84b4f9cd87d2f6270", null ],
+    [ "PathFormatTwo", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#af83e6abe70fd6f164607e73c729f5b5f", null ],
+    [ "Prefix", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#aa77246df38f66c492dc9d25535116fbb", null ],
+    [ "PrefixFileName", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#ab83c7d501413ada2db3b97fa5edb25f5", null ],
+    [ "PrefixFormat", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#a24910e4fff2d7178f2762621a2a7098f", null ],
+    [ "SeedFileName", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#ab37338a48574f26771d247c0503907db", null ],
+    [ "SolrServer", "class_h_s_a_1_1_info_sys_1_1_common_1_1_entities_1_1_nutch_controller_client_settings.html#aec7e694c5b26caeb7dee7e995093c086", null ]
+];

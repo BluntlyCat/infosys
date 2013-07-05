@@ -1,0 +1,209 @@
+.TH "HSA.InfoSys.Common.Entities.WCFSettings" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HSA.InfoSys.Common.Entities.WCFSettings \- 
+.PP
+There we can store settings for WCF controller host\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBHSA\&.InfoSys\&.Common\&.Entities\&.Settings\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBInitializeSettings\fP (string httpHost, int httpPort, string httpPath, string netTcpHost, int netTcpPort, string netTcpPath, string certificatePath=null, string password=null)"
+.br
+.RI "\fIInitializes the settings\&. This method is needed if the wcf service host is not listening to our default values\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIReturns a System\&.String that represents this instance\&. \fP"
+.ti -1c
+.RI "virtual void \fBSetDefaults\fP ()"
+.br
+.RI "\fISets the default values of this setting or if we instanciate a new instance of a setting object because \fBNHibernate\fP needs virtual members but it is better to do not call a virtual member in the constructor if there are other derived classes which inherits from this setting\&. To avoid this problem we simply call this method after instanciating\&. \fP"
+.ti -1c
+.RI "virtual \fBSettings\fP \fBGetDefaults\fP ()"
+.br
+.RI "\fIGets the settings with default values\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsDefault\fP ()"
+.br
+.RI "\fIDetermines whether this settings has default values\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual string \fBHttpHost\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the HTTP host\&. This is the host address where we can find the wcf service\&. \fP"
+.ti -1c
+.RI "virtual int \fBHttpPort\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the HTTP port\&. The port on which WCF is listening for creating a new proxy\&. \fP"
+.ti -1c
+.RI "virtual string \fBHttpPath\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the HTTP path\&. The path of the WCF service\&. \fP"
+.ti -1c
+.RI "virtual string \fBNetTcpHost\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the net TCP host\&. This is the host address of our WCF service for sending data between host and client\&. \fP"
+.ti -1c
+.RI "virtual int \fBNetTcpPort\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the net TCP port\&. The port on the net TCP host is listening\&. \fP"
+.ti -1c
+.RI "virtual string \fBNetTcpPath\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the net TCP path\&. The path to the net TCP host\&. \fP"
+.ti -1c
+.RI "virtual string \fBCertificatePath\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the certificate path\&. The place where the certificate is stored\&. \fP"
+.ti -1c
+.RI "virtual byte[] \fBCertificatePassword\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the certificate password\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+There we can store settings for WCF controller host\&. 
+
+
+.PP
+Definition at line 17 of file WCFSettings\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBSettings\fP HSA\&.InfoSys\&.Common\&.Entities\&.WCFSettings\&.GetDefaults ()\fC [virtual]\fP"
+
+.PP
+Gets the settings with default values\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A new settings object with its default values\&. 
+.RE
+.PP
+
+.PP
+Definition at line 212 of file WCFSettings\&.cs\&.
+.SS "virtual void HSA\&.InfoSys\&.Common\&.Entities\&.WCFSettings\&.InitializeSettings (stringhttpHost, inthttpPort, stringhttpPath, stringnetTcpHost, intnetTcpPort, stringnetTcpPath, stringcertificatePath = \fCnull\fP, stringpassword = \fCnull\fP)\fC [virtual]\fP"
+
+.PP
+Initializes the settings\&. This method is needed if the wcf service host is not listening to our default values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhttpHost\fP The HTTP host\&.
+.br
+\fIhttpPort\fP The HTTP port\&.
+.br
+\fIhttpPath\fP The HTTP path\&.
+.br
+\fInetTcpHost\fP The net TCP host\&.
+.br
+\fInetTcpPort\fP The net TCP port\&.
+.br
+\fInetTcpPath\fP The net TCP path\&.
+.br
+\fIcertificatePath\fP The certificate path\&.
+.br
+\fIpassword\fP The password\&.
+.RE
+.PP
+
+.PP
+Definition at line 130 of file WCFSettings\&.cs\&.
+.SS "virtual bool HSA\&.InfoSys\&.Common\&.Entities\&.WCFSettings\&.IsDefault ()\fC [virtual]\fP"
+
+.PP
+Determines whether this settings has default values\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this settings has default values; otherwise, \fCfalse\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 235 of file WCFSettings\&.cs\&.
+.SS "virtual void HSA\&.InfoSys\&.Common\&.Entities\&.WCFSettings\&.SetDefaults ()\fC [virtual]\fP"
+
+.PP
+Sets the default values of this setting or if we instanciate a new instance of a setting object because \fBNHibernate\fP needs virtual members but it is better to do not call a virtual member in the constructor if there are other derived classes which inherits from this setting\&. To avoid this problem we simply call this method after instanciating\&. 
+.PP
+Definition at line 187 of file WCFSettings\&.cs\&.
+.SS "override string HSA\&.InfoSys\&.Common\&.Entities\&.WCFSettings\&.ToString ()"
+
+.PP
+Returns a System\&.String that represents this instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A System\&.String that represents this instance\&. 
+.RE
+.PP
+
+.PP
+Definition at line 162 of file WCFSettings\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual byte [] HSA\&.InfoSys\&.Common\&.Entities\&.WCFSettings\&.CertificatePassword\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the certificate password\&. The certificate password\&. 
+.PP
+Definition at line 105 of file WCFSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.WCFSettings\&.CertificatePath\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the certificate path\&. The place where the certificate is stored\&. The certificate path\&. 
+.PP
+Definition at line 95 of file WCFSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.WCFSettings\&.HttpHost\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the HTTP host\&. This is the host address where we can find the wcf service\&. The HTTP host\&. 
+.PP
+Definition at line 33 of file WCFSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.WCFSettings\&.HttpPath\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the HTTP path\&. The path of the WCF service\&. The HTTP path\&. 
+.PP
+Definition at line 54 of file WCFSettings\&.cs\&.
+.SS "virtual int HSA\&.InfoSys\&.Common\&.Entities\&.WCFSettings\&.HttpPort\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the HTTP port\&. The port on which WCF is listening for creating a new proxy\&. The HTTP port\&. 
+.PP
+Definition at line 44 of file WCFSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.WCFSettings\&.NetTcpHost\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the net TCP host\&. This is the host address of our WCF service for sending data between host and client\&. The net TCP host\&. 
+.PP
+Definition at line 65 of file WCFSettings\&.cs\&.
+.SS "virtual string HSA\&.InfoSys\&.Common\&.Entities\&.WCFSettings\&.NetTcpPath\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the net TCP path\&. The path to the net TCP host\&. The net TCP path\&. 
+.PP
+Definition at line 85 of file WCFSettings\&.cs\&.
+.SS "virtual int HSA\&.InfoSys\&.Common\&.Entities\&.WCFSettings\&.NetTcpPort\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the net TCP port\&. The port on the net TCP host is listening\&. The net TCP port\&. 
+.PP
+Definition at line 75 of file WCFSettings\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

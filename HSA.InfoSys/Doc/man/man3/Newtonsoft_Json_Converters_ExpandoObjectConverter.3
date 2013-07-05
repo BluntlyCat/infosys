@@ -1,0 +1,123 @@
+.TH "Newtonsoft.Json.Converters.ExpandoObjectConverter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.Converters.ExpandoObjectConverter \- 
+.PP
+Converts an ExpandoObject to and from JSON\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNewtonsoft\&.Json\&.JsonConverter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBWriteJson\fP (\fBJsonWriter\fP writer, object value, \fBJsonSerializer\fP serializer)"
+.br
+.RI "\fIWrites the JSON representation of the object\&. \fP"
+.ti -1c
+.RI "override object \fBReadJson\fP (\fBJsonReader\fP reader, Type objectType, object existingValue, \fBJsonSerializer\fP serializer)"
+.br
+.RI "\fIReads the JSON representation of the object\&. \fP"
+.ti -1c
+.RI "override bool \fBCanConvert\fP (Type objectType)"
+.br
+.RI "\fIDetermines whether this instance can convert the specified object type\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBCanWrite\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether this \fBJsonConverter\fP can write JSON\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Converts an ExpandoObject to and from JSON\&. 
+
+
+.PP
+Definition at line 41 of file ExpandoObjectConverter\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override bool Newtonsoft\&.Json\&.Converters\&.ExpandoObjectConverter\&.CanConvert (TypeobjectType)\fC [virtual]\fP"
+
+.PP
+Determines whether this instance can convert the specified object type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobjectType\fP Type of the object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this instance can convert the specified object type; otherwise, \fCfalse\fP\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonConverter\fP\&.
+.PP
+Definition at line 147 of file ExpandoObjectConverter\&.cs\&.
+.SS "override object Newtonsoft\&.Json\&.Converters\&.ExpandoObjectConverter\&.ReadJson (\fBJsonReader\fPreader, TypeobjectType, objectexistingValue, \fBJsonSerializer\fPserializer)\fC [virtual]\fP"
+
+.PP
+Reads the JSON representation of the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The \fBJsonReader\fP to read from\&.
+.br
+\fIobjectType\fP Type of the object\&.
+.br
+\fIexistingValue\fP The existing value of object being read\&.
+.br
+\fIserializer\fP The calling serializer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The object value\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonConverter\fP\&.
+.PP
+Definition at line 62 of file ExpandoObjectConverter\&.cs\&.
+.SS "override void Newtonsoft\&.Json\&.Converters\&.ExpandoObjectConverter\&.WriteJson (\fBJsonWriter\fPwriter, objectvalue, \fBJsonSerializer\fPserializer)\fC [virtual]\fP"
+
+.PP
+Writes the JSON representation of the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP The \fBJsonWriter\fP to write to\&.
+.br
+\fIvalue\fP The value\&.
+.br
+\fIserializer\fP The calling serializer\&.
+.RE
+.PP
+
+.PP
+Implements \fBNewtonsoft\&.Json\&.JsonConverter\fP\&.
+.PP
+Definition at line 49 of file ExpandoObjectConverter\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool Newtonsoft\&.Json\&.Converters\&.ExpandoObjectConverter\&.CanWrite\fC [get]\fP"
+
+.PP
+Gets a value indicating whether this \fBJsonConverter\fP can write JSON\&. \fCtrue\fP if this \fBJsonConverter\fP can write JSON; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 159 of file ExpandoObjectConverter\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

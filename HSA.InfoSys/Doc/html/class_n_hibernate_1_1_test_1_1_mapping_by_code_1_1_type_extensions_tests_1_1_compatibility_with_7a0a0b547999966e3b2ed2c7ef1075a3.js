@@ -1,0 +1,6 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_type_extensions_tests_1_1_compatibility_with_7a0a0b547999966e3b2ed2c7ef1075a3 =
+[
+    [ "Descrition", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_type_extensions_tests_1_1_compatibility_with_7a0a0b547999966e3b2ed2c7ef1075a3.html#a6ad384e8922fbb6956a2b51ab1d8049d", null ],
+    [ "Elements", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_type_extensions_tests_1_1_compatibility_with_7a0a0b547999966e3b2ed2c7ef1075a3.html#a413c15f6eab1dcd54c812706ced76d47", null ],
+    [ "Parent", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_type_extensions_tests_1_1_compatibility_with_7a0a0b547999966e3b2ed2c7ef1075a3.html#a8c0bc504d9875346cf1ea928d5e8034c", null ]
+];

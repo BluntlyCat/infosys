@@ -1,0 +1,145 @@
+.TH "NHibernate.Properties.XmlAccessor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Properties.XmlAccessor \- 
+.PP
+Responsible for accessing property values represented as a XmlElement or XmlAttribute\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Properties\&.IPropertyAccessor\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAttributeGetter\fP"
+.br
+.RI "\fIFor nodes like \fC'@bar'\fP\fP"
+.ti -1c
+.RI "class \fBAttributeSetter\fP"
+.br
+.RI "\fIFor nodes like \fC'@bar'\fP\fP"
+.ti -1c
+.RI "class \fBElementAttributeGetter\fP"
+.br
+.RI "\fIFor nodes like \fC'foo/@bar'\fP\fP"
+.ti -1c
+.RI "class \fBElementAttributeSetter\fP"
+.br
+.RI "\fIFor nodes like \fC'foo/@bar'\fP\fP"
+.ti -1c
+.RI "class \fBElementGetter\fP"
+.br
+.RI "\fIFor nodes like \fC'foo'\fP\fP"
+.ti -1c
+.RI "class \fBElementSetter\fP"
+.br
+.RI "\fIFor nodes like \fC'foo'\fP\fP"
+.ti -1c
+.RI "class \fBTextGetter\fP"
+.br
+.RI "\fIFor nodes like \fC'\&.'\fP\fP"
+.ti -1c
+.RI "class \fBTextSetter\fP"
+.br
+.RI "\fIFor nodes like \fC'\&.'\fP\fP"
+.ti -1c
+.RI "class \fBXmlGetter\fP"
+.br
+.RI "\fIDefines the strategy for getting property values out of a dom4j Node\&.\fP"
+.ti -1c
+.RI "class \fBXmlSetter\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBXmlAccessor\fP (string nodeName, \fBIType\fP propertyType, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "\fBIGetter\fP \fBGetGetter\fP (System\&.Type theClass, string propertyName)"
+.br
+.RI "\fIWhen implemented by a class, create a 'getter' for the mapped property\&. \fP"
+.ti -1c
+.RI "\fBISetter\fP \fBGetSetter\fP (System\&.Type theClass, string propertyName)"
+.br
+.RI "\fIWhen implemented by a class, create a 'setter' for the mapped property\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBCanAccessThroughReflectionOptimizer\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Responsible for accessing property values represented as a XmlElement or XmlAttribute\&. 
+
+
+.PP
+Definition at line 15 of file XmlAccessor\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIGetter\fP NHibernate\&.Properties\&.XmlAccessor\&.GetGetter (System\&.TypetheClass, stringpropertyName)"
+
+.PP
+When implemented by a class, create a 'getter' for the mapped property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItheClass\fP The System\&.Type to find the Property in\&.
+.br
+\fIpropertyName\fP The name of the mapped Property to get\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBIGetter\fP to use to get the value of the Property from an instance of the System\&.Type\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBPropertyNotFoundException\fP\fP Thrown when a Property specified by the \fCpropertyName\fP could not be found in the System\&.Type\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.IPropertyAccessor\fP\&.
+.PP
+Definition at line 30 of file XmlAccessor\&.cs\&.
+.SS "\fBISetter\fP NHibernate\&.Properties\&.XmlAccessor\&.GetSetter (System\&.TypetheClass, stringpropertyName)"
+
+.PP
+When implemented by a class, create a 'setter' for the mapped property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItheClass\fP The System\&.Type to find the Property in\&.
+.br
+\fIpropertyName\fP The name of the mapped Property to set\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBISetter\fP to use to set the value of the Property on an instance of the System\&.Type\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBPropertyNotFoundException\fP\fP Thrown when a Property specified by the \fCpropertyName\fP could not be found in the System\&.Type\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Properties\&.IPropertyAccessor\fP\&.
+.PP
+Definition at line 54 of file XmlAccessor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,293 @@
+.TH "NHibernate.Hql.Ast" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "package \fBANTLR\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBHqlTreeBuilder\fP"
+.br
+.ti -1c
+.RI "class \fBHqlTreeNode\fP"
+.br
+.ti -1c
+.RI "class \fBHqlTreeNodeExtensions\fP"
+.br
+.ti -1c
+.RI "class \fBHqlStatement\fP"
+.br
+.ti -1c
+.RI "class \fBHqlExpression\fP"
+.br
+.ti -1c
+.RI "class \fBHqlBooleanExpression\fP"
+.br
+.ti -1c
+.RI "class \fBHqlQuery\fP"
+.br
+.ti -1c
+.RI "class \fBHqlIdent\fP"
+.br
+.ti -1c
+.RI "class \fBHqlRange\fP"
+.br
+.ti -1c
+.RI "class \fBHqlFrom\fP"
+.br
+.ti -1c
+.RI "class \fBHqlSelectFrom\fP"
+.br
+.ti -1c
+.RI "class \fBHqlAlias\fP"
+.br
+.ti -1c
+.RI "class \fBHqlDivide\fP"
+.br
+.ti -1c
+.RI "class \fBHqlMultiplty\fP"
+.br
+.ti -1c
+.RI "class \fBHqlSubtract\fP"
+.br
+.ti -1c
+.RI "class \fBHqlAdd\fP"
+.br
+.ti -1c
+.RI "class \fBHqlBooleanOr\fP"
+.br
+.ti -1c
+.RI "class \fBHqlBooleanAnd\fP"
+.br
+.ti -1c
+.RI "class \fBHqlEquality\fP"
+.br
+.ti -1c
+.RI "class \fBHqlParameter\fP"
+.br
+.ti -1c
+.RI "class \fBHqlDot\fP"
+.br
+.ti -1c
+.RI "class \fBHqlBooleanDot\fP"
+.br
+.ti -1c
+.RI "class \fBHqlWhere\fP"
+.br
+.ti -1c
+.RI "class \fBHqlWith\fP"
+.br
+.ti -1c
+.RI "class \fBHqlHaving\fP"
+.br
+.ti -1c
+.RI "class \fBHqlSkip\fP"
+.br
+.ti -1c
+.RI "class \fBHqlTake\fP"
+.br
+.ti -1c
+.RI "class \fBHqlConstant\fP"
+.br
+.ti -1c
+.RI "class \fBHqlStringConstant\fP"
+.br
+.ti -1c
+.RI "class \fBHqlDoubleConstant\fP"
+.br
+.ti -1c
+.RI "class \fBHqlFloatConstant\fP"
+.br
+.ti -1c
+.RI "class \fBHqlIntegerConstant\fP"
+.br
+.ti -1c
+.RI "class \fBHqlDecimalConstant\fP"
+.br
+.ti -1c
+.RI "class \fBHqlFalse\fP"
+.br
+.ti -1c
+.RI "class \fBHqlTrue\fP"
+.br
+.ti -1c
+.RI "class \fBHqlNull\fP"
+.br
+.ti -1c
+.RI "class \fBHqlOrderBy\fP"
+.br
+.ti -1c
+.RI "class \fBHqlDirectionStatement\fP"
+.br
+.ti -1c
+.RI "class \fBHqlDirectionAscending\fP"
+.br
+.ti -1c
+.RI "class \fBHqlDirectionDescending\fP"
+.br
+.ti -1c
+.RI "class \fBHqlSelect\fP"
+.br
+.ti -1c
+.RI "class \fBHqlElse\fP"
+.br
+.ti -1c
+.RI "class \fBHqlWhen\fP"
+.br
+.ti -1c
+.RI "class \fBHqlCase\fP"
+.br
+.ti -1c
+.RI "class \fBHqlGreaterThanOrEqual\fP"
+.br
+.ti -1c
+.RI "class \fBHqlGreaterThan\fP"
+.br
+.ti -1c
+.RI "class \fBHqlLessThanOrEqual\fP"
+.br
+.ti -1c
+.RI "class \fBHqlLessThan\fP"
+.br
+.ti -1c
+.RI "class \fBHqlInequality\fP"
+.br
+.ti -1c
+.RI "class \fBHqlRowStar\fP"
+.br
+.ti -1c
+.RI "class \fBHqlCount\fP"
+.br
+.ti -1c
+.RI "class \fBHqlAs\fP"
+.br
+.ti -1c
+.RI "class \fBHqlCast\fP"
+.br
+.ti -1c
+.RI "class \fBHqlCoalesce\fP"
+.br
+.ti -1c
+.RI "class \fBHqlDictionaryIndex\fP"
+.br
+.ti -1c
+.RI "class \fBHqlIndices\fP"
+.br
+.ti -1c
+.RI "class \fBHqlExpressionList\fP"
+.br
+.ti -1c
+.RI "class \fBHqlBooleanNot\fP"
+.br
+.ti -1c
+.RI "class \fBHqlAverage\fP"
+.br
+.ti -1c
+.RI "class \fBHqlBitwiseNot\fP"
+.br
+.ti -1c
+.RI "class \fBHqlSum\fP"
+.br
+.ti -1c
+.RI "class \fBHqlMax\fP"
+.br
+.ti -1c
+.RI "class \fBHqlMin\fP"
+.br
+.ti -1c
+.RI "class \fBHqlJoin\fP"
+.br
+.ti -1c
+.RI "class \fBHqlLeftJoin\fP"
+.br
+.ti -1c
+.RI "class \fBHqlFetchJoin\fP"
+.br
+.ti -1c
+.RI "class \fBHqlLeftFetchJoin\fP"
+.br
+.ti -1c
+.RI "class \fBHqlFetch\fP"
+.br
+.ti -1c
+.RI "class \fBHqlClass\fP"
+.br
+.ti -1c
+.RI "class \fBHqlBitwiseOr\fP"
+.br
+.ti -1c
+.RI "class \fBHqlBitwiseAnd\fP"
+.br
+.ti -1c
+.RI "class \fBHqlLeft\fP"
+.br
+.ti -1c
+.RI "class \fBHqlAny\fP"
+.br
+.ti -1c
+.RI "class \fBHqlExists\fP"
+.br
+.ti -1c
+.RI "class \fBHqlElements\fP"
+.br
+.ti -1c
+.RI "class \fBHqlDistinct\fP"
+.br
+.ti -1c
+.RI "class \fBHqlGroupBy\fP"
+.br
+.ti -1c
+.RI "class \fBHqlAll\fP"
+.br
+.ti -1c
+.RI "class \fBHqlLike\fP"
+.br
+.ti -1c
+.RI "class \fBHqlConcat\fP"
+.br
+.ti -1c
+.RI "class \fBHqlMethodCall\fP"
+.br
+.ti -1c
+.RI "class \fBHqlBooleanMethodCall\fP"
+.br
+.ti -1c
+.RI "class \fBHqlExpressionSubTreeHolder\fP"
+.br
+.ti -1c
+.RI "class \fBHqlIsNull\fP"
+.br
+.ti -1c
+.RI "class \fBHqlIsNotNull\fP"
+.br
+.ti -1c
+.RI "class \fBHqlStar\fP"
+.br
+.ti -1c
+.RI "class \fBHqlIn\fP"
+.br
+.ti -1c
+.RI "class \fBHqlInList\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBHqlDirection\fP { \fBAscending\fP, \fBDescending\fP }"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

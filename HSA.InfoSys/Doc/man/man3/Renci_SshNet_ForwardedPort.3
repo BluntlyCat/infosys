@@ -1,0 +1,138 @@
+.TH "Renci.SshNet.ForwardedPort" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.ForwardedPort \- 
+.PP
+Base class for port forwarding functionality\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBRenci\&.SshNet\&.ForwardedPortDynamic\fP, \fBRenci\&.SshNet\&.ForwardedPortLocal\fP, and \fBRenci\&.SshNet\&.ForwardedPortRemote\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBStart\fP ()"
+.br
+.RI "\fIStarts port forwarding\&. \fP"
+.ti -1c
+.RI "virtual void \fBStop\fP ()"
+.br
+.RI "\fIStops port forwarding\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBRaiseExceptionEvent\fP (\fBException\fP execption)"
+.br
+.RI "\fIRaises \fBRenci\&.SshNet\&.ForwardedPort\&.Exception\fP event\&. \fP"
+.ti -1c
+.RI "void \fBRaiseRequestReceived\fP (string host, uint port)"
+.br
+.RI "\fIRaises \fBRenci\&.SshNet\&.ForwardedPort\&.RequestReceived\fP event\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsStarted\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether port forwarding started\&. \fP"
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "EventHandler< \fBExceptionEventArgs\fP > \fBException\fP"
+.br
+.RI "\fIOccurs when exception is thrown\&. \fP"
+.ti -1c
+.RI "EventHandler
+.br
+< \fBPortForwardEventArgs\fP > \fBRequestReceived\fP"
+.br
+.RI "\fIOccurs when port forwarding request received\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for port forwarding functionality\&. 
+
+
+.PP
+Definition at line 9 of file ForwardedPort\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Renci\&.SshNet\&.ForwardedPort\&.RaiseExceptionEvent (\fBException\fPexecption)\fC [protected]\fP"
+
+.PP
+Raises \fBRenci\&.SshNet\&.ForwardedPort\&.Exception\fP event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexecption\fP The exception\&.
+.RE
+.PP
+
+.PP
+Definition at line 70 of file ForwardedPort\&.cs\&.
+.SS "void Renci\&.SshNet\&.ForwardedPort\&.RaiseRequestReceived (stringhost, uintport)\fC [protected]\fP"
+
+.PP
+Raises \fBRenci\&.SshNet\&.ForwardedPort\&.RequestReceived\fP event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhost\fP Request originator host\&.
+.br
+\fIport\fP Request originator port\&.
+.RE
+.PP
+
+.PP
+Definition at line 83 of file ForwardedPort\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.ForwardedPort\&.Start ()\fC [virtual]\fP"
+
+.PP
+Starts port forwarding\&. 
+.PP
+Reimplemented in \fBRenci\&.SshNet\&.ForwardedPortRemote\fP, \fBRenci\&.SshNet\&.ForwardedPortLocal\fP, and \fBRenci\&.SshNet\&.ForwardedPortDynamic\fP\&.
+.PP
+Definition at line 40 of file ForwardedPort\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.ForwardedPort\&.Stop ()\fC [virtual]\fP"
+
+.PP
+Stops port forwarding\&. 
+.PP
+Reimplemented in \fBRenci\&.SshNet\&.ForwardedPortRemote\fP, \fBRenci\&.SshNet\&.ForwardedPortLocal\fP, and \fBRenci\&.SshNet\&.ForwardedPortDynamic\fP\&.
+.PP
+Definition at line 58 of file ForwardedPort\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool Renci\&.SshNet\&.ForwardedPort\&.IsStarted\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether port forwarding started\&. \fCtrue\fP if port forwarding started; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 25 of file ForwardedPort\&.cs\&.
+.SH "Event Documentation"
+.PP 
+.SS "EventHandler<\fBExceptionEventArgs\fP> Renci\&.SshNet\&.ForwardedPort\&.Exception"
+
+.PP
+Occurs when exception is thrown\&. 
+.PP
+Definition at line 30 of file ForwardedPort\&.cs\&.
+.SS "EventHandler<\fBPortForwardEventArgs\fP> Renci\&.SshNet\&.ForwardedPort\&.RequestReceived"
+
+.PP
+Occurs when port forwarding request received\&. 
+.PP
+Definition at line 35 of file ForwardedPort\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

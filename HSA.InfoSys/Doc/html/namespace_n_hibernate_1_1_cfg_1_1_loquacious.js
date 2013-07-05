@@ -1,0 +1,23 @@
+var namespace_n_hibernate_1_1_cfg_1_1_loquacious =
+[
+    [ "IBatcherConfiguration", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_batcher_configuration.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_batcher_configuration" ],
+    [ "ICacheConfiguration", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_cache_configuration.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_cache_configuration" ],
+    [ "ICacheConfigurationProperties", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_cache_configuration_properties.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_cache_configuration_properties" ],
+    [ "ICollectionFactoryConfiguration", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_collection_factory_configuration.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_collection_factory_configuration" ],
+    [ "ICommandsConfiguration", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_commands_configuration.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_commands_configuration" ],
+    [ "IConnectionConfiguration", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_connection_configuration.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_connection_configuration" ],
+    [ "IDbIntegrationConfiguration", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_db_integration_configuration.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_db_integration_configuration" ],
+    [ "IDbIntegrationConfigurationProperties", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_db_integration_configuration_properties.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_db_integration_configuration_properties" ],
+    [ "IDbSchemaIntegrationConfiguration", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_db_schema_integration_configuration.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_db_schema_integration_configuration" ],
+    [ "IEntityCollectionCacheConfigurationProperties", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_entity_collection_cache_configuration_properties.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_entity_collection_cache_configuration_properties" ],
+    [ "IEntityCacheConfigurationProperties< TEntity >", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_entity_cache_configuration_properties_3_01_t_entity_01_4.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_entity_cache_configuration_properties_3_01_t_entity_01_4" ],
+    [ "IFluentSessionFactoryConfiguration", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_fluent_session_factory_configuration.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_fluent_session_factory_configuration" ],
+    [ "IMappingsConfiguration", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_mappings_configuration.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_mappings_configuration" ],
+    [ "IMappingsConfigurationProperties", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_mappings_configuration_properties.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_mappings_configuration_properties" ],
+    [ "INamedQueryDefinitionBuilder", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_named_query_definition_builder.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_named_query_definition_builder" ],
+    [ "IProxyConfiguration", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_proxy_configuration.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_proxy_configuration" ],
+    [ "IProxyConfigurationProperties", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_proxy_configuration_properties.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_proxy_configuration_properties" ],
+    [ "IQueryCacheConfiguration", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_query_cache_configuration.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_query_cache_configuration" ],
+    [ "ITransactionConfiguration", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_transaction_configuration.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_transaction_configuration" ],
+    [ "ITypeDefConfigurationProperties", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_type_def_configuration_properties.html", "interface_n_hibernate_1_1_cfg_1_1_loquacious_1_1_i_type_def_configuration_properties" ]
+];

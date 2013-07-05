@@ -1,0 +1,163 @@
+.TH "NHibernate.Type.CustomCollectionType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.CustomCollectionType \- 
+.PP
+A custom type for mapping user-written classes that implement IPersistentCollection\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCustomCollectionType\fP (System\&.Type userTypeClass, string role, string foreignKeyPropertyName, bool isEmbeddedInXML)"
+.br
+.ti -1c
+.RI "override \fBIPersistentCollection\fP \fBInstantiate\fP (\fBISessionImplementor\fP session, \fBICollectionPersister\fP persister, object key)"
+.br
+.RI "\fIInstantiate an uninitialized collection wrapper or holder\&. Callers MUST add the holder to the persistence context! \fP"
+.ti -1c
+.RI "override \fBIPersistentCollection\fP \fBWrap\fP (\fBISessionImplementor\fP session, object collection)"
+.br
+.RI "\fIWrap the naked collection instance in a wrapper, or instantiate a holder\&. Callers \fBMUST\fP add the holder to the persistence context! \fP"
+.ti -1c
+.RI "override object \fBInstantiate\fP (int anticipatedSize)"
+.br
+.RI "\fIInstantiate an empty instance of the 'underlying' collection (not a wrapper), but with the given anticipated size (i\&.e\&. accounting for initial capacity and perhaps load factor)\&. \fP"
+.ti -1c
+.RI "override IEnumerable \fBGetElementsIterator\fP (object collection)"
+.br
+.RI "\fIGet an iterator over the element set of the collection in POCO mode \fP"
+.ti -1c
+.RI "override bool \fBContains\fP (object collection, object entity, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override object \fBIndexOf\fP (object collection, object entity)"
+.br
+.ti -1c
+.RI "override object \fBReplaceElements\fP (object original, object target, object owner, IDictionary copyCache, \fBISessionImplementor\fP session)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIUserCollectionType\fP \fBUserType\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A custom type for mapping user-written classes that implement IPersistentCollection\&. 
+
+
+.PP
+\fBSee Also:\fP
+.RS 4
+IPersistentCollection, IUserCollectionType
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 17 of file CustomCollectionType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override IEnumerable NHibernate\&.Type\&.CustomCollectionType\&.GetElementsIterator (objectcollection)\fC [virtual]\fP"
+
+.PP
+Get an iterator over the element set of the collection in POCO mode 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcollection\fP The collection to be iterated 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The iterator\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.PP
+Definition at line 68 of file CustomCollectionType\&.cs\&.
+.SS "override \fBIPersistentCollection\fP NHibernate\&.Type\&.CustomCollectionType\&.Instantiate (\fBISessionImplementor\fPsession, \fBICollectionPersister\fPpersister, objectkey)\fC [virtual]\fP"
+
+.PP
+Instantiate an uninitialized collection wrapper or holder\&. Callers MUST add the holder to the persistence context! 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session from which the request is originating\&. 
+.br
+\fIpersister\fP The underlying collection persister (metadata) 
+.br
+\fIkey\fP The owner key\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instantiated collection\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.PP
+Definition at line 48 of file CustomCollectionType\&.cs\&.
+.SS "override object NHibernate\&.Type\&.CustomCollectionType\&.Instantiate (intanticipatedSize)\fC [virtual]\fP"
+
+.PP
+Instantiate an empty instance of the 'underlying' collection (not a wrapper), but with the given anticipated size (i\&.e\&. accounting for initial capacity and perhaps load factor)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIanticipatedSize\fP The anticipated size of the instantiated collection after we are done populating it\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A newly instantiated collection to be wrapped\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.PP
+Definition at line 63 of file CustomCollectionType\&.cs\&.
+.SS "override \fBIPersistentCollection\fP NHibernate\&.Type\&.CustomCollectionType\&.Wrap (\fBISessionImplementor\fPsession, objectcollection)\fC [virtual]\fP"
+
+.PP
+Wrap the naked collection instance in a wrapper, or instantiate a holder\&. Callers \fBMUST\fP add the holder to the persistence context! 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session from which the request is originating\&. 
+.br
+\fIcollection\fP The bare collection to be wrapped\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A subclass of IPersistentCollection that wraps the non \fBNHibernate\fP collection\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.CollectionType\fP\&.
+.PP
+Definition at line 53 of file CustomCollectionType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

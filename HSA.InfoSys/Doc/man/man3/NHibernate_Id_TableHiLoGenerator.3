@@ -1,0 +1,112 @@
+.TH "NHibernate.Id.TableHiLoGenerator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.TableHiLoGenerator \- 
+.PP
+An \fBIIdentifierGenerator\fP that returns an \fCInt64\fP, constructed using a hi/lo algorithm\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Id\&.TableGenerator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBConfigure\fP (\fBIType\fP type, IDictionary< string, string > parms, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIConfigures the \fBTableHiLoGenerator\fP by reading the value of \fCtable\fP, \fCcolumn\fP, \fCmax_lo\fP, and \fCschema\fP from the \fCparms\fP parameter\&. \fP"
+.ti -1c
+.RI "override object \fBGenerate\fP (\fBISessionImplementor\fP session, object obj)"
+.br
+.RI "\fIGenerate a Int64 for the identifier by selecting and updating a value in a table\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBMaxLo\fP = 'max_lo'"
+.br
+.RI "\fIThe name of the max lo parameter\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An \fBIIdentifierGenerator\fP that returns an \fCInt64\fP, constructed using a hi/lo algorithm\&. 
+
+This id generation strategy is specified in the mapping file as 
+.PP
+.nf
+&lt;generator class="hilo"&gt;
+    &lt;param name="table"&gt;table&lt;/param&gt;
+    &lt;param name="column"&gt;id_column&lt;/param&gt;
+    &lt;param name="max_lo"&gt;max_lo_value&lt;/param&gt;
+    &lt;param name="schema"&gt;db_schema&lt;/param&gt;
+&lt;/generator&gt;
+
+.fi
+.PP
+ 
+.PP
+The \fCtable\fP and \fCcolumn\fP parameters are required, the \fCmax_lo\fP and \fCschema\fP are optional\&. 
+.PP
+The hi value MUST be fecthed in a separate transaction to the \fC\fBISession\fP\fP transaction so the generator must be able to obtain a new connection and commit it\&. Hence this implementation may not be used when the user is supplying connections\&. In that case a \fBSequenceHiLoGenerator\fP would be a better choice (where supported)\&. 
+.PP
+Definition at line 40 of file TableHiLoGenerator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Id\&.TableHiLoGenerator\&.Configure (\fBIType\fPtype, IDictionary< string, string >parms, \fBDialect\&.Dialect\fPdialect)"
+
+.PP
+Configures the \fBTableHiLoGenerator\fP by reading the value of \fCtable\fP, \fCcolumn\fP, \fCmax_lo\fP, and \fCschema\fP from the \fCparms\fP parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The IType the identifier should be\&.
+.br
+\fIparms\fP An IDictionary of \fBParam\fP values that are keyed by parameter name\&.
+.br
+\fIdialect\fP The \fBDialect\&.Dialect\fP to help with Configuration\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IConfigurable\fP\&.
+.PP
+Definition at line 63 of file TableHiLoGenerator\&.cs\&.
+.SS "override object NHibernate\&.Id\&.TableHiLoGenerator\&.Generate (\fBISessionImplementor\fPsession, objectobj)\fC [virtual]\fP"
+
+.PP
+Generate a Int64 for the identifier by selecting and updating a value in a table\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The ISessionImplementor this id is being generated in\&.
+.br
+\fIobj\fP The entity for which the id is being generated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new identifier as a Int64\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Id\&.TableGenerator\fP\&.
+.PP
+Definition at line 82 of file TableHiLoGenerator\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const string NHibernate\&.Id\&.TableHiLoGenerator\&.MaxLo = 'max_lo'"
+
+.PP
+The name of the max lo parameter\&. 
+.PP
+Definition at line 47 of file TableHiLoGenerator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

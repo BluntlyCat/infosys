@@ -1,0 +1,88 @@
+.TH "NHibernate.DomainModel.NHSpecific.Node" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.DomainModel.NHSpecific.Node \- 
+.PP
+Summary description for \fBNode\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNode\fP (string id)"
+.br
+.ti -1c
+.RI "void \fBAddDestinationNode\fP (\fBNode\fP destinationNode)"
+.br
+.RI "\fIThis is the only way to hook nodes together right now\&. \fP"
+.ti -1c
+.RI "void \fBRemoveDestinationNode\fP (\fBNode\fP destinationNode)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBId\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "ISet< \fBNode\fP > \fBPreviousNodes\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe Nodes that lead into this \fBNode\fP\&. \fP"
+.ti -1c
+.RI "ISet< \fBNode\fP > \fBDestinationNodes\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe Nodes this \fBNode\fP can go To\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Summary description for \fBNode\fP\&. 
+
+
+.PP
+Definition at line 9 of file Node\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.DomainModel\&.NHSpecific\&.Node\&.AddDestinationNode (\fBNode\fPdestinationNode)"
+
+.PP
+This is the only way to hook nodes together right now\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestinationNode\fP \fBA\fP \fBNode\fP this \fBNode\fP can go to\&.
+.RE
+.PP
+
+.PP
+Definition at line 79 of file Node\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "ISet<\fBNode\fP> NHibernate\&.DomainModel\&.NHSpecific\&.Node\&.DestinationNodes\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The Nodes this \fBNode\fP can go To\&. I would not recommend that mapping of set be made public because under the scene they rely on Dictionaries, but this is in here for testing\&. The DestinationNodes is the Property that controls which modifications get persisted\&. 
+.PP
+Definition at line 70 of file Node\&.cs\&.
+.SS "ISet<\fBNode\fP> NHibernate\&.DomainModel\&.NHSpecific\&.Node\&.PreviousNodes\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The Nodes that lead into this \fBNode\fP\&. I would not recommend that mapping of set be made public because under the scene they rely on Dictionaries, but this is in here for testing\&.
+.PP
+Any modifications to the 'inverse' side should not be persisted - unless the modifications are also made to the non-inverse side\&. 
+.PP
+Definition at line 45 of file Node\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

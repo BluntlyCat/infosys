@@ -1,0 +1,156 @@
+.TH "NHibernate.Event.Default" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.Default \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAbstractFlushingEventListener\fP"
+.br
+.RI "\fIA convenience base class for listeners whose functionality results in flushing\&. \fP"
+.ti -1c
+.RI "class \fBAbstractLockUpgradeEventListener\fP"
+.br
+.RI "\fIA convenience base class for listeners that respond to requests to perform a pessimistic lock upgrade on an entity\&. \fP"
+.ti -1c
+.RI "class \fBAbstractReassociateEventListener\fP"
+.br
+.RI "\fIA convenience base class for listeners that respond to requests to reassociate an entity to a session ( such as through lock() or update() )\&. \fP"
+.ti -1c
+.RI "class \fBAbstractSaveEventListener\fP"
+.br
+.RI "\fIA convenience bas class for listeners responding to save events\&. \fP"
+.ti -1c
+.RI "class \fBAbstractVisitor\fP"
+.br
+.RI "\fIAbstract superclass of algorithms that walk a tree of property values of an entity, and perform specific functionality for collections, components and associated entities\&. \fP"
+.ti -1c
+.RI "class \fBDefaultAutoFlushEventListener\fP"
+.br
+.RI "\fIDefines the default flush event listeners used by hibernate for flushing session state in response to generated auto-flush events\&. \fP"
+.ti -1c
+.RI "class \fBDefaultDeleteEventListener\fP"
+.br
+.RI "\fIDefines the default delete event listener used by hibernate for deleting entities from the datastore in response to generated delete events\&. \fP"
+.ti -1c
+.RI "class \fBDefaultDirtyCheckEventListener\fP"
+.br
+.RI "\fIDefines the default dirty-check event listener used by hibernate for checking the session for dirtiness in response to generated dirty-check events\&. \fP"
+.ti -1c
+.RI "class \fBDefaultEvictEventListener\fP"
+.br
+.RI "\fIDefines the default evict event listener used by hibernate for evicting entities in response to generated flush events\&. In particular, this implementation will remove any hard references to the entity that are held by the infrastructure (references held by application or other persistent instances are okay) \fP"
+.ti -1c
+.RI "class \fBDefaultFlushEntityEventListener\fP"
+.br
+.RI "\fIAn event that occurs for each entity instance at flush time \fP"
+.ti -1c
+.RI "class \fBDefaultFlushEventListener\fP"
+.br
+.RI "\fIDefines the default flush event listeners used by hibernate for flushing session state in response to generated flush events\&. \fP"
+.ti -1c
+.RI "class \fBDefaultInitializeCollectionEventListener\fP"
+.br
+.ti -1c
+.RI "class \fBDefaultLoadEventListener\fP"
+.br
+.RI "\fIDefines the default load event listeners used by \fBNHibernate\fP for loading entities in response to generated load events\&. \fP"
+.ti -1c
+.RI "class \fBDefaultLockEventListener\fP"
+.br
+.RI "\fIDefines the default lock event listeners used by hibernate to lock entities in response to generated lock events\&. \fP"
+.ti -1c
+.RI "class \fBDefaultMergeEventListener\fP"
+.br
+.RI "\fIDefines the default event listener for handling of merge events generated from a session\&. \fP"
+.ti -1c
+.RI "class \fBDefaultPersistEventListener\fP"
+.br
+.RI "\fIDefines the default create event listener used by hibernate for creating transient entities in response to generated create events\&. \fP"
+.ti -1c
+.RI "class \fBDefaultPersistOnFlushEventListener\fP"
+.br
+.RI "\fIWhen persist is used as the cascade action, persistOnFlush should be used\fP"
+.ti -1c
+.RI "class \fBDefaultPostLoadEventListener\fP"
+.br
+.RI "\fICall ILifecycle interface if necessary \fP"
+.ti -1c
+.RI "class \fBDefaultPreLoadEventListener\fP"
+.br
+.RI "\fICalled before injecting property values into a newly loaded entity instance\&. \fP"
+.ti -1c
+.RI "class \fBDefaultRefreshEventListener\fP"
+.br
+.RI "\fIDefines the default refresh event listener used by hibernate for refreshing entities in response to generated refresh events\&. \fP"
+.ti -1c
+.RI "class \fBDefaultReplicateEventListener\fP"
+.br
+.RI "\fIDefines the default replicate event listener used by Hibernate to replicate entities in response to generated replicate events\&. \fP"
+.ti -1c
+.RI "class \fBDefaultSaveEventListener\fP"
+.br
+.RI "\fIAn event handler for save() events\fP"
+.ti -1c
+.RI "class \fBDefaultSaveOrUpdateEventListener\fP"
+.br
+.RI "\fIDefines the default listener used by Hibernate for handling save-update events\&. \fP"
+.ti -1c
+.RI "class \fBDefaultUpdateEventListener\fP"
+.br
+.RI "\fIAn event handler for update() events\fP"
+.ti -1c
+.RI "class \fBDirtyCollectionSearchVisitor\fP"
+.br
+.RI "\fIA Visitor that determines if a dirty collection was found\&. \fP"
+.ti -1c
+.RI "class \fBEventCache\fP"
+.br
+.ti -1c
+.RI "class \fBEvictVisitor\fP"
+.br
+.RI "\fIEvict any collections referenced by the object from the session cache\&. This will NOT pick up any collections that were dereferenced, so they will be deleted (suboptimal but not exactly incorrect)\&. \fP"
+.ti -1c
+.RI "class \fBFlushVisitor\fP"
+.br
+.RI "\fIProcess collections reachable from an entity\&. This visitor assumes that wrap was already performed for the entity\&. \fP"
+.ti -1c
+.RI "class \fBOnLockVisitor\fP"
+.br
+.RI "\fIWhen a transient entity is passed to lock(), we must inspect all its collections and \fP"
+.ti -1c
+.RI "class \fBOnReplicateVisitor\fP"
+.br
+.RI "\fIWhen an entity is passed to replicate(), and there is an existing row, we must inspect all its collections and \fP"
+.ti -1c
+.RI "class \fBOnUpdateVisitor\fP"
+.br
+.RI "\fIWhen an entity is passed to update(), we must inspect all its collections and \fP"
+.ti -1c
+.RI "class \fBProxyVisitor\fP"
+.br
+.RI "\fIReassociates uninitialized proxies with the session \fP"
+.ti -1c
+.RI "class \fBReattachVisitor\fP"
+.br
+.RI "\fIAbstract superclass of visitors that reattach collections \fP"
+.ti -1c
+.RI "class \fBWrapVisitor\fP"
+.br
+.RI "\fIWrap collections in a Hibernate collection wrapper\&. \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBEntityState\fP { \fBUndefined\fP = -1, \fBPersistent\fP = 0, \fBTransient\fP = 1, \fBDetached\fP = 2, \fBDeleted\fP = 3 }"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,274 @@
+.TH "NHibernate.Dialect.Schema.IDataBaseSchema" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.Schema.IDataBaseSchema \- 
+.PP
+This class is specific of \fBNHibernate\fP and supply DatabaseMetaData of Java\&. In the \&.NET Framework, there is no direct equivalent\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "DataTable \fBGetTables\fP (string catalog, string schemaPattern, string tableNamePattern, string[] types)"
+.br
+.RI "\fIGets a description of the tables available for the catalog \fP"
+.ti -1c
+.RI "\fBITableMetadata\fP \fBGetTableMetadata\fP (DataRow rs, bool extras)"
+.br
+.RI "\fIGet the Table MetaData\&. \fP"
+.ti -1c
+.RI "DataTable \fBGetColumns\fP (string catalog, string schemaPattern, string tableNamePattern, string columnNamePattern)"
+.br
+.RI "\fIGets a description of the table columns available \fP"
+.ti -1c
+.RI "DataTable \fBGetIndexInfo\fP (string catalog, string schemaPattern, string tableName)"
+.br
+.RI "\fIGet a description of the given table's indices and statistics\&. \fP"
+.ti -1c
+.RI "DataTable \fBGetIndexColumns\fP (string catalog, string schemaPattern, string tableName, string indexName)"
+.br
+.RI "\fIGet a description of the given table's indices and statistics\&. \fP"
+.ti -1c
+.RI "DataTable \fBGetForeignKeys\fP (string catalog, string schema, string table)"
+.br
+.RI "\fIGets a description of the foreign keys available \fP"
+.ti -1c
+.RI "ISet< string > \fBGetReservedWords\fP ()"
+.br
+.RI "\fIGet all reserved words \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBStoresMixedCaseQuotedIdentifiers\fP\fC [get]\fP"
+.br
+.RI "\fIIn the Java language, this field indicates that the database treats mixed-case, quoted SQL identifiers as case-insensitive and stores them in mixed case\&. \fP"
+.ti -1c
+.RI "bool \fBStoresUpperCaseQuotedIdentifiers\fP\fC [get]\fP"
+.br
+.RI "\fIIn the Java language, this field indicates that the database treats mixed-case, quoted SQL identifiers as case-insensitive and stores them in upper case\&. \fP"
+.ti -1c
+.RI "bool \fBStoresUpperCaseIdentifiers\fP\fC [get]\fP"
+.br
+.RI "\fIIn the Java language, this field indicates that the database treats mixed-case, unquoted SQL identifiers as case-insensitive and stores them in upper case\&. \fP"
+.ti -1c
+.RI "bool \fBStoresLowerCaseQuotedIdentifiers\fP\fC [get]\fP"
+.br
+.RI "\fIIn the Java language, this field indicates that the database treats mixed-case, quoted SQL identifiers as case-insensitive and stores them in lower case\&. \fP"
+.ti -1c
+.RI "bool \fBStoresLowerCaseIdentifiers\fP\fC [get]\fP"
+.br
+.RI "\fIIn the Java language, this field indicates that the database treats mixed-case, unquoted SQL identifiers as case-insensitive and stores them in lower case, \fP"
+.ti -1c
+.RI "string \fBColumnNameForTableName\fP\fC [get]\fP"
+.br
+.RI "\fIThe name of the column that represent the TABLE_NAME in the DataTable returned by \fBGetTables\fP\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class is specific of \fBNHibernate\fP and supply DatabaseMetaData of Java\&. In the \&.NET Framework, there is no direct equivalent\&. 
+
+Implementation is provide by a dialect\&. 
+.PP
+Definition at line 13 of file IDataBaseSchema\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "DataTable NHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\&.GetColumns (stringcatalog, stringschemaPattern, stringtableNamePattern, stringcolumnNamePattern)"
+
+.PP
+Gets a description of the table columns available 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcatalog\fP A catalog, retrieves those without a catalog
+.br
+\fIschemaPattern\fP \fBSchema\fP pattern, retrieves those without the schema
+.br
+\fItableNamePattern\fP A table name pattern
+.br
+\fIcolumnNamePattern\fP a columng name patterm
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A description of the table columns available
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.SybaseAnywhereDataBaseMetaData\fP, \fBNHibernate\&.Dialect\&.Schema\&.OracleDataBaseSchema\fP, and \fBNHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\fP\&.
+.SS "DataTable NHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\&.GetForeignKeys (stringcatalog, stringschema, stringtable)"
+
+.PP
+Gets a description of the foreign keys available 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcatalog\fP A catalog, retrieves those without a catalog
+.br
+\fIschema\fP \fBSchema\fP name, retrieves those without the schema
+.br
+\fItable\fP A table name
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A description of the foreign keys available
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\fP, \fBNHibernate\&.Dialect\&.Schema\&.SybaseAnywhereDataBaseMetaData\fP, and \fBNHibernate\&.Dialect\&.Schema\&.OracleDataBaseSchema\fP\&.
+.SS "DataTable NHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\&.GetIndexColumns (stringcatalog, stringschemaPattern, stringtableName, stringindexName)"
+
+.PP
+Get a description of the given table's indices and statistics\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcatalog\fP A catalog, retrieves those without a catalog
+.br
+\fIschemaPattern\fP \fBSchema\fP pattern, retrieves those without the schema
+.br
+\fItableName\fP A table name pattern
+.br
+\fIindexName\fP The name of the index
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A description of the table's indices available
+.RE
+.PP
+.PP
+The result is relative to the schema collections 'IndexColumns'\&.
+.PP
+Implemented in \fBNHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\fP, \fBNHibernate\&.Dialect\&.Schema\&.SybaseAnywhereDataBaseMetaData\fP, and \fBNHibernate\&.Dialect\&.Schema\&.OracleDataBaseSchema\fP\&.
+.SS "DataTable NHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\&.GetIndexInfo (stringcatalog, stringschemaPattern, stringtableName)"
+
+.PP
+Get a description of the given table's indices and statistics\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcatalog\fP A catalog, retrieves those without a catalog
+.br
+\fIschemaPattern\fP \fBSchema\fP pattern, retrieves those without the schema
+.br
+\fItableName\fP A table name pattern
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A description of the table's indices available
+.RE
+.PP
+.PP
+The result is relative to the schema collections 'Indexes'\&.
+.PP
+Implemented in \fBNHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\fP, \fBNHibernate\&.Dialect\&.Schema\&.OracleDataBaseSchema\fP, and \fBNHibernate\&.Dialect\&.Schema\&.SybaseAnywhereDataBaseMetaData\fP\&.
+.SS "ISet<string> NHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\&.GetReservedWords ()"
+
+.PP
+Get all reserved words 
+.PP
+\fBReturns:\fP
+.RS 4
+A set of reserved words
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\fP, and \fBNHibernate\&.Dialect\&.Schema\&.SybaseAnywhereDataBaseMetaData\fP\&.
+.SS "\fBITableMetadata\fP NHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\&.GetTableMetadata (DataRowrs, boolextras)"
+
+.PP
+Get the Table MetaData\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The DataRow resultSet of \fBGetTables\fP\&.
+.br
+\fIextras\fP Include FKs and indexes
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.FirebirdDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.SybaseAnywhereDataBaseMetaData\fP, \fBNHibernate\&.Dialect\&.Schema\&.MySQLDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\fP, \fBNHibernate\&.Dialect\&.Schema\&.MsSqlCeDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.MsSqlDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.OracleDataBaseSchema\fP, and \fBNHibernate\&.Dialect\&.Schema\&.SQLiteDataBaseMetaData\fP\&.
+.SS "DataTable NHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\&.GetTables (stringcatalog, stringschemaPattern, stringtableNamePattern, string[]types)"
+
+.PP
+Gets a description of the tables available for the catalog 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcatalog\fP A catalog, retrieves those without a catalog
+.br
+\fIschemaPattern\fP \fBSchema\fP pattern, retrieves those without the schema
+.br
+\fItableNamePattern\fP A table name pattern
+.br
+\fItypes\fP a list of table types to include
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Each row
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Dialect\&.Schema\&.AbstractDataBaseSchema\fP, \fBNHibernate\&.Dialect\&.Schema\&.PostgreSQLDataBaseMetadata\fP, \fBNHibernate\&.Dialect\&.Schema\&.SybaseAnywhereDataBaseMetaData\fP, and \fBNHibernate\&.Dialect\&.Schema\&.OracleDataBaseSchema\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "string NHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\&.ColumnNameForTableName\fC [get]\fP"
+
+.PP
+The name of the column that represent the TABLE_NAME in the DataTable returned by \fBGetTables\fP\&. 
+.PP
+Definition at line 59 of file IDataBaseSchema\&.cs\&.
+.SS "bool NHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\&.StoresLowerCaseIdentifiers\fC [get]\fP"
+
+.PP
+In the Java language, this field indicates that the database treats mixed-case, unquoted SQL identifiers as case-insensitive and stores them in lower case, 
+.PP
+Definition at line 43 of file IDataBaseSchema\&.cs\&.
+.SS "bool NHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\&.StoresLowerCaseQuotedIdentifiers\fC [get]\fP"
+
+.PP
+In the Java language, this field indicates that the database treats mixed-case, quoted SQL identifiers as case-insensitive and stores them in lower case\&. 
+.PP
+Definition at line 37 of file IDataBaseSchema\&.cs\&.
+.SS "bool NHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\&.StoresMixedCaseQuotedIdentifiers\fC [get]\fP"
+
+.PP
+In the Java language, this field indicates that the database treats mixed-case, quoted SQL identifiers as case-insensitive and stores them in mixed case\&. 
+.PP
+Definition at line 19 of file IDataBaseSchema\&.cs\&.
+.SS "bool NHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\&.StoresUpperCaseIdentifiers\fC [get]\fP"
+
+.PP
+In the Java language, this field indicates that the database treats mixed-case, unquoted SQL identifiers as case-insensitive and stores them in upper case\&. 
+.PP
+Definition at line 31 of file IDataBaseSchema\&.cs\&.
+.SS "bool NHibernate\&.Dialect\&.Schema\&.IDataBaseSchema\&.StoresUpperCaseQuotedIdentifiers\fC [get]\fP"
+
+.PP
+In the Java language, this field indicates that the database treats mixed-case, quoted SQL identifiers as case-insensitive and stores them in upper case\&. 
+.PP
+Definition at line 25 of file IDataBaseSchema\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,115 @@
+.TH "Newtonsoft.Json.Serialization.IReferenceResolver" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.Serialization.IReferenceResolver \- 
+.PP
+Used to resolve references when serializing and deserializing JSON by the \fBJsonSerializer\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by Newtonsoft\&.Json\&.Serialization\&.DefaultReferenceResolver\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBResolveReference\fP (object context, string reference)"
+.br
+.RI "\fIResolves a reference to its object\&. \fP"
+.ti -1c
+.RI "string \fBGetReference\fP (object context, object value)"
+.br
+.RI "\fIGets the reference for the sepecified object\&. \fP"
+.ti -1c
+.RI "bool \fBIsReferenced\fP (object context, object value)"
+.br
+.RI "\fIDetermines whether the specified object is referenced\&. \fP"
+.ti -1c
+.RI "void \fBAddReference\fP (object context, string reference, object value)"
+.br
+.RI "\fIAdds a reference to the specified object\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Used to resolve references when serializing and deserializing JSON by the \fBJsonSerializer\fP\&. 
+
+
+.PP
+Definition at line 31 of file IReferenceResolver\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Newtonsoft\&.Json\&.Serialization\&.IReferenceResolver\&.AddReference (objectcontext, stringreference, objectvalue)"
+
+.PP
+Adds a reference to the specified object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontext\fP The serialization context\&.
+.br
+\fIreference\fP The reference\&.
+.br
+\fIvalue\fP The object to reference\&.
+.RE
+.PP
+
+.SS "string Newtonsoft\&.Json\&.Serialization\&.IReferenceResolver\&.GetReference (objectcontext, objectvalue)"
+
+.PP
+Gets the reference for the sepecified object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontext\fP The serialization context\&.
+.br
+\fIvalue\fP The object to get a reference for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The reference to the object\&.
+.RE
+.PP
+
+.SS "bool Newtonsoft\&.Json\&.Serialization\&.IReferenceResolver\&.IsReferenced (objectcontext, objectvalue)"
+
+.PP
+Determines whether the specified object is referenced\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontext\fP The serialization context\&.
+.br
+\fIvalue\fP The object to test for a reference\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the specified object is referenced; otherwise, \fCfalse\fP\&. 
+.RE
+.PP
+
+.SS "object Newtonsoft\&.Json\&.Serialization\&.IReferenceResolver\&.ResolveReference (objectcontext, stringreference)"
+
+.PP
+Resolves a reference to its object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontext\fP The serialization context\&.
+.br
+\fIreference\fP The reference to resolve\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The object that
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

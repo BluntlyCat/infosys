@@ -1,0 +1,118 @@
+.TH "NHibernate.NonUniqueObjectException" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.NonUniqueObjectException \- 
+.PP
+This exception is thrown when an operation would break session-scoped identity\&. This occurs if the user tries to associate two different instances of the same class with a particular identifier, in the scope of a single \fBISession\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.HibernateException\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNonUniqueObjectException\fP (String message, object id, string entityName)"
+.br
+.RI "\fIInitializes a new instance of the \fBNonUniqueObjectException\fP class\&. \fP"
+.ti -1c
+.RI "\fBNonUniqueObjectException\fP (object id, string entityName)"
+.br
+.RI "\fIInitializes a new instance of the \fBNonUniqueObjectException\fP class\&. \fP"
+.ti -1c
+.RI "override void \fBGetObjectData\fP (SerializationInfo info, StreamingContext context)"
+.br
+.RI "\fISets the serialization info for \fBInstantiationException\fP after getting the info from the base Exception\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNonUniqueObjectException\fP (SerializationInfo info, StreamingContext context)"
+.br
+.RI "\fIInitializes a new instance of the \fBNonUniqueObjectException\fP class\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "object \fBIdentifier\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBMessage\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBEntityName\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This exception is thrown when an operation would break session-scoped identity\&. This occurs if the user tries to associate two different instances of the same class with a particular identifier, in the scope of a single \fBISession\fP\&. 
+
+
+.PP
+Definition at line 16 of file NonUniqueObjectException\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.NonUniqueObjectException\&.NonUniqueObjectException (Stringmessage, objectid, stringentityName)"
+
+.PP
+Initializes a new instance of the \fBNonUniqueObjectException\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message that describes the error\&. 
+.br
+\fIid\fP The identifier of the object that caused the exception\&.
+.br
+\fIentityName\fP The EntityName of the object attempted to be loaded\&.
+.RE
+.PP
+
+.PP
+Definition at line 27 of file NonUniqueObjectException\&.cs\&.
+.SS "NHibernate\&.NonUniqueObjectException\&.NonUniqueObjectException (objectid, stringentityName)"
+
+.PP
+Initializes a new instance of the \fBNonUniqueObjectException\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The identifier of the object that caused the exception\&.
+.br
+\fIentityName\fP The EntityName of the object attempted to be loaded\&.
+.RE
+.PP
+
+.PP
+Definition at line 39 of file NonUniqueObjectException\&.cs\&.
+.SS "NHibernate\&.NonUniqueObjectException\&.NonUniqueObjectException (SerializationInfoinfo, StreamingContextcontext)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBNonUniqueObjectException\fP class\&. 
+.PP
+Definition at line 64 of file NonUniqueObjectException\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.NonUniqueObjectException\&.GetObjectData (SerializationInfoinfo, StreamingContextcontext)"
+
+.PP
+Sets the serialization info for \fBInstantiationException\fP after getting the info from the base Exception\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinfo\fP The SerializationInfo that holds the serialized object data about the exception being thrown\&. 
+.br
+\fIcontext\fP The StreamingContext that contains contextual information about the source or destination\&. 
+.RE
+.PP
+
+.PP
+Definition at line 87 of file NonUniqueObjectException\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

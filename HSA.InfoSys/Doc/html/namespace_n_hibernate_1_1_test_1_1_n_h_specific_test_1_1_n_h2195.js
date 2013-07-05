@@ -1,0 +1,5 @@
+var namespace_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2195 =
+[
+    [ "DomainClass", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2195_1_1_domain_class.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2195_1_1_domain_class" ],
+    [ "SQLiteMultiCriteriaTest", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2195_1_1_s_q_lite_multi_criteria_test.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2195_1_1_s_q_lite_multi_criteria_test" ]
+];

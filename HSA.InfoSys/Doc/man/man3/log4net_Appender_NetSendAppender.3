@@ -1,0 +1,247 @@
+.TH "log4net.Appender.NetSendAppender" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.NetSendAppender \- 
+.PP
+Logs entries by sending network messages using the \fBNetMessageBufferSend\fP native function\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNetSendAppender\fP ()"
+.br
+.RI "\fIInitializes the appender\&. \fP"
+.ti -1c
+.RI "override void \fBActivateOptions\fP ()"
+.br
+.RI "\fIInitialize the appender based on the options set\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBAppend\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIThis method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent)\fP method\&. \fP"
+.ti -1c
+.RI "static int \fBNetMessageBufferSend\fP ([MarshalAs(UnmanagedType\&.LPWStr)] string serverName,[MarshalAs(UnmanagedType\&.LPWStr)] string msgName,[MarshalAs(UnmanagedType\&.LPWStr)] string fromName,[MarshalAs(UnmanagedType\&.LPWStr)] string buffer, int bufferSize)"
+.br
+.RI "\fISends a buffer of information to a registered message alias\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBSender\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the sender of the message\&. \fP"
+.ti -1c
+.RI "string \fBRecipient\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the message alias to which the message should be sent\&. \fP"
+.ti -1c
+.RI "string \fBServer\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the DNS or NetBIOS name of the remote server on which the function is to execute\&. \fP"
+.ti -1c
+.RI "\fBSecurityContext\fP \fBSecurityContext\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the \fBSecurityContext\fP used to call the NetSend method\&. \fP"
+.ti -1c
+.RI "override bool \fBRequiresLayout\fP\fC [get]\fP"
+.br
+.RI "\fIThis appender requires a \fBLayout\fP to be set\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Logs entries by sending network messages using the \fBNetMessageBufferSend\fP native function\&. 
+
+You can send messages only to names that are active on the network\&. If you send the message to a user name, that user must be logged on and running the Messenger service to receive the message\&. 
+.PP
+The receiver will get a top most window displaying the messages one at a time, therefore this appender should not be used to deliver a high volume of messages\&. 
+.PP
+The following table lists some possible uses for this appender : 
+.PP
+Action Property Value(s)  Send a message to a user account on the local machine \fBNetSendAppender\&.Server\fP = <name of the local machine> 
+.PP
+\fBNetSendAppender\&.Recipient\fP = <user name> 
+.PP
+Send a message to a user account on a remote machine  
+.PP
+\fBNetSendAppender\&.Server\fP = <name of the remote machine> 
+.PP
+\fBNetSendAppender\&.Recipient\fP = <user name> 
+.PP
+Send a message to a domain user account  
+.PP
+\fBNetSendAppender\&.Server\fP = <name of a domain controller | uninitialized> 
+.PP
+\fBNetSendAppender\&.Recipient\fP = <user name> 
+.PP
+Send a message to all the names in a workgroup or domain  
+.PP
+\fBNetSendAppender\&.Recipient\fP = <workgroup name | domain name>* 
+.PP
+Send a message from the local machine to a remote machine  
+.PP
+\fBNetSendAppender\&.Server\fP = <name of the local machine | uninitialized> 
+.PP
+\fBNetSendAppender\&.Recipient\fP = <name of the remote machine> 
+.PP
+\fBNote :\fP security restrictions apply for sending network messages, see \fBNetMessageBufferSend\fP for more information\&. 
+.PP
+An example configuration section to log information using this appender from the local machine, named LOCAL_PC, to machine OPERATOR_PC : 
+.PP
+.PP
+.nf
+<appender name="NetSendAppender_Operator" type="log4net\&.Appender\&.NetSendAppender">
+    <server value="LOCAL_PC" />
+    <recipient value="OPERATOR_PC" />
+    <layout type="log4net\&.Layout\&.PatternLayout" value="%-5p %c [%x] - %m%n" />
+</appender>
+.fi
+.PP
+ 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 143 of file NetSendAppender\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.NetSendAppender\&.NetSendAppender ()"
+
+.PP
+Initializes the appender\&. The default constructor initializes all fields to their default values\&. 
+.PP
+Definition at line 177 of file NetSendAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Appender\&.NetSendAppender\&.ActivateOptions ()\fC [virtual]\fP"
+
+.PP
+Initialize the appender based on the options set\&. This is part of the IOptionHandler delayed object activation scheme\&. The \fBActivateOptions\fP method must be called on this object after the configuration properties have been set\&. Until \fBActivateOptions\fP is called this object is in an undefined state and must not be used\&. 
+.PP
+If any of the configuration properties are modified then \fBActivateOptions\fP must be called again\&. 
+.PP
+The appender will be ignored if no \fBRecipient\fP was specified\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP The required property \fBRecipient\fP was not specified\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 279 of file NetSendAppender\&.cs\&.
+.SS "override void log4net\&.Appender\&.NetSendAppender\&.Append (\fBLoggingEvent\fPloggingEvent)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+This method is called by the \fBAppenderSkeleton\&.DoAppend(LoggingEvent)\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP The event to log\&.
+.RE
+.PP
+.PP
+Sends the event using a network message\&. 
+.PP
+Implements \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 311 of file NetSendAppender\&.cs\&.
+.SS "static int log4net\&.Appender\&.NetSendAppender\&.NetMessageBufferSend ([MarshalAs(UnmanagedType\&.LPWStr)] stringserverName, [MarshalAs(UnmanagedType\&.LPWStr)] stringmsgName, [MarshalAs(UnmanagedType\&.LPWStr)] stringfromName, [MarshalAs(UnmanagedType\&.LPWStr)] stringbuffer, intbufferSize)\fC [protected]\fP"
+
+.PP
+Sends a buffer of information to a registered message alias\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIserverName\fP The DNS or NetBIOS name of the server on which the function is to execute\&.
+.br
+\fImsgName\fP The message alias to which the message buffer should be sent
+.br
+\fIfromName\fP The originator of the message\&.
+.br
+\fIbuffer\fP The message text\&.
+.br
+\fIbufferSize\fP The length, in bytes, of the message text\&.
+.RE
+.PP
+.PP
+The following restrictions apply for sending network messages: 
+.PP
+Platform Requirements  Windows NT No special group membership is required to send a network message\&. 
+.PP
+Admin, Accounts, Print, or Server Operator group membership is required to successfully send a network message on a remote server\&. 
+.PP
+Windows 2000 or later  
+.PP
+If you send a message on a domain controller that is running Active Directory, access is allowed or denied based on the access control list (ACL) for the securable object\&. The default ACL permits only Domain Admins and Account Operators to send a network message\&. 
+.PP
+On a member server or workstation, only Administrators and Server Operators can send a network message\&. 
+.PP
+For more information see \fCSecurity Requirements for the Network Management Functions\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+If the function succeeds, the return value is zero\&. 
+.RE
+.PP
+
+.SH "Property Documentation"
+.PP 
+.SS "string log4net\&.Appender\&.NetSendAppender\&.Recipient\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the message alias to which the message should be sent\&. The recipient of the message\&. 
+.PP
+This property should always be specified in order to send a message\&. 
+.PP
+Definition at line 210 of file NetSendAppender\&.cs\&.
+.SS "override bool log4net\&.Appender\&.NetSendAppender\&.RequiresLayout\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+This appender requires a \fBLayout\fP to be set\&. \fCtrue\fP
+.PP
+This appender requires a \fBLayout\fP to be set\&. 
+.PP
+Definition at line 348 of file NetSendAppender\&.cs\&.
+.SS "\fBSecurityContext\fP log4net\&.Appender\&.NetSendAppender\&.SecurityContext\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the \fBSecurityContext\fP used to call the NetSend method\&. The \fBSecurityContext\fP used to call the NetSend method\&. 
+.PP
+Unless a \fBSecurityContext\fP specified here for this appender the SecurityContextProvider\&.DefaultProvider is queried for the security context to use\&. The default behavior is to use the security context of the current thread\&. 
+.PP
+Definition at line 250 of file NetSendAppender\&.cs\&.
+.SS "string log4net\&.Appender\&.NetSendAppender\&.Sender\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the sender of the message\&. The sender of the message\&. 
+.PP
+If this property is not specified, the message is sent from the local computer\&. 
+.PP
+Definition at line 195 of file NetSendAppender\&.cs\&.
+.SS "string log4net\&.Appender\&.NetSendAppender\&.Server\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the DNS or NetBIOS name of the remote server on which the function is to execute\&. DNS or NetBIOS name of the remote server on which the function is to execute\&. 
+.PP
+For Windows NT 4\&.0 and earlier, the string should begin with  
+.PP
+If this property is not specified, the local computer is used\&. 
+.PP
+Definition at line 230 of file NetSendAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

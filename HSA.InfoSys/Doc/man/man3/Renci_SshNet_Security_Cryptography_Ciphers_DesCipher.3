@@ -1,0 +1,198 @@
+.TH "Renci.SshNet.Security.Cryptography.Ciphers.DesCipher" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Security.Cryptography.Ciphers.DesCipher \- 
+.PP
+Implements DES cipher algorithm\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.Security\&.Cryptography\&.BlockCipher\fP\&.
+.PP
+Inherited by \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.TripleDesCipher\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDesCipher\fP (byte[] key, \fBCipherMode\fP mode, \fBCipherPadding\fP padding)"
+.br
+.RI "\fIInitializes a new instance of the \fBDesCipher\fP class\&. \fP"
+.ti -1c
+.RI "override int \fBEncryptBlock\fP (byte[] inputBuffer, int inputOffset, int inputCount, byte[] outputBuffer, int outputOffset)"
+.br
+.RI "\fIEncrypts the specified region of the input byte array and copies the encrypted data to the specified region of the output byte array\&. \fP"
+.ti -1c
+.RI "override int \fBDecryptBlock\fP (byte[] inputBuffer, int inputOffset, int inputCount, byte[] outputBuffer, int outputOffset)"
+.br
+.RI "\fIDecrypts the specified region of the input byte array and copies the decrypted data to the specified region of the output byte array\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "int[] \fBGenerateWorkingKey\fP (bool encrypting, byte[] key)"
+.br
+.RI "\fIGenerates the working key\&. \fP"
+.ti -1c
+.RI "virtual void \fBValidateKey\fP ()"
+.br
+.RI "\fIValidates the key\&. \fP"
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBDesFunc\fP (int[] wKey, byte[] input, int inOff, byte[] outBytes, int outOff)"
+.br
+.RI "\fIPerforms DES function\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Implements DES cipher algorithm\&. 
+
+
+.PP
+Definition at line 11 of file DesCipher\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.DesCipher\&.DesCipher (byte[]key, \fBCipherMode\fPmode, \fBCipherPadding\fPpadding)"
+
+.PP
+Initializes a new instance of the \fBDesCipher\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key\&.
+.br
+\fImode\fP The mode\&.
+.br
+\fIpadding\fP The padding\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIkey\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 228 of file DesCipher\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override int Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.DesCipher\&.DecryptBlock (byte[]inputBuffer, intinputOffset, intinputCount, byte[]outputBuffer, intoutputOffset)\fC [virtual]\fP"
+
+.PP
+Decrypts the specified region of the input byte array and copies the decrypted data to the specified region of the output byte array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinputBuffer\fP The input data to decrypt\&.
+.br
+\fIinputOffset\fP The offset into the input byte array from which to begin using data\&.
+.br
+\fIinputCount\fP The number of bytes in the input byte array to use as data\&.
+.br
+\fIoutputBuffer\fP The output to which to write decrypted data\&.
+.br
+\fIoutputOffset\fP The offset into the output byte array from which to begin writing data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes decrypted\&. 
+.RE
+.PP
+
+.PP
+Implements \fBRenci\&.SshNet\&.Security\&.Cryptography\&.SymmetricCipher\fP\&.
+.PP
+Reimplemented in \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.TripleDesCipher\fP\&.
+.PP
+Definition at line 273 of file DesCipher\&.cs\&.
+.SS "static void Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.DesCipher\&.DesFunc (int[]wKey, byte[]input, intinOff, byte[]outBytes, intoutOff)\fC [static]\fP, \fC [protected]\fP"
+
+.PP
+Performs DES function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwKey\fP The w key\&.
+.br
+\fIinput\fP The input\&.
+.br
+\fIinOff\fP The in off\&.
+.br
+\fIoutBytes\fP The out bytes\&.
+.br
+\fIoutOff\fP The out off\&.
+.RE
+.PP
+
+.PP
+Definition at line 411 of file DesCipher\&.cs\&.
+.SS "override int Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.DesCipher\&.EncryptBlock (byte[]inputBuffer, intinputOffset, intinputCount, byte[]outputBuffer, intoutputOffset)\fC [virtual]\fP"
+
+.PP
+Encrypts the specified region of the input byte array and copies the encrypted data to the specified region of the output byte array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinputBuffer\fP The input data to encrypt\&.
+.br
+\fIinputOffset\fP The offset into the input byte array from which to begin using data\&.
+.br
+\fIinputCount\fP The number of bytes in the input byte array to use as data\&.
+.br
+\fIoutputBuffer\fP The output to which to write encrypted data\&.
+.br
+\fIoutputOffset\fP The offset into the output byte array from which to begin writing data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes encrypted\&. 
+.RE
+.PP
+
+.PP
+Implements \fBRenci\&.SshNet\&.Security\&.Cryptography\&.SymmetricCipher\fP\&.
+.PP
+Reimplemented in \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.TripleDesCipher\fP\&.
+.PP
+Definition at line 244 of file DesCipher\&.cs\&.
+.SS "int [] Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.DesCipher\&.GenerateWorkingKey (boolencrypting, byte[]key)\fC [protected]\fP"
+
+.PP
+Generates the working key\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIencrypting\fP if set to \fCtrue\fP [encrypting]\&.
+.br
+\fIkey\fP The key\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Generated working key\&.
+.RE
+.PP
+
+.PP
+Definition at line 297 of file DesCipher\&.cs\&.
+.SS "virtual void Renci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.DesCipher\&.ValidateKey ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Validates the key\&. 
+.PP
+Reimplemented in \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.TripleDesCipher\fP\&.
+.PP
+Definition at line 395 of file DesCipher\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

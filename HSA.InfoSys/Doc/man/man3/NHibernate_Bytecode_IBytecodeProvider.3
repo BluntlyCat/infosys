@@ -1,0 +1,85 @@
+.TH "NHibernate.Bytecode.IBytecodeProvider" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Bytecode.IBytecodeProvider \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Bytecode\&.AbstractBytecodeProvider\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIReflectionOptimizer\fP \fBGetReflectionOptimizer\fP (System\&.Type clazz, \fBIGetter\fP[] getters, \fBISetter\fP[] setters)"
+.br
+.RI "\fIRetrieve the \fBIReflectionOptimizer\fP delegate for this provider capable of generating reflection optimization components\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIProxyFactoryFactory\fP \fBProxyFactoryFactory\fP\fC [get]\fP"
+.br
+.RI "\fIThe specific factory for this provider capable of generating run-time proxies for lazy-loading purposes\&. \fP"
+.ti -1c
+.RI "\fBIObjectsFactory\fP \fBObjectsFactory\fP\fC [get]\fP"
+.br
+.RI "\fI\fBNHibernate\fP's object instaciator\&. \fP"
+.ti -1c
+.RI "\fBICollectionTypeFactory\fP \fBCollectionTypeFactory\fP\fC [get]\fP"
+.br
+.RI "\fIInstanciator of \fBNHibernate\fP's collections default types\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 5 of file IBytecodeProvider\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIReflectionOptimizer\fP NHibernate\&.Bytecode\&.IBytecodeProvider\&.GetReflectionOptimizer (System\&.Typeclazz, \fBIGetter\fP[]getters, \fBISetter\fP[]setters)"
+
+.PP
+Retrieve the \fBIReflectionOptimizer\fP delegate for this provider capable of generating reflection optimization components\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclazz\fP The class to be reflected upon\&.
+.br
+\fIgetters\fP All property getters to be accessed via reflection\&.
+.br
+\fIsetters\fP All property setters to be accessed via reflection\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The reflection optimization delegate\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Bytecode\&.AbstractBytecodeProvider\fP, \fBNHibernate\&.Bytecode\&.Lightweight\&.BytecodeProviderImpl\fP, \fBNHibernate\&.Bytecode\&.CodeDom\&.BytecodeProviderImpl\fP, and \fBNHibernate\&.Bytecode\&.NullBytecodeProvider\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBICollectionTypeFactory\fP NHibernate\&.Bytecode\&.IBytecodeProvider\&.CollectionTypeFactory\fC [get]\fP"
+
+.PP
+Instanciator of \fBNHibernate\fP's collections default types\&. 
+.PP
+Definition at line 34 of file IBytecodeProvider\&.cs\&.
+.SS "\fBIObjectsFactory\fP NHibernate\&.Bytecode\&.IBytecodeProvider\&.ObjectsFactory\fC [get]\fP"
+
+.PP
+\fBNHibernate\fP's object instaciator\&. For entities \fBIReflectionOptimizer\fP and its implementations\&. 
+.PP
+Definition at line 29 of file IBytecodeProvider\&.cs\&.
+.SS "\fBIProxyFactoryFactory\fP NHibernate\&.Bytecode\&.IBytecodeProvider\&.ProxyFactoryFactory\fC [get]\fP"
+
+.PP
+The specific factory for this provider capable of generating run-time proxies for lazy-loading purposes\&. 
+.PP
+Definition at line 11 of file IBytecodeProvider\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,62 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Tree.IRestrictableStatement" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Tree.IRestrictableStatement \- 
+.PP
+\fBType\fP definition for Statements which are restrictable via a where-clause (and thus also having a from-clause)\&. Author: Steve Ebersole Ported by: Steve Strong  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IStatement\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.AbstractRestrictableStatement\fP\&.
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBFromClause\fP \fBFromClause\fP\fC [get]\fP"
+.br
+.RI "\fIRetreives the from-clause in effect for this statement; could be null if the from-clause has not yet been parsed/generated\&. \fP"
+.ti -1c
+.RI "bool \fBHasWhereClause\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this statement tree currently contain a where clause? Returns True if a where-clause is found in the statement tree and that where clause actually defines restrictions; false otherwise\&. \fP"
+.ti -1c
+.RI "\fBIASTNode\fP \fBWhereClause\fP\fC [get]\fP"
+.br
+.RI "\fIRetreives the where-clause defining the restriction(s) in effect for this statement\&. Note that this will generate a where-clause if one was not found, so caution needs to taken prior to calling this that restrictions will actually exist in the resulting statement tree (otherwise 'unexpected end of subtree' errors might occur during rendering)\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBType\fP definition for Statements which are restrictable via a where-clause (and thus also having a from-clause)\&. Author: Steve Ebersole Ported by: Steve Strong 
+
+
+.PP
+Definition at line 12 of file IRestrictableStatement\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBFromClause\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IRestrictableStatement\&.FromClause\fC [get]\fP"
+
+.PP
+Retreives the from-clause in effect for this statement; could be null if the from-clause has not yet been parsed/generated\&. 
+.PP
+Definition at line 18 of file IRestrictableStatement\&.cs\&.
+.SS "bool NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IRestrictableStatement\&.HasWhereClause\fC [get]\fP"
+
+.PP
+Does this statement tree currently contain a where clause? Returns True if a where-clause is found in the statement tree and that where clause actually defines restrictions; false otherwise\&. 
+.PP
+Definition at line 25 of file IRestrictableStatement\&.cs\&.
+.SS "\fBIASTNode\fP NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IRestrictableStatement\&.WhereClause\fC [get]\fP"
+
+.PP
+Retreives the where-clause defining the restriction(s) in effect for this statement\&. Note that this will generate a where-clause if one was not found, so caution needs to taken prior to calling this that restrictions will actually exist in the resulting statement tree (otherwise 'unexpected end of subtree' errors might occur during rendering)\&. 
+.PP
+Definition at line 35 of file IRestrictableStatement\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

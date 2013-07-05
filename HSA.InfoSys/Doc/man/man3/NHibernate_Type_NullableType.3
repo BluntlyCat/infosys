@@ -1,0 +1,512 @@
+.TH "NHibernate.Type.NullableType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.NullableType \- 
+.PP
+Superclass of single-column nullable types\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Type\&.ImmutableType\fP, and \fBNHibernate\&.Type\&.MutableType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract void \fBSet\fP (IDbCommand cmd, object value, int index)"
+.br
+.RI "\fIWhen implemented by a class, put the value from the mapped Property into to the IDbCommand\&. \fP"
+.ti -1c
+.RI "abstract object \fBGet\fP (IDataReader rs, int index)"
+.br
+.RI "\fIWhen implemented by a class, gets the object in the IDataReader for the Property\&. \fP"
+.ti -1c
+.RI "abstract object \fBGet\fP (IDataReader rs, string name)"
+.br
+.RI "\fIWhen implemented by a class, gets the object in the IDataReader for the Property\&. \fP"
+.ti -1c
+.RI "abstract string \fBToString\fP (object val)"
+.br
+.RI "\fIA representation of the value to be embedded in an XML element \fP"
+.in -1c
+.PP
+.RI "\fB='M:IType\&.ToString']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+This implementation forwards the call to \fBToString(object)\fP if the parameter value is not null\&. 
+.PP
+It has been 'sealed' because the Types inheriting from \fBNullableType\fP do not need and should not override this method\&. All of their implementation should be in \fBToString(object)\fP\&. 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "override sealed string \fBToLoggableString\fP (object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.ti -1c
+.RI "abstract object \fBFromStringValue\fP (string xml)"
+.br
+.RI "\fIParse the XML representation of an instance \fP"
+.ti -1c
+.RI "override void \fBNullSafeSet\fP (IDbCommand st, object value, int index, bool[] settable, \fBISessionImplementor\fP session)"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.NullSafeSet']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+This implementation forwards the call to \fBNullSafeSet(IDbCommand, object, int)\fP\&. 
+.PP
+It has been 'sealed' because the Types inheriting from \fBNullableType\fP do not need to and should not override this method\&. All of their implementation should be in \fBNullSafeSet(IDbCommand, object, int)\fP\&. 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "override sealed void \fBNullSafeSet\fP (IDbCommand st, object value, int index, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "void \fBNullSafeSet\fP (IDbCommand cmd, object value, int index)"
+.br
+.RI "\fIPuts the value from the mapped class into the IDbCommand\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.NullSafeGet(IDataReader, String[], ISessionImplementor, Object)']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+This has been sealed because no other class should override it\&. This method calls NullSafeGet(IDataReader, String) for a single value\&. It only takes the first name from the string[] names parameter - that is a safe thing to do because a Nullable \fBType\fP only has one field\&. 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "override sealed object \fBNullSafeGet\fP (IDataReader rs, string[] names, \fBISessionImplementor\fP session, object owner)"
+.br
+.ti -1c
+.RI "virtual object \fBNullSafeGet\fP (IDataReader rs, string[] names)"
+.br
+.RI "\fIExtracts the values of the fields from the DataReader \fP"
+.ti -1c
+.RI "virtual object \fBNullSafeGet\fP (IDataReader rs, string name)"
+.br
+.RI "\fIGets the value of the field from the IDataReader\&. \fP"
+.in -1c
+.in -1c
+.PP
+.RI "\fB='M:IType\&.SqlTypes']/*'\fP"
+.br
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+This implementation forwards the call to \fBNullableType\&.SqlType\fP\&. 
+.PP
+It has been 'sealed' because the Types inheriting from \fBNullableType\fP do not need to and should not override this method because they map to a single column\&. All of their implementation should be in \fBNullableType\&.SqlType\fP\&. 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "override sealed \fBSqlType\fP[] \fBSqlTypes\fP (\fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "override sealed int \fBGetColumnSpan\fP (\fBIMapping\fP session)"
+.br
+.RI "\fIReturns the number of columns spanned by this \fBNullableType\fP \fP"
+.ti -1c
+.RI "override bool \fBIsDirty\fP (object old, object current, bool[] checkable, \fBISessionImplementor\fP session)"
+.br
+.ti -1c
+.RI "override bool[] \fBToColumnNullness\fP (object value, \fBIMapping\fP mapping)"
+.br
+.RI "\fIGiven an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. \fP"
+.ti -1c
+.RI "override object \fBFromXMLNode\fP (XmlNode xml, \fBIMapping\fP factory)"
+.br
+.RI "\fIParse the XML representation of an instance\&.\fP"
+.ti -1c
+.RI "override void \fBSetToXMLNode\fP (XmlNode xml, object value, \fBISessionFactoryImplementor\fP factory)"
+.br
+.RI "\fIA representation of the value to be embedded in an XML element\&. \fP"
+.ti -1c
+.RI "string \fBToXMLString\fP (object value, \fBISessionFactoryImplementor\fP pc)"
+.br
+.ti -1c
+.RI "object \fBFromXMLString\fP (string xml, \fBIMapping\fP factory)"
+.br
+.ti -1c
+.RI "override bool \fBIsEqual\fP (object x, object y, \fBEntityMode\fP entityMode)"
+.br
+.RI "\fICompare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. \fP"
+.ti -1c
+.RI "virtual bool \fBIsEqual\fP (object x, object y)"
+.br
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.RI "\fIDetermines whether the specified Object is equal to this \fBNullableType\fP\&. \fP"
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.RI "\fIServes as a hash function for the \fBNullableType\fP, suitable for use in hashing algorithms and data structures like a hash table\&. \fP"
+.in -1c
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNullableType\fP (\fBSqlType\fP sqlType)"
+.br
+.RI "\fIInitialize a new instance of the \fBNullableType\fP class using a \fBSqlType\fP\&. \fP"
+.in -1c
+.SS "='M:IType\&.NullSafeGet(IDataReader, String, ISessionImplementor, Object)']/*'"
+<include file='IType\&.cs\&.xmldoc' path='//members[='IType']/member[ /> 
+.PP
+This implementation forwards the call to NullSafeGet(IDataReader, String)\&. 
+.PP
+It has been 'sealed' because the Types inheriting from \fBNullableType\fP do not need to and should not override this method\&. All of their implementation should be in NullSafeGet(IDataReader, String)\&. 
+.in +1c
+.ti -1c
+.RI "virtual \fBSqlType\fP \fBSqlType\fP\fC [get]\fP"
+.br
+.RI "\fIGets the underlying \fBSqlType\fP for the column mapped by this \fBNullableType\fP\&. \fP"
+.ti -1c
+.RI "override sealed object \fBNullSafeGet\fP (IDataReader rs, string name, \fBISessionImplementor\fP session, object owner)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Superclass of single-column nullable types\&. 
+
+Maps the Property to a single column that is capable of storing nulls in it\&. If a \&.net Struct is used it will be created with its unitialized value and then on Update the uninitialized value of the Struct will be written to the column - not \&. 
+.PP
+Definition at line 20 of file NullableType\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Type\&.NullableType\&.NullableType (\fBSqlType\fPsqlType)\fC [protected]\fP"
+
+.PP
+Initialize a new instance of the \fBNullableType\fP class using a \fBSqlType\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlType\fP The underlying \fBSqlType\fP\&.
+.RE
+.PP
+.PP
+This is used when the Property is mapped to a single column\&.
+.PP
+Definition at line 43 of file NullableType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override bool NHibernate\&.Type\&.NullableType\&.Equals (objectobj)"
+
+.PP
+Determines whether the specified Object is equal to this \fBNullableType\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobj\fP The Object to compare with this \fBNullableType\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the SqlType and Name properties are the same\&.
+.RE
+.PP
+
+.PP
+Definition at line 384 of file NullableType\&.cs\&.
+.SS "abstract object NHibernate\&.Type\&.NullableType\&.FromStringValue (stringxml)\fC [pure virtual]\fP"
+
+.PP
+Parse the XML representation of an instance 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP XML string to parse, guaranteed to be non-empty
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.PersistentEnumType\fP, \fBNHibernate\&.Type\&.EnumCharType< T >\fP, \fBNHibernate\&.Type\&.TypeType\fP, \fBNHibernate\&.Type\&.TimeType\fP, \fBNHibernate\&.Type\&.DateType\fP, \fBNHibernate\&.Type\&.SerializableType\fP, \fBNHibernate\&.Type\&.BooleanType\fP, \fBNHibernate\&.Type\&.CultureInfoType\fP, \fBNHibernate\&.Type\&.SingleType\fP, \fBNHibernate\&.Type\&.GuidType\fP, \fBNHibernate\&.Type\&.SByteType\fP, \fBNHibernate\&.Type\&.DoubleType\fP, \fBNHibernate\&.Type\&.AbstractCharType\fP, \fBNHibernate\&.Type\&.DecimalType\fP, \fBNHibernate\&.Type\&.UriType\fP, \fBNHibernate\&.Type\&.XDocType\fP, \fBNHibernate\&.Type\&.XmlDocType\fP, \fBNHibernate\&.Type\&.AbstractEnumType\fP, \fBNHibernate\&.DomainModel\&.NHSpecific\&.NullableInt32Type\fP, and \fBNHibernate\&.Type\&.AbstractStringType\fP\&.
+.SS "override object NHibernate\&.Type\&.NullableType\&.FromXMLNode (XmlNodexml, \fBIMapping\fPfactory)\fC [virtual]\fP"
+
+.PP
+Parse the XML representation of an instance\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+an instance of the type 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 346 of file NullableType\&.cs\&.
+.SS "abstract object NHibernate\&.Type\&.NullableType\&.Get (IDataReaderrs, intindex)\fC [pure virtual]\fP"
+
+.PP
+When implemented by a class, gets the object in the IDataReader for the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the value\&.
+.br
+\fIindex\fP The index of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object with the value from the database\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.PersistentEnumType\fP, \fBNHibernate\&.Type\&.EnumStringType\fP, \fBNHibernate\&.Type\&.EnumCharType< T >\fP, \fBNHibernate\&.Type\&.AbstractBinaryType\fP, \fBNHibernate\&.DomainModel\&.Northwind\&.Entities\&.EnumStoredAsStringType\fP, \fBNHibernate\&.Type\&.SerializableType\fP, \fBNHibernate\&.Type\&.DateTimeOffsetType\fP, \fBNHibernate\&.Type\&.AbstractDateTimeSpecificKindType\fP, \fBNHibernate\&.Type\&.TypeType\fP, \fBNHibernate\&.Type\&.DateTimeType\fP, \fBNHibernate\&.Type\&.UriType\fP, \fBNHibernate\&.Type\&.TimeType\fP, \fBNHibernate\&.Type\&.TimestampType\fP, \fBNHibernate\&.Type\&.XDocType\fP, \fBNHibernate\&.Type\&.XmlDocType\fP, \fBNHibernate\&.Type\&.BooleanType\fP, \fBNHibernate\&.Type\&.CharBooleanType\fP, \fBNHibernate\&.Type\&.SingleType\fP, \fBNHibernate\&.Type\&.DateType\fP, \fBNHibernate\&.Type\&.TicksType\fP, \fBNHibernate\&.Type\&.CultureInfoType\fP, \fBNHibernate\&.Type\&.TimeAsTimeSpanType\fP, \fBNHibernate\&.Type\&.Int16Type\fP, \fBNHibernate\&.Type\&.Int32Type\fP, \fBNHibernate\&.Type\&.Int64Type\fP, \fBNHibernate\&.Type\&.SByteType\fP, \fBNHibernate\&.Type\&.UInt16Type\fP, \fBNHibernate\&.Type\&.UInt32Type\fP, \fBNHibernate\&.DomainModel\&.NHSpecific\&.NullableInt32Type\fP, \fBNHibernate\&.Type\&.TimeSpanType\fP, \fBNHibernate\&.Type\&.UInt64Type\fP, \fBNHibernate\&.Type\&.DoubleType\fP, \fBNHibernate\&.Type\&.AbstractStringType\fP, \fBNHibernate\&.Type\&.GuidType\fP, \fBNHibernate\&.Type\&.ByteType\fP, \fBNHibernate\&.Type\&.DateTime2Type\fP, \fBNHibernate\&.Type\&.DecimalType\fP, and \fBNHibernate\&.Type\&.AbstractCharType\fP\&.
+.SS "abstract object NHibernate\&.Type\&.NullableType\&.Get (IDataReaderrs, stringname)\fC [pure virtual]\fP"
+
+.PP
+When implemented by a class, gets the object in the IDataReader for the Property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader that contains the value\&.
+.br
+\fIname\fP The name of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An object with the value from the database\&.
+.RE
+.PP
+.PP
+Most implementors just call the \fBGet(IDataReader, int)\fP overload of this method\&. 
+.PP
+Implemented in \fBNHibernate\&.Type\&.PersistentEnumType\fP, \fBNHibernate\&.Type\&.EnumStringType\fP, \fBNHibernate\&.Type\&.EnumCharType< T >\fP, \fBNHibernate\&.Type\&.AbstractBinaryType\fP, \fBNHibernate\&.Type\&.TypeType\fP, \fBNHibernate\&.Type\&.DateTimeOffsetType\fP, \fBNHibernate\&.Type\&.TimeType\fP, \fBNHibernate\&.Type\&.CharBooleanType\fP, \fBNHibernate\&.Type\&.SerializableType\fP, \fBNHibernate\&.Type\&.DateTimeType\fP, \fBNHibernate\&.Type\&.CultureInfoType\fP, \fBNHibernate\&.Type\&.GuidType\fP, \fBNHibernate\&.Type\&.TimeAsTimeSpanType\fP, \fBNHibernate\&.Type\&.DateType\fP, \fBNHibernate\&.Type\&.SingleType\fP, \fBNHibernate\&.Type\&.UriType\fP, \fBNHibernate\&.Type\&.XDocType\fP, \fBNHibernate\&.Type\&.XmlDocType\fP, \fBNHibernate\&.Type\&.TicksType\fP, \fBNHibernate\&.Type\&.TimestampType\fP, \fBNHibernate\&.Type\&.Int16Type\fP, \fBNHibernate\&.Type\&.Int32Type\fP, \fBNHibernate\&.Type\&.Int64Type\fP, \fBNHibernate\&.Type\&.SByteType\fP, \fBNHibernate\&.Type\&.UInt16Type\fP, \fBNHibernate\&.Type\&.UInt32Type\fP, \fBNHibernate\&.Type\&.BooleanType\fP, \fBNHibernate\&.Type\&.TimeSpanType\fP, \fBNHibernate\&.Type\&.UInt64Type\fP, \fBNHibernate\&.Type\&.DoubleType\fP, \fBNHibernate\&.DomainModel\&.NHSpecific\&.NullableTypesType\fP, \fBNHibernate\&.Type\&.AbstractCharType\fP, \fBNHibernate\&.Type\&.AbstractStringType\fP, \fBNHibernate\&.Type\&.ByteType\fP, and \fBNHibernate\&.Type\&.DecimalType\fP\&.
+.SS "override sealed int NHibernate\&.Type\&.NullableType\&.GetColumnSpan (\fBIMapping\fPsession)\fC [virtual]\fP"
+
+.PP
+Returns the number of columns spanned by this \fBNullableType\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBNullableType\fP always returns 1\&.
+.RE
+.PP
+.PP
+This has the hard coding of 1 in there because, by definition of this class, a \fBNullableType\fP can only map to one column in a table\&. 
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 331 of file NullableType\&.cs\&.
+.SS "override int NHibernate\&.Type\&.NullableType\&.GetHashCode ()"
+
+.PP
+Serves as a hash function for the \fBNullableType\fP, suitable for use in hashing algorithms and data structures like a hash table\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A hash code that is based on the \fBNullableType\&.SqlType\fP's hash code and the AbstractType\&.Name's hash code\&.
+.RE
+.PP
+
+.PP
+Definition at line 416 of file NullableType\&.cs\&.
+.SS "override bool NHibernate\&.Type\&.NullableType\&.IsEqual (objectx, objecty, \fBEntityMode\fPentityMode)\fC [virtual]\fP"
+
+.PP
+Compare two instances of the class mapped by this type for persistence 'equality' - equality of persistent state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.br
+\fIentityMode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+boolean 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 366 of file NullableType\&.cs\&.
+.SS "virtual object NHibernate\&.Type\&.NullableType\&.NullSafeGet (IDataReaderrs, string[]names)\fC [virtual]\fP"
+
+.PP
+Extracts the values of the fields from the DataReader 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The DataReader positioned on the correct record
+.br
+\fInames\fP An array of field names\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value off the field from the DataReader
+.RE
+.PP
+.PP
+In this class this just ends up passing the first name to the NullSafeGet method that takes a string, not a string[]\&.
+.PP
+I don't know why this method is in here - it doesn't look like anybody that inherits from \fBNullableType\fP overrides this\&.\&.\&.
+.PP
+TODO: determine if this is needed 
+.PP
+Definition at line 213 of file NullableType\&.cs\&.
+.SS "virtual object NHibernate\&.Type\&.NullableType\&.NullSafeGet (IDataReaderrs, stringname)\fC [virtual]\fP"
+
+.PP
+Gets the value of the field from the IDataReader\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrs\fP The IDataReader positioned on the correct record\&.
+.br
+\fIname\fP The name of the field to get the value from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value of the field\&.
+.RE
+.PP
+.PP
+This method checks to see if value is null, if it is then the null is returned from this method\&. 
+.PP
+If the value is not null, then the method Get(IDataReader, Int32) is called and that method is responsible for retrieving the value\&. 
+.PP
+Reimplemented in \fBNHibernate\&.DomainModel\&.NHSpecific\&.NullableTypesType\fP\&.
+.PP
+Definition at line 234 of file NullableType\&.cs\&.
+.SS "void NHibernate\&.Type\&.NullableType\&.NullSafeSet (IDbCommandcmd, objectvalue, intindex)"
+
+.PP
+Puts the value from the mapped class into the IDbCommand\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP The IDbCommand to put the values into\&.
+.br
+\fIvalue\fP The object that contains the values\&.
+.br
+\fIindex\fP The index of the IDbDataParameter to write the value to\&.
+.RE
+.PP
+.PP
+This method checks to see if value is null, if it is then the value of DBNull is written to the IDbCommand\&. 
+.PP
+If the value is not null, then the method \fBSet(IDbCommand, object, int)\fP is called and that method is responsible for setting the value\&. 
+.PP
+Definition at line 158 of file NullableType\&.cs\&.
+.SS "abstract void NHibernate\&.Type\&.NullableType\&.Set (IDbCommandcmd, objectvalue, intindex)\fC [pure virtual]\fP"
+
+.PP
+When implemented by a class, put the value from the mapped Property into to the IDbCommand\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP The IDbCommand to put the value into\&.
+.br
+\fIvalue\fP The object that contains the value\&.
+.br
+\fIindex\fP The index of the IDbDataParameter to start writing the values to\&.
+.RE
+.PP
+.PP
+Implementors do not need to handle possibility of null values because this will only be called from \fBNullSafeSet(IDbCommand, object, int)\fP after it has checked for nulls\&. 
+.PP
+Implemented in \fBNHibernate\&.Type\&.PersistentEnumType\fP, \fBNHibernate\&.Type\&.EnumStringType\fP, \fBNHibernate\&.Type\&.EnumCharType< T >\fP, \fBNHibernate\&.Type\&.TypeType\fP, \fBNHibernate\&.Type\&.AbstractBinaryType\fP, \fBNHibernate\&.DomainModel\&.Northwind\&.Entities\&.EnumStoredAsStringType\fP, \fBNHibernate\&.Type\&.TimeType\fP, \fBNHibernate\&.Type\&.TimeSpanType\fP, \fBNHibernate\&.Type\&.DateTimeType\fP, \fBNHibernate\&.Type\&.TimeAsTimeSpanType\fP, \fBNHibernate\&.Type\&.SingleType\fP, \fBNHibernate\&.Type\&.TimestampType\fP, \fBNHibernate\&.Type\&.CultureInfoType\fP, \fBNHibernate\&.Type\&.TicksType\fP, \fBNHibernate\&.Type\&.Int16Type\fP, \fBNHibernate\&.Type\&.Int32Type\fP, \fBNHibernate\&.Type\&.Int64Type\fP, \fBNHibernate\&.Type\&.SByteType\fP, \fBNHibernate\&.Type\&.UInt16Type\fP, \fBNHibernate\&.Type\&.UInt32Type\fP, \fBNHibernate\&.Type\&.GuidType\fP, \fBNHibernate\&.Type\&.UInt64Type\fP, \fBNHibernate\&.Type\&.BooleanType\fP, \fBNHibernate\&.Type\&.DoubleType\fP, \fBNHibernate\&.Type\&.DateType\fP, \fBNHibernate\&.Type\&.SerializableType\fP, \fBNHibernate\&.Type\&.AbstractCharType\fP, \fBNHibernate\&.Type\&.DateTimeOffsetType\fP, \fBNHibernate\&.Type\&.AbstractDateTimeSpecificKindType\fP, \fBNHibernate\&.Type\&.ByteType\fP, \fBNHibernate\&.Type\&.DecimalType\fP, \fBNHibernate\&.Type\&.DateTime2Type\fP, \fBNHibernate\&.Type\&.UriType\fP, \fBNHibernate\&.DomainModel\&.NHSpecific\&.NullableInt32Type\fP, \fBNHibernate\&.Type\&.XDocType\fP, \fBNHibernate\&.Type\&.XmlDocType\fP, and \fBNHibernate\&.Type\&.AbstractStringType\fP\&.
+.SS "override void NHibernate\&.Type\&.NullableType\&.SetToXMLNode (XmlNodenode, objectvalue, \fBISessionFactoryImplementor\fPfactory)\fC [virtual]\fP"
+
+.PP
+A representation of the value to be embedded in an XML element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInode\fP 
+.br
+\fIvalue\fP 
+.br
+\fIfactory\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 351 of file NullableType\&.cs\&.
+.SS "override bool [] NHibernate\&.Type\&.NullableType\&.ToColumnNullness (objectvalue, \fBIMapping\fPmapping)\fC [virtual]\fP"
+
+.PP
+Given an instance of the type, return an array of boolean, indicating which mapped columns would be null\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP an instance of the type 
+.br
+\fImapping\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Type\&.AbstractType\fP\&.
+.PP
+Definition at line 341 of file NullableType\&.cs\&.
+.SS "abstract string NHibernate\&.Type\&.NullableType\&.ToString (objectval)\fC [pure virtual]\fP"
+
+.PP
+A representation of the value to be embedded in an XML element 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP The object that contains the values\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An Xml formatted string\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Type\&.PersistentEnumType\fP, \fBNHibernate\&.Type\&.EnumStringType\fP, \fBNHibernate\&.Type\&.AbstractBinaryType\fP, \fBNHibernate\&.Type\&.EnumCharType< T >\fP, \fBNHibernate\&.Type\&.DateTimeType\fP, \fBNHibernate\&.Type\&.DateTimeOffsetType\fP, \fBNHibernate\&.Type\&.TimeType\fP, \fBNHibernate\&.Type\&.DateType\fP, \fBNHibernate\&.Type\&.TypeType\fP, \fBNHibernate\&.Type\&.SerializableType\fP, \fBNHibernate\&.Type\&.TimeAsTimeSpanType\fP, \fBNHibernate\&.Type\&.TimestampType\fP, \fBNHibernate\&.Type\&.CultureInfoType\fP, \fBNHibernate\&.Type\&.TicksType\fP, \fBNHibernate\&.Type\&.TimeSpanType\fP, \fBNHibernate\&.Type\&.UriType\fP, \fBNHibernate\&.Type\&.XDocType\fP, \fBNHibernate\&.Type\&.XmlDocType\fP, \fBNHibernate\&.Type\&.PrimitiveType\fP, \fBNHibernate\&.DomainModel\&.NHSpecific\&.NullableTypesType\fP, and \fBNHibernate\&.Type\&.AbstractStringType\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual \fBSqlType\fP NHibernate\&.Type\&.NullableType\&.SqlType\fC [get]\fP"
+
+.PP
+Gets the underlying \fBSqlType\fP for the column mapped by this \fBNullableType\fP\&. The underlying \fBSqlType\fP\&.
+.PP
+This implementation should be suitable for all subclasses unless they need to do some special things to get the value\&. There are no built in \fBNullableType\fPs that override this Property\&. 
+.PP
+Definition at line 301 of file NullableType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

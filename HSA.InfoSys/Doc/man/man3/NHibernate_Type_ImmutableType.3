@@ -1,0 +1,78 @@
+.TH "NHibernate.Type.ImmutableType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Type.ImmutableType \- 
+.PP
+Superclass of nullable immutable types\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Type\&.NullableType\fP\&.
+.PP
+Inherited by \fBNHibernate\&.DomainModel\&.NHSpecific\&.NullableTypesType\fP, \fBNHibernate\&.Type\&.AbstractStringType\fP, \fBNHibernate\&.Type\&.CultureInfoType\fP, \fBNHibernate\&.Type\&.PrimitiveType\fP, \fBNHibernate\&.Type\&.TypeType\fP, and \fBNHibernate\&.Type\&.UriType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override object \fBReplace\fP (object original, object current, \fBISessionImplementor\fP session, object owner, IDictionary copiedAlready)"
+.br
+.ti -1c
+.RI "override object \fBDeepCopy\fP (object value, \fBEntityMode\fP entityMode, \fBISessionFactoryImplementor\fP factory)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBImmutableType\fP (\fBSqlType\fP sqlType)"
+.br
+.RI "\fIInitialize a new instance of the \fBImmutableType\fP class using a \fBSqlType\fP\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override sealed bool \fBIsMutable\fP\fC [get]\fP"
+.br
+.RI "\fIGets the value indicating if this \fBIType\fP is mutable\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Superclass of nullable immutable types\&. 
+
+
+.PP
+Definition at line 12 of file ImmutableType\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Type\&.ImmutableType\&.ImmutableType (\fBSqlType\fPsqlType)\fC [protected]\fP"
+
+.PP
+Initialize a new instance of the \fBImmutableType\fP class using a \fBSqlType\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsqlType\fP The underlying \fBSqlType\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 19 of file ImmutableType\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override sealed bool NHibernate\&.Type\&.ImmutableType\&.IsMutable\fC [get]\fP"
+
+.PP
+Gets the value indicating if this \fBIType\fP is mutable\&. false - an \fBImmutableType\fP is not mutable\&.
+.PP
+This has been 'sealed' because any subclasses are expected to be immutable\&. If the type is mutable then they should inherit from \fBMutableType\fP\&. 
+.PP
+Definition at line 32 of file ImmutableType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,187 @@
+.TH "NHibernate.Dialect.TypeNames" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.TypeNames \- 
+.PP
+This class maps a DbType to names\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBGet\fP (DbType typecode)"
+.br
+.RI "\fIGet default type name for specified type \fP"
+.ti -1c
+.RI "string \fBGet\fP (DbType typecode, int size, int precision, int scale)"
+.br
+.RI "\fIGet the type name specified type and size \fP"
+.ti -1c
+.RI "string \fBGetLongest\fP (DbType typecode)"
+.br
+.RI "\fIFor types with a simple length, this method returns the definition for the longest registered type\&. \fP"
+.ti -1c
+.RI "void \fBPut\fP (DbType typecode, int capacity, string value)"
+.br
+.RI "\fISet a type name for specified type key and capacity \fP"
+.ti -1c
+.RI "void \fBPut\fP (DbType typecode, string value)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBLengthPlaceHolder\fP = '$l'"
+.br
+.ti -1c
+.RI "const string \fBPrecisionPlaceHolder\fP = '$p'"
+.br
+.ti -1c
+.RI "const string \fBScalePlaceHolder\fP = '$s'"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class maps a DbType to names\&. 
+
+Associations may be marked with a capacity\&. Calling the \fC\fBGet()\fP\fP method with a type and actual size n will return the associated name with smallest capacity >= n, if available and an unmarked default type otherwise\&. Eg, setting 
+.PP
+.nf
+Names\&.Put(DbType,           "TEXT" );
+Names\&.Put(DbType,   255,    "VARCHAR($l)" );
+Names\&.Put(DbType,   65534,  "LONGVARCHAR($l)" );
+
+.fi
+.PP
+ will give you back the following: 
+.PP
+.nf
+Names\&.Get(DbType)           // &ndash;> "TEXT" (default)
+Names\&.Get(DbType,100)       // &ndash;> "VARCHAR(100)" (100 is in [0:255])
+Names\&.Get(DbType,1000)  // &ndash;> "LONGVARCHAR(1000)" (100 is in [256:65534])
+Names\&.Get(DbType,100000)    // &ndash;> "TEXT" (default)
+
+.fi
+.PP
+ On the other hand, simply putting 
+.PP
+.nf
+Names\&.Put(DbType, "VARCHAR($l)" );
+
+.fi
+.PP
+ would result in 
+.PP
+.nf
+Names\&.Get(DbType)           // &ndash;> "VARCHAR($l)" (will cause trouble)
+Names\&.Get(DbType,100)       // &ndash;> "VARCHAR(100)" 
+Names\&.Get(DbType,1000)  // &ndash;> "VARCHAR(1000)"
+Names\&.Get(DbType,10000) // &ndash;> "VARCHAR(10000)"
+
+.fi
+.PP
+ 
+.PP
+Definition at line 41 of file TypeNames\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string NHibernate\&.Dialect\&.TypeNames\&.Get (DbTypetypecode)"
+
+.PP
+Get default type name for specified type 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItypecode\fP the type key
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the default type name associated with the specified key
+.RE
+.PP
+
+.PP
+Definition at line 57 of file TypeNames\&.cs\&.
+.SS "string NHibernate\&.Dialect\&.TypeNames\&.Get (DbTypetypecode, intsize, intprecision, intscale)"
+
+.PP
+Get the type name specified type and size 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItypecode\fP the type key
+.br
+\fIsize\fP the SQL length 
+.br
+\fIscale\fP the SQL scale 
+.br
+\fIprecision\fP the SQL precision 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The associated name with smallest capacity >= size if available and the default type name otherwise 
+.RE
+.PP
+
+.PP
+Definition at line 78 of file TypeNames\&.cs\&.
+.SS "string NHibernate\&.Dialect\&.TypeNames\&.GetLongest (DbTypetypecode)"
+
+.PP
+For types with a simple length, this method returns the definition for the longest registered type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItypecode\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 102 of file TypeNames\&.cs\&.
+.SS "void NHibernate\&.Dialect\&.TypeNames\&.Put (DbTypetypecode, intcapacity, stringvalue)"
+
+.PP
+Set a type name for specified type key and capacity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItypecode\fP the type key
+.br
+\fIcapacity\fP the (maximum) type size/length
+.br
+\fIvalue\fP The associated name
+.RE
+.PP
+
+.PP
+Definition at line 126 of file TypeNames\&.cs\&.
+.SS "void NHibernate\&.Dialect\&.TypeNames\&.Put (DbTypetypecode, stringvalue)"
+
+.PP
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fItypecode\fP 
+.br
+\fIvalue\fP 
+.RE
+.PP
+
+.PP
+Definition at line 142 of file TypeNames\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

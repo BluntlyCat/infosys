@@ -1,0 +1,133 @@
+.TH "NHibernate.Id.UUIDHexGenerator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.UUIDHexGenerator \- 
+.PP
+An \fBIIdentifierGenerator\fP that returns a string of length 32, 36, or 38 depending on the configuration\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Id\&.IIdentifierGenerator\fP, and \fBNHibernate\&.Id\&.IConfigurable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual object \fBGenerate\fP (\fBISessionImplementor\fP session, object obj)"
+.br
+.RI "\fIGenerate a new string for the identifier using the 'uuid\&.hex' algorithm\&. \fP"
+.ti -1c
+.RI "virtual void \fBConfigure\fP (\fBIType\fP type, IDictionary< string, string > parms, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIConfigures the \fBUUIDHexGenerator\fP by reading the value of \fCformat\fP and \fCseperator\fP from the \fCparms\fP parameter\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual string \fBGenerateNewGuid\fP ()"
+.br
+.RI "\fIGenerate a Guid into a string using the \fCformat\fP\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "string \fBformat\fP = FormatWithDigitsOnly"
+.br
+.ti -1c
+.RI "string \fBsep\fP"
+.br
+.ti -1c
+.RI "const string \fBFormatWithDigitsOnly\fP = 'N'"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An \fBIIdentifierGenerator\fP that returns a string of length 32, 36, or 38 depending on the configuration\&. 
+
+This id generation strategy is specified in the mapping file as 
+.PP
+.nf
+&lt;generator class="uuid\&.hex"&gt;
+    &lt;param name="format"&gt;format_string&lt;/param&gt;
+    &lt;param name="seperator"&gt;seperator_string&lt;/param&gt;
+&lt;/generator&gt;
+
+.fi
+.PP
+ 
+.PP
+The \fCformat\fP and \fCseperator\fP parameters are optional\&. 
+.PP
+The identifier string will consist of only hex digits\&. Optionally, the identifier string may be generated with enclosing characters and seperators between each component of the UUID\&. If there are seperators then the string length will be 36\&. If a format that has enclosing brackets is used, then the string length will be 38\&. 
+.PP
+\fCformat\fP is either 'N' (\fCxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\fP), 'D' (\fCxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\fP), 'B' (\fC{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}\fP), or 'P' (\fC(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)\fP)\&. These formats are described in the \fBGuid\&.ToString(String)\fP method\&. If no \fCformat\fP is specified the default is 'N'\&. 
+.PP
+\fCseperator\fP is the char that will replace the '-' if specified\&. If no value is configured then the default seperator for the format will be used\&. If the format 'D', 'B', or 'P' is specified, then the seperator will replace the '-'\&. If the format is 'N' then this parameter will be ignored\&. 
+.PP
+This class is based on System\&.Guid 
+.PP
+Definition at line 52 of file UUIDHexGenerator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Id\&.UUIDHexGenerator\&.Configure (\fBIType\fPtype, IDictionary< string, string >parms, \fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+Configures the \fBUUIDHexGenerator\fP by reading the value of \fCformat\fP and \fCseperator\fP from the \fCparms\fP parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The IType the identifier should be\&.
+.br
+\fIparms\fP An IDictionary of \fBParam\fP values that are keyed by parameter name\&.
+.br
+\fIdialect\fP The \fBDialect\&.Dialect\fP to help with Configuration\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IConfigurable\fP\&.
+.PP
+Definition at line 91 of file UUIDHexGenerator\&.cs\&.
+.SS "virtual object NHibernate\&.Id\&.UUIDHexGenerator\&.Generate (\fBISessionImplementor\fPsession, objectobj)\fC [virtual]\fP"
+
+.PP
+Generate a new string for the identifier using the 'uuid\&.hex' algorithm\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The ISessionImplementor this id is being generated in\&.
+.br
+\fIobj\fP The entity for which the id is being generated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new identifier as a string\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IIdentifierGenerator\fP\&.
+.PP
+Definition at line 68 of file UUIDHexGenerator\&.cs\&.
+.SS "virtual string NHibernate\&.Id\&.UUIDHexGenerator\&.GenerateNewGuid ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Generate a Guid into a string using the \fCformat\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A new Guid string
+.RE
+.PP
+
+.PP
+Definition at line 107 of file UUIDHexGenerator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

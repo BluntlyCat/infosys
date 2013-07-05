@@ -1,0 +1,150 @@
+.TH "Renci.SshNet.Messages.Transport" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Messages.Transport \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBDebugMessage\fP"
+.br
+.RI "\fIRepresents SSH_MSG_DEBUG message\&. \fP"
+.ti -1c
+.RI "class \fBDisconnectMessage\fP"
+.br
+.RI "\fIRepresents SSH_MSG_DISCONNECT message\&. \fP"
+.ti -1c
+.RI "class \fBIgnoreMessage\fP"
+.br
+.RI "\fIRepresents SSH_MSG_IGNORE message\&. \fP"
+.ti -1c
+.RI "interface \fBIKeyExchangedAllowed\fP"
+.br
+.RI "\fIIndicates that message that implement this interface is allowed during key exchange phase \fP"
+.ti -1c
+.RI "class \fBKeyExchangeDhGroupExchangeGroup\fP"
+.br
+.RI "\fIRepresents SSH_MSG_KEX_DH_GEX_GROUP message\&. \fP"
+.ti -1c
+.RI "class \fBKeyExchangeDhGroupExchangeInit\fP"
+.br
+.RI "\fIRepresents SSH_MSG_KEX_DH_GEX_INIT message\&. \fP"
+.ti -1c
+.RI "class \fBKeyExchangeDhGroupExchangeReply\fP"
+.br
+.RI "\fIRepresents SSH_MSG_KEX_DH_GEX_REPLY message\&. \fP"
+.ti -1c
+.RI "class \fBKeyExchangeDhGroupExchangeRequest\fP"
+.br
+.RI "\fIRepresents SSH_MSG_KEX_DH_GEX_REQUEST message\&. \fP"
+.ti -1c
+.RI "class \fBKeyExchangeDhInitMessage\fP"
+.br
+.RI "\fIRepresents SSH_MSG_KEXDH_INIT message\&. \fP"
+.ti -1c
+.RI "class \fBKeyExchangeDhReplyMessage\fP"
+.br
+.RI "\fIRepresents SSH_MSG_KEXDH_REPLY message\&. \fP"
+.ti -1c
+.RI "class \fBKeyExchangeEcdhInitMessage\fP"
+.br
+.RI "\fIRepresents SSH_MSG_KEXECDH_INIT message\&. \fP"
+.ti -1c
+.RI "class \fBKeyExchangeEcdhReplyMessage\fP"
+.br
+.RI "\fIRepresents SSH_MSG_KEXECDH_REPLY message\&. \fP"
+.ti -1c
+.RI "class \fBKeyExchangeInitMessage\fP"
+.br
+.RI "\fIRepresents SSH_MSG_KEXINIT message\&. \fP"
+.ti -1c
+.RI "class \fBNewKeysMessage\fP"
+.br
+.RI "\fIRepresents SSH_MSG_KEXINIT message\&. \fP"
+.ti -1c
+.RI "class \fBServiceAcceptMessage\fP"
+.br
+.RI "\fIRepresents SSH_MSG_SERVICE_ACCEPT message\&. \fP"
+.ti -1c
+.RI "class \fBServiceRequestMessage\fP"
+.br
+.RI "\fIRepresents SSH_MSG_SERVICE_REQUEST message\&. \fP"
+.ti -1c
+.RI "class \fBUnimplementedMessage\fP"
+.br
+.RI "\fIRepresents SSH_MSG_UNIMPLEMENTED message\&. \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBDisconnectReason\fP : int { \fBDisconnectReason\&.None\fP = 0, \fBDisconnectReason\&.HostNotAllowedToConnect\fP = 1, \fBDisconnectReason\&.ProtocolError\fP = 2, \fBDisconnectReason\&.KeyExchangeFailed\fP = 3, \fBDisconnectReason\&.Reserved\fP = 4, \fBDisconnectReason\&.MacError\fP = 5, \fBDisconnectReason\&.CompressionError\fP = 6, \fBDisconnectReason\&.ServiceNotAvailable\fP = 7, \fBDisconnectReason\&.ProtocolVersionNotSupported\fP = 8, \fBDisconnectReason\&.HostKeyNotVerifiable\fP = 9, \fBDisconnectReason\&.ConnectionLost\fP = 10, \fBDisconnectReason\&.ByApplication\fP = 11, \fBDisconnectReason\&.TooManyConnections\fP = 12, \fBDisconnectReason\&.AuthenticationCanceledByUser\fP = 13, \fBDisconnectReason\&.NoMoreAuthenticationMethodsAvailable\fP = 14, \fBDisconnectReason\&.IllegalUserName\fP = 15 }"
+.br
+.RI "\fIProvides list of disconnect reason as specified by the protocol\&. \fP"
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBRenci\&.SshNet\&.Messages\&.Transport\&.DisconnectReason\fP : int"
+
+.PP
+Provides list of disconnect reason as specified by the protocol\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+Disconnect reason is not provided\&. 
+.TP
+\fB\fIHostNotAllowedToConnect \fP\fP
+SSH_DISCONNECT_HOST_NOT_ALLOWED_TO_CONNECT 
+.TP
+\fB\fIProtocolError \fP\fP
+SSH_DISCONNECT_PROTOCOL_ERROR 
+.TP
+\fB\fIKeyExchangeFailed \fP\fP
+SSH_DISCONNECT_KEY_EXCHANGE_FAILED 
+.TP
+\fB\fIReserved \fP\fP
+SSH_DISCONNECT_RESERVED 
+.TP
+\fB\fIMacError \fP\fP
+SSH_DISCONNECT_MAC_ERROR 
+.TP
+\fB\fICompressionError \fP\fP
+SSH_DISCONNECT_COMPRESSION_ERROR 
+.TP
+\fB\fIServiceNotAvailable \fP\fP
+SSH_DISCONNECT_SERVICE_NOT_AVAILABLE 
+.TP
+\fB\fIProtocolVersionNotSupported \fP\fP
+SSH_DISCONNECT_PROTOCOL_VERSION_NOT_SUPPORTED 
+.TP
+\fB\fIHostKeyNotVerifiable \fP\fP
+SSH_DISCONNECT_HOST_KEY_NOT_VERIFIABLE 
+.TP
+\fB\fIConnectionLost \fP\fP
+SSH_DISCONNECT_CONNECTION_LOST 
+.TP
+\fB\fIByApplication \fP\fP
+SSH_DISCONNECT_BY_APPLICATION 
+.TP
+\fB\fITooManyConnections \fP\fP
+SSH_DISCONNECT_TOO_MANY_CONNECTIONS 
+.TP
+\fB\fIAuthenticationCanceledByUser \fP\fP
+SSH_DISCONNECT_AUTH_CANCELLED_BY_USER 
+.TP
+\fB\fINoMoreAuthenticationMethodsAvailable \fP\fP
+SSH_DISCONNECT_NO_MORE_AUTH_METHODS_AVAILABLE 
+.TP
+\fB\fIIllegalUserName \fP\fP
+SSH_DISCONNECT_ILLEGAL_USER_NAME 
+.PP
+Definition at line 6 of file DisconnectReason\&.cs\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

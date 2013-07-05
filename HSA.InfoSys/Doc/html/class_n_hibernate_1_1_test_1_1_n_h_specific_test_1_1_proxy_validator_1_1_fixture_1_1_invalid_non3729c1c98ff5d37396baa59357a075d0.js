@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_proxy_validator_1_1_fixture_1_1_invalid_non3729c1c98ff5d37396baa59357a075d0 =
+[
+    [ "NonVirtualProperty", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_proxy_validator_1_1_fixture_1_1_invalid_non3729c1c98ff5d37396baa59357a075d0.html#a43af28d0948dba299ac357851566085b", null ]
+];

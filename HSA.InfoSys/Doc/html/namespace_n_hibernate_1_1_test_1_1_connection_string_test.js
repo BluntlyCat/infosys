@@ -1,0 +1,5 @@
+var namespace_n_hibernate_1_1_test_1_1_connection_string_test =
+[
+    [ "NamedConnectionStringFixture", "class_n_hibernate_1_1_test_1_1_connection_string_test_1_1_named_connection_string_fixture.html", "class_n_hibernate_1_1_test_1_1_connection_string_test_1_1_named_connection_string_fixture" ],
+    [ "MockConnectionProvider", "class_n_hibernate_1_1_test_1_1_connection_string_test_1_1_mock_connection_provider.html", "class_n_hibernate_1_1_test_1_1_connection_string_test_1_1_mock_connection_provider" ]
+];

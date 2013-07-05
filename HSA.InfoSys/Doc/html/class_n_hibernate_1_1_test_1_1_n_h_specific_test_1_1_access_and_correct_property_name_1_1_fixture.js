@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_access_and_correct_property_name_1_1_fixture =
+[
+    [ "WrongPropertyNameForCamelcaseShouldThrow", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_access_and_correct_property_name_1_1_fixture.html#ae9b097754afd3b2db68be6409f342713", null ],
+    [ "WrongPropertyNameForCamelcaseUnderscoreShouldThrow", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_access_and_correct_property_name_1_1_fixture.html#a6e111851b8501f2bdeb6a5d84a1356b0", null ]
+];

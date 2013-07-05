@@ -1,0 +1,72 @@
+.TH "NHibernate.Mapping.DenormalizedTable" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.DenormalizedTable \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.Table\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDenormalizedTable\fP (\fBTable\fP includedTable)"
+.br
+.ti -1c
+.RI "override void \fBCreateForeignKeys\fP ()"
+.br
+.ti -1c
+.RI "override \fBColumn\fP \fBGetColumn\fP (\fBColumn\fP column)"
+.br
+.RI "\fIReturn the column which is identified by column provided as argument\&. \fP"
+.ti -1c
+.RI "override bool \fBContainsColumn\fP (\fBColumn\fP column)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override IEnumerable< \fBColumn\fP > \fBColumnIterator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override IEnumerable< \fBUniqueKey\fP > \fBUniqueKeyIterator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override IEnumerable< \fBIndex\fP > \fBIndexIterator\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override \fBPrimaryKey\fP \fBPrimaryKey\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 9 of file DenormalizedTable\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBColumn\fP NHibernate\&.Mapping\&.DenormalizedTable\&.GetColumn (\fBColumn\fPcolumn)\fC [virtual]\fP"
+
+.PP
+Return the column which is identified by column provided as argument\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumn\fP column with atleast a name\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The underlying column or null if not inside this table\&. Note: the instance \fIcan\fP be different than the input parameter, but the name will be the same\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Mapping\&.Table\fP\&.
+.PP
+Definition at line 74 of file DenormalizedTable\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

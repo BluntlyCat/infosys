@@ -1,0 +1,150 @@
+.TH "NHibernate.Test.SqlTest.Query.GeneralTest" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.SqlTest.Query.GeneralTest \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Test\&.TestCase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBFailOnNoAddEntityOrScalar\fP ()"
+.br
+.ti -1c
+.RI "void \fBSQLQueryInterface\fP ()"
+.br
+.ti -1c
+.RI "void \fBResultSetMappingDefinition\fP ()"
+.br
+.ti -1c
+.RI "void \fBScalarValues\fP ()"
+.br
+.ti -1c
+.RI "void \fBMappedAliasStrategy\fP ()"
+.br
+.ti -1c
+.RI "void \fBCompositeIdJoinsFailureExpected\fP ()"
+.br
+.ti -1c
+.RI "void \fBAutoDetectAliasing\fP ()"
+.br
+.ti -1c
+.RI "void \fBMixAndMatchEntityScalar\fP ()"
+.br
+.ti -1c
+.RI "void \fBParameterList\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBAssertClassAssignability\fP (System\&.Type source, System\&.Type target)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBOrganizationFetchJoinEmploymentSQL\fP"
+.br
+.ti -1c
+.RI "const string \fBOrganizationJoinEmploymentSQL\fP"
+.br
+.ti -1c
+.RI "const string \fBEmploymentSQL\fP = 'SELECT * FROM EMPLOYMENT'"
+.br
+.ti -1c
+.RI "string \fBEmploymentSQLMixedScalarEntity\fP"
+.br
+.ti -1c
+.RI "const string \fBOrgEmpRegionSQL\fP"
+.br
+.ti -1c
+.RI "string \fBOrgEmpPersonSQL\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override IList \fBMappings\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBMappingsAssembly\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 9 of file NativeSQLQueriesFixture\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "string NHibernate\&.Test\&.SqlTest\&.Query\&.GeneralTest\&.EmploymentSQLMixedScalarEntity\fC [protected]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+=
+            "SELECT e\&.*, e\&.employer as employerid  FROM EMPLOYMENT e"
+.fi
+.PP
+Definition at line 29 of file NativeSQLQueriesFixture\&.cs\&.
+.SS "const string NHibernate\&.Test\&.SqlTest\&.Query\&.GeneralTest\&.OrganizationFetchJoinEmploymentSQL\fC [protected]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+=
+            "SELECT org\&.ORGID as {org\&.id}, " +
+            "        org\&.NAME as {org\&.name}, " +
+            "        emp\&.EMPLOYER as {emp\&.key}, " +
+            "        emp\&.EMPID as {emp\&.element}, " +
+            "        {emp\&.element\&.*}  " +
+            "FROM ORGANIZATION org " +
+            "    LEFT OUTER JOIN EMPLOYMENT emp ON org\&.ORGID = emp\&.EMPLOYER"
+.fi
+.PP
+Definition at line 11 of file NativeSQLQueriesFixture\&.cs\&.
+.SS "const string NHibernate\&.Test\&.SqlTest\&.Query\&.GeneralTest\&.OrganizationJoinEmploymentSQL\fC [protected]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+=
+            "SELECT org\&.ORGID as {org\&.id}, " +
+            "        org\&.NAME as {org\&.name}, " +
+            "        {emp\&.*}  " +
+            "FROM ORGANIZATION org " +
+            "    LEFT OUTER JOIN EMPLOYMENT emp ON org\&.ORGID = emp\&.EMPLOYER"
+.fi
+.PP
+Definition at line 20 of file NativeSQLQueriesFixture\&.cs\&.
+.SS "string NHibernate\&.Test\&.SqlTest\&.Query\&.GeneralTest\&.OrgEmpPersonSQL\fC [protected]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+=
+            "select {org\&.*}, {emp\&.*}, {pers\&.*} " +
+            "from ORGANIZATION org " +
+            "    join EMPLOYMENT emp on org\&.ORGID = emp\&.EMPLOYER " +
+            "    join PERSON pers on pers\&.PERID = emp\&.EMPLOYEE "
+.fi
+.PP
+Definition at line 37 of file NativeSQLQueriesFixture\&.cs\&.
+.SS "const string NHibernate\&.Test\&.SqlTest\&.Query\&.GeneralTest\&.OrgEmpRegionSQL\fC [protected]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+=
+            "select {org\&.*}, {emp\&.*}, emp\&.REGIONCODE " +
+            "from ORGANIZATION org " +
+            "     left outer join EMPLOYMENT emp on org\&.ORGID = emp\&.EMPLOYER"
+.fi
+.PP
+Definition at line 32 of file NativeSQLQueriesFixture\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

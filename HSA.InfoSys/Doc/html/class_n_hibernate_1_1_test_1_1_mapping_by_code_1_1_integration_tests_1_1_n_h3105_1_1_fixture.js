@@ -1,0 +1,6 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h3105_1_1_fixture =
+[
+    [ "CanMapComponentAsIdWhenComponentIsDeclaredInBaseClass", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h3105_1_1_fixture.html#afefaae83fa699f05cf037988209943d3", null ],
+    [ "CanMapComponentAsIdWhenComponentIsDeclaredInClass", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h3105_1_1_fixture.html#a8c1f99ca8f703f6439e67eb826e96fca", null ],
+    [ "CanMapIdWhenIdIsDeclaredInBaseClass", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_integration_tests_1_1_n_h3105_1_1_fixture.html#a8c3a0ba894bf222e9137c9ae1fe93950", null ]
+];

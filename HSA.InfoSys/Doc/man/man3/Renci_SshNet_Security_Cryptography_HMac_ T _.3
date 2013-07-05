@@ -1,0 +1,167 @@
+.TH "Renci.SshNet.Security.Cryptography.HMac< T >" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Security.Cryptography.HMac< T > \- 
+.PP
+Provides HMAC algorithm implementation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits KeyedHashAlgorithm\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBHMac\fP (byte[] key, int hashSizeValue)"
+.br
+.RI "\fIRfc 2104\&. \fP"
+.ti -1c
+.RI "\fBHMac\fP (byte[] key)"
+.br
+.ti -1c
+.RI "override void \fBInitialize\fP ()"
+.br
+.RI "\fIInitializes an implementation of the T:System\&.Security\&.Cryptography\&.HashAlgorithm class\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBHashCore\fP (byte[] rgb, int ib, int cb)"
+.br
+.RI "\fIHashes the core\&. \fP"
+.ti -1c
+.RI "override byte[] \fBHashFinal\fP ()"
+.br
+.RI "\fIFinalizes the hash computation after the last data is processed by the cryptographic stream object\&. \fP"
+.ti -1c
+.RI "override void \fBDispose\fP (bool disposing)"
+.br
+.RI "\fIReleases unmanaged and - optionally - managed resources \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBBlockSize\fP\fC [get]\fP"
+.br
+.RI "\fIGets the size of the block\&. \fP"
+.ti -1c
+.RI "override byte[] \fBKey\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the key to use in the hash algorithm\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Provides HMAC algorithm implementation\&. 
+
+
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP Class that implements T:System\&.Security\&.Cryptography\&.HashAlgorithm\&.
+.RE
+.PP
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fIHashAlgorithm\fP
+.TP
+\fIT\fP : \fInew()\fP
+.PP
+Definition at line 13 of file HMAC\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Security\&.Cryptography\&.HMac< T >\&.HMac (byte[]key, inthashSizeValue)"
+
+.PP
+Rfc 2104\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key\&.
+.RE
+.PP
+
+.PP
+Definition at line 45 of file HMAC\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void Renci\&.SshNet\&.Security\&.Cryptography\&.HMac< T >\&.Dispose (booldisposing)\fC [protected]\fP"
+
+.PP
+Releases unmanaged and - optionally - managed resources 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP \fCtrue\fP to release both managed and unmanaged resources; \fCfalse\fP to release only unmanaged ResourceMessages\&.
+.RE
+.PP
+
+.PP
+Definition at line 159 of file HMAC\&.cs\&.
+.SS "override void Renci\&.SshNet\&.Security\&.Cryptography\&.HMac< T >\&.HashCore (byte[]rgb, intib, intcb)\fC [protected]\fP"
+
+.PP
+Hashes the core\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrgb\fP The RGB\&.
+.br
+\fIib\fP The ib\&.
+.br
+\fIcb\fP The cb\&.
+.RE
+.PP
+
+.PP
+Definition at line 90 of file HMAC\&.cs\&.
+.SS "override byte [] Renci\&.SshNet\&.Security\&.Cryptography\&.HMac< T >\&.HashFinal ()\fC [protected]\fP"
+
+.PP
+Finalizes the hash computation after the last data is processed by the cryptographic stream object\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The computed hash code\&. 
+.RE
+.PP
+
+.PP
+Definition at line 101 of file HMAC\&.cs\&.
+.SS "override void Renci\&.SshNet\&.Security\&.Cryptography\&.HMac< T >\&.Initialize ()"
+
+.PP
+Initializes an implementation of the T:System\&.Security\&.Cryptography\&.HashAlgorithm class\&. 
+.PP
+Definition at line 79 of file HMAC\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int Renci\&.SshNet\&.Security\&.Cryptography\&.HMac< T >\&.BlockSize\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+Gets the size of the block\&. The size of the block\&. 
+.PP
+Definition at line 27 of file HMAC\&.cs\&.
+.SS "override byte [] Renci\&.SshNet\&.Security\&.Cryptography\&.HMac< T >\&.\fBKey\fP\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the key to use in the hash algorithm\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The key to use in the hash algorithm\&.
+.RE
+.PP
+
+.PP
+Definition at line 65 of file HMAC\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

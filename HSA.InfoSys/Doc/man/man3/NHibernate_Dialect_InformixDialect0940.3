@@ -1,0 +1,235 @@
+.TH "NHibernate.Dialect.InformixDialect0940" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.InformixDialect0940 \- 
+.PP
+Summary description for \fBInformixDialect\fP\&. This dialect is intended to work with IDS version 9\&.40  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.InformixDialect\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Dialect\&.InformixDialect1000\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBInformixDialect0940\fP ()"
+.br
+.ti -1c
+.RI "override string \fBGetSequenceNextValString\fP (string sequenceName)"
+.br
+.RI "\fIGenerate the appropriate select statement to to retreive the next value of a sequence\&. \fP"
+.ti -1c
+.RI "override string \fBGetDropSequenceString\fP (string sequenceName)"
+.br
+.RI "\fITypically dialects which support sequences can drop a sequence with a single command\&. \fP"
+.ti -1c
+.RI "override string \fBGetSelectSequenceNextValString\fP (string sequenceName)"
+.br
+.RI "\fIGenerate the select expression fragment that will retrieve the next value of a sequence as part of another (typically DML) statement\&. \fP"
+.ti -1c
+.RI "override string \fBGetCreateSequenceString\fP (string sequenceName)"
+.br
+.RI "\fITypically dialects which support sequences can create a sequence with a single command\&. \fP"
+.ti -1c
+.RI "override \fBJoinFragment\fP \fBCreateOuterJoinFragment\fP ()"
+.br
+.RI "\fICreate a JoinFragment strategy responsible for handling this dialect's variations in how joins are handled\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBQuerySequencesString\fP\fC [get]\fP"
+.br
+.RI "\fIGet the select command used retrieve the names of all sequences\&.\fP"
+.ti -1c
+.RI "override bool \fBSupportsSequences\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support sequences? \fP"
+.ti -1c
+.RI "override bool \fBSupportsPooledSequences\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this dialect support 'pooled' sequences\&. Not aware of a better name for this\&. Essentially can we specify the initial and increment values? \fP"
+.ti -1c
+.RI "override bool \fBSupportsLimit\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this \fBDialect\fP have some kind of \fCLIMIT\fP syntax? \fP"
+.ti -1c
+.RI "override bool \fBSupportsLimitOffset\fP\fC [get]\fP"
+.br
+.RI "\fIDoes this \fBDialect\fP support an offset? \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Summary description for \fBInformixDialect\fP\&. This dialect is intended to work with IDS version 9\&.40 
+
+The \fBInformixDialect\fP defaults the following configuration properties: ConnectionDriver \fBNHibernate\&.Driver\&.OdbcDriver\fP PrepareSql true  connection\&.driver_class \fBNHibernate\&.Driver\&.OdbcDriver\fP  
+.PP
+Definition at line 33 of file InformixDialect0940\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Dialect\&.InformixDialect0940\&.InformixDialect0940 ()"
+
+.PP
+
+.PP
+Definition at line 36 of file InformixDialect0940\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBJoinFragment\fP NHibernate\&.Dialect\&.InformixDialect0940\&.CreateOuterJoinFragment ()\fC [virtual]\fP"
+
+.PP
+Create a JoinFragment strategy responsible for handling this dialect's variations in how joins are handled\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+This dialect's JoinFragment strategy\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.InformixDialect\fP\&.
+.PP
+Definition at line 126 of file InformixDialect0940\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.InformixDialect0940\&.GetCreateSequenceString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+Typically dialects which support sequences can create a sequence with a single command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP The name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sequence creation command 
+.RE
+.PP
+.PP
+This is convenience form of \fBGetCreateSequenceStrings(string,int,int)\fP to help facilitate that\&. Dialects which support sequences and can create a sequence in a single command need \fIonly\fP override this method\&. Dialects which support sequences but require multiple commands to create a sequence should instead override \fBGetCreateSequenceStrings(string,int,int)\fP\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 104 of file InformixDialect0940\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.InformixDialect0940\&.GetDropSequenceString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+Typically dialects which support sequences can drop a sequence with a single command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP The name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The sequence drop commands 
+.RE
+.PP
+.PP
+This is convenience form of \fBGetDropSequenceStrings\fP to help facilitate that\&.
+.PP
+Dialects which support sequences and can drop a sequence in a single command need \fIonly\fP override this method\&. Dialects which support sequences but require multiple commands to drop a sequence should instead override \fBGetDropSequenceStrings\fP\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 86 of file InformixDialect0940\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.InformixDialect0940\&.GetSelectSequenceNextValString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+Generate the select expression fragment that will retrieve the next value of a sequence as part of another (typically DML) statement\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP the name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The 'nextval' fragment\&. 
+.RE
+.PP
+.PP
+This differs from \fBGetSequenceNextValString\fP in that this should return an expression usable within another statement\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 100 of file InformixDialect0940\&.cs\&.
+.SS "override string NHibernate\&.Dialect\&.InformixDialect0940\&.GetSequenceNextValString (stringsequenceName)\fC [virtual]\fP"
+
+.PP
+Generate the appropriate select statement to to retreive the next value of a sequence\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsequenceName\fP the name of the sequence 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+String The 'nextval' select string\&. 
+.RE
+.PP
+.PP
+This should be a 'stand alone' select statement\&.
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 81 of file InformixDialect0940\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.Dialect\&.InformixDialect0940\&.QuerySequencesString\fC [get]\fP"
+
+.PP
+Get the select command used retrieve the names of all sequences\&.
+.PP
+\fBReturns:\fP
+.RS 4
+The select command; or null if sequences are not supported\&. 
+.RE
+.PP
+
+.PP
+Definition at line 49 of file InformixDialect0940\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.InformixDialect0940\&.SupportsLimit\fC [get]\fP"
+
+.PP
+Does this \fBDialect\fP have some kind of \fCLIMIT\fP syntax? False, unless overridden\&.
+.PP
+Definition at line 137 of file InformixDialect0940\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.InformixDialect0940\&.SupportsLimitOffset\fC [get]\fP"
+
+.PP
+Does this \fBDialect\fP support an offset? 
+.PP
+Definition at line 145 of file InformixDialect0940\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.InformixDialect0940\&.SupportsPooledSequences\fC [get]\fP"
+
+.PP
+Does this dialect support 'pooled' sequences\&. Not aware of a better name for this\&. Essentially can we specify the initial and increment values? 
+.PP
+\fBReturns:\fP
+.RS 4
+True if such 'pooled' sequences are supported; false otherwise\&. 
+.RE
+.PP
+
+.PP
+Definition at line 70 of file InformixDialect0940\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.InformixDialect0940\&.SupportsSequences\fC [get]\fP"
+
+.PP
+Does this dialect support sequences? 
+.PP
+Definition at line 60 of file InformixDialect0940\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

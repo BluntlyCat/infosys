@@ -1,0 +1,126 @@
+.TH "Renci.SshNet.AuthenticationMethod" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.AuthenticationMethod \- 
+.PP
+Base class for all supported authentication methods  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBRenci\&.SshNet\&.KeyboardInteractiveAuthenticationMethod\fP, \fBRenci\&.SshNet\&.KeyboardInteractiveAuthenticationMethod\fP, \fBRenci\&.SshNet\&.NoneAuthenticationMethod\fP, \fBRenci\&.SshNet\&.PasswordAuthenticationMethod\fP, \fBRenci\&.SshNet\&.PasswordAuthenticationMethod\fP, and \fBRenci\&.SshNet\&.PrivateKeyAuthenticationMethod\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract \fBAuthenticationResult\fP \fBAuthenticate\fP (\fBSession\fP session)"
+.br
+.RI "\fIAuthenticates the specified session\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAuthenticationMethod\fP (string username)"
+.br
+.RI "\fIInitializes a new instance of the \fBAuthenticationMethod\fP class\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "abstract string \fBName\fP\fC [get]\fP"
+.br
+.RI "\fIGets authentication method name \fP"
+.ti -1c
+.RI "string \fBUsername\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets connection username\&. \fP"
+.ti -1c
+.RI "string \fBErrorMessage\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the authentication error message\&. \fP"
+.ti -1c
+.RI "IEnumerable< string > \fBAllowedAuthentications\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets list of allowed authentications\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for all supported authentication methods 
+
+
+.PP
+Definition at line 12 of file AuthenticationMethod\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.AuthenticationMethod\&.AuthenticationMethod (stringusername)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBAuthenticationMethod\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIusername\fP The username\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentException\fP \fIusername\fP  is whitespace or null\&.
+.RE
+.PP
+
+.PP
+Definition at line 39 of file AuthenticationMethod\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "abstract \fBAuthenticationResult\fP Renci\&.SshNet\&.AuthenticationMethod\&.Authenticate (\fBSession\fPsession)\fC [pure virtual]\fP"
+
+.PP
+Authenticates the specified session\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session to authenticate\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Result of authentication process\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBRenci\&.SshNet\&.PasswordAuthenticationMethod\fP, \fBRenci\&.SshNet\&.PrivateKeyAuthenticationMethod\fP, \fBRenci\&.SshNet\&.KeyboardInteractiveAuthenticationMethod\fP, and \fBRenci\&.SshNet\&.NoneAuthenticationMethod\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "IEnumerable<string> Renci\&.SshNet\&.AuthenticationMethod\&.AllowedAuthentications\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets list of allowed authentications\&. 
+.PP
+Definition at line 32 of file AuthenticationMethod\&.cs\&.
+.SS "string Renci\&.SshNet\&.AuthenticationMethod\&.ErrorMessage\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the authentication error message\&. 
+.PP
+Definition at line 27 of file AuthenticationMethod\&.cs\&.
+.SS "abstract string Renci\&.SshNet\&.AuthenticationMethod\&.Name\fC [get]\fP"
+
+.PP
+Gets authentication method name 
+.PP
+Definition at line 17 of file AuthenticationMethod\&.cs\&.
+.SS "string Renci\&.SshNet\&.AuthenticationMethod\&.Username\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets connection username\&. 
+.PP
+Definition at line 22 of file AuthenticationMethod\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

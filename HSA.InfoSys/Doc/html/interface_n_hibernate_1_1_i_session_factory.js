@@ -1,0 +1,28 @@
+var interface_n_hibernate_1_1_i_session_factory =
+[
+    [ "Close", "interface_n_hibernate_1_1_i_session_factory.html#aae2fc7a963b682ddfc4c13c8a9dd39c5", null ],
+    [ "Evict", "interface_n_hibernate_1_1_i_session_factory.html#a5c9359d12853c0464581a77fad35dccd", null ],
+    [ "Evict", "interface_n_hibernate_1_1_i_session_factory.html#a2a4fabbf40d0767e81d499f94d249af7", null ],
+    [ "EvictCollection", "interface_n_hibernate_1_1_i_session_factory.html#a8f5e6edd0b34458044cf82b35b2d94ba", null ],
+    [ "EvictCollection", "interface_n_hibernate_1_1_i_session_factory.html#a4aa06fc77c48c56835f6854b74bff195", null ],
+    [ "EvictEntity", "interface_n_hibernate_1_1_i_session_factory.html#a6ef2a1e1f41b24df07c503fa476fa1f9", null ],
+    [ "EvictEntity", "interface_n_hibernate_1_1_i_session_factory.html#af8b86879ff343ed4acc340f5bbd7e5b2", null ],
+    [ "EvictQueries", "interface_n_hibernate_1_1_i_session_factory.html#a4362c572ac1ac5b1cee97273993e6b0c", null ],
+    [ "EvictQueries", "interface_n_hibernate_1_1_i_session_factory.html#a9bf7f2f1daa2e994e4455a8b9f6d12a3", null ],
+    [ "GetAllClassMetadata", "interface_n_hibernate_1_1_i_session_factory.html#a9ee2bef275de23e67f3018df4bd825de", null ],
+    [ "GetAllCollectionMetadata", "interface_n_hibernate_1_1_i_session_factory.html#a0049402a31a306bb3c82813bc55eb59f", null ],
+    [ "GetClassMetadata", "interface_n_hibernate_1_1_i_session_factory.html#aa074dcfc845b60f83f6cf24c8a35d6cd", null ],
+    [ "GetClassMetadata", "interface_n_hibernate_1_1_i_session_factory.html#a190bf61ea356b4b55417f099ced237af", null ],
+    [ "GetCollectionMetadata", "interface_n_hibernate_1_1_i_session_factory.html#aa8606c490aef22633da0583f6804ba6a", null ],
+    [ "GetCurrentSession", "interface_n_hibernate_1_1_i_session_factory.html#a92a6f4b6104db79dbfc81bf2858e91f1", null ],
+    [ "GetFilterDefinition", "interface_n_hibernate_1_1_i_session_factory.html#a016d28c71415a6af46f63f489a6b4991", null ],
+    [ "OpenSession", "interface_n_hibernate_1_1_i_session_factory.html#a05f477a5db3a71d4cd4928d6ccd85a9e", null ],
+    [ "OpenSession", "interface_n_hibernate_1_1_i_session_factory.html#a41ccc0cd83337d48e29e43b4877ad555", null ],
+    [ "OpenSession", "interface_n_hibernate_1_1_i_session_factory.html#acfdb780b5c44f6ec93fc0a140c53f353", null ],
+    [ "OpenSession", "interface_n_hibernate_1_1_i_session_factory.html#a7295cc557f346a4111a3fa2cbe3ebf8d", null ],
+    [ "OpenStatelessSession", "interface_n_hibernate_1_1_i_session_factory.html#aa78f5477a1960e726b921cf118d7361c", null ],
+    [ "OpenStatelessSession", "interface_n_hibernate_1_1_i_session_factory.html#a15617c4c0c0c28fc36f15b29d2155639", null ],
+    [ "DefinedFilterNames", "interface_n_hibernate_1_1_i_session_factory.html#a950c25cd8295b79dd0fee135714d7e2c", null ],
+    [ "IsClosed", "interface_n_hibernate_1_1_i_session_factory.html#a879bbd57f74989b7e2fee93a211b68eb", null ],
+    [ "Statistics", "interface_n_hibernate_1_1_i_session_factory.html#a2ffb1b9efe476a8b847d6bc028fea102", null ]
+];

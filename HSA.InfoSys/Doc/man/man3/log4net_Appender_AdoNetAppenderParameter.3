@@ -1,0 +1,200 @@
+.TH "log4net.Appender.AdoNetAppenderParameter" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.AdoNetAppenderParameter \- 
+.PP
+Parameter type used by the \fBAdoNetAppender\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAdoNetAppenderParameter\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBAdoNetAppenderParameter\fP class\&. \fP"
+.ti -1c
+.RI "virtual void \fBPrepare\fP (IDbCommand command)"
+.br
+.RI "\fIPrepare the specified database command object\&. \fP"
+.ti -1c
+.RI "virtual void \fBFormatValue\fP (IDbCommand command, \fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIRenders the logging event and set the parameter value in the command\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBParameterName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the name of this parameter\&. \fP"
+.ti -1c
+.RI "DbType \fBDbType\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the database type for this parameter\&. \fP"
+.ti -1c
+.RI "byte \fBPrecision\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the precision for this parameter\&. \fP"
+.ti -1c
+.RI "byte \fBScale\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the scale for this parameter\&. \fP"
+.ti -1c
+.RI "int \fBSize\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the size for this parameter\&. \fP"
+.ti -1c
+.RI "\fBIRawLayout\fP \fBLayout\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the IRawLayout to use to render the logging event into an object for this parameter\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Parameter type used by the \fBAdoNetAppender\fP\&. 
+
+This class provides the basic database parameter properties as defined by the System\&.Data\&.IDbDataParameter interface\&. 
+.PP
+This type can be subclassed to provide database specific functionality\&. The two methods that are called externally are \fBPrepare\fP and \fBFormatValue\fP\&. 
+.PP
+Definition at line 979 of file AdoNetAppender\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.AdoNetAppenderParameter\&.AdoNetAppenderParameter ()"
+
+.PP
+Initializes a new instance of the \fBAdoNetAppenderParameter\fP class\&. Default constructor for the \fBAdoNetAppenderParameter\fP class\&. 
+.PP
+Definition at line 989 of file AdoNetAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void log4net\&.Appender\&.AdoNetAppenderParameter\&.FormatValue (IDbCommandcommand, \fBLoggingEvent\fPloggingEvent)\fC [virtual]\fP"
+
+.PP
+Renders the logging event and set the parameter value in the command\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP The command containing the parameter\&.
+.br
+\fIloggingEvent\fP The event to be rendered\&.
+.RE
+.PP
+.PP
+Renders the logging event using this parameters layout object\&. Sets the value of the parameter on the command object\&. 
+.PP
+Definition at line 1193 of file AdoNetAppender\&.cs\&.
+.SS "virtual void log4net\&.Appender\&.AdoNetAppenderParameter\&.Prepare (IDbCommandcommand)\fC [virtual]\fP"
+
+.PP
+Prepare the specified database command object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcommand\fP The command to prepare\&.
+.RE
+.PP
+.PP
+Prepares the database command object by adding this parameter to its collection of parameters\&. 
+.PP
+Definition at line 1153 of file AdoNetAppender\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "DbType log4net\&.Appender\&.AdoNetAppenderParameter\&.DbType\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the database type for this parameter\&. The database type for this parameter\&. 
+.PP
+The database type for this parameter\&. This property should be set to the database type from the \fBDbType\fP enumeration\&. See IDataParameter\&.DbType\&. 
+.PP
+This property is optional\&. If not specified the ADO\&.NET provider will attempt to infer the type from the value\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+IDataParameter\&.DbType
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1038 of file AdoNetAppender\&.cs\&.
+.SS "\fBIRawLayout\fP log4net\&.Appender\&.AdoNetAppenderParameter\&.Layout\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the IRawLayout to use to render the logging event into an object for this parameter\&. The IRawLayout used to render the logging event into an object for this parameter\&. 
+.PP
+The IRawLayout that renders the value for this parameter\&. 
+.PP
+The RawLayoutConverter can be used to adapt any ILayout into a IRawLayout for use in the property\&. 
+.PP
+Definition at line 1134 of file AdoNetAppender\&.cs\&.
+.SS "string log4net\&.Appender\&.AdoNetAppenderParameter\&.ParameterName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the name of this parameter\&. The name of this parameter\&. 
+.PP
+The name of this parameter\&. The parameter name must match up to a named parameter to the SQL stored procedure or prepared statement\&. 
+.PP
+Definition at line 1014 of file AdoNetAppender\&.cs\&.
+.SS "byte log4net\&.Appender\&.AdoNetAppenderParameter\&.Precision\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the precision for this parameter\&. The precision for this parameter\&. 
+.PP
+The maximum number of digits used to represent the Value\&. 
+.PP
+This property is optional\&. If not specified the ADO\&.NET provider will attempt to infer the precision from the value\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+IDbDataParameter\&.Precision
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1064 of file AdoNetAppender\&.cs\&.
+.SS "byte log4net\&.Appender\&.AdoNetAppenderParameter\&.Scale\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the scale for this parameter\&. The scale for this parameter\&. 
+.PP
+The number of decimal places to which Value is resolved\&. 
+.PP
+This property is optional\&. If not specified the ADO\&.NET provider will attempt to infer the scale from the value\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+IDbDataParameter\&.Scale
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1086 of file AdoNetAppender\&.cs\&.
+.SS "int log4net\&.Appender\&.AdoNetAppenderParameter\&.Size\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the size for this parameter\&. The size for this parameter\&. 
+.PP
+The maximum size, in bytes, of the data within the column\&. 
+.PP
+This property is optional\&. If not specified the ADO\&.NET provider will attempt to infer the size from the value\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+IDbDataParameter\&.Size
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 1108 of file AdoNetAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

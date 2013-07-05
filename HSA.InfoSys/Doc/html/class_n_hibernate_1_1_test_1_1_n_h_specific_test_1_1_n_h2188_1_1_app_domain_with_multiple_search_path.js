@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2188_1_1_app_domain_with_multiple_search_path =
+[
+    [ "MyNhConfiguration", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2188_1_1_app_domain_with_multiple_search_path_1_1_my_nh_configuration.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2188_1_1_app_domain_with_multiple_search_path_1_1_my_nh_configuration" ],
+    [ "WhenSerchInMultiplePathsThenNotThrows", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h2188_1_1_app_domain_with_multiple_search_path.html#a0a1ff3a4492f80fea9e7d7213cb5a1c8", null ]
+];

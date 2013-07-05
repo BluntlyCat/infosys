@@ -1,0 +1,102 @@
+.TH "log4net.Appender.AspNetTraceAppender" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Appender.AspNetTraceAppender \- 
+.PP
+ 
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAspNetTraceAppender\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBAspNetTraceAppender\fP class\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBAppend\fP (\fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIWrite the logging event to the ASP\&.NET trace \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBRequiresLayout\fP\fC [get]\fP"
+.br
+.RI "\fIThis appender requires a \fBLayout\fP to be set\&. \fP"
+.ti -1c
+.RI "\fBPatternLayout\fP \fBCategory\fP\fC [get, set]\fP"
+.br
+.RI "\fIThe category parameter sent to the Trace method\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+
+Appends log events to the ASP\&.NET TraceContext system\&. 
+.PP
+Diagnostic information and tracing messages that you specify are appended to the output of the page that is sent to the requesting browser\&. Optionally, you can view this information from a separate trace viewer (Trace\&.axd) that displays trace information for every page in a given application\&. 
+.PP
+Trace statements are processed and displayed only when tracing is enabled\&. You can control whether tracing is displayed to a page, to the trace viewer, or both\&. 
+.PP
+The logging event is passed to the TraceContext\&.Write(string) or TraceContext\&.Warn(string) method depending on the level of the logging event\&. The event's logger name is the default value for the category parameter of the Write/Warn method\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> <author>Ron Grabowski</author> 
+.PP
+Definition at line 56 of file AspNetTraceAppender\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Appender\&.AspNetTraceAppender\&.AspNetTraceAppender ()"
+
+.PP
+Initializes a new instance of the \fBAspNetTraceAppender\fP class\&. Default constructor\&. 
+.PP
+Definition at line 68 of file AspNetTraceAppender\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Appender\&.AspNetTraceAppender\&.Append (\fBLoggingEvent\fPloggingEvent)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Write the logging event to the ASP\&.NET trace 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIloggingEvent\fP the event to log
+.RE
+.PP
+.PP
+Write the logging event to the ASP\&.NET trace \fCHttpContext\&.Current\&.Trace\fP (TraceContext)\&. 
+.PP
+Implements \fBlog4net\&.Appender\&.AppenderSkeleton\fP\&.
+.PP
+Definition at line 87 of file AspNetTraceAppender\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBPatternLayout\fP log4net\&.Appender\&.AspNetTraceAppender\&.Category\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The category parameter sent to the Trace method\&. Defaults to logger which will use the logger name of the current LoggingEvent as the category parameter\&. 
+.PP
+Definition at line 137 of file AspNetTraceAppender\&.cs\&.
+.SS "override bool log4net\&.Appender\&.AspNetTraceAppender\&.RequiresLayout\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+This appender requires a \fBLayout\fP to be set\&. \fCtrue\fP
+.PP
+This appender requires a \fBLayout\fP to be set\&. 
+.PP
+Definition at line 117 of file AspNetTraceAppender\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

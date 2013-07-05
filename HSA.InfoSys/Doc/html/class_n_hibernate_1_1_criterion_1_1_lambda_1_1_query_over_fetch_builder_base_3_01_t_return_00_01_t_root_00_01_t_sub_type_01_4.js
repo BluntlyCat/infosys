@@ -1,0 +1,9 @@
+var class_n_hibernate_1_1_criterion_1_1_lambda_1_1_query_over_fetch_builder_base_3_01_t_return_00_01_t_root_00_01_t_sub_type_01_4 =
+[
+    [ "QueryOverFetchBuilderBase", "class_n_hibernate_1_1_criterion_1_1_lambda_1_1_query_over_fetch_builder_base_3_01_t_return_00_01_t_root_00_01_t_sub_type_01_4.html#af3020bd54206c7bf559739c8705847d4", null ],
+    [ "path", "class_n_hibernate_1_1_criterion_1_1_lambda_1_1_query_over_fetch_builder_base_3_01_t_return_00_01_t_root_00_01_t_sub_type_01_4.html#a322de33e24f506111737c93a8505af67", null ],
+    [ "root", "class_n_hibernate_1_1_criterion_1_1_lambda_1_1_query_over_fetch_builder_base_3_01_t_return_00_01_t_root_00_01_t_sub_type_01_4.html#a7241a93d0b60d51508c615852a364b46", null ],
+    [ "Default", "class_n_hibernate_1_1_criterion_1_1_lambda_1_1_query_over_fetch_builder_base_3_01_t_return_00_01_t_root_00_01_t_sub_type_01_4.html#aadcd287dd2f17928d9a7435144102781", null ],
+    [ "Eager", "class_n_hibernate_1_1_criterion_1_1_lambda_1_1_query_over_fetch_builder_base_3_01_t_return_00_01_t_root_00_01_t_sub_type_01_4.html#a59a0e6d184ae3d851a3dfa30d0437a4c", null ],
+    [ "Lazy", "class_n_hibernate_1_1_criterion_1_1_lambda_1_1_query_over_fetch_builder_base_3_01_t_return_00_01_t_root_00_01_t_sub_type_01_4.html#a4b56a83ce816742d2012d67379a42caf", null ]
+];

@@ -1,0 +1,77 @@
+.TH "NHibernate.Dialect.Lock.UpdateLockingStrategy" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.Lock.UpdateLockingStrategy \- 
+.PP
+A locking strategy where the locks are obtained through update statements\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Lock\&.ILockingStrategy\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUpdateLockingStrategy\fP (\fBILockable\fP lockable, \fBLockMode\fP lockMode)"
+.br
+.RI "\fIConstruct a locking strategy based on SQL UPDATE statements\&. \fP"
+.ti -1c
+.RI "void \fBLock\fP (object id, object version, object obj, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIAcquire an appropriate type of lock on the underlying data that will endure until the end of the current transaction\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A locking strategy where the locks are obtained through update statements\&. 
+
+This strategy is not valid for read style locks\&. 
+.PP
+Definition at line 16 of file UpdateLockingStrategy\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Dialect\&.Lock\&.UpdateLockingStrategy\&.UpdateLockingStrategy (\fBILockable\fPlockable, \fBLockMode\fPlockMode)"
+
+.PP
+Construct a locking strategy based on SQL UPDATE statements\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlockable\fP The metadata for the entity to be locked\&. 
+.br
+\fIlockMode\fP Indictates the type of lock to be acquired\&. 
+.RE
+.PP
+.PP
+read-locks are not valid for this strategy\&. 
+.PP
+Definition at line 31 of file UpdateLockingStrategy\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Dialect\&.Lock\&.UpdateLockingStrategy\&.Lock (objectid, objectversion, objectobj, \fBISessionImplementor\fPsession)"
+
+.PP
+Acquire an appropriate type of lock on the underlying data that will endure until the end of the current transaction\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP The id of the row to be locked 
+.br
+\fIversion\fP The current version (or null if not versioned) 
+.br
+\fIobj\fP The object logically being locked (currently not used) 
+.br
+\fIsession\fP The session from which the lock request originated 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Dialect\&.Lock\&.ILockingStrategy\fP\&.
+.PP
+Definition at line 67 of file UpdateLockingStrategy\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

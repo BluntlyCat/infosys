@@ -1,0 +1,148 @@
+.TH "NHibernate.AdoNet.ResultSetWrapper" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.AdoNet.ResultSetWrapper \- 
+.PP
+A ResultSet delegate, responsible for locally caching the columnName-to-columnIndex resolution that has been found to be inefficient in a few vendor's drivers (i\&.e\&., Oracle and Postgres)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDataReader\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBResultSetWrapper\fP (IDataReader resultSet, \fBColumnNameCache\fP columnNameCache)"
+.br
+.ti -1c
+.RI "void \fBClose\fP ()"
+.br
+.ti -1c
+.RI "DataTable \fBGetSchemaTable\fP ()"
+.br
+.ti -1c
+.RI "bool \fBNextResult\fP ()"
+.br
+.ti -1c
+.RI "bool \fBRead\fP ()"
+.br
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.ti -1c
+.RI "string \fBGetName\fP (int i)"
+.br
+.ti -1c
+.RI "string \fBGetDataTypeName\fP (int i)"
+.br
+.ti -1c
+.RI "System\&.Type \fBGetFieldType\fP (int i)"
+.br
+.ti -1c
+.RI "object \fBGetValue\fP (int i)"
+.br
+.ti -1c
+.RI "int \fBGetValues\fP (object[] values)"
+.br
+.ti -1c
+.RI "int \fBGetOrdinal\fP (string name)"
+.br
+.ti -1c
+.RI "bool \fBGetBoolean\fP (int i)"
+.br
+.ti -1c
+.RI "byte \fBGetByte\fP (int i)"
+.br
+.ti -1c
+.RI "long \fBGetBytes\fP (int i, long fieldOffset, byte[] buffer, int bufferoffset, int length)"
+.br
+.ti -1c
+.RI "char \fBGetChar\fP (int i)"
+.br
+.ti -1c
+.RI "long \fBGetChars\fP (int i, long fieldoffset, char[] buffer, int bufferoffset, int length)"
+.br
+.ti -1c
+.RI "Guid \fBGetGuid\fP (int i)"
+.br
+.ti -1c
+.RI "short \fBGetInt16\fP (int i)"
+.br
+.ti -1c
+.RI "int \fBGetInt32\fP (int i)"
+.br
+.ti -1c
+.RI "long \fBGetInt64\fP (int i)"
+.br
+.ti -1c
+.RI "float \fBGetFloat\fP (int i)"
+.br
+.ti -1c
+.RI "double \fBGetDouble\fP (int i)"
+.br
+.ti -1c
+.RI "string \fBGetString\fP (int i)"
+.br
+.ti -1c
+.RI "decimal \fBGetDecimal\fP (int i)"
+.br
+.ti -1c
+.RI "DateTime \fBGetDateTime\fP (int i)"
+.br
+.ti -1c
+.RI "IDataReader \fBGetData\fP (int i)"
+.br
+.ti -1c
+.RI "bool \fBIsDBNull\fP (int i)"
+.br
+.ti -1c
+.RI "override bool \fBEquals\fP (object obj)"
+.br
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBDepth\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsClosed\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBRecordsAffected\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBFieldCount\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "object \fBthis[int i]\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "object \fBthis[string name]\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A ResultSet delegate, responsible for locally caching the columnName-to-columnIndex resolution that has been found to be inefficient in a few vendor's drivers (i\&.e\&., Oracle and Postgres)\&. 
+
+
+.PP
+\fBSee Also:\fP
+.RS 4
+IDataRecord\&.GetOrdinal
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 12 of file ResultSetWrapper\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

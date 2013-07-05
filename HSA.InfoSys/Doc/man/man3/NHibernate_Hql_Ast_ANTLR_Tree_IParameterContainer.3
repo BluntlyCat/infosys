@@ -1,0 +1,98 @@
+.TH "NHibernate.Hql.Ast.ANTLR.Tree.IParameterContainer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Hql.Ast.ANTLR.Tree.IParameterContainer \- 
+.PP
+Currently this is needed in order to deal with \fBFromElements\fP which contain 'hidden' JDBC parameters from applying filters\&. Would love for this to go away, but that would require that Hibernate's internal \fBjoin handling\fP be able to either:  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.BinaryLogicOperatorNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromElement\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SqlFragment\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAddEmbeddedParameter\fP (\fBIParameterSpecification\fP specification)"
+.br
+.RI "\fIAdds a parameter specification for a parameter encountered within this node\&. We use the term 'embedded' here because of the fact that the parameter was simply encountered as part of the node's text; it does not exist as part of a subtree as it might in a true AST\&. \fP"
+.ti -1c
+.RI "\fBIParameterSpecification\fP[] \fBGetEmbeddedParameters\fP ()"
+.br
+.RI "\fIRetrieve all embedded parameter specifications\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBText\fP\fC [set]\fP"
+.br
+.RI "\fISet the renderable text of this node\&. \fP"
+.ti -1c
+.RI "bool \fBHasEmbeddedParameters\fP\fC [get]\fP"
+.br
+.RI "\fIDetermine whether this node contans embedded parameters\&. The implication is that \fBgetEmbeddedParameters()\fP is allowed to return null if this method returns false\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Currently this is needed in order to deal with \fBFromElements\fP which contain 'hidden' JDBC parameters from applying filters\&. Would love for this to go away, but that would require that Hibernate's internal \fBjoin handling\fP be able to either: 
+
+
+.PD 0
+
+.IP "\(bu" 2
+render the same AST structures 
+.IP "\(bu" 2
+render structures capable of being converted to these AST structures 
+.PP
+In the interim, this allows us to at least treat these 'hidden' parameters properly which is the most pressing need\&. Author: Steve Ebersole Ported by: Steve Strong 
+.PP
+Definition at line 18 of file IParameterContainer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IParameterContainer\&.AddEmbeddedParameter (\fBIParameterSpecification\fPspecification)"
+
+.PP
+Adds a parameter specification for a parameter encountered within this node\&. We use the term 'embedded' here because of the fact that the parameter was simply encountered as part of the node's text; it does not exist as part of a subtree as it might in a true AST\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIspecification\fP The generated specification\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromElement\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.BinaryLogicOperatorNode\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SqlFragment\fP\&.
+.SS "\fBIParameterSpecification\fP [] NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IParameterContainer\&.GetEmbeddedParameters ()"
+
+.PP
+Retrieve all embedded parameter specifications\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+All embedded parameter specifications; may return null\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.BinaryLogicOperatorNode\fP, \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.FromElement\fP, and \fBNHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.SqlFragment\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IParameterContainer\&.HasEmbeddedParameters\fC [get]\fP"
+
+.PP
+Determine whether this node contans embedded parameters\&. The implication is that \fBgetEmbeddedParameters()\fP is allowed to return null if this method returns false\&. 
+.PP
+Definition at line 38 of file IParameterContainer\&.cs\&.
+.SS "string NHibernate\&.Hql\&.Ast\&.ANTLR\&.Tree\&.IParameterContainer\&.Text\fC [set]\fP"
+
+.PP
+Set the renderable text of this node\&. 
+.PP
+Definition at line 23 of file IParameterContainer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

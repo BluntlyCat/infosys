@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explicitly_declared_model_tests_1_1_split_properties_registration_tests =
+[
+    [ "WhenRegisterPropertySplitMoreThanOnceThenIgnore", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explicitly_declared_model_tests_1_1_split_properties_registration_tests.html#a8afcd4d1532babbe2fcfa835d2f92658", null ],
+    [ "WhenRegisterPropertySplitsThenTypeHasSplitGroups", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explicitly_declared_model_tests_1_1_split_properties_registration_tests.html#a64702a3497cd8644125b6f2053719ac3", null ]
+];

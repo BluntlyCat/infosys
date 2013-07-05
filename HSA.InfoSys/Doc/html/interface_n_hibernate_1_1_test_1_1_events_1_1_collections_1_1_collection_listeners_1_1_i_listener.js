@@ -1,0 +1,4 @@
+var interface_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_collection_listeners_1_1_i_listener =
+[
+    [ "AddEvent", "interface_n_hibernate_1_1_test_1_1_events_1_1_collections_1_1_collection_listeners_1_1_i_listener.html#aabe7ca14a45d51bc12f3d441203afb96", null ]
+];

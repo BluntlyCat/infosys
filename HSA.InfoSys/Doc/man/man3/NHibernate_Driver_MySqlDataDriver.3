@@ -1,0 +1,115 @@
+.TH "NHibernate.Driver.MySqlDataDriver" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Driver.MySqlDataDriver \- 
+.PP
+Provides a database driver for MySQL\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Driver\&.ReflectionBasedDriver\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMySqlDataDriver\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBMySqlDataDriver\fP class\&. \fP"
+.ti -1c
+.RI "override \fBIResultSetsCommand\fP \fBGetResultSetsCommand\fP (\fBEngine\&.ISessionImplementor\fP session)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBUseNamedPrefixInSql\fP\fC [get]\fP"
+.br
+.RI "\fI\fBMySql\&.Data\fP uses named parameters in the sql\&. \fP"
+.ti -1c
+.RI "override bool \fBUseNamedPrefixInParameter\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBNamedPrefix\fP\fC [get]\fP"
+.br
+.RI "\fI\fBMySql\&.Data\fP use the \fC?\fP to locate parameters in sql\&. \fP"
+.ti -1c
+.RI "override bool \fBSupportsMultipleOpenReaders\fP\fC [get]\fP"
+.br
+.RI "\fIThe \fBMySql\&.Data\fP driver does NOT support more than 1 open IDataReader with only 1 IDbConnection\&. \fP"
+.ti -1c
+.RI "override bool \fBSupportsPreparingCommands\fP\fC [get]\fP"
+.br
+.RI "\fI\fBMySql\&.Data\fP does not support preparing of commands\&. \fP"
+.ti -1c
+.RI "override bool \fBSupportsMultipleQueries\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Provides a database driver for MySQL\&. 
+
+In order to use this driver you must have the assembly \fCMySql\&.Data\&.dll\fP available for \fBNHibernate\fP to load, including its dependencies (\fCICSharpCode\&.SharpZipLib\&.dll\fP is required by the assembly \fCMySql\&.Data\&.dll\fP as of the time of this writing)\&. 
+.PP
+Please check the product's website
+.PP
+for any updates and/or documentation regarding MySQL\&. 
+.PP
+Definition at line 19 of file MySqlDataDriver\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Driver\&.MySqlDataDriver\&.MySqlDataDriver ()"
+
+.PP
+Initializes a new instance of the \fBMySqlDataDriver\fP class\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP Thrown when the \fC\fBMySql\&.Data\fP\fP assembly can not be loaded\&. 
+.RE
+.PP
+
+.PP
+Definition at line 27 of file MySqlDataDriver\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.Driver\&.MySqlDataDriver\&.NamedPrefix\fC [get]\fP"
+
+.PP
+\fBMySql\&.Data\fP use the \fC?\fP to locate parameters in sql\&. \fC?\fP is used to locate parameters in sql\&.
+.PP
+Definition at line 55 of file MySqlDataDriver\&.cs\&.
+.SS "override bool NHibernate\&.Driver\&.MySqlDataDriver\&.SupportsMultipleOpenReaders\fC [get]\fP"
+
+.PP
+The \fBMySql\&.Data\fP driver does NOT support more than 1 open IDataReader with only 1 IDbConnection\&. - it is not supported\&.
+.PP
+Definition at line 65 of file MySqlDataDriver\&.cs\&.
+.SS "override bool NHibernate\&.Driver\&.MySqlDataDriver\&.SupportsPreparingCommands\fC [get]\fP, \fC [protected]\fP"
+
+.PP
+\fBMySql\&.Data\fP does not support preparing of commands\&. - it is not supported\&.
+.PP
+With the Gamma \fBMySql\&.Data\fP provider it is throwing an exception with the message 'Expected End of data packet' when a select command is prepared\&. 
+.PP
+Definition at line 78 of file MySqlDataDriver\&.cs\&.
+.SS "override bool NHibernate\&.Driver\&.MySqlDataDriver\&.UseNamedPrefixInParameter\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 46 of file MySqlDataDriver\&.cs\&.
+.SS "override bool NHibernate\&.Driver\&.MySqlDataDriver\&.UseNamedPrefixInSql\fC [get]\fP"
+
+.PP
+\fBMySql\&.Data\fP uses named parameters in the sql\&. - \fBMySql\fP uses \fC?\fP in the sql\&.
+.PP
+Definition at line 40 of file MySqlDataDriver\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

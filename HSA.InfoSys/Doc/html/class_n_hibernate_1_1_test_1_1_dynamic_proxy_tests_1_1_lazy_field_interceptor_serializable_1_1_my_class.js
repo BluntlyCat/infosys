@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_lazy_field_interceptor_serializable_1_1_my_class =
+[
+    [ "Id", "class_n_hibernate_1_1_test_1_1_dynamic_proxy_tests_1_1_lazy_field_interceptor_serializable_1_1_my_class.html#a114f9eedb4f7bbeb272750f17bee8bf7", null ]
+];

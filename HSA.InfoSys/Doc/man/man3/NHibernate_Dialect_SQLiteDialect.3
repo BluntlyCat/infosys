@@ -1,0 +1,208 @@
+.TH "NHibernate.Dialect.SQLiteDialect" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Dialect.SQLiteDialect \- 
+.PP
+A SQL dialect for SQLite\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBSQLiteCastFunction\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSQLiteDialect\fP ()"
+.br
+.ti -1c
+.RI "override \fBSchema\&.IDataBaseSchema\fP \fBGetDataBaseSchema\fP (DbConnection connection)"
+.br
+.ti -1c
+.RI "override \fBSqlString\fP \fBAppendIdentitySelectToInsert\fP (\fBSqlString\fP insertSql)"
+.br
+.RI "\fIProvided we SupportsInsertSelectIdentity, then attch the 'select identity' clause to the insert statement\&. \fP"
+.ti -1c
+.RI "override string \fBQualify\fP (string catalog, string schema, string table)"
+.br
+.ti -1c
+.RI "override \fBSqlString\fP \fBGetLimitString\fP (\fBSqlString\fP queryString, \fBSqlString\fP offset, \fBSqlString\fP limit)"
+.br
+.RI "\fIAttempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. \fP"
+.ti -1c
+.RI "override bool \fBDropTemporaryTableAfterUse\fP ()"
+.br
+.RI "\fIDo we need to drop the temporary table after use? \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBRegisterColumnTypes\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterFunctions\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterKeywords\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBRegisterDefaultProperties\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override string \fBAddColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBIdentitySelectString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsInsertSelectIdentity\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBDropConstraints\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBForUpdateString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsSubSelects\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsIfExistsBeforeTableName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBHasDataTypeInIdentityColumn\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsIdentityColumns\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsLimit\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsLimitOffset\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBIdentityColumnString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBGenerateTablePrimaryKeyConstraintForIdentityColumn\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBNoColumnsInsertString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsTemporaryTables\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBCreateTemporaryTableString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBSelectGUIDString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBDisableForeignKeyConstraintsString\fP\fC [get]\fP"
+.br
+.RI "\fISQLite does not currently support dropping foreign key constraints by alter statements\&. This means that tables cannot be dropped if there are any rows that depend on those\&. If there are cycles between tables, it would even be excessively difficult to delete the data in the right order first\&. Because of this, we just turn off the foreign constraints before we drop the schema and hope that we're not going to break anything\&. :( We could theoretically check for data consistency afterwards, but we don't currently\&. \fP"
+.ti -1c
+.RI "override string \fBEnableForeignKeyConstraintsString\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBSupportsForeignKeyConstraintInAlterTable\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A SQL dialect for SQLite\&. 
+
+Author: \fCIoan Bizau \fP 
+.PP
+Definition at line 19 of file SQLiteDialect\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "NHibernate\&.Dialect\&.SQLiteDialect\&.SQLiteDialect ()"
+
+.PP
+
+.PP
+Definition at line 24 of file SQLiteDialect\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override \fBSqlString\fP NHibernate\&.Dialect\&.SQLiteDialect\&.AppendIdentitySelectToInsert (\fBSqlString\fPinsertString)\fC [virtual]\fP"
+
+.PP
+Provided we SupportsInsertSelectIdentity, then attch the 'select identity' clause to the insert statement\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinsertString\fP The insert command 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The insert command with any necessary identity select clause attached\&. Note, if SupportsInsertSelectIdentity == false then the insert-string should be returned without modification\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 118 of file SQLiteDialect\&.cs\&.
+.SS "override bool NHibernate\&.Dialect\&.SQLiteDialect\&.DropTemporaryTableAfterUse ()\fC [virtual]\fP"
+
+.PP
+Do we need to drop the temporary table after use? 
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 274 of file SQLiteDialect\&.cs\&.
+.SS "override \fBSqlString\fP NHibernate\&.Dialect\&.SQLiteDialect\&.GetLimitString (\fBSqlString\fPqueryString, \fBSqlString\fPoffset, \fBSqlString\fPlimit)\fC [virtual]\fP"
+
+.PP
+Attempts to add a \fCLIMIT\fP clause to the given SQL \fCSELECT\fP\&. Expects any database-specific offset and limit adjustments to have already been performed (ex\&. UseMaxForLimit, OffsetStartsAtOne)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryString\fP The SqlString to base the limit query off\&.
+.br
+\fIoffset\fP Offset of the first row to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no limit is requested\&. This should have already been adjusted to account for OffsetStartsAtOne\&.
+.br
+\fIlimit\fP Maximum number of rows to be returned by the query\&. This may be represented as a parameter, a string literal, or a null value if no offset is requested\&. This should have already been adjusted to account for UseMaxForLimit\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new SqlString that contains the \fCLIMIT\fP clause\&. Returns \fCnull\fP if \fIqueryString\fP  represents a SQL statement to which a limit clause cannot be added, for example when the query string is custom SQL invoking a stored procedure\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Dialect\&.Dialect\fP\&.
+.PP
+Definition at line 243 of file SQLiteDialect\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override string NHibernate\&.Dialect\&.SQLiteDialect\&.DisableForeignKeyConstraintsString\fC [get]\fP"
+
+.PP
+SQLite does not currently support dropping foreign key constraints by alter statements\&. This means that tables cannot be dropped if there are any rows that depend on those\&. If there are cycles between tables, it would even be excessively difficult to delete the data in the right order first\&. Because of this, we just turn off the foreign constraints before we drop the schema and hope that we're not going to break anything\&. :( We could theoretically check for data consistency afterwards, but we don't currently\&. 
+.PP
+Definition at line 293 of file SQLiteDialect\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

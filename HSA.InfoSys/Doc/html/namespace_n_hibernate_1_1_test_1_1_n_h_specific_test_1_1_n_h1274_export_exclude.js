@@ -1,0 +1,12 @@
+var namespace_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude =
+[
+    [ "Home", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_home.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_home" ],
+    [ "Home_Update", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_home___update.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_home___update" ],
+    [ "Home_Export", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_home___export.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_home___export" ],
+    [ "Home_Validate", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_home___validate.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_home___validate" ],
+    [ "Home_Drop", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_home___drop.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_home___drop" ],
+    [ "Home_None", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_home___none.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_home___none" ],
+    [ "Home_All", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_home___all.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_home___all" ],
+    [ "NH1274ExportExcludeFixture", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_n_h1274_export_exclude_fixture.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_n_h1274_export_exclude_fixture" ],
+    [ "Person", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_person.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1274_export_exclude_1_1_person" ]
+];

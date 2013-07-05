@@ -1,0 +1,48 @@
+.TH "NHibernate.Loader.Entity.EntityLoader" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Loader.Entity.EntityLoader \- 
+.PP
+Load an entity using outerjoin fetching to fetch associated entities\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Loader\&.Entity\&.AbstractEntityLoader\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEntityLoader\fP (\fBIOuterJoinLoadable\fP persister, \fBLockMode\fP lockMode, \fBISessionFactoryImplementor\fP factory, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "\fBEntityLoader\fP (\fBIOuterJoinLoadable\fP persister, int batchSize, \fBLockMode\fP lockMode, \fBISessionFactoryImplementor\fP factory, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "\fBEntityLoader\fP (\fBIOuterJoinLoadable\fP persister, string[] uniqueKey, \fBIType\fP uniqueKeyType, int batchSize, \fBLockMode\fP lockMode, \fBISessionFactoryImplementor\fP factory, IDictionary< string, \fBIFilter\fP > enabledFilters)"
+.br
+.ti -1c
+.RI "object \fBLoadByUniqueKey\fP (\fBISessionImplementor\fP session, object key)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBIsSingleRowLoader\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Load an entity using outerjoin fetching to fetch associated entities\&. 
+
+The IEntityPersister must implement ILoadable\&. For other entities, create a customized subclass of \fBLoader\fP\&. 
+.PP
+Definition at line 15 of file EntityLoader\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

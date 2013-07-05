@@ -1,0 +1,623 @@
+.TH "Newtonsoft.Json.JsonSerializer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.JsonSerializer \- 
+.PP
+Serializes and deserializes objects into and from the JSON format\&. The \fBJsonSerializer\fP enables you to control how objects are encoded into JSON\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by Newtonsoft\&.Json\&.Serialization\&.JsonSerializerProxy\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJsonSerializer\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBJsonSerializer\fP class\&. \fP"
+.ti -1c
+.RI "void \fBPopulate\fP (TextReader reader, object target)"
+.br
+.RI "\fIPopulates the JSON values onto the target object\&. \fP"
+.ti -1c
+.RI "void \fBPopulate\fP (\fBJsonReader\fP reader, object target)"
+.br
+.RI "\fIPopulates the JSON values onto the target object\&. \fP"
+.ti -1c
+.RI "object \fBDeserialize\fP (\fBJsonReader\fP reader)"
+.br
+.RI "\fIDeserializes the \fBJson\fP structure contained by the specified \fBJsonReader\fP\&. \fP"
+.ti -1c
+.RI "object \fBDeserialize\fP (TextReader reader, Type objectType)"
+.br
+.RI "\fIDeserializes the \fBJson\fP structure contained by the specified StringReader into an instance of the specified type\&. \fP"
+.ti -1c
+.RI "T \fBDeserialize< T >\fP (\fBJsonReader\fP reader)"
+.br
+.RI "\fIDeserializes the \fBJson\fP structure contained by the specified \fBJsonReader\fP into an instance of the specified type\&. \fP"
+.ti -1c
+.RI "object \fBDeserialize\fP (\fBJsonReader\fP reader, Type objectType)"
+.br
+.RI "\fIDeserializes the \fBJson\fP structure contained by the specified \fBJsonReader\fP into an instance of the specified type\&. \fP"
+.ti -1c
+.RI "void \fBSerialize\fP (TextWriter textWriter, object value)"
+.br
+.RI "\fISerializes the specified Object and writes the \fBJson\fP structure to a \fCStream\fP using the specified TextWriter\&. \fP"
+.ti -1c
+.RI "void \fBSerialize\fP (\fBJsonWriter\fP jsonWriter, object value, Type objectType)"
+.br
+.RI "\fISerializes the specified Object and writes the \fBJson\fP structure to a \fCStream\fP using the specified TextWriter\&. \fP"
+.ti -1c
+.RI "void \fBSerialize\fP (TextWriter textWriter, object value, Type objectType)"
+.br
+.RI "\fISerializes the specified Object and writes the \fBJson\fP structure to a \fCStream\fP using the specified TextWriter\&. \fP"
+.ti -1c
+.RI "void \fBSerialize\fP (\fBJsonWriter\fP jsonWriter, object value)"
+.br
+.RI "\fISerializes the specified Object and writes the \fBJson\fP structure to a \fCStream\fP using the specified \fBJsonWriter\fP\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBJsonSerializer\fP \fBCreate\fP ()"
+.br
+.RI "\fICreates a new \fBJsonSerializer\fP instance\&. The \fBJsonSerializer\fP will not use default settings\&. \fP"
+.ti -1c
+.RI "static \fBJsonSerializer\fP \fBCreate\fP (\fBJsonSerializerSettings\fP settings)"
+.br
+.RI "\fICreates a new \fBJsonSerializer\fP instance using the specified \fBJsonSerializerSettings\fP\&. The \fBJsonSerializer\fP will not use default settings\&. \fP"
+.ti -1c
+.RI "static \fBJsonSerializer\fP \fBCreateDefault\fP ()"
+.br
+.RI "\fICreates a new \fBJsonSerializer\fP instance\&. The \fBJsonSerializer\fP will use default settings\&. \fP"
+.ti -1c
+.RI "static \fBJsonSerializer\fP \fBCreateDefault\fP (\fBJsonSerializerSettings\fP settings)"
+.br
+.RI "\fICreates a new \fBJsonSerializer\fP instance using the specified \fBJsonSerializerSettings\fP\&. The \fBJsonSerializer\fP will use default settings\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBIReferenceResolver\fP \fBReferenceResolver\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the IReferenceResolver used by the serializer when resolving references\&. \fP"
+.ti -1c
+.RI "virtual SerializationBinder \fBBinder\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the SerializationBinder used by the serializer when resolving type names\&. \fP"
+.ti -1c
+.RI "virtual \fBITraceWriter\fP \fBTraceWriter\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the ITraceWriter used by the serializer when writing trace messages\&. \fP"
+.ti -1c
+.RI "virtual \fBTypeNameHandling\fP \fBTypeNameHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets how type name writing and reading is handled by the serializer\&. \fP"
+.ti -1c
+.RI "virtual FormatterAssemblyStyle \fBTypeNameAssemblyFormat\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets how a type name assembly is written and resolved by the serializer\&. \fP"
+.ti -1c
+.RI "virtual \fBPreserveReferencesHandling\fP \fBPreserveReferencesHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets how object references are preserved by the serializer\&. \fP"
+.ti -1c
+.RI "virtual \fBReferenceLoopHandling\fP \fBReferenceLoopHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how reference loops (e\&.g\&. a class referencing itself) is handled\&. \fP"
+.ti -1c
+.RI "virtual \fBMissingMemberHandling\fP \fBMissingMemberHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how missing members (e\&.g\&. JSON contains a property that isn't a member on the object) are handled during deserialization\&. \fP"
+.ti -1c
+.RI "virtual \fBNullValueHandling\fP \fBNullValueHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how null values are handled during serialization and deserialization\&. \fP"
+.ti -1c
+.RI "virtual \fBDefaultValueHandling\fP \fBDefaultValueHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how null default are handled during serialization and deserialization\&. \fP"
+.ti -1c
+.RI "virtual \fBObjectCreationHandling\fP \fBObjectCreationHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets how objects are created during deserialization\&. \fP"
+.ti -1c
+.RI "virtual \fBConstructorHandling\fP \fBConstructorHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets how constructors are used during deserialization\&. \fP"
+.ti -1c
+.RI "virtual \fBJsonConverterCollection\fP \fBConverters\fP\fC [get]\fP"
+.br
+.RI "\fIGets a collection \fBJsonConverter\fP that will be used during serialization\&. \fP"
+.ti -1c
+.RI "virtual \fBIContractResolver\fP \fBContractResolver\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the contract resolver used by the serializer when serializing \&.NET objects to JSON and vice versa\&. \fP"
+.ti -1c
+.RI "virtual StreamingContext \fBContext\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the StreamingContext used by the serializer when invoking serialization callback methods\&. \fP"
+.ti -1c
+.RI "virtual \fBFormatting\fP \fBFormatting\fP\fC [get, set]\fP"
+.br
+.RI "\fIIndicates how JSON text output is formatted\&. \fP"
+.ti -1c
+.RI "virtual \fBDateFormatHandling\fP \fBDateFormatHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how dates are written to JSON text\&. \fP"
+.ti -1c
+.RI "virtual \fBDateTimeZoneHandling\fP \fBDateTimeZoneHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how \fBDateTime\fP time zones are handling during serialization and deserialization\&. \fP"
+.ti -1c
+.RI "virtual \fBDateParseHandling\fP \fBDateParseHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how date formatted strings, e\&.g\&. '\\/Date(1198908717056)\\/' and '2012-03-21T05:40Z', are parsed when reading JSON\&. \fP"
+.ti -1c
+.RI "virtual \fBFloatParseHandling\fP \fBFloatParseHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how floating point numbers, e\&.g\&. 1\&.0 and 9\&.9, are parsed when reading JSON text\&. \fP"
+.ti -1c
+.RI "virtual \fBFloatFormatHandling\fP \fBFloatFormatHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how special floating point numbers, e\&.g\&. F:System\&.Double\&.NaN, F:System\&.Double\&.PositiveInfinity and F:System\&.Double\&.NegativeInfinity, are written as JSON text\&. \fP"
+.ti -1c
+.RI "virtual \fBStringEscapeHandling\fP \fBStringEscapeHandling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how strings are escaped when writing JSON text\&. \fP"
+.ti -1c
+.RI "virtual string \fBDateFormatString\fP\fC [get, set]\fP"
+.br
+.RI "\fIGet or set how \fBDateTime\fP and \fBDateTimeOffset\fP values are formatting when writing JSON text\&. \fP"
+.ti -1c
+.RI "virtual CultureInfo \fBCulture\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the culture used when reading JSON\&. Defaults to CultureInfo\&.InvariantCulture\&. \fP"
+.ti -1c
+.RI "virtual int \fBMaxDepth\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the maximum depth allowed when reading JSON\&. Reading past this depth will throw a \fBJsonReaderException\fP\&. \fP"
+.ti -1c
+.RI "virtual bool \fBCheckAdditionalContent\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets a value indicating whether there will be a check for additional JSON content after deserializing an object\&. \fP"
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "virtual EventHandler
+.br
+< \fBErrorEventArgs\fP > \fBError\fP"
+.br
+.RI "\fIOccurs when the \fBJsonSerializer\fP errors during serialization and deserialization\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Serializes and deserializes objects into and from the JSON format\&. The \fBJsonSerializer\fP enables you to control how objects are encoded into JSON\&. 
+
+
+.PP
+Definition at line 44 of file JsonSerializer\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Newtonsoft\&.Json\&.JsonSerializer\&.JsonSerializer ()"
+
+.PP
+Initializes a new instance of the \fBJsonSerializer\fP class\&. 
+.PP
+Definition at line 429 of file JsonSerializer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBJsonSerializer\fP Newtonsoft\&.Json\&.JsonSerializer\&.Create ()\fC [static]\fP"
+
+.PP
+Creates a new \fBJsonSerializer\fP instance\&. The \fBJsonSerializer\fP will not use default settings\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A new \fBJsonSerializer\fP instance\&. The \fBJsonSerializer\fP will not use default settings\&. 
+.RE
+.PP
+
+.PP
+Definition at line 454 of file JsonSerializer\&.cs\&.
+.SS "static \fBJsonSerializer\fP Newtonsoft\&.Json\&.JsonSerializer\&.Create (\fBJsonSerializerSettings\fPsettings)\fC [static]\fP"
+
+.PP
+Creates a new \fBJsonSerializer\fP instance using the specified \fBJsonSerializerSettings\fP\&. The \fBJsonSerializer\fP will not use default settings\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsettings\fP The settings to be applied to the \fBJsonSerializer\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new \fBJsonSerializer\fP instance using the specified \fBJsonSerializerSettings\fP\&. The \fBJsonSerializer\fP will not use default settings\&. 
+.RE
+.PP
+
+.PP
+Definition at line 468 of file JsonSerializer\&.cs\&.
+.SS "static \fBJsonSerializer\fP Newtonsoft\&.Json\&.JsonSerializer\&.CreateDefault ()\fC [static]\fP"
+
+.PP
+Creates a new \fBJsonSerializer\fP instance\&. The \fBJsonSerializer\fP will use default settings\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A new \fBJsonSerializer\fP instance\&. The \fBJsonSerializer\fP will use default settings\&. 
+.RE
+.PP
+
+.PP
+Definition at line 486 of file JsonSerializer\&.cs\&.
+.SS "static \fBJsonSerializer\fP Newtonsoft\&.Json\&.JsonSerializer\&.CreateDefault (\fBJsonSerializerSettings\fPsettings)\fC [static]\fP"
+
+.PP
+Creates a new \fBJsonSerializer\fP instance using the specified \fBJsonSerializerSettings\fP\&. The \fBJsonSerializer\fP will use default settings\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsettings\fP The settings to be applied to the \fBJsonSerializer\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A new \fBJsonSerializer\fP instance using the specified \fBJsonSerializerSettings\fP\&. The \fBJsonSerializer\fP will use default settings\&. 
+.RE
+.PP
+
+.PP
+Definition at line 504 of file JsonSerializer\&.cs\&.
+.SS "object Newtonsoft\&.Json\&.JsonSerializer\&.Deserialize (\fBJsonReader\fPreader)"
+
+.PP
+Deserializes the \fBJson\fP structure contained by the specified \fBJsonReader\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The \fBJsonReader\fP that contains the JSON structure to deserialize\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The Object being deserialized\&.
+.RE
+.PP
+
+.PP
+Definition at line 625 of file JsonSerializer\&.cs\&.
+.SS "object Newtonsoft\&.Json\&.JsonSerializer\&.Deserialize (TextReaderreader, TypeobjectType)"
+
+.PP
+Deserializes the \fBJson\fP structure contained by the specified StringReader into an instance of the specified type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The TextReader containing the object\&.
+.br
+\fIobjectType\fP The Type of object being deserialized\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance of \fIobjectType\fP  being deserialized\&.
+.RE
+.PP
+
+.PP
+Definition at line 637 of file JsonSerializer\&.cs\&.
+.SS "object Newtonsoft\&.Json\&.JsonSerializer\&.Deserialize (\fBJsonReader\fPreader, TypeobjectType)"
+
+.PP
+Deserializes the \fBJson\fP structure contained by the specified \fBJsonReader\fP into an instance of the specified type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The \fBJsonReader\fP containing the object\&.
+.br
+\fIobjectType\fP The Type of object being deserialized\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance of \fIobjectType\fP  being deserialized\&.
+.RE
+.PP
+
+.PP
+Definition at line 661 of file JsonSerializer\&.cs\&.
+.SS "T \fBNewtonsoft\&.Json\&.JsonSerializer\&.Deserialize\fP< T > (\fBJsonReader\fPreader)"
+
+.PP
+Deserializes the \fBJson\fP structure contained by the specified \fBJsonReader\fP into an instance of the specified type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The \fBJsonReader\fP containing the object\&.
+.RE
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The type of the object to deserialize\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The instance of \fIT\fP  being deserialized\&.
+.RE
+.PP
+
+.PP
+Definition at line 649 of file JsonSerializer\&.cs\&.
+.SS "void Newtonsoft\&.Json\&.JsonSerializer\&.Populate (TextReaderreader, objecttarget)"
+
+.PP
+Populates the JSON values onto the target object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The TextReader that contains the JSON structure to reader values from\&.
+.br
+\fItarget\fP The target object to populate values onto\&.
+.RE
+.PP
+
+.PP
+Definition at line 596 of file JsonSerializer\&.cs\&.
+.SS "void Newtonsoft\&.Json\&.JsonSerializer\&.Populate (\fBJsonReader\fPreader, objecttarget)"
+
+.PP
+Populates the JSON values onto the target object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP The \fBJsonReader\fP that contains the JSON structure to reader values from\&.
+.br
+\fItarget\fP The target object to populate values onto\&.
+.RE
+.PP
+
+.PP
+Definition at line 606 of file JsonSerializer\&.cs\&.
+.SS "void Newtonsoft\&.Json\&.JsonSerializer\&.Serialize (TextWritertextWriter, objectvalue)"
+
+.PP
+Serializes the specified Object and writes the \fBJson\fP structure to a \fCStream\fP using the specified TextWriter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItextWriter\fP The TextWriter used to write the \fBJson\fP structure\&.
+.br
+\fIvalue\fP The Object to serialize\&.
+.RE
+.PP
+
+.PP
+Definition at line 737 of file JsonSerializer\&.cs\&.
+.SS "void Newtonsoft\&.Json\&.JsonSerializer\&.Serialize (\fBJsonWriter\fPjsonWriter, objectvalue, TypeobjectType)"
+
+.PP
+Serializes the specified Object and writes the \fBJson\fP structure to a \fCStream\fP using the specified TextWriter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIjsonWriter\fP The \fBJsonWriter\fP used to write the \fBJson\fP structure\&.
+.br
+\fIvalue\fP The Object to serialize\&.
+.br
+\fIobjectType\fP The type of the value being serialized\&. This parameter is used when \fBTypeNameHandling\fP is Auto to write out the type name if the type of the value does not match\&. Specifing the type is optional\&. 
+.RE
+.PP
+
+.PP
+Definition at line 753 of file JsonSerializer\&.cs\&.
+.SS "void Newtonsoft\&.Json\&.JsonSerializer\&.Serialize (TextWritertextWriter, objectvalue, TypeobjectType)"
+
+.PP
+Serializes the specified Object and writes the \fBJson\fP structure to a \fCStream\fP using the specified TextWriter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItextWriter\fP The TextWriter used to write the \fBJson\fP structure\&.
+.br
+\fIvalue\fP The Object to serialize\&.
+.br
+\fIobjectType\fP The type of the value being serialized\&. This parameter is used when \fBTypeNameHandling\fP is Auto to write out the type name if the type of the value does not match\&. Specifing the type is optional\&. 
+.RE
+.PP
+
+.PP
+Definition at line 769 of file JsonSerializer\&.cs\&.
+.SS "void Newtonsoft\&.Json\&.JsonSerializer\&.Serialize (\fBJsonWriter\fPjsonWriter, objectvalue)"
+
+.PP
+Serializes the specified Object and writes the \fBJson\fP structure to a \fCStream\fP using the specified \fBJsonWriter\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIjsonWriter\fP The \fBJsonWriter\fP used to write the \fBJson\fP structure\&.
+.br
+\fIvalue\fP The Object to serialize\&.
+.RE
+.PP
+
+.PP
+Definition at line 780 of file JsonSerializer\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "virtual SerializationBinder Newtonsoft\&.Json\&.JsonSerializer\&.Binder\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the SerializationBinder used by the serializer when resolving type names\&. 
+.PP
+Definition at line 101 of file JsonSerializer\&.cs\&.
+.SS "virtual bool Newtonsoft\&.Json\&.JsonSerializer\&.CheckAdditionalContent\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets a value indicating whether there will be a check for additional JSON content after deserializing an object\&. \fCtrue\fP if there will be a check for additional JSON content after deserializing an object; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 414 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBConstructorHandling\fP Newtonsoft\&.Json\&.JsonSerializer\&.ConstructorHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets how constructors are used during deserialization\&. The constructor handling\&.
+.PP
+Definition at line 258 of file JsonSerializer\&.cs\&.
+.SS "virtual StreamingContext Newtonsoft\&.Json\&.JsonSerializer\&.Context\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the StreamingContext used by the serializer when invoking serialization callback methods\&. The context\&.
+.PP
+Definition at line 299 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBIContractResolver\fP Newtonsoft\&.Json\&.JsonSerializer\&.ContractResolver\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the contract resolver used by the serializer when serializing \&.NET objects to JSON and vice versa\&. 
+.PP
+Definition at line 289 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBJsonConverterCollection\fP Newtonsoft\&.Json\&.JsonSerializer\&.Converters\fC [get]\fP"
+
+.PP
+Gets a collection \fBJsonConverter\fP that will be used during serialization\&. Collection \fBJsonConverter\fP that will be used during serialization\&.
+.PP
+Definition at line 274 of file JsonSerializer\&.cs\&.
+.SS "virtual CultureInfo Newtonsoft\&.Json\&.JsonSerializer\&.Culture\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the culture used when reading JSON\&. Defaults to CultureInfo\&.InvariantCulture\&. 
+.PP
+Definition at line 386 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBDateFormatHandling\fP Newtonsoft\&.Json\&.JsonSerializer\&.DateFormatHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how dates are written to JSON text\&. 
+.PP
+Definition at line 317 of file JsonSerializer\&.cs\&.
+.SS "virtual string Newtonsoft\&.Json\&.JsonSerializer\&.DateFormatString\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how \fBDateTime\fP and \fBDateTimeOffset\fP values are formatting when writing JSON text\&. 
+.PP
+Definition at line 373 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBDateParseHandling\fP Newtonsoft\&.Json\&.JsonSerializer\&.DateParseHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how date formatted strings, e\&.g\&. '\\/Date(1198908717056)\\/' and '2012-03-21T05:40Z', are parsed when reading JSON\&. 
+.PP
+Definition at line 335 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBDateTimeZoneHandling\fP Newtonsoft\&.Json\&.JsonSerializer\&.DateTimeZoneHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how \fBDateTime\fP time zones are handling during serialization and deserialization\&. 
+.PP
+Definition at line 326 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBDefaultValueHandling\fP Newtonsoft\&.Json\&.JsonSerializer\&.DefaultValueHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how null default are handled during serialization and deserialization\&. 
+.PP
+Definition at line 226 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBFloatFormatHandling\fP Newtonsoft\&.Json\&.JsonSerializer\&.FloatFormatHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how special floating point numbers, e\&.g\&. F:System\&.Double\&.NaN, F:System\&.Double\&.PositiveInfinity and F:System\&.Double\&.NegativeInfinity, are written as JSON text\&. 
+.PP
+Definition at line 355 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBFloatParseHandling\fP Newtonsoft\&.Json\&.JsonSerializer\&.FloatParseHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how floating point numbers, e\&.g\&. 1\&.0 and 9\&.9, are parsed when reading JSON text\&. 
+.PP
+Definition at line 344 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBFormatting\fP Newtonsoft\&.Json\&.JsonSerializer\&.Formatting\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Indicates how JSON text output is formatted\&. 
+.PP
+Definition at line 308 of file JsonSerializer\&.cs\&.
+.SS "virtual int Newtonsoft\&.Json\&.JsonSerializer\&.MaxDepth\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the maximum depth allowed when reading JSON\&. Reading past this depth will throw a \fBJsonReaderException\fP\&. 
+.PP
+Definition at line 395 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBMissingMemberHandling\fP Newtonsoft\&.Json\&.JsonSerializer\&.MissingMemberHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how missing members (e\&.g\&. JSON contains a property that isn't a member on the object) are handled during deserialization\&. 
+.PP
+Definition at line 196 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBNullValueHandling\fP Newtonsoft\&.Json\&.JsonSerializer\&.NullValueHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how null values are handled during serialization and deserialization\&. 
+.PP
+Definition at line 211 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBObjectCreationHandling\fP Newtonsoft\&.Json\&.JsonSerializer\&.ObjectCreationHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets how objects are created during deserialization\&. The object creation handling\&.
+.PP
+Definition at line 242 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBPreserveReferencesHandling\fP Newtonsoft\&.Json\&.JsonSerializer\&.PreserveReferencesHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets how object references are preserved by the serializer\&. 
+.PP
+Definition at line 166 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBReferenceLoopHandling\fP Newtonsoft\&.Json\&.JsonSerializer\&.ReferenceLoopHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how reference loops (e\&.g\&. a class referencing itself) is handled\&. 
+.PP
+Definition at line 181 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBIReferenceResolver\fP Newtonsoft\&.Json\&.JsonSerializer\&.ReferenceResolver\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the IReferenceResolver used by the serializer when resolving references\&. 
+.PP
+Definition at line 86 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBStringEscapeHandling\fP Newtonsoft\&.Json\&.JsonSerializer\&.StringEscapeHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Get or set how strings are escaped when writing JSON text\&. 
+.PP
+Definition at line 364 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBITraceWriter\fP Newtonsoft\&.Json\&.JsonSerializer\&.TraceWriter\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the ITraceWriter used by the serializer when writing trace messages\&. The trace writer\&.
+.PP
+Definition at line 120 of file JsonSerializer\&.cs\&.
+.SS "virtual FormatterAssemblyStyle Newtonsoft\&.Json\&.JsonSerializer\&.TypeNameAssemblyFormat\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets how a type name assembly is written and resolved by the serializer\&. The type name assembly format\&.
+.PP
+Definition at line 151 of file JsonSerializer\&.cs\&.
+.SS "virtual \fBTypeNameHandling\fP Newtonsoft\&.Json\&.JsonSerializer\&.TypeNameHandling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets how type name writing and reading is handled by the serializer\&. 
+.PP
+Definition at line 135 of file JsonSerializer\&.cs\&.
+.SH "Event Documentation"
+.PP 
+.SS "virtual EventHandler<\fBErrorEventArgs\fP> Newtonsoft\&.Json\&.JsonSerializer\&.Error"
+
+.PP
+Occurs when the \fBJsonSerializer\fP errors during serialization and deserialization\&. 
+.PP
+Definition at line 80 of file JsonSerializer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

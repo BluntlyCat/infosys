@@ -1,0 +1,95 @@
+.TH "NHibernate.Mapping.SimpleAuxiliaryDatabaseObject" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.SimpleAuxiliaryDatabaseObject \- 
+.PP
+A simple implementation of \fBAbstractAuxiliaryDatabaseObject\fP in which the CREATE and DROP strings are provided up front\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.AbstractAuxiliaryDatabaseObject\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSimpleAuxiliaryDatabaseObject\fP (String sqlCreateString, String sqlDropString)"
+.br
+.ti -1c
+.RI "\fBSimpleAuxiliaryDatabaseObject\fP (String sqlCreateString, String sqlDropString, HashSet< string > dialectScopes)"
+.br
+.ti -1c
+.RI "override string \fBSqlCreateString\fP (\fBDialect\&.Dialect\fP dialect, \fBIMapping\fP p, string defaultCatalog, string defaultSchema)"
+.br
+.RI "\fIWhen implemented by a class, generates the SQL string to create the mapping element in the database\&. \fP"
+.ti -1c
+.RI "override string \fBSqlDropString\fP (\fBDialect\&.Dialect\fP dialect, string defaultCatalog, string defaultSchema)"
+.br
+.RI "\fIWhen implemented by a class, generates the SQL string to drop the mapping element from the database\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A simple implementation of \fBAbstractAuxiliaryDatabaseObject\fP in which the CREATE and DROP strings are provided up front\&. 
+
+Contains simple facilities for templating the catalog and schema names into the provided strings\&. This is the form created when the mapping documents use <create/> and <drop/>\&. 
+.PP
+Definition at line 18 of file SimpleAuxiliaryDatabaseObject\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override string NHibernate\&.Mapping\&.SimpleAuxiliaryDatabaseObject\&.SqlCreateString (\fBDialect\&.Dialect\fPdialect, \fBIMapping\fPp, stringdefaultCatalog, stringdefaultSchema)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, generates the SQL string to create the mapping element in the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP to use for SQL rules\&.
+.br
+\fIp\fP 
+.br
+\fIdefaultSchema\fP 
+.br
+\fIdefaultCatalog\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that contains the SQL to create an object\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Mapping\&.AbstractAuxiliaryDatabaseObject\fP\&.
+.PP
+Definition at line 36 of file SimpleAuxiliaryDatabaseObject\&.cs\&.
+.SS "override string NHibernate\&.Mapping\&.SimpleAuxiliaryDatabaseObject\&.SqlDropString (\fBDialect\&.Dialect\fPdialect, stringdefaultCatalog, stringdefaultSchema)\fC [virtual]\fP"
+
+.PP
+When implemented by a class, generates the SQL string to drop the mapping element from the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP to use for SQL rules\&.
+.br
+\fIdefaultCatalog\fP 
+.br
+\fIdefaultSchema\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that contains the SQL to drop an object\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Mapping\&.AbstractAuxiliaryDatabaseObject\fP\&.
+.PP
+Definition at line 41 of file SimpleAuxiliaryDatabaseObject\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

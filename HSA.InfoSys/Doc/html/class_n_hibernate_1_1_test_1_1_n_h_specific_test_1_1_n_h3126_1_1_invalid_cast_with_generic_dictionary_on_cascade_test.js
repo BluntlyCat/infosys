@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3126_1_1_invalid_cast_with_generic_dictionary_on_cascade_test =
+[
+    [ "OnTearDown", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3126_1_1_invalid_cast_with_generic_dictionary_on_cascade_test.html#aa15e0f12cd8129ad47ac1e07b110a78d", null ],
+    [ "Test", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h3126_1_1_invalid_cast_with_generic_dictionary_on_cascade_test.html#acea49c63e442847d71f381272522b36c", null ]
+];

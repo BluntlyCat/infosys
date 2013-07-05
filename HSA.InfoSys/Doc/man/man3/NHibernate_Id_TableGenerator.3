@@ -1,0 +1,226 @@
+.TH "NHibernate.Id.TableGenerator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.TableGenerator \- 
+.PP
+An \fBIIdentifierGenerator\fP that uses a database table to store the last generated value\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Engine\&.TransactionHelper\fP, \fBNHibernate\&.Id\&.IPersistentIdentifierGenerator\fP, and \fBNHibernate\&.Id\&.IConfigurable\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Id\&.TableHiLoGenerator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBConfigure\fP (\fBIType\fP type, IDictionary< string, string > parms, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIConfigures the \fBTableGenerator\fP by reading the value of \fCtable\fP, \fCcolumn\fP, and \fCschema\fP from the \fCparms\fP parameter\&. \fP"
+.ti -1c
+.RI "virtual object \fBGenerate\fP (\fBISessionImplementor\fP session, object obj)"
+.br
+.RI "\fIGenerate a short, int, or long for the identifier by selecting and updating a value in a table\&. \fP"
+.ti -1c
+.RI "virtual string[] \fBSqlCreateStrings\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIThe SQL required to create the database objects for a \fBTableGenerator\fP\&. \fP"
+.ti -1c
+.RI "virtual string[] \fBSqlDropString\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIThe SQL required to remove the underlying database objects for a \fBTableGenerator\fP\&. \fP"
+.ti -1c
+.RI "string \fBGeneratorKey\fP ()"
+.br
+.RI "\fIReturn a key unique to the underlying database objects for a \fBTableGenerator\fP\&. \fP"
+.ti -1c
+.RI "override object \fBDoWorkInCurrentTransaction\fP (\fBISessionImplementor\fP session, IDbConnection conn, IDbTransaction transaction)"
+.br
+.RI "\fIThe work to be done\fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBWhere\fP = 'where'"
+.br
+.RI "\fIAn additional where clause that is added to the queries against the table\&. \fP"
+.ti -1c
+.RI "const string \fBColumnParamName\fP = 'column'"
+.br
+.RI "\fIThe name of the column parameter\&. \fP"
+.ti -1c
+.RI "const string \fBTableParamName\fP = 'table'"
+.br
+.RI "\fIThe name of the table parameter\&. \fP"
+.ti -1c
+.RI "const string \fBDefaultColumnName\fP = 'next_hi'"
+.br
+.RI "\fIDefault column name \fP"
+.ti -1c
+.RI "const string \fBDefaultTableName\fP = 'hibernate_unique_key'"
+.br
+.RI "\fIDefault table name \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlType\fP \fBcolumnSqlType\fP"
+.br
+.ti -1c
+.RI "\fBPrimitiveType\fP \fBcolumnType\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An \fBIIdentifierGenerator\fP that uses a database table to store the last generated value\&. 
+
+It is not intended that applications use this strategy directly\&. However, it may be used to build other (efficient) strategies\&. The return type is \fCSystem\&.Int32\fP 
+.PP
+The hi value MUST be fetched in a separate transaction to the \fC\fBISession\fP\fP transaction so the generator must be able to obtain a new connection and commit it\&. Hence this implementation may not be used when the user is supplying connections\&. 
+.PP
+The mapping parameters \fCtable\fP and \fCcolumn\fP are required\&. 
+.PP
+Definition at line 36 of file TableGenerator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Id\&.TableGenerator\&.Configure (\fBIType\fPtype, IDictionary< string, string >parms, \fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+Configures the \fBTableGenerator\fP by reading the value of \fCtable\fP, \fCcolumn\fP, and \fCschema\fP from the \fCparms\fP parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The IType the identifier should be\&.
+.br
+\fIparms\fP An IDictionary of \fBParam\fP values that are keyed by parameter name\&.
+.br
+\fIdialect\fP The \fBDialect\fP to help with Configuration\&.
+.RE
+.PP
+
+.PP
+Definition at line 82 of file TableGenerator\&.cs\&.
+.SS "override object NHibernate\&.Id\&.TableGenerator\&.DoWorkInCurrentTransaction (\fBISessionImplementor\fPsession, IDbConnectionconn, IDbTransactiontransaction)\fC [virtual]\fP"
+
+.PP
+The work to be done
+.PP
+Implements \fBNHibernate\&.Engine\&.TransactionHelper\fP\&.
+.PP
+Definition at line 212 of file TableGenerator\&.cs\&.
+.SS "virtual object NHibernate\&.Id\&.TableGenerator\&.Generate (\fBISessionImplementor\fPsession, objectobj)\fC [virtual]\fP"
+
+.PP
+Generate a short, int, or long for the identifier by selecting and updating a value in a table\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The ISessionImplementor this id is being generated in\&.
+.br
+\fIobj\fP The entity for which the id is being generated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new identifier as a short, int, or long\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IIdentifierGenerator\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Id\&.TableHiLoGenerator\fP\&.
+.PP
+Definition at line 154 of file TableGenerator\&.cs\&.
+.SS "string NHibernate\&.Id\&.TableGenerator\&.GeneratorKey ()"
+
+.PP
+Return a key unique to the underlying database objects for a \fBTableGenerator\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The configured table name\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IPersistentIdentifierGenerator\fP\&.
+.PP
+Definition at line 205 of file TableGenerator\&.cs\&.
+.SS "virtual string [] NHibernate\&.Id\&.TableGenerator\&.SqlCreateStrings (\fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+The SQL required to create the database objects for a \fBTableGenerator\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\fP to help with creating the sql\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An array of string objects that contain the \fBDialect\fP specific sql to create the necessary database objects and to create the first value as \fC1\fP for the \fBTableGenerator\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 175 of file TableGenerator\&.cs\&.
+.SS "virtual string [] NHibernate\&.Id\&.TableGenerator\&.SqlDropString (\fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+The SQL required to remove the underlying database objects for a \fBTableGenerator\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\fP to help with creating the sql\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A string that will drop the database objects for the \fBTableGenerator\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 194 of file TableGenerator\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const string NHibernate\&.Id\&.TableGenerator\&.ColumnParamName = 'column'"
+
+.PP
+The name of the column parameter\&. 
+.PP
+Definition at line 49 of file TableGenerator\&.cs\&.
+.SS "const string NHibernate\&.Id\&.TableGenerator\&.DefaultColumnName = 'next_hi'"
+
+.PP
+Default column name 
+.PP
+Definition at line 57 of file TableGenerator\&.cs\&.
+.SS "const string NHibernate\&.Id\&.TableGenerator\&.DefaultTableName = 'hibernate_unique_key'"
+
+.PP
+Default table name 
+.PP
+Definition at line 60 of file TableGenerator\&.cs\&.
+.SS "const string NHibernate\&.Id\&.TableGenerator\&.TableParamName = 'table'"
+
+.PP
+The name of the table parameter\&. 
+.PP
+Definition at line 54 of file TableGenerator\&.cs\&.
+.SS "const string NHibernate\&.Id\&.TableGenerator\&.Where = 'where'"
+
+.PP
+An additional where clause that is added to the queries against the table\&. 
+.PP
+Definition at line 44 of file TableGenerator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

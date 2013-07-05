@@ -1,0 +1,99 @@
+.TH "NHibernate.Connection.UserSuppliedConnectionProvider" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Connection.UserSuppliedConnectionProvider \- 
+.PP
+An implementation of the \fC\fBIConnectionProvider\fP\fP that simply throws an exception when a connection is requested\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Connection\&.ConnectionProvider\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBCloseConnection\fP (IDbConnection conn)"
+.br
+.RI "\fIThrows an InvalidOperationException if this method is called because the user is responsible for closing IDbConnections\&. \fP"
+.ti -1c
+.RI "override IDbConnection \fBGetConnection\fP ()"
+.br
+.RI "\fIThrows an InvalidOperationException if this method is called because the user is responsible for creating IDbConnections\&. \fP"
+.ti -1c
+.RI "override void \fBConfigure\fP (IDictionary< string, string > settings)"
+.br
+.RI "\fIConfigures the \fBConnectionProvider\fP with only the \fBDriver\fP class\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An implementation of the \fC\fBIConnectionProvider\fP\fP that simply throws an exception when a connection is requested\&. 
+
+This implementation indicates that the user is expected to supply an ADO\&.NET connection 
+.PP
+Definition at line 15 of file UserSuppliedConnectionProvider\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void NHibernate\&.Connection\&.UserSuppliedConnectionProvider\&.CloseConnection (IDbConnectionconn)\fC [virtual]\fP"
+
+.PP
+Throws an InvalidOperationException if this method is called because the user is responsible for closing IDbConnections\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconn\fP The IDbConnection to clean up\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInvalidOperationException\fP Thrown when this method is called\&. User is responsible for closing IDbConnections\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Connection\&.ConnectionProvider\fP\&.
+.PP
+Definition at line 28 of file UserSuppliedConnectionProvider\&.cs\&.
+.SS "override void NHibernate\&.Connection\&.UserSuppliedConnectionProvider\&.Configure (IDictionary< string, string >settings)\fC [virtual]\fP"
+
+.PP
+Configures the \fBConnectionProvider\fP with only the \fBDriver\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsettings\fP 
+.RE
+.PP
+.PP
+All other settings of the \fBConnection\fP are the responsibility of the User since they configured \fBNHibernate\fP to use a \fBConnection\fP supplied by the User\&. 
+.PP
+Reimplemented from \fBNHibernate\&.Connection\&.ConnectionProvider\fP\&.
+.PP
+Definition at line 57 of file UserSuppliedConnectionProvider\&.cs\&.
+.SS "override IDbConnection NHibernate\&.Connection\&.UserSuppliedConnectionProvider\&.GetConnection ()\fC [virtual]\fP"
+
+.PP
+Throws an InvalidOperationException if this method is called because the user is responsible for creating IDbConnections\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+No value is returned because an InvalidOperationException is thrown\&. 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInvalidOperationException\fP Thrown when this method is called\&. User is responsible for creating IDbConnections\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Connection\&.ConnectionProvider\fP\&.
+.PP
+Definition at line 44 of file UserSuppliedConnectionProvider\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

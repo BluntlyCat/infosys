@@ -1,0 +1,280 @@
+.TH "NHibernate.IQueryOver< TRoot >" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.IQueryOver< TRoot > \- 
+.PP
+QueryOver<TRoot> is an API for retrieving entities by composing \fBCriterion\&.Expression\fP objects expressed using Lambda expression syntax\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.IQueryOver\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Criterion\&.QueryOver< TRoot >\fP, and \fBNHibernate\&.IQueryOver< TRoot, TSubType >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "IList< TRoot > \fBList\fP ()"
+.br
+.RI "\fIGet the results of the root type and fill the IList&lt;T&gt; \fP"
+.ti -1c
+.RI "IList< U > \fBList< U >\fP ()"
+.br
+.RI "\fIGet the results of the root type and fill the IList&lt;T&gt; \fP"
+.ti -1c
+.RI "\fBIQueryOver\fP< TRoot, TRoot > \fBToRowCountQuery\fP ()"
+.br
+.RI "\fIClones the QueryOver, removes orders and paging, and projects the row-count for the query \fP"
+.ti -1c
+.RI "\fBIQueryOver\fP< TRoot, TRoot > \fBToRowCountInt64Query\fP ()"
+.br
+.RI "\fIClones the QueryOver, removes orders and paging, and projects the row-count (Int64) for the query \fP"
+.ti -1c
+.RI "int \fBRowCount\fP ()"
+.br
+.RI "\fIShort for \fBToRowCountQuery()\fP\&.SingleOrDefault<int>() \fP"
+.ti -1c
+.RI "long \fBRowCountInt64\fP ()"
+.br
+.RI "\fIShort for \fBToRowCountInt64Query()\fP\&.SingleOrDefault<long>() \fP"
+.ti -1c
+.RI "TRoot \fBSingleOrDefault\fP ()"
+.br
+.RI "\fIConvenience method to return a single instance that matches the query, or null if the query returns no results\&. \fP"
+.ti -1c
+.RI "U \fBSingleOrDefault< U >\fP ()"
+.br
+.RI "\fIOverride type of \fBSingleOrDefault()\fP\&. \fP"
+.ti -1c
+.RI "IEnumerable< TRoot > \fBFuture\fP ()"
+.br
+.RI "\fIGet a enumerable that when enumerated will execute a batch of queries in a single database roundtrip \fP"
+.ti -1c
+.RI "IEnumerable< U > \fBFuture< U >\fP ()"
+.br
+.RI "\fIGet a enumerable that when enumerated will execute a batch of queries in a single database roundtrip \fP"
+.ti -1c
+.RI "IFutureValue< TRoot > \fBFutureValue\fP ()"
+.br
+.RI "\fIGet an IFutureValue instance, whose value can be retrieved through its Value property\&. The query is not executed until the Value property is retrieved, which will execute other Future queries as well in a single roundtrip \fP"
+.ti -1c
+.RI "IFutureValue< U > \fBFutureValue< U >\fP ()"
+.br
+.RI "\fIGet an IFutureValue instance, whose value can be retrieved through its Value property\&. The query is not executed until the Value property is retrieved, which will execute other Future queries as well in a single roundtrip \fP"
+.ti -1c
+.RI "\fBIQueryOver\fP< TRoot, TRoot > \fBClone\fP ()"
+.br
+.RI "\fICreates an exact clone of the \fBIQueryOver\fP \fP"
+.ti -1c
+.RI "\fBIQueryOver\fP< TRoot > \fBClearOrders\fP ()"
+.br
+.RI "\fIClear all orders from the query\&. \fP"
+.ti -1c
+.RI "\fBIQueryOver\fP< TRoot > \fBSkip\fP (int firstResult)"
+.br
+.RI "\fISet the first result to be retrieved \fP"
+.ti -1c
+.RI "\fBIQueryOver\fP< TRoot > \fBTake\fP (int maxResults)"
+.br
+.RI "\fISet a limit upon the number of objects to be retrieved \fP"
+.ti -1c
+.RI "\fBIQueryOver\fP< TRoot > \fBCacheable\fP ()"
+.br
+.RI "\fIEnable caching of this query result set \fP"
+.ti -1c
+.RI "\fBIQueryOver\fP< TRoot > \fBCacheMode\fP (\fBCacheMode\fP cacheMode)"
+.br
+.RI "\fIOverride the cache mode for this particular query\&. \fP"
+.ti -1c
+.RI "\fBIQueryOver\fP< TRoot > \fBCacheRegion\fP (string cacheRegion)"
+.br
+.RI "\fISet the name of the cache region\&. \fP"
+.ti -1c
+.RI "\fBIQueryOver\fP< TRoot > \fBReadOnly\fP ()"
+.br
+.RI "\fISet the read-only mode for entities (and proxies) loaded by this QueryOver\&. (see \fBICriteria\&.SetReadOnly\fP)\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+QueryOver<TRoot> is an API for retrieving entities by composing \fBCriterion\&.Expression\fP objects expressed using Lambda expression syntax\&. 
+
+
+.PP
+.nf
+IList&lt;Cat&gt; cats = session\&.QueryOver&lt;Cat&gt;()
+    \&.Where( c =&gt; c\&.Name == "Tigger" )
+    \&.And( c =&gt; c\&.Weight > minWeight ) )
+    \&.List();
+
+.fi
+.PP
+ 
+.PP
+Definition at line 39 of file IQueryOver\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBIQueryOver\fP<TRoot> \fBNHibernate\&.IQueryOver\fP< TRoot >\&.Cacheable ()"
+
+.PP
+Enable caching of this query result set 
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.QueryOver< TRoot >\fP\&.
+.SS "\fBIQueryOver\fP<TRoot> \fBNHibernate\&.IQueryOver\fP< TRoot >\&.\fBCacheMode\fP (\fBCacheMode\fPcacheMode)"
+
+.PP
+Override the cache mode for this particular query\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcacheMode\fP The cache mode to use\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+this (for method chaining) 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.QueryOver< TRoot >\fP\&.
+.SS "\fBIQueryOver\fP<TRoot> \fBNHibernate\&.IQueryOver\fP< TRoot >\&.CacheRegion (stringcacheRegion)"
+
+.PP
+Set the name of the cache region\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcacheRegion\fP the name of a query cache region, or  for the default query cache
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.QueryOver< TRoot >\fP\&.
+.SS "\fBIQueryOver\fP<TRoot> \fBNHibernate\&.IQueryOver\fP< TRoot >\&.ClearOrders ()"
+
+.PP
+Clear all orders from the query\&. 
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.QueryOver< TRoot >\fP\&.
+.SS "\fBIQueryOver\fP<TRoot,TRoot> \fBNHibernate\&.IQueryOver\fP< TRoot >\&.Clone ()"
+
+.PP
+Creates an exact clone of the \fBIQueryOver\fP 
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.QueryOver< TRoot >\fP\&.
+.SS "IEnumerable<TRoot> \fBNHibernate\&.IQueryOver\fP< TRoot >\&.Future ()"
+
+.PP
+Get a enumerable that when enumerated will execute a batch of queries in a single database roundtrip 
+.SS "IEnumerable<U> \fBNHibernate\&.IQueryOver\fP< TRoot >\&.\fBFuture\fP< U > ()"
+
+.PP
+Get a enumerable that when enumerated will execute a batch of queries in a single database roundtrip 
+.SS "IFutureValue<TRoot> \fBNHibernate\&.IQueryOver\fP< TRoot >\&.FutureValue ()"
+
+.PP
+Get an IFutureValue instance, whose value can be retrieved through its Value property\&. The query is not executed until the Value property is retrieved, which will execute other Future queries as well in a single roundtrip 
+.SS "IFutureValue<U> \fBNHibernate\&.IQueryOver\fP< TRoot >\&.\fBFutureValue\fP< U > ()"
+
+.PP
+Get an IFutureValue instance, whose value can be retrieved through its Value property\&. The query is not executed until the Value property is retrieved, which will execute other Future queries as well in a single roundtrip 
+.SS "IList<TRoot> \fBNHibernate\&.IQueryOver\fP< TRoot >\&.List ()"
+
+.PP
+Get the results of the root type and fill the IList&lt;T&gt; 
+.PP
+\fBReturns:\fP
+.RS 4
+The list filled with the results\&.
+.RE
+.PP
+
+.SS "IList<U> \fBNHibernate\&.IQueryOver\fP< TRoot >\&.\fBList\fP< U > ()"
+
+.PP
+Get the results of the root type and fill the IList&lt;T&gt; 
+.PP
+\fBReturns:\fP
+.RS 4
+The list filled with the results\&.
+.RE
+.PP
+
+.SS "\fBIQueryOver\fP<TRoot> \fBNHibernate\&.IQueryOver\fP< TRoot >\&.ReadOnly ()"
+
+.PP
+Set the read-only mode for entities (and proxies) loaded by this QueryOver\&. (see \fBICriteria\&.SetReadOnly\fP)\&. 
+.SS "int \fBNHibernate\&.IQueryOver\fP< TRoot >\&.RowCount ()"
+
+.PP
+Short for \fBToRowCountQuery()\fP\&.SingleOrDefault<int>() 
+.SS "long \fBNHibernate\&.IQueryOver\fP< TRoot >\&.RowCountInt64 ()"
+
+.PP
+Short for \fBToRowCountInt64Query()\fP\&.SingleOrDefault<long>() 
+.SS "TRoot \fBNHibernate\&.IQueryOver\fP< TRoot >\&.SingleOrDefault ()"
+
+.PP
+Convenience method to return a single instance that matches the query, or null if the query returns no results\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the single result or 
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP If there is more than one matching result 
+.RE
+.PP
+
+.SS "U \fBNHibernate\&.IQueryOver\fP< TRoot >\&.\fBSingleOrDefault\fP< U > ()"
+
+.PP
+Override type of \fBSingleOrDefault()\fP\&. 
+.SS "\fBIQueryOver\fP<TRoot> \fBNHibernate\&.IQueryOver\fP< TRoot >\&.Skip (intfirstResult)"
+
+.PP
+Set the first result to be retrieved 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfirstResult\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.QueryOver< TRoot >\fP\&.
+.SS "\fBIQueryOver\fP<TRoot> \fBNHibernate\&.IQueryOver\fP< TRoot >\&.Take (intmaxResults)"
+
+.PP
+Set a limit upon the number of objects to be retrieved 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxResults\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.QueryOver< TRoot >\fP\&.
+.SS "\fBIQueryOver\fP<TRoot,TRoot> \fBNHibernate\&.IQueryOver\fP< TRoot >\&.ToRowCountInt64Query ()"
+
+.PP
+Clones the QueryOver, removes orders and paging, and projects the row-count (Int64) for the query 
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.QueryOver< TRoot >\fP\&.
+.SS "\fBIQueryOver\fP<TRoot,TRoot> \fBNHibernate\&.IQueryOver\fP< TRoot >\&.ToRowCountQuery ()"
+
+.PP
+Clones the QueryOver, removes orders and paging, and projects the row-count for the query 
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.QueryOver< TRoot >\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

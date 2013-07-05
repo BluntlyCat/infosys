@@ -1,0 +1,430 @@
+.TH "MySql.Data.MySqlClient.MySqlConnectionStringBuilder" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MySql.Data.MySqlClient.MySqlConnectionStringBuilder \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits DbConnectionStringBuilder\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMySqlConnectionStringBuilder\fP (string connStr)"
+.br
+.ti -1c
+.RI "override bool \fBContainsKey\fP (string keyword)"
+.br
+.ti -1c
+.RI "override void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "override bool \fBRemove\fP (string keyword)"
+.br
+.ti -1c
+.RI "override bool \fBTryGetValue\fP (string keyword, out object value)"
+.br
+.ti -1c
+.RI "string \fBGetConnectionString\fP (bool includePass)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBServer\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the name of the server\&. \fP"
+.ti -1c
+.RI "string \fBDatabase\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the name of the database the connection should initially connect to\&. \fP"
+.ti -1c
+.RI "\fBMySqlConnectionProtocol\fP \fBConnectionProtocol\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the protocol that should be used for communicating with MySQL\&. \fP"
+.ti -1c
+.RI "string \fBPipeName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the name of the named pipe that should be used for communicating with MySQL\&. \fP"
+.ti -1c
+.RI "bool \fBUseCompression\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean value that indicates whether this connection should use compression\&. \fP"
+.ti -1c
+.RI "bool \fBAllowBatch\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean value that indicates whether this connection will allow commands to send multiple SQL statements in one execution\&. \fP"
+.ti -1c
+.RI "bool \fBLogging\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean value that indicates whether logging is enabled\&. \fP"
+.ti -1c
+.RI "string \fBSharedMemoryName\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the base name of the shared memory objects used to communicate with MySQL when the shared memory protocol is being used\&. \fP"
+.ti -1c
+.RI "bool \fBUseOldSyntax\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean value that indicates whether this connection uses the old style (@) parameter markers or the new (?) style\&. \fP"
+.ti -1c
+.RI "uint \fBPort\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the port number that is used when the socket protocol is being used\&. \fP"
+.ti -1c
+.RI "uint \fBConnectionTimeout\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the connection timeout\&. \fP"
+.ti -1c
+.RI "uint \fBDefaultCommandTimeout\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the default command timeout\&. \fP"
+.ti -1c
+.RI "string \fBUserID\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the user id that should be used to connect with\&. \fP"
+.ti -1c
+.RI "string \fBPassword\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the password that should be used to connect with\&. \fP"
+.ti -1c
+.RI "bool \fBPersistSecurityInfo\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean value that indicates if the password should be persisted in the connection string\&. \fP"
+.ti -1c
+.RI "string \fBCertificateFile\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBCertificatePassword\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBMySqlCertificateStoreLocation\fP \fBCertificateStoreLocation\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBCertificateThumbprint\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIntegratedSecurity\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBAllowZeroDateTime\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean value that indicates if zero date time values are supported\&. \fP"
+.ti -1c
+.RI "bool \fBConvertZeroDateTime\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean value indicating if zero datetime values should be converted to DateTime\&.MinValue\&. \fP"
+.ti -1c
+.RI "bool \fBUseUsageAdvisor\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean value indicating if the Usage Advisor should be enabled\&. \fP"
+.ti -1c
+.RI "uint \fBProcedureCacheSize\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the size of the stored procedure cache\&. \fP"
+.ti -1c
+.RI "bool \fBUsePerformanceMonitor\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean value indicating if the permon hooks should be enabled\&. \fP"
+.ti -1c
+.RI "bool \fBIgnorePrepare\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean value indicating if calls to Prepare() should be ignored\&. \fP"
+.ti -1c
+.RI "bool \fBUseProcedureBodies\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBAutoEnlist\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBRespectBinaryFlags\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBTreatTinyAsBoolean\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBAllowUserVariables\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBInteractiveSession\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBFunctionsReturnString\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBUseAffectedRows\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBOldGuids\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "uint \fBKeepalive\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBSqlServerMode\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBTableCaching\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBDefaultTableCacheAge\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBCheckParameters\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBReplication\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBExceptionInterceptors\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBCommandInterceptors\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIncludeSecurityAsserts\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "uint \fBConnectionLifeTime\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the lifetime of a pooled connection\&. \fP"
+.ti -1c
+.RI "bool \fBPooling\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean value indicating if connection pooling is enabled\&. \fP"
+.ti -1c
+.RI "uint \fBMinimumPoolSize\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the minimum connection pool size\&. \fP"
+.ti -1c
+.RI "uint \fBMaximumPoolSize\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the maximum connection pool setting\&. \fP"
+.ti -1c
+.RI "bool \fBConnectionReset\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a boolean value indicating if the connection should be reset when retrieved from the pool\&. \fP"
+.ti -1c
+.RI "bool \fBCacheServerProperties\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "string \fBCharacterSet\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the character set that should be used for sending queries to the server\&. \fP"
+.ti -1c
+.RI "bool \fBTreatBlobsAsUTF8\fP\fC [get, set]\fP"
+.br
+.RI "\fIIndicates whether the driver should treat binary blobs as UTF8 \fP"
+.ti -1c
+.RI "string \fBBlobAsUTF8IncludePattern\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the pattern that matches the columns that should be treated as UTF8 \fP"
+.ti -1c
+.RI "string \fBBlobAsUTF8ExcludePattern\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the pattern that matches the columns that should not be treated as UTF8 \fP"
+.ti -1c
+.RI "\fBMySqlSslMode\fP \fBSslMode\fP\fC [get, set]\fP"
+.br
+.RI "\fIIndicates whether to use SSL connections and how to handle server certificate errors\&. \fP"
+.ti -1c
+.RI "override object \fBthis[string keyword]\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 38 of file MySqlConnectionStringBuilder\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.AllowBatch\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean value that indicates whether this connection will allow commands to send multiple SQL statements in one execution\&. 
+.PP
+Definition at line 157 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "bool MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.AllowZeroDateTime\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean value that indicates if zero date time values are supported\&. 
+.PP
+Definition at line 420 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "string MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.BlobAsUTF8ExcludePattern\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the pattern that matches the columns that should not be treated as UTF8 
+.PP
+Definition at line 839 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "string MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.BlobAsUTF8IncludePattern\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the pattern that matches the columns that should be treated as UTF8 
+.PP
+Definition at line 826 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "string MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.CharacterSet\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the character set that should be used for sending queries to the server\&. 
+.PP
+Definition at line 799 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "uint MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.ConnectionLifeTime\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the lifetime of a pooled connection\&. 
+.PP
+Definition at line 709 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "\fBMySqlConnectionProtocol\fP MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.ConnectionProtocol\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the protocol that should be used for communicating with MySQL\&. 
+.PP
+Definition at line 110 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "bool MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.ConnectionReset\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean value indicating if the connection should be reset when retrieved from the pool\&. 
+.PP
+Definition at line 769 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "uint MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.ConnectionTimeout\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the connection timeout\&. 
+.PP
+Definition at line 232 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "bool MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.ConvertZeroDateTime\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean value indicating if zero datetime values should be converted to DateTime\&.MinValue\&. 
+.PP
+Definition at line 435 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "string MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.Database\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the name of the database the connection should initially connect to\&. 
+.PP
+Definition at line 94 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "uint MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.DefaultCommandTimeout\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the default command timeout\&. 
+.PP
+Definition at line 262 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "bool MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.IgnorePrepare\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean value indicating if calls to Prepare() should be ignored\&. 
+.PP
+Definition at line 495 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "bool MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.Logging\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean value that indicates whether logging is enabled\&. 
+.PP
+Definition at line 170 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "uint MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.MaximumPoolSize\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the maximum connection pool setting\&. 
+.PP
+Definition at line 753 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "uint MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.MinimumPoolSize\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the minimum connection pool size\&. 
+.PP
+Definition at line 738 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "string MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.Password\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the password that should be used to connect with\&. 
+.PP
+Definition at line 296 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "bool MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.PersistSecurityInfo\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean value that indicates if the password should be persisted in the connection string\&. 
+.PP
+Definition at line 313 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "string MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.PipeName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the name of the named pipe that should be used for communicating with MySQL\&. 
+.PP
+Definition at line 126 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "bool MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.Pooling\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean value indicating if connection pooling is enabled\&. 
+.PP
+Definition at line 723 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "uint MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.Port\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the port number that is used when the socket protocol is being used\&. 
+.PP
+Definition at line 216 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "uint MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.ProcedureCacheSize\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the size of the stored procedure cache\&. 
+.PP
+Definition at line 466 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "string MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.Server\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the name of the server\&. The server\&.
+.PP
+Definition at line 79 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "string MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.SharedMemoryName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the base name of the shared memory objects used to communicate with MySQL when the shared memory protocol is being used\&. 
+.PP
+Definition at line 185 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "\fBMySqlSslMode\fP MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.SslMode\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Indicates whether to use SSL connections and how to handle server certificate errors\&. 
+.PP
+Definition at line 853 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "bool MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.TreatBlobsAsUTF8\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Indicates whether the driver should treat binary blobs as UTF8 
+.PP
+Definition at line 813 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "bool MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.UseCompression\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean value that indicates whether this connection should use compression\&. 
+.PP
+Definition at line 142 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "bool MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.UseOldSyntax\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean value that indicates whether this connection uses the old style (@) parameter markers or the new (?) style\&. 
+.PP
+Definition at line 202 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "bool MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.UsePerformanceMonitor\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean value indicating if the permon hooks should be enabled\&. 
+.PP
+Definition at line 481 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "string MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.UserID\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the user id that should be used to connect with\&. 
+.PP
+Definition at line 281 of file MySqlConnectionStringBuilder\&.cs\&.
+.SS "bool MySql\&.Data\&.MySqlClient\&.MySqlConnectionStringBuilder\&.UseUsageAdvisor\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a boolean value indicating if the Usage Advisor should be enabled\&. 
+.PP
+Definition at line 450 of file MySqlConnectionStringBuilder\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

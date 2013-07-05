@@ -1,0 +1,83 @@
+.TH "log4net.Layout.ExceptionLayout" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Layout.ExceptionLayout \- 
+.PP
+A \fBLayout\fP that renders only the Exception text from the logging event  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBlog4net\&.Layout\&.LayoutSkeleton\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBExceptionLayout\fP ()"
+.br
+.RI "\fIDefault constructor \fP"
+.ti -1c
+.RI "override void \fBActivateOptions\fP ()"
+.br
+.RI "\fIActivate component options \fP"
+.ti -1c
+.RI "override void \fBFormat\fP (TextWriter writer, \fBLoggingEvent\fP loggingEvent)"
+.br
+.RI "\fIGets the exception text from the logging event \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A \fBLayout\fP that renders only the Exception text from the logging event 
+
+A \fBLayout\fP that renders only the Exception text from the logging event\&. 
+.PP
+This \fBLayout\fP should only be used with appenders that utilize multiple layouts (e\&.g\&. \fBlog4net\&.Appender\&.AdoNetAppender\fP)\&. 
+.PP
+<author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 43 of file ExceptionLayout\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "log4net\&.Layout\&.ExceptionLayout\&.ExceptionLayout ()"
+
+.PP
+Default constructor Constructs a \fBExceptionLayout\fP 
+.PP
+Definition at line 55 of file ExceptionLayout\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override void log4net\&.Layout\&.ExceptionLayout\&.ActivateOptions ()\fC [virtual]\fP"
+
+.PP
+Activate component options Part of the IOptionHandler component activation framework\&. 
+.PP
+This method does nothing as options become effective immediately\&. 
+.PP
+Implements \fBlog4net\&.Layout\&.LayoutSkeleton\fP\&.
+.PP
+Definition at line 76 of file ExceptionLayout\&.cs\&.
+.SS "override void log4net\&.Layout\&.ExceptionLayout\&.Format (TextWriterwriter, \fBLoggingEvent\fPloggingEvent)\fC [virtual]\fP"
+
+.PP
+Gets the exception text from the logging event 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP The TextWriter to write the formatted event to
+.br
+\fIloggingEvent\fP the event being logged
+.RE
+.PP
+.PP
+Write the exception string to the TextWriter\&. The exception string is retrieved from LoggingEvent\&.GetExceptionString()\&. 
+.PP
+Implements \fBlog4net\&.Layout\&.LayoutSkeleton\fP\&.
+.PP
+Definition at line 96 of file ExceptionLayout\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

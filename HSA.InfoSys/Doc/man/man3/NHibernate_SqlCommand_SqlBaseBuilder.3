@@ -1,0 +1,144 @@
+.TH "NHibernate.SqlCommand.SqlBaseBuilder" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.SqlCommand.SqlBaseBuilder \- 
+.PP
+The base class for all of the SqlBuilders\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.SqlCommand\&.SqlDeleteBuilder\fP, \fBNHibernate\&.SqlCommand\&.SqlSelectBuilder\fP, \fBNHibernate\&.SqlCommand\&.SqlSimpleSelectBuilder\fP, \fBNHibernate\&.SqlCommand\&.SqlUpdateBuilder\fP, and \fBNHibernate\&.SqlCommand\&.WhereBuilder\fP\&.
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSqlBaseBuilder\fP (\fBDialect\&.Dialect\fP dialect, \fBIMapping\fP mapping)"
+.br
+.ti -1c
+.RI "\fBSqlString\fP \fBToWhereString\fP (string[] columnNames)"
+.br
+.RI "\fIConverts the ColumnNames and ColumnValues to a WhereFragment \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBToWhereString\fP (string tableAlias, string[] columnNames)"
+.br
+.RI "\fIConverts the ColumnNames and ColumnValues to a WhereFragment \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBToWhereString\fP (string[] columnNames, string op)"
+.br
+.RI "\fIConverts the ColumnNames and ColumnValues to a WhereFragment \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBToWhereString\fP (string tableAlias, string[] columnNames, string op)"
+.br
+.RI "\fIConverts the ColumnNames and ColumnValues to a WhereFragment \fP"
+.ti -1c
+.RI "\fBSqlString\fP \fBToWhereString\fP (string columnName, string op)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIMapping\fP \fBMapping\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBDialect\&.Dialect\fP \fBDialect\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The base class for all of the SqlBuilders\&. 
+
+
+.PP
+Definition at line 9 of file SqlBaseBuilder\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSqlString\fP NHibernate\&.SqlCommand\&.SqlBaseBuilder\&.ToWhereString (string[]columnNames)\fC [protected]\fP"
+
+.PP
+Converts the ColumnNames and ColumnValues to a WhereFragment 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnNames\fP The names of the Columns to Add to the WhereFragment
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBSqlString\fP that contains the WhereFragment
+.RE
+.PP
+.PP
+This just calls the overloaded ToWhereFragment() with the operator as ' = ' and the tableAlias null\&.
+.PP
+Definition at line 36 of file SqlBaseBuilder\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.SqlCommand\&.SqlBaseBuilder\&.ToWhereString (stringtableAlias, string[]columnNames)\fC [protected]\fP"
+
+.PP
+Converts the ColumnNames and ColumnValues to a WhereFragment 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItableAlias\fP The \fBAlias\fP for the Table\&.
+.br
+\fIcolumnNames\fP The names of the Columns to Add to the WhereFragment
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBSqlString\fP that contains the WhereFragment
+.RE
+.PP
+.PP
+This defaults the op to ' = '
+.PP
+Definition at line 48 of file SqlBaseBuilder\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.SqlCommand\&.SqlBaseBuilder\&.ToWhereString (string[]columnNames, stringop)\fC [protected]\fP"
+
+.PP
+Converts the ColumnNames and ColumnValues to a WhereFragment 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumnNames\fP The names of the Columns to Add to the WhereFragment
+.br
+\fIop\fP The operator to use between the names & values\&. For example ' = ' or '!='
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBSqlString\fP that contains the WhereFragment
+.RE
+.PP
+
+.PP
+Definition at line 59 of file SqlBaseBuilder\&.cs\&.
+.SS "\fBSqlString\fP NHibernate\&.SqlCommand\&.SqlBaseBuilder\&.ToWhereString (stringtableAlias, string[]columnNames, stringop)\fC [protected]\fP"
+
+.PP
+Converts the ColumnNames and ColumnValues to a WhereFragment 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItableAlias\fP The \fBAlias\fP for the Table\&.
+.br
+\fIcolumnNames\fP The names of the Columns to Add to the WhereFragment
+.br
+\fIop\fP The operator to use between the names & values\&. For example ' = ' or '!='
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBSqlString\fP that contains the WhereFragment
+.RE
+.PP
+
+.PP
+Definition at line 71 of file SqlBaseBuilder\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

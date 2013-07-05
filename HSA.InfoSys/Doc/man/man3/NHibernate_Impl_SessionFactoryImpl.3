@@ -1,0 +1,891 @@
+.TH "NHibernate.Impl.SessionFactoryImpl" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Impl.SessionFactoryImpl \- 
+.PP
+Concrete implementation of a SessionFactory\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Engine\&.ISessionFactoryImplementor\fP, and IObjectReference\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSessionFactoryImpl\fP (\fBConfiguration\fP cfg, \fBIMapping\fP mapping, \fBSettings\fP settings, \fBEventListeners\fP listeners)"
+.br
+.ti -1c
+.RI "object \fBGetRealObject\fP (StreamingContext context)"
+.br
+.ti -1c
+.RI "\fBISession\fP \fBOpenSession\fP ()"
+.br
+.RI "\fICreate a database connection and open a \fC\fBISession\fP\fP on it \fP"
+.ti -1c
+.RI "\fBISession\fP \fBOpenSession\fP (IDbConnection connection)"
+.br
+.RI "\fIOpen a \fC\fBISession\fP\fP on the given connection \fP"
+.ti -1c
+.RI "\fBISession\fP \fBOpenSession\fP (IDbConnection connection, \fBIInterceptor\fP sessionLocalInterceptor)"
+.br
+.RI "\fIOpen a \fC\fBISession\fP\fP on the given connection, specifying an interceptor \fP"
+.ti -1c
+.RI "\fBISession\fP \fBOpenSession\fP (\fBIInterceptor\fP sessionLocalInterceptor)"
+.br
+.RI "\fICreate database connection and open a \fC\fBISession\fP\fP on it, specifying an interceptor \fP"
+.ti -1c
+.RI "\fBISession\fP \fBOpenSession\fP (IDbConnection connection, bool flushBeforeCompletionEnabled, bool autoCloseSessionEnabled, ConnectionReleaseMode connectionReleaseMode)"
+.br
+.RI "\fIOpen a session conforming to the given parameters\&. Used mainly for current session processing\&. \fP"
+.ti -1c
+.RI "\fBIEntityPersister\fP \fBGetEntityPersister\fP (string entityName)"
+.br
+.RI "\fIGet the persister for the named entity \fP"
+.ti -1c
+.RI "\fBIEntityPersister\fP \fBTryGetEntityPersister\fP (string entityName)"
+.br
+.RI "\fIGet the persister for the named entity \fP"
+.ti -1c
+.RI "\fBICollectionPersister\fP \fBGetCollectionPersister\fP (string role)"
+.br
+.RI "\fIGet the persister object for a collection role \fP"
+.ti -1c
+.RI "ISet< string > \fBGetCollectionRolesByEntityParticipant\fP (string entityName)"
+.br
+.RI "\fIRetrieves a set of all the collection roles in which the given entity is a participant, as either an index or an element\&. \fP"
+.ti -1c
+.RI "\fBNamedQueryDefinition\fP \fBGetNamedQuery\fP (string queryName)"
+.br
+.RI "\fIGets the \fChql\fP query identified by the \fCname\fP\&. \fP"
+.ti -1c
+.RI "\fBNamedSQLQueryDefinition\fP \fBGetNamedSQLQuery\fP (string queryName)"
+.br
+.ti -1c
+.RI "\fBIType\fP \fBGetIdentifierType\fP (string className)"
+.br
+.ti -1c
+.RI "string \fBGetIdentifierPropertyName\fP (string className)"
+.br
+.ti -1c
+.RI "\fBIType\fP[] \fBGetReturnTypes\fP (String queryString)"
+.br
+.ti -1c
+.RI "string[] \fBGetReturnAliases\fP (string queryString)"
+.br
+.RI "\fIGet the return aliases of a query\fP"
+.ti -1c
+.RI "\fBIClassMetadata\fP \fBGetClassMetadata\fP (System\&.Type persistentClass)"
+.br
+.RI "\fIGet the IClassMetadata associated with the given entity class \fP"
+.ti -1c
+.RI "\fBIClassMetadata\fP \fBGetClassMetadata\fP (string entityName)"
+.br
+.RI "\fIGet the IClassMetadata associated with the given entity name \fP"
+.ti -1c
+.RI "\fBICollectionMetadata\fP \fBGetCollectionMetadata\fP (string roleName)"
+.br
+.RI "\fIGet the \fCCollectionMetadata\fP associated with the named collection role \fP"
+.ti -1c
+.RI "string[] \fBGetImplementors\fP (string entityOrClassName)"
+.br
+.RI "\fIReturn the names of all persistent (mapped) classes that extend or implement the given class or interface, accounting for implicit/explicit polymorphism settings and excluding mapped subclasses/joined-subclasses of other classes in the result\&. \fP"
+.ti -1c
+.RI "string \fBGetImportedClassName\fP (string className)"
+.br
+.RI "\fIGet a class name, using query language imports \fP"
+.ti -1c
+.RI "IDictionary< string, 
+.br
+\fBIClassMetadata\fP > \fBGetAllClassMetadata\fP ()"
+.br
+.ti -1c
+.RI "IDictionary< string, 
+.br
+\fBICollectionMetadata\fP > \fBGetAllCollectionMetadata\fP ()"
+.br
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.ti -1c
+.RI "void \fBClose\fP ()"
+.br
+.RI "\fICloses the session factory, releasing all held resources\&. 
+.PD 0
+
+.IP "\(bu" 2
+cleans up used cache regions and 'stops' the cache provider\&. 
+.IP "\(bu" 2
+close the ADO\&.NET connection 
+.PP
+\fP"
+.ti -1c
+.RI "void \fBEvict\fP (System\&.Type persistentClass, object id)"
+.br
+.RI "\fIEvict an entry from the process-level cache\&. This method occurs outside of any transaction; it performs an immediate 'hard' remove, so does not respect any transaction isolation semantics of the usage strategy\&. Use with care\&. \fP"
+.ti -1c
+.RI "void \fBEvict\fP (System\&.Type persistentClass)"
+.br
+.RI "\fIEvict all entries from the process-level cache\&. This method occurs outside of any transaction; it performs an immediate 'hard' remove, so does not respect any transaction isolation semantics of the usage strategy\&. Use with care\&. \fP"
+.ti -1c
+.RI "void \fBEvictEntity\fP (string entityName)"
+.br
+.RI "\fIEvict all entries from the second-level cache\&. This method occurs outside of any transaction; it performs an immediate 'hard' remove, so does not respect any transaction isolation semantics of the usage strategy\&. Use with care\&. \fP"
+.ti -1c
+.RI "void \fBEvictEntity\fP (string entityName, object id)"
+.br
+.RI "\fIEvict an entry from the second-level cache\&. This method occurs outside of any transaction; it performs an immediate 'hard' remove, so does not respect any transaction isolation semantics of the usage strategy\&. Use with care\&. \fP"
+.ti -1c
+.RI "void \fBEvictCollection\fP (string roleName, object id)"
+.br
+.RI "\fIEvict an entry from the process-level cache\&. This method occurs outside of any transaction; it performs an immediate 'hard' remove, so does not respect any transaction isolation semantics of the usage strategy\&. Use with care\&. \fP"
+.ti -1c
+.RI "void \fBEvictCollection\fP (string roleName)"
+.br
+.RI "\fIEvict all entries from the process-level cache\&. This method occurs outside of any transaction; it performs an immediate 'hard' remove, so does not respect any transaction isolation semantics of the usage strategy\&. Use with care\&. \fP"
+.ti -1c
+.RI "\fBIType\fP \fBGetReferencedPropertyType\fP (string className, string propertyName)"
+.br
+.ti -1c
+.RI "bool \fBHasNonIdentifierPropertyNamedId\fP (string className)"
+.br
+.ti -1c
+.RI "IDictionary< string, \fBICache\fP > \fBGetAllSecondLevelCacheRegions\fP ()"
+.br
+.ti -1c
+.RI "\fBICache\fP \fBGetSecondLevelCacheRegion\fP (string regionName)"
+.br
+.RI "\fIGet a named second-level cache region\fP"
+.ti -1c
+.RI "\fBIQueryCache\fP \fBGetQueryCache\fP (string cacheRegion)"
+.br
+.RI "\fIGet a particular named query cache, or the default cache \fP"
+.ti -1c
+.RI "void \fBEvictQueries\fP ()"
+.br
+.RI "\fIEvict any query result sets cached in the default query cache region\&. \fP"
+.ti -1c
+.RI "void \fBEvictQueries\fP (string cacheRegion)"
+.br
+.RI "\fIEvict any query result sets cached in the named query cache region\&. \fP"
+.ti -1c
+.RI "\fBIIdentifierGenerator\fP \fBGetIdentifierGenerator\fP (string rootEntityName)"
+.br
+.RI "\fIGet the identifier generator for the hierarchy \fP"
+.ti -1c
+.RI "\fBResultSetMappingDefinition\fP \fBGetResultSetMapping\fP (string resultSetName)"
+.br
+.ti -1c
+.RI "\fBFilterDefinition\fP \fBGetFilterDefinition\fP (string filterName)"
+.br
+.RI "\fIObtain the definition of a filter by name\&. \fP"
+.ti -1c
+.RI "\fBISession\fP \fBGetCurrentSession\fP ()"
+.br
+.RI "\fIObtains the current session\&. \fP"
+.ti -1c
+.RI "\fBIStatelessSession\fP \fBOpenStatelessSession\fP ()"
+.br
+.RI "\fIGet a new stateless session\&.\fP"
+.ti -1c
+.RI "\fBIStatelessSession\fP \fBOpenStatelessSession\fP (IDbConnection connection)"
+.br
+.RI "\fIGet a new stateless session for the given ADO\&.NET connection\&.\fP"
+.ti -1c
+.RI "string \fBTryGetGuessEntityName\fP (System\&.Type implementor)"
+.br
+.RI "\fIGet the entity-name for a given mapped class\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBEventListeners\fP \fBEventListeners\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "HibernateDialect \fBDialect\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIInterceptor\fP \fBInterceptor\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBITransactionFactory\fP \fBTransactionFactory\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBISQLExceptionConverter\fP \fBSQLExceptionConverter\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIConnectionProvider\fP \fBConnectionProvider\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsClosed\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBUpdateTimestampsCache\fP \fBUpdateTimestampsCache\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIStatisticsImplementor\fP \fBStatisticsImplementor\fP\fC [get]\fP"
+.br
+.RI "\fIStatistics SPI\fP"
+.ti -1c
+.RI "\fBIQueryCache\fP \fBQueryCache\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "ICollection< string > \fBDefinedFilterNames\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBSettings\fP \fBSettings\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIStatistics\fP \fBStatistics\fP\fC [get]\fP"
+.br
+.RI "\fIGet the statistics for this session factory\fP"
+.ti -1c
+.RI "\fBICurrentSessionContext\fP \fBCurrentSessionContext\fP\fC [get]\fP"
+.br
+.RI "\fIGets the ICurrentSessionContext instance attached to this session factory\&. \fP"
+.ti -1c
+.RI "\fBSQLFunctionRegistry\fP \fBSQLFunctionRegistry\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBIEntityNotFoundDelegate\fP \fBEntityNotFoundDelegate\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "\fBQueryPlanCache\fP \fBQueryPlanCache\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBName\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBUuid\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Concrete implementation of a SessionFactory\&. 
+
+Has the following responsibilities: 
+.PD 0
+
+.IP "\(bu" 2
+Caches configuration settings (immutably) 
+.IP "\(bu" 2
+Caches 'compiled' mappings - ie\&. IEntityPersister and ICollectionPersister  
+.IP "\(bu" 2
+Caches 'compiled' queries (memory sensitive cache)  
+.IP "\(bu" 2
+Manages \fCPreparedStatements/IDbCommands\fP - how true in NH?  
+.IP "\(bu" 2
+Delegates \fCIDbConnection\fP management to the IConnectionProvider  
+.IP "\(bu" 2
+Factory for instances of \fBISession\fP  
+.PP
+.PP
+This class must appear immutable to clients, even if it does all kinds of caching and pooling under the covers\&. It is crucial that the class is not only thread safe , but also highly concurrent\&. Synchronization must be used extremely sparingly\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBNHibernate\&.Connection\&.IConnectionProvider\fP, \fBNHibernate\&.ISession\fP, \fBNHibernate\&.Hql\&.IQueryTranslator\fP, \fBNHibernate\&.Persister\&.Entity\&.IEntityPersister\fP, \fBNHibernate\&.Persister\&.Collection\&.ICollectionPersister\fP
+.PP
+.RE
+.PP
+
+.PP
+Definition at line 75 of file SessionFactoryImpl\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Impl\&.SessionFactoryImpl\&.Close ()"
+
+.PP
+Closes the session factory, releasing all held resources\&. 
+.PD 0
+
+.IP "\(bu" 2
+cleans up used cache regions and 'stops' the cache provider\&. 
+.IP "\(bu" 2
+close the ADO\&.NET connection 
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 792 of file SessionFactoryImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionFactoryImpl\&.Evict (System\&.TypepersistentClass, objectid)"
+
+.PP
+Evict an entry from the process-level cache\&. This method occurs outside of any transaction; it performs an immediate 'hard' remove, so does not respect any transaction isolation semantics of the usage strategy\&. Use with care\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersistentClass\fP 
+.br
+\fIid\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 845 of file SessionFactoryImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionFactoryImpl\&.Evict (System\&.TypepersistentClass)"
+
+.PP
+Evict all entries from the process-level cache\&. This method occurs outside of any transaction; it performs an immediate 'hard' remove, so does not respect any transaction isolation semantics of the usage strategy\&. Use with care\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersistentClass\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 859 of file SessionFactoryImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionFactoryImpl\&.EvictCollection (stringroleName, objectid)"
+
+.PP
+Evict an entry from the process-level cache\&. This method occurs outside of any transaction; it performs an immediate 'hard' remove, so does not respect any transaction isolation semantics of the usage strategy\&. Use with care\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIroleName\fP 
+.br
+\fIid\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 899 of file SessionFactoryImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionFactoryImpl\&.EvictCollection (stringroleName)"
+
+.PP
+Evict all entries from the process-level cache\&. This method occurs outside of any transaction; it performs an immediate 'hard' remove, so does not respect any transaction isolation semantics of the usage strategy\&. Use with care\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIroleName\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 927 of file SessionFactoryImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionFactoryImpl\&.EvictEntity (stringentityName)"
+
+.PP
+Evict all entries from the second-level cache\&. This method occurs outside of any transaction; it performs an immediate 'hard' remove, so does not respect any transaction isolation semantics of the usage strategy\&. Use with care\&. 
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 872 of file SessionFactoryImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionFactoryImpl\&.EvictEntity (stringentityName, objectid)"
+
+.PP
+Evict an entry from the second-level cache\&. This method occurs outside of any transaction; it performs an immediate 'hard' remove, so does not respect any transaction isolation semantics of the usage strategy\&. Use with care\&. 
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 885 of file SessionFactoryImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionFactoryImpl\&.EvictQueries ()"
+
+.PP
+Evict any query result sets cached in the default query cache region\&. 
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 1016 of file SessionFactoryImpl\&.cs\&.
+.SS "void NHibernate\&.Impl\&.SessionFactoryImpl\&.EvictQueries (stringcacheRegion)"
+
+.PP
+Evict any query result sets cached in the named query cache region\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcacheRegion\fP 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 1029 of file SessionFactoryImpl\&.cs\&.
+.SS "IDictionary<string, \fBIClassMetadata\fP> NHibernate\&.Impl\&.SessionFactoryImpl\&.GetAllClassMetadata ()"
+
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 763 of file SessionFactoryImpl\&.cs\&.
+.SS "IDictionary<string, \fBICollectionMetadata\fP> NHibernate\&.Impl\&.SessionFactoryImpl\&.GetAllCollectionMetadata ()"
+
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 769 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBIClassMetadata\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.GetClassMetadata (System\&.TypepersistentClass)"
+
+.PP
+Get the IClassMetadata associated with the given entity class 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpersistentClass\fP the given entity type\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The class metadata or  if not found\&.
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+IClassMetadata
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 601 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBIClassMetadata\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.GetClassMetadata (stringentityName)"
+
+.PP
+Get the IClassMetadata associated with the given entity name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP the given entity name\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The class metadata or  if not found\&.
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+IClassMetadata
+.PP
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 606 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBICollectionMetadata\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.GetCollectionMetadata (stringroleName)"
+
+.PP
+Get the \fCCollectionMetadata\fP associated with the named collection role 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIroleName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 613 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBICollectionPersister\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.GetCollectionPersister (stringrole)"
+
+.PP
+Get the persister object for a collection role 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrole\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Engine\&.ISessionFactoryImplementor\fP\&.
+.PP
+Definition at line 515 of file SessionFactoryImpl\&.cs\&.
+.SS "ISet<string> NHibernate\&.Impl\&.SessionFactoryImpl\&.GetCollectionRolesByEntityParticipant (stringentityName)"
+
+.PP
+Retrieves a set of all the collection roles in which the given entity is a participant, as either an index or an element\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The entity name for which to get the collection roles\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Set of all the collection roles in which the given entityName participates\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Engine\&.ISessionFactoryImplementor\fP\&.
+.PP
+Definition at line 523 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBISession\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.GetCurrentSession ()"
+
+.PP
+Obtains the current session\&. The definition of what exactly 'current' means is controlled by the \fBNHibernate\&.Context\&.ICurrentSessionContext\fP implementation configured for use\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The current session\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBHibernateException\fP\fP Indicates an issue locating a suitable current session\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 1080 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBIEntityPersister\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.GetEntityPersister (stringentityName)"
+
+.PP
+Get the persister for the named entity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The name of the entity that is persisted\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The IEntityPersister for the entity\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBMappingException\fP\fP If no IEntityPersister can be found\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Engine\&.ISessionFactoryImplementor\fP\&.
+.PP
+Definition at line 500 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBFilterDefinition\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.GetFilterDefinition (stringfilterName)"
+
+.PP
+Obtain the definition of a filter by name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilterName\fP The name of the filter for which to obtain the definition\&.
+.RE
+.PP
+<return>The filter definition\&.</return> 
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 1062 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBIIdentifierGenerator\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.GetIdentifierGenerator (stringrootEntityName)"
+
+.PP
+Get the identifier generator for the hierarchy 
+.PP
+Implements \fBNHibernate\&.Engine\&.ISessionFactoryImplementor\fP\&.
+.PP
+Definition at line 1048 of file SessionFactoryImpl\&.cs\&.
+.SS "string [] NHibernate\&.Impl\&.SessionFactoryImpl\&.GetImplementors (stringentityOrClassName)"
+
+.PP
+Return the names of all persistent (mapped) classes that extend or implement the given class or interface, accounting for implicit/explicit polymorphism settings and excluding mapped subclasses/joined-subclasses of other classes in the result\&. 
+.PP
+Implements \fBNHibernate\&.Engine\&.ISessionFactoryImplementor\fP\&.
+.PP
+Definition at line 625 of file SessionFactoryImpl\&.cs\&.
+.SS "string NHibernate\&.Impl\&.SessionFactoryImpl\&.GetImportedClassName (stringname)"
+
+.PP
+Get a class name, using query language imports 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Engine\&.ISessionFactoryImplementor\fP\&.
+.PP
+Definition at line 749 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBNamedQueryDefinition\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.GetNamedQuery (stringqueryName)"
+
+.PP
+Gets the \fChql\fP query identified by the \fCname\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIqueryName\fP The name of that identifies the query\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fChql\fP query or  if the named query does not exist\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Engine\&.ISessionFactoryImplementor\fP\&.
+.PP
+Definition at line 562 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBIQueryCache\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.GetQueryCache (stringregionName)"
+
+.PP
+Get a particular named query cache, or the default cache 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIregionName\fP the name of the cache region, or null for the default query cache
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the existing cache, or a newly created cache if none by that region name
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Engine\&.ISessionFactoryImplementor\fP\&.
+.PP
+Definition at line 991 of file SessionFactoryImpl\&.cs\&.
+.SS "string [] NHibernate\&.Impl\&.SessionFactoryImpl\&.GetReturnAliases (stringqueryString)"
+
+.PP
+Get the return aliases of a query
+.PP
+Implements \fBNHibernate\&.Engine\&.ISessionFactoryImplementor\fP\&.
+.PP
+Definition at line 594 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBICache\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.GetSecondLevelCacheRegion (stringregionName)"
+
+.PP
+Get a named second-level cache region
+.PP
+Implements \fBNHibernate\&.Engine\&.ISessionFactoryImplementor\fP\&.
+.PP
+Definition at line 973 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBISession\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.OpenSession ()"
+
+.PP
+Create a database connection and open a \fC\fBISession\fP\fP on it 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 462 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBISession\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.OpenSession (IDbConnectionconn)"
+
+.PP
+Open a \fC\fBISession\fP\fP on the given connection 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconn\fP A connection provided by the application
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A session
+.RE
+.PP
+.PP
+Note that the second-level cache will be disabled if you supply a ADO\&.NET connection\&. \fBNHibernate\fP will not be able to track any statements you might have executed in the same transaction\&. Consider implementing your own IConnectionProvider\&. 
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 467 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBISession\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.OpenSession (IDbConnectionconn, \fBIInterceptor\fPsessionLocalInterceptor)"
+
+.PP
+Open a \fC\fBISession\fP\fP on the given connection, specifying an interceptor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconn\fP A connection provided by the application
+.br
+\fIsessionLocalInterceptor\fP A session-scoped interceptor
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A session
+.RE
+.PP
+.PP
+Note that the second-level cache will be disabled if you supply a ADO\&.NET connection\&. \fBNHibernate\fP will not be able to track any statements you might have executed in the same transaction\&. Consider implementing your own IConnectionProvider\&. 
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 472 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBISession\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.OpenSession (\fBIInterceptor\fPsessionLocalInterceptor)"
+
+.PP
+Create database connection and open a \fC\fBISession\fP\fP on it, specifying an interceptor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsessionLocalInterceptor\fP A session-scoped interceptor
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A session
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 481 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBISession\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.OpenSession (IDbConnectionconnection, boolflushBeforeCompletionEnabled, boolautoCloseSessionEnabled, ConnectionReleaseModeconnectionReleaseMode)"
+
+.PP
+Open a session conforming to the given parameters\&. Used mainly for current session processing\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconnection\fP The external ado\&.net connection to use, if one (i\&.e\&., optional)\&.
+.br
+\fIflushBeforeCompletionEnabled\fP Should the session be auto-flushed prior to transaction completion? 
+.br
+\fIautoCloseSessionEnabled\fP Should the session be auto-closed after transaction completion? 
+.br
+\fIconnectionReleaseMode\fP The release mode for managed jdbc connections\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An appropriate session\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Engine\&.ISessionFactoryImplementor\fP\&.
+.PP
+Definition at line 491 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBIStatelessSession\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.OpenStatelessSession ()"
+
+.PP
+Get a new stateless session\&.
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 1091 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBIStatelessSession\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.OpenStatelessSession (IDbConnectionconnection)"
+
+.PP
+Get a new stateless session for the given ADO\&.NET connection\&.
+.PP
+Implements \fBNHibernate\&.ISessionFactory\fP\&.
+.PP
+Definition at line 1097 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBIEntityPersister\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.TryGetEntityPersister (stringentityName)"
+
+.PP
+Get the persister for the named entity 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentityName\fP The name of the entity that is persisted\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The IEntityPersister for the entity or  is the name was not found\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Engine\&.ISessionFactoryImplementor\fP\&.
+.PP
+Definition at line 508 of file SessionFactoryImpl\&.cs\&.
+.SS "string NHibernate\&.Impl\&.SessionFactoryImpl\&.TryGetGuessEntityName (System\&.Typeimplementor)"
+
+.PP
+Get the entity-name for a given mapped class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIimplementor\fP the mapped class
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the enntity name where available or null
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Engine\&.ISessionFactoryImplementor\fP\&.
+.PP
+Definition at line 1252 of file SessionFactoryImpl\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBICurrentSessionContext\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.CurrentSessionContext\fC [get]\fP"
+
+.PP
+Gets the ICurrentSessionContext instance attached to this session factory\&. 
+.PP
+Definition at line 1112 of file SessionFactoryImpl\&.cs\&.
+.SS "HibernateDialect NHibernate\&.Impl\&.SessionFactoryImpl\&.Dialect\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 532 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBIStatistics\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.Statistics\fC [get]\fP"
+
+.PP
+Get the statistics for this session factory
+.PP
+Definition at line 1104 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBIStatisticsImplementor\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.StatisticsImplementor\fC [get]\fP"
+
+.PP
+Statistics SPI
+.PP
+Definition at line 982 of file SessionFactoryImpl\&.cs\&.
+.SS "\fBITransactionFactory\fP NHibernate\&.Impl\&.SessionFactoryImpl\&.TransactionFactory\fC [get]\fP"
+
+.PP
+
+.PP
+Definition at line 543 of file SessionFactoryImpl\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

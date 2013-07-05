@@ -1,0 +1,306 @@
+.TH "MySql.Web.SessionState.MySqlSessionStateStore" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MySql.Web.SessionState.MySqlSessionStateStore \- 
+.PP
+This class allows ASP\&.NET applications to store and manage session state information in a MySQL database\&. Expired session data is periodically deleted from the database\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits SessionStateStoreProviderBase\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBInitialize\fP (string name, NameValueCollection config)"
+.br
+.RI "\fIInitializes the provider with the property values specified in the ASP\&.NET application configuration file \fP"
+.ti -1c
+.RI "override SessionStateStoreData \fBCreateNewStoreData\fP (System\&.Web\&.HttpContext context, int timeout)"
+.br
+.RI "\fIThis method creates a new SessionStateStoreData object for the current request\&. \fP"
+.ti -1c
+.RI "override void \fBCreateUninitializedItem\fP (System\&.Web\&.HttpContext context, string id, int timeout)"
+.br
+.RI "\fIThis method adds a new session state item to the database\&. \fP"
+.ti -1c
+.RI "override void \fBDispose\fP ()"
+.br
+.RI "\fIThis method releases all the resources for this instance\&. \fP"
+.ti -1c
+.RI "override void \fBEndRequest\fP (System\&.Web\&.HttpContext context)"
+.br
+.RI "\fIThis method allows the \fBMySqlSessionStateStore\fP object to perform any cleanup that may be required for the current request\&. \fP"
+.ti -1c
+.RI "override SessionStateStoreData \fBGetItem\fP (System\&.Web\&.HttpContext context, string id, out bool locked, out TimeSpan lockAge, out object lockId, out SessionStateActions actions)"
+.br
+.RI "\fIThis method returns a read-only session item from the database\&. \fP"
+.ti -1c
+.RI "override SessionStateStoreData \fBGetItemExclusive\fP (System\&.Web\&.HttpContext context, string id, out bool locked, out TimeSpan lockAge, out object lockId, out SessionStateActions actions)"
+.br
+.RI "\fIThis method locks a session item and returns it from the database \fP"
+.ti -1c
+.RI "override void \fBInitializeRequest\fP (System\&.Web\&.HttpContext context)"
+.br
+.RI "\fIThis method performs any per-request initializations that the \fBMySqlSessionStateStore\fP provider requires\&. \fP"
+.ti -1c
+.RI "override void \fBReleaseItemExclusive\fP (System\&.Web\&.HttpContext context, string id, object lockId)"
+.br
+.RI "\fIThis method forcibly releases the lock on a session item in the database, if multiple attempts to retrieve the session item fail\&. \fP"
+.ti -1c
+.RI "override void \fBRemoveItem\fP (System\&.Web\&.HttpContext context, string id, object lockId, SessionStateStoreData item)"
+.br
+.RI "\fIThis method removes the specified session item from the database \fP"
+.ti -1c
+.RI "override void \fBResetItemTimeout\fP (System\&.Web\&.HttpContext context, string id)"
+.br
+.RI "\fIThis method resets the expiration date and timeout for a session item in the database\&. \fP"
+.ti -1c
+.RI "override void \fBSetAndReleaseItemExclusive\fP (System\&.Web\&.HttpContext context, string id, SessionStateStoreData item, object lockId, bool newItem)"
+.br
+.RI "\fIThis method updates the session time information in the database with the specified session item, and releases the lock\&. \fP"
+.ti -1c
+.RI "override bool \fBSetItemExpireCallback\fP (SessionStateItemExpireCallback expireCallback)"
+.br
+.RI "\fIThis method sets the reference for the ExpireCallback delegate if setting is enabled\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBEnableExpireCallback\fP\fC [get, set]\fP"
+.br
+.RI "\fIIndicates whether if expire callback is on or off \fP"
+.ti -1c
+.RI "bool \fBWriteExceptionsToEventLog\fP\fC [get, set]\fP"
+.br
+.RI "\fIIndicates whether to write exceptions to event log \fP"
+.ti -1c
+.RI "string \fBApplicationName\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class allows ASP\&.NET applications to store and manage session state information in a MySQL database\&. Expired session data is periodically deleted from the database\&. 
+
+
+.PP
+Definition at line 48 of file SessionProvider\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override SessionStateStoreData MySql\&.Web\&.SessionState\&.MySqlSessionStateStore\&.CreateNewStoreData (System\&.Web\&.HttpContextcontext, inttimeout)"
+
+.PP
+This method creates a new SessionStateStoreData object for the current request\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontext\fP The HttpContext object for the current request\&. 
+.br
+\fItimeout\fP The timeout value (in minutes) for the SessionStateStoreData object that is created\&. 
+.RE
+.PP
+
+.PP
+Definition at line 253 of file SessionProvider\&.cs\&.
+.SS "override void MySql\&.Web\&.SessionState\&.MySqlSessionStateStore\&.CreateUninitializedItem (System\&.Web\&.HttpContextcontext, stringid, inttimeout)"
+
+.PP
+This method adds a new session state item to the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontext\fP The HttpContext object for the current request\&. 
+.br
+\fIid\fP The session ID for the current request\&. 
+.br
+\fItimeout\fP The timeout value for the current request\&. 
+.RE
+.PP
+
+.PP
+Definition at line 272 of file SessionProvider\&.cs\&.
+.SS "override void MySql\&.Web\&.SessionState\&.MySqlSessionStateStore\&.Dispose ()"
+
+.PP
+This method releases all the resources for this instance\&. 
+.PP
+Definition at line 327 of file SessionProvider\&.cs\&.
+.SS "override void MySql\&.Web\&.SessionState\&.MySqlSessionStateStore\&.EndRequest (System\&.Web\&.HttpContextcontext)"
+
+.PP
+This method allows the \fBMySqlSessionStateStore\fP object to perform any cleanup that may be required for the current request\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontext\fP The HttpContext object for the current request
+.RE
+.PP
+
+.PP
+Definition at line 338 of file SessionProvider\&.cs\&.
+.SS "override SessionStateStoreData MySql\&.Web\&.SessionState\&.MySqlSessionStateStore\&.GetItem (System\&.Web\&.HttpContextcontext, stringid, out boollocked, out TimeSpanlockAge, out objectlockId, out SessionStateActionsactions)"
+
+.PP
+This method returns a read-only session item from the database\&. 
+.PP
+Definition at line 345 of file SessionProvider\&.cs\&.
+.SS "override SessionStateStoreData MySql\&.Web\&.SessionState\&.MySqlSessionStateStore\&.GetItemExclusive (System\&.Web\&.HttpContextcontext, stringid, out boollocked, out TimeSpanlockAge, out objectlockId, out SessionStateActionsactions)"
+
+.PP
+This method locks a session item and returns it from the database 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontext\fP The HttpContext object for the current request
+.br
+\fIid\fP The session ID for the current request
+.br
+\fIlocked\fP true if the session item is locked in the database; otherwise, it is false\&. 
+.br
+\fIlockAge\fP TimeSpan object that indicates the amount of time the session item has been locked in the database\&. 
+.br
+\fIlockId\fP A lock identifier object\&. 
+.br
+\fIactions\fP A SessionStateActions enumeration value that indicates whether or not the session is uninitialized and cookieless\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 369 of file SessionProvider\&.cs\&.
+.SS "override void MySql\&.Web\&.SessionState\&.MySqlSessionStateStore\&.Initialize (stringname, NameValueCollectionconfig)"
+
+.PP
+Initializes the provider with the property values specified in the ASP\&.NET application configuration file 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the provider instance to initialize\&.
+.br
+\fIconfig\fP Object that contains the names and values of configuration options for the provider\&. 
+.RE
+.PP
+
+.PP
+Definition at line 135 of file SessionProvider\&.cs\&.
+.SS "override void MySql\&.Web\&.SessionState\&.MySqlSessionStateStore\&.InitializeRequest (System\&.Web\&.HttpContextcontext)"
+
+.PP
+This method performs any per-request initializations that the \fBMySqlSessionStateStore\fP provider requires\&. 
+.PP
+Definition at line 378 of file SessionProvider\&.cs\&.
+.SS "override void MySql\&.Web\&.SessionState\&.MySqlSessionStateStore\&.ReleaseItemExclusive (System\&.Web\&.HttpContextcontext, stringid, objectlockId)"
+
+.PP
+This method forcibly releases the lock on a session item in the database, if multiple attempts to retrieve the session item fail\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontext\fP The HttpContext object for the current request\&.
+.br
+\fIid\fP The session ID for the current request\&.
+.br
+\fIlockId\fP The lock identifier for the current request\&.
+.RE
+.PP
+
+.PP
+Definition at line 389 of file SessionProvider\&.cs\&.
+.SS "override void MySql\&.Web\&.SessionState\&.MySqlSessionStateStore\&.RemoveItem (System\&.Web\&.HttpContextcontext, stringid, objectlockId, SessionStateStoreDataitem)"
+
+.PP
+This method removes the specified session item from the database 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontext\fP The HttpContext object for the current request
+.br
+\fIid\fP The session ID for the current request
+.br
+\fIlockId\fP The lock identifier for the current request\&.
+.br
+\fIitem\fP The session item to remove from the database\&.
+.RE
+.PP
+
+.PP
+Definition at line 441 of file SessionProvider\&.cs\&.
+.SS "override void MySql\&.Web\&.SessionState\&.MySqlSessionStateStore\&.ResetItemTimeout (System\&.Web\&.HttpContextcontext, stringid)"
+
+.PP
+This method resets the expiration date and timeout for a session item in the database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontext\fP The HttpContext object for the current request
+.br
+\fIid\fP The session ID for the current request
+.RE
+.PP
+
+.PP
+Definition at line 495 of file SessionProvider\&.cs\&.
+.SS "override void MySql\&.Web\&.SessionState\&.MySqlSessionStateStore\&.SetAndReleaseItemExclusive (System\&.Web\&.HttpContextcontext, stringid, SessionStateStoreDataitem, objectlockId, boolnewItem)"
+
+.PP
+This method updates the session time information in the database with the specified session item, and releases the lock\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontext\fP The HttpContext object for the current request
+.br
+\fIid\fP The session ID for the current request
+.br
+\fIitem\fP The session item containing new values to update the session item in the database with\&. 
+.br
+\fIlockId\fP The lock identifier for the current request\&.
+.br
+\fInewItem\fP A Boolean value that indicates whether or not the session item is new in the database\&. A false value indicates an existing item\&. 
+.RE
+.PP
+
+.PP
+Definition at line 550 of file SessionProvider\&.cs\&.
+.SS "override bool MySql\&.Web\&.SessionState\&.MySqlSessionStateStore\&.SetItemExpireCallback (SessionStateItemExpireCallbackexpireCallback)"
+
+.PP
+This method sets the reference for the ExpireCallback delegate if setting is enabled\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIexpireCallback\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+false 
+.RE
+.PP
+summary> Serialize is called by the SetAndReleaseItemExclusive method to convert the SessionStateItemCollection into a byte array to be stored in the blob field\&. 
+.PP
+Definition at line 804 of file SessionProvider\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool MySql\&.Web\&.SessionState\&.MySqlSessionStateStore\&.EnableExpireCallback\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Indicates whether if expire callback is on or off 
+.PP
+Definition at line 75 of file SessionProvider\&.cs\&.
+.SS "bool MySql\&.Web\&.SessionState\&.MySqlSessionStateStore\&.WriteExceptionsToEventLog\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Indicates whether to write exceptions to event log 
+.PP
+Definition at line 84 of file SessionProvider\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

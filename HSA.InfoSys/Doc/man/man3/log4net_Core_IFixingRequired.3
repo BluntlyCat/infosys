@@ -1,0 +1,50 @@
+.TH "log4net.Core.IFixingRequired" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.Core.IFixingRequired \- 
+.PP
+Interface for objects that require fixing\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBlog4net\&.Util\&.ThreadContextStack\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBGetFixedObject\fP ()"
+.br
+.RI "\fIGet a portable version of this object \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Interface for objects that require fixing\&. 
+
+Interface that indicates that the object requires fixing before it can be taken outside the context of the appender's \fBlog4net\&.Appender\&.IAppender\&.DoAppend\fP method\&. 
+.PP
+When objects that implement this interface are stored in the context properties maps \fBlog4net\&.GlobalContext\fP \fBlog4net\&.GlobalContext\&.Properties\fP and \fBlog4net\&.ThreadContext\fP \fBlog4net\&.ThreadContext\&.Properties\fP are fixed (see \fBLoggingEvent\&.Fix\fP) the \fBGetFixedObject\fP method will be called\&. 
+.PP
+<author>Nicko Cadell</author> 
+.PP
+Definition at line 43 of file IFixingRequired\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object log4net\&.Core\&.IFixingRequired\&.GetFixedObject ()"
+
+.PP
+Get a portable version of this object 
+.PP
+\fBReturns:\fP
+.RS 4
+the portable instance of this object
+.RE
+.PP
+.PP
+Get a portable instance object that represents the current state of this object\&. The portable object can be stored and logged from any thread with identical results\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

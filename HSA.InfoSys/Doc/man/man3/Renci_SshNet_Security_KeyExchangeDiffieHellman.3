@@ -1,0 +1,206 @@
+.TH "Renci.SshNet.Security.KeyExchangeDiffieHellman" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Security.KeyExchangeDiffieHellman \- 
+.PP
+Represents base class for Diffie Hellman key exchange algorithm  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.Security\&.KeyExchange\fP\&.
+.PP
+Inherited by Renci\&.SshNet\&.Security\&.KeyExchangeDiffieHellmanGroupExchangeSha1, \fBRenci\&.SshNet\&.Security\&.KeyExchangeDiffieHellmanGroupExchangeSha256\fP, and \fBRenci\&.SshNet\&.Security\&.KeyExchangeDiffieHellmanGroupSha1\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBStart\fP (\fBSession\fP session, \fBKeyExchangeInitMessage\fP message)"
+.br
+.RI "\fIStarts key exchange algorithm \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override bool \fBValidateExchangeHash\fP ()"
+.br
+.RI "\fIValidates the exchange hash\&. \fP"
+.ti -1c
+.RI "void \fBPopulateClientExchangeValue\fP ()"
+.br
+.RI "\fIPopulates the client exchange value\&. \fP"
+.ti -1c
+.RI "virtual void \fBHandleServerDhReply\fP (byte[] hostKey, \fBBigInteger\fP serverExchangeValue, byte[] signature)"
+.br
+.RI "\fIHandles the server DH reply message\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBBigInteger\fP \fB_group\fP"
+.br
+.RI "\fISpecifies key exchange group number\&. \fP"
+.ti -1c
+.RI "\fBBigInteger\fP \fB_prime\fP"
+.br
+.RI "\fISpecifies key exchange prime number\&. \fP"
+.ti -1c
+.RI "byte[] \fB_clientPayload\fP"
+.br
+.RI "\fISpecifies client payload \fP"
+.ti -1c
+.RI "byte[] \fB_serverPayload\fP"
+.br
+.RI "\fISpecifies server payload \fP"
+.ti -1c
+.RI "\fBBigInteger\fP \fB_clientExchangeValue\fP"
+.br
+.RI "\fISpecifies client exchange number\&. \fP"
+.ti -1c
+.RI "\fBBigInteger\fP \fB_serverExchangeValue\fP"
+.br
+.RI "\fISpecifies server exchange number\&. \fP"
+.ti -1c
+.RI "\fBBigInteger\fP \fB_randomValue\fP"
+.br
+.RI "\fISpecifies random generated number\&. \fP"
+.ti -1c
+.RI "byte[] \fB_hostKey\fP"
+.br
+.RI "\fISpecifies host key data\&. \fP"
+.ti -1c
+.RI "byte[] \fB_signature\fP"
+.br
+.RI "\fISpecifies signature data\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Represents base class for Diffie Hellman key exchange algorithm 
+
+
+.PP
+Definition at line 17 of file KeyExchangeDiffieHellman\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void Renci\&.SshNet\&.Security\&.KeyExchangeDiffieHellman\&.HandleServerDhReply (byte[]hostKey, \fBBigInteger\fPserverExchangeValue, byte[]signature)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Handles the server DH reply message\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhostKey\fP The host key\&.
+.br
+\fIserverExchangeValue\fP The server exchange value\&.
+.br
+\fIsignature\fP The signature\&.
+.RE
+.PP
+
+.PP
+Definition at line 134 of file KeyExchangeDiffieHellman\&.cs\&.
+.SS "void Renci\&.SshNet\&.Security\&.KeyExchangeDiffieHellman\&.PopulateClientExchangeValue ()\fC [protected]\fP"
+
+.PP
+Populates the client exchange value\&. 
+.PP
+Definition at line 109 of file KeyExchangeDiffieHellman\&.cs\&.
+.SS "override void Renci\&.SshNet\&.Security\&.KeyExchangeDiffieHellman\&.Start (\fBSession\fPsession, \fBKeyExchangeInitMessage\fPmessage)\fC [virtual]\fP"
+
+.PP
+Starts key exchange algorithm 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The session\&.
+.br
+\fImessage\fP \fBKey\fP exchange init message\&.
+.RE
+.PP
+
+.PP
+Reimplemented from \fBRenci\&.SshNet\&.Security\&.KeyExchange\fP\&.
+.PP
+Reimplemented in \fBRenci\&.SshNet\&.Security\&.KeyExchangeDiffieHellmanGroupSha1\fP, and \fBRenci\&.SshNet\&.Security\&.KeyExchangeDiffieHellmanGroupExchangeSha256\fP\&.
+.PP
+Definition at line 98 of file KeyExchangeDiffieHellman\&.cs\&.
+.SS "override bool Renci\&.SshNet\&.Security\&.KeyExchangeDiffieHellman\&.ValidateExchangeHash ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Validates the exchange hash\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if exchange hash is valid; otherwise false\&. 
+.RE
+.PP
+
+.PP
+Implements \fBRenci\&.SshNet\&.Security\&.KeyExchange\fP\&.
+.PP
+Definition at line 70 of file KeyExchangeDiffieHellman\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBBigInteger\fP Renci\&.SshNet\&.Security\&.KeyExchangeDiffieHellman\&._clientExchangeValue\fC [protected]\fP"
+
+.PP
+Specifies client exchange number\&. 
+.PP
+Definition at line 42 of file KeyExchangeDiffieHellman\&.cs\&.
+.SS "byte [] Renci\&.SshNet\&.Security\&.KeyExchangeDiffieHellman\&._clientPayload\fC [protected]\fP"
+
+.PP
+Specifies client payload 
+.PP
+Definition at line 32 of file KeyExchangeDiffieHellman\&.cs\&.
+.SS "\fBBigInteger\fP Renci\&.SshNet\&.Security\&.KeyExchangeDiffieHellman\&._group\fC [protected]\fP"
+
+.PP
+Specifies key exchange group number\&. 
+.PP
+Definition at line 22 of file KeyExchangeDiffieHellman\&.cs\&.
+.SS "byte [] Renci\&.SshNet\&.Security\&.KeyExchangeDiffieHellman\&._hostKey\fC [protected]\fP"
+
+.PP
+Specifies host key data\&. 
+.PP
+Definition at line 57 of file KeyExchangeDiffieHellman\&.cs\&.
+.SS "\fBBigInteger\fP Renci\&.SshNet\&.Security\&.KeyExchangeDiffieHellman\&._prime\fC [protected]\fP"
+
+.PP
+Specifies key exchange prime number\&. 
+.PP
+Definition at line 27 of file KeyExchangeDiffieHellman\&.cs\&.
+.SS "\fBBigInteger\fP Renci\&.SshNet\&.Security\&.KeyExchangeDiffieHellman\&._randomValue\fC [protected]\fP"
+
+.PP
+Specifies random generated number\&. 
+.PP
+Definition at line 52 of file KeyExchangeDiffieHellman\&.cs\&.
+.SS "\fBBigInteger\fP Renci\&.SshNet\&.Security\&.KeyExchangeDiffieHellman\&._serverExchangeValue\fC [protected]\fP"
+
+.PP
+Specifies server exchange number\&. 
+.PP
+Definition at line 47 of file KeyExchangeDiffieHellman\&.cs\&.
+.SS "byte [] Renci\&.SshNet\&.Security\&.KeyExchangeDiffieHellman\&._serverPayload\fC [protected]\fP"
+
+.PP
+Specifies server payload 
+.PP
+Definition at line 37 of file KeyExchangeDiffieHellman\&.cs\&.
+.SS "byte [] Renci\&.SshNet\&.Security\&.KeyExchangeDiffieHellman\&._signature\fC [protected]\fP"
+
+.PP
+Specifies signature data\&. 
+.PP
+Definition at line 62 of file KeyExchangeDiffieHellman\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

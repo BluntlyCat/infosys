@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_joined_subclass_mapper_tests_1_1_set_persister_tests =
+[
+    [ "CanSetPersister", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_mappers_tests_1_1_joined_subclass_mapper_tests_1_1_set_persister_tests.html#a023248fcd6e0d87475cc70c36b28e208", null ]
+];

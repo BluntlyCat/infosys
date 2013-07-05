@@ -1,0 +1,295 @@
+.TH "NHibernate.Id.Enhanced.SequenceStyleGenerator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.Enhanced.SequenceStyleGenerator \- 
+.PP
+Generates identifier values based on an sequence-style database structure\&. Variations range from actually using a sequence to using a table to mimic a sequence\&. These variations are encapsulated by the \fBIDatabaseStructure\fP interface internally\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Id\&.IPersistentIdentifierGenerator\fP, and \fBNHibernate\&.Id\&.IConfigurable\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBConfigure\fP (\fBIType\fP type, IDictionary< string, string > parms, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIConfigure this instance, given the values of parameters specified by the user as \fC<param>\fP elements\&. This method is called just once, followed by instantiation\&. \fP"
+.ti -1c
+.RI "virtual object \fBGenerate\fP (\fBISessionImplementor\fP session, object obj)"
+.br
+.RI "\fIGenerate a new identifier \fP"
+.ti -1c
+.RI "virtual string \fBGeneratorKey\fP ()"
+.br
+.RI "\fIReturn a key unique to the underlying database objects\&. \fP"
+.ti -1c
+.RI "virtual string[] \fBSqlCreateStrings\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIThe SQL required to create the underlying database objects \fP"
+.ti -1c
+.RI "virtual string[] \fBSqlDropString\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIThe SQL required to remove the underlying database objects \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBDefaultSequenceName\fP = 'hibernate_sequence'"
+.br
+.ti -1c
+.RI "const int \fBDefaultInitialValue\fP = 1"
+.br
+.ti -1c
+.RI "const int \fBDefaultIncrementSize\fP = 1"
+.br
+.ti -1c
+.RI "const string \fBSequenceParam\fP = 'sequence_name'"
+.br
+.ti -1c
+.RI "const string \fBInitialParam\fP = 'initial_value'"
+.br
+.ti -1c
+.RI "const string \fBIncrementParam\fP = 'increment_size'"
+.br
+.ti -1c
+.RI "const string \fBOptimizerParam\fP = 'optimizer'"
+.br
+.ti -1c
+.RI "const string \fBForceTableParam\fP = 'force_table_use'"
+.br
+.ti -1c
+.RI "const string \fBValueColumnParam\fP = 'value_column'"
+.br
+.ti -1c
+.RI "const string \fBDefaultValueColumnName\fP = 'next_val'"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBDetermineSequenceName\fP (IDictionary< string, string > parms, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIDetermine the name of the sequence (or table if this resolves to a physical table) to use\&. Called during configuration\&. \fP"
+.ti -1c
+.RI "string \fBDetermineValueColumnName\fP (IDictionary< string, string > parms, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIDetermine the name of the column used to store the generator value in the db\&. Called during configuration, if a physical table is being used\&. \fP"
+.ti -1c
+.RI "int \fBDetermineInitialValue\fP (IDictionary< string, string > parms)"
+.br
+.RI "\fIDetermine the initial sequence value to use\&. This value is used when initializing the database structure (i\&.e\&. sequence/table)\&. Called during configuration\&. \fP"
+.ti -1c
+.RI "int \fBDetermineIncrementSize\fP (IDictionary< string, string > parms)"
+.br
+.RI "\fIDetermine the increment size to be applied\&. The exact implications of this value depends on the optimizer being used\&. Called during configuration\&. \fP"
+.ti -1c
+.RI "string \fBDetermineOptimizationStrategy\fP (IDictionary< string, string > parms, int incrementSize)"
+.br
+.RI "\fIDetermine the optimizer to use\&. Called during configuration\&. \fP"
+.ti -1c
+.RI "int \fBDetermineAdjustedIncrementSize\fP (string optimizationStrategy, int incrementSize)"
+.br
+.RI "\fIIn certain cases we need to adjust the increment size based on the selected optimizer\&. This is the hook to achieve that\&. \fP"
+.ti -1c
+.RI "\fBIDatabaseStructure\fP \fBBuildDatabaseStructure\fP (\fBIType\fP type, IDictionary< string, string > parms, \fBDialect\&.Dialect\fP dialect, bool forceTableUse, string sequenceName, int initialValue, int incrementSize)"
+.br
+.ti -1c
+.RI "bool \fBRequiresPooledSequence\fP (int initialValue, int incrementSize, \fBIOptimizer\fP optimizer)"
+.br
+.RI "\fIDo we require a sequence with the ability to set initialValue and incrementSize larger than 1? \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBIDatabaseStructure\fP \fBDatabaseStructure\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIOptimizer\fP \fBOptimizer\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBIType\fP \fBIdentifierType\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Generates identifier values based on an sequence-style database structure\&. Variations range from actually using a sequence to using a table to mimic a sequence\&. These variations are encapsulated by the \fBIDatabaseStructure\fP interface internally\&. 
+
+General configuration parameters: \fBNAME\fP \fBDEFAULT\fP \fBDESCRIPTION\fP  SequenceParam DefaultSequenceName The name of the sequence/table to use to store/retrieve values  InitialParam DefaultInitialValue The initial value to be stored for the given segment; the effect in terms of storage varies based on Optimizer and DatabaseStructure  IncrementParam DefaultIncrementSize The increment size for the underlying segment; the effect in terms of storage varies based on Optimizer and DatabaseStructure  OptimizerParam \fIdepends on defined increment size\fP Allows explicit definition of which optimization strategy to use  ForceTableParam \fB\fIfalse\fP\fP Allows explicit definition of which optimization strategy to use  
+.PP
+Configuration parameters used specifically when the underlying structure is a table: \fBNAME\fP \fBDEFAULT\fP \fBDESCRIPTION\fP  ValueColumnParam DefaultValueColumnName The name of column which holds the sequence value for the given segment  
+.PP
+Definition at line 64 of file SequenceStyleGenerator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Id\&.Enhanced\&.SequenceStyleGenerator\&.Configure (\fBIType\fPtype, IDictionary< string, string >parms, \fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+Configure this instance, given the values of parameters specified by the user as \fC<param>\fP elements\&. This method is called just once, followed by instantiation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The IType the identifier should be\&.
+.br
+\fIparms\fP An IDictionary of \fBParam\fP values that are keyed by parameter name\&.
+.br
+\fIdialect\fP The \fBDialect\&.Dialect\fP to help with Configuration\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IConfigurable\fP\&.
+.PP
+Definition at line 86 of file SequenceStyleGenerator\&.cs\&.
+.SS "int NHibernate\&.Id\&.Enhanced\&.SequenceStyleGenerator\&.DetermineAdjustedIncrementSize (stringoptimizationStrategy, intincrementSize)\fC [protected]\fP"
+
+.PP
+In certain cases we need to adjust the increment size based on the selected optimizer\&. This is the hook to achieve that\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoptimizationStrategy\fP The determined optimizer strategy\&.
+.br
+\fIincrementSize\fP The determined, unadjusted, increment size\&.
+.RE
+.PP
+
+.PP
+Definition at line 193 of file SequenceStyleGenerator\&.cs\&.
+.SS "int NHibernate\&.Id\&.Enhanced\&.SequenceStyleGenerator\&.DetermineIncrementSize (IDictionary< string, string >parms)\fC [protected]\fP"
+
+.PP
+Determine the increment size to be applied\&. The exact implications of this value depends on the optimizer being used\&. Called during configuration\&. 
+.PP
+Definition at line 168 of file SequenceStyleGenerator\&.cs\&.
+.SS "int NHibernate\&.Id\&.Enhanced\&.SequenceStyleGenerator\&.DetermineInitialValue (IDictionary< string, string >parms)\fC [protected]\fP"
+
+.PP
+Determine the initial sequence value to use\&. This value is used when initializing the database structure (i\&.e\&. sequence/table)\&. Called during configuration\&. 
+.PP
+Definition at line 159 of file SequenceStyleGenerator\&.cs\&.
+.SS "string NHibernate\&.Id\&.Enhanced\&.SequenceStyleGenerator\&.DetermineOptimizationStrategy (IDictionary< string, string >parms, intincrementSize)\fC [protected]\fP"
+
+.PP
+Determine the optimizer to use\&. Called during configuration\&. 
+.PP
+Definition at line 176 of file SequenceStyleGenerator\&.cs\&.
+.SS "string NHibernate\&.Id\&.Enhanced\&.SequenceStyleGenerator\&.DetermineSequenceName (IDictionary< string, string >parms, \fBDialect\&.Dialect\fPdialect)\fC [protected]\fP"
+
+.PP
+Determine the name of the sequence (or table if this resolves to a physical table) to use\&. Called during configuration\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparms\fP 
+.br
+\fIdialect\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 125 of file SequenceStyleGenerator\&.cs\&.
+.SS "string NHibernate\&.Id\&.Enhanced\&.SequenceStyleGenerator\&.DetermineValueColumnName (IDictionary< string, string >parms, \fBDialect\&.Dialect\fPdialect)\fC [protected]\fP"
+
+.PP
+Determine the name of the column used to store the generator value in the db\&. Called during configuration, if a physical table is being used\&. 
+.PP
+Definition at line 149 of file SequenceStyleGenerator\&.cs\&.
+.SS "virtual object NHibernate\&.Id\&.Enhanced\&.SequenceStyleGenerator\&.Generate (\fBISessionImplementor\fPsession, objectobj)\fC [virtual]\fP"
+
+.PP
+Generate a new identifier 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The ISessionImplementor this id is being generated in\&.
+.br
+\fIobj\fP The entity for which the id is being generated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new identifier
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IIdentifierGenerator\fP\&.
+.PP
+Definition at line 230 of file SequenceStyleGenerator\&.cs\&.
+.SS "virtual string NHibernate\&.Id\&.Enhanced\&.SequenceStyleGenerator\&.GeneratorKey ()\fC [virtual]\fP"
+
+.PP
+Return a key unique to the underlying database objects\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A key unique to the underlying database objects\&. 
+.RE
+.PP
+.PP
+Prevents us from trying to create/remove them multiple times 
+.PP
+Implements \fBNHibernate\&.Id\&.IPersistentIdentifierGenerator\fP\&.
+.PP
+Definition at line 239 of file SequenceStyleGenerator\&.cs\&.
+.SS "bool NHibernate\&.Id\&.Enhanced\&.SequenceStyleGenerator\&.RequiresPooledSequence (intinitialValue, intincrementSize, \fBIOptimizer\fPoptimizer)\fC [protected]\fP"
+
+.PP
+Do we require a sequence with the ability to set initialValue and incrementSize larger than 1? 
+.PP
+Definition at line 219 of file SequenceStyleGenerator\&.cs\&.
+.SS "virtual string [] NHibernate\&.Id\&.Enhanced\&.SequenceStyleGenerator\&.SqlCreateStrings (\fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+The SQL required to create the underlying database objects 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP to help with creating the sql\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An array of String objects that contain the sql to create the necessary database objects\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IPersistentIdentifierGenerator\fP\&.
+.PP
+Definition at line 244 of file SequenceStyleGenerator\&.cs\&.
+.SS "virtual string [] NHibernate\&.Id\&.Enhanced\&.SequenceStyleGenerator\&.SqlDropString (\fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+The SQL required to remove the underlying database objects 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP to help with creating the sql\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A String that will drop the database objects\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IPersistentIdentifierGenerator\fP\&.
+.PP
+Definition at line 249 of file SequenceStyleGenerator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

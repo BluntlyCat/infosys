@@ -1,0 +1,115 @@
+.TH "NHibernate.Tuple.Component.PocoComponentTuplizer" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Tuple.Component.PocoComponentTuplizer \- 
+.PP
+A \fBIComponentTuplizer\fP specific to the POCO entity mode\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPocoComponentTuplizer\fP (\fBMapping\&.Component\fP component)"
+.br
+.ti -1c
+.RI "override object[] \fBGetPropertyValues\fP (object component)"
+.br
+.RI "\fIExtract the current values contained on the given entity\&. \fP"
+.ti -1c
+.RI "override void \fBSetPropertyValues\fP (object component, object[] values)"
+.br
+.RI "\fIInject the given values into the given entity\&. \fP"
+.ti -1c
+.RI "override object \fBGetParent\fP (object component)"
+.br
+.RI "\fIRetrieve the current value of the parent property\&. \fP"
+.ti -1c
+.RI "override void \fBSetParent\fP (object component, object parent, \fBEngine\&.ISessionFactoryImplementor\fP factory)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override System\&.Type \fBMappedClass\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override bool \fBHasParentProperty\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A \fBIComponentTuplizer\fP specific to the POCO entity mode\&. 
+
+
+.PP
+Definition at line 13 of file PocoComponentTuplizer\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override object NHibernate\&.Tuple\&.Component\&.PocoComponentTuplizer\&.GetParent (objectcomponent)\fC [virtual]\fP"
+
+.PP
+Retrieve the current value of the parent property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomponent\fP The component instance from which to extract the parent property value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The current value of the parent property\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\fP\&.
+.PP
+Definition at line 88 of file PocoComponentTuplizer\&.cs\&.
+.SS "override object [] NHibernate\&.Tuple\&.Component\&.PocoComponentTuplizer\&.GetPropertyValues (objectentity)\fC [virtual]\fP"
+
+.PP
+Extract the current values contained on the given entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity from which to extract values\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The current property values\&. 
+.RE
+.PP
+<throws> \fBHibernateException\fP </throws> 
+.PP
+Reimplemented from \fBNHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\fP\&.
+.PP
+Definition at line 58 of file PocoComponentTuplizer\&.cs\&.
+.SS "override void NHibernate\&.Tuple\&.Component\&.PocoComponentTuplizer\&.SetPropertyValues (objectentity, object[]values)\fC [virtual]\fP"
+
+.PP
+Inject the given values into the given entity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentity\fP The entity\&. 
+.br
+\fIvalues\fP The values to be injected\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBNHibernate\&.Tuple\&.Component\&.AbstractComponentTuplizer\fP\&.
+.PP
+Definition at line 76 of file PocoComponentTuplizer\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

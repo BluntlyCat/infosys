@@ -1,0 +1,9 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1323_1_1_check_viability =
+[
+    [ "FullInitializedRetrievedEntity", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1323_1_1_check_viability_1_1_full_initialized_retrieved_entity.html", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1323_1_1_check_viability_1_1_full_initialized_retrieved_entity" ],
+    [ "WhenReassociateCollectionUsingDeleteThenTheCommitNotThrows", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1323_1_1_check_viability.html#a04661c73a3b01fdb14703af152ac65c7", null ],
+    [ "WhenReassociateCollectionUsingLockThenTheCommitNotThrows", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1323_1_1_check_viability.html#ab947c4a58686adf4b302cee3c461e043", null ],
+    [ "WhenReassociateCollectionUsingMergeThenReassingOwner", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1323_1_1_check_viability.html#aa105e2cee857d611f0bda985e4aaffdf", null ],
+    [ "WhenReassociateCollectionUsingSaveOrUpdateThenTheCommitNotThrows", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1323_1_1_check_viability.html#a70a4dc3137e33b57e54333060f944d69", null ],
+    [ "WhenReassociateCollectionUsingUpdateThenTheCommitNotThrows", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1323_1_1_check_viability.html#ad399e510992e9992a9ce1db3447a14fd", null ]
+];

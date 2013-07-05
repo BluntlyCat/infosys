@@ -1,0 +1,197 @@
+.TH "NHibernate.Id.SequenceGenerator" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Id.SequenceGenerator \- 
+.PP
+An \fBIIdentifierGenerator\fP that generates \fCInt64\fP values using an oracle-style sequence\&. A higher performance algorithm is \fBSequenceHiLoGenerator\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Id\&.IPersistentIdentifierGenerator\fP, and \fBNHibernate\&.Id\&.IConfigurable\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Id\&.SequenceHiLoGenerator\fP, and \fBNHibernate\&.Id\&.SequenceIdentityGenerator\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBConfigure\fP (\fBIType\fP type, IDictionary< string, string > parms, \fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIConfigures the \fBSequenceGenerator\fP by reading the value of \fCsequence\fP and \fCschema\fP from the \fCparms\fP parameter\&. \fP"
+.ti -1c
+.RI "virtual object \fBGenerate\fP (\fBISessionImplementor\fP session, object obj)"
+.br
+.RI "\fIGenerate an Int16, Int32, or Int64 for the identifier by using a database sequence\&. \fP"
+.ti -1c
+.RI "string[] \fBSqlCreateStrings\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIThe SQL required to create the database objects for a \fBSequenceGenerator\fP\&. \fP"
+.ti -1c
+.RI "string[] \fBSqlDropString\fP (\fBDialect\&.Dialect\fP dialect)"
+.br
+.RI "\fIThe SQL required to remove the underlying database objects for a \fBSequenceGenerator\fP\&. \fP"
+.ti -1c
+.RI "string \fBGeneratorKey\fP ()"
+.br
+.RI "\fIReturn a key unique to the underlying database objects for a \fBSequenceGenerator\fP\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBSequence\fP = 'sequence'"
+.br
+.RI "\fIThe name of the sequence parameter\&. \fP"
+.ti -1c
+.RI "const string \fBParameters\fP = 'parameters'"
+.br
+.RI "\fIThe parameters parameter, appended to the create sequence DDL\&. For example (Oracle): \fCINCREMENT BY 1 START WITH 1 MAXVALUE 100 NOCACHE\fP\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBSequenceName\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An \fBIIdentifierGenerator\fP that generates \fCInt64\fP values using an oracle-style sequence\&. A higher performance algorithm is \fBSequenceHiLoGenerator\fP\&. 
+
+This id generation strategy is specified in the mapping file as 
+.PP
+.nf
+&lt;generator class="sequence"&gt;
+    &lt;param name="sequence"&gt;uid_sequence&lt;/param&gt;
+    &lt;param name="schema"&gt;db_schema&lt;/param&gt;
+&lt;/generator&gt;
+
+.fi
+.PP
+ 
+.PP
+The \fCsequence\fP parameter is required while the \fCschema\fP is optional\&. 
+.PP
+Definition at line 35 of file SequenceGenerator\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void NHibernate\&.Id\&.SequenceGenerator\&.Configure (\fBIType\fPtype, IDictionary< string, string >parms, \fBDialect\&.Dialect\fPdialect)\fC [virtual]\fP"
+
+.PP
+Configures the \fBSequenceGenerator\fP by reading the value of \fCsequence\fP and \fCschema\fP from the \fCparms\fP parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The IType the identifier should be\&.
+.br
+\fIparms\fP An IDictionary of \fBParam\fP values that are keyed by parameter name\&.
+.br
+\fIdialect\fP The \fBDialect\&.Dialect\fP to help with Configuration\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IConfigurable\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Id\&.SequenceHiLoGenerator\fP\&.
+.PP
+Definition at line 69 of file SequenceGenerator\&.cs\&.
+.SS "virtual object NHibernate\&.Id\&.SequenceGenerator\&.Generate (\fBISessionImplementor\fPsession, objectobj)\fC [virtual]\fP"
+
+.PP
+Generate an Int16, Int32, or Int64 for the identifier by using a database sequence\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsession\fP The ISessionImplementor this id is being generated in\&.
+.br
+\fIobj\fP The entity for which the id is being generated\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new identifier as a Int16, Int32, or Int64\&.
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IIdentifierGenerator\fP\&.
+.PP
+Reimplemented in \fBNHibernate\&.Id\&.SequenceHiLoGenerator\fP, and \fBNHibernate\&.Id\&.SequenceIdentityGenerator\fP\&.
+.PP
+Definition at line 112 of file SequenceGenerator\&.cs\&.
+.SS "string NHibernate\&.Id\&.SequenceGenerator\&.GeneratorKey ()"
+
+.PP
+Return a key unique to the underlying database objects for a \fBSequenceGenerator\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The configured sequence name\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IPersistentIdentifierGenerator\fP\&.
+.PP
+Definition at line 189 of file SequenceGenerator\&.cs\&.
+.SS "string [] NHibernate\&.Id\&.SequenceGenerator\&.SqlCreateStrings (\fBDialect\&.Dialect\fPdialect)"
+
+.PP
+The SQL required to create the database objects for a \fBSequenceGenerator\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP to help with creating the sql\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An array of String objects that contain the \fBDialect\fP specific sql to create the necessary database objects for the \fBSequenceGenerator\fP\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IPersistentIdentifierGenerator\fP\&.
+.PP
+Definition at line 160 of file SequenceGenerator\&.cs\&.
+.SS "string [] NHibernate\&.Id\&.SequenceGenerator\&.SqlDropString (\fBDialect\&.Dialect\fPdialect)"
+
+.PP
+The SQL required to remove the underlying database objects for a \fBSequenceGenerator\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialect\fP The \fBDialect\&.Dialect\fP to help with creating the sql\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A String that will drop the database objects for the \fBSequenceGenerator\fP\&. 
+.RE
+.PP
+
+.PP
+Implements \fBNHibernate\&.Id\&.IPersistentIdentifierGenerator\fP\&.
+.PP
+Definition at line 178 of file SequenceGenerator\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const string NHibernate\&.Id\&.SequenceGenerator\&.Parameters = 'parameters'"
+
+.PP
+The parameters parameter, appended to the create sequence DDL\&. For example (Oracle): \fCINCREMENT BY 1 START WITH 1 MAXVALUE 100 NOCACHE\fP\&. 
+.PP
+Definition at line 48 of file SequenceGenerator\&.cs\&.
+.SS "const string NHibernate\&.Id\&.SequenceGenerator\&.Sequence = 'sequence'"
+
+.PP
+The name of the sequence parameter\&. 
+.PP
+Definition at line 42 of file SequenceGenerator\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

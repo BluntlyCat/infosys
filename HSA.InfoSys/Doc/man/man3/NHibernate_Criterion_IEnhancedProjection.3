@@ -1,0 +1,87 @@
+.TH "NHibernate.Criterion.IEnhancedProjection" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Criterion.IEnhancedProjection \- 
+.PP
+An 'enhanced' Projection for a \fBICriteria\fP query\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Criterion\&.IProjection\fP\&.
+.PP
+Inherited by \fBNHibernate\&.Criterion\&.AliasedProjection\fP, \fBNHibernate\&.Criterion\&.Distinct\fP, \fBNHibernate\&.Criterion\&.ProjectionList\fP, and \fBNHibernate\&.Criterion\&.SimpleProjection\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string[] \fBGetColumnAliases\fP (int position, \fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery)"
+.br
+.RI "\fIGet the SQL column aliases used by this projection for the columns it writes for inclusion into the \fP"
+.ti -1c
+.RI "string[] \fBGetColumnAliases\fP (string alias, int position, \fBICriteria\fP criteria, \fBICriteriaQuery\fP criteriaQuery)"
+.br
+.RI "\fIGet the SQL column aliases used by this projection for the columns it writes for inclusion into the \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An 'enhanced' Projection for a \fBICriteria\fP query\&. 
+
+
+.PP
+Definition at line 8 of file IEnhancedProjection\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "string [] NHibernate\&.Criterion\&.IEnhancedProjection\&.GetColumnAliases (intposition, \fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery)"
+
+.PP
+Get the SQL column aliases used by this projection for the columns it writes for inclusion into the \fCSELECT\fP clause \fBIProjection\&.ToSqlString\fP\&. \fBNHibernate\fP always uses column aliases to extract data from the System\&.Data\&.IDataReader, so it is important that these be implemented correctly in order for \fBNHibernate\fP to be able to extract these values correctly\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIposition\fP Just as in \fBIProjection\&.ToSqlString\fP, represents the number of columns rendered prior to this projection\&.
+.br
+\fIcriteria\fP The local criteria to which this project is attached (for resolution)\&.
+.br
+\fIcriteriaQuery\fP The overall criteria query instance\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The columns aliases\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.ProjectionList\fP, \fBNHibernate\&.Criterion\&.AliasedProjection\fP, \fBNHibernate\&.Criterion\&.Distinct\fP, and \fBNHibernate\&.Criterion\&.SimpleProjection\fP\&.
+.SS "string [] NHibernate\&.Criterion\&.IEnhancedProjection\&.GetColumnAliases (stringalias, intposition, \fBICriteria\fPcriteria, \fBICriteriaQuery\fPcriteriaQuery)"
+
+.PP
+Get the SQL column aliases used by this projection for the columns it writes for inclusion into the \fCSELECT\fP clause (\fBIProjection\&.ToSqlString\fP) for a particular criteria-level alias\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalias\fP The criteria-level alias\&.
+.br
+\fIposition\fP Just as in \fBIProjection\&.ToSqlString\fP, represents the number of columns rendered prior to this projection\&.
+.br
+\fIcriteria\fP The local criteria to which this project is attached (for resolution)\&.
+.br
+\fIcriteriaQuery\fP The overall criteria query instance\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The columns aliases\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Criterion\&.ProjectionList\fP, \fBNHibernate\&.Criterion\&.AliasedProjection\fP, \fBNHibernate\&.Criterion\&.Distinct\fP, and \fBNHibernate\&.Criterion\&.SimpleProjection\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

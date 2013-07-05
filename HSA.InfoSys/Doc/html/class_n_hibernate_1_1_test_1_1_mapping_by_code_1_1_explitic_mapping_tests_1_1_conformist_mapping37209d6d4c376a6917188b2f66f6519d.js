@@ -1,0 +1,4 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_conformist_mapping37209d6d4c376a6917188b2f66f6519d =
+[
+    [ "SomethingElse", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_conformist_mapping37209d6d4c376a6917188b2f66f6519d.html#a79440439c47ba276ec36a2982d02b095", null ]
+];

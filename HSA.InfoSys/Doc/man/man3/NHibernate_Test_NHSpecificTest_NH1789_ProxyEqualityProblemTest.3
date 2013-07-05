@@ -1,0 +1,64 @@
+.TH "NHibernate.Test.NHSpecificTest.NH1789.ProxyEqualityProblemTest" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Test.NHSpecificTest.NH1789.ProxyEqualityProblemTest \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Test\&.NHSpecificTest\&.BugTestCase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBTestProxyEqualityProblem\fP ()"
+.br
+.RI "\fIThis test fails: when compariing a proxy with a non-proxy, I want the proxy to use the Equals() method on \fBDomainObject\fP to check for equality\&. It doesn't do it, so the equality fails\&. \fP"
+.ti -1c
+.RI "void \fBTestProxyEqualityWhereItDoesWork\fP ()"
+.br
+.RI "\fIHere, instead of querying an \fBICat\fP, we query a \fBCat\fP directly: everything works, and DomainObject\&.Equals() is properly called on the proxy\&. \fP"
+.ti -1c
+.RI "void \fBTestTheProblemWithCollection\fP ()"
+.br
+.RI "\fIThat's how I discovered something was wrong: here my object is not found in the collection, even if it's there\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBOnSetUp\fP ()"
+.br
+.ti -1c
+.RI "override void \fBOnTearDown\fP ()"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file ProxyEqualityProblemTest\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Test\&.NHSpecificTest\&.NH1789\&.ProxyEqualityProblemTest\&.TestProxyEqualityProblem ()"
+
+.PP
+This test fails: when compariing a proxy with a non-proxy, I want the proxy to use the Equals() method on \fBDomainObject\fP to check for equality\&. It doesn't do it, so the equality fails\&. 
+.PP
+Definition at line 40 of file ProxyEqualityProblemTest\&.cs\&.
+.SS "void NHibernate\&.Test\&.NHSpecificTest\&.NH1789\&.ProxyEqualityProblemTest\&.TestProxyEqualityWhereItDoesWork ()"
+
+.PP
+Here, instead of querying an \fBICat\fP, we query a \fBCat\fP directly: everything works, and DomainObject\&.Equals() is properly called on the proxy\&. 
+.PP
+Definition at line 72 of file ProxyEqualityProblemTest\&.cs\&.
+.SS "void NHibernate\&.Test\&.NHSpecificTest\&.NH1789\&.ProxyEqualityProblemTest\&.TestTheProblemWithCollection ()"
+
+.PP
+That's how I discovered something was wrong: here my object is not found in the collection, even if it's there\&. 
+.PP
+Definition at line 100 of file ProxyEqualityProblemTest\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,135 @@
+.TH "log4net.MDC" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+log4net.MDC \- 
+.PP
+Implementation of Mapped Diagnostic Contexts\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static string \fBGet\fP (string key)"
+.br
+.RI "\fIGets the context value identified by the \fIkey\fP  parameter\&. \fP"
+.ti -1c
+.RI "static void \fBSet\fP (string key, string value)"
+.br
+.RI "\fIAdd an entry to the \fBMDC\fP \fP"
+.ti -1c
+.RI "static void \fBRemove\fP (string key)"
+.br
+.RI "\fIRemoves the key value mapping for the key specified\&. \fP"
+.ti -1c
+.RI "static void \fBClear\fP ()"
+.br
+.RI "\fIClear all entries in the \fBMDC\fP \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Implementation of Mapped Diagnostic Contexts\&. 
+
+<note> 
+.PP
+The \fBMDC\fP is deprecated and has been replaced by the \fBThreadContext\&.Properties\fP\&. The current \fBMDC\fP implementation forwards to the \fC\fBThreadContext\&.Properties\fP\fP\&. 
+.PP
+</note> 
+.PP
+The \fBMDC\fP class is similar to the \fBNDC\fP class except that it is based on a map instead of a stack\&. It provides \fImapped diagnostic contexts\fP\&. A \fIMapped Diagnostic Context\fP, or \fBMDC\fP in short, is an instrument for distinguishing interleaved log output from different sources\&. Log output is typically interleaved when a server handles multiple clients near-simultaneously\&. 
+.PP
+The \fBMDC\fP is managed on a per thread basis\&. 
+.PP
+<threadsafety static='true' instance='true'> <author>Nicko Cadell</author> <author>Gert Driesen</author> 
+.PP
+Definition at line 51 of file MDC\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static void log4net\&.MDC\&.Clear ()\fC [static]\fP"
+
+.PP
+Clear all entries in the \fBMDC\fP <note> 
+.PP
+The \fBMDC\fP is deprecated and has been replaced by the \fBThreadContext\&.Properties\fP\&. The current \fBMDC\fP implementation forwards to the \fC\fBThreadContext\&.Properties\fP\fP\&. 
+.PP
+</note> 
+.PP
+Remove all the entries from this thread's \fBMDC\fP 
+.PP
+Definition at line 162 of file MDC\&.cs\&.
+.SS "static string log4net\&.MDC\&.Get (stringkey)\fC [static]\fP"
+
+.PP
+Gets the context value identified by the \fIkey\fP  parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key to lookup in the \fBMDC\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The string value held for the key, or a \fCnull\fP reference if no corresponding value is found\&.
+.RE
+.PP
+.PP
+<note> 
+.PP
+The \fBMDC\fP is deprecated and has been replaced by the \fBThreadContext\&.Properties\fP\&. The current \fBMDC\fP implementation forwards to the \fC\fBThreadContext\&.Properties\fP\fP\&. 
+.PP
+</note> 
+.PP
+If the \fIkey\fP  parameter does not look up to a previously defined context then \fCnull\fP will be returned\&. 
+.PP
+Definition at line 87 of file MDC\&.cs\&.
+.SS "static void log4net\&.MDC\&.Remove (stringkey)\fC [static]\fP"
+
+.PP
+Removes the key value mapping for the key specified\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key to remove\&.
+.RE
+.PP
+.PP
+<note> 
+.PP
+The \fBMDC\fP is deprecated and has been replaced by the \fBThreadContext\&.Properties\fP\&. The current \fBMDC\fP implementation forwards to the \fC\fBThreadContext\&.Properties\fP\fP\&. 
+.PP
+</note> 
+.PP
+Remove the specified entry from this thread's \fBMDC\fP 
+.PP
+Definition at line 142 of file MDC\&.cs\&.
+.SS "static void log4net\&.MDC\&.Set (stringkey, stringvalue)\fC [static]\fP"
+
+.PP
+Add an entry to the \fBMDC\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key to store the value under\&.
+.br
+\fIvalue\fP The value to store\&.
+.RE
+.PP
+.PP
+<note> 
+.PP
+The \fBMDC\fP is deprecated and has been replaced by the \fBThreadContext\&.Properties\fP\&. The current \fBMDC\fP implementation forwards to the \fC\fBThreadContext\&.Properties\fP\fP\&. 
+.PP
+</note> 
+.PP
+Puts a context value (the \fIvalue\fP  parameter) as identified with the \fIkey\fP  parameter into the current thread's context map\&. 
+.PP
+If a value is already defined for the \fIkey\fP  specified then the value will be replaced\&. If the \fIvalue\fP  is specified as \fCnull\fP then the key value mapping will be removed\&. 
+.PP
+Definition at line 121 of file MDC\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

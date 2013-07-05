@@ -1,0 +1,9 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_nested_componets_tests =
+[
+    [ "WhenCollectionOfComoponetsWithManyToOneThenMapManyToOne", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_nested_componets_tests.html#a07f7c7881f76bcf3a9bf2d10140095a7", null ],
+    [ "WhenCollectionOfComoponetsWithNestBidirectionalComponentThenMapParent", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_nested_componets_tests.html#aa08285896a262b23c7f47af0d4b99d91", null ],
+    [ "WhenCollectionOfComoponetsWithParentThenMapParent", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_nested_componets_tests.html#a15f0603e90df0fa7948d3b15d7909fa5", null ],
+    [ "WhenMapComoponetWithManyToOneThenMapManyToOne", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_nested_componets_tests.html#a148f2c5f9ee243854a77a804a99f9bb8", null ],
+    [ "WhenMapComoponetWithNestBidirectionalComponentThenMapParent", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_nested_componets_tests.html#a24849be33abda3574155dff2f791d413", null ],
+    [ "WhenMapComoponetWithParentThenMapParent", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_nested_componets_tests.html#aa3427a45a847e86a52827499658afb8a", null ]
+];

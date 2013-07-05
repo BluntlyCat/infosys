@@ -1,0 +1,157 @@
+.TH "Renci.SshNet.Security.Cryptography.BlockCipher" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renci.SshNet.Security.Cryptography.BlockCipher \- 
+.PP
+Base class for block cipher implementations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBRenci\&.SshNet\&.Security\&.Cryptography\&.SymmetricCipher\fP\&.
+.PP
+Inherited by \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.AesCipher\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.BlowfishCipher\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.CastCipher\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.DesCipher\fP, \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.SerpentCipher\fP, and \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Ciphers\&.TwofishCipher\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override byte[] \fBEncrypt\fP (byte[] data)"
+.br
+.RI "\fIEncrypts the specified data\&. \fP"
+.ti -1c
+.RI "override byte[] \fBDecrypt\fP (byte[] data)"
+.br
+.RI "\fIDecrypts the specified data\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBlockCipher\fP (byte[] key, byte blockSize, \fBCipherMode\fP mode, \fBCipherPadding\fP padding)"
+.br
+.RI "\fIInitializes a new instance of the \fBBlockCipher\fP class\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly byte \fB_blockSize\fP"
+.br
+.RI "\fIGets the size of the block in bytes\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override byte \fBMinimumSize\fP\fC [get]\fP"
+.br
+.RI "\fIGets the minimum data size\&. \fP"
+.ti -1c
+.RI "byte \fBBlockSize\fP\fC [get]\fP"
+.br
+.RI "\fIGets the size of the block\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Base class for block cipher implementations\&. 
+
+
+.PP
+Definition at line 12 of file BlockCipher\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Renci\&.SshNet\&.Security\&.Cryptography\&.BlockCipher\&.BlockCipher (byte[]key, byteblockSize, \fBCipherMode\fPmode, \fBCipherPadding\fPpadding)\fC [protected]\fP"
+
+.PP
+Initializes a new instance of the \fBBlockCipher\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The key\&.
+.br
+\fIblockSize\fP Size of the block\&.
+.br
+\fImode\fP \fBCipher\fP mode\&.
+.br
+\fIpadding\fP \fBCipher\fP padding\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP \fIkey\fP  is null\&.
+.RE
+.PP
+
+.PP
+Definition at line 59 of file BlockCipher\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "override byte [] Renci\&.SshNet\&.Security\&.Cryptography\&.BlockCipher\&.Decrypt (byte[]data)\fC [virtual]\fP"
+
+.PP
+Decrypts the specified data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Decrypted data
+.RE
+.PP
+
+.PP
+Implements \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Cipher\fP\&.
+.PP
+Definition at line 118 of file BlockCipher\&.cs\&.
+.SS "override byte [] Renci\&.SshNet\&.Security\&.Cryptography\&.BlockCipher\&.Encrypt (byte[]data)\fC [virtual]\fP"
+
+.PP
+Encrypts the specified data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Encrypted data
+.RE
+.PP
+
+.PP
+Implements \fBRenci\&.SshNet\&.Security\&.Cryptography\&.Cipher\fP\&.
+.PP
+Definition at line 75 of file BlockCipher\&.cs\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly byte Renci\&.SshNet\&.Security\&.Cryptography\&.BlockCipher\&._blockSize\fC [protected]\fP"
+
+.PP
+Gets the size of the block in bytes\&. The size of the block in bytes\&. 
+.PP
+Definition at line 24 of file BlockCipher\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "byte Renci\&.SshNet\&.Security\&.Cryptography\&.BlockCipher\&.BlockSize\fC [get]\fP"
+
+.PP
+Gets the size of the block\&. The size of the block\&. 
+.PP
+Definition at line 44 of file BlockCipher\&.cs\&.
+.SS "override byte Renci\&.SshNet\&.Security\&.Cryptography\&.BlockCipher\&.MinimumSize\fC [get]\fP"
+
+.PP
+Gets the minimum data size\&. The minimum data size\&. 
+.PP
+Definition at line 33 of file BlockCipher\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

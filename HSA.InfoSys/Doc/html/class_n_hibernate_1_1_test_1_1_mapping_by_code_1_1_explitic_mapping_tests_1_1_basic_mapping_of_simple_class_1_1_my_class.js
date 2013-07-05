@@ -1,0 +1,5 @@
+var class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_basic_mapping_of_simple_class_1_1_my_class =
+[
+    [ "Id", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_basic_mapping_of_simple_class_1_1_my_class.html#aa6d4bf2d5372ca345b2c7fac85153c7f", null ],
+    [ "Something", "class_n_hibernate_1_1_test_1_1_mapping_by_code_1_1_explitic_mapping_tests_1_1_basic_mapping_of_simple_class_1_1_my_class.html#a965c260c1bb537abfc2b537bc1ff34a8", null ]
+];

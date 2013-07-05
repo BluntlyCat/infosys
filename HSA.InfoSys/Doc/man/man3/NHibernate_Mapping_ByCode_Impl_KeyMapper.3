@@ -1,0 +1,77 @@
+.TH "NHibernate.Mapping.ByCode.Impl.KeyMapper" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.ByCode.Impl.KeyMapper \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.ByCode\&.IKeyMapper\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBKeyMapper\fP (System\&.Type ownerEntityType, \fBHbmKey\fP mapping)"
+.br
+.ti -1c
+.RI "void \fBColumn\fP (Action< \fBIColumnMapper\fP > columnMapper)"
+.br
+.ti -1c
+.RI "void \fBColumns\fP (params Action< \fBIColumnMapper\fP >[] columnMapper)"
+.br
+.ti -1c
+.RI "void \fBColumn\fP (string name)"
+.br
+.ti -1c
+.RI "void \fBOnDelete\fP (OnDeleteAction deleteAction)"
+.br
+.ti -1c
+.RI "void \fBPropertyRef\fP (MemberInfo property)"
+.br
+.ti -1c
+.RI "void \fBUpdate\fP (bool consideredInUpdateQuery)"
+.br
+.ti -1c
+.RI "void \fBNotNullable\fP (bool notnull)"
+.br
+.ti -1c
+.RI "void \fBUnique\fP (bool unique)"
+.br
+.ti -1c
+.RI "void \fBForeignKey\fP (string foreignKeyName)"
+.br
+.RI "\fI\fBSet\fP the Foreign-Key name \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static string \fBDefaultColumnName\fP (System\&.Type ownerEntityType)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 9 of file KeyMapper\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void NHibernate\&.Mapping\&.ByCode\&.Impl\&.KeyMapper\&.ForeignKey (stringforeignKeyName)"
+
+.PP
+\fBSet\fP the Foreign-Key name 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIforeignKeyName\fP The name of the Foreign-Key
+.RE
+.PP
+.PP
+Where the \fIforeignKeyName\fP  is 'none' or string\&.Empty or all white-spaces the FK won't be created\&. Use null to reset the default \fBNHibernate\fP's behavior\&. 
+.PP
+Implements \fBNHibernate\&.Mapping\&.ByCode\&.IKeyMapper\fP\&.
+.PP
+Definition at line 122 of file KeyMapper\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

@@ -1,0 +1,2211 @@
+.TH "Newtonsoft.Json.Linq.JToken" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Newtonsoft.Json.Linq.JToken \- 
+.PP
+Represents an abstract JSON token\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNewtonsoft\&.Json\&.Linq\&.IJEnumerable< out T >\fP, \fBNewtonsoft\&.Json\&.IJsonLineInfo\fP, ICloneable, and IDynamicMetaObjectProvider\&.
+.PP
+Inherited by \fBNewtonsoft\&.Json\&.Linq\&.JContainer\fP, and \fBNewtonsoft\&.Json\&.Linq\&.JValue\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBAddAfterSelf\fP (object content)"
+.br
+.RI "\fIAdds the specified content immediately after this token\&. \fP"
+.ti -1c
+.RI "void \fBAddBeforeSelf\fP (object content)"
+.br
+.RI "\fIAdds the specified content immediately before this token\&. \fP"
+.ti -1c
+.RI "IEnumerable< \fBJToken\fP > \fBAncestors\fP ()"
+.br
+.RI "\fIReturns a collection of the ancestor tokens of this token\&. \fP"
+.ti -1c
+.RI "IEnumerable< \fBJToken\fP > \fBAfterSelf\fP ()"
+.br
+.RI "\fIReturns a collection of the sibling tokens after this token, in document order\&. \fP"
+.ti -1c
+.RI "IEnumerable< \fBJToken\fP > \fBBeforeSelf\fP ()"
+.br
+.RI "\fIReturns a collection of the sibling tokens before this token, in document order\&. \fP"
+.ti -1c
+.RI "virtual T \fBValue< T >\fP (object key)"
+.br
+.RI "\fIGets the \fBJToken\fP with the specified key converted to the specified type\&. \fP"
+.ti -1c
+.RI "virtual JEnumerable< \fBJToken\fP > \fBChildren\fP ()"
+.br
+.RI "\fIReturns a collection of the child tokens of this token, in document order\&. \fP"
+.ti -1c
+.RI "JEnumerable< T > \fBChildren< T >\fP ()"
+.br
+.RI "\fIReturns a collection of the child tokens of this token, in document order, filtered by the specified type\&. \fP"
+.ti -1c
+.RI "virtual IEnumerable< T > \fBValues< T >\fP ()"
+.br
+.RI "\fIReturns a collection of the child values of this token, in document order\&. \fP"
+.ti -1c
+.RI "void \fBRemove\fP ()"
+.br
+.RI "\fIRemoves this token from its parent\&. \fP"
+.ti -1c
+.RI "void \fBReplace\fP (\fBJToken\fP value)"
+.br
+.RI "\fIReplaces this token with the specified token\&. \fP"
+.ti -1c
+.RI "abstract void \fBWriteTo\fP (\fBJsonWriter\fP writer, params \fBJsonConverter\fP[] converters)"
+.br
+.RI "\fIWrites this token to a \fBJsonWriter\fP\&. \fP"
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "\fIReturns the indented JSON for this token\&. \fP"
+.ti -1c
+.RI "string \fBToString\fP (\fBFormatting\fP formatting, params \fBJsonConverter\fP[] converters)"
+.br
+.RI "\fIReturns the JSON for this token using the given formatting and converters\&. \fP"
+.ti -1c
+.RI "\fBJsonReader\fP \fBCreateReader\fP ()"
+.br
+.RI "\fICreates an \fBJsonReader\fP for this token\&. \fP"
+.ti -1c
+.RI "T \fBToObject< T >\fP ()"
+.br
+.RI "\fICreates the specified \&.NET type from the \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "object \fBToObject\fP (\fBType\fP objectType)"
+.br
+.RI "\fICreates the specified \&.NET type from the \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "T \fBToObject< T >\fP (\fBJsonSerializer\fP jsonSerializer)"
+.br
+.RI "\fICreates the specified \&.NET type from the \fBJToken\fP using the specified \fBJsonSerializer\fP\&. \fP"
+.ti -1c
+.RI "object \fBToObject\fP (\fBType\fP objectType, \fBJsonSerializer\fP jsonSerializer)"
+.br
+.RI "\fICreates the specified \&.NET type from the \fBJToken\fP using the specified \fBJsonSerializer\fP\&. \fP"
+.ti -1c
+.RI "\fBJToken\fP \fBSelectToken\fP (string path)"
+.br
+.RI "\fISelects the token that matches the object path\&. \fP"
+.ti -1c
+.RI "\fBJToken\fP \fBSelectToken\fP (string path, bool errorWhenNoMatch)"
+.br
+.RI "\fISelects the token that matches the object path\&. \fP"
+.ti -1c
+.RI "\fBJToken\fP \fBDeepClone\fP ()"
+.br
+.RI "\fICreates a new instance of the \fBJToken\fP\&. All child tokens are recursively cloned\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBDeepEquals\fP (\fBJToken\fP t1, \fBJToken\fP t2)"
+.br
+.RI "\fICompares the values of two tokens, including the values of all descendant tokens\&. \fP"
+.ti -1c
+.RI "static \fBoperator bool\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Boolean\&. \fP"
+.ti -1c
+.RI "static \fBoperator DateTimeOffset\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.DateTimeOffset\&. \fP"
+.ti -1c
+.RI "static \fBoperator bool?\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{Boolean}\&. \fP"
+.ti -1c
+.RI "static \fBoperator long\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Int64\&. \fP"
+.ti -1c
+.RI "static \fBoperator DateTime?\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{DateTime}\&. \fP"
+.ti -1c
+.RI "static \fBoperator DateTimeOffset?\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{DateTimeOffset}\&. \fP"
+.ti -1c
+.RI "static \fBoperator decimal?\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{Decimal}\&. \fP"
+.ti -1c
+.RI "static \fBoperator double?\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{Double}\&. \fP"
+.ti -1c
+.RI "static \fBoperator char?\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{Char}\&. \fP"
+.ti -1c
+.RI "static \fBoperator int\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Int32\&. \fP"
+.ti -1c
+.RI "static \fBoperator short\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Int16\&. \fP"
+.ti -1c
+.RI "static \fBoperator ushort\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.UInt16\&. \fP"
+.ti -1c
+.RI "static \fBoperator char\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Char\&. \fP"
+.ti -1c
+.RI "static \fBoperator byte\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Byte\&. \fP"
+.ti -1c
+.RI "static \fBoperator int?\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{Int32}\&. \fP"
+.ti -1c
+.RI "static \fBoperator short?\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{Int16}\&. \fP"
+.ti -1c
+.RI "static \fBoperator ushort?\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{UInt16}\&. \fP"
+.ti -1c
+.RI "static \fBoperator byte?\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{Byte}\&. \fP"
+.ti -1c
+.RI "static \fBoperator DateTime\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.DateTime\&. \fP"
+.ti -1c
+.RI "static \fBoperator long?\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{Int64}\&. \fP"
+.ti -1c
+.RI "static \fBoperator float?\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{Single}\&. \fP"
+.ti -1c
+.RI "static \fBoperator decimal\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Decimal\&. \fP"
+.ti -1c
+.RI "static \fBoperator uint?\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{UInt32}\&. \fP"
+.ti -1c
+.RI "static \fBoperator ulong?\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{UInt64}\&. \fP"
+.ti -1c
+.RI "static \fBoperator double\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Double\&. \fP"
+.ti -1c
+.RI "static \fBoperator float\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Single\&. \fP"
+.ti -1c
+.RI "static \fBoperator string\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.String\&. \fP"
+.ti -1c
+.RI "static \fBoperator uint\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.UInt32\&. \fP"
+.ti -1c
+.RI "static \fBoperator ulong\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.UInt64\&. \fP"
+.ti -1c
+.RI "static \fBoperator byte[]\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to T:System\&.Byte[]\&. \fP"
+.ti -1c
+.RI "static \fBoperator Guid\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Guid\&. \fP"
+.ti -1c
+.RI "static \fBoperator Guid?\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Guid\&. \fP"
+.ti -1c
+.RI "static \fBoperator TimeSpan\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.TimeSpan\&. \fP"
+.ti -1c
+.RI "static \fBoperator TimeSpan?\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.TimeSpan\&. \fP"
+.ti -1c
+.RI "static \fBoperator Uri\fP (\fBJToken\fP value)"
+.br
+.RI "\fIPerforms an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Uri\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (bool value)"
+.br
+.RI "\fIPerforms an implicit conversion from \fBBoolean\fP to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (\fBDateTimeOffset\fP value)"
+.br
+.RI "\fIPerforms an implicit conversion from \fBDateTimeOffset\fP to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (bool?value)"
+.br
+.RI "\fIPerforms an implicit conversion from Nullable{Boolean} to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (long value)"
+.br
+.RI "\fIPerforms an implicit conversion from Nullable{Int64} to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (\fBDateTime\fP?value)"
+.br
+.RI "\fIPerforms an implicit conversion from Nullable{DateTime} to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (\fBDateTimeOffset\fP?value)"
+.br
+.RI "\fIPerforms an implicit conversion from Nullable{DateTimeOffset} to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (decimal?value)"
+.br
+.RI "\fIPerforms an implicit conversion from Nullable{Decimal} to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (double?value)"
+.br
+.RI "\fIPerforms an implicit conversion from Nullable{Double} to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (short value)"
+.br
+.RI "\fIPerforms an implicit conversion from Int16 to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (ushort value)"
+.br
+.RI "\fIPerforms an implicit conversion from UInt16 to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (int value)"
+.br
+.RI "\fIPerforms an implicit conversion from Int32 to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (int?value)"
+.br
+.RI "\fIPerforms an implicit conversion from Nullable{Int32} to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (\fBDateTime\fP value)"
+.br
+.RI "\fIPerforms an implicit conversion from \fBDateTime\fP to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (long?value)"
+.br
+.RI "\fIPerforms an implicit conversion from Nullable{Int64} to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (float?value)"
+.br
+.RI "\fIPerforms an implicit conversion from Nullable{Single} to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (decimal value)"
+.br
+.RI "\fIPerforms an implicit conversion from \fBDecimal\fP to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (short?value)"
+.br
+.RI "\fIPerforms an implicit conversion from Nullable{Int16} to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (ushort?value)"
+.br
+.RI "\fIPerforms an implicit conversion from Nullable{UInt16} to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (uint?value)"
+.br
+.RI "\fIPerforms an implicit conversion from Nullable{UInt32} to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (ulong?value)"
+.br
+.RI "\fIPerforms an implicit conversion from Nullable{UInt64} to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (double value)"
+.br
+.RI "\fIPerforms an implicit conversion from \fBDouble\fP to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (float value)"
+.br
+.RI "\fIPerforms an implicit conversion from Single to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (string value)"
+.br
+.RI "\fIPerforms an implicit conversion from \fBString\fP to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (uint value)"
+.br
+.RI "\fIPerforms an implicit conversion from UInt32 to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (ulong value)"
+.br
+.RI "\fIPerforms an implicit conversion from UInt64 to \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (byte[] value)"
+.br
+.RI "\fIPerforms an implicit conversion from T:System\&.Byte[] to \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (\fBUri\fP value)"
+.br
+.RI "\fIPerforms an implicit conversion from T:System\&.Uri to \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (\fBTimeSpan\fP value)"
+.br
+.RI "\fIPerforms an implicit conversion from T:System\&.TimeSpan to \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (\fBTimeSpan\fP?value)"
+.br
+.RI "\fIPerforms an implicit conversion from Nullable{TimeSpan} to \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (\fBGuid\fP value)"
+.br
+.RI "\fIPerforms an implicit conversion from T:System\&.Guid to \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP\&. \fP"
+.ti -1c
+.RI "static implicit \fBoperator JToken\fP (\fBGuid\fP?value)"
+.br
+.RI "\fIPerforms an implicit conversion from Nullable{Guid} to \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP\&. \fP"
+.ti -1c
+.RI "static \fBJToken\fP \fBFromObject\fP (object o)"
+.br
+.RI "\fICreates a \fBJToken\fP from an object\&. \fP"
+.ti -1c
+.RI "static \fBJToken\fP \fBFromObject\fP (object o, \fBJsonSerializer\fP jsonSerializer)"
+.br
+.RI "\fICreates a \fBJToken\fP from an object using the specified \fBJsonSerializer\fP\&. \fP"
+.ti -1c
+.RI "static \fBJToken\fP \fBReadFrom\fP (\fBJsonReader\fP reader)"
+.br
+.RI "\fICreates a \fBJToken\fP from a \fBJsonReader\fP\&. \fP"
+.ti -1c
+.RI "static \fBJToken\fP \fBParse\fP (string json)"
+.br
+.RI "\fILoad a \fBJToken\fP from a string that contains JSON\&. \fP"
+.ti -1c
+.RI "static \fBJToken\fP \fBLoad\fP (\fBJsonReader\fP reader)"
+.br
+.RI "\fICreates a \fBJToken\fP from a \fBJsonReader\fP\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual DynamicMetaObject \fBGetMetaObject\fP (Expression parameter)"
+.br
+.RI "\fIReturns the T:System\&.Dynamic\&.DynamicMetaObject responsible for binding operations performed on this object\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "static \fBJTokenEqualityComparer\fP \fBEqualityComparer\fP\fC [get]\fP"
+.br
+.RI "\fIGets a comparer that can compare two tokens for value equality\&. \fP"
+.ti -1c
+.RI "\fBJContainer\fP \fBParent\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets the parent\&. \fP"
+.ti -1c
+.RI "\fBJToken\fP \fBRoot\fP\fC [get]\fP"
+.br
+.RI "\fIGets the root \fBJToken\fP of this \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "abstract \fBJTokenType\fP \fBType\fP\fC [get]\fP"
+.br
+.RI "\fIGets the node type for this \fBJToken\fP\&. \fP"
+.ti -1c
+.RI "abstract bool \fBHasValues\fP\fC [get]\fP"
+.br
+.RI "\fIGets a value indicating whether this token has childen tokens\&. \fP"
+.ti -1c
+.RI "\fBJToken\fP \fBNext\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the next sibling token of this node\&. \fP"
+.ti -1c
+.RI "\fBJToken\fP \fBPrevious\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the previous sibling token of this node\&. \fP"
+.ti -1c
+.RI "string \fBPath\fP\fC [get]\fP"
+.br
+.RI "\fIGets the path of the JSON token\&. \fP"
+.ti -1c
+.RI "virtual \fBJToken\fP \fBthis[object key]\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets the \fBJToken\fP with the specified key\&. \fP"
+.ti -1c
+.RI "virtual \fBJToken\fP \fBFirst\fP\fC [get]\fP"
+.br
+.RI "\fIGet the first child token of this token\&. \fP"
+.ti -1c
+.RI "virtual \fBJToken\fP \fBLast\fP\fC [get]\fP"
+.br
+.RI "\fIGet the last child token of this token\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents an abstract JSON token\&. 
+
+
+.PP
+Definition at line 52 of file JToken\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Newtonsoft\&.Json\&.Linq\&.JToken\&.AddAfterSelf (objectcontent)"
+
+.PP
+Adds the specified content immediately after this token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontent\fP A content object that contains simple content or a collection of content objects to be added after this token\&.
+.RE
+.PP
+
+.PP
+Definition at line 227 of file JToken\&.cs\&.
+.SS "void Newtonsoft\&.Json\&.Linq\&.JToken\&.AddBeforeSelf (objectcontent)"
+
+.PP
+Adds the specified content immediately before this token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcontent\fP A content object that contains simple content or a collection of content objects to be added before this token\&.
+.RE
+.PP
+
+.PP
+Definition at line 240 of file JToken\&.cs\&.
+.SS "IEnumerable<\fBJToken\fP> Newtonsoft\&.Json\&.Linq\&.JToken\&.AfterSelf ()"
+
+.PP
+Returns a collection of the sibling tokens after this token, in document order\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A collection of the sibling tokens after this tokens, in document order\&.
+.RE
+.PP
+
+.PP
+Definition at line 265 of file JToken\&.cs\&.
+.SS "IEnumerable<\fBJToken\fP> Newtonsoft\&.Json\&.Linq\&.JToken\&.Ancestors ()"
+
+.PP
+Returns a collection of the ancestor tokens of this token\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A collection of the ancestor tokens of this token\&.
+.RE
+.PP
+
+.PP
+Definition at line 253 of file JToken\&.cs\&.
+.SS "IEnumerable<\fBJToken\fP> Newtonsoft\&.Json\&.Linq\&.JToken\&.BeforeSelf ()"
+
+.PP
+Returns a collection of the sibling tokens before this token, in document order\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A collection of the sibling tokens before this token, in document order\&.
+.RE
+.PP
+
+.PP
+Definition at line 280 of file JToken\&.cs\&.
+.SS "virtual JEnumerable<\fBJToken\fP> Newtonsoft\&.Json\&.Linq\&.JToken\&.Children ()\fC [virtual]\fP"
+
+.PP
+Returns a collection of the child tokens of this token, in document order\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An IEnumerable{T} of \fBJToken\fP containing the child tokens of this \fBJToken\fP, in document order\&.
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNewtonsoft\&.Json\&.Linq\&.JContainer\fP\&.
+.PP
+Definition at line 333 of file JToken\&.cs\&.
+.SS "JEnumerable<T> \fBNewtonsoft\&.Json\&.Linq\&.JToken\&.Children\fP< T > ()"
+
+.PP
+Returns a collection of the child tokens of this token, in document order, filtered by the specified type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The type to filter the child tokens on\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A JEnumerable{T} containing the child tokens of this \fBJToken\fP, in document order\&.
+.RE
+.PP
+
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fIJToken\fP
+.PP
+Definition at line 343 of file JToken\&.cs\&.
+.SS "\fBJsonReader\fP Newtonsoft\&.Json\&.Linq\&.JToken\&.CreateReader ()"
+
+.PP
+Creates an \fBJsonReader\fP for this token\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBJsonReader\fP that can be used to read this token and its descendants\&.
+.RE
+.PP
+
+.PP
+Definition at line 1548 of file JToken\&.cs\&.
+.SS "\fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JToken\&.DeepClone ()"
+
+.PP
+Creates a new instance of the \fBJToken\fP\&. All child tokens are recursively cloned\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A new instance of the \fBJToken\fP\&.
+.RE
+.PP
+
+.PP
+Definition at line 1891 of file JToken\&.cs\&.
+.SS "static bool Newtonsoft\&.Json\&.Linq\&.JToken\&.DeepEquals (\fBJToken\fPt1, \fBJToken\fPt2)\fC [static]\fP"
+
+.PP
+Compares the values of two tokens, including the values of all descendant tokens\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIt1\fP The first \fBJToken\fP to compare\&.
+.br
+\fIt2\fP The second \fBJToken\fP to compare\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if the tokens are equal; otherwise false\&.
+.RE
+.PP
+
+.PP
+Definition at line 149 of file JToken\&.cs\&.
+.SS "static \fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JToken\&.FromObject (objecto)\fC [static]\fP"
+
+.PP
+Creates a \fBJToken\fP from an object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIo\fP The object that will be used to create \fBJToken\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJToken\fP with the value of the specified object
+.RE
+.PP
+
+.PP
+Definition at line 1573 of file JToken\&.cs\&.
+.SS "static \fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JToken\&.FromObject (objecto, \fBJsonSerializer\fPjsonSerializer)\fC [static]\fP"
+
+.PP
+Creates a \fBJToken\fP from an object using the specified \fBJsonSerializer\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIo\fP The object that will be used to create \fBJToken\fP\&.
+.br
+\fIjsonSerializer\fP The \fBJsonSerializer\fP that will be used when reading the object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJToken\fP with the value of the specified object
+.RE
+.PP
+
+.PP
+Definition at line 1584 of file JToken\&.cs\&.
+.SS "virtual DynamicMetaObject Newtonsoft\&.Json\&.Linq\&.JToken\&.GetMetaObject (Expressionparameter)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Returns the T:System\&.Dynamic\&.DynamicMetaObject responsible for binding operations performed on this object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameter\fP The expression tree representation of the runtime value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The T:System\&.Dynamic\&.DynamicMetaObject to bind this object\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNewtonsoft\&.Json\&.Linq\&.JValue\fP, and \fBNewtonsoft\&.Json\&.Linq\&.JObject\fP\&.
+.PP
+Definition at line 1862 of file JToken\&.cs\&.
+.SS "static \fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JToken\&.Load (\fBJsonReader\fPreader)\fC [static]\fP"
+
+.PP
+Creates a \fBJToken\fP from a \fBJsonReader\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP An \fBJsonReader\fP positioned at the token to read into this \fBJToken\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBJToken\fP that contains the token and its descendant tokens that were read from the reader\&. The runtime type of the token is determined by the token type of the first token encountered in the reader\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1788 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator bool (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Boolean\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 452 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator bool? (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{Boolean}\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 491 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator byte (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Byte\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 723 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator byte? (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{Byte}\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 809 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator byte[] (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to T:System\&.Byte[]\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 1063 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator char (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Char\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 704 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator char? (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{Char}\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 623 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBDateTime\fP (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.DateTime\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 831 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBDateTime\fP? (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{DateTime}\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 532 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBDateTimeOffset\fP (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.DateTimeOffset\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 472 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBDateTimeOffset\fP? (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{DateTimeOffset}\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 555 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator decimal (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Decimal\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 894 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator decimal? (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{Decimal}\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 579 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator double (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Double\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 959 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator double? (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{Double}\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 601 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator float (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Single\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 978 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator float? (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{Single}\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 872 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBGuid\fP (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Guid\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 1090 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBGuid\fP? (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Guid\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 1107 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator int (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Int32\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 645 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator int? (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{Int32}\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 742 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (boolvalue)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from \fBBoolean\fP to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1209 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (\fBDateTimeOffset\fPvalue)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from \fBDateTimeOffset\fP to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1220 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (bool?value)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from Nullable{Boolean} to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1231 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (longvalue)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from Nullable{Int64} to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1241 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (\fBDateTime\fP?value)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from Nullable{DateTime} to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1251 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (\fBDateTimeOffset\fP?value)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from Nullable{DateTimeOffset} to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1262 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (decimal?value)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from Nullable{Decimal} to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1273 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (double?value)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from Nullable{Double} to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1283 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (shortvalue)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from Int16 to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1294 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (ushortvalue)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from UInt16 to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1305 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (intvalue)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from Int32 to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1315 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (int?value)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from Nullable{Int32} to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1325 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (\fBDateTime\fPvalue)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from \fBDateTime\fP to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1335 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (long?value)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from Nullable{Int64} to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1345 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (float?value)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from Nullable{Single} to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1355 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (decimalvalue)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from \fBDecimal\fP to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1365 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (short?value)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from Nullable{Int16} to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1376 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (ushort?value)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from Nullable{UInt16} to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1387 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (uint?value)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from Nullable{UInt32} to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1398 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (ulong?value)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from Nullable{UInt64} to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1409 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (doublevalue)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from \fBDouble\fP to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1419 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (floatvalue)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from Single to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1429 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (stringvalue)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from \fBString\fP to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1439 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (uintvalue)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from UInt32 to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1450 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (ulongvalue)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from UInt64 to \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1461 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (byte[]value)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from T:System\&.Byte[] to \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1471 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (\fBUri\fPvalue)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from T:System\&.Uri to \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1481 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (\fBTimeSpan\fPvalue)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from T:System\&.TimeSpan to \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1491 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (\fBTimeSpan\fP?value)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from Nullable{TimeSpan} to \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1501 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (\fBGuid\fPvalue)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from T:System\&.Guid to \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1511 of file JToken\&.cs\&.
+.SS "static implicit Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBJToken\fP (\fBGuid\fP?value)\fC [static]\fP"
+
+.PP
+Performs an implicit conversion from Nullable{Guid} to \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value to create a \fBJValue\fP from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJValue\fP initialized with the specified value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1521 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator long (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Int64\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 513 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator long? (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{Int64}\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 850 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator short (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Int16\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 664 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator short? (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{Int16}\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 764 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator string (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.String\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 997 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBTimeSpan\fP (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.TimeSpan\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 1130 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBTimeSpan\fP? (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.TimeSpan\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 1144 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator uint (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.UInt32\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 1024 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator uint? (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{UInt32}\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 914 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator ulong (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.UInt64\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 1044 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator ulong? (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{UInt64}\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 937 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator \fBUri\fP (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.Uri\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 1164 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator ushort (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to System\&.UInt16\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 684 of file JToken\&.cs\&.
+.SS "static Newtonsoft\&.Json\&.Linq\&.JToken\&.operator ushort? (\fBJToken\fPvalue)\fC [explicit]\fP, \fC [static]\fP"
+
+.PP
+Performs an explicit conversion from \fBNewtonsoft\&.Json\&.Linq\&.JToken\fP to Nullable{UInt16}\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The result of the conversion\&.
+.RE
+.PP
+
+.PP
+Definition at line 787 of file JToken\&.cs\&.
+.SS "static \fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JToken\&.Parse (stringjson)\fC [static]\fP"
+
+.PP
+Load a \fBJToken\fP from a string that contains JSON\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIjson\fP A \fBString\fP that contains JSON\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBJToken\fP populated from the string that contains JSON\&.
+.RE
+.PP
+
+.PP
+Definition at line 1767 of file JToken\&.cs\&.
+.SS "static \fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JToken\&.ReadFrom (\fBJsonReader\fPreader)\fC [static]\fP"
+
+.PP
+Creates a \fBJToken\fP from a \fBJsonReader\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreader\fP An \fBJsonReader\fP positioned at the token to read into this \fBJToken\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBJToken\fP that contains the token and its descendant tokens that were read from the reader\&. The runtime type of the token is determined by the token type of the first token encountered in the reader\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1734 of file JToken\&.cs\&.
+.SS "void Newtonsoft\&.Json\&.Linq\&.JToken\&.Remove ()"
+
+.PP
+Removes this token from its parent\&. 
+.PP
+Definition at line 361 of file JToken\&.cs\&.
+.SS "void Newtonsoft\&.Json\&.Linq\&.JToken\&.Replace (\fBJToken\fPvalue)"
+
+.PP
+Replaces this token with the specified token\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The value\&.
+.RE
+.PP
+
+.PP
+Definition at line 373 of file JToken\&.cs\&.
+.SS "\fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JToken\&.SelectToken (stringpath)"
+
+.PP
+Selects the token that matches the object path\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The object path from the current \fBJToken\fP to the \fBJToken\fP to be returned\&. This must be a string of property names or array indexes separated by periods, such as \fCTables[0]\&.DefaultView[0]\&.Price\fP in C# or \fCTables(0)\&.DefaultView(0)\&.Price\fP in Visual Basic\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJToken\fP that matches the object path or a null reference if no matching token is found\&.
+.RE
+.PP
+
+.PP
+Definition at line 1832 of file JToken\&.cs\&.
+.SS "\fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JToken\&.SelectToken (stringpath, boolerrorWhenNoMatch)"
+
+.PP
+Selects the token that matches the object path\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The object path from the current \fBJToken\fP to the \fBJToken\fP to be returned\&. This must be a string of property names or array indexes separated by periods, such as \fCTables[0]\&.DefaultView[0]\&.Price\fP in C# or \fCTables(0)\&.DefaultView(0)\&.Price\fP in Visual Basic\&. 
+.br
+\fIerrorWhenNoMatch\fP A flag to indicate whether an error should be thrown if no token is found\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The \fBJToken\fP that matches the object path\&.
+.RE
+.PP
+
+.PP
+Definition at line 1848 of file JToken\&.cs\&.
+.SS "object Newtonsoft\&.Json\&.Linq\&.JToken\&.ToObject (\fBType\fPobjectType)"
+
+.PP
+Creates the specified \&.NET type from the \fBJToken\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobjectType\fP The object type that the token will be deserialized to\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new object created from the JSON value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1604 of file JToken\&.cs\&.
+.SS "object Newtonsoft\&.Json\&.Linq\&.JToken\&.ToObject (\fBType\fPobjectType, \fBJsonSerializer\fPjsonSerializer)"
+
+.PP
+Creates the specified \&.NET type from the \fBJToken\fP using the specified \fBJsonSerializer\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobjectType\fP The object type that the token will be deserialized to\&.
+.br
+\fIjsonSerializer\fP The \fBJsonSerializer\fP that will be used when creating the object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new object created from the JSON value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1715 of file JToken\&.cs\&.
+.SS "T \fBNewtonsoft\&.Json\&.Linq\&.JToken\&.ToObject\fP< T > ()"
+
+.PP
+Creates the specified \&.NET type from the \fBJToken\fP\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The object type that the token will be deserialized to\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new object created from the JSON value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1594 of file JToken\&.cs\&.
+.SS "T \fBNewtonsoft\&.Json\&.Linq\&.JToken\&.ToObject\fP< T > (\fBJsonSerializer\fPjsonSerializer)"
+
+.PP
+Creates the specified \&.NET type from the \fBJToken\fP using the specified \fBJsonSerializer\fP\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The object type that the token will be deserialized to\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIjsonSerializer\fP The \fBJsonSerializer\fP that will be used when creating the object\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new object created from the JSON value\&.
+.RE
+.PP
+
+.PP
+Definition at line 1704 of file JToken\&.cs\&.
+.SS "override string Newtonsoft\&.Json\&.Linq\&.JToken\&.ToString ()"
+
+.PP
+Returns the indented JSON for this token\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The indented JSON for this token\&. 
+.RE
+.PP
+
+.PP
+Definition at line 394 of file JToken\&.cs\&.
+.SS "string Newtonsoft\&.Json\&.Linq\&.JToken\&.ToString (\fBFormatting\fPformatting, params \fBJsonConverter\fP[]converters)"
+
+.PP
+Returns the JSON for this token using the given formatting and converters\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformatting\fP Indicates how the output is formatted\&.
+.br
+\fIconverters\fP A collection of \fBJsonConverter\fP which will be used when writing the token\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The JSON for this token using the given formatting and converters\&.
+.RE
+.PP
+
+.PP
+Definition at line 405 of file JToken\&.cs\&.
+.SS "virtual T Newtonsoft\&.Json\&.Linq\&.JToken\&.Value< T > (objectkey)\fC [virtual]\fP"
+
+.PP
+Gets the \fBJToken\fP with the specified key converted to the specified type\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The type to convert the token to\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The token key\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The converted token value\&.
+.RE
+.PP
+
+.PP
+Definition at line 304 of file JToken\&.cs\&.
+.SS "virtual IEnumerable<T> Newtonsoft\&.Json\&.Linq\&.JToken\&.Values< T > ()\fC [virtual]\fP"
+
+.PP
+Returns a collection of the child values of this token, in document order\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The type to convert the values to\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A IEnumerable{T} containing the child values of this \fBJToken\fP, in document order\&.
+.RE
+.PP
+
+.PP
+Reimplemented in \fBNewtonsoft\&.Json\&.Linq\&.JContainer\fP\&.
+.PP
+Definition at line 353 of file JToken\&.cs\&.
+.SS "abstract void Newtonsoft\&.Json\&.Linq\&.JToken\&.WriteTo (\fBJsonWriter\fPwriter, params \fBJsonConverter\fP[]converters)\fC [pure virtual]\fP"
+
+.PP
+Writes this token to a \fBJsonWriter\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwriter\fP A \fBJsonWriter\fP into which this method will write\&.
+.br
+\fIconverters\fP A collection of \fBJsonConverter\fP which will be used when writing the token\&.
+.RE
+.PP
+
+.PP
+Implemented in \fBNewtonsoft\&.Json\&.Linq\&.JValue\fP, \fBNewtonsoft\&.Json\&.Linq\&.JObject\fP, \fBNewtonsoft\&.Json\&.Linq\&.JProperty\fP, \fBNewtonsoft\&.Json\&.Linq\&.JArray\fP, and \fBNewtonsoft\&.Json\&.Linq\&.JConstructor\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "\fBJTokenEqualityComparer\fP Newtonsoft\&.Json\&.Linq\&.JToken\&.EqualityComparer\fC [static]\fP, \fC [get]\fP"
+
+.PP
+Gets a comparer that can compare two tokens for value equality\&. A \fBJTokenEqualityComparer\fP that can compare two nodes for value equality\&.
+.PP
+Definition at line 84 of file JToken\&.cs\&.
+.SS "virtual \fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JToken\&.First\fC [get]\fP"
+
+.PP
+Get the first child token of this token\&. A \fBJToken\fP containing the first child token of the \fBJToken\fP\&.
+.PP
+Definition at line 316 of file JToken\&.cs\&.
+.SS "abstract bool Newtonsoft\&.Json\&.Linq\&.JToken\&.HasValues\fC [get]\fP"
+
+.PP
+Gets a value indicating whether this token has childen tokens\&. \fCtrue\fP if this token has child values; otherwise, \fCfalse\fP\&. 
+.PP
+Definition at line 141 of file JToken\&.cs\&.
+.SS "virtual \fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JToken\&.Last\fC [get]\fP"
+
+.PP
+Get the last child token of this token\&. A \fBJToken\fP containing the last child token of the \fBJToken\fP\&.
+.PP
+Definition at line 325 of file JToken\&.cs\&.
+.SS "\fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JToken\&.Next\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the next sibling token of this node\&. The \fBJToken\fP that contains the next sibling token\&.
+.PP
+Definition at line 159 of file JToken\&.cs\&.
+.SS "\fBJContainer\fP Newtonsoft\&.Json\&.Linq\&.JToken\&.Parent\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the parent\&. The parent\&.
+.PP
+Definition at line 99 of file JToken\&.cs\&.
+.SS "string Newtonsoft\&.Json\&.Linq\&.JToken\&.Path\fC [get]\fP"
+
+.PP
+Gets the path of the JSON token\&. 
+.PP
+Definition at line 178 of file JToken\&.cs\&.
+.SS "\fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JToken\&.Previous\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the previous sibling token of this node\&. The \fBJToken\fP that contains the previous sibling token\&.
+.PP
+Definition at line 169 of file JToken\&.cs\&.
+.SS "\fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JToken\&.Root\fC [get]\fP"
+
+.PP
+Gets the root \fBJToken\fP of this \fBJToken\fP\&. The root \fBJToken\fP of this \fBJToken\fP\&.
+.PP
+Definition at line 110 of file JToken\&.cs\&.
+.SS "virtual \fBJToken\fP Newtonsoft\&.Json\&.Linq\&.JToken\&.this[object key]\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the \fBJToken\fP with the specified key\&. The \fBJToken\fP with the specified key\&.
+.PP
+Definition at line 293 of file JToken\&.cs\&.
+.SS "abstract \fBJTokenType\fP Newtonsoft\&.Json\&.Linq\&.JToken\&.Type\fC [get]\fP"
+
+.PP
+Gets the node type for this \fBJToken\fP\&. The type\&.
+.PP
+Definition at line 133 of file JToken\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

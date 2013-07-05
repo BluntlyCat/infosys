@@ -1,0 +1,138 @@
+.TH "NHibernate.Mapping.ByCode.ConventionModelMapper" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Mapping.ByCode.ConventionModelMapper \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Mapping\&.ByCode\&.ModelMapper\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBIsRootEntity\fP (Func< System\&.Type, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsComponent\fP (Func< System\&.Type, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsEntity\fP (Func< System\&.Type, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsTablePerClass\fP (Func< System\&.Type, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsTablePerClassHierarchy\fP (Func< System\&.Type, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsTablePerConcreteClass\fP (Func< System\&.Type, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsOneToOne\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsManyToOne\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsManyToMany\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsOneToMany\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsAny\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsPersistentId\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsVersion\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsMemberOfNaturalId\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsPersistentProperty\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsSet\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsBag\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsIdBag\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsList\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsArray\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsDictionary\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBIsProperty\fP (Func< MemberInfo, bool, bool > match)"
+.br
+.ti -1c
+.RI "void \fBSplitsFor\fP (Func< System\&.Type, IEnumerable< string >, IEnumerable< string >> getPropertiesSplitsId)"
+.br
+.ti -1c
+.RI "void \fBIsTablePerClassSplit\fP (Func< \fBSplitDefinition\fP, bool, bool > match)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBAppendDefaultEvents\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBComponentParentToFieldAccessor\fP (\fBIModelInspector\fP modelInspector, \fBPropertyPath\fP member, \fBIComponentAttributesMapper\fP componentMapper)"
+.br
+.ti -1c
+.RI "virtual void \fBComponentParentNoSetterToField\fP (\fBIModelInspector\fP modelInspector, \fBPropertyPath\fP member, \fBIComponentAttributesMapper\fP componentMapper)"
+.br
+.ti -1c
+.RI "virtual void \fBMemberReadOnlyAccessor\fP (\fBIModelInspector\fP modelInspector, \fBPropertyPath\fP member, \fBIAccessorPropertyMapper\fP propertyCustomizer)"
+.br
+.ti -1c
+.RI "bool \fBMatchReadOnlyProperty\fP (MemberInfo subject)"
+.br
+.ti -1c
+.RI "virtual void \fBMemberNoSetterToField\fP (\fBIModelInspector\fP modelInspector, \fBPropertyPath\fP member, \fBIAccessorPropertyMapper\fP propertyCustomizer)"
+.br
+.ti -1c
+.RI "virtual void \fBMemberToFieldAccessor\fP (\fBIModelInspector\fP modelInspector, \fBPropertyPath\fP member, \fBIAccessorPropertyMapper\fP propertyCustomizer)"
+.br
+.ti -1c
+.RI "bool \fBMatchPropertyToField\fP (MemberInfo subject)"
+.br
+.ti -1c
+.RI "virtual void \fBNoSetterPoidToField\fP (\fBIModelInspector\fP modelInspector, System\&.Type type, \fBIClassAttributesMapper\fP classCustomizer)"
+.br
+.ti -1c
+.RI "bool \fBMatchNoSetterProperty\fP (MemberInfo subject)"
+.br
+.ti -1c
+.RI "virtual void \fBNoPoidGuid\fP (\fBIModelInspector\fP modelInspector, System\&.Type type, \fBIClassAttributesMapper\fP classCustomizer)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBSimpleModelInspector\fP \fBSimpleModelInspector\fP\fC [get]\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file ConventionModelMapper\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

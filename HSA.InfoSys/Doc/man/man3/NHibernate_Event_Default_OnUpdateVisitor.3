@@ -1,0 +1,40 @@
+.TH "NHibernate.Event.Default.OnUpdateVisitor" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.Event.Default.OnUpdateVisitor \- 
+.PP
+When an entity is passed to update(), we must inspect all its collections and  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBNHibernate\&.Event\&.Default\&.ReattachVisitor\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOnUpdateVisitor\fP (\fBIEventSource\fP session, object ownerIdentifier, object owner)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+When an entity is passed to update(), we must inspect all its collections and 
+
+
+.IP "1." 4
+associate any uninitialized PersistentCollections with this session
+.IP "2." 4
+associate any initialized PersistentCollections with this session, using the existing snapshot
+.IP "3." 4
+execute a collection removal (SQL DELETE) for each null collection property or 'new' collection 
+.PP
+
+.PP
+Definition at line 13 of file OnUpdateVisitor\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

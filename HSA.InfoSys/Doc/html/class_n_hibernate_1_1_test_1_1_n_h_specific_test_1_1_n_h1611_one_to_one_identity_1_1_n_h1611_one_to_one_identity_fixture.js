@@ -1,0 +1,7 @@
+var class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1611_one_to_one_identity_1_1_n_h1611_one_to_one_identity_fixture =
+[
+    [ "CanQueryOneToOneWithCompositeId", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1611_one_to_one_identity_1_1_n_h1611_one_to_one_identity_fixture.html#af132922859c694dd008b02dec156d055", null ],
+    [ "OnSetUp", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1611_one_to_one_identity_1_1_n_h1611_one_to_one_identity_fixture.html#a4bc56cbb97c4a3352c206023546f6709", null ],
+    [ "OnTearDown", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1611_one_to_one_identity_1_1_n_h1611_one_to_one_identity_fixture.html#a23ddfd276ba44182443b4c5c1235ae07", null ],
+    [ "BugNumber", "class_n_hibernate_1_1_test_1_1_n_h_specific_test_1_1_n_h1611_one_to_one_identity_1_1_n_h1611_one_to_one_identity_fixture.html#a550ffe68e11ea88a761220cae636f6d8", null ]
+];

@@ -1,0 +1,300 @@
+.TH "MySql.Data.MySqlClient.MySqlCommand" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MySql.Data.MySqlClient.MySqlCommand \- 
+.PP
+ 
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits DbCommand, and ICloneable\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMySqlCommand\fP ()"
+.br
+.ti -1c
+.RI "\fBMySqlCommand\fP (string cmdText)"
+.br
+.ti -1c
+.RI "\fBMySqlCommand\fP (string cmdText, \fBMySqlConnection\fP connection)"
+.br
+.ti -1c
+.RI "\fBMySqlCommand\fP (string cmdText, \fBMySqlConnection\fP connection, \fBMySqlTransaction\fP transaction)"
+.br
+.ti -1c
+.RI "override void \fBCancel\fP ()"
+.br
+.RI "\fIAttempts to cancel the execution of a currently active command \fP"
+.ti -1c
+.RI "new \fBMySqlParameter\fP \fBCreateParameter\fP ()"
+.br
+.RI "\fICreates a new instance of a \fBMySqlParameter\fP object\&. \fP"
+.ti -1c
+.RI "override int \fBExecuteNonQuery\fP ()"
+.br
+.ti -1c
+.RI "new \fBMySqlDataReader\fP \fBExecuteReader\fP ()"
+.br
+.ti -1c
+.RI "new \fBMySqlDataReader\fP \fBExecuteReader\fP (CommandBehavior behavior)"
+.br
+.ti -1c
+.RI "override object \fBExecuteScalar\fP ()"
+.br
+.ti -1c
+.RI "override void \fBPrepare\fP ()"
+.br
+.ti -1c
+.RI "IAsyncResult \fBBeginExecuteReader\fP ()"
+.br
+.RI "\fIInitiates the asynchronous execution of the SQL statement or stored procedure that is described by this \fBMySqlCommand\fP, and retrieves one or more result sets from the server\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginExecuteReader\fP (CommandBehavior behavior)"
+.br
+.RI "\fIInitiates the asynchronous execution of the SQL statement or stored procedure that is described by this \fBMySqlCommand\fP using one of the \fBCommandBehavior\fP values\&. \fP"
+.ti -1c
+.RI "\fBMySqlDataReader\fP \fBEndExecuteReader\fP (IAsyncResult result)"
+.br
+.RI "\fIFinishes asynchronous execution of a SQL statement, returning the requested \fBMySqlDataReader\fP\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginExecuteNonQuery\fP (AsyncCallback callback, object stateObject)"
+.br
+.RI "\fIInitiates the asynchronous execution of the SQL statement or stored procedure that is described by this \fBMySqlCommand\fP\&. \fP"
+.ti -1c
+.RI "IAsyncResult \fBBeginExecuteNonQuery\fP ()"
+.br
+.RI "\fIInitiates the asynchronous execution of the SQL statement or stored procedure that is described by this \fBMySqlCommand\fP\&. \fP"
+.ti -1c
+.RI "int \fBEndExecuteNonQuery\fP (IAsyncResult asyncResult)"
+.br
+.RI "\fIFinishes asynchronous execution of a SQL statement\&. \fP"
+.ti -1c
+.RI "\fBMySqlCommand\fP \fBClone\fP ()"
+.br
+.RI "\fICreates a clone of this \fBMySqlCommand\fP object\&. CommandText, Connection, and Transaction properties are included as well as the entire parameter list\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "override void \fBDispose\fP (bool disposing)"
+.br
+.ti -1c
+.RI "override DbParameter \fBCreateDbParameter\fP ()"
+.br
+.ti -1c
+.RI "override DbDataReader \fBExecuteDbDataReader\fP (CommandBehavior behavior)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBInt64\fP \fBLastInsertedId\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override string \fBCommandText\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override int \fBCommandTimeout\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override CommandType \fBCommandType\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsPrepared\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "new \fBMySqlConnection\fP \fBConnection\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "new \fBMySqlParameterCollection\fP \fBParameters\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "new \fBMySqlTransaction\fP \fBTransaction\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool \fBEnableCaching\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBCacheAge\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override bool \fBDesignTimeVisible\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets a value indicating whether the command object should be visible in a Windows Form Designer control\&. \fP"
+.ti -1c
+.RI "override UpdateRowSource \fBUpdatedRowSource\fP\fC [get, set]\fP"
+.br
+.RI "\fIGets or sets how command results are applied to the DataRow when used by the Update method of the DbDataAdapter\&. \fP"
+.ti -1c
+.RI "override DbConnection \fBDbConnection\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "override DbParameterCollection \fBDbParameterCollection\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "override DbTransaction \fBDbTransaction\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+Definition at line 47 of file command\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "IAsyncResult MySql\&.Data\&.MySqlClient\&.MySqlCommand\&.BeginExecuteNonQuery (AsyncCallbackcallback, objectstateObject)"
+
+.PP
+Initiates the asynchronous execution of the SQL statement or stored procedure that is described by this \fBMySqlCommand\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcallback\fP An AsyncCallback delegate that is invoked when the command's execution has completed\&. Pass a null reference (\fBNothing\fP in Visual Basic) to indicate that no callback is required\&.
+.br
+\fIstateObject\fP A user-defined state object that is passed to the callback procedure\&. Retrieve this object from within the callback procedure using the IAsyncResult\&.AsyncState property\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult that can be used to poll or wait for results, or both; this value is also needed when invoking \fBEndExecuteNonQuery\fP, which returns the number of affected rows\&. 
+.RE
+.PP
+
+.PP
+Definition at line 751 of file command\&.cs\&.
+.SS "IAsyncResult MySql\&.Data\&.MySqlClient\&.MySqlCommand\&.BeginExecuteNonQuery ()"
+
+.PP
+Initiates the asynchronous execution of the SQL statement or stored procedure that is described by this \fBMySqlCommand\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult that can be used to poll or wait for results, or both; this value is also needed when invoking \fBEndExecuteNonQuery\fP, which returns the number of affected rows\&. 
+.RE
+.PP
+
+.PP
+Definition at line 769 of file command\&.cs\&.
+.SS "IAsyncResult MySql\&.Data\&.MySqlClient\&.MySqlCommand\&.BeginExecuteReader ()"
+
+.PP
+Initiates the asynchronous execution of the SQL statement or stored procedure that is described by this \fBMySqlCommand\fP, and retrieves one or more result sets from the server\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult that can be used to poll, wait for results, or both; this value is also needed when invoking EndExecuteReader, which returns a \fBMySqlDataReader\fP instance that can be used to retrieve the returned rows\&. 
+.RE
+.PP
+
+.PP
+Definition at line 694 of file command\&.cs\&.
+.SS "IAsyncResult MySql\&.Data\&.MySqlClient\&.MySqlCommand\&.BeginExecuteReader (CommandBehaviorbehavior)"
+
+.PP
+Initiates the asynchronous execution of the SQL statement or stored procedure that is described by this \fBMySqlCommand\fP using one of the \fBCommandBehavior\fP values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbehavior\fP One of the CommandBehavior values, indicating options for statement execution and data retrieval\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult that can be used to poll, wait for results, or both; this value is also needed when invoking EndExecuteReader, which returns a \fBMySqlDataReader\fP instance that can be used to retrieve the returned rows\&. 
+.RE
+.PP
+
+.PP
+Definition at line 710 of file command\&.cs\&.
+.SS "override void MySql\&.Data\&.MySqlClient\&.MySqlCommand\&.Cancel ()"
+
+.PP
+Attempts to cancel the execution of a currently active command Cancelling a currently active query only works with MySQL versions 5\&.0\&.0 and higher\&. 
+.PP
+Definition at line 302 of file command\&.cs\&.
+.SS "\fBMySqlCommand\fP MySql\&.Data\&.MySqlClient\&.MySqlCommand\&.Clone ()"
+
+.PP
+Creates a clone of this \fBMySqlCommand\fP object\&. CommandText, Connection, and Transaction properties are included as well as the entire parameter list\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The cloned \fBMySqlCommand\fP object
+.RE
+.PP
+
+.PP
+Definition at line 865 of file command\&.cs\&.
+.SS "new \fBMySqlParameter\fP MySql\&.Data\&.MySqlClient\&.MySqlCommand\&.CreateParameter ()"
+
+.PP
+Creates a new instance of a \fBMySqlParameter\fP object\&. This method is a strongly-typed version of IDbCommand\&.CreateParameter\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A \fBMySqlParameter\fP object\&.
+.RE
+.PP
+
+.PP
+Definition at line 316 of file command\&.cs\&.
+.SS "int MySql\&.Data\&.MySqlClient\&.MySqlCommand\&.EndExecuteNonQuery (IAsyncResultasyncResult)"
+
+.PP
+Finishes asynchronous execution of a SQL statement\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIasyncResult\fP The IAsyncResult returned by the call to \fBBeginExecuteNonQuery()\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 785 of file command\&.cs\&.
+.SS "\fBMySqlDataReader\fP MySql\&.Data\&.MySqlClient\&.MySqlCommand\&.EndExecuteReader (IAsyncResultresult)"
+
+.PP
+Finishes asynchronous execution of a SQL statement, returning the requested \fBMySqlDataReader\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIresult\fP The IAsyncResult returned by the call to \fBBeginExecuteReader()\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A \fB\fBMySqlDataReader\fP\fP object that can be used to retrieve the requested rows\&. 
+.RE
+.PP
+
+.PP
+Definition at line 727 of file command\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "override bool MySql\&.Data\&.MySqlClient\&.MySqlCommand\&.DesignTimeVisible\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether the command object should be visible in a Windows Form Designer control\&. 
+.PP
+Definition at line 977 of file command\&.cs\&.
+.SS "override UpdateRowSource MySql\&.Data\&.MySqlClient\&.MySqlCommand\&.UpdatedRowSource\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets how command results are applied to the DataRow when used by the Update method of the DbDataAdapter\&. 
+.PP
+Definition at line 993 of file command\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.

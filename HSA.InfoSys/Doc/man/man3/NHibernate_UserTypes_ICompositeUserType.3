@@ -1,0 +1,287 @@
+.TH "NHibernate.UserTypes.ICompositeUserType" 3 "Fri Jul 5 2013" "Version 1.0" "HSA.InfoSys" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+NHibernate.UserTypes.ICompositeUserType \- 
+.PP
+A UserType that may be dereferenced in a query\&. This interface allows a custom type to define 'properties'\&. These need not necessarily correspond to physical \&.NET style properties\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBNHibernate\&.DomainModel\&.DoubleStringType\fP, \fBNHibernate\&.DomainModel\&.MultiplicityType\fP, \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyCompoType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1763\&.EmptyStringUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2297\&.InvalidCustomCompositeUserTypeBase\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2324\&.CompositeUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2392\&.PhoneNumberUserType\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2394\&.PhoneNumberUserType\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "object \fBGetPropertyValue\fP (object component, int property)"
+.br
+.RI "\fIGet the value of a property \fP"
+.ti -1c
+.RI "void \fBSetPropertyValue\fP (object component, int property, object value)"
+.br
+.RI "\fISet the value of a property \fP"
+.ti -1c
+.RI "bool \fBEquals\fP (Object x, Object y)"
+.br
+.RI "\fICompare two instances of the class mapped by this type for persistence 'equality', ie\&. equality of persistent state\&. \fP"
+.ti -1c
+.RI "int \fBGetHashCode\fP (object x)"
+.br
+.RI "\fIGet a hashcode for the instance, consistent with persistence 'equality' \fP"
+.ti -1c
+.RI "object \fBNullSafeGet\fP (IDataReader dr, string[] names, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIRetrieve an instance of the mapped class from a IDataReader\&. Implementors should handle possibility of null values\&. \fP"
+.ti -1c
+.RI "void \fBNullSafeSet\fP (IDbCommand cmd, object value, int index, bool[] settable, \fBISessionImplementor\fP session)"
+.br
+.RI "\fIWrite an instance of the mapped class to a prepared statement\&. Implementors should handle possibility of null values\&. A multi-column type should be written to parameters starting from index\&. If a property is not settable, skip it and don't increment the index\&. \fP"
+.ti -1c
+.RI "object \fBDeepCopy\fP (object value)"
+.br
+.RI "\fIReturn a deep copy of the persistent state, stopping at entities and at collections\&. \fP"
+.ti -1c
+.RI "object \fBDisassemble\fP (object value, \fBISessionImplementor\fP session)"
+.br
+.RI "\fI\fBTransform\fP the object into its cacheable representation\&. At the very least this method should perform a deep copy\&. That may not be enough for some implementations, method should perform a deep copy\&. That may not be enough for some implementations, however; for example, associations must be cached as identifier values\&. (optional operation) \fP"
+.ti -1c
+.RI "object \fBAssemble\fP (object cached, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIReconstruct an object from the cacheable representation\&. At the very least this method should perform a deep copy\&. (optional operation) \fP"
+.ti -1c
+.RI "object \fBReplace\fP (object original, object target, \fBISessionImplementor\fP session, object owner)"
+.br
+.RI "\fIDuring merge, replace the existing (target) value in the entity we are merging to with a new (original) value from the detached entity we are merging\&. For immutable objects, or null values, it is safe to simply return the first parameter\&. For mutable objects, it is safe to return a copy of the first parameter\&. However, since composite user types often define component values, it might make sense to recursively replace component values in the target object\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string[] \fBPropertyNames\fP\fC [get]\fP"
+.br
+.RI "\fIGet the 'property names' that may be used in a query\&. \fP"
+.ti -1c
+.RI "\fBIType\fP[] \fBPropertyTypes\fP\fC [get]\fP"
+.br
+.RI "\fIGet the corresponding 'property types' \fP"
+.ti -1c
+.RI "System\&.Type \fBReturnedClass\fP\fC [get]\fP"
+.br
+.RI "\fIThe class returned by \fBNullSafeGet()\fP\&. \fP"
+.ti -1c
+.RI "bool \fBIsMutable\fP\fC [get]\fP"
+.br
+.RI "\fIAre objects of this type mutable? \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A UserType that may be dereferenced in a query\&. This interface allows a custom type to define 'properties'\&. These need not necessarily correspond to physical \&.NET style properties\&. 
+
+A \fBICompositeUserType\fP may be used in almost every way that a component may be used\&. It may even contain many-to-one associations\&.
+.PP
+Implementors must be immutable and must declare a public default constructor\&.
+.PP
+Unlike UserType, cacheability does not depend upon serializability\&. Instead, \fBAssemble()\fP and \fBDisassemble()\fP provide conversion to/from a cacheable representation\&. 
+.PP
+Definition at line 25 of file ICompositeUserType\&.cs\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "object NHibernate\&.UserTypes\&.ICompositeUserType\&.Assemble (objectcached, \fBISessionImplementor\fPsession, objectowner)"
+
+.PP
+Reconstruct an object from the cacheable representation\&. At the very least this method should perform a deep copy\&. (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcached\fP the object to be cached
+.br
+\fIsession\fP 
+.br
+\fIowner\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyCompoType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2324\&.CompositeUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2392\&.PhoneNumberUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2394\&.PhoneNumberUserType\fP, \fBNHibernate\&.DomainModel\&.DoubleStringType\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2297\&.InvalidCustomCompositeUserTypeBase\fP\&.
+.SS "object NHibernate\&.UserTypes\&.ICompositeUserType\&.DeepCopy (objectvalue)"
+
+.PP
+Return a deep copy of the persistent state, stopping at entities and at collections\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP generally a collection element or entity field
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyCompoType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2324\&.CompositeUserType\fP, \fBNHibernate\&.DomainModel\&.MultiplicityType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2392\&.PhoneNumberUserType\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2394\&.PhoneNumberUserType\fP\&.
+.SS "object NHibernate\&.UserTypes\&.ICompositeUserType\&.Disassemble (objectvalue, \fBISessionImplementor\fPsession)"
+
+.PP
+\fBTransform\fP the object into its cacheable representation\&. At the very least this method should perform a deep copy\&. That may not be enough for some implementations, method should perform a deep copy\&. That may not be enough for some implementations, however; for example, associations must be cached as identifier values\&. (optional operation) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP the object to be cached
+.br
+\fIsession\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyCompoType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2324\&.CompositeUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2392\&.PhoneNumberUserType\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2394\&.PhoneNumberUserType\fP\&.
+.SS "bool NHibernate\&.UserTypes\&.ICompositeUserType\&.Equals (Objectx, Objecty)"
+
+.PP
+Compare two instances of the class mapped by this type for persistence 'equality', ie\&. equality of persistent state\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIy\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.SS "int NHibernate\&.UserTypes\&.ICompositeUserType\&.GetHashCode (objectx)"
+
+.PP
+Get a hashcode for the instance, consistent with persistence 'equality' 
+.PP
+Implemented in \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyCompoType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2324\&.CompositeUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2297\&.InvalidCustomCompositeUserTypeBase\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1763\&.EmptyStringUserType\fP, \fBNHibernate\&.DomainModel\&.MultiplicityType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2392\&.PhoneNumberUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2394\&.PhoneNumberUserType\fP, and \fBNHibernate\&.DomainModel\&.DoubleStringType\fP\&.
+.SS "object NHibernate\&.UserTypes\&.ICompositeUserType\&.GetPropertyValue (objectcomponent, intproperty)"
+
+.PP
+Get the value of a property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomponent\fP an instance of class mapped by this 'type'
+.br
+\fIproperty\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the property value
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyCompoType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2324\&.CompositeUserType\fP, \fBNHibernate\&.DomainModel\&.MultiplicityType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2392\&.PhoneNumberUserType\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2394\&.PhoneNumberUserType\fP\&.
+.SS "object NHibernate\&.UserTypes\&.ICompositeUserType\&.NullSafeGet (IDataReaderdr, string[]names, \fBISessionImplementor\fPsession, objectowner)"
+
+.PP
+Retrieve an instance of the mapped class from a IDataReader\&. Implementors should handle possibility of null values\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdr\fP IDataReader
+.br
+\fInames\fP the column names
+.br
+\fIsession\fP 
+.br
+\fIowner\fP the containing entity
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyCompoType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2324\&.CompositeUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2392\&.PhoneNumberUserType\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2394\&.PhoneNumberUserType\fP\&.
+.SS "void NHibernate\&.UserTypes\&.ICompositeUserType\&.NullSafeSet (IDbCommandcmd, objectvalue, intindex, bool[]settable, \fBISessionImplementor\fPsession)"
+
+.PP
+Write an instance of the mapped class to a prepared statement\&. Implementors should handle possibility of null values\&. A multi-column type should be written to parameters starting from index\&. If a property is not settable, skip it and don't increment the index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcmd\fP 
+.br
+\fIvalue\fP 
+.br
+\fIindex\fP 
+.br
+\fIsettable\fP 
+.br
+\fIsession\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyCompoType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2324\&.CompositeUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2392\&.PhoneNumberUserType\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2394\&.PhoneNumberUserType\fP\&.
+.SS "object NHibernate\&.UserTypes\&.ICompositeUserType\&.Replace (objectoriginal, objecttarget, \fBISessionImplementor\fPsession, objectowner)"
+
+.PP
+During merge, replace the existing (target) value in the entity we are merging to with a new (original) value from the detached entity we are merging\&. For immutable objects, or null values, it is safe to simply return the first parameter\&. For mutable objects, it is safe to return a copy of the first parameter\&. However, since composite user types often define component values, it might make sense to recursively replace component values in the target object\&. 
+.PP
+Implemented in \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyCompoType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2324\&.CompositeUserType\fP, \fBNHibernate\&.DomainModel\&.MultiplicityType\fP, \fBNHibernate\&.DomainModel\&.DoubleStringType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2297\&.InvalidCustomCompositeUserTypeBase\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2392\&.PhoneNumberUserType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2394\&.PhoneNumberUserType\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH1763\&.EmptyStringUserType\fP\&.
+.SS "void NHibernate\&.UserTypes\&.ICompositeUserType\&.SetPropertyValue (objectcomponent, intproperty, objectvalue)"
+
+.PP
+Set the value of a property 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomponent\fP an instance of class mapped by this 'type'
+.br
+\fIproperty\fP 
+.br
+\fIvalue\fP the value to set
+.RE
+.PP
+
+.PP
+Implemented in \fBNHibernate\&.Test\&.MappingByCode\&.MappersTests\&.MyCompoType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2324\&.CompositeUserType\fP, \fBNHibernate\&.DomainModel\&.MultiplicityType\fP, \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2392\&.PhoneNumberUserType\fP, and \fBNHibernate\&.Test\&.NHSpecificTest\&.NH2394\&.PhoneNumberUserType\fP\&.
+.SH "Property Documentation"
+.PP 
+.SS "bool NHibernate\&.UserTypes\&.ICompositeUserType\&.IsMutable\fC [get]\fP"
+
+.PP
+Are objects of this type mutable? 
+.PP
+Definition at line 106 of file ICompositeUserType\&.cs\&.
+.SS "string [] NHibernate\&.UserTypes\&.ICompositeUserType\&.PropertyNames\fC [get]\fP"
+
+.PP
+Get the 'property names' that may be used in a query\&. 
+.PP
+Definition at line 30 of file ICompositeUserType\&.cs\&.
+.SS "\fBIType\fP [] NHibernate\&.UserTypes\&.ICompositeUserType\&.PropertyTypes\fC [get]\fP"
+
+.PP
+Get the corresponding 'property types' 
+.PP
+Definition at line 35 of file ICompositeUserType\&.cs\&.
+.SS "System\&.Type NHibernate\&.UserTypes\&.ICompositeUserType\&.ReturnedClass\fC [get]\fP"
+
+.PP
+The class returned by \fBNullSafeGet()\fP\&. 
+.PP
+Definition at line 56 of file ICompositeUserType\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for HSA\&.InfoSys from the source code\&.
