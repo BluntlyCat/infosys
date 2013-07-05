@@ -16,12 +16,14 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using WCFServices;
 
     /// <summary>
-    ///  SolrClient deals as an API
+    /// The solr search controller handles a search request
+    /// for one OrgUnit and instanciates a new client for each component.
+    /// There will be one controller for each OrgUnit we want search.
     /// </summary>
     public class SolrSearchController
     {
         /// <summary>
-        /// The logger for SolrClient.
+        /// The logger for SolrSearchController.
         /// </summary>
         private static readonly ILog Log = Logger<string>.GetLogger("SolrSearchController");
 
@@ -37,6 +39,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
         /// <summary>
         /// The components finished.
+        /// Indicates if there is still a search running
+        /// for a component. Will have the amount of components
+        /// when finished.
         /// </summary>
         private int componentsFinished;
 
@@ -64,14 +69,17 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private Guid OrgUnitGuid { get; set; }
 
         /// <summary>
-        /// Connects this instance.
+        /// Starts the search on each client but first updates the settings
+        /// and fetches all components of the OrgUnit for which this controller
+        /// is responsible. This method also contains the callback method
+        /// the clients calls when finished.
         /// </summary>
         /// <param name="orgUnitGuid">The org unit GUID.</param>
         public void StartSearch(Guid orgUnitGuid)
         {
             var settings = this.dbManager.GetSolrClientSettings();
 
-            if (settings.Equals(new SolrSearchClientSettings()) == false)
+            if (settings.IsDefault() == false)
             {
                 var orgUnit = this.dbManager.GetEntity(
                     orgUnitGuid,
@@ -171,7 +179,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Gets the send results.
+        /// Gets the results we want send per mail as new results.
+        /// This method fetches all results from the database of this
+        /// component and compares the hash of the content. If the hash
+        /// already exists we assume that it is not a new result and
+        /// neiher store this result in database nor send an mail.
         /// </summary>
         /// <param name="resultPot">The result pot.</param>
         /// <param name="results">The results.</param>
@@ -211,7 +223,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Sends the results.
+        /// Sends the results which we detected as new to the subscribed
+        /// mail addresses.
         /// </summary>
         /// <param name="sendResults">The send results.</param>
         /// <param name="orgUnit">The org unit.</param>

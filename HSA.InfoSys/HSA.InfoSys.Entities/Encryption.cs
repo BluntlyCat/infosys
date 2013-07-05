@@ -17,7 +17,7 @@ namespace HSA.InfoSys.Common.Entities
     public static class Encryption
     {
         /// <summary>
-        /// The key.
+        /// The encryption key.
         /// </summary>
         private const string Key = "tha=aciephuo`zeuzoh6mooj1dohthie";
 
@@ -27,14 +27,14 @@ namespace HSA.InfoSys.Common.Entities
         private static readonly ILog Log = Logger<string>.GetLogger("Encryption");
 
         /// <summary>
-        /// The certificate key.
+        /// The key as bytes.
         /// </summary>
         private static readonly byte[] KeyBytes = Encoding.UTF8.GetBytes(Key);
 
         /// <summary>
-        /// Encrypts the specified plain text bytes.
+        /// Encrypts the specified plain text given as bytes.
         /// </summary>
-        /// <param name="plainTextBytes">The plain text bytes.</param>
+        /// <param name="plainTextBytes">The plain text as bytes.</param>
         /// <returns>
         /// The encrypted bytes.
         /// </returns>
@@ -70,9 +70,9 @@ namespace HSA.InfoSys.Common.Entities
         }
 
         /// <summary>
-        /// Decrypts the specified cipher text bytes.
+        /// Decrypts the specified cipher text given as bytes.
         /// </summary>
-        /// <param name="cipherTextBytes">The cipher text bytes.</param>
+        /// <param name="cipherTextBytes">The cipher text as bytes.</param>
         /// <returns>
         /// The decrypted bytes.
         /// </returns>

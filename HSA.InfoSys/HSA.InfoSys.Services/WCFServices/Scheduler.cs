@@ -22,7 +22,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
     public class Scheduler : Service, IScheduler
     {
         /// <summary>
-        /// The thread logger.
+        /// The logger for Scheduler.
         /// </summary>
         private static readonly ILog Log = Logger<string>.GetLogger("Scheduler");
 
@@ -32,7 +32,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         private static Scheduler scheduler;
 
         /// <summary>
-        /// The job mutex.
+        /// The job dictionary mutex.
         /// </summary>
         private readonly Mutex jobMutex = new Mutex();
 
@@ -71,7 +71,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Adds the scheduler time.
+        /// Adds the OrgUnitConfig.
         /// </summary>
         /// <param name="orgUnitConfig">The OrgUnitConfig.</param>
         public void AddOrgUnitConfig(OrgUnitConfig orgUnitConfig)
@@ -109,7 +109,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Removes the scheduler time.
+        /// Removes the OrgUnitConfig.
         /// </summary>
         /// <param name="orgUnitConfigGUID">The OrgUnitConfigGUID.</param>
         public void RemoveOrgUnitConfig(Guid orgUnitConfigGUID)
@@ -143,7 +143,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Starts this instance.
+        /// Starts this service.
         /// </summary>
         public override void StartService()
         {
@@ -168,7 +168,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Stops all jobs.
+        /// Stops all jobs and this service.
         /// </summary>
         /// <param name="cancel">if set to <c>true</c> [cancel].</param>
         public override void StopService(bool cancel = false)
@@ -188,7 +188,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Runs this instance.
+        /// Runs this service.
         /// </summary>
         protected override void Run()
         {
@@ -211,6 +211,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
         /// <summary>
         /// Occurs when [zero].
+        /// If a countdownn is zero this method invokes the search
+        /// for the belonging OrgUnit and restarts the countdown.
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="orgUnitConfig">The org unit config.</param>
@@ -234,7 +236,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Sets the countdown times.
+        /// Sets a new job either on initialising this
+        /// instance or if a new OrgUnitConfig was added.
         /// </summary>
         /// <param name="orgUnitConfig">The config.</param>
         /// <returns>A started countdown.</returns>
@@ -257,7 +260,8 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Updates the job.
+        /// Updates the job if already exists.
+        /// Maybe its settings have changed.
         /// </summary>
         /// <param name="orgUnitConfig">The org unit config.</param>
         /// <returns>The updated job.</returns>

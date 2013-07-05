@@ -16,7 +16,7 @@ namespace HSA.InfoSys.Common.Entities
     public class Result : Entity
     {
         /// <summary>
-        /// Gets or sets the content.
+        /// Gets or sets the content we found.
         /// </summary>
         /// <value>
         /// The content.
@@ -26,6 +26,8 @@ namespace HSA.InfoSys.Common.Entities
 
         /// <summary>
         /// Gets or sets the content hash.
+        /// Is a hash of the content for comparing
+        /// to avoid redundancy in the database.
         /// </summary>
         /// <value>
         /// The content hash.
@@ -34,16 +36,19 @@ namespace HSA.InfoSys.Common.Entities
         public virtual int ContentHash { get; set; }
 
         /// <summary>
-        /// Gets or sets the component.
+        /// Gets or sets the componentGUID.
+        /// Is the GUID of the component this
+        /// result belongs to.
         /// </summary>
         /// <value>
-        /// The component.
+        /// The componentGUID.
         /// </value>
         [DataMember]
         public virtual Guid ComponentGUID { get; set; }
 
         /// <summary>
         /// Gets or sets the title.
+        /// The title of the found content.
         /// </summary>
         /// <value>
         /// The title.
@@ -53,6 +58,7 @@ namespace HSA.InfoSys.Common.Entities
 
         /// <summary>
         /// Gets or sets the URL.
+        /// The url as source where we found the issue.
         /// </summary>
         /// <value>
         /// The URL.
@@ -62,6 +68,7 @@ namespace HSA.InfoSys.Common.Entities
 
         /// <summary>
         /// Gets or sets the time.
+        /// The time when this issue was found.
         /// </summary>
         /// <value>
         /// The time stamp.

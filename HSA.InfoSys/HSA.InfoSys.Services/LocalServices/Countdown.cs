@@ -17,7 +17,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     public class Countdown : Service
     {
         /// <summary>
-        /// The logger.
+        /// The logger of countdown.
         /// </summary>
         private static readonly ILog Log = Logger<string>.GetLogger("Countdown");
 
@@ -198,7 +198,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Sets the time.
+        /// Initializes a new countdown time.
         /// </summary>
         private void SetTime()
         {

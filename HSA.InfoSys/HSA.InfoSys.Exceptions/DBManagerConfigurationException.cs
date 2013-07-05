@@ -8,7 +8,8 @@ namespace HSA.InfoSys.Common.Exceptions
     using System;
 
     /// <summary>
-    /// Throws an exception if day or time value is zero or less.
+    /// Throws an exception if there was an error
+    /// while creating the NHibernate session
     /// </summary>
     public sealed class DbManagerConfigurationException : Exception
     {

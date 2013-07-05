@@ -16,7 +16,7 @@ namespace HSA.InfoSys.Common.Services
     public abstract class Service : IService
     {
         /// <summary>
-        /// The thread logger.
+        /// The logger for Service.
         /// </summary>
         private static readonly ILog Log = Logger<string>.GetLogger("Service");
 
@@ -38,7 +38,7 @@ namespace HSA.InfoSys.Common.Services
         /// Gets or sets the service GUID.
         /// </summary>
         /// <value>
-        /// The ID.
+        /// The GUID for identificate this service.
         /// </value>
         public Guid ServiceGUID { get; protected set; }
 
@@ -81,7 +81,7 @@ namespace HSA.InfoSys.Common.Services
         }
 
         /// <summary>
-        /// Starts this instance.
+        /// Starts this service if not running.
         /// </summary>
         public virtual void StartService()
         {
@@ -101,7 +101,7 @@ namespace HSA.InfoSys.Common.Services
         }
 
         /// <summary>
-        /// Restarts the service.
+        /// Restarts the service if running.
         /// </summary>
         /// <param name="cancel">if set to <c>true</c> [cancel].</param>
         public virtual void RestartService(bool cancel = false)
@@ -128,7 +128,7 @@ namespace HSA.InfoSys.Common.Services
         }
 
         /// <summary>
-        /// Runs this instance.
+        /// Runs this service.
         /// </summary>
         protected abstract void Run();
     }

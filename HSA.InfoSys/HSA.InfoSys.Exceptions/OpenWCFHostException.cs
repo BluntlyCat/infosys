@@ -8,7 +8,7 @@ namespace HSA.InfoSys.Common.Exceptions
     using System;
 
     /// <summary>
-    /// Throws an exception if day or time value is zero or less.
+    /// Throws an exception while opening the WCF service host.
     /// </summary>
     public sealed class OpenWCFHostException : Exception
     {

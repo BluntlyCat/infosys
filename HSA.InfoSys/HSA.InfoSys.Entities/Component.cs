@@ -26,7 +26,7 @@ namespace HSA.InfoSys.Common.Entities
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the org unit.
+        /// Gets or sets the OrgUnit GUID.
         /// </summary>
         /// <value>
         /// The org unit.

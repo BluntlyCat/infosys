@@ -16,32 +16,32 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     public static class WCFControllerAddresses
     {
         /// <summary>
-        /// The HTTP format.
+        /// The HTTP address format.
         /// </summary>
         private const string HttpFormat = "http://{0}:{1}/{2}/";
 
         /// <summary>
-        /// The net TCP format.
+        /// The net TCP address format.
         /// </summary>
         private const string NetTcpFormat = "net.tcp://{0}:{1}/{2}/";
 
         /// <summary>
-        /// The net TCP addresses.
+        /// The net TCP addresses dictionary.
         /// </summary>
         private static readonly Dictionary<Type, string> NetTcpAddresses = new Dictionary<Type, string>();
 
         /// <summary>
-        /// The net TCP addresses.
+        /// The net TCP addresses dictionary.
         /// </summary>
         private static readonly Dictionary<Type, string> HttpAddresses = new Dictionary<Type, string>();
 
         /// <summary>
-        /// The HTTP port.
+        /// The current HTTP port.
         /// </summary>
         private static int httpPort;
 
         /// <summary>
-        /// The net TCP port.
+        /// The current net TCP port.
         /// </summary>
         private static int netTcpPort;
 
@@ -51,7 +51,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private static bool notInitialized = true;
 
         /// <summary>
-        /// Initializes this instance.
+        /// Initializes the addresses for each type in
+        /// the type array. This method formats the address
+        /// for both, HTML and net TCP, stores the addresses
+        /// into the dictionary and sums up the port numbers
+        /// for HTML and net TCP addresses for the next service.
         /// </summary>
         /// <param name="settings">The settings.</param>
         public static void Initialize(WCFSettings settings)
@@ -96,7 +100,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Gets the net TCP address.
+        /// Gets the net TCP address by type.
         /// </summary>
         /// <param name="type">The type.</param>
         /// <returns>Returns the net TCP address by type.</returns>
@@ -106,7 +110,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Gets the HTTP address.
+        /// Gets the HTTP address by type.
         /// </summary>
         /// <param name="type">The type.</param>
         /// <returns>Returns the http address by type.</returns>

@@ -47,7 +47,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Recalls the GUI when search for an org unit is finished.
+        /// Called when the search for a component
+        /// finished and there are new results found.
+        /// Then this method sends this results to the
+        /// subscribed email addresses.
         /// </summary>
         /// <param name="orgUnitGUID">The org unit GUID.</param>
         /// <param name="results">The results.</param>
@@ -55,7 +58,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         {
             Log.DebugFormat(Properties.Resources.SEARCH_RECALL, orgUnitGUID);
 
-            if (this.settings.Equals(new EmailNotifierSettings()) == false)
+            if (this.settings.IsDefault() == false)
             {
                 try
                 {
@@ -116,6 +119,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
         /// <summary>
         /// Called if the crawl failed.
+        /// This method sends a message to all
+        /// subscribed mail addresses who wants
+        /// to crawl on this webpage if the crawl
+        /// failed.
         /// </summary>
         /// <param name="log">The log.</param>
         /// <param name="urls">The urls.</param>

@@ -45,15 +45,15 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Gets or sets the host.
+        /// Gets or sets the host of our solr server.
         /// </summary>
         /// <value>
-        /// The host.
+        /// The solr host.
         /// </value>
         private string Host { get; set; }
 
         /// <summary>
-        /// Gets or sets the port.
+        /// Gets or sets the port on whitch solr is listening.
         /// </summary>
         /// <value>
         /// The port.
@@ -62,6 +62,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
         /// <summary>
         /// Gets or sets the collection.
+        /// The collection is the database container
+        /// of solr where we store our results.
         /// </summary>
         /// <value>
         /// The collection.
@@ -77,10 +79,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private string SolrResponse { get; set; }
 
         /// <summary>
-        /// Gets or sets the component GUID.
+        /// Gets or sets the componentGUID.
         /// </summary>
         /// <value>
-        /// The component GUID.
+        /// The componentGUID.
         /// </value>
         private Guid ComponentGUID { get; set; }
 
@@ -93,7 +95,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private string ComponentName { get; set; }
 
         /// <summary>
-        /// Gets the response from solr.
+        /// Gets the results from solr.
         /// </summary>
         /// <exception cref="SolrResponseBadRequestException">Thrown if we got a bad response from Solr.</exception>
         /// <returns>The response.</returns>
@@ -114,7 +116,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Connects this instance.
+        /// Connects this client to solr and starts the search.
         /// </summary>
         /// <param name="settings">The settings.</param>
         public void StartSearch(SolrSearchClientSettings settings)
@@ -123,7 +125,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
             {
                 this.SetConnectionProperties();
 
-                if (settings.Equals(new SolrSearchClientSettings()))
+                if (settings.IsDefault())
                 {
                     return;
                 }
@@ -140,12 +142,14 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
         /// <summary>
         /// Sets the connection properties.
+        /// If settings have changed there we will get
+        /// the updated values for searching.
         /// </summary>
         private void SetConnectionProperties()
         {
             var settings = this.dbManager.GetSolrClientSettings();
 
-            if (settings.Equals(new SolrSearchClientSettings()))
+            if (settings.IsDefault())
             {
                 return;
             }
@@ -158,7 +162,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Sockets the send receive.
+        /// Connects to the solr server, sends our query
+        /// and receive the result.
         /// </summary>
         /// <param name="solrQuery">The solr query.</param>
         /// <returns>
@@ -218,6 +223,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
         /// <summary>
         /// Parses to result.
+        /// This method parses the json string we get from solr
+        /// into a resultPot which stores all the results.
         /// </summary>
         /// <param name="jsonResult">The result in json format.</param>
         /// <returns>The results in a list.</returns>
@@ -267,6 +274,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
         /// <summary>
         /// Gets the json value.
+        /// Returns an empty string if the key
+        /// does not exist.
         /// </summary>
         /// <param name="token">The token.</param>
         /// <param name="key">The key.</param>
@@ -286,6 +295,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
         /// <summary>
         /// Removes the special chars.
+        /// This is only a experiment to make the
+        /// title more readable because it often has
+        /// some curious characters...
         /// </summary>
         /// <param name="text">The text.</param>
         /// <returns>A hopefully better looking title.</returns>

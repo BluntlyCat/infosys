@@ -20,17 +20,18 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using Renci.SshNet.Common;
 
     /// <summary>
-    /// The Nutch Manager handles the WebCrawl
+    /// The NutchControllerClient starts a crawl on the specified host.
     /// </summary>
     public class NutchControllerClient
     {
         /// <summary>
-        /// The logger for NutchManager.
+        /// The logger for NutchControllerClient.
         /// </summary>
         private static readonly ILog Log = Logger<string>.GetLogger("NutchControllerClient");
 
         /// <summary>
-        /// The connection string
+        /// The connection string contains
+        /// the username and host like user@host
         /// </summary>
         private readonly string connectionString;
 
@@ -40,12 +41,13 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private SshClient client;
 
         /// <summary>
-        /// The home directory.
+        /// Gets or sets the home path of the user we want
+        /// use to establish a connection over SSH.
         /// </summary>
         private string homeDir;
 
         /// <summary>
-        /// The username.
+        /// The username with which we want connect.
         /// </summary>
         private string username;
 
@@ -71,7 +73,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Gets the URLs.
+        /// Gets the URLs on which this client crawls.
         /// </summary>
         /// <value>
         /// The URLs.
@@ -79,18 +81,21 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         public IList<string> URLs { get; private set; }
 
         /// <summary>
-        /// Gets a value indicating whether [nutch found].
+        /// Gets a value indicating whether [client can crawl]
+        /// Can be false if nutch or java is not installed on this
+        /// client or on the wrong path or if any error happens
+        /// while we establish the connection.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if [nutch found]; otherwise, <c>false</c>.
+        ///   <c>true</c> if [can crawl]; otherwise, <c>false</c>.
         /// </value>
         public bool IsClientUsable { get; private set; }
 
         /// <summary>
-        /// Gets a value indicating whether this instance is crawling.
+        /// Gets a value indicating whether this client is crawling.
         /// </summary>
         /// <value>
-        /// <c>true</c> if this instance is crawling; otherwise, <c>false</c>.
+        /// <c>true</c> if this client is crawling; otherwise, <c>false</c>.
         /// </value>
         private bool IsCrawling { get; set; }
 
@@ -103,44 +108,51 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         public string Hostname { get; private set; }
 
         /// <summary>
-        /// Gets the prefix file.
+        /// Gets or sets the name of the prefix file.
+        /// The file where the prefixes are stored.
         /// </summary>
         /// <value>
-        /// The prefix file.
+        /// The name of the prefix file.
         /// </value>
         private string PrefixFile { get; set; }
 
         /// <summary>
-        /// Gets the seed file.
+        /// Gets or sets the name of the seed file.
+        /// The file where the urls are stored for crawling.
+        /// Will be different on each client because we split
+        /// the work if there are more than one client defined.
         /// </summary>
         /// <value>
-        /// The seed file.
+        /// The name of the seed file.
         /// </value>
         private string SeedFile { get; set; }
 
         /// <summary>
-        /// Gets the URL path.
+        /// Gets or sets the base URL path.
+        /// The path where nutch finds the urls file.
         /// </summary>
         /// <value>
-        /// The URL path.
+        /// The base URL path.
         /// </value>
         private string URLPath { get; set; }
 
         /// <summary>
-        /// Gets the crawl command.
+        /// Gets or sets the nutch command.
         /// </summary>
         /// <value>
-        /// The crawl command.
+        /// The nutch command.
         /// </value>
         private string CrawlCommand { get; set; }
 
         /// <summary>
-        /// Initializes the client.
+        /// Initializes the client before its next crawl
+        /// to be sure it has the correct values if settings
+        /// have changed since the last crawl.
         /// </summary>
         /// <param name="settings">The settings.</param>
         public void InitializeClient(NutchControllerClientSettings settings)
         {
-            if (settings.Equals(new NutchControllerClientSettings()) == false)
+            if (settings.IsDefault() == false)
             {
                 this.homeDir = settings.HomePath;
 
@@ -169,6 +181,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
         /// <summary>
         /// Starts the crawl.
+        /// If the crawl finishes in any way it returns to the controller.
+        /// to tell that this client finished. If the crawl fails it sends
+        /// an email to all users who want to crawl the urls this client
+        /// was crawling. Furthermore it fetches the log from the client
+        /// of nutch and writes it into our own logfile.
         /// </summary>
         /// <param name="settings">The settings.</param>
         /// <param name="dbManager">The db manager.</param>
@@ -220,7 +237,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Creates the crawl process.
+        /// Sets the crawl process before each crawl to be
+        /// sure that we have the current settings if they
+        /// were updated since the last time.
         /// </summary>
         /// <param name="settings">The settings.</param>
         public void SetCrawlProcess(NutchControllerClientSettings settings)
@@ -256,6 +275,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
         /// <summary>
         /// Checks the client for usage.
+        /// Returns false if nutch or java is not installed
+        /// or not on this location we expect or if any error
+        /// happens while connecting.
         /// </summary>
         /// <param name="settings">The settings.</param>
         public void CheckClientForUsage(NutchControllerClientSettings settings)
@@ -316,7 +338,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Initializes the SSH client.
+        /// Initializes the SSH client before the next crawl because
+        /// settings may have changed...
         /// </summary>
         /// <param name="settings">The settings.</param>
         private void InitializeSSHClient(NutchControllerClientSettings settings)
@@ -338,7 +361,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Adds the URL.
+        /// Adds the URLs to the seed.txt file this client must crawl.
         /// </summary>
         /// <param name="settings">The settings.</param>
         private void AddURL(NutchControllerClientSettings settings)
@@ -362,6 +385,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
         /// <summary>
         /// Gets the known prefixes.
+        /// This method fetches the prefix file from the client
+        /// and searches for unkown urls. If we have any new url
+        /// it adds this to a list and returns this for writing 
+        /// into the prefix file on this client.
         /// </summary>
         /// <param name="settings">The settings.</param>
         /// <param name="urls">The URLs.</param>
@@ -401,7 +428,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Creates the user directory.
+        /// Creates the user directory on the client
+        /// and proofs if this directory exists after creation.
         /// </summary>
         /// <param name="settings">The settings.</param>
         private void CreateUserDir(NutchControllerClientSettings settings)
@@ -618,7 +646,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Runs the command.
+        /// Runs the command on this client.
+        /// If an error happens it writes a log
+        /// entry for further information of whats going wrong.
         /// </summary>
         /// <param name="command">The command.</param>
         /// <returns>The SSH command.</returns>

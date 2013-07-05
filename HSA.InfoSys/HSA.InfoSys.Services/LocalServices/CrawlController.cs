@@ -20,7 +20,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     public class CrawlController : Service, ICrawlController
     {
         /// <summary>
-        /// The logger.
+        /// The logger of crawl controller.
         /// </summary>
         private static readonly ILog Log = Logger<string>.GetLogger("CrawlController");
 

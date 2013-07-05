@@ -26,10 +26,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Gets the entity id.
+        /// Gets the componentGUID to which this pot belongs.
         /// </summary>
         /// <value>
-        /// The entity id.
+        /// The componentGUID.
         /// </value>
         public Guid ComponentID { get; private set; }
 

@@ -30,17 +30,18 @@ namespace HSA.InfoSys.Common.Entities
     public abstract class Entity
     {
         /// <summary>
-        /// The logger of result.
+        /// The logger of Entity.
         /// </summary>
         private static readonly ILog Log = Logger<string>.GetLogger("Entity");
 
         /// <summary>
-        /// The type name.
+        /// The type name of the entity.
         /// </summary>
         private string type;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Entity"/> class.
+        /// Initializes a new instance of the <see cref="Entity"/> class
+        /// and sets the type name depending on the initializing type.
         /// </summary>
         protected Entity()
         {
@@ -57,10 +58,10 @@ namespace HSA.InfoSys.Common.Entities
         public virtual Guid EntityId { get; set; }
 
         /// <summary>
-        /// Gets or sets the type.
+        /// Gets or sets the type name.
         /// </summary>
         /// <value>
-        /// The type of this instance.
+        /// The type name of this instance.
         /// </value>
         [DataMember]
         public virtual string Type
@@ -78,6 +79,8 @@ namespace HSA.InfoSys.Common.Entities
 
         /// <summary>
         /// Loads this instance from NHibernate.
+        /// NHibernate supports lazy loading, so we need some
+        /// functionality to load a reference to a foreign table too.
         /// </summary>
         /// <param name="types">The types you want load eager.</param>
         /// <returns>
@@ -89,7 +92,9 @@ namespace HSA.InfoSys.Common.Entities
         }
 
         /// <summary>
-        /// Size of result.
+        /// Size of an entity is calculated by serializing the
+        /// instance. The length of the stream is the size of
+        /// this entity.
         /// </summary>
         /// <returns>The size of this instance.</returns>
         public virtual long SizeOf()

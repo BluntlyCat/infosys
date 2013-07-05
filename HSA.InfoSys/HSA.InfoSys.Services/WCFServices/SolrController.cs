@@ -55,14 +55,6 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Searches for one component.
-        /// </summary>
-        /// <param name="componentGUID">The component GUID.</param>
-        public void SearchForComponent(Guid componentGUID)
-        {
-        }
-
-        /// <summary>
         /// Starts a new search.
         /// </summary>
         /// <param name="orgUnitGUID">The org unit GUID.</param>
@@ -73,7 +65,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Runs this instance.
+        /// Runs this service.
         /// </summary>
         protected override void Run()
         {

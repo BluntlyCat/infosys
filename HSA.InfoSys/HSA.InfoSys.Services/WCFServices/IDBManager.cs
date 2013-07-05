@@ -54,7 +54,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         WCFSettings GetWcfSettings();
 
         /// <summary>
-        /// Loads this entities eager.
+        /// Loads this instances from NHibernate eager.
+        /// NHibernate supports lazy loading, so we need some
+        /// functionality to load a reference to a foreign table too.
         /// </summary>
         /// <param name="param">The names of the entities.</param>
         /// <returns>
@@ -83,7 +85,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         Guid AddEntity(Entity entity);
 
         /// <summary>
-        /// Adds a new Objects (Component, Issue, Source...)
+        /// Adds a Objects (Component, Issue, Source...)
         /// and saves it in database.
         /// </summary>
         /// <param name="entities">The entities.</param>
@@ -201,27 +203,25 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         Component CreateComponent(string name, Guid orgUnitGUID);
 
         /// <summary>
-        /// Creates a OrgUnit object
+        /// Creates a OrgUnit object.
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <param name="name">The system name.</param>
         /// <returns>
-        /// The created OrgUnit object
+        /// The created OrgUnit object.
         /// </returns>
         [UseNetDataContractSerializer]
         [OperationContractAttribute]
         OrgUnit CreateOrgUnit(int userId, string name);
 
         /// <summary>
-        /// Creates a OrgUnitConfig object
+        /// Creates a OrgUnitConfig object.
         /// </summary>
         /// <param name="urls">The URL.</param>
         /// <param name="emails">The email text.</param>
-        /// <param name="urlActive">if set to <c>true</c> [URL active].</param>
         /// <param name="emailNotification">if set to <c>true</c> [email notification].</param>
         /// <param name="days">The days.</param>
         /// <param name="time">The time.</param>
-        /// <param name="nextSearch">The next search.</param>
         /// <param name="schedulerActive">if set to <c>true</c> [scheduler active].</param>
         /// <returns>
         /// The created OrgUnitConfig object.
@@ -231,11 +231,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         OrgUnitConfig CreateOrgUnitConfig(
             string urls,
             string emails,
-            bool urlActive,
             bool emailNotification,
             int days,
             int time,
-            DateTime nextSearch,
             bool schedulerActive);
 
 #if MONO

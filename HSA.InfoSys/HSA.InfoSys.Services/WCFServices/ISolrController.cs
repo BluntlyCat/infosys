@@ -20,12 +20,5 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <param name="orgUnitGUID">The org unit GUID.</param>
         [OperationContract]
         void SearchForOrgUnit(Guid orgUnitGUID);
-
-        /// <summary>
-        /// Searches for one component.
-        /// </summary>
-        /// <param name="componentGUID">The component GUID.</param>
-        [OperationContract]
-        void SearchForComponent(Guid componentGUID);
     }
 }

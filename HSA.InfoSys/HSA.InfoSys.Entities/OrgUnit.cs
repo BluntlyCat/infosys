@@ -16,7 +16,7 @@ namespace HSA.InfoSys.Common.Entities
     public class OrgUnit : Entity
     {
         /// <summary>
-        /// Gets or sets the UserId.
+        /// Gets or sets the UserId of the user who owns this unit.
         /// </summary>
         /// <value>
         /// The UserId.
@@ -25,25 +25,27 @@ namespace HSA.InfoSys.Common.Entities
         public virtual int UserId { get; set; }
 
         /// <summary>
-        /// Gets or sets the service name.
+        /// Gets or sets the unit name.
         /// </summary>
         /// <value>
-        /// The service name.
+        /// The name of this OrgUnit.
         /// </value>
         [DataMember]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the system config.
+        /// Gets or sets the configuration.
         /// </summary>
         /// <value>
-        /// The system config.
+        /// The OrgUnit configuration.
         /// </value>
         [DataMember]
         public virtual OrgUnitConfig OrgUnitConfig { get; set; }
 
         /// <summary>
         /// Loads this instance from NHibernate.
+        /// NHibernate supports lazy loading, so we need some
+        /// functionality to load a reference to a foreign table too.
         /// </summary>
         /// <param name="types">The types you want load eager.</param>
         /// <returns>

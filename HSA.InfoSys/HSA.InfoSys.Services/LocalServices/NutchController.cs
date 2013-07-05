@@ -13,6 +13,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     using HSA.InfoSys.Common.Exceptions;
     using HSA.InfoSys.Common.Extensions;
     using HSA.InfoSys.Common.Logging;
+    using Newtonsoft.Json;
     using log4net;
     using WCFServices;
 
@@ -37,9 +38,9 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private readonly DbManager dbManager;
 
         /// <summary>
-        /// The lock mutex.
+        /// The crawlLock.
         /// </summary>
-        private readonly object lockMutex = new object();
+        private readonly object crawlLock = new object();
 
         /// <summary>
         /// The crawl process.
@@ -47,22 +48,22 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         private readonly IList<NutchControllerClient> nutchClients = new List<NutchControllerClient>();
 
         /// <summary>
-        /// The settings.
+        /// The nutch settings.
         /// </summary>
         private NutchControllerClientSettings settings;
 
         /// <summary>
-        /// The URLs.
+        /// The URLs for crawling.
         /// </summary>
         private string[] urls = new string[0];
 
         /// <summary>
-        /// The crawls finished.
+        /// Shows how mutch crawls are still running.
         /// </summary>
         private int runningCrawls;
 
         /// <summary>
-        /// The is crawling.
+        /// Indicates if ther is a crawl running or not.
         /// </summary>
         private bool isCrawling;
 
@@ -137,11 +138,11 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Sets the pending crawl.
+        /// Sets the next running crawl.
         /// </summary>
         private void SetNextCrawl()
         {
-            lock (this.lockMutex)
+            lock (this.crawlLock)
             {
                 try
                 {
@@ -160,7 +161,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
                             this.InitializeClients();
                         }
 
-                        if (this.settings.Equals(new NutchControllerClientSettings()) == false)
+                        if (this.settings.IsDefault() == false)
                         {
                             this.InitializeNextCrawl();
 
@@ -233,7 +234,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Stops this instance.
+        /// Stops this instance, the running crawl and disconnects from the hosts.
         /// </summary>
         /// <param name="cancel">if set to <c>true</c> [cancel].</param>
         public override void StopService(bool cancel = false)
@@ -248,7 +249,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
         }
 
         /// <summary>
-        /// Runs this instance.
+        /// Runs this controller.
         /// </summary>
         protected override void Run()
         {
@@ -268,12 +269,15 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
         /// <summary>
         /// Initializes the clients.
+        /// Initializes the clients also means to reinitialize
+        /// them before the next crawl starts. This must be done
+        /// because the settings may have changed.
         /// </summary>
         private void InitializeClients()
         {
             Log.Info(Properties.Resources.NUTCH_CONTROLLER_INITIALIZE_CLIENT);
 
-            if (this.settings.Equals(new NutchControllerClientSettings()) == false)
+            if (this.settings.IsDefault() == false)
             {
                 this.nutchClients.Clear();
 
@@ -281,7 +285,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
                 if (string.IsNullOrEmpty(this.settings.NutchClients) == false)
                 {
-                    clients = this.settings.NutchClients.Split(',');
+                    clients = JsonConvert.DeserializeObject<string[]>(this.settings.NutchClients);
 
                     Log.DebugFormat(
                         Properties.Resources.NUTCH_CONTROLLER_CLIENTS_SPLIT,
@@ -307,6 +311,10 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
         /// <summary>
         /// Initializes the next crawl.
+        /// Prepares the clients for their next crawl.
+        /// If a client is not reachable at this moment
+        /// it will be excluded from this crawl. Next time
+        /// if it is reachable again it can continue crawling.
         /// </summary>
         private void InitializeNextCrawl()
         {
@@ -366,6 +374,8 @@ namespace HSA.InfoSys.Common.Services.LocalServices
 
         /// <summary>
         /// Resets the crawls.
+        /// Clears the list of urls in each crawl
+        /// client to avoid have duplicates.
         /// </summary>
         private void ResetCrawls()
         {

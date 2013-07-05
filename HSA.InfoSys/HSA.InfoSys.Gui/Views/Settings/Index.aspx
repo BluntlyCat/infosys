@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 <%@ Import Namespace="HSA.InfoSys.Common.Entities"%>
+<%@ Import Namespace="HSA.InfoSys.Common.Extensions"%>
+<%@ Import Namespace="Newtonsoft.Json"%>
 
 <asp:Content ID="aboutTitle" ContentPlaceHolderID="TitleContent" runat="server">
     Server Settings
@@ -22,6 +24,9 @@
 
                     <% 
                         var nutchSettings = this.ViewData["NutchClientSettings"] as NutchControllerClientSettings;
+
+                        var defaultURLs = JsonConvert.DeserializeObject<string[]>(nutchSettings.DefaultURLs).ElementsToString();
+                        var nutchClients = JsonConvert.DeserializeObject<string[]>(nutchSettings.NutchClients).ElementsToString();
                     %>
                     
                         <div class="control-group">
@@ -52,7 +57,7 @@
                             <label class="control-label" for="nutchclients" style="text-align:left">
                                 Nutch clients:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="nutchclients" placeholder="" value="<%= nutchSettings.NutchClients %>" />
+                                <input class="input-xxlarge" type="text" name="nutchclients" placeholder="" value="<%= nutchClients %>" />
                             </div>
                         </div>
                         
@@ -60,7 +65,7 @@
                             <label class="control-label" for="defaulturls" style="text-align:left">
                                 Default URLs:</label>
                             <div class="controls">
-                                <input class="input-xxlarge" type="text" name="defaulturls" placeholder="" value="<%= nutchSettings.DefaultURLs %>" />
+                                <input class="input-xxlarge" type="text" name="defaulturls" placeholder="" value="<%= defaultURLs %>" />
                             </div>
                         </div>
 

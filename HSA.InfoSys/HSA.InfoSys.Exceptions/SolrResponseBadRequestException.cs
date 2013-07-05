@@ -8,7 +8,7 @@ namespace HSA.InfoSys.Common.Exceptions
     using System;
 
     /// <summary>
-    /// Throws an exception if day or time value is zero or less.
+    /// Throws an exception if solr gave a bad request as response.
     /// </summary>
     public sealed class SolrResponseBadRequestException : Exception
     {

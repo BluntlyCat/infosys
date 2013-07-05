@@ -14,6 +14,7 @@ namespace HSA.InfoSys.Gui.Controllers
     using System.Web.Mvc;
     using System.Web.Security;
     using HSA.InfoSys.Common.Entities;
+    using HSA.InfoSys.Common.Extensions;
     using HSA.InfoSys.Common.Logging;
     using HSA.InfoSys.Common.Services.LocalServices;
     using HSA.InfoSys.Common.Services.WCFServices;
@@ -123,10 +124,11 @@ namespace HSA.InfoSys.Gui.Controllers
                 var mails = JsonConvert.SerializeObject(new string[] { membershipuser.Email });
 
                 // TODO: default urls nicht hardcoded, sondern müssen hier noch zuvor aus der DB aus Settings ausgelesen werden
-                var urls = JsonConvert.SerializeObject(new string[] { "http://www.heise.de/security/", "http://nvd.nist.gov/" });
+                var nutchSettings = cc.GetNutchClientSettings();
+                var urls = nutchSettings.DefaultURLs;
 
                 // create SystemConfig
-                var orgUnitConfig = cc.CreateOrgUnitConfig(urls, mails, true, true, 1, 12, new DateTime(), true);
+                var orgUnitConfig = cc.CreateOrgUnitConfig(urls, mails, true, 1, 12, true);
 
                 // create System
                 var orgUnit = cc.CreateOrgUnit(id, orgUnitName);
@@ -412,7 +414,7 @@ namespace HSA.InfoSys.Gui.Controllers
                 var cc = WCFControllerClient<IDbManager>.GetClientProxy(Settings);
                 var settings = cc.GetNutchClientSettings();
 
-                string defaulturls = settings.DefaultURLs;
+                string defaulturls = JsonConvert.DeserializeObject<string[]>(settings.DefaultURLs).ElementsToString();
 
                 // default urls
                 this.ViewData["defaulturls"] = defaulturls;
@@ -437,7 +439,6 @@ namespace HSA.InfoSys.Gui.Controllers
 
                 this.ViewData["schedulerActive"] = config.SchedulerActive;
                 this.ViewData["emailActive"] = config.EmailActive;
-                this.ViewData["urlActive"] = config.URLActive;
 
                 this.ViewData["sc_days"] = config.Days;
                 this.ViewData["sc_hours"] = config.Time;
@@ -603,7 +604,6 @@ namespace HSA.InfoSys.Gui.Controllers
 
                 // copy orgUnitConfig data 
                 config.EmailActive = loadedConfig.EmailActive;
-                config.URLActive = loadedConfig.URLActive;
                 config.SchedulerActive = loadedConfig.SchedulerActive;
                 config.Days = loadedConfig.Days;
                 config.Time = loadedConfig.Time;

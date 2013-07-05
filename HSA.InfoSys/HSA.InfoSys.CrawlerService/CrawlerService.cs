@@ -22,7 +22,7 @@ namespace HSA.InfoSys.CrawlerService
     public class CrawlerService : Service, ICrawlerService
     {
         /// <summary>
-        /// The logger.
+        /// The logger for CrawlerService.
         /// </summary>
         private static readonly ILog Log = Logger<string>.GetLogger("CrawlerService");
 
@@ -52,7 +52,7 @@ namespace HSA.InfoSys.CrawlerService
         /// <param name="serviceGUID">The service GUID.</param>
         private CrawlerService(Guid serviceGUID) : base(serviceGUID)
         {
-            this.PrintStartupMessage();
+            PrintStartupMessage();
 
             //// Initialize the database.
             var dbManager = InitializeDataBase();
@@ -71,7 +71,7 @@ namespace HSA.InfoSys.CrawlerService
         /// Gets the CrawlerService. Create one if none exist.
         /// </summary>
         /// <returns>The CrawlerService</returns>
-        public static CrawlerService CrawlerFactory
+        private static CrawlerService CrawlerFactory
         {
             get
             {
@@ -88,12 +88,11 @@ namespace HSA.InfoSys.CrawlerService
         /// <summary>
         /// Main function.
         /// </summary>
-        /// <param name="args">The args.</param>
-        public static void Main(string[] args)
+        public static void Main()
         {
             try
             {
-                CrawlerService crawler = CrawlerFactory;
+                var crawler = CrawlerFactory;
                 crawler.StartService();
             }
             catch (Exception e)
@@ -103,22 +102,15 @@ namespace HSA.InfoSys.CrawlerService
         }
 
         /// <summary>
-        /// Stops the services.
+        /// Stops all services.
         /// </summary>
         public void StopServices()
         {
-            if (this.servicesRunning)
-            {
-                this.servicesRunning = this.crawlController.StopServices(true);
-            }
-            else
-            {
-                this.servicesRunning = this.crawlController.StartServices();
-            }
+            this.servicesRunning = this.servicesRunning ? this.crawlController.StopServices(true) : this.crawlController.StartServices();
         }
 
         /// <summary>
-        /// Shutdown this instance.
+        /// Shutdown this service and exit the application.
         /// </summary>
         public void ShutdownCrawler()
         {
@@ -131,7 +123,7 @@ namespace HSA.InfoSys.CrawlerService
         }
 
         /// <summary>
-        /// Runs this instance.
+        /// Runs this service.
         /// </summary>
         protected override void Run()
         {
@@ -170,7 +162,7 @@ namespace HSA.InfoSys.CrawlerService
         private static DbManager InitializeDataBase()
         {
             //// Create DBManager.
-            DbManager dbManager = DbManager.ManagerFactory as DbManager;
+            var dbManager = DbManager.ManagerFactory as DbManager;
 
             if (dbManager != null)
             {
@@ -183,7 +175,7 @@ namespace HSA.InfoSys.CrawlerService
         /// <summary>
         /// Prints the startup message.
         /// </summary>
-        private void PrintStartupMessage()
+        private static void PrintStartupMessage()
         {
             Log.Debug(Properties.Resources.WEB_CRAWLER_START_SERVER);
             Log.Info(Properties.Resources.WEB_CRAWLER_QUIT_MESSAGE);
@@ -202,7 +194,8 @@ namespace HSA.InfoSys.CrawlerService
         }
 
         /// <summary>
-        /// Initializes the controller host.
+        /// Initializes all other services and
+        /// register them in the crawlController.
         /// </summary>
         /// <param name="dbManager">The database manager.</param>
         private void InitializeOtherServices(DbManager dbManager)
@@ -227,8 +220,7 @@ namespace HSA.InfoSys.CrawlerService
             //// Register services.
             this.crawlController.RegisterService(typeof(Scheduler), scheduler);
             this.crawlController.RegisterService(typeof(SolrController), solrController);
-#warning enable nutchController before building on mono, must be disabled to avoid starting many crawls on the hosts while developing.
-            //// this.crawlController.RegisterService(typeof(NutchController), nutchController);
+            this.crawlController.RegisterService(typeof(NutchController), nutchController);
             this.crawlController.RegisterService(typeof(DbManager), dbManager);
 
             this.servicesRunning = this.crawlController.StartServices();

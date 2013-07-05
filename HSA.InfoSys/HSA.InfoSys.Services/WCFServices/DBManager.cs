@@ -29,7 +29,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// The logger for db manager.
         /// </summary>
-        private static readonly ILog Log = Logger<string>.GetLogger("DBManager");
+        private static readonly ILog Log = Logger<string>.GetLogger("DbManager");
 
         /// <summary>
         /// The mutex for data base session.
@@ -82,10 +82,10 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Gets the manager factory.
+        /// Gets the database manager.
         /// </summary>
         /// <value>
-        /// The manager factory.
+        /// The database manager.
         /// </value>
         public static IDbManager ManagerFactory
         {
@@ -116,7 +116,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         #region Settings
 
         /// <summary>
-        /// Gets the settings for.
+        /// Gets the settings for the given type.
         /// </summary>
         /// <typeparam name="T">The type of settings.</typeparam>
         /// <returns>
@@ -141,7 +141,10 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
         /// <summary>
         /// Gets the mail settings.
+        /// If there are none this method creates one
+        /// and initializes them with default values.
         /// </summary>
+        /// <exception cref="DbManagerAccessException">Thrown on error while accessing the database.</exception>
         /// <returns>
         /// The mail settings.
         /// </returns>
@@ -177,8 +180,10 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
         /// <summary>
         /// Gets the nutch client settings.
+        /// If there are none this method creates one
+        /// and initializes them with default values.
         /// </summary>
-        /// <exception cref="DbManagerAccessException"></exception>
+        /// <exception cref="DbManagerAccessException">Thrown on error while accessing the database.</exception>
         /// <returns>
         /// The nutch client settings.
         /// </returns>
@@ -214,8 +219,10 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
         /// <summary>
         /// Gets the solr client settings.
+        /// If there are none this method creates one
+        /// and initializes them with default values.
         /// </summary>
-        /// <exception cref="DbManagerAccessException"></exception>
+        /// <exception cref="DbManagerAccessException">Thrown on error while accessing the database.</exception>
         /// <returns>
         /// The solr client settings.
         /// </returns>
@@ -251,8 +258,10 @@ namespace HSA.InfoSys.Common.Services.WCFServices
 
         /// <summary>
         /// Gets the WCF controller settings.
+        /// If there are none this method creates one
+        /// and initializes them with default values.
         /// </summary>
-        /// <exception cref="DbManagerAccessException"></exception>
+        /// <exception cref="DbManagerAccessException">Thrown on error while accessing the database.</exception>
         /// <returns>
         /// The WCF controller settings.
         /// </returns>
@@ -289,7 +298,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         #endregion
 
         /// <summary>
-        /// Loads this entities eager.
+        /// Loads this instances from NHibernate eager.
+        /// NHibernate supports lazy loading, so we need some
+        /// functionality to load a reference to a foreign table too.
         /// </summary>
         /// <param name="param">The names of the entities.</param>
         /// <returns>
@@ -308,6 +319,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets all URLs.
         /// </summary>
+        /// <exception cref="DbManagerAccessException">Thrown on error while accessing the database.</exception>
         /// <returns>
         /// An array containing all URLs for crawling.
         /// </returns>
@@ -353,7 +365,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// and saves it in database.
         /// </summary>
         /// <param name="entity">The entity to add in database.</param>
-        /// <exception cref="DbManagerAccessException"></exception>
+        /// <exception cref="DbManagerAccessException">Thrown on error while accessing the database.</exception>
         /// <returns>The GUID of the added entity.</returns>
         public Guid AddEntity(Entity entity)
         {
@@ -387,11 +399,11 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Adds a new Objects (Component, Issue, Source...)
+        /// Adds new Objects (Component, Issue, Source...)
         /// and saves it in database.
         /// </summary>
         /// <param name="entities">The entities.</param>
-        /// <exception cref="DbManagerAccessException"></exception>
+        /// <exception cref="DbManagerAccessException">Thrown on error while accessing the database.</exception>
         public void AddEntitys(params Entity[] entities)
         {
             DbMutex.WaitOne();
@@ -420,7 +432,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// Saves changings of a object in database.
         /// </summary>
         /// <param name="entity">The entity that should be updated.</param>
-        /// <exception cref="DbManagerAccessException"></exception>
+        /// <exception cref="DbManagerAccessException">Thrown on error while accessing the database.</exception>
         /// <returns>The GUID of the updated entity.</returns>
         public Guid UpdateEntity(Entity entity)
         {
@@ -461,6 +473,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// Deletes the entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
+        /// <exception cref="DbManagerAccessException">Thrown on error while accessing the database.</exception>
         public void DeleteEntity(Entity entity)
         {
             DbMutex.WaitOne();
@@ -497,6 +510,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         /// <param name="entityGUID">The entity GUID.</param>
         /// <param name="types">The types you want load eager.</param>
+        /// <exception cref="DbManagerAccessException">Thrown on error while accessing the database.</exception>
         /// <returns>
         /// The entity you asked for.
         /// </returns>
@@ -540,7 +554,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// </summary>
         /// <param name="userId">The user ID.</param>
         /// <param name="types">The types.</param>
-        /// <exception cref="DbManagerAccessException"></exception>
+        /// <exception cref="DbManagerAccessException">Thrown on error while accessing the database.</exception>
         /// <returns>
         /// A list of org units for the user id.
         /// </returns>
@@ -595,7 +609,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <returns>
         /// The OrgUnitGUID of the OrgUnit belonging to the OrgUnitConfigGUID.
         /// </returns>
-        /// <exception cref="DbManagerAccessException">GetOrgUnitsByUserID(int userID, string[] types = null)</exception>
+        /// <exception cref="DbManagerAccessException">Thrown on error while accessing the database.</exception>
         public Guid GetOrgUnitGuidByOrgUnitConfigGuid(Guid orgUnitConfigGUID, string[] types = null)
         {
             DbMutex.WaitOne();
@@ -627,7 +641,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// Gets the org unit configurations by active scheduler.
         /// </summary>
         /// <param name="types">The types.</param>
-        /// <exception cref="DbManagerAccessException"></exception>
+        /// <exception cref="DbManagerAccessException">Thrown on error while accessing the database.</exception>
         /// <returns>
         /// A list of Orgunit configurations where the Scheduler is active.
         /// </returns>
@@ -667,6 +681,7 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// Gets the components by org unit id.
         /// </summary>
         /// <param name="orgUnitGuid">The org unit GUID.</param>
+        /// <exception cref="DbManagerAccessException">Thrown on error while accessing the database.</exception>
         /// <returns>
         /// A list of components which belongs to the given OrgUnit.
         /// </returns>
@@ -706,10 +721,11 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Gets the allResults by component id.
+        /// Gets the results by component id.
         /// </summary>
         /// <param name="componentGUID">The component GUID.</param>
-        /// <returns>A list of allResults which belongs to the given component.</returns>
+        /// <exception cref="DbManagerAccessException">Thrown on error while accessing the database.</exception>
+        /// <returns>A list of results which belongs to the given component.</returns>
         public Result[] GetResultsByComponentId(Guid componentGUID)
         {
             DbMutex.WaitOne();
@@ -748,8 +764,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         /// <summary>
         /// Gets the scheduler times.
         /// </summary>
+        /// <exception cref="DbManagerAccessException">Thrown on error while accessing the database.</exception>
         /// <returns>
-        /// A list of all scheduler times.
+        /// <returns>A list of all OrgUnitConfig objects.</returns>
         /// </returns>
         public OrgUnitConfig[] GetOrgUnitConfigurations()
         {
@@ -833,12 +850,12 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Creates a OrgUnit object
+        /// Creates a OrgUnit object.
         /// </summary>
         /// <param name="userId">The user id.</param>
         /// <param name="name">The system name.</param>
         /// <returns>
-        /// The created OrgUnit object
+        /// The created OrgUnit object.
         /// </returns>
         public OrgUnit CreateOrgUnit(int userId, string name)
         {
@@ -854,15 +871,13 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         }
 
         /// <summary>
-        /// Creates a OrgUnitConfig object
+        /// Creates a OrgUnitConfig object.
         /// </summary>
         /// <param name="urls">The URL.</param>
         /// <param name="emails">The email text.</param>
-        /// <param name="urlActive">if set to <c>true</c> [URL active].</param>
         /// <param name="emailNotification">if set to <c>true</c> [email notification].</param>
         /// <param name="days">The days.</param>
         /// <param name="time">The time.</param>
-        /// <param name="nextSearch">The next search.</param>
         /// <param name="schedulerActive">if set to <c>true</c> [scheduler active].</param>
         /// <returns>
         /// The created OrgUnitConfig object.
@@ -870,11 +885,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
         public OrgUnitConfig CreateOrgUnitConfig(
             string urls,
             string emails,
-            bool urlActive,
             bool emailNotification,
             int days,
             int time,
-            DateTime nextSearch,
             bool schedulerActive)
         {
             if (days <= 0 || time < 0)
@@ -886,11 +899,9 @@ namespace HSA.InfoSys.Common.Services.WCFServices
             {
                 URLs = urls,
                 Emails = emails,
-                URLActive = urlActive,
                 EmailActive = emailNotification,
                 Days = days,
                 Time = time,
-                NextSearch = nextSearch,
                 SchedulerActive = schedulerActive
             };
 

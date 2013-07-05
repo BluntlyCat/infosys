@@ -18,12 +18,15 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     public static class WCFControllerClient<T>
     {
         /// <summary>
-        /// The logger.
+        /// The logger for WCFControllerClient.
         /// </summary>
         private static readonly ILog Log = Logger<string>.GetLogger("WCFControllerClient");
 
         /// <summary>
-        /// Gets the client proxy.
+        /// Gets the client proxy by the type.
+        /// Initialize the addresses on each call
+        /// so we do not need a static configuration in xml
+        /// for our clients.
         /// </summary>
         /// <param name="settings">The settings.</param>
         /// <returns>The proxy of type T.</returns>

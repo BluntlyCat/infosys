@@ -13,6 +13,7 @@ namespace HSA.InfoSys.Gui.Controllers
     using Common.Logging;
     using Common.Services.LocalServices;
     using Common.Services.WCFServices;
+    using Newtonsoft.Json;
     using log4net;
 
     /// <summary>
@@ -160,8 +161,8 @@ namespace HSA.InfoSys.Gui.Controllers
                 nutchClientSettings.HomePath = homepath;
                 nutchClientSettings.NutchPath = nutchpath;
                 nutchClientSettings.NutchCommand = nutchcommand.Replace(" ", "");
-                nutchClientSettings.NutchClients = nutchclients.Replace(" ", "");
-                nutchClientSettings.DefaultURLs = defaulturls.Replace(" ", "");
+                nutchClientSettings.NutchClients = JsonConvert.SerializeObject(nutchclients.Replace(" ", "").Split(','));
+                nutchClientSettings.DefaultURLs = JsonConvert.SerializeObject(defaulturls.Replace(" ", "").Split(','));
                 nutchClientSettings.CrawlDepth = int.Parse(crawldepth.Replace(" ", ""));
                 nutchClientSettings.CrawlTopN = int.Parse(crawltopn.Replace(" ", ""));
                 nutchClientSettings.SolrServer = solrserver.Replace(" ", "");

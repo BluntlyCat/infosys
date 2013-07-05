@@ -22,7 +22,7 @@ namespace HSA.InfoSys.Common.Services.LocalServices
     public class WCFControllerHost
     {
         /// <summary>
-        /// The logger.
+        /// The logger for WCFControllerHost.
         /// </summary>
         private static readonly ILog Log = Logger<string>.GetLogger("WCFControllerHost");
 

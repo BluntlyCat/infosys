@@ -16,7 +16,8 @@ namespace HSA.InfoSys.Common.Entities
     public class OrgUnitConfig : Entity
     {
         /// <summary>
-        /// Gets or sets the URL.
+        /// Gets or sets the URL which should be
+        /// used for crawling for the OrgUnit.
         /// </summary>
         /// <value>
         /// The URL.
@@ -25,16 +26,8 @@ namespace HSA.InfoSys.Common.Entities
         public virtual string URLs { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the URL is active or not.
-        /// </summary>
-        /// <value>
-        /// The URLActive.
-        /// </value>
-        [DataMember]
-        public virtual bool URLActive { get; set; }
-
-        /// <summary>
         /// Gets or sets the Email.
+        /// The email addresses we want send the results.
         /// </summary>
         /// <value>
         /// The Email.
@@ -44,6 +37,7 @@ namespace HSA.InfoSys.Common.Entities
 
         /// <summary>
         /// Gets or sets a value indicating whether email notification is enabled or not.
+        /// If active emails will be send to the owners.
         /// </summary>
         /// <value>
         /// The EmailNotification.
@@ -53,6 +47,8 @@ namespace HSA.InfoSys.Common.Entities
 
         /// <summary>
         /// Gets or sets the Days.
+        /// Defines for example that the search
+        /// starts every third day.
         /// </summary>
         /// <value>
         /// The Days.
@@ -62,21 +58,13 @@ namespace HSA.InfoSys.Common.Entities
 
         /// <summary>
         /// Gets or sets the Time.
+        /// Defines the time the search must start.
         /// </summary>
         /// <value>
         /// The Time for crawling.
         /// </value>
         [DataMember]
         public virtual int Time { get; set; }
-
-        /// <summary>
-        /// Gets or sets the time stamp.
-        /// </summary>
-        /// <value>
-        /// The time stamp.
-        /// </value>
-        [DataMember]
-        public virtual DateTime NextSearch { get; set; }
         
         /// <summary>
         /// Gets or sets a value indicating whether the scheduler is active or not.
@@ -98,8 +86,7 @@ namespace HSA.InfoSys.Common.Entities
             return string.Format(
                 Properties.Resources.ORGUNITCONFIG_TO_STRING,
                 this.EntityId,
-                this.URLs,
-                this.URLActive,
+                this.URLs,                                                                                                                                                          
                 this.Emails,
                 this.EmailActive,
                 this.Days,

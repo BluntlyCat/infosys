@@ -142,7 +142,7 @@ namespace HSA.InfoSys.Common.Entities.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die ID: {0}, URLs: {1}, Urls active: {2}, Mails: {3}, Mails active: {4}, Schedule every {5} days at ({6}), Scheduler active: {7}, Size: {8} Bytes. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die ID: {0}, URLs: {1}, Mails: {2}, Mails active: {3}, Schedule every {4} days at {5}, Scheduler active: {6}, Size: {7} Bytes. ähnelt.
         /// </summary>
         internal static string ORGUNITCONFIG_TO_STRING {
             get {

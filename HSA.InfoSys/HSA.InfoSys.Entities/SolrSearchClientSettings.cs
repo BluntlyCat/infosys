@@ -16,7 +16,7 @@ namespace HSA.InfoSys.Common.Entities
     public class SolrSearchClientSettings : Settings
     {
         /// <summary>
-        /// Gets or sets the host.
+        /// Gets or sets the solr host.
         /// </summary>
         /// <value>
         /// The host.
@@ -25,7 +25,7 @@ namespace HSA.InfoSys.Common.Entities
         public virtual string Host { get; set; }
 
         /// <summary>
-        /// Gets or sets the port.
+        /// Gets or sets the port on whitch solr is listening.
         /// </summary>
         /// <value>
         /// The port.
@@ -35,6 +35,8 @@ namespace HSA.InfoSys.Common.Entities
 
         /// <summary>
         /// Gets or sets the collection.
+        /// The collection is the database container
+        /// of solr where we store our results.
         /// </summary>
         /// <value>
         /// The collection.
@@ -44,6 +46,9 @@ namespace HSA.InfoSys.Common.Entities
 
         /// <summary>
         /// Gets or sets the filter query format.
+        /// The filter query is a more or less complex
+        /// string of key words for searching in our solr
+        /// database to get the results for a component.
         /// </summary>
         /// <value>
         /// The filter query format.
@@ -54,6 +59,7 @@ namespace HSA.InfoSys.Common.Entities
         #region No user settings
         /// <summary>
         /// Gets or sets the request format.
+        /// Is a pattern to build the search request to solr.
         /// </summary>
         /// <value>
         /// The request format.
@@ -63,6 +69,7 @@ namespace HSA.InfoSys.Common.Entities
 
         /// <summary>
         /// Gets or sets the query format.
+        /// Is a pattern for buidlding the search query.
         /// </summary>
         /// <value>
         /// The query format.
@@ -93,17 +100,59 @@ namespace HSA.InfoSys.Common.Entities
         /// <summary>
         /// Sets the default values.
         /// </summary>
-        public override void SetDefaults()
+        public virtual void SetDefaults()
         {
-            //// Public settings
-            this.Host = string.Empty;
-            this.Port = 0;
-            this.Collection = string.Empty;
-            this.FilterQuery = string.Empty;
+            var newSettings = this.GetDefaults() as SolrSearchClientSettings;
 
-            //// Non public settings
-            this.RequestFormat = "GET {0} HTTP/1.1{1}Host: {2}{3}Content-Length: 0{4}";
-            this.QueryFormat = "/solr/{0}/select?q={1}&wt={2}&indent=true";
+            if (newSettings != null)
+            {
+                //// Public settings
+                this.Host = newSettings.Host;
+                this.Port = newSettings.Port;
+                this.Collection = newSettings.Collection;
+                this.FilterQuery = newSettings.FilterQuery;
+
+                //// Non public settings
+                this.RequestFormat = newSettings.RequestFormat;
+                this.QueryFormat = newSettings.QueryFormat;
+            }
+        }
+
+        /// <summary>
+        /// Gets the settings with default values.
+        /// </summary>
+        /// <returns>
+        /// A new settings object with its default values.
+        /// </returns>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public virtual Settings GetDefaults()
+        {
+            var newSettings = new SolrSearchClientSettings
+                {
+                    //// Public settings
+                    Host = string.Empty,
+                    Port = 0,
+                    Collection = string.Empty,
+                    FilterQuery = string.Empty,
+
+                    //// Non public settings
+                    RequestFormat = "GET {0} HTTP/1.1{1}Host: {2}{3}Content-Length: 0{4}",
+                    QueryFormat = "/solr/{0}/select?q={1}&wt={2}&indent=true"
+                };
+
+            return newSettings;
+        }
+
+        /// <summary>
+        /// Determines whether this settings has default values.
+        /// </summary>
+        /// <returns>
+        ///   <c>true</c> if this settings has default values; otherwise, <c>false</c>.
+        /// </returns>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public virtual bool IsDefault()
+        {
+            return this.Equals(this.GetDefaults());
         }
     }
 }
